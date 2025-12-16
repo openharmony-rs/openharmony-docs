@@ -1,4 +1,14 @@
 # Rdb_Statistic
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct Rdb_Statistic {...} Rdb_Statistic
+```
 
 ## 概述
 

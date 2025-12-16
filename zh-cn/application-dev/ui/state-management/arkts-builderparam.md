@@ -1,6 +1,12 @@
 # \@BuilderParam装饰器：引用\@Builder函数
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-当开发者创建自定义组件并需要为其添加特定功能（例如：点击跳转操作）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决组件功能定制化的问题，ArkUI引入了@BuilderParam装饰器。@BuilderParam用于装饰指向@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（例如：参数修改、尾随闭包、借用箭头函数等）对@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用@BuilderParam为组件增加特定功能。该装饰器用于声明任意UI描述的元素，类似于slot占位符。
+当开发者创建自定义组件并需要为其添加特定功能（例如页面跳转功能）时，如果直接在组件内嵌入事件方法，会导致所有该自定义组件的实例都增加此功能。为了解决此问题，ArkUI引入了\@BuilderParam装饰器。\@BuilderParam用于装饰指向\@Builder方法的变量，开发者可以在初始化自定义组件时，使用不同的方式（如参数修改、尾随闭包、借用箭头函数等）对\@BuilderParam装饰的自定义构建函数进行传参赋值。在自定义组件内部，通过调用\@BuilderParam为组件增加特定功能。
 
 在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
 
@@ -18,9 +24,11 @@
 
 \@BuilderParam装饰的方法只能被自定义构建函数（\@Builder装饰的方法）初始化。
 
-- 使用所属自定义组件的自定义构建函数或者全局的自定义构建函数，在本地初始化\@BuilderParam。
+- 使用所属自定义组件的自定义构建函数或者全局的自定义构建函数，在本地初始化\@BuilderParam装饰的方法。
 
-  ```ts
+  <!-- @[builder_param_init_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethod.ets) -->
+  
+  ``` TypeScript
   @Builder
   function overBuilder() {
   }
@@ -31,9 +39,9 @@
     doNothingBuilder() {
     }
   
-    // 使用自定义组件的自定义构建函数初始化@BuilderParam
+    // 使用自定义组件的自定义构建函数初始化@BuilderParam装饰的方法
     @BuilderParam customBuilderParam: () => void = this.doNothingBuilder;
-    // 使用全局自定义构建函数初始化@BuilderParam
+    // 使用全局自定义构建函数初始化@BuilderParam装饰的方法
     @BuilderParam customOverBuilderParam: () => void = overBuilder;
   
     build() {
@@ -41,9 +49,12 @@
   }
   ```
 
-- 用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
 
-  ```ts
+- 使用父组件自定义构建函数初始化子组件\@BuilderParam装饰的方法。
+
+  <!-- @[builder_param_init_method_demo01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo01.ets) -->
+  
+  ``` TypeScript
   @Component
   struct Child {
     @Builder
@@ -58,7 +69,7 @@
       }
     }
   }
-
+  
   @Entry
   @Component
   struct Parent {
@@ -74,94 +85,100 @@
     }
   }
   ```
-  **图1** 示例效果图
 
-  ![builderparam-demo1](figures/builderparam-demo1.png)
+**图1** 示例效果图
+
+![builderparam-demo1](figures/builderparam-demo1.png)
 
 
 - 需要注意this的指向。
 
-  this指向示例如下：
+  示例如下：
 
-    ```ts
-    @Component
-    struct Child {
-      label: string = 'Child';
-    
-      @Builder
-      customBuilder() {
-      }
-    
-      @Builder
-      customChangeThisBuilder() {
-      }
-    
-      @BuilderParam customBuilderParam: () => void = this.customBuilder;
-      @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
-    
-      build() {
-        Column() {
-          this.customBuilderParam()
-          this.customChangeThisBuilderParam()
-        }
+  <!-- @[builder_param_init_method_demo02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamInitMethodDemo02.ets) -->
+  
+  ``` TypeScript
+  @Component
+  struct Child {
+    label: string = 'Child';
+  
+    @Builder
+    customBuilder() {
+    }
+  
+    @Builder
+    customChangeThisBuilder() {
+    }
+  
+    @BuilderParam customBuilderParam: () => void = this.customBuilder;
+    @BuilderParam customChangeThisBuilderParam: () => void = this.customChangeThisBuilder;
+  
+    build() {
+      Column() {
+        this.customBuilderParam()
+        this.customChangeThisBuilderParam()
       }
     }
-
-    @Entry
-    @Component
-    struct Parent {
-      label: string = 'Parent';
-    
-      @Builder
-      componentBuilder() {
-        Text(`${this.label}`)
-      }
-    
-      build() {
-        Column() {
-          // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为"Parent"。
-          this.componentBuilder()
-          Child({
-            // 把this.componentBuilder传给子组件Child的@BuilderParam customBuilderParam，this指向的是子组件Child，即label变量的值为"Child"。
-            customBuilderParam: this.componentBuilder,
-            // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
-            // 因为箭头函数的this指向的是宿主对象，所以label变量的值为"Parent"。
-            customChangeThisBuilderParam: (): void => {
-              this.componentBuilder()
-            }
-          })
-        }
+  }
+  
+  @Entry
+  @Component
+  struct Parent {
+    label: string = 'Parent';
+  
+    @Builder
+    componentBuilder() {
+      Text(`${this.label}`)
+    }
+  
+    build() {
+      Column() {
+        // 调用this.componentBuilder()时，this指向当前@Entry所装饰的Parent组件，即label变量的值为'Parent'。
+        this.componentBuilder()
+        Child({
+          // 把this.componentBuilder传给子组件Child的@BuilderParam customBuilderParam，this指向的是子组件Child，即label变量的值为'Child'。
+          customBuilderParam: this.componentBuilder,
+          // 把():void=>{this.componentBuilder()}传给子组件Child的@BuilderParam customChangeThisBuilderParam，
+          // 因为箭头函数的this指向的是宿主对象，所以label变量的值为'Parent'。
+          customChangeThisBuilderParam: (): void => {
+            this.componentBuilder()
+          }
+        })
       }
     }
-    ```
-  **图2** 示例效果图
+  }
+  ```
 
-  ![builderparam-demo2](figures/builderparam-demo2.png)
+**图2** 示例效果图
+
+![builderparam-demo2](figures/builderparam-demo2.png)
 
 
 ## 限制条件
 
-- 使用`@BuilderParam`装饰的变量只能通过`@Builder`函数进行初始化。具体参见[@BuilderParam装饰器初始化的值必须为@Builder](#builderparam装饰器初始化的值必须为builder)。
+- 使用\@BuilderParam装饰的变量只能通过\@Builder函数进行初始化。具体参考[@BuilderParam装饰器初始化的值必须为@Builder](#builderparam装饰器初始化的值必须为builder)。
 
-- 当@Require装饰器和@BuilderParam装饰器一起使用时，@BuilderParam装饰器必须进行初始化。具体请参见[@Require装饰器和@BuilderParam装饰器联合使用](#require装饰器和builderparam装饰器联合使用)。
+- 当\@Require装饰器和\@BuilderParam装饰器一起使用时，必须初始化\@BuilderParam装饰器。具体参考[@Require装饰器和@BuilderParam装饰器联合使用](#require装饰器和builderparam装饰器联合使用)。
 
-- 在自定义组件尾随闭包的场景下，子组件有且仅有一个\@BuilderParam用来接收此尾随闭包，且此\@BuilderParam不能有参数。详情见[尾随闭包初始化组件](#尾随闭包初始化组件)。
+- 在自定义组件尾随闭包的场景下，子组件有且仅有一个\@BuilderParam用来接收此尾随闭包，且此\@BuilderParam装饰的方法不能有参数。具体参考[尾随闭包初始化组件](#尾随闭包初始化组件)。
 
 ## 使用场景
 
 ### 参数初始化组件
 
-`@BuilderParam`装饰的方法为有参数或无参数两种形式，需与指向的`@Builder`方法类型匹配。
+\@BuilderParam装饰的方法为有参数或无参数的形式，必须与指向的\@Builder方法类型匹配。
 
-```ts
+<!-- @[builder_param_scene_init_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInitComponent.ets) -->
+
+``` TypeScript
 class Tmp {
-  label: string = '';
+  public label: string = '';
 }
 
 @Builder
 function overBuilder($$: Tmp) {
   Text($$.label)
-    .width(400)
+    .width('100%')
     .height(50)
     .backgroundColor(Color.Green)
 }
@@ -217,14 +234,16 @@ struct Parent {
 > **说明：**
 >
 >  - 此场景下自定义组件内仅有一个使用\@BuilderParam装饰的属性。
-> 
+>
 >  - 此场景下自定义组件不支持通用属性。
 
-开发者可以将尾随闭包内的内容看作\@Builder装饰的函数传给\@BuilderParam。
+开发者可将尾随闭包内的内容看作\@Builder装饰的函数传给\@BuilderParam。
 
 示例1：
 
-```ts
+<!-- @[builder_param_scene_trailing_closure_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure01.ets) -->
+
+``` TypeScript
 @Component
 struct CustomContainer {
   @Prop header: string = '';
@@ -233,7 +252,7 @@ struct CustomContainer {
   closerBuilder() {
   }
 
-  // 使用父组件的尾随闭包{}(@Builder装饰的方法)初始化子组件@BuilderParam
+  // 使用父组件的尾随闭包{}(@Builder装饰的方法)初始化子组件@BuilderParam装饰的方法
   @BuilderParam closer: () => void = this.closerBuilder;
 
   build() {
@@ -280,14 +299,16 @@ struct CustomContainerUser {
 
 ![builderparam-demo4](figures/builderparam-demo4.png)
 
-使用全局`@Builder`和局部`@Builder`通过尾随闭包的形式对`@ComponentV2`装饰的自定义组件中的`@BuilderParam`进行初始化。
+可以使用全局或局部\@Builder通过尾随闭包的形式对\@ComponentV2装饰的自定义组件中的\@BuilderParam装饰的方法进行初始化。
 
 示例2：
 
-```ts
+<!-- @[builder_param_scene_trailing_closure_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneTrailingClosure02.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct ChildPage {
-  @Require @Param message: string = "";
+  @Require @Param message: string = '';
 
   @Builder
   customBuilder() {
@@ -305,12 +326,12 @@ struct ChildPage {
   }
 }
 
-const builder_value: string = 'Hello World';
+const builderValue: string = 'Hello World';
 
 @Builder
 function overBuilder() {
   Row() {
-    Text(`全局 Builder: ${builder_value}`)
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -324,7 +345,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      Text(`局部 Builder :${this.label}`)
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -333,7 +354,7 @@ struct ParentPage {
   build() {
     Column() {
       ChildPage({ message: this.label }) {
-        Column() { // 使用局部@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam
+        Column() { // 使用局部@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam装饰的方法
           this.componentBuilder();
         }
       }
@@ -342,7 +363,7 @@ struct ParentPage {
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      ChildPage({ message: this.label }) { // 使用全局@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam
+      ChildPage({ message: this.label }) { // 使用全局@Builder，通过组件后紧跟一个大括号“{}”形成尾随闭包去初始化自定义组件@BuilderParam装饰的方法
         Column() {
           overBuilder();
         }
@@ -352,24 +373,30 @@ struct ParentPage {
 }
 ```
 
+
 ### 使用\@BuilderParam隔离多组件对\@Builder跳转逻辑的调用
 
-当@Builder封装的系统组件包含跳转逻辑时，所有调用该@Builder的自定义组件将具备该跳转功能。对于需要禁用跳转的特定组件，可使用@BuilderParam来隔离跳转逻辑。
+当\@Builder封装的系统组件包含跳转逻辑时，所有调用该\@Builder的自定义组件将具备该跳转功能。如果需要禁用特定组件的跳转功能，可使用\@BuilderParam来隔离跳转逻辑。
 
 > **说明：**
 >
-> 当前示例代码中使用了Navigation组件导航，具体实现逻辑可以查询[Navigation](../arkts-navigation-navigation.md)指南。
+> 当前示例代码中使用了Navigation组件导航，具体实现逻辑可以查询[Navigation](../arkts-navigation-architecture.md)指南。
 
-```ts
+<!-- @[builder_param_scene_jump_logic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneJumpLogic.ets) -->
+
+``` TypeScript
 import { HelloWorldPageBuilder } from './helloworld';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-class navigationParams {
-  pathStack: NavPathStack = new NavPathStack();
-  boo: boolean = true;
+const DOMAIN = 0x0000;
+
+class NavigationParams {
+  public pathStack: NavPathStack = new NavPathStack();
+  public boo: boolean = true;
 }
 
 @Builder
-function navigationAction(params: navigationParams) {
+function navigationAction(params: NavigationParams) {
   Column() {
     Navigation(params.pathStack) {
       Button('router to page', { stateEffect: true, type: ButtonType.Capsule })
@@ -379,9 +406,9 @@ function navigationAction(params: navigationParams) {
         .onClick(() => {
           // 通过修改@BuilderParam参数决定是否跳转。
           if (params.boo) {
-            params.pathStack.pushPath({ name: "HelloWorldPage" });
+            params.pathStack.pushPath({ name: 'HelloWorldPage' });
           } else {
-            console.info('@BuilderParam setting does not jump');
+            hilog.info(DOMAIN, 'testTag', '%{public}s', '@BuilderParam setting does not jump');
           }
         })
     }
@@ -397,7 +424,7 @@ function navigationAction(params: navigationParams) {
 @Entry
 @Component
 struct ParentPage {
-  @State info: navigationParams = new navigationParams();
+  @State info: NavigationParams = new NavigationParams();
 
   build() {
     Column() {
@@ -413,7 +440,7 @@ struct ParentPage {
 
 @Component
 struct ChildPageOne {
-  @State info: navigationParams = new navigationParams();
+  @State info: NavigationParams = new NavigationParams();
 
   build() {
     Column() {
@@ -425,8 +452,8 @@ struct ChildPageOne {
 
 @Component
 struct ChildPage_BuilderParam {
-  @State info: navigationParams = new navigationParams();
-  @BuilderParam eventBuilder: (param: navigationParams) => void = navigationAction;
+  @State info: NavigationParams = new NavigationParams();
+  @BuilderParam eventBuilder: (param: NavigationParams) => void = navigationAction;
 
   build() {
     Column() {
@@ -438,8 +465,10 @@ struct ChildPage_BuilderParam {
 }
 ```
 
-```ts
-// helloworld.ets
+
+<!-- @[builder_param_scene_jump_logic_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/helloworld.ets) -->
+
+``` TypeScript
 @Builder
 export function HelloWorldPageBuilder() {
   HelloWorldPage()
@@ -464,8 +493,10 @@ struct HelloWorldPage {
 }
 ```
 
+
+**router_map.json**
+这个文件位于项目的`resources/base/profile`目录下。
 ```ts
-// router_map.json
 {
   "routerMap": [
     {
@@ -476,9 +507,10 @@ struct HelloWorldPage {
   ]
 }
 ```
+**module.json5**
+这个文件位于应用模块的根目录下，例如`entry/src/main/module.json5`。
 
 ```ts
-// module.json5
 {
   "module": {
     "routerMap": "$profile:router_map",
@@ -495,7 +527,9 @@ struct HelloWorldPage {
 
 在自定义组件中，使用\@BuilderParam装饰的变量接收父组件通过\@Builder传递的内容进行初始化，由于父组件的\@Builder可以使用箭头函数改变当前的this指向，因此使用\@BuilderParam装饰的变量会展示不同的内容。
 
-```ts
+<!-- @[builder_param_scene_global_local_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneGlobalLocalInit.ets) -->
+
+``` TypeScript
 @Component
 struct ChildPage {
   label: string = 'Child Page';
@@ -515,12 +549,12 @@ struct ChildPage {
   }
 }
 
-const builder_value: string = 'Hello World';
+const builderValue: string = 'Hello World';
 
 @Builder
 function overBuilder() {
   Row() {
-    Text(`全局 Builder: ${builder_value}`)
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -534,7 +568,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      Text(`局部 Builder :${this.label}`)
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -542,13 +576,14 @@ struct ParentPage {
 
   build() {
     Column() {
-      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的ParentPage组件，所以label变量的值为"Parent Page"。
+      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的ParentPage组件，所以label变量的值为'Parent Page'。
       this.componentBuilder()
       ChildPage({
-        // 把this.componentBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，this指向的是子组件ChildPage，所以label变量的值为"Child Page"。
+        // 把this.componentBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
+        // this指向的是子组件ChildPage，所以label变量的值为'Child Page'。
         customBuilderParam: this.componentBuilder,
         // 把():void=>{this.componentBuilder()}传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
-        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为"Parent Page"。
+        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为'Parent Page'。
         customChangeThisBuilderParam: (): void => {
           this.componentBuilder()
         }
@@ -557,12 +592,14 @@ struct ParentPage {
         .width('100%')
         .height(10)
         .backgroundColor('#000000').margin(10)
-      // 调用全局overBuilder()时，this指向当前整个活动页，所以展示的内容为"Hello World"。
+      // 调用全局overBuilder()时，this指向当前整个活动页，所以展示的内容为'Hello World'。
       overBuilder()
       ChildPage({
-        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，this指向当前整个活动页，所以展示的内容为"Hello World"。
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
+        // this指向当前整个活动页，所以展示的内容为'Hello World'。
         customBuilderParam: overBuilder,
-        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，this指向当前整个活动页，所以展示的内容为"Hello World"。
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
+        // this指向当前整个活动页，所以展示的内容为'Hello World'。
         customChangeThisBuilderParam: overBuilder
       })
     }
@@ -575,9 +612,11 @@ struct ParentPage {
 
 ### 在@ComponentV2装饰的自定义组件中使用@BuilderParam
 
-使用全局@Builder和局部@Builder初始化@ComponentV2装饰的自定义组件中的@BuilderParam属性。
+使用全局或局部@Builder初始化@ComponentV2装饰的自定义组件中的@BuilderParam属性。
 
-```ts
+<!-- @[builder_param_scene_in_component_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamSceneInComponentV2.ets) -->
+
+``` TypeScript
 @ComponentV2
 struct ChildPage {
   @Param label: string = 'Child Page';
@@ -597,12 +636,12 @@ struct ChildPage {
   }
 }
 
-const builder_value: string = 'Hello World';
+const builderValue: string = 'Hello World';
 
 @Builder
 function overBuilder() {
   Row() {
-    Text(`全局 Builder: ${builder_value}`)
+    Text(`Global Builder: ${builderValue}`)
       .fontSize(20)
       .fontWeight(FontWeight.Bold)
   }
@@ -616,7 +655,7 @@ struct ParentPage {
   @Builder
   componentBuilder() {
     Row() {
-      Text(`局部 Builder :${this.label}`)
+      Text(`Local Builder: ${this.label}`)
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
@@ -624,13 +663,14 @@ struct ParentPage {
 
   build() {
     Column() {
-      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的ParentPage组件，所以label变量的值为"Parent Page"。
+      // 调用this.componentBuilder()时，this指向当前@Entry所装饰的ParentPage组件，所以label变量的值为'Parent Page'。
       this.componentBuilder()
       ChildPage({
-        // 把this.componentBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，this指向的是子组件ChildPage，所以label变量的值为"Child Page"。
+        // 把this.componentBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
+        // this指向的是子组件ChildPage，所以label变量的值为'Child Page'。
         customBuilderParam: this.componentBuilder,
         // 把():void=>{this.componentBuilder()}传给子组件ChildPage的@BuilderParam customChangeThisBuilderPara
-        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为"Parent Page"。
+        // 因为箭头函数的this指向的是宿主对象，所以label变量的值为'Parent Page'。
         customChangeThisBuilderParam: (): void => {
           this.componentBuilder()
         }
@@ -639,12 +679,14 @@ struct ParentPage {
         .width('100%')
         .height(5)
         .backgroundColor('#000000').margin(10)
-      // 调用全局overBuilder()时，this指向当前整个活动页，所以展示的内容为"Hello World"。
+      // 调用全局overBuilder()时，this指向当前整个活动页，所以展示的内容为'Hello World'。
       overBuilder()
       ChildPage({
-        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，this指向当前整个活动页，所以展示的内容为"Hello World"。
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customBuilderParam，
+        // this指向当前整个活动页，所以展示的内容为'Hello World'。
         customBuilderParam: overBuilder,
-        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，this指向当前整个活动页，所以展示的内容为"Hello World"。
+        // 把全局overBuilder传给子组件ChildPage的@BuilderParam customChangeThisBuilderParam，
+        // this指向当前整个活动页，所以展示的内容为'Hello World'。
         customChangeThisBuilderParam: overBuilder
       })
     }
@@ -660,11 +702,13 @@ struct ParentPage {
 
 ### 改变内容UI不刷新
 
-调用自定义组件ChildPage时，通过`this.componentBuilder`形式传递`@Builder`参数。由于`this`指向自定义组件内部，因此在父组件中改变`label`的值时，自定义组件ChildPage无法感知到这一变化。
+调用自定义组件`ChildPage`时，通过`this.componentBuilder`传递\@Builder参数。`this`指向自定义组件内部，因此父组件中改变`label`的值时，`ChildPage`无法感知这一变化。
 
 【反例】
 
-```ts
+<!-- @[builder_param_problem_not_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshOpposite.ets) -->
+
+``` TypeScript
 @Component
 struct ChildPage {
   @State label: string = 'Child Page';
@@ -711,11 +755,13 @@ struct ParentPage {
 }
 ```
 
-使用箭头函数将`@Builder`传递到自定义组件`ChildPage`中，这样`this`指向会停留在父组件`ParentPage`里。因此，在父组件中改变`label`的值时，`ChildPage`会感知到并重新渲染UI。
+使用箭头函数将\@Builder传递到自定义组件`ChildPage`中，`this`指向会停留在父组件`ParentPage`里。在父组件中改变`label`的值时，`ChildPage`会感知到并重新渲染UI。
 
 【正例】
 
-```ts
+<!-- @[builder_param_problem_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshPositive.ets) -->
+
+``` TypeScript
 @Component
 struct ChildPage {
   @State label: string = 'Child Page';
@@ -765,7 +811,7 @@ struct ParentPage {
 
 ### @Require装饰器和@BuilderParam装饰器联合使用
 
-由于@Require装饰器所装饰的变量需进行初始化，若变量未初始化，在编译时会输出报错信息。
+由于\@Require装饰器所装饰的变量需进行初始化，未初始化会导致编译报错。
 
 【反例】
 
@@ -777,7 +823,7 @@ function globalBuilder() {
 
 @Entry
 @Component
-struct customBuilderDemo {
+struct CustomBuilderDemo {
   build() {
     Column() {
       // 由于未对子组件ChildBuilder进行赋值，此处无论是编译还是编辑，均会报错。
@@ -798,11 +844,13 @@ struct ChildPage {
 }
 ```
 
-对@Require装饰的变量进行外部传入初始化。
+\@Require装饰的变量必须从外部初始化。
 
 【正例】
 
-```ts
+<!-- @[builder_param_problem_combined_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemCombinedPositive.ets) -->
+
+``` TypeScript
 @Builder
 function globalBuilder() {
   Text('Hello World')
@@ -810,21 +858,21 @@ function globalBuilder() {
 
 @Entry
 @Component
-struct customBuilderDemo {
+struct CustomBuilderDemo {
   build() {
     Column() {
-      ChildPage({ ChildBuilder: globalBuilder })
+      ChildPage({ childBuilder: globalBuilder })
     }
   }
 }
 
 @Component
 struct ChildPage {
-  @Require @BuilderParam ChildBuilder: () => void = globalBuilder;
+  @Require @BuilderParam childBuilder: () => void = globalBuilder;
 
   build() {
     Column() {
-      this.ChildBuilder()
+      this.childBuilder()
     }
   }
 }
@@ -832,7 +880,7 @@ struct ChildPage {
 
 ### @BuilderParam装饰器初始化的值必须为@Builder
 
-使用`@State`装饰器装饰的变量，给子组件的`@BuilderParam`和`ChildBuilder`变量初始化时，编译时会输出报错信息。
+使用\@State装饰器装饰的变量，在初始化子组件的\@BuilderParam和`ChildBuilder`变量时，编译时会输出报错信息。
 
 【反例】
 
@@ -844,8 +892,8 @@ function globalBuilder() {
 
 @Entry
 @Component
-struct customBuilderDemo {
-  @State message: string = "";
+struct CustomBuilderDemo {
+  @State message: string = '';
 
   build() {
     Column() {
@@ -867,30 +915,35 @@ struct ChildPage {
 }
 ```
 
-使用全局`@Builder`装饰的`globalBuilder()`方法为子组件`@BuilderParam`装饰的`ChildBuilder`变量进行初始化，编译时无报错，功能正常。
+使用全局\@Builder装饰的`globalBuilder()`方法为子组件\@BuilderParam装饰的`ChildBuilder`变量初始化，编译无报错，功能正常。
 
 【正例】
 
-```ts
-@Builder function globalBuilder() {
+<!-- @[builder_param_problem_must_builder_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemMustBuilderPositive.ets) -->
+
+``` TypeScript
+@Builder
+function globalBuilder() {
   Text('Hello World')
 }
+
 @Entry
 @Component
-struct customBuilderDemo {
+struct CustomBuilderDemo {
   build() {
     Column() {
-      ChildPage({ChildBuilder: globalBuilder})
+      ChildPage({ childBuilder: globalBuilder })
     }
   }
 }
 
 @Component
 struct ChildPage {
-  @BuilderParam ChildBuilder: () => void = globalBuilder;
+  @BuilderParam childBuilder: () => void = globalBuilder;
+
   build() {
     Column() {
-      this.ChildBuilder()
+      this.childBuilder()
     }
   }
 }

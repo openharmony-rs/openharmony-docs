@@ -1,4 +1,10 @@
 # @ohos.buffer (Buffer)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 A **Buffer** object represents a byte sequence of a fixed length. It is used to store binary data.
 
@@ -15,6 +21,8 @@ import { buffer } from '@kit.ArkTS';
 ```
 
 ## BufferEncoding
+
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
 
 Enumerates the supported encoding formats.
 
@@ -88,7 +96,6 @@ console.info(JSON.stringify(buf3)); // {"type":"Buffer","data":[104,101,108,108,
 allocUninitializedFromPool(size: number): Buffer
 
 Creates a **Buffer** object of the specified size from the buffer pool, without initializing it.
-
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -130,7 +137,6 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0,0,0,0,0,0,0,0
 allocUninitialized(size: number): Buffer
 
 Creates a **Buffer** object of the specified size, without initializing it. This API does not allocate memory from the buffer pool.
-
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -266,7 +272,7 @@ Concatenates an array of **Buffer** objects of the specified length into a new o
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
+| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
 | totalLength | number | No| Total length of bytes to be copied. The default value is **0**.|
 
 **Return value**
@@ -384,7 +390,6 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 from(buffer: Buffer | Uint8Array): Buffer
 
 Copies the data of a passed **Buffer** object to create a new **Buffer** object and returns the new one.
-
 Creates a **Buffer** object based on the memory of a passed **Uint8Array** object and returns the new object, maintaining the memory association of the data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -610,7 +615,7 @@ Transcodes a **Buffer** or **Uint8Array** object from one encoding format to ano
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| source | [Buffer](#buffer) \| Uint8Array | Yes| Object to encode.|
+| source | [Buffer](#buffer) \| Uint8Array | Yes| Instance object.|
 | fromEnc | string | Yes| Current encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 | toEnc | string | Yes| Target encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 
@@ -708,7 +713,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **Example**
 
@@ -758,7 +763,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **Example**
 
@@ -892,7 +897,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[offset/end]" is out of range. |
+| 10200001 | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 **Example**
 
@@ -1015,18 +1020,18 @@ Creates and returns an iterator that contains the keys of this **Buffer** object
 import { buffer } from '@kit.ArkTS';
 
 let buf = buffer.from('buffer');
-let numbers = Array.from(buf.keys());
-for (const key of numbers) {
+let keys = buf.keys();
+for (const key of keys) {
   console.info(key.toString());
-  /*
-  Output: 0
-           1
-           2
-           3
-           4
-           5
-  */
 }
+/*
+Output: 0
+        1
+        2
+        3
+        4
+        5
+*/
 ```
 
 ### lastIndexOf
@@ -1088,7 +1093,7 @@ Reads a 64-bit, big-endian, signed big integer from this **Buffer** object at th
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 **Return value**
 
@@ -1135,7 +1140,7 @@ Reads a 64-bit, little-endian, signed big integer from this **Buffer** object at
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 **Return value**
 
@@ -1159,8 +1164,8 @@ import { buffer } from '@kit.ArkTS';
 
 let buf = buffer.from([0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x70,
   0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78]);
-console.info(buf.readBigUInt64BE(0).toString());
-// Output: 7161960797921896816
+console.info(buf.readBigUInt64LE(0).toString());
+// Output: 8100120198111388771
 
 let buf1 = buffer.allocUninitializedFromPool(8);
 let result = buf1.writeBigUInt64BE(BigInt(0xdecafafecacefade), 0);
@@ -1182,7 +1187,7 @@ Reads a 64-bit, big-endian, unsigned big integer from this **Buffer** object at 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 **Return value**
 
@@ -1228,7 +1233,7 @@ Reads a 64-bit, little-endian, unsigned big integer from this **Buffer** object 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 **Return value**
 
@@ -1275,7 +1280,7 @@ Reads a 64-bit, big-endian, double-precision floating-point number from this **B
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 **Return value**
 
@@ -1320,7 +1325,7 @@ Reads a 64-bit, little-endian, double-precision floating-point number from this 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 **Return value**
 
@@ -1365,7 +1370,7 @@ Reads a 32-bit, big-endian, single-precision floating-point number from this **B
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 **Return value**
 
@@ -1410,7 +1415,7 @@ Reads a 32-bit, little-endian, single-precision floating-point number from this 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 **Return value**
 
@@ -1455,7 +1460,7 @@ Reads an 8-bit signed integer from this **Buffer** object at the specified offse
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
 
 **Return value**
 
@@ -1502,7 +1507,7 @@ Reads a 16-bit, big-endian, signed integer from this **Buffer** object at the sp
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
 
 **Return value**
 
@@ -1547,7 +1552,7 @@ Reads a 16-bit, little-endian, signed integer from this **Buffer** object at the
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
 
 **Return value**
 
@@ -1592,7 +1597,7 @@ Reads a 32-bit, big-endian, signed integer from this **Buffer** object at the sp
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 **Return value**
 
@@ -1637,7 +1642,7 @@ Reads a 32-bit, little-endian, signed integer from this **Buffer** object at the
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 **Return value**
 
@@ -1682,7 +1687,7 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | Yes| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
 | byteLength | number | Yes| Number of bytes to read. Value range: 1 <= byteLength <= 6|
 
 
@@ -1731,7 +1736,7 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | Yes| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
 | byteLength | number | Yes| Number of bytes to read. Value range: 1 <= byteLength <= 6|
 
 
@@ -1778,7 +1783,7 @@ Reads an 8-bit unsigned integer from this **Buffer** object at the specified off
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
 
 
 **Return value**
@@ -1826,7 +1831,7 @@ Reads a 16-bit, big-endian, unsigned integer from this **Buffer** object at the 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
 
 
 **Return value**
@@ -1874,7 +1879,7 @@ Reads a 16-bit, little-endian, unsigned integer from this **Buffer** object at t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
 
 
 **Return value**
@@ -1922,7 +1927,7 @@ Reads a 32-bit, big-endian, unsigned integer from this **Buffer** object at the 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 
 **Return value**
@@ -1968,7 +1973,7 @@ Reads a 32-bit, little-endian, unsigned integer from this **Buffer** object at t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 
 **Return value**
@@ -2014,7 +2019,7 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | Yes| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
 | byteLength | number | Yes| Number of bytes to read.  Value range: 1 <= byteLength <= 6|
 
 
@@ -2061,7 +2066,7 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | Yes| Number of bytes to skip before starting to read data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
 | byteLength | number | Yes| Number of bytes to read. Value range: 1 <= byteLength <= 6|
 
 
@@ -2372,7 +2377,7 @@ Writes a string of the specified length to this **Buffer** object at the specifi
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | str | string | Yes| String to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**.|
+| offset | number | No| Offset. The default value is **0**.|
 | length | number | No| Maximum number of bytes to write. The default value is **Buffer.length** minus **offset**.|
 | encoding | string | No| Encoding format of the string. The default value is **'utf8'**.|
 
@@ -2423,7 +2428,7 @@ Writes a 64-bit, big-endian, signed big integer to this **Buffer** object at the
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | bigint | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 
 **Return value**
@@ -2467,7 +2472,7 @@ Writes a 64-bit, little-endian, signed big integer to this **Buffer** object at 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | bigint | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 
 **Return value**
@@ -2511,7 +2516,7 @@ Writes a 64-bit, big-endian, unsigned big integer to this **Buffer** object at t
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | bigint | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 
 **Return value**
@@ -2555,7 +2560,7 @@ Writes a 64-bit, little-endian, unsigned big integer to this **Buffer** object a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | bigint | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 
 **Return value**
@@ -2599,7 +2604,7 @@ Writes a 64-bit, big-endian, double-precision floating-point number to this **Bu
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 
 **Return value**
@@ -2643,7 +2648,7 @@ Writes a 64-bit, little-endian, double-precision floating-point number to this *
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
 
 
 **Return value**
@@ -2687,7 +2692,7 @@ Writes a 32-bit, big-endian, single-precision floating-point number to this **Bu
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 
 **Return value**
@@ -2732,7 +2737,7 @@ Writes a 32-bit, little-endian, single-precision floating-point number to this *
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 
 **Return value**
@@ -2776,7 +2781,7 @@ Writes an 8-bit signed integer to this **Buffer** object at the specified offset
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
 
 
 **Return value**
@@ -2824,7 +2829,7 @@ Writes a 16-bit, big-endian, signed integer to this **Buffer** object at the spe
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
 
 
 **Return value**
@@ -2869,7 +2874,7 @@ Writes a 16-bit, little-endian, signed integer to this **Buffer** object at the 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
 
 
 **Return value**
@@ -2913,7 +2918,7 @@ Writes a 32-bit, big-endian, signed integer to this **Buffer** object at the spe
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 
 **Return value**
@@ -2958,7 +2963,7 @@ Writes a 32-bit, little-endian, signed integer to this **Buffer** object at the 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 
 **Return value**
@@ -3002,7 +3007,7 @@ Writes a big-endian signed value of the specified length to this **Buffer** obje
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | Yes| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
 | byteLength | number | Yes| Number of bytes to write.|
 
 
@@ -3048,7 +3053,7 @@ Writes a little-endian signed value of the specified length to this **Buffer** o
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | Yes| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
 | byteLength | number | Yes| Number of bytes to write.|
 
 
@@ -3093,7 +3098,7 @@ Writes an 8-bit unsigned integer to this **Buffer** object at the specified offs
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
 
 
 **Return value**
@@ -3146,7 +3151,7 @@ Writes a 16-bit, big-endian, unsigned integer to this **Buffer** object at the s
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
 
 
 **Return value**
@@ -3193,7 +3198,7 @@ Writes a 16-bit, little-endian, unsigned integer to this **Buffer** object at th
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 2|
 
 
 **Return value**
@@ -3240,7 +3245,7 @@ Writes a 32-bit, big-endian, unsigned integer to this **Buffer** object at the s
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 
 **Return value**
@@ -3284,7 +3289,7 @@ Writes a 32-bit, little-endian, unsigned integer to this **Buffer** object at th
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | No| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
+| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 4|
 
 
 **Return value**
@@ -3328,7 +3333,7 @@ Writes an unsigned big-endian value of the specified length to this **Buffer** o
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | Yes| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
 | byteLength | number | Yes| Number of bytes to write.|
 
 
@@ -3373,7 +3378,7 @@ Writes an unsigned little-endian value of the specified length to this **Buffer*
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | Yes| Number of bytes to skip before starting to write data. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
 | byteLength | number | Yes| Number of bytes to write.|
 
 
@@ -3519,7 +3524,7 @@ console.info("type:", blob3.type); // type: MIME
 
 text(): Promise&lt;string&gt;
 
-Decodes and returns text using UTF-8. This API uses a promise to return the result.
+Decodes data using UTF-8 and returns a string. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3528,7 +3533,7 @@ Decodes and returns text using UTF-8. This API uses a promise to return the resu
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise used to return the text decoded in UTF-8.|
+| Promise&lt;string&gt; | Promise used to return the string decoded using UTF-8.|
 
 **Example**
 ```ts

@@ -1,14 +1,24 @@
 # wrapBuilder：封装全局@Builder
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-  当在一个struct内使用多个全局@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用wrapBuilder封装全局@Builder。
+  当在一个struct内使用多个全局\@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md)封装全局\@Builder。
 
-  在阅读本文档前，建议提前阅读：[\@Builder](./arkts-builder.md)。
+  在阅读本文档前，建议阅读：[\@Builder](./arkts-builder.md)。
 
 > **说明：**
 >
 > 从API version 11开始使用。
+>
+> 从API version 12开始，wrapBuilder支持在原子化服务中使用。
+>
+> 从API version 22开始，推荐开发者使用[mutableBuilder](./arkts-mutableBuilder.md)，支持二次赋值后刷新UI。
 
-当@Builder方法赋值给变量或者数组后，在UI方法中无法使用。
+当\@Builder方法赋值给变量或者数组后，在UI方法中无法使用。
 
 ```ts
 @Builder
@@ -23,17 +33,18 @@ function testBuilder() {
 }
 ```
 
-在上述代码中，`builderArr`是一个由`@Builder`方法组成的数组。在`ForEach`循环中取每个`@Builder`方法时，会出现`@Builder`方法在UI方法中无法使用的问题。
+在上述代码中，`builderArr`是一个由\@Builder方法组成的数组。在ForEach循环中取每个\@Builder方法时，会出现\@Builder方法在UI方法中无法使用的问题。
 
-为了解决这一问题，引入`wrapBuilder`作为全局`@Builder`封装函数。`wrapBuilder`返回`WrappedBuilder`对象，实现[全局\@Builder](arkts-builder.md#全局自定义构建函数)可以进行赋值和传递。 
+为了解决这一问题，引入wrapBuilder作为全局\@Builder封装函数。wrapBuilder返回WrappedBuilder对象，用于[全局\@Builder](arkts-builder.md#全局自定义构建函数)的赋值和传递。 
 
 ## 接口说明
 
-wrapBuilder是一个模板函数，返回一个`WrappedBuilder`对象。
+wrapBuilder是一个模板函数，返回一个WrappedBuilder对象。
 
 ```ts
 declare function wrapBuilder<Args extends Object[]>(builder: (...args: Args) => void): WrappedBuilder<Args>;
 ```
+
 同时 `WrappedBuilder`对象也是一个模板类。
 
 ```ts
@@ -44,8 +55,9 @@ declare class WrappedBuilder<Args extends Object[]> {
 }
 ```
 
-
->说明：模板参数`Args extends Object[]`是需要包装的builder函数的参数列表
+> **说明：**
+>
+> 模板参数`Args extends Object[]`需要匹配\@Builder函数参数的类型。
 
 使用方法：
 
@@ -60,64 +72,69 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 1. wrapBuilder方法只能传入[全局\@Builder](arkts-builder.md#全局自定义构建函数)方法。
 
-2. wrapBuilder方法返回的WrappedBuilder对象的builder属性方法只能在struct内部使用。
+2. WrappedBuilder对象的builder属性方法仅限在struct内部使用。
 
 ## @Builder方法赋值给变量
 
-使用`@Builder`装饰器装饰的方法`MyBuilder`作为`wrapBuilder`的参数，再将`wrapBuilder`函数的返回值赋值给变量`globalBuilder`，以解决`@Builder`方法赋值给变量后无法使用的问题。
+使用\@Builder装饰器装饰的方法`myBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给变量`globalBuilder`，以解决\@Builder方法赋值给变量后无法使用的问题。
 
-```ts
+ <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->
+ 
+ ``` TypeScript
+ @Builder
+ function myBuilder(value: string, size: number) {
+   Text(value)
+     .fontSize(size)
+ }
+ 
+ let globalBuilder: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
+ 
+ @Entry
+ @Component
+ struct TestIndex {
+   @State message: string = 'Hello World';
+ 
+   build() {
+     Row() {
+       Column() {
+         globalBuilder.builder(this.message, 50)
+       }
+       .width('100%')
+     }
+     .height('100%')
+   }
+ }
+ ```
+
+## @Builder方法赋值给变量在UI语法中使用
+
+自定义组件`IndexItem`使用ForEach进行不同\@Builder函数的渲染，可以使用`builderArr`声明的wrapBuilder数组来实现不同的\@Builder函数的效果。整体代码会更加整洁。
+
+<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->
+
+``` TypeScript
 @Builder
-function MyBuilder(value: string, size: number) {
+function myBuilder0(value: string, size: number) {
   Text(value)
     .fontSize(size)
-}
-
-let globalBuilder: WrappedBuilder<[string, number]> = wrapBuilder(MyBuilder);
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-
-  build() {
-    Row() {
-      Column() {
-        globalBuilder.builder(this.message, 50)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-##  @Builder方法赋值给变量在UI语法中使用
-
-自定义组件Index使用`ForEach`进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
-
-```
-@Builder
-function MyBuilder(value: string, size: number) {
-  Text(value)
-    .fontSize(size)
+    .fontColor(Color.Blue)
 }
 
 @Builder
-function YourBuilder(value: string, size: number) {
+function yourBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
     .fontColor(Color.Pink)
 }
 
-const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder), wrapBuilder(YourBuilder)];
+const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0), wrapBuilder(yourBuilder)];
 
 
 @Entry
 @Component
-struct Index {
+struct IndexItem {
   @Builder
-  testBuilder() {
+  IndexItem() {
     ForEach(builderArr, (item: WrappedBuilder<[string, number]>) => {
       item.builder('Hello World', 30)
     }
@@ -128,7 +145,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        this.testBuilder()
+        this.IndexItem()
       }
       .width('100%')
     }
@@ -137,13 +154,58 @@ struct Index {
 }
 ```
 
-## 引用传递
 
-按引用传递参数时，传递的状态变量的改变会引起@Builder方法内的UI刷新。
+## @Builder方法赋值给类或者接口的属性
+
+使用\@Builder装饰器装饰的方法`MyBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给接口`ChildOptions`中的属性，可以以数据的形式传递给其他子组件调用。
 
 ```ts
+@Builder
+function MyBuilder(value: string, size: number) {
+  Text(value)
+    .fontSize(size)
+}
+
+interface ChildOptions {
+  wrappedBuilder: WrappedBuilder<[string, number]>; // 类型为WrappedBuilder的属性可以传递@Builder函数
+}
+
+@Entry
+@Component
+struct Index {
+  childOptions: ChildOptions = {
+    wrappedBuilder: wrapBuilder(MyBuilder)
+  };
+
+  build() {
+    Row() {
+      Column() {
+        Child({ options: this.childOptions })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+@Component
+struct Child {
+  @Prop options: ChildOptions;
+  build() {
+    this.options.wrappedBuilder.builder('Hello', 20);
+  }
+}
+```
+
+## 引用传递
+
+按引用传递参数时，状态变量的改变会引起\@Builder方法内的UI刷新。
+
+<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->
+
+``` TypeScript
 class Tmp {
-  paramA2: string = 'hello';
+  public paramA2: string = 'hello';
 }
 
 @Builder
@@ -175,17 +237,19 @@ struct Parent {
 
 ### 重复定义wrapBuilder失效
 
-在同一个自定义组件内，同一个`wrapBuilder`只能初始化一次。示例中，`builderObj`通过`wrapBuilder(MyBuilderFirst)`初始化定义后，再次对`builderObj`赋值`wrapBuilder(MyBuilderSecond)`不会生效。
+在同一个自定义组件内，同一个wrapBuilder只能初始化一次。例如，`builderObj`通过`wrapBuilder(MyBuilderFirst)`初始化后，再次对`builderObj`赋值`wrapBuilder(MyBuilderSecond)`将不会生效。
 
-```ts
+<!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) -->
+
+``` TypeScript
 @Builder
-function MyBuilderFirst(value: string, size: number) {
+function myBuilderFirst(value: string, size: number) {
   Text('MyBuilderFirst：' + value)
     .fontSize(size)
 }
 
 @Builder
-function MyBuilderSecond(value: string, size: number) {
+function myBuilderSecond(value: string, size: number) {
   Text('MyBuilderSecond：' + value)
     .fontSize(size)
 }
@@ -196,14 +260,14 @@ interface BuilderModel {
 
 @Entry
 @Component
-struct Index {
+struct TestBuilderIndex {
   @State message: string = 'Hello World';
-  @State builderObj: BuilderModel = { globalBuilder: wrapBuilder(MyBuilderFirst) };
+  @State builderObj: BuilderModel = { globalBuilder: wrapBuilder(myBuilderFirst) };
 
   aboutToAppear(): void {
     setTimeout(() => {
-      // wrapBuilder(MyBuilderSecond) 不会生效
-      this.builderObj.globalBuilder = wrapBuilder(MyBuilderSecond);
+      // wrapBuilder(myBuilderSecond) 不会生效
+      this.builderObj.globalBuilder = wrapBuilder(myBuilderSecond);
     }, 1000);
   }
 

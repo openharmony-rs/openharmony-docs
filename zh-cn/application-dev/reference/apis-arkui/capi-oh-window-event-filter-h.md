@@ -1,4 +1,10 @@
 # oh_window_event_filter.h
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -34,7 +40,7 @@
 
 ### OH_NativeWindowManager_KeyEventFilter()
 
-```
+```c
 typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 ```
 
@@ -59,7 +65,7 @@ typedef bool (*OH_NativeWindowManager_KeyEventFilter)(Input_KeyEvent* keyEvent)
 
 ### OH_NativeWindowManager_RegisterKeyEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t windowId,OH_NativeWindowManager_KeyEventFilter keyEventFilter)
 ```
 
@@ -85,7 +91,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterKeyEventFilter(int32_t wi
 
 ### OH_NativeWindowManager_UnregisterKeyEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t windowId)
 ```
 
@@ -110,7 +116,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterKeyEventFilter(int32_t 
 
 ### OH_NativeWindowManager_MouseEventFilter()
 
-```
+```c
 typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseEvent)
 ```
 
@@ -135,7 +141,7 @@ typedef bool (*OH_NativeWindowManager_MouseEventFilter)(Input_MouseEvent* mouseE
 
 ### OH_NativeWindowManager_RegisterMouseEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t windowId,OH_NativeWindowManager_MouseEventFilter mouseEventFilter)
 ```
 
@@ -161,7 +167,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterMouseEventFilter(int32_t 
 
 ### OH_NativeWindowManager_UnregisterMouseEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_t windowId)
 ```
 
@@ -186,7 +192,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_UnregisterMouseEventFilter(int32_
 
 ### OH_NativeWindowManager_TouchEventFilter()
 
-```
+```c
 typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchEvent)
 ```
 
@@ -211,7 +217,7 @@ typedef bool (*OH_NativeWindowManager_TouchEventFilter)(Input_TouchEvent* touchE
 
 ### OH_NativeWindowManager_RegisterTouchEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t windowId,OH_NativeWindowManager_TouchEventFilter touchEventFilter)
 ```
 
@@ -237,7 +243,7 @@ WindowManager_ErrorCode OH_NativeWindowManager_RegisterTouchEventFilter(int32_t 
 
 ### OH_NativeWindowManager_UnregisterTouchEventFilter()
 
-```
+```c
 WindowManager_ErrorCode OH_NativeWindowManager_UnregisterTouchEventFilter(int32_t windowId)
 ```
 

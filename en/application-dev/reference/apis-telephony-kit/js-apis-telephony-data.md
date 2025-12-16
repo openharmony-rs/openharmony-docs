@@ -1,6 +1,13 @@
 # @ohos.telephony.data (Cellular Data)
 
-The **data** module provides basic mobile data management functions. You can obtain the default slot of the SIM card used for mobile data, and obtain the uplink and downlink connection status of cellular data services and connection status of the packet switched (PS) domain. Besides, you can check whether cellular data services and data roaming are enabled.
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @k_lee9575-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+The **data** module provides basic mobile data management functions. With the APIs provided by this module, you can obtain the default slot of the SIM card used for mobile data, obtain the cellular data flow type and connection status, and check whether cellular data and roaming are enabled.
 
 > **NOTE**
 >
@@ -33,10 +40,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getDefaultCellularDataSlotId((err: BusinessError, contextData: number) => {
-    if(err){
-        console.error(`getDefaultCellularDataSlotId fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`getDefaultCellularDataSlotId success`);
+    if(err) {
+        console.error(`getDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`getDefaultCellularDataSlotId success`);
     }
 });
 ```
@@ -62,9 +69,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getDefaultCellularDataSlotId().then((contextData: number) => {
-    console.log(`getDefaultCellularDataSlotId success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getDefaultCellularDataSlotId success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`getDefaultCellularDataSlotId fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`getDefaultCellularDataSlotId fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -87,7 +94,7 @@ Card slot ID.
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-console.log("Result: "+ data.getDefaultCellularDataSlotIdSync())
+console.info("Result: "+ data.getDefaultCellularDataSlotIdSync())
 ```
 
 
@@ -97,6 +104,8 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 Obtains the cellular data flow type, which can be uplink or downlink. This API uses an asynchronous callback to return the result.
 
+**Required permission**: ohos.permission.GET_NETWORK_INFO
+
 **System capability**: SystemCapability.Telephony.CellularData
 
 **Parameters**
@@ -105,6 +114,14 @@ Obtains the cellular data flow type, which can be uplink or downlink. This API u
 | -------- | ---------------------------------------------- | ---- | ---------- |
 | callback | AsyncCallback\<[DataFlowType](#dataflowtype)\> | Yes  | Callback used to return the result.|
 
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+
 **Example**
 
 ```ts
@@ -112,10 +129,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType) => {
-    if(err){
-        console.error(`getCellularDataFlowType fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`getCellularDataFlowType success`);
+    if(err) {
+        console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`getCellularDataFlowType success`);
     }
 });
 ```
@@ -126,6 +143,8 @@ getCellularDataFlowType(): Promise\<DataFlowType\>
 
 Obtains the cellular data flow type, which can be uplink or downlink. This API uses a promise to return the result.
 
+**Required permission**: ohos.permission.GET_NETWORK_INFO
+
 **System capability**: SystemCapability.Telephony.CellularData
 
 **Return value**
@@ -134,6 +153,14 @@ Obtains the cellular data flow type, which can be uplink or downlink. This API u
 | ---------------------------------------- | ----------------------------------------------- |
 | Promise\<[DataFlowType](#dataflowtype)\> | Promise used to return the result. |
 
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+
 **Example**
 
 ```ts
@@ -141,9 +168,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
-    console.log(`getCellularDataFlowType success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getCellularDataFlowType success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`getCellularDataFlowType fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`getCellularDataFlowType fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -151,7 +178,9 @@ data.getCellularDataFlowType().then((contextData: data.DataFlowType) => {
 
 getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
-Obtains the connection status of the packet switched (PS) domain. This API uses an asynchronous callback to return the result.
+Obtains the cellular data connection status. This API uses an asynchronous callback to return the result.
+
+**Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -161,6 +190,14 @@ Obtains the connection status of the packet switched (PS) domain. This API uses 
 | -------- | ------------------------------------------------------ | ---- | ---------- |
 | callback | AsyncCallback\<[DataConnectState](#dataconnectstate)\> | Yes  | Callback used to return the result.|
 
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+
 **Example**
 
 ```ts
@@ -168,10 +205,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataState((err: BusinessError, contextData: data.DataConnectState) => {
-    if(err){
-        console.error(`getCellularDataState fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`getCellularDataState success`);
+    if(err) {
+        console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`getCellularDataState success`);
     }
 });
 ```
@@ -180,7 +217,9 @@ data.getCellularDataState((err: BusinessError, contextData: data.DataConnectStat
 
 getCellularDataState(): Promise\<DataConnectState\>
 
-Obtains the connection status of the PS domain. This API uses a promise to return the result.
+Obtains the cellular data connection status. This API uses a promise to return the result.
+
+**Required permission**: ohos.permission.GET_NETWORK_INFO
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -190,6 +229,14 @@ Obtains the connection status of the PS domain. This API uses a promise to retur
 | ------------------------------------------------ | ------------------------------------- |
 | Promise\<[DataConnectState](#dataconnectstate)\> | Promise used to return the result.|
 
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID|                 Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+
 **Example**
 
 ```ts
@@ -197,9 +244,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.getCellularDataState().then((contextData: data.DataConnectState) => {
-    console.log(`getCellularDataState success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`getCellularDataState success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`getCellularDataState fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`getCellularDataState fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -230,7 +277,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8300999  | Internal error.                               |
 
 **Example**
 
@@ -239,10 +286,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataEnabled((err: BusinessError, contextData: boolean) => {
-    if(err){
-        console.error(`isCellularDataEnabled fail,callback: callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`isCellularDataEnabled success`);
+    if(err) {
+        console.error(`isCellularDataEnabled fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`isCellularDataEnabled success`);
     }
 });
 ```
@@ -272,7 +319,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                           |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8300999  | Internal error.                               |
 
 **Example**
 
@@ -281,9 +328,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataEnabled().then((contextData: boolean) => {
-    console.log(`isCellularDataEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`isCellularDataEnabled success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`isCellularDataEnabled fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`isCellularDataEnabled fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -312,7 +359,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                           |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
+| 8300999  | Internal error.                          |
 
 **Example**
 
@@ -323,9 +370,9 @@ import { data } from '@kit.TelephonyKit';
 
 try {
     let isEnabled: boolean = data.isCellularDataEnabledSync();
-    console.log(`isCellularDataEnabledSync success : ${isEnabled}`);
-} catch (error) {
-    console.error(`isCellularDataEnabledSync fail : err->${JSON.stringify(error)}`);  
+    console.info(`isCellularDataEnabledSync success : ${isEnabled}`);
+} catch (err) {
+    console.error(`isCellularDataEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
 ```
 
@@ -357,7 +404,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8300999  | Internal error.                               |
 
 **Example**
 
@@ -366,10 +413,10 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataRoamingEnabled(0, (err: BusinessError, contextData: boolean) => {
-    if(err){
-        console.error(`isCellularDataRoamingEnabled fail,callback: err->${JSON.stringify(err)}, contextData->${JSON.stringify(contextData)}`);
-    }else{
-        console.log(`isCellularDataRoamingEnabled success`);
+    if(err) {
+        console.error(`isCellularDataRoamingEnabled fail. code: ${err.code}, message: ${err.message}, contextData: ${contextData}`);
+    } else {
+        console.info(`isCellularDataRoamingEnabled success`);
     }
 });
 ```
@@ -407,7 +454,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error.                               |
+| 8300999  | Internal error.                               |
 
 **Example**
 
@@ -416,9 +463,9 @@ import { data } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 data.isCellularDataRoamingEnabled(0).then((contextData: boolean) => {
-    console.log(`isCellularDataRoamingEnabled success, promise: contextData->${JSON.stringify(contextData)}`);
+    console.info(`isCellularDataRoamingEnabled success, contextData: ${contextData}`);
 }).catch((err: BusinessError) => {
-    console.error(`isCellularDataRoamingEnabled fail, promise: err->${JSON.stringify(err)}`);
+    console.error(`isCellularDataRoamingEnabled fail. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -455,7 +502,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                                     |
 | 8300002  | Operation failed. Cannot connect to service.                 |
 | 8300003  | System internal error.                                       |
-| 8300999  | Unknown error code.                                          |
+| 8300999  | Internal error.                                          |
 
 **Example**
 
@@ -466,9 +513,9 @@ import { data } from '@kit.TelephonyKit';
 
 try {
     let isEnabled: boolean = data.isCellularDataRoamingEnabledSync(0);
-    console.log(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
-} catch (error) {
-    console.error(`isCellularDataRoamingEnabledSync fail : err->${JSON.stringify(error)}`);  
+    console.info(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
+} catch (err) {
+    console.error(`isCellularDataRoamingEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
 ```
 
@@ -491,16 +538,16 @@ Obtains the default ID of the SIM card used for mobile data.
 ```ts
 import { data } from '@kit.TelephonyKit';
 
-console.log("Result: "+ data.getDefaultCellularDataSimId());
+console.info("Result: "+ data.getDefaultCellularDataSimId());
 ```
 
 ## data.queryAllApns<sup>16+</sup>
 
 queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
-Obtains the access point name (APN) of the default SIM card used for mobile data.
+Obtains the access point name (APN) of the default SIM card used for mobile data. This API returns the result asynchronously.
 
-**Required permissions**: ohos.permission.MANAGE_APN_SETTING
+**Required permissions**: ohos.permission.MANAGE_APN_SETTING (Restricted permission used only to connect to the mobile data private network for office tasks. For details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting).)
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -508,11 +555,11 @@ Obtains the access point name (APN) of the default SIM card used for mobile data
 
 | Type             | Description                                        |
 | ------ |--------------------------------------------|
-| Promise\<Array\<ApnInfo\>\> | APN list of the default SIM card used for mobile data.|
+| Promise\<Array\<[ApnInfo](#apninfo16)\>\> | Promise used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -522,11 +569,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-data.queryAllApns().then((data: Array<data.ApnInfo>) => {
-    console.info(`queryAllApns success, promise: data->${JSON.stringify(data)}`);
+data.queryAllApns().then((apnInfos: Array<data.ApnInfo>) => {
+    console.info(`queryAllApns success, promise: apnInfos->${JSON.stringify(apnInfos)}`);
 }).catch((err: BusinessError) => {
-    console.error(`queryAllApns failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`queryAllApns failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -534,21 +582,28 @@ data.queryAllApns().then((data: Array<data.ApnInfo>) => {
 
 queryApnIds(apnInfo: ApnInfo): Promise\<Array\<number\>\>
 
-Obtains the APN ID corresponding to the specified **ApnInfo**.
+Obtains the APN ID corresponding to the specified **ApnInfo**. This API returns the result asynchronously.
 
-**Required permissions**: ohos.permission.MANAGE_APN_SETTING
+**Required permissions**: ohos.permission.MANAGE_APN_SETTING (Restricted permission used only to connect to the mobile data private network for office tasks. For details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting).)
 
 **System capability**: SystemCapability.Telephony.CellularData
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                    |
+| ------ | ------ | ---- | ---------------------------------------- |
+| apnInfo | [ApnInfo](#apninfo16) | Yes  | APN to query.|
+
 
 **Return value**
 
 | Type             | Description                         |
 | ------ |-----------------------------|
-| Promise\<Array\<number\>\> | List of APN IDs corresponding to the specified **ApnInfo**.|
+| Promise\<Array\<number\>\> | Promise used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -558,6 +613,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let apnInfo: data.ApnInfo;
 apnInfo = {
@@ -567,10 +623,10 @@ apnInfo = {
   mnc: "07",
 };
 
-data.queryApnIds(apnInfo).then((data: Array<number>) => {
-    console.info(`queryApnIds success, promise: data->${JSON.stringify(data)}`);
+data.queryApnIds(apnInfo).then((apnIds: Array<number>) => {
+    console.info(`queryApnIds success, apnIds: ${apnIds}`);
 }).catch((err: BusinessError) => {
-    console.error(`queryApnIds failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`queryApnIds failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -578,25 +634,31 @@ data.queryApnIds(apnInfo).then((data: Array<number>) => {
 
 setPreferredApn(apnId: number): Promise\<boolean\>
 
-Sets the APN indicated by the specified APN ID as the preferred APN.
+Sets the APN corresponding to the specified **apnId** as the preferred APN. This API returns the result asynchronously.
 
 > **NOTE**
 >
 > If the input APN ID is invalid, the default preferred APN configured by the carrier is used.
 
-**Required permissions**: ohos.permission.MANAGE_APN_SETTING
+**Required permissions**: ohos.permission.MANAGE_APN_SETTING (Restricted permission used only to connect to the mobile data private network for office tasks. For details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting).)
 
 **System capability**: SystemCapability.Telephony.CellularData
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                    |
+| ------ | ------ | ---- | ---------------------------------------- |
+| apnId | number | Yes  | APN ID, which can be obtained by calling [queryApnIds](#dataqueryapnids16).|
 
 **Return value**
 
 | Type             | Description                    |
 | ------ |------------------------|
-| Promise\<boolean\> | Promise used to return the result, which is **false** if no SIM card is inserted.|
+| Promise\<boolean\> | Promise used to return the result. If no SIM card is installed, the value **false** is returned.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -606,12 +668,50 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let apnId: number = 0; // apnId is a valid value returned by queryApnIds. If an invalid APN ID is passed to setPreferredApn, the default preferred APN configured by the carrier is used.
-data.setPreferredApn(apnId).then((data: boolean) => {
-    console.info(`setPreferredApn success, promise: data->${JSON.stringify(data)}`);
+data.setPreferredApn(apnId).then((result: boolean) => {
+    console.info(`setPreferredApn result: ${result}`);
 }).catch((err: BusinessError) => {
-    console.error(`setPreferredApn failed, promise: err->${JSON.stringify(err)}`);
+    console.error(`setPreferredApn failed. code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## data.getActiveApnName<sup>20+</sup>
+
+getActiveApnName(): Promise\<string\>
+
+Obtains the access point name (APN) of the default SIM card used for mobile data. This API returns the result asynchronously.
+
+**Required permission**: ohos.permission.GET_NETWORK_INFO
+
+**System capability**: SystemCapability.Telephony.CellularData
+
+**Return value**
+
+| Type             | Description                                        |
+| ------ |--------------------------------------------|
+| Promise\<string\> | Promise used to return the result. If mobile data is not activated, an empty string is returned.|
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+
+**Example**
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+data.getActiveApnName().then((apn: string) => {
+    console.info(`getActiveApnName success, apn: ${apn}`);
+}).catch((err: BusinessError) => {
+    console.error(`getActiveApnName failed. code: ${err.code}, message: ${err.message}`);
 });
 ```
 

@@ -1,4 +1,10 @@
 # Enums
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -6,7 +12,7 @@
 
 ## AVErrorCode<sup>9+</sup>
 
-[媒体错误码](errorcode-media.md)类型枚举
+[媒体错误码](errorcode-media.md)类型枚举。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -24,7 +30,7 @@
 | AVERR_TIMEOUT                         | 5400104 | 表示系统或网络响应超时。             |
 | AVERR_SERVICE_DIED                    | 5400105 | 表示服务进程死亡。                   |
 | AVERR_UNSUPPORT_FORMAT                | 5400106 | 表示不支持当前媒体资源的格式。       |
-| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | 表示音频焦点被抢占                   |
+| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | 表示音频焦点被抢占。                  |
 | AVERR_IO_HOST_NOT_FOUND<sup>14+</sup> | 5411001 | 表示解析或链接服务端地址错误。 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。        |
 | AVERR_IO_CONNECTION_TIMEOUT<sup>14+</sup> | 5411002 | 表示网络连接超时。 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。        |
 | AVERR_IO_NETWORK_ABNORMAL<sup>14+</sup> | 5411003 | 表示网络异常导致的数据或链路异常。 <br> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。        |
@@ -39,6 +45,7 @@
 | AVERR_SEEK_CONTINUOUS_UNSUPPORTED<sup>18+</sup> | 5410002 | 表示不支持SEEK_CONTINUOUS模式的seek。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | AVERR_SUPER_RESOLUTION_UNSUPPORTED<sup>18+</sup> | 5410003 | 表示不支持超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | AVERR_SUPER_RESOLUTION_NOT_ENABLED<sup>18+</sup> | 5410004 | 表示未使能超分。 <br> **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| AVERR_PARAMETER_OUT_OF_RANGE<sup>20+</sup> | 5400108 | 表示参数超过取值范围。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 
 ## MediaType<sup>8+</sup>
 
@@ -66,18 +73,32 @@ Codec MIME类型枚举。
 | 名称         | 值                    | 说明                     |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | 表示视频/h263类型。      |
-| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。       |
+| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | VIDEO_MPEG2  | 'video/mpeg2'         | 表示视频/mpeg2类型。     |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | 表示视频/mpeg4类型。     |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | 表示视频/vp8类型。       |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。|
-| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/vorbis类型。    |
 | AUDIO_FLAC   | 'audio/flac'          | 表示音频/flac类型。      |
 | AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/mpeg类型。      |
 | AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | 表示音频/G711-mulaw类型。 |
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。 |
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/amr-wb类型。 |
+
+## AacProfile<sup>22+</sup>
+
+高级音频编码（AAC）类型枚举。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+| 名称         | 值                    | 说明                        |
+| ------------ | --------------------- | --------------------------- |
+| AAC_LC       |     0                 | 表示 AAC Low-Complexity 类型。        |
+| AAC_HE       |     1                 | 表示 AAC Hight-Efficiency 类型。        |
+| AAC_HE_V2    |     2                 | 表示 AAC Hight-Efficiency version 2 类型。     |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
@@ -91,7 +112,7 @@ Codec MIME类型枚举。
 | MD_KEY_TRACK_TYPE        | 'track_type'    | 表示轨道类型，其对应键值类型为number，参考[MediaType](#mediatype8)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | MD_KEY_CODEC_MIME        | 'codec_mime'    | 表示codec_mime类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_DURATION          | 'duration'      | 表示媒体时长，其对应键值类型为number，单位为毫秒（ms）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| MD_KEY_BITRATE           | 'bitrate'       | 表示比特率，其对应键值类型为number，单位为比特率（bps）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| MD_KEY_BITRATE           | 'bitrate'       | 表示比特率，其对应键值类型为number，单位为比特率（bps），值为undefined或0表示异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_WIDTH             | 'width'         | 表示视频宽度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_HEIGHT            | 'height'        | 表示视频高度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | MD_KEY_FRAME_RATE        | 'frame_rate'    | 表示视频帧率，其对应键值类型为number，单位为每100秒的帧数。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -101,7 +122,10 @@ Codec MIME类型枚举。
 | MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | 表示字幕语言，其对应键值类型为string。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | 表示track名称，其对应键值类型为string。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | 表示视频轨类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | 表示视频原始宽度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | 表示视频原始高度，其对应键值类型为number，单位为像素（px）。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。|
+| MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | 表示此轨道与其他轨道的引用关系，其对应键值类型为string，以逗号分隔。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | 表示此轨道作为辅助轨的辅助类型，其对应键值类型为string。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 ## PlaybackInfoKey<sup>12+</sup>
 
 播放信息描述枚举。
@@ -238,8 +262,8 @@ Codec MIME类型枚举。
 
 | 名称        | 值    | 说明                  |
 | ----------- | ----- | --------------------- |
-| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 |
-| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
+| CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | CFT_MP3<sup>12+</sup>  | 'mp3' | 音频的容器格式，MP3。 |
 | CFT_WAV<sup>12+</sup>  | 'wav' | 音频的容器格式，WAV。 |
 | CFT_AMR<sup>18+</sup>  | 'amr' | 音频的容器格式，AMR。 |
@@ -354,6 +378,18 @@ Codec MIME类型枚举。
 | PRESERVE_ASPECT_RATIO | 0    | 保持与原始图像相同的宽高比例，即与物理屏幕宽高比例一致。 |
 | SCALE_TO_FILL | 1    | 进行图像拉伸填充，适配设置的宽度和高度。 |
 
+## PickerMode<sup>22+</sup>
+
+表示屏幕录制Picker模式的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+| 名称                              | 值   | 说明                                         |
+| --------------------------------- | ---- | -------------------------------------------- |
+| WINDOW_ONLY | 0    | 仅显示窗口列表。 |
+| SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
+| SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
+
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **说明：**
@@ -365,11 +401,11 @@ Codec MIME类型枚举。
 
 | 名称    | 值   | 说明                                                         |
 | ------- | ---- | ------------------------------------------------------------ |
-| DEFAULT | 0    | 默认编码格式。<br/>仅做接口定义，暂不支持使用。              |
-| AMR_NB  | 1    | AMR-NB(Adaptive Multi Rate-Narrow Band Speech Codec) 编码格式。<br/>仅做接口定义，暂不支持使用。 |
-| AMR_WB  | 2    | AMR-WB(Adaptive Multi Rate-Wide Band Speech Codec) 编码格式。<br/>仅做接口定义，暂不支持使用。 |
-| AAC_LC  | 3    | AAC-LC（Advanced&nbsp;Audio&nbsp;Coding&nbsp;Low&nbsp;Complexity）编码格式。 |
-| HE_AAC  | 4    | HE_AAC（High-Efficiency Advanced&nbsp;Audio&nbsp;Coding）编码格式。<br/>仅做接口定义，暂不支持使用。 |
+| DEFAULT | 0    | 默认编码格式。<br/>仅做接口定义，暂不支持使用。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](#codecmimetype8)中的AUDIO_AAC替代。 |
+| AMR_NB  | 1    | AMR-NB(Adaptive Multi Rate-Narrow Band Speech Codec) 编码格式。<br/>仅做接口定义，暂不支持使用。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](#codecmimetype8)中的AUDIO_AMR_NB替代。 |
+| AMR_WB  | 2    | AMR-WB(Adaptive Multi Rate-Wide Band Speech Codec) 编码格式。<br/>仅做接口定义，暂不支持使用。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](#codecmimetype8)中的AUDIO_AMR_WB替代。 |
+| AAC_LC  | 3    | AAC-LC（Advanced&nbsp;Audio&nbsp;Coding&nbsp;Low&nbsp;Complexity）编码格式。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](#codecmimetype8)中的AUDIO_AAC替代。 |
+| HE_AAC  | 4    | HE_AAC（High-Efficiency Advanced&nbsp;Audio&nbsp;Coding）编码格式。<br/>仅做接口定义，暂不支持使用。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[CodecMimeType](#codecmimetype8)中的AUDIO_AAC替代。 |
 
 ## AudioOutputFormat<sup>(deprecated)</sup>
 
@@ -382,11 +418,11 @@ Codec MIME类型枚举。
 
 | 名称     | 值   | 说明                                                         |
 | -------- | ---- | ------------------------------------------------------------ |
-| DEFAULT  | 0    | 默认封装格式。<br/>仅做接口定义，暂不支持使用。              |
-| MPEG_4   | 2    | 封装为MPEG-4格式。                                           |
-| AMR_NB   | 3    | 封装为AMR_NB格式。<br/>仅做接口定义，暂不支持使用。          |
-| AMR_WB   | 4    | 封装为AMR_WB格式。<br/>仅做接口定义，暂不支持使用。          |
-| AAC_ADTS | 6    | 封装为ADTS（Audio&nbsp;Data&nbsp;Transport&nbsp;Stream）格式，是AAC音频的传输流格式。 |
+| DEFAULT  | 0    | 默认封装格式。<br/>仅做接口定义，暂不支持使用。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议根据具体情况选择[ContainerFormatType](#containerformattype8)中的一项替代。 |
+| MPEG_4   | 2    | 封装为MPEG-4格式。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](#containerformattype8)中的CFT_MPEG_4替代。 |
+| AMR_NB   | 3    | 封装为AMR_NB格式。<br/>仅做接口定义，暂不支持使用。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](#containerformattype8)中的CFT_AMR，编码格式使用[CodecMimeType](#codecmimetype8)中的AUDIO_AMR_NB替代。 |
+| AMR_WB   | 4    | 封装为AMR_WB格式。<br/>仅做接口定义，暂不支持使用。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](#containerformattype8)中的CFT_AMR，编码格式使用[CodecMimeType](#codecmimetype8)中的AUDIO_AMR_WB替代。 |
+| AAC_ADTS | 6    | 封装为ADTS（Audio&nbsp;Data&nbsp;Transport&nbsp;Stream）格式，是AAC音频的传输流格式。<br/>**说明：** 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](#containerformattype8)中的CFT_AAC替代。 |
 
 ## MediaErrorCode<sup>(deprecated)</sup>
 

@@ -1,7 +1,13 @@
-# @ohos.app.appstartup.StartupListener
+# @ohos.app.appstartup.StartupListener (AppStartup Task Listener)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yzkp-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 
-The StartupListener module provides APIs to listen for startup tasks.
+The module defines the task listener used in [App Startup](../../application-models/app-startup.md).
 
 > **NOTE**
 >
@@ -27,7 +33,7 @@ Called when all startup tasks are complete.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| error | [BusinessError](../apis-basic-services-kit/js-apis-base.md#businesserror) | Yes| Error message.|
+| error | [BusinessError\<void>](../apis-basic-services-kit/js-apis-base.md#businesserror) | Yes| Error message.|
 
 **Example**
 
@@ -42,18 +48,19 @@ export default class MyStartupConfigEntry extends StartupConfigEntry {
     let onCompletedCallback = (error: BusinessError<void>) => {
       hilog.info(0x0000, 'testTag', `onCompletedCallback`);
       if (error) {
-        hilog.info(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code, error.message);
+        hilog.error(0x0000, 'testTag', 'onCompletedCallback: %{public}d, message: %{public}s', error.code,
+          error.message);
       } else {
         hilog.info(0x0000, 'testTag', `onCompletedCallback: success.`);
       }
-    }
+    };
     let startupListener: StartupListener = {
       'onCompleted': onCompletedCallback
-    }
+    };
     let config: StartupConfig = {
       'timeoutMs': 10000,
       'startupListener': startupListener
-    }
+    };
     return config;
   }
 }

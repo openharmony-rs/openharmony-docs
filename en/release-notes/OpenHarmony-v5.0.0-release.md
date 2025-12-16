@@ -63,7 +63,7 @@ A more detailed description of the enhancements is as follows:
 
 - Component customization is further enhanced with the introduction of **Modifier**, **ContentModifier**, and **DrawModifier**. Attributes can be added to existing components, component content can be customized, and fully custom rendering is supported.
 
-- Custom nodes and native rendering nodes are opened up. [Custom nodes](https://gitee.com/OpenHarmony/docs/blob/master/en/application-dev/ui/arkts-user-defined.md) are node objects with some basic capabilities of underlying entity nodes. They can be mixed and displayed with built-in components through custom placeholder nodes. They have customization capabilities for individual nodes, such as measurement and layout, setting basic attributes, setting event listeners, and custom drawing and rendering content. There are three types of custom objects: FrameNode, RenderNode, and BuilderNode.  
+- Custom nodes and native rendering nodes are opened up. [Custom nodes](https://gitcode.com/OpenHarmony/docs/blob/master/en/application-dev/ui/arkts-user-defined.md) are node objects with some basic capabilities of underlying entity nodes. They can be mixed and displayed with built-in components through custom placeholder nodes. They have customization capabilities for individual nodes, such as measurement and layout, setting basic attributes, setting event listeners, and custom drawing and rendering content. There are three types of custom objects: FrameNode, RenderNode, and BuilderNode.  
   - **BuilderNode**: provides APIs for a BuilderNode – a custom node that can be used to mount native components.
   - **FrameNode**: provides APIs for a FrameNode, which represents an entity node in the component tree. It can be used by a NodeController to mount a BuilderNode (that holds the FrameNode) to a NodeContainer or mount a RenderNode to another FrameNode.
   - **RenderNode**: provides APIs for creating a RenderNode in custom drawing settings at the native side.
@@ -1222,7 +1222,7 @@ The version of CMake version used for building is upgraded from 3.16.5 to 3.28.2
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -1231,7 +1231,7 @@ The version of CMake version used for building is upgraded from 3.16.5 to 3.28.2
 
 4. Run the following commands to install the **repo** tool:
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -1244,14 +1244,14 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-5.0.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-5.0.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v5.0.0-Release --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v5.0.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -1262,14 +1262,14 @@ Use the **repo** tool to download the source code over HTTPS.
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-5.0.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-5.0.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v5.0.0-Release --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v5.0.0-Release --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -1298,16 +1298,16 @@ Use the **repo** tool to download the source code over HTTPS.
 
 | Issue No.| Description| 
 | -------- | -------- |
-| IA686U | There is a high probability that a C++ crash occurs in libace_napi.z.so of the OS_FFRT_2_0 thread in the com.ohos.photos process.|
-| I9YC9X | There is a high probability that system freezing occurs in libark_jsruntime.so due to LIFECYCLE_TIMEOUT in the com.ohos.camera process.|
-| I9TE52 | There is a possibility that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.photos process.|
-| I9TDUU | Key application: There is a low probability that app freezing occurs in libace_compatible.z.so due to THREAD_BLOCK_6S in the ohos.samples.distributedcalc process.|
-| I9TE5K | There is a low probability that app freezing occurs in libunwind.z.so due to THREAD_BLOCK_6S in the com.ohos.photos process.|
-| I9TJGB | There is a low probability that a C++ crash occurs in libmali-bifrost-g52-g7p0-ohos.so of the RSRenderThread thread in the com.ohos.camera process.|
-| IA5EC3 | There is a low probability that app freezing occurs in libskia_canvaskit.z.so due to THREAD_BLOCK_6S in the com.ohos.updateapp process.|
-| IA5I3D | There is a low probability that app freezing occurs in librender_service_base.z.so due to THREAD_BLOCK_6S in the com.ohos.smartperf process.|
-| IA4G47 | There is an extremely low probability that a C++ crash occurs in libhcodec.z.so of the av_codec_service thread of the av_codec_service process.|
-| I9TDMQ | Key application: There is an extremely low probability that app freezing occurs in libskia_canvaskit.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.|
+| [27](https://gitcode.com/openharmony/applications_photos/issues/27) | There is a high probability that a C++ crash occurs in libace_napi.z.so of the OS_FFRT_2_0 thread in the com.ohos.photos process.|
+| [289](https://gitcode.com/openharmony/applications_camera/issues/289) | There is a high probability that system freezing occurs in libark_jsruntime.so due to LIFECYCLE_TIMEOUT in the com.ohos.camera process.|
+| [45](https://gitcode.com/openharmony/applications_photos/issues/45) | There is a possibility that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.photos process.|
+| [12453](https://gitcode.com/openharmony/arkui_ace_engine/issues/12453) | Key application: There is a low probability that app freezing occurs in libace_compatible.z.so due to THREAD_BLOCK_6S in the ohos.samples.distributedcalc process.|
+| [44](https://gitcode.com/openharmony/applications_photos/issues/44) | There is a low probability that app freezing occurs in libunwind.z.so due to THREAD_BLOCK_6S in the com.ohos.photos process.|
+| [35](https://gitcode.com/openharmony/vendor_hihope/issues/35) | There is a low probability that a C++ crash occurs in libmali-bifrost-g52-g7p0-ohos.so of the RSRenderThread thread in the com.ohos.camera process.|
+| [72](https://gitcode.com/openharmony/update_update_app/issues/72) | There is a low probability that app freezing occurs in libskia_canvaskit.z.so due to THREAD_BLOCK_6S in the com.ohos.updateapp process.|
+| [265](https://gitcode.com/openharmony/developtools_profiler/issues/265) | There is a low probability that app freezing occurs in librender_service_base.z.so due to THREAD_BLOCK_6S in the com.ohos.smartperf process.|
+| [1421](https://gitcode.com/openharmony/multimedia_av_codec/issues/1421) | There is an extremely low probability that a C++ crash occurs in libhcodec.z.so of the av_codec_service thread of the av_codec_service process.|
+| [64](https://gitcode.com/openharmony/applications_settings/issues/64) | Key application: There is an extremely low probability that app freezing occurs in libskia_canvaskit.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.|
 
 
 ## Unfixed Vulnerabilities
@@ -1316,18 +1316,18 @@ Use the **repo** tool to download the source code over HTTPS.
 
 | Issue No.| Description| Impact| To Be Resolved By| 
 | -------- | -------- | -------- | -------- |
-| I9S5ZN | There is a low probability that app freezing occurs in libunwind.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.| The Settings page freezes.<br>Workaround: Restart the Settings application.| 2024-10-15| 
-| I9S600 | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.settings process.| The Settings page freezes.<br>Workaround: Restart the Settings application.| 2024-10-15| 
-| IAB2U3<br>IAK2J2 | There is a low probability that a C++ crash occurs in libaudio_client.z.so of the OS_APAsyncRunne thread of the audio_server process.| This issue does not affect user services. No workaround is required.| 2024-10-15| 
-| IAIRFB | There is a low probability that a C++ crash occurs in libweb_engine.so of the com.ohos.note thread of the com.ohos.note process.| The application will exit unexpectedly. This issue can be resolved by restarting the application.| 2024-10-15| 
-| I9SXZ8 | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.contacts process.| The application freezes when you open the Contacts application to query call records. This issue can be resolved by restarting the Contacts application.| 2024-10-15| 
-| IAKLLD | There is a low probability that a C++ crash occurs in libaudio_policy_service.z.so of the SaInit2 thread of the audio_server process.| The process restarts. This issue does not affect user services. No workaround is required.| 2024-10-15| 
-| IA56CU | There is a low probability that a C++ crash occurs in libweb_engine.so of the com.ohos.note thread of the com.ohos.note process.| The application will exit unexpectedly. This issue can be resolved by restarting the application.| 2024-09-30| 
-| IA5AMJ | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.launcher process.| The screen freezes for about 3 seconds when you access the multi-task screen. After the loading is complete, the screen recovers.| 2024-09-30| 
-| IA5AIT | There is a low probability that system freezing occurs in render_service due to SERVICE_BLOCK.| The application screen freezes and does not respond. This issue can be resolved by restarting the device.| 2024-10-15| 
-| IA6RH6 | There is a high probability that app freezing occurs in libbtframework.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.| The Settings application might not respond. This issue can be resolved by restarting the Settings application.| 2024-10-15| 
-| IA6RFX | There is a high probability that a C++ crash occurs in libbtservice.z.so of the OSaInit0 thread in the bluetooth_service process.| Bluetooth-related application might crash. This issue can be resolved by restarting the application.| 2024-10-15| 
-| IA8KGR | There is a low probability that a C++ crash occurs in libbluetooth_server.z.so of the OS_IPC_12_22172 thread of the bluetooth_service process.| Bluetooth-related application might crash. This issue can be resolved by restarting the application.| 2024-10-15| 
-| IAQC64 | Randomly open several applications and then open the Settings application. When you return to the home screen and repeatedly access the background interface, the Settings application may encounter a memory leakage of 32 KB for each operation.| The Settings application may exit unexpectedly. This issue can be resolved by restarting the application.| 2024-10-15| 
-| IASE04 | In the memory test of OpenHarmony on the RK3568 development board, the resident memory of the render_service process exceeds the baseline (31 MB).| The memory usage of the entire system is higher than expected.| 2024-10-15| 
-| IASDWO | The sliding frame rate for accessing the Weibo home page through a browser is lower than the specification baseline.| Browsing experience is affected.| 2024-10-15| 
+| [206](https://gitcode.com/openharmony/communication_bluetooth/issues/206) | There is a low probability that app freezing occurs in libunwind.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.| The Settings page freezes.<br>Workaround: Restart the Settings application.| 2024-10-15| 
+| [205](https://gitcode.com/openharmony/communication_bluetooth/issues/205) | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.settings process.| The Settings page freezes.<br>Workaround: Restart the Settings application.| 2024-10-15| 
+| [1573](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1573)<br>[1114](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1114) | There is a low probability that a C++ crash occurs in libaudio_client.z.so of the OS_APAsyncRunne thread of the audio_server process.| This issue does not affect user services. No workaround is required.| 2024-10-15| 
+| [615](https://gitcode.com/openharmony/web_webview/issues/615) | There is a low probability that a C++ crash occurs in libweb_engine.so of the com.ohos.note thread of the com.ohos.note process.| The application will exit unexpectedly. This issue can be resolved by restarting the application.| 2024-10-15| 
+| [33](https://gitcode.com/openharmony/applications_contacts/issues/33) | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.contacts process.| The application freezes when you open the Contacts application to query call records. This issue can be resolved by restarting the Contacts application.| 2024-10-15| 
+| [1097](https://gitcode.com/openharmony/multimedia_audio_framework/issues/1097) | There is a low probability that a C++ crash occurs in libaudio_policy_service.z.so of the SaInit2 thread of the audio_server process.| The process restarts. This issue does not affect user services. No workaround is required.| 2024-10-15| 
+| [1616](https://gitcode.com/openharmony/web_webview/issues/1616) | There is a low probability that a C++ crash occurs in libweb_engine.so of the com.ohos.note thread of the com.ohos.note process.| The application will exit unexpectedly. This issue can be resolved by restarting the application.| 2024-09-30| 
+| [2207](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/2207) | There is a low probability that app freezing occurs in libark_jsruntime.so due to THREAD_BLOCK_6S in the com.ohos.launcher process.| The screen freezes for about 3 seconds when you access the multi-task screen. After the loading is complete, the screen recovers.| 2024-09-30| 
+| [9](https://gitcode.com/openharmony/device_soc_rockchip/issues/9) | There is a low probability that system freezing occurs in render_service due to SERVICE_BLOCK.| The application screen freezes and does not respond. This issue can be resolved by restarting the device.| 2024-10-15| 
+| [174](https://gitcode.com/openharmony/communication_bluetooth/issues/174) | There is a high probability that app freezing occurs in libbtframework.z.so due to THREAD_BLOCK_6S in the com.ohos.settings process.| The Settings application might not respond. This issue can be resolved by restarting the Settings application.| 2024-10-15| 
+| [178](https://gitcode.com/openharmony/communication_bluetooth/issues/178) | There is a high probability that a C++ crash occurs in libbtservice.z.so of the OSaInit0 thread in the bluetooth_service process.| Bluetooth-related application might crash. This issue can be resolved by restarting the application.| 2024-10-15| 
+| [53](https://gitcode.com/openharmony/communication_bluetooth_service/issues/53) | There is a low probability that a C++ crash occurs in libbluetooth_server.z.so of the OS_IPC_12_22172 thread of the bluetooth_service process.| Bluetooth-related application might crash. This issue can be resolved by restarting the application.| 2024-10-15| 
+| [28](https://gitcode.com/openharmony/applications_settings/issues/28) | Randomly open several applications and then open the Settings application. When you return to the home screen and repeatedly access the background interface, the Settings application may encounter a memory leakage of 32 KB for each operation.| The Settings application may exit unexpectedly. This issue can be resolved by restarting the application.| 2024-10-15| 
+| [1202](https://gitcode.com/openharmony/graphic_graphic_2d/issues/1202) | In the memory test of OpenHarmony on the RK3568 development board, the resident memory of the render_service process exceeds the baseline (31 MB).| The memory usage of the entire system is higher than expected.| 2024-10-15| 
+| [222](https://gitcode.com/openharmony/web_webview/issues/222) | The sliding frame rate for accessing the Weibo home page through a browser is lower than the specification baseline.| Browsing experience is affected.| 2024-10-15| 

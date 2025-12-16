@@ -1,5 +1,12 @@
 # @ohos.account.osAccount (系统账号管理)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Account-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @zhaimengchao-->
+<!--Adviser: @zengyawen-->
+
 本模块提供管理系统账号的基础能力，包括系统账号的添加、删除、查询、设置、订阅、启动等功能。
 
 > **说明：**
@@ -36,7 +43,7 @@ getAccountManager(): AccountManager
 
 表示系统账号类型的枚举。
 
-**系统能力：** SystemCapability.Account.OsAccount。
+**系统能力：** SystemCapability.Account.OsAccount
 
 | 名称   | 值 | 说明         |
 | ------ | ------ | ----------- |
@@ -64,6 +71,8 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -73,17 +82,19 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkMultiOsAccountEnabled((err: BusinessError, isEnabled: boolean) => {
       if (err) {
         console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
       } else {
-      console.log('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
       }
     });
-  } catch (err) {
-    console.error('checkMultiOsAccountEnabled failed, error:' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -103,6 +114,8 @@ checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
@@ -111,15 +124,17 @@ checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   try {
     let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     accountManager.checkMultiOsAccountEnabled().then((isEnabled: boolean) => {
-      console.log('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
+      console.info('checkMultiOsAccountEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
       console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkMultiOsAccountEnabled failed, error:' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkMultiOsAccountEnabled failed, code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -146,6 +161,8 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -158,18 +175,20 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId, (err: BusinessError, isActivated: boolean) => {
       if (err) {
-        console.error('checkOsAccountActivated failed, error:' + JSON.stringify(err));
+        console.error(`checkOsAccountActivated failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountActivated successfully, isActivated:' + isActivated);
+        console.info('checkOsAccountActivated successfully, isActivated:' + isActivated);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountActivated exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -201,6 +220,8 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -213,16 +234,18 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId).then((isActivated: boolean) => {
-      console.log('checkOsAccountActivated successfully, isActivated: ' + isActivated);
+      console.info('checkOsAccountActivated successfully, isActivated: ' + isActivated);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountActivated failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountActivated failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountActivated exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountActivated exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -248,6 +271,8 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -257,16 +282,18 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let constraint: string = 'constraint.wifi';
   try {
     accountManager.isOsAccountConstraintEnabled(constraint).then((isEnabled: boolean) => {
-      console.log('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+      console.info('isOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
-      console.error('isOsAccountConstraintEnabled failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('isOsAccountConstraintEnabled exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -294,6 +321,8 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -306,19 +335,21 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   try {
     accountManager.checkOsAccountConstraintEnabled(localId, constraint, (err: BusinessError, isEnabled: boolean)=>{
       if (err) {
-        console.error('checkOsAccountConstraintEnabled failed, error: ' + JSON.stringify(err));
+        console.error(`checkOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+        console.info('checkOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountConstraintEnabled exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -351,6 +382,8 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -363,17 +396,19 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   try {
     accountManager.checkOsAccountConstraintEnabled(localId, constraint).then((isEnabled: boolean) => {
-      console.log('checkOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
+      console.info('checkOsAccountConstraintEnabled successfully, isEnabled: ' + isEnabled);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountConstraintEnabled failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountConstraintEnabled failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountConstraintEnabled exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountConstraintEnabled exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -393,6 +428,8 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -402,17 +439,19 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountTestable((err: BusinessError, isTestable: boolean) => {
       if (err) {
-        console.error('checkOsAccountTestable failed, error: ' + JSON.stringify(err));
+        console.error(`checkOsAccountTestable failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountTestable successfully, isTestable: ' + isTestable);
+        console.info('checkOsAccountTestable successfully, isTestable: ' + isTestable);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountTestable error: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountTestable code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -432,6 +471,8 @@ checkOsAccountTestable(): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
@@ -440,15 +481,17 @@ checkOsAccountTestable(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountTestable().then((isTestable: boolean) => {
-      console.log('checkOsAccountTestable successfully, isTestable: ' + isTestable);
+      console.info('checkOsAccountTestable successfully, isTestable: ' + isTestable);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountTestable failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountTestable failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountTestable exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountTestable exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -468,6 +511,8 @@ isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
@@ -476,15 +521,17 @@ isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.isOsAccountUnlocked().then((isVerified: boolean) => {
-      console.log('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
+      console.info('isOsAccountUnlocked successfully, isVerified: ' + isVerified);
     }).catch((err: BusinessError) => {
-      console.error('isOsAccountUnlocked failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountUnlocked failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('isOsAccountUnlocked exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`isOsAccountUnlocked exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -508,6 +555,8 @@ checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
@@ -516,17 +565,19 @@ checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountVerified((err: BusinessError, isVerified: boolean) => {
       if (err) {
-        console.error('checkOsAccountVerified failed, error: ' + JSON.stringify(err));
+        console.error(`checkOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountVerified successfully, isVerified: ' + isVerified);
+        console.info('checkOsAccountVerified successfully, isVerified: ' + isVerified);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountVerified exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -550,6 +601,8 @@ checkOsAccountVerified(): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
@@ -558,15 +611,17 @@ checkOsAccountVerified(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.checkOsAccountVerified().then((isVerified: boolean) => {
-      console.log('checkOsAccountVerified successfully, isVerified: ' + isVerified);
+      console.info('checkOsAccountVerified successfully, isVerified: ' + isVerified);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountVerified failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountVerified exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -593,6 +648,8 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -605,18 +662,20 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
       if (err) {
-        console.error('checkOsAccountVerified failed, error: ' + JSON.stringify(err));
+        console.error(`checkOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('checkOsAccountVerified successfully, isVerified: ' + isVerified);
+        console.info('checkOsAccountVerified successfully, isVerified: ' + isVerified);
       }
     });
-  } catch (err) {
-    console.error('checkOsAccountVerified exception: ' + err);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -648,6 +707,8 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -660,16 +721,18 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId).then((isVerified: boolean) => {
-      console.log('checkOsAccountVerified successfully, isVerified: ' + isVerified);
+      console.info('checkOsAccountVerified successfully, isVerified: ' + isVerified);
     }).catch((err: BusinessError) => {
-      console.error('checkOsAccountVerified failed, error: ' + JSON.stringify(err));
+      console.error(`checkOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('checkOsAccountVerified exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`checkOsAccountVerified exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -687,9 +750,11 @@ getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明                                                                         |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。当获取成功时，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果获取成功，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -701,17 +766,19 @@ getOsAccountCount(callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountCount((err: BusinessError, count: number) => {
       if (err) {
-        console.error('getOsAccountCount failed, error: ' + JSON.stringify(err));
+        console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountCount successfully, count: ' + count);
+        console.info('getOsAccountCount successfully, count: ' + count);
       }
     });
-  } catch (err) {
-    console.error('getOsAccountCount exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -733,6 +800,8 @@ getOsAccountCount(): Promise&lt;number&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -742,15 +811,17 @@ getOsAccountCount(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountCount().then((count: number) => {
-      console.log('getOsAccountCount successfully, count: ' + count);
+      console.info('getOsAccountCount successfully, count: ' + count);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountCount failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountCount failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch(err) {
-    console.error('getOsAccountCount exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountCount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -758,7 +829,7 @@ getOsAccountCount(): Promise&lt;number&gt;
 
 getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
 
-获取当前进程所属的系统账号ID，使用callback异步回调。
+获取当前进程所属的系统账号ID。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -766,9 +837,11 @@ getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明                                                                           |
 | -------- | --------------------------- | ---- | ---------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。当获取成功时，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果获取成功，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
@@ -779,17 +852,19 @@ getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountLocalId((err: BusinessError, localId: number) => {
       if (err) {
-        console.error('getOsAccountLocalId failed, error: ' + JSON.stringify(err));
+        console.error(`getOsAccountLocalId failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountLocalId successfully, localId: ' + localId);
+        console.info('getOsAccountLocalId successfully, localId: ' + localId);
       }
     });
-  } catch (err) {
-    console.error('getOsAccountLocalId exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -797,7 +872,7 @@ getOsAccountLocalId(callback: AsyncCallback&lt;number&gt;): void
 
 getOsAccountLocalId(): Promise&lt;number&gt;
 
-获取当前进程所属的系统账号ID，使用Promise异步回调。
+获取当前进程所属的系统账号ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -809,6 +884,8 @@ getOsAccountLocalId(): Promise&lt;number&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
@@ -817,15 +894,17 @@ getOsAccountLocalId(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountLocalId().then((localId: number) => {
-      console.log('getOsAccountLocalId successfully, localId: ' + localId);
+      console.info('getOsAccountLocalId successfully, localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountLocalId failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalId failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getOsAccountLocalId exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -833,7 +912,7 @@ getOsAccountLocalId(): Promise&lt;number&gt;
 
 getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): void
 
-根据uid查询对应的系统账号ID，使用callback异步回调。
+根据uid查询对应的系统账号ID。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -846,6 +925,8 @@ getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): v
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息         |
 | -------- | --------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -856,17 +937,19 @@ getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): v
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid, (err: BusinessError, localId: number) => {
       if (err) {
-        console.error('getOsAccountLocalIdForUid failed, error: ' + JSON.stringify(err));
+        console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
       }
-      console.log('getOsAccountLocalIdForUid successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
     });
-  } catch (err) {
-    console.error('getOsAccountLocalIdForUid exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -874,7 +957,7 @@ getOsAccountLocalIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;): v
 
 getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
 
-根据uid查询对应的系统账号ID，使用Promise异步回调。
+根据uid查询对应的系统账号ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -892,6 +975,8 @@ getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -902,16 +987,18 @@ getOsAccountLocalIdForUid(uid: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid).then((localId: number) => {
-      console.log('getOsAccountLocalIdForUid successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountLocalIdForUid failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getOsAccountLocalIdForUid exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUid exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -937,6 +1024,8 @@ getOsAccountLocalIdForUidSync(uid: number): number
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -945,13 +1034,16 @@ getOsAccountLocalIdForUidSync(uid: number): number
 **示例：** 查询值为12345678的uid所属的系统账号ID
 
   ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   try {
     let localId : number = accountManager.getOsAccountLocalIdForUidSync(uid);
-    console.log('getOsAccountLocalIdForUidSync successfully, localId: ' + localId);
-  } catch (err) {
-    console.error('getOsAccountLocalIdForUidSync exception: ' + JSON.stringify(err));
+    console.info('getOsAccountLocalIdForUidSync successfully, localId: ' + localId);
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -974,6 +1066,8 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 201 | Permission denied.|
@@ -985,18 +1079,20 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback: AsyncCallb
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountLocalIdForDomain(domainInfo, (err: BusinessError, localId: number) => {
       if (err) {
-        console.error('getOsAccountLocalIdForDomain failed, error: ' + JSON.stringify(err));
+        console.error(`getOsAccountLocalIdForDomain failed, code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
+        console.info('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
       }
     });
-  } catch (err) {
-    console.error('getOsAccountLocalIdForDomain exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1024,6 +1120,8 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 201 | Permission denied.|
@@ -1035,16 +1133,18 @@ getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&lt;number&g
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   try {
     accountManager.getOsAccountLocalIdForDomain(domainInfo).then((localId: number) => {
-      console.log('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdForDomain successfully, localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountLocalIdForDomain failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdForDomain failed, code is ${err.code}, message is ${err.message}`);
     });
-  } catch (err) {
-    console.error('getOsAccountLocalIdForDomain exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForDomain exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1071,6 +1171,8 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -1083,18 +1185,20 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId, (err: BusinessError, constraints: string[]) => {
       if (err) {
-        console.error('getOsAccountConstraints failed, err: ' + JSON.stringify(err));
+        console.error(`getOsAccountConstraints failed, err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountConstraints successfully, constraints: ' + JSON.stringify(constraints));
+        console.info('getOsAccountConstraints successfully, constraints: ' + JSON.stringify(constraints));
       }
     });
-  } catch (err) {
-    console.error('getOsAccountConstraints exception: ' + JSON.stringify(err));
+  } catch (e) {
+    const err = e as BusinessError;
+    console.error(`getOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1126,6 +1230,8 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -1138,16 +1244,18 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId).then((constraints: string[]) => {
-      console.log('getOsAccountConstraints, constraints: ' + constraints);
+      console.info('getOsAccountConstraints, constraints: ' + constraints);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountConstraints err: ' + JSON.stringify(err));
+      console.error(`getOsAccountConstraints err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountConstraints exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1167,6 +1275,8 @@ getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
@@ -1176,20 +1286,22 @@ getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getActivatedOsAccountLocalIds((err: BusinessError, idArray: number[])=>{
       if (err) {
-        console.error('getActivatedOsAccountLocalIds err:' + JSON.stringify(err));
+        console.error(`getActivatedOsAccountLocalIds code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getActivatedOsAccountLocalIds idArray length:' + idArray.length);
+        console.info('getActivatedOsAccountLocalIds idArray length:' + idArray.length);
         for(let i=0;i<idArray.length;i++) {
           console.info('activated os account id: ' + idArray[i]);
         }
       }
     });
   } catch (e) {
-    console.error('getActivatedOsAccountLocalIds exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1209,6 +1321,8 @@ getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 12300001 | The system service works abnormally. |
@@ -1217,15 +1331,17 @@ getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;number&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getActivatedOsAccountLocalIds().then((idArray: number[]) => {
-      console.log('getActivatedOsAccountLocalIds, idArray: ' + idArray);
+      console.info('getActivatedOsAccountLocalIds, idArray: ' + idArray);
     }).catch((err: BusinessError) => {
-      console.error('getActivatedOsAccountLocalIds err: ' + JSON.stringify(err));
+      console.error(`getActivatedOsAccountLocalIds err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getActivatedOsAccountLocalIds exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getActivatedOsAccountLocalIds exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1251,9 +1367,11 @@ getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission denied. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
@@ -1261,17 +1379,19 @@ getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getCurrentOsAccount((err: BusinessError, curAccountInfo: osAccount.OsAccountInfo)=>{
       if (err) {
-        console.error('getCurrentOsAccount err:' + JSON.stringify(err));
+        console.error(`getCurrentOsAccount code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getCurrentOsAccount curAccountInfo:' + JSON.stringify(curAccountInfo));
+        console.info('getCurrentOsAccount curAccountInfo:' + JSON.stringify(curAccountInfo));
       }
     });
   } catch (e) {
-    console.error('getCurrentOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getCurrentOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1297,24 +1417,28 @@ getCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission denied. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getCurrentOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
-      console.log('getCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
+      console.info('getCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
     }).catch((err: BusinessError) => {
-      console.error('getCurrentOsAccount err: ' + JSON.stringify(err));
+      console.error(`getCurrentOsAccount err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getCurrentOsAccount exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getCurrentOsAccount exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1334,6 +1458,8 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1343,17 +1469,19 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountType((err: BusinessError, accountType: osAccount.OsAccountType) => {
       if (err) {
-        console.error('getOsAccountType err: ' + JSON.stringify(err));
+        console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('getOsAccountType accountType: ' + accountType);
+        console.info('getOsAccountType accountType: ' + accountType);
       }
     });
   } catch (e) {
-    console.error('getOsAccountType exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1373,6 +1501,8 @@ getOsAccountType(): Promise&lt;OsAccountType&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 12300001 | The system service works abnormally. |
@@ -1381,15 +1511,17 @@ getOsAccountType(): Promise&lt;OsAccountType&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountType().then((accountType: osAccount.OsAccountType) => {
-      console.log('getOsAccountType, accountType: ' + accountType);
+      console.info('getOsAccountType, accountType: ' + accountType);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountType err: ' + JSON.stringify(err));
+      console.error(`getOsAccountType err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountType exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1411,6 +1543,8 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -1421,17 +1555,19 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryDistributedVirtualDeviceId((err: BusinessError, virtualID: string) => {
       if (err) {
-        console.error('queryDistributedVirtualDeviceId err: ' + JSON.stringify(err));
+        console.error(`queryDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('queryDistributedVirtualDeviceId virtualID: ' + virtualID);
+        console.info('queryDistributedVirtualDeviceId virtualID: ' + virtualID);
       }
     });
   } catch (e) {
-    console.error('queryDistributedVirtualDeviceId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1453,6 +1589,8 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 201 | Permission denied.|
@@ -1462,15 +1600,17 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.queryDistributedVirtualDeviceId().then((virtualID: string) => {
-      console.log('queryDistributedVirtualDeviceId, virtualID: ' + virtualID);
+      console.info('queryDistributedVirtualDeviceId, virtualID: ' + virtualID);
     }).catch((err: BusinessError) => {
-      console.error('queryDistributedVirtualDeviceId err: ' + JSON.stringify(err));
+      console.error(`queryDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('queryDistributedVirtualDeviceId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`queryDistributedVirtualDeviceId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1491,29 +1631,33 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number, callback: AsyncCallback
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid serialNumber. |
-| 12300003 | The account indicated by serialNumber dose not exist. |
+| 12300003 | The account indicated by serialNumber does not exist. |
 
 **示例：** 查询与SN码12345关联的系统账号的ID
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber, (err: BusinessError, localId: number)=>{
       if (err) {
-        console.error('ger localId err:' + JSON.stringify(err));
+        console.error(`get localId code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('get localId:' + localId + ' by serialNumber: ' + serialNumber);
+        console.info('get localId:' + localId + ' by serialNumber: ' + serialNumber);
       }
     });
   } catch (e) {
-    console.error('ger localId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`get localId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1539,27 +1683,31 @@ getOsAccountLocalIdForSerialNumber(serialNumber: number): Promise&lt;number&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid serialNumber. |
-| 12300003 | The account indicated by serialNumber dose not exist. |
+| 12300003 | The account indicated by serialNumber does not exist. |
 
 **示例：** 查询与SN码12345关联的系统账号的ID
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber).then((localId: number) => {
-      console.log('getOsAccountLocalIdForSerialNumber localId: ' + localId);
+      console.info('getOsAccountLocalIdForSerialNumber localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getOsAccountLocalIdForSerialNumber err: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdForSerialNumber err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getOsAccountLocalIdForSerialNumber exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getOsAccountLocalIdForSerialNumber exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1580,6 +1728,8 @@ getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;n
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1591,18 +1741,20 @@ getSerialNumberForOsAccountLocalId(localId: number, callback: AsyncCallback&lt;n
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
       if (err) {
-        console.error('ger serialNumber err:' + JSON.stringify(err));
+        console.error(`get serialNumber code is ${err.code}, message is ${err.message}`);
       } else {
-        console.log('get serialNumber:' + serialNumber + ' by localId: ' + localId);
+        console.info('get serialNumber:' + serialNumber + ' by localId: ' + localId);
       }
     });
   } catch (e) {
-    console.error('ger serialNumber exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`get serialNumber exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1628,6 +1780,8 @@ getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1639,16 +1793,18 @@ getSerialNumberForOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId).then((serialNumber: number) => {
-      console.log('getSerialNumberForOsAccountLocalId serialNumber: ' + serialNumber);
+      console.info('getSerialNumberForOsAccountLocalId serialNumber: ' + serialNumber);
     }).catch((err: BusinessError) => {
-      console.error('getSerialNumberForOsAccountLocalId err: ' + JSON.stringify(err));
+      console.error(`getSerialNumberForOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getSerialNumberForOsAccountLocalId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getSerialNumberForOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -1674,12 +1830,13 @@ isMultiOsAccountEnable(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isMultiOsAccountEnable((err: BusinessError, isEnabled: boolean) => {
     if (err) {
-      console.error('isMultiOsAccountEnable failed, error: ' + JSON.stringify(err));
+      console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-    console.log('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
+      console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
     }
   });
   ```
@@ -1706,11 +1863,12 @@ isMultiOsAccountEnable(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isMultiOsAccountEnable().then((isEnabled: boolean) => {
-    console.log('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
+    console.info('isMultiOsAccountEnable successfully, isEnabled: ' + isEnabled);
   }).catch((err: BusinessError) => {
-    console.error('isMultiOsAccountEnable failed, error: ' + JSON.stringify(err));
+    console.error(`isMultiOsAccountEnable failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -1722,7 +1880,7 @@ isOsAccountActived(localId: number, callback: AsyncCallback&lt;boolean&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
@@ -1739,13 +1897,14 @@ isOsAccountActived(localId: number, callback: AsyncCallback&lt;boolean&gt;): voi
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boolean) => {
     if (err) {
-      console.error('isOsAccountActived failed, err:' + JSON.stringify(err));
+      console.error(`isOsAccountActived failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isOsAccountActived successfully, isActived:' + isActived);
+      console.info('isOsAccountActived successfully, isActived:' + isActived);
     }
   });
   ```
@@ -1758,7 +1917,7 @@ isOsAccountActived(localId: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限仅系统应用可申请。
 
@@ -1780,12 +1939,13 @@ isOsAccountActived(localId: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
-    console.log('isOsAccountActived successfully, isActived: ' + isActived);
+    console.info('isOsAccountActived successfully, isActived: ' + isActived);
   }).catch((err: BusinessError) => {
-    console.error('isOsAccountActived failed, error: ' + JSON.stringify(err));
+    console.error(`isOsAccountActived failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -1815,14 +1975,15 @@ isOsAccountConstraintEnable(localId: number, constraint: string, callback: Async
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessError, isEnabled: boolean) => {
     if (err) {
-      console.error('isOsAccountConstraintEnable failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountConstraintEnable failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isOsAccountConstraintEnable successfully, isEnabled: ' + isEnabled);
+      console.info('isOsAccountConstraintEnable successfully, isEnabled: ' + isEnabled);
     }
   });
   ```
@@ -1858,13 +2019,14 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise&lt;boo
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint).then((isEnabled: boolean) => {
-    console.log('isOsAccountConstraintEnable successfully, isEnabled: ' + isEnabled);
+    console.info('isOsAccountConstraintEnable successfully, isEnabled: ' + isEnabled);
   }).catch((err: BusinessError) => {
-    console.error('isOsAccountConstraintEnable err: ' + JSON.stringify(err));
+    console.error(`isOsAccountConstraintEnable err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -1890,12 +2052,13 @@ isTestOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isTestOsAccount((err: BusinessError, isTestable: boolean) => {
     if (err) {
-      console.error('isTestOsAccount failed, error: ' + JSON.stringify(err));
+      console.error(`isTestOsAccount failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isTestOsAccount successfully, isTestable: ' + isTestable);
+      console.info('isTestOsAccount successfully, isTestable: ' + isTestable);
     }
   });
   ```
@@ -1922,11 +2085,12 @@ isTestOsAccount(): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
     accountManager.isTestOsAccount().then((isTestable: boolean) => {
-      console.log('isTestOsAccount successfully, isTestable: ' + isTestable);
+      console.info('isTestOsAccount successfully, isTestable: ' + isTestable);
     }).catch((err: BusinessError) => {
-      console.error('isTestOsAccount failed, error: ' + JSON.stringify(err));
+      console.error(`isTestOsAccount failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -1954,12 +2118,13 @@ isOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isOsAccountVerified((err: BusinessError, isVerified: boolean) => {
     if (err) {
-      console.error('isOsAccountVerified failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isOsAccountVerified successfully, isVerified: ' + isVerified);
+      console.info('isOsAccountVerified successfully, isVerified: ' + isVerified);
     }
   });
   ```
@@ -1989,13 +2154,14 @@ isOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;): vo
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
     if (err) {
-      console.error('isOsAccountVerified failed, error: ' + JSON.stringify(err));
+      console.error(`isOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('isOsAccountVerified successfully, isVerified: ' + isVerified);
+      console.info('isOsAccountVerified successfully, isVerified: ' + isVerified);
     }
   });
   ```
@@ -2018,7 +2184,7 @@ isOsAccountVerified(localId?: number): Promise&lt;boolean&gt;
 
 | 参数名  | 类型   | 必填 | 说明                                                              |
 | ------- | ------ | ---- | ---------------------------------------------------------------- |
-| localId | number | 否   | 系统账号ID。不填则检查当前系统账号是否已验证。 |
+| localId | number | 否   | 系统账号ID。不填则检查当前系统账号是否已验证，默认为-1。 |
 
 **返回值：**
 
@@ -2030,11 +2196,12 @@ isOsAccountVerified(localId?: number): Promise&lt;boolean&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.isOsAccountVerified().then((isVerified: boolean) => {
-    console.log('isOsAccountVerified successfully, isVerified: ' + isVerified);
+    console.info('isOsAccountVerified successfully, isVerified: ' + isVerified);
   }).catch((err: BusinessError) => {
-    console.error('isOsAccountVerified failed, error: ' + JSON.stringify(err));
+    console.error(`isOsAccountVerified failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2056,18 +2223,19 @@ getCreatedOsAccountsCount(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明                                                                         |
 | -------- | --------------------------- | ---- | -------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。当获取成功时，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果获取成功，err为null，data为已创建的系统账号的数量；否则为错误对象。 |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getCreatedOsAccountsCount((err: BusinessError, count: number)=>{
     if (err) {
-      console.error('getCreatedOsAccountsCount failed, error: ' + JSON.stringify(err));
+      console.error(`getCreatedOsAccountsCount failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getCreatedOsAccountsCount successfully, count: ' + count);
+      console.info('getCreatedOsAccountsCount successfully, count: ' + count);
     }
   });
   ```
@@ -2076,7 +2244,7 @@ getCreatedOsAccountsCount(callback: AsyncCallback&lt;number&gt;): void
 
 getCreatedOsAccountsCount(): Promise&lt;number&gt;
 
-获取已创建的系统账号数量，使用Promise异步回调。
+获取已创建的系统账号数量。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2096,11 +2264,12 @@ getCreatedOsAccountsCount(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getCreatedOsAccountsCount().then((count: number) => {
-    console.log('getCreatedOsAccountsCount successfully, count: ' + count);
+    console.info('getCreatedOsAccountsCount successfully, count: ' + count);
   }).catch((err: BusinessError) => {
-    console.error('getCreatedOsAccountsCount failed, error: ' + JSON.stringify(err));
+    console.error(`getCreatedOsAccountsCount failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2108,7 +2277,7 @@ getCreatedOsAccountsCount(): Promise&lt;number&gt;
 
 getOsAccountLocalIdFromProcess(callback: AsyncCallback&lt;number&gt;): void
 
-获取当前进程所属的系统账号ID，使用callback异步回调。
+获取当前进程所属的系统账号ID。使用callback异步回调。
 
 > **说明：**
 >
@@ -2120,18 +2289,19 @@ getOsAccountLocalIdFromProcess(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名   | 类型                        | 必填 | 说明                                                                           |
 | -------- | --------------------------- | ---- | ---------------------------------------------------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。当获取成功时，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。如果获取成功，err为null，data为当前进程所属的系统账号ID；否则为错误对象。 |
 
 **示例：**
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromProcess((err: BusinessError, localId: number) => {
     if (err) {
-      console.error('getOsAccountLocalIdFromProcess failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdFromProcess failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountLocalIdFromProcess id:: ' + localId);
+      console.info('getOsAccountLocalIdFromProcess id:: ' + localId);
     }
   });
   ```
@@ -2140,7 +2310,7 @@ getOsAccountLocalIdFromProcess(callback: AsyncCallback&lt;number&gt;): void
 
 getOsAccountLocalIdFromProcess(): Promise&lt;number&gt;
 
-获取当前进程所属的系统账号ID，使用Promise异步回调。
+获取当前进程所属的系统账号ID。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2158,11 +2328,12 @@ getOsAccountLocalIdFromProcess(): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromProcess().then((localId: number) => {
-    console.log('getOsAccountLocalIdFromProcess successfully, localId: ' + localId);
+    console.info('getOsAccountLocalIdFromProcess successfully, localId: ' + localId);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountLocalIdFromProcess failed, error: ' + JSON.stringify(err));
+    console.error(`getOsAccountLocalIdFromProcess failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2189,13 +2360,14 @@ getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback&lt;number&gt;): 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   accountManager.getOsAccountLocalIdFromUid(uid, (err: BusinessError, localId: number) => {
     if (err) {
-      console.error('getOsAccountLocalIdFromUid failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdFromUid failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountLocalIdFromUid successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdFromUid successfully, localId: ' + localId);
     }
   });
   ```
@@ -2204,7 +2376,7 @@ getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback&lt;number&gt;): 
 
 getOsAccountLocalIdFromUid(uid: number): Promise&lt;number&gt;
 
-根据uid查询对应的系统账号ID，使用Promise异步回调。
+根据uid查询对应的系统账号ID。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2228,12 +2400,13 @@ getOsAccountLocalIdFromUid(uid: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let uid: number = 12345678;
   accountManager.getOsAccountLocalIdFromUid(uid).then((localId: number) => {
-    console.log('getOsAccountLocalIdFromUid successfully, localId: ' + localId);
+    console.info('getOsAccountLocalIdFromUid successfully, localId: ' + localId);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountLocalIdFromUid failed, error: ' + JSON.stringify(err));
+    console.error(`getOsAccountLocalIdFromUid failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2262,13 +2435,14 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCall
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountLocalIdFromDomain(domainInfo, (err: BusinessError, localId: number) => {
     if (err) {
-      console.error('getOsAccountLocalIdFromDomain failed, error: ' + JSON.stringify(err));
+      console.error(`getOsAccountLocalIdFromDomain failed, code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountLocalIdFromDomain successfully, localId: ' + localId);
+      console.info('getOsAccountLocalIdFromDomain successfully, localId: ' + localId);
     }
   });
   ```
@@ -2303,12 +2477,13 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise&lt;number&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let domainInfo: osAccount.DomainAccountInfo = {domain: 'testDomain', accountName: 'testAccountName'};
   accountManager.getOsAccountLocalIdFromDomain(domainInfo).then((localId: number) => {
-    console.log('getOsAccountLocalIdFromDomain successfully, localId: ' + localId);
+    console.info('getOsAccountLocalIdFromDomain successfully, localId: ' + localId);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountLocalIdFromDomain failed, error: ' + JSON.stringify(err));
+    console.error(`getOsAccountLocalIdFromDomain failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2337,13 +2512,14 @@ getOsAccountAllConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constraints: string[])=>{
     if (err) {
-      console.error('getOsAccountAllConstraints err:' + JSON.stringify(err));
+      console.error(`getOsAccountAllConstraints code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountAllConstraints:' + JSON.stringify(constraints));
+      console.info('getOsAccountAllConstraints:' + JSON.stringify(constraints));
     }
   });
   ```
@@ -2378,12 +2554,13 @@ getOsAccountAllConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) => {
-    console.log('getOsAccountAllConstraints, constraints: ' + constraints);
+    console.info('getOsAccountAllConstraints, constraints: ' + constraints);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountAllConstraints err: ' + JSON.stringify(err));
+    console.error(`getOsAccountAllConstraints err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2409,16 +2586,17 @@ queryActivatedOsAccountIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
-  accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[])=>{
-      if (err) {
-        console.error('queryActivatedOsAccountIds err:' + JSON.stringify(err));
-      } else {
-        console.log('queryActivatedOsAccountIds idArray length:' + idArray.length);
-        for(let i=0;i<idArray.length;i++) {
-          console.info('activated os account id: ' + idArray[i]);
-        }
+  accountManager.queryActivatedOsAccountIds((err: BusinessError, idArray: number[]) => {
+    if (err) {
+      console.error(`queryActivatedOsAccountIds code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info('queryActivatedOsAccountIds idArray length:' + idArray.length);
+      for (let i = 0; i < idArray.length; i++) {
+        console.info('activated os account id: ' + idArray[i]);
       }
+    }
   });
   ```
 
@@ -2444,11 +2622,12 @@ queryActivatedOsAccountIds(): Promise&lt;Array&lt;number&gt;&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryActivatedOsAccountIds().then((idArray: number[]) => {
-    console.log('queryActivatedOsAccountIds, idArray: ' + idArray);
+    console.info('queryActivatedOsAccountIds, idArray: ' + idArray);
   }).catch((err: BusinessError) => {
-    console.error('queryActivatedOsAccountIds err: ' + JSON.stringify(err));
+    console.error(`queryActivatedOsAccountIds err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2476,12 +2655,13 @@ queryCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryCurrentOsAccount((err: BusinessError, curAccountInfo: osAccount.OsAccountInfo)=>{
     if (err) {
-      console.error('queryCurrentOsAccount err:' + JSON.stringify(err));
+      console.error(`queryCurrentOsAccount code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('queryCurrentOsAccount curAccountInfo:' + JSON.stringify(curAccountInfo));
+      console.info('queryCurrentOsAccount curAccountInfo:' + JSON.stringify(curAccountInfo));
     }
   });
   ```
@@ -2510,11 +2690,12 @@ queryCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.queryCurrentOsAccount().then((accountInfo: osAccount.OsAccountInfo) => {
-    console.log('queryCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
+    console.info('queryCurrentOsAccount, accountInfo: ' + JSON.stringify(accountInfo));
   }).catch((err: BusinessError) => {
-    console.error('queryCurrentOsAccount err: ' + JSON.stringify(err));
+    console.error(`queryCurrentOsAccount err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2540,12 +2721,13 @@ getOsAccountTypeFromProcess(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountTypeFromProcess((err: BusinessError, accountType: osAccount.OsAccountType) => {
     if (err) {
-      console.error('getOsAccountTypeFromProcess err: ' + JSON.stringify(err));
+      console.error(`getOsAccountTypeFromProcess err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getOsAccountTypeFromProcess accountType: ' + accountType);
+      console.info('getOsAccountTypeFromProcess accountType: ' + accountType);
     }
   });
   ```
@@ -2572,11 +2754,12 @@ getOsAccountTypeFromProcess(): Promise&lt;OsAccountType&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getOsAccountTypeFromProcess().then((accountType: osAccount.OsAccountType) => {
-    console.log('getOsAccountTypeFromProcess, accountType: ' + accountType);
+    console.info('getOsAccountTypeFromProcess, accountType: ' + accountType);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountTypeFromProcess err: ' + JSON.stringify(err));
+    console.error(`getOsAccountTypeFromProcess err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2604,12 +2787,13 @@ getDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getDistributedVirtualDeviceId((err: BusinessError, virtualID: string) => {
     if (err) {
-      console.error('getDistributedVirtualDeviceId err: ' + JSON.stringify(err));
+      console.error(`getDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('getDistributedVirtualDeviceId virtualID: ' + virtualID);
+      console.info('getDistributedVirtualDeviceId virtualID: ' + virtualID);
     }
   });
   ```
@@ -2638,11 +2822,12 @@ getDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   accountManager.getDistributedVirtualDeviceId().then((virtualID: string) => {
-    console.log('getDistributedVirtualDeviceId, virtualID: ' + virtualID);
+    console.info('getDistributedVirtualDeviceId, virtualID: ' + virtualID);
   }).catch((err: BusinessError) => {
-    console.error('getDistributedVirtualDeviceId err: ' + JSON.stringify(err));
+    console.error(`getDistributedVirtualDeviceId err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2669,13 +2854,14 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback&
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   accountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err: BusinessError, localId: number)=>{
     if (err) {
-      console.error('ger localId err:' + JSON.stringify(err));
+      console.error(`get localId code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('get localId:' + localId + ' by serialNumber: ' + serialNumber);
+      console.info('get localId:' + localId + ' by serialNumber: ' + serialNumber);
     }
   });
   ```
@@ -2708,12 +2894,13 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let serialNumber: number = 12345;
   accountManager.getOsAccountLocalIdBySerialNumber(serialNumber).then((localId: number) => {
-    console.log('getOsAccountLocalIdBySerialNumber localId: ' + localId);
+    console.info('getOsAccountLocalIdBySerialNumber localId: ' + localId);
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountLocalIdBySerialNumber err: ' + JSON.stringify(err));
+    console.error(`getOsAccountLocalIdBySerialNumber err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2740,13 +2927,14 @@ getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback&lt;nu
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
     if (err) {
-      console.error('ger serialNumber err:' + JSON.stringify(err));
+      console.error(`get serialNumber code is ${err.code}, message is ${err.message}`);
     } else {
-      console.log('get serialNumber:' + serialNumber + ' by localId: ' + localId);
+      console.info('get serialNumber:' + serialNumber + ' by localId: ' + localId);
     }
   });
   ```
@@ -2779,12 +2967,13 @@ getSerialNumberByOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: number) => {
-    console.log('getSerialNumberByOsAccountLocalId serialNumber: ' + serialNumber);
+    console.info('getSerialNumberByOsAccountLocalId serialNumber: ' + serialNumber);
   }).catch((err: BusinessError) => {
-    console.error('getSerialNumberByOsAccountLocalId err: ' + JSON.stringify(err));
+    console.error(`getSerialNumberByOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -2804,30 +2993,35 @@ getOsAccountName(): Promise&lt;string&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getOsAccountName().then((name: string) => {
-      console.log('getOsAccountName, name: ' + name);
+      console.info('getOsAccountName, name: ' + name);
     }).catch((err: BusinessError) => {
       console.error('getOsAccountName err: ' + err);
     });
   } catch (e) {
-    console.error('getOsAccountName exception: ' + e);
+    const err = e as BusinessError;
+    console.error(`getOsAccountName exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
 ### getForegroundOsAccountLocalId<sup>15+</sup>
 
-getForegroundOsAccountLocalId(): Promise&lt;number&gt;;
+getForegroundOsAccountLocalId(): Promise&lt;number&gt;
 
-获取前台系统账号的ID。
+获取前台系统账号的ID。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2839,6 +3033,8 @@ getForegroundOsAccountLocalId(): Promise&lt;number&gt;;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 12300001 | The system service works abnormally. |
@@ -2847,23 +3043,25 @@ getForegroundOsAccountLocalId(): Promise&lt;number&gt;;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   try {
     accountManager.getForegroundOsAccountLocalId().then((localId: number) => {
-      console.log('getForegroundOsAccountLocalId, localId: ' + localId);
+      console.info('getForegroundOsAccountLocalId, localId: ' + localId);
     }).catch((err: BusinessError) => {
-      console.error('getForegroundOsAccountLocalId err: ' + JSON.stringify(err));
+      console.error(`getForegroundOsAccountLocalId err: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
-    console.error('getForegroundOsAccountLocalId exception: ' + JSON.stringify(e));
+    const err = e as BusinessError;
+    console.error(`getForegroundOsAccountLocalId exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
 ### getOsAccountDomainInfo<sup>15+</sup>
 
-getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;;
+getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
-获取指定系统账号关联的域账号信息。
+获取指定系统账号关联的域账号信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_DOMAIN_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，以上权限允许系统应用和企业应用进行申请。
 
@@ -2883,6 +3081,8 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
 | 201 | Permission denied. |
@@ -2894,17 +3094,18 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
   let localId: number = 100;
   accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
     if (domainAccountInfo === null) {
-      console.log('The target OS account is not a domain account.')
+      console.info('The target OS account is not a domain account.')
     } else {
-      console.log('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
-      console.log('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
+      console.info('getOsAccountDomainInfo domain: ' + domainAccountInfo.domain);
+      console.info('getOsAccountDomainInfo accountName: ' + domainAccountInfo.accountName);
     }
   }).catch((err: BusinessError) => {
-    console.error('getOsAccountDomainInfo err: ' + JSON.stringify(err));
+    console.error(`getOsAccountDomainInfo err: code is ${err.code}, message is ${err.message}`);
   })
   ```
 
@@ -2926,8 +3127,8 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| oldAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示旧域账号信息。|
-| newAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示新域账号信息。|
+| oldAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示旧域账号信息。|
+| newAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 表示新域账号信息。|
 
 **返回值：**
 
@@ -2936,6 +3137,8 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -2947,20 +3150,23 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 | 12300004 | The new account already exists. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let oldDomainInfo: osAccount.DomainAccountInfo =
     {domain: 'testDomain', accountName: 'oldtestAccountName'};
   let newDomainInfo: osAccount.DomainAccountInfo =
     {domain: 'testDomain', accountName: 'newtestAccountName'};
   try {
     osAccount.DomainAccountManager.updateAccountInfo(oldDomainInfo, newDomainInfo).then(() => {
-      console.log('updateAccountInfo, success');
+      console.info('updateAccountInfo, success');
     }).catch((err: BusinessError) => {
       console.error('updateAccountInfo err: ' + err);
     });
   } catch (e) {
-    console.error('updateAccountInfo exception: ' + e);
+    const err = e as BusinessError;
+    console.error(`updateAccountInfo exception: code is ${err.code}, message is ${err.message}`);
   }
   ```
 
@@ -2970,23 +3176,23 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-| 名称                         | 类型                                                         | 必填 | 说明                              |
-| ------------------------------ | ------------------------------------------------------------ | ---- | --------------------------------- |
-| localId                        | number                                                       | 是   | 系统账号ID。                      |
-| localName                      | string                                                       | 是   | 系统账号名称。                    |
-| type                           | [OsAccountType](#osaccounttype)                              | 是   | 系统账号类型。                      |
-| constraints                    | Array&lt;string&gt;                                          | 是   | 系统账号[约束](#系统账号约束列表)，默认为空。|
-| isVerified<sup>(deprecated)</sup> | boolean                                                   | 是   | 账号是否验证。true表示指定账号已验证；false表示指定账号未验证。<br>**说明**：从API version 7开始支持，从API version 11开始废弃。           |
-| isUnlocked<sup>11+</sup>      | boolean                                                       | 是   | 账号是否已解锁（EL2级别目录是否解密）。true表示指定账号已解锁；false表示指定账号未解锁。                      |
-| photo<sup>8+</sup>             | string                                                       | 是   | 系统账号头像，默认为空。                      |
-| createTime<sup>8+</sup>        | number                                                       | 是   | 系统账号创建时间。                  |
-| lastLoginTime<sup>8+</sup>     | number                                                       | 是   | 系统账号最后一次登录时间，默认为空。          |
-| serialNumber<sup>8+</sup>      | number                                                       | 是   | 系统账号SN码。                      |
-| isActived<sup>(deprecated)</sup>         | boolean                                            | 是   | 系统账号激活状态。true表示指定账号处于激活状态；false表示指定账号处于未激活状态。<br>**说明**：从API version 7开始支持，从API version 11开始废弃。                  |
-| isActivated<sup>11+</sup>         | boolean                                                   | 是   | 系统账号激是否激活。true表示指定账号已激活；false表示指定账号未激活。                  |
-| isCreateCompleted<sup>8+</sup> | boolean                                                      | 是   | 系统账号创建是否完整。true表示指定账号已创建完整；false表示指定账号未创建完整。              |
-| distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 是   | 分布式账号信息，默认为空。                    |
-| domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | 是   | 域账号信息，默认为空。                        |
+| 名称                         | 类型                                                         | 只读  | 可选  | 说明                              |
+| ------------------------------ | ------------------------------------------------------------ | ---- | ---- | --------------------------------- |
+| localId                        | number                                                       | 否 | 否  | 系统账号ID。                      |
+| localName                      | string                                                       | 否 | 否  | 系统账号名称。                    |
+| type                           | [OsAccountType](#osaccounttype)                              | 否 | 否  | 系统账号类型。                      |
+| constraints                    | Array&lt;string&gt;                                          | 否 | 否  | 系统账号[约束](#系统账号约束列表)，默认为空。|
+| isVerified<sup>(deprecated)</sup> | boolean                                                   | 否 | 否  | 账号是否验证。true表示指定账号已验证；false表示指定账号未验证。<br>**说明：**从API version 7开始支持，从API version 11开始废弃，建议使用isUnlocked。           |
+| isUnlocked<sup>11+</sup>      | boolean                                                       | 否 | 否  | 账号是否已解锁（EL2级别目录是否解密）。true表示指定账号已解锁；false表示指定账号未解锁。                      |
+| photo<sup>8+</sup>             | string                                                       | 否 | 否  | 系统账号头像，默认为空。                      |
+| createTime<sup>8+</sup>        | number                                                       | 否 | 否  | 系统账号创建时间。                  |
+| lastLoginTime<sup>8+</sup>     | number                                                       | 否 | 否  | 系统账号最后一次登录时间，默认为空。          |
+| serialNumber<sup>8+</sup>      | number                                                       | 否 | 否  | 系统账号SN码。                      |
+| isActived<sup>(deprecated)</sup>         | boolean                                            | 否 | 否  | 系统账号激活状态。true表示指定账号处于激活状态；false表示指定账号处于未激活状态。<br>**说明：**从API version 7开始支持，从API version 11开始废弃，建议使用isActivated。                  |
+| isActivated<sup>11+</sup>         | boolean                                                   | 否 | 否  | 系统账号是否激活。true表示指定账号已激活；false表示指定账号未激活。                  |
+| isCreateCompleted<sup>8+</sup> | boolean                                                      | 否 | 否  | 系统账号创建是否完整。true表示指定账号已创建完整；false表示指定账号未创建完整。              |
+| distributedInfo                | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 否 | 否  | 分布式账号信息，默认为空。                    |
+| domainInfo<sup>8+</sup>        | [DomainAccountInfo](#domainaccountinfo8)                      | 否 | 否  | 域账号信息，默认为空。                        |
 
 ## DomainAccountInfo<sup>8+</sup>
 
@@ -2994,11 +3200,11 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-| 名称      | 类型   | 必填 | 说明       |
-| ----------- | ------ | ---- | ---------- |
-| domain      | string | 是   | 域名。     |
-| accountName | string | 是   | 域账号名。 |
-| serverConfigId<sup>18+</sup> | string | 否   | 域账号配置ID。 |
+| 名称      | 类型   | 只读  | 可选 | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| domain      | string | 否 | 否  | 域名。     |
+| accountName | string | 否 | 否  | 域账号名。 |
+| serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。 |
 
 ## DomainServerConfig<sup>18+</sup>
 
@@ -3006,11 +3212,11 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-| 名称      | 类型   | 必填 | 说明       |
-| ----------- | ------ | ---- | ---------- |
-| parameters | Record<string, Object> | 是   | 服务器配置参数。 |
-| id | string | 是   | 服务器配置标识。|
-| domain | string | 是 | 服务器所属的域。 |
+| 名称      | 类型   | 只读  | 可选 | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| parameters | Record<string, Object> | 否 | 否  | 服务器配置参数。 |
+| id | string | 否 | 否  | 服务器配置标识。|
+| domain | string | 否 | 否  | 服务器所属的域。 |
 
 ## DomainServerConfigManager<sup>18+</sup>
 
@@ -3030,7 +3236,7 @@ static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;Dom
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
-| parameters   | Record<string, Object>  | 是  | 指示域服务器配置参数。 |
+| parameters   | Record<string, Object>  | 是  | 表示域服务器配置参数。 |
 
 **返回值：**
 
@@ -3039,6 +3245,8 @@ static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;Dom
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回新添加的域服务器配置。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3051,17 +3259,19 @@ static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;Dom
 | 12300215 | The number of server config reaches the upper limit. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
+    console.info('add server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3079,7 +3289,7 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
-| configId   | string  | 是  | 指示服务器配置标识。 |
+| configId   | string  | 是  | 表示服务器配置标识。 |
 
 **返回值：**
 
@@ -3088,6 +3298,8 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 | Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3098,19 +3310,21 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 | 12300214 | Server config has been associated with an account. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
     osAccount.DomainServerConfigManager.removeServerConfig(serverConfig.id);
-    console.log('remove domain server configuration successfully');
+    console.info('remove domain server configuration successfully');
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3128,8 +3342,8 @@ static updateServerConfig(configId: string, parameters: Record&lt;string, Object
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
-| configId   | string  | 是  | 指示服务器配置标识。 |
-| parameters   | Record&lt;string, Object&gt;  | 是  | 指示域服务器配置参数。 |
+| configId   | string  | 是  | 表示服务器配置标识。 |
+| parameters   | Record&lt;string, Object&gt;  | 是  | 表示域服务器配置参数。 |
 
 **返回值：**
 
@@ -3138,6 +3352,8 @@ static updateServerConfig(configId: string, parameters: Record&lt;string, Object
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回更新后的域服务器配置。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
@@ -3151,22 +3367,24 @@ static updateServerConfig(configId: string, parameters: Record&lt;string, Object
 | 12300214 | Server config has been associated with an account. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
     osAccount.DomainServerConfigManager.updateServerConfig(serverConfig.id, configParams).then((data) => {
-      console.log('update domain server configuration successfully, return config: ' + JSON.stringify(data));
+      console.info('update domain server configuration successfully, return config: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      console.error('update domain server configuration failed, error: ' + JSON.stringify(err));
+      console.error(`update domain server configuration failed, code is ${err.code}, message is ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3184,7 +3402,7 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
-| configId   | string  | 是  | 指示服务器配置标识。 |
+| configId   | string  | 是  | 表示服务器配置标识。 |
 
 **返回值：**
 
@@ -3194,6 +3412,8 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
@@ -3202,22 +3422,24 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 | 12300212 | Server config not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
     osAccount.DomainServerConfigManager.getServerConfig(serverConfig.id).then((data: osAccount.DomainServerConfig) => {
-      console.log('get domain server configuration successfully, return config: ' + JSON.stringify(data));
+      console.info('get domain server configuration successfully, return config: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      console.error('get domain server configuration failed, error: ' + JSON.stringify(err));
+      console.error(`get domain server configuration failed, code is ${err.code}, message is ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3239,6 +3461,8 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
@@ -3246,22 +3470,24 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 | 12300001 | The system service works abnormally. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let configParams: Record<string, Object> = {
     'uri': 'test.example.com',
     'port': 100
   };
   osAccount.DomainServerConfigManager.addServerConfig(configParams).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
+    console.info('add domain server configuration successfully, the added config: ' + JSON.stringify(serverConfig));
     osAccount.DomainServerConfigManager.getAllServerConfigs().then((data: Array<osAccount.DomainServerConfig>) => {
-      console.log('get all domain server configuration successfully, return config: ' + JSON.stringify(data));
+      console.info('get all domain server configuration successfully, return config: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-      console.error('get all domain server configuration failed, error: ' + JSON.stringify(err));
+      console.error(`get all domain server configuration failed, code is ${err.code}, message is ${err.message}`);
     });
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -3279,7 +3505,7 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
-| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是  | 指示目标域账号信息。 |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是  | 表示目标域账号信息。 |
 
 **返回值：**
 
@@ -3289,6 +3515,8 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 
 **错误码：**
 
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
 | 201 | Permission denied.|
@@ -3297,17 +3525,19 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 | 12300003 | Domain account not found. |
 
 **示例：**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let accountInfo: osAccount.DomainAccountInfo = {
     'accountName': 'demoName',
     'domain': 'demoDomain'
   };
   osAccount.DomainServerConfigManager.getAccountServerConfig(accountInfo).then((
     serverConfig: osAccount.DomainServerConfig) => {
-    console.log('get account server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
+    console.info('get account server configuration successfully, the return config: ' + JSON.stringify(serverConfig));
   }).catch((err: BusinessError) => {
-    console.error('add server configuration failed, error: ' + JSON.stringify(err));
+    console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
 

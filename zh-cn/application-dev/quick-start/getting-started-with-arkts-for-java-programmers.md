@@ -1,5 +1,12 @@
 # 从Java到ArkTS的迁移指导
 
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @fanglou-->
+<!--Designer: @qyhuo32-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @zhang_yixin13-->
+
 对于熟悉Java的开发者而言，ArkTS作为新的开发语言，带来了全新的开发体验与机遇。ArkTS在语法和编程范式上不仅继承了现代语言的特性，还针对生态进行了深度优化。理解Java与ArkTS的差异和共性，能够帮助开发者快速上手应用开发，避开常见的编程误区。
 
 本文档基于Java语言对ArkTS语言进行对比和介绍。如需更详细的了解，可参考[ArkTS语言介绍](./introduction-to-arkts.md)。
@@ -139,7 +146,7 @@ ArkTS的类系统在语法层面与Java相似，但在高阶特性上展现出�
 |------------|------------|------------------|-------------------------------|
 | 命名空间组织    | 静态嵌套类/内部类     | `namespace`关键字或模块文件结构。           | 支持显式命名空间与模块化组织的混合模式。   |
 | 类继承机制        | 基于类的继承体系        | 基于原型链的继承机制。           | 语法相似但底层机制不同。        |
-| 类成员可见性    | public/private/protected       | 同Java，但支持模块级可见性控制。          | 增加了模块导出控制的维度。|
+| 类成员可见性    | public/private/protected       | 同Java，但支持[模块级](../arkts-utils/module-principle.md)可见性控制。          | 增加了模块导出控制的维度。|
 
 **命名空间管理** 
 
@@ -160,20 +167,6 @@ namespace Models {
 ```
 
 相比Java的package+static class组合，ArkTS的命名空间能更直观地实现代码分层。
-
-**类成员初始化**
-
-ArkTS支持在类体内直接初始化属性。
-
-**ArkTS示例：**
-
-```typescript
-class User {
-    private name: string = 'Default'
-}
-```
-
-Java需要显式构造函数或初始化块。
 
 ### 异步编程模型
 

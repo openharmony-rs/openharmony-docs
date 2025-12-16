@@ -1,5 +1,16 @@
 # OH_Huks_KeyInfo
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+```c
+struct OH_Huks_KeyInfo {...}
+```
+
 ## 概述
 
 定义密钥信息的结构体类型。
@@ -16,7 +27,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [struct OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) alias | 密钥的别名。 |
-| [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md)* paramSet | 指向密钥参数集的指针。 |
+| struct [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) alias | 密钥的别名。 |
+| struct [OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | 指向密钥参数集的指针。 |
 
 

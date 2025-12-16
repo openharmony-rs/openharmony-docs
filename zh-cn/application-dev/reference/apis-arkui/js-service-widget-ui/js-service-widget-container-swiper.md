@@ -1,4 +1,10 @@
 # swiper
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 滑动容器，提供切换子组件显示的能力。
@@ -93,7 +99,7 @@
   }
 }
 ```
-**4*4卡片**
+**4×4卡片**
 
 ![卡片swiper](figures/swiper.png)
 

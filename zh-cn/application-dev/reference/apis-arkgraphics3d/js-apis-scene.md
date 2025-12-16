@@ -1,4 +1,10 @@
 # @ohos.graphics.scene (ArkGraphics 3D模块)
+<!--Kit: ArkGraphics 3D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @zzhao0-->
+<!--Designer: @zdustc-->
+<!--Tester: @zhangyue283-->
+<!--Adviser: @ge-yafang-->
 
 @ohos.graphics.scene将3D开发相关模块的API组织在一起，方便开发者进行导出使用。
 
@@ -8,7 +14,7 @@
 
 ## Scene
 
-[Scene](js-apis-inner-scene.md)：ArkGraphics 3D基础模块，提供SceneResourceParamters、SceneNodeParamters等通用数据类型。同时提供glTF模型加载，场景元素、资源创建等基础方法。
+[Scene](js-apis-inner-scene.md)：ArkGraphics 3D基础模块，提供SceneResourceParameters、SceneNodeParameters等通用数据类型。同时提供glTF模型加载，场景元素、资源创建等基础方法。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 

@@ -1,4 +1,12 @@
 #  @ohos.app.ability.application (Application) (System API)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 You can use this module to create a [Context](../../application-models/application-context-stage.md).
 
 > **NOTE**
@@ -15,15 +23,13 @@ import { application } from '@kit.AbilityKit';
 
 createModuleContext(context: Context, bundleName: string, moduleName: string): Promise\<Context>
 
-Creates the context for a module.
+Creates the context for a module. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - Since API version 18, the context can obtain the [process name](js-apis-inner-application-context.md#properties) of the current application. The **processName** property in the context created by **createModuleContext** is the same as the **processName** property in the input parameter **Context**. The values of other properties are obtained based on the input parameters **Context**, **bundleName**, and **moduleName**.
+> - Starting from API version 18, the context can obtain the [process name](js-apis-inner-application-context.md#context) of the current application. The **processName** property in the context created by **createModuleContext** is the same as the **processName** property in the input parameter **Context**. The values of other properties are obtained based on the input parameters **Context**, **bundleName**, and **moduleName**.
 >
-> - This API requires multiple bundle information queries and loads all resources of the specified module, which can be quite slow. To optimize performance, you are advised to cache the created context during the first use to prevent repeated calls for context creation.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
+> - Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the **createModuleContext** API to create multiple context instances, as this may negatively impact user experience.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -80,13 +86,11 @@ export default class EntryAbility extends UIAbility {
 
 createBundleContext(context: Context, bundleName: string): Promise\<Context>
 
-Creates the context for an application.
+Creates the context for an application. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> Since API version 18, the context can obtain the [process name](js-apis-inner-application-context.md#properties) of the current application. The **processName** property in the context created by **createBundleContext** is the same as the **processName** property in the input parameter **Context**. The values of other properties are obtained based on the input parameters **Context**, **bundleName**, and **moduleName**.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
+> Starting from API version 18, the context can obtain the [process name](js-apis-inner-application-context.md#context) of the current application. The **processName** property in the context created by **createBundleContext** is the same as the **processName** property in the input parameter **Context**. The values of other properties are obtained based on the input parameters **Context**, **bundleName**, and **moduleName**.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -134,6 +138,71 @@ export default class EntryAbility extends UIAbility {
       })
     } catch (error) {
       console.error(`createBundleContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
+    }
+  }
+}
+
+```
+## application.createPluginModuleContextForHostBundle<sup>20+</sup>
+
+createPluginModuleContextForHostBundle(context: Context, pluginBundleName: string, pluginModuleName: string, hostBundleName: string): Promise\<Context>
+
+Creates the context for a plugin based on a given context, plugin bundle name, plugin module name, and application bundle name to obtain the basic information about the plugin. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name       | Type                                      | Mandatory  | Description            |
+| --------- | ---------------------------------------- | ---- | -------------- |
+| context | [Context](js-apis-inner-application-context.md) | Yes| Application context.|
+| pluginBundleName | string | Yes| Bundle name of the plugin.|
+| pluginModuleName | string | Yes| Module name of the plugin.|
+| hostBundleName | string | Yes| Bundle name of the application for which the plugin is installed.|
+
+**Return value**
+
+| Type              | Description               |
+| ------------------ | ------------------- |
+| Promise\<[Context](js-apis-inner-application-context.md)> | Promise used to return the context created, in which the **processName** and **config** properties are the same as those of the input context.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201      | Permission denied. |
+| 202      | Permission denied, non-system app called system api. |
+
+**Example**
+
+```ts
+import { AbilityConstant, UIAbility, application, common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    let moduleContext: common.Context;
+    try {
+      application.createPluginModuleContextForHostBundle(this.context, 'com.example.pluginBundleName', 'pluginModuleName', 'com.example.hostBundleName')
+        .then((data: Context) => {
+          moduleContext = data;
+          console.info('createPluginModuleContextForHostBundle success!');
+        })
+        .catch((error: BusinessError) => {
+          let code: number = (error as BusinessError).code;
+          let message: string = (error as BusinessError).message;
+          console.error(`createPluginModuleContextForHostBundle failed, error.code: ${code}, error.message: ${message}`);
+        });
+    } catch (error) {
+      let code: number = (error as BusinessError).code;
+      let message: string = (error as BusinessError).message;
+      console.error(`createPluginModuleContextForHostBundle failed, error.code: ${code}, error.message: ${message}`);
     }
   }
 }

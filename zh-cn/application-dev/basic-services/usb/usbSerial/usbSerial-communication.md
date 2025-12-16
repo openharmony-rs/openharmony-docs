@@ -1,5 +1,12 @@
 # USB串口通信管理
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: USB-->
+<!--Owner: @hwymlgitcode-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 简介
 
 USB串口通信服务中通过Host设备的USB接口连接串口设备的串口进行串行数据传输，通信管理核心目标是实现设备间的高效、稳定数据传输与协同控制。主要使用在工业自动化与远程监控、物联网设备互联、医疗设备管理等场景。
@@ -35,103 +42,153 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
 
 1. 导入模块。
 
-    ```ts
-    // 导入usbManager模块。
-    import serial from '@ohos.usbManager.serial';
-    import { buffer } from '@kit.ArkTS';
-    ``` 
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 导入usbManager模块
+   import { serialManager } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@kit.BasicServicesKit'
+   import { buffer } from '@kit.ArkTS';
+   import { JSON } from '@kit.ArkTS';
+   ```
+
 
 2. 获取设备列表。
 
-    ```ts
-    // 获取连接主设备的USB设备列表
-    let portList: serial.SerialPort[] = serial.getPortList();
-    console.info(`usbSerial portList: ${portList}`);
-    if (portList === undefined || portList.length === 0) {
-      console.error('usbSerial portList is empty');
-      return;
-    }
-    ```
+   <!-- @[getPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取连接主设备的USB设备列表
+   let portList: serialManager.SerialPort[] = serialManager.getPortList();
+   console.info(`usbSerial portList: ${portList}`);
+   this.logInfo_ += '\n[INFO] usbSerial portList: ' + JSON.stringify(portList);
+   if (portList === undefined || portList.length === 0) {
+     console.error('usbSerial portList is empty');
+     this.logInfo_ += '\n[ERROR] usbSerial portList is empty';
+     return;
+   }
+   this.portList_ = portList;
+   ```
+
 
 3. 获取设备操作权限。
 
-    ```ts
-    // 此处对列表中的第一台USB设备判断是否拥有访问权限
-    let portId: number = portList[0].portId;
-    if (!serial.hasSerialRight(portId)) {
-      await serial.requestSerialRight(portId).then(result => {
-        if(!result) {
-          // 没有访问设备的权限且用户不授权则退出
-          console.error('The user does not have permission to perform this operation');
-          return;
-        }
-      });
-    }
-    ```
+   <!-- @[requestSerialRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.portList_ === undefined || this.portList_.length === 0) {
+     console.error('usbSerial portList is empty');
+     this.logInfo_ += '\n[ERROR] usbSerial portList is empty';
+     return;
+   }
+   let portList: serialManager.SerialPort[] = this.portList_;
+   let portId: number = portList[0].portId;
+   if (!serialManager.hasSerialRight(portId)) {
+     serialManager.requestSerialRight(portId).then((result: boolean) => {
+       console.info('serial device request right result: ' + result);
+       this.logInfo_ += '\n[INFO] serial device request right result: ' + JSON.stringify(result);
+     }).catch((error: BusinessError) => {
+       console.error(`usb device request right failed : ${error}`);
+       this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     });
+   } else {
+     console.info('serial device already request right');
+     this.logInfo_ += '\n[INFO] serial device already request right';
+   }
+   this.portId_ = portId;
+   ```
+
 
 4. 根据串口打开设备。
 
-    ```ts
-    try {
-      serial.open(portId)
-      console.info(`open usbSerial success, portId: ${portId}`);
-    } catch (error) {
-      console.error(`open usbSerial error： ${error}`);
-    }
-    ```
+   <!-- @[openSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let portId: number = this.portId_;
+   try {
+     serialManager.open(portId)
+     console.info(`open usbSerial success, portId: ${portId}`);
+     this.logInfo_ += '\n[INFO] open usbSerial success, portId: ' + JSON.stringify(portId);
+   } catch (error) {
+     console.error(`open usbSerial error： ${error}`);
+     this.logInfo_ += '\n[ERROR] open usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
+
 
 5. 通过串口读取数据。
 
-    ```ts
-    // 异步读取 
-    let readBuffer: Uint8Array = new Uint8Array(64);
-    serial.read(portId, readBuffer, 2000).then((size: number) => {
-      console.info(`read usbSerial success, readBuffer: ${readBuffer}`);
-    }).catch((error: Error) => {
-      console.error(`read usbSerial error: ${error}`);
-    })
+   <!-- @[serialRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let portId: number = this.portId_;
+   // 异步读取
+   let readBuffer: Uint8Array = new Uint8Array(64);
+   serialManager.read(portId, readBuffer, 2000).then((size: number) => {
+     console.info(`readAsync usbSerial success, readAsyncBuffer: ${readBuffer}`);
+     this.logInfo_ += '\n[INFO] readAsync usbSerial success, readAsyncBuffer: ' + JSON.stringify(readBuffer);
+   }).catch((error: Error) => {
+     console.error(`readAsync usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] readAsync usbSerial error: ' + JSON.stringify(error);
+   })
+   
+   // 同步读取
+   let readSyncBuffer: Uint8Array = new Uint8Array(64);
+   try {
+     serialManager.readSync(portId, readSyncBuffer, 2000);
+     console.info(`readSync usbSerial success, readSyncBuffer: ${readSyncBuffer}`);
+     this.logInfo_ += '\n[INFO] readSync usbSerial success, readSyncBuffer: ' + JSON.stringify(readSyncBuffer);
+   } catch (error) {
+     console.error(`readSync usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] readSync usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
 
-    // 同步读取
-    let readSyncBuffer: Uint8Array = new Uint8Array(64);
-    try {
-      serial.readSync(portId, readSyncBuffer, 2000);
-      console.info(`readSync usbSerial success, readSyncBuffer: ${readSyncBuffer}`);
-    } catch (error) {
-      console.error(`readSync usbSerial error: ${error}`);
-    }
-    ```
 
 6. 通过串口写入数据。
 
-    ```ts
-    // 异步写入
-    let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-    serial.write(portId, writeBuffer, 2000).then((size: number) => {
-      console.info(`write usbSerial success, writeBuffer: ${writeBuffer}`);
-    }).catch((error: Error) => {
-      console.error(`write usbSerial error: ${error}`);
-    })
-
-    // 同步写入
-    let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
-    try {
-      serial.writeSync(portId, writeSyncBuffer, 2000);
-      console.info(`writeSync usbSerial success, writeSyncBuffer: ${writeSyncBuffer}`);
-    } catch (error) {
-      console.error(`writeSync usbSerial error: ${error}`);
-    }
-    ```
+   <!-- @[serialWrite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
    
-7. 关闭串口设备
+   ``` TypeScript
+   let portId: number = this.portId_;
+   // 异步写入
+   let writeBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+   serialManager.write(portId, writeBuffer, 2000).then((size: number) => {
+     console.info(`writeAsync usbSerial success, writeAsyncBuffer: ${writeBuffer}`);
+     this.logInfo_ += '\n[INFO] writeAsync usbSerial success, writeAsyncBuffer: ' + JSON.stringify(writeBuffer);
+   }).catch((error: Error) => {
+     console.error(`writeAsync usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] writeAsync usbSerial error: ' + JSON.stringify(error);
+   })
+   
+   // 同步写入
+   let writeSyncBuffer: Uint8Array = new Uint8Array(buffer.from('Hello World', 'utf-8').buffer)
+   try {
+     serialManager.writeSync(portId, writeSyncBuffer, 2000);
+     console.info(`writeSync usbSerial success, writeSyncBuffer: ${writeSyncBuffer}`);
+     this.logInfo_ += '\n[INFO] writeSync usbSerial success, writeSyncBuffer: ' + JSON.stringify(writeSyncBuffer);
+   } catch (error) {
+     console.error(`writeSync usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] writeSync usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
 
-    ```ts
-    try {
-      serial.close(portId);
-      console.info(`close usbSerial success, portId: ${portId}`);
-    } catch (error) {
-      console.error(`close usbSerial error: ${error}`);
-    }
-    ```
+   
+7. 关闭串口设备。
+
+   <!-- @[closeSerialDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let portId: number = this.portId_;
+   try {
+     serialManager.close(portId);
+     console.info(`close usbSerial success, portId: ${portId}`);
+     this.logInfo_ += '\n[INFO] close usbSerial success, portId: ' + JSON.stringify(portId);
+   } catch (error) {
+     console.error(`close usbSerial error: ${error}`);
+     this.logInfo_ += '\n[ERROR] close usbSerial error: ' + JSON.stringify(error);
+   }
+   ```
 
 ### 调测验证
 

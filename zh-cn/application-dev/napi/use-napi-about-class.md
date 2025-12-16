@@ -1,4 +1,10 @@
 # 使用Node-API进行class相关开发
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
@@ -10,6 +16,7 @@
 
 - **类**：类是用于创建对象的模板。它提供了一种封装数据和行为的方式，以便于对数据进行处理和操作。类在ArkTS中是建立在原型（prototype）的基础上的，并且还引入了一些类独有的语法和语义。
 - **实例**：实例是通过类创建具体的对象。类定义了对象的结构和行为，而实例则是类的具体表现。通过实例化类，我们可以访问类中定义的属性和方法，并且每个实例都具有自己的属性值。
+- **原型**：ArkTS也采用Class的概念来实现类型之间的继承，早期EcmaScript规范定义了原型的概念，对象通过原型链的方式来实现继承的。原型的概念可以参考[EcmaScript的社区规范](https://262.ecma-international.org/#sec-terms-and-definitions-prototype)。
 
 ## 场景和功能介绍
 
@@ -38,6 +45,8 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 cpp部分代码
 
 ```cpp
+#include "napi/native_api.h"
+
 static napi_value NewInstance(napi_env env, napi_callback_info info)
 {
     // 传入并解析参数，第一个参数为传入的构造函数，第二个参数为需要传入构造函数的参数
@@ -50,7 +59,7 @@ static napi_value NewInstance(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_new_instance](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_new_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -58,13 +67,14 @@ static napi_value NewInstance(napi_env env, napi_callback_info info)
 // index.d.ts
 export const newInstance: (obj: Object, param: string) => Object;
 ```
-<!-- @[napi_new_instance_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_new_instance_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Fruit {
   name: string;
   constructor(name: string) {
@@ -76,7 +86,7 @@ let obj = testNapi.newInstance(Fruit, 'test');
 // 打印实例化对象obj的信息
 hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(obj));
 ```
-<!-- @[ark_napi_new_instance](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_new_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_new_target
 
@@ -104,7 +114,7 @@ hilog.info(0x0000, 'Node-API', 'napi_new_instance %{public}s', JSON.stringify(ob
 
 ### napi_unwrap
 
-从一个被包装的对象中解除包装并获取与之关联的数据指针。
+从一个被包装的对象中获取与之关联的数据指针。
 
 > **说明：**
 >
@@ -135,7 +145,10 @@ struct Object {
 static void DerefItem(napi_env env, void *data, void *hint) {
     // 可选的原生回调，用于在ArkTS对象被垃圾回收时释放原生实例
     OH_LOG_INFO(LOG_APP, "Node-API DerefItem");
-    (void)hint;
+    Object *obj = reinterpret_cast<Object *>(data);
+    if (obj != nullptr) {
+        delete obj;
+    }
 }
 
 static napi_value Wrap(napi_env env, napi_callback_info info)
@@ -148,7 +161,12 @@ static napi_value Wrap(napi_env env, napi_callback_info info)
     size_t argc = 1;
     napi_value toWrap;
     // 调用napi_wrap将Node-API模块的object绑定到ArkTS object上
-    napi_get_cb_info(env, info, &argc, &toWrap, NULL, NULL);
+    napi_status status_cb = napi_get_cb_info(env, info, &argc, &toWrap, NULL, NULL);
+    if (status_cb != napi_ok) {
+        OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed");
+        delete obj;
+        return nullptr;
+    }
     napi_status status = napi_wrap(env, toWrap, reinterpret_cast<void *>(obj), DerefItem, NULL, NULL);
     if (status != napi_ok) {
         // 主动释放内存
@@ -167,7 +185,6 @@ static napi_value RemoveWrap(napi_env env, napi_callback_info info)
     // 调用napi_remove_wrap从一个被包装的对象中解除包装
     napi_get_cb_info(env, info, &argc, &wrapped, nullptr, nullptr);
     napi_remove_wrap(env, wrapped, &data);
-
     return nullptr;
 }
 
@@ -178,14 +195,18 @@ static napi_value UnWrap(napi_env env, napi_callback_info info)
     napi_value wrapped = nullptr;
     napi_get_cb_info(env, info, &argc, &wrapped, nullptr, nullptr);
     // 调用napi_unwrap取出绑定在ArkTS object中的数据并打印
-    struct Object *data;
-    napi_unwrap(env, wrapped, reinterpret_cast<void **>(&data));
+    struct Object *data = nullptr;
+    napi_status status = napi_unwrap(env, wrapped, reinterpret_cast<void **>(&data));
+    if (status != napi_ok || data == nullptr) {
+        OH_LOG_ERROR(LOG_APP, "Node-API napi_unwrap failed or data is nullptr");
+        return nullptr;
+    }
     OH_LOG_INFO(LOG_APP, "Node-API name: %{public}s", data->name.c_str());
     OH_LOG_INFO(LOG_APP, "Node-API age: %{public}d", data->age);
     return nullptr;
 }
 ```
-<!-- @[napi_wrap_unwrap_remove_wrap](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_wrap_unwrap_remove_wrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -195,13 +216,14 @@ export const wrap: (obj: Object) => Object;
 export const unWrap: (obj: Object) => void;
 export const removeWrap: (obj: Object) => void;
 ```
-<!-- @[napi_wrap_unwrap_remove_wrap_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_wrap_unwrap_remove_wrap_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
     class Obj {}
     let obj: Obj = {};
@@ -212,7 +234,7 @@ try {
     hilog.error(0x0000, 'testTag', 'Test Node-API error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_wrap_unwrap_remove_wrap](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_wrap_unwrap_remove_wrap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/ets/pages/Index.ets) -->
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 
@@ -220,6 +242,5 @@ try {
 // CMakeLists.txt
 add_definitions( "-DLOG_DOMAIN=0xd0d0" )
 add_definitions( "-DLOG_TAG=\"testTag\"" )
-target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
+target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ```
-<!-- @[](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIClass/entry/src/main/cpp/CMakeLists.txt) -->

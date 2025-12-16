@@ -1,4 +1,10 @@
 # 用户状态感知开发指导
+<!--Kit: Multimodal Awareness Kit-->
+<!--Subsystem: MultimodalAwareness-->
+<!--Owner: @dilligencer-->
+<!--Designer: @zou_ye-->
+<!--Tester: @judan-->
+<!--Adviser: @hu-zhiqiong-->
 
 UserStatus（用户状态感知）模块提供用户感知能力，可以感知到操作者特定状态，例如：检测用户年龄组。
 
@@ -7,6 +13,8 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
 ## 感知用户年龄组开发指导
 ### 场景介绍
 当应用需要获取用户年龄分类时，可以调用userStatus模块，例如判断设备具体操作者是儿童还是成年人。
+
+从API version 20开始，支持获取用户年龄组。
 
 ### 接口说明
 
@@ -17,7 +25,8 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
 
 ### 约束与限制
 
- - 设备需支持触控屏并兼容特定芯片。
+ - 此功能如果设备不支持，将返回801错误码。
+<!--RP1--> <!--RP1End-->
 
 ### 开发步骤
 
@@ -26,16 +35,17 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
    ```ts
    import { userStatus } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@ohos.base';
    ```
+   <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
-2. 定义回调，函数接受年龄群组检测结果。
+2. 定义回调函数，监听年龄群组检测结果变化。
 
    ```
    let callback : Callback<userStatus.UserClassification> = (data : userStatus.UserClassification) => {
-     console.info('callback success, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
+     console.info('callback succeeded, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
    };
    ```
+   <!-- @[user_status_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅年龄群组检测功能。
 
@@ -48,6 +58,7 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
       console.error("Failed on and err code is " + error.code);
    }
    ```
+   <!-- @[user_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消订阅年龄群组检测功能。
 
@@ -60,3 +71,4 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
       console.error("Failed off and err code is " + error.code);
    }
    ```
+   <!-- @[user_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->

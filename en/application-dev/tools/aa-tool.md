@@ -1,10 +1,17 @@
 # Ability Assistant
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @lidongrui-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 Ability Assistant (aa) is a tool used to start applications and test cases. It provides basic application debugging and testing capabilities, for example, starting application components, forcibly stopping processes, and printing application component information.
 
 ## Environment Setup
 
-Before using this tool, you must obtain the <!--Del-->[<!--DelEnd-->hdc tool<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd--> and run the hdc shell command.
+Before using this tool, you need to obtain [hdc](../dfx/hdc.md) and run the **hdc shell** command.
 
 The commands in this topic are used in the interactive CLI. To run the hdc shell [aa command] directly, use quotation marks ("") to wrap the aa command to ensure that the input parameters in the command can be correctly identified. The sample code is as follows:
 
@@ -22,7 +29,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 |--------|--------|
 | -h/help |  Displays the help information of the aa tool.|
 | start |  Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.|
-| stop-service |  Stops a ServiceAbility.|
+| stop-service | Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.|
 | dump<sup>(deprecated)</sup> |  Prints information about an application component.|
 | force-stop |  Forcibly stops a process based on the bundle name.|
 | test |  Starts the test framework based on the carried parameters.|
@@ -30,6 +37,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 | detach |  Detaches an application to enable it to exit the debugging mode.|
 | appdebug |  Sets or cancels the waiting-for-debugging state of an application, and obtains the bundle name and persistence flag of an application in the waiting-for-debugging state. The waiting-for-debugging state takes effect only for debugging applications. The setting command of **appdebug** takes effect only for a single application. Once the command is executed repeatedly, the bundle name and persistence flag are replaced with the latest settings.|
 | process |  Debugs or optimizes an application. In DevEco Studio, this command is used to integrate debugging and optimization tools.|
+| send-memory-level |  Triggers the **onMemoryLevel** lifecycle callback of a process based on its PID and memory usage level.|
 
 ## help
 
@@ -43,38 +51,44 @@ aa help
 Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.
 
 ```bash
-# Display the ability started.
-aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-D] [-R] [-S] [--pi <key> <integer-value>] [--pb <key> <bool-value: true/false/t and f are case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+# Start an ability explicitly.
+# To enable an application clone, use [--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>] to specify the index of the application clone.
+aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case-insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
 # Implicitly start an ability. If none of the parameters in the command is set, the startup fails.
-aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-D] [-R] [--pi <key> <integer-value>] [--pb <key> <bool-value: true/false/t and f are case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f is case insensitive] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 ```
 
   **Parameters**
 
-| Name| Description             |
-| -------- |-------------------|
-| -h/--help | Help information.            |
-| -d | Device ID. This parameter is optional.   |
-| -a | Ability name. This parameter is optional.|
-| -b | Bundle name. This parameter is optional. |
-| -m | Module name. This parameter is optional. |
-| -U | URI. This parameter is optional.        |
-| -A | Action. This parameter is optional.     |
-| -e | Entity. This parameter is optional.     |
-| -t | Type. This parameter is optional.       |
-| --pi  | Key-value pair of the integer type. This parameter is optional.    |
-| --pb  | Key-value pair of the Boolean type. This parameter is optional.    |
-| --ps  | Key-value pair of the string type. This parameter is optional.   |
-| --psn | Keyword of an empty string. This parameter is optional.    |
-| --wl | Left margin of the window, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
-| --wt | Top margin of the window, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
-| --wh | Window height, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
-| --ww | Window width, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
-| -R | Whether to enable multi-thread error detection during debugging. This parameter is optional. The detection is enabled when this parameter is passed in.<br>**NOTE**: This parameter is supported since API version 14.|
-| -S | Whether to enter the application sandbox during debugging. This parameter is optional. If this parameter is carried, the application sandbox is entered. Otherwise, the application sandbox is not entered.|
-| -D | Debugging mode. This parameter is optional.       |
-| -p | Optimization mode. This parameter is optional. This command can be customized.       |
+  | Name| Description             |
+  | -------- |-------------------|
+  | -h/--help | Help information.            |
+  | -d | Device ID. This parameter is optional.   |
+  | -a | Ability name. This parameter is optional.|
+  | -b | Bundle name. This parameter is optional. |
+  | -m | Module name. This parameter is optional. |
+  | -U | URI. This parameter is optional.<br>Note: Only strings can be passed.|
+  | -A | Action. This parameter is optional.     |
+  | -e | Entity. This parameter is optional.     |
+  | -t | Type. This parameter is optional.       |
+  | --pi  | Key-value pair of the integer type. This parameter is optional.<br>Note: Only unsigned integer values are supported.    |
+  | --pb  | Key-value pair of the Boolean type. This parameter is optional.    |
+  | --ps  | Key-value pair of the string type. This parameter is optional.<br>Note: The string value cannot start with a hyphen (-).   |
+  | --psn | Keyword of an empty string. This parameter is optional.    |
+  | --wl | Left margin of the window, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
+  | --wt | Top margin of the window, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
+  | --wh | Window height, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
+  | --ww | Window width, in px. This parameter is optional.<br>**Constraints**:<br>This field is valid only when the 2-in-1 device is in developer mode and the application to start uses a debug signature.|
+  | -c | Whether to enable ability through cross-device migration during debugging. This parameter is optional. The cross-device migration scenario is used when this parameter is passed in.|
+  | -E | Whether to display detailed exception information during debugging. This parameter is optional. The detailed exception information is displayed when this parameter is passed in.<br>**NOTE**: This parameter is supported since API version 14.|
+  | -R | Whether to enable multi-thread error detection during debugging. This parameter is optional. The detection is enabled when this parameter is passed in.<br>**NOTE**: This parameter is supported since API version 14.|
+  | -S | Whether to enter the application sandbox during debugging. This parameter is optional. If this parameter is carried, the application sandbox is entered. Otherwise, the application sandbox is not entered.|
+  | -D | Debugging mode. This parameter is optional.       |
+  | -N | Whether to enable debugging during the startup phase. This parameter is optional.       |
+  | -C | Whether to enable ASan debugging. This parameter is optional.       |
+  | -p | Optimization mode. This parameter is optional. This command can be customized.       |
+  | -W | Optimization mode. This parameter is optional. It measures the time taken for a UIAbility to launch and transition to the foreground.<br>**NOTE**<br>&emsp; - This parameter is supported since API version 20.<br>&emsp; - This parameter is valid only when the UIAbility starts explicitly (the **-b** and **-a** parameters must be passed in).<br>**In normal cases, the following information is displayed**:<br>&emsp; - **StartMode**: UIAbility startup mode. The value can be **Cold** or **Hot**.<br>&emsp; - **BundleName**: bundle name of the target application.<br>&emsp; - **AbilityName**: ability name of the target application.<br>&emsp; - **ModuleName**: module name of the target application. If the command contains the **-m** parameter, **moduleName** is printed.<br>&emsp; - **TotalTime**:<br>&emsp;&emsp;&emsp;Cold start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the first frame of the UIAbility is drawn, in ms.<br>&emsp;&emsp;&emsp;Hot start scenario: duration from when the system receives the request for starting the UIAbility from AA to when the UIAbility is switched to the foreground, in ms.<br>&emsp; - **WaitTime**: duration from when the command starts to when the command execution is complete, in ms.<br>**If an exception occurs, the following information is displayed**:<br>&emsp; - "The wait option does not support starting implict": Implicit startup is not supported.<br>&emsp; - "The wait option does not support starting non-uiability": Non-UIAbility components cannot be started.  |
 
   **Return value**
 
@@ -82,25 +96,25 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-D]
 
   **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 10103001 | Failed to verify the visibility of the target ability. |
-| 10104001 | The specified ability does not exist. |
-| 10105001 | Failed to connect to the ability service. |
-| 10105002 | Failed to obtain ability information. |
-| 10106002 | The target application does not support debug mode. |
-| 10100101 | Failed to obtain application information. |
-| 10100102 | The aa start command cannot be used to launch a UIExtensionAbility. |
-| 10103101 | Failed to find a matching application for implicit launch. |
-| 10103102 | The passed appCloneIndex is invalid. |
-| 10106101 | The current ability will be placed in the queue to wait for the previous ability to finish launching. |
-| 10106102 | The device screen is locked during the application launch. |
-| 10106103 | The target application is an expired crowdtesting application. |
-| 10106105 | The target application is under control. |
-| 10106106 | The target application is managed by EDM. |
-| 10106107 | The current device does not support using window options. |
-| 10107102 | Permission verification failed for the specified process. |
-| 10108101 | An internal error occurs while attempting to launch the ability. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10103001 | Failed to verify the visibility of the target ability. |
+  | 10104001 | The specified ability does not exist. |
+  | 10105001 | Failed to connect to the ability service. |
+  | 10105002 | Failed to obtain ability information. |
+  | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
+  | 10100101 | Failed to obtain application information. |
+  | 10100102 | The aa start command cannot be used to launch a UIExtensionAbility. |
+  | 10103101 | Failed to find a matching application for implicit launch. |
+  | 10103102 | The passed appCloneIndex is invalid. |
+  | 10106101 | The current ability will be placed in the queue to wait for the previous ability to finish launching. |
+  | 10106102 | The device screen is locked during the application launch. |
+  | 10106103 | The target application is an expired crowdtesting application. |
+  | 10106105 | The target application is under control. |
+  | 10106106 | The target application is managed by EDM. |
+  | 10106107 | The current device does not support using window options. |
+  | 10107102 | Permission verification failed for the specified process. |
+  | 10108101 | An internal error occurs while attempting to launch the ability. |
 
   **Example**
 
@@ -128,7 +142,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-D]
                 "scheme": "myscheme",
                 "host": "www.test.com",
                 "port": "8080",
-                "path": "path",
+                "path": "path"
               }
             ]
           }
@@ -152,19 +166,18 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-D]
         ```
 
       The following is an example for the UIAbility to obtain input parameters:
-    
+  
         ```ts
-        import UIAbility from '@ohos.app.ability.UIAbility';
-        import hilog from '@ohos.hilog';
-        import Want from '@ohos.app.ability.Want';
+        import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
+        import { hilog } from '@kit.PerformanceAnalysisKit';
 
         export default class TargetAbility extends UIAbility {
-          onCreate(want:Want, launchParam) {
+          onCreate(want:Want, launchParam: AbilityConstant.LaunchParam) {
             hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-            let paramNumber = want.parameters.paramNumber
-            let paramBoolean = want.parameters.paramBoolean
-            let paramString = want.parameters.paramString
-            let paramNullString = want.parameters.paramNullString
+            let paramNumber = want.parameters?.paramNumber;
+            let paramBoolean = want.parameters?.paramBoolean;
+            let paramString = want.parameters?.paramString;
+            let paramNullString = want.parameters?.paramNullString;
           }
         }
         ```
@@ -180,43 +193,43 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-D]
 
 ## stop-service
 
-Stops a ServiceAbility.
+Stops an application component. The target component can be the ServiceAbility component of the FA model or the ExtensionAbility component of the Stage model.
 
 ```bash
 aa stop-service [-d <deviceId>] -a <abilityName> -b <bundleName> [-m <moduleName>]
 ```
 
   **Parameters**
-| Name| Description|
-| -------- | -------- |
-| -h/--help | Help information.|
-| -d | Device ID. This parameter is optional.|
-| -a | Ability name. This parameter is mandatory.|
-| -b | Bundle name. This parameter is mandatory.|
-| -m | Module name. This parameter is optional.|
+  | Name| Description|
+  | -------- | -------- |
+  | -h/--help | Help information.|
+  | -d | Device ID. This parameter is optional.|
+  | -a | Ability name. This parameter is mandatory.|
+  | -b | Bundle name. This parameter is mandatory.|
+  | -m | Module name. This parameter is optional.|
 
   **Return value**
 
-  Returns "stop service ability successfully." if the ServiceAbility is stopped; returns "error: failed to stop service ability." otherwise.
+  "stop service ability successfully." is returned if the ServiceAbility or ExtensionAbility is stopped; "error: failed to stop service ability." is returned otherwise.
 
   **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 10103001 | Failed to verify the visibility of the target ability. |
-| 10103201 | The target ability is not of the ServiceAbility type. |
-| 10104001 | The specified ability does not exist. |
-| 10105001 | Failed to connect to the ability service. |
-| 10105002 | Failed to obtain ability information. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10103001 | Failed to verify the visibility of the target ability. |
+  | 10103201 | The target ability is not of the ServiceAbility type. |
+  | 10104001 | The specified ability does not exist. |
+  | 10105001 | Failed to connect to the ability service. |
+  | 10105002 | Failed to obtain ability information. |
 
   **Example**
-
+  
   ```bash
   # Stop a ServiceAbility.
   aa stop-service -a EntryAbility -b com.example.myapplication -m entry
   ```
 
-## dump <sup>(deprecated)</sup>
+## dump<sup>(deprecated)</sup>
 
 Prints information about an application component.
 
@@ -229,27 +242,27 @@ aa dump -a
 > This command is supported since API version 7 and deprecated since API version 9. You are advised to use **[hidumper](../dfx/hidumper.md) -s AbilityManagerService** instead.
 
   **Parameters**
-| Name| Level-2 Parameter| Description|
-| -------- | -------- | -------- |
-| -h/--help | - | Help information.|
-| -a/--all | - | Application component information in all missions.|
-| -l/--mission-list | type (All logs are printed if this parameter is left unspecified.)| For better management, the service side maintains four types of MissionLists,<br>as described below:<br>- **NORMAL**: MissionList that is started normally. For example, if A starts B and C, the corresponding MissionList is A->B->C.<br>- **DEFAULT_STANDARD**: If a MissionList is damaged, missions with the launch type set to **multiton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **DEFAULT_SINGLE**: If a MissionList is damaged, missions with the launch type set to **singleton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **LAUNCHER**: MissionList for launcher abilities.|
-| -e/--extension | elementName | Extended component information.|
-| -u/--userId | UserId | Mission stack information of a specified user ID. This parameter must be used together with other parameters. Example commands: **aa dump -a -u 100** and **aa dump -d -u 100**.|
-| -d/--data | - | DataAbility information.|
-| -i/--ability | AbilityRecord ID | Detailed information about an application component.|
-| -c/--client | - | Detailed information about an application component. This parameter must be used together with other parameters. Example commands: **aa dump -a -c** and **aa dump -i 21 -c**.|
-| -p/--pending | - | Pending Want information. This parameter must be used together with other parameters. Example command: **aa dump -a -p**.|
-| -r/--process | - | Process information. This parameter must be used together with other parameters. Example command: **aa dump -a -r**.|
+  | Name| Level-2 Parameter| Description|
+  | -------- | -------- | -------- |
+  | -h/--help | - | Help information.|
+  | -a/--all | - | Application component information in all missions.|
+  | -l/--mission-list | type (All logs are printed if this parameter is left unspecified.)| For better management, the service side maintains four types of MissionLists,<br>as described below:<br>- **NORMAL**: MissionList that is started normally. For example, if A starts B and C, the corresponding MissionList is A->B->C.<br>- **DEFAULT_STANDARD**: If a MissionList is damaged, missions with the launch type set to **multiton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **DEFAULT_SINGLE**: If a MissionList is damaged, missions with the launch type set to **singleton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **LAUNCHER**: MissionList for launcher abilities.|
+  | -e/--extension | elementName | Extended component information.|
+  | -u/--userId | UserId | Mission stack information of a specified user ID. This parameter must be used together with other parameters. Example commands: **aa dump -a -u 100** and **aa dump -d -u 100**.|
+  | -d/--data | - | DataAbility information.|
+  | -i/--ability | AbilityRecord ID | Detailed information about an application component.|
+  | -c/--client | - | Detailed information about an application component. This parameter must be used together with other parameters. Example commands: **aa dump -a -c** and **aa dump -i 21 -c**.|
+  | -p/--pending | - | Pending Want information. This parameter must be used together with other parameters. Example command: **aa dump -a -p**.|
+  | -r/--process | - | Process information. This parameter must be used together with other parameters. Example command: **aa dump -a -r**.|
 
   **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 10105001 | Failed to connect to the ability service. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10105001 | Failed to connect to the ability service. |
 
   **Example**
-
+  
   ```bash
   # Print the application component information in all missions.
   aa dump -a
@@ -257,7 +270,7 @@ aa dump -a
 
   ![aa-dump-a](figures/aa-dump-a.png)
 
-
+  
   ```bash
   # Print all task chains.
   aa dump -l
@@ -265,10 +278,10 @@ aa dump -a
 
   ![aa-dump-l](figures/aa-dump-l.png)
 
-
+  
   ```bash
   # Print the detailed information about an application component.
-  aa dump -i 12
+  aa dump -i 105
   ```
 
   ![aa-dump-i](figures/aa-dump-i.png)
@@ -278,8 +291,15 @@ aa dump -a
 Forcibly stops a process based on the bundle name.
 
 ```bash
-aa force-stop <bundleName>
+aa force-stop <bundle-name> [-p pid] [-r kill-reason]
 ```
+
+  **Parameters**
+
+  | Name| Description             |
+  | -------- |-------------------|
+  | -p | PID. This parameter must be used together with **-r** to set the exit reason of the process with the specified PID.|
+  | -r | Exit reason of the process. This parameter must be used together with **-p** to set the exit reason of the process with the specified PID.|
 
   **Return value**
 
@@ -287,12 +307,12 @@ aa force-stop <bundleName>
 
   **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 10105001 | Failed to connect to the ability service. |
-| 10104002 | Failed to obtain specified bundle information. |
-| 10106401 | Failed to terminate the process. |
-| 10106402 | Persistent processes cannot be terminated. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10105001 | Failed to connect to the ability service. |
+  | 10104002 | Failed to retrieve specified package information. |
+  | 10106401 | Failed to terminate the process. |
+  | 10106402 | Persistent processes cannot be terminated. |
 
   **Example**
 
@@ -311,24 +331,24 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
 > **NOTE**
 > 
-> For details about parameters such as **class**, **level**, **size**, and **testType**, see <!--RP2-->[Keywords in the aa test Commands](../application-test/arkxtest-guidelines.md#cmd)<!--RP2End-->.
+> For details about parameters such as **class**, **level**, **size**, and **testType**, see <!--RP2-->[Parameters in the aa test Commands](../application-test/unittest-guidelines.md#running-test-scripts-in-the-cli)<!--RP2End-->.
 
   **Parameters**
-| Name| Description|
-| -------- | -------- |
-| -h/--help | Help information.|
-| -b | Bundle name. This parameter is mandatory.|
-| -s unittest | Test runner. This parameter is mandatory.|
-| -p | Package name of the test runner. This parameter is optional.<br>**NOTE**: This parameter can be used only in the FA model.|
-| -m | Module name of the test runner. This parameter is optional.<br>**NOTE**: This parameter can be used only in the stage model.|
-| -s class | Test suite or test case to be executed. This parameter is optional.|
-| -s level | Level of the test case to be executed. This parameter is optional.|
-| -s size | Size of the test case to be executed. This parameter is optional.|
-| -s testType | Type of the test case to be executed. This parameter is optional.|
-| -s timeout | Timeout interval for executing the test case, in ms. The default value is 5000. This parameter is optional.|
-| -s \<any-key> | Any key-value pair. This parameter is optional.|
-| -w | Test running time, in ms. This parameter is optional.|
-| -D | Debugging mode. This parameter is optional.|
+  | Name| Description|
+  | -------- | -------- |
+  | -h/--help | Help information.|
+  | -b | Bundle name. This parameter is mandatory.|
+  | -s unittest | Test runner. This parameter is mandatory.|
+  | -p | Package name of the test runner. This parameter is optional.<br>**NOTE**: This parameter can be used only in the FA model.|
+  | -m | Module name of the test runner. This parameter is optional.<br>**NOTE**: This parameter can be used only in the stage model.|
+  | -s class | Test suite or test case to be executed. This parameter is optional.|
+  | -s level | Level of the test case to be executed. This parameter is optional.|
+  | -s size | Size of the test case to be executed. This parameter is optional.|
+  | -s testType | Type of the test case to be executed. This parameter is optional.|
+  | -s timeout | Timeout interval for executing the test case, in ms. The default value is 5000. This parameter is optional.|
+  | -s \<any-key> | Any key-value pair. This parameter is optional.|
+  | -w | Test running time, in ms. This parameter is optional.|
+  | -D | Debugging mode. This parameter is optional.|
 
   **Return value**
 
@@ -336,12 +356,12 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
   **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 10104002 | Failed to obtain specified bundle information. |
-| 10105001 | Failed to connect to the ability service. |
-| 10106002 | The target application does not support debug mode. |
-| 10108501 | An internal error occurs during the execution of the aa test command. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10104002 | Failed to retrieve specified package information. |
+  | 10105001 | Failed to connect to the ability service. |
+  | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
+  | 10108501 | An internal error occurs during the execution of the aa test command. |
 
   **Example**
 
@@ -363,10 +383,10 @@ aa attach -b <bundleName>
 ```
 
   **Parameters**
-| Name| Description             |
-| -------- |-------------------|
-| -h/--help | Help information.            |
-| -b | Bundle name. This parameter is mandatory. |
+  | Name| Description             |
+  | -------- |-------------------|
+  | -h/--help | Help information.            |
+  | -b | Bundle name. This parameter is mandatory. |
 
   **Return value**
 
@@ -374,13 +394,13 @@ aa attach -b <bundleName>
 
   **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 10105001 | Failed to connect to the ability service. |
-| 10106001 | The current device is not in developer mode. |
-| 10106002 | The target application does not support debug mode. |
-| 10103601 | The specified bundleName does not exist. |
-| 10108601 | An internal error occurs while attempting to enter/exit debug mode. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10105001 | Failed to connect to the ability service. |
+  | 10106001 | The current device is not in developer mode. |
+  | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
+  | 10103601 | The specified bundleName does not exist. |
+  | 10108601 | An internal error occurs while attempting to enter/exit debug mode. |
 
   **Example**
 
@@ -398,10 +418,10 @@ aa detach -b <bundleName>
 ```
 
   **Parameters**
-| Name| Description             |
-| -------- |-------------------|
-| -h/--help | Help information.            |
-| -b | Bundle name. This parameter is mandatory. |
+  | Name| Description             |
+  | -------- |-------------------|
+  | -h/--help | Help information.            |
+  | -b | Bundle name. This parameter is mandatory. |
 
   **Return value**
 
@@ -409,13 +429,13 @@ aa detach -b <bundleName>
 
   **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 10105001 | Failed to connect to the ability service.|
-| 10106001 | The current device is not in developer mode. |
-| 10106002 | The target application does not support debug mode. |
-| 10103601 | The specified bundleName does not exist. |
-| 10108601 | An internal error occurs while attempting to enter/exit debug mode. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10105001 | Failed to connect to the ability service.|
+  | 10106001 | The current device is not in developer mode. |
+  | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
+  | 10103601 | The specified bundleName does not exist. |
+  | 10108601 | An internal error occurs while attempting to enter/exit debug mode. |
 
   **Example**
 
@@ -433,13 +453,13 @@ aa appdebug -b <bundleName> [-p]
 ```
 
   **Parameters**
-| Name| Level-2 Parameter| Description|
-| -------- | -------- | -------- |
-| -h/--help | - | Help information.|
-| -b/--bundlename | bundleName | Bundle name for which the waiting-for-debugging state is set. The system does not verify the validity of the bundle name.|
-| -p/--persist | - | Persistence flag. This parameter is optional. If this parameter is carried, the application is set to the waiting-for-debugging state persistently. That is, the setting takes effect regardless of whether the device is restarted or the application is reinstalled. If this parameter is not carried, the state takes effect only before the device is restarted. This parameter must be used together with the **-b** parameter. Example command: **aa appdebug -b \<bundleName> -p**.|
-| -c/--cancel | - | Used to cancel the waiting-for-debugging state.|
-| -g/--get | - | Used to obtain the bundle name and persistence flag of an application in the waiting-for-debugging state.|
+  | Name| Level-2 Parameter| Description|
+  | -------- | -------- | -------- |
+  | -h/--help | - | Help information.|
+  | -b/--bundlename | bundleName | Bundle name for which the waiting-for-debugging state is set. The system does not verify the validity of the bundle name.|
+  | -p/--persist | - | Persistence flag. This parameter is optional. If this parameter is carried, the application is set to the waiting-for-debugging state persistently. That is, the setting takes effect regardless of whether the device is restarted or the application is reinstalled. If this parameter is not carried, the state takes effect only before the device is restarted. This parameter must be used together with the **-b** parameter. Example command: **aa appdebug -b \<bundleName> -p**.|
+  | -c/--cancel | - | Used to cancel the waiting-for-debugging state.|
+  | -g/--get | - | Used to obtain the bundle name and persistence flag of an application in the waiting-for-debugging state.|
 
   **Return value**
 
@@ -447,11 +467,11 @@ aa appdebug -b <bundleName> [-p]
 
   **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 10105003 | Failed to connect to the app service. |
-| 10106001 | The current device is not in developer mode. |
-| 10106701 | The target application is not a debug application. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10105003 | Failed to connect to the app service. |
+  | 10106001 | The current device is not in developer mode. |
+  | 10106701 | Cannot debug applications using a release certificate. |
 
   **Example**
 
@@ -483,25 +503,25 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 ```
 
   **Parameters**
-| Name| Description|
-| -------- | -------- |
-| -h/--help | Help information.|
-| -b | Bundle name. This parameter is mandatory.|
-| -a | Ability name. This parameter is mandatory.|
-| -m | Module name. This parameter is optional.|
-| -p | Optimization mode. This parameter is optional. Either this parameter or **-D** must be specified. This command can be customized.|
-| -D | Debugging mode. This parameter is optional. Either this parameter or **-p** must be specified. This command can be customized.|
-| -S | Used to enter the application sandbox. This parameter is optional.|
+  | Name| Description|
+  | -------- | -------- |
+  | -h/--help | Help information.|
+  | -b | Bundle name. This parameter is mandatory.|
+  | -a | Ability name. This parameter is mandatory.|
+  | -m | Module name. This parameter is optional.|
+  | -p | Optimization mode. This parameter is optional. Either this parameter or **-D** must be specified. This command can be customized.|
+  | -D | Debugging mode. This parameter is optional. Either this parameter or **-p** must be specified. This command can be customized.|
+  | -S | Used to enter the application sandbox. This parameter is optional.|
 
   **Return value**
 
   Returns "start native process successfully." if this command is executed successfully; returns "start native process successfully." if this command fails to be executed; returns "start native process successfully." and prints the help information if the specified parameter is invalid.
 
-| ID| Error Message|
-| ------- | -------- |
-| 10105002 | Failed to obtain ability information. |
-| 10105003 | Failed to connect to the app service. |
-| 10106002 | The target application does not support debug mode. |
+  | ID| Error Message|
+  | ------- | -------- |
+  | 10105002 | Failed to obtain ability information. |
+  | 10105003 | Failed to connect to the app service. |
+  | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
 
   **Example**
 
@@ -512,6 +532,39 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
   # Optimize an application.
   aa process -b com.example.myapplication -a EntryAbility -p perf-cmd [-S]
   ```
+
+## send-memory-level
+
+Since API version 13, you can use this command to debug the [onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) lifecycle of an application. You can specify the PID and memory usage level of a process to trigger the **onMemoryLevel** lifecycle callback of the process.
+
+```bash
+# Trigger the onMemoryLevel callback.
+aa send-memory-level -p <processId> -l <memoryLevel>
+```
+
+**Parameters**
+
+| Name| Description|
+| -------- | -------- |
+| -h/--help | Help information.|
+| -p | PID of a process. This parameter is mandatory.|
+| -l | Memory usage level. This parameter is mandatory. For details, see [AbilityConstant.MemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel).|
+
+**Return value**
+
+If the command is executed successfully, the message "send memory level successfully." is returned. If the command fails to be executed, the message "error: failed to send memory level." is returned. If the specified parameter value is missing, the message "fail: unknown option." is returned and the help information is printed.
+
+| ID| Error Message|
+| ------- | -------- |
+| 10104003 | The specified pid does not exist. |
+| 10104004 | The specified level does not exist. |
+
+**Example**
+
+```bash
+# Trigger the onMemoryLevel callback of the application whose process ID is 6066. The callback level is 0.
+aa send-memory-level -p 6066 -l 0
+```
 
 ## Error Codes
 
@@ -539,7 +592,7 @@ Check whether the **exported** field of the ability in the **module.json5** file
 The specified ability does not exist.
 
 **Symptom**
-
+ 
 The specified ability name does not exist.
 
 **Possible Causes**
@@ -549,7 +602,7 @@ The specified ability is not installed.
 **Solution**
 
 1. Check whether the **-a** parameter **abilityName** and the **-b** parameter **bundleName** in the aa command are correct.
-2. Checks whether the **application** corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
+2. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
     ```
     hdc shell bm dump -a
     ```
@@ -557,6 +610,42 @@ The specified ability is not installed.
     ```
     hdc shell bm dump -n bundleName
     ```
+
+### 10104003 The Specified PID Does Not Exist
+
+**Error Message**
+
+The specified pid does not exist.
+
+**Symptom**
+ 
+The specified PID does not exist.
+
+**Possible Causes**
+
+The specified PID does not exist.
+
+**Solution**
+
+Check whether the process ID specified by the **-p** parameter exists on the device.
+
+### 10104004 The Specified Memory Usage Level Does Not Exist
+
+**Error Message**
+
+The specified level does not exist.
+
+**Symptom**
+ 
+The specified memory usage level does not exist.
+
+**Possible Causes**
+
+The specified memory usage level does not exist.
+
+**Solution**
+
+Check whether the memory usage level specified by the **-l** parameter is an integer within the range of [0, 2].
 
 ### 10105001 Failed to Connect to the Ability Service
 
@@ -592,7 +681,7 @@ The **AbilityInfo** obtained through BMS is empty when the ability request is ge
 
 **Solution**
 
-Checks whether the **application** corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
+Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
 
   ```
   hdc shell bm dump -a
@@ -632,25 +721,27 @@ The current device is not in developer mode.
 
 **Solution**
 
-Enable the developer mode in **Settings**.
+Enable the developer mode in **Settings**. Perform the following operations:
 
-### 10106002 The Target Application Does Not Support the Debug Mode
+Check whether **Developer options** is available in **Settings** > **System**. If not, go to **Settings** > **About phone** and tap the build number seven times in quick succession until a message is displayed to indicate that Developer options has been enabled, and then tap the confirm button. If prompted, enter the PIN. Your device will automatically restart. Wait until the restart is complete. You can check the status in **Settings** > **System**.
+
+### 10106002 Applications Cannot Be Signed by the Release Certificate
 
 **Error Message**
 
-The target application does not support debug mode.
+The aa start command's window option or the aa test command does not support app with release signature.
 
 **Symptom**
 
-The target application does not support the debug mode.
+The **wl**, **wt**, **wh**, and **ww** parameters in the **aa start** command, or the **aa test** command cannot be used for applications signed by the release certificate.
 
 **Possible Causes**
 
-The **type** parameter in the signing tool of the target application is not **debug**.
+The target application is signed by the release certificate.
 
 **Solution**
 
-Use the **debug** certificate to re-sign the HAP, install the newly signed HAP, and then run this command.
+Use the debug signature certificate to sign the application again. After the HAP is signed, run the command again.
 
 ### 10100101 Failed to Obtain Application Information
 
@@ -669,7 +760,7 @@ The application name or bundle name in the app information obtained from BMS is 
 **Solution**
 
 1. Check whether the **-a** parameter **abilityName** and the **-b** parameter **bundleName** in the aa command are correct.
-2. Checks whether the **application** corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
+2. Check whether the application corresponding to the specified **bundleName** is installed. You can run the following command to query the list of installed applications. If **bundleName** is not in the query result, the application is not installed.
     ```
     hdc shell bm dump -a
     ```
@@ -738,7 +829,7 @@ Check whether the **AppCloneIndex** parameter is valid.
 
 **Error Message**
 
-Another ability is being started. Wait until it finishes starting.
+The current ability will be placed in the queue to wait for the previous ability to finish launching.
 
 **Symptom**
 
@@ -868,7 +959,7 @@ An internal error occurs while attempting to launch the ability.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 
@@ -972,7 +1063,7 @@ An internal error occurs during the execution of the aa test command.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 
@@ -990,7 +1081,7 @@ An internal error occurs while attempting to enter/exit debug mode.
 
 **Symptom**
 
-An error occurs during internal processing, such as memory application or multi-thread processing.
+An error occurs during internal processing, such as memory allocation or multithreaded processing.
 
 **Possible Causes**
 
@@ -1026,7 +1117,7 @@ Check whether the application corresponding to the specified **bundleName** is i
 
 **Error Message**
 
-The target application is not a debug application.
+Cannot debug applications using a release certificate.
 
 **Symptom**
 
@@ -1038,5 +1129,5 @@ The value of the **type** parameter in the signing tool is not **debug**.
 
 **Solution**
 
-Use the **debug** certificate to re-sign the HAP, install the newly signed HAP, and then run this command.
+Use the debug signature certificate to sign the application again. After the HAP is signed, run the command again.
 For details about the signing tool and certificate, see [Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).

@@ -132,7 +132,7 @@ After a code review on the init process, it is found that the service does not e
 
 1. Check whether any service is repeatedly restarted and whether **critical** is configured for the service.
 
-2. Run the **ps -ef | grep ohos** command to check whether the system application exists. If the log contains **permission denied**, the init process has reported a permission error. Apply for the required system application permission, disable SELinux, and perform verification again. If the verification is successful, the problem is caused by incorrect SELinux policy configuration. Modify or add the corresponding SELinux permission. For details about [SELinux policy configuration](https://gitee.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF), see the readme in the **base/security/selinux_adapter** repository.
+2. Run the **ps -ef | grep ohos** command to check whether the system application exists. If the log contains **permission denied**, the init process has reported a permission error. Apply for the required system application permission, disable SELinux, and perform verification again. If the verification is successful, the problem is caused by incorrect SELinux policy configuration. Modify or add the corresponding SELinux permission. For details about [SELinux policy configuration](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF), see the readme in the **base/security/selinux_adapter** repository.
 
 3. Identify the services that do not report a boot event. If a certain service, for example, systemUI, does not report a boot event, the startup animation may be suspended.
 
@@ -180,7 +180,7 @@ After a code review on the init process, it is found that the service does not e
 
 3. Run the **param set ohos.startup.powerctrl reboot** command in hdc shell to check whether the system is restarted. If the system is restarted, the system parameters are set successfully.
 
-4. Check whether the log contains **permission denied**. If yes, the init process has reported a permission error. Disable SELinux, and perform verification again. If the verification is successful, the problem is caused by incorrect SELinux policy configuration. Modify or add the corresponding SELinux permission. For details about [SELinux policy configuration](https://gitee.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF), see the readme in the **base/security/selinux_adapter** repository.
+4. Check whether the log contains **permission denied**. If yes, the init process has reported a permission error. Disable SELinux, and perform verification again. If the verification is successful, the problem is caused by incorrect SELinux policy configuration. Modify or add the corresponding SELinux permission. For details about [SELinux policy configuration](https://gitcode.com/openharmony/security_selinux_adapter#%E6%97%A5%E5%BF%97%E4%BF%A1%E6%81%AF), see the readme in the **base/security/selinux_adapter** repository.
 
 ### System Startup Interrupted Due to "parse failed!" Error
 

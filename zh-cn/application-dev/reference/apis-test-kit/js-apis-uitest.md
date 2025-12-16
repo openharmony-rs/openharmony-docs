@@ -1,5 +1,13 @@
 # @ohos.UiTest
 
+<!--Kit: Test Kit-->
+<!--Subsystem: Test-->
+<!--Owner: @inter515-->
+<!--Designer: @inter515-->
+<!--Tester: @laonie666-->
+<!--Adviser: @Brilliantry_Rui-->
+
+
 UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要支持如点击、双击、长按、滑动等UI操作能力。
 
 该模块提供以下功能：
@@ -14,15 +22,13 @@ UiTest提供模拟UI操作的能力，供开发者在测试场景使用，主要
 
 > **说明：**
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/arkxtest-guidelines.md)<!--RP1End-->中使用。
+> - 本模块接口在<!--RP1-->[自动化测试脚本](../../application-test/uitest-guidelines.md)<!--RP1End-->中使用。
 > - 本模块接口不支持并发调用。
-> - 本模块接口适用于手机、平板、PC/2in1、智能穿戴设备、智慧屏、车机。
-
 
 ## 导入模块
 
 ```ts
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver } from '@kit.TestKit';
+import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver, UiComponent, UiDriver, BY } from '@kit.TestKit';
 ```
 
 ## MatchPattern
@@ -158,19 +164,84 @@ import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPatter
 | MOUSE_BUTTON_RIGHT  | 1    | 鼠标右键。   |
 | MOUSE_BUTTON_MIDDLE | 2    | 鼠标中间键。 |
 
-## UIElementInfo<sup>10+</sup>
 
-UI事件的相关信息。
+## WindowChangeType<sup>22+</sup>
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+支持监听的窗口变化事件类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称                | 值   | 说明         |
+| ------------------- | ---- | ------------ |
+| WINDOW_UNDEFINED   | 0    | 非窗口变化事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| WINDOW_ADDED  | 1    | 窗口出现事件。   |
+| WINDOW_REMOVED | 2    | 窗口消失事件。 |
+| WINDOW_BOUNDS_CHANGED | 3    | 窗口边框变化事件。 |
+
+
+## ComponentEventType<sup>22+</sup>
+
+支持监听的控件操作事件类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称                | 值   | 说明         |
+| ------------------- | ---- | ------------ |
+| COMPONENT_UNDEFINED   | 0    | 非控件操作事件。**说明：** 该枚举值仅支持作为返回值，如果作为接口入参会抛出异常。   |
+| COMPONENT_CLICKED  | 1    | 控件被点击事件。   |
+| COMPONENT_LONG_CLICKED | 2    | 控件被长按事件。 |
+| COMPONENT_SCROLL_START | 3    | 控件滚动开始事件。 |
+| COMPONENT_SCROLL_END  | 4    | 控件滚动结束事件。   |
+| COMPONENT_TEXT_CHANGED | 5    | [输入框控件](../../ui/arkts-common-components-text-input.md)文本变化事件。 |
+
+
+## WindowChangeOptions<sup>22+</sup>
+
+窗口变化事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
 
 | 名称       | 类型   | 只读 | 可选 | 说明                  |
 | ---------- | ------ | ---- | ---- | --------------------- |
-| bundleName | string | 是   | 否   | 归属应用的包名。      |
-| type       | string | 是   | 否   | 控件/窗口类型。       |
-| text       | string | 是   | 否   | 控件/窗口的文本信息。 |
+| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| bundleName       | string | 否   | 是   | 监听窗口对应包名，缺省时默认监听所有窗口。       |
+
+
+## ComponentEventOptions<sup>22+</sup>
+
+控件操作事件监听的扩展配置，用于指定监听过程配置及事件筛选条件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| timeout | number | 否   | 是   | 监听超时时间，默认值为10000，单位：ms。      |
+| on       | [On](#on9) | 否   | 是   | 监听目标控件的属性要求，默认监听所有控件。<br> **说明：** 仅支持监听指定属性要求的控件，不支持监听指定On.isBefore、On.isAfter、On.within等相对位置的控件。       |
+
+## UIElementInfo<sup>10+</sup>
+
+UI事件的相关信息。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+| 名称       | 类型   | 只读 | 可选 | 说明                  |
+| ---------- | ------ | ---- | ---- | --------------------- |
+| bundleName | string | 是   | 否   | 应用包名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| type       | string | 是   | 否   | 控件/窗口类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| text       | string | 是   | 否   | 控件/窗口的文本信息。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| windowChangeType<sup>22+</sup>       | [WindowChangeType](#windowchangetype22) | 是   | 是   | 窗口变化事件类型，若非窗口变化事件返回WindowChangeType.WINDOW_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentEventType<sup>22+</sup>       | [ComponentEventType](#componenteventtype22) | 是   | 是   | 控件操作事件类型，若非控件操作事件返回ComponentEventType.COMPONENT_UNDEFINED。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| windowId<sup>22+</sup>       | number | 是   | 是   | 控件所属窗口id。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentId<sup>22+</sup>       | string | 是   | 是   | 控件id，若非控件操作事件返回空字符串。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| componentRect<sup>22+</sup>       | [Rect](#rect9) | 是   | 是   | 控件边框信息，若非控件操作事件则返回属性值均为0的Rect对象。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 
 ## TouchPadSwipeOptions<sup>18+</sup>
@@ -197,13 +268,13 @@ UI事件的相关信息。
 
 | 名称       | 类型   | 只读 | 可选 | 说明                                                       |
 | ---------- | ------ |----|----|----------------------------------------------------------|
-| paste | boolean | 否  | 是  | 输入文本时是否指定以复制粘贴方式输入。true：指定以复制粘贴方式输入。false：指定以逐字键入方式输入。默认为false。<br /> **说明：** <br>1.当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论该参数取值为何，均以复制粘贴方式输入。<br>2.在智能穿戴设备中，该接口不支持以复制粘贴方式输入。|
+| paste | boolean | 否  | 是  | 输入文本时是否指定以复制粘贴方式输入。true：指定以复制粘贴方式输入。false：指定以逐字键入方式输入。默认为false。<br /> **说明：** 当输入文本中包含中文、特殊字符或文本长度超过200字符时，无论该参数取值为何，均以复制粘贴方式输入。|
 | addition       | boolean | 否  | 是  | 输入文本时是否以追加的方式进行输入。true：以追加方式输入。false：不以追加方式输入。默认为false。|
 
 
 ## On<sup>9+</sup>
 
-UiTest框架在API 9中，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
+UiTest框架从API version 9开始，通过On类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
 On提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多属性组合匹配，例如同时指定目标控件text和id。<br>2、控件属性支持多种匹配模式。<br>3、支持控件绝对定位，相对定位，可通过[ON.isBefore](#isbefore9)和[ON.isAfter](#isafter9)等API限定邻近控件特征进行辅助定位。<br>On类提供的所有API均为同步接口，建议使用者通过静态构造器ON来链式创建On对象。
 
 ```ts
@@ -230,7 +301,7 @@ text(txt: string, pattern?: MatchPattern): On
 
 | 参数名  | 类型                          | 必填 | 说明                                                |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| txt     | string                        | 是   | 指定控件文本，用于匹配目标控件文本。                |
+| txt     | string                        | 是   | 指定控件文本，用于匹配目标控件文本。<!--RP2--><!--RP2End--> |
 | pattern | [MatchPattern](#matchpattern) | 否   | 指定的文本匹配模式，默认为[EQUALS](#matchpattern)。 |
 
 **返回值：**
@@ -251,7 +322,8 @@ text(txt: string, pattern?: MatchPattern): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目标控件的text属性。
+
+let on: On = ON.text('123'); // 使用静态构造器ON创建On对象，指定目标控件的text属性。
 ```
 
 ### id<sup>9+</sup>
@@ -268,7 +340,7 @@ id(id: string): On
 
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
-| id     | string | 是   | 指定控件的id值。 |
+| id     | string | 是   | 指定控件的id值。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -289,14 +361,14 @@ id(id: string): On
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
+let on: On = ON.id('123'); // 使用静态构造器ON创建On对象，指定目标控件的id属性。
 ```
 
 ### id<sup>18+</sup>
 
 id(id: string, pattern: MatchPattern): On
 
-指定目标控件id属性，返回On对象自身。
+指定目标控件id属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -306,7 +378,7 @@ id(id: string, pattern: MatchPattern): On
 
 | 参数名                   | 类型   | 必填 | 说明                                    |
 |-----------------------| ------ |----|---------------------------------------|
-| id                    | string | 是  | 指定控件的id值。                             |
+| id                    | string | 是  | 指定控件的id值。<!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | 是  | 指定的文本匹配模式。 |
 
 **返回值：**
@@ -328,7 +400,7 @@ id(id: string, pattern: MatchPattern): On
 ```ts
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
-let on:On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值
+let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控件的id属性值
 ```
 
 ### type<sup>9+</sup>
@@ -336,10 +408,6 @@ let on:On = ON.id('id', MatchPattern.REG_EXP_ICASE); // 忽略大小写匹配控
 type(tp: string): On
 
 指定目标控件的控件类型属性，返回On对象自身。
-
->**说明**
->
->控件类型是开发者自定义的。同时，可以借助[DevEco Testing工具](https://developer.huawei.com/consumer/cn/download)进行查询。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -349,7 +417,7 @@ type(tp: string): On
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| tp     | string | 是   | 指定控件类型。|
+| tp     | string | 是   | 指定控件类型。<!--RP2--><!--RP2End--> |
 
 **返回值：**
 
@@ -369,18 +437,15 @@ type(tp: string): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
+
+let on: On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
 ```
 
 ### type<sup>18+</sup>
 
 type(tp: string, pattern: MatchPattern): On
 
-指定目标控件的控件类型属性，返回On对象自身。
-
->**说明**
->
->控件类型是开发者自定义的。同时，可以借助[DevEco Testing工具](https://developer.huawei.com/consumer/cn/download)进行查询。
+指定目标控件的控件类型属性和匹配模式，返回On对象自身。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -390,7 +455,7 @@ type(tp: string, pattern: MatchPattern): On
 
 | 参数名                   | 类型   | 必填 | 说明                                    |
 |-----------------------| ------ |----|---------------------------------------|
-| tp                    | string | 是  | 指定控件类型。                               |
+| tp                    | string | 是  | 指定控件类型。<!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | 是  | 指定的文本匹配模式。 |
 
 **返回值：**
@@ -410,8 +475,9 @@ type(tp: string, pattern: MatchPattern): On
 **示例：**
 
 ```ts
-import { On, ON } from '@kit.TestKit';
-let on:On = ON.type('Button'); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
+import { On, ON, MatchPattern } from '@kit.TestKit';
+
+let on: On = ON.type('Button', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的控件类型属性。
 ```
 
 ### clickable<sup>9+</sup>
@@ -428,7 +494,7 @@ clickable(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | 否   | 指定控件可点击状态。true：可点击。false：不可点击。默认为true。 |
+| b      | boolean | 否   | 指定控件可点击状态。true：可点击。false：不可点击。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -448,7 +514,8 @@ clickable(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.clickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可点击状态属性。
+
+let on: On = ON.clickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可点击状态属性。
 ```
 
 ### longClickable<sup>9+</sup>
@@ -465,7 +532,7 @@ longClickable(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | 否   | 指定控件可长按点击状态。true：可长按点击。false：不可长按点击。默认为true。 |
+| b      | boolean | 否   | 指定控件可长按点击状态。true：可长按点击。false：不可长按点击。默认为true。<!--RP2--><!--RP2End--> |
 
 **返回值：**
 
@@ -485,7 +552,8 @@ longClickable(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.longClickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可长按点击状态属性。
+
+let on: On = ON.longClickable(true); // 使用静态构造器ON创建On对象，指定目标控件的可长按点击状态属性。
 ```
 
 ### scrollable<sup>9+</sup>
@@ -502,7 +570,7 @@ scrollable(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                        |
 | ------ | ------- | ---- | ----------------------------------------------------------- |
-| b      | boolean | 否   | 控件可滑动状态。true：可滑动。false：不可滑动。默认为true。 |
+| b      | boolean | 否   | 控件可滑动状态。true：可滑动。false：不可滑动。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -522,7 +590,8 @@ scrollable(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.scrollable(true); // 使用静态构造器ON创建On对象，指定目标控件的可滑动状态属性。
+
+let on: On = ON.scrollable(true); // 使用静态构造器ON创建On对象，指定目标控件的可滑动状态属性。
 ```
 
 ### enabled<sup>9+</sup>
@@ -539,7 +608,7 @@ enabled(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                      |
 | ------ | ------- | ---- | --------------------------------------------------------- |
-| b      | boolean | 否   | 指定控件使能状态。true：使能。false：未使能。默认为true。 |
+| b      | boolean | 否   | 指定控件使能状态。true：使能。false：未使能。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -559,7 +628,8 @@ enabled(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.enabled(true); // 使用静态构造器ON创建On对象，指定目标控件的使能状态属性。
+
+let on: On = ON.enabled(true); // 使用静态构造器ON创建On对象，指定目标控件的使能状态属性。
 ```
 
 ### focused<sup>9+</sup>
@@ -576,7 +646,7 @@ focused(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                  |
 | ------ | ------- | ---- | ----------------------------------------------------- |
-| b      | boolean | 否   | 控件获焦状态。true：获焦。false：未获焦。默认为true。 |
+| b      | boolean | 否   | 控件获焦状态。true：获焦。false：未获焦。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -596,7 +666,8 @@ focused(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.focused(true); // 使用静态构造器ON创建On对象，指定目标控件的获焦状态属性。
+
+let on: On = ON.focused(true); // 使用静态构造器ON创建On对象，指定目标控件的获焦状态属性。
 ```
 
 ### selected<sup>9+</sup>
@@ -613,7 +684,7 @@ selected(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | 否   | 指定控件被选中状态。true：被选中。false：未被选中。默认为true。 |
+| b      | boolean | 否   | 指定控件被选中状态。true：被选中。false：未被选中。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -633,7 +704,8 @@ selected(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.selected(true); // 使用静态构造器ON创建On对象，指定目标控件的被选中状态属性。
+
+let on: On = ON.selected(true); // 使用静态构造器ON创建On对象，指定目标控件的被选中状态属性。
 ```
 
 ### checked<sup>9+</sup>
@@ -650,7 +722,7 @@ checked(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | 否   | 指定控件被勾选状态。true：被勾选。false：未被勾选。默认为true。 |
+| b      | boolean | 否   | 指定控件被勾选状态。true：被勾选。false：未被勾选。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -670,7 +742,8 @@ checked(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checked(true); // 使用静态构造器ON创建On对象，指定目标控件的被勾选状态属性
+
+let on: On = ON.checked(true); // 使用静态构造器ON创建On对象，指定目标控件的被勾选状态属性
 ```
 
 ### checkable<sup>9+</sup>
@@ -687,7 +760,7 @@ checkable(b?: boolean): On
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| b      | boolean | 否   | 指定控件能否被勾选状态。true：能被勾选。false：不能被勾选。默认为true。 |
+| b      | boolean | 否   | 指定控件能否被勾选状态。true：能被勾选。false：不能被勾选。默认为true。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -707,7 +780,8 @@ checkable(b?: boolean): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.checkable(true); // 使用静态构造器ON创建On对象，指定目标控件的能否被勾选状态属性。
+
+let on: On = ON.checkable(true); // 使用静态构造器ON创建On对象，指定目标控件的能否被勾选状态属性。
 ```
 
 ### isBefore<sup>9+</sup>
@@ -724,13 +798,13 @@ isBefore(on: On): On
 
 | 参数名 | 类型       | 必填 | 说明                 |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | 是   | 特征控件的属性要求。 |
+| on     | [On](#on9) | 是   | 特征控件的属性要求。 <!--RP3--><!--RP3End-->  |
 
 **返回值：**
 
 | 类型       | 说明                                                 |
 | ---------- | ---------------------------------------------------- |
-| [On](#on9) | 返回指定目标控件位于给出的特征属性控件之前的On对象。 |
+| [On](#on9) | 返回指定目标控件位于给出的特征属性控件之前的On对象。|
 
 **错误码：**
 
@@ -746,7 +820,7 @@ isBefore(on: On): On
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之前。
-let on:On = ON.type('Button').isBefore(ON.text('123'));  // 查找text为123之前的第一个Button组件
+let on: On = ON.type('Button').isBefore(ON.text('123')); // 查找text为123之前的第一个Button组件
 ```
 
 ### isAfter<sup>9+</sup>
@@ -763,13 +837,13 @@ isAfter(on: On): On
 
 | 参数名 | 类型       | 必填 | 说明                 |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | 是   | 特征控件的属性要求。 |
+| on     | [On](#on9) | 是   | 特征控件的属性要求。 <!--RP3--><!--RP3End-->  |
 
 **返回值：**
 
 | 类型       | 说明                                                 |
 | ---------- | ---------------------------------------------------- |
-| [On](#on9) | 返回指定目标控件位于给出的特征属性控件之后的On对象。 |
+| [On](#on9) | 返回指定目标控件位于给出的特征属性控件之后的On对象。  |
 
 **错误码：**
 
@@ -785,7 +859,7 @@ isAfter(on: On): On
 import { On, ON } from '@kit.TestKit';
 
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之后。
-let on:On = ON.type('Text').isAfter(ON.text('123'));  // 查找 text为123之后的第一个Text组件
+let on: On = ON.type('Text').isAfter(ON.text('123')); // 查找 text为123之后的第一个Text组件
 ```
 
 ### within<sup>10+</sup>
@@ -802,7 +876,7 @@ within(on: On): On
 
 | 参数名 | 类型       | 必填 | 说明                 |
 | ------ | ---------- | ---- | -------------------- |
-| on     | [On](#on9) | 是   | 特征控件的属性要求。 |
+| on     | [On](#on9) | 是   | 特征控件的属性要求。<!--RP3--><!--RP3End-->  |
 
 **返回值：**
 
@@ -822,8 +896,9 @@ within(on: On): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
+
 // 使用静态构造器ON创建On对象，指定目标控件位于给出的特征属性控件之内。
-let on:On = ON.text('java').within(ON.type('Scroll'));  // 查找Scroller里面的text为java的子组件
+let on: On = ON.text('java').within(ON.type('Scroll')); // 查找Scroller里面的text为java的子组件
 ```
 
 ### inWindow<sup>10+</sup>
@@ -840,7 +915,7 @@ inWindow(bundleName: string): On
 
 | 参数名     | 类型   | 必填 | 说明             |
 | ---------- | ------ | ---- | ---------------- |
-| bundleName | string | 是   | 应用窗口的包名。 |
+| bundleName | string | 是   | 应用窗口的包名。<!--RP2--><!--RP2End-->  |
 
 **返回值：**
 
@@ -860,7 +935,8 @@ inWindow(bundleName: string): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.inWindow('com.uitestScene.acts'); // 使用静态构造器ON创建On对象，指定目标控件位于给出的应用窗口内。
+
+let on: On = ON.inWindow('com.uitestScene.acts'); // 使用静态构造器ON创建On对象，指定目标控件位于给出的应用窗口内。
 ```
 
 ### description<sup>11+</sup>
@@ -877,7 +953,7 @@ description(val: string, pattern?: MatchPattern): On
 
 | 参数名  | 类型                          | 必填 | 说明                                                |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| val     | string                        | 是   | 控件的描述属性。                                    |
+| val     | string                        | 是   | 控件的描述属性。 <!--RP2--><!--RP2End-->   |
 | pattern | [MatchPattern](#matchpattern) | 否   | 指定的文本匹配模式，默认为[EQUALS](#matchpattern)。 |
 
 **返回值：**
@@ -898,7 +974,8 @@ description(val: string, pattern?: MatchPattern): On
 
 ```ts
 import { On, ON } from '@kit.TestKit';
-let on:On = ON.description('123'); // 使用静态构造器ON创建On对象，指定目标控件的description属性。
+
+let on: On = ON.description('123'); // 使用静态构造器ON创建On对象，指定目标控件的description属性。
 ```
 
 ### hint<sup>18+</sup>
@@ -915,7 +992,7 @@ hint(val: string, pattern?: MatchPattern): On
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ |----|---------------------------------------|
-| val     | string | 是  | 指定控件提示文本。                              |
+| val     | string | 是  | 指定控件提示文本。  <!--RP2--><!--RP2End-->   |
 | pattern | [MatchPattern](#matchpattern) | 否  | 指定的文本匹配模式，默认为[EQUALS](#matchpattern)。 |
 
 **返回值：**
@@ -935,9 +1012,9 @@ hint(val: string, pattern?: MatchPattern): On
 **示例：**
 
 ```ts
- import { MatchPattern, On, ON } from '@kit.TestKit';
- 
- let on:On = ON.hint('welcome', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的提示文本属性。
+import { MatchPattern, On, ON } from '@kit.TestKit';
+
+let on: On = ON.hint('welcome', MatchPattern.EQUALS); // 使用静态构造器ON创建On对象，指定目标控件的提示文本属性。
 ```
 
 ### belongingDisplay<sup>20+</sup>
@@ -954,7 +1031,7 @@ belongingDisplay(displayId: number): On
 
 | 参数名 | 类型   | 必填 | 说明                                    |
 | ------ | ------ |----|---------------------------------------|
-| displayId | number | 是  | 指定控件所属屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9)获取当前所有的display对象，并由display对象获取对应的屏幕ID。 |
+| displayId | number | 是  | 指定控件所属屏幕ID，取值范围：大于等于0的整数。<br> **说明：** 传入displayId不存在时，将抛出17000007异常。可通过[getAllDisplays](../apis-arkui/js-apis-display.md#displaygetalldisplays9)获取当前所有的display对象，并由display对象获取对应的屏幕ID。<!--RP2--><!--RP2End--> |
 
 **返回值：**
 
@@ -973,16 +1050,16 @@ belongingDisplay(displayId: number): On
 **示例：**
 
 ```ts
- import { On, ON } from '@kit.TestKit';
- 
- let on:On = ON.belongingDisplay(0); // 使用静态构造器ON创建On对象，指定目标控件所属屏幕ID
+import { On, ON } from '@kit.TestKit';
+
+let on: On = ON.belongingDisplay(0); // 使用静态构造器ON创建On对象，指定目标控件所属屏幕ID
 ```
 
 ### originalText<sup>20+</sup>
 
 originalText(text: string, pattern?: MatchPattern): On
 
-指定目标控件的文本属性，支持多种匹配模式，返回On对象自身。
+指定控件的文本内容和文本匹配模式，返回On对象自身。
 
 > **说明**
 >
@@ -996,7 +1073,7 @@ originalText(text: string, pattern?: MatchPattern): On
 
 | 参数名  | 类型                          | 必填 | 说明                                                |
 | ------- | ----------------------------- | ---- | --------------------------------------------------- |
-| text     | string                        | 是   | 指定控件文本，用于匹配目标控件文本。                |
+| text     | string                        | 是   | 指定控件文本，用于匹配目标控件文本。 <!--RP2--><!--RP2End-->  |
 | pattern | [MatchPattern](#matchpattern) | 否   | 指定的文本匹配模式，默认为[EQUALS](#matchpattern)。 |
 
 **返回值：**
@@ -1018,7 +1095,7 @@ originalText(text: string, pattern?: MatchPattern): On
 ```ts
 import { On, ON } from '@kit.TestKit';
 
-let on:On = ON.originalText('123'); // 使用静态构造器ON创建On对象，指定目标控件的originalText属性
+let on: On = ON.originalText('123'); // 使用静态构造器ON创建On对象，指定目标控件的originalText属性
 ```
 
 ## Component<sup>9+</sup>
@@ -1055,8 +1132,9 @@ click(): Promise\<void>
 
 ```ts
 import { Driver, ON, Component } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
   await button.click();
 }
@@ -1090,7 +1168,8 @@ doubleClick(): Promise\<void>
 **示例：**
 
 ```ts
-import {Component, Driver, ON } from '@kit.TestKit';
+import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1127,6 +1206,7 @@ longClick(): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1163,6 +1243,7 @@ getId(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1203,6 +1284,7 @@ getText(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1239,6 +1321,7 @@ getType(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1275,6 +1358,7 @@ getBounds(): Promise\<Rect>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1311,6 +1395,7 @@ getBoundsCenter(): Promise\<Point>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -1347,10 +1432,11 @@ isClickable(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isClickable()) {
+  if (await button.isClickable()) {
     console.info('This button can be Clicked');
   } else {
     console.info('This button can not be Clicked');
@@ -1387,10 +1473,11 @@ isLongClickable(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isLongClickable()) {
+  if (await button.isLongClickable()) {
     console.info('This button can longClick');
   } else {
     console.info('This button can not longClick');
@@ -1427,10 +1514,11 @@ isChecked(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isChecked()) {
+  if (await checkBox.isChecked()) {
     console.info('This checkBox is checked');
   } else {
     console.info('This checkBox is not checked');
@@ -1467,10 +1555,11 @@ isCheckable(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let checkBox: Component = await driver.findComponent(ON.type('Checkbox'));
-  if(await checkBox.isCheckable()) {
+  if (await checkBox.isCheckable()) {
     console.info('This checkBox is checkable');
   } else {
     console.info('This checkBox is not checkable');
@@ -1507,10 +1596,11 @@ isScrollable(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.scrollable(true));
-  if(await scrollBar.isScrollable()) {
+  if (await scrollBar.isScrollable()) {
     console.info('This scrollBar can be operated');
   } else {
     console.info('This scrollBar can not be operated');
@@ -1548,10 +1638,11 @@ isEnabled(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isEnabled()) {
+  if (await button.isEnabled()) {
     console.info('This button can be operated');
   } else {
     console.info('This button can not be operated');
@@ -1588,10 +1679,11 @@ isFocused(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isFocused()) {
+  if (await button.isFocused()) {
     console.info('This button is focused');
   } else {
     console.info('This button is not focused');
@@ -1628,10 +1720,11 @@ isSelected(): Promise\<boolean>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
-  if(await button.isSelected()) {
+  if (await button.isSelected()) {
     console.info('This button is selected');
   } else {
     console.info('This button is not selected');
@@ -1643,7 +1736,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-向控件中输入文本（适用于文本框控件），清空组件内原有文本后输入，使用Promise异步回调。
+清空组件内原有文本并输入指定文本内容，仅针对可编辑的文本组件生效，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1659,7 +1752,7 @@ inputText(text: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 <br> **说明：** 在智能穿戴设备中，该接口不支持输入包含中文的文本。 |
+| text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
 
 **错误码：**
 
@@ -1675,6 +1768,7 @@ inputText(text: string): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1686,7 +1780,7 @@ async function demo() {
 
 inputText(text: string, mode: InputTextMode): Promise\<void>
 
-向控件中输入文本（适用于文本框控件），支持指定文本输入方式，使用Promise异步回调。
+向控件中输入文本，并支持指定文本输入方式，仅针对可编辑的文本组件生效，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1696,7 +1790,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 <br> **说明：** 在智能穿戴设备中，该接口不支持输入包含中文的文本。 |
+| text   | string | 是   | 输入的文本信息，当前支持英文、中文和特殊字符。 |
 | mode | [InputTextMode](#inputtextmode20)  | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。<br> **说明：** InputTextMode.addition取值为ture时，在控件已有文本末尾后追加指定文本。取值为false时，指定文本将覆盖控件已有文本。|
 
 **返回值：**
@@ -1714,7 +1808,7 @@ inputText(text: string, mode: InputTextMode): Promise\<void>
 | 17000002 | The async function is not called with await. |
 | 17000004 | The window or component is invisible or destroyed.           |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not support, function can not work correctly due to limited device capabilities.|
+| 801      | Capability not supported, function can not work correctly due to limited device capabilities.|
 
 **示例：**
 ```ts
@@ -1732,7 +1826,7 @@ async function mode_demo() {
 
 clearText(): Promise\<void>
 
-清除控件的文本信息（适用于文本框控件），使用Promise异步回调。
+清除控件的文本信息，仅针对可编辑的文本组件生效，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1756,6 +1850,7 @@ clearText(): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.text('hello world'));
@@ -1811,7 +1906,7 @@ async function demo() {
 
 scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
-在控件上滑动查找目标控件（适用支持滑动的控件），使用Promise异步回调。
+在控件上滑动查找目标控件（适用支持滑动的控件），支持指定滑动方向和滑动起止点与组件边框的偏移量，使用Promise异步回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1845,6 +1940,7 @@ scrollSearch(on: On, vertical?: boolean, offset?: number): Promise\<Component>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1888,6 +1984,7 @@ scrollToTop(speed?: number): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1931,6 +2028,7 @@ scrollToBottom(speed?: number): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let scrollBar: Component = await driver.findComponent(ON.type('Scroll'));
@@ -1944,13 +2042,11 @@ dragTo(target: Component): Promise\<void>
 
 将控件拖拽至目标控件处，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -1978,6 +2074,7 @@ dragTo(target: Component): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2022,6 +2119,7 @@ pinchOut(scale: number): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2065,6 +2163,7 @@ pinchIn(scale: number): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let image: Component = await driver.findComponent(ON.type('Image'));
@@ -2101,6 +2200,7 @@ getDescription(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('Button'));
@@ -2136,6 +2236,7 @@ getHint(): Promise\<string>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.type('TextInput'));
@@ -2183,11 +2284,7 @@ async function demo() {
 
 getOriginalText(): Promise\<string>
 
-获取控件对象的文本信息，使用Promise异步回调。
-
-> **说明**
->
-> 如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
+获取控件对象的文本信息，使用Promise异步回调。如果控件的无障碍属性[accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel)设置为'no'或'no-hide-descendants'，可以使用本接口获取控件的文本信息，无法使用[Component.getText()](#gettext9)获取控件的文本信息。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2253,6 +2350,7 @@ static create(): Driver
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
 }
@@ -2293,6 +2391,7 @@ delayMs(duration: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.delayMs(1000);
@@ -2334,6 +2433,7 @@ findComponent(on: On): Promise\<Component>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let button: Component = await driver.findComponent(ON.text('next page'));
@@ -2375,6 +2475,7 @@ findComponents(on: On): Promise\<Array\<Component>>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let buttonList: Array<Component> = await driver.findComponents(ON.text('next page'));
@@ -2416,9 +2517,10 @@ findWindow(filter: WindowFilter): Promise\<UiWindow>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
 }
 ```
 
@@ -2458,9 +2560,10 @@ waitForComponent(on: On, time: number): Promise\<Component>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let button: Component = await driver.waitForComponent(ON.text('next page'),500);
+  let button: Component = await driver.waitForComponent(ON.text('next page'), 500);
 }
 ```
 
@@ -2500,6 +2603,7 @@ assertComponentExist(on: On): Promise\<void>
 
 ```ts
 import { Driver, ON } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.assertComponentExist(ON.text('next page'));
@@ -2534,6 +2638,7 @@ pressBack(): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack();
@@ -2575,6 +2680,7 @@ pressBack(displayId: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressBack(0);
@@ -2616,9 +2722,11 @@ triggerKey(keyCode: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.triggerKey(123);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK); // 返回键
 }
 ```
 
@@ -2658,10 +2766,11 @@ triggerKey(keyCode: number, displayId: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.triggerKey(123, 0);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK, 0); // 返回键
 }
 ```
 
@@ -2669,7 +2778,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键并点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如ctrl+c。
+通过给定的key值，找到对应组合键并点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2702,6 +2811,7 @@ triggerCombineKeys(key0: number, key1: number, key2?: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.triggerCombineKeys(2072, 2047, 2035);
@@ -2712,7 +2822,7 @@ async function demo() {
 
 triggerCombineKeys(key0: number, key1: number, key2?: number, displayId?: number): Promise\<void>
 
-通过给定的key值，找到对应组合键，并在指定屏幕下进行点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如ctrl+c。
+通过给定的key值，找到对应组合键，并在指定屏幕下进行点击，使用Promise异步回调。例如，Key值为(2072, 2019)时，找到key值对应的组合键并点击，如Ctrl+c。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2789,9 +2899,10 @@ click(x: number, y: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.click(100,100);
+  await driver.click(100, 100);
 }
 ```
 
@@ -2873,9 +2984,10 @@ doubleClick(x: number, y: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.doubleClick(100,100);
+  await driver.doubleClick(100, 100);
 }
 ```
 
@@ -2957,9 +3069,10 @@ longClick(x: number, y: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.longClick(100,100);
+  await driver.longClick(100, 100);
 }
 ```
 
@@ -3045,9 +3158,10 @@ swipe(startx: number, starty: number, endx: number, endy: number, speed?: number
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipe(100,100,200,200,600);
+  await driver.swipe(100, 100, 200, 200, 600);
 }
 ```
 
@@ -3091,7 +3205,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.swipeBetween({x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800);
+  await driver.swipeBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800);
 }
 ```
 
@@ -3101,13 +3215,11 @@ drag(startx: number, starty: number, endx: number, endy: number, speed?: number)
 
 从起始坐标点拖拽至目的坐标点，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -3151,13 +3263,11 @@ dragBetween(from: Point, to: Point, speed?: number, duration?: number): Promise\
 
 从起始坐标点拖拽至目标坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -3190,7 +3300,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.dragBetween( {x: 100, y: 100, displayId: 0}, {x: 1000, y: 1000, displayId: 0}, 800, 1500);
+  await driver.dragBetween({ x: 100, y: 100, displayId: 0 }, { x: 1000, y: 1000, displayId: 0 }, 800, 1500);
 }
 ```
 
@@ -3229,6 +3339,7 @@ screenCap(savePath: string): Promise\<boolean>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');
@@ -3284,13 +3395,11 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 将当前场景的显示方向设置为指定的显示方向，使用Promise异步回调。适用于可旋转的应用场景。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -3317,6 +3426,7 @@ setDisplayRotation(rotation: DisplayRotation): Promise\<void>
 
 ```ts
 import { Driver, DisplayRotation } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotation(DisplayRotation.ROTATION_180);
@@ -3351,6 +3461,7 @@ getDisplayRotation(): Promise\<DisplayRotation>
 
 ```ts
 import { DisplayRotation, Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let rotation: DisplayRotation = await driver.getDisplayRotation();
@@ -3405,13 +3516,11 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 启用/禁用设备旋转屏幕的功能，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -3438,6 +3547,7 @@ setDisplayRotationEnabled(enabled: boolean): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.setDisplayRotationEnabled(false);
@@ -3549,6 +3659,7 @@ getDisplayDensity(): Promise\<Point>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let density = await driver.getDisplayDensity();
@@ -3625,6 +3736,7 @@ wakeUpDisplay(): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.wakeUpDisplay();
@@ -3637,13 +3749,11 @@ pressHome(): Promise\<void>
 
 设备注入返回桌面操作，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **返回值：**
 
@@ -3663,6 +3773,7 @@ pressHome(): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.pressHome();
@@ -3675,13 +3786,11 @@ pressHome(displayId: number): Promise\<void>
 
 设备指定屏幕上注入返回桌面操作，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -3751,9 +3860,10 @@ waitForIdle(idleTime: number, timeout: number): Promise\<boolean>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let idled:boolean = await driver.waitForIdle(4000,5000);
+  let idled: boolean = await driver.waitForIdle(4000, 5000);
 }
 ```
 
@@ -3798,7 +3908,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.fling({x: 500, y: 480},{x: 450, y: 480}, 5, 600);
+  await driver.fling({ x: 500, y: 480 }, { x: 450, y: 480 }, 5, 600);
 }
 ```
 
@@ -3842,25 +3952,25 @@ import { Driver, PointerMatrix } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
   await driver.injectMultiPointerAction(pointers);
 }
 ```
 
 ### fling<sup>10+</sup>
 
-fling(direction: UiDirection, speed: number): Promise\<void>;
+fling(direction: UiDirection, speed: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向和滑动速率，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3892,6 +4002,7 @@ fling(direction: UiDirection, speed: number): Promise\<void>;
 
 ```ts
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   await driver.fling(UiDirection.DOWN, 10000);
@@ -3902,7 +4013,7 @@ async function demo() {
 
 fling(direction: UiDirection, speed: number, displayId: number): Promise\<void>
 
-指定方向和速度，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
+指定方向、滑动速率和操作屏幕，模拟手指滑动后脱离屏幕的快速滑动操作，使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -3944,7 +4055,7 @@ async function demo() {
 
 ### screenCapture<sup>10+</sup>
 
-screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
+screenCapture(savePath: string, rect?: Rect): Promise\<boolean>
 
 捕获当前屏幕的指定区域，并保存为PNG格式的图片至给出的保存路径中，使用Promise异步回调。适用于支持截屏的场景。
 
@@ -3978,17 +4089,23 @@ screenCapture(savePath: string, rect?: Rect): Promise\<boolean>;
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {left: 0, top: 0, right: 100, bottom: 100});
+  await driver.screenCapture('/data/storage/el2/base/cache/1.png', {
+    left: 0,
+    top: 0,
+    right: 100,
+    bottom: 100
+  });
 }
 ```
 
 ### mouseClick<sup>10+</sup>
 
-mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>;
+mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标点击动作。
+在指定坐标点注入鼠标点击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标点击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4021,18 +4138,19 @@ mouseClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
 ### mouseScroll<sup>10+</sup>
 
-mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>;
+mouseScroll(p: Point, down: boolean, d: number, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标滚轮滑动动作。
+在指定坐标点注入鼠标滚轮滑动动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标滚轮滑动动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4070,13 +4188,13 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072);
 }
 ```
 
 ### mouseMoveTo<sup>10+</sup>
 
-mouseMoveTo(p: Point): Promise\<void>;
+mouseMoveTo(p: Point): Promise\<void>
 
 将鼠标光标移到目标点，使用Promise异步回调。
 
@@ -4112,7 +4230,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveTo({x:100, y:100});
+  await driver.mouseMoveTo({ x: 100, y: 100 });
 }
 ```
 
@@ -4194,7 +4312,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseScroll({x:360, y:640}, true, 30, 2072,20);
+  await driver.mouseScroll({ x: 360, y: 640 }, true, 30, 2072, 20);
 }
 ```
 
@@ -4202,7 +4320,7 @@ async function demo() {
 
 mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标双击动作。
+在指定坐标点注入鼠标双击动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标双击动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4235,10 +4353,11 @@ mouseDoubleClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Pr
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDoubleClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  await driver.mouseDoubleClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4246,7 +4365,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4279,10 +4398,11 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number): Prom
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072);
 }
 ```
 
@@ -4290,7 +4410,7 @@ async function demo() {
 
 mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, duration?: number): Promise\<void>
 
-在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长，使用Promise异步回调。例如，Key值为2072时，按下ctrl并进行鼠标长按动作。
+在指定坐标点注入鼠标长按动作，支持同时按下对应键盘组合键，支持指定长按时长，使用Promise异步回调。例如，Key值为2072时，按下Ctrl并进行鼠标长按动作。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4324,11 +4444,11 @@ mouseLongClick(p: Point, btnId: MouseButton, key1?: number, key2?: number, durat
 **示例：**
 
 ```ts
-import { Driver,MouseButton } from '@kit.TestKit';
+import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
-  let driver:Driver = Driver.create();
-  await driver.mouseLongClick({x:248, y:194}, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
+  let driver: Driver = Driver.create();
+  await driver.mouseLongClick({ x: 248, y: 194 }, MouseButton.MOUSE_BUTTON_LEFT, 2072, 0, 2000);
 }
 ```
 
@@ -4372,7 +4492,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseMoveWithTrack({x:100, y:100}, {x:200, y:200}, 600);
+  await driver.mouseMoveWithTrack({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4382,13 +4502,11 @@ mouseDrag(from: Point, to: Point, speed?: number): Promise\<void>
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -4420,7 +4538,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600);
 }
 ```
 
@@ -4430,13 +4548,11 @@ mouseDrag(from: Point, to: Point, speed?: number, duration?: number): Promise\<v
 
 鼠标按住鼠标左键从起始坐标点拖拽至终点坐标点，支持指定拖拽速度和拖拽前长按时间，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在手机、平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、TV设备上生效，在其他设备中调用无效果。
 
 **参数：**
 
@@ -4469,7 +4585,7 @@ import { Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.mouseDrag({x:100, y:100},{x:200, y:200}, 600, 2000);
+  await driver.mouseDrag({ x: 100, y: 100 }, { x: 200, y: 200 }, 600, 2000);
 }
 ```
 
@@ -4488,7 +4604,7 @@ inputText(p: Point, text: string): Promise\<void>
 | 参数名 | 类型             | 必填 | 说明               |
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | 是   | 输入文本的坐标点。 |
-| text   | string           | 是   |输入的文本信息，当前支持英文、中文和特殊字符。 <br> **说明：** 在智能穿戴设备中，该接口不支持输入包含中文的文本。 |
+| text   | string           | 是   |输入的文本信息，当前支持英文、中文和特殊字符。|
 
 **返回值：**
 
@@ -4509,8 +4625,9 @@ inputText(p: Point, text: string): Promise\<void>
 
 ```ts
 import { Component, Driver, ON } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
   await driver.inputText(point, '123');
@@ -4532,8 +4649,8 @@ inputText(p: Point, text: string, mode: InputTextMode): Promise\<void>
 | 参数名 | 类型             | 必填 | 说明               |
 | ------ | ---------------- | ---- | ------------------ |
 | p      | [Point](#point9) | 是   | 输入文本的坐标点。 |
-| text   | string           | 是   |输入的文本信息，当前支持英文、中文和特殊字符。 <br> **说明：** 在智能穿戴设备中，该接口不支持输入包含中文的文本。 |
-| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br> **说明：** InputTextMode.addition取值为ture时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
+| text   | string           | 是   |输入的文本信息，当前支持英文、中文和特殊字符。 |
+| mode | [InputTextMode](#inputtextmode20) | 是   | 输入文本的方式，取值请参考[InputTextMode](#inputtextmode20)。 <br> **说明：** <br> InputTextMode.addition取值为ture时，将光标移动至文本末尾后输入指定文本。取值为false时，将在坐标点位置输入指定文本。 |
 
 **返回值：**
 
@@ -4560,7 +4677,7 @@ async function demo() {
   let driver: Driver = Driver.create();
   let text: Component = await driver.findComponent(ON.type('TextInput'));
   let point = await text.getBoundsCenter();
-  await driver.inputText(point, '123', {paste: true, addition: false});
+  await driver.inputText(point, '123', { paste: true, addition: false });
 }
 
 async function demo_Chinese() {
@@ -4578,13 +4695,11 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 模拟触摸板多指滑动手势，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备中返回17000005错误码。
 
 **参数：**
 
@@ -4614,9 +4729,58 @@ touchPadMultiFingerSwipe(fingers: number, direction: UiDirection, options?: Touc
 
 ```ts
 import { Driver, UiDirection } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
+  let driver: Driver = Driver.create();
   await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
+}
+```
+
+### touchPadTwoFingersScroll<sup>22+</sup>
+
+touchPadTwoFingersScroll(point: Point, direction: UiDirection, d: number, speed?: number): Promise\<void>
+
+模拟触摸板双指滚动手势，使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1设备中可正常调用，在其他设备中返回17000005错误码。
+
+**参数：**
+
+| 参数名 | 类型                                            | 必填 | 说明                    |
+| ------ |-----------------------------------------------|----|-----------------------|
+| point       | [Point](#point9) | 是   | 触摸板双指滚动时鼠标光标的位置。                                            |
+| direction   | [UiDirection](#uidirection10)                 | 是  | 触摸板双指滚动的方向。           |
+| d           | number           | 是   | 触摸板双指滚动的格数，取值为大于等于0的整数，每格对应目标点位移120px。         |
+| speed       | number           | 否   | 触摸板双指滚动的速度，范围：1-500的整数，不在范围内设为默认值为20，单位：格/秒。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.        |
+| 17000007 | Parameter verification failed.     |
+
+**示例：**
+
+```ts
+import { Driver, UiDirection } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  await driver.touchPadTwoFingersScroll({ x: 100, y: 100 }, UiDirection.UP, 20, 10);
 }
 ```
 
@@ -4655,9 +4819,10 @@ penClick(point: Point): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penClick({x: 100, y: 100});
+  await driver.penClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4697,9 +4862,10 @@ penLongClick(point: Point, pressure?: number): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penLongClick({x: 100, y: 100}, 0.5);
+  await driver.penLongClick({ x: 100, y: 100 }, 0.5);
 }
 ```
 
@@ -4739,9 +4905,10 @@ penDoubleClick(point: Point): Promise\<void>
 
 ```ts
 import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penDoubleClick({x: 100, y: 100});
+  await driver.penDoubleClick({ x: 100, y: 100 });
 }
 ```
 
@@ -4782,10 +4949,11 @@ penSwipe(startPoint: Point, endPoint: Point, speed?: number, pressure?: number):
 **示例：**
 
 ```ts
- import { Driver } from '@kit.TestKit';
+import { Driver } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  await driver.penSwipe({x: 100, y: 100}, {x: 100, y: 500}, 600, 0.5);
+  await driver.penSwipe({ x: 100, y: 100 }, { x: 100, y: 500 }, 600, 0.5);
 }
 ```
 
@@ -4803,7 +4971,7 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 
 | 参数名 | 类型                                            | 必填 | 说明                                                                |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
-| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
+| pointers | [PointerMatrix](#pointermatrix9) | 是  |滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。 |
 | speed      | number| 否  | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。            |
 | pressure      | number | 否  | 手写笔多点连续注入的压力，默认为1.0，取值范围为0.0到1.0。                                 |
 
@@ -4827,11 +4995,12 @@ injectPenPointerAction(pointers: PointerMatrix, speed?: number, pressure?: numbe
 
 ```ts
 import { Driver, PointerMatrix } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
   let pointer = PointerMatrix.create(1, 8);
   for (let step = 0; step < 8; step++) {
-    pointer.setPoint(0, step, {x: 500, y: 1100 - 100 *step});
+    pointer.setPoint(0, step, { x: 500, y: 1100 - 100 * step });
   }
   await driver.injectPenPointerAction(pointer, 600, 0.5);
 }
@@ -4843,11 +5012,11 @@ crownRotate(d: number, speed?: number): Promise\<void>
 
 注入手表表冠旋转事件，可指定旋转速度，使用Promise异步回调。
 
-该接口仅在智能穿戴设备上生效。
-
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在Wearable设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -4883,6 +5052,251 @@ async function demo() {
   await driver.crownRotate(50, 30);
   // 逆时针旋转20格，旋转速度为30格/秒
   await driver.crownRotate(-20, 30);
+}
+```
+
+### knuckleKnock<sup>22+</sup>
+
+knuckleKnock(pointers: Array\<Point>, times: number): Promise\<void>
+
+模拟指关节敲击屏幕操作，使用Promise异步回调。
+
+> **说明：**
+> 
+> 若设备关闭了指关节手势<!--RP4--><!--RP4End-->，则调用本接口返回17000005错误码。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | Array<[Point](#point9)>   | 是   | 指关节敲击屏幕坐标点的数组，数组长度取值为1或2。         |
+| times     | number   | 是   | 指关节连续敲击屏幕的次数，取值为1或2。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Driver, Point } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // 模拟指关节单指双击手势
+  let points: Array<Point> = [{ x: 100, y: 100 }];
+  await driver.knuckleKnock(points, 2);
+}
+```
+
+### injectKnucklePointerAction<sup>22+</sup>
+
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
+
+模拟指关节多点注入滑动操作，使用Promise异步回调。
+
+> **说明：**
+> 
+> 若设备关闭了指关节手势<!--RP4--><!--RP4End-->，则调用本接口返回17000005错误码。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在支持指关节操作的Phone、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| pointers  | [PointerMatrix](#pointermatrix9) | 是   | 滑动轨迹，包括操作手指个数和滑动坐标序列。<br>**说明**：当前仅支持单指操作，PointerMatrix中的操作手指个数fingers必须设置为1。|
+| speed    | number                           | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000005 | This operation is not supported.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Driver, PointerMatrix } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  // 模拟指关节滑动在屏幕上画'S'
+  let pointers: PointerMatrix = PointerMatrix.create(1, 6);
+  pointers.setPoint(0, 0, { x: 750, y: 300 });
+  pointers.setPoint(0, 1, { x: 500, y: 100 });
+  pointers.setPoint(0, 2, { x: 250, y: 300 });
+  pointers.setPoint(0, 3, { x: 750, y: 800 });
+  pointers.setPoint(0, 4, { x: 500, y: 1000 });
+  pointers.setPoint(0, 5, { x: 250, y: 800 });
+  await driver.injectKnucklePointerAction(pointers);
+}
+```
+
+### isComponentPresentWhenLongClick<sup>22+</sup>
+
+isComponentPresentWhenLongClick(on: On, point: Point, duration?: number): Promise\<boolean>
+
+在坐标点长按，并查找目标控件是否存在，使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | 是   | 目标控件的属性要求。 |
+| point  | [Point](#point9) | 是   | 长按的坐标点。 |
+| duration   | number     | 否   | 长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<boolean> | Promise对象。返回长按操作期间目标控件是否存在。true：存在。false：不存在。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenLongClick(ON.id('123'), { x: 100, y: 100 }, 2000);
+}
+```
+
+### isComponentPresentWhenDrag<sup>22+</sup>
+
+isComponentPresentWhenDrag(on: On, from: Point, to: Point, speed?: number, duration?: number): Promise\<boolean>
+
+从起始点拖拽至终止点，并查找目标控件是否存在，使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | 是   | 目标控件的属性要求。 |
+| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+| duration  | number | 否   | 拖拽前长按持续的时间，取值范围为大于等于1500的整数，默认值为1500，单位：ms。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<boolean> | Promise对象。返回拖拽操作期间目标控件是否存在。true：存在。false：不存在。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenDrag(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000, 2000);
+}
+```
+
+### isComponentPresentWhenSwipe<sup>22+</sup>
+
+isComponentPresentWhenSwipe(on: On, from: Point, to: Point, speed?: number): Promise\<boolean>
+
+从起始点滑向终止点，并查找目标控件是否存在，使用Promise异步回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名 | 类型                                         | 必填 | 说明                                                             |
+| ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
+| on     | [On](#on9) | 是   | 目标控件的属性要求。 |
+| from | [Point](#point9) | 是   | 以Point对象的形式传入起始点的坐标信息和所属屏幕ID。                       |
+| to  | [Point](#point9) | 是   | 以Point对象的形式传入终止点的坐标信息和所属屏幕ID。<br> **说明：** 应与起始点属于同一个屏幕，否则将抛出17000007异常。                       |
+| speed  | number | 否   | 滑动速率，取值范围为200-40000的整数，默认值为600，不在范围内设为默认值为600，单位：px/s。|
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<boolean> | Promise对象。返回滑动操作期间目标控件是否存在。true：存在。false：不存在。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000002 | The async function is not called with await.             |
+| 17000007 |  Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Driver, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let isExist = await driver.isComponentPresentWhenSwipe(ON.id('123'), { x: 100, y: 100 }, { x: 200, y: 200 }, 1000);
 }
 ```
 
@@ -4964,16 +5378,16 @@ import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
   let pointers: PointerMatrix = PointerMatrix.create(2, 5);
-  pointers.setPoint(0, 0, {x:250, y:480});
-  pointers.setPoint(0, 1, {x:250, y:440});
-  pointers.setPoint(0, 2, {x:250, y:400});
-  pointers.setPoint(0, 3, {x:250, y:360});
-  pointers.setPoint(0, 4, {x:250, y:320});
-  pointers.setPoint(1, 0, {x:250, y:480});
-  pointers.setPoint(1, 1, {x:250, y:440});
-  pointers.setPoint(1, 2, {x:250, y:400});
-  pointers.setPoint(1, 3, {x:250, y:360});
-  pointers.setPoint(1, 4, {x:250, y:320});
+  pointers.setPoint(0, 0, { x: 250, y: 480 });
+  pointers.setPoint(0, 1, { x: 250, y: 440 });
+  pointers.setPoint(0, 2, { x: 250, y: 400 });
+  pointers.setPoint(0, 3, { x: 250, y: 360 });
+  pointers.setPoint(0, 4, { x: 250, y: 320 });
+  pointers.setPoint(1, 0, { x: 250, y: 480 });
+  pointers.setPoint(1, 1, { x: 250, y: 440 });
+  pointers.setPoint(1, 2, { x: 250, y: 400 });
+  pointers.setPoint(1, 3, { x: 250, y: 360 });
+  pointers.setPoint(1, 4, { x: 250, y: 320 });
 }
 ```
 
@@ -5014,7 +5428,7 @@ import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let name: string = await window.getBundleName();
 }
 ```
@@ -5048,9 +5462,10 @@ getBounds(): Promise\<Rect>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let rect = await window.getBounds();
 }
 ```
@@ -5084,10 +5499,11 @@ getTitle(): Promise\<string>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
-  let rect = await window.getTitle();
+  let window: UiWindow = await driver.findWindow({ actived: true });
+  let title = await window.getTitle();
 }
 ```
 
@@ -5120,9 +5536,10 @@ getWindowMode(): Promise\<WindowMode>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let mode = await window.getWindowMode();
 }
 ```
@@ -5156,9 +5573,10 @@ isFocused(): Promise\<boolean>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isFocused();
 }
 ```
@@ -5192,9 +5610,10 @@ isActived(): Promise\<boolean>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   let focused = await window.isActived();
 }
 ```
@@ -5228,9 +5647,10 @@ focus(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.focus();
 }
 ```
@@ -5244,6 +5664,8 @@ moveTo(x: number, y: number): Promise\<void>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **参数：**
 
@@ -5273,9 +5695,10 @@ moveTo(x: number, y: number): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.moveTo(100, 100);
 }
 ```
@@ -5319,9 +5742,10 @@ resize(wide: number, height: number, direction: ResizeDirection): Promise\<void>
 
 ```ts
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resize(100, 100, ResizeDirection.LEFT);
 }
 ```
@@ -5332,13 +5756,11 @@ split(): Promise\<void>
 
 将窗口模式切换成分屏模式，使用Promise异步回调。适用于支持切换分屏模式的窗口。
 
-> **说明**
->
-> 该接口仅在平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5360,9 +5782,10 @@ split(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.split();
 }
 ```
@@ -5373,13 +5796,11 @@ maximize(): Promise\<void>
 
 将窗口最大化，使用Promise异步回调。适用于支持窗口最大化操作的窗口。
 
-> **说明**
->
-> 该接口仅在平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5401,9 +5822,10 @@ maximize(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.maximize();
 }
 ```
@@ -5414,13 +5836,11 @@ minimize(): Promise\<void>
 
 将窗口最小化，使用Promise异步回调。适用于支持窗口最小化操作的窗口。
 
-> **说明**
->
-> 该接口仅在平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5442,9 +5862,10 @@ minimize(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.minimize();
 }
 ```
@@ -5455,13 +5876,11 @@ resume(): Promise\<void>
 
 将窗口恢复到之前的窗口模式，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5483,9 +5902,10 @@ resume(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.resume();
 }
 ```
@@ -5496,13 +5916,11 @@ close(): Promise\<void>
 
 将窗口关闭，使用Promise异步回调。
 
-> **说明**
->
-> 该接口仅在平板、PC/2in1设备上生效。
-
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Test.UiTest
+
+**设备行为差异**：该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回17000005错误码。
 
 **返回值：**
 
@@ -5524,9 +5942,10 @@ close(): Promise\<void>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
-  let driver:Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({actived: true});
+  let driver: Driver = Driver.create();
+  let window: UiWindow = await driver.findWindow({ actived: true });
   await window.close();
 }
 ```
@@ -5560,9 +5979,10 @@ isActive(): Promise\<boolean>
 
 ```ts
 import { Driver, UiWindow } from '@kit.TestKit';
+
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let focused = await window.isActive();
 }
 ```
@@ -5599,7 +6019,7 @@ import { UiWindow, Driver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let window: UiWindow = await driver.findWindow({active: true});
+  let window: UiWindow = await driver.findWindow({ active: true });
   let id = await window.getDisplayId();
 }
 ```
@@ -5608,9 +6028,9 @@ async function demo() {
 
 UI事件监听器。
 
-### once('toastShow')
+### once('toastShow')<sup>10+</sup>
 
-once(type: 'toastShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'toastShow', callback: Callback\<UIElementInfo>): void
 
 开始监听toast控件出现的事件，使用callback的形式返回结果。
 
@@ -5640,8 +6060,8 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer:  UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
@@ -5650,9 +6070,9 @@ async function demo() {
 }
 ```
 
-### once('dialogShow')
+### once('dialogShow')<sup>10+</sup>
 
-once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void;
+once(type: 'dialogShow', callback: Callback\<UIElementInfo>): void
 
 开始监听dialog控件出现的事件，使用callback的形式返回结果。
 
@@ -5683,12 +6103,119 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 async function demo() {
   let driver: Driver = Driver.create();
   let observer: UIEventObserver = await driver.createUIEventObserver();
-  let  callback = (UIElementInfo: UIElementInfo)=>{
+  let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
     console.info(UIElementInfo.type);
   }
   observer.once('dialogShow', callback);
+}
+```
+
+### once('windowChange')<sup>22+</sup>
+
+once(type: 'windowChange', windowChangeType: WindowChangeType, options: WindowChangeOptions, callback: Callback\<UIElementInfo>): void
+
+开始监听指定类型的窗口变化事件，支持设置事件监听的扩展配置，监听到指定窗口变化事件时触发callback回调。仅支持[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)的窗口监听。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                               |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| type     | string    | 是   | 订阅的事件类型，支持的事件为'windowChange'。当监听到窗口变化时，触发该事件。 |
+| windowChangeType     | [WindowChangeType](#windowchangetype22)   | 是   | 窗口变化事件类型。 |
+| options  | [WindowChangeOptions](#windowchangeoptions22)   | 是   | 窗口变化事件监听的扩展配置，包括监听超时时间和监听窗口对应包名。 |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数，返回事件的相关信息。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000005 | This operation is not supported.        |
+| 17000007  | Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let options: WindowChangeOptions = {
+    timeout: 20000,
+    bundleName: 'com.example.myapplication'  // 请开发者替换为实际包名
+  }
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.windowChangeType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+  }
+  observer.once('windowChange', WindowChangeType.WINDOW_ADDED, options, callback);
+}
+```
+
+### once('componentEventOccur')<sup>22+</sup>
+
+once(type: 'componentEventOccur', componentEventType: ComponentEventType, options: ComponentEventOptions, callback: Callback\<UIElementInfo>): void
+
+开始监听指定类型的控件操作事件，支持设置事件监听的扩展配置，监听到指定控件操作事件时触发callback回调。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Test.UiTest
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                               |
+| -------- | -------------------------------------------- | ---- | ---------------------------------- |
+| type     | string    | 是   | 订阅的事件类型，支持的事件为'componentEventOccur'。当监听到控件操作时，触发该事件。 |
+| componentEventType   | [ComponentEventType](#componenteventtype22)   | 是   | 控件操作事件类型。 |
+| options  | [ComponentEventOptions](#componenteventoptions22)  | 是 | 控件操作事件监听的扩展配置，包括监听超时时间和监听控件匹配条件。 |
+| callback | Callback\<[UIElementInfo](#uielementinfo10)> | 是   | 事件发生时执行的回调函数。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17000005 | This operation is not supported.        |
+| 17000007  | Parameter verification failed.|
+
+**示例：**
+
+```ts
+import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
+
+async function demo() {
+  let driver: Driver = Driver.create();
+  let observer: UIEventObserver = driver.createUIEventObserver();
+  let option: ComponentEventOptions = {
+    timeout: 20000,
+    on: ON.id('123')  // 请开发者替换为实际存在的控件id值
+  };
+  let callback = (UIElementInfo: UIElementInfo) => {
+    console.info(UIElementInfo.bundleName);
+    console.info(UIElementInfo.text);
+    console.info(UIElementInfo.type);
+    console.info(UIElementInfo.componentEventType?.toString());
+    console.info(UIElementInfo.windowId?.toString());
+    console.info(UIElementInfo.componentId);
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.left.toString());
+    console.info(UIElementInfo.componentRect?.left.toString());
+  };
+  observer.once('componentEventOccur', ComponentEventType.COMPONENT_CLICKED, option, callback);
 }
 ```
 
@@ -5701,6 +6228,7 @@ By提供的API能力具有以下几个特点:<br>1、支持单属性匹配和多
 
 ```ts
 import { BY } from '@kit.TestKit';
+
 BY.text('123').type('Button');
 ```
 
@@ -5731,6 +6259,7 @@ text(txt: string, pattern?: MatchPattern): By
 
 ```ts
 import { BY, By } from '@kit.TestKit';
+
 let by: By = BY.text('123'); // 使用静态构造器BY创建by对象，指定目标控件的text属性。
 ```
 
@@ -5761,6 +6290,7 @@ key(key: string): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.key('123'); // 使用静态构造器BY创建by对象，指定目标控件的key值属性。
 ```
 
@@ -5791,6 +6321,7 @@ id(id: number): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.id(123); // 使用静态构造器BY创建by对象，指定目标控件的id属性。
 ```
 
@@ -5821,6 +6352,7 @@ type(tp: string): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.type('Button'); // 使用静态构造器BY创建by对象，指定目标控件的控件类型属性。
 ```
 
@@ -5851,6 +6383,7 @@ clickable(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.clickable(true); // 使用静态构造器BY创建by对象，指定目标控件的可点击状态属性。
 ```
 
@@ -5881,6 +6414,7 @@ scrollable(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.scrollable(true); // 使用静态构造器BY创建by对象，指定目标控件的可滑动状态属性。
 ```
 
@@ -5910,6 +6444,7 @@ enabled(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.enabled(true); // 使用静态构造器BY创建by对象，指定目标控件的使能状态属性。
 ```
 
@@ -5939,6 +6474,7 @@ focused(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.focused(true); // 使用静态构造器BY创建by对象，指定目标控件的获焦状态属性。
 ```
 
@@ -5968,6 +6504,7 @@ selected(b?: boolean): By
 
 ```ts
 import { By, BY } from '@kit.TestKit';
+
 let by: By = BY.selected(true); // 使用静态构造器BY创建by对象，指定目标控件的被选中状态属性。
 ```
 
@@ -6050,10 +6587,17 @@ click(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
 import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6071,10 +6615,17 @@ doubleClick(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6092,10 +6643,17 @@ longClick(): Promise\<void>
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6123,6 +6681,7 @@ getId(): Promise\<number>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6150,6 +6709,7 @@ getKey(): Promise\<string>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6177,6 +6737,7 @@ getText(): Promise\<string>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6204,6 +6765,7 @@ getType(): Promise\<string>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6231,6 +6793,7 @@ isClickable(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6262,6 +6825,7 @@ isScrollable(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.scrollable(true));
@@ -6294,6 +6858,7 @@ isEnabled(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6326,6 +6891,7 @@ isFocused(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6357,6 +6923,7 @@ isSelected(): Promise\<boolean>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.type('Button'));
@@ -6372,7 +6939,7 @@ async function demo() {
 
 inputText(text: string): Promise\<void>
 
-向控件中输入文本（适用于文本框控件）。
+向控件中输入文本，仅针对可编辑的文本组件生效。
 
 从API version 9开始不再维护，建议使用[inputText<sup>9+</sup>](#inputtext9)。
 
@@ -6384,10 +6951,17 @@ inputText(text: string): Promise\<void>
 | ------ | ------ | ---- | ---------------- |
 | text   | string | 是   | 输入的文本信息。 |
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let text: UiComponent = await driver.findComponent(BY.text('hello world'));
@@ -6421,6 +6995,7 @@ scrollSearch(by: By): Promise\<UiComponent>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let scrollBar: UiComponent = await driver.findComponent(BY.type('Scroll'));
@@ -6455,6 +7030,7 @@ static create(): UiDriver
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
 }
@@ -6476,10 +7052,17 @@ UiDriver对象在给定的时间内延时。
 | -------- | ------ | ---- | ------------ |
 | duration | number | 是   | 给定的时间。 |
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.delayMs(1000);
@@ -6512,6 +7095,7 @@ findComponent(by: By): Promise\<UiComponent>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let button: UiComponent = await driver.findComponent(BY.text('next page'));
@@ -6544,6 +7128,7 @@ findComponents(by: By): Promise\<Array\<UiComponent>>
 
 ```ts
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   let buttonList: Array<UiComponent> = await driver.findComponents(BY.text('next page'));
@@ -6566,6 +7151,12 @@ assertComponentExist(by: By): Promise\<void>
 | ------ | ------------------- | ---- | -------------------- |
 | by     | [By](#bydeprecated) | 是   | 目标控件的属性要求。 |
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[uitest测试框架错误码](errorcode-uitest.md)。
@@ -6580,6 +7171,7 @@ assertComponentExist(by: By): Promise\<void>
 
 ```ts
 import { UiDriver, BY } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.assertComponentExist(BY.text('next page'));
@@ -6596,10 +7188,17 @@ UiDriver对象进行点击BACK键的操作。
 
 **系统能力**：SystemCapability.Test.UiTest
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.pressBack();
@@ -6622,13 +7221,21 @@ UiDriver对象采取如下操作：通过key值找到对应键并点击。
 | ------- | ------ | ---- | ------------- |
 | keyCode | number | 是   | 指定的key值，取值大于等于0的整数，取值范围：[KeyCode键码值](../apis-input-kit/js-apis-keycode.md#keycode)。 |
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
 import { Driver, UiDriver } from '@kit.TestKit';
+import { KeyCode } from '@kit.InputKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
-  await driver.triggerKey(123);
+  await driver.triggerKey(KeyCode.KEYCODE_BACK); // 返回键
 }
 ```
 
@@ -6649,6 +7256,12 @@ UiDriver对象采取如下操作：在目标坐标点单击。
 | ------ | ------ | ---- | -------------------------------------- |
 | x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
 | y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -6678,6 +7291,12 @@ UiDriver对象采取如下操作：在目标坐标点双击。
 | x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
 | y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
@@ -6706,10 +7325,17 @@ UiDriver对象采取如下操作：在目标坐标点长按下鼠标左键。
 | x      | number | 是   | 以number的形式传入目标点的横坐标信息，取值范围：大于等于0的整数。 |
 | y      | number | 是   | 以number的形式传入目标点的纵坐标信息，取值范围：大于等于0的整数。 |
 
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+
 **示例：**
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.longClick(100, 100);
@@ -6734,6 +7360,12 @@ UiDriver对象采取如下操作：从给出的起始坐标点滑向给出的目
 | starty | number | 是   | 以number的形式传入起始点的纵坐标信息，取值范围：大于等于0的整数。 |
 | endx   | number | 是   | 以number的形式传入目的点的横坐标信息，取值范围：大于等于0的整数。 |
 | endy   | number | 是   | 以number的形式传入目的点的纵坐标信息，取值范围：大于等于0的整数。 |
+
+**返回值：**
+
+| 类型             | 说明              |
+|----------------|-----------------|
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -6773,6 +7405,7 @@ UiDriver对象采取如下操作：捕获当前屏幕，并保存为PNG格式的
 
 ```ts
 import { UiDriver } from '@kit.TestKit';
+
 async function demo() {
   let driver: UiDriver = UiDriver.create();
   await driver.screenCap('/data/storage/el2/base/cache/1.png');

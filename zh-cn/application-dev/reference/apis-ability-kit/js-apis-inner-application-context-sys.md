@@ -1,5 +1,12 @@
 # Context (系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 Context模块提供了ability或application的上下文的能力，包括访问特定应用程序的资源等。
 
 > **说明：**
@@ -14,7 +21,9 @@ Context模块提供了ability或application的上下文的能力，包括访问�
 import { common } from '@kit.AbilityKit';
 ```
 
-## Context.createBundleContext<sup>(deprecated)</sup>
+## Context
+
+### createBundleContext<sup>(deprecated)</sup>
 
 createBundleContext(bundleName: string): Context
 
@@ -60,7 +69,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let bundleContext: common.Context;
     try {
       bundleContext = this.context.createBundleContext('com.example.test');
@@ -71,7 +80,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## Context.createModuleContext<sup>(deprecated)</sup>
+### createModuleContext<sup>(deprecated)</sup>
 
 createModuleContext(bundleName: string, moduleName: string): Context
 
@@ -114,7 +123,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let moduleContext: common.Context;
     try {
       moduleContext = this.context.createModuleContext('com.example.test', 'entry');
@@ -125,7 +134,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## Context.createModuleResourceManager<sup>11+</sup>
+### createModuleResourceManager<sup>11+</sup>
 
 createModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 
@@ -148,7 +157,7 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 
 | 类型 | 说明 |
 | -------- | -------- |
-| resmgr.ResourceManager | 资源管理对象。 |
+| [resmgr.ResourceManager](../apis-localization-kit/js-apis-resource-manager.md#resourcemanager) | 资源管理对象。 |
 
 **错误码**：
 
@@ -156,6 +165,8 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
@@ -167,7 +178,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let ModuleResourceManager: resourceManager.ResourceManager;
     try {
       ModuleResourceManager = this.context.createModuleResourceManager('com.example.test', 'entry');
@@ -177,7 +188,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-## Context.createSystemHspModuleResourceManager<sup>12+</sup>
+### createSystemHspModuleResourceManager<sup>12+</sup>
 
 createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 
@@ -210,7 +221,7 @@ import { UIAbility } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     this.context.createSystemHspModuleResourceManager("com.example.myapplication", "library");
   }
 }

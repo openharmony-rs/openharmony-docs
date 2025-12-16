@@ -1,5 +1,12 @@
 # Using HiChecker (ArkTS)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @lu-tao-->
+<!--Designer: @martin-duan-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 HiChecker is provided to check issues that may be easily ignored during application development. Such issues include time-consuming thread calling and ability resource leakage in application processes. The issues are recorded in logs or lead to process crashes explicitly so that you can find and rectify them.
@@ -11,90 +18,89 @@ HiChecker is provided to check issues that may be easily ignored during applicat
 ## Working Principles
 
 1. The application calls HiChecker APIs to add, remove, query, and modify rules. 
+
 2. When a time-consuming call or ability resource leakage occurs, HiChecker reports an event based on the rule triggered.
 
 ## Constraints
 
 - Currently, the alarm rules support only logs (default) and application crashes. 
+
 - HiChecker supports stack unwinding in C but not in JavaScript. 
 
 ## Available APIs
 
-The check APIs are provided by the HiChecker module. For details about the APIs, see [HiChecker](../reference/apis-performance-analysis-kit/js-apis-hichecker.md).
+The check APIs are provided by the HiChecker module. For details about the APIs, see [@ohos.hichecker (HiChecker)](../reference/apis-performance-analysis-kit/js-apis-hichecker.md).
 
 | API| Description|
 | -------- | -------- |
-| hichecker.addCheckRule(rule: bigint) | Adds a rule.|
-| hichecker.removeCheckRule(rule: bigint) | Removes a rule.|
-| hichecker.containsCheckRule(rule: bigint) | Queries a rule.|
+| hichecker.addCheckRule(rule: bigint): void | Adds one or more rules. HiChecker detects unexpected operations or gives feedback based on the added rules.|
+| hichecker.removeCheckRule(rule: bigint): void | Removes one or more rules. The removed rules will become ineffective.|
+| hichecker.containsCheckRule(rule: bigint): boolean | Checks whether the specified rule exists in the collection of added rules.|
+| hichecker.getRule(): bigint | Obtains a collection of thread, process, and alarm rules that have been added.|
 
 ## How to Develop
 
-After the application startup execution page is loaded, the check starts. After the service is complete, the check stops.
+After the application startup execution page is loaded, the check starts. After the service is complete, the check stops. When starting a check, you can configure different alarm rules and check rules as required. Currently, the check rules support the check of time-consuming function calls, ability leaks, and ArkUI performance. You can configure the behavior triggered by the detected problem through the alarm rule. Currently, the logging and application exit are supported.
+
+To detect time-consuming function calls and record them in logs, perform the following steps:
 
 1. Create an ArkTS application project. In the **Project** window, click **entry > src > main > ets > entryability** to open the **EntryAbility.ets** file. After the page is loaded, call the HiChecker to add check rules. The sample code is as follows:
-
-   ```ts
+   <!-- @[HiChecker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/PerformanceAnalysisTool/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hichecker, hilog } from '@kit.PerformanceAnalysisKit';
    import { window } from '@kit.ArkUI';
    import { image } from '@kit.ImageKit';
-   import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
-   import { hichecker, hilog } from '@kit.PerformanceAnalysisKit';
    
    export default class EntryAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       // Add a check rule. For details about the rule, see HiChecker.
+        // Add a check rule. For details about the rule, see HiChecker.
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
        let filePath: string = this.context.cacheDir + '/test.JPG';
        const imageSourceApi: image.ImageSource = image.createImageSource(filePath);
        const imagePackerApi = image.createImagePacker();
        let packOpts: image.PackingOption = { format:"image/jpeg", quality:98 };
-       imagePackerApi.packToData(imageSourceApi, packOpts);
+       imagePackerApi.packing(imageSourceApi, packOpts);
        // The preceding codes trigger the check rule through the image subsystem.
-       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreateend');
+       hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
      }
    
-     onDestroy() {
+     onDestroy(): void {
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
      }
    
-     onWindowStageCreate(windowStage: window.WindowStage) {
+     onWindowStageCreate(windowStage: window.WindowStage): void {
        // Main window is created, set main page for this ability
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
    
-       windowStage.loadContent('pages/Index', (err, data) => {
+       windowStage.loadContent('pages/Index', (err) => {
          if (err.code) {
            hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
            return;
          }
-         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+         hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
        });
      }
    
-     onWindowStageDestroy() {
+     onWindowStageDestroy(): void {
        // Main window is destroyed, and UI related resources are released.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
      }
    
-     onForeground() {
+     onForeground(): void {
        // Ability is brought to foreground.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
      }
    
-     onBackground() {
+     onBackground(): void {
        // Ability is back to background.
        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
      }
-   }
-   ```
-   
-2. Run the following commands in sequence in the shell:
-
-   ```shell
-   hdc shell
-   hilog|grep -i hichecker
+   };
    ```
 
-   After the HAP is installed, the check begins. If the following call stack information is displayed in the shell window, the check is successful (The call stack triggers the check rule).
+2. Install and run the HAP. Use the Log plug-in of DevEco Studio to filter logs containing the keyword **HICHECKER** or run the **hdc shell "hilog | grep HICHECKER"** command. If the following call stack information is displayed, the check is successful (the call stack is the one that triggers the check rule).
 
    ```shell
    08-05 23:11:07.206  1799  1799 I C02d0b/HICHECKER: StackTrace:

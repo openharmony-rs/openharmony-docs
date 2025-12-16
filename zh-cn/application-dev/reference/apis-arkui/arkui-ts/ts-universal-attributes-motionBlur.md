@@ -1,4 +1,10 @@
 # 运动模糊
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置组件由缩放大小或位移变化引起的运动过程中的动态模糊效果。需要与动画的AnimateParam的onFinish参数配合使用。
 
@@ -16,7 +22,7 @@ motionBlur(value: MotionBlurOptions): T
 
 2、该属性需要在开始状态将motionBlur的参数radius设置为0，否则冷启动时会有非预期效果。
 
-3、该属性需要与动画的AnimateParam的onFinish参数配合使用,需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
+3、该属性需要与动画的AnimateParam的onFinish参数配合使用，需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
 
 4、在使用该属性过程中，不要在使用过程中频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
 
@@ -76,25 +82,29 @@ motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
 ## MotionBlurOptions对象说明
 
+运动模糊选项。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型                                                        | 必填  | 说明                                                         |
-| ------------- | ----------------------------------------------------------- | ----- | ------------------------------------------------------------ |
-| radius | number      | 是    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内。 |
-| anchor | [MotionBlurAnchor](#motionbluranchor对象说明) | 是    | 运动模糊锚点坐标。运动模糊锚点坐标设置时需要与动画缩放的锚点保持一致设置。 |
+| 名称          | 类型                                                        | 只读  | 可选  | 说明                                                         |
+| ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
+| radius | number      | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内。 |
+| anchor | [MotionBlurAnchor](#motionbluranchor对象说明) | 否    | 否    | 运动模糊锚点坐标。运动模糊锚点坐标设置时需要与动画缩放的锚点保持一致设置。 |
 
 ## MotionBlurAnchor对象说明
 
+运动模糊锚坐标。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 类型                                                        | 必填  | 说明                                                         |
-| ------------- | ----------------------------------------------------------- | ----- | ------------------------------------------------------------ |
-| x | number      | 是    | 锚点坐标x值，取值范围[0.0, 1.0]。 |
-| y | number      | 是    | 锚点坐标y值，取值范围[0.0, 1.0]。 |
+| 名称          | 类型                                                        | 只读  | 可选  | 说明                                                         |
+| ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
+| x | number      | 否    | 否    | 锚点坐标x值，取值范围[0.0, 1.0]。 |
+| y | number      | 否    | 否    | 锚点坐标y值，取值范围[0.0, 1.0]。 |
 
 ## 示例
 
@@ -106,42 +116,41 @@ import { curves } from '@kit.ArkUI';
 @Entry
 @Component
 struct motionBlurTest {
-  @State widthSize: number = 400;
-  @State heightSize: number = 320;
-  @State flag: boolean = true;
-  @State radius: number = 0;
-  @State x: number = 0;
-  @State y: number = 0;
+  @State widthSize: number = 300
+  @State heightSize: number = 240
+  @State flag: boolean = true
+  @State radius: number = 0
+  @State x: number = 0.5
+  @State y: number = 0.5
 
   build() {
     Column() {
       Column() {
-        Image($r('app.media.testImg'))
+        // $r('app.media.test')需要替换为开发者所需的图像资源文件。
+        Image($r('app.media.test'))
           .width(this.widthSize)
           .height(this.heightSize)
+          .scale({ x: this.flag ? 1 : 0.8,y: this.flag ? 1 : 0.8 ,centerX: "50%", centerY: "50%" })
           .onClick(() => {
-            this.radius = 5;
+            this.radius = 50;
             this.x = 0.5;
             this.y = 0.5;
-            if (this.flag) {
-              this.widthSize = 100;
-              this.heightSize = 80;
-            } else {
-              this.widthSize = 400;
-              this.heightSize = 320;
-            }
             this.flag = !this.flag;
           })
           .animation({
             duration: 2000,
+            iterations:1,
+            playMode:PlayMode.Alternate,
             curve: curves.springCurve(10, 1, 228, 30),
             onFinish: () => {
               this.radius = 0;
-            }
+              console.info("onFinish")
+            },
           })
           .motionBlur({ radius: this.radius, anchor: { x: this.x, y: this.y } })
       }
-    }.width('100%').margin({ top: 5 })
+    }.width('100%')
+    .margin({ top: 50 })
   }
 }
 ```

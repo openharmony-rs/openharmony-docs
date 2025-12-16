@@ -1,4 +1,10 @@
 # Functions
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -16,6 +22,8 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 通过主图的pixelmap创建一个Picture对象。
 
+由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -32,7 +40,7 @@ createPicture(mainPixelmap : PixelMap): Picture
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -41,8 +49,6 @@ createPicture(mainPixelmap : PixelMap): Picture
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
 async function CreatePicture(context: Context) {
   const resourceMgr = context.resourceManager;
   const rawFile = await resourceMgr.getRawFileContent("test.jpg");
@@ -66,6 +72,8 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 从MessageSequence中获取Picture。
 
+由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](./arkts-apis-image-Picture.md#release13)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -82,7 +90,7 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -94,7 +102,6 @@ createPictureFromParcel(sequence: rpc.MessageSequence): Picture
 ```ts
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
 class MySequence implements rpc.Parcelable {
   picture: image.Picture | null = null;
@@ -114,9 +121,9 @@ class MySequence implements rpc.Parcelable {
   unmarshalling(messageSequence : rpc.MessageSequence) {
     this.picture = image.createPictureFromParcel(messageSequence);
     this.picture.getMainPixelmap().getImageInfo().then((imageInfo : image.ImageInfo) => {
-      console.info('Unmarshalling to get mainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width);
+      console.info(`Unmarshalling to get mainPixelmap information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
     }).catch((error: BusinessError) => {
-      console.error('Unmarshalling failed error.code: ${error.code} ,error.message: ${error.message}');
+      console.error(`Unmarshalling failed error.code: ${error.code} ,error.message: ${error.message}`);
     });
     return true;
   }
@@ -134,10 +141,10 @@ async function Marshalling_UnMarshalling(context: Context) {
   if (pictureObj != null) {
     let parcelable: MySequence = new MySequence(pictureObj);
     let data: rpc.MessageSequence = rpc.MessageSequence.create();
-    // marshalling.
+    // 序列化。
     data.writeParcelable(parcelable);
     let ret: MySequence = new MySequence(pictureObj);
-    // unmarshalling.
+    // 反序列化。
     data.readParcelable(ret);
   } else {
     console.error('PictureObj is null');
@@ -149,7 +156,9 @@ async function Marshalling_UnMarshalling(context: Context) {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions): Promise\<PixelMap>
 
-通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，通过Promise返回结果。
+通过属性创建PixelMap，默认采用BGRA_8888格式处理数据。使用Promise异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -186,7 +195,9 @@ async function CreatePixelMap() {
 
 createPixelMap(colors: ArrayBuffer, options: InitializationOptions, callback: AsyncCallback\<PixelMap>): void
 
-通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，通过callback返回结果。
+通过属性创建PixelMap，默认采用BGRA_8888格式处理数据。使用callback异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -223,6 +234,8 @@ createPixelMapUsingAllocator(colors: ArrayBuffer, param: InitializationOptions, 
 
 通过属性创建以及指定内存类型创建PixelMap，默认采用BGRA_8888格式处理数据。使用Promise异步回调。
 
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -256,11 +269,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function CreatePixelMapUseAllocator() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = { editable: true, srcPixelFormat: image.PixelMapFormat.RGBA_8888, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   image.createPixelMapUsingAllocator(color, opts, image.AllocatorType.AUTO).then((pixelMap: image.PixelMap) => {
     console.info('Succeeded in creating pixelmap.');
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+    console.error("Failed to create pixelmap. code is ", error.code);
   })
 }
 ```
@@ -270,6 +283,8 @@ async function CreatePixelMapUseAllocator() {
 createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 
 从MessageSequence中获取PixelMap。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -304,7 +319,6 @@ createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -341,7 +355,7 @@ async function CreatePixelMapFromParcel() {
     alphaType: image.AlphaType.UNPREMUL
   }
   let pixelMap: image.PixelMap | undefined = undefined;
-  image.createPixelMap(color, opts).then((srcPixelMap: image.PixelMap) => {
+  await image.createPixelMap(color, opts).then((srcPixelMap: image.PixelMap) => {
     pixelMap = srcPixelMap;
   })
   if (pixelMap != undefined) {
@@ -350,12 +364,12 @@ async function CreatePixelMapFromParcel() {
     let data: rpc.MessageSequence = rpc.MessageSequence.create();
     data.writeParcelable(parcelable);
 
-    // 反序列化 rpc获取到data。
+    // 反序列化rpc获取到data。
     let ret: MySequence = new MySequence(pixelMap);
     data.readParcelable(ret);
 
     // 获取到pixelmap。
-    let unmarshPixelmap = ret.pixel_map;
+    let newPixelmap = ret.pixel_map;
   }
 }
 ```
@@ -364,10 +378,12 @@ async function CreatePixelMapFromParcel() {
 
 createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 
-根据Surface id和区域信息，创建一个PixelMap对象。该区域的大小由[Region](arkts-apis-image-i.md#region8).size指定。使用Promise形式返回。
+根据Surface ID和区域信息创建一个PixelMap对象。该区域的大小由[Region](arkts-apis-image-i.md#region8).size指定。使用Promise异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **说明：**
-> 当开发设备为折叠屏，折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败，需将宽高适配旋转角度。推荐使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)
+> 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需将宽高适配旋转角度。推荐使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -376,7 +392,7 @@ createPixelMapFromSurface(surfaceId: string, region: Region): Promise\<PixelMap>
 | 参数名                 | 类型                 | 必填 | 说明                                     |
 | ---------------------- | -------------       | ---- | ---------------------------------------- |
 | surfaceId              | string              | 是   | 对应Surface的ID，可通过预览组件获取，如[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
-| region                 | [Region](arkts-apis-image-i.md#region8)  | 是   | 区域信息。[Region](arkts-apis-image-i.md#region8).size的宽高需和设置的预览流大小保持一致。 |
+| region                 | [Region](arkts-apis-image-i.md#region8)  | 是   | 截取的画面区域。仅支持从画面左上角开始截取部分或整个画面，即Region中的x和y必须为0，Region.size中width和height的取值范围分别为[1, 预览流宽度]和[1, 预览流高度]。如需截取任意区域，可先使用[image.createPixelMapFromSurface](#imagecreatepixelmapfromsurface15)获取整个画面，再使用[crop](arkts-apis-image-PixelMap.md#crop9)截取所需区域。 |
 
 **返回值：**
 
@@ -413,10 +429,12 @@ async function CreatePixelMapFromSurface(surfaceId: string) {
 
 createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
-以同步方式，根据Surface id和区域信息，创建一个PixelMap对象。该区域的大小由[Region](arkts-apis-image-i.md#region8).size指定。
+以同步方式，根据Surface ID和区域信息创建一个PixelMap对象。该区域的大小由[Region](arkts-apis-image-i.md#region8).size指定。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **说明：**
-> 当开发设备为折叠屏，折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败，需将宽高适配旋转角度。推荐使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)。
+> 当设备为折叠屏，且折叠状态切换时，可能因Surface自带旋转角度导致接口创建失败。需将宽高适配旋转角度。推荐使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -425,7 +443,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 | 参数名                 | 类型                 | 必填 | 说明                                     |
 | ---------------------- | -------------       | ---- | ---------------------------------------- |
 | surfaceId              | string              | 是   | 对应Surface的ID，可通过预览组件获取，如[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
-| region                 | [Region](arkts-apis-image-i.md#region8)  | 是   | 区域信息。[Region](arkts-apis-image-i.md#region8).size的宽高需和设置的预览流大小保持一致。 |
+| region                 | [Region](arkts-apis-image-i.md#region8)  | 是   | 截取的画面区域。仅支持从画面左上角开始截取部分或整个画面，即Region中的x和y必须为0，Region.size中width和height的取值范围分别为[1, 预览流宽度]和[1, 预览流高度]。如需截取任意区域，可先使用[image.createPixelMapFromSurfaceSync](#imagecreatepixelmapfromsurfacesync15)获取整个画面，再使用[cropSync](arkts-apis-image-PixelMap.md#cropsync12)截取所需区域。 |
 
 **返回值：**
 
@@ -435,7 +453,7 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -446,11 +464,9 @@ createPixelMapFromSurfaceSync(surfaceId: string, region: Region): PixelMap
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 async function Demo(surfaceId: string) {
   let region: image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
-  let pixelMap : image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
+  let pixelMap: image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region);
   return pixelMap;
 }
 ```
@@ -459,7 +475,9 @@ async function Demo(surfaceId: string) {
 
 createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
-从Surface id创建一个PixelMap对象。使用Promise异步回调，返回PixelMap。
+从Surface ID创建一个PixelMap对象。使用Promise异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -477,7 +495,7 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -490,7 +508,7 @@ createPixelMapFromSurface(surfaceId: string): Promise\<PixelMap>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-async function Demo(surfaceId: string) {
+async function CreatePixelMapFromSurface(surfaceId: string) {
   image.createPixelMapFromSurface(surfaceId).then(() => {
     console.info('Succeeded in creating pixelmap from Surface');
   }).catch((error: BusinessError) => {
@@ -503,7 +521,9 @@ async function Demo(surfaceId: string) {
 
 createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
-从Surface id创建一个pixelMap对象，同步返回PixelMap结果。
+从Surface ID创建一个PixelMap对象，同步返回PixelMap结果。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -521,7 +541,7 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -532,18 +552,19 @@ createPixelMapFromSurfaceSync(surfaceId: string): PixelMap
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function Demo(surfaceId: string) {
+async function CreatePixelMapFromSurfaceSync(surfaceId: string) {
   let pixelMap : image.PixelMap = image.createPixelMapFromSurfaceSync(surfaceId);
   return pixelMap;
 }
 ```
+
 ## image.createPixelMapSync<sup>12+</sup>
 
 createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMap
 
 通过属性创建PixelMap，默认采用BGRA_8888格式处理数据，同步返回结果。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -562,7 +583,7 @@ createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -571,9 +592,7 @@ createPixelMapSync(colors: ArrayBuffer, options: InitializationOptions): PixelMa
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function CreatePixelMapSync() {
+function CreatePixelMapSync() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapSync(color, opts);
@@ -586,6 +605,8 @@ async function CreatePixelMapSync() {
 createPixelMapSync(options: InitializationOptions): PixelMap
 
 通过属性创建PixelMap，同步返回PixelMap结果。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -602,7 +623,7 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -611,9 +632,7 @@ createPixelMapSync(options: InitializationOptions): PixelMap
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function CreatePixelMapSync() {
+function CreatePixelMapSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapSync(opts);
   return pixelMap;
@@ -625,6 +644,8 @@ async function CreatePixelMapSync() {
 createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptions, allocatorType?: AllocatorType): PixelMap
 
 通过指定属性以及内存类型创建PixelMap，默认采用BGRA_8888格式处理数据，同步返回结果。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -655,11 +676,9 @@ createPixelMapUsingAllocatorSync(colors: ArrayBuffer, param: InitializationOptio
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function CreatePixelMapSync() {
+function CreatePixelMapSync() {
   const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-  let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
+  let opts: image.InitializationOptions = { editable: true, srcPixelFormat: image.PixelMapFormat.RGBA_8888, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(color, opts, image.AllocatorType.AUTO);
   return pixelMap;
 }
@@ -670,6 +689,8 @@ async function CreatePixelMapSync() {
 createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: AllocatorType): PixelMap
 
 通过属性创建PixelMap，同步返回PixelMap结果。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -698,9 +719,7 @@ createPixelMapUsingAllocatorSync(param: InitializationOptions, allocatorType?: A
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function CreatePixelMapSync() {
+function CreatePixelMapSync() {
   let opts: image.InitializationOptions = { editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 } }
   let pixelMap : image.PixelMap = image.createPixelMapUsingAllocatorSync(opts, image.AllocatorType.AUTO);
   return pixelMap;
@@ -711,7 +730,9 @@ async function CreatePixelMapSync() {
 
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
-将PixelMap的透明通道非预乘模式转变为预乘模式，转换后的数据存入目标PixelMap，通过回调函数返回结果。
+将PixelMap的透明通道非预乘模式转变为预乘模式，转换后的数据存入目标PixelMap。使用callback异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -725,7 +746,7 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -767,7 +788,9 @@ async function CreatePremultipliedPixelMap() {
 
 createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
-将PixelMap数据按照透明度非预乘格式转为预乘格式，转换后的数据存入另一个PixelMap，通过Promise返回结果。
+将PixelMap数据按照透明度非预乘格式转为预乘格式，转换后的数据存入另一个PixelMap。使用Promise异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -786,7 +809,7 @@ createPremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -825,7 +848,9 @@ async function CreatePremultipliedPixelMap() {
 
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallback\<void>): void
 
-将PixelMap的透明通道预乘模式转变为非预乘模式，转换后的数据存入目标PixelMap，通过回调函数返回结果。
+将PixelMap的透明通道预乘模式转变为非预乘模式，转换后的数据存入目标PixelMap。使用callback异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -839,7 +864,7 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -881,7 +906,9 @@ async function CreateUnpremultipliedPixelMap() {
 
 createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
-将PixelMap的透明通道预乘模式转变为非预乘模式，转换后的数据存入目标PixelMap，通过Promise返回结果。
+将PixelMap的透明通道预乘模式转变为非预乘模式，转换后的数据存入目标PixelMap。使用Promise异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -900,7 +927,7 @@ createUnpremultipliedPixelMap(src: PixelMap, dst: PixelMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -941,6 +968,7 @@ createImageSource(uri: string): ImageSource
 
 通过传入的uri创建ImageSource实例。
 
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -959,16 +987,12 @@ createImageSource(uri: string): ImageSource
 | [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
 
 **示例：**
-
-<!--code_no_check-->
 ```ts
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.jpg'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
-const path: string = context.filesDir + "/test.jpg";
-const imageSourceApi: image.ImageSource = image.createImageSource(path);
+async function CreateImageSource(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
+  const path: string = context.filesDir + "/test.jpg";
+  const imageSourceObj: image.ImageSource = image.createImageSource(path);
+}
 ```
 
 ## image.createImageSource<sup>9+</sup>
@@ -976,6 +1000,8 @@ const imageSourceApi: image.ImageSource = image.createImageSource(path);
 createImageSource(uri: string, options: SourceOptions): ImageSource
 
 通过传入的uri创建ImageSource实例。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -998,16 +1024,13 @@ createImageSource(uri: string, options: SourceOptions): ImageSource
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-import { common } from '@kit.AbilityKit';
-
-let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.png'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
-const path: string = context.filesDir + "/test.png";
-let imageSourceApi: image.ImageSource = image.createImageSource(path, sourceOptions);
+async function CreateImageSource(context : Context) {
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+  // 此处'test.png'仅作示例，请开发者自行替换。否则imageSource会创建失败，导致后续无法正常执行。
+  const path: string = context.filesDir + "/test.png";
+  let imageSourceObj: image.ImageSource = image.createImageSource(path, sourceOptions);
+}
 ```
 
 ## image.createImageSource<sup>7+</sup>
@@ -1015,6 +1038,8 @@ let imageSourceApi: image.ImageSource = image.createImageSource(path, sourceOpti
 createImageSource(fd: number): ImageSource
 
 通过传入文件描述符来创建ImageSource实例。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1034,17 +1059,15 @@ createImageSource(fd: number): ImageSource
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
 
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
-let filePath: string = context.filesDir + "/test.jpg";
-let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-const imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
+async function CreateImageSource(context : Context) {
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource会创建失败导致后续无法正常执行。
+  let filePath: string = context.filesDir + "/test.jpg";
+  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd);
+}
 ```
 
 ## image.createImageSource<sup>9+</sup>
@@ -1052,6 +1075,8 @@ const imageSourceApi: image.ImageSource = image.createImageSource(file.fd);
 createImageSource(fd: number, options: SourceOptions): ImageSource
 
 通过传入文件描述符来创建ImageSource实例。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1074,25 +1099,25 @@ createImageSource(fd: number, options: SourceOptions): ImageSource
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
 
-let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-//此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-const filePath: string = context.filesDir + "/test.jpg";
-let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-const imageSourceApi: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
+async function CreateImageSource(context : Context) {
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  const filePath: string = context.filesDir + "/test.jpg";
+  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  const imageSourceObj: image.ImageSource = image.createImageSource(file.fd, sourceOptions);
+}
 ```
 
 ## image.createImageSource<sup>9+</sup>
 
 createImageSource(buf: ArrayBuffer): ImageSource
 
-通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
+通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1112,19 +1137,22 @@ createImageSource(buf: ArrayBuffer): ImageSource
 | --------------------------- | -------------------------------------------- |
 | [ImageSource](arkts-apis-image-ImageSource.md) | 返回ImageSource类实例，失败时返回undefined。 |
 
-
 **示例：**
 
 ```ts
-const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
-const imageSourceApi: image.ImageSource = image.createImageSource(buf);
+async function CreateImageSource() {
+  const buf: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4。
+  const imageSourceObj: image.ImageSource = image.createImageSource(buf);
+}
 ```
 
 ## image.createImageSource<sup>9+</sup>
 
 createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 
-通过缓冲区创建ImageSource实例。buf数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
+通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[image.createPixelMapSync](arkts-apis-image-ImageSource.md#createpixelmapsync12)这一类接口。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1148,9 +1176,11 @@ createImageSource(buf: ArrayBuffer, options: SourceOptions): ImageSource
 **示例：**
 
 ```ts
-const data: ArrayBuffer = new ArrayBuffer(112);
-let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
-const imageSourceApi: image.ImageSource = image.createImageSource(data, sourceOptions);
+async function CreateImageSource() {
+  const data: ArrayBuffer = new ArrayBuffer(112);
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120 };
+  const imageSourceObj: image.ImageSource = image.createImageSource(data, sourceOptions);
+}
 ```
 
 ## image.createImageSource<sup>11+</sup>
@@ -1158,6 +1188,8 @@ const imageSourceApi: image.ImageSource = image.createImageSource(data, sourceOp
 createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOptions): ImageSource
 
 通过图像资源文件的RawFileDescriptor创建ImageSource实例。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1178,21 +1210,20 @@ createImageSource(rawfile: resourceManager.RawFileDescriptor, options?: SourceOp
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
 import { resourceManager } from '@kit.LocalizationKit';
-import { common } from '@kit.AbilityKit';
-
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-// 获取resourceManager资源管理器。
-const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
-//此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFileDescriptor) => {
-  const imageSourceApi: image.ImageSource = image.createImageSource(rawFileDescriptor);
-}).catch((error: BusinessError) => {
-  console.error(`Failed to get RawFileDescriptor.code is ${error.code}, message is ${error.message}`);
-})
+import { BusinessError } from '@kit.BasicServicesKit';
+  
+async function CreateImageSource(context : Context) {
+  // 获取resourceManager资源管理器。
+  const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
+  // 此处'test.jpg'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+  resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFileDescriptor) => {
+    const imageSourceObj: image.ImageSource = image.createImageSource(rawFileDescriptor);
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get RawFileDescriptor.code is ${error.code}, message is ${error.message}`);
+  })
+}
 ```
 
 ## image.CreateIncrementalSource<sup>9+</sup>
@@ -1200,6 +1231,8 @@ resourceMgr.getRawFd('test.jpg').then((rawFileDescriptor: resourceManager.RawFil
 CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 以增量方式创建的ImageSource实例，仅支持使用以下功能，同步、异步callback、异步Promise均支持。
 
@@ -1226,28 +1259,27 @@ CreateIncrementalSource(buf: ArrayBuffer): ImageSource
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let imageArray = context.resourceManager.getMediaContentSync($r('app.media.startIcon')); // 获取图像资源。
-// 此处'app.media.startIcon'仅作示例，请开发者自行替换，否则imageArray创建失败会导致后续无法正常执行。
-let splitBuff1 = imageArray.slice(0, imageArray.byteLength / 2);  // 分片。
-let splitBuff2 = imageArray.slice(imageArray.byteLength / 2);
-const imageSourceIncrementalSApi: image.ImageSource = image.CreateIncrementalSource(new ArrayBuffer(imageArray.byteLength));
-imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLength).then(() => {
-  imageSourceIncrementalSApi.updateData(splitBuff2, true, 0, splitBuff2.byteLength).then(() => {
-    let pixelMap = imageSourceIncrementalSApi.createPixelMapSync();
-    let imageInfo = pixelMap.getImageInfoSync();
-    console.info('Succeeded in creating pixelMap');
+async function CreateIncrementalImageSource(context : Context) {
+  let imageArray = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id); // 获取图像资源。
+  // 此处'app.media.startIcon'仅作示例，请开发者自行替换，否则imageArray创建失败会导致后续无法正常执行。
+  let splitBuff1 = imageArray.slice(0, imageArray.byteLength / 2);  // 分片。
+  let splitBuff2 = imageArray.slice(imageArray.byteLength / 2);
+  const imageSourceIncrementalSApi: image.ImageSource = image.CreateIncrementalSource(new ArrayBuffer(imageArray.byteLength));
+  imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLength).then(() => {
+    imageSourceIncrementalSApi.updateData(splitBuff2, true, 0, splitBuff2.byteLength).then(() => {
+      let pixelMap = imageSourceIncrementalSApi.createPixelMapSync();
+      let imageInfo = pixelMap.getImageInfoSync();
+      console.info('Succeeded in creating pixelMap');
+    }).catch((error : BusinessError) => {
+      console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
+    })
   }).catch((error : BusinessError) => {
     console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
   })
-}).catch((error : BusinessError) => {
-  console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
-})
+}
 ```
 
 ## image.CreateIncrementalSource<sup>9+</sup>
@@ -1257,6 +1289,8 @@ CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 通过缓冲区以增量的方式创建ImageSource实例，IncrementalSource不支持读写Exif信息。
 
 此接口支持的功能与[CreateIncrementalSource(buf: ArrayBuffer): ImageSource](#imagecreateincrementalsource9)所生成的实例支持的功能相同。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](./arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1275,30 +1309,29 @@ CreateIncrementalSource(buf: ArrayBuffer, options?: SourceOptions): ImageSource
 
 **示例：**
 
-<!--code_no_check-->
 ```ts
-import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
-let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let imageArray = context.resourceManager.getMediaContentSync($r('app.media.startIcon')) // 获取图像资源。
-// 此处'app.media.startIcon'仅作示例，请开发者自行替换，否则imageArray创建失败会导致后续无法正常执行。
-let splitBuff1 = imageArray.slice(0, imageArray.byteLength / 2);  // 分片。
-let splitBuff2 = imageArray.slice(imageArray.byteLength / 2);
-let sourceOptions: image.SourceOptions = { sourceDensity: 120};
+async function CreateIncrementalImageSource(context : Context) {
+  let imageArray = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id); // 获取图像资源。
+  // 此处'app.media.startIcon'仅作示例，请开发者自行替换，否则imageArray创建失败会导致后续无法正常执行。
+  let splitBuff1 = imageArray.slice(0, imageArray.byteLength / 2);  // 分片。
+  let splitBuff2 = imageArray.slice(imageArray.byteLength / 2);
+  let sourceOptions: image.SourceOptions = { sourceDensity: 120};
 
-const imageSourceIncrementalSApi: image.ImageSource = image.CreateIncrementalSource(new ArrayBuffer(imageArray.byteLength), sourceOptions);
-imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLength).then(() => {
-  imageSourceIncrementalSApi.updateData(splitBuff2, true, 0, splitBuff2.byteLength).then(() => {
-    let pixelMap = imageSourceIncrementalSApi.createPixelMapSync();
-    let imageInfo = pixelMap.getImageInfoSync();
-    console.info('Succeeded in creating pixelMap');
+  const imageSourceIncrementalSApi: image.ImageSource = image.CreateIncrementalSource(new ArrayBuffer(imageArray.byteLength), sourceOptions);
+  imageSourceIncrementalSApi.updateData(splitBuff1, false, 0, splitBuff1.byteLength).then(() => {
+    imageSourceIncrementalSApi.updateData(splitBuff2, true, 0, splitBuff2.byteLength).then(() => {
+      let pixelMap = imageSourceIncrementalSApi.createPixelMapSync();
+      let imageInfo = pixelMap.getImageInfoSync();
+      console.info('Succeeded in creating pixelMap');
+    }).catch((error : BusinessError) => {
+      console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
+    })
   }).catch((error : BusinessError) => {
     console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
   })
-}).catch((error : BusinessError) => {
-  console.error(`Failed to updateData error code is ${error.code}, message is ${error.message}`);
-})
+}
 ```
 
 ## image.getImageSourceSupportedFormats<sup>20+</sup>
@@ -1318,8 +1351,7 @@ getImageSourceSupportedFormats(): string[]
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-function GetImageSourceSupportedFormats() {
+async function GetImageSourceSupportedFormats() {
     let formats = image.getImageSourceSupportedFormats();
     console.info('formats:', formats);
 }
@@ -1330,6 +1362,8 @@ function GetImageSourceSupportedFormats() {
 createImagePacker(): ImagePacker
 
 创建ImagePacker实例。
+
+由于图片占用内存较大，所以当ImagePacker实例使用完成后，应主动调用[release](./arkts-apis-image-ImagePacker.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1344,7 +1378,9 @@ createImagePacker(): ImagePacker
 **示例：**
 
 ```ts
-const imagePackerApi: image.ImagePacker = image.createImagePacker();
+async function CreateImagePacker() {
+  const imagePackerObj: image.ImagePacker = image.createImagePacker();
+}
 ```
 
 ## image.getImagePackerSupportedFormats<sup>20+</sup>
@@ -1364,8 +1400,7 @@ getImagePackerSupportedFormats(): string[]
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-function GetImagePackerSupportedFormats() {
+async function GetImagePackerSupportedFormats() {
     let formats = image.getImagePackerSupportedFormats();
     console.info('formats:', formats);
 }
@@ -1375,7 +1410,9 @@ function GetImagePackerSupportedFormats() {
 
 createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureType): AuxiliaryPicture
 
-通过ArrayBuffer图片数据、辅助图尺寸、辅助图类型创建AuxiliaryPicture实例。
+通过ArrayBuffer图片数据、辅助图尺寸、辅助图类型创建AuxiliaryPicture实例。该接口仅支持传入BGRA的连续像素数据，会创建出RGBA的辅助图。
+
+由于图片占用内存较大，所以当AuxiliaryPicture实例使用完成后，应主动调用[release](./arkts-apis-image-AuxiliaryPicture.md#release13)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1395,7 +1432,7 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1404,12 +1441,10 @@ createAuxiliaryPicture(buffer: ArrayBuffer, size: Size, type: AuxiliaryPictureTy
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
 async function CreateAuxiliaryPicture(context: Context) {
   let funcName = "CreateAuxiliaryPicture";
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); //需要支持hdr的图片。
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // 需要支持hdr的图片。
   let auxBuffer: ArrayBuffer = rawFile.buffer as ArrayBuffer;
   let auxSize: Size = {
     height: 180,
@@ -1419,7 +1454,7 @@ async function CreateAuxiliaryPicture(context: Context) {
   let auxPictureObj: image.AuxiliaryPicture | null = image.createAuxiliaryPicture(auxBuffer, auxSize, auxType);
   if(auxPictureObj != null) {
     let type: image.AuxiliaryPictureType = auxPictureObj.getType();
-    console.info(funcName, 'CreateAuxiliaryPicture succeeded this.Aux_picture.type.' + JSON.stringify(type));
+    console.info(funcName, `CreateAuxiliaryPicture succeeded this.Aux_picture.type ${type}`);
   } else {
     console.error(funcName, 'CreateAuxiliaryPicture failed');
   }
@@ -1432,6 +1467,8 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 
 通过图片大小、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
+由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](./arkts-apis-image-ImageReceiver.md#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
 **参数：**
@@ -1440,7 +1477,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。             |
-| capacity | number | 是   | 同时访问的最大图像数。 |
+| capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
 **返回值：**
 
@@ -1450,7 +1487,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1461,7 +1498,7 @@ createImageReceiver(size: Size, format: ImageFormat, capacity: number): ImageRec
 ```ts
 let size: image.Size = {
   height: 8192,
-  width: 8
+  width: 8192
 }
 let receiver: image.ImageReceiver = image.createImageReceiver(size, image.ImageFormat.JPEG, 8);
 ```
@@ -1472,6 +1509,8 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 
 通过图片大小、图片格式、容量创建ImageCreator实例。
 
+由于图片占用内存较大，所以当ImageCreator实例使用完成后，应主动调用[release](./arkts-apis-image-ImageCreator.md)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
 **参数：**
@@ -1480,7 +1519,7 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 | -------- | ------ | ---- | ---------------------- |
 | size    | [Size](arkts-apis-image-i.md#size)  | 是   | 图像的默认大小。       |
 | format   | [ImageFormat](arkts-apis-image-e.md#imageformat9) | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
-| capacity | number | 是   | 同时访问的最大图像数。 |
+| capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
 **返回值：**
 
@@ -1491,7 +1530,7 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -1502,7 +1541,7 @@ createImageCreator(size: Size, format: ImageFormat, capacity: number): ImageCrea
 ```ts
 let size: image.Size = {
   height: 8192,
-  width: 8
+  width: 8192
 }
 let creator: image.ImageCreator = image.createImageCreator(size, image.ImageFormat.JPEG, 8);
 ```
@@ -1513,9 +1552,11 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 
 通过宽、高、图片格式、容量创建ImageReceiver实例。ImageReceiver做为图片的接收方、消费者，它的参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方、生产者进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
+由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](./arkts-apis-image-ImageReceiver.md#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
 > **说明：**
 >
-> 从API version 11开始不再维护，建议使用[createImageReceiver](#imagecreateimagereceiver11)代替。
+> 从API version 9开始支持，从API version 11废弃，建议使用[createImageReceiver](#imagecreateimagereceiver11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -1526,7 +1567,7 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 | width    | number | 是   | 图像的默认宽度。单位：像素。该参数不会影响接收到的图片宽度，实际宽度由生产者决定，如相机。       |
 | height   | number | 是   | 图像的默认高度。单位：像素。该参数不会影响接收到的图片高度，实际高度由生产者决定，如相机。       |
 | format   | number | 是   | 图像格式，取值为[ImageFormat](arkts-apis-image-e.md#imageformat9)常量（目前仅支持 ImageFormat:JPEG，实际返回格式由生产者决定，如相机）。  |
-| capacity | number | 是   | 同时访问的最大图像数。 |
+| capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
 **返回值：**
 
@@ -1537,7 +1578,7 @@ createImageReceiver(width: number, height: number, format: number, capacity: num
 **示例：**
 
 ```ts
-let receiver: image.ImageReceiver = image.createImageReceiver(8192, 8, image.ImageFormat.JPEG, 8);
+let receiver: image.ImageReceiver = image.createImageReceiver(8192, 8192, image.ImageFormat.JPEG, 8);
 ```
 
 ## image.createImageCreator<sup>(deprecated)</sup>
@@ -1546,9 +1587,11 @@ createImageCreator(width: number, height: number, format: number, capacity: numb
 
 通过宽、高、图片格式、容量创建ImageCreator实例。
 
+由于图片占用内存较大，所以当ImageCreator实例使用完成后，应主动调用[release](./arkts-apis-image-ImageCreator.md)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
 > **说明：**
 >
-> 从API version 11开始不再维护，建议使用[createImageCreator](#imagecreateimagecreator11)代替。
+> 从API version 9开始支持，从API version 11废弃，建议使用[createImageCreator](#imagecreateimagecreator11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageCreator
 
@@ -1559,7 +1602,7 @@ createImageCreator(width: number, height: number, format: number, capacity: numb
 | width    | number | 是   | 图像的默认宽度。单位：像素。       |
 | height   | number | 是   | 图像的默认高度。单位：像素。       |
 | format   | number | 是   | 图像格式，如YCBCR_422_SP，JPEG。             |
-| capacity | number | 是   | 同时访问的最大图像数。 |
+| capacity | number | 是   | 同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。 |
 
 **返回值：**
 
@@ -1570,7 +1613,7 @@ createImageCreator(width: number, height: number, format: number, capacity: numb
 **示例：**
 
 ```ts
-let creator: image.ImageCreator = image.createImageCreator(8192, 8, image.ImageFormat.JPEG, 8);
+let creator: image.ImageCreator = image.createImageCreator(8192, 8192, image.ImageFormat.JPEG, 8);
 ```
 
 ## SVG标签说明
@@ -1578,7 +1621,7 @@ let creator: image.ImageCreator = image.createImageCreator(8192, 8, image.ImageF
 从API version 10开始支持SVG标签，使用版本为(SVG) 1.1，SVG标签需设置width，height。SVG文件可添加xml声明，应以“<?xml”开头，当前支持的标签列表有：
 
 - a
-- circla
+- circle
 - clipPath
 - defs
 - ellipse

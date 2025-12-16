@@ -209,7 +209,7 @@ The following uses the **bundle.json** file as an example. In this example, the 
     "kernel": "liteos-a"
   },
   "keywords": ["hispark", "hi3516"],
-  "repository": "https://gitee.com/openharmony/your-project",
+  "repository": "https://gitcode.com/openharmony/your-project",
   "license": "Apache V2"
 }
 ```
@@ -342,7 +342,7 @@ Visit [DevEco Marketplace](https://repo.harmonyos.com), search for HPM Parts tha
 
 1. Run the **hpm init** command to create a bundle description file named **bundle.json**, which contains dependencies and other metadata such as the name and version.
 
-2. Run the **hpm install <name>** command to install the dependency. The dependency will be written into the **dependencies** field in **bundle.json**.
+2. Run the **hpm install \<name>** command to install the dependency. The dependency will be written into the **dependencies** field in **bundle.json**.
 
 3. Reference the header file in the code to implement the function.
 
@@ -444,3 +444,4 @@ The referenced HPM Part will be installed in the directory specified by the **gl
 > ```
 >
 > Then, you can run the **hpm build** command to call gn functions.
+<!--no_check-->

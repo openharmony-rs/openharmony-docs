@@ -1,5 +1,12 @@
 # @ohos.userIAM.faceAuth (Facial Authentication) (System API)
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 The **userIAM.faceAuth** module provides APIs for face enrollment.
 
 > **NOTE**
@@ -32,7 +39,7 @@ A constructor used to create a **FaceAuthManager** object.
 
 | Type                  | Description                |
 | ---------------------- | -------------------- |
-| [FaceAuthManager](#faceauthmanager) | **FaceAuthManager** object.|
+| [FaceAuthManager](#faceauthmanager) | **FaceAuthManager** object|
 
 **Example**
 
@@ -44,9 +51,9 @@ let faceAuthManager = new faceAuth.FaceAuthManager();
 
 ### setSurfaceId
 
-setSurfaceId(surfaceId: string): void;
+setSurfaceId(surfaceId: string): void
 
-Sets an [XComponent surface ID](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid) for the face preview page in the face enrollment process. This API must be used with [addCredential](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8).
+Sets an [XComponent surface ID](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) for the face preview page in the face enrollment process. This API must be used with [addCredential](../apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8).
 
 **System capability**: SystemCapability.UserIAM.UserAuth.FaceAuth
 
@@ -58,22 +65,23 @@ Sets an [XComponent surface ID](../apis-arkui/arkui-ts/ts-basic-components-xcomp
 
 | Name        | Type                              | Mandatory| Description                      |
 | -------------- | ---------------------------------- | ---- | -------------------------- |
-| surfaceId       | string     | Yes  | ID of the surface held by [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid).|
+| surfaceId       | string     | Yes  | ID of the surface held by [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9).|
 
-For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 **Error codes**
 
 | ID| Error Message|
 | -------- | ------- |
-| 201 | Permission verification failed. |
-| 202 | The caller is not a system application. |
+| 201 | Permission denied. |
+| 202 | Permission denied. Called by non-system application. |
 | 12700001 | The service is unavailable. |
 
 **Example**
 
 ```ts
 import { faceAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // The surfaceId is obtained from the XComponent control. The surfaceId here is only an example.
 let surfaceId = '123456';
@@ -82,6 +90,7 @@ try {
   manager.setSurfaceId(surfaceId);
   console.info('set surface id success');
 } catch (error) {
-  console.error('set surface id failed, error = ' + error);
+  const err: BusinessError = error as BusinessError;
+  console.error(`set surface id failed, Code is ${err?.code}, message is ${err?.message}`);
 }
 ```

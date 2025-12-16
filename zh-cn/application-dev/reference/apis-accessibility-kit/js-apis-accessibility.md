@@ -1,6 +1,13 @@
-# @ohos.accessibility (辅助功能)
+# @ohos.accessibility (辅助应用)
 
-本模块提供辅助功能查询能力，包括获取辅助应用列表、辅助应用启用状态、无障碍字幕配置等。
+<!--Kit: Accessibility Kit-->
+<!--Subsystem: BarrierFree-->
+<!--Owner: @qiiiiiiian-->
+<!--Designer: @z7o-->
+<!--Tester: @A_qqq-->
+<!--Adviser: @w_Machine_cc-->
+
+本模块提供辅助应用查询能力，包括获取辅助应用列表、获取辅助应用启用状态、获取无障碍字幕配置等。
 
 > **说明：**
 >
@@ -18,7 +25,11 @@ type AbilityState = 'enable' | 'disable' | 'install'
 
 辅助应用状态类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型      | 说明       |
 | ------- | -------- |
@@ -28,24 +39,34 @@ type AbilityState = 'enable' | 'disable' | 'install'
 
 ## AbilityType
 
+type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'
+
 无障碍辅助应用类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-| 名称               | 描述        |
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+| 类型               | 说明        |
 | ---------------- | --------- |
-| audible          | 表示具有听觉反馈。 |
-| generic          | 表示具有通用反馈。 |
-| haptic           | 表示具有触觉反馈。 |
-| spoken           | 表示具有语音反馈。 |
-| visual           | 表示具有视觉反馈。 |
-| all<sup>9+</sup> | 表示以上所有类别。 |
+| 'audible'          | 表示具有听觉反馈。 |
+| 'generic'          | 表示具有通用反馈。 |
+| 'haptic'           | 表示具有触觉反馈。 |
+| 'spoken'           | 表示具有语音反馈。 |
+| 'visual'           | 表示具有视觉反馈。 |
+| 'all'<sup>9+</sup> | 表示以上所有类别。 |
 
 ## AccessibilityAbilityInfo
 
 辅助应用信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -71,7 +92,11 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 
 应用所支持的目标动作，需要配置参数的目标动作已在描述中标明。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型                      | 说明                 |
 | ----------------------- |--------------------|
@@ -105,7 +130,11 @@ type Capability = 'retrieve' | 'touchGuide' | 'keyEventObserver' | 'zoom' | 'ges
 
 辅助应用能力类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型               | 说明                    |
 | ---------------- |-----------------------|
@@ -121,7 +150,11 @@ type CaptionsFontEdgeType = 'none' | 'raised' | 'depressed' | 'uniform' | 'dropS
 
 字幕字体边缘类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Hearing
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 | 类型         | 说明    |
 | ---------- | ----- |
@@ -138,9 +171,13 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 字幕字体。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Hearing
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
-| 名称                  | 描述                |
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
+
+| 类型                  | 说明                |
 | ------------------- | ----------------- |
 | 'default'             | 表示默认字体。             |
 | 'monospacedSerif'         | 表示等宽 Serif 字体。      |
@@ -155,22 +192,30 @@ type CaptionsFontFamily = 'default' | 'monospacedSerif' | 'serif' | 'monospacedS
 
 字幕风格。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Hearing
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 | 名称              | 类型                                    | 只读   | 可选   | 说明          |
 | --------------- | ---------------------------------------- | ---- | ---- | ----------- |
 | fontFamily      | [CaptionsFontFamily](#captionsfontfamily8) | 否    | 否    | 描述字幕字体。     |
 | fontScale       | number                                   | 否    | 否    | 描述字幕字体缩放系数，单位%，参数范围1~200。 |
-| fontColor       | number \| string                         | 否    | 否    | 描述字幕字体颜色，例如red对应#FF0000。   |
+| fontColor       | number \| string                         | 否    | 否    | 描述字幕字体颜色。<br>number：HEX 格式颜色，支持 rgb 或 argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。 |
 | fontEdgeType    | [CaptionsFontEdgeType](#captionsfontedgetype8) | 否    | 否    | 描述字幕字体边缘。   |
-| backgroundColor | number \| string                         | 否    | 否    | 描述字幕背景颜色，例如red对应#FF0000。   |
-| windowColor     | number \| string                         | 否    | 否    | 描述字幕窗口颜色，例如red对应#FF0000。   |
+| backgroundColor | number \| string                         | 否    | 否    | 描述字幕背景颜色。<br>number：HEX 格式颜色，支持 rgb 或 argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
+| windowColor     | number \| string                         | 否    | 否    | 描述字幕窗口颜色。<br>number：HEX 格式颜色，支持 rgb 或 argb。<br>string：支持 '#rrggbb', '#rrggbbaa', '#rgb', '#rgba' 格式。<br>例：不透明红色，number: 0xffff0000，string: '#ff0000', '#ff0000ff', '#f00', '#f00f'。   |
 
 ## CaptionsManager<sup>8+</sup>
 
 字幕配置管理，在调用CaptionsManager的方法前，需要先通过 [accessibility.getCaptionsManager() ](#accessibilitygetcaptionsmanagerdeprecated)获取 CaptionsManager实例。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.BarrierFree.Accessibility.Hearing
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Hearing
 
 ### 属性
 
@@ -200,21 +245,35 @@ on(type: 'enableChange', callback: Callback&lt;boolean&gt;): void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
-let captionsManager = accessibility.getCaptionsManager();
-captionsManager.on('enableChange', (data: boolean) => {
-  console.info(`subscribe caption manager enable state change, result: ${JSON.stringify(data)}`);
-})
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe caption manager enable state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.on('enableChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 ### on('styleChange')<sup>(deprecated)</sup>
@@ -238,22 +297,35 @@ on(type: 'styleChange', callback: Callback&lt;CaptionsStyle&gt;): void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
-let captionsManager = accessibility.getCaptionsManager();
+@Entry
+@Component
+struct Index {
+  callback: (data: accessibility.CaptionsStyle) => void = this.eventCallback;
+  eventCallback(data: accessibility.CaptionsStyle): void {
+    console.info(`subscribe caption manager style state change, result: ${JSON.stringify(data)}`);
+  }
 
-captionsManager.on('styleChange', (data: accessibility.CaptionsStyle) => {
-  console.info(`subscribe caption manager style state change, result: ${JSON.stringify(data)}`);
-});
+  aboutToAppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.on('styleChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 ### off('enableChange')<sup>(deprecated)</sup>
@@ -277,22 +349,40 @@ off(type: 'enableChange', callback?: Callback&lt;boolean&gt;): void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
-let captionsManager = accessibility.getCaptionsManager();
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe caption manager enable state change, result: ${JSON.stringify(data)}`);
+  }
 
-captionsManager.off('enableChange', (data: boolean) => {
-  console.info(`Unsubscribe caption manager enable state change, result: ${JSON.stringify(data)}`);
-});
+  aboutToAppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.on('enableChange', this.callback);
+  }
+
+  aboutToDisappear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.off('enableChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 ### off('styleChange')<sup>(deprecated)</sup>
@@ -316,58 +406,84 @@ off(type: 'styleChange', callback?: Callback&lt;CaptionsStyle&gt;): void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
-let captionsManager = accessibility.getCaptionsManager();
+@Entry
+@Component
+struct Index {
+  callback: (data: accessibility.CaptionsStyle) => void = this.eventCallback;
+  eventCallback(data: accessibility.CaptionsStyle): void {
+    console.info(`subscribe caption manager style state change, result: ${JSON.stringify(data)}`);
+  }
 
-captionsManager.off('styleChange', (data: accessibility.CaptionsStyle) => {
-  console.info(`Unsubscribe caption manager style state change, result: ${JSON.stringify(data)}`);
-});
+  aboutToAppear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.on('styleChange', this.callback);
+  }
+
+  aboutToDisappear(): void {
+    let captionsManager = accessibility.getCaptionsManager();
+    captionsManager.off('styleChange', this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
 ```
 
 ## EventInfo
 
 界面变更事件。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
 | 名称             | 类型                                   | 只读 | 可选 | 说明            |
 | ---------------- | ------------------------------------- |----- |------|-----------------------|
-| type             | [EventType](#eventtype)               | 是   | 否   | 无障碍事件类型，不可缺省。         |
+| type             | [EventType](#eventtype)               | 否   | 否   | 无障碍事件类型，不可缺省。         |
 | windowUpdateType | [WindowUpdateType](#windowupdatetype) | 否   | 是   | 窗口变化类型。               |
-| bundleName       | string                                | 是   | 否   | 目标应用名；不可缺省。           |
-| componentType    | string                                | 否   | 是   | 事件源组件类型，如按钮、图表。       |
-| pageId           | number                                | 否   | 是   | 事件源的页面ID。默认值为0。            |
-| description      | string                                | 否   | 是   | 事件描述。        |
-| triggerAction    | [Action](#action)                     | 是   | 否   | 触发事件的Action，不可缺省。    |
+| bundleName       | string                                | 否   | 否   | 目标应用名；不可缺省。           |
+| componentType    | string                                | 否   | 是   | 应与事件源组件类型对应，如：按钮Button类型->'Button'、图片Image类型->'Image'。       |
+| pageId           | number                                | 否   | 是   | 事件源的页面ID，默认值为0。            |
+| description      | string                                | 否   | 是   | 事件描述，根据实际场景设置，无特殊限制。        |
+| triggerAction    | [Action](#action)                     | 否   | 否   | 触发事件的Action，不可缺省。    |
 | textMoveUnit     | [TextMoveUnit](#textmoveunit)         | 否   | 是   | 文本移动粒度。      |
-| contents         | Array&lt;string&gt;                   | 否   | 是   | 内容列表。                 |
-| lastContent      | string                                | 否   | 是   | 最新内容。                 |
-| beginIndex       | number                                | 否   | 是   | 画面显示条目的开始序号。默认值为0。 |
-| currentIndex     | number                                | 否   | 是   | 当前条目序号。默认值为0。      |
-| endIndex         | number                                | 否   | 是   | 画面显示条目的结束序号。默认值为0。 |
-| itemCount        | number                                | 否   | 是   | 条目总数。默认值为0。        |
-| elementId<sup>12+</sup>        | number                  | 否   | 是   | 组件elementId。默认值为0。        |
-| textAnnouncedForAccessibility<sup>12+</sup>     | string     | 否   | 是   | 主动播报的内容。        |
-| textResourceAnnouncedForAccessibility<sup>18+</sup>      | Resource   | 否   | 是   | 主动播报的内容支持传入Resource类型，Resource类型只支持传入string。  |
+| contents         | Array&lt;string&gt;                   | 否   | 是   | 内容列表，根据实际场景设置，无特殊限制。                 |
+| lastContent      | string                                | 否   | 是   | 最新内容，根据实际场景设置，无特殊限制。                 |
+| beginIndex       | number                                | 否   | 是   | 画面显示条目的开始序号，默认值为0。 |
+| currentIndex     | number                                | 否   | 是   | 当前条目序号，默认值为0。      |
+| endIndex         | number                                | 否   | 是   | 画面显示条目的结束序号，默认值为0。 |
+| itemCount        | number                                | 否   | 是   | 条目总数，默认值为0。        |
+| elementId<sup>12+</sup>        | number                  | 否   | 是   | 组件elementId，默认值为0。        |
+| textAnnouncedForAccessibility<sup>12+</sup>     | string     | 否   | 是   | 主动播报的内容。当应用需要主动播报时，根据实际场景设置播报内容，无特殊限制。 |
+| textResourceAnnouncedForAccessibility<sup>18+</sup>      | Resource   | 否   | 是   | 主动播报的内容支持传入Resource类型，且只能传入string。  |
 | customId<sup>12+</sup>        | string                                | 否   | 是   | 主动聚焦的组件ID。        |
 
 ### constructor
 
-constructor(jsonObject)
+constructor(jsonObject: Object)
 
 构造函数。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -375,7 +491,7 @@ constructor(jsonObject)
 
 | 参数名        | 类型     | 必填   | 说明                   |
 | ---------- | ------ | ---- | -------------------- |
-| jsonObject | string | 是    | 创建对象所需要的 JSON 格式字符串。 |
+| jsonObject | Object | 是    | 包含 type、bundleName 和 triggerAction 三个字段的 JSON对象，详见示例。 |
 
 **示例：**
 
@@ -394,6 +510,10 @@ constructor(jsonObject)
 constructor(type: EventType, bundleName: string, triggerAction: Action)
 
 构造函数。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -419,11 +539,15 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 'click' | 'longClick' | 'focus' | 'select' | 'hoverEnter' | 'hoverExit' |
 'textUpdate' | 'textSelectionUpdate' | 'scroll' | 'requestFocusForAccessibility' |
 'announceForAccessibility' | 'requestFocusForAccessibilityNotInterrupt' |
-'announceForAccessibilityNotInterrupt' | 'scrolling'
+'announceForAccessibilityNotInterrupt' | 'scrolling' | 'pageActive'
 
 无障碍事件类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型                      | 说明                     |
 | ----------------------- |------------------------|
@@ -440,9 +564,10 @@ type EventType = 'accessibilityFocus' | 'accessibilityFocusClear' |
 | 'scroll'                  | 表示滚动视图的事件。    |
 | 'requestFocusForAccessibility'     | 表示主动聚焦的事件。 |
 | 'announceForAccessibility'         | 表示主动播报的事件。 |
-| 'requestFocusForAccessibilityNotInterrupt'     | 表示主动聚焦不打断的事件。<br>此事件从API version 18开始支持。 |
-| 'announceForAccessibilityNotInterrupt'         | 表示主动播报不打断的事件。<br>此事件从API version 18开始支持。 |
-| 'scrolling'                  | 表示滚动视图中有item被滚出屏幕的事件。<br>此事件从API version 18开始支持。 |
+| 'requestFocusForAccessibilityNotInterrupt'<sup>18+</sup> | 表示主动聚焦不打断的事件。|
+| 'announceForAccessibilityNotInterrupt'<sup>18+</sup>  | 表示主动播报不打断的事件。|
+| 'scrolling'<sup>18+</sup>   | 表示滚动视图中有item被滚出屏幕的事件。|
+| 'pageActive'<sup>23+</sup> | 表示页面变化的事件，值固定为'pageActive'字符串。 |
 
 ## TextMoveUnit
 
@@ -450,7 +575,11 @@ type TextMoveUnit = 'char' | 'word' | 'line' | 'page' | 'paragraph'
 
 文本无障碍导航移动粒度。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型        | 说明              |
 | --------- | --------------- |
@@ -466,7 +595,11 @@ type WindowUpdateType = 'add' | 'remove' | 'bounds' | 'active' | 'focus'
 
 窗口变化类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型     | 说明                 |
 | ------ | ------------------ |
@@ -563,6 +696,10 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 
 查询辅助应用列表，使用Promise异步回调。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -580,20 +717,54 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**参数示例：**
+| 辅助应用类型 \ 辅助应用状态      | enable       | disable |install|
+| ------- | -------- |----|----|
+| **audible**  | 查询已启用的具有听觉反馈的辅助应用 |查询已禁用的具有听觉反馈的辅助应用|查询已安装的具有听觉反馈的辅助应用|
+|**generic**| 查询已启用的具有通用反馈的辅助应用 |查询已禁用的具有通用反馈的辅助应用|查询已安装的具有通用反馈的辅助应用|
+|**haptic**| 查询已启用的具有触觉反馈的辅助应用 |查询已禁用的具有触觉反馈的辅助应用|查询已安装的具有触觉反馈的辅助应用|
+|**spoken**| 查询已启用的具有语音反馈的辅助应用 |查询已禁用的具有语音反馈的辅助应用|查询已安装的具有语音反馈的辅助应用|
+|**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
+|**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
 
+**查询所有已安装的辅助应用示例：**
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let abilityType: accessibility.AbilityType = 'spoken';
-let abilityState: accessibility.AbilityState = 'enable';
+let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
+let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
+  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+});
+
+// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
+// 日志打印结果为：
+// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+// "announceForAccessibility","announceForAccessibilityNotInterrupt",
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+```
+
+**查询所有已启用的具有语音反馈的辅助应用示例：**
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
+let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState).then((data: accessibility.AccessibilityAbilityInfo[]) => {
   console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
@@ -608,6 +779,10 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 
 查询辅助应用列表，使用callback异步回调。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -620,20 +795,58 @@ getAccessibilityExtensionList(abilityType: AbilityType, stateType: AbilityState,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例：**
+**参数示例：**
+| 辅助应用类型 \ 辅助应用状态      | enable       | disable |install|
+| ------- | -------- |----|----|
+| **audible**  | 查询已启用的具有听觉反馈的辅助应用 |查询已禁用的具有听觉反馈的辅助应用|查询已安装的具有听觉反馈的辅助应用|
+|**generic**| 查询已启用的具有通用反馈的辅助应用 |查询已禁用的具有通用反馈的辅助应用|查询已安装的具有通用反馈的辅助应用|
+|**haptic**| 查询已启用的具有触觉反馈的辅助应用 |查询已禁用的具有触觉反馈的辅助应用|查询已安装的具有触觉反馈的辅助应用|
+|**spoken**| 查询已启用的具有语音反馈的辅助应用 |查询已禁用的具有语音反馈的辅助应用|查询已安装的具有语音反馈的辅助应用|
+|**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
+|**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
+
+**查询所有已安装的辅助应用示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let abilityType: accessibility.AbilityType = 'spoken';
-let abilityState: accessibility.AbilityState = 'enable';
+let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
+let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+
+accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
+  if (err) {
+    console.error(`failed to get accessibility extension list, Code is ${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+});
+
+// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
+// 日志打印结果为：
+// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+// "announceForAccessibility","announceForAccessibilityNotInterrupt",
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+```
+
+**查询所有已启用的具有语音反馈的辅助应用示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
+let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
 
 accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: BusinessError, data: accessibility.AccessibilityAbilityInfo[]) => {
   if (err) {
@@ -648,7 +861,11 @@ accessibility.getAccessibilityExtensionList(abilityType, abilityState,(err: Busi
 
 getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilityState): Array&lt;AccessibilityAbilityInfo&gt;
 
-查询辅助应用列表同步接口。
+查询当前系统内辅助应用列表，支持按条件查询。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -665,14 +882,53 @@ getAccessibilityExtensionListSync(abilityType: AbilityType, stateType: AbilitySt
 | ---------------------------------------- | --------------------- |
 | Array&lt;[AccessibilityAbilityInfo](#accessibilityabilityinfo)&gt; | 返回辅助应用信息列表。 |
 
-**示例：**
+**参数示例：**
+| 辅助应用类型 \ 辅助应用状态      | enable       | disable |install|
+| ------- | -------- |----|----|
+| **audible**  | 查询已启用的具有听觉反馈的辅助应用 |查询已禁用的具有听觉反馈的辅助应用|查询已安装的具有听觉反馈的辅助应用|
+|**generic**| 查询已启用的具有通用反馈的辅助应用 |查询已禁用的具有通用反馈的辅助应用|查询已安装的具有通用反馈的辅助应用|
+|**haptic**| 查询已启用的具有触觉反馈的辅助应用 |查询已禁用的具有触觉反馈的辅助应用|查询已安装的具有触觉反馈的辅助应用|
+|**spoken**| 查询已启用的具有语音反馈的辅助应用 |查询已禁用的具有语音反馈的辅助应用|查询已安装的具有语音反馈的辅助应用|
+|**visual**| 查询已启用的具有视觉反馈的辅助应用 |查询已禁用的具有视觉反馈的辅助应用|查询已安装的具有视觉反馈的辅助应用|
+|**all**| 查询所有已启用的辅助应用 |查询所有已禁用的辅助应用|查询所有已安装的辅助应用|
+
+**查询所有已安装的辅助应用示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let abilityType: accessibility.AbilityType = 'all';
-let abilityState: accessibility.AbilityState = 'install';
+let abilityType: accessibility.AbilityType = 'all'; // 辅助应用类型为所有类型
+let abilityState: accessibility.AbilityState = 'install'; // 辅助应用状态为已安装
+let data: accessibility.AccessibilityAbilityInfo[];
+
+try {
+  data = accessibility.getAccessibilityExtensionListSync(abilityType, abilityState);
+  console.info(`Succeeded in get accessibility extension list, ${JSON.stringify(data)}`);
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`error code: ${err.code}`);
+}
+
+// 例如：系统内安装一个包名为com.example.myaccessibilityapp的辅助应用
+// 日志打印结果为：
+// [{"id":"com.example.myaccessibilityapp/AccessibilityExtAbility","name":"AccessibilityExtAbility",
+// "bundleName":"com.example.myaccessibilityapp","abilityTypes":[],
+// "capabilities":["retrieve","gesture"],"description":"$string:MainAbility_desc",
+// "eventTypes":["click","longClick","select","focus","textUpdate","hoverEnter","hoverExit","scroll",
+// "textSelectionUpdate","accessibilityFocus","accessibilityFocusClear","requestFocusForAccessibility",
+// "announceForAccessibility","announceForAccessibilityNotInterrupt",
+// "requestFocusForAccessibilityNotInterrupt","scrolling","pageActive"],"targetBundleNames":[],"needHide":false}}]
+```
+
+**查询所有已启用的具有语音反馈的辅助应用示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let abilityType: accessibility.AbilityType = 'spoken'; // 辅助应用类型为具有语音反馈类型
+let abilityState: accessibility.AbilityState = 'enable'; // 辅助应用状态为已启用
 let data: accessibility.AccessibilityAbilityInfo[];
 
 try {
@@ -683,6 +939,9 @@ try {
   console.error(`error code: ${err.code}`);
 }
 ```
+
+<!--RP1-->
+<!--RP1End-->
 
 ## accessibility.getCaptionsManager<sup>(deprecated)</sup>
 
@@ -714,7 +973,11 @@ let captionsManager = accessibility.getCaptionsManager();
 
 on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听辅助应用启用状态变化事件，使用callback异步回调。
+监听辅助应用启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -727,27 +990,37 @@ on(type: 'accessibilityStateChange', callback: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
+// 系统内已安装一个或多个辅助应用时:
+// 1. 启用辅助应用场景：第一个辅助应用启用后，回调函数会返回true
+// 2. 禁用辅助应用场景：若一个或多个辅助应用已启用，最后一个已启用的辅助应用被禁用时，回调函数会返回false
 accessibility.on('accessibilityStateChange', (data: boolean) => {
   console.info(`subscribe accessibility state change, result: ${JSON.stringify(data)}`);
 });
 ```
 
+<!--RP2-->
+<!--RP2End-->
+
 ## accessibility.on('touchGuideStateChange')
 
 on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
-监听触摸浏览功能启用状态变化事件，使用callback异步回调。
+监听触摸浏览功能启用状态变化事件，使用callback异步回调。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -760,17 +1033,20 @@ on(type: 'touchGuideStateChange', callback: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
 import { accessibility } from '@kit.AccessibilityKit';
 
+// 系统内已安装一个或多个具备触摸浏览能力的辅助应用（Capability配置中含有'touchGuide'的辅助应用）时：
+// 1. 启用触摸浏览辅助应用场景：第一个触摸浏览辅助应用启用后，回调函数会返回true
+// 2. 禁用触摸浏览辅助应用场景：若一个或多个触摸浏览辅助应用已启用，最后一个已启用的触摸浏览辅助应用被禁用时，回调函数会返回false
 accessibility.on('touchGuideStateChange', (data: boolean) => {
   console.info(`subscribe touch guide state change, result: ${JSON.stringify(data)}`);
 });
@@ -782,7 +1058,11 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
 监听屏幕朗读功能启用状态变化事件，使用callback异步回调。
 
-**系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
 
@@ -793,11 +1073,11 @@ on(type: 'screenReaderStateChange', callback: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -814,6 +1094,10 @@ accessibility.on('screenReaderStateChange', (data: boolean) => {
 on(type: 'touchModeChange', callback: Callback&lt;string&gt;): void
 
 监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -862,6 +1146,10 @@ off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听辅助应用启用状态变化事件，使用callback异步回调。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -873,11 +1161,11 @@ off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -895,6 +1183,10 @@ off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听触摸浏览启用状态变化事件，使用callback异步回调。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -906,11 +1198,11 @@ off(type: 'touchGuideStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -928,6 +1220,10 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 取消监听屏幕朗读启用状态变化事件，使用callback异步回调。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -939,11 +1235,11 @@ off(type: 'screenReaderStateChange', callback?: Callback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -960,6 +1256,10 @@ accessibility.off('screenReaderStateChange', (data: boolean) => {
 off(type: 'touchModeChange', callback?: Callback&lt;string&gt;): void
 
 取消监听触摸浏览功能下的单击/双击操作模式变化事件，使用callback异步回调。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1010,7 +1310,7 @@ struct Index {
 
 isOpenAccessibility(): Promise&lt;boolean&gt;
 
-判断是否启用了辅助功能，使用Promise异步回调。
+判断是否启用了辅助应用，使用Promise异步回调。
 
 > **说明：**
 >
@@ -1024,7 +1324,7 @@ isOpenAccessibility(): Promise&lt;boolean&gt;
 
 | 类型                     | 说明                                       |
 | ---------------------- | ---------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，如果辅助功能已启用，则返回 true；否则返回 false。 |
+| Promise&lt;boolean&gt; | Promise对象，如果辅助应用已启用，则返回 true；否则返回 false。 |
 
 **示例：**
 
@@ -1043,7 +1343,7 @@ accessibility.isOpenAccessibility().then((data: boolean) => {
 
 isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 
-判断是否启用了辅助功能，使用callback异步回调。
+判断是否启用了辅助应用，使用callback异步回调。
 
 > **说明：**
 >
@@ -1057,7 +1357,7 @@ isOpenAccessibility(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名      | 类型                           | 必填   | 说明                                  |
 | -------- | ---------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，如果辅助功能已启用，则返回 true；否则返回 false。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数，如果辅助应用已启用，则返回 true；否则返回 false。 |
 
 **示例：**
 
@@ -1078,17 +1378,20 @@ accessibility.isOpenAccessibility((err: BusinessError, data: boolean) => {
 
 isOpenAccessibilitySync(): boolean
 
-是否启用了辅助功能。
+查询当前系统内是否存在已开启的辅助应用。如需获取系统内辅助应用信息，推荐使用[accessibility.getAccessibilityExtensionListSync](#accessibilitygetaccessibilityextensionlistsync12)。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **返回值：**
-
+<!--RP3-->
 | 类型        | 说明                                  |
 | ----------- | ------------------------------------- |
-| boolean | 表示是否启用了辅助功能。true表示启用了辅助功能，false表示未启用辅助功能。 |
+| boolean | 表示当前系统内是否有辅助应用开启。true表示启用了一个或多个辅助应用，false表示未启用任何辅助应用。|
+<!--RP3End-->
 
 **示例：**
 
@@ -1096,6 +1399,8 @@ isOpenAccessibilitySync(): boolean
 import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 1、系统内已安装多个辅助应用，若都没有开启，返回false
+// 2、系统内已安装多个辅助应用，若开启任意一个，返回true
 let status: boolean = accessibility.isOpenAccessibilitySync();
 ```
 
@@ -1173,6 +1478,8 @@ isOpenTouchGuideSync(): boolean
 
 是否开启了触摸浏览模式。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
@@ -1197,7 +1504,9 @@ isScreenReaderOpenSync(): boolean
 
 是否开启了屏幕朗读模式。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Vision
 
@@ -1238,7 +1547,7 @@ sendEvent(event: EventInfo): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1306,6 +1615,10 @@ sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
 发送无障碍事件，使用Promise异步回调。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -1318,15 +1631,15 @@ sendAccessibilityEvent(event: EventInfo): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1353,6 +1666,10 @@ sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): v
 
 发送无障碍事件，使用callback异步回调。
 
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 **参数：**
@@ -1364,11 +1681,11 @@ sendAccessibilityEvent(event: EventInfo, callback: AsyncCallback&lt;void&gt;): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 401  |Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401  |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1453,6 +1770,10 @@ accessibility.sendAccessibilityEvent(eventInfo, (err: BusinessError) => {
 getTouchModeSync(): string
 
 查询触摸浏览功能下的单击/双击操作模式。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 

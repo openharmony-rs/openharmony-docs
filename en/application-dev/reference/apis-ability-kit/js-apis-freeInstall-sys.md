@@ -1,6 +1,12 @@
-# @ohos.bundle.freeInstall (freeInstall) (System API)
+# @ohos.bundle.freeInstall (freeInstall Module) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **Bundle.freeInstall** module provides APIs for setting and obtaining installation-free information and APIs for obtaining **BundlePackInfo** and **DispatchInfo**.
+The module provides APIs for setting and obtaining installation-free information and APIs for obtaining BundlePackInfo and DispatchInfo.
 
 > **NOTE**
 >
@@ -11,7 +17,7 @@ The **Bundle.freeInstall** module provides APIs for setting and obtaining instal
 ## Modules to Import
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
+import { freeInstall } from '@kit.AbilityKit';
 ```
 
 ## Required Permissions
@@ -47,7 +53,7 @@ For details about the APL, see [Basic Concepts in the Permission Mechanism](../.
 | GET_BUNDLE_SUMMARY | 0x00000002 | Bundle summary information in the **pack.info** file. |
 | GET_MODULE_SUMMARY | 0x00000004 | Module summary information in the **pack.info** file. |
 
-## freeInstall.setHapModuleUpgradeFlag
+## setHapModuleUpgradeFlag
 
 setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: UpgradeFlag, callback: AsyncCallback\<void>):void
 
@@ -66,7 +72,7 @@ Sets an upgrade flag for a module. This API uses an asynchronous callback to ret
 | bundleName  | string                      | Yes  | Bundle name.    |
 | moduleName  | string                      | Yes  | Module name.          |
 | upgradeFlag | [UpgradeFlag](#upgradeflag) | Yes  | Upgrade flag, which is for internal use only.      |
-| callback    | AsyncCallback\<void>        | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| callback    | AsyncCallback\<void>        | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -84,20 +90,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
+import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
 try {
-    freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag, err => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed');
-        }
-    });
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag, err => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed');
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -143,19 +150,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
-import { BusinessError } from '@ohos.base';
+import { freeInstall } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
 try {
-    freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
-        console.info('Operation succeed')
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
+    console.info('Operation succeed')
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -177,7 +185,7 @@ Checks whether a module can be removed. This API uses an asynchronous callback t
 | ---------- | ---------------------- | ---- | --------------------------------------------- |
 | bundleName | string                 | Yes  | Bundle name.                     |
 | moduleName | string                 | Yes  | Module name.                           |
-| callback   | AsyncCallback\<boolean> | Yes  | Callback used to return the result. If the module can be removed, **true** is returned; otherwise, **false** is returned.|
+| callback   | AsyncCallback\<boolean> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is a Boolean value (**true** if the module can be removed, **false** otherwise). If the operation fails, **err** is an error object.|
 
 **Error codes**
 
@@ -195,19 +203,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
+import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
-    freeInstall.isHapModuleRemovable(bundleName, moduleName, (err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.isHapModuleRemovable(bundleName, moduleName, (err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -252,18 +261,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
-import { BusinessError } from '@ohos.base';
+import { freeInstall } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
-    freeInstall.isHapModuleRemovable(bundleName, moduleName).then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.isHapModuleRemovable(bundleName, moduleName).then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -271,7 +281,7 @@ try {
 
 getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback: AsyncCallback\<BundlePackInfo>): void
 
-Obtains **bundlePackInfo** based on **bundleName** and **bundlePackFlag**. This API uses an asynchronous callback to return the result.
+Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -285,7 +295,7 @@ Obtains **bundlePackInfo** based on **bundleName** and **bundlePackFlag**. This 
 | -------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | bundleName     | string                                                       | Yes  | Bundle name.                                            |
 | bundlePackFlag | [BundlePackFlag](#bundlepackflag)                            | Yes  | Flag of the bundle package.                                    |
-| callback       | AsyncCallback<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the **BundlePackInfo** object obtained; otherwise, **err** is an error object.|
+| callback       | AsyncCallback<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the BundlePackInfo object obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -302,26 +312,27 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
+import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
-    freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 ## getBundlePackInfo
 
 getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\<BundlePackInfo>
 
-Obtains **bundlePackInfo** based on **bundleName** and **bundlePackFlag**. This API uses a promise to return the result.
+Obtains bundlePackInfo based on **bundleName** and **bundlePackFlag**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -340,7 +351,7 @@ Obtains **bundlePackInfo** based on **bundleName** and **bundlePackFlag**. This 
 
 | Type                                                      | Description                               |
 | ---------------------------------------------------------- | ----------------------------------- |
-| Promise<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | Promise used to return the **BundlePackInfo** object obtained.|
+| Promise<[BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md)> | Promise used to return the BundlePackInfo object obtained.|
 
 **Error codes**
 
@@ -357,18 +368,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
-import { BusinessError } from '@ohos.base';
+import { freeInstall } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
-    freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -388,7 +400,7 @@ Obtains the dispatch information. This API uses an asynchronous callback to retu
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback<[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null**, and **data** is the [DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md) object obtained. otherwise, **err** is an error object.|
+| callback | AsyncCallback<[DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**, and **data** is the [DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md) object obtained. otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -403,17 +415,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
+import { freeInstall } from '@kit.AbilityKit';
+
 try {
-    freeInstall.getDispatchInfo((err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.getDispatchInfo((err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -448,15 +461,184 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```js
-import freeInstall from '@ohos.bundle.freeInstall';
-import { BusinessError } from '@ohos.base';
+import { freeInstall } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    freeInstall.getDispatchInfo().then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.getDispatchInfo().then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
+
+## DispatchInfo
+
+type DispatchInfo = _DispatchInfo
+
+Defines the installation-free structure and API version information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_DispatchInfo](js-apis-bundleManager-dispatchInfo-sys.md#dispatchinfo) |Installation-free structure and API version information.|
+
+## BundlePackInfo
+
+type BundlePackInfo = _PackInfo.BundlePackInfo
+
+Defines the bundle information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.BundlePackInfo](js-apis-bundleManager-BundlePackInfo-sys.md#bundlepackinfo) |Bundle information.|
+
+## PackageConfig
+
+type PackageConfig = _PackInfo.PackageConfig
+
+Defines the package configuration information in the **pack.info** file.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.PackageConfig](js-apis-bundleManager-BundlePackInfo-sys.md#packageconfig) |Package configuration information in the **pack.info** file.|
+
+## PackageSummary
+
+type PackageSummary = _PackInfo.PackageSummary
+
+Defines the package summary information in the **pack.info** file.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.PackageSummary](js-apis-bundleManager-BundlePackInfo-sys.md#packagesummary) |Package summary information in the **pack.info** file.|
+
+## BundleConfigInfo
+
+type BundleConfigInfo = _PackInfo.BundleConfigInfo
+
+Defines the bundle configuration information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.BundleConfigInfo](js-apis-bundleManager-BundlePackInfo-sys.md#bundleconfiginfo) |Bundle configuration information.|
+
+## ExtensionAbility
+
+type ExtensionAbility = _PackInfo.ExtensionAbility
+
+Defines the ExtensionAbility configuration information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.ExtensionAbility](js-apis-bundleManager-BundlePackInfo-sys.md#extensionability) |ExtensionAbility configuration information.|
+
+## ModuleConfigInfo
+
+type ModuleConfigInfo = _PackInfo.ModuleConfigInfo
+
+Defines the module configuration information of the bundle.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.ModuleConfigInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduleconfiginfo) |Module configuration information of the bundle.|
+
+## ModuleDistroInfo
+
+type ModuleDistroInfo = _PackInfo.ModuleDistroInfo
+
+Defines the distribution information of the module.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.ModuleDistroInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduledistroinfo) |Distribution information of the module.|
+
+## ModuleAbilityInfo
+
+type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo
+
+Defines the ability information of the module.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.ModuleAbilityInfo](js-apis-bundleManager-BundlePackInfo-sys.md#moduleabilityinfo) |Ability information of the module.|
+
+## AbilityFormInfo
+
+type AbilityFormInfo = _PackInfo.AbilityFormInfo
+
+Defines the widget information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.AbilityFormInfo](js-apis-bundleManager-BundlePackInfo-sys.md#abilityforminfo) |Widget information.|
+
+## Version
+
+type Version = _PackInfo.Version
+
+Defines the version in the **pack.info** file.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.Version](js-apis-bundleManager-BundlePackInfo-sys.md#version) |Version in the **pack.info** file.|
+
+## ApiVersion
+
+type ApiVersion = _PackInfo.ApiVersion
+
+Defines the API version of the module.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_PackInfo.ApiVersion](js-apis-bundleManager-BundlePackInfo-sys.md#apiversion) |API version of the module.|

@@ -1,4 +1,10 @@
 # 线性容器
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 
 线性容器实现能按顺序访问的数据结构，其底层主要通过数组实现，包括ArrayList、Vector、List、LinkedList、Deque、Queue和Stack。
@@ -13,10 +19,10 @@
 | ArrayList | 动态数组，占用一片连续的内存空间。需要频繁读取元素时推荐使用。 |
 | List | 单向链表，占用的空间可以不连续。推荐在需要频繁插入和删除元素，且需要使用单向链表时使用。 |
 | LinkedList | 双向链表，占用的空间可以不连续。推荐在需要频繁插入和删除元素，且需要使用双向链表时使用。 |
-| Deque | 双端队列，支持从头尾两端进行元素的插入和删除操作，占用连续的内存空间。推荐在需要频繁访问和操作头尾元素时使用。
-| Queue | 队列，是一种从尾部插入元素、从头部移除元素的数据结构，占用连续的内存空间，适用于先进先出的场景。
+| Deque | 双端队列，支持从头尾两端进行元素的插入和删除操作，占用连续的内存空间。推荐在需要频繁访问和操作头尾元素时使用。 |
+| Queue | 队列，是一种从尾部插入元素、从头部移除元素的数据结构，占用连续的内存空间，适用于先进先出的场景。 |
 | Stack | 栈，只能从一端进行插入和删除操作，占用连续的内存空间。适用于先进后出的场景。 |
-| Vector | 动态数组，占用连续的内存空间。已不再维护，推荐使用 ArrayList。
+| Vector | 动态数组，占用连续的内存空间。已不再维护，推荐使用ArrayList。 |
 
 ## ArrayList
 
@@ -52,7 +58,7 @@ List和[LinkedList](../reference/apis-arkts/js-apis-linkedlist.md)相比，Linke
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
 | 增加元素 | insert(element: T, index: number) | 在指定位置增加一个元素。 |
 | 访问元素 | get(index: number) | 获取指定index位置对应的元素。 |
-| 访问元素 | list[index: number] | 获取指定索引位置的元素，可能导致未定义结果。 |
+| 访问元素 | list[index: number] | 获取指定索引位置的元素。若索引超出数组范围（index < 0 或 index >= list.length），或者数组是稀疏数组（存在未赋值的索引），则返回undefined。 |
 | 访问元素 | getFirst() | 获取第一个元素。 |
 | 访问元素 | getLast() | 获取最后一个元素。 |
 | 访问元素 | getIndexOf(element: T) | 获取第一个匹配指定元素的位置。 |
@@ -82,7 +88,7 @@ LinkedList和[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)相比，L
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
 | 增加元素 | insert(element: T, index: number) | 在指定位置插入一个元素。 |
 | 访问元素 | get(index: number) | 获取指定index位置对应的元素。 |
-| 访问元素 | list[index: number] | 获取指定index位置对应的元素，可能导致未定义行为。 |
+| 访问元素 | list[index: number] | 获取指定index位置对应的元素，若索引超出数组范围（index < 0 或 index >= list.length），或者数组是稀疏数组（存在未赋值的索引），则返回undefined。 |
 | 访问元素 | getFirst() | 获取第一个元素。 |
 | 访问元素 | getLast() | 获取最后一个元素。 |
 | 访问元素 | getIndexOf(element: T) | 获取第一个匹配指定元素的位置。 |
@@ -90,7 +96,7 @@ LinkedList和[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)相比，L
 | 访问元素 | forEach(callbackFn: (value: T, index?: number, list?: LinkedList&lt;T&gt;) =&gt; void, thisArg?: Object) | 遍历访问整个LinkedList容器的每个元素，并执行指定的回调函数。 |
 | 访问元素 | \[Symbol.iterator]():IterableIterator&lt;T&gt; | 创建迭代器以进行数据访问。 |
 | 修改元素 | set(index:number, element: T) | 修改指定index位置的元素值为element。 |
-| 修改元素 | list[index] = element | 修改指定index位置的元素值为element，可能导致未定义行为。 |
+| 修改元素 | list[index] = element | 修改指定index位置的元素值为element，若索引超出数组范围（index < 0 或 index >= list.length），或者数组是稀疏数组（存在未赋值的索引），则可能导致未定义行为。 |
 | 删除元素 | remove(element: T) | 删除第一个匹配到的元素。 |
 | 删除元素 | removeByIndex(index:number) | 删除index位置对应的元素。 |
 

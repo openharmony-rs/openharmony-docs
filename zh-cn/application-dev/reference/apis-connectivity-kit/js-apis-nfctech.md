@@ -1,5 +1,12 @@
 # nfctech (标准NFC-Tag Nfc 技术)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块主要用于采用不同Nfc技术的Tag的读写操作。
 
 > **说明：**
@@ -216,7 +223,7 @@ NfcVTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 getResponseFlags(): number
 
-从标签实例实例获取响应标志。
+从标签实例获取响应标志。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
@@ -242,7 +249,7 @@ console.info("nfcV responseFlags: " + responseFlags);
 
 getDsfId(): number
 
-从标签实例实例获取数据存储格式标识符（DSFID）。
+从标签实例获取数据存储格式标识符（DSFID）。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
@@ -330,7 +337,7 @@ console.info("isoDep hiLayerResponse: " + hiLayerResponse);
 
 isExtendedApduSupported(): Promise&lt;boolean&gt;
 
-检查是否支持扩展的APDU，使用Promise方式作为异步方法。
+检查是否支持扩展的APDU，使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -342,7 +349,7 @@ isExtendedApduSupported(): Promise&lt;boolean&gt;
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise&lt;boolean&gt; | 以Promise形式返回检查结果，true: 支持， false: 不支持。|
+| Promise&lt;boolean&gt; | Promise对象。返回true表示支持；返回false表示不支持。|
 
 **错误码：**
 
@@ -375,11 +382,10 @@ function nfcTechDemo() {
         isoDep.isExtendedApduSupported().then((response: boolean) => {
             console.info("isoDep isExtendedApduSupported Promise response: " + response);
         }).catch((err: BusinessError) => {
-            console.error("isoDep isExtendedApduSupported Promise Code: ${err.code}, message: ${err.message}");
+            console.error(`isoDep isExtendedApduSupported Promise Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("isoDep isExtendedApduSupported Promise Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`isoDep isExtendedApduSupported Promise Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -389,7 +395,7 @@ function nfcTechDemo() {
 
 isExtendedApduSupported(callback: AsyncCallback\<boolean>): void
 
-检查是否支持扩展的APDU，使用AsyncCallback方式作为异步方法。
+检查是否支持扩展的APDU。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -433,13 +439,13 @@ function nfcTechDemo() {
     try {
         isoDep.isExtendedApduSupported((err: BusinessError, response: boolean) => {
             if (err) {
-                console.error("isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err. message}");
+                console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${err.code}, message: ${err. message}`);
             } else {
                 console.info("isoDep isExtendedApduSupported AsyncCallback response: " + response);
             }
         });
-    } catch (busiErr) {
-        console.error("isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, " + "message: ${(businessError as Business).message}");
+    } catch (businessError) {
+        console.error(`isoDep isExtendedApduSupported AsyncCallback Code: ${(businessError as Business).code}, message: ${(businessError as Business).message}`);
     }
 }
 
@@ -567,7 +573,7 @@ console.info("ndef isNdefWritable: " + isWritable);
 
 readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 
-读取标签上的NDEF消息，使用Promise方式作为异步方法。
+读取标签上的NDEF消息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -579,7 +585,7 @@ readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise\<[NdefMessage](#ndefmessage9)> | 以Promise形式返回从NDEF标签中读取到的Message数据对象。|
+| Promise\<[NdefMessage](#ndefmessage9)> | Promise对象。返回从NDEF标签中读取到的Message数据对象。|
 
 **错误码：**
 
@@ -615,8 +621,7 @@ function nfcTechDemo(){
             console.error("ndef readNdef Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("ndef readNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, " +
-        "message: ${(businessError as BusinessError).message}");
+        console.error(`ndef readNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -626,7 +631,7 @@ function nfcTechDemo(){
 
 readNdef(callback: AsyncCallback\<[NdefMessage](#ndefmessage9)>): void
 
-读取标签上的NDEF消息，使用AsyncCallback方式作为异步方法。
+读取标签上的NDEF消息。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -670,14 +675,13 @@ function nfcTechDemo() {
     try {
         ndefTag.readNdef((err : BusinessError, ndefmessage : tag.NdefMessage)=> {
             if (err) {
-                console.error("ndef readNdef AsyncCallback err Code: ${err.code}, message: ${err.message}");
+                console.error(`ndef readNdef AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndef readNdef AsyncCallback ndefmessage: " + ndefmessage);
             }
         });
     } catch (businessError) {
-        console.error("ndef readNdef AsyncCallback catch Code: ${(businessError : BusinessError).code}," +
-        " message: ${(businessError : BusinessError).message}");
+        console.error(`ndef readNdef AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 
@@ -687,7 +691,7 @@ function nfcTechDemo() {
 
 writeNdef(msg: [NdefMessage](#ndefmessage9)): Promise\<void>
 
-将NDEF Message数据对象写入标签，使用Promise方式作为异步方法。
+将NDEF Message数据对象写入标签。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -743,11 +747,10 @@ function nfcTechDemo() {
         ndefTag.writeNdef(ndefMessage).then(() => {
             console.info("ndef writeNdef Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("ndef writeNdef err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndef writeNdef err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("ndef writeNdef Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndef writeNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -756,7 +759,7 @@ function nfcTechDemo() {
 
 writeNdef(msg: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): void
 
-将NDEF Message数据对象写入此标签，使用AsyncCallback方式作为异步方法。
+将NDEF Message数据对象写入此标签。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -812,8 +815,7 @@ function nfcTechDemo() {
             }
         }); 
     } catch (businessError) {
-        console.error("ndef writeNdef AsyncCallback catch businessError Code: ${(businessError as Businsess).code}," +
-            " message: ${(businessError as Businsess).message}");
+        console.error(`ndef writeNdef AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -859,7 +861,7 @@ console.info("ndef canSetReadOnly: " + canSetReadOnly);
 
 setReadOnly(): Promise\<void>
 
-将NDEF标签设置为只读，使用Promise方式作为异步方法。
+将NDEF标签设置为只读。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -908,8 +910,7 @@ function nfcTechDemo() {
             console.error("ndef setReadOnly Promise err Code: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("ndef setReadOnly Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndef setReadOnly Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -918,7 +919,7 @@ function nfcTechDemo() {
 
 setReadOnly(callback: AsyncCallback\<void>): void
 
-将NDEF标签设置为只读，使用AsyncCallback方式作为异步方法。
+将NDEF标签设置为只读。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -963,14 +964,13 @@ function nfcTechDemo() {
     try {
         ndefTag.setReadOnly((err : BusinessError)=> {
             if (err) {
-                console.error("ndef setReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}");
+                console.error(`ndef setReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndef setReadOnly AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("ndef setReadOnly AsyncCallback catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndef setReadOnly AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1017,8 +1017,7 @@ try {
     let ndefTypeString : string = ndefTag.getNdefTagTypeString(tag.NfcForumType.NFC_FORUM_TYPE_1);
     console.info("ndef ndefTypeString: " + ndefTypeString);
 } catch (businessError) {
-    console.error("ndef getNdefTagTypeString catch businessError Code: ${(businessError as Businsess).code}, " +
-        "message: ${(businessError as Businsess).message}");
+    console.error(`ndef getNdefTagTypeString catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
 }
 ```
 
@@ -1036,7 +1035,7 @@ MifareClassicTag获取方式请参考[nfc-tag开发指南](../../connectivity/nf
 
 authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean): Promise\<void>
 
-使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用Promise方式作为异步方法。
+使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1095,8 +1094,7 @@ function nfcTechDemo() {
             console.error("mifareClassic authenticateSector Promise errCode: ${err.code}, " + "message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("mifareClassic authenticateSector Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic authenticateSector Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1105,7 +1103,7 @@ function nfcTechDemo() {
 
 authenticateSector(sectorIndex: number, key: number[], isKeyA: boolean, callback: AsyncCallback\<void>): void
 
-使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用AsyncCallback方式作为异步方法。
+使用密钥对扇区进行身份验证，只有身份验证成功的扇区可以进行操作。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1154,14 +1152,13 @@ function nfcTechDemo() {
         let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // 必须是6个字节，将其更改为正确的key
         mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}");
+                console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic authenticateSector AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic authenticateSector AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic authenticateSector AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1170,7 +1167,7 @@ function nfcTechDemo() {
 
 readSingleBlock(blockIndex: number): Promise\<number[]>
 
-读取标签中一个块存储的内容，一个块大小为16字节。使用Promise方式作为异步方法。
+读取标签中一个块存储的内容，一个块大小为16字节。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1188,7 +1185,7 @@ readSingleBlock(blockIndex: number): Promise\<number[]>
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise\<number[]> | 以Promise形式返回读取的块数据。 |
+| Promise\<number[]> | Promise对象。返回读取的块数据。 |
 
 **错误码：**
 
@@ -1223,11 +1220,10 @@ function nfcTechDemo() {
         mifareClassic.readSingleBlock(blockIndex).then((data : number[]) => {
             console.info("mifareClassic readSingleBlock Promise data: " + data);
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic readSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic readSingleBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareClassic readSingleBlock Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic readSingleBlock Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1236,7 +1232,7 @@ function nfcTechDemo() {
 
 readSingleBlock(blockIndex: number, callback: AsyncCallback\<number[]>): void
 
-读取标签中一个块存储的内容，一个块大小为16字节。使用AsyncCallback方式作为异步方法。
+读取标签中一个块存储的内容，一个块大小为16字节。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1289,8 +1285,7 @@ function nfcTechDemo() {
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic readSingleBlock AsyncCallback catch businessError Code: " + 
-        " ${(businessError as Businsess).code}, message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic readSingleBlock AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1299,7 +1294,7 @@ function nfcTechDemo() {
 
 writeSingleBlock(blockIndex: number, data: number[]): Promise\<void>
 
-向标签中一个块存储写入内容，一个块大小为16字节。使用Promise方式作为异步方法。
+向标签中一个块存储写入内容，一个块大小为16字节。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1358,8 +1353,7 @@ function nfcTechDemo() {
             console.error("mifareClassic writeSingleBlock Promise errCode: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("mifareClassic writeSingleBlock Promise catch businessError Code: ${(businessError as Businsess).code}, "
-        + "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic writeSingleBlock Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1368,7 +1362,7 @@ function nfcTechDemo() {
 
 writeSingleBlock(blockIndex: number, data: number[], callback: AsyncCallback\<void>): void
 
-向标签中一个块存储写入内容，一个块大小为16字节。使用AsyncCallback方式作为异步方法。
+向标签中一个块存储写入内容，一个块大小为16字节。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1418,15 +1412,13 @@ function nfcTechDemo() {
             0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; //必须是16个字节，将其更改为正确的data
         mifareClassic.writeSingleBlock(blockIndex, rawData, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic writeSingleBlock AsyncCallback err Code:" +
-                "${err.code}, message: ${err.message}");
+                console.error(`mifareClassic writeSingleBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic writeSingleBlock AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic writeSingleBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic writeSingleBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1435,7 +1427,7 @@ function nfcTechDemo() {
 
 incrementBlock(blockIndex: number, value: number): Promise\<void>
 
-对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用Promise方式作为异步方法。
+对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1490,11 +1482,10 @@ function nfcTechDemo() {
         mifareClassic.incrementBlock(blockIndex, value).then(() => {
             console.info("mifareClassic incrementBlock Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic incrementBlock Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic incrementBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareClassic incrementBlock Promise catch Code: ${(businessError as Businsess).code}, " +
-           "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic incrementBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1503,7 +1494,7 @@ function nfcTechDemo() {
 
 incrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
 
-对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用AsyncCallback方式作为异步方法。
+对指定块的内容，增加指定的数值，并将结果存储在内部传输缓冲器中。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1552,14 +1543,13 @@ function nfcTechDemo() {
         let value = 0x20; // 将其更改为正确的数据
         mifareClassic.incrementBlock(blockIndex, value, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic incrementBlock AsyncCallback err Code: ${err.code}, message: ${err.message}");
+                console.error(`mifareClassic incrementBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic incrementBlock AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic incrementBlock AsyncCallback catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic incrementBlock AsyncCallback catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1568,7 +1558,7 @@ function nfcTechDemo() {
 
 decrementBlock(blockIndex: number, value: number): Promise\<void>
 
-对指定块的内容，减少指定的数值，并将结果存储在内部传输缓冲器中。使用Promise方式作为异步方法。
+对指定块的内容，减少指定的数值，并将结果存储在内部传输缓冲器中。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1626,8 +1616,7 @@ function nfcTechDemo() {
             console.error("mifareClassic decrementBlock Promise errCode: ${err.code}, message: ${err.message}");
         });
     } catch (businessError) {
-        console.error("mifareClassic decrementBlock Promise catch businessError: Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic decrementBlock Promise catch businessError: Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1636,7 +1625,7 @@ function nfcTechDemo() {
 
 decrementBlock(blockIndex: number, value: number, callback: AsyncCallback\<void>): void
 
-对指定块的内容，减少指定的数值。使用AsyncCallback方式作为异步方法。
+对指定块的内容，减少指定的数值。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1692,8 +1681,7 @@ function nfcTechDemo() {
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic decrementBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-          "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic decrementBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1702,7 +1690,7 @@ function nfcTechDemo() {
 
 transferToBlock(blockIndex: number): Promise\<void>
 
-将临时寄存器的值转移到指定的块。使用Promise方式作为异步方法。
+将临时寄存器的值转移到指定的块。使用Promise异步异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1755,11 +1743,10 @@ function nfcTechDemo() {
         mifareClassic.transferToBlock(blockIndex).then(() => {
             console.info("mifareClassic transferToBlock Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareClassic transferToBlock Promise catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}");
     }
 }
 ```
@@ -1768,7 +1755,7 @@ function nfcTechDemo() {
 
 transferToBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 
-将临时寄存器的值转移到指定的块。使用AsyncCallback方式作为异步方法。
+将临时寄存器的值转移到指定的块。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1815,15 +1802,13 @@ function nfcTechDemo() {
         let blockIndex = 1; // 将其更改为正确的 index
         mifareClassic.transferToBlock(blockIndex, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic transferToBlock AsyncCallback errCode: ${err.code}," +
-                    "message: ${err.message}");
+                console.error(`mifareClassic transferToBlock AsyncCallback errCode: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic transferToBlock AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic transferToBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic transferToBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1832,7 +1817,7 @@ function nfcTechDemo() {
 
 restoreFromBlock(blockIndex: number): Promise\<void>
 
-将指定块的值复制到临时寄存器。使用Promise方式作为异步方法。
+将指定块的值复制到临时寄存器。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1885,11 +1870,10 @@ function nfcTechDemo() {
         mifareClassic.restoreFromBlock(blockIndex).then(() => {
             console.info("mifareClassic restoreFromBlock Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareClassic restoreFromBlock Promise errCode: ${err.code}, message: ${err.message}");
+            console.error(`mifareClassic restoreFromBlock Promise errCode: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareClassic restoreFromBlock Promise catch businessError Code: ${(businessError as Businsess).code}," +
-            " message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic restoreFromBlock Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -1898,7 +1882,7 @@ function nfcTechDemo() {
 
 restoreFromBlock(blockIndex: number, callback: AsyncCallback\<void>): void
 
-将指定块的值复制到临时寄存器。使用AsyncCallback方式作为异步方法。
+将指定块的值复制到临时寄存器。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1945,15 +1929,13 @@ function nfcTechDemo() {
         let blockIndex = 1; // 将其更改为正确的 index
         mifareClassic.restoreFromBlock(blockIndex, (err : BusinessError)=> {
             if (err) {
-                console.error("mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}," +
-                    " message: ${err.message}");
+                console.error(`mifareClassic restoreFromBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareClassic restoreFromBlock AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareClassic restoreFromBlock AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareClassic restoreFromBlock AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2028,8 +2010,7 @@ try {
     let blockCnt : number = mifareClassic.getBlockCountInSector(sectorIndex);
     console.info("mifareClassic blockCnt: " + blockCnt);
 } catch (businessError) {
-    console.error("mifareClassic getBlockCountInSector catch businessError Code: ${(businessError as Businsess).code}, " +
-        "message: ${(businessError as Businsess).message}");
+    console.error(`mifareClassic getBlockCountInSector catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
 }
 ```
 
@@ -2156,8 +2137,7 @@ try {
     let blockIndex : number = mifareClassic.getBlockIndex(sectorIndex);
     console.info("mifareClassic blockIndex: " + blockIndex);
 } catch (businessError) {
-    console.error("mifareClassic getBlockIndex catch businessError Code: ${(businessError as Businsess).code}, " +
-        "message: ${(businessError as Businsess).message}");
+    console.error(`mifareClassic getBlockIndex catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
 }
 ```
 
@@ -2204,8 +2184,7 @@ try {
     let sectorIndex : number = mifareClassic.getSectorIndex(blockIndex);
     console.info("mifareClassic sectorIndex: " + sectorIndex);
 } catch (businessError) {
-    console.error("mifareClassic getSectorIndex catch businessError Code: ${(businessError as Businsess).code}, " +
-       "message: ${(businessError as Businsess).message}");
+    console.error(`mifareClassic getSectorIndex catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
 }
 ```
 
@@ -2223,7 +2202,7 @@ MifareUltralightTag获取方式请参考[nfc-tag开发指南](../../connectivity
 
 readMultiplePages(pageIndex: number): Promise\<number[]>
 
-读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise方式作为异步方法。
+读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise异步回调
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2241,7 +2220,7 @@ readMultiplePages(pageIndex: number): Promise\<number[]>
 
 | **类型** | **说明**                             |
 | ------------------ | --------------------------|
-| Promise\<number[]> | 以Promise形式返回读取的4页的数据，共16字节。 |
+| Promise\<number[]> | Promise对象。以Promise形式返回读取的4页的数据，共16字节。 |
 
 **错误码：**
 
@@ -2277,11 +2256,10 @@ function nfcTechDemo() {
         mifareUltralight.readMultiplePages(pageIndex).then((data : number[]) => {
             console.info("mifareUltralight readMultiplePages Promise data = " + data);
         }).catch((err : BusinessError)=> {
-            console.error("mifareUltralight readMultiplePages Promise Code: ${err.code}, message: ${err.message}");
+            console.error(`mifareUltralight readMultiplePages Promise Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareUltralight readMultiplePages Promise catch businessError" +
-            " Code: ${(businessError as Businsess).code}, message: ${(businessError as Businsess).message}");
+        console.error(`mifareUltralight readMultiplePages Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2290,7 +2268,7 @@ function nfcTechDemo() {
 
 readMultiplePages(pageIndex: number, callback: AsyncCallback\<number[]>): void
 
-读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用AsyncCallback方式作为异步方法。
+读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2337,14 +2315,13 @@ function nfcTechDemo() {
         let pageIndex = 1; // 将其更改为正确的 index
         mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
             if (err) {
-                console.log("mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}");
+                console.error(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareUltralight readMultiplePages AsyncCallback data: " + data);
             }
         });
     } catch (businessError) {
-        console.error("mifareUltralight readMultiplePages AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareUltralight readMultiplePages AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2353,7 +2330,7 @@ function nfcTechDemo() {
 
 writeSinglePage(pageIndex: number, data: number[]): Promise\<void>
 
-写入一页数据，数据大小为4字节。使用Promise方式作为异步方法。
+写入一页数据，数据大小为4字节。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2408,11 +2385,10 @@ function nfcTechDemo() {
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("mifareUltralight writeSinglePage Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`mifareUltralight writeSinglePage Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("mifareUltralight writeSinglePage Promise catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareUltralight writeSinglePage Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2421,7 +2397,7 @@ function nfcTechDemo() {
 
 writeSinglePage(pageIndex: number, data: number[], callback: AsyncCallback\<void>): void
 
-写入一页数据，数据大小为4字节。使用AsyncCallback方式作为异步方法。
+写入一页数据，数据大小为4字节。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2470,15 +2446,13 @@ function nfcTechDemo() {
         let rawData = [0x01, 0x02, 0x03, 0x04];  //必须是4个字节，将其更改为正确的data
         mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
         if (err) {
-                console.error("mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}," +
-                    "message: ${err.message}");
+                console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareUltralight writeSinglePage AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("mifareUltralight writeSinglePage AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`mifareUltralight writeSinglePage AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2523,7 +2497,7 @@ NdefFormatableTag获取方式请参考[nfc-tag开发指南](../../connectivity/n
 
 format(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 
-将标签格式化为NDEF标签，将NDEF消息写入NDEF标签。使用Promise方式作为异步方法。
+将标签格式化为NDEF标签，将NDEF消息写入NDEF标签。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2580,11 +2554,10 @@ function nfcTechDemo() {
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("ndefFormatable format Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndefFormatable format Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("ndefFormatable format Promise catch businessError Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndefFormatable format Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2593,7 +2566,7 @@ function nfcTechDemo() {
 
 format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): void
 
-将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签。使用AsyncCallback方式作为异步方法。
+将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2606,12 +2579,7 @@ format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): v
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
 | message | [NdefMessage](#ndefmessage9) | 是   | 格式化成功时要写入的Ndef消息。可以为null，为null时仅格式化标签，不写入内容。 |
-
-**返回值：**
-
-| **类型** | **说明**                             |
-| ------------------ | --------------------------|
-| callback: AsyncCallback\<void> | 回调函数。当NDEF消息写入标签成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当NDEF消息写入标签成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2648,14 +2616,13 @@ function nfcTechDemo() {
 
         ndefFormatable.format(ndefMessage, (err : BusinessError)=> {
             if (err) {
-                console.error("ndefFormatable format AsyncCallback Code: ${err.code}, message: ${err.message}");
+                console.error(`ndefFormatable format AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndefFormatable format AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("ndefFormatable format AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndefFormatable format AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2664,7 +2631,7 @@ function nfcTechDemo() {
 
 formatReadOnly(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 
-将标签格式化为NDEF标签，将NDEF消息写入NDEF标签，之后将标签设置为只读。使用Promise方式作为异步方法。
+将标签格式化为NDEF标签，将NDEF消息写入NDEF标签，之后将标签设置为只读。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2721,11 +2688,10 @@ function nfcTechDemo() {
         ndefFormatable.formatReadOnly(ndefMessage).then(() => {
             console.info("ndefFormatable formatReadOnly Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error("ndefFormatable formatReadOnly Promise Code: ${err.code}, message: ${err.message}");
+            console.error(`ndefFormatable formatReadOnly Promise Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error("ndefFormatable formatReadOnly Promise catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndefFormatable formatReadOnly Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2734,7 +2700,7 @@ function nfcTechDemo() {
 
 formatReadOnly(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): void
 
-将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签，之后将标签设置为只读。使用callback方式作为异步方法。
+将标签格式化为NDEF标签，然后将NDEF消息写入NDEF标签，之后将标签设置为只读。使用callback异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2747,12 +2713,7 @@ formatReadOnly(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<v
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
 | message | [NdefMessage](#ndefmessage9) | 是   | 格式化成功时要写入的NDEF消息。可以为null，为null时仅格式化标签，不写入内容。|
-
-**返回值：**
-
-| **类型** | **说明**                             |
-| ------------------ | --------------------------|
-| callback: AsyncCallback\<void> | 回调函数。当NDEF消息写入NDEF标签成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当NDEF消息写入NDEF标签成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2790,14 +2751,13 @@ function nfcTechDemo() {
 
         ndefFormatable.formatReadOnly(ndefMessage, (err : BusinessError)=> {
             if (err) {
-                console.error("ndefFormatable formatReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}");
+                console.error(`ndefFormatable formatReadOnly AsyncCallback err Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("ndefFormatable formatReadOnly AsyncCallback success.");
             }
         });
     } catch (businessError) {
-        console.error("ndefFormatable formatReadOnly AsyncCallback catch Code: ${(businessError as Businsess).code}, " +
-            "message: ${(businessError as Businsess).message}");
+        console.error(`ndefFormatable formatReadOnly AsyncCallback catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2816,7 +2776,7 @@ BarcodeTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-
 
 getBarcode(): Promise\<ArrayBuffer>
 
-获取读到的Barcode类型的完整Tag。使用Promise方式作为异步方法。
+获取读到的Barcode类型的完整Tag。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 

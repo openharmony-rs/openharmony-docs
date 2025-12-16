@@ -1,4 +1,10 @@
 # SplitLayout
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 **SplitLayout** is a component that enables you to divide the available space vertically into separate sections, each of which can contain solely text or a combination of text and images.
@@ -6,7 +12,9 @@
 
 > **NOTE**
 >
-> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - If the **SplitLayout** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SplitLayout** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SplitLayout** component.
 
 
 ## Modules to Import
@@ -20,10 +28,6 @@ import { SplitLayout } from '@kit.ArkUI';
 
 Not supported
 
-## Attributes
-The [universal attributes](ts-component-general-attributes.md) are not supported.
-
-
 ## SplitLayout
 
 SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, tertiaryText?: string, container: () =&gt; void })
@@ -33,6 +37,8 @@ SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, t
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name| Type| Mandatory| Decorator       | Description    |
 | -------- | -------- | -------- |---------------|--------|
@@ -75,19 +81,19 @@ struct Index {
 ```
 
 
-Layout less than 600 vp:
+Layout less than or equal to 600 vp
 
 
 ![en-us_image_0000001665553957](figures/en-us_image_0000001665553957.png)
 
 
-Layout between 600 vp and 840 vp:
+Layout greater than 600 vp and less than or equal to 840 vp
 
 
 ![en-us_image_0000001616957408](figures/en-us_image_0000001616957408.png)
 
 
-Layout greater than 840 vp:
+Layout greater than 840 vp
 
 
 ![en-us_image_0000001617116972](figures/en-us_image_0000001617116972.png)

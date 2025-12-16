@@ -1,6 +1,13 @@
 # @ohos.app.ability.autoFillManager (自动填充框架)
 
-autoFillManager模块提供账号密码保存等功能。
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+autoFillManager模块为应用提供账号、密码、地址、电话号码等用户信息的自动填充能力。
 
 不同于页面切换时触发的系统自动保存功能，该功能需要由用户手动触发。例如用户在网站上输入了账号密码，并点击“保存”按钮，才能触发相应的自动保存操作。
 
@@ -20,33 +27,40 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 当保存请求完成时所触发的回调接口。
 
-### onSuccess
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-onSuccess(): void
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| onSuccess | [OnSuccessFn](#onsuccessfn23) | 否    | 否    | 当保存请求成功时，该回调被调用。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onSuccess()方法变更为当前属性，调用方式不变。 |
+| onFailure | [OnFailureFn](#onfailurefn23) | 否    | 否    | 当保存请求失败时，该回调被调用。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。<br/>**说明**：<br/>从API version 23开始，原来的onFailure()方法变更为当前属性，调用方式不变。 |
 
-当保存请求成功时，该回调被调用。
+## OnSuccessFn<sup>23+</sup>
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+type OnSuccessFn = () => void
+
+当保存请求成功时，会触发该回调。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **示例：**
 
-参见[AutoSaveCallback.onFailure](#onfailure)。
+参见[AutoSaveCallback.onFailure](#onfailurefn23)。
 
-### onFailure
+## OnFailureFn<sup>23+</sup>
 
-onFailure(): void
+type OnFailureFn = () => void
 
-当保存请求失败时，该回调被调用。
+当保存请求失败时，会触发该回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **示例：**
 
-  ```ts
+```ts
 // Index.ets, 含有账号、密码框等组件的页面
 import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
@@ -77,7 +91,7 @@ struct Index {
       })
   }
 }
-  ```
+```
 
 > **说明：**
 >
@@ -87,7 +101,7 @@ struct Index {
 
 requestAutoSave(context: UIContext, callback?: AutoSaveCallback): void
 
-请求保存表单数据，使用callback异步回调。
+请求保存表单数据。使用callback异步回调。
 如果当前表单没有提供表单切换的功能，可以通过此接口保存历史表单输入数据，保存请求完成时会触发该回调。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
@@ -98,21 +112,20 @@ requestAutoSave(context: UIContext, callback?: AutoSaveCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| context | [UIContext](../apis-arkui/js-apis-arkui-UIContext.md) | 是 | 将在其中执行保存操作的UI上下文。 |
-| callback | [AutoSaveCallback](#autosavecallback)  | 否 | 保存请求的回调函数。 |
+| context | [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) | 是 | 将在其中执行保存操作的UI上下文。 |
+| callback | [AutoSaveCallback](#autosavecallback)  | 否 | 当保存请求完成时所触发的回调接口。|
 
 **错误码：**
 
+以下错误码的详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 401      | The parameter check failed. Possible causes: 1. Get instance id failed; 2. Parse instance id failed; 3. The second parameter is not of type callback. |
 | 16000050 | Internal error. |
 
-以上错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
-
 **示例：**
 
-  ```ts
+```ts
 // EntryAbility.ets
 import { UIAbility, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -129,13 +142,13 @@ export default class EntryAbility extends UIAbility {
     };
     let storage = new LocalStorage(localStorageData);
     windowStage.loadContent('pages/Index', storage, (err, data) => {
-      if (err.code) {
+      if (err && err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
       // Obtain the main window.
       windowStage.getMainWindow((err: BusinessError, data: window.Window) => {
-        let errCode: number = err.code;
+        let errCode: number = err?.code;
         if (errCode) {
           console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
           return;
@@ -149,10 +162,10 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
-  ```
+```
 
-  ```ts
-  // Index.ets
+```ts
+// Index.ets
 import { autoFillManager } from '@kit.AbilityKit';
 import { UIContext } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -191,4 +204,4 @@ struct Index {
     .height('100%')
   }
 }
-  ```
+```

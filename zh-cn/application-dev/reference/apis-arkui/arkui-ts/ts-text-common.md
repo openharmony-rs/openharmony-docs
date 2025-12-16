@@ -1,4 +1,10 @@
 # 文本组件公共接口
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @kangshihui-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >**说明：**
 >
@@ -11,10 +17,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型                                   | 必填 | 说明 |
-| ------ | ------------------------------------------ | ---- | -------- |
-| width  | [Length](ts-types.md#length)               | 否   | 光标尺寸，不支持百分比。<br/>默认值：'2vp' |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | 否   | 光标颜色。<br/>默认值：'#ff007dff' |
+| 名称 | 类型                                   | 只读 | 可选 | 说明 |
+| ------ | ------------------------------------------ | ---- | ---- | -------- |
+| width  | [Length](ts-types.md#length)               | 否   | 是 | 光标尺寸，不支持百分比。<br/>默认值：'2vp' |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 光标颜色。<br/>默认值：'#ff007dff' |
 
 ## LayoutManager<sup>12+</sup>
 
@@ -25,13 +31,13 @@
 > 文本内容变更后，需等待布局完成才可获取到最新的布局信息。
 
 ### 导入对象
-以Text组件为例
+以Text组件为例，完整示例请参考Text组件的[示例10获取文本信息](./ts-basic-components-text.md#示例10获取文本信息)。
 ```ts
 controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
 ```
 
-### getLineCount
+### getLineCount<sup>12+</sup>
 
 getLineCount(): number
 
@@ -47,7 +53,7 @@ getLineCount(): number
 | ------ | --------- |
 | number | 组件内容的总行数。 |
 
-### getGlyphPositionAtCoordinate
+### getGlyphPositionAtCoordinate<sup>12+</sup>
 
 getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
@@ -70,7 +76,7 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 | --------------------------------------------- | ----------- |
 | [PositionWithAffinity](#positionwithaffinity12) | 字形位置信息。|
 
-### getLineMetrics
+### getLineMetrics<sup>12+</sup>
 
 getLineMetrics(lineNumber: number): LineMetrics
 
@@ -126,8 +132,8 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
-| position  | number                | 是   | 否   | 字形相对于组件内容的索引，整数。  |
-| affinity  | [Affinity](#affinity12) | 是   | 是   | 位置亲和度。             |
+| position  | number                | 否   | 否   | 字形相对于组件内容的索引，整数。  |
+| affinity  | [Affinity](#affinity12) | 否   | 否   | 位置亲和度。             |
 
 ## TextMenuItemId<sup>12+</sup>
 
@@ -150,15 +156,16 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 | COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 可对选中的文本进行润色、摘要提取、排版等。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译。对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供AI问询能力。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充。提供自动填充内容能力，仅支持[Search](ts-basic-components-search.md)/[TextInput](ts-basic-components-textinput.md)/[TextArea](ts-basic-components-textarea.md)/[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
@@ -207,18 +214,26 @@ equals(id: TextMenuItemId): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型                              | 必填 | 说明   |
-| ------- | --------------------------------- | ---- | --------------------------------- |
-| content | [ResourceStr](ts-types.md#resourcestr) | 是   | 菜单名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否   | 菜单图标。<br/>不支持网络图片。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| id | [TextMenuItemId](#textmenuitemid12) | 是   | 菜单id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| labelInfo<sup>15+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 快捷键提示。<br/>该字段仅2in1设备支持。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| 名称  | 类型                              | 只读 | 可选 | 说明   |
+| ------- | --------------------------------- | ---- | ---- | --------------------------------- |
+| content | [ResourceStr](ts-types.md#resourcestr) | 否   | 否 | 菜单名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 菜单图标。<br/>不支持网络图片。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| id | [TextMenuItemId](#textmenuitemid12) |  否   | 否  | 菜单id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| labelInfo<sup>15+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否   | 是 | 快捷键提示。<br/>该字段仅2in1设备支持。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 ## EditMenuOptions
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### 属性
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 类型   | 只读 | 可选   | 说明  |
+| ------- | ------ | ---- | ----- | ----- |
+| onPrepareMenu<sup>20+</sup> | [OnPrepareMenuCallback](#onpreparemenucallback20) | 否 | 是  | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。 </br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ### onCreateMenu<sup>12+</sup>
 
@@ -265,22 +280,6 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 | ------- | --------------------------------- |
 | boolean | 菜单项的执行逻辑。<br/>返回为true，拦截系统默认逻辑，仅执行自定义逻辑。<br/>返回为false，先执行自定义逻辑，再执行系统逻辑。 |
 
-### onPrepareMenu<sup>20+</sup>
-
-onPrepareMenu?: OnPrepareMenuCallback
-
-当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**返回值：**
-
-| 类型                              | 说明   |
-| --------------------------------- | --------------------------------- |
-| [OnPrepareMenuCallback](#onpreparemenucallback20) | 当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。|
-
 ## OnPrepareMenuCallback<sup>20+</sup>
 
 type OnPrepareMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMenuItem\>
@@ -311,10 +310,10 @@ type OnPrepareMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMe
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -- | -- | -- | -- |
-| start | number | 否 | 起始索引。 |
-| end | number | 否 | 结束索引。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -- | -- | -- | -- | -- |
+| start | number | 否 | 是 | 起始索引。 |
+| end | number | 否 | 是 | 结束索引。 |
 
 ## EditableTextOnChangeCallback<sup>12+</sup>
 
@@ -409,10 +408,10 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                          | 必填 | 说明                                                         |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| insertOffset  | number | 是   | 插入的值的位置信息。 |
-| insertValue  | string | 是   | 插入的值。 |
+| 名称    | 类型                          | 只读 | 可选 | 说明                                                         |
+| ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| insertOffset  | number | 否   | 否 | 插入的值的位置信息。 |
+| insertValue  | string | 否   | 否   | 插入的值。 |
 
 ## DeleteValue<sup>12+</sup>对象说明
 
@@ -420,23 +419,25 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                                                    | 必填 | 说明                                                    |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| deleteOffset  | number | 是   | 删除的值的位置信息。 |
-| direction  | [TextDeleteDirection](#textdeletedirection12枚举说明) | 是   | 删除值的方向。 |
-| deleteValue  | string | 是   | 删除的值。 |
+| 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| deleteOffset  | number | 否   | 否 | 删除的值的位置信息。 |
+| direction  | [TextDeleteDirection](#textdeletedirection12枚举说明) | 否   | 否   | 删除值的方向。 |
+| deleteValue  | string | 否   | 否   | 删除的值。 |
 
 ## TextDataDetectorConfig<sup>11+</sup>对象说明
 
+该配置只支持[Text](ts-basic-components-text.md)组件和[RichEditor](ts-basic-components-richeditor.md)组件。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型  | 必填 | 说明  |
-| ------ | -------- | ---- | ------------------------------------------- |
-| types   | [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] | 是   | 设置文本识别的实体类型。设置types为null或者[]时，识别所有类型的实体，否则只识别指定类型的实体。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| onDetectResultUpdate   | (result: string) => void | 否   | 文本识别成功后，触发onDetectResultUpdate回调。<br/>-&nbsp;result：文本识别的结果，Json格式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否   | 设置文本识别成功后的实体颜色。<br/>默认值：'#ff0a59f7'<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| enablePreviewMenu<sup>20+</sup>   | boolean | 否   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型  | 只读 | 可选 | 说明  |
+| ------ | -------- | ---- | ---- | ------------------------------------------- |
+| types   | [TextDataDetectorType](ts-text-common.md#textdatadetectortype11枚举说明)[] | 否 | 否  | 设置文本识别的实体类型。设置types为null或者[]时，识别所有类型的实体，否则只识别指定类型的实体。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| onDetectResultUpdate   | Callback\<string> | 否 | 是  | 文本识别成功后，触发onDetectResultUpdate回调。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| color<sup>12+</sup>   | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 设置文本识别成功后的实体颜色。<br/>默认值：'#ff0a59f7'<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| decoration<sup>12+</sup>  | [DecorationStyleInterface](ts-universal-styled-string.md#decorationstyleinterface)| 否 | 是   | 设置文本识别成功后的实体装饰线样式。<br/>默认值：<br/>{<br/>&nbsp;type:&nbsp;TextDecorationType.Underline,<br/>&nbsp;color:&nbsp;与实体颜色一致,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>}<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| enablePreviewMenu<sup>20+</sup>   | boolean | 否 | 是   | 设置是否开启文本识别长按显示预览菜单。true表示开启，false表示未开启。<br/>默认值：false<br/>当[copyOptions](ts-basic-components-richeditor.md#copyoptions)设置为None时，若enablePreviewMenu设置为true，长按AI实体也不能显示预览菜单。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## PreviewText<sup>12+</sup>
 
@@ -446,14 +447,14 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                                             | 必填 | 说明                                                     |
-| -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
-| offset | number | 是   | 预上屏内容的起始位置。 |
-| value    | string         | 是   | 预上屏的内容。         |
+| 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
+| -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
+| offset | number | 否   | 否 | 预上屏内容的起始位置。 |
+| value    | string         | 否   | 否   | 预上屏的内容。         |
 
 ## FontSettingOptions<sup>12+</sup>对象说明
 
-字体配置项，比如通过设置应用内组件的字体粗细，进行字体粗细的无极调节（指在一定范围内无限制的调节的状态）。
+字体配置项。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -461,9 +462,9 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                                             | 必填 | 说明                                                     |
-| -------- | ------------------------------------------------ | ---- | -------------------------------------------------------- |
-| enableVariableFontWeight | boolean | 否   | 是否支持字重无极调节。<br/>默认值：false<br/>值为true，表示支持字重调节，值为false，表示不支持字重调节。 |
+| 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
+| -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
+| enableVariableFontWeight | boolean | 否 | 是  | 是否启用可变字重调节。字体配置项作为[fontWeight](./ts-basic-components-text.md#fontweight12)接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
 
 ## OnDidChangeCallback<sup>12+</sup>
 
@@ -490,10 +491,10 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -- | -- | -- | -- |
-| onWillChange | Callback<[StyledStringChangeValue](#styledstringchangevalue12), boolean> | 否 | 文本内容将要变化回调函数。 |
-| onDidChange | [OnDidChangeCallback](#ondidchangecallback12) | 否 | 文本内容完成变化回调函数。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -- | -- | -- | -- | -- |
+| onWillChange | Callback<[StyledStringChangeValue](#styledstringchangevalue12), boolean> | 否 | 是 | 文本内容将要变化回调函数。 |
+| onDidChange | [OnDidChangeCallback](#ondidchangecallback12) | 否 | 是 | 文本内容完成变化回调函数。 |
 
 ## StyledStringChangeValue<sup>12+</sup>
 
@@ -503,11 +504,11 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -- | -- | -- | -- |
-| range | [TextRange](#textrange12) | 是 | 即将被替换的属性字符串子串在原字符串中的范围。 |
-| replacementString | [StyledString](ts-universal-styled-string.md#styledstring) | 是 | 用于替换的属性字符串。 |
-| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 预览样式字符串。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -- | -- | -- | -- | -- |
+| range | [TextRange](#textrange12) | 否 | 否 | 即将被替换的属性字符串子串在原字符串中的范围。 |
+| replacementString | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 否 | 用于替换的属性字符串。 |
+| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览样式字符串。 |
 
 ## AutoCapitalizationMode<sup>20+</sup>枚举说明
 
@@ -520,8 +521,8 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
 | NONE | 0 | 默认状态无效。|
-| WORDS | 1 | 按单词自动大小写。|
-| SENTENCES | 2 | 按句子自动大小写。|
+| WORDS | 1 | 按单词自动大小写，即输入单词的首个字符大写，其他字符小写。|
+| SENTENCES | 2 | 按句子自动大小写，即输入句子的首个字符大写，其他字符小写。|
 | ALL_CHARACTERS | 3 | 按全字符自动大小写。|
 
 ## TextBaseController<sup>12+</sup>
@@ -562,7 +563,7 @@ selectionStart和selectionEnd均为-1时表示全选。
 | -------------- | ------ | ---- | ------- |
 | selectionStart | number | 是    | 选中开始位置。<br/>取值小于0时，按0处理。 |
 | selectionEnd   | number | 是    | 选中结束位置。<br/>取值大于文本长度时，按当前文本长度处理。 |
-| options   | [SelectionOptions](ts-types.md#selectionoptions12对象说明) | 否    | 选择项配置。 |
+| options   | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12对象说明) | 否    | 选择项配置。 |
 
 ### closeSelectionMenu<sup>12+</sup>
 
@@ -646,7 +647,7 @@ getCaretOffset(): number
 
 setCaretOffset(offset: number): boolean
 
-设置光标位置。
+设置光标偏移位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -678,7 +679,7 @@ getPreviewText?(): PreviewText
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| [PreviewText](#previewtext12) | 预上屏信息。 |.
+| [PreviewText](#previewtext12) | 预上屏信息。 |
 
 ## StyledStringController<sup>12+</sup>
 
@@ -726,12 +727,12 @@ getStyledString(): MutableStyledString
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型                              | 必填 | 说明   |
-| ------- | --------------------------------- | ---- | --------------------------------- |
-| type | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 是   | 装饰线类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 是   | 装饰线颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 装饰线样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| thicknessScale<sup>20+</sup> | number | 否   | 装饰线粗细缩放比例。<br/>默认值：1.0<br/>**说明：** 负值按默认值处理。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| 名称  | 类型                              | 只读 | 可选 | 说明   |
+| ------- | --------------------------------- | ---- | ---- | --------------------------------- |
+| type | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 装饰线类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否   | 否   | 装饰线颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是   | 装饰线样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| thicknessScale<sup>20+</sup> | number | 否   | 是   | 装饰线粗细缩放比例。<br/>默认值：1.0<br/>取值范围：[0, +∞) <br/>**说明：** 负值按默认值处理。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## LineMetrics<sup>12+</sup>
 
@@ -775,6 +776,18 @@ type TextBox = TextBox
 | --------------------------------- | --------------------------------- |
 | [TextBox](../../apis-arkgraphics2d/js-apis-graphics-text.md#textbox) | 文本矩形区域。 |
 
+## Paragraph<sup>20+</sup>
+
+type Paragraph = Paragraph
+
+保存文本内容及样式的载体，支持排版与绘制操作。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                              | 说明   |
+| --------------------------------- | --------------------------------- |
+| [Paragraph](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) | 保存文本内容及样式的载体，支持排版与绘制操作。 |
+
 ## RectHeightStyle<sup>14+</sup>
 
 type RectHeightStyle = RectHeightStyle
@@ -811,12 +824,12 @@ type RectWidthStyle = RectWidthStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                                                    | 必填 | 说明                                                    |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| rangeBefore  | [TextRange](#textrange12) | 是   | 变化前的选区范围。 |
-| rangeAfter  | [TextRange](#textrange12) | 是   | 变化后的选区范围。 |
-| oldContent  | string | 是   | 变化前的文本内容。 |
-| oldPreviewText | [PreviewText](#previewtext12) | 是 | 变化前的预上屏信息。 |
+| 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| rangeBefore  | [TextRange](#textrange12) | 否   | 否 | 变化前的选区范围。 |
+| rangeAfter  | [TextRange](#textrange12) | 否   | 否   | 变化后的选区范围。 |
+| oldContent  | string | 否   | 否   | 变化前的文本内容。 |
+| oldPreviewText | [PreviewText](#previewtext12) | 否   | 否 | 变化前的预上屏信息。 |
 
 ## EditableTextChangeValue<sup>15+</sup>
 
@@ -826,11 +839,11 @@ type RectWidthStyle = RectWidthStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                                                    | 必填 | 说明                                                    |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| content  | string | 是   | 当前的文本内容。 |
-| previewText  | [PreviewText](#previewtext12) | 否   | 预上屏的内容信息。 |
-| options  | [TextChangeOptions](#textchangeoptions15对象说明) | 否   | 变化的文本内容信息。 |
+| 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| content  | string | 否   | 否 | 当前的文本内容。 |
+| previewText  | [PreviewText](#previewtext12) | 否   | 是   | 预上屏的内容信息。 |
+| options  | [TextChangeOptions](#textchangeoptions15对象说明) | 否   | 是   | 变化的文本内容信息。 |
 
 ## TextMenuShowMode<sup>16+</sup>
 
@@ -853,9 +866,9 @@ type RectWidthStyle = RectWidthStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                                                    | 必填 | 说明                                                    |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| showMode  | [TextMenuShowMode](#textmenushowmode16) | 否   | 菜单的显示模式。<br/>默认值：TextMenuShowMode.DEFAULT |
+| 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| showMode  | [TextMenuShowMode](#textmenushowmode16) | 否   | 是 | 菜单的显示模式。<br/>默认值：TextMenuShowMode.DEFAULT |
 
 ## ShaderStyle<sup>20+</sup>
 
@@ -879,9 +892,9 @@ type RectWidthStyle = RectWidthStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 类型   | 必填   | 说明  |
-| ------- | ------ | ---- | ----- |
-| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 是    | 显示为线性渐变效果。 |
+| 名称  | 类型   | 只读 | 可选   | 说明  |
+| ------- | ------ | ---- | ----- | ----- |
+| options | [LinearGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#lineargradientoptions18对象说明) | 否 | 否  | 显示为线性渐变效果。 |
 
 ### constructor<sup>20+</sup>
 
@@ -913,9 +926,9 @@ constructor(options: LinearGradientOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                                                    | 必填 | 说明                                                    |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [RadialGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#radialgradientoptions18对象说明) | 是    | 显示为径向渐变效果。 |
+| 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| options | [RadialGradientOptions](../arkui-ts/ts-universal-attributes-gradient-color.md#radialgradientoptions18对象说明) | 否  | 否 | 显示为径向渐变效果。 |
 
 ### constructor<sup>20+</sup>
 
@@ -947,9 +960,9 @@ constructor(options: RadialGradientOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                                                    | 必填 | 说明                                                    |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color | [ResourceColor](ts-types.md#resourcecolor) | 是    | 显示为纯色效果。 |
+| 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| color | [ResourceColor](ts-types.md#resourcecolor) | 否  | 否  | 显示为纯色效果。 |
 
 ### constructor<sup>20+</sup>
 
@@ -971,37 +984,31 @@ constructor(color: ResourceColor)
 
 输入控件绑定输入法客户端类型。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称    | 类型                                                    | 必填 | 说明                                                    |
-| ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| nodeId  | number | 是   | 当前输入控件的组件UniqueId。取值范围大于等于0。 |
-
-## TextChangeReason<sup>20+</sup>
-
-组件内容变化原因。
+### 属性
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 值 | 说明 |
-| ------- | ---- | ------------------- |
-| UNKNOWN | 0 | 未知原因。 |
-| INPUT | 1 | 用户输入。 |
-| PASTE | 2 | 粘贴。 |
-| CUT | 3 | 剪切。 |
-| DRAG | 4 | 拖拽。 |
-| AUTO_FILL | 5 | 自动填充。 |
-| AI_WRITE | 6 | 小艺帮写。 |
-| REDO | 7 | 重做。 |
-| UNDO | 8 | 撤销。 |
-| CONTROLLER | 9 | 开发者API调用。 |
-| ACCESSIBILITY | 10 | 无障碍接口。 |
-| COLLABORATION | 11 | 跨端拍照。 |
-| STYLUS | 12 | 手写笔。 |
+| 名称    | 类型                                                    | 只读 | 可选 | 说明                                                    |
+| ------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| nodeId  | number | 否  | 否 | 当前输入控件的组件UniqueId。取值范围大于等于0。 |
+
+### setExtraConfig<sup>22+</sup>
+
+setExtraConfig(config: InputMethodExtraConfig): void
+
+设置输入法扩展信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明               |
+| ------ | ------------------------------------------------------------ | ---- | ------------------ |
+| config  | [InputMethodExtraConfig](#inputmethodextraconfig22) | 是   | 输入法扩展信息。 |
 
 ## MaxLinesOptions<sup>20+</sup>对象说明
 
@@ -1011,9 +1018,9 @@ constructor(color: ResourceColor)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称              | 类型    | 必填  | 说明                                                         |
-| ------------------- | ------- | ------- | ------------------------------------------------------------ |
-| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | `overflowMode`可配置TextArea组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[`textOverflow`](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
+| 名称              | 类型    | 只读 | 可选  | 说明                                                         |
+| ------------------- | ------- | ------- | ------- | ------------------------------------------------------------ |
+| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置TextArea组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[`textOverflow`](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
 
 ## MaxLinesMode<sup>20+</sup>
 
@@ -1038,9 +1045,9 @@ TextArea组件在文本超长时显示效果。默认值为CLIP，按最大行�
 
 **参数：** 
 
-| 名称 | 类型                                                         | 必填 | 说明             |
-| ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| onlyBetweenLines  | boolean | 否   | 文本的行间距是否仅在行与行之间生效。<br/>当设置为true时，行间距仅适用于行与行之间，首行上方和尾行下方无额外的行间距。当设置为false时，首行上方和尾行下方均会存在行间距。<br/>默认值：false |
+| 名称 | 类型                                                         | 只读 | 可选 | 说明             |
+| ------ | ------------------------------------------------------------ | ---- | ---- | ---------------- |
+| onlyBetweenLines  | boolean | 否   | 是 | 文本的行间距是否仅在行与行之间生效。<br/>当设置为true时，行间距仅适用于行与行之间，首行上方和尾行下方无额外的行间距。当设置为false时，首行上方和尾行下方均会存在行间距。<br/>默认值：false |
 
 ## TextVerticalAlign<sup>20+</sup>
 
@@ -1081,10 +1088,10 @@ NumericTextTransition继承自[ContentTransition](#contenttransition20)。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                                       | 类型                                                         | 必填 | 说明                                                         |
-| ------------------------------------------ | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| flipDireciton                              | [FlipDirection](#flipdirection20)    | 否   | 翻牌方向。<br>默认值：FlipDirection.DOWN |
-| enableBlur                                 | boolean                              | 否   | 是否开启翻牌模糊效果。<br>默认值：false<br>true：开启翻牌模糊效果。<br>false：不开启翻牌模糊效果。|
+| 名称                                       | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------------------------------------ | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| flipDirection                             | [FlipDirection](#flipdirection20)    | 否   | 是 | 翻牌方向。<br>默认值：FlipDirection.DOWN |
+| enableBlur                                 | boolean                              | 否   | 是 | 是否开启翻牌模糊效果。<br>默认值：false<br>true：开启翻牌模糊效果。<br>false：不开启翻牌模糊效果。|
 
 ### constructor<sup>20+</sup>
 
@@ -1098,7 +1105,7 @@ constructor(options?: NumericTextTransitionOptions)
 
 **参数：**
 
-| 名称  | 类型   | 必填   | 说明  |
+| 参数名  | 类型   | 必填   | 说明  |
 | ------- | ------ | ---- | ----- |
 | options | [NumericTextTransitionOptions](#numerictexttransitionoptions20对象说明) | 否    | 设置数字翻牌动效。 |
 
@@ -1110,10 +1117,10 @@ constructor(options?: NumericTextTransitionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                                       | 类型                                                         | 必填 | 说明                                                         |
-| ------------------------------------------ | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| flipDireciton                              | [FlipDirection](#flipdirection20)    | 否   | 翻牌方向。<br>默认值：FlipDirection.DOWN |
-| enableBlur                                 | boolean                              | 否   | 是否开启翻牌模糊效果。<br>默认值：false<br>true：开启翻牌模糊效果。<br>false：不开启翻牌模糊效果。|
+| 名称                                       | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------------------------------------ | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| flipDirection                              | [FlipDirection](#flipdirection20)    | 否   | 是 | 翻牌方向。<br>默认值：FlipDirection.DOWN |
+| enableBlur                                 | boolean                              | 否   | 是 | 是否开启翻牌模糊效果。<br>默认值：false<br>true：开启翻牌模糊效果。<br>false：不开启翻牌模糊效果。|
 
 ## FlipDirection<sup>20+</sup>
 
@@ -1134,6 +1141,63 @@ constructor(options?: NumericTextTransitionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| constraintWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 设置被计算文本布局宽度。若不设置则宽度为单行布局所占最大宽度值。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| constraintWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 设置被计算文本布局宽度。若不设置则宽度为单行布局所占最大宽度值。 |
+
+## TextContentAlign<sup>21+</sup>
+
+文本内容区垂直对齐方向。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                   | 值  | 说明                  |
+| --------------------- | -------  | ------------------- |
+| TOP                   | 0  | 内容区顶部对齐。 |
+| CENTER                | 1  | 内容区中心对齐。 |
+| BOTTOM                | 2  | 内容区底部对齐。 |
+
+## TextDirection<sup>22+</sup>
+
+文本方向。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称                   | 值  | 说明                  |
+| --------------------- | -------  | ------------------- |
+| LTR                   | 0  | 从左到右。 |
+| RTL                | 1  | 从右到左。 |
+
+## InputMethodExtraConfig<sup>22+</sup>
+
+type InputMethodExtraConfig = InputMethodExtraConfig
+
+输入法扩展信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型                              | 说明   |
+| --------------------------------- | --------------------------------- |
+| [InputMethodExtraConfig](../../apis-ime-kit/js-apis-inputmethod-extraconfig.md#inputmethodextraconfig) | 输入法扩展信息。 |
+
+## AccessibilitySpanOptions<sup>23+</sup>对象说明
+
+Span的无障碍朗读功能属性。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ---------- | ---- | ------------------ | ------------------ |
+| accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。组件无文本属性时，屏幕朗读选中此组件不会播报。设置该属性后可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：''<br>值为undefined时，按默认值处理。 |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍说明属性。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果，尤其当这些后果无法仅从组件的属性和无障碍文本中直接获取时。<br>默认值：''<br>值为undefined时，按默认值处理。 |
+| accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于设置组件是否可被无障碍辅助服务识别。<br>支持取值如下：<br>"auto"：当前组件由无障碍辅助服务和ArkUl进行综合判断组件是否可被无障碍辅助服务所识别。<br>"yes"：当前组件可被无障碍辅助服务识别。<br>"no"：当前组件不可被无障碍辅助服务识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"<br>值为undefined时，按默认值处理。<br/>**说明：**<br/>当accessibilityLevel设置成"auto"时，组件是否可被无障碍辅助服务所识别取决于以下多方面因素：<br/>1. 组件是否可被识别由无障碍辅助服务内部判断，自行选择。<br/>2. 若组件的父组件accessibilityGroup属性中isGroup设置为true，无障碍服务将不再关注其子组件内容，组件不可被无障碍辅助服务所识别。<br/>3. 若组件的父组件accessibilityLevel属性设置为"no-hide-descendants"，组件不可被无障碍辅助服务所识别。 |

@@ -1,4 +1,10 @@
 # @ohos.application.DataShareExtensionAbility (DataShare ExtensionAbility) (System API)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @woodenarow-->
+<!--Designer: @woodenarow; @xuelei3-->
+<!--Tester: @chenwan188; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 The **DataShareExtensionAbility** module provides data share services based on the ExtensionAbility.
 
@@ -21,7 +27,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Provider
 
-| Name| Type| Readable| Writable| Description| 
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | Yes| No|Context of the DataShare ExtensionAbility.|
 
@@ -96,7 +102,7 @@ Inserts data into the database. This API can be overridden as required.
 | ----- | ------ | ------ | ------ |
 | uri |string | Yes | URI of the data to insert.|
 | valueBucket |[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes| Data to insert.|
-| callback |AsyncCallback&lt;number&gt; | Yes| Callback used to return the index of the data inserted.|
+| callback |AsyncCallback&lt;number&gt; | Yes| Callback used to return the index of the inserted data record.|
 
 **Example**
 
@@ -137,7 +143,7 @@ Updates data in the database. This API can be overridden as required.
 | uri | string | Yes | URI of the data to update.|
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes | Filter criteria for updating data.|
 | valueBucket | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | Yes| New data.|
-| callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the number of updated data records.|
+| callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the number of data records updated.|
 
 **Example**
 
@@ -224,7 +230,7 @@ Deletes data from the database. This API can be overridden as required.
 | ---------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
 | uri        | string                                                       | Yes  | URI of the data to delete.          |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Filter criteria for deleting data.                    |
-| callback   | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the number of data records deleted.|
+| callback   | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the number of deleted data records.|
 
 **Example**
 
@@ -316,7 +322,7 @@ let rdbStore: relationalStore.RdbStore;
 
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchInsert(uri: string, valueBuckets: Array<ValuesBucket>, callback: Function) {
-    if (valueBuckets === null || valueBuckets.length === undefined) {
+    if (valueBuckets === null || valueBuckets.length <= 0) {
       console.error('invalid valueBuckets');
       return;
     }

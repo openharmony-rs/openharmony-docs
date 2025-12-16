@@ -1,5 +1,12 @@
 # @ohos.application.uriPermissionManager(URI权限管理)(系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 URI权限管理模块。用于应用A授权/撤销授权URI给应用B。
 
 > **说明：**
@@ -24,7 +31,8 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 > **说明：**
 >
-> 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -92,7 +100,8 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 
 > **说明：**
 >
-> 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -165,6 +174,7 @@ grantUriPermission(uri: string, flag: wantConstant.Flags, targetBundleName: stri
 > 
 >- 当应用拥有ohos.permission.PROXY_AUTHORIZATION_URI权限时, 可以授权不属于自身但具有访问权限的URI。如果不具备该权限，则仅支持授权属于自身的URI。
 >- 该接口支持给分身应用授权，需要指定目标应用的应用包名和分身索引。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -258,7 +268,8 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
 > **说明：**
 > 
-> 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -310,7 +321,8 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
 > **说明：**
 > 
-> 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -368,6 +380,7 @@ revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number
 > 
 >- 允许应用撤销自身获得的其他应用URI权限，或授权给其他应用的URI权限。
 >- 该接口支持撤销授权给分身应用的URI权限，需要指定目标应用的应用包名和分身索引。
+>- 因URI处理涉及编解码，传入的URI需要使用[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)接口获取。对于应用自行拼接的URI，系统无法保证其功能。
 
 **系统接口**：此接口为系统接口。
 
@@ -431,7 +444,7 @@ revokeUriPermission(uri: string, targetBundleName: string, appCloneIndex: number
 
       // revoke uri permission of clone application
       try {
-        let appCloneIndex: number = 0;
+        let appCloneIndex: number = 1;
         uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
           .then(() => {
             console.info('revokeUriPermission succeeded.');
@@ -451,11 +464,11 @@ grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTokenId: nu
 
 通过UDMF数据唯一标识key，将当前应用的文件URI访问权限授权给目标应用，权限将在目标应用退出后回收。使用Promise异步回调。
 
-当前仅支持phone、tablet、2in1设备。
-
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone、2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -525,13 +538,13 @@ grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, callerTok
 
 通过UDMF数据唯一标识key，将指定应用的文件URI访问权限授权给目标应用，权限将在目标应用退出后回收。使用Promise异步回调。
 
-当前仅支持phone、tablet、2in1设备。
-
 **系统接口**：此接口为系统接口。
 
 **需要权限：** ohos.permission.GRANT_URI_PERMISSION_AS_CALLER，仅系统应用可用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异**：该接口仅在Phone、2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 

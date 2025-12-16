@@ -1,4 +1,10 @@
 # Class (WebMessageExt)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 [WebMessagePort](./arkts-apis-webview-WebMessagePort.md)接口接收、发送的数据对象。
 
@@ -40,7 +46,7 @@ getString(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -62,7 +68,7 @@ getNumber(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -84,7 +90,7 @@ getBoolean(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -106,7 +112,7 @@ getArrayBuffer(): ArrayBuffer
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -128,7 +134,7 @@ getArray(): Array\<string | number | boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -150,7 +156,7 @@ getError(): Error
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -171,6 +177,8 @@ setType(type: WebMessageType): void
 | type  | [WebMessageType](./arkts-apis-webview-e.md#webmessagetype10) | 是   | [webMessagePort](./arkts-apis-webview-WebMessagePort.md)接口所支持的数据类型。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -193,6 +201,8 @@ setString(message: string): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
@@ -213,6 +223,8 @@ setNumber(message: number): void
 | message  | number | 是   | 数值类型数据。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -235,6 +247,8 @@ setBoolean(message: boolean): void
 
 **错误码：**
 
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
@@ -256,7 +270,7 @@ setArrayBuffer(message: ArrayBuffer): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -279,7 +293,7 @@ setArray(message: Array\<string | number | boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -302,7 +316,7 @@ setError(message: Error): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |

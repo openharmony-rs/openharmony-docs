@@ -1,5 +1,11 @@
 # Using startAbilityByType to Start a Navigation Application
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: AGC-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
 
 This topic describes how to open the vertical domain panel of navigation applications.
 
@@ -19,11 +25,11 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
     | originName           | string                 | No  | Name of the source.                                            |
     | originLatitude       | number                 | No  | Latitude of the source.                                            |
     | originLongitude      | number                 | No  | Longitude of the source.                                            |
-    | originPoiIds         | Record<number, string> | No  | List of POI IDs of the source. Currently, only POI IDs of Petal Maps and AutoNavi Map can be passed.|
+    | originPoiIds         | Record<number, string> | No  | List of POI IDs of the source. Currently, only POI IDs of Petal Maps, AutoNavi Maps, and Baidu Maps can be passed.|
     | destinationName      | string                 | No  | Name of the destination.                                            |
     | destinationLatitude  | number                 | Yes  | Latitude of the destination.                                            |
     | destinationLongitude | number                 | Yes  | Longitude of the destination.                                            |
-    | destinationPoiIds    | Record<number, string> | No  | List of POI IDs of the destination. Currently, only POI IDs of Petal Maps and AutoNavi Map can be passed.|
+    | destinationPoiIds    | Record<number, string> | No  | List of POI IDs of the destination. Currently, only POI IDs of Petal Maps, AutoNavi Maps, and Baidu Maps can be passed.|
     | vehicleType          | number                 | No  | Transportation mode. The options are as follows: 0: driving; 1: walking; 2: cycling; 3: public transportation.|
 
 - Navigation scenarios
@@ -34,7 +40,7 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
     | destinationName      | string                 | No  | Name of the destination.         |
     | destinationLatitude  | number                 | Yes  | Latitude of the destination.         |
     | destinationLongitude | number                 | Yes  | Longitude of the destination.         |
-    | destinationPoiIds    | Record<number, string> | No  | List of POI IDs of the destination. Currently, only POI IDs of Petal Maps and AutoNavi Map can be passed.|
+    | destinationPoiIds    | Record<number, string> | No  | List of POI IDs of the destination. Currently, only POI IDs of Petal Maps, AutoNavi Maps, and Baidu Maps can be passed.|
 
 - Place search scenarios
 
@@ -57,60 +63,62 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
 
     ```ts
 	@Entry
-	@Component
-	struct Index {
-	@State hideAbility: string = 'hideAbility'
+    @Component
+    struct Index {
+      @State hideAbility: string = 'hideAbility'
 
-		build() {
-			Row() {
-				Column() {
-					Text(this.hideAbility)
-						.fontSize(30)
-						.fontWeight(FontWeight.Bold)
-						.onClick(() => {
-							let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-							let wantParam: Record<string, Object> = {
-								'sceneType': 1,
-								'destinationLatitude': 32.060844,
-								'destinationLongitude': 118.78315,
-								'destinationName': 'No.xx, xx Road, xx City',
-								'destinationPoiIds': {
-									1:'1111', // Key 1 indicates Petal Maps, and the value must be a POI in Petal Maps.
-									2:'2222' // Key 2 indicates AutoNavi Map, and the value must be a POI in AutoNavi Map.
-								} as Record<number, string>,
-								'originName': 'xx Park in xx City',
-								'originLatitude': 31.060844,
-								'originLongitude': 120.78315,
-								'originPoiIds': {
-									1: '3333',  // Key 1 indicates Petal Maps, and the value must be a POI in Petal Maps.
-									2: '4444'   // Key 2 indicates AutoNavi Map, and the value must be a POI in AutoNavi Map.
-								} as Record<number, string>,
-								'vehicleType': 0
-							};
-							let abilityStartCallback: common.AbilityStartCallback = {
-								onError: (code: number, name: string, message: string) => {
-									console.log(`onError code ${code} name: ${name} message: ${message}`);
-								},
-								onResult: (result) => {
-									console.log(`onResult result: ${JSON.stringify(result)}`);
-								}
-							}
+      build() {
+        Row() {
+          Column() {
+            Text(this.hideAbility)
+              .fontSize(30)
+              .fontWeight(FontWeight.Bold)
+              .onClick(() => {
+                let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+                let wantParam: Record<string, Object> = {
+                  'sceneType': 1,
+                  'destinationLatitude': 32.060844,
+                  'destinationLongitude': 118.78315,
+                  'destinationName': 'No.xx, xx Road, xx City',
+                  'destinationPoiIds': {
+                    1: '1001', // Key 1 indicates Petal Maps, and the value must be a POI in Petal Maps.
+                    2: '2002', // Key 2 indicates AutoNavi Map, and the value must be a POI in AutoNavi Maps.
+                    3: '3003' // Key 3 indicates Baidu Maps, and the value must be a POI in Baidu Maps.
+                  } as Record<number, string>,
+                  'originName': 'xx Park in xx City',
+                  'originLatitude': 31.060844,
+                  'originLongitude': 120.78315,
+                  'originPoiIds': {
+                    1: '1101', // Key 1 indicates Petal Maps, and the value must be a POI in Petal Maps.
+                    2: '2202', // Key 2 indicates AutoNavi Map, and the value must be a POI in AutoNavi Maps.
+                    3: '3303' // Key 3 indicates Baidu Maps, and the value must be a POI in Baidu Maps.
+                  } as Record<number, string>,
+                  'vehicleType': 0
+                };
+                let abilityStartCallback: common.AbilityStartCallback = {
+                  onError: (code: number, name: string, message: string) => {
+                    console.error(`onError code ${code} name: ${name} message: ${message}`);
+                  },
+                  onResult: (result) => {
+                    console.info(`onResult result: ${JSON.stringify(result)}`);
+                  }
+                }
 
-							context.startAbilityByType("navigation", wantParam, abilityStartCallback,
-								(err) => {
-									if (err) {
-										console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
-									} else {
-										console.log(`success`);
-									}
-								});
-						});
-				}
-				.width('100%')
-			}
-			.height('100%')
-		}
-	}
+                context.startAbilityByType("navigation", wantParam, abilityStartCallback,
+                  (err) => {
+                    if (err) {
+                      console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
+                    } else {
+                      console.info(`success`);
+                    }
+                  });
+              });
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
     ```
 
 **Effect**
@@ -123,8 +131,8 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
     1. Set the **linkFeature** field to declare the features supported by the application so that the system can match the application against all the installed applications on the device. The options are as follows:
         | Value          | Description                        |
         | -------------- | ---------------------------- |
-        | Navigation     | The application supports navigation.		|
-        | RoutePlan      | The application supports route planning.	|
+        | Navigation     | The application supports navigation.       |
+        | RoutePlan      | The application supports route planning.    |
         | PlaceSearch    | The application supports place search.    |
     2. Set **scheme**, **host**, **port**, and **path** or **pathStartWith** to match the URIs in Want to distinguish different features.
     ```json
@@ -177,11 +185,11 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
         | originName           | string | No  | Name of the source.                                            |
         | originLatitude       | number | No  | Latitude of the source.                                            |
         | originLongitude      | number | No  | Longitude of the source.                                            |
-        | originPoiId          | string | No  | POI ID of the source. Currently, this parameter can be obtained only from Petal Maps and AutoNavi Map.     |
+        | originPoiId          | string | No  | POI ID of the source. Currently, this parameter can be obtained only from Petal Maps, AutoNavi Maps, and Baidu Maps.     |
         | destinationName      | string | No  | Name of the destination.                                            |
         | destinationLatitude  | number | Yes  | Latitude of the destination.                                            |
         | destinationLongitude | number | Yes  | Longitude of the destination.                                            |
-        | destinationPoiId     | string | No  | POI ID of the destination. Currently, this parameter can be obtained only from Petal Maps and AutoNavi Map.     |
+        | destinationPoiId     | string | No  | POI ID of the destination. Currently, this parameter can be obtained only from Petal Maps, AutoNavi Maps, and Baidu Maps.     |
         | vehicleType          | number | No  | Transportation mode. The options are as follows: 0: driving; 1: walking; 2: cycling; 3: public transportation.|
     
     - Navigation scenarios
@@ -191,7 +199,7 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
         | destinationName      | string | No  | Name of the destination.  |
         | destinationLatitude  | number | Yes  | Latitude of the destination.  |
         | destinationLongitude | number | Yes  | Longitude of the destination.  |
-        | destinationPoiId     | string | No  | POI ID of the destination. Currently, this parameter can be obtained only from Petal Maps and AutoNavi Map.|
+        | destinationPoiId     | string | No  | POI ID of the destination. Currently, this parameter can be obtained only from Petal Maps, AutoNavi Maps, and Baidu Maps.|
 
     - Place search scenarios
     
@@ -199,7 +207,7 @@ If the **type** field in **startAbilityByType** is set to **navigation**, three 
         | --------------- | ------ | ---- | -------- |
         | destinationName | string | Yes  | Name of the destination.|
 
-The application can develop different style pages based on the features defined in [linkFeature](../quick-start/module-configuration-file.md#skills), such as route planning, navigation, and place search, as well as the received URI and parameters.
+    The application can develop different style pages based on the features defined in [linkFeature](../quick-start/module-configuration-file.md#skills), such as route planning, navigation, and place search, as well as the received URI and parameters.
 
 **Sample Code**
 
@@ -208,7 +216,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 
-const TAG = 'EntryAbility'
+const TAG = 'EntryAbility';
 
 export default class EntryAbility extends UIAbility {
     windowStage: window.WindowStage | null = null;

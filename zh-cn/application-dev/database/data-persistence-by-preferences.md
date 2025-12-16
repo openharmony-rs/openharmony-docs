@@ -1,4 +1,10 @@
 # 通过用户首选项实现数据持久化 (ArkTS)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @ding_dong_dong-->
+<!--Designer: @ding_dong_dong-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 
 ## 场景介绍
@@ -23,7 +29,7 @@
 XML存储指的是数据会以XML的形式存储到文件中，该模式的优点是通用性强，支持跨平台。当选择该模式时，首选项对数据的操作主要发生在内存中，开发者可以在需要的时候再调用[flush](../reference/apis-arkdata/js-apis-data-preferences.md#flush)接口进行数据持久化。针对单进程、小数据量场景，推荐使用该存储模式。
 
 ### GSKV存储
-GSKV是从API version 18起提供的一种存储模式，该模式的优点是支持多进程并发读写。当选择该模式时，首选项对数据的操作会实时落盘。针对多进程并发场景，推荐使用该存储模式。
+GSKV是从API version 18起提供的一种存储模式，数据以二进制的形式存储在文件中，该模式的优点是支持多进程并发读写。当选择该模式时，首选项对数据的操作会实时落盘。针对多进程并发场景，推荐使用该存储模式。
 
 ## 约束限制
 
@@ -87,18 +93,29 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
 
    若接口返回false，则说明当前平台不支持GSKV模式，请使用XML模式进行数据存储。
 
-   ```ts
-    let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
-    console.info("Is gskv supported on this platform: " + isGskvSupported);
+   <!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)--> 
+   
+   ``` TypeScript
+   let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
+   Logger.info('Is gskv supported on this platform: ' + isGskvSupported);
    ```
 
 3. 获取Preferences实例。
 
    针对默认的XML存储模式，使用getPreferencesSync()方法获取Preferences实例。
 
-   <!--Del-->Stage模型示例：<!--DelEnd-->
+   context的定义如下：
+   <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
+   const context = EntryAbility.getContext();
+   ```
 
-   ```ts
+   针对默认的XML存储模式，使用getPreferencesSync()方法获取Preferences实例。
+
+   <!--Del-->Stage模型示例：<!--DelEnd-->
+   <!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { window } from '@kit.ArkUI';
@@ -108,7 +125,7 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
    class EntryAbility extends UIAbility {
      onWindowStageCreate(windowStage: window.WindowStage) {
        let options: preferences.Options = { name: 'myStore' };
-       dataPreferences = preferences.getPreferencesSync(this.context, options);
+       dataPreferences = preferences.getPreferencesSync(context, options);
      }
    }
    ```
@@ -128,10 +145,11 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
 
    针对GSKV存储模式，使用getPreferencesSync()方法获取Preferences实例。
 
-    若希望使用GSKV存储模式且当前平台支持该模式，可以通过以下方式获取GSKV存储模式的Preferences实例。需要注意的是，当选择某一存储模式后，不允许再对存储模式进行切换。
+   若希望使用GSKV存储模式且当前平台支持该模式，可以通过以下方式获取GSKV存储模式的Preferences实例。需要注意的是，当选择某一存储模式后，不允许再对存储模式进行切换。
    <!--Del-->Stage模型示例：<!--DelEnd-->
 
-   ```ts
+   <!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { window } from '@kit.ArkUI';
@@ -140,8 +158,8 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
 
    class EntryAbility extends UIAbility {
      onWindowStageCreate(windowStage: window.WindowStage) {
-       let options: preferences.Options = { name: 'myStore' , storageType: preferences.StorageType.GSKV};
-       dataPreferences = preferences.getPreferencesSync(this.context, options);
+       let options: preferences.Options = { name: 'myStore', storageType: preferences.StorageType.GSKV };
+       dataPreferences = preferences.getPreferencesSync(context, options);
      }
    }
    ```
@@ -154,7 +172,7 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
    import { BusinessError } from '@kit.BasicServicesKit';
 
    let context = featureAbility.getContext();
-   let options: preferences.Options =  { name: 'myStore' , storageType: preferences.StorageType.GSKV};
+   let options: preferences.Options =  { name: 'myStore', storageType: preferences.StorageType.GSKV };
    let dataPreferences: preferences.Preferences = preferences.getPreferencesSync(context, options);
    ```
    <!--DelEnd-->
@@ -173,17 +191,18 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
    > 当对应的键已经存在时，putSync()方法会覆盖其值。可以使用hasSync()方法检查是否存在对应键值对。
 
    示例代码如下所示：
-
-   ```ts
-   import { util } from '@kit.ArkTS';
+   
+   <!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
    if (dataPreferences.hasSync('startup')) {
-     console.info("The key 'startup' is contained.");
+     Logger.info('The key startup is contained.');
    } else {
-     console.info("The key 'startup' does not contain.");
+     Logger.info('The key startup does not contain.');
      // 此处以此键值对不存在时写入数据为例
      dataPreferences.putSync('startup', 'auto');
-     // 当字符串有特殊字符时，需要将字符串转为Uint8Array类型再存储，长度均不超过16 * 1024 * 1024个字节。
-     let uInt8Array1 = new util.TextEncoder().encodeInto("~！@#￥%……&*（）——+？");
+     // 在XML模式下，当字符串包含非UTF-8格式的字符时，需要将字符串转为Uint8Array类型再存储，长度均不超过16 * 1024 * 1024个字节。
+     let uInt8Array1 = new util.TextEncoder().encodeInto('~！@#￥%……&*（）——+？');
      dataPreferences.putSync('uInt8', uInt8Array1);
    }
    ```
@@ -194,21 +213,25 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
 
    示例代码如下所示：
 
-   ```ts
+   <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
    let val = dataPreferences.getSync('startup', 'default');
-   console.info("The 'startup' value is " + val);
-   // 当获取的值为带有特殊字符的字符串时，需要将获取到的Uint8Array转换为字符串
+   Logger.info('The startup value is ' + val);
    let uInt8Array2 : preferences.ValueType = dataPreferences.getSync('uInt8', new Uint8Array(0));
+   // 将获取到的Uint8Array转换为字符串
    let textDecoder = util.TextDecoder.create('utf-8');
    val = textDecoder.decodeToString(uInt8Array2 as Uint8Array);
-   console.info("The 'uInt8' value is " + val);
+   Logger.info('The uInt8 value is ' + val);
    ```
-
 6. 删除数据。
 
    使用deleteSync()方法删除指定键值对，示例代码如下所示：
 
-   ```ts
+   <!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
    dataPreferences.deleteSync('startup');
    ```
 
@@ -216,13 +239,15 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
 
    应用存入数据到Preferences实例后，可以使用flush()方法实现数据持久化。示例代码如下所示：
 
-   ```ts
+   <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
    dataPreferences.flush((err: BusinessError) => {
      if (err) {
-       console.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
+       Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
        return;
      }
-     console.info('Succeeded in flushing.');
+     Logger.info('Succeeded in flushing.');
    })
    ```
 
@@ -234,25 +259,27 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
 
    示例代码如下所示：
 
-   ```ts
+   <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+
+   ``` TypeScript
    let observer = (key: string) => {
-     console.info('The key' + key + 'changed.');
+     Logger.info('The key ' + key + ' changed.');
    }
    dataPreferences.on('change', observer);
    // 数据产生变更，由'auto'变为'manual'
    dataPreferences.put('startup', 'manual', (err: BusinessError) => {
      if (err) {
-       console.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
+       Logger.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
        return;
      }
-     console.info("Succeeded in putting the value of 'startup'.");
+     Logger.info('Succeeded in putting the value of startup.');
      if (dataPreferences !== null) {
        dataPreferences.flush((err: BusinessError) => {
          if (err) {
-           console.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
+           Logger.error(`Failed to flush. Code:${err.code}, message:${err.message}`);
            return;
          }
-         console.info('Succeeded in flushing.');
+         Logger.info('Succeeded in flushing.');
        })
      }
    })
@@ -261,20 +288,22 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
    针对GSKV存储模式，订阅的Key值发生变更后（无需调用flush），observer被触发回调。
 
    示例代码如下所示：
-    ```ts
-    let observer = (key: string) => {
-      console.info('The key' + key + 'changed.');
-    }
-    dataPreferences.on('change', observer);
-    // 数据产生变更，由'auto'变为'manual'
-    dataPreferences.put('startup', 'manual', (err: BusinessError) => {
-      if (err) {
-        console.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
-        return;
-      }
-      console.info("Succeeded in putting the value of 'startup'.");
-    })
-    ```
+   <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
+   let observer = (key: string) => {
+     Logger.info('The key ' + key + ' changed.');
+   }
+   dataPreferences.on('change', observer);
+   // 数据产生变更，由'auto'变为'manual'
+   dataPreferences.put('startup', 'manual', (err: BusinessError) => {
+     if (err) {
+       Logger.error(`Failed to put the value of 'startup'. Code:${err.code},message:${err.message}`);
+       return;
+     }
+     Logger.info('Succeeded in putting the value of startup.');
+   })
+   ```
 9. 删除指定文件。
 
    使用deletePreferences()方法从内存中移除指定文件对应的Preferences实例及其数据。若该Preference存在对应的持久化文件，则一并删除，包括指定文件及其备份文件、损坏文件。
@@ -287,15 +316,25 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
    >
    > - 在GSKV模式中，该接口不支持与其他接口并发调用（包括多进程），否则会出现不可预期行为。
 
+   context的定义如下：
+   <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
+   const context = EntryAbility.getContext();
+   ```
+
    示例代码如下所示：
 
-   ```ts
-   preferences.deletePreferences(this.context, options, (err: BusinessError) => {
+   <!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
+   let options: preferences.Options = { name: 'myStore' };
+   preferences.deletePreferences(context, options, (err: BusinessError) => {
      if (err) {
-       console.error(`Failed to delete preferences. Code:${err.code}, message:${err.message}`);
-         return;
+       Logger.error(`Failed to delete preferences. Code:${err.code}, message:${err.message}`);
+       return;
      }
-     console.info('Succeeded in deleting preferences.');
+     Logger.info('Succeeded in deleting preferences.');
    })
    ```
 
@@ -303,20 +342,20 @@ GSKV是从API version 18起提供的一种存储模式，该模式的优点是�
 
 针对用户首选项开发，有以下相关实例可供参考：
 
-- [游戏2048（ArkTS）（API9）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
+- [游戏2048（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Game/Game2048)
 
-- [图案密码锁（ArkTS）（API9）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/PatternLock)
+- [图案密码锁（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Solutions/Tools/PatternLock)
 
-- [首选项（ArkTS）（API9）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences)
+- [首选项（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/Preferences)
 
-- [首选项（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/Preferences)
+- [首选项（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/Preferences)
 
-- [用户首选项（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/PreferenceJS)
+- [用户首选项（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/PreferenceJS)
 
-- [备忘录（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/NotePadOpenHarmony)
+- [备忘录（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/NotePadOpenHarmony)
 
-- [应用的首次启动（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/FirstStartDemo)
+- [应用的首次启动（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/FirstStartDemo)
 
-- [应用内字体大小调节（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Data/SetAppFontSize)
+- [应用内字体大小调节（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Data/SetAppFontSize)
 
 <!--RP1--><!--RP1End-->

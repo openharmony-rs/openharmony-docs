@@ -1,6 +1,12 @@
 # @ohos.bundle.defaultAppManager (Default Application Management)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **DefaultAppManager** module provides APIs to query whether the current application is the default application of a specific type.
+The module provides APIs to query whether the current application is the default application of a specific type.
 
 > **NOTE**
 >
@@ -20,15 +26,15 @@ Enumerates the default application types.
 
 | Name  | Value| Description                                  |
 | -------- | -------------------------------------- | -------------------------------------- |
-| BROWSER  | 'Web Browser' | Default browser.                           |
-| IMAGE    | 'Image Gallery' | Default image viewer.                        |
-| AUDIO    | 'Audio Player' | Default audio player.                        |
-| VIDEO    | 'Video Player' | Default video player.                        |
-| PDF      | 'PDF Viewer' | Default PDF reader.                     |
-| WORD     | 'Word Viewer' | Default Word viewer.                    |
-| EXCEL    | 'Excel Viewer' | Default Excel viewer.                   |
-| PPT      | 'PPT Viewer' | Default PowerPoint viewer.                     |
-| EMAIL<sup>12+</sup>    | 'Email' | Default email.                     |
+| BROWSER  | Web Browser | Default browser.                           |
+| IMAGE    | Image Gallery | Default image viewer.                        |
+| AUDIO    | Audio Player | Default audio player.                        |
+| VIDEO    | Video Player | Default video player.                        |
+| PDF      | PDF Viewer | Default PDF reader.                     |
+| WORD     | Word Viewer | Default Word viewer.                    |
+| EXCEL    | Excel Viewer | Default Excel viewer.                   |
+| PPT      | PPT Viewer | Default PowerPoint viewer.                     |
+| EMAIL<sup>12+</sup>    | Email | Default email.                     |
 
 ## defaultAppManager.isDefaultApplication
 
@@ -48,7 +54,7 @@ Checks whether this application is the default application of a system-defined a
 
 | Type                       | Description                |
 | ------------------------- | ------------------ |
-| Promise\<boolean> | Promise used to return the result. If the application is the default application, **true** is returned; otherwise, **false** is returned.|
+| Promise\<boolean> | Promise used to return the result, indicating whether the application is the default application. **true** if the application is the default application, **false** otherwise.|
 
 **Error codes**
 
@@ -86,7 +92,7 @@ Checks whether this application is the default application of a system-defined a
 | Name        | Type                             | Mandatory  | Description                                     |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
 | type  | string                          | Yes   | Type of the target application. It must be set to a value defined by [ApplicationType](#applicationtype) or [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md).                           |
-| callback    | AsyncCallback\<boolean> | Yes   | Callback used to return the result. If the application is the default application, **true** is returned; otherwise, **false** is returned.|
+| callback    | AsyncCallback\<boolean> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is a Boolean value (**true** if the application is the default application, **false** otherwise). If the operation fails, **err** is an error object.|
 
 **Error codes**
 

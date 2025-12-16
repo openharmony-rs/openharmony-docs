@@ -1,5 +1,12 @@
 # @ohos.userIAM.userAuthIcon (嵌入式用户身份认证控件)
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 提供应用界面上展示的人脸、指纹认证图标，具体功能如下：
 
 1. 提供嵌入式的人脸、指纹认证控件图标，可被应用集成。
@@ -9,6 +16,7 @@
 3. 点击控件图标后将以系统弹窗的方式，拉起人脸、指纹认证控件。
 
 > **说明：**
+>
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -46,12 +54,12 @@ UserAuthIcon({
 
 | 名称           | 类型                                                         | 必填 | 说明                                                         |
 | -------------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| authParam      | [AuthParam](js-apis-useriam-userauth.md#authparam10)        | 是   | 用户认证相关参数。                                             |
-| widgetParam    | [WidgetParam](js-apis-useriam-userauth.md#widgetparam10)    | 是   | 用户认证界面配置相关参数。                                      |
+| authParam      | [userAuth.AuthParam](js-apis-useriam-userauth.md#authparam10)        | 是   | 用户认证相关参数。                                             |
+| widgetParam    | [userAuth.WidgetParam](js-apis-useriam-userauth.md#widgetparam10)    | 是   | 用户认证界面配置相关参数。                                      |
 | iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | 否   | 设置icon的高度，宽高比1:1，默认64。                             |
 | iconColor      | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | 否   | 设置icon的颜色，默认值：$r('sys.color.ohos_id_color_activated')。|
 | onIconClick    | ()=>void                                                      | 否   | 用户点击icon回调接口。                                         |
-| onAuthResult   | (result: [UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void| 是   | 用户认证结果信息回调接口。<br/>**需要权限：** ohos.permission.ACCESS_BIOMETRIC  |
+| onAuthResult   | (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void| 是   | 用户认证结果信息回调接口。<br>应用需要申请`ohos.permission.ACCESS_BIOMETRIC`权限，否则应用将仅展示图标，无法正常拉起身份认证控件。  |
 
 ## 事件
 
@@ -99,7 +107,7 @@ struct Index {
 }
 ```
 
-调用onAuthResult可能会抛出错误码，错误码详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+调用onAuthResult可能会抛出错误码，错误码详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 **人脸认证图例：**
 

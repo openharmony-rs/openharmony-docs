@@ -1,4 +1,10 @@
 # ArkData（方舟数据管理）
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @widecode-->
+<!--Designer: @widecode-->
+<!--Tester: @logic42-->
+<!--Adviser: @ge-yafang-->
 
 - [ArkData简介](data-mgmt-overview.md)
 - 标准化数据定义<!--uniform-data-definition-->
@@ -23,6 +29,8 @@
   - [键值型数据库跨设备数据同步 (ArkTS)](data-sync-of-kv-store.md)
   - [关系型数据库跨设备数据同步 (ArkTS)](data-sync-of-rdb-store.md)
   - [分布式数据对象跨设备数据同步 (ArkTS)](data-sync-of-distributed-data-object.md)
+<!--RP1-->
+<!--RP1End-->
 - 数据可靠性与安全性<!--data-reliability-security-->
   - [数据可靠性与安全性概述](data-reliability-security-overview.md)
   - [数据库备份与恢复 (ArkTS)](data-backup-and-restore.md)
@@ -36,13 +44,13 @@
   - [跨应用数据共享概述](data-share-overview.md)
   - 一对多跨应用数据共享<!--one-to-many-data-share-->
     <!--Del-->
-    - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](share-data-by-datashareextensionability.md)
-    - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](share-data-by-silent-access.md)
+    - [通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)](share-data-by-datashareextensionability-sys.md)
+    - [通过数据管理服务实现数据共享静默访问 (ArkTS)(仅对系统应用开放)](share-data-by-silent-access-sys.md)
     <!--DelEnd-->
     - [应用间配置共享 (ArkTS)](share-config.md)
   - 多对多跨应用数据共享<!--many-to-many-data-share-->
     - [通过标准化数据通路实现数据共享 (ArkTS)](unified-data-channels.md)
     - [通过标准化数据通路实现数据共享 (C/C++)](unified-data-channels-c.md)
 - [应用数据向量化 (ArkTS)](aip-data-intelligence-embedding.md)
-- [SQLite调试工具](sqlite-database-debug-tool.md)
+- [SQLite调试工具指导](sqlite-database-debug-tool.md)
 - [ArkData术语](data-terminology.md)

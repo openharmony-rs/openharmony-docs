@@ -1,4 +1,10 @@
 # BundleInfo (系统接口)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 应用包信息，应用可以通过[bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)获取指定包名的应用包信息，其中入参[bundleFlags](js-apis-bundleManager.md#bundleflag)指定所返回的[BundleInfo](js-apis-bundleManager-bundleInfo.md)中所包含的信息。
 
@@ -42,3 +48,6 @@ import { bundleManager } from '@kit.AbilityKit';
 | --------- | -------------- | ---- | ---- | ------------------- |
 | userId | number         | 否   | 是   | 用户ID。默认为当前调用方所在的用户。             |
 | appIndex | number         | 否   | 是   | 应用分身ID。默认为0，表示主应用。    |
+| bundleName<sup>23+</sup> | string         | 否   | 是   | 应用包名。默认值为空字符串。    |
+| moduleName<sup>23+</sup> | string         | 否   | 是   | Ability所属的模块名称。默认值为空字符串。    |
+| abilityName<sup>23+</sup> | string         | 否   | 是   | Ability名称。默认值为空字符串。    |

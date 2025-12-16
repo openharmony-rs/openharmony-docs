@@ -1,10 +1,16 @@
 # Establishing a Data Channel Between the Application and the Frontend Page (C/C++)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 The native **PostWebMessage** is provided to implement communication between the frontend page and the application, which reduces unnecessary switching to the ArkTS environment and allows messages and callbacks to be reported in non-UI threads to avoid UI blocking. Currently, only the string and buffer can be sent.
 
 ## Applicable Application Architecture
 
-If an application is developed using both ArkTS and C++, or the application architecture is close to the applet architecture and has a built-in C++ environment, you are advised to use [ArkWeb_ControllerAPI](../reference/apis-arkweb/_ark_web___controller_a_p_i.md#arkweb_controllerapi), [ArkWeb_WebMessageAPI](../reference/apis-arkweb/_ark_web___web_message_a_p_i.md#arkweb_webmessageapi) and [ArkWeb_WebMessagePortAPI](../reference/apis-arkweb/_ark_web___web_message_port_a_p_i.md#arkweb_webmessageportapi) provided by ArkWeb on the native side to implement the **PostWebMessage** feature.
+If an application is developed using ArkTS and C++ language, or if its architecture is close to that of an applet and has a built-in C++ environment, you are advised to use the [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md), [ArkWeb_WebMessageAPI](../reference/apis-arkweb/capi-web-arkweb-webmessageapi.md) and [ArkWeb_WebMessagePortAPI](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md) provided by ArkWeb on the native side to implement the PostWebMessage feature.
 
   ![arkweb_jsbridge_arch](figures/arkweb_jsbridge_arch.png)
 
@@ -27,25 +33,25 @@ If an application is developed using both ArkTS and C++, or the application arch
   // Define a webTag and pass it to WebviewController when it is created to establish the mapping between controller and webTag.
   webTag: string = 'ArkWeb1';
   controller: webview.WebviewController = new webview.WebviewController(this.webTag);
-  ...
+  // ...
   // Use aboutToAppear() to pass webTag to C++ through the Node-API. The webTag uniquely identifies the C++ ArkWeb component.
   aboutToAppear() {
     console.info("aboutToAppear")
     // Initialize the NDK API of the Web component.
     testNapi.nativeWebInit(this.webTag);
   }
-  ...
+  // ...
   ```
 
-### Obtaining API Struct Using the Native API
+### Obtaining API Structs Using the Native API
 
-To invoke the native APIs in the API structs, obtain the API structs on the ArkWeb native side first. You can pass different types of parameters in the [OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/_web.md#oh_arkweb_getnativeapi()) function to obtain the corresponding function pointer structs. The following APIs are provided: [ArkWeb_ControllerAPI](../reference/apis-arkweb/_ark_web___controller_a_p_i.md#arkweb_controllerapi), [ArkWeb_WebMessageAPI](../reference/apis-arkweb/_ark_web___web_message_a_p_i.md#arkweb_webmessageapi) and [ArkWeb_WebMessagePortAPI](../reference/apis-arkweb/_ark_web___web_message_port_a_p_i.md#arkweb_webmessageportapi).
+To invoke the native APIs, obtain the API structs on the ArkWeb native side first. You can pass different types of parameters in the [OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) function to obtain the corresponding function pointer structs. This topic involves the obtaining of [ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md), [ArkWeb_WebMessageAPI](../reference/apis-arkweb/capi-web-arkweb-webmessageapi.md) and [ArkWeb_WebMessagePortAPI](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md).
 
   ```c++
   static ArkWeb_ControllerAPI *controller = nullptr;
   static ArkWeb_WebMessagePortAPI *webMessagePort = nullptr;
   static ArkWeb_WebMessageAPI *webMessage = nullptr;
-  ...
+  // ...
   controller = reinterpret_cast<ArkWeb_ControllerAPI *>(OH_ArkWeb_GetNativeAPI(ARKWEB_NATIVE_CONTROLLER));
   webMessagePort =
       reinterpret_cast<ArkWeb_WebMessagePortAPI *>(OH_ArkWeb_GetNativeAPI(ARKWEB_NATIVE_WEB_MESSAGE_PORT));
@@ -54,7 +60,7 @@ To invoke the native APIs in the API structs, obtain the API structs on the ArkW
 
 ### Sample Code
 
-Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missing) to check whether the function struct has the corresponding pointer before calling an API to avoid crash caused by mismatch between the SDK and the device ROM. You must use [createWebMessagePorts](../reference/apis-arkweb/_ark_web___controller_a_p_i.md#createwebmessageports), [postWebMessage](../reference/apis-arkweb/_ark_web___controller_a_p_i.md#postwebmessage) and [close](../reference/apis-arkweb/_ark_web___web_message_port_a_p_i.md#close) in the UI thread.
+Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#enums) to check whether the function struct has the corresponding pointer before calling an API to avoid crash caused by mismatch between the SDK and the device ROM. [createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports), [postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage) and [close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close) must run in the UI thread.
 
 * Frontend page code:
 
@@ -75,12 +81,12 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
 
   window.addEventListener('message', function (event) {
       if (event.data == 'init_web_messageport') {
-          const port = event.ports.at(0); // 1. Save the port sent from the application.
+          const port = event.ports[0]; // 1. Save the port sent from the application.
           if (port) {
-              console.log("hwd In html got message");
+              console.info("hwd In html got message");
               h5Port = port;
               port.onmessage = function (event) {
-                  console.log("hwd In html got message");
+                  console.info("hwd In html got message");
                   // 2. Receive the message sent from the application.
                   var result = event.data;
                   var type_s = typeof (result)
@@ -100,7 +106,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
                       default:
                           break;
                   }
-                  console.log("H5 recv type: " + type_s + "\nH5 recv result: " + result)
+                  console.info("H5 recv type: " + type_s + "\nH5 recv result: " + result)
                   document.getElementById("msg").innerHTML = "recv type: " + type_s;
                   document.getElementById("msg2").innerHTML = "recv value: " + result;
               }
@@ -111,7 +117,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       }
   })
   window.onerror = function(message, url, line, column, error) {
-    console.log("JavaScript Error: " + message + " on line " + line + " in " + url);
+    console.info("JavaScript Error: " + message + " on line " + line + " in " + url);
     document.getElementById("h1").innerHTML = "Failed to execute the function."
   };
 
@@ -166,12 +172,12 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
 
     myMethod() {
       // Instance method.
-      console.log(this.myProperty);
+      console.info(this.myProperty);
     }
 
     static myStaticMethod() {
       // Static method.
-      console.log('This is a static method.');
+      console.info('This is a static method.');
     }
   }
   function postObjectToApp() {
@@ -207,21 +213,21 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       testNapi.nativeWebInit(this.webTag);
     }
 
-    aboutToDisAppear() {
-      console.error("aboutToDisAppear")
+    aboutToDisappear() {
+      console.error("aboutToDisappear");
     }
 
     build() {
       Scroll() {
         Column({ space: 10 }) {
           // Display the content received by the HTML5 page.
-          Text ("The message received by the HTML5 page from the application")
+          Text("The message received by the HTML5 page from the application")
           TextArea({text: this.h5Log})
             .id("log_area")
             .width("100%")
             .height(100)
             .border({ width: 1 })
-          Text ("Button on the application")
+          Text("Button on the application")
           Row() {
             Button('createNoControllerTagPort')
               .id("create_no_tag_btn")
@@ -347,7 +353,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
           .border({ width: 1 })
 
           Column({ space: 10 }) {
-            Text ("The Send button on the HTML5 page")
+            Text("The Send button on the HTML5 page")
             Row({ space: 10 }) {
               Button('H5String')
                 .id("h5_send_string_btn")
@@ -432,10 +438,11 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
   }
   ```
 
-* ArkTS APIs exposed on the Node-API side:
+* ArkTS APIs exposed on the Node-API side
 
-  ```javascript
-  // entry/src/main/cpp/types/libentry/index.d.ts
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry5/src/main/cpp/types/libentry5/Index.d.ts) -->
+  
+  ``` TypeScript
   export const nativeWebInit: (webName: string) => void;
   export const createWebMessagePorts: (webName: string) => void;
   export const postMessage: (webName: string) => void;
@@ -449,7 +456,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
   export const postMessageThread: (webName: string) => void;
   ```
 
-* Compilation configuration on Node-API:
+* Compilation configuration on Node-API
 
   ```c++
   # entry/src/main/cpp/CMakeLists.txt
@@ -479,7 +486,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
   target_link_libraries(entry PUBLIC libace_napi.z.so ${hilog-lib} libohweb.so)
   ```
 
-* Node-API layer code:
+* Node-API layer code
 
   ```c++
   // entry/src/main/cpp/hello.cpp
@@ -545,7 +552,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
           OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ArkWeb", "get ArkWeb_WebMessageAPI success");
 
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk NativeWebInit end");
-
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -571,6 +578,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postWebMessage ArkWeb_ErrorCode:%{public}d", code);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
                   "ndk createWebMessagePorts end, web message port size:%{public}d", web_message_port_size);
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -603,8 +611,10 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       webMessage->destroyWebMessage(&message);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage end, web message port size:%{public}d",
                   web_message_port_size);
+      delete[] webTagValue;
       return nullptr;
   }
+
 
   // Send a message in the thread.
   void sendMessage(const char *webTag, const ArkWeb_WebMessagePtr message) {
@@ -652,6 +662,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       for (int i = 0; i < numThreads; ++i) {
           threads[i].detach();
       }
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -685,6 +696,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       webMessagePort->setMessageEventHandler(g_web_message_port_arr[1], webTagValue, WebMessagePortCallback, NULL);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
                   "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+      delete[] webTagValue;
       return nullptr;
   }
   static napi_value postNoneMessage(napi_env env, napi_callback_info info) {
@@ -715,6 +727,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       webMessage->destroyWebMessage(&message);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage end, web message port size:%{public}d",
                   web_message_port_size);
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -746,6 +759,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       webMessage->destroyWebMessage(&message1);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb", "ndk postMessage end, web message port size:%{public}d",
                   web_message_port_size);
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -771,6 +785,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       webMessagePort->setMessageEventHandler(g_web_message_port_arr[1], webTagValue, WebMessagePortCallback, NULL);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
                   "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -797,6 +812,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
                   "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
       controller->refresh(webTagValue);
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -822,6 +838,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
       controller->destroyWebMessagePorts(&g_web_message_port_arr, web_message_port_size);
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
                   "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+      delete[] webTagValue;
       return nullptr;
   }
 
@@ -845,6 +862,7 @@ Use [ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/_web.md#arkweb_member_missi
 
       OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ArkWeb",
                   "ndk SetMessageEventHandler end, web message port size:%{public}d", web_message_port_size);
+      delete[] webTagValue;
       return nullptr;
   }
 

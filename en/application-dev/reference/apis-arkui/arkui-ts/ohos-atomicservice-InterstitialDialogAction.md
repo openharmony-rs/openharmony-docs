@@ -1,5 +1,12 @@
 # InterstitialDialogAction
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @autojuan-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
+
 The **InterstitialDialogAction** component is a dialog box used in atomic services to temporarily display information that requires user attention or actions to be taken while maintaining the current context. Users can trigger corresponding actions by clicking different areas of the dialog box.
 
 > **NOTE**
@@ -68,20 +75,20 @@ Closes the dialog box.
 
 Defines the attributes specific to the dialog box and custom click actions for the user.
 
-| Name| Type| Mandatory| Description|
-| - | - | - | - |
-| uiContext | [UIContext](../js-apis-arkui-UIContext.md#uicontext) | Yes| UI context.|
-| bottomOffsetType | [BottomOffset](#bottomoffset) | No| Bottom offset type of the dialog box.|
-| title | [ResourceStr](ts-types.md#resourcestr) | No| Title of the dialog box.|
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | No| Subtitle of the dialog box.|
-| titleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No| Font color of the dialog box title.|
-| subtitleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No| Font color of the dialog box subtitle.|
-| backgroundImage | [Resource](ts-types.md#resource) | No| Background image of the dialog box.|
-| foregroundImage | [Resource](ts-types.md#resource) | No| Foreground image of the dialog box.|
-| iconStyle | [IconStyle](#iconstyle) | No| Style of the close button icon (light or dark).<br>Default value: **[IconStyle](#iconstyle).Light**|
-| titlePosition | [TitlePosition](#titleposition) | No| Vertical position of the title relative to the subtitle in the dialog box.<br>Default value: **[TitlePosition](#titleposition).Top**|
-| onDialogClick | Callback\<void\> | No| Custom action triggered by clicking anywhere on the dialog box.|
-| onDialogClose | Callback\<void\> | No| Custom action triggered by clicking the close button.|
+| Name| Type| Read-Only| Optional| Description|
+| - | - | - | - | - |
+| uiContext | [UIContext](../arkts-apis-uicontext-uicontext.md) | No| No| UI context.|
+| bottomOffsetType | [BottomOffset](#bottomoffset) | No| Yes| Bottom offset type of the dialog box. Default value: **[BottomOffset](#bottomoffset).OFFSET_FOR_BAR**.|
+| title | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Title of the dialog box. The default value is an empty string.|
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Subtitle of the dialog box. The default value is an empty string.|
+| titleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No| Yes| Font color of the dialog box title. <br>Default value: **$r('sys.color.ohos_id_color_text_primary_contrary')**.|
+| subtitleColor | [ResourceStr](ts-types.md#resourcestr) \| [Color](ts-appendix-enums.md#color) | No| Yes| Font color of the dialog box subtitle. <br>Default value: **$r('sys.color.ohos_id_color_text_secondary_contrary')**.|
+| backgroundImage | [Resource](ts-types.md#resource) | No| Yes| Background image of the dialog box. The default background color is a solid color background with the color value **#EBEEF5**.|
+| foregroundImage | [Resource](ts-types.md#resource) | No| Yes| Foreground image of the dialog box. The default value is empty, meaning no foreground image is displayed.|
+| iconStyle | [IconStyle](#iconstyle) | No| Yes| Style of the close button icon (light or dark).<br>Default value: **[IconStyle](#iconstyle).Light**|
+| titlePosition | [TitlePosition](#titleposition) | No| Yes| Vertical position of the title relative to the subtitle in the dialog box.<br>Default value: **[TitlePosition](#titleposition).Top**|
+| onDialogClick | Callback\<void\> | No| Yes| Custom action triggered by clicking anywhere on the dialog box. The default value is to close the dialog box only.|
+| onDialogClose | Callback\<void\> | No| Yes| Custom action triggered by clicking the close button. The default value is to close the dialog box only.|
 
 ## IconStyle
 
@@ -132,6 +139,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 In this example,
 color values are assigned to the title and subtitle using two different parameter types; the close button is set to dark color; the title is set to above the subtitle; and the distance type is set to the distance used when there is no menu bar.
 
+<!--code_no_check-->
 ```ts
 // ../entryability/EntryAbility
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -207,7 +215,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
+<!--code_no_check-->
 ```ts
 // Index.ets
 import { getDialogUIContext } from '../entryability/EntryAbility';
@@ -235,8 +243,8 @@ struct Index {
               iconStyle: IconStyle.DARK,
               titlePosition: TitlePosition.TOP,
               bottomOffsetType: BottomOffset.OFFSET_FOR_NONE,
-              onDialogClick: () => { console.log('outer dialog click action') },
-              onDialogClose: () => { console.log('outer close action') }
+              onDialogClick: () => { console.info('outer dialog click action') },
+              onDialogClose: () => { console.info('outer close action') }
             });
             interstitialDialogAction.openDialog();
           })
@@ -255,6 +263,7 @@ struct Index {
 
 In this example, color values are assigned to the title and subtitle using two different parameter types; the close button is set to light color; the title is set to below the subtitle; and the distance type is set to the distance used when there is a menu bar.
 
+<!--code_no_check-->
 ```ts
 // ../entryability/EntryAbility
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -333,7 +342,7 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
-
+<!--code_no_check-->
 ```ts
 // Index.ets
 import { getDialogUIContext } from '../entryability/EntryAbility';
@@ -361,8 +370,8 @@ struct Index {
               iconStyle: IconStyle.LIGHT,
               titlePosition: TitlePosition.BOTTOM,
               bottomOffsetType: BottomOffset.OFFSET_FOR_BAR,
-              onDialogClick: () => { console.log('outer dialog click action') },
-              onDialogClose: () => { console.log('outer close action') }
+              onDialogClick: () => { console.info('outer dialog click action') },
+              onDialogClose: () => { console.info('outer close action') }
             });
             interstitialDialogAction.openDialog();
           })

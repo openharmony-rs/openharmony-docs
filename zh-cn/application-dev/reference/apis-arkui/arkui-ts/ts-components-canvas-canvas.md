@@ -1,4 +1,10 @@
 #  Canvas
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供画布组件，用于自定义绘制图形。
 
@@ -16,6 +22,8 @@
 
 Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
+创建Canvas组件时，最大面积不超过10000px*10000px，超过最大面积则无法正常创建。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -26,11 +34,13 @@ Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
 | 参数名  | 类型    | 必填 | 说明   |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | 否   | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](ts-drawingrenderingcontext.md)对象。 |
+| context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | 否   | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](ts-drawingrenderingcontext.md)对象。<br>异常值null按无效值处理。 |
 
 ### Canvas<sup>12+</sup>
 
 Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions)
+
+创建Canvas组件，支持设置CanvasRenderingContext2D对象或DrawingRenderingContext对象，支持设置AI分析选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -40,8 +50,8 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 | 参数名  | 类型  | 必填 | 说明 |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | 是   | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](ts-drawingrenderingcontext.md)对象。 |
-| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions) | 是   | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。 |
+| context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | 是   | CanvasRenderingContext2D: 不支持多个Canvas共用一个CanvasRenderingContext2D对象，具体描述见[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)对象。DrawingRenderingContext: 不支持多个Canvas共用一个DrawingRenderingContext对象，具体描述见[DrawingRenderingContext](ts-drawingrenderingcontext.md)对象。<br>异常值null按无效值处理。 |
+| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | 是   | 给组件设置一个AI分析选项，通过此项可配置分析类型或绑定一个分析控制器。<br>异常值null和undefined按[ImageAIOptions](ts-image-common.md#imageaioptions12)的默认值处理。 |
 
 ## 属性
 
@@ -53,6 +63,10 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 需要搭配[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)中的[StartImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12)和[StopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12)一起使用。
 不能和[overlay](ts-universal-attributes-overlay.md#overlay)属性同时使用，两者同时设置时overlay中CustomBuilder属性将失效。该特性依赖设备能力。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -61,7 +75,7 @@ Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptio
 
 | 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable  | boolean | 是   | 组件支持AI分析，设置为true时，组件可进行AI分析。<br/>默认值：false |
+| enable  | boolean | 是   | 组件支持AI分析，需要组件内容支持主体识别、文字识别或对象查找。<br>设置为true时，组件可进行AI分析，设置为false时，组件不可进行AI分析。<br>异常值null和undefined按默认值处理。<br/>默认值：false |
 
 ## 事件
 
@@ -91,7 +105,7 @@ Canvas组件初始化完成或者发生大小变化时的事件回调，支持[a
 
 ### 示例1（使用CanvasRenderingContext2D中的方法）
 
-该示例实现了如何在Canvas组件使用CanvasRenderingContext2D中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md)中的方法进行绘制。
 
 ```ts
 // xxx.ets
@@ -120,7 +134,7 @@ struct CanvasExample {
 
 ### 示例2（使用DrawingRenderingContext中的方法）
 
-该示例实现了如何在Canvas组件使用DrawingRenderingContext中的方法进行绘制。
+该示例实现了如何在Canvas组件使用[DrawingRenderingContext](./ts-drawingrenderingcontext.md)中的方法进行绘制。
 
 ```ts
 // xxx.ets
@@ -134,7 +148,7 @@ struct CanvasExample {
       Canvas(this.context)
         .width('100%')
         .height('100%')
-        .backgroundColor('#ffff00')
+        .backgroundColor('rgb(213,213,213)')
         .onReady(() => {
           this.context.canvas.drawCircle(200, 200, 100)
           this.context.invalidate()
@@ -149,7 +163,7 @@ struct CanvasExample {
 
 ### 示例3（使用attributeModifier动态设置Canvas组件的属性及方法）
 
-该示例展示了如何使用attributeModifier动态设置Canvas组件的enableAnalyzer属性和onReady方法。
+该示例展示了如何使用[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置Canvas组件的[enableAnalyzer](#enableanalyzer12)属性和[onReady](#onready)方法。
 
 ```ts
 // xxx.ets
@@ -194,10 +208,10 @@ struct attributeDemo {
           .onClick(() => {
             this.context.startImageAnalyzer(this.config)
               .then(() => {
-                console.log("analysis complete")
+                console.info("analysis complete")
               })
               .catch((error: BusinessError) => {
-                console.log("error code: " + error.code)
+                console.info("error code: " + error.code)
               })
           })
         Button('stop')

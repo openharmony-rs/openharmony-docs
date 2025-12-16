@@ -8,7 +8,7 @@ By default, the OpenHarmony provides the thermal log feature. Thermal logs recor
 
 ### Constraints
 
-The configuration path for battery level customization is subject to the [configuration policy](https://gitee.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
+The configuration path for battery level customization is subject to the [configuration policy](https://gitcode.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
 
 ## How to Develop
 
@@ -24,11 +24,11 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate thermal log customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate thermal log customization.
 
-1. Create the `thermal` folder in the product directory [/vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568).
+1. Create the `thermal` folder in the product directory [/vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568).
 
-2. Create a target folder by referring to the [default thermal log configuration folder](https://gitee.com/openharmony/drivers_peripheral/tree/master/thermal/interfaces/hdi_service/profile), and install it in `//vendor/hihope/rk3568/thermal`. The content is as follows:
+2. Create a target folder by referring to the [default thermal log configuration folder](https://gitcode.com/openharmony/drivers_peripheral/tree/master/thermal/interfaces/hdi_service/profile), and install it in `//vendor/hihope/rk3568/thermal`. The content is as follows:
      
     ```text
     profile
@@ -36,7 +36,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ├── thermal_hdi_config.xml
     ```
 
-3. Create a target folder by referring to the [default thermal log parameter configuration folder](https://gitee.com/openharmony/drivers_peripheral/tree/master/thermal/etc) and install it in `//vendor/hihope/rk3568/thermal`. The file format is as follows:
+3. Create a target folder by referring to the [default thermal log parameter configuration folder](https://gitcode.com/openharmony/drivers_peripheral/tree/master/thermal/etc) and install it in `//vendor/hihope/rk3568/thermal`. The file format is as follows:
     ```text
     etc
     ├── BUILD.gn
@@ -44,7 +44,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ├── thermal.para.dac
     ```
 
-4. Write the custom `thermal_hdi_config.xml` file by referring to the [thermal_hdi_config.xml](https://gitee.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/thermal_hdi_config.xml) file in the default thermal log configuration folder. The following tables describe the related configuration items.
+4. Write the custom `thermal_hdi_config.xml` file by referring to the [thermal_hdi_config.xml](https://gitcode.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/thermal_hdi_config.xml) file in the default thermal log configuration folder. The following tables describe the related configuration items.
 
     **Table 1** Description of the tracing configuration
 
@@ -75,7 +75,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     </tracing>
     ```
 
-5. Write the custom `thermal.para` and `thermal.para.dac` files by referring to the [thermal.para](https://gitee.com/openharmony/drivers_peripheral/blob/master/thermal/etc/thermal.para) and [thermal.para.dac](https://gitee.com/openharmony/drivers_peripheral/blob/master/thermal/etc/thermal.para.dac) files in the default hot log parameter configuration folder. The custom configuration is as follows:
+5. Write the custom `thermal.para` and `thermal.para.dac` files by referring to the [thermal.para](https://gitcode.com/openharmony/drivers_peripheral/blob/master/thermal/etc/thermal.para) and [thermal.para.dac](https://gitcode.com/openharmony/drivers_peripheral/blob/master/thermal/etc/thermal.para.dac) files in the default hot log parameter configuration folder. The custom configuration is as follows:
 
     thermal.para:
     ```text
@@ -89,7 +89,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     persist.thermal.log.="power_host:power_host:600" # Configure access permissions.
     ```
 
-6. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/BUILD.gn) file in the default thermal log configuration folder to pack the `thermal_hdi_config.xml` file to the `//vendor/etc/thermal_config/hdf` directory. The configuration is as follows:
+6. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/drivers_peripheral/blob/master/thermal/interfaces/hdi_service/profile/BUILD.gn) file in the default thermal log configuration folder to pack the `thermal_hdi_config.xml` file to the `//vendor/etc/thermal_config/hdf` directory. The configuration is as follows:
 
     ```shell
     import("//build/ohos.gni")
@@ -102,7 +102,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-7. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/drivers_peripheral/blob/master/thermal/etc/BUILD.gn) file in the default thermal log parameter configuration folder to pack the `thermal.para` and `thermal.para.dac` files to the `//vendor/etc/param/thermal.para` directory. The configuration is as follows:
+7. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/drivers_peripheral/blob/master/thermal/etc/BUILD.gn) file in the default thermal log parameter configuration folder to pack the `thermal.para` and `thermal.para.dac` files to the `//vendor/etc/param/thermal.para` directory. The configuration is as follows:
 
     ```shell
     import("//build/ohos.gni")
@@ -131,7 +131,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     }
     ```
 
-8. Add the build target to `module_list` in [ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
+8. Add the build target to `module_list` in [ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
 
     ```json
     {
@@ -195,6 +195,6 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ```
 
 ## Reference
-During development, you can refer to the [default thermal log configuration](https://gitee.com/openharmony/drivers_peripheral/tree/master/thermal/interfaces/hdi_service/profile/) and [default thermal log parameter configuration](https://gitee.com/openharmony/drivers_peripheral/tree/master/thermal/etc).
+During development, you can refer to the [default thermal log configuration](https://gitcode.com/openharmony/drivers_peripheral/tree/master/thermal/interfaces/hdi_service/profile/) and [default thermal log parameter configuration](https://gitcode.com/openharmony/drivers_peripheral/tree/master/thermal/etc).
 
 Packing path: `/vendor/etc/thermal_config/hdf`

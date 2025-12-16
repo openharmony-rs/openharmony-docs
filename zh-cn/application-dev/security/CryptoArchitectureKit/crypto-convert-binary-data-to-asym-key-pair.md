@@ -1,5 +1,12 @@
 # 指定二进制数据转换非对称密钥对(ArkTS)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 以RSA、ECC、SM2为例，根据指定的非对称密钥二进制数据，生成非对称密钥对（KeyPair），即将外部或存储的二进制数据转换为算法库的密钥对象，该对象可用于后续的加解密等操作。
 
 > **说明：**
@@ -67,7 +74,7 @@
 
 1. 获取ECC公钥或私钥二进制数据，封装成DataBlob对象。
 
-   公钥和私钥可只传入其中一个，此处示例以传入公钥、私钥为例。
+   公钥和私钥可以只传入其中一个，此处示例以传入公钥和私钥为例。
 
 2. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
 
@@ -156,9 +163,9 @@
 
 查看[非对称密钥生成和转换规格：SM2](crypto-asym-key-generation-conversion-spec.md#sm2)。
 
-1. 获获取SM2公钥或私钥的二进制数据，封装成DataBlob对象。
+1. 获取SM2公钥或私钥的二进制数据，封装成DataBlob对象。
 
-   公钥和私钥可只传入其中一个，示例以传入公钥、私钥为例。
+   公钥和私钥可以只传入其中一个，示例以传入公钥和私钥为例。
 
 2. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)，指定字符串参数'SM2_256'，创建密钥算法为SM2、密钥长度为256位的非对称密钥生成器（AsyKeyGenerator）。
 

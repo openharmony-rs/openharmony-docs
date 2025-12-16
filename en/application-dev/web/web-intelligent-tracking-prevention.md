@@ -1,151 +1,162 @@
 # Intelligent Tracking Prevention
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 
-The **Web** component supports the intelligent tracking prevention. That is, when a tracking website is inserted into another web page as a third party, the network request sent by the website cannot carry cookies.
+The **Web** component supports the intelligent tracking prevention feature. That is, when a tracking website is inserted into another web page as a third party, the network request sent by the website cannot carry cookies.
 
-- Invoke the [enableIntelligentTrackingPrevention](../reference/apis-arkweb/js-apis-webview.md#enableintelligenttrackingprevention12) API to enable or disable the intelligent tracking prevention of a **Web** component. By default, this prevention is disabled.
-
-  ```ts
-  // xxx.ets
+- Call the [enableIntelligentTrackingPrevention](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enableintelligenttrackingprevention12) API to enable or disable the intelligent tracking prevention feature of the **Web** component. By default, this functionality is disabled.
+  <!-- @[enable_or_disable_web_component_anti_tracking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/EnableIntTrackPrevent.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('enableIntelligentTrackingPrevention')
           .onClick(() => {
             try {
               this.controller.enableIntelligentTrackingPrevention(true);
-              console.log("enableIntelligentTrackingPrevention: true");
+              console.info('enableIntelligentTrackingPrevention: true');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: 'www.example.com', controller: this.controller })
+        Web({ src: 'www.example.com', controller: this.controller });
       }
     }
   }
   ```
 
-- Invoke the [isIntelligentTrackingPreventionEnabled](../reference/apis-arkweb/js-apis-webview.md#isintelligenttrackingpreventionenabled12) API to check whether the intelligent tracking prevention is enabled for the **Web **component.
-
-  ```ts
-  // xxx.ets
+- Call the [isIntelligentTrackingPreventionEnabled](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#isintelligenttrackingpreventionenabled12) API to check whether the intelligent tracking prevention feature is enabled for the **Web** component.
+  <!-- @[check_if_web_component_anti_tracking_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/IsIntTrackPreventEnabled.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('isIntelligentTrackingPreventionEnabled')
           .onClick(() => {
             try {
               let result = this.controller.isIntelligentTrackingPreventionEnabled();
-              console.log("result: " + result);
+              console.info('result: ' + result);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: 'www.example.com', controller: this.controller })
+        Web({ src: 'www.example.com', controller: this.controller });
       }
     }
   }
   ```
 
-- You can call the [onIntelligentTrackingPreventionResult](../reference/apis-arkweb/ts-basic-components-web.md#onintelligenttrackingpreventionresult12) API to asynchronously obtain the domain names of intercepted tracking websites and accessed websites.
-
-  ```ts
-  // xxx.ets
+- Call the [onIntelligentTrackingPreventionResult](../reference/apis-arkweb/arkts-basic-components-web-events.md#onintelligenttrackingpreventionresult12) API to return the blocked tracking domain name and the domain name of the triggered website to the application.
+  <!-- @[retrieve_blocked_and_visited_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/OnIntTrackPreventResult.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
-        // The onIntelligentTrackingPreventionResult callback is triggered only when the intelligent tracking prenvention is enabled.
+        // The onIntelligentTrackingPreventionResult callback is triggered only when the intelligent tracking prevention feature is enabled.
         Button('enableIntelligentTrackingPrevention')
           .onClick(() => {
             try {
               this.controller.enableIntelligentTrackingPrevention(true);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
             }
           })
         Web({ src: 'www.example.com', controller: this.controller })
           .onIntelligentTrackingPreventionResult((details) => {
-            console.log("onIntelligentTrackingPreventionResult: [websiteHost]= " + details.host +
-              ", [trackerHost]=" + details.trackerHost);
+            console.info('onIntelligentTrackingPreventionResult: [websiteHost]= ' + details.host +
+              ', [trackerHost]=' + details.trackerHost);
           })
       }
     }
   }
   ```
 
-In addition, the intelligent tracking prevention functionality provides APIs for setting the list of domain names that need to bypass the intelligent tracking prevention. The domain name list set by these APIs applies to the entire application instead of a single **Web** component.
+The intelligent tracking prevention feature provides a group of APIs for setting the list of domain names that bypass this feature. The domain name list set by these APIs applies to the application rather than a specific **Web** component.
 
-- Invoke the [addIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/js-apis-webview.md#addintelligenttrackingpreventionbypassinglist12) API to set the list of domain names that need to bypass the intelligent tracking prevention.
-
-  ```ts
-  // xxx.ets
+- Call the [addIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#addintelligenttrackingpreventionbypassinglist12) API to set the bypass domain name list.
+  <!-- @[set_domains_to_bypass_intelligent_tracking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/AddIntTrackPreventByPassList.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('addIntelligentTrackingPreventionBypassingList')
           .onClick(() => {
             try {
-              let hostList = ["www.test1.com", "www.test2.com", "www.test3.com"];
+              let hostList = ['www.test1.com', 'www.test2.com', 'www.test3.com'];
               webview.WebviewController.addIntelligentTrackingPreventionBypassingList(hostList);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: 'www.example.com', controller: this.controller })
+        Web({ src: 'www.example.com', controller: this.controller });
       }
     }
   }
   ```
 
-- Invoke the [removeIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/js-apis-webview.md#removeintelligenttrackingpreventionbypassinglist12) API to remove the partial domain name list set using the [addIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/js-apis-webview.md#addintelligenttrackingpreventionbypassinglist12) API.
-
-  ```ts
-  // xxx.ets
+- Call the [removeIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#removeintelligenttrackingpreventionbypassinglist12) API to delete some domain names in the bypass list.
+  <!-- @[partial_domain_name_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/RemoveIntTrackPreventByPassList.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('removeIntelligentTrackingPreventionBypassingList')
           .onClick(() => {
             try {
-              let hostList = [ "www.test1.com", "www.test2.com" ];
+              let hostList = [ 'www.test1.com', 'www.test2.com' ];
               webview.WebviewController.removeIntelligentTrackingPreventionBypassingList(hostList);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Web({ src: 'www.example.com', controller: this.controller })
@@ -154,17 +165,17 @@ In addition, the intelligent tracking prevention functionality provides APIs for
   }
   ```
 
-- Invoke the [clearIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/js-apis-webview.md#clearintelligenttrackingpreventionbypassinglist12) API to clear all domain names set using the [addIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/js-apis-webview.md#addintelligenttrackingpreventionbypassinglist12) API.
-
-  ```ts
-  // xxx.ets
+- Call the [clearIntelligentTrackingPreventionBypassingList](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#clearintelligenttrackingpreventionbypassinglist12) API to clear the bypass domain name list.
+  <!-- @[clear_all_intelligent_tracking_prevention_bypasses](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebCompSecPriv/entry/src/main/ets/pages/ClearIntTrackPreventByPassList.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Column() {
         Button('clearIntelligentTrackingPreventionBypassingList')

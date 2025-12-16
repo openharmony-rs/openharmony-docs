@@ -1,6 +1,13 @@
 # @ohos.net.connection (网络连接管理)（系统接口）
 
-网络连接管理提供管理网络一些基础能力，包括获取默认激活的数据网络、获取所有激活数据网络列表、开启关闭飞行模式、获取网络能力信息等功能。
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
+网络连接管理提供一些网络基础能力，包括获取默认激活的数据网络、获取所有激活数据网络列表、开启关闭飞行模式、获取网络能力信息等功能。
 
 > **说明：**
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -135,7 +142,7 @@ connection.setGlobalHttpProxy(httpProxy, (err: BusinessError) => {
         console.error(`setGlobalHttpProxy failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.log(`setGlobalHttpProxy success.`);
+    console.info(`setGlobalHttpProxy success.`);
 });
 ```
 
@@ -381,8 +388,101 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.factoryReset().then(() => {
-    console.log("success");
+    console.info("success");
 }).catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
 })
+```
+
+## ProxyMode<sup>20+</sup>
+
+表示代理模式的枚举。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称              | 值   | 说明                     |
+| -------------------- | ------ | ------------------------ |
+| PROXY_MODE_OFF     | 0 | 关闭代理模式。          |
+| PROXY_MODE_AUTO    | 1 | 自动代理模式。          |
+
+## connection.setProxyMode<sup>20+</sup>
+
+setProxyMode(mode: ProxyMode): Promise\<void\>
+
+设置代理模式。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型             | 必填 | 说明               |
+| ------ |----------------| ---- | ------------------ |
+| mode   | [ProxyMode](#proxymode20) | 是   | 指定的代理模式。   |
+
+**返回值：**
+
+| 类型 | 说明                     |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+|-------|---------------|
+| 201   | Permission denied.   |
+| 202   | Non-system applications use system APIs. |
+
+
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.setProxyMode(connection.ProxyMode.PROXY_MODE_AUTO).then(() => {
+    console.info("Proxy mode set successfully.");
+}).catch((error: BusinessError) => {
+    console.error("Error setting proxy mode:", error);
+});
+```
+
+## connection.getProxyMode<sup>20+</sup>
+
+getProxyMode(): Promise\<ProxyMode\>
+
+获取当前的代理模式。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**返回值：**
+
+| 类型                        | 说明                          |
+|---------------------------| ------------------------ |
+| Promise\<[ProxyMode](#proxymode20)\> | Promise对象，返回当前代理模式。 |
+
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getProxyMode().then(mode => {
+    console.info("Current proxy mode:", mode);
+}).catch((error: BusinessError) => {
+    console.error("Error getting proxy mode:", error);
+});
 ```

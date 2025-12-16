@@ -1,5 +1,11 @@
 # format.h
-<!--Kit_MindSpore Lite Kit--><!--System_AI-->
+
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -27,7 +33,7 @@
 
 ### OH_AI_Format
 
-```
+```c
 enum OH_AI_Format
 ```
 

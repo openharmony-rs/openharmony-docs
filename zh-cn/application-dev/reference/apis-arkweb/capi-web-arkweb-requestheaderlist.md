@@ -1,4 +1,14 @@
 # ArkWeb_RequestHeaderList_
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct ArkWeb_RequestHeaderList_ ArkWeb_RequestHeaderList
+```
 
 ## 概述
 

@@ -1,4 +1,10 @@
 # CSS
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sunfei2021-->
+<!--Designer: @sunfei2021-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Cascading Style Sheets (CSS) is a language used to describe the HML page structure. All HML components have default styles. You can customize styles for these components using CSS to design various pages. For details, see [Universal Styles](../reference/apis-arkui/arkui-js/js-components-common-styles.md).
 
@@ -79,6 +85,12 @@ Example:
 
 ```css
 /* Pagestyleexample.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
 /* Set the style for all <div> components. */
 div {
   flex-direction: column;
@@ -142,6 +154,13 @@ The following is an example for you to use the **:active** pseudo-class to contr
 
 ```css
 /* index.css */
+.container {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 .button:active {
     background-color: #888888;/* After the button is activated, the background color is changed to #888888. */
 }

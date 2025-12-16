@@ -1,5 +1,12 @@
 # 应用事件打点错误码
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liujiaxing2024-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -107,7 +114,7 @@ Invalid string length of the event parameter.
 
 **可能原因**
 
-- 调用write接口传入的事件参数值中的字符串长度超过8*1024个字符。
+- 调用write接口传入的事件参数值中的字符串长度超过8*1024。
 - 调用setEventParam接口传入的事件自定义参数值的长度超过1024个字符。
 
 **处理步骤**

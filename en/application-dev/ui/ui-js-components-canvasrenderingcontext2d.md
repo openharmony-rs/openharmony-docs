@@ -1,4 +1,10 @@
 # CanvasRenderingContext2D
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 Use **CanvasRenderingContext2D** to draw objects such as graphics, texts, line segments, and images on the **&lt;canvas&gt;** component. For details, see [CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md).
@@ -6,7 +12,7 @@ Use **CanvasRenderingContext2D** to draw objects such as graphics, texts, line s
 
 ## Drawing Line Segments
 
-Use **moveTo** and **lineTo** to draw a line segment. Use the **closePath** method to end current path, obtaining a closed path. Set **quadraticCurveTo** (quadratic bezier curve) or **bezierCurveTo** (cubic bezier curve) to draw a graphic.
+Use **moveTo** and **lineTo** to draw a line segment. Use the **closePath** method to end current path, obtaining a closed path. Set **quadraticCurveTo** (quadratic Bézier curve) or **bezierCurveTo** (cubic Bézier curve) to draw a graphic.
 
 
 ```html
@@ -59,7 +65,7 @@ export default {
   onShow(){
     this.el = this.$refs.canvas1;
     this.ctx = this.el.getContext("2d",{antialias: true});
-    // Clear the contents on the canvas.
+    // Clear the canvas.
     this.ctx.clearRect(0, 0, 600, 500);
     // Create a drawing path.
     this.ctx.beginPath();
@@ -71,7 +77,7 @@ export default {
     this.ctx.beginPath();
     // Move a drawing path from the current point to a target position.
     this.ctx.moveTo(200, 100);
-    // Connect the current point to a target position.
+    // Connect the current point to the target position.
     this.ctx.lineTo(400, 100);
     // Stroke a path.
     this.ctx.stroke();
@@ -116,7 +122,7 @@ export default {
       // Top
       this.ctx.beginPath();
       this.ctx.moveTo(100, 150);
-      // Path of the quadratic bezier curve
+      // Path for a cubic Bézier curve
       this.ctx.quadraticCurveTo(300, 50, 500, 150);
       this.ctx.stroke();
       // Left
@@ -134,7 +140,7 @@ export default {
       // Bottom
       this.ctx.beginPath();
       this.ctx.moveTo(100, 200);
-      // Path of the cubic bezier curve
+      // Path for a cubic Bézier curve
       this.ctx.bezierCurveTo(150, 100, 200, 100,250, 200);
       this.ctx.stroke();
       // Left
@@ -168,7 +174,7 @@ export default {
       this.ctx.lineTo(200, 200);
       this.ctx.lineTo(100, 250);
       this.ctx.stroke();
-      // lower left
+      // Lower left
       this.ctx.beginPath();
       // Fill a triangular between the common endpoint of connected segments.
       this.ctx.lineJoin = 'bevel';
@@ -208,8 +214,6 @@ export default {
 
 Globally define the canvas (**el**) and brush (**ctx**), and create a rectangle with the border width of 5 upon initialization. Change the border width (**lineWidth**), color (**strokeStyle**), and line dash level (**setLineDash**). Add the **change** event to the **&lt;select&gt;** component. The **change** event will be triggered upon selection and the changed image will be displayed.
 
-
-
 ```html
 <!-- xxx.hml -->
 <div class="container">
@@ -223,8 +227,6 @@ Globally define the canvas (**el**) and brush (**ctx**), and create a rectangle 
 </div>
 ```
 
-
-
 ```css
 /* xxx.css */
 .container{
@@ -234,6 +236,7 @@ Globally define the canvas (**el**) and brush (**ctx**), and create a rectangle 
   justify-content: center;
   align-items: center;
   background-color: #F1F3F5;
+  display: flex;
 }
 canvas{
   width: 600px;
@@ -248,8 +251,6 @@ select{
   background-color: white;
 }
 ```
-
-
 
 ```js
 // xxx.js
@@ -266,11 +267,11 @@ export default {
   },
   change(e){
     if(e.newValue == 'value1'){
-      // Clear the contents on the canvas.
+      // Clear the canvas.
       this.ctx.clearRect(0,0,600,500);
-      // Border width
+      // Stroke width.
       this.ctx.lineWidth = 5;
-      // Border color
+      // Stroke color.
       this.ctx.strokeStyle = '#110000';
       // Line dash level of the border
       this.ctx.setLineDash([0,0]);
@@ -332,6 +333,7 @@ Add the **createLinearGradient** and **createRadialGradient** attributes to crea
   justify-content: center;
   align-items: center;
   background-color: #F1F3F5;
+  display: flex;
 }
 canvas{
   width: 600px;
@@ -370,7 +372,7 @@ export default {
   },
   change(e){
     if(e.newValue == 'value1'){
-      // Clear the contents on the canvas.
+      // Clear the canvas.
       this.ctx.clearRect(0,0,600,500);
       let gradient = this.ctx.createLinearGradient(100,100, 400,300);
       gradient.addColorStop(0.0, 'red');
@@ -430,9 +432,9 @@ export default {
 ![en-us_image_0000001231683148](figures/en-us_image_0000001231683148.gif)
 
 
-## Filling Texts
+## Filling Text
 
-Create a text and use the **fillText** method to write the text on the canvas. Use the **globalAlpha** attribute to change the baseline transparency to avoid the text being hidden by the baseline. Then set the **textAlign** and **textBaseline** attributes to determine the text position based on the baseline.
+Create text content and use the **fillText** method to render it on the canvas. Use the **globalAlpha** attribute to adjust baseline transparency, preventing text from being obscured by the baseline. Then configure the **textAlign** and **textBaseline** attributes to position text relative to the baseline.
 
 
 ```html
@@ -483,7 +485,7 @@ export default {
   onShow(){
     this.el = this.$refs.canvas1;
     this.ctx = this.el.getContext("2d",{antialias: true});
-    // Create a text.
+    // Create text.
     let text = "Hello World";
     // Set the font.
     this.ctx.font = '30px';
@@ -493,25 +495,25 @@ export default {
   },
   change(e){
     if(e.newValue == 'value1'){
-      // Clear the contents on the canvas.
+      // Clear the canvas.
       this.ctx.clearRect(0,0,600,500);
       // Start a new path.
       this.ctx.beginPath();
-      // Initialize the textAlign value.
+      // Initialize the textAlign attribute.
       this.ctx.textAlign = 'left';
-      // Initialize textBaseline.
+      // Initialize the textBaseline attribute.
       this.ctx.textBaseline = 'alphabetic';
       // Set the font.
-      this.ctx.font = '30px';
+      this.ctx.font = '30px Arial';
       let text = "Hello World";
       // Obtain the font width.
       this.ctx.fillText("with:"+this.ctx.measureText(text).width, 200, 300);
-    // Set the fill text.
+      // Set the fill text.
       this.ctx.fillText(text, 200, 250);
     }else if(e.newValue == 'value2'){
       this.ctx.clearRect(0,0,600,500);
       this.ctx.beginPath();
-      // Set the Alpha value.
+      // Set the opacity.
       this.ctx.globalAlpha = 0.1;
       // Set the line width.
       this.ctx.lineWidth = 10;
@@ -519,12 +521,12 @@ export default {
       this.ctx.strokeStyle = '#0000ff';
       // Move from the current point to a target position.
       this.ctx.moveTo(0, 240);
-      // Connect the current point to a target position.
+      // Connect the current point to the target position.
       this.ctx.lineTo(600, 240);
       this.ctx.stroke();
       this.ctx.font = '35px';
       this.ctx.globalAlpha = 1;
-      // Initialize the textAlign value.
+      // Initialize the textAlign attribute.
       this.ctx.textAlign = 'left';
       // Set textBaseline.
       this.ctx.textBaseline = 'top';
@@ -534,7 +536,7 @@ export default {
       this.ctx.textBaseline = 'middle';
       this.ctx.fillText('Middle', 400, 240);
     }else if(e.newValue == 'value3'){
-      // Clear the contents on the canvas.
+      // Clear the canvas.
       this.ctx.clearRect(0,0,600,500);
       this.ctx.beginPath();
       this.ctx.globalAlpha = 0.1;
@@ -545,7 +547,7 @@ export default {
       this.ctx.stroke();
       this.ctx.font = '35px';
       this.ctx.globalAlpha = 1;
-      // Initialize textBaseline.
+      // Initialize the textBaseline attribute.
       this.ctx.textBaseline = 'alphabetic';
       // Set textAlign.
       this.ctx.textAlign = 'left';
@@ -641,6 +643,7 @@ export default {
     // Create an image object.
     let img = new Image();
     // Set the image path.
+    // Replace "common/images/2.png" with the image resource file you use.
     img.src = 'common/images/2.png';
     // Set the image width.
     img.width= 150;
@@ -667,12 +670,13 @@ export default {
       ctx.drawImage(img, 150, 20, 200, 200);
     };
     let img1 = new Image();
+    // Replace "common/images/3.png" with the image resource file you use.
     img1.src = 'common/images/3.png';
     img1.onload = function() {
       // Draw an image.
       ctx.drawImage(img1, 250, 80, 200, 200);
     };
-    // A method is triggered when the image fails to be obtained.
+    // Invoked when the image fails to be obtained.
     img1.onerror = function() {
       promptAction.showToast({message:"error",duration:2000})
     };
@@ -739,13 +743,13 @@ export default {
 > 
 > - The following formulas calculate coordinates of the transformed graph. **x** and **y** represent coordinates before transformation, and **x'** and **y'** represent coordinates after transformation.
 >   x' = scaleX \* x + skewY \* y + translateX
-> 
+>
 >   y' = skewX \* x + scaleY \* y + translateY
 
 
 ## Adding Methods
 
-Use the **save** method to save the brush style, and use the **restore** method to restore the saved settings. In the following example, set the brush to red. After the brush setting is saved, clear the canvas and change the brush to blue. In this moment, directly using the brush will get a blue rectangle; using the brush after the restore operation will get a red rectangle.
+Use the **save** method to save the brush style, and use the **restore** method to restore the saved settings. In the following example, the brush color is first set to red. After the brush settings are saved, the canvas is cleared and the brush color is changed to blue. Drawing immediately at this point will produce a blue rectangle. However, if the brush settings are restored and then used for drawing, a red rectangle will be produced instead.
 
 
 ```html
@@ -808,7 +812,7 @@ export default {
   },
   onShow(){
     this.ctx = this.$refs.canvas.getContext("2d");
-    this.ctx.fillStyle = "red"
+    this.ctx.fillStyle = "red";
     this.ctx.fillRect(200, 150, 200, 200);
   },
   save(){

@@ -1,4 +1,14 @@
 # DisplaySoloist_ExpectedRateRange
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct {...} DisplaySoloist_ExpectedRateRange
+```
 
 ## 概述
 
@@ -31,7 +41,7 @@
 
 ### OH_DisplaySoloist_FrameCallback()
 
-```
+```c
 typedef void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)
 ```
 
@@ -45,7 +55,7 @@ OH_DisplaySoloist回调函数类型。
 
 | 参数项 | 描述 |
 | -- | -- |
-| long long timestamp | VSync时间戳。 |
+| long long timestamp | 当前帧VSync时间戳。 |
 |  long long targetTimestamp | 预期的下一帧VSync时间戳。 |
 |  void* data | 用户自定义数据。 |
 

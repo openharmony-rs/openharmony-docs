@@ -1,4 +1,10 @@
 # systemTonePlayer (系统提示音播放器)(系统接口)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 系统提示音播放器提供了短信提示音、通知提示音的播放、配置、获取信息等功能。
 
@@ -19,14 +25,14 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 提示音参数选项。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
-| 名称        | 类型    | 必填 | 说明                                          |
-| ----------- | ------- | ---- | --------------------------------------------- |
-| muteAudio   | boolean | 否   | 是否静音，true表示静音，false表示正常发声。   |
-| muteHaptics | boolean | 否   | 是否震动，true表示无振动，false表示正常振动。 |
+| 名称        | 类型    | 只读 | 可选 | 说明                                          |
+| ----------- | ------- | ---- | ---- | --------------------------------------------- |
+| muteAudio   | boolean | 否   | 是   | 提示音是否静音，true表示静音，false表示不静音。   |
+| muteHaptics | boolean | 否   | 是   | 提示音时是否振动，true表示关闭振动，false表示开启振动。 |
 
 ## SystemTonePlayer
 
@@ -38,7 +44,7 @@ getTitle(): Promise&lt;string&gt;
 
 获取提示音标题。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -63,9 +69,9 @@ getTitle(): Promise&lt;string&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemTonePlayer.getTitle().then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the system tone player title is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system tone player title ${err}`);
+  console.info('Succeeded in doing getTitle.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getTitle. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -75,7 +81,7 @@ prepare(): Promise&lt;void&gt;
 
 准备播放提示音。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -101,9 +107,9 @@ prepare(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemTonePlayer.prepare().then(() => {
-  console.info(`Promise returned to indicate a successful prepareing of system tone player.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to prepareing system tone player. ${err}`);
+  console.info('Succeeded in doing prepare.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to prepare. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -113,7 +119,7 @@ start(toneOptions?: SystemToneOptions): Promise&lt;number&gt;
 
 开始播放提示音。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -154,9 +160,9 @@ class SystemToneOptions {
 let systemToneOptions: SystemToneOptions = {muteAudio: true, muteHaptics: false};
 
 systemTonePlayer.start(systemToneOptions).then((value: number) => {
-  console.info(`Promise returned to indicate that the value of the system tone player streamID is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to start system tone player. ${err}`);
+  console.info('Succeeded in doing start.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -166,7 +172,7 @@ stop(id: number): Promise&lt;void&gt;
 
 停止播放提示音。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -199,9 +205,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let streamID: number = 0; //streamID为start方法返回的streamID,此处只做初始化。
 systemTonePlayer.stop(streamID).then(() => {
-  console.info(`Promise returned to indicate a successful stopping of system tone player.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to stop system tone player. ${err}`);
+  console.info('Succeeded in doing stop.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -211,7 +217,7 @@ release(): Promise&lt;void&gt;
 
 释放提示音播放器。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -235,9 +241,9 @@ release(): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemTonePlayer.release().then(() => {
-  console.info(`Promise returned to indicate a successful releasing of system tone player.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to release system tone player. ${err}`);
+  console.info('Succeeded in doing release.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to release. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -247,7 +253,7 @@ setAudioVolumeScale(scale: number): void
 
 设置音频音量大小，无返回结果。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -271,11 +277,15 @@ setAudioVolumeScale(scale: number): void
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let scale: number = 0.5;
 try {
   systemTonePlayer.setAudioVolumeScale(scale);
+  console.info('Succeeded in doing setAudioVolumeScale.');
 } catch (err) {
-  console.error(`Failed to set audio volume scale. ${err}`);
+  let error = err as BusinessError;
+  console.error(`Failed to setAudioVolumeScale. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -285,7 +295,7 @@ getAudioVolumeScale(): number
 
 获取当前音频音量大小，同步返回当前音量。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -307,11 +317,14 @@ getAudioVolumeScale(): number
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let scale: number = systemTonePlayer.getAudioVolumeScale();
-  console.info(` get audio volume scale. ${scale}`);
+  console.info('Succeeded in doing getAudioVolumeScale.');
 } catch (err) {
-  console.error(`Failed to get audio volume scale. ${err}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getAudioVolumeScale. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -321,7 +334,7 @@ getSupportedHapticsFeatures(): Promise&lt;Array&lt;systemSoundManager.ToneHaptic
 
 获取当前支持的振动风格。使用Promise异步回调。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -343,12 +356,11 @@ getSupportedHapticsFeatures(): Promise&lt;Array&lt;systemSoundManager.ToneHaptic
 **示例：**
 
 ```ts
-try {
-  let features: Array<systemSoundManager.ToneHapticsFeature> = await systemTonePlayer.getSupportedHapticsFeatures();
-  console.info(` get supported haptics features. ${features}`);
-} catch (err) {
-  console.error(`Failed to get supported haptics features. ${err}`);
-}
+systemTonePlayer.getSupportedHapticsFeatures().then((features: Array<systemSoundManager.ToneHapticsFeature>) => {
+  console.info('Succeeded in doing getSupportedHapticsFeatures.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSupportedHapticsFeatures. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### setHapticsFeature<sup>13+</sup>
@@ -359,7 +371,7 @@ setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 
 调用本接口前，应该先调用[getSupportedHapticsFeatures](#getsupportedhapticsfeatures13)查询支持的振动风格，如果设置不支持的振动风格，则设置失败。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -383,17 +395,16 @@ setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 **示例：**
 
 ```ts
-try {
-  let features: Array<systemSoundManager.ToneHapticsFeature> = await systemTonePlayer.getSupportedHapticsFeatures();
-  if (features.lenght == 0) {
-    return;
+systemTonePlayer.getSupportedHapticsFeatures().then((features: Array<systemSoundManager.ToneHapticsFeature>) => {
+  console.info('Succeeded in doing getSupportedHapticsFeatures.');
+  if (features.length > 0) {
+    let feature: systemSoundManager.ToneHapticsFeature = features[0];
+    systemTonePlayer.setHapticsFeature(feature);
+    console.info('Succeeded in doing setHapticsFeature.');
   }
-  let feature: systemSoundManager.ToneHapticsFeature = features[0];
-  systemTonePlayer.setHapticsFeature(feature);
-  console.info(` set haptics feature success`);
-} catch (err) {
-  console.error(`Failed to set haptics feature. ${err}`);
-}
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSupportedHapticsFeatures. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ### getHapticsFeature<sup>13+</sup>
@@ -402,7 +413,7 @@ getHapticsFeature(): systemSoundManager.ToneHapticsFeature
 
 获取播放铃音时的振动风格，同步返回振动风格枚举值。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -425,11 +436,14 @@ getHapticsFeature(): systemSoundManager.ToneHapticsFeature
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   let feature: systemSoundManager.ToneHapticsFeature = systemTonePlayer.getHapticsFeature();
-  console.info(` get haptics feature success. ${features}`);
+  console.info('Succeeded in doing getHapticsFeature.');
 } catch (err) {
-  console.error(`Failed to get haptics feature. ${err}`);
+  let error = err as BusinessError;
+  console.error(`Failed to getHapticsFeature. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -440,6 +454,8 @@ on(type: 'playFinished', streamId: number, callback: Callback\<number>): void
 监听铃音播放完成事件（当铃音播放完成时触发）。使用callback异步回调。
 
 监听对象为传入的streamId对应音频流。当streamId传入0时，监听本播放器对应的所有音频流。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -486,6 +502,8 @@ off(type: 'playFinished', callback?: Callback\<number>): void
 
 取消监听铃音播放完成事件。使用callback异步回调。
 
+**系统接口：** 该接口为系统接口。
+
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 **参数：**
@@ -526,6 +544,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 监听铃音播放过程中的错误事件（当铃音播放过程中发生错误时触发）。使用callback异步回调。
 
+**系统接口：** 该接口为系统接口。
+
 **系统能力**：SystemCapability.Multimedia.SystemSound.Core
 
 **参数：**
@@ -559,6 +579,8 @@ systemTonePlayer.on('error', (err: BusinessError) => {
 off(type: 'error', callback?: ErrorCallback): void
 
 取消监听铃音播放过程中的错误事件。使用callback异步回调。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力**：SystemCapability.Multimedia.SystemSound.Core
 

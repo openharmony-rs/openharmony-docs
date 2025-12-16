@@ -1,4 +1,10 @@
 # Node-API
+<!--Kit: NDK-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
@@ -31,7 +37,7 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 |Symbol Type|Symbol|Description|Start API Version|
 | --- | --- | --- | --- |
 |FUNC|napi_module_register|Registers a native module.|10|
-|FUNC|napi_get_last_error_info|Obtains the **napi_extended_error_info** struct, which contains the latest error information.|10|
+|FUNC|napi_get_last_error_info|Obtains the napi_extended_error_info struct, which contains the latest error information.|10|
 |FUNC|napi_throw|Throws a JS value.|10|
 |FUNC|napi_throw_error|Throws a JS **Error** with text information.|10|
 |FUNC|napi_throw_type_error|Throws a JS **TypeError** with text information.|10|
@@ -84,9 +90,9 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 |FUNC|napi_get_value_string_utf16|Obtains the UTF16-encoded string corresponding to the given JS value.|10|
 |FUNC|napi_get_value_uint32|Obtains the C uint32 equivalent of a JS number.|10|
 |FUNC|napi_get_boolean|Obtains a JS Boolean object based on a C Boolean value.|10|
-|FUNC|napi_get_global|Obtains the **global** object.|10|
-|FUNC|napi_get_null|Obtains the **null** object.|10|
-|FUNC|napi_get_undefined|Obtains the **undefined** object.|10|
+|FUNC|napi_get_global|Obtains the global object.|10|
+|FUNC|napi_get_null|Obtains the null object.|10|
+|FUNC|napi_get_undefined|Obtains the undefined object.|10|
 |FUNC|napi_coerce_to_bool|Forcibly converts a JS value to a JS Boolean value.|10|
 |FUNC|napi_coerce_to_number|Forcibly converts a JS value to a JS number.|10|
 |FUNC|napi_coerce_to_object|Forcibly converts a JS value to a JS object.|10|
@@ -94,10 +100,10 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 |FUNC|napi_typeof|Obtains the JS type of a JS value.|10|
 |FUNC|napi_instanceof|Checks whether an object is an instance of the specified constructor.|10|
 |FUNC|napi_is_array|Checks whether a JS value is an array.|10|
-|FUNC|napi_is_arraybuffer|Checks whether a JS value is an **ArrayBuffer**.|10|
-|FUNC|napi_is_typedarray|Checks whether a JS value is a **TypedArray**.|10|
-|FUNC|napi_is_dataview|Checks whether a JS value is a **DataView**.|10|
-|FUNC|napi_is_date|Checks whether a JS value is a JS **Date** object.|10|
+|FUNC|napi_is_arraybuffer|Checks whether a JS value is an ArrayBuffer.|10|
+|FUNC|napi_is_typedarray|Checks whether a JS value is a TypedArray.|10|
+|FUNC|napi_is_dataview|Checks whether a JS value is a DataView.|10|
+|FUNC|napi_is_date|Checks whether a JS value is a JS Date object.|10|
 |FUNC|napi_strict_equals|Checks whether two JS values are strictly equal.|10|
 |FUNC|napi_get_property_names|Obtains the names of the enumerable properties of an object in an array of strings.|10|
 |FUNC|napi_set_property|Sets a property for an object.|10|
@@ -147,19 +153,19 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 |FUNC|napi_release_threadsafe_function|Releases a thread-safe function.|10|
 |FUNC|napi_ref_threadsafe_function|Creates a reference to a thread-safe function. The event loop running on the main thread should not exit until the thread-safe function is destroyed.|10|
 |FUNC|napi_unref_threadsafe_function|Releases the reference to a thread-safe function. The event loop running on the main thread may exit before the thread-safe function is destroyed.|10|
-|FUNC|napi_create_date|Creates a JS **Date** object from C double data.|10|
-|FUNC|napi_get_date_value|Obtains the C double equivalent of the given JS **Date**.|10|
+|FUNC|napi_create_date|Creates a JS Date object from C double data.|10|
+|FUNC|napi_get_date_value|Obtains the C double equivalent of the given JS Date.|10|
 |FUNC|napi_create_bigint_int64|Creates a JS BigInt from C int64 data.|10|
 |FUNC|napi_create_bigint_uint64|Creates a JS BigInt from C uint64 data.|10|
 |FUNC|napi_create_bigint_words|Creates a single JS BigInt from a C uint64 array.|10|
 |FUNC|napi_get_value_bigint_int64|Obtains the C int64 equivalent of the given JS BigInt.|10|
 |FUNC|napi_get_value_bigint_uint64|Obtains the C uint64 equivalent of the given JS BigInt.|10|
 |FUNC|napi_get_value_bigint_words|Obtains information from the given JS BigInt, including the sign bit, 64-bit little-endian array, and number of elements in the array.|10|
-|FUNC|napi_create_buffer|Creates a JS **Buffer** instance of the specified size.|10|
-|FUNC|napi_create_buffer_copy|Creates a JS **Buffer** instance of the specified size, and initializes it with data copied from the passed-in buffer.|10|
-|FUNC|napi_create_external_buffer|Creates a JS **Buffer** instance of the specified size, and initializes it with the given data. The **Buffer** instance created can include extra.|10|
-|FUNC|napi_get_buffer_info|Obtains the underlying data of **Buffer** and its length.|10|
-|FUNC|napi_is_buffer|Checks whether the given JS value is a **Buffer** object.|10|
+|FUNC|napi_create_buffer|Creates a JS Buffer instance of the specified size.|10|
+|FUNC|napi_create_buffer_copy|Creates a JS Buffer instance of the specified size, and initializes it with data copied from the passed-in buffer.|10|
+|FUNC|napi_create_external_buffer|Creates a JS Buffer instance of the specified size, and initializes it with the given data. The Buffer instance created can include extra.|10|
+|FUNC|napi_get_buffer_info|Obtains the underlying data of Buffer and its length.|10|
+|FUNC|napi_is_buffer|Checks whether the given JS value is a Buffer object.|10|
 |FUNC|napi_object_freeze|Freezes the given object.|10|
 |FUNC|napi_object_seal|Seals the given object.|10|
 |FUNC|napi_get_all_property_names|Obtains an array containing the names of all the available properties of this object.|10|
@@ -175,12 +181,12 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 |FUNC|node_api_get_module_file_name|Obtains the absolute path of the location, from which the addon is loaded.|11|
 |FUNC|napi_add_finalizer|Adds a **napi_finalize** callback, which will be called when the JS object in **js_Object** is garbage-collected.|11|
 |FUNC|napi_fatal_exception|Throws **UncaughtException** to JS.|12|
+|FUNC|napi_create_external_string_utf16 | Creates an ArkTS string from an external UTF-16 encoded string buffer, without performing memory copy operations.|22|
+|FUNC|napi_create_external_string_ascii | Creates an ArkTS string from an external ASCII encoded string buffer, without performing memory copy operations.|22|
 
 ## Differences Between the Exported Symbols and the Symbols in the Native Library
 
-> **NOTE**
->
-> For ease of description, the symbol exported to OpenHarmony is referred to as "exported symbol" and the symbol in the native library is referred to as "native symbol".
+For ease of description, the symbol exported to OpenHarmony is referred to as "exported symbol" and the symbol in the native library is referred to as "native symbol".
 
 ### napi_throw_error
 
@@ -268,13 +274,13 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 
 **Return value**
 
-- The exported symbol returns **napi_arraybuffer_expected** if **arraybuffer** is not empty and is not an **ArrayBuffer** object.
+- The exported symbol returns **napi_arraybuffer_expected** if **arraybuffer** is not empty and is not an ArrayBuffer object.
 
 ### napi_create_dataview
 
 **Return value**
 
-- The exported symbol returns **napi_arraybuffer_expected** if **arraybuffer** is not empty and is not an **ArrayBuffer** object.
+- The exported symbol returns **napi_arraybuffer_expected** if **arraybuffer** is not empty and is not an ArrayBuffer object.
 
 - If the sum of **byte_offset** and **byte_length** is greater than the size of **arraybuffer**, the export API throws a **RangeError** exception and returns **napi_pending_exception**.
 
@@ -282,7 +288,7 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 
 **Parameters**
 
-- **object**: The value type can be TypedArray or [Sendable TypedArray](../apis-arkts/js-apis-arkts-collections.md#collectionstypedarray) in the exported symbol.
+- **object**: The exported symbol supports TypedArray or Sendable TypedArray ([Int8Array](../apis-arkts/arkts-apis-arkts-collections-Int8Array.md), [Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md), [Int16Array](../apis-arkts/arkts-apis-arkts-collections-Int16Array.md), [Uint16Array](../apis-arkts/arkts-apis-arkts-collections-Uint16Array.md), [Int32Array](../apis-arkts/arkts-apis-arkts-collections-Int32Array.md), [Uint32Array](../apis-arkts/arkts-apis-arkts-collections-Uint32Array.md), [Uint8ClampedArray](../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md), and [Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md)).
 
 **Return value**
 
@@ -306,7 +312,7 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 
 **Parameters**
 
-- **value**: The exported symbol also supports the [Sendable TypedArray](../apis-arkts/js-apis-arkts-collections.md#collectionstypedarray) type for **value**.
+- **value**: The exported symbol also supports Sendable TypedArray ([Int8Array](../apis-arkts/arkts-apis-arkts-collections-Int8Array.md), [Uint8Array](../apis-arkts/arkts-apis-arkts-collections-Uint8Array.md), [Int16Array](../apis-arkts/arkts-apis-arkts-collections-Int16Array.md), [Uint16Array](../apis-arkts/arkts-apis-arkts-collections-Uint16Array.md), [Int32Array](../apis-arkts/arkts-apis-arkts-collections-Int32Array.md), [Uint32Array](../apis-arkts/arkts-apis-arkts-collections-Uint32Array.md), [Uint8ClampedArray](../apis-arkts/arkts-apis-arkts-collections-Uint8ClampedArray.md) and [Float32Array](../apis-arkts/arkts-apis-arkts-collections-Float32Array.md)).
 
 ### napi_get_property_names
 
@@ -631,7 +637,7 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 
 **Return value**
 
-- If **arraybuffer** is not an object, the exported symbol returns **napi_object_expected**. If **arraybuffer** is an object but not an **ArrayBuffer** object, it returns **napi_invalid_arg**.
+- If **arraybuffer** is not an object, the exported symbol returns **napi_object_expected**. If **arraybuffer** is an object but not an ArrayBuffer object, it returns **napi_invalid_arg**.
 
 ### napi_add_env_cleanup_hook
 
@@ -679,6 +685,18 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 
 - If **length** is too large, the native symbol throws an exception and interrupts the process. OpenHarmony attempts to allocate memory. If the memory allocation fails, an exception is thrown and **undefined** is returned.
 
+### napi_create_external_string_utf16
+
+**Parameters**
+
+- The standard library includes an additional parameter **copied** to specify whether the string content should be copied. However, this parameter is not supported in OpenHarmony, and the string content is never copied.
+
+### napi_create_external_string_ascii
+
+**Parameters**
+
+- The standard library includes an additional parameter **copied** to specify whether the string content should be copied. However, this parameter is not supported in OpenHarmony, and the string content is never copied.
+
 ## Symbols Not Exported from the Node-API Library
 
 |Symbol Type|Symbol|Description|
@@ -719,6 +737,9 @@ The APIs exported from the native Node-API library feature usage and behaviors b
 |FUNC|napi_create_ark_context|Creates a new runtime context environment.|20|
 |FUNC|napi_switch_ark_context|Switches to the specified runtime context environment.|20|
 |FUNC|napi_destroy_ark_context|Destroys a context environment created by **napi_create_ark_context**.|20|
+|FUNC|napi_create_strong_sendable_reference|Creates a Sendable strong reference to a Sendable ArkTS object.|22|
+|FUNC|napi_delete_strong_sendable_reference|Deletes a Sendable strong reference.|22|
+|FUNC|napi_get_strong_sendable_reference_value|Obtains the ArkTS object value associated with a Sendable strong reference.|22|
 
 > **NOTE**
 >
@@ -1080,7 +1101,7 @@ Deletes serialized data.
 
 - **env**: environment, in which the API is invoked.
 
-- **buffer**: pointer to the buffer that contains the serialized data to delete. If the serialized data is not longer required, you can use this API to delete the data and release the memory occupied.
+- **buffer**: pointer to the buffer that contains the serialized data to delete. If the serialized data is no longer required, you can use this API to delete the data and release the memory occupied.
 
 **Return value**
 
@@ -1438,7 +1459,7 @@ Wraps a Node-API instance into an ArkTS object and specifies the instance size. 
 
 - **native_object**: pointer to the native instance to be wrapped in the ArkTS object.
 
-- **finalize_cb**: (optional) callback to be called when the ArkTS object is destroyed. For details, see [napi_finalize](#napi_finalize callback function description).
+- **finalize_cb**: (optional) callback to be called when the ArkTS object is destroyed. For details, see [napi_finalize](#napi_finalize-description).
 
 - **async_finalizer**: a Boolean value used to indicate whether to execute the **finalize_cb** callback asynchronously. The value **true** means to execute the callback asynchronously. In this case, thread safety must be ensured. The value **false** means to execute the callback synchronously.
 
@@ -1469,7 +1490,6 @@ napi_status napi_create_ark_context(napi_env env, napi_env* newEnv);
 Creates a new runtime context environment.
 
 Note the following when using this API:
-
 1. Only new context environments created through the initial context environment are supported. It is prohibited to create new context environments using the context environment created by this API.
 2. Currently, this API cannot be called on ArkTS threads that are not the main thread.
 3. Before calling this API, ensure that the current context environment is normal. Otherwise, the API call fails.
@@ -1496,7 +1516,6 @@ napi_status napi_switch_ark_context(napi_env env)
 **Description**
 
 Switches to the specified runtime context environment. Note the following when using this API:
-
 1. Currently, this API does not support calls in ArkTS threads that are not the main thread.
 2. Before calling this API, ensure that the current context environment is normal. Otherwise, the API call fails.
 
@@ -1517,7 +1536,6 @@ napi_status napi_destroy_ark_context(napi_env env)
 **Description**
 
 Destroys a context environment created by **napi_create_ark_context**. Note the following when using this API:
-
 1. Currently, this API does not support calls in ArkTS threads that are not the main thread.
 2. This API can only be used to destroy runtime context environments created by calling **napi_create_ark_context**.
 3. You cannot use this API to destroy a context environment that is currently in use.
@@ -1530,7 +1548,7 @@ Destroys a context environment created by **napi_create_ark_context**. Note the 
 
 **napi_ok** if the operation is successful.
 
-### **napi_finalize** description
+### **napi_finalize** Description
 
 ```cpp
 typedef void (*napi_finalize)(napi_env env,
@@ -1553,5 +1571,94 @@ Called when the lifecycle of a Node-API object ends.
 **Return value**
 
 - **void**: no return value.
+
+### **napi_finalize_callback** Description
+
+```cpp
+typedef void (*napi_finalize_callback)(void* finalize_data,
+                                       void* finalize_hint);
+```
+
+**Description**
+
+Called when the lifecycle of an ArkTS string object created by calling **napi_create_external_string_utf16** or **napi_create_external_string_ascii** ends.
+
+**Parameters**
+
+- **finalize_data**: pointer to the user data to be cleared.
+
+- **finalize_hint**: context hint, which is used to assist the clear process.
+
+**Return value**
+
+- **void**: no return value.
+
+### napi_create_strong_sendable_reference
+
+```cpp
+napi_status napi_create_strong_sendable_reference(napi_env env,
+                                                  napi_value value,
+                                                  napi_sendable_ref* result);
+```
+
+**Description**
+
+Creates a Sendable strong reference to a Sendable ArkTS object. Note the following when using this API:
+1. **napi_sendable_ref** can be created only for [Sendable objects](../../arkts-utils/arkts-sendable.md#sendable-data-types).
+2. **napi_sendable_ref** can be used across ArkTS threads. When performing multithreaded operations, the caller must manage the release timing to avoid issues related to using after release.
+3. Within the same process, a maximum of 51200 **napi_sendable_ref** instances can coexist.
+
+**Parameters**
+
+- **env**: environment, in which the API is invoked.
+- **value**: Sendable ArkTS object to be referenced.
+- **result**: created Sendable strong reference.
+
+**Return value**
+
+**napi_ok** if the operation is successful.
+
+### napi_delete_strong_sendable_reference
+
+```cpp
+napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_ref ref);
+```
+
+**Description**
+
+Deletes a Sendable strong reference. Note the following when using this API:
+1. Do not forcibly cast other reference types (such as **napi_ref** or **napi_strong_ref**) to **napi_sendable_ref** for use with this API. **napi_delete_strong_sendable_reference** accepts only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
+
+**Parameters**
+
+- **env**: environment, in which the API is invoked.
+- **ref**: reference to be deleted.
+
+**Return value**
+
+**napi_ok** if the operation is successful.
+
+### napi_get_strong_sendable_reference_value
+
+```cpp
+napi_status napi_get_strong_sendable_reference_value(napi_env env,
+                                                     napi_sendable_ref ref,
+                                                     napi_value* result);
+```
+
+**Description**
+
+Obtains the ArkTS object value associated with a Sendable strong reference. Note the following when using this API:
+1. Do not forcibly cast other reference types (such as **napi_ref** or **napi_strong_ref**) to **napi_sendable_ref** for use with this API. **napi_get_strong_sendable_reference_value** accepts only **napi_sendable_ref** created by calling **napi_create_strong_sendable_reference**.
+
+**Parameters**
+
+- **env**: environment, in which the API is invoked.
+- **ref**: Sendable strong reference.
+- **result**: Sendable ArkTS object obtained from **ref**.
+
+**Return value**
+
+**napi_ok** if the operation is successful.
 
 <!--no_check-->

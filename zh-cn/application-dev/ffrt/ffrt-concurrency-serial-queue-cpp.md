@@ -1,5 +1,12 @@
 # Function Flow Runtime串行队列(C++)
 
+<!--Kit: Function Flow Runtime Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @chuchihtung; @yanleo-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
 ## 概述
 
 FFRT串行队列基于协程调度模型实现，提供高效的消息队列功能，支持异步通信、流量削峰、无锁化状态和资源管理以及架构解耦等多种业务场景。FFRT串行队列支持以下功能：
@@ -85,8 +92,8 @@ int main()
 
 | 名称                                                                                                                  | 描述           |
 | --------------------------------------------------------------------------------------------------------------------- | -------------- |
-| class [queue](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue)   | 队列类。       |
-| [sleep_for](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#sleep_for) | 延迟一定时间。 |
+| class [queue](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue)   | 队列类。       |
+| [sleep_for](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#sleep_for) | 延迟一定时间。 |
 
 > **说明：**
 >

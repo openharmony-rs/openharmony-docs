@@ -1,16 +1,20 @@
-# @ohos.bundle.overlay (overlay)
+# @ohos.bundle.overlay (overlay Module)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The overlay module provides APIs for installing a module with the overlay feature, querying the [module information](js-apis-bundleManager-overlayModuleInfo.md), and disabling and enabling the module.
+The module provides APIs for querying the [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) of an application with the overlay feature, and disabling and enabling the feature.
 
-A module with the [overlay feature](../../quick-start/resource-categories-and-access.md#overlay-mechanism) generally provides additional resource files for modules without the overlay feature on the device, so that the target modules can use these resource files at runtime to display different colors, labels, themes, and the like.
-
-If the **module.json5** file of a module contains the **targetModuleName** and **targetPriority fields** during project creation on DevEco Studio, the module is identified as a module with the overlay feature in the installation phase.
+An application with the overlay feature contains an overlay resource package. For details about this package, see [Overlay Mechanism](../../quick-start/resource-categories-and-access.md#overlay-mechanism).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The overlay feature applies only to the stage model.
+> The APIs provided by this module apply only to the stage model and [static overlay](../../quick-start/resource-categories-and-access.md#using-overlay-in-static-mode) mode.
 
 
 ## Modules to Import
@@ -23,7 +27,7 @@ import { overlay } from '@kit.AbilityKit';
 
 setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise\<void>
 
-Enables or disables a module with the overlay feature in the current application. This API uses a promise to return the result. If the operation is successful, **null** is returned; otherwise, an error message is returned.
+Enables or disables a module with the overlay feature in the current application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -32,7 +36,7 @@ Enables or disables a module with the overlay feature in the current application
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | moduleName  | string | Yes   | Name of the module with the overlay feature.              |
-| isEnabled   | boolean  | Yes | Whether to enable the module with the overlay feature. The value **true** means to enable the module, and **false** means to disable the module.|
+| isEnabled   | boolean  | Yes | Whether to enable the module with the overlay feature. **true** to enable, **false** otherwise.|
 
 **Return value**
 
@@ -64,12 +68,12 @@ try {
     .then(() => {
       console.info('setOverlayEnabled success');
     }).catch((err: BusinessError) => {
-      console.info('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+      console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
     });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.info('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
+  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
 }
 ```
 
@@ -77,7 +81,7 @@ try {
 
 setOverlayEnabled(moduleName: string, isEnabled: boolean, callback: AsyncCallback\<void>): void
 
-Enables or disables a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result. If the operation is successful, **null** is returned; otherwise, an error message is returned.
+Enables or disables a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -86,8 +90,8 @@ Enables or disables a module with the overlay feature in the current application
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | moduleName  | string | Yes   | Name of the module with the overlay feature.              |
-| isEnabled   | boolean  | Yes | Whether to enable the module with the overlay feature. The value **true** means to enable the module, and **false** means to disable the module.|
-| callback    | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
+| isEnabled   | boolean  | Yes | Whether to enable the module with the overlay feature. **true** to enable, **false** otherwise.|
+| callback    | AsyncCallback\<void> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -111,7 +115,7 @@ let isEnabled = false;
 try {
   overlay.setOverlayEnabled(moduleName, isEnabled, (err, data) => {
     if (err) {
-      console.info('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
+      console.error('setOverlayEnabled failed due to err code: ' + err.code + ' ' + 'message:' + err.message);
       return;
     }
     console.info('setOverlayEnabled success');
@@ -119,7 +123,7 @@ try {
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.info('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
+  console.error('setOverlayEnabled failed due to err code: ' + code + ' ' + 'message:' + message);
 }
 ```
 
@@ -127,7 +131,7 @@ try {
 
 getOverlayModuleInfo(moduleName: string): Promise\<OverlayModuleInfo>
 
-Obtains the information about a module with the overlay feature in the current application. This API uses a promise to return the result. If the operation is successful, **null** is returned; otherwise, an error message is returned.
+Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -165,11 +169,11 @@ let moduleName = "feature";
 (async () => {
   try {
     let overlayModuleInfo = await overlay.getOverlayModuleInfo(moduleName);
-    console.log('overlayModuleInfo is ' + JSON.stringify(overlayModuleInfo));
+    console.info('overlayModuleInfo is ' + JSON.stringify(overlayModuleInfo));
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    console.log('getOverlayModuleInfo failed due to err code : ' + code + ' ' + 'message :' + message);
+    console.error('getOverlayModuleInfo failed due to err code : ' + code + ' ' + 'message :' + message);
   }
 })();
 ```
@@ -178,7 +182,7 @@ let moduleName = "feature";
 
 getOverlayModuleInfo(moduleName: string, callback: AsyncCallback\<OverlayModuleInfo>): void
 
-Obtains the information about a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result. If the operation is successful, **null** is returned; otherwise, an error message is returned.
+Obtains the OverlayModuleInfo about a module with the overlay feature in the current application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -187,7 +191,7 @@ Obtains the information about a module with the overlay feature in the current a
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | moduleName | string | Yes   | Name of the module with the overlay feature.    |
-| callback    | AsyncCallback\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)> | Yes   | Callback used to return the result, which is an [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) object. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.                  |
+| callback    | AsyncCallback\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result, which is an [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) object. If the operation is successful, **err** is **null**; otherwise, **err** is an error object.                  |
 
 **Error codes**
 
@@ -211,15 +215,15 @@ let moduleName = "feature";
 try {
   overlay.getOverlayModuleInfo(moduleName, (err, data) => {
     if (err) {
-      console.log('getOverlayModuleInfo failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
+      console.error('getOverlayModuleInfo failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
       return;
     }
-    console.log('overlayModuleInfo is ' + JSON.stringify(data));
+    console.info('overlayModuleInfo is ' + JSON.stringify(data));
   });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.log('getOverlayModuleInfo failed due to err code : ' + code + ' ' + 'message :' + message);
+  console.error('getOverlayModuleInfo failed due to err code : ' + code + ' ' + 'message :' + message);
 }
 ```
 
@@ -227,7 +231,7 @@ try {
 
 getTargetOverlayModuleInfos(targetModuleName: string): Promise\<Array\<OverlayModuleInfo>>
 
-Obtains the information about modules with the overlay feature in the current application based on the target module name. This API uses a promise to return the result. If the operation is successful, **null** is returned; otherwise, an error message is returned.
+Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -264,11 +268,11 @@ let targetModuleName = "feature";
 (async () => {
   try {
     let overlayModuleInfos = await overlay.getTargetOverlayModuleInfos(targetModuleName);
-    console.log('overlayModuleInfos are ' + JSON.stringify(overlayModuleInfos));
+    console.info('overlayModuleInfos are ' + JSON.stringify(overlayModuleInfos));
   } catch (err) {
     let code = (err as BusinessError).code;
     let message = (err as BusinessError).message;
-    console.log('getTargetOverlayModuleInfos failed due to err code : ' + code + ' ' + 'message :' + message);
+    console.error('getTargetOverlayModuleInfos failed due to err code : ' + code + ' ' + 'message :' + message);
   }
 })();
 ```
@@ -277,7 +281,7 @@ let targetModuleName = "feature";
 
 getTargetOverlayModuleInfos(targetModuleName: string, callback: AsyncCallback\<Array\<OverlayModuleInfo>>): void
 
-Obtains the information about modules with the overlay feature in the current application based on the target module name. This API uses an asynchronous callback to return the result. If the operation is successful, **null** is returned; otherwise, an error message is returned.
+Obtains the OverlayModuleInfo associated with the specified target module. Modules with the overlay feature generally provide an overlay resource file for other modules (target module) on the device. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Overlay
 
@@ -286,7 +290,7 @@ Obtains the information about modules with the overlay feature in the current ap
 | Name      | Type    | Mandatory  | Description                                   |
 | ----------- | ------ | ---- | --------------------------------------- |
 | targetModuleName | string | Yes   | Name of the target module specified by modules with the overlay feature.    |
-| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes   | Callback used to return the result, which is an array of [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback    | AsyncCallback\<Array\<[OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md)>> | Yes   | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result, which is an [OverlayModuleInfo](js-apis-bundleManager-overlayModuleInfo.md) object. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -309,15 +313,15 @@ let targetModuleName = "feature";
 try {
   overlay.getTargetOverlayModuleInfos(targetModuleName, (err, data) => {
     if (err) {
-      console.log('getTargetOverlayModuleInfos failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
+      console.error('getTargetOverlayModuleInfos failed due to err code : ' + err.code + ' ' + 'message :' + err.message);
       return;
     }
-    console.log('overlayModuleInfo is ' + JSON.stringify(data));
+    console.info('overlayModuleInfo is ' + JSON.stringify(data));
   });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.log('getTargetOverlayModuleInfos failed due to err code : ' + code + ' ' + 'message :' + message);
+  console.error('getTargetOverlayModuleInfos failed due to err code : ' + code + ' ' + 'message :' + message);
 }
 ```
 

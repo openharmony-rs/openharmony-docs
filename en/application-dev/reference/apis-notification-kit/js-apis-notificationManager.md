@@ -1,4 +1,10 @@
 # @ohos.notificationManager (NotificationManager)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationManager** module provides notification management capabilities, covering notifications, notification slots, notification enabled status, and notification badge status.
 
@@ -16,7 +22,7 @@ import { notificationManager } from '@kit.NotificationKit';
 
 publish(request: NotificationRequest, callback: AsyncCallback\<void\>): void
 
-Publish a notification. This API uses an asynchronous callback to return the result.
+Publishes a notification. This API uses an asynchronous callback to return the result.
 
 If the ID and label of the new notification are the same as that of the previous notification, the new one replaces the previous one.
 
@@ -31,7 +37,7 @@ If the ID and label of the new notification are the same as that of the previous
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [HTTP Error Codes](../apis-network-kit/errorcode-net-http.md).
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
@@ -82,7 +88,7 @@ notificationManager.publish(notificationRequest, publishCallback);
 
 publish(request: NotificationRequest): Promise\<void\>
 
-Publish a notification. This API uses a promise to return the result.
+Publishes a notification. This API uses a promise to return the result.
 
 If the ID and label of the new notification are the same as that of the previous notification, the new one replaces the previous one.
 
@@ -102,7 +108,7 @@ If the ID and label of the new notification are the same as that of the previous
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [HTTP Error Codes](../apis-network-kit/errorcode-net-http.md).
 
 | ID| Error Message                                             |
 | -------- | ---------------------------------------------------- |
@@ -335,7 +341,7 @@ Cancels all notifications of this application. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -583,11 +589,11 @@ Obtains all notification slots of this application. This API uses a promise to r
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise used to return the **NotificationSlot** array.|
+| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise used to return the result.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -750,7 +756,7 @@ Removes all notification slots for this application. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -782,11 +788,11 @@ Checks whether notification is enabled for the specified application. This API u
 
 | Name    | Type                 | Mandatory| Description                    |
 | -------- | --------------------- | ---- | ------------------------ |
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the notification can be published; **false** means the opposite. If the call fails, an error object is returned.|
+| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the notification can be published; **false** means the opposite. If this API call fails, an error object is returned.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
 
 | ID| Error Message                                 |
 | -------- | ---------------------------------------- |
@@ -829,7 +835,7 @@ Checks whether notification is enabled for the specified application. This API u
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md) and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
 
 | ID| Error Message                                |
 | -------- | ---------------------------------------- |
@@ -888,9 +894,9 @@ setBadgeNumber(badgeNumber: number): Promise\<void\>
 
 Sets the notification badge number. This API uses a promise to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -936,9 +942,9 @@ setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void
 
 Sets the notification badge number. This API uses an asynchronous callback to return the result.
 
-This API is not supported on wearables.
-
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -974,6 +980,42 @@ let setBadgeNumberCallback = (err: BusinessError): void => {
 }
 let badgeNumber: number = 10;
 notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
+```
+
+## notificationManager.getBadgeNumber<sup>22+</sup>
+
+getBadgeNumber(): Promise\<long\>
+
+Obtains the badge number of this application. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Return value**
+
+| Type             | Description                                       |
+| ----------------- | ------------------------------------------- |
+| Promise\<long\> | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen badges of this application are enabled.)|
+
+**Error codes**
+
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getBadgeNumber().then((badgeNumber) => {
+  hilog.info(0x0000, 'testTag', `Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.getActiveNotificationCount
@@ -1033,7 +1075,7 @@ Obtains the number of active notifications of this application. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1109,7 +1151,7 @@ Obtains the active notifications of this application. This API uses a promise to
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1219,7 +1261,7 @@ notificationManager.cancelGroup(groupName).then(() => {
 
 isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): void
 
-Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses an asynchronous callback to return the result. If the API fails to be called, an error object is returned.
+Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1228,7 +1270,7 @@ Checks whether a specified template is supported before using [NotificationTempl
 | Name      | Type                    | Mandatory| Description                      |
 | ------------ | ------------------------ | ---- | -------------------------- |
 | templateName | string                   | Yes  | Template name. Currently, only **downloadTemplate** is supported.                  |
-| callback     | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the specified template is supported, and **false** means the opposite.|
+| callback     | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the template is supported, and **false** indicates the opposite. If this API call fails, an error object is returned.|
 
 **Error codes**
 
@@ -1309,7 +1351,7 @@ Requests notification to be enabled for this application. You can call this API 
 
 > **NOTE**
 >
-> - This API can be called only after the application UI is loaded (that is, [loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#uiextensioncontentsessionloadcontent) is successfully called).
+> - This API can be called only after the application UI is loaded (that is, [loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent) is successfully called).
 > - When an application uses **requestEnableNotification()** to display a dialog box for notification authorization and the user rejects the authorization, the application cannot use this API to open the dialog box again. However, it can call [openNotificationSettings](#notificationmanageropennotificationsettings13) to open the notification management dialog box.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1349,10 +1391,10 @@ class MyAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err) ?? ''}`);
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      hilog.info(0x0000, 'testTag', `Succeeded in loading the content. Data: ${JSON.stringify(data) ?? ''}`);
       let requestEnableNotificationCallback = (err: BusinessError): void => {
         if (err) {
           hilog.error(0x0000, 'testTag', `[ANS] requestEnableNotification failed, code is ${err.code}, message is ${err.message}`);
@@ -1374,7 +1416,7 @@ Requests notification to be enabled for this application. You can call this API 
 
 > **NOTE**
 >
-> - This API can be called only after the application UI is loaded (that is, [loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#uiextensioncontentsessionloadcontent) is successfully called).
+> - This API can be called only after the application UI is loaded (that is, [loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent) is successfully called).
 > - When an application uses **requestEnableNotification()** to display a dialog box for notification authorization and the user rejects the authorization, the application cannot use this API to open the dialog box again. However, it can call [openNotificationSettings](#notificationmanageropennotificationsettings13) to open the notification management dialog box.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1419,10 +1461,10 @@ class MyAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err) ?? ''}`);
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      hilog.info(0x0000, 'testTag', `Succeeded in loading the content. Data: ${JSON.stringify(data) ?? ''}`);
       notificationManager.requestEnableNotification(this.context).then(() => {
         hilog.info(0x0000, 'testTag', `[ANS] requestEnableNotification success`);
       }).catch((err: BusinessError) => {
@@ -1441,7 +1483,7 @@ Requests notification to be enabled for this application. This API uses an async
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. You are advised to use [requestEnableNotification](#notificationmanagerrequestenablenotification10) with **context** input parameters instead.
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [requestEnableNotification](#notificationmanagerrequestenablenotification10) with context instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1487,7 +1529,7 @@ Requests notification to be enabled for this application. This API uses a promis
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. You are advised to use [requestEnableNotification](#notificationmanagerrequestenablenotification10-1) with **context** input parameters instead.
+> This API is supported since API version 9 and deprecated since API version 12. You are advised to use [requestEnableNotification](#notificationmanagerrequestenablenotification10-1) with context instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1499,7 +1541,7 @@ Requests notification to be enabled for this application. This API uses a promis
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1527,13 +1569,15 @@ isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
 Checks whether the device supports cross-device notifications. This API uses an asynchronous callback to return the result.
 
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, **false** is returned.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Parameters**
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the cross-device notification is supported; **false** means the opposite. If the call fails, an error object is returned.|
+| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the cross-device notification is supported; **false** means the opposite. If this API call fails, an error object is returned.|
 
 **Error codes**
 
@@ -1568,6 +1612,8 @@ isDistributedEnabled(): Promise\<boolean>
 
 Checks whether the device supports cross-device notifications. This API uses a promise to return the result.
 
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, **false** is returned.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **Return value**
@@ -1578,7 +1624,7 @@ Checks whether the device supports cross-device notifications. This API uses a p
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1604,8 +1650,6 @@ notificationManager.isDistributedEnabled().then((data: boolean) => {
 openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 Opens the notification settings page of the application, which is displayed in semi-modal mode and can be used to set the notification enabling and notification mode. This API uses a promise to return the result.
-
-This API is not supported on wearables.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1647,10 +1691,10 @@ class MyAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err, data) => {
       if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err) ?? ''}`);
         return;
       }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+      hilog.info(0x0000, 'testTag', `Succeeded in loading the content. Data: ${JSON.stringify(data) ?? ''}`);
       notificationManager.openNotificationSettings(this.context).then(() => {
         hilog.info(0x0000, 'testTag', `[ANS] openNotificationSettings success`);
       }).catch((err: BusinessError) => {
@@ -1745,8 +1789,19 @@ Enumerates the notification slot types.
 | SERVICE_INFORMATION  | 2 | Notification slot for service information. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_HIGH**.|
 | CONTENT_INFORMATION  | 3 | Notification slot for content consultation. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_MIN**.|
 | LIVE_VIEW<sup>11+</sup>            | 4 | Live view. A third-party application cannot directly create a notification of this slot type. After the system proxy creates a system live view, the third-party application publishes a notification with the same ID to update the specified content. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_DEFAULT**.|
-| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | Customer service message. This type is used for messages between users and customer service providers. The messages must be initiated by users. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_DEFAULT**. |
+| CUSTOMER_SERVICE<sup>11+</sup>     | 5 | Notification slot for customer service message. This type is used for messages between users and customer service providers. The messages must be initiated by users. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_DEFAULT**. |
 | OTHER_TYPES          | 0xFFFF | Notification slot for other purposes. This type corresponds to [SlotLevel](#slotlevel) being **LEVEL_MIN**.|
+
+## NotificationSetting<sup>20+</sup>
+
+Describes notification settings, including whether to enable vibration and ringtone.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Name            | Type    | Read-Only| Optional| Description                                        |
+| ---------------- | ------- | ---- | ---- | ------------------------------------------- |
+| vibrationEnabled | boolean | No  |  No | Whether to enable vibration.<br> - **true**: enabled.<br> - **false**: disable.|
+| soundEnabled     | boolean | No  |  No | Whether to enable ringtone.<br> - **true**: enabled.<br> - **false**: disable.|
 
 ## BundleOption
 
@@ -1952,14 +2007,16 @@ Describes the notification progress.
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | Notification progress.|
 
-## NotificationSetting<sup>20+</sup>
+## PriorityNotificationType<sup>23+</sup>
 
-Describes notification settings, including whether to enable vibration and ringtone.
+Enumerates the priority notification types.
 
 **System capability**: SystemCapability.Notification.Notification
 
-
-| Name   | Type                                 | Mandatory| Description                  |
-| ------- | ------------------------------------ | ---- | ---------------------- |
-| vibrationEnabled | boolean | Yes| Whether to enable vibration. The value **true** means to enable vibration, and **false** means the opposite.|
-| soundEnabled | boolean | Yes| Whether to enable ringtone. The value **true** means to enable ringtone, and **false** means the opposite.|
+| Name                | Value | Description                              |
+| --------------------| --- | --------------------------------- |
+| OTHER   | "OTHER"   | Default.           |
+| PRIMARY_CONTACT    | "PRIMARY_CONTACT"   | Primary contacts.                |
+| AT_ME  | "AT_ME"   | Message that mentions me.           |
+| URGENT_MESSAGE   | "URGENT_MESSAGE"   | Urgent message.                |
+| SCHEDULE_REMINDER   | "SCHEDULE_REMINDER"   | Schedule reminder.                |

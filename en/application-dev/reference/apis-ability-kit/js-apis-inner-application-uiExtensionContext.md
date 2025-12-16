@@ -1,12 +1,19 @@
 # UIExtensionContext
 
-**UIExtensionContext**, inherited from [ExtensionContext](js-apis-inner-application-extensionContext.md), provides the context environment for the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). It provides UIExtensionAbility-related configurations and APIs for operating the UIExtensionAbility. For example, you can use the APIs to start a UIExtensionAbility.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @xhz-sz-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+UIExtensionContext provides the context environment for the [UIExtensionAbility](js-apis-app-ability-uiExtensionAbility.md). It inherits from [ExtensionContext](js-apis-inner-application-extensionContext.md) and provides UIExtensionAbility-related configurations and APIs for operating the [UIAbility](js-apis-app-ability-uiAbility.md). For example, you can use the APIs to start a UIAbility.
 
 > **NOTE**
 >
 >  - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  - The APIs of this module can be used only in the stage model.
->  - The APIs of this module must be used in the main thread, but not in sub-threads such as Worker and TaskPool.
+>  - The APIs of this module must be used in the main thread, but not in child threads such as Worker and TaskPool.
 
 ## Modules to Import
 
@@ -14,11 +21,13 @@
 import { common } from '@kit.AbilityKit';
 ```
 
-## UIExtensionContext.startAbility
+## UIExtensionContext
+
+### startAbility
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-Starts an ability. This API uses an asynchronous callback to return the result.
+Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -30,8 +39,8 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**; otherwise, **err** is an error object.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the UIAbility is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -43,7 +52,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
@@ -52,7 +61,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version 11 or later. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -72,10 +81,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
 
   onForeground() {
     let want: Want = {
@@ -103,11 +113,11 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.startAbility
+### startAbility
 
 startAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
-Starts an ability with the start options specified. This API uses an asynchronous callback to return the result.
+Starts a UIAbility. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -119,9 +129,9 @@ Starts an ability with the start options specified. This API uses an asynchronou
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the ability is started, **err** is **undefined**; otherwise, **err** is an error object.|
+| want | [Want](js-apis-app-ability-want.md)  | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Extra parameters used for starting the UIAbility.|
+| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the UIAbility is started, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -132,7 +142,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
@@ -140,7 +150,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version 11 or later. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -160,10 +170,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let want: Want = {
       deviceId: '',
@@ -194,11 +205,11 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.startAbility
+### startAbility
 
 startAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-Starts an ability. This API uses a promise to return the result.
+Starts a UIAbility. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -210,8 +221,8 @@ Starts an ability. This API uses a promise to return the result.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Extra parameters used for starting the UIAbility.|
 
 **Return value**
 
@@ -229,7 +240,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
@@ -238,7 +249,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version 11 or later. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -258,10 +269,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, StartOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let want: Want = {
       bundleName: 'com.example.myapplication',
@@ -291,14 +303,14 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.startAbilityForResult
+### startAbilityForResult
 
 startAbilityForResult(want: Want, callback: AsyncCallback&lt;AbilityResult&gt;): void
 
-Starts an ability and obtains the result when the ability is terminated. This API uses an asynchronous callback to return the result. The following situations may be possible for a started ability:
- - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextterminateselfwithresult) to terminate the ability. The result is returned to the caller.
- - If an exception occurs, for example, the ability is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
- - If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextterminateselfwithresult) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. The following situations may be possible for a started UIAbility:
+ - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
+ - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
+ - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE**
 >
@@ -310,7 +322,7 @@ Starts an ability and obtains the result when the ability is terminated. This AP
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+| want |[Want](js-apis-app-ability-want.md) | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
 | callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
@@ -323,7 +335,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
@@ -332,7 +344,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version 11 or later. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -352,10 +364,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, common } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let want: Want = {
       deviceId: '',
@@ -382,14 +395,14 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.startAbilityForResult
+### startAbilityForResult
 
 startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback&lt;AbilityResult&gt;): void
 
-Starts an ability with the start options specified and obtains the result when the ability is terminated. This API uses an asynchronous callback to return the result. The following situations may be possible for a started ability:
- - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextterminateselfwithresult) to terminate the ability. The result is returned to the caller.
- - If an exception occurs, for example, the ability is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
- - If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextterminateselfwithresult) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses an asynchronous callback to return the result. The following situations may be possible for a started UIAbility:
+ - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
+ - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
+ - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE**
 >
@@ -401,8 +414,8 @@ Starts an ability with the start options specified and obtains the result when t
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want |[Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Parameters used for starting the ability.|
+| want |[Want](js-apis-app-ability-want.md) | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | Yes| Extra parameters used for starting the UIAbility.|
 | callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
@@ -414,7 +427,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | The application does not have permission to call the interface. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
@@ -422,7 +435,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version 11 or later. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -442,10 +455,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, common, StartOptions } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, common, StartOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let want: Want = {
       deviceId: '',
@@ -476,14 +490,14 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.startAbilityForResult
+### startAbilityForResult
 
 startAbilityForResult(want: Want, options?: StartOptions): Promise&lt;AbilityResult&gt;
 
-Starts an ability and obtains the result when the ability is terminated. This API uses a promise to return the result. The following situations may be possible for a started ability:
- - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextterminateselfwithresult) to terminate the ability. The result is returned to the caller.
- - If an exception occurs, for example, the ability is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
- - If different applications call this API to start an ability that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextterminateselfwithresult) to terminate the ability, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+Starts a UIAbility and returns the exit result of the launched UIAbility via a callback. This API uses a promise to return the result. The following situations may be possible for a started UIAbility:
+ - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility. The result is returned to the caller.
+ - If an exception occurs, for example, the UIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the initiator UIAbility.
+ - If different applications call this API to start a UIAbility that uses the singleton mode and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the UIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE**
 >
@@ -495,15 +509,15 @@ Starts an ability and obtains the result when the ability is terminated. This AP
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Parameters used for starting the ability.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want required for starting the UIAbility, which contains information such as the name of the UIAbility to start.|
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Extra parameters used for starting the UIAbility.|
 
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise used to return the result.|
+| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise used to return the exit result of the launched UIAbility.|
 
 **Error codes**
 
@@ -515,7 +529,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
@@ -524,7 +538,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000018 | Redirection to a third-party application is not allowed in API version 11 or later. |
+| 16000018 | Redirection to a third-party application is not allowed in API version greater than 11. |
 | 16000019 | No matching ability is found. |
 | 16000050 | Internal error. |
 | 16000053 | The ability is not on the top of the UI. |
@@ -544,10 +558,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, common, StartOptions } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, common, StartOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let want: Want = {
       bundleName: 'com.example.myapplication',
@@ -578,11 +593,13 @@ export default class EntryAbility extends UIExtensionAbility {
 ```
 
 
-## UIExtensionContext.connectServiceExtensionAbility
+### connectServiceExtensionAbility
 
 connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
-Connects this ability to a ServiceExtensionAbility.
+Connects this UIExtensionAbility to a ServiceExtensionAbility. It enables communication with the ServiceExtensionAbility via a proxy, allowing access to the capabilities exposed by the ServiceExtensionAbility.
+
+ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to offer background services for specific scenarios and is not customizable by developers. It can be connected to by other components and handles requests in the background based on the caller information.
 
 > **NOTE**
 >
@@ -594,14 +611,14 @@ Connects this ability to a ServiceExtensionAbility.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | Yes| Want information for connecting to the ServiceExtensionAbility.|
-| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes| Instance of the callback function after the connection to the ServiceExtensionAbility is set up.|
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information required for connecting to the ServiceExtensionAbility, including the ability name and bundle name.|
+| options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | Yes| Callback used to return the information indicating that the connection is successful, failed, or interrupted.|
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| number | Result code of the connection.|
+| number | Connection ID. The client can call [disconnectServiceExtensionAbility](#disconnectserviceextensionability) with this ID for disconnection.|
 
 **Error codes**
 
@@ -613,7 +630,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
@@ -626,11 +643,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, common } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let want: Want = {
       deviceId: '',
@@ -641,13 +659,13 @@ export default class EntryAbility extends UIExtensionAbility {
     let options: common.ConnectOptions = {
       onConnect(elementName, remote) {
         commRemote = remote;
-        console.info('onConnect...')
+        console.info('onConnect...');
       },
       onDisconnect(elementName) {
-        console.info('onDisconnect...')
+        console.info('onDisconnect...');
       },
       onFailed(code) {
-        console.info('onFailed...')
+        console.error(`onFailed, err code: ${code}.`);
       }
     };
     let connection: number;
@@ -663,11 +681,13 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.disconnectServiceExtensionAbility
+### disconnectServiceExtensionAbility
 
 disconnectServiceExtensionAbility(connection: number): Promise\<void>
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to void. This API uses a promise to return the result.
+Disconnects from a ServiceExtensionAbility. Once the connection is terminated, set the remote object, which is returned when the connection is established, to null. This API uses a promise to return the result.
+
+ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to offer background services for specific scenarios and is not customizable by developers. It can be connected to by other components and handles requests in the background based on the caller information.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -675,7 +695,7 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| connection | number | Yes| Digital code of the connected ServiceExtensionAbility, that is, connectionId returned by **connectServiceExtensionAbility**.|
+| connection | number | Yes| ID of the connected ServiceExtensionAbility, that is, **connectionId** returned by [connectServiceExtensionAbility](#connectserviceextensionability).|
 
 **Return value**
 
@@ -696,11 +716,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     // connection is the return value of connectServiceExtensionAbility.
     let connection = 1;
@@ -726,11 +747,13 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.disconnectServiceExtensionAbility
+### disconnectServiceExtensionAbility
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback\<void>): void
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to void. This API uses an asynchronous callback to return the result.
+Disconnects from a ServiceExtensionAbility. Once the connection is terminated, set the remote object, which is returned when the connection is established, to null. This API uses an asynchronous callback to return the result.
+
+ServiceExtensionAbility is a special type of [ExtensionAbility](../../application-models/extensionability-overview.md) provided by the system. It is designed to offer background services for specific scenarios and is not customizable by developers. It can be connected to by other components and handles requests in the background based on the caller information.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -738,7 +761,7 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| connection | number | Yes| Digital code of the connected ServiceExtensionAbility, that is, connectionId returned by **connectServiceExtensionAbility**.|
+| connection | number | Yes| ID of the connected ServiceExtensionAbility, that is, **connectionId** returned by **connectServiceExtensionAbility**.|
 | callback | AsyncCallback\<void> | Yes| Callback used to return the result. If the disconnection is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -754,11 +777,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     // connection is the return value of connectServiceExtensionAbility.
     let connection = 1;
@@ -786,11 +810,11 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.terminateSelf<sup>12+</sup>
+### terminateSelf<sup>12+</sup>
 
 terminateSelf(callback: AsyncCallback&lt;void&gt;): void
 
-Stops the window object corresponding to this UIExtensionContext. This API uses an asynchronous callback to return the result.
+Destroys this UIExtensionAbility and closes the corresponding window. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -798,7 +822,7 @@ Stops the window object corresponding to this UIExtensionContext. This API uses 
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the window object is stopped, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -811,10 +835,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     try {
       this.context.terminateSelf((err: BusinessError) => {
@@ -836,11 +861,11 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.terminateSelf<sup>12+</sup>
+### terminateSelf<sup>12+</sup>
 
 terminateSelf(): Promise&lt;void&gt;
 
-Stops the window object corresponding to this UIExtensionContext. This API uses a promise to return the result.
+Destroys this UIExtensionAbility and closes the corresponding window. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -853,10 +878,11 @@ Stops the window object corresponding to this UIExtensionContext. This API uses 
 **Example**
 
 ```ts
-import { UIExtensionAbility } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     try {
       this.context.terminateSelf()
@@ -878,11 +904,11 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.terminateSelfWithResult<sup>12+</sup>
+### terminateSelfWithResult<sup>12+</sup>
 
 terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback&lt;void&gt;): void
 
-Stops the window object corresponding to this UIExtensionContext and returns the result to the UIExtensionComponent. This API uses an asynchronous callback to return the result.
+Destroys this UIExtensionAbility, closes the corresponding window, and returns the result to the caller of the UIExtensionAbility (usually a system service). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -890,8 +916,8 @@ Stops the window object corresponding to this UIExtensionContext and returns the
 
 | Name   | Type                                                   | Mandatory| Description                                                  |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------ |
-| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes  | Result returned to the UIExtensionComponent.                |
-| callback  | AsyncCallback&lt;void&gt;                               | Yes  | Callback used to return the result. If the window object is stopped, **err** is **undefined**; otherwise, **err** is an error object.|
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes  | Information returned to the caller of the UIExtensionAbility.                |
+| callback  | AsyncCallback&lt;void&gt;                               | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -904,10 +930,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, common } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let want: Want = {
       bundleName: 'com.example.myapplication',
@@ -940,11 +967,11 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.terminateSelfWithResult<sup>12+</sup>
+### terminateSelfWithResult<sup>12+</sup>
 
 terminateSelfWithResult(parameter: AbilityResult): Promise&lt;void&gt;
 
-Stops the window object corresponding to this UIExtensionContext and returns the result to the UIExtensionComponent. This API uses a promise to return the result.
+Destroys this UIExtensionAbility, closes the corresponding window, and returns the result to the caller of the UIExtensionAbility (usually a system service). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -952,7 +979,7 @@ Stops the window object corresponding to this UIExtensionContext and returns the
 
 | Name   | Type                                                   | Mandatory| Description                                  |
 | --------- | ------------------------------------------------------- | ---- | -------------------------------------- |
-| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes  | Result returned to the UIExtensionComponent.|
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes  | Information returned to the caller of the UIExtensionAbility.|
 
 **Return value**
 
@@ -969,10 +996,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 ```ts
-import { UIExtensionAbility, Want, common } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let want: Want = {
       bundleName: 'com.example.myapplication',
@@ -1005,11 +1033,11 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.reportDrawnCompleted<sup>12+<sup>
+### reportDrawnCompleted<sup>12+<sup>
 
 reportDrawnCompleted(callback: AsyncCallback\<void>): void
 
-Reports an event indicating that page loading is complete (**onSessionCreate()** is successfully called). This API uses an asynchronous callback to return the result.
+Called when the window content associated with the UIExtensionAbility finishes drawing. The system uses the information to optimize resource allocation, thereby enhancing the efficiency of application startup and display. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1031,12 +1059,13 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, UIExtensionContentSession } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, UIExtensionContentSession } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TAG: string = '[testTag] UIExtAbility';
+const TAG: string = '[testTag] ShareExtAbility';
 
-export default class UIExtAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
     let data: Record<string, UIExtensionContentSession> = {
@@ -1064,15 +1093,15 @@ export default class UIExtAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.openAtomicService<sup>12+<sup>
+### openAtomicService<sup>12+<sup>
 
 openAtomicService(appId: string, options?: AtomicServiceOptions): Promise&lt;AbilityResult&gt;
 
-Starts an [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md) in jump-out mode and returns the result. This API uses a promise to return the result.
-The following situations may be possible for a started EmbeddableUIAbility:
- - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextterminateselfwithresult) to terminate the EmbeddableUIAbility. The result is returned to the caller.
- - If an exception occurs, for example, the EmbeddableUIAbility is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
- - If different applications call this API to start an EmbeddableUIAbility and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextterminateselfwithresult) to terminate the EmbeddableUIAbility, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
+Opens an atomic service in an independent window and returns the result. This API uses a promise to return the result.
+The following situations may be possible for a started atomic service:
+ - Normally, you can call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the atomic service. The result is returned to the caller.
+ - If an exception occurs, for example, the atomic service is killed, an error message, in which **resultCode** is **-1**, is returned to the caller.
+ - If different applications call this API to start an atomic service and then call [terminateSelfWithResult](js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) to terminate the atomic service, the normal result is returned to the last caller, and an exception message, in which **resultCode** is **-1**, is returned to others.
 
 > **NOTE**
 >
@@ -1085,14 +1114,14 @@ The following situations may be possible for a started EmbeddableUIAbility:
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | appId | string | Yes| Unique ID of the application, which is allocated by the cloud.|
-| options | [AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md) | No| Parameter carried in the request for starting the atomic service in jump-out mode.|
+| options | [AtomicServiceOptions](js-apis-app-ability-atomicServiceOptions.md) | No| Parameter carried in the request for starting the atomic service.|
 
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise used to return the result, which is an [AbilityResult](js-apis-inner-ability-abilityResult.md) object.|
+| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise used to return the information to the caller.|
 
 **Error codes**
 
@@ -1103,7 +1132,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000002 | Incorrect ability type. |
 | 16000003 | The specified ID does not exist. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000011 | The context does not exist. |
 | 16000012 | The application is controlled.        |
 | 16000050 | Internal error. |
@@ -1114,10 +1143,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, common, AtomicServiceOptions } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, common, AtomicServiceOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onForeground() {
     let appId: string = '6918661953712445909';
     let options: AtomicServiceOptions = {
@@ -1144,18 +1174,18 @@ export default class EntryAbility extends UIExtensionAbility {
 }
 ```
 
-## UIExtensionContext.openLink<sup>12+<sup>
+### openLink<sup>12+<sup>
 
 openLink(link:string, options?: OpenLinkOptions, callback?: AsyncCallback&lt;AbilityResult&gt;): Promise&lt;void&gt;
 
-Starts a UIAbility through App Linking. This API uses a promise to return the result.
+Starts a UIAbility by using App Linking or Deep Linking. This API uses a promise to return the result.
 
 A URL in the standard format is passed in to the **link** field to start the target UIAbility based on the implicit Want matching rules. The target UIAbility must have the following filter characteristics to process links of App Linking:
 - The **actions** field contains **ohos.want.action.viewData**.
 - The **entities** field contains **entity.system.browsable**.
 - The **uris** field contains elements whose **scheme** is **https** and **domainVerify** is **true**.
 
-If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#uiextensioncontextstartabilityforresult).
+If you want to obtain the result after the started UIAbility is terminated, set the **callback** parameter. For details about how to use this parameter, see [startAbilityForResult](#startabilityforresult).
 If an input parameter is invalid, for example, a mandatory parameter is not set or the URL set in **link** is not in the standard format, an exception is thrown. If the parameter verification is successful but an error occurs when starting the target UIAbility, the error information is returned through promise.
 
 > **NOTE**
@@ -1176,7 +1206,7 @@ If an input parameter is invalid, for example, a mandatory parameter is not set 
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | that returns no value.|
 
 **Error codes**
 
@@ -1188,12 +1218,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
-| 16000004 | Failed to start the invisible ability. |
+| 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation flag is forbidden. |
+| 16000010 | The call with the continuation and prepare continuation flag is forbidden. |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
@@ -1205,33 +1235,30 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { UIExtensionAbility, Want, UIExtensionContentSession, OpenLinkOptions } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, Want, UIExtensionContentSession, OpenLinkOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function log(info: string) {
-  console.error(`MyUIExtension:: ${JSON.stringify(info)}`);
-}
-
-export default class UIExtAbility extends UIExtensionAbility {
+export default class ShareExtAbility extends ShareExtensionAbility {
   onCreate() {
-    log(`UIExtAbility onCreate`);
+    console.info(`UIExtAbility onCreate`);
   }
 
   onForeground() {
-    log(`UIExtAbility onForeground`);
+    console.info(`UIExtAbility onForeground`);
   }
 
   onBackground() {
-    log(`UIExtAbility onBackground`);
+    console.info(`UIExtAbility onBackground`);
   }
 
   onDestroy() {
-    log(`UIExtAbility onDestroy`);
+    console.info(`UIExtAbility onDestroy`);
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    log(`UIExtAbility onSessionCreate`);
-    log(`UIExtAbility onSessionCreate, want: ${JSON.stringify(want)}`);
+    console.info(`UIExtAbility onSessionCreate`);
+    console.info(`UIExtAbility onSessionCreate, want: ${JSON.stringify(want)}`);
     let record: Record<string, UIExtensionContentSession> = {
       'session': session
     };
@@ -1247,33 +1274,35 @@ export default class UIExtAbility extends UIExtensionAbility {
         link,
         openLinkOptions,
         (err, result) => {
-          log(`openLink callback error.code: ${JSON.stringify(err)}`);
-          log(`openLink callback result: ${JSON.stringify(result.resultCode)}`);
-          log(`openLink callback result data: ${JSON.stringify(result.want)}`);
+          if (err) {
+            console.error(`openLink callback failed, err code: ${err.code}, err msg: ${err.message}.`);
+            return;
+          }
+          console.info(`openLink success, result code: ${result.resultCode} result data: ${result.want}.`);
         }
       ).then(() => {
-        log(`open link success.`);
+        console.info(`open link success.`);
       }).catch((err: BusinessError) => {
-        log(`open link failed, errCode ${JSON.stringify(err.code)}`);
+        console.error(`open link failed, err code: ${err.code}, err msg: ${err.message}.`);
       });
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let msg = (err as BusinessError).message;
+      console.error(`openLink failed, err code: ${code}, err msg: ${msg}.`);
     }
-    catch (e) {
-      log(`exception occured, errCode ${JSON.stringify(e.code)}`);
-    }
-
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
-    log(`UIExtAbility onSessionDestroy`);
+    console.info(`UIExtAbility onSessionDestroy`);
   }
 }
 ```
 
-## UIExtensionContext.startUIServiceExtensionAbility<sup>14+<sup>
+### startUIServiceExtensionAbility<sup>14+<sup>
 
 startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
-Starts a UIServiceExtensionAbility.
+Starts a UIServiceExtensionAbility. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1286,7 +1315,7 @@ Starts a UIServiceExtensionAbility.
 
 | Name  | Type                                                                        | Mandatory| Description                     |
 | -------- | --------------------------------------------------------------------------- | --- |------------------------- |
-| want     | [Want](js-apis-app-ability-want.md)                                        | Yes| Want information for starting the UIServiceExtensionAbility.|
+| want     | [Want](js-apis-app-ability-want.md)                                        | Yes| Want for starting the UIServiceExtensionAbility.|
 
 **Return value**
 
@@ -1305,7 +1334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not supported. |
 | 16000001 | The specified ability does not exist.                                                                       |
 | 16000002 | Incorrect ability type.                                                                                     |
-| 16000004 | Failed to start the invisible ability.                                                                      |
+| 16000004 | Cannot start an invisible component.                                                                      |
 | 16000005 | The specified process does not have the permission.                                                         |
 | 16000008 | The crowdtesting application expires.                                                                       |
 | 16000011 | The context does not exist.                                                                                 |
@@ -1339,12 +1368,14 @@ struct Index {
             try {
               // Start the UIServiceExtensionAbility.
               context.startUIServiceExtensionAbility(startWant).then(() => {
-                console.log('startUIServiceExtensionAbility success');
+                console.info(`startUIServiceExtensionAbility success.`);
               }).catch((error: BusinessError) => {
-                console.log('startUIServiceExtensionAbility error', JSON.stringify(error));
+                console.error(`startUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
               })
             } catch (err) {
-              console.log('startUIServiceExtensionAbility failed', JSON.stringify(err));
+              let code = (err as BusinessError).code;
+              let msg = (err as BusinessError).message;
+              console.error(`startUIServiceExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
             }
           })
       }
@@ -1353,11 +1384,11 @@ struct Index {
 }
 ```
 
-## UIExtensionContext.connectUIServiceExtensionAbility<sup>14+<sup>
+### connectUIServiceExtensionAbility<sup>14+<sup>
 
 connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnectCallback) : Promise&lt;UIServiceProxy&gt;
 
-Connects to a UIServiceExtensionAbility.
+Connects to a UIServiceExtensionAbility. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1377,7 +1408,7 @@ Connects to a UIServiceExtensionAbility.
 
 | Type                   | Description                |
 | ----------------------- | -------------------- |
-| Promise&lt;UIServiceProxy&gt; | When the UIServiceExtensionAbility is connected, a [UIServiceProxy](js-apis-inner-application-uiserviceproxy.md) object is returned, which can be used to send data to the UIServiceExtensionAbility.|
+| Promise&lt;UIServiceProxy&gt; | Promise used to return a [UIServiceProxy](js-apis-inner-application-uiserviceproxy.md) object when the UIServiceExtensionAbility is connected. This object can be used to send data to the UIServiceExtensionAbility.|
 
 **Error codes**
 
@@ -1390,7 +1421,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801      | Capability not supported.                                              |
 | 16000001 | The specified ability does not exist.                                  |
 | 16000002 | Incorrect ability type.                                                |
-| 16000004 | Failed to start the invisible ability.                                 |
+| 16000004 | Cannot start an invisible component.                                 |
 | 16000005 | The specified process does not have the permission.                    |
 | 16000008 | The crowdtesting application expires.                                  |
 | 16000011 | The context does not exist.                                            |
@@ -1424,18 +1455,18 @@ struct Page_UIServiceExtensionAbility {
         // Define a callback.
         const callback: common.UIServiceExtensionConnectCallback = {
           onData: (data: Record<string, Object>): void => {
-            console.log('onData:', JSON.stringify(data));
+            console.info(`onData, data: ${JSON.stringify(data)}.`);
           },
           onDisconnect: (): void => {
-            console.log('onDisconnect');
+            console.info(`onDisconnect`);
           }
         };
         // Connect to the UIServiceExtensionAbility.
         context.connectUIServiceExtensionAbility(want, callback).then((uiServiceProxy: common.UIServiceProxy) => {
           this.uiServiceProxy = uiServiceProxy;
-          console.log('connectUIServiceExtensionAbility success');
+          console.info(`connectUIServiceExtensionAbility success`);
         }).catch((error: BusinessError) => {
-          console.log('connectUIServiceExtensionAbility failed', JSON.stringify(error));
+          console.error(`connectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
         })
       })
     }
@@ -1443,11 +1474,11 @@ struct Page_UIServiceExtensionAbility {
 }
 ```
 
-## UIExtensionContext.disconnectUIServiceExtensionAbility<sup>14+<sup>
+### disconnectUIServiceExtensionAbility<sup>14+<sup>
 
 disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
-Disconnects a UIServiceExtensionAbility.
+Disconnects from a UIServiceExtensionAbility. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1455,7 +1486,7 @@ Disconnects a UIServiceExtensionAbility.
 
 | Name              | Type                            | Mandatory| Description                |
 | -------------------- | -------------------------------- | ---- | -------------------- |
-| proxy  | [UIServiceProxy](js-apis-inner-application-uiserviceproxy.md)  | Yes | Proxy used returned by calling [connectUIServiceExtensionAbility](#uiextensioncontextconnectuiserviceextensionability13).|
+| proxy  | [UIServiceProxy](js-apis-inner-application-uiserviceproxy.md)  | Yes | Proxy used returned by calling [connectUIServiceExtensionAbility](#connectuiserviceextensionability14).|
 
 **Return value**
 
@@ -1493,9 +1524,9 @@ struct Page_UIServiceExtensionAbility {
         const context = this.getUIContext().getHostContext() as common.UIExtensionContext;
         // this.uiServiceProxy is the proxy object saved during connection.
         context.disconnectUIServiceExtensionAbility(this.uiServiceProxy).then(() => {
-          console.log('disconnectUIServiceExtensionAbility success');
+          console.info(`disconnectUIServiceExtensionAbility success.`);
         }).catch((error: BusinessError) => {
-          console.log('disconnectUIServiceExtensionAbility failed', JSON.stringify(error));
+          console.info(`disconnectUIServiceExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
         })
       })
     }
@@ -1503,15 +1534,15 @@ struct Page_UIServiceExtensionAbility {
 }
 ```
 
-## UIExtensionContext.setColorMode<sup>18+</sup>
+### setColorMode<sup>18+</sup>
 
 setColorMode(colorMode: ConfigurationConstant.ColorMode): void
 
-Sets the color mode for this UIExtensionAbility. Before calling this API, ensure that the page corresponding to the UIExtensionContext has been loaded. This API can be called only by the main thread.
+Sets the dark/light color mode for this UIExtensionAbility. Before calling this API, ensure that the page corresponding to the UIExtensionContext has been loaded. This API can be called only by the main thread.
 
 > **NOTE**
 > - After this API is called, a new resource manager object is created. If a resource manager was previously cached, it should be updated accordingly.
-> - The priority of the color mode is as follows: UIExtensionAbility color mode > Application color mode (set via [ApplicationContext.setColorMode](js-apis-inner-application-applicationContext.md)) > System color mode.
+> - The priority of the dark/light color mode is as follows: UIExtensionAbility dark/light color mode > Application dark/light color mode (set via [ApplicationContext.setColorMode](js-apis-inner-application-applicationContext.md#applicationcontextsetcolormode11)) > System dark/light color mode.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1523,19 +1554,19 @@ Sets the color mode for this UIExtensionAbility. Before calling this API, ensure
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
 
 | ID| Error Message|
 | ------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000011 | The context does not exist. |
 
 **Example**
 
 ```ts
-import { UIExtensionAbility, ConfigurationConstant } from '@kit.AbilityKit';
+// The UIExtensionAbility class does not allow direct inheritance by third-party applications. The child class ShareExtensionAbility is used here as an example.
+import { ShareExtensionAbility, ConfigurationConstant } from '@kit.AbilityKit';
 
-export default class MyAbility extends UIExtensionAbility {
+export default class MyAbility extends ShareExtensionAbility {
   onForeground() {
     let uiExtensionContext = this.context;
     uiExtensionContext.setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);

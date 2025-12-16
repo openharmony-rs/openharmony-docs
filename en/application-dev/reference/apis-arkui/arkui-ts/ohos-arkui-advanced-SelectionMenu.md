@@ -1,7 +1,13 @@
 # SelectionMenu
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
-The **SelectionMenu** component is a context menu designed for use with the [RichEditor](ts-basic-components-richeditor.md) component, allowing you to bind a custom context menu on selection through the [bindSelectionMenu](./ts-basic-components-richeditor.md#bindselectionmenu) API. This component is not intended for standalone use, and you are advised to display it by right-clicking or by selecting text with a mouse device.
+The **SelectionMenu** component serves as a context menu designed specifically for text selection in the [RichEditor](ts-basic-components-richeditor.md) or [Text](ts-basic-components-text.md) component. This component must be bound to either a **RichEditor** component through its [bindSelectionMenu](ts-basic-components-richeditor.md#bindselectionmenu) API or a **Text** component using its [bindSelectionMenu](ts-basic-components-text.md#bindselectionmenu11) API to work properly, as it cannot operate as an independent UI element. It is recommended that this component be displayed through mouse right-click or text selection events.
 
 
 > **NOTE**
@@ -11,8 +17,8 @@ The **SelectionMenu** component is a context menu designed for use with the [Ric
 
 ## Modules to Import
 
-```
-import { SelectionMenu, EditorMenuOptions, ExpandedMenuOptions, EditorEventInfo, SelectionMenuOptions } from '@kit.ArkUI'
+```ts
+import { SelectionMenu, EditorMenuOptions, ExpandedMenuOptions, EditorEventInfo, SelectionMenuOptions } from '@kit.ArkUI';
 ```
 
 ## Child Components
@@ -23,53 +29,57 @@ Not supported
 
 SelectionMenu(options: SelectionMenuOptions): void
 
-Defines a custom context menu on selection. When the input parameter is empty, the sizes of the menu and its content area are 0, making the menu invisible. In this case, for example, if a right-click context menu is bound to the **RichEditor** component, it will not be displayed when the component is right-clicked.
+Defines a **SelectionMenu** component. When the input parameter is empty, both the component and its content area have a zero size, making the component invisible. For example, when a **SelectionMenu** component activated via right-click is bound to a [RichEditor](ts-basic-components-richeditor.md) component using [bindSelectionMenu](ts-basic-components-richeditor.md#bindselectionmenu), it will not be displayed when the **RichEditor** component receives a right-click event.
 
-**Decorator**: @Builder
+**Decorator**: \@Builder
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [SelectionMenuOptions](#selectionmenuoptions) | Yes| Options of the context menu on selection.|
+| options | [SelectionMenuOptions](#selectionmenuoptions) | Yes| Configuration options of the **SelectionMenu** component.|
 
 ## SelectionMenuOptions
 
-Defines the options of the context menu on selection.
+Defines the configuration options of the **SelectionMenu** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| editorMenuOptions | Array&lt;[EditorMenuOptions](#editormenuoptions)&gt; | No| Edit menu.<br>If **editorMenuOptions** is not set, the edit menu is not displayed.<br>When both **action** and **builder** in **EditorMenuOptions** are configured, clicking the edit icon will trigger both.<br>By default, the context menu is not closed when the edit menu icon is clicked. You can configure **closeSelectionMenu** of **RichEditorController** in **action** to enable the menu to be closed.|
-| expandedMenuOptions | Array&lt;[ExpandedMenuOptions](#expandedmenuoptions)&gt; | No| Expanded drop-down menu options.<br>If this parameter is left empty, the expanded drop-down menu is not displayed.<br>The options configured for **ExpandedMenuOptions** are displayed in the **More** menu option, and clicking **More** shows the expanded drop-down menu.|
-| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | No| Rich text editor controller. If **controller** is set, the default system menu (including the cut, copy, and paste options) is displayed, and the preset menu features are provided.<br>If **controller** is left empty, the **More** menu option is not displayed. If **expandedMenuOptions** is not empty, the expanded drop-down menu is displayed.<br>By default, the copy and paste feature is only available for rich text. To use the feature for content that includes both text and images, define custom **onCopy** and **onPaste** APIs. If a custom **onCopy** \| **onPaste** API is defined, the default copy and paste feature is ineffective, and the custom API is called instead.<br>**NOTE**<br> When the preset copy option is selected, the custom context menu on selection is hidden, while the selected text is still highlighted.<br> When the preset select-all option is selected, the custom context menu on selection is hidden, while all text is highlighted.<br> When the preset paste option is selected, the style of the copied text is retained, whether the text is pasted to a blank area or not.<br> When the **copyOptions** attribute of the [RichEditor](ts-basic-components-richeditor.md) component is set to **CopyOptions.None**, the preset copy and cut features are not restricted.|
-| onCopy | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Event callback to take the place of the preset copy menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br> **event** indicates the returned information.|
-| onPaste | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Event callback to take the place of the preset paste menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br> **event** indicates the returned information.|
-| onCut | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Event callback to take the place of the preset cut menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br>**event** indicates the returned information.|
-| onSelectAll | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Event callback to take the place of the preset select-all menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br>**event** indicates the returned information.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| editorMenuOptions | Array&lt;[EditorMenuOptions](#editormenuoptions)&gt; | No| Yes| Edit menu.<br>If **editorMenuOptions** is not set, the edit menu is not displayed.<br>When both **action** and **builder** in **EditorMenuOptions** are configured, clicking the edit icon will trigger both.<br>By default, the context menu is not closed when the edit menu icon is clicked. You can configure **closeSelectionMenu** of **RichEditorController** in **action** to enable the menu to be closed.|
+| expandedMenuOptions | Array&lt;[ExpandedMenuOptions](#expandedmenuoptions)&gt; | No| Yes| Expanded drop-down menu options.<br>If this parameter is left empty, the expanded drop-down menu is not displayed.<br>The options configured for **ExpandedMenuOptions** are displayed in the **More** menu option, and clicking **More** shows the expanded drop-down menu.|
+| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | No| Yes| Rich text editor controller. If **controller** is set, the default system menu (including the cut, copy, and paste options) is displayed, and the preset menu features are provided.<br>If **controller** is left empty, the **More** menu option is not displayed. If **expandedMenuOptions** is not empty, the expanded drop-down menu is displayed.<br>By default, the copy and paste feature is only available for rich text. To use the feature for content that includes both text and images, define custom **onCopy** and **onPaste** APIs. If a custom **onCopy \| onPaste** API is defined, the default copy and paste feature is ineffective, and the custom API is called instead.<br>**NOTE**<br> When the preset copy option is selected, the custom context menu on selection is hidden, while the selected text is still highlighted.<br> When the preset select-all option is selected, the custom context menu on selection is hidden, while all text is highlighted.<br> When the preset paste option is selected, the style of the copied text is retained, whether the text is pasted to a blank area or not.<br> When the **copyOptions** attribute of the [RichEditor](ts-basic-components-richeditor.md) component is set to **CopyOptions.None**, the preset copy and cut features are not restricted.|
+| onCopy | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Yes| Event callback to take the place of the preset copy menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br> **event** indicates the returned information.|
+| onPaste | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Yes| Event callback to take the place of the preset paste menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br> **event** indicates the returned information.|
+| onCut | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Yes| Event callback to take the place of the preset cut menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br>**event** indicates the returned information.|
+| onSelectAll | (event?: [EditorEventInfo](#editoreventinfo)) =&gt; void | No| Yes| Event callback to take the place of the preset select-all menu option.<br>It is effective only when the **controller** parameter is set and the preset menu is available.<br>**NOTE**<br>**event** indicates the returned information.|
 
 
 ## EditorMenuOptions
 
 Describes the edit menu options.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | Yes| Icon.|
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Symbol icon resource, which has higher priority than **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| builder | () =&gt; void | No| Builder of the custom component displayed upon click. It must be used with @Builder for building the custom component.|
-| action | () =&gt; void | No| Action triggered when the menu option is clicked.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No| No| Icon.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| builder | () =&gt; void | No| Yes| Builder of the custom component displayed upon click. It must be used with @Builder for building the custom component.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| action | () =&gt; void | No| Yes| Action triggered when the menu option is clicked.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | No| Yes| Symbol icon resource, which has higher priority than **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 
 ## ExpandedMenuOptions
@@ -82,9 +92,11 @@ Inherits from [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions)
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| action | () =&gt; void | No| Action triggered when the menu option is clicked.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| action | () =&gt; void | No| Yes| Action triggered when the menu option is clicked.|
 
 ## EditorEventInfo
 
@@ -94,9 +106,11 @@ Provides the information about the selected content.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| content | [RichEditorSelection](ts-basic-components-richeditor.md#richeditorselection) | No| Information about the selected content.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| content | [RichEditorSelection](ts-basic-components-richeditor.md#richeditorselection) | No| Yes| Information about the selected content.|
 
 ## Attributes
 
@@ -117,7 +131,7 @@ import {
   ExpandedMenuOptions,
   EditorEventInfo,
   SelectionMenuOptions
-} from '@kit.ArkUI'
+} from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -136,6 +150,7 @@ struct Index {
   private editorMenuOptions: Array<EditorMenuOptions> =
     [
       {
+        // Replace $r('app.media.ic_notepad_textbold') with the image resource file you use.
         icon: $r("app.media.ic_notepad_textbold"), action: () => {
         if (this.controller) {
           let selection = this.controller.getSelection();
@@ -163,6 +178,7 @@ struct Index {
       }
       },
       {
+        // Replace $r('app.media.ic_notepad_texttilt') with the image resource file you use.
         icon: $r("app.media.ic_notepad_texttilt"), action: () => {
         if (this.controller) {
           let selection = this.controller.getSelection();
@@ -190,6 +206,7 @@ struct Index {
       }
       },
       {
+        // Replace $r('app.media.ic_notepad_underline') with the image resource file you use.
         icon: $r("app.media.ic_notepad_underline"),
         action: () => {
           if (this.controller) {
@@ -222,10 +239,12 @@ struct Index {
         }
       },
       {
+        // Replace $r('app.media.ic_notepad_fontsize') with the image resource file you use.
         icon: $r("app.media.ic_notepad_fontsize"), action: () => {
       }, builder: (): void => this.sliderPanel()
       },
       {
+        // Replace $r('app.media.ic_notepad_textcolor') with the image resource file you use.
         icon: $r("app.media.ic_notepad_textcolor"), action: () => {
         if (this.controller) {
           let selection = this.controller.getSelection();
@@ -254,17 +273,19 @@ struct Index {
       }]
   private expandedMenuOptions: Array<ExpandedMenuOptions> =
     [{
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       startIcon: $r("app.media.startIcon"), content: 'Dictionary', action: () => {
       }
     }, {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       startIcon: $r("app.media.startIcon"), content: 'Translate', action: () => {
       }
     }, {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       startIcon: $r("app.media.startIcon"), content: 'Search', action: () => {
       }
     }]
-  private expandedMenuOptions1: Array<ExpandedMenuOptions> = []
-  private editorMenuOptions1: Array<EditorMenuOptions> = []
+  private expandedMenuOptions1: Array<ExpandedMenuOptions> = [];
   private selectionMenuOptions: SelectionMenuOptions = {
     editorMenuOptions: this.editorMenuOptions,
     expandedMenuOptions: this.expandedMenuOptions,
@@ -313,7 +334,7 @@ struct Index {
         })
       }
     }
-  }
+  };
 
   @Builder
   sliderPanel() {
@@ -429,11 +450,11 @@ struct Index {
 >
 > Icons in bold and italics are not preset in the system. The sample code uses the default icons. You need to replace the icons in **editorMenuOptions** with the desired icons.
 
-![selectionmenu](figures/selectionmenu.gif)
+
 
 ### Example 2: Setting the Symbol Icon
 
-This example demonstrates how to use **symbolStyle** in **EditorMenuOptions** to set custom symbol icons.
+This example demonstrates how to use **symbolStyle** in [EditorMenuOptions](#editormenuoptions) to set custom symbol icons. This functionality is supported since API version 11.
 
 ```ts
 import {
@@ -553,6 +574,7 @@ struct Index {
         }
       },
       {
+        // Replace $r('app.media.app_icon') with the image resource file you use.
         icon: $r("app.media.app_icon"), action: () => {
       }, builder: (): void => this.sliderPanel()
       },
@@ -585,12 +607,15 @@ struct Index {
       }]
   private expandedMenuOptions: Array<ExpandedMenuOptions> =
     [{
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       startIcon: $r("app.media.startIcon"), content: 'Dictionary', action: () => {
       }
     }, {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       startIcon: $r("app.media.startIcon"), content: 'Translate', action: () => {
       }
     }, {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       startIcon: $r("app.media.startIcon"), content: 'Search', action: () => {
       }
     }]

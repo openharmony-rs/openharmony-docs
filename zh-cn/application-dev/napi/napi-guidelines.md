@@ -1,4 +1,10 @@
 # Node-API开发规范
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 获取JS传入参数及其数量
 
@@ -43,7 +49,7 @@ static napi_value GetArgvDemo1(napi_env env, napi_callback_info info) {
     // 业务代码
     // ... ...
     // argv 为 new 创建的对象，在使用完成后手动释放
-    delete argv;
+    delete[] argv;
     return nullptr;
 }
 
@@ -209,11 +215,11 @@ napi_wrap(napi_env env, napi_value js_object, void* native_object, napi_finalize
 
 ```cpp
 // 用法1：napi_wrap不需要接收创建的napi_ref，最后一个参数传递nullptr，创建的napi_ref是弱引用，由系统管理，不需要用户手动释放
-napi_wrap(env, jsobject, nativeObject, cb, nullptr, nullptr)；
+napi_wrap(env, jsobject, nativeObject, cb, nullptr, nullptr);
 
 // 用法2：napi_wrap需要接收创建的napi_ref，最后一个参数不为nullptr，返回的napi_ref是强引用，需要用户手动释放，否则会内存泄漏
 napi_ref result;
-napi_wrap(env, jsobject, nativeObject, cb, nullptr, &result)；
+napi_wrap(env, jsobject, nativeObject, cb, nullptr, &result);
 // 当js_object和result后续不再使用时，及时调用napi_remove_wrap释放result
 void* nativeObjectResult = nullptr;
 napi_remove_wrap(env, jsobject, &nativeObjectResult);
@@ -275,7 +281,7 @@ static napi_value ArrayBufferDemo(napi_env env, napi_callback_info info)
 }
 ```
 
-napi_create_arraybuffer等同于JS代码中的`new ArrayBuffer(size)`，其生成的对象不可直接在TS/JS中进行读取，需要将其包装为TyppedArray或DataView后方可进行读写。
+napi_create_arraybuffer等同于JS代码中的`new ArrayBuffer(size)`，其生成的对象不可直接在TS/JS中进行读取，需要将其包装为TypedArray或DataView后方可进行读写。
 
 **基准性能测试结果如下：**
 
@@ -299,14 +305,14 @@ napi_create_arraybuffer等同于JS代码中的`new ArrayBuffer(size)`，其生�
 ## 模块注册与模块命名
 
 **【规则】**
-nm_register_func对应的函数需要加上修饰符static，防止与其他so里的符号冲突。
+nm_register_func对应的函数需要加上修饰符static，防止与其他二进制so文件里的符号冲突。
 
 模块注册的入口，即使用__attribute__((constructor))修饰函数的函数名需要确保与其他模块不同。
 
-模块实现中.nm_modname字段需要与模块名完全匹配，区分大小写。
+模块实现中.nm_modname字段需要与二进制so文件的名字完全匹配，区分大小写。
 
 **错误示例**
-以下代码为模块名为nativerender时的错误示例
+以下代码为二进制so文件的名为nativerender时的错误示例
 
 ```cpp
 EXTERN_C_START
@@ -321,7 +327,7 @@ static napi_module nativeModule = {
     .nm_version = 1,
     .nm_flags = 0,
     .nm_filename = nullptr,
-    //没有在nm_register_func对应的函数加上static
+    // 没有在nm_register_func对应的函数加上static
     .nm_register_func = Init,
     // 模块实现中.nm_modname字段没有与模块名完全匹配，会导致多线程场景模块加载失败
     .nm_modname = "entry",
@@ -329,12 +335,19 @@ static napi_module nativeModule = {
     .reserved = { 0 },
 };
 
-//模块注册的入口函数名为RegisterModule，容易与其他模块重复。
+// 模块注册的入口函数名为RegisterModule，容易与其他模块重复
 extern "C" __attribute__((constructor)) void RegisterModule()
 {
     napi_module_register(&nativeModule);
 }
 ```
+图一
+
+![demoModule](./figures/image.png)
+
+图二
+
+![CMakeLists](./figures/image-1.png)
 
 **正确示例**：
 以下代码为模块名为nativerender时的正确示例
@@ -400,12 +413,12 @@ extern "C" void napi_onLoad()
 
 ## 正确的使用napi_create_external系列接口创建的JS Object
 
-**【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。
+**【规则】** napi_create_external系列接口创建出来的JS对象仅允许在当前线程传递和使用，跨线程传递（如使用worker的post_message）将会导致应用crash。若需跨线程传递绑定有Native对象的JS对象，请使用napi_coerce_to_native_binding_object接口绑定JS对象和Native对象。具体API说明详见[API参考](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-about-object#napi_create_external)。
 
 **错误示例**
 
 ```cpp
-static void MyFinalizeCB(napi_env env, void *finalize_data, void *finalize_hint) { return; };
+static void MyFinalizeCB(napi_env env, void *finalize_data, void *finalize_hint) { return; }
 
 static napi_value CreateMyExternal(napi_env env, napi_callback_info info) {
     napi_value result = nullptr;
@@ -413,7 +426,7 @@ static napi_value CreateMyExternal(napi_env env, napi_callback_info info) {
     return result;
 }
 
-// 此处已省略模块注册的代码, 你可能需要自行注册 CreateMyExternal 方法
+// 此处已省略模块注册的代码，你可能需要自行注册 CreateMyExternal 方法
 ```
 
 ```ts
@@ -422,7 +435,7 @@ export const createMyExternal: () => Object;
 
 // 应用代码
 import testNapi from 'libentry.so';
-import worker from '@ohos.worker';
+import { worker } from '@kit.ArkTS';
 
 const mWorker = new worker.ThreadWorker('../workers/Worker');
 
@@ -434,7 +447,7 @@ const mWorker = new worker.ThreadWorker('../workers/Worker');
 }
 
 // 关闭worker线程
-// 应用可能在此步骤崩溃, 或在后续引擎进行GC的时候崩溃
+// 应用可能在此步骤崩溃，或在后续引擎进行GC的时候崩溃
 mWorker.terminate();
 // Worker的实现为默认模板，此处省略
 ```

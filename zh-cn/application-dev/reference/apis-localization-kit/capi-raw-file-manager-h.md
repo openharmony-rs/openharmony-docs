@@ -1,10 +1,21 @@
 # raw_file_manager.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 提供资源管理rawfile相关功能，可以使用ResourceManager打开rawfile进行后续相关操作，像搜索和读取等。
 
 **引用文件：** <rawfile/raw_file_manager.h>
+
+**库：** librawfile.z.so
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
 
@@ -22,7 +33,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env, napi_value jsResMgr)](#oh_resourcemanager_initnativeresourcemanager) | 基于JavaScipt侧的ResourceManager获取native侧的ResourceManager，用来完成rawfile相关功能。 |
+| [NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env, napi_value jsResMgr)](#oh_resourcemanager_initnativeresourcemanager) | 基于JavaScript侧的ResourceManager获取native侧的ResourceManager，用来完成rawfile相关功能。 |
 | [void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resMgr)](#oh_resourcemanager_releasenativeresourcemanager) | 释放native侧ResourceManager。 |
 | [RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const char *dirName)](#oh_resourcemanager_openrawdir) | 打开rawfile目录，打开后可以遍历对应目录下的rawfile文件。 |
 | [RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const char *fileName)](#oh_resourcemanager_openrawfile) | 打开rawfile文件，打开后可以读取它的数据。 |
@@ -33,13 +44,13 @@
 
 ### OH_ResourceManager_InitNativeResourceManager()
 
-```
+```c
 NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env, napi_value jsResMgr)
 ```
 
 **描述**
 
-基于JavaScipt侧的ResourceManager获取native侧的ResourceManager，用来完成rawfile相关功能。
+基于JavaScript侧的ResourceManager获取native侧的ResourceManager，用来完成rawfile相关功能。
 
 **起始版本：** 8
 
@@ -48,8 +59,8 @@ NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env
 
 | 参数项 | 描述 |
 | -- | -- |
-| napi_env env | 表示JavaScript Native Interface (napi)环境指针。 |
-| napi_value jsResMgr | 表示JavaScipt resource manager。 |
+| napi_env env | 表示JavaScript Native Interface（napi）环境指针。 |
+| napi_value jsResMgr | 表示JavaScript resource manager。 |
 
 **返回：**
 
@@ -59,7 +70,7 @@ NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env
 
 ### OH_ResourceManager_ReleaseNativeResourceManager()
 
-```
+```c
 void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resMgr)
 ```
 
@@ -78,7 +89,7 @@ void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resM
 
 ### OH_ResourceManager_OpenRawDir()
 
-```
+```c
 RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const char *dirName)
 ```
 
@@ -109,7 +120,7 @@ RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const ch
 [OH_ResourceManager_CloseRawDir](capi-raw-dir-h.md#oh_resourcemanager_closerawdir)
 ### OH_ResourceManager_OpenRawFile()
 
-```
+```c
 RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const char *fileName)
 ```
 
@@ -131,7 +142,7 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 
 | 类型 | 说明 |
 | -- | -- |
-| [RawDir](capi-rawfile-rawdir.md) * | 返回[RawDir](capi-rawfile-rawdir.md)指针。当使用完此指针，调用[OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)释放。如果失败或者mgr和fileName为空时返回空指针。 |
+| [RawFile *](capi-rawfile-rawfile.md)  | 返回[RawFile](capi-rawfile-rawfile.md)指针。当使用完此指针，调用[OH_ResourceManager_CloseRawFile](capi-raw-file-h.md#oh_resourcemanager_closerawfile)释放。如果失败或者mgr和fileName为空时返回空指针。 |
 
 **参考：**
 
@@ -141,7 +152,7 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 
 ### OH_ResourceManager_OpenRawFile64()
 
-```
+```c
 RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, const char *fileName)
 ```
 
@@ -173,7 +184,7 @@ RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, co
 
 ### OH_ResourceManager_IsRawDir()
 
-```
+```c
 bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *path)
 ```
 
@@ -189,7 +200,7 @@ bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *p
 | 参数项 | 描述 |
 | -- | -- |
 | const [NativeResourceManager](capi-rawfile-nativeresourcemanager.md) *mgr | 表示指向[NativeResourceManager](capi-rawfile-nativeresourcemanager.md)的指针，此指针通过调用[OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager)方法获取。 |
-| const char *path | rawfile路径 |
+| const char *path | rawfile路径。 |
 
 **返回：**
 

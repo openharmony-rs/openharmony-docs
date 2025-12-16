@@ -1,5 +1,12 @@
 # @ohos.userIAM.userAccessCtrl (用户访问控制)(系统接口)
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 提供用户访问控制能力，用于应用查询和配置用户身份认证策略、校验用户身份认证结果。
 
 > **说明：**
@@ -16,9 +23,9 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 认证令牌类型。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                      | 值   | 说明       |
 | ------------------------ | ---- | ---------- |
@@ -30,9 +37,9 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 表示校验通过返回解析的AuthToken数据结果。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称           | 类型                               | 只读 | 可选 | 说明                                       |
 | -------------- | ---------------------------------- | ----- | ----- |------------------------------------------------------------ |
@@ -51,13 +58,13 @@ import { userAccessCtrl } from '@kit.UserAuthenticationKit';
 
 verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<AuthToken>
 
-验证认证令牌。
+验证认证令牌。使用Promise异步回调。
 
-**需要权限**：ohos.permission.USE_USER_ACCESS_MANAGER
+**需要权限：** ohos.permission.USE_USER_ACCESS_MANAGER
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -74,13 +81,13 @@ verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<Auth
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission verification failed.         |
-| 202      | The caller is not a system application. |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.    |
+| 201      | Permission denied.        |
+| 202      | Permission denied. Called by non-system application. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 | 12500015 | AuthToken integrity check failed.     |
 | 12500016 | AuthToken has expired.                |
@@ -97,7 +104,18 @@ try {
   const rand = cryptoFramework.createRandom();
   const allowableDuration: number = 5000;
   const len: number = 16;
-  const randData: Uint8Array = rand?.generateRandomSync(len)?.data;
+  let randData: Uint8Array | null = null;
+  let retryCount = 0;
+  while(retryCount < 3){
+    randData = rand?.generateRandomSync(len)?.data;
+    if(randData){
+      break;
+    }
+    retryCount++;
+  }
+  if(!randData){
+    return;
+  }
   const authParam: userAuth.AuthParam = {
     challenge: randData,
     authType: [userAuth.UserAuthType.PIN],
@@ -116,15 +134,21 @@ try {
             console.error('userAuthInstance callback result.token is null');
             return;
         }
-        // 发起 AuthToken 验证请求。
-        userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
-            .then((retAuthToken: userAccessCtrl.AuthToken) => {
-                Object.keys(retAuthToken).forEach((key) => {
-                    console.info(`retAuthToken key:${key}, value:${retAuthToken[key]}`);
-                })
-            }).catch ((error: BusinessError) => {
-                console.error(`verify authToken error. Code is ${error?.code}, message is ${error?.message}`);
-            })
+        try {
+          // 发起AuthToken验证请求。
+          userAccessCtrl.verifyAuthToken(result.token, allowableDuration)
+              .then((retAuthToken: userAccessCtrl.AuthToken) => {
+                  Object.keys(retAuthToken).forEach((key) => {
+                      // 处理业务逻辑。
+                      console.info(`retAuthToken key:${key}`);
+                  })
+              }).catch ((error: BusinessError) => {
+                  console.error(`verify authToken error. Code is ${error?.code}, message is ${error?.message}`);
+              })
+        } catch (error) {
+          const err: BusinessError = error as BusinessError;
+          console.error(`verify authToken error. Code is ${err?.code}, message is ${err?.message}`);
+        }
     }
   });
   console.info('auth on success');

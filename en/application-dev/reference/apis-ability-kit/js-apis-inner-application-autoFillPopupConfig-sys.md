@@ -1,13 +1,18 @@
 # AutoFillPopupConfig (System API)
 
-The AutoFillPopupConfig module describes the size and position information of an auto-fill pop-up.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The module describes the size and position information of an auto-fill pop-up.
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
->
 > The APIs provided by this module are system APIs.
->
 > The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
@@ -22,10 +27,10 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-| Name   | Type          | Mandatory| Description                                      |
-| --------- | -------------- | ---- | ------------------------------------------ |
-| popupSize | [PopupSize](#popupsize)      | No  | Width and height of the auto-fill pop-up. If this parameter is not set, the width and height are not updated.|
-| placement | [PopupPlacement](#popupplacement) | No  | Position of the auto-fill pop-up. If this parameter is not set, the position is not updated.|
+| Name   | Type          | Read-Only| Optional| Description                                      |
+| --------- | -------------- | ---- | ---- | ------------------------------------------ |
+| popupSize | [PopupSize](#popupsize)      | No  | Yes | Width and height of the auto-fill pop-up. If this parameter is not set, the width and height are not updated.|
+| placement | [PopupPlacement](#popupplacement) | No  | Yes | Position of the auto-fill pop-up. If this parameter is not set, the position is not updated.|
 
 ## PopupSize
 
@@ -35,10 +40,10 @@ Describes the width and height of the auto-fill pop-up.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-| Name| Type  | Mandatory| Description           |
-| ------ | ------ | ---- | --------------- |
-| width  | number | Yes  | Width of the auto-fill pop-up.|
-| height | number | Yes  | Height of the auto-fill pop-up.|
+| Name| Type  | Read-Only| Optional| Description           |
+| ------ | ------ | ---- | ---- | --------------- |
+| width  | number | No  | No  | Width of the auto-fill pop-up.|
+| height | number | No  | No  | Height of the auto-fill pop-up.|
 
 ## PopupPlacement
 

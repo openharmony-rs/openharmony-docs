@@ -1,4 +1,10 @@
 # @ohos.enterprise.deviceInfo（设备信息管理）(系统接口)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供企业设备信息管理能力，包括获取设备序列号、设备名称等。
 
@@ -8,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-guide.md#功能介绍)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.deviceInfo](js-apis-enterprise-deviceInfo.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.deviceInfo](js-apis-enterprise-deviceInfo.md)。
 
 ## 导入模块
 
@@ -28,11 +34,15 @@ getDeviceSerial(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | callback | AsyncCallback&lt;string&gt;            | 是    | 回调函数。当接口调用成功，err为null，data为设备序列号，否则err为错误对象。       |
 
 **错误码**：
@@ -50,11 +60,13 @@ getDeviceSerial(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 **示例：**
 
 ```ts
+import { deviceInfo } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 deviceInfo.getDeviceSerial(wantTemp, (err, result) => {
@@ -76,11 +88,15 @@ getDeviceSerial(admin: Want): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -103,12 +119,14 @@ getDeviceSerial(admin: Want): Promise&lt;string&gt;
 **示例：**
 
 ```ts
+import { deviceInfo } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 deviceInfo.getDeviceSerial(wantTemp).then((result) => {
@@ -128,11 +146,15 @@ getDisplayVersion(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | callback | AsyncCallback&lt;string&gt;            | 是    | 回调函数。当接口调用成功，err为null，data为设备版本号，否则err为错误对象。       |
 
 **错误码**：
@@ -150,11 +172,13 @@ getDisplayVersion(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 **示例：**
 
 ```ts
+import { deviceInfo } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 deviceInfo.getDisplayVersion(wantTemp, (err, result) => {
@@ -176,11 +200,15 @@ getDisplayVersion(admin: Want): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -203,12 +231,14 @@ getDisplayVersion(admin: Want): Promise&lt;string&gt;
 **示例：**
 
 ```ts
+import { deviceInfo } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 deviceInfo.getDisplayVersion(wantTemp).then((result) => {
@@ -228,11 +258,15 @@ getDeviceName(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | callback | AsyncCallback&lt;string&gt;              | 是    | 回调函数。当接口调用成功，err为null，data为设备名称，否则err为错误对象。       |
 
 **错误码**：
@@ -250,11 +284,13 @@ getDeviceName(admin: Want, callback: AsyncCallback&lt;string&gt;): void
 **示例：**
 
 ```ts
+import { deviceInfo } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 deviceInfo.getDeviceName(wantTemp, (err, result) => {
@@ -276,11 +312,15 @@ getDeviceName(admin: Want): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -303,12 +343,14 @@ getDeviceName(admin: Want): Promise&lt;string&gt;
 **示例：**
 
 ```ts
+import { deviceInfo } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 deviceInfo.getDeviceName(wantTemp).then((result) => {

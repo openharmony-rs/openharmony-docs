@@ -1,5 +1,12 @@
 # Managing the Notification Badge
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 The system provides APIs for setting the notification badge, which is displayed in the upper right corner of the application icon on the home screen to notify the user of the count of unread notifications.
 
 When a new notification arrives, the count on the badge is incremented by 1.
@@ -13,7 +20,7 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
 
 - You can use either of the following methods to increase the count on the badge:
 
-   - When publishing a notification, pass the **badgeNumber** parameter in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest). After the notification is received, the count on the badge is incremented.
+   - When publishing a notification, pass the **badgeNumber** parameter in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). After the notification is received, the count on the badge is incremented.
 
    - Call the [setBadgeNumber()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagersetbadgenumber10) API to set the count on the badge.
 
@@ -21,7 +28,7 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
 
   | **API**| **Description**|
   | -------- | -------- |
-  | setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void | Sets the number count on the badge.|
+  | setBadgeNumber(badgeNumber: number): Promise\<void\> | Sets the number count on the badge.|
 
 
 ## How to Develop
@@ -39,21 +46,17 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
 
 2. Increase the count on the badge.
 
-   When publishing a notification, pass the **badgeNumber** parameter in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest). For details, see [Publishing a Basic Notification](text-notification.md).
+   When publishing a notification, pass the **badgeNumber** parameter in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). For details, see [Publishing a Text Notification](text-notification.md).
    
    In this example, the **setBadgeNumber** API is called to add a badge. This API is called after a new notification is published.
    
     ```ts
-    let setBadgeNumberCallback = (err: BusinessError): void => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
+    let badgeNumber: number = 9;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
-    }
-
-    let badgeNumber = 9;
-    notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
     ```
 
 3. Decrease the count on the badge.
@@ -61,16 +64,12 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
    After a notification is read, the application needs to call the API to set the number of remaining unread notifications. The badge is then updated.
 
     ```ts
-    let setBadgeNumberCallback = (err: BusinessError): void => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
+    let badgeNumber: number = 8;
+    notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in setting badge number.`);
-    }
-
-    let badgeNumber = 8;
-    notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
+    });
     ```
 
 ## FAQs
@@ -87,10 +86,14 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 10 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     badgeNumber = 11;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
       hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```
 
@@ -107,6 +110,10 @@ If **badgeNumber** is set to **0**, badges are cleared; if the value is greater 
       badgeNumber = 11;
       notificationManager.setBadgeNumber(badgeNumber).then(() => {
         hilog.info(DOMAIN_NUMBER, TAG, `setBadgeNumber 11 success.`);
+      }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
       });
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN_NUMBER, TAG, `Failed to set badge number. Code is ${err.code}, message is ${err.message}`);
     });
     ```

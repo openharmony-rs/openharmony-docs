@@ -1,4 +1,10 @@
 # AVScreenCapture
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zzs_911-->
+<!--Designer: @stupig001-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -6,7 +12,7 @@
 
 开发者可根据实际的开发需求，参考对应的开发指南及样例：
 
-- [使用AVScreenCapture录屏取码流](../../media/media/using-avscreencapture-for-buffer.md)
+- [使用AVScreenCapture录屏取码流](../../media/media/avscreencapture-c-basic-process.md)
 - [使用AVScreenCapture录屏写文件](../../media/media/using-avscreencapture-for-file.md)
 
 **起始版本：** 10

@@ -1,4 +1,10 @@
 # @ohos.bundle.freeInstall (freeInstall模块)(系统接口)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供免安装相关的设置和查询能力，支持BundlePackInfo、DispatchInfo等信息的查询。
 
@@ -85,19 +91,20 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
 try {
-    freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag, err => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed');
-        }
-    });
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag, err => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed');
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -144,18 +151,19 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
 try {
-    freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
-        console.info('Operation succeed')
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.setHapModuleUpgradeFlag(bundleName, moduleName, upgradeFlag).then(() => {
+    console.info('Operation succeed')
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -177,7 +185,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 | ---------- | ---------------------- | ---- | --------------------------------------------- |
 | bundleName | string                 | 是   | 应用Bundle名称。                      |
 | moduleName | string                 | 是   | 应用程序模块名称。                            |
-| callback   | AsyncCallback\<boolean> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。返回true表示可以移除；返回false表示不可移除。 |
+| callback   | AsyncCallback\<boolean> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当获取成功时，err为null，data为bool值，true表示可以移除；false表示不可移除；否则为错误对象。 |
 
 **错误码：**
 
@@ -196,18 +204,19 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
-    freeInstall.isHapModuleRemovable(bundleName, moduleName, (err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.isHapModuleRemovable(bundleName, moduleName, (err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -253,17 +262,18 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
-    freeInstall.isHapModuleRemovable(bundleName, moduleName).then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.isHapModuleRemovable(bundleName, moduleName).then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -303,18 +313,19 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
-    freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag, (err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 ## getBundlePackInfo
@@ -358,17 +369,18 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
-    freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.getBundlePackInfo(bundleName, bundlePackFlag).then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -404,16 +416,17 @@ getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 try {
-    freeInstall.getDispatchInfo((err, data) => {
-        if (err) {
-            console.error('Operation failed:' + JSON.stringify(err));
-        } else {
-            console.info('Operation succeed:' + JSON.stringify(data));
-        }
-    });
+  freeInstall.getDispatchInfo((err, data) => {
+    if (err) {
+      console.error('Operation failed:' + JSON.stringify(err));
+    } else {
+      console.info('Operation succeed:' + JSON.stringify(data));
+    }
+  });
 } catch (err) {
-    console.error('Operation failed:' + JSON.stringify(err));
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 
@@ -449,15 +462,16 @@ getDispatchInfo(): Promise\<DispatchInfo>
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    freeInstall.getDispatchInfo().then(data => {
-        console.info('Operation succeed:' + JSON.stringify(data));
-    }).catch((err: BusinessError) => {
-        console.error('Operation failed:' + JSON.stringify(err));
-    });
-} catch (err) {
+  freeInstall.getDispatchInfo().then(data => {
+    console.info('Operation succeed:' + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
     console.error('Operation failed:' + JSON.stringify(err));
+  });
+} catch (err) {
+  console.error('Operation failed:' + JSON.stringify(err));
 }
 ```
 

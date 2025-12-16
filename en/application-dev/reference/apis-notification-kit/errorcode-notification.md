@@ -1,4 +1,10 @@
 # Notification Error Codes
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -353,7 +359,7 @@ Check whether the queried Do Not Disturb profile ID is correct.
 
 **Error Message**
 
-The application is not allowed to publish notifications due to permission control settings.
+The application is not allowed to send notifications due to permission settings.
 
 **Description**
 
@@ -365,7 +371,7 @@ The application is restricted by the enterprise-customized devices.
 
 **Solution**
 
-The application is under permission control of [Enterprise Device Manager](../../mdm/mdm-kit-admin.md) and it cannot exit the permission control list automatically.
+The application is under permission control of [Enterprise Device Manager](../../mdm/mdm-kit-intro.md) and it cannot exit the permission control list automatically.
 
 ## 1600021 Cross-Device Communication Timeout
 
@@ -385,39 +391,56 @@ Device connection error.
 
 Make sure that devices (for example, mobile phone and the watch) are properly connected.
 
-## 2300007 Network Access Failure
+## 1600022 Invalid Bundle Information
 
 **Error Message**
 
-Network unreachable.
+The specified bundle is invalid.
 
 **Description**
 
-This error code is reported when the network cannot be accessed.
+This error code is reported when the bundle information is invalid.
 
 **Possible Causes**
 
-The network cannot be accessed.
+The specified bundle name does not exist.
 
 **Solution**
 
-Check the network status.
+Check whether the bundle information is correct.
 
-## 17700001 Bundle Name Not Found
+## 1600023 NotificationSubscriberExtensionAbility Not Implemented
 
 **Error Message**
 
-The specified bundle name was not found.
+The application does not implement the NotificationSubscriberExtensionAbility.
 
 **Description**
 
-This error code is reported when the bundle name is incorrect or the application is not installed.
+This error code is reported when the application does not implement the NotificationSubscriberExtensionAbility.
 
 **Possible Causes**
 
-1. The bundle name is incorrect.
-2. The application is not installed.
+The [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) is not set or is incorrectly set for the application.
 
 **Solution**
 
-Verify the bundle name and make sure the application is installed.
+Create a NotificationSubscriberExtensionAbility for the application. For details about how to configure the extension ability, see [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) in [ExtensionAbility Component](../../application-models/extensionability-overview.md).
+
+## 1600024 Custom Ringtones Not Configured
+
+**Error Message**
+
+The specified bundle has no custom ringtone information.
+
+**Description**
+
+This error code is reported when the custom ringtones are not configured for the specified application.
+
+**Possible Causes**
+
+Custom ringtones are not configured for the specified application.
+
+**Solution**
+
+Check whether custom ringtones are configured for the specified application.

@@ -1,4 +1,10 @@
 # LoadingProgress
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于显示加载动效的组件。
 
@@ -6,7 +12,7 @@
 
 >  **说明：**
 >
-> 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -18,7 +24,7 @@
 
 LoadingProgress()
 
-创建加载进展组件。
+创建加载进度组件。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -91,7 +97,7 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 ## LoadingProgressConfiguration<sup>12+</sup>对象说明
 
-开发者需要自定义class实现ContentModifier接口。
+开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -113,9 +119,9 @@ contentModifier(modifier: ContentModifier\<LoadingProgressConfiguration>)
 
 | 名称                     | 值 | 说明                                     |
 | ---------------------- | - | ---------------------------------------- |
-| Default       | 0 | 默认加载样式。API version 8及以后不支持设置。            |
-| Circular      | 1 | 环形加载样式。API version 8及以后不支持设置。            |
-| Orbital       | 2 | 彗星形加载样式。API version 8及以后默认为彗星形样式。         |
+| Default       | - | 默认加载样式。API version 8及以后不支持设置。            |
+| Circular      | - | 环形加载样式。API version 8及以后不支持设置。            |
+| Orbital       | - | 彗星形加载样式。API version 8及以后默认为彗星形样式。         |
 
 ## 示例
 
@@ -283,7 +289,7 @@ struct LoadingProgressDemoExample {
       Button('点击切换config.enableloading').onClick(() => {
         this.clickFlag++;
         this.loadingProgressIndex = (this.loadingProgressIndex + 1) % this.loadingProgressList.length;
-        console.log('enableLoading:' + this.loadingProgressList[this.loadingProgressIndex]);
+        console.info('enableLoading:' + this.loadingProgressList[this.loadingProgressIndex]);
       }).margin(20)
     }
 

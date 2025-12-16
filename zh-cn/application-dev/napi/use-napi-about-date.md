@@ -1,4 +1,10 @@
 # 使用Node-API接口进行Date相关开发
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
@@ -6,7 +12,7 @@ Node-API中date相关接口用于处理ArkTS Date对象，并在Node-API模块�
 
 ## 基本概念
 
-在Node-API的中，ArkTS Date对象的数据表示从UTC时间1970年1月1日0时0分0秒起至现在的总毫秒数。
+在Node-API中，ArkTS Date对象的数据表示从UTC时间1970年1月1日0时0分0秒起至现在的总毫秒数。
 
 ArkTS Date对象提供了一种在ArkTS中表示和操作日期和时间的方式。它们允许您创建表示特定时刻的日期对象，执行各种日期和时间相关的计算（如添加或减去时间间隔），以及格式化日期为字符串以供显示。
 
@@ -38,13 +44,13 @@ static napi_value CreateDate(napi_env env, napi_callback_info info)
 {
     // 获取传入的Unix Time Stamp时间
     double value = 1501924876711;
-    // 调用napi_create_date接口将double值转换成表示日期时间，并创建成一个ArkTS对象放入returnValue中
+    // 调用napi_create_date接口将double值转换成表示日期时间的ArkTS对象，并放入returnValue中
     napi_value returnValue = nullptr;
     napi_create_date(env, value, &returnValue);
     return returnValue;
 }
 ```
-<!-- @[napi_create_date](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
@@ -52,7 +58,7 @@ static napi_value CreateDate(napi_env env, napi_callback_info info)
 // index.d.ts
 export const createDate: () => Date;
 ```
-<!-- @[napi_create_date_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_create_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
@@ -62,7 +68,7 @@ import testNapi from 'libentry.so';
 
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_date: %{public}s', testNapi.createDate().toString());
 ```
-<!-- @[ark_napi_create_date](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_get_date_value
 
@@ -97,21 +103,22 @@ static napi_value GetDateValue(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_get_date_value](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const getDateValue: (date: Date) => number | void;
+export const getDateValue: (date: Date) => number | undefined;
 ```
-<!-- @[napi_get_date_value_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_get_date_value_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   const date = new Date();
   hilog.info(0x0000, 'testTag', 'Node-API: output the Unix Time Stamp: %{public}d', date.getTime());
@@ -120,7 +127,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_date_value error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_get_date_value](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_is_date
 
@@ -152,21 +159,22 @@ static napi_value IsDate(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_is_date](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
 接口声明
 
 ```ts
 // index.d.ts
-export const isDate: <T>(date: T) => boolean | void;
+export const isDate: <T>(date: T) => boolean | undefined;
 ```
-<!-- @[napi_is_date_api](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+<!-- @[napi_is_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS侧示例代码
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   let now: Date = new Date();
   let date = "123";
@@ -176,7 +184,7 @@ try {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_date error: %{public}s', error.message);
 }
 ```
-<!-- @[ark_napi_is_date](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[ark_napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 
@@ -184,5 +192,5 @@ try {
 // CMakeLists.txt
 add_definitions( "-DLOG_DOMAIN=0xd0d0" )
 add_definitions( "-DLOG_TAG=\"testTag\"" )
-target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
+target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 ```

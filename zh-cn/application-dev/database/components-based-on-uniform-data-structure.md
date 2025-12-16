@@ -1,4 +1,10 @@
 # 基于标准化数据结构的控件 (ArkTS)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 场景介绍
 
@@ -7,6 +13,8 @@
 ## 内容卡片控件
 
 在需要展示内容（标题、描述、图片、应用信息）并在点击后跳转至对应来源时，可以使用内容卡片快速的展示信息。开发者只需要调用[ContentFormCard](../reference/apis-arkdata/js-apis-data-UdmfComponents.md#contentformcard)接口，传入[ContentForm](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#contentform14)数据、卡片宽高、点击事件回调函数即可获得良好的展示效果。
+
+从API version 20开始，支持使用[内容卡片控件](../reference/apis-arkdata/js-apis-data-UdmfComponents.md)。
 
 ### 接口说明
 
@@ -18,9 +26,12 @@
 
 ### 开发示例
 
-```ts
+<!-- @[components_based_on_uniform_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/ContentForm/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // 1. 导入需要的模块
-import { ContentFormCard, FormType, uniformDataStruct } from '@kit.ArkData'
+import { ContentFormCard, FormType, uniformDataStruct } from '@kit.ArkData';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -46,20 +57,20 @@ struct Index {
       let thumbImage = await context.resourceManager.getMediaContent($r('app.media.foreground').id);
       this.contentForm = {
         uniformDataType: 'general.content-form',
-        title: "Content form title",
+        title: 'Content form title',
         thumbData: appIcon,
-        description: "Content form description",
+        description: 'Content form description',
         appIcon: thumbImage,
-        appName: "com.test.demo"
+        appName: 'com.test.demo'
       };
     } catch (err) {
-      console.error("Init data error");
+      hilog.error(0xFF00, '[Sample_Udmf]', 'Init data error');
     }
   }
 
   build() {
     Column() {
-      Button('show card')
+      Button('show card').fontSize(30)
         .onClick(() => {
           // 3. 点击后startToShow变为true，页面重新渲染
           this.startToShow = true;
@@ -69,14 +80,17 @@ struct Index {
         ContentFormCard({
           contentFormData: this.contentForm,
           formType: FormType.TYPE_SMALL,
-          formWidth: 110,
-          formHeight: 50,
+          formWidth: 220,
+          formHeight: 100,
           handleOnClick: () => {
-            console.info("Clicked card");
+            hilog.info(0xFF00, '[Sample_Udmf]', 'Clicked card');
           }
         })
       }
     }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```

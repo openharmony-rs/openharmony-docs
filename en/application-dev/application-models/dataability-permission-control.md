@@ -1,4 +1,10 @@
 # DataAbility Permission Control
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 
 The DataAbility uses permission control to determine whether an ability can access the data service it provides. There are static and dynamic permission controls.
@@ -11,7 +17,7 @@ The DataAbility functions as the server. When being started, the DataAbility ver
 
 ```json
 "abilities": [
-  ...
+  // ...
   {
     "name": ".DataAbility",
     "srcLanguage": "ets",
@@ -24,18 +30,18 @@ The DataAbility functions as the server. When being started, the DataAbility ver
     "readPermission": "ohos.permission.READ_CONTACTS",
     "writePermission": "ohos.permission.WRITE_CONTACTS"
   },
-  ...
+  // ...
 ]
 ```
 
-The client permission is configured in **reqPermissions** under **module** in the **config.json** file. The following is an example:
+ The client permission is configured in **reqPermissions** under **module** in the **config.json** file. The following is an example:
 
 
 ```json
 {
-  ...
+  // ...
   "module": {
-    ...
+    // ...
     "reqPermissions": [
       {
         "name": "ohos.permission.READ_CONTACTS"
@@ -43,9 +49,9 @@ The client permission is configured in **reqPermissions** under **module** in th
       {
         "name": "ohos.permission.WRITE_CONTACTS"
       },
-      ...
+      // ...
     ],
-    ...
+    // ...
   }
 }
 ```
@@ -57,7 +63,7 @@ Static permission control determines whether a DataAbility can be started by ano
 
 Dynamic permission control verifies whether the client has the corresponding permission for every read/write interface. The table below lists the permissions required for calling these interfaces.
 
-**Table 1** Permission configuration for data read/write interfaces
+  **Table 1** Permission configuration for data read/write interfaces
 
 | Interface with the Read Permission| Interface with the Write Permission| Interface with the Read/Write Permission Based on Actual Requirements|
 | -------- | -------- | -------- |

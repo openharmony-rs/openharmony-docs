@@ -1,4 +1,10 @@
 # @ohos.bundle.appControl (appControl模块)(系统接口)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供应用拦截能力。对应用设置处置状态后，应用会被禁止运行；用户点击桌面图标时，会根据应用的处置状态，跳转到对应的页面。本模块支持对应用的处置状态进行设置、获取、删除。
 
@@ -11,7 +17,7 @@
 ## 导入模块
 
 ``` ts
-import appControl from '@ohos.bundle.appControl';
+import { appControl } from '@kit.AbilityKit';
 ```
 
 ## appControl.setDisposedStatus
@@ -30,7 +36,7 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 需要设置处置状态的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。               |
+| appId  | string | 是    | 需要设置处置状态的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。               |
 | disposedWant | Want  | 是 | 对应用的处置意图。 |
 
 **返回值：**
@@ -49,14 +55,14 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
-import appControl from '@ohos.bundle.appControl';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { appControl } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want:Want = {bundleName: 'com.example.myapplication'};
@@ -91,7 +97,7 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 
 | 参数名       | 类型                              | 必填   | 说明                                    |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| appId  | string | 是    | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。                      |
+| appId  | string | 是    | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。                      |
 | disposedWant | Want  | 是 | 对应用的处置意图。 |
 | callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置处置状态成功，err为null，否则为错误对象。 |
 
@@ -105,14 +111,14 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = {bundleName: 'com.example.myapplication'};
@@ -149,7 +155,7 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 
 | 参数名       | 类型                              | 必填   | 说明                                    |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| appId  | string | 是    | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。                      |
+| appId  | string | 是    | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。                      |
 | disposedWant | Want  | 是 | 对应用的处置意图。 |
 
 **错误码：**
@@ -162,14 +168,14 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want = {bundleName: 'com.example.myapplication'};
@@ -190,7 +196,7 @@ getDisposedStatus(appId: string): Promise\<Want>;
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -198,7 +204,7 @@ getDisposedStatus(appId: string): Promise\<Want>;
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。  |
+| appId  | string | 是    | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。  |
 
 **返回值：**
 
@@ -216,13 +222,13 @@ getDisposedStatus(appId: string): Promise\<Want>;
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -248,7 +254,7 @@ getDisposedStatus(appId: string, callback: AsyncCallback\<Want>): void;
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -256,7 +262,7 @@ getDisposedStatus(appId: string, callback: AsyncCallback\<Want>): void;
 
 | 参数名       | 类型     | 必填   | 说明                                  |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。  |
+| appId  | string | 是    | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。  |
 | callback    | AsyncCallback\<Want> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当获取应用的处置状态成功时，err为null，data为获取到的处置状态；否则为错误对象。                    |
 
 **错误码：**
@@ -269,13 +275,13 @@ getDisposedStatus(appId: string, callback: AsyncCallback\<Want>): void;
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -302,7 +308,7 @@ getDisposedStatusSync(appId: string): Want;
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -310,7 +316,7 @@ getDisposedStatusSync(appId: string): Want;
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。  |
+| appId  | string | 是    | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。  |
 
 **返回值：**
 
@@ -328,14 +334,14 @@ getDisposedStatusSync(appId: string): Want;
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want;
@@ -364,7 +370,7 @@ deleteDisposedStatus(appId: string): Promise\<void>
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。<br> [appIdentifier](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，是AppGallery Connect创建应用时分配的APP ID，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。获取方法参见[获取应用的appidentifier](#获取应用的appid和appidentifier)。  |
+| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appidentifier)。  |
 
 **返回值：**
 
@@ -382,13 +388,13 @@ deleteDisposedStatus(appId: string): Promise\<void>
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -422,7 +428,7 @@ deleteDisposedStatus(appId: string, callback: AsyncCallback\<void>) : void
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。<br> [appIdentifier](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，是AppGallery Connect创建应用时分配的APP ID，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。获取方法参见[获取应用的appidentifier](#获取应用的appid和appidentifier)。  |
+| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appidentifier)。  |
 | callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置处置状态成功时，err返回null。否则回调函数返回具体错误对象。                   |
 
 **错误码：**
@@ -435,13 +441,13 @@ deleteDisposedStatus(appId: string, callback: AsyncCallback\<void>) : void
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 try {
@@ -474,7 +480,7 @@ deleteDisposedStatusSync(appId: string, appIndex:? number) : void
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。<br> [appIdentifier](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，是AppGallery Connect创建应用时分配的APP ID，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。获取方法参见[获取应用的appidentifier](#获取应用的appid和appidentifier)。  |
+| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appidentifier)。  |
 | appIndex<sup>12+</sup>   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示删除主应用的处置状态。appIndex大于0时，表示删除指定分身应用的处置状态。  |
 
 **错误码：**
@@ -487,14 +493,14 @@ deleteDisposedStatusSync(appId: string, appIndex:? number) : void
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 
@@ -506,36 +512,6 @@ try {
 }
 ```
 
-## 获取应用的appId和appIdentifier
-
-appId是应用的唯一标识，由应用Bundle名称和签名信息决定，可以通过[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)接口获取。<br>
-[appIdentifier](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，是AppGallery Connect创建应用时分配的APP ID，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。
-
-**示例：**
-
-```ts
-import bundleManager from '@ohos.bundle.bundleManager';
-import { BusinessError } from '@ohos.base';
-
-let bundleName = 'com.example.myapplication';
-let appId: string;
-let appIdentifier: string;
-try {
-  bundleManager.getBundleInfo(bundleName, bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO)
-    .then((data) => {
-      appId = data.signatureInfo.appId;
-      appIdentifier = data.signatureInfo.appIdentifier;
-      console.info("appId is " + appId);
-      console.info("appIdentifier is " + appIdentifier);
-    }).catch((error: BusinessError) => {
-      let message = (error as BusinessError).message;
-      console.error("getBundleInfo failed " + message);
-  });
-} catch (error) {
-    let message = (error as BusinessError).message;
-    console.error("getBundleInfo failed " + message);
-}
-```
 
 ## appControl.getDisposedRule<sup>11+</sup>
 
@@ -545,7 +521,7 @@ getDisposedRule(appId: string, appIndex:? number): DisposedRule
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
@@ -553,7 +529,7 @@ getDisposedRule(appId: string, appIndex:? number): DisposedRule
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要获取拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId获取，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。<br> [appIdentifier](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，是AppGallery Connect创建应用时分配的APP ID，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。获取方法参见[获取应用的appidentifier](#获取应用的appid和appidentifier)。  |
+| appId  | string | 是    | 要获取拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId获取，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appidentifier)。  |
 | appIndex<sup>12+</sup>   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示获取主应用的拦截规则。appIndex大于0时，表示获取指定分身应用的拦截规则。    |
 
 **返回值：**
@@ -572,15 +548,14 @@ getDisposedRule(appId: string, appIndex:? number): DisposedRule
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -590,6 +565,49 @@ try {
 } catch (error) {
   let message = (error as BusinessError).message;
   console.error('getDisposedRule failed ' + message);
+}
+```
+
+## appControl.getAllDisposedRules<sup>23+</sup>
+
+getAllDisposedRules(): Array\<DisposedRuleConfiguration>
+
+获取当前用户下已设置的所有拦截规则。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_DISPOSED_APP_STATUS 或 ohos.permission.GET_DISPOSED_APP_STATUS
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**返回值：**
+
+| 类型                                                      | 说明                   |
+| --------------------------------------------------------- | ---------------------- |
+|Array\<[DisposedRuleConfiguration](#disposedruleconfiguration20)> | 应用已设置的拦截规则。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Permission denied. A non-system application is not allowed to call a system API. |
+| 801      | Capability not supported.                                    |
+
+**示例：**
+
+```ts
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let data = appControl.getAllDisposedRules();
+  console.info('getAllDisposedRules successfully. Data: ' + JSON.stringify(data));
+} catch (error) {
+  let message = (error as BusinessError).message;
+  console.error('getAllDisposedRules failed ' + message);
 }
 ```
 
@@ -609,7 +627,7 @@ setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要被设置拦截规则应用的appId或appIdentifier。使用appId设置的拦截规则会覆盖使用appIdentifier设置的拦截规则，反之同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。<br> [appIdentifier](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，是AppGallery Connect创建应用时分配的APP ID，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。获取方法参见[获取应用的appidentifier](#获取应用的appid和appidentifier)。  |
+| appId  | string | 是    | 要被设置拦截规则应用的appId或appIdentifier。使用appId设置的拦截规则会覆盖使用appIdentifier设置的拦截规则，反之同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appidentifier)。  |
 | rule | [DisposedRule](#disposedrule11) | 是 | 指示对应用的拦截规则。 |
 | appIndex<sup>12+</sup>   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示设置主应用的拦截规则。appIndex大于0时，表示设置指定分身应用的拦截规则。            |
 
@@ -623,16 +641,16 @@ setDisposedRule(appId: string, rule: DisposedRule, appIndex:? number): void
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
-import bundleManager from '@ohos.bundle.bundleManager';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+import { bundleManager } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = {
@@ -767,7 +785,7 @@ setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, app
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | 是    | 要设置卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](#获取应用的appid和appidentifier)。  |
+| appIdentifier  | string | 是    | 要设置卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。  |
 | rule | [UninstallDisposedRule](#uninstalldisposedrule15) | 是 | 表示要设置的卸载处置规则。 |
 | appIndex   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示设置主应用的卸载处置规则。appIndex大于0时，表示设置指定分身应用的卸载处置规则。        |
 
@@ -788,9 +806,9 @@ setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, app
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 let want: Want = {
@@ -828,7 +846,7 @@ getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDis
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | 是    | 要获取卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，设置方法参见[获取应用的appId](#获取应用的appid和appidentifier)。  |
+| appIdentifier  | string | 是    | 要获取卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，设置方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。  |
 | appIndex   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示获取主应用的卸载处置规则。appIndex大于0时，表示获取指定分身应用的卸载处置规则。              |
 
 **返回值：**
@@ -853,8 +871,8 @@ getUninstallDisposedRule(appIdentifier: string, appIndex:? number): UninstallDis
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 
@@ -883,7 +901,7 @@ deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appIdentifier  | string | 是    | 要删除卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，删除方法参见[获取应用的appId](#获取应用的appid和appidentifier)。  |
+| appIdentifier  | string | 是    | 要删除卸载处置规则的应用的appIdentifier。<br> 如果应用没有appIdentifier可使用appId代替。appId是应用的唯一标识，由应用Bundle名称和签名信息决定，删除方法参见[获取应用的appId](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appid)。  |
 | appIndex   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示删除主应用的卸载处置规则。appIndex大于0时，表示删除指定分身应用的卸载处置规则。            |
 
 **错误码：**
@@ -902,8 +920,8 @@ deleteUninstallDisposedRule(appIdentifier: string, appIndex:? number): void
 **示例：**
 
 ```ts
-import appControl from '@ohos.bundle.appControl';
-import { BusinessError } from '@ohos.base';
+import { appControl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 
@@ -982,7 +1000,7 @@ try {
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
-| want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的页面。 |
+| want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的组件。 |
 | UninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
 | priority | number | 否 | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，排序越靠前。 |
 
@@ -996,7 +1014,8 @@ try {
 
 | 名称    | 值   | 说明                 |
 | ------- | ---- | -------------------- |
-| EXTENSION | 1    | 服务扩展能力类型。 |
+| EXTENSION | 1    | 服务扩展能力类型。仅支持service类型的[ExtensionAbility](../../quick-start/module-configuration-file.md#extensionabilities标签)。<br/>被拉起的ExtensionAbility通过want中bundleName、moduleName、abilityName字段共同确定。 |
+| UI_EXTENSION<sup>22+</sup> | 2    | UI扩展能力类型。<br/>被拉起的UIExtensionAbility通过want中bundleName、moduleName、abilityName字段共同确定，同时want.parameters中的ability.want.params.uiExtensionType字段需要配置为[UIExtensionAbility](../../application-models/uiextensionability-sys.md)的类型。 |
 
 ## DisposedRuleConfiguration<sup>20+</sup>
 
@@ -1008,6 +1027,6 @@ try {
 
 | 名称         | 类型                            | 只读 | 可选 | 说明                                                         |
 | ------------ | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| appId        | string                          | 否   | 否   | 要被设置拦截规则应用的appId或appIdentifier。appId和appIdentifier可以标识同一个应用，因此针对同一应用如果用appIdentifier设置拦截规则，可以覆盖之前采用appId设置的，反之同理。<br/>**说明：**<br/>appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](https://gitee.com/openharmony/docs/blob/0a11b273485103fe78df3910fa607c2359ff5b2c/zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl-sys.md#获取应用的appid和appidentifier)。<br/>appIdentifier也是应用的唯一标识，是AppGallery Connect创建应用时分配的[APP ID](https://developer.huawei.com/consumer/cn/doc/app/agc-help-createharmonyapp-0000001945392297)，为云端统一分配的随机字符串。该ID在应用全生命周期中不会发生变化，包括版本升级、证书变更、开发者公私钥变更、应用转移等。获取方法参见[获取应用的appidentifier](https://gitee.com/openharmony/docs/blob/0a11b273485103fe78df3910fa607c2359ff5b2c/zh-cn/application-dev/reference/apis-ability-kit/js-apis-appControl-sys.md#获取应用的appid和appidentifier)。 |
+| appId        | string                          | 否   | 否   | 要被设置拦截规则应用的appId或appIdentifier。appId和appIdentifier可以标识同一个应用，因此针对同一应用如果用appIdentifier设置拦截规则，可以覆盖之前采用appId设置的，反之同理。<br/>**说明：**<br/>appId是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common_problem_of_application.md#如何获取应用信息中的appidentifier)。 |
 | appIndex     | number                          | 否   | 否   | 表示分身应用的索引，默认值为0。<br/> appIndex为0时，表示设置主应用的拦截规则。appIndex大于0时，表示设置指定分身应用的拦截规则。 |
 | disposedRule | [DisposedRule](#disposedrule11) | 否   | 否   | 表示对应用的拦截规则，包括拦截时将拉起能力的类型等。         |

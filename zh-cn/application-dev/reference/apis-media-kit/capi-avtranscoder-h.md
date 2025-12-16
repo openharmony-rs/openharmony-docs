@@ -1,4 +1,10 @@
 # avtranscoder.h
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -14,7 +20,7 @@
 
 **相关模块：** [AVTranscoder](capi-avtranscoder.md)
 
-**相关示例：** [AVPlayerNDKVideo](https://gitee.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDK)
+**相关示例：** [AVPlayerNDKVideo](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerNDK)
 
 ## 汇总
 
@@ -24,7 +30,7 @@
 | -- | -- |
 | [OH_AVTranscoder_Config *OH_AVTranscoderConfig_Create()](#oh_avtranscoderconfig_create) | 创建转码配置参数实例。 |
 | [OH_AVErrCode OH_AVTranscoderConfig_Release(OH_AVTranscoder_Config* config)](#oh_avtranscoderconfig_release) | 释放转码配置参数资源。<br> 调用成功后，config实例会被释放并置为nullptr。 |
-| [OH_AVErrCode OH_AVTranscoderConfig_SetSrcFD(OH_AVTranscoder_Config *config, int32_t srcFd, int64_t srcOffset, int64_t length)](#oh_avtranscoderconfig_setsrcfd) | 设置转码源视频的文件描述符。<br> 此函数必须在OH_AVTranscoder_Prepare之前调用。 |
+| [OH_AVErrCode OH_AVTranscoderConfig_SetSrcFD(OH_AVTranscoder_Config *config, int32_t srcFd, int64_t srcOffset, int64_t length)](#oh_avtranscoderconfig_setsrcfd) | 设置转码源视频的文件描述符。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstFD(OH_AVTranscoder_Config *config, int32_t dstFd)](#oh_avtranscoderconfig_setdstfd) | 设置转码输出视频的文件描述符。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoType(OH_AVTranscoder_Config *config, const char *mimeType)](#oh_avtranscoderconfig_setdstvideotype) | 设置用于转码的输出视频的编码格式。<br> 当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioType(OH_AVTranscoder_Config *config, const char *mimeType)](#oh_avtranscoderconfig_setdstaudiotype) | 设置用于转码的输出音频的编码格式。<br> 当前仅支持AAC。若开发者不设置，则默认设置为AAC。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
@@ -32,6 +38,7 @@
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)](#oh_avtranscoderconfig_setdstaudiobitrate) | 设置用于转码的输出音频的码率。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)](#oh_avtranscoderconfig_setdstvideobitrate) | 设置用于转码的输出视频的码率。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
 | [OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config *config, int32_t width, int32_t height)](#oh_avtranscoderconfig_setdstvideoresolution) | 设置用于转码的输出视频的分辨率，单位为像素（px），其中width为输出视频帧的宽，height为输出视频帧的高。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)之前调用。 |
+| [OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, bool enabled)](#oh_avtranscoderconfig_enablebframe) | 转码设置输出视频B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。<br>如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。 |
 | [OH_AVTranscoder *OH_AVTranscoder_Create(void)](#oh_avtranscoder_create) | 创建转码实例。 |
 | [OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscoder_Config *config)](#oh_avtranscoder_prepare) | 进行视频转码的参数设置，准备转码。<br> 此函数必须在[OH_AVTranscoder_Start](#oh_avtranscoder_start)之前调用，调用成功之后进入AVTRANSCODER_PREPARED状态。 |
 | [OH_AVErrCode OH_AVTranscoder_Start(OH_AVTranscoder *transcoder)](#oh_avtranscoder_start) | 开始转码。<br> 此函数必须在[OH_AVTranscoder_Prepare](#oh_avtranscoder_prepare)成功调用之后调用，调用成功之后进入AVTRANSCODER_STARTED状态。 |
@@ -47,7 +54,7 @@
 
 ### OH_AVTranscoderConfig_Create()
 
-```
+```c
 OH_AVTranscoder_Config *OH_AVTranscoderConfig_Create()
 ```
 
@@ -67,7 +74,7 @@ OH_AVTranscoder_Config *OH_AVTranscoderConfig_Create()
 
 ### OH_AVTranscoderConfig_Release()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_Release(OH_AVTranscoder_Config* config)
 ```
 
@@ -90,11 +97,11 @@ OH_AVErrCode OH_AVTranscoderConfig_Release(OH_AVTranscoder_Config* config)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：释放成功。<br>         AV_ERR_INVALID_VAL：config是空指针。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：释放成功。<br>         AV_ERR_INVALID_VAL：config是空指针。 |
 
 ### OH_AVTranscoderConfig_SetSrcFD()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetSrcFD(OH_AVTranscoder_Config *config, int32_t srcFd, int64_t srcOffset, int64_t length)
 ```
 
@@ -120,11 +127,11 @@ OH_AVErrCode OH_AVTranscoderConfig_SetSrcFD(OH_AVTranscoder_Config *config, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入config为空指针，或者源视频文件相关参数错误。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入config为空指针，或者源视频文件相关参数错误。 |
 
 ### OH_AVTranscoderConfig_SetDstFD()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstFD(OH_AVTranscoder_Config *config, int32_t dstFd)
 ```
 
@@ -148,11 +155,11 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstFD(OH_AVTranscoder_Config *config, int3
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入config为空指针，或者输出视频文件描述符是无效的。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入config为空指针，或者输出视频文件描述符是无效的。 |
 
 ### OH_AVTranscoderConfig_SetDstVideoType()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoType(OH_AVTranscoder_Config *config, const char *mimeType)
 ```
 
@@ -170,17 +177,17 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoType(OH_AVTranscoder_Config *confi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| const char *mimeType | 输出视频的编码格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#变量)。 |
+| const char *mimeType | 输出视频的编码格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者mimeType是不被允许的。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者mimeType是不被允许的。 |
 
 ### OH_AVTranscoderConfig_SetDstAudioType()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioType(OH_AVTranscoder_Config *config, const char *mimeType)
 ```
 
@@ -198,17 +205,17 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioType(OH_AVTranscoder_Config *confi
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| const char *mimeType | 输出音频的编码格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#变量)。 |
+| const char *mimeType | 输出音频的编码格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者mimeType是不被允许的。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者mimeType是不被允许的。 |
 
 ### OH_AVTranscoderConfig_SetDstFileType()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstFileType(OH_AVTranscoder_Config *config, OH_AVOutputFormat mimeType)
 ```
 
@@ -226,17 +233,17 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstFileType(OH_AVTranscoder_Config *config
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| OH_AVOutputFormat mimeType | 输出视频的封装格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#变量)。 |
+| [OH_AVOutputFormat](../apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avoutputformat) mimeType | 输出视频的封装格式，详细请参见[native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者mimeType是无效的。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者mimeType是无效的。 |
 
 ### OH_AVTranscoderConfig_SetDstAudioBitrate()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)
 ```
 
@@ -260,11 +267,11 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *co
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者bitrate值是无效的。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者bitrate值是无效的。 |
 
 ### OH_AVTranscoderConfig_SetDstVideoBitrate()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *config, int32_t bitrate)
 ```
 
@@ -288,11 +295,11 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *co
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者bitrate值是无效的。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者bitrate值是无效的。 |
 
 ### OH_AVTranscoderConfig_SetDstVideoResolution()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config *config, int32_t width, int32_t height)
 ```
 
@@ -317,11 +324,39 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者width、height值是无效的。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针，或者width、height值是无效的。 |
+
+### OH_AVTranscoderConfig_EnableBFrame()
+
+```c
+OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, bool enabled)
+```
+
+**描述**
+
+转码设置输出视频B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。<br>如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+
+**起始版本：** 20
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
+| bool enabled | 是否使能B帧编码。true表示开启B帧编码，默认为不开启B帧编码。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：设置成功。<br>         AV_ERR_INVALID_VAL：输入的config为空指针。 |
 
 ### OH_AVTranscoder_Create()
 
-```
+```c
 OH_AVTranscoder *OH_AVTranscoder_Create(void)
 ```
 
@@ -341,7 +376,7 @@ OH_AVTranscoder *OH_AVTranscoder_Create(void)
 
 ### OH_AVTranscoder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscoder_Config *config)
 ```
 
@@ -365,11 +400,11 @@ OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscode
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：成功设置视频转码的参数设置，进入AVTRANSCODER_PREPARED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码准备操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Prepare操作，或者是不支持的格式。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置视频转码的参数设置，进入AVTRANSCODER_PREPARED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码准备操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Prepare操作，或者是不支持的格式。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
 
 ### OH_AVTranscoder_Start()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Start(OH_AVTranscoder *transcoder)
 ```
 
@@ -392,11 +427,11 @@ OH_AVErrCode OH_AVTranscoder_Start(OH_AVTranscoder *transcoder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：成功开始转码，进入AVTRANSCODER_STARTED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码开始操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Start操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功开始转码，进入AVTRANSCODER_STARTED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码开始操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Start操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
 
 ### OH_AVTranscoder_Pause()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Pause(OH_AVTranscoder *transcoder)
 ```
 
@@ -419,11 +454,11 @@ OH_AVErrCode OH_AVTranscoder_Pause(OH_AVTranscoder *transcoder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：成功暂停转码，进入AVTRANSCODER_PAUSED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码暂停操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Pause操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功暂停转码，进入AVTRANSCODER_PAUSED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码暂停操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Pause操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
 
 ### OH_AVTranscoder_Resume()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Resume(OH_AVTranscoder *transcoder)
 ```
 
@@ -446,11 +481,11 @@ OH_AVErrCode OH_AVTranscoder_Resume(OH_AVTranscoder *transcoder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：成功恢复转码，进入AVTRANSCODER_STARTED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码恢复操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Resume操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功恢复转码，进入AVTRANSCODER_STARTED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码恢复操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Resume操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
 
 ### OH_AVTranscoder_Cancel()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Cancel(OH_AVTranscoder *transcoder)
 ```
 
@@ -473,11 +508,11 @@ OH_AVErrCode OH_AVTranscoder_Cancel(OH_AVTranscoder *transcoder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：成功取消转码，进入AVTRANSCODER_CANCELLED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码取消操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Cancel操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功取消转码，进入AVTRANSCODER_CANCELLED状态。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码取消操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Cancel操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
 
 ### OH_AVTranscoder_Release()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_Release(OH_AVTranscoder *transcoder)
 ```
 
@@ -500,11 +535,11 @@ OH_AVErrCode OH_AVTranscoder_Release(OH_AVTranscoder *transcoder)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：成功释放转码实例资源。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码释放资源操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Release操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功释放转码实例资源。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者转码释放资源操作失败。<br>         AV_ERR_OPERATE_NOT_PERMIT：当前状态不允许执行Release操作。<br>         AV_ERR_IO：IO访问相关的错误。<br>         AV_ERR_SERVICE_DIED：媒体服务已停止。 |
 
 ### OH_AVTranscoder_SetStateCallback()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_SetStateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnStateChange callback, void *userData)
 ```
 
@@ -529,11 +564,11 @@ OH_AVErrCode OH_AVTranscoder_SetStateCallback(OH_AVTranscoder *transcoder, OH_AV
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：注册成功。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者callback是空指针。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：注册成功。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者callback是空指针。 |
 
 ### OH_AVTranscoder_SetErrorCallback()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_SetErrorCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnError callback, void *userData)
 ```
 
@@ -558,11 +593,11 @@ OH_AVErrCode OH_AVTranscoder_SetErrorCallback(OH_AVTranscoder *transcoder, OH_AV
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：注册成功。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者callback是空指针。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：注册成功。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者callback是空指针。 |
 
 ### OH_AVTranscoder_SetProgressUpdateCallback()
 
-```
+```c
 OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcoder, OH_AVTranscoder_OnProgressUpdate callback, void *userData)
 ```
 
@@ -587,6 +622,6 @@ OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcod
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/_core.md#oh_averrcode-1) | AV_ERR_OK：注册成功。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者callback是空指针。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：注册成功。<br>         AV_ERR_INVALID_VAL：输入的transcoder是空指针，或者callback是空指针。 |
 
 

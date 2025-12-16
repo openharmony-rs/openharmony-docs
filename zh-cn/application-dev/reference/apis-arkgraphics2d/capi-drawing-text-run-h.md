@@ -1,5 +1,10 @@
 # drawing_text_run.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 ## 概述
 
 提供字体渲染单元的相关接口，比如绘制功能、获取排版边界功能等。
@@ -7,6 +12,8 @@
 **引用文件：** <native_drawing/drawing_text_run.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -35,7 +42,7 @@
 | [uint32_t OH_Drawing_GetRunGlyphCount(OH_Drawing_Run* run)](#oh_drawing_getrunglyphcount) | 获取渲染单元字形数量。 |
 | [OH_Drawing_Font* OH_Drawing_GetRunFont(OH_Drawing_Run* run)](#oh_drawing_getrunfont) | 获取渲染单元字体对象。 |
 | [OH_Drawing_TextDirection OH_Drawing_GetRunTextDirection(OH_Drawing_Run* run)](#oh_drawing_getruntextdirection) | 获取渲染单元文本方向。 |
-| [OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t start, uint32_t length)](#oh_drawing_getrunglyphadvances) | 获取渲染单元字体宽度数组。 |
+| [OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t start, uint32_t length)](#oh_drawing_getrunglyphadvances) | 获取渲染单元字形宽度数组。 |
 | [OH_Drawing_Point* OH_Drawing_GetRunGlyphAdvanceByIndex(OH_Drawing_Array* advances, size_t index)](#oh_drawing_getrunglyphadvancebyindex) | 根据索引获取渲染单元中单个字形宽度。 |
 | [void OH_Drawing_DestroyRunGlyphAdvances(OH_Drawing_Array* advances)](#oh_drawing_destroyrunglyphadvances) | 释放渲染单元字形宽度数组对象的指针。 |
 
@@ -43,7 +50,7 @@
 
 ### OH_Drawing_GetRunStringIndices()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetRunStringIndices(OH_Drawing_Run* run, int64_t start, int64_t length)
 ```
 
@@ -72,7 +79,7 @@ OH_Drawing_Array* OH_Drawing_GetRunStringIndices(OH_Drawing_Run* run, int64_t st
 
 ### OH_Drawing_GetRunStringIndicesByIndex()
 
-```
+```c
 uint64_t OH_Drawing_GetRunStringIndicesByIndex(OH_Drawing_Array* stringIndices, size_t index)
 ```
 
@@ -100,7 +107,7 @@ uint64_t OH_Drawing_GetRunStringIndicesByIndex(OH_Drawing_Array* stringIndices, 
 
 ### OH_Drawing_DestroyRunStringIndices()
 
-```
+```c
 void OH_Drawing_DestroyRunStringIndices(OH_Drawing_Array* stringIndices)
 ```
 
@@ -121,7 +128,7 @@ void OH_Drawing_DestroyRunStringIndices(OH_Drawing_Array* stringIndices)
 
 ### OH_Drawing_GetRunStringRange()
 
-```
+```c
 void OH_Drawing_GetRunStringRange(OH_Drawing_Run* run, uint64_t* location, uint64_t* length)
 ```
 
@@ -144,7 +151,7 @@ void OH_Drawing_GetRunStringRange(OH_Drawing_Run* run, uint64_t* location, uint6
 
 ### OH_Drawing_GetRunTypographicBounds()
 
-```
+```c
 float OH_Drawing_GetRunTypographicBounds(OH_Drawing_Run* run, float* ascent, float* descent, float* leading)
 ```
 
@@ -174,7 +181,7 @@ float OH_Drawing_GetRunTypographicBounds(OH_Drawing_Run* run, float* ascent, flo
 
 ### OH_Drawing_RunPaint()
 
-```
+```c
 void OH_Drawing_RunPaint(OH_Drawing_Canvas* canvas, OH_Drawing_Run* run, double x, double y)
 ```
 
@@ -198,7 +205,7 @@ void OH_Drawing_RunPaint(OH_Drawing_Canvas* canvas, OH_Drawing_Run* run, double 
 
 ### OH_Drawing_GetRunImageBounds()
 
-```
+```c
 OH_Drawing_Rect* OH_Drawing_GetRunImageBounds(OH_Drawing_Run* run)
 ```
 
@@ -225,7 +232,7 @@ OH_Drawing_Rect* OH_Drawing_GetRunImageBounds(OH_Drawing_Run* run)
 
 ### OH_Drawing_DestroyRunImageBounds()
 
-```
+```c
 void OH_Drawing_DestroyRunImageBounds(OH_Drawing_Rect* rect)
 ```
 
@@ -246,7 +253,7 @@ void OH_Drawing_DestroyRunImageBounds(OH_Drawing_Rect* rect)
 
 ### OH_Drawing_GetRunGlyphs()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetRunGlyphs(OH_Drawing_Run* run, int64_t start, int64_t length)
 ```
 
@@ -275,7 +282,7 @@ OH_Drawing_Array* OH_Drawing_GetRunGlyphs(OH_Drawing_Run* run, int64_t start, in
 
 ### OH_Drawing_GetRunGlyphsByIndex()
 
-```
+```c
 uint16_t OH_Drawing_GetRunGlyphsByIndex(OH_Drawing_Array* glyphs, size_t index)
 ```
 
@@ -303,7 +310,7 @@ uint16_t OH_Drawing_GetRunGlyphsByIndex(OH_Drawing_Array* glyphs, size_t index)
 
 ### OH_Drawing_DestroyRunGlyphs()
 
-```
+```c
 void OH_Drawing_DestroyRunGlyphs(OH_Drawing_Array* glyphs)
 ```
 
@@ -324,7 +331,7 @@ void OH_Drawing_DestroyRunGlyphs(OH_Drawing_Array* glyphs)
 
 ### OH_Drawing_GetRunPositions()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetRunPositions(OH_Drawing_Run* run, int64_t start, int64_t length)
 ```
 
@@ -353,7 +360,7 @@ OH_Drawing_Array* OH_Drawing_GetRunPositions(OH_Drawing_Run* run, int64_t start,
 
 ### OH_Drawing_GetRunPositionsByIndex()
 
-```
+```c
 OH_Drawing_Point* OH_Drawing_GetRunPositionsByIndex(OH_Drawing_Array* positions, size_t index)
 ```
 
@@ -381,7 +388,7 @@ OH_Drawing_Point* OH_Drawing_GetRunPositionsByIndex(OH_Drawing_Array* positions,
 
 ### OH_Drawing_DestroyRunPositions()
 
-```
+```c
 void OH_Drawing_DestroyRunPositions(OH_Drawing_Array* positions)
 ```
 
@@ -402,7 +409,7 @@ void OH_Drawing_DestroyRunPositions(OH_Drawing_Array* positions)
 
 ### OH_Drawing_GetRunGlyphCount()
 
-```
+```c
 uint32_t OH_Drawing_GetRunGlyphCount(OH_Drawing_Run* run)
 ```
 
@@ -429,7 +436,7 @@ uint32_t OH_Drawing_GetRunGlyphCount(OH_Drawing_Run* run)
 
 ### OH_Drawing_GetRunFont()
 
-```
+```c
 OH_Drawing_Font* OH_Drawing_GetRunFont(OH_Drawing_Run* run)
 ```
 
@@ -455,7 +462,7 @@ OH_Drawing_Font* OH_Drawing_GetRunFont(OH_Drawing_Run* run)
 
 ### OH_Drawing_GetRunTextDirection()
 
-```
+```c
 OH_Drawing_TextDirection OH_Drawing_GetRunTextDirection(OH_Drawing_Run* run)
 ```
 
@@ -481,13 +488,13 @@ OH_Drawing_TextDirection OH_Drawing_GetRunTextDirection(OH_Drawing_Run* run)
 
 ### OH_Drawing_GetRunGlyphAdvances()
 
-```
+```c
 OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t start, uint32_t length)
 ```
 
 **描述**
 
-获取渲染单元字体宽度数组。
+获取渲染单元字形宽度数组。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -506,12 +513,12 @@ OH_Drawing_Array* OH_Drawing_GetRunGlyphAdvances(OH_Drawing_Run* run, uint32_t s
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* | 返回指向渲染单元字形位置数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)对象的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用[OH_Drawing_DestroyRunGlyphAdvances](capi-drawing-text-run-h.md#oh_drawing_destroyrunglyphadvances)接口释放该对象的指针。 |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* | 返回指向渲染单元字形宽度数组[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)对象的指针，不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用[OH_Drawing_DestroyRunGlyphAdvances](capi-drawing-text-run-h.md#oh_drawing_destroyrunglyphadvances)接口释放该对象的指针。 |
 
 
 ### OH_Drawing_GetRunGlyphAdvanceByIndex()
 
-```
+```c
 OH_Drawing_Point* OH_Drawing_GetRunGlyphAdvanceByIndex(OH_Drawing_Array* advances, size_t index)
 ```
 
@@ -539,7 +546,7 @@ OH_Drawing_Point* OH_Drawing_GetRunGlyphAdvanceByIndex(OH_Drawing_Array* advance
 
 ### OH_Drawing_DestroyRunGlyphAdvances()
 
-```
+```c
 void OH_Drawing_DestroyRunGlyphAdvances(OH_Drawing_Array* advances)
 ```
 

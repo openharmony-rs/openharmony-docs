@@ -1,13 +1,19 @@
 # Interface (AudioCapturer)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+提供音频采集的相关接口。
+
+在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8)获取AudioCapturer实例。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 8开始支持。
-
-提供音频采集的相关接口。
-
-在使用AudioCapturer的接口之前，需先通过[createAudioCapturer](arkts-apis-audio-f.md#audiocreateaudiocapturer8)获取AudioCapturer实例。
 
 ## 导入模块
 
@@ -344,15 +350,12 @@ start(): Promise<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioCapturer.start().then(() => {
-  console.info('AudioFrameworkRecLog: ---------START---------');
-  console.info('AudioFrameworkRecLog: Capturer started: SUCCESS');
-  console.info(`AudioFrameworkRecLog: AudioCapturer: STATE: ${audioCapturer.state}`);
-  console.info('AudioFrameworkRecLog: Capturer started: SUCCESS');
-  if ((audioCapturer.state == audio.AudioState.STATE_RUNNING)) {
+  console.info('Succeeded in doing start.');
+  if (audioCapturer.state == audio.AudioState.STATE_RUNNING) {
     console.info('AudioFrameworkRecLog: AudioCapturer is in Running State');
   }
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: Capturer start :ERROR : ${err}`);
+  console.error(`Failed to start. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -405,13 +408,12 @@ stop(): Promise<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioCapturer.stop().then(() => {
-  console.info('AudioFrameworkRecLog: ---------STOP RECORD---------');
-  console.info('AudioFrameworkRecLog: Capturer stopped: SUCCESS');
-  if ((audioCapturer.state == audio.AudioState.STATE_STOPPED)){
+  console.info('Succeeded in doing stop.');
+  if (audioCapturer.state == audio.AudioState.STATE_STOPPED){
     console.info('AudioFrameworkRecLog: State is Stopped:');
   }
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
+  console.error(`Failed to stop. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -557,13 +559,13 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 获取输入音频流时间戳和当前数据帧位置信息。
 
-该接口可以获取到音频通道实际录制位置（framePosition）以及录制到该位置时候的时间戳（timestamp），时间戳单位为纳秒。
+该接口可以获取到音频通道实际录制位置（framePos）以及录制到该位置时候的时间戳（timestamp），时间戳单位为纳秒。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **返回值：**
 
-| 类型                                                    | 描述                    |
+| 类型                                                    | 说明                    |
 |-------------------------------------------------------| ----------------------- |
 | Promise\<[AudioTimestampInfo](arkts-apis-audio-i.md#audiotimestampinfo19)> | Promise对象，返回音频流时间戳和当前数据帧位置信息。 |
 
@@ -597,7 +599,7 @@ getAudioTimestampInfoSync(): AudioTimestampInfo
 
 **返回值：**
 
-| 类型             | 描述                    |
+| 类型             | 说明                    |
 | ---------------- | ----------------------- |
 | [AudioTimestampInfo](arkts-apis-audio-i.md#audiotimestampinfo19) | 返回音频流时间戳和当前数据帧位置信息。 |
 
@@ -643,13 +645,10 @@ getBufferSize(callback: AsyncCallback<number\>): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioCapturer.getBufferSize((err: BusinessError, bufferSize: number) => {
-  if (!err) {
-    console.info(`BufferSize : ${bufferSize}`);
-    audioCapturer.read(bufferSize, true).then((buffer: ArrayBuffer) => {
-      console.info(`Buffer read is ${buffer.byteLength}`);
-    }).catch((err: BusinessError) => {
-      console.error(`AudioFrameworkRecLog: AudioCapturer Created : ERROR : ${err}`);
-    });
+  if (err) {
+    console.error(`Failed to get buffer size. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting buffer size, BufferSize: ${bufferSize}.`);
   }
 });
 ```
@@ -673,13 +672,10 @@ getBufferSize(): Promise<number\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bufferSize: number = 0;
-
-audioCapturer.getBufferSize().then((data: number) => {
-  console.info(`AudioFrameworkRecLog: getBufferSize :SUCCESS ${data}`);
-  bufferSize = data;
+audioCapturer.getBufferSize().then((bufferSize: number) => {
+  console.info(`Succeeded in getting buffer size, BufferSize: ${bufferSize}.`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: getBufferSize :ERROR : ${err}`);
+  console.error(`Failed to get buffer size. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -702,14 +698,12 @@ getBufferSizeSync(): number
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bufferSize: number = 0;
-
 try {
-  bufferSize = audioCapturer.getBufferSizeSync();
-  console.info(`AudioFrameworkRecLog: getBufferSizeSync :SUCCESS ${bufferSize}`);
+  let bufferSize = audioCapturer.getBufferSizeSync();
+  console.info(`Succeeded in getting buffer size, BufferSize: ${bufferSize}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`AudioFrameworkRecLog: getBufferSizeSync :ERROR : ${error}`);
+  console.error(`Failed to get buffer size. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -811,48 +805,45 @@ AudioCapturer对象在start事件时获取焦点，在pause、stop等事件时�
 ```ts
 import { audio } from '@kit.AudioKit';
 
-let isCapturing: boolean; // 标识符，表示是否正在采集。
-onAudioInterrupt();
+let isCapturing: boolean = false; // 标识符，表示是否正在采集。
 
-async function onAudioInterrupt(){
-  audioCapturer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
-    // 在发生音频打断事件时，audioCapturer收到interruptEvent回调，此处根据其内容做相应处理。
-    // 1、可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
-    // 注：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
-    // 2、必选：读取interruptEvent.hintType的类型，做出相应的处理。
-    if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
-      // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
-      switch (interruptEvent.hintType) {
-        case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
-          // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
-          console.info('Force paused. Update capturing status and stop reading');
-          isCapturing = false; // 简化处理，代表应用切换至暂停状态的若干操作。
-          break;
-        case audio.InterruptHint.INTERRUPT_HINT_STOP:
-          // 音频流已被停止，永久失去焦点，若想恢复采集，需用户主动触发。
-          console.info('Force stopped. Update capturing status and stop reading');
-          isCapturing = false; // 简化处理，代表应用切换至暂停状态的若干操作。
-          break;
-        default:
-          console.info('Invalid interruptEvent');
-          break;
-      }
-    } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
-      // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
-      switch (interruptEvent.hintType) {
-        case audio.InterruptHint.INTERRUPT_HINT_RESUME:
-          // 建议应用继续采集（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复采集）。
-          // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-          console.info('Resume force paused renderer or ignore');
-          // 若选择继续采集，需在此处主动执行开始采集的若干操作。
-          break;
-        default:
-          console.info('Invalid interruptEvent');
-          break;
-      }
+audioCapturer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
+  // 在发生音频打断事件时，audioCapturer收到interruptEvent回调，此处根据其内容做相应处理。
+  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
+  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
+        console.info('Force paused. Update capturing status and stop reading');
+        isCapturing = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        // 音频流已被停止，永久失去焦点，若想恢复采集，需用户主动触发。
+        console.info('Force stopped. Update capturing status and stop reading');
+        isCapturing = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
     }
-  });
-}
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        // 建议应用继续采集（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复采集）。
+        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
+        console.info('Resume force paused renderer or ignore');
+        // 若选择继续采集，需在此处主动执行开始采集的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }
+  }
+});
 ```
 
 ## off('audioInterrupt')<sup>10+</sup>
@@ -987,9 +978,7 @@ on(type: 'audioCapturerChange', callback: Callback\<AudioCapturerChangeInfo>): v
 
 ```ts
 audioCapturer.on('audioCapturerChange', (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
-  console.info(`audioCapturerChange id: ${capturerChangeInfo[0].id}`);
-  console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo[0].deviceRole}`);
-  console.info(`audioCapturerChange deviceType: ${capturerChangeInfo[0].deviceType}`);
+  console.info(`Succeeded in using on function, AudioCapturerChangeInfo: ${capturerChangeInfo}.`);
 });
 ```
 
@@ -1025,9 +1014,7 @@ audioCapturer.off('audioCapturerChange');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let audioCapturerChangeCallback = (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
-  console.info(`audioCapturerChange id: ${capturerChangeInfo[0].id}`);
-  console.info(`audioCapturerChange deviceRole: ${capturerChangeInfo[0].deviceRole}`);
-  console.info(`audioCapturerChange deviceType: ${capturerChangeInfo[0].deviceType}`);
+  console.info(`Succeeded in using on or off function, AudioCapturerChangeInfo: ${capturerChangeInfo}.`);
 };
 
 audioCapturer.on('audioCapturerChange', audioCapturerChangeCallback);
@@ -1271,9 +1258,8 @@ let bufferSize: number = 0;
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let path = context.cacheDir;
-// 确保该沙箱路径下存在该资源。
 let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
-let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
 let readDataCallback = (buffer: ArrayBuffer) => {
   let options: Options = {
     offset: bufferSize,
@@ -1414,7 +1400,7 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 6800103 | Operation not permit at current state. |
+| 6800103 | Operation not permitted at current state. |
 
 **示例：**
 
@@ -1452,19 +1438,17 @@ read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer\
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bufferSize: number = 0;
-
-audioCapturer.getBufferSize().then((data: number) => {
-  console.info(`AudioFrameworkRecLog: getBufferSize: SUCCESS ${data}`);
-  bufferSize = data;
+audioCapturer.getBufferSize().then((bufferSize: number) => {
+  console.info('Succeeded in doing getBufferSize.');
+  audioCapturer.read(bufferSize, true, (err: BusinessError, buffer: ArrayBuffer) => {
+    if (err) {
+      console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    console.info('Succeeded in doing read.');
+  });
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: getBufferSize: ERROR: ${err}`);
-});
-
-audioCapturer.read(bufferSize, true, (err: BusinessError, buffer: ArrayBuffer) => {
-  if (!err) {
-    console.info('Success in reading the buffer data');
-  }
+  console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1497,19 +1481,14 @@ read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer\>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bufferSize: number = 0;
-
-audioCapturer.getBufferSize().then((data: number) => {
-  console.info(`AudioFrameworkRecLog: getBufferSize: SUCCESS ${data}`);
-  bufferSize = data;
+audioCapturer.getBufferSize().then((bufferSize: number) => {
+  console.info('Succeeded in doing getBufferSize.');
+  audioCapturer.read(bufferSize, true).then((buffer: ArrayBuffer) => {
+    console.info('Succeeded in doing read.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to read. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: getBufferSize: ERROR ${err}`);
-});
-console.info(`Buffer size: ${bufferSize}`);
-
-audioCapturer.read(bufferSize, true).then((buffer: ArrayBuffer) => {
-  console.info('buffer read successfully');
-}).catch((err: BusinessError) => {
-  console.error(`ERROR : ${err}`);
+  console.error(`Failed to getBufferSize. Code: ${err.code}, message: ${err.message}`);
 });
 ```

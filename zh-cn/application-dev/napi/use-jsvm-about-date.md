@@ -1,4 +1,10 @@
 # 使用JSVM-API接口进行Date相关开发
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## 简介
 
@@ -8,21 +14,21 @@ JSVM-API中date相关接口用于处理JavaScript Date对象，并在JSVM模块�
 
 在JSVM-API中，JavaScript Date对象的数据表示从UTC时间1970年1月1日0时0分0秒起至现在的总毫秒数。
 
-JavaScript Date对象提供了一种在JavaScript中表示和操作日期和时间的方式。它们允许开发者创建表示特定时刻的日期对象，执行各种日期和时间相关的计算（如添加或减去时间间隔），以及格式化日期为字符串以供显示。
+JavaScript Date对象在JavaScript中用于表示和操作日期和时间。它们允许开发者创建表示特定时刻的日期对象，执行日期和时间计算（如添加或减去时间间隔），以及格式化日期为字符串以供显示。
 
-在JSVM-API中，通过提供与Date对象交互的函数，JSVM模块能够更紧密地与JavaScript环境集成，执行更复杂的日期和时间相关操作。
+在JSVM-API中，通过提供与Date对象交互的函数，JSVM模块能够更紧密地与JavaScript环境集成，执行复杂的日期和时间相关操作。
 
 ## 接口说明
 
 | 接口                       | 功能说明                       |
 |----------------------------|--------------------------------|
-| OH_JSVM_CreateDate           | 创建了一个表示给定毫秒数的Date对象。  |
+| OH_JSVM_CreateDate           | 创建一个表示给定毫秒数的Date对象。|
 | OH_JSVM_GetDateValue        | 获取给定JavaScript Date的时间值的Double基础类型值。  |
 | OH_JSVM_IsDate               | 判断一个JavaScript对象是否为Date类型对象。|
 
 ## 使用示例
 
-JSVM-API接口开发流程请参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅展示接口对应的C++相关代码。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅展示接口对应C++相关代码。
 
 ### OH_JSVM_CreateDate
 
@@ -35,7 +41,7 @@ cpp部分代码：
 // OH_JSVM_CreateDate的样例方法
 static JSVM_Value CreateDate(JSVM_Env env, JSVM_CallbackInfo info) {
     // 通过c接口获取Unix纪元以来经过的秒数，并转化为毫秒数为单位
-    double value = static_cast<double>(time(NULL) * 1000);
+    double value = static_cast<double>(static_cast<uint64_t>(time(NULL)) * 1000ULL);
     // 调用OH_JSVM_CreateDate接口将double值转换成表示日期时间的JavaScript值返回出去
     JSVM_Value returnValue = nullptr;
 
@@ -76,7 +82,7 @@ const char *srcCallNative = R"JS(createDate())JS";
 JSVM CreateDate success:Mon Jul 7 10:42:34 2025
 ```
 
-<!-- @[oh_jsvm_create_date](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/createdate/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/createdate/src/main/cpp/hello.cpp) -->
 
 ### OH_JSVM_GetDateValue
 
@@ -123,7 +129,7 @@ const char *srcCallNative = R"JS(getDateValue(new Date(Date.now())))JS";
 JSVM GetDateValue success:Mon Jul 7 10:47:08 2025
 ```
 
-<!-- @[oh_jsvm_get_date_value](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/getdatevalue/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/getdatevalue/src/main/cpp/hello.cpp) -->
 
 ### OH_JSVM_IsDate
 
@@ -137,12 +143,12 @@ static JSVM_Value IsDate(JSVM_Env env, JSVM_CallbackInfo info) {
     size_t argc = 1;
     JSVM_Value args[1] = {nullptr};
     JSVM_CALL(OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr));
-    bool isData = false;
-    JSVM_CALL(OH_JSVM_IsDate(env, args[0], &isData));
-    OH_LOG_INFO(LOG_APP, "JSVM IsDate success:%{public}d", isData);
+    bool isDate = false;
+    JSVM_CALL(OH_JSVM_IsDate(env, args[0], &isDate));
+    OH_LOG_INFO(LOG_APP, "JSVM IsDate success:%{public}d", isDate);
     
     JSVM_Value result = nullptr;
-    JSVM_CALL(OH_JSVM_GetBoolean(env, isData, &result));
+    JSVM_CALL(OH_JSVM_GetBoolean(env, isDate, &result));
     return result;
 }
 // CreateDate注册回调
@@ -163,4 +169,4 @@ const char *srcCallNative = R"JS(isDate(new Date(Date.now())))JS";
 JSVM IsDate success:1
 ```
 
-<!-- @[oh_jsvm_is_date](https://gitee.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/isdate/src/main/cpp/hello.cpp) -->
+<!-- @[oh_jsvm_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutDate/isdate/src/main/cpp/hello.cpp) -->

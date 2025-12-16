@@ -1,8 +1,20 @@
 # Enums
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+
+## 导入模块
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
 
 ## PhotoType
 
@@ -52,6 +64,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | --------| ---- | ------------|
 | USER                | 0    | 用户相册。   |
 | SYSTEM              | 1024 | 系统预置相册。 |
+| SOURCE<sup>22+</sup>| 2048 | 由应用创建的相册。 |
 
 ## AlbumSubtype
 
@@ -65,6 +78,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | FAVORITE        | 1025       | 收藏夹。 |
 | VIDEO  | 1026       | 视频相册。|
 | IMAGE<sup>12+</sup>               | 1031       | 图片相册。|
+| SOURCE\_GENERIC<sup>22+</sup>     | 2049       | 来源相册。|
 | ANY    | 2147483647 | 任意相册。|
 
 ## PositionType<sup>16+</sup>
@@ -87,9 +101,9 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 | 名称          | 值              | 说明                                                       |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | 文件uri。<br>**注意：**查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
+| URI           | 'uri'                 | 文件uri。<br>**注意：**<br>查询照片时，该字段仅支持使用[DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)谓词。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。            |
 | PHOTO_TYPE    | 'media_type'           | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
-| DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度为1~255。<br>- 文件主名中不允许出现的非法英文字符。<br>- 不允许出现非法字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
+| DISPLAY_NAME  | 'display_name'        | 显示名字。规格为：<br>- 应包含有效文件主名和图片或视频扩展名。<br>- 文件名字符串长度为1~255。<br>- 文件主名中不允许出现的非法英文字符，包括：. .. \ / : * ? " ' ` < > \| { } [ ]。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
 | SIZE          | 'size'                | 文件大小（单位：字节）。动态照片的size包括图片和视频的总大小。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。    |
 | DATE_ADDED    | 'date_added'          | 文件创建时的Unix时间戳（单位：秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。         |
 | DATE_MODIFIED | 'date_modified'       | 文件修改时的Unix时间戳（单位：秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
@@ -100,8 +114,8 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | ORIENTATION   | 'orientation'         | 文件的旋转角度，单位为度。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。  |
 | FAVORITE      | 'is_favorite'            | 收藏。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                 |
 | TITLE         | 'title'               | 文件标题。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                 |
-| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | 文件创建时的Unix时间戳（单位：毫秒）。<br>**注意：**查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
-| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | 文件修改时的Unix时间戳（单位：毫秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**注意：**查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
+| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | 文件创建时的Unix时间戳（单位：毫秒）。<br>**注意：**<br>查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。      |
+| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | 文件修改时的Unix时间戳（单位：毫秒）。修改文件名不会改变此值，当文件内容发生修改时才会更新。<br>**注意：**<br>查询照片时，不支持基于该字段排序。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
 | PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | 媒体文件的子类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。     |
 | DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | 媒体文件的动态范围类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
 | COVER_POSITION<sup>12+</sup>   | 'cover_position'               | 动态照片的封面位置，具体表示封面帧所对应的视频时间戳（单位：微秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
@@ -112,6 +126,8 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | 拍摄时的Unix时间戳（单位：毫秒）。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
 | POSITION<sup>16+</sup>  | 'position'            | 文件位置类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | 文件的后缀名。                               |
+| OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | 照片所属的相册id。 |
+| ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | 图片和视频的宽高比。<br/> ​**模型约束**：此接口仅可在Stage模型下使用。|
 
 ## AlbumKeys
 
@@ -123,6 +139,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | URI           | 'uri'                 | 相册uri。                                                   |
 | ALBUM_NAME    | 'album_name'          | 相册名字。                                                   |
+| ALBUM_LPATH<sup>22+</sup>          | 'lpath'                 | 相册的虚拟路径。<br>支持的相册及对应的lpath值：<br>- 相机应用相册：'/DCIM/Camera' <br>- 截图应用相册：'/Pictures/Screenshots' <br>- 屏幕录制应用相册：'/Pictures/Screenrecords' <br>- 用户创建的相册：'/Pictures/Users/{用户自定义相册名称}'                     |
 
 ## ResourceType<sup>11+</sup>
 
@@ -177,32 +194,28 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 枚举，可选择的媒体文件类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                                    |  值 | 说明       |
 |---------------------------------------|  ---- |----------|
-| IMAGE_TYPE                            |  'image/*' | 图片类型。    |
-| VIDEO_TYPE                            |  'video/*' | 视频类型。    |
-| IMAGE_VIDEO_TYPE                      |  '\*/*' | 图片和视频类型。 |
+| IMAGE_TYPE                            |  'image/*' | 图片类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。    |
+| VIDEO_TYPE                            |  'video/*' | 视频类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。    |
+| IMAGE_VIDEO_TYPE                      |  '\*/*' | 图片和视频类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | MOVING_PHOTO_IMAGE_TYPE<sup>12+</sup> |  'image/movingPhoto' | 动态照片类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 
 ## RecommendationType<sup>11+</sup>
 
 枚举，推荐的图片类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
-| QR_OR_BAR_CODE  |  1 | 二维码或条码。 |
-| QR_CODE |  2 | 二维码。 |
-| BAR_CODE |  3 | 条码。 |
-| ID_CARD |  4 | 身份证。 |
-| PROFILE_PICTURE |  5 | 头像。 |
+| QR_OR_BAR_CODE  |  1 | 二维码或条码。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| QR_CODE |  2 | 二维码。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| BAR_CODE |  3 | 条码。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| ID_CARD |  4 | 身份证。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PROFILE_PICTURE |  5 | 头像。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | PASSPORT<sup>12+</sup> |  6 | 护照。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | BANK_CARD<sup>12+</sup> |  7 | 银行卡。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | DRIVER_LICENSE<sup>12+</sup> |  8 | 驾驶证。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -213,6 +226,7 @@ PhotoSubtype是不同[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)类
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let recommendOptions: photoAccessHelper.RecommendationOptions = {
@@ -272,13 +286,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 枚举，资源分发模式。
 
+该模式适用于分段式拍照或分段式视频。如果当前设备不具备分段式能力，则以下三种分发模式无区别，直接返回请求的图片或视频资源。请求的结果通过[onDataPrepared](./arkts-apis-photoAccessHelper-MediaAssetDataHandler.md#ondataprepared11)回调返回。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称  |  值 |  说明 |
 | ----- |  ---- |  ---- |
-| FAST_MODE |  0 |  快速模式。 |
-| HIGH_QUALITY_MODE |  1 |  高质量模式。 |
-| BALANCE_MODE |  2 |  均衡模式。 |
+| FAST_MODE |  0 |  快速模式。<br>针对分段式拍照或视频场景，若当前存在高质量图或视频，则立即返回高质量图或视频的请求结果回调；若当前存在低质量图或视频，则立即返回低质量图或视频的请求结果回调。 |
+| HIGH_QUALITY_MODE |  1 |  高质量模式。<br>针对分段式拍照或视频场景，若当前存在高质量图或视频，则立即返回高质量图或视频的请求结果回调；若当前存在低质量图或视频，则申请高质量图或视频的生成任务，待高质量图或视频生成后，返回高质量图或视频的请求结果回调。 |
+| BALANCE_MODE |  2 |  均衡模式。<br>- 针对分段式拍照场景，若当前存在高质量图，则立即返回高质量图的请求结果回调；若当前存在低质量图，则立即返回低质量图的请求结果回调，并申请高质量图生成任务，待高质量图生成后，再次返回高质量图的请求结果回调。<br>- 针对分段式视频场景，若当前存在高质量视频，则立即返回高质量视频的请求结果回调；若当前存在低质量视频，则立即返回低质量视频的请求结果回调。 |
 
 ## CompatibleMode<sup>15+</sup>
 
@@ -314,3 +330,41 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | NOTIFY_CHANGE_ADD         | 0    | 媒体资产（图片/视频）或相册已经创建。     |
 | NOTIFY_CHANGE_UPDATE      | 1    | 媒体资产（图片/视频）或相册已经修改。     |
 | NOTIFY_CHANGE_REMOVE      | 2    | 媒体资产（图片/视频）或相册已经删除。     |
+
+## PhotoSource<sup>20+</sup>
+
+枚举，图片或者视频数据的来源类型。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明                                                                                                                 |
+|-------------------|-----|--------------------------------------------------------------------------------------------------------------------|
+| ALL | 0   | 所有来源的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| CAMERA | 1   | 仅相机拍摄的图片、视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| SCREENSHOT | 2   | 截屏图片或者录屏视频。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+
+## MovingPhotoBadgeStateType<sup>22+</sup>
+
+枚举，动态照片状态。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                | 值   | 说明             |
+|------------------- |--------|----------------------|
+| NOT_MOVING_PHOTO   | 0      | 非动态照片。 |
+| MOVING_PHOTO_ENABLED | 1    | 打开动态照片效果。 |
+| MOVING_PHOTO_DISABLED | 2   | 关闭动态照片效果。 |
+
+
+## VideoMode<sup>22+</sup>
+
+枚举，视频文件的log模式。
+
+**系统能力**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  默认类型。<br>取值为0表示当前视频非log模式或未判断类型，后续部分视频判断后字段会更新为1，因此不建议使用此字段进行查询。|
+| LOG_VIDEO |  1 |  log模式视频的文件类型。  |

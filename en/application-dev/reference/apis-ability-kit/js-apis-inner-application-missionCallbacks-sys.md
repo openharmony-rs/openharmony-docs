@@ -1,6 +1,12 @@
 # MissionCallback (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @huipeizi-->
 
-The MissionCallback module defines the callbacks invoked after synchronization starts. These callbacks can be used as input parameters in [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
+The module defines the callbacks invoked after synchronization starts. These callbacks can be used as input parameters in [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
 
 > **NOTE**
 >
@@ -15,6 +21,10 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 ## MissionCallback.notifyMissionsChanged
 
+notifyMissionsChanged(deviceId: string): void
+
+Called to notify that the list of missions has changed.
+
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API**: This is a system API.
@@ -26,6 +36,7 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 | deviceId |  string | Yes| Device ID in the callback that notifies a mission change.|
 
 **Example**
+
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
@@ -35,21 +46,25 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );
 ```
 
 ## MissionCallback.notifySnapshot
+
+notifySnapshot(deviceId: string, mission: number): void
+
+Called to notify that the snapshot has changed.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -72,21 +87,25 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );
 ```
 
 ## MissionCallback.notifyNetDisconnect
+
+notifyNetDisconnect(deviceId: string, state: number): void
+
+Called to notify that the network connection is interrupted.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -110,15 +129,15 @@ distributedMissionManager.registerMissionListener(
   },
   {
     notifyMissionsChanged: (deviceId: string) => {
-      console.log(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
     notifySnapshot: (deviceId: string, mission: number) => {
-      console.log(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifySnapshot mission: ${JSON.stringify(mission)}`);
+      console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
     notifyNetDisconnect: (deviceId: string, state: number) => {
-      console.log(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
-      console.log(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
+      console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
+      console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
     }
   }
 );

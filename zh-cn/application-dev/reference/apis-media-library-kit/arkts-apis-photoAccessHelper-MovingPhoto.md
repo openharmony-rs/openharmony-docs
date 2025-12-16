@@ -1,13 +1,17 @@
 # Interface (MovingPhoto)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+动态照片对象。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
-
-动态照片对象。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
 
@@ -67,6 +71,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   // 请确保图库内存在动态照片。
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
   let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+  if (asset === undefined) {
+    console.error('asset is undefined');
+    return;
+  }
   let requestOptions: photoAccessHelper.RequestOptions = {
     deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
   }
@@ -116,7 +124,7 @@ requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied   |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 14000011 |  System inner fail.        |
 
 **示例：**
 
@@ -136,7 +144,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
     let videoFileUri: string = "file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4";
     try {
       await movingPhoto.requestContent(imageFileUri, videoFileUri);
-      console.log("moving photo contents retrieved successfully");
+      console.info("moving photo contents retrieved successfully");
     } catch (err) {
       console.error(`failed to retrieve contents of moving photo, error code is ${err.code}, message is ${err.message}`);
     }
@@ -152,7 +160,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   };
   // 请确保图库内存在动态照片。
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+  if (assetResult === undefined) {
+    console.error('assetResult is undefined');
+    return;
+  }
   let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+  if (asset === undefined) {
+    console.error('asset is undefined');
+    return;
+  }  
   let requestOptions: photoAccessHelper.RequestOptions = {
     deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
   }
@@ -202,7 +218,7 @@ requestContent(resourceType: ResourceType, fileUri: string): Promise\<void>
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied   |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 14000011 |  System inner fail.        |
 
 **示例：**
 
@@ -221,7 +237,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
     let imageFileUri: string = "file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg";
     try {
       await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE, imageFileUri);
-      console.log("moving photo image content retrieved successfully");
+      console.info("moving photo image content retrieved successfully");
     } catch (err) {
       console.error(`failed to retrieve image content of moving photo, error code is ${err.code}, message is ${err.message}`);
     }
@@ -238,6 +254,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   // 请确保图库内存在动态照片。
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
   let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+  if (asset === undefined) {
+    console.error('asset is undefined');
+    return;
+  }
   let requestOptions: photoAccessHelper.RequestOptions = {
     deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
   }
@@ -286,7 +306,7 @@ requestContent(resourceType: ResourceType): Promise\<ArrayBuffer>
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied   |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 14000011 |  System inner fail.        |
 
 **示例：**
 
@@ -303,7 +323,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
     }
     try {
       let buffer: ArrayBuffer = await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE);
-      console.log("moving photo image content retrieved successfully, buffer length: " + buffer.byteLength);
+      console.info("moving photo image content retrieved successfully, buffer length: " + buffer.byteLength);
     } catch (err) {
       console.error(`failed to retrieve image content of moving photo, error code is ${err.code}, message is ${err.message}`);
     }
@@ -320,6 +340,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   // 请确保图库内存在动态照片。
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
   let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
+  if (asset === undefined) {
+    console.error('asset is undefined');
+    return;
+  }
   let requestOptions: photoAccessHelper.RequestOptions = {
     deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
   }

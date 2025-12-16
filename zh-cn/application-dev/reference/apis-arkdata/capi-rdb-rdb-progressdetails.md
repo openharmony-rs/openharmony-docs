@@ -1,4 +1,14 @@
 # Rdb_ProgressDetails
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct Rdb_ProgressDetails {...} Rdb_ProgressDetails
+```
 
 ## 概述
 

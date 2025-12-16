@@ -1,5 +1,12 @@
 # 音频编码
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
 开发者可以调用本模块的Native API接口，完成音频编码，即将音频PCM编码压缩成不同的格式。
 
 接口不限制PCM数据的来源，开发者可以调用麦克风录制获取、也可以导入编辑后的PCM数据，通过音频编码，输出对应格式的码流，最后封装为目标格式文件。
@@ -10,17 +17,18 @@
 
 - 音频录制
 
-  通过录制传入PCM，然后编码出对应格式的码流，最后[封装](audio-video-muxer.md)成想要的格式。
+  通过录制传入PCM，然后编码出对应格式的码流，最后[封装](audio-video-muxer.md)为所需格式的音频文件。
 - 音频编辑
 
   编辑PCM后导出音频文件的场景，需要编码成对应音频格式后再[封装](audio-video-muxer.md)成文件。
 > **说明：**
 >
-> AAC编码器默认采用的VBR可变码率模式，与配置的预期参数可能存在偏差。
+> - AAC编码器默认采用的VBR可变码率模式，与配置的预期参数可能存在偏差。
+> - AAC编码器默认输出携带ADTS头部，帧数据的前7字节为ADTS头部。
 
 ## 开发指导
 
-详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/_audio_codec.md)。
+详细的API说明请参考[API文档](../../reference/apis-avcodec-kit/capi-native-avcodec-audiocodec-h.md)。
 
 参考以下示例代码，完成音频编码的全流程，包括：创建编码器、设置编码参数（采样率/码率/声道数等）、开始、刷新、重置、销毁资源。
 
@@ -47,7 +55,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 ### 开发步骤
 
-1. 添加头文件。
+1. 添加所需的头文件。
 
     ```cpp
     #include <multimedia/player_framework/native_avcodec_audiocodec.h>
@@ -58,20 +66,20 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. 创建编码器实例对象，OH_AVCodec *为编码器实例指针。
+2. 创建编码器实例对象，OH_AVCodec*为编码器实例指针。
 
    应用可以通过媒体类型或编解码器名称创建编码器。
 
-   方法一：通过 Mimetype 创建编码器。
+   方法一：通过mime type创建编码器。
     ```cpp
     // 设置判定是否为编码；设置true表示当前是编码。
     bool isEncoder = true;
     // 通过媒体类型创建编码器。
     OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, isEncoder);
     ```
-   方法二：通过 codec name 创建编码器。
+   方法二：通过codec name创建编码器。
     ```cpp
-    // 通过 codecname 创建编码器。
+    // 通过codec name创建编码器。
     OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
     const char *name = OH_AVCapability_GetName(capability);
     OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByName(name);
@@ -114,7 +122,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    开发者可以通过处理该回调报告的信息，确保编码器正常运转。
 
    > **注意：**
-   > 回调中不建议进行耗时操作。
+   >
+   > 请勿在回调中调用编码器的相关接口或进行耗时操作。
 
     ```cpp
     // OH_AVCodecOnError回调函数的实现。
@@ -152,6 +161,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
         unique_lock<mutex> lock(signal->outMutex_);
         signal->outQueue_.push(index);
         signal->outBufferQueue_.push(data);
+        signal->outCond_.notify_all();
     }
     ```
     配置回调：
@@ -167,20 +177,17 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 4. 调用OH_AudioCodec_Configure设置编码器。
 
-   设置必选项：采样率，码率，以及声道数，声道布局、位深。
+   配置选项key值说明：
 
-   可选项：最大输入长度。
+   <!--RP2-->
+   ![Audio encoder key configuration](figures/encoder_key.png)
+   <!--RP2End-->
 
-   flac编码： 需要额外标识兼容性级别(Compliance Level)和采样精度。
-   
    各音频编码类型参数范围说明：
-   | 音频编码类型 | 采样率(Hz)                                                                       |       声道数       |
-   | ----------- | ------------------------------------------------------------------------------- | :----------------: |
-   | <!--DelRow-->AAC         | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000 | 1、2、3、4、5、6、8 |
-   | Flac        | 8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200、96000 |        1~8         |
-   | MP3         | 8000、11025、12000、16000、22050、24000、32000、44100、48000                     |        1~2         |
-   | G711mu      | 8000                                                                            |         1          |
-   <!--RP3--><!--RP3End-->
+
+   <!--RP3-->
+   ![Audio encoder format range description](figures/encoder_format.png)
+   <!--RP3End-->
 
    例如对一个44100Hz采样率、2声道立体声、SAMPLE_S16LE采样格式的PCM音频，以32000bps的码率进行AAC编码的调用流程如下：
     <!--RP4-->
@@ -235,7 +242,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
     OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
-    // 配置音频精度。API 20前，FLAC编码必须设置此参数，设置为1即可；未设置此参数配置FLAC编码器时，调用OH_AudioCodec_Configure会返回错误码AV_ERR_INVALID_VAL。该值无实际作用，不会影响编码结果。从API 20开始，无需设置此参数。
+    // 配置音频精度。API version 20前，FLAC编码必须设置此参数，设置为1即可；未设置此参数配置FLAC编码器时，调用OH_AudioCodec_Configure会返回错误码AV_ERR_INVALID_VAL。该值无实际作用，不会影响编码结果。从API version 20开始，无需设置此参数。
     // constexpr int32_t BITS_PER_CODED_SAMPLE = 1;
     // OH_AVFormat_SetIntValue(format, OH_MD_KEY_BITS_PER_CODED_SAMPLE, BITS_PER_CODED_SAMPLE);
     OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT); 
@@ -248,7 +255,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     }
     ```
 
-    <!--RP2--><!--RP2End-->
+    <!--RP1--><!--RP1End-->
 
 5. 调用OH_AudioCodec_Prepare()，编码器就绪。
 
@@ -285,7 +292,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     }
     ```
 
-7. 调用OH_AudioCodec_PushInputBuffer()，写入待编码器的数据。需开发者填充完整的输入数据后调用。
+7. 调用OH_AudioCodec_PushInputBuffer()，写入待编码的数据。需开发者填充完整的输入数据后调用。
 
    每次输入的采样点数（SAMPLES_PER_FRAME）取值方法如下：
 
@@ -314,7 +321,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    > flac编码的样点数建议参考表格根据采样率对应的样点数进行设置，否则可能出现编码文件损坏问题。
 
    ```c++
-    // 声道数，对于amr编码声道数只支持单声道的音频输入。
+    // 声道数。
     constexpr int32_t DEFAULT_CHANNEL_COUNT = 2;
     // 采样点数，这里以AAC-LC为例，采样点数为1024。
     constexpr int32_t SAMPLES_PER_FRAME = 1024;
@@ -341,7 +348,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     ```
    在上方案例中，attr.flags代表缓冲区标记的类别。
 
-   如果是结束，需要将flags标识成AVCODEC_BUFFER_FLAGS_EOS。
+   结束时需要将flags标识为AVCODEC_BUFFER_FLAGS_EOS。
 
    | 枚举值 | 描述 | 
    | -------- | -------- |
@@ -356,6 +363,9 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     ```c++
     uint32_t index = signal_->outQueue_.front();
     OH_AVBuffer *avBuffer = signal_->outBufferQueue_.front();
+    if (avBuffer == nullptr) {
+        // 异常处理
+    }
     // 获取buffer attributes。
     OH_AVCodecBufferAttr attr = {0};
     int32_t ret = OH_AVBuffer_GetBufferAttr(avBuffer, &attr);
@@ -382,8 +392,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    使用情况：
 
-   * 在文件EOS之后，需要调用刷新。
-   * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid 为true）可以调用，然后重新调用OH_AudioCodec_Start。
+   * 在编码输出buffer属性为AVCODEC_BUFFER_FLAGS_EOS后，若想重新使用相同配置进行编码时，需要调用刷新。
+   * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid()为true）可以调用刷新，然后调用OH_AudioCodec_Start()重新开始编码。
 
     ```c++
     // 刷新编码器 audioEnc_。
@@ -400,7 +410,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 10. （可选）调用OH_AudioCodec_Reset()重置编码器。
 
-    调用OH_AudioCodec_Reset()后，编码器回到初始化的状态，需要调用OH_AudioCodec_Configure()重新配置，然后调用OH_AudioCodec_Start()重新开始编码。
+    调用OH_AudioCodec_Reset()后，编码器回到初始化状态，重置前获取到的输入/输出buffer都无法继续使用，需先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始编码。启动后重新获取输入/输出buffer。
 
     ```c++
     // 重置编码器 audioEnc_。
@@ -417,7 +427,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 11. 调用OH_AudioCodec_Stop()停止编码器。
 
-    停止后，可以通过Start重新进入已启动状态（started），但需要注意的是，如果编码器之前已输入数据，则需要重新输入编码器数据。
+    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 终止编码器 audioEnc_。
@@ -430,10 +440,11 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 12. 调用OH_AudioCodec_Destroy()销毁编码器实例，释放资源。
 
     > **说明：**
-    > 资源不能重复销毁
+    >
+    > 禁止重复销毁编码器。
 
     ```c++
-    // 调用OH_AudioCodec_Destroy, 注销编码器。
+    // 调用OH_AudioCodec_Destroy, 销毁编码器。
     int32_t ret = OH_AudioCodec_Destroy(audioEnc_);
     if (ret != AV_ERR_OK) {
         // 异常处理。
@@ -446,4 +457,4 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 针对音频编码，有以下相关实例可供参考：
 
-- [音频编码](https://gitee.com/openharmony/multimedia_av_codec/blob/master/test/nativedemo/audio_demo/avcodec_audio_avbuffer_aac_encoder_demo.cpp)
+- [音频编码](https://gitcode.com/openharmony/multimedia_av_codec/blob/master/test/nativedemo/audio_demo/avcodec_audio_avbuffer_aac_encoder_demo.cpp)

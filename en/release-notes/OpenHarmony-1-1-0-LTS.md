@@ -31,7 +31,7 @@ Run the following commands to download the source code:
 
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony_release_v1.1.0 --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony_release_v1.1.0 --no-repo-verify
 repo sync -c
 ```
 
@@ -202,7 +202,7 @@ The following table lists the issues known in OpenHarmony 1.0, which have been r
 
 | Issue                                                        | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I3EALU](https://gitee.com/openharmony/multimedia_camera_lite/issues/I3EALU) | [Multimedia] During execution of the cameraActs case, the camera configuration file cannot be found, and the initialization fails. |
-| [I3EGUX](https://gitee.com/openharmony/release-management/issues/I3EGUX) | [Reliability] When the system is reset repeatedly, and the KIdle process crashes once, the system is suspended and cannot be started. |
-| [I3DHIL](https://gitee.com/openharmony/community/issues/I3DHIL) | [System] The remaining space of the Hi3518 development board is insufficient, causing a failure in executing a large number of ACTS test cases. |
+| [I3EALU](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I3EALU) | [Multimedia] During execution of the cameraActs case, the camera configuration file cannot be found, and the initialization fails. |
+| [I3EGUX](https://gitcode.com/openharmony/release-management/issues/I3EGUX) | [Reliability] When the system is reset repeatedly, and the KIdle process crashes once, the system is suspended and cannot be started. |
+| [I3DHIL](https://gitcode.com/openharmony/community/issues/I3DHIL) | [System] The remaining space of the Hi3518 development board is insufficient, causing a failure in executing a large number of ACTS test cases. |
 

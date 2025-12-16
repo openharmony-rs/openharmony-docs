@@ -1,5 +1,14 @@
 # OH_NativeBuffer_Cta861
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NativeBuffer_Cta861 {...} OH_NativeBuffer_Cta861
+```
 ## 概述
 
 表示CTA-861.3静态元数据。

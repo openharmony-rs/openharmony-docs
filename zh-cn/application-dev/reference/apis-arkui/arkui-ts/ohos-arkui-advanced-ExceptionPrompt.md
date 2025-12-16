@@ -1,4 +1,10 @@
 # ExceptionPrompt
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 异常提示，适用于有异常需要提示异常内容的情况。
@@ -6,10 +12,9 @@
 
 > **说明：**
 >
-> 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 该组件不支持在Wearable设备上使用。
-
+> - 如果ExceptionPrompt设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ExceptionPrompt本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ExceptionPrompt设置通用属性和通用事件。
 
 ## 导入模块
 
@@ -22,10 +27,6 @@ import { ExceptionPrompt, PromptOptions, MarginType } from '@kit.ArkUI';
 
 无
 
-## 属性
-
-不支持[通用属性](ts-component-general-attributes.md)。
-
 ## ExceptionPrompt
 
 ExceptionPrompt({ options: PromptOptions, onTipClick?: ()=>void, onActionTextClick?: ()=>void })
@@ -35,6 +36,8 @@ ExceptionPrompt({ options: PromptOptions, onTipClick?: ()=>void, onActionTextCli
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：**
 
@@ -51,15 +54,17 @@ PromptOptions定义options的类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明                                                                                                                                                                                                                                                                                             |
-| -------- | -------- | -------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的异常图标样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                          |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 指定当前异常提示的异常Symbol图标样式，优先级大于icon。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                           |
-| tip | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的文字提示内容。<br />支持默认内置四种状态文字资源如下：<br />1.无网络状态：显示网络未连接：引用ohos_network_not_connected。<br />2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。<br />3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。<br />4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| marginType | [MarginType](#margintype) | 是 | 指定当前异常提示的边距样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                 |
-| actionText | [ResourceStr](ts-types.md#resourcestr) | 否 | 指定当前异常提示的右侧图标按钮的文字内容。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                          |
-| marginTop | [Dimension](ts-types.md#dimension10) | 是 | 指定当前异常提示的距离顶部的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                              |
-| isShown | boolean | 否 | 指定当前异常提示的显隐状态。<br />true：显示状态。<br />false：隐藏状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                 |
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称 | 类型                                                                               | 只读 | 可选 | 说明                                                                                                                                                                                                                                                                                                                                                                      |
+| -------- |----------------------------------------------------------------------------------|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| icon | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的异常图标样式。<br/>默认不设置或设置为undefined，异常图标不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                    |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 指定当前异常提示的异常Symbol图标样式，优先级大于icon。<br/>默认不设置或设置为undefined，Symbol图标不显示。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                           |
+| tip | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的文字提示内容。<br />支持默认内置四种状态文字资源如下：<br />1.无网络状态：显示网络未连接：引用ohos_network_not_connected。<br />2.网络差状态：显示网络连接不稳定，请点击重试：引用ohos_network_connected_unstable。<br />3.连不上服务器状态：显示无法连接到服务器，请点击重试：引用ohos_unstable_connect_server。<br />4.有网但是获取不到内容状态：显示无法获取位置，请点击重试：引用ohos_custom_network_tips_left。<br/>默认不设置或设置为undefined，文字提示内容不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| marginType | [MarginType](#margintype)                                                        | 否 | 否 | 指定当前异常提示的边距样式。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                     |
+| actionText | [ResourceStr](ts-types.md#resourcestr)                                           | 否 | 是 | 指定当前异常提示的右侧图标按钮的文字内容。 <br/>默认不设置或设置为undefined，文字内容不显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                     |
+| marginTop | [Dimension](ts-types.md#dimension10)                                             | 否 | 否 | 指定当前异常提示的距离顶部的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                                                                  |
+| isShown | boolean                                                                          | 否 | 是 | 指定当前异常提示的显隐状态。<br />true：显示状态。<br />false：隐藏状态。<br/>默认值：false<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                                                                                                      |
 
 ## MarginType
 
@@ -68,6 +73,8 @@ MarginType定义marginType的类型。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -245,7 +252,7 @@ struct Index1 {
 
 ### 示例3（设置Symbol类型图标）
 
-该示例通过设置PromptOptions的属性symbolStyle，展示了自定义Symbol类型图标。
+从API version 18开始，该示例通过设置PromptOptions的属性symbolStyle，展示了自定义Symbol类型图标。
 
 ```ts
 import { ExceptionPrompt, MarginType, SymbolGlyphModifier } from '@kit.ArkUI';

@@ -1,6 +1,12 @@
 # @ohos.distributedHardware.mechanicManager (机械体控制模块)(系统接口)
+<!--Kit: Mechanic Kit-->
+<!--Subsystem: Mechanic-->
+<!--Owner: @hobbycao-->
+<!--Designer: @saga2025-->
+<!--Tester: @zhaodengqi-->
+<!--Adviser: @foryourself-->
 
-本模块提供与机械设备交互的能力，包括设备连接管理、控制和监控功能。
+本模块提供与机械体设备交互的能力，包括设备连接管理、控制和监控功能。
 
 > **说明：**
 >
@@ -20,6 +26,8 @@ setUserOperation(operation: Operation, mac: string, params: string): void
 
 设置用户的连接或断开操作。
 
+**需要权限**：ohos.permission.CONNECT_MECHANIC_HARDWARE
+
 **系统能力**：SystemCapability.Mechanic.Core
 
 **系统接口**：该接口为系统接口。
@@ -38,6 +46,7 @@ setUserOperation(operation: Operation, mac: string, params: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------- |
+| 201 | Permission denied. |
 | 202 | Not system application. |
 | 33300001 | Service exception. |
 
@@ -74,7 +83,7 @@ setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void
 | 202 | Not system application. |
 | 33300001 | Service exception. |
 | 33300002 | Device not connected. |
-| 33300003 | Device not supported. |
+| 33300003 | Feature not supported. |
 
 **示例：**
 
@@ -227,7 +236,7 @@ console.info(`'Query maximum rotation time successful, maximum time:' ${maxTime}
 
 getMaxRotationSpeed(mechId: number): RotationSpeed
 
-获取机械设备的最大旋转速度。
+获取机械体设备的最大旋转速度。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -267,7 +276,7 @@ console.info(`'Query rotation speed successful, speed limit information:' ${spee
 
 rotateBySpeed(mechId: number, speed: RotationSpeed, duration: number): Promise\<Result>
 
-以指定速度旋转当前机械体设备。
+以指定速度旋转当前机械体设备。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -280,6 +289,12 @@ rotateBySpeed(mechId: number, speed: RotationSpeed, duration: number): Promise\<
 | mechId | number | 是 | 机械体设备ID。 |
 | speed | [RotationSpeed](#rotationspeed) | 是 | 指定旋转速度。最大旋转速度不超过getMaxRotationSpeed的返回值大小，如果超过最大速度，默认取最大值。 |
 | duration | number | 是 | 旋转持续时间，单位：ms。最大时间不超过getMaxRotationTime的返回值大小，如果超过最大时间，默认取最大值。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise\<[Result](#result)> | Promise对象，返回旋转执行结果。 |
 
 **错误码：**
 
@@ -358,7 +373,7 @@ getCurrentAngles(mechId: number): EulerAngles
 
 > **说明：**
 >
-> 初始位置：机械设备初始化的位置，坐标为（0， 0， 0）。
+> 初始位置：机械体设备初始化的位置，坐标为（0， 0， 0）。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -546,6 +561,53 @@ let axisStatus: mechanicManager.RotationAxesStatus = mechanicManager.getRotation
 console.info(`'Query the rotation axis status successfully, axis state:' ${axisStatus}`);
 ```
 
+## mechanicManager.searchTarget<sup>21+<sup>
+searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
+
+旋转机械体一周搜索目标。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| target | [TargetType](#targettype21) | 是 | 目标人脸信息。 |
+| params | [SearchParams](#searchparams21) | 是 | 搜索方向。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise\<[SearchResult](#searchresult21)> | Promise对象，返回搜索的结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+| 33300004 | Camera not opened. |
+
+**示例：**
+
+```ts
+let targetInfo: mechanicManager.TargetInfo = {
+    targetType: mechanicManager.TargetType.HUMAN_FACE
+};
+let searchParams: mechanicManager.SearchParams = {
+    direction: mechanicManager.SearchDirection.DEFAULT
+}
+mechanicManager.searchTarget(targetInfo,
+    searchParams).then((searchResult) => {
+    console.info(`'result:' ${searchResult}`);
+});
+```
 ## RotationAngles
 
 相对当前位置的旋转角度。
@@ -556,9 +618,9 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| yaw | number | 否 | 是 | 偏航角，范围为[-2π， 2π]，以弧度为单位。 |
-| roll | number | 否 | 是 | 横滚角，范围为[-2π， 2π]，以弧度为单位。 |
-| pitch | number | 否 | 是 | 俯仰角，范围为[-2π， 2π]，以弧度为单位。 |
+| yaw | number | 否 | 是 | 偏航角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| roll | number | 否 | 是 | 横滚角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| pitch | number | 否 | 是 | 俯仰角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
 
 ## EulerAngles
 
@@ -570,9 +632,9 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| yaw | number | 否 | 是 | 偏航角，范围为[-2π， 2π]，以弧度为单位。 |
-| roll | number | 否 | 是 | 横滚角，范围为[-2π， 2π]，以弧度为单位。 |
-| pitch | number | 否 | 是 | 俯仰角，范围为[-2π， 2π]，以弧度为单位。 |
+| yaw | number | 否 | 是 | 偏航角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| roll | number | 否 | 是 | 横滚角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
+| pitch | number | 否 | 是 | 俯仰角，范围为[-2\*Math.PI， 2\*Math.PI]，以弧度为单位。 |
 
 ## RotationSpeed
 
@@ -598,12 +660,12 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| negativeYawMax | number | 否 | 否 | 最大偏航旋转角度（负方向），范围为[-2Math.PI， 0]，以弧度为单位。如果值小于或等于 -2Math.PI，则没有限制。 |
-| positiveYawMax | number | 否 | 否 | 最大偏航旋转角度（正方向），范围为[0， 2Math.PI]，以弧度为单位。如果值大于或等于 2Math.PI，则没有限制。 |
-| negativeRollMax | number | 否 | 否 | 最大横滚旋转角度（负方向），范围为[-2Math.PI, 0]，以弧度为单位。如果值小于或等于 -2Math.PI，则没有限制。 |
-| positiveRollMax | number | 否 | 否 | 最大横滚旋转角度（正方向），范围为[0， 2Math.PI]，以弧度为单位。如果值大于或等于 2Math.PI，则没有限制。 |
-| negativePitchMax | number | 否 | 否 | 最大俯仰旋转角度（负方向），范围为[-2Math.PI， 0]，以弧度为单位。如果值小于或等于 -2Math.PI，则没有限制。 |
-| positivePitchMax | number | 否 | 否 | 最大俯仰旋转角度（正方向），范围为[0， 2Math.PI]，以弧度为单位。如果值大于或等于 2Math.PI，则没有限制。 |
+| negativeYawMax | number | 否 | 否 | 最大偏航旋转角度（负方向），范围为[-2\*Math.PI， 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
+| positiveYawMax | number | 否 | 否 | 最大偏航旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
+| negativeRollMax | number | 否 | 否 | 最大横滚旋转角度（负方向），范围为[-2\*Math.PI, 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
+| positiveRollMax | number | 否 | 否 | 最大横滚旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
+| negativePitchMax | number | 否 | 否 | 最大俯仰旋转角度（负方向），范围为[-2\*Math.PI， 0]，以弧度为单位。如果值小于或等于 -2\*Math.PI，则没有限制。 |
+| positivePitchMax | number | 否 | 否 | 最大俯仰旋转角度（正方向），范围为[0， 2\*Math.PI]，以弧度为单位。如果值大于或等于 2\*Math.PI，则没有限制。 |
 
 ## RotationAxesStatus
 
@@ -615,9 +677,9 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| yawEnabled | boolean | 否 | 否 | 是否启用了偏航轴，true表示偏航轴已启用，false表示偏航轴已禁用。 |
-| rollEnabled | boolean | 否 | 否 | 是否启用了横滚轴，true表示横滚轴已启用，false表示横滚轴已禁用。 |
-| pitchEnabled | boolean | 否 | 否 | 是否启用了俯仰轴，true表示俯仰轴已启用，false表示俯仰轴已禁用。 |
+| yawEnabled | boolean | 否 | 否 | 是否启用了偏航轴，true表示已启用，false表示已禁用。 |
+| rollEnabled | boolean | 否 | 否 | 是否启用了横滚轴，true表示已启用，false表示已禁用。 |
+| pitchEnabled | boolean | 否 | 否 | 是否启用了俯仰轴，true表示已启用，false表示已禁用。 |
 | yawLimited | [RotationAxisLimited](#rotationaxislimited) | 否 | 是 | 偏航轴限位状态。 |
 | rollLimited | [RotationAxisLimited](#rotationaxislimited) | 否 | 是 | 横滚轴限位状态。 |
 | pitchLimited | [RotationAxisLimited](#rotationaxislimited) | 否 | 是 | 俯仰轴限位状态。 |
@@ -677,3 +739,68 @@ console.info(`'Query the rotation axis status successfully, axis state:' ${axisS
 | LIMITED | 2 | 执行受最大旋转角度限制。 |
 | TIMEOUT | 3 | 执行超时。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
+
+## TargetType<sup>21+<sup>
+
+目标人脸信息的枚举。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+  | 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| HUMAN_FACE | int | 0 | 目标人脸信息。 |
+
+
+  ## SearchDirection<sup>21+<sup>
+
+系统默认的搜索方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+  | 名称 | 类型 | 值  | 说明|
+| ----------- | ------|---- | --------------- |
+| DEFAULT | int | 0 | 系统默认方向  |
+  | LEFTWARD | int | 1 | 左向，即顺时针方向。 |
+  | RIGHTWARD | int | 2 | 右向，即逆时针方向。 |
+  
+ ## TargetInfo<sup>21+<sup>
+
+搜索目标的相关信息。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
+  
+  
+ 
+## SearchParams<sup>21+<sup>
+
+指定搜索的方向。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| direction | [SearchDirection](#searchdirection21) | 否 | 否 | 搜索的方向。 |
+
+  ## SearchResult<sup>21+<sup>
+
+显示搜索命令的执行结果。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| targetCount | number | 否 | 否 | 搜索到的目标数量。 |

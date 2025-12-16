@@ -1,5 +1,12 @@
 # @ohos.nfc.cardEmulation (标准NFC-cardEmulation)（系统接口）
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @amunra03-->
+<!--Designer: @wenxiaolin-->
+<!--Tester: @zs_111-->
+<!--Adviser: @zhang_yixin13-->
+
 本模块主要提供NFC卡模拟业务，包括判断支持哪种卡模拟类型，HCE卡模拟的业务实现等。
 HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，应用程序模拟NFC卡片，可以通过NFC服务和NFC读卡器通信。
 
@@ -40,7 +47,7 @@ getPaymentServices(): [AbilityInfo](../apis-ability-kit/js-apis-bundleManager-ab
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|202 | Non-system applications are not allowed to use system APIs. |
+|202 | Not system application.            |
 |801 | Capability not supported.          |
 
 **示例：**
@@ -49,7 +56,7 @@ import { cardEmulation } from '@kit.ConnectivityKit';
 
 let paymentServices = cardEmulation.getPaymentServices();
 if (paymentServices == undefined || paymentServices.length == 0) {
-  console.log('paymentServices is null.');
+  console.error('paymentServices is null.');
 }
 
 ```

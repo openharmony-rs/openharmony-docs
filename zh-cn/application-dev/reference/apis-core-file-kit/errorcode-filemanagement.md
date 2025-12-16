@@ -1,4 +1,10 @@
 # 文件管理错误码
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 > **说明：**
 >
@@ -13,6 +19,10 @@
 **错误信息**
 
 Operation not permitted
+
+**错误描述**
+
+操作不允许。
 
 **可能原因**
 
@@ -32,6 +42,10 @@ Operation not permitted
 
 No such file or directory
 
+**错误描述**
+
+没有此文件或目录。
+
 **可能原因**
 
 文件或目录不存在。
@@ -45,6 +59,10 @@ No such file or directory
 **错误信息**
 
 No such process
+
+**错误描述**
+
+没有此类进程。
 
 **可能原因**
 
@@ -62,6 +80,10 @@ No such process
 
 Interrupted system call
 
+**错误描述**
+
+系统调用被中断。
+
 **可能原因**
 
 系统调用被其他线程中断。
@@ -78,19 +100,37 @@ Interrupted system call
 
 I/O error
 
+**错误描述**
+
+I/O错误。
+
 **可能原因**
 
-IO请求非法。
+底层I/O错误，通常与硬件或者驱动设备层故障相关。
+
+1. 硬件故障：设备物理损坏导致无法完成I/O指令。
+
+2. 通信链路中断：数据传输过程链接断开。
+
+3. 驱动程序错误：驱动程序异常或者版本不兼容。
 
 **处理步骤**
 
-重新进行IO请求。
+1. 检查硬件状态是否正常。
+
+2. 检查USB设备等链接是否正常。
+
+3. 检查并更新驱动程序。
 
 ### 13900006 没有这个设备或地址
 
 **错误信息**
 
 No such device or address
+
+**错误描述**
+
+没有此设备或地址。
 
 **可能原因**
 
@@ -106,6 +146,10 @@ No such device or address
 
 Arg list too long
 
+**错误描述**
+
+参数列表过长。
+
 **可能原因**
 
 参数列表过长。
@@ -114,11 +158,15 @@ Arg list too long
 
 减少参数个数。
 
-### 13900008 坏的文件描述符
+### 13900008 异常的文件描述符
 
 **错误信息**
 
 Bad file descriptor
+
+**错误描述**
+
+异常的文件描述符。
 
 **可能原因**
 
@@ -138,6 +186,10 @@ Bad file descriptor
 
 No child processes
 
+**错误描述**
+
+没有子进程。
+
 **可能原因**
 
 无法创建子进程。
@@ -152,6 +204,10 @@ No child processes
 
 Try again
 
+**错误描述**
+
+资源暂时不可用。
+
 **可能原因**
 
 资源被阻塞。
@@ -165,6 +221,10 @@ Try again
 **错误信息**
 
 Out of memory
+
+**错误描述**
+
+内存溢出。
 
 **可能原因**
 
@@ -182,6 +242,10 @@ Out of memory
 
 Permission denied
 
+**错误描述**
+
+拒绝许可。
+
 **可能原因**
 
 1.文件操作被DAC或selinux拦截。
@@ -192,7 +256,7 @@ Permission denied
 
 1.访问被DAC自主式权限控制权限拦截，请排查文件的UGO权限。
 
-2.排查内核日志中是否有[avc拦截日志](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-security-selinux-develop-intro.md)，如果存在avc拦截告警，<!--RP1-->拦截原因分析请参考[SELinux开发说明](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md)。<!--RP1End-->
+2.排查内核日志中是否有[avc拦截日志](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-security-selinux-develop-intro.md)，如果存在avc拦截告警，<!--RP1-->拦截原因分析请参考[SELinux开发说明](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md)。<!--RP1End-->
 
 3.确认文件的路径是否为应用内的沙箱路径[沙箱路径地址](../../file-management/app-sandbox-directory.md)，文件管理系统禁止操作应用沙箱以外的文档。
 
@@ -201,6 +265,10 @@ Permission denied
 **错误信息**
 
 Bad address
+
+**错误描述**
+
+错误的地址。
 
 **可能原因**
 
@@ -216,6 +284,10 @@ Bad address
 
 Device or resource busy
 
+**错误描述**
+
+设备或资源忙。
+
 **可能原因**
 
 请求的资源不可用。
@@ -229,6 +301,10 @@ Device or resource busy
 **错误信息**
 
 File exists
+
+**错误描述**
+
+文件已存在。
 
 **可能原因**
 
@@ -244,6 +320,10 @@ File exists
 
 Cross-device link
 
+**错误描述**
+
+无效的交叉链接。
+
 **可能原因**
 
 跨设备链接失败。
@@ -257,6 +337,10 @@ Cross-device link
 **错误信息**
 
 No such device
+
+**错误描述**
+
+设备不存在。
 
 **可能原因**
 
@@ -272,6 +356,10 @@ No such device
 
 Not a directory
 
+**错误描述**
+
+不是一个目录。
+
 **可能原因**
 
 此路径不是文件夹目录。
@@ -285,6 +373,10 @@ Not a directory
 **错误信息**
 
 Is a directory
+
+**错误描述**
+
+是一个目录。
 
 **可能原因**
 
@@ -300,6 +392,10 @@ Is a directory
 
 Invalid argument
 
+**错误描述**
+
+无效参数。
+
 **可能原因**
 
 输入参数非法。
@@ -308,11 +404,15 @@ Invalid argument
 
 确认参数合法性。
 
-### 13900021 打开太多的文件系统
+### 13900021 打开太多的文件描述符
 
 **错误信息**
 
 File table overflow
+
+**错误描述**
+
+打开太多的文件描述符。
 
 **可能原因**
 
@@ -328,6 +428,10 @@ File table overflow
 
 Too many open files
 
+**错误描述**
+
+打开的文件过多。
+
 **可能原因**
 
 系统打开过多的文件。
@@ -341,6 +445,10 @@ Too many open files
 **错误信息**
 
 Text file busy
+
+**错误描述**
+
+文本文件忙。
 
 **可能原因**
 
@@ -356,6 +464,10 @@ Text file busy
 
 File too large
 
+**错误描述**
+
+文件过大。
+
 **可能原因**
 
 文件大小超出最大文件大小。
@@ -369,6 +481,10 @@ File too large
 **错误信息**
 
 No space left on device
+
+**错误描述**
+
+设备上剩余空间不足。
 
 **可能原因**
 
@@ -384,6 +500,10 @@ No space left on device
 
 Illegal seek
 
+**错误描述**
+
+非法移位。
+
 **可能原因**
 
 在管道或FIFO中使用seek。
@@ -397,6 +517,10 @@ Illegal seek
 **错误信息**
 
 Read-only file system
+
+**错误描述**
+
+只读文件系统。
 
 **可能原因**
 
@@ -412,6 +536,10 @@ Read-only file system
 
 Too many links
 
+**错误描述**
+
+链接过多。
+
 **可能原因**
 
 文件已达最大链接数。
@@ -425,6 +553,10 @@ Too many links
 **错误信息**
 
 Resource deadlock would occur
+
+**错误描述**
+
+资源死锁错误。
 
 **可能原因**
 
@@ -440,6 +572,10 @@ Resource deadlock would occur
 
 Filename too Long
 
+**错误描述**
+
+文件名过长。
+
 **可能原因**
 
 文件名超过最大长度255字节。
@@ -454,6 +590,10 @@ Filename too Long
 
 Function not implemented
 
+**错误描述**
+
+功能没有实现。
+
 **可能原因**
 
 系统不支持此功能。
@@ -467,6 +607,10 @@ Function not implemented
 **错误信息**
 
 Directory not empty
+
+**错误描述**
+
+目录非空。
 
 **可能原因**
 
@@ -484,6 +628,10 @@ Directory not empty
 
 Too many symbolic links encountered
 
+**错误描述**
+
+符号链接层次过多。
+
 **可能原因**
 
 符号链接层次过多。
@@ -497,6 +645,10 @@ Too many symbolic links encountered
 **错误信息**
 
 Operation would block
+
+**错误描述**
+
+操作被阻塞。
 
 **可能原因**
 
@@ -512,6 +664,10 @@ Operation would block
 
 Invalid request descriptor
 
+**错误描述**
+
+请求描述符无效。
+
 **可能原因**
 
 文件描述符非法。
@@ -525,6 +681,10 @@ Invalid request descriptor
 **错误信息**
 
 Device not a stream
+
+**错误描述**
+
+设备不是字符流。
 
 **可能原因**
 
@@ -540,6 +700,10 @@ Device not a stream
 
 No data available
 
+**错误描述**
+
+无可用数据。
+
 **可能原因**
 
 数据不可用。
@@ -554,6 +718,10 @@ No data available
 
 Value too large for defined data type
 
+**错误描述**
+
+变量值超出数据类型规定的最大值。
+
 **可能原因**
 
 值超出所定义的数据类型范围。
@@ -562,11 +730,15 @@ Value too large for defined data type
 
 修改数据类型。
 
-### 13900039 文件描述符在坏状态
+### 13900039 文件描述符在异常状态
 
 **错误信息**
 
 File descriptor in bad state
+
+**错误描述**
+
+文件描述符在异常状态。
 
 **可能原因**
 
@@ -582,6 +754,10 @@ File descriptor in bad state
 
 Interrupted system call should be restarted
 
+**错误描述**
+
+应该重新启动被中断的系统调用。
+
 **可能原因**
 
 系统调用被中断。
@@ -596,6 +772,10 @@ Interrupted system call should be restarted
 
 Quota exceeded
 
+**错误描述**
+
+超出磁盘配额。
+
 **可能原因**
 
 磁盘空间不足。
@@ -609,6 +789,10 @@ Quota exceeded
 **错误信息**
 
 Unknown error
+
+**错误描述**
+
+未知错误。
 
 **可能原因**
 
@@ -626,6 +810,10 @@ Unknown error
 
 No record is locks available
 
+**错误描述**
+
+没有可用的锁。
+
 **可能原因**
 
 系统资源不足。
@@ -639,6 +827,10 @@ No record is locks available
 **错误信息**
 
 Network is unreachable
+
+**错误描述**
+
+网络无法访问。
 
 **可能原因**
 
@@ -654,15 +846,19 @@ Network is unreachable
 
 Connection failed
 
+**错误描述**
+
+连接失败。
+
 **可能原因**
 
-设备、Wifi或蓝牙状态异常，导致建立链接失败。
+设备、Wi-Fi或蓝牙状态异常，导致建立链接失败。
 
 **处理步骤**
 
 1.检查设备，确认设备状态正常。
 
-2.检查WiFi和蓝牙，确认状态正常。
+2.检查Wi-Fi和蓝牙，确认状态正常。
 
 ### 13900046 软件造成连接中断
 
@@ -670,15 +866,19 @@ Connection failed
 
 Software caused connection abort
 
+**错误描述**
+
+软件造成连接中断。
+
 **可能原因**
 
-设备下线或WiFi、蓝牙断连。
+设备下线或Wi-Fi、蓝牙断连。
 
 **处理步骤**
 
 1.检查设备，确认设备状态正常。
 
-2.检查WiFi和蓝牙，确认状态正常。
+2.检查Wi-Fi和蓝牙，确认状态正常。
 
 ## 用户数据管理错误码
 
@@ -774,6 +974,10 @@ Member is not a valid PhotoKey
 
 IPC error
 
+**错误描述**
+
+IPC通信失败。
+
 **可能原因**
 
 调用服务不存在。
@@ -787,6 +991,10 @@ IPC error
 **错误信息**
 
 File system not supported
+
+**错误描述**
+
+文件系统类型不支持。
 
 **可能原因**
 
@@ -802,6 +1010,10 @@ File system not supported
 
 Mount failed
 
+**错误描述**
+
+挂载失败。
+
 **可能原因**
 
 调用挂载命令失败。
@@ -815,6 +1027,10 @@ Mount failed
 **错误信息**
 
 Unmount failed
+
+**错误描述**
+
+卸载失败。
 
 **可能原因**
 
@@ -830,6 +1046,10 @@ Unmount failed
 
 Incorrect volume state
 
+**错误描述**
+
+卷状态错误。
+
 **可能原因**
 
 操作的卷状态错误。
@@ -843,6 +1063,10 @@ Incorrect volume state
 **错误信息**
 
 Failed to create the directory or node
+
+**错误描述**
+
+创建目录或者节点失败。
 
 **可能原因**
 
@@ -858,6 +1082,10 @@ Failed to create the directory or node
 
 Failed to delete the directory or node
 
+**错误描述**
+
+删除目录或者节点失败。
+
 **可能原因**
 
 目录或节点已删除。
@@ -871,6 +1099,10 @@ Failed to delete the directory or node
 **错误信息**
 
 No such object
+
+**错误描述**
+
+操作对象不存在。
 
 **可能原因**
 
@@ -890,6 +1122,10 @@ No such object
 
 User ID out of range
 
+**错误描述**
+
+用户id超出范围。
+
 **可能原因**
 
 输入错误的用户id。
@@ -905,6 +1141,10 @@ User ID out of range
 **错误信息**
 
 IPC error
+
+**错误描述**
+
+IPC通信失败。
 
 **可能原因**
 
@@ -922,6 +1162,10 @@ IPC error
 
 Invalid URI
 
+**错误描述**
+
+URI格式错误。
+
 **可能原因**
 
 使用非法URI。
@@ -935,6 +1179,10 @@ Invalid URI
 **错误信息**
 
 Failed to obtain the server ability information
+
+**错误描述**
+
+查询server端ability信息失败。
 
 **可能原因**
 
@@ -950,6 +1198,10 @@ BMS接口异常。
 
 Incorrect result returned by js-server
 
+**错误描述**
+
+js-server实际返回的结果异常。
+
 **可能原因**
 
 server端返回实际数据不当。
@@ -963,6 +1215,10 @@ server端返回值检查。
 **错误信息**
 
 Failed to register notify
+
+**错误描述**
+
+notify注册失败。
 
 **可能原因**
 
@@ -980,6 +1236,10 @@ Failed to register notify
 
 Failed to unregister notify
 
+**错误描述**
+
+notify移除失败。
+
 **可能原因**
 
 1.server端服务不在。
@@ -996,6 +1256,10 @@ Failed to unregister notify
 
 Failed to initialize the notify agent
 
+**错误描述**
+
+notify代理初始化失败。
+
 **可能原因**
 
 未注册就去取消notify。
@@ -1009,6 +1273,10 @@ Failed to initialize the notify agent
 **错误信息**
 
 Failed to notify the agent
+
+**错误描述**
+
+js-server端通知代理失败。
 
 **可能原因**
 

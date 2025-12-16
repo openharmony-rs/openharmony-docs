@@ -1,5 +1,11 @@
 # UIAbility组件启动模式
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel; @Luobniz21-->
+<!--Designer: @wendel-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的启动模式是指UIAbility实例在启动时的不同呈现状态。针对不同的业务场景，系统提供了三种启动模式：
 
@@ -25,25 +31,27 @@ singleton启动模式为单实例模式，也是默认情况下的启动模式�
 
 > **说明**：
 >
-> 应用的UIAbility实例已创建，该UIAbility配置为单实例模式，再次调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动该UIAbility实例。由于启动的还是原来的UIAbility实例，并未重新创建一个新的UIAbility实例，此时只会进入该UIAbility的[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调，不会进入其[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调。如果已经创建的实例仍在启动过程中，调用startAbility接口启动该实例，将收到错误码16000082。
+> 应用的UIAbility实例已创建，该UIAbility配置为单实例模式，再次调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动该UIAbility实例。由于启动的还是原来的UIAbility实例，并未重新创建一个新的UIAbility实例，此时只会进入该UIAbility的[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调，不会进入其[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调。如果已经创建的实例仍在启动过程中，调用startAbility()方法启动该实例，将收到错误码16000082。
 
 如果需要使用singleton启动模式，在[module.json5配置文件](../quick-start/module-configuration-file.md)中的`launchType`字段配置为`singleton`即可。
 
+<!-- @[singleton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
+    // ···
       {
         "launchType": "singleton",
-        // ...
+        // ···
       }
+    // ···
     ]
   }
 }
 ```
-
 
 ## multiton启动模式
 
@@ -54,21 +62,23 @@ multiton启动模式为多实例模式，每次调用[startAbility()](../referen
 
 multiton启动模式的开发使用，在[module.json5配置文件](../quick-start/module-configuration-file.md)中的`launchType`字段配置为`multiton`即可。
 
+<!-- @[multiton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
+    // ···
       {
         "launchType": "multiton",
-        // ...
+        // ···
       }
+    // ···
     ]
   }
 }
 ```
-
 
 ## specified启动模式
 
@@ -89,53 +99,60 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 ![uiability-launch-type3](figures/uiability-launch-type3.gif)  
 
 1. 在SpecifiedAbility中，需要将[module.json5配置文件](../quick-start/module-configuration-file.md)的`launchType`字段配置为`specified`。
-
-   ```json
-   {
-     "module": {
-       // ...
-       "abilities": [
-         {
-           "launchType": "specified",
-           // ...
-         }
-       ]
-     }
-   }
-   ```
+   
+    <!-- @[specified](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/module.json5) -->
+    
+    ``` JSON5
+    {
+      "module": {
+        // ···
+        "abilities": [
+          {
+            "launchType": "specified",
+            // ···
+          }
+        // ···
+        ]
+      }
+    }
+    ```
 
 2. 在EntryAbility中，调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法时，可以在[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中传入了自定义参数`instanceKey`作为唯一标识符，以此来区分不同的UIAbility实例。示例中`instanceKey`的value值设置为字符串'KEY'。
 
-   ```ts
+    <!-- @[Page_StartModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/pages/SpecifiedPage.ets) -->  
+    
+    ``` TypeScript
     // 在启动指定实例模式的UIAbility时，给每一个UIAbility实例配置一个独立的Key标识
     // 例如在文档使用场景中，可以用文档路径作为Key标识
     import { common, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
-    const TAG: string = '[Page_StartModel]';
+    
+    const TAG: string = '[SpecifiedPage]';
     const DOMAIN_NUMBER: number = 0xFF00;
-
+    
     function getInstance(): string {
       return 'KEY';
     }
-
+    
     @Entry
     @Component
-    struct Page_StartModel {
+    struct SpecifiedPage {
       private KEY_NEW = 'KEY';
-
+    
       build() {
         Row() {
           Column() {
-            // ...
-            Button()
+            // ···
+            // app.string.new_doc资源文件中的value值为'新建一个文档'
+            Button($r('app.string.new_doc'))
+            // ···
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // context为调用方UIAbility的UIAbilityContext;
                 let want: Want = {
                   deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilitylaunchtype',
                   abilityName: 'SpecifiedFirstAbility',
                   moduleName: 'entry', // moduleName非必选
                   parameters: {
@@ -147,17 +164,19 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
                   hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting SpecifiedAbility.');
                 }).catch((err: BusinessError) => {
                   hilog.error(DOMAIN_NUMBER, TAG, `Failed to start SpecifiedAbility. Code is ${err.code}, message is ${err.message}`);
-                })
+                });
                 this.KEY_NEW = this.KEY_NEW + 'a';
               })
-            // ...
-            Button()
+    
+            // app.string.open_old_doc资源文件中的value值为'打开已保存文档'
+            Button($r('app.string.open_old_doc'))
+            // ···
               .onClick(() => {
                 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
                 // context为调用方UIAbility的UIAbilityContext;
                 let want: Want = {
                   deviceId: '', // deviceId为空表示本设备
-                  bundleName: 'com.samples.stagemodelabilitydevelop',
+                  bundleName: 'com.samples.uiabilitylaunchtype',
                   abilityName: 'SpecifiedSecondAbility',
                   moduleName: 'entry', // moduleName非必选
                   parameters: {
@@ -169,21 +188,22 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
                   hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in starting SpecifiedAbility.');
                 }).catch((err: BusinessError) => {
                   hilog.error(DOMAIN_NUMBER, TAG, `Failed to start SpecifiedAbility. Code is ${err.code}, message is ${err.message}`);
-                })
+                });
                 this.KEY_NEW = this.KEY_NEW + 'a';
               })
-            // ...
           }
           .width('100%')
         }
         .height('100%')
       }
     }
-   ```
+    ```
    
-3. 开发者根据业务在SpecifiedAbility的[onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)生命周期回调设置该UIAbility的标识。示例中标识设置为`SpecifiedAbilityInstance_KEY`。
+3. 开发者根据业务在SpecifiedAbility所对应AbilityStage的[onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)生命周期回调设置该UIAbility的标识。示例中标识设置为`SpecifiedAbilityInstance_KEY`。
 
-   ```ts
+    <!-- @[MyAbilityStage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLaunchType/entry/src/main/ets/abilitystage/MyAbilityStage.ets) -->
+
+    ``` TypeScript
     import { AbilityStage, Want } from '@kit.AbilityKit';
 
     export default class MyAbilityStage extends AbilityStage {
@@ -196,16 +216,15 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
             return `SpecifiedAbilityInstance_${want.parameters.instanceKey}`;
           }
         }
-        // ...
         return 'MyAbilityStage';
       }
     }
-   ```
+    ```
 
    > **说明：**
    >
    > 1. 当应用的UIAbility实例已经被创建，并且配置为指定实例模式时，如果再次调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动该UIAbility实例，且[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)的[onAcceptWant()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onacceptwant)回调匹配到一个已创建的UIAbility实例，则系统会启动原来的UIAbility实例，并且不会重新创建一个新的UIAbility实例。此时，该UIAbility实例的onNewWant()回调会被触发，而不会触发onCreate()和onWindowStageCreate()生命周期回调。
-   > 2. DevEco Studio默认工程中未自动生成AbilityStage，AbilityStage文件的创建请参见[AbilityStage组件容器](abilitystage.md)。
+   > 2. DevEco Studio默认工程中未自动生成AbilityStage，AbilityStage文件的创建请参见[AbilityStage开发步骤](abilitystage.md#开发步骤)。
 
    例如在文档应用中，可以为不同的文档实例内容绑定不同的Key值。每次新建文档时，可以传入一个新的Key值（例如可以将文件的路径作为一个Key标识），此时[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)中启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)时都会创建一个新的UIAbility实例；当新建的文档保存之后，回到桌面，或者新打开一个已保存的文档，回到桌面，此时再次打开该已保存的文档，此时AbilityStage中再次启动该UIAbility时，打开的仍然是之前原来已保存的文档界面。
 
@@ -220,6 +239,6 @@ specified启动模式为指定实例模式，针对一些特殊场景使用（�
 
 针对UIAbility组件启动模式，有以下相关实例可供参考：
 
-- [Ability的启动模式（ArkTS）(API9)](https://gitee.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode)
+- [Ability的启动模式（ArkTS）(API9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/AbilityStartMode)
 <!--RP1-->
 <!--RP1End-->

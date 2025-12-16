@@ -1,5 +1,12 @@
 # @ohos.bluetooth.connection (蓝牙connection模块)(系统接口)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 connection模块提供了对蓝牙操作和管理的方法。
 
 > **说明：**
@@ -32,7 +39,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: As
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示设备类型，例如传统蓝牙设备或低功耗蓝牙设备。 |
+| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示在配对远端设备时使用的传输方式。<br>-若明确使用传统蓝牙（BR/EDR）或者低功耗蓝牙（BLE）方式，则传入TRANSPORT_BR_EDR或TRANSPORT_LE。<br>-若不确定使用哪种传输方式，则传入TRANSPORT_DUAL<sup>20+</sup>或TRANSPORT_UNKNOWN<sup>20+</sup>，蓝牙子系统会决策传输方式。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当发起配对成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
@@ -52,7 +59,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: As
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.pairCredibleDevice('68:13:24:79:4C:8C', connection.BluetoothTransport
         .TRANSPORT_BR_EDR, (err: BusinessError) => {
@@ -85,7 +92,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示设备类型，例如传统蓝牙设备或低功耗蓝牙设备。 |
+| transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示在配对远端设备时使用的传输方式。<br>-若明确使用传统蓝牙（BR/EDR）或者低功耗蓝牙（BLE）方式，则传入TRANSPORT_BR_EDR或TRANSPORT_LE。<br>-若不确定使用哪种传输方式，则传入TRANSPORT_DUAL<sup>20+</sup>或TRANSPORT_UNKNOWN<sup>20+</sup>，蓝牙子系统会决策传输方式。 |
 
 **返回值：**
 
@@ -110,7 +117,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.pairCredibleDevice('68:13:24:79:4C:8C', 0).then(() => {
         console.info('PairCredibleDevice');
@@ -159,7 +166,7 @@ cancelPairedDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.cancelPairedDevice('11:22:33:44:55:66', (err: BusinessError) => {
@@ -212,7 +219,7 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.cancelPairedDevice('11:22:33:44:55:66').then(() => {
@@ -263,7 +270,7 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX');
 } catch (err) {
@@ -313,7 +320,7 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.cancelPairingDevice('XX:XX:XX:XX:XX:XX');
 } catch (err) {
@@ -357,7 +364,7 @@ getLocalProfileUuids(callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): 
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getLocalProfileUuids((err: BusinessError, data: Array<connection.ProfileUuids>) => {
         console.info('getLocalProfileUuids, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
@@ -403,7 +410,7 @@ getLocalProfileUuids(): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.getLocalProfileUuids().then(() => {
         console.info('getLocalProfileUuids');
@@ -452,7 +459,7 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.disconnectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
         if (err) {
@@ -508,7 +515,7 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     connection.disconnectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
         console.info('disconnectAllowedProfiles');
@@ -605,7 +612,7 @@ setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.setRemoteDeviceType('11:22:33:44:55:66', connection.DeviceType.DEVICE_TYPE_HEADSET).then(() => {
@@ -653,7 +660,7 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
     connection.getRemoteDeviceType('11:22:33:44:55:66').then((data: connection.DeviceType) => {
@@ -672,6 +679,8 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 查找蓝牙耳机设备时，向耳机发送控制命令。使用Promise异步回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH（该权限仅系统应用可申请）。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -704,7 +713,7 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let controlDeviceActionParams: connection.ControlDeviceActionParams = {
         deviceId: '40:DC:A5:E5:75:C3',
@@ -764,7 +773,7 @@ updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&
 **示例：**
 
 ```js
-import { connection } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 /**
  * 更新云设备到蓝牙设置项。
@@ -818,6 +827,8 @@ try {
 ## ControlDeviceActionParams<sup>15+</sup>
 
 控制命令的配置参数。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -884,6 +895,8 @@ try {
 
 枚举，控制类型。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称                               | 值    | 说明              |
@@ -898,6 +911,8 @@ try {
 
 枚举，控制动作。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称    | 值   | 说明       |
@@ -910,6 +925,8 @@ try {
 ## ControlObject<sup>15+</sup>
 
 枚举，控制对象。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -924,6 +941,8 @@ try {
 
 云设备列表。
 
+**系统接口**：此接口为系统接口。
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
@@ -933,6 +952,8 @@ try {
 ## TrustedPairedDevice<sup>15+</sup>
 
 云设备信息。
+
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 

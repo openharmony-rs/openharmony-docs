@@ -1,4 +1,10 @@
 # @ohos.data.dataShare (数据共享)(系统接口)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @woodenarow-->
+<!--Designer: @woodenarow; @xuelei3-->
+<!--Tester: @chenwan188; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 **DataShare**用于应用管理其自身数据，同时支持同个设备上不同应用间的数据共享。
 
@@ -81,7 +87,7 @@ export default class EntryAbility extends UIAbility {
 ## dataShare.createDataShareHelper<sup>10+</sup>
 createDataShareHelper(context: Context, uri: string, options: DataShareHelperOptions, callback: AsyncCallback&lt;DataShareHelper&gt;): void 
 
-创建DataShareHelper实例。使用callback异步回调。
+创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用callback异步回调。
 
 > **说明：**
 >
@@ -139,7 +145,7 @@ export default class EntryAbility extends UIAbility {
 
 createDataShareHelper(context: Context, uri: string, options?: DataShareHelperOptions): Promise&lt;DataShareHelper&gt;
 
-创建DataShareHelper实例。使用Promise异步回调。
+创建DataShareHelper实例，通过DataShareHelperOptions指定是否通过代理访问。使用Promise异步回调。
 
 > **说明：**
 >
@@ -186,7 +192,7 @@ export default class EntryAbility extends UIAbility {
       dataShare.createDataShareHelper(context, uri, {isProxy : true}).then((data: dataShare.DataShareHelper) => {
         console.info("createDataShareHelper succeed, data : " + data);
         dataShareHelper = data;
-      }). catch((err: BusinessError) => {
+      }).catch((err: BusinessError) => {
         console.error(`createDataShareHelper error: code: ${err.code}, message: ${err.message} `);
       });
     } catch (err) {
@@ -206,7 +212,7 @@ enableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 
 使用规则：
  - 数据提供方调用此接口，来开启静默访问功能。
- - 此接口设置的开启结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability.md)。
+ - 此接口设置的开启结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability-sys.md)。
  - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有开启过相关uri，那么会按照此接口的配置来开启静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验Datashare的开启状态。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -246,7 +252,7 @@ export default class EntryAbility extends UIAbility {
     let context = this.context;
     dataShare.enableSilentProxy(context, uri).then(() => {
       console.info("enableSilentProxy succeed");
-    }). catch((err: BusinessError) => {
+    }).catch((err: BusinessError) => {
       console.error(`enableSilentProxy error: code: ${err.code}, message: ${err.message} `);
     });
   };
@@ -261,7 +267,7 @@ disableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 
 使用规则：
  - 数据提供方调用此接口，来关闭静默访问功能。
- - 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability.md)。
+ - 此接口设置的关闭结果在校验的时候是搭配data_share_config.json文件中isSilentProxyEnable字段进行工作的。支持的配置可参考[data_share_config.json配置](../../database/share-data-by-datashareextensionability-sys.md)。
  - 此接口生效在调用datashareHelper相关接口过程中，如果此接口有关闭过相关uri，那么会按照此接口的配置来关闭静默访问。如果此接口未调用过，则会读取data_share_config.json中的配置来校验Datashare的关闭状态。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
@@ -301,7 +307,7 @@ export default class EntryAbility extends UIAbility {
     let context = this.context;
     dataShare.disableSilentProxy(context, uri).then(() => {
       console.info("disableSilentProxy succeed");
-    }). catch((err: BusinessError) => {
+    }).catch((err: BusinessError) => {
       console.error(`disableSilentProxy error: code: ${err.code}, message: ${err.message} `);
     });
   };
@@ -315,10 +321,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| isProxy | boolean | 否 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会拉起数据提供者创建数据库。 |
-| waitTime<sup>18+</sup> | number | 否 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| isProxy | boolean | 否 | 是 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会拉起数据提供者创建数据库。 |
+| waitTime<sup>18+</sup> | number | 否 | 是 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。 |
 
 ## TemplateId<sup>10+</sup>
 
@@ -326,10 +332,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| subscriberId | string | 是 | 指定处理回调的订阅者的id，与[addTemplate](#addtemplate10)中的subscriberId相同，每个订阅者的ID是唯一的。 |
-| bundleNameOfOwner | string | 是 | 指定创建模板的模板所有者的bundleName，与[addTemplate](#addtemplate10)中的bundleName相同。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| subscriberId | string | 否 | 否 | 指定处理回调的订阅者的id，与[addTemplate](#addtemplate10)中的subscriberId相同，每个订阅者的ID是唯一的。 |
+| bundleNameOfOwner | string | 否 | 否 | 指定创建模板的模板所有者的bundleName，与[addTemplate](#addtemplate10)中的bundleName相同。 |
 
 ## PublishedItem<sup>10+</sup>
 
@@ -337,11 +343,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| key | string | 是 | 指定发布数据的键。 |
-| data | string \| ArrayBuffer | 是 | 指定发布的数据。如果发布数据大小超过20KB，建议使用ArrayBuffer。 |
-| subscriberId | string | 是 | 指定订阅者id。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| key | string | 否 | 否 | 指定发布数据的键。 |
+| data | string \| ArrayBuffer | 否 | 否 | 指定发布的数据。如果发布数据大小超过20KB，建议使用ArrayBuffer。 |
+| subscriberId | string | 否 | 否 | 指定订阅者id。 |
 
 ## RdbDataChangeNode<sup>10+</sup>
 
@@ -349,11 +355,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| uri | string | 是 | 指定回调的uri。 |
-| templateId | [TemplateId](#templateid10) | 是 | 处理回调的templateId。 |
-| data | Array&lt;string&gt; | 是 | 指定回调的数据。若处理回调数据时发生错误，则回调将不会被触发。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| uri | string | 否 | 否 | 指定回调的uri。 |
+| templateId | [TemplateId](#templateid10) | 否 | 否 | 处理回调的templateId。 |
+| data | Array&lt;string&gt; | 否 | 否 | 指定回调的数据。若处理回调数据时发生错误，则回调将不会被触发。 |
 
 ## PublishedDataChangeNode<sup>10+</sup>
 
@@ -361,10 +367,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 指定回调的bundleName。 |
-| data | Array&lt;[PublishedItem](#publisheditem10)&gt; | 是 | 指定回调的数据。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| bundleName | string | 否 | 否 | 指定回调的bundleName。 |
+| data | Array&lt;[PublishedItem](#publisheditem10)&gt; | 否 | 否 | 指定回调的数据。 |
 
 ## Template<sup>10+</sup>
 
@@ -372,11 +378,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| predicates | Record<string, string> | 是 | 指定模板的谓词。当调用[on](#onrdbdatachange10)的回调时，谓词用于生成数据。仅适用于rdb存储数据。 |
-| scheduler | string | 是 | 指定模板的调度程序sql。其中嵌入自定义函数处理，目前预置自定义函数remindTimer处理。remindTimer在指定场景触发一次订阅刷新。<br/>触发场景：<br/>1. 修改数据时且有订阅的情况下触发对应的调度程序sql语句。<br/>2. 添加对应库第一个订阅的情况下触发对应的调度程序sql语句。 |
-| update<sup>18+<sup> | string | 否 | 指定模板的update sql语句，未定义时默认值为空字符串。当调用[on](#onrdbdatachange10)的回调时，update参数用于更新数据。仅适用于rdb存储数据。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| predicates | Record<string, string> | 否 | 否 | 指定模板的谓词。当调用[on](#onrdbdatachange10)的回调时，谓词用于生成数据。仅适用于rdb存储数据。 |
+| scheduler | string | 否 | 否 | 指定模板的调度程序sql。其中嵌入自定义函数处理，目前预置自定义函数remindTimer处理。remindTimer在指定场景触发一次订阅刷新。<br/>触发场景：<br/>1. 修改数据时且有订阅的情况下触发对应的调度程序sql语句。<br/>2. 添加对应库第一个订阅的情况下触发对应的调度程序sql语句。 |
+| update<sup>18+<sup> | string | 否 | 是 | 指定模板的update sql语句，未定义时默认值为空字符串。当调用[on](#onrdbdatachange10)的回调时，update参数用于更新数据。仅适用于rdb存储数据。 |
 
 ## OperationResult<sup>10+</sup>
 
@@ -384,20 +390,20 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | ----- | -------- |
-| key | string | 是 | 指定运算结果的键。 |
-| result | number | 是 | 指定运算结果。正常情况下返回0，异常情况下返回错误码。  |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ----- | ----- | -------- |
+| key | string | 否 | 否 | 指定运算结果的键。 |
+| result | number | 否 | 否 | 指定运算结果。正常情况下返回0，异常情况下返回错误码。  |
 ## UpdateOperation<sup>12+</sup>
 
 批量更新操作的参数结构。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称       | 类型                                                         | 必填 | 说明           |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 是   | 要更新的数据。 |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 筛选条件。     |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明           |
+| ---------- | ------------------------------------------------------------ | ---- |  ---- | -------------- |
+| values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 否   | 否   | 要更新的数据。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 否   | 否   | 筛选条件。     |
 
 ## SubscriptionType<sup>12+</sup>
 
@@ -415,11 +421,11 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
-| 名称       | 类型                                                         | 必填 | 说明           |
-| ---------- | ------------------------------------------------------------ | ---- | -------------- |
-| type       | [ChangeType](js-apis-data-dataShare.md#changetype20)      | 是   | 通知变更的类型。 |
-| uri        | string                                                       | 是   | 指定uri。      |
-| values     | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt;| 是   | 更新的数据。   |
+| 名称       | 类型                                                         | 只读 | 可选 | 说明           |
+| ---------- | ------------------------------------------------------------ | ---- | ---- | -------------- |
+| type       | [ChangeType](js-apis-data-dataShare.md#changetype20)      | 否 | 否   | 通知变更的类型。 |
+| uri        | string                                                       | 否 | 否   | 指定uri。      |
+| values     | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt;| 否 | 否   | 更新的数据。   |
 
 ## DataShareHelper
 
@@ -429,9 +435,9 @@ DataShare管理工具实例，可使用此实例访问或管理服务端的数�
 
 on(type: 'dataChange', uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-订阅指定URI对应数据的数据变更事件。若订阅者已注册了观察者，当有其他通知者触发了变更通知时，订阅者将会接收到callback通知。使用callback异步回调。该功能不支持跨用户订阅通知。
+订阅指定URI对应数据的数据变更事件。若订阅者已注册了观察者，当有其他通知者触发了变更通知时，订阅者将会接收到callback通知。使用callback异步回调。该功能不支持跨用户订阅通知。同一应用内对单个URI的重复订阅上限为51次。
 
-触发通知：非静默场景下，通知者调用了下文中的notifyChange方法，就会触发通知；或者静默场景下，通知者使用静默访问修改了数据，也会自动触发通知。
+触发通知：非静默场景下，调用[notifyChange](#notifychange-1)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -469,9 +475,9 @@ if (dataShareHelper !== undefined) {
 
 on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallback&lt;ChangeInfo&gt;): void
 
-订阅指定URI对应数据的数据变更事件。若订阅者已注册变更通知，当有其他通知者触发了变更通知时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的uri、变更的数据内容。使用callback回调。仅支持非静默访问。该功能不支持跨用户订阅通知。
+订阅指定URI对应数据的数据变更事件。若订阅者已注册变更通知，当有其他通知者触发了变更通知时，订阅者将会接收到callback通知，通知携带数据变更类型、变化的uri、变更的数据内容。使用callback回调。该功能不支持跨用户订阅通知。同一应用内对单个URI的重复订阅上限为51次。
 
-触发通知：非静默场景下，通知者调用了下文中的notifyChange方法，就会触发通知；或者静默场景下，通知者使用静默访问修改了数据，也会自动触发通知。
+触发通知：非静默场景下，调用[notifyChange](#notifychange12)方法，就会触发对指定URI订阅者的通知；或者静默场景下，使用指定URI的静默访问修改了数据，也会自动触发通知, 但此时callback通知中的changeInfo无效。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -513,7 +519,7 @@ if (dataShareHelper !== undefined) {
 
 off(type: 'dataChange', uri: string, callback?: AsyncCallback&lt;void&gt;): void
 
-取消订阅指定URI下指定callback对应的数据资源的变更通知。
+取消订阅指定URI下指定callback对应的数据资源的变更通知。与订阅接口[on](#ondatachange)相对应。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -553,7 +559,7 @@ if (dataShareHelper != undefined) {
 
 off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCallback&lt;ChangeInfo&gt;): void
 
-取消订阅指定URI下指定callback对应的数据资源的变更通知。仅支持非静默访问。
+取消订阅指定URI下指定callback对应的数据资源的变更通知。与订阅接口[on](#ondatachange12)相对应。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -597,6 +603,8 @@ if (dataShareHelper !== undefined) {
 addTemplate(uri: string, subscriberId: string, template: Template): void
 
 添加一个指定订阅者的数据模板。仅支持静默访问。
+
+静默场景下，调用此接口时，传入的uri、subscriberId和template参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -646,6 +654,8 @@ if (dataShareHelper != undefined) {
 delTemplate(uri: string, subscriberId: string): void
 
 删除一个指定订阅者的数据模板。仅支持静默访问。
+
+静默场景下，调用此接口时，传入的uri和subscriberId参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -728,6 +738,10 @@ on(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, cal
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void = (err: BusinessError, node:dataShare.RdbDataChangeNode): void => {
+  if (!node.data.length) {
+    console.error("node.data.length is empty");
+    return;
+  }
   console.info("onCallback " + JSON.stringify(node.uri));
   console.info("onCallback " + JSON.stringify(node.templateId));
   console.info("onCallback " + node.data.length);
@@ -896,7 +910,9 @@ if (dataShareHelper != undefined) {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。需传入要发布的数据版本，当传入版本号高于当前数据库记录的版本时成功。仅支持静默访问。使用callback异步回调。
+
+静默场景下，调用此接口时，传入的data和bundleName参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -917,7 +933,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version: number, c
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| The URI does not exist. | The data area does not exist.|
+| 15700012 | The data area does not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -945,7 +961,9 @@ try {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCallback&lt;Array&lt;OperationResult&gt;&gt;): void
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。仅支持静默访问。使用callback异步回调。
+
+静默场景下，调用此接口时，传入的data和bundleName参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -965,7 +983,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, callback: AsyncCal
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| The URI does not exist. | The data area does not exist.|
+| 15700012 | The data area does not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -989,7 +1007,9 @@ if (dataShareHelper != undefined) {
 
 publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version?: number): Promise&lt;Array&lt;OperationResult&gt;&gt;
 
-发布数据，将数据更新至数据库。仅支持静默访问。
+发布数据，将数据更新至数据库。可以选择传入要发布的数据版本，当传入版本号高于当前数据库记录的版本时成功。仅支持静默访问。使用Promise异步回调。
+
+静默场景下，调用此接口时，传入的data和bundleName参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1015,7 +1035,7 @@ publish(data: Array&lt;PublishedItem&gt;, bundleName: string, version?: number):
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| The URI does not exist. | The data area does not exist.|
+| 15700012 | The data area does not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -1034,7 +1054,9 @@ if (dataShareHelper != undefined) {
 
 getPublishedData(bundleName: string, callback: AsyncCallback&lt;Array&lt;PublishedItem&gt;&gt;): void
 
-获取给定的APP和模板指定的数据。仅支持静默访问。
+获取给定的APP和模板指定的数据。仅支持静默访问。使用callback异步回调。
+
+静默场景下，调用此接口时，传入的bundleName参数的大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1073,7 +1095,9 @@ if (dataShareHelper != undefined) {
 
 getPublishedData(bundleName: string): Promise&lt;Array&lt;PublishedItem&gt;&gt;
 
-获取给定的APP和模板指定的数据。仅支持静默访问。
+获取给定的APP和模板指定的数据。仅支持静默访问。使用Promise异步回调。
+
+静默场景下，调用此接口时，传入的bundleName参数的大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1097,7 +1121,7 @@ getPublishedData(bundleName: string): Promise&lt;Array&lt;PublishedItem&gt;&gt;
 | -------- | -------------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API.|
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| The URI does not exist. | The data area does not exist.|
+| 15700012 | The data area does not exist.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
 **示例：**
@@ -1113,6 +1137,10 @@ if (dataShareHelper != undefined) {
 insert(uri: string, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
 
 将单条数据插入数据库。使用callback异步回调。
+
+非静默场景下，调用此接口时，传入的uri和value参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri和value参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1174,6 +1202,10 @@ try {
 insert(uri: string, value: ValuesBucket): Promise&lt;number&gt;
 
 将单条数据插入数据库。使用Promise异步回调。
+
+非静默场景下，调用此接口时，传入的uri和value参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri和value参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1239,6 +1271,10 @@ delete(uri: string, predicates: dataSharePredicates.DataSharePredicates, callbac
 
 从数据库中删除一条或多条数据记录。使用callback异步回调。
 
+非静默场景下，调用此接口时，传入的uri和predicates参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri和predicates参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1290,6 +1326,10 @@ try {
 delete(uri: string, predicates: dataSharePredicates.DataSharePredicates): Promise&lt;number&gt;
 
 从数据库中删除一条或多条数据记录。使用Promise异步回调。
+
+非静默场景下，调用此接口时，传入的uri和predicates参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri和predicates参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1346,6 +1386,10 @@ query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns:
 
 查询数据库中的数据。使用callback异步回调。
 
+非静默场景下，调用此接口时，传入的predicates参数的大小不能超过128MB，传入的uri和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri、predicates和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1399,6 +1443,10 @@ try {
 query(uri: string, predicates: dataSharePredicates.DataSharePredicates, columns: Array&lt;string&gt;): Promise&lt;DataShareResultSet&gt;
 
 查询数据库中的数据。使用Promise异步回调。
+
+非静默场景下，调用此接口时，传入的predicates参数的大小不能超过128MB，传入的uri和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri、predicates和columns参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1456,6 +1504,10 @@ try {
 update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: ValuesBucket, callback: AsyncCallback&lt;number&gt;): void
 
 更新数据库中的数据记录。使用callback异步回调。
+
+非静默场景下，调用此接口时，传入的uri、predicates和value参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri、predicates和value参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1520,6 +1572,10 @@ try {
 update(uri: string, predicates: dataSharePredicates.DataSharePredicates, value: ValuesBucket): Promise&lt;number&gt;
 
 更新数据库中的数据记录。使用Promise异步回调。
+
+非静默场景下，调用此接口时，传入的uri、predicates和value参数的总大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
+静默场景下，调用此接口时，传入的uri、predicates和value参数的总大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1586,7 +1642,9 @@ try {
 
 batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;
 
-批量更新数据库中的数据记录，Record最多支持900K的数据，超出该限制更新失败；该接口的事务性取决于provider（数据提供方）。使用Promise异步回调。暂不支持静默访问。
+批量更新数据库中的数据记录，所有操作的总数(即operations对象的键值对)不得超过4000个，超出限制将导致更新失败；该接口的事务性取决于provider（数据提供方）。使用Promise异步回调。暂不支持静默访问。
+
+非静默场景下，调用此接口时，传入的operations参数的大小不能超过900KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1677,6 +1735,8 @@ batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallb
 
 将批量数据插入数据库。使用callback异步回调。暂不支持静默访问。
 
+非静默场景下，调用此接口时，传入的values参数的大小不能超过128MB，传入的uri参数大小不能超过900KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -1704,18 +1764,10 @@ import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = ("datashare:///com.samples.datasharetest.DataShare");
-let key1: string = "name";
-let value11: string = "roe11";
-let key2: string = "age";
-let value21: number = 21;
-let key3: string = "salary";
-let value31: number = 20.5;
-let valuesBucket1: ValuesBucket = {
-  key1: value11,
-  key2: value21,
-  key3: value31,
-};
-let vbs = new Array(valuesBucket1);
+let vbs: ValuesBucket[] = [
+  { "name": "roe11", "age": 21, "salary": 20.5 }
+]
+
 try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).batchInsert(uri, vbs, (err, data) => {
@@ -1738,6 +1790,8 @@ try {
 batchInsert(uri: string, values: Array&lt;ValuesBucket&gt;): Promise&lt;number&gt;
 
 将批量数据插入数据库。使用Promise异步回调。暂不支持静默访问。
+
+非静默场景下，调用此接口时，传入的values参数的大小不能超过128MB，传入的uri参数大小不能超过900KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1771,18 +1825,10 @@ import { ValuesBucket } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let uri = ("datashare:///com.samples.datasharetest.DataShare");
-let key1: string = "name";
-let value11: string = "roe11";
-let key2: string = "age";
-let value21: number = 21;
-let key3: string = "salary";
-let value31: number = 20.5;
-let valuesBucket1: ValuesBucket = {
-  key1: value11,
-  key2: value21,
-  key3: value31,
-};
-let vbs = new Array(valuesBucket1);
+let vbs: ValuesBucket[] = [
+  { "name": "roe11", "age": 21, "salary": 20.5 }
+]
+
 try {
   if (dataShareHelper != undefined) {
     (dataShareHelper as dataShare.DataShareHelper).batchInsert(uri, vbs).then((data: number) => {
@@ -2009,6 +2055,8 @@ notifyChange(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 通知已注册的观察者指定URI对应的数据资源已发生变更。使用callback异步回调。暂不支持静默访问。
 
+非静默场景下，调用此接口时，传入的uri参数大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -2044,6 +2092,8 @@ if (dataShareHelper != undefined) {
 notifyChange(uri: string): Promise&lt;void&gt;
 
 通知已注册的观察者指定URI对应的数据资源已发生变更。使用Promise异步回调。暂不支持静默访问。
+
+非静默场景下，调用此接口时，传入的uri参数大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -2084,6 +2134,8 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 
 通知已注册的观察者指定URI对应的数据资源已发生变更类型及变更内容。使用Promise异步回调。暂不支持静默访问。
 
+非静默场景下，调用此接口时，传入的data参数大小不能超过200KB，超出限制将导致操作失败或抛出异常。
+
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Consumer
 
 **参数：**
@@ -2114,10 +2166,12 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 import { ValuesBucket } from '@kit.ArkData';
 
 let dsUri = ("datashare:///com.acts.datasharetest");
-let bucket1: ValuesBucket = {"name": "LiSi"};
-let bucket2: ValuesBucket = {"name": "WangWu"};
-let bucket3: ValuesBucket = {"name": "ZhaoLiu"};
-let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
+let people: ValuesBucket[] = [
+  { "name": "LiSi" },
+  { "name": "WangWu" },
+  { "name": "ZhaoLiu" }
+]
+
 let changeData:dataShare.ChangeInfo= { type:dataShare.ChangeType.INSERT, uri:dsUri, values:people};
 if (dataShareHelper != undefined) {
   (dataShareHelper as dataShare.DataShareHelper).notifyChange(changeData);

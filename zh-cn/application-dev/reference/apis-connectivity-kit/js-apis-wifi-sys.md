@@ -1,5 +1,11 @@
 # @ohos.wifi (WLAN)（系统接口）
 
+<!--Kit: Connectivity Kit-->	
+<!--Subsystem: Communication-->	
+<!--Owner: @qq_43802146-->	
+<!--Designer: @qq_43802146-->	
+<!--Tester: @furryfurry123-->	
+<!--Adviser: @zhang_yixin13-->	
 该模块主要提供WLAN基础功能、P2P（peer-to-peer）功能和WLAN消息通知的相应服务，让应用可以通过WLAN和其他设备互联互通。
 
 > **说明：**
@@ -81,7 +87,7 @@ try {
 
 addDeviceConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
-添加网络配置，使用Promise异步回调。
+添加网络配置。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -120,8 +126,8 @@ try {
 		randomMacAddr:  "****",
 		ipType: 0,
 		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
+			ipAddress: "",
+			gateway: "",
 			dnsServers: [],
 			domains: []
 		}
@@ -149,7 +155,9 @@ WLAN配置信息。
 | randomMacType | number | 是 | 否 | 随机MAC类型。 <br /> **系统接口：** 此接口为系统接口。 |
 | randomMacAddr | string | 是 | 否 | 随机MAC地址。 <br /> **系统接口：** 此接口为系统接口。 |
 | ipType | [IpType](#iptype7) | 是 | 否 | IP地址类型。 <br /> **系统接口：** 此接口为系统接口。 |
-| staticIp | [IpConfig](#ipconfig7) | 是 | 否 | 静态IP配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
+| family<sup>20+</sup> | number | 否 | 是 | ip协议版本。 <br /> **系统接口：** 此接口为系统接口。 |
+| staticIp | [IpConfig](#ipconfig7) | 否 | 是 | 静态IPv4配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
+| staticIpv6<sup>20+</sup> | [Ipv6Config](#ipv6config20) | 否 | 是 | 静态IPv6配置信息。 <br /> **系统接口：** 此接口为系统接口。 |
 
 
 ## IpType<sup>7+</sup>
@@ -170,25 +178,44 @@ WLAN配置信息。
 
 ## IpConfig<sup>7+</sup>
 
-IP配置信息。
+IPv4配置信息。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-| **名称** | **类型** | **可读** | **可写** | **说明** |
+| **名称** | **类型** | **只读** | **可选** | **说明** |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | 是 | 否 | IP地址。 |
-| gateway | number | 是 | 否 | 网关。 |
-| dnsServers | number[] | 是 | 否 | DNS服务器。 |
-| domains | Array&lt;string&gt; | 是 | 否 | 域信息。 |
+| ipAddress | number | 否 | 否 | IPv4地址。 |
+| gateway | number | 否 | 否 | 网关。 |
+| prefixLength | number | 否 | 否 | 前缀长度。 |
+| dnsServers | number[] | 否 | 否 | DNS服务器。 |
+| domains | Array&lt;string&gt; | 否 | 否 | 域信息。 |
+
+
+## Ipv6Config<sup>20+</sup>
+
+IPv6配置信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+| **名称** | **类型** | **只读** | **可选** | **说明** |
+| -------- | -------- | -------- | -------- | -------- |
+| ipAddress | string | 否 | 否 | IPv6地址。 |
+| gateway | string| 否 | 否 | 网关。 |
+| prefixLength | number | 否 | 否 | 前缀长度。 |
+| dnsServers | Array\<string> | 否 | 否 | DNS服务器。 |
+| domains | Array\<string> | 否 | 否 | 域信息。 |
+
 
 
 ## wifi.addDeviceConfig
 
 addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
-添加网络配置，使用callback异步回调。
+添加网络配置。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -222,8 +249,8 @@ try {
 		randomMacAddr:  "****",
 		ipType: 0,
 		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
+			ipAddress: "",
+			gateway: "",
 			dnsServers: [],
 			domains: []
 		}
@@ -317,8 +344,8 @@ try {
 		randomMacAddr:  "****",
 		ipType: 0,
 		staticIp: {
-		ipAddress: 0,
-			gateway: 0,
+		    ipAddress: "",
+			gateway: "",
 			dnsServers: [],
 			domains: []
 		}
@@ -528,7 +555,7 @@ try {
 
 ## wifi.getDeviceConfigs<sup>7+</sup>
 
-getDeviceConfigs(): &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt;
+getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取网络配置。
 
@@ -598,8 +625,8 @@ try {
 		randomMacAddr:  "****",
 		ipType: 0,
 		staticIp: {
-			ipAddress: 0,
-			gateway: 0,
+			ipAddress: "",
+			gateway: "",
 			dnsServers: [],
 			domains: []
 		}
@@ -922,7 +949,7 @@ try {
 
 ## wifi.getStations<sup>7+</sup>
 
-getStations(): &nbsp;Array&lt;[StationInfo](#stationinfo7)&gt;
+getStations(): &nbsp;Array&lt;StationInfo&gt;
 
 获取连接的设备。
 
@@ -1165,7 +1192,7 @@ on(type: "hotspotStaLeave", callback: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 是 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 是 | 状态改变回调函数。 |
 
 ## wifi.off('hotspotStaLeave')<sup>7+</sup>
 
@@ -1184,7 +1211,7 @@ off(type: "hotspotStaLeave", callback?: Callback&lt;StationInfo&gt;): void
   | **参数名** | **类型** | **必填** | **说明** |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 固定填"hotspotStaLeave"字符串。 |
-  | callback | Callback&lt;StationInf]&gt; | 否 | 状态改变回调函数。 |
+  | callback | Callback&lt;StationInf&gt; | 否 | 状态改变回调函数。 |
 
   **示例：**
 ```ts

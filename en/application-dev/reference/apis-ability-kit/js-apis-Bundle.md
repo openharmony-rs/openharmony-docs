@@ -1,6 +1,12 @@
-# @ohos.bundle (Bundle)
+# @ohos.bundle (Bundle Module)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The bundle module provides APIs for obtaining information about an application, including [bundle information](js-apis-bundle-BundleInfo.md), [application information](js-apis-bundle-ApplicationInfo.md), and [ability information](js-apis-bundle-AbilityInfo.md). It also provides APIs to obtain and set the application disabling state.
+The module provides APIs for obtaining information about an application, including [bundle information](js-apis-bundle-BundleInfo.md), [application information](js-apis-bundle-ApplicationInfo.md), and [ability information](js-apis-bundle-AbilityInfo.md). It also provides APIs to obtain and set the application disabling state.
 
 > **NOTE**
 >
@@ -578,7 +584,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name       | Type    | Mandatory  | Description          |
 | ---------- | ------ | ---- | ------------ |
 | hapFilePath | string | Yes   | Path where the HAP file is stored. The absolute path of the application and the data directory sandbox path are supported.|
-| bundleFlags | number | Yes   | Flags used to specify information contained in the **BundleInfo** object that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes   | Flags used to specify information contained in the BundleInfo object that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
 
 **Return value**
 | Type                                                | Description                                                        |
@@ -619,7 +625,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name       | Type    | Mandatory  | Description          |
 | ---------- | ------ | ---- | ------------ |
 | hapFilePath | string | Yes   | Path where the HAP file is stored. The absolute path of the application and the data directory sandbox path are supported.|
-| bundleFlags | number | Yes   | Flags used to specify information contained in the **BundleInfo** object that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
+| bundleFlags | number | Yes   | Flags used to specify information contained in the BundleInfo object that will be returned. For details about the available enumerated values, see the bundle information flags in [BundleFlag](#bundleflagdeprecated).|
 | callback| AsyncCallback\<[BundleInfo](js-apis-bundle-BundleInfo.md)> | Yes   | Callback used to return the information about the bundles.|
 
 **Example**
@@ -843,7 +849,7 @@ SystemCapability.BundleManager.BundleFramework
 
 | Type               | Description                       |
 | ----------------- | ------------------------- |
-| Promise\<boolean> | Promise used to return the result. If the ability is enabled, **true** will be returned; otherwise, **false** will be returned.|
+| Promise\<boolean> | Promise used to return the result. **true** if enabled, **false** otherwise.|
 
 **Example**
 
@@ -880,7 +886,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name  | Type                                        | Mandatory| Description                   |
 | -------- | -------------------------------------------- | ---- | ----------------------- |
 | info     | [AbilityInfo](js-apis-bundle-AbilityInfo.md) | Yes  | Ability information.      |
-| callback | AsyncCallback\<boolean>                      | Yes  | Callback used to return the result. If the ability is enabled, **true** will be returned; otherwise, **false** will be returned.|
+| callback | AsyncCallback\<boolean>                      | Yes  | Callback used to return the result. **true** if enabled, **false** otherwise.|
 
 **Example**
 
@@ -923,7 +929,7 @@ SystemCapability.BundleManager.BundleFramework
 
 | Type               | Description                       |
 | ----------------- | ------------------------- |
-| Promise\<boolean> | Promise used to return the result. If the application is enabled, **true** will be returned; otherwise, **false** will be returned.|
+| Promise\<boolean> | Promise used to return the result. **true** if enabled, **false** otherwise.|
 
 **Example**
 
@@ -958,7 +964,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name    | Type                   | Mandatory| Description                    |
 | ---------- | ----------------------- | ---- | ------------------------ |
 | bundleName | string                  | Yes  | Bundle name.|
-| callback   | AsyncCallback\<boolean> | Yes  | Callback used to return the result. If the application is enabled, **true** will be returned; otherwise, **false** will be returned.|
+| callback   | AsyncCallback\<boolean> | Yes  | Callback used to return the result. **true** if enabled, **false** otherwise.|
 
 **Example**
 
@@ -1155,7 +1161,7 @@ SystemCapability.BundleManager.BundleFramework
 **Return value**
 | Type            | Description                                    |
 | -------------- | -------------------------------------- |
-| Promise\<[Want](js-apis-application-want.md)> | Promise used to return the **Want** object.|
+| Promise\<[Want](js-apis-application-want.md)> | Promise used to return the Want object.|
 
 **Example**
 
@@ -1194,7 +1200,7 @@ SystemCapability.BundleManager.BundleFramework
 | Name    | Type                                               | Mandatory| Description                                                    |
 | ---------- | --------------------------------------------------- | ---- | -------------------------------------------------------- |
 | bundleName | string                                              | Yes  | Bundle name.                                |
-| callback   | AsyncCallback\<[Want](js-apis-application-want.md)> | Yes  | Callback used to return the **Want** object.|
+| callback   | AsyncCallback\<[Want](js-apis-application-want.md)> | Yes  | Callback used to return the Want object.|
 
 **Example**
 
@@ -1294,7 +1300,7 @@ bundle.getNameForUid(uid, (err, data) => {
 
 getAbilityIcon(bundleName: string, abilityName: string): Promise\<image.PixelMap>
 
-Obtains the [PixelMap](../apis-image-kit/js-apis-image.md) of the icon corresponding to a given bundle name and ability name. This API uses a promise to return the result.
+Obtains the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) of the icon corresponding to a given bundle name and ability name. This API uses a promise to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -1316,7 +1322,7 @@ SystemCapability.BundleManager.BundleFramework
 **Return value**
 | Type                 | Description                                                        |
 | --------------------- | ------------------------------------------------------------ |
-| Promise\<image.PixelMap> | Promise used to return the [pixel map](../apis-image-kit/js-apis-image.md).|
+| Promise\<image.PixelMap> | Promise used to return the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md).|
 
 **Example**
 
@@ -1341,7 +1347,7 @@ bundle.getAbilityIcon(bundleName, abilityName)
 
 getAbilityIcon(bundleName: string, abilityName: string, callback: AsyncCallback\<image.PixelMap>): void
 
-Obtains the [PixelMap](../apis-image-kit/js-apis-image.md) of the icon corresponding to a given bundle name and ability name. This API uses an asynchronous callback to return the result.
+Obtains the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) of the icon corresponding to a given bundle name and ability name. This API uses an asynchronous callback to return the result.
 
 No permission is required for obtaining the caller's own information.
 
@@ -1360,7 +1366,7 @@ SystemCapability.BundleManager.BundleFramework
 | ----------- | ---------------------------------------- | ---- |-------------------------------------------------|
 | bundleName  | string                                   | Yes   | Bundle name.                               |
 | abilityName | string                                   | Yes   | Ability name.                                |
-| callback   | AsyncCallback\<image.PixelMap> | Yes  | Callback used to return the [pixel map](../apis-image-kit/js-apis-image.md).|
+| callback   | AsyncCallback\<image.PixelMap> | Yes  | Callback used to return the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md).|
 
 **Example**
 

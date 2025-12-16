@@ -1,7 +1,13 @@
 # Customizing Page Request Responses
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 
-The **Web** component supports customization of the response to intercepted page requests. You can call [onInterceptRequest()](../reference/apis-arkweb/ts-basic-components-web.md#oninterceptrequest9) to customize web page responses, file resource responses, and more.  
+The **Web** component supports customization of the response to intercepted page requests. You can call [onInterceptRequest()](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) to customize web page responses, file resource responses, and more.  
 
 
 When a resource loading request is initiated on a web page, the application layer will receive the request. The application layer then constructs a local resource response and sends it to the web kernel. On receiving the response, the web kernel parses the response and loads page resources accordingly.
@@ -10,7 +16,7 @@ When a resource loading request is initiated on a web page, the application laye
 In the following example, the **Web** component intercepts the web page request **https://www.example.com/test.html** and constructs a custom response in the application code.
 
 
-- Code of the **index.html** page:
+- Code of the **index1.html** page:
 
   ```html
   <!DOCTYPE html>
@@ -19,18 +25,18 @@ In the following example, the **Web** component intercepts the web page request 
       <meta charset="utf-8">
   </head>
   <body>
-  <!-- Page resource request ->
+  <!-- Page resource request -->
   <a href="https://www.example.com/test.html">intercept test!</a>
   </body>
   </html>
   ```
 
 - Application code:
-
-  ```ts
-  // xxx.ets
+  <!-- @[build_response_resources_to_implement_custom_page_response_scenarios](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_one.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -46,10 +52,10 @@ In the following example, the **Web** component intercepts the web page request 
       '<h1>intercept ok</h1>\n' +
       '</body>\n' +
       '</html>'
-
+  
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('index1.html'), controller: this.controller })
           .onInterceptRequest((event) => {
             if (event) {
               console.info('url:' + event.request.getRequestUrl());
@@ -71,11 +77,15 @@ In the following example, the **Web** component intercepts the web page request 
   }
   ```
 
-Create a **CodeCache** object for a custom JS request response: If the resource of a custom request response is a JavaScript script, you can add the **ResponseDataID** field to the response header. After obtaining this field, the **Web** kernel generates a **CodeCache** object, which accelerates JavaScript execution. Any changes to the **ResponseDataID** field must be notified to the **Web** component. If the **ResponseDataID** field is not added, no **CodeCache** object is created by default.
+- Page after being intercepted
+
+  ![Image](figures/web-rescource-interception-request-1.PNG)
+
+Create a **CodeCache** object for a custom JS request response: If the resource of a custom request response is a JavaScript script, you can add the **ResponseDataID** field to the response header. After obtaining this field, the **Web** kernel generates a **CodeCache** object, which accelerates JavaScript execution. If **ResponseData** is updated, the **ResponseDataID** field must be updated. If the **ResponseDataID** field is not added, no **CodeCache** object is created by default.
 
 In the following example, the **Web** component intercepts the web page request **https://www.example.com/test.js**; a custom response is constructed in the application code, with the **ResponseDataID** field added to the response header.
 
-- Code of the **index.html** page:
+- Code of the **index2.html** page:
 
   ```html
   <!DOCTYPE html>
@@ -103,11 +113,11 @@ In the following example, the **Web** component intercepts the web page request 
   ```
 
 - Application code:
-
-  ```ts
-  // xxx.ets
+  <!-- @[build_response_resource_enable_gen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/CustomizePageResp/entry/src/main/ets/pages/OnInterceptRequest_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -137,10 +147,9 @@ In the following example, the **Web** component intercepts the web page request 
       'element9.innerHTML = text_msg;\n' +
       'element10.innerHTML = text_msg;\n' +
       'element11.innerHTML = text_msg;\n';
-
     build() {
       Column() {
-        Web({ src: $rawfile('index.html'), controller: this.controller })
+        Web({ src: $rawfile('index2.html'), controller: this.controller })
           .onInterceptRequest((event) => {
             // Intercept the web page request.
             if (event?.request.getRequestUrl() == 'https://www.example.com/test.js') {
@@ -148,8 +157,8 @@ In the following example, the **Web** component intercepts the web page request 
               this.responseResource.setResponseHeader([
                 {
                   // The value is a string of a maximum of 13 digits. It is a JavaScript identifier and must be updated to maintain consistency with JavaScript.
-                  headerKey: "ResponseDataID",
-                  headerValue: "0000000000001"
+                  headerKey: 'ResponseDataID',
+                  headerValue: '0000000000001'
                 }]);
               this.responseResource.setResponseData(this.jsData);
               this.responseResource.setResponseEncoding('utf-8');
@@ -164,3 +173,7 @@ In the following example, the **Web** component intercepts the web page request 
     }
   }
   ```
+
+- Page after being intercepted
+
+  ![Image](figures/web-rescource-intercption-request-2.PNG)

@@ -1,4 +1,10 @@
 # Interface (AVSession)
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -15,14 +21,13 @@ import { avSession } from '@kit.AVSessionKit';
 
 ## 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 | 名称      | 类型   | 只读 | 可选 | 说明                          |
 | :-------- | :----- | :--- | :--- | :---------------------------- |
-| sessionId<sup>10+</sup> | string | 是   | 否   | AVSession对象唯一的会话标识。 |
-| sessionType<sup>10+</sup> | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10) | 是   | 否   | AVSession会话类型。 |
+| sessionId<sup>10+</sup> | string | 是   | 否   | AVSession对象唯一的会话标识。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| sessionType<sup>10+</sup> | [AVSessionType](arkts-apis-avsession-t.md#avsessiontype10) | 是   | 否   | AVSession会话类型。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| sessionTag<sup>22+</sup> | string | 是   | 否   | AVSession会话的自定义标签信息。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -60,7 +65,7 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -118,7 +123,7 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -183,7 +188,7 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -193,7 +198,9 @@ import { image } from '@kit.ImageKit';
 import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let value = await resourceManager.getSystemResourceManager().getRawFileContent('IMAGE_URI');
+async function setCallMetadata() {
+  try {
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
     let imageSource = await image.createImageSource(value.buffer);
     let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
     let calldata: avSession.CallMetadata = {
@@ -201,11 +208,17 @@ let value = await resourceManager.getSystemResourceManager().getRawFileContent('
       phoneNumber: "111xxxxxxxx",
       avatar: imagePixel
     };
-currentAVSession.setCallMetadata(calldata).then(() => {
-  console.info('setCallMetadata successfully');
-}).catch((err: BusinessError) => {
-  console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-});
+    currentAVSession.setCallMetadata(calldata).then(() => {
+      console.info('setCallMetadata successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (err) {
+    if (err) {
+      console.error(`setCallMetadata Error: code: ${err.code}, message: ${err.message}`);
+    }
+  }
+}
 ```
 
 ## setCallMetadata<sup>11+</sup>
@@ -230,7 +243,7 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -241,21 +254,27 @@ import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function setCallMetadata() {
-  let value = await resourceManager.getSystemResourceManager().getRawFileContent('IMAGE_URI');
-  let imageSource = await image.createImageSource(value.buffer);
-  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-  let calldata: avSession.CallMetadata = {
-    name: "xiaoming",
-    phoneNumber: "111xxxxxxxx",
-    avatar: imagePixel
-  };
-  currentAVSession.setCallMetadata(calldata, (err: BusinessError) => {
+  try {
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+    let calldata: avSession.CallMetadata = {
+      name: "xiaoming",
+      phoneNumber: "111xxxxxxxx",
+      avatar: imagePixel
+    };
+    currentAVSession.setCallMetadata(calldata, (err: BusinessError) => {
+      if (err) {
+        console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('setCallMetadata successfully');
+      }
+    });
+  } catch (err) {
     if (err) {
-      console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('setCallMetadata successfully');
+      console.error(`setCallMetadata Error: code: ${err.code}, message: ${err.message}`);
     }
-  });
+  }
 }
 ```
 
@@ -286,7 +305,7 @@ setAVCallState(state: AVCallState): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -327,7 +346,7 @@ setAVCallState(state: AVCallState, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -377,7 +396,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -422,7 +441,7 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -476,7 +495,7 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -544,7 +563,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -594,7 +613,7 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
 
 ## dispatchSessionEvent<sup>10+</sup>
 
-dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<void>
+dispatchSessionEvent(event: string, args: Record\<string, Object>): Promise\<void>
 
 媒体提供方设置一个会话内自定义事件，包括事件名和键值对形式的事件内容，结果通过Promise异步回调方式返回。
 
@@ -607,7 +626,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | 是   | 需要设置的会话事件的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的会话事件内容。 |
+| args |Record\<string, Object>| 是   | 需要传递的会话事件内容。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
 
 > **说明：**
 > 参数args支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等，详细介绍请参见[@ohos.app.ability.Want(Want)](../apis-ability-kit/js-apis-app-ability-want.md)。
@@ -624,8 +643,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -633,6 +651,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -647,20 +666,20 @@ struct Index {
             let context: Context = this.getUIContext().getHostContext() as Context;
 
             avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
+              if (err) {
                 console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
+              } else {
                 currentAVSession = data;
-            }
+                let eventName = "dynamic_lyric";
+                if (currentAVSession !== undefined) {
+                  (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
+                    console.info('dispatchSessionEvent successfully');
+                  }).catch((err: BusinessError) => {
+                    console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+                  })
+                }
+              }
             });
-            let eventName = "dynamic_lyric";
-            if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
-                console.info('dispatchSessionEvent successfully');
-            }).catch((err: BusinessError) => {
-                console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
-            })
-            }
           })
       }
     .width('100%')
@@ -671,7 +690,7 @@ struct Index {
 
 ## dispatchSessionEvent<sup>10+</sup>
 
-dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: AsyncCallback\<void>): void
+dispatchSessionEvent(event: string, args: Record\<string, Object>, callback: AsyncCallback\<void>): void
 
 媒体提供方设置一个会话内自定义事件，包括事件名和键值对形式的事件内容，结果通过callback异步回调方式返回。
 
@@ -682,7 +701,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
 | event | string | 是   | 需要设置的会话事件的名称。 |
-| args | {[key: string]: Object} | 是   | 需要传递的会话事件内容。 |
+| args |Record\<string, Object>| 是   | 需要传递的会话事件内容。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
 | callback | AsyncCallback\<void>                          | 是   | 回调函数。当会话事件设置成功，err为undefined，否则返回错误对象。 |
 
 > **说明：**
@@ -695,8 +714,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}, callback: Asy
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -718,20 +736,20 @@ struct Index {
             let context: Context = this.getUIContext().getHostContext() as Context;
 
             avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
+              if (err) {
                 console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
+              } else {
                 currentAVSession = data;
-            }
-            });
-            let eventName: string = "dynamic_lyric";
-            if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
-                if (err) {
-                console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+                let eventName: string = "dynamic_lyric";
+                if (currentAVSession !== undefined) {
+                  (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err: BusinessError) => {
+                    if (err) {
+                      console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+                    }
+                  })
                 }
-            })
-            }
+              }
+            });
           })
       }
     .width('100%')
@@ -769,7 +787,7 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -780,39 +798,45 @@ import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function setAVQueueItems() {
-  let value = await resourceManager.getSystemResourceManager().getRawFileContent('IMAGE_URI');
-  let imageSource = await image.createImageSource(value.buffer);
-  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-  let queueItemDescription_1: avSession.AVMediaDescription = {
-    assetId: '001',
-    title: 'music_name',
-    subtitle: 'music_sub_name',
-    description: 'music_description',
-    mediaImage : imagePixel,
-    extras: {extras:'any'}
-  };
-  let queueItem_1: avSession.AVQueueItem = {
-    itemId: 1,
-    description: queueItemDescription_1
-  };
-  let queueItemDescription_2: avSession.AVMediaDescription = {
-    assetId: '002',
-    title: 'music_name',
-    subtitle: 'music_sub_name',
-    description: 'music_description',
-    mediaImage: imagePixel,
-    extras: {extras:'any'}
-  };
-  let queueItem_2: avSession.AVQueueItem = {
-    itemId: 2,
-    description: queueItemDescription_2
-  };
-  let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-  currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
-    console.info('SetAVQueueItems successfully');
-  }).catch((err: BusinessError) => {
-    console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
-  });
+  try {
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+    let queueItemDescription_1: avSession.AVMediaDescription = {
+      assetId: '001',
+      title: 'music_name',
+      subtitle: 'music_sub_name',
+      description: 'music_description',
+      mediaImage : imagePixel,
+      extras: {extras:'any'}
+    };
+    let queueItem_1: avSession.AVQueueItem = {
+      itemId: 1,
+      description: queueItemDescription_1
+    };
+    let queueItemDescription_2: avSession.AVMediaDescription = {
+      assetId: '002',
+      title: 'music_name',
+      subtitle: 'music_sub_name',
+      description: 'music_description',
+      mediaImage: imagePixel,
+      extras: {extras:'any'}
+    };
+    let queueItem_2: avSession.AVQueueItem = {
+      itemId: 2,
+      description: queueItemDescription_2
+    };
+    let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+    currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
+      console.info('SetAVQueueItems successfully');
+    }).catch((err: BusinessError) => {
+      console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (err) {
+    if (err) {
+      console.error(`ImageSource or PixelMap create Error: code: ${err.code}, message: ${err.message}`);
+    }
+  }
 }
 ```
 
@@ -838,7 +862,7 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -849,41 +873,47 @@ import { resourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function setAVQueueItems() {
-  let value = await resourceManager.getSystemResourceManager().getRawFileContent('IMAGE_URI');
-  let imageSource = await image.createImageSource(value.buffer);
-  let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
-  let queueItemDescription_1: avSession.AVMediaDescription = {
-    assetId: '001',
-    title: 'music_name',
-    subtitle: 'music_sub_name',
-    description: 'music_description',
-    mediaImage : imagePixel,
-    extras: {extras:'any'}
-  };
-  let queueItem_1: avSession.AVQueueItem = {
-    itemId: 1,
-    description: queueItemDescription_1
-  };
-  let queueItemDescription_2: avSession.AVMediaDescription = {
-    assetId: '002',
-    title: 'music_name',
-    subtitle: 'music_sub_name',
-    description: 'music_description',
-    mediaImage: imagePixel,
-    extras: {extras:'any'}
-  };
-  let queueItem_2: avSession.AVQueueItem = {
-    itemId: 2,
-    description: queueItemDescription_2
-  };
-  let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
-  currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+  try {
+    let value = await resourceManager.getSysResourceManager().getRawFileContent('IMAGE_URI');
+    let imageSource = await image.createImageSource(value.buffer);
+    let imagePixel = await imageSource.createPixelMap({desiredSize:{width: 150, height: 150}});
+    let queueItemDescription_1: avSession.AVMediaDescription = {
+      assetId: '001',
+      title: 'music_name',
+      subtitle: 'music_sub_name',
+      description: 'music_description',
+      mediaImage : imagePixel,
+      extras: {extras:'any'}
+    };
+    let queueItem_1: avSession.AVQueueItem = {
+      itemId: 1,
+      description: queueItemDescription_1
+    };
+    let queueItemDescription_2: avSession.AVMediaDescription = {
+      assetId: '002',
+      title: 'music_name',
+      subtitle: 'music_sub_name',
+      description: 'music_description',
+      mediaImage: imagePixel,
+      extras: {extras:'any'}
+    };
+    let queueItem_2: avSession.AVQueueItem = {
+      itemId: 2,
+      description: queueItemDescription_2
+    };
+    let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
+    currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
+      if (err) {
+        console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
+      } else {
+        console.info('SetAVQueueItems successfully');
+      }
+    });
+  } catch (err) {
     if (err) {
-      console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
-    } else {
-      console.info('SetAVQueueItems successfully');
+      console.error(`ImageSource or PixelMap create Error: code: ${err.code}, message: ${err.message}`);
     }
-  });
+  }
 }
 ```
 
@@ -916,7 +946,7 @@ setAVQueueTitle(title: string): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -954,7 +984,7 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -974,7 +1004,7 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
 
 ## setExtras<sup>10+</sup>
 
-setExtras(extras: {[key: string]: Object}): Promise\<void>
+setExtras(extras: Record\<string, Object>): Promise\<void>
 
 媒体提供方设置键值对形式的自定义媒体数据包，结果通过Promise异步回调方式返回。
 
@@ -986,7 +1016,7 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 
 | 参数名  | 类型                                          | 必填 | 说明     |
 | ------- | --------------| ---- | ----------------------------|
-| extras | {[key: string]: Object} | 是   | 需要传递的自定义媒体数据包键值对。 |
+| extras | Record\<string, Object> | 是   | 需要传递的自定义媒体数据包键值对。<br>API version 20开始发生兼容变更，在API version 19及之前的版本args的参数类型为：{[key: string]: Object}。|
 
 > **说明：**
 
@@ -1005,7 +1035,7 @@ setExtras(extras: {[key: string]: Object}): Promise\<void>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1021,25 +1051,25 @@ struct Index {
   build() { 
     Column() {
         Text(this.message)
-          .onClick(()=>{
+          .onClick(() => {
             let currentAVSession: avSession.AVSession | undefined = undefined;
             let tag = "createNewSession";
             let context: Context = this.getUIContext().getHostContext() as Context;
 
             avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
+              if (err) {
                 console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
+              } else {
                 currentAVSession = data;
-            }
+                if (currentAVSession !== undefined) {
+                  (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}).then(() => {
+                      console.info('setExtras successfully');
+                  }).catch((err: BusinessError) => {
+                      console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+                  })
+                }
+              }
             });
-            if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}).then(() => {
-                console.info('setExtras successfully');
-            }).catch((err: BusinessError) => {
-                console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
-            })
-            }
           })
       }
     .width('100%')
@@ -1074,8 +1104,80 @@ setExtras(extras: {[key: string]: Object}, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() { 
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            let currentAVSession: avSession.AVSession | undefined = undefined;
+            let tag = "createNewSession";
+            let context: Context = this.getUIContext().getHostContext() as Context;
+
+            avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
+              if (err) {
+                console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+              } else {
+                currentAVSession = data;
+                if (currentAVSession !== undefined) {
+                  (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
+                    if (err) {
+                      console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
+                    }
+                  })
+                }
+              }
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## sendCustomData<sup>20+</sup>
+
+sendCustomData(data: Record\<string, Object>): Promise\<void>
+
+发送私有数据到远端设备。使用Promise异步回调。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                                                         |
+| ------ | ---------------------- | ---- | ------------------------------------------------------------ |
+| data   | Record\<string, Object> | 是   | 应用程序填充的自定义数据。服务端仅解析key为'customData'，且Object为string类型的对象。 |
+
+**返回值：**
+
+| 类型           | 说明                          |
+| -------------- | ----------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600102 | The session does not exist. |
+
 
 **示例：**
 
@@ -1103,10 +1205,10 @@ struct Index {
             }
             });
             if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}, (err: BusinessError) => {
-                if (err) {
-                console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
-                }
+            (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
+                console.info('sendCustomData successfully');
+            }).catch((err: BusinessError) => {
+                console.error(`sendCustomData BusinessError: code: ${err.code}, message: ${err.message}`);
             })
             }
           })
@@ -1139,7 +1241,7 @@ getController(): Promise\<AVSessionController>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1156,15 +1258,21 @@ struct Index {
     Column() {
       Text(this.message)
         .onClick(async ()=>{
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-          let avsessionController: avSession.AVSessionController;
-          currentAVSession.getController().then(async (avcontroller: avSession.AVSessionController) => {
-            avsessionController = avcontroller;
-            console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
-          }).catch((err: BusinessError) => {
-            console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
-          });
+          try {
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
+            let avSessionController: avSession.AVSessionController;
+            currentAVSession.getController().then((avController: avSession.AVSessionController) => {
+              avSessionController = avController;
+              console.info(`GetController : SUCCESS : sessionid : ${avSessionController.sessionId}`);
+            }).catch((err: BusinessError) => {
+              console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          } catch (err) {
+            if (err) {
+              console.error(`AVSession create Error: ${JSON.stringify(err)}`);
+            }
+          }
         })
     }
     .width('100%')
@@ -1193,7 +1301,7 @@ getController(callback: AsyncCallback\<AVSessionController>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1211,17 +1319,23 @@ struct Index {
     Column() {
       Text(this.message)
         .onClick(async () => {
-          let context: Context = this.getUIContext().getHostContext() as Context;
-          let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
-          let avsessionController: avSession.AVSessionController;
-          currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSessionController) => {
+          try {
+            let context: Context = this.getUIContext().getHostContext() as Context;
+            let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, 'SESSION_NAME', 'audio');
+            let avsessionController: avSession.AVSessionController;
+            currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSessionController) => {
+              if (err) {
+                console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
+              } else {
+                avsessionController = avcontroller;
+                console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
+              }
+            });
+          } catch (err) {
             if (err) {
-              console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              avsessionController = avcontroller;
-              console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
+              console.error(`AVSession create Error: code: ${err.code}, message: ${err.message}`);
             }
-          });
+          }
         })
     }
     .width('100%')
@@ -1330,7 +1444,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1365,7 +1479,7 @@ getOutputDevice(callback: AsyncCallback\<OutputDeviceInfo>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1404,7 +1518,7 @@ activate(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1439,7 +1553,7 @@ activate(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1478,7 +1592,7 @@ deactivate(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1515,7 +1629,7 @@ deactivate(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1554,7 +1668,7 @@ destroy(): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1589,7 +1703,7 @@ destroy(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1612,7 +1726,7 @@ on(type: 'play', callback: () => void): void
 
 设置播放命令监听事件。注册该监听，说明应用支持播放指令。
 
-每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1623,16 +1737,16 @@ on(type: 'play', callback: () => void): void
 | 参数名   | 类型                 | 必填 | 说明     |
 | -------- | -------------------- | ---- | --------- |
 | type     | string               | 是   | 事件回调类型，支持的事件为`'play'`，当播放命令被发送到会话时，触发该事件回调。 |
-| callback | () => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                                        |
+| callback | () => void | 是   | 回调函数。         |
 
 **错误码：**
-
+  
 以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1643,13 +1757,46 @@ currentAVSession.on('play', () => {
 });
 ```
 
+## onPlay<sup>22+</sup>
+
+onPlay(callback: Callback\<CommandInfo>): void
+
+设置播放命令监听事件。使用callback异步回调。
+
+应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                                                               | 必填 | 说明     |
+| -------- |------------------------------------------------------------------| ---- | --------- |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。                                        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onPlay((info: CommandInfo) => {
+  console.info('on play entry');
+});
+```
+
 ## on('pause')<sup>10+</sup>
 
 on(type: 'pause', callback: () => void): void
 
 设置暂停命令监听事件。注册该监听，说明应用支持暂停指令。
 
-每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1669,7 +1816,7 @@ on(type: 'pause', callback: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1686,7 +1833,7 @@ on(type:'stop', callback: () => void): void
 
 设置停止命令监听事件。注册该监听，说明应用支持停止指令。
 
-每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1706,7 +1853,7 @@ on(type:'stop', callback: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1723,7 +1870,7 @@ on(type:'playNext', callback: () => void): void
 
 设置播放下一首命令监听事件。注册该监听，说明应用支持下一首指令。
 
-每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1743,7 +1890,7 @@ on(type:'playNext', callback: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1754,13 +1901,46 @@ currentAVSession.on('playNext', () => {
 });
 ```
 
+## onPlayNext<sup>22+</sup>
+
+onPlayNext(callback: Callback\<CommandInfo>): void
+
+设置播放下一首命令监听事件。使用callback异步回调。
+
+应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型       | 必填 | 说明     |
+| -------- | ---------- | ---- | --------- |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onPlayNext((info: CommandInfo) => {
+  console.info('on playNext entry');
+});
+```
+
 ## on('playPrevious')<sup>10+</sup>
 
 on(type:'playPrevious', callback: () => void): void
 
 设置播放上一首命令监听事件。注册该监听，说明应用支持上一首指令。
 
-每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1780,7 +1960,7 @@ on(type:'playPrevious', callback: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1791,13 +1971,46 @@ currentAVSession.on('playPrevious', () => {
 });
 ```
 
+## onPlayPrevious<sup>22+</sup>
+
+onPlayPrevious(callback: Callback\<CommandInfo>): void
+
+设置播放上一首命令监听事件。使用callback异步回调。
+
+应用将通过回调接收控制器发送的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明     |
+| -------- | -------------------- | ---- | --------- |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。当监听事件注册成功，err为undefined，否则为错误对象。       |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onPlayPrevious((info: CommandInfo) => {
+  console.info('on playPrevious entry');
+});
+```
+
 ## on('fastForward')<sup>10+</sup>
 
 on(type: 'fastForward', callback: (time?: number) => void): void
 
 设置快进命令监听事件。注册该监听，说明应用支持快进指令。
 
-每个播放命令仅支持注册一个回调，如果注册新的回调，将替换前一个回调。
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1817,7 +2030,7 @@ on(type: 'fastForward', callback: (time?: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1828,11 +2041,46 @@ currentAVSession.on('fastForward', (time?: number) => {
 });
 ```
 
+## onFastForward<sup>22+</sup>
+
+onFastForward(callback: TwoParamCallback\<number, CommandInfo>): void
+
+设置快进命令监听事件。使用callback异步回调。
+
+应用将通过回调接收控制器发送的快进时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                                                                                             | 必填 | 说明                        |
+| -------- |------------------------------------------------------------------------------------------------| ---- |---------------------------|
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。用于处理'fastForward'操作。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onFastForward((time: number, info: CommandInfo) => {
+  console.info('on fastForward entry');
+});
+```
+
 ## on('rewind')<sup>10+</sup>
 
 on(type:'rewind', callback: (time?: number) => void): void
 
 设置快退命令监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1852,7 +2100,7 @@ on(type:'rewind', callback: (time?: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1863,11 +2111,46 @@ currentAVSession.on('rewind', (time?: number) => {
 });
 ```
 
+## onRewind<sup>22+</sup>
+
+onRewind(callback: TwoParamCallback\<number, CommandInfo>): void
+
+设置快退命令监听事件。使用callback异步回调。
+
+应用将通过回调接收控制器发送的快退时间参数，以及对应的[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)信息。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名   | 类型                                                                                             | 必填 | 说明                   |
+| -------- |------------------------------------------------------------------------------------------------| ---- |----------------------|
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 是   | 回调函数。用于处理'rewind'操作。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.onRewind((time: number, info: CommandInfo) => {
+  console.info('on rewind entry');
+});
+```
+
 ## on('playWithAssetId')<sup>20+</sup>
 
 on(type:'playWithAssetId', callback: Callback\<string>): void
 
 设置指定资源id进行播放的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1886,7 +2169,7 @@ on(type:'playWithAssetId', callback: Callback\<string>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1902,7 +2185,7 @@ currentAVSession.on('playWithAssetId', playWithAssetIdCallback);
 
 off(type: 'playWithAssetId', callback?: Callback\<string>): void
 
-取消指定资源id进行播放的事件监听，关闭后，不再进行该事件回调。
+取消指定资源id进行播放的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1921,7 +2204,7 @@ off(type: 'playWithAssetId', callback?: Callback\<string>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1935,6 +2218,8 @@ currentAVSession.off('playWithAssetId');
 on(type: 'seek', callback: (time: number) => void): void
 
 设置跳转节点监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1954,7 +2239,7 @@ on(type: 'seek', callback: (time: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -1970,6 +2255,8 @@ currentAVSession.on('seek', (time: number) => {
 on(type: 'setSpeed', callback: (speed: number) => void): void
 
 设置播放速率的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1989,7 +2276,7 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2005,6 +2292,8 @@ currentAVSession.on('setSpeed', (speed: number) => {
 on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 
 设置循环模式的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2024,7 +2313,7 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2040,6 +2329,8 @@ currentAVSession.on('setLoopMode', (mode: avSession.LoopMode) => {
 on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
 设置目标循环模式的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2058,7 +2349,7 @@ on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2073,7 +2364,9 @@ currentAVSession.on('setTargetLoopMode', (mode: avSession.LoopMode) => {
 
 on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 
-设置是否收藏的监听事件
+设置是否收藏的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2093,7 +2386,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2109,6 +2402,8 @@ currentAVSession.on('toggleFavorite', (assetId: string) => {
 on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 
 设置播放列表其中某项被选中的监听事件，session端可以选择对这个单项歌曲进行播放。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2128,7 +2423,7 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2144,6 +2439,8 @@ currentAVSession.on('skipToQueueItem', (itemId: number) => {
 on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 
 设置蓝牙/有线等外设接入的按键输入事件的监听，监听多媒体按键事件中播放、暂停、上下一首、快进、快退的指令。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2163,7 +2460,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 | 错误码ID | 错误信息 |
 | -------- | --------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2183,6 +2480,8 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 设置播放设备变化的监听事件。应用接入[系统投播组件](ohos-multimedia-avcastpicker.md)，当用户通过组件切换设备时，会收到设备切换的回调。
 
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
@@ -2201,7 +2500,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2214,9 +2513,11 @@ currentAVSession.on('outputDeviceChange', (state: avSession.ConnectionState, dev
 
 ## on('commonCommand')<sup>10+</sup>
 
-on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Object}) => void): void
+on(type: 'commonCommand', callback: (command: string, args: Record\<string, Object>) => void): void
 
 设置自定义控制命令变化的监听器。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2227,7 +2528,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 | 参数名   | 类型  |   必填 | 说明     |
 | -------- | --------- | ---- | --------- |
 | type     | string    | 是   | 事件回调类型，支持事件`'commonCommand'`：当自定义控制命令变化时，触发该事件。 |
-| callback | (command: string, args: {[key: string]: Object}) => void         | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。          |
+| callback | (command: string, args: Record\<string, Object>) => void         | 是   | 回调函数，command为变化的自定义控制命令名，args为自定义控制命令的参数，参数内容与[sendCommonCommand](arkts-apis-avsession-AVSessionController.md#sendcommoncommand10)方法设置的参数内容完全一致。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(command :string, args:{[key: string]: Object}) => void。|
 
 **错误码：**
 
@@ -2235,8 +2536,7 @@ on(type: 'commonCommand', callback: (command: string, args: {[key: string]: Obje
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2258,17 +2558,17 @@ struct Index {
             let context: Context = this.getUIContext().getHostContext() as Context;
 
             avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
+              if (err) {
                 console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
+              } else {
                 currentAVSession = data;
-            }
+                if (currentAVSession !== undefined) {
+                  (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
+                      console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
+                  });
+                }
+              }
             });
-            if (currentAVSession !== undefined) {
-            (currentAVSession as avSession.AVSession).on('commonCommand', (commonCommand, args) => {
-                console.info(`OnCommonCommand, the command is ${commonCommand}, args: ${JSON.stringify(args)}`);
-            });
-            }
           })
       }
     .width('100%')
@@ -2281,9 +2581,7 @@ struct Index {
 
 off(type: 'play', callback?: () => void): void
 
-取消会话播放事件监听，关闭后，不再进行该事件回调。
-
-取消回调时，需要更新支持的命令列表。
+取消会话播放事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2303,7 +2601,7 @@ off(type: 'play', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2312,13 +2610,42 @@ off(type: 'play', callback?: () => void): void
 currentAVSession.off('play');
 ```
 
+## offPlay<sup>22+</sup>
+
+offPlay(callback?: Callback\<CommandInfo>): void
+
+取消会话播放事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offPlay();
+```
+
 ## off('pause')<sup>10+</sup>
 
 off(type: 'pause', callback?: () => void): void
 
-取消会话暂停事件监听，关闭后，不再进行该事件回调。
-
-取消回调时，需要更新支持的命令列表。
+取消会话暂停事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2338,7 +2665,7 @@ off(type: 'pause', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2351,9 +2678,7 @@ currentAVSession.off('pause');
 
 off(type: 'stop', callback?: () => void): void
 
-取消会话停止事件监听，关闭后，不再进行该事件回调。
-
-取消回调时，需要更新支持的命令列表。
+取消会话停止事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2373,7 +2698,7 @@ off(type: 'stop', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2386,9 +2711,7 @@ currentAVSession.off('stop');
 
 off(type: 'playNext', callback?: () => void): void
 
-取消会话播放下一首事件监听，关闭后，不再进行该事件回调。
-
-取消回调时，需要更新支持的命令列表。
+取消会话播放下一首事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2408,7 +2731,7 @@ off(type: 'playNext', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2417,13 +2740,42 @@ off(type: 'playNext', callback?: () => void): void
 currentAVSession.off('playNext');
 ```
 
+## offPlayNext<sup>22+</sup>
+
+offPlayNext(callback?: Callback\<CommandInfo>): void
+
+取消会话播放下一首事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型        | 必填 | 说明                   |
+| -------- | ---------- | ---- | ---------------------- |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offPlayNext();
+```
+
 ## off('playPrevious')<sup>10+</sup>
 
 off(type: 'playPrevious', callback?: () => void): void
 
-取消会话播放上一首事件监听，关闭后，不再进行该事件回调。
-
-取消回调时，需要更新支持的命令列表。
+取消会话播放上一首事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2443,7 +2795,7 @@ off(type: 'playPrevious', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2452,13 +2804,42 @@ off(type: 'playPrevious', callback?: () => void): void
 currentAVSession.off('playPrevious');
 ```
 
+## offPlayPrevious<sup>22+</sup>
+
+offPlayPrevious(callback?: Callback\<CommandInfo>): void
+
+取消会话播放上一首事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型     | 必填 | 说明                   |
+| -------- |--------| ---- | ---------------------- |
+| callback | Callback\<[CommandInfo](arkts-apis-avsession-i.md#commandinfo22)>  | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offPlayPrevious();
+```
+
 ## off('fastForward')<sup>10+</sup>
 
 off(type: 'fastForward', callback?: () => void): void
 
-取消会话快进事件监听，关闭后，不再进行该事件回调。
-
-取消回调时，需要更新支持的命令列表。
+取消会话快进事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2478,7 +2859,7 @@ off(type: 'fastForward', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2487,11 +2868,42 @@ off(type: 'fastForward', callback?: () => void): void
 currentAVSession.off('fastForward');
 ```
 
+## offFastForward<sup>22+</sup>
+
+offFastForward(callback?: TwoParamCallback\<number, CommandInfo>): void
+
+取消会话快进事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型                                   | 必填 | 说明                   |
+| -------- |--------------------------------------| ---- | ---------------------- |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offFastForward();
+```
+
 ## off('rewind')<sup>10+</sup>
 
 off(type: 'rewind', callback?: () => void): void
 
-取消会话快退事件监听，关闭后，不再进行该事件回调。
+取消会话快退事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2511,7 +2923,7 @@ off(type: 'rewind', callback?: () => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2520,11 +2932,42 @@ off(type: 'rewind', callback?: () => void): void
 currentAVSession.off('rewind');
 ```
 
+## offRewind<sup>22+</sup>
+
+offRewind(callback?: TwoParamCallback\<number, CommandInfo>): void
+
+取消会话快退事件监听。使用callback异步回调。
+
+指定callback，取消对应监听；未指定callback，则取消所有事件监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名    | 类型                  | 必填 | 说明                   |
+| -------- | -------------------- | ---- | ---------------------- |
+| callback | TwoParamCallback\<number, [CommandInfo](arkts-apis-avsession-i.md#commandinfo22)> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.offRewind();
+```
+
 ## off('seek')<sup>10+</sup>
 
 off(type: 'seek', callback?: (time: number) => void): void
 
-取消监听跳转节点事件。
+取消跳转节点事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2544,7 +2987,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2557,7 +3000,7 @@ currentAVSession.off('seek');
 
 off(type: 'setSpeed', callback?: (speed: number) => void): void
 
-取消监听播放速率变化事件。
+取消播放速率变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2577,7 +3020,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2590,7 +3033,7 @@ currentAVSession.off('setSpeed');
 
 off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 
-取消监听循环模式变化事件。
+取消循环模式变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2610,7 +3053,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2623,7 +3066,7 @@ currentAVSession.off('setLoopMode');
 
 off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
-取消监听目标循环模式变化事件。
+取消目标循环模式变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2642,7 +3085,7 @@ off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2655,7 +3098,7 @@ currentAVSession.off('setTargetLoopMode');
 
 off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 
-取消监听是否收藏的事件
+取消是否收藏的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2675,7 +3118,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2688,7 +3131,7 @@ currentAVSession.off('toggleFavorite');
 
 off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
-取消监听播放列表单项选中的事件
+取消播放列表单项选中的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2708,7 +3151,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | --------- |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2721,7 +3164,7 @@ currentAVSession.off('skipToQueueItem');
 
 off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 
-取消监听按键事件。
+取消按键事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2741,7 +3184,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2754,7 +3197,7 @@ currentAVSession.off('handleKeyEvent');
 
 off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: OutputDeviceInfo) => void): void
 
-取消监听播放设备变化的事件。
+取消播放设备变化的事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2774,7 +3217,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2785,9 +3228,9 @@ currentAVSession.off('outputDeviceChange');
 
 ## off('commonCommand')<sup>10+</sup>
 
-off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Object}) => void): void
+off(type: 'commonCommand', callback?: (command: string, args: Record\<string, Object>) => void): void
 
-取消监听自定义控制命令的变化。
+取消自定义控制命令的变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2798,7 +3241,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 | 参数名   | 类型  |   必填 | 说明  |
 | -------- | --------- | ---- | ----------------------|
 | type     | string    | 是   | 取消对应的监听事件，支持事件`'commonCommand'`。    |
-| callback | (command: string, args: {[key: string]: Object}) => void         | 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。                      |
+| callback |(command: string, args: Record\<string, Object>) => void| 否   | 回调函数，参数command是变化的自定义控制命令名，args为自定义控制命令的参数。<br>该参数为可选参数，若不填写该参数，则认为取消所有对command事件的监听。<br>API version 20开始发生兼容变更，在API version 19及之前的版本callback的参数类型为：(command: string, args:{[key: string]: Object}) => void。|
 
 **错误码：**
 
@@ -2806,8 +3249,7 @@ off(type: 'commonCommand', callback?: (command: string, args: {[key: string]: Ob
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2821,6 +3263,8 @@ currentAVSession.off('commonCommand');
 on(type: 'answer', callback: Callback\<void>): void
 
 设置通话接听的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2840,7 +3284,7 @@ on(type: 'answer', callback: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2855,7 +3299,7 @@ currentAVSession.on('answer', () => {
 
 off(type: 'answer', callback?: Callback\<void>): void
 
-取消通话接听事件的监听。
+取消通话接听事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2875,7 +3319,7 @@ off(type: 'answer', callback?: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2889,6 +3333,8 @@ currentAVSession.off('answer');
 on(type: 'hangUp', callback: Callback\<void>): void
 
 设置通话挂断的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2908,7 +3354,7 @@ on(type: 'hangUp', callback: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2923,7 +3369,7 @@ currentAVSession.on('hangUp', () => {
 
 off(type: 'hangUp', callback?: Callback\<void>): void
 
-取消通话挂断事件的监听。
+取消通话挂断事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2943,7 +3389,7 @@ off(type: 'hangUp', callback?: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2957,6 +3403,8 @@ currentAVSession.off('hangUp');
 on(type: 'toggleCallMute', callback: Callback\<void>): void
 
 设置通话静音的监听事件。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2976,7 +3424,7 @@ on(type: 'toggleCallMute', callback: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -2991,7 +3439,7 @@ currentAVSession.on('toggleCallMute', () => {
 
 off(type: 'toggleCallMute', callback?: Callback\<void>): void
 
-取消通话静音事件的监听。
+取消通话静音事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3011,7 +3459,7 @@ off(type: 'toggleCallMute', callback?: Callback\<void>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -3026,6 +3474,8 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 
 设置扩展屏投播显示设备变化的监听事件。
 
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.ExtendedDisplayCast
@@ -3035,7 +3485,7 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string    | 是   | 事件回调类型，支持事件`'castDisplayChange'`：当扩展屏投播显示设备变化时触发事件。 |
-| callback | Callback<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)>>   | 是   | 回调函数。参数是扩展屏投播显示设备信息。                            |
+| callback | Callback\<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)\>   | 是   | 回调函数。参数是扩展屏投播显示设备信息。                            |
 
 **错误码：**
 
@@ -3044,7 +3494,7 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -3065,7 +3515,7 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 
  off(type: 'castDisplayChange', callback?: Callback\<CastDisplayInfo>): void
 
-取消扩展屏投播显示设备变化事件监听，关闭后，不再进行该事件回调。
+取消扩展屏投播显示设备变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3076,7 +3526,7 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 | 参数名    | 类型                  | 必填 | 说明                   |
 | -------- | -------------------- | ---- | ---------------------- |
 | type     | string    | 是   | 关闭对应的监听事件，支持的事件是`'castDisplayChange'`。 |
-| callback | Callback<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)   | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| callback | Callback\<[CastDisplayInfo](arkts-apis-avsession-i.md#castdisplayinfo12)\>  | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -3085,7 +3535,7 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -3188,7 +3638,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 | 错误码ID   | 错误信息 |
 |---------| --------------------------------------- |
-| 6600101 | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101 | Session service exception. |
 | 6600102 | The session does not exist. |
 
 **示例：**
@@ -3226,7 +3676,7 @@ getAllCastDisplays(): Promise<Array\<CastDisplayInfo>>
 
 | 错误码ID   | 错误信息 |
 |---------| --------------------------------------- |
-| 6600101 | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101 | Session service exception. |
 | 6600102 | The session does not exist. |
 
 **示例：**
@@ -3271,7 +3721,7 @@ on(type:'playFromAssetId', callback: (assetId: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
@@ -3286,7 +3736,7 @@ currentAVSession.on('playFromAssetId', (assetId: number) => {
 
 off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 
-取消媒体id播放事件监听，关闭后，不再进行该事件回调。
+取消媒体id播放事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 > **说明：**
 > 从 API version 11 开始支持，从 API version 20 开始废弃。建议使用[off('playWithAssetId')](#offplaywithassetid20)取消媒体id播放事件监听。
@@ -3309,11 +3759,77 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 | 错误码ID | 错误信息 |
 | -------- | ---------|
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. |
 | 6600102  | The session does not exist. |
 
 **示例：**
 
 ```ts
 currentAVSession.off('playFromAssetId');
+```
+
+## on('customDataChange')<sup>20+</sup>
+
+on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
+
+注册从远程设备发送的自定义数据的监听器。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                           | 是   | 事件回调类型，支持事件'customDataChange'，当媒体提供方发送自定义数据时，触发该事件。 |
+| callback | Callback\<Record\<string, Object>> | 是   | 回调函数，用于接收自定义数据。                               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it.   |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.on('customDataChange', (callback) => {
+    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+});
+```
+
+## off('customDataChange')<sup>20+</sup>
+
+off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): void
+
+取消自定义数据监听。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                           | 是   | 取消对应的监听事件，支持的事件是'customDataChange'。         |
+| callback | Callback\<Record\<string, Object>> | 否   | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it.  |
+| 6600102  | The session does not exist. |
+
+**示例：**
+
+```ts
+currentAVSession.off('customDataChange');
 ```

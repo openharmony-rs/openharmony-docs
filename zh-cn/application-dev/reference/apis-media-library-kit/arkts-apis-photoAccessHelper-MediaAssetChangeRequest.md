@@ -1,15 +1,19 @@
 # Class (MediaAssetChangeRequest)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
+
+资产变更请求。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
-
-MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11)
-
-资产变更请求。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
 
@@ -185,7 +189,7 @@ static createAssetRequest(context: Context, photoType: PhotoType, extension: str
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的上下文。 |
 | photoType  | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype)        | 是   | 待创建的文件类型，IMAGE或者VIDEO类型。              |
 | extension  | string        | 是   | 文件扩展名，例如：'jpg'。              |
-| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 否   | 创建选项，例如：{title: 'testPhoto'}。              |
+| options  | [CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions)        | 否   | 创建选项，例如：{title: 'testPhoto'}。<br>文件名中不允许出现非法英文字符，包括： . .. \ / : * ? " ' ` < > \| { } [ ]|
 
 **返回值：**
 
@@ -231,7 +235,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-删除媒体文件，删除的文件进入到回收站，使用Promise方式返回结果。
+删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -242,7 +246,7 @@ static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的上下文。 |
-| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | 是   | 待删除的媒体文件数组。 |
+| assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | 是   | 待删除的媒体文件数组，数组中元素个数不超过300个。<!--Del-->系统应用对此无限制。<!--DelEnd--> |
 
 **返回值：**
 
@@ -289,7 +293,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-删除媒体文件，删除的文件进入到回收站，使用Promise方式返回结果。
+删除媒体文件（删除的文件会进入到回收站）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -300,7 +304,7 @@ static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | context | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 传入Ability实例的上下文。 |
-| uriList | Array&lt;string&gt; | 是   | 待删除的媒体文件uri数组。 |
+| uriList | Array&lt;string&gt; | 是   | 待删除的媒体文件uri数组，数组中元素个数不超过300个。<!--Del-->系统应用对此无限制。<!--DelEnd--> |
 
 **返回值：**
 
@@ -350,7 +354,9 @@ getAsset(): PhotoAsset
 
 获取当前资产变更请求中的资产。
 
-**注意**：对于创建资产的变更请求，在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效之前，该接口返回null。
+> **注意：**
+>
+> 对于创建资产的变更请求，在调用接口[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)的提交生效之前，该接口会返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -410,7 +416,7 @@ setTitle(title: string): void
 title参数规格为：
 - 不应包含扩展名。
 - 文件名字符串长度为1~255。
-- 不允许出现非法字符，包括：<br> . \ / : * ? " ' ` < > | { } [ ]
+- 不允许出现的非法英文字符，包括：<br> . \ / : * ? " ' ` < > | { } [ ]
 
 **错误码：**
 
@@ -453,9 +459,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getWriteCacheHandler(): Promise&lt;number&gt;
 
-获取临时文件写句柄。
+获取临时文件写句柄。使用Promise异步回调。
 
-**注意**：对于同一个资产变更请求，不支持在成功获取临时文件写句柄后，重复调用该接口。
+> **注意：**
+>
+> 对于同一个资产变更请求，不支持在成功获取临时文件写句柄后，重复调用该接口。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -475,7 +483,7 @@ getWriteCacheHandler(): Promise&lt;number&gt;
 | -------- | ---------------------------------------- |
 | 201   | Permission denied.        |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 14000011 |  System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 14000011 |  System inner fail.        |
 | 14000016 |  Operation Not Support.     |
 
 **示例：**
@@ -493,7 +501,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = photoAccessHelper.MediaAssetChangeRequest.createAssetRequest(context, photoType, extension);
     let fd: number = await assetChangeRequest.getWriteCacheHandler();
     console.info('getWriteCacheHandler successfully');
-    // write date into fd..
+    // write data into fd..
     await fileIo.close(fd);
     await phAccessHelper.applyChanges(assetChangeRequest);
   } catch (err) {
@@ -508,7 +516,9 @@ addResource(type: ResourceType, fileUri: string): void
 
 通过[fileUri](../apis-core-file-kit/js-apis-file-fileuri.md)从应用沙箱添加资源。
 
-**注意**：对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
+> **注意：**
+>
+> 对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -560,7 +570,9 @@ addResource(type: ResourceType, data: ArrayBuffer): void
 
 通过ArrayBuffer数据添加资源。
 
-**注意**：对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
+> **注意：**
+>
+> 对于同一个资产变更请求，成功添加资源后不支持重复调用该接口。对于动态照片，可调用两次该接口分别添加图片和视频资源。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

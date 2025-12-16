@@ -1,4 +1,10 @@
 # native_display_soloist.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -38,7 +44,7 @@
 
 ### OH_DisplaySoloist_FrameCallback()
 
-```
+```c
 typedef void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)
 ```
 
@@ -53,13 +59,13 @@ OH_DisplaySoloist回调函数类型。
 
 | 参数项 | 描述 |
 | -- | -- |
-| long long timestamp | VSync时间戳。 |
+| long long timestamp | 当前帧VSync时间戳。 |
 |  long long targetTimestamp | 预期的下一帧VSync时间戳。 |
 |  void* data | 用户自定义数据。 |
 
 ### OH_DisplaySoloist_Create()
 
-```
+```c
 OH_DisplaySoloist* OH_DisplaySoloist_Create(bool useExclusiveThread)
 ```
 
@@ -84,7 +90,7 @@ OH_DisplaySoloist* OH_DisplaySoloist_Create(bool useExclusiveThread)
 
 ### OH_DisplaySoloist_Destroy()
 
-```
+```c
 int32_t OH_DisplaySoloist_Destroy(OH_DisplaySoloist* displaySoloist)
 ```
 
@@ -109,7 +115,7 @@ int32_t OH_DisplaySoloist_Destroy(OH_DisplaySoloist* displaySoloist)
 
 ### OH_DisplaySoloist_Start()
 
-```
+```c
 int32_t OH_DisplaySoloist_Start(OH_DisplaySoloist* displaySoloist, OH_DisplaySoloist_FrameCallback callback, void* data)
 ```
 
@@ -136,7 +142,7 @@ int32_t OH_DisplaySoloist_Start(OH_DisplaySoloist* displaySoloist, OH_DisplaySol
 
 ### OH_DisplaySoloist_Stop()
 
-```
+```c
 int32_t OH_DisplaySoloist_Stop(OH_DisplaySoloist* displaySoloist)
 ```
 
@@ -161,7 +167,7 @@ int32_t OH_DisplaySoloist_Stop(OH_DisplaySoloist* displaySoloist)
 
 ### OH_DisplaySoloist_SetExpectedFrameRateRange()
 
-```
+```c
 int32_t OH_DisplaySoloist_SetExpectedFrameRateRange(OH_DisplaySoloist* displaySoloist, DisplaySoloist_ExpectedRateRange* range)
 ```
 

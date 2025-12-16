@@ -1,6 +1,12 @@
 # Interaction Mechanism Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @HelloCrease-->
 
-The interaction framework processes pointer-based inputs through coordinate-based hit testing to determine event and gesture targets. This mechanism forms a response chain where the system delivers events to corresponding UI components based on the coordinates, types, and other information of the events, combined with the UI layout. Multiple events can combine to trigger gestures or features, for example, long press, click, and drag.
+For pointer-based interactions including [touch events](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md), [mouse events](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md), and [axis events](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md), the interaction framework determines event and gesture targets through coordinate-based hit testing. This process assembles a response chain by identifying components within the interaction area. The system then dispatches events to appropriate UI components by correlating touch coordinates, event types, and layout information. Multiple events can combine to trigger gestures or features, for example, long press, click, and drag.
 
 ## Event Interaction Pipeline
 
@@ -15,15 +21,15 @@ The event interaction pipeline describes the end-to-end process where ArkUI rece
    The event response chain forms the core of the event interaction pipeline. After receiving an event, the pipeline performs hit testing to construct an event response chain, which drives decision-making for event dispatch and gesture recognition.
 
    (1) Hit Testing
-
+   
     After receiving an initial touch event, the pipeline performs spatial hit testing using event coordinates and component boundaries and constructs an event response chain. You can configure attributes to affect the formation of the event response chain.
 
    (2) Dispatch to the Touch Event Response Chain
-
+   
     Through the constructed touch response chain, the system delivers the touch event to target components.
 
    (3) Dispatch to the Gesture Response Chain and Gesture Recognition
-
+   
     Components with registered gestures form a gesture response chain. The system combines events to detect gestures, resolves gesture conflicts through competition logic, and triggers the callback of the winning gesture.
 
    (4) Event Interception
@@ -44,14 +50,7 @@ The event interaction pipeline describes the end-to-end process where ArkUI rece
 
 ## Event Response Chain Mechanism
 
-ArkUI constructs event response chains through hit testing using a reverse post-order traversal (right-subtree-first) of the component tree. The pseudocode implementation is as follows:
-
-```
-foreach((item, node.rbegin(),node.rend())=> {
-    item.TouchTest();
-})
-node.collectEvent()
-```
+ArkUI constructs event response chains through hit testing using a reverse post-order traversal (right-subtree-first) of the component tree.
 
 Consider the following component tree, where all components have **hitTestBehavior** set to **Default**. If the user taps component 5, the final response chain collected will be [5 -> 3 -> 1].
 
@@ -77,7 +76,7 @@ Assume that the user presses at point T (Touch Down). Components A, B, and D are
 
 Below shows the hit testing process.
 
-  ![TouchTest](figures/TouchTest.png)
+![TouchTest](figures/TouchTest.png)
 
 As shown in the figure, when the initial event is dispatched to a component, the component collects gestures and events bound to it, and then passes the collection result to the parent component until the root node is reached. If a component is transparent, has been removed from the component tree, or the event coordinates are outside the component's response region, the collection process is not triggered, and the parent component receives an empty response. Otherwise, all components will collect gestures and events and send the collection result to the parent component.
 
@@ -112,7 +111,7 @@ Applications can intervene in hit test results through the following methods to 
    Button("Button")
      .responseRegion([
         { x: 0, y: 0, width: '30%', height: '100%' },      // First response region: left 1/3 of the button
-        { x: '70%', y: 0, width: '30%', height: '100%' },  // Second response region: left 1/3 of the button
+        { x: '70%', y: 0, width: '30%', height: '100%' },  // Second response region: right 1/3 of the button
       ])
    ```
 
@@ -141,6 +140,14 @@ Applications can intervene in hit test results through the following methods to 
    - **HitTestMode.Transparent**: This mode allows the component to participate in hit testing itself, without blocking the hit testing of sibling or parent components.
 
      ![hitTestModeTransparent](figures/hitTestModeTransparent.png)
+
+   - **HitTestMode.BLOCK_HIERARCHY** (available since API version 20): In this mode, the node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.
+
+     ![hitTestModeBLOCK_HIERARCHY.png](figures/hitTestModeBLOCK_HIERARCHY.png)
+
+   - **HitTestMode.BLOCK_DESCENDANTS** (available since API version 20): In this mode, the node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.
+
+     ![hitTestModeBLOCK_DESCENDANTS.png](figures/hitTestModeBLOCK_DESCENDANTS.png)
 
 3. Custom Event Interception
 

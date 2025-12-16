@@ -1,15 +1,16 @@
 # Application Window Development (Stage Model)
-
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## Basic Concepts
 
-- Immersive window: a window display mode where the system windows (generally the status bar and navigation bar) are hidden to allow users to fully engage with the content.
+- Immersive window: a window display mode where the system windows (generally the status bar and navigation bar) are hidden to allow users to fully engage with the content. The immersive window feature is applicable only to the main window of an application in full-screen mode. It does not apply to a main window in freeform window mode or an auxiliary window (for example, a child window or a global floating window).
 
-  The immersive window feature is applicable only to the main window of an application in full-screen mode. It does not apply to a main window in freeform window mode or a child window (for example, a dialog box or a floating window).
-
-- Floating window: a special application window that can still be displayed in the foreground when the main window and corresponding ability are running in the background.
-  
-  The floating window can be used to continue playing a video after the application is switched to the background, or offer a quick entry (for example, bubbles) to the application. Before creating a floating window, an application must apply for the required permission.
+- Global floating window: a special type of application auxiliary window that can remain displayed on the foreground even after the application's main window and corresponding ability are moved to the background. Global floating windows can be used to continue displaying the UI in a small window after the application is moved to the background, such as displaying lyrics on the home screen for a music application. Before creating a global floating window, the application needs to request the corresponding permission.
 
 
 ## When to Use
@@ -22,9 +23,11 @@ In the stage model, you can perform the following operations during application 
 
 - Experiencing the immersive window feature
 
-- Setting a floating window
+- Setting a global floating window
 
 - Listening for interactive and non-interactive window events
+
+The following describes the development procedure specific to each application scenario.
 
 ## Available APIs
 
@@ -35,15 +38,15 @@ The table below lists the common APIs used for application window development. F
 | WindowStage    | getMainWindow(callback: AsyncCallback&lt;Window&gt;): void   | Obtains the main window of this window stage.<br>This API can be used only in the stage model.|
 | WindowStage    | loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void | Loads content to the main window in this window stage.<br>**path**: path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project.<br>This API can be used only in the stage model.|
 | WindowStage    | createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void | Creates a child window.<br>This API can be used only in the stage model.            |
-| WindowStage    | on(type: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;): void | Subscribes to window stage lifecycle change events.<br>This API can be used only in the stage model.|
+| WindowStage    | on(eventType: 'windowStageEvent', callback: Callback&lt;WindowStageEventType&gt;): void | Subscribes to window stage lifecycle change events.<br>This API can be used only in the stage model.|
 | Window static method| createWindow(config: Configuration, callback: AsyncCallback\<Window>): void | Creates a child window or system window.<br>**config**: parameters used for creating the window.            |
 | Window         | setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void | Loads the content of a page, with its path in the current project specified, to this window.<br>**path**: path of the page from which the content will be loaded. The path is configured in the **main_pages.json** file of the project in the stage model.                                    |
 | Window         | setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void | Sets the brightness for this window.                                            |
-| Window         | setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void | Sets whether this window is touchable.                                    |
+| Window         | setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void | Sets whether this window is touchable. **true** if touchable, **false** otherwise.|
 | Window         | moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void | Moves this window.                                          |
 | Window         | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | Changes the window size.                                          |
-| Window         | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | Sets whether to enable the full-screen mode for the window layout.                                |
-| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | Sets whether to display the status bar and navigation bar in this window.                                |
+| Window         | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | Sets whether to enable an immersive layout for the main window or child window. **true** to enable, **false** otherwise.|
+| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | <!--RP4-->Sets whether to show the status bar and three-button navigation bar in the main window. The visibility of the status bar and three-button navigation bar is controlled by **status** and **navigation**, respectively.<!--RP4End--><br>For example, if this parameter is set to **['status',&nbsp;'navigation']**, all of them are shown. If this parameter is set to **[]**, they are hidden.|
 | Window         | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | Sets the properties of the status bar and navigation bar in this window.<br>**systemBarProperties**: properties of the status bar and navigation bar.|
 | Window         | showWindow(callback: AsyncCallback\<void>): void             | Shows this window.                                              |
 | Window         | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | Subscribes to touch events outside this window.                          |
@@ -52,7 +55,7 @@ The table below lists the common APIs used for application window development. F
 
 ## Setting the Main Window of an Application
 
-In the stage model, the main window of an application is created and maintained by a **UIAbility** instance. In the **onWindowStageCreate** callback of the **UIAbility** instance, use **WindowStage** to obtain the main window of the application and set its properties. You can also set the properties (for example, **maxWindowWidth**) in the [abilities tag of the module.json5 file](../quick-start/module-configuration-file.md#abilities).
+In the stage model, the main window of an application is created and maintained by a UIAbility instance. In the **onWindowStageCreate** callback of the UIAbility instance, use **WindowStage** to obtain the main window of the application and set its properties. You can also set the properties (for example, **maxWindowWidth**) in the [abilities tag of the module.json5 file](../quick-start/module-configuration-file.md#abilities).
 
 ### How to Develop
 
@@ -67,11 +70,17 @@ In the stage model, the main window of an application is created and maintained 
 3. Load content to the main window.
 
    Call **loadContent** to load content to the main window.
+   
+<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateMainWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+``` TypeScript
+import { UIAbility} from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatMainWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -80,30 +89,30 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error(`Failed to obtain the main window. Code:${err.code}, message:${err.message}`);
+        hilog.error(DOMAIN, TAG, `Failed to obtain the main window. Code:${err.code}, message:${err.message}`);
         return;
       }
       windowClass = data;
-      console.info(`Succeeded in obtaining the main window. Result:${data}`);
+      hilog.info(DOMAIN, TAG, `Succeeded in obtaining the main window. Result:${data}`);
       // 2. Set the touchable property of the main window.
       let isTouchable: boolean = true;
       windowClass.setWindowTouchable(isTouchable, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to set the window to be touchable. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to set the window to be touchable. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.info('Succeeded in setting the window to be touchable.');
+        hilog.info(DOMAIN, TAG, `Succeeded in setting the window to be touchable.`);
       })
     })
     // 3. Load content to the main window.
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in loading the content.');
+      hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
     });
   }
 };
@@ -115,8 +124,8 @@ You can create an application child window, such as a dialog box, and set its pr
 
 > **NOTE**
 >
-> Due to the following limitations, using child windows is not recommended in mobile device scenarios. Instead, you are advised to use the [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability of components. 
-> - Child windows on mobile devices are constrained within the main window's boundaries, mirroring the limitations of components. 
+> In the following scenarios, you are not advised to use child windows. Instead, consider using the [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability of components first. 
+> - On mobile devices (tablets in non-freeform mode and phones), child windows cannot extend beyond the boundaries of the application's main window when it is in floating-window or split-screen mode, just like components. 
 > - In split-screen or freeform window mode, components, when compared with child windows, offer better real-time adaptability to changes in the main window's position and size. 
 > - On certain platforms, system configurations may restrict child windows to default system animations and rounded shadows, offering no customization options for applications and thereby limiting their versatility.
 
@@ -125,10 +134,17 @@ You can create an application child window, such as a dialog box, and set its pr
 1. Create a child window.
 
    Call **createSubWindow** to create a child window.
+   The child window created uses an [immersive layout](../windowmanager/window-terminology.md#immersive-layout) by default.
 
 2. Set the properties of the child window.
 
    After the child window is created, you can set its properties, such as the size, position, background color, and brightness.
+
+   You are advised to set the size and position of the child window before calling **showWindow**.
+
+   If the size of the child window is not set, the following will happen after **showWindow** is called:
+    + In [freeform window](./window-terminology.md#freeform-window) mode, the child window will default to the size of the current physical screen.<!--RP3--><!--RP3End-->
+    + In non-freeform window mode, the child window will default to the size of the main window.
 
 3. Load content to and show the child window.
 
@@ -140,10 +156,16 @@ You can create an application child window, such as a dialog box, and set its pr
 
 The code snippet for creating a child window in **onWindowStageCreate** is as follows:
 
-```ts
+<!-- @[create_sub_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatSubWindow]';
 
 let windowStage_: window.WindowStage | null = null;
 let sub_windowClass: window.Window | null = null;
@@ -152,50 +174,57 @@ export default class EntryAbility extends UIAbility {
   showSubWindow() {
     // 1. Create a child window.
     if (windowStage_ == null) {
-      console.error('Failed to create the subwindow. Cause: windowStage_ is null');
-    }
-    else {
-      windowStage_.createSubWindow("mySubWindow", (err: BusinessError, data) => {
+      hilog.error(DOMAIN, TAG, `Failed to create the subwindow. Cause: windowStage_ is null`);
+    } else {
+      windowStage_.createSubWindow('mySubWindow', (err: BusinessError, data) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to create the subwindow. Cause: ${JSON.stringify(err)}`);
           return;
         }
         sub_windowClass = data;
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        if (!sub_windowClass) {
+          hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
+          return;
+        }
+        hilog.info(DOMAIN, TAG, `Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
         // 2. Set the position, size, and other properties of the child window.
         sub_windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to move the window. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in moving the window.');
+          hilog.info(DOMAIN, TAG, `Succeeded in moving the window.`);
         });
         sub_windowClass.resize(500, 500, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to change the window size. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in changing the window size.');
+          hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
         });
-        // 3.1 Load content to the child window.
-        sub_windowClass.setUIContent("pages/page3", (err: BusinessError) => {
+        // 3. Load content to the child window.
+        sub_windowClass.setUIContent('pages/Index', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+            hilog.info(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in loading the content.');
-          // 3.2 Show the child window.
-          (sub_windowClass as window.Window).showWindow((err: BusinessError) => {
+          hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
+          if (!sub_windowClass) {
+            hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
+            return;
+          }
+          // 3. Show the child window.
+          sub_windowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
-              console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+              hilog.error(DOMAIN, TAG, `Failed to show the window. Cause: ${JSON.stringify(err)}`);
               return;
             }
-            console.info('Succeeded in showing the window.');
+            hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
           });
         });
       })
@@ -203,14 +232,18 @@ export default class EntryAbility extends UIAbility {
   }
 
   destroySubWindow() {
+    if (!sub_windowClass) {
+      hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
+      return;
+    }
     // 4. Destroy the child window when it is no longer needed (depending on the service logic).
-    (sub_windowClass as window.Window).destroyWindow((err: BusinessError) => {
+    sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to destroy the window. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in destroying the window.');
+      hilog.info(DOMAIN, TAG, `Succeeded in destroying the window.`);
     });
   }
 
@@ -229,26 +262,43 @@ export default class EntryAbility extends UIAbility {
 
 You can also click a button on a page to create a child window. The code snippet is as follows:
 
-```ts
-// EntryAbility.ets
-onWindowStageCreate(windowStage: window.WindowStage) {
-  windowStage.loadContent('pages/Index', (err) => {
-    if (err.code) {
-      console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-      return;
-    }
-    console.info('Succeeded in loading the content.');
-  })
+<!-- @[create_sub_window2_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-  // Transfer the window stage to the Index page.
-  AppStorage.setOrCreate('windowStage', windowStage);
+``` TypeScript
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatSubWindow2]';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        return;
+      }
+      hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
+    });
+
+    // Transfer the window stage to the Index page.
+    AppStorage.setOrCreate('windowStage', windowStage);
+  }
 }
 ```
 
-```ts
+<!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript	
 // Index.ets
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatSubWindow2]';
 
 let windowStage_: window.WindowStage | undefined = undefined;
 let sub_windowClass: window.Window | undefined = undefined;
@@ -256,69 +306,80 @@ let sub_windowClass: window.Window | undefined = undefined;
 @Component
 struct Index {
   @State message: string = 'Hello World';
-  private CreateSubWindow(){
+  private createSubWindow(){
     // Obtain the window stage.
     windowStage_ = AppStorage.get('windowStage');
     // 1. Create a child window.
     if (windowStage_ == null) {
-      console.error('Failed to create the subwindow. Cause: windowStage_ is null');
-    }
-    else {
-      windowStage_.createSubWindow("mySubWindow", (err: BusinessError, data) => {
+      hilog.error(DOMAIN, TAG, `Failed to create the subwindow. Cause: windowStage_ is null`);
+    } else {
+      windowStage_.createSubWindow('mySubWindow', (err: BusinessError, data) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to create the subwindow. Cause: ${JSON.stringify(err)}`);
           return;
         }
         sub_windowClass = data;
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        if (!sub_windowClass) {
+          hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
+          return;
+        }
+        hilog.info(DOMAIN, TAG, `Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
         // 2. Set the position, size, and other properties of the child window.
         sub_windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to move the window. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in moving the window.');
+          hilog.info(DOMAIN, TAG, `Succeeded in moving the window.`);
         });
         sub_windowClass.resize(500, 500, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to change the window size. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in changing the window size.');
+          hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
         });
         // 3. Load content to the child window.
-        sub_windowClass.setUIContent("pages/subWindow", (err: BusinessError) => {
+        sub_windowClass.setUIContent('pages/SubWindow', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in loading the content.');
+          hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
+          if (!sub_windowClass) {
+            hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
+            return;
+          }
           // 3. Show the child window.
-          (sub_windowClass as window.Window).showWindow((err: BusinessError) => {
+          sub_windowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
-              console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+              hilog.error(DOMAIN, TAG, `Failed to show the window. Cause: ${JSON.stringify(err)}`);
               return;
             }
-            console.info('Succeeded in showing the window.');
+            hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
           });
         });
       })
     }
   }
   private destroySubWindow(){
+    if (!sub_windowClass) {
+      hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
+      return;
+    }
     // 4. Destroy the child window when it is no longer needed (depending on the service logic).
-    (sub_windowClass as window.Window).destroyWindow((err: BusinessError) => {
+    sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to destroy the window. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in destroying the window.');
+      hilog.info(DOMAIN, TAG, `Succeeded in destroying the window.`);
     });
   }
   build() {
@@ -329,17 +390,17 @@ struct Index {
           .fontWeight(FontWeight.Bold)
         Button(){
           Text('CreateSubWindow')
-          .fontSize(24)
-          .fontWeight(FontWeight.Normal)
+            .fontSize(24)
+            .fontWeight(FontWeight.Normal)
         }.width(220).height(68)
         .margin({left:10, top:60})
         .onClick(() => {
-          this.CreateSubWindow()
+          this.createSubWindow()
         })
         Button(){
           Text('destroySubWindow')
-          .fontSize(24)
-          .fontWeight(FontWeight.Normal)
+            .fontSize(24)
+            .fontWeight(FontWeight.Normal)
         }.width(220).height(68)
         .margin({left:10, top:60})
         .onClick(() => {
@@ -353,7 +414,9 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[create_sub_window2_subwindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/SubWindow.ets) -->
+
+``` TypeScript
 // subWindow.ets
 @Entry
 @Component
@@ -363,12 +426,13 @@ struct SubWindow {
     Row() {
       Column() {
         Text(this.message)
-          .fontSize(50)
+          .fontSize(20)
           .fontWeight(FontWeight.Bold)
       }
       .width('100%')
     }
     .height('100%')
+    .backgroundColor('#0D9FFB')
   }
 }
 ```
@@ -396,11 +460,17 @@ To create a better video watching and gaming experience, you can use the immersi
 3. Load content to the immersive window.
 
    Call **loadContent** to load content to the immersive window.
+   
+<!-- @[set_window_system_bar_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SetWindowSystemBarEnable/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_SetWindowSystemBarEnable]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -409,29 +479,29 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to obtain the main window. Cause: ${JSON.stringify(err)}`);
         return;
       }
       windowClass = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      hilog.info(DOMAIN, TAG, `Succeeded in obtaining the main window. Data: ${JSON.stringify(data)}`);
 
       // 2. Implement the immersive effect by hiding the status bar and navigation bar.
-      let names: Array<'status' | 'navigation'> = [];
+      let names: 'status'[] | 'navigation'[] = [];
       windowClass.setWindowSystemBarEnable(names)
         .then(() => {
-          console.info('Succeeded in setting the system bar to be visible.');
+          hilog.info(DOMAIN, TAG, `Succeeded in setting the system bar to be visible.`);
         })
         .catch((err: BusinessError) => {
-          console.error('Failed to set the system bar to be visible. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to set the system bar to be visible. Cause: ${JSON.stringify(err)}`);
         });
       // 2. Alternatively, implement the immersive effect by setting the properties of the status bar and navigation bar.
       let isLayoutFullScreen = true;
       windowClass.setWindowLayoutFullScreen(isLayoutFullScreen)
         .then(() => {
-          console.info('Succeeded in setting the window layout to full-screen mode.');
+          hilog.info(DOMAIN, TAG, `Succeeded in setting the window layout to full-screen mode.`);
         })
         .catch((err: BusinessError) => {
-          console.error('Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to set the window layout to full-screen mode. Cause: ${JSON.stringify(err)}`);
         });
       let sysBarProps: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
@@ -442,117 +512,115 @@ export default class EntryAbility extends UIAbility {
       };
       windowClass.setWindowSystemBarProperties(sysBarProps)
         .then(() => {
-          console.info('Succeeded in setting the system bar properties.');
+          hilog.info(DOMAIN, TAG, `Succeeded in setting the system bar properties.`);
         })
         .catch((err: BusinessError) => {
-          console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to set the system bar properties. Cause: ${JSON.stringify(err)}`);
         });
     })
     // 3. Load content to the immersive window.
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in loading the content.');
+      hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
     });
   }
 };
 ```
 
 <!--RP2-->
-## Setting a Floating Window<!--RP2End-->
+## Setting a Global Floating Window<!--RP2End-->
 
-A floating window is created based on an existing task. It is always displayed in the foreground, even if the task used for creating the floating window is switched to the background. Generally, the floating window is above all application windows. You can create a floating window and set its properties.
+A global floating window can be created on top of an existing task to display a window that always stays in the foreground. Even if the task that creates the global floating window is moved to the background, the global floating window can still be displayed in the foreground. Typically, a global floating window is positioned above all application windows, and you can create a global floating window and perform operations such as setting its properties.
 
 
 ### How to Develop
 
 <!--RP1-->
-**Prerequisites**: To create a floating window (a window of the type **WindowType.TYPE_FLOAT**), you must request the **ohos.permission.SYSTEM_FLOAT_WINDOW** permission. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
+**Prerequisites**: To create a global floating window (a window of the type **WindowType.TYPE_FLOAT**), you must request the ohos.permission.SYSTEM_FLOAT_WINDOW permission. For details, see [Requesting Permissions for system_basic Applications](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
 <!--RP1End-->
 
-1. Create a floating window.
+1. Create a global floating window.
 
-   Call **window.createWindow** to create a floating window.
+   Call **window.createWindow** to create a global floating window.
 
-2. Set properties of the floating window.
+2. Set properties of the global floating window.
 
-   After the floating window is created, you can set its properties, such as the size, position, background color, and brightness.
+   After the global floating window is created, you can set its properties, such as the size, position, background color, and brightness.
 
-3. Load content to and show the floating window.
+3. Load content to and show the global floating window.
 
-   Call **setUIContent** to load content to the floating window and **showWindow** to show the window.
+   Call **setUIContent** to load content to the global floating window and **showWindow** to show the window.
 
-4. Destroy the floating window.
+4. Destroy the global floating window.
 
-   When the floating window is no longer needed, you can call **destroyWindow** to destroy it.
+   When the global floating window is no longer needed, you can call **destroyWindow** to destroy it.
 
-```ts
+<!-- @[create_float_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateFloatWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatFloatWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // 1. Create a floating window.
     let windowClass: window.Window | null = null;
     let config: window.Configuration = {
-      name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
+      name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
     };
     window.createWindow(config, (err: BusinessError, data) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to create the floatWindow. Cause: ' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to create the floatWindow. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
+      hilog.info(DOMAIN, TAG, `Succeeded in creating the floatWindow. Data: ${JSON.stringify(data)}`);
       windowClass = data;
       // 2. Set the position, size, and other properties of the floating window.
       windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to move the window. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.info('Succeeded in moving the window.');
+        hilog.info(DOMAIN, TAG, `Succeeded in moving the window.`);
       });
       windowClass.resize(500, 500, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to change the window size. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.info('Succeeded in changing the window size.');
+        hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
       });
-      // 3.1 Load content to the floating window.
-      windowClass.setUIContent("pages/page4", (err: BusinessError) => {
+      // 3. Load content to the floating window.
+      windowClass.setUIContent('pages/Index', (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.info('Succeeded in loading the content.');
-        // 3.2 Show the floating window.
+        hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
+        // 3. Show the floating window.
         (windowClass as window.Window).showWindow((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to show the window. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in showing the window.');
+          hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
         });
       });
       // 4. Destroy the floating window when it is no longer needed (depending on the service logic).
-      windowClass.destroyWindow((err: BusinessError) => {
-        let errCode: number = err.code;
-        if (errCode) {
-          console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
-          return;
-        }
-        console.info('Succeeded in destroying the window.');
-      });
     });
   }
 };
@@ -560,47 +628,52 @@ export default class EntryAbility extends UIAbility {
 
 ## Listening for Interactive and Non-Interactive Window Events
 
-When running in the foreground, an application may switch between interactive and non-interactive states and process services depending on the state. For example, when the user opens the **Recents** screen, an application becomes non-interactive and pauses the service interaction with the user, such as video playback or camera preview; when the user switched back to the foreground, the application becomes interactive again, and the paused service needs to be resumed.
+When running in the foreground, an application may switch between interactive and non-interactive states and process services depending on the state. For example, when the user opens the multitasking screen, an application becomes non-interactive and pauses the service interaction with the user, such as video playback or camera preview; when the user switched back to the foreground, the application becomes interactive again, and the paused service needs to be resumed.
 
 ### How to Develop
 
 After a **WindowStage** object is created, the application can listen for the **'windowStageEvent'** event to obtain window stage lifecycle changes, for example, whether the window stage is interactive or non-interactive in the foreground. The application can process services based on the reported event status.
 
-```ts
+<!-- @[listen_window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ListenWindowStage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_ListenWindowStage]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
+    // ...
     try {
       windowStage.on('windowStageEvent', (data) => {
-        console.info('Succeeded in enabling the listener for window stage event changes. Data: ' +
-          JSON.stringify(data));
+        hilog.info(DOMAIN, TAG, `Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
 
         // Process services based on the event status.
-        if (data == window.WindowStageEventType.SHOWN) {
-          console.info('current window stage event is SHOWN');
+        if (data === window.WindowStageEventType.SHOWN) {
+          hilog.info(DOMAIN, TAG, `current window stage event is SHOWN`);
           // The application enters the foreground and is interactive by default.
           // ...
-        } else if (data == window.WindowStageEventType.HIDDEN) {
-          console.info('current window stage event is HIDDEN');
+        } else if (data === window.WindowStageEventType.HIDDEN) {
+          hilog.info(DOMAIN, TAG, `current window stage event is HIDDEN`);
           // The application enters the background and is non-interactive by default.
           // ...
-        } else if (data == window.WindowStageEventType.PAUSED) {
-          console.info('current window stage event is PAUSED');
-          // The user opens the Recents screen when the application is running in the foreground, and the application becomes non-interactive.
+        } else if (data === window.WindowStageEventType.PAUSED) {
+          hilog.info(DOMAIN, TAG, `current window stage event is PAUSED`);
+          // The user opens the multitasking screen when the application is running in the foreground, and the application becomes non-interactive.
           // ...
-        } else if (data == window.WindowStageEventType.RESUMED) {
-          console.info('current window stage event is RESUMED');
-          // The user switches back from the Recents screen to the application, and the application becomes interactive.
+        } else if (data === window.WindowStageEventType.RESUMED) {
+          hilog.info(DOMAIN, TAG, `current window stage event is RESUMED`);
+          // The user switches back from the multitasking screen to the application, and the application becomes interactive.
           // ...
         }
 
         // ...
       });
     } catch (exception) {
-      console.error('Failed to enable the listener for window stage event changes. Cause:' +
-        JSON.stringify(exception));
+      hilog.error(DOMAIN, TAG, `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
     }
   }
 }

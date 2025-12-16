@@ -1,4 +1,10 @@
 # Class (JsMessageExt)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 [runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)接口执行脚本返回的数据对象。
 
@@ -40,7 +46,7 @@ getString(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -62,7 +68,7 @@ getNumber(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -84,7 +90,7 @@ getBoolean(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -106,7 +112,7 @@ getArrayBuffer(): ArrayBuffer
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
@@ -128,8 +134,21 @@ getArray(): Array\<string | number | boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                              |
 | -------- | ------------------------------------- |
 | 17100014 | The type and value of the message do not match. |
+## getErrorDescription<sup>22+</sup>
+
+getErrorDescription(): string \| null
+
+获取JS执行的异常信息。完整示例代码参考[runJavaScriptExt](./arkts-apis-webview-WebviewController.md#runjavascriptext10)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型           | 说明                                                      |
+| --------------| --------------------------------------------------------- |
+| string \| null | 若发生异常或返回类型不支持时，将其序列化为字符串类型并返回；否则，返回null。 |

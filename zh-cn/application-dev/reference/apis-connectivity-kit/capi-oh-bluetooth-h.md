@@ -1,12 +1,19 @@
 # oh_bluetooth.h
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 ## 概述
 
 定义查询蓝牙开关状态的接口。
 
 **引用文件：** <ConnectivityKit/bluetooth/oh_bluetooth.h>
 
-**库：** libbluetooth.so
+**库：** libbluetooth_ndk.so
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -33,7 +40,7 @@
 
 ### Bluetooth_SwitchState
 
-```
+```c
 enum Bluetooth_SwitchState
 ```
 
@@ -55,7 +62,7 @@ enum Bluetooth_SwitchState
 
 ### Bluetooth_ResultCode
 
-```
+```c
 enum Bluetooth_ResultCode
 ```
 
@@ -75,7 +82,7 @@ enum Bluetooth_ResultCode
 
 ### OH_Bluetooth_GetBluetoothSwitchState()
 
-```
+```c
 Bluetooth_ResultCode OH_Bluetooth_GetBluetoothSwitchState(Bluetooth_SwitchState *state)
 ```
 

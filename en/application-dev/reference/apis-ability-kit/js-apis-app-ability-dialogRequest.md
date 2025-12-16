@@ -1,8 +1,15 @@
-# @ohos.app.ability.dialogRequest (dialogRequest)
+# @ohos.app.ability.dialogRequest (dialogRequest Module)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 The dialogRequest module provides APIs related to modal dialog box processing, including obtaining the request information (used to bind a modal dialog box) and request callback (used to set the request result).
 
-A modal dialog box is a system pop-up box that intercepts events (such as mouse, keyboard, and touchscreen events) triggered for the page displayed under it. The page can be operated only after the modal dialog box is destroyed.
+A modal dialog box is a system-level dialog box that blocks interactions such as mouse clicks, keyboard input, and touch events on the underlying page. The page can only be interacted with after the modal dialog box is closed.
 
 > **NOTE**
 >
@@ -37,7 +44,7 @@ Obtains the request information from Want.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [RequestInfo](#requestinfo) | **RequestInfo** object obtained, which is used to bind a modal dialog box.|
+| [RequestInfo](#requestinfo) | RequestInfo object obtained, which is used to bind a modal dialog box.|
 
 **Error codes**
 
@@ -85,7 +92,7 @@ Obtains the request callback from Want.
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| [RequestCallback](#requestcallback) | **RequestCallback** object obtained, which is used to set the return result.|
+| [RequestCallback](#requestcallback) | RequestCallback object obtained, which is used to set the return result.|
 
 **Error codes**
 
@@ -119,12 +126,12 @@ Defines the location attributes of a modal dialog box.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name| Type  | Mandatory| Description                       |
-| ---- | ------ | ---- | --------------------------- |
-| left  | number | Yes  | X-coordinate of the upper left corner of the dialog box.|
-| top  | number | Yes  | Y-coordinate of the upper left corner of the dialog box.|
-| width  | number | Yes  | Width of the dialog box, in px.|
-| height  | number | Yes  | Height of the dialog box, in px.|
+| Name| Type  | Read-only| Optional| Description                       |
+| ---- | ------ | ---- | ----| --------------------------- |
+| left  | number | No | No|X-coordinate of the upper left corner of the dialog box.|
+| top  | number | No  | No|Y-coordinate of the upper left corner of the dialog box.|
+| width  | number | No  | No| Width of the dialog box, in px.|
+| height  | number | No  | No|Height of the dialog box, in px.|
 
 ## RequestInfo
 
@@ -134,9 +141,9 @@ Defines the request information, which is used as an input parameter for binding
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name     | Type      | Mandatory  | Description    |
-| ------------ | ------------------| ------ | ---------------------- |
-| windowRect<sup>10+</sup>            | [WindowRect](#windowrect10)    | No  | Location attributes of a modal dialog box.         |
+| Name     | Type      | Read-only| Optional  | Description    |
+| ------------ | --------| ------ | ----- | ----------------- |
+| windowRect<sup>10+</sup>   | [WindowRect](#windowrect10)    | No| Yes | Location attributes of a modal dialog box.         |
 
 **Example**
 

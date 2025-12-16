@@ -1,4 +1,10 @@
 # 属性字符串 (系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 方便灵活应用文本样式的对象，可通过TextController中的[setStyledString](./ts-basic-components-text.md#setstyledstring12)方法与Text组件绑定，可通过RichEditorStyledStringController中的[setStyledString](ts-basic-components-richeditor.md#setstyledstring12)方法与RichEditor组件绑定。
 
@@ -271,6 +277,8 @@ struct Index {
 }
 ```
 
+![styledstring_1_sys](figures/styledstring_1_sys.gif)
+
 ### 示例2 (带UserDataSpan的属性字符串序列化和反序列化)
 
 该示例通过marshalling、unmarshalling函数实现了属性字符串及其UserDataSpan序列化和反序列化的功能。
@@ -287,7 +295,7 @@ class MyUserData extends UserDataSpan {
   }
 
   marshalling() {
-    console.log("MyUserData marshalling...");
+    console.info("MyUserData marshalling...");
     const text = "MyUserData1";
     const buffer = new ArrayBuffer(text.length + 1);
     const uint8View = new Uint8Array(buffer);
@@ -300,14 +308,14 @@ class MyUserData extends UserDataSpan {
   }
 
   unmarshalling() {
-    console.log("MyUserData unmarshalling...");
+    console.info("MyUserData unmarshalling...");
     return new MyUserData();
   }
 }
 
 class MyUserData2 extends UserDataSpan {
   marshalling() {
-    console.log("MyUserData2 marshalling...");
+    console.info("MyUserData2 marshalling...");
     const text = "MyUserData2";
     const buffer = new ArrayBuffer(text.length + 1);
     const uint8View = new Uint8Array(buffer);
@@ -319,7 +327,7 @@ class MyUserData2 extends UserDataSpan {
   }
 
   unmarshalling() {
-    console.log("MyUserData2 unmarshalling...");
+    console.info("MyUserData2 unmarshalling...");
     return new MyUserData2();
   }
 }
@@ -351,15 +359,15 @@ struct MarshallExample1 {
           let buffer = StyledString.marshalling(myStyledString, (marshallingValue: StyledStringMarshallingValue) => {
             // 根据类型选择对应的序列化接口
             if (marshallingValue instanceof MyUserData) {
-              console.log("StyledString.marshalling MyUserData");
+              console.info("StyledString.marshalling MyUserData");
               let value = marshallingValue as MyUserData;
               return value.marshalling();
             } else if (marshallingValue instanceof MyUserData2) {
-              console.log("StyledString.marshalling MyUserData2");
+              console.info("StyledString.marshalling MyUserData2");
               let value = marshallingValue as MyUserData2;
               return value.marshalling();
             }
-            console.log("StyledString.marshalling default");
+            console.info("StyledString.marshalling default");
             return new ArrayBuffer(10);
           });
 
@@ -368,13 +376,13 @@ struct MarshallExample1 {
             // 2. 根据类型，选择对应的接口解析这个 buffer
             const uint8View = new Uint8Array(value);
             let type = uint8View[0];
-            console.log("unmarshalling length:" + uint8View.length);
+            console.info("unmarshalling length:" + uint8View.length);
             if (type == MyUserDataType.TYPE1) {
-              console.log("unmarshalling type1:" + type);
+              console.info("unmarshalling type1:" + type);
               let myUserData = new MyUserData();
               return myUserData.unmarshalling();
             } else if (type == MyUserDataType.TYPE2) {
-              console.log("unmarshalling type2:" + type);
+              console.info("unmarshalling type2:" + type);
               let myUserData = new MyUserData2();
               return myUserData.unmarshalling();
             }
@@ -391,3 +399,5 @@ struct MarshallExample1 {
   }
 }
 ```
+
+![styledstring_2_sys](figures/styledstring_2_sys.gif)

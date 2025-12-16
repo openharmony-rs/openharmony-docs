@@ -1,4 +1,10 @@
 # 基于设备分类和数据分级的访问控制 (ArkTS)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 基本概念
 
@@ -13,7 +19,7 @@
 
   | 风险等级 | 风险标准 | 定义 | 样例 | 
 | -------- | -------- | -------- | -------- |
-| 严重 | S4 | 业界法律法规定义的特殊数据类型，涉及个人的最私密领域的信息或一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响的数据。 | 政治观点、宗教和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况，性取向等或设备认证鉴权、个人信用卡等财物信息等。 | 
+| 严重 | S4 | 业界法律法规定义的特殊数据类型，涉及个人的最私密领域的信息或一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响的数据。 | 政治观点、宗教和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况，性取向等或设备认证鉴权、个人信用卡等财务信息等。 | 
 | 高 | S3 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严峻的不利影响。 | 个人实时精确定位信息、运动轨迹等。 | 
 | 中 | S2 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严重的不利影响。 | 个人的详细通信地址、姓名昵称等。 | 
 | 低 | S1 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。 | 性别、国籍、用户申请记录等。 | 
@@ -51,7 +57,7 @@
 
 ## 使用键值型数据库实现数据分级
 
-键值型数据库，通过securityLevel参数设置数据库的安全等级。此处以创建安全等级为S3的数据库为例。
+键值型数据库，通过securityLevel参数设置数据库的安全等级，安全等级具体可见[SecurityLevel](../reference/apis-arkdata/js-apis-distributedKVStore.md#securitylevel)枚举。此处以创建安全等级为S3的数据库为例。
 
 具体接口及功能，可见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
 > **说明**：
@@ -61,85 +67,131 @@
 > * 该操作需在关闭当前数据库之后，通过修改securityLevel开库参数重新设置数据库的安全等级，再进行开库操作。
 > * 该操作只支持升级，不支持降级。例如支持S2->S3的升级，不支持S3->S2的降级。
 
+   ```ts
+   // 导入模块
+   // 在pages目录下新建KvStoreInterface.ets
+   import { distributedKVStore } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import EntryAbility from '../entryability/EntryAbility';
+   // Logger为hilog封装后实现的打印功能
+   import Logger from '../common/Logger';
 
-```ts
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { distributedKVStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
+   let kvManager: distributedKVStore.KVManager | undefined = undefined;
+   let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
+   let appId: string = 'com.example.kvstoresamples';
+   let storeId: string = 'storeId';
+   const context = EntryAbility.getContext();
 
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    let kvManager: distributedKVStore.KVManager;
-    let kvStore: distributedKVStore.SingleKVStore;
-    let context = this.context;
-    const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-      context: context,
-      bundleName: 'com.example.datamanagertest'
-    }
-    try {
-      kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-      console.info('Succeeded in creating KVManager.');
-      try {
-        const options: distributedKVStore.Options = {
-          createIfMissing: true,
-          encrypt: true,
-          backup: false,
-          autoSync: false,
-          kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
-          securityLevel: distributedKVStore.SecurityLevel.S3
-        };
-        kvManager.getKVStore<distributedKVStore.SingleKVStore>('storeId', options, (err, store: distributedKVStore.SingleKVStore) => {
-          if (err) {
-            console.error(`Failed to get KVStore. Code:${err.code},message:${err.message}`);
-            return;
-          }
-          console.info('Succeeded in getting KVStore.');
-          kvStore = store;
-        });
-      } catch (e) {
-        let error = e as BusinessError;
-        console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
-      }
-    } catch (e) {
-      let error = e as BusinessError;
-      console.error(`Failed to create KVManager. Code:${error.code},message:${error.message}`);
-    }
-  }
-}
-```
+   // 下面所有接口的代码都实现在KvInterface中
+   export class KvInterface {
+   }
+   ```
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public CreateKvManager = (() => {
+     Logger.info('CreateKvManager start');
+     if (typeof (kvManager) === 'undefined') {
+       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+         bundleName: appId,
+         context: context
+       };
+       try {
+         // 创建KVManager实例
+         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+         Logger.info('Succeeded in creating KVManager.');
+       } catch (err) {
+         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+       }
+     } else {
+       Logger.info ('KVManager has created');
+     }
+   })
+   ```
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
+   public GetKvStore = (() => {
+     Logger.info('GetKvStore start');
+     if (kvManager === undefined) {
+       Logger.info('KvManager not initialized');
+       return;
+     }
+     try {
+       let child1 = new distributedKVStore.FieldNode('id');
+       child1.type = distributedKVStore.ValueType.INTEGER;
+       child1.nullable = false;
+       child1.default = '1';
+       let child2 = new distributedKVStore.FieldNode('name');
+       child2.type = distributedKVStore.ValueType.STRING;
+       child2.nullable = false;
+       child2.default = 'zhangsan';
+   
+       let schema = new distributedKVStore.Schema();
+       schema.root.appendChild(child1);
+       schema.root.appendChild(child2);
+       schema.indexes = ['$.id', '$.name'];
+       // 0表示COMPATIBLE模式，1表示STRICT模式。
+       schema.mode = 1;
+       // 支持在检查Value时，跳过skip指定的字节数，且取值范围为[0,4M-2]。
+       schema.skip = 0;
+   
+       const options: distributedKVStore.Options = {
+         createIfMissing: true,
+         // 设置数据库加密
+         encrypt: true,
+         backup: false,
+         autoSync: false,
+         // kvStoreType不填时，默认创建多设备协同数据库
+         kvStoreType: distributedKVStore.KVStoreType.SINGLE_VERSION,
+         // 多设备协同数据库：kvStoreType: distributedKVStore.KVStoreType.DEVICE_COLLABORATION,
+         schema: schema,
+         // schema未定义可以不填，定义方法请参考上方schema示例。
+         securityLevel: distributedKVStore.SecurityLevel.S3
+       };
+       kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeId, options,
+         (err, store: distributedKVStore.SingleKVStore) => {
+           if (err) {
+             Logger.error(`Failed to get KVStore: Code:${err.code},message:${err.message}`);
+             return;
+           }
+           Logger.info('Succeeded in getting KVStore.');
+           kvStore = store;
+           // 请确保获取到键值数据库实例后，再进行相关数据操作
+         });
+     } catch (e) {
+       let error = e as BusinessError;
+       Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+     }
+   })
+   ```
 
 ## 使用关系型数据库实现数据分级
 
-关系型数据库，通过securityLevel参数设置数据库的安全等级。此处以创建安全等级为S3的数据库为例。
+关系型数据库，通过securityLevel参数设置数据库的安全等级，安全等级具体可见[SecurityLevel](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#securitylevel)枚举。此处以创建安全等级为S3的数据库为例。
 
 具体接口及功能，可见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 
-  
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
 
-    try {
-      const STORE_CONFIG: relationalStore.StoreConfig = {
-        name: 'RdbTest.db',
-        securityLevel: relationalStore.SecurityLevel.S3
-      };
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      console.info('Succeeded in getting RdbStore.')
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-    }
+export async function accessControlByDeviceAndDataLevel() {
+  try {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: 'RdbTest.db',
+      // 设置数据库安全级别为S3
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+    console.info('Succeeded in getting RdbStore.')
+  } catch (err) {
+    console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
   }
 }
 ```

@@ -1,16 +1,22 @@
 # Location
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zju_ljz-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The location attributes set the alignment mode, layout direction, and position of a component.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## align
 
-align(value: Alignment)
+align(value: Alignment): T
 
-Sets the alignment mode of the component content in the drawing area.
+Sets the alignment mode for child elements within the container's drawing area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -22,13 +28,43 @@ Sets the alignment mode of the component content in the drawing area.
 
 | Name| Type                                       | Mandatory| Description                                                        |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Alignment](ts-appendix-enums.md#alignment) | Yes  | Sets the alignment mode of the component content in the drawing area.<br>This attribute is available only in the following components: **Stack**, **Button**, **StepperItem**,**FolderStack**, **Marquee**, **Text**, **TextArea**, and **TextInput**. For details about the alignment results of text-related components (the last four aforementioned components), see [textAlign](ts-basic-components-text.md#textalign).<br>If the component does not support the **textAlign** attribute, horizontal alignment cannot be set for text.<br>Default value: **Alignment.Center**<br>**NOTE**<br>This parameter does not support the mirroring functionality.<br>In the **Stack** component, this attribute has the same effect as **alignContent**, which means that it sets the alignment mode of child components in the container.|
+| value  | [Alignment](ts-appendix-enums.md#alignment) | Yes  | Alignment mode for child elements in container drawing area.<br>This setting is effective only in the following components: **Stack**, **FolderStack**, **Shape**, **Button**, **Marquee**, **StepperItem**, **Text**, **TextArea**, **TextInput**, [RichEditor](ts-basic-components-richeditor.md), **Hyperlink**, **SymbolGlyph**, **ListItem**, **GridItem**, **Scroll**, **FlowItem**, **ImageAnimator**, **LoadingProgress**, **PatternLock**, **Progress**, **QRCode**, **TextClock**, **TextTimer**, **MenuItem**, **Toggle**, **Checkbox**, and **NodeContainer**. For text alignment in **Marquee**, **Text**, **TextArea**, **TextInput**, **RichEditor**, and **Hyperlink** components, see [textAlign](ts-basic-components-text.md#textalign).<br>If a component does not support the **textAlign** attribute, horizontal text alignment cannot be configured.<br>Default value: **Alignment.Center**<br>**NOTE**<br>This attribute does not support the mirroring functionality.<br>In the **Stack** component, this attribute has the same effect as **alignContent**, which means that it sets the alignment mode of child components in the container.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
+
+## align<sup>20+</sup>
+
+align(alignment: Alignment | LocalizedAlignment): T
+
+Sets the alignment mode for child elements within the container's drawing area. The mirroring capability is supported. This attribute supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                       | Mandatory| Description                                                        |
+| ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
+| alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | Yes  | Alignment mode for child elements in container drawing area. The mirroring capability is supported.<br>The LocalizedAlignment type is effective only in the following components: [Shape](ts-drawing-components-shape.md), [Button](ts-basic-components-button.md), [GridItem](ts-container-griditem.md), [FlowItem](ts-container-flowitem.md), [ImageAnimator](ts-basic-components-imageanimator.md), [LoadingProgress](ts-basic-components-loadingprogress.md), [PatternLock](ts-basic-components-patternlock.md), [Progress](ts-basic-components-progress.md), [QRCode](ts-basic-components-qrcode.md), [TextClock](ts-basic-components-textclock.md), [TextTimer](ts-basic-components-texttimer.md), [StepperItem](ts-basic-components-stepperitem.md), [MenuItem](ts-basic-components-menuitem.md), [Toggle](ts-basic-components-toggle.md), [Checkbox](ts-basic-components-checkbox.md), and [ListItem](ts-container-listitem.md).<br>[ListItem](ts-container-listitem.md) follows the Alignment type configuration. Other components support mirroring when the LocalizedAlignment type is used. Other components where LocalizedAlignment does not take effect are displayed based on the default effect.<br>Default value: **Alignment.Center**, **LocalizedAlignment.CENTER**.<br>**NOTE**<br>The Alignment type does not support the mirroring capability. The LocalizedAlignment type supports mirroring based on the layout direction (configurable via **direction**) or system language. The **direction** setting takes precedence over the system language direction. When **direction** is explicitly set to any value other than **auto**, LocalizedAlignment mirroring follows the specified direction. If **direction** is set to **auto** or not configured, LocalizedAlignment mirroring adapts to the system language direction.<br>If the **align** attribute receives an **undefined** or **null** input parameter, the system will apply the default value, resulting in center-aligned content display.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## direction
 
-direction(value: Direction)
+direction(value: Direction): T
 
-Sets how elements are laid out along the main axis of the container.
+Sets how elements are laid out along the main axis of the container. This attribute supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -40,13 +76,19 @@ Sets how elements are laid out along the main axis of the container.
 
 | Name| Type                                       | Mandatory| Description                                               |
 | ------ | ------------------------------------------- | ---- | --------------------------------------------------- |
-| value  | [Direction](ts-appendix-enums.md#direction) | Yes  | How elements are laid out along the main axis of the container.<br>If this parameter is set to **auto**, the layout is subject to the system language.<br>The attribute does not take effect in the **Column** component.<br>Default value: **Direction.Auto**|
+| value  | [Direction](ts-appendix-enums.md#direction) | Yes  | How elements are laid out along the main axis of the container.<br>If this parameter is set to **auto**, the layout is subject to the system language.<br>The setting does not take effect in the **Column** component.<br>Default value: **Direction.Auto**.<br>If the **direction** attribute receives an **undefined** or **null** input parameter, the system will apply the default value.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## position
 
-position(value: Position | Edges | LocalizedEdges)
+position(value: Position | Edges | LocalizedEdges): T
 
-Sets the absolute position of the component relative to the position of the parent component.
+Sets the absolute positioning that determines the child component's position relative to the parent's content area. The content area of the parent component is calculated by subtracting the **border**, padding, and **safeAreaPadding** values from the parent component's total size. This resulting content area defines the available layout space for child components. This API takes effect after the component's size measurement is complete. It supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -58,13 +100,19 @@ Sets the absolute position of the component relative to the position of the pare
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes  | Absolute position of the component relative to the position of the parent component. If the parent container is **Row**, **Column**, or **Flex**, the child component for which **position** is set does not take up space in the container.<br>If of the Position type, this parameter sets the position based on the upper left corner of the parent component. If of the Edges type, this parameter sets the position based on the offset relative to the four edges of the parent component. If of the LocalizedEdges type, this parameter sets the position based on the offset relative to the four edges of the parent component, with support for the mirror mode.<br>The **position** attribute is applicable to scenarios where the component's position in the parent container is fixed, for example, where it is pinned to top or floating on the UI.<br>The attribute is not available for a layout container whose width and height are zero.<br>The attribute does not take effect when the component is in a [RelativeContainer](ts-container-relativecontainer.md) component and with the **alignRules** attribute set.|
+| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes  | Absolute positioning that determines the child component's position relative to the parent's content area. If the parent container is **Row**, **Column**, or **Flex**, the child component for which **position** is set does not take up space in the container.<br>The Position type uses the upper left corner of the parent's content area as the reference point. The Edges type uses all four sides of the parent's content area as reference, where **top**, **left**, **right**, and **bottom** define the margins between the component and corresponding sides of the parent's content area. The LocalizedEdges type provides the same functionality as Edges while supporting layout mirroring.<br>Applicable to scenarios where the component's position in the parent container is fixed, for example, where it is pinned to top or floating on the UI.<br>Not available for a layout container whose width and height are zero.<br>In [RelativeContainer](ts-container-relativecontainer.md), if the child component has **alignRules** set, the **position** attribute will not take effect.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## markAnchor
 
-markAnchor(value: Position | LocalizedPosition)
+markAnchor(value: Position | LocalizedPosition): T
 
-Sets the anchor for locating the component.
+Sets the anchor for element positioning. This attribute supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -76,13 +124,19 @@ Sets the anchor for locating the component.
 
 | Name| Type                            | Mandatory| Description                                                        |
 | ------ | -------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [LocalizedPosition<sup>12+</sup>](ts-types.md#localizedposition12) | Yes  | Anchor for locating the component, which is used to move the component further away from the position specified by **position** or **offset**.<br>**.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})** has the same effect as **.position({x: value1 - value3, y: value2 - value4})**. The same applies to **offset**.<br>When **markAnchor** is used alone, **markAnchor ({x: value1, y: value2})** has the same effect as **.offset ({x: -value1, y: -value2})**.<br>The default value varies by API version.<br>API version 9 and earlier:<br>{<br>x: 0,<br>y: 0<br>}<br>API version 10: none|
+| value  | [Position](ts-types.md#position) \| [LocalizedPosition<sup>12+</sup>](ts-types.md#localizedposition12) | Yes  | Positioning anchor that offsets the component from the position specified by **position** or **offset**.<br>**.position({x: value1, y: value2}).markAnchor({x: value3, y: value4})** has the same effect as **.position({x: value1 - value3, y: value2 - value4})**. The same applies to **offset**.<br>When **markAnchor** is used alone, **markAnchor ({x: value1, y: value2})** has the same effect as **.offset ({x: -value1, y: -value2})**.<br>The default value varies by API version.<br>API version 9 and earlier:<br>{<br>x: 0,<br>y: 0<br>}<br>API version 10: no default value.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## offset
 
-offset(value: Position | Edges | LocalizedEdges)
+offset(value: Position | Edges | LocalizedEdges): T
 
-Sets the offset of the component relative to its original position.
+Sets the offset of the component relative to its original position. When **offset** is used in combination with the **position** attribute, the **position** attribute takes precedence and the configured offset will not be applied. This attribute supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -94,13 +148,19 @@ Sets the offset of the component relative to its original position.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12)  \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes  | Offset of the component relative to its original position. The **offset** attribute does not affect the layout of the parent container. It adjusts the component position only during drawing.<br>If of the Position type, this parameter sets the offset relative to the upper left corner of the component. If of the Edges type, this parameter sets the offset relative to the four edges of the component. **{x: x, y: y}** has the same effect as **{left: x, top: y}** and **{right: -x, bottom: -y}**. The LocalizedEdges type supports the mirror mode: **start** is equivalent to **x** with left-to-right scripts and **-x** with right-to-left scripts.<br>The default value varies by API version.<br>API version 9 and earlier:<br>{<br>x: 0,<br>y: 0<br>}<br>Default unit: vp<br>API version 10: none|
+| value  | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12)  \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) | Yes  | Offset of the component relative to its original position. The **offset** attribute does not affect the layout of the parent container. It adjusts the component position only during drawing.<br>If of the Position type, this parameter sets the offset relative to the upper left corner of the component. If of the Edges type, this parameter sets the offset relative to the four edges of the component. **{x: x, y: y}** has the same effect as **{left: x, top: y}** and **{right: -x, bottom: -y}**. The LocalizedEdges type supports the mirror mode: **start** is equivalent to **x** with left-to-right scripts and **-x** with right-to-left scripts.<br>The default value varies by API version.<br>API version 9 and earlier:<br>{<br>x: 0,<br>y: 0<br>}<br>Default unit: vp<br>API version 10: no default value.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## alignRules<sup>9+</sup>
 
-alignRules(value: AlignRuleOption)
+alignRules(value: AlignRuleOption): T
 
-Sets the alignment rules in the relative container. This API is valid only when the container is [RelativeContainer](ts-container-relativecontainer.md).
+Sets the alignment rule for child components within the relative container. This API only takes effect when the parent container is [RelativeContainer](ts-container-relativecontainer.md). This attribute supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -112,13 +172,19 @@ Sets the alignment rules in the relative container. This API is valid only when 
 
 | Name| Type                                       | Mandatory| Description                    |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| value  | [AlignRuleOption](#alignruleoption) | Yes  | Alignment rules in the relative container.|
+| value  | [AlignRuleOption](#alignruleoption9) | Yes  | Alignment rules in the relative container.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## alignRules<sup>12+</sup>
 
-alignRules(alignRule: LocalizedAlignRuleOptions)
+alignRules(alignRule: LocalizedAlignRuleOptions): T
 
-Sets the alignment rules in the relative container. This API is valid only when the container is [RelativeContainer](ts-container-relativecontainer.md). This API takes the right-to-left scripts into account, using **start** and **end** instead of **left** and **right** for alignment in the horizontal direction. Prioritize this API in aligning child components in the relative container.
+Sets the alignment rules in the relative container. This API is valid only when the container is [RelativeContainer](ts-container-relativecontainer.md). The API replaces the original **left** and **right** directional parameters with **start** and **end** to support proper mirroring in right-to-left (RTL) layout modes. It is recommended that you use this API for configuring child component alignment rules in relative containers. This API supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -132,74 +198,98 @@ Sets the alignment rules in the relative container. This API is valid only when 
 | ------ | ------------------------------------------- | ---- | ------------------------ |
 | alignRule  | [LocalizedAlignRuleOptions](#localizedalignruleoptions12) | Yes  | Alignment rules in the relative container.|
 
-## AlignRuleOption
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
+
+## layoutGravity<sup>20+</sup>
+
+layoutGravity(alignment: LocalizedAlignment): T
+
+Sets the alignment rule for child components in the **Stack** container. This API only takes effect when the parent container is **Stack**. When used in conjunction with the **align** attribute, **layoutGravity** takes precedence. This attribute supports dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 20.
+
+**Atomic service API**: This API can be used in atomic services since API version 20.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                       | Mandatory| Description                    |
+| ------ | ------------------------------------------- | ---- | ------------------------ |
+| alignment  | [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | Yes  | Alignment rule of child components in the **Stack** container.<br>Default value: **LocalizedAlignment.CENTER**. Note: If an invalid value is passed, the default value is used.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
+
+## AlignRuleOption<sup>9+</sup>
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
-| Name  | Type                                                        | Description                                                        |
-| ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| left   | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } | Left alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| right  | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } | Right alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| middle | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } | Horizontal center alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| top    | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } | Top alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| bottom | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } | Bottom alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| center | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } | Vertical center alignment.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                |
-| bias<sup>11+</sup>   | [Bias](#bias) | Offset of the component under the anchor constraints. The value is the ratio of the distance to the left/upper anchor to the total distance between anchors.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| left   | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } |No|Yes| Left alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| right  | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } |No|Yes| Right alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| middle | { anchor: string, align: [HorizontalAlign](ts-appendix-enums.md#horizontalalign) } |No|Yes| Center alignment in the horizontal direction.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| top    | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } |No|Yes| Top alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| bottom | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } |No|Yes| Bottom alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| center | { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) } |No|Yes| Vertical center alignment.<br>- **anchor**: ID of the component that functions as the anchor point.<br>- **align**: alignment mode relative to the anchor component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                |
+| bias<sup>11+</sup>   | [Bias](./ts-types.md#bias) |No|Yes| Offset of the component under the anchor constraints. The value is the ratio of the distance to the left/upper anchor to the total distance between anchors.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## LocalizedAlignRuleOptions<sup>12+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| Name  | Type                                                        | Description                                                        |
-| ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| start  | [LocalizedHorizontalAlignParam](#localizedhorizontalalignparam12) | Left alignment with left-to-right scripts and right alignment with right-to-left scripts in the horizontal direction.|
-| end    | [LocalizedHorizontalAlignParam](#localizedhorizontalalignparam12) | Right alignment with left-to-right scripts and left alignment with right-to-left scripts in the horizontal direction.|
-| middle | [LocalizedHorizontalAlignParam](#localizedhorizontalalignparam12) | Center alignment in the horizontal direction.|
-| top    | [LocalizedVerticalAlignParam](#localizedverticalalignparam12) | Top alignment in the vertical direction.|
-| bottom | [LocalizedVerticalAlignParam](#localizedverticalalignparam12) | Bottom alignment in the vertical direction.|
-| center | [LocalizedVerticalAlignParam](#localizedverticalalignparam12) | Center alignment in the vertical direction.     |
-| bias   | [Bias](#bias) | Offset of the component under the anchor constraints. The value is the ratio of the distance to the left/upper anchor to the total distance between anchors.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| start  | [LocalizedHorizontalAlignParam](#localizedhorizontalalignparam12) |No|Yes| Left alignment with left-to-right scripts and right alignment with right-to-left scripts in the horizontal direction.|
+| end    | [LocalizedHorizontalAlignParam](#localizedhorizontalalignparam12) |No|Yes| Right alignment with left-to-right scripts and left alignment with right-to-left scripts in the horizontal direction.|
+| middle | [LocalizedHorizontalAlignParam](#localizedhorizontalalignparam12) |No|Yes| Center alignment in the horizontal direction.|
+| top    | [LocalizedVerticalAlignParam](#localizedverticalalignparam12) |No|Yes| Top alignment in the vertical direction.|
+| bottom | [LocalizedVerticalAlignParam](#localizedverticalalignparam12) |No|Yes| Bottom alignment in the vertical direction.|
+| center | [LocalizedVerticalAlignParam](#localizedverticalalignparam12) |No|Yes| Center alignment in the vertical direction.     |
+| bias   | [Bias](./ts-types.md#bias) |No|Yes| Offset of the component under the anchor constraints. The value is the ratio of the distance to the left/upper anchor to the total distance between anchors.|
 
 ## LocalizedHorizontalAlignParam<sup>12+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| Name  | Type                                                        | Description                                                        |
-| ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| anchor  | string  | ID of the component that serves as the anchor.|
-| align   | [HorizontalAlign](ts-appendix-enums.md#horizontalalign)  | Horizontal alignment mode relative to the anchor component.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| anchor  | string  |No|No| ID of the component that serves as the anchor.|
+| align   | [HorizontalAlign](ts-appendix-enums.md#horizontalalign)  |No|No| Horizontal alignment mode relative to the anchor component.|
 
 ## LocalizedVerticalAlignParam<sup>12+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| Name  | Type                                                        | Description                                                        |
-| ------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| anchor  | string | ID of the component that serves as the anchor.|
-| align   | [VerticalAlign](ts-appendix-enums.md#verticalalign)  | Vertical alignment mode relative to the anchor component.|
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-## Bias
-
-Defines the offset of the component under the anchor constraints.
-<br>In the horizontal direction, the value of **Bias** is the ratio of the distance from the component to the left anchor D<sub>start</sub> to the total distance between the component and the horizontal anchors D<sub>start</sub> + D<sub>end</sub>. In a mirrored language layout, D<sub>start</sub> is the distance from the component to the right anchor. The width of the component is represented by D<sub>width</sub>.
-<br>![bias_horizontal_example.png](figures/bias_horizontal_example.png)
-<br>Similarly, in the vertical direction, the value of **Bias** is the ratio of the distance from the component to the top anchor D<sub>top</sub> to the total distance between the component and the vertical anchors D<sub>top</sub> + D<sub>bottom</sub>. The height of the component is represented by D<sub>height</sub>.
-<br>![bias_vertical_example.png](figures/bias_vertical_example.png)
-
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-| Name  | Type                                      | Mandatory  | Description                                      |
-| ----- | ---------------------------------------- | ---- | ---------------------------------------- |
-| horizontal  | number | No| Bias value in the horizontal direction.<br>This parameter takes effect when the child component has a correct width and two horizontal anchors.<br>Default value: **0.5**|
-| vertical  | number | No| Bias value in the vertical direction.<br>This parameter takes effect when the child component has a correct height and two vertical anchors.<br>Default value: **0.5**|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| anchor  | string |No|No| ID of the component that serves as the anchor.|
+| align   | [VerticalAlign](ts-appendix-enums.md#verticalalign)  |No|No| Vertical alignment mode relative to the anchor component.|
 
 ## chainMode<sup>12+</sup>
 
-chainMode(direction: Axis, style: ChainStyle)
+chainMode(direction: Axis, style: ChainStyle): T
 
 Sets the parameters of the chain in which the component is the head. This parameter has effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md). The chain head is the first component in the chain that satisfies the chain formation rules. In a horizontal layout, it starts from the left (or from the right in a mirrored language layout). In a vertical layout, it starts from the top.
 For details, see [RelativeContainer Example 7](ts-container-relativecontainer.md#example-7-creating-chains).
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,9 +300,15 @@ For details, see [RelativeContainer Example 7](ts-container-relativecontainer.md
 | direction  | [Axis](ts-appendix-enums.md#axis) | Yes  | Direction of the chain.|
 | style  | [ChainStyle](#chainstyle12) | Yes  | Style of the chain.|
 
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
+
 ## ChainStyle<sup>12+</sup>
 
-Enumerates the chain styles.
+Enumerates the chain layout styles. Dynamic configuration via [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -224,11 +320,19 @@ Enumerates the chain styles.
 | SPREAD_INSIDE | All child components except the first and last ones are evenly distributed among constraint anchors. For details, see [RelativeContainer Example 7](ts-container-relativecontainer.md#example-7-creating-chains).|
 | PACKED        | There is no gap between child components in the chain. For details, see [RelativeContainer Example 7](ts-container-relativecontainer.md#example-7-creating-chains).|
 
+>  **NOTE**
+>
+>  When a chain is used, **RelativeContainer** defines a size calculation sequence for interdependent components within the chain. **ChainStyle** positioning is determined after size calculation completes. Therefore, with **SPREAD** or **PACKED** styles, non-chain component A (which uses the chain head as its layout anchor) and other chain nodes share the same layout priority. If component A's ID has earlier lexicographical order, its **alignRules** take effect before the chain's **ChainStyle**.
+
 ## chainWeight<sup>14+</sup>
 
-chainWeight(chainWeight: ChainWeightOptions)
+chainWeight(chainWeight: ChainWeightOptions): T
 
 Sets the weight of the component in a chain, which is used to re-lay out components that form the chain. This API has effect only when the parent container is [RelativeContainer](ts-container-relativecontainer.md).
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -239,6 +343,12 @@ Sets the weight of the component in a chain, which is used to re-lay out compone
 | Name| Type                                       | Mandatory| Description                    |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
 | chainWeight  | [ChainWeightOptions](ts-types.md#chainweightoptions14) | Yes  | Layout weight of the component in the horizontal or vertical direction. The component with **chainWeight** set will have its size in the horizontal or vertical direction allocated according to the set weights. The allocation ignores the component's intrinsic size and enables the component to adaptively fill the remaining space.|
+
+**Return value**
+
+| Type| Description|
+| --- | --- |
+|  T | Current component.|
 
 ## Example
 
@@ -427,7 +537,7 @@ struct Example3 {
 
 ### Example 4: Implementing a Mirror Effect
 
-This example demonstrates how to implement a mirroring effect using **position**, **offset**, and **markAnchor** sequentially. The yellow blocks indicate the original effect, and the pink blocks indicate the mirroring effect.
+This example demonstrates how to implement a mirroring effect using **position**, **offset**, and **markAnchor** sequentially. The light blue value is the original effect, and the dark blue value is the mirroring effect.
 
 ```ts
 // xxx.ets
@@ -448,7 +558,7 @@ struct Example4 {
               .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) })
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -456,7 +566,7 @@ struct Example4 {
               .position({ left:'200px', top: '100px' })
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
               Row() {
@@ -464,7 +574,7 @@ struct Example4 {
               .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200)  })
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -472,7 +582,7 @@ struct Example4 {
               .offset({ left: 100, top: 200  })
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
               Row() {
@@ -480,7 +590,7 @@ struct Example4 {
               .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) })
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Pink)
+              .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
               Row() {
@@ -488,7 +598,7 @@ struct Example4 {
               .markAnchor({ x: '100fp', y: '-350fp' })
               .width("30%")
               .height("20%")
-              .backgroundColor(Color.Yellow)
+              .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
             }
@@ -513,4 +623,140 @@ struct Example4 {
   }
 }
 ```
+
+Before mirroring
+
 ![position.png](figures/position3.png)
+
+After mirroring
+
+![position.png](figures/positionEdge.png)
+
+### Example 5: Using the align Property with Mirroring Adaptation
+
+This example demonstrates how to set the alignment of content within the element and the layout of child elements along the main axis of the parent container.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct buttonTestDemo {
+  @State isLocalizedAlignment: LocalizedAlignment[] =
+    [LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END, LocalizedAlignment.START,
+      LocalizedAlignment.CENTER, LocalizedAlignment.END, LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM,
+      LocalizedAlignment.BOTTOM_END]
+  @State isLocalizedAlignmentIndex: number = 4
+  @State isDirection: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto]
+  @State isDirectionIndex: number = 0
+
+  build() {
+    Row() {
+      Column() {
+
+        Row({ space: 5 }) {
+          Button('START')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 3
+            })
+          Button('CENTER')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 4
+            })
+          Button('END')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 5
+            })
+        }.margin(20)
+
+        Row({ space: 5 }) {
+          Button('Ltr')
+            .onClick(() => {
+              this.isDirectionIndex = 0
+            })
+          Button('Rtl')
+            .onClick(() => {
+              this.isDirectionIndex = 1
+            })
+          Button('Auto')
+            .onClick(() => {
+              this.isDirectionIndex = 2
+            })
+        }.margin(20)
+
+        Row() {
+          Button('OK', { type: ButtonType.Capsule, stateEffect: true })
+            .backgroundColor(0x317aff)
+            .width(200)
+            .height(100)
+            .direction(this.isDirection[this.isDirectionIndex])
+            .align(this.isLocalizedAlignment[this.isLocalizedAlignmentIndex])
+        }.margin(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![position4.gif](figures/position4.gif)
+
+### Example 6: Using layoutGravity to Specify Child Component Alignment in the Stack Container
+
+This example shows how to adjust the text position within the **Stack** container.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index5 {
+  private layoutGravityArr: LocalizedAlignment[] = [
+    LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END,
+    LocalizedAlignment.START, LocalizedAlignment.CENTER, LocalizedAlignment.END,
+    LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM, LocalizedAlignment.BOTTOM_END];
+  @State layoutGravityIndex: number = 0;
+  private directionArr: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto];
+  @State directionIndex: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        Stack({
+          alignContent: Alignment.TopStart
+        }) {
+          Text('StackChildAlign_TopStart').fontSize(15)
+          Text('Child Text')
+            .width(150)
+            .height(150)
+            .backgroundColor(Color.Yellow)
+            .fontSize(15)
+            .layoutGravity(this.layoutGravityArr[this.layoutGravityIndex])
+        }
+        .width('100%')
+        .height(400)
+        .backgroundColor(Color.Grey)
+        .margin({ top: 10, bottom: 10 })
+        .direction(this.directionArr[this.directionIndex])
+
+        Button("LayoutGravity: " + this.layoutGravityArr[this.layoutGravityIndex])
+          .width(300)
+          .fontSize(16)
+          .onClick(() => {
+            this.layoutGravityIndex = ++this.layoutGravityIndex % this.layoutGravityArr.length;
+          })
+          .margin({ bottom: 10 })
+
+        Button("Direction: " + this.directionArr[this.directionIndex])
+          .width(150)
+          .fontSize(16)
+          .onClick(() => {
+            this.directionIndex = ++this.directionIndex % this.directionArr.length;
+          })
+          .margin({ bottom: 10 })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![layoutGravity.gif](figures/layoutGravity.gif)

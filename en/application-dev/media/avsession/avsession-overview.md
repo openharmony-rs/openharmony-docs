@@ -1,4 +1,10 @@
 # Introduction to AVSession Kit
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 Audio and Video Session (AVSession) Kit provides the audio and video management service, which manages the playback behavior of all audio and video applications in the system in a unified manner. You can use the kit to quickly build unified audio and video display and control capabilities.
 
@@ -6,7 +12,7 @@ Audio and Video Session (AVSession) Kit provides the audio and video management 
 
 - Unified audio and video management: Audio and video applications access AVSession and send it application data (for example, the song that is being played and the playback state). Through a controller, the user can choose another application or device for playback.
 
-- Restricted audio background playback: After an audio application accesses AVSession, it can continue audio playback in the background. To use this feature, the application must also request a background task.
+- Restricted audio background playback: After an audio application accesses AVSession, it can continue audio playback in the background. To use this feature, the application must also request a [continuous task](../../task-management/continuous-task.md).
 
 ## Highlights
 
@@ -20,7 +26,7 @@ Audio and Video Session (AVSession) Kit provides the audio and video management 
 
   Through the controller, the background playback of applications is visible and controllable.
 
-  The system forcibly controls background playback. When an application that does not access AVSession switches to the background, its audio playback is forcibly paused. This prevents malicious applications from playing audio in the background.
+  The system enforces strict control over background playback. For applications that have not integrated with AVSession or for applications that have integrated with AVSession but do not have a valid AVSession instance when they move to the background, their audio playback is forcibly paused. This addresses the issue of applications playing audio maliciously in the background, making it difficult for users to locate and close the offending application.
 
 ## Basic Concepts
 
@@ -40,11 +46,11 @@ Be familiar with the following basic concepts before development:
 
 - AVSessionController
 
-  An object that controls the playback behavior of the provider. It obtains the playback information of the audio and video application and listens for the application playback changes to synchronize the AVSession information between the application and controller. The controller is the holder of an **AVSessionController** object.
+  An object that controls the playback behavior of the provider. It obtains the playback information of the audio and video application and listens for the application playback changes to synchronize the AVSession information between the application and controller. The controller is the holder of an AVSessionController object.
 
 - AVSessionManager
 
-  An object that provides the capability of managing sessions. It can create an **AVSession** object, create an **AVSessionController** object, send control commands, and listen for session state changes.
+  An object that provides the capability of managing sessions. It can create an AVSession object, create an AVSessionController object, send control commands, and listen for session state changes.
 
 ## AVSession Interaction Process
 

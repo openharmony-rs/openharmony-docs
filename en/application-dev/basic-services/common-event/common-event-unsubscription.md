@@ -1,5 +1,11 @@
 # Unsubscribing from Common Events in Dynamic Mode
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -10,17 +16,19 @@ After a service is finished in the dynamic mode, the subscriber should proactive
 
 | API| Description|
 | -------- | -------- |
-| unsubscribe(subscriber:&nbsp;[CommonEventSubscriber](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber),&nbsp;callback?:&nbsp;AsyncCallback<void\>) | Unsubscribes from a common event.|
+| [unsubscribe](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerunsubscribe)(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback?:&nbsp;AsyncCallback<void\>) | Unsubscribes from a common event.|
 
 
 ## How to Develop
 
 1. Import the **commonEventManager** module.
    
-   ```ts
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
@@ -29,14 +37,17 @@ After a service is finished in the dynamic mode, the subscriber should proactive
 
 3. Call [unsubscribe()](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerunsubscribe) in **CommonEvent** to unsubscribe from an event.
    
-   ```ts
+   <!-- @[UnsubscribePublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // The subscriber object is created during event subscription.
    if (subscriber !== null) {
      commonEventManager.unsubscribe(subscriber, (err: BusinessError) => {
        if (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, `UnsubscribeCallBack err = ${JSON.stringify(err)}`);
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to unsubscribe. code is ${err.code}, message is ${err.message}`);
        } else {
-         hilog.info(DOMAIN_NUMBER, TAG, `Unsubscribe success`);
+         hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in unsubscribing.`);
          subscriber = null;
        }
      })

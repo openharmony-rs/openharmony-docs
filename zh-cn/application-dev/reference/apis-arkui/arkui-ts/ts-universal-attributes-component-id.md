@@ -1,4 +1,10 @@
 # 组件标识
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @pengzhiwen3-->
+<!--Designer: @dutie123-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 id为组件的唯一标识，在整个应用内唯一。本模块提供组件标识相关接口，可以获取指定id组件的属性，也提供向指定id组件发送事件的功能。
 
@@ -8,9 +14,8 @@ id为组件的唯一标识，在整个应用内唯一。本模块提供组件标
 >
 > - 若同一个组件设置了多个id或者key，最后设置的生效。
 
-## 属性
 
-### id
+## id
 
 id(value: string): T
 
@@ -24,7 +29,7 @@ id(value: string): T
 
 **参数：**
 
-| 名称   | 类型      | 必填 | 说明                       |
+| 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
 | value  | string   |  是  | 组件的唯一标识，唯一性由使用者保证。 |
 
@@ -34,7 +39,7 @@ id(value: string): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
-### key<sup>12+</sup>
+## key<sup>12+</sup>
 
 key(value: string): T
 
@@ -42,11 +47,13 @@ key(value: string): T
 
 此接口仅用于对应用的测试。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置id。
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
-| 名称   | 类型      | 必填 | 说明                       |
+| 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
 | value   | string   | 是 | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''<br/> |
 
@@ -56,7 +63,9 @@ key(value: string): T
 | -------- | -------- |
 | T | 返回当前组件。 |
 
-## 接口
+## 基于组件标识的拓展能力
+
+组件标识的拓展能力仅用于对应用的测试，以下各个接口示例，需要在应用工程的ohosTest/ets/test目录中调试，具体可以参考<!--RP1-->[单元测试框架使用指导](../../../../application-dev/application-test/unittest-guidelines.md)<!--RP1End-->。
 
 ### getInspectorByKey<sup>9+</sup>
 
@@ -78,7 +87,31 @@ getInspectorByKey(id: string): string
 
 | 类型        | 说明             |
 | -------| -------------- |
-| string | 组件属性列表的JSON字符串。<br />**说明**：<br /> 字符串信息包含组件的tag、id、位置信息(相对于窗口左上角的坐标)以及用于测试检查的组件所包含的相关属性信息。 |
+| string | 组件属性列表的JSON字符串。<br />**说明**：<br /> 字符串信息包含组件的tag、id、位置信息(相对于窗口左上角的坐标)以及用于测试检查的组件所包含的相关属性信息。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+
+**示例:**
+```ts
+@Entry
+@Component
+struct ComponentPage {
+  build() {
+    Column() {
+      Text("Hello World")
+        .fontSize(20)
+        .id("TEXT")
+        .onClick(() => {
+          console.info(`Text is clicked`);
+        })
+      Button('TEST BUTTON').onClick(() => {
+        let result = getInspectorByKey("TEXT");
+        console.info(`result is ${result}`);
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ### getInspectorTree<sup>9+</sup>
 
@@ -94,7 +127,31 @@ getInspectorTree(): Object
 
 | 类型     | 说明                            |
 | ------ | --------------------------- |
-| Object | 组件树及组件属性列表的JSON对象。 |
+| Object | 组件树及组件属性列表的JSON对象。组件中每个字段的含义请参考[getInspectorInfo](../js-apis-arkui-frameNode.md#getinspectorinfo12)的返回值说明。 |
+
+**示例:**
+```ts
+@Entry
+@Component
+struct ComponentPage {
+  build() {
+    Column() {
+      Text("Hello World")
+        .fontSize(20)
+        .id("TEXT")
+        .onClick(() => {
+          console.info(`Text is clicked`);
+        })
+      Button('TEST BUTTON').onClick(() => {
+        let result = getInspectorTree();
+        console.info(`result is ${JSON.stringify(result)}`);
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ### sendEventByKey<sup>9+</sup>
 
@@ -120,6 +177,29 @@ sendEventByKey(id: string, action: number, params: string): boolean
 | -------- | --------------------------|
 | boolean  | 找不到指定id的组件时返回false，其余情况返回true。 |
 
+**示例:**
+```ts
+@Entry
+@Component
+struct ComponentPage {
+  build() {
+    Column() {
+      Text("Hello World")
+        .fontSize(20)
+        .id("TEXT")
+        .onClick(() => {
+          console.info(`Text is clicked`);
+        })
+      Button('TEST BUTTON').onClick(() => {
+        sendEventByKey("TEXT", 10, "");
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### sendTouchEvent<sup>9+</sup>
 
 sendTouchEvent(event: TouchObject): boolean
@@ -134,7 +214,7 @@ sendTouchEvent(event: TouchObject): boolean
 
 | 参数名      | 类型            | 必填  | 说明                                                         |
 | ----- | ----------- | ---- | ------------------------------------------------------------ |
-| event | [TouchObject](ts-universal-events-touch.md#touchobject对象说明) | 是    | 触发触摸事件的位置，event参数见[TouchEvent](ts-universal-events-touch.md#touchevent对象说明)中TouchObject的介绍。 |
+| event | [TouchObject](ts-universal-events-touch.md#touchobject) | 是    | 触发触摸事件的位置，event参数见[TouchObject](ts-universal-events-touch.md#touchobject)的介绍。 |
 
 **返回值:**
 
@@ -162,7 +242,7 @@ sendKeyEvent(event: KeyEvent): boolean
 
 | 类型      | 说明                           |
 | ------- | ------------------------------|
-| boolean | 事件发送失败时时返回false，其余情况返回true。 |
+| boolean | 事件发送失败时返回false，其余情况返回true。 |
 
 ### sendMouseEvent<sup>9+</sup>
 
@@ -260,11 +340,11 @@ struct IdExample {
             x: rect.left + (rect.right - rect.left) / 2, // 相对于组件左上角的水平方向坐标
             y: rect.top + (rect.bottom - rect.top) / 2, // 相对于组件左上角的垂直方向坐标
             screenX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标，API10已废弃，采用windowX替代
-            screenY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
+            screenY: rect.top + (rect.bottom - rect.top) / 2, // 相对于应用窗口左上角的垂直方向坐标，API10已废弃，采用windowY替代
             windowX: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的水平方向坐标
-            windowY: rect.left + (rect.right - rect.left) / 2, // 相对于应用窗口左上角的垂直方向坐标
+            windowY: rect.top + (rect.bottom - rect.top), // 相对于应用窗口左上角的垂直方向坐标
             displayX: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的水平方向坐标
-            displayY: rect.left + (rect.right - rect.left) / 2, // 相对于设备屏幕左上角的垂直方向坐标
+            displayY: rect.top + (rect.bottom - rect.top) / 2, // 相对于设备屏幕左上角的垂直方向坐标
           };
           sendTouchEvent(touchPoint); // 发送触摸事件
           touchPoint.type = TouchType.Up;

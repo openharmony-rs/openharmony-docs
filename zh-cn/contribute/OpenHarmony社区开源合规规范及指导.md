@@ -41,8 +41,8 @@
 
 #### 开源开发合规门禁规范
 
-1. [开源合规开发门禁要求](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/%E4%BB%A3%E7%A0%81%E9%97%A8%E7%A6%81%E8%A6%81%E6%B1%82.md#codecheck%E6%A3%80%E6%9F%A5)
-2. [开源门禁工具OAT功能及问题确认说明](https://gitee.com/openharmony-sig/tools_oat#oat%E5%BC%80%E6%BA%90%E5%AE%A1%E6%9F%A5%E5%B7%A5%E5%85%B7)
+1. [开源合规开发门禁要求](https://gitcode.com/openharmony/community/blob/master/sig/sig_qa/%E4%BB%A3%E7%A0%81%E9%97%A8%E7%A6%81%E8%A6%81%E6%B1%82.md#codecheck%E6%A3%80%E6%9F%A5)
+2. [开源门禁工具OAT功能及问题确认说明](https://gitcode.com/openharmony-sig/tools_oat#oat%E5%BC%80%E6%BA%90%E5%AE%A1%E6%9F%A5%E5%B7%A5%E5%85%B7)
 
 #### 参与上游社区贡献规范
 
@@ -52,7 +52,7 @@
 
 #### 软件物料清单(SBOM)规范
 
-[OpenHarmony社区SBOM规范](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%A4%BE%E5%8C%BASBOM%E8%A7%84%E8%8C%83.md)
+[OpenHarmony社区SBOM规范](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%A4%BE%E5%8C%BASBOM%E8%A7%84%E8%8C%83.md)
 
 #### 开源义务履行
 
@@ -60,13 +60,13 @@
 
 #### 合规告警澄清规范
 
-[FossLicense开源合规告警澄清规范](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/FossLicense%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%91%8A%E8%AD%A6%E6%BE%84%E6%B8%85%E8%A7%84%E8%8C%83.md)
+[FossLicense开源合规告警澄清规范](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/FossLicense%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%91%8A%E8%AD%A6%E6%BE%84%E6%B8%85%E8%A7%84%E8%8C%83.md)
 
 #### 社区版本发布与社区SIG毕业开源合规评审
 
-1. [OpenHarmony社区版本发布开源合规专项评审规范](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E9%A1%B9%E8%AF%84%E5%AE%A1%E8%A7%84%E8%8C%83.md#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E8%AF%84%E5%AE%A1%E6%B5%81%E7%A8%8B)
-2. [版本发布开源合规与质量审核项](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/%E7%89%88%E6%9C%AC%E8%B4%A8%E9%87%8F%E8%A6%81%E6%B1%82.md)
-3. [SIG 孵化项目毕业开源合规与质量审核项](https://gitee.com/openharmony/community/blob/master/sig/sig_qa/guidance_for_incubation_project_graduation_cn.md#sig%E5%AD%B5%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%AF%95%E4%B8%9A%E8%AF%84%E5%AE%A1%E6%A3%80%E6%9F%A5%E9%A1%B9)
+1. [OpenHarmony社区版本发布开源合规专项评审规范](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/OpenHarmony%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E9%A1%B9%E8%AF%84%E5%AE%A1%E8%A7%84%E8%8C%83.md#%E7%89%88%E6%9C%AC%E5%8F%91%E5%B8%83%E5%90%88%E8%A7%84%E8%AF%84%E5%AE%A1%E6%B5%81%E7%A8%8B)
+2. [版本发布开源合规与质量审核项](https://gitcode.com/openharmony/community/blob/master/sig/sig_qa/%E7%89%88%E6%9C%AC%E8%B4%A8%E9%87%8F%E8%A6%81%E6%B1%82.md)
+3. [SIG 孵化项目毕业开源合规与质量审核项](https://gitcode.com/openharmony/community/blob/master/sig/sig_qa/guidance_for_incubation_project_graduation_cn.md#sig%E5%AD%B5%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%AF%95%E4%B8%9A%E8%AF%84%E5%AE%A1%E6%A3%80%E6%9F%A5%E9%A1%B9)
 
 ## 二进制合规规范
 
@@ -78,11 +78,11 @@
 
 ## 开源合规角色和责任
 
-[《开源合规角色职责及能力要求》](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E8%A7%92%E8%89%B2%E8%81%8C%E8%B4%A3%E5%8F%8A%E8%83%BD%E5%8A%9B%E8%A6%81%E6%B1%82.md)
+[《开源合规角色职责及能力要求》](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E8%A7%92%E8%89%B2%E8%81%8C%E8%B4%A3%E5%8F%8A%E8%83%BD%E5%8A%9B%E8%A6%81%E6%B1%82.md)
 
 ## 开源合规培训资源及要求
 
-[《开源合规培训计划》](https://gitee.com/openharmony/community/blob/master/sig/sig_compliance/docs/%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%9F%B9%E8%AE%AD%E8%AE%A1%E5%88%92.md)
+[《开源合规培训计划》](https://gitcode.com/openharmony/community/blob/master/sig/sig_compliance/docs/%E5%BC%80%E6%BA%90%E5%90%88%E8%A7%84%E5%9F%B9%E8%AE%AD%E8%AE%A1%E5%88%92.md)
 
 ## 未能遵守的后果
 

@@ -1,46 +1,37 @@
 # AppStorageV2: Storing Application-wide UI State
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 To enhance the capability of the state management framework to store global UI status variables of applications, you are advised to use AppStorageV2.
 
 AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across abilities.
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [AppStorageV2](../../reference/apis-arkui/js-apis-StateManagement.md#appstoragev2).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [AppStorageV2 API reference](../../reference/apis-arkui/js-apis-StateManagement.md#appstoragev2).
 
 >**NOTE**
 >
 >AppStorageV2 is supported since API version 12.
 >
 
-
 ## Overview
 
-AppStorageV2 is a singleton to be created when the application UI is started. Its purpose is to provide central storage for application UI state attributes. And AppStorageV2 retains data during application running. Each attribute is accessed using a unique key, which is a string.
+AppStorageV2 is a singleton created when the application UI is started. It provides central storage for application state data that is accessible at the application level and remains persistent throughout the application lifecycle. Properties in AppStorageV2 are accessed using unique key strings. It should be noted that data between AppStorage and AppStorageV2 is not shared.
 
-UI components synchronize application state attributes with AppStorageV2. AppStorageV2 can be accessed during implementation of application service logic as well.
+The **connect** API of AppStorageV2 enables customizable synchronization between stored data and UI components.
 
-AppStorageV2 supports state sharing among multiple UIAbility instances in the [main thread](../../application-models/thread-model-stage.md) of an application.
-
+AppStorageV2 supports state sharing among multiple UIAbility instances in the [main thread](../../application-models/thread-model-stage.md) of the same application.
 
 ## How to Use
 
-### connect: Creating or Obtaining Stored Data
-
-```JavaScript
-static connect<T extends object>(
-    type: TypeConstructorWithArgs<T>,
-    keyOrDefaultCreator?: string | StorageDefaultCreator<T>,
-    defaultCreator?: StorageDefaultCreator<T> 
-): T | undefined;
-```
-
-| connect      | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameter        | **type**: specified type. If no **key** is specified, the name of the **type** is used as the **key**.<br> **keyOrDefaultCreator**: specified key or default constructor.<br> **defaultCreator**: default constructor.                                         |
-| Return value      | After creating or obtaining data, value is returned. Otherwise, **undefined** is returned.|
+- **connect**: creates or obtains stored data.
 
 >**NOTE**
 >
->1. The third parameter is used when no **key** is specified or the second parameter is invalid, and the third parameter is used in all other cases.
+>1. The second parameter is used when no **key** is specified, and the third parameter is used otherwise (including when the second parameter is invalid).
 >
 >2. If the data has been stored in AppStorageV2, you can obtain the stored data without using the default constructor. If the data has not been stored, you must specify a default constructor; otherwise, an application exception will be thrown.
 >
@@ -48,50 +39,130 @@ static connect<T extends object>(
 >
 >4. You are advised to use meaningful values for keys. The values can contain letters, digits, and underscores (_) and a maximum of 255 characters. Using invalid characters or null characters will result in undefined behavior.
 >
->5. When match the key with the [\@Observed](arkts-observed-and-objectlink.md) object, specify the key or customize the **name** attribute.
+>5. When matching the key with the [\@Observed](arkts-observed-and-objectlink.md) object, specify the key or customize the **name** property.
 
-### remove: Deleting the Stored Data of a Specified Key
-
-```JavaScript
-static remove<T>(keyOrType: string | TypeConstructorWithArgs<T>): void;
-```
-
-| remove       | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameter        | **keyOrType**: key to be deleted. If the key is of the **Type**, the key to be deleted is the name of the **Type**.                                         |
-| Return value      | None.|
+- **remove**: deletes the stored data of a specified key.
 
 >**NOTE**
 >
 >If a key that does not exist in AppStorageV2 is deleted, a warning is reported.
 
-### keys: Returning All Keys Stored in AppStorageV2
+- **keys**: returns all keys in AppStorageV2.
 
-```JavaScript
-static keys(): Array<string>;
-```
-
-| keys         | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameter        | None.                                        |
-| Return value      | All keys stored in AppStorageV2.|
+For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Management)](../../reference/apis-arkui/js-apis-StateManagement.md#appstoragev2).
 
 
 ## Constraints
 
-1. This singleton must be used together with the UI thread only. Other threads, for example, @Sendable decorator is not supported.
+1. Only the class type is supported.
 
-2. Types such as collections.Set and collections.Map are not supported.
+2. This singleton must be used together with the UI thread only. Other threads, for example, @Sendable decorator is not supported.
 
-3. Non-buildin types, such as native PixelMap, NativePointer, and ArrayList types, are not supported.
+3. Types such as **collections.Set** and **collections.Map** are not supported.
+
+4. Non-built-in types, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), NativePointer, and [ArrayList](../../reference/apis-arkts/js-apis-arraylist.md), are not supported.
+
+5. Primitive types, such as string, number, and boolean, are not supported. Note: The lack of support for storing primitive types means that the type passed to the **connect** API cannot be a primitive type. However, the class passed to **connect** can contain primitive types.
 
 ## Use Scenarios
+
+### Using AppStorageV2
+
+AppStorageV2 provides the **connect** API to enable data modification and synchronization. When modified data is decorated with @Trace, changes automatically trigger UI re-rendering. Note that the **remove** API only deletes data from AppStorageV2 without affecting already instantiated component data.
+
+```ts
+import { AppStorageV2 } from '@kit.ArkUI';
+
+@ObservedV2
+class Message {
+  @Trace userID: number;
+  userName: string;
+
+  constructor(userID?: number, userName?: string) {
+    this.userID = userID ?? 1;
+    this.userName = userName ?? 'Jack';
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  // Use connect to create an object with key Message in AppStorageV2.
+  // Changes to the return value of connect will be synchronized back to AppStorageV2.
+  @Local message: Message = AppStorageV2.connect<Message>(Message, () => new Message())!;
+
+  build() {
+    Column() {
+      // Modifying class properties decorated with @Trace will synchronously update the UI.
+      Button(`Index userID: ${this.message.userID}`)
+        .onClick(() => {
+          this.message.userID += 1;
+        })
+      // Modifying class properties not decorated with @Trace will not update the UI, but changes are still synchronized back to AppStorageV2.
+      Button(`Index userName: ${this.message.userName}`)
+        .onClick(() => {
+          this.message.userName += 'suf';
+        })
+      // Clicking the button deletes the object with key Message from AppStorageV2.
+      // After removal, changes to the parent component's userId are still synchronized to the child component, because remove only deletes the object from AppStorageV2 and does not affect the existing component data.
+      Button('remove key: Message')
+        .onClick(() => {
+          AppStorageV2.remove<Message>(Message);
+        })
+      // Clicking the button adds an object with key Message to AppStorageV2.
+      // After removal, when the key is re-added and the userID in both parent and child components is modified, it is found that the data is out of sync. Once the child component reconnects via connect(), the data becomes consistent again.
+      Button('connect key: Message')
+        .onClick(() => {
+          this.message = AppStorageV2.connect<Message>(Message, () => new Message(5, 'Rose'))!;
+        })
+      Divider()
+      Child()
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@ComponentV2
+struct Child {
+  // Use connect to obtain the object with key Message from AppStorageV2 (created in the parent component).
+  @Local message: Message = AppStorageV2.connect<Message>(Message, () => new Message())!;
+  @Local name: string = this.message.userName;
+
+  build() {
+    Column() {
+      // Modifying @Trace decorated properties updates the UI, and the change is propagated to the parent component.
+      Button(`Child userID: ${this.message.userID}`)
+        .onClick(() => {
+          this.message.userID += 5;
+        })
+      // After the userName property is modified in the parent component, clicking the name button synchronizes the parent's class property changes.
+      Button(`Child name: ${this.name}`)
+        .onClick(() => {
+          this.name = this.message.userName;
+        })
+      // Clicking the button deletes the object with key Message from AppStorageV2.
+      Button('remove key: Message')
+        .onClick(() => {
+          AppStorageV2.remove<Message>(Message);
+        })
+      // Clicking the button adds an object with key Message to AppStorageV2.
+      Button('connect key: Message')
+        .onClick(() => {
+          this.message = AppStorageV2.connect<Message>(Message, () => new Message(10, 'Lucy'))!;
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ### Storing Data Between Two Pages
 
 Data page
 ```ts
-// Data center
+// Data center.
 // Sample.ets
 @ObservedV2
 export class Sample {
@@ -109,7 +180,7 @@ import { Sample } from '../Sample';
 @Entry
 @ComponentV2
 struct Page1 {
-  // Create a KV pair whose key is Sample in AppStorageV2 (if the key exists, the data in AppStorageV2 is returned) and associate it with prop.
+  // Create a key-value pair with Sample as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
   @Local prop: Sample = AppStorageV2.connect(Sample, () => new Sample())!;
   pageStack: NavPathStack = new NavPathStack();
 
@@ -123,13 +194,13 @@ struct Page1 {
 
         Button('Page1 connect the key Sample')
           .onClick(() => {
-            // Create a KV pair whose key is Sample in AppStorageV2 (if the key exists, the data in AppStorageV2 is returned) and associate it with prop.
+            // Create a key-value pair with Sample as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
             this.prop = AppStorageV2.connect(Sample, 'Sample', () => new Sample())!;
           })
 
         Button('Page1 remove the key Sample')
           .onClick(() => {
-            // After being deleted from AppStorageV2, prop will no longer be associated with the value whose key is Sample.
+            // After deletion from AppStorageV2, prop will no longer be associated with the value whose key is Sample.
             AppStorageV2.remove(Sample);
           })
 
@@ -146,7 +217,7 @@ struct Page1 {
             this.prop.p2++;
           })
 
-        // Obtain all keys in the current AppStorageV2.
+        // Obtain all current keys in AppStorageV2.
         Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
           .fontSize(30)
       }
@@ -168,7 +239,7 @@ export function Page2Builder() {
 
 @ComponentV2
 struct Page2 {
-  // Create a KV pair whose key is Sample in AppStorageV2 (if the key exists, the data in AppStorageV2 is returned) and associate it with prop.
+  // Create a key-value pair with Sample as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
   @Local prop: Sample = AppStorageV2.connect(Sample, () => new Sample())!;
   pathStack: NavPathStack = new NavPathStack();
 
@@ -177,7 +248,7 @@ struct Page2 {
       Column() {
         Button('Page2 connect the key Sample1')
           .onClick(() => {
-            // Create a KV pair whose key is Sample1 in AppStorageV2 (if the key exists, the data in AppStorageV2 is returned) and associate it with prop.
+            // Create a key-value pair with Sample1 as the key in AppStorageV2 (if the key exists, existing data in AppStorageV2 is returned) and associate it with prop.
             this.prop = AppStorageV2.connect(Sample, 'Sample1', () => new Sample())!;
           })
 
@@ -194,7 +265,7 @@ struct Page2 {
             this.prop.p2++;
           })
 
-        // Obtain all keys in the current AppStorageV2.
+        // Obtain all current keys in AppStorageV2.
         Text(`all keys in AppStorage: ${AppStorageV2.keys()}`)
           .fontSize(30)
       }
@@ -205,7 +276,7 @@ struct Page2 {
   }
 }
 ```
-When using **Navigation**, you need to add the **route_map.json** file to the **src/main/resources/base/profile** directory, replace the value of **pageSourceFile** with the path of **Page2**, and add **"routerMap": "$profile: route_map"** to the **module.json5** file.
+When using **Navigation**, create a **route_map.json** file as shown below in the **src/main/resources/base/profile** directory, replacing the value of **pageSourceFile** with the actual path to **Page2**. Then, add **"routerMap": "$profile: route_map"** to the **module.json5** file.
 ```json
 {
   "routerMap": [

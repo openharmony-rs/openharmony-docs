@@ -1,5 +1,16 @@
 # NativePixelMap_
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct NativePixelMap_ NativePixelMap_
+```
+
 ## 概述
 
 声明由图像框架定义的像素图对象。

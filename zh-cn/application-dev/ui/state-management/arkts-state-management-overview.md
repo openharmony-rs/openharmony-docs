@@ -1,4 +1,10 @@
 # 状态管理概述
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 在前文的描述中，构建的页面主要为静态界面。如果要构建一个动态的、有交互的界面，就需要引入“状态”的概念。
 
@@ -18,45 +24,7 @@
 
 - State：状态，指驱动UI更新的数据。通过触发组件的事件方法，改变状态数据。状态数据的改变，引起UI的重新渲染。
 
-在阅读状态管理文档前，开发者需要了解UI范式基本语法。建议提前阅读[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)和[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
-
-## 基本概念
-
-- 状态变量：被状态装饰器装饰的变量，状态变量值的改变会引起UI的渲染更新。示例：@State num: number = 1，其中，@State是状态装饰器，num是状态变量。
-
-- 常规变量：没有被状态装饰器装饰的变量，通常应用于辅助计算。它的改变永远不会引起UI的刷新。下面的示例中increaseBy变量为常规变量。
-
-- 数据源/同步源：状态变量的原始来源，可以同步给不同的状态数据。通常为父组件传给子组件的数据。下面的示例中数据源为count: 1。
-
-- 命名参数机制：父组件通过指定参数传递给子组件的状态变量，为父子传递同步参数的主要手段。示例：CompA({ aProp: this.aProp })。
-
-- 从父组件初始化：父组件使用命名参数机制，将指定参数传递给子组件。子组件初始化的默认值在有父组件传值的情况下，会被覆盖。示例：
-
-  ```ts
-  @Component
-  struct MyComponent {
-    @State count: number = 0;
-    private increaseBy: number = 1;
-
-    build() {
-    }
-  }
-
-  @Entry
-  @Component
-  struct Parent {
-    build() {
-      Column() {
-        // 从父组件初始化，覆盖本地定义的默认值
-        MyComponent({ count: 1, increaseBy: 2 })
-      }
-    }
-  }
-  ```
-
-- 初始化子组件：父组件中状态变量可以传递给子组件，初始化子组件对应的状态变量。示例同上。
-
-- 本地初始化：在变量声明的时候赋值，作为变量的默认值。示例：\@State count: number = 0。
+在阅读状态管理文档前，开发者需要了解UI范式基本语法。建议提前阅读[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)、[状态管理术语](./arkts-state-management-glossary.md)和[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
 
 >**说明：**
 >
@@ -129,9 +97,9 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 针对页面状态管理，有以下相关实例可供参考：
 
-- [状态管理（ArkTS）（API9）](https://gitee.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/StateManagement)
+- [状态管理（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/StateManagement)
 
-- [目标管理（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/ETSUI/TargetManagement)
+- [目标管理（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TargetManagement)
 
 ## 状态管理（V2）
 
@@ -168,7 +136,7 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 - [\@Trace](arkts-new-observedV2-and-trace.md)：\@Trace装饰器装饰被\@ObservedV2装饰的class中的属性，被装饰的属性具有深度观测的能力。
 
-- [\@ComponentV2](arkts-new-componentV2.md)：使用\@ComponentV2装饰的struct中能使用新的装饰器。例如：\@Local、\@Param、\@Event、\@Once、\@Monitor、\@Provider、\@Consumer。
+- [\@ComponentV2](arkts-create-custom-components.md#componentv2)：使用\@ComponentV2装饰的struct中能使用新的装饰器。例如：\@Local、\@Param、\@Event、\@Once、\@Monitor、\@Provider、\@Consumer。
 
 - [\@Local](arkts-new-local.md)：\@Local装饰的变量为组件内部状态，无法从外部初始化。
 
@@ -180,9 +148,9 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 - [\@Monitor](arkts-new-monitor.md)：\@Monitor装饰器用于\@ComponentV2装饰的自定义组件或\@ObservedV2装饰的类中，能够对状态变量进行深度监听。
 
-- [\@Provider和\@Consumer](arkts-new-Provider-and-Consumer.md)：用于跨组件层级双向同步。
+- [\@Provider和\@Consumer](arkts-new-provider-and-consumer.md)：用于跨组件层级双向同步。
 
-- [\@Computed](arkts-new-Computed.md)：计算属性，在被计算的值变化的时候，只会计算一次。主要应用于解决UI多次重用该属性从而重复计算导致的性能问题。
+- [\@Computed](arkts-new-computed.md)：计算属性，在被计算的值变化的时候，只会计算一次。主要应用于解决UI多次重用该属性从而重复计算导致的性能问题。
 
 - [!!语法](arkts-new-binding.md)：双向绑定语法糖。
 
@@ -208,7 +176,7 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 | 页面生命周期     | 页面生命周期   | 均支持。[onPageShow](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)、[onPageHide](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpagehide)、[onBackPress](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)。  |
 | \@Reusable   | \@ReusableV2                                                 | 组件复用。包括：[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)、[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)。 |
 | $$            | !!         | 双向绑定。V2建议使用!!实现双向绑定。 |
-| \@CustomDialog | [openCustomDialog](../../../application-dev/reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12)接口   | 自定义弹窗。V2建议使用openCustomDialog实现自定义弹窗功能。 |
+| \@CustomDialog | [openCustomDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口   | 自定义弹窗。V2建议使用openCustomDialog实现自定义弹窗功能。 |
 | WithTheme     | WithTheme   | 主题。用于设置应用局部页面自定义主题风格。包括：[onWillApplyTheme](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)。<br>从API version 18开始，该接口支持在状态管理V2组件中使用。 |
 | 系统预置UI组件库     | 系统预置UI组件库    | 系统预置UI组件库 。支持V1的系统预置UI组件，例如：[Dialog](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[ProgressButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md)、[SegmentButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)。<br>从API version 18开始，系统预置UI组件支持在状态管理V2组件中使用，例如：[DialogV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DialogV2.md)、[ProgressButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md)、[SegmentButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)。 |
 | animateTo | 部分场景不支持 | 当前某些场景下，在状态管理V2中使用animateTo动画，会产生异常效果，详见：[在状态管理V2中使用animateTo动画效果异常](./arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。 |

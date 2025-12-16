@@ -1,5 +1,12 @@
 # User Authentication Error Codes
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -9,6 +16,10 @@
 **Error Message**
 
 Authentication failed.
+
+**Description**
+
+The authentication failed.
 
 **Possible Causes**
 
@@ -23,6 +34,10 @@ Initiate authentication again.
 **Error Message**
 
 General operation error.
+
+**Description**
+
+An operation error occurred.
 
 **Possible Causes**
 
@@ -42,13 +57,17 @@ Call the API again later or restart the device.
 
 Authentication canceled.
 
+**Description**
+
+The authentication operation is canceled.
+
 **Possible Causes**
 
 The authentication operation has been canceled.
 
 **Solution**
 
-Initiate the authentication again.
+Initiate authentication again.
 
 ## 12500004 Authentication Timed Out
 
@@ -56,17 +75,25 @@ Initiate the authentication again.
 
 Authentication timeout.
 
+**Description**
+
+The authentication operation times out.
+
 **Possible Causes**
 
 The authentication is not complete within the specified time.
 
 **Solution**
 
-Initiate the authentication again.
+Initiate authentication again.
 
 ## 12500005 Unsupported Authentication Type
 
 **Error Message**
+
+The authentication type is not supported.
+
+**Description**
 
 The authentication type is not supported.
 
@@ -85,6 +112,10 @@ Check the authentication type parameter and call the API again.
 
 The authentication trust level is not supported.
 
+**Description**
+
+The authentication trust level is not supported.
+
 **Possible Causes**
 
 1. The **authTrustLevel** value in **getAvailableStatus** or **getAuthInstance** of the **userAuth** module is not in the range [ATL1, ATL2, ATL3, ATL4].
@@ -100,6 +131,10 @@ Check that the **authTrustLevel** passed in is within the value range, and the d
 
 Authentication service is busy.
 
+**Description**
+
+The authentication service is busy.
+
 **Possible Causes**
 
 Another authentication is initiated when the current authentication has not been finished yet.
@@ -108,11 +143,33 @@ Another authentication is initiated when the current authentication has not been
 
 Initiate authentication again later.
 
+## 12500008 Parameter Verification Failed
+
+**Error Message**
+
+The parameter is out of range.
+
+**Description**
+
+Parameter verification failed.
+
+**Possible Causes**
+
+Parameter error.
+
+**Solution**
+
+Check the API parameters and initiate the request again.
+
 ## 12500009 Authentication Locked
 
 **Error Message**
 
 Authentication is locked out.
+
+**Description**
+
+Authentication is locked.
 
 **Possible Causes**
 
@@ -128,10 +185,13 @@ Initiate authentication later.
 
 The type of credential has not been enrolled.
 
+**Description**
+
+No credential of this type is enrolled.
+
 **Possible Causes**
 
-The **authType** parameter set in **getAvailableStatus** of the **userAuth** module is **FACE**, but no facial credential is enrolled in the device.
-**start()** is called to initiate facial authentication, but no facial credential is enrolled in the device.
+The **authType** parameter set in **getAvailableStatus** of the **userAuth** module is **FACE**, but no facial credential is enrolled in the device. **start()** is called to initiate facial authentication, but no facial credential is enrolled in the device.
 
 **Solution**
 
@@ -143,19 +203,27 @@ Check that the related type of credential has been enrolled in the device.
 
 Switched to the custom authentication process.
 
+**Description**
+
+The system switches to the custom authentication process.
+
 **Possible Causes**
 
 The authentication is canceled by the user, who tapped the authentication widget button to apply custom authentication.
 
 **Solution**
 
-Initiate the authentication again.
+Initiate authentication again.
 
 ## 12500013 Password Expired
 
 **Error Message**
 
 Operation failed because of PIN expired.
+
+**Description**
+
+The password has expired.
 
 **Possible Causes**
 
@@ -172,6 +240,10 @@ Initiate an authentication again after the user sets a new lock screen password.
 
 Operation failed because of authToken integrity check failed.
 
+**Description**
+
+The AuthToken integrity check fails.
+
 **Possible Causes**
 
 The authentication token is invalid.
@@ -186,6 +258,10 @@ Initiate authentication again and issue a valid token.
 
 Operation failed because of authToken has expired.
 
+**Description**
+
+The AuthToken has expired.
+
 **Possible Causes**
 
 The authentication token has expired. The interval between the time when the AuthToken is issued and the time when the verification is initiated exceeds the AuthToken validity period passed in.
@@ -194,15 +270,38 @@ The authentication token has expired. The interval between the time when the Aut
 
 Initiate authentication again and issue a valid token.
 
-## 12700001 FaceAuth Service Unavailable
+## 12500017 Authentication Result Reuse Failed
+
+**Error Message**
+
+Failed to reuse authtication result.
+
+**Description**
+
+Failed to reuse the identity authentication result.
+
+**Possible Causes**
+
+1. The authentication type does not match the specified type.
+2. The authentication result has expired (the maximum reuse duration is 5 minutes).
+
+**Solution**
+
+Initiate an authentication request to obtain a valid authentication token with the use's manual authentication.
+
+## 12700001 Facial Authentication Service Unavailable
 
 **Error Message**
 
 The service is unavailable.
 
+**Description**
+
+The facial authentication service is unavailable.
+
 **Possible Causes**
 
-1. The facial authentication service is not started when **setSurfaceId()** of the **userAuth** module is called.
+1. The facial authentication service is not started when **setSurfaceId()** of the **faceAuth** module is called.
 2. The proxy client fails to write data over IPC.
 3. The stub server fails to parse data over IPC.
 4. An error occurs when the facial authentication driver is invoked.

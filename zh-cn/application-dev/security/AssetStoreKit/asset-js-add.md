@@ -1,5 +1,12 @@
 # 新增关键资产(ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## 接口介绍
 
 可通过API文档查看新增关键资产的异步接口[add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd)、同步接口[addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12)的详细介绍。
@@ -8,7 +15,7 @@
 
 >**注意：**
 >
->下表中名称包含“DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放个人数据。
+>下表中“ALIAS”和名称包含“DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
 
 | 属性名称（Tag）        | 属性内容（Value）                                             | 是否必选  | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
@@ -38,16 +45,15 @@
 
 ## 约束和限制
 
-* 基于别名的访问
+- 基于别名的访问
 
   关键资产以密文的形式存储在ASSET数据库中，以业务身份 + 别名作为唯一索引。故业务需要保证每条关键资产的别名唯一。
 
-* 业务自定义数据存储
+- 业务自定义数据存储
 
   ASSET为业务预留了12个关键资产自定义属性，名称以"DATA_LABEL"开头。对于超过12个自定义属性的情况，业务可以将多段数据按照一定的格式（如JSON）拼接到同一个ASSET属性中。
 
   ASSET对部分属性会进行完整性保护，这部分属性名称以"DATA_LABEL_CRITICAL"开头，写入后不支持更新。
-
 
 ## 代码示例
 
@@ -59,29 +65,41 @@
 
 新增一条密码是demo_pwd，别名是demo_alias，附属信息是demo_label的关键资产，该关键资产在用户首次解锁设备后可被访问。
 
-```typescript
-import { asset } from '@kit.AssetStoreKit';
-import { util } from '@kit.ArkTS';
-import { BusinessError } from '@kit.BasicServicesKit';
+1. 引用头文件，定义工具函数。
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+   
+   ``` TypeScript
+   import { asset } from '@kit.AssetStoreKit';
+   import { util } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   function stringToArray(str: string): Uint8Array {
+     let textEncoder = new util.TextEncoder();
+     return textEncoder.encodeInto(str);
+   }
+   ```
 
-function stringToArray(str: string): Uint8Array {
-  let textEncoder = new util.TextEncoder();
-  return textEncoder.encodeInto(str);
-}
+2. 参考如下示例代码，进行业务功能开发。
+   <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+   
+   ``` TypeScript
+   let attr: asset.AssetMap = new Map();
+   attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
+   attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+   attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
+   attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+   try {
+     asset.add(attr).then(() => {
+       console.info(`Succeeded in adding Asset.`);
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+       // ...
+     })
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
+     // ...
+   }
+   ```
 
-let attr: asset.AssetMap = new Map();
-attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
-attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
-try {
-  asset.add(attr).then(() => {
-    console.info(`Asset added successfully.`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-  })
-} catch (error) {
-  let err = error as BusinessError;
-  console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-}
-```

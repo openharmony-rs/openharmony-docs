@@ -1,0 +1,71 @@
+# hiappevent_param.h
+
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liujiaxing2024-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+## Overview
+
+Defines the names of all predefined event parameters. In addition to custom events associated with specific applications, you can use predefined events for logging.
+
+**File to include**: <hiappevent/hiappevent_param.h>
+
+**Library**: libhiappevent_ndk.z.so
+
+**System capability**: SystemCapability.HiviewDFX.HiAppEvent
+
+**Since**: 8
+
+**Related module**: [HiAppEvent](capi-hiappevent.md)
+
+## Summary
+
+### Macros
+
+| Name| Description|
+| -- | -- |
+| [PARAM_USER_ID](#param_user_id) "user_id"                                                        | User ID.<br>**Since**: 8 |
+| [PARAM_DISTRIBUTED_SERVICE_NAME](#param_distributed_service_name) "ds_name"                      | Distributed service name.<br>**Since**: 8  |
+| [PARAM_DISTRIBUTED_SERVICE_INSTANCE_ID](#param_distributed_service_instance_id) "ds_instance_id" | Distributed service instance ID.<br>**Since**: 8|
+
+
+## Macro Description
+
+### PARAM_USER_ID
+
+```c
+#define PARAM_USER_ID "user_id"
+```
+
+**Description**
+
+User ID.
+
+**Since**: 8
+
+### PARAM_DISTRIBUTED_SERVICE_NAME
+
+```c
+#define PARAM_DISTRIBUTED_SERVICE_NAME "ds_name"
+```
+
+**Description**
+
+Distributed service name.
+
+**Since**: 8
+
+### PARAM_DISTRIBUTED_SERVICE_INSTANCE_ID
+
+```c
+#define PARAM_DISTRIBUTED_SERVICE_INSTANCE_ID "ds_instance_id"
+```
+
+**Description**
+
+Distributed service instance ID.
+
+**Since**: 8

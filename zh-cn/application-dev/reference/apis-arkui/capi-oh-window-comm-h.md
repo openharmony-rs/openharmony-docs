@@ -1,4 +1,10 @@
 # oh_window_comm.h
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -24,6 +30,9 @@
 | [OH_PixelmapNative](capi-struct.md) | OH_PixelmapNative | 定义像素图片信息。 |
 | [WindowManager_WindowProperties](capi-windowmanager-windowproperties.md) | WindowManager_WindowProperties | 窗口属性。 |
 | [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md) | WindowManager_AvoidArea | 定义避让区域结构体。 |
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | 主窗口信息。 |
+| [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | 主窗口截图的配置项。 |
+
 
 ### 枚举
 
@@ -37,7 +46,7 @@
 
 ### WindowManager_ErrorCode
 
-```
+```c
 enum WindowManager_ErrorCode
 ```
 
@@ -66,7 +75,7 @@ enum WindowManager_ErrorCode
 
 ### WindowManager_AvoidAreaType
 
-```
+```c
 enum WindowManager_AvoidAreaType
 ```
 
@@ -86,7 +95,7 @@ enum WindowManager_AvoidAreaType
 
 ### WindowManager_WindowType
 
-```
+```c
 enum WindowManager_WindowType
 ```
 

@@ -1,12 +1,20 @@
 # Interface (RdbStore)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
+
+提供管理关系数据库（RDB）方法的接口。
+
+在使用以下API前，请先通过[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore-1)方法获取RdbStore实例，并使用该实例调用对应接口方法。
+
+在此基础上，建议优先使用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
 
 > **说明：**
 > 
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-提供管理关系数据库（RDB）方法的接口。
-
-在使用以下相关接口前，请使用[executeSql](#executesql)接口初始化数据库表结构和相关数据。
 
 ## 导入模块
 
@@ -20,7 +28,7 @@ import { relationalStore } from '@kit.ArkData';
 
 | 名称         | 类型            | 只读       | 可选 | 说明                             |
 | ------------ | ----------- | ---- | -------------------------------- | -------------------------------- |
-| version<sup>10+</sup>  | number | 否 | 否   | 设置和获取数据库版本，值为大于0的正整数。       |
+| version<sup>10+</sup>  | number | 否 | 否   | 设置和获取数据库版本，值为大于0的正整数。<br>读取和设置version属性会占用数据库连接，避免对该属性进行频繁操作。<br>使用临时变量保存读取到的version值，在数据库变更完成后将其赋值给RdbStore实例的version属性。数据库升级时变更version属性的场景，请参考[开发指南示例代码](../../database/data-persistence-by-rdb-store.md#开发步骤)。 |
 | rebuilt<sup>12+</sup> | [RebuildType](arkts-apis-data-relationalStore-e.md#rebuildtype12) | 是 | 否 | 用于获取数据库是否进行过重建或修复。 |
 
 **错误码：**
@@ -46,6 +54,8 @@ import { relationalStore } from '@kit.ArkData';
 
 **示例：**
 
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
+
 ```ts
 // 设置数据库版本
 import { UIAbility } from '@kit.AbilityKit';
@@ -65,18 +75,18 @@ class EntryAbility extends UIAbility {
       store = rdbStore;
       await (store as relationalStore.RdbStore).executeSql(SQL_CREATE_TABLE);
       console.info('Get RdbStore successfully.');
-    }).catch((err: BusinessError) => {
-      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-    });
 
-    // 设置数据库版本
-    if (store != undefined) {
-      (store as relationalStore.RdbStore).version = 3;
-      // 获取数据库版本
-      console.info(`RdbStore version is ${store.version}`);
-      // 获取数据库是否重建
-      console.info(`RdbStore rebuilt is ${store.rebuilt}`);
-    }
+      // 设置数据库版本
+      if (store != undefined) {
+        (store as relationalStore.RdbStore).version = 3;
+        // 获取数据库版本
+        console.info(`RdbStore version is ${store.version}`);
+        // 获取数据库是否重建
+        console.info(`RdbStore rebuilt is ${store.rebuilt}`);
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
+    });
   }
 }
 ```
@@ -85,7 +95,7 @@ class EntryAbility extends UIAbility {
 
 insert(table: string, values: ValuesBucket, callback: AsyncCallback&lt;number&gt;):void
 
-向目标表中插入一行数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -167,7 +177,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-向目标表中插入一行数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -251,7 +261,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket):Promise&lt;number&gt;
 
-向目标表中插入一行数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -338,7 +348,7 @@ if (store != undefined) {
 
 insert(table: string, values: ValuesBucket,  conflict: ConflictResolution):Promise&lt;number&gt;
 
-向目标表中插入一行数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -426,7 +436,7 @@ if (store != undefined) {
 
 insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):number
 
-向目标表中插入一行数据。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -474,8 +484,6 @@ insertSync(table: string, values: ValuesBucket,  conflict?: ConflictResolution):
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let value1 = "Lisa";
 let value2 = 18;
 let value3 = 100.5;
@@ -515,7 +523,7 @@ if (store != undefined) {
 
 insertSync(table: string, values: sendableRelationalStore.ValuesBucket, conflict?: ConflictResolution):number
 
-传入Sendable数据，向目标表中插入一行数据。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+传入Sendable数据，向目标表中插入一行数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -588,6 +596,8 @@ if (store != undefined) {
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;number&gt;):void
 
 向目标表中插入一组数据，使用callback异步回调。
+
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 从API version 20开始，支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)。
 
@@ -666,7 +676,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets, (err, insertNum) => {
-    if (err) {
+    if (err || insertNum == -1) {
       console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
       return;
     }
@@ -680,6 +690,8 @@ if (store != undefined) {
 batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&gt;
 
 向目标表中插入一组数据，使用Promise异步回调。
+
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 从API version 20开始，该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -767,6 +779,10 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   (store as relationalStore.RdbStore).batchInsert("EMPLOYEE", valueBuckets).then((insertNum: number) => {
+    if (insertNum == -1) {
+      console.error(`batchInsert is failed`);
+      return;
+    }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   }).catch((err: BusinessError) => {
     console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
@@ -796,6 +812,8 @@ await store!.batchInsert("test", valueBucketArray); // 执行批量写入
 batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 向目标表中插入一组数据。
+
+接口报错，表示插入数据失败；接口没有报错但返回值为-1时，也表示插入数据失败。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -842,8 +860,6 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let value1 = "Lisa";
 let value2 = 18;
 let value3 = 100.5;
@@ -880,6 +896,10 @@ let valueBuckets = new Array(valueBucket1, valueBucket2, valueBucket3);
 if (store != undefined) {
   try {
     let insertNum: number = (store as relationalStore.RdbStore).batchInsertSync("EMPLOYEE", valueBuckets);
+    if (insertNum == -1) {
+      console.error(`batchInsertSync is failed`);
+      return;
+    }
     console.info(`batchInsert is successful, the number of values that were inserted = ${insertNum}`);
   } catch (err) {
     console.error(`batchInsert is failed, code is ${err.code},message is ${err.message}`);
@@ -891,7 +911,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): Promise&lt;number&gt;
 
-向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式。使用Promise异步回调。
+向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。使用Promise异步回调。
+
+单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -987,7 +1013,13 @@ if (store != undefined) {
 
 batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBucket&gt;, conflict: ConflictResolution): number
 
-向目标表中插入一组数据。
+向目标表中插入一组数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)。
+
+单次插入参数的最大数量限制为32766，超出上限会返回14800000错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。
+
+例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。
+
+请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1035,8 +1067,6 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let value1 = "Lisa";
 let value2 = 18;
 let value3 = 100.5;
@@ -1084,7 +1114,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, callback: AsyncCallback&lt;number&gt;):void
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1168,7 +1198,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution, callback: AsyncCallback&lt;number&gt;):void
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1253,7 +1283,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates):Promise&lt;number&gt;
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1330,7 +1360,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update(valueBucket1, predicates).then(async (rows: Number) => {
+  (store as relationalStore.RdbStore).update(valueBucket1, predicates).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
     console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
@@ -1342,7 +1372,7 @@ if (store != undefined) {
 
 update(values: ValuesBucket, predicates: RdbPredicates, conflict: ConflictResolution):Promise&lt;number&gt;
 
-根据RdbPredicates的指定实例对象更新数据库中的数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据，可以通过conflict参数指定冲突解决模式[ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10)，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1420,7 +1450,7 @@ const valueBucket3: relationalStore.ValuesBucket = {
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then(async (rows: Number) => {
+  (store as relationalStore.RdbStore).update(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE).then(async (rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
     console.error(`Updated failed, code is ${err.code},message is ${err.message}`);
@@ -1432,7 +1462,7 @@ if (store != undefined) {
 
 updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResolution):number
 
-根据RdbPredicates的指定实例对象更新数据库中的数据。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据RdbPredicates的指定实例对象更新数据库中的数据。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，在后续通过RdbStore的[query](#query)或[querySql](#querysql)接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1480,8 +1510,6 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let value1 = "Rose";
 let value2 = 22;
 let value3 = 200.5;
@@ -1511,7 +1539,7 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   try {
-    let rows: Number = (store as relationalStore.RdbStore).updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
+    let rows: number = (store as relationalStore.RdbStore).updateSync(valueBucket1, predicates, relationalStore.ConflictResolution.ON_CONFLICT_REPLACE);
     console.info(`Updated row count: ${rows}`);
   } catch (error) {
     console.error(`Updated failed, code is ${error.code},message is ${error.message}`);
@@ -1632,7 +1660,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).delete(predicates).then((rows: Number) => {
+  (store as relationalStore.RdbStore).delete(predicates).then((rows: number) => {
     console.info(`Delete rows: ${rows}`);
   }).catch((err: BusinessError) => {
     console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
@@ -1690,13 +1718,11 @@ deleteSync(predicates: RdbPredicates):number
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
   try {
-    let rows: Number = (store as relationalStore.RdbStore).deleteSync(predicates);
+    let rows: number = (store as relationalStore.RdbStore).deleteSync(predicates);
     console.info(`Delete rows: ${rows}`);
   } catch (err) {
     console.error(`Delete failed, code is ${err.code},message is ${err.message}`);
@@ -1708,7 +1734,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1743,15 +1769,20 @@ if (store != undefined) {
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   });
 }
 ```
@@ -1760,7 +1791,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定条件查询数据库中的数据，使用callback异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，支持指定要查询的列，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1796,15 +1827,20 @@ if (store != undefined) {
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   });
 }
 ```
@@ -1813,7 +1849,7 @@ if (store != undefined) {
 
 query(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
-根据指定条件查询数据库中的数据，使用Promise异步回调。由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
+根据指定条件查询数据库中的数据，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1852,15 +1888,20 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).query(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
   });
@@ -1902,13 +1943,12 @@ querySync(predicates: RdbPredicates, columns?: Array&lt;string&gt;):ResultSet
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Rose");
 if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
   try {
-    let resultSet: relationalStore.ResultSet = (store as relationalStore.RdbStore).querySync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+    resultSet = store.querySync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
     while (resultSet.goToNextRow()) {
@@ -1918,10 +1958,13 @@ if (store != undefined) {
       const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
       console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   } catch (err) {
-    console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    if (resultSet) {
+      resultSet.close();
+    }
   }
 }
 ```
@@ -1971,7 +2014,7 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  if (deviceId != undefined) {
+  if (devices != undefined) {
     deviceId = devices[0].networkId;
   }
 } catch (err) {
@@ -1986,15 +2029,20 @@ if (store != undefined && deviceId != undefined) {
   (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Failed to remoteQuery, code is ${err.code},message is ${err.message}`);
   });
@@ -2066,15 +2114,20 @@ if (store != undefined && deviceId != undefined) {
   (store as relationalStore.RdbStore).remoteQuery(deviceId, "EMPLOYEE", predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Failed to remoteQuery, code is ${err.code},message is ${err.message}`);
   });
@@ -2085,7 +2138,7 @@ if (store != undefined && deviceId != undefined) {
 
 querySql(sql: string, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
+根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
@@ -2124,15 +2177,20 @@ if (store != undefined) {
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   });
 }
 ```
@@ -2157,7 +2215,7 @@ let resultSet2 = await store.querySql(querySql2);
 
 querySql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;ResultSet&gt;):void
 
-根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
+根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，支持传入SQL语句中参数的值，使用callback异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
@@ -2195,15 +2253,20 @@ if (store != undefined) {
     }
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   });
 }
 ```
@@ -2212,7 +2275,7 @@ if (store != undefined) {
 
 querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt;
 
-根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
+根据指定SQL语句查询数据库中的数据，SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。如果单条数据超过此限制，使用此接口获取ResultSet后，调用[getValue](arkts-apis-data-relationalStore-ResultSet.md#getvalue12)、[getString](arkts-apis-data-relationalStore-ResultSet.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
 该接口支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用，当前支持的语法见[规格限制](../../database/data-persistence-by-vector-store.md#规格限制)。
 
@@ -2255,15 +2318,20 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).querySql("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'").then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
   });
@@ -2314,11 +2382,10 @@ querySqlSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):ResultSet
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 if (store != undefined) {
+  let resultSet: relationalStore.ResultSet | undefined;
   try {
-    let resultSet: relationalStore.ResultSet = (store as relationalStore.RdbStore).querySqlSync("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
+    resultSet = store.querySqlSync("SELECT * FROM EMPLOYEE CROSS JOIN BOOK WHERE BOOK.NAME = 'sanguo'");
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
     while (resultSet.goToNextRow()) {
@@ -2328,10 +2395,13 @@ if (store != undefined) {
       const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
       console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   } catch (err) {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+  } finally {
+    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+    if (resultSet) {
+      resultSet.close();
+    }
   }
 }
 ```
@@ -2340,7 +2410,7 @@ if (store != undefined) {
 
 executeSql(sql: string, callback: AsyncCallback&lt;void&gt;):void
 
-执行包含指定参数但不返回值的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
+执行指定的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
 
 此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql10)、[query](#query10)、[attach](#attach12)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
@@ -2402,7 +2472,7 @@ if (store != undefined) {
 
 executeSql(sql: string, bindArgs: Array&lt;ValueType&gt;, callback: AsyncCallback&lt;void&gt;):void
 
-执行包含指定参数但不返回值的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
+执行指定的SQL语句，支持传入SQL语句中参数的值，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用callback异步回调。
 
 此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql10)、[query](#query10)、[attach](#attach12)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
@@ -2465,7 +2535,7 @@ if (store != undefined) {
 
 executeSql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;void&gt;
 
-执行包含指定参数但不返回值的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
+执行指定的SQL语句，语句中的各种表达式和操作符之间的关系操作符号不超过1000个，使用Promise异步回调。
 
 此接口不支持执行查询、附加数据库和事务操作，可以使用[querySql](#querysql10)、[query](#query10)、[attach](#attach12)、[beginTransaction](#begintransaction)、[commit](#commit)等接口代替。
 
@@ -2701,13 +2771,18 @@ execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;Va
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((txId: number) => {
+  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
+    txId = temTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
-        (store as relationalStore.RdbStore).commit(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).commit(txId);
+        }
       })
       .catch((err: BusinessError) => {
-        (store as relationalStore.RdbStore).rollback(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).rollback(txId);
+        }
         console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
       });
   });
@@ -2771,8 +2846,6 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 校验数据库完整性
 if (store != undefined) {
   const SQL_CHECK_INTEGRITY = 'PRAGMA integrity_check';
@@ -3041,13 +3114,18 @@ beginTrans(): Promise&lt;number&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((txId: number) => {
+  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
+    txId = temTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
-        (store as relationalStore.RdbStore).commit(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).commit(txId);
+        }
       })
       .catch((err: BusinessError) => {
-        (store as relationalStore.RdbStore).rollback(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).rollback(txId);
+        }
         console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
       });
   });
@@ -3103,7 +3181,7 @@ createTransaction(options?: TransactionOptions): Promise&lt;Transaction&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 if (store != undefined) {
-  (store as relationalStore.RdbStore).createTransaction().then((transaction: relationalStore.Transaction) => {
+  (store as relationalStore.RdbStore).createTransaction().then(async (transaction: relationalStore.Transaction) => {
     transaction.execute("DELETE FROM test WHERE age = ? OR age = ?", [21, 20]).then(() => {
       transaction.commit();
     }).catch((e: BusinessError) => {
@@ -3176,7 +3254,7 @@ if (store != undefined) {
 
 commit(txId : number):Promise&lt;void&gt;
 
-提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用。
+提交已执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
 该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -3226,13 +3304,18 @@ commit(txId : number):Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((txId: number) => {
+  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
+    txId = temTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
-        (store as relationalStore.RdbStore).commit(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).commit(txId);
+        }
       })
       .catch((err: BusinessError) => {
-        (store as relationalStore.RdbStore).rollback(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).rollback(txId);
+        }
         console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
       });
   });
@@ -3308,7 +3391,7 @@ if (store != undefined) {
 
 rollback(txId : number):Promise&lt;void&gt;
 
-回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用。
+回滚已经执行的SQL语句，跟[beginTrans](#begintrans12)配合使用，使用Promise异步回调。
 
 该接口仅支持[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)使用。
 
@@ -3358,13 +3441,18 @@ rollback(txId : number):Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 if (store != null) {
   let txId: number;
-  (store as relationalStore.RdbStore).beginTrans().then((txId: number) => {
+  (store as relationalStore.RdbStore).beginTrans().then((temTxId: number) => {
+    txId = temTxId;
     (store as relationalStore.RdbStore).execute("DELETE FROM TEST WHERE age = ? OR age = ?", txId, ["18", "20"])
       .then(() => {
-        (store as relationalStore.RdbStore).commit(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).commit(txId);
+        }
       })
       .catch((err: BusinessError) => {
-        (store as relationalStore.RdbStore).rollback(txId);
+        if (txId !== undefined) {
+          (store as relationalStore.RdbStore).rollback(txId);
+        }
         console.error(`execute sql failed, code is ${err.code},message is ${err.message}`);
       });
   });
@@ -3705,7 +3793,7 @@ if (store != undefined) {
 
 setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, callback: AsyncCallback&lt;void&gt;): void
 
-设置分布式数据库表，使用callback异步回调。
+设置分布式数据库表，支持指定表的分布式类型，使用callback异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3749,7 +3837,7 @@ if (store != undefined) {
 
 setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config: DistributedConfig, callback: AsyncCallback&lt;void&gt;): void
 
-设置分布式数据库表，使用callback异步回调。
+设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用callback异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3796,7 +3884,7 @@ if (store != undefined) {
 
  setDistributedTables(tables: Array&lt;string>, type?: DistributedType, config?: DistributedConfig): Promise&lt;void>
 
-设置分布式数据库表，使用Promise异步回调。
+设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用Promise异步回调。
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -3957,7 +4045,11 @@ let deviceId: string | undefined = undefined;
 try {
   dmInstance = distributedDeviceManager.createDeviceManager("com.example.appdatamgrverify");
   let devices = dmInstance.getAvailableDeviceListSync();
-  deviceId = devices[0].networkId;
+  if (!devices || devices.length === 0) {
+    console.error("No available devices found");
+  } else {
+    deviceId = devices[0].networkId;
+  }
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
@@ -3989,7 +4081,7 @@ sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array
 | ---------- | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | mode       | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)                             | 是   | 指同步模式。该值可以是relationalStore.SyncMode.SYNC_MODE_PUSH、relationalStore.SyncMode.SYNC_MODE_PULL。                               |
 | predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)               | 是   | 约束同步数据和设备。                                         |
-| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | 是   | 指定的callback回调函数，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，其他值表示失败。 |
+| callback   | AsyncCallback&lt;Array&lt;[string, number]&gt;&gt; | 是   | 指定的callback回调函数，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
 
 **错误码：**
 
@@ -4060,7 +4152,7 @@ if (store != undefined) {
 
 | 类型                                         | 说明                                                         |
 | -------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，其他值表示失败。 |
+| Promise&lt;Array&lt;[string, number]&gt;&gt; | Promise对象，用于向调用者发送同步结果。string：设备ID；number：每个设备同步状态，0表示成功，1表示失败。 |
 
 **错误码：**
 
@@ -4321,11 +4413,10 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 **示例：**
 
 ```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
-  if (devices != undefined) {
+  if (devices !== undefined) {
     for (let i = 0; i < devices.length; i++) {
       console.info(`device= ${devices[i]} data changed`);
     }
@@ -4373,11 +4464,10 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 **示例1：type为SUBSCRIBE_TYPE_REMOTE**
 
 ```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
-  if (devices != undefined) {
+  if (devices !== undefined) {
     for (let i = 0; i < devices.length; i++) {
       console.info(`device= ${devices[i]} data changed`);
     }
@@ -4402,7 +4492,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let changeInfos = (changeInfos: Array<relationalStore.ChangeInfo>) => {
   for (let i = 0; i < changeInfos.length; i++) {
-    console.info(`changeInfos = ${changeInfos[i]}`);
+    console.info(`changeInfos = ${JSON.stringify(changeInfos[i])}`);
   }
 };
 
@@ -4508,7 +4598,7 @@ on(event: 'autoSyncProgress', progress: Callback&lt;ProgressDetails&gt;): void
 
 | **错误码ID** | **错误信息**    |
 |-----------|--------|
-| 401       | Parameter error. Possible causes: 1. Need 2 - 3  parameter(s)! 2. The RdbStore must be valid. 3. The event must be a not empty string. 4. The progress must be function. |
+| 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | Capability not supported.  |
 | 14800014  | The RdbStore or ResultSet is already closed.     |
 
@@ -4632,7 +4722,6 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   if (store != undefined) {
-    let exceptionMessage: relationalStore.ExceptionMessage;
     store.on('sqliteErrorOccurred', exceptionMessage => {
       let sqliteCode = exceptionMessage.code;
       let sqliteMessage = exceptionMessage.message;
@@ -4725,7 +4814,8 @@ try {
     'CODES': value4
   };
   if (store != undefined) {
-    (store as relationalStore.RdbStore).insert('test', valueBucket);
+    const rowId = await store.insert('EMPLOYEE', valueBucket);
+    console.info(`Insert success, rowId is: ${rowId}`);
   }
 } catch (err) {
   console.error(`insert fail, code:${err.code}, message: ${err.message}`);
@@ -4764,7 +4854,7 @@ off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;stri
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
-  if (devices != undefined) {
+  if (devices !== undefined) {
     for (let i = 0; i < devices.length; i++) {
       console.info(`device= ${devices[i]} data changed`);
     }
@@ -4823,11 +4913,10 @@ off(event:'dataChange', type: SubscribeType, observer?: Callback&lt;Array&lt;str
 **示例：**
 
 ```ts
-import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let storeObserver = (devices: Array<string>) => {
-  if (devices != undefined) {
+  if (devices !== undefined) {
     for (let i = 0; i < devices.length; i++) {
       console.info(`device= ${devices[i]} data changed`);
     }
@@ -5240,7 +5329,7 @@ if (store != undefined) {
 
 cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
-清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据。若无cursor参数，将全部清理。
+清理云端删除的数据同步到本地后，未自动清理的，且数据的游标（cursor）小于指定游标的数据，使用Promise异步回调。若无cursor参数，将全部清理。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -5253,7 +5342,7 @@ cleanDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
 
 **返回值：**
 
-| 参数名    | 说明                                               |
+| 类型     | 说明                                              |
 | -------- | ------------------------------------------------- |
 | Promise\<void> | 无返回结果的Promise对象。        |
 
@@ -5302,7 +5391,7 @@ if (store != undefined) {
 
 attach(fullPath: string, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+将一个数据库文件附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据，使用Promise异步回调。
 
 数据库文件来自文件，且此API不支持附加加密数据库。调用attach接口后，数据库切换为非WAL模式，性能会存在一定的劣化。
 
@@ -5374,7 +5463,7 @@ if (store != undefined) {
 
 attach(context: Context, config: StoreConfig, attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将一个当前应用的数据库附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据。
+将一个当前应用的数据库附加到当前数据库中，以便在SQL语句中可以直接访问附加数据库中的数据，使用Promise异步回调。
 
 此API不支持加密数据库附加非加密数据库。调用attach接口后，数据库切换为非WAL模式，性能会存在一定的劣化。
 
@@ -5388,7 +5477,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 
 | 参数名        | 类型     | 必填  | 说明           |
 | ----------- | ------ | --- | ------------ |
-| context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context                          | 是   | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | config  | [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig) | 是   | 与此RDB存储相关的数据库配置。                                |
 | attachName | string | 是   | 表示附加后的数据库的别名。 |
 | waitTime | number | 否   | 表示附加数据库文件的等待时长。默认值2s，最小值1s，最大值300s。 |
@@ -5445,17 +5534,16 @@ const STORE_CONFIG1: relationalStore.StoreConfig = {
 relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: relationalStore.RdbStore) => {
   attachStore = rdbStore;
   console.info('Get RdbStore successfully.');
+  if (store != undefined) {
+    (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG1, "attachDB").then((number: number) => {
+      console.info(`attach succeeded, number is ${number}`);
+    }).catch((err: BusinessError) => {
+      console.error(`attach failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
 }).catch((err: BusinessError) => {
   console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
 });
-
-if (store != undefined) {
-  (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG1, "attachDB").then((number: number) => {
-    console.info(`attach succeeded, number is ${number}`);
-  }).catch((err: BusinessError) => {
-    console.error(`attach failed, code is ${err.code},message is ${err.message}`);
-  });
-}
 ```
 
 **示例2：非加密数据库附加加密数据库**
@@ -5474,24 +5562,23 @@ const STORE_CONFIG2: relationalStore.StoreConfig = {
 relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: relationalStore.RdbStore) => {
   attachStore = rdbStore;
   console.info('Get RdbStore successfully.');
+  if (store != undefined) {
+    (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG2, "attachDB2", 10).then((number: number) => {
+      console.info(`attach succeeded, number is ${number}`);
+    }).catch((err: BusinessError) => {
+      console.error(`attach failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
 }).catch((err: BusinessError) => {
   console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
 });
-
-if (store != undefined) {
-  (store as relationalStore.RdbStore).attach(this.context, STORE_CONFIG2, "attachDB2", 10).then((number: number) => {
-    console.info(`attach succeeded, number is ${number}`);
-  }).catch((err: BusinessError) => {
-    console.error(`attach failed, code is ${err.code},message is ${err.message}`);
-  });
-}
 ```
 
 ## detach<sup>12+</sup>
 
 detach(attachName: string, waitTime?: number) : Promise&lt;number&gt;
 
-将附加的数据库从当前数据库中分离。
+将附加的数据库从当前数据库中分离，使用Promise异步回调。
 
 当所有的附加的数据库被分离后，数据库会重新切换为WAL模式。
 
@@ -5691,7 +5778,6 @@ if (store != undefined) {
 queryLockedRow(predicates: RdbPredicates, columns?: Array&lt;string&gt;):Promise&lt;ResultSet&gt;
 
 根据指定条件查询数据库中锁定的数据，使用Promise异步回调。
-由于共享内存大小限制为2Mb，因此单条数据的大小需小于2Mb，否则会查询失败。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5745,15 +5831,20 @@ if (store != undefined) {
   (store as relationalStore.RdbStore).queryLockedRow(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]).then(async (resultSet: relationalStore.ResultSet) => {
     console.info(`ResultSet column names: ${resultSet.columnNames}, column count: ${resultSet.columnCount}`);
     // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-    while (resultSet.goToNextRow()) {
-      const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-      const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-      const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-      const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-      console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    try {
+      while (resultSet.goToNextRow()) {
+        const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+        const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+        const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+        const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+        console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      }
+    } catch (err) {
+      console.error(`Query failed, code is ${err.code},message is ${err.message}`);
+    } finally {
+      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+      resultSet.close();
     }
-    // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`Query failed, code is ${err.code},message is ${err.message}`);
   });
@@ -5771,7 +5862,7 @@ close(): Promise&lt;void&gt;
 
 | 类型                | 说明          |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5802,13 +5893,13 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 手动更新加密数据库的密钥。使用Promise异步回调。
 
-不支持非wal模式的数据库进行密钥更新。
+不支持对非WAL模式的数据库进行密钥更新。
 
 手动更新密钥时需要独占访问数据库，此时若存在任何未释放的结果集（ResultSet）、事务（Transaction）或其他进程打开的数据库均会引发失败。
 
-仅支持加密数据库进行密钥更新，不支持非加密库变加密库及加密库变非加密库，且需要保持加密参数和密钥生成方式与建库时一致。
+仅支持加密数据库进行密钥更新，不支持非加密数据库变加密数据库及加密数据库变非加密数据库，且需要保持加密参数和密钥生成方式与建库时一致。
 
-数据库越大，密钥更新的时间越长。
+数据库越大，密钥更新所需的时间越长。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -5828,95 +5919,513 @@ rekey(cryptoParam?: CryptoParam): Promise\<void>
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
 
-| **错误码ID** | **错误信息**                                                                         |
-| ------------ | ----------------------------------------------------------------------------------- |
-| 801          | Capability not supported.                                                           |
-| 14800001     | Invalid arguments. Possible causes: 1. Empty conditions; 2. Missing GROUP BY clause.|
-| 14800011     | Failed to open the database because it is corrupted.                                |
-| 14800014     | The RdbStore or ResultSet is already closed.                                        |
-| 14800015     | The database does not respond.                                                      |
-| 14800021     | SQLite: Generic error.                                                              |
-| 14800023     | SQLite: Access permission denied.                                                   |
-| 14800024     | SQLite: The database file is locked.                                                |
-| 14800026     | SQLite: The database is out of memory.                                              |
-| 14800027     | SQLite: Attempt to write a readonly database.                                       |
-| 14800028     | SQLite: Some kind of disk I/O error occurred.                                       |
-| 14800029     | SQLite: The database is full.                                                       |
+| **错误码ID** | **错误信息**                                                            |
+| ------------ | ---------------------------------------------------------------------- |
+| 801          | Capability not supported.                                              |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800011     | Failed to open the database because it is corrupted.                   |
+| 14800014     | The RdbStore or ResultSet is already closed.                           |
+| 14800015     | The database does not respond.                                         |
+| 14800021     | SQLite: Generic error.                                                 |
+| 14800023     | SQLite: Access permission denied.                                      |
+| 14800024     | SQLite: The database file is locked.                                   |
+| 14800026     | SQLite: The database is out of memory.                                 |
+| 14800027     | SQLite: Attempt to write a readonly database.                          |
+| 14800028     | SQLite: Some kind of disk I/O error occurred.                          |
+| 14800029     | SQLite: The database is full.                                          |
+
+**示例：**
+
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 示例1：使用默认的加密参数
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const STORE_CONFIG1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: relationalStore.RdbStore) => {
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array()
+      };
+
+      if (store != undefined) {
+        try {
+          (store as relationalStore.RdbStore).rekey(cryptoParam1);
+          console.info('rekey is successful');
+        } catch (err) {
+          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
+}
+```
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 示例2：使用自定义的加密参数
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+
+    const STORE_CONFIG2: relationalStore.StoreConfig = {
+      name: 'rdbstore2.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: relationalStore.RdbStore) => {
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+      let cryptoParam2: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        iterationCount: 1000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        cryptoPageSize: 1024
+      };
+
+      if (store != undefined) {
+        try {
+          (store as relationalStore.RdbStore).rekey(cryptoParam2);
+          console.info('rekey is successful');
+        } catch (err) {
+          console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+    }).catch((err: BusinessError) => {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    });
+  }
+}
+```
+
+## setLocale<sup>20+</sup>
+
+setLocale(locale: string) : Promise\<void>
+
+设置自定义排序的语言。使用Promise异步回调。
+
+该值符合ISO 639标准，但是仅支持ICU中的部分语言，对于不支持的语言，设置自定义排序的语言时会报错14800001。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明                                       |
+| ------ | ------- | ---- | ----------------------------------------- |
+| locale  | string | 是   | 设置自定义排序的语言。该值符合ISO 639标准，如："zh"。|
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                            |
+| ------------ | ---------------------------------------------------------------------- |
+| 801          | Capability not supported.                                              |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range. |
+| 14800014     | The RdbStore or ResultSet is already closed.                           |
+| 14800024     | SQLite: The database file is locked.                                   |
+| 14800026     | SQLite: The database is out of memory.                                 |
+| 14800034     | SQLite: Library used incorrectly.                                         |
 
 **示例：**
 
 ```ts
+try {
+  if (store != undefined) {
+    await store.setLocale("zh");
+    store.querySql("SELECT * FROM EMPLOYEE ORDER BY NAME COLLATE LOCALES", async (err, resultSet) => {
+      if (err) {
+        console.error(`Query failed, code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info(`ResultSet rowCount ${resultSet.rowCount}`);
+    });
+  }
+} catch (err) {
+  console.error(`SetLocale failed, code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## rekeyEx<sup>22+</sup>
+
+rekeyEx(cryptoParam: CryptoParam): Promise\<void>
+
+手动更新数据库的密钥或加密参数，使用Promise异步回调。
+
+不支持对非WAL模式的数据库进行密钥更新。
+
+手动更新时需要独占访问数据库，此时若存在任何未释放的结果集（ResultSet）、事务（Transaction）或其他进程打开的数据库均会导致更新失败。
+
+支持加密数据库的参数更新，以及加密数据库与非加密数据库之间的相互转换。
+
+数据库越大，执行更新所需的时间越长。
+
+> **说明：**
+>
+> 加密参数变更需谨慎，在完成rekeyEx操作后，getRdbStore时必须使用新的参数来打开数据库，否则可能会导致开库失败。
+> 
+> 如果rekey过程因设备断电等原因中断，操作可能成功也可能失败。因此，建议业务方做好兜底保障（使用RekeyEx前后的参数进行冗余重试），确保不会错误地判断数据库的状态，从而避免出现数据库无法打开的问题。
+> 
+> 如果有加密参数变更，不建议getRdbStore时使用AllowedRebuild参数，防止因为传入的错误加密参数导致数据库发生重建。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| cryptoParam  | [CryptoParam](arkts-apis-data-relationalStore-i.md#cryptoparam14) | 是   | 指定用户自定义的加密参数。|
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise\<void> | 无返回结果的Promise对象。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 801          | Capability not supported.                                               |
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | Failed to open the database because it is corrupted.                    |
+| 14800014     | The RdbStore or ResultSet is already closed.                            |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800023     | SQLite: Access permission denied.                                       |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800026     | SQLite: The database is out of memory.                                  |
+| 14800027     | SQLite: Attempt to write a readonly database.                           |
+| 14800028     | SQLite: Some kind of disk I/O error occurred.                           |
+| 14800029     | SQLite: The database is full.                                           |
+
+**示例1：原数据库为默认参数加密数据库，更换密钥和加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-// 示例1：使用默认的加密参数
-let store: relationalStore.RdbStore | undefined = undefined;
 
-const STORE_CONFIG1: relationalStore.StoreConfig = {
-  name: "rdbstore1.db",
-  securityLevel: relationalStore.SecurityLevel.S3;
-  encrypt: true,
-};
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
 
-relationalStore.getRdbStore(this.context, STORE_CONFIG1).then(async (rdbStore: relationalStore.RdbStore) => {
-  store = rdbStore;
-  console.info('Get RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-});
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
 
-let cryptoParam1: relationalStore.CryptoParam = {
-    encryptionKey: new Uint8Array();
-};
+      let cryptoParam: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        iterationCount: 1000,
+        cryptoPageSize: 2048,
+      };
 
-if(store != undefined) {
-  try {
-    (store as relationalStore.RdbStore).rekey(cryptoParam1);
-    console.info(`rekey is successful`);
-  } catch (err) {
-    console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
   }
 }
+```
 
-// 示例2：使用自定义的加密参数
-let store: relationalStore.RdbStore | undefined = undefined;
+**示例2：原数据库为自定义参数加密数据库，更换自定义密钥和加密参数**
 
-let cryptoParam: relationalStore.CryptoParam = {
-  encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
-  iterationCount: 1000,
-  encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
-  hmacAlgo: relationalStore.HmacAlgo.SHA256,
-  kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
-  cryptoPageSize: 1024,
-};
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-const STORE_CONFIG2: relationalStore.StoreConfig = {
-  name: "rdbstore2.db",
-  securityLevel: relationalStore.SecurityLevel.S3;
-  encrypt: true,
-  cryptoParam: cryptoParam,
-};
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
 
-relationalStore.getRdbStore(this.context, STORE_CONFIG2).then(async (rdbStore: relationalStore.RdbStore) => {
-  store = rdbStore;
-  console.info('Get RdbStore successfully.');
-}).catch((err: BusinessError) => {
-  console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
-});
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
 
-let cryptoParam2: relationalStore.CryptoParam = {
-  encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
-  iterationCount: 1000,
-  encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
-  hmacAlgo: relationalStore.HmacAlgo.SHA256,
-  kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
-  cryptoPageSize: 1024,
-};
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        iterationCount: 5000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA512,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512,
+        cryptoPageSize: 2048
+      };
 
-if(store != undefined) {
-  try {
-    (store as relationalStore.RdbStore).rekey(cryptoParam2);
-    console.info(`rekey is successful`);
-  } catch (err) {
-    console.error(`rekey is failed, code is ${err.code},message is ${err.message}`);
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例3：原数据库为默认参数加密库，更换自定义密钥和加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+        encryptionKey: new Uint8Array([6, 5, 4, 3, 2, 1]),
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        iterationCount: 1000,
+        cryptoPageSize: 2048,
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例4：原数据库为自定义参数加密数据库，更换数据库生成密钥和自定义加密参数**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore2.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        iterationCount: 5000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_CBC,
+        hmacAlgo: relationalStore.HmacAlgo.SHA512,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA512,
+        cryptoPageSize: 2048
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例5：原数据库为自定义参数加密数据库，更换为非加密数据库**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    let cryptoParam: relationalStore.CryptoParam = {
+      // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+      encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+      iterationCount: 1000,
+      encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+      hmacAlgo: relationalStore.HmacAlgo.SHA256,
+      kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+      cryptoPageSize: 1024
+    };
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: true,
+      cryptoParam: cryptoParam
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam1: relationalStore.CryptoParam = {
+        encryptionKey: new Uint8Array(),
+        encryptionAlgo: relationalStore.EncryptionAlgo.PLAIN_TEXT
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam1);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
+  }
+}
+```
+
+**示例6：原数据库为非加密数据库，更换为自定义参数加密数据库**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  async onCreate() {
+    let store: relationalStore.RdbStore | undefined = undefined;
+    const configV1: relationalStore.StoreConfig = {
+      name: 'rdbstore1.db',
+      securityLevel: relationalStore.SecurityLevel.S3,
+      encrypt: false,
+    };
+
+    try {
+      const rdbStore = await relationalStore.getRdbStore(this.context, configV1);
+      store = rdbStore;
+      console.info('Get RdbStore successfully.');
+
+      let cryptoParam: relationalStore.CryptoParam = {
+        // 安全提醒：1.空数组encryptionKey表示使用系统生成的密钥（仅适用于部分场景）；2.生产环境应使用应用沙箱密钥或安全存储服务管理密钥，不要在代码中硬编码固定密钥
+        encryptionKey: new Uint8Array([1, 2, 3, 4, 5, 6]),
+        iterationCount: 1000,
+        encryptionAlgo: relationalStore.EncryptionAlgo.AES_256_GCM,
+        hmacAlgo: relationalStore.HmacAlgo.SHA256,
+        kdfAlgo: relationalStore.KdfAlgo.KDF_SHA256,
+        cryptoPageSize: 1024
+      };
+
+      if (store != undefined) {
+        try {
+          await (store as relationalStore.RdbStore).rekeyEx(cryptoParam);
+          console.info('rekeyEx is successful');
+        } catch (err) {
+          console.error(`rekeyEx is failed, code is ${err.code},message is ${err.message}`);
+        }
+      }
+      // 在完成rekeyEx操作后，如果后续需要重新getRdbStore时必须使用新的参数来打开数据库
+    } catch (err) {
+      console.error(`Get RdbStore failed, code is ${err.code},message is ${err.message}`);
+    };
   }
 }
 ```

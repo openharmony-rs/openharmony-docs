@@ -1,8 +1,17 @@
 # oh_axis_type.h
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 输入设备的轴事件结构和枚举。
+
+**引用文件：** <multimodalinput/oh_axis_type.h>
 
 **库：** libohinput.so
 
@@ -26,7 +35,7 @@
 
 ### InputEvent_AxisType
 
-```
+```c
 enum InputEvent_AxisType
 ```
 
@@ -39,14 +48,14 @@ enum InputEvent_AxisType
 | 枚举项 | 描述             |
 | -- |----------------|
 | AXIS_TYPE_UNKNOWN | 未知轴类型，通常作为初始值。 |
-| AXIS_TYPE_SCROLL_VERTICAL | 垂直滚动轴，当您滚动鼠标滚轮或在触摸板上进行单指或双指滑动时，垂直滚动轴的状态改变。               |
-| AXIS_TYPE_SCROLL_HORIZONTAL | 水平滚动轴，当您滚动鼠标滚轮或在触摸板上进行双指滑动时，水平滚动轴的状态发生变化。               |
-| AXIS_TYPE_PINCH | 捏合轴，用于描述触摸板上的双指捏合手势。               |
-| AXIS_TYPE_ROTATE | 旋转轴，用于描述触摸板上的双指旋转手势。               |
+| AXIS_TYPE_SCROLL_VERTICAL | 垂直滚动轴，当您滚动鼠标滚轮或在触控板上进行单指或双指滑动时，垂直滚动轴的状态改变。               |
+| AXIS_TYPE_SCROLL_HORIZONTAL | 水平滚动轴，当您滚动鼠标滚轮或在触控板上进行双指滑动时，水平滚动轴的状态发生变化。               |
+| AXIS_TYPE_PINCH | 捏合轴，用于描述触控板上的双指捏合手势。               |
+| AXIS_TYPE_ROTATE | 旋转轴，用于描述触控板上的双指旋转手势。               |
 
 ### InputEvent_AxisEventType
 
-```
+```c
 enum InputEvent_AxisEventType
 ```
 
@@ -58,12 +67,12 @@ enum InputEvent_AxisEventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| AXIS_EVENT_TYPE_PINCH = 1 | 双指捏合事件，包含AXIS_TYPE_PINCH和AXIS_TYPE_ROTATE两种轴类型。		<br>**起始版本：** 12。 |
-| AXIS_EVENT_TYPE_SCROLL = 2 | 滚轴事件，包含AXIS_TYPE_SCROLL_VERTICAL和AXIS_TYPE_SCROLL_HORIZONTAL两种轴类型，其中鼠标滚轮事件仅包含AXIS_TYPE_SCROLL_VERTICAL一种轴类型。		<br>**起始版本：** 12。 |
+| AXIS_EVENT_TYPE_PINCH = 1 | 双指捏合事件，包含AXIS_TYPE_PINCH和AXIS_TYPE_ROTATE两种轴类型。<br>**起始版本：** 12。 |
+| AXIS_EVENT_TYPE_SCROLL = 2 | 滚轴事件，包含AXIS_TYPE_SCROLL_VERTICAL和AXIS_TYPE_SCROLL_HORIZONTAL两种轴类型，其中鼠标滚轮事件仅包含AXIS_TYPE_SCROLL_VERTICAL一种轴类型。<br>**起始版本：** 12。 |
 
 ### InputEvent_AxisAction
 
-```
+```c
 enum InputEvent_AxisAction
 ```
 

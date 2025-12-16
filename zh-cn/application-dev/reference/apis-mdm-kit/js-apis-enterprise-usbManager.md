@@ -1,4 +1,10 @@
 # @ohos.enterprise.usbManager（USB管理）
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供USB管理能力。
 
@@ -22,7 +28,7 @@ import { usbManager } from '@kit.MDMKit';
 
 addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
-添加USB设备可用白名单。
+添加USB设备可用名单。
 
 以下情况下，调用本接口会报策略冲突：
 
@@ -34,14 +40,15 @@ addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
-| usbDeviceIds | Array<[UsbDeviceId](#usbdeviceid)>                      | 是   | USB设备ID数组，UsbDeviceId信息可以通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。添加后的数组长度上限为1000。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| usbDeviceIds | Array<[UsbDeviceId](#usbdeviceid)>                      | 是   | USB设备ID数组，UsbDeviceId信息可以通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。USB设备可用名单数组长度上限为1000，若当前允许名单中已有300个USB设备ID，则只允许再添加700个。 |
 
 **错误码**：
 
@@ -58,11 +65,13 @@ addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
@@ -80,19 +89,20 @@ try {
 
 removeAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
-移除USB设备可用白名单。
+移除USB设备可用名单。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | usbDeviceIds | Array<[UsbDeviceId](#usbdeviceid)>                      | 是   | USB设备ID数组，UsbDeviceId信息可以通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。 |
 
 **错误码**：
@@ -109,11 +119,13 @@ removeAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDeviceIds: Array<usbManager.UsbDeviceId> = [{
@@ -131,25 +143,26 @@ try {
 
 getAllowedUsbDevices(admin: Want): Array\<UsbDeviceId>
 
-获取USB设备可用白名单。
+获取USB设备可用名单。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
 | 类型                               | 说明                      |
 | ---------------------------------- | ------------------------- |
-| Array<[UsbDeviceId](#usbdeviceid)> | 可用USB白名单设备ID数组。 |
+| Array<[UsbDeviceId](#usbdeviceid)> | 可用USB允许名单设备ID数组。 |
 
 **错误码**：
 
@@ -165,11 +178,13 @@ getAllowedUsbDevices(admin: Want): Array\<UsbDeviceId>
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<usbManager.UsbDeviceId> = usbManager.getAllowedUsbDevices(wantTemp);
@@ -185,6 +200,9 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 设置USB存储设备访问策略。
 
+> **说明**：
+> 在调用接口前，确保已暂停USB存储设备的读写操作，保证操作的稳定性和数据的完整性，否则可能出现不可预期的异常。
+
 以下情况下，通过本接口设置USB存储设备访问策略为可读可写/只读，会报策略冲突：
 
 1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
@@ -194,7 +212,7 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 以下情况下，通过本接口设置USB存储设备访问策略为禁用，会报策略冲突：
 
 1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
-2. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用白名单。
+2. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。
 3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了某用户USB存储设备写入能力。
 
 通过本接口设置，或者通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加存储类型的USB设备，均可禁用USB存储设备。推荐使用后者。
@@ -203,13 +221,14 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名    | 类型                                                    | 必填 | 说明                                   |
 | --------- | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | usbPolicy | [UsbPolicy](#usbpolicy)                                 | 是   | USB存储设备访问策略。                  |
 
 **错误码**：
@@ -227,11 +246,13 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.DISABLED;
@@ -252,13 +273,14 @@ getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -280,11 +302,13 @@ getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: usbManager.UsbPolicy = usbManager.getUsbStorageDeviceAccessPolicy(wantTemp);
@@ -303,21 +327,22 @@ addDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 以下情况下，调用本接口会报策略冲突：
 
 1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
-2. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用白名单。
+2. 已经通过[addAllowedUsbDevices](#usbmanageraddallowedusbdevices)接口添加了USB设备可用名单。
 3. 已经通过[setDisallowedPolicyForAccount](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccount14)接口禁用了某用户USB存储设备写入能力。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
-| usbDevices | Array<[UsbDeviceType](#usbdevicetype14)>                | 是   | 要添加的USB设备类型的数组，UsbDeviceType信息可以通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。添加后的数组长度上限为200。 |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| usbDevices | Array<[UsbDeviceType](#usbdevicetype14)>                | 是   | 要添加的USB设备类型的数组，UsbDeviceType信息可以通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。USB设备禁用名单数组长度上限为200，若当前禁用名单中已有100个USB设备ID，则只允许再添加100个。 |
 
 **错误码**：
 
@@ -334,11 +359,13 @@ addDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
@@ -364,13 +391,14 @@ removeDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | usbDevices | Array<[UsbDeviceType](#usbdevicetype14)>                | 是   | 要移除的USB设备类型的数组，UsbDeviceType信息可以通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。 |
 
 **错误码**：
@@ -387,11 +415,13 @@ removeDisallowedUsbDevices(admin: Want, usbDevices: Array\<UsbDeviceType>): void
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let usbDevices: Array<usbManager.UsbDeviceType> = [{
@@ -417,13 +447,14 @@ getDisallowedUsbDevices(admin: Want): Array\<UsbDeviceType>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -445,11 +476,13 @@ getDisallowedUsbDevices(admin: Want): Array\<UsbDeviceType>
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<usbManager.UsbDeviceType> = usbManager.getDisallowedUsbDevices(wantTemp);
@@ -472,16 +505,16 @@ USB设备ID信息。
 
 ## UsbDeviceType<sup>14+</sup>
 
-USB设备类型信息。其中具体编号可查询：[defined-class-codes](https://www.usb.org/defined-class-codes)。
+USB设备类型信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 | 名称       | 类型                        | 只读 | 可选 | 说明                                                         |
 | ---------- | --------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| baseClass  | number                      | 否   | 否 | 类型编号，可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。若descriptor为DEVICE，则取返回值中的USBDevice.clazz字段，若descriptor为INTERFACE，则取返回值中的USBDevice.configs.interfaces.clazz字段。 |
-| subClass   | number                      | 否   | 否 | 子类型编号，可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。若descriptor为DEVICE，则取返回值中的USBDevice.subClass字段，若descriptor为INTERFACE，则取返回值中的USBDevice.configs.interfaces.subClass字段。 |
-| protocol   | number                      | 否   | 否 | 协议编号，可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取。若descriptor为DEVICE，则取返回值中的USBDevice.protocol字段，若descriptor为INTERFACE，则取返回值中的USBDevice.configs.interfaces.protocol字段。 |
-| descriptor | [Descriptor](#descriptor14) | 否   | 否 | USB描述符。须按照[defined-class-codes](https://www.usb.org/defined-class-codes)，取baseClass对应的Descriptor Usage值作为参数传入，若Descriptor Usage为Both，则设备级禁用时传入DEVICE、接口级禁用时传入INTERFACE。 |
+| baseClass  | number                      | 否   | 否 | 类型编码。<br>可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取已接入主设备的USB设备列表，需在返回值列表中查找当前设备，查看其值。<br>先根据此值确定descriptor应该传入的类型。若descriptor为DEVICE，则本字段取USBDevice.clazz字段值，若descriptor为INTERFACE，则本字段取USBDevice.configs.interfaces.clazz字段值。<br>若字段值为255，表示此设备的类型编码是厂商自定义编码，则使用[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)/[removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14)接口禁用/解禁该设备不生效；若字段值未在[defined-class-codes](https://www.usb.org/defined-class-codes)中定义，则使用[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)/[removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14)接口禁用/解禁该设备不生效。 |
+| subClass   | number                      | 否   | 否 | 子类型编码。<br>可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取已接入主设备的USB设备列表，需在返回值列表中查找当前设备，查看其值。<br>先根据baseClass的值确定descriptor应该传入的类型。若descriptor为DEVICE，则本字段取USBDevice.subClass字段值，若descriptor为INTERFACE，则本字段取USBDevice.configs.interfaces.subClass字段值。<br>若字段值为255，表示此设备的子类型编码是厂商自定义编码，则使用[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)/[removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14)接口禁用/解禁该设备不生效；若字段值未在[defined-class-codes](https://www.usb.org/defined-class-codes)中定义，则使用[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)/[removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14)接口禁用/解禁该设备不生效。 |
+| protocol   | number                      | 否   | 否 | 协议编码。<br>可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取已接入主设备的USB设备列表，需在返回值列表中查找当前设备，查看其值。<br>先根据baseClass的值确定descriptor应该传入的类型。若descriptor为DEVICE，则本字段取USBDevice.protocol字段值，若descriptor为INTERFACE，则本字段取USBDevice.configs.interfaces.protocol字段值。<br>若字段值为255，表示此设备的协议编码是厂商自定义编码，则使用[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)/[removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14)接口禁用/解禁该设备不生效；若字段值未在[defined-class-codes](https://www.usb.org/defined-class-codes)中定义，则使用[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)/[removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14)接口禁用/解禁该设备不生效。 |
+| descriptor | [Descriptor](#descriptor14) | 否   | 否 | USB描述符。<br>可通过[getDevices](../apis-basic-services-kit/js-apis-usbManager.md#usbmanagergetdevices)接口获取已接入主设备的USB设备列表，需在返回值列表中查找当前设备，查看其值。<br>若此值USBDevice.clazz字段值为0，则须在[defined-class-codes](https://www.usb.org/defined-class-codes)中的Base Class列查找此值USBDevice.configs.interfaces.clazz字段值，查找结果所在行所对应的Descriptor Usage列就表示当前应该传入的descriptor类型（若Descriptor Usage列为Both，表示两种类型都可以传入，需要设备级禁用时传入DEVICE，需要接口级禁用时传入INTERFACE）;<br>若此值USBDevice.clazz字段值为255，表示此设备的类型编码是厂商自定义编码，则使用[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)/[removeDisallowedUsbDevices](#usbmanagerremovedisallowedusbdevices14)接口禁用/解禁该设备不生效；若此值USBDevice.clazz字段值为其他值，则须在[defined-class-codes](https://www.usb.org/defined-class-codes)中的Base Class列查找该值，查找结果所在行所对应的Descriptor Usage列就表示当前应该传入的descriptor类型（若Descriptor Usage列为Both，表示两种类型都可以传入，需要设备级禁用时传入DEVICE，需要接口级禁用时传入INTERFACE）。 |
 
 ## UsbPolicy
 

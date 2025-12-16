@@ -1,4 +1,10 @@
 # \@Event装饰器：规范组件输出
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 为了实现子组件向父组件要求更新\@Param装饰变量的能力，开发者可以使用\@Event装饰器。使用\@Event装饰回调方法是一种规范，表明子组件需要传入更新数据源的回调。
 
@@ -7,12 +13,15 @@
 
 >**说明：**
 >
->从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Event装饰器。
+> 从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Event装饰器。
 >
+> 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
-由于\@Param装饰的变量在本地无法更改，使用\@Event装饰器装饰回调方法并调用，可以实现更改数据源的变量，再通过\@Local的同步机制，将修改同步回\@Param，以此达到主动更新\@Param装饰变量的效果。
+由于\@Param装饰的变量在本地无法更改，使用\@Event装饰器装饰回调方法并调用，可以实现更新数据源的变量，再通过[\@Local](arkts-new-local.md)的同步机制，将修改同步回\@Param装饰的变量，以此达到主动更新\@Param装饰变量的效果。
 
 \@Event用于装饰组件对外输出的方法：
 
@@ -33,17 +42,17 @@
 
 ## 限制条件
 
-- \@Event只能用在\@ComponentV2装饰的自定义组件中。当装饰非方法类型的变量时，不会有任何作用。
+- \@Event只能用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中。当装饰非方法类型的变量时，不会有任何作用。
 
   ```ts
   @ComponentV2
   struct Index {
-    @Event changeFactory: ()=>void = ()=>{}; //正确用法
-    @Event message: string = "abcd"; // 错误用法，装饰非函数类型变量，@Event无作用
+    @Event changeFactory: () => void = () => {}; //正确用法
+    @Event message: string = 'abcd'; // 错误用法，装饰非函数类型变量，@Event无作用
   }
   @Component
   struct Index {
-    @Event changeFactory: ()=>void = ()=>{}; // 错误用法，编译时报错
+    @Event changeFactory: () => void = () => {}; // 错误用法，编译时报错
   }
   ```
 
@@ -54,11 +63,13 @@
 
 使用\@Event可以更改父组件中变量，当该变量作为子组件\@Param变量的数据源时，该变化会同步回子组件的\@Param变量。
 
-```ts
+<!-- @[EventDecoratorTest1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest1.ets) -->
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
-  @Local title: string = "Title One";
+  @Local title: string = 'Title One';
   @Local fontColor: Color = Color.Red;
 
   build() {
@@ -68,10 +79,10 @@ struct Index {
         fontColor: this.fontColor,
         changeFactory: (type: number) => {
           if (type == 1) {
-            this.title = "Title One";
+            this.title = 'Title One';
             this.fontColor = Color.Red;
           } else if (type == 2) {
-            this.title = "Title Two";
+            this.title = 'Title Two';
             this.fontColor = Color.Green;
           }
         }
@@ -90,11 +101,11 @@ struct Child {
     Column() {
       Text(`${this.title}`)
         .fontColor(this.fontColor)
-      Button("change to Title Two")
+      Button('change to Title Two')
         .onClick(() => {
           this.changeFactory(2);
         })
-      Button("change to Title One")
+      Button('change to Title One')
         .onClick(() => {
           this.changeFactory(1);
         })
@@ -105,9 +116,15 @@ struct Child {
 
 值得注意的是，使用\@Event修改父组件的值是立刻生效的，但从父组件将变化同步回子组件的过程是异步的，即在调用完\@Event的方法后，子组件内的值不会立刻变化。这是因为\@Event将子组件值实际的变化能力交由父组件处理，在父组件实际决定如何处理后，将最终值在渲染之前同步回子组件。
 
-```ts
+<!-- @[EventDecoratorTest2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+const TAG = '[Sample_EventDecorator]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'EventDecorator_';
 @ComponentV2
-struct Child {
+struct Child2 {
   @Param index: number = 0;
   @Event changeIndex: (val: number) => void;
 
@@ -116,33 +133,33 @@ struct Child {
       Text(`Child index: ${this.index}`)
         .onClick(() => {
           this.changeIndex(20);
-          console.log(`after changeIndex ${this.index}`);
+          hilog.info(DOMAIN, TAG, BUNDLE, `after changeIndex ${this.index}`);
         })
     }
   }
 }
 @Entry
 @ComponentV2
-struct Index {
+struct Index2 {
   @Local index: number = 0;
 
   build() {
-  	Column() {
-  	  Child({
-  	    index: this.index,
-  	    changeIndex: (val: number) => {
-  	      this.index = val;
-          console.log(`in changeIndex ${this.index}`);
-  	    }
-  	  })
-  	}
+    Column() {
+      Child2({
+        index: this.index,
+        changeIndex: (val: number) => {
+          this.index = val;
+          hilog.info(DOMAIN, TAG, BUNDLE, `in changeIndex ${this.index}`);
+        }
+      })
+    }
   }
 }
 ```
 
 在上面的示例中，点击文字触发\@Event函数事件改变子组件的值，打印出的日志为：
 
-```
+```text
 in changeIndex 20
 after changeIndex 0
 ```

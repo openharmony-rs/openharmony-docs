@@ -1,5 +1,12 @@
 # @ohos.bluetooth.wearDetection(蓝牙佩戴检测模块)(系统接口)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 佩戴检测模块提供了获取蓝牙音频设备(如蓝牙耳机)是否支持佩戴检测、是否开启佩戴检测的方法。
 
 > **说明：**
@@ -16,7 +23,7 @@ import { wearDetection } from '@kit.ConnectivityKit';
 ```
 
 
-## wearDetection.enableWearDetection<sup>11+</sup>
+## wearDetection.enableWearDetection
 
 enableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -63,7 +70,7 @@ try {
 }
 ```
 
-## wearDetection.enableWearDetection<sup>11+</sup>
+## wearDetection.enableWearDetection
 
 enableWearDetection(deviceId: string): Promise&lt;void&gt;
 
@@ -113,7 +120,7 @@ try {
 }
 ```
 
-## wearDetection.disableWearDetection<sup>11+</sup>
+## wearDetection.disableWearDetection
 
 disableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -160,7 +167,7 @@ try {
 }
 ```
 
-## wearDetection.disableWearDetection<sup>11+</sup>
+## wearDetection.disableWearDetection
 
 disableWearDetection(deviceId: string): Promise&lt;void&gt;
 
@@ -210,7 +217,7 @@ try {
 }
 ```
 
-## wearDetection.isWearDetectionSupported<sup>11+</sup>
+## wearDetection.isWearDetectionSupported
 
 isWearDetectionSupported(deviceId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -255,7 +262,7 @@ try {
 }
 ```
 
-## wearDetection.isWearDetectionSupported<sup>11+</sup>
+## wearDetection.isWearDetectionSupported
 
 isWearDetectionSupported(deviceId: string): Promise&lt;boolean&gt;
 
@@ -305,7 +312,7 @@ try {
 }
 ```
 
-## wearDetection.isWearDetectionEnabled<sup>11+</sup>
+## wearDetection.isWearDetectionEnabled
 
 isWearDetectionEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -350,7 +357,7 @@ try {
 }
 ```
 
-## wearDetection.isWearDetectionEnabled<sup>11+</sup>
+## wearDetection.isWearDetectionEnabled
 
 isWearDetectionEnabled(deviceId: string): Promise&lt;boolean&gt;
 

@@ -1,5 +1,12 @@
 # @ohos.security.certManager (证书管理模块)
 
+<!--Kit: Device Certificate Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @chaceli-->
+<!--Designer: @chande-->
+<!--Tester: @zhangzhi1995-->
+<!--Adviser: @zengyawen-->
+
 证书管理主要提供系统级的证书管理能力，实现证书全生命周期（安装，存储，使用，销毁）的管理和安全使用。
 
 > **说明：**
@@ -78,7 +85,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | state          | boolean     | 否  | 否  | 表示证书的状态，true为启用状态、false为禁用状态。 |
 | issuerName          | string         | 否  | 否  | 表示证书的颁发者名称，最大长度为256字节。 |
 | subjectName          | string   | 否  | 否  | 表示证书的使用者名称，最大长度为1024字节。 |
-| serial          | string     | 否  | 否  | 表示证书的序列号，最大长度为64字节。 |
+| serial          | string     | 否  | 否  | 表示证书的序列号，最大长度为64字节。格式为16进制字符串，例如：62C2CB4DE8405E96。 |
 | notBefore          | string         | 否  | 否  | 表示证书有效期起始日期，最大长度为32字节。 |
 | notAfter          | string   | 否  | 否  | 表示证书有效期截止日期，最大长度为32字节。 |
 | fingerprintSha256     | string     | 否  | 否  | 表示证书的指纹值，最大长度为128字节。 |
@@ -110,7 +117,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | keyUri          | string     | 否  | 否  | 表示凭据的唯一标识符，最大长度为256字节。 |
 | certNum          | number         | 否  | 否  | 表示凭据中包含的证书个数。 |
 | keyNum          | number   | 否  | 否  | 表示凭据中包含的密钥个数。 |
-| credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为24588字节。 |
+| credentialData          | Uint8Array   | 否  | 否  | 表示凭据二进制数据，最大长度为20480字节。 |
+| certPurpose<sup>22+</sup>          | [CertificatePurpose](#certificatepurpose22)   | 否  | 是  | 表示凭据的用途。默认值为CertificatePurpose.PURPOSE_DEFAULT。 |
 
 ## CredentialAbstract
 
@@ -139,6 +147,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | appUidList        | Array\<string>     | 否  | 是   | 表示授权应用列表。 |
 | uri         | string    | 否  | 是   | 表示证书或凭据的唯一标识符，最大长度为256字节。 |
 | outData         | Uint8Array    | 否  | 是   | 表示签名结果。 |
+| credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | 否  | 是   | 表示凭据详细信息。 |
 
 ## CMHandle
 
@@ -167,6 +176,8 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | 表示应用未经用户授权。 |
 | CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | 表示设备进入坚盾守护模式。 |
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | 表示不支持指定的证书存储路径。   |
+| CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | 表示访问USB凭据服务失败。   |
+| CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | 表示输入参数校验失败。<br>例如：参数格式不正确、参数范围无效。   |
 
 ## CertType<sup>18+</sup>
 
@@ -225,6 +236,29 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | EL2  | 2    | EL2级别，表示设备首次解锁后可以访问。           |
 | EL4  | 4    | EL4级别，表示设备解锁时可以访问。             |
 
+## CertificatePurpose<sup>22+</sup>
+
+表示凭据用途的枚举。
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+| 名称    | 值   | 说明  |
+| --------| ---- | -------- |
+| PURPOSE_DEFAULT  | 0    | 默认用途，用于凭据签名。  |
+| PURPOSE_ALL  | 1    | 用于查询所有凭据。  |
+| PURPOSE_SIGN  | 2    | 用于凭据签名。   |
+| PURPOSE_ENCRYPT  | 3    | 用于凭据加密。  |
+
+## UkeyInfo<sup>22+</sup>
+
+提供USB凭据属性信息。
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+| 名称           | 类型  | 只读 | 可选 | 说明  |
+| -------------- | ---- | ---- | ---- | ---- |
+| certPurpose  | [CertificatePurpose](#certificatepurpose22)  | 否   | 是  | 表示凭据用途。 |
+
 ## certificateManager.installPrivateCertificate
 
 installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: string, callback: AsyncCallback\<CMResult>): void
@@ -252,7 +286,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004 | The number of certificates or credentials reaches the maximum allowed. |
 
@@ -311,7 +345,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004 | The number of certificates or credentials reaches the maximum allowed. |
 
@@ -371,7 +405,7 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | ---------------------- | ------------------------------------------------------------ |
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                              |
+| 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 | 17500003               | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004               | The number of certificates or credentials reaches the maximum allowed. |
 
@@ -425,14 +459,14 @@ getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
 **示例**：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
-let uri: string = 'test'; /* 业务安装凭据，返回唯一标识符，此处省略 */
+let uri: string = 'test'; /* 业务获取私有凭据详情，需要使用凭据的唯一标识符，此处省略 */
 try {
   certificateManager.getPrivateCertificate(uri, (err, cmResult) => {
     if (err != null) {
@@ -481,7 +515,7 @@ getPrivateCertificate(keyUri: string): Promise\<CMResult>
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
 **示例**：
@@ -489,7 +523,7 @@ getPrivateCertificate(keyUri: string): Promise\<CMResult>
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* 业务安装凭据，返回唯一标识符，此处省略 */
+let uri: string = 'test'; /* 业务获取私有凭据详情，需要使用凭据的唯一标识符，此处省略 */
 try {
   certificateManager.getPrivateCertificate(uri).then((cmResult) => {
     if (cmResult?.credential == undefined) {
@@ -531,14 +565,14 @@ uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): voi
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
 **示例**：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
-let uri: string = 'test'; /* 业务安装凭据，返回唯一标识符，此处省略 */
+let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
 try {
   certificateManager.uninstallPrivateCertificate(uri, (err, result) => {
     if (err != null) {
@@ -582,7 +616,7 @@ uninstallPrivateCertificate(keyUri: string): Promise\<void>
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
 **示例**：
@@ -590,7 +624,7 @@ uninstallPrivateCertificate(keyUri: string): Promise\<void>
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* 业务安装凭据，返回唯一标识符，此处省略 */
+let uri: string = 'test'; /* 业务删除私有凭据，需要使用凭据的唯一标识符，此处省略 */
 try {
   certificateManager.uninstallPrivateCertificate(uri).then((cmResult) => {
     console.info('Succeeded in uninstalling private certificate.');
@@ -633,7 +667,7 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMRe
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
+| 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.    |
 | 17500003               | Indicates that the certificate is in an invalid format.                                                                                         |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed.                                                                          |
 | 17500007               | Indicates that the device enters advanced security mode. In this mode, the user CA certificate cannot be installed.                             |
@@ -684,7 +718,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 401                    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                                                                                                                 |
+| 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
 | 17500002               | Indicates that the certificate does not exist.                                                                                                  |
 
 **示例**：
@@ -692,7 +726,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 ```ts
 import {certificateManager} from '@kit.DeviceCertificateKit';
 
-let certUri: string = "test"; /* 业务安装证书，返回唯一标识符，此处省略 */
+let certUri: string = "test"; /* 业务删除证书，需要使用证书的标识符，此处省略 */
 try {
     certificateManager.uninstallUserTrustedCertificateSync(certUri);
 } catch (error) {
@@ -726,7 +760,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 | 17500005<sup>12+</sup> | The application is not authorized by the user. |
 
@@ -734,7 +768,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
-let uri: string = 'test'; /* 业务安装凭据，返回唯一标识符，此处省略 */
+let uri: string = 'test'; /* 业务使用凭据进行签名、验签的初始化操作，需要使用凭据的唯一标识符，此处省略 */
 const req: certificateManager.CMSignatureSpec = {
   purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_SIGN,
   padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
@@ -784,7 +818,7 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 | -------- | ------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 | 17500005<sup>12+</sup> | The application is not authorized by the user. |
 
@@ -793,7 +827,7 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* 业务安装凭据，返回唯一标识符，此处省略 */
+let uri: string = 'test'; /* 业务使用凭据进行签名、验签的初始化操作，需要使用凭据的唯一标识符，此处省略 */
 const req: certificateManager.CMSignatureSpec = {
   purpose: certificateManager.CmKeyPurpose.CM_KEY_PURPOSE_VERIFY,
   padding: certificateManager.CmKeyPadding.CM_PADDING_PSS,
@@ -836,7 +870,7 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
 ```ts
@@ -893,7 +927,7 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
 ```ts
@@ -943,7 +977,7 @@ finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
 ```ts
@@ -997,7 +1031,7 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
 ```ts
@@ -1054,7 +1088,7 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
 ```ts
@@ -1118,7 +1152,7 @@ abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
 ```ts
@@ -1171,7 +1205,7 @@ abort(handle: Uint8Array): Promise\<void>
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.     |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.     |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
 **示例**：
 ```ts
@@ -1223,7 +1257,7 @@ getPublicCertificate(keyUri: string): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 | 17500005 | The application is not authorized by the user. |
 
@@ -1232,7 +1266,7 @@ getPublicCertificate(keyUri: string): Promise\<CMResult>
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri: string = 'test'; /* 用户安装公共凭据返回的唯一标识符，此处省略 */
+let uri: string = 'test'; /* 用户获取公共凭据详情，需要使用凭据的唯一标识符，此处省略 */
 try {
   certificateManager.getPublicCertificate(uri).then((cmResult) => {
     if (cmResult?.credential == undefined) {
@@ -1279,7 +1313,7 @@ isAuthorizedApp(keyUri: string): Promise\<boolean>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -1295,10 +1329,10 @@ try {
       console.info('The application is not authorized by the user.');
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get Public certificate. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to check if the application is authorized. Code: ${err.code}, message: ${err.message}`);
   })
 } catch (error) {
-  console.error(`Failed to get Public certificate. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to check if the application is authorized. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1325,7 +1359,7 @@ getAllUserTrustedCertificates(): Promise\<CMResult>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -1334,7 +1368,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   certificateManager.getAllUserTrustedCertificates().then((cmResult) => {
-    if (cmResult == undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
+    if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
       console.info('the count of the user trusted certificates is 0');
     } else if (cmResult.certList == undefined) {
       console.info('The result of getting all user trusted certificates is undefined.');
@@ -1380,7 +1414,7 @@ getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.                                              |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.      |
 
 **示例**：
 
@@ -1392,7 +1426,7 @@ try {
   /* 获取当前用户下的用户根CA证书列表; 如果需要获取设备公共位置的用户根CA列表，则传入GLOBAL_USER */
   let scope: certificateManager.CertScope = certificateManager.CertScope.CURRENT_USER;
   certificateManager.getAllUserTrustedCertificates(scope).then((cmResult) => {
-    if (cmResult == undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
+    if (cmResult === undefined) { // 用户根CA证书个数为0时，返回cmResult为undefined。
       console.info('the count of the user trusted certificates is 0');
     } else if (cmResult.certList == undefined) {
       console.info('The result of getting current user trusted certificates is undefined.');
@@ -1422,7 +1456,7 @@ getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| certUri | string                   | 是   | 表示用户用户根CA证书的唯一标识符，长度限制256字节以内。 |
+| certUri | string                   | 是   | 表示用户根CA证书的唯一标识符，长度限制256字节以内。 |
 
 **返回值**：
 
@@ -1438,7 +1472,7 @@ getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
 **示例**：
@@ -1446,7 +1480,7 @@ getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let certUri: string = 'testUserCert'; /* 用户安装用户根CA证书返回的唯一标识符，此处省略 */
+let certUri: string = 'testUserCert'; /* 用户获取用户根CA证书详情，需要使用CA证书的唯一标识符，此处省略 */
 try {
   certificateManager.getUserTrustedCertificate(certUri).then((cmResult) => {
     if (cmResult?.certInfo == undefined) {
@@ -1485,7 +1519,7 @@ getPrivateCertificates(): Promise\<CMResult>
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -1494,7 +1528,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   certificateManager.getPrivateCertificates().then((cmResult) => {
-    if (cmResult == undefined) { // 应用安装的凭据个数为0时，返回cmResult为undefined。
+    if (cmResult === undefined) { // 应用安装的凭据个数为0时，返回cmResult为undefined。
       console.info('the count of the private certificates is 0');
     } else if (cmResult.credentialList == undefined) {
       console.info('The result of getting all private certificates installed by the application is undefined.');
@@ -1535,9 +1569,9 @@ getCertificateStorePath(property: CertStoreProperty): string;
 
 | 错误码ID    | 错误信息      |
 |----------| ------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
-| 17500009 | The device does not support the specified certificate store path, such as the overseas device does not support the certificate which algorithm is SM. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. For example, CertStoreProperty.certType is set to CA_CERT_USER, but CertStoreProperty.certScope is not specified.  |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm. |
 
 **示例**：
 ```ts
@@ -1576,5 +1610,63 @@ try {
   console.info(`Success to get SM system ca path: ${smSystemCAPath}`);
 } catch (error) {
   console.error(`Failed to get store path. Code: ${error.code}, message: ${error.message}`);
+}
+```
+## certificateManager.getUkeyCertificate<sup>22+</sup>
+
+getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
+
+表示获取USB凭据详细信息。使用Promise异步回调。
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+**设备行为差异：** 该接口在PC设备可正常调用，在其他设备中返回801错误码。
+
+**参数**：
+
+| 参数名   | 类型   | 必填 | 说明    |
+| -------- | ------- | ---- | ------ |
+| keyUri | string | 是   | 表示USB凭据的唯一标识符，长度限制256字节以内。 |
+| ukeyInfo | [UkeyInfo](#ukeyinfo22)  | 是   | 表示USB凭据的属性信息。 |
+
+**返回值**：
+
+| 类型  | 说明  |
+| ----- | ----- |
+| Promise\<[CMResult](#cmresult)> | Promise对象，返回获取到的USB凭据详情的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
+
+| 错误码ID    | 错误信息      |
+|----------| ------------- |
+| 201      | Permission verification failed. |
+| 801      | Capability not supported. The application does not have the permission required to call the API. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500002 | Indicates that the certificate does not exist. |
+| 17500010 | Indicates that access USB key service failed. |
+| 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.  |
+
+**示例**：
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let keyUri: string = 'test'; /* USB凭据的唯一标识符，此处省略 */
+let ukeyInfo: certificateManager.UkeyInfo = { /* USB凭据的属性信息，此处省略 */
+    certPurpose: certificateManager.CertificatePurpose.PURPOSE_DEFAULT,
+  }
+try {
+  certificateManager.getUkeyCertificate(keyUri, ukeyInfo).then((cmResult) => {
+      let list = cmResult.credentialDetailList;
+      console.info('Succeeded in getting detail of USB key certificate.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get detail of USB key certificate. Code: ${err.code}, message: ${err.message}`);
+  })
+} catch (error) {
+  console.error(`Failed to get detail of USB key certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```

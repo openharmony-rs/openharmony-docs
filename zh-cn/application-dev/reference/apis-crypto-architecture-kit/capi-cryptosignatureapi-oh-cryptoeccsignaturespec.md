@@ -1,5 +1,16 @@
 # OH_CryptoEccSignatureSpec
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoEccSignatureSpec OH_CryptoEccSignatureSpec
+```
+
 ## 概述
 
 定义ECC签名规范结构体。

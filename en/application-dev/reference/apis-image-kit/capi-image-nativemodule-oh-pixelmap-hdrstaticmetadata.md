@@ -1,8 +1,18 @@
 # OH_Pixelmap_HdrStaticMetadata
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_Pixelmap_HdrStaticMetadata {...} OH_Pixelmap_HdrStaticMetadata
+```
 
 ## Overview
 
-The OH_Pixelmap_HdrStaticMetadata struct describes the static metadata values available for the key **HDR_STATIC_METADATA**.
+The struct describes the static metadata values available for the key **HDR_STATIC_METADATA**.
 
 **Since**: 12
 

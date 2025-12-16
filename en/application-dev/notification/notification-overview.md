@@ -1,9 +1,16 @@
 # Introduction to Notification Kit
 
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 With Notification Kit, you can publish local notifications from your application and push them to users on the client. Local notifications can be displayed by ringtones, vibrations, banners, lock screen, screen off, Always On Display (AOD), and notification panel based on the notification type and publishing scenario.
 
 ## When to Use
-When application is running in the foreground, you can use the Notification Kit to publish notifications to users.<!--RP1--><!--RP1End-->
+When an application is running, you can use the Notification Kit to publish notifications to users.<!--RP1--><!--RP1End-->
 You can use the local notification capability in multiple scenarios. For example, synchronize the upload and download progress of the user, send instant customer service payment notifications, and update the number of steps.
 
 ## Capability Scope
@@ -24,9 +31,9 @@ The main service flow of using the Notification Kit is as follows:
 
 1. Request notification authorization.
 
-2. The application publishes a notification to the notification service.
+2. Publish a notification to the Notification Kit.
 
-3. The notification is displayed in the notification center.
+3. Display the notification in the notification center.
 
 
 ## Notification Style
@@ -54,6 +61,6 @@ Common notification styles in the Notification Kit are as follows.
   <!--DelEnd-->
 
 ## Relationship with Related Kits
-- Notifications created by Notification Kit are displayed in the notification panel in real time. To publish scheduled notifications when your application is in the background or is not running, you can use [BackGroundTask Kit](../reference/apis-backgroundtasks-kit/js-apis-backgroundTaskManager.md). For example, you can use it to publish a flash sale reminder for your shopping application. Currently, the notification reminder feature is available for countdown, calendar, and alarm events.
-- You can choose [Ability Kit](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent) to set the behavior intent after a user opens a notification.<!--RP2-->
+- Notifications created by Notification Kit are displayed in the notification center or other system entries in real time. To display some scheduled notifications to remind users after the application is switched to the background or the process is terminated, for example, reminders for flash sales in shopping applications, you can use [Background Tasks Kit](../task-management/background-task-overview.md) to create notifications. Currently, notifications based on countdown, calendar, and alarm clocks are supported.
+- You can use the [getWantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent) API of [Ability Kit](../application-models/abilitykit-overview.md) to set the **WantAgent** triggered when a user taps a notification.<!--RP2-->
 <!--RP2End-->

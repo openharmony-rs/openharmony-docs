@@ -1,4 +1,10 @@
 # 位置服务错误码
+<!--Kit: Location Kit-->
+<!--Subsystem: Location-->
+<!--Owner: @liu-binjun-->
+<!--Designer: @liu-binjun-->
+<!--Tester: @mhy123456789-->
+<!--Adviser: @RayShih-->
 
 > **说明：**
 >
@@ -46,6 +52,8 @@ The location switch is off.
 
 ## 3301200 定位失败，未获取到定位结果
 
+### 1. 网络不可用导致定位失败
+
 **错误信息**
 
 The network locating is failed because the network cannot be accessed.
@@ -54,10 +62,15 @@ The network locating is failed because the network cannot be accessed.
 
 无法访问网络导致网络定位失败。
 
+**可能原因**
+
+当前设备无法访问网络。
+
 **处理步骤**
 
 请检查设备是否能联网，设备是否插入SIM卡，Wi-Fi开关是否开启等。</br>
-</br>
+
+### 2. 定位结果不满足精度要求导致定位超时
 
 **错误信息**
 
@@ -67,26 +80,37 @@ The positioning result does not meet the precision requirement (maxAccuracy) in 
 
 定位结果不满足定位请求参数中的精度要求(maxAccuracy)，导致定位超时。
 
+**可能原因**
+
+定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)值设定过小。
+
 **处理步骤**
 
 请将定位请求参数[LocationRequest](./js-apis-geoLocationManager.md#locationrequest)、[CurrentLocationRequest](./js-apis-geoLocationManager.md#currentlocationrequest)中的精度要求(maxAccuracy)适当放宽，可参考如下场景建议：
 
-1.当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为ACCURACY时，建议设置maxAccuracy为大于10的值。
+- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为ACCURACY时，建议设置maxAccuracy为大于10的值。
 
-2.当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
+- 当[scenario](./js-apis-geoLocationManager.md#locationrequestscenario)为DAILY_LIFE_SERVICE/NO_POWER，或者[priority](./js-apis-geoLocationManager.md#locationrequestpriority)为LOW_POWER/FIRST_FIX时，建议设置maxAccuracy为大于100的值。</br>
+
+### 3. 获取缓存位置失败
 
 **错误信息**
 
-The system does not have a cache locaiton.
+The system does not have a cache location.
 
 **错误描述**
 
 系统无缓存位置，导致获取上一次位置失败。
 
+**可能原因**
+
+系统无缓存位置情况下，尝试获取缓存位置。
+
 **处理步骤**
 
 系统未提前将位置信息进行缓存的情况下，需使用[getCurrentLocation](./js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)接口获取实时位置信息。</br>
-</br>
+
+### 4. 其他原因导致定位失败
 
 **错误信息**
 
@@ -98,15 +122,15 @@ Failed to obtain the geographical location.
 
 **可能原因**
 
-1.GNSS信号弱，导致定位超时。
+- GNSS信号弱，导致定位超时。
 
-2.系统时间设置错误，导致获取位置失败。
+- 系统时间设置错误，导致获取位置失败。
 
 **处理步骤**
 
-1.请移动至开阔地带再发起定位。
+- 请移动至开阔地带再发起定位。
 
-2.请在“日期和时间”页面勾选自动设置。
+- 请在“日期和时间”页面勾选自动设置。
 
 
 ## 3301300 逆地理编码查询失败
@@ -275,7 +299,7 @@ Failed to start Wi-Fi or Bluetooth scanning.
 
 **错误信息**
 
-Failed to obtain the hotpot MAC address because the Wi-Fi is not connected.
+Failed to obtain the hotspot MAC address because the Wi-Fi is not connected.
 
 **错误描述**
 
@@ -292,3 +316,93 @@ Failed to obtain the hotpot MAC address because the Wi-Fi is not connected.
 1.请打开Wi-Fi开关。
 
 2.请连接路由器或者热点。
+
+## 3501100 由于位置功能开关未打开导致添加beacon围栏失败
+
+**错误信息**
+
+Failed to add a beacon fence because the location switch is off.
+
+**错误描述**
+
+设备未打开位置功能开关，导致添加beacon围栏失败。
+
+**可能原因**
+
+位置功能开关未开启。
+
+**处理步骤**
+
+请提示用户开启位置功能的开关。
+
+## 3501101 由于蓝牙功能开关未打开导致添加beacon围栏失败
+
+**错误信息**
+
+Failed to add a beacon fence because the bluetooth switch is off.
+
+**错误描述**
+
+设备未打开蓝牙功能开关，导致添加beacon围栏失败。
+
+**可能原因**
+
+蓝牙功能开关未开启。
+
+**处理步骤**
+
+请提示用户开启蓝牙功能开关。
+
+## 3501601 由于beacon围栏个数超过最大值限制导致添加围栏失败
+
+**错误信息**
+
+The number of beacon fence exceeds the maximum.
+
+**错误描述**
+
+beacon围栏个数超过最大值限制导致添加围栏失败。
+
+**可能原因**
+
+系统中存在的beacon围栏个数超过最大值(16)限制。
+
+**处理步骤**
+
+请在删除多余围栏之后再添加新的围栏。
+
+## 3501602 由于beacon围栏信息不正确导致删除围栏失败
+
+**错误信息**
+
+Failed to delete the fence due to incorrect beacon fence information.
+
+**错误描述**
+
+beacon围栏信息不正确导致删除围栏失败。
+
+**可能原因**
+
+待删除围栏信息不正确。
+
+**处理步骤**
+
+请在调用删除beacon围栏接口时传入正确的围栏信息。
+
+## 3501603 由于存在重复的beacon围栏导致添加围栏失败
+
+**错误信息**
+
+Duplicate beacon fence information.
+
+**错误描述**
+
+存在重复的beacon围栏导致添加围栏失败。
+
+**可能原因**
+
+系统中已存在相同的beacon围栏请求。
+
+**处理步骤**
+
+请在删除之前围栏之后再添加新的围栏。

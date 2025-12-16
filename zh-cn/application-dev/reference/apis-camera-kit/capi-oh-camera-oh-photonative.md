@@ -1,4 +1,14 @@
 # OH_PhotoNative
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_PhotoNative OH_PhotoNative
+```
 
 ## 概述
 

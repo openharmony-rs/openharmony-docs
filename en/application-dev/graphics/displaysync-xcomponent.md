@@ -1,4 +1,10 @@
 # Requesting Frame Rates for Custom Content
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 When you use native APIs to develop an application based on the [XComponent](../ui/napi-xcomponent-guidelines.md), you can request an independent frame rate for custom content in scenarios such as gaming and custom UI framework interconnection.
 
@@ -10,13 +16,45 @@ When you use native APIs to develop an application based on the [XComponent](../
 | OH_NativeXComponent_RegisterOnFrameCallback (OH_NativeXComponent *component, OH_NativeXComponent_OnFrameCallback *callback) | Registers the display update callback and enables the callback for each frame.|
 | OH_NativeXComponent_UnRegisterOnFrameCallback (OH_NativeXComponent *component) | Deregisters the display update callback and disables the callback for each frame.|
 
+For details about the APIs, see [OH_NativeXComponent Native XComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md).
+
 ## How to Develop
 
    > **NOTE**
    >
-   > This section draws a graphic through the native Drawing module and presents it using the native Window module. For details, see [Using Drawing to Draw and Display Graphics](drawing-guidelines.md).
+   > This section draws a graphic through the native Drawing module and presents it using the native Window module. For details, see [Using Drawing to Draw and Display Graphics](graphic-drawing-overview.md).
 
-1. Define an ArkTS API file and name it **XComponentContext.ts**, which is used to connect to the native layer.
+1. Add development dependencies.
+
+   Add the following library to **CMakeLists.txt**.
+
+   ```txt
+   libace_napi.z.so
+   libace_ndk.z.so
+   libnative_window.so
+   libnative_drawing.so
+   ```
+
+   Import the header files of the dependencies.
+
+   ```c++
+   #include <ace/xcomponent/native_interface_xcomponent.h>
+   #include "napi/native_api.h"
+   #include <native_drawing/drawing_bitmap.h>
+   #include <native_drawing/drawing_color.h>
+   #include <native_drawing/drawing_canvas.h>
+   #include <native_drawing/drawing_pen.h>
+   #include <native_drawing/drawing_brush.h>
+   #include <native_drawing/drawing_path.h>
+   #include <native_drawing/drawing_text_typography.h>
+   #include <native_window/external_window.h>
+   #include <cmath>
+   #include <algorithm>
+   #include <stdint.h>
+   #include <sys/mman.h>
+   ```
+
+2. Define an ArkTS API file and name it **XComponentContext.ts**, which is used to connect to the native layer.
    ```ts
    export default interface XComponentContext {
    register(): void;
@@ -24,7 +62,7 @@ When you use native APIs to develop an application based on the [XComponent](../
    };
    ```
 
-2. Define a demo page, which contains two **XComponents**.
+3. Define a demo page, which contains two **XComponents**.
 
    ```ts
    import XComponentContext from "../interface/XComponentContext";
@@ -38,14 +76,14 @@ When you use native APIs to develop an application based on the [XComponent](../
     build() {
       Column() {
         Row() {
-          XComponent({ id: 'xcomponentId_30', type: 'surface', libraryname: 'entry' })
+          XComponent({ id: 'xcomponentId_30', type: XComponentType.SURFACE, libraryname: 'entry' })
             .onLoad((xComponentContext) => {
               this.xComponentContext1 = xComponentContext as XComponentContext;
             }).width('832px')
         }.height('40%')
 
         Row() {
-          XComponent({ id: 'xcomponentId_120', type: 'surface', libraryname: 'entry' })
+          XComponent({ id: 'xcomponentId_120', type: XComponentType.SURFACE, libraryname: 'entry' })
             .onLoad((xComponentContext) => {
               this.xComponentContext2 = xComponentContext as XComponentContext;
             }).width('832px') // Multiples of 64
@@ -55,7 +93,7 @@ When you use native APIs to develop an application based on the [XComponent](../
    }
    ```
 
-3. Configure the frame rate and register the callback function at the native layer.
+4. Configure the frame rate and register the callback function at the native layer.
 
    ```ts
    static void TestCallback(OH_NativeXComponent *component, uint64_t timestamp, uint64_t targetTimestamp) // Define the callback function for each frame.
@@ -82,7 +120,9 @@ When you use native APIs to develop an application based on the [XComponent](../
    > **NOTE**
    >
    > - The callback function runs in the UI main thread. To avoid adverse impact on the performance, time-consuming operations related to the UI thread should not run in the callback function.
-   > - After the instance calls **NapiRegister**, it must call **NapiUnregister** when it no longer needs to control the frame rate, so as to avoid memory leakage.
+   > - After calling OH_NativeXComponent_RegisterOnFrameCallback, the instance should call OH_NativeXComponent_UnregisterOnFrameCallback when frame rate control is not required, to avoid memory leakage and the impact on performance and power consumption.
+   > - Before API version 18, if the application calls OH_NativeXComponent_RegisterOnFrameCallback to set the callback function and does not deregister the callback function, the application can receive the expected callback when the XComponent instance exists.
+   > - From API version 18 onwards, if the application calls OH_NativeXComponent_RegisterOnFrameCallback to set the callback function and does not deregister the callback function, the expected callback can be received only when the XComponent is added to the tree.
 
    ```ts
    void SampleXComponent::RegisterOnFrameCallback(OH_NativeXComponent *nativeXComponent) 
@@ -105,7 +145,7 @@ When you use native APIs to develop an application based on the [XComponent](../
    }
    ```
 
-4. Register and deregister the callback function for each frame at the TS layer.
+5. Register and deregister the callback function for each frame at the TS layer.
 
    ```ts
    Row() {
@@ -145,3 +185,8 @@ When you use native APIs to develop an application based on the [XComponent](../
    }
    ```
 
+<!--RP1-->
+## Samples
+
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySync)
+<!--RP1End-->

@@ -1,4 +1,10 @@
 # ArkUI动画/交互事件开发常见问题(ArkTS)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin; @mayaolll; @yangfan229-->
+<!--Designer: @piggyguy; @yangfan229; @jiangdayuan-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @HelloCrease-->
 
 
 ## 焦点事件onBlur/onFocus回调无法触发(API 9)
@@ -99,23 +105,26 @@ build() {
 **代码示例**
 
 ```
-build() {
-  Row() {
-    Button("点击我")
-      .width(100)
-      .width(100)
-      .backgroundColor('#f00')
-      .onClick(()=>{
-        console.log("Button onClick")
-      })
-      .onTouch((e) => {
-        console.log("Button onTouch")
-        e.stopPropagation()
-      })
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Button("点击我")
+        .width(100)
+        .backgroundColor('#f00')
+        .onClick(() => {
+          console.log("Button onClick");
+        })
+        .onTouch((e) => {
+          console.log("Button onTouch");
+          e.stopPropagation();
+        })
+    }
+    .onTouch(() => {
+      console.log("Row onTouch");
+    })
   }
-  .onTouch(() => {
-    console.log("Row onTouch")
-  })
 }
 ```
 

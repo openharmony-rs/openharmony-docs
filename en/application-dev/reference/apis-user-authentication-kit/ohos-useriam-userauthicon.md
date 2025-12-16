@@ -1,17 +1,23 @@
-# @ohos.userIAM.userAuthIcon (Embedded User Authentication Widget)
+# @ohos.userIAM.userAuthIcon (Embedded User Authentication Icons)
 
-The system provides **userAuthIcon** to simplify the user authentication process. With **userAuthIcon**, you can:
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
 
-- Easily integrate the facial authentication and fingerprint authentication icons into your applications.
+**userAuthIcon** provides user identity authentication icons used on the application UI. With **userAuthIcon**, you can:
 
-- Customize the color and size of the icons. The icon style cannot be changed.
+1. Easily integrate the facial authentication and fingerprint authentication icons into your applications.
 
-- Start the facial or fingerprint authentication pop-up component once the icon is tapped.
+2. Customize the color and size of the icons. The icon style cannot be changed.
+
+3. Start the facial or fingerprint authentication pop-up component once the icon is tapped.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -19,11 +25,9 @@ The system provides **userAuthIcon** to simplify the user authentication process
 import { userAuth, UserAuthIcon } from '@kit.UserAuthenticationKit';
 ```
 
-
 ## Child Components
 
 None.
-
 
 ## Attributes
 
@@ -50,13 +54,12 @@ UserAuthIcon({
 
 | Name          | Type                                                        | Mandatory| Description                                                        |
 | -------------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| authParam      | [AuthParam](js-apis-useriam-userauth.md#authparam10)        | Yes  | User authentication parameters.                                            |
-| widgetParam    | [WidgetParam](js-apis-useriam-userauth.md#widgetparam10)    | Yes  | Parameters on the user authentication page.                                     |
-| iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | No  | Height of the icon. <br/>The aspect ratio is 1:1. <br/>The default value is **64**.                  |
+| authParam      | [userAuth.AuthParam](js-apis-useriam-userauth.md#authparam10)        | Yes  | User authentication parameters.                                            |
+| widgetParam    | [userAuth.WidgetParam](js-apis-useriam-userauth.md#widgetparam10)    | Yes  | Parameters on the user authentication page.                                     |
+| iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | No  | Height of the icon. The aspect ratio is 1:1. The default value is **64**.                            |
 | iconColor      | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | No  | Color of the icon. The default value is **$r('sys.color.ohos_id_color_activated')**.|
 | onIconClick    | ()=>void                                                      | No  | Callback to be invoked when the icon is tapped.                                        |
-| onAuthResult   | (result: [UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void| Yes  | Callback used to return the user authentication result.<br>**Required permissions**: ohos.permission.ACCESS_BIOMETRIC |
-
+| onAuthResult   | (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void| Yes  | Callback used to return the user authentication result.<br>The application must request the `ohos.permission.ACCESS_BIOMETRIC` permission. Otherwise, it will only display the icon and cannot start the identity authentication components. |
 
 ## Events
 
@@ -104,7 +107,7 @@ struct Index {
 }
 ```
 
-An error may be thrown when **onAuthResult** is called. For details about the error codes, see [User Authentication Error Codes](errorcode-useriam.md).
+Calling **onAuthResult** may throw an error code. For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [User Authentication Error Codes](errorcode-useriam.md).
 
 **Facial authentication icon**
 

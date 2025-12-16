@@ -1,4 +1,10 @@
 # ddk_api.h
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -29,7 +35,7 @@
 
 ### OH_DDK_CreateAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem **ashmem)
 ```
 
@@ -56,7 +62,7 @@ DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem *
 
 ### OH_DDK_MapAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 ```
 
@@ -82,7 +88,7 @@ DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 
 ### OH_DDK_UnmapAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 ```
 
@@ -107,7 +113,7 @@ DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 
 ### OH_DDK_DestroyAshmem()
 
-```
+```c
 DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 ```
 

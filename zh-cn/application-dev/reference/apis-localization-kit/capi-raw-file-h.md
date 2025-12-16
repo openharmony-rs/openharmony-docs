@@ -1,10 +1,21 @@
 # raw_file.h
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 ## 概述
 
 提供rawfile文件相关功能，功能包括搜索、读取和关闭。
 
 **引用文件：** <rawfile/raw_file.h>
+
+**库：** librawfile.z.so
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
 
@@ -16,8 +27,8 @@
 
 | 名称 | typedef关键字 | 描述                                                                                                                                                                      |
 | -- | -- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) | RawFileDescriptor | 提供rawfile文件描述符信息。RawFileDescriptor是[OH_ResourceManager_GetRawFileDescriptor](#oh_resourcemanager_getrawfiledescriptor)的输出参数,涵盖了rawfile文件的文件描述符以及在HAP包中的起始位置和长度。         |
-| [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) | RawFileDescriptor64 | 提供较大rawfile文件描述符信息。RawFileDescriptor64是[OH_ResourceManager_GetRawFileDescriptor64](#oh_resourcemanager_getrawfiledescriptor64)的输出参数,涵盖了rawfile文件的文件描述符以及在HAP包中的起始位置和长度。 |
+| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) | RawFileDescriptor | 提供rawfile文件描述符信息。RawFileDescriptor是[OH_ResourceManager_GetRawFileDescriptor](#oh_resourcemanager_getrawfiledescriptor)的输出参数，涵盖了rawfile文件的文件描述符以及在HAP包中的起始位置和长度。         |
+| [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) | RawFileDescriptor64 | 提供较大rawfile文件描述符信息。RawFileDescriptor64是[OH_ResourceManager_GetRawFileDescriptor64](#oh_resourcemanager_getrawfiledescriptor64)的输出参数，涵盖了rawfile文件的文件描述符以及在HAP包中的起始位置和长度。 |
 | [RawFile](capi-rawfile-rawfile.md) | RawFile | 提供对rawfile的访问功能。                                                                                                                                                        |
 | [RawFile64](capi-rawfile-rawfile64.md) | RawFile64 | 提供对较大rawfile的访问功能。                                                                                                                                                      |
 
@@ -47,7 +58,7 @@
 
 ### OH_ResourceManager_ReadRawFile()
 
-```
+```c
 int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t length)
 ```
 
@@ -74,7 +85,7 @@ int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t len
 
 ### OH_ResourceManager_SeekRawFile()
 
-```
+```c
 int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int whence)
 ```
 
@@ -91,7 +102,7 @@ int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int when
 | -- | -- |
 | const [RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
 | long offset | 表示指定的偏移量。 |
-| int whence | 读写位置，有以下场景: <br> 0: 读写位置为文件起始位置加上offset <br> 1: 读写位置为当前位置加上offset <br> 2: 读写位置为文件末尾加上offset |
+| int whence | 读写位置，有以下场景: <br> 0: 读写位置为文件起始位置加上offset。 <br> 1: 读写位置为当前位置加上offset。 <br> 2: 读写位置为文件末尾加上offset。 |
 
 **返回：**
 
@@ -101,7 +112,7 @@ int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int when
 
 ### OH_ResourceManager_GetRawFileSize()
 
-```
+```c
 long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)
 ```
 
@@ -126,7 +137,7 @@ long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)
 
 ### OH_ResourceManager_GetRawFileRemainingLength()
 
-```
+```c
 long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 ```
 
@@ -151,7 +162,7 @@ long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 
 ### OH_ResourceManager_CloseRawFile()
 
-```
+```c
 void OH_ResourceManager_CloseRawFile(RawFile *rawFile)
 ```
 
@@ -174,7 +185,7 @@ void OH_ResourceManager_CloseRawFile(RawFile *rawFile)
 
 ### OH_ResourceManager_GetRawFileOffset()
 
-```
+```c
 long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 ```
 
@@ -199,13 +210,13 @@ long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 
 ### OH_ResourceManager_GetRawFileDescriptor()
 
-```
+```c
 bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDescriptor &descriptor)
 ```
 
 **描述**
 
-基于偏移量(单位为long)和文件长度(单位为long)打开rawfile，并获取rawfile文件描述符。打开的文件描述符被用于读取rawfile。
+基于偏移量（单位为long）和文件长度（单位为long）打开rawfile，并获取rawfile文件描述符。打开的文件描述符被用于读取rawfile。
 
 **起始版本：** 8
 
@@ -225,7 +236,7 @@ bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDesc
 
 ### OH_ResourceManager_ReleaseRawFileDescriptor()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descriptor)
 ```
 
@@ -250,7 +261,7 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descri
 
 ### OH_ResourceManager_ReleaseRawFileDescriptorData()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *descriptor)
 ```
 
@@ -275,7 +286,7 @@ bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *de
 
 ### OH_ResourceManager_ReadRawFile64()
 
-```
+```c
 int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, int64_t length)
 ```
 
@@ -302,7 +313,7 @@ int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, in
 
 ### OH_ResourceManager_SeekRawFile64()
 
-```
+```c
 int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, int whence)
 ```
 
@@ -319,7 +330,7 @@ int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, i
 | -- | -- |
 | const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
 | int64_t offset | 表示指定的偏移量。 |
-| int whence | 读写位置，有以下场景: <br> 0: 读写位置为文件起始位置加上offset <br> 1: 读写位置为当前位置加上offset <br> 2: 读写位置为文件末尾加上offset |
+| int whence | 读写位置，有以下场景: <br> 0: 读写位置为文件起始位置加上offset。 <br> 1: 读写位置为当前位置加上offset。 <br> 2: 读写位置为文件末尾加上offset。 |
 
 **返回：**
 
@@ -329,7 +340,7 @@ int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, i
 
 ### OH_ResourceManager_GetRawFileSize64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)
 ```
 
@@ -354,7 +365,7 @@ int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)
 
 ### OH_ResourceManager_GetRawFileRemainingLength64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 ```
 
@@ -379,7 +390,7 @@ int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 
 ### OH_ResourceManager_CloseRawFile64()
 
-```
+```c
 void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)
 ```
 
@@ -402,7 +413,7 @@ void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)
 
 ### OH_ResourceManager_GetRawFileOffset64()
 
-```
+```c
 int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 ```
 
@@ -427,13 +438,13 @@ int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 
 ### OH_ResourceManager_GetRawFileDescriptor64()
 
-```
+```c
 bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFileDescriptor64 *descriptor)
 ```
 
 **描述**
 
-基于偏移量(单位为int64_t)和文件长度(单位为int64_t)打开较大的rawfile，并获取文件描述符。打开的文件描述符被用于读取rawfile。
+基于偏移量（单位为int64_t）和文件长度（单位为int64_t）打开较大的rawfile，并获取文件描述符。打开的文件描述符被用于读取rawfile。
 
 **起始版本：** 11
 
@@ -453,7 +464,7 @@ bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFile
 
 ### OH_ResourceManager_ReleaseRawFileDescriptor64()
 
-```
+```c
 bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *descriptor)
 ```
 

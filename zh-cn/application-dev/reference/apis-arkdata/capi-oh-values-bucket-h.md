@@ -1,4 +1,10 @@
 # oh_values_bucket.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -35,7 +41,7 @@
 
 ### OH_VBucket_PutAsset()
 
-```
+```c
 int OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Data_Asset *value)
 ```
 
@@ -62,7 +68,7 @@ int OH_VBucket_PutAsset(OH_VBucket *bucket, const char *field, Data_Asset *value
 
 ### OH_VBucket_PutAssets()
 
-```
+```c
 int OH_VBucket_PutAssets(OH_VBucket *bucket, const char *field, Data_Asset **value, uint32_t count)
 ```
 
@@ -94,7 +100,7 @@ OH_VBucket
 
 ### OH_VBucket_PutFloatVector()
 
-```
+```c
 int OH_VBucket_PutFloatVector(OH_VBucket *bucket, const char *field, const float *vec, size_t len)
 ```
 
@@ -126,7 +132,7 @@ OH_VBucket
 
 ### OH_VBucket_PutUnlimitedInt()
 
-```
+```c
 int OH_VBucket_PutUnlimitedInt(OH_VBucket *bucket, const char *field, int sign, const uint64_t *trueForm, size_t len)
 ```
 

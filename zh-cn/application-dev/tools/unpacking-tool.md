@@ -1,5 +1,10 @@
 # 拆包工具
-
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @jsjzju-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @Brilliantry_Rui-->
 
 拆包工具是OpenHarmony提供的一种调测工具，支持通过命令行方式将HAP、HSP、App等文件解压成文件夹，并且提供Java接口对HAP、HSP、App等文件进行解析。
 
@@ -18,13 +23,13 @@
 
 开发者可以使用拆包工具的jar包对应用进行拆包，通过传入拆包选项、文件路径，将HAP包解压出来。
 
-#### 示例
+**示例**
 
 ```
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true]
 ```
 
-#### 参数含义及规范
+**参数含义及规范**
 
 | 指令       | 是否必选项 | 选项          | 描述                                                         |
 | ---------- | ---------- | ------------- | ------------------------------------------------------------ |
@@ -38,13 +43,13 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 
 开发者可以使用拆包工具的jar包对应用进行拆包，通过传入拆包选项、文件路径，将App包解压出来。
 
-#### 示例
+**示例**
 
 ```
 java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> [--force true]
 ```
 
-#### 参数含义及规范
+**参数含义及规范**
 
 | 指令       | 是否必选项 | 选项          | 描述                                                        |
 | ---------- | ---------- |-------------| ----------------------------------------------------------- |
@@ -57,13 +62,13 @@ java -jar app_unpacking_tool.jar --mode app --app-path <path> --out-path <path> 
 
 开发者可以使用拆包工具的jar包对应用进行拆包，通过传入拆包选项、文件路径，获取应用的rpcid。
 
-#### 示例
+**示例**
 
 ```
 java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out-path <path> [--force true]
 ```
 
-#### 参数含义及规范
+**参数含义及规范**
 
 | 指令       | 是否必选项 | 选项          | 描述                                                         |
 | ---------- | ---------- | ------------- | ------------------------------------------------------------ |
@@ -77,13 +82,13 @@ java -jar app_unpacking_tool.jar --mode hap --rpcid true --hap-path <path> --out
 
 开发者可以使用拆包工具将hap包按照libs包含的架构类型拆包再打包，得到若干仅包含单架构类型库的hap包。
 
-#### 示例
+**示例**
 
 ```
 java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
-#### 参数含义及规范
+**参数含义及规范**
 
 | 指令       | 是否必选项 | 选项          | 描述                                                         |
 | ---------- | ---------- | ------------- | ------------------------------------------------------------ |
@@ -92,19 +97,19 @@ java -jar app_unpacking_tool.jar --mode hap --hap-path <path> --out-path <path> 
 | --out-path | 是         | NA            | 拆包目标文件路径。                                           |
 | --force    | 否         | true或者false | 默认值为false。如果为true，表示当目标文件存在时，强制删除。  |
 | --libs     | 否         | true或者false | 是否按照包中libs目录内若干架构指数拆分。如果为true，表示按照架构进行拆分。 |
-| --cpu-abis | 否         | NA            | 指定具体要拆出libs的架构类型，支持多个，用逗号分隔。--libs配置为fasle时该参数不生效。 |
+| --cpu-abis | 否         | NA            | 指定具体要拆出libs的架构类型，支持多个，用逗号分隔。--libs配置为false时该参数不生效。 |
 
 ### HSP包模式拆包指令
 
 开发者可以使用拆包工具的jar包对应用进行拆包，通过传入拆包选项、文件路径，将HSP包解压出来。
 
-#### 示例
+**示例**
 
 ```
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true]
 ```
 
-#### 参数含义及规范
+**参数含义及规范**
 
 | 指令         | 是否必选项 | 选项          | 描述                                 |
 |------------| ---------- | ------------- |------------------------------------|
@@ -117,13 +122,13 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 
 开发者可以使用拆包工具将hsp包按照libs包含的架构类型拆包再打包，得到若干仅包含单架构类型库的hsp包。
 
-#### 示例
+**示例**
 
 ```
 java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> [--force true] [--libs true] [--cpu-abis option]
 ```
 
-#### 参数含义及规范
+**参数含义及规范**
 
 | 指令       | 是否必选项 | 选项          | 描述                                                         |
 | ---------- | ---------- | ------------- | ------------------------------------------------------------ |
@@ -132,19 +137,19 @@ java -jar app_unpacking_tool.jar --mode hsp --hsp-path <path> --out-path <path> 
 | --out-path | 是         | NA            | 拆包目标文件路径。                                           |
 | --force    | 否         | true或者false | 默认值为false。如果为true，表示当目标文件存在时，强制删除。  |
 | --libs     | 否         | true或者false | 是否按照包中libs目录内若干架构指数拆分。如果为true，表示按照架构进行拆分。 |
-| --cpu-abis | 否         | NA            | 指定具体要拆出libs的架构类型，支持多个，用逗号分隔。--libs配置为fasle时该参数不生效。 |
+| --cpu-abis | 否         | NA            | 指定具体要拆出libs的架构类型，支持多个，用逗号分隔。--libs配置为false时该参数不生效。 |
 
 ### APPQF模式拆包指令
 
 开发者可以使用拆包工具的jar包对应用进行拆包，通过传入拆包选项、文件路径，将APPQF包解压出来。
 
-#### 示例
+**示例**
 
 ```
 java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <path> [--force true]
 ```
 
-#### 参数含义及规范
+**参数含义及规范**
 
 | 指令           | 是否必选项 | 选项          | 描述                                 |
 |--------------| ---------- |-------------|------------------------------------|
@@ -246,7 +251,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | defPermissionsGroups | List\<DefPermissionsGroups> | 标识HAP包DefPermissionsGroups 信息。  | NA                             |
 | distro               | Distro结构体                 | 标识HAP包的distro信息。               | NA                      |
 | reqCapabilities      | List\<String>               | 标识HAP包reqCapabilities信息。        | NA                           |
-| deviceType           | List\<String>               | 标识HAP可以运行在哪类设备上。   对应stage模型中的deviceTypes。       |
+| deviceType           | List\<String>               | 标识HAP可以运行在哪类设备上。   对应stage模型中的deviceTypes。       |  NA |
 | metaData             | MetaData结构体（见下述metaData）| 标识HAP的自定义元信息。                | NA           |
 | dependencies         | List\<DependencyItem>       | 标识HAP包DependencyItem信息。         | NA                   |
 | isJs                 | boolean                     | 标识该应用是否是js应用。true表示是js应用，false表示不是js应用。              | FA模型特有。            |
@@ -265,6 +270,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | descriptions         | HashMap\<String, String>    | 标识HAP的说明信息。                    | NA             |
 | compressedSize       | long                        | 标识HAP包压缩后的大小，单位字节。         | NA              |
 | originalSize         | long                        | 标识HAP包的原始大小，单位字节。         | NA             |
+| isModuleAbcCompressed  | boolean                   | 标识[modules.abc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)文件是否为压缩状态。true表示压缩状态，false表示非压缩状态。         | NA             |
 
 ### AbilityInfo结构体信息
 
@@ -491,8 +497,8 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | ---------- | ------------- | -------------------------------------- | ------------------------------------------------ |
 | name       | String        | 当前静态公共事件对应的类名。             | Stage模型从staticSubscriber类型的Extension中获取。 |
 | permission | String        | 标识实现该静态公共事件需要申请的权限。   | Stage模型从staticSubscriber类型的Extension中获取。 |
-| data       | List\<String> | 当前静态公共时间需要携带的额外数据数组。 | Stage模型从staticSubscriber类型的Extension中获取。 |
-| type       | List\<String> | 配置当前静态公共时间的类别数组。         | Stage模型从staticSubscriber类型的Extension中获取。 |
+| data       | List\<String> | 当前静态公共事件需要携带的额外数据数组。 | Stage模型从staticSubscriber类型的Extension中获取。 |
+| type       | List\<String> | 配置当前静态公共事件的类别数组。         | Stage模型从staticSubscriber类型的Extension中获取。 |
 | events     | List\<String> | 标识能够接收的意图的event值的集合。      | Stage模型从staticSubscriber类型的Extension中获取。 |
 
 ### DependencyItem结构体信息
@@ -561,7 +567,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | 字段        | 类型    | 描述                         | 备注 |
 |-------------|---------|------------------------------| ---- |
 | name        | String  | 标识DefPermissionGroup的名称。 | NA   |
-| order       | String  | 标识DefPermissionGrou的顺序。  | NA   |
+| order       | String  | 标识DefPermissionGroup的顺序。  | NA   |
 | icon        | String  | 标识DefPermissionGroup的图标。 | NA   |
 | label       | String  | 标识DefPermissionGroup的标签。 | NA   |
 | description | String  | 标识DefPermissionGroup的描述。 | NA   |

@@ -1,6 +1,13 @@
 # @ohos.ability.errorCode (ErrorCode)
 
-The **ErrorCode** module defines the error codes that may be returned when an ability is started.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The ErrorCode module defines the error codes that may be returned when an ability is started.
 
 > **NOTE**
 > 

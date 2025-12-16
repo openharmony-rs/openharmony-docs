@@ -1,4 +1,10 @@
 # avtranscoder_base.h
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -34,14 +40,14 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state, void *userData)](#oh_avtranscoder_onstatechange) | OH_AVTranscoder_OnStateChange | 转码过程的状态回调函数。 |
-| [typedef void (\*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg,void *userData)](#oh_avtranscoder_onerror) | OH_AVTranscoder_OnError | 转码过程中错误事件的回调函数。 |
+| [typedef void (\*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg, void *userData)](#oh_avtranscoder_onerror) | OH_AVTranscoder_OnError | 转码过程中错误事件的回调函数。 |
 | [typedef void (\*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData)](#oh_avtranscoder_onprogressupdate) | OH_AVTranscoder_OnProgressUpdate | 回调转码进度更新时调用。 |
 
 ## 枚举类型说明
 
 ### OH_AVTranscoder_State
 
-```
+```c
 enum OH_AVTranscoder_State
 ```
 
@@ -66,7 +72,7 @@ enum OH_AVTranscoder_State
 
 ### OH_AVTranscoder_OnStateChange()
 
-```
+```c
 typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AVTranscoder_State state, void *userData)
 ```
 
@@ -89,7 +95,7 @@ typedef void (*OH_AVTranscoder_OnStateChange)(OH_AVTranscoder *transcoder, OH_AV
 
 ### OH_AVTranscoder_OnError()
 
-```
+```c
 typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t errorCode, const char *errorMsg,void *userData)
 ```
 
@@ -113,7 +119,7 @@ typedef void (*OH_AVTranscoder_OnError)(OH_AVTranscoder *transcoder, int32_t err
 
 ### OH_AVTranscoder_OnProgressUpdate()
 
-```
+```c
 typedef void (*OH_AVTranscoder_OnProgressUpdate)(OH_AVTranscoder *transcoder, int32_t progress, void *userData)
 ```
 

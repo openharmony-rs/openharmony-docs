@@ -1,21 +1,21 @@
 # UIAbility Connection Development
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 
 ## Introduction
 
-Cross-device connection management allows for mutual capability assistance between devices that form a Super Device through a distributed OS, providing users with a more efficient, immersive experience compared to that of a single device. <!--Del-->For example, a camera application of the watch can start a camera function of the mobile phone to implement real-time image preview and remote photographing.<!--DelEnd-->
+Cross-device connection and communication (including data transmission) is supported since API version 18. This feature utilizes the distributed component management framework to enable multi-device collaboration (that is, applications on different devices working together to fulfill the same service scenario), which has become one of the core functionalities of the distributed system. A typical use case is that the photo control application on the smart watch can remotely invoke the camera function on the mobile phone and implement real-time bidirectional data interaction across devices.
 
 
 ### Available Capabilities
 
-- Cross-device application startup: uses the application on the local device to start the same application on another device and perform collaborative operations.
-- Data interaction: implements cross-device transmission of data.<!--Del-->Such data includes text messages, byte streams, images, and transport streams (text interaction supported only for third-party applications).<!--DelEnd-->
-
-
-### Typical Use Cases
-
-The transport stream feature allows users to start the peer camera from the local camera to access capabilities such as text-based interaction<!--Del-->, camera preview, photo reception, and remote camera shutter<!--DelEnd-->.
-
+- Cross-device application launch: Supports launching associated applications in a distributed networking environment to implement multi-device service collaboration (application adaptation required).
+- Cross-device data interaction: Supports cross-device data transmission. The cross-device data interaction capability varies depending on the application type. Specifically, system applications can transmit text, byte streams, images, and transport streams, while third-party applications can only transmit text.
 
 ### Basic Concepts
 
@@ -27,11 +27,7 @@ Before you get started, familiarize yourself with the following concepts:
 
 - **UIAbility**
 
-  A component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
-
-- **Extension**
-
-  A component that extends application functions or implements cross-device collaboration. It allows applications to run some tasks in the background or migrates some functions to other devices for execution, implementing distributed capabilities.
+  [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview) is a component that implements tasks specific to application UIs, such as lifecycle management, user interaction, and UI rendering.
 
 <!--Del-->
 - **Byte stream**
@@ -53,28 +49,28 @@ Cross-device connection management is built on a distributed component managemen
 
 ### Constraints
 
-- You need to log in with the same HUAWEI ID on different devices.
+- This feature is supported only on devices whose API version is 18 or later, and you need to log in with the same HUAWEI ID on related devices.
 
 - Cross-device collaboration is supported only for UIAbility applications with the same bundle name on different devices.
 <!--Del-->
 - The byte stream, image, and transport stream capabilities are supported only for system applications.
 <!--DelEnd-->
-- After the service collaboration is complete, the collaboration status must be ended in a timely manner. If an application does not apply for a continuous task, the collaboration lifecycle will be ended when the screen is locked or the application is switched to the background for more than 5 seconds.
+- After the service collaboration is complete, the collaboration status must be ended in a timely manner. To ensure system security and proper resource utilization, if an application has not requested a continuous task, the collaboration lifecycle will be ended when the screen is locked or the application is switched to the background for more than 5 seconds.
 
-- The distributed component management framework does not censor the transmitted content during the collaboration process. If privacy data is involved, it is recommended that the application employs measures such as data encryption and pop-up notification to enhance information security.
+- The distributed component management framework does not censor the transmitted content during the collaboration process. If data privacy is involved, it is recommended that the application employs measures such as pop-up notification to notify users.
 
 
 ## Environment Setup
 
 ### Environment Requirements
 
-You have logged in to devices A and B with the same HUAWEI ID and the two devices are successfully networked through Bluetooth.
+You have logged in to devices A and B with the same HUAWEI ID and the two devices are successfully networked via [Device Manager](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicemanager-guidelines) APIs.
 
 
 ### Setting Up the Environment
 
 1. Download and install DevEco Studio on the PC. For details, see [Downloading Software](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-software-download-V5) and [Installing DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-software-install-V5). The DevEco Studio version must be 4.1 or later.
-2. Update the public-SDK to API 18 or later. For details about how to update the SDK, see [OpenHarmony SDK Upgrade Assistant]( ../tools/openharmony_sdk_upgrade_assistant.md).
+2. Update the public SDK to API version 18 or later.
 3. Connect device A and device B to the PC using USB cables.
 4. Enable Bluetooth on device A and device B to implement networking.
 
@@ -93,8 +89,7 @@ If the networking is successful, the number of networking devices is displayed, 
 
 ## How to Develop
 
-Cross-device connection management allows for mutual capability assistance between devices that form a Super Device through a distributed OS.
-
+Cross-device connection management enables applications to start the peer device through the distributed component management framework and exchange messages. The following describes the available APIs and the development procedure.
 
 ### Available APIs
 
@@ -122,186 +117,198 @@ The following table describes the APIs for cross-device connection management. F
 
 The application on device A starts and connects to the application on device B through the cross-device application management module. After the connection is successful, the applications on device A and device B register a callback listener for corresponding events through the **on** interface. The application on device A or device B calls **sendMessage**<!--Del-->, **sendData**, **sendImage**, or **createStream**<!--DelEnd--> to send text messages<!--Del-->, byte streams, or transport streams<!--DelEnd-->. The peer end performs subsequent service coordination based on the received callback.
 
-#### Importing the AbilityConnectionManager Module File
+**Importing the AbilityConnectionManager Module File**
 
-   ```ts
-   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-   ```
+<!-- @[import_abilityConnectionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
+```
 
 
-#### Discovering a Device
+**Discovering Devices**
 
 The application on device A needs to discover device B and use its **netWorkId** as the input parameter of the collaboration API. You can call APIs of the distributed device management module to discover and select the peer device. For details, see [Distributed Device Management Development](devicemanager-guidelines.md).
 
 
-#### Initiating a Session Between Applications
+**Initiating a Session Between Applications**
 
 During session establishment, the applications on device A and device B perform different operations. In the subsequent development procedure, the application on device A serves as the connection initiator, while the application on device B serves as the connection receiver.
 
-##### Device A
+**1. Device A**
 
 The application calls **createAbilityConnectionSession()** to create a session and obtain the session ID. Then, it calls **connect()** to start the ability session connection. Now, the application on device B is started.
 
-  ```ts
-  import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { common } from '@kit.AbilityKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+<!-- @[source_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
-  let dmClass: distributedDeviceManager.DeviceManager;
+``` TypeScript
+let dmClass: distributedDeviceManager.DeviceManager;
 
-  function initDmClass(): void {
-    try {
-      dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
-    } catch (err) {
-      hilog.error(0x0000, 'testTag', 'createDeviceManager err: ' + JSON.stringify(err));
-    }
+function initDmClass(): void {
+  // createDeviceManager is a system API.
+  try {
+    dmClass = distributedDeviceManager.createDeviceManager('com.example.remotephotodemo');
+  } catch (err) {
+    hilog.info(0x0000, 'testTag', 'createDeviceManager err');
   }
-  // Obtain the ID of device B.
-  function getRemoteDeviceId(): string | undefined {
-    initDmClass();
-    if (typeof dmClass === 'object' && dmClass !== null) {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
-      let list = dmClass.getAvailableDeviceListSync();
-      if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
-        hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
-        return;
-      }
-      if (list.length === 0) {
-        hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
-        return;
-      }
-      return list[0].networkId;
-    } else {
-      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+}
+
+// Obtain the ID of device B.
+function getRemoteDeviceId(): string | undefined {
+  initDmClass();
+  if (typeof dmClass === 'object' && dmClass !== null) {
+    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId begin');
+    let list = dmClass.getAvailableDeviceListSync();
+    if (typeof (list) === 'undefined' || typeof (list.length) === 'undefined') {
+      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is null');
       return;
     }
+    if (list.length === 0) {
+      hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: list is empty');
+      return;
+    }
+    // Select the target device in the dialog box.
+    return list[0].networkId;
+  } else {
+    hilog.info(0x0000, 'testTag', 'getRemoteDeviceId err: dmClass is null');
+    return;
   }
-  // Define the collaboration information of device B.
-  const peerInfo: abilityConnectionManager.PeerInfo = {
-    deviceId: getRemoteDeviceId(),
-    bundleName: 'com.example.remotephotodemo',
-    moduleName: 'entry',
-    abilityName: 'EntryAbility',
-    serviceName: 'collabTest'
-  };
-  const myRecord: Record<string, string> = {
-    "newKey1": "value1",
-  };
+}
+```
 
-  const options: Record<string, string> = {
-    'ohos.collabrate.key.start.option': 'ohos.collabrate.value.foreground',
-  };
-  // Define connection options.
-  const connectOptions: abilityConnectionManager.ConnectOptions = {
-    needSendData: true,
-    startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
-    parameters: myRecord
-  };
-  let context = this.getUIContext().getHostContext();
-  try {
-    this.sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", context, peerInfo, connectOptions);
-    hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
+<!-- @[source_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
-    abilityConnectionManager.connect(this.sessionId).then((ConnectResult) => {
-      if (!ConnectResult.isConnected) {
-        hilog.info(0x0000, 'testTag', 'connect failed');
-        return;
-      }
-    }).catch(() => {
-      hilog.error(0x0000, 'testTag', "connect failed");
-    })
+``` TypeScript
+  createSession(): void {
+    // Define peer device information.
+    const peerInfo: abilityConnectionManager.PeerInfo = {
+      deviceId: getRemoteDeviceId()!,
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'EntryAbility',
+    };
+    const myRecord: Record<string, string> = {
+      'newKey1': 'value1',
+    };
 
-  } catch (error) {
-    hilog.error(0x0000, 'testTag', error);
+    // Define connection options.
+    const connectOption: abilityConnectionManager.ConnectOptions = {
+      needSendData: true,
+      startOptions: abilityConnectionManager.StartOptionParams.START_IN_FOREGROUND,
+      parameters: myRecord
+    };
+    console.info(TAG + JSON.stringify(peerInfo))
+    console.info(TAG + JSON.stringify(connectOption))
+    let context = this.getUIContext().getHostContext();
+    try {
+      this.sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', context, peerInfo, connectOption);
+      hilog.info(0x0000, 'testTag', 'createSession sessionId is', this.sessionId);
+      abilityConnectionManager.connect(this.sessionId).then((connectResult) => {
+        if (!connectResult.isConnected) {
+          hilog.info(0x0000, 'testTag', 'connect failed');
+          return;
+        }
+      }).catch(() => {
+        hilog.error(0x0000, 'testTag', 'connect failed');
+      })
+    } catch (error) {
+      hilog.error(0x0000, 'testTag', error);
+    }
   }
-  ```
+```
 
-##### Device B
+
+**2. Device B**
 
 After the application on device A calls **connect()**, the application on device B is started in collaboration mode, and the collaboration lifecycle function **onCollaborate()** is triggered. You can configure the **createAbilityConnectionSession()** and **acceptConnect()** calls in this API.
 
-  ```ts
-  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+<!-- @[collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-  export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+``` TypeScript
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onContinue(wantParam: Record<string, Object>): AbilityConstant.OnContinueResult {
+    return 1;
+  }
+  onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
+    let param = wantParam['ohos.extra.param.key.supportCollaborateIndex'] as Record<string, Object>
+    this.onCollab(param);
+    return 0;
+  }
+
+  onCollab(collabParam: Record<string, Object>) {
+    const sessionId = this.createSessionFromWant(collabParam);
+    if (sessionId == -1) {
+      return;
     }
+    this.registerSessionEvent(sessionId);
+    const collabToken = collabParam['ohos.dms.collabToken'] as string;
+    abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
+      AppStorage.setOrCreate<number>('sessionId', sessionId);
+    }).catch(() => {
+      console.log(TAG + `acceptConnect failed` );
+    })
+  }
 
-    onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'on collaborate');
-      let param = wantParam["ohos.extra.param.key.supportCollaborateIndex"] as Record<string, Object>
-      this.onCollab(param);
-      return 0;
-    }
-
-    onCollab(collabParam: Record<string, Object>) {
-      const sessionId = this.createSessionFromWant(collabParam);
-      if (sessionId == -1) {
-        hilog.info(0x0000, 'testTag', 'Invalid session ID.');
-        return;
-      }
-      const collabToken = collabParam["ohos.dms.collabToken"] as string;
-      abilityConnectionManager.acceptConnect(sessionId, collabToken).then(() => {
-        hilog.info(0x0000, 'testTag', 'acceptConnect success');
-      }).catch(() => {
-        hilog.error("failed");
-      })
-    }
-
-    createSessionFromWant(collabParam: Record<string, Object>): number {
-      let sessionId = -1;
-      const peerInfo = collabParam["PeerInfo"] as abilityConnectionManager.PeerInfo;
-      if (peerInfo == undefined) {
-        return sessionId;
-      }
- 
-      const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
-      options.needSendBigData = true;
-      options.needSendStream = true;
-      options.needReceiveStream = false;
-      try {
-        sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
-        AppStorage.setOrCreate('sessionId', sessionId);
-        hilog.info(0x0000, 'testTag', 'createSession sessionId is' + sessionId);
-      } catch (error) {
-        hilog.error(0x0000, 'testTag', error);
-      }
+  createSessionFromWant(collabParam: Record<string, Object>): number {
+    let sessionId = -1;
+    const peerInfo = collabParam['PeerInfo'] as abilityConnectionManager.PeerInfo;
+    if (peerInfo == undefined) {
       return sessionId;
     }
+    // Define connection options.
+    const options = collabParam['ConnectOption'] as abilityConnectionManager.ConnectOptions;
+    try {
+      sessionId = abilityConnectionManager.createAbilityConnectionSession('collabTest', this.context, peerInfo, options);
+    } catch (error) {
+      console.error(error);
+    }
+    return sessionId;
   }
-  ```
+```
 
-#### Enabling Event Listening
+
+**Enabling Event Listening**
 
 After the application creates a session and obtains the session ID, you can call **on()** to listen for the corresponding events and notify the listener through a callback.
 <!--RP1-->
-  ```ts
-  import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
+<!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-  abilityConnectionManager.on("connect", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session connect, sessionId is', callbackInfo.sessionId);
-  });
-  abilityConnectionManager.on("disconnect", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session disconnect, sessionId is', callbackInfo.sessionId);
-  });
-  abilityConnectionManager.on("receiveMessage", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session receiveMessage, sessionId is', callbackInfo.sessionId);
-  });
-  abilityConnectionManager.on("receiveData", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session receiveData, sessionId is', callbackInfo.sessionId);
-  });
-  abilityConnectionManager.on("receiveImage", this.sessionId,(callbackInfo) => {
-    hilog.info(0x0000, 'testTag', 'session receiveImage, sessionId is', callbackInfo.sessionId);
-  });
-<!--RP1End-->  ```
+``` TypeScript
+  registerSessionEvent(sessionId: number) {
+    abilityConnectionManager.on('connect',sessionId,(callbackInfo) => {
+      AppStorage.setOrCreate<boolean>('isConnected', true);
+      AppStorage.setOrCreate<string>('receiveMessage', 'connect success');
+    });
+    abilityConnectionManager.on('disconnect',sessionId,(callbackInfo) => {
+      abilityConnectionManager.destroyAbilityConnectionSession(sessionId)
+      AppStorage.setOrCreate<boolean>('isConnected', false);
+      AppStorage.setOrCreate<string>('receiveMessage', 'session disconnect');
+    })
+    abilityConnectionManager.on('receiveMessage',sessionId,(callbackInfo) => {
+      AppStorage.setOrCreate<string>('receiveMessage', callbackInfo.msg);
+      if (callbackInfo.msg == 'startStream') {
+        hilog.info(0x0000, 'testTag', 'startStream');
+      }
+    })
+    abilityConnectionManager.on('receiveData',sessionId,(callbackInfo) => {
+      let decoder = util.TextDecoder.create('utf-8');
+      let str = decoder.decodeWithStream(new Uint8Array(callbackInfo.data));
+      AppStorage.setOrCreate<string>('receiveMessage', str);
+    })
+  }
+```
 
-#### Sending Data
 
-##### Sending Messages
+<!--RP1End-->  
+<!--Del-->
+**Sending Data**
+<!--DelEnd-->
+**<!--Del-->1.<!--DelEnd-->Send messages.**
+
 After the applications are successfully connected, you can call **sendMessage()** on device A or device B to send text messages to the peer application.
 
   ```ts
@@ -315,14 +322,15 @@ After the applications are successfully connected, you can call **sendMessage()*
   })
   ```
 <!--Del-->
-##### Sending Byte Streams
+**2. Send byte streams.**
 
 After the applications are successfully connected, you can call **sendData()** on device A or device B to send byte streams to the peer application. (This function is supported only for system applications.)
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  import { util } from '@kit.ArkTS';
+  
   let textEncoder = util.TextEncoder.create("utf-8");
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
@@ -333,14 +341,13 @@ After the applications are successfully connected, you can call **sendData()** o
   })
   ```
 
-##### Sending Images
+**3. Send images.**
 
 After the applications are successfully connected, you can call **sendImage()** on device A or device B to send images to the peer application. (This function is supported only for system applications.)
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  import CameraService from '../model/CameraService';
   import { photoAccessHelper } from '@kit.MediaLibraryKit';
   import { image } from '@kit.ImageKit';
   import { fileIo as fs } from '@kit.CoreFileKit';
@@ -373,7 +380,7 @@ After the applications are successfully connected, you can call **sendImage()** 
   }
   ```
 
-##### Sending Transport Streams
+**4. Send streams.**
 
 After the applications are successfully connected, you can call **createStream()** on device A or device B to create transport streams and call **startStream()** to send the transport streams to the peer application. (This function is supported only for system applications.)
 
@@ -382,7 +389,7 @@ After the applications are successfully connected, you can call **createStream()
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   hilog.info(0x0000, 'testTag', 'startStream');
-  abilityConnectionManager.createStream(sessionId ,{name: 'receive', role: 0}).then(async (streamId) => {
+  abilityConnectionManager.createStream(this.sessionId ,{name: 'receive', role: 0}).then(async (streamId:number) => {
     let surfaceParam: abilityConnectionManager.SurfaceParam = {
       width: 640,
       height: 480,
@@ -391,12 +398,11 @@ After the applications are successfully connected, you can call **createStream()
     let surfaceId = abilityConnectionManager.getSurfaceId(streamId, surfaceParam);
     hilog.info(0x0000, 'testTag', 'surfaceId is'+surfaceId);
     AppStorage.setOrCreate<string>('surfaceId', surfaceId);
-    await CameraService.initCamera(surfaceId, 0);
     abilityConnectionManager.startStream(streamId);
   })
   ```
 <!--DelEnd-->
-#### Ending Collaboration
+**Ending Collaboration**
 
 After the service collaboration is complete, the collaboration status must be ended in a timely manner. If service collaboration is required in a near future, you can call **disconnect()** to disconnect the connection between applications while retaining the session ID. This allows you to reuse the same session ID for establishing a connection next time. If service coordination is not required, you can directly call **destroyAbilityConnectionSession()** to destroy the session. In this case, the connection is automatically disconnected.
 
@@ -460,5 +466,3 @@ During service collaboration, DMS keeps listening for the collaboration lifecycl
 **Solution**
 
 [Apply for a continuous task](../task-management/continuous-task.md).
-
-<!--no_check-->

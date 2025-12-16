@@ -1,5 +1,12 @@
 # 系统能力SystemCapability使用指南
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @RayShih-->
+<!--Designer: @RayShih-->
+<!--Tester: @RayShih-->
+<!--Adviser: @RayShih-->
+
 ## 概述
 
 ### 系统能力与 API
@@ -108,20 +115,20 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
     ```ts
     if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) {
-	   console.log("该设备支持SystemCapability.ArkUI.ArkUI.Full");
+	   console.info("该设备支持SystemCapability.ArkUI.ArkUI.Full");
     } else {
-       console.log("该设备不支持SystemCapability.ArkUI.ArkUI.Full");
+       console.info("该设备不支持SystemCapability.ArkUI.ArkUI.Full");
     }
     ```
 
   - 方法2：开发者可通过import的方式将模块导入，若当前设备不支持该模块，import的结果为undefined，开发者在使用其API时，需要判断其是否存在。
 
 	```ts
-	import geolocationManager from '@ohos.geoLocationManager';
+	import { geoLocationManager } from '@kit.LocationKit';
 
 	try {
-	geolocationManager.getCurrentLocation((location) => {
-		console.log('current location: ' + JSON.stringify(location));
+	geoLocationManager.getCurrentLocation((location) => {
+		console.info('current location: ' + JSON.stringify(location));
 	});
 	} catch(err) {
 	    console.error('该设备不支持位置信息' + err);
@@ -149,8 +156,10 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
 即使是相同的系统能力，在不同的设备下，也会有能力的差异。比如同是摄像头的能力，平板设备优于智能穿戴设备。
 
+以下示例通过人脸识别功能进行举例：
+
 ```ts
-import userAuth from '@ohos.userIAM.userAuth';
+import { userAuth } from '@kit.UserAuthenticationKit';
 
 const authParam : userAuth.AuthParam = {
   challenge: new Uint8Array(),
@@ -160,10 +169,12 @@ const authParam : userAuth.AuthParam = {
 const widgetParam :userAuth.WidgetParam = {
   title: '请输入密码',
 };
+
+// 在使用接口时可通过try...catch捕获异常。如果接口的SysCap不支持当前设备，将返回801错误码。
 try {
   let userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
   userAuthInstance.start();
-    console.log('设备认证成功');
+    console.info('设备认证成功');
 } catch (error) {
     console.error('auth catch error: ' + JSON.stringify(error));
 }

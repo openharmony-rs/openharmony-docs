@@ -1,6 +1,13 @@
 # @ohos.wallpaper (Wallpaper) (System API)
 
-The **wallpaper** module provides APIs for switching between wallpapers. Since API version 9, the APIs of this module function as system APIs, and only system applications are allowed to switch between wallpapers. Applications that use the wallpaper, for example, the home screen, need to subscribe to wallpaper changes and update the wallpaper accordingly.
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @dreamsky8023-->
+<!--Designer: @dreamsky8023-->
+<!--Tester: @murphy84-->
+<!--Adviser: @zhang_yixin13-->
+
+The **wallpaper** module provides APIs for switching between wallpapers. Since API version 9, the APIs of this module function as system APIs, and only system applications are allowed to switch between wallpapers. Applications that use the wallpaper, for example, the home screen, should subscribe to wallpaper changes and update the wallpaper accordingly.
 
 > **NOTE**
 > 
@@ -64,11 +71,11 @@ Defines the wallpaper information structure.
 
 **System API**: This is a system API.
 
-| Name| Type| Description|
-| -------- | -------- |  -------- |
-| [FoldState](#foldstate14) | enum | Folding state of a device.|
-| [RotateState](#rotatestate14) | enum | Landscape/portrait mode of a device.|
-| source | string | Wallpaper resource URI. Only the application sandbox directory is supported.|
+| Name| Type| Read-Only| Optional|Description|
+| -------- | -------- |  -------- |  -------- |  -------- |
+| foldState | [FoldState](#foldstate14) | No| No|Folding state of a device.|
+| rotateState | [RotateState](#rotatestate14)| No| No|Landscape/portrait mode of a device.|
+| source | string | No| No|Wallpaper resource URI. Only the application sandbox directory is supported.|
 
 ## wallpaper.setVideo<sup>10+</sup>
 
@@ -98,7 +105,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -109,13 +116,13 @@ let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.mp4";
 try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setVideo because: ${JSON.stringify(error)}`);
+            console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
             return;
         }
         console.info(`success to setVideo.`);
     });
 } catch (error) {
-    console.error(`failed to setVideo because: ${JSON.stringify(error)}`);
+    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
 }
 
 ```
@@ -147,7 +154,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Return value**
 
@@ -165,10 +172,10 @@ try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setVideo.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setVideo because: ${JSON.stringify(error)}`);
+        console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
     });
 } catch (error) {
-    console.error(`failed to setVideo because: ${JSON.stringify(error)}`);
+    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -200,7 +207,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -211,13 +218,13 @@ let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.zip";
 try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setCustomWallpaper because: ${JSON.stringify(error)}`);
+            console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
             return;
         }
         console.info(`success to setCustomWallpaper.`);
     });
 } catch (error) {
-    console.error(`failed to setCustomWallpaper because: ${JSON.stringify(error)}`);
+    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
 
 ```
@@ -255,7 +262,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -267,10 +274,10 @@ try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setCustomWallpaper.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setCustomWallpaper because: ${JSON.stringify(error)}`);
+        console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
     });
 } catch (error) {
-    console.error(`failed to setCustomWallpaper because: ${JSON.stringify(error)}`);
+    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -298,7 +305,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -309,7 +316,7 @@ try {
     };
     wallpaper.on('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to on because: ${JSON.stringify(error)}`);
+    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -337,7 +344,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -348,21 +355,21 @@ let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.
 try {
     wallpaper.on('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to on because: ${JSON.stringify(error)}`);
+    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
 }
 
 try {
     // Unsubscribe from the listener.
     wallpaper.off('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to off because: ${JSON.stringify(error)}`);
+    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
 }
 
 try {
     // Unsubscribe from all callbacks of the 'wallpaperChange' event type.
     wallpaper.off('wallpaperChange');
 } catch (error) {
-    console.error(`failed to off because: ${JSON.stringify(error)}`);
+    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -395,7 +402,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | **ID**| **Error Message**                               |
 | ------------ | ------------------------------------------- |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -404,7 +411,7 @@ try {
     let colors = wallpaper.getColorsSync(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
     console.info(`success to getColorsSync: ${JSON.stringify(colors)}`);
 } catch (error) {
-    console.error(`failed to getColorsSync because: ${JSON.stringify(error)}`);
+    console.error(`failed to getColorsSync. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -435,7 +442,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let minHeight = wallpaper.getMinHeightSync();
+try {
+  let minHeight = wallpaper.getMinHeightSync();
+  console.info(`success to getMinHeightSync: ${JSON.stringify(minHeight)}`);
+} catch (error) {
+  console.error(`failed to getMinHeightSync. Code: ${error.code}, Message: ${error.message}`);
+}
 ```
 
 ## wallpaper.getMinWidthSync<sup>9+</sup>
@@ -465,7 +477,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-let minWidth = wallpaper.getMinWidthSync();
+try {
+  let minWidth = wallpaper.getMinWidthSync();
+  console.info(`success to getMinWidthSync: ${JSON.stringify(minWidth)}`);
+} catch (error) {
+  console.error(`failed to getMinWidthSync. Code: ${error.code}, Message: ${error.message}`);
+}
 ```
 
 ## wallpaper.restore<sup>9+</sup>
@@ -495,7 +512,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -504,7 +521,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to restore because: ${JSON.stringify(error)}`);
+        console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
         return;
     }
     console.info(`success to restore.`);
@@ -543,7 +560,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -553,7 +570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to restore.`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to restore because: ${JSON.stringify(error)}`);
+    console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -585,7 +602,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -597,7 +614,7 @@ import { image } from '@kit.ImageKit';
 let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to setImage because: ${JSON.stringify(error)}`);
+        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
         return;
      }
     console.info(`success to setImage.`);
@@ -614,13 +631,13 @@ let opts: image.DecodingOptions = {
 imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setImage because: ${JSON.stringify(error)}`);
+            console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
             return;
         }
         console.info(`success to setImage.`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
+    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -657,7 +674,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -670,7 +687,7 @@ let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to setImage.`);
 }).catch((error: BusinessError) => {
-    console.error(`failed to setImage because: ${JSON.stringify(error)}`);
+    console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
 });
 
 // The source type is image.PixelMap.
@@ -685,10 +702,10 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setImage.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setImage because: ${JSON.stringify(error)}`);
+        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
+    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -719,7 +736,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -728,11 +745,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
-    if (error) {
-        console.error(`failed to getImage because: ${JSON.stringify(error)}`);
-        return;
-    }
-    console.info(`success to getImage: ${JSON.stringify(data)}`);
+  if (error) {
+    console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
+    return;
+  }
+  console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
 });
 ```
 
@@ -768,7 +785,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
 **Example**
 
@@ -777,9 +794,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
-    console.info(`success to getImage: ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`failed to getImage because: ${JSON.stringify(error)}`);
+  console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
+}).catch((error: BusinessError) => {
+  console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 ## wallpaper.getWallpaperByState<sup>14+</sup>
@@ -816,7 +833,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.The type must be WallpaperType, parameter range must be WALLPAPER_LOCKSCREEN or WALLPAPER_SYSTEM; 3.The type must be FoldState, parameter range must be NORMAL or UNFOLD_ONCE_STATE or UNFOLD_TWICE_STATE;4.The type must be RotateState, parameter range must be PORTRAIT or LANDSCAPE.  |
 
 **Example**
 
@@ -826,9 +843,9 @@ import { wallpaper } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper.FoldState.NORMAL,wallpaper.RotateState.PORTRAIT).then((data:image.PixelMap) => {
-  console.info(`success to getWallpaperByState: ${JSON.stringify(data)}`);
+  console.info(`success to getWallpaperByState: ${JSON.stringify(data.getImageInfoSync())}`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to getWallpaperByState because: ${JSON.stringify(error)}`);
+  console.error(`failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -848,7 +865,7 @@ Sets all wallpaper to a specific folding state, landscape/portrait mode, and res
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperInfos | Array<[WallpaperInfo](#wallpaperinfo14)> | Yes| Information structure of all wallpapers.|
+| wallpaperInfos | Array\<[WallpaperInfo](#wallpaperinfo14)> | Yes| Information structure of all wallpapers.|
 | wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
 
 **Return value**
@@ -865,7 +882,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------------ | ------------------------------------------- |
 | 201          | permission denied.                                                                              |
 | 202          | permission verification failed, application which is not a system application uses system API.  |
-| 401          | 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
+| 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.The first parameter type must be Array\<WallpaperInfo>. The second type must be WallpaperType; 3.The first parameter type must be Array\<WallpaperInfo>, must include wallpaper with FoldState NORMAL and RotateState PORTRAIT.|
 
 **Example**
 
@@ -894,7 +911,7 @@ wallpaperInfos = [
 wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
   console.info(`success to setAllWallpapers.`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to setAllWallpapers because: ${JSON.stringify(error)}`);
+  console.error(`failed to setAllWallpapers. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -928,12 +945,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
-    if (error) {
-        console.error(`failed to getPixelMap because: ${JSON.stringify(error)}`);
-        return;
-    }
-    console.info(`success to getPixelMap : ${JSON.stringify(data)}`);
-  });
+  if (error) {
+    console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    return;
+  }
+  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
+});
 ```
 
 ## wallpaper.getPixelMap<sup>(deprecated)</sup>
@@ -971,10 +988,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
-    console.info(`success to getPixelMap : ${JSON.stringify(data)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`failed to getPixelMap because: ${JSON.stringify(error)}`);
+  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
+}).catch((error: BusinessError) => {
+  console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
-
- <!--no_check--> 

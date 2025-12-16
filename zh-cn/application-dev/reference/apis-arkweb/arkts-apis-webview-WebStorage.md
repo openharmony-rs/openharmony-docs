@@ -1,4 +1,10 @@
 # Class (WebStorage)
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yuzhouhang1-->
+<!--Designer: @handyohos-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 通过WebStorage可管理Web SQL数据库接口和HTML5 Web存储接口，每个应用中的所有Web组件共享一个WebStorage。
 
@@ -11,6 +17,8 @@
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 目前调用WebStorage下的方法，都需要先加载Web组件。
+>
+> - 本Class下的接口在ArkWeb内核升级到M132版本后因内核废弃Web SQL，对Web SQL数据库的管理失效。ArkWeb内核版本参考ArkWeb简介[约束与限制](../../web/web-component-overview.md#约束与限制)。
 
 ## 导入模块
 
@@ -34,7 +42,7 @@ static deleteOrigin(origin: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -66,7 +74,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -82,31 +89,77 @@ struct WebComponent {
     <title>test</title>
     <script type="text/javascript">
 
-      var db = openDatabase('mydb','1.0','Test DB',2 * 1024 * 1024);
-      var msg;
+        // 打开或创建数据库
+        var request = indexedDB.open('myDatabase', 1);
 
-      db.transaction(function(tx){
-        tx.executeSql('INSERT INTO LOGS (id,log) VALUES(1,"test1")');
-        tx.executeSql('INSERT INTO LOGS (id,log) VALUES(2,"test2")');
-        msg = '<p>数据表已创建，且插入了两条数据。</p>';
+        // 如果数据库版本变化或首次创建时触发
+        request.onupgradeneeded = function(event) {
+            var db = event.target.result;
 
-        document.querySelector('#status').innerHTML = msg;
-      });
+            // 创建对象存储（表），设置主键为‘id’
+            var objectStore = db.createObjectStore('customers', { keyPath: 'id' });
 
-      db.transaction(function(tx){
-        tx.executeSql('SELECT * FROM LOGS', [], function (tx, results) {
-          var len = results.rows.length,i;
-          msg = "<p>查询记录条数：" + len + "</p>";
+            // 为‘name’创建索引
+            objectStore.createIndex('name', 'name', { unique: false });
+        };
 
-          document.querySelector('#status').innerHTML += msg;
+        // 打开数据库成功时的回调
+        request.onsuccess = function(event) {
+            var db = event.target.result;
 
-              for(i = 0; i < len; i++){
-                msg = "<p><b>" + results.rows.item(i).log + "</b></p>";
+            const customerData = [
+                {id: 1, name: 'John Doe', email: 'john@example.com'},
+                {id: 2, name: 'John Doe', email: 'john@example.com'},
+            ]
 
-          document.querySelector('#status').innerHTML += msg;
-          }
-        },null);
-      });
+            // 插入数据
+            var transaction = db.transaction('customers', 'readwrite');
+            var objectStore = transaction.objectStore('customers');
+
+            customerData.forEach((customer) => {
+                objectStore.add(customer);
+            });
+
+            transaction.oncomplete = function () {
+                console.info('Transaction completed: data added');
+            }
+            
+            transaction.onerror = function (event) {
+                console.error("Transaction failed", event);
+            }
+            
+            // 查询数据
+            var queryTransaction = db.transaction(['customers']);
+            var queryObjectStore = queryTransaction.objectStore('customers');
+            var query = queryObjectStore.get(2);
+            
+            query.onsuccess = function (event) {
+                console.info('query succ');
+                console.info('Customer:', event.target.result);
+                console.info('Customer id:', event.target.result.id);
+                console.info('Customer name:', event.target.result.name);
+                console.info('Customer email:', event.target.result.email);
+            };
+            
+            queryObjectStore.openCursor().onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    var msg = "<p>查询记录：" + cursor.key + "</p>";
+                    document.querySelector("#status").innerHTML += msg;
+                    var msg = "<p><b>" + cursor.value.name + "</b></p>";
+                    document.querySelector("#status").innerHTML += msg;
+                    console.info(`SSN ${cursor.key} 对应的名字是 ${cursor.value.name}`);
+                    cursor.continue();
+                } else {
+                    console.info("没有更多记录了")
+                }
+            }
+        };
+
+        // 错误处理
+        request.onerror = function(event) {
+            console.error('Database error:', event.target.error);
+        };
 
       </script>
   </head>
@@ -120,7 +173,7 @@ struct WebComponent {
 
 static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
-以回调方式异步获取当前使用Web SQL数据库的所有源的信息。
+以回调方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -132,7 +185,7 @@ static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -162,9 +215,9 @@ struct WebComponent {
                 return;
               }
               for (let i = 0; i < origins.length; i++) {
-                console.log('origin: ' + origins[i].origin);
-                console.log('usage: ' + origins[i].usage);
-                console.log('quota: ' + origins[i].quota);
+                console.info('origin: ' + origins[i].origin);
+                console.info('usage: ' + origins[i].usage);
+                console.info('quota: ' + origins[i].quota);
               }
             })
           } catch (error) {
@@ -173,7 +226,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -185,7 +237,7 @@ struct WebComponent {
 
 static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
-以Promise方式异步获取当前使用Web SQL数据库的所有源的信息。
+以Promise方式异步获取当前使用Web SQL数据库和HTML5支持的Web存储API的所有源的信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -197,7 +249,7 @@ static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -224,13 +276,13 @@ struct WebComponent {
             webview.WebStorage.getOrigins()
               .then(origins => {
                 for (let i = 0; i < origins.length; i++) {
-                  console.log('origin: ' + origins[i].origin);
-                  console.log('usage: ' + origins[i].usage);
-                  console.log('quota: ' + origins[i].quota);
+                  console.info('origin: ' + origins[i].origin);
+                  console.info('usage: ' + origins[i].usage);
+                  console.info('quota: ' + origins[i].quota);
                 }
               })
               .catch((e: BusinessError) => {
-                console.log('error: ' + JSON.stringify(e));
+                console.error('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -238,7 +290,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -250,7 +301,7 @@ struct WebComponent {
 
 static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
-使用callback回调异步获取指定源的Web SQL数据库的存储配额，配额以字节为单位。
+使用callback回调异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -263,7 +314,7 @@ static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -293,7 +344,7 @@ struct WebComponent {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('quota: ' + quota);
+              console.info('quota: ' + quota);
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -301,7 +352,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -313,7 +363,7 @@ struct WebComponent {
 
 static getOriginQuota(origin: string): Promise\<number>
 
-以Promise方式异步获取指定源的Web SQL数据库的存储配额，配额以字节为单位。
+以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -331,7 +381,7 @@ static getOriginQuota(origin: string): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -358,10 +408,10 @@ struct WebComponent {
           try {
             webview.WebStorage.getOriginQuota(this.origin)
               .then(quota => {
-                console.log('quota: ' + quota);
+                console.info('quota: ' + quota);
               })
               .catch((e: BusinessError) => {
-                console.log('error: ' + JSON.stringify(e));
+                console.error('error: ' + JSON.stringify(e));
               })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -369,7 +419,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -381,7 +430,7 @@ struct WebComponent {
 
 static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
-以回调方式异步获取指定源的Web SQL数据库的存储量，存储量以字节为单位。
+以回调方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -394,7 +443,7 @@ static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -424,7 +473,7 @@ struct WebComponent {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
                 return;
               }
-              console.log('usage: ' + usage);
+              console.info('usage: ' + usage);
             })
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
@@ -432,7 +481,6 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -444,7 +492,7 @@ struct WebComponent {
 
 static getOriginUsage(origin: string): Promise\<number>
 
-以Promise方式异步获取指定源的Web SQL数据库的存储量，存储量以字节为单位。
+以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -462,7 +510,7 @@ static getOriginUsage(origin: string): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
@@ -489,7 +537,7 @@ struct WebComponent {
           try {
             webview.WebStorage.getOriginUsage(this.origin)
               .then(usage => {
-                console.log('usage: ' + usage);
+                console.info('usage: ' + usage);
               }).catch((e: BusinessError) => {
               console.error('error: ' + JSON.stringify(e));
             })
@@ -498,7 +546,6 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }
@@ -510,7 +557,7 @@ struct WebComponent {
 
 static deleteAllData(incognito?: boolean): void
 
-清除Web SQL数据库当前使用的所有存储。
+清除被JavaScript存储API使用的所有存储数据，这包括Web SQL数据库和HTML5支持的Web存储API。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -518,7 +565,7 @@ static deleteAllData(incognito?: boolean): void
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。<br>默认值：false。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -543,7 +590,6 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
     }
   }
 }

@@ -26,7 +26,7 @@ The online mode must be used with the integrated development environment (IDE). 
 
 ### Kernel Mode
 
-The trace module of the OpenHarmony LiteOS-A kernel provides the following APIs. For more details, see [API reference](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
+The trace module of the OpenHarmony LiteOS-A kernel provides the following APIs. For more details, see [API reference](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
 
 **Table 1** APIs of the trace module
 
@@ -88,7 +88,7 @@ The trace module of the OpenHarmony LiteOS-A kernel provides the following APIs.
         ```
 
         > **NOTE**<br>
-        > The preset trace events and parameters can be tailored in the same way. For details about the parameters, see [kernel\include\los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
+        > The preset trace events and parameters can be tailored in the same way. For details about the parameters, see [kernel\include\los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
 
 - For **LOS_TraceEventMaskSet(UINT32 mask)**, only the most significant 28 bits (corresponding to the enable bit of the module in **LOS_TRACE_MASK**) of the mask take effect and are used only for module-based tracing. Currently, fine-grained event-based tracing is not supported. For example, in **LOS_TraceEventMaskSet(0x202)**, the effective mask is **0x200 (TRACE_QUE_FLAG)** and all events of the QUE module are collected. The recommended method is **LOS_TraceEventMaskSet(TRACE_EVENT_FLAG | TRACE_MUX_FLAG | TRACE_SEM_FLAG | TRACE_QUE_FLAG);**.
 
@@ -165,7 +165,7 @@ The typical trace process is as follows:
 
 3. (Optional) Call **LOS_TraceStop** to stop trace and call **LOS_TraceReset** to clear the trace buffer. (Trace is started by default.)
 
-4. (Optional) Call **LOS_TraceEventMaskSet** to set the mask of the events to be traced. The default event mask enables only trace of interrupts and task events. For details about the event masks, see **LOS_TRACE_MASK** in [los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
+4. (Optional) Call **LOS_TraceEventMaskSet** to set the mask of the events to be traced. The default event mask enables only trace of interrupts and task events. For details about the event masks, see **LOS_TRACE_MASK** in [los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
 
 5. Call **LOS_TraceStart** at the start of the code where the event needs to be traced.
 
@@ -279,13 +279,13 @@ Index   Time(cycles)      EventType      CurTask   Identity      params
 
 The output event information includes the occurrence time, event type, task in which the event occurs, object of the event operation, and other parameters of the event.
 
-- **EventType**: type of the event. For details, see **enum LOS_TRACE_TYPE** in [los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
+- **EventType**: type of the event. For details, see **enum LOS_TRACE_TYPE** in [los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
 
 - **CurrentTask**: ID of the running task.
 
-- **Identity**: object of the event operation. For details, see **\#TYPE\#_PARAMS** in [los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
+- **Identity**: object of the event operation. For details, see **\#TYPE\#_PARAMS** in [los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
 
-- **params**: event parameters. For details, see **\#TYPE\#_PARAMS** in [los_trace.h](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
+- **params**: event parameters. For details, see **\#TYPE\#_PARAMS** in [los_trace.h](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_trace.h).
 
 The following uses output No. 0 as an example.
 

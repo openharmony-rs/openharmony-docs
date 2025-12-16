@@ -1,5 +1,12 @@
 # Using Deep Linking for Application Redirection
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @hanchen45; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 In Deep Linking, the system, based on the passed-in URI, searches for the application that meets the conditions from the locally installed applications and starts that application. If multiple applications are matched, a dialog box is displayed for users to select one of them.
 
 ## Working Principles
@@ -15,27 +22,30 @@ To be accessed by other applications, an application must configure the [skills]
 
 > **NOTE**
 > 
-> By default, the **skills** field contains a **skill** object, which is used to identify the application entry. Application redirection links should not be configured in this object. Instead, separate **skill** objects should be used. If there are multiple redirection scenarios, create different **skill** objects under **skills**. Otherwise, the configuration does not take effect.
+> By default, the **skills** field contains a skill object, which is used to identify the application entry. Application redirection links should not be configured in this object. Instead, separate skill objects should be used. If there are multiple redirection scenarios, create different skill objects under **skills**. Otherwise, the configuration does not take effect.
 > 
-> In Deep Linking, the **scheme** value can be customized to any string that does not contain special characters and does not start with **ohos**. It is generally recommended to avoid using **https**, **http**, or **file** to prevent the default system browser from being launched.
+> In Deep Linking, the value of **scheme** should not start with **ohos**. Generally, it should also not use values like **https**, **http**, or **file**, which are already in use by system applications, as this may cause the link to match with the corresponding system application.
 
 
 A configuration example is as follows:
 
-```json
+<!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
+
+``` JSON5
 {
   "module": {
-    // ...
+    // ···
     "abilities": [
+    // ···
       {
-        // ...
+        // ···
         "skills": [
           {
             "entities": [
               "entity.system.home"
             ],
             "actions": [
-              "action.system.home"
+              "ohos.want.action.home"
             ]
           },
           {
@@ -53,22 +63,28 @@ A configuration example is as follows:
             ]
           } // Add a skill object for redirection. If there are multiple redirection scenarios, create multiple skill objects.
         ]
-      }
-    ]
+      },
+    // ···
+    ],
+    // ···
   }
 }
 ```
 
 ### Obtaining and Parsing the Link Passed by the Caller
 
-In the **onCreate()** or **onNewWant()** lifecycle callback of the UIAbility of the target application, obtain and parse the Link passed by the caller.
+In the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) or [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) lifecycle callback of the UIAbility of the target application, obtain and parse the link passed by the caller.
 
-```ts
-// EntryAbility.ets is used as an example.
+<!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
+
+``` TypeScript
+// DeepAbility.ets is used as an example.
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { url } from '@kit.ArkTS';
 
-export default class EntryAbility extends UIAbility {
+const DOMAIN = 0x0000;
+
+export default class DeepAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Obtain the input link information from want.
     // For example, the input URL is link://www.example.com/programs?action=showall.
@@ -78,26 +94,29 @@ export default class EntryAbility extends UIAbility {
       let urlObject = url.URL.parseURL(want?.uri);
       let action = urlObject.params.get('action');
       // For example, if action is set to showall, all programs are displayed.
-      if (action === "showall") {
-         // ...
+      if (action === 'showall') {
+        // ···
       }
     }
   }
+// ···
 }
 ```
 
 ## Implementing Application Redirection (Required for the Caller Application)
 
-The following uses three cases to describe how to use [openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontextopenlink12) and [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontextstartability) to implement application redirection and how to implement application redirection in the [Web component](../reference/apis-arkweb/ts-basic-components-web.md).
+The following uses three cases to describe how to use [openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12) and [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) to implement application redirection and how to implement application redirection in the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md).
 
 ### Using openLink to Implement Application Redirection
 
-Pass in the URL of the target application into **link** of [openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontextopenlink12), and set **appLinkingOnly** in the **options** field to **false**.
+Pass in the URL of the target application into **link** of [openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12), and set [appLinkingOnly](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md#openlinkoptions) in the **options** field to **false**.
 
 
 The sample code is as follows:
 
-```ts
+<!-- @[deep_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
+
+``` TypeScript
 import { common, OpenLinkOptions } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -107,7 +126,7 @@ const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Index {
+struct DeepOpenLinkIndex {
   build() {
     Button('start link', { type: ButtonType.Capsule, stateEffect: true })
       .width('87%')
@@ -115,7 +134,7 @@ struct Index {
       .margin({ bottom: '12vp' })
       .onClick(() => {
         let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-        let link: string = "link://www.example.com";
+        let link: string = 'link://www.example.com'; // Use the actual application link.
         let openLinkOptions: OpenLinkOptions = {
           appLinkingOnly: false
         };
@@ -123,10 +142,10 @@ struct Index {
         try {
           context.openLink(link, openLinkOptions)
             .then(() => {
-              hilog.info(DOMAIN_NUMBER, TAG, 'open link success.');
+              hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
             }).catch((err: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG, `open link failed. Code is ${err.code}, message is ${err.message}`);
-            });
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. Code is ${err.code}, message is ${err.message}`);
+          });
         } catch (paramError) {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to start link. Code is ${paramError.code}, message is ${paramError.message}`);
         }
@@ -137,12 +156,14 @@ struct Index {
 
 ### Using startAbility() to Implement Application Redirection
 
-Pass in the target application's link into **want** of [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontextstartability), which then uses [implicit Want](explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) to trigger application redirection. In addition, you must pass in the **action** and **entity** fields to be matched.
+Pass in the target application's link into **want** of [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability), which then uses [implicit Want](explicit-implicit-want-mappings.md#matching-rules-of-implicit-want) to trigger application redirection.
 
 
 The sample code is as follows:
 
-```ts
+<!-- @[deep_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
+
+``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -152,7 +173,7 @@ const DOMAIN_NUMBER: number = 0xFF00;
 
 @Entry
 @Component
-struct Index {
+struct DeepStartIndex {
   build() {
     Button('start ability', { type: ButtonType.Capsule, stateEffect: true })
       .width('87%')
@@ -161,14 +182,14 @@ struct Index {
       .onClick(() => {
         let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
         let want: Want = {
-          uri: "link://www.example.com"
+          uri: 'link://www.example.com' // Use the actual application link.
         };
 
         try {
           context.startAbility(want).then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'start ability success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'startAbility success.');
           }).catch((err: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `start ability failed. Code is ${err.code}, message is ${err.message}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `startAbility failed. Code is ${err.code}, message is ${err.message}`);
           });
         } catch (paramError) {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to start ability. Code is ${paramError.code}, message is ${paramError.message}`);
@@ -180,19 +201,25 @@ struct Index {
 
 ### Using the Web Component to Implement Application Redirection
 
-To implement application redirection from a **Web** component in Deep Linking mode, process the defined event in the [onLoadIntercept](../reference/apis-arkweb/ts-basic-components-web.md#onloadintercept10) callback.
+You can use the **Web** component to implement application redirection in the callback function of [onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10).
 
 The sample code is as follows:
 
-```ts
-// index.ets
+<!-- @[deep_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
+
+``` TypeScript
+// DeepWebIndex.ets
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN_NUMBER = 0xF811;
+const TAG = '[Sample_PullLinking]';
 
 @Entry
 @Component
-struct WebComponent {
+struct DeepWebIndex {
   controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
@@ -203,10 +230,10 @@ struct WebComponent {
           if (url === 'link://www.example.com') {
             (this.getUIContext().getHostContext() as common.UIAbilityContext).openLink(url)
               .then(() => {
-                console.log('openLink success');
+                hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
               }).catch((err: BusinessError) => {
-                console.error('openLink failed, err:' + JSON.stringify(err));
-              });
+              hilog.error(DOMAIN_NUMBER, TAG, `openLink failed, err: ${JSON.stringify(err)}.`);
+            });
             return true;
           }
           // If true is returned, the loading is blocked. Otherwise, the loading is allowed.

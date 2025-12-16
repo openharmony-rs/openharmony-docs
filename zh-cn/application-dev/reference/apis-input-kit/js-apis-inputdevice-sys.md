@@ -1,8 +1,13 @@
 # @ohos.multimodalInput.inputDevice (输入设备)(系统接口)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
-本模块提供输入设备管理能力，包括查询输入设备信息等。
-
+本模块提供输入设备管理能力，包括查询输入设备信息，设置/获取键盘按键重复时延，设置输入设备的开关状态等。
 
 > **说明**：
 >
@@ -47,6 +52,7 @@ setKeyboardRepeatDelay(delay: number, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -56,12 +62,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatDelay(350, (error: Error) => {
+            inputDevice.setKeyboardRepeatDelay(350, (error: BusinessError) => {
               if (error) {
                 console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set keyboard repeat delay success`);
+              console.info(`Set keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -92,7 +98,7 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -107,6 +113,7 @@ setKeyboardRepeatDelay(delay: number): Promise&lt;void&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -117,8 +124,10 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatDelay(350).then(() => {
-              console.log(`Set keyboard repeat delay success`);
-            });
+              console.info(`Set keyboard repeat delay success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -157,6 +166,7 @@ getKeyboardRepeatDelay(callback: AsyncCallback&lt;number&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -166,12 +176,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatDelay((error: Error, delay: Number) => {
+            inputDevice.getKeyboardRepeatDelay((error: BusinessError, delay: Number) => {
               if (error) {
                 console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get keyboard repeat delay success`);
+              console.info(`Get keyboard repeat delay success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -211,6 +221,7 @@ getKeyboardRepeatDelay(): Promise&lt;number&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -221,8 +232,10 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getKeyboardRepeatDelay().then((delay: Number) => {
-              console.log(`Get keyboard repeat delay success`);
-            });
+              console.info(`Get keyboard repeat delay success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get keyboard repeat delay failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -262,6 +275,7 @@ setKeyboardRepeatRate(rate: number, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -271,12 +285,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.setKeyboardRepeatRate(60, (error: Error) => {
+            inputDevice.setKeyboardRepeatRate(60, (error: BusinessError) => {
               if (error) {
                 console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Set keyboard repeat rate success`);
+              console.info(`Set keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -307,7 +321,7 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -322,6 +336,7 @@ setKeyboardRepeatRate(rate: number): Promise&lt;void&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -332,8 +347,10 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.setKeyboardRepeatRate(60).then(() => {
-              console.log(`Set keyboard repeat rate success`);
-            });
+              console.info(`Set keyboard repeat rate success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -372,6 +389,7 @@ getKeyboardRepeatRate(callback: AsyncCallback&lt;number&gt;): void
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -381,12 +399,12 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            inputDevice.getKeyboardRepeatRate((error: Error, rate: Number) => {
+            inputDevice.getKeyboardRepeatRate((error: BusinessError, rate: Number) => {
               if (error) {
                 console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
               }
-              console.log(`Get keyboard repeat rate success`);
+              console.info(`Get keyboard repeat rate success`);
             });
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
@@ -426,6 +444,7 @@ getKeyboardRepeatRate(): Promise&lt;number&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -436,8 +455,10 @@ struct Index {
         .onClick(() => {
           try {
             inputDevice.getKeyboardRepeatRate().then((rate: Number) => {
-              console.log(`Get keyboard repeat rate success`);
-            });
+              console.info(`Get keyboard repeat rate success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get keyboard failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get keyboard repeat rate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -451,7 +472,7 @@ struct Index {
 
 setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
-设置输入设备的开关状态。以触摸屏为例：关闭时，点击触摸屏设备不响应；开启时，可正常操作触摸屏。
+设置输入设备的开关状态。以触摸屏为例：关闭时，点击触摸屏设备不响应；开启时，可正常操作触摸屏。使用Promise异步回调。
 
 **需要权限**：ohos.permission.INPUT_DEVICE_CONTROLLER
 
@@ -463,8 +484,14 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 | 参数名   | 类型    | 必填 | 说明                      |
 | -------- | ------- | ---- | ------------------------- |
-| deviceId | number  | 是   | 目标设备Id。              |
+| deviceId | number  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。              |
 | enabled  | boolean | 是   | 输入设备的开关状态，取值为true表示开启输入设备，取值为false表示关闭输入设备。 |
+
+**返回值**：
+
+| 类型                  | 说明               |
+| ------------------- | ---------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -473,8 +500,8 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Not system application.                                      |
+| 201      | Permission denied. The application does not have the permission required to call the API |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900001  | The specified device does not exist.                         |
 
@@ -482,6 +509,7 @@ setInputDeviceEnabled(deviceId: number, enabled: boolean): Promise&lt;void&gt;
 
 ```js
 import { inputDevice } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -493,7 +521,9 @@ struct Index {
           try {
             inputDevice.setInputDeviceEnabled(0, true).then(() => {
               console.info(`Set input device enable success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set device enable failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set input device enable error`);
           }

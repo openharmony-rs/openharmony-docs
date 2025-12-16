@@ -1,11 +1,17 @@
 # drawing_path.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
 文件中定义了与自定义路径相关的功能函数。
 
 <!--RP1-->
-**相关示例：** [NDKAPIDrawing (API14)](https://gitee.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
+**相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **引用文件：** <native_drawing/drawing_path.h>
 
@@ -79,12 +85,14 @@
 | [OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acceptableError, float* vals,uint32_t* count)](#oh_drawing_pathapproximate) | 将当前路径转化为由连续直线段构成的近似路径。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other,float weight, bool* success, OH_Drawing_Path* interpolatedPath)](#oh_drawing_pathinterpolate) | 按照给定权重在当前路径与另一条路径之间进行插值，并将结果存储到目标路径对象中。<br> 两条路径点数相同即可插值成功，目标路径按照当前路径的结构进行创建。 |
 | [OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* result)](#oh_drawing_pathisinterpolate) | 检查当前路径与另一条路径（other）在结构和操作顺序上是否完全一致，以确定两条路径是否兼容插值。<br> 若路径中包含圆锥曲线（Conic）操作，则对应操作的权重值也必须一致，才能视为兼容插值。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PathIsInverseFillType(const OH_Drawing_Path* path, bool* isInverse)](#oh_drawing_pathisinversefilltype) | 检查路径的填充类型是否是取反类型。<br>取反类型即[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)中的PATH_FILL_TYPE_INVERSE_WINDING和PATH_FILL_TYPE_INVERSE_EVEN_ODD。 |
+| [OH_Drawing_ErrorCode OH_Drawing_PathToggleInverseFillType(OH_Drawing_Path* path)](#oh_drawing_pathtoggleinversefilltype) | 切换路径的填充类型为取反类型。<br>取反类型即[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)中的PATH_FILL_TYPE_INVERSE_WINDING和PATH_FILL_TYPE_INVERSE_EVEN_ODD。 |
 
 ## 枚举类型说明
 
 ### OH_Drawing_PathDirection
 
-```
+```c
 enum OH_Drawing_PathDirection
 ```
 
@@ -101,7 +109,7 @@ enum OH_Drawing_PathDirection
 
 ### OH_Drawing_PathFillType
 
-```
+```c
 enum OH_Drawing_PathFillType
 ```
 
@@ -113,14 +121,14 @@ enum OH_Drawing_PathFillType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| PATH_FILL_TYPE_WINDING | 绘制区域中的任意一点，向任意方向射出一条射线，对于射线和路径的所有交点，初始计数为0，<br>遇到每个顺时针的交点（路径从射线的左边向右穿过），计数加1，遇到每个逆时针的交点（路径从射线的右边向左穿过）， |
+| PATH_FILL_TYPE_WINDING | 绘制区域中的任意一点，向任意方向射出一条射线，对于射线和路径的所有交点，初始计数为0，<br>遇到每个顺时针的交点（路径从射线的左边向右穿过），计数加1，遇到每个逆时针的交点（路径从射线的右边向左穿过），计数减1，若最终的计数结果不为0，则认为这个点在路径内部，需要被涂色；若计数为0则不被涂色。 |
 | PATH_FILL_TYPE_EVEN_ODD | 绘制区域中的任意一点，向任意方向射出一条射线，若这条射线和路径相交的次数是奇数，则这个点被认为在路径内部，需要被涂色；若是偶数则不被涂色。 |
 | PATH_FILL_TYPE_INVERSE_WINDING | PATH_FILL_TYPE_WINDING 涂色规则取反。 |
 | PATH_FILL_TYPE_INVERSE_EVEN_ODD | PATH_FILL_TYPE_EVEN_ODD 涂色规则取反。 |
 
 ### OH_Drawing_PathAddMode
 
-```
+```c
 enum OH_Drawing_PathAddMode
 ```
 
@@ -137,7 +145,7 @@ enum OH_Drawing_PathAddMode
 
 ### OH_Drawing_PathOpMode
 
-```
+```c
 enum OH_Drawing_PathOpMode
 ```
 
@@ -157,7 +165,7 @@ enum OH_Drawing_PathOpMode
 
 ### OH_Drawing_PathMeasureMatrixFlags
 
-```
+```c
 enum OH_Drawing_PathMeasureMatrixFlags
 ```
 
@@ -178,7 +186,7 @@ enum OH_Drawing_PathMeasureMatrixFlags
 
 ### OH_Drawing_PathCreate()
 
-```
+```c
 OH_Drawing_Path* OH_Drawing_PathCreate(void)
 ```
 
@@ -198,7 +206,7 @@ OH_Drawing_Path* OH_Drawing_PathCreate(void)
 
 ### OH_Drawing_PathCopy()
 
-```
+```c
 OH_Drawing_Path* OH_Drawing_PathCopy(OH_Drawing_Path* path)
 ```
 
@@ -225,7 +233,7 @@ OH_Drawing_Path* OH_Drawing_PathCopy(OH_Drawing_Path* path)
 
 ### OH_Drawing_PathDestroy()
 
-```
+```c
 void OH_Drawing_PathDestroy(OH_Drawing_Path* path)
 ```
 
@@ -246,7 +254,7 @@ void OH_Drawing_PathDestroy(OH_Drawing_Path* path)
 
 ### OH_Drawing_PathSetPath()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathSetPath(OH_Drawing_Path* path, OH_Drawing_Path* other)
 ```
 
@@ -274,7 +282,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathSetPath(OH_Drawing_Path* path, OH_Drawing_Pa
 
 ### OH_Drawing_PathIsEmpty()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathIsEmpty(OH_Drawing_Path* path, bool* isEmpty)
 ```
 
@@ -302,7 +310,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsEmpty(OH_Drawing_Path* path, bool* isEmpty
 
 ### OH_Drawing_PathIsRect()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rect* rect, bool* isRect)
 ```
 
@@ -331,7 +339,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rec
 
 ### OH_Drawing_PathMoveTo()
 
-```
+```c
 void OH_Drawing_PathMoveTo(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -354,7 +362,7 @@ void OH_Drawing_PathMoveTo(OH_Drawing_Path* path, float x, float y)
 
 ### OH_Drawing_PathLineTo()
 
-```
+```c
 void OH_Drawing_PathLineTo(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -377,7 +385,7 @@ void OH_Drawing_PathLineTo(OH_Drawing_Path* path, float x, float y)
 
 ### OH_Drawing_PathArcTo()
 
-```
+```c
 void OH_Drawing_PathArcTo(OH_Drawing_Path* path,float x1, float y1, float x2, float y2, float startDeg, float sweepDeg)
 ```
 
@@ -404,7 +412,7 @@ void OH_Drawing_PathArcTo(OH_Drawing_Path* path,float x1, float y1, float x2, fl
 
 ### OH_Drawing_PathQuadTo()
 
-```
+```c
 void OH_Drawing_PathQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY)
 ```
 
@@ -429,7 +437,7 @@ void OH_Drawing_PathQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, floa
 
 ### OH_Drawing_PathConicTo()
 
-```
+```c
 void OH_Drawing_PathConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY, float weight)
 ```
 
@@ -455,7 +463,7 @@ void OH_Drawing_PathConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, flo
 
 ### OH_Drawing_PathCubicTo()
 
-```
+```c
 void OH_Drawing_PathCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, float ctrlX2, float ctrlY2, float endX, float endY)
 ```
 
@@ -482,7 +490,7 @@ void OH_Drawing_PathCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, f
 
 ### OH_Drawing_PathRMoveTo()
 
-```
+```c
 void OH_Drawing_PathRMoveTo(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -505,7 +513,7 @@ void OH_Drawing_PathRMoveTo(OH_Drawing_Path* path, float x, float y)
 
 ### OH_Drawing_PathRLineTo()
 
-```
+```c
 void OH_Drawing_PathRLineTo(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -528,7 +536,7 @@ void OH_Drawing_PathRLineTo(OH_Drawing_Path* path, float x, float y)
 
 ### OH_Drawing_PathRQuadTo()
 
-```
+```c
 void OH_Drawing_PathRQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY)
 ```
 
@@ -553,7 +561,7 @@ void OH_Drawing_PathRQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, flo
 
 ### OH_Drawing_PathRConicTo()
 
-```
+```c
 void OH_Drawing_PathRConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, float endX, float endY, float weight)
 ```
 
@@ -579,7 +587,7 @@ void OH_Drawing_PathRConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, fl
 
 ### OH_Drawing_PathRCubicTo()
 
-```
+```c
 void OH_Drawing_PathRCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, float ctrlX2, float ctrlY2,float endX, float endY)
 ```
 
@@ -606,7 +614,7 @@ void OH_Drawing_PathRCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, 
 
 ### OH_Drawing_PathAddRect()
 
-```
+```c
 void OH_Drawing_PathAddRect(OH_Drawing_Path* path, float left, float top, float right, float bottom,OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -632,7 +640,7 @@ void OH_Drawing_PathAddRect(OH_Drawing_Path* path, float left, float top, float 
 
 ### OH_Drawing_PathAddRectWithInitialCorner()
 
-```
+```c
 void OH_Drawing_PathAddRectWithInitialCorner(OH_Drawing_Path* path, const OH_Drawing_Rect* rect,OH_Drawing_PathDirection pathDirection, uint32_t start)
 ```
 
@@ -656,7 +664,7 @@ void OH_Drawing_PathAddRectWithInitialCorner(OH_Drawing_Path* path, const OH_Dra
 
 ### OH_Drawing_PathAddRoundRect()
 
-```
+```c
 void OH_Drawing_PathAddRoundRect(OH_Drawing_Path* path,const OH_Drawing_RoundRect* roundRect, OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -679,7 +687,7 @@ void OH_Drawing_PathAddRoundRect(OH_Drawing_Path* path,const OH_Drawing_RoundRec
 
 ### OH_Drawing_PathAddOvalWithInitialPoint()
 
-```
+```c
 void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Drawing_Rect* rect,uint32_t start, OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -703,7 +711,7 @@ void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Draw
 
 ### OH_Drawing_PathAddOval()
 
-```
+```c
 void OH_Drawing_PathAddOval(OH_Drawing_Path* path,const OH_Drawing_Rect* rect, OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -726,7 +734,7 @@ void OH_Drawing_PathAddOval(OH_Drawing_Path* path,const OH_Drawing_Rect* rect, O
 
 ### OH_Drawing_PathAddArc()
 
-```
+```c
 void OH_Drawing_PathAddArc(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)
 ```
 
@@ -750,7 +758,7 @@ void OH_Drawing_PathAddArc(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, f
 
 ### OH_Drawing_PathAddPath()
 
-```
+```c
 void OH_Drawing_PathAddPath(OH_Drawing_Path* path, const OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -773,7 +781,7 @@ void OH_Drawing_PathAddPath(OH_Drawing_Path* path, const OH_Drawing_Path* src, c
 
 ### OH_Drawing_PathAddPathWithMatrixAndMode()
 
-```
+```c
 void OH_Drawing_PathAddPathWithMatrixAndMode(OH_Drawing_Path* path, const OH_Drawing_Path* src,const OH_Drawing_Matrix* matrix, OH_Drawing_PathAddMode pathAddMode)
 ```
 
@@ -797,7 +805,7 @@ void OH_Drawing_PathAddPathWithMatrixAndMode(OH_Drawing_Path* path, const OH_Dra
 
 ### OH_Drawing_PathAddPathWithMode()
 
-```
+```c
 void OH_Drawing_PathAddPathWithMode(OH_Drawing_Path* path,const OH_Drawing_Path* src, OH_Drawing_PathAddMode pathAddMode)
 ```
 
@@ -820,7 +828,7 @@ void OH_Drawing_PathAddPathWithMode(OH_Drawing_Path* path,const OH_Drawing_Path*
 
 ### OH_Drawing_PathAddPathWithOffsetAndMode()
 
-```
+```c
 void OH_Drawing_PathAddPathWithOffsetAndMode(OH_Drawing_Path* path, const OH_Drawing_Path* src, float dx, float dy,OH_Drawing_PathAddMode pathAddMode)
 ```
 
@@ -845,7 +853,7 @@ void OH_Drawing_PathAddPathWithOffsetAndMode(OH_Drawing_Path* path, const OH_Dra
 
 ### OH_Drawing_PathAddPolygon()
 
-```
+```c
 void OH_Drawing_PathAddPolygon(OH_Drawing_Path* path, const OH_Drawing_Point2D* points, uint32_t count, bool isClosed)
 ```
 
@@ -869,7 +877,7 @@ void OH_Drawing_PathAddPolygon(OH_Drawing_Path* path, const OH_Drawing_Point2D* 
 
 ### OH_Drawing_PathAddCircle()
 
-```
+```c
 void OH_Drawing_PathAddCircle(OH_Drawing_Path* path,float x, float y, float radius, OH_Drawing_PathDirection pathDirection)
 ```
 
@@ -894,7 +902,7 @@ void OH_Drawing_PathAddCircle(OH_Drawing_Path* path,float x, float y, float radi
 
 ### OH_Drawing_PathBuildFromSvgString()
 
-```
+```c
 bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)
 ```
 
@@ -922,7 +930,7 @@ bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)
 
 ### OH_Drawing_PathContains()
 
-```
+```c
 bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)
 ```
 
@@ -940,8 +948,8 @@ bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
-| float x | 轴上坐标点。 |
-| float y | 轴上坐标点。 |
+| float x | x轴上坐标点。 |
+| float y | y轴上坐标点。 |
 
 **返回：**
 
@@ -951,7 +959,7 @@ bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)
 
 ### OH_Drawing_PathTransform()
 
-```
+```c
 void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -973,7 +981,7 @@ void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* ma
 
 ### OH_Drawing_PathTransformWithPerspectiveClip()
 
-```
+```c
 void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_Drawing_Matrix* matrix,OH_Drawing_Path* dst, bool applyPerspectiveClip)
 ```
 
@@ -997,7 +1005,7 @@ void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_
 
 ### OH_Drawing_PathSetFillType()
 
-```
+```c
 void OH_Drawing_PathSetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType pathFillType)
 ```
 
@@ -1019,7 +1027,7 @@ void OH_Drawing_PathSetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType p
 
 ### OH_Drawing_PathGetFillType()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathGetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType* pathFillType)
 ```
 
@@ -1047,7 +1055,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetFillType(OH_Drawing_Path* path, OH_Drawin
 
 ### OH_Drawing_PathGetLength()
 
-```
+```c
 float OH_Drawing_PathGetLength(OH_Drawing_Path* path, bool forceClosed)
 ```
 
@@ -1075,7 +1083,7 @@ float OH_Drawing_PathGetLength(OH_Drawing_Path* path, bool forceClosed)
 
 ### OH_Drawing_PathGetBounds()
 
-```
+```c
 void OH_Drawing_PathGetBounds(OH_Drawing_Path* path, OH_Drawing_Rect* rect)
 ```
 
@@ -1097,7 +1105,7 @@ void OH_Drawing_PathGetBounds(OH_Drawing_Path* path, OH_Drawing_Rect* rect)
 
 ### OH_Drawing_PathClose()
 
-```
+```c
 void OH_Drawing_PathClose(OH_Drawing_Path* path)
 ```
 
@@ -1118,7 +1126,7 @@ void OH_Drawing_PathClose(OH_Drawing_Path* path)
 
 ### OH_Drawing_PathOffset()
 
-```
+```c
 void OH_Drawing_PathOffset(OH_Drawing_Path* path, OH_Drawing_Path* dst, float dx, float dy)
 ```
 
@@ -1137,12 +1145,12 @@ void OH_Drawing_PathOffset(OH_Drawing_Path* path, OH_Drawing_Path* dst, float dx
 | -- | -- |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向当前路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* dst | 指向目标路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针，为NULL时会将结果存储到当前路径对象中。 |
-| float dx | 轴方向的偏移量。 |
-| float dy | 轴方向的偏移量。 |
+| float dx | x轴方向的偏移量。 |
+| float dy | y轴方向的偏移量。 |
 
 ### OH_Drawing_PathReset()
 
-```
+```c
 void OH_Drawing_PathReset(OH_Drawing_Path* path)
 ```
 
@@ -1163,7 +1171,7 @@ void OH_Drawing_PathReset(OH_Drawing_Path* path)
 
 ### OH_Drawing_PathIsClosed()
 
-```
+```c
 bool OH_Drawing_PathIsClosed(OH_Drawing_Path* path, bool forceClosed)
 ```
 
@@ -1191,7 +1199,7 @@ bool OH_Drawing_PathIsClosed(OH_Drawing_Path* path, bool forceClosed)
 
 ### OH_Drawing_PathGetPositionTangent()
 
-```
+```c
 bool OH_Drawing_PathGetPositionTangent(OH_Drawing_Path* path, bool forceClosed,float distance, OH_Drawing_Point2D* position, OH_Drawing_Point2D* tangent)
 ```
 
@@ -1222,7 +1230,7 @@ bool OH_Drawing_PathGetPositionTangent(OH_Drawing_Path* path, bool forceClosed,f
 
 ### OH_Drawing_PathGetSegment()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathGetSegment(OH_Drawing_Path* path, bool forceClosed,float start, float stop, bool startWithMoveTo, OH_Drawing_Path* dst, bool* result)
 ```
 
@@ -1255,7 +1263,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetSegment(OH_Drawing_Path* path, bool force
 
 ### OH_Drawing_PathOp()
 
-```
+```c
 bool OH_Drawing_PathOp(OH_Drawing_Path* path, const OH_Drawing_Path* other, OH_Drawing_PathOpMode op)
 ```
 
@@ -1284,7 +1292,7 @@ bool OH_Drawing_PathOp(OH_Drawing_Path* path, const OH_Drawing_Path* other, OH_D
 
 ### OH_Drawing_PathGetMatrix()
 
-```
+```c
 bool OH_Drawing_PathGetMatrix(OH_Drawing_Path* path, bool forceClosed,float distance, OH_Drawing_Matrix* matrix, OH_Drawing_PathMeasureMatrixFlags flag)
 ```
 
@@ -1314,7 +1322,7 @@ bool OH_Drawing_PathGetMatrix(OH_Drawing_Path* path, bool forceClosed,float dist
 
 ### OH_Drawing_PathApproximate()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acceptableError, float* vals,uint32_t* count)
 ```
 
@@ -1344,7 +1352,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acc
 
 ### OH_Drawing_PathInterpolate()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other,float weight, bool* success, OH_Drawing_Path* interpolatedPath)
 ```
 
@@ -1375,7 +1383,7 @@ OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawin
 
 ### OH_Drawing_PathIsInterpolate()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Drawing_Path* other, bool* result)
 ```
 
@@ -1403,3 +1411,55 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Draw
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br> 返回OH_DRAWING_SUCCESS，表示执行成功。<br> 返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数path、other或者result为空指针。 |
 
 
+### OH_Drawing_PathIsInverseFillType()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_PathIsInverseFillType(const OH_Drawing_Path* path, bool* isInverse)
+```
+
+**描述**
+
+检查路径的填充类型是否是取反类型。
+
+取反类型即[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)中的PATH_FILL_TYPE_INVERSE_WINDING和PATH_FILL_TYPE_INVERSE_EVEN_ODD。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
+| bool* isInverse | 表示填充类型是否是取反类型。作为出参使用。true表示填充类型是取反类型，false表示填充类型不是取反类型。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示path或isInverse是空指针。 |
+
+### OH_Drawing_PathToggleInverseFillType()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_PathToggleInverseFillType(OH_Drawing_Path* path)
+```
+
+**描述**
+
+切换路径的填充类型为取反类型。
+
+取反类型即[OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype)中的PATH_FILL_TYPE_INVERSE_WINDING和PATH_FILL_TYPE_INVERSE_EVEN_ODD。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Path](capi-drawing-oh-drawing-path.md)* path | 指向路径对象[OH_Drawing_Path](capi-drawing-oh-drawing-path.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER，表示path是空指针。 |

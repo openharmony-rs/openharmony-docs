@@ -1,4 +1,14 @@
 # ArkWeb_WebMessagePort*
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct ArkWeb_WebMessagePort* ArkWeb_WebMessagePortPtr
+```
 
 
 ## 概述

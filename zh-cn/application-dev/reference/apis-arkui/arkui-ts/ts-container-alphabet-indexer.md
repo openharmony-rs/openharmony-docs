@@ -1,4 +1,10 @@
 # AlphabetIndexer
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 可以与容器组件联动用于按逻辑结构快速定位容器显示区域的组件。
 
@@ -40,10 +46,10 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| arrayValue<sup>7+</sup> | Array&lt;string&gt; | 是 | 字符串数组，每个字符串代表一个索引项。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| selected<sup>7+</sup>   | number              | 是    | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | -------- |
+| arrayValue<sup>7+</sup> | Array&lt;string&gt; | 否 | 否 | 字符串数组，每个字符串代表一个索引项。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| selected<sup>7+</sup>   | number              | 否 | 否    | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -69,7 +75,7 @@ color(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 未选中项文本颜色。<br/>默认值：0x99182431。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 未选中项文本颜色。<br/>默认值：0x99182431，显示为略带透明的棕色。 |
 
 ### selectedColor
 
@@ -85,7 +91,7 @@ selectedColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。 |
 
 ### popupColor
 
@@ -101,7 +107,7 @@ popupColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗一级索引项文本颜色。<br/>默认值：0xFF007DFF，显示为蓝色。 |
 
 ### selectedBackgroundColor
 
@@ -117,7 +123,7 @@ selectedBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                      |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 选中项背景颜色。<br/>默认值：0x1A007DFF，显示为半透明的蓝绿色。 |
 
 ### popupBackground
 
@@ -133,7 +139,7 @@ popupBackground(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                         |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性值为NONE关闭背景模糊材质效果。<br/>默认值：<br />API version 11及以前：0xFFFFFFFF。<br />API version 12及以后：#66808080。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗背景颜色。<br/>弹窗的背景模糊材质效果会对背景色产生影响，可通过设置[popupBackgroundBlurStyle](#popupbackgroundblurstyle12)属性值为NONE关闭背景模糊材质效果。<br/>默认值：<br />API version 11及以前：0xFFFFFFFF，显示为白色。<br />API version 12及以后：#66808080，显示为半透明的灰色。 |
 
 ### usingPopup
 
@@ -149,7 +155,7 @@ usingPopup(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                   |
 | ------ | ------- | ---- | -------------------------------------- |
-| value  | boolean | 是   | 是否显示提示弹窗。<br/>默认值：false，不显示提示弹窗。 |
+| value  | boolean | 是   | 是否显示提示弹窗。<br/>默认值：false <br/>true：显示提示弹窗。<br/>false：不显示提示弹窗。 |
 
 ### selectedFont
 
@@ -229,8 +235,8 @@ alignStyle(value: IndexerAlign, offset?: Length)
 
 | 参数名               | 类型                                  | 必填 | 说明                                                         |
 | -------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                | [IndexerAlign](#indexeralign枚举说明) | 是   | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值: IndexerAlign.END。 |
-| offset<sup>10+</sup> | [Length](ts-types.md#length)          | 否   | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与popupPosition同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。 |
+| value                | [IndexerAlign](#indexeralign枚举说明) | 是   | 索引条提示弹窗的对齐样式，支持弹窗显示在索引条右侧和左侧。<br/>默认值：IndexerAlign.END |
+| offset<sup>10+</sup> | [Length](ts-types.md#length)          | 否   | 提示弹窗与索引条之间间距，大于等于0为有效值，在不设置或设置为小于0的情况下间距与popupPosition.x相同。与[popupPosition](#popupposition8)同时设置时，水平方向上offset生效，竖直方向上popupPosition.y生效。 |
 
 ### selected<sup>8+</sup>
 
@@ -264,7 +270,7 @@ popupPosition(value: Position)
 
 | 参数名 | 类型                              | 必填 | 说明                                                         |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) | 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x:60.0, y:48.0} |
+| value  | [Position](ts-types.md#position) | 是   | 弹出窗口相对于索引条上边框中点的位置。<br/>默认值：{x: 60.0, y: 48.0} |
 
 ### popupSelectedColor<sup>10+</sup>
 
@@ -280,7 +286,7 @@ popupSelectedColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                  |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431，显示为深暗蓝色。 |
 
 ### popupUnselectedColor<sup>10+</sup>
 
@@ -296,7 +302,7 @@ popupUnselectedColor(value: ResourceColor)
 
 | 参数名 | 类型                                       | 必填 | 说明                                                    |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引选中项文本颜色。 <br/>默认值：#FF182431 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引未选中项文本颜色。 <br/>默认值：#FF182431，显示为深暗蓝色。 |
 
 ### popupItemFont<sup>10+</sup>
 
@@ -328,7 +334,7 @@ popupItemBackgroundColor(value: ResourceColor)
 
 | 参数名 | 类型                     | 必填 | 说明                                            |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF。<br />API version 12及以后：#00000000。 |
+| value  | [ResourceColor](ts-types.md#resourcecolor) | 是   | 提示弹窗二级索引项背景颜色。 <br/>默认值：<br />API version 11及以前：#FFFFFFFF，显示为白色。<br />API version 12及以后：#00000000，显示为黑色。 |
 
 ### autoCollapse<sup>11+</sup>   
 
@@ -340,6 +346,10 @@ autoCollapse(value: boolean)
 
 如果索引项第一项不为“#”，当所有索引项数量 <= 9时，选择全显示模式；9 < 所有索引项数量 <= 13时，根据索引条高度自适应选择全显示模式或者短折叠模式；所有索引项数量 > 13时，根据索引条高度自适应选择短折叠模式或者长折叠模式。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -348,7 +358,7 @@ autoCollapse(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | 是   | 是否使用自适应折叠模式。<br/>默认值：<br />API version 12之前：false，不使用自适应折叠模式。<br />API version 12及之后：true，使用自适应折叠模式。 |
+| value  | boolean | 是   | 是否使用自适应折叠模式。<br/>默认值：<br />API version 12之前：false <br />API version 12及之后：true  <br/>true：使用自适应折叠模式。<br/>false：不使用自适应折叠模式。|
 
 ### popupItemBorderRadius<sup>12+</sup>   
 
@@ -364,7 +374,7 @@ popupItemBorderRadius(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 设置提示弹窗索引项背板圆角半径。<br/>默认值：24vp。<br/>不支持百分比，小于0时按照0设置。<br/>提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。 |
+| value  | number | 是   | 设置提示弹窗索引项背板圆角半径。<br/>默认值：24vp<br/>不支持百分比，小于0时按照0设置。<br/>提示弹窗背板圆角自适应变化（索引项圆角半径+4vp）。 |
 
 ### itemBorderRadius<sup>12+</sup>   
 
@@ -396,7 +406,7 @@ popupBackgroundBlurStyle(value: BlurStyle)
 
 | 参数名 | 类型                                         | 必填 | 说明                                                         |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 是   | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。<br/>默认值：COMPONENT_REGULAR。 |
+| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 是   | 设置提示弹窗的背景模糊材质。<br/>弹窗的背景模糊材质效果会对背景色[popupBackground](#popupbackground)产生影响，可通过设置属性值为NONE关闭背景模糊材质效果。<br/>默认值：COMPONENT_REGULAR |
 
 ### popupTitleBackground<sup>12+</sup>   
 
@@ -422,9 +432,11 @@ enableHapticFeedback(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**参数：**
+
 | 参数名         | 类型                                                  | 必填 | 说明                         |
 |-------------|-----------------------------------------------------|----|----------------------------|
-| value | boolean | 是  | 是否支持触控反馈。<br/>默认值：true，支持触控反馈。 |
+| value | boolean | 是  | 是否支持触控反馈。<br/>true：支持触控反馈。<br/>false：不支持触控反馈。<br/>默认值：true<br/>开启触控反馈时，需要在工程的module.json5中配置[requestPermissions](../../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)字段开启振动权限，配置如下：<br/>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 ## IndexerAlign枚举说明
 
@@ -432,12 +444,12 @@ enableHapticFeedback(value: boolean)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Left | 提示弹窗显示在索引条右侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| Right | 提示弹窗显示在索引条左侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| START<sup>12+</sup> | 在LTR场景下，提示弹窗显示在索引条右侧的位置。在RTL场景下，提示弹窗显示在索引条左侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| END<sup>12+</sup> | 在LTR场景下，提示弹窗显示在索引条左侧的位置。在RTL场景下，提示弹窗显示在索引条右侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 名称 | 值 | 说明 |
+| -------- | --- | ----- |
+| Left | 0 | 提示弹窗显示在索引条右侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| Right | 1 | 提示弹窗显示在索引条左侧。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| START<sup>12+</sup> | 2 | 在从左到右（LTR）场景下，提示弹窗显示在索引条右侧的位置。在RTL场景下，提示弹窗显示在索引条左侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| END<sup>12+</sup> | 3 | 在从左到右（LTR）场景下，提示弹窗显示在索引条左侧的位置。在RTL场景下，提示弹窗显示在索引条右侧的位置。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## 事件
 
@@ -637,8 +649,8 @@ struct AlphabetIndexerSample {
           .itemBorderRadius(14) // 设置索引项背板圆角半径
           .popupBackgroundBlurStyle(BlurStyle.NONE) // 设置提示弹窗的背景模糊材质
           .popupTitleBackground(0xCCCCCC) // 设置提示弹窗一级索引项背景颜色
-          .popupSelectedColor(0x00FF00) // 提示弹窗二级索引未选中项文本颜色
-          .popupUnselectedColor(0x0000FF) // 提示弹窗二级索引选中项文本颜色
+          .popupSelectedColor(0x00FF00) // 提示弹窗二级索引选中项文本颜色
+          .popupUnselectedColor(0x0000FF) // 提示弹窗二级索引未选中项文本颜色
           .popupItemFont({ size: 30, style: FontStyle.Normal }) // 提示弹窗二级索引项文本样式
           .popupItemBackgroundColor(0xCCCCCC) // 提示弹窗二级索引项背景颜色
           .onSelect((index: number) => {
@@ -936,6 +948,7 @@ struct AlphabetIndexerSample {
       }
       .width('100%')
       .height('100%')
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件。
       .backgroundImage($r("app.media.image"))
     }
   }

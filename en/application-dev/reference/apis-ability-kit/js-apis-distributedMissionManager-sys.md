@@ -1,6 +1,12 @@
 # @ohos.distributedMissionManager (Distributed Mission Management) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: DistributedAbilityManager-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @huipeizi-->
 
-The **distributedMissionManager** module implements mission management across devices. You can use the APIs provided by this module to register or unregister a mission status listener, start or stop synchronizing a remote mission list, and continue a mission on a remote device by mission ID or bundle name.
+The distributedMissionManager module implements mission management across devices. You can use the APIs provided by this module to register or unregister a mission status listener, start or stop synchronizing a remote mission list, and continue a mission on a remote device by mission ID or bundle name.
 
 > **NOTE**
 >
@@ -49,15 +55,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   
   // Implement a callback function.
   function NotifyMissionsChanged(deviceId: string): void {
-    console.log('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+    console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
   }
   function NotifySnapshot(deviceId: string, missionId: number): void {
-    console.log('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
-    console.log('NotifySnapshot missionId ' + JSON.stringify(missionId));
+    console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
+    console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
   }
   function NotifyNetDisconnect(deviceId: string, state: number): void {
-    console.log('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
-    console.log('NotifyNetDisconnect state ' + JSON.stringify(state));
+    console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+    console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
   }
   try {
     // Call registerMissionListener.
@@ -119,15 +125,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   // Implement a callback function.
   function NotifyMissionsChanged(deviceId: string): void {
-    console.log('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
+    console.info('NotifyMissionsChanged deviceId ' + JSON.stringify(deviceId));
   }
   function NotifySnapshot(deviceId: string, missionId: number): void {
-    console.log('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
-    console.log('NotifySnapshot missionId ' + JSON.stringify(missionId));
+    console.info('NotifySnapshot deviceId ' + JSON.stringify(deviceId));
+    console.info('NotifySnapshot missionId ' + JSON.stringify(missionId));
   }
   function NotifyNetDisconnect(deviceId: string, state: number): void {
-    console.log('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
-    console.log('NotifyNetDisconnect state ' + JSON.stringify(state));
+    console.info('NotifyNetDisconnect deviceId ' + JSON.stringify(deviceId));
+    console.info('NotifyNetDisconnect state ' + JSON.stringify(state));
   }
   try {
       // Call registerMissionListener.
@@ -472,6 +478,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 201      | Permission denied.|
+| 202 | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300501 | The system ability work abnormally. |
 | 16300502 | Failed to get the missionInfo of the specified missionId. |
@@ -488,7 +495,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   // Implement a callback function.
   function onContinueDone(resultCode: number): void {
-    console.log('onContinueDone resultCode: ' + JSON.stringify(resultCode));
+    console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
   };
   try {
     // Call continueMission.
@@ -542,6 +549,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 201      | Permission denied.|
+| 202 | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300501 | The system ability work abnormally. |
 | 16300502 | Failed to get the missionInfo of the specified missionId. |
@@ -558,7 +566,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   // Implement a callback function.
   function onContinueDone(resultCode: number): void {
-    console.log('onContinueDone resultCode: ' + JSON.stringify(resultCode));
+    console.info('onContinueDone resultCode: ' + JSON.stringify(resultCode));
   };
   try {
     // Call continueMission.
@@ -603,6 +611,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 201      | Permission denied.|
+| 202 | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300501 | The system ability work abnormally. |
 | 16300503 | The application is not installed on the remote end and installation-free is not supported. |
@@ -666,6 +675,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 201      | Permission denied.|
+| 202 | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300501 | The system ability work abnormally. |
 | 16300503 | The application is not installed on the remote end and installation-free is not supported. |
@@ -736,7 +746,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   } catch (error) {
     console.error("continueStateChange err: " + JSON.stringify(error));
   }
-  ```
+```
 
 ## distributedMissionManager.off('continueStateChange')<sup>11+</sup>
 
@@ -776,47 +786,43 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   } catch (err) {
     console.error("continueStateChange err: " + JSON.stringify(err));
   }
-  ```
+```
 
 ## MissionCallback
 
-Defines the callbacks that can be registered as a mission status listener.
+type MissionCallback = _MissionCallback
 
-**Required permissions**: ohos.permission.MANAGE_MISSIONS
+Defines the callback invoked after synchronization starts. It is used as an input parameter in [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
-| Name                   | Type      | Readable  | Writable  | Description                |
-| --------------------- | -------- | ---- | ---- | ------------------ |
-| notifyMissionsChanged | function | Yes   | No   | Callback used to notify the mission change event and return the device ID.    |
-| notifySnapshot        | function | Yes   | No   | Callback used to notify the snapshot change event and return the device ID and mission ID.|
-| notifyNetDisconnect   | function | Yes   | No   | Callback used to notify the disconnection event and return the device ID and network status.|
+| Type| Description|
+| --- | --- |
+| [_MissionCallback](js-apis-inner-application-missionCallbacks-sys.md) | Callback invoked after synchronization starts. It is used as an input parameter in **registerMissionListener**.|
 
 ## MissionParameter
 
-Defines the parameters required for mission synchronization.
+type MissionParameter = _MissionParameter
 
-**Required permissions**: ohos.permission.MANAGE_MISSIONS
+Defines the parameters required for mission synchronization. It is used an input parameter in [startSyncRemoteMissions](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerstartsyncremotemissions).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
-| Name         | Type   | Readable  | Writable  | Description         |
-| ----------- | ------- | ---- | ---- | ----------- |
-| deviceId    | string  | Yes   | Yes   | Device ID. For details, see [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).    |
-| fixConflict | boolean | Yes   | Yes   | Whether a version conflict occurs.|
-| tag         | number  | Yes   | Yes   | Tag of the mission.   |
+| Type| Description|
+| --- | --- |
+| [_MissionParameter](js-apis-inner-application-missionParameter-sys.md) | Parameters required for mission synchronization. It is used as an input parameter in **startSyncRemoteMissions**.|
 
 ## MissionDeviceInfo
 
-Defines the parameters required for registering a listener.
+type MissionDeviceInfo = _MissionDeviceInfo
 
-**Required permissions**: ohos.permission.MANAGE_MISSIONS
+Defines the parameters required for registering a listener. It is used as an input parameter in [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
-| Name      | Type  | Readable  | Writable  | Description     |
-| -------- | ------ | ---- | ---- | ------- |
-| deviceId | string | Yes   | Yes   | Device ID. For details, see [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).|
+| Type| Description|
+| --- | --- |
+| [_MissionDeviceInfo](js-apis-inner-application-missionDeviceInfo-sys.md) | Parameters required for registering a listener. It can be used as an input parameter in **registerMissionListener**.|
 
 ## ContinueState<sup>10+</sup>
 
@@ -835,7 +841,7 @@ Defines the information about the callback that is triggered for mission continu
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
-| Name      | Type   | Readable  | Writable  | Description         |
+| Name      | Type   | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| state | [ContinueState](#continuestate10)   | Yes   | No   |   Continuation state of the mission.|
-| info  | [ContinuableInfo](./js-apis-inner-application-continuableInfo-sys.md) | Yes   | No   |   Continuation information of the mission.|
+| state | [ContinueState](#continuestate10)   | No   | No   |   Continuation state of the mission.|
+| info  | [ContinuableInfo](./js-apis-inner-application-continuableInfo-sys.md) | No   | No   |   Continuation information of the mission.|

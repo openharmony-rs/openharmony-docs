@@ -1,5 +1,12 @@
 # 使用RSA私钥进行编码解码(C/C++)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 **编码**
 
 1. 调用[OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create)、[OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate)，生成RSA密钥类型为RSA2048、素数个数为2的非对称密钥对（keyPair）。keyPair对象中包括公钥PubKey、私钥PriKey。
@@ -8,7 +15,7 @@
 
 2. 调用[OH_CryptoPrivKeyEncodingParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_create)创建参数对象（params），并通过[OH_CryptoPrivKeyEncodingParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkeyencodingparams_setparam)设置加密算法和密码。
 
-3. 调用[OH_CryptoPrivKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkey_encode)，传入参数CRYPTO_PEM/CRYPTO_DER、PKCS1/PCKS8和参数对象（params）生成编码后的私钥字符串。
+3. 调用[OH_CryptoPrivKey_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoprivkey_encode)，传入参数CRYPTO_PEM/CRYPTO_DER、PKCS1/PKCS8和参数对象（params）生成编码后的私钥字符串。
 
 **解码**
 

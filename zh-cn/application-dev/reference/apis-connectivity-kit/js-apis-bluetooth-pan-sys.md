@@ -1,5 +1,12 @@
 # @ohos.bluetooth.pan (蓝牙pan模块)（系统接口）
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 pan模块提供了访问蓝牙个人区域网相关功能的方法。
 
 > **说明：**
@@ -54,7 +61,7 @@ disconnect(deviceId: string): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     panProfile.disconnect('XX:XX:XX:XX:XX:XX');
@@ -100,7 +107,7 @@ setTethering(enable: boolean): void
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     panProfile.setTethering(false);
@@ -142,7 +149,7 @@ isTetheringOn(): boolean
 **示例：**
 
 ```js
-import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: pan.PanProfile = pan.createPanProfile();
     panProfile.isTetheringOn();

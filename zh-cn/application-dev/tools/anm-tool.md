@@ -1,4 +1,10 @@
 # anm工具
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @huipeizi-->
 
 Advanced Notification Manager（通知管理工具，简称anm）是实现通知打印、设置通知参数等功能的工具，为开发者提供基本的通知调试和测试能力，例如打印已发布通知详细信息、设置通知缓存个数、使能通知等。
 
@@ -6,7 +12,7 @@ Advanced Notification Manager（通知管理工具，简称anm）是实现通知
 
 在使用本工具前，开发者需要先获取<!--Del-->[<!--DelEnd-->hdc工具<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd-->，执行hdc shell。
 
-当前工具仅支持在eng版本中使用，在user版本中使用会出现报错error: user version cannot use setting。
+当前工具仅支持在eng版本中使用，在user版本中使用会出现报错`/bin/sh: anm: inaccessible or not found.`。
 
 ## anm工具命令列表
 
@@ -61,7 +67,7 @@ Advanced Notification Manager（通知管理工具，简称anm）是实现通知
   | ------------------------ | ------------------------------------ |
   | -c/--recent-count        | 设置保存在内存中的最近通知的最大个数。 |
   | -e/--enable-notification | 设置通知使能开关。                     |
-  | -k/--collaboration-switch        | 设置通知是否支持跨设备协同至指定类型设备。<br/>```anm setting -k <deviceType>:<status>```<br/>**说明：** 从API version 18开始，新增支持该命令参数。<br/>deviceType表示需要指定的设备类型。取值范围包括：wearable（智能穿戴设备）、litewearable（轻量级智能穿戴设备）、headset（可穿戴式音频设备）。<br/>status表示需要指定的跨设备协同开关状态。取值为0表示开关为关闭状态，取值为1表示开关为打开状态。
+  | -k/--collaboration-switch        | 设置通知是否支持跨设备协同至指定类型设备。<br/>```anm setting -k <deviceType>:<status>```<br/>**说明：** 从API version 18开始，新增支持该命令参数。<br/>deviceType表示需要指定的设备类型。取值范围包括：wearable（智能穿戴设备）、litewearable（轻量级智能穿戴设备）、headset（可穿戴式音频设备）。<br/>status表示需要指定的跨设备协同开关状态。取值为0表示开关为关闭状态，取值为1表示开关为打开状态。|
   | -b/--collaboration-switch-bundle | 设置指定应用的通知是否支持跨设备协同至指定类型设备。<br/>```anm setting -b <deviceType>:<bundleName>:<uid>:<status>```<br/>**说明：** 从API version 18开始，新增支持该命令参数。<br/>deviceType表示需要指定的设备类型。取值范围包括：wearable（智能穿戴设备）、litewearable（轻量级智能穿戴设备）、headset（可穿戴式音频设备）。<br/>status表示需要指定的跨设备协同开关状态。取值为0表示开关为关闭状态，取值为1表示开关为打开状态。|
   | -o/--collaboration-switch-slot   | 设置指定渠道的通知是否支持通知跨设备协同至指定类型设备。<br/>```anm setting -o <deviceType>:<slotType>:<status>```<br/>**说明：** 从API version 18开始，新增支持该命令参数。<br/>deviceType表示需要指定的设备类型。取值范围包括：wearable（智能穿戴设备）、litewearable（轻量级智能穿戴设备）、headset（可穿戴式音频设备）。<br/>slotType表示需要指定的通知渠道类型。 取值范围参考[SlotType](../reference/apis-notification-kit/js-apis-notificationManager.md#slottype)。<br/>status表示需要指定的跨设备协同开关状态。取值为0表示开关为关闭状态，取值为1表示开关为打开状态。|
   | -h/--help                | 帮助信息。                             |

@@ -1,5 +1,12 @@
 # HalfScreenLaunchComponent
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @autojuan-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
+
 **HalfScreenLaunchComponent** is a component designed for launching atomic services in half screen. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in half-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
 > **NOTE**
@@ -33,19 +40,18 @@ HalfScreenLaunchComponent({
 
 **Decorator**: \@Component
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| content | Callback\<void> | Yes| \@BuilderParam | Content displayed in the component.|
-| appId | string | Yes| - | Application ID for the atomic service.|
-| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | No| - | Parameters for starting the atomic service. The default value is empty.|
-| onError |[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Invoked when an error occurs during the running of the atomic service.|
-| onTerminated | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<TerminationInfo> | No| - |  Callback used to return the result of the atomic service. The input parameter is of type **TerminationInfo**.|
+| content | Callback\<void> | Yes| \@BuilderParam | Content displayed in the component.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| appId | string | Yes| - | Application ID for the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| options | [AtomicServiceOptions](../../apis-ability-kit/js-apis-app-ability-atomicServiceOptions.md) | No| - | Parameters for starting the atomic service. The default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| onError |[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| - | Invoked when an error occurs during the running of the atomic service.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| onTerminated | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[TerminationInfo](ts-container-embedded-component.md#terminationinfo)> | No| - |  Callback used to return the result of the atomic service. The input parameter is of type **TerminationInfo**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## Example
 
@@ -57,7 +63,7 @@ import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  appId: string = "5765880207853275489"; // Application ID of the top-up service
+  appId: string = "576****************"; // Application ID of the atomic service.
 
   build() {
     Column() {
@@ -65,17 +71,20 @@ struct Index {
         appId: this.appId,
         options: {},
         onTerminated:  (info:TerminationInfo)=> {
-          console.log('onTerminated info = '+ info.want);
+          console.info('onTerminated info = '+ info.want);
         },
         onError: (err) => {
           console.error(" onError code: " + err.code + ", message: ", err.message);
+        },
+        onReceive: (data) => {
+          console.info("onReceive, data: " + data['ohos.atomicService.window']);
         }
       }) {
         Column() {
           Image($r('app.media.app_icon'))
           Text('Start top-up')
         }.width("80vp").height("80vp").margin({bottom:30})
-      } // Content is passed as a trailing closure.
+      } // Pass content through the trailing closure.
     }
   }
 

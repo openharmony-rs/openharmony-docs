@@ -22,7 +22,7 @@ ForEach(this.nums,(item) => {
 
 **Reference**
 
-[Overview of Rendering Control](../ui/state-management/arkts-rendering-control-overview.md)
+[Overview of Rendering Control](../ui/rendering-control/arkts-rendering-control-overview.md)
 
 
 ## What is the difference between an @Builder decorated method and a regular method? (API version 9)
@@ -750,7 +750,7 @@ Text in the **Text** component is centered by default. You do not need to set th
 
 **Solution**
 
-Use the global function **encodeURI** for encoding and **decodeURI** for decoding. For example, the space character ""is encoded as %20.
+Use the global function **encodeURI** for encoding and **decodeURI** for decoding. For example, the space character "" is encoded as %20.
 
 ```
 let a = encodeURI(" ")

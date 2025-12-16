@@ -1,4 +1,10 @@
 # @ohos.data.cloudExtension (端云共享Extension)(系统接口)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @ltttjs; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 端云共享Extension，提供三方厂商适配共享云服务的能力。通过实现端云共享Extension提供的接口，对接端侧的数据共享到服务端，实现端云共享的发起、取消或退出，更改共享数据的操作权限、查询共享参与者、根据共享邀请码查询共享参与者、确认或更改共享邀请，并支持返回共享云服务的相关结果。
 
@@ -30,11 +36,11 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称          | 类型                          | 必填  | 说明           |
-| ----------- | --------------------------- | --- | ------------ |
-| code        | number                      | 是   | 错误码。       |
-| description | string                      | 否   | 错误码详细描述，默认为undefined。       |
-| value       | T                           | 否   | 返回结果的值，具体类型由参数T指定，默认为undefined。       |
+| 名称          | 类型                          | 只读 | 可选 | 说明           |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| code        | number                      | 否   | 否   | 错误码。       |
+| description | string                      | 否   | 是   | 错误码详细描述，默认为undefined。       |
+| value       | T                           | 否   | 是   | 返回结果的值，具体类型由参数T指定，默认为undefined。       |
 
 ## CloudAsset
 
@@ -42,10 +48,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称    | 类型   | 必填 | 说明                                 |
-| ------- | ------ | ---- | ------------------------------------ |
-| assetId | string | 是   | 资产ID。                             |
-| hash    | string | 是   | 资产的修改时间和大小转化成的哈希值。 |
+| 名称    | 类型   | 只读 | 可选 | 说明                                 |
+| ------- | ------ | ---- | ---- | ------------------------------------ |
+| assetId | string | 否   | 否   | 资产ID。                             |
+| hash    | string | 否   | 否   | 资产的修改时间和大小转化成的哈希值。 |
 
 ## CloudAssets
 
@@ -63,13 +69,13 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称           | 类型    | 必填 | 说明                                                         |
-| -------------- | ------- | ---- | ------------------------------------------------------------ |
-| enableCloud    | boolean | 是   | 表示是否启用了云服务。为true时是启用云服务，为false时是未启用。 |
-| id             | string  | 是   | 使用哈希函数SHA256生成的云账号ID。                           |
-| totalSpace     | number  | 是   | 服务器上账号的总空间（KB）。                                 |
-| remainingSpace | number  | 是   | 服务器上账号的可用空间（KB）。                               |
-| user           | number  | 是   | 设备的当前用户ID。                                           |
+| 名称           | 类型    | 只读 | 可选 | 说明                                                         |
+| -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| enableCloud    | boolean | 否   | 否   | 表示是否启用了云服务。为true时是启用云服务，为false时是未启用。 |
+| id             | string  | 否   | 否   | 使用哈希函数SHA256生成的云账号ID。                           |
+| totalSpace     | number  | 否   | 否   | 服务器上账号的总空间（KB）。                                 |
+| remainingSpace | number  | 否   | 否   | 服务器上账号的可用空间（KB）。                               |
+| user           | number  | 否   | 否   | 设备的当前用户ID。                                           |
 
 ## Flag
 
@@ -118,10 +124,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称      | 类型                                                | 必填 | 说明           |
-| --------- | --------------------------------------------------- | ---- | -------------- |
-| cloudInfo | [ServiceInfo](#serviceinfo)                         | 是   | 云服务信息。   |
-| apps      | Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt; | 是   | 简要应用信息。 |
+| 名称      | 类型                                                | 只读 | 可选 | 说明           |
+| --------- | --------------------------------------------------- | ---- | ---- | -------------- |
+| cloudInfo | [ServiceInfo](#serviceinfo)                         | 否   | 否  | 云服务信息。   |
+| apps      | Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt; | 否   | 否   | 简要应用信息。 |
 
 ## CloudData
 
@@ -129,11 +135,11 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称       | 类型                                                       | 必填 | 说明                                                         |
-| ---------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| nextCursor | string                                                     | 是   | 查询游标。                                                   |
-| hasMore    | boolean                                                    | 是   | 服务器是否存在更多数据可供查询。true表示服务器上还有数据等待查询，false表示服务器上不存在可查询的数据。 |
-| values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | 是   | 需要查询数据的数组，包括data value（数据值）和[ExtensionValue](#extensionvalue)（扩展值）。 |
+| 名称       | 类型                                                       | 只读 | 可选 | 说明                                                         |
+| ---------- | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| nextCursor | string                                                     | 否   | 否   | 查询游标。                                                   |
+| hasMore    | boolean                                                    | 否   | 否   | 服务器是否存在更多数据可供查询。true表示服务器上还有数据等待查询，false表示服务器上不存在可查询的数据。 |
+| values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | 否   | 否   | 需要查询数据的数组，包括data value（数据值）和[ExtensionValue](#extensionvalue)（扩展值）。 |
 
 ## AppBriefInfo
 
@@ -141,12 +147,12 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称        | 类型    | 必填 | 说明                               |
-| ----------- | ------- | ---- | ---------------------------------- |
-| appId       | string  | 是   | 应用程序ID。                      |
-| bundleName  | string  | 是   | 应用包名。                         |
-| cloudSwitch | boolean | 是   | 云开关，表示应用程序是否启用云。true表示启用云，false表示不启用云。 |
-| instanceId  | number  | 是   | 应用分身ID，0表示应用本身，分身ID依次递增。 |
+| 名称        | 类型    | 只读 | 可选 | 说明                               |
+| ----------- | ------- | ---- | ---- | ---------------------------------- |
+| appId       | string  | 否   | 否   | 应用程序ID。                      |
+| bundleName  | string  | 否   | 否   | 应用包名。                         |
+| cloudSwitch | boolean | 否   | 否   | 云开关，表示应用程序是否启用云。true表示启用云，false表示不启用云。 |
+| instanceId  | number  | 否   | 否   | 应用分身ID，0表示应用本身，分身ID依次递增。 |
 
 ## FieldType
 
@@ -171,13 +177,13 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称     | 类型                      | 必填 | 说明                   |
-| -------- | ------------------------- | ---- | ---------------------- |
-| alias    | string                    | 是   | 该字段在服务器表中的别名。 |
-| colName  | string                    | 是   | 列名。                 |
-| type     | [FieldType](#fieldtype) | 是   | 字段类型。             |
-| primary  | boolean                   | 是   | 表示当前列是否是主键。true表示当前列为主键，false表示当前列不为主键。 |
-| nullable | boolean                   | 是   | 当前列是否为空值，true表示当前列为空，false表示当前列不为空。      |
+| 名称     | 类型                      | 只读 | 可选  | 说明                   |
+| -------- | ------------------------- | ---- | ---- | ---------------------- |
+| alias    | string                    | 否   | 否   | 该字段在服务器表中的别名。 |
+| colName  | string                    | 否   | 否   | 列名。                 |
+| type     | [FieldType](#fieldtype)   | 否   | 否   | 字段类型。             |
+| primary  | boolean                   | 否   | 否   | 表示当前列是否是主键。true表示当前列为主键，false表示当前列不为主键。 |
+| nullable | boolean                   | 否   | 否   | 当前列是否为空值，true表示当前列为空，false表示当前列不为空。      |
 
 ## Table
 
@@ -185,11 +191,11 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称   | 类型                         | 必填 | 说明                         |
-| ------ | ---------------------------- | ---- | ---------------------------- |
-| alias  | string                       | 是   | 该表在服务器数据库中的别名。 |
-| name   | string                       | 是   | 表名。                       |
-| fields | Array&lt;[Field](#field)&gt; | 是   | 数据库表中的字段结构信息。   |
+| 名称   | 类型                         | 只读 | 可选 | 说明                         |
+| ------ | ---------------------------- | ---- | ---- | ---------------------------- |
+| alias  | string                       | 否   | 否   | 该表在服务器数据库中的别名。 |
+| name   | string                       | 否   | 否   | 表名。                       |
+| fields | Array&lt;[Field](#field)&gt; | 否   | 否   | 数据库表中的字段结构信息。   |
 
 ## Database
 
@@ -197,11 +203,11 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称   | 类型                         | 必填 | 说明                             |
-| ------ | ---------------------------- | ---- | -------------------------------- |
-| name   | string                       | 是   | 数据库名称。                     |
-| alias  | string                       | 是   | 该数据库在服务器中的别名。       |
-| tables | Array&lt;[Table](#table)&gt; | 是   | 数据库中的表，包含数据详细信息。 |
+| 名称   | 类型                         | 只读 | 可选 | 说明                             |
+| ------ | ---------------------------- | ---- | ---- | -------------------------------- |
+| name   | string                       | 否   | 否   | 数据库名称。                     |
+| alias  | string                       | 否   | 否   | 该数据库在服务器中的别名。       |
+| tables | Array&lt;[Table](#table)&gt; | 否   | 否   | 数据库中的表，包含数据详细信息。 |
 
 ## AppSchema
 
@@ -209,11 +215,11 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称       | 类型                                 | 必填 | 说明               |
-| ---------- | ------------------------------------ | ---- | ------------------ |
-| bundleName | string                               | 是   | 应用包名。         |
-| version    | number                               | 是   | 数据库模式的版本。 |
-| databases  | Array&lt;[Database](#database)&gt; | 是   | 应用的数据库信息。 |
+| 名称       | 类型                                 | 只读 | 可选 | 说明               |
+| ---------- | ------------------------------------ | ---- | ---- | ------------------ |
+| bundleName | string                               | 否   | 否   | 应用包名。         |
+| version    | number                               | 否   | 否   | 数据库模式的版本。 |
+| databases  | Array&lt;[Database](#database)&gt;   | 否   | 否   | 应用的数据库信息。 |
 
 ## SubscribeId
 
@@ -221,10 +227,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称          | 类型   | 必填 | 说明                   |
-| ------------- | ------ | ---- | ---------------------- |
-| databaseAlias | string | 是   | 服务器上数据库的名称。 |
-| id            | string | 是   | 订阅ID。              |
+| 名称          | 类型   | 只读 | 可选 | 说明                   |
+| ------------- | ------ | ---- | ---- | ---------------------- |
+| databaseAlias | string | 否   | 否   | 服务器上数据库的名称。 |
+| id            | string | 否   | 否   | 订阅ID。              |
 
 ## SubscribeInfo
 
@@ -232,10 +238,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称           | 类型                                                         | 必填 | 说明                 |
-| -------------- | ------------------------------------------------------------ | ---- | -------------------- |
-| expirationTime | number                                                       | 是   | 订阅过期时间（ms）。 |
-| subscribe      | Record&lt;string, Array&lt;[SubscribeId](#subscribeid)&gt;&gt; | 是   | 订阅信息。           |
+| 名称           | 类型                                                         | 只读 | 可选 | 说明                 |
+| -------------- | ------------------------------------------------------------   | ---- | ---- | -------------------- |
+| expirationTime | number                                                         | 否   | 否   | 订阅过期时间（ms）。 |
+| subscribe      | Record&lt;string, Array&lt;[SubscribeId](#subscribeid)&gt;&gt; | 否   | 否   | 订阅信息。           |
 
 ## LockInfo
 
@@ -243,10 +249,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
-| 名称     | 类型   | 必填 | 说明                            |
-| -------- | ------ | ---- | ------------------------------- |
-| interval | number | 是   | 云数据库锁的持续时间，单位为s。 |
-| lockId   | number | 是   | 锁ID。                          |
+| 名称     | 类型   | 只读 | 可选 | 说明                            |
+| -------- | ------ | ---- | ---- | ------------------------------- |
+| interval | number | 否   | 否    | 云数据库锁的持续时间，单位为s。 |
+| lockId   | number | 否   | 否    | 锁ID。                          |
 
 ## ErrorCode
 
@@ -290,7 +296,7 @@ createCloudServiceStub(instance: CloudService): Promise&lt;rpc.RemoteObject&gt;
 import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   async connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject> {
     // ...
@@ -342,12 +348,12 @@ createShareServiceStub(instance: ShareCenter): Promise&lt;rpc.RemoteObject&gt;
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   async connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject> {
     console.info(`connect share center, bundle: ${bundleName}`);
@@ -379,11 +385,11 @@ createCloudDBStub(instance: CloudDB): Promise&lt;rpc.RemoteObject&gt;
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   // ...
   async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
@@ -418,11 +424,11 @@ createAssetLoaderStub(instance: AssetLoader): Promise&lt;rpc.RemoteObject&gt;
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
+class MyAssetLoader implements cloudExtension.AssetLoader {
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   // ...   
   async connectAssetLoader(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
@@ -442,7 +448,7 @@ export default class MyCloudService implements cloudExtension.CloudService {
 
 generateId(count: number): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
 
-为插入的云数据生成ID。生成的ID具有唯一性。
+为插入的云数据生成ID。生成的ID具有唯一性。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -461,7 +467,7 @@ generateId(count: number): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
 **示例：**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   async generateId(count: number): Promise<cloudExtension.Result<Array<string>>> {
     console.info(`generate id, count: ${count}`);
     let result = new Array<string>();
@@ -480,7 +486,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 update(table: string, values: Array&lt;Record&lt;string, CloudType>>, extensions: Array&lt;Record&lt;string, CloudType>> ): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType>>>>
 
-通过该接口更新云上的数据。
+通过该接口更新云上的数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -501,7 +507,7 @@ update(table: string, values: Array&lt;Record&lt;string, CloudType>>, extensions
 **示例：**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
     console.info(`update, table: ${table}`);
@@ -518,7 +524,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 insert(table: string, values: Array<Record<string, CloudType>>, extensions: Array<Record<string, CloudType>>): Promise<Array<Result<Record<string, CloudType&gt;&gt;&gt;&gt;
 
-将数据插入云数据库表中。
+将数据插入云数据库表中。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -539,7 +545,7 @@ insert(table: string, values: Array<Record<string, CloudType>>, extensions: Arra
 **示例：**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
     console.info(`insert, table: ${table}`);
@@ -556,7 +562,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 delete(table: string, extensions: Array&lt;Record&lt;string, CloudType>> ): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType&gt;&gt;&gt;&gt;
 
-删除云数据库表中的指定数据。
+删除云数据库表中的指定数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -576,13 +582,13 @@ delete(table: string, extensions: Array&lt;Record&lt;string, CloudType>> ): Prom
 **示例：**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async delete(table: string, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
     console.info(`delete, table: ${table}`);
     let deleteRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>> = [];
     // ...
-    // 返回插入数据的结果
+    // 返回删除数据的结果
     return deleteRes;
   }
   // ...
@@ -593,7 +599,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCursor: string): Promise&lt;Result&lt;CloudData&gt;&gt;
 
-在云数据库表中查询数据。
+在云数据库表中查询数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -615,12 +621,12 @@ query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCurso
 **示例：**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async query(table: string, fields: Array<string>, queryCount: number, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
     console.info(`query, table: ${table}`);
     // ...
-    // 返回插入数据的结果
+    // 返回查询数据的结果
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'query succeeded',
@@ -639,7 +645,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
-为云数据库加锁。
+为云数据库加锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -654,12 +660,12 @@ lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
 ```ts
 let test_time: number = 10;
 let test_lockId: number = 1;
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
     console.info(`DB lock`);
     // ...
-    // 返回插入数据的结果
+    // 返回锁定数据的结果
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'lock succeeded',
@@ -677,7 +683,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
-延长数据库的加锁时效。
+延长数据库的加锁时效。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -698,12 +704,12 @@ heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
 ```ts
 let test_lockId: number = 1;
 let test_time: number = 10;
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
   async heartbeat(lockId: number): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
     console.info(`heartbeat lock`);
     // ...
-    // 返回插入数据的结果
+    // 返回心跳检查的结果
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'heartbeat succeeded',
@@ -721,7 +727,7 @@ export default class MyCloudDB implements cloudExtension.CloudDB {
 
 unlock(lockId: number): Promise&lt;Result&lt;boolean&gt;&gt;
 
-为云数据库解锁。
+为云数据库解锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -740,12 +746,12 @@ unlock(lockId: number): Promise&lt;Result&lt;boolean&gt;&gt;
 **示例：**
 
 ```ts
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
     // ...
   async unlock(lockId: number): Promise<cloudExtension.Result<boolean>> {
     console.info(`unlock`);
     // ...
-    // 返回插入数据的结果
+    // 返回解锁数据的结果
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'unlock succeeded',
@@ -782,7 +788,7 @@ import { rpc } from '@kit.IPCKit';
 let test_space: number = 100;
 let test_userId: number = 1;
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   // ...
   async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
@@ -816,7 +822,7 @@ getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>
 **示例：**
 
 ```ts
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   // ...
   async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
@@ -858,7 +864,7 @@ export default class MyCloudService implements cloudExtension.CloudService {
 **示例：**
 
 ```ts
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {
   }
   // ...
@@ -903,7 +909,7 @@ subscribe(subInfo: Record&lt;string, Array&lt;Database&gt;&gt;, expirationTime: 
 
 ```ts
 let test_time: number = 10;
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {
   }
   // ...
@@ -946,7 +952,7 @@ unsubscribe(unsubscribeInfo: Record&lt;string, Array&lt;string&gt;&gt;): Promise
 | Promise&lt;number&gt; | Promise对象，返回取消订阅结果的错误码。 |
 
 ```ts
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {
   }
   // ...
@@ -982,11 +988,11 @@ export default class MyCloudService implements cloudExtension.CloudService {
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyCloudDB implements cloudExtension.CloudDB {
+class MyCloudDB implements cloudExtension.CloudDB {
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
     // ...
   async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
@@ -1022,11 +1028,11 @@ connectAssetLoader(bundleName: string, database: Database): Promise&lt;rpc.Remot
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
+class MyAssetLoader implements cloudExtension.AssetLoader {
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   async connectAssetLoader(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
       // ...
@@ -1062,12 +1068,12 @@ connectShareCenter(userId: number, bundleName: string): Promise&lt;rpc.RemoteObj
 ```ts
 import { rpc } from '@kit.IPCKit';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   // ...
 }
 
-export default class MyCloudService implements cloudExtension.CloudService {
+class MyCloudService implements cloudExtension.CloudService {
   constructor() {}
   async connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject> {
     console.info(`connect share center, bundle: ${bundleName}`);
@@ -1084,7 +1090,7 @@ export default class MyCloudService implements cloudExtension.CloudService {
 
 download(table: string, gid: string, prefix: string, assets: Array&lt;CloudAsset&gt;): Promise&lt;Array&lt;Result&lt;CloudAsset&gt;&gt;&gt;
 
-通过该接口实现资产的下载。
+通过该接口实现资产的下载。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -1106,7 +1112,7 @@ download(table: string, gid: string, prefix: string, assets: Array&lt;CloudAsset
 **示例：**
 
 ```ts
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
+class MyAssetLoader implements cloudExtension.AssetLoader {
   async download(table: string, gid: string, prefix: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>> {
     console.info(`download asset loader, table: ${table}, gid: ${gid}, prefix: ${prefix}`);
     let downloadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>>();
@@ -1120,7 +1126,7 @@ export default class MyAssetLoader implements cloudExtension.AssetLoader {
 
 upload(table: string, gid: string, assets: Array&lt;CloudAsset&gt;): Promise&lt;Array&lt;Result&lt;CloudAsset&gt;&gt;&gt;
 
-通过该接口实现资产的上传。
+通过该接口实现资产的上传。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -1141,7 +1147,7 @@ upload(table: string, gid: string, assets: Array&lt;CloudAsset&gt;): Promise&lt;
 **示例：**
 
 ```ts
-export default class MyAssetLoader implements cloudExtension.AssetLoader {
+class MyAssetLoader implements cloudExtension.AssetLoader {
   async upload(table: string, gid: string, assets: Array<cloudExtension.CloudAsset>): Promise<Array<cloudExtension.Result<cloudExtension.CloudAsset>>> {
     console.info(`upload asset loader, table: ${table}, gid: ${gid}`);
     let uploadRes = Array<cloudExtension.Result<cloudExtension.CloudAsset>>();
@@ -1186,7 +1192,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async share(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
     Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
@@ -1241,7 +1247,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async unshare(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
     Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
@@ -1293,7 +1299,7 @@ exit(userId: number, bundleName: string, sharingResource: string): Promise&lt;Re
 ```ts
 import { cloudData } from '@kit.ArkData';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async exit(userId: number, bundleName: string, sharingResource: string):
     Promise<cloudExtension.Result<void>> {
@@ -1340,7 +1346,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async changePrivilege(userId: number, bundleName: string, sharingResource: string, participants: Array<Participant>):
     Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
@@ -1394,7 +1400,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async queryParticipants(userId: number, bundleName: string, sharingResource: string):
     Promise<cloudExtension.Result<Array<Participant>>> {
@@ -1468,7 +1474,7 @@ import { cloudData } from '@kit.ArkData';
 
 type Participant = cloudData.sharing.Participant;
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async queryParticipantsByInvitation(userId: number, bundleName: string, invitationCode: string):
     Promise<cloudExtension.Result<Array<Participant>>> {
@@ -1541,7 +1547,7 @@ confirmInvitation(userId: number, bundleName: string, invitationCode: string, st
 ```ts
 import { cloudData } from '@kit.ArkData';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async confirmInvitation(userId: number, bundleName: string, invitationCode: string, state: cloudData.sharing.State):
     Promise<cloudExtension.Result<string>> {
@@ -1587,7 +1593,7 @@ changeConfirmation(userId: number, bundleName: string, sharingResource: string, 
 ```ts
 import { cloudData } from '@kit.ArkData';
 
-export default class MyShareCenter implements cloudExtension.ShareCenter {
+class MyShareCenter implements cloudExtension.ShareCenter {
   constructor() {}
   async changeConfirmation(userId: number, bundleName: string, sharingResource: string, state: cloudData.sharing.State):
     Promise<cloudExtension.Result<void>> {
@@ -1651,14 +1657,14 @@ class MyCloudDB implements cloudExtension.CloudDB {
     console.info(`delete, table: ${table}`);
     let deleteRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>> = [];
     // ...
-    // 返回插入数据的结果
+    // 返回删除数据的结果
     return deleteRes;
   }
 
   async query(table: string, fields: Array<string>, queryCount: number, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
     console.info(`query, table: ${table}`);
     // ...
-    // 返回插入数据的结果
+    // 返回查询数据的结果
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'query succeeded',
@@ -1673,7 +1679,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
   async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
     console.info(`DB lock`);
     // ...
-    // 返回插入数据的结果
+    // 返回锁定数据的结果
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'lock succeeded',
@@ -1687,7 +1693,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
   async heartbeat(lockId: number): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
     console.info(`heartbeat lock`);
     // ...
-    // 返回插入数据的结果
+    // 返回心跳检测的结果
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'heartbeat succeeded',
@@ -1701,7 +1707,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
   async unlock(lockId: number): Promise<cloudExtension.Result<boolean>> {
     console.info(`unlock`);
     // ...
-    // 返回插入数据的结果
+    // 返回解锁数据的结果
     return {
       code: cloudExtension.ErrorCode.SUCCESS,
       description: 'unlock succeeded',
@@ -1953,8 +1959,7 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 
   async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: number): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
-    console.info
-    (`subscribe expirationTime: ${expirationTime}`);
+    console.info(`subscribe expirationTime: ${expirationTime}`);
     // ...
     return {
       code: cloudExtension.ErrorCode.SUCCESS,

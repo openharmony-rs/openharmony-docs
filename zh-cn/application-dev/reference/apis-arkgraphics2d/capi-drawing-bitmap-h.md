@@ -1,11 +1,18 @@
 # drawing_bitmap.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 文件中定义了与位图相关的功能函数。
 
 <!--RP1-->
-**相关示例：** [NDKAPIDrawing (API14)](https://gitee.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKAPIDrawing)<!--RP1End-->
+**相关示例：** [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **引用文件：** <native_drawing/drawing_bitmap.h>
 
@@ -43,7 +50,7 @@
 
 ### OH_Drawing_BitmapCreate()
 
-```
+```c
 OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)
 ```
 
@@ -63,7 +70,7 @@ OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)
 
 ### OH_Drawing_BitmapDestroy()
 
-```
+```c
 void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -84,7 +91,7 @@ void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)
 
 ### OH_Drawing_BitmapCreateFromPixels()
 
-```
+```c
 OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imageInfo, void* pixels, uint32_t rowBytes)
 ```
 
@@ -113,7 +120,7 @@ OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imag
 
 ### OH_Drawing_BitmapBuild()
 
-```
+```c
 void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap,const uint32_t width, const uint32_t height, const OH_Drawing_BitmapFormat* bitmapFormat)
 ```
 
@@ -137,7 +144,7 @@ void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap,const uint32_t width, cons
 
 ### OH_Drawing_BitmapGetWidth()
 
-```
+```c
 uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -164,7 +171,7 @@ uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)
 
 ### OH_Drawing_BitmapGetHeight()
 
-```
+```c
 uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -191,7 +198,7 @@ uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)
 
 ### OH_Drawing_BitmapGetColorFormat()
 
-```
+```c
 OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -218,7 +225,7 @@ OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap
 
 ### OH_Drawing_BitmapGetAlphaFormat()
 
-```
+```c
 OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -245,7 +252,7 @@ OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap
 
 ### OH_Drawing_BitmapGetPixels()
 
-```
+```c
 void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -272,7 +279,7 @@ void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)
 
 ### OH_Drawing_BitmapGetImageInfo()
 
-```
+```c
 void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_Info* imageInfo)
 ```
 
@@ -294,7 +301,7 @@ void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_I
 
 ### OH_Drawing_BitmapReadPixels()
 
-```
+```c
 bool OH_Drawing_BitmapReadPixels(OH_Drawing_Bitmap* bitmap, const OH_Drawing_Image_Info* dstInfo,void* dstPixels, size_t dstRowBytes, int32_t srcX, int32_t srcY)
 ```
 

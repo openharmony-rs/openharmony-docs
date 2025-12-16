@@ -1,5 +1,12 @@
 # Function Flow Runtime Concurrent Queue (C)
 
+<!--Kit: Function Flow Runtime Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @chuchihtung; @yanleo-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 The FFRT concurrent queue provides the capability of setting the priority and queue concurrency. Tasks in the queue can be executed on multiple threads at the same time, achieving better effects.
@@ -21,7 +28,7 @@ The implementation code is as follows:
 ```c
 #include <stdio.h>
 #include <unistd.h>
-#include "ffrt/ffrt.h"
+#include "ffrt/ffrt.h" // From the OpenHarmony third-party library "@ppd/ffrt"
 
 ffrt_queue_t create_bank_system(const char *name, int concurrency)
 {
@@ -112,17 +119,21 @@ int main()
 }
 ```
 
+> **NOTE**
+>
+> The `ffrt_queue_submit_h_f` API can receive a naked function pointer task as a parameter. If there are pre-processing and post-processing operations on the task, refer to the [ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base) function to construct the task structure.
+
 ## Available APIs
 
 The main FFRT APIs involved in the preceding example are as follows:
 
-| Name                                                                                              | Description                  |
-| -------------------------------------------------------------------------------------------------- | ---------------------- |
-| [ffrt_queue_create](ffrt-api-guideline-c.md#ffrt_queue_create)                                     | Creates a queue.            |
-| [ffrt_queue_destroy](ffrt-api-guideline-c.md#ffrt_queue_destroy)                                   | Destroys a queue.            |
-| [ffrt_task_attr_set_queue_priority](ffrt-api-guideline-c.md#ffrt_task_attr_set_queue_priority)     | Sets the priority of a task in a queue.  |
-| [ffrt_queue_attr_set_max_concurrency](ffrt-api-guideline-c.md#ffrt_queue_attr_set_max_concurrency) | Sets the concurrency of the concurrent queue.|
-| [ffrt_queue_submit_h_f](ffrt-api-guideline-c.md#ffrt_queue_submit_h_f)                             | Submits a task to a queue.  |
+| Name                                                                            | Description                                                                 |
+| -------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [ffrt_queue_create](ffrt-api-guideline-c.md#ffrt_queue_t)                        | Creates a queue.                                                           |
+| [ffrt_queue_destroy](ffrt-api-guideline-c.md#ffrt_queue_t)                       | Destroys a queue.                                                           |
+| [ffrt_task_attr_set_queue_priority](ffrt-api-guideline-c.md#ffrt_task_attr_t)    | Sets the priority of a task in a queue.                                                 |
+| [ffrt_queue_attr_set_max_concurrency](ffrt-api-guideline-c.md#ffrt_queue_attr_t) | Sets the concurrency of the concurrent queue.                                               |
+| [ffrt_queue_submit_h_f](ffrt-api-guideline-c.md#ffrt_queue_t)                    | Submits a task to a queue.<br>**Note**: This API is supported since API version 20.|
 
 > **NOTE**
 >

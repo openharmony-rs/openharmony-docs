@@ -1,4 +1,10 @@
 # Custom Component Built-in APIs
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Custom component built-in APIs are APIs predefined on the base class of custom components in the ArkUI framework. You can call these APIs on the instance of a custom component to obtain information, such as the UI context, about the instance.
 
@@ -21,7 +27,19 @@ Obtains the **UIContext** instance.
 
 | Type                                                     | Description                   |
 | --------------------------------------------------------- | ----------------------- |
-| [UIContext](../js-apis-arkui-UIContext.md#uicontext) | **UIContext** instance obtained.|
+| [UIContext](#uicontext) | **UIContext** instance obtained. If this API is used in an asynchronously called callback method, or if the initial call of this API does not occur in the current page, the API call may occur after the custom component is destroyed, returning **undefined**.|
+
+## UIContext
+
+type UIContext = UIContext
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type                                                     | Description                   |
+| --------------------------------------------------------- | ----------------------- |
+| [UIContext](../arkts-apis-uicontext-uicontext.md) | **UIContext** instance obtained.|
 
 **Example**
 
@@ -77,7 +95,7 @@ struct MyComponent {
 
 queryNavDestinationInfo(): NavDestinationInfo | undefined;
 
-Queries the **NavDestination** information of this custom component.
+Queries the **NavDestination** information of this custom component. This API has effect only when the component is contained within a **NavDestination** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -87,12 +105,12 @@ Queries the **NavDestination** information of this custom component.
 
 | Type                                                                      | Description     |
 | -------------------------------------------------------------------------- | --------- |
-| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) \| undefined | **NavDestinationInfo** instance obtained.|
+| [NavDestinationInfo](#navdestinationinfo) \| undefined | **NavDestinationInfo** instance obtained.|
 
 **Example**
 
 ```ts
-import { uiObserver } from '@kit.ArkUI'
+import { uiObserver } from '@kit.ArkUI';
 
 @Component
 export struct NavDestinationExample {
@@ -110,7 +128,7 @@ struct MyComponent {
   aboutToAppear() {
     // this refers to the custom node MyComponent and searches for the nearest parent node of the NavDestination type from this node upwards.
     this.navDesInfo = this.queryNavDestinationInfo();
-    console.log('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo))
+    console.info('get navDestinationInfo: ' + JSON.stringify(this.navDesInfo));
   }
 
   build() {
@@ -118,6 +136,7 @@ struct MyComponent {
   }
 }
 ```
+
 
 ## queryNavDestinationInfo<sup>18+</sup>
 
@@ -133,13 +152,13 @@ Queries the information about the nearest **NavDestination** component in the na
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | Yes  | Whether to search inward for the nearest **NavDestination** component in the navigation stack.<br>**true**: Search inward.<br>**false**: Search outward.|
+| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to search inward for the nearest **NavDestination** component in the navigation stack.<br>**true**: Search inward.<br>**false**: Search outward.|
 
 **Return value**
 
 | Type                                                                      | Description     |
 | -------------------------------------------------------------------------- | --------- |
-| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) \| undefined | **NavDestinationInfo** instance obtained.|
+| [NavDestinationInfo](#navdestinationinfo) \| undefined | **NavDestinationInfo** instance obtained.|
 
 **Example**
 
@@ -168,11 +187,11 @@ struct NavigationExample {
 
 ```ts
 // PageOne.ets
-import { uiObserver } from '@kit.ArkUI'
+import { uiObserver } from '@kit.ArkUI';
 
 @Builder
 export function PageOneBuilder() {
-  PageOneComponent();
+  PageOneComponent()
 }
 
 @Component
@@ -188,7 +207,7 @@ export struct PageOneComponent {
           .margin(20)
           .onClick(() => {
             // Search inward for the NavDestination information for PageOne.
-            this.navDesInfo = this.queryNavDestinationInfo(true)
+            this.navDesInfo = this.queryNavDestinationInfo(true);
             this.text = JSON.stringify(this.navDesInfo?.name).toString();
           })
         Text('The NavDestination component found inward is:' + this.text)
@@ -205,7 +224,7 @@ export struct PageOneComponent {
 
 @Component
 struct MyComponent {
-  navDesInfo: uiObserver.NavDestinationInfo | undefined
+  navDesInfo: uiObserver.NavDestinationInfo | undefined;
   @State text: string = '';
 
   build() {
@@ -245,6 +264,21 @@ struct MyComponent {
 }
 ```
 
+## NavDestinationInfo
+
+type NavDestinationInfo = NavDestinationInfo
+
+Defines a **NavDestinationInfo** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type    | Description      |
+| ------ | ---------- |
+| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | **NavDestinationInfo** instance obtained.|
+
+
 ## queryNavigationInfo<sup>12+</sup>
 
 queryNavigationInfo(): NavigationInfo | undefined
@@ -259,18 +293,18 @@ Queries the **Navigation** information of this custom component.
 
 | Type                                                                      | Description     |
 | -------------------------------------------------------------------------- | --------- |
-| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) \| undefined | **NavigationInfo** instance obtained.|
+| [NavigationInfo](#navigationinfo12) \| undefined | **NavigationInfo** instance obtained.|
 
 **Example**
 
 ```ts
 // index.ets
-import { uiObserver } from '@kit.ArkUI'
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct MainPage {
-  pathStack: NavPathStack = new NavPathStack()
+  pathStack: NavPathStack = new NavPathStack();
 
   build() {
     Navigation(this.pathStack) {
@@ -282,14 +316,14 @@ struct MainPage {
 
 @Component
 export struct PageOne {
-  pathStack: NavPathStack = new NavPathStack()
+  pathStack: NavPathStack = new NavPathStack();
 
   aboutToAppear() {
     // this refers to the custom node PageOne and searches for the nearest parent node of the Navigation type from this node upwards.
-    let navigationInfo: uiObserver.NavigationInfo | undefined = this.queryNavigationInfo()
-    console.log('get navigationInfo: ' + JSON.stringify(navigationInfo))
+    let navigationInfo: uiObserver.NavigationInfo | undefined = this.queryNavigationInfo();
+    console.info('get navigationInfo: ' + JSON.stringify(navigationInfo));
     if (navigationInfo !== undefined) {
-      this.pathStack = navigationInfo.pathStack
+      this.pathStack = navigationInfo.pathStack;
     }
   }
 
@@ -300,6 +334,20 @@ export struct PageOne {
   }
 }
 ```
+
+## NavigationInfo<sup>12+</sup>
+
+type NavigationInfo = NavigationInfo
+
+Defines a **NavigationInfo** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type    | Description      |
+| ------ | ---------- |
+| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | **NavigationInfo** instance obtained.|
 
 ## queryRouterPageInfo<sup>12+</sup>
 
@@ -315,12 +363,12 @@ Obtains a **RouterPageInfo** instance.
 
 | Type                                                        | Description                        |
 | ------------------------------------------------------------ | ---------------------------- |
-| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) \| undefined | **RouterPageInfo** instance obtained.|
+| [RouterPageInfo](#routerpageinfo12) \| undefined | **RouterPageInfo** instance obtained.|
 
 **Example**
 
 ```ts
-import { uiObserver } from '@kit.ArkUI'
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -334,6 +382,20 @@ struct MyComponent {
   }
 }
 ```
+
+## RouterPageInfo<sup>12+</sup>
+
+type RouterPageInfo = RouterPageInfo
+
+Defines a **RouterPageInfo** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
+| Type    | Description      |
+| ------ | ---------- |
+| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | **RouterPageInfo** instance obtained.|
 
 ## getDialogController<sup>18+</sup>
 
@@ -358,7 +420,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
-  text: string = ""
+  text: string = "";
   constructor(text: string) {
     this.text = text;
   }
@@ -393,7 +455,7 @@ function buildText(params: Params) {
 @Entry
 @ComponentV2
 struct Index {
-  @Local message: string = "hello"
+  @Local message: string = "hello";
 
   build() {
     Row() {
@@ -401,11 +463,11 @@ struct Index {
         Button('click me')
           .fontSize(20)
           .onClick(() => {
-            let ctx = this.getUIContext()
-            let promptAction = ctx.getPromptAction()
+            let ctx = this.getUIContext();
+            let promptAction = ctx.getPromptAction();
             promptAction.openCustomDialog(new ComponentContent(ctx, wrapBuilder(buildText), new Params(this.message)))
               .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message)
+                console.error("openCustomDialog error: " + err.code + " " + err.message);
               })
           })
       }

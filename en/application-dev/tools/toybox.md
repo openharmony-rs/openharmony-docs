@@ -1,4 +1,10 @@
 # Toybox
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @yan-mingzhen-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @foryourself-->
 
 Toybox is a lightweight collection of Linux command line utilities. It combines many common Linux command line utilities into a single executable file.
 
@@ -46,13 +52,12 @@ Format: help [-ah] [command]
 | Option| Description|
 | :- | :- |
 | -a | Displays the help information about all commands.|
-| -h | Displays the help information in HTML format.|
 
 ### Mathematics and Basic Computer Functions
 
 | Command| Description|
 | :- | :- |
-| ascii     | Displays the ASCII table.<br>usage: ascii |
+| ascii     | Displays the ASCII code table.<br>usage: ascii |
 | factor     | Factors an integer.<br>usage: factor NUMBER... |
 | mcookie    | Generates a 128-bit strong random number.<br>usage: mcookie [-vV] |
 | mkpasswd | Encrypts a password.<br>usage: mkpasswd [-P FD] [-m TYPE] [-S SALT] [PASSWORD] [SALT] |
@@ -75,7 +80,7 @@ Format: help [-ah] [command]
 | Command| Description|
 | :- | :- |
 | false | Returns a non-zero value.<br>usage: false |
-| sh    | shell command interpreter.|
+| sh    | Starts the shell command interpreter.|
 | test  | Performs a test and returns **true** or **false**. If no parameter is carried, **false** is returned.<br>usage: test [-bcdefghLPrSsuwx PATH] [-nz STRING] [-t FD] [X ?? Y] |
 | true  | Returns zero.<br>usage: true |
 | yes   | Outputs lines repeatedly until it is killed. If no parameter is carried, **y** is returned.<br>usage: yes [args...] |
@@ -188,7 +193,7 @@ Format: help [-ah] [command]
 | makedevs    | Creates a series of special files, including block device files and character device files.<br>usage: makedevs [-d device_table] rootdir |
 | mount       | Mounts a new file system to the directory. If no parameter is carried, the existing mounts are displayed.<br>usage: mount [-afFrsvw] [-t TYPE] [-o OPTION,] [[DEVICE] DIR] |
 | mountpoint  | Checks whether a directory or device is a mount point.<br>usage:<br>&emsp;mountpoint [-qd] DIR <br>&emsp;mountpoint [-qx] DEVICE |
-| sync        | Writes the cached data to a disk.<br>usage: sync |
+| sync        | Writes cached data to disks.<br>usage: sync |
 | sysctl      | Reads and writes the system control data in **/proc/sys.**<br>usage: sysctl [-aAeNnqw] [-p [FILE] \| KEY[=VALUE]...] |
 | tunctl      | Creates or deletes a TUN or TAP device.<br>usage: tunctl [-dtT] [-u USER] NAME |
 | vconfig     | Creates or deletes a virtual Ethernet device.<br>usage: vconfig COMMAND [OPTIONS] |
@@ -224,12 +229,12 @@ Format: help [-ah] [command]
 | chmod     | Changes the access mode of a file (recursively with **-R**).<br>usage: chmod [-R] MODE FILE... |
 | cksum     | Outputs the checksum, length, and file name of a file using 32-bit CRC algorithm. If no file is specified, the command reads from the standard input device. "-" indicates a standard input device.<br>usage: cksum [-IPLN] [file...] |
 | cmp       | Compares the contents of two files. (If only one file is specified, the command compares the file contents with the contents of the standard input device). You can specify whether to skip a certain number of bytes at the beginning.<br>usage: cmp [-l] [-s] FILE1 [FILE2 [SKIP1 [SKIP2]]] |
-| comm      | Reads the contents from **FILE1** and **FILE2** in sequence and outputs three text columns: lines only in FILE1, lines only in FILE2, and lines in both files. "-" indicates a standard input device.<br>usage: comm [-123] FILE1 FILE2  |
+| comm      | Reads the contents from **FILE1** and **FILE2** in sequence and outputs three text columns: lines only in **FILE1**, lines only in **FILE2**, and lines in both files. "-" indicates a standard input device.<br>usage: comm [-123] FILE1 FILE2  |
 | count     | Copies the standard input device to the standard output device and displays a simple progress indicator to the standard error output **stderr**.<br>usage: count |
 | cp        | Copies the contents from **SOURCE** to **DEST**. If there are multiple sources, **DEST** must be a directory.<br>usage: cp [-adfHiLlnPpRrsTv] [--preserve=motcxa] [-t TARGET] SOURCE... [DEST] |
 | cpio      | Reads and writes files from the **cpio** archive in the **newc** format.<br>usage: cpio -{o\|t\|i\|p DEST} [-v] [--verbose] [-F FILE] [--no-preserve-owner]<br>&emsp;[ignored: -mdu -H newc] |
 | crc32     | Outputs the CRC32 checksum of each file.<br>usage: crc32 [file...] |
-| cut       | Prints selected parts of lines from each file to the standard output device. Each selection list is separated by a comma(,), which can be a number (counting from 1) or a dash-separated range (where X- indicates from X byte to the end byte of a line, and -X indicates from the 1st byte to X byte of a line).<br>usage: cut [-Ds] [-bcfF LIST] [-dO DELIM] [FILE...] |
+| cut       | Prints selected parts of lines from each file to the standard output device. Each selection list is separated by a comma, which can be a number (counted from 1) or a range separated by a dash (where **X-** indicates X to the end of the line, and **-X** indicates from the start to X).<br>usage: cut [-Ds] [-bcfF LIST] [-dO DELIM] [FILE...] |
 | dd        |  Converts and copies a file. It can be used to create disk mirroring, back up data, and convert character encoding.<br>usage:<br>&emsp; dd [if=FILE] [of=FILE] [ibs=N] [obs=N] [iflag=FLAGS] [oflag=FLAGS]<br>&emsp; [bs=N] [count=N] [seek=N] [skip=N]<br>&emsp; [conv=notrunc\|noerror\|sync\|fsync] [status=noxfer\|none] |
 | diff      | Compares files or folders and outputs their differences.<br>usage: diff [-abBdiNqrTstw] [-L LABEL] [-S FILE] [-U LINES] FILE1 FILE2 |
 | dirname   | Displays the directory portion of a path.<br>usage: dirname PATH... |
@@ -241,7 +246,7 @@ Format: help [-ah] [command]
 | fallocate | Reserves space for a file in a file system.<br>usage: fallocate [-l size] [-o offset] file |
 | file      | Checks a file and describes its content type.<br>usage: file [-bhLs] [file...] |
 | find      | Finds a file in the directory.<br>usage: find [-HL] [DIR...] [&lt;options&gt;] |
-| flock     | Manages an advisory lock.<br>usage: flock [-sxun] fd |
+| flock     | Manages the advisory lock.<br>usage: flock [-sxun] fd |
 | fmt       | Reformats the input to a wordwrap of a given line length, preserves the existing indentation level, and writes it to the standard output device.<br>usage: fmt [-w WIDTH] [FILE...] |
 | gunzip    | Decompresses a file. If no file is specified, the command decompresses the standard input device as a standard output device. After the command is successfully executed, the input file is deleted and replaced with a new file without the file name extension .gz.<br>usage: gunzip [-cfk] [FILE...] |
 | head      | Copies the first line in a file to the standard output device. If no file is specified, the command reads from the standard input device. "-" indicates a standard input device.<br>usage: head [-n number] [file...] |

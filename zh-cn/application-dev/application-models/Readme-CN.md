@@ -1,5 +1,13 @@
 # Ability Kit（程序框架服务）<!--ability-kit-->
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @jayleehw-->
+<!--Designer: @jayleehw-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+
 - [Ability Kit简介](abilitykit-overview.md)
 - [应用模型](application-models.md)
 - Stage模型开发指导<!--stage-model-development-->
@@ -16,15 +24,15 @@
       - [UIAbility备份恢复](ability-recover-guideline.md)
     - [ExtensionAbility组件](extensionability-overview.md)
       <!--Del-->
-      - [ServiceExtensionAbility（仅对系统应用开放）](serviceextensionability.md)
+      - [ServiceExtensionAbility（仅对系统应用开放）](serviceextensionability-sys.md)
       - [UIServiceExtension（仅对系统应用开放）](uiserviceextension-sys.md)
-      - [UIExtensionAbility（仅对系统应用开放）](uiextensionability.md)
-      - [AutoFillExtensionAbility（仅对系统应用开放）](autofillextensionablility-guide.md)
-      <!--DelEnd-->
+      - [UIExtensionAbility（仅对系统应用开放）](uiextensionability-sys.md)
+      - [使用AutoFillExtensionAbility实现自动填充功能（仅对系统应用开放）](autofillextensionability-guide-sys.md)
       - [使用通过UIServiceExtensionAbility实现的系统悬浮窗](uiserviceextension.md)
+      <!--DelEnd-->
       - [EmbeddedUIExtensionAbility](embeddeduiextensionability.md)
-      - [使用AppServiceExtensionAbility实现后台服务](app-service-extension-ability.md)
-    - [AbilityStage组件容器](abilitystage.md)
+      - [使用AppServiceExtensionAbility组件实现后台服务](app-service-extension-ability.md)
+    - [AbilityStage组件管理器](abilitystage.md)
     - [应用上下文Context](application-context-stage.md)
     - 信息传递载体Want<!--want-->
       - [Want概述](want-overview.md)
@@ -33,6 +41,7 @@
       - [常见action与entities（不推荐使用）](actions-entities.md)
     - [组件启动规则（Stage模型）](component-startup-rules.md)
     - [应用启动框架AppStartup](app-startup.md)
+    - [应用预加载](preload-application.md)
     - [获取应用异常退出原因](ability-exit-info-record.md)
     <!--Del-->
     - 应用组件跨设备交互（流转）<!--hop-->
@@ -67,10 +76,10 @@
   - [线程模型](thread-model-stage.md)
   <!--Del-->
   - 任务（Mission）管理（仅对系统应用开放）<!--mission-management-->
-    - [任务（Mission）管理场景介绍](mission-management-overview.md)
-    - [任务（Mission）与启动模式](mission-management-launch-type.md)
-    - [页面栈及任务链](page-mission-stack.md)
-    - [设置任务快照的图标和名称](mission-set-icon-name-for-task-snapshot.md)
+    - [任务（Mission）管理场景介绍（仅对系统应用开放）](mission-management-overview-sys.md)
+    - [任务（Mission）与启动模式（仅对系统应用开放）](mission-management-launch-type-sys.md)
+    - [页面栈及任务链（仅对系统应用开放）](page-mission-stack-sys.md)
+    - [设置任务快照的图标和名称（仅对系统应用开放）](mission-set-icon-name-for-task-snapshot-sys.md)
   <!--DelEnd-->
   - [Stage模型应用配置文件](config-file-stage.md)
   - 意图框架开发指导<!--insight-intent-->
@@ -94,7 +103,7 @@
       - [启动本地PageAbility](start-local-pageability.md)
       - [停止PageAbility](stop-pageability.md)
       <!--Del-->
-      - [启动远程PageAbility（仅对系统应用开放）](start-remote-pageability.md)
+      - [启动远程PageAbility（仅对系统应用开放）](start-remote-pageability-sys.md)
       <!--DelEnd-->
       - [启动指定页面](start-page.md)
       - [窗口属性](window-properties.md)
@@ -121,7 +130,7 @@
   - [进程模型](process-model-fa.md)
   - [线程模型](thread-model-fa.md)
   <!--Del-->
-  - [任务管理（仅对系统应用开放）](mission-management-fa.md)
+  - [任务管理（仅对系统应用开放）](mission-management-fa-sys.md)
   <!--DelEnd-->
   - [FA模型应用配置文件](config-file-fa.md)
 <!--Del-->
@@ -132,7 +141,7 @@
   - [FA模型访问Stage模型DataShareExtensionAbility](access-datashareextensionability-from-fa.md)
   - [Stage模型启动FA模型PageAbility](start-pageability-from-stage.md)
   - [Stage模型绑定FA模型ServiceAbility](bind-serviceability-from-stage.md)
-- FA模型切换Stage模型指导<!--fa-to-stage-switc-->
+- FA模型切换Stage模型指导<!--fa-to-stage-switch-->
   - [模型切换概述](model-switch-overview.md)
   - 配置文件切换<!--configuration-file-switch-->
     - [配置文件的差异](configuration-file-diff.md)
@@ -161,3 +170,4 @@
 - Native子进程开发指导<!--native-childprocess-development-->
     - [创建Native子进程](capi_nativechildprocess_development_guideline.md)
     - [获取Native子进程退出信息](capi-nativechildprocess-exit-info.md)
+- [Ability Kit术语](ability-terminology.md)

@@ -1,5 +1,12 @@
 # @ohos.ability.particleAbility (ParticleAbility模块)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 particleAbility模块提供了操作Data和Service类型的Ability的能力，包括启动、停止指定的particleAbility，获取dataAbilityHelper，连接、断连指定的ServiceAbility等。
 
 > **说明：**
@@ -220,7 +227,7 @@ startBackgroundRunning(id: number, request: NotificationRequest, callback: Async
 
 > **说明：**
 >
-> 从API version 9开始不再维护，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning)替代。
 
 **参数：**
 
@@ -287,7 +294,7 @@ startBackgroundRunning(id: number, request: NotificationRequest): Promise&lt;voi
 
 > **说明：**
 >
-> 从API version 9开始不再维护，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1)替代。
 
 **参数：**
 
@@ -353,7 +360,7 @@ cancelBackgroundRunning(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始不再维护，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning)替代。
 
 **参数：**
 
@@ -389,7 +396,7 @@ cancelBackgroundRunning(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 9开始不再维护，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1)替代。
 
 **返回值：**
 

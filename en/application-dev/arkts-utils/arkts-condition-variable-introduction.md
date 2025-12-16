@@ -1,12 +1,18 @@
 # Asynchronous Waiting
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @lijiamin2025-->
+<!--Designer: @weng-changcheng-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
-To address timing control issues in multithreaded tasks, ArkTS has introduced asynchronous waiting and notification capabilities. The [ConditionVariable](../reference/apis-arkts/js-apis-arkts-utils.md#conditionvariable18) object supports pass-by-reference across threads.
+To address timing control issues in multithreaded tasks, ArkTS has introduced asynchronous waiting and notification capabilities. The [ConditionVariable](../reference/apis-arkts/arkts-apis-arkts-utils-locks.md#conditionvariable18) object supports pass-by-reference across threads.
 
 ArkTS, which supports asynchronous operations, now provides the capability for asynchronous tasks to wait and be awakened. When a wake-up notification is received or the waiting times out, the asynchronous task continues executing.
 
 > **NOTE**
 >
-> Methods using asynchronous waiting must be marked as **async**, and the caller must use the **await** keyword to ensure correct timing.
+> Asynchronous methods must be marked as **async**, and the caller must use the **await** keyword to ensure correct timing.
 
 ## Usage Example
 
@@ -28,14 +34,14 @@ function notifyOne(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
 @Concurrent
 async function wait(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
   await conditionVariable.wait().then(() => {
-    console.log(`TaskPool Thread Wait: success`);
+    console.info(`TaskPool Thread Wait: success`);
   });
 }
 
 @Concurrent
 async function waitFor(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
   await conditionVariable.waitFor(3000).then(() => {
-    console.log(`TaskPool Thread WaitFor: success`);
+    console.info(`TaskPool Thread WaitFor: success`);
   });
 }
 
@@ -55,7 +61,7 @@ struct Index {
             const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
             // Pass the conditionVariable object to the wait thread.
             taskpool.execute(wait, conditionVariable);
-            // Pass the conditionVariable object to the notify thread to wake up the wait thread. The log information "TaskPool Thread Wait: success" is displayed.
+            // Pass the conditionVariable object to the notifyAll thread to wake up the wait thread. The log information "TaskPool Thread Wait: success" is displayed.
             taskpool.execute(notifyAll, conditionVariable);
             // Pass the conditionVariable object to the waitFor thread.
             taskpool.execute(waitFor, conditionVariable);
@@ -67,7 +73,7 @@ struct Index {
                 ArkTSUtils.locks.ConditionVariable.request("Request1");
             // Pass the conditionVariableRequest object to the wait thread.
             taskpool.execute(wait, conditionVariableRequest);
-            // Pass the conditionVariableRequest object to the notify thread to wake up the wait thread. The log information "TaskPool Thread Wait: success" is displayed.
+            // Pass the conditionVariableRequest object to the notifyAll thread to wake up the wait thread. The log information "TaskPool Thread Wait: success" is displayed.
             taskpool.execute(notifyAll, conditionVariableRequest);
             // Pass the conditionVariableRequest object to the waitFor thread.
             taskpool.execute(waitFor, conditionVariableRequest);

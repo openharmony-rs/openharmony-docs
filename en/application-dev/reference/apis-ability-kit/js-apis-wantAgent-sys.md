@@ -1,7 +1,15 @@
-# @ohos.wantAgent (WantAgent) (System API)
+# @ohos.wantAgent (WantAgent Module) (System API)
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 <!--deprecated_code_no_check-->
 
-The **WantAgent** module provides APIs for creating and comparing **WantAgent** objects, and obtaining the user ID and bundle name of a **WantAgent** object.
+The WantAgent module provides APIs for creating and comparing WantAgent objects, and obtaining the user ID and bundle name of a WantAgent object.
 
 > **NOTE**
 > 
@@ -19,7 +27,7 @@ import WantAgent from '@ohos.wantAgent';
 
 getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 
-Obtains the Want in a **WantAgent** object. This API uses an asynchronous callback to return the result.
+Obtains the Want in a WantAgent object. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -29,7 +37,7 @@ Obtains the Want in a **WantAgent** object. This API uses an asynchronous callba
 
 | Name    | Type                      | Mandatory| Description                   |
 | -------- | -------------------------- | ---- | ----------------------- |
-| agent     | [WantAgent](js-apis-wantAgent-sys.md)              | Yes  | **WantAgent** object.          |
+| agent     | [WantAgent](js-apis-wantAgent-sys.md)              | Yes  | WantAgent object.          |
 | callback | AsyncCallback\<Want\> | Yes  | Callback used to return the Want.|
 
 **Example**
@@ -91,7 +99,7 @@ WantAgent.getWantAgent({
 
 getWant(agent: WantAgent): Promise\<Want\>
 
-Obtains the Want in a **WantAgent** object. This API uses a promise to return the result.
+Obtains the Want in a WantAgent object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -101,7 +109,7 @@ Obtains the Want in a **WantAgent** object. This API uses a promise to return th
 
 | Name| Type         | Mandatory| Description         |
 | ---- | ------------- | ---- | ------------- |
-| agent | [WantAgent](js-apis-wantAgent-sys.md) | Yes  | **WantAgent** object.|
+| agent | [WantAgent](js-apis-wantAgent-sys.md) | Yes  | WantAgent object.|
 
 **Return value**
 

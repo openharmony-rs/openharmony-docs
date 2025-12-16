@@ -1,4 +1,14 @@
 # WindowManager_AvoidArea
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @waterwin-->
+<!--Designer: @nyankomiya-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct {...} WindowManager_AvoidArea
+```
 
 ## 概述
 

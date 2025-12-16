@@ -1,4 +1,10 @@
 # @ohos.buffer (Buffer)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 Buffer对象用于表示固定长度的字节序列，是专门存放二进制数据的缓存区。
 
@@ -15,6 +21,8 @@ import { buffer } from '@kit.ArkTS';
 ```
 
 ## BufferEncoding
+
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
 
 表示支持的编码格式类型。
 
@@ -264,7 +272,7 @@ concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| list | Buffer[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 实例数组。 |
+| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | 是 | 实例数组。 |
 | totalLength | number | 否 | 需要复制的总字节长度，默认值为0。 |
 
 **返回值：**
@@ -705,7 +713,7 @@ compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, s
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -755,7 +763,7 @@ copy(target: Buffer| Uint8Array, targetStart?: number, sourceStart?: number, sou
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. |
+| 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **示例：**
 
@@ -889,7 +897,7 @@ fill(value: string | Buffer | Uint8Array | number, offset?: number, end?: number
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200001 | The value of "[offset/end]" is out of range. |
+| 10200001 | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 **示例：**
 
@@ -1012,18 +1020,18 @@ keys(): IterableIterator&lt;number&gt;
 import { buffer } from '@kit.ArkTS';
 
 let buf = buffer.from('buffer');
-let numbers = Array.from(buf.keys());
-for (const key of numbers) {
+let keys = buf.keys();
+for (const key of keys) {
   console.info(key.toString());
-  /*
-  输出结果：0
-           1
-           2
-           3
-           4
-           5
-  */
 }
+/*
+输出结果：0
+        1
+        2
+        3
+        4
+        5
+*/
 ```
 
 ### lastIndexOf
@@ -1156,8 +1164,8 @@ import { buffer } from '@kit.ArkTS';
 
 let buf = buffer.from([0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x70,
   0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78]);
-console.info(buf.readBigUInt64BE(0).toString());
-// 输出结果：7161960797921896816
+console.info(buf.readBigUInt64LE(0).toString());
+// 输出结果：8100120198111388771
 
 let buf1 = buffer.allocUninitializedFromPool(8);
 let result = buf1.writeBigUInt64BE(BigInt(0xdecafafecacefade), 0);
@@ -3456,7 +3464,7 @@ let blob1: buffer.Blob = new buffer.Blob(['a', 'b', 'c'], o1);
 
 arrayBuffer(): Promise&lt;ArrayBuffer&gt;
 
-将Blob数据放入ArrayBuffer中，并返回一个Promise。
+将Blob数据放入ArrayBuffer中返回，使用Promise进行异步回调。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3516,7 +3524,7 @@ console.info("type:", blob3.type); // type: MIME
 
 text(): Promise&lt;string&gt;
 
-使用UTF8解码并返回文本。使用Promise进行异步回调。
+使用utf8解码并返回字符串。使用Promise进行异步回调。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -3525,7 +3533,7 @@ text(): Promise&lt;string&gt;
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise对象，返回包含以UTF8解码的文本。 |
+| Promise&lt;string&gt; | Promise对象，返回以utf8解码后的字符串。 |
 
 **示例：**
 ```ts

@@ -1,5 +1,16 @@
 # Asset_Blob
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct {...} Asset_Blob
+```
+
 ## 概述
 
 二进制数组类型，即不定长的字节数组。

@@ -1,5 +1,12 @@
 # drawing_font.h
 
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+
 ## 概述
 
 文件中定义了与字体相关的功能函数。
@@ -72,12 +79,16 @@
 | [OH_Drawing_ErrorCode OH_Drawing_FontGetTextPath(const OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding, float x, float y, OH_Drawing_Path* path)](#oh_drawing_fontgettextpath) | 获取文字轮廓路径。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontSetThemeFontFollowed(OH_Drawing_Font* font, bool followed)](#oh_drawing_fontsetthemefontfollowed) | 设置字型中的字体是否跟随主题字体。设置跟随主题字体后，若系统启用主题字体并且字型未被设置字体，字型会使用该主题字体。 |
 | [OH_Drawing_ErrorCode OH_Drawing_FontIsThemeFontFollowed(const OH_Drawing_Font* font, bool* followed)](#oh_drawing_fontisthemefontfollowed) | 获取字型中的字体是否跟随主题字体。默认不跟随主题字体。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacterWithFeatures(const OH_Drawing_Font* font, const char* str,const OH_Drawing_FontFeatures* fontFeatures, float* textWidth)](#oh_drawing_fontmeasuresinglecharacterwithfeatures) | 用于测量单个字符的宽度，字符带有字体特征。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。 |
+| [OH_Drawing_FontFeatures* OH_Drawing_FontFeaturesCreate(void)](#oh_drawing_fontfeaturescreate) | 用于创建一个字体特征容器对象。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontFeaturesAddFeature(OH_Drawing_FontFeatures* fontFeatures,const char* name, float value)](#oh_drawing_fontfeaturesaddfeature) | 向字体特征容器对象中添加一个字体特征。 |
+| [OH_Drawing_ErrorCode OH_Drawing_FontFeaturesDestroy(OH_Drawing_FontFeatures* fontFeatures)](#oh_drawing_fontfeaturesdestroy) | 用于销毁字体特征容器对象并回收该对象占有的内存。 |
 
 ## 枚举类型说明
 
 ### OH_Drawing_FontHinting
 
-```
+```c
 enum OH_Drawing_FontHinting
 ```
 
@@ -96,7 +107,7 @@ enum OH_Drawing_FontHinting
 
 ### OH_Drawing_FontEdging
 
-```
+```c
 enum OH_Drawing_FontEdging
 ```
 
@@ -115,9 +126,115 @@ enum OH_Drawing_FontEdging
 
 ## 函数说明
 
+### OH_Drawing_FontMeasureSingleCharacterWithFeatures()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacterWithFeatures(const OH_Drawing_Font* font, const char* str, const OH_Drawing_FontFeatures* fontFeatures, float* textWidth)
+```
+
+**描述**
+
+用于测量单个字符的宽度，字符带有字体特征。当前字型中的字体不支持待测量字符时，退化到使用系统字体测量字符宽度。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 20
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [const OH_Drawing_Font](capi-drawing-oh-drawing-font.md)* font | 指向字型对象[OH_Drawing_Font](capi-drawing-oh-drawing-font.md)的指针。 |
+| const char* str | 待测量的单个字符。可以传入字符串，但只会以UTF-8编码解析并测量字符串中的首个字符。 |
+| [const OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)* fontFeatures | 指向字体特征容器对象[OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)的指针。容器中未加入任何字体特征时使用TTF(TrueType Font)文件中预设的字体特征。 |
+| float* textWidth | 用于存储得到的字符宽度，作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数font、str、fontFeatures或者textWidth任意一个为空指针或者str的长度为0。 |
+
+### OH_Drawing_FontFeaturesCreate()
+
+```c
+OH_Drawing_FontFeatures* OH_Drawing_FontFeaturesCreate(void)
+```
+
+**描述**
+
+用于创建一个字体特征容器对象。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 20
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)* | 函数会返回一个指针，指向创建的字体特征容器对象[OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)。<br>如果返回的对象指针为空，则表示字体特征容器对象创建失败。失败的原因可能为：没有可用的内存。 |
+
+### OH_Drawing_FontFeaturesAddFeature()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_FontFeaturesAddFeature(OH_Drawing_FontFeatures* fontFeatures, const char* name, float value)
+```
+
+**描述**
+
+向字体特征容器对象中添加一个字体特征。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 20
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)* fontFeatures | 指向字体特征容器对象[OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)的指针。 |
+| const char* name | 字体特征的名称。常见的字体特征名称包含liga、frac、case等，需要对应的ttf文件支持才能生效。 |
+| float value | 字体特征的数值。建议通过字体查看工具或查阅字体文档，确定具体的有效取值范围。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontFeatures或name为空指针。 |
+
+### OH_Drawing_FontFeaturesDestroy()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_FontFeaturesDestroy(OH_Drawing_FontFeatures* fontFeatures)
+```
+
+**描述**
+
+用于销毁字体特征容器对象并回收该对象占有的内存。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 20
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)* fontFeatures | 指向字体特征容器对象[OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md)的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数返回执行结果。<br>返回OH_DRAWING_SUCCESS，表示执行成功。<br>返回OH_DRAWING_ERROR_INVALID_PARAMETER，表示参数fontFeatures为空指针。 |
+
 ### OH_Drawing_FontMeasureTextWithBrushOrPen()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPen(const OH_Drawing_Font* font, const void* text,size_t byteLength, OH_Drawing_TextEncoding encoding, const OH_Drawing_Brush* brush, const OH_Drawing_Pen* pen,OH_Drawing_Rect* bounds, float* textWidth)
 ```
 
@@ -150,7 +267,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPen(const OH_Drawing_F
 
 ### OH_Drawing_FontGetWidthsBounds()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetWidthsBounds(const OH_Drawing_Font* font, const uint16_t* glyphs, int count,const OH_Drawing_Brush* brush, const OH_Drawing_Pen* pen, float* widths, OH_Drawing_Array* bounds)
 ```
 
@@ -182,7 +299,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetWidthsBounds(const OH_Drawing_Font* font,
 
 ### OH_Drawing_FontGetPos()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetPos(const OH_Drawing_Font* font, const uint16_t* glyphs, int count,const OH_Drawing_Point* origin, OH_Drawing_Point2D* points)
 ```
 
@@ -212,7 +329,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetPos(const OH_Drawing_Font* font, const ui
 
 ### OH_Drawing_FontGetSpacing()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetSpacing(const OH_Drawing_Font* font, float* spacing)
 ```
 
@@ -239,7 +356,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetSpacing(const OH_Drawing_Font* font, floa
 
 ### OH_Drawing_FontCreate()
 
-```
+```c
 OH_Drawing_Font* OH_Drawing_FontCreate(void)
 ```
 
@@ -259,7 +376,7 @@ OH_Drawing_Font* OH_Drawing_FontCreate(void)
 
 ### OH_Drawing_FontSetBaselineSnap()
 
-```
+```c
 void OH_Drawing_FontSetBaselineSnap(OH_Drawing_Font* font, bool baselineSnap)
 ```
 
@@ -281,7 +398,7 @@ void OH_Drawing_FontSetBaselineSnap(OH_Drawing_Font* font, bool baselineSnap)
 
 ### OH_Drawing_FontIsBaselineSnap()
 
-```
+```c
 bool OH_Drawing_FontIsBaselineSnap(const OH_Drawing_Font* font)
 ```
 
@@ -308,7 +425,7 @@ bool OH_Drawing_FontIsBaselineSnap(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetSubpixel()
 
-```
+```c
 void OH_Drawing_FontSetSubpixel(OH_Drawing_Font* font, bool isSubpixel)
 ```
 
@@ -330,7 +447,7 @@ void OH_Drawing_FontSetSubpixel(OH_Drawing_Font* font, bool isSubpixel)
 
 ### OH_Drawing_FontIsSubpixel()
 
-```
+```c
 bool OH_Drawing_FontIsSubpixel(const OH_Drawing_Font* font)
 ```
 
@@ -357,7 +474,7 @@ bool OH_Drawing_FontIsSubpixel(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetForceAutoHinting()
 
-```
+```c
 void OH_Drawing_FontSetForceAutoHinting(OH_Drawing_Font* font, bool isForceAutoHinting)
 ```
 
@@ -379,7 +496,7 @@ void OH_Drawing_FontSetForceAutoHinting(OH_Drawing_Font* font, bool isForceAutoH
 
 ### OH_Drawing_FontIsForceAutoHinting()
 
-```
+```c
 bool OH_Drawing_FontIsForceAutoHinting(const OH_Drawing_Font* font)
 ```
 
@@ -406,7 +523,7 @@ bool OH_Drawing_FontIsForceAutoHinting(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetTypeface()
 
-```
+```c
 void OH_Drawing_FontSetTypeface(OH_Drawing_Font* font, OH_Drawing_Typeface* typeface)
 ```
 
@@ -428,7 +545,7 @@ void OH_Drawing_FontSetTypeface(OH_Drawing_Font* font, OH_Drawing_Typeface* type
 
 ### OH_Drawing_FontGetTypeface()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontGetTypeface(OH_Drawing_Font* font)
 ```
 
@@ -455,7 +572,7 @@ OH_Drawing_Typeface* OH_Drawing_FontGetTypeface(OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetTextSize()
 
-```
+```c
 void OH_Drawing_FontSetTextSize(OH_Drawing_Font* font, float textSize)
 ```
 
@@ -477,7 +594,7 @@ void OH_Drawing_FontSetTextSize(OH_Drawing_Font* font, float textSize)
 
 ### OH_Drawing_FontGetTextSize()
 
-```
+```c
 float OH_Drawing_FontGetTextSize(const OH_Drawing_Font* font)
 ```
 
@@ -504,7 +621,7 @@ float OH_Drawing_FontGetTextSize(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontCountText()
 
-```
+```c
 int OH_Drawing_FontCountText(OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding)
 ```
 
@@ -526,9 +643,15 @@ int OH_Drawing_FontCountText(OH_Drawing_Font* font, const void* text, size_t byt
 | size_t byteLength | 文本长度，单位为字节。 |
 | [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) encoding | 文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。 |
 
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | 返回文本所表示的字符数量，整数。 |
+
 ### OH_Drawing_FontTextToGlyphs()
 
-```
+```c
 uint32_t OH_Drawing_FontTextToGlyphs(const OH_Drawing_Font* font, const void* text, uint32_t byteLength,OH_Drawing_TextEncoding encoding, uint16_t* glyphs, int maxGlyphCount)
 ```
 
@@ -560,7 +683,7 @@ uint32_t OH_Drawing_FontTextToGlyphs(const OH_Drawing_Font* font, const void* te
 
 ### OH_Drawing_FontGetWidths()
 
-```
+```c
 void OH_Drawing_FontGetWidths(const OH_Drawing_Font* font, const uint16_t* glyphs, int count, float* widths)
 ```
 
@@ -584,7 +707,7 @@ void OH_Drawing_FontGetWidths(const OH_Drawing_Font* font, const uint16_t* glyph
 
 ### OH_Drawing_FontMeasureSingleCharacter()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacter(const OH_Drawing_Font* font, const char* str,float* textWidth)
 ```
 
@@ -613,7 +736,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacter(const OH_Drawing_Font
 
 ### OH_Drawing_FontMeasureText()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontMeasureText(const OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding, OH_Drawing_Rect* bounds, float* textWidth)
 ```
 
@@ -645,7 +768,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontMeasureText(const OH_Drawing_Font* font, con
 
 ### OH_Drawing_FontSetLinearText()
 
-```
+```c
 void OH_Drawing_FontSetLinearText(OH_Drawing_Font* font, bool isLinearText)
 ```
 
@@ -667,7 +790,7 @@ void OH_Drawing_FontSetLinearText(OH_Drawing_Font* font, bool isLinearText)
 
 ### OH_Drawing_FontIsLinearText()
 
-```
+```c
 bool OH_Drawing_FontIsLinearText(const OH_Drawing_Font* font)
 ```
 
@@ -694,7 +817,7 @@ bool OH_Drawing_FontIsLinearText(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetTextSkewX()
 
-```
+```c
 void OH_Drawing_FontSetTextSkewX(OH_Drawing_Font* font, float skewX)
 ```
 
@@ -716,7 +839,7 @@ void OH_Drawing_FontSetTextSkewX(OH_Drawing_Font* font, float skewX)
 
 ### OH_Drawing_FontGetTextSkewX()
 
-```
+```c
 float OH_Drawing_FontGetTextSkewX(const OH_Drawing_Font* font)
 ```
 
@@ -743,7 +866,7 @@ float OH_Drawing_FontGetTextSkewX(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetFakeBoldText()
 
-```
+```c
 void OH_Drawing_FontSetFakeBoldText(OH_Drawing_Font* font, bool isFakeBoldText)
 ```
 
@@ -765,7 +888,7 @@ void OH_Drawing_FontSetFakeBoldText(OH_Drawing_Font* font, bool isFakeBoldText)
 
 ### OH_Drawing_FontIsFakeBoldText()
 
-```
+```c
 bool OH_Drawing_FontIsFakeBoldText(const OH_Drawing_Font* font)
 ```
 
@@ -792,7 +915,7 @@ bool OH_Drawing_FontIsFakeBoldText(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetScaleX()
 
-```
+```c
 void OH_Drawing_FontSetScaleX(OH_Drawing_Font* font, float scaleX)
 ```
 
@@ -814,7 +937,7 @@ void OH_Drawing_FontSetScaleX(OH_Drawing_Font* font, float scaleX)
 
 ### OH_Drawing_FontGetScaleX()
 
-```
+```c
 float OH_Drawing_FontGetScaleX(const OH_Drawing_Font* font)
 ```
 
@@ -841,7 +964,7 @@ float OH_Drawing_FontGetScaleX(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetHinting()
 
-```
+```c
 void OH_Drawing_FontSetHinting(OH_Drawing_Font* font, OH_Drawing_FontHinting fontHinting)
 ```
 
@@ -863,7 +986,7 @@ void OH_Drawing_FontSetHinting(OH_Drawing_Font* font, OH_Drawing_FontHinting fon
 
 ### OH_Drawing_FontGetHinting()
 
-```
+```c
 OH_Drawing_FontHinting OH_Drawing_FontGetHinting(const OH_Drawing_Font* font)
 ```
 
@@ -890,7 +1013,7 @@ OH_Drawing_FontHinting OH_Drawing_FontGetHinting(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetEmbeddedBitmaps()
 
-```
+```c
 void OH_Drawing_FontSetEmbeddedBitmaps(OH_Drawing_Font* font, bool isEmbeddedBitmaps)
 ```
 
@@ -912,7 +1035,7 @@ void OH_Drawing_FontSetEmbeddedBitmaps(OH_Drawing_Font* font, bool isEmbeddedBit
 
 ### OH_Drawing_FontIsEmbeddedBitmaps()
 
-```
+```c
 bool OH_Drawing_FontIsEmbeddedBitmaps(const OH_Drawing_Font* font)
 ```
 
@@ -939,7 +1062,7 @@ bool OH_Drawing_FontIsEmbeddedBitmaps(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontSetEdging()
 
-```
+```c
 void OH_Drawing_FontSetEdging(OH_Drawing_Font* font, OH_Drawing_FontEdging fontEdging)
 ```
 
@@ -961,7 +1084,7 @@ void OH_Drawing_FontSetEdging(OH_Drawing_Font* font, OH_Drawing_FontEdging fontE
 
 ### OH_Drawing_FontGetEdging()
 
-```
+```c
 OH_Drawing_FontEdging OH_Drawing_FontGetEdging(const OH_Drawing_Font* font)
 ```
 
@@ -988,7 +1111,7 @@ OH_Drawing_FontEdging OH_Drawing_FontGetEdging(const OH_Drawing_Font* font)
 
 ### OH_Drawing_FontDestroy()
 
-```
+```c
 void OH_Drawing_FontDestroy(OH_Drawing_Font* font)
 ```
 
@@ -1009,7 +1132,7 @@ void OH_Drawing_FontDestroy(OH_Drawing_Font* font)
 
 ### OH_Drawing_FontGetMetrics()
 
-```
+```c
 float OH_Drawing_FontGetMetrics(OH_Drawing_Font* font, OH_Drawing_Font_Metrics* fontMetrics)
 ```
 
@@ -1037,7 +1160,7 @@ float OH_Drawing_FontGetMetrics(OH_Drawing_Font* font, OH_Drawing_Font_Metrics* 
 
 ### OH_Drawing_FontGetBounds()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetBounds(const OH_Drawing_Font* font, const uint16_t* glyphs, uint32_t count,OH_Drawing_Array* bounds)
 ```
 
@@ -1067,7 +1190,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetBounds(const OH_Drawing_Font* font, const
 
 ### OH_Drawing_FontGetPathForGlyph()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetPathForGlyph(const OH_Drawing_Font* font, uint16_t glyph,OH_Drawing_Path* path)
 ```
 
@@ -1096,7 +1219,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetPathForGlyph(const OH_Drawing_Font* font,
 
 ### OH_Drawing_FontGetTextPath()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetTextPath(const OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding, float x, float y, OH_Drawing_Path* path)
 ```
 
@@ -1129,7 +1252,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontGetTextPath(const OH_Drawing_Font* font, con
 
 ### OH_Drawing_FontSetThemeFontFollowed()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontSetThemeFontFollowed(OH_Drawing_Font* font, bool followed)
 ```
 
@@ -1157,7 +1280,7 @@ OH_Drawing_ErrorCode OH_Drawing_FontSetThemeFontFollowed(OH_Drawing_Font* font, 
 
 ### OH_Drawing_FontIsThemeFontFollowed()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontIsThemeFontFollowed(const OH_Drawing_Font* font, bool* followed)
 ```
 

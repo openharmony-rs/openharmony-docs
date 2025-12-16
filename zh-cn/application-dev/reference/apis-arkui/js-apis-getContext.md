@@ -1,9 +1,15 @@
 # getContext
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
-如果需要在页面中获得当前Ability的Context，可调用getContext接口获取当前页面关联的UIAbilityContext或ExtensionContext。
+如果需要在页面中获得当前Ability的Context，可调用getContext接口获取当前页面关联的[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
-> **说明：**
-> - 该接口从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](js-apis-arkui-UIContext.md#uicontext)中的[getHostContext](js-apis-arkui-UIContext.md#gethostcontext12)替代。
+> **说明：**	
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 该接口仅限Stage模型使用。
 
 ## getContext<sup>(deprecated)</sup>
@@ -14,13 +20,14 @@ getContext(component?: Object):Context
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](js-apis-arkui-UIContext.md#uicontext)中的[getHostContext](js-apis-arkui-UIContext.md#gethostcontext12)替代。
->
-> 从API version 12开始，可以通过使用[UIContext](js-apis-arkui-UIContext.md#uicontext)中的[getHostContext](js-apis-arkui-UIContext.md#gethostcontext12)来明确UI的执行上下文。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用getHostContext替代。[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)需先获取[UIContext](arkts-apis-uicontext-uicontext.md)实例对象后再进行获取。
+
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：** 
 
@@ -32,15 +39,29 @@ getContext(component?: Object):Context
 
 | 类型 | 说明                             |
 | ------ | ------------------------------- |
+| [Context](#context)  | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。    |
+
+## Context
+
+type Context = Context
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 类型 | 说明                             |
+| ------ | ------------------------------- |
 | [Context](../../application-models/application-context-stage.md)  | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。    |
+
+> **说明：**
+> 
+> 直接使用getContext可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getHostContext](arkts-apis-uicontext-uicontext.md#gethostcontext12)调用绑定实例的getContext。
 
 **示例：**
 
 在UIAbility中通过windowStage.loadContent加载具体页面。
-
-> **说明：**
-> 
-> 直接使用getContext可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](js-apis-arkui-UIContext.md#uicontext)实例，并使用[getHostContext](js-apis-arkui-UIContext.md#gethostcontext12)调用绑定实例的getContext。
 
 ```ts
 // EntryAbility.ets

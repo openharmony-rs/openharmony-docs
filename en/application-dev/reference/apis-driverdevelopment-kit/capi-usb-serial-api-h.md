@@ -1,4 +1,10 @@
 # usb_serial_api.h
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
@@ -6,7 +12,7 @@ Declares the USB Serial DDK APIs used by the host to access the serial port devi
 
 **File to include**: <usb_serial/usb_serial_api.h>
 
-**Library**: libusb_serial.z.so
+**Library:** libusb_serial_ndk.z.so
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 
@@ -274,7 +280,7 @@ Sets the timeout interval (ms) for reading data reported by a USB serial port de
 
 | Type| Description|
 | -- | -- |
-| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode): The operation is successful.<br>         [USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode): The permission verification fails.<br>         [USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode): The parameter verification fails. Possible causes: 1. **dev** is a null pointer.<br>         2. timeout < -1 or timeout > 25500.<br>         [USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode): The DDK initialization fails.<br>         [USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode): The DDK service communication fails.<br>         [USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode): An I/O exception occurs.<br>         [USB_SERIAL_DDK_INVALID_OPERATION](capi-usb-serial-types-h.md#usbserial_ddkretcode): The operation is invalid.|
+| int32_t | [USB_SERIAL_DDK_SUCCESS](capi-usb-serial-types-h.md#usbserial_ddkretcode): The operation is successful.<br>         [USB_SERIAL_DDK_NO_PERM](capi-usb-serial-types-h.md#usbserial_ddkretcode): The permission verification fails.<br>         [USB_SERIAL_DDK_INVALID_PARAMETER](capi-usb-serial-types-h.md#usbserial_ddkretcode): The parameter verification fails. Possible causes: 1. **dev** is a null pointer.<br>         2.timeout < -1 or timeout > 25500.<br>         [USB_SERIAL_DDK_INIT_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode): The DDK initialization fails.<br>         [USB_SERIAL_DDK_SERVICE_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode): The DDK service communication fails.<br>         [USB_SERIAL_DDK_IO_ERROR](capi-usb-serial-types-h.md#usbserial_ddkretcode): An I/O exception occurs.<br>         [USB_SERIAL_DDK_INVALID_OPERATION](capi-usb-serial-types-h.md#usbserial_ddkretcode): The operation is invalid.|
 
 ### OH_UsbSerial_SetFlowControl()
 

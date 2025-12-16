@@ -1,6 +1,12 @@
 # @ohos.app.ability.ServiceExtensionAbility (ServiceExtensionAbility) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @yewei0794-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The **ServiceExtensionAbility** module provides lifecycle callbacks when a ServiceExtensionAbility (background service) is created, destroyed, connected, or disconnected.
+The ServiceExtensionAbility module provides extended capabilities for background services, including lifecycle callbacks for creating, destroying, connecting, and disconnecting background services.
 
 > **NOTE**
 >
@@ -20,20 +26,22 @@ import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
 None.
 
-## Properties
+## ServiceExtensionAbility
+
+### Properties
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **System API**: This is a system API.
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context | [ServiceExtensionContext](js-apis-inner-application-serviceExtensionContext-sys.md)  | Yes| No| ServiceExtensionContext, which is inherited from **ExtensionContext**.|
+| context | [ServiceExtensionContext](js-apis-inner-application-serviceExtensionContext-sys.md)  | No| No| Context of the ServiceExtensionAbility. This context inherits from **ExtensionContext**.|
 
 
-## ServiceExtensionAbility.onCreate
+### onCreate
 
-onCreate(want: Want): void;
+onCreate(want: Want): void
 
 Called to initialize the service logic when a ServiceExtensionAbility is being created.
 
@@ -54,15 +62,15 @@ import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onCreate(want: Want) {
-    console.log(`onCreate, want: ${want.abilityName}`);
+    console.info(`onCreate, want: ${want.abilityName}`);
   }
 }
 ```
 
 
-## ServiceExtensionAbility.onDestroy
+### onDestroy
 
-onDestroy(): void;
+onDestroy(): void
 
 Called to clear resources when this ServiceExtensionAbility is being destroyed.
 
@@ -77,15 +85,15 @@ import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onDestroy() {
-    console.log('onDestroy');
+    console.info('onDestroy');
   }
 }
 ```
 
 
-## ServiceExtensionAbility.onRequest
+### onRequest
 
-onRequest(want: Want, startId: number): void;
+onRequest(want: Want, startId: number): void
 
 Called following **onCreate()** when a ServiceExtensionAbility is started by calling **startAbility()** or **startServiceExtensionAbility()**. The value of **startId** is incremented for each ServiceExtensionAbility that is started.
 
@@ -98,7 +106,7 @@ Called following **onCreate()** when a ServiceExtensionAbility is started by cal
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | want |  [Want](js-apis-app-ability-want.md) | Yes| Want information related to this ServiceExtensionAbility, including the ability name and bundle name.|
-| startId | number | Yes| Number of ServiceExtensionAbility start times. The initial value is **1**, and the value is automatically incremented for each ServiceExtensionAbility started.|
+| startId | number | Yes| Number of times the instance has been started. The initial value is **1** for the first start, and it increments automatically for subsequent starts.|
 
 **Example**
 
@@ -107,17 +115,17 @@ import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
-    console.log('onRequest, want: ${want.abilityName}');
+    console.info('onRequest, want: ${want.abilityName}');
   }
 }
 ```
 
 
-## ServiceExtensionAbility.onConnect
+### onConnect
 
-onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>;
+onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>
 
-Called following **onCreate()** when a ServiceExtensionAbility is started by calling **connectAbility()**. A **RemoteObject** object is returned for communication between the server and client.
+Called following **onCreate()** when a ServiceExtensionAbility is started by calling **connectAbility()**. A RemoteObject is returned for communication between the server and client.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -133,7 +141,7 @@ Called following **onCreate()** when a ServiceExtensionAbility is started by cal
 
 | Type| Description|
 | -------- | -------- |
-| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) \| Promise\<[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)> | **RemoteObject** object or Promise used to return a **RemoteObject** object, which is used for communication between the client and server.|
+| [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) \| Promise\<[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)> | RemoteObject or Promise used to return a RemoteObject, which is used for communication between the client and server.|
 
 **Example**
 
@@ -150,13 +158,13 @@ class StubTest extends rpc.RemoteObject{
 }
 class ServiceExt extends ServiceExtensionAbility {
   onConnect(want: Want) {
-    console.log('onConnect , want: ${want.abilityName}');
+    console.info('onConnect , want: ${want.abilityName}');
     return new StubTest('test');
   }
 }
 ```
 
-If the returned **RemoteObject** object depends on an asynchronous API, you can use the asynchronous lifecycle.
+If the returned RemoteObject depends on an asynchronous API, you can use the asynchronous lifecycle.
 
 ```ts
 import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -175,18 +183,26 @@ async function getDescriptor() {
 }
 class ServiceExt extends ServiceExtensionAbility {
   async onConnect(want: Want) {
-    console.log(`onConnect , want: ${want.abilityName}`);
+    console.info(`onConnect , want: ${want.abilityName}`);
     let descriptor = await getDescriptor();
     return new StubTest(descriptor);
   }
 }
 ```
 
-## ServiceExtensionAbility.onDisconnect
+### onDisconnect
 
-onDisconnect(want: Want): void | Promise\<void>;
+onDisconnect(want: Want): void | Promise\<void>
 
 Called when a client is disconnected from this ServiceExtensionAbility.
+
+This API returns the result synchronously or uses a promise to return the result.
+
+> **NOTE**
+>
+> - Once the **onDisconnect** lifecycle callback completes, the application may exit. This can interrupt any pending asynchronous operations (such as asynchronously writing data to a database), preventing them from finishing successfully. For any non-instantaneous tasks, you are advised to use Promise-based asynchronous callbacks.
+>
+> - Be aware that asynchronous operations are subject to a default timeout of approximately 1 second. Even if this timeout is exceeded, the system may still force-terminate the application. Note that the exact timeout duration can vary by device.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -206,32 +222,34 @@ Called when a client is disconnected from this ServiceExtensionAbility.
 
 **Example**
 
-```ts
-import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+- A synchronous callback example is as follows:
 
-class ServiceExt extends ServiceExtensionAbility {
-  onDisconnect(want: Want) {
-    console.log('onDisconnect, want: ${want.abilityName}');
+  ```ts
+  import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+  
+  class ServiceExt extends ServiceExtensionAbility {
+    onDisconnect(want: Want) {
+      console.info(`onDisconnect, want: ${want.abilityName}`);
+    }
   }
-}
-```
+  ```
 
-After the **onDisconnect()** lifecycle callback is executed, the application may exit. Consequently, the asynchronous function (for example, asynchronously writing data to the database) in **onDisconnect()** may fail to be executed. The asynchronous lifecycle can be used to ensure that the subsequent lifecycle continues after the asynchronous **onDisconnect()** is complete.
+- A promise asynchronous callback example is as follows:
 
-```ts
-import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
-
-class ServiceExt extends ServiceExtensionAbility {
-  async onDisconnect(want: Want) {
-    console.log('onDisconnect, want: ${want.abilityName}');
-    // Call the asynchronous function.
+  ```ts
+  import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
+  
+  class ServiceExt extends ServiceExtensionAbility {
+    async onDisconnect(want: Want) {
+      console.info(`onDisconnect, want: ${want.abilityName}`);
+      // Call the asynchronous function.
+    }
   }
-}
-```
+  ```
 
-## ServiceExtensionAbility.onReconnect
+### onReconnect
 
-onReconnect(want: Want): void;
+onReconnect(want: Want): void
 
 Called when a new client attempts to connect to this ServiceExtensionAbility after all previous clients are disconnected. This capability is reserved.
 
@@ -252,14 +270,14 @@ import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onReconnect(want: Want) {
-    console.log('onReconnect, want: ${want.abilityName}');
+    console.info('onReconnect, want: ${want.abilityName}');
   }
 }
 ```
 
-## ServiceExtensionAbility.onConfigurationUpdate
+### onConfigurationUpdate
 
-onConfigurationUpdate(newConfig: Configuration): void;
+onConfigurationUpdate(newConfig: Configuration): void
 
 Called when the configuration of this ServiceExtensionAbility is updated.
 
@@ -280,14 +298,14 @@ import { ServiceExtensionAbility, Configuration } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onConfigurationUpdate(newConfig: Configuration) {
-    console.log(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
+    console.info(`onConfigurationUpdate, config: ${JSON.stringify(newConfig)}`);
   }
 }
 ```
 
-## ServiceExtensionAbility.onDump
+### onDump
 
-onDump(params: Array\<string>): Array\<string>;
+onDump(params: Array\<string>): Array\<string>
 
 Dumps the client information.
 
@@ -314,7 +332,7 @@ import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onDump(params: Array<string>) {
-    console.log(`dump, params: ${JSON.stringify(params)}`);
+    console.info(`dump, params: ${JSON.stringify(params)}`);
     return ['params'];
   }
 }

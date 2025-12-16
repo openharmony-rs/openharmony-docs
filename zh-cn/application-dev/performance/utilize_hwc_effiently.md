@@ -1,5 +1,12 @@
 # 高效利用HWC的低功耗设计
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 ## 概述
 在应用开发中，开发者可以自由组合ArkUI定义控件、视频、图片、Web网页以及第三方渲染框架生成内容，以满足应用UI界面的需求。同时，系统基于的芯片平台除了通用的CPU/GPU计算单元外，还提供了[Hardware Composer](#图形渲染系统工作流程)（下文简称HWC）专用硬件辅助系统进行图形渲染送显，相对于通用计算单元，在图层叠加场景具有更高的处理效率和更低的能耗。作为专用硬件单元，HWC需要满足一定条件才能充分发挥其硬件能力，降低系统CPU/GPU开销，减少发热和卡顿现象的出现。
 
@@ -24,6 +31,7 @@
 @Component
 struct ArkUISample {
   @State message: string = 'Hello World';
+  
   build() {
     Row() {
       Column() {
@@ -127,11 +135,11 @@ struct VideoWithBlur {
       Video({
         src: $r('app.media.test_video')
       })
-        .height('100%')
-        .width('100%')
-        .loop(true)
-        .autoPlay(true)
-        .controls(false)
+      .height('100%')
+      .width('100%')
+      .loop(true)
+      .autoPlay(true)
+      .controls(false)
 
       RelativeContainer() {
         Row() {
@@ -147,11 +155,17 @@ struct VideoWithBlur {
             .backgroundBlurStyle(BlurStyle.BACKGROUND_REGULAR) // 设置背景模糊材质
           // ...
         }
+
         // ...
       }
       .height('100%')
       .width('100%')
-      .padding({ left: 16, right: 16, top: 36, bottom: 36 })
+      .padding({
+        left: 16,
+        right: 16,
+        top: 36,
+        bottom: 36
+      })
     }
     .height('100%')
     .width('100%')
@@ -169,11 +183,11 @@ struct NormalVideo {
       Video({
         src: $r('app.media.test_video')
       })
-        .height('100%')
-        .width('100%')
-        .loop(true)
-        .autoPlay(true)
-        .controls(false)
+      .height('100%')
+      .width('100%')
+      .loop(true)
+      .autoPlay(true)
+      .controls(false)
 
       RelativeContainer() {
         Row() {
@@ -185,13 +199,19 @@ struct NormalVideo {
             .borderRadius('50%')
             .fillColor('rgba(255, 255, 255, 0.9)')
             .backgroundColor('rgba(0, 0, 0, 0.1)')
-            // ...
+          // ...
         }
+
         // ...
       }
       .height('100%')
       .width('100%')
-      .padding({ left: 16, right: 16, top: 36, bottom: 36 })
+      .padding({
+        left: 16,
+        right: 16,
+        top: 36,
+        bottom: 36
+      })
     }
     .height('100%')
     .width('100%')
@@ -247,12 +267,14 @@ struct WebWithBlur {
         Web({ src: $rawfile('test.html'), controller: this.webController })
       }
       .tabBar(this.tabBuilder('Tab', 0, $r('app.media.tab_icon_activated'), $r('app.media.tab_icon')))
+
       // ...
     }
     .height('100%')
     .width('100%')
     .barOverlap(true) // 设置TabBar模糊并叠加在TabContent之上
     .barBackgroundColor('rgba(241, 243, 245, 0.3)')
+
     // ...
   }
 }
@@ -279,6 +301,7 @@ struct NormalWeb {
         Web({ src: $rawfile('test.html'), controller: this.webController })
       }
       .tabBar(this.tabBuilder('Tab', 0, $r('app.media.tab_icon_activated'), $r('app.media.tab_icon')))
+
       // ...
     }
     .height('100%')
@@ -286,6 +309,7 @@ struct NormalWeb {
     .barOverlap(true) // 设置TabBar叠加在TabContent之上
     .barBackgroundBlurStyle(BlurStyle.NONE) // 设置TabBar不模糊
     .barBackgroundColor('rgba(241, 243, 245, 1)')
+
     // ...
   }
 }

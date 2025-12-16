@@ -1,4 +1,10 @@
 # MVVM
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 After understanding the basic concepts of state management, you may be eager to develop your own applications. However, if the project structure is not carefully planned at the early stage of application development, the relationship between components becomes blurred as the project grows and state variables increase. In this case, the development of any new function may cause a chain reaction and increase the maintenance cost. This topic describes the MVVM mode and the relationship between the UI development mode of ArkUI and MVVM, and provides guidance for you to design your own project structures to facilitate product development and maintenance during product iteration and upgrade.
 
@@ -9,11 +15,13 @@ Most decorators are covered in this topic, therefore, you are advised to read [S
 
 ### Concepts
 
-During application development, UI updates need to be synchronized in real time with data state changes. This synchronization usually determines the performance and user experience of applications. To reduce the complexity of data and UI synchronization, ArkUI uses the Model-View-ViewModel (MVVM) architecture. The MVVM divides an application into three core parts: Model, View, and ViewModel to separate data, views, and logic. In this mode, the UI can be automatically updated with the state change without manual processing, thereby more efficiently managing the binding and update of data and views.
+In application development, UI updates need to synchronize data status changes in real time, which directly affects application performance and user experience. To reduce the complexity of data and UI synchronization, ArkUI uses the Model-View-ViewModel (MVVM) architecture. The MVVM divides an application into three core parts: Model, View, and ViewModel to separate data, views, and logic. In this mode, the UI can automatically update status changes, thereby more efficiently managing data and view binding and update.
 
-- Model: stores and manages application data and service logic without directly interacting with the UI. Generally, Model obtains data from back-end APIs and serves as the data basis of applications, which ensures data consistency and integrity.
-- View: displays data on the UI and interacts with users. No service logic is contained. It dynamically updates the UI by binding the data provided by the ViewModel.
-- ViewModel: manages UI state and interaction logic. As a bridge between Model and View, a View usually corresponds to a ViewModel. The ViewModel listens for data changes in Model, notifies View to update the UI, processes user interaction events, and converts the events into data operations.
+- View: user interface layer. It is responsible for user interface display and interaction with users, and does not contain any service logic. It implements dynamic update by binding data provided by the ViewModel layer.
+- Model: data access layer. It is data-centric and does not directly interact with the user interface. It is responsible for data structure definition, data management (obtaining, storing, and updating data), and service logic processing.
+- ViewModel: logic layer. As a bridge between the Model and View, one View usually corresponds to one ViewModel. The View and ViewModel communicate in either of the following ways: 
+  1. Method calling: The View listens to user behavior through events and triggers methods at the ViewModel layer in the callback. For example, when the View detects a button click event, it calls the corresponding method of the ViewModel to process the user operation. 
+  2. Two-way binding: The view is bound to the data of the view model to implement two-way synchronization. 
 
 The UI development mode of ArkUI belongs to the MVVM mode. By introducing the concept of MVVM, you may have basic understanding on how the state management work in MVVM. State management aims to drive data update and enable you to focus only on page design without paying attention to the UI re-render logic. In addition, ViewModel enables state variables to automatically maintain data. In this way, MVVM provides a more efficient way for you to develop applications.
 
@@ -27,23 +35,24 @@ The UI development mode of ArkUI is the MVVM mode, in which the state variables 
 
 **View**
 
+The view layer can be divided into the following components:
 * Page components: All applications are classified by page, such as the login page, list page, editing page, help page, and copyright page. The data required by each page may be completely different, or the same set of data can be shared with multiple pages.
 * Business components: a functional component that has some service capabilities of the application. Typically, the business component may be associated with the data in the ViewModel of the project and cannot be shared with other projects.
-* Common components: Similar to built-in components, these components are not associated with the ViewModel data in the application. These components can be shared across multiple projects to implement common functions.
-
-**ViewModel**
-
-* Page data: Data that is organized by page. When a user browses a page, some pages may not be displayed. Therefore, it is recommended that the page data be designed using lazy import.
-
-> The differences between the ViewModel data and the Model data are as follows:
->
-> Model data, a set of service data of the application, is organized based on the entire project.
->
-> ViewModel data provides data used on a page. It may be a part of the service data of the entire application. In addition, ViewModel also provides auxiliary data for page display, which may be irrelevant to the application services.
+* Common components: Like system components, these components are not associated with the ViewModel data in the app. These components can be shared across multiple projects to implement common functions.
 
 **Model**
 
-The Model layer is the original data provider of applications.
+The model layer is the provider of the original data of the app and represents the core service logic and data of the app.
+
+**ViewModel**
+
+The view model layer provides data for components at the view layer. The data is organized by page. When a user browses a page, some pages may not be displayed. Therefore, the page data is designed to be lazy-loaded (on-demand loading).
+
+> The differences between the ViewModel data and the Model data are as follows:
+>
+> The data at the model layer is organized based on the entire project to form a complete app service data system.
+>
+> ViewModel data provides data used on a page. It may be a part of the service data of the entire application. In addition, ViewModel also provides auxiliary data for page display, which may be irrelevant to the application services.
 
 ### Core Principles of the Architecture
 
@@ -54,14 +63,14 @@ The Model layer is the original data provider of applications.
 
 **The lower layer cannot access the upper layer data.**
 
-The lower layer can only notify the upper layer to update the data. In the service logic, you cannot write code at the lower layer to obtain the upper-layer data. For example, the logic processing at ViewModel cannot depend on a value on the UI at View.
+The lower layer can only notify the upper layer to update the data. In the service logic, the lower layer cannot directly obtain the upper-layer data. For example, the logic processing at the view model layer should not depend on a value on the view layer.
 
 **Non-parent-child components cannot directly access each other.**
 
 This is the core principle of View design. A component should comply with the following logic:
 
 * Do not directly access the parent component. Event or subscription capability must be used.
-* Do not directly access sibling components. This is because components can access only the child nodes (through parameter passing) and parent nodes (through events or notifications) that they can see. In this way, components are decoupled.
+* Direct access to sibling components is prohibited. This is because components can access only the child nodes (through parameter passing) and parent nodes (through events or notifications) that they can see. In this way, components are decoupled.
 
 Reasons:
 
@@ -71,11 +80,11 @@ Reasons:
 
 ## Memo Development
 
-This section describes how to use ArkUI to design your own applications. The sample code in this section directly develops functions without designing the code architecture and considering subsequent maintenance, and the decorators required for function development are introduced as well.
+This section describes how to develop a memo application to help you understand how to use the ArkUI framework to design your own applications. This section directly develops functions without designing the code architecture. That is, the code is developed based on requirements without considering subsequent maintenance. In addition, this section describes the decorators required for function development.
 
 ### @State
 
-* As the most commonly used decorator, @State is used to define state variables. Generally, the @State decorator is used as the data source of the parent component. When you click @State, the state variable is updated to re-render the UI. If the @State decorator is removed, the UI cannot be refreshed.
+* The @State decorator is one of the most commonly used decorators. It is used to define state variables. Generally, these state variables are used as the data source of the parent component. When you tap the component, the state variables are updated and the UI is refreshed.
 
 ```typescript
 @Entry
@@ -109,7 +118,6 @@ struct Index {
         }
         Text('Learn maths')
           .fontSize(24)
-          .fontWeight(450)
           .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
       }
       .height('40%')
@@ -174,7 +182,7 @@ struct AllChooseComponent {
 }
 
 @Component
-struct ThingsComponent1 {
+struct ThingComponent1 {
   @Prop isFinished: boolean;
 
   build() {
@@ -194,7 +202,6 @@ struct ThingsComponent1 {
       }
       Text('Study language')
         .fontSize(24)
-        .fontWeight(450)
         .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
     }
     .height('40%')
@@ -208,7 +215,7 @@ struct ThingsComponent1 {
 }
 
 @Component
-struct ThingsComponent2 {
+struct ThingComponent2 {
   @Prop isFinished: boolean;
 
   build() {
@@ -228,7 +235,6 @@ struct ThingsComponent2 {
       }
       Text('Learn maths')
         .fontSize(24)
-        .fontWeight(450)
         .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
     }
     .height('40%')
@@ -255,10 +261,10 @@ struct Index {
       AllChooseComponent({isFinished: this.isFinished})
 
       // Task 1
-      ThingsComponent1({isFinished: this.isFinished})
+      ThingComponent1({isFinished: this.isFinished})
 
       // Task 2
-      ThingsComponent2({isFinished: this.isFinished})
+      ThingComponent2({isFinished: this.isFinished})
     }
     .height('100%')
     .width('100%')
@@ -268,13 +274,13 @@ struct Index {
 }
 ```
 
-The following figure shows the effect.
+The following figure shows an example.
 
 ![Prop&Link](./figures/MVVM_Prop&Link.gif)
 
 ### Rendering Repeated Components
 
-* In the previous example, although the child component is split, the code of component 1 is similar to that of component 2. When the rendered components have the same configurations except data, **ForEach** is used to render the repeated components.
+* In the preceding example, child components are split, but the code of component 1 and component 2 is similar. If the settings of the rendered components are the same except the data, the ForEach loop rendering is required.
 * In this way, redundant code is decreased and the code structure is clearer.
 
 ```typescript
@@ -312,9 +318,9 @@ struct AllChooseComponent {
 }
 
 @Component
-struct ThingsComponent {
+struct ThingComponent {
   @Prop isFinished: boolean;
-  @Prop things: string;
+  @Prop thing: string;
   build() {
     // Task 1
     Row({space: 15}) {
@@ -330,9 +336,8 @@ struct ThingsComponent {
           .width(28)
           .height(28)
       }
-      Text(`${this.things}`)
+      Text(`${this.thing}`)
         .fontSize(24)
-        .fontWeight(450)
         .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
     }
     .height('8%')
@@ -354,12 +359,12 @@ struct ThingsComponent {
 struct Index {
   @State isFinished: boolean = false;
   @State planList: string[] = [
-    '7:30 Get up',
-    '8:30 Breakfast',
-    '11:30 Lunch',
-    '17:30 Dinner',
-    '21:30 Snack',
-    '22:30 Shower',
+    '7:30 Get up'
+    '8:30 Breakfast'
+    '11:30 Lunch'
+    '17:30 Dinner'
+    '21:30 Snack'
+    '22:30 Shower'
     '1:30 Go to bed'
   ];
 
@@ -374,11 +379,10 @@ struct Index {
       List() {
         ForEach(this.planList, (item: string) => {
           // Task 1
-          ThingsComponent({isFinished: this.isFinished, things: item})
+          ThingComponent({isFinished: this.isFinished, thing: item})
             .margin(5)
         })
       }
-
     }
     .height('100%')
     .width('100%')
@@ -388,7 +392,7 @@ struct Index {
 }
 ```
 
-The following figure shows the effect.
+The following figure shows an example.
 
 ![ForEach](./figures/MVVM_ForEach.gif)
 
@@ -401,12 +405,12 @@ The following figure shows the effect.
 @Observed
 class TodoListData {
   planList: string[] = [
-    '7:30 Get up',
-    '8:30 Breakfast',
-    '11:30 Lunch',
-    '17:30 Dinner',
-    '21:30 Snack',
-    '22:30 Shower',
+    '7:30 Get up'
+    '8:30 Breakfast'
+    '11:30 Lunch'
+    '17:30 Dinner'
+    '21:30 Snack'
+    '22:30 Shower'
     '1:30 Go to bed'
   ];
 }
@@ -445,9 +449,9 @@ struct AllChooseComponent {
 }
 
 @Component
-struct ThingsComponent {
+struct ThingComponent {
   @Prop isFinished: boolean;
-  @Prop things: string;
+  @Prop thing: string;
 
   @Builder displayIcon(icon: Resource) {
     Image(icon)
@@ -469,12 +473,11 @@ struct ThingsComponent {
         // 'app.media.unfinished' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
         this.displayIcon($r('app.media.unfinished'));
       }
-      Text(`${this.things}`)
+      Text(`${this.thing}`)
         .fontSize(24)
-        .fontWeight(450)
         .decoration({type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None})
         .onClick(() => {
-          this.things += '!'
+          this.thing += 'la';
         })
     }
     .height('8%')
@@ -492,7 +495,7 @@ struct ThingsComponent {
 @Component
 struct Index {
   @State isFinished: boolean = false;
-  @State data: TodoListData = new TodoListData();
+  @State data: TodoListData = new TodoListData(); // Data bound from the view to the view model
 
   build() {
     Column() {
@@ -505,11 +508,10 @@ struct Index {
       List() {
         ForEach(this.data.planList, (item: string) => {
           // Task 1
-          ThingsComponent({isFinished: this.isFinished, things: item})
+          ThingComponent({isFinished: this.isFinished, thing: item})
             .margin(5)
         })
       }
-
     }
     .height('100%')
     .width('100%')
@@ -519,31 +521,33 @@ struct Index {
 }
 ```
 
- The following figure shows the effect.
+ The following figure shows an example.
 
 ![builder](./figures/MVVM_builder.gif)
 
 ### Summary
 
-* After the code structure is optimized step by step, you can see that the @Entry decorated component serves as the entry of the page and the **build** function only needs to combine the required components, which is similar to building blocks. A child component called by a page is similar to a block and waits to be called by a required page. A state variable is similar to an adhesive. When a UI re-render event is triggered, the state variable can automatically re-render the bound component to implement on-demand page refresh.
-* Although the existing architecture does not use the MVVM design concept, the core concept of MVVM shows that the UI development of ArkUI should use the MVVM mode. Pages and components are at the View layer, and pages are responsible for combining components. A state variable is used to drive the component re-render to refresh the page. The ViewModel data needs to have a source, which is from the Model layer.
-* The code functions in the example are simple. However, as the number of functions increases, the code of the main page increases. When more functions are added to the Memo application and other pages need to use the components of the main page, how to organize the project structure? The MVVM mode is the answer.
+* By optimizing the code structure step by step, you can see that the @Entry component is the entry of the page. The build function of the @Entry component should only combine the required components, which is similar to building blocks. The child components called by the page are like building blocks, waiting to be called by the required page. The state variable is similar to the adhesive. When the UI refresh event is triggered, the state variable automatically refreshes the bound component to implement on-demand refresh of the page.
+* Although the existing architecture does not use the MVVM design concept, the core concept of MVVM has been seen. The MVVM pattern is suitable for ArkUI development. In ArkUI, pages and components constitute the view layer. Pages organize components, and components are the elements. When a component needs to be updated, the state variable is used to drive the component to refresh and update the page. The data of the ViewModel comes from the Model layer.
+* The code in the example is simple. However, as the functions increase, the code volume of the main page increases gradually. When more functions need to be added to the memo and the components of the main page need to be used on other pages, the MVVM pattern can be used to organize the project structure.
 
 ## Developing a To-Do List Through MVVM
 
-The previous section describes how to organize code in non-MVVM mode. As the code of the main page becomes larger, a proper layering method should be adopted to make the project structure clear and prevent components from referencing each other. Therefore, the entire system will not be affected during subsequent maintenance. This section uses MVVM to reorganize the code in the previous section to introduce the core file organization of MVVM.
+The previous section shows the code organization mode in non-MVVM mode. As the code volume of the main page increases, a proper layering policy should be adopted to make the project structure clear and prevent components from referencing each other. This avoids the difficulty in updating functions during subsequent maintenance. This section describes how to use MVVM to refactor the code in the previous section based on the core file organization mode of MVVM.
 
 ### MVVM File Structure
 
-* src
-  * ets
-    * pages ------ Stores page components.
-    * views ------ Stores business components.
-    * shares ------ Stores common components.
-    * service ------ Data services.
-      * app.ts ------ Service entry.
-      * LoginViewModel ----- Login page.
-      * xxxModel ------ Other pages.
+```
+├── src
+│   ├── ets
+│ │ ├── pages: stores page components.
+│ │ ├── views: stores service components.
+│ │ ├── shares: stores common components.
+│ │ └── viewModel: data service.
+│ │ │ ├── LoginViewModel.ets: ViewModel of the login page.
+│ │ │ └── xxxViewModel.ets: ViewModel of other pages.
+│
+```
 
 ### Layered Design
 
@@ -553,12 +557,12 @@ The previous section describes how to organize code in non-MVVM mode. As the cod
 
 **ViewModel**
 
-> **NOTE**
+> Note:
 >
-> The ViewModel layer not only stores data, but also provides data services and processing. Therefore, many frameworks use "service" to represent this layer.
+> The ViewModel layer stores data and provides data services and processing.
 
-* The ViewModel layer is the data layer that serves views. Generally, it has two features:
-  1. Data is organized based on pages.
+* The ViewModel layer is the data layer that serves views. It has the following two characteristics:
+  1. Data is organized by page.
   2. Data on each page is lazy loaded.
 
 **View**
@@ -577,49 +581,85 @@ The View layer is organized as required. You need to distinguish the following t
 
 ### Example
 
-The file structure is reconstructed based on the MVVM mode as follows:
+Reconstruct the code based on the MVVM pattern:
 
-* src
-  * ets
-    * Model
-      * ThingsModel
-      * TodoListModel
-    * pages
-      * Index
-    * View
-      * AllChooseComponent
-      * ThingsComponent
-      * TodoComponent
-      * TodoListComponent
-    * ViewModel
-      * ThingsViewModel
-      * TodoListViewModel
-  * resources
-    * rawfile
-      * defaultTasks.json
+```
+├── src
+│   ├── ets
+│   │   ├── model
+│   │   │   ├── ThingModel.ets
+│   │   │   └── TodoListModel.ets
+│   │   ├── pages
+│   │   │   ├── Index.ets
+│   │   ├── views
+│   │   │   ├── AllChooseComponent.ets
+│   │   │   ├── ThingComponent.ets
+│   │   │   ├── TodoComponent.ets
+│   │   │   └── TodoListComponent.ets
+│   │   ├── viewModel
+│   │   │   ├── ThingViewModel.ets
+│   │   │   └── TodoListViewModel.ets
+│   └── resources
+│   │   ├── rawfile
+│   │   │   ├── default_tasks.json
+│
+```
 
 The code is as follows:
+
+  * ThingModel.ets
+
+  ```typescript
+  export default class ThingModel {
+    thingName: string = 'Todo';
+    isFinish: boolean = false;
+  }
+  ```
+
+  * TodoListModel.ets
+
+  ```typescript
+  import { common } from '@kit.AbilityKit';
+  import { util } from '@kit.ArkTS';
+  import ThingModel from './ThingModel';
+
+  export default class TodoListModel {
+    things: Array<ThingModel> = [];
+
+    constructor(things: Array<ThingModel>) {
+      this.things = things;
+    }
+
+    async loadTasks(context: common.UIAbilityContext) {
+      let getJson = await context.resourceManager.getRawFileContent('default_tasks.json');
+      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
+      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+      let result = textDecoder.decodeToString(getJson, { stream: false });
+      this.things = JSON.parse(result);
+    }
+  }
+  ```
 
 * Index.ets
 
   ```typescript
   import { common } from '@kit.AbilityKit';
   // import ViewModel
-  import TodoListViewModel from '../ViewModel/TodoListViewModel';
+  import TodoListViewModel from '../viewModel/TodoListViewModel';
 
   // import View
-  import { TodoComponent } from '../View/TodoComponent';
-  import { AllChooseComponent } from '../View/AllChooseComponent';
-  import { TodoListComponent } from '../View/TodoListComponent';
+  import { TodoComponent } from '../views/TodoComponent';
+  import { AllChooseComponent } from '../views/AllChooseComponent';
+  import { TodoListComponent } from '../views/TodoListComponent';
 
   @Entry
   @Component
   struct TodoList {
-    @State thingsTodo: TodoListViewModel = new TodoListViewModel();
-    private context = getContext(this) as common.UIAbilityContext;
+    @State todoListViewModel: TodoListViewModel = new TodoListViewModel(); // Data bound from the view to the view model.
+    private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
     async aboutToAppear() {
-      await this.thingsTodo.loadTasks(this.context);
+      await this.todoListViewModel.loadTasks(this.context);
     }
 
     build() {
@@ -628,11 +668,11 @@ The code is as follows:
           // All To-Do items.
           TodoComponent()
           // Select all.
-          AllChooseComponent({ thingsViewModel: this.thingsTodo })
+          AllChooseComponent({ todoListViewModel: this.todoListViewModel })
         }
 
         Column() {
-          TodoListComponent({ thingsViewModelArray: this.thingsTodo.things })
+          TodoListComponent({ thingViewModelArray: this.todoListViewModel.things })
         }
       }
       .height('100%')
@@ -643,75 +683,42 @@ The code is as follows:
   }
   ```
 
-  * ThingsModel.ets
-
-  ```typescript
-  export default class ThingsModel {
-    thingsName: string = 'Todo';
-    isFinish: boolean = false;
-  }
-  ```
-
-  * TodoListModel.ets
-
-  ```typescript
-  import { common } from '@kit.AbilityKit';
-  import util from '@ohos.util';
-  import ThingsModel from './ThingsModel';
-
-  export default class TodoListModel {
-    things: Array<ThingsModel> = [];
-
-    constructor(things: Array<ThingsModel>) {
-      this.things = things;
-    }
-
-    async loadTasks(context: common.UIAbilityContext) {
-      let getJson = await context.resourceManager.getRawFileContent('defaultTasks.json');
-      let textDecoderOptions: util.TextDecoderOptions = { ignoreBOM: true };
-      let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
-      let result = textDecoder.decodeToString(getJson, { stream: false });
-      this.things = JSON.parse(result);
-    }
-  }
-  ```
-
   * AllChooseComponent.ets
 
   ```typescript
-  import TodoListViewModel from "../ViewModel/TodoListViewModel";
+  import TodoListViewModel from "../viewModel/TodoListViewModel";
 
   @Component
   export struct AllChooseComponent {
     @State titleName: string = 'Select All';
-    @Link thingsViewModel: TodoListViewModel;
+    @Link todoListViewModel: TodoListViewModel;
 
     build() {
       Row() {
         Button(`${this.titleName}`, { type: ButtonType.Capsule })
           .onClick(() => {
-            this.thingsViewModel.chooseAll();
-            this.titleName = this.thingsViewModel.isChoosen ? 'Select All' : 'Deselect All'
+            Invoke the chooseAll method at the this.todoListViewModel.chooseAll(); // View layer to process the click event.
+            this.titleName = this.todoListViewModel.isChoosen ? ' Select all' : 'Deselect all';
           })
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .backgroundColor('#f7f6cc74')
       }
-      .padding({ left: this.thingsViewModel.isChoosen ? 15 : 0 })
+      .padding({ left: this.todoListViewModel.isChoosen ? 15 : 0 })
       .width('100%')
       .margin({ top: 10, bottom: 10 })
     }
   }
   ```
 
-  * ThingsComponent.ets
+  * ThingComponent.ets
 
   ```typescript
-  import ThingsViewModel from "../ViewModel/ThingsViewModel";
+  import ThingViewModel from "../viewModel/ThingViewModel";
 
   @Component
-  export struct ThingsComponent {
-    @Prop things: ThingsViewModel;
+  export struct ThingComponent {
+    @ObjectLink thing: ThingViewModel;
 
     @Builder
     displayIcon(icon: Resource) {
@@ -719,14 +726,14 @@ The code is as follows:
         .width(28)
         .height(28)
         .onClick(() => {
-          this.things.updateIsFinish();
+          When a click event occurs at the this.thing.updateIsFinish(); // View layer, the updateIsFinish method at the ViewModel layer is called to process the logic.
         })
     }
 
     build() {
       // To-Do list
       Row({ space: 15 }) {
-        if(this.things.isFinish) {
+        if (this.thing.isFinish) {
           // 'app.media.finished' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
           this.displayIcon($r('app.media.finished'));
         } else {
@@ -734,18 +741,17 @@ The code is as follows:
           this.displayIcon($r('app.media.unfinished'));
         }
 
-        Text(`${this.things.thingsName}`)
+        Text(`${this.thing.thingName}`)
           .fontSize(24)
-          .fontWeight(450)
-          .decoration({ type: this.things.isFinish ? TextDecorationType.LineThrough: TextDecorationType.None })
+          .decoration({ type: this.thing.isFinish ? TextDecorationType.LineThrough : TextDecorationType.None })
           .onClick(() => {
-            this.things.addSuffixes();
+            When a click event occurs at the this.thing.addSuffixes(); // View layer, the addSuffixes method at the ViewModel layer is called to process the logic.
           })
       }
       .height('8%')
       .width('90%')
       .padding({ left: 15 })
-      .opacity(this.things.isFinish ? 0.3 : 1)
+      .opacity(this.thing.isFinish ? 0.3 : 1)
       .border({ width: 1 })
       .borderColor(Color.White)
       .borderRadius(25)
@@ -775,25 +781,25 @@ The code is as follows:
   * TodoListComponent.ets
 
   ```typescript
-  import ThingsViewModel from "../ViewModel/ThingsViewModel";
-  import { ThingsViewModelArray } from "../ViewModel/TodoListViewModel"
-  import { ThingsComponent } from "./ThingsComponent";
+  import ThingViewModel from "../viewModel/ThingViewModel";
+  import { ThingViewModelArray } from "../viewModel/TodoListViewModel"
+  import { ThingComponent } from "./ThingComponent";
 
   @Component
   export struct TodoListComponent {
-    @ObjectLink thingsViewModelArray: ThingsViewModelArray;
+    @ObjectLink thingViewModelArray: ThingViewModelArray;
 
     build() {
       Column() {
         List() {
-          ForEach(this.thingsViewModelArray, (item: ThingsViewModel) => {
+          ForEach(this.thingViewModelArray, (item: ThingViewModel) => {
             // To-Do list
             ListItem() {
-              ThingsComponent({ things: item })
+              ThingComponent({ thing: item })
                 .margin(5)
             }
-          }, (item: ThingsViewModel) => {
-            return item.thingsName;
+          }, (item: ThingViewModel) => {
+            return item.thingName;
           })
         }
       }
@@ -801,19 +807,19 @@ The code is as follows:
   }
   ```
 
-  * ThingsViewModel.ets
+  * ThingViewModel.ets
 
   ```typescript
-  import ThingsModel from "../Model/ThingsModel";
+  import ThingModel from "../model/ThingModel";
 
   @Observed
-  export default class ThingsViewModel {
-    @Track thingsName: string = 'Todo';
+  export default class ThingViewModel {
+    @Track thingName: string = 'Todo';
     @Track isFinish: boolean = false;
 
-    updateTask(things: ThingsModel) {
-      this.thingsName = things.thingsName;
-      this.isFinish = things.isFinish;
+    updateTask(thing: ThingModel) {
+      this.thingName = thing.thingName;
+      this.isFinish = thing.isFinish;
     }
 
     updateIsFinish(): void {
@@ -821,7 +827,7 @@ The code is as follows:
     }
 
     addSuffixes(): void {
-      this.thingsName += '!';
+      this.thingName += 'La'
     }
   }
   ```
@@ -829,53 +835,53 @@ The code is as follows:
   * TodoListViewModel.ets
 
   ```typescript
-  import ThingsViewModel from "./ThingsViewModel";
+  import ThingViewModel from "./ThingViewModel";
   import { common } from "@kit.AbilityKit";
-  import TodoListModel from "../Model/TodoListModel";
+  import TodoListModel from "../model/TodoListModel";
 
   @Observed
-  export class ThingsViewModelArray extends Array<ThingsViewModel> {
+  export class ThingViewModelArray extends Array<ThingViewModel> {
   }
 
   @Observed
   export default class TodoListViewModel {
     @Track isChoosen: boolean = true;
-    @Track things: ThingsViewModelArray = new ThingsViewModelArray();
+    @Track things: ThingViewModelArray = new ThingViewModelArray();
 
     async loadTasks(context: common.UIAbilityContext) {
       let todoList = new TodoListModel([]);
       await todoList.loadTasks(context);
-      for(let things of todoList.things) {
-        let thingsViewModel = new ThingsViewModel();
-        thingsViewModel.updateTask(things);
-        this.things.push(thingsViewModel);
+      for (let thing of todoList.things) {
+        let todoListViewModel = new ThingViewModel();
+        todoListViewModel.updateTask(thing);
+        this.things.push(todoListViewModel);
       }
     }
 
     chooseAll(): void {
-      for(let things of this.things) {
-        things.isFinish = this.isChoosen;
+      for (let thing of this.things) {
+        thing.isFinish = this.isChoosen;
       }
       this.isChoosen = !this.isChoosen;
     }
   }
   ```
 
-  * defaultTasks.json
+  * default_tasks.json
 
   ```typescript
   [
-    {"thingsName": "7:30 Get up", "isFinish": false},
-    {"thingsName": "8:30 Breakfast", "isFinish": false},
-    {"thingsName": "11:30 Lunch", "isFinish": false},
-    {"thingsName": "17:30 Dinner", "isFinish": false},
-    {"thingsName": "21:30 Snack", "isFinish": false},
-    {"thingsName": "22:30 Shower", "isFinish": false},
-    {"thingsName": "1:30 Go to bed", "isFinish": false}
+    {"thingName": "7.30 wake up", "isFinish": false},
+    {"thingName": "8.30 breakfast", "isFinish": false},
+    {"thingName": "11.30 lunch", "isFinish": false},
+    {"thingName": "17.30 dinner", "isFinish": false},
+    {"thingName": "21.30 midnight snack", "isFinish": false},
+    {"thingName": "22.30 shower", "isFinish": false},
+    {"thingName": "1.30 sleep", "isFinish": false}
   ]
   ```
 
-  After the code is split in MVVM mode, the project structure and the responsibilities of each module are clearer. If a new page needs to use an event component, for example, **TodoListComponent**, you only need to import the component.
+  The code structure after the MVVM mode is split is clearer, and the module responsibilities are clearer. The event component, for example, the TodoListComponent component, needs to be used on the new page. You only need to import the component.
 
   The following figure shows the effect.
 

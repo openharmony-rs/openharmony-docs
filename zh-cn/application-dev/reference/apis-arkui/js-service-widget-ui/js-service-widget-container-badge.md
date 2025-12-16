@@ -1,5 +1,10 @@
 # badge
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @Brilliantry_Rui-->
 
 应用中如果有需用户关注的新事件提醒，可以采用新事件标记来标识。
 
@@ -30,7 +35,7 @@
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| badgeColor | &lt;color&gt; | 	#fa2a2d | 否 | 新事件标记背景色。 |
+| badgeColor | &lt;color&gt; | #fa2a2d | 否 | 新事件标记背景色。 |
 | textColor | &lt;color&gt; | #ffffff | 否 | 数字标记的数字文本颜色。 |
 | textSize | &lt;length&gt; | 10px | 否 | 数字标记的数字文本大小。 |
 | badgeSize | &lt;length&gt; | 6px | 否 | 圆点标记的大小。 |
@@ -48,19 +53,19 @@
 
 ## 示例
 
-   ```html
+```html
 <!-- xxx.hml -->
 <div class="container">
-    <badge class="badge" config="{{ badgeconfig }}" visible="true" count="100" maxcount="99">
+    <badge class="badge" config="{{ badgeConfig }}" visible="true" count="100" maxcount="99">
         <text class="text1">example</text>
     </badge>
     <badge class="badge" visible="true" count="1">
         <text class="text2">example</text>
     </badge>
 </div>
-   ```
+```
 
-   ```css
+```css
 /* xxx.css */
 .container {
     flex-direction: column;
@@ -83,18 +88,18 @@
     background-color: #46b1e3;
     font-size: 19fp;
 }
-   ```
+```
 
-   ```js
+```js
 // xxx.js
 export default {
     data: {
-        badgeconfig: {
+        badgeConfig: {
             badgeColor: "#0a59f7",
             textColor: "#ffffff",
         }
     }
 }
-   ```
+```
 
 ![badgeSample](figures/badgeSample.png)

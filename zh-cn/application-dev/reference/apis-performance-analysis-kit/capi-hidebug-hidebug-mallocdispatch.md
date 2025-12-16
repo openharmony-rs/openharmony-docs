@@ -1,5 +1,16 @@
 # HiDebug_MallocDispatch
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Designer: @kutcherzhou1-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct HiDebug_MallocDispatch {...} HiDebug_MallocDispatch
+```
+
 ## 概述
 
 应用程序进程可替换/恢复的HiDebug_MallocDispatch表结构类型定义。
@@ -27,7 +38,7 @@
 
 ### malloc()
 
-```
+```c
 void* (*malloc)(size_t)
 ```
 
@@ -37,7 +48,7 @@ void* (*malloc)(size_t)
 
 ### calloc()
 
-```
+```c
 void* (*calloc)(size_t, size_t)
 ```
 
@@ -47,7 +58,7 @@ void* (*calloc)(size_t, size_t)
 
 ### realloc()
 
-```
+```c
 void* (*realloc)(void*, size_t)
 ```
 
@@ -57,7 +68,7 @@ void* (*realloc)(void*, size_t)
 
 ### free()
 
-```
+```c
 void (*free)(void*)
 ```
 
@@ -67,7 +78,7 @@ void (*free)(void*)
 
 ### mmap()
 
-```
+```c
 void* (*mmap)(void*, size_t, int, int, int, off_t)
 ```
 
@@ -77,7 +88,7 @@ void* (*mmap)(void*, size_t, int, int, int, off_t)
 
 ### munmap()
 
-```
+```c
 int (*munmap)(void*, size_t)
 ```
 

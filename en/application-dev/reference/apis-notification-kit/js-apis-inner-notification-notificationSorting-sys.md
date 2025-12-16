@@ -1,4 +1,10 @@
 # NotificationSorting (System API)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **NotificationSorting** module provides APIs for defining the sorting information of active notifications.
 
@@ -8,13 +14,13 @@ The **NotificationSorting** module provides APIs for defining the sorting inform
 >
 > The APIs provided by this module are system APIs.
 
-## Attributes
+## Properties
 
 **System capability**: SystemCapability.Notification.Notification
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
 
-| Name     | Type             | Read Only  | Optional| Description                    |
+| Name     | Type             | Read-Only  | Optional| Description                    |
 |-----------| ---------------- | -------|----- |-------------------------|
 | slot        | [NotificationSlot](js-apis-inner-notification-notificationSlot.md) | Yes| No| Notification slot type.                 |
 | ranking     | number                                                             | Yes| No| Notification level. If this parameter is not set, the default value is used based on the notification slot type.|

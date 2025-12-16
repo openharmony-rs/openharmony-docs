@@ -1,8 +1,16 @@
 # native_audio_volume_manager.h
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
-声明音频音量管理器接口。该文件接口用于创建AudioVolumeManager。
+声明音频音量管理器接口。<br> 该文件接口用于创建AudioVolumeManager。
+
+**引用文件：** <ohaudio/native_audio_volume_manager.h>
 
 **库：** libohaudio.so
 
@@ -24,25 +32,25 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userData,OH_AudioStream_Usage usage,int32_t volumeLevel,bool updateUi)](#oh_audiovolumemanager_onstreamvolumechangecallback) | OH_AudioVolumeManager_OnStreamVolumeChangeCallback | 音量变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback)。 |
-| [typedef void (\*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData,OH_AudioRingerMode ringerMode)](#oh_audiovolumemanager_onringermodechangecallback) | OH_AudioVolumeManager_OnRingerModeChangeCallback | 铃声模式变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback)。 |
+| [typedef void (\*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi)](#oh_audiovolumemanager_onstreamvolumechangecallback) | OH_AudioVolumeManager_OnStreamVolumeChangeCallback | 音量变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback)。 |
+| [typedef void (\*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData, OH_AudioRingerMode ringerMode)](#oh_audiovolumemanager_onringermodechangecallback) | OH_AudioVolumeManager_OnRingerModeChangeCallback | 铃声模式变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterRingerModeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerringermodechangecallback)。 |
 | [OH_AudioCommon_Result OH_AudioManager_GetAudioVolumeManager(OH_AudioVolumeManager **volumeManager)](#oh_audiomanager_getaudiovolumemanager) | - | 使用音量管理器相关功能，首先需要获取音量管理器实例。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeManager *volumeManager,OH_AudioStream_Usage usage, int32_t *maxVolumeLevel)](#oh_audiovolumemanager_getmaxvolumebyusage) | - | 获取指定用途类型音频流的最大音量等级。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeManager *volumeManager,OH_AudioStream_Usage usage, int32_t *minVolumeLevel)](#oh_audiovolumemanager_getminvolumebyusage) | - | 获取指定用途类型音频流的最小音量等级。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManager *volumeManager,OH_AudioStream_Usage usage, int32_t *volumeLevel)](#oh_audiovolumemanager_getvolumebyusage) | - | 获取指定用途类型音频流的系统音量等级。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager *volumeManager,OH_AudioStream_Usage usage, bool *muted)](#oh_audiovolumemanager_ismutebyusage) | - | 检查指定用途类型的音频流是否处于静音状态。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage,OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback, void *userData)](#oh_audiovolumemanager_registerstreamvolumechangecallback) | - | 注册音频流音量修改回调函数。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager,OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback)](#oh_audiovolumemanager_unregisterstreamvolumechangecallback) | - | 取消注册音频流音量修改回调函数。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager *volumeManager,OH_AudioRingerMode *ringerMode)](#oh_audiovolumemanager_getringermode) | - | 获取当前铃声模式。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager,OH_AudioVolumeManager_OnRingerModeChangeCallback callback, void *userData)](#oh_audiovolumemanager_registerringermodechangecallback) | - | 注册铃音模式切换回调函数。 |
-| [OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager,OH_AudioVolumeManager_OnRingerModeChangeCallback callback)](#oh_audiovolumemanager_unregisterringermodechangecallback) | - | 取消注册铃音模式切换回调函数。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *maxVolumeLevel)](#oh_audiovolumemanager_getmaxvolumebyusage) | - | 获取指定用途类型音频流的最大音量等级。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *minVolumeLevel)](#oh_audiovolumemanager_getminvolumebyusage) | - | 获取指定用途类型音频流的最小音量等级。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *volumeLevel)](#oh_audiovolumemanager_getvolumebyusage) | - | 获取指定用途类型音频流的系统音量等级。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, bool *muted)](#oh_audiovolumemanager_ismutebyusage) | - | 检查指定用途类型的音频流是否处于静音状态。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback, void *userData)](#oh_audiovolumemanager_registerstreamvolumechangecallback) | - | 注册音频流音量修改回调函数。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback)](#oh_audiovolumemanager_unregisterstreamvolumechangecallback) | - | 取消注册音频流音量修改回调函数。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager *volumeManager, OH_AudioRingerMode *ringerMode)](#oh_audiovolumemanager_getringermode) | - | 获取当前铃声模式。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnRingerModeChangeCallback callback, void *userData)](#oh_audiovolumemanager_registerringermodechangecallback) | - | 注册铃声模式切换回调函数。 |
+| [OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnRingerModeChangeCallback callback)](#oh_audiovolumemanager_unregisterringermodechangecallback) | - | 取消注册铃声模式切换回调函数。 |
 
 ## 函数说明
 
 ### OH_AudioVolumeManager_OnStreamVolumeChangeCallback()
 
-```
-typedef void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userData,OH_AudioStream_Usage usage,int32_t volumeLevel,bool updateUi)
+```c
+typedef void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userData, OH_AudioStream_Usage usage, int32_t volumeLevel, bool updateUi)
 ```
 
 **描述**
@@ -59,17 +67,17 @@ typedef void (*OH_AudioVolumeManager_OnStreamVolumeChangeCallback)(void *userDat
 | void *userData | 用户自定义数据指针。 |
 | [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 对应音量被调整的流的用途类型。 |
 | int32_t volumeLevel | 修改后的音量。 |
-| bool updateUi | 是否更新UI。 |
+| bool updateUi | 是否在UI界面显示音量变化。true表示显示，false表示不显示。 |
 
 ### OH_AudioVolumeManager_OnRingerModeChangeCallback()
 
-```
-typedef void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData,OH_AudioRingerMode ringerMode)
+```c
+typedef void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData, OH_AudioRingerMode ringerMode)
 ```
 
 **描述**
 
-铃声模式变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerstreamvolumechangecallback)。
+铃声模式变化回调函数的原型定义，用于传递给[OH_AudioVolumeManager_RegisterRingerModeChangeCallback](capi-native-audio-volume-manager-h.md#oh_audiovolumemanager_registerringermodechangecallback)。
 
 **起始版本：** 20
 
@@ -79,11 +87,11 @@ typedef void (*OH_AudioVolumeManager_OnRingerModeChangeCallback)(void *userData,
 | 参数项 | 描述 |
 | -- | -- |
 | void *userData | 用户自定义数据指针。 |
-| [OH_AudioRingerMode](capi-native-audio-common-h.md#oh_audioringermode) ringerMode | 切换后的铃音模式。 |
+| [OH_AudioRingerMode](capi-native-audio-common-h.md#oh_audioringermode) ringerMode | 切换后的铃声模式。 |
 
 ### OH_AudioManager_GetAudioVolumeManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioVolumeManager(OH_AudioVolumeManager **volumeManager)
 ```
 
@@ -108,8 +116,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioVolumeManager(OH_AudioVolumeManage
 
 ### OH_AudioVolumeManager_GetMaxVolumeByUsage()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeManager *volumeManager,OH_AudioStream_Usage usage, int32_t *maxVolumeLevel)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *maxVolumeLevel)
 ```
 
 **描述**
@@ -135,8 +143,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMaxVolumeByUsage(OH_AudioVolumeMa
 
 ### OH_AudioVolumeManager_GetMinVolumeByUsage()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeManager *volumeManager,OH_AudioStream_Usage usage, int32_t *minVolumeLevel)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *minVolumeLevel)
 ```
 
 **描述**
@@ -162,8 +170,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetMinVolumeByUsage(OH_AudioVolumeMa
 
 ### OH_AudioVolumeManager_GetVolumeByUsage()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManager *volumeManager,OH_AudioStream_Usage usage, int32_t *volumeLevel)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, int32_t *volumeLevel)
 ```
 
 **描述**
@@ -189,8 +197,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetVolumeByUsage(OH_AudioVolumeManag
 
 ### OH_AudioVolumeManager_IsMuteByUsage()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager *volumeManager,OH_AudioStream_Usage usage, bool *muted)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, bool *muted)
 ```
 
 **描述**
@@ -206,7 +214,7 @@ OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager 
 | -- | -- |
 | [OH_AudioVolumeManager](capi-ohaudio-oh-audiovolumemanager.md) *volumeManager | 指向OH_AudioVolumeManager用于接收创建的音量管理器实例。 |
 | [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | 用于映射特定音量类型的音频流用途类型。 |
-| bool *muted | 用于接收返回的音频流是否静音。 |
+| bool *muted | 用于接收返回的音频流是否静音。true表示静音，false表示未静音。 |
 
 **返回：**
 
@@ -216,8 +224,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_IsMuteByUsage(OH_AudioVolumeManager 
 
 ### OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage,OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback, void *userData)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioStream_Usage usage, OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback, void *userData)
 ```
 
 **描述**
@@ -244,8 +252,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterStreamVolumeChangeCallback(O
 
 ### OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager,OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnStreamVolumeChangeCallback callback)
 ```
 
 **描述**
@@ -270,8 +278,8 @@ OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterStreamVolumeChangeCallback
 
 ### OH_AudioVolumeManager_GetRingerMode()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager *volumeManager,OH_AudioRingerMode *ringerMode)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager *volumeManager, OH_AudioRingerMode *ringerMode)
 ```
 
 **描述**
@@ -296,13 +304,13 @@ OH_AudioCommon_Result OH_AudioVolumeManager_GetRingerMode(OH_AudioVolumeManager 
 
 ### OH_AudioVolumeManager_RegisterRingerModeChangeCallback()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager,OH_AudioVolumeManager_OnRingerModeChangeCallback callback, void *userData)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnRingerModeChangeCallback callback, void *userData)
 ```
 
 **描述**
 
-注册铃音模式切换回调函数。
+注册铃声模式切换回调函数。
 
 **起始版本：** 20
 
@@ -323,13 +331,13 @@ OH_AudioCommon_Result OH_AudioVolumeManager_RegisterRingerModeChangeCallback(OH_
 
 ### OH_AudioVolumeManager_UnregisterRingerModeChangeCallback()
 
-```
-OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager,OH_AudioVolumeManager_OnRingerModeChangeCallback callback)
+```c
+OH_AudioCommon_Result OH_AudioVolumeManager_UnregisterRingerModeChangeCallback(OH_AudioVolumeManager *volumeManager, OH_AudioVolumeManager_OnRingerModeChangeCallback callback)
 ```
 
 **描述**
 
-取消注册铃音模式切换回调函数。
+取消注册铃声模式切换回调函数。
 
 **起始版本：** 20
 

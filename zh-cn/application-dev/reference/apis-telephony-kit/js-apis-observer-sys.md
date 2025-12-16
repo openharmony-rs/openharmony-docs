@@ -1,4 +1,10 @@
 # @ohos.telephony.observer (observer)(系统接口)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 本模块提供订阅管理功能，可以订阅/取消订阅的事件包括：小区信息变化事件、指定卡槽位的小区信息变化事件。
 

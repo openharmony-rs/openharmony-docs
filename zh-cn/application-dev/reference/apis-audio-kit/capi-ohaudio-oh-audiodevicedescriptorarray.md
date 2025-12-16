@@ -1,4 +1,14 @@
 # OH_AudioDeviceDescriptorArray
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct OH_AudioDeviceDescriptorArray {...} OH_AudioDeviceDescriptorArray
+```
 
 ## 概述
 

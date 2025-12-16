@@ -1,5 +1,12 @@
 # Symmetric Key Generation and Conversion Specifications
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 This topic describes the supported algorithms and specifications for symmetric key generation and conversion.
 
 A key can be generated based on a string parameter, which holds key specifications. The string parameters supported by each algorithm are provided in the specific algorithm specifications.
@@ -8,7 +15,7 @@ A key can be generated based on a string parameter, which holds key specificatio
 
 Advanced Encryption Standard (AES) is the most common symmetric encryption algorithm.
 
-It has the following features:
+Features:
 
 - It is a block cipher with a block size of 128 bits.
 
@@ -24,11 +31,24 @@ An AES key can be generated from a string parameter. When creating a symmetric k
 | AES | 192 | AES192 | 9+ | 
 | AES | 256 | AES256 | 9+ | 
 
+## DES
+The DES algorithm has the following features:
+
+Features:
+
+DES is a block encryption algorithm. It divides plaintext into 64-bit blocks and encrypts each block.
+
+A DES key can be generated from a string parameter. When creating a symmetric key generator instance, you need to specify the key specifications in a string parameter. The string parameter consists of the symmetric key algorithm and key length.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| DES | 64 | DES64 | 20+ | 
+
 ## 3DES
 
 3DES is also called 3DESede or Triple DES.
 
-It has the following features:
+Features:
 
 - It uses three 64-bit keys to encrypt a data block three times, which means to apply the DES cipher three times to each data block.
 
@@ -44,7 +64,7 @@ A 3DES key can be generated from a string parameter. When creating a symmetric k
 
 ShangMi 4 (SM4) is a symmetric algorithm.
 
-It has the following features:
+Features:
 
 - It is a block cipher with a block size of 128 bits.
 
@@ -62,7 +82,7 @@ An SM4 key can be generated from a string parameter. When creating a symmetric k
 
 Hash-based Message Authentication Code (HMAC) is a hash-based message authentication code algorithm. A symmetric key is required for calculation.
 
-It has the following features:
+Features:
 
 The symmetric key used by HMAC can be of any length.
 
@@ -87,3 +107,19 @@ The symmetric key used by HMAC can be generated based on a string parameter.
 | HMAC | SHA512 | 512 | HMAC\|SHA512 | 11+ | 
 | HMAC | SM3 | 256 | HMAC\|SM3 | 11+ | 
 | HMAC | - | [1, 32768] | HMAC | 11+ | 
+
+### ChaCha20
+
+The Crypto framework supports this algorithm since API version 22.
+
+ChaCha20 is a modern symmetric stream cipher.
+
+Features:
+
+- It is a stream cipher, so no padding algorithm is required.
+
+- The key length is 256 bits.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| ChaCha20 | 256 | ChaCha20 | 22+ | 

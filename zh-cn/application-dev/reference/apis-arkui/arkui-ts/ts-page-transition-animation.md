@@ -1,22 +1,18 @@
 # 页面间转场 (pageTransition)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-当路由([router](../js-apis-router.md))进行切换时，可以通过在pageTransition函数中自定义页面入场和页面退场的转场动效。详细指导请参考[页面转场动画](../../../ui/arkts-page-transition-animation.md)。
+当路由([router](../js-apis-router.md))进行切换时，可以通过在[pageTransition](ts-custom-component-lifecycle.md#pagetransition9)函数中自定义页面入场和页面退场的转场动效。详细指导请参考[页面转场动画](../../../ui/arkts-page-transition-animation.md)。
 
 > **说明：**
 >
 > 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 为了实现更好的转场效果，推荐使用[Navigation组件](../../../ui/arkts-navigation-navigation.md)和[模态转场](../../../ui/arkts-modal-transition.md)。
-
-## pageTransition
-
-pageTransition?(): void
-
-进入此页面或移动到其他页面时实现动画。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+> 为了实现更好的转场效果，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)和[模态转场](../../../ui/arkts-modal-transition.md)。
 
 ## PageTransitionEnter
 
@@ -112,12 +108,12 @@ onExit(event: PageTransitionCallback): PageTransitionExitInterface
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 类型                                                         | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | [RouteType](#routetype枚举说明)                              | 否   | 页面转场效果生效的路由类型。<br/>默认值：RouteType.None。    |
-| duration | number                                                       | 否   | 动画的时长。<br/>单位：毫秒<br/>默认值：1000<br/>取值范围：[0, +∞)                 |
-| curve    | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | 否   | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
-| delay    | number                                                       | 否   | 动画延迟时长。<br/>单位：毫秒<br/>默认值：0<br/>**说明：** <br/>没有匹配时使用系统默认的页面转场效果(根据设备可能会有差异)，如需禁用系统默认页面转场效果，可以指定duration为0。 |
+| 名称     | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| type     | [RouteType](#routetype枚举说明)                              | 否   | 是   | 页面转场效果生效的路由类型。<br/>默认值：RouteType.None。    |
+| duration | number                                                       | 否   | 是   | 动画的时长。<br/>单位：毫秒<br/>默认值：1000<br/>取值范围：[0, +∞)                 |
+| curve    | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)<sup>10+</sup> | 否   | 是   | 动画曲线。<br/>推荐以Curve或ICurve形式指定。<br/>当类型为string时，为动画插值曲线，取值参考[AnimateParam](./ts-explicit-animation.md#animateparam对象说明)的curve参数。<br/>默认值：Curve.Linear |
+| delay    | number                                                       | 否   | 是   | 动画延迟时长。<br/>单位：毫秒<br/>默认值：0<br/>**说明：** <br/>没有匹配时使用系统默认的页面转场效果(根据设备可能会有差异)，如需禁用系统默认页面转场效果，可以指定duration为0。 |
 
 ## CommonTransition
 
@@ -153,6 +149,12 @@ slide(value: SlideEffect): T
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [SlideEffect](#slideeffect枚举说明) | 是   | 页面转场时的滑入滑出效果。 |
 
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
+
 ### translate
 
 translate(value: TranslateOptions): T
@@ -168,6 +170,12 @@ translate(value: TranslateOptions): T
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [TranslateOptions](ts-universal-attributes-transformation.md#translateoptions对象说明) | 是   | 设置页面转场时的平移效果，为入场时起点和退场时终点的值，和slide同时设置时默认生效slide。<br/>-&nbsp;x：横向的平移距离。<br/>-&nbsp;y：纵向的平移距离。<br/>-&nbsp;z：竖向的平移距离。 |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
 
 ### scale
 
@@ -185,6 +193,12 @@ scale(value: ScaleOptions): T
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明) | 是   | 设置页面转场时的缩放效果，为入场时起点和退场时终点的值。<br/>-&nbsp;x：横向放大倍数（或缩小比例）。<br/>-&nbsp;y：纵向放大倍数（或缩小比例）。<br/>-&nbsp;z：竖向放大倍数（或缩小比例）。<br/>-&nbsp;centerX、centerY缩放中心点。centerX和centerY默认值是"50%"，即默认以页面的中心点为旋转中心点。<br/>-&nbsp;中心点为(0, 0)代表页面的左上角。 |
 
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
+
 ### opacity
 
 opacity(value: number): T
@@ -200,6 +214,12 @@ opacity(value: number): T
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | number | 是   | 设置入场的起点透明度值或者退场的终点透明度值。<br/>取值范围：[0, 1] |
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| T | 返回当前组件。 |
 
 ## PageTransitionCallback<sup>18+</sup>
 
@@ -223,11 +243,11 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 
-| 名称 | 说明                                                         |
-| ---- | ------------------------------------------------------------ |
-| Pop  | 重定向指定页面。从PageB回退到之前的页面PageA。对于PageB，指定RouteType为None或者Pop的PageTransitionExit组件样式生效，对于PageA，指定RouteType为None或者Pop的PageTransitionEnter组件样式生效。 |
-| Push | 跳转到下一页面。PageA跳转到下一个新的界面PageB。对于PageA，指定RouteType为None或者Push的PageTransitionExit组件样式生效，对于PageB，指定RouteType为None或者Push的PageTransitionEnter组件样式生效。 |
-| None | 页面未重定向。如Push和Pop描述中RouteType为None的情形，即页面进场时PageTransitionEnter的转场效果生效；退场时PageTransitionExit的转场效果生效。 |
+| 名称 | 值 | 说明                                                         |
+| ---- | ---- | -------------------------------------------------------- |
+| None | 0 | 页面未重定向。如Push和Pop描述中RouteType为None的情形，即页面进场时PageTransitionEnter的转场效果生效；退场时PageTransitionExit的转场效果生效。 |
+| Push | 1 | 跳转到下一页面。PageA跳转到下一个新的界面PageB。对于PageA，指定RouteType为None或者Push的PageTransitionExit组件样式生效，对于PageB，指定RouteType为None或者Push的PageTransitionEnter组件样式生效。 |
+| Pop  | 2 | 重定向指定页面。从PageB回退到之前的页面PageA。对于PageB，指定RouteType为None或者Pop的PageTransitionExit组件样式生效，对于PageA，指定RouteType为None或者Pop的PageTransitionEnter组件样式生效。 |
 
 ## SlideEffect枚举说明
 
@@ -235,14 +255,14 @@ type PageTransitionCallback = (type: RouteType, progress: number) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                | 说明                                                         |
-| ------------------- | ------------------------------------------------------------ |
-| Left                | 设置到入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Right               | 设置到入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Top                 | 设置到入场时表示从上边滑入，出场时表示滑出到上边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Bottom              | 设置到入场时表示从下边滑入，出场时表示滑出到下边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| START<sup>12+</sup> | 设置LTR入场时表示从左边滑入，出场时表示滑出到左边。RTL入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| END<sup>12+</sup>   | 设置LTR入场时表示从右边滑入，出场时表示滑出到右边。RTL入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| 名称                | 值 | 说明                                                         |
+| ------------------- | ---- | -------------------------------------------------------- |
+| Left                | 1 | 设置到入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Right               | 2 | 设置到入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Top                 | 3 | 设置到入场时表示从上边滑入，出场时表示滑出到上边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Bottom              | 4 | 设置到入场时表示从下边滑入，出场时表示滑出到下边。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| START<sup>12+</sup> | 5 |  设置LTR入场时表示从左边滑入，出场时表示滑出到左边。RTL入场时表示从右边滑入，出场时表示滑出到右边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| END<sup>12+</sup>   | 6 | 设置LTR入场时表示从右边滑入，出场时表示滑出到右边。RTL入场时表示从左边滑入，出场时表示滑出到左边。<br />**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 
@@ -260,6 +280,7 @@ struct Index {
 
   build() {
     Column() {
+      // $r("app.media.transition_image1")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.transition_image1")).width('100%').height('100%')
     }
     .width('100%')
@@ -300,6 +321,7 @@ struct Page1 {
 
   build() {
     Column() {
+      // $r("app.media.transition_image2")需要替换为开发者所需的图像资源文件。
       Image($r("app.media.transition_image2")).width('100%').height('100%') // 图片存放在media文件夹下
     }
     .width('100%')
@@ -341,6 +363,7 @@ struct Page1 {
 struct Index {
   build() {
     Column() {
+      // $r('app.media.bg1')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg1')).width('100%').height('100%') // 图片存放在media文件夹下
     }
     .onClick(() => {
@@ -368,6 +391,7 @@ struct Index {
 struct Page1 {
   build() {
     Column() {
+      // $r('app.media.bg2')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg2')).width('100%').height('100%') // 图片存放在media文件夹下
     }
     .onClick(() => {

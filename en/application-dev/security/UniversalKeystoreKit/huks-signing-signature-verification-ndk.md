@@ -1,21 +1,27 @@
 # Signing and Signature Verification (C/C++)
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
 
 This topic walks you through on how to implement signing and signature verification using the key algorithm RSA2048, MD algorithm SHA384, and padding mode PSS. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-signing-signature-verification-overview.md#supported-algorithms).
 
 ## Add the dynamic library in the CMake script.
 ```txt
-   target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
+target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
 
 ## How to Develop
 
 **Key Generation**
-1. Set the key alias.
+1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
 2. Initialize the key property set.
 
-3. Use **OH_Huks_GenerateKeyItem** to generate a key. For details, see [Key Generation](huks-key-generation-overview.md).
+3. Use [OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem) to generate a key. For details, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
 Alternatively, you can [import a key](huks-key-import-overview.md).
 
@@ -25,11 +31,11 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the plaintext to be signed.
 
-3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/_huks_param_set_api.md#oh_huks_initparamset) to set algorithm parameters.
+3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to set algorithm parameters.
 
-4. Use [OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/_huks_key_api.md#oh_huks_initsession) to initialize a key session. The session handle is returned after the initialization.  
+4. Use [OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession) to initialize a key session and obtain the session handle.
 
-5. Use [OH_Huks_FinishSession](../../reference/apis-universal-keystore-kit/_huks_key_api.md#oh_huks_finishsession) to generate a signature.
+5. Use [OH_Huks_FinishSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_finishsession) to end the key session and obtain the signature.
 
 **Signature Verification**
 
@@ -37,22 +43,24 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the signature to be verified.
 
-3. Set [algorithm parameters](../../reference/apis-universal-keystore-kit/_huks_param_set_api.md#oh_huks_initparamset).
+3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to [set algorithm parameters](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset).
 
-4. Use [OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/_huks_key_api.md#oh_huks_initsession) to initialize a key session. The session handle is returned after the initialization.
+4. Use [OH_Huks_InitSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_initsession) to initialize a key session and obtain the session handle.
 
-5. Use [OH_Huks_UpdateSession](../../reference/apis-universal-keystore-kit/_huks_key_api.md#oh_huks_updatesession) to process data.
+5. Use [OH_Huks_UpdateSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_updatesession) to update the key session.
 
-6. Use [OH_Huks_FinishSession](../../reference/apis-universal-keystore-kit/_huks_key_api.md#oh_huks_finishsession) to finish signature verification.
+6. Use [OH_Huks_FinishSession](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_finishsession) to end the key session and verify the signature.
 
 **Key Deletion**
 
-Use OH_Huks_DeleteKeyItem to delete the key that is not required. For details, see [Deleting a Key](huks-delete-key-ndk.md).
+When a key is no longer used, you need to call [OH_Huks_DeleteKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_deletekeyitem) to delete the key. For details, see [Deleting a Key](huks-delete-key-ndk.md).
 
 ```c++
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
+#include "napi/native_api.h"
 #include <string.h>
+
 OH_Huks_Result InitParamSet(
     struct OH_Huks_ParamSet **paramSet,
     const struct OH_Huks_Param *params,
@@ -74,6 +82,7 @@ OH_Huks_Result InitParamSet(
     }
     return ret;
 }
+
 static struct OH_Huks_Param g_genSignVerifyParamsTest[] = {
     {
         .tag = OH_HUKS_TAG_ALGORITHM,
@@ -92,6 +101,7 @@ static struct OH_Huks_Param g_genSignVerifyParamsTest[] = {
         .uint32Param = OH_HUKS_DIGEST_SHA384
     },
 };
+
 static struct OH_Huks_Param g_signParamsTest[] = {
     {
         .tag = OH_HUKS_TAG_ALGORITHM,
@@ -110,6 +120,7 @@ static struct OH_Huks_Param g_signParamsTest[] = {
         .uint32Param = OH_HUKS_DIGEST_SHA384
     }
 };
+
 static struct OH_Huks_Param g_verifyParamsTest[] = {
     {
         .tag = OH_HUKS_TAG_ALGORITHM,
@@ -128,10 +139,12 @@ static struct OH_Huks_Param g_verifyParamsTest[] = {
         .uint32Param = OH_HUKS_DIGEST_SHA384
     }
 };
+
 static const uint32_t RSA_COMMON_SIZE = 1024;
 static const char *g_dataToSign = "Hks_RSA_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
                                     "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
                                     "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
+
 static napi_value SignVerifyKey(napi_env env, napi_callback_info info) 
 {
     struct OH_Huks_Blob g_keyAlias = {
@@ -147,7 +160,8 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
     struct OH_Huks_ParamSet *verifyParamSet = nullptr;
     OH_Huks_Result ohResult;
     do {
-        ohResult = InitParamSet(&genParamSet, g_genSignVerifyParamsTest, sizeof(g_genSignVerifyParamsTest) / sizeof(OH_Huks_Param));
+        ohResult = InitParamSet(&genParamSet, g_genSignVerifyParamsTest,
+            sizeof(g_genSignVerifyParamsTest) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
@@ -155,7 +169,8 @@ static napi_value SignVerifyKey(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        ohResult = InitParamSet(&verifyParamSet, g_verifyParamsTest, sizeof(g_verifyParamsTest) / sizeof(OH_Huks_Param));
+        ohResult = InitParamSet(&verifyParamSet, g_verifyParamsTest,
+            sizeof(g_verifyParamsTest) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }

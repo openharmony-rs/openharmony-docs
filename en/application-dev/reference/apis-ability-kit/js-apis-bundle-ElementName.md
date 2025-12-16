@@ -1,6 +1,12 @@
 # ElementName
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The ElementName module provides element name information, which can be obtained through [Context.getElementName](js-apis-inner-app-context.md).
+The module provides element name information, which can be obtained through [Context.getElementName](js-apis-inner-app-context.md).
 
 > **NOTE**
 > 

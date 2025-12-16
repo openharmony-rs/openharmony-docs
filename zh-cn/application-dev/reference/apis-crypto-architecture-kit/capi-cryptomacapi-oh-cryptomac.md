@@ -1,5 +1,16 @@
 # OH_CryptoMac
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoMac OH_CryptoMac
+```
+
 ## 概述
 
 定义MAC结构。

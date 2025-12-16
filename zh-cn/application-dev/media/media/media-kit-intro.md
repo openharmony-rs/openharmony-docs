@@ -1,4 +1,10 @@
 # Media Kit简介
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 Media Kit（媒体服务）用于开发音视频播放或录制的各类功能。在Media Kit的开发指导中，将详细介绍音视频多个模块的开发方式，指导开发者如何使用系统提供的音视频API实现对应功能。比如使用SoundPool实现简单的提示音，当设备接收到新消息时，会发出短促的“滴滴”声；使用AVPlayer实现音乐播放器，循环播放一首音乐。
 
@@ -105,7 +111,9 @@ AVPlayer提供功能完善一体化播放能力，应用只需要提供流媒体
 | mp3 | 音频格式：MP3 | 
 | ogg | 音频格式：VORBIS | 
 | wav | 音频格式：PCM | 
+| flac | 音频格式：FLAC | 
 | amr | 音频格式：AMR | 
+| ape | 音频格式：APE |
 
 <!--Del-->
 > **说明：**
@@ -314,29 +322,16 @@ AVTranscoder主要用于将已压缩编码的视频文件按照指定参数转�
 
 <!--RP1--><!--RP1End-->
 - 支持的源视频格式：
-  - [解封装格式](../avcodec/avcodec-support-formats.md#媒体数据解析)
-  - [音频解码格式](../avcodec/avcodec-support-formats.md#音频解码)
-  - [视频解码格式](../avcodec/avcodec-support-formats.md#视频解码)
-    <!--Del-->
-    > **说明：**
-    > 当前不支持H.265。
 
-    <!--DelEnd-->
+   当前转码支持的源视频格式依赖于系统解码器和解封装支持的格式，详细情况请参考[AVCodec支持的格式](../avcodec/avcodec-support-formats.md#媒体数据解析)。
+
 - 支持的目标视频格式：
-  - [封装格式](../avcodec/avcodec-support-formats.md#媒体数据封装)
-  - [音频编码格式](../avcodec/avcodec-support-formats.md#音频编码)
-  - [视频编码格式](../avcodec/avcodec-support-formats.md#视频编码)
-    <!--Del-->
-    > **说明：**
-    > 当前不支持H.265。
-   
-    <!--DelEnd-->
+
+   | 封装格式  | 视频编码类型   | 音频编码类型   |
+   | -------- | :------------------| :---------------- |
+   | mp4      | AVC(H.264)<!--RP7--><!--RP7End--> | AAC |
+
 - 支持的轨道数：
   - 不支持字幕轨。若原视频存在字幕轨，转码后字幕轨将被丢弃。
   - 仅支持输出一条视频轨。若原视频存在多条视频轨，默认选择第一条视频轨进行转码。
   - 仅支持输出一条音频轨。若原视频存在多条音频轨，默认选择第一条音频轨进行转码。
-
-> **说明：**
->
-> - 转码输出视频当前仅支持mp4封装。
-> - 转码输出音频轨当前仅支持AAC编码，视频轨当前仅支持AVC或HEVC编码。

@@ -1,5 +1,12 @@
 # @ohos.selectionInput.selectionManager (划词管理)(系统接口)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: SelectionInput-->
+<!--Owner: @no86-->
+<!--Designer: @mmwwbb-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @fang-jinxu-->
+
 本模块提供划词管理能力，包括创建窗口、显示窗口、移动窗口、隐藏窗口、销毁窗口、监听鼠标划词事件、获取选中文本等。
 
 > **说明：**
@@ -46,7 +53,7 @@ import { selectionManager } from '@kit.BasicServicesKit';
 
 try {
   selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
-    console.info(`SelectionInfo text: ${info.text}`);
+    console.info(`SelectionInfo: ${JSON.stringify(info)}`);
   });
 } catch (err) {
   console.error(`Failed to register selectionCompleted callback: ${JSON.stringify(err)}`);
@@ -73,8 +80,8 @@ off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 ```ts
 import { selectionManager } from '@kit.BasicServicesKit';
 
-let selectionChangeCallback = (selectionInfo: selectionManager.SelectionInfo) => {
-  console.info(`SelectionInfo text: ${info.text}`);
+let selectionChangeCallback = (info: selectionManager.SelectionInfo) => {
+  console.info(`SelectionInfo: ${JSON.stringify(info)}`);
 };
 
 selectionManager.on('selectionCompleted', selectionChangeCallback);
@@ -83,6 +90,47 @@ try {
 } catch (err) {
   console.error(`Failed to unregister selectionCompleted: ${JSON.stringify(err)}`);
 }
+```
+
+## getSelectionContent()<sup>22+</sup>
+
+getSelectionContent(): Promise\<string>
+
+获取选中文本的内容。使用Promise异步回调。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**返回值：**
+| 类型   | 说明                                                                 |
+| ------- | ------------------------------------------------------------------ |
+| Promise\<string> | Promise对象，返回当前选中文本的内容。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[划词服务错误码](errorcode-selection.md)。
+
+| 错误码ID   | 错误信息                       |
+| ---------- | ----------------------------- |
+| 202 | Permission denied. Called by non-system application. |
+| 33600001   | Selection service exception. |
+| 33600004   | The interface is called too frequently. |
+| 33600005   | The interface is called at the wrong time. |
+| 33600006   | The current application is prohibited from accessing content. |
+| 33600007   | The length of selected content is out of range. |
+| 33600008   | Getting the selected content times out. |
+
+**示例：**
+
+```ts
+import { selectionManager } from '@kit.BasicServicesKit';
+
+selectionManager.on('selectionCompleted', async (info: selectionManager.SelectionInfo) => {
+  try {
+    let content = await selectionManager.getSelectionContent();
+  } catch (err) {
+    console.error(`Failed to get selection content: ${JSON.stringify(err)}`);
+  }
+});
 ```
 
 ## createPanel
@@ -119,21 +167,43 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 **示例：**
 
 ```ts
-import { selectionManager, panelInfo, PanelType, BusinessError } from '@kit.BasicServicesKit';
+import { selectionManager, SelectionExtensionAbility, PanelInfo, PanelType, BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
+import { Want } from '@kit.AbilityKit';
 
-let panelInfo: PanelInfo = {
-  panelType: PanelType.MENU_PANEL,
-  x: 0,
-  y: 0,
-  width: 500,
-  height: 200
+class SelectionAbilityStub extends rpc.RemoteObject {
+  constructor(des: string) {
+    super(des);
+  }
+  onRemoteMessageRequest(
+    code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption
+  ): boolean | Promise<boolean> {
+    return true;
+  }
 }
-selectionManager.createPanel(this.context, panelInfo)
-  .then((panel: selectionManager.Panel) => {
-    console.info('Succeed in creating panel.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to create panel: ${JSON.stringify(err)}`);
-  });
+
+class ServiceExtAbility extends SelectionExtensionAbility {
+  onConnect(want: Want): rpc.RemoteObject {
+    let panelInfo: PanelInfo = {
+      panelType: PanelType.MENU_PANEL,
+      x: 0,
+      y: 0,
+      width: 500,
+      height: 200
+    }
+    selectionManager.createPanel(this.context, panelInfo)
+      .then((panel: selectionManager.Panel) => {
+        console.info('Succeed in creating panel.');
+      }).catch((err: BusinessError) => {
+      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+    });
+    return new SelectionAbilityStub('remote');
+  }
+}
+export default ServiceExtAbility;
 ```
 
 ## destroyPanel
@@ -166,35 +236,57 @@ destroyPanel(panel: Panel): Promise\<void>
 **示例：**
 
 ```ts
-import { selectionManager, panelInfo, PanelType, BusinessError } from '@kit.BasicServicesKit';
+import { selectionManager, SelectionExtensionAbility, PanelInfo, PanelType, BusinessError } from '@kit.BasicServicesKit';
+import { rpc } from '@kit.IPCKit';
+import { Want } from '@kit.AbilityKit';
 
-let panelInfo: PanelInfo = {
-  panelType: PanelType.MENU_PANEL,
-  x: 0,
-  y: 0,
-  width: 500,
-  height: 200
+class SelectionAbilityStub extends rpc.RemoteObject {
+  constructor(des: string) {
+    super(des);
+  }
+  onRemoteMessageRequest(
+    code: number,
+    data: rpc.MessageSequence,
+    reply: rpc.MessageSequence,
+    options: rpc.MessageOption
+  ): boolean | Promise<boolean> {
+    return true;
+  }
 }
-let selectionPanel: selectionManager.Panel | undefined = undefined;
 
-selectionManager.createPanel(this.context, panelInfo)
-  .then((panel: selectionManager.Panel) => {
-    console.info('Succeed in creating panel.');
-    selectionPanel = panel;
-    try {
-      if (selectionPanel) {
-        selectionManager.destroyPanel(selectionPanel).then(() => {
-          console.info('Succeed in destroying panel.');
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
-        });
-      }
-    } catch (err) {
-      console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+class ServiceExtAbility extends SelectionExtensionAbility {
+  onConnect(want: Want): rpc.RemoteObject {
+    let panelInfo: PanelInfo = {
+      panelType: PanelType.MENU_PANEL,
+      x: 0,
+      y: 0,
+      width: 500,
+      height: 200
     }
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to create panel: ${JSON.stringify(err)}`);
-  });
+    let selectionPanel: selectionManager.Panel | undefined = undefined;
+
+    selectionManager.createPanel(this.context, panelInfo)
+      .then((panel: selectionManager.Panel) => {
+        console.info('Succeed in creating panel.');
+        selectionPanel = panel;
+        try {
+          if (selectionPanel) {
+            selectionManager.destroyPanel(selectionPanel).then(() => {
+              console.info('Succeed in destroying panel.');
+            }).catch((err: BusinessError) => {
+              console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+            });
+          }
+        } catch (err) {
+          console.error(`Failed to destroy panel: ${JSON.stringify(err)}`);
+        }
+      }).catch((err: BusinessError) => {
+      console.error(`Failed to create panel: ${JSON.stringify(err)}`);
+    });
+    return new SelectionAbilityStub('remote');
+  }
+}
+export default ServiceExtAbility;
 ```
 
 ## SelectionInfo
@@ -205,7 +297,6 @@ selectionManager.createPanel(this.context, panelInfo)
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
-| text   	| string   | 否   | 否   | 划词文本。 |
 | selectionType	    | [SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
 | startDisplayX   	| number   | 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
 | startDisplayY   	| number   | 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |

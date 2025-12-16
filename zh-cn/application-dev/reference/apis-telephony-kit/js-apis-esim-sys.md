@@ -1,4 +1,10 @@
 # @ohos.telephony.esim (eSIM卡管理) (系统接口)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @yangyannanyangyannan-->
+<!--Designer: @ghxbob-->
+<!--Tester: @weitiantian-->
+<!--Adviser: @zhang_yixin13-->
 
 穿戴设备支持eSIM，电话服务提供API给eSIM卡管理和eSIM卡服务使用。
 
@@ -13,7 +19,7 @@
 import { eSIM } from '@kit.TelephonyKit';
 ```
 
-## eSIM.getEid<sup>18+</sup>
+## eSIM.getEid
 
 getEid\(slotId: number\): Promise\<string\>
 
@@ -55,11 +61,14 @@ getEid\(slotId: number\): Promise\<string\>
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-let eid: string = eSIM.getEid(0);
-console.log(`the EID is:` + eid);
+eSIM.getEid(1).then((eid) => {
+    console.info(`the EID is:` + eid);
+}).catch((err:BusinessError<void>) => {
+    console.error(`getEid, promise: err->${JSON.stringify(err)}`)
+});
 ```
 
-## eSIM.getOsuStatus<sup>18+</sup>
+## eSIM.getOsuStatus
 
 getOsuStatus\(slotId: number\): Promise\<OsuStatus\>
 
@@ -81,7 +90,7 @@ getOsuStatus\(slotId: number\): Promise\<OsuStatus\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[OsuStatus](#osustatus18)\> |  Promise对象，返回操作系统升级的状态。<br/> 1. 正在升级。 <br/>   2. 升级失败。<br/>  3. 升级成功。<br/>  4. 当前版本是最新版本。<br/> 5. 升级服务不可用。 |
+| Promise\<[OsuStatus](#osustatus)\> |  Promise对象，返回操作系统升级的状态。<br/> 1. 正在升级。 <br/>   2. 升级失败。<br/>  3. 升级成功。<br/>  4. 当前版本是最新版本。<br/> 5. 升级服务不可用。 |
 
 **错误码：**
 
@@ -102,14 +111,14 @@ getOsuStatus\(slotId: number\): Promise\<OsuStatus\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getOsuStatus(0).then(() => {
-    console.log(`getOsuStatus invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.getOsuStatus(1).then(() => {
+    console.info(`getOsuStatus invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getOsuStatus, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.startOsu<sup>18+</sup>
+## eSIM.startOsu
 
 startOsu\(slotId: number\): Promise\<OsuStatus\>
 
@@ -131,7 +140,7 @@ startOsu\(slotId: number\): Promise\<OsuStatus\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[OsuStatus](#osustatus18)\> |  Promise对象，返回操作系统升级的状态。<br/> 1. 正在升级。 <br/>   2. 升级失败。<br/>  3. 升级成功。<br/>  4. 当前版本是最新版本。<br/> 5. 升级服务不可用。 |
+| Promise\<[OsuStatus](#osustatus)\> |  Promise对象，返回操作系统升级的状态。<br/> 1. 正在升级。 <br/>   2. 升级失败。<br/>  3. 升级成功。<br/>  4. 当前版本是最新版本。<br/> 5. 升级服务不可用。 |
 
 **错误码：**
 
@@ -152,14 +161,14 @@ startOsu\(slotId: number\): Promise\<OsuStatus\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.startOsu(0).then(() => {
-    console.log(`startOsu invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.startOsu(1).then(() => {
+    console.info(`startOsu invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`startOsu, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.getDownloadableProfileMetadata<sup>18+</sup>
+## eSIM.getDownloadableProfileMetadata
 
 getDownloadableProfileMetadata\(slotId: number, portIndex: number, profile: DownloadableProfile, forceDisableProfile: boolean\): Promise\<GetDownloadableProfileMetadataResult\>
 
@@ -177,14 +186,14 @@ getDownloadableProfileMetadata\(slotId: number, portIndex: number, profile: Down
 | ------ | ------ | ----- |------------------------------------------------------------------------------------------------------|
 | slotId              | number                                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。                                                                      |
 | portIndex           | number                                        | 是 | 插槽的端口索引。                                                                                             |
-| profile             | [DownloadableProfile](./js-apis-esim.md#downloadableprofile18) | 是 | 可下载的配置文件信息。                                                                                          |
+| profile             | [DownloadableProfile](./js-apis-esim.md#downloadableprofile) | 是 | 可下载的配置文件信息。                                                                                          |
 | forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。 |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[GetDownloadableProfileMetadataResult](#getdownloadableprofilemetadataresult18)\> | Promise对象，返回填充可下载配置文件的元数据。 |
+| Promise\<[GetDownloadableProfileMetadataResult](#getdownloadableprofilemetadataresult)\> | Promise对象，返回填充可下载配置文件的元数据。 |
 
 **错误码：**
 
@@ -216,14 +225,14 @@ let profile: eSIM.DownloadableProfile = {
   }]
 };
 
-eSIM.getDownloadableProfileMetadata(0, 0, profile, true).then((data: eSIM.GetDownloadableProfileMetadataResult) => {
-    console.log(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getDownloadableProfileMetadata(1, 0, profile, true).then((data: eSIM.GetDownloadableProfileMetadataResult) => {
+    console.info(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getDownloadableProfileMetadata, GetDownloadableProfileMetadataResult: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.getDownloadableProfiles<sup>18+</sup>
+## eSIM.getDownloadableProfiles
 
 getDownloadableProfiles\(slotId: number, portIndex: number,
 forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
@@ -248,7 +257,7 @@ forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[GetDownloadableProfilesResult](#getdownloadableprofilesresult18)\> | Promise对象，返回可下载配置文件列表。 |
+| Promise\<[GetDownloadableProfilesResult](#getdownloadableprofilesresult)\> | Promise对象，返回可下载配置文件列表。 |
 
 **错误码：**
 
@@ -269,14 +278,14 @@ forceDisableProfile: boolean\): Promise\<GetDownloadableProfilesResult\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getDownloadableProfiles(0, 0, true).then((data: eSIM.GetDownloadableProfilesResult) => {
-    console.log(`getDownloadableProfiles, GetDownloadableProfilesResult: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getDownloadableProfiles(1, 0, true).then((data: eSIM.GetDownloadableProfilesResult) => {
+    console.info(`getDownloadableProfiles, GetDownloadableProfilesResult: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getDownloadableProfiles, GetDownloadableProfilesResult: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.downloadProfile<sup>18+</sup>
+## eSIM.downloadProfile
 
 downloadProfile\(slotId: number, portIndex: number, profile: DownloadableProfile,
 configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
@@ -295,14 +304,14 @@ configuration: DownloadConfiguration\): Promise\<DownloadProfileResult\>
 | ------ | ------ | ----- | ----- |
 | slotId        | number                                            | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | portIndex     | number                                            | 是 | 插槽的端口索引。 |
-| profile       | [DownloadableProfile](./js-apis-esim.md#downloadableprofile18)     | 是 | 可下载的配置文件信息。 |
-| configuration | [DownloadConfiguration](#downloadconfiguration18) | 是 | 下载的配置信息。 |
+| profile       | [DownloadableProfile](./js-apis-esim.md#downloadableprofile)     | 是 | 可下载的配置文件信息。 |
+| configuration | [DownloadConfiguration](#downloadconfiguration) | 是 | 下载的配置信息。 |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[DownloadProfileResult](#downloadprofileresult18)\> | Promise对象，返回下载配置文件的结果。 |
+| Promise\<[DownloadProfileResult](#downloadprofileresult)\> | Promise对象，返回下载配置文件的结果。 |
 
 **错误码：**
 
@@ -340,14 +349,14 @@ let configuration: eSIM.DownloadConfiguration = {
   isPprAllowed: true,
 };
 
-eSIM.downloadProfile(0, 0, profile, configuration).then((data: eSIM.DownloadProfileResult) => {
-    console.log(`downloadProfile, DownloadProfileResult: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.downloadProfile(1, 0, profile, configuration).then((data: eSIM.DownloadProfileResult) => {
+    console.info(`downloadProfile, DownloadProfileResult: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`downloadProfile, DownloadProfileResult: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.getEuiccProfileInfoList<sup>18+</sup>
+## eSIM.getEuiccProfileInfoList
 
 getEuiccProfileInfoList\(slotId: number\): Promise\<GetEuiccProfileInfoListResult\>
 
@@ -369,7 +378,7 @@ getEuiccProfileInfoList\(slotId: number\): Promise\<GetEuiccProfileInfoListResul
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[GetEuiccProfileInfoListResult](#geteuiccprofileinfolistresult18)\> | Promise对象，返回配置文件信息列表。 |
+| Promise\<[GetEuiccProfileInfoListResult](#geteuiccprofileinfolistresult)\> | Promise对象，返回配置文件信息列表。 |
 
 **错误码：**
 
@@ -390,14 +399,14 @@ getEuiccProfileInfoList\(slotId: number\): Promise\<GetEuiccProfileInfoListResul
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getEuiccProfileInfoList(0).then((data: eSIM.GetEuiccProfileInfoListResult) => {
-    console.log(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getEuiccProfileInfoList(1).then((data: eSIM.GetEuiccProfileInfoListResult) => {
+    console.info(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getEuiccProfileInfoList, GetEuiccProfileInfoListResult: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.getEuiccInfo<sup>18+</sup>
+## eSIM.getEuiccInfo
 
 getEuiccInfo\(slotId: number\): Promise\<EuiccInfo\>
 
@@ -419,7 +428,7 @@ getEuiccInfo\(slotId: number\): Promise\<EuiccInfo\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[EuiccInfo](#euiccinfo18)\> | Promise对象，返回eUicc信息。 |
+| Promise\<[EuiccInfo](#euiccinfo)\> | Promise对象，返回eUicc信息。 |
 
 **错误码：**
 
@@ -440,14 +449,14 @@ getEuiccInfo\(slotId: number\): Promise\<EuiccInfo\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getEuiccInfo(0).then((data: eSIM.EuiccInfo) => {
-    console.log(`getEuiccInfo, EuiccInfo: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getEuiccInfo(1).then((data: eSIM.EuiccInfo) => {
+    console.info(`getEuiccInfo, EuiccInfo: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getEuiccInfo, EuiccInfo: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.deleteProfile<sup>18+</sup>
+## eSIM.deleteProfile
 
 deleteProfile\(slotId: number, iccid: string\): Promise\<ResultCode\>
 
@@ -464,13 +473,13 @@ deleteProfile\(slotId: number, iccid: string\): Promise\<ResultCode\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| iccid  | string | 是 | 配置文件的Id。 |
+| iccid  | string | 是 | 配置文件的ID。 |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回删除配置文件的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回删除配置文件的结果码。 |
 
 **错误码：**
 
@@ -491,14 +500,14 @@ deleteProfile\(slotId: number, iccid: string\): Promise\<ResultCode\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.deleteProfile(0, testId).then(() => {
-    console.log(`deleteProfile invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.deleteProfile(1, 'testId').then(() => {
+    console.info(`deleteProfile invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`deleteProfile, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.switchToProfile<sup>18+</sup>
+## eSIM.switchToProfile
 
 switchToProfile\(slotId: number, portIndex: number, iccid: string,
 forceDisableProfile: boolean\): Promise\<ResultCode\>
@@ -517,14 +526,14 @@ forceDisableProfile: boolean\): Promise\<ResultCode\>
 | ------ | ------ | ----- | ----- |
 | slotId              | number  | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | portIndex           | number  | 是 | 插槽的端口索引。 |
-| iccid               | string  | 是 | 配置文件的Id。   |
+| iccid               | string  | 是 | 配置文件的ID。   |
 | forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。|
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回切换配置文件的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回切换配置文件的结果码。 |
 
 **错误码：**
 
@@ -545,14 +554,14 @@ forceDisableProfile: boolean\): Promise\<ResultCode\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.switchToProfile(0, 0, testId, true).then(() => {
-    console.log(`switchToProfile invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.switchToProfile(1, 0, 'testId', true).then(() => {
+    console.info(`switchToProfile invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`switchToProfile, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.setProfileNickname<sup>18+</sup>
+## eSIM.setProfileNickname
 
 setProfileNickname\(slotId: number, iccid: string, nickname: string\): Promise\<ResultCode\>
 
@@ -569,14 +578,14 @@ setProfileNickname\(slotId: number, iccid: string, nickname: string\): Promise\<
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId   | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| iccid    | string | 是 | 配置文件的Id。 |
+| iccid    | string | 是 | 配置文件的ID。 |
 | nickname | string | 是 | 昵称。 |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回设置昵称的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回设置昵称的结果码。 |
 
 **错误码：**
 
@@ -597,14 +606,14 @@ setProfileNickname\(slotId: number, iccid: string, nickname: string\): Promise\<
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.setProfileNickname(0, testId, testName).then(() => {
-    console.log(`setProfileNickname invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.setProfileNickname(1, 'testId', 'testName').then(() => {
+    console.info(`setProfileNickname invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`setProfileNickname, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.resetMemory<sup>18+</sup>
+## eSIM.resetMemory
 
 resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 
@@ -621,13 +630,13 @@ resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId  | number                        | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
-| options | [ResetOption](#resetoption18) | 否 | 重置状态。 |
+| options | [ResetOption](#resetoption) | 否 | 重置状态。 |
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回重置的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回重置的结果码。 |
 
 **错误码：**
 
@@ -648,14 +657,14 @@ resetMemory\(slotId: number, options?: ResetOption\): Promise\<ResultCode\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.resetMemory(0).then(() => {
-    console.log(`resetMemory invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.resetMemory(1).then(() => {
+    console.info(`resetMemory invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`resetMemory, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.reserveProfilesForFactoryRestore<sup>18+</sup>
+## eSIM.reserveProfilesForFactoryRestore
 
 reserveProfilesForFactoryRestore\(slotId: number\): Promise\<ResultCode\>
 
@@ -677,7 +686,7 @@ reserveProfilesForFactoryRestore\(slotId: number\): Promise\<ResultCode\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回恢复出厂设置的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回恢复出厂设置的结果码。 |
 
 **错误码：**
 
@@ -698,14 +707,14 @@ reserveProfilesForFactoryRestore\(slotId: number\): Promise\<ResultCode\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.reserveProfilesForFactoryRestore(0).then(() => {
-    console.log(`reserveProfilesForFactoryRestore invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.reserveProfilesForFactoryRestore(1).then(() => {
+    console.info(`reserveProfilesForFactoryRestore invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`reserveProfilesForFactoryRestore, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.setDefaultSmdpAddress<sup>18+</sup>
+## eSIM.setDefaultSmdpAddress
 
 setDefaultSmdpAddress\(slotId: number, address: string\): Promise\<ResultCode\>
 
@@ -728,7 +737,7 @@ setDefaultSmdpAddress\(slotId: number, address: string\): Promise\<ResultCode\>
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回设置默认SM-DP+地址的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回设置默认SM-DP+地址的结果码。 |
 
 **错误码：**
 
@@ -749,14 +758,14 @@ setDefaultSmdpAddress\(slotId: number, address: string\): Promise\<ResultCode\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.setDefaultSmdpAddress(0, testAddress).then(() => {
-    console.log(`setDefaultSmdpAddress invoking succeeded.`);
-}).catch((err: BusinessError) => {
+eSIM.setDefaultSmdpAddress(1, 'testAddress').then(() => {
+    console.info(`setDefaultSmdpAddress invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`setDefaultSmdpAddress, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.getDefaultSmdpAddress<sup>18+</sup>
+## eSIM.getDefaultSmdpAddress
 
 getDefaultSmdpAddress\(slotId: number\): Promise\<string\>
 
@@ -799,14 +808,14 @@ getDefaultSmdpAddress\(slotId: number\): Promise\<string\>
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.getDefaultSmdpAddress(0).then((data: string) => {
-    console.log(`getDefaultSmdpAddress, result: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+eSIM.getDefaultSmdpAddress(1).then((data: string) => {
+    console.info(`getDefaultSmdpAddress, result: data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError<void>) => {
     console.error(`getDefaultSmdpAddress, ErrorState: err->${JSON.stringify(err)}`);
 });
 ```
 
-## eSIM.cancelSession<sup>18+</sup>
+## eSIM.cancelSession
 
 cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason\): Promise\<ResultCode\>
 
@@ -824,13 +833,13 @@ cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason
 | ------ | ------ | ----- | ----- |
 | slotId        | number                          | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | transactionId | string                          | 是 | 业务ID。|
-| cancelReason  | [CancelReason](#cancelreason18) | 是 | 取消会话的原因。|
+| cancelReason  | [CancelReason](#cancelreason) | 是 | 取消会话的原因。|
 
 **返回值：**
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| Promise\<[ResultCode](#resultcode18)\> | Promise对象，返回取消会话的结果码。 |
+| Promise\<[ResultCode](#resultcode)\> | Promise对象，返回取消会话的结果码。 |
 
 **错误码：**
 
@@ -851,28 +860,17 @@ cancelSession\(slotId: number, transactionId: string, cancelReason: CancelReason
 import { BusinessError } from '@kit.BasicServicesKit';
 import { eSIM } from '@kit.TelephonyKit';
 
-eSIM.cancelSession(0, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).then((data: string) => {
-    console.log(`cancelSession, result: data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
+let transactionId = '';
+eSIM.cancelSession(1, transactionId, eSIM.CancelReason.CANCEL_REASON_END_USER_REJECTION)
+  .then((data: eSIM.ResultCode) => {
+    console.info(`cancelSession, result: data->${JSON.stringify(data)}`);
+  })
+  .catch((err: BusinessError<void>) => {
     console.error(`cancelSession execution failed: err->${JSON.stringify(err)}`);
-});
+  });
 ```
 
-## AccessRule<sup>18+</sup>
-
-访问规则。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力**：SystemCapability.Telephony.CoreService.Esim
-
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-| certificateHashHexStr | string  |  是  | 证书哈希的十六进制字符串。 |
-| packageName           | string  |  是  | 规则适用的程序包名称。 |
-| accessType            | number  |  是  | 规则的类型。 |
-
-## GetDownloadableProfileMetadataResult<sup>18+</sup>
+## GetDownloadableProfileMetadataResult
 
 获取可下载配置文件的元数据。
 
@@ -880,19 +878,19 @@ eSIM.cancelSession(0, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).th
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-| downloadableProfile | DownloadableProfile  |  是  | 可下载的配置文件信息。   |
-| pprType             | number               |  是  | 配置文件策略规则类型。 |
-| pprFlag             | boolean              |  是  | 配置文件是否有策略规则。true表示有策略规则，false表示无策略规则。|
-| iccid               | string               |  是  | 配置文件的iccId。     |
-| serviceProviderName | string               |  是  | 配置文件的服务提供商名称。 |
-| profileName         | string               |  是  | 配置文件名称。 |
-| profileClass        | ProfileClass         |  是  | 配置文件类。   |
-| solvableErrors      | SolvableErrors       |  是  | 可解决的错误。 |
-| responseResult      | ResultCode           |  是  | 操作结果码。   |
+| 名称 | 类型                                        | 只读 | 可选 | 说明 |
+| ----- |-------------------------------------------|---| ---- | -----|
+| downloadableProfile | [DownloadableProfile](./js-apis-esim.md#downloadableprofile) | 否 | 否 | 可下载的配置文件信息。   |
+| pprType             | number                     | 否 | 否 | 配置文件策略规则类型。 |
+| pprFlag             | boolean                    | 否 | 否 | 配置文件是否有策略规则。true表示有策略规则，false表示无策略规则。|
+| iccid               | string                     | 否 | 否 | 配置文件的iccId。    |
+| serviceProviderName | string                     | 否 | 否 | 配置文件的服务提供商名称。 |
+| profileName         | string                     | 否 | 否 | 配置文件名称。 |
+| profileClass        | [ProfileClass](#profileclass)        | 否 | 否 | 配置文件类。  |
+| solvableErrors      | [SolvableErrors](#solvableerrors)      | 否 | 否 | 可解决的错误。 |
+| responseResult      | [ResultCode](#resultcode)         | 否 | 否 | 操作结果码。  |
 
-## GetDownloadableProfilesResult<sup>18+</sup>
+## GetDownloadableProfilesResult
 
 获取默认可下载配置文件的列表。
 
@@ -900,12 +898,12 @@ eSIM.cancelSession(0, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).th
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-| responseResult       | ResultCode                   |  是  | 返回操作结果码。     |
-| downloadableProfiles | Array\<DownloadableProfile>  |  是  | 可下载配置文件数组。 |
+| 名称 | 类型                                                | 只读 | 可选 | 说明 |
+| ----- |---------------------------------------------------|---| ----- | -----|
+| responseResult       | [ResultCode](#resultcode)                   | 否 | 否 | 返回操作结果码。     |
+| downloadableProfiles | Array\<[DownloadableProfile](./js-apis-esim.md#downloadableprofile)\> | 否 | 否 | 可下载配置文件数组。 |
 
-## DownloadProfileResult<sup>18+</sup>
+## DownloadProfileResult
 
 下载配置文件的结果。
 
@@ -913,13 +911,13 @@ eSIM.cancelSession(0, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).th
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-| responseResult | ResultCode     |  是  | 操作结果码。 |
-| solvableErrors | SolvableErrors |  是  | 可解决错误。 |
-| cardId         | number         |  是  | 获取卡Id。   |
+| 名称 | 类型                                  | 只读 | 可选 | 说明 |
+| ----- |-------------------------------------|----|---| -----|
+| responseResult | [ResultCode](#resultcode)         | 否  | 否 | 操作结果码。 |
+| solvableErrors | [SolvableErrors](#solvableerrors) | 否  | 否 | 可解决错误。 |
+| cardId         | number                | 否  | 否 | 获取卡ID。 |
 
-## GetEuiccProfileInfoListResult<sup>18+</sup>
+## GetEuiccProfileInfoListResult
 
 获取配置文件信息列表。
 
@@ -927,13 +925,13 @@ eSIM.cancelSession(0, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).th
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-| responseResult  |ResultCode            |  是  | 返回操作结果码。    |
-| profiles        | Array\<EuiccProfile> |  是  | 配置文件数组。      |
-| isRemovable     | boolean              |  是  | eUICC是否可移除。true表示可移除，false表示不可移除。|
+| 名称 | 类型                                     | 只读 | 可选 | 说明   |
+| ----- |----------------------------------------|---| ---- |------|
+| responseResult  | [ResultCode](#resultcode)            | 否 | 否 | 返回操作结果码。    |
+| profiles        | Array\<[EuiccProfile](#euiccprofile)\> | 否 | 否 | 配置文件数组。     |
+| isRemovable     | boolean                      | 否 | 否 | eUICC是否可移除。true表示可移除，false表示不可移除。|
 
-## OperatorId<sup>18+</sup>
+## OperatorId
 
 获取eUICC芯片/设备的相关信息。
 
@@ -941,14 +939,14 @@ eSIM.cancelSession(0, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).th
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-| mcc  | string |  是  | 移动国家代码。 |
-| mnc  | string |  是  | 网络代码。     |
-| gid1 | string |  是  | 组id级别1。   |
-| gid2 | string |  是  | 组id级别2。   |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----- | ----- |---| ----- | -----|
+| mcc  | string | 否 | 否 | 移动国家代码。 |
+| mnc  | string | 否 | 否 | 网络代码。    |
+| gid1 | string | 否 | 否 | 组ID级别1。  |
+| gid2 | string | 否 | 否 | 组ID级别2。  |
 
-## EuiccProfile<sup>18+</sup>
+## EuiccProfile
 
 配置文件信息。
 
@@ -956,19 +954,19 @@ eSIM.cancelSession(0, testId, CancelReason::CANCEL_REASON_END_USER_REJECTION).th
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-| iccid               | string             |  是  | 配置文件的iccId。 |
-| nickName            | string             |  是  | 昵称。 |
-| serviceProviderName | string             |  是  | 配置文件的服务提供商名称。 |
-| profileName         | string             |  是  | 配置文件名称。   |
-| state               | ProfileState       |  是  | 配置文件的状态。 |
-| profileClass        | ProfileClass       |  是  | 配置文件类。     |
-| operatorId          | OperatorId         |  是  | 配置文件的操作ID。|
-| policyRules         | PolicyRules        |  是  | 配置文件策略。   |
-| accessRules         | Array\<AccessRule> |  是  | 配置文件规则。   |
+| 名称 | 类型                                                    | 只读 | 可选 | 说明 |
+| ----- |-------------------------------------------------------|---|---- |  -----|
+| iccid               | string                                                | 否 | 否 | 配置文件的iccId。 |
+| nickName            | string                                                | 否 | 否 | 昵称。 |
+| serviceProviderName | string                                                | 否 | 否 | 配置文件的服务提供商名称。 |
+| profileName         | string                                                | 否 | 否 | 配置文件名称。   |
+| state               | [ProfileState](#profilestate)                       | 否 | 否 | 配置文件的状态。 |
+| profileClass        | [ProfileClass](#profileclass)                       | 否 | 否 | 配置文件类。     |
+| operatorId          | [OperatorId](#operatorid)                           | 否 | 否 | 配置文件的操作ID。|
+| policyRules         | [PolicyRules](#policyrules)                         | 否 | 否 | 配置文件策略。   |
+| accessRules         | Array\<[AccessRule](./js-apis-esim.md#accessrule20)\> | 否 | 否 | 配置文件规则。   |
 
-## EuiccInfo<sup>18+</sup>
+## EuiccInfo
 
 euicc信息。
 
@@ -976,11 +974,11 @@ euicc信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-| osVersion | string |  是  | 系统版本。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----- | ----- |----|----| -----|
+| osVersion | string | 否  | 否  | 系统版本。 |
 
-## ResetOption<sup>18+</sup>
+## ResetOption
 
 重置状态。
 
@@ -994,7 +992,7 @@ euicc信息。
 |DELETE_FIELD_LOADED_TEST_PROFILES | 1 << 1 | 删除所有字段加载的测试配置文件。 |
 |RESET_DEFAULT_SMDP_ADDRESS        | 1 << 2 | 重置默认SM-DP+地址。 |
 
-## OsuStatus<sup>18+</sup>
+## OsuStatus
 
 操作系统升级状态。
 
@@ -1010,7 +1008,7 @@ euicc信息。
 |EUICC_UPGRADE_ALREADY_LATEST      | 4 | 当前为最新版本，无需升级 。|
 |EUICC_UPGRADE_SERVICE_UNAVAILABLE | 5 | 升级服务不可用。 |
 
-## ResultCode<sup>18+</sup>
+## ResultCode
 
 结果码。
 
@@ -1058,7 +1056,7 @@ euicc信息。
 | RESULT_DOWNLOAD_TIMEOUT                                  | 287 | 下载超时。                   |
 | RESULT_SGP_22_OTHER                                      | 400 | SGP.22中定义的其他错误。      |
 
-## CancelReason<sup>18+</sup>
+## CancelReason
 
 取消会话的原因。
 
@@ -1073,7 +1071,7 @@ euicc信息。
 |CANCEL_REASON_TIMEOUT            | 2 | 下载已超时，稍后可以重新启动。 |
 |CANCEL_REASON_PPR_NOT_ALLOWED    | 3 | 由于eUICC上的授权表或其他已安装的配置文件不允许其策略规则，因此无法安装。 |
 
-## ProfileState<sup>18+</sup>
+## ProfileState
 
 配置文件状态。
 
@@ -1087,7 +1085,7 @@ euicc信息。
 |PROFILE_STATE_DISABLED    | 0  | 禁用配置文件。   |
 |PROFILE_STATE_ENABLED     | 1  | 已启用配置文件。 |
 
-## ProfileClass<sup>18+</sup>
+## ProfileClass
 
 配置文件类。
 
@@ -1102,7 +1100,7 @@ euicc信息。
 |PROFILE_CLASS_PROVISIONING | 1  | 预加载在eUICC上的配置文件。   |
 |PROFILE_CLASS_OPERATIONAL  | 2  | 可预加载或下载的操作配置文件。 |
 
-## PolicyRules<sup>18+</sup>
+## PolicyRules
 
 配置文件的策略规则。
 
@@ -1116,7 +1114,7 @@ euicc信息。
 |POLICY_RULE_DELETE_NOT_ALLOWED  | 1 << 1 | 无法删除此配置文件。          |
 |POLICY_RULE_DISABLE_AND_DELETE  | 1 << 2 | 禁用后应删除此配置文件。      |
 
-## SolvableErrors<sup>18+</sup>
+## SolvableErrors
 
 可解决错误码。
 
@@ -1129,7 +1127,7 @@ euicc信息。
 |SOLVABLE_ERROR_NEED_CONFIRMATION_CODE | 1 << 0 | 下载过程需要用户输入确认码。                |
 |SOLVABLE_ERROR_NEED_POLICY_RULE       | 1 << 1 | 下载过程需要用户同意才能允许配置文件策略规则。|
 
-## DownloadConfiguration<sup>18+</sup>
+## DownloadConfiguration
 
 下载过程中的属性配置。
 
@@ -1137,9 +1135,9 @@ euicc信息。
 
 **系统能力**：SystemCapability.Telephony.CoreService.Esim
 
-| 名称 | 类型 | 必填 | 说明 |
-| ----- | ----- | ----- | -----|
-|switchAfterDownload | boolean | 是 | 下载成功后是否启用配置文件。true表示启用，false表示不启用。|
-|forceDisableProfile | boolean | 是 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。|
-|isPprAllowed        | boolean | 是 | 是否得到用户授权。true表示得到用户授权，服务提供商可实施配置文件策略规则；false表示未得到用户授权，不允许实施配置文件策略规则。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----- | ----- |----| ----- | -----|
+|switchAfterDownload | boolean | 否  | 否 | 下载成功后是否启用配置文件。true表示启用，false表示不启用。|
+|forceDisableProfile | boolean | 否  | 否 | 是否可直接去激活配置文件。true表示切换配置文件时，如果需要去激活当前的配置文件，则可以直接操作。false表示如果需要去激活当前的配置文件，则会返回错误，并得到用户授权后再继续调用该接口，执行切换配置文件操作。|
+|isPprAllowed        | boolean | 否  | 否 | 是否得到用户授权。true表示得到用户授权，服务提供商可实施配置文件策略规则；false表示未得到用户授权，不允许实施配置文件策略规则。|
 

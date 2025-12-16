@@ -1,5 +1,12 @@
 # @ohos.bluetoothManager (蓝牙)(系统接口)
 
+<!--Kit: Connectivity Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @enjoy_sunshine-->
+<!--Designer: @chengguohong; @tangjia15-->
+<!--Tester: @wangfeng517-->
+<!--Adviser: @zhang_yixin13-->
+
 蓝牙模块提供了基础的传统蓝牙能力以及BLE的扫描、广播等功能。
 
 > **说明：**
@@ -13,7 +20,7 @@
 ## 导入模块
 
 ```js
-import bluetoothManager from '@ohos.bluetoothManager';
+import { bluetoothManager } from '@kit.ConnectivityKit';
 ```
 
 
@@ -56,7 +63,7 @@ cancelPairedDevice(deviceId: string): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     bluetoothManager.cancelPairedDevice("XX:XX:XX:XX:XX:XX");
 } catch (err) {
@@ -105,7 +112,7 @@ connect(device: string): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile: bluetoothManager.HidHostProfile = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_HID_HOST) as bluetoothManager.HidHostProfile;
     hidHostProfile.connect('XX:XX:XX:XX:XX:XX');
@@ -155,7 +162,7 @@ disconnect(device: string): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile: bluetoothManager.HidHostProfile = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_HID_HOST) as bluetoothManager.HidHostProfile;
     hidHostProfile.disconnect('XX:XX:XX:XX:XX:XX');
@@ -206,7 +213,7 @@ disconnect(device: string): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: bluetoothManager.PanProfile = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_PAN_NETWORK) as bluetoothManager.PanProfile;
     panProfile.disconnect('XX:XX:XX:XX:XX:XX');
@@ -255,7 +262,7 @@ setTethering(enable: boolean): void
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: bluetoothManager.PanProfile = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_PAN_NETWORK) as bluetoothManager.PanProfile;
     panProfile.setTethering(true);
@@ -297,7 +304,7 @@ isTetheringOn(): boolean
 **示例：**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let panProfile: bluetoothManager.PanProfile = bluetoothManager.getProfileInstance(bluetoothManager.ProfileId.PROFILE_PAN_NETWORK) as bluetoothManager.PanProfile;
     panProfile.isTetheringOn();

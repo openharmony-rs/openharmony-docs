@@ -1,5 +1,12 @@
 # @ohos.app.ability.PrintExtensionAbility (Print Extension Ability) (System API)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @gcw_4D6e0BBd-->
+<!--Tester: @guoshengbang-->
+<!--Adviser: @RayShih-->
+
 The **PrintExtensionAbility** module provides operation APIs of the print extension ability.
 
 > **NOTE** 
@@ -13,7 +20,9 @@ The **PrintExtensionAbility** module provides operation APIs of the print extens
 import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 ```
 
-## PrintExtensionAbility.onStartPrintJob
+## PrintExtensionAbility
+
+### onStartPrintJob
 
 onStartPrintJob(jobInfo: print.PrintJob): void
 
@@ -24,7 +33,7 @@ Called when the specified print job starts.
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | Yes| Information about the print job.|
+| jobInfo | [print.PrintJob](./js-apis-print-sys.md#printjob) | Yes| Information about the print job.|
 
 **Error codes**
 
@@ -32,23 +41,22 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
-| 202 | not system application |
+| 202 | not system application. |
 
 **Example**
 
 ```ts
-import { PrintExtensionAbility } from '@kit.BasicServicesKit';
-import { print } from '@kit.BasicServicesKit';
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onStartPrintJob(jobInfo: print.PrintJob): void {
-        console.log('onStartPrintJob, jobId is: ' + jobInfo.jobId);
+        console.info('onStartPrintJob, jobId is: ' + jobInfo.jobId);
         // ...
     }
 }
 ```
 
-## PrintExtensionAbility.onCancelPrintJob
+### onCancelPrintJob
 
 onCancelPrintJob(jobInfo: print.PrintJob): void
 
@@ -59,7 +67,7 @@ Called when the specified print job is canceled.
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | Yes| Information about the print job.|
+| jobInfo | [print.PrintJob](./js-apis-print-sys.md#printjob) | Yes| Information about the print job.|
 
 **Error codes**
 
@@ -67,23 +75,22 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
-| 202 | not system application |
+| 202 | not system application. |
 
 **Example**
 
 ```ts
-import { PrintExtensionAbility } from '@kit.BasicServicesKit';
-import { print } from '@kit.BasicServicesKit';
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onCancelPrintJob(jobInfo: print.PrintJob): void {
-        console.log('onCancelPrintJob, jobId is: ' + jobInfo.jobId);
+        console.info('onCancelPrintJob, jobId is: ' + jobInfo.jobId);
         // ...
     }
 }
 ```
 
-## PrintExtensionAbility.onRequestPrinterCapability
+### onRequestPrinterCapability
 
 onRequestPrinterCapability(printerId: number): print.PrinterCapability
 
@@ -99,7 +106,7 @@ Called when a request is sent to check the capability of the specified printer.
 **Return value**
 | **Type**| **Description**|
 | -------- | -------- |
-| print.PrinterCapability | Capability of the printer.|
+| [print.PrinterCapability](./js-apis-print-sys.md#printercapability) | Capability of the printer.|
 
 **Error codes**
 
@@ -107,17 +114,16 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
-| 202 | not system application |
+| 202 | not system application. |
 
 **Example**
 
 ```ts
-import { PrintExtensionAbility } from '@kit.BasicServicesKit';
-import { print } from '@kit.BasicServicesKit';
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onRequestPrinterCapability(printerId: number): print.PrinterCapability {
-        console.log('onRequestPrinterCapability enter');
+        console.info('onRequestPrinterCapability enter');
         // ...
         let tmp : print.PrinterCapability = {
             colorMode : 1,
@@ -129,7 +135,7 @@ export default class HWPrintExtension extends PrintExtensionAbility {
 }
 ```
 
-## PrintExtensionAbility.onRequestPreview
+### onRequestPreview
 
 onRequestPreview(jobInfo: print.PrintJob): string
 
@@ -140,7 +146,7 @@ Called when a print preview request is sent. The result is returned to the print
 **Parameters**
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| jobInfo | print.PrintJob | Yes| Information about the print job.|
+| jobInfo | [print.PrintJob](./js-apis-print-sys.md#printjob) | Yes| Information about the print job.|
 
 **Return value**
 | **Type**| **Description**|
@@ -153,17 +159,16 @@ For details about the error codes, see [Error Codes of the Print Service](./erro
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
-| 202 | not system application |
+| 202 | not system application. |
 
 **Example**
 
 ```ts
-import { PrintExtensionAbility } from '@kit.BasicServicesKit';
-import { print } from '@kit.BasicServicesKit';
+import { print, PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 export default class HWPrintExtension extends PrintExtensionAbility {
     onRequestPreview(jobInfo: print.PrintJob): string {
-        console.log('onRequestPreview enter');
+        console.info('onRequestPreview enter');
         // ...
         let tmp : string = '';
         return tmp;

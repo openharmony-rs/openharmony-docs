@@ -1,5 +1,10 @@
 # DRM解决方案开发指导
-
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
 DRM 解决方案插件实现 DRM HDI 接口（链接），DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
 
 插件由DRM解决方案集成方开发，放置在设备的 /vendor 分区中。
@@ -62,7 +67,7 @@ static int HdfMediaKeySystemFactoryDriverBind(struct HdfDeviceObject *deviceObje
 {
     auto *hdfMediaKeySystemFactoryHost = new (std::nothrow) HdfMediaKeySystemFactoryHost;
     if (hdfMediaKeySystemFactoryHost == nullptr) {
-        HDF_LOGE("%{public}s: failed to create create HdfMediaKeySystemFactoryHost object", __func__);
+        HDF_LOGE("%{public}s: failed to create HdfMediaKeySystemFactoryHost object", __func__);
         return HDF_FAILURE;
     }
     int ret = HdfDeviceObjectSetInterfaceDesc(deviceObject, "ohos.hdi.drm.v1_0.IMediaKeySystemFactory"); // 2. 服务绑定接口描述符，便于DRM框架服务通过接口描述符获取到DRM解决方案HDI服务，根据不同的HDI API版本号调整。
@@ -399,7 +404,7 @@ passwd文件为系统用户配置文件，存储了系统中所有用户的基�
 
 ```
 //base/startup/init/services/etc/passwd
-clearplay_host:x:1089:1089:::/bin/false
+clearplay_host:x:1089:1089::/bin/false
 ```
 
 `//base/startup/init/services/etc/passwd`中每行用户信息使用“:”作为分隔符，划分为7个字段，每个字段所表示的含义如下：
@@ -420,7 +425,7 @@ base/startup/init/services/etc/group中每行代表一个用户组，用户组�
 
 ### 动态加载
 
-为节约 RAM 内存占用，DRM 框架服务支持动态加载 DRM 解决方案插件，DRM 框架服务调用完解决方案插件后，及时卸载 DRM 解决方案插件，释放 RAM 内存占用，插件需通过修改服务启动属性将自身服务配置成懒加载，并加入到设备上的 DRM 框架服务懒加载列表配置文件中;HDI服务提供动态加载能力，系统启动过程中默认不加载，支持动态加载，以下为示例：
+为节约RAM（随机存取存储器）占用，DRM框架服务支持动态加载DRM解决方案插件。DRM框架服务调用完解决方案插件后，及时卸载DRM解决方案插件，释放RAM占用。插件需通过修改服务启动属性将自身服务配置成懒加载，并加入到设备上的DRM框架服务懒加载列表配置文件中。HDI服务提供动态加载能力，系统启动过程中默认不加载，支持动态加载，示例如下：
 `device_info.hcs`配置preload为2
 ```
 clearplay :: host {

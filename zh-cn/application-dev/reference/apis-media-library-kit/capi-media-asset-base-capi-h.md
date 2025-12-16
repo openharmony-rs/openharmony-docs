@@ -1,5 +1,12 @@
 # media_asset_base_capi.h
 
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
 ## 概述
 
 定义了媒体资产管理器的结构和枚举。
@@ -45,8 +52,8 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [typedef void (\*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_RequestId requestId)](#oh_medialibrary_ondataprepared) | OH_MediaLibrary_OnDataPrepared | 当所请求的媒体资源准备完成时会触发回调。 |
-| [typedef void (\*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result,MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)](#oh_medialibrary_onimagedataprepared) | OH_MediaLibrary_OnImageDataPrepared | 当请求的图像源准备就绪时会触发回调。 |
-| [typedef void (\*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result,MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_MovingPhoto* movingPhoto)](#oh_medialibrary_onmovingphotodataprepared) | OH_MediaLibrary_OnMovingPhotoDataPrepared | 当请求的动态照片准备就绪时会触发回调。 |
+| [typedef void (\*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)](#oh_medialibrary_onimagedataprepared) | OH_MediaLibrary_OnImageDataPrepared | 当请求的图像源准备就绪时会触发回调。 |
+| [typedef void (\*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_MovingPhoto* movingPhoto)](#oh_medialibrary_onmovingphotodataprepared) | OH_MediaLibrary_OnMovingPhotoDataPrepared | 当请求的动态照片准备就绪时会触发回调。 |
 
 ### 变量
 
@@ -58,7 +65,7 @@
 
 ### MediaLibrary_ErrorCode
 
-```
+```c
 enum MediaLibrary_ErrorCode
 ```
 
@@ -82,7 +89,7 @@ enum MediaLibrary_ErrorCode
 
 ### MediaLibrary_DeliveryMode
 
-```
+```c
 enum MediaLibrary_DeliveryMode
 ```
 
@@ -106,7 +113,7 @@ enum MediaLibrary_DeliveryMode
 
 ### MediaLibrary_MediaType
 
-```
+```c
 enum MediaLibrary_MediaType
 ```
 
@@ -123,7 +130,7 @@ enum MediaLibrary_MediaType
 
 ### MediaLibrary_MediaSubType
 
-```
+```c
 enum MediaLibrary_MediaSubType
 ```
 
@@ -141,7 +148,7 @@ enum MediaLibrary_MediaSubType
 
 ### MediaLibrary_ResourceType
 
-```
+```c
 enum MediaLibrary_ResourceType
 ```
 
@@ -158,7 +165,7 @@ enum MediaLibrary_ResourceType
 
 ### MediaLibrary_ImageFileType
 
-```
+```c
 enum MediaLibrary_ImageFileType
 ```
 
@@ -175,7 +182,7 @@ enum MediaLibrary_ImageFileType
 
 ### MediaLibrary_MediaQuality
 
-```
+```c
 enum MediaLibrary_MediaQuality
 ```
 
@@ -200,7 +207,7 @@ enum MediaLibrary_MediaQuality
 
 ### MediaLibrary_MediaContentType
 
-```
+```c
 enum MediaLibrary_MediaContentType
 ```
 
@@ -212,15 +219,15 @@ enum MediaLibrary_MediaContentType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| MEDIA_LIBRARY_COMPRESSED = 1 | 压缩媒体内容类型。 |
-| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | 图片对象媒体内容类型。 |
+| MEDIA_LIBRARY_COMPRESSED = 1 | 普通图片格式，如JPEG、HEIC、GIF。 |
+| MEDIA_LIBRARY_PICTURE_OBJECT = 2 | 图片解码后的PixelMap、GainMap和图片元数据信息一起封装的对象，方便应用进行编辑和显示。此对象的操作详见[OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)。 |
 
 
 ## 函数说明
 
 ### OH_MediaLibrary_OnDataPrepared()
 
-```
+```c
 typedef void (*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_RequestId requestId)
 ```
 
@@ -240,7 +247,7 @@ typedef void (*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_Requ
 
 ### OH_MediaLibrary_OnImageDataPrepared()
 
-```
+```c
 typedef void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result,MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)
 ```
 
@@ -257,13 +264,13 @@ typedef void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode resul
 | -- | -- |
 | [MediaLibrary_ErrorCode](#medialibrary_errorcode) result | 处理所请求资源的结果[MediaLibrary_ErrorCode](#medialibrary_errorcode)。 |
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)。 |
-|  [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求源的[MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality)。 |
+|  [MediaLibrary_MediaQuality](#medialibrary_mediaquality) mediaQuality | 请求源的[MediaLibrary_MediaQuality](#medialibrary_mediaquality)。 |
 |  [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求源的[MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype)。 |
 | [OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)* imageSourceNative | 当请求的图像源准备就绪时获取[OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)。 |
 
 ### OH_MediaLibrary_OnMovingPhotoDataPrepared()
 
-```
+```c
 typedef void (*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result,MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_MovingPhoto* movingPhoto)
 ```
 
@@ -280,7 +287,7 @@ typedef void (*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode
 | -- | -- |
 | [MediaLibrary_ErrorCode](#medialibrary_errorcode) result | 处理所请求资源的结果[MediaLibrary_ErrorCode](capi-media-asset-base-capi-h.md#medialibrary_errorcode)。 |
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | 请求的[MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md)。 |
-|  [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | 请求资源的[MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality)。 |
+|  [MediaLibrary_MediaQuality](#medialibrary_mediaquality) mediaQuality | 请求资源的[MediaLibrary_MediaQuality](#medialibrary_mediaquality)。 |
 |  [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | 请求资源的[MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype)。 |
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)* movingPhoto | 当请求的动态图片准备就绪时获取[OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md)。 |
 

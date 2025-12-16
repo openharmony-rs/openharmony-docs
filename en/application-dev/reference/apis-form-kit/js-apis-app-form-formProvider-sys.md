@@ -1,11 +1,17 @@
 # @ohos.app.form.formProvider (formProvider) (System API)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, set the update time, and request a widget release.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formProvider (formProvider)](./js-apis-app-form-formProvider.md).
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formProvider (formProvider)](./js-apis-app-form-formProvider.md).
 
 ## Modules to Import
 
@@ -18,7 +24,7 @@ import { formProvider } from '@kit.FormKit';
 
 requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback\<string>): void
 
-Requests to publish a widget carrying data to the widget host (usually the home screen). This API uses an asynchronous callback to return the result.
+Requests to publish a widget to the widget host (usually the home screen). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -70,7 +76,7 @@ try {
       console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       return;
     }
-    console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -127,7 +133,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -186,7 +192,7 @@ let want: Want = {
 };
 try {
   formProvider.requestPublishForm(want).then((data: string) => {
-    console.log(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -199,7 +205,7 @@ try {
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a widget can be published to the widget host. This API uses an asynchronous callback to return the result.
+Checks whether a widget can be added to the widget host. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -209,7 +215,7 @@ Checks whether a widget can be published to the widget host. This API uses an as
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return whether the widget can be published to the widget host.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback function that returns the query result.<br>**true**: The widget can be added to the widget host.<br>**false**: The widget cannot be added to the widget host.|
 
 **Error codes**
 
@@ -249,7 +255,7 @@ try {
               console.error(`callback error, code: ${error.code}, message: ${error.message})`);
               return;
             }
-            console.log(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+            console.info(`formProvider requestPublishForm, form ID is: ${JSON.stringify(data)}`);
           });
         } catch (error) {
           console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -266,7 +272,7 @@ try {
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
-Checks whether a widget can be published to the widget host. This API uses a promise to return the result.
+Checks whether a widget can be added to the widget host. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -276,7 +282,7 @@ Checks whether a widget can be published to the widget host. This API uses a pro
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return whether the widget can be published to the widget host.|
+| Promise&lt;boolean&gt; | Promise that returns whether a widget can be added to the widget host.<br>**true**: The widget can be added to the widget host.<br>**false**: The widget cannot be added to the widget host.|
 
 **Error codes**
 
@@ -308,7 +314,7 @@ try {
       };
       try {
         formProvider.requestPublishForm(want).then((data: string) => {
-          console.log(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+          console.info(`formProvider requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
         }).catch((error: BusinessError) => {
           console.error(`promise error, code: ${error.code}, message: ${error.message})`);
         });
@@ -360,7 +366,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation, please check your fom_config's sceneAnimationParams configuration infomation is correct or not. |
+| 16501011 | The form can not support this operation. |
 
 **Example**
 
@@ -417,7 +423,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation, please check your fom_config's sceneAnimationParams configuration infomation is correct or not. |
+| 16501011 | The form can not support this operation. |
 
 **Example**
 

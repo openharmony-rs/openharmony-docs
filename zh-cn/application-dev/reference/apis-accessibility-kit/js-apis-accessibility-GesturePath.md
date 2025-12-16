@@ -1,5 +1,12 @@
 # @ohos.accessibility.GesturePath (手势路径)
 
+<!--Kit: Accessibility Kit-->
+<!--Subsystem: BarrierFree-->
+<!--Owner: @qiiiiiiian-->
+<!--Designer: @z7o-->
+<!--Tester: @A_qqq-->
+<!--Adviser: @w_Machine_cc-->
+
 GesturePath表示手势路径信息。
 
 本模块用于创建辅助功能注入手势所需的手势路径信息。
@@ -18,7 +25,7 @@ import { GesturePath } from '@kit.AccessibilityKit';
 
 表示手势路径信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 

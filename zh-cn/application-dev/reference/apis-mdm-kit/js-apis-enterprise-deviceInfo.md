@@ -1,4 +1,10 @@
 # @ohos.enterprise.deviceInfo（设备信息管理）
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供企业设备信息管理能力，包括获取设备序列号、设备名称等。
 
@@ -26,18 +32,20 @@ getDeviceInfo(admin: Want, label: string): string
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | label  | string                                                  | 是   | 支持获取的设备信息标签。<br/>- deviceName：设备名称。<br/>- deviceSerial：设备序列号。<br/>- simInfo：SIM卡信息。 <!--RP1--><!--RP1End-->|
 
 **返回值：**
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| string | 返回label对应的参数值。<br/>当label为simInfo时，返回值为表示SIM卡信息的JSON字符串。例如：[{"slotId": 0, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": ""}, {"slotId": 1, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": ""}]，其中：slotId:0表示卡槽1，slotId:1表示卡槽2。 |
+| string | 返回label对应的参数值。<br/>当label为simInfo时，返回值为表示SIM卡信息的JSON字符串。例如：[{"slotId": 0, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": "", "NUMBER": ""}, {"slotId": 1, "MEID": "", "IMSI": "", "ICCID": "", "IMEI": "", "NUMBER": ""}]，其中：slotId:0表示卡槽1，slotId:1表示卡槽2。 NUMBER：从API version 23开始支持，表示手机号码，格式为包含国家码的E.164国际标准格式（如 +8612345678901）。|
 
 **错误码**：
 
@@ -53,14 +61,17 @@ getDeviceInfo(admin: Want, label: string): string
 **示例：**
 
 ```ts
+import { deviceInfo } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
+  // 需根据实际情况进行替换
   let result: string = deviceInfo.getDeviceInfo(wantTemp, 'deviceName');
   console.info(`Succeeded in getting device name, result : ${result}`);
 } catch (err) {

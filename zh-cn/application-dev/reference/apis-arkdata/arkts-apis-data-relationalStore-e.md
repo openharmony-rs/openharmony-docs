@@ -1,4 +1,10 @@
 # Enums
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 > **说明：**
 > 
@@ -23,14 +29,15 @@
 
 ## EncryptionAlgo<sup>14+</sup>
 
-数据库的加密算法枚举。请使用枚举名称而非枚举值。
+数据库的加密方式枚举。请使用枚举名称而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
-| AES_256_GCM |  0    | AES_256_GCM加密算法。     |
-| AES_256_CBC |  1    | AES_256_CBC加密算法。     |
+| AES_256_GCM |  0    | 数据库使用AES_256_GCM加密。     |
+| AES_256_CBC |  1    | 数据库使用AES_256_CBC加密。     |
+| PLAIN_TEXT<sup>22+</sup> | 2 | 数据库不进行加密。 |
 
 ## HmacAlgo<sup>14+</sup>
 
@@ -65,19 +72,20 @@
 | 名称                              | 值   | 说明             |
 | ------------------------------- | --- | -------------- |
 | NONE_TOKENIZER     | 0  | 不使用分词器。      |
-| ICU_TOKENIZER | 1 | 表示使用icu分词器，支持中文以及多国语言。指定icu分词器时，可指定使用哪种语言，例如zh_CN表示中文，tr_TR表示土耳其语等。详细支持的语言种类，请查阅[ICU分词器](https://gitee.com/openharmony/third_party_icu/blob/master/icu4c/source/data/lang/zh.txt)。详细的语言缩写，请查阅该目录（[ICU支持的语言缩写](https://gitee.com/openharmony/third_party_icu/tree/master/icu4c/source/data/locales)）下的文件名。|
+| ICU_TOKENIZER | 1 | 表示使用icu分词器，支持中文以及多国语言。指定icu分词器时，可指定使用哪种语言，例如zh_CN表示中文，tr_TR表示土耳其语等。详细支持的语言种类，请查阅[ICU分词器](https://gitcode.com/openharmony/third_party_icu/blob/master/icu4c/source/data/lang/zh.txt)。详细的语言缩写，请查阅该目录（[ICU支持的语言缩写](https://gitcode.com/openharmony/third_party_icu/tree/master/icu4c/source/data/locales)）下的文件名。|
 | CUSTOM_TOKENIZER<sup>18+</sup> | 2 | 表示使用自研分词器，可支持中文（简体、繁体）、英文、阿拉伯数字。CUSTOM_TOKENIZER相比ICU_TOKENIZER在分词准确率、常驻内存占用上更有优势。自研分词器支持默认分词模式和短词分词模式（short_words）两种，使用参数cut_mode可指定模式，不指定模式时使用默认模式。 |
 
 在使用不同的分词器时，使用的创表语句会有所区别。
 
 **示例：**
 
+示例代码中this.context定义见Stage模型的应用[Context](../apis-ability-kit/js-apis-inner-application-context.md)。
+
 使用ICU_TOKENIZER分词器时，创建表的示例：
 
 ```ts
 import { relationalStore } from '@kit.ArkData'; // 导入模块
 import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
 
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用
@@ -110,7 +118,6 @@ class EntryAbility extends UIAbility {
 ```ts
 import { relationalStore } from '@kit.ArkData'; // 导入模块
 import { UIAbility } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
 
 // 此处示例在Stage模式、Ability中实现，使用者也可以在其他合理场景中使用

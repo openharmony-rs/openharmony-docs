@@ -1,4 +1,10 @@
 # Web组件焦点管理
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zourongchun-->
+<!--Designer: @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 开发者可利用Web组件的焦点管理功能，有效管理Web组件的聚焦与失焦，同时利用H5侧的W3C标准接口，管理网页界面上唯一可交互的元素聚焦与失焦。
 
@@ -27,7 +33,7 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 根据走焦的触发方式，可以分为主动走焦和被动走焦，Web组件走焦规范详情参考[ArkUI走焦规范](../ui/arkts-common-events-focus-event.md#走焦规范)。
 
 ### 主动走焦
-指开发者或用户主观行为导致的焦点移动。包括：使用requestFocus申请焦点、外接键盘的按键走焦（TAB键/Shift+TAB键）、点击申请焦点（手势/鼠标/触摸板）等导致的焦点转移。
+指开发者或用户主观行为导致的焦点移动。包括：使用requestFocus申请焦点、外接键盘的按键走焦（Tab键/Shift+Tab键）、点击申请焦点（手势/鼠标/触摸板）等导致的焦点转移。
 
 - requestFocus
 
@@ -35,15 +41,15 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 
 - 按键走焦
 
-  - 支持ArkWeb与其他组件通过TAB键、Shift+TAB键走焦。
-  - 支持ArkWeb内部网页元素通过TAB键、Shift+TAB键走焦，网页元素走焦完成后，抛回ArkUI继续框架侧走焦。
+  - 支持ArkWeb与其他组件通过Tab键、Shift+Tab键走焦。
+  - 支持ArkWeb内部网页元素通过Tab键、Shift+Tab键走焦，网页元素走焦完成后，抛回ArkUI继续框架侧走焦。
 
 - 点击申请获焦
 
   开发者或用户可通过手势、鼠标或触摸板点击Web组件，使其主动获得焦点。当具体点击到Web组件内的某个元素时，该元素能够获得焦点，例如：点击网页内的输入框，可使其从不可编辑状态转变为可编辑状态，并激活输入法。
 
 ### 被动走焦
-被动走焦指焦点因系统获其他操作而转移，无需开发者直接干预，是焦点系统的默认行为。
+被动走焦指焦点因系统或其他操作而转移，无需开发者直接干预，是焦点系统的默认行为。
 
 被动走焦的场景有：
 
@@ -53,7 +59,7 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 
 - Web组件不可见：ArkWeb获焦后，应用前后台切换、页面切换、Navigation导航等场景，ArkWeb会失焦再获焦。
 
-- Web组件加载网页：ArkWeb通过src、loadUrl、loadData加载网页，默认会获取焦点，但若此时web组件为不可获焦状态则会获焦失败（常见的不可获焦状态原因有：过场动画过程中父组件不可获焦、应用侧设置了web组件或其父组件不可获焦属性等），应用侧可以调用主动申请获焦接口[requestFocus](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#requestfocus)再次尝试使web组件获焦。当获焦成功后，应用侧onFocus、w3c focus事件均会上报。
+- Web组件加载网页：ArkWeb通过src、loadUrl、loadData加载网页，默认会获取焦点，但若此时web组件为不可获焦状态则会获焦失败（常见的不可获焦状态原因有：过场动画过程中父组件不可获焦、应用侧设置了web组件或其父组件不可获焦属性等），应用侧可以调用主动申请获焦接口[requestFocus](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#requestfocus)再次尝试使web组件获焦。当获焦成功后，应用侧onFocus、W3C focus事件均会上报。
 
 - autofocus样式：设置了autofocus样式的元素网页完成加载时默认获焦。若该元素支持文本输入，则输入框会有光标闪烁，但不会弹出软键盘。如需自动弹出软键盘，可参考[软键盘自动弹出](web-docking-softkeyboard.md#软键盘自动弹出)。
 
@@ -71,8 +77,9 @@ Web组件焦点、焦点链和走焦的详情说明请参考[ArkUI焦点基础�
 1. requestFocus接口允许应用开发者主动控制让Web组件获焦。
 2. onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
-```ts
-// xxx.ets
+<!-- @[WebFocusManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -81,8 +88,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   controller2: webview.WebviewController = new webview.WebviewController();
-  @State webborderColor: Color = Color.Red;
-  @State webborderColor2: Color = Color.Red;
+  @State webBorderColor: Color = Color.Red;
+  @State webBorderColor2: Color = Color.Red;
 
   build() {
     Column() {
@@ -106,34 +113,35 @@ struct WebComponent {
       }
       Web({ src: 'www.example.com', controller: this.controller })
         .onFocus(() => {
-          this.webborderColor = Color.Green;
+          this.webBorderColor = Color.Green;
         })
         .onBlur(() => {
-          this.webborderColor = Color.Red;
+          this.webBorderColor = Color.Red;
         })
+        // ···
         .margin(3)
         .borderWidth(10)
-        .borderColor(this.webborderColor)
-        .height("45%")
+        .borderColor(this.webBorderColor)
+        .height('45%')
 
       Web({ src: 'www.example.com', controller: this.controller2 })
         .onFocus(() => {
-          this.webborderColor2 = Color.Green;
+          this.webBorderColor2 = Color.Green;
         })
         .onBlur(() => {
-          this.webborderColor2 = Color.Red;
+          this.webBorderColor2 = Color.Red;
         })
         .margin(3)
         .borderWidth(10)
-        .borderColor(this.webborderColor2)
-        .height("45%")
+        .borderColor(this.webBorderColor2)
+        .height('45%')
     }
   }
 }
 ```
 **示例图1**  组件焦点获焦/失焦事件
 
-通过requestfocus接口主动请求获焦，并监听通用接口onFocus和onBlur事件，改变Web组件边框颜色。
+通过requestFocus接口主动请求获焦，并监听通用接口onFocus和onBlur事件，改变Web组件边框颜色。
 
 ![web-focus1.gif](figures/web-focus1.gif)
 
@@ -157,10 +165,11 @@ onblur = (event) => {};
 在文档或对话框中，最多只能有一个元素具有 autofocus 属性。若应用于多个元素，第一个元素将获得焦点。
 
 **示例：**
-```ts
-// xxx.ets
+
+<!-- @[WebFocusManagement2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebFocusManagement/entry/src/main/ets/pages/WebFocusManagement2.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -169,13 +178,14 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("test.html"), controller: this.controller })
+      Web({ src: $rawfile('test.html'), controller: this.controller })
     }
   }
 }
 ```
 
-```js
+加载的html文件。
+```html
 // test.html
 <!DOCTYPE html>
 <html>

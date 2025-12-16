@@ -184,7 +184,7 @@ C++接口仅系统开发者使用，JS（目前暂未开放js接口）应用开�
 
 以下为一个demo调试过程，该demo使用了同步接口中的StartTrace和FinishTrace。
 
-1. 编写测试代码hitrace_example.cpp（ [hitrace_example.cpp](https://gitee.com/openharmony/hiviewdfx_hitrace/blob/master/example/hitrace_example.cpp)  ），将使用到的接口加入代码：
+1. 编写测试代码hitrace_example.cpp（ [hitrace_example.cpp](https://gitcode.com/openharmony/hiviewdfx_hitrace/blob/master/example/hitrace_example.cpp)  ），将使用到的接口加入代码：
    
    ```cpp
    int main()
@@ -351,4 +351,4 @@ HiTraceMeter提供了可执行的二进制程序hitrace，设备刷openharmony�
 
 ## 参考
 
-更多关于HiTraceMeter的详细内容请参考：[轻量级的分布式调用链跟踪](https://gitee.com/openharmony/hiviewdfx_hitrace) 。
+更多关于HiTraceMeter的详细内容请参考：[轻量级的分布式调用链跟踪](https://gitcode.com/openharmony/hiviewdfx_hitrace) 。

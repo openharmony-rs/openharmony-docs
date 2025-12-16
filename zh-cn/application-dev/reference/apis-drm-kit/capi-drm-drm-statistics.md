@@ -1,4 +1,14 @@
 # DRM_Statistics
+<!--Kit: Drm Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qin_wei_jie-->
+<!--Designer: @chris2981-->
+<!--Tester: @xdlinc-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct DRM_Statistics {...} DRM_Statistics
+```
 
 ## 概述
 

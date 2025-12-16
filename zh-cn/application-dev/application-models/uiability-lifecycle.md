@@ -1,5 +1,11 @@
 # UIAbility组件生命周期
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel; @Luobniz21-->
+<!--Designer: @wendel-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
 ## 概述
 
@@ -9,14 +15,23 @@ UIAbility的生命周期示意图如下所示。
 
 ![UIAbility-Life-Cycle](figures/UIAbility-Life-Cycle-WindowStage.png)
 
-以UIAbility实例的冷启动为例说明：
+以下是UIAbility启动到前台和后台两种场景说明，以及生命周期回调流程讲解。
 
-1. 当用户启动一个UIAbility时，系统首先触发onCreate()回调告知应用该UIAbility正在被启动。紧接着，系统触发onForeground()回调将UIAbility切换到与用户交互的前台状态。
- 
-2. 当用户跳转到其他应用时，系统会触发onBackground()回调将UIAbility切换到后台状态。
- 
-3. 当用户退出UIAbility时，系统会触发onDestroy()回调告知应用该UIAbility将被销毁。
+- UIAbility启动到前台，对应流程图参见上图。
 
+  1. 当用户启动一个UIAbility时，系统会依次触发onCreate()、onWindowStageCreate()、onForeground()生命周期回调。
+
+  2. 当用户跳转到其他应用（当前UIAbility切换到后台）时，系统会触发onBackground()生命周期回调。
+
+  3. 当用户再次将UIAbility切换到前台时，系统会依次触发onNewWant()、onForeground()生命周期回调。
+
+- UIAbility启动到后台，对应流程图参见下图。
+
+  1. 当用户通过[UIAbilityContext.startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动一个UIAbility到后台时，系统会依次触发onCreate()、onBackground()（不会执行onWindowStageCreate()生命周期回调）生命周期回调。
+
+  2. 当用户将UIAbility拉到前台，系统会依次触发onNewWant()、onWindowStageCreate()、onForeground()生命周期回调。
+
+  ![UIAbility启动到后台](figures/UIAbility-Life-Cycle-StartAbilityToTheBackground.png)
 
 ## 生命周期回调
 
@@ -29,16 +44,21 @@ UIAbility的生命周期示意图如下所示。
 
 在首次创建UIAbility实例时，系统触发[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)回调。开发者可以在该回调中执行UIAbility整个生命周期中仅发生一次的启动逻辑。
 
-```ts
+<!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
+  // ···
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // 执行UIAbility整个生命周期中仅发生一次的业务逻辑
   }
-  // ...
+  // ···
 }
 ```
+
 
 ### onWindowStageCreate()
 
@@ -49,118 +69,139 @@ export default class EntryAbility extends UIAbility {
 > **说明：**
 > 
 > - 不同开发场景下[WindowStage事件](../reference/apis-arkui/arkts-apis-window-e.md#windowstageeventtype9)的时序可能存在差异，WindowStage的相关使用请参见[窗口开发指导](../windowmanager/application-window-stage.md)。
-> - 对于不同类型的产品，当应用主窗口从前台进入后台时，UIAbility生命周期的变化也会存在差异。详见[Stage模型下主窗口的生命周期](../windowmanager/window-overview.md#stage模型下主窗口的生命周期)。
+> - 对于不同类型的产品，当应用主窗口从前台进入后台时，UIAbility生命周期的变化也会存在差异。详见[不同设备生命周期的差异化行为](../windowmanager/window-overview.md#不同设备生命周期的差异化行为)。
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN_NUMBER: number = 0xFF00;
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // 设置WindowStage的事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
-    try {
-      windowStage.on('windowStageEvent', (data) => {
-        let stageEventType: window.WindowStageEventType = data;
-        switch (stageEventType) {
-          case window.WindowStageEventType.SHOWN: // 切到前台
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage foreground.`);
-            break;
-          case window.WindowStageEventType.ACTIVE: // 获焦状态
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage active.`);
-            break;
-          case window.WindowStageEventType.INACTIVE: // 失焦状态
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage inactive.`);
-            break;
-          case window.WindowStageEventType.HIDDEN: // 切到后台
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage background.`);
-            break;
-          case window.WindowStageEventType.RESUMED: // 前台可交互状态
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage resumed.`);
-            break;
-          case window.WindowStageEventType.PAUSED: // 前台不可交互状态
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage paused.`);
-            break;
-          default:
-            break;
-        }
+  <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+  
+  ``` TypeScript
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  // ···
+  
+  const DOMAIN = 0x0000;
+  
+  export default class EntryAbility extends UIAbility {
+  
+    // ···
+  
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      // ···
+      // 设置WindowStage的事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
+      try {
+        windowStage.on('windowStageEvent', (data) => {
+          let stageEventType: window.WindowStageEventType = data;
+          switch (stageEventType) {
+            case window.WindowStageEventType.SHOWN: // 切到前台
+              hilog.info(DOMAIN, 'testTag', `windowStage foreground.`);
+              break;
+            case window.WindowStageEventType.ACTIVE: // 获焦状态
+              hilog.info(DOMAIN, 'testTag', `windowStage active.`);
+              break;
+            case window.WindowStageEventType.INACTIVE: // 失焦状态
+              hilog.info(DOMAIN, 'testTag', `windowStage inactive.`);
+              break;
+            case window.WindowStageEventType.HIDDEN: // 切到后台
+              hilog.info(DOMAIN, 'testTag', `windowStage background.`);
+              break;
+            case window.WindowStageEventType.RESUMED: // 前台可交互状态
+              hilog.info(DOMAIN, 'testTag', `windowStage resumed.`);
+              break;
+            case window.WindowStageEventType.PAUSED: // 前台不可交互状态
+              hilog.info(DOMAIN, 'testTag', `windowStage paused.`);
+              break;
+            default:
+              break;
+          }
+        });
+      } catch (exception) {
+        hilog.error(DOMAIN, 'testTag',
+          `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
+      }
+      hilog.info(DOMAIN, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
+      // 设置UI加载
+      windowStage.loadContent('pages/Index', (err) => {
+        // ···
       });
-    } catch (exception) {
-      hilog.error(DOMAIN_NUMBER, 'testTag',
-        `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
     }
-    hilog.info(DOMAIN_NUMBER, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
-    // 设置UI加载
-    windowStage.loadContent('pages/Index', (err, data) => {
-      // ...
-    });
+  
+  // ···
   }
-}
-```
+  ```
 
 ### onForeground()
 
 在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)切换至前台时且UIAbility的UI可见之前，系统触发[onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)回调。开发者可以在该回调中申请系统需要的资源，或者重新申请在`onBackground()`中释放的资源。系统回调该方法后，UIAbility实例进入前台状态，即UIAbility实例可以与用户交互的状态。UIAbility实例会一直处于这个状态，直到被某些动作打断（例如屏幕关闭、用户跳转到其他UIAbility）。
 
-例如，应用在使用过程中需要使用用户定位时，假设应用已获得用户的定位权限授权。在UI显示之前，开发者可以在`onForeground()`回调中开启定位功能，从而获取到当前的位置信息。
+例如，应用已获得地理位置权限。在UI显示之前，开发者可以在`onForeground()`回调中开启定位功能，从而获取到当前的位置信息。
 
-```ts
+<!-- @[onForeground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
   onForeground(): void {
     // 申请系统需要的资源，或者重新申请在onBackground()中释放的资源
   }
-  // ...
+
+// ···
 }
 ```
 
 
 ### onBackground()
 
-在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的UI完全不可见之后，系统触发[onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground)回调，回调后触发UIAbility实例切换至后台状态。开发者可以在该回调中释放UI不可见时的无用资源，例如停止定位功能，以节省系统的资源消耗。
+在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的UI完全不可见之后，系统触发[onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground)回调，将UIAbility实例切换至后台状态。开发者可以在该回调中释放UI不可见时的无用资源，例如停止定位功能，以节省系统的资源消耗。
 
 `onBackground()`执行时间较短，无法提供足够的时间做一些耗时动作。请勿在该方法中执行保存用户数据或执行数据库事务等耗时操作。
 
-```ts
+<!-- @[onBackground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
   onBackground(): void {
     // 释放UI不可见时无用的资源
   }
-  // ...
+
+// ···
 }
 ```
 
 
 ### onWindowStageWillDestroy()
-在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例销毁之前，系统触发[onWindowStageWillDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagewilldestroy12)回调。该回调在WindowStage销毁前执行，此时WindowStage可以使用。开发者可以在该回调用释放通过WindowStage获取的资源、注销WindowStage事件订阅等。
+在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例销毁之前，系统触发[onWindowStageWillDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagewilldestroy12)回调。该回调在WindowStage销毁前执行，此时WindowStage可以使用。开发者可以在该回调中释放通过WindowStage获取的资源、注销WindowStage事件订阅等。
 
-```ts
+<!-- @[onWindowStageWillDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-const DOMAIN_NUMBER: number = 0xFF00;
+const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-  windowStage: window.WindowStage | undefined = undefined;
-  // ...
+  public windowStage: window.WindowStage | undefined = undefined;
+
+// ···
+
   onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 加载UI资源
     this.windowStage = windowStage;
-    // ...
+    // ···
   }
 
-  onWindowStageWillDestroy(windowStage: window.WindowStage) {
+  onWindowStageWillDestroy(windowStage: window.WindowStage): void {
     // 释放通过windowStage对象获取的资源
     // 在onWindowStageWillDestroy()中注销WindowStage事件订阅（获焦/失焦、切到前台/切到后台、前台可交互/前台不可交互）
     try {
@@ -170,29 +211,38 @@ export default class EntryAbility extends UIAbility {
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      hilog.error(DOMAIN_NUMBER, 'testTag', `Failed to disable the listener for windowStageEvent. Code is ${code}, message is ${message}`);
+      hilog.error(DOMAIN, 'testTag', `Failed to disable the listener for windowStageEvent. Code is ${code}, message is ${message}`);
     }
   }
+
+// ···
 }
 ```
 
 ### onWindowStageDestroy()
 在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例销毁之前，系统触发[onWindowStageDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy)回调，开发者可以在该回调中释放UI资源。该回调在WindowStage销毁后执行，此时WindowStage不可以使用。
 
-```ts
+<!-- @[onWindowStageDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 加载UI资源
+    // ···
   }
 
-  onWindowStageDestroy() {
+// ···
+
+  onWindowStageDestroy(): void {
     // 释放UI资源
   }
+  // ···
 }
 ```
 
@@ -200,31 +250,38 @@ export default class EntryAbility extends UIAbility {
 
 在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例销毁之前，系统触发[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)回调。该回调是UIAbility接收到的最后一个生命周期回调，开发者可以在onDestroy()回调中进行系统资源的释放、数据的保存等操作。
 
-例如，调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法停止当前UIAbility实例，执行onDestroy()回调，并完成UIAbility实例的销毁。
-<!--RP1-->再比如，用户使用最近任务列表关闭该UIAbility实例，执行onDestroy()回调，并完成UIAbility实例的销毁。<!--RP1End-->
+例如，开发者调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法通知系统停止当前UIAbility实例时，系统会触发onDestroy()回调。
+<!--RP1-->再比如，用户在最近任务列表中上滑关闭UIAbility实例时，系统会触发onDestroy()回调。<!--RP1End-->
 
-```ts
+<!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
-  onDestroy() {
+  onDestroy(): void {
     // 系统资源的释放、数据的保存等
   }
+
+// ···
 }
 ```
-
 
 ### onNewWant()
 
 当应用的UIAbility实例已创建，再次调用方法启动该UIAbility实例时，系统触发该UIAbility的[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)回调。开发者可以在该回调中更新要加载的资源和数据等，用于后续的UI展示。
 
-```ts
+<!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
   onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // 更新资源、数据
@@ -236,4 +293,4 @@ export default class EntryAbility extends UIAbility {
 
 针对UIAbility生命周期，有以下相关实例可供参考：
 
-- [UIAbility和自定义组件生命周期（ArkTS）（API9）](https://gitee.com/openharmony/codelabs/blob/master/Ability/UIAbilityLifeCycle/README.md)
+- [UIAbility和自定义组件生命周期（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/blob/master/Ability/UIAbilityLifeCycle/README.md)

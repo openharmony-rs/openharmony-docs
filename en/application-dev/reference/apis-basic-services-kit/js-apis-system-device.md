@@ -1,10 +1,20 @@
 # @system.device (Device Information)
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **device** module provides APIs for checking information about the current device.
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 6. It is recommended that you use [`@ohos.deviceInfo`](js-apis-device-info.md).
+> - Module maintenance policy:
+>
+>    \- For lite wearables, this module is constantly maintained and available.
+>
+>    \- For other device types, this module is no longer maintained since API version 6, and you can use the [@ohos.data.storage](../apis-arkdata/js-apis-data-storage.md) module instead.
 >
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 

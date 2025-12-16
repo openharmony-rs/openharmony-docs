@@ -1,4 +1,10 @@
 # @ohos.distributedBundle (Distributed Bundle Management) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The distributedBundle module manages distributed bundles.
 
@@ -12,7 +18,7 @@ The distributedBundle module manages distributed bundles.
 
 ## Modules to Import
 
-```
+```ts
 import distributedBundle from '@ohos.distributedBundle';
 ```
 

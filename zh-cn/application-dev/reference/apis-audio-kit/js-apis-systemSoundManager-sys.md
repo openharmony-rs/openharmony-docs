@@ -1,4 +1,10 @@
 # @ohos.multimedia.systemSoundManager (系统声音管理)(系统接口)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 系统声音管理提供管理系统声音的一些基础能力，包括对系统铃声的资源设置与读取、获取系统铃声播放器等。
 
@@ -26,6 +32,7 @@ import { systemSoundManager } from '@kit.AudioKit';
 | TONE_CATEGORY_NOTIFICATION<sup>12+</sup> | number | 4   | 通知铃声类别。 |
 | TONE_CATEGORY_ALARM<sup>12+</sup>        | number | 8   | 闹钟铃声类别。 |
 | TONE_CATEGORY_CONTACTS<sup>20+</sup>     | number | 16  | 联系人铃声类别。 |
+| TONE_CATEGORY_NOTIFICATION_APP<sup>22+</sup>     | number | 32  | 应用级通知铃声类别。 |
 
 ## RingtoneType
 
@@ -123,7 +130,7 @@ getTitle(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -153,12 +160,12 @@ setTitle(title: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -186,7 +193,7 @@ getFileName(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |---------| -------------------- |
@@ -217,12 +224,12 @@ setFileName(name: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -250,7 +257,7 @@ getUri(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |---------| -------------------- |
@@ -280,7 +287,7 @@ getCustomizedType(): ToneCustomizedType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -310,12 +317,12 @@ setCategory(category: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
 | 202   | Caller is not a system application. |
-| 401   | The parameters check failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -343,7 +350,7 @@ getCategory(): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -374,7 +381,7 @@ setMediaType(type: MediaType): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 |-------| -------------------- |
@@ -406,7 +413,7 @@ getMediaType(): MediaType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -450,7 +457,7 @@ createCustomizedToneAttrs(): ToneAttrs
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -534,11 +541,11 @@ getUri(): string
 
 | 类型    | 说明  |
 |--------|-----|
-| string | uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 |
+| string | uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -568,7 +575,7 @@ getTitle(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -598,7 +605,7 @@ getFileName(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
@@ -609,12 +616,103 @@ getFileName(): string
 ```ts
 toneHapticsAttrs.getFileName();
 ```
+### getGentleUri<sup>22+</sup>
+
+getGentleUri(): string | null
+
+获取柔和振动资源路径。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**返回值：**
+
+| 类型    | 说明  |
+|--------|-----|
+| string \| null | 柔和振动的uri（如：'/data/storage/el2/base/haptics/synchronized/alarms/test.json'）。 如果不存在柔和振动，则uri为空。 柔和振动是指马达振动强度较标准较弱。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息              |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**示例：**
+
+```ts
+toneHapticsAttrs.getGentleUri();
+```
+
+### getGentleTitle<sup>22+</sup>
+
+getGentleTitle(): string | null
+
+获取柔和振动标题。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**返回值：**
+
+| 类型    | 说明  |
+|--------|-----|
+| string \| null | 柔和振动的标题。如果不存在柔和振动，则振动标题为空。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息              |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**示例：**
+
+```ts
+toneHapticsAttrs.getGentleTitle();
+```
+
+### getGentleFileName<sup>22+</sup>
+
+getGentleFileName(): string | null
+
+获取柔和振动文件名。
+
+**系统接口：** 该接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**返回值：**
+
+| 类型    | 说明  |
+|--------|-----|
+| string \| null | 柔和振动文件名，振动文件为Json格式。如果不存在柔和振动，则振动文件名为空。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息              |
+|---------| -------------------- |
+| 202     | Caller is not a system application. |
+
+**示例：**
+
+```ts
+toneHapticsAttrs.getGentleFileName();
+```
 
 ## ToneHapticsAttrsArray<sup>14+</sup>
 
 type ToneHapticsAttrsArray = Array&lt;ToneHapticsAttrs&gt;
 
 系统铃音的振动属性数组。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
@@ -730,9 +828,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the system ringtone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the system ringtone uri ${err}`);
+  console.info('Succeeded in doing setSystemRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -815,9 +913,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemRingtoneUri(context, type).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the system ringtone uri is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system ringtone uri ${err}`);
+  console.info('Succeeded in doing getSystemRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -903,10 +1001,10 @@ let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefi
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemRingtonePlayer(context, type).then((value: systemSoundManager.RingtonePlayer) => {
-  console.info(`Promise returned to indicate that the value of the system ringtone player is obtained.`);
+  console.info('Succeeded in doing getSystemRingtonePlayer.');
   systemRingtonePlayer = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system ringtone player ${err}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -936,7 +1034,7 @@ setRingtoneUri(context: BaseContext, uri: string, type: RingtoneType): Promise&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -957,9 +1055,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setRingtoneUri(context, uri, type).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the system ringtone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the system ringtone uri ${err}`);
+  console.info('Succeeded in doing setRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -988,7 +1086,7 @@ getRingtoneUri(context: BaseContext, type: RingtoneType): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1008,9 +1106,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getRingtoneUri(context, type).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the system ringtone uri is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system ringtone uri ${err}`);
+  console.info('Succeeded in doing getRingtoneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1039,7 +1137,7 @@ getRingtonePlayer(context: BaseContext, type: RingtoneType): Promise&lt;Ringtone
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1059,10 +1157,10 @@ let systemRingtonePlayer: systemSoundManager.RingtonePlayer | undefined = undefi
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemSoundManager.RingtonePlayer) => {
-  console.info(`Promise returned to indicate that the value of the system ringtone player is obtained.`);
+  console.info('Succeeded in doing getRingtonePlayer.');
   systemRingtonePlayer = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system ringtone player ${err}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1092,7 +1190,7 @@ setSystemToneUri(context: BaseContext, uri: string, type: SystemToneType): Promi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1113,9 +1211,9 @@ let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setSystemToneUri(context, uri, type).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the system tone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the system tone uri ${err}`);
+  console.info('Succeeded in doing setSystemToneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setSystemToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1144,7 +1242,7 @@ getSystemToneUri(context: BaseContext, type: SystemToneType): Promise&lt;string&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1164,9 +1262,9 @@ let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemToneUri(context, type).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of the system tone uri is obtained ${value}.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system tone uri ${err}`);
+  console.info('Succeeded in doing getSystemToneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1195,7 +1293,7 @@ getSystemTonePlayer(context: BaseContext, type: SystemToneType): Promise&lt;Syst
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -1215,10 +1313,10 @@ let systemTonePlayer: systemSoundManager.SystemTonePlayer | undefined = undefine
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemTonePlayer(context, type).then((value: systemSoundManager.SystemTonePlayer) => {
-  console.info(`Promise returned to indicate that the value of the system tone player is obtained.`);
+  console.info('Succeeded in doing getSystemTonePlayer.');
     systemTonePlayer = value;
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system tone player ${err}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemTonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1247,12 +1345,12 @@ getDefaultRingtoneAttrs(context: BaseContext, type: RingtoneType): Promise&lt;To
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1267,9 +1365,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getDefaultRingtoneAttrs(context, type).then((value: systemSoundManager.ToneAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attributes of the default ringtone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the default ring tone attrs ${err}`);
+  console.info('Succeeded in doing getDefaultRingtoneAttrs.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getDefaultRingtoneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1298,12 +1396,12 @@ getRingtoneAttrList(context: BaseContext, type: RingtoneType): Promise&lt;ToneAt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1318,9 +1416,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getRingtoneAttrList(context, type).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of ringtone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of ringtone ${err}`);
+  console.info('Succeeded in doing getRingtoneAttrList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRingtoneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1349,12 +1447,12 @@ getDefaultSystemToneAttrs(context: BaseContext, type: SystemToneType): Promise&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1369,9 +1467,9 @@ let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getDefaultSystemToneAttrs(context, type).then((value: systemSoundManager.ToneAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attributes of the system ringtone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the system tone attrs ${err}`);
+  console.info('Succeeded in doing getDefaultSystemToneAttrs.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getDefaultSystemToneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1400,12 +1498,12 @@ getSystemToneAttrList(context: BaseContext, type: SystemToneType): Promise&lt;To
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1420,9 +1518,9 @@ let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getSystemToneAttrList(context, type).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of system tone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of system tone ${err}`);
+  console.info('Succeeded in doing getSystemToneAttrList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getSystemToneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1450,12 +1548,12 @@ getDefaultAlarmToneAttrs(context: BaseContext): Promise&lt;ToneAttrs&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1469,15 +1567,15 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: systemSoundManager.ToneAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attributes of the default alarm tone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the default alarm tone attrs ${err}`);
+  console.info('Succeeded in doing getDefaultAlarmToneAttrs.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getDefaultAlarmToneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### setAlarmToneUri<sup>12+</sup>
 
-setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
+setAlarmToneUri(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 设置系统闹铃uri。使用Promise异步回调。
 
@@ -1489,7 +1587,7 @@ setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
 
 | 参数名   | 类型        | 必填 | 说明   |
 | -------- | --------- | ---- |--------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前应用的上下文。                                                                           |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。                                                                           |
 | uri      | string    | 是   | 被设置的系统闹铃的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
 
 **返回值：**
@@ -1497,6 +1595,17 @@ setAlarmToneUri(context: Context, uri: string): Promise&lt;void&gt;
 | 类型                | 说明                   |
 | ------------------- |----------------------|
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
+
+| 错误码ID | 错误信息              |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400103 | I/O error. |
+| 20700001 | Tone type mismatch, e.g. tone of input uri is not an alarm tone. |
 
 **示例：**
 
@@ -1510,15 +1619,15 @@ let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the alarm tone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the alarm tone uri ${err}`);
+  console.info('Succeeded in doing setAlarmToneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setAlarmToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### getAlarmToneUri<sup>12+</sup>
 
-getAlarmToneUri(context: Context): Promise&lt;string&gt;
+getAlarmToneUri(context: BaseContext): Promise&lt;string&gt;
 
 获取系统当前闹铃uri。使用Promise异步回调。
 
@@ -1530,13 +1639,23 @@ getAlarmToneUri(context: Context): Promise&lt;string&gt;
 
 | 参数名   | 类型      | 必填 | 说明              |
 | -------- | --------| ---- |-----------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前应用的上下文。  |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。  |
 
 **返回值：**
 
 | 类型                    | 说明                    |
 |-----------------------|-----------------------|
 | Promise&lt;string&gt; | Promise对象，返回系统当前闹铃uri。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
+
+| 错误码ID | 错误信息              |
+| ------- | --------------------- |
+| 202 | Caller is not a system application. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400103 | I/O error. |
 
 **示例：**
 
@@ -1549,9 +1668,9 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getAlarmToneUri(context).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of alarm tone uri.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the alarm tone uri ${err}`);
+  console.info('Succeeded in doing getAlarmToneUri.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getAlarmToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1579,12 +1698,12 @@ getAlarmToneAttrList(context: BaseContext): Promise&lt;ToneAttrsArray&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1598,15 +1717,15 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of alarm tone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of alarm tone ${err}`);
+  console.info('Succeeded in doing getAlarmToneAttrList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getAlarmToneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### openAlarmTone<sup>12+</sup>
 
-openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
+openAlarmTone(context: BaseContext, uri: string): Promise&lt;number&gt;
 
 打开闹铃文件。使用Promise异步回调。
 
@@ -1618,7 +1737,7 @@ openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
 
 | 参数名   | 类型       | 必填 | 说明                                                                                  |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前应用的上下文。                                                                           |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。                                                                           |
 | uri      | string   | 是   | 被设置的系统闹铃的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
 
 **返回值：**
@@ -1629,12 +1748,12 @@ openAlarmTone(context: Context, uri: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700001 | Tone type mismatch, e.g. tone of uri is notification instead of alarm. |
 
@@ -1650,9 +1769,9 @@ let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
-  console.info(`Promise returned to indicate the value of fd.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to open alarm tone ${err}`);
+  console.info('Succeeded in doing openAlarmTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to openAlarmTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1680,12 +1799,12 @@ close(fd: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1700,9 +1819,9 @@ let fd = 50; // 需更改为目标铃声的fd。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.close(fd).then(() => {
-  console.info(`Promise returned to indicate that the fd has been close.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to close fd ${err}`);
+  console.info('Succeeded in doing close.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to close. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1734,13 +1853,13 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
 | 20700004 | Data size exceeds the limit. |
@@ -1768,9 +1887,9 @@ let path = 'file://data/test.ogg'; // 需更改为实际铃音uri。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of tone uri in ringtone library.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to add customized tone ${err}`);
+  console.info('Succeeded in doing addCustomizedTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to addCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1804,13 +1923,13 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
 | 5400103 | I/O error. |
 | 20700004 | Data size exceeds the limit. |
@@ -1840,9 +1959,9 @@ let length = 50; // 需更改为实际所需数据长度。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, length).then((value: string) => {
-  console.info(`Promise returned to indicate that the value of tone uri in ringtone library.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to add customized tone ${err}`);
+  console.info('Succeeded in doing addCustomizedTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to addCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1873,14 +1992,14 @@ removeCustomizedTone(context: BaseContext, uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 201     | Permission denied. |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102     | Operation is not allowed, e.g. ringtone of this uri is not customized. |
 | 5400103 | I/O error. |
 
 **示例：**
@@ -1895,9 +2014,9 @@ let uri = 'file://data/test.wav'; // 需更改为目标铃声文件的uri。
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
-  console.info(`Promise returned to indicate that the customized tone has been deleted.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to delete customized tone ${err}`);
+  console.info('Succeeded in doing removeCustomizedTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to removeCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1926,12 +2045,12 @@ getToneHapticsSettings(context: BaseContext, type: ToneHapticsType): Promise&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -1947,9 +2066,9 @@ let type: systemSoundManager.ToneHapticsType = systemSoundManager.ToneHapticsTyp
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getToneHapticsSettings(context, type).then((value: systemSoundManager.ToneHapticsSettings) => {
-  console.info(`Promise returned to indicate that the value of the tone haptics settings is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the tone haptics settings ${err}`);
+  console.info('Succeeded in doing getToneHapticsSettings.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getToneHapticsSettings. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -1979,13 +2098,13 @@ setToneHapticsSettings(context: BaseContext, type: ToneHapticsType, settings: To
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not valid. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2005,9 +2124,9 @@ let toneHapticsSettings: systemSoundManager.ToneHapticsSettings = {
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setToneHapticsSettings(context, type, toneHapticsSettings).then(() => {
-  console.info(`Promise returned to indicate a successful setting of the tone haptics.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to set the tone haptics settings ${err}`);
+  console.info('Succeeded in doing setToneHapticsSettings.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to setToneHapticsSettings. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2036,12 +2155,12 @@ getToneHapticsList(context: BaseContext, isSynced: boolean): Promise&lt;ToneHapt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2056,9 +2175,9 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getToneHapticsList(context, false).then((value: systemSoundManager.ToneHapticsAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of tone haptics is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of tone haptics ${err}`);
+  console.info('Succeeded in doing getToneHapticsList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getToneHapticsList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2087,13 +2206,13 @@ getHapticsAttrsSyncedWithTone(context: BaseContext, toneUri: string): Promise&lt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID   | 错误信息              |
 |---------| -------------------- |
 | 202     | Caller is not a system application. |
-| 401     | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not used for tones. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2109,15 +2228,15 @@ let toneUri: string = '/data/storage/el2/base/RingTone/alarms/test.ogg'; // 需�
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then((value: systemSoundManager.ToneHapticsAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attribute of tone haptics is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute of tone haptics ${err}`);
+  console.info('Succeeded in doing getHapticsAttrsSyncedWithTone.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getHapticsAttrsSyncedWithTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ### openToneHaptics<sup>14+</sup>
 
-openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
+openToneHaptics(context: BaseContext, hapticsUri: string): Promise&lt;number&gt;
 
 打开系统铃音的振动。使用Promise异步回调。
 
@@ -2129,7 +2248,7 @@ openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
 
 | 参数名   | 类型       | 必填 | 说明                                                                                  |
 | -------- | ---------| ---- |-------------------------------------------------------------------------------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是   | 当前应用的上下文。           |
+| context  | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是   | 当前应用的上下文。           |
 | hapticsUri      | string   | 是   | 待打开系统铃音的振动的uri，资源支持可参考[media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md)。 |
 
 **返回值：**
@@ -2140,13 +2259,13 @@ openToneHaptics(context: Context, hapticsUri: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
 | 202 | Caller is not a system application. |
-| 401 | The parameters check failed. |
-| 5400102 | Operation is not allowed, e.g. ringtone to add is not customized. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 5400102 | Operation not allowed. For example, the input URI is not one for haptics. |
 | 5400103 | I/O error. |
 | 20700003 | Unsupported operation. |
 
@@ -2162,9 +2281,9 @@ let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json';
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: number) => {
-  console.info(`Promise returned to indicate the value of fd.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to open haptics ${err}`);
+  console.info('Succeeded in doing openToneHaptics.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to openToneHaptics. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2192,7 +2311,7 @@ getCurrentRingtoneAttribute(type: RingtoneType): Promise&lt;ToneAttrs&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2208,9 +2327,9 @@ let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RING
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((value: systemSoundManager.ToneAttrs) => {
-  console.info(`Promise returned to indicate that the value of the attributes of the current ringtone is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the current ringtone attribute ${err}`);
+  console.info('Succeeded in doing getCurrentRingtoneAttribute.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getCurrentRingtoneAttribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2238,7 +2357,7 @@ openToneList(uriList: Array\<string>): Promise\<Array\<[string, number, SystemSo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2256,9 +2375,9 @@ let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrent
 ringPath = result.getUri();
 
 systemSoundManagerInstance.openToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info(`Promise returned to indicate that the value of the attribute list of system ringtones is obtained.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to get the attribute list of system ringtones ${err}`);
+  console.info('Succeeded in doing openToneList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to openToneList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -2288,7 +2407,7 @@ removeCustomizedToneList(uriList: Array\<string>): Promise\<Array\<[string, Syst
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息              |
 | ------- | --------------------- |
@@ -2307,59 +2426,67 @@ let result: systemSoundManager.ToneAttrs = systemSoundManagerInstance.getCurrent
 ringPath = result.getUri();
 
 systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: systemSoundManager.ToneAttrsArray) => {
-  console.info(`Promise returned to indicate that the customized tone list has been deleted.`);
-}).catch ((err: BusinessError) => {
-  console.error(`Failed to delete customized tone list ${err}`);
+  console.info('Succeeded in doing removeCustomizedToneList.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to removeCustomizedToneList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ## RingtonePlayer<sup>10+</sup>
 
-type RingtonePlayer = _RingtonePlayer;
+type RingtonePlayer = _RingtonePlayer
 
 系统铃音播放器对象。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 | 类型              |说明     |
 |-----------------|-------|
-| _RingtonePlayer | 系统铃音播放器。 |
+| [_RingtonePlayer](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneplayer) | 系统铃音播放器。 |
 
 ## SystemTonePlayer<sup>11+</sup>
 
-type SystemTonePlayer = _SystemTonePlayer;
+type SystemTonePlayer = _SystemTonePlayer
 
 系统提示音播放器对象。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 | 类型              | 说明        |
 |-----------------|-----------|
-| _SystemTonePlayer | 系统提示音播放器。 |
+| [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | 系统提示音播放器。 |
 
 ## RingtoneOptions<sup>10+</sup>
 
-type RingtoneOptions = _RingtoneOptions;
+type RingtoneOptions = _RingtoneOptions
 
 系统铃音播放器配置项。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 | 类型              | 说明          |
 |-----------------|-------------|
-| _RingtoneOptions | 系统铃音播放器配置项。 |
+| [_RingtoneOptions](js-apis-inner-multimedia-ringtonePlayer-sys.md#ringtoneoptions) | 系统铃音播放器配置项。 |
 
 ## SystemToneOptions<sup>11+</sup>
 
-type SystemToneOptions = _SystemToneOptions;
+type SystemToneOptions = _SystemToneOptions
 
 系统提示音播放器配置项。
+
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 
 | 类型              | 说明            |
 |-----------------|---------------|
-| _SystemToneOptions | 系统提示音音播放器配置项。 |
+| [_SystemToneOptions](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneoptions) | 系统提示音播放器配置项。 |
 
 
 

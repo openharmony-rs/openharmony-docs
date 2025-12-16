@@ -1,4 +1,14 @@
 # ArkWeb_JavaScriptBridgeData
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct {...} ArkWeb_JavaScriptBridgeData
+```
 
 ## 概述
 

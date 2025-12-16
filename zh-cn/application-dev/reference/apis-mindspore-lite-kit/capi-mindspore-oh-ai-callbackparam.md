@@ -1,5 +1,15 @@
 # OH_AI_CallBackParam
-<!--Kit_MindSpore Lite Kit--><!--System_AI-->
+
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_AI_CallBackParam {...} OH_AI_CallBackParam
+```
 
 ## 概述
 

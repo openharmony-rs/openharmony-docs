@@ -1,4 +1,10 @@
 # Hyperlink
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @pssea-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 超链接组件，组件宽高范围内点击实现跳转。
 
@@ -48,7 +54,7 @@ color(value: Color | number | string | Resource)
 
 | 参数名 | 类型                                                         | 必填 | 说明               |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 超链接文本的颜色。<br /><!--RP1-->默认值：'#ff007dff'<br />warable设备上默认值为：'ff1f71ff'<!--RP1End-->
+| value  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 超链接文本的颜色。<br/><!--RP1-->默认值：'#ff007dff'，显示为蓝色。<!--RP1End-->|
 
 ## 示例
 
@@ -62,6 +68,7 @@ struct HyperlinkExample {
     Column() {
       Column() {
         Hyperlink('https://example.com/') {
+          // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
           Image($r('app.media.bg'))
             .width(200)
             .height(100)

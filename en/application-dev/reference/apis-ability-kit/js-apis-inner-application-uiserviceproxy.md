@@ -1,5 +1,12 @@
 # UIServiceProxy
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @xhz-sz-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 UIServiceProxy functions as a proxy to send data from the UIServiceExtensionAbility client to the server.
 
 
@@ -7,7 +14,7 @@ UIServiceProxy functions as a proxy to send data from the UIServiceExtensionAbil
 >
 >  - The initial APIs of this module are supported since API version 14. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  - The APIs of this module can be used only in the stage model.
->  - The APIs of this module must be used in the main thread, but not in sub-threads such as Worker and TaskPool.
+>  - The APIs of this module must be used in the main thread, but not in child threads such as Worker and TaskPool.
 
 ## Modules to Import
 
@@ -59,10 +66,10 @@ struct UIServiceExtensionAbility {
   comProxy: common.UIServiceProxy | null = null;
   dataCallBack: common.UIServiceExtensionConnectCallback = {
     onData: (data: Record<string, Object>) => {
-      console.log(TAG + `dataCallBack received data: `, JSON.stringify(data));
+      console.info(`${TAG} dataCallBack received data: ${JSON.stringify(data)}.`);
     },
     onDisconnect: () => {
-      console.log(TAG + `dataCallBack onDisconnect`);
+      console.info(`${TAG} dataCallBack onDisconnect.`);
       this.comProxy = null;
     }
   }
@@ -104,29 +111,29 @@ struct UIServiceExtensionAbility {
       // Connect to the UIServiceExtensionAbility.
       context.connectUIServiceExtensionAbility(startWant, this.dataCallBack)
         .then((proxy: common.UIServiceProxy) => {
-          console.log(TAG + `try to connectUIServiceExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectUIServiceExtensionAbility ${proxy}}`);
           this.comProxy = proxy;
-          let formData: Record<string,string> = {
+          let formData: Record<string, string> = {
             'PATH': '/tmp/aaa.jpg'
           };
           try {
-            console.log(TAG + `sendData`);
+            console.info(`${TAG} sendData.`);
             // Send data to the UIServiceExtensionAbility.
             this.comProxy.sendData(formData);
           } catch (err) {
             let code = (err as BusinessError).code;
             let message = (err as BusinessError).message;
-            console.log(TAG + `sendData failed, code is ${code}, message is ${message}`);
+            console.error(`${TAG} sendData failed, code is ${code}, message is ${message}.`);
           }
         }).catch((err: Error) => {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        console.log(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+        console.error(`${TAG} connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}.`);
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.log(TAG + `connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}`);
+      console.error(`${TAG} connectUIServiceExtensionAbility failed, code is ${code}, message is ${message}.`);
     }
   }
 }

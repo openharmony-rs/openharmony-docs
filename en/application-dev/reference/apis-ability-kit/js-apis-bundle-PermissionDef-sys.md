@@ -1,6 +1,12 @@
 # PermissionDef (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **PermissionDef** module provides permission details defined in the configuration file.
+The module provides permission details defined in the configuration file.
 
 > **NOTE**
 >

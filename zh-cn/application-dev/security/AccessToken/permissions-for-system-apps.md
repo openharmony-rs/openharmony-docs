@@ -1,4 +1,11 @@
-# 可ACL申请的系统应用可用权限（系统授权）
+# 可使用ACL申请的系统应用可用权限（系统授权）
+
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @xia-bubai-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 在申请目标权限前，建议开发者先了解[不同权限的申请路径](determine-application-mode.md)，对权限的工作流程有基本了解后，再结合以下权限字段的具体说明，判断应用能否申请目标权限，提高开发效率。
 
@@ -9,6 +16,18 @@
 > - 以下权限可通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
+
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+允许应用订阅开机广播。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
 
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
@@ -286,6 +305,30 @@
 
 **起始版本**：11
 
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+允许应用读取无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+允许应用设置无障碍配置信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
 允许批量查询无障碍节点。
@@ -357,6 +400,20 @@
 **ACL使能**：true
 
 **起始版本**：8
+
+## ohos.permission.FORCE_FACTORY_RESET
+
+允许系统应用强制恢复设备至出厂设置，中途无法打断。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**ACL使能**：true
+
+**起始版本**：23
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -646,6 +703,22 @@
 
 **起始版本**：7
 
+## ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
+允许应用降级安装其他应用。
+
+获取该权限后，即使设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**ACL使能**：true
+
+**起始版本**：23
+
 ## ohos.permission.MANAGE_SHORTCUTS
 
 允许应用查询其他应用的快捷方式信息、启动其他应用的快捷方式。
@@ -888,6 +961,31 @@
 
 **起始版本**：10
 
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+允许在企业设备上安装企业MDM应用包。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+允许企业MDM应用在企业设备上自升级。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+
+**ACL使能**：true
+
+**起始版本**：10
+
 ## ohos.permission.UPDATE_MIGRATE
 
 允许升级过程中进行数据迁移。
@@ -1019,6 +1117,20 @@
 **ACL使能**：true
 
 **起始版本**：9
+
+## ohos.permission.HIVIEW_TRACE_MANAGE
+
+允许系统服务或系统应用打开或关闭系统trace。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
 
 ## ohos.permission.DEVICE_STANDBY_EXEMPTION
 
@@ -1723,18 +1835,6 @@
 **ACL使能**：true
 
 **起始版本**：10
-
-## ohos.permission.sec.ACCESS_UDID
-
-允许系统应用获取UDID。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：7
 
 ## ohos.permission.securityguard.REQUEST_SECURITY_MODEL_RESULT
 
@@ -2538,7 +2638,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：TRUE
+**ACL使能**：true
 
 **起始版本**：11
 
@@ -3154,7 +3254,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：TRUE
+**ACL使能**：true
 
 **起始版本**：12
 
@@ -3166,7 +3266,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：TRUE
+**ACL使能**：true
 
 **起始版本**：12
 
@@ -3178,7 +3278,7 @@
 
 **授权方式**：系统授权（system_grant）
 
-**ACL使能**：TRUE
+**ACL使能**：true
 
 **起始版本**：12
 
@@ -3830,18 +3930,6 @@
 
 **起始版本**：12
 
-## ohos.permission.GET_ETHERNET_LOCAL_MAC
-
-允许应用查询以太网当前MAC地址。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：13
-
 ## ohos.permission.ALLOW_SHOW_NON_SECURE_WINDOWS
 
 允许模态UIExtension取消对不安全窗口的隐藏。
@@ -3853,6 +3941,18 @@
 **ACL使能**：true
 
 **起始版本**：12
+
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+允许UIExtensionAbility显示在锁屏之上。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：14
 
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
@@ -3876,7 +3976,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3888,7 +3988,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -4318,24 +4418,6 @@
 
 **起始版本**：18
 
-## ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
-
-允许扩展外设驱动访问SCSI DDK接口开发SCSI Peripheral扩展外设驱动。
-
-支持以下类型的外设扩展驱动开发：
-外设以USB总线接入主机，且满足：
-
-1. 外设InterfaceClass为Mass Storage(0x08)、InterfaceSubClass为SCSI透明命令集(0x06)。
-2. 外设能够以对操作系统透明的方式来模拟SCSI设备。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：18
-
 ## ohos.permission.ACCESS_DDK_USB_SERIAL
 
 允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
@@ -4538,20 +4620,6 @@
 
 **起始版本**：19
 
-## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
-
-允许应用调用企业空间访问DLP文件的接口。
-
-**权限级别**：system_core
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：PC/2in1
-
-**起始版本**：20
-
 ## ohos.permission.UNINSTALL_PLUGIN_BUNDLE
 
 允许应用调用卸载插件的接口。
@@ -4674,7 +4742,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
@@ -4688,7 +4756,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
@@ -4802,6 +4870,20 @@
 
 **起始版本**：20
 
+## ohos.permission.INJECT_PLAYBACK_TO_AUDIO_CAPTURE
+
+允许系统应用将播放音频注入到录制音频。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：22
+
 ## ohos.permission.kernel.ALLOW_APP_CODE_DECRYPT
 
 允许系统应用或系统服务调用内核接口进行代码解密。
@@ -4820,7 +4902,7 @@
 
 ## ohos.permission.VIRUS_PROTECTION_SERVICE
 
-允许应用启动病毒查杀任务。
+允许应用启动病毒终止任务。
 
 **权限级别**：system_basic
 
@@ -4828,7 +4910,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -4870,7 +4952,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -4884,7 +4966,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | PC/2in1 | Tablet
+**支持设备**：PC/2in1
 
 **起始版本**：20
 
@@ -4928,7 +5010,7 @@
 
 **支持设备**：General
 
-**起始版本**：20
+**起始版本**：19
 
 ## ohos.permission.MANAGE_FILE_ENCRYPTION
 
@@ -5041,3 +5123,235 @@
 **支持设备**：General
 
 **起始版本**：20
+
+## ohos.permission.ACCESS_DISTRIBUTED_KEY_STORE
+
+允许应用使用分布式密钥能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet | PC/2in1 | Wearable | TV
+
+**起始版本**：20
+
+## ohos.permission.SANDBOX_ACCESS_MANAGER_EXT
+
+允许应用访问其它扩展应用的沙箱目录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：19
+
+## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
+
+允许系统应用查询独立二进制程序的证书信息。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+## ohos.permission.SET_DEVICE_INDEPENDENT_BINARY_CERT_STATUS
+
+允许系统应用设置独立二进制程序的证书状态。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+## ohos.permission.GET_SCREEN_CONTENT
+
+允许应用获取屏幕上的内容。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.SIMULATE_USER_INPUT
+
+允许应用模拟用户操作。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
+
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+允许应用访问兼容应用目录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**： Phone | PC/2in1 | Tablet
+
+**起始版本**：22
+
+## ohos.permission.MANAGE_SELF_SKILLS
+
+允许应用管理本应用的skills配置。
+
+获取该权限后，应用可管理自身的skills配置，扩展隐式匹配能力，如支持打开特定类型文件等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.DATA_IDENTIFY_ANONYMIZE
+
+允许系统应用调用数据识别脱敏能力。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：PC/2in1 | Phone | Tablet | TV | Car
+
+**起始版本**：22
+
+## ohos.permission.CAPTURE_SCREEN_ALL
+
+允许应用截取屏幕图像，包括隐私窗口。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：13
+
+## ohos.permission.GET_BACKGROUND_TASK_INFO
+
+允许应用获取后台任务状态信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.SET_BACKGROUND_TASK_STATE
+
+允许应用获取和设置特殊长时任务用户授权状态。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：23
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+允许系统应用拉起其他应用时设置拉起原因。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
+
+## ohos.permission.ACCESS_SUPER_HUB
+
+允许应用拉起"中转站"。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：12
+
+## ohos.permission.ACCESS_USER_ACCOUNT_INFO
+
+允许系统应用获取账号提供的数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
+
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18
+
+## ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+允许应用动态注册或删除应用自定义UTD数据类型。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：22

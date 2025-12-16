@@ -1,5 +1,11 @@
 # Subscribing to Common Events in Dynamic Mode
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 ## When to Use
 
@@ -14,66 +20,79 @@ Certain system common events [require specific permissions](../../security/Acces
 > The lifecycle of the subscriber object needs to be managed by the application. If the subscriber object is no longer used, it needs to be destroyed and released to avoid memory leakage.
 > 
 > The callback of common events in dynamic subscription mode is affected by the application status. When the application is in the background, the callback cannot receive common events subscribed dynamically. When the application is switched from the background to the foreground, the callback can receive common events listened for within 30 seconds before the switch.
+>
+> Common events between the main application and the cloned application are isolated from each other, that is, they cannot receive the common events mutually.
 
 ## Available APIs
 
-For details about the APIs, see [API Reference](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagersubscribe).
+For details about the APIs, see [@ohos.commonEventManager (Common Event)](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md).
 
 | API| Description|
 | -------- | -------- |
-| createSubscriber(subscribeInfo:&nbsp;[CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md),&nbsp;callback:&nbsp;AsyncCallback&lt;[CommonEventSubscriber](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscriber.md#how-to-use)&gt;):&nbsp;void| Creates a subscriber. This API uses an asynchronous callback to return the result.|
-| createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise&lt;CommonEventSubscriber&gt; | Creates a subscriber. This API uses a promise to return the result.|
-| subscribe(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback:&nbsp;AsyncCallback<CommonEventData\>):&nbsp;void | Subscribes to common events.|
+| [createSubscriber](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagercreatesubscriber)(subscribeInfo:&nbsp;CommonEventSubscribeInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventSubscriber&gt;):&nbsp;void | Creates a subscriber. This API uses an asynchronous callback to return the result.|
+| [createSubscriber](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1)(subscribeInfo:&nbsp;CommonEventSubscribeInfo):&nbsp;Promise&lt;CommonEventSubscriber&gt; | Creates a subscriber. This API uses a promise to return the result.|
+| [subscribe](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagersubscribe)(subscriber:&nbsp;CommonEventSubscriber,&nbsp;callback:&nbsp;AsyncCallback&lt;CommonEventData&gt;):&nbsp;void | Subscribes to common events.|
 
 
 ## How to Develop
 
 1. Import the **commonEventManager** module.
    
-   ```ts
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = 'ProcessModel';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. Create a **subscribeInfo** object. For details about the data types and parameters of the object, see [CommonEventSubscribeInfo](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventSubscribeInfo.md).
    
-   ```ts
+   <!-- @[CreateSubscriberInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // Used to save the created subscriber object for subsequent subscription and unsubscription.
    let subscriber: commonEventManager.CommonEventSubscriber | null = null;
-   //Subscriber information. Replace the event field with the actual event name.
+   // Subscriber information. Replace the event field with the actual event name.
    let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-       events: ['event'], // Subscribe to the common event screen-off.
+     events: [commonEventManager.Support.COMMON_EVENT_SCREEN_OFF], // Subscribe to the screen-off event.
    };
    ```
 
 3. Create a subscriber object and save the returned object for subsequent operations such as subscription, unsubscription, and event callback.
    
-   ```ts
+   <!-- @[CreateSubscriberCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // Callback for subscriber creation.
-   commonEventManager.createSubscriber(subscribeInfo, (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
-     if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
-       return;
-     }
-     hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
-     subscriber = data;
-   })
+   commonEventManager.createSubscriber(subscribeInfo,
+     (err: BusinessError, data: commonEventManager.CommonEventSubscriber) => {
+       if (err) {
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to create subscriber. Code is ${err.code}, message is ${err.message}`);
+         return;
+       }
+       hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in creating subscriber.');
+       subscriber = data;
+     })
    ```
 
 4. Create a subscription callback, which is triggered when an event is received. The data returned in the subscription callback contains information such as the common event name and data carried by the publisher. For details about the data types and parameters of the common event data, see [CommonEventData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventData.md).
    
-   ```ts
+   <!-- @[SubscribeToPublicEvents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets) -->
+   
+   ``` TypeScript
    // Callback for common event subscription.
    if (subscriber !== null) {
      commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
        if (err) {
-         hilog.error(DOMAIN_NUMBER, TAG, `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
+         hilog.error(DOMAIN_NUMBER, TAG,
+           `Failed to subscribe common event. Code is ${err.code}, message is ${err.message}`);
          return;
        }
-       // ...
+       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in subscribing, data is ${JSON.stringify(data)}`);
      })
    } else {
      hilog.error(DOMAIN_NUMBER, TAG, `Need create subscriber`);

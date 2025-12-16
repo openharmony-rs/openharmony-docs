@@ -134,7 +134,7 @@ https://gitee.com/openharmony/build/pulls/569/files
 
 ### INIT配置
 
-init相关配置请参考[启动子系统的规范要求](https://gitee.com/openharmony/docs/blob/master/zh-cn/readme/%E5%90%AF%E5%8A%A8%E6%81%A2%E5%A4%8D%E5%AD%90%E7%B3%BB%E7%BB%9F.md)即可。
+init相关配置请参考[启动子系统的规范要求](https://gitcode.com/openharmony/docs/blob/master/zh-cn/readme/%E5%90%AF%E5%8A%A8%E6%81%A2%E5%A4%8D%E5%AD%90%E7%B3%BB%E7%BB%9F.md)即可。
 
 ## **音频**
 
@@ -294,7 +294,7 @@ ADM结构框图如下，Audio Peripheral Drivers和Platform Drivers为平台适�
 
 根据接入的设备，选择Codec节点还是Accessory节点，配置硬件设备对应的私有属性（包含寄存器首地址，相关control寄存器地址）涉及Codec_config.hcs和DAI_config.hcs。
 
-配置相关介绍见[Audio](https://gitee.com/openharmony/docs/blob/master/zh-cn/device-dev/driver/driver-peripherals-audio-des.md) hcs配置章节以及ADM框架的audio_parse模块代码。
+配置相关介绍见[Audio](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/driver/driver-peripherals-audio-des.md) hcs配置章节以及ADM框架的audio_parse模块代码。
 
 ##### codec/accessory模块
 
@@ -1899,7 +1899,7 @@ struct v4l2_buffer {
 │   └── unittest      # input模块的单元测试代码。
 ```
 
-详细请参考input子系统[README](https://gitee.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md)
+详细请参考input子系统[README](https://gitcode.com/openharmony/drivers_peripheral/blob/master/input/README_zh.md)
 
 ### TP HDF驱动适配
 
@@ -2038,11 +2038,11 @@ chipConfig {
 
 ### 显示HDI
 
-[显示HDI](https://gitee.com/openharmony/drivers_peripheral/blob/master/display/README_zh.md)对图形服务提供显示驱动能力，包括显示图层的管理、显示内存的管理及硬件加速等。 显示HDI需要适配两部分：gralloc 和 display_device。
+[显示HDI](https://gitcode.com/openharmony/drivers_peripheral/blob/master/display/README_zh.md)对图形服务提供显示驱动能力，包括显示图层的管理、显示内存的管理及硬件加速等。 显示HDI需要适配两部分：gralloc 和 display_device。
 
 #### gralloc适配
 
-gralloc模块提供显示内存管理功能，OpenHarmony提供了使用与Hi3516DV300参考实现，厂商可根据实际情况参考适配，该实现基于drm开发，[源码链接](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/hal/default_standard)。
+gralloc模块提供显示内存管理功能，OpenHarmony提供了使用与Hi3516DV300参考实现，厂商可根据实际情况参考适配，该实现基于drm开发，[源码链接](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/hal/default_standard)。
 
 drm设备节点定义在//drivers_peripheral/display/hal/default_standard/srd/display_gralloc/display_gralloc_gbm.c文件中，可根据实际情况修改。
 
@@ -2064,7 +2064,7 @@ const char *g_drmFileNode = "/dev/dri/card0";
 
 display device模块提供显示设备管理、layer管理、硬件加速等功能。
 
-OpenHarmony提供了[基于drm的Hi3516DV300芯片的参考实现](https://gitee.com/openharmony/drivers_peripheral/tree/master/display/hal/default_standard/src/display_device),该实现默认支持硬件合成；
+OpenHarmony提供了[基于drm的Hi3516DV300芯片的参考实现](https://gitcode.com/openharmony/drivers_peripheral/tree/master/display/hal/default_standard/src/display_device),该实现默认支持硬件合成；
 
 如开发板不支持硬件合成，需要在drm_display.cpp文件中跳过gfx的初始化，
 

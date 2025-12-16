@@ -1,6 +1,13 @@
 # @ohos.app.ability.quickFixManager (quickFixManager) (System API)
 
-The **quickFixManager** module provides APIs for quick fix. With quick fix, you can fix bugs in your application by applying patches, which is more efficient than by updating the entire application.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The quickFixManager module provides APIs for quick fix. With quick fix, you can fix bugs in your application by applying patches, which is more efficient than by updating the entire application.
 
 > **NOTE**
 >
@@ -21,11 +28,11 @@ Defines the quick fix information at the HAP file level.
 
 **System API**: This is a system API.
 
-| Name       | Type                | Read-only| Mandatory| Description                                                        |
+| Name       | Type                | Read-only| Optional| Description                                                        |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| moduleName    | string               | Yes|  Yes  | Name of the HAP file.                              |
-| originHapHash    | string            | Yes| Yes  | Hash value of the HAP file.                              |
-| quickFixFilePath    | string         | Yes| Yes  | Installation path of the quick fix patch file.                              |
+| moduleName    | string               | Yes|  No  | Name of the HAP file.                              |
+| originHapHash    | string            | Yes|  No  | Hash value of the HAP file.                              |
+| quickFixFilePath    | string         | Yes|  No  | Installation path of the quick fix patch file.                              |
 
 ## ApplicationQuickFixInfo
 
@@ -35,14 +42,14 @@ Defines the quick fix information at the application level.
 
 **System API**: This is a system API.
 
-| Name       | Type                | Read-only| Mandatory| Description                                                        |
+| Name       | Type                | Read-only| Optional| Description                                                        |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| bundleName    | string               | Yes| Yes  | Bundle name.                      |
-| bundleVersionCode    | number        | Yes| Yes  | Internal version number of the application.                              |
-| bundleVersionName    | string        | Yes| Yes  | Version number of the application that is shown to users.                              |
-| quickFixVersionCode    | number      | Yes| Yes  | Version code of the quick fix patch package.                              |
-| quickFixVersionName    | string      | Yes| Yes  | Text description of the version number of the quick fix patch package.                              |
-| hapModuleQuickFixInfo    | Array\<[HapModuleQuickFixInfo](#hapmodulequickfixinfo)>   | Yes| Yes  | Quick fix information at the HAP file level.    |
+| bundleName    | string               | Yes| No  | Bundle name.                      |
+| bundleVersionCode    | number        | Yes| No  | Internal version number of the application.                              |
+| bundleVersionName    | string        | Yes| No  | Version number of the application that is shown to users.                              |
+| quickFixVersionCode    | number      | Yes| No  | Version code of the quick fix patch package.                              |
+| quickFixVersionName    | string      | Yes| No  | Text description of the version number of the quick fix patch package.                              |
+| hapModuleQuickFixInfo    | Array\<[HapModuleQuickFixInfo](#hapmodulequickfixinfo)>   | Yes| No  | Quick fix information at the HAP file level.    |
 
 ## quickFixManager.applyQuickFix
 
@@ -65,7 +72,7 @@ Applies a quick fix patch. This API uses an asynchronous callback to return the 
 
 **Error codes**
 
-If an error occurs during patch installation, the error code and message are returned through the common event [COMMON_EVENT_QUICK_FIX_APPLY_RESULT](../apis-basic-services-kit/common_event/commonEvent-definitions.md#common_event_quick_fix_apply_result9).
+If an error occurs during patch installation, the error code and message are returned through the common event [COMMON_EVENT_QUICK_FIX_APPLY_RESULT](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_quick_fix_apply_result).
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
@@ -74,7 +81,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied. |
 | 202      | Not system application. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 18500002 | The specified quick fix is invalid. It may not exist or inaccessible. |
+| 18500002 | Invalid patch package. |
 | 18500008 | Internal error. |
 
 > **NOTE**
@@ -126,7 +133,7 @@ Applies a quick fix patch. This API uses a promise to return the result.
 
 **Error codes**
 
-If an error occurs during patch installation, the error code and message are returned through the common event [COMMON_EVENT_QUICK_FIX_APPLY_RESULT](../apis-basic-services-kit/common_event/commonEvent-definitions.md#common_event_quick_fix_apply_result9).
+If an error occurs during patch installation, the error code and message are returned through the common event [COMMON_EVENT_QUICK_FIX_APPLY_RESULT](../apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_quick_fix_apply_result).
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
@@ -135,7 +142,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied. |
 | 202      | Not system application. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 18500002 | The specified quick fix is invalid. It may not exist or inaccessible. |
+| 18500002 | Invalid patch package. |
 | 18500008 | Internal error. |
 
 **Example**
@@ -287,8 +294,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | The application does not have permission to call the interface. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 18500009 | The application has an ongoing quick fix task. |
@@ -339,8 +346,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | The application does not have permission to call the interface. |
+| 202      | The application is not system-app, can not use system-api. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 18500009 | The application has an ongoing quick fix task. |

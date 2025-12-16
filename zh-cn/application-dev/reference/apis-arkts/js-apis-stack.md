@@ -1,4 +1,10 @@
 # @ohos.util.Stack (线性容器Stack)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 Stack基于数组的数据结构实现，特点是先进后出，只能在一端进行数据的插入和删除。
 
@@ -12,6 +18,8 @@ Stack和[Queue](js-apis-queue.md)相比，Queue基于循环队列实现，只能
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -54,7 +62,7 @@ Stack的构造函数。
 **示例：**
 
 ```ts
-let stack : Stack<number | string | Object> = new Stack();
+let stack = new Stack<number | string | Object>();
 ```
 
 
@@ -90,16 +98,17 @@ push(item: T): T
 
 **示例：**
 
-```
+```ts
 class C1 {
   name: string = ""
   age: string = ""
 }
-let stack : Stack<number | string | C1> = new Stack();
+let stack = new Stack<number | string | C1>();
 let result = stack.push("a");
 let result1 = stack.push(1);
 let c : C1  = {name : "Dylan", age : "13"};
 let result2 = stack.push(c);
+console.info("length:", stack.length);  // length: 3
 ```
 
 ### pop
@@ -129,7 +138,7 @@ pop(): T
 **示例：**
 
 ```ts
-let stack : Stack<number> = new Stack();
+let stack = new Stack<number>();
 stack.push(2);
 stack.push(4);
 stack.push(5);
@@ -143,7 +152,7 @@ console.info("result = " + result); // result = 4
 
 peek(): T
 
-返回栈顶元素。
+返回栈顶元素，栈为空时返回undefined。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -153,7 +162,7 @@ peek(): T
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回栈顶元素。 |
+| T | 返回栈顶元素，栈为空时返回undefined。 |
 
 **错误码：**
 
@@ -166,12 +175,13 @@ peek(): T
 **示例：**
 
 ```ts
-let stack : Stack<number> = new Stack();
+let stack = new Stack<number>();
 stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(2);
 let result = stack.peek();
+console.info("result:", result);  // result: 2
 ```
 
 ### locate
@@ -207,12 +217,13 @@ locate(element: T): number
 **示例：**
 
 ```ts
-let stack : Stack<number> = new Stack();
+let stack = new Stack<number>();
 stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(2);
-let result = stack.locate(2);
+let result = stack.locate(5);
+console.info("result:", result);  // result: 2
 ```
 
 ### forEach
@@ -253,20 +264,18 @@ callbackFn的参数说明：
 **示例：**
 
 ```ts
-let stack : Stack<number> = new Stack();
+let stack = new Stack<number>();
 stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(4);
-stack.forEach((value : number, index ?: number) :void => {
+stack.forEach((value : number, index: number) :void => {
   console.info("value:" + value, "index:" + index);
 });
-/**
- * value:2 index:0
- * value:4 index:1
- * value:5 index:2
- * value:4 index:3
- */
+// value:2 index:0
+// value:4 index:1
+// value:5 index:2
+// value:4 index:3
 ```
 
 ### isEmpty
@@ -296,12 +305,13 @@ isEmpty(): boolean
 **示例：**
 
 ```ts
-let stack : Stack<number> = new Stack();
+let stack = new Stack<number>();
 stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(4);
 let result = stack.isEmpty();
+console.info("result:", result);  // result: false
 ```
 
 ### [Symbol.iterator]
@@ -330,24 +340,30 @@ let result = stack.isEmpty();
 
 **示例：**
 ```ts
-let stack : Stack<number> = new Stack();
+let stack = new Stack<number>();
 stack.push(2);
 stack.push(4);
 stack.push(5);
 stack.push(4);
 
 // 使用方法一：
-while(!stack.isEmpty()) {
-  // 业务逻辑
-  let item = stack.pop();
-  console.info("value:" + item);
+for (let value of stack) {
+  console.info("value:", value);
 }
+// value: 2
+// value: 4
+// value: 5
+// value: 4
 
 // 使用方法二：
 let iter = stack[Symbol.iterator]();
 let temp: IteratorResult<number> = iter.next().value;
 while(temp != undefined) {
-  console.info("value:" + temp);
+  console.info("value: " + temp);
   temp = iter.next().value;
 }
+// value: 2
+// value: 4
+// value: 5
+// value: 4
 ```

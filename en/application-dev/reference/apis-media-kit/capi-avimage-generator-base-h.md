@@ -1,8 +1,16 @@
 # avimage_generator_base.h
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The **avimage_generator_base.h** file declares the enums used by the AVImageGenerator.
+The file declares the enums used by the AVImageGenerator.
+
+**File to include**: <multimedia/player_framework/avimage_generator_base.h>
 
 **Library**: libavimage_generator.so
 
@@ -24,7 +32,7 @@ The **avimage_generator_base.h** file declares the enums used by the AVImageGene
 
 ### OH_AVImageGenerator_QueryOptions
 
-```
+```c
 enum OH_AVImageGenerator_QueryOptions
 ```
 

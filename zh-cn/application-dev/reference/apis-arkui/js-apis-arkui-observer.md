@@ -1,12 +1,19 @@
 # @ohos.arkui.observer (无感监听)
 
-提供UI组件行为变化的无感监听能力。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+提供UI组件行为变化的无感监听能力。推荐使用[UIObserver](./arkts-apis-uicontext-uiobserver.md)进行组件监听。
 
 > **说明：**
 >
-> 从API Version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
+> - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
 
 
 ## 导入模块
@@ -23,17 +30,17 @@ NavDestination组件状态。
 
 | 名称      | 值  | 说明                     |
 | --------- | --- | ------------------------ |
-| ON_SHOWN  | 0   | NavDestination组件显示。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_HIDDEN | 1   | NavDestination组件隐藏。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_APPEAR<sup>12+</sup> | 2   | NavDestination从组件树上挂载。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_DISAPPEAR<sup>12+</sup> | 3   | NavDestination从组件树上卸载。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_SHOW<sup>12+</sup> | 4   | NavDestination组件显示之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_HIDE<sup>12+</sup> | 5   | NavDestination组件隐藏之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| ON_WILL_APPEAR<sup>12+</sup>| 6   | NavDestination挂载到组件树之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
-| ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
-| ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_SHOWN  | 0   | NavDestination组件显示。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_HIDDEN | 1   | NavDestination组件隐藏。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_APPEAR<sup>12+</sup> | 2   | NavDestination从组件树上挂载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_DISAPPEAR<sup>12+</sup> | 3   | NavDestination从组件树上卸载。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_SHOW<sup>12+</sup> | 4   | NavDestination组件显示之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_HIDE<sup>12+</sup> | 5   | NavDestination组件隐藏之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ON_WILL_APPEAR<sup>12+</sup>| 6   | NavDestination挂载到组件树之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
+| ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
+| ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## ScrollEventType<sup>12+</sup>
 
@@ -50,7 +57,7 @@ NavDestination组件状态。
 
 ## RouterPageState
 
-routerPage生命周期触发时对应的状态。
+routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate11)无感监听的返回值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -83,16 +90,16 @@ NavDestination组件信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 必填 | 说明                                         |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 是   | 包含NavDestination组件的Navigation组件的id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| name         | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 是   | NavDestination组件的名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| state        | [NavDestinationState](#navdestinationstate)        | 是   | NavDestination组件的状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| index<sup>12+</sup>        | number        | 是   | NavDestination在页面栈中的索引。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> 取值范围：[0, +∞)      |
-| param<sup>12+</sup>        | Object        | 否   | NavDestination组件的参数。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。               |
-| navDestinationId<sup>12+</sup>        | string        | 是   | NavDestination组件的唯一标识ID。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
-| mode<sup>15+</sup>        | [NavDestinationMode](arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)        | 否   | NavDestination类型。    <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。               |
-| uniqueId<sup>15+</sup>        | number        | 否   | NavDestination组件的uniqueId。      <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。             |
+| 名称         | 类型                                               | 只读 | 可选 | 说明                                         |
+| ------------ | -------------------------------------------------  | --- | -----|--------------------------------------------- |
+| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否 | 包含NavDestination组件的Navigation组件的id。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| name         | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否 | NavDestination组件的名称。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| state        | [NavDestinationState](#navdestinationstate)     | 否 | 否 | NavDestination组件的状态。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| index<sup>12+</sup>        | number   | 否  | 否   | NavDestination在页面栈中的索引。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> 取值范围：[0, +∞)      |
+| param<sup>12+</sup>        | Object   | 否 | 是   | NavDestination组件的参数。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。               |
+| navDestinationId<sup>12+</sup>        | string    | 否  | 否  | NavDestination组件的唯一标识ID。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
+| mode<sup>15+</sup>        | [NavDestinationMode](arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)   | 否  | 是   | NavDestination类型。    <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。               |
+| uniqueId<sup>15+</sup>        | number     | 否 | 是 | NavDestination组件的uniqueId。      <br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。             |
 
 ## NavigationInfo<sup>12+</sup>
 
@@ -100,11 +107,11 @@ Navigation组件信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 必填 | 说明                                         |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| navigationId | string | 是   | Navigation组件的id。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| pathStack         | [NavPathStack](arkui-ts/ts-basic-components-navigation.md#navpathstack10) | 是   | Navigation组件的导航控制器。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                   |
-| uniqueId<sup>20+</sup>         | number | 否   | Navigation组件的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                  |
+| 名称         | 类型                                         | 只读   | 可选 | 说明                                         |
+| ------------ | ---------------------------------------------| ----- | ---- | -------------------------------------------- |
+| navigationId | string | 否 | 否   | Navigation组件的id。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| pathStack         | [NavPathStack](arkui-ts/ts-basic-components-navigation.md#navpathstack10) | 否 | 否   | Navigation组件的导航控制器。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                   |
+| uniqueId<sup>20+</sup>         | number | 否 | 是   | Navigation组件的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                  |
 
 ## ScrollEventInfo<sup>12+</sup>
 
@@ -113,13 +120,13 @@ ScrollEvent滚动信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 必填 | 说明                                         |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| id           | string                                             | 是   | 滚动组件的id。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| uniqueId           | number                                             | 是   | 滚动组件的uniqueId。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| scrollEvent    | [ScrollEventType](#scrolleventtype12)                | 是   | 滚动事件的类型。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| offset       | number                                             | 是   | 滚动组件的当前偏移量。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| axis<sup>20+</sup>         | [Axis](arkui-ts/ts-appendix-enums.md#axis)         | 否   | 滚动组件的滚动方向。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| 名称         | 类型                                               | 只读 | 可选 | 说明                                         |
+| ------------ | -------------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                             | 否 | 否 | 滚动组件的id。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| uniqueId           | number                                             | 否 | 否 | 滚动组件的uniqueId。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| scrollEvent    | [ScrollEventType](#scrolleventtype12)                | 否 | 否 | 滚动事件的类型。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| offset       | number                                             | 否 | 否 | 滚动组件的当前偏移量。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| axis<sup>20+</sup>         | [Axis](arkui-ts/ts-appendix-enums.md#axis)         | 否 | 是 | 滚动组件的滚动方向。<br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## ObserverOptions<sup>12+</sup>
 
@@ -129,9 +136,9 @@ Observer选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 必填 | 说明                                         |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| id           | string                                             | 是   | 组件的id。                               |
+| 名称         | 类型                                               | 只读 | 可选 | 说明                                         |
+| ------------ | -------------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                             | 否   | 否 | 组件的id。                               |
 
 ## RouterPageInfo
 
@@ -141,14 +148,14 @@ RouterPageInfo包含的信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 类型                                                         | 必填 | 说明                                           |
-| -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
-| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | 是   | 触发生命周期的routerPage页面对应的上下文信息。 |
-| index                | number                                                       | 是   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)         |
-| name                 | string                                                       | 是   | 触发生命周期的routerPage页面的名称。           |
-| path                 | string                                                       | 是   | 触发生命周期的routerPage页面的路径。           |
-| state                | [RouterPageState](#routerpagestate)                          | 是   | 触发生命周期的routerPage页面的状态。           |
-| pageId<sup>12+</sup> | string                                                       | 是   | 触发生命周期的routerPage页面的唯一标识。       |
+| 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
+| -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
+| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发生命周期的routerPage页面对应的上下文信息。 |
+| index                | number                                                  | 否   | 否   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)         |
+| name                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的名称。           |
+| path                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的路径。           |
+| state                | [RouterPageState](#routerpagestate)                     | 否   | 否   | 触发生命周期的routerPage页面的状态。           |
+| pageId<sup>12+</sup> | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的唯一标识。       |
 
 ## DensityInfo<sup>12+</sup>
 
@@ -158,10 +165,10 @@ RouterPageInfo包含的信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 类型                                      | 必填 | 说明                                   |
-| ------- | ----------------------------------------- | ---- | -------------------------------------- |
-| context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 屏幕像素密度变化时页面对应的上下文信息。 |
-| density | number                                    | 是   | 变化后的屏幕像素密度。<br/>取值范围：[0, +∞)                 |
+| 名称    | 类型                                      | 只读 | 可选 | 说明                                   |
+| ------- | ----------------------------------------- | ---- | ---- | -------------------------------------- |
+| context | [UIContext](./arkts-apis-uicontext-uicontext.md) | 否   | 否  | 屏幕像素密度变化时页面对应的上下文信息。 |
+| density | number                                    | 否   | 否   | 变化后的屏幕像素密度。<br/>取值范围：[0, +∞)                 |
 
 ## NavDestinationSwitchInfo<sup>12+</sup>
 
@@ -171,12 +178,12 @@ Navigation组件页面切换的信息。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 必填 | 说明                                          |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| context      | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./js-apis-arkui-UIContext.md) | 是   | 触发页面切换的Navigation对应的上下文信息。 |
-| from         | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | 是   | 页面切换的源页面。         |
-| to           | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | 是   | 页面切换的目的页面。         |
-| operation    | [NavigationOperation](./arkui-ts/ts-basic-components-navigation.md#navigationoperation11枚举说明) | 是   | 页面切换操作类型。         |
+| 名称         | 类型                                         | 只读   | 可选 | 说明                                          |
+| ------------ | -------------------------------------------- | ------ | ---- | -------------------------------------------- |
+| context      | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发页面切换的Navigation对应的上下文信息。 |
+| from         | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | 否 | 否   | 页面切换的源页面。         |
+| to           | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | 否 | 否   | 页面切换的目的页面。         |
+| operation    | [NavigationOperation](./arkui-ts/ts-basic-components-navigation.md#navigationoperation11枚举说明) | 否 | 否   | 页面切换操作类型。         |
 
 ## NavDestinationSwitchObserverOptions<sup>12+</sup>
 
@@ -186,26 +193,52 @@ Navigation组件页面切换事件的监听选项。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 必填 | 说明                                          |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 是   | 指定需要监听的Navigation的ID |
+| 名称         | 类型                                          | 只读  | 可选 | 说明                                          |
+| ------------ | --------------------------------------------- | ----- | ---- | -------------------------------------------- |
+| navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 否 | 否   | 指定需要监听的Navigation的ID。 |
+
+## TextChangeEventInfo<sup>22+</sup>
+输入框文本变化的信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
+| ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                       | 否   | 否   | 文本输入组件的ID。|
+| uniqueId     | number                                       | 否   | 否   | 文本输入组件的唯一标识符。|
+| content        | string                                       | 否   | 否   | 变化后的文本内容。|
 
 ## TabContentInfo<sup>12+</sup>
 
 TabContent页面的切换信息。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
+| ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| tabContentId | string                                       | 否   | 否   | TabContent组件的id。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
+| tabContentUniqueId | number                                 | 否   | 否   | TabContent组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                |
+| state        | [TabContentState](#tabcontentstate12)        | 否   | 否   | TabContent组件的状态。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                    |
+| index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
+| id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
+| uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                      |
+| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[tabChange](#uiobserverontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
+
+## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
+
+窗口尺寸布局断点变化回调的信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称         | 类型                                               | 必填 | 说明                                          |
-| ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
-| tabContentId | string                                             | 是   | TabContent组件的id。                          |
-| tabContentUniqueId | number                                       | 是   | TabContent组件的uniqueId。                    |
-| state        | [TabContentState](#tabcontentstate12)              | 是   | TabContent组件的状态。                        |
-| index        | number                                             | 是   | TabContent组件的下标索引。索引从0开始。        |
-| id           | string                                             | 是   | Tabs组件的id。                                |
-| uniqueId     | number                                             | 是   | Tabs组件的uniqueId。                          |
+| 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
+| -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
+| widthBreakpoint      | [WidthBreakpoint](./arkui-ts/ts-appendix-enums.md#widthbreakpoint13)  | 否   | 否   | 窗口宽度所在的布局断点枚举。        |
+| heightBreakpoint     | [HeightBreakpoint](./arkui-ts/ts-appendix-enums.md#heightbreakpoint13)| 否   | 否   | 窗口高度所在的布局断点枚举。        |
+
 
 ## uiObserver.on('navDestinationUpdate')
 
@@ -253,7 +286,7 @@ struct Index {
 
   aboutToAppear() {
     uiObserver.on('navDestinationUpdate', (info) => {
-      console.info('NavDestination state update', JSON.stringify(info));
+      console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
@@ -345,7 +378,7 @@ struct Index {
 
   aboutToAppear() {
     uiObserver.on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
-      console.info('NavDestination state update', JSON.stringify(info));
+      console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
@@ -411,7 +444,7 @@ on(type: 'scrollEvent', callback: Callback\<ScrollEventInfo\>): void
 
 **示例：**
 
-参考[offscrollevent](#uiobserveroffscrollevent12-1)示例。
+参考[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1)示例。
 
 ## uiObserver.off('scrollEvent')<sup>12+</sup>
 
@@ -432,7 +465,7 @@ off(type: 'scrollEvent', callback?: Callback\<ScrollEventInfo\>): void
 
 **示例：**
 
-参考[offscrollevent](#uiobserveroffscrollevent12-1)示例。
+参考[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1)示例。
 
 ## uiObserver.on('scrollEvent')<sup>12+</sup>
 
@@ -454,7 +487,7 @@ on(type: 'scrollEvent', options: ObserverOptions, callback: Callback\<ScrollEven
 
 **示例：**
 
-参考[offscrollevent](#uiobserveroffscrollevent12-1)示例。
+参考[uiObserver.off('scrollEvent')](#uiobserveroffscrollevent12-1)示例。
 
 ## uiObserver.off('scrollEvent')<sup>12+</sup>
 
@@ -512,7 +545,7 @@ struct Index {
         Button('UIObserver on')
           .onClick(() => {
             uiObserver.on('scrollEvent', (info) => {
-              console.info('scrollEventInfo', JSON.stringify(info));
+              console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserver off')
@@ -525,12 +558,12 @@ struct Index {
         Button('UIObserverWithId on')
           .onClick(() => {
             uiObserver.on('scrollEvent', this.options, (info) => {
-              console.info('scrollEventInfo', JSON.stringify(info));
+              console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserverWithId off')
           .onClick(() => {
-            uiObserver.off('scrollEvent', this.options);
+            uiObserver.off('scrollEvent',this.options);
           })
       }
     }
@@ -554,7 +587,7 @@ on(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback: Ca
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | 是   | 回调函数。携带pageInfo，返回当前的page页面状态。                 |
 
 **示例：**
@@ -571,7 +604,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // 注册监听，范围是abilityContext内的page
     uiObserver.on('routerPageUpdate', this.context, (info: uiObserver.RouterPageInfo) => {
-      console.info('[uiObserver][abilityContext] got info: ' + JSON.stringify(info))
+      console.info(`[uiObserver][abilityContext] got info: ${JSON.stringify(info)}`)
     })
   }
 
@@ -583,7 +616,7 @@ export default class EntryAbility extends UIAbility {
         this.uiContext = windowInfo.getUIContext();
         // 注册监听，范围是uiContext内的page
         uiObserver.on('routerPageUpdate', this.uiContext, (info: uiObserver.RouterPageInfo)=>{
-          console.info('[uiObserver][uiContext] got info: ' + JSON.stringify(info))
+          console.info(`[uiObserver][uiContext] got info: ${JSON.stringify(info)}`)
         })
       })
     });
@@ -608,7 +641,7 @@ off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | 否   | 需要被注销的回调函数。                 |
 
 **示例：**
@@ -653,7 +686,7 @@ on(type: 'densityUpdate', context: UIContext, callback: Callback\<DensityInfo\>)
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<[DensityInfo](#densityinfo12)\>        | 是   | 回调函数。携带densityInfo，返回变化后的屏幕像素密度。                 |
 
 **示例：**
@@ -665,7 +698,7 @@ import { uiObserver } from '@kit.ArkUI';
 @Component
 struct Index {
   @State density: number = 0;
-  @State message: string = '未注册监听'
+  @State message: string = '未注册监听';
 
   densityUpdateCallback = (info: uiObserver.DensityInfo) => {
     this.density = info.density;
@@ -702,7 +735,7 @@ off(type: 'densityUpdate', context: UIContext, callback?: Callback\<DensityInfo\
 | 参数名   | 类型                                      | 必填 | 说明                                                                                           |
 | -------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
 | type     | string                                    | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。                                          |
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面的范围。                                                             |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                                                             |
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
 
 ```ts
@@ -755,7 +788,7 @@ on(type: 'willDraw', context: UIContext, callback: Callback\<void\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'willDraw'，即是否将要绘制。 |
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<void\>        | 是   | 回调函数。                 |
 
 **示例：**
@@ -795,7 +828,7 @@ off(type: 'willDraw', context: UIContext, callback?: Callback\<void\>): void
 | 参数名   | 类型                                      | 必填 | 说明                                                  |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
 | type     | string                                    | 是   | 监听事件，固定为'willDraw'，即是否将要绘制。 |
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面的范围。                    |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                    |
 | callback | Callback\<void\>   | 否   | 需要被注销的回调函数。                                |
 
 ```ts
@@ -839,7 +872,7 @@ on(type: 'didLayout', context: UIContext, callback: Callback\<void\>): void
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'didLayout'，即是否布局完成。 |
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<void\>        | 是   | 回调函数。                 |
 
 **示例：**
@@ -879,7 +912,7 @@ off(type: 'didLayout', context: UIContext, callback?: Callback\<void\>): void
 | 参数名   | 类型                                      | 必填 | 说明                                                  |
 | -------- | ----------------------------------------- | ---- | ----------------------------------------------------- |
 | type     | string                                    | 是   | 监听事件，固定为'didLayout'，即是否布局完成。 |
-| context  | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面的范围。                    |
+| context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。                    |
 | callback | Callback\<void\>   | 否   | 需要被注销的回调函数。                                |
 
 ```ts
@@ -899,7 +932,7 @@ struct Index {
         .onClick(() => {
           uiObserver.on('didLayout', this.getUIContext(), this.didLayoutCallback);
         })
-      Button('解除布局完成s监听')
+      Button('解除布局完成监听')
         .onClick(() => {
           uiObserver.off('didLayout', this.getUIContext(), this.didLayoutCallback);
         })
@@ -923,7 +956,7 @@ on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callback
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。                 |
 
 **示例：**
@@ -936,19 +969,19 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { uiObserver, window } from '@kit.ArkUI';
 import { hilog } from "@kit.PerformanceAnalysisKit";
 
-function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`)
 }
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-    uiObserver.on('navDestinationSwitch', this.context, callBackFunc);
+    uiObserver.on('navDestinationSwitch', this.context, callbackFunc);
   }
 
   onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
-    uiObserver.off('navDestinationSwitch', this.context, callBackFunc);
+    uiObserver.off('navDestinationSwitch', this.context, callbackFunc);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -996,7 +1029,7 @@ struct PageOne {
   }
 }
 
-function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`)
 }
 
@@ -1011,11 +1044,11 @@ struct Index {
   }
 
   aboutToAppear() {
-    uiObserver.on('navDestinationSwitch', this.getUIContext(), callBackFunc)
+    uiObserver.on('navDestinationSwitch', this.getUIContext(), callbackFunc)
   }
 
   aboutToDisappear() {
-    uiObserver.off('navDestinationSwitch', this.getUIContext(), callBackFunc)
+    uiObserver.off('navDestinationSwitch', this.getUIContext(), callbackFunc)
   }
 
   build() {
@@ -1049,7 +1082,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callbac
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。                 |
 
 **示例：**
@@ -1071,7 +1104,7 @@ on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observer
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。                 |
 
@@ -1085,7 +1118,7 @@ import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { uiObserver, window } from '@kit.ArkUI';
 import { hilog } from "@kit.PerformanceAnalysisKit"
 
-function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`)
 }
 
@@ -1094,14 +1127,14 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     uiObserver.on('navDestinationSwitch', this.context, {
       navigationId: "myNavId"
-    }, callBackFunc);
+    }, callbackFunc);
   }
 
   onDestroy(): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
     uiObserver.off('navDestinationSwitch', this.context, {
       navigationId: "myNavId"
-    }, callBackFunc);
+    }, callbackFunc);
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -1149,7 +1182,7 @@ struct PageOne {
   }
 }
 
-function callBackFunc(info: uiObserver.NavDestinationSwitchInfo) {
+function callbackFunc(info: uiObserver.NavDestinationSwitchInfo) {
   console.info(`testTag navDestinationSwitch from: ${JSON.stringify(info.from)} to: ${JSON.stringify(info.to)}`)
 }
 
@@ -1164,11 +1197,11 @@ struct Index {
   }
 
   aboutToAppear() {
-    uiObserver.on('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callBackFunc)
+    uiObserver.on('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callbackFunc)
   }
 
   aboutToDisappear() {
-    uiObserver.off('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callBackFunc)
+    uiObserver.off('navDestinationSwitch', this.getUIContext(), { navigationId: "myNavId" }, callbackFunc)
   }
 
   build() {
@@ -1203,7 +1236,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observe
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./js-apis-arkui-UIContext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。                 |
 
@@ -1215,7 +1248,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observe
 
 on(type: 'tabContentUpdate', callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。
+监听TabContent页面的切换事件。相比[uiObserver.on('tabChange')](#uiobserverontabchange22)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1234,7 +1267,7 @@ on(type: 'tabContentUpdate', callback: Callback\<TabContentInfo\>): void
 import { uiObserver } from '@kit.ArkUI';
 
 function callbackFunc(info: uiObserver.TabContentInfo) {
-  console.info('tabContentUpdate', JSON.stringify(info));
+  console.info(`tabContentUpdate ${JSON.stringify(info)}`);
 }
 
 @Entry
@@ -1302,7 +1335,7 @@ off(type: 'tabContentUpdate', callback?: Callback\<TabContentInfo\>): void
 
 on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabContentInfo\>): void
 
-监听TabContent页面的切换事件。
+监听指定Tabs组件id的TabContent页面切换事件。相比[uiObserver.on('tabChange')](#uiobserverontabchange22-1)，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1322,7 +1355,7 @@ on(type: 'tabContentUpdate', options: ObserverOptions, callback: Callback\<TabCo
 import { uiObserver } from '@kit.ArkUI';
 
 function callbackFunc(info: uiObserver.TabContentInfo) {
-  console.info('tabContentUpdate', JSON.stringify(info));
+  console.info(`tabContentUpdate ${JSON.stringify(info)}`);
 }
 
 @Entry
@@ -1369,7 +1402,7 @@ struct TabsExample {
 
 off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
 
-取消监听TabContent页面的切换事件。
+取消监听指定Tabs组件id的TabContent页面切换事件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1386,3 +1419,236 @@ off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<Tab
 **示例：**
 
 参考[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)接口示例。
+
+## uiObserver.on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', callback: Callback\<TabContentInfo\>): void
+
+监听Tabs组件页签的切换事件，支持多个Tabs组件的监听。相比[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回Tabs组件页签的切换事件的信息。 |
+
+**示例：**
+
+```ts
+// Index.ets
+// 演示监听Tabs组件页签的切换事件。
+// 此用例同时监听id为'tabsId1'、'tabsId2'的两个Tabs组件。
+// 两个Tabs组件初始化时，会监听到第0页页签的显示事件，页签对应id分别为'tabContentId0'、'tabContentId5'。
+// 在id为'tabsId1'的Tabs组件上滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
+import { uiObserver } from '@kit.ArkUI';
+
+// 定义监听回调函数
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    // 添加监听
+    uiObserver.on('tabChange', callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    // 取消监听
+    uiObserver.off('tabChange', callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId1')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId2')
+    }.width('100%')
+  }
+}
+```
+
+## uiObserver.off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', callback?: Callback\<TabContentInfo\>): void
+
+取消监听所有的Tabs组件页签的切换事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销所有通过[uiObserver.on('tabChange')](#uiobserverontabchange22)接口注册的回调函数。<br/>默认值：undefined |
+
+**示例：**
+
+参考[uiObserver.on('tabChange')](#uiobserverontabchange22)接口示例。
+
+## uiObserver.on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', config: ObserverOptions, callback: Callback\<TabContentInfo\>): void
+
+监听指定Tabs组件的页签切换事件。相比[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)，本接口支持监听Tabs组件初始化时，显示首个页签的事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
+| config  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 是   | 回调函数。携带TabContentInfo，返回Tabs组件页签的切换事件的信息。 |
+
+**示例：**
+
+```ts
+// Index.ets
+// 演示监听id为'tabsId'的Tabs组件页签的切换事件。
+// Tabs组件页签初始化的时候，会监听到第0页页签的显示事件，页签对应id为'tabContentId0'；滑动一下，会监听到第0页的页签隐藏、id为'tabContentId1'的第1页页签显示事件。
+import { uiObserver } from '@kit.ArkUI';
+
+// 定义监听回调函数
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    // 添加监听，指定Tabs的id
+    uiObserver.on('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    // 取消监听
+    uiObserver.off('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+    }.width('100%')
+  }
+}
+```
+
+## uiObserver.off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', config: ObserverOptions, callback?: Callback\<TabContentInfo\>): void
+
+取消监听指定Tabs组件页签的切换事件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 监听事件，固定为'tabChange'，即Tabs组件页签的切换事件。 |
+| config  | [ObserverOptions](#observeroptions12)                        | 是   | 指定监听的Tabs组件的id。 |
+| callback | Callback\<[TabContentInfo](#tabcontentinfo12)\>              | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销config指定的[Tabs](arkui-ts/ts-container-tabs.md)组件下注册的所有的回调函数。<br/>默认值：undefined |
+
+**示例：**
+
+参考[uiObserver.on('tabChange')](#uiobserverontabchange22-1)接口示例。

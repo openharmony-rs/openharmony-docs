@@ -1,4 +1,10 @@
 # @ohos.worker (启动一个Worker)(系统接口)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @lijiamin2025-->
+<!--Designer: @weng-changcheng-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 Worker是与主线程并行的独立线程。创建Worker的线程称之为宿主线程，Worker自身的线程称之为Worker线程。创建Worker传入的url文件在Worker线程中执行，可以处理耗时操作但不可以直接操作UI。
 
@@ -30,8 +36,6 @@ RestrictedWorker主要作用是提供受限的Worker线程运行环境，该线�
 constructor(scriptURL: string, options?: WorkerOptions)
 
 RestrictedWorker构造函数。使用以下方法前，均需先构造RestrictedWorker实例。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 

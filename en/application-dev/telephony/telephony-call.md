@@ -1,4 +1,10 @@
 # Call Service Development
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 ## Scenario Description
 
@@ -33,7 +39,7 @@ You can implement the call service in either of the following ways:
 
 |                                  Name                                            | Description                                                        |
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| hasVoiceCapability(): boolean;                                                      | Checks whether the voice function is available.                                       |
+| hasVoiceCapability(): boolean;                                                      | Checks whether the voice call function is supported. The default value is **false**.<br>- **true**: The voice call function is supported.<br>- **false**: The voice call function is not supported.                                       |
 |<!--DelRow--> dialCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | Makes a call. This is a system API.                                     |
 | makeCall(phoneNumber: string, callback: AsyncCallback&lt;void&gt;): void;                 | Redirects to the dial screen and displays the called number.                                 |
 
@@ -50,10 +56,10 @@ The **observer** module provides the functions of subscribing to and unsubscribi
 
 1. Declare the required permission: **ohos.permission.PLACE_CALL**.
 This permission is of the **system\_basic** level. Before applying for the permission, ensure that the [basic principles for permission management](../security/AccessToken/app-permission-mgmt-overview.md#basic-principles-for-using-permissions) are met. Then, declare the requried permission by referring to [Requesting Application Permissions](../security/AccessToken/determine-application-mode.md#requesting-permissions-for-system_basic-applications).
-1. Import the **call** and **observer** modules.
-2. Invoke the **hasVoiceCapability** API to check whether the device supports the voice call function.
-3. Invoke the **dialCall** API to make a call.
-4. (Optional) Register the observer for call service status changes.
+2. Import the **call** and **observer** modules.
+3. Invoke the **hasVoiceCapability** API to check whether the device supports the voice call function.
+4. Invoke the **dialCall** API to make a call.
+5. (Optional) Register the observer for call service status changes.
    ```ts
     // Import the required modules.
     import { call, observer } from '@kit.TelephonyKit';
@@ -64,7 +70,7 @@ This permission is of the **system\_basic** level. Before applying for the permi
     if (isSupport) {
         // If the device supports the voice call function, call the following API to make a call.
         call.dialCall("13xxxx", (err: BusinessError) => {
-            console.log(`callback: dial call err->${JSON.stringify(err)}`);
+            console.error(`callback: dial call err->${JSON.stringify(err)}`);
         })
 
         // (Optional) Register the observer for call service status changes.
@@ -75,7 +81,7 @@ This permission is of the **system\_basic** level. Before applying for the permi
         }
         let slotId: SlotId = {slotId: 0}
         observer.on("callStateChange", slotId, (data: CallStateCallback) => {
-            console.log("call state change, data is:" + JSON.stringify(data));
+            console.info("call state change, data is:" + JSON.stringify(data));
         });
     }
    ```
@@ -99,9 +105,9 @@ This permission is of the **system\_basic** level. Before applying for the permi
         // The tel URI format is supported since API version 15, for example, tel:13xxxx.
         call.makeCall("13xxxx", (err: BusinessError) => {
             if (!err) {
-                console.log("make call success.");
+                console.info("make call success.");
             } else {
-                console.log("make call fail, err is:" + JSON.stringify(err));
+                console.error("make call fail, err is:" + JSON.stringify(err));
             }
         });
         // (Optional) Register the observer for call service status changes.
@@ -112,8 +118,13 @@ This permission is of the **system\_basic** level. Before applying for the permi
         }
         let slotId: SlotId = {slotId: 0}
         observer.on("callStateChange", slotId, (data: CallStateCallback) => {
-            console.log("call state change, data is:" + JSON.stringify(data));
+            console.info("call state change, data is:" + JSON.stringify(data));
         });
     }
    ```
 
+## Samples
+
+The following sample is provided to help you better understand how to develop the call service:
+
+- [Making a Call (ArkTS) (API 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Telephony/Call)

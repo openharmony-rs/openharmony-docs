@@ -1,6 +1,13 @@
 # BaseContext
 
-**BaseContext** is an abstract class that specifies whether a child class **Context** is used for the stage model or FA model. It is the parent class for all types of **Context**.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+BaseContext is an abstract class that specifies whether a child class Context is used for the stage model or FA model. It is the parent class for all types of Context.
 
 > **NOTE**
 >
@@ -18,13 +25,13 @@ import { common } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name      | Type  | Readable  | Writable  | Description     |
+| Name      | Type  | Read-Only  | Optional  | Description     |
 | -------- | ------ | ---- | ---- | ------- |
-| stageMode | boolean | Yes   | Yes   | Whether the child class **Context** is used for the stage model.<br>**true**: used for the stage model.<br>**false**: used for the FA model.|
+| stageMode | boolean | No   | No   | Whether the child class Context is used for the stage model.<br>**true**: [Stage model](../../application-models/ability-terminology.md#stage-model).<br>**false**: [FA model](../../application-models/ability-terminology.md#fa-model).|
 
 **Example**
 
-Take the stage model as an example. You can access the **stageMode** field through **UIAbilityContext**.
+Take the stage model as an example. You can access the **stageMode** field through UIAbilityContext.
 
 ```ts
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
@@ -32,7 +39,7 @@ import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // EntryAbility onCreate, isStageMode: true
-    console.log(`EntryAbility onCreate, isStageMode: ${this.context.stageMode}`);
+    console.info(`EntryAbility onCreate, isStageMode: ${this.context.stageMode}`);
   }
 }
 ```

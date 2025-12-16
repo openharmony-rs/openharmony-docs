@@ -1,44 +1,55 @@
-# Subscribing to Freeze Events (C/C++)
+# Subscribing to Application Freeze Events (C/C++)
+
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+## Overview
+
+This topic describes how to subscribe to application freeze events by using the C/C++ APIs provided by HiAppEvent. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
 
 ## Available APIs
 
-For details about how to use the APIs (such as parameter usage restrictions and value ranges), see [HiAppEvent](../reference/apis-performance-analysis-kit/_hi_app_event.md#hiappevent).
-
-**Subscription APIs**
-
-| API                                                      | Description                                        |
-| ------------------------------------------------------------ | -------------------------------------------- |
-| int OH_HiAppEvent_AddWatcher (HiAppEvent_Watcher \*watcher)  | Adds a watcher to listen for application events.|
-| int OH_HiAppEvent_RemoveWatcher (HiAppEvent_Watcher *watcher) | Removes a watcher to unsubscribe from application events.|
+| API| Description|
+| -------- | -------- |
+| int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher \*watcher) | Adds a watcher to listen for application events.|
+| int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher \*watcher) | Removes a watcher to unsubscribe from application events.|
 
 ## How to Develop
 
-The following describes how to subscribe to the freeze event triggered by a button click.
+### Adding an Event Watcher
 
-1. Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
+The following describes how to subscribe to the application freeze event triggered by button clicking.
+
+1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
+
+2. Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
 
    ```yml
    entry:
      src:
        main:
          cpp:
-           - json:
-               - json.h
-               - json-forwards.h
-           - types:
-               libentry:
-                 - index.d.ts
+           json:
+             - json.h
+             - json-forwards.h
+           types:
+             libentry:
+               - index.d.ts
            - CMakeLists.txt
-           - napi_init.cpp
            - jsoncpp.cpp
+           - napi_init.cpp
          ets:
-           - entryability:
-               - EntryAbility.ets
-           - pages:
-               - Index.ets
+           entryability:
+             - EntryAbility.ets
+           pages:
+             - Index.ets
    ```
 
-2. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
+3. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
 
    ```cmake
    # Add the jsoncpp.cpp file, which is used to parse the JSON strings in the subscription events.
@@ -47,7 +58,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
    ```
 
-3. Import the dependency files to the **napi_init.cpp** file, and define **LOG_TAG**.
+4. Import the dependencies to the **napi_init.cpp** file, and define **LOG_TAG**.
 
    ```c++
    #include "napi/native_api.h"
@@ -59,172 +70,174 @@ The following describes how to subscribe to the freeze event triggered by a butt
    #define LOG_TAG "testTag"
    ```
 
-4. Subscribe to system events.
+5. Subscribe to system events.
 
-   - Watcher of the onReceive type:
+   - Watcher of the **onReceive** type.
 
-     In the **napi_init.cpp** file, define the methods related to the watcher of the onReceive type.
+      In the **napi_init.cpp** file, define the methods related to **onReceive()**.
 
-     ```c++
-     // Define a variable to cache the pointer to the created watcher.
-     static HiAppEvent_Watcher *systemEventWatcher; 
-     
-     static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
-         for (int i = 0; i < groupLen; ++i) {
-             for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
-                 OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", appEventGroups[i].appEventInfos[j].domain);
-                 OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", appEventGroups[i].appEventInfos[j].name);
-                 OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", appEventGroups[i].appEventInfos[j].type);
-                 if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) == 0 && 
-                     strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_FREEZE) == 0) {
-                     Json::Value params;
-                     Json::Reader reader(Json::Features::strictMode());
-                     Json::FastWriter writer;
-                     if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
-                         auto time = params["time"].asInt64();
-                         auto foreground = params["foreground"].asBool();
-                         auto bundleVersion = params["bundle_version"].asString();
-                         auto bundleName = params["bundle_name"].asString();
-                         auto processName = params["process_name"].asString();
-                         auto pid = params["pid"].asInt();
-                         auto uid = params["uid"].asInt();
-                         auto uuid = params["uuid"].asString();
-                         auto exception = writer.write(params["exception"]);
-                         auto hilogSize = params["hilog"].size();
-                         auto handleSize =  params["event_handler"].size();
-                         auto handleSize3s =  params["event_handler_size_3s"].asString();
-                         auto handleSize6s =  params["event_handler_size_6s"].asString();
-                         auto peerBindSize =  params["peer_binder"].size();
-                         auto threadSize =  params["threads"].size();
-                         auto memory =  writer.write(params["memory"]);
-                         auto externalLog = writer.write(params["external_log"]);
-                         auto logOverLimit = params["log_over_limit"].asBool();
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s", processName.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler.size=%{public}d", handleSize);
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler_3s.size=%{public}s", handleSize3s.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler_6s.size=%{public}s", handleSize6s.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.peer_binder.size=%{public}d", peerBindSize);
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.threads.size=%{public}d", threadSize);
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
-                         OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
-                     }
-                 }
-             }
-         }
-     }
-     
-     static napi_value RegisterWatcher(napi_env env, napi_callback_info info) {
-         // Set the watcher name. The system identifies different watchers based on their names.
-         systemEventWatcher = OH_HiAppEvent_CreateWatcher("onReceiverWatcher");
-         // Set the event to watch to EVENT_APP_FREEZE.
-         const char *names[] = {EVENT_APP_FREEZE};
-         // Add the events to watch, for example, system events.
-         OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-         // Set the implemented callback. After receiving the event, the watcher immediately triggers the OnReceive callback.
-         OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
-         // Add a watcher to listen for the specified event.
-         OH_HiAppEvent_AddWatcher(systemEventWatcher);
-         return {};
-     }
-     ```
+      ```c++
+      // Define a variable to cache the pointer to the created watcher.
+      static HiAppEvent_Watcher *systemEventWatcher; 
+      
+      static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
+          for (int i = 0; i < groupLen; ++i) {
+              for (int j = 0; j < appEventGroups[i].infoLen; ++j) {
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", appEventGroups[i].appEventInfos[j].domain);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", appEventGroups[i].appEventInfos[j].name);
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", appEventGroups[i].appEventInfos[j].type);
+                  if (strcmp(appEventGroups[i].appEventInfos[j].domain, DOMAIN_OS) == 0 && 
+                      strcmp(appEventGroups[i].appEventInfos[j].name, EVENT_APP_FREEZE) == 0) {
+                      Json::Value params;
+                      Json::Reader reader(Json::Features::strictMode());
+                      Json::FastWriter writer;
+                      if (reader.parse(appEventGroups[i].appEventInfos[j].params, params)) {
+                          auto time = params["time"].asInt64();
+                          auto foreground = params["foreground"].asBool();
+                          auto bundleVersion = params["bundle_version"].asString();
+                          auto bundleName = params["bundle_name"].asString();
+                          auto processName = params["process_name"].asString();
+                          auto pid = params["pid"].asInt();
+                          auto uid = params["uid"].asInt();
+                          auto uuid = params["uuid"].asString();
+                          auto exception = writer.write(params["exception"]);
+                          auto hilogSize = params["hilog"].size();
+                          auto handleSize = params["event_handler"].size();
+                          auto handleSize3s = params["event_handler_size_3s"].asString();
+                          auto handleSize6s = params["event_handler_size_6s"].asString();
+                          auto peerBindSize = params["peer_binder"].size();
+                          auto threadSize = params["threads"].size();
+                          auto memory = writer.write(params["memory"]);
+                          auto externalLog = writer.write(params["external_log"]);
+                          auto logOverLimit = params["log_over_limit"].asBool();
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s", processName.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler.size=%{public}d", handleSize);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler_3s.size=%{public}s", handleSize3s.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler_6s.size=%{public}s", handleSize6s.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.peer_binder.size=%{public}d", peerBindSize);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.threads.size=%{public}d", threadSize);
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                      }
+                  }
+              }
+          }
+      }
+      
+      static napi_value RegisterWatcher(napi_env env, napi_callback_info info) {
+          // Set the watcher name. The system identifies different watchers based on their names.
+          systemEventWatcher = OH_HiAppEvent_CreateWatcher("onReceiverWatcher");
+          // Set the event to watch to EVENT_APP_FREEZE.
+          const char *names[] = {EVENT_APP_FREEZE};
+          // Add the events to watch, for example, system events.
+          OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
+          // Set the implemented callback. After receiving the event, the watcher immediately triggers the OnReceive callback.
+          OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
+          // Add a watcher to listen for the specified event.
+          OH_HiAppEvent_AddWatcher(systemEventWatcher);
+          return {};
+      }
+      ```
 
-   - Watcher of the onTrigger type:
+   - Watcher of the **onTrigger** type.
 
-     In the **napi_init.cpp** file, define the methods related to the watcher of the OnTrigger type.
+      In the **napi_init.cpp** file, define the methods related to **OnTrigger()**.
 
-     ```c++
-     // Define a variable to cache the pointer to the created watcher.
-     static HiAppEvent_Watcher *systemEventWatcher;
-     
-     // Implement the callback function used to return the listened events. The content pointed to by the events pointer is valid only in this function.
-     static void OnTake(const char *const *events, uint32_t eventLen) {
-         Json::Reader reader(Json::Features::strictMode());
-         Json::FastWriter writer;
-         for (int i = 0; i < eventLen; ++i) {
-             Json::Value eventInfo;
-             if (reader.parse(events[i], eventInfo)) {
-                 auto domain =  eventInfo["domain_"].asString();
-                 auto name = eventInfo["name_"].asString();
-                 auto type = eventInfo["type_"].asInt();
-                 OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", domain.c_str());
-                 OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", name.c_str());
-                 OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", type);
-                 if (domain ==  DOMAIN_OS && name == EVENT_APP_FREEZE) {
-                     auto time = eventInfo["time"].asInt64();
-                     auto foreground = eventInfo["foreground"].asBool();
-                     auto bundleVersion = eventInfo["bundle_version"].asString();
-                     auto bundleName = eventInfo["bundle_name"].asString();
-                     auto processName = eventInfo["process_name"].asString();
-                     auto pid = eventInfo["pid"].asInt();
-                     auto uid = eventInfo["uid"].asInt();
-                     auto uuid = eventInfo["uuid"].asString();
-                     auto exception = writer.write(eventInfo["exception"]);
-                     auto hilogSize = eventInfo["hilog"].size();
-                     auto handleSize =  eventInfo["event_handler"].size();
-                     auto handleSize3s =  eventInfo["event_handler_size_3s"].asString();
-                     auto handleSize6s =  eventInfo["event_handler_size_6s"].asString();
-                     auto peerBindSize =  eventInfo["peer_binder"].size();
-                     auto threadSize =  eventInfo["threads"].size();
-                      auto memory =  writer.write(eventInfo["memory"]);
-                     auto externalLog = writer.write(eventInfo["external_log"]);
-                     auto logOverLimit = eventInfo["log_over_limit"].asBool();
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s", processName.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler.size=%{public}d", handleSize);
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler_3s.size=%{public}s", handleSize3s.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler_6s.size=%{public}s", handleSize6s.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.peer_binder.size=%{public}d", peerBindSize);
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.threads.size=%{public}d", threadSize);
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
-                     OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
-                 }
-             }
-         }
-     }
-     
-     // Implement the subscription callback function to apply custom processing to the obtained event logging data.
-     static void OnTrigger(int row, int size) {
-         // After the callback is received, obtain the specified number of received events.
-         OH_HiAppEvent_TakeWatcherData(systemEventWatcher, row, OnTake);
-     }
-     
-     static napi_value RegisterWatcher(napi_env env, napi_callback_info info) {
-         // Set the watcher name. The system identifies different watchers based on their names.
-         systemEventWatcher = OH_HiAppEvent_CreateWatcher("onTriggerWatcher");
-         // Set the event to watch to EVENT_APP_FREEZE.
-         const char *names[] = {EVENT_APP_FREEZE};
-         // Add the events to watch, for example, system events.
-         OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-         // Set the implemented callback function. The callback function will be triggered when the conditions set by OH_HiAppEvent_SetTriggerCondition are met.
-         OH_HiAppEvent_SetWatcherOnTrigger(systemEventWatcher, OnTrigger);
-         // Set the conditions for triggering the subscription callback. For example, trigger this onTrigger callback when the number of new event logs is 1.
-         OH_HiAppEvent_SetTriggerCondition(systemEventWatcher, 1, 0, 0);
-         // Add a watcher to listen for the specified event.
-         OH_HiAppEvent_AddWatcher(systemEventWatcher);
-         return {};
-     }
-     ```
+      ```c++
+      // Define a variable to cache the pointer to the created watcher.
+      static HiAppEvent_Watcher *systemEventWatcher;
+      
+      // Implement the callback function used to return the listened events. The content pointed to by the events pointer is valid only in this function.
+      static void OnTake(const char *const *events, uint32_t eventLen) {
+          Json::Reader reader(Json::Features::strictMode());
+          Json::FastWriter writer;
+          for (int i = 0; i < eventLen; ++i) {
+              Json::Value eventInfo;
+              if (reader.parse(events[i], eventInfo)) {
+                  auto domain =  eventInfo["domain_"].asString();
+                  auto name = eventInfo["name_"].asString();
+                  auto type = eventInfo["type_"].asInt();
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.domain=%{public}s", domain.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.name=%{public}s", name.c_str());
+                  OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.eventType=%{public}d", type);
+                  if (domain ==  DOMAIN_OS && name == EVENT_APP_FREEZE) {
+                      auto time = eventInfo["time"].asInt64();
+                      auto foreground = eventInfo["foreground"].asBool();
+                      auto bundleVersion = eventInfo["bundle_version"].asString();
+                      auto bundleName = eventInfo["bundle_name"].asString();
+                      auto processName = eventInfo["process_name"].asString();
+                      auto pid = eventInfo["pid"].asInt();
+                      auto uid = eventInfo["uid"].asInt();
+                      auto uuid = eventInfo["uuid"].asString();
+                      auto exception = writer.write(eventInfo["exception"]);
+                      auto hilogSize = eventInfo["hilog"].size();
+                      auto handleSize =  eventInfo["event_handler"].size();
+                      auto handleSize3s =  eventInfo["event_handler_size_3s"].asString();
+                      auto handleSize6s =  eventInfo["event_handler_size_6s"].asString();
+                      auto peerBindSize =  eventInfo["peer_binder"].size();
+                      auto threadSize =  eventInfo["threads"].size();
+                       auto memory =  writer.write(eventInfo["memory"]);
+                      auto externalLog = writer.write(eventInfo["external_log"]);
+                      auto logOverLimit = eventInfo["log_over_limit"].asBool();
+                      auto process_life_time = eventInfo["process_life_time"].asString();
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s", bundleVersion.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_name=%{public}s", bundleName.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_name=%{public}s", processName.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.pid=%{public}d", pid);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uid=%{public}d", uid);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.uuid=%{public}s", uuid.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.exception=%{public}s", exception.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.hilog.size=%{public}d", hilogSize);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler.size=%{public}d", handleSize);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler_3s.size=%{public}s", handleSize3s.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.event_handler_6s.size=%{public}s", handleSize6s.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.peer_binder.size=%{public}d", peerBindSize);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.threads.size=%{public}d", threadSize);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                      OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.process_life_time=%{public}s", process_life_time.c_str());
+                  }
+              }
+          }
+      }
+      
+      // Implement the subscription callback function to apply custom processing to the obtained event logging data.
+      static void OnTrigger(int row, int size) {
+          // After the callback is received, obtain the specified number of received events.
+          OH_HiAppEvent_TakeWatcherData(systemEventWatcher, row, OnTake);
+      }
+      
+      static napi_value RegisterWatcher(napi_env env, napi_callback_info info) {
+          // Set the watcher name. The system identifies different watchers based on their names.
+          systemEventWatcher = OH_HiAppEvent_CreateWatcher("onTriggerWatcher");
+          // Set the event to watch to EVENT_APP_FREEZE.
+          const char *names[] = {EVENT_APP_FREEZE};
+          // Add the events to watch, for example, system events.
+          OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
+          // Set the implemented callback function. The callback function will be triggered when the conditions set by OH_HiAppEvent_SetTriggerCondition are met.
+          OH_HiAppEvent_SetWatcherOnTrigger(systemEventWatcher, OnTrigger);
+          // Set the conditions for triggering the subscription callback. For example, trigger this onTrigger callback when the number of new event logs is 1.
+          OH_HiAppEvent_SetTriggerCondition(systemEventWatcher, 1, 0, 0);
+          // Add a watcher to listen for the specified event.
+          OH_HiAppEvent_AddWatcher(systemEventWatcher);
+          return {};
+      }
+      ```
 
-5. Register **RegisterWatcher** as an ArkTS API.
+6. Register **RegisterWatcher** as an ArkTS API.
 
    In the **napi_init.cpp** file, register **RegisterWatcher** as an ArkTS API.
 
@@ -245,18 +258,18 @@ The following describes how to subscribe to the freeze event triggered by a butt
    export const registerWatcher: () => void;
    ```
 
-6. In the **EntryAbility.ets** file, add the following interface invocation to **onCreate()**.
+7. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
 
    ```typescript
    // Import the dependent module.
    import testNapi from 'libentry.so'
-
-   // Add the interface invocation to onCreate().
+   
+   // Add the API to onCreate().
    // Register the system event watcher at startup.
    testNapi.registerWatcher();
    ```
 
-7. In the **Index.ets** file, add a button to trigger the freeze event.
+8. In the **Index.ets** file, add a button to trigger the freeze event.
 
    ```typescript
    Button("appFreeze").onClick(() => {
@@ -266,9 +279,11 @@ The following describes how to subscribe to the freeze event triggered by a butt
    })
    ```
 
-8. In DevEco Studio, click the **Run** button to run the project. Then, click the **appfreeze** button to trigger a freeze event.
+9. In DevEco Studio, click the **Run** button to run the project. Then, click the **appfreeze** button to trigger an application freeze event.
 
-9. The application crashes. After restarting the application, you can view the following event information in the **Log** window.
+### Verifying the Subscription
+
+1. The application crashes. After restarting the application, you can view the following event information in the **Log** window.
 
    ```text
    HiAppEvent eventInfo.domain=OS
@@ -289,28 +304,33 @@ The following describes how to subscribe to the freeze event triggered by a butt
    HiAppEvent eventInfo.params.event_handler_6s.size=16
    HiAppEvent eventInfo.params.peer_binder.size=0
    HiAppEvent eventInfo.params.threads.size=28
-   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1326520,"sys_free_mem":940588,"sys_total_mem":1992340,"vss":0}
+   HiAppEvent eventInfo.params.memory={"pss":0,"rss":0,"sys_avail_mem":1326520,"sys_free_mem":940588,"sys_total_mem":1992340,"vm_heap_total_size":"9961472","vm_heap_used_size":"7596424","vss":0}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_FREEZE_1502049185239_1587.log"]
    HiAppEvent eventInfo.params.log_over_limit=0
+   HiAppEvent eventInfo.params.process_life_time=18
    ```
 
-10. Remove the event watcher.
+2. If the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
 
-    ```c++
-    static napi_value RemoveWatcher(napi_env env, napi_callback_info info) {
-        // Remove the watcher.
-        OH_HiAppEvent_RemoveWatcher(systemEventWatcher);
-        return {};
-    }
-    ```
+### Removing and Destroying an Event Watcher
 
-11. Destroy the event watcher.
+1. Remove the event watcher.
 
-    ```c++
-    static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
-        // Destroy the created watcher and set systemEventWatcher to nullptr.
-        OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
-        systemEventWatcher = nullptr;
-        return {};
-    }
-    ```
+   ```c++
+   static napi_value RemoveWatcher(napi_env env, napi_callback_info info) {
+       // Remove the watcher.
+       OH_HiAppEvent_RemoveWatcher(systemEventWatcher);
+       return {};
+   }
+   ```
+
+2. Destroy the event watcher.
+
+   ```c++
+   static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
+       // Destroy the created watcher and set systemEventWatcher to nullptr.
+       OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+       systemEventWatcher = nullptr;
+       return {};
+   }
+   ```

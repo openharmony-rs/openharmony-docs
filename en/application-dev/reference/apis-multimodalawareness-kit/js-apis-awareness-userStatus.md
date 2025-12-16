@@ -1,6 +1,12 @@
-# @ohos.multimodalawareness.userStatus (User Status Awareness)
+# @ohos.multimodalAwareness.userStatus (User Status Awareness)
+<!--Kit: Multimodal Awareness Kit-->
+<!--Subsystem: MultimodalAwareness-->
+<!--Owner: @dilligencer-->
+<!--Designer: @zou_ye-->
+<!--Tester: @judan-->
+<!--Adviser: @hu-zhiqiong-->
 
-The UserStatus module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
+The **UserStatus** module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
 
 > **NOTE**
 >
@@ -30,21 +36,27 @@ Defines the user age group detection result.
 
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
 
-| Name               | Type  | Description                  |
-| ------------------- | ---- | ---------------------- |
-| ageGroup  | [UserAgeGroup](#useragegroup)   | User age group, for example, child or adult.|
-| confidence  | float    | Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
+| Name               | Type  |Read-Only|Optional| Description                  |
+| ------------------- | ---- |----|----| ---------------------- |
+| ageGroup  | [UserAgeGroup](#useragegroup)   |No|Yes| User age group, for example, child or adult.|
+| confidence  | float    |No|Yes| Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
 
 
 ## userStatus.on('userAgeGroupDetected')
 
- on(type: 'userAgeGroupDetected', callback: Callback&lt;userclassification&gt;): void;
+ on(type: 'userAgeGroupDetected', callback: Callback&lt;UserClassification&gt;): void
 
 Enables the age group detection function.
 
 When the function is enabled, the application can recommend content based on the age group detection result.
 
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
+
+**Device behavior differences**: This API can be called on phones. If it is called on other devices, error code **801** is returned.
+
+> **NOTE**
+>
+> This API is supported only on some phones. Error code **801** is returned if it is called on unsupported phones.
 
 **Parameters**
 
@@ -61,7 +73,7 @@ For details about the error codes, see [User Status Awareness Error Codes](error
 | -------- | ------------------------------------------------------------ |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status.|
-| 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failure. <br>2. Failed to bind native object to js wrapper. <br>3. N-API invocation exception, invalid N-API status. <br>4. IPC request exception. |
+| 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
 
 **Example**
 
@@ -70,7 +82,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     userStatus.on('userAgeGroupDetected', (data: userStatus.UserClassification) => {
-        console.info('callback success, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
+        console.info('callback succeeded, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
     });
     console.info("on succeeded");
 } catch (err) {
@@ -83,11 +95,17 @@ try {
 
 ## userStatus.off('userAgeGroupDetected')
 
-off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;): void;
+off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;): void
 
 Disables the age group detection function.
 
 **System capability**: SystemCapability.MultimodalAwareness.UserStatus
+
+**Device behavior differences**: This API can be called on phones. If it is called on other devices, error code **33900003** is returned.
+
+> **NOTE**
+>
+> This API is supported only on some phones. Error code **33900003** is returned if it is called on unsupported phones.
 
 **Parameters**
 

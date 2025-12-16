@@ -1,4 +1,14 @@
 # ArkWeb_ProxyMethodWithResult
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct {...} ArkWeb_ProxyMethodWithResult
+```
 
 ## 概述
 

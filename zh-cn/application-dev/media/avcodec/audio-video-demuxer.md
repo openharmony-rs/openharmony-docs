@@ -1,5 +1,12 @@
 # 媒体数据解析
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @zhanghongran-->
+<!--Designer: @dpy2650--->
+<!--Tester: @cyakee-->
+<!--Adviser: @w_Machine_cc-->
+
 开发者可以调用本模块的Native API接口，完成媒体数据的解封装相关操作，即从比特流数据中取出音频、视频、字幕等媒体sample，获得DRM相关信息。
 
 当前支持的数据输入类型有：远程连接(http协议)和文件描述符(fd)。
@@ -22,7 +29,7 @@
 
 ## 开发指导
 
-详细的API说明参考[AVDemuxer](../../reference/apis-avcodec-kit/_a_v_demuxer.md)和[AVSource](../../reference/apis-avcodec-kit/_a_v_source.md)
+详细的API说明参考[AVDemuxer](../../reference/apis-avcodec-kit/capi-avdemuxer.md)和[AVSource](../../reference/apis-avcodec-kit/capi-avsource.md)
 
 > **说明**
 >
@@ -56,6 +63,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    #include <multimedia/player_framework/native_avbuffer.h>
    #include <fcntl.h>
    #include <sys/stat.h>
+   #include <string>
    ```
 
 2. 创建资源管理实例。
@@ -154,7 +162,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       return;
    }
    ```
-4. 注册[DRM信息监听函数](../../reference/apis-avcodec-kit/_a_v_demuxer.md#demuxer_mediakeysysteminfocallback)（可选，若非DRM码流或已获得[DRM信息](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)，可跳过此步）。
+4. 注册[DRM信息监听函数](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)（可选，若非DRM码流或已获得[DRM信息](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)，可跳过此步）。
 
    设置DRM信息监听的接口，回调函数支持返回解封装器实例，适用于多个解封装器场景。
 
@@ -183,6 +191,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    // 从文件 source 获取用户自定义属性信息。
    OH_AVFormat *customMetadataFormat = OH_AVSource_GetCustomMetadataFormat(source);
    if (customMetadataFormat == nullptr) {
+      // 需释放前置流程资源，参考第10步。
       printf("get custom metadata format failed");
       return;
    }
@@ -191,28 +200,33 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    //    示例key仅为演示，实际应替换为用户自定义的字符串。
    //    例：封装时写入key为"com.openharmony.custom.meta.abc.efg"，
    //       获取时必须使用完整key，截断使用"com.openharmony.custom.meta.abc"会失败。
-   // 2. value类型需与封装时数据类型匹配（示例为string类型，int/float类型需调用对应接口）。
+   // 2. value类型需与封装时数据类型匹配，示例为string类型。其余类型需调用对应接口，支持int/float类型；API version 20起，支持buffer类型。
    const char *customKey = "com.openharmony.custom.meta.string"; // 替换为实际封装时使用的完整key。
    const char *customValue;
    if (!OH_AVFormat_GetStringValue(customMetadataFormat, customKey, &customValue)) {
       printf("get custom metadata from custom metadata format failed");
-      return;
    }
    OH_AVFormat_Destroy(customMetadataFormat);
+   customMetadataFormat = nullptr;
 
    // 获取文件轨道数（可选，若用户已知轨道信息，可跳过此步）。
    // 从文件 source 信息获取文件轨道数，用户可通过该接口获取文件级别属性，具体支持信息参考附表 1。
    OH_AVFormat *sourceFormat = OH_AVSource_GetSourceFormat(source);
    if (sourceFormat == nullptr) {
+      // 需释放前置流程资源，参考第10步。
       printf("get source format failed");
       return;
    }
    int32_t trackCount = 0;
    if (!OH_AVFormat_GetIntValue(sourceFormat, OH_MD_KEY_TRACK_COUNT, &trackCount)) {
       printf("get track count from source format failed");
-      return;
+   }
+   if (trackCount == 0) {
+      // 文件中无轨道，需根据业务做其他处理。
+      printf("no track");
    }
    OH_AVFormat_Destroy(sourceFormat);
+   sourceFormat = nullptr;
    ```
 
 6. 获取轨道index及信息（可选，若用户已知轨道信息，可跳过此步）。
@@ -262,25 +276,26 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
             printf("get track height from track format failed");
             return;
          }
-         if (!OH_AVFormat_GetLongValue(format, OH_MD_KEY_BITRATE, &bitRate)) {
+         if (!OH_AVFormat_GetLongValue(trackFormat, OH_MD_KEY_BITRATE, &bitRate)) {
             printf("get track bitRate from track format failed");
             return;
          }
-         if (!OH_AVFormat_GetDoubleValue(format, OH_MD_KEY_FRAME_RATE, &frameRate)) {
+         if (!OH_AVFormat_GetDoubleValue(trackFormat, OH_MD_KEY_FRAME_RATE, &frameRate)) {
             printf("get track frameRate from track format failed");
             return;
          }
-         if (!OH_AVFormat_GetStringValue(format, OH_MD_KEY_CODEC_MIME, &mimetype)) {
+         if (!OH_AVFormat_GetStringValue(trackFormat, OH_MD_KEY_CODEC_MIME, &mimetype)) {
             printf("get track mimetype from track format failed");
             return;
          }
-         if (!OH_AVFormat_GetBuffer(format, OH_MD_KEY_CODEC_CONFIG, &codecConfig, &bufferSize)) {
+         if (!OH_AVFormat_GetBuffer(trackFormat, OH_MD_KEY_CODEC_CONFIG, &codecConfig, &bufferSize)) {
             printf("get track codecConfig from track format failed");
             return;
          }
          printf(" track width%d, track height：%d, track bitRate：%ld, track frameRate：%f, track mimetype：%s\n", w, h, bitRate, frameRate, mimetype);
       }
       OH_AVFormat_Destroy(trackFormat);
+      trackFormat = nullptr;
    }
    ```
 
@@ -330,7 +345,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVDemuxer_ReadSampleBuffer接口本身可能存在耗时久，取决于文件IO，建议以异步方式进行调用。
    ```c++
    // 为每个线程定义处理函数。
-   void ReadTrackSamples(OH_AVFormatDemuxer *demuxer, uint32_t trackIndex, int buffer_size, 
+   void ReadTrackSamples(OH_AVDemuxer *demuxer, uint32_t trackIndex, int32_t buffer_size, 
                          std::atomic<bool>& isEnd, std::atomic<bool>& threadFinished)
    {
       // 创建缓冲区。
@@ -344,6 +359,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       int32_t ret;
 
       while (!isEnd.load()) {
+         // 在调用OH_AVDemuxer_ReadSampleBuffer接口获取数据前，需要先调用OH_AVDemuxer_SelectTrackByID选中需要获取数据的轨道。
+         // 注意：
+         // 在avi、mpg、wmv格式下，由于容器标准不支持封装时间戳信息，所以demuxer解出的帧中不含pts信息，需要调用方根据帧率及解码出帧后的显示顺序自行计算显示时间戳信息。
          ret = OH_AVDemuxer_ReadSampleBuffer(demuxer, trackIndex, buffer);
          if (ret == AV_ERR_OK) {
                OH_AVBuffer_GetBufferAttr(buffer, &info);
@@ -355,17 +373,18 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
                // 处理缓冲区数据（这里可以根据需要实现解码逻辑）。
          } else {
                printf("Read sample failed for track %d\n", trackIndex);
+               break;
          }
-         // 销毁缓冲区。
-         OH_AVBuffer_Destroy(buffer);
-         buffer = nullptr;
       }
+      // 销毁缓冲区。
+      OH_AVBuffer_Destroy(buffer);
+      buffer = nullptr;
       threadFinished.store(true);
    }
 
    // 根据需求计算合适的缓冲区大小。
-   int audioBufferSize = 4096;  // 典型音频缓冲区大小。
-   int videoBufferSize = w * h * 3 >> 1;  // 原始视频缓冲区大小。
+   int32_t audioBufferSize = 4096;  // 典型音频缓冲区大小。
+   int32_t videoBufferSize = w * h * 3 >> 1;  // 原始视频缓冲区大小。
 
    // 创建原子变量用于线程通信。
    std::atomic<bool> audioIsEnd{false}, videoIsEnd{false}; // 表示流是否结束。
@@ -402,7 +421,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > 正常解析时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解析异常，无法获取数据。
 > 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
 > 
-> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表1** 文件级别属性支持范围
 | 名称 | 描述 |
@@ -428,7 +447,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > 正常解析时才可以获取对应属性数据；如果文件信息错误或缺失，将导致解析异常，无法获取数据。
 > 辅助轨属性范围与实际媒体类型（音频、视频）保持一致。
 > 
-> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表2** 轨道级别属性支持范围
 | 名称 | 描述 | 视频轨支持 | 音频轨支持 | 字幕轨支持 | 辅助轨支持 |
@@ -449,7 +468,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 |OH_MD_KEY_COLOR_PRIMARIES|视频流视频色域的键，只针对h265码流使用。|√|-|-|√|
 |OH_MD_KEY_TRANSFER_CHARACTERISTICS|视频流视频传递函数的键，只针对h265码流使用。|√|-|-|√|
 |OH_MD_KEY_MATRIX_COEFFICIENTS|视频矩阵系数的键，只针对h265码流使用。|√|-|-|√|
-|OH_MD_KEY_VIDEO_IS_HDR_VIVID|视频流标记是否为HDRVivid的键，只针对HDRVivid码流使用。|√|-|-|√|
+|OH_MD_KEY_VIDEO_IS_HDR_VIVID|视频流标记是否为HDR Vivid的键，只针对HDR Vivid码流使用。|√|-|-|√|
 |OH_MD_KEY_AUD_SAMPLE_RATE|音频流采样率的键。|-|√|-|√|
 |OH_MD_KEY_AUD_CHANNEL_COUNT|音频流通道数的键。|-|√|-|√|
 |OH_MD_KEY_CHANNEL_LAYOUT|音频流所需编码通道布局的键。|-|√|-|√|

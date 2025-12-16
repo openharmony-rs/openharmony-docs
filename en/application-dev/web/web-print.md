@@ -1,10 +1,16 @@
 # Printing Frontend Pages
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @zhang-yinglie-->
+<!--Designer: @handyohos-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 With the **Web** component, you can print HTML pages through W3C standards-compliant APIs or application APIs.
 
-To start off, declare related permissions in the **module.json5** file. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+Before using the print capability, declare related permissions in the **module.json5** file. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
 
-  ```
+  ```json
   "requestPermissions":[
       {
         "name" : "ohos.permission.PRINT"
@@ -18,6 +24,8 @@ The printing process with W3C is as follows: A print adapter is created, the pri
 You can use the frontend CSS styles, for example, **@media print**, to control the printed content. Then load the HTML page in the **Web** component.
 
 - Sample code of the **print.html** page:
+
+  Example 1:
 
   ```html
   <!DOCTYPE html>
@@ -38,9 +46,9 @@ You can use the frontend CSS styles, for example, **@media print**, to control t
   <body>
       <div>
           <h1><b>
-                  <center>This is a test page for printing</center>
+                  <p style="text-align: center;">This is a test page for printing</p>
               </b>
-              <hr color=#00cc00 width=95%>
+              <hr color="#00cc00" width="95%">
           </h1>
           <button class="Button Button--outline" onclick="window.print();">Print</button>
           <p> content content content </p>
@@ -69,21 +77,55 @@ You can use the frontend CSS styles, for example, **@media print**, to control t
       </div>
   </body>
   ```
+  
+  Example 2 (nesting a page in an iframe):
+
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Print Nested Page in an iframe</title>
+  </head>
+  <body>
+      <button id="printIframe">Print nested page in an iframe</button>
+      <iframe id="contentIframe" hidden></iframe>
+
+      <script>
+          document.getElementById("printIframe").addEventListener("click", () => {
+              var ctIframe = document.getElementById("contentIframe");
+              if(!ctIframe.contentWindow || !ctIframe.contentWindow.document) {
+                console.error("Failed to initialize the iframe page");
+                return;
+              }
+              var ctIframeDoc = ctIframe.contentWindow.document;
+              ctIframeDoc.write("Nested page");
+              ctIframeDoc.close();
+              ctIframe.contentWindow.print();
+          });
+      </script>
+  </body>
+  </html>
+  ```
 
 - Application code:
 
-  ```ts
+  <!-- @[w3c_print_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintW3CAPI.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-
+  
   @Entry
   @Component
   struct Index {
     controller: webview.WebviewController = new webview.WebviewController();
-
+  
     build() {
       Row() {
         Column() {
-          Web({ src: $rawfile("print.html"), controller: this.controller })
+          Web({ src: $rawfile('print.html'), controller: this.controller })
             .javaScriptAccess(true)
         }
         .width('100%')
@@ -94,13 +136,12 @@ You can use the frontend CSS styles, for example, **@media print**, to control t
   ```
 
 ## Initiating a Print Task Through the Application API
-On the application side, call [createWebPrintDocumentAdapter](../reference/apis-arkweb/js-apis-webview.md#createwebprintdocumentadapter11) to create a print adapter and pass the adapter to the **print** API to initiate printing.
+On the application side, call [createWebPrintDocumentAdapter](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebprintdocumentadapter11) to create a print adapter and pass the adapter to the **print** API to initiate printing.
+<!-- @[create_web_print_document](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/InitiatePrintAppAPI.ets) -->
 
-```ts
-// xxx.ets
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { print } from '@kit.BasicServicesKit'
+import { BusinessError, print } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -113,12 +154,12 @@ struct WebComponent {
         .onClick(() => {
           try {
             let webPrintDocadapter = this.controller.createWebPrintDocumentAdapter('example.pdf');
-            print.print('example_jobid', webPrintDocadapter, null, getContext());
+            print.print('example_job_id', webPrintDocadapter, null, this.getUIContext().getHostContext());
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller });
     }
   }
 }

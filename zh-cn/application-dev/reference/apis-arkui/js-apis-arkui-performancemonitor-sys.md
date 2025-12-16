@@ -1,4 +1,10 @@
 # @ohos.arkui.performanceMonitor (性能监测)(系统接口)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lushi871202-->
+<!--Designer: @lushi871202-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供用户操作场景性能相关指标监测能力，在场景开始和结束时分别调用begin和end接口，即可获得该场景相关性能指标，目前仅包含响应时延、完成时延、丢帧。
 
@@ -20,6 +26,8 @@ import { performanceMonitor } from '@kit.ArkUI';
 
 用户场景（通常为具有动效的场景）触发模式枚举。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 值 | 说明 |
@@ -32,6 +40,8 @@ import { performanceMonitor } from '@kit.ArkUI';
 ## SourceType<sup>12+</sup>
 
 用户场景触发源类型枚举。
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,6 +60,7 @@ begin(scene: string, startInputType: ActionType, note?: string): void
 
 用于标记用户场景开始，用户场景开始时调用此接口。
 
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,9 +68,9 @@ begin(scene: string, startInputType: ActionType, note?: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| scene | string | 是 | 用户场景id。长度限制50个字符，推荐字母大写且用下划线连接，例如LAUNCHER_APP_LAUNCH_FROM_ICON。 |
+| scene | string | 是 | 用户场景id。字符串长度无限制，建议控制在255个字符以内，格式推荐字母大写且用下划线连接，例如LAUNCHER_APP_LAUNCH_FROM_ICON。 |
 | startInputType | [ActionType](#actiontype)| 是 | 用户场景触发模式。 |
-| note | string| 否 | 用户场景备注信息。长度限制30个字符，可以空缺不填，填写后性能指标上报会携带备注信息，不填无影响。 |
+| note | string| 否 | 用户场景备注信息。字符串长度无限制，建议控制在255个字符以内，可以空缺不填，填写后性能指标上报会携带备注信息，不填无影响。 |
 
 **示例：** 
 
@@ -84,7 +95,7 @@ end(scene: string): void
 
 **示例：** 
 
-用户点击图标启动应用场景动效结束点
+用户点击图标启动应用场景动效结束点。
   ```ts
 performanceMonitor.end("LAUNCHER_APP_LAUNCH_FROM_ICON");
   ```
@@ -102,15 +113,15 @@ recordInputEventTime(type: ActionType, sourceType: SourceType, time: number): vo
 | -- | -- | -- | -- |
 | type | [ActionType](#actiontype)| 是 | 用户场景触发模式。 |
 | sourceType | [SourceType](#sourcetype12) | 是 | 用户场景触发源。 |
-| time | number | 是 | 场景触发时间（ms），13位数字表示的时间戳，例如1751508570794。不正确的传参会导致用户操作响应时延指标异常。若传负值将自动转化为当前系统时间，若传正值则正常使用。 |
+| time | number | 是 | 场景触发时间（ms），时间戳，例如1751508570794。若传零或负值将自动转化为当前系统时间，若传正值则正常使用。不正确的传参会导致用户操作响应时延指标异常。 |
 
 **错误码：**
 
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
-| ------- | -------- |
-| 202 | not system application. |
+| ------- | --------------------------------------------|
+| 202     | not system application.                     |
 
 **示例：**
 
@@ -120,13 +131,6 @@ import { performanceMonitor } from '@kit.ArkUI';
 
 // 获取当前系统时间
 let time = systemDateTime.getTime(false);
-try {
-  // 更新用户触发事件类型与时间
-  performanceMonitor.recordInputEventTime(performanceMonitor.ActionType.LAST_UP, performanceMonitor.SourceType.PERF_MOUSE_EVENT, time);
-} catch (paramError) {
-  // 异常处理
-  let code: number = (paramError as BusinessError).code;
-  let message: string = (paramError as BusinessError).message;
-  console.error(`error.code: ${code}, error.message: ${message}`);
-}
+// 更新用户触发事件类型与时间
+performanceMonitor.recordInputEventTime(performanceMonitor.ActionType.LAST_UP, performanceMonitor.SourceType.PERF_MOUSE_EVENT, time);
 ```

@@ -1,4 +1,10 @@
 # @ohos.InputMethodExtensionContext (InputMethodExtensionContext)
+<!--Kit: IME Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @illybyy-->
+<!--Designer: @andeszhang-->
+<!--Tester: @murphy1984-->
+<!--Adviser: @zhang_yixin13-->
 
 InputMethodExtensionContext模块是InputMethodExtensionAbility的上下文环境，继承于ExtensionContext，提供InputMethodExtensionAbility具有的能力和接口，包括启动、停止、绑定、解绑Ability。
 
@@ -18,11 +24,12 @@ import { InputMethodExtensionContext } from '@kit.IMEKit';
 在使用InputMethodExtensionContext的功能前，需要通过InputMethodExtensionAbility子类实例获取。
 
 ```ts
-import { InputMethodExtensionAbility } from '@kit.IMEKit';
+import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
-class InputMethodExtnAbility extends InputMethodExtensionAbility {
+
+class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context = this.context;
+    let context: InputMethodExtensionContext = this.context;
   }
 }
 ```
@@ -44,17 +51,18 @@ destroy(callback: AsyncCallback&lt;void&gt;): void;
 **示例：**
 
 ```ts
-import { InputMethodExtensionAbility } from '@kit.IMEKit';
+import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class InputMethodExtnAbility extends InputMethodExtensionAbility {
+class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context = this.context;
+    let context: InputMethodExtensionContext = this.context;
   }
+
   onDestroy() {
     this.context.destroy((err: BusinessError) => {
-      if(err) {
+      if (err) {
         console.error(`Failed to destroy context, err code = ${err.code}`);
         return;
       }
@@ -81,14 +89,15 @@ destroy(): Promise&lt;void&gt;;
 **示例：**
 
 ```ts
-import { InputMethodExtensionAbility } from '@kit.IMEKit';
+import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class InputMethodExtnAbility extends InputMethodExtensionAbility {
+class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context = this.context;
+    let context: InputMethodExtensionContext = this.context;
   }
+
   onDestroy() {
     this.context.destroy().then(() => {
       console.info('Succeed in destroying context.');
@@ -111,7 +120,7 @@ startAbility(want: Want): Promise&lt;void&gt;;
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 用于指定目标应用的Want类型信息，包括ability名称、bundle名称等。 |
 
 **返回值：**
 
@@ -149,30 +158,31 @@ startAbility(want: Want): Promise&lt;void&gt;;
 **示例：**
 
 ```ts
-import { InputMethodExtensionAbility } from '@kit.IMEKit';
+import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class InputMethodExtnAbility extends InputMethodExtensionAbility {
+class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context = this.context;
-  }
-  onDestroy() {
-    let want: Want = {
+    const context: InputMethodExtensionContext = this.context;
+    const targetWant: Want = {
       bundleName: "com.example.aafwk.test",
       abilityName: "com.example.aafwk.test.TwoAbility"
     };
-    try {
-      this.context.startAbility(want).then(() => {
-        console.info(`startAbility success`);
-      }).catch((err: BusinessError) => {
-        let error = err as BusinessError;
-        console.error(`startAbility error: ${error.code} ${error.message}`);
-      })
-    } catch (err) {
-      let error = err as BusinessError;
-      console.error(`startAbility error: ${error.code} ${error.message}`);
-    }
+
+    context.startAbility(targetWant)
+      .then(() => console.info('startAbility success'))
+      .catch((err: BusinessError) => {
+        console.error(`StartAbility failed. Code: ${err.code}, Message: ${err.message}`);
+      });
+  }
+
+  onDestroy() {
+    this.context.destroy().then(() => {
+      console.info('Succeed in destroying context.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to destroy context, err code = ${err.code}`);
+    });
   }
 }
 ```

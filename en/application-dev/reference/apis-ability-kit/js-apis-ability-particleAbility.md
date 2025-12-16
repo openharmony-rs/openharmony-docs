@@ -1,6 +1,13 @@
-# @ohos.ability.particleAbility (ParticleAbility)
+# @ohos.ability.particleAbility (ParticleAbility Module)
 
-The **particleAbility** module provides APIs for operating a DataAbility and ServiceAbility. You can use the APIs to start and terminate a ParticleAbility, obtain a **dataAbilityHelper** object, and connect to or disconnect from a ServiceAbility.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The particleAbility module provides APIs for operating a DataAbility and ServiceAbility. You can use the APIs to start and terminate a ParticleAbility, obtain a dataAbilityHelper object, and connect to or disconnect from a ServiceAbility.
 
 > **NOTE**
 > 
@@ -176,7 +183,7 @@ particleAbility.terminateSelf().then(() => {
 
 acquireDataAbilityHelper(uri: string): DataAbilityHelper
 
-Obtains a **dataAbilityHelper** object.
+Obtains a dataAbilityHelper object.
 
 > **NOTE**
 >

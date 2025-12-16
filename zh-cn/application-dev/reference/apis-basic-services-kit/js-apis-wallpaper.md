@@ -1,5 +1,12 @@
 # @ohos.wallpaper (壁纸)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @dreamsky8023-->
+<!--Designer: @dreamsky8023-->
+<!--Tester: @murphy84-->
+<!--Adviser: @fang-jinxu-->
+
 壁纸管理服务为OpenHarmony系统服务，提供壁纸切换功能。从API 9开始壁纸管理的接口调整为系统API，壁纸的切换只能通过系统应用来完成。壁纸管理提供壁纸切换通道，使用壁纸的应用（如：桌面）需订阅壁纸变化通知并刷新壁纸显示。
 
 > **说明：**
@@ -36,12 +43,12 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
-| 名称 | 类型 | 可读 | 可写 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| red | number | 是 | 是 | 表示红色值，范围为 0 到 255。 |
-| green | number | 是 | 是 | 表示绿色值，范围为 0 到 255。 |
-| blue | number | 是 | 是 | 表示蓝色值，范围为 0 到 255。 |
-| alpha | number | 是 | 是 | 表示 alpha 值，范围为 0 到 255。 |
+| red | number | 否 | 否 | 表示红色值，范围为 0 到 255。 |
+| green | number | 否 | 否 | 表示绿色值，范围为 0 到 255。 |
+| blue | number | 否 | 否 | 表示蓝色值，范围为 0 到 255。 |
+| alpha | number | 否 | 否 | 表示 alpha 值，范围为 0 到 255。 |
 
 
 ## wallpaper.on('colorChange')<sup>(deprecated)</sup>

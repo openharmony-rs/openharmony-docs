@@ -1,4 +1,10 @@
 # Interfaces (其他)
+<!--Kit: Audio Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @songshenke-->
+<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Tester: @Filger-->
+<!--Adviser: @w_Machine_cc-->
 
 > **说明：**
 >
@@ -26,7 +32,7 @@
 | ------------- | --------------------------- | ---- |---| --------------- |
 | content       | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 是 | 音频内容类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br>API version 8、9为必填参数，从API version 10开始为可选参数，默认值为CONTENT_TYPE_UNKNOWN。<br>从API version 7开始支持，从API version 10开始废弃，建议使用[StreamUsage](arkts-apis-audio-e.md#streamusage)替代。 |
 | usage         | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| rendererFlags | number                      | 否 | 否 | 音频渲染器标志。<br>0代表音频渲染器。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| rendererFlags | number                      | 否 | 否 | 播放流行为标志。<br>设置为0即可。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Volume|
 
 ## AudioRendererOptions<sup>8+</sup>
@@ -84,6 +90,16 @@
 | :------------ |:------------------------------------------------------------------| :--- |---| :--------------- |
 | reason        | [AudioSessionDeactivatedReason](arkts-apis-audio-e.md#audiosessiondeactivatedreason12) | 否 | 否 | 音频会话停用原因。       |
 
+## AudioSessionStateChangedEvent<sup>20+</sup>
+
+音频会话状态变更事件。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称          | 类型                                              | 只读 | 可选 | 说明             |
+| :------------ |:------------------------------------------------| :--- |---| :--------------- |
+| stateChangeHint        | [AudioSessionStateChangeHint](arkts-apis-audio-e.md#audiosessionstatechangehint20) | 否 | 否 | 音频会话状态变更提示。 |
+
 ## AudioRendererChangeInfo<sup>9+</sup>
 
 描述音频渲染器更改信息。
@@ -95,36 +111,6 @@
 | streamId           | number                                    | 是   | 否   | 音频流唯一id。                |
 | rendererInfo       | [AudioRendererInfo](#audiorendererinfo8)  | 是   | 否   | 音频渲染器信息。               |
 | deviceDescriptors  | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)      | 是   | 否   | 音频设备描述。|
-
-**示例：**
-
-```ts
-import { audio } from '@kit.AudioKit';
-
-const audioManager = audio.getAudioManager();
-let audioStreamManager = audioManager.getStreamManager();
-
-audioStreamManager.on('audioRendererChange',  (AudioRendererChangeInfoArray) => {
-  for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-    console.info(`## RendererChange on is called for ${i} ##`);
-    console.info(`StreamId for ${i} is: ${AudioRendererChangeInfoArray[i].streamId}`);
-    console.info(`Content for ${i} is: ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-    console.info(`Stream for ${i} is: ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-    console.info(`Flag ${i} is: ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-    let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
-    for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-      console.info(`Id: ${i} : ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-      console.info(`Type: ${i} : ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-      console.info(`Role: ${i} : ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-      console.info(`Name: ${i} : ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-      console.info(`Addr: ${i} : ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-      console.info(`SR: ${i} : ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-      console.info(`C ${i} : ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-      console.info(`CM: ${i} : ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks[0]}`);
-    }
-  }
-});
-```
 
 ## AudioCapturerChangeInfo<sup>9+</sup>
 
@@ -139,35 +125,6 @@ audioStreamManager.on('audioRendererChange',  (AudioRendererChangeInfoArray) => 
 | deviceDescriptors  | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)      | 是   | 否   | 音频设备信息。|
 | muted<sup>11+</sup>  | boolean    | 是   | 是 | 音频采集器是否处于静音状态。true表示静音，false表示非静音。|
 
-**示例：**
-
-```ts
-import { audio } from '@kit.AudioKit';
-
-const audioManager = audio.getAudioManager();
-let audioStreamManager = audioManager.getStreamManager();
-
-audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) =>  {
-  for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-    console.info(`## CapChange on is called for element ${i} ##`);
-    console.info(`StrId for  ${i} is: ${AudioCapturerChangeInfoArray[i].streamId}`);
-    console.info(`Src for ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.source}`);
-    console.info(`Flag ${i} is: ${AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
-    let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
-    for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-      console.info(`Id: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
-      console.info(`Type: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-      console.info(`Role: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-      console.info(`Name: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
-      console.info(`Addr: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
-      console.info(`SR: ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-      console.info(`C ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-      console.info(`CM ${i} : ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks[0]}`);
-    }
-  }
-});
-```
-
 ## AudioDeviceDescriptor
 
 描述音频设备。
@@ -178,36 +135,13 @@ audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) =>  
 | deviceType                    | [DeviceType](arkts-apis-audio-e.md#devicetype)  | 是   | 否   | 设备类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | id<sup>9+</sup>               | number                     | 是   | 否   | 唯一的设备id。  <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | name<sup>9+</sup>             | string                     | 是   | 否   | 设备名称。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| address<sup>9+</sup>          | string                     | 是   | 否   | 设备地址。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| address<sup>9+</sup>          | string                     | 是   | 否   | 设备静态MAC地址。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | sampleRates<sup>9+</sup>      | Array&lt;number&gt;        | 是   | 否   | 支持的采样率。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | channelCounts<sup>9+</sup>    | Array&lt;number&gt;        | 是   | 否   | 支持的通道数。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | channelMasks<sup>9+</sup>     | Array&lt;number&gt;        | 是   | 否   | 支持的通道掩码。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | displayName<sup>10+</sup>     | string                     | 是   | 否   | 设备显示名。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | encodingTypes<sup>11+</sup>    | Array&lt;[AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)&gt;                     | 是   | 是 | 支持的编码类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | spatializationSupported<sup>18+</sup>     | boolean                     | 是   | 是 | 设备是否支持空间音频。true表示支持空间音频，false表示不支持空间音频。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Spatialization|
-
-**示例：**
-
-```ts
-import { audio } from '@kit.AudioKit';
-
-function displayDeviceProp(value: audio.AudioDeviceDescriptor) {
-  deviceRoleValue = value.deviceRole;
-  deviceTypeValue = value.deviceType;
-}
-
-let deviceRoleValue: audio.DeviceRole | undefined = undefined;
-let deviceTypeValue: audio.DeviceType | undefined = undefined;
-audio.getAudioManager().getRoutingManager().getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((value: audio.AudioDeviceDescriptors) => {
-  console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
-  value.forEach(displayDeviceProp);
-  if (deviceTypeValue != undefined && deviceRoleValue != undefined){
-    console.info('AudioFrameworkTest: Promise: getDevices : OUTPUT_DEVICES_FLAG :  PASS');
-  } else {
-    console.error('AudioFrameworkTest: Promise: getDevices : OUTPUT_DEVICES_FLAG :  FAIL');
-  }
-});
-```
 
 ## VolumeEvent<sup>9+</sup>
 
@@ -217,7 +151,7 @@ audio.getAudioManager().getRoutingManager().getDevices(audio.DeviceFlag.OUTPUT_D
 
 | 名称       | 类型                                | 只读 | 可选 | 说明                                        |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 否 | 否 | 音量流类型。                                    |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 否 | 否 | 音频音量类型。                                    |
 | volume     | number                              | 否 | 否 |音量等级，可设置范围通过调用getMinVolume和getMaxVolume方法获取。  |
 | updateUi   | boolean                             | 否 | 否 |  是否在UI中显示音量变化。true表示显示，false表示不显示。             |
 | volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。|
@@ -232,6 +166,19 @@ audio.getAudioManager().getRoutingManager().getDevices(audio.DeviceFlag.OUTPUT_D
 | 名称       | 类型                                | 只读 | 可选 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------------------- |
 | mute | boolean | 否 | 否 | 系统麦克风是否为静音状态。true表示静音，false表示非静音。          |
+
+
+## StreamVolumeEvent<sup>20+</sup>
+
+音频流音量变化时，应用接收到的事件。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+| 名称       | 类型                                | 只读 | 可选 | 说明                                                     |
+| ---------- | ----------------------------------- | ---- |---|-------------------------------------------------------- |
+| streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音量发生变化的音频流。          |
+| volume | number | 否 | 否 | 音量值。          |
+| updateUi | boolean | 否 | 否 | 是否在UI上展示音量变化。true表示展示，false表示不展示。          |
 
 ## DeviceChangeAction
 
@@ -257,6 +204,29 @@ audio.getAudioManager().getRoutingManager().getDevices(audio.DeviceFlag.OUTPUT_D
 | devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。 |
 | changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 流设备变更原因。 |
 
+## CurrentOutputDeviceChangedEvent<sup>20+</sup>
+
+应用接收到输出设备的变更事件。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称              | 类型                                                                | 只读 | 可选 | 说明               |
+| :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
+| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。 |
+| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 设备变更原因。 |
+| recommendedAction | [OutputDeviceChangeRecommendedAction](arkts-apis-audio-e.md#outputdevicechangerecommendedaction20) | 否 | 否 | 设备变更后推荐的操作。 |
+
+## CurrentInputDeviceChangedEvent<sup>21+</sup>
+
+应用接收到输入设备的变更事件。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称              | 类型                                                                | 只读 | 可选 | 说明               |
+| :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
+| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。 |
+| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 设备变更原因。 |
+
 ## AudioTimestampInfo<sup>19+</sup>
 
 音频流时间戳和当前数据帧位置信息。
@@ -277,7 +247,7 @@ audio.getAudioManager().getRoutingManager().getDevices(audio.DeviceFlag.OUTPUT_D
 | 名称          | 类型                      | 只读 | 可选 | 说明             |
 | :------------ | :------------------------ | :--- |---| :--------------- |
 | source        | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 否 | 否 | 音源类型。       |
-| capturerFlags | number                    | 否 | 否 | 音频采集器标志。<br>0代表音频采集器。 |
+| capturerFlags | number                    | 否 | 否 | 录制流行为标志。<br>设置为0即可。 |
 
 ## AudioCapturerOptions<sup>8+</sup>
 

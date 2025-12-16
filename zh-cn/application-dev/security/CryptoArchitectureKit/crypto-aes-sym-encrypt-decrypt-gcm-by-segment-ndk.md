@@ -1,5 +1,12 @@
 # 使用AES对称密钥（GCM模式）分段加解密(C/C++)
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
 对应的算法规格请查看[对称密钥加解密算法规格：AES](crypto-sym-encrypt-decrypt-spec.md#aes)。
 
 ## 在CMake脚本中链接相关动态库
@@ -32,7 +39,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
       2）对于流加密模式（比如CTR和OFB模式），通常密文长度和明文长度相等。
 
-6. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取密文。
+5. 调用[OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final)，获取密文。
    
    - 由于已使用update传入数据，此处传入null。
    - final输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，以避免产生异常。

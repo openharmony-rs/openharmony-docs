@@ -1,4 +1,10 @@
 # Introduction to Media Kit
+<!--Kit: Media Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @wang-haizhou6-->
+<!--Designer: @HmQQQ-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 Media Kit is used to develop audio and video playback or recording features. The Media Kit development guide provides comprehensive instructions on how to develop various audio and video modules, assisting you in utilizing the system's audio and video APIs to achieve desired functionalities. For example, you can use the SoundPool to implement simple prompt tones so that a drip sound is played upon the receipt of a new message; you can use the AVPlayer to develop a music player, which can loop a piece of music.
 
@@ -20,7 +26,7 @@ Media Kit provides the following modules:
 
 - HDR video
 
-   The native data structures and interfaces are provided to support the capture and playback of HDR VIVID. Third-party applications can deliver a more immersive experience by leveraging the HDR capability of the system.
+   The data structures and interfaces are provided to support the capture and playback of HDR VIVID. Third-party applications can deliver a more immersive experience by leveraging the HDR capability of the system.
 
 - Sound pool
 
@@ -105,7 +111,9 @@ The table below lists the supported audio playback formats.
 | mp3 | Audio format: MP3| 
 | ogg | Audio format: VORBIS | 
 | wav | Audio format: PCM| 
+| flac | Audio format: FLAC| 
 | amr | Audio format: AMR| 
+| ape | Audio format: APE |
 
 <!--Del-->
 > **NOTE**
@@ -314,31 +322,16 @@ The encoding parameters (format and bit rate) and container format of the source
 
 <!--RP1--><!--RP1End-->
 - The following source video formats are supported:
-  - [Demultiplexing formats](../avcodec/avcodec-support-formats.md#media-data-demultiplexing)
-  - [Audio decoding formats](../avcodec/avcodec-support-formats.md#audio-decoding)
-  - [Video decoding formats](../avcodec/avcodec-support-formats.md#video-decoding)
-    <!--Del-->
-    > **NOTE**
-    > 
-    > Currently, H.265 is not supported.
 
-    <!--DelEnd-->
+   The source video formats supported by transcoding depend on the formats supported by the system decoder and demuxer. For details, see [AVCodec Supported Formats](../avcodec/avcodec-support-formats.md#media-data-demultiplexing).
+
 - The following target video formats are supported:
-  - [Container formats](../avcodec/avcodec-support-formats.md#media-data-multiplexing)
-  - [Audio encoding formats](../avcodec/avcodec-support-formats.md#audio-encoding)
-  - [Video encoding formats](../avcodec/avcodec-support-formats.md#video-encoding)
-    <!--Del-->
-    > **NOTE**
-    > 
-    > Currently, H.265 is not supported.
-   
-    <!--DelEnd-->
+
+   | Container Format | Video Encoding Type  | Audio Encoding Type  |
+   | -------- | :------------------| :---------------- |
+   | mp4      | AVC (H.264)<!--RP7--><!--RP7End--> | AAC |
+
 - The support for tracks is as follows:
   - Subtitle tracks are not supported. If the original video has subtitle tracks, they are discarded after transcoding.
   - Only one video track can be output. If the original video has multiple video tracks, the first one is selected for transcoding.
   - Only one audio track can be output. If the original video has multiple audio tracks, the first one is selected for transcoding.
-
-> **NOTE**
->
-> - Transcoding output video supports only the MP4 container format.
-> - Transcoding output audio supports only AAC encoding, and transcoding output video supports only AVC or HEVC encoding.

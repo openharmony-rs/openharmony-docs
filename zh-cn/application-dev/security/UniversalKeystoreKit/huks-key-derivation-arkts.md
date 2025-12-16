@@ -1,12 +1,19 @@
 # 密钥派生(ArkTS)
 
-以HKDF256密钥为例，完成密钥派生。具体的场景介绍及支持的算法规格，请参考[密钥生成支持的算法](huks-key-generation-overview.md#支持的算法)。
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+以PBKDF2和HKDF256密钥为例，完成密钥派生。具体的场景介绍及支持的算法规格，请参考[密钥派生支持的算法](huks-key-derivation-overview.md#支持的算法)。
 
 ## 开发步骤
 
 **生成密钥**
 
-1. 指定密钥别名。
+1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
 2. 初始化密钥属性集，可指定参数HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG（可选），用于标识基于该密钥派生出的密钥是否由HUKS管理。
 
@@ -50,7 +57,10 @@
 ## 开发案例
 
 ### HKDF
-```ts
+准备HKDF密钥派生材料
+<!-- @[the_key_is_derived_from_hkdf_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets) -->
+
+``` TypeScript
 /*
  * 以下以HKDF密钥的Promise操作使用为例
  */
@@ -59,13 +69,13 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /*
  * 确定密钥别名和封装密钥属性参数集
  */
-let srcKeyAlias = "hkdf_Key";
-let deriveHkdfInData = "deriveHkdfTestIndata";
+let srcKeyAlias = 'hkdf_Key';
+let deriveHkdfInData = 'deriveHkdfTestIndata';
 let handle: number;
 let finishOutData: Uint8Array;
-let HuksKeyDeriveKeySize = 32;
+let huksKeyDeriveKeySize = 32;
 /* 集成生成密钥参数集 */
-let properties: Array<huks.HuksParam> = [
+let properties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES,
@@ -85,10 +95,10 @@ let properties: Array<huks.HuksParam> = [
 
 let huksOptions: huks.HuksOptions = {
   properties: properties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 /* 集成init时密钥参数集 */
-let initProperties: Array<huks.HuksParam> = [{
+let initProperties: huks.HuksParam[] = [{
   tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
   value: huks.HuksKeyAlg.HUKS_ALG_HKDF,
 }, {
@@ -99,15 +109,15 @@ let initProperties: Array<huks.HuksParam> = [{
   value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
 }, {
   tag: huks.HuksTag.HUKS_TAG_DERIVE_KEY_SIZE,
-  value: HuksKeyDeriveKeySize,
+  value: huksKeyDeriveKeySize,
 }];
 
 let initOptions: huks.HuksOptions = {
   properties: initProperties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 /* 集成finish时密钥参数集 */
-let finishProperties: Array<huks.HuksParam> = [{
+let finishProperties: huks.HuksParam[] = [{
   tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
   value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
 }, {
@@ -129,7 +139,7 @@ let finishProperties: Array<huks.HuksParam> = [{
   value: huks.HuksKeyDigest.HUKS_DIGEST_NONE,
 }, {
   tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
-  value: StringToUint8Array(srcKeyAlias),
+  value: stringToUint8Array(srcKeyAlias),
 }, {
   tag: huks.HuksTag.HUKS_TAG_PADDING,
   value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
@@ -139,22 +149,26 @@ let finishProperties: Array<huks.HuksParam> = [{
 }];
 let finishOptions: huks.HuksOptions = {
   properties: finishProperties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 
-function StringToUint8Array(str: String) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: String) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-class throwObject {
-  isThrow = false;
+class ThrowObject {
+  public isThrow = false;
 }
+```
+执行密钥派生
+<!-- @[the_key_is_derived_from_hkdf_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets) -->
 
-function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+``` TypeScript
+function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
       huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
@@ -173,7 +187,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwO
 
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
   console.info(`enter promise generateKeyItem`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
       .then((data) => {
@@ -184,14 +198,16 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
           throw (error as Error);
         } else {
           console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: generateKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
-function initSession(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function initSession(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<huks.HuksSessionHandle>((resolve, reject) => {
     try {
       huks.initSession(keyAlias, huksOptions, (error, data) => {
@@ -210,7 +226,7 @@ function initSession(keyAlias: string, huksOptions: huks.HuksOptions, throwObjec
 
 async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
   console.info(`enter promise doInit`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await initSession(keyAlias, huksOptions, throwObject)
       .then((data) => {
@@ -222,14 +238,16 @@ async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doInit failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doInit input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
-function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<huks.HuksOptions>((resolve, reject) => {
     try {
       huks.updateSession(handle, huksOptions, (error, data) => {
@@ -248,7 +266,7 @@ function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObjec
 
 async function publicUpdateFunc(handle: number, huksOptions: huks.HuksOptions) {
   console.info(`enter promise doUpdate`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await updateSession(handle, huksOptions, throwObject)
       .then((data) => {
@@ -259,14 +277,16 @@ async function publicUpdateFunc(handle: number, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doUpdate failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doUpdate input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
-function finishSession(handle: number, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function finishSession(handle: number, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<huks.HuksReturnResult>((resolve, reject) => {
     try {
       huks.finishSession(handle, huksOptions, (error, data) => {
@@ -285,7 +305,7 @@ function finishSession(handle: number, huksOptions: huks.HuksOptions, throwObjec
 
 async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
   console.info(`enter promise doFinish`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await finishSession(handle, huksOptions, throwObject)
       .then((data) => {
@@ -297,14 +317,16 @@ async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doFinish failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doFinish input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
-function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
       huks.deleteKeyItem(keyAlias, huksOptions, (error, data) => {
@@ -323,7 +345,7 @@ function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObj
 
 async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
   console.info(`enter promise deleteKeyItem`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await deleteKeyItem(keyAlias, huksOptions, throwObject)
       .then((data) => {
@@ -334,10 +356,12 @@ async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptio
           throw (error as Error);
         } else {
           console.error(`promise: deleteKeyItem failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: deleteKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
@@ -346,15 +370,18 @@ async function testDerive() {
   await publicGenKeyFunc(srcKeyAlias, huksOptions);
   /* 进行派生操作 */
   await publicInitFunc(srcKeyAlias, initOptions);
-  initOptions.inData = StringToUint8Array(deriveHkdfInData);
+  initOptions.inData = stringToUint8Array(deriveHkdfInData);
   await publicUpdateFunc(handle, initOptions);
   await publicFinishFunc(handle, finishOptions);
   await publicDeleteKeyFunc(srcKeyAlias, huksOptions);
 }
 ```
-### PBKDF2
 
-```ts
+### PBKDF2
+准备PBKDF2密钥派生材料
+<!-- @[the_key_is_derived_from_pbkdf2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets) -->
+
+``` TypeScript
 /*
  * 以下以PBKDF2密钥的Promise操作使用为例
  */
@@ -363,116 +390,120 @@ import { huks } from '@kit.UniversalKeystoreKit';
 /*
  * 确定密钥别名和封装密钥属性参数集
  */
-let srcKeyAlias = "pbkdf2_Key";
-let salt = "mySalt";
+let srcKeyAlias = 'pbkdf2_Key';
+let salt = 'mySalt';
 let iterationCount = 10000;
 let derivedKeySize = 32;
 let handle: number;
 let finishOutData: Uint8Array;
 
 /* 集成生成密钥参数集 */
-let properties: Array<huks.HuksParam> = [
+let properties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_AES,
   }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_128,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
-    value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
-  }
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DIGEST,
+  value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
+  value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
+}
 ];
 
 let huksOptions: huks.HuksOptions = {
   properties: properties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 
 /* 集成init时密钥参数集 */
-let initProperties: Array<huks.HuksParam> = [
+let initProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_PBKDF2,
   }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DERIVE_KEY_SIZE,
-    value: derivedKeySize,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_ITERATION,
-    value: iterationCount,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_SALT,
-    value: StringToUint8Array(salt),
-  }
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DERIVE,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DIGEST,
+  value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DERIVE_KEY_SIZE,
+  value: derivedKeySize,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_ITERATION,
+  value: iterationCount,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_SALT,
+  value: stringToUint8Array(salt),
+}
 ];
 
 let initOptions: huks.HuksOptions = {
   properties: initProperties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 
 /* 集成finish时密钥参数集 */
-let finishProperties: Array<huks.HuksParam> = [
+let finishProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG,
     value: huks.HuksKeyStorageType.HUKS_STORAGE_ONLY_USED_IN_HUKS,
   }, {
-    tag: huks.HuksTag.HUKS_TAG_IS_KEY_ALIAS,
-    value: true,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_AES,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_DIGEST,
-    value: huks.HuksKeyDigest.HUKS_DIGEST_NONE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
-    value: StringToUint8Array(srcKeyAlias),
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PADDING,
-    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-    value: huks.HuksCipherMode.HUKS_MODE_ECB,
-  }
+  tag: huks.HuksTag.HUKS_TAG_IS_KEY_ALIAS,
+  value: true,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+  value: huks.HuksKeyAlg.HUKS_ALG_AES,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+  value: huks.HuksKeySize.HUKS_AES_KEY_SIZE_256,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_DIGEST,
+  value: huks.HuksKeyDigest.HUKS_DIGEST_NONE,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_KEY_ALIAS,
+  value: stringToUint8Array(srcKeyAlias),
+}, {
+  tag: huks.HuksTag.HUKS_TAG_PADDING,
+  value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
+}, {
+  tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+  value: huks.HuksCipherMode.HUKS_MODE_ECB,
+}
 ];
 
 let finishOptions: huks.HuksOptions = {
   properties: finishProperties,
-  inData: new Uint8Array(new Array())
+  inData: new Uint8Array([])
 }
 
-function StringToUint8Array(str: String) {
-  let arr: number[] = new Array();
+function stringToUint8Array(str: String) {
+  let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
   }
   return new Uint8Array(arr);
 }
 
-class throwObject {
-  isThrow = false;
+class ThrowObject {
+  public isThrow = false;
 }
+```
+执行密钥派生
+<!-- @[the_key_is_derived_from_pbkdf2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets) -->
 
-function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+``` TypeScript
+function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
       huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
@@ -491,7 +522,7 @@ function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwO
 
 async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
   console.info(`enter promise generateKeyItem`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
       .then((data) => {
@@ -502,14 +533,16 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
           throw (error as Error);
         } else {
           console.error(`promise: generateKeyItem failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: generateKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
-function initSession(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function initSession(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<huks.HuksSessionHandle>((resolve, reject) => {
     try {
       huks.initSession(keyAlias, huksOptions, (error, data) => {
@@ -528,7 +561,7 @@ function initSession(keyAlias: string, huksOptions: huks.HuksOptions, throwObjec
 
 async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
   console.info(`enter promise doInit`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await initSession(keyAlias, huksOptions, throwObject)
       .then((data) => {
@@ -540,14 +573,16 @@ async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doInit failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doInit input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
-function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<huks.HuksOptions>((resolve, reject) => {
     try {
       huks.updateSession(handle, huksOptions, (error, data) => {
@@ -566,7 +601,7 @@ function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObjec
 
 async function publicUpdateFunc(handle: number, huksOptions: huks.HuksOptions) {
   console.info(`enter promise doUpdate`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await updateSession(handle, huksOptions, throwObject)
       .then((data) => {
@@ -577,14 +612,16 @@ async function publicUpdateFunc(handle: number, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doUpdate failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doUpdate input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
-function finishSession(handle: number, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function finishSession(handle: number, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<huks.HuksReturnResult>((resolve, reject) => {
     try {
       huks.finishSession(handle, huksOptions, (error, data) => {
@@ -603,7 +640,7 @@ function finishSession(handle: number, huksOptions: huks.HuksOptions, throwObjec
 
 async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
   console.info(`enter promise doFinish`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await finishSession(handle, huksOptions, throwObject)
       .then((data) => {
@@ -615,14 +652,16 @@ async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
           throw (error as Error);
         } else {
           console.error(`promise: doFinish failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: doFinish input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 
-function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: throwObject) {
+function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
       huks.deleteKeyItem(keyAlias, huksOptions, (error, data) => {
@@ -641,7 +680,7 @@ function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObj
 
 async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
   console.info(`enter promise deleteKeyItem`);
-  let throwObject: throwObject = { isThrow: false };
+  let throwObject: ThrowObject = { isThrow: false };
   try {
     await deleteKeyItem(keyAlias, huksOptions, throwObject)
       .then((data) => {
@@ -652,10 +691,12 @@ async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptio
           throw (error as Error);
         } else {
           console.error(`promise: deleteKeyItem failed, ${JSON.stringify(error)}`);
+          throw (error as Error);
         }
       });
   } catch (error) {
     console.error(`promise: deleteKeyItem input arg invalid, ${JSON.stringify(error)}`);
+    throw (error as Error);
   }
 }
 

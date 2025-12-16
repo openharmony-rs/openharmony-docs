@@ -1,4 +1,10 @@
 # 焦点错误码
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
@@ -8,7 +14,7 @@
 
 **错误信息**
 
-This component is not focusable.
+the component cannot be focused.
 
 **错误描述**
 
@@ -16,11 +22,11 @@ This component is not focusable.
 
 **可能原因**
 
-节点默认无法获焦、开发者通过focusable等属性方法设置节点无法获焦等。
+节点默认无法获焦、开发者通过focusable等属性方法设置等。
 
 **处理步骤**
 
-NA
+检查当前节点是否支持获焦、是否设置focusable为true。
 
 ## 150002 祖先节点无法获得焦点
 
@@ -34,17 +40,17 @@ This component has an unfocusable ancestor.
 
 **可能原因**
 
-祖先节点默认无法获焦、开发者通过focusable等属性方法设置祖先节点无法获焦等。
+祖先节点默认无法获焦、开发者通过focusable等属性方法设置等。
 
 **处理步骤**
 
-NA
+检查祖先节点是否支持获焦、是否设置focusable为true。
 
 ## 150003 节点不存在
 
 **错误信息**
 
-The component doesn't exist, is currently invisible, or has been disabled.
+the component is not on tree or does not exist.
 
 **错误描述**
 
@@ -56,4 +62,4 @@ The component doesn't exist, is currently invisible, or has been disabled.
 
 **处理步骤**
 
-NA
+使用正确的id或节点。

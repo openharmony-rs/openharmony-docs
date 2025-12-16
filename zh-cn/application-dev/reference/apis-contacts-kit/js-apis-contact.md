@@ -1,5 +1,11 @@
 # @ohos.contact (联系人)
 
+<!--Kit: Contacts Kit-->
+<!--Subsystem: Applications-->
+<!--Owner: @librahCode-->
+<!--Designer: @yanghaoqian-->
+<!--Tester: @shangzhijie-->
+<!--Adviser: @zhang_yixin13-->
 本模块提供联系人管理能力，包括添加联系人、删除联系人、更新联系人等。
 
 > **说明：**
@@ -17,7 +23,7 @@ import { contact } from '@kit.ContactsKit';
 
 addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number&gt;): void 
 
-添加联系人，使用callback异步回调。
+添加联系人。使用callback异步回调。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -71,11 +77,11 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
   });
 ```
 
-## contact.addContact<sup>(deprecated)7+</sup>
+## contact.addContact<sup>(deprecated)</sup>
 
 addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
-添加联系人，使用callback异步回调。
+添加联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -96,7 +102,10 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  import { common } from '@kit.AbilityKit';
+  
+  // 获取context。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
       fullName: 'xxx'
@@ -117,7 +126,7 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 
 addContact(context: Context, contact: Contact): Promise<number&gt;
 
-添加联系人，使用Promise异步回调。
+添加联系人。使用Promise异步回调。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 
@@ -175,11 +184,11 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
   });
 ```
 
-## contact.addContact<sup>(deprecated)7+</sup>
+## contact.addContact<sup>(deprecated)</sup>
 
 addContact(contact: Contact): Promise&lt;number&gt;
 
-添加联系人，使用Promise异步回调。
+添加联系人。使用Promise异步回调。
 
 > **说明**
 >
@@ -225,7 +234,7 @@ addContact(contact: Contact): Promise&lt;number&gt;
 
 deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除联系人，使用callback异步回调。
+删除联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -236,7 +245,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                    | 是   | 联系人的唯一查询键key值，一个联系人对应一个key。             |
+| key      | string                    | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可通过[selectContacts](#contactselectcontacts10-1)接口获取。            |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回失败的错误码。     |
 
 **错误码：**
@@ -257,22 +266,28 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.deleteContact(context, 'xxx', (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in deleting Contact.');
+ // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 第二个参数传入选择联系人的key值
+    contact.deleteContact(context, data[0].key, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in deleting Contact.');
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
-## contact.deleteContact<sup>(deprecated)7+</sup>
+## contact.deleteContact<sup>(deprecated)</sup>
 
 deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除联系人，使用callback异步回调。
+删除联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -286,7 +301,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
-| key      | string                    | 是   | 联系人的唯一查询键key值，一个联系人对应一个key。 |
+| key      | string                    | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可通过[selectContacts](#contactselectcontacts10-1)接口获取。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回失败的错误码。 |
 
 **示例：**
@@ -294,12 +309,20 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.deleteContact('xxx', (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in deleting Contact.');
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 第一个参数传入选择联系人的key值
+    contact.deleteContact(data[0].key, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in deleting Contact.');
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -307,7 +330,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 
-删除联系人，使用Promise异步回调。
+删除联系人。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -318,7 +341,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 | 参数名  | 类型    | 必填 | 说明                                                         |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
 | context | Context | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key     | string  | 是   | 联系人的唯一查询键key值，一个联系人对应一个key。                       |
+| key     | string  | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                      |
 
 **返回值：**
 
@@ -344,21 +367,27 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.deleteContact(context, 'xxx');
-  promise.then(() => {
-    console.info(`Succeeded in deleting Contact.`);
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    // 第二个参数传入选择联系人的key值
+    let promise = contact.deleteContact(context, data[0].key);
+    promise.then(() => {
+      console.info(`Succeeded in deleting Contact.`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
+    });
   }).catch((err: BusinessError) => {
-    console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
-## contact.deleteContact<sup>(deprecated)7+</sup>
+## contact.deleteContact<sup>(deprecated)</sup>
 
 deleteContact(key: string): Promise&lt;void&gt;
 
-删除联系人，使用Promise异步回调。
+删除联系人。使用Promise异步回调。
 
 > **说明**
 >
@@ -372,7 +401,7 @@ deleteContact(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| key    | string | 是   | 联系人的唯一查询键key值，一个联系人对应一个key。 |
+| key    | string | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可通过[selectContacts](#contactselectcontacts10-1)接口获取。 |
 
 **返回值：**
 
@@ -385,11 +414,17 @@ deleteContact(key: string): Promise&lt;void&gt;
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.deleteContact('xxx');
-  promise.then(() => {
-    console.info(`Succeeded in deleting Contact.`);
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 第一个参数传入选择联系人的key值
+    let promise = contact.deleteContact(data[0].key);
+    promise.then(() => {
+      console.info(`Succeeded in deleting Contact.`);
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
+    });
   }).catch((err: BusinessError) => {
-    console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -397,7 +432,7 @@ deleteContact(key: string): Promise&lt;void&gt;
 
 updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
-更新联系人，使用callback异步回调。
+更新联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -408,7 +443,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填。                                         |
+| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回失败的错误码。     |
 
 **错误码：**
@@ -429,30 +464,35 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.updateContact(context, {
-    id: 1,
-    name: {
-      fullName: 'xxx'
-    },
-    phoneNumbers: [{
-      phoneNumber: '138xxxxxxxx'
-    }]
-  }, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in updating Contact.');
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    contact.updateContact(context, {
+      id: data[0].id,  // 选择联系人的id。
+      name: {
+        fullName: 'xxx'
+      },
+      phoneNumbers: [{
+        phoneNumber: '138xxxxxxxx'
+      }]
+    }, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in updating Contact.');
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
-更新联系人，使用callback异步回调。
+更新联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -466,7 +506,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
-| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填。                         |
+| contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回失败的错误码。 |
 
 **示例：**
@@ -474,20 +514,27 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.updateContact(context, {
-    id: 1,
-    name: {
-      fullName: 'xxx'
-    },
-    phoneNumbers: [{
-      phoneNumber: '138xxxxxxxx'
-    }]
-  }, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in updating Contact.');
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    contact.updateContact(context, {
+      id: data[0].id,  // 选择联系人的id。
+      name: {
+        fullName: 'xxx'
+      },
+      phoneNumbers: [{
+        phoneNumber: '138xxxxxxxx'
+      }]
+    }, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in updating Contact.');
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -495,7 +542,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
 updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;): void
 
-更新联系人，使用callback异步回调。
+更新联系人（支持传入联系人的属性列表）。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -506,7 +553,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | 参数名   | 类型                                    | 必填 | 说明                                                         |
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填。                                         |
+| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
 | attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表。                                           |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回失败的错误码。     |
 
@@ -528,32 +575,37 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.updateContact(context, {
-    id: 1,
-    name: {
-      fullName: 'xxx'
-    },
-    phoneNumbers: [{
-      phoneNumber: '138xxxxxxxx'
-    }]
-  }, {
-    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
-  }, (err: BusinessError) => {
-    if (err) {
-    console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in updating Contact.');
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    contact.updateContact(context, {
+      id: data[0].id,  // 选择联系人的id。
+      name: {
+        fullName: 'xxx'
+      },
+      phoneNumbers: [{
+        phoneNumber: '138xxxxxxxx'
+      }]
+    }, {
+      attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+    }, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in updating Contact.');
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallback&lt;void&gt;): void
 
-更新联系人，使用callback异步回调。
+更新联系人（支持传入联系人的属性列表）。使用callback异步回调。
 
 > **说明**
 >
@@ -567,7 +619,7 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 
 | 参数名   | 类型                                    | 必填 | 说明                                 |
 | -------- | --------------------------------------- | ---- | ------------------------------------ |
-| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填。                         |
+| contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
 | attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表。                   |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回失败的错误码。 |
 
@@ -576,22 +628,27 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.updateContact({
-    id: 1,
-    name: {
-      fullName: 'xxx'
-    },
-    phoneNumbers: [{
-      phoneNumber: '138xxxxxxxx'
-    }]
-  }, {
-    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
-  }, (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    console.info('Succeeded in updating Contact.');
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    contact.updateContact({
+      id: data[0].id,  // 选择联系人的id。
+      name: {
+        fullName: 'xxx'
+      },
+      phoneNumbers: [{
+        phoneNumber: '138xxxxxxxx'
+      }]
+    }, {
+      attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+    }, (err: BusinessError) => {
+      if (err) {
+        console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      console.info('Succeeded in updating Contact.');
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -599,7 +656,7 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 
 updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
-更新联系人，使用Promise异步回调。
+更新联系人（支持传入联系人的属性列表）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_CONTACTS
 
@@ -610,7 +667,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填。                                                 |
+| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                                 |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表。                                           |
 
 **返回值：**
@@ -637,31 +694,36 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // 获取context。
-  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.updateContact(context, {
-    id: 1,
-    name: {
-      fullName: 'xxx'
-    },
-    phoneNumbers: [{
-      phoneNumber: '138xxxxxxxx'
-    }]
-  }, {
-    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
-  });
-  promise.then(() => {
-    console.info('Succeeded in updating Contact.');
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    // 获取context。
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let promise = contact.updateContact(context, {
+      id: data[0].id,  // 选择联系人的id。
+      name: {
+        fullName: 'xxx'
+      },
+      phoneNumbers: [{
+        phoneNumber: '138xxxxxxxx'
+      }]
+    }, {
+      attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+    });
+    promise.then(() => {
+      console.info('Succeeded in updating Contact.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+    });
   }).catch((err: BusinessError) => {
-    console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
-## contact.updateContact<sup>(deprecated)7+</sup>
+## contact.updateContact<sup>(deprecated)</sup>
 
 updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
-更新联系人，使用Promise异步回调。
+更新联系人（支持传入联系人的属性列表）。使用Promise异步回调。
 
 > **说明**
 >
@@ -675,7 +737,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
 | 参数名  | 类型                                    | 必填 | 说明               |
 | ------- | --------------------------------------- | ---- | ------------------ |
-| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填。       |
+| contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表。 |
 
 **返回值：**
@@ -689,21 +751,26 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.updateContact({
-    id: 1,
-    name: {
-      fullName: 'xxx'
-    },
-    phoneNumbers: [{
-      phoneNumber: '138xxxxxxxx'
-    }]
-  }, {
-    attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
-  });
-  promise.then(() => {
-    console.info('Succeeded in updating Contact.');
+  // 通过selectContacts接口选择联系人。
+  contact.selectContacts().then((data) => {
+    let promise = contact.updateContact({
+      id: data[0].id,  // 选择联系人的id。
+      name: {
+        fullName: 'xxx'
+      },
+      phoneNumbers: [{
+        phoneNumber: '138xxxxxxxx'
+      }]
+    }, {
+      attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
+    });
+    promise.then(() => {
+      console.info('Succeeded in updating Contact.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+    });
   }).catch((err: BusinessError) => {
-    console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -711,7 +778,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
 isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-判断当前联系人id是否在电话簿中，使用callback异步回调。
+判断当前联系人id是否在电话簿中。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -756,11 +823,11 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
   });
   ```
 
-## contact.isLocalContact<sup>(deprecated)7+</sup>
+## contact.isLocalContact<sup>(deprecated)</sup>
 
 isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-判断当前联系人id是否在电话簿中，使用callback异步回调。
+判断当前联系人id是否在电话簿中。使用callback异步回调。
 
 > **说明**
 >
@@ -795,7 +862,7 @@ isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
 
-判断当前联系人id是否在电话簿中，使用Promise异步回调。
+判断当前联系人id是否在电话簿中。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -844,11 +911,11 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
   });
 ```
 
-## contact.isLocalContact<sup>(deprecated)7+</sup>
+## contact.isLocalContact<sup>(deprecated)</sup>
 
 isLocalContact(id: number): Promise&lt;boolean&gt;
 
-判断当前联系人id是否在电话簿中，使用Promise异步回调。
+判断当前联系人id是否在电话簿中。使用Promise异步回调。
 
 > **说明**
 >
@@ -887,7 +954,7 @@ isLocalContact(id: number): Promise&lt;boolean&gt;
 
 isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-判断是否为“我的名片”，使用callback异步回调。
+判断是否为“我的名片”。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -932,11 +999,11 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
   });
 ```
 
-## contact.isMyCard<sup>(deprecated)7+</sup>
+## contact.isMyCard<sup>(deprecated)</sup>
 
 isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
-判断是否为“我的名片”，使用callback异步回调。
+判断是否为“我的名片”。使用callback异步回调。
 
 > **说明**
 >
@@ -971,7 +1038,7 @@ isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 
-判断是否为“我的名片”，使用Promise异步回调。
+判断是否为“我的名片”。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1020,11 +1087,11 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
   });
 ```
 
-## contact.isMyCard<sup>(deprecated)7+</sup>
+## contact.isMyCard<sup>(deprecated)</sup>
 
 isMyCard(id: number): Promise&lt;boolean&gt;
 
-判断是否为“我的名片”，使用Promise异步回调。
+判断是否为“我的名片”。使用Promise异步回调。
 
 > **说明**
 >
@@ -1063,7 +1130,7 @@ isMyCard(id: number): Promise&lt;boolean&gt;
 
 queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 
-查询“我的名片”，使用callback异步回调。
+查询“我的名片”。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1107,11 +1174,11 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
-查询“我的名片”，使用callback异步回调。
+查询“我的名片”。使用callback异步回调。
 
 > **说明**
 >
@@ -1145,7 +1212,7 @@ queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
 queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-查询“我的名片”，使用callback异步回调。
+查询“我的名片”（支持传入联系人的属性列表）。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1192,11 +1259,11 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-查询“我的名片”，使用callback异步回调。
+查询“我的名片”（支持传入联系人的属性列表）。使用callback异步回调。
 
 > **说明**
 >
@@ -1233,7 +1300,7 @@ queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): v
 
 queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-查询“我的名片”，使用Promise异步回调。
+查询“我的名片”（支持传入联系人的属性列表）。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1284,11 +1351,11 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
   });
 ```
 
-## contact.queryMyCard<sup>(deprecated)7+</sup>
+## contact.queryMyCard<sup>(deprecated)</sup>
 
 queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-查询“我的名片”，使用Promise异步回调。
+查询“我的名片”（支持传入联系人的属性列表）。使用Promise异步回调。
 
 > **说明**
 >
@@ -1325,11 +1392,11 @@ queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
   });
   ```
 
-## contact.selectContact<sup>(deprecated)7+</sup>
+## contact.selectContact<sup>(deprecated)</sup>
 
 selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面，使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面。使用callback异步回调。
 
 > **说明**
 >
@@ -1357,11 +1424,11 @@ selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
   });
   ```
 
-## contact.selectContact<sup>(deprecated)7+</sup>
+## contact.selectContact<sup>(deprecated)</sup>
 
 selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 
-调用选择联系人接口，打开选择联系人UI界面，使用Promise异步回调。
+调用选择联系人接口，打开选择联系人UI界面。使用Promise异步回调。
 
 > **说明**
 >
@@ -1392,7 +1459,7 @@ selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面，使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1430,7 +1497,7 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
-调用选择联系人接口，打开选择联系人UI界面，使用Promise异步回调。
+调用选择联系人接口，打开选择联系人UI界面。使用Promise异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1460,7 +1527,7 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面，使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入筛选条件）。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1501,7 +1568,7 @@ selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Arra
 
 selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt;&gt;
 
-调用选择联系人接口，打开选择联系人UI界面，使用Promise异步回调。
+调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入筛选条件）。使用Promise异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1544,7 +1611,7 @@ selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt
 
 queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key查询联系人，使用callback异步回调。
+根据key查询联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1589,11 +1656,11 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key查询联系人，使用callback异步回调。
+根据key查询联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -1628,7 +1695,7 @@ queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
 queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key和holder查询联系人，使用callback异步回调。
+根据key和holder查询联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1678,11 +1745,11 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key和holder查询联系人，使用callback异步回调。
+根据key和holder查询联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -1722,7 +1789,7 @@ queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;
 
 queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key和attrs查询联系人，使用callback异步回调。
+根据key和attrs查询联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1770,11 +1837,11 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key和attrs查询联系人，使用callback异步回调。
+根据key和attrs查询联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -1812,7 +1879,7 @@ queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;
 
 queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key、holder和attrs查询联系人，使用callback异步回调。
+根据key、holder和attrs查询联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1865,11 +1932,11 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
   });
 ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key、holder和attrs查询联系人，使用callback异步回调。
+根据key、holder和attrs查询联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -1912,7 +1979,7 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
 
 queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-根据key、holder和attrs查询联系人，使用Promise异步回调。
+根据key、holder和attrs查询联系人。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -1969,11 +2036,11 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
   });
   ```
 
-## contact.queryContact<sup>(deprecated)7+</sup>
+## contact.queryContact<sup>(deprecated)</sup>
 
 queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
-根据key、holder和attrs查询联系人，使用Promise异步回调。
+根据key、holder和attrs查询联系人。使用Promise异步回调。
 
 > **说明**
 >
@@ -2020,7 +2087,7 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 
 queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-查询所有联系人，使用callback异步回调。
+查询所有联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2064,11 +2131,11 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-查询所有联系人，使用callback异步回调。
+查询所有联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -2102,7 +2169,7 @@ queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据holder查询所有联系人，使用callback异步回调。
+根据holder查询所有联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2151,11 +2218,11 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据holder查询所有联系人，使用callback异步回调。
+根据holder查询所有联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -2194,7 +2261,7 @@ queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt
 
 queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据attrs查询所有联系人，使用callback异步回调。
+根据attrs查询所有联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2241,11 +2308,11 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据attrs查询所有联系人，使用callback异步回调。
+根据attrs查询所有联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -2282,7 +2349,7 @@ queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Cont
 
 queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据holder和attrs查询所有联系人，使用callback异步回调。
+根据holder和attrs查询所有联系人。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2334,11 +2401,11 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据holder和attrs查询所有联系人，使用callback异步回调。
+根据holder和attrs查询所有联系人。使用callback异步回调。
 
 > **说明**
 >
@@ -2380,7 +2447,7 @@ queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&
 
 queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据holder和attrs查询所有联系人，使用Promise异步回调。
+根据holder和attrs查询所有联系人。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2436,11 +2503,11 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
   });
   ```
 
-## contact.queryContacts<sup>(deprecated)7+</sup>
+## contact.queryContacts<sup>(deprecated)</sup>
 
 queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据holder和attrs查询所有联系人，使用Promise异步回调。
+根据holder和attrs查询所有联系人。使用Promise异步回调。
 
 > **说明**
 >
@@ -2486,7 +2553,7 @@ queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;C
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2531,11 +2598,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2570,7 +2637,7 @@ queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和holder查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2620,11 +2687,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和holder查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2664,7 +2731,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2712,11 +2779,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2754,7 +2821,7 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码、holder和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2807,11 +2874,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码、holder和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2854,7 +2921,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据电话号码、holder和attrs查询联系人，使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2911,11 +2978,11 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
   });
   ```
 
-## contact.queryContactsByPhoneNumber<sup>(deprecated)7+</sup>
+## contact.queryContactsByPhoneNumber<sup>(deprecated)</sup>
 
 queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据电话号码、holder和attrs查询联系人，使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2962,7 +3029,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 
 queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3007,11 +3074,11 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3046,7 +3113,7 @@ queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&
 
 queryContactsByEmail(context: Context,  email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和holder查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3096,11 +3163,11 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和holder查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3140,7 +3207,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 
 queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3188,11 +3255,11 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3230,7 +3297,7 @@ queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCal
 
 queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email、holder和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3283,11 +3350,11 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email、holder和attrs查询联系人，使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3330,7 +3397,7 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 
 queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据email、holder和attrs查询联系人，使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3387,11 +3454,11 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
   });
   ```
 
-## contact.queryContactsByEmail<sup>(deprecated)7+</sup>
+## contact.queryContactsByEmail<sup>(deprecated)</sup>
 
 queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据email、holder和attrs查询联系人，使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3438,7 +3505,7 @@ queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes):
 
 queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
-查询联系人的所有群组，使用callback异步回调。
+查询联系人的所有群组。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3480,11 +3547,11 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
-查询联系人的所有群组，使用callback异步回调。
+查询联系人的所有群组。使用callback异步回调。
 
 > **说明**
 >
@@ -3518,7 +3585,7 @@ queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
 queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
-根据holder查询联系人的所有群组，使用callback异步回调。
+根据holder查询联系人的所有群组。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3567,11 +3634,11 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
-根据holder查询联系人的所有群组，使用callback异步回调。
+根据holder查询联系人的所有群组。使用callback异步回调。
 
 > **说明**
 >
@@ -3610,7 +3677,7 @@ queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): 
 
 queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
-根据holder查询联系人的所有群组，使用Promise异步回调。
+根据holder查询联系人的所有群组。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3663,11 +3730,11 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
   });
   ```
 
-## contact.queryGroups<sup>(deprecated)7+</sup>
+## contact.queryGroups<sup>(deprecated)</sup>
 
 queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
-根据holder查询联系人的所有群组，使用Promise异步回调。
+根据holder查询联系人的所有群组。使用Promise异步回调。
 
 > **说明**
 >
@@ -3710,7 +3777,7 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
 queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
-查询所有创建联系人的应用信息，使用callback异步回调。
+查询所有创建联系人的应用信息。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3754,11 +3821,11 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
   });
   ```
 
-## contact.queryHolders<sup>(deprecated)7+</sup>
+## contact.queryHolders<sup>(deprecated)</sup>
 
 queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
-查询所有创建联系人的应用信息，使用callback异步回调。
+查询所有创建联系人的应用信息。使用callback异步回调。
 
 > **说明**
 >
@@ -3792,7 +3859,7 @@ queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
 queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
-查询所有创建联系人的应用信息，使用Promise异步回调。
+查询所有创建联系人的应用信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3840,11 +3907,11 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
   });
   ```
 
-## contact.queryHolders<sup>(deprecated)7+</sup>
+## contact.queryHolders<sup>(deprecated)</sup>
 
 queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 
-查询所有创建联系人的应用信息，使用Promise异步回调。
+查询所有创建联系人的应用信息。使用Promise异步回调。
 
 > **说明**
 >
@@ -3877,7 +3944,7 @@ queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 
 queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): void
 
-根据联系人的id查询联系人的key，使用callback异步回调。
+根据联系人的id查询联系人的key。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3922,11 +3989,11 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 
-根据联系人的id查询联系人的key，使用callback异步回调。
+根据联系人的id查询联系人的key。使用callback异步回调。
 
 > **说明**
 >
@@ -3961,7 +4028,7 @@ queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 
 queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): void
 
-根据联系人的id和holder查询联系人的key，使用callback异步回调。
+根据联系人的id和holder查询联系人的key。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -4011,11 +4078,11 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): void
 
-根据联系人的id和holder查询联系人的key，使用callback异步回调。
+根据联系人的id和holder查询联系人的key。使用callback异步回调。
 
 > **说明**
 >
@@ -4055,7 +4122,7 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
 
 queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 
-根据联系人的id和holder查询联系人的key，使用Promise异步回调。
+根据联系人的id和holder查询联系人的key。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -4109,11 +4176,11 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
   });
   ```
 
-## contact.queryKey<sup>(deprecated)7+</sup>
+## contact.queryKey<sup>(deprecated)</sup>
 
 queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 
-根据联系人的id和holder查询联系人的key，使用Promise异步回调。
+根据联系人的id和holder查询联系人的key。使用Promise异步回调。
 
 > **说明**
 >
@@ -4152,6 +4219,44 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
     console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
   });
   ```
+
+## contact.queryContactsCount<sup>22+</sup>
+
+queryContactsCount(context: Context): Promise&lt;int&gt;
+
+查询所有联系人的数量。使用Promise异步回调。
+
+**需要权限**：ohos.permission.READ_CONTACTS
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+**参数：**
+
+| 参数名 | 类型              | 必填 | 说明                   |
+| ------ | ----------------- | ---- | ---------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md)          | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。   |
+
+**返回值：**
+
+| 类型                  | 说明                                       |
+| --------------------- | ------------------------------------------ |
+| Promise&lt;int&gt; | Promise对象。返回查询到的联系人数量。 |
+
+**示例：**
+
+```js
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 获取context。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let promise = contact.queryContactsCount(context);
+promise.then((data) => {
+  console.info(`Succeeded in querying ContactsCount. data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query ContactsCount. Code: ${err.code}, message: ${err.message}`);
+});
+```
 
 ## contact.addContactViaUI<sup>15+</sup>
 
@@ -4287,8 +4392,6 @@ promise.then((data) => {
 
 选择联系人条件。
 
-**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Applications.Contacts
 
 |                名称               |                  类型                 | 只读  | 可选  |        说明      |
@@ -4321,9 +4424,9 @@ promise.then((data) => {
 
 | 名称                  | 值 | 说明                               |
 | --------------------- | ---- | ---------------------------------- |
-| SHOW_FILTER    | 0 | 仅展示符合过滤条件的联系人。 |
-| DEFAULT_SELECT            | 1 | 默认勾选符合过滤条件的联系人。                 |
-| SHOW_FILTER_AND_DEFAULT_SELECT | 2 | 默认勾选仅展示符合过滤条件的联系人。                     |
+| SHOW_FILTER    | 0 | 仅展示符合过滤条件的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| DEFAULT_SELECT            | 1 | 默认勾选符合过滤条件的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts                 |
+| SHOW_FILTER_AND_DEFAULT_SELECT | 2 | 默认勾选仅展示符合过滤条件的联系人。<br/>**系统能力**：SystemCapability.Applications.Contacts                     |
 
 ## FilterClause<sup>15+</sup>
 
@@ -4363,12 +4466,12 @@ promise.then((data) => {
 
 | 名称                  | 值 | 说明                               |
 | --------------------- | ---- | ---------------------------------- |
-| IS_NOT_NULL    | 0 | 对应字段不为空。 |
-| EQUAL_TO            | 1 | 对应字段等于某值。                 |
-| NOT_EQUAL_TO | 2 | 对应字段不等于某值。                     |
-| IN | 3 | 对应字段值在某数组中。                     |
-| NOT_IN | 4 | 对应字段值不在某数组中。                     |
-| CONTAINS | 5 | 对应字段值包含某值。                     |
+| IS_NOT_NULL    | 0 | 对应字段不为空。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| EQUAL_TO            | 1 | 对应字段等于某值。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| NOT_EQUAL_TO | 2 | 对应字段不等于某值。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| IN | 3 | 对应字段值在某数组中。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| NOT_IN | 4 | 对应字段值不在某数组中。<br/>**系统能力**：SystemCapability.Applications.Contacts  |
+| CONTAINS | 5 | 对应字段值包含某值<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
 
 ## DataFilter<sup>15+</sup>
 
@@ -4393,9 +4496,9 @@ promise.then((data) => {
 
 | 名称                  | 值 | 说明                               |
 | --------------------- | --- | ---------------------------------- |
-| EMAIL    | 0 | 联系人邮箱。 |
-| PHONE            | 1 | 联系人电话。                 |
-| ORGANIZATION | 2 | 联系人单位。                     |
+| EMAIL    | 0 | 联系人邮箱。<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
+| PHONE            | 1 | 联系人电话。<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
+| ORGANIZATION | 2 | 联系人单位。<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
 
 ## Contact
 
@@ -4407,16 +4510,24 @@ promise.then((data) => {
 
 ### 常量
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 | 名称               | 类型   | 值   | 说明             |
 | ------------------ | ---- | ---- | ---------------- |
 | INVALID_CONTACT_ID | number   | -1   | 默认联系人的id。 |
 
 ### 属性
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 |       名称        |                   类型                  | 只读 | 可选 | 说明                                   |
 | ----------------- | --------------------------------------- | ---- | ---- | -------------------------------------- |
-| id                | number                                  | 是   | 是   | 联系人的id。                           |
-| key               | string                                  | 是   | 是   | 联系人的key。                          |
+| id                | number                                  | 是   | 是   | 联系人的id，由系统自动生成。                           |
+| key               | string                                  | 是   | 是   | 联系人的key，由系统自动生成。               |
 | contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
 | events            | [Event](#event)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。 |
@@ -4487,22 +4598,22 @@ let contactAttributes: contact.ContactAttributes = {
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
-| 名称                  | 说明                               |
-| --------------------- | ---------------------------------- |
-| ATTR_CONTACT_EVENT    | 联系人的生日、周年纪念等重要日期。 |
-| ATTR_EMAIL            | 联系人的邮箱地址。                 |
-| ATTR_GROUP_MEMBERSHIP | 联系人的群组。                     |
-| ATTR_IM               | 联系人的即时消息地址。             |
-| ATTR_NAME             | 联系人的姓名。                     |
-| ATTR_NICKNAME         | 联系人的昵称。                     |
-| ATTR_NOTE             | 联系人的备注。                     |
-| ATTR_ORGANIZATION     | 联系人的组织信息。                 |
-| ATTR_PHONE            | 联系人的电话号码。                 |
-| ATTR_PORTRAIT         | 联系人的头像。                     |
-| ATTR_POSTAL_ADDRESS   | 联系人的邮政地址。                 |
-| ATTR_RELATION         | 联系人的关系。                     |
-| ATTR_SIP_ADDRESS      | 联系人的会话发起协议(SIP)地址。  |
-| ATTR_WEBSITE          | 联系人的网站。                     |
+| 名称                  | 值 | 说明                               |
+| --------------------- | ---- | ---------------------------------- |
+| ATTR_CONTACT_EVENT    | 0 | 联系人的生日、周年纪念等重要日期。 |
+| ATTR_EMAIL            | 1 | 联系人的邮箱地址。                 |
+| ATTR_GROUP_MEMBERSHIP | 2 | 联系人的群组。                     |
+| ATTR_IM               | 3 | 联系人的即时消息地址。             |
+| ATTR_NAME             | 4 | 联系人的姓名。                     |
+| ATTR_NICKNAME         | 5 | 联系人的昵称。                     |
+| ATTR_NOTE             | 6 | 联系人的备注。                     |
+| ATTR_ORGANIZATION     | 7 | 联系人的组织信息。                 |
+| ATTR_PHONE            | 8 | 联系人的电话号码。                 |
+| ATTR_PORTRAIT         | 9 | 联系人的头像。                     |
+| ATTR_POSTAL_ADDRESS   | 10 | 联系人的邮政地址。                 |
+| ATTR_RELATION         | 11 | 联系人的关系。                     |
+| ATTR_SIP_ADDRESS      | 12 | 联系人的会话发起协议(SIP)地址。  |
+| ATTR_WEBSITE          | 13 | 联系人的网站。                     |
 
 **对象创建示例：**
 
@@ -4522,6 +4633,10 @@ let attributes = [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME, con
 
 ### 常量
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 | 名称             | 类型   | 值   | 说明             |
 | ---------------- | ---- | ---- | ---------------- |
 | CUSTOM_LABEL     | number    |  0    |自定义邮箱类型。 |
@@ -4531,6 +4646,10 @@ let attributes = [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME, con
 | INVALID_LABEL_ID | number    | -1   | 无效邮箱类型。   |
 
 ### 属性
+
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称        |   类型   | 只读 | 可选 | 说明             |
 | ----------- | -------- | ---- | ---- | ---------------- |
@@ -4592,6 +4711,10 @@ let holder: contact.Holder = {
 
 ### 常量
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 | 名称              |   类型   |  值   | 说明               |
 | ----------------- | ---- | ---- | ------------------ |
 | CUSTOM_LABEL      | number   | 0    | 自定义事件类型。   |
@@ -4601,6 +4724,10 @@ let holder: contact.Holder = {
 | INVALID_LABEL_ID  | number   | -1   | 无效事件类型。     |
 
 ### 属性
+
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 |    名称   |   类型   | 只读 | 可选 | 说明           |
 | --------- | -------- | ---- | ---- | -------------- |
@@ -4614,7 +4741,7 @@ let holder: contact.Holder = {
 
 ```js
 let event: contact.Event = {
-    eventDate: "xxxxxx"
+    eventDate: "2000-01-01"
 };
 ```
 
@@ -4622,7 +4749,7 @@ let event: contact.Event = {
 
 ```js
 let event = new contact.Event();
-event.eventDate = "xxxxxx";
+event.eventDate = "2000-01-01";
 ```
 
 ## Group
@@ -4659,6 +4786,10 @@ let group: contact.Group = {
 
 ### 常量
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 | 名称             |   类型   | 值   | 说明                 |
 | ---------------- | ---- | ---- | -------------------- |
 | CUSTOM_LABEL     | number   | -1   | 自定义即时消息类型。 |
@@ -4672,6 +4803,10 @@ let group: contact.Group = {
 | INVALID_LABEL_ID | number   | -2   | 无效的即时消息类型。 |
 
 ### 属性
+
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称      |   类型   | 只读 | 可选 | 说明               |
 | --------- | -------- | ---- | ---- | ------------------ |
@@ -4717,6 +4852,7 @@ imAddress.imAddress = "imAddress";
 | middleNamePhonetic | string   | 否   | 是   | 联系人的中间名拼音。        |
 | namePrefix         | string   | 否   | 是   | 联系人的姓名前缀。          |
 | nameSuffix         | string   | 否   | 是   | 联系人的姓名后缀。          |
+| hasName<sup>22+</sup>            | boolean  | 否   | 是   | 联系人信息中是否包含姓名。true表示包含，false表示不包含。          |
 
 **对象创建示例：**
 
@@ -4807,6 +4943,10 @@ let organization: contact.Organization = {
 
 ### 常量
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 | 名称             |  类型  | 值   | 说明                                             |
 | ---------------- | ---- | ---- | ------------------------------------------------ |
 | CUSTOM_LABEL     |  number  | 0    | 自定义电话类型。                                 |
@@ -4833,6 +4973,10 @@ let organization: contact.Organization = {
 | INVALID_LABEL_ID |  number  | -1   | 无效电话类型。                                   |
 
 ### 属性
+
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称        |   类型   | 只读 | 可选 | 说明               |
 | ----------- | -------- | ---- | ---- | ------------------ |
@@ -4862,22 +5006,41 @@ phoneNumber.phoneNumber = "138xxxxxxxx";
 
 联系人的头像类。
 
+> **说明：**
+>
+>  从API version 22开始，支持通过uri和[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式设置联系人头像资源(暂不支持通过[addContactViaUI](#contactaddcontactviaui15)、[saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15)接口设置)。<br/>
+uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)为通过联系人头像资源生成的[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)对象。<br/>
+>  读取联系人头像资源仅支持uri格式，该格式仅支持以[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)方式打开，无法直接在Image组件内显示，需读取后转换为[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)格式显示。
+
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称 |   类型   | 只读 | 可选 | 说明           |
 | ---- | -------- | ---- | ---- | -------------- |
-| uri  | string   | 否   | 否   | 联系人的头像。 |
+| uri  | string   | 否   | 否   | uri格式联系人头像。 |
+| photo<sup>22+</sup>  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)   | 否   | 是   | pixelMap格式的联系人头像。 |
 
 **对象创建示例：**
 
   使用JSON格式创建数据。
 
 ```js
-let portrait: contact.Portrait = {
-    uri: "uri"
-};
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function SetPortraitUri(uri: string) {
+  let portrait: contact.Portrait = {
+    uri: uri
+  };
+}
+
+async function SetPortraitPixelMap(photo: image.PixelMap) {
+  let portrait: contact.Portrait = {
+    uri: "",
+    photo: photo
+  };
+}
 ```
 
 ## PostalAddress
@@ -4890,6 +5053,10 @@ let portrait: contact.Portrait = {
 
 ### 常量
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 | 名称             |   类型   | 值   | 说明                 |
 | ---------------- | ---- | ---- | -------------------- |
 | CUSTOM_LABEL     | number   | 0    | 自定义邮政地址类型。 |
@@ -4899,6 +5066,10 @@ let portrait: contact.Portrait = {
 | INVALID_LABEL_ID | number   | -1   | 无效地址类型。       |
 
 ### 属性
+
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称          |   类型   | 只读 | 可选 | 说明                       |
 | ------------- | -------- | ---- | ---- | -------------------------- |
@@ -4942,6 +5113,10 @@ postalAddress.postalAddress = "postalAddress";
 
 ### 常量
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 | 名称                      |  类型   | 值   | 说明               |
 | ------------------------- | ---- | ---- | ------------------ |
 | CUSTOM_LABEL              | number   | 0    | 自定义关系类型。   |
@@ -4962,6 +5137,10 @@ postalAddress.postalAddress = "postalAddress";
 | INVALID_LABEL_ID          | number   | -1   | 无效的关系类型。   |
 
 ### 属性
+
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称         |   类型   | 只读 | 可选 | 说明           |
 | ------------ | -------- | ---- | ---- | -------------- |
@@ -4998,6 +5177,10 @@ relation.labelId = contact.Relation.RELATION_ASSISTANT;
 
 ### 常量
 
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
 | 名称             |   类型   | 值   | 说明                                |
 | ---------------- | ---- | ---- | ----------------------------------- |
 | CUSTOM_LABEL     | number   | 0    | 自定义会话发起协议(SIP)地址类型。 |
@@ -5007,6 +5190,10 @@ relation.labelId = contact.Relation.RELATION_ASSISTANT;
 | INVALID_LABEL_ID | number   | -1   | 无效会话发起协议(SIP)地址类型。   |
 
 ### 属性
+
+**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
 
 | 名称       |   类型   | 只读 | 可选 | 说明                              |
 | ---------- | -------- | ---- | ---- | --------------------------------- |

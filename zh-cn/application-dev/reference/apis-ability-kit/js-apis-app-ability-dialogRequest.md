@@ -1,5 +1,12 @@
 # @ohos.app.ability.dialogRequest (dialogRequest模块)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 dialogRequest模块用于处理模态弹框的能力，包括获取RequestInfo（用于绑定模态弹框）、获取RequestCallback（用于设置结果）。
 模态弹框是指一个系统弹框，该弹框会拦截弹框之下的页面的鼠标、键盘、触屏等事件。销毁该弹框后，才能对页面进行操作。
 
@@ -118,12 +125,12 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称 | 类型   | 必填 | 说明                        |
-| ---- | ------ | ---- | --------------------------- |
-| left  | number | 是   | 弹框边框的左上角的X坐标。 |
-| top  | number | 是   | 弹框边框的左上角的Y坐标。 |
-| width  | number | 是   | 弹框的宽度，单位为px。 |
-| height  | number | 是   | 弹框的高度，单位为px。 |
+| 名称 | 类型   | 只读 | 可选 | 说明                        |
+| ---- | ------ | ---- | ----| --------------------------- |
+| left  | number | 否  | 否 |弹框边框的左上角的X坐标。 |
+| top  | number | 否   | 否 |弹框边框的左上角的Y坐标。 |
+| width  | number | 否   | 否 | 弹框的宽度，单位为px。 |
+| height  | number | 否   | 否 |弹框的高度，单位为px。 |
 
 ## RequestInfo
 
@@ -133,9 +140,9 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称      | 类型       | 必填   | 说明     |
-| ------------ | ------------------| ------ | ---------------------- |
-| windowRect<sup>10+</sup>            | [WindowRect](#windowrect10)    | 否   | 表示模态弹框的位置属性。          |
+| 名称      | 类型       | 只读 | 可选   | 说明     |
+| ------------ | --------| ------ | ----- | ----------------- |
+| windowRect<sup>10+</sup>   | [WindowRect](#windowrect10)    | 否 | 是  | 表示模态弹框的位置属性。          |
 
 **示例：**
 

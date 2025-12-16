@@ -1,4 +1,10 @@
 # \@Type装饰器：标记类属性的类型
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zzq212050299-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 为了实现序列化类时不丢失属性的复杂类型，开发者可以使用\@Type装饰器装饰类属性。
 
@@ -6,8 +12,9 @@
 
 >**说明：**
 >
->\@Type从API version 12开始支持。
+> \@Type从API version 12开始支持。
 >
+> 从API version 12开始，该装饰器支持在原子化服务中使用。
 
 ## 概述
 
@@ -22,17 +29,22 @@
 
 ## 使用限制
 
-1. 只能用在\@ObservedV2装饰的类中，不能用在自定义组件中。
+1. 只能用在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类中，不能用在自定义组件中。
 
-    ```ts
-    class Sample {
-      data: number = 0;
-    }
-    @ObservedV2
-    class Info {
-      @Type(Sample)
-      @Trace sample: Sample = new Sample(); // 正确用法
-    }
+   <!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
+
+   ```ts
+   class Sample {
+     private data: number = 0;
+   }
+   @ObservedV2
+   class Info {
+     @Type(Sample)
+     @Trace public sample: Sample = new Sample(); // 正确用法
+   }
+   ```
+
+   ```ts
     @Observed
     class Info2 {
       @Type(Sample)
@@ -41,15 +53,15 @@
     @ComponentV2
     struct Index {
       @Type(Sample)
-      sample: Sample = new Sample(); // 错误用法，不能用在自定义组件中
+      sample: Sample = new Sample(); // 错误用法，不能用在自定义组件中，编译时报错
       build() {
       }
     }
-    ```
+   ```
 
 2. 不支持collections.Set、collections.Map等类型。
 
-3. 不支持非buildin类型。如PixelMap、NativePointer、ArrayList等Native类型。
+3. 不支持非built-in类型。如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
 4. 不支持简单类型。如string、number、boolean等。
 
@@ -59,7 +71,9 @@
 
 ### 持久化数据
 
-```ts
+<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { PersistenceV2, Type } from '@kit.ArkUI';
 
 @ObservedV2

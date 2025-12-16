@@ -1,5 +1,11 @@
 # InnerFullScreenLaunchComponent (System API)
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @qq_36417014-->
+<!--Designer: @autojuan-->
+<!--Tester: @tinygreyy-->
+<!--Adviser: @zengyawen-->
 
 **InnerFullScreenLaunchComponent** is a component that allows the invoker to choose the timing for launching an atomic service. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.
 
@@ -12,8 +18,8 @@
 
 ## Modules to Import
 
-```
-import { InnerFullScreenLaunchComponent, LauncherController } from '@kit.ArkUI'
+```ts
+import { InnerFullScreenLaunchComponent, LauncherController } from '@kit.ArkUI';
 ```
 
 
@@ -42,6 +48,7 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 | -------- | -------- | -------- | -------- | -------- |
 | content | Callback\<void> | Yes| \@BuilderParam | Content displayed in the component.|
 | controller | [LaunchController](#launchcontroller) | Yes| - | Controller for launching the atomic service.|
+| onReceive<sup>20+<sup> | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record<string, Object>> | No| - | Callback triggered when the embedded atomic service is launched through [Window](../../../windowmanager/application-window-stage.md) API calls.|
 
 ## LaunchController
 
@@ -49,11 +56,15 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Description|
-| ---- | ---------- | ------ |
-|launchAtomicService | [LaunchAtomicServiceCallback](#launchatomicservicecallback) | Launches an atomic service.|
+| Name| Type| Read-Only| Optional| Description|
+| ---- | ---------- | ------ |------ | -- |
+|launchAtomicService | [LaunchAtomicServiceCallback](#launchatomicservicecallback) | No| No| Launches an atomic service.|
 
 ## LaunchAtomicServiceCallback
+
+type LaunchAtomicServiceCallback = (appId: string, options?: AtomicServiceOptions) => void
+
+Represents the callback triggered when the user signs in to the atomic service.
 
 **System API**: This is a system API.
 
@@ -75,22 +86,20 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  appId1: string = '5765880207853275505';
-  appId2: string = '5765880207854372375';
 
   @Builder
   ColumChild() {
     Column() {
       Text('InnerFullScreenLaunchComponent').fontSize(16).margin({top: 100})
-      Button('Start Sunrise/Sunset'')
+      Button('Start Sunrise/Sunset')
         .onClick(()=>{
-          let appId2: string = '5765880207854372375';
-          this.controller.launchAtomicService(appId2, {})
+          let appId1: string = '576****************';
+          this.controller.launchAtomicService(appId1, {});
         }).height(30).width('50%').margin({top: 50})
       Button('Start Recharge')
         .onClick(()=>{
-          let appId2: string = '5765880207853275489';
-          this.controller.launchAtomicService(appId2, {})
+          let appId2: string = '576****************';
+          this.controller.launchAtomicService(appId2, {});
         }).height(30).width('50%').margin({top: 50})
     }.backgroundColor(Color.Pink).height('100%').width('100%')
   }
@@ -101,6 +110,9 @@ struct Index {
       InnerFullScreenLaunchComponent({
           content: this.ColumChild,
           controller: this.controller,
+          onReceive: (data) => {
+            console.info("onReceive, data: " + data['ohos.atomicService.window']);
+          }
         })
     }
     .width('100%').height('100%')

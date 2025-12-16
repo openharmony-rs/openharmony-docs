@@ -1,6 +1,13 @@
-# @ohos.app.ability.autoStartupManager (autoStartupManager) (System API)
+# @ohos.app.ability.autoStartupManager (Auto-Startup Management) (System API)
 
-The autoStartupManager module provides APIs for listening for auto-startup status changes of application components and setting application components to automatically start upon system boot.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zhu-feimo; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The autoStartupManager module provides APIs to listen for auto-startup status changes of application components. You can use the APIs to get updates on these changes.
 
 > **NOTE**
 >
@@ -20,7 +27,7 @@ import { autoStartupManager } from '@kit.AbilityKit';
 
 on(type: 'systemAutoStartup', callback: AutoStartupCallback): void
 
-Subscribes to auto-startup status change events of an application component.
+Registers a callback to listen for auto-startup status changes of an application component.
 
 **Required permissions**: ohos.permission.MANAGE_APP_BOOT
 
@@ -31,24 +38,38 @@ Subscribes to auto-startup status change events of an application component.
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | type | string | Yes   | Event type. The value is fixed at **systemAutoStartup**, which can be called only by system applications.|
-| callback  | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | Yes   | Callback used for subscription.     |
+| callback  | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | Yes   | Callback used for registration.     |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| -------- | -------------------------------- |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
 ```ts
 import { autoStartupManager, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   autoStartupManager.on('systemAutoStartup', {
     onAutoStartupOn(data: common.AutoStartupInfo) {
-      console.info('===> autostartupmanager onAutoStartupOn data: ' + JSON.stringify(data));
+      console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
     },
     onAutoStartupOff(data: common.AutoStartupInfo) {
-      console.info('===> autostartupmanager onAutoStartupOff data: ' + JSON.stringify(data));
+      console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
     }
   });
 } catch (err) {
-  console.info('===> autostartupmanager on throw err: ' + JSON.stringify(err));
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`autostartupmanager on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -56,7 +77,7 @@ try {
 
 off(type: 'systemAutoStartup', callback?: AutoStartupCallback): void
 
-Unsubscribes from auto-startup status change events of an application component.
+Unregisters the callback used to listen for auto-startup status changes of an application component.
 
 **Required permissions**: ohos.permission.MANAGE_APP_BOOT
 
@@ -67,24 +88,38 @@ Unsubscribes from auto-startup status change events of an application component.
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | type | string              | Yes   | Event type. The value is fixed at **systemAutoStartup**, which can be called only by system applications.|
-| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | No| Callback used for unsubscription.|
+| callback | [AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md)   | No| Callback used for unregistration.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| -------- | -------------------------------- |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
 ```ts
 import { autoStartupManager, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   autoStartupManager.off('systemAutoStartup', {
     onAutoStartupOn(data: common.AutoStartupInfo) {
-      console.info('===> autostartupmanager onAutoStartupOn data: ' + JSON.stringify(data));
+      console.info(`autostartupmanager onAutoStartupOn, data: ${JSON.stringify(data)}.`);
     },
     onAutoStartupOff(data: common.AutoStartupInfo) {
-      console.info('===> autostartupmanager onAutoStartupOff data: ' + JSON.stringify(data));
+      console.info(`autostartupmanager onAutoStartupOff, data: ${JSON.stringify(data)}.`);
     }
   });
 } catch (err) {
-  console.info('===> autostartupmanager off throw err: ' + JSON.stringify(err));
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`autostartupmanager on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -98,6 +133,11 @@ Sets an application component to automatically start upon system boot. This API 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
+- For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
+
 **Parameters**
 
 | Name       | Type                                      | Mandatory  | Description            |
@@ -107,28 +147,38 @@ Sets an application component to automatically start upon system boot. This API 
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
-| 16000004 | Failed to start the invisible ability.           |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
-
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
 ```ts
 import { autoStartupManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   autoStartupManager.setApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
-  }, (err, data) => {
-    console.info('====> setApplicationAutoStartup: ' + JSON.stringify(err) + ' data: ' + JSON.stringify(data));
+  }, (err: BusinessError) => {
+    if (err) {
+      console.error(`setApplicationAutoStartup failed, err code: ${err.code}, err msg: ${err.message}.`);
+      return;
+    }
+    console.info(`setApplicationAutoStartup success.`);
   });
 } catch (err) {
-  console.info('====> setApplicationAutoStartup throw err: ' + JSON.stringify(err));
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`setApplicationAutoStartup failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -141,6 +191,11 @@ Sets an application component to automatically start upon system boot. This API 
 **Required permissions**: ohos.permission.MANAGE_APP_BOOT
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
+- For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
 **Parameters**
 
@@ -156,13 +211,16 @@ Sets an application component to automatically start upon system boot. This API 
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
-| 16000004 | Failed to start the invisible ability.           |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
-
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -175,12 +233,14 @@ try {
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
   }).then((data: void) => {
-    console.info('====> setApplicationAutoStartup data: ' + JSON.stringify(data));
+    console.info(`setApplicationAutoStartup success.`);
   }).catch((err: BusinessError) => {
-    console.info('====> setApplicationAutoStartup err: ' + JSON.stringify(err));
+    console.error(`setApplicationAutoStartup failed, err code: ${err.code}, err msg: ${err.message}.`);
   });
 } catch (err) {
-  console.info('====> setApplicationAutoStartup throw err: ' + JSON.stringify(err));
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`setApplicationAutoStartup failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -194,6 +254,11 @@ Cancels the auto-startup setting for an application component. This API uses an 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
+- For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
+
 **Parameters**
 
 | Name       | Type                                      | Mandatory  | Description            |
@@ -203,28 +268,38 @@ Cancels the auto-startup setting for an application component. This API uses an 
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
-| 16000004 | Failed to start the invisible ability.           |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
-
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
 ```ts
 import { autoStartupManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   autoStartupManager.cancelApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
-  }, (err, data) => {
-    console.info('====> cancelApplicationAutoStartup err: ' + JSON.stringify(err) + ' data: ' + JSON.stringify(data));
+  }, (err: BusinessError) => {
+    if (err) {
+      console.error(`cancelApplicationAutoStartup failed, err code: ${err.code}, msg: ${err.message}.`);
+      return;
+    }
+    console.info(`cancelApplicationAutoStartup success.`);
   });
 } catch (err) {
-  console.info('====> cancelApplicationAutoStartup throw err: ' + JSON.stringify(err));
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`cancelApplicationAutoStartup failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -237,6 +312,11 @@ Cancels the auto-startup setting for an application component. This API uses a p
 **Required permissions**: ohos.permission.MANAGE_APP_BOOT
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
+- For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
 
 **Parameters**
 
@@ -252,13 +332,16 @@ Cancels the auto-startup setting for an application component. This API uses a p
 
 **Error codes**
 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
 | ID| Error Message                                    |
 | -------- | -------------------------------------------- |
-| 16000004 | Failed to start the invisible ability.           |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 16000004 | Cannot start an invisible component.         |
 | 16000013 | The application is controlled by EDM.        |
-| 16000050 | Internal error.                              |
-
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -270,13 +353,15 @@ try {
   autoStartupManager.cancelApplicationAutoStartup({
     bundleName: 'com.example.autostartupapp',
     abilityName: 'EntryAbility'
-  }).then((data: void) => {
-    console.info('====> cancelApplicationAutoStartup data: ' + JSON.stringify(data));
+  }).then(() => {
+    console.info(`cancelApplicationAutoStartup success.`);
   }).catch((err: BusinessError) => {
-    console.info('====> cancelApplicationAutoStartup err: ' + JSON.stringify(err));
+    console.error(`cancelApplicationAutoStartup failed, err code: ${err.code}, msg: ${err.message}.`);
   });
 } catch (err) {
-  console.info('====> cancelApplicationAutoStartup throw err: ' + JSON.stringify(err));
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`cancelApplicationAutoStartup failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -290,6 +375,11 @@ Obtains information about all auto-startup application components. This API uses
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
+- For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
+
 **Parameters**
 
 | Name       | Type                                      | Mandatory  | Description            |
@@ -298,23 +388,33 @@ Obtains information about all auto-startup application components. This API uses
 
 **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 16000050 | Internal error. |
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
 ```ts
-import { autoStartupManager } from '@kit.AbilityKit';
+import { autoStartupManager, common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  autoStartupManager.queryAllAutoStartupApplications((err, data) => {
-    console.info('====> queryAllAutoStartupApplications err: ' + JSON.stringify(err) + ' data: ' + JSON.stringify(data));
+  autoStartupManager.queryAllAutoStartupApplications((err: BusinessError, data: common.AutoStartupInfo[]) => {
+    if (err) {
+      console.error(`queryAllAutoStartupApplications failed, err code: ${err.code}, err msg: ${err.message}.`);
+      return;
+    }
+    console.info(`queryAllAutoStartupApplications success, data: ${JSON.stringify(data)}.`);
   });
 } catch (err) {
-  console.info('====> queryAllAutoStartupApplications throw err: ' + JSON.stringify(err));
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`queryAllAutoStartupApplications failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
 
@@ -328,6 +428,11 @@ Obtains information about all auto-startup application components. This API uses
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**
+- Starting from API version 21, this API can be properly called on phones, 2-in-1 devices, tablets, and wearables. If it is called on other device types, error code 16000050 is returned.
+- Starting from API version 18, this API can be properly called on 2-in-1 devices and wearables. If it is called on other device types, error code 16000050 is returned.
+- For versions earlier than API version 18, this API can be properly called only on 2-in-1 devices. If it is called on other device types, error code 16000050 is returned.
+
 **Return value**
 
 | Type                           | Description                                                        |
@@ -336,11 +441,14 @@ Obtains information about all auto-startup application components. This API uses
 
 **Error codes**
 
-| ID| Error Message|
-| ------- | -------- |
-| 16000050 | Internal error. |
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
 
-For details about the error codes, see [Ability Error Codes](errorcode-ability.md).
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied, interface caller does not have permission "ohos.permission.MANAGE_APP_BOOT". |
+| 202      | Permission denied, non-system app called system api. |
+| 401      | The parameter check failed. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 16000050 | Failed to connect to the system service. |
 
 **Example**
 
@@ -349,12 +457,14 @@ import { autoStartupManager, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  autoStartupManager.queryAllAutoStartupApplications().then((autoStartupInfo: common.AutoStartupInfo[]) => {
-    console.info('====> queryAllAutoStartupApplications data: ' + JSON.stringify(autoStartupInfo));
+  autoStartupManager.queryAllAutoStartupApplications().then((data: common.AutoStartupInfo[]) => {
+    console.info(`queryAllAutoStartupApplications success, data: ${JSON.stringify(data)}.`);
   }).catch((err: BusinessError) => {
-    console.info('====> queryAllAutoStartupApplications err: ' + JSON.stringify(err));
+    console.error(`queryAllAutoStartupApplications failed, err code: ${err.code}, err msg: ${err.message}.`);
   });
 } catch (err) {
-  console.info('====> queryAllAutoStartupApplications throw err: ' + JSON.stringify(err));
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`queryAllAutoStartupApplications failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```

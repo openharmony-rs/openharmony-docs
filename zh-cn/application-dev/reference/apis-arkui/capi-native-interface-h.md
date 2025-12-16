@@ -1,0 +1,115 @@
+# native_interface.h
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
+
+## 概述
+
+提供NativeModule接口的统一入口函数。
+
+**引用文件：** <arkui/native_interface.h>
+
+**库：** libace_ndk.z.so
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 12
+
+**相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+
+## 汇总
+
+### 枚举
+
+| 名称 | typedef关键字 | 描述 |
+| -- | -- | -- |
+| [ArkUI_NativeAPIVariantKind](#arkui_nativeapivariantkind) | ArkUI_NativeAPIVariantKind | 定义Native接口集合类型。 |
+
+### 函数
+
+| 名称  | 描述   |
+|--------------|-----------|
+| [void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)](#oh_arkui_querymoduleinterfacebyname)        | 需调用该函数初始化C-API环境，并获取指定类型的Native模块接口集合。 |
+
+### 宏定义
+
+| 名称  | 描述   |
+|--------------|-----------|
+| [OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)](#oh_arkui_getmoduleinterface)      | 基于结构体类型获取对应结构体指针的宏函数。 |
+
+## 枚举类型说明
+
+### ArkUI_NativeAPIVariantKind
+
+```c
+enum ArkUI_NativeAPIVariantKind
+```
+
+**描述：**
+
+
+定义Native接口集合类型。
+
+**起始版本：** 12
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_NATIVE_NODE | UI组件相关接口类型，详见[native_node.h](./capi-native-node-h.md)中的[结构体](./capi-native-node-h.md#结构体)类型定义。 |
+| ARKUI_NATIVE_DIALOG | 弹窗相关接口类型，详见[native_dialog.h](./capi-native-dialog-h.md)中的[结构体](capi-native-dialog-h.md#结构体)类型定义。 |
+| ARKUI_NATIVE_GESTURE | 手势相关接口类型，详见[native_gesture.h](./capi-native-gesture-h.md)中的[结构体](capi-native-gesture-h.md#结构体)类型定义。 |
+| ARKUI_NATIVE_ANIMATE | 动画相关接口类型。详见[native_animate.h](./capi-native-animate-h.md)中的[结构体](capi-native-animate-h.md#结构体)类型定义。 |
+| ARKUI_MULTI_THREAD_NATIVE_NODE | 多线程UI组件相关接口类型，详见[native_node.h](./capi-native-node-h.md)中的[结构体](./capi-native-node-h.md#结构体)类型定义。<br>**起始版本：** 22 |
+
+
+## 函数说明
+
+### OH_ArkUI_QueryModuleInterfaceByName()
+
+```c
+void* OH_ArkUI_QueryModuleInterfaceByName(ArkUI_NativeAPIVariantKind type, const char* structName)
+```
+
+**描述：**
+
+
+需调用该函数初始化C-API环境，并获取指定类型的Native模块接口集合。
+
+**起始版本：** 12
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind) type | ArkUI提供的native接口集合大类，例如UI组件接口类：ARKUI_NATIVE_NODE, 手势类：ARKUI_NATIVE_GESTURE。 |
+| const char* structName | native接口结构体的名称，通过查询对应头文件内结构体定义，例如位于[native_node.h](./capi-native-node-h.md)中的"ArkUI_NativeNodeAPI_1"。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| void* | 返回native接口抽象指针，在转化为具体类型后进行使用。 |
+
+### OH_ArkUI_GetModuleInterface()
+
+```c
+OH_ArkUI_GetModuleInterface(nativeAPIVariantKind, structType, structPtr)                             \
+do {                                                                                                 \
+        void* anyNativeAPI = OH_ArkUI_QueryModuleInterfaceByName(nativeAPIVariantKind, #structType); \
+        if (anyNativeAPI) {                                                                          \
+            structPtr = (structType*)(anyNativeAPI);                                                 \
+        }                                                                                            \
+    } while (0)                                                                      
+```
+
+**描述：**
+
+
+基于结构体类型获取对应结构体指针的宏函数。此宏函数接收[ArkUI_NativeAPIVariantKind](capi-native-interface-h.md#arkui_nativeapivariantkind)类型枚举参数nativeAPIVariantKind、const char\*类型参数structType、structType\*类型参数structPtr，调用[OH_ArkUI_QueryModuleInterfaceByName](#oh_arkui_querymoduleinterfacebyname)获取native接口抽象指针，转换为structType\*类型后赋值给structPtr。
+
+**起始版本：** 12
+
+

@@ -1,4 +1,10 @@
 # 媒体会话提供方(C/C++)
+<!--Kit: AVSession Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @ccfriend; @liao_qian-->
+<!--Designer: @ccfriend-->
+<!--Tester: @chenmingxi1_huawei-->
+<!--Adviser: @w_Machine_cc-->
 
 OHAVSession系统提供的通过使用C API实现媒体会话提供方，从而在媒体会话控制方（例如播控中心）中展示媒体相关信息，及响应媒体会话控制方下发的播控命令。
 
@@ -28,6 +34,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    ```c++
    OH_AVSession* avsession;
    OH_AVSession_Create(SESSION_TYPE_AUDIO, "testsession", "com.example.application",   "MainAbility", &avsession);
+   OH_AVSession_Activate(avsession);
    ```
  
    `AVSession_Type`包含如下四种类型：
@@ -40,7 +47,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 
 2. 应用内播放对应的媒体资源时，同步设置媒体元数据信息。
 
-   要设置元数据，要使用OH_AVMetadataBuilder构造具体的数据，最后生成一个 OH_AVMetadata。生成OH_AVMetadata后，使用OH_AVMetadata的各个功能接口进行资源的设置。
+   要设置元数据，需使用OH_AVMetadataBuilder构造具体的数据，生成一个OH_AVMetadata。生成OH_AVMetadata后，使用OH_AVMetadata的各个功能接口进行资源的设置。
  
    使用OH_AVMetadataBuilder构造元数据示例：
  
@@ -126,8 +133,8 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    // CONTROL_CMD_PLAY = 0; 播放。
    // CONTROL_CMD_PAUSE = 1; 暂停。
    // CONTROL_CMD_STOP = 2;  停止。
-   // CONTROL_CMD_PLAY_NEXT = 3; 上一首。
-   // CONTROL_CMD_PLAY_PREVIOUS = 4; 下一首。
+   // CONTROL_CMD_PLAY_NEXT = 3; 下一首。
+   // CONTROL_CMD_PLAY_PREVIOUS = 4; 上一首。
    AVSession_ControlCommand command = CONTROL_CMD_PLAY;
    OH_AVSessionCallback_OnCommand commandCallback = [](OH_AVSession* session, AVSession_ControlCommand command,
        void* userData) -> AVSessionCallback_Result

@@ -1,4 +1,10 @@
 # 通用属性
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiangtao92-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 ## 常规属性

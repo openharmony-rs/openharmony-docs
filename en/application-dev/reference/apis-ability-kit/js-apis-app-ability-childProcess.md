@@ -1,6 +1,12 @@
-# @ohos.app.ability.ChildProcess
+# @ohos.app.ability.ChildProcess (Child Process Base Class)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @jsjzju-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-**ChildProcess** is the base class for you to customize child processes. When starting a child process through [childProcessManager](js-apis-app-ability-childProcessManager.md), you must inherit this class and override the entrypoint method.
+ChildProcess is the base class for you to customize child processes. When starting a child process through [childProcessManager](js-apis-app-ability-childProcessManager.md), you must inherit this class and override the entrypoint method.
 
 > **NOTE**
 > 
@@ -24,9 +30,9 @@ Entrypoint method of the child process. This callback is triggered when the chil
 
 **Parameters**
 
-  | Name | Type | Mandatory | Description |
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | args<sup>12+</sup> | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | No | Parameters transferred to the child process. |
+  | args<sup>12+</sup> | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | No| Parameters transferred to the child process.|
 
 **Example**
 ```ts

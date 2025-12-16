@@ -1,5 +1,12 @@
 # I18n错误码
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @yliupy-->
+<!--Designer: @sunyaozu-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -22,6 +29,7 @@ Invalid parameter. Possible causes: Parameter verification failed.
 
 检查参数的值是否合法。
 
+<!--Del-->
 ## 8900001 参数校验错误
 
 **错误信息**
@@ -39,3 +47,4 @@ Invalid parameter. Possible causes: Parameter verification failed.
 **处理步骤**
 
 检查参数的值是否合法。
+<!--DelEnd-->

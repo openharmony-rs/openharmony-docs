@@ -1,10 +1,16 @@
 # oh_data_values_buckets.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
 提供与存储数据值相关的结构定义、函数和枚举。
 
-**引用文件：** <database/rdb/oh_data_values_buckets.h>
+**引用文件：** <database/data/oh_data_values_buckets.h>
 
 **库：** libnative_rdb_ndk.z.so
 
@@ -36,7 +42,7 @@
 
 ### OH_VBuckets_Create()
 
-```
+```c
 OH_Data_VBuckets *OH_VBuckets_Create(void)
 ```
 
@@ -54,7 +60,7 @@ OH_Data_VBuckets *OH_VBuckets_Create(void)
 
 ### OH_VBuckets_Destroy()
 
-```
+```c
 int OH_VBuckets_Destroy(OH_Data_VBuckets *buckets)
 ```
 
@@ -79,7 +85,7 @@ int OH_VBuckets_Destroy(OH_Data_VBuckets *buckets)
 
 ### OH_VBuckets_PutRow()
 
-```
+```c
 int OH_VBuckets_PutRow(OH_Data_VBuckets *buckets, const OH_VBucket *row)
 ```
 
@@ -105,7 +111,7 @@ int OH_VBuckets_PutRow(OH_Data_VBuckets *buckets, const OH_VBucket *row)
 
 ### OH_VBuckets_PutRows()
 
-```
+```c
 int OH_VBuckets_PutRows(OH_Data_VBuckets *buckets, const OH_Data_VBuckets *rows)
 ```
 
@@ -131,7 +137,7 @@ int OH_VBuckets_PutRows(OH_Data_VBuckets *buckets, const OH_Data_VBuckets *rows)
 
 ### OH_VBuckets_RowCount()
 
-```
+```c
 int OH_VBuckets_RowCount(OH_Data_VBuckets *buckets, size_t *count)
 ```
 

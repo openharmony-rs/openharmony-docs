@@ -1,6 +1,13 @@
 # Ads Service Framework Error Codes
 
-> **NOTE**
+<!--Kit: Ads Kit-->
+<!--Subsystem: Advertising-->
+<!--Owner: @SukiEvas-->
+<!--Designer: @zhansf1988-->
+<!--Tester: @hongmei_may-->
+<!--Adviser: @RayShih-->
+
+> **NOTE**<br>
 > - This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 ## 21800001 Internal System Error

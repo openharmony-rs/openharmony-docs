@@ -1,5 +1,12 @@
 # Function Flow Runtime Task Graph (C++)
 
+<!--Kit: Function Flow Runtime Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @chuchihtung; @yanleo-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 The FFRT task graph supports task dependency and data dependency. Each node in the task graph indicates a task, and each edge indicates the dependency between tasks. Task dependency is classified into input dependency (`in_deps`) and output dependency (`out_deps`).
@@ -78,7 +85,7 @@ The FFRT provides task graph that can describe the task dependency and paralleli
 
 ```cpp
 #include <iostream>
-#include "ffrt/ffrt.h"
+#include "ffrt/ffrt.h" // From the OpenHarmony third-party library "@ppd/ffrt"
 
 int main()
 {
@@ -111,7 +118,7 @@ Each number in the Fibonacci sequence is the sum of the first two numbers. The p
 
 ```cpp
 #include <iostream>
-#include "ffrt/ffrt.h"
+#include "ffrt/ffrt.h" // From the OpenHarmony third-party library "@ppd/ffrt"
 
 void Fib(int x, int& y)
 {
@@ -156,9 +163,9 @@ The main FFRT APIs involved in the preceding example are as follows:
 
 | Name                                                                                                               | Description                            |
 | ------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| [submit](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#submit)     | Submits a task.              |
-| [submit_h](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#submit_h) | Submits a task, and obtains the task handle.|
-| [wait](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#wait)         | Waits until all tasks in the context are complete.        |
+| [submit](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#submit)     | Submits a task.              |
+| [submit_h](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#submit_h) | Submits a task, and obtains the task handle.|
+| [wait](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#wait)         | Waits until all tasks in the context are complete.        |
 
 > **NOTE**
 >

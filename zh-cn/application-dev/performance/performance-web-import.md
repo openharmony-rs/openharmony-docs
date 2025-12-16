@@ -1,8 +1,14 @@
 # Web组件开发性能提升指导
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
 
 ## 简介
 
-开发者实现在应用中跳转显示网页需要分为两个方面：使用@ohos.web.webview提供Web控制能力；使用Web组件提供网页显示的能力。在实际应用中往往由于各种原因导致首次跳转Web网页或Web组件内跳转时出现白屏、卡顿等情况。本文介绍提升Web首页加载与Web网页间跳转速度的几种方法，并提供[示例源码](https://www.gitee.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/webPerformance)。
+开发者实现在应用中跳转显示网页需要分为两个方面：使用@ohos.web.webview提供Web控制能力；使用Web组件提供网页显示的能力。在实际应用中往往由于各种原因导致首次跳转Web网页或Web组件内跳转时出现白屏、卡顿等情况。本文介绍提升Web首页加载与Web网页间跳转速度的几种方法，并提供[示例源码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/webPerformance)。
 
 ## 优化思路
 
@@ -42,19 +48,19 @@
 在未初始化Web内核前提下，启动加载Web页面。
 
 ```typescript
-import web_webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index {
-  controller: web_webview.WebviewController = new web_webview.WebviewController();
+   controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Web({ src: 'https://www.example.com/example.html', controller: this.controller })
-        .fileAccess(true)
-    }
-  }
+   build() {
+      Column() {
+         Web({ src: 'https://www.example.com/example.html', controller: this.controller })
+            .fileAccess(true)
+      }
+   }
 }
 ```
 
@@ -85,19 +91,19 @@ export default class EntryAbility extends UIAbility {
 
 ```typescript
 // xxx.ets
-import web_webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index {
-  controller: web_webview.WebviewController = new web_webview.WebviewController();
+   controller: webview.WebviewController = new webview.WebviewController();
 
-  build() {
-    Column() {
-      Web({ src: 'https://www.example.com/example.html', controller: this.controller })
-        .fileAccess(true)
-    }
-  }
+   build() {
+      Column() {
+         Web({ src: 'https://www.example.com/example.html', controller: this.controller })
+            .fileAccess(true)
+      }
+   }
 }
 ```
 
@@ -260,11 +266,11 @@ struct WebComponent {
       }
     }
     let wrap = wrapBuilder<Data[]>(WebBuilder);
-    // 用于控制和反馈对应的NodeContianer上的节点的行为，需要与NodeContainer一起使用。
+    // 用于控制和反馈对应的NodeContainer上的节点的行为，需要与NodeContainer一起使用。
     export class myNodeController extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
-      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContianer中。
-      // 在对应NodeContianer创建的时候调用、或者通过rebuild方法调用刷新。
+      // 必须要重写的方法，用于构建节点数、返回节点挂载在对应NodeContainer中。
+      // 在对应NodeContainer创建的时候调用、或者通过rebuild方法调用刷新。
       makeNode(uiContext: UIContext): FrameNode | null {
         console.info(" uicontext is undifined : "+ (uiContext === undefined));
         if (this.rootnode != null) {
@@ -901,7 +907,7 @@ JSBridge优化方案适用于ArkWeb应用侧与前端网页通信场景，开发
 
 步骤1.只注册同步函数。
 ```typescript
-import webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义ETS侧对象及函数。
@@ -914,6 +920,7 @@ class TestObj {
     console.info('objName.test start: ' + start);
     return 'objName.test Sync function took ' + (end - start) + 'ms';
   }
+  
   asyncTestBool(testBol:boolean): Promise<string> {
     return new Promise((resolve, reject) => {
       let start = Date.now();
@@ -937,18 +944,18 @@ class WebObj {
     console.info('objTestName.webTest start: ' + start);
     return 'objTestName.webTest Sync function took ' + (end - start) + 'ms';
   }
+  
   webString(): string {
     let start = Date.now();
     // 模拟耗时操作。
     for(let i = 0; i < 500000; i++) {}
     let end = Date.now();
     console.info('objTestName.webString start: ' + start);
-    return 'objTestName.webString Sync function took ' + (end - start) + 'ms'
+    return 'objTestName.webString Sync function took ' + (end - start) + 'ms';
   }
 }
 
 class AsyncObj {
-
   asyncTest(): Promise<string> {
     return new Promise((resolve, reject) => {
       let start = Date.now();
@@ -985,10 +992,11 @@ struct Index {
   @State testObjtest: TestObj = new TestObj();
   @State webTestObj: WebObj = new WebObj();
   @State asyncTestObj: AsyncObj = new AsyncObj();
+  
   build() {
     Column() {
       Button('refresh')
-        .onClick(()=>{
+        .onClick(() => {
           try{
             this.controller.refresh();
           } catch (error) {
@@ -996,7 +1004,7 @@ struct Index {
           }
         })
       Button('Register JavaScript To Window')
-        .onClick(()=>{
+        .onClick(() => {
           try {
             // 只注册同步函数。
             this.controller.registerJavaScriptProxy(this.webTestObj,"objTestName",["webTest","webString"]);
@@ -1004,6 +1012,7 @@ struct Index {
             console.error(`ErrorCode:${(error as BusinessError).code},Message:${(error as BusinessError).message}`);
           }
         })
+      // 开发者需要将此处的“index.html”替换为自己工程内的html文件   
       Web({src: $rawfile('index.html'),controller: this.controller}).javaScriptAccess(true)
     }
   }
@@ -1203,12 +1212,12 @@ void RegisterCallback(const char *webTag) {
 在未使用预编译JavaScript前提下，启动加载Web页面。
 
 ```typescript
-import web_webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index {
-  controller: web_webview.WebviewController = new web_webview.WebviewController();
+  controller: webview.WebviewController = new webview.WebviewController();
 
   build() {
     Column() {
@@ -1345,7 +1354,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   // 创建scheme对象，isCodeCacheSupported为false时不支持自定义协议的JavaScript生成字节码缓存。
-  scheme: webview.WebCustomScheme = { schemeName: 'scheme', isSupportCORS: true, isSupportFetch: true, isCodeCacheSupported: false };
+  scheme: webview.WebCustomScheme = {
+    schemeName: 'scheme',
+    isSupportCORS: true,
+    isSupportFetch: true,
+    isCodeCacheSupported: false
+  };
   // 请求数据。
   @State jsData: string = 'xxx';
 
@@ -1357,6 +1371,7 @@ struct Index {
       console.error(`ErrorCode: ${e.code}, Message: ${e.message}`);
     }
   }
+  
   build() {
     Column({ space: 10 }) {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -1571,7 +1586,7 @@ export default class EntryAbility extends UIAbility {
 直接加载Web页面。
 
 ```typescript
-import webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
@@ -1699,7 +1714,7 @@ Web({ src: 'https://www.example.com/a.html', controller: this.controller })
 使用字符串格式的数据做拦截替换。
 
 ```typescript
-import webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
@@ -1742,7 +1757,7 @@ struct Index {
 使用ArrayBuffer格式的数据做拦截替换。
 
 ```typescript
-import webview from '@ohos.web.webview';
+import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
@@ -1914,7 +1929,6 @@ Web({ src: 'https://www.example.com', controller: this.controller })
 // src/main/ets/pages/WebInitialized.ets
 
 import { webview } from '@kit.ArkWeb';
-import { router } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry

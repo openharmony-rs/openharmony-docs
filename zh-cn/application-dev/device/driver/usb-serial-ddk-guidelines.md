@@ -1,8 +1,14 @@
 # 开发适用串口协议的设备驱动
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 简介
 
-在工业用途场景中和一些陈旧设备上，都有对非标串口设备的使用需求，例如：温湿度测量计、特殊身份读卡器等，当系统中没有适配该设备的驱动时，会导致设备接入后无法使用。USB Serial DDK（USB Serial Driver Develop Kit）是为开发者提供的USB串口驱动程序开发套件，支持开发者基于用户态，在应用层开发USB串口设备驱动。USB Serial DDK提供了一系列主机侧访问设备的接口，包括主机侧打开和关闭接口、串口读写通信等。依赖这些驱动开发接口，该类三方生态外设可顺利接入OpenHarmony，满足生态安全加密场景应用需求。
+在工业用途场景中和一些陈旧设备上，都有对非标串口设备的使用需求，例如：温湿度测量计、特殊身份读卡器等，当系统中没有适配该设备的驱动时，会导致设备接入后无法使用。USB Serial DDK（USB Serial Driver Development Kit）是为开发者提供的USB串口驱动程序开发套件，支持开发者基于用户态，在应用层开发USB串口设备驱动。USB Serial DDK提供了一系列主机侧访问设备的接口，包括主机侧打开和关闭接口、串口读写通信等。依赖这些驱动开发接口，该类三方生态外设可顺利接入OpenHarmony，满足生态安全加密场景应用需求。
 
 ### 基本概念
 
@@ -22,7 +28,7 @@
 
 - **DDK**
 
-    DDK（Driver Develop Kit）是OpenHarmony基于扩展外设框架，为开发者提供的驱动应用开发的工具包，可针对非标USB串口设备，开发对应的驱动。
+    DDK（Driver Development Kit）是OpenHarmony基于扩展外设框架，为开发者提供的驱动应用开发的工具包，可针对非标USB串口设备，开发对应的驱动。
 
 - **非标外设**
 
@@ -61,7 +67,7 @@
 | OH_UsbSerial_Init(void) | 初始化USB Serial DDK。 |
 | OH_UsbSerial_Release(void) | 释放USB Serial DDK。 |
 | OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev) | 通过deviceId和interfaceIndex打开USB串口设备。请在设备使用完后调用OH_UsbSerial_Close()关闭设备，否则会造成内存泄漏。 |
-| OH_UsbSerial_Close(UsbSerial_Device **dev) | 关闭USB串口设备，请在设备使用完后关闭设备，否则会造成内存泄露。 |
+| OH_UsbSerial_Close(UsbSerial_Device **dev) | 关闭USB串口设备，请在设备使用完后关闭设备，否则会造成内存泄漏。 |
 | OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead) | 从USB串口设备读取数据到缓冲区。 |
 | OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten) | 将buff中的数据写入USB串口设备。 |
 | OH_UsbSerial_SetBaudRate(UsbSerial_DeviceHandle *dev, uint32_t baudRate) | 设置USB串口设备的波特率。如果串口的数据位为8，停止位为1，不校验，则调用该接口。 |
@@ -87,107 +93,131 @@ libusb_serial_ndk.z.so
 
 **头文件**
 ```c++
-#include <serial/usb_serial_api.h>
-#include <serial/usb_serial_types.h>
+#include <usb_serial/usb_serial_api.h>
+#include <usb_serial/usb_serial_types.h>
 ```
 
 1. 初始化DDK。
 
     使用 **usb_serial_api.h** 的 **OH_UsbSerial_Init** 初始化DDK。
 
-    ```c++
+    <!-- @[driver_serial_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // 初始化USB Serial DDK
     OH_UsbSerial_Init();
-    ```
+```
+
 
 2. 打开USB串口设备。
 
     使用 **usb_serial_api.h** 的 **OH_UsbSerial_Open** 打开设备。
 
-    ```c++
+    <!-- @[driver_serial_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     UsbSerial_Device *dev = NULL;
-    uint64_t deviceId = 1688858450198529;
+    uint64_t deviceId = 1;
     uint8_t interfaceIndex = 0;
     // 打开deviceId和interfaceIndex指定的USB串口设备
     OH_UsbSerial_Open(deviceId, interfaceIndex, &dev);
-    ```
+```
 
-3. 设置USB串口设备的参数。
+
+3. 设置USB串口设备的参数（可选）。
 
     使用 **usb_serial_api.h** 的 **OH_UsbSerial_SetParams** 接口设置串口参数，或者直接调用 **OH_UsbSerial_SetBaudRate** 设置波特率，使用 **OH_UsbSerial_SetTimeout** 设置读取数据的超时时间。
 
-    ```c++
+    <!-- @[driver_serial_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     UsbSerial_Params params;
-    params.baudRate = 9600;
-    params.nDataBits = 8;
+    params.baudRate = NUM_BAUDRATE;
+    params.nDataBits = NUM_EIGHT;
     params.nStopBits = 1;
     params.parity = 0;
     // 设置串口参数
     OH_UsbSerial_SetParams(dev, &params);
-
+    
     // 设置波特率
-    uint32_t baudRate = 9600;
+    uint32_t baudRate = NUM_BAUDRATE;
     OH_UsbSerial_SetBaudRate(dev, baudRate);
-
+    
     // 设置超时时间
     int timeout = 500;
     OH_UsbSerial_SetTimeout(dev, timeout);
-    ```
+```
 
-4. 设置流控、清空缓冲区。
+
+4. 设置流控、清空缓冲区（可选）。
 
     使用 **usb_serial_api.h** 的 **OH_UsbSerial_SetFlowControl** 设置流控方式，使用 **OH_UsbSerial_Flush** 清空缓冲区，使用 **OH_UsbSerial_FlushInput** 清空输入缓冲区，使用 **OH_UsbSerial_FlushOutput** 清空输出缓冲区。
 
-    ```c++
+    <!-- @[driver_serial_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // 设置软件流控
     OH_UsbSerial_SetFlowControl(dev, USB_SERIAL_SOFTWARE_FLOW_CONTROL);
-
+    
     // 清空缓冲区
     OH_UsbSerial_Flush(dev);
-
+    
     // 清空输入缓冲区
     OH_UsbSerial_FlushInput(dev);
-
+    
     // 清空输出缓冲区
     OH_UsbSerial_FlushOutput(dev);
-    ```
-5. 向USB串口设备写入/读取数据。
+```
+
+
+5. 向USB串口设备写入/读取数据（可选）。
 
     使用 **usb_serial_api.h** 的 **OH_UsbSerial_Write** 给设备发送数据，并使用 **OH_UsbSerial_Read** 读取设备发送过来的数据。
 
-    ```c++
+    <!-- @[driver_serial_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     uint32_t bytesWritten = 0;
     // 测试设备读取指令，具体指令根据设备协议而定
-    uint8_t writeBuff[8] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01, 0x84, 0xA};
+    uint8_t writeBuff[NUM_EIGHT] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01, 0x84, 0xA};
     // 发送数据
     OH_UsbSerial_Write(dev, writeBuff, sizeof(writeBuff), &bytesWritten);
-
+    
     // 接收数据
     uint8_t readBuff[100];
     uint32_t bytesRead = 0;
     OH_UsbSerial_Read(dev, readBuff, sizeof(readBuff), &bytesRead);
-    ```
+```
+
 
 6. 关闭USB串口设备。
 
     在所有请求处理完毕，程序退出前，使用 **usb_serial_api.h** 的 **OH_UsbSerial_Close** 关闭设备。
-    ```c++
+
+    <!-- @[driver_serial_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // 关闭设备
     OH_UsbSerial_Close(&dev);
-    ```
+```
+
 
 7. 释放DDK。
 
     在关闭USB串口设备后，使用 **usb_serial_api.h** 的 **OH_UsbSerial_Release** 释放DDK。
 
-    ```c++
+    <!-- @[driver_serial_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) -->
+
+``` C++
     // 释放USB Serial DDK
     OH_UsbSerial_Release();
-    ```
+```
+
+
 
 ### 调测验证
 
-驱动应用侧开发完成后，可在Openahrmony设备上安装应用，测试步骤如下：
+驱动应用侧开发完成后，可在OpenHarmony设备上安装应用，测试步骤如下：
 
 1. 在设备上点击驱动应用，应用在设备上被拉起。
 2. 点击波特率等设置按钮，可以设置串口属性。

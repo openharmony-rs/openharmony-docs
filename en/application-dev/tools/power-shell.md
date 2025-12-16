@@ -8,7 +8,7 @@ power-shell is a tool used to convert the power status of a device. It provides 
 Before using this tool, you must obtain [hdc](../dfx/hdc.md) and run the **hdc shell** command.
 <!--RP1End-->
 
-## power-shell commands
+## Commands
 
 | Command| Description|
 | -------- | -------- |
@@ -33,7 +33,7 @@ power-shell help
 power-shell setmode
 ```
 
-**setmode commands**
+**Commands**
 
 | Command                               | Description                      |
 | ----------------------------------- | -------------------------- |
@@ -62,7 +62,7 @@ power-shell setmode 603
 power-shell wakeup
 ```
 
-**wakeup command**
+**Commands**
 
 | Command                         | Description                    |
 | ----------------------------- | ------------------------ |
@@ -84,7 +84,7 @@ power-shell suspend
 ```
 
 
-**suspend command**
+**Commands**
 
 | Command      | Description                      |
 | ---------- | -------------------------- |
@@ -104,10 +104,10 @@ power-shell suspend
 power-shell timeout
 ```
 
-**timeout commands**
+**Parameters**
 | Parameter      | Description                      |
 | ---------- | -------------------------- |
-| -o \<time\> | Sets the automatic screen-off time. This parameter is mandatory. in milliseconds.|
+| -o \<time\> | Sets the automatic screen-off time, in milliseconds. This parameter is mandatory. |
 | -r | Restores the automatic screen-off time in the current system settings. This parameter is mandatory.|
 
 Example:

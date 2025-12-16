@@ -1,5 +1,12 @@
 # Permissions for MDM Applications
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Security-->
+<!--Owner: @harylee-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 The following permissions are available only to Mobile Device Management (MDM) applications. For details about MDM applications, see [Introduction to MDM Kit](../../mdm/mdm-kit-intro.md).
 
 > **NOTE**
@@ -9,6 +16,8 @@ The following permissions are available only to Mobile Device Management (MDM) a
 ## ohos.permission.ENTERPRISE_GET_DEVICE_INFO
 
 Allows an application to activate a device administrator application.
+
+With this permission, the application can read the device ID, hard disk serial number, operating system version, and device name.
 
 **Permission level**: system_basic
 
@@ -22,6 +31,8 @@ Allows an application to activate a device administrator application.
 ## ohos.permission.ENTERPRISE_GET_NETWORK_INFO
 
 Allows a device administrator application to query network information.
+
+With this permission, the application can query the network adapter settings, IP address, MAC address, and network adapter on/off status.
 
 **Permission level**: system_basic
 
@@ -75,6 +86,8 @@ Allows a device administrator application to restore devices' factory settings.
 
 Allows a device administrator application to set account management policies.
 
+With this permission, the application can add accounts.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -87,6 +100,8 @@ Allows a device administrator application to set account management policies.
 ## ohos.permission.ENTERPRISE_SET_BUNDLE_INSTALL_POLICY
 
 Allows a device administrator application to set bundle installation policies.
+
+With this permission, the application can set the bundle installation trustlist.
 
 **Permission level**: system_basic
 
@@ -101,6 +116,8 @@ Allows a device administrator application to set bundle installation policies.
 
 Allows a device administrator application to set the system time.
 
+With this permission, the application can set the system time and prohibiting users from modifying the system time.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -113,6 +130,8 @@ Allows a device administrator application to set the system time.
 ## ohos.permission.ENTERPRISE_SET_NETWORK
 
 Allows a device administrator application to set network information.
+
+With this permission, the application can disable and enable network adapters.
 
 **Permission level**: system_basic
 
@@ -127,6 +146,8 @@ Allows a device administrator application to set network information.
 
 Allows a device administrator application to set and query Wi-Fi information.
 
+With this permission, the application can query whether Wi-Fi is disabled and set the Wi-Fi connection.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -140,6 +161,8 @@ Allows a device administrator application to set and query Wi-Fi information.
 
 Allows a device administrator application to subscribe to management events.
 
+With this permission, the MDM application can receive the screen lock event or software version update event if the subscription is successful.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -152,6 +175,8 @@ Allows a device administrator application to subscribe to management events.
 ## ohos.permission.ENTERPRISE_RESTRICT_POLICY
 
 Allows a device administrator application to deliver and obtain restriction policies.
+
+With this permission, the application can disable HDC and direct printing services.
 
 **Permission level**: system_basic
 
@@ -269,6 +294,8 @@ Allows the device to set or cancel browser policies.
 ## ohos.permission.SET_ENTERPRISE_INFO
 
 Allows a device administrator application to set enterprise information.
+
+With this permission, the application, once activated, can set enterprise information, including the enterprise name and description, which are used by the system UI to display the management information of the device.
 
 **Permission level**: system_basic
 
@@ -424,7 +451,7 @@ Allows a device administrator application to operate devices.
 
 ## ohos.permission.ENTERPRISE_ADMIN_MANAGE
 
-Allows a device administrator application to manage the device administrator.
+Allows an application to manage a device administrator application.
 
 **Permission level**: system_basic
 
@@ -472,7 +499,7 @@ Allows a device administrator application to obtain information about all applic
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
 
@@ -487,7 +514,7 @@ Allows a device administrator application to restrict users from modifying syste
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
 
@@ -502,7 +529,7 @@ Allows a device administrator application to manage device APN policies.
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
 
@@ -517,7 +544,7 @@ Allows a device administrator application to manage device telephony policies.
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
 
@@ -532,13 +559,13 @@ Allows a device administrator application to set the Kiosk mode.
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCAL_PUBLICSPACES
 
-Allows an enterprise application to enable, create, delete, and configure workspaces.
+Allows an enterprise application to enable, create, and delete workspaces.
 
 With this permission, the application can set the password-free login duration for workspace switching, user photos, and the list of non-deletable workspaces.
 
@@ -549,7 +576,7 @@ With this permission, the application can set the password-free login duration f
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**:PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -564,7 +591,7 @@ Allows an MDM application to manage file transfer policies and audit information
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**:PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -579,7 +606,22 @@ Allows a device administrator application to set wallpapers.
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Valid since**: 20
+
+## ohos.permission.MANAGE_PREINSTALLED_ANTIVIRUS
+
+Allows an MDM application to manage pre-installed antivirus software.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -596,6 +638,55 @@ With this permission, the MDM application can configure user_grant permission po
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
+
+## ohos.permission.ENTERPRISE_DATA_IDENTIFY_FILE
+
+Allows a mobile device management (MDM) application to identify sensitive file content.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 21
+
+## ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
+
+Allows MDM applications to generate and decrypt DLP files, and query DLP file policies.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 20
+
+**Changelog**: This permission is available only to system applications in API version 20. From API version 21, it's also available to MDM applications.
+
+## ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+Allows an application to manage other device administrator applications.
+
+With this permission, the super device administrator application can manage other device administrator applications.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23

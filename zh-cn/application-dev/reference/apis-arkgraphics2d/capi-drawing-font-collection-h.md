@@ -1,5 +1,10 @@
 # drawing_font_collection.h
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 ## 概述
 
 定义绘制模块中与字体集合相关的函数。
@@ -7,6 +12,8 @@
 **引用文件：** <native_drawing/drawing_font_collection.h>
 
 **库：** libnative_drawing.so
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -30,7 +37,7 @@
 
 ### OH_Drawing_CreateFontCollection()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 ```
 
@@ -46,11 +53,11 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* | 指向创建的字体集对象的指针。该函数创建的字体集指针对象[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)只能被一个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象使用，无法被多个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象共享使用。如需在多个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象间共享同一个[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)，请使用[OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection)函数创建[OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)对象。 |
+| [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md)* | 指向创建的字体集对象的指针。该函数创建的字体集指针对象OH_Drawing_FontCollection只能被一个[OH_Drawing_TypographyCreate](capi-drawing-oh-drawing-typographycreate.md)对象使用，无法被多个OH_Drawing_TypographyCreate对象共享使用。如需在多个OH_Drawing_TypographyCreate对象间共享同一个OH_Drawing_FontCollection，请使用[OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection)函数创建OH_Drawing_FontCollection对象。 |
 
 ### OH_Drawing_DestroyFontCollection()
 
-```
+```c
 void OH_Drawing_DestroyFontCollection(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -71,7 +78,7 @@ void OH_Drawing_DestroyFontCollection(OH_Drawing_FontCollection* fontCollection)
 
 ### OH_Drawing_DisableFontCollectionFallback()
 
-```
+```c
 void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -83,6 +90,9 @@ void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCol
 
 **起始版本：** 12
 
+**废弃版本：** 18
+
+**替代接口：** [OH_Drawing_DisableFontCollectionSystemFont()](#oh_drawing_disablefontcollectionsystemfont)
 
 **参数：**
 
@@ -92,7 +102,7 @@ void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCol
 
 ### OH_Drawing_DisableFontCollectionSystemFont()
 
-```
+```c
 void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -113,7 +123,7 @@ void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontC
 
 ### OH_Drawing_CreateSharedFontCollection()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 ```
 
@@ -133,7 +143,7 @@ OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 
 ### OH_Drawing_ClearFontCaches()
 
-```
+```c
 void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)
 ```
 
@@ -154,7 +164,7 @@ void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)
 
 ### OH_Drawing_GetFontCollectionGlobalInstance()
 
-```
+```c
 OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)
 ```
 

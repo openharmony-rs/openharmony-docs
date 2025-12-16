@@ -1,6 +1,12 @@
 # PermissionDef (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The PermissionDef module provides permission details defined in the configuration file. The information can be obtained using [bundleManager.getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef).
+The module provides permission details defined in the [module.json5](../../quick-start/module-configuration-file.md) file. The information can be obtained using [bundleManager.getPermissionDef](js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef).
 
 > **NOTE**
 >
@@ -8,7 +14,13 @@ The PermissionDef module provides permission details defined in the configuratio
 >
 > The APIs provided by this module are system APIs.
 
-## **PermissionDef**
+## Modules to Import
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+```
+
+## PermissionDef
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
  
@@ -17,6 +29,6 @@ The PermissionDef module provides permission details defined in the configuratio
 | Name          | Type  | Read-Only| Optional| Description          |
 | -------------- | ------ | ---- | ---- | -------------- |
 | permissionName | string | Yes  | No  | Name of the permission.  |
-| grantMode      | number | Yes  | No  | [Grant mode of the permission](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-permission-mgmt-overview#authorization-mode). The value **0** means user authorization, and **1** means system authorization.|
+| grantMode      | number | Yes  | No  | [Grant mode of the permission](../../security/AccessToken/app-permission-mgmt-overview.md#authorization-mode). The value **0** means user authorization, and **1** means system authorization.|
 | labelId        | number | Yes  | No  | ID of the permission label.  |
 | descriptionId  | number | Yes  | No  | ID of the permission description.  |

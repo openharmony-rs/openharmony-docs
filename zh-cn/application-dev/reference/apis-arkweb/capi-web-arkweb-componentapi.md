@@ -1,4 +1,14 @@
 # ArkWeb_ComponentAPI
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @yp99ustc; @aohui; @zourongchun-->
+<!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
+
+```c
+typedef struct {...} ArkWeb_ComponentAPI
+```
 
 ## 概述
 
@@ -25,14 +35,14 @@ Component相关的Native API结构体。
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [void (\*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#oncontrollerattached) | 当Controller成功绑定到Web组件时触发该回调。                  |
 | [void (\*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#onpagebegin) | 网页开始加载时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。 |
-| [void (\*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#onpageend) | 网页加载完成时触发该回调，且只在主frame触发。                |
+| [void (\*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#onpageend) | 网页加载完成时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。   |
 | [void (\*onDestroy)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#ondestroy) | 当前Web组件销毁时触发该回调。                                |
 
 ## 成员函数说明
 
 ### onControllerAttached()
 
-```
+```c
 void (*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
@@ -50,7 +60,7 @@ void (*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback call
 
 ### onPageBegin()
 
-```
+```c
 void (*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
@@ -68,13 +78,13 @@ void (*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, voi
 
 ### onPageEnd()
 
-```
+```c
 void (*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 
 **描述：**
 
-网页加载完成时触发该回调，且只在主frame触发。
+网页加载完成时触发该回调，且只在主frame触发，iframe或者frameset的内容加载时不会触发此回调。
 
 **参数：**
 
@@ -86,7 +96,7 @@ void (*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void*
 
 ### onDestroy()
 
-```
+```c
 void (*onDestroy)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)
 ```
 

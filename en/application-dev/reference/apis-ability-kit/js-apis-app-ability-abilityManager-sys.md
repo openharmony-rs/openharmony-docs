@@ -1,5 +1,12 @@
 # @ohos.app.ability.abilityManager (AbilityManager) (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The AbilityManager module provides APIs for obtaining, adding, and updating ability information and running status information.
 
 > **NOTE**
@@ -44,7 +51,7 @@ Updates the configuration. This API uses an asynchronous callback to return the 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | config    | [Configuration](js-apis-app-ability-configuration.md)   | Yes   | New configuration. You only need to configure the items to be updated.|
-| callback  | AsyncCallback\<void>                   | Yes   | Callback used to return the API call result. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<void>                   | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined**. Otherwise, **err** is an error object. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -53,7 +60,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -77,7 +84,7 @@ try {
     if (err) {
       console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
     } else {
-      console.log('updateConfiguration success.');
+      console.info('updateConfiguration success.');
     }
   });
 } catch (paramError) {
@@ -109,7 +116,7 @@ Updates the configuration. This API uses a promise to return the result.
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise used to return the API call result. You can perform error handling or custom processing in it.|
+| Promise\<void> | Promise that returns no value. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -118,7 +125,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -126,7 +133,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { abilityManager, Configuration, ConfigurationConstant } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';;
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const config: Configuration = {
   language: 'Zh-Hans',                 // Simplified Chinese.
@@ -139,7 +146,7 @@ const config: Configuration = {
 
 try {
   abilityManager.updateConfiguration(config).then(() => {
-    console.log('updateConfiguration success.');
+    console.info('updateConfiguration success.');
   }).catch((err: BusinessError) => {
     console.error(`updateConfiguration fail, err: ${JSON.stringify(err)}`);
   });
@@ -166,11 +173,15 @@ Obtains the UIAbility running information. This API uses an asynchronous callbac
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | Yes   | Callback used to return the API call result and the ability running information. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the UIAbility running information obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.     |
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+> **NOTE**
+>
+> This API does not return error code 202 since API version 14.
 
 | ID| Error Message|
 | ------- | -------- |
@@ -189,7 +200,7 @@ try {
     if (err) {
       console.error(`getAbilityRunningInfos fail, error: ${JSON.stringify(err)}`);
     } else {
-      console.log(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
+      console.info(`getAbilityRunningInfos success, data: ${JSON.stringify(data)}`);
     }
   });
 } catch (paramError) {
@@ -216,7 +227,7 @@ Obtains the ExtensionAbility running information. This API uses an asynchronous 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | upperLimit | number                                   | Yes| Maximum number of messages that can be obtained. The maximum value is 2<sup>31</sup>-1.|
-| callback  | AsyncCallback\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>>  | Yes   | Callback used to return the API call result and the ExtensionAbility running information. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>>  | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the ExtensionAbility running information obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.     |
 
 **Error codes**
 
@@ -241,7 +252,7 @@ try {
     if (err) {
       console.error(`getExtensionRunningInfos fail, err: ${JSON.stringify(err)}`);
     } else {
-      console.log(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
+      console.info(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
     }
   });
 } catch (paramError) {
@@ -273,7 +284,7 @@ Obtains the ExtensionAbility running information. This API uses a promise to ret
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>> | Promise used to return the API call result and the ExtensionAbility running information. You can perform error handling or custom processing in it.|
+| Promise\<Array\<[ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md)>> | Promise used to return the API call result and the ExtensionAbility running information. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -295,7 +306,7 @@ let upperLimit = 10;
 
 try {
   abilityManager.getExtensionRunningInfos(upperLimit).then((data: Array<abilityManager.ExtensionRunningInfo>) => {
-    console.log(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
+    console.info(`getExtensionRunningInfos success, data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
     console.error(`getExtensionRunningInfos fail, err: ${JSON.stringify(err)}`);
   });
@@ -320,7 +331,7 @@ Obtains the top ability, which is the ability that has the window focus. This AP
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | Yes   | Callback used to return the API call result and the element name of the top ability. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the top ability name obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.     |
 
 **Error codes**
 
@@ -342,7 +353,7 @@ abilityManager.getTopAbility((err: BusinessError, data) => {
   if (err) {
     console.error(`getTopAbility fail, err: ${JSON.stringify(err)}`);
   } else {
-    console.log(`getTopAbility success, data: ${JSON.stringify(data)}`);
+    console.info(`getTopAbility success, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -361,7 +372,7 @@ Obtains the top ability, which is the ability that has the window focus. This AP
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise used to return the API call result and the element name of the top ability. You can perform error handling or custom processing in it.|
+| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise used to return the API call result and the element name. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -379,7 +390,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 abilityManager.getTopAbility().then((data) => {
-  console.log(`getTopAbility success, data: ${JSON.stringify(data)}`);
+  console.info(`getTopAbility success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getTopAbility fail, err: ${JSON.stringify(err)}`);
 });
@@ -389,7 +400,7 @@ abilityManager.getTopAbility().then((data) => {
 
 acquireShareData(missionId: number, callback: AsyncCallback\<Record\<string, Object>>): void
 
-Called by a system dialog box to obtain shared data, which is set by the target UIAbility through **onShare()**. This API uses an asynchronous callback to return the result.
+Called by a system dialog box to obtain shared data, which is set by the target UIAbility through [onShare](./js-apis-app-ability-uiAbility.md#onshare10). This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -400,7 +411,7 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | missionId | number                                   | Yes| Mission ID on the target application. The maximum value is 2<sup>31</sup>-1.|
-| callback  | AsyncCallback\<Record\<string, Object>>  | Yes   | Callback used to return the API call result and the shared data. You can perform error handling or custom processing in it.     |
+| callback  | AsyncCallback\<Record\<string, Object>>  | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the shared data obtained. Otherwise, **err** is an error object. You can perform error handling or other custom processing.     |
 
 **Error codes**
 
@@ -423,7 +434,7 @@ try {
     if (err) {
       console.error(`acquireShareData fail, err: ${JSON.stringify(err)}`);
     } else {
-      console.log(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
+      console.info(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
     }
   });
 } catch (paramError) {
@@ -437,7 +448,7 @@ try {
 
 acquireShareData(missionId: number): Promise\<Record\<string, Object>>
 
-Called by a system dialog box to obtain shared data, which is set by the target UIAbility through **onShare()**. This API uses a promise to return the result.
+Called by a system dialog box to obtain shared data, which is set by the target UIAbility through [onShare](./js-apis-app-ability-uiAbility.md#onshare10). This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -453,7 +464,7 @@ Called by a system dialog box to obtain shared data, which is set by the target 
 
 | Type                                      | Description     |
 | ---------------------------------------- | ------- |
-| Promise\<Record\<string, Object>>| Promise used to return the API call result and the shared data. You can perform error handling or custom processing in it.|
+| Promise\<Record\<string, Object>>| Promise used to return the API call result and the shared data. You can perform error handling or other custom processing.|
 
 **Error codes**
 
@@ -473,7 +484,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   abilityManager.acquireShareData(1).then((wantParam: Record<string, Object>) => {
-    console.log(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
+    console.info(`acquireShareData success, data: ${JSON.stringify(wantParam)}`);
   }).catch((err: BusinessError) => {
     console.error(`acquireShareData fail, err: ${JSON.stringify(err)}`);
   });
@@ -500,9 +511,9 @@ Used by the [Data Loss Prevention (DLP)](../apis-data-protection-kit/js-apis-dlp
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the initiator UIAbility.|
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the caller.|
 | requestCode | number                                        | Yes| Request code passed in by the DLP management application.         |
-| callback  | AsyncCallback<void\>                             | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.        |
+| callback  | AsyncCallback<void\>                             | Yes| Callback used to return the result. If the API call is successful, **err** is **undefined**; otherwise, **err** is an error object.        |
 
 **Error codes**
 
@@ -537,7 +548,7 @@ try {
     if (err && err.code != 0) {
       console.error(`notifySaveAsResult fail, err: ${JSON.stringify(err)}`);
     } else {
-      console.log(`notifySaveAsResult success`);
+      console.info(`notifySaveAsResult success`);
     }
   });
 } catch (paramError) {
@@ -563,7 +574,7 @@ Used by the [Data Loss Prevention (DLP)](../apis-data-protection-kit/js-apis-dlp
 
 | Name       | Type                                      | Mandatory  | Description            |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the initiator UIAbility.|
+| parameter | [AbilityResult](js-apis-inner-ability-abilityResult.md) | Yes| Information returned to the caller.|
 | requestCode | number                                        | Yes| Request code passed in by the DLP management application.         |
 
 **Return value**
@@ -602,7 +613,7 @@ let abilityResult: common.AbilityResult = {
 let requestCode = 1;
 try {
   abilityManager.notifySaveAsResult(abilityResult, requestCode).then(() => {
-    console.log(`notifySaveAsResult success`);
+    console.info(`notifySaveAsResult success`);
   }).catch((err: BusinessError) => {
     console.error(`notifySaveAsResult fail, err: ${JSON.stringify(err)}`);
   });
@@ -651,7 +662,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: abilityManager.AbilityForegroundStateObserver = {
   onAbilityStateChanged(abilityStateData) {
-    console.log(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
 };
 try {
@@ -703,7 +714,7 @@ let observer_: abilityManager.AbilityForegroundStateObserver | undefined;
 // 1. Register an observer to listen for ability start or exit events.
 let observer: abilityManager.AbilityForegroundStateObserver = {
   onAbilityStateChanged(abilityStateData: abilityManager.AbilityStateData) {
-    console.log(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+    console.info(`onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
 };
 try {
@@ -729,7 +740,7 @@ try {
 
 getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): void
 
-Obtains the information about the UIAbilities of an application that is running in the foreground. This API uses an asynchronous callback to return the result.
+Obtains the information about the UIAbility components of an application that is running in the foreground. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -764,7 +775,7 @@ abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<ability
   if (err) {
     console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(err)}`);
   } else {
-    console.log(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
+    console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -773,7 +784,7 @@ abilityManager.getForegroundUIAbilities((err: BusinessError, data: Array<ability
 
 getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
-Obtains the information about the UIAbilities of an application that is running in the foreground. This API uses a promise to return the result.
+Obtains the information about the UIAbility components of an application that is running in the foreground. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -804,7 +815,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.AbilityStateData>) => {
-  console.log(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
+  console.info(`Get foreground ui abilities data is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
   console.error(`Get foreground ui abilities failed, error: ${JSON.stringify(error)}`);
 });
@@ -860,7 +871,7 @@ export default class UiExtAbility extends UIExtensionAbility {
     }
     let status = abilityManager.UserStatus.ASSERT_TERMINATE;
     abilityManager.notifyDebugAssertResult(sessionId, status).then(() => {
-      console.log('notifyDebugAssertResult success.');
+      console.info('notifyDebugAssertResult success.');
     }).catch((err: BusinessError) => {
       console.error(`notifyDebugAssertResult failed, error: ${JSON.stringify(err)}`);
     });
@@ -889,7 +900,7 @@ Checks whether the [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility
 
 | Type| Description|
 | -------- | -------- |
-| Promise\<boolean> | Promise used to return the result. The value **true** means that embedded startup is allowed, and **false** means the opposite.|
+| Promise\<boolean> | Promise used to return the result. **true** if embedded startup is allowed, **false** otherwise.|
 
 **Error codes**
 
@@ -938,7 +949,7 @@ Enables or disables the resident process of an application.
 | Name| Type| Mandatory| Description|
 | ------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name of the resident process.|
-| enable | boolean | Yes| Whether to enable or disable the resident process. The value **true** means to enable the resident process, and **false** means to disable the resident process.|
+| enable | boolean | Yes| Whether to enable or disable the resident process. **true** to enable, **false** otherwise.|
 
 **Return value**
 
@@ -955,7 +966,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not a system application. |
 | 401 | Parameter error. Possible cause: 1.Non empty package name needs to be provided, 2.The second parameter needs to provide a Boolean type setting value |
 | 16000050 | Internal error. |
-| 16200006 | The caller application can only set the resident status of the configured process |
+| 16200006 | The caller application can only set the resident status of the configured process. |
 
 **Example**
 
@@ -968,7 +979,7 @@ try {
   let enable: boolean = false;
   abilityManager.setResidentProcessEnabled(residentProcessBundleName, enable)
     .then(() => {
-      console.log('setResidentProcessEnabled success.');
+      console.info('setResidentProcessEnabled success.');
     })
     .catch((err: BusinessError) => {
       console.error(`setResidentProcessEnabled fail, err: ${JSON.stringify(err)}`);
@@ -977,6 +988,372 @@ try {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
   console.error(`setResidentProcessEnabled failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.preloadUIExtensionAbility<sup>23+</sup>
+
+preloadUIExtensionAbility(want: Want): Promise\<number>
+
+Preloads a [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance and returns the instance ID. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| want | [Want](js-apis-app-ability-want.md) | Yes| Want information about the target ability.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<number> | Promise used to return the ID of the preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance for further clearing or management.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000001 | The specified ability does not exist. |
+| 16000002 | Incorrect ability type. |
+| 16000004 | Cannot start an invisible component. |
+| 16000050 | Internal error. Possible causes: 1.Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. 4.Preload UIExtensionAbility timeout. |
+
+**Example**
+
+```ts
+import { abilityManager, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const preloadWant: Want = {
+    bundleName: 'com.example.application',
+    abilityName: 'EntryBackupAbility',
+    moduleName: 'entry',
+    parameters: {
+      'ability.want.params.uiExtensionType': 'sys/commonUI'
+    }
+  };
+
+  abilityManager.preloadUIExtensionAbility(preloadWant)
+    .then((preloadId: number) => {
+      console.info(`preloadUIExtensionAbility success, preloadId: ${preloadId}`);
+    })
+    .catch((err: BusinessError) => {
+      console.error(`preloadUIExtensionAbility fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`preloadUIExtensionAbility failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.clearPreloadedUIExtensionAbility<sup>23+</sup>
+
+clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
+
+Clears a [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | -------- | -------- | -------- |
+| preloadId | number | Yes| ID of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance.|
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000003 | The specified ID does not exist. Possible causes: 1.The specified ID is incorrect; 2.The preloaded UIExtensionAbility has been loaded; 3.The preloaded UIExtensionAbility has been destroyed; |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2. Send restart message to system service failed; 3. System service failed to communicate with dependency module. |
+
+**Example**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  // ID returned after the preloadUIExtensionAbility API is called to preload a UIExtensionAbility instance.
+  let preloadId: number = 1001;
+  abilityManager.clearPreloadUIExtensionAbility(preloadId)
+    .then(() => {
+      console.info('clearPreloadedUIExtensionAbility success.');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`clearPreloadedUIExtensionAbility fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`clearPreloadedUIExtensionAbility failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.clearPreloadedUIExtensionAbilities<sup>23+</sup>
+
+clearPreloadedUIExtensionAbilities(): Promise\<void>
+
+Clears all preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instances in the current process. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2. Send restart message to system service failed; 3. System service failed to communicate with dependency module. |
+
+**Example**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  abilityManager.clearPreloadedUIExtensionAbilities()
+    .then(() => {
+      console.info('clearPreloadedUIExtensionAbilities success.');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`clearPreloadedUIExtensionAbilities fail, err: ${JSON.stringify(err)}`);
+    });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`clearPreloadedUIExtensionAbilities failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.onPreloadedUIExtensionAbilityLoaded<sup>23+</sup>
+
+onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedFn): void
+
+Subscribes to loaded events of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance in the current process.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityLoadedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilityloadedfn23) | Yes| Callback used to receive the ID of the preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance that is loaded.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**Example**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onPreloadLoaded(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.onPreloadedUIExtensionAbilityLoaded(onPreloadLoaded);
+  console.info('onPreloadedUIExtensionAbilityLoaded success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`onPreloadedUIExtensionAbilityLoaded failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.offPreloadedUIExtensionAbilityLoaded<sup>23+</sup>
+
+offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoadedFn): void
+
+Unsubscribes from loaded events of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance in the current process.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityLoadedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilityloadedfn23) | No| Callback used for unsubscription. If this parameter is not specified, all callbacks associated with the specified event in the process will be unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**Example**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function offPreloadLoaded(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility loaded, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.offPreloadedUIExtensionAbilityLoaded(offPreloadLoaded);
+  console.info('offPreloadedUIExtensionAbilityLoaded success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`offPreloadedUIExtensionAbilityLoaded failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.onPreloadedUIExtensionAbilityDestroyed<sup>23+</sup>
+
+onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDestroyedFn): void
+
+Subscribes to destroyed events of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance in the current process.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityDestroyedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilitydestroyedfn23) | Yes| Callback used to receive the ID of the preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance that is destroyed.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**Example**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function onPreloadDestroyed(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.onPreloadedUIExtensionAbilityDestroyed(onPreloadDestroyed);
+  console.info('onPreloadedUIExtensionAbilityDestroyed success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`onPreloadedUIExtensionAbilityDestroyed failed, code is ${code}, message is ${message}`);
+}
+```
+
+## abilityManager.offPreloadedUIExtensionAbilityDestroyed<sup>23+</sup>
+
+offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDestroyedFn): void
+
+Unsubscribes from loaded events of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance in the current process.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ------- | -------- | -------- | -------- |
+| callback | [PreloadedUIExtensionAbilityDestroyedFn](js-apis-app-ability-abilityManager-sys.md#preloadeduiextensionabilitydestroyedfn23) | No| Callback used for unsubscription. If this parameter is not specified, all callbacks associated with the specified event in the process will be unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message|
+| ------- | -------- |
+| 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
+| 16000050 | Internal error. Possible causes: Memory operation error. |
+
+**Example**
+
+```ts
+import { abilityManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function offPreloadDestroyed(preloadId: number) {
+  console.info(`Preloaded UIExtensionAbility destroyed, preloadId: ${preloadId}`);
+}
+
+try {
+  abilityManager.offPreloadedUIExtensionAbilityDestroyed(offPreloadDestroyed);
+  console.info('offPreloadedUIExtensionAbilityDestroyed success.');
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`offPreloadedUIExtensionAbilityDestroyed failed, code is ${code}, message is ${message}`);
 }
 ```
 
@@ -990,8 +1367,8 @@ Describes the rule for launching an embedded atomic service.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | ---------| ---- | ---- | --------- |
-| isOpenAllowed | boolean   | Yes  | No  | Whether launching the atomic service is allowed. The value **true** means that launching the atomic service is allowed, and **false** means the opposite.|
-| isEmbeddedAllowed | boolean   | Yes  | No | Whether launching the embedded atomic service is allowed. The value **true** means that launching the embedded atomic service is allowed, and **false** means the opposite.|
+| isOpenAllowed | boolean   | No  | No  | Whether launching the atomic service is allowed. **true** if allowed, **false** otherwise.|
+| isEmbeddedAllowed | boolean   | No  | No | Whether launching the embedded atomic service is allowed. **true** if allowed, **false** otherwise.|
 
 ## abilityManager.queryAtomicServiceStartupRule<sup>18+</sup>
 
@@ -1003,11 +1380,13 @@ Obtains the rule for launching an [EmbeddableUIAbility](js-apis-app-ability-embe
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
+**Device behavior differences**: This API can be properly called only on phones, tablets, and TVs. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | ------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | Yes| Context of the caller.<br>**Note**: Currently, only [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) is supported.|
+| context | [Context](js-apis-inner-application-context.md) | Yes| Context of the caller.<br>Note: Currently, only [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) is supported.|
 | appId | string | Yes| Unique ID of the application, which is allocated by the cloud.|
 
 **Return value**
@@ -1048,3 +1427,59 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+## ExtensionRunningInfo
+
+type ExtensionRunningInfo = _ExtensionRunningInfo
+
+Defines the level-2 module ExtensionRunningInfo.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Type| Description|
+| --- | --- |
+| [_ExtensionRunningInfo](js-apis-inner-application-extensionRunningInfo-sys.md) | ExtensionRunningInfo, a level-2 module that provides running information of an ExtensionAbility.|
+
+## AbilityForegroundStateObserver<sup>11+</sup>
+
+type AbilityForegroundStateObserver = _AbilityForegroundStateObserver.default
+
+Defines the level-2 module AbilityForegroundStateObserver.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Type| Description|
+| --- | --- |
+| [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver, a level-2 module that defines a listener to observe application foreground and background state changes.|
+
+## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
+
+type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
+
+Defines the callback function when the preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance is destroyed.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name   | Type           | Mandatory| Description|
+|--------|---------------|---| -------- |
+| preloadId | number | Yes| ID of the preloaded UIExtensionAbility instance.|
+
+## PreloadedUIExtensionAbilityLoadedFn<sup>23+</sup>
+
+type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
+
+Defines the callback function when the preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance is loaded.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name   | Type           | Mandatory| Description|
+|--------|---------------|---| -------- |
+| preloadId | number | Yes| ID of the preloaded UIExtensionAbility instance.|

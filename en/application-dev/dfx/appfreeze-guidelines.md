@@ -1,14 +1,27 @@
-# Analyzing Application Freeze
+# Application Freeze Detection
 
-Application freeze (AppFreeze) means that an application does not respond to user operations (for example, clicking) for a specified period of time. In this case, the system detects AppFreeze faults and generates AppFreeze logs for fault analysis.
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe;@lipengpeng97-->
+<!--Adviser: @foryourself-->
+
+## Overview
+
+AppFreeze (application freeze) means that an application does not respond to user operations (for example, clicking) for a specified period of time. In this case, the system detects AppFreeze faults and generates AppFreeze logs for fault analysis.
 
 > **NOTE**
 >
 > This guide applies only to applications in the stage model. Before using this guide, you must have basic knowledge about the JS applications, C++ program stacks, and application-related subsystems.
 
-## AppFreeze Detection
+## Detection Principles
 
 Currently, AppFreeze detection supports the fault types listed in the following table.
+
+> **NOTE**
+>
+> AppFreeze detection takes effect only for [applications of the release version](performance-analysis-kit-terminology.md#applications-of-the-release-version), but not for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version)
 
 | Fault| Description|
 | -------- | -------- |
@@ -16,295 +29,171 @@ Currently, AppFreeze detection supports the fault types listed in the following 
 | APP_INPUT_BLOCK | The user input response times out.|
 | LIFECYCLE_TIMEOUT | Ability lifecycle switching times out.|
 
+When any of the preceding faults occurs in an application, the application is killed to ensure that it is recoverable and the application freeze event is reported. You can subscribe to the [application freeze event](hiappevent-watcher-freeze-events.md) using HiAppEvent.
+
 ### THREAD_BLOCK_6S Application Main Thread Timeout
 
-This fault indicates that the main thread of this application is suspended or too many tasks are executed, affecting task execution smoothness and experience.
+**Description**: This fault indicates that the main thread of this application is suspended or too many tasks are executed, affecting task execution smoothness and experience.
 
-Detection principle: The watchdog thread of the application periodically inserts an activation detection to the main thread. If the activity detection is not executed within 3s, the **THREAD_BLOCK_3S** warning event is reported. If the activity detection is not executed within 6s, the **THREAD_BLOCK_6S** main thread timeout event is reported. The two events constitute an AppFreeze log.
+**Detection principle**: The watchdog thread of the application periodically inserts an activation detection to the main thread. If the activity detection is not executed within 3s, the **THREAD_BLOCK_3S** warning event is reported. If the activity detection is not executed within 6s, the **THREAD_BLOCK_6S** main thread timeout event is reported. The two events constitute an AppFreeze log.
 
 The following figure shows the detection principle.
 
-![appfreeze_20230308145163](figures/appfreeze_20230308145163.png)
+**Figure 1**
+
+![thread_block](figures/thread_block.png)
 
 ### APP_INPUT_BLOCK User Input Response Timeout
 
-This fault occurs when the tap event is not responded within 5 seconds.
+**Description**: This fault occurs when the tap event is not responded within 5 seconds.
 
-Detection principle: When a user taps an application, the input system sends a tap event to the application. If the application response times out, this fault is reported.
+**Detection principle**: When a user taps an application, the input system sends a tap event to the application. If the application response times out, this fault is reported.
 
 The following figure shows the detection principle.
 
-![appfreeze_20230308145162](figures/appfreeze_20230308145162.png)
+**Figure 2**
+
+![app_input_block](figures/app_input_block.png)
 
 ### Lifecycle Switching Timeout
 
-Lifecycle switching timeout refers to an [UIAbility Lifecycle](../application-models/uiability-lifecycle.md#uiability-lifecycle) switching timeout or a [PageAbility Lifecycle](../application-models/pageability-lifecycle.md#pageability-lifecycle) switching timeout.
+**Description**: Lifecycle switching timeouts include [UIAbility lifecycle](../application-models/uiability-lifecycle.md) switching timeout and [PageAbility lifecycle](../application-models/pageability-lifecycle.md) switching timeout.
 
 This fault occurs during lifecycle switching and affects Ability switching and PageAbility switching of the application.
 
-Detection principle: Upon the start of a lifecycle switching process, the main thread inserts a timeout task to the watchdog thread, and then removes the timeout task when the lifecycle switching is complete. If the timeout task is not removed within a specific time frame, a fault is reported.
+**Detection principle**: The AMS service of foundation sends a lifecycle switching instruction to the application process, and then waits for the application to return the result. If the task is not completed within a specified period of time, a fault is reported.
 
-The lifecycle switching timeout event consist of the **LIFECYCLE_HALF_TIMEOUT** and **LIFECYCLE_TIMEOUT** events. **LIFECYCLE_HALF_TIMEOUT** is used as the warning event of **LIFECYCLE_TIMEOUT** to capture the binder information.
+The lifecycle switching timeout event consists of the **LIFECYCLE_HALF_TIMEOUT** and **LIFECYCLE_TIMEOUT** events. **LIFECYCLE_HALF_TIMEOUT** is used as the warning event of **LIFECYCLE_TIMEOUT** to capture the binder information.
 
-![appfreeze_20230308145164](figures/appfreeze_20230308145164.png)
+**Figure 3**
+
+![lifecycle_timeout](figures/lifecycle_timeout.png)
 
 Timeout durations vary with lifecycles. For details, see the following table.
 
 | Lifecycle| Timeout Duration|
 | -------- | -------- |
 | Load | 10s |
-| Terminate | 10s |
-| Connect | 3s |
-| Disconnect | 0.5s |
 | Foreground | 5s |
-| Background | 3s |
 
-## AppFreeze Log Analysis
+## Obtaining Logs
 
-To identify the cause of an AppFreeze event, analyze the AppFreeze logs together with HiLog logs.
+Both application freeze logs and process crash logs are managed by the FaultLogger module and can be obtained using any of the following methods:
+
+**Method 1: DevEco Studio**
+
+DevEco Studio collects process crash logs from **/data/log/faultlog/faultlogger/** to FaultLog, where logs are displayed by process name and fault time. For details about how to obtain logs, see [Fault Log](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-fault-log).
+
+**Method 2: HiAppEvent APIs**
+
+HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md), and read the fault log file content based on the [external_log](hiappevent-watcher-freeze-events.md#event-fields) field of the event.
+
+**Method 3: hdc**
+
+Enable **Developer options** and run the `hdc file recv /data/log/faultlog/faultlogger D:\` command to export fault logs to the local device. The fault log file name is in the format of **appfreeze-process name-process UID-millisecond-level timestamp.log**.
+
+## Log Specifications
+
+You need to analyze AppFreeze problems based on AppFreeze logs and HiLog logs.
 
 The following example is for reference only. You should analyze the problem based on the actual situation.
 
-AppFreeze logs consist of header information, and general and specific information in the body.
+AppFreeze logs consist of the following information:
 
 ### Header Information
-
-| Field| Description|
-| -------- | -------- |
-| Reason | Reason why the application does not respond. For details, see [AppFreeze Detection](#appfreeze-detection).|
-| PID | PID of the faulty process.|
-| PACKAGE_NAME | Application process package name.|
 
 ```
 Generated by HiviewDFX@OpenHarmony
 ================================================================
-Device info:OpenHarmony 3.2
-Build info:OpenHarmony 5.1.0.59
-Fingerprint:9f232fb5053c092144eedaa39ceecd67a6997db69467973b4d5fe786f184374d
-Module name:com.example.freeze
+Device info:HUAWEI Mate 60 Pro
+Build info:ALN-AL00 6.0.0.328(C00E1R4P3DEVDUlog)
+DeviceDebuggable:No
+Fingerprint:e18a33c12e1361173ec9ac1c93f2bd0c2daa88f03c7f76b228cca14bdc6a21b1
+Module name:com.samples.freezedebug
+ReleaseType:Release
+CpuAbi:arm64-v8a
 Version:1.0.0
 VersionCode:1000000
+IsSystemApp:No
 PreInstalled:No
 Foreground:Yes
-Pid:2212
-Uid:20010044
+Pid:13680
+Uid:20020177
+Process life time:18s
+Process Memory(kB):163819(Rss)
+Device Memory(kB):Total 11679272, Free 3697424, Available 5814272
 Reason:THREAD_BLOCK_6S
-appfreeze: com.example.freeze THREAD_BLOCK_6S at 20170817192244
+appfreeze: com.samples.freezedebug THREAD_BLOCK_6S at 20250628140837
 DisplayPowerInfo:powerState:UNKNOWN
+HitraceIdInfo: hitrace_id: a92ab27238f409a, span_id: 1cd61c9, parent_span_id: 3072e, trace_flag: 0
+Page switch history:
+  14:08:30:327 /ets/pages/Index:Appfreeze
+  14:08:28:986 /ets/pages/Index
+  14:08:26:502 :enters foreground
+  14:08:07:606 :leaves foreground
+  14:08:06:246 /ets/pages/Index:Appfreeze
+  14:08:01:955 :enters foreground
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 DOMAIN:AAFWK
 STRINGID:THREAD_BLOCK_6S
-TIMESTAMP:2017/08/17-19:22:44:952
-PID:2212
-UID:20010044
-PACKAGE_NAME:com.example.freeze
-PROCESS_NAME:com.example.freeze
-*******************************************
+TIMESTAMP:2025/06/28-14:08:37:360
+PID:13680
+UID:20020177
+PACKAGE_NAME:com.samples.freezedebug
+PROCESS_NAME:com.samples.freezedebug
+NOTE: Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults.
+***
 ```
 
-### General Information in the Log Body
+Since API version 20, the **NOTE** line is displayed when a device resource alarm is generated (for example, the device memory is low or thermal throttling is enabled). When this line is displayed, you can ignore the application freeze fault. In earlier API versions, this line is not displayed regardless of the system resource status.
 
-All the three types of AppFreeze events include the following information. You can search for the field to locate it in the logs.  
+Since API version 20, the [HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid) information is added to the log when the **THREAD_BLOCK_6S** fault occurs. Provided by HiTraceChain, the **HitraceId** uniquely identifies each service process call chain. You can use it to view the HiLog logs of the faulty process during the fault period, and analyze the logs to check the application execution status.
+
+All the three types of AppFreeze events include the following information.
 
 | Field| Description|
 | -------- | -------- |
-| EVENTNAME | Name of the fault event.|
-| TIMESTAMP | Time when a fault event is reported. You can narrow down the time range to view HiLog logs based on the timeout duration described in [AppFreeze Detection](#appfreeze-detection).|
+| DeviceDebuggable | Whether the device can be debugged.<br>Note: This field is supported since API version 23.|
+| ReleaseType | Release type of the SDK used for application packing. This field is displayed only for application processes. For details, see **releaseType** in [ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).<br>Note: This field is supported since API version 23.|
+| CpuAbi | ABI type.<br>Note: This field is supported since API version 23.|
+| IsSystemApp | Whether the application is a system application.<br>Note: This field is supported since API version 23.|
+| Reason | Reason why the application freezes, corresponding to the application freeze detection capability.|
 | PID | PID of the faulty process.|
 | PACKAGE_NAME | Application process package name.|
-| MSG | Dump information or description of the fault.|
-| BinderCatcher | Information about IPC calls between processes, such as the call waiting time.|
-| PeerBinder Stacktrace | Stack trace information of the peer process of the faulty process.|
-| cpuusage | CPU usage of the device when the fault occurs.|
-| memory | Memory usage of the device when the fault occurs.|
+|[Page switch history](./cppcrash-guidelines.md#faults-with-page-switching-history)| Since API version 20, the maintenance and debugging process records the application switching history. After an application fault occurs, the generated fault file contains the page switching history. If the maintenance and debugging service process is faulty or the switching history is not cached, this field is not displayed.|
+| Process life time | Lifetime of the faulty process, in seconds.<br>Note: This field is supported since API version 22.|
+| Process Memory(kB) | Memory usage of the faulty process.<br>Note: This field is supported since API version 22.|
+| Device Memory(kB) | Device memory status.<br>Note: This field is supported since API version 22.|
 
-> **NOTE**
->
-> When the device is heavily loaded and the call stack is obtained in low-overhead mode, the function name and **build-id** information may be lost. If the user stack fails to be obtained, the **build-id** is empty.
-
-The **MSG** field includes the cause of the AppFreeze event and task information in the main thread queue of the application.
-
-The task information in the main thread queue includes:
-
-- The running task and its start time. If the task start time is much earlier than the event report time, the running task may causes the freeze event.
-
-- Historical task time. If a new task cannot respond in time, you can check whether there are too many historical tasks and whether the execution of each task takes a long time based on historical task time.
-
-- Tasks that are not executed in the stack.
-
-Example of the process stack:
-
-Search for the application stack information based on PID. In the following stack, the window stays in the IPC communication phase when it sends events to the system through IPC.
+### General Information in the Log Body
 
 ```
-OpenStacktraceCatcher -pid==1561 packageName is com.example.myapplication
-Result: 0 ( no error )
-Timestamp:2017-08-0817:06:53.000
-Pid:1561
-Uid:20010039
-Process name:com.example.myapplication
-Tid:1561,Name:i.myapplication
-#00 pc 0017888c /system/lib/libark_jsruntime.so
-#01 pc 00025779 /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderConnector:WriteBinder(unsigned Long,void*)+56)
-#02 pc 000265a5 /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderInvoker:TransactWithDriver(bool)+216)
-#03 pc 0002666f /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderInvoker:StartWorkLoop()+18)
-#04 pc 000270a9 /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderInvoker:JoinThread(bool)+32)
-#05 pc 00023783 /system/lib/platformsdk/libipc_core.z.so(OHOS:IPCWorkThread:ThreadHandler(void*)+290)
-#06 pc 00e1c6f7 /system/lib/libace.z.so
-#07 pc 0091bbdd /system/lib/libace.z.so
-#08 pc 0092fd9d /system/lib/libace.z.so
-#09 pc 0092fa5f /system/lib/libace.z.so
-#10 pc 0092cd6b /system/lib/libace.z.so
-#11 pc 009326a9 /system/lib/libace.z.so
-#12 pc 0093054b /system/lib/libace.z.so
-#13 pc 009324f3 /system/lib/libace.z.so
-#14 pc 003989e1 /system/lib/libace.z.so
-#15 pc 0045dd4b /system/lib/libace.z.so
-#16 pc 00d24fef /system/lib/libace.z.so
-#17 pc 0041e6e9 /system/lib/libace.z.so
-#18 pc 0000b4d9 /system/lib/platformsdk/libeventhandler.z.so(OHOS:AppExecFwk:EventHandler:DistributeEvent(std::__h:unique_ptr<0 #19 pc 00012829 /system/lib/platformsdk/libeventhandler.z.so))
-#20 pc 00011841 /system/lib/platformsdk/libeventhandler.z.so(OHOS:AppExecFwk:EventRunner:Run()+64)
-#21 pc 00054a8b /system/lib/libappkit_native.z.so(OHOS:AppExecFwk:MainThread:Start()+278)
-#22 pc 00011503 /system/bin/appspawn
-#23 pc 0001141f /system/bin/appspawn
-#24 pc 0000ee97 /system/bin/appspawn
-```
-
-Example of BinderCatcher information:
-
-Search for which process the current process is communicating with and the waiting duration for synchronous communication based on PID.
-
-In the following example, process **1561** sends an IPC request to process **685** but does not receive any response within 10 seconds.
-
-```
-PeerBinderCatcher -pid==1561 Layer_==0
-
-
-BinderCatcher --
-    1561:1561 to 685:0 code 0 Wait:10.366245919 s,  ns:-1:-1 to -1:-1, debug:1561:1561 to 685:0, active_code:0 active_thread:0, pending_async_proc=0
-    1329:1376 to 487:794 code 0 Wait:0.12070041 s,  ns:-1:-1 to -1:-1, debug:1329:1376 to 487:794, active_code:0 active_thread:0, pending_async_proc=0
-
-pid   context  request  started  max  ready free_async_space
-1561   binder    0       3       16     4       520192
-544    binder    0       4       16     5       520192
-1104   binder    0       1       16     2       520192
-1397   binder    0       1       16     3       520192
-...
-```
-
-**Example of PeerBinder Stacktrace information**:
-
-The following example shows the stack information of the suspended peer process **685**.
-
-```
-Binder catcher stacktrace, type is peer, pid : 685
-Result: 0 ( no error )
-Timestamp:2017-08-0817:06:55.000
-Pid:685
-Uid:1000
-Process name:wifi_manager_service
-Tid:658,Name:wifi_manager_service
-#00 pc 000669f0 /system/lib/ld-musl-arm.so.1
-#01 pc 000c60cc /system/lib/ld-musl-arm.so.1
-#02 pc 000c5040 /system/lib/ld-musl-arm.so.1
-#03 pc 000c6818 /system/lib/ld-musl-arm.so.1(__pthread_cond_timedwait_time64+596)
-#04 pc 000bd058 /system/lib/libc++.so
-#05 pc 0008592c /system/lib/ld-musl-arm.so.1(ioctl+72)
-#06 pc 00025779 /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderConnector:WriteBinder(unsigned long,void*)+56)
-#07 pc 000265a5 /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderInvoker:TransactWithDriver(bool)+216)
-#08 pc 0002666f /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderInvoker:StartWorkLoop()+18)
-#09 pc 000270a9 /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderInvoker:JoinThread(bool)+32)
-#10 pc 00023783 /system/lib/platformsdk/libipc_core.z.so(OHOS:IPCWorkThread:ThreadHandler(void*)+290)
-#11 pc 0007b4d9 /system/lib/platformsdk/libeventhandler.z.so
-#12 pc 00072829 /system/lib/platformsdk/libeventhandler.z.so
-#13 pc 00071841 /system/lib/platformsdk/libeventhandler.z.so(OHOS:AppExecFwk:EventRunner:Run()+64)
-#14 pc 00094a8b /system/lib/libappkit_native.z.so(OHOS:AppExecFwk:MainThread:Start()+278)
-
-Tid:1563,Name:IPC_0_1563
-#00 pc 0009392c /system/lib/ld-musl-arm.so.1(ioctl+72)
-#01 pc 00025779 /system/lib/platformsdk/libipc_core.z.so(OHOS:BinderConnector:WriteBinder(unsigned long,void*)+56)
-```
-
-**Example of CPU usage information**:
-
-The following example shows the CPU usage information of the device.
-
-```
-Load average: 2.87 / 1.45 / 0.58; the cpu load average in 1 min,5 min and 15 min
-CPU usage from 2023-03-10 17:06:53 to 2023-03-10 17:06:53
-Total: 29%; User Space: 28%; Kernel Space: 1%; iowait: 6%; irq: 0%; idle: 62%
-Details of Processes:
-    PID     Total Usage     User Space     Kernel Space     Page Fault Minor     Page Fault Major      Name
-    1561       23%            23%              0%               9985                  26            i.myapplication
-    527        1%             1%               0%               3046                  9             hidumper_servic
-    242        1%             1%               0%               69799                 280           hiview
-```
-
-**Example of memory usage information**:
-
-The following example shows the memory usage information of the process.
-
-```
--------------------------------------------[memory]----------------------------------------
-                 Pss      Shared   Shared   Private  Private   Swap   SwapPss   Heap  Heap
-                 Total    CLean    Dirty    CLean    Dirty     Total  Total     Size  Alloc
-                 (kB)     (kB)     (kB)     (kB)      (kB)     (kB)    (kB)     (kB)  (kB)
--------------------------------------------------------------------------------------------
-guard             0        0         0       0         0         0      0        0      0
-native heap      185       0        180      0        160        0      0        0      0
-AnonPage other   17881    12        12376    88       15948      0      0        0      0
-stack            292       0        0        0        292        0      0        0      0
-.S0              5053     63408     4172     1812     2640       0      0        0      0
-.ttf             1133     3092      0        4        0          0      0        0      0
-dev              10       0         108      8        0          0      0        0      0
-FilePage other   121      556       8        0        4          0      0        0      0
-------------------------------------------------------------------------------------------
-Total            34675    67068     16844    1912     19044      0      0        0      0
-```
-
-### Specific Information in the Log Body (Application Main Thread Timeout)
-
-The value of **Reason** is **THREAD_BLOCK_6S**. According to [THREAD_BLOCK_6S Application Main Thread Timeout](#thread_block_6s-application-main-thread-timeout), **THREAD_BLOCK** consists of **THREAD_BLOCK_3S** and **THREAD_BLOCK_6S**. By comparing the two parts, you can determine whether the AppFreeze event is caused by a suspension or excessive tasks.
-
-The first part of the log displays the **THREAD_BLOCK_3S** event, and the second part displays the **THREAD_BLOCK_6S** event. You can search for the **EVENTNAME** field to locate the two events.
-
-Both events contain the **MSG** field, which records the information about the main thread processing queue when the main thread of the application is suspended and times out. By comparing the **MSG** fields, you can view the tasks in the main thread event processing queue at two time points.
-
-The example log shows that the event in the VIP priority event queue is running at **07:22:40.931**, and it is displayed in both the **THREAD_BLOCK_3S** and **THREAD_BLOCK_6S** logs. This indicates that the main thread suspension is not caused by excessive tasks.
-
-Since **THREAD_BLOCK_6S** indicates that the main thread is suspended, you only need to pay attention to the stack of the main thread (the thread ID of the main thread is the same as the process ID). The following example log shows that the main thread stack runs from the ArkUI component to the JS, indicating that the stack is suspended in the JS code. The stack positions of the 3S and 6S events are the same, indicating that the JS code is suspended, but not due to excessive tasks.
-
-**THREAD_BLOCK_3S**:
-
-```
-start time: 2017/08/17-19:22:42:022
+start time: 2025/06/28-14:08:34:318
 DOMAIN = AAFWK
 EVENTNAME = THREAD_BLOCK_3S
-TIMESTAMP = 2017/08/17-19:22:42:10
-PID = 2212
-UID = 20010044
-TID = 2212
-PACKAGE_NAME = com.example.freeze
-PROCESS_NAME = com.example.freeze
+TIMESTAMP = 2025/06/28-14:08:34:310
+PID = 13680
+UID = 20020177
+TID = 13680
+PACKAGE_NAME = com.samples.freezedebug
+PROCESS_NAME = com.samples.freezedebug
 eventLog_action = ffrt,t,GpuStack,cmd:m,hot
 eventLog_interval = 10
-MSG = 
-Fault time:2017/08/17-19:22:40
+MSG =
+Fault time:2025/06/28-14:08:34
 App main thread is not response!
-
-Main handler dump start time: 2017-08-17 19:22:40.932
+Main handler dump start time: 2025-06-28 14:08:34.067
 mainHandler dump is:
- EventHandler dump begin curTime: 2017-08-17 07:22:40.932
- Event runner (Thread name = , Thread ID = 2212) is running
- Current Running: start at 2017-08-17 07:22:34.930, Event { send thread = 2212, send time = 2017-08-17 07:22:29.932, handle time = 2017-08-17 07:22:34.929, trigger time = 2017-08-17 07:22:34.930, task name = uv_timer_task, caller = [ohos_loop_handler.cpp(OnTriggered:72)] }
+ EventHandler dump begin curTime: 2025-06-28 14:08:34.067
+ Event runner (Thread name = , Thread ID = 13680) is running
+ Current Running: start at 2025-06-28 14:08:27.354, Event { send thread = 13680, send time = 2025-06-28 14:08:22.353, handle time = 2025-06-28 14:08:27.353, trigger time = 2025-06-28 14:08:27.354, task name = uv_timer_task, caller = [ohos_loop_handler.cpp(OnTriggered:72)] }
  History event queue information:
- No. 0 : Event { send thread = 2212, send time = 2017-08-17 07:22:29.864, handle time = 2017-08-17 07:22:29.864, trigger time = 2017-08-17 07:22:29.864, completeTime time = 2017-08-17 07:22:29.865, priority = VIP, task name = MMITask }
- No. 1 : Event { send thread = 2212, send time = 2017-08-17 07:22:29.814, handle time = 2017-08-17 07:22:29.865, trigger time = 2017-08-17 07:22:29.865, completeTime time = 2017-08-17 07:22:29.865, priority = Low, task name = ArkUIIdleTask }
- No. 2 : Event { send thread = 2212, send time = 2017-08-17 07:22:29.869, handle time = 2017-08-17 07:22:29.869, trigger time = 2017-08-17 07:22:29.869, completeTime time = 2017-08-17 07:22:29.870, priority = VIP, task name = MMITask }
- ......
+ No. 0 : Event { send thread = 13856, send time = 2025-06-28 14:08:22.336, handle time = 2025-06-28 14:08:22.336, trigger time = 2025-06-28 14:08:22.336, completeTime time = 2025-06-28 14:08:22.337, priority = VIP, task name = MMITask, caller = [deamon_io_waiter.cpp(HandleFileDescriptorEvent:225)] }
+...
+ No. 31 : Event { send thread = 13856, send time = 2025-06-28 14:08:22.330, handle time = 2025-06-28 14:08:22.380, trigger time = 2025-06-28 14:08:22.330, completeTime time = 2025-06-28 14:08:22.331, priority = VIP, task name = vSyncTask, caller = [deamon_io_waiter.cpp(PostTaskForVsync:159)] }
  VIP priority event queue information:
- No.1 : Event { send thread = 2486, send time = 2017-08-17 07:22:37.931, handle time = 2017-08-17 07:22:37.931, id = 1, caller = [watchdog.cpp(Timer:208)] }
- No.2 : Event { send thread = 2486, send time = 2017-08-17 07:22:40.931, handle time = 2017-08-17 07:22:40.931, id = 1, caller = [watchdog.cpp(Timer:208)] }
+ No.1 : Event { send thread = 13843, send time = 2025-06-28 14:08:31.066, handle time = 2025-06-28 14:08:31.066, id = 1, caller = [watchdog.cpp(Timer:233)] }
+ No.2 : Event { send thread = 13843, send time = 2025-06-28 14:08:34.067, handle time = 2025-06-28 14:08:34.067, id = 1, caller = [watchdog.cpp(Timer:233)] }
  Total size of VIP events : 2
  Immediate priority event queue information:
  Total size of Immediate events : 0
@@ -315,1099 +204,805 @@ mainHandler dump is:
  Idle priority event queue information:
  Total size of Idle events : 0
  Total event size : 2
-Main handler dump end time: 2017-08-17 19:22:40.934
-
-Catche stack trace start time: 2017-08-17 19:22:41.098
-
-Tid:2212, Name:.example.freeze
-#00 pc 001d0d1e /system/lib/platformsdk/libark_jsruntime.so(panda::BytecodeInst<(panda::BytecodeInstMode)0>::Size(panda::BytecodeInst<(panda::BytecodeInstMode)0>::Format)+6)(ec51476a00bfde9c6d68b983a483d1ee)
-#01 pc 0024b011 /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::RunInternal(panda::ecmascript::JSThread*, unsigned char const*, unsigned long long*)+1824)(ec51476a00bfde9c6d68b983a483d1ee)
-#02 pc 0024a75d /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+1084)(ec51476a00bfde9c6d68b983a483d1ee)
-#03 pc 002e78e5 /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::JSFunction::Call(panda::ecmascript::EcmaRuntimeCallInfo*)+392)(ec51476a00bfde9c6d68b983a483d1ee)
-#04 pc 00427fbb /system/lib/platformsdk/libark_jsruntime.so(panda::FunctionRef::CallForNapi(panda::ecmascript::EcmaVM const*, panda::JSValueRef*, panda::JSValueRef* const*, int)+1382)(ec51476a00bfde9c6d68b983a483d1ee)
-#05 pc 000502a1 /system/lib/platformsdk/libace_napi.z.so(napi_call_function+156)(394b2e21899459da15b9fe3f1c3188f0)
-......
 ```
 
-THREAD_BLOCK_6S:
+All the three types of AppFreeze events include the following information.
+
+| Field| Description|
+| -------- | -------- |
+| EVENTNAME | Name of the fault event.|
+| TIMESTAMP | Time when the fault event reported. You can narrow down the time range to view HiLog logs based on the timeout duration described in the application freeze detection capability.|
+| PID | PID of the faulty process.|
+| UID | UID of the faulty process.|
+| TID | TID of the faulty process.|
+| PACKAGE_NAME | Application process package name.|
+| PROCESS_NAME | Application process name.|
+| MSG | Time when the fault occurs and **EventHandler** information.|
+
+**EventHandler** information. The details are as follows:
+
+Structure of the dump information.
+
+| Field| Description|
+| -------- | -------- |
+| EventHandler dump begin curTime | Time when the dump information is obtained.|
+| Event runner | Thread name and thread ID corresponding to **EventHandler**.|
+| Current Running | Complete information about the task that is being executed.|
+| History event queue information | Information about historical tasks.|
+| VIP priority event queue information | VIP task queue information.|
+| Immediate priority event queue information | Information about the task queue that is executed immediately.|
+| High priority event queue information | Information about the high-priority task queue.|
+| Low priority event queue information | Information about the low-priority task queue.|
+| Idle priority event queue information | Information about the suspended task queue.|
+
+Task components.
+
+| Field| Description|
+| -------- | -------- |
+| send thread | Thread ID of the submitted task.|
+| send time | Time when a task is submitted.|
+| task name | Task name in the task queue.|
+| priority | Task priority.|
+| caller | Method of submitting a task.|
+| handle time | Expected execution time of a task. The value may be different from the actual task execution time (**trigger time**).|
+| trigger time | Task execution time.|
+| completeTime time | Time when the task is complete. (If no information is displayed, the task is not complete.)|
+
+> **NOTE**
+>
+> In the **EventHandler** information, you only need to pay attention to **EventHandler dump begin curTime**, **trigger time**, and **completeTime time**.
+>
+>  
+
+### Stack Information
+
+Stack information of the faulty process is displayed.
+
 ```
-start time: 2017/08/17-19:22:44:962
-DOMAIN = AAFWK
-EVENTNAME = THREAD_BLOCK_6S
-TIMESTAMP = 2017/08/17-19:22:44:952
-PID = 2212
-UID = 20010044
-TID = 2212
-PACKAGE_NAME = com.example.freeze
-PROCESS_NAME = com.example.freeze
-eventLog_action = t,cmd:c,cmd:cci,cmd:m,cmd:dam,tr,k:SysRqFile,hot
-eventLog_interval = 10
-MSG = 
-Fault time:2017/08/17-19:22:43
-App main thread is not response!
-
-Main handler dump start time: 2017-08-17 19:22:43.932
-mainHandler dump is:
- EventHandler dump begin curTime: 2017-08-17 07:22:43.932
- Event runner (Thread name = , Thread ID = 2212) is running
- Current Running: start at 2017-08-17 07:22:34.930, Event { send thread = 2212, send time = 2017-08-17 07:22:29.933, handle time = 2017-08-17 07:22:34.930, trigger time = 2017-08-17 07:22:34.930, task name = uv_timer_task, caller = [ohos_loop_handler.cpp(OnTriggered:72)] }
- History event queue information:
- No. 0 : Event { send thread = 2212, send time = 2017-08-17 07:22:29.864, handle time = 2017-08-17 07:22:29.864, trigger time = 2017-08-17 07:22:29.864, completeTime time = 2017-08-17 07:22:29.865, priority = VIP, task name = MMITask }
- No. 1 : Event { send thread = 2212, send time = 2017-08-17 07:22:29.814, handle time = 2017-08-17 07:22:29.865, trigger time = 2017-08-17 07:22:29.865, completeTime time = 2017-08-17 07:22:29.865, priority = Low, task name = ArkUIIdleTask }
- No. 2 : Event { send thread = 2212, send time = 2017-08-17 07:22:29.869, handle time = 2017-08-17 07:22:29.869, trigger time = 2017-08-17 07:22:29.870, completeTime time = 2017-08-17 07:22:29.870, priority = VIP, task name = MMITask }
- .......
- VIP priority event queue information:
- No.1 : Event { send thread = 2486, send time = 2017-08-17 07:22:37.931, handle time = 2017-08-17 07:22:37.931, id = 1, caller = [watchdog.cpp(Timer:208)] }
- No.2 : Event { send thread = 2486, send time = 2017-08-17 07:22:40.931, handle time = 2017-08-17 07:22:40.931, id = 1, caller = [watchdog.cpp(Timer:208)] }
- No.3 : Event { send thread = 2486, send time = 2017-08-17 07:22:43.932, handle time = 2017-08-17 07:22:43.932, id = 1, caller = [watchdog.cpp(Timer:208)] }
- Total size of VIP events : 3
- Immediate priority event queue information:
- Total size of Immediate events : 0
- High priority event queue information:
- Total size of High events : 0
- Low priority event queue information:
- Total size of Low events : 0
- Idle priority event queue information:
- Total size of Idle events : 0
- Total event size : 3
-Main handler dump end time: 2017-08-17 19:22:43.934
-
-Catche stack trace start time: 2017-08-17 19:22:44.061
-
-Tid:2212, Name:.example.freeze
-#00 pc 0024afea /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::RunInternal(panda::ecmascript::JSThread*, unsigned char const*, unsigned long long*)+1786)(ec51476a00bfde9c6d68b983a483d1ee)
-#01 pc 0024a75d /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+1084)(ec51476a00bfde9c6d68b983a483d1ee)
-#02 pc 002e78e5 /system/lib/platformsdk/libark_jsruntime.so(panda::ecmascript::JSFunction::Call(panda::ecmascript::EcmaRuntimeCallInfo*)+392)(ec51476a00bfde9c6d68b983a483d1ee)
-#03 pc 00427fbb /system/lib/platformsdk/libark_jsruntime.so(panda::FunctionRef::CallForNapi(panda::ecmascript::EcmaVM const*, panda::JSValueRef*, panda::JSValueRef* const*, int)+1382)(ec51476a00bfde9c6d68b983a483d1ee)
-#04 pc 000502a1 /system/lib/platformsdk/libace_napi.z.so(napi_call_function+156)(394b2e21899459da15b9fe3f1c3188f0)
-......
+Tid:13680, Name:les.freezedebug
+#00 pc 000000000000186c [shmm](__kernel_gettimeofday+72)
+#01 pc 00000000001d887c /system/lib/ld-musl-aarch64.so.1(gettimeofday+40)(f1a940981720250b920ee26d2d76af5b)
+#02 pc 000000000058fb5c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::builtins::BuiltinsDate::Now(panda::ecmascript::EcmaRuntimeCallInfo*)+48)(0f1928b77d36d27edb5512bd89806a6f)
+#03 pc 0000000000cff5dc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+40)
+#04 pc 000000000036aaf4 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+380)
+#05 at wait15s (entry/src/main/ets/pages/Index.ets:16:10)
+#06 pc 000000000026b1dc /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+536)(0f1928b77d36d27edb5512bd89806a6f)
+#07 pc 000000000096b188 /system/lib64/platformsdk/libark_jsruntime.so(panda::FunctionRef::CallForNapi(panda::ecmascript::EcmaVM const*, panda::JSValueRef*, panda::JSValueRef* const*, int)+1432)(0f1928b77d36d27edb5512bd89806a6f)
+#08 pc 000000000006b7a4 /system/lib64/platformsdk/libace_napi.z.so(napi_call_function+212)(eaa639519e67e8495ca596293a0d33cd)
+#09 pc 000000000000b17c /system/lib64/platformsdk/libtimer.z.so(OHOS::JsSysModule::Timer::TimerCallback(uv_timer_s*) (.cfi)+528)(764291289e89523cdbe9c3c78c1cca35)
+#10 pc 0000000000013ea8 /system/lib64/platformsdk/libuv.so(uv__run_timers+68)(9e7eb59ca1a45f4230b641a7c940a20b)
+#11 pc 000000000001a344 /system/lib64/platformsdk/libuv.so(uv_run+376)(9e7eb59ca1a45f4230b641a7c940a20b)
+#12 pc 00000000000895a8 /system/lib64/platformsdk/libruntime.z.so(OHOS::AbilityRuntime::OHOSLoopHandler::OnTriggered()+140)(daf29e377c47e3e26282e745dd1b3488)
+#13 pc 0000000000089b4c /system/lib64/platformsdk/libruntime.z.so(std::__h::__function::__func<OHOS::AbilityRuntime::OHOSLoopHandler::OnTriggered()::$_0, std::__h::allocator<OHOS::AbilityRuntime::OHOSLoopHandler::OnTriggered()::$_0>, void ()>::operator()() (.9efded9864dc55830f61b3b92d59beab)+52)(daf29e377c47e3e26282e745dd1b3488)
+#14 pc 000000000001ff6c /system/lib64/chipset-sdk-sp/libeventhandler.z.so(OHOS::AppExecFwk::(anonymous namespace)::EventRunnerImpl::ExecuteEventHandler(std::__h::unique_ptr<OHOS::AppExecFwk::InnerEvent, void (*)(OHOS::AppExecFwk::InnerEvent*)>&)+2228)(475713336c2720d372d5aeb99dda5f9f)
+#15 pc 000000000001a7d8 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(OHOS::AppExecFwk::(anonymous namespace)::EventRunnerImpl::Run()+648)(475713336c2720d372d5aeb99dda5f9f)
+#16 pc 000000000003f5f4 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(OHOS::AppExecFwk::EventRunner::Run()+404)(475713336c2720d372d5aeb99dda5f9f)
+#17 pc 00000000000a50f0 /system/lib64/platformsdk/libappkit_native.z.so(OHOS::AppExecFwk::MainThread::Start()+504)(e794b687fdf46631ae5144eba250f8c0)
+#18 pc 0000000000005278 /system/lib64/appspawn/appspawn/libappspawn_ace.z.so(RunChildProcessor(AppSpawnContent*, AppSpawnClient*)+568)(143c05087e9460f0fd794b9dce5dec29)
+#19 pc 000000000000baa8 /system/bin/appspawn(AppSpawnChild+648)(25ab88f6e04b1d2c8feb5d3eebfb4664)
+#20 pc 0000000000016478 /system/bin/appspawn(ProcessSpawnReqMsg+3260)(25ab88f6e04b1d2c8feb5d3eebfb4664)
+#21 pc 0000000000013aac /system/bin/appspawn(OnReceiveRequest+724)(25ab88f6e04b1d2c8feb5d3eebfb4664)
+#22 pc 0000000000017844 /system/lib64/chipset-sdk-sp/libbegetutil.z.so(HandleRecvMsg_+384)(a9ddb8b84cc09183cc6bd2e5bb875f30)
+#23 pc 000000000001715c /system/lib64/chipset-sdk-sp/libbegetutil.z.so(HandleStreamEvent_+152)(a9ddb8b84cc09183cc6bd2e5bb875f30)
+#24 pc 000000000001444c /system/lib64/chipset-sdk-sp/libbegetutil.z.so(ProcessEvent+380)(a9ddb8b84cc09183cc6bd2e5bb875f30)
+#25 pc 0000000000013edc /system/lib64/chipset-sdk-sp/libbegetutil.z.so(RunLoop_.llvm.16927440879641410339+656)(a9ddb8b84cc09183cc6bd2e5bb875f30)
+#26 pc 0000000000010dcc /system/bin/appspawn(AppSpawnRun+212)(25ab88f6e04b1d2c8feb5d3eebfb4664)
+#27 pc 000000000000eb90 /system/bin/appspawn(main+728)(25ab88f6e04b1d2c8feb5d3eebfb4664)
+#28 pc 00000000000a9804 /system/lib/ld-musl-aarch64.so.1(libc_start_main_stage2+84)(f1a940981720250b920ee26d2d76af5b)
 ```
 
-Based on the HiLog logs and [General Information in the Log Body](general-information-in-the-log-body), you can check whether the running code of the application
+In most cases, you can use the stack information of **THREAD_BLOCK_6S**, **LIFECYCLE_TIMEOUT**, and **APP_INPUT_BLOCK** to locate the abnormal code.
 
-has the following problems: suspended peer communication, slow application response due to high CPU usage, and task execution failure due to memory leaks or insufficient memory.
+In other cases (for example, in the instant stack), the stack information cannot be obtained immediately due to the busy main thread. As a result, the abnormal code segment cannot be captured in a timely manner, and the stack top information is not as expected.
 
-### Specific Information in the Log Body (User Input Response Timeout)
+To solve this problem, enhanced AppFreeze logs can be obtained since API version 21. For details, see [Implementation Principles](#implementation-principles).
 
-The value of **Reason** is **APP_INPUT_BLOCK**, indicating that no response is received within 5 seconds after a click event.
+> **NOTE**
+>
+> When the system is heavily loaded (for example, high CPU load), the function name information may be lost if the call stack is obtained in low-overhead mode.
+>
+> Since API version 21, when the message "Failed to dump normal stacktrace" is displayed, the system uses the lightweight frame pointer backtracing mode. Stack backtracing may be interrupted in libraries that do not enable the frame pointer (when the **-fomit-frame-pointer** option is used during GCC compilation, the compilation product does not enable the frame pointer). In addition, the number of stack layers of a single thread may not exceed 50 due to lightweight restrictions.
 
-The **MSG** field is the description of the event, indicating that the user input is not responded.
+### Peer Information (Information About the Process That Communicates with the Faulty Process)
 
-For details, see [General Information in the Log Body](#general-information-in-the-log-body). Note that the main thread may be suspended in the case of no response to the user input. You can analyze the fault based on the log stack and BinderCatcher information. If there is no log indicating that the main thread is suspended, a large number of other events may occur before the input event. These events cannot cause the main thread to be suspended, but the number of events is large, which affects the response to the input event.
+(1) **BinderCatcher**: Displays the IPC call information and cases where the waiting time is excessive.
 
-### Specific Information in the Log Body (Lifecycle Switching Timeout)
+```
+PeerBinderCatcher -- pid==13680
+BinderCatcher --
+    13840:14102 to 901:4079 code 16 wait:0.25653125 s frz_state:3,  ns:-1:-1 to -1:-1, debug:13840:14102 to 901:4079, active_code:0, active_thread=0, pending_async_proc=0
+    3712:3712 to 13967:14076 code d2 wait:0.703385417 s frz_state:3,  ns:-1:-1 to -1:-1, debug:3712:3712 to 13967:14076, active_code:0, active_thread=0, pending_async_proc=0
+    1733:2285 to 3712:3712 code b wait:1.365925521 s frz_state:3,  ns:-1:-1 to -1:-1, debug:1733:2285 to 3712:3712, active_code:0, active_thread=0, pending_async_proc=0
+...
+pid context     request started max ready   free_async_space
+14072   binder  0   2   16  3   520192
+14103   binder  0   4   16  6   520192
+13967   binder  0   3   16  3   520192
+13878   binder  0   2   16  3   520192
+13840   binder  0   2   16  3   520192
+13863   binder  0   1   16  3   520192
+13680   binder  0   2   16  3   520192
+13770   binder  0   3   16  5   520192
+13749   binder  0   3   16  5   520192
+...
 
-The value of **Reason** is **LIFECYCLE_TIMEOUT**. **LIFECYCLE_TIMEOUT** consists of the **LIFECYCLE_HALF_TIMEOUT** and **LIFECYCLE_TIMEOUT** events.
+```
 
-The **MSG** field describes the lifecycle timeout type.
+The IPC information is described as follows.
 
-In the following example, **LIFECYCLE_TIMEOUT** is caused by Ability background switching timeout. You can search for information such as HiLog logs based on the timeout durations in [Lifecycle Switching Timeout](#lifecycle-switching-timeout).
+| Field| Description|
+| -------- | -------- |
+| xxx:xxx to xxx:xxx | Client process ID and thread ID to server process ID and thread ID. **async** indicates asynchronous; no **async** indicates synchronous.|
+| code | Service code agreed by the client and server.|
+| wait | Communication waiting duration.|
+| frz_state | Process freeze state.<br>**-1**: Unknown.<br>**1**: Default.<br>**2**: The binder status information is being sent to the user mode.<br>**3**: The binder receiving thread is reached.|
+| ns | Client process ID and thread ID to server process ID and thread ID (**-1** for non-DroiTong processes).|
+| debug | Supplementary information about the IPC parties.|
+| active_code | Code of the asynchronous message that is being processed.|
+| active_thread | Thread that processes the asynchronous message.|
+| pending_async_proc | Process blocked by the asynchronous message.|
+| pid | Process ID.|
+| context | Communication mode.|
+| request | Number of IPC threads requested.|
+| started | Number of started IPC threads.|
+| max | Maximum number of IPC threads that can be requested.|
+| ready | Idle IPC thread.|
+| free_async_space | Free asynchronous space, which is used to observe asynchronous information blocking.|
 
-**LIFECYCLE_TIMEOUT**:
+(2) **PeerBinder Stacktrace**: Stack traces of unresponsive peer processes communicating with the faulty process.
+
+```
+Tid:48841, Name:xxx
+#00 pc 000000000016adf4 /system/lib/ld-musl-aarch64.so.1
+#01 pc 000000000001c0d4 /system/lib64/chipset-sdk-sp/libeventhandler.z.so
+#02 pc 000000000001a7f4 /system/lib64/chipset-sdk-sp/libeventhandler.z.so
+#03 pc 000000000003f5f4 /system/lib64/chipset-sdk-sp/libeventhandler.z.so
+#04 pc 00000000000a50f0 /system/lib64/platformsdk/libappkit_native.z.so
+#05 pc 0000000000005278 /system/lib64/appspawn/appspawn/libappspawn_ace.z.so
+#06 pc 000000000000baa8 /system/bin/appspawn
+#07 pc 0000000000016478 /system/bin/appspawn
+#08 pc 0000000000013aac /system/bin/appspawn
+#09 pc 0000000000017844 /system/lib64/chipset-sdk-sp/libbegetutil.z.so
+#10 pc 000000000001715c /system/lib64/chipset-sdk-sp/libbegetutil.z.so
+#11 pc 000000000001444c /system/lib64/chipset-sdk-sp/libbegetutil.z.so
+#12 pc 0000000000013edc /system/lib64/chipset-sdk-sp/libbegetutil.z.so
+#13 pc 0000000000010dcc /system/bin/appspawn
+#14 pc 000000000000eb90 /system/bin/appspawn
+#15 pc 00000000000a9804 /system/lib/ld-musl-aarch64.so.1
+#16 pc 000000000000b754 /system/bin/appspawn
+```
+
+### CPU Information
+
+The system CPU information is as follows:
+
+```
+Load average: 14.3 / 12.9 / 11.4; the cpu load average in 1 min, 5 min and 15 min
+CPU usage from 2025-06-28 14:08:36 to 2025-06-28 14:08:37
+Total: 22.45%; User Space: 13.64%; Kernel Space: 8.81%; iowait: 0.33%; irq: 0.07%; idle: 77.15%
+Details of Processes:
+    PID   Total Usage      User Space    Kernel Space    Page Fault Minor    Page Fault Major    Name
+    13680      8.86%           8.31%          0.55%            4711                6637            com.samples.freezedebug
+    644        2.55%           1.40%          1.15%          210104                7391            hiview
+    600        0.89%           0.78%          0.10%           60192                 514            hilogd
+    1685       0.53%           0.31%          0.22%          879838               59636            foundation
+```
+
+| Field| Description|
+| -------- | -------- |
+| PID | Process ID.|
+| Total Usage | CPU usage. **Total Usage** = **User Space** + **Kernel Space**.|
+| User Space | CPU usage in user mode.|
+| Kernel Space | CPU usage in kernel mode.|
+| Page Fault Minor | Minor page fault.|
+| Page Fault Major | Major page fault.|
+| Name | Name of the process.|
+
+### Memory Information
+
+```
+Get freeze memory start time: 2025-06-28 14:08:37.112
+some avg10=56.81 avg60=56.81 avg300=56.81 total=56
+full avg10=56.81 avg60=56.81 avg300=56.81 total=56
+...
+ReclaimAvailBuffer:                    4676608 kB
+...
+```
+
+The preceding shows the system memory information. **ReclaimAvailBuffer** indicates the remaining available system memory, which is used to check whether the memory is low.
+
+## Log Differences
+
+**Lifecycle timeout event**
 
 ```
 DOMAIN:AAFWK
-STRINGID:LIFECYCLE
-TIMEOUT TIMESTAMP:2023/03/10-17:06:53:65
+STRINGID:LIFECYCLE_TIMEOUT
+TIMEOUT TIMESTAMP:2025/02/10-21:40:59:113
 PID:1561
 UID:20010039
 PACKAGE_NAME:com.example.myapplication
 PROCESS_NAME:com.example.myapplication
 MSG:ability:EntryAbility background timeout
+server actions for ability:
+2025-02-10 21:40:56.376; AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts.
+2025-02-10 21:40:56.377; ServiceInner::UpdateAbilityState
+server actions for app:
+2025-02-10 21:40:56.397; AppRunningRecord::OnWindowVisibilityChanged
+2025-02-10 21:40:56.851; AppRunningRecord::OnWindowVisibilityChanged
+2025-02-10 21:40:58.668; AppRunningRecord::OnWindowVisibilityChanged
+client actions for ability:
+2025-02-10 21:40:56.378; AbilityThread::ScheduleAbilityTransaction
+2025-02-10 21:40:56.378; AbilityThread::HandleAbilityTransaction
+2025-02-10 21:40:56.382; JsUIAbility::OnStart begin
+2025-02-10 21:40:56.382; JsUIAbility::OnStart end
+2025-02-10 21:40:56.387; JsUIAbility::OnSceneCreated begin
+2025-02-10 21:40:56.388; JsUIAbility::OnSceneCreated end
+2025-02-10 21:40:56.388; JsUIAbility::WindowScene::GoForeground begin
+2025-02-10 21:40:56.389; UIAbilityImpl::WindowLifeCycleImpl::AfterForeground
+2025-02-10 21:40:56.390; JsUIAbility::OnForeground begin
+client actions for app:
 ```
 
-You can analyze other log information by referring to [General Information in the Log Body](#general-information-in-the-log-body). Note that the main thread is suspended during lifecycle switching in most cases. You can compare the stack and BinderCatcher information in the two event logs.
+The following describes the MSG information with two complete lifecycle switchover examples.
 
-## Application Exit
+(1) Events in the load phase (when the application process is not created)
 
-If any of the following faults occurs on an application, the application will be killed to ensure that the application can be recovered:
+| server | client | Description|
+| -------- | -------- | -------- |
+| AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | The lifecycle starts.|
+| AppMgrServiceInner::LoadAbility | -| The process is yet to be created. |
+| AppMgrService::AttachApplication | -| The process is created and attached.|
+| ServiceInner::AttachApplication | -| The process is attached.|
+| ServiceInner::LaunchApplication | -| The application is scheduled to execute the loading process.|
+| AppRunningRecord::LaunchApplication | -| The application is scheduled to execute the loading process.|
+| AppScheduler::ScheduleLaunchApplication | -| The application is scheduled to execute the loading process.|
+| -| ScheduleLaunchApplication | The application receives a loading scheduling request.|
+| -| HandleLaunchApplication begin | The application loading starts.|
+| -| HandleLaunchApplication end | The application loading ends.|
+| AppRunningRecord::LaunchPendingAbilities | -| The application is scheduled to start an ability.|
+| -| MainThread::ScheduleLaunchAbility | The application receives a request to load an ability.|
+| -| MainThread::HandleLaunchAbility | The main thread processes the request.|
+| -| JsAbilityStage::Create | The AbilityStage is loaded.|
+| -| JsAbilityStage::OnCreate begin | The **onCreate** lifecycle of the AbilityStage starts.|
+| -| JsAbilityStage::OnCreate end | The **onCreate** lifecycle of the AbilityStage ends.|
+| -| AbilityThread::Attach | The ability is attached to AMS, and the loading process ends.|
 
-| Fault| Description|
-| -------- | -------- |
-| THREAD_BLOCK_6S | The application main thread times out.|
-| APP_INPUT_BLOCK | The user input response times out.|
-| LIFECYCLE_TIMEOUT | Ability lifecycle switching times out.|
+ (2) Foreground phase event – cold start
 
-## Fault Analysis
+| server | client | Description|
+| -------- | -------- | -------- |
+| AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. |  | The lifecycle starts.|
+| ServiceInner::UpdateAbilityState | -| The application foregrounding scheduling is initiated first.|
+| AppRunningRecord::ScheduleForegroundRunning | -| The application foregrounding is scheduled.|
+| AppScheduler::ScheduleForegroundApplication | -| The application foregrounding is scheduled.|
+| -| ScheduleForegroundApplication | The application receives the scheduling.|
+| -| HandleForegroundApplication | The main thread executes scheduling.|
+| AppMgrService::AppForegrounded | -| The application foregrounding is complete.|
+| ServiceInner::AppForegrounded | -| The application foregrounding is complete.|
+| -| AbilityThread::ScheduleAbilityTransaction | The application receives the ability foregrounding scheduling.|
+| -| AbilityThread::HandleAbilityTransaction | The main thread executes ability foregrounding scheduling.|
+| -| JsUIAbility::OnStart begin | The **onCreate** lifecycle starts.|
+| -| JsUIAbility::OnStart end | The **onCreate** lifecycle ends.|
+| -| JsUIAbility::OnSceneCreated begin | The window scene creation starts.|
+| -| JsUIAbility::OnSceneCreated end | The window scene creation ends.|
+| -| JsUIAbility::OnWillForeground begin | -|
+| -| JsUIAbility::OnWillForeground end |- |
+| -| JsUIAbility::WindowScene::GoForeground begin | The window API is called to execute **goForeground**.|
+| -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | Calledback after the window is in the foreground.|
+| -| JsUIAbility::OnForeground begin | The **onForeground** lifecycle starts.|
+| -| JsUIAbility::OnForeground end | The **onForeground** lifecycle ends.|
+| -|  | After the window callback and **onForeground** are complete, the foreground lifecycle ends.|
 
-To locate an AppFreeze event, you need to obtain related event logs, HiLog logs, and trace data.
+You can analyze other log information by referring to [Log Specifications](#log-specifications). Note that the main thread is suspended during lifecycle switching in most cases. You can compare the stack and BinderCatcher information in the two event logs.
 
-### Obtaining the Log
-
-The appfreeze log is managed together with the native process crash, JS application crash, and system process crash logs in the FaultLog module. You can obtain the log in any of the following ways.
-
-- Method 1: DevEco Studio
-
-    DevEco Studio collects fault logs of the device and saves them to **FaultLog**. For details, see [DevEco Studio User Guide - Fault Log](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-fault-log).
-
-- Method 2: HiAppEvent APIs
-
-    HiAppEvent provides APIs to subscribe to various fault information. For details, see [Introduction to HiAppEvent](hiappevent-intro.md).
-
-<!--Del-->
-- Method 3: Shell
-
-    AppFreeze logs are stored in the device-specific **/data/log/faultlog/faultlogger/** directory. The file name format is **appfreeze-application bundle name-application UID-millisecond-level time.log**.
-
-    ![appfreeze_2024111501](figures/appfreeze_2024111501.png)
-<!--DelEnd-->
-
-### Confirming Basic Information
-
-#### Obtain basic information such as the process ID of the freeze application and whether the application is in the foreground.
+**APP_INPUT_BLOCK** User Input Response Timeout
 
 ```
 Generated by HiviewDFX@OpenHarmony
-============================================================
-Device info:HUAWEI Mate 60 Pro
-Build info:ALN-AL00 x.x.x.xx(XXXXXXX)
-Fingerprint:ef8bd28f8b57b54656d743b546efa73764c77866a65934bd96f2678f886813b7
-Module name:com.xxx.xxx
-Version:1.2.2.202
-VersionCode:1002002202
-PreInstalled:Yes
-Foreground:No   --> Indicates that the application is not in the foreground.
-Pid:15440
-Uid:20020029
-Reason:THREAD BLOCK 6S
-appfreeze: com.xxx.xxx THREAD_BLOCK 6S at 20240410164052
-DisplayPowerInfo:powerState: AWAKE
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-```
-
-#### Obtain the fault occurrence time
-
-Fault report time:
-
-```
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-DOMAIN:AAFWK
-STRINGID: THREAD BLOCK 6S
-TIMESTAMP: 2024/04/10-16:40:52:743   --> The timestamp when the fault is reported.
-PID:15440
-UID:20020029
-PACKAGE NAME:com.xxx.xxx
-PROCESS NAME:com.xxx.xxx
-****************************************
-```
-
-Detection durations for different faults in different scenarios:
-
-| THREAD_BLOCK_6S |APP_INPUT_BLOCK|LIFECYCLE_TIMEOUT|
-| -------- |--------|--------|
-|Foreground application: 6s<br> Background application: 3s * 5 + 6s = 21s| 5s | Load: 10s<br> Active: 5s<br> Inactive: 0.5s<br> Terminate: 10s<br> Connect: 3s<br> Disconnect: 0.5s<br> Restart: 5s<br> Foreground: 5s<br> Background: 3s|
-
-**NOTE**
-
-1. The detection duration of **THREAD_BLOCK_3S** is half that of **THREAD_BLOCK_6S**, while **LIFECYCLE_HALF_TIMEOUT** is half that of **LIFECYCLE_TIMEOUT**. **THREAD_BLOCK_3S** and **LIFECYCLE_HALF_TIMEOUT** are warnings and do not report logs independently. **THREAD_BLOCK_6S** and **LIFECYCLE_TIMEOUT** are errors and report logs with the corresponding warning events.
-
-2. When a **THREAD_BLOCK_3S** event occurs in the foreground application, the **THREAD_BLOCK_6S** event will be triggered.
-
-3. The **backgroundReportCount_** counter in the background application is set to **0** during initialization or main thread recovery. When a **THREAD_BLOCK_3S** event occurs, the counter value increases by 1. The **THREAD_BLOCK_6S** event is triggered when the counter value reaches or exceeds 5. The detection durations of the **THREAD_BLOCK_3S** and **THREAD_BLOCK_6S** events for the background applications are 18s and 21s respectively.
-
-You can obtain the fault occurrence time by subtracting the detection duration from the fault reporting time.
-
-### Viewing **eventHandler** Information
-
-You can search for the keyword **mainHandler dump is** to view the **eventHandler dump** information in logs.
-
-1. **dump begin curTime** & **Current Running**.
-
-```
-mainHandler dump is:
- EventHandler dump begin curTime: 2024-08-08 12:17:43.544      --> Time when dump begins.
- Event runner (Thread name = , Thread ID = 35854) is running    --> Information about the running thread.
- Current Running: start at 2024-08-08 12:17:16.629, Event { send thread = 35882, send time = 2024-08-08 12:17:16.628,  handle time = 2024-08-08 12:17:16.629, trigger time = 2024-08-08 12:17:16.630, task name = , caller = xx }  
- --> trigger time--> Time when the task starts to run.
-```
-
-Running duration of the current task = **dump begin curTime** – **trigger time**. In this example, the running duration of the current task is 27s.
-
-If the task running duration is longer than the fault detection duration, the running task causes the application freeze event. In this case, you need to check the task.
-
-If the current task running duration is short, the task is only one of the tasks running in the main thread within the detection duration and may not be the task that consumes most time. You are advised to check the task that consumes the longest time recently (in **History event queue information**). In this case, the watchdog cannot be scheduled because the thread is busy.
-
-2. **History event queue information**.
-
-```
- Current Running: start at 2024-08-08 12:17:16.629, Event { send thread = 35882, send time = 2024-08-08 12:17:16.628, handle time = 2024-08-08 12:17:16.629, trigger time = 2024-08-08 12:17:16.630, task name = , caller = [extension_ability_thread.cpp(ScheduleAbilityTransaction:393)]}
- History event queue information:
- No. 0 : Event { send thread = 35854, send time = 2024-08-08 12:17:15.525, handle time = 2024-08-08 12:17:15.525, trigger time = 2024-08-08 12:17:15.527, completeTime time = 2024-08-08 12:17:15.528, priority = High, id = 1 }
- No. 1 : Event { send thread = 35854, send time = 2024-08-08 12:17:15.525, handle time = 2024-08-08 12:17:15.525, trigger time = 2024-08-08 12:17:15.527, completeTime time = 2024-08-08 12:17:15.527, priority = Low, task name = MainThread:SetRunnerStarted }
- No. 2 : Event { send thread = 35856, send time = 2024-08-08 12:17:15.765, handle time = 2024-08-08 12:17:15.765, trigger time = 2024-08-08 12:17:15.766, completeTime time = 2024-08-08 12:17:15.800, priority = Low, task name = MainThread:LaunchApplication }
- No. 3 : Event { send thread = 35856, send time = 2024-08-08 12:17:15.767, handle time = 2024-08-08 12:17:15.767, trigger time = 2024-08-08 12:17:15.800, completeTime time = 2024-08-08 12:17:16.629, priority = Low, task name = MainThread:LaunchAbility }
- No. 4 : Event { send thread = 35854, send time = 2024-08-08 12:17:15.794, handle time = 2024-08-08 12:17:15.794, trigger time = 2024-08-08 12:17:16.629, completeTime time = 2024-08-08 12:17:16.629, priority = IDEL, task name = IdleTime:PostTask }
- No. 5 : Event { send thread = 35852, send time = 2024-08-08 12:17:16.629, handle time = 2024-08-08 12:17:16.629, trigger time = 2024-08-08 12:17:16.629, completeTime time = , priority = Low, task name =  }
-```
-
-You can search for time-consuming tasks in History event queue information. The task whose **completeTime time** is empty is the current task. 
-Task running duration = completeTime time – trigger time. 
-Filter out the tasks that take a longer time and check the running status of the tasks.
-
-3. **VIP priority event queue information**.
-
-```
- VIP priority event queue information:
- No.1 : Event { send thread = 2486, send time = 2017-08-17 07:22:37.931, handle time = 2017-08-17 07:22:37.931, id = 1, caller = [watchdog.cpp(Timer:208)] }
- No.2 : Event { send thread = 2486, send time = 2017-08-17 07:22:40.931, handle time = 2017-08-17 07:22:40.931, id = 1, caller = [watchdog.cpp(Timer:208)] }
- No.3 : Event { send thread = 2486, send time = 2017-08-17 07:22:43.932, handle time = 2017-08-17 07:22:43.932, id = 1, caller = [watchdog.cpp(Timer:208)] }
- ...
-```
-
-The watchdog task is in the VIP priority event queue, which is sent every 3 seconds.
-
-You should check the movement of the watchdog task in the queue by comparing it with other priority events.
-
-To ensure timely response to the user, all tasks in the user input event propagation are high-priority tasks. The VIP priority event queue is created by the system and records the transmission process of user input -> screen -> window -> ArkUI -> application. It is irrelevant to third-party application events and does not need to be concerned.
-
-```
- VIP priority event queue information:
- No. 1 : Event { send thread = 35862, send time = 2024-08-08 12:17:25.526, handle time = 2024-08-08 12:17:25.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 2 : Event { send thread = 35862, send time = 2024-08-08 12:17:28.526, handle time = 2024-08-08 12:17:28.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 3 : Event { send thread = 35862, send time = 2024-08-08 12:17:31.526, handle time = 2024-08-08 12:17:31.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 4 : Event { send thread = 35862, send time = 2024-08-08 12:17:34.530, handle time = 2024-08-08 12:17:34.530, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 5 : Event { send thread = 35862, send time = 2024-08-08 12:17:37.526, handle time = 2024-08-08 12:17:37.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 6 : Event { send thread = 35862, send time = 2024-08-08 12:17:40.526, handle time = 2024-08-08 12:17:40.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 7 : Event { send thread = 35862, send time = 2024-08-08 12:17:43.544, handle time = 2024-08-08 12:17:43.544 ,id = 1, caller = [watchdog.cpp(Timer:156)]}
- Total size of High events : 7
-```
-
-warning:
-```
- VIP priority event queue information:
- No. 1 : Event { send thread = 35862, send time = 2024-08-08 12:17:25.526, handle time = 2024-08-08 12:17:25.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 2 : Event { send thread = 35862, send time = 2024-08-08 12:17:28.526, handle time = 2024-08-08 12:17:28.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 3 : Event { send thread = 35862, send time = 2024-08-08 12:17:31.526, handle time = 2024-08-08 12:17:31.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 4 : Event { send thread = 35862, send time = 2024-08-08 12:17:34.530, handle time = 2024-08-08 12:17:34.530, id = 1, caller = [watchdog.cpp(Timer:156)]}
- Total size of High events : 4
-```
-
-block:
-```
- VIP priority event queue information:
- No. 1 : Event { send thread = 35862, send time = 2024-08-08 12:17:25.526, handle time = 2024-08-08 12:17:25.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 2 : Event { send thread = 35862, send time = 2024-08-08 12:17:28.526, handle time = 2024-08-08 12:17:28.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 3 : Event { send thread = 35862, send time = 2024-08-08 12:17:31.526, handle time = 2024-08-08 12:17:31.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 4 : Event { send thread = 35862, send time = 2024-08-08 12:17:34.530, handle time = 2024-08-08 12:17:34.530, id = 1, caller = [watchdog.cpp(Timer:156)]}
- No. 5 : Event { send thread = 35862, send time = 2024-08-08 12:17:37.526, handle time = 2024-08-08 12:17:37.526, id = 1, caller = [watchdog.cpp(Timer:156)]}
-  Total size of High events : 5
-```
-
-In the preceding example, the block queue is longer than the warning queue, but the first tasks are the same. The possible causes are as follows:
-
-- The running task is suspended. As a result, other tasks are not scheduled and executed.
-- Tasks in the high priority queue are stacked. As a result, the watchdog task in the low priority queue is not scheduled.
-
-### Viewing Stack Information
-
-Check the stack using the obtained PID and TID. The result may show as follows:
-
-1. The suspension stack information is displayed.
-
-```
-Tid:3025, Name: xxx
-# 00 pc 00000000001b4094 /system/lib/ld-musl-aarch64.so.1(__timedwait_cp+188)(b168f10a179cf6050a309242262e6a17)
-# 01 pc 00000000001b9fc8 /system/lib/ld-musl-aarch64.so.1(__pthread_mutex_timedlock_inner+592)(b168f10a179cf6050a309242262e6a17)
-# 02 pc 00000000000c3e40 /system/lib64/libc++.so(std::__h::mutex::lock()+8)(9cbc937082b3d7412696099dd58f4f78242f9512) --> The so. file is suspended while waiting for a lock.
-# 03 pc 000000000007ac4c /system/lib64/platformsdk/libnative_rdb.z.so(OHOS::NativeRdb::SqliteConnectionPool::Container::Release(std::__h::shared_ptr<OHOS::NativeRdb::SqliteConnectionPool::ConnNode>)+60)(5e8443def4695e8c791e5f847035ad9f)
-# 04 pc 000000000007aaf4 /system/lib64/platformsdk/libnative_rdb.z.so(OHOS::NativeRdb::SqliteConnectionPool::ReleaseNode(std::__h::shared_ptr<OHOS::NativeRdb::SqliteConnectionPool::ConnNode>)+276)(5e8443def4695e8c791e5f847035ad9f)
-# 05 pc 000000000007a8c0 /system/lib64/platformsdk/libnative_rdb.z.so(5e8443def4695e8c791e5f847035ad9f)
-# 06 pc 00000000000b36ec /system/lib64/platformsdk/libnative_rdb.z.so(OHOS::NativeRdb::SqliteSharedResultSet::Close()+324)(5e8443def4695e8c791e5f847035ad9f)
-# 07 pc 000000000006da94 /system/lib64/module/data/librelationalstore.z.so(OHOS::RelationalStoreJsKit::ResultSetProxy::Close(napi_env__*, napi_callback_info__*) (.cfi)+212)(5c7c67512e12e0e53fd23e82ee576a88)
-# 08 pc 0000000000034408 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+220)(f271f536a588ef9d0dc5328c70fce511)
-# 09 pc 00000000002d71d0 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+40)
-# 10 at parseResultSet (entry/build/default/cache/default/default@CompileArkTS/esmodule/release/datamanager/datawrapper/src/main/ets/database/RdbManager.ts:266:1)
-# 11 at query (entry/build/default/cache/default/default@CompileArkTS/esmodule/release/datamanager/datawrapper/src/main/ets/database/RdbManager.ts:188:1)
-```
-
-The so. file is suspended while waiting for a lock. In this case, locate the error code by decompiling and check the context to fix the bug.
-
-The fault call stack supports native stack frames and JS stack frames. In the preceding stack, stack frames at layers 10 and 11 are JS stack frames. The format is as follows:
- ```text
-# 10 at parseResultSet (entry/build/default/cache/default/default@CompileArkTS/esmodule/release/datamanager/datawrapper/src/main/ets/database/RdbManager.ts:266:1)
-            ^                                                                                                                                       ^
-          Function name                                                                                                                                Row and column numbers in the file
- ```
-
-2. The IPC request is suspended.
-
-```
-Tid:53616, Name:xxx
-# 00 pc 0000000000171c1c /system/lib/ld-musl-aarch64.so.1(ioctl+176)(b168f10a179cf6050a309242262e6a17)
-# 01 pc 0000000000006508 /system/lib64/chipset-pub-sdk/libipc_common.z.so(OHOS::BinderConnector::WriteBinder(unsigned long, void*)+100)(1edec25445c569dd1093635c1da3bc0a) --> The binder is suspended.
-# 02 pc 000000000004d500 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::TransactWithDriver(bool)+296)(6151eca3b47aa2ab3e378e6e558b90f3)
-# 03 pc 000000000004c6c0 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::WaitForCompletion(OHOS::MessageParcel*, int*)+128)(6151eca3b47aa2ab3e378e6e558b90f3)
-# 04 pc 000000000004c304 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::SendRequest(int, unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+348)(6151eca3b47aa2ab3e378e6e558b90f3)
-# 05 pc 00000000000319ac /system/lib64/platformsdk/libipc_core.z.so(OHOS::IPCObjectProxy::SendRequestInner(bool, unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+124)(6151eca3b47aa2ab3e378e6e558b90f3)
-# 06 pc 0000000000031cfc /system/lib64/platformsdk/libipc_core.z.so(OHOS::IPCObjectProxy::SendRequest(unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+184)(6151eca3b47aa2ab3e378e6e558b90f3)
-# 07 pc 0000000000023c7c /system/lib64/libipc.dylib.so(<ipc::remote::obj::RemoteObj>::send_request+268)(7006cb5520edc22f64d04df86cb90152)
-# 08 pc 000000000000b904 /system/lib64/libasset_sdk.dylib.so(<asset_sdk::Manager>::send_request+48)(4073ec22b58b83f79883d5fc8102ce77)
-# 09 pc 000000000000b600 /system/lib64/libasset_sdk.dylib.so(<asset_sdk::Manager>::query+156)(4073ec22b58b83f79883d5fc8102ce77)
-# 10 pc 0000000000006d94 /system/lib64/libasset_sdk_ffi.z.so(query_asset+116)(9a309896092ba014c878289a54688679)
-# 11 pc 0000000000006740 /system/lib64/module/security/libasset_napi.z.so((anonymous namespace)::NapiQuerySync(napi_env__*, napi_callback_info__*) (.cfi)+220)(ef7afe850712e4822f085ed0ac184e8a)
-# 12 pc 0000000000034408 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+220)(f271f536a588ef9d0dc5328c70fce511)
-```
-
-3. The warning and error stacks are the same. The stack top displays the synchronous execution codes.
-
-The warning and error stacks are as follows:
-
-```
-Tid:14727, Name:xxx
-# 00 pc 00000000001c4c60 /system/lib/ld-musl-aarch64.so.1(pread+72)(b168f10a179cf6050a309242262e6a17)
-# 01 pc 0000000000049154 /system/lib64/platformsdk/libsqlite.z.so(unixRead+180)(48485aa23da681fc87d8dc0b4be3e34c)
-# 02 pc 0000000000053e98 /system/lib64/platformsdk/libsqlite.z.so(readDbPage+116)(48485aa23da681fc87d8dc0b4be3e34c)
-# 03 pc 0000000000053d48 /system/lib64/platformsdk/libsqlite.z.so(getPageNormal+864)(48485aa23da681fc87d8dc0b4be3e34c)
-# 04 pc 00000000000757a0 /system/lib64/platformsdk/libsqlite.z.so(getAndInitPage+216)(48485aa23da681fc87d8dc0b4be3e34c)
-# 05 pc 0000000000077658 /system/lib64/platformsdk/libsqlite.z.so(moveToLeftmost+164)(48485aa23da681fc87d8dc0b4be3e34c)
-# 06 pc 000000000006aa34 /system/lib64/platformsdk/libsqlite.z.so(sqlite3VdbeExec+34532)(48485aa23da681fc87d8dc0b4be3e34c)
-# 07 pc 000000000002e424 /system/lib64/platformsdk/libsqlite.z.so(sqlite3_step+644)(48485aa23da681fc87d8dc0b4be3e34c)
-# 08 pc 00000000000b1a70 /system/lib64/platformsdk/libnative_rdb.z.so(FillSharedBlockOpt+408)(5e8443def4695e8c791e5f847035ad9f)
-# 09 pc 0000000000082a94 /system/lib64/platformsdk/libnative_rdb.z.so(OHOS::NativeRdb::SqliteStatement::FillBlockInfo(OHOS::NativeRdb::SharedBlockInfo*) const+76)(5e8443def4695e8c791e5f847035ad9f)
-# 10 pc 00000000000b4214 /system/lib64/platformsdk/libnative_rdb.z.so(OHOS::NativeRdb::SqliteSharedResultSet::ExecuteForSharedBlock(OHOS::AppDataFwk::SharedBlock*, int, int, bool)+236)(5e8443def4695e8c791e5f847035ad9f)
-```
-
-Based on [Analyzing Trace Data](#analyzing-trace-data), check whether the execution of the function at stack top times out.
-
-4. The stack is a temporary stack, and the warning stack is not the same as the error stack.
-
-Warning stack:
-
-```
-Tid:3108, Name:xxx
-# 00 pc 0000000000146e2c /system/lib/ld-musl-aarch64.so.1(open64+224)(b168f10a179cf6050a309242262e6a17)
-# 01 pc 0000000000014600 /system/lib64/chipset-pub-sdk/libextractortool.z.so(OHOS::AbilityBase::ZipFileReader::init()+600)(c4893935af8fc8cb36569be5ccdebfa9)
-# 02 pc 0000000000014144 /system/lib64/chipset-pub-sdk/libextractortool.z.so(OHOS::AbilityBase::ZipFileReader::CreateZipFileReader(std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>> const&)+392)(c4893935af8fc8cb36569be5ccdebfa9)
-# 03 pc 000000000000f724 /system/lib64/chipset-pub-sdk/libextractortool.z.so(OHOS::AbilityBase::ZipFile::Open()+728)(c4893935af8fc8cb36569be5ccdebfa9)
-# 04 pc 000000000000a808 /system/lib64/chipset-pub-sdk/libextractortool.z.so(OHOS::AbilityBase::Extractor::Init()+124)(c4893935af8fc8cb36569be5ccdebfa9)
-# 05 pc 000000000000c4a4 /system/lib64/chipset-pub-sdk/libextractortool.z.so(OHOS::AbilityBase::ExtractorUtil::GetExtractor(std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>> const&, bool&, bool)+596)(c4893935af8fc8cb36569be5ccdebfa9)
-# 06 pc 00000000000391e4 /system/lib64/platformsdk/libglobal_resmgr.z.so(OHOS::Global::Resource::GetIndexData(char const*, std::__h::unique_ptr<unsigned char [], std::__h::default_delete<unsigned char []>>&, unsigned long&)+284)(5c4263e737507b4a8f2ee7196a152dbd)
-# 07 pc 0000000000038590 /system/lib64/platformsdk/libglobal_resmgr.z.so(OHOS::Global::Resource::HapResource::LoadFromHap(char const*, std::__h::shared_ptr<OHOS::Global::Resource::ResConfigImpl>&, bool, bool, unsigned int const&)+80)(5c4263e737507b4a8f2ee7196a152dbd)
-# 08 pc 00000000000384e8 /system/lib64/platformsdk/libglobal_resmgr.z.so(OHOS::Global::Resource::HapResource::Load(char const*, std::__h::shared_ptr<OHOS::Global::Resource::ResConfigImpl>&, bool, bool, unsigned int const&)+364)(5c4263e737507b4a8f2ee7196a152dbd)
-# 09 pc 000000000002f118 /system/lib64/platformsdk/libglobal_resmgr.z.so(OHOS::Global::Resource::HapManager::AddResourcePath(char const*, unsigned int const&)+280)(5c4263e737507b4a8f2ee7196a152dbd)
-# 10 pc 000000000002efdc /system/lib64/platformsdk/libglobal_resmgr.z.so(OHOS::Global::Resource::HapManager::AddResource(char const*, unsigned int const&)+52)(5c4263e737507b4a8f2ee7196a152dbd)
-```
-
-Error stack:
-
-```
-Tid:3108, xxx
-# 00 pc 00000000003e13cc /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JSObject::GetProperty(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&, panda::ecmascript::JSShared::SCheckMode)+164)(13376099388381a01b166c00a8af99fb)
-# 01 pc 00000000003d5518 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JSIterator::IteratorStep(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&)+228)(13376099388381a01b166c00a8af99fb)
-# 02 pc 0000000000570fa8 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::RuntimeStubs::StArraySpread(unsigned long, unsigned int, unsigned long)+592)(13376099388381a01b166c00a8af99fb)
-# 03 pc 00000000002d53c0 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
-# 04 at doTask (product/phone/build/default/cache/default/default@CompileArkTS/esmodule/release/staticcommon/launchercommon/src/main/ets/db/RdbTaskPool.ts:1:1)
-# 05 at update (product/phone/build/default/cache/default/default@CompileArkTS/esmodule/release/staticcommon/launchercommon/src/main/ets/db/RdbTaskPool.ts:1:1)
-# 06 at updateAppNameByAbilityInfoAndType (product/phone/build/default/cache/default/default@CompileArkTS/esmodule/release/staticcommon/launchercommon/src/main/ets/db/RdbStoreManager.ts:12:1)
-# 07 at anonymous (product/phone/build/default/cache/default/default@CompileArkTS/esmodule/release/staticcommon/launchercommon/src/main/ets/model/AppModel.ts:0:1)
-# 08 pc 0000000000304a94 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+144)(13376099388381a01b166c00a8af99fb)
-# 09 pc 0000000000201d84 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::builtins::BuiltinsPromiseJob::PromiseReactionJob(panda::ecmascript::EcmaRuntimeCallInfo*)+348)(13376099388381a01b166c00a8af99fb)
-# 10 pc 00000000002d6e14 /system/lib64/module/arkcompiler/stub.an(RTStub_AsmInterpreterEntry+208)
-```
-
-In this case, the stacks are irregular because they are captured during thread running, which indicates that the thread is not suspended. If the thread is busy, analyze and optimize the application based on [Analyzing Trace Data](#analyzing-trace-data) and HiLog logs.
-
-### Viewing Binder Information
-
-Obtain the binder information after the warning event if it occurs, otherwise, obtain the binder information after the block event.
-
-1. Obtain the Binder information.
-
-```
-PeerBinderCatcher -- pid==35854 layer_ == 1
-
-BinderCatcher --
-
-    35854:35854 to 52462:52462 code 3 wait:27.185154163 s frz_state:3,  ns:-1:-1 to -1:-1, debug:35854:35854 to 52462:52462, active_code:0 active_thread:0, pending_async_proc=0
-    ...
-    52462:52462 to 1386:0 code 13 wait:24.733640622 s frz_state:3,  ns:-1:-1 to -1:-1, debug:35854:35854 to 52462:52462, active_code:0 active_thread:0, pending_async_proc=0
-async 1590:14743 to 1697:0 code 4 wait:124.733640622 s frz_state:1,  ns:-1:-1 to -1:-1, debug:1590:14743 to 1697:0, active_code:-1 active_thread:0, pending_async_proc=1590
-    ...
-```
-This example shows that there is a call chain from the main thread of process **35854** to process **52462** and to process **1386**. You can analyze the cause of the block event based on the stack information of the peer processes.
-
-2. Check whether the thread ID is **0**.
-
-When the thread ID of a process is **0**, it indicates that the application is IPC_FULL. That is, all IPC threads of the application are in use, and no other thread is allocated to the request. As a result, the request is blocked. For example, the thread ID of 1386 process is **0**, which can be analyzed based on its stack.
-
-```
-pid     context     request   started    max     ready   free_async_space
-
-35862    binder      0          2        16       2         519984
-
-35854    binder      0          2        16       3         520192
-
-35850    binder      0          2        16       3         520192
-
-13669    binder      0          1        16       3         520192
-
+================================================================
 ...
-
-1386     binder      1          15       16       0         517264                 -> binderInfo
-
-1474     binder      0          2        16       4         520192
-```
-
-As shown in the stack, the number of threads in the ready state of process **1386** is 0. This indicates that some IPC threads of the process may be blocked. To analyze why the IPC threads are not released, you can check the following causes: An IPC thread that holds the lock is blocked. As a result, other threads are suspended while waiting for the lock.
-
-**free_async_space** is unavailable. As a result, there is no sufficient buffer space for the request of the new IPC thread. It should be noted that this value is required by both synchronous and asynchronous requests. Generally, **free_async_space** is unavailable when a large number of asynchronous requests are sent in a short period of time.
-
-3. Check whether the value of **waitTime** is too small.
-
-**waitTime** indicates the IPC duration. If the value of **waitTime** is far less than the fault detection duration, the suspension is not caused by the IPC request.
-If the main thread on the application sends multiple IPC requests in a short period of time, the value of **waitTime** will be large. As a result, the thread is suspended.
-
-In this case, you can check the following items:
-    - Whether the wait time of a single request is as expected. If the wait time of a single request is greater than the normal value (for example, the request whose normal wait time is 20 ms waits for 1s), check why the API performance does not meet the expectation.
-    - Whether the frequent calling on the application is proper.
-
-4. There is no calling relationship and the stack is an IPC stack.
-
-Check whether the stack is a temporary stack, that is, whether the warning stack is the same as the block stack. It is possible that the warning stack is an IPC stack, and the block stack is a temporary stack because the IPC request takes a short time and ends when the binder is captured.
-It should be noted that binder information is not obtained in real time when a fault occurs and is delayed. For faults that require half-period detection, binder information is accurately captured because most binder information can be collected within the fault period. For other faults, the off-site binder information may be captured when the reporting is delayed.
-
-You can view the execution duration of binder based on [Analyzing Trace Data](#analyzing-trace-data).
-
-### Analyzing HiLog logs
-
-#### DFX-related Logs
-
-1. Fault report (reportEvent).
-
-![appfreeze_2024061401](figures/appfreeze_2024061401.png)
-
-2. Stack capture (signal: 35).
-
-![appfreeze_2024061402](figures/appfreeze_2024061402.png)
-
-3. Background application detection for five times before reporting, about 21s.
-
-![appfreeze_2024061403](figures/appfreeze_2024061403.png)
-
-4. Application exit reason record.
-
-![appfreeze_2024061404](figures/appfreeze_2024061404.png)
-
-5. **APP_FREEZE** kills the application.
-
-![appfreeze_2024061405](figures/appfreeze_2024061405.png)
-
-#### Procedure
-
-View [Obtain the fault occurrence time](#obtain-the-fault-occurrence-time), and determine the fault occurrence time based on the fault type. Analyze the HiLog logs in the specific period to obtain the status of the running thread.
-
-- If no application log is printed, the suspension occurs when the logging API is called.
-
-   ![appfreeze_2024061406](figures/appfreeze_2024061406.png)
-
-   **...**
-
-   ![appfreeze_2024061407](figures/appfreeze_2024061407.png)
-
-   In the preceding figure, the **APP_INPUT_BLOCK** event is reported at **07:24:08.167**, and the application main thread does not print logs after **07:24:01.581**. In this case, check whether the logic of **FormManagerService:**
-
-   **[form_mgr_proxy.cpp(GetFormsInfoByApp:1128)]** times out.
-
-- If the application logs are printed frequently, check whether the logs are normal.
-
-   ![appfreeze_2024061408](figures/appfreeze_2024061408.png)
-
-   In the preceding figure, a large number of logs are printed before the process is killed by **APP_FREEZE**. In this case, check whether the logs are normal in the **ImageEffect** domain.
-
-### Analyzing Trace Data
-
-The possible scenarios are as follows:
-
-1. The duration of each service is not long, but the number of services is too large. Therefore, the process runs intensively in a long period of time and occupies the main thread.
-
-![appfreeze_2024061409](figures/appfreeze_2024061409.png)
-
-![appfreeze_2024061410](figures/appfreeze_2024061410.png)
-
-In the preceding figure, the **animator** in **PriviewArea::updateShotComponent** is executed for 9.2s.
-
-The thread is busy executing a service cyclically and analyzing each service segment.
-
-- If the service scenario is not normal (the service should not be called frequently), analyze the service code and find out why the service is executed cyclically.
-
-- Otherwise, check whether the service segment takes more time than expected and why the performance does not meet the design specifications.
-
-2. The process times out when executes a function.
-
-![appfreeze_2024061411](figures/appfreeze_2024061411.png)
-
-In the preceding figure, the execution duration of **OHOS::AppExecFwk::FormMgrAdapter::GetFormsInfoByApp** exceeds 8s.
-
-## Case Study
-
-### Typical Case of ThreadBlock - Incorrect Use of Locks
-
-#### Background
-
-The xxx service reports the **THREAD_BLOCK_6S** event.
-
-#### Error Codes
-
-In the following code, a thread uses **mutex_.lock()** but not releases it when the return failed. As a result, other threads are blocked for waiting the lock.
-
-```cpp
-int xxx()
-{
-    //...
-    mutex_.lock();
-    AIContext aiContext;
-    if (ConvertRpcHandle2AIContext(inputs[0], aiContext) != aicp::SUCCESS) {
-        return FAILED;
-    }
-    //...
-}
-```
-
-#### Impact
-
-The background application is suspended and its features are unavailable, but it is imperceptible to the user.
-
-#### Fault Locating
-
-Extract the key fault logs.
-
-```
-appfreeze: com.example.hmsapp.xxx THREAD_BLOCK_6S at 20240408082432
+Reason:APP_INPUT_BLOCK
+appfreeze: com.samples.freezedebug APP_INPUT_BLOCK at 20251129123745
+Wait Event(430) to be marked exceed 8000ms, lastDispatchEvent(430), lastProcessEvent(429), lastMarkedEvent(428)
 DisplayPowerInfo:powerState:AWAKE
-```
-
-The value of **Foreground** indicates that the application is in the background. When the 3s event is reported, the background application is suspended for 18s.
-
-```
-Module name:com.xxx.xxx.xxx
-Version:1.2.2.202
-VersionCode:1002002202
-PreInstalled:Yes
-Foreground: No --> Indicates that the application is in the background.
-Pid:43675
-Uid:20020029
-Reason:THREAD_BLOCK_6S
-```
-
-The **THREAD_BLOCK_3S** event is reported at **08:24:29:612**. 
-The **THREAD_BLOCK_6S** event is reported at **08:24:32:638**. The interval is 3s as expected.
-
-```
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-DOMAIN:AAFWK
-STRINGID:THREAD_BLOCK_6S
-TIMESTAMP:2024/04/08-08:24:32:638
-PID:43675
-UID:20020029
-PACKAGE_NAME:com.xxx.xxx.xxx
-PROCESS_NAME:com.xxx.xxx.xxx
-*******************************************
-start time: 2024/04/08-08:24:29:627
-DOMAIN = AAFWK
-EVENTNAME = THREAD_BLOCK_3S
-TIMESTAMP = 2024/04/08-08:24:29:612
-PID = 43675
-UID = 20020029
-PACKAGE_NAME = com.xxx.xxx.xxx
-PROCESS_NAME = com.xxx.xxx.xxx
-```
-
-When the **THREAD_BLOCK_3S** event is reported, the **EventHandler** is captured at **08:24:29.413**. The cause is as expected: "App main thread is not response!" The main thread does not respond. The running task is sent at **08:24:01.514**.
-
-```
-MSG = 
-Fault time:2024/04/08-08:24:29
-App main thread is not response!
-mainHandler dump is:
- EventHandler dump begin curTime: 2024-04-08 08:24:29.413
- Event runner (Thread name = , Thread ID = 43675) is running
- Current Running: start at 2024-04-08 08:24:01.514, Event { send thread = 43675, send time = 2024-04-08 08:24:01.514, handle time = 2024-04-08 08:24:01.514, task name = uvLoopTask }
-```
-
-The watchdog task is in **High priority event queue**. As shown in the following figure, a watchdog task is thrown to the main thread every 3 seconds, which is as expected.
-
-The queue of **THREAD_BLOCK_6S** contains one additional event compared to the queue of **THREAD_BLOCK_3S**.
-
-The earliest event is sent at **08:24:11.388**, 18s earlier than the report time of **THREAD_BLOCK_3S** at **08:24:29:612**, which is as expected.
-
-```
- High priority event queue information:
- No.1 : Event { send thread = 43679, send time = 2024-04-08 08:24:11.388, handle time = 2024-04-08 08:24:11.388, id = 1, caller = [watchdog.cpp(Timer:139)] }
- No.2 : Event { send thread = 43679, send time = 2024-04-08 08:24:14.458, handle time = 2024-04-08 08:24:14.458, id = 1, caller = [watchdog.cpp(Timer:139)] }
- No.3 : Event { send thread = 43679, send time = 2024-04-08 08:24:17.383, handle time = 2024-04-08 08:24:17.383, id = 1, caller = [watchdog.cpp(Timer:139)] }
- No.4 : Event { send thread = 43679, send time = 2024-04-08 08:24:20.363, handle time = 2024-04-08 08:24:20.363, id = 1, caller = [watchdog.cpp(Timer:139)] }
- No.5 : Event { send thread = 43679, send time = 2024-04-08 08:24:23.418, handle time = 2024-04-08 08:24:23.418, id = 1, caller = [watchdog.cpp(Timer:139)] }
- No.6 : Event { send thread = 43679, send time = 2024-04-08 08:24:26.369, handle time = 2024-04-08 08:24:26.369, id = 1, caller = [watchdog.cpp(Timer:139)] }
- No.7 : Event { send thread = 43679, send time = 2024-04-08 08:24:29.412, handle time = 2024-04-08 08:24:29.412, id = 1, caller = [watchdog.cpp(Timer:139)] }
-```
-
-To sum up, the main thread of the application starts to run this task at **08:24:01.514**. The first **THREAD_BLOCK_3S** event occurs at **08:24:11.388**, and the block event occurs at about **08:24:11**.
-
-Check the main thread stack at **xxx_request_client.so->libsamgr_proxy.z.so->libipc_core.z.so(OHOS::BinderConnector::WriteBinder)**.
-
-In this case, the main thread initiates an IPC request, but the peer process does not respond. As a result, the process is suspended, as shown in the following stack.
-
-```
-Tid:43675, Name:xxx
-# 00 pc 0000000000168c44 /system/lib/ld-musl-aarch64.so.1(ioctl+176)(91b804d2409a13f27463debe9e19fb5d)
-# 01 pc 0000000000049268 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderConnector::WriteBinder(unsigned long, void*)+112)(e59500a4ea66775388332f6e3cc12fe3)
-# 02 pc 0000000000054fd4 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::TransactWithDriver(bool)+296)(e59500a4ea66775388332f6e3cc12fe3)
-# 03 pc 00000000000544c8 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::WaitForCompletion(OHOS::MessageParcel*, int*)+304)(e59500a4ea66775388332f6e3cc12fe3)
-# 04 pc 0000000000053c84 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::SendRequest(int, unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+312)(e59500a4ea66775388332f6e3cc12fe3)
-# 05 pc 000000000002d6d8 /system/lib64/platformsdk/libipc_core.z.so(OHOS::IPCObjectProxy::SendRequestInner(bool, unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+128)(e59500a4ea66775388332f6e3cc12fe3)
-# 06 pc 0000000000030e00 /system/lib64/platformsdk/libipc_core.z.so(OHOS::IPCObjectProxy::GetProtoInfo()+396)(e59500a4ea66775388332f6e3cc12fe3)
-# 07 pc 000000000002e990 /system/lib64/platformsdk/libipc_core.z.so(OHOS::IPCObjectProxy::WaitForInit()+292)(e59500a4ea66775388332f6e3cc12fe3)
-# 08 pc 0000000000036cd0 /system/lib64/platformsdk/libipc_core.z.so(OHOS::IPCProcessSkeleton::FindOrNewObject(int)+116)(e59500a4ea66775388332f6e3cc12fe3)
-# 09 pc 00000000000571cc /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::UnflattenObject(OHOS::Parcel&)+272)(e59500a4ea66775388332f6e3cc12fe3)
-# 10 pc 00000000000463a4 /system/lib64/platformsdk/libipc_core.z.so(OHOS::MessageParcel::ReadRemoteObject()+116)(e59500a4ea66775388332f6e3cc12fe3)
-# 11 pc 000000000001250c /system/lib64/chipset-pub-sdk/libsamgr_proxy.z.so(OHOS::SystemAbilityManagerProxy::CheckSystemAbility(int, bool&)+952)(6f113f37ac6ac882cfa16077ad5b406a)
-# 12 pc 0000000000010e7c /system/lib64/chipset-pub-sdk/libsamgr_proxy.z.so(OHOS::SystemAbilityManagerProxy::GetSystemAbilityWrapper(int, std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>> const&)+232)(6f113f37ac6ac882cfa16077ad5b406a)
-# 13 pc 00000000000118b8 /system/lib64/chipset-pub-sdk/libsamgr_proxy.z.so(OHOS::SystemAbilityManagerProxy::Recompute(int, int)+132)(6f113f37ac6ac882cfa16077ad5b406a)
-# 14 pc 0000000000011170 /system/lib64/chipset-pub-sdk/libsamgr_proxy.z.so(OHOS::DynamicCache<int, OHOS::sptr<OHOS::IRemoteObject>>::QueryResult(int, int)+316)(6f113f37ac6ac882cfa16077ad5b406a)
-# 15 pc 0000000000007e0c xxx_request_client.so(xxx::RPCRequestClient::GetService()+540)(557450139184527807025a632613fd76)
-# 16 pc 0000000000008824 xxx_request_client.so(xxx::RPCRequestClient::Init()+16)(557450139184527807025a632613fd76)
-# 17 pc 0000000000008d60 xxx_request_client.so(CreateRpcRequestByServiceName+104)(557450139184527807025a632613fd76)
-# 18 pc 0000000000008f98 xxx_request_client.so(CreateRpcRequest+72)(557450139184527807025a632613fd76)
-# 19 pc 0000000000002944 xxx_rpc_client.so(xxx::xxx::RpcRequestClient::RpcRequestClient()+224)(02343ed2fff69759d408b23eaf69fcde)
-```
-
-Check **BinderCatcher**. The main thread **43675** is communicating with process **979** and the thread is suspended for 27s when the binder is captured.
-
-```
-PeerBinderCatcher -- pid==43675 layer_ == 1
-
-BinderCatcher --
-
-    The 43675:43675 to 979:0 code 5f475249 wait:27.104545829 s frz_state:1, ns:-1:-1 to -1:-1, debug:35854:35854 to 52462:52462, active_code:0 active_thread:0, pending_async_proc=0  --> The binder communication waits for 27s.
-    57187:39147 to 28644:30753 code 0 wait:0.337894271 s frz_state:3,  ns:-1:-1 to -1:-1, debug:57187:39147 to 28644:30753, active_code:0 active_thread:0, pending_async_proc=0
-    57187:39151 to 28644:28652 code 7 wait:0.531140625 s frz_state:3,  ns:-1:-1 to -1:-1, debug:57187:39151 to 28644:28652, active_code:0 active_thread:0, pending_async_proc=0
-    57187:39150 to 28644:31297 code 0 wait:0.976419270 s frz_state:3,  ns:-1:-1 to -1:-1, debug:57187:39150 to 28644:31297, active_code:0 active_thread:0, pending_async_proc=0
-    57187:38979 to 28644:32554 code 0 wait:0.22108334 s frz_state:3,  ns:-1:-1 to -1:-1, debug:57187:38979 to 28644:32554, active_code:0 active_thread:0, pending_async_proc=0
-    57187:39149 to 28644:30754 code 0 wait:0.534261979 s frz_state:3,  ns:-1:-1 to -1:-1, debug:57187:39149 to 28644:30754, active_code:0 active_thread:0, pending_async_proc=0
-    57187:38949 to 28644:31301 code 0 wait:0.977779166 s frz_state:3,  ns:-1:-1 to -1:-1, debug:57187:38949 to 28644:31301, active_code:0 active_thread:0, pending_async_proc=0
-    57187:39172 to 28644:35667 code 0 wait:1.47387500 s frz_state:3,  ns:-1:-1 to -1:-1, debug:57187:39172 to 28644:35667, active_code:0 active_thread:0, pending_async_proc=0
-    57187:39173 to 28644:28822 code 0 wait:0.565389063 s frz_state:3,  ns:-1:-1 to -1:-1, debug:57187:39173 to 28644:28822, active_code:0 active_thread:0, pending_async_proc=0
-    1477:1676 to 1408:2026 code 17 wait:0.0 s frz_state:3,  ns:-1:-1 to -1:-1, debug:1477:1676 to 1408:2026, active_code:0 active_thread:0, pending_async_proc=0
-    628:8136 to 979:0 code 2 wait:13166.722870859 s frz_state:1,  ns:-1:-1 to -1:-1, debug:628:8136 to 979:0, active_code:0 active_thread:0, pending_async_proc=0
-```
-
-Check the main thread stack of process **979**, and it shows that **xxxserver** is waiting for lock release. This fault is caused by improper use of locks.
-
-```
-Binder catcher stacktrace, type is peer, pid : 979
-Result: 0 ( no error )
-Timestamp:2024-04-08 08:24:29.000
-Pid:979
-Uid:3094
-Process name:xxxserver
-Process life time:60410s
-Tid:979, Name:xxxserver
-# 00 pc 00000000001aafc4 /system/lib/ld-musl-aarch64.so.1(__timedwait_cp+192)(91b804d2409a13f27463debe9e19fb5d)
-# 01 pc 00000000001b0d50 /system/lib/ld-musl-aarch64.so.1(__pthread_mutex_timedlock_inner+592)(91b804d2409a13f27463debe9e19fb5d)
-# 02 pc 00000000000c38e0 /system/lib64/libc++.so(std::__h::mutex::lock()+8)(0b61ba21a775725a1bd8802a393b133afbc503a5) --> The lock() function is called and the process waits for it.
-# 03 pc 00000000000086dc xxx_server.so(xxx::xxx::InitImpl(int, std::__h::vector<xxx::xxx::RpcHandle, std::__h::allocator<xxx::xxx::RpcHandle>> const&, std::__h::vector<xxx::xxx::RpcHandle, std::__h::allocator<xxx::xxx::RpcHandle>>&)+84)(f4bb275898d797b22eae35fe48db9009)
-# 04 pc 000000000000798c xxx_request_server.so(xxx::RPCRequestStub::SyncExecute(OHOS::MessageParcel&, OHOS::MessageParcel&)+164)(70cbb10c758902c1e3e179efc93ce0af)
-# 05 pc 0000000000008314 xxx_request_server.so(xxx::RPCRequestStub::OnRemoteRequest(unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+300)(70cbb10c758902c1e3e179efc93ce0af)
-# 06 pc 00000000000153e4 /system/lib64/chipset-pub-sdk/libipc_single.z.so(OHOS::IPCObjectStub::SendRequest(unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+604)(25b3d63905ef47289c096ea42ba2d86a)
-# 07 pc 000000000002b464 /system/lib64/chipset-pub-sdk/libipc_single.z.so(OHOS::IPC_SINGLE::BinderInvoker::OnTransaction(unsigned char const*)+1220)(25b3d63905ef47289c096ea42ba2d86a)
-# 08 pc 000000000002baec /system/lib64/chipset-pub-sdk/libipc_single.z.so(OHOS::IPC_SINGLE::BinderInvoker::HandleCommandsInner(unsigned int)+368)(25b3d63905ef47289c096ea42ba2d86a)
-# 09 pc 000000000002a6b0 /system/lib64/chipset-pub-sdk/libipc_single.z.so(OHOS::IPC_SINGLE::BinderInvoker::HandleCommands(unsigned int)+60)(25b3d63905ef47289c096ea42ba2d86a)
-# 10 pc 000000000002a4dc /system/lib64/chipset-pub-sdk/libipc_single.z.so(OHOS::IPC_SINGLE::BinderInvoker::StartWorkLoop()+120)(25b3d63905ef47289c096ea42ba2d86a)
-# 11 pc 000000000002bc2c /system/lib64/chipset-pub-sdk/libipc_single.z.so(OHOS::IPC_SINGLE::BinderInvoker::JoinThread(bool)+92)(25b3d63905ef47289c096ea42ba2d86a)
-# 12 pc 0000000000004bd4 xxxserver(02cff7e5dce05d6d28096601458b6f6d)
-# 13 pc 00000000000a3b58 /system/lib/ld-musl-aarch64.so.1(libc_start_main_stage2+64)(91b804d2409a13f27463debe9e19fb5d)
-```
-
-Decompile the code to locate the error code line and check the lock based on the context.
-
-#### Solution
-
-```cpp
-int xxx()
-{
-    //...
-    mutex_.lock();
-    AIContext aiContext;
-    if (ConvertRpcHandle2AIContext(inputs[0], aiContext) != aicp::SUCCESS) {
-        return FAILED;
-    }
-    //...
-}
-```
-
-Modify the preceding codes as follows:
-
-```cpp
-int xxx()
-{
-    //...
-    mutex_.lock();
-    AIContext aiContext;
-    if (ConvertRpcHandle2AIContext(inputs[0], aiContext) != aicp::SUCCESS) {
-        mutex_.unlock();
-        return FAILED;
-    }
-    //...
-    mutex_.unlock();
-    //...
-}
-```
-
-Adjust the lock properly based on the context.
-
-#### Suggestion
-
-1. Pay special attention to the timing and deadlock issues during multi-thread interaction.
-
-### Typical Case of **APP_INPUT_BLOCK** - Full Component Update
-
-#### Background
-
-When the theme is switched, a suspension occurs, and the AppFreeze event of sceneboard is reported.
-
-This suspension is caused by busy threads.
-
-#### Error Codes
-
-Component update and reuse are controlled by the **key** value of the component. When a page is updated, if the **key** value of the component remains unchanged, the original component is reused. Otherwise, the component and its subcomponents are updated.
-
-The **getForeachKey** function is used to generate the key of the home screen component and is associated with **themeStyle**. When a user continuously switches the theme on the home screen, the component is repeatedly refreshed in full mode. As a result, a suspension occurs.
-
-```ts
-private getForeachKey(item: xxx): string {
-    //...
-    return `${item.xxx2}${item.xxx2}...${item.themeStyle}`;
-}
-```
-
-#### Impact
-
-There is a high probability that the page is suspended when the theme is switched on the integrated home screen. When a user clicks, the screen does not respond and then returns to the lock screen, 
-
-deteriorating user experience.
-
-#### Fault Locating
-
-Extract the key fault logs.
-
-```
-appfreeze: com.example.sceneboard APP_INPUT_BLOCK at 202403144059
-DisplayPowerInfo:powerState:AWAKE
-```
-
-Check the report time of the **APP_INPUT_BLOCK** event, which is **14:40:59:440**.
-
-```
-DOMAIN:AAFWK
-STRINGID:APP_INPUT_BLOCK
-TIMESTAMP:2024/03/14-14:40:59:440 --> Fault report time.
-PID:2918
-UID:20020017
-PACKAGE_NAME:com.example.sceneboard
-PROCESS_NAME:com.example.sceneboard
-```
-
-The report cause is "User input does not respond!". That is, there is no response to the user input event. 
-It shows that the running task of the main thread (Thread ID == PID) starts at **14:40:53.499** and is not complete until the Fault time **14:40:58**.
-
-```
-MSG = 
-Fault time:2024/03/14-14:40:58
-User input does not respond!
-mainHandler dump is:
- EventHandler dump begin curTime: 2024-03-14 02:40:58.520
- Event runner (Thread name = , Thread ID = 2918) is running
- Current Running: start at 2024-03-14 02:40:53.499, Event { send thread = 2918, send time = 2024-03-14 02:40:53.499, handle time = 2024-03-14 02:40:53.499, task name =  }
-```
-
-User input events need to be responded immediately. Therefore, they are in the high priority event queue, together with the watchdog tasks.
-
-The following stack shows that more than 200 input events in the queue are blocked and not processed.
-
-```
- High priority event queue information:
- No.1 : Event { send thread = 3370, send time = 2024-03-14 02:40:53.690, handle time = 2024-03-14 02:40:53.690, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.2 : Event { send thread = 3370, send time = 2024-03-14 02:40:53.699, handle time = 2024-03-14 02:40:53.699, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.3 : Event { send thread = 3370, send time = 2024-03-14 02:40:53.708, handle time = 2024-03-14 02:40:53.708, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.4 : Event { send thread = 3370, send time = 2024-03-14 02:40:53.717, handle time = 2024-03-14 02:40:53.717, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.5 : Event { send thread = 3370, send time = 2024-03-14 02:40:53.726, handle time = 2024-03-14 02:40:53.726, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.6 : Event { send thread = 3370, send time = 2024-03-14 02:40:53.736, handle time = 2024-03-14 02:40:53.736, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.7 : Event { send thread = 3370, send time = 2024-03-14 02:40:53.745, handle time = 2024-03-14 02:40:53.745, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.8 : Event { send thread = 3370, send time = 2024-03-14 02:40:53.754, handle time = 2024-03-14 02:40:53.754, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- ...
- No.190 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.166, handle time = 2024-03-14 02:40:56.166, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.191 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.176, handle time = 2024-03-14 02:40:56.176, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.192 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.186, handle time = 2024-03-14 02:40:56.186, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.193 : Event { send thread = 2923, send time = 2024-03-14 02:40:56.196, handle time = 2024-03-14 02:40:56.196, id = 1, caller = [watchdog.cpp(Timer:140)] }
- No.194 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.196, handle time = 2024-03-14 02:40:56.196, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.195 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.206, handle time = 2024-03-14 02:40:56.206, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.196 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.216, handle time = 2024-03-14 02:40:56.216, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.197 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.226, handle time = 2024-03-14 02:40:56.226, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.198 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.236, handle time = 2024-03-14 02:40:56.236, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.199 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.245, handle time = 2024-03-14 02:40:56.245, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.200 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.254, handle time = 2024-03-14 02:40:56.254, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.201 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.265, handle time = 2024-03-14 02:40:56.265, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.202 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.275, handle time = 2024-03-14 02:40:56.274, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.203 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.284, handle time = 2024-03-14 02:40:56.284, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.204 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.294, handle time = 2024-03-14 02:40:56.294, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
- No.205 : Event { send thread = 3370, send time = 2024-03-14 02:40:56.305, handle time = 2024-03-14 02:40:56.305, task name = , caller = [input_manager_impl.cpp(OnPointerEvent:465)] }
-```
-
-It can be inferred that the input event triggers the main thread task of the application. However, the execution is not complete within 6 seconds. As a result, the ANR times out.
-In this case, you only need to find out the task that the input triggers and why the task execution times out.
-
-In the main thread stack, the **GetCurrentThreadId** function in **ark_jsruntime.so** at the stack top does not hold a lock or is time-consuming. The captured stack is a transient stack that is not necessary for analysis.
-
-```
-Tid:2918, Name:example.sceneboard
-# 00 pc 000000000009f73c /system/lib/ld-musl-aarch64.so.1(8fa55898166cd804dad43d909b5319cc)
-# 01 pc 000000000054b7b4 /system/lib64/platformsdk/libark_jsruntime.so(panda::os::thread::GetCurrentThreadId()+12)(7715646e48f750f3dc31e660b056eb43)
-# 02 pc 00000000002107a4 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaVM::CheckThread() const+200)(7715646e48f750f3dc31e660b056eb43)
-# 03 pc 0000000000432998 /system/lib64/platformsdk/libark_jsruntime.so(panda::JSNApi::GetHandleAddr(panda::ecmascript::EcmaVM const*, unsigned long)+64)(7715646e48f750f3dc31e660b056eb43)
-# 04 pc 000000000003eeb8 /system/lib64/platformsdk/libace_napi.z.so(ArkNativeReference::Get()+32)(c3a760aff0c73a2e76accaf518321fc9)
-# 05 pc 0000000000043cb4 /system/lib64/platformsdk/libace_napi.z.so(napi_get_reference_value+48)(c3a760aff0c73a2e76accaf518321fc9)
-# 06 pc 0000000000007564 /system/lib64/module/events/libemitter.z.so(OHOS::AppExecFwk::SearchCallbackInfo(napi_env__*, std::__h::variant<unsigned int, std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>>> const&, napi_value__*)+248)(8fe2937855aab3ea839419f952597511)
-# 07 pc 0000000000007d8c /system/lib64/module/events/libemitter.z.so(OHOS::AppExecFwk::OnOrOnce(napi_env__*, napi_callback_info__*, bool)+568)(8fe2937855aab3ea839419f952597511)
-# 08 pc 00000000000096d8 /system/lib64/module/events/libemitter.z.so(OHOS::AppExecFwk::JS_Once(napi_env__*, napi_callback_info__*) (.cfi)+84)(8fe2937855aab3ea839419f952597511)
-# 09 pc 000000000002c8f0 /system/lib64/platformsdk/libace_napi.z.so(ArkNativeFunctionCallBack(panda::JsiRuntimeCallInfo*)+168)(c3a760aff0c73a2e76accaf518321fc9)
-# 10 pc 0000000000187b48 /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+40)
-# 11 pc 00000000002da5fc /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+416)(7715646e48f750f3dc31e660b056eb43)
-# 12 pc 00000000002da5fc /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::Execute(panda::ecmascript::EcmaRuntimeCallInfo*)+416)(7715646e48f750f3dc31e660b056eb43)
-# 13 pc 00000000003954a0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JSStableArray::HandleforEachOfStable(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::JSObject>, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue>, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue>, unsigned int, unsigned int&)+596)(7715646e48f750f3dc31e660b056eb43)
-# 14 pc 000000000018f4b0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::builtins::BuiltinsArray::ForEach(panda::ecmascript::EcmaRuntimeCallInfo*)+840)(7715646e48f750f3dc31e660b056eb43)
 ...
 ```
 
-Check the HiLog logs.
+Since API version 22, when an **APP_INPUT_BLOCK** fault occurs, the log will output a timeout event (**Wait Event**) for multi-mode input (including mouse, keyboard, touchpad, and touchscreen). The event information includes the event ID, event detection timeout threshold, and previous event ID.
 
-The **APP_INPUT_BLOCK** event is reported at about **13:40:59.448**, and then DFX kills the suspended SCB.
+Event detection timeout threshold: 8000 ms for the log version and 5000 ms for the nolog version.
 
-![appfreeze_2024061412](figures/appfreeze_2024061412.png)
+Previous events: **lastDispatchEvent** indicates the event dispatched last time; **lastProcessEvent** indicates the event processed last time; **lastMarkedEvent** indicates the event marked last time.
 
-6 seconds before, a click event was sent to the SCB at about **14:40:53.498**.
+In the preceding example, the last dispatched event is **430**, the last processed event is **429**, and the last marked event is **428**, indicating that the event 430 has been dispatched and the processing times out for 8000 ms. This log can be used to determine the **APP_INPUT_BLOCK** event and help analyze the problem.
 
-![appfreeze_2024061413](figures/appfreeze_2024061413.png)
+## Enhanced AppFreeze Logs
 
-Within the 6 seconds, a large number of SCB logs are printed, showing that the SCB is re-rendered.
+Since API version 21, enhanced AppFreeze logs can be obtained. In these logs, the running loads of the device and main thread are collected, and multiple call stacks of the main thread are captured to help you analyze the cause. Compared with the original logs, the enhanced AppFreeze logs address the following issues:
 
-![appfreeze_2024061414](figures/appfreeze_2024061414.png)
+1. It is difficult to locate the main thread hotspot during the fault.
 
-Check the trace data within the 6 seconds.
+2. The resource layer analysis on the busy or blocked main thread is unavailable.
 
-![appfreeze_2024061415](figures/appfreeze_2024061415.png)
+### Implementation Principles
 
-It shows that the SCB main thread is fully occupied. The **CustomNodeUpdate SwiperPage** task takes a longer time. Therefore, you need to check why this component keeps refreshing.
+The process of generating enhanced AppFreeze logs is as follows:
 
-It is found that **themeStyle** is added to the **key** on **swiperPage**. When the **key** value changes, a new component is created.
+1. When the **THREAD_BLOCK_3S** or **LIFECYCLE_HALF_TIMEOUT** event occurs during the running of an application process, the main thread call stack is captured to record the current CPU information.
 
-When the theme or icon style is switched, all components on the home screen are created. As a result, the main thread is busy and cannot respond the input event.
+2. When the **THREAD_BLOCK_6S**, **LIFECYCLE_TIMEOUT**, or **APP_INPUT_BLOCK** event occurs during the running of an application process, the main thread call stack capturing is stopped, and the CPU information within the period is calculated. Generally, the stack logs are captured 1 to 10 times.
 
-#### Solution
+   > **NOTE**
+   >
+   > The sampling stack of the application freeze event conflicts with that of [MAIN_THREAD_JANK](hiappevent-watcher-mainthreadjank-events.md). If the number of sampling stacks is set through the **setEventConfig** API of **MAIN_THREAD_JANK**, the number of sampling stacks of the application freeze event is the same as that configured for the application.
+   >
+   > **APP_INPUT_BLOCK** faults have enhanced logs only when **THREAD_BLOCK_3S** or **LIFECYCLE_HALF_TIMEOUT** occurs first.
 
-Trigger the home screen component refresh only when the home screen component style is switched, and narrow down the refresh scope.
+### Obtaining Logs
 
-```ts
-+ if (!CheckEmptyUtils.isEmpty(themeStyleInfo.iconResourcePath) &&
-+     themeStyleInfo.iconResourcePath !== this.themeStyle.iconResourcePath) {
-+     this.isStyleChanged = true;
-+     this.themeStyle.iconResourcePath = themeStyleInfo.iconResourcePath; --> themeStyle is associated with iconResourcePath.
-+ }
+You can obtain the path of the enhanced AppFreeze logs using any of the following methods:
+
+**Method 1: HiAppEvent APIs**
+
+Configure the following environment variables in the **AppScope/app.json5** file:
+
+   ```text
+   "appEnvironments": [
+     {
+       "name": "DFX_APPFREEZE_LOG_OPTIONS",
+       "value": "mainthread_sampling:enable"
+     }
+   ]
+   ```
+
+Use the fault subscription APIs provided by HiAppEvent to listen for the application freeze event and obtain the file content. For details, see [Application Freeze Event Overview](hiappevent-watcher-freeze-events.md). Subscribe to the application freeze event by referring to [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md) or [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md).
+
+You can read the fault file and enhanced log file generated by the application freeze event using the [external_log](hiappevent-watcher-freeze-events.md#event-fields) field. The name format of the enhanced log file is the same as that of the fault file.
+
+**external_log** is a string array whose first element is the path to the fault file and whose second element is the path to the enhanced log file.
+
+**Method 2: hdc**
+
+Enable **Developer options** and run the `hdc file recv /data/log/faultlog/freeze_ext D:\` command to export fault logs to the local device. The fault log file name is in the format of **freeze-cpuinfo-ext-process name-process UID-millisecond-level timestamp**.
+
+### Log Specifications
+
+The enhanced log header contains the following fields.
+|Field|Description|Initial API Version|
+|---|---|---|
+| TimeStamp | Log generation time.| 21 |
+| Module name | Name of the faulty module.| 21 |
+
+The following table lists the fields of the total CPU time consumption information in enhanced logs.
+|Field|Description|Initial API Version|
+|---|---|---|
+| ProcessCpuTime | Process running time in a statistical period.| 21 |
+| DeviceRuntime | Running time of all CPUs on the device in a statistical period.| 21 |
+| Tid | Thread ID.| 21 |
+| StartTime | Start time for statistics.| 21 |
+| EndTime | End time for statistics.| 21 |
+| StaticsDuration | Duration of statistics.| 21 |
+| CpuTime | Running time of the main thread in a statistical period.| 21 |
+| SyncWaitTime | Waiting time of the main thread.| 21 |
+| OptimalCpuTime | Running time of the main thread with the optimal load in a statistical period (using the maximum computing power of the maximum number of cores).| 21 |
+| SupplyAvailableTime | Time that can be optimized by scheduling. If the value is small, the main thread is busy. In this case, you need to optimize the main thread tasks.| 21 |
+
+The following table lists the stack information fields in enhanced logs.
+|Field|Description|Initial API Version|
+|---|---|---|
+| SnapshotTime | Time when the main thread stack is captured.| 21 |
+| ThreadInfos Tid | Thread ID.| 21 |
+| Name | Thread name.| 21 |
+| Stack | Main thread call stack.| 21 |
+| SubmitterStacktrace | Task submitter call stack.| 21 | 
+
+### Enhanced Log Specifications
+
+The following describes the common enhanced AppFreeze log specifications: You can use the [clustering script](#clustering-script) to obtain key information of the main thread stack, improving the efficiency and accuracy of fault locating.
+
+```text
+Generated by HiviewDFX @OpenHarmony
+===============================================================
+TimeStamp: 2021-01-01 20:06:01.175  <- Log generation time.
+Module name: com.example.freeze   <- Module name.
+
+#Basic Concepts   <- CPU time comment.
+T1:  StaticsDuration, EndTime - StartTime.
+T2:  CpuTime              --Time that spend on CPU.
+T3:  SyncWaitTime         --SleepingTime + Runnable Time, etc.
+T4:  OptimalCpuTime       --run the thread at the max Core's max cpu capacity.
+T5:  SupplyAvailableTime  --T2 - T4. Time can be optimized by scheduling.
+Equation:  T1 = T2 + T3. T2 = T4 + T5.
+|-----------------------------------StaticsDuration-----------------------------------|.
+|-------------------------CpuTime----------------------|--------SyncWaitTime----------|.
+|----OptimalCpuTime----|------SupplyAvailableTime------|--------SyncWaitTime----------|.
+
+#Basic Statistical Information  <- Basic CPU statistics.
+ProcessCpuTime: 0 ms  <- Running time of the process in a statistical period.
+DeviceRuntime: 0 ms  <- Running time of all CPUs in a statistical period.
+Tid: 2320  <- ID of the faulty main thread.
+StartTime: 2021-01-01 20:05:58:177  <- Start time for statistics.
+EndTime: 2021-01-01 20:06:01:172  <- End time for statistics.
+StaticsDuration: 2995 ms  <- Duration of statistics.
+CpuTime: 0 ms  <- Running time of the main thread in the statistical period.
+SyncWaitTime: 2995 ms  <- Waiting time of the main thread.
+OptimalCpuTime: 0 ms  <- Running time of the main thread with the optimal load in a statistical period (using the maximum computing power of the maximum number of cores).
+SupplyAvailableTime: 0 ms  <- Time that can be optimized by scheduling.
+
+#CpuFreq Usage (usage >=1%)  <- If the usage of a single CPU frequency is greater than or equal to 1%, the frequency and its usage are listed.
+start time: 2021-01-01 20:06:00:888  <- Start time for calculating the CPU usage.
+cpu0 Usage 23.5%, 1430MHZ 21.04%  <- Total usage of cpu0, and usage of a single frequency (1430 MHZ) of cpu0.
+cpu1 Usage 23.5%, 1430MHZ 21.04%
+cpu2 Usage 23.5%, 1430MHZ 21.04%
+cpu3 Usage 23.5%, 1430MHZ 21.04%
+.......
+end time: 2021-01-01 20:06:00:888  <- End time for calculating the CPU usage.
+#ThreadInfos Tid: 2204, Name: com.example.freeze  <- Faulty thread ID, and thread name.
+SnapshotTime: 2021-01-01-20-05-58.292875  <- Time when the main thread is captured.
+#00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72) <- Main thread call stack
+#01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
+#02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
+#03 pc 0000000000007e2c /data/storage/el1/bundle/libs/arm64/libsample.so(WaitSomeTime()+76)(8b74cdc906ea6b2eba95d891bc91c72a)
+#04 pc 0000000000009b2c /data/storage/el1/bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#05 pc 00000000000a0500 /system/lib64/platformsdk/libruntime.z.so(c2f75213ee12fdf08da323fe546923ff)
+#06 pc 0000000000017b04 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(366b4d7f2eba693ad06f14469b08943b)
+#07 pc 0000000000016f38 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(366b4d7f2eba693ad06f14469b08943b)
+#08 pc 000000000003e160 /system/lib64/chipset-sdk-sp/libeventhandler.z.so(OHOS::AppExecFwk::EventRunner::Run()+396)(366b4d7f2eba693ad06f14469b08943b)
+.......
+========SubmitterStacktrace======== <- Task submitter call stack (up to 16 layers).
+#00 pc 0000000000013108 /system/lib64/platformsdk/libuv.so(uv_queue_work+292)(366b4d7f2eba693ad06f14469b08943b)
+#01 pc 0000000000008cdc /data/storage/el1bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#02 pc 000000000005ae00 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1)
+#03 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#04 pc 0000000000448dd4 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)
+#05 at anonymous (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
+#06 pc 00000000001e5c8c /system/lib64/platformsdk/libark_jsruntime.so(ce0b05d90b9fae02e7abf8e9f1e5a0f3)
+.......
+
+SnapshotTime: 2021-01-01-20-05-58.549685
+#00 pc 00000000000015b8 [shmm](__kernel_gettimeofday+72)
+#01 pc 00000000001d7e44 /system/lib64/ld-musl-aarck64.so.1(clock_gettime+48)(f8a0616c89b184992d0e8883cc78f638)
+#02 pc 00000000001d9f20 /system/lib64/ld-musl-aarck64.so.1(time+32)(f8a0616c89b184992d0e8883cc78f638)
+#03 pc 0000000000007e2c /data/storage/el1/bundle/libs/arm64/libsample.so(WaitSomeTime()+76)(8b74cdc906ea6b2eba95d891bc91c72a)
+#04 pc 0000000000009b2c /data/storage/el1/bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#05 pc 00000000000a0500 /system/lib64/platformsdk/libruntime.z.so(c2f75213ee12fdf08da323fe546923ff)
+.......
+========SubmitterStacktrace========
+#00 pc 0000000000013108 /system/lib64/platformsdk/libuv.so(uv_queue_work+292)(366b4d7f2eba693ad06f14469b08943b)
+#01 pc 0000000000008cdc /data/storage/el1bundle/libs/arm64/libsample.so(8b74cdc906ea6b2eba95d891bc91c72a)
+#02 pc 000000000005ae00 /system/lib64/platformsdk/libace_napi.z.so(panda::JSValueRef ArkNativeFunctionCallBack<true>(panda::JsiRuntimeCallInfo*)+272)(bc1c64aabbe5c7d4db2282a6137443e1)
+#03 pc 0000000000de3efc /system/lib64/module/arkcompiler/stub.an(RTStub_PushCallArgsAndDispatchNative+44)
+#04 pc 0000000000448dd4 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleCallthis0Imm8V8StwCopy+372)
+#05 at anonymous (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
+.......
 ```
 
-#### Suggestions
+**Native Stack Frame Content**
 
-Minimize the scope of page refresh triggered by a click event. Avoid scenarios where a large number of components need to be refreshed or a page needs to be refreshed frequently.
+For details, see the call stack frame description in [Log Specification of C++ Crash Common Faults](./cppcrash-guidelines.md#common-faults).
 
-### Typical Case of **LIFECYCLE_TIMEOUT** - Loading a Cloud Image
+**JS Hybrid Stack Frame Content**
 
-#### Background
+For details, see [JS Crash Exception Code Call Stack Formats](./jscrash-guidelines.md#exception-code-call-stack-formats).
 
-When a user opens a cloud note, the application freezes and then crashes.
+### Clustering Rules for Enhanced Logs
 
-#### Error Codes
+**Clustering Rules**
 
-The cloud image is obtained synchronously in a loop.
+In a log file that contains multiple application main thread stacks (for example, 10 stacks), perform the following operations on each sampling stack:
 
-```ts
-public static xxxFunction(fileUris: string[]): void {
-    //...
-    for (const fileuril of fileUrils) {
-        let file = fs.openSync(fileUri, fs.OpenMode.READ_ONLY);
-        //...
-    }
-    //...
-}
+1. Filter out the system stack.
+
+   Filter out system stack frames (for example, **/system/lib/...** and **ld-musl**) as required. Example of the system stack frame format:
+   ```text
+   # 00 pc 000e8400 /system/lib/ld-musl-arm.so.1(raise+176)(a40044d0acb68107cfc4adb5049c0725)
+   ```
+2. Retain the service stack.
+
+   Retain service stack frames (starting with **at** or containing **/data/storage**). JS stack frames are considered as service stack frames (from application code) by default. Example of the service stack frame format:
+   ```text
+   at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
+   ```
+3. Standardize stack frames.
+
+   Define the content of the standard stack frame, remove variable information (such as the line number, byte offset, and build ID), and retain the key information for clustering as required.
+   Perform the following cleaning operations on each service stack frame:
+
+  (1) Native stack frame standardization
+
+   | Original Stack Frame Content| Standardized Stack Frame Content|
+   | ------------- | ---------------- |
+   | # 01 pc 00006e95 /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)(d6cead5be17c9bb7eee2a9b4df4b7626) | /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92) |
+
+   Steps:
+
+   a. Extract the function signature (including the class name, function name, and parameters in the brackets).
+
+   b. Ignore the PC offset and build ID.
+
+   c. Retain the complete function signature (including **const** and parameter types, if parsed in logs).
+
+  (2) JS stack frame standardization
+
+   | Original Stack Frame Content| Standardized Stack Frame Content|
+   | ------------- |---------------- |
+   | # 00 at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) | onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) |
+
+   Steps:
+
+   a. Remove the line number.
+
+   b. Retain the function name (for example, **onPageShow**).
+
+   c. Retain the file path (for example, **src/main/ets/pages/Index.ts**).
+
+   d. Generate a standardized service call stack sequence for subsequent cluster analysis.
+
+4. Generate cluster features.
+
+  |Original Sampling Stack|Final Cluster Features (Calling Sequence from Top to Bottom)|
+  | ----------- |-------------- |
+  | # 00 pc 000e8400 /system/lib/ld-musl-arm.so.1(raise+176)(a40044d0...)<br># 01 pc 00006e95 /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)(d6ce...)<br># 02 pc 00008909 /data/crasher_cpp(DfxCrasher::ParseAndDoCrash(char const*) const+612)(d6ce...)<br># 03 at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) | /data/crasher_cpp(DfxCrasher::RaiseSegmentFaultException()+92)<br>/data/crasher_cpp(DfxCrasher::ParseAndDoCrash(char const*) const+612)<br>at onPageShow (entry\|har1\|1.0.0\|src/main/ets/pages/Index.ts:7:13) |
+
+   Cluster all sampling stacks based on cluster features.
+
+### Clustering Script
+
+This script is used only for [appfreeze enhanced logs](#enhanced-log-specifications). When the log content is too long and the main thread stack is repeated for multiple times, this script is used to extract service stack clustering information (service stack content, total number of occurrences, and typical complete stack) to quickly locate faults.
+
+1. Script functionalities
+
+   This script is used to process .zip log files in a specified folder in batches. Perform the following steps:
+
+   (1) Read the sampling stack files from all .zip files in the input folder.
+
+   (2) Automatically decompress, parse, and convert the files one by one.
+
+   (3) Output the processing result to the specified folder.
+
+2. Running method
+
+   ```
+   get_all_result(input_dir: str, output_dir: str)
+   ```
+   | Parameter| Mandatory| Type| Description|
+   |----|----|----|----|
+   | input_dir |Yes| String| Path of the input folder, which must contain several .zip log files.|
+   | output_dir |Yes| String| Path of the output folder. The script writes the processing result to this directory.|
+
+   Example:
+   ```
+   get_all_result(r"D:\log\input", r"D:\log\output")
+   ```
+
+3. Input requirements
+
+   The **input_dir** directory must contain several.zip files.
+
+   The file name is not limited. The file can be a nested structure (the script can support .zip files in .zip files).
+
+   The .zip file must contain sampling stack log files.
+
+4. Output description
+
+   The script generates the processing result in **output_dir**, for example:
+   ```
+   output_dir/
+   ├─stack_summary.txt
+   ├─ Service stack clustering .txt
+   └─ Service stack clustering .xlsx
+   ```
+   The output type depends on the script logic (for example, decompressed file, converted file, summary text, JSON, or CSV).
+
+5. Preparations before running
+
+   Ensure that the local host or deployment environment meets the following requirements:
+
+   (1) Python 3.x has been installed.
+
+   (2) Script dependencies (such as **os**, **zipfile**, and **pandas**) have been installed.
+
+   (3) If **output_dir** does not exist, the script will be automatically created. (If the script does not support automatic creation, create the directory in advance.)
+    
+   (4) This script cannot be executed in DevEco Studio. Run it in the Python environment.
+
+6. Clustering script source code
+
+<!-- @[sample_stack_cluster](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Tools/SampleStack/cluster_script.py) --> 
+
+``` Python
+import re
+from collections import Counter, defaultdict
+import os
+import pandas as pd
+import zipfile
+import glob
+from pathlib import Path
+
+# Log directory
+log_dir = r"D:\log\input"  # Change it to your log directory.
+# Output the result.
+output_file = r"D:\log\stack_summary.txt"
+# Match the stack line.
+stack_line_pattern = re.compile(r'^\s*(#\d+\s+pc\s+[0-9a-f]+.*|#?\d*\s*at .+)$')
+
+
+# Determine whether it is a service stack.
+def is_business_stack(line):
+    line = line.strip()
+    return re.match(r'^(#\d+\s+)?at .+\(.+\)$', line) is not None
+
+
+def process_log_file(path):
+    with open(path, "r", encoding="utf-8", errors='ignore') as f:
+        lines = f.readlines()
+
+    all_stacks = []
+    current_stack = []
+    for line in lines:
+        if line.startswith("SnapshotTime:"):
+            if current_stack:
+                all_stacks.append(current_stack)
+                current_stack = []
+        elif stack_line_pattern.match(line):
+            # Ignore irrelevant system lines.
+            if re.match(r'#\d+\s+pc\s+[0-9a-f]+$', line.strip()):
+                continue
+            current_stack.append(line.strip())
+    if current_stack:
+        all_stacks.append(current_stack)
+
+    # Count the stacks of the same log.
+    stack_counter = Counter()
+    for stack in all_stacks:
+        business_lines = [line for line in stack if is_business_stack(line)]
+        if business_lines:
+            key = "\n".join(business_lines[0:5])
+        else:
+            key = "\n".join(stack)
+        stack_counter[key] += 1
+
+    # Retain only those that occur more than five times.
+    result = {k: v for k, v in stack_counter.items() if v >= 1}
+    return result
+
+
+def remove_lineno(line):
+    return re.sub(r'^#\d+\s+', '', line.strip())
+
+
+def normalize_frame(line: str) -> str:
+    """
+    Remove irrelevant information and extract the key part of the service stack.
+    """
+    line = line.strip()
+    # Delete "#number pc address" or "#number at".
+    line = re.sub(r'^#\d+\s+(pc\s+[0-9a-f]+\s+)?', '', line)
+    # Delete the line number (:123:1).
+    line = re.sub(r':\d+(:\d+)?', '', line)
+    return line
+
+
+def is_business_frame(line: str) -> bool:
+    """
+    Determine whether it is a service stack.
+    """
+    return (
+            line.startswith("at ") or
+            "/data/storage/" in line
+    )
+
+
+def unzip_all(src_dir, dest_dir):
+    # Ensure that the target directory exists.
+    os.makedirs(dest_dir, exist_ok=True)
+
+    # Find all .zip files.
+    zip_files = glob.glob(os.path.join(src_dir, "*.zip"))
+
+    for zip_path in zip_files:
+        # Use the zip file name (without the extension) as the subdirectory.
+        base_name = os.path.splitext(os.path.basename(zip_path))[0]
+        extract_path = os.path.join(dest_dir, base_name)
+
+        os.makedirs(extract_path, exist_ok=True)
+
+        # Decompress the files.
+        with zipfile.ZipFile(zip_path, "r") as zip_ref:
+            zip_ref.extractall(extract_path)
+
+        print(f"✅ Decompression completed: {zip_path} → {extract_path}")
+
+    print(f"\nAll decompression completed. A total of {len(zip_files)} .zip files are decompressed.")
+
+
+def get_cluster(input_dir):
+    input_file = os.path.join(input_dir, 'stack_summary.txt')
+    # Count the number of occurrences and representative stacks.
+    cluster_count = defaultdict(int)
+    cluster_sample = {}  # Segment key -> representative complete stack.
+
+    current_stack = []
+    current_count = 0
+
+    with open(input_file, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.rstrip()
+            if line.startswith("Number of occurrences:"):
+                current_count = int(re.search(r'\d+', line).group())
+                current_stack = []
+            elif line.startswith("=" * 10) or line == "":
+                if current_stack:
+                    # Find the first service stack.
+                    business_frame = None
+                    for frame in current_stack:
+                        norm = normalize_frame(frame)
+                        if is_business_frame(norm):
+                            business_frame = norm
+                            break
+                    if business_frame:
+                        cluster_count[business_frame] += 1
+                        if business_frame not in cluster_sample:  # Save the representative stack.
+                            cluster_sample[business_frame] = "\n".join(current_stack)
+                current_stack = []
+            else:
+                current_stack.append(line)
+    output_file = os.path.join(input_dir, 'Service stack clustering .txt')
+    # Output to a .txt file.
+    with open(output_file, "w", encoding="utf-8") as f:
+        for top_line, total_count in sorted(cluster_count.items(), key=lambda x: x[1], reverse=True):
+            f.write(f"Service stack: {top_line}\n")
+            f.write(f"Total occurrences: {total_count}\n")
+            f.write("Representative complete stack:\n")
+            f.write(cluster_sample[top_line] + "\n")
+            f.write("-" * 80 + "\n")
+
+    print(f"Service stack clustering is complete. The result is exported to {output_file}.")
+
+    # Output to an Excel file.
+    rows = []
+    for key, count in sorted(cluster_count.items(), key=lambda x: x[1], reverse=True):
+        rows.append({
+            "Service stack fragment": key,
+            "Total occurrences": count,
+            "Representative complete stack": cluster_sample[key]
+        })
+    output_excel = os.path.join(input_dir, 'Service stack clustering .xlsx')
+    df = pd.DataFrame(rows)
+    df.to_excel(output_excel, index=False)
+    print(f"Service stack clustering has been exported to {output_excel}.")
+
+
+def get_stack_summary(log_dir, output_dir):
+    all_results = {}
+    for root, dirs, files in os.walk(log_dir):
+        for filename in files:
+            if "freeze-cpuinfo-ext" in filename:
+                path = os.path.join(root, filename)
+                result = process_log_file(path)
+                if result:
+                    all_results[path] = result
+    folder = Path(output_dir)  #Convert the directory to Path.
+    output_file = folder / 'stack_summary.txt'  #Automatically combine the path.
+    folder.mkdir(parents=True, exist_ok=True)
+    # Output the result.
+    with open(output_file, "w", encoding="utf-8") as f:
+        for log_file, stacks in all_results.items():
+            f.write(f"Log file: {log_file}\n")
+            for stack_text, count in stacks.items():
+                f.write(f"Number of occurrences: {count}\n")
+                f.write(stack_text + "\n")
+                f.write("=" * 80 + "\n")
+    print(f"Processing is complete. The result is exported to {output_file}.")
+
+
+def get_all_result(log_dir, output_dir):
+    unzip_all(log_dir, log_dir)
+    get_stack_summary(log_dir, output_dir)
+    get_cluster(output_dir)
+
+
+if __name__ == "__main__":
+    get_all_result(r"D:\log\input", r"D:\log\output")
 ```
-
-#### Impact
-
-The application freezes and crashes when it is started or switched to the foreground.
-
-#### Fault Locating
-
-Extract the key fault logs of **LIFECYCLE_TIMEOUT** that occurs in notepad.
-
-```
-sysfreeze: LIFECYCLE_TIMEOUT LIFECYCLE_TIMEOUT at 20240201100459
-```
-
-Check the **MSG** information, which indicates that the timeout occurs in the foreground, and the duration is 5s.
-
-```
-MSG = 
-Fault time:2024/02/01-10:04:57
-ability:MainAbility foreground timeout.
-server:
-312522; AbilityRecord::ForegroundAbility; the ForegroundAbility lifecycle starts.
-client:
-312522; AbilityThread::ScheduleAbilityTransaction; the foreground lifecycle.
-```
-
-Check the report times of the **LIFECYCLE_HALF_TIMEOUT** 
-and **LIFECYCLE_TIMEOUT** events, which are **10:04:57:538** and **10:04:59:965** respectively. The interval is about 2.5s, which meets the expectation.
-
-```
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-DOMAIN:AAFWK
-STRINGID:LIFECYCLE_TIMEOUT
-TIMESTAMP:2024/02/01-10:04:59:965
-PID:18083
-UID:20020041
-PACKAGE_NAME:com.example.notepad
-PROCESS_NAME:com.example.notepad
-*******************************************
-start time: 2024/02/01-10:04:57:555
-DOMAIN = AAFWK
-EVENTNAME = LIFECYCLE_HALF_TIMEOUT
-TIMESTAMP = 2024/02/01-10:04:57:538
-PID = 18083
-UID = 20020041
-TID = 17286
-PACKAGE_NAME = com.example.notepad
-PROCESS_NAME = com.example.notepad
-```
-
-Check the task start time, which is **10:04:54.798**. The interval between the task start time and **LIFECYCLE_HALF_TIMEOUT** is about 2.5s, which meets the expectation.
-
-```
-mainHandler dump is:
- EventHandler dump begin curTime: 2024-02-01 10:04:57.306
- Event runner (Thread name = , Thread ID = 18083) is running
- Current Running: start at 2024-02-01 10:04:54.798, Event { send thread = 18132, send time = 2024-02-01 10:04:54.778, handle time = 2024-02-01 10:04:54.778, task name = UIAbilityThread:SendResult }
- History event queue information:
- No. 0 : Event { send thread = 18083, send time = 2024-02-01 10:04:46.481, handle time = 2024-02-01 10:04:46.981, trigger time = 2024-02-01 10:04:46.982, completeTime time = 2024-02-01 10:04:46.982, task name =  }
- No. 1 : Event { send thread = 18132, send time = 2024-02-01 10:04:47.149, handle time = 2024-02-01 10:04:47.149, trigger time = 2024-02-01 10:04:47.149, completeTime time = 2024-02-01 10:04:47.197, task name = MainThread:BackgroundApplication }
- No. 2 : Event { send thread = 18083, send time = 2024-02-01 10:04:44.329, handle time = 2024-02-01 10:04:47.329, trigger time = 2024-02-01 10:04:47.329, completeTime time = 2024-02-01 10:04:47.329, task name =  }
- No. 3 : Event { send thread = 18087, send time = 2024-02-01 10:04:48.091, handle time = 2024-02-01 10:04:48.091, trigger time = 2024-02-01 10:04:48.091, completeTime time = 2024-02-01 10:04:48.091, task name =  }
- No. 4 : Event { send thread = 18087, send time = 2024-02-01 10:04:51.047, handle time = 2024-02-01 10:04:51.047, trigger time = 2024-02-01 10:04:51.048, completeTime time = 2024-02-01 10:04:51.048, task name =  }
- No. 5 : Event { send thread = 18087, send time = 2024-02-01 10:04:54.067, handle time = 2024-02-01 10:04:54.067, trigger time = 2024-02-01 10:04:54.067, completeTime time = 2024-02-01 10:04:54.067, task name =  }
- ...
-```
-
-Check the stack information at **libfs.z.so > libdatashare_consumer.z.so > libipc_core.z.so**.
-
-```
-Tid:18083, Name:ei.example.notepad
-# 00 pc 00000000001617a4 /system/lib/ld-musl-aarch64.so.1(ioctl+180)(4ca73cff61bea7c4a687eb0f71c9df69)
-# 01 pc 000000000003e8a0 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderConnector::WriteBinder(unsigned long, void*)+72)(3248fceb1fa676994734e0437430ce37)
-# 02 pc 0000000000049f38 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::TransactWithDriver(bool)+296)(3248fceb1fa676994734e0437430ce37)
-# 03 pc 00000000000496f8 /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::WaitForCompletion(OHOS::MessageParcel*, int*)+116)(3248fceb1fa676994734e0437430ce37)
-# 04 pc 00000000000490bc /system/lib64/platformsdk/libipc_core.z.so(OHOS::BinderInvoker::SendRequest(int, unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+312)(3248fceb1fa676994734e0437430ce37)
-# 05 pc 0000000000027700 /system/lib64/platformsdk/libipc_core.z.so(OHOS::IPCObjectProxy::SendRequestInner(bool, unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+132)(3248fceb1fa676994734e0437430ce37)
-# 06 pc 000000000002799c /system/lib64/platformsdk/libipc_core.z.so(OHOS::IPCObjectProxy::SendRequest(unsigned int, OHOS::MessageParcel&, OHOS::MessageParcel&, OHOS::MessageOption&)+140)(3248fceb1fa676994734e0437430ce37)
-# 07 pc 000000000002640c /system/lib64/platformsdk/libdatashare_consumer.z.so(OHOS::DataShare::DataShareProxy::OpenFile(OHOS::Uri const&, std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>> const&)+440)(e93b5085235269d4b7218ea7de64b69a)
-# 08 pc 0000000000014b2c /system/lib64/platformsdk/libdatashare_consumer.z.so(OHOS::DataShare::ExtSpecialController::OpenFile(OHOS::Uri const&, std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>> const&)+160)(e93b5085235269d4b7218ea7de64b69a)
-# 09 pc 0000000000022c54 /system/lib64/platformsdk/libdatashare_consumer.z.so(OHOS::DataShare::DataShareHelperImpl::OpenFile(OHOS::Uri&, std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>> const&)+96)(e93b5085235269d4b7218ea7de64b69a)
-# 10 pc 0000000000108b34 /system/lib64/module/file/libfs.z.so(OHOS::FileManagement::ModuleFileIO::OpenFileByDatashare(std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>> const&, unsigned int)+468)(152580bf9c379f11f29fdded278541bd)
-# 11 pc 0000000000108264 /system/lib64/module/file/libfs.z.so(OHOS::FileManagement::ModuleFileIO::OpenFileByUri(std::__h::basic_string<char, std::__h::char_traits<char>, std::__h::allocator<char>> const&, unsigned int)+1760)(152580bf9c379f11f29fdded278541bd)
-# 12 pc 00000000001077fc /system/lib64/module/file/libfs.z.so(OHOS::FileManagement::ModuleFileIO::Open::Sync(napi_env__*, napi_callback_info__*) (.cfi)+1036)(152580bf9c379f11f29fdded278541bd)
-# 13 pc 000000000002bbf8 /system/lib64/platformsdk/libace_napi.z.so(ArkNativeFunctionCallBack(panda::JsiRuntimeCallInfo*)+168)(f5b81db475835ee752235c606b1c5e33)
-# 14 pc 0000000000132e48 /system/lib64/module/arkcompiler/stub.an
-```
-
-The **BinderCatcher** information shows that the communication with process **5235** takes more than 2.5s, which is as expected.
-
-```
-PeerBinderCatcher -- pid==18083 layer_ == 1
-
-BinderCatcher --
-
-    18083:18083 to 5235:7437 code 2 wait:2.723147396 s,  ns:-1:-1 to -1:-1, debug:18083:18083 to 5235:7437, active_code:0 active_thread:0, pending_async_proc=0
-    3462:3840 to 4956:4958 code 8 wait:261.213830169 s,  ns:-1:-1 to -1:-1, debug:3462:3840 to 4956:4958, active_code:0 active_thread:0, pending_async_proc=0
-    3462:3621 to 4956:4981 code 8 wait:273.550283291 s,  ns:-1:-1 to -1:-1, debug:3462:3621 to 4956:4981, active_code:0 active_thread:0, pending_async_proc=0
-```
-
-The **5235** process is a media library process and the stack information is not necessary for analysis.
-
-```
-Binder catcher stacktrace, type is peer, pid : 5235
-Result: 0 ( no error )
-Timestamp:2024-02-01 10:04:57.000
-Pid:5235
-Uid:20020079
-Process name:com.medialibrary.medialibrarydata
-Tid:5235, Name:edialibrarydata
-# 00 pc 0000000000142d1c /system/lib/ld-musl-aarch64.so.1(epoll_wait+84)(4ca73cff61bea7c4a687eb0f71c9df69)
-# 01 pc 000000000000fb74 /system/lib64/chipset-pub-sdk/libeventhandler.z.so(OHOS::AppExecFwk::EpollIoWaiter::WaitFor(std::__h::unique_lock<std::__h::mutex>&, long)+224)(a4d21072c08fd3ac639d5cf5b8fb8b51)
-# 02 pc 0000000000019df8 /system/lib64/chipset-pub-sdk/libeventhandler.z.so(OHOS::AppExecFwk::EventQueue::WaitUntilLocked(std::__h::chrono::time_point<std::__h::chrono::steady_clock, std::__h::chrono::duration<long long, std::__h::ratio<1l, 1000000000l>>> const&, std::__h::unique_lock<std::__h::mutex>&)+180)(a4d21072c08fd3ac639d5cf5b8fb8b51)
-# 03 pc 0000000000019c6c /system/lib64/chipset-pub-sdk/libeventhandler.z.so(OHOS::AppExecFwk::EventQueue::GetEvent()+128)(a4d21072c08fd3ac639d5cf5b8fb8b51)
-# 04 pc 00000000000202b8 /system/lib64/chipset-pub-sdk/libeventhandler.z.so(OHOS::AppExecFwk::(anonymous namespace)::EventRunnerImpl::Run()+1164)(a4d21072c08fd3ac639d5cf5b8fb8b51)
-# 05 pc 0000000000022388 /system/lib64/chipset-pub-sdk/libeventhandler.z.so(OHOS::AppExecFwk::EventRunner::Run()+120)(a4d21072c08fd3ac639d5cf5b8fb8b51)
-# 06 pc 000000000007ea08 /system/lib64/platformsdk/libappkit_native.z.so(OHOS::AppExecFwk::MainThread::Start()+772)(183fe2babcfdd3e1ea4bca16a0e26a5d)
-# 07 pc 0000000000011ac8 /system/bin/appspawn(RunChildProcessor+236)(7b715884c45cfe57b22df46fdaeeca88)
-# 08 pc 0000000000034684 /system/bin/appspawn(AppSpawnChild+264)(7b715884c45cfe57b22df46fdaeeca88)
-# 09 pc 00000000000344f4 /system/bin/appspawn(AppSpawnProcessMsg+380)(7b715884c45cfe57b22df46fdaeeca88)
-# 10 pc 00000000000305a0 /system/bin/appspawn(OnReceiveRequest+1820)(7b715884c45cfe57b22df46fdaeeca88)
-# 11 pc 0000000000017c58 /system/lib64/chipset-pub-sdk/libbegetutil.z.so(HandleRecvMsg_+260)(22f33d1b0218f31bad0dcc75cf348b90)
-# 12 pc 00000000000178fc /system/lib64/chipset-pub-sdk/libbegetutil.z.so(HandleStreamEvent_+148)(22f33d1b0218f31bad0dcc75cf348b90)
-# 13 pc 0000000000015478 /system/lib64/chipset-pub-sdk/libbegetutil.z.so(ProcessEvent+112)(22f33d1b0218f31bad0dcc75cf348b90)
-# 14 pc 0000000000015090 /system/lib64/chipset-pub-sdk/libbegetutil.z.so(RunLoop_+308)(22f33d1b0218f31bad0dcc75cf348b90)
-# 15 pc 000000000002eff4 /system/bin/appspawn(AppSpawnRun+116)(7b715884c45cfe57b22df46fdaeeca88)
-# 16 pc 000000000001f438 /system/bin/appspawn(main+724)(7b715884c45cfe57b22df46fdaeeca88)
-# 17 pc 00000000000a0974 /system/lib/ld-musl-aarch64.so.1(libc_start_main_stage2+64)(4ca73cff61bea7c4a687eb0f71c9df69)
-# 18 pc 000000000001106c /system/bin/appspawn(_start_c+76)(7b715884c45cfe57b22df46fdaeeca88)
-```
-
-The preceding information indicates that the application loads files synchronously using the URI through **Open::Sync** and calls **datashare()** to obtain media library file data.
-
-The log information shows that the process is suspended when calling **datashare()** to load the cloud image, which is consistent with the stack information.
-
-![appfreeze_2024061416](figures/appfreeze_2024061416.png)
-
-Check the code:
-
-It is unreasonable to load file URI synchronously in a loop. When the network is weak or a large amount of data is loaded at the same time, the application tends to be suspended. In this case, you need to optimize the application.
-
-#### Solution
-
-Use asynchronous loading, use a flag to indicate whether the loading is complete and display the loading effect on the UI.
-
-```ts
-public static xxxFunction(fileUris: string[]): void {
-    //...
-    for (const fileuril of fileUrils) {
-        let file = fs.openSync(fileUri, fs.OpenMode.READ_ONLY);
-        //...
-    }
-    //...
-}
-```
-
-Modify the preceding codes as follows:
-
-```ts
-public static async xxxFunction(fileUris: string[]): void {
-    //...
-    AppStorage.setOrCreate<boolean>('isLoadingPic', true); --> This function is used to display the page load effect.
-    for (const fileuril of fileUrils) {
-        let file = await fs.open(fileUri, fs.OpenMode.READ_ONLY);
-        //...
-    }
-    //...
-}
-```
-
-#### Suggestions
-
-1. Verify the cloud data requests in scenarios where the network is available, weak, or unavailable. 
-2. Do not perform time-consuming operations in the application lifecycle function.

@@ -1,5 +1,12 @@
 # 滚动类组件错误码
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong; @zcdqs-->
+<!--Designer: @yylong; @zcdqs-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -17,3 +24,7 @@ Controller not bound to component.
 **可能原因**
 
 控制器未绑定组件，通过控制器调用接口。
+
+**处理步骤**
+
+请检查控制器是否绑定了组件，或者控制器绑定的组件是否已经被释放。

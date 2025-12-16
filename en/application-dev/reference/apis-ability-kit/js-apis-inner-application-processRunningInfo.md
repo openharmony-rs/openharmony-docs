@@ -1,7 +1,13 @@
 # ProcessRunningInfo
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @SKY2001-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 <!--deprecated_code_no_check-->
 
-The **ProcessRunningInfo** module defines the running information of a process.
+The module defines the running information of a process. The information can be obtained through [getProcessRunningInfos](js-apis-application-appManager.md#appmanagergetprocessrunninginfosdeprecated) of appManager.
 
 > **NOTE**
 > - The APIs provided by this module are deprecated since API version 9. You are advised to use [ProcessInformation<sup>9+</sup>](js-apis-inner-application-processInformation.md) instead.
@@ -17,16 +23,12 @@ import appManager from '@ohos.application.appManager';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Mission
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| pid | number | Yes| No| Process ID.|
-| uid | number | Yes| No| User ID.|
-| processName | string | Yes| No| Process name.|
-| bundleNames | Array&lt;string&gt; | Yes| No| Names of all running bundles in the process.|
-
-## Usage
-
-The process running information is obtained by using [getProcessRunningInfos](js-apis-application-appManager.md#appmanagergetprocessrunninginfosdeprecated) in **appManager**.
+| pid | number | No| No| Process ID.|
+| uid | number | No| No| UID of the application.|
+| processName | string | No| No| Process name.|
+| bundleNames | Array&lt;string&gt; | No| No| Names of all running bundles in the process.|
 
 **Example**
 ```ts
@@ -34,7 +36,7 @@ import appManager from '@ohos.application.appManager';
 import { BusinessError } from '@ohos.base';
 
 appManager.getProcessRunningInfos().then((data) => {
-    console.log(`success: ${JSON.stringify(data)}`);
+    console.info(`success: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
     console.error(`failed: ${JSON.stringify(error)}`);
 });

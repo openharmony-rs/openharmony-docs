@@ -1,10 +1,18 @@
 # @ohos.userIAM.userAuth (用户认证)(系统接口)
 
+<!--Kit: User Authentication Kit-->
+<!--Subsystem: UserIAM-->
+<!--Owner: @WALL_EYE-->
+<!--Designer: @lichangting518-->
+<!--Tester: @jane_lz-->
+<!--Adviser: @zengyawen-->
+
 提供用户认证能力，可应用于设备解锁、支付、应用登录等身份认证场景。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.userIAM.userAuth (用户认证)](js-apis-useriam-userauth.md)。
 
 ## 导入模块
@@ -17,19 +25,19 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 用户认证相关参数。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-| 名称           | 类型                               | 必填 | 说明                                                         |
-| -------------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| userId<sup>18+</sup> | number | 否   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。|
+| 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
+| -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| userId<sup>18+</sup> | number | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**系统接口**: 此接口为系统接口。|
 
 ## WindowModeType<sup>10+</sup>
 
 用户认证界面的显示类型。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
@@ -40,19 +48,19 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 
 用户认证界面配置相关参数。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-| 名称                 | 类型                                | 必填 | 说明                                                         |
-| -------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| windowMode           | [WindowModeType](#windowmodetype10) | 否   | 代表用户认证界面的显示类型，默认值为WindowModeType.DIALOG_BOX。<br>**系统接口**: 此接口为系统接口。 |
+| 名称                 | 类型                                | 只读 | 可选 | 说明                                                         |
+| -------------------- | ----------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| windowMode           | [WindowModeType](#windowmodetype10) | 否   | 是   | 代表用户认证界面的显示类型，默认值为WindowModeType.DIALOG_BOX。<br>**系统接口**: 此接口为系统接口。 |
 
 ## NoticeType<sup>10+</sup>
 
 用户身份认证的通知类型。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称          | 值   | 说明                 |
 | ------------- | ---- | -------------------- |
@@ -64,11 +72,11 @@ sendNotice(noticeType: NoticeType, eventData: string): void
 
 在使用统一身份认证控件进行用户身份认证时，用于接收来自统一身份认证控件的通知。
 
-**需要权限**：ohos.permission.SUPPORT_USER_AUTH
+**需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -79,19 +87,20 @@ sendNotice(noticeType: NoticeType, eventData: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission verification failed.         |
-| 202      | The caller is not a system application. |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.    |
+| 201      | Permission denied.       |
+| 202      | Permission denied. Called by non-system application. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed.    |
 | 12500002 | General operation error.                |
 
 **示例：**
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 interface  EventData {
   widgetContextId: number;
@@ -100,7 +109,7 @@ interface  EventData {
   payload: PayLoad;
 }
 interface PayLoad {
-  type: Object[];
+  type: string[];
 }
 try {
   const eventData : EventData = {
@@ -116,7 +125,8 @@ try {
   userAuth.sendNotice(noticeType, jsonEventData);
   console.info('sendNotice success');
 } catch (error) {
-  console.error(`sendNotice catch error: ${JSON.stringify(error)}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`sendNotice catch error: Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -130,9 +140,9 @@ on(type: 'command', callback: IAuthWidgetCallback): void
 
 身份认证控件订阅来自用户认证框架的命令。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -143,17 +153,18 @@ on(type: 'command', callback: IAuthWidgetCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例：**
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const userAuthWidgetMgrVersion = 1;
 try {
@@ -166,7 +177,8 @@ try {
   })
   console.info('subscribe authentication event success');
 } catch (error) {
-  console.error(`userAuth widgetMgr catch error: ${JSON.stringify(error)}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -176,9 +188,9 @@ off(type: 'command', callback?: IAuthWidgetCallback): void
 
 身份认证控件取消订阅来自用户认证框架的命令。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -189,17 +201,18 @@ off(type: 'command', callback?: IAuthWidgetCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. <br>3.Parameter verification failed. |
 | 12500002 | General operation error. |
 
 **示例：**
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const userAuthWidgetMgrVersion = 1;
 try {
@@ -212,7 +225,8 @@ try {
   })
   console.info('cancel subscribe authentication event success');
 } catch (error) {
-  console.error(`userAuth widgetMgr catch error: ${JSON.stringify(error)}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -223,13 +237,14 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 获取UserAuthWidgetMgr对象，用于执行用户身份认证。
 
 > **说明：**
+>
 > 每个UserAuthInstance只能进行一次认证，若需要再次进行认证则需重新获取UserAuthInstance。
 
-**需要权限**：ohos.permission.SUPPORT_USER_AUTH
+**需要权限：** ohos.permission.SUPPORT_USER_AUTH
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -245,26 +260,28 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission verification failed.         |
-| 202      | The caller is not a system application. |
-| 401      | Incorrect parameters. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.                                     |
+| 201      | Permission denied.       |
+| 202      | Permission denied. Called by non-system application. |
+| 401      | Parameter error. Possible causes: <br>1.Mandatory parameters are left unspecified. <br>2.Incorrect parameter types. |
 | 12500002 | General operation error.                |
 
 **示例：**
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let userAuthWidgetMgrVersion = 1;
 try {
   let userAuthWidgetMgr = userAuth.getUserAuthWidgetMgr(userAuthWidgetMgrVersion);
   console.info('get userAuthWidgetMgr instance success');
 } catch (error) {
-  console.error(`userAuth widgetMgr catch error: ${JSON.stringify(error)}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -278,9 +295,9 @@ sendCommand(cmdData: string): void
 
 回调函数，用于用户认证框架向组件发送命令。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -292,6 +309,7 @@ sendCommand(cmdData: string): void
 
 ```ts
 import { userAuth } from '@kit.UserAuthenticationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const userAuthWidgetMgrVersion = 1;
 try {
@@ -304,7 +322,8 @@ try {
   })
   console.info('subscribe authentication event success');
 } catch (error) {
-  console.error(`userAuth widgetMgr catch error: ${JSON.stringify(error)}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`userAuth widgetMgr catch error: Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
@@ -312,15 +331,15 @@ try {
 
 表示身份认证的凭据类型枚举。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
 | 名称        | 值   | 说明       |
 | ----------- | ---- | ---------- |
-| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私口令。 |
+| PRIVATE_PIN<sup>14+</sup>  | 16   | 隐私口令。<br>**系统接口：** 此接口为系统接口。 |
 
 **示例：**
 
-发起用户认证，采用认证可信等级≥ATL3的隐私密码认证，获取认证结果：
+发起用户认证，采用认证可信等级≥ATL3的隐私密码认证，获取认证结果。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -363,17 +382,17 @@ queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 查询是否有可复用的身份认证结果。
 
-**需要权限**：ohos.permission.ACCESS_USER_AUTH_INTERNAL
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-**系统接口**: 此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                 |
 | ------- | ------ | ---- | -------------------- |
-| authParam | [userAuth.AuthParam](js-apis-useriam-userauth.md#authparam10) | 是 | 用户认证相关参数。|
+| authParam | [AuthParam](js-apis-useriam-userauth.md#authparam10) | 是 | 用户认证相关参数。|
 
 **返回值：**
 
@@ -383,12 +402,12 @@ queryReusableAuthResult(authParam: AuthParam): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[用户认证错误码](errorcode-useriam.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
-| 201      | Permission verification failed.         |
-| 202      | The caller is not a system application. |
+| 201      | Permission denied.       |
+| 202      | Permission denied. Called by non-system application. |
 | 12500002 | General operation error.                |
 | 12500008 | The parameter is out of range.          |
 | 12500017 | Failed to reuse authentication result.       |
@@ -417,17 +436,21 @@ try {
   let authToken = userAuth.queryReusableAuthResult(authParam);
   console.info('query reuse auth result success');
 } catch (error) {
-  console.error(`query reuse auth result catch error. Code is ${error?.code}, message is ${error?.message}`);
+  const err: BusinessError = error as BusinessError;
+  console.error(`query reuse auth result catch error. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
 
-## UserAuthResultCode<sup>18+</sup>
+## UserAuthResultCode<sup>9+</sup>
 
 表示返回码的枚举。
 
-**系统能力**：SystemCapability.UserIAM.UserAuth.Core
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+**系统接口：** 此接口为系统接口。
 
 | 名称                    |   值   | 说明                 |
 | ----------------------- | ------ | -------------------- |
-| AUTH_TOKEN_CHECK_FAILED | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。|
-| AUTH_TOKEN_EXPIRED      | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。|
+| AUTH_TOKEN_CHECK_FAILED<sup>18+</sup> | 12500015      | verifyAuthToken系统接口错误码，表示验证的AuthToken无效。|
+| AUTH_TOKEN_EXPIRED<sup>18+</sup>      | 12500016      | verifyAuthToken系统接口错误码，AuthToken的签发时间至发起验证时的时间间隔超过传入的最大有效时长。|
+| REUSE_AUTH_RESULT_FAILED<sup>20+</sup>| 12500017      | queryReusableAuthResult系统接口错误码，表示复用身份认证结果失败。|

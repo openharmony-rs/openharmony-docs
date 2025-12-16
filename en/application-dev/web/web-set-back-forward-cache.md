@@ -1,4 +1,10 @@
-# Setting Backward-Forward Cache
+# Setting the Backward-Forward Cache
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @aohui-->
+<!--Designer: @yaomingliu-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 The **Web** component provides the function of enabling and configuring the back-forward cache (BFCache), which can significantly improve the speed of returning to the previous web page, especially for users with poor network conditions.
 
@@ -6,7 +12,7 @@ After BFCache is enabled, the **Web** component saves the snapshot of the curren
 
 ## Enabling BFCache
 
-You need to call [enableBackForwardCache()](../reference/apis-arkweb/js-apis-webview.md#enablebackforwardcache12) to enable BFCache before calling [initializeWebEngine()](../reference/apis-arkweb/js-apis-webview.md#initializewebengine) to initialize the ArkWeb kernel. The **enableBackForwardCache** function receives the [BackForwardCacheSupportedFeatures](../reference/apis-arkweb/js-apis-webview.md#backforwardcachesupportedfeatures12) parameter, which is used to control whether to allow pages with the same-layer rendering feature and video takeover feature to enter the BFCache.
+Before calling [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the ArkWeb kernel, you need to call [enableBackForwardCache()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#enablebackforwardcache12) to enable BFCache. The **enableBackForwardCache** function receives the [BackForwardCacheSupportedFeatures](../reference/apis-arkweb/arkts-apis-webview-BackForwardCacheSupportedFeatures.md) parameter, which is used to control whether to allow pages with the same-layer rendering feature and video takeover feature to enter the BFCache.
 
 ```ts
 // EntryAbility.ets
@@ -29,12 +35,16 @@ export default class EntryAbility extends UIAbility {
 
 ## Setting the Size and Live Time of Cached pages
 
-By default, BFCache can store only one page, and the page can be stored for 600 seconds. You can call [setBackForwardCacheOptions()](../reference/apis-arkweb/js-apis-webview.md#setbackforwardcacheoptions12) to set the BFCache policies for each **Web** instance. The maximum number of pages in the BFCache can be adjusted so that it can hold more pages. In this way, BFCache can provide faster loading speed when users perform forward and backward operations continuously. In addition, you can prolong the duration of each page in the BFCache to improve user experience.
+By default, BFCache can store only one page, and the page can be stored for 600 seconds. You can call [setBackForwardCacheOptions()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setbackforwardcacheoptions12) to set the BFCache policies for each **Web** instance. The maximum number of pages in the BFCache can be adjusted so that it can hold more pages. In this way, BFCache can provide faster loading speed when users perform forward and backward operations continuously. In addition, you can prolong the duration of each page in the BFCache to improve user experience.
 
 In the following example, the maximum number of pages that can be cached in the **Web** component is set to **10**, and each page is cached for 300s.
   
 ```ts
 // Index.ets
+```
+<!-- @[web_module_page_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry2/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 
 @Entry
@@ -45,20 +55,20 @@ struct Index {
   build() {
     Column() {
       Row() {
-        Button("Add options").onClick((event: ClickEvent) => {
+        Button('Add options').onClick((event: ClickEvent) => {
           let options = new webview.BackForwardCacheOptions();
           options.size = 10;
           options.timeToLive = 300;
           this.controller.setBackForwardCacheOptions(options);
         })
-        Button("Backward").onClick((event: ClickEvent) => {
+        Button('Backward').onClick((event: ClickEvent) => {
           this.controller.backward();
         })
-        Button("Forward").onClick((event: ClickEvent) => {
+        Button('Forward').onClick((event: ClickEvent) => {
           this.controller.forward();
         })
       }
-      Web({ src: "https://www.example.com", controller: this.controller })
+      Web({ src: 'https://www.example.com', controller: this.controller })
     }
     .height('100%')
     .width('100%')

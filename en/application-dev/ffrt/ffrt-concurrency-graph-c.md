@@ -1,15 +1,22 @@
 # Function Flow Runtime Task Graph (C)
 
+<!--Kit: Function Flow Runtime Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @chuchihtung; @yanleo-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
-The FFRT task graph supports task dependency and data dependency. Each node in the task graph indicates a task, and each edge indicates the dependency between tasks. Task dependency is classified into input dependency (`in_deps`) and output dependency (`out_deps`).
+The FFRT task graph supports task dependency and data dependency. Each node in the task graph indicates a task, and each edge indicates the build dependency between tasks. Task dependency is classified into input dependency (`in_deps`) and output dependency (`out_deps`).
 
 You can use either of the following ways to build a task graph:
 
 - Use the task dependency to build a task graph. The task `handle` is used to indicate a task object.
 - Use the data dependency to build a task graph. The data object is abstracted as a data signature, and each data signature uniquely indicates a data object.
 
-### Task dependency
+### Task Dependency
 
 > **NOTE**
 >
@@ -18,7 +25,7 @@ You can use either of the following ways to build a task graph:
 Task dependency applies to scenarios where tasks have specific sequence or logical process requirements. For example:
 
 - Tasks with sequence. For example, a data preprocessing task is executed before a model training task.
-- Logic process control. For example, in a typical commodity transaction process, orders are placed, followed by production and then logistics transportation.
+- Logic process control. For example, in a commodity transaction process, three steps need to be performed in sequence: order placement, production, and logistics transportation.
 - Multi-level chain: For example, during video processing, you can perform tasks such as transcoding, generating thumbnails, adding watermarks, and releasing the final video.
 
 ### Data Dependency
@@ -78,7 +85,7 @@ The FFRT provides task graph that can describe the task dependency and paralleli
 
 ```c
 #include <stdio.h>
-#include "ffrt/ffrt.h"
+#include "ffrt/ffrt.h" // From the OpenHarmony third-party library "@ppd/ffrt"
 
 void func_TaskA(void* arg)
 {
@@ -147,13 +154,17 @@ Watermark adding
 Video release
 ```
 
+> **NOTE**
+>
+> The `ffrt_submit_h_f` and `ffrt_submit_f` APIs can receive naked function pointer tasks as parameters. If there are pre-processing and post-processing operations on the task, refer to the [ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base) function to construct the task structure.
+
 ## Example: Fibonacci Sequence
 
 Each number in the Fibonacci sequence is the sum of the first two numbers. The process of calculating the Fibonacci number can well express the task dependency through the data object. The code for calculating the Fibonacci number using the FFRT framework is as follows:
 
 ```c
 #include <stdio.h>
-#include "ffrt/ffrt.h"
+#include "ffrt/ffrt.h" // From the OpenHarmony third-party library "@ppd/ffrt"
 
 typedef struct {
     int x;
@@ -216,6 +227,10 @@ Fibonacci(5) is 5
 
 In the example, `fibonacci(x-1)` and `fibonacci(x-2)` are submitted to FFRT as two tasks. After the two tasks are complete, the results are accumulated. Although a single task is split into two subtasks, the subtasks can be further split. Therefore, the concurrency of the entire computational graph is very high.
 
+> **NOTE**
+>
+> The `ffrt_submit_f` API can receive a naked function pointer task as a parameter. If there are pre-processing and post-processing operations on the task, refer to the [ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base) function to construct the task structure.
+
 Each task forms a call tree in the FFRT.
 
 ![image](figures/ffrt_figure2.png)
@@ -224,19 +239,19 @@ Each task forms a call tree in the FFRT.
 
 The main FFRT APIs involved in the preceding example are as follows:
 
-| Name                                                      | Description                            |
-| ---------------------------------------------------------- | -------------------------------- |
-| [ffrt_submit_f](ffrt-api-guideline-c.md#ffrt_submit_f)     | Submits a task.              |
-| [ffrt_submit_h_f](ffrt-api-guideline-c.md#ffrt_submit_h_f) | Submits a task, and obtains the task handle.|
-| [ffrt_wait_deps](ffrt-api-guideline-c.md#ffrt_wait_deps)   | Waits until the dependent tasks are complete.            |
+| Name                                                      | Description                                                                             |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [ffrt_submit_f](ffrt-api-guideline-c.md#ffrt_submit_f)     | Submits a task.<br>**Note**: This API is supported since API version 20.              |
+| [ffrt_submit_h_f](ffrt-api-guideline-c.md#ffrt_submit_h_f) | Submits a task, and obtains the task handle.<br>**Note**: This API is supported since API version 20.|
+| [ffrt_wait_deps](ffrt-api-guideline-c.md#ffrt_wait_deps)   | Waits until the dependent tasks are complete.                                                             |
 
 > **NOTE**
 >
 > - For details about how to use FFRT C++ APIs, see [Using FFRT C++ APIs](ffrt-development-guideline.md#using-ffrt-c-api-1).
-> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify the header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
+> - When using FFRT C or C++ APIs, you can refer to the FFRT C++ API third-party library to simplify the header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
 
 ## Constraints
 
 - For `ffrt_submit_base`, the total number of input dependencies and output dependencies of each task cannot exceed 8.
 - For `ffrt_submit_h_base`, the total number of input dependencies and output dependencies of each task cannot exceed 7.
-- When a parameter is used as both an input dependency and an output dependency, it is counted as one dependency. For example, if the input dependency is `{&x}` and the output dependency is also `{&x}`, then the number of dependencies is 1.
+- When a parameter is used as both input dependency and output dependency, the number of dependencies is counted only once. For example, if the input dependency is `{&x}` and the output dependency is `{&x}`, the actual number of dependencies is 1.

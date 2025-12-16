@@ -1,4 +1,13 @@
 # OH_OnFrameAvailableListener
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+```c
+typedef struct OH_OnFrameAvailableListener {...} OH_OnFrameAvailableListener
+```
 
 ## 概述
 
@@ -30,7 +39,7 @@
 
 ### OH_OnFrameAvailable()
 
-```
+```c
 typedef void (*OH_OnFrameAvailable)(void *context)
 ```
 

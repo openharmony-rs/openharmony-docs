@@ -1,11 +1,17 @@
-# Using an EL5 Database
+# Using an EL5 Database (ArkTS)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997; @dboy190-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 
 ## When to Use
 
-An [EL5](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) database is created in the **el5/** directory to store the application's sensitive information. When the device screen is locked and certain conditions are met, the key used to encrypt the sensitive information will be destroyed and the encrypted database cannot be read or written. After the screen is unlocked, the key is restored and the read and write operations on the database are restored. This mechanism can effectively protect the user data. For details about how to manage the encryption directories, see [Obtaining and Modifying Encryption Levels](../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels).
+To meet the security requirements of sensitive data, the EL5 database is provided to improve the data security when the screen is locked. An application that contains sensitive information creates a database in the [EL5](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) directory after requesting the ohos.permission.PROTECT_SCREEN_LOCK_DATA permission. If the screen is locked (and the **Access** API is not called to obtain the key of the reserved file), the file key will be destroyed, and the database cannot be read or written. After the screen is unlocked, the key is restored and the read and write operations on the database are restored. This mechanism can effectively protect the user data. For details about how to manage the encryption directories, see [Obtaining and Modifying Encryption Levels](../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels).
 
-However, the application may write data when the screen is locked. Data loss will be caused if the EL5 database cannot be operated when data is written. A solution is provided to solve this problem. When the screen is locked, incremental data is stored in an [EL2](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) database. The data temporarily stored in the EL2 database will be moved to the EL5 database when the EL5 database is unlocked. This ensures data security and integrity when the screen is locked.
+An application can continue to write data even if the screen is locked, which may lead to data loss. A solution is provided to solve this problem. When the screen is locked, incremental data is stored in an [EL2](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) database. The data temporarily stored in the EL2 database will be moved to the EL5 database when the EL5 database is unlocked. This ensures data security and integrity when the screen is locked.
 
 Both the KV store and RDB store can be used as an EL5 database.
 
@@ -13,11 +19,13 @@ Both the KV store and RDB store can be used as an EL5 database.
 
 The following classes are encapsulated to implement the data operations and transfer between EL2 and EL5 databases:
 
-- **Mover** class: provides APIs for moving data from an EL2 database to an EL5 database after the screen is unlocked.
-- **Store** class: provides APIs for obtaining a database instance, adding, deleting, and updating data, and obtaining the data count in the database.
-- **SecretKeyObserver** class: provides APIs for obtaining the key status. After the key is destroyed, the EL5 database will be closed.
+**Mover** class: provides APIs for moving data from an EL2 database to an EL5 database after the screen is unlocked.
 
-- **ECStoreManager** class: provides APIs for managing the EL2 and EL5 databases.
+**Store** class: provides APIs for obtaining a database instance, adding, deleting, and updating data, and obtaining the data count in the database.
+
+**SecretKeyObserver** class: provides APIs for obtaining the key status. After the key is destroyed, the EL5 database will be closed.
+
+**ECStoreManager** class: provides APIs for managing the EL2 and EL5 databases.
 
 ## Requesting Permissions
 
@@ -40,16 +48,19 @@ The following describes how to use the [Mover](#mover), [Store](#store), [Secret
 
 Use **Mover** to move data from an EL2 database to an EL5 database after the screen is unlocked.
 
-```ts
-// Mover.ts
+<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) -->
+
+``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
+// Logger implements the print feature after Hilog is encapsulated.
+import Logger from '../common/Logger';
 
 export class Mover {
   async move(eStore: distributedKVStore.SingleKVStore, cStore: distributedKVStore.SingleKVStore): Promise<void> {
     if (eStore != null && cStore != null) {
       let entries: distributedKVStore.Entry[] = await cStore.getEntries('key_test_string');
       await eStore.putBatch(entries);
-      console.info(`ECDB_Encry move success`);
+      Logger.info(`ECDB_Encry move success`);
     }
   }
 }
@@ -59,10 +70,13 @@ export class Mover {
 
 Use the APIs provided by the **Store** class to obtain a database instance, add, delete, and update data, and obtain the data count in the database.
 
-```ts
-// Store.ts
+<!-- @[Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Store.ts) -->
+
+``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
+// Logger implements the print feature after Hilog is encapsulated.
+import Logger from '../common/Logger';
 
 let kvManager: distributedKVStore.KVManager;
 
@@ -76,23 +90,22 @@ export class Store {
   async getECStore(storeInfo: StoreInfo): Promise<distributedKVStore.SingleKVStore> {
     try {
       kvManager = distributedKVStore.createKVManager(storeInfo.kvManagerConfig);
-      console.info("Succeeded in creating KVManager");
+      Logger.info('Succeeded in creating KVManager');
     } catch (e) {
       let error = e as BusinessError;
-      console.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+      Logger.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
     }
     if (kvManager !== undefined) {
-      kvManager = kvManager as distributedKVStore.KVManager;
       let kvStore: distributedKVStore.SingleKVStore | null;
       try {
         kvStore = await kvManager.getKVStore<distributedKVStore.SingleKVStore>(storeInfo.storeId, storeInfo.option);
         if (kvStore != undefined) {
-          console.info(`ECDB_Encry succeeded in getting store : ${storeInfo.storeId}`);
+          Logger.info(`ECDB_Encry succeeded in getting store : ${storeInfo.storeId}`);
           return kvStore;
         }
       } catch (e) {
         let error = e as BusinessError;
-        console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+        Logger.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
       }
     }
   }
@@ -104,14 +117,14 @@ export class Store {
       try {
         kvStore.put(KEY_TEST_STRING_ELEMENT, VALUE_TEST_STRING_ELEMENT, (err) => {
           if (err !== undefined) {
-            console.error(`Failed to put data. Code:${err.code},message:${err.message}`);
+            Logger.error(`Failed to put data. Code:${err.code},message:${err.message}`);
             return;
           }
-          console.info(`ECDB_Encry Succeeded in putting data.${KEY_TEST_STRING_ELEMENT}`);
+          Logger.info(`ECDB_Encry Succeeded in putting data.${KEY_TEST_STRING_ELEMENT}`);
         });
       } catch (e) {
         let error = e as BusinessError;
-        console.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
+        Logger.error(`An unexpected error occurred. Code:${error.code},message:${error.message}`);
       }
     }
   }
@@ -119,18 +132,18 @@ export class Store {
   getDataNum(kvStore: distributedKVStore.SingleKVStore): void {
     if (kvStore != undefined) {
       let resultSet: distributedKVStore.KVStoreResultSet;
-      kvStore.getResultSet("key_test_string").then((result: distributedKVStore.KVStoreResultSet) => {
-        console.info(`ECDB_Encry Succeeded in getting result set num ${result.getCount()}`);
+      kvStore.getResultSet('key_test_string').then((result: distributedKVStore.KVStoreResultSet) => {
+        Logger.info(`ECDB_Encry Succeeded in getting result set num ${result.getCount()}`);
         resultSet = result;
         if (kvStore != null) {
           kvStore.closeResultSet(resultSet).then(() => {
-            console.info('Succeeded in closing result set');
+            Logger.info('Succeeded in closing result set');
           }).catch((err: BusinessError) => {
-            console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+            Logger.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
           });
         }
       }).catch((err: BusinessError) => {
-        console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+        Logger.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
       });
     }
   }
@@ -139,16 +152,16 @@ export class Store {
     if (kvStore != undefined) {
       kvStore.getEntries('key_test_string', (err: BusinessError, entries: distributedKVStore.Entry[]) => {
         if (err != undefined) {
-          console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+          Logger.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
           return;
         }
         if (kvStore != null && entries.length != 0) {
           kvStore.delete(entries[0].key, (err: BusinessError) => {
             if (err != undefined) {
-              console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+              Logger.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
               return;
             }
-            console.info('ECDB_Encry Succeeded in deleting');
+            Logger.info('ECDB_Encry Succeeded in deleting');
           });
         }
       });
@@ -159,17 +172,17 @@ export class Store {
     if (kvStore != undefined) {
       kvStore.getEntries('key_test_string', async (err: BusinessError, entries: distributedKVStore.Entry[]) => {
         if (err != undefined) {
-          console.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
+          Logger.error(`Failed to get Entries.code is ${err.code},message is ${err.message}`);
           return;
         }
         if (kvStore != null && entries.length != 0) {
-          console.info(`ECDB_Encry old data:${entries[0].key},value :${entries[0].value.value.toString()}`)
-          await kvStore.put(entries[0].key, "new value_test_string" + String(Date.now()) + 'new').then(() => {
+          Logger.info(`ECDB_Encry old data:${entries[0].key},value :${entries[0].value.value.toString()}`);
+          await kvStore.put(entries[0].key, 'new value_test_string' + String(Date.now()) + 'new').then(() => {
           }).catch((err: BusinessError) => {
-            console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+            Logger.error(`Failed to put.code is ${err.code},message is ${err.message}`);
           });
+          Logger.info(`ECDB_Encry update success`);
         }
-        console.info(`ECDB_Encry update success`)
       });
     }
   }
@@ -180,8 +193,9 @@ export class Store {
 
 Use the APIs provided by the **SecretKeyObserver** class to obtain the key status. After the key is destroyed, the EL5 database will be closed.
 
-```ts
-// SecretKeyObserver.ts
+<!-- @[SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/SecretKeyObserver.ts) -->
+
+``` TypeScript
 import { ECStoreManager } from './ECStoreManager';
 
 export enum SecretStatus {
@@ -191,32 +205,32 @@ export enum SecretStatus {
 
 export class SecretKeyObserver {
   onLock(): void {
-    this.lockStatuas = SecretStatus.Lock;
+    this.lockStatus = SecretStatus.Lock;
     this.storeManager.closeEStore();
   }
 
   onUnLock(): void {
-    this.lockStatuas = SecretStatus.UnLock;
+    this.lockStatus = SecretStatus.UnLock;
   }
 
   getCurrentStatus(): number {
-    return this.lockStatuas;
+    return this.lockStatus;
   }
 
   initialize(storeManager: ECStoreManager): void {
     this.storeManager = storeManager;
   }
 
-  updatelockStatus(code: number) {
+  updateLockStatus(code: number) {
     if (code === SecretStatus.Lock) {
       this.onLock();
     } else {
-      this.lockStatuas = code;
+      this.lockStatus = code;
     }
   }
 
   // Obtain the screen lock status.
-  private lockStatuas: number = SecretStatus.UnLock;
+  private lockStatus: number = SecretStatus.UnLock;
   private storeManager: ECStoreManager;
 }
 
@@ -227,13 +241,16 @@ export let lockObserve = new SecretKeyObserver();
 
 Use the APIs provided by the **ECStoreManager** class to manage the EL2 and EL5 databases. You can configure database information and migration function information, provide database handles for applications based on the key status, close EL5 databases, and destroy EL2 databases after data migration.
 
-```ts
-// ECStoreManager.ts
+<!-- @[ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/ECStoreManager.ts) -->
+
+``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
 import { Mover } from './Mover';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { StoreInfo, Store } from './Store';
 import { SecretStatus } from './SecretKeyObserver';
+// Logger implements the print feature after Hilog is encapsulated.
+import Logger from '../common/Logger';
 
 let store = new Store();
 
@@ -247,14 +264,14 @@ export class ECStoreManager {
     this.mover = mover;
   }
 
-  async getCurrentStore(screanStatus: number): Promise<distributedKVStore.SingleKVStore> {
-    console.info(`ECDB_Encry GetCurrentStore start screanStatus: ${screanStatus}`);
-    if (screanStatus === SecretStatus.UnLock) {
+  async getCurrentStore(screenStatus: number): Promise<distributedKVStore.SingleKVStore> {
+    Logger.info(`ECDB_Encry GetCurrentStore start screenStatus: ${screenStatus}`);
+    if (screenStatus === SecretStatus.UnLock) {
       try {
         this.eStore = await store.getECStore(this.eInfo);
       } catch (e) {
         let error = e as BusinessError;
-        console.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
+        Logger.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
       }
       // Obtain an EL5 database when the screen is unlocked.
       if (this.needMove) {
@@ -262,7 +279,7 @@ export class ECStoreManager {
           await this.mover.move(this.eStore, this.cStore);
         }
         this.deleteCStore();
-        console.info(`ECDB_Encry Data migration is complete. Destroy cstore`);
+        Logger.info(`ECDB_Encry Data migration is complete. Destroy cstore`);
         this.needMove = false;
       }
       return this.eStore;
@@ -273,7 +290,7 @@ export class ECStoreManager {
         this.cStore = await store.getECStore(this.cInfo);
       } catch (e) {
         let error = e as BusinessError;
-        console.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
+        Logger.error(`Failed to GetECStore.code is ${error.code},message is ${error.message}`);
       }
       return this.cStore;
     }
@@ -282,30 +299,30 @@ export class ECStoreManager {
   closeEStore(): void {
     try {
       let kvManager = distributedKVStore.createKVManager(this.eInfo.kvManagerConfig);
-      console.info("Succeeded in creating KVManager");
+      Logger.info('Succeeded in creating KVManager');
       if (kvManager != undefined) {
         kvManager.closeKVStore(this.eInfo.kvManagerConfig.bundleName, this.eInfo.storeId);
         this.eStore = null;
-        console.info(`ECDB_Encry close EStore success`)
+        Logger.info(`ECDB_Encry close EStore success`);
       }
     } catch (e) {
       let error = e as BusinessError;
-      console.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+      Logger.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
     }
   }
 
   deleteCStore(): void {
     try {
       let kvManager = distributedKVStore.createKVManager(this.cInfo.kvManagerConfig);
-      console.info("Succeeded in creating KVManager");
+      Logger.info('Succeeded in creating KVManager');
       if (kvManager != undefined) {
         kvManager.deleteKVStore(this.cInfo.kvManagerConfig.bundleName, this.cInfo.storeId);
         this.cStore = null;
-        console.info("ECDB_Encry delete cStore success");
+        Logger.info('ECDB_Encry delete cStore success');
       }
     } catch (e) {
       let error = e as BusinessError;
-      console.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
+      Logger.error(`Failed to create KVManager.code is ${error.code},message is ${error.message}`);
     }
   }
 
@@ -322,8 +339,9 @@ export class ECStoreManager {
 
 Register a listener for the COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED event when the simulated application starts, and configure the database information and key status information.
 
-```ts
-// EntryAbility.ets
+<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, application, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -334,35 +352,33 @@ import { Mover } from './Mover';
 import { SecretKeyObserver } from './SecretKeyObserver';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-
+// Logger implements the print feature after Hilog is encapsulated.
+import Logger from '../common/Logger';
 
 export let storeManager = new ECStoreManager();
-
 export let e_secretKeyObserver = new SecretKeyObserver();
-
 let mover = new Mover();
-
 let subscriber: commonEventManager.CommonEventSubscriber;
 
 export function createCB(err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) {
   if (!err) {
-    console.info('ECDB_Encry createSubscriber');
+    Logger.info('ECDB_Encry createSubscriber');
     subscriber = commonEventSubscriber;
     try {
       commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
         if (err) {
-          console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+          Logger.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.info(`ECDB_Encry SubscribeCB ${data.code}`);
-          e_secretKeyObserver.updatelockStatus(data.code);
+          Logger.info(`ECDB_Encry SubscribeCB ${data.code}`);
+          e_secretKeyObserver.updateLockStatus(data.code);
         }
       });
     } catch (error) {
       const err: BusinessError = error as BusinessError;
-      console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+      Logger.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
     }
   } else {
-    console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+    Logger.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 
@@ -374,12 +390,12 @@ export default class EntryAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
     let cContext = this.context;
     cInfo = {
-      "kvManagerConfig": {
+      'kvManagerConfig': {
         context: cContext,
-        bundleName: 'com.example.ecstoredemo',
+        bundleName: 'com.example.ecstoresamples'
       },
-      "storeId": "cstore",
-      "option": {
+      'storeId': 'cstore',
+      'option': {
         createIfMissing: true,
         encrypt: false,
         backup: false,
@@ -390,15 +406,15 @@ export default class EntryAbility extends UIAbility {
         securityLevel: distributedKVStore.SecurityLevel.S3
       }
     }
-    let eContext = await application.createModuleContext(this.context,"entry");
+    let eContext = await application.createModuleContext(this.context,'entry');
     eContext.area = contextConstant.AreaMode.EL5;
     eInfo = {
-      "kvManagerConfig": {
+      'kvManagerConfig': {
         context: eContext,
-        bundleName: 'com.example.ecstoredemo',
+        bundleName: 'com.example.ecstoresamples'
       },
-      "storeId": "estore",
-      "option": {
+      'storeId': 'estore',
+      'option': {
         createIfMissing: true,
         encrypt: false,
         backup: false,
@@ -409,16 +425,16 @@ export default class EntryAbility extends UIAbility {
         securityLevel: distributedKVStore.SecurityLevel.S3
       }
     }
-    console.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`);
+    Logger.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`);
     // Listen for the COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED event. code == 1 indicates the screen is unlocked, and code==0 indicates the screen is locked.
     try {
       commonEventManager.createSubscriber({
-        events: ['COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED']
+        events: [ 'COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED' ]
       }, createCB);
-      console.info(`ECDB_Encry success subscribe`);
+      Logger.info(`ECDB_Encry success subscribe`);
     } catch (error) {
       const err: BusinessError = error as BusinessError;
-      console.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
+      Logger.error(`createSubscriber failed, code is ${err.code}, message is ${err.message}`);
     }
     storeManager.config(cInfo, eInfo);
     storeManager.configDataMover(mover);
@@ -459,14 +475,14 @@ export default class EntryAbility extends UIAbility {
 
 Use **Button** to simulate application operations on the database, such as inserting, deleting, updating, and obtaining the data count, by clicking the button.
 
-```ts
-// Index.ets
-import { storeManager, e_secretKeyObserver } from "../entryability/EntryAbility";
+<!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { storeManager, e_secretKeyObserver } from '../entryability/EntryAbility';
 import { distributedKVStore } from '@kit.ArkData';
 import { Store } from '../entryability/Store';
 
 let storeOption = new Store();
-
 let lockStatus: number = 1;
 
 @Entry
@@ -477,7 +493,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button ('Lock/Unlock').onClick ((event: ClickEvent) => {
+        Button('Lock/Unlock').onClick((event: ClickEvent) => {
           if (lockStatus) {
             e_secretKeyObserver.onLock();
             lockStatus = 0;
@@ -485,31 +501,44 @@ struct Index {
             e_secretKeyObserver.onUnLock();
             lockStatus = 1;
           }
-          lockStatus? this.message = "Unlocked": this.message = "Locked";
-        }).margin("5");
-        Button('store type').onClick(async (event: ClickEvent) => {
-          e_secretKeyObserver.getCurrentStatus() ? this.message = "estroe" : this.message = "cstore";
-        }).margin("5");
+          lockStatus ? this.message = 'Unlock' : this.message = 'Lock';
+        }).margin(5)
+          .width(100) // Width, in vp (visible pixel).
+          .height(40) // Height.
 
-        Button("put").onClick(async (event: ClickEvent) => {
+        Button('StoreType').onClick(async (event: ClickEvent) => {
+          e_secretKeyObserver.getCurrentStatus() ? this.message = 'estore' : this.message = 'cstore';
+        }).margin(5)
+          .width(100) // Width, in vp (visible pixel).
+          .height(40) // Height.
+
+        Button('Put').onClick(async (event: ClickEvent) => {
           let store: distributedKVStore.SingleKVStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
           storeOption.putOnedata(store);
         }).margin(5)
+          .width(100) // Width, in vp (visible pixel).
+          .height(40) // Height.
 
-        Button("Get").onClick(async (event: ClickEvent) => {
+        Button('Get').onClick(async (event: ClickEvent) => {
           let store: distributedKVStore.SingleKVStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
           storeOption.getDataNum(store);
         }).margin(5)
+          .width(100) // Width, in vp (visible pixel).
+          .height(40) // Height.
 
-        Button("delete").onClick(async (event: ClickEvent) => {
+        Button('Delete').onClick(async (event: ClickEvent) => {
           let store: distributedKVStore.SingleKVStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
           storeOption.deleteOnedata(store);
         }).margin(5)
+          .width(100) // Width, in vp (visible pixel).
+          .height(40) // Height.
 
-        Button("update").onClick(async (event: ClickEvent) => {
+        Button('Update').onClick(async (event: ClickEvent) => {
           let store: distributedKVStore.SingleKVStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
           storeOption.updateOnedata(store);
         }).margin(5)
+          .width(100) // Width, in vp (visible pixel).
+          .height(40) // Height.
 
         Text(this.message)
           .fontSize(50)
@@ -530,8 +559,9 @@ The following describes how to use the [Mover](#mover-1), [Store](#store-1), [Se
 
 Use **Mover** to move data from an EL2 database to an EL5 database after the screen is unlocked.
 
-```ts
-// Mover.ts
+<!-- @[rdb_Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Mover.ts) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 
 export class Mover {
@@ -552,8 +582,9 @@ export class Mover {
 
 Use the APIs provided by the **Store** class to obtain a database instance, add, delete, and update data, and obtain the data count in the database. The **StoreInfo** class is used to store and obtain database information.
 
-```ts
-// Store.ts
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Context } from '@kit.AbilityKit';
@@ -595,7 +626,7 @@ export class Store {
         CODES: new Uint8Array([1, 2, 3, 4, 5]),
       };
       try {
-        await rdbStore.insert("EMPLOYEE", valueBucket);
+        await rdbStore.insert('EMPLOYEE', valueBucket);
         console.info(`ECDB_Encry insert success`);
       } catch (e) {
         let error = e as BusinessError;
@@ -653,12 +684,14 @@ export class Store {
 }
 ```
 
+
 ### SecretKeyObserver
 
 Use the APIs provided by the **SecretKeyObserver** class to obtain the key status. After the key is destroyed, the EL5 database will be closed.
 
-```ts
-// SecretKeyObserver.ts
+<!-- @[rdb_SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ts) -->
+
+``` TypeScript
 import { ECStoreManager } from './ECStoreManager';
 
 export enum SecretStatus {
@@ -668,43 +701,45 @@ export enum SecretStatus {
 
 export class SecretKeyObserver {
   onLock(): void {
-    this.lockStatuas = SecretStatus.Lock;
+    this.lockStatus = SecretStatus.Lock;
     this.storeManager.closeEStore();
   }
 
   onUnLock(): void {
-    this.lockStatuas = SecretStatus.UnLock;
+    this.lockStatus = SecretStatus.UnLock;
   }
 
   getCurrentStatus(): number {
-    return this.lockStatuas;
+    return this.lockStatus;
   }
 
   initialize(storeManager: ECStoreManager): void {
     this.storeManager = storeManager;
   }
 
-  updatelockStatus(code: number) {
-    if (this.lockStatuas === SecretStatus.Lock) {
+  updateLockStatus(code: number) {
+    if (this.lockStatus === SecretStatus.Lock) {
       this.onLock();
     } else {
-      this.lockStatuas = code;
+      this.lockStatus = code;
     }
   }
 
-  private lockStatuas: number = SecretStatus.UnLock;
+  private lockStatus: number = SecretStatus.UnLock;
   private storeManager: ECStoreManager;
 }
 
 export let lockObserve = new SecretKeyObserver();
 ```
 
+
 ### ECStoreManager
 
 Use the APIs provided by the **ECStoreManager** class to manage the EL2 and EL5 databases. You can configure database information and migration function information, provide database handles for applications based on the key status, close EL5 databases, and destroy EL2 databases after data migration.
 
-```ts
-// ECStoreManager.ts
+<!-- @[rdb_ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ts) -->
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
 import { Mover } from './Mover';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -723,8 +758,8 @@ export class ECStoreManager {
     this.mover = mover;
   }
 
-  async getCurrentStore(screanStatus: number): Promise<relationalStore.RdbStore> {
-    if (screanStatus === SecretStatus.UnLock) {
+  async getCurrentStore(screenStatus: number): Promise<relationalStore.RdbStore> {
+    if (screenStatus === SecretStatus.UnLock) {
       try {
         this.eStore = await store.getECStore(this.eInfo);
       } catch (e) {
@@ -780,39 +815,36 @@ export class ECStoreManager {
 
 Register a listener for the COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED event when the simulated application starts, and configure the database information and key status information.
 
-```ts
-// EntryAbility.ets
+<!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, contextConstant, UIAbility, Want, application } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
 import { relationalStore } from '@kit.ArkData';
-import { ECStoreManager } from './ECStoreManager';
-import { StoreInfo } from './Store';
-import { Mover } from './Mover';
-import { SecretKeyObserver } from './SecretKeyObserver';
+import { ECStoreManager } from '../encryptedEStoreGuidelines/ECStoreManager';
+import { StoreInfo } from '../encryptedEStoreGuidelines/Store';
+import { Mover } from '../encryptedEStoreGuidelines/Mover';
+import { SecretKeyObserver } from '../encryptedEStoreGuidelines/SecretKeyObserver';
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-
 export let storeManager = new ECStoreManager();
-
 export let e_secretKeyObserver = new SecretKeyObserver();
-
 let mover = new Mover();
-
 let subscriber: commonEventManager.CommonEventSubscriber;
 
 export function createCB(err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) {
   if (!err) {
-    console.info('ECDB_Encry createSubscriber');
+    console.info('ECDB_Encrypt createSubscriber');
     subscriber = commonEventSubscriber;
     try {
       commonEventManager.subscribe(subscriber, (err: BusinessError, data: commonEventManager.CommonEventData) => {
         if (err) {
           console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
         } else {
-          console.info(`ECDB_Encry SubscribeCB ${data.code}`);
-          e_secretKeyObserver.updatelockStatus(data.code);
+          console.info(`ECDB_Encrypt SubscribeCB ${data.code}`);
+          e_secretKeyObserver.updateLockStatus(data.code);
         }
       });
     } catch (error) {
@@ -837,9 +869,9 @@ export default class EntryAbility extends UIAbility {
         name: 'cstore.db',
         securityLevel: relationalStore.SecurityLevel.S3,
       },
-      storeId: "cstore.db"
+      storeId: 'cstore.db'
     };
-    let eContext = await application.createModuleContext(this.context, "entry");
+    let eContext = await application.createModuleContext(this.context, 'entry');
     eContext.area = contextConstant.AreaMode.EL5;
     eInfo = {
       context: eContext,
@@ -847,7 +879,7 @@ export default class EntryAbility extends UIAbility {
         name: 'estore.db',
         securityLevel: relationalStore.SecurityLevel.S3,
       },
-      storeId: "estore.db",
+      storeId: 'estore.db',
     };
     // Listen for the COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED event. code == 1 indicates the screen is unlocked, and code==0 indicates the screen is locked.
     console.info(`ECDB_Encry store area : estore:${eContext.area},cstore${cContext.area}`)
@@ -899,11 +931,12 @@ export default class EntryAbility extends UIAbility {
 
 Use **Button** to simulate application operations on the database, such as inserting, deleting, updating, and obtaining the data count, by clicking the button.
 
-```ts
-// Index.ets
-import { storeManager, e_secretKeyObserver } from "../entryability/EntryAbility";
+<!-- @[rdb_encryptedEStoreGuidelines_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets) -->
+
+``` TypeScript
+import { storeManager, e_secretKeyObserver } from '../entryability/EntryAbility';
 import { relationalStore } from '@kit.ArkData';
-import { Store } from '../entryability/Store';
+import { Store } from './Store';
 
 let storeOption = new Store();
 
@@ -912,45 +945,82 @@ let lockStatus: number = 1;
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State message: string = '';
 
   build() {
     Row() {
       Column() {
-        Button ('Lock/Unlock').onClick ((event: ClickEvent) => {
-          if (lockStatus) {
-            e_secretKeyObserver.onLock();
-            lockStatus = 0;
-          } else {
-            e_secretKeyObserver.onUnLock();
-            lockStatus = 1;
-          }
-          lockStatus? this.message = "Unlocked": this.message = "Locked";
-        }).margin("5");
-        Button('store type').onClick(async (event: ClickEvent) => {
-          e_secretKeyObserver.getCurrentStatus() ? this.message = "estroe" : this.message = "cstore";
-          console.info(`ECDB_Encry current store : ${this.message}`);
-        }).margin("5");
+        Button('Lock/Unlock')
+          .onClick((event: ClickEvent) => {
+            if (lockStatus) {
+              e_secretKeyObserver.onLock();
+              lockStatus = 0;
+            } else {
+              e_secretKeyObserver.onUnLock();
+              lockStatus = 1;
+            }
+            lockStatus ? this.message = 'Unlock' : this.message = 'Lock';
+          })
+          .margin('5')
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
-        Button("put").onClick(async (event: ClickEvent) => {
-          let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
-          storeOption.putOnedata(store);
-        }).margin(5)
+        Button('store type')
+          .onClick(async (event: ClickEvent) => {
+            e_secretKeyObserver.getCurrentStatus() ? this.message = 'estore' : this.message = 'cstore';
+            console.info(`ECDB_Encry current store : ${this.message}`);
+          })
+          .margin('5')
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
-        Button("Get").onClick(async (event: ClickEvent) => {
-          let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
-          storeOption.getDataNum(store);
-        }).margin(5)
+        Button('put')
+          .onClick(async (event: ClickEvent) => {
+            let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+            storeOption.putOnedata(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
-        Button("delete").onClick(async (event: ClickEvent) => {
-          let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
-          storeOption.deleteAlldata(store);
-        }).margin(5)
+        Button('Get')
+          .onClick(async (event: ClickEvent) => {
+            let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+            storeOption.getDataNum(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
-        Button("update").onClick(async (event: ClickEvent) => {
-          let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
-          storeOption.updateOnedata(store);
-        }).margin(5)
+        Button('delete')
+          .onClick(async (event: ClickEvent) => {
+            let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+            storeOption.deleteAlldata(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
+
+        Button('update')
+          .onClick(async (event: ClickEvent) => {
+            let store: relationalStore.RdbStore = await storeManager.getCurrentStore(e_secretKeyObserver.getCurrentStatus());
+            storeOption.updateOnedata(store);
+          })
+          .margin(5)
+          .backgroundColor('#0D9FFB')
+          .width('50%')
+          .height('5%')
+          .type(ButtonType.Capsule)
 
         Text(this.message)
           .fontSize(50)

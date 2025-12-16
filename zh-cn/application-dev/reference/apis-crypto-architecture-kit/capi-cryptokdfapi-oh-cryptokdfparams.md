@@ -1,5 +1,16 @@
 # OH_CryptoKdfParams
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoKdfParams OH_CryptoKdfParams
+```
+
 ## 概述
 
 定义密钥派生函数(KDF)参数结构。

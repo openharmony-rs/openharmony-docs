@@ -1,4 +1,10 @@
 # Web组件在不同的窗口间迁移
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @weixin_41848015-->
+<!--Designer: @libing23232323-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 Web组件能够实现在不同窗口的组件树上进行挂载或移除操作，这一能力使得开发者可以将同一个Web组件在不同窗口间迁移。例如，将浏览器的Tab页拖出成独立窗口，或拖入浏览器的另一个窗口。
 
@@ -12,10 +18,13 @@ Web组件在不同窗口间迁移，是基于[自定义节点](../ui/arkts-user-
 >
 > 不要将一个Web组件同时挂载在两个父节点下，这会导致非预期行为。
 
-```ts
+<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
+
+``` TypeScript
 // 主窗Ability
-// EntryAbility.ets
-import { createNWeb, defaultUrl } from '../pages/common'
+import { createNWeb, defaultUrl } from '../pages/common';
+
+// ···
 
 // ...
 
@@ -23,7 +32,7 @@ import { createNWeb, defaultUrl } from '../pages/common'
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
     windowStage.loadContent('pages/Index', (err) => {
-      if (err.code) {
+      if (err && err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
@@ -140,8 +149,9 @@ export const getWebviewController = (url : string) : webview.WebviewController |
 }
 
 ```
+<!-- @[web_module_dynamic_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 // 使用NodeController的Page页
 // pages/Index.ets
 import { getBuilderNode, MyNodeController, defaultUrl, getWebviewController } from "./common"
@@ -169,14 +179,13 @@ struct Index {
         // NodeContainer用于与NodeController节点绑定，rebuild会触发makeNode
         // Page页通过NodeContainer接口绑定NodeController，实现动态组件页面显示
         NodeContainer(this.nodeController)
-          .height("80%")
-          .width("80%")
+          .height('80%')
+          .width('80%')
       }
       .width('100%')
     }
     .height('100%')
   }
 }
-
 ```
 

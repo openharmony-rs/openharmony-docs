@@ -1,5 +1,16 @@
 # OH_CryptoAsymCipher
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoAsymCipher OH_CryptoAsymCipher
+```
+
 ## 概述
 
 定义非对称加密结构。

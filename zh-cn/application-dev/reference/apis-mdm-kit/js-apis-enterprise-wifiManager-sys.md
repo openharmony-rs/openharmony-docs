@@ -1,6 +1,12 @@
-# @ohos.enterprise.wifiManager（WiFi管理）(系统接口)
+# @ohos.enterprise.wifiManager（Wi-Fi管理）(系统接口)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
-本模块提供企业设备WiFi管理能力，包括查询WiFi开启状态等。
+本模块提供企业设备Wi-Fi管理能力，包括查询Wi-Fi开启状态等。
 
 > **说明：**
 >
@@ -8,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-guide.md#功能介绍)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.wifiManager](js-apis-enterprise-wifiManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.wifiManager](js-apis-enterprise-wifiManager.md)。
 
 ## 导入模块
 
@@ -28,14 +34,16 @@ isWifiActive(admin: Want, callback: AsyncCallback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| callback | AsyncCallback&lt;boolean&gt;            | 是    | 回调函数，当接口调用成功，err为null，data为boolean值，true表示wifi开启，false表示wifi关闭，否则err为错误对象。       |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| callback | AsyncCallback&lt;boolean&gt;            | 是    | 回调函数，当接口调用成功，err为null，data为boolean值，true表示Wi-Fi开启，false表示Wi-Fi关闭，否则err为错误对象。       |
 
 **错误码**：
 
@@ -52,19 +60,21 @@ isWifiActive(admin: Want, callback: AsyncCallback&lt;boolean&gt;): void
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 wifiManager.isWifiActive(wantTemp, (err, result) => {
   if (err) {
-    console.error(`Failed to query is wifi active or not. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to query whether the wifi is active or not. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info(`Succeeded in query is wifi active or not, result : ${result}`);
+  console.info(`Succeeded in querying whether the wifi is active or not, result : ${result}`);
 });
 ```
 
@@ -78,13 +88,15 @@ isWifiActive(admin: Want): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -107,18 +119,20 @@ isWifiActive(admin: Want): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 wifiManager.isWifiActive(wantTemp).then((result) => {
-  console.info(`Succeeded in query is wifi active or not, result : ${result}`);
+  console.info(`Succeeded in querying whether the wifi is active or not, result : ${result}`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to query is wifi active or not. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to query whether the wifi is active or not. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -132,13 +146,15 @@ setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallback&lt;voi
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | profile    | [WifiProfile](js-apis-enterprise-wifiManager.md#wifiprofile) | 是    | Wi-Fi配置信息。                  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数，当接口调用成功，err为null，否则为错误对象。      |
 
@@ -157,13 +173,16 @@ setWifiProfile(admin: Want, profile: WifiProfile, callback: AsyncCallback&lt;voi
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
   'ssid': 'name',
   'preSharedKey': 'passwd',
   'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
@@ -188,13 +207,15 @@ setWifiProfile(admin: Want, profile: WifiProfile): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | profile    | [WifiProfile](js-apis-enterprise-wifiManager.md#wifiprofile) | 是    | Wi-Fi配置信息。                  |
 
 **返回值：**
@@ -218,14 +239,17 @@ setWifiProfile(admin: Want, profile: WifiProfile): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let profile: wifiManager.WifiProfile = {
+  // 需根据实际情况进行替换
   'ssid': 'name',
   'preSharedKey': 'passwd',
   'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
@@ -248,19 +272,21 @@ isWifiDisabled(admin: Want): boolean
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**系统API：** 此接口为系统接口。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
 | 类型                   | 说明                      |
 | --------------------- | ------------------------- |
-| boolean | 返回wifi禁用状态，true表示wifi被禁用，false表示wifi未被禁用。 |
+| boolean | 返回Wi-Fi禁用状态，true表示Wi-Fi被禁用，false表示Wi-Fi未被禁用。 |
 
 **错误码：**
 
@@ -277,15 +303,17 @@ isWifiDisabled(admin: Want): boolean
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: boolean = wifiManager.isWifiDisabled(wantTemp);
-  console.info(`Succeeded in query the wifi is disabled or not, result : ${result}`);
+  console.info(`Succeeded in querying whether the wifi is disabled or not, result : ${result}`);
 } catch (err) {
   console.error(`Failed to query the wifi is disabled or not. Code: ${err.code}, message: ${err.message}`);
 };
@@ -301,14 +329,16 @@ setWifiDisabled(admin: Want, disabled: boolean): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**系统API：** 此接口为系统接口。
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                      |
 | ---------- | ----------------------------------- | ---- | ----------------------------------------- |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                            |
-| disabled   | boolean                             | 是   | true表示禁用wifi，false表示解除wifi禁用。 |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                            |
+| disabled   | boolean                             | 是   | true表示禁用Wi-Fi，false表示解除Wi-Fi禁用。 |
 
 **错误码：**
 
@@ -325,16 +355,18 @@ setWifiDisabled(admin: Want, disabled: boolean): void
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
   wifiManager.setWifiDisabled(wantTemp, true);
-  console.info('Succeeded in set the wifi disabled');
+  console.info('Succeeded in setting the wifi disabled');
 } catch (err) {
   console.error(`Failed to set the wifi disabled. Code: ${err.code}, message: ${err.message}`);
 };

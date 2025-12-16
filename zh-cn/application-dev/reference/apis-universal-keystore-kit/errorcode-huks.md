@@ -1,5 +1,12 @@
 # HUKS错误码
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -10,18 +17,27 @@
 
 The ``${messageInfo}`` is not supported.
 
+**错误描述**
+
+不支持``${messageInfo}``中给出的特性（功能）。
+
 **可能原因**
 
 支持API，但是不支持API内部某些子特性（功能），如算法参数。
 
 **处理步骤**
 
-调整API参数，使用可替代可支持的参数。
+调整API参数，使用支持的可替代参数。
 
 ## 12000002 缺少密钥算法参数
+
 **错误信息**
 
 Failed to obtain the ``${messageInfo}``. It is not set in ParamSet.
+
+**错误描述**
+
+未设置相关参数，无法获取``${messageInfo}``中给出的参数。
 
 **可能原因**
 
@@ -38,9 +54,13 @@ Failed to obtain the ``${messageInfo}``. It is not set in ParamSet.
 
 Invalid ``${messageInfo}``.
 
+**错误描述**
+
+使用了无效的参数，具体可见``${messageInfo}``。
+
 **可能原因**
 
-使用密钥时无效相关参数。
+使用密钥时相关参数无效。
 
 **处理步骤**
 
@@ -57,6 +77,13 @@ Invalid ``${messageInfo}``.
 - Invalid file size.
 - Failed to ``${messageInfo}``.
 
+**错误描述**
+
+可能为以下的其中一种：
+
+- 磁盘空间已满。
+- 无效的文件大小。
+- 文件无法访问，具体原因可参考日志中给出的``${messageInfo}``。
 
 **可能原因**
 
@@ -76,6 +103,13 @@ Invalid ``${messageInfo}``.
 - Failed to get messages from IPC.
 - IPC ``${messageInfo}``.
 
+**错误描述**
+
+可能为以下的其中一种：
+
+- 无法从IPC获取消息。
+- IPC出错，具体原因可参考日志中给出的``${messageInfo}``。
+
 **可能原因**
 
 进程通信错误。
@@ -88,11 +122,15 @@ Invalid ``${messageInfo}``.
 
 **错误信息**
 
-Crypto engine error.
+Crypto engine error or Ukey driver error.
+
+**错误描述**
+
+算法库操作失败或者Ukey驱动失败。
 
 **可能原因**
 
-该错误码表示算法库操作失败，可能原因如下。
+该错误码表示算法库操作失败或者Ukey驱动失败，可能原因如下。
 
 1. 算法库加解密错误，可能是密文数据不对。
 2. 密钥参数不正确。
@@ -107,6 +145,10 @@ Crypto engine error.
 **错误信息**
 
 This credential is invalidated permanently.
+
+**错误描述**
+
+当前凭据已永久失效。
 
 **可能原因**
 
@@ -126,6 +168,10 @@ This credential is invalidated permanently.
 
 The authentication token verification failed.
 
+**错误描述**
+
+用户令牌无法通过认证。
+
 **可能原因**
 
 该密钥设置了用户认证访问控制属性，由于challenge参数不正确导致无法通过认证。
@@ -141,6 +187,10 @@ The authentication token verification failed.
 
 This authentication token timed out.
 
+**错误描述**
+
+当前用户令牌已超时。
+
 **可能原因**
 
 该密钥设置了用户认证访问控制属性，由于使用时间窗timeout导致无法通过认证。
@@ -155,20 +205,28 @@ This authentication token timed out.
 
 The number of key operation sessions has reached the limit.
 
+**错误描述**
+
+密钥操作会话数已达上限。
+
 **可能原因**
 
 同时使用huks进行密钥会话操作的调用方（同应用或者跨应用）过多，已经达到上限（15个）。
 
 **处理步骤**
 
-1. 检查同应用内部是否同时存在多个密钥会话操作（init)，存在则修改避免同时调用。
+1. 检查同应用内部是否同时存在多个密钥会话操作（init），存在则修改避免同时调用。
 2. 如不存在上述情形，则可能是其它应用同时调用多个会话，通过等待其它应用释放会话后再使用。
 
 ## 12000011 目标对象不存在
 
 **错误信息**
 
-The entity does not exist.
+Queried entity does not exist.
+
+**错误描述**
+
+目标对象不存在。
 
 **可能原因**
 
@@ -177,13 +235,17 @@ The entity does not exist.
 **处理步骤**
 
 1. 检查密钥别名是否拼写错误。
-2. 检查改密钥别名对应的密钥是否生成成功。
+2. 检查密钥别名对应的密钥是否生成成功。
 
 ## 12000012 外部错误
 
 **错误信息**
 
 Device environment or input parameter abnormal.
+
+**错误描述**
+
+设备环境或输入参数异常。
 
 **可能原因**
 
@@ -198,6 +260,10 @@ Device environment or input parameter abnormal.
 **错误信息**
 
 The credential does not exist.
+
+**错误描述**
+
+当前凭据不存在。
 
 **可能原因**
 
@@ -216,6 +282,13 @@ The credential does not exist.
 - Insufficient memory.
 - Malloc failed.
 
+**错误描述**
+
+可能为以下的其中一种：
+
+- 内存不足。
+- 内存分配失败。
+
 **可能原因**
 
 系统内存不足，或出参缓存太小。
@@ -231,6 +304,10 @@ The credential does not exist.
 
 Failed to obtain the ``${messageInfo}`` information via UserIAM.
 
+**错误描述**
+
+无法通过UserIAM获取``${messageInfo}``的信息。
+
 **可能原因**
 
 其他系统服务未启动。
@@ -239,11 +316,33 @@ Failed to obtain the ``${messageInfo}`` information via UserIAM.
 
 开发者等待一段时间后尝试再次触发调用。
 
+## 12000017 同名密钥已存在
+
+**错误信息**
+
+The key with same alias is already exist.
+
+**错误描述**
+
+同名密钥已存在。
+
+**可能原因**
+
+指定了不覆写同名密钥，但同名密钥已存在。
+
+**处理步骤**
+
+请根据业务需要检查是否应该覆写同名密钥。
+
 ## 12000018 输入参数非法
 
 **错误信息**
 
 The input parameter is invalid.
+
+**错误描述**
+
+当前输入的参数无效。
 
 **可能原因**
 
@@ -259,3 +358,128 @@ The input parameter is invalid.
 
 请检查必选参数是否传入，或者传入的参数类型是否错误。对于参数校验失败原因，请阅读参数规格约束，按照可能原因进行排查。
 
+## 12000019 同名provider已注册
+
+**错误信息**
+
+The provider is already registered.
+
+**错误描述**
+
+注册的provider已存在。
+
+**可能原因**
+
+注册的provider已存在。
+
+**处理步骤**
+
+检查注册的provider是否正确，如果确定没问题，则需要先注销，再注册。
+
+## 12000020 依赖的模块报错
+
+**错误信息**
+
+The provider operation failed.
+
+**错误描述**
+
+下游依赖的模块报错。
+
+**可能原因**
+
+下游依赖的模块报错。
+
+**处理步骤**
+
+根据下游返回的error code或者error message查看下游模块具体报错的原因。
+
+## 12000021 Ukey PIN码被锁
+
+**错误信息**
+
+The Ukey PIN is locked.
+
+**错误描述**
+
+Ukey PIN码被锁。
+
+**可能原因**
+
+PIN码输入错误次数过多导致被锁。
+
+**处理步骤**
+
+咨询相关银行，解锁Ukey。
+
+## 12000022 Ukey PIN码错误
+
+**错误信息**
+
+The Ukey PIN is incorrect.
+
+**错误描述**
+
+Ukey PIN码错误。
+
+**可能原因**
+
+PIN码输入错误。
+
+**处理步骤**
+
+输入正确PIN码。
+
+## 12000023 Ukey PIN码未认证
+
+**错误信息**
+
+The Ukey PIN is not authenticated.
+
+**错误描述**
+
+Ukey PIN码未认证。
+
+**可能原因**
+
+执行操作需要进行PIN码认证，但实际PIN码尚未认证。
+
+**处理步骤**
+
+执行操作需要进行PIN码认证，但实际PIN码尚未认证。
+
+## 12000024 设备或资源繁忙
+
+**错误信息**
+
+The provider or Ukey is busy.
+
+**错误描述**
+
+设备或资源繁忙。
+
+**可能原因**
+
+设备或资源繁忙。
+
+**处理步骤**
+
+再次重试或者插拔Ukey后重试。
+
+## 12000025 资源超过限制
+
+**错误信息**
+
+The resource exceeds the limit.
+
+**错误描述**
+
+资源超过限制。
+
+**可能原因**
+
+资源超过限制。
+
+**处理步骤**
+
+检查是否有未释放资源，释放已有资源后重试。

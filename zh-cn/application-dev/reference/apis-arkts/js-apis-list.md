@@ -1,4 +1,10 @@
 # @ohos.util.List (线性容器List)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 List底层通过单向链表实现，每个节点有一个指向后一个元素的引用。查询元素必须从头遍历，因此查询效率低，但插入和删除效率高。List允许元素为null。
 
@@ -16,6 +22,8 @@ List和[LinkedList](js-apis-linkedlist.md)相比，LinkedList是双向链表，�
 > **说明：**
 >
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 容器类使用静态语言实现，限制了存储位置和属性，不支持自定义属性和方法。
 
 
 ## 导入模块
@@ -59,7 +67,7 @@ List的构造函数。
 **示例：**
 
 ```ts
-let list: List<string | number | boolean | object> = new List();
+let list = new List<string | number | boolean | object>();
 ```
 
 
@@ -96,7 +104,7 @@ add(element: T): boolean
 **示例：**
 
 ```ts
-let list: List<string | number | boolean | object> = new List();
+let list = new List<string | number | boolean | object>();
 let result1 = list.add("a");
 let result2 = list.add(1);
 let b = [1, 2, 3];
@@ -141,10 +149,11 @@ insert(element: T, index: number): void
 **示例：**
 
 ```ts
-let list: List<string | number | boolean> = new List();
+let list = new List<string | number | boolean>();
 list.insert("A", 0);
 list.insert(0, 1);
 list.insert(true, 2);
+console.info("result:", list.get(1));  // result: 0
 ```
 
 ### has
@@ -180,9 +189,10 @@ has(element: T): boolean
 **示例：**
 
 ```ts
-let list: List<string> = new List();
+let list = new List<string>();
 list.add("squirrel");
 let result = list.has("squirrel");
+console.info("result:", result);  // result: true
 ```
 
 ### get
@@ -219,7 +229,7 @@ get(index: number): T
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
@@ -228,6 +238,7 @@ list.add(1);
 list.add(2);
 list.add(4);
 let result = list.get(2);
+console.info("result:", result);  // result: 5
 ```
 
 ### getLastIndexOf
@@ -263,7 +274,7 @@ getLastIndexOf(element: T): number
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
@@ -272,14 +283,14 @@ list.add(1);
 list.add(2);
 list.add(4);
 let result = list.getLastIndexOf(2);
-console.info("result = ", result); // result = 5
+console.info("result:", result); // result: 5
 ```
 
 ### getIndexOf
 
 getIndexOf(element: T): number
 
-查找指定元素第一次出现的下标值，查找失败返回-1。
+查找指定元素第一次出现的下标，查找失败返回-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -308,7 +319,7 @@ getIndexOf(element: T): number
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
@@ -316,8 +327,8 @@ list.add(2);
 list.add(1);
 list.add(2);
 list.add(4);
-let result = list.getIndexOf(2); 
-console.info("result = ", result); // result = 0
+let result = list.getIndexOf(2);
+console.info("result:", result); // result: 0
 ```
 
 ### equal
@@ -353,15 +364,16 @@ equal(obj: Object): boolean
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
-let obj: List<number> = new List();
+let obj = new List<number>();
 obj.add(2);
 obj.add(4);
 obj.add(5);
 let result = list.equal(obj);
+console.info("result:", result);  // result: true
 ```
 
 ### removeByIndex
@@ -399,13 +411,14 @@ removeByIndex(index: number): T
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(2);
 list.add(4);
 let result = list.removeByIndex(2);
+console.info("result:", result);  // result: 5
 ```
 
 ### remove
@@ -441,13 +454,13 @@ remove(element: T): boolean
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 let result = list.remove(2);
-console.info("result = ", result); // result = true
+console.info("result:", result);  // result: true
 ```
 
 ### replaceAllElements
@@ -488,15 +501,20 @@ callbackFn的参数说明：
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 list.replaceAllElements((value: number) => {
   // 用户操作逻辑根据实际场景进行添加。
+  if (value === 5) {
+    return value * 2;
+  }
   return value;
 });
+
+console.info("result:", list.get(2));  // result: 10
 ```
 
 ### forEach
@@ -537,19 +555,23 @@ callbackFn的参数说明：
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
-list.forEach((value: number, index?: number) => {
+list.forEach((value: number, index: number) => {
   console.info("value:" + value, "index:" + index);
 });
+// value:2 index:0
+// value:4 index:1
+// value:5 index:2
+// value:4 index:3
 ```
 
 ### sort
 
-sort(comparator: (firstValue: T, secondValue: T) => number): void
+sort(comparator: ListComparatorFn\<T\>): void
 
 对List中的元素进行排序。
 
@@ -561,14 +583,7 @@ sort(comparator: (firstValue: T, secondValue: T) => number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | function | 是 | 回调函数。 |
-
-comparator的参数说明：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| firstValue | T | 是 | 前一项元素。 |
-| secondValue | T | 是 | 后一项元素。 |
+| comparator | [ListComparatorFn\<T\>](#listcomparatorfnt22) | 是 | 回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **错误码：**
 
@@ -582,13 +597,16 @@ comparator的参数说明：
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
+list.add(1);
+list.add(3);
 list.add(4);
-list.add(5);
-list.add(4);
-list.sort((a: number, b: number) => a - b); // 结果为升序排列
-list.sort((a: number, b: number) => b - a); // 结果为降序排列
+list.sort((a: number, b: number) => a - b);  // 结果为升序排列
+console.info("result:", list.convertToArray());  // result: 1,2,3,4
+
+list.sort((a: number, b: number) => b - a);  // 结果为降序排列
+console.info("result:", list.convertToArray());  // result: 4,3,2,1
 ```
 
 ### getSubList
@@ -627,12 +645,13 @@ getSubList(fromIndex: number, toIndex: number): List&lt;T&gt;
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
-list.add(5);
-list.add(4);
+list.add(6);
+list.add(8);
 let result = list.getSubList(1, 3);
+console.info("result:", result.convertToArray());  // result: 4,6
 ```
 
 ### clear
@@ -656,12 +675,14 @@ clear(): void
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 list.clear();
+let result = list.isEmpty();
+console.info("result:", result);  // result: true
 ```
 
 ### set
@@ -700,12 +721,13 @@ set(index: number, element: T): T
 **示例：**
 
 ```ts
-let list: List<number | string> = new List();
+let list = new List<number | string>();
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 let result = list.set(2, "b");
+console.info("result:", JSON.stringify(list));  // result: {"0":2,"1":4,"2":"b","3":4}
 ```
 
 ### convertToArray
@@ -735,12 +757,13 @@ convertToArray(): Array&lt;T&gt;
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 let result = list.convertToArray();
+console.info("result:", result);  // result: 2,4,5,4
 ```
 
 ### isEmpty
@@ -770,12 +793,13 @@ isEmpty(): boolean
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 let result = list.isEmpty();
+console.info("result:", result);  // result: false
 ```
 
 ### getFirst
@@ -805,12 +829,13 @@ getFirst(): T
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 let result = list.getFirst();
+console.info("result:", result);  // result: 2
 ```
 
 ### getLast
@@ -840,12 +865,13 @@ getLast(): T
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>()
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 let result = list.getLast();
+console.info("result:", result);  // result: 4
 ```
 
 ### [Symbol.iterator]
@@ -875,17 +901,20 @@ let result = list.getLast();
 **示例：**
 
 ```ts
-let list: List<number> = new List();
+let list = new List<number>();
 list.add(2);
 list.add(4);
 list.add(5);
 list.add(4);
 
 // 使用方法一：
-let items = Array.from(list);
-for (let item of items) {
+for (let item of list) {
   console.info("value: " + item);
 }
+// value: 2
+// value: 4
+// value: 5
+// value: 4
 
 // 使用方法二：
 let iter = list[Symbol.iterator]();
@@ -894,4 +923,31 @@ while(!temp.done) {
   console.info("value: " + temp.value);
   temp = iter.next();
 }
+// value: 2
+// value: 4
+// value: 5
+// value: 4
 ```
+
+### ListComparatorFn\<T\><sup>22+</sup>
+
+type ListComparatorFn\<T\> = (firstValue: T, secondValue: T) => number
+
+List中sort方法的回调函数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| firstValue | T | 是 | 需要排序的前一项元素。 |
+| secondValue | T | 是 | 需要排序的后一项元素。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| number | 通过回调函数返回的值，List能够根据自定义的比较规则维护元素的顺序。 |

@@ -1,5 +1,12 @@
 # USB Control Transfer
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: USB-->
+<!--Owner: @hwymlgitcode-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
+
 ## When to Use
 
 The control transfer is used to obtain and set the device status, and control the device attribute status. You can determine whether the control transfer can read or write data based on the endpoint types supported by the device.
@@ -24,9 +31,9 @@ The control transfer is used to obtain and set the device status, and control th
 
 ### Environment Setup
 
-- Install [DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio) 4.1 or later on the PC.
-- Update the public SDK to API version 16 or later. For details, see [Switching to Full SDK](https://gitee.com/openharmony/docs/blob/master/en/application-dev/faqs/full-sdk-switch-guide.md).
-- Install hdc on the PC. You can use it to interact with a real device or the Emulator on Windows, Linux, or macOS. For details, see [HDC Configuration](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/hdc).
+- Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/) 4.1 or later on the PC.
+- Update the public SDK to API version 16 or later.<!--Del--> For details, see [Switching to Full SDK](../../../../faqs/full-sdk-switch-guide.md).<!--DelEnd-->
+- Install hdc on the PC. You can use it to interact with a real device or the Emulator on Windows, Linux, or macOS.
 - Use a USB cable to connect a device to the PC.
 
 ## How to Develop
@@ -49,26 +56,39 @@ Connect a host to a device and use the **usbControlTransfer** API to transfer da
 
 1. Import modules.
 
-   ```ts
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // Import the usbManager module.
    import { usbManager } from '@kit.BasicServicesKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { JSON } from '@kit.ArkTS';
    ```
+
 
 2. Obtain the USB device list.
 
-   ```ts
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // Obtain the USB device list.
-   let deviceList : Array<usbManager.USBDevice> = usbManager.getDevices();
+   let deviceList: usbManager.USBDevice[] = usbManager.getDevices();
+   console.info(`deviceList: ${deviceList}`);
+   this.logInfo_ += '\n[INFO] deviceList: ' + JSON.stringify(deviceList);
+   if (deviceList === undefined || deviceList.length === 0) {
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
+     return;
+   }
    /*
    Example deviceList structure:
    [
      {
-       name: "1-1",
-       serial: "",
-       manufacturerName: "",
-       productName: "",
-       version: "",
+       name: '1-1',
+       serial: '',
+       manufacturerName: '',
+       productName: '',
+       version: '',
        vendorId: 7531,
        productId: 2,
        clazz: 9,
@@ -83,7 +103,7 @@ Connect a host to a device and use the **usbControlTransfer** API to transfer da
            isRemoteWakeup: true,
            isSelfPowered: true,
            maxPower: 0,
-           name: "1-1",
+           name: '1-1',
            interfaces: [
              {
                id: 0,
@@ -91,7 +111,7 @@ Connect a host to a device and use the **usbControlTransfer** API to transfer da
                clazz: 9,
                subClass: 0,
                alternateSetting: 0,
-               name: "1-1",
+               name: '1-1',
                endpoints: [
                  {
                    address: 129,
@@ -111,57 +131,114 @@ Connect a host to a device and use the **usbControlTransfer** API to transfer da
      }
    ]
    */
+   this.deviceList_ = deviceList;
    ```
+
 
 3. Obtain the device operation permissions.
 
-   ```ts
-   let deviceName : string = deviceList[0].name;
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
+     return;
+   }
+   let deviceList: usbManager.USBDevice[] = this.deviceList_;
+   let deviceName: string = deviceList[0].name;
    // Request the permissions to operate a specified device.
-   usbManager.requestRight(deviceName).then((hasRight : boolean) => {
-     console.info("usb device request right result: " + hasRight);
-   }).catch((error : BusinessError)=> {
+   usbManager.requestRight(deviceName).then((hasRight: boolean) => {
+     console.info('usb device request right result: ' + hasRight);
+     this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
+   }).catch((error: BusinessError) => {
      console.error(`usb device request right failed : ${error}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
    });
    ```
 
+
 4. Open the device.
 
-   ```ts
-   // Open the device, and obtain the USB device pipe for data transfer.
-   let pipe : usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
-   let interface1 : usbManager.USBInterface = deviceList[0].configs[0].interfaces[0];
+   <!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
+   ``` TypeScript
+   if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
+     console.error('deviceList_ is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
+     return;
+   }
+   let deviceList: usbManager.USBDevice[] = this.deviceList_;
+   if (!usbManager.hasRight(deviceList[0]?.name)) {
+     console.error('permission denied');
+     this.logInfo_ += '\n[ERROR] permission denied';
+     return;
+   }
+   // Open the device, and obtain the USB device pipe for data transfer.
+   let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+   if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
+     console.error('invalid interface');
+     this.logInfo_ += '\n[ERROR] invalid interface';
+     return;
+   }
+   let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
    /*
     Claim the corresponding interface from deviceList.
    interface1 must be one present in the device configuration.
    */
    usbManager.claimInterface(pipe, interface1, true);
+   this.pipe_ = pipe;
+   this.interface_ = interface1;
+   console.info('open device success');
+   this.logInfo_ += '\n[INFO] open device success';
    ```
+
 
 5. Perform data transfer.
 
-    ```ts
-    /*
-      Construct control transfer parameters.
-    */
-    let param: usbManager.USBDeviceRequestParams = {
-      bmRequestType: 0x80,    // 0x80 indicates a standard request for data transfer from the device to the host.
-      bRequest: 0x06,    // 0x06 indicates a request for the descriptor.
-      wValue:0x01 << 8 | 0,    // The value is of two bytes. The high byte indicates the descriptor type. Here, 0x01 indicates the device descriptor. The low byte indicates the descriptor index. The value is set to 0 because it is not involved for the device descriptor.
-      wIndex: 0,    // Descriptor index. The value can be 0.
-      wLength: 18,    // Descriptor length. The value 18 indicates the length of a device descriptor. A maximum of 1024 characters are supported.
-      data: new Uint8Array(18)
-    };
-
-    usbManager.usbControlTransfer(pipe, param).then((ret: number) => {
-    console.info(`usbControlTransfer = ${ret}`);
-    })
-    ```
+   <!-- @[controlTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.pipe_ === undefined) {
+     console.error('pipe_ is null');
+     this.logInfo_ += '\n[ERROR] pipe_ is null';
+     return;
+   }
+   let pipe: usbManager.USBDevicePipe = this.pipe_;
+   /*
+   Construct control transfer parameters.
+   */
+   let param: usbManager.USBDeviceRequestParams = {
+     bmRequestType: 0x80, // 0x80 indicates a standard request for data transfer from the device to the host.
+     bRequest: 0x06, // 0x06 indicates a request for the descriptor.
+     wValue: 0x01 << 8 | 0, // The value is of two bytes. The high byte indicates the descriptor type. Here, 0x01 indicates the device descriptor. The low byte indicates the descriptor index. The value is set to 0 because it is not involved for the device descriptor.
+     wIndex: 0, // Descriptor index. The value can be 0.
+     wLength: 18, // Descriptor length. The value 18 indicates the length of a device descriptor. A maximum of 1024 characters are supported.
+     data: new Uint8Array(18)
+   };
+   
+   usbManager.usbControlTransfer(pipe, param).then((ret: number) => {
+     console.info(`usbControlTransfer = ${ret}`);
+     this.logInfo_ += '\n[INFO] usbControlTransfer = ' + JSON.stringify(ret);
+   })
+   ```
 
 6. Release the USB interface, and close the USB device pipe.
 
-   ```ts
+   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.pipe_ === undefined || this.interface_ === undefined) {
+     console.error('pipe_ or interface_ is null');
+     this.logInfo_ += '\n[ERROR] pipe_ or interface_ is null';
+     return;
+   }
+   let pipe: usbManager.USBDevicePipe = this.pipe_;
+   let interface1: usbManager.USBInterface = this.interface_;
    usbManager.releaseInterface(pipe, interface1);
    usbManager.closePipe(pipe);
+   this.pipe_ = undefined;
+   this.interface_ = undefined;
+   console.info('close device success');
+   this.logInfo_ += '\n[INFO] close device success';
    ```

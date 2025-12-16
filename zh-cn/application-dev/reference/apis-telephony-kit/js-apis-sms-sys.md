@@ -1,4 +1,10 @@
 # @ohos.telephony.sms (短信服务)（系统接口）
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 短信服务提供了管理短信的一些基础能力，包括发送、下载彩信，设置发送短信的默认SIM卡槽ID，获取、设置短信服务中心（SMSC）地址等。
 

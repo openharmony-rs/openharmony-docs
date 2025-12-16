@@ -1,5 +1,10 @@
 # 图形图像开发常见问题
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
+<!--Designer: @liumingxiang; @wangyanglan-->
+<!--Tester: @yhl0101; @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 如何获取设备的dpi值(API 9)
 
@@ -120,7 +125,7 @@ void CreateShareEglContext()
 
 **参考链接：**  
 
-[Native XComponent组件的使用（ArkTS）](https://gitee.com/openharmony/codelabs/tree/master/NativeAPI/XComponent)
+[Native XComponent组件的使用（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/NativeAPI/XComponent)
 
 ## 如何在EGL多线程绘制的场景下同时操作一块buffer进行图形绘制(API 10)
 
@@ -157,7 +162,7 @@ UIAbility不能用来组合应用内界面，用应用内导航组件Navigation�
 
 **参考链接：**
 
-[Navigation的使用](../ui/arkts-navigation-navigation.md)
+[Navigation的使用](../ui/arkts-navigation-architecture.md)
 
 
 

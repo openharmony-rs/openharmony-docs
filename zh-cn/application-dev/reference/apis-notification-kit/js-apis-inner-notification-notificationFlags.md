@@ -1,4 +1,10 @@
 # NotificationFlags
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 描述通知标志的实例。
 
@@ -12,8 +18,10 @@
 
 | 名称             | 类型                    | 只读 | 可选 | 说明                                         |
 | ---------------- | ---------------------- | ---- | -----|-------------------------------------------- |
-| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | 是  | 是 | 是否启用声音提示。    |
-| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | 是  | 是 | 是否启用振动提醒功能。 |
+| soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用声音提示功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。    |
+| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用振动提醒功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
+| bannerEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用横幅功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
+| lockScreenEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | 否  | 是 | 是否启用锁屏功能。设置时仅[TYPE_CLOSE](#notificationflagstatus11)会生效。 |
 
 
 ## NotificationFlagStatus<sup>11+</sup>

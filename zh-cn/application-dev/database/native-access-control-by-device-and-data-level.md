@@ -1,4 +1,10 @@
 # 基于设备分类和数据分级的访问控制 (C/C++)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @baijidong-->
+<!--Designer: @widecode; @htt1997-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 场景介绍
 
@@ -15,11 +21,11 @@
 
 ### 数据安全标签
 
-按照数据分类分级规范要求，可将数据分为S1、S2、S3、S4四个安全等级。
+按照数据分类分级规范要求，可将数据分为S1、S2、S3、S4四个安全等级，安全等级具体可见[OH_Rdb_SecurityLevel](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_securitylevel)枚举。
 
   | 风险等级 | 风险标准 | 定义 | 样例 | 
 | -------- | -------- | -------- | -------- |
-| 严重 | S4 | 业界法律法规定义的特殊数据类型，涉及个人的最私密领域的信息或一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响的数据。 | 政治观点、宗教和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况，性取向等或设备认证鉴权、个人信用卡等财物信息等。 | 
+| 严重 | S4 | 业界法律法规定义的特殊数据类型，涉及个人的最私密领域的信息或一旦泄露、篡改、破坏、销毁可能会给个人或组织造成重大的不利影响的数据。 | 政治观点、宗教和哲学信仰、工会成员资格、基因数据、生物信息、健康和性生活状况，性取向等或设备认证鉴权、个人信用卡等财务信息等。 | 
 | 高 | S3 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严峻的不利影响。 | 个人实时精确定位信息、运动轨迹等。 | 
 | 中 | S2 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致严重的不利影响。 | 个人的详细通信地址、姓名昵称等。 | 
 | 低 | S1 | 数据的泄露、篡改、破坏、销毁可能会给个人或组织导致有限的不利影响。 | 性别、国籍、用户申请记录等。 | 
@@ -62,13 +68,19 @@
 
 2. 导入头文件。
 
-    ```c
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     #include "database/rdb/relational_store.h"
     ```
 
+
+
 3. 调用OH_Rdb_SetSecurityLevel接口设置数据库的安全等级。
 
-    ```ts
+    <!-- @[SetSecurityLevelForRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
     OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
     OH_Rdb_SetStoreName(config, "RdbTest.db");
@@ -78,8 +90,12 @@
     OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
     OH_Rdb_SetEncrypted(config, false);
     OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
-    
+        
     int errCode = 0;
     OH_Rdb_Store *store_ = OH_Rdb_CreateOrOpen(config, &errCode);
     OH_Rdb_CloseStore(store_);
+    store_ = nullptr;
+    OH_Rdb_DestroyConfig(config);
+    config = nullptr;
     ```
+

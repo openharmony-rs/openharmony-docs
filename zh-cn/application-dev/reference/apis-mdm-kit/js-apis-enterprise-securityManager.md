@@ -1,4 +1,10 @@
 # @ohos.enterprise.securityManager（安全管理）
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设备安全管理的能力，包括查询安全补丁状态、查询文件加密状态等。
 
@@ -26,11 +32,13 @@ uninstallUserCertificate(admin: Want, certUri: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名  | 类型                                                    | 必填 | 说明                              |
 | ------- | ------------------------------------------------------- | ---- | --------------------------------- |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                    |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                    |
 | certUri | string                                                  | 是   | 证书uri，由安装用户证书接口[installUserCertificate](#securitymanagerinstallusercertificate)设置返回。 |
 
 **返回值：**
@@ -54,13 +62,16 @@ uninstallUserCertificate(admin: Want, certUri: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+// 需根据实际情况进行替换
 let aliasStr = "certName";
 securityManager.uninstallUserCertificate(wantTemp, aliasStr).then(() => {
   console.info(`Succeeded in uninstalling user certificate.`);
@@ -79,11 +90,13 @@ installUserCertificate(admin: Want, certificate: CertBlob): Promise&lt;string&gt
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                                    | 必填 | 说明           |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
-| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。     |
 
 **返回值：**
@@ -108,16 +121,18 @@ installUserCertificate(admin: Want, certificate: CertBlob): Promise&lt;string&gt
 
 <!--code_no_check-->
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
-// The variable context needs to be initialized in MainAbility's onCreate callback function
-// test.cer needs to be placed in the rawfile directory
+// 变量context需要在MainAbility的onCreate回调函数中进行初始化
+// test.cer需要放置在rawfile目录下
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 context.resourceManager.getRawFileContent("test.cer").then((value) => {
@@ -144,11 +159,13 @@ installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): s
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                                    | 必填 | 说明           |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
-| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | certificate | [CertBlob](#certblob)                                   | 是   | 证书信息。证书文件应放在应用沙箱路径等应用有权限访问的路径下。     |
 | accountId   | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
@@ -173,16 +190,18 @@ installUserCertificate(admin: Want, certificate: CertBlob, accountId: number): s
 
 <!--code_no_check-->
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { common, Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let certFileArray: Uint8Array = new Uint8Array();
 let accountId: number = 100;
-// The variable context needs to be initialized in MainAbility's onCreate callback function
-// test.cer needs to be placed in the rawfile directory
+// 变量context需要在MainAbility的onCreate回调函数中进行初始化
+// test.cer需要放置在rawfile目录下
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 context.resourceManager.getRawFileContent("test.cer").then((value) => {
@@ -205,11 +224,13 @@ getUserCertificates(admin: Want, accountId: number): Array&lt;string&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | accountId | number                                               | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **返回值：**
@@ -231,12 +252,15 @@ getUserCertificates(admin: Want, accountId: number): Array&lt;string&gt;
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+// 需根据实际情况进行替换
 let accountId: number = 100;
 try {
   let result: Array<string> = securityManager.getUserCertificates(wantTemp, accountId);
@@ -256,11 +280,13 @@ getSecurityStatus(admin: Want, item: string): string
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                               |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
 | item   | string                                                  | 是   | 安全策略名称。<br/>- patch：设备安全补丁。<br/>- encryption：设备文件系统加密。 <!--RP1--><!--RP1End-->|
 
 **返回值：**
@@ -283,11 +309,13 @@ getSecurityStatus(admin: Want, item: string): string
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -308,11 +336,13 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 | policy | [PasswordPolicy](#passwordpolicy) | 是 | 设备口令策略。 |
 
 **错误码**：
@@ -329,18 +359,20 @@ setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 let policy: securityManager.PasswordPolicy = {
-  complexityRegex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$',
+  complexityRegex: '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*])[a-zA-Z\\d!@#$%^&*]{8,}$',
   validityPeriod: 1,
   additionalDescription: '至少八个字符，至少一个大写字母，一个小写字母，一个数字和一个特殊字符',
-}
+};
 try {
     securityManager.setPasswordPolicy(wantTemp, policy);
     console.info(`Succeeded in setting password policy.`);
@@ -359,11 +391,13 @@ getPasswordPolicy(admin: Want): PasswordPolicy
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
 
 **返回值：**
 
@@ -385,11 +419,13 @@ getPasswordPolicy(admin: Want): PasswordPolicy
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -410,12 +446,14 @@ setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): vo
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。                  |
-| tokenId | number | 是 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)再去获取accessTokenId获得。当前只支持最多100个tokenId被保存策略。 |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                  |
+| tokenId | number | 是 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。当前只支持最多100个tokenId被保存策略。 |
 | policy | [ClipboardPolicy](#clipboardpolicy) | 是 | 剪贴板策略。 |
 
 **错误码**：
@@ -432,12 +470,15 @@ setAppClipboardPolicy(admin: Want, tokenId: number, policy: ClipboardPolicy): vo
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+// 需根据实际情况进行替换
 let tokenId: number = 586874394;
 try {
     securityManager.setAppClipboardPolicy(wantTemp, tokenId, securityManager.ClipboardPolicy.IN_APP);
@@ -457,12 +498,14 @@ getAppClipboardPolicy(admin: Want, tokenId?: number): string
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。      |
-| tokenId | number | 否 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)再去获取accessTokenId获得。当前只支持最多100个tokenId被保存策略。 |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
+| tokenId | number | 否 | 目标应用的身份标识。可通过[bundleManager.getApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md)获取accessTokenId。当前只支持最多100个tokenId被保存策略。 |
 
 **返回值：**
 
@@ -484,12 +527,15 @@ getAppClipboardPolicy(admin: Want, tokenId?: number): string
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+// 需根据实际情况进行替换
 let tokenId: number = 586874394;
 try {
     let result: string = securityManager.getAppClipboardPolicy(wantTemp, tokenId);
@@ -503,17 +549,19 @@ try {
 
 setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy: ClipboardPolicy): void
 
-设置指定包名和用户Id的设备剪贴板策略。当前只支持最多保存100个策略。
+设置指定用户下指定应用的设备剪贴板策略。当前只支持最多保存100个策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                                                                                                                          |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                                                                                                                          |
 | bundleName | string                                                  | 是   | 被设置剪贴板策略的应用包名。                                                                                                                                      |
 | accountId  | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 | policy     | [ClipboardPolicy](#clipboardpolicy)                     | 是   | 剪贴板策略。                                                                                                                                                    |
@@ -531,12 +579,15 @@ setAppClipboardPolicy(admin: Want, bundleName: string, accountId: number, policy
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+// 需根据实际情况进行替换
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
@@ -551,17 +602,19 @@ try {
 
 getAppClipboardPolicy(admin: Want, bundleName: string, accountId: number): string
 
-获取指定包名和用户Id的设备剪贴板策略。
+获取指定用户下指定应用的设备剪贴板策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
 | -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                                                                                                                               |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                                                                                                                               |
 | bundleName | string                                                  | 是   | 被设置剪贴板策略的应用包名。                                                                                                                            |
 | accountId  | number                                                  | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
@@ -584,12 +637,15 @@ getAppClipboardPolicy(admin: Want, bundleName: string, accountId: number): strin
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+// 需根据实际情况进行替换
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
@@ -604,19 +660,24 @@ try {
 
 setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelMap, accountId: number): void
 
-设置水印策略。
+为指定用户的指定应用设置水印策略。当前只支持最多保存100个策略。
+> **说明：**
+>
+> 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。      |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | bundleName | string    | 是   | 被设置水印的应用包名。                                                       |
-| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不能超过500KB。                                                       |
+| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | 是   | string表示图像路径，图像路径为应用沙箱路径等应用有权限访问的路径。<br>image.PixelMap表示图像对象，图像像素占用大小不得超过500KB。<br>图像像素占用大小计算公式：图像宽度(像素)×图像高度 (像素)×每个像素占用的字节数（通常为4）。例如：一张 100x100 的图片，图像像素占用大小为100×100×4=40000字节。                                                       |
 | accountId     | number     | 是   | 用户ID。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -633,12 +694,15 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+// 需根据实际情况进行替换
 let bundleName: string = 'com.example.myapplication';
 let source: string = '/data/storage/el1/base/test.png';
 let accountId: number = 100;
@@ -654,17 +718,19 @@ try {
 
 cancelWatermarkImage(admin: Want, bundleName: string, accountId: number): void
 
-取消水印策略。
+取消指定用户的水印策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。        |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。        |
 | bundleName | string    | 是   | 被取消水印的应用包名。                                                       |
 | accountId     | number     | 是   | 用户ID。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
@@ -682,12 +748,15 @@ cancelWatermarkImage(admin: Want, bundleName: string, accountId: number): void
 **示例：**
 
 ```ts
+import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+// 需根据实际情况进行替换
 let bundleName: string = 'com.example.myapplication';
 let accountId: number = 100;
 try {
@@ -695,6 +764,243 @@ try {
     console.info(`Succeeded in setting cancel watermarkImage policy.`);
 } catch(err) {
     console.error(`Failed to cancel watermarkImage policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.setPermissionManagedState<sup>20+</sup>
+
+setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permissions: Array\<string>, managedState: PermissionManagedState): void
+
+设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
+| applicationInstance    | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
+| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，仅支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
+| managedState | [PermissionManagedState](#permissionmanagedstate20) | 是 | 应用权限的管理策略。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200010 | A conflict policy has been configured. |
+| 9200012 | Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { securityManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let appInstanceTemp: securityManager.ApplicationInstance = {
+      // 需根据实际情况进行替换
+      appIdentifier: '736498586',
+      appIndex: 0,
+      accountId: 100
+};
+let permissionsTemp: Array<string> = ['ohos.permission.CAMERA', 'ohos.permission.LOCATION'];
+try {
+    securityManager.setPermissionManagedState(wantTemp, appInstanceTemp, permissionsTemp, securityManager.PermissionManagedState.GRANTED);
+    console.info('Succeeded in setting permission managed state.');
+} catch(err) {
+    console.error(`Failed to set permission managed state.  Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getPermissionManagedState<sup>20+</sup>
+
+getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permission: string): PermissionManagedState
+
+获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                       | 必填   | 说明                       |
+| -------- | ---------------------------------------- | ---- | ------------------------------- |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
+| applicationInstance  | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
+| permission | string | 是 | 需要获取管理策略的权限名称，仅支持user_grant权限。 |
+
+**返回值：**
+
+| 类型                   | 说明                      |
+| --------------------- | ------------------------- |
+| [PermissionManagedState](#permissionmanagedstate20) | 应用权限的管理策略。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                        |
+| 9200002 | The administrator application does not have permission to manage the device. |
+| 9200012 | Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { securityManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+let appInstanceTemp: securityManager.ApplicationInstance = {
+      // 需根据实际情况进行替换
+      appIdentifier: '736498586',
+      appIndex: 0,
+      accountId: 100
+};
+let permissionTemp: string = 'ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION';
+try {
+    let result: securityManager.PermissionManagedState = securityManager.getPermissionManagedState(wantTemp, appInstanceTemp, permissionTemp);
+    console.info(`Succeeded in getting permission managed state, result : ${result}`);
+} catch(err) {
+    console.error(`Failed to get permission managed state. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.setExternalSourceExtensionsPolicy<sup>22+</sup>
+
+setExternalSourceExtensionsPolicy(admin: Want, policy: common.ManagedPolicy): void
+
+设置外部来源扩展程序的管控策略。
+- DEFAULT：
+默认，表示无管控策略，用户可以通过“设置-隐私与安全-高级”中的“运行外部来源的扩展程序”开关来设置是否允许扩展程序运行。
+- DISALLOW：
+禁用。设置此策略后，禁止运行外部来源的扩展程序，运行中的扩展程序可继续运行，扩展程序关闭后无法启动运行。用户无法开启
+“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+- FORCE_OPEN：
+强制开启。设置此策略后，允许运行外部来源的扩展程序，用户无法关闭“设置-隐私和安全-高级”中的“运行外部来源的扩展程序”开关。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                                                                                                                          |
+| policy     | [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy)                     | 是   | 管控策略。                                                                                                                                                    |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 9200010 | A conflict policy has been configured.                                          |
+| 9200012 | Parameter verification failed.                                          |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**示例：**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+try {
+    securityManager.setExternalSourceExtensionsPolicy(wantTemp, common.ManagedPolicy.FORCE_OPEN);
+    console.info(`Succeeded in setting managed policy.`);
+} catch(err) {
+    console.error(`Failed to set managed policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getExternalSourceExtensionsPolicy<sup>22+</sup>
+
+getExternalSourceExtensionsPolicy(admin: Want): common.ManagedPolicy
+
+获取外部来源扩展程序的管控策略。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型                                                      | 必填  | 说明                                                                                                                                                        |
+| -------    | ------------------------------------------------------- | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| admin      | [Want](../apis-ability-kit/js-apis-app-ability-want.md#want) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |                                                                               
+
+**返回值：**
+
+| 类型                                  | 说明       |
+| ----------------------------------- | -------- |
+|  [common.ManagedPolicy](../apis-mdm-kit/js-apis-enterprise-common.md#managedpolicy) | 返回ManagedPolicy枚举类型的管控策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息                                                                                                                                            |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| 9200001 | The application is not an administrator application of the device.                                                                              |
+| 9200002 | The administrator application does not have permission to manage the device.                                                                    |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.                                          |
+
+**示例：**
+
+```ts
+import { common, securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+    let result: common.ManagedPolicy = securityManager.getExternalSourceExtensionsPolicy(wantTemp);
+    console.info(`Succeeded in getting managed policy, result : ${result}`);
+} catch(err) {
+    console.error(`Failed to get managed policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -729,7 +1035,35 @@ try {
 
 | 名称         | 值 | 说明                            |
 | ----------- | -------- | ------------------------------- |
-| DEFAULT | 0  | 默认。 |
+| DEFAULT | 0  | 默认，表示无策略。 |
 | IN_APP | 1  | 剪贴板可在同一应用使用。 |
 | LOCAL_DEVICE | 2  | 剪贴板可在同一设备使用。 |
 | CROSS_DEVICE | 3  | 剪贴板可跨设备使用。 |
+
+## ApplicationInstance<sup>20+</sup>
+
+应用实例。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ---- | ---- | --------------------------- |
+| appIdentifier | string | 否 | 否 | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)，如果应用没有appIdentifier可使用appId代替，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier和bundleInfo.signatureInfo.appId。|
+| accountId  | number     | 否 | 否 | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。         |
+| appIndex  | number     | 否 | 否 | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示主应用。appIndex大于0时，表示指定的分身应用。        |
+
+## PermissionManagedState<sup>20+</sup>
+
+应用权限的管理状态。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 值 | 说明                            |
+| ----------- | -------- | ------------------------------- |
+| DEFAULT | 1  | 默认由用户授予。 |
+| GRANTED | 0  | 已静默授予。 |
+| DENIED | -1  | 已静默拒绝。 |

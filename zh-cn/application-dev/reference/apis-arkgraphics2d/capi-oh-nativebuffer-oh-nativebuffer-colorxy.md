@@ -1,5 +1,14 @@
 # OH_NativeBuffer_ColorXY
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NativeBuffer_ColorXY {...} OH_NativeBuffer_ColorXY
+```
 ## 概述
 
 表示基色的X和Y坐标。

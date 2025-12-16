@@ -1,5 +1,16 @@
 # OH_CryptoSymKeyGenerator
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoSymKeyGenerator OH_CryptoSymKeyGenerator
+```
+
 ## 概述
 
 定义对称密钥结构体。

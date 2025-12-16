@@ -1,4 +1,10 @@
 # 通知错误码
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @michael_woo888-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 > **说明：**
 >
@@ -365,7 +371,7 @@ The application is not allowed to send notifications due to permission settings.
 
 **处理步骤**
 
-该应用受到企业设备管理[Enterprise Device Manager](../../mdm/mdm-kit-admin.md)的权限管控，应用无法主动退出权限管控名单。
+该应用受到[企业设备管理](../../mdm/mdm-kit-intro.md)的权限管控，应用无法主动退出权限管控名单。
 
 ## 1600021 跨设备通信超时
 
@@ -385,39 +391,56 @@ Distributed operation timed out.
 
 检查设备间连接是否正常（例如手机与手表是否配对成功）。
 
-## 2300007 网络无法访问
+## 1600022 无效的包信息
 
 **错误信息**
 
-Network unreachable.
+The specified bundle is invalid.
 
 **错误描述**
 
-当网络无法访问时，系统会报此错误码。
+无效的包信息，将返回该错误码。
 
 **可能原因**
 
-网络无法访问。
+指定的应用包名不存在。
 
 **处理步骤**
 
-检查网络情况。
+检查包信息是否正确。
 
-## 17700001 包名不存在
+## 1600023 app NotificationSubscriberExtensionAbility未实现
 
 **错误信息**
 
-The specified bundle name was not found.
+The application does not implement the NotificationSubscriberExtensionAbility.
 
 **错误描述**
 
-当应用未安装或包名不正确时，系统会报此错误码。
+应用未实现NotificationSubscriberExtensionAbility。
 
 **可能原因**
 
-1. 包名不正确。
-2. 应用未安装。
+应用未设置或未正确设置[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
 
 **处理步骤**
 
-检查应用是否存在。
+应用需创建NotificationSubscriberExtensionAbility，具体配置方法参考[ExtensionAbility组件](../../application-models/extensionability-overview.md)中的[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。
+
+## 1600024 未配置自定义铃声
+
+**错误信息**
+
+The specified bundle has no custom ringtone information.
+
+**错误描述**
+
+指定的应用未配置自定义铃声信息，将返回该错误码。
+
+**可能原因**
+
+指定的应用未配置自定义铃声信息。
+
+**处理步骤**
+
+检查指定应用是否配置自定义铃声信息。

@@ -1,4 +1,10 @@
 # @ohos.file.storageStatistics (应用空间统计)(系统接口)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 该模块提供空间查询相关的常用功能：包括对内外卡的空间查询、对应用分类数据统计的查询、对应用数据的查询等。
 
@@ -10,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import storageStatistics from "@ohos.file.storageStatistics";
+import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
 ## storageStatistics.getTotalSizeOfVolume
@@ -53,9 +59,14 @@ getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 **示例：**
 
   ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { volumeManager } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    if (volumes == null || volumes.length <= 0) {
+      console.error("volumes is null or length is invalid");
+      return;
+    }
     let uuid: string = volumes[0].uuid;
     storageStatistics.getTotalSizeOfVolume(uuid).then((number: number) => {
       console.info("getTotalSizeOfVolume successfully:" + number);
@@ -102,9 +113,14 @@ getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;):
 **示例：**
 
   ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { volumeManager } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    if (volumes == null || volumes.length <= 0) {
+      console.error("volumes is null or length is invalid");
+      return;
+    }
     let uuid: string = volumes[0].uuid;
     storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, number: number) => {
       if (error) {
@@ -159,9 +175,14 @@ getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 **示例：**
 
   ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { volumeManager } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    if (volumes == null || volumes.length <= 0) {
+      console.error("volumes is null or length is invalid");
+      return;
+    }
     let uuid: string = volumes[0].uuid;
     storageStatistics.getFreeSizeOfVolume(uuid).then((number: number) => {
       console.info("getFreeSizeOfVolume successfully:" + number);
@@ -208,9 +229,14 @@ getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): 
 **示例：**
 
   ```ts
-  import volumemanager from "@ohos.file.volumeManager";
-  import { BusinessError } from '@ohos.base';
-  volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+  import { volumeManager } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
+    if (volumes == null || volumes.length <= 0) {
+      console.error("volumes is null or length is invalid");
+      return;
+    }
     let uuid: string = volumes[0].uuid;
     storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, number: number) => {
       if (error) {
@@ -266,9 +292,9 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 **示例：**
 
   ```ts
-  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-  import storageStatistics from "@ohos.file.storageStatistics";
-  import { BusinessError } from '@ohos.base';
+  import { bundleResourceManager } from '@kit.AbilityKit';
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let bundleName = "com.example.myapplication";
@@ -327,9 +353,9 @@ getBundleStats(packageName: string,  callback: AsyncCallback&lt;BundleStats&gt;,
 **示例：**
 
   ```ts
-  import bundleResourceManager from '@ohos.bundle.bundleResourceManager';
-  import storageStatistics from "@ohos.file.storageStatistics";
-  import { BusinessError } from '@ohos.base';
+  import { bundleResourceManager } from '@kit.AbilityKit';
+  import { storageStatistics } from '@kit.CoreFileKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let bundleName = "com.example.myapplication";
@@ -387,7 +413,7 @@ getSystemSize(): Promise&lt;number&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getSystemSize().then((number: number) => {
     console.info("getSystemSize successfully:" + number);
   }).catch((err: BusinessError) => {
@@ -428,7 +454,7 @@ getSystemSize(callback: AsyncCallback&lt;number&gt;): void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getSystemSize((error: BusinessError, number: number) => {
     if (error) {
       console.error("getSystemSize failed with error:" + JSON.stringify(error));
@@ -472,7 +498,7 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.StorageStats) => {
     console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
   }).catch((err: BusinessError) => {
@@ -513,7 +539,7 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
     if (error) {
       console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
@@ -564,7 +590,7 @@ getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   storageStatistics.getUserStorageStats(userId).then((storageStats: storageStatistics.StorageStats) => {
     console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
@@ -608,7 +634,7 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 **示例：**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   storageStatistics.getUserStorageStats(userId, (error: BusinessError, storageStats: storageStatistics.StorageStats) => {
     if (error) {

@@ -1,6 +1,13 @@
 # TriggerInfo (System API)
 
-The TriggerInfo module defines the information required for triggering the WantAgent. The information is used as an input parameter of [trigger](js-apis-app-ability-wantAgent.md#wantagenttrigger).
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The module defines the information required for triggering the WantAgent. The information is used as an input parameter of [trigger](js-apis-app-ability-wantAgent.md#wantagenttrigger).
 
 > **NOTE**
 > 
@@ -18,6 +25,6 @@ import { wantAgent } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name      | Type                | Mandatory| Description       |
-| ---------- | --- |-------------------- | ----------- |
-| startOptions<sup>12+<sup>|[StartOptions](js-apis-app-ability-startOptions.md)         | No | Start options in **wantAgent** used to start an ability.|
+| Name      | Type                | Read-Only| Optional| Description       |
+| ---------- | ------------------- | ---- | ---- | ----------- |
+| startOptions<sup>12+<sup>|[StartOptions](js-apis-app-ability-startOptions.md)         | No| Yes| Start options in wantAgent used to start an ability.|

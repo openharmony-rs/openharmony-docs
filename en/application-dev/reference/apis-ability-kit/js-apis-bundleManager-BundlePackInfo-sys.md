@@ -1,12 +1,24 @@
 # BundlePackInfo (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **BundlePackInfo** module provides information in the **pack.info** file. The information can be obtained using [freeInstall.getBundlePackInfo](js-apis-freeInstall-sys.md#getbundlepackinfo).
+The module provides information in the **pack.info** file. The information can be obtained using [freeInstall.getBundlePackInfo](js-apis-freeInstall-sys.md#getbundlepackinfo).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs provided by this module are system APIs.
+
+## Modules to Import
+
+```js
+import { freeInstall } from '@kit.AbilityKit';
+```
 
 ## BundlePackInfo
 
@@ -30,7 +42,7 @@ The **BundlePackInfo** module provides information in the **pack.info** file. Th
 | deviceTypes          | Array\<string> | Yes  | No  | Device types supported by the bundle.                                      |
 | name                | string         | Yes  | No  | Bundle name.                                                  |
 | moduleType          | string         | Yes  | No  | Module type of the bundle.                                            |
-| deliveryWithInstall | boolean        | Yes  | No  | Whether the installation should occur during user-initiated installation. The value **true** means that the installation should occur during user-initiated installation, and **false** means the opposite.|
+| deliveryWithInstall | boolean        | Yes  | No  | Whether it should be installed together with the application. **true** if it should be installed together with the application, **false** otherwise.|
 
 ## PackageSummary
 
@@ -77,8 +89,8 @@ The **BundlePackInfo** module provides information in the **pack.info** file. Th
 
 | Name               | Type   | Read-Only| Optional| Description                                                        |
 | ------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| deliveryWithInstall | boolean | Yes  | No  | Whether the installation should occur during user-initiated installation. The value **true** means that the installation should occur during user-initiated installation, and **false** means the opposite.|
-| installationFree    | boolean | Yes  | No  | Whether the HAP file supports the installation-free feature. The value **true** means that the HAP file supports the installation-free feature and meets installation-free constraints, and **false** means the opposite.|
+| deliveryWithInstall | boolean | Yes  | No  | Whether it should be installed together with the application. **true** if it should be installed together with the application, **false** otherwise.|
+| installationFree    | boolean | Yes  | No  | Whether the HAP file supports the installation-free feature. **true** if the HAP file supports the installation-free feature and meets installation-free constraints, **false** otherwise.|
 | moduleName          | string  | Yes  | No  | Module name.                                                |
 | moduleType          | string  | Yes  | No  | Module type.                                                |
 
@@ -92,7 +104,7 @@ The **BundlePackInfo** module provides information in the **pack.info** file. Th
 | ------- | ------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | name    | string                                      | Yes  | No  | Name of the ability. The name must be unique in the bundle.           |
 | label   | string                                      | Yes  | No  | Name of the ability displayed to users. The value is a resource index to names in multiple languages.|
-| exported | boolean                                     | Yes  | No  | Whether the ability can be invoked by other applications. The value **true** means that it can be invoked by other applications, and the value **false** means the opposite.|
+| exported | boolean                                     | Yes  | No  | Whether the ability can be invoked by other applications. **true** if it can be invoked by other applications, **false** otherwise.|
 | forms   | Array\<[AbilityFormInfo](#abilityforminfo)> | Yes  | No  | Widget information.                                                  |
 
 ## ExtensionAbility
@@ -116,7 +128,7 @@ The **BundlePackInfo** module provides information in the **pack.info** file. Th
 | ------------------- | -------------- | ---- | ---- | ------------------------------------------------------------ |
 | name                | string         | Yes  | No  | Widget name.                                           |
 | type                | string         | Yes  | No  | Widget type.                                           |
-| updateEnabled       | boolean        | Yes  | No  | Whether the widget supports periodic update. The value **true** means that the widget supports periodic update, and **false** means the opposite.|
+| updateEnabled       | boolean        | Yes  | No  | Whether the widget supports periodic update. **true** if the widget supports periodic update, **false** otherwise.|
 | scheduledUpdateTime | string         | Yes  | No  | Scheduled time to update the widget. The value is in 24-hour format and accurate to the minute.        |
 | updateDuration      | number         | Yes  | No  | Interval to update the widget. The unit is 30 minutes. The value is a multiple of 30. A widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). If both are configured, **updateDuration** takes precedence.|
 | supportDimensions   | Array\<string> | Yes  | No  | Dimensions of the widget. The value can be **1\*2**, **2\*2**, **2\*4**, **4\*4**, or a combination of these options. At least one option must be specified when defining the widget.|

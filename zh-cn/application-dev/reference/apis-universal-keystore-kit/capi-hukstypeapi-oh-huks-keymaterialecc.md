@@ -1,5 +1,16 @@
 # OH_Huks_KeyMaterialEcc
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+```c
+struct OH_Huks_KeyMaterialEcc {...}
+```
+
 ## 概述
 
 定义Ecc密钥的结构体类型。

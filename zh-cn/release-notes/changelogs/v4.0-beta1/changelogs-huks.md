@@ -28,7 +28,7 @@ attestKeyItem是基于设备证书链封装业务公钥对用户指定的密钥�
 
 **适配指导**
 
-已经具备system权限的应用则可以正常使用attestKeyItem接口，其余普通应用需申请ohos.permission.ACCESS_IDS权限即可，申请方法参考[ACL权限配置说明](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/accesstoken-overview.md#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8acl%E8%AF%B4%E6%98%8E)。
+已经具备system权限的应用则可以正常使用attestKeyItem接口，其余普通应用需申请ohos.permission.ACCESS_IDS权限即可，申请方法参考[ACL权限配置说明](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/security/accesstoken-overview.md#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%88%97%E8%A1%A8acl%E8%AF%B4%E6%98%8E)。
 
 ## cl.huks.2 HUKS解决派生密钥/协商密钥的存储/导出问题
 

@@ -1,5 +1,12 @@
 # Open user_grant Permissions
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Security-->
+<!--Owner: @harylee-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 All the permissions in this topic are available to all applications and granted by the user.
 
 This type of permissions must be declared in the application installation package and authorized by the user in a dialog box during the running of the application. The application has the permission only after the user has granted the permission.
@@ -15,7 +22,9 @@ The [user_grant permissions](app-permission-mgmt-overview.md#user_grant-user-aut
 
 ## ohos.permission.ACCESS_BLUETOOTH
 
-Allows an application to access Bluetooth and use Bluetooth capabilities, such as pairing and connecting to peripheral devices.
+Allows an application to access Bluetooth.
+
+This permission enables features such as scanning, discovering, pairing with, and connecting to nearby Bluetooth devices, as well as advertising and scanning for Bluetooth Low Energy devices.
 
 **Permission level**: normal
 
@@ -49,6 +58,8 @@ Allows an application to read the open anonymous device identifier (OAID).
 
 Allows an application to read the current workout status of the user, such as detecting whether the user is working out and recording the number of steps the user has taken.
 
+For example, to determine whether the user is in motion or to record the number of steps that the user has walked.
+
 **Permission level**: normal
 
 **Authorization mode**: user_grant
@@ -79,8 +90,6 @@ Allows the application data to be exchanged between devices.
 
 Allows an application running in the background to obtain the device location.
 
-For security purposes, this permission cannot be granted to applications in a dialog box. If an application needs this permission, direct the user to manually grant this permission on the **Settings** screen.
-
 **Procedure**:
 
 1. [Declare permissions](declare-permissions.md) in the **module.json5** file.
@@ -88,15 +97,11 @@ For security purposes, this permission cannot be granted to applications in a di
    You must request the foreground location permission before requesting the background permission. Therefore, you must declare both the ohos.permission.LOCATION_IN_BACKGROUND permission and the foreground location permission. The foreground location permissions include the following:
    - Request [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location).
    - Request [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location) and [ohos.permission.LOCATION](#ohospermissionlocation).
-2. Request the foreground location permission from the user through a pop-up window.
-3. After the user grants the foreground location permissions, display a message to direct the user to go to the **Settings** screen to grant the ohos.permission.LOCATION_IN_BACKGROUND permission.
-4. The permission is granted to the application if the user selects **Always allow** on the **Settings** screen.
+2. The application calls [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to display a dialog box to request the foreground location permission from the user.
+3. The application calls [requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12) to display the permission settings dialog box and instruct the user to grant the permission.
+4. The user taps the button in the dialog box to grant the background location permission.
 
-   Paths:
-   <!--RP1-->
-   - Path 1: **Settings** > **Privacy** > **Permission manager** > **Permissions** > **Location** > *Target application*
-   - Path 2: **Settings** > **Privacy** > **Permission manager** > **Apps** > *Target application* > Location
-   <!--RP1End-->
+The system provides the continuous task mechanism. For applications that need to use the location in the background, you can request the continuous task of the **LOCATION** type and the foreground location permission to obtain the location in the background without requesting the background location permission. For details, see [Continuous Task](../../task-management/continuous-task.md).
 
 **Permission level**: normal
 
@@ -180,13 +185,13 @@ Allows an application to use NearLink, such as device pairing and connecting to 
 
 Allows an application to access the **Download** directory and its subdirectories in the user directory.
 
-Currently, this permission is available only to 2-in-1 device applications.
-
 <!--RP2--><!--RP2End-->
 
 **Permission level**: normal
 
 **Authorization mode**: user_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 11
 
@@ -196,13 +201,13 @@ Currently, this permission is available only to 2-in-1 device applications.
 
 Allows an application to access the **Documents** directory and its subdirectories in the user directory.
 
-Currently, this permission is available only to 2-in-1 device applications.
-
 <!--RP2--><!--RP2End-->
 
 **Permission level**: normal
 
 **Authorization mode**: user_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 11
 
@@ -212,15 +217,17 @@ Currently, this permission is available only to 2-in-1 device applications.
 
 Allows an application to capture screen information.
 
-With this permission, the application can perform operations such as taking screenshots and recording on-screen information. Currently, this permission is available only to applications running on tablets and 2-in-1 devices.
+With this permission, the application can perform operations such as taking screenshots.
 
-**Permission level**: system_basic
+**Permission level**: normal
 
 **Authorization mode**: user_grant
 
-**Enable via ACL**: true
+**Supported devices**: PCs/2-in-1 devices | tablets | phones
 
 **Valid since**: 14
+
+**Changelog**: This permission is available only on tablets and PCs/2-in-1 devices from API versions 14 to 20. Since API version 21, this permission is also available on phones.
 
 ## ohos.permission.READ_MEDIA
 

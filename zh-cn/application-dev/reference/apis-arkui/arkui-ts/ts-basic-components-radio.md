@@ -1,4 +1,10 @@
 # Radio
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @houguobiao-->
+<!--Designer: @houguobiao-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 单选框，提供相应的用户交互选择项。
 
@@ -38,12 +44,12 @@ Radio(options: RadioOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| value | string | 是 | 当前单选框的值。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| group | string | 是 | 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12枚举说明) | 否 | 配置单选框的选中样式。未设置时按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 配置单选框的选中样式为自定义组件。自定义组件与Radio组件为中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| value | string | 否 | 否 | 当前单选框的值。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| group | string | 否 | 否 | 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12枚举说明) | 否 | 是 | 配置单选框的选中样式。未设置时按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 配置单选框的选中样式为自定义组件。自定义组件与Radio组件为中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## RadioIndicatorType<sup>12+</sup>枚举说明
 
@@ -72,6 +78,7 @@ checked(value: boolean)
 设置单选框的选中状态。
 
 从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
+
 从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -104,7 +111,7 @@ checked(isChecked: Optional\<boolean>)
 
 | 参数名    | 类型                                                         | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isChecked | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | 单选框的选中状态。<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
+| isChecked | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 单选框的选中状态。<br/>当isChecked的值为undefined时取默认值false。<br/>值为true时，单选框被选中。值为false时，单选框不被选中。 |
 
 ### radioStyle<sup>10+</sup>
 
@@ -154,7 +161,7 @@ contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| modifier | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
+| modifier | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ContentModifier\<RadioConfiguration>](#radioconfiguration12对象说明)> | 是   | 在Radio组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。<br/>当modifier的值为undefined时，不使用内容修改器。 |
 
 ## 事件
 
@@ -164,7 +171,7 @@ contentModifier(modifier: Optional<ContentModifier\<RadioConfiguration>>)
 
 onChange(callback: (isChecked: boolean) => void)
 
-单选框选中状态改变时触发回调。
+单选框选中状态改变时触发的回调。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -182,7 +189,7 @@ onChange(callback: (isChecked: boolean) => void)
 
 onChange(callback: Optional\<OnRadioChangeCallback>)
 
-单选框选中状态改变时触发回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+单选框选中状态改变时触发的回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -194,13 +201,13 @@ onChange(callback: Optional\<OnRadioChangeCallback>)
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[OnRadioChangeCallback](#onradiochangecallback18)> | 是   | 单选框选中状态改变时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnRadioChangeCallback](#onradiochangecallback18)> | 是   | 单选框选中状态改变时触发该回调。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## OnRadioChangeCallback<sup>18+</sup>
 
 type OnRadioChangeCallback = (isChecked: boolean) => void
 
-单选框选中状态改变时触发回调。
+单选框选中状态改变时触发的回调函数类型定义。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -220,15 +227,15 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                   | 类型                                       | 必填 | 说明                                                         |
-| ---------------------- | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| checkedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 开启状态底板颜色。<br/>默认值：`$r('sys.color.ohos_id_color_text_primary_activated')`                      |
-| uncheckedBorderColor   | [ResourceColor](ts-types.md#resourcecolor) | 否   | 关闭状态描边颜色。<br/>默认值：`$r('sys.color.ohos_id_color_switch_outline_off')`                       |
-| indicatorColor         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 开启状态内部圆饼颜色。从API version 12开始，indicatorType设置为RadioIndicatorType.TICK和RadioIndicatorType.DOT时，支持修改内部颜色。indicatorType设置为RadioIndicatorType.CUSTOM时，不支持修改内部颜色。<br/>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')` |
+| 名称                   | 类型                                       | 只读 | 可选 | 说明                                                         |
+| ---------------------- | ------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| checkedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 开启状态底板颜色。<br/>默认值：`$r('sys.color.ohos_id_color_text_primary_activated')` |
+| uncheckedBorderColor   | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 关闭状态描边颜色。<br/>默认值：`$r('sys.color.ohos_id_color_switch_outline_off')` |
+| indicatorColor         | [ResourceColor](ts-types.md#resourcecolor) | 否   | 是   | 开启状态内部圆饼颜色。从API version 12开始，indicatorType设置为RadioIndicatorType.TICK和RadioIndicatorType.DOT时，支持修改内部颜色。indicatorType设置为RadioIndicatorType.CUSTOM时，不支持修改内部颜色。<br/>默认值：`$r('sys.color.ohos_id_color_foreground_contrary')` |
 
 ## RadioConfiguration<sup>12+</sup>对象说明
 
-开发者需要自定义class实现ContentModifier接口。
+开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -301,6 +308,7 @@ struct RadioExample {
 struct RadioExample {
   @Builder 
   indicatorBuilder() {
+    // $r('app.media.star')需要替换为开发者所需的图像资源文件。
     Image($r("app.media.star"))
   }
   build() {

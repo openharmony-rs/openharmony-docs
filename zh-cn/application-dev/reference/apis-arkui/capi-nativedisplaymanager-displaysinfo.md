@@ -1,4 +1,14 @@
 # NativeDisplayManager_DisplaysInfo
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct {...} NativeDisplayManager_DisplaysInfo
+```
 
 ## 概述
 

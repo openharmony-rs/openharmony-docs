@@ -1,4 +1,10 @@
 # 传感器错误码
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 > **说明：**
 >
@@ -8,7 +14,7 @@
 
 **错误信息**
 
-Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception.
+Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception.
 
 **错误描述**
 
@@ -39,4 +45,4 @@ The sensor is not supported by the device.
 
 **处理步骤**
 
-1. 使用GetSingleSensor接口，返回14500102则表示设备不支持该传感器。
+使用GetSingleSensor接口，返回14500102则表示设备不支持该传感器。

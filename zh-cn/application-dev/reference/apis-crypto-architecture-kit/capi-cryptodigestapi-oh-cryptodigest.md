@@ -1,5 +1,16 @@
 # OH_CryptoDigest
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoDigest OH_CryptoDigest
+```
+
 ## 概述
 
 定义摘要结构体。

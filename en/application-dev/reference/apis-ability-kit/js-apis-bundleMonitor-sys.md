@@ -1,6 +1,12 @@
-# @ohos.bundle.bundleMonitor (bundleMonitor) (System API)
+# @ohos.bundle.bundleMonitor (bundleMonitor Module) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **Bundle.bundleMonitor** module provides APIs for listens for bundle installation, uninstall, and updates.
+The module provides APIs for listening for bundle installation, uninstall, and updates.
 
 > **NOTE**
 >
@@ -11,16 +17,8 @@ The **Bundle.bundleMonitor** module provides APIs for listens for bundle install
 ## Modules to Import
 
 ```ts
-import bundleMonitor from '@ohos.bundle.bundleMonitor';
+import { bundleMonitor } from '@kit.AbilityKit';
 ```
-
-## Required Permissions
-
-| Permission                                | APL   | Description                          |
-| ------------------------------------ | ----------- | ------------------------------ |
-| ohos.permission.LISTEN_BUNDLE_CHANGE | system_basic | Permission to listen for bundle installation, uninstall, and updates.|
-
-For details about the APL, see [Basic Concepts in the Permission Mechanism](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
 ## BundleChangedInfo
 
@@ -32,26 +30,31 @@ For details about the APL, see [Basic Concepts in the Permission Mechanism](../.
 | ---------- | ------ | ---- | ---- | -------------------------- |
 | bundleName | string | Yes  | No  | Name of the bundle whose status changes.|
 | userId     | number | Yes  | No  | ID of the user for whom the bundle status changes. You can obtain the ID by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).  |
+| appIndex<sup>12+</sup>   | number | Yes  | No  |  Index of the application clone whose status changes. |
 
 ## BundleChangedEvent
 
+type BundleChangedEvent = 'add' | 'update' | 'remove'
+
 Enumerates the types of events to listen for.
+
+The value type is one of the types listed in the table below.
 
 **System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **System API**: This is a system API.
 
-| Name      | Description            |
-| ---------- | --------------- |
-| add        | Bundle addition events.  |
-| update     | Bundle update events.  |
-| remove     | Bundle removal events.  |
+| Type      | Description                                     |
+| ---------- | ----------------------------------------- |
+| 'add'      | To subscribe to bundle installation events, the value is fixed at **'add'**.     |
+| 'update'   | To subscribe to bundle update events, the value is fixed at **'update'**.  |
+| 'remove'   | To subscribe to bundle removal events, the value is fixed at **'remove'**.  |
 
 ## bundleMonitor.on
 
 on(type: BundleChangedEvent, callback: Callback\<BundleChangedInfo>): void
 
-Subscribes to bundle installation, uninstall, and update events.
+Subscribes to bundle installation, uninstall, and update events. This API uses an asynchronous callback to return the result.
 >**NOTE**
 >
 >This API must be used together with [bundleMonitor.off](#bundlemonitoroff). When the lifecycle of a component, page, or application ends, use [bundleMonitor.off](#bundlemonitoroff) to unsubscribe from the bundle installation, uninstall, and update events.
@@ -67,7 +70,7 @@ Subscribes to bundle installation, uninstall, and update events.
 | Name                      | Type    | Mandatory| Description              |
 | ---------------------------- | -------- | ---- | ------------------ |
 | type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| Yes  | Type of the event to subscribe to.|
-| callback | callback\<BundleChangedInfo>| Yes  | Callback used for the subscription.|
+| callback | callback\<BundleChangedInfo>| Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback) used to return the result. If the operation is successful, **err** is **null** and **data** is the bundle change information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -82,17 +85,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import bundleMonitor from '@ohos.bundle.bundleMonitor';
-import { BusinessError } from '@ohos.base';
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
+let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
+  console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
+};
 try {
-    bundleMonitor.on('add', (bundleChangeInfo) => {
-        console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
-	})
+  bundleMonitor.on('add', callbackFun);
 } catch (errData) {
-    let message = (errData as BusinessError).message;
-    let errCode = (errData as BusinessError).code;
-    console.log(`errData is errCode:${errCode}  message:${message}`);
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```
 
@@ -100,7 +104,7 @@ try {
 
 off(type: BundleChangedEvent, callback?: Callback\<BundleChangedInfo>): void
 
-Unsubscribes from bundle installation, uninstall, and update events.
+Unsubscribes from bundle installation, uninstall, and update events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -113,7 +117,7 @@ Unsubscribes from bundle installation, uninstall, and update events.
 | Name                      | Type    | Mandatory| Description                                                      |
 | ---------------------------- | -------- | ---- | ---------------------------------------------------------- |
 | type| [BundleChangedEvent](js-apis-bundleMonitor-sys.md#bundlechangedevent)| Yes  | Type of the event to unsubscribe from.                                        |
-| callback | callback\<BundleChangedInfo>| No  | Callback used for the unsubscription. By default, no value is passed, and all callbacks of the current event are unsubscribed from.|
+| callback | callback\<BundleChangedInfo>| No  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback) used to return the result. If the operation is successful, **err** is **null** and **data** is the bundle change information obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -128,14 +132,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import bundleMonitor from '@ohos.bundle.bundleMonitor';
-import { BusinessError } from '@ohos.base';
+import { bundleMonitor } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// The variable in this API must be the same as that in bundleMonitor.on. Otherwise, the callback cannot be unsubscribed from.
+let callbackFun = (bundleChangeInfo: bundleMonitor.BundleChangedInfo) => {
+  console.info(`bundleName : ${bundleChangeInfo.bundleName} userId : ${bundleChangeInfo.userId}`);
+};
 
 try {
-    bundleMonitor.off('add');
+  bundleMonitor.off('add', callbackFun);
 } catch (errData) {
-    let message = (errData as BusinessError).message;
-    let errCode = (errData as BusinessError).code;
-    console.log(`errData is errCode:${errCode}  message:${message}`);
+  let message = (errData as BusinessError).message;
+  let errCode = (errData as BusinessError).code;
+  console.error(`errData is errCode:${errCode}  message:${message}`);
 }
 ```

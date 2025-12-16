@@ -1,4 +1,12 @@
 # 管理通知渠道
+
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 系统支持多种通知渠道，不同通知渠道对应的通知提醒方式不同，可以根据应用的实际场景选择适合的通知渠道，并对通知渠道进行管理（支持创建、查询、删除等操作）。
 
 ## 通知渠道类型说明
@@ -28,68 +36,77 @@
 | getSlot(slotType: SlotType): Promise\<NotificationSlot\> | 获取一个指定类型的通知渠道。       |
 | removeSlot(slotType: SlotType): Promise\<void\>          | 删除此应用程序指定类型的通知渠道。  |
 
-除了可以使用`addslot()`创建通知渠道，还可以在发布通知的[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest)中携带notificationSlotType字段，如果对应渠道不存在，会自动创建。
+除了可以使用`addSlot()`创建通知渠道，还可以在发布通知的[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)中携带notificationSlotType字段，如果对应渠道不存在，会自动创建。
 
 ## 开发步骤
 
 1. 导入notificationManager模块。
 
-   ```ts
+   <!-- @[manage_notification_ways_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets) -->
+   
+   ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    const TAG: string = '[PublishOperation]';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
 2. 创建指定类型的通知渠道。
 
-    ```ts
-    // addSlot回调
-    let addSlotCallBack = (err: BusinessError): void => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `addSlot failed, code is ${err.code}, message is ${err.message}`);
-      } else {
-        hilog.info(DOMAIN_NUMBER, TAG, `addSlot success`);
-      }
-    }
-    notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
-    ```
+   <!-- @[create_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets) -->
+   
+   ``` TypeScript
+   // addSlot回调
+   let addSlotCallBack = (err: BusinessError): void => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG, `addSlot failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       hilog.info(DOMAIN_NUMBER, TAG, `addSlot success`);
+     }
+   };
+   notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+   ```
 
 3. 查询指定类型的通知渠道。
 
-    获取对应渠道是否创建以及该渠道支持的通知提醒方式，比如是否有声音提示，是否有震动，锁屏是否可见等。
-    ```ts
-    // getSlot回调
-    let getSlotCallback = (err: BusinessError, data: notificationManager.NotificationSlot): void => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `Failed to get slot. Code is ${err.code}, message is ${err.message}`);
-      } else {
-        hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in getting slot.`);
-        if (data != null) {
-          hilog.info(DOMAIN_NUMBER, TAG, `slot enable status is ${JSON.stringify(data.enabled)}`);
-          hilog.info(DOMAIN_NUMBER, TAG, `slot level is ${JSON.stringify(data.level)}`);
-          hilog.info(DOMAIN_NUMBER, TAG, `vibrationEnabled status is ${JSON.stringify(data.vibrationEnabled)}`);
-          hilog.info(DOMAIN_NUMBER, TAG, `lightEnabled status is ${JSON.stringify(data.lightEnabled)}`);
-        }
-      }
-    }
-    let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-    notificationManager.getSlot(slotType, getSlotCallback);
-    ```
+   获取对应渠道是否创建以及该渠道支持的通知提醒方式，比如是否有声音提示，是否有震动，锁屏是否可见等。
+
+   <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets) -->
+    
+   ``` TypeScript
+   // getSlot回调
+   let getSlotCallback = (err: BusinessError, data: notificationManager.NotificationSlot): void => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG, `Failed to get slot. Code is ${err.code}, message is ${err.message}`);
+     } else {
+       hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in getting slot.`);
+       if (data != null) {
+         hilog.info(DOMAIN_NUMBER, TAG, `slot enable status is ${JSON.stringify(data.enabled)}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `vibrationEnabled status is ${JSON.stringify(data.vibrationEnabled)}`);
+         hilog.info(DOMAIN_NUMBER, TAG, `lightEnabled status is ${JSON.stringify(data.lightEnabled)}`);
+       }
+     }
+   };
+   let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+   notificationManager.getSlot(slotType, getSlotCallback);
+   ```
 
 4. 删除指定类型的通知渠道。
 
-    ```ts
-    // removeSlot回调
-    let removeSlotCallback = (err: BusinessError): void => {
-      if (err) {
-        hilog.error(DOMAIN_NUMBER, TAG, `removeSlot failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
-      } else {
-        hilog.info(DOMAIN_NUMBER, TAG, "removeSlot success");
-      }
-    }
-    let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
-    notificationManager.removeSlot(slotType, removeSlotCallback);
-    ```
+   <!-- @[delete_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets) -->
+   
+   ``` TypeScript
+   // removeSlot回调
+   let removeSlotCallback = (err: BusinessError): void => {
+     if (err) {
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `removeSlot failed, code is ${JSON.stringify(err.code)}, message is ${JSON.stringify(err.message)}`);
+     } else {
+       hilog.info(DOMAIN_NUMBER, TAG, 'removeSlot success');
+     }
+   };
+   let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+   notificationManager.removeSlot(slotType, removeSlotCallback);
+   ```

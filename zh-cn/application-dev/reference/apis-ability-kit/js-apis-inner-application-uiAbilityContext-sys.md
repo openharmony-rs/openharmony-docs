@@ -1,5 +1,12 @@
 # UIAbilityContext (系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 UIAbilityContext是需要保存状态的[UIAbility](js-apis-app-ability-uiAbility.md)所对应的context，继承自[Context](js-apis-inner-application-context.md)，提供UIAbility的相关配置信息以及操作UIAbility和ServiceExtensionAbility的方法，如启动UIAbility，停止当前UIAbilityContext所属的UIAbility，启动、停止、连接、断开连接ServiceExtensionAbility等。
 
 > **说明：**
@@ -24,7 +31,7 @@ import { common } from '@kit.AbilityKit';
 
 startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncCallback\<AbilityResult>): void
 
-启动一个Ability并在该Ability销毁时返回执行结果。使用callback异步回调。仅支持在主线程调用。
+启动一个UIAbility并在该UIAbility销毁时返回执行结果。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -41,9 +48,9 @@ startAbilityForResultWithAccount(want: Want, accountId: number, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 启动Ability的回调函数，返回Ability结果。 |
+| callback | AsyncCallback&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | 是 | 回调函数，当接口调用成功，err中code为0，data为被拉起的UIAbility销毁时的结果码和数据；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -93,15 +100,16 @@ export default class EntryAbility extends UIAbility {
     let accountId = 100;
 
     try {
-      this.context.startAbilityForResultWithAccount(want, accountId, (err: BusinessError, result: common.AbilityResult) => {
-        if (err.code) {
-          // 处理业务逻辑错误
-          console.error(`startAbilityForResultWithAccount failed, code is ${err.code}, message is ${err.message}`);
-          return;
-        }
-        // 执行正常业务
-        console.info('startAbilityForResultWithAccount succeed');
-      });
+      this.context.startAbilityForResultWithAccount(want, accountId,
+        (err: BusinessError, result: common.AbilityResult) => {
+          if (err.code) {
+            // 处理业务逻辑错误
+            console.error(`startAbilityForResultWithAccount failed, code is ${err.code}, message is ${err.message}`);
+            return;
+          }
+          // 执行正常业务
+          console.info('startAbilityForResultWithAccount succeed');
+        });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
@@ -117,7 +125,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
-启动一个Ability并在该Ability销毁时返回执行结果。使用callback异步回调。仅支持在主线程调用。
+启动一个UIAbility并在该UIAbility销毁时返回执行结果。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -134,10 +142,10 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options: StartOp
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback\<void\> | 是 | 启动Ability后，Ability被销毁时的回调函数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -212,7 +220,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<AbilityResult\>
 
-启动一个Ability并在该Ability销毁时返回执行结果。使用Promise异步回调。仅支持在主线程调用。
+启动一个UIAbility并在该UIAbility销毁时返回执行结果。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -229,15 +237,15 @@ startAbilityForResultWithAccount(want: Want, accountId: number, options?: StartO
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Ability被销毁时的回调函数，包含AbilityResult参数。 |
+| Promise&lt;[AbilityResult](js-apis-inner-ability-abilityResult.md)&gt; | Promise对象，包含AbilityResult参数。 |
 
 **错误码：**
 
@@ -322,8 +330,8 @@ startServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的want信息。 |
-| callback | AsyncCallback\<void\> | 是 | 启动ServiceExtensionAbility的回调函数。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -393,7 +401,13 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -470,9 +484,9 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback:
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| callback | AsyncCallback\<void\> | 是 | 启动ServiceExtensionAbility的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -550,8 +564,14 @@ startServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动ServiceExtensionAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -611,7 +631,7 @@ export default class EntryAbility extends UIAbility {
 
 stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
-停止同一应用程序内的服务。使用callback异步回调。
+停止指定的ServiceExtensionAbility后台服务。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -621,8 +641,8 @@ stopServiceExtensionAbility(want: Want, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的want信息。 |
-| callback | AsyncCallback\<void\> | 是 | 停止ServiceExtensionAbility的回调函数。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的Want信息。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当停止ServiceExtensionAbility的接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -690,7 +710,13 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的Want信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -762,9 +788,9 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number, callback: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| callback | AsyncCallback\<void\> | 是 | 停止ServiceExtensionAbility的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当停止ServiceExtensionAbility的接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -837,8 +863,14 @@ stopServiceExtensionAbilityWithAccount(want: Want, accountId: number): Promise\<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 停止ServiceExtensionAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -895,9 +927,7 @@ export default class EntryAbility extends UIAbility {
 
 connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options: ConnectOptions): number
 
-将当前Ability连接到一个指定account的ServiceExtensionAbility。仅支持在主线程调用。
-
-当前仅在phone、tablet设备上生效。
+将当前UIAbility连接到一个指定account的ServiceExtensionAbility。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -910,11 +940,13 @@ connectServiceExtensionAbilityWithAccount(want: Want, accountId: number, options
 
 **系统接口**：此接口为系统接口。
 
+**设备行为差异**：该接口在Phone、Tablet中可正常调用，在其他设备类型中返回16000006错误码。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
 | options | [ConnectOptions](js-apis-inner-ability-connectOptions.md) | 是 | 与ServiceExtensionAbility建立连接后回调函数的实例。 |
 
@@ -988,7 +1020,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<void\>): void
 
-根据want和accountId启动Ability。使用callback异步回调。仅支持在主线程调用。
+根据want和accountId启动UIAbility。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -1005,9 +1037,9 @@ startAbilityWithAccount(want: Want, accountId: number, callback: AsyncCallback\<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| callback | AsyncCallback\<void\> | 是 | 启动Ability的回调函数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1081,7 +1113,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, callback: AsyncCallback\<void\>): void
 
-根据want、accountId及startOptions启动Ability。使用callback异步回调。仅支持在主线程调用。
+根据want、accountId及startOptions启动UIAbility。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -1098,10 +1130,10 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。|
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback\<void\> | 是 | 启动Ability的回调函数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数。 |
+| callback | AsyncCallback\<void\> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1176,7 +1208,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): Promise\<void\>
 
-根据want、accountId和startOptions启动Ability。使用Promise异步回调。仅支持在主线程调用。
+根据want、accountId和startOptions启动UIAbility。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -1193,9 +1225,15 @@ startAbilityWithAccount(want: Want, accountId: number, options?: StartOptions): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 启动UIAbility的Want信息。 |
 | accountId | number | 是 | 系统账号的账号ID，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1271,7 +1309,7 @@ export default class EntryAbility extends UIAbility {
 
 setMissionIcon(icon: image.PixelMap, callback: AsyncCallback\<void>): void
 
-设置当前Ability在任务中显示的图标，图标大小最大为600M。使用callback异步回调。
+设置当前UIAbility在任务中显示的图标，图标大小最大为600M。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1281,8 +1319,8 @@ setMissionIcon(icon: image.PixelMap, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| icon | image.PixelMap | 是 | 在最近的任务中显示的Ability图标。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当设置当前Ability在任务中显示的图标成功，err为undefined，否则为错误对象。 |
+| icon | image.PixelMap | 是 | 在最近的任务中显示的UIAbility图标。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数，当设置当前UIAbility在任务中显示的图标成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1304,17 +1342,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     let imagePixelMap: image.PixelMap;
-    let color = new ArrayBuffer(0);
+    let color = new ArrayBuffer(4 * 6 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+    let bufferArr = new Uint8Array(color);
+    for (let i = 0; i < bufferArr.length; i += 4) {
+      bufferArr[i] = 255;
+      bufferArr[i+1] = 0;
+      bufferArr[i+2] = 122;
+      bufferArr[i+3] = 255;
+    }
     image.createPixelMap(color, {
-      size: {
-        height: 100,
-        width: 100
-      }
+      editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 }
     }).then((data) => {
       imagePixelMap = data;
       this.context.setMissionIcon(imagePixelMap, (err: BusinessError) => {
-        console.error(`setMissionLabel failed, code is ${err.code}, message is ${err.message}`);
-      })
+        if (err.code) {
+          console.error(`setMissionIcon failed, code is ${err.code}, message is ${err.message}`);
+          return;
+        }
+        console.info('setMissionIcon succeed');
+      });
     }).catch((err: BusinessError) => {
       console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
     });
@@ -1327,7 +1373,7 @@ export default class EntryAbility extends UIAbility {
 
 setMissionIcon(icon: image.PixelMap): Promise\<void>
 
-设置当前Ability在任务中显示的图标, 图标大小最大为600M。使用Promise异步回调。
+设置当前UIAbility在任务中显示的图标, 图标大小最大为600M。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1337,13 +1383,13 @@ setMissionIcon(icon: image.PixelMap): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| icon | image.PixelMap | 是 | 在最近的任务中显示的Ability图标。 |
+| icon | image.PixelMap | 是 | 在最近的任务中显示的UIAbility图标。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1365,12 +1411,16 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     let imagePixelMap: image.PixelMap;
-    let color = new ArrayBuffer(0);
+    let color = new ArrayBuffer(4 * 6 * 4); // 创建一个ArrayBuffer对象，用于存储图像像素。该对象的大小为（height * width * 4）字节。
+    let bufferArr = new Uint8Array(color);
+    for (let i = 0; i < bufferArr.length; i += 4) {
+      bufferArr[i] = 255;
+      bufferArr[i+1] = 0;
+      bufferArr[i+2] = 122;
+      bufferArr[i+3] = 255;
+    }
     image.createPixelMap(color, {
-      size: {
-        height: 100,
-        width: 100
-      }
+      editable: true, pixelFormat: image.PixelMapFormat.RGBA_8888, size: { height: 4, width: 6 }
     }).then((data) => {
       imagePixelMap = data;
       this.context.setMissionIcon(imagePixelMap)
@@ -1378,7 +1428,7 @@ export default class EntryAbility extends UIAbility {
           console.info('setMissionIcon succeed');
         })
         .catch((err: BusinessError) => {
-          console.error(`setMissionLabel failed, code is ${err.code}, message is ${err.message}`);
+          console.error(`setMissionIcon failed, code is ${err.code}, message is ${err.message}`);
         });
     }).catch((err: BusinessError) => {
       console.error(`createPixelMap failed, code is ${err.code}, message is ${err.message}`);
@@ -1391,11 +1441,19 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-启动一个指定的Ability，如果这个Ability有多个实例，将拉起最近启动的那个实例。使用callback异步回调。仅支持在主线程调用。
+启动一个指定的UIAbility，如果这个UIAbility有多个实例，将拉起最近启动的那个实例。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 跨设备场景下，调用方与目标方必须为同一应用，且该应用需要具备ohos.permission.DISTRIBUTED_DATASYNC权限，才能启动成功。
+>
+> - 跨应用场景下，目标UIAbility的visible属性若配置为false，调用方应用需申请ohos.permission.START_INVISIBLE_ABILITY权限。
+>
+> - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
+>
+> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+
+更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1405,8 +1463,8 @@ startRecentAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的want信息。 |
-| callback | AsyncCallback\<void> | 是 | 指定的回调函数的结果。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动UIAbility的Want信息。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1475,11 +1533,19 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt;void&gt;): void
 
-启动一个指定的Ability。如果这个Ability有多个实例，将拉起最近启动的那个实例。当开发者需要携带启动参数时可以选择此API。使用callback异步回调。仅支持在主线程调用。
+启动一个指定的UIAbility。如果这个UIAbility有多个实例，将拉起最近启动的那个实例。当开发者需要携带启动参数时可以选择此API。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 跨设备场景下，调用方与目标方必须为同一应用，且该应用需要具备ohos.permission.DISTRIBUTED_DATASYNC权限，才能启动成功。
+>
+> - 跨应用场景下，目标UIAbility的visible属性若配置为false，调用方应用需申请ohos.permission.START_INVISIBLE_ABILITY权限。
+>
+> - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
+>
+> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+
+更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1489,9 +1555,9 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback&lt
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback\<void> | 是 | 指定的回调函数的结果。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动UIAbility的Want信息。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1562,11 +1628,19 @@ export default class EntryAbility extends UIAbility {
 
 startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
-启动一个指定的Ability。如果这个Ability有多个实例，将拉起最近启动的那个实例。使用Promise异步回调。仅支持在主线程调用。
+启动一个指定的UIAbility。如果这个UIAbility有多个实例，将拉起最近启动的那个实例。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
-> 组件启动规则详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
+> - 跨设备场景下，调用方与目标方必须为同一应用，且该应用需要具备ohos.permission.DISTRIBUTED_DATASYNC权限，才能启动成功。
+>
+> - 跨应用场景下，目标UIAbility的visible属性若配置为false，调用方应用需申请ohos.permission.START_INVISIBLE_ABILITY权限。
+>
+> - 如果指定的UIAbility有多个实例，调用方应用需申请ohos.permission.START_RECENT_ABILITY权限（该权限仅系统应用可申请），才能拉起最近启动的那个实例。
+>
+> - 如果调用方位于后台，还需要具备ohos.permission.START_ABILITIES_FROM_BACKGROUND（该权限仅系统应用可申请）。
+
+更多的组件启动规则详见[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1576,8 +1650,14 @@ startRecentAbility(want: Want, options?: StartOptions): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动Ability的want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 需要启动UIAbility的Want信息。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1650,13 +1730,14 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&gt;
 
-根据accountId对指定的Ability进行call调用，并且可以使用返回的Caller通信接口与被调用方进行通信。仅支持在主线程调用。
+根据accountId对指定的UIAbility进行call调用，并且可以使用返回的Caller通信接口与被调用方进行通信。仅支持在主线程调用。使用Promise异步回调。
+
 该接口不支持拉起启动模式为[specified模式](../../application-models/uiability-launch-type.md#specified启动模式)的UIAbility。
 
 使用规则：
- - 跨用户场景下，Call调用目标Ability时，调用方应用需同时申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`与`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`权限。
- - 调用方应用位于后台时，使用该接口启动Ability需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
- - 跨应用场景下，目标Ability的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。
+ - 跨用户场景下，Call调用目标UIAbility时，调用方应用需同时申请`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`与`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`权限。
+ - 调用方应用位于后台时，使用该接口启动UIAbility需申请`ohos.permission.START_ABILITIES_FROM_BACKGROUND`权限。
+ - 跨应用场景下，目标UIAbility的exported属性若配置为false，调用方应用需申请`ohos.permission.START_INVISIBLE_ABILITY`权限。
  - 同设备与跨设备场景下，该接口的使用规则存在差异，详见：[组件启动规则（Stage模型）](../../application-models/component-startup-rules.md)。
 
 **需要权限**：ohos.permission.ABILITY_BACKGROUND_COMMUNICATION, ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
@@ -1669,14 +1750,14 @@ startAbilityByCallWithAccount(want: Want, accountId: number): Promise&lt;Caller&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md) | 是 | 传入需要启动的Ability的信息，包含abilityName、moduleName、bundleName、deviceId(可选)、parameters(可选)，其中deviceId缺省或为空表示启动本地Ability，parameters缺省或为空表示后台启动Ability。 |
+| want | [Want](js-apis-app-ability-want.md) | 是 | 传入需要启动的UIAbility的信息，包含abilityName、moduleName、bundleName、deviceId(可选)、parameters(可选)，其中deviceId缺省或为空表示启动本地UIAbility，parameters缺省或为空表示后台启动UIAbility。 |
 | accountId | number | 是 | 系统账号的账号ID，-1表示当前活动用户，详情参考[getCreatedOsAccountsCount](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountcount9)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | 获取要通讯的caller对象。 |
+| Promise&lt;[Caller](js-apis-app-ability-uiAbility.md#caller)&gt; | Promise对象，返回要通讯的caller对象。 |
 
 **错误码：**
 
@@ -1750,7 +1831,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
-使用设置的caller信息启动一个Ability，caller信息由want携带，在系统服务层识别，Ability可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个Ability时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用callback异步回调。仅支持在主线程调用。
+使用设置的caller信息启动一个UIAbility，caller信息由want携带，在系统服务层识别，UIAbility可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个UIAbility时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -1764,8 +1845,8 @@ startAbilityAsCaller(want: Want, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的want信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动UIAbility的Want信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1813,12 +1894,12 @@ export default class EntryAbility extends UIAbility {
 
     // 使用启动方的Caller身份信息启动新Ability
     this.context.startAbilityAsCaller(localWant, (err) => {
-      if (err && err.code != 0) {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+      if (err.code) {
+        console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('startAbilityAsCaller success.');
       }
-    })
+    });
   }
 }
 ```
@@ -1827,7 +1908,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\<void>): void
 
-使用设置的caller信息启动一个Ability，caller信息由want携带，在系统服务层识别，Ability可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个Ability时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用callback异步回调。仅支持在主线程调用。
+使用设置的caller信息启动一个UIAbility，caller信息由want携带，在系统服务层识别，UIAbility可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个UIAbility时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用callback异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -1841,9 +1922,9 @@ startAbilityAsCaller(want: Want, options: StartOptions, callback: AsyncCallback\
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动Ability所携带的参数。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当启动Ability成功，err为undefined，否则为错误对象。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动UIAbility的Want信息。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 是 | 启动UIAbility所携带的参数。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当接口调用成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 
@@ -1892,12 +1973,12 @@ export default class EntryAbility extends UIAbility {
 
     // 使用启动方的Caller身份信息启动新Ability
     this.context.startAbilityAsCaller(localWant, option, (err) => {
-      if (err && err.code != 0) {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
+      if (err.code) {
+        console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
       } else {
         console.info('startAbilityAsCaller success.');
       }
-    })
+    });
   }
 }
 ```
@@ -1906,7 +1987,7 @@ export default class EntryAbility extends UIAbility {
 
 startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
-使用设置的caller信息启动一个Ability，caller信息由want携带，在系统服务层识别，Ability可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个Ability时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用Promise异步回调。仅支持在主线程调用。
+使用设置的caller信息启动一个UIAbility，caller信息由want携带，在系统服务层识别，UIAbility可以在onCreate生命周期的want参数中获取到caller信息。使用该接口启动一个UIAbility时，want的caller信息不会被当前自身的应用信息覆盖，系统服务层可获取到初始caller的信息。使用Promise异步回调。仅支持在主线程调用。
 
 > **说明：**
 >
@@ -1920,14 +2001,14 @@ startAbilityAsCaller(want: Want, options?: StartOptions): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动Ability的want信息。 |
-| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动Ability所携带的参数。 |
+| want | [Want](js-apis-app-ability-want.md)  | 是 | 启动UIAbility的Want信息。 |
+| options | [StartOptions](js-apis-app-ability-startOptions.md) | 否 | 启动UIAbility所携带的参数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1983,8 +2064,8 @@ export default class EntryAbility extends UIAbility {
         console.info('startAbilityAsCaller success.');
       })
       .catch((err: BusinessError) => {
-        console.error('startAbilityAsCaller failed, err:' + JSON.stringify(err));
-      })
+        console.error(`startAbilityAsCaller failed, code is ${err.code}, message is ${err.message}`);
+      });
   }
 }
 ```
@@ -2011,13 +2092,13 @@ requestModalUIExtension(pickerWant: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的want信息。 |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2088,8 +2169,8 @@ requestModalUIExtension(pickerWant: Want, callback: AsyncCallback\<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的want信息。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当拉起UIExtension成功，err为undefined，否则为错误对象。 |
+| pickerWant | [Want](js-apis-app-ability-want.md)  | 是 | 拉起UIExtension的Want信息。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，当拉起UIExtension成功，err中code为0；否则err会返回对应的错误码和错误信息。 |
 
 **错误码：**
 

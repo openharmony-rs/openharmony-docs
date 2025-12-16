@@ -1,5 +1,12 @@
 # Using the MindSpore Lite Engine for On-Device Training (C/C++)
 
+<!--Kit: MindSpore Lite Kit-->
+<!--Subsystem: AI-->
+<!--Owner: @zhuguodong8-->
+<!--Designer: @zhuguodong8; @jjfeing-->
+<!--Tester: @principal87-->
+<!--Adviser: @ge-yafang-->
+
 ## When to Use
 
 MindSpore Lite is an AI engine that implements AI model inference for different hardware devices. It has been used in a wide range of fields, such as image classification, target recognition, facial recognition, and character recognition. In addition, MindSpore Lite supports deployment of model training on devices, making it possible to adapt to user behavior in actual service scenarios.
@@ -8,7 +15,7 @@ This topic describes the general development process for using MindSpore Lite fo
 
 
 ## Available APIs
-The following table list some APIs for using MindSpore Lite for model training. For details about the APIs, see [MindSpore](../../reference/apis-mindspore-lite-kit/_mind_spore.md).
+The following table list some APIs for using MindSpore Lite for model training. For details about the APIs, see [MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md).
 
 | API       | Description       |
 | ------------------ | ----------------- |
@@ -19,7 +26,7 @@ The following table list some APIs for using MindSpore Lite for model training. 
 |OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()|Creates the pointer to a training configuration object.|
 |void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)|Destroys the pointer to a training configuration object.|
 |OH_AI_ModelHandle OH_AI_ModelCreate()|Creates a model object.|
-|OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context, const OH_AI_TrainCfgHandle train_cfg)|Loads and builds a MindSpore training model from a model file.|
+|OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path, OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context, const OH_AI_TrainCfgHandle train_cfg)|Loads and builds a MindSpore Lite training model from a model file.|
 |OH_AI_Status OH_AI_RunStep(OH_AI_ModelHandle model, const OH_AI_KernelCallBack before, const OH_AI_KernelCallBack after)|Runs a single-step training model.|
 |OH_AI_Status OH_AI_ModelSetTrainMode(OH_AI_ModelHandle model, bool train)|Sets the training mode.|
 |OH_AI_Status OH_AI_ExportModel(OH_AI_ModelHandle model, OH_AI_ModelType model_type, const char *model_file, OH_AI_QuantizationType quantization_type, bool export_inference_only, char **output_tensor_name, size_t num)|Exports a trained MS model.|
@@ -61,10 +68,10 @@ The development process consists of the following main steps:
 
 1. Prepare the required model.
 
-    The prepared model is in `.ms` format. This topic uses [lenet_train.ms](https://gitee.com/openharmony-sig/compatibility/blob/master/test_suite/resource/master/standard%20system/acts/resource/ai/mindspore/lenet_train/lenet_train.ms) as an example. To use a custom model, perform the following steps:
+    Ensure that the prepared model is in `.ms` format. This document uses `lenet_train.ms` as an example. The operation procedure is as follows:
 
     - Use Python to create a network model based on the MindSpore architecture and export the model as a `.mindir` file. For details, see [Quick Start](https://www.mindspore.cn/tutorials/en/r2.1/beginner/quick_start.html).
-    - Convert the `.mindir` model file into an `.ms` file. For details about the conversion procedure, see [Converting MindSpore Lite Models](https://www.mindspore.cn/lite/docs/en/r2.1/use/converter_train.html). The `.ms` file can be imported to the device to implement training based on the MindSpore device framework.
+    - Convert the `.mindir` model file into an `.ms` file. For details about the conversion procedure, see [Converting MindSpore Lite Models](https://www.mindspore.cn/lite/docs/en/r2.1/use/converter_train.html). The `.ms` file can be imported to the device to implement training based on the MindSpore Lite framework.
 
 2. Create a context and set parameters such as the device type and training configuration.
 
@@ -146,7 +153,7 @@ The development process consists of the following main steps:
     Use **OH_AI_ModelSetTrainMode** to set the training mode and use **OH_AI_RunStep** to run model training.
 
     ```c
-    // Set Traim Mode
+    // Set Train Mode
     ret = OH_AI_ModelSetTrainMode(model, true);
     if (ret != OH_AI_STATUS_SUCCESS) {
         printf("OH_AI_ModelSetTrainMode failed, ret: %d.\n", ret);
@@ -218,7 +225,7 @@ The development process consists of the following main steps:
     )
     ```
 
-   - To use ohos-sdk for cross compilation, you need to set the native toolchain path for the CMake tool as follows: `-DCMAKE_TOOLCHAIN_FILE="/xxx/native/build/cmake/ohos.toolchain.camke"`.
+   - To use ohos-sdk for cross compilation, you need to set the native toolchain path for the CMake tool as follows: `-DCMAKE_TOOLCHAIN_FILE="/xxx/native/build/cmake/ohos.toolchain.cmake"`.
 
    - Start cross compilation. When running the compilation command, set **OHOS_NDK** to the native toolchain path.
       ```shell
@@ -433,12 +440,12 @@ int TrainDemo(int argc, const char **argv) {
     return ret;
   }
 
-  // Set Traim Mode
+  // Set Train Mode
   ret = OH_AI_ModelSetTrainMode(model, true);
   if (ret != OH_AI_STATUS_SUCCESS) {
     printf("OH_AI_ModelSetTrainMode failed, ret: %d.\n", ret);
     OH_AI_ModelDestroy(&model);
-	OH_AI_ContextDestroy(&context);
+    OH_AI_ContextDestroy(&context);
     return ret;
   }
 
@@ -477,7 +484,8 @@ int TrainDemo(int argc, const char **argv) {
   OH_AI_ContextDestroy(&context);
 
   // Use The Exported Model to predict
-  ret = ModelPredict(strcat(export_infer_model, ".ms"));
+  char *exported_model = strcat(export_infer_model, ".ms");
+  ret = ModelPredict(exported_model);
   if (ret != OH_AI_STATUS_SUCCESS) {
     printf("Exported Model to predict failed, ret: %d.\n", ret);
     return ret;

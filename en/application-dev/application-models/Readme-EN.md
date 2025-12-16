@@ -1,5 +1,13 @@
 # Ability Kit<!--ability-kit-->
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @jayleehw-->
+<!--Designer: @jayleehw-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+
 - [Introduction to Ability Kit](abilitykit-overview.md)
 - [Application Models](application-models.md)
 - Stage Model Development<!--stage-model-development-->
@@ -12,18 +20,19 @@
       - [UIAbility Launch Type](uiability-launch-type.md)
       - [UIAbility Usage](uiability-usage.md)
       - [Data Synchronization Between UIAbility and UI Page](uiability-data-sync-with-ui.md)
-      - [Starting UIAbility in the Same Application](uiability-intra-device-interaction.md)
+      - [Starting UIAbility Within the Same Application](uiability-intra-device-interaction.md)
       - [UIAbility Backup and Restore](ability-recover-guideline.md)
     - [ExtensionAbility Component](extensionability-overview.md)
       <!--Del-->
-      - [ServiceExtensionAbility (for System Applications Only)](serviceextensionability.md)
+      - [ServiceExtensionAbility (for System Applications Only)](serviceextensionability-sys.md)
       - [UIServiceExtensionAbility (for System Applications Only)](uiserviceextension-sys.md)
-      - [UIExtensionAbility (for System Applications Only)](uiextensionability.md)
-      - [AutoFillExtensionAbility (for System Applications Only)](autofillextensionablility-guide.md)
+      - [UIExtensionAbility (for System Applications Only)](uiextensionability-sys.md)
+      - [Using AutoFillExtensionAbility for Auto-Fill (for System Applications Only)](autofillextensionability-guide-sys.md)
+      - [Using UIServiceExtensionAbility for System Floating Windows](uiserviceextension.md)
       <!--DelEnd-->
-      - [UIServiceExtensionAbility](uiserviceextension.md)
       - [EmbeddedUIExtensionAbility](embeddeduiextensionability.md)
-    - [AbilityStage Component Container](abilitystage.md)
+      - [Using AppServiceExtensionAbility for Background Services](app-service-extension-ability.md)
+    - [AbilityStage Component Manager](abilitystage.md)
     - [Context](application-context-stage.md)
     - Want<!--want-->
       - [Want Overview](want-overview.md)
@@ -32,6 +41,7 @@
       - [Common action and entities Values (Not Recommended)](actions-entities.md)
     - [Component Startup Rules (Stage Model)](component-startup-rules.md)
     - [AppStartup](app-startup.md)
+    - [Application Preloading](preload-application.md)
     - [Obtaining Reasons for Abnormal Application Exits](ability-exit-info-record.md)
     <!--Del-->
     - Inter-Device Application Component Interaction (Hopping)<!--hop-->
@@ -39,7 +49,7 @@
       - [Cross-Device Migration](hop-cross-device-migration.md)
       - [Multi-device Collaboration](hop-multi-device-collaboration.md)
     <!--DelEnd-->
-    - [Subscribing to System Environment Variable Changes](subscribe-system-environment-variable-changes.md)
+    - [Obtaining/Setting Environment Variables](subscribe-system-environment-variable-changes.md)
   - Inter-Application Redirection<!--inter-app-redirection-->
     - [Overview of Application Redirection](link-between-apps-overview.md)
     - Starting a Specified Application<!--directional-redirection-->
@@ -66,12 +76,20 @@
   - [Thread Model (Stage Model)](thread-model-stage.md)
   <!--Del-->
   - Mission Management (for System Applications Only)<!--mission-management-->
-    - [Mission Management Scenarios](mission-management-overview.md)
-    - [Mission Management and Launch Type](mission-management-launch-type.md)
-    - [Page Stack and Mission List](page-mission-stack.md)
-    - [Setting the Icon and Name of a Mission Snapshot](mission-set-icon-name-for-task-snapshot.md)
+    - [Mission Management Scenarios (for System Applications Only)](mission-management-overview-sys.md)
+    - [Mission Management and Launch Type (for System Applications Only)](mission-management-launch-type-sys.md)
+    - [Page Stack and MissionList (for System Applications Only)](page-mission-stack-sys.md)
+    - [Setting the Icon and Name of a Mission Snapshot (for System Applications Only)](mission-set-icon-name-for-task-snapshot-sys.md)
   <!--DelEnd-->
   - [Application Configuration File](config-file-stage.md)
+  - InsightIntent Framework Development<!--insight-intent-->
+    - [InsightIntent Framework Overview](insight-intent-overview.md)
+    - Intent Development<!--insight-intent-development-->
+      - [Intent Development Overview](insight-intent-definition.md)
+      - [Developing Intents Using Configuration Files](insight-intent-config-development.md)
+      - [Developing Intents Using Decorators](insight-intent-decorator-development.md)
+      - [Appendix: Standard Intent Access Specifications](insight-intent-access-specifications.md)
+    - [Debugging Intents](insight-intent-debug.md)
 - FA Model Development<!--fa-model-development-->
   - [FA Model Development Overview](fa-model-development-overview.md)
   - FA Model Application Components<!--fa-model-application-components-->
@@ -85,7 +103,7 @@
       - [Starting a Local PageAbility](start-local-pageability.md)
       - [Stopping a PageAbility](stop-pageability.md)
       <!--Del-->
-      - [Starting a Remote PageAbility (for System Applications Only)](start-remote-pageability.md)
+      - [Starting a Remote PageAbility (for System Applications Only)](start-remote-pageability-sys.md)
       <!--DelEnd-->
       - [Starting a Specified Page](start-page.md)
       - [Window Properties](window-properties.md)
@@ -109,10 +127,10 @@
     - [Context](application-context-fa.md)
     - [Want](want-fa.md)
     - [Component Startup Rules (FA Model)](component-startup-rules-fa.md)
-  - [Process Model (Stage Model)](process-model-fa.md)
-  - [Thread Model (Stage Model)](thread-model-fa.md)
+  - [Process Model (FA Model)](process-model-fa.md)
+  - [Thread Model (FA Model)](thread-model-fa.md)
   <!--Del-->
-  - [Mission Management (for System Applications Only)](mission-management-fa.md)
+  - [Mission Management (for System Applications Only)](mission-management-fa-sys.md)
   <!--DelEnd-->
   - [Application Configuration File](config-file-fa.md)
 <!--Del-->
@@ -123,7 +141,7 @@
   - [Accessing a DataShareExtensionAbility from the FA Model](access-datashareextensionability-from-fa.md)
   - [Starting a PageAbility from the Stage Model](start-pageability-from-stage.md)
   - [Connecting to a ServiceAbility from the Stage Model](bind-serviceability-from-stage.md)
-- Switching from the FA Model to the Stage Model<!--fa-to-stage-switc-->
+- Switching from the FA Model to the Stage Model<!--fa-to-stage-switch-->
   - [Model Switching Overview](model-switch-overview.md)
   - Configuration File Switching<!--configuration-file-switch-->
     - [Differences in Configuration Files](configuration-file-diff.md)
@@ -152,3 +170,4 @@
 - Native Child Process Development<!--native-childprocess-development-->
     - [Creating Native Child Processes](capi_nativechildprocess_development_guideline.md)
     - [Obtaining Exit Information of Native Child Processes](capi-nativechildprocess-exit-info.md)
+- [Ability Kit Terminology](ability-terminology.md)

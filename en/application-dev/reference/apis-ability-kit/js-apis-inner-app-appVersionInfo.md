@@ -1,6 +1,13 @@
 # AppVersionInfo
 
-The AppVersionInfo module defines the application version information. You can use [getAppVersionInfo](js-apis-inner-app-context.md#contextgetappversioninfo7) to obtain the version information of the current application.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @xialiangwei-->
+<!--Designer: @yzkp-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The module defines the application version information. You can use [getAppVersionInfo](js-apis-inner-app-context.md#contextgetappversioninfo7) to obtain the version information of the current application.
 
 > **NOTE**
 >
@@ -20,7 +27,7 @@ import featureAbility from '@ohos.ability.featureAbility';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name       | Type  | Readable| Writable| Description          |
+| Name       | Type  | Read-Only| Optional| Description          |
 | ----------- | ------ | ---- | ---- | -------------- |
 | appName     | string | Yes  | No  | Application name.    |
 | versionCode | number | Yes  | No  | Application version code.|

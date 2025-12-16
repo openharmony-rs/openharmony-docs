@@ -1,6 +1,13 @@
-# @ohos.app.ability.insightIntent (意图调用基础能力)
+# @ohos.app.ability.insightIntent (意图框架基础定义)
 
-本模块提供意图调用基础能力。
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @linjunjie6-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+本模块提供[意图框架](../../application-models/insight-intent-overview.md)基础定义。
 
 > **说明：**
 >
@@ -16,7 +23,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 ## ExecuteMode
 
-意图调用执行模式。
+意图执行模式。表示系统入口触发意图执行时传递的执行模式，每个意图支持的执行模式在意图开发时定义。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -28,24 +35,24 @@ import { insightIntent } from '@kit.AbilityKit';
 
 ## ExecuteResult
 
-意图调用的返回结果。
+意图执行的返回结果。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | 否 | 否 | 意图调用返回的错误码。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| result | Record<string, Object> | 否 | 是 | 意图调用返回的结果。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图调用时，意图执行方给意图调用方授权的URI列表。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
-| flags<sup>18+</sup> | number | 否 | 是 | 意图调用时，意图执行方给意图调用方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。|
+| code | number | 否 | 否 | 意图执行返回的错误码，由开发者定义。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| result | Record<string, Object> | 否 | 是 | 意图执行返回的结果，通常会包含需要返回给系统入口的数据。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图执行返回的URI列表。该字段需要与flags字段配合使用，根据URI列表将flags字段的相应权限授权给系统入口。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
+| flags<sup>18+</sup> | number | 否 | 是 | 意图执行返回给系统入口的URI列表的授权权限。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。权限介绍见[Flags](js-apis-app-ability-wantConstant.md#flags)。 |
 
 ## IntentEntity<sup>20+<sup>
 
-[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰器的基类，用于定义意图实体。
+意图实体结构体定义，用于定义意图执行过程中涉及的关键信息对象，包括意图参数和意图执行结果等。
+
+开发者通过继承该类来定义意图实体，继承类需使用[@InsightIntentEntity](./js-apis-app-ability-InsightIntentDecorator.md#insightintententity)装饰。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -53,13 +60,22 @@ import { insightIntent } from '@kit.AbilityKit';
 
 ## IntentResult\<T><sup>20+<sup>
 
-用于定义意图执行返回结果。
+意图执行的返回结果，支持[泛型类型](../../quick-start/introduction-to-arkts.md#泛型类和接口)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | 否 | 否 | 意图调用返回的错误码。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
-| result | T | 否 | 是 | 意图调用返回的结果。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| code | number | 否 | 否 | 意图执行返回的错误码，由开发者定义。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| result | T | 否 | 是 | 意图执行返回的结果，通常会包含需要返回给系统入口的数据。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+
+## ReturnMode<sup>23+<sup>
+
+意图执行结果返回给意图拉起方的返回形式。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| CALLBACK | 0 | 表示意图执行结果将由[意图执行基类](./js-apis-app-ability-insightIntentExecutor.md)中的[onExecuteInUIAbilityForegroundMode](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)接口或[onExecuteInUIExtensionAbility](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)接口返回。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| FUNCTION | 1 | 表示意图执行结果会延迟返回，直到开发者主动调用[意图提供方管理能力](./js-apis-app-ability-insightIntentProvider.md)中的[sendExecuteResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult)接口或[sendIntentResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult)接口返回意图执行结果。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |

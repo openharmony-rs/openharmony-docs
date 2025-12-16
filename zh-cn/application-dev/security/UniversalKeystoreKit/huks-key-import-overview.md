@@ -1,20 +1,31 @@
 # 密钥导入介绍及算法规格
 
-如果业务在HUKS外部生成密钥（比如应用间协商生成、服务器端生成），业务可以将密钥导入到HUKS中由HUKS进行管理。密钥一旦导入到HUKS中，在密钥的生命周期内，其明文仅在安全环境中进行访问操作，不会传递出安全环境，保证任何人都无法获取到密钥的明文。
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
+
+如果业务在HUKS外部生成密钥（比如应用间协商生成、服务器端生成），业务可以将密钥导入到HUKS中由HUKS进行管理。密钥一旦导入到HUKS中，在密钥的生命周期内，其明文仅在安全环境中进行访问操作，不会传递出安全环境。
 
 密钥导入的方式包含明文导入和加密导入两种方式。
-> **注意：**
+> **说明：**
+>
 > 使用现有密钥别名作为导入的密钥别名会把现有密钥覆盖。
+
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
 
 ## 明文导入
 
-该方式直接将密钥明文导入HUKS，在导入过程中密钥明文会暴露在非安全环境中，一般适用于轻量级设备或低安业务。
+该方式直接将密钥明文导入HUKS，在导入过程中密钥明文会暴露在非安全环境中，一般适用于<!--RP2-->轻量级设备<!--RP2End-->或低安业务。
 
 - 推荐使用该方式导入的密钥类型：非对称密钥的公钥。
 
 - 不推荐使用该方式导入的密钥类型：对称密钥、非对称密钥对。
   > **说明：**
-  > 轻量级设备只支持明文导入，不支持加密导入。
+  >
+  > <!--RP2-->轻量级设备<!--RP2End-->只支持明文导入，不支持加密导入。
 
 ## 加密导入
 
@@ -36,9 +47,10 @@
 导出密钥接口返回的[公钥明文材料是按照**X.509**格式封装](huks-concepts.md#公钥材料格式)，导入加密密钥接口中的密钥材料需满足**Length<sub>Data</sub>-Data**的格式封装，形如：[(Length<sub>part1</sub>Data<sub>part1</sub>)……(Length<sub>partn</sub>Data<sub>partn</sub>)]。
 
 > **说明：**
+>
 > 1. 加密导入密钥时，协商算法支持ECDH和X25519，协商后的Shared_Key使用AES-GCM算法加密Caller_Kek。对应算法套件定义见[HuksUnwrapSuite](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksunwrapsuite9)。
 > 2. 加密导入不支持X.509格式。
-> 3. 轻量级设备只支持明文导入，不支持加密导入。
+> 3. <!--RP2-->轻量级设备<!--RP2End-->只支持明文导入，不支持加密导入。
 
 ### 加密导入密钥材料格式
 
@@ -48,22 +60,47 @@
 | 业务公钥Caller_Pk | L<sub>Caller_Pk</sub>字节 |
 | Shared_Key加密参数AAD2长度L<sub>AAD2</sub> | 4字节 |
 | Shared_Key加密参数AAD2 | L<sub>AAD2</sub>字节 |
-| Shared_Key加密参数Nonce2长度L<sub>Nonce2</sub> | 4字节 |
-| Shared_Key加密参数Nonce2 | L<sub>Nonce2</sub>字节 |
+| Shared_Key加密参数NONCE2长度L<sub>NONCE2</sub> | 4字节 |
+| Shared_Key加密参数NONCE2 | L<sub>NONCE2</sub>字节 |
 | Shared_Key加密参数TAG2长度L<sub>TAG2</sub> | 4字节 |
 | Shared_Key加密参数TAG2 | L<sub>TAG2</sub>字节 |
 | Caller_Kek密文长度L<sub>Caller_Kek_enc</sub> | 4字节 |
 | Caller_Kek密文Caller_Kek_enc | L<sub>Caller_Kek_enc</sub>字节 |
 | Caller_Kek加密参数AAD3长度L<sub>AAD3</sub> | 4字节 |
 | Caller_Kek加密参数AAD3 | L<sub>AAD3</sub>字节 |
-| Caller_Kek加密参数Nonce3长度L<sub>Nonce3</sub> | 4字节 |
-| Caller_Kek加密参数Nonce3 | L<sub>Nonce3</sub>字节 |
+| Caller_Kek加密参数NONCE3长度L<sub>NONCE3</sub> | 4字节 |
+| Caller_Kek加密参数NONCE3 | L<sub>NONCE3</sub>字节 |
 | Caller_Kek加密参数TAG3长度L<sub>TAG3</sub> | 4字节 |
 | Caller_Kek加密参数TAG3 | L<sub>TAG3</sub>字节 |
 | 密钥明文材料长度的长度L<sub>To_Import_Key_size</sub> | 4字节 |
 | 密钥明文材料长度To_Import_Key_size | L<sub>To_Import_Key_size</sub>字节 |
 | To_Import_Key密文长度L<sub>To_Import_Key_enc</sub> | 4字节 |
 | To_Import_Key密文To_Import_Key_enc | L<sub>To_Import_Key_enc</sub>字节 |
+
+## 数字信封导入
+从API 23开始支持[数字信封](huks-key-import-overview.md#数字信封导入)特性。
+
+该方式支持以数字信封形式导入密钥，确保密钥安全导入HUKS，防止传输过程中泄露，适用于高安全敏感业务。
+
+推荐使用该方法导入的密钥类型：对称密钥、非对称密钥对。
+
+下图为数字信封导入密钥开发时序图。
+
+![数字信封开发时许图](figures/数字信封流程图.png)
+
+根据业务流程，导入数字信封时需要调用HUKS的能力。
+
+- 生成SM4密钥，用于加密将导入的密钥。
+- 使用生成的SM4密钥并采用ECB，NoPadding模式对导入密钥明文进行加密，若业务导入非对称密钥仅需加密其私钥。
+- 导出对端SM2公钥，用于加密生成的SM4密钥。
+- 使用对端导出的SM2公钥，采用NoPadding模式并指定SM3为摘要算法加密本端生成的SM4密钥。
+- 导入加密密钥。
+导出密钥接口返回的公钥材料格式按照[X.509格式封装](huks-concepts.md#公钥材料格式)，导入加密密钥接口返回的密钥材料按照**Length<sub>Data</sub>-Data**的格式封装，分别是[(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)]。
+
+> **说明：**
+> 1. 使用数字信封导入密钥需要使用tag，HUKS_TAG_UNWRAP_ALGORITHM_SUITE，该tag值为HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING。
+> 2. 数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA标签](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，并将公钥以DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
+> 3. 仅<!--RP1-->标准设备<!--RP1End-->支持数字信封导入。
 
 ## 支持的算法
 
@@ -75,9 +112,12 @@
 <!--DelEnd-->
 
 > **说明：**
+>
 > 导入RSA密钥时，公钥必须大于或者等于65537。
+> 数字信封不支持 DSA 算法，X25519密钥和Ed25519密钥，在使用数字信封导入密钥时公钥采用裸密钥的方式在该标签中填入。
 
-**标准设备规格**
+**<!--RP1-->标准设备<!--RP1End-->规格**
+
 | 算法 | 支持的密钥长度 | API级别 | <!--DelCol4-->是否必选规格 |
 | -------- | -------- | -------- | -------- |
 | AES | 128、192、256 | 8+ | 是 |
@@ -97,7 +137,7 @@
 | DES | 64 | 18+ | 是 |
 | 3DES | 128、192 | 18+ | 是 |
 
-**轻量级设备规格**
+**<!--RP2-->轻量级设备<!--RP2End-->规格**
 
 <!--Del-->
 轻量级设备所列规格，OEM厂商将基于实际情况决定是否实现，如需使用，请查阅具体厂商提供的说明，确保规格支持再使用。

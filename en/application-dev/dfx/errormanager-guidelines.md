@@ -1,308 +1,413 @@
 # Development of Error Manager
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @rr_cn-->
+<!--Designer: @peterhuangyu-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
-If coding specification issues or errors exist in the code of an application, the application may encounter unexpected errors, for example, uncaught exceptions, while it is running. In such a case, the application may exit unexpectedly. Error logs, however, are usually stored on users' local storage devices, making it inconvenient to locate faults. With the APIs provided by the **errorManager** module, the related errors and logs will be reported to your service platform for fault locating before application exits.
+If coding specification issues or errors exist in the code of an application, the application may encounter unexpected errors, for example, uncaught exceptions, while it is running. In such a case, the application may exit unexpectedly. Error logs, however, are usually stored on users' local storage devices, making it inconvenient to locate faults. With the APIs provided by the errorManager module, the related errors and logs will be reported to your service platform for fault locating before application exits.
 
-After the errorManager API is used to listen for exceptions and errors, the application does not exit. You are advised to add the synchronous exit operation after the callback is executed. If you only want to obtain error logs, you are advised to use [Subscribing to Crash Events (ArkTS)](hiappevent-watcher-crash-events-arkts.md).
+After the errorManager APIs are used to listen for exceptions and errors, the application does not exit. You are advised to add the synchronous exit operation after the callback is executed. If you only want to obtain error logs, you are advised to use [HiAppEvent](hiappevent-intro.md) to subscribe to events.
 
 ## Available APIs
 
-Application error management APIs are provided by the [errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#) module. For details about how to import the module, see [Development Example](#development-example).
+The errorManager APIs are provided by [@ohos.app.ability.errorManager(Error Management Module)](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md). Before using the APIs, you need to register an error observer and import it through **import**. For details, see [How to Develop](#how-to-develop).
 
-**Application Error Management APIs**
+**errorManager APIs**
 
-| API                                                      | Description                                                |
-| ------------------------------------------------------------ | ---------------------------------------------------- |
-| on(type: "error", observer: ErrorObserver): number       | Registers an observer for application errors. A callback will be invoked when an application error is detected. This API works in a synchronous manner. The return value is the serial number (SN) of the registered observer. |
-| off(type: "error", observerId: number,  callback: AsyncCallback\<void\>): void | Unregisters an observer in callback mode. The number is the SN of the registered observer. |
-| off(type: "error", observerId: number): Promise\<void\> | Unregisters an observer in promise mode. The number is the SN of the registered observer. |
-| on(type: 'globalErrorOccurred', observer: GlobalObserver): void       | Registers a global observer for process errors. This is a synchronous API. When the system detects an application exception, the observer is called. (**Recommended**) |
-| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | Unregisters an observer in callback mode. (**Recommended**) |
-| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void       | Registers a global observer for process errors. This is a synchronous API. When the system detects an application promise exception, the observer is called. (**Recommended**) |
-| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | Unregisters an observer in callback mode. (**Recommended**) |
-| on(type: 'loopObserver', timeout: number, observer: LoopObserver): void<sup>12+</sup> | Registers an observer for the message processing duration of the main thread. A callback will be invoked if a main thread jank event occurs.<br>This API can be called only in the main thread. A new observer will overwrite the previous one. |
-| off(type: 'loopObserver', observer?: LoopObserver): void<sup>12+</sup> | Unregisters an observer for the message processing duration of the main thread in LoopObserver mode. |
-| on(type: 'freeze', observer: FreezeObserver): void<sup>18+</sup> | Registers an observer for the main thread freeze event of the application. This API can be called only in the main thread. A new observer will overwrite the previous one. |
-| off(type: 'freeze', observer?: FreezeObserver): void<sup>18+</sup> | Unregisters an observer for the message processing duration of the main thread in LoopObserver mode. |
-
-When an asynchronous callback is used, the return value can be processed directly in the callback. If a promise is used, the return value can also be processed in the promise in a similar way. For details about the result codes, see [Result Codes for Unregistering an Observer](#result-codes-for-unregistering-an-observer).
+| API| Description|
+| -------- | -------- |
+| on(type: "error", observer: ErrorObserver): number | Registers an observer for application errors. A callback will be invoked when an application error is detected. This API works in a synchronous manner. The return value is the serial number (SN) of the registered observer.|
+| off(type: "error", observerId: number, callback: AsyncCallback&lt;void>): void | Unregisters an observer in callback mode. The number is the SN of the registered observer.|
+| off(type: "error", observerId: number): Promise&lt;void> | Unregisters an observer in promise mode. The number is the SN of the registered observer.|
+| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | Registers a global observer for process errors. This is a synchronous API. When the system detects an application exception, the observer is called. (**Recommended**)<br>Note: This API is supported since API version 18.|
+| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | Unregisters an observer in callback mode. (**Recommended**)<br>Note: This API is supported since API version 18.|
+| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | Registers a global observer for process errors. This is a synchronous API. When the system detects an application promise exception, the observer is called. (**Recommended**)<br>Note: This API is supported since API version 18.|
+| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | Unregisters an observer in callback mode. (**Recommended**)<br>Note: This API is supported since API version 18.|
+| on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | Registers an observer for the message processing timeouts of the main thread.<br>This API can be called only in the main thread. A new observer will overwrite the previous one.|
+| off(type: 'loopObserver', observer?: LoopObserver): void | Unregisters an observer for the message processing timeouts of the main thread in LoopObserver mode.|
+| on(type: 'freeze', observer: FreezeObserver): void | Registers an observer for the main thread freeze event of the application. This API can be called only in the main thread. A new observer will overwrite the previous one.|
+| off(type: 'freeze', observer?: FreezeObserver): void | Unregisters an observer for the message processing timeouts of the main thread in FreezeObserver mode.<br>Note: This API is supported since API version 18.|
+| setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | Sets a default error handler. This API can be called only in the main thread. When the **JS_CRASH** exception occurs, chain callback is supported and the return value is the last registered handler.<br>Note: This API is supported since API version 21.|
+When an asynchronous callback is used, the return value can be processed directly in the callback.
+When a promise is used, the return value can also be processed in the promise. For details about the result codes, see [Result Codes for Unregistering an Observer](#result-codes-for-unregistering-an-observer).
 
 **ErrorObserver APIs**
 
-| API                        | Description                                                        |
-| ------------------------------ | ------------------------------------------------------------ |
+| API| Description|
+| -------- | -------- |
 | onUnhandledException(errMsg: string): void | Called when an uncaught exception is reported after the application is registered.|
 | onException?(errObject: Error): void | Called when an application exception is reported to the JavaScript layer after the application is registered.|
 
 **LoopObserver APIs**
 
-| API                        | Description                                                        |
-| ------------------------------ | ------------------------------------------------------------ |
-| onLoopTimeOut?(timeout: number): void<sup>12+</sup> | Called when the message processing of the main thread times out.|
+| API| Description|
+| -------- | -------- |
+| onLoopTimeOut?(timeout: number): void | Called when the message processing of the main thread times out.|
 
 ### Result Codes for Unregistering an Observer
 
-| Result Code| Description                       |
-| ------ | ---------------------------  |
-| 0      |  Normal.                         |
-| -1     | Input number not exist.             |
-| -2     | Invalid parameter.      |
+| Result Code| Description|
+| -------- | -------- |
+| 0 | Normal.|
+| -1 | Input **number** not exist.|
+| -2 | Invalid parameter.|
 
-## Development Example
+## How to Develop
 
 > **NOTE**
 >
-> You are advised to add a synchronous exit function at the end of the exception callback. Otherwise, multiple exception callbacks may be invoked.
+> You are advised to add a synchronous exit operation at the end of the exception callback to prevent multiple exception callbacks.
 
-### Listening for A Single Thread
+### Listening for a Single Thread
 
-```ts
-import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import process from '@ohos.process';
+ Import the header files.
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
-let registerId = -1;
-let callback: errorManager.ErrorObserver = {
-    onUnhandledException: (errMsg) => {
-        console.info(errMsg);
-    },
-    onException: (errorObj) => {
-        console.info('onException, name: ', errorObj.name);
-        console.info('onException, message: ', errorObj.message);
-        if (typeof(errorObj.stack) === 'string') {
-            console.info('onException, stack: ', errorObj.stack);
-        }
-        //After the callback is executed, exit the process synchronously to avoid triggering exceptions for multiple times.
-        let pro = new process.ProcessManager();
-        pro.exit(0);
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+ Add an observer.
+<!-- @[error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+let observer: errorManager.ErrorObserver = {
+  onUnhandledException(errorMsg) {
+    console.error('testErrorManage','onUnhandledException, errorMsg: ', errorMsg);
+  },
+  onException(errorObj) {
+    console.error('testErrorManage','onException, name: ', errorObj.name);
+    console.error('testErrorManage','onException, message: ', errorObj.message);
+    if (typeof(errorObj.stack) === 'string') {
+      console.error('testErrorManage','onException, stack: ', errorObj.stack);
     }
-}
-
-let abilityWant: Want;
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        registerId = errorManager.on("error", callback);
-        abilityWant = want;
-    }
-
-    onDestroy() {
-        console.info("[Demo] EntryAbility onDestroy");
-        errorManager.off("error", registerId, (result) => {
-            console.info("[Demo] result " + result.code + ";" + result.message);
-        });
-    }
-
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // Main window is created, set main page for this ability
-        console.info("[Demo] EntryAbility onWindowStageCreate");
-
-        windowStage.loadContent("pages/index", (err, data) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
-        });
-    }
-
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-    }
-
-    onForeground() {
-        // Ability has brought to foreground
-        console.info("[Demo] EntryAbility onForeground");
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.info("[Demo] EntryAbility onBackground");
-    }
+  }
 };
 ```
 
+ Add a trigger button.
+<!-- @[onclick_error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+Button('Listening for a single thread').onClick(()=>{
+  let observerId = -1;
+  try {
+    observerId = errorManager.on('error', observer);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error('testErrorManage',`error: ${code}, ${message}`);
+  }
+  // Construct a fault scenario.
+  throw new Error('test errorObserver msg');
+}).position({x:50, y:50});
+```
+
+
 ### Listening for Process Exceptions
 
-```ts
-import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import process from '@ohos.process';
+ Import the header files.
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+ Add an observer.
+<!-- @[error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
 function errorFunc(observer: errorManager.GlobalError) {
-    console.info("[Demo] result name :" + observer.name);
-    console.info("[Demo] result message :" + observer.message);
-    console.info("[Demo] result stack :" + observer.stack);
-    console.info("[Demo] result instanceName :" + observer.instanceName);
-    console.info("[Demo] result instaceType :" + observer.instanceType);
-    //After the callback is executed, exit the process synchronously to avoid triggering exceptions for multiple times.
-    let pro = new process.ProcessManager();
-    pro.exit(0);
-}
-
-let abilityWant: Want;
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        errorManager.on("globalErrorOccurred", errorFunc);
-        abilityWant = want;
-    }
-
-    onDestroy() {
-        console.info("[Demo] EntryAbility onDestroy");
-        errorManager.off("globalErrorOccurred", errorFunc);
-    }
-
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // Main window is created, set main page for this ability
-        console.info("[Demo] EntryAbility onWindowStageCreate");
-
-        windowStage.loadContent("pages/index", (err, data) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
-        });
-    }
-
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-    }
-
-    onForeground() {
-        // Ability has brought to foreground
-        console.info("[Demo] EntryAbility onForeground");
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.info("[Demo] EntryAbility onBackground");
-    }
+  console.error('testErrorManage','result name :' + observer.name);
+  console.error('testErrorManage','result message :' + observer.message);
+  console.error('testErrorManage','result stack :' + observer.stack);
+  console.error('testErrorManage','result instanceName :' + observer.instanceName);
+  console.error('testErrorManage','result instanceType :' + observer.instanceType);
 };
+```
+
+ Add a trigger button.
+<!-- @[onclick_error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+Button('Listening for process exceptions').onClick(()=>{
+  try {
+    errorManager.on('globalErrorOccurred', errorFunc);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error('testErrorManage',`error: ${code}, ${message}`);
+  }
+  // Construct a fault scenario.
+  throw new Error('test errorFunc msg');
+}).position({x:50, y:100});
 ```
 
 ### Listening for Process Promise Exceptions
 
-```ts
-import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import process from '@ohos.process';
+ Import the header files.
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+ Add an observer.
+<!-- @[promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
 function promiseFunc(observer: errorManager.GlobalError) {
-    console.info("[Demo] result name :" + observer.name);
-    console.info("[Demo] result message :" + observer.message);
-    console.info("[Demo] result stack :" + observer.stack);
-    console.info("[Demo] result instanceName :" + observer.instanceName);
-    console.info("[Demo] result instaceType :" + observer.instanceType);
-    //After the callback is executed, exit the process synchronously to avoid triggering exceptions for multiple times.
-    let pro = new process.ProcessManager();
-    pro.exit(0);
-}
-
-
-let abilityWant: Want;
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        errorManager.on("globalUnhandledRejectionDetected", promiseFunc);
-        abilityWant = want;
-    }
-
-    onDestroy() {
-        console.info("[Demo] EntryAbility onDestroy");
-        errorManager.off("globalUnhandledRejectionDetected", promiseFunc);
-    }
-
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // Main window is created, set main page for this ability
-        console.info("[Demo] EntryAbility onWindowStageCreate");
-
-        windowStage.loadContent("pages/index", (err, data) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
-        });
-    }
-
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-    }
-
-    onForeground() {
-        // Ability has brought to foreground
-        console.info("[Demo] EntryAbility onForeground");
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.info("[Demo] EntryAbility onBackground");
-    }
+  console.error('testErrorManage','result name :' + observer.name);
+  console.error('testErrorManage','result message :' + observer.message);
+  console.error('testErrorManage','result stack :' + observer.stack);
+  console.error('testErrorManage','result instanceName :' + observer.instanceName);
+  console.error('testErrorManage','result instanceType :' + observer.instanceType);
 };
+
+async function promiseFuncOne() {
+  throw new Error('process promise exception');
+};
+```
+
+ Add a trigger button.
+<!-- @[onclick_promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+Button('Listening for process promise exceptions').onClick(()=>{
+  try {
+    errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error('testErrorManage',`error: ${code}, ${message}`);
+  }
+  // Construct a fault scenario.
+  new Promise<string>(() => {
+    promiseFuncOne();
+  }).then(() => {
+    throw new Error('test promiseFuncOne msg');
+  });
+}).position({x:50, y:200});
 ```
 
 ### Listening for Main Thread Freeze Exceptions
 
-```ts
-import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import process from '@ohos.process';
+ Import the header files.
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
-// Define freezeCallback
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+ Add an observer.
+<!-- @[freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
 function freezeCallback() {
-    console.info("freezecallback");
+  console.error('testErrorManage','freezecallback');
+};
+```
+
+ Add a trigger button.
+<!-- @[onclick_freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+Button('Listening for main thread freeze exceptions').onClick(()=>{
+  try {
+    errorManager.on('freeze', freezeCallback);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error('testErrorManage',`error: ${code}, ${message}`);
+  }
+  // Construct a fault scenario.
+  let date = Date.now();
+  while (Date.now() - date < 15000) {
+  };
+}).position({x:50, y:300});
+```
+
+### Listening for Main Thread Timeouts
+
+ Import the header files.
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+ Add an observer.
+<!-- @[loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+let loopObserver: errorManager.LoopObserver = {
+  onLoopTimeOut(timeout: number) {
+    console.error('testErrorManage','Duration timeout: ' + timeout);
+  }
+};
+```
+
+ Add a trigger button.
+<!-- @[onclick_loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+Button('Listening for main thread timeouts').onClick(()=>{
+  try {
+    errorManager.on('loopObserver', 1, loopObserver);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error('testErrorManage',`error: ${code}, ${message}`);
+  }
+  // Construct a fault scenario.
+  let date = Date.now();
+  while (Date.now() - date < 4000) {
+  };
+}).position({x:50, y:150});
+```
+
+### Listening for Process Promise Exceptions
+
+ Import the header files.
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+```
+
+ Add an observer.
+<!-- @[unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+let promise1 = new Promise<void>(() => {}).then(() => {
+  throw new Error('uncaught error');
+});
+
+let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
+  if (promise === promise1) {
+    console.error('testErrorManage','promise1 is rejected');
+  }
+  console.error('testErrorManage','reason.name: ', reason.name);
+  console.error('testErrorManage','reason.message: ', reason.message);
+  if (reason.stack) {
+    console.error('testErrorManage','reason.stack: ', reason.stack);
+  }
+};
+
+async function promiseFuncTwo() {
+  throw new Error('process promise unhandled rejection exception');
+};
+```
+
+ Add a trigger button.
+<!-- @[onclick_unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+
+``` TypeScript
+Button('Listening for process promise exceptions').onClick(()=>{
+  try {
+    errorManager.on('unhandledRejection', unhandledrejectionObserver);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error('testErrorManage',`error: ${code}, ${message}`);
+  }
+  // Construct a fault scenario.
+  new Promise<string>(() => {
+    promiseFuncTwo();
+  }).then(() => {
+    throw new Error('test promiseFuncTwo msg');
+  });
+}).position({x:50, y:250});
+```
+
+### Chaining Error Handlers
+
+ Define the first error handler and register the method. If no pre-handler is available, the process exits.
+<!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) --> 
+
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { process } from '@kit.ArkTS';
+
+let firstHandler: errorManager.ErrorHandler;
+const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
+    // Implement the logic of the first custom error handler.
+    console.info('[FirstHandler] First uncaught exception handler invoked.');
+    if (firstHandler) {
+        firstHandler(reason);
+    } else {
+        // You are advised to add a null check. If the value is null, use a synchronous exit approach.
+        const processManager = new process.ProcessManager();
+        processManager.exit(0);
+    }  
+};
+
+export function setFirstErrorHandler() {
+    firstHandler = errorManager.setDefaultErrorHandler(firstErrorHandler); 
+    console.info('Registered First Error Handler');
 }
+```
 
+ Define the second error handler and register the method to implement a chain call.
+<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) --> 
 
-let abilityWant: Want;
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { process } from '@kit.ArkTS';
 
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        errorManager.on("freeze", freezeCallback);
-        abilityWant = want;
-    }
-
-    onDestroy() {
-        console.info("[Demo] EntryAbility onDestroy");
-        errorManager.off("freeze", freezeCallback);
-    }
-
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // Main window is created, set main page for this ability
-        console.info("[Demo] EntryAbility onWindowStageCreate");
-
-        windowStage.loadContent("pages/index", (err, data) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
-        });
-    }
-
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-    }
-
-    onForeground() {
-        // Ability has brought to foreground
-        console.info("[Demo] EntryAbility onForeground");
-    }
-
-    onBackground() {
-        // Ability has back to background
-        console.info("[Demo] EntryAbility onBackground");
+let secondHandler: errorManager.ErrorHandler;
+const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
+    // Implement the logic of the second custom error handler.
+    console.info('[SecondHandler] Second uncaught exception handler invoked.');
+    if (secondHandler) {
+        secondHandler(reason);
+    } else {
+        const processManager = new process.ProcessManager();
+        processManager.exit(0);
     }
 };
+
+export function setSecondErrorHandler() {
+    secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler); 
+    console.info('Registered Second Error Handler');
+}
+```
+
+ Import the header files.
+<!-- @[error_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+import { setFirstErrorHandler } from './FirstErrorHandler';
+import { setSecondErrorHandler } from './SecondErrorHandler';
+```
+
+ Add the constructor for chaining error handlers.
+<!-- @[test_error_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+function testErrorHandlers() {
+  setFirstErrorHandler();
+  setSecondErrorHandler();
+  throw new Error('Test uncaught exception!');
+}
+```
+
+ Trigger the test through the button for the main component, register two handlers, and throw an error to verify the handler chain.
+<!-- @[onclick_error_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
+Button ('Chaining error handlers').onClick(()=>{
+  testErrorHandlers();
+}).position({x:50, y:350});
 ```

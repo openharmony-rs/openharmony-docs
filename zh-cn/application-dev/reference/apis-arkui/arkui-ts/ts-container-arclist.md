@@ -1,5 +1,12 @@
 # ArcList
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 弧形列表包含一系列列表项。适合连续、多行呈现同类数据，例如图片和文本。
 
 > **说明：**
@@ -9,8 +16,23 @@
 
 ## 导入模块
 
+> **说明：**
+>
+> - ArcListAttribute是用于配置ArcList组件属性的关键接口。API version 21及之前版本，导入ArcList组件后需要开发者手动导入ArcListAttribute，否则会编译报错。从API version 22开始，编译工具链识别到导入ArcList组件后，会自动导入ArcListAttribute，无需开发者手动导入ArcListAttribute。
+>
+> - 如果开发者手动导入ArcListAttribute，DevEco Studio会显示置灰，API version 21及之前版本删除会编译报错，从API version 22开始，删除对功能无影响。
+
+
+API version 21及之前版本：
+
 ```ts
 import { ArcList, ArcListAttribute } from '@kit.ArkUI';
+```
+
+API version 22及之后版本：
+
+```ts
+import { ArcList } from '@kit.ArkUI';
 ```
 
 ## 子组件
@@ -23,11 +45,11 @@ import { ArcList, ArcListAttribute } from '@kit.ArkUI';
 >
 > - 按子组件的顺序依次递增。  
 >
-> - [if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md)语句中，只有条件成立的分支内的子组件会参与索引值计算，条件不成立的分支内子组件不计算索引值。  
+> - [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)语句中，只有条件成立的分支内的子组件会参与索引值计算，条件不成立的分支内子组件不计算索引值。  
 >
-> - [ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md)语句中，会计算展开所有子节点索引值。  
+> - [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)/[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)语句中，会计算展开所有子节点索引值。  
 >
-> - [if/else](../../../ui/state-management/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/state-management/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/state-management/arkts-rendering-control-lazyforeach.md)发生变化以后，会更新子节点索引值。  
+> - [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)发生变化以后，会更新子节点索引值。  
 >
 > - ArcList子组件[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为Hidden或None依然会计算索引值。  
 
@@ -82,7 +104,7 @@ space(space: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                               |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| space  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 列表子项之间的间距。<br/>默认值：0<br/>ArcList子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为None时不显示，但该子组件上下的space还会生效。 |
+| space  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 列表子项之间的间距。<br/>默认值：LengthMetrics.vp(0)<br/>ArcList子组件的[visibility](ts-universal-attributes-visibility.md#visibility)属性设置为None时不显示，但该子组件上下的space还会生效。 |
 
 ### scrollBar
 
@@ -104,7 +126,7 @@ scrollBar(status: Optional\<BarState>)
 
 cachedCount(count: Optional\<number>)
 
-设置列表中ArcListItem的预加载数量，懒加载场景只会预加载ArcList显示区域外cachedCount的内容，非懒加载场景会全部加载。懒加载、非懒加载都只布局ArcList显示区域+ArcList显示区域外cachedCount的内容。
+设置列表中ArcListItem的预加载数量，懒加载场景只会预加载ArcList显示区域外上下各cachedCount行的ArcListItem，非懒加载场景会全部加载。懒加载、非懒加载都只布局ArcList显示区域+ArcList显示区域外上下各cachedCount行的ArcListItem。
 
 ArcList设置cachedCount后，显示区域外上下各会预加载并布局cachedCount行ArcListItem。
 
@@ -168,13 +190,13 @@ fadingEdge(enable: Optional&lt;boolean&gt;)
 
 | 参数名  | 类型                                              | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的clip属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
+| enable | Optional&lt;boolean&gt;                           | 是   | fadingEdge生效时，会覆盖原组件的.overlay()属性。<br/>fadingEdge生效时，建议不在该组件上设置background相关属性，会影响渐隐的显示效果。<br/>fadingEdge生效时，组件会裁剪到边界，设置组件的[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。<br/>设置为true时开启边缘渐隐效果，设置为false时不开启边缘渐隐效果。<br/>默认值：false |
 
 ### friction
 
 friction(friction: Optional\<number>)
 
-设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。设置为小于等于0的值时，按默认值处理。
+设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程。设置为小于等于0的值时，按默认值处理。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -200,7 +222,7 @@ scrollBarWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| width  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 滚动条的宽度。<br/>默认值：24<br/>最小值：4<br />单位：vp |
+| width  | [Optional&lt;LengthMetrics&gt;](../js-apis-arkui-graphics.md#lengthmetrics12) | 是   | 滚动条的宽度。<br/>默认值：LengthMetrics.vp(24)<br/>最小值：LengthMetrics.vp(4)<br />单位：vp |
 
 ### scrollBarColor
 
@@ -216,7 +238,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional\<ColorMetrics>](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置滚动条颜色。<br />默认值：0xA9FFFFFF |
+| color  | [Optional\<ColorMetrics>](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置滚动条颜色。<br />默认值：ColorMetrics.numeric(0xA9FFFFFF) |
 
 ### flingSpeedLimit
 
@@ -282,6 +304,8 @@ onReachStart(handler: Optional\<VoidCallback>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**参数：**
+
 | 参数名  | 类型                                             | 必填 | 说明                     |
 | ------- | ------------------------------------------------ | ---- | ------------------------ |
 | handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | 是   | 列表到达起始位置时触发。 |
@@ -298,6 +322,8 @@ ArcList边缘效果为弹簧效果时，划动经过末尾位置时触发一次�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**参数：**
+
 | 参数名  | 类型                                             | 必填 | 说明                     |
 | ------- | ------------------------------------------------ | ---- | ------------------------ |
 | handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | 是   | 列表到达末尾位置时触发。 |
@@ -312,6 +338,8 @@ onScrollStart(handler: Optional\<VoidCallback>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+**参数：**
+
 | 参数名  | 类型                                             | 必填 | 说明                 |
 | ------- | ------------------------------------------------ | ---- | -------------------- |
 | handler | [Optional\<VoidCallback>](ts-types.md#voidcallback12) | 是   | 列表滑动开始时触发。 |
@@ -320,11 +348,13 @@ onScrollStart(handler: Optional\<VoidCallback>)
 
 onScrollStop(handler: Optional\<VoidCallback>)
 
-列表滑动停止时触发。手拖动列表或列表的滚动条触发的滑动，手离开屏幕并且滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
+列表滑动停止时触发。手拖动列表或列表的滚动条触发的滑动，手离开屏幕后滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**参数：**
 
 | 参数名  | 类型                                             | 必填 | 说明                 |
 | ------- | ------------------------------------------------ | ---- | -------------------- |
@@ -334,7 +364,7 @@ onScrollStop(handler: Optional\<VoidCallback>)
 
 onWillScroll(handler: Optional\<OnWillScrollCallback>)
 
-列表划动时每帧开始前触发，返回当前帧将要滑动的偏移量和当前滑动状态。返回的偏移量为计算得到的将要滑动的偏移量值，并非最终实际滑动偏移。
+列表滑动时每帧开始前触发，返回当前帧将要滑动的偏移量和当前滑动状态。返回的偏移量为计算得到的将要滑动的偏移量值，并非最终实际滑动偏移。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -344,11 +374,11 @@ onWillScroll(handler: Optional\<OnWillScrollCallback>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|
-| handler | [Optional\<OnWillScrollCallback>](ts-container-scrollable-common.md#onwillscrollcallback12) | 是 | 列表划动时每帧开始前触发的回调。 |
+| handler | [Optional\<OnWillScrollCallback>](ts-container-scrollable-common.md#onwillscrollcallback12) | 是 | 列表滑动时每帧开始前触发的回调。 |
 
 > **说明：** 
 > 
-> 调用ScrollEdge和不带动画的ScrollToIndex时，不触发onWillScroll。
+> 调用[ScrollEdge](ts-container-scroll.md#scrolledge)和不带动画的[ScrollToIndex](ts-container-scroll.md#scrolltoindex)时，不触发onWillScroll。
 
 ### onDidScroll
 onDidScroll(handler: Optional\<OnScrollCallback>)
@@ -373,11 +403,11 @@ onDidScroll(handler: Optional\<OnScrollCallback>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-| 名称       | 类型                                    | 必填 | 说明                                                     |
-| ------------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| initialIndex | number                                      | 否   | 设置当前ArcList初次加载时视口起始位置显示的item的索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前ArcList最后一个item的索引值时视为无效取值，无效取值按默认值显示。 |
-| scroller     | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器。用于与可滚动组件进行绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
-| header       | [ComponentContent](../js-apis-arkui-ComponentContent.md)                            | 否   | 支持标题设置。                                               |
+| 名称       | 类型                                    | 只读 | 可选 | 说明                                                     |
+| ------------ | ------------------------------------------- | ---- | --- | ------------------------------------------------------------ |
+| initialIndex | number                                      | 否   | 是 | 设置当前ArcList初次加载时视窗起始位置显示的item的索引值。<br/>默认值：0<br/>**说明：** <br/>设置为负数或超过了当前ArcList最后一个item的索引值时视为无效取值，无效取值按默认值显示。 |
+| scroller     | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器。与ArcList绑定后，可以通过它控制ArcList的滚动。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。 |
+| header       | [ComponentContent](../js-apis-arkui-ComponentContent.md)                            | 否   | 是 | 支持标题设置。                                               |
 
 ## ArcScrollIndexHandler
 
@@ -388,6 +418,8 @@ type ArcScrollIndexHandler = (start: number, end: number, center: number) => voi
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
@@ -403,14 +435,16 @@ type ArcScrollIndexHandler = (start: number, end: number, center: number) => voi
 // xxx.ets
 import { ComponentContent, LengthMetrics } from '@kit.ArkUI';
 import { UIContext, CircleShape } from '@kit.ArkUI';
+// 从API version 22开始，无需手动导入ArcListAttribute和ArcListItemAttribute。具体请参考ArcList、ArcListItem的导入模块说明。
 import { ArcList, ArcListItem, ArcListAttribute, ArcListItemAttribute } from '@kit.ArkUI';
 
 @Builder
 function buildText() {
   Column() {
-    Text("header")
+    Text('header')
       .fontSize('60px')
       .fontWeight(FontWeight.Bold)
+      .fontColor(Color.Black)
   }.margin(0)
 }
 
@@ -419,10 +453,10 @@ function buildText() {
 struct Index {
   @State  private numItems: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-  private watchSize: string = '466px' // 手表默认宽高：466*466
-  private listSize: string = '414px' // item宽度
+  private watchSize: string = '466px'; // Wearable默认宽高：466*466
+  private listSize: string = '414px'; // item宽度
 
-  context: UIContext = this.getUIContext()
+  context: UIContext = this.getUIContext();
   tabBar1: ComponentContent<Object> = new ComponentContent(this.context, wrapBuilder(buildText));
 
   @Builder
@@ -447,7 +481,7 @@ struct Index {
               .focusOnTouch(true)
               .backgroundColor(0x17A98D)
           }.align(Alignment.Center)
-        }, (item: string, index: number) => item + index)
+        }, (item: number, index: number) => (item + index).toString())
       }
       .space(LengthMetrics.px(10))
       .borderRadius(this.watchSize)

@@ -1,34 +1,37 @@
 # Converting HAR to HSP
-Currently, the HAR has a problem with duplicate packaging, leading an oversize application package. To fix this problem, you can convert the HAR to the HSP through by the configuration items.
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
+
+Currently, the HAR has a problem with duplicate packaging, leading an oversize application package. To fix this problem, you can convert the HAR to the HSP by changing the configuration items.
+
+>
+> **NOTE**
+>
+> There are differences when some components and modules are integrated and used in the HAP, HSP, and HAR. For example, separate constraints are provided on loading the Worker thread file in the HAR compared with that in the HSP. For details, see [Precautions for File URLs](../arkts-utils/worker-introduction.md#precautions-for-file-urls). Therefore, after HAR is converted to HSP by performing the following steps, pay attention to the corresponding components and modules and perform adaptation.
+>
+
 ## How to Convert
 
-1. Change the value of **type** to **shared** and add the **deliveryWithInstall** and **pages** field in the **module.json5** file of the HAR module.
-    ```json
-    // MyApplication\library\src\main\module.json5
+1. Set **type** to **shared** and add the **deliveryWithInstall** and **pages** fields in the **module.json5** file of the HAR module.
+    <!-- @[har_to_hsp_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/module.json5) -->
+    
+    ``` JSON5
     {
       "module": {
+        // ...
         "type": "shared",
         "deliveryWithInstall": true,
-        "pages": "$profile:main_pages"
+        "pages": "$profile:main_pages",
         // ...
       }
     }
     ```
 
-2. Add a string field **shared_desc** in **element** of the **base**, **en\_US**, and **zh\_CN** qualifiers directories under the **resources** directory.
-    ```json
-    // MyApplication\library\src\main\resources\base\element\string.json
-    {
-      "string": [
-        {
-          "name": "shared_desc",
-          "value": "description"
-        }
-      ]
-    }
-    ```
-
-3. Add a **profile** folder in **resources** > **base**. Then add a **main_pages.json** file to the added folder and configure it as follows:
+2. Create a **profile** folder in the **resources\base** directory. Then add the **main_pages.json** file to the created folder and configure it as follows:
     ```json
     // MyApplication\library\src\main\resources\base\profile\main_pages.json
     {
@@ -38,14 +41,16 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
     }
     ```
 
-4. Add a **pages** directory in the **ets** directory. Then add a **PageIndex.ets** file in the added directory and configure it as follows:
-    ```ts
-    // MyApplication\library\src\main\ets\pages\PageIndex.ets
+3. Create a **pages** folder in the **ets** directory. Then add the **PageIndex.ets** file to the created folder and configure it as follows:
+
+    <!-- @[har_to_hsp_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/src/main/ets/pages/PageIndex.ets) -->
+    
+    ``` TypeScript
     @Entry
     @Component
     struct PageIndex {
       @State message: string = 'hello world';
-
+    
       build() {
         Row() {
           Column() {
@@ -60,32 +65,40 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
     }
     ```
 
-5. Delete the **consumerFiles** field from the **build-profile.json5** file of the HAR module.
+4. Delete the **consumerFiles** field from the **build-profile.json5** file of the HAR module.
 
-6. Replace the content in the **hvigorfile.ts** file of the HAR module with the following content:
-    ```ts
-    // MyApplication\library\hvigorfile.ts
+5. Replace the content in the **hvigorfile.ts** file of the HAR module with the following content:
+
+    <!-- @[har_to_hsp_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/hvigorfile.ts) -->
+    
+    ``` TypeScript
+    // library\hvigorfile.ts
     import { hspTasks } from '@ohos/hvigor-ohos-plugin';
-
+    
     export default {
-      system: hspTasks,  /* Built-in plugin of Hvigor. It cannot be modified. */
-      plugins:[]         /* Custom plugin to extend the functionality of Hvigor. */
+      system: hspTasks,  // Change the value to the HSP task.
+      plugins:[]
     }
     ```
 
-7. Add the **packageType** field in the **oh-package.json5** file.
-    ```json
-    // MyApplication\library\oh-package.json5
+6. Add the **packageType** field in the **oh-package.json5** file.
+
+    <!-- @[har_to_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/library/oh-package.json5) -->
+    
+    ``` JSON5
     {
+      // ...
       "packageType": "InterfaceHar"
     }
     ```
 
-8. Add the **targets** tag to **build-profile.json5** > **modules** > **library** in the root directory of the project.
+7. Add the **targets** tag to **build-profile.json5** > **modules** > **library** in the root directory of the project.
 
-    ```json
-    // MyApplication\build-profile.json5
+    <!-- @[har_to_hsp_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarToHsp/build-profile.json5) -->
+    
+    ``` JSON5
     "modules": [
+      // ...
       {
         "name": "library",
         "srcPath": "./library",
@@ -98,4 +111,5 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
           }
         ]
       }
-    ]
+    ],
+    ```

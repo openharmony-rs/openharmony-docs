@@ -1,4 +1,10 @@
 # drawing_types.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphic-->
+<!--Owner: @hangmengxin-->
+<!--Designer: @wangyanglan-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -28,6 +34,8 @@
 | [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) | OH_Drawing_Region | 定义一个区域，用于表示画布上的封闭区域，实现更精确的图形控制。 |
 | [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) | OH_Drawing_Brush | 定义为画刷，画刷用于描述填充图形的样式和颜色。 |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) | OH_Drawing_Path | 定义为路径，路径用于自定义各种形状。 |
+| [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) | OH_Drawing_PathIterator | 定义为路径操作迭代器，可通过遍历迭代器读取path的操作指令。 |
+| [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md) | OH_Drawing_Lattice | 定义为矩形网格，用于将图片按照矩形网格进行划分。 |
 | [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md) | OH_Drawing_Bitmap | 定义为位图，位图是一块内存，内存中包含了描述一张图片的像素数据。 |
 | [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) | OH_Drawing_Point | 定义一个点，用于描述坐标点。 |
 | [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) | OH_Drawing_PixelMap | 定义像素图，用于包装图像框架支持的真实像素图。 |
@@ -42,6 +50,7 @@
 | [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md) | OH_Drawing_MaskFilter | 定义蒙版滤波器。 |
 | [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md) | OH_Drawing_ColorFilter | 定义颜色滤波器，传入一个颜色并返回一个新的颜色。 |
 | [OH_Drawing_Font](capi-drawing-oh-drawing-font.md) | OH_Drawing_Font | 用于描述字体。 |
+| [OH_Drawing_FontFeatures](capi-drawing-oh-drawing-fontfeatures.md) | OH_Drawing_FontFeatures | 用于描述字体特征容器。字体特征是字体内置的排版规则，控制字形显示。例如：连字、替代字形、上下标等。 |
 | [OH_Drawing_MemoryStream](capi-drawing-oh-drawing-memorystream.md) | OH_Drawing_MemoryStream | 用于描述内存流。 |
 | [OH_Drawing_FontArguments](capi-drawing-oh-drawing-fontarguments.md) | OH_Drawing_FontArguments | 用于描述字型参数。 |
 | [OH_Drawing_Typeface](capi-drawing-oh-drawing-typeface.md) | OH_Drawing_Typeface | 用于描述字形。 |
@@ -71,7 +80,7 @@
 
 ### OH_Drawing_ColorFormat
 
-```
+```c
 enum OH_Drawing_ColorFormat
 ```
 
@@ -83,8 +92,8 @@ enum OH_Drawing_ColorFormat
 
 | 枚举项 | 描述 |
 | -- | -- |
-| COLOR_FORMAT_UNKNOWN | 未知格式。. |
-| COLOR_FORMAT_ALPHA_8 | 每个像素用一个8位的量表示，8个位比特位表示透明度。 |
+| COLOR_FORMAT_UNKNOWN | 未知格式。|
+| COLOR_FORMAT_ALPHA_8 | 每个像素用一个8位的量表示，8个比特位表示透明度。 |
 | COLOR_FORMAT_RGB_565 | 每个像素用一个16位的量表示，高位到低位依次是5个比特位表示红，6个比特位表示绿，5个比特位表示蓝。 |
 | COLOR_FORMAT_ARGB_4444 | 每个像素用一个16位的量表示，高位到低位依次是4个比特位表示透明度，4个比特位表示红，4个比特位表示绿，4个比特位表示蓝。 |
 | COLOR_FORMAT_RGBA_8888 | 每个像素用一个32位的量表示，高位到低位依次是8个比特位表示透明度，8个比特位表示红，8个比特位表示绿，8个比特位表示蓝。 |
@@ -92,7 +101,7 @@ enum OH_Drawing_ColorFormat
 
 ### OH_Drawing_AlphaFormat
 
-```
+```c
 enum OH_Drawing_AlphaFormat
 ```
 
@@ -111,7 +120,7 @@ enum OH_Drawing_AlphaFormat
 
 ### OH_Drawing_BlendMode
 
-```
+```c
 enum OH_Drawing_BlendMode
 ```
 
@@ -155,7 +164,7 @@ enum OH_Drawing_BlendMode
 
 ### OH_Drawing_TextEncoding
 
-```
+```c
 enum OH_Drawing_TextEncoding
 ```
 

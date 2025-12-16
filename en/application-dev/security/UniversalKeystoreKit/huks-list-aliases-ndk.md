@@ -1,26 +1,35 @@
 # Querying Key Aliases (C/C++)
 
+<!--Kit: Universal Keystore Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @wutiantian-gitee-->
+<!--Designer: @HighLowWorld-->
+<!--Tester: @wxy1234564846-->
+<!--Adviser: @zengyawen-->
 
 This topic walks you through on how to query key aliases.
+
 >**NOTE**<br>
-> The mini-system devices do not support query of key aliases.
+> <!--RP1-->The mini-system devices<!--RP1End--> do not support query of key aliases.
 
 ## Add the dynamic library in the CMake script.
 ```txt
-   target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
+target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
 
 ## How to Develop
 
-1. Initialize the key property set. The tag used for querying key aliases must be [OH_HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/_huks_type_api.md#oh_huks_authstoragelevel).
+1. Initialize the key property set to query the tags of key aliases. The tags support only [OH_HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel).
 
-2. Use [OH_Huks_ListAliases](../../reference/apis-universal-keystore-kit/_huks_key_api.md#oh_huks_listaliases) to query key aliases.
+2. Call [OH_Huks_ListAliases](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_listaliases) to query key aliases.
 
  ```c++
 /* Query key aliases. */
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
+#include "napi/native_api.h"
 #include <string.h>
+
 OH_Huks_Result InitParamSet(
     struct OH_Huks_ParamSet **paramSet,
     const struct OH_Huks_Param *params,
@@ -42,12 +51,14 @@ OH_Huks_Result InitParamSet(
     }
     return ret;
 }
+
 struct OH_Huks_Param g_testQueryParam[] = {
     {
         .tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL,
         .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE
     }, 
 };
+
 static napi_value ListAliases(napi_env env, napi_callback_info info)
 {
     struct OH_Huks_ParamSet *testQueryParamSet = nullptr;
@@ -55,8 +66,7 @@ static napi_value ListAliases(napi_env env, napi_callback_info info)
     struct OH_Huks_Result ohResult;
     do {
         /* 1. Initialize the key property set. */
-        ohResult = InitParamSet(&testQueryParamSet, g_testQueryParam,
-            sizeof(g_testQueryParam) / sizeof(OH_Huks_Param));
+        ohResult = InitParamSet(&testQueryParamSet, g_testQueryParam, sizeof(g_testQueryParam) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }

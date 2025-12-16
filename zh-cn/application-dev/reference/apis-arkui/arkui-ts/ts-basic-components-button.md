@@ -1,4 +1,10 @@
 # Button
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 按钮组件，可快速创建不同样式的按钮。
 
@@ -71,13 +77,13 @@ Button()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                      | 类型                                          | 必填 | 说明                                                       |
-| ------------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type                      | [ButtonType](#buttontype枚举说明)             | 否   | 按钮显示样式。<br/>默认值：ButtonType.ROUNDED_RECTANGLE<br/>从API version 18及之后，ButtonType的默认值修改为ButtonType.ROUNDED_RECTANGLE。API version 18之前的版本，ButtonType的默认值为ButtonType.Capsule。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| stateEffect               | boolean                                       | 否   | 按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。设置为true时，开启按压效果。<br/>默认值：true<br/>**说明：** <br/>当开启按压态显示效果，开发者设置状态样式时，会基于状态样式设置完成后的背景色再进行颜色叠加。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| buttonStyle<sup>11+</sup> | [ButtonStyleMode](#buttonstylemode11枚举说明) | 否   | 按钮的样式和重要程度。<br/>默认值：ButtonStyleMode.EMPHASIZED <br/>**说明：**  <br/>按钮重要程度：强调按钮>普通按钮>文字按钮。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| controlSize<sup>11+</sup> | [ControlSize](#controlsize11枚举说明)         | 否   | 按钮的尺寸。<br/>默认值：ControlSize.NORMAL<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| role<sup>12+</sup> | [ButtonRole](#buttonrole12枚举说明)         | 否   | 按钮的角色。<br/>默认值：ButtonRole.NORMAL <br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| 名称                      | 类型                                          | 只读 | 可选 | 说明                                                       |
+| ------------------------- | --------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| type                      | [ButtonType](#buttontype枚举说明)             | 否   | 是  | 按钮显示样式。<br/>默认值：ButtonType.ROUNDED_RECTANGLE<br/>API version 18及之后，ButtonType的默认值修改为ButtonType.ROUNDED_RECTANGLE。API version 18之前的版本，ButtonType的默认值为ButtonType.Capsule。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| stateEffect               | boolean                                       | 否   | 是  | 按钮按下时是否开启按压态显示效果。<br/>true：开启按压效果；false：关闭按压效果。<br/>默认值：true<br/>**说明：** <br/>当开启按压态显示效果，且开发者设置状态样式时，会基于状态样式设置完成后的背景色再进行颜色叠加。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| buttonStyle<sup>11+</sup> | [ButtonStyleMode](#buttonstylemode11枚举说明) | 否   | 是  | 按钮的样式和重要程度，根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[role](#role12)接口设置，实际显示效果以最后一次设置为准。<br/>默认值：ButtonStyleMode.EMPHASIZED <br/>**说明：**  <br/>按钮重要程度：强调按钮>普通按钮>文字按钮。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| controlSize<sup>11+</sup> | [ControlSize](#controlsize11枚举说明)         | 否   | 是  | 按钮的尺寸。<br/>默认值：ControlSize.NORMAL<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| role<sup>12+</sup> | [ButtonRole](#buttonrole12枚举说明)         | 否   | 是  | 按钮的角色，根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[buttonStyle](#buttonstyle11)接口设置，实际显示效果以最后一次设置为准。<br/>默认值：ButtonRole.NORMAL <br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -99,7 +105,7 @@ type(value: ButtonType)
 
 | 参数名 | 类型                              | 必填 | 说明                                        |
 | ------ | --------------------------------- | ---- | ------------------------------------------- |
-| value  | [ButtonType](#buttontype枚举说明) | 是   | Button样式。<br/>从API version 18及之后，ButtonType的默认值修改为ButtonType.ROUNDED_RECTANGLE。API version 18之前的版本，ButtonType的默认值为ButtonType.Capsule。 |
+| value  | [ButtonType](#buttontype枚举说明) | 是   | Button样式。<br/>API version 18及之后，ButtonType的默认值从ButtonType.Capsule变更为ButtonType.ROUNDED_RECTANGLE。 |
 
 ### fontSize
 
@@ -189,7 +195,7 @@ stateEffect(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | 是   | 按钮按下时是否开启按压态显示效果，当设置为false时，按压效果关闭。设置为true时，开启按压效果。<br/>默认值：true |
+| value  | boolean | 是   | 按钮按下时是否开启按压态显示效果。<br/>true：开启按压效果；false：关闭按压效果。<br/>默认值：true |
 
 >  **说明：**
 > 
@@ -233,7 +239,11 @@ labelStyle(value: LabelStyle)
 
 buttonStyle(value: ButtonStyleMode)
 
-设置Button组件的样式和重要程度。
+设置Button组件的样式和重要程度。根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[role](#role12)接口设置，实际显示效果以最后一次设置为准。
+
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -253,6 +263,10 @@ controlSize(value: ControlSize)
 
 设置Button组件的尺寸。
 
+>**说明：**
+>
+> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -269,7 +283,7 @@ controlSize(value: ControlSize)
 
 role(value: ButtonRole)
 
-设置Button组件的角色。
+设置Button组件的角色。根据设置枚举值的不同，系统自动会调整按钮的背景色和文字颜色。背景色和文字颜色也支持开发者通过[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)、[fontColor](#fontcolor)和[buttonStyle](#buttonstyle11)接口设置，实际显示效果以最后一次设置为准。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -297,7 +311,7 @@ contentModifier(modifier: ContentModifier\<ButtonConfiguration>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier\<ButtonConfiguration>](#buttonconfiguration12对象说明) | 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)[\<ButtonConfiguration>](#buttonconfiguration12对象说明) | 是   | 在Button组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ### minFontScale<sup>18+</sup>
 
@@ -338,11 +352,11 @@ maxFontScale(scale: number | Resource)
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      | 说明               |
-| ------- | ------------------ |
-| Capsule | 胶囊型按钮（圆角默认为高度的一半）。**<br>卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。**<br>原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Circle  | 圆形按钮。**<br>卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。**<br>原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。              |
-| Normal  | 普通按钮（默认不带圆角）。 **<br>卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。**<br>原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
-| ROUNDED_RECTANGLE<sup>15+</sup> | 圆角矩形按钮（默认值：controlSize为NORMAL，圆角大小20vp，controlSize为SMALL，圆角大小14vp）。**<br>卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。**<br>原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ------- | ------- |
+| Normal | 普通按钮（默认不带圆角）。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Capsule | 胶囊型按钮（圆角默认为高度的一半）。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Circle  | 圆形按钮。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| ROUNDED_RECTANGLE<sup>15+</sup> | 圆角矩形按钮（默认值：controlSize为NORMAL，圆角大小20vp，controlSize为SMALL，圆角大小14vp）。<br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
 >  **说明：**
 >  - 按钮圆角通过[通用属性borderRadius](ts-universal-attributes-border.md#borderradius)设置。
@@ -351,23 +365,23 @@ maxFontScale(scale: number | Resource)
 >  - 按钮文本通过[fontSize](#fontsize)、[fontColor](#fontcolor)、[fontStyle](#fontstyle8)、[fontFamily](#fontfamily8)、[fontWeight](#fontweight)进行设置。
 >  - 设置[颜色渐变](ts-universal-attributes-gradient-color.md)需先设置[backgroundColor](ts-universal-attributes-background.md#backgroundcolor)为透明色。
 >  - 在不设置borderRadius时，圆角矩形按钮的圆角大小保持默认值不变。圆角大小不会随按钮高度变化而变化，和controlSize属性有关，controlSize为NORMAL时圆角大小20vp，controlSize为SMALL时圆角大小14vp。
+>  - 设置Button的[border](ts-universal-attributes-border.md#border)时，会有默认的[borderRadius](ts-universal-attributes-border.md#borderradius)值。如果同时使用`border`和`borderRadius`，需将`borderRadius`放在`border`之后，以确保`borderRadius`不会被`border`中的默认`radius`覆盖。
 
 ## LabelStyle<sup>10+</sup>对象说明
 
-按钮中文本的显示样式。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+Button组件的label文本及其字体样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 类型                                                         | 必填 | 说明                                                         |
-| -------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否   | 设置label文本超长时的显示方式。文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可在字母间添加零宽空格。<br>默认值：TextOverflow.Ellipsis |
-| maxLines             | number                                                       | 否   | 设置label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过overflow来指定截断方式。<br>默认值：1 |
-| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。 |
-| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 |
-| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST |
-| font                 | [Font](ts-types.md#font)                                     | 否   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。 |
+| 名称                 | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| -------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| overflow             | [TextOverflow](ts-appendix-enums.md#textoverflow)            | 否   | 是   | 设置label文本超长时的显示方式。文本截断是按字截断。例如，英文以单词为最小单位进行截断，若需要以字母为单位进行截断，可在字母间添加零宽空格。<br>默认值：TextOverflow.Ellipsis <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| maxLines             | number                                                       | 否   | 是   | 设置label文本的最大行数。如果指定此参数，则文本最多不会超过指定的行。如果有多余的文本，可以通过overflow来指定截断方式。<br>默认值：1<br/>**说明：** <br/>设置小于等于0的值时，按默认值处理。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| minFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最小显示字号。需配合maxFontSize以及maxLines或布局大小限制使用。<br/>**说明：**  <br/>minFontSize小于或等于0时，自适应字号不生效。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| maxFontSize          | number \| [ResourceStr](ts-types.md#resourcestr)             | 否   | 是   | 设置label文本最大显示字号。需配合minFontSize以及maxLines或布局大小限制使用。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| heightAdaptivePolicy | [TextHeightAdaptivePolicy](ts-appendix-enums.md#textheightadaptivepolicy10) | 否   | 是   | 设置label文本自适应高度的方式。<br>默认值：TextHeightAdaptivePolicy.MAX_LINES_FIRST <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| font                 | [Font](ts-types.md#font)                                     | 否   | 是   | 设置label文本字体样式。<br>默认值：默认值参考[Font](ts-types.md#font)。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| textAlign<sup>23+</sup> | [TextAlign](ts-appendix-enums.md#textalign)                  | 否   | 是   | 设置label文本在水平方向上的对齐方式。当使用子节点的Text组件设置label时，此属性不生效，实际的文本对齐方式由子节点Text组件的textAlign属性决定。<br> Wearable设备默认值为TextAlign.Center，其他设备默认值为TextAlign.Start。 <br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ButtonStyleMode<sup>11+</sup>枚举说明
 
@@ -417,7 +431,7 @@ maxFontScale(scale: number | Resource)
 
 ## ButtonConfiguration<sup>12+</sup>对象说明
 
-开发者需要自定义class实现ContentModifier接口。
+开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -426,7 +440,7 @@ maxFontScale(scale: number | Resource)
 | 名称  | 类型    | 只读  | 可选 | 说明              |
 | ------ | ------ | ---------------- | ---------------- | ---------------- |
 | label | string | 否 | 否 | Button的文本标签。<br/>**说明**：当文本字符的长度超过按钮本身的宽度时，文本将会被截断。 |
-| pressed | boolean | 否 | 否 | 指示是否按下Button。值为true时，表示按下，值为false时，表示未按下。<br/>**说明：**  <br/>此属性指示的是原本Button是否被按压，而非build出来的新组件。若新build出来的组件超过原本组件的大小，那么超出部分按压不触发。<br/>默认值：false |
+| pressed | boolean | 否 | 否 | 指示是否按下Button。<br/>true：按下；false：未按下。<br/>默认值：false <br/>**说明：**  <br/>此按压属性生效区域大小为原本Button组件的大小，而非build出来的新组件大小。|
 | triggerClick | [ButtonTriggerClickCallback](#buttontriggerclickcallback12) | 否 | 否 | 使用builder新构建出来组件的点击事件。 |
 
 ## ButtonTriggerClickCallback<sup>12+</sup>
@@ -553,8 +567,8 @@ struct SwipeGestureExample {
 // xxx.ets
 @Entry
 @Component
-struct buttonTestDemo {
-  @State txt: string = 'overflowTextOverlengthTextOverflow.Clip';
+struct ButtonTestDemo {
+  @State txt: string = 'overflowTextOverLengthTextOverflow.Clip';
   @State widthShortSize: number = 205;
 
   build() {
@@ -662,10 +676,10 @@ class MyButtonStyle implements ContentModifier<ButtonConfiguration> {
   y: number = 0;
   selectedColor: Color = Color.Black;
 
-  constructor(x: number, y: number, ColorType: Color) {
+  constructor(x: number, y: number, colorType: Color) {
     this.x = x;
     this.y = y;
-    this.selectedColor = ColorType;
+    this.selectedColor = colorType;
   }
 
   applyContent(): WrappedBuilder<[ButtonConfiguration]> {
@@ -760,3 +774,25 @@ struct ButtonExample {
 }
 ```
 ![roundedrectbutton](figures/roundedrectbutton.jpeg)
+
+### 示例8（设置label文本水平对齐方式）
+该示例通过配置[LabelStyle](#labelstyle10对象说明)的textAlign，设置文本对齐方式。
+从API version 23开始，新增textAlign接口。
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Button('helloWorld helloWorld helloWorld helloWorld helloWorld helloWorld')
+        .width(200)
+        .labelStyle({
+          textAlign: TextAlign.Center
+        })
+    }
+    .width('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+![buttontextalign](figures/buttontextalign.jpeg)

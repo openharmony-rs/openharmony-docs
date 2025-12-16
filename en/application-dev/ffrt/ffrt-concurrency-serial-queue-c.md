@@ -1,5 +1,12 @@
 # Function Flow Runtime Serial Queue (C)
 
+<!--Kit: Function Flow Runtime Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @chuchihtung; @yanleo-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 The FFRT serial queue is implemented based on the coroutine scheduling model. It provides efficient message queue functions and supports multiple service scenarios, such as asynchronous communication, mobile data peak clipping, lock-free status and resource management, and architecture decoupling. The following functions are supported:
@@ -24,7 +31,7 @@ The example simplifies the logic for handling exceptions and ensuring thread sec
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include "ffrt/ffrt.h"
+#include "ffrt/ffrt.h" // From the OpenHarmony third-party library "@ppd/ffrt"
 
 typedef struct {
     FILE *logFile;          // Pointer to a log file.
@@ -135,15 +142,19 @@ int main()
 }
 ```
 
+> **NOTE**
+>
+> The `ffrt_queue_submit_h_f` API can receive a naked function pointer task as a parameter. If there are pre-processing and post-processing operations on the task, refer to the [ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base) function to construct the task structure.
+
 ## Available APIs
 
 The main FFRT APIs involved in the preceding example are as follows:
 
-| Name                                                              | Description                |
-| ------------------------------------------------------------------ | -------------------- |
-| [ffrt_queue_create](ffrt-api-guideline-c.md#ffrt_queue_create)     | Creates a queue.          |
-| [ffrt_queue_destroy](ffrt-api-guideline-c.md#ffrt_queue_destroy)   | Destroys a queue.          |
-| [ffrt_queue_submit_f](ffrt-api-guideline-c.md#ffrt_queue_submit_f) | Submits a task to a queue.|
+| Name                                                       | Description                                                                 |
+| ----------------------------------------------------------- | --------------------------------------------------------------------- |
+| [ffrt_queue_create](ffrt-api-guideline-c.md#ffrt_queue_t)   | Creates a queue.                                                           |
+| [ffrt_queue_destroy](ffrt-api-guideline-c.md#ffrt_queue_t)  | Destroys a queue.                                                           |
+| [ffrt_queue_submit_f](ffrt-api-guideline-c.md#ffrt_queue_t) | Submits a task to a queue.<br>**Note**: This API is supported since API version 20.|
 
 > **NOTE**
 >

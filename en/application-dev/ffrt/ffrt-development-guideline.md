@@ -1,5 +1,12 @@
 # Function Flow Runtime Development
 
+<!--Kit: Function Flow Runtime Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @chuchihtung; @yanleo-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 Function Flow Runtime (FFRT) is a task-based and data-driven concurrent programming model that allows you to develop an application by creating tasks and describing their dependencies.
@@ -24,17 +31,17 @@ The APIs are as follows:
 
 | C++ API                                                                                                                                  | C API                                                                               | Description                  |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---------------------- |
-| [queue_attr::timeout](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-timeout)   | [ffrt_queue_attr_set_timeout](ffrt-api-guideline-c.md#ffrt_queue_attr_set_timeout)   | Sets the queue timeout.    |
-| [queue_attr::callback](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-callback) | [ffrt_queue_attr_set_callback](ffrt-api-guideline-c.md#ffrt_queue_attr_set_callback) | Sets the queue timeout callback.|
+| [queue_attr::timeout](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-timeout)   | [ffrt_queue_attr_set_timeout](ffrt-api-guideline-c.md#ffrt_queue_attr_t)   | Sets the queue timeout.    |
+| [queue_attr::callback](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#set-queue-callback) | [ffrt_queue_attr_set_callback](ffrt-api-guideline-c.md#ffrt_queue_attr_t) | Sets the queue timeout callback.|
 
 ### Long-Time Task Monitoring
 
-#### Mechanism
+**Mechanism**
 
 - When the task execution reaches one second, stack printing is triggered. The stack printing interval is then changed to one minute. After 10 prints, the interval is changed to 10 minutes. After another 10 prints, the interval is changed to and fixed at 30 minutes.
 - The `GetBacktraceStringByTid` API of DFX is called for stack printing. This API sends stack capture signals to the blocked thread to trigger interrupts and capture the call stack return.
 
-#### Example
+**Example**
 
 Search for the keyword **RecordSymbolAndBacktrace** in the corresponding process log. The following is an example of the corresponding log:
 
@@ -55,13 +62,13 @@ W C01719/ffrt: #09 pc 00000000000467b0 /system/lib64/chipset-sdk/libffrt.so
 
 The log prints the task stack, Worker thread ID, and execution time of the long-time task. Find the corresponding component based on the stack to determine the blocking cause.
 
-#### Precautions
+**Precautions**
 
 N/A
 
 ### Running Information Dump
 
-#### Mechanism
+**Mechanism**
 
 FFRT provides an external interface API `ffrt_dump` to dump the internal information about the running of the FFRT subsystem, including:
 
@@ -72,7 +79,7 @@ FFRT provides an external interface API `ffrt_dump` to dump the internal informa
 
 When the current process is frozen, the DFX module proactively calls the `ffrt_dump` API to dump the FFRT information to the freeze file and store the file in the `/data/log/faultlog/faultlogger/` directory. You can directly use the task call stack information in the file to locate the frame freezing of the corresponding task.
 
-#### Example
+**Example**
 
 ```txt
 ready task ptr: qos 0 readptr 79 writeptr 79
@@ -107,17 +114,17 @@ proc status: taskCnt 23 vercnt 0sigCnt0
 #05 pc 0000000000066d18 /system/lib64/ndk/libffrt.so(22be57f01a789a03813d26a19c3a4042)
 ```
 
-#### Precautions
+**Precautions**
 
-The DFX module has requirements on the processing time during freeze, which has a low probability that the information collected by `ffrt_dump` is incomplete and the freeze processing time expires. In this case, the information flushed to the disk is missing.
+The DFX module has requirements on the processing time during freeze. There is a low probability that the information collected by `ffrt_dump` is incomplete and the freeze processing time expires. In this case, the information flushed to the disk is missing.
 
 ### Blackbox Logs
 
-#### Mechanism
+**Mechanism**
 
 When a process crashes, the FFRT module receives signals (`SIGABRT`, `SIGBUS`, `SIGFPE`, `SIGILL`, `SIGSTKFLT`, `SIGSTOP`, `SIGSYS`, and `SIGTRAP`) and saves important running information to the faultlog, including the running task, running information and call stack information of the current Worker thread, common task information, and queue task information. You can use the information to locate the crashes.
 
-#### Example
+**Example**
 
 ```txt
 C01719/CameraDaemon/ffrt: 9986:operator():254 <<<=== ffrt black box(BBOX) start ===>>>
@@ -137,17 +144,17 @@ C01719/CameraDaemon/ffrt: 9999:SaveWorkerStatus:100 qos 2: worker tid 1145 is ru
 C01719/CameraDaemon/ffrt: 10000:SaveWorkerStatus:100 qos 2: worker tid 5966 is running nothing
 ```
 
-#### Precautions
+**Precautions**
 
 N/A
 
 ### Tracing
 
-#### Mechanism
+**Mechanism**
 
 During FFRT task scheduling and execution, the system traces the task status in the FFRT framework in real time. You can use the trace graphical tool to analyze whether the task behavior meets the expectation.
 
-#### Example
+**Example**
 
 1. Starting trace capture
 
@@ -162,13 +169,13 @@ During FFRT task scheduling and execution, the system traces the task status in 
 
     Obtain the trace file from the device and use a graphical tool, for example, [Perfetto](https://perfetto.dev/), to analyze the file.
 
-#### Precautions
+**Precautions**
 
 You can also add traces to your service code to locate the fault. Note that in the high-frequency call process, adding traces will cause system overhead and affect service performance.
 
 ### Debug Logs
 
-#### Mechanism
+**Mechanism**
 
 - By default, debug logs are disabled for the FFRT, but can be enabled by using commands to obtain more maintenance and test information for fault locating in the development.
 - Enable the FFRT debug log function:
@@ -183,14 +190,14 @@ You can also add traces to your service code to locate the fault. Note that in t
     hdc shell hilog -b INFO -D 0xD001719
     ```
 
-#### Example
+**Example**
 
 ```txt
 4190  5631 D C01719/neboard:EngineServiceAbility:1/ffrt: 275337:Detach:147 qos 3 thread not joinable
 3257  6075 D C01719/com.ohos.sceneboard/ffrt: 513070:SetDefaultThreadAttr:148 qos apply tid[6075] level[3]
 ```
 
-#### Precautions
+**Precautions**
 
 The FFRT is the system base and supports the running of a large number of upper-layer services and frameworks. If the debug log function is enabled globally, the number of logs will exceed the threshold, which affects the log output of other modules.
 
@@ -449,7 +456,7 @@ The following describes how to use the native APIs provided by FFRT to create pa
 
 Risks exist when thread local variables are used in FFRT tasks. The details are as follows:
 
-- Thread local variables include the variables defined by `thread_local` provided by C/C++ and the variables created by using `thread_local`.
+- Thread local variables include the variables defined by `thread_local` provided by C/C++ and the variables created by using `pthread_key_create`.
 - FFRT supports task scheduling. The thread to which a task is scheduled is random. Therefore, there are risks to use thread local variables, which is consistent with all other frameworks that support concurrent task scheduling.
 - By default, an FFRT task runs in coroutine mode. During task execution, the coroutine may exit. When the task is resumed, the thread that executes the task may change.
 
@@ -459,12 +466,16 @@ Risks exist when thread local variables are used in FFRT tasks. The details are 
 
 ### Synchronization Primitives in the Standard Library
 
-A deadlock may occur when the mutex of the standard library is used in the FFRT task. You need to use the mutex provided by the FFRT. The details are as follows:
+Using the standard library's recursive mutex in FFRT tasks may lead to deadlocks. It is necessary to replace it with the recursive mutex provided by FFRT. The details are as follows:
 
-- When `lock()` is successfully executed, the mutex records the execution stack of the caller as the owner of the lock. If the caller is the current execution stack, a success message is returned to support nested lock obtaining in the same execution stack. In implementation of the standard library, the "execution stack" is represented by a thread identifier.
-- When the mutex of the standard library is used in the FFRT task, if the task (coroutine) exits between the outer and inner lock and the task is resumed on the FFRT Worker thread that is different from the thread that calls `lock()` for the first time, the calling thread is not the owner and `lock()` fails to be called, the FFRT Worker thread is suspended, and `unlock()` is not executed. As a result, a deadlock occurs.
+- When `lock()` is successfully executed, the recursive mutex records the execution stack of the caller as the lock owner. If the caller is the current execution stack, a success message is returned to support nested lock acquisition within the same execution stack. In the standard library, the execution stack is identified by the thread ID.
+- When using the standard library's recursive mutex in FFRT tasks, if a task (coroutine) exits between the outer and inner `lock()` calls and resumes execution on a different FFRT Worker thread than the one where `lock()` was initially called, the current thread will not be recognized as the owner. This causes the `lock()` to fail, suspends the FFRT Worker thread, and prevents the subsequent `unlock()` from executing, leading to a deadlock.
 
-### Support for the Process `fork()` Scenario
+### Synchronization Primitives in FFRT
+
+- `std::runtime_error` cannot be handled across threads. Therefore, when using **try-catch** in an FFRT task, it is advisable not to use FFRT synchronization primitives in the catch block. Otherwise, exceptions may fail to be caught, leading to crashes.
+
+### Support for Process `fork()`
 
 - Create a child process in a process that does not use FFRT. FFRT can be used in the child process.
 - Create a child process using `fork()` in a process that uses FFRT. FFRT cannot be used in the child process.
@@ -487,7 +498,7 @@ A deadlock may occur when the mutex of the standard library is used in the FFRT 
 
 ## Common Anti-Patterns
 
-### After an FFRT object is initialized in the C code, you are responsible for setting the object to null or destroying the object.
+### Responsibility for Nulling and Destroying FFRT Objects After Initialization in the C API
 
 - To ensure high performance, the C APIs of FFRT do not use a flag to indicate the object destruction status. You need to release resources properly. Repeatedly destroying an object will cause undefined behavior.
 - Noncompliant example 1: Repeated calling of destroy() may cause unpredictable data damage.
@@ -635,5 +646,3 @@ Use the FFRT C++ API in the code.
 #include "ffrt/cpp/sleep.h"
 #include "ffrt/cpp/queue.h"
 ```
-
- <!--no_check--> 

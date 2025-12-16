@@ -6,7 +6,7 @@ This document describes how to port the OpenHarmony LiteOS-M mini system on the 
 
 ### Directory Planning
 
-This solution designs the directory structure using the [board and SoC decoupling idea](https://gitee.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md).
+This solution designs the directory structure using the [board and SoC decoupling idea](https://gitcode.com/openharmony-sig/sig-content/blob/master/devboard/docs/board-soc-arch-design.md).
 
 ```
 device

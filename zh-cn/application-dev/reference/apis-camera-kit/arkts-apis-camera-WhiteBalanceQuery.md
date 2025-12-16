@@ -1,13 +1,17 @@
 # Interface (WhiteBalanceQuery)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+提供了查询设备对指定的白平衡模式是否支持，以及获取设备支持的白平衡模式范围的方法。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 20开始支持。
-
-提供了查询设备对指定的白平衡模式是否支持，以及获取设备支持的白平衡模式范围的方法。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 ## 导入模块
 
@@ -35,7 +39,7 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 表示是否支持白平衡模式。true表示支持，false表示不支持。 |
+| boolean    | 表示是否支持白平衡模式。true表示支持，false表示不支持。若接口调用失败，返回undefined。 |
 
 **错误码：**
 
@@ -54,7 +58,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 function isWhiteBalanceModeSupported(session: camera.PhotoSession | camera.VideoSession): boolean {
   let status: boolean = false;
   try {
-  let mode: WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
+  let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
     status = session.isWhiteBalanceModeSupported(mode);
   } catch (error) {
     let err = error as BusinessError;
@@ -78,7 +82,7 @@ getWhiteBalanceRange(): Array\<number\>
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| Array\<number\>   | 用于获取手动白平衡值的可调范围，如[2800，10000]，单位为K（Kelvin，温度单位），实际情况根据底层能力返回为准。 |
+| Array\<number\>   | 用于获取手动白平衡值的可调范围，如[2800，10000]，单位为K（Kelvin，温度单位），实际情况根据底层能力返回为准。若接口调用失败，返回undefined。 |
 
 **错误码：**
 

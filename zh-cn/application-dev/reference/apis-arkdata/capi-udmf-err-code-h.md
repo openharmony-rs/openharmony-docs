@@ -1,4 +1,10 @@
 # udmf_err_code.h
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @jcwen-->
+<!--Designer: @junathuawei1; @zph000-->
+<!--Tester: @lj_liujing; @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -27,7 +33,7 @@
 
 ### Udmf_ErrCode
 
-```
+```c
 enum Udmf_ErrCode
 ```
 
@@ -45,7 +51,7 @@ enum Udmf_ErrCode
 
 ### Udmf_ListenerStatus
 
-```
+```c
 enum Udmf_ListenerStatus
 ```
 

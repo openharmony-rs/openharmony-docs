@@ -1,11 +1,31 @@
-# Context
+# Context (Context Base Class of the Stage Model)
 
-The Context module, inherited from [BaseContext](js-apis-inner-application-baseContext.md), provides context for abilities or applications, including access to application-specific resources.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @zexin_c-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+Context is the context base class of the stage model. It is used to access application-specific resources and perform callbacks for application-level operations.
 
 > **NOTE**
 >
 >  - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >  - The APIs of this module can be used only in the stage model.
+
+## Inheritance and Holding Relationships of Different Context Types
+- Inheritance relationships among different types of context
+
+  ![context-inheritance](../../application-models/figures/context-inheritance.png)
+
+- Holding relationships among different types of context
+
+  ![context-holding](../../application-models/figures/context-holding.png)
+
+> **NOTE**
+>
+> [UIContext](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) refers to the context of a UI instance, which is used to associate windows with UI pages. It is not directly related to the application context discussed in this topic and does not involve inheritance or holding relationships.
 
 ## Modules to Import
 
@@ -13,7 +33,11 @@ The Context module, inherited from [BaseContext](js-apis-inner-application-baseC
 import { common } from '@kit.AbilityKit';
 ```
 
-## Properties
+## Context
+
+Represents the context for the ability or application. It allows access to application-specific resources.
+
+### Properties
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -21,20 +45,21 @@ import { common } from '@kit.AbilityKit';
 |---------------------| ------ | ---- | ---- |------------------------------------------------------------------|
 | resourceManager     | resmgr.[ResourceManager](../apis-localization-kit/js-apis-resource-manager.md#resourcemanager) | No   | No   | Object for resource management.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | applicationInfo     | [ApplicationInfo](js-apis-bundleManager-applicationInfo.md) | No   | No   | Application information.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| cacheDir            | string | No   | No   | Cache directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| tempDir             | string | No   | No   | Temporary directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| resourceDir<sup>11+<sup>         | string | No   | No   | Resource directory.<br>**NOTE**: You are required to manually create the **resfile** directory in **\<module-name>\resource**. The **resfile** directory can be accessed only in read-only mode.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| filesDir            | string | No   | No   | File directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| databaseDir         | string | No   | No   | Database directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| preferencesDir      | string | No   | No   | Preferences directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| bundleCodeDir       | string | No   | No   | Bundle code directory. Do not access resource files using concatenated paths. Use [@ohos.resourceManager](../apis-localization-kit/js-apis-resource-manager.md) instead.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| distributedFilesDir | string | No   | No   | Distributed file directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| cacheDir            | string | No   | No   | Cache directory. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| tempDir             | string | No   | No   | Temporary directory. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| resourceDir<sup>11+<sup>         | string | No   | No   | Resource directory.<br>Note: You are required to manually create the **resfile** directory in **\<module-name>\resource**. The **resfile** directory can be accessed only in read-only mode.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| filesDir            | string | No   | No   | File directory. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| databaseDir         | string | No   | No   | Database directory. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| preferencesDir      | string | No   | No   | Preferences directory. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| bundleCodeDir       | string | No   | No   | Bundle code directory. Do not access resource files using concatenated paths. Use [resource manager APIs](../apis-localization-kit/js-apis-resource-manager.md) instead. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| distributedFilesDir | string | No   | No   | Distributed file directory. For details, see [Application Sandbox](../../file-management/app-sandbox-directory.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | cloudFileDir<sup>12+</sup>        | string | No   | No   | Cloud file directory.<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
+| logFileDir<sup>22+</sup>        | string | No   | No   | Directory for storing log files.<br>**Atomic service API**: This API can be used in atomic services since API version 22.   |
 | eventHub            | [EventHub](js-apis-inner-application-eventHub.md) | No   | No   | Event hub that implements event subscription, unsubscription, and triggering.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| area                | contextConstant.[AreaMode](js-apis-app-ability-contextConstant.md) | No   | No   | Encryption level of the directory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| area                | contextConstant.[AreaMode](js-apis-app-ability-contextConstant.md#areamode) | No   | No   | Information about file partitions, which are divided according to the encryption level specified by [AreaMode](js-apis-app-ability-contextConstant.md#areamode).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | processName<sup>18+</sup> | string | No  | No| Process name of the current application.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
-## Context.createModuleContext<sup>(deprecated)</sup>
+### createModuleContext<sup>(deprecated)</sup>
 
 createModuleContext(moduleName: string): Context
 
@@ -42,7 +67,11 @@ Creates the context based on the module name.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. You are advised to use [application.createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12) instead.
+> - Only the context of other modules in the current application and the context of the intra-application HSP can be obtained. The context of other applications cannot be obtained.
+>
+> - This API is deprecated since API version 12. You are advised to use [application.createModuleContext](./js-apis-app-ability-application.md#applicationcreatemodulecontext12) instead. Otherwise, resource retrieval may be abnormal.
+>
+> - Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the **createModuleContext** API to create multiple context instances, as this may negatively impact user experience.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -76,7 +105,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let moduleContext: common.Context;
     try {
       moduleContext = this.context.createModuleContext('entry');
@@ -87,15 +116,11 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-> **NOTE**
->
-> Only the context of other modules in the current application and the context of the intra-application HSP can be obtained. The context of other applications cannot be obtained.
-
-## Context.getApplicationContext
+### getApplicationContext
 
 getApplicationContext(): ApplicationContext
 
-Obtains the context of this application.
+Obtains the application context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -105,7 +130,7 @@ Obtains the context of this application.
 
 | Type| Description|
 | -------- | -------- |
-| [ApplicationContext](js-apis-inner-application-applicationContext.md) | Application context obtained.|
+| [ApplicationContext](js-apis-inner-application-applicationContext.md) | Application context.|
 
 **Error codes**
 
@@ -123,7 +148,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let applicationContext: common.Context;
     try {
       applicationContext = this.context.getApplicationContext();
@@ -134,7 +159,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## Context.getGroupDir<sup>10+</sup>
+### getGroupDir<sup>10+</sup>
 
 getGroupDir(dataGroupID: string): Promise\<string>
 
@@ -148,7 +173,7 @@ Obtains the shared directory based on a group ID. This API uses a promise to ret
 
 | Name      | Type                    | Mandatory  | Description           |
 | -------- | ---------------------- | ---- | ------------- |
-| dataGroupID | string | Yes   | Group ID, which is assigned by the system when an atomic service project is created.|
+| [dataGroupID](../apis-arkdata/js-apis-data-preferences.md#options10) | string | Yes   | Group ID, which is assigned by the system when an application of the atomic service type is created.|
 
 **Return value**
 
@@ -173,12 +198,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let groupId = "1";
     let getGroupDirContext: common.Context = this.context;
     try {
       getGroupDirContext.getGroupDir(groupId).then(data => {
-        console.log("getGroupDir result:" + data);
+        console.info("getGroupDir result:" + data);
       })
     } catch (error) {
       console.error(`getGroupDirContext failed, error.code: ${(error as BusinessError).code}, error.message: ${(error as BusinessError).message}`);
@@ -187,7 +212,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## Context.getGroupDir<sup>10+</sup>
+### getGroupDir<sup>10+</sup>
 
 getGroupDir(dataGroupID: string, callback: AsyncCallback\<string>): void
 
@@ -201,8 +226,8 @@ Obtains the shared directory based on a group ID. This API uses an asynchronous 
 
 | Name      | Type                    | Mandatory  | Description           |
 | -------- | ---------------------- | ---- | ------------- |
-| dataGroupID | string | Yes   | Group ID, which is assigned by the system when an atomic service project is created.|
-| callback | AsyncCallback\<string> | Yes   | Callback used to return the result. If no shared directory exists, null is returned. Only the encryption level EL2 is supported.|
+| [dataGroupID](../apis-arkdata/js-apis-data-preferences.md#options10) | string | Yes   | Group ID, which is assigned by the system when an application of the atomic service type is created.|
+| callback | AsyncCallback\<string> | Yes   | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the shared directory obtained (or empty if or is empty if non-existent). Otherwise, an error object is returned.<br>Note: Only the EL2 encryption level is supported.|
 
 **Error codes**
 
@@ -221,25 +246,25 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
-    console.log('MyAbility onCreate');
+    console.info('MyAbility onCreate');
     let getGroupDirContext: common.Context = this.context;
 
     getGroupDirContext.getGroupDir("1", (err: BusinessError, data) => {
       if (err) {
         console.error(`getGroupDir faile, err: ${JSON.stringify(err)}`);
       } else {
-        console.log(`getGroupDir result is: ${JSON.stringify(data)}`);
+        console.info(`getGroupDir result is: ${JSON.stringify(data)}`);
       }
     });
   }
 }
 ```
 
-## Context.createAreaModeContext<sup>18+</sup>
+### createAreaModeContext<sup>18+</sup>
 
 createAreaModeContext(areaMode: contextConstant.AreaMode): Context
 
-Creates the context for this application based on a data encryption level. This is required when an application needs to store different types of information in different directories. The application can obtain the corresponding directory.
+Creates an application context with a specific data encryption level. You can call this API to create contexts with different encryption levels, thereby obtaining the corresponding sandbox paths.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -256,14 +281,6 @@ Creates the context for this application based on a data encryption level. This 
 | Type   | Description                  |
 | ------- | ---------------------- |
 | Context | Context created based on the data encryption level.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                    |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
 
@@ -285,11 +302,11 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## Context.createDisplayContext<sup>15+</sup>
+### createDisplayContext<sup>15+</sup>
 
 createDisplayContext(displayId: number): Context
 
-Creates the context based on the specified display ID, so as to obtain and use other application contexts with screen information (including [ScreenDensity](../apis-localization-kit/js-apis-resource-manager.md#screendensity) and [Direction](../apis-localization-kit/js-apis-resource-manager.md#direction)).
+Creates an application context based on the specified display ID with screen information (including [ScreenDensity](../apis-localization-kit/js-apis-resource-manager.md#screendensity) and [Direction](../apis-localization-kit/js-apis-resource-manager.md#direction)).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -299,7 +316,7 @@ Creates the context based on the specified display ID, so as to obtain and use o
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| displayId | number | Yes   | Display ID.|
+| [displayId](../apis-arkui/arkts-apis-window-i.md#windowproperties) | number | Yes   | Display ID.|
 
 **Return value**
 

@@ -1,12 +1,24 @@
 # SharedBundleInfo (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **SharedBundleInfo** module provides information about the shared bundle. The information can be obtained by calling [bundleManager.getSharedBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetsharedbundleinfo10).
+The module provides information about the shared bundle. The information can be obtained by calling [bundleManager.getSharedBundleInfo](js-apis-bundleManager-sys.md#bundlemanagergetsharedbundleinfo10).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > The APIs provided by this module are system APIs.
+
+## Modules to Import
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+```
 
 ## SharedBundleInfo
 
@@ -19,7 +31,7 @@ Defines the shared bundle information.
 | Name            | Type                          | Read-Only| Optional| Description                  |
 | ---------------- | ------------------------------ | ---- | ---- | ---------------------- |
 | name             | string                         | Yes  | No  | Name of the shared bundle.      |
-| compatiblePolicy | bundleManager.CompatiblePolicy | Yes  | No  | Compatibility type of the shared bundle.|
+| compatiblePolicy | bundleManager.[CompatiblePolicy](js-apis-bundleManager.md#compatiblepolicy10) | Yes  | No  | Compatibility type of the shared bundle.|
 | sharedModuleInfo | Array\<SharedModuleInfo>       | Yes  | No  | Information about the shared module.    |
 
 ## SharedModuleInfo

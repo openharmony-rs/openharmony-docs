@@ -1,4 +1,10 @@
 # Debugging and Profiling JS Code Using JSVM-API
+<!--Kit: NDK Development-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Designer: @knightaoko-->
+<!--Tester: @test_lzz-->
+<!--Adviser: @fang-jinxu-->
 
 ## Introduction
 
@@ -19,16 +25,17 @@ JSVM-API provide APIs for retrieving JavaScript virtual machine (JSVM) instances
 | OH_JSVM_StopCpuProfiler    |  Stops the CPU profiler and outputs the result to a stream.|
 | OH_JSVM_TakeHeapSnapshot   |  Obtains a snapshot of the current heap and outputs it to a stream.|
 | OH_JSVM_OpenInspector      |  Opens an inspector instance on the specified host and port for debugging JS code.|
+| OH_JSVM_OpenInspectorWithName | Opens an inspector instance based on the PID and name.|
 | OH_JSVM_CloseInspector     |  Closes all remaining inspector connections.|
 | OH_JSVM_WaitForDebugger    |  Waits for the host to set up a socket connection with an inspector. After the connection is set up, the application continues to run. You can use **Runtime.runIfWaitingForDebugger** to run paused targets.|
 
 ## Example
 
-If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in debugging and profiling JS code.
+If you are just starting out with JSVM-API, see [JSVM-API Development Process](use-jsvm-process.md). The following demonstrates only the C++ code involved in the APIs.
 
 ### OH_JSVM_GetVM
 
-Use **OH_JSVM_GetVM** to obtain a VM instance.
+Retrieves VM instances in an environment.
 
 CPP code:
 
@@ -65,11 +72,12 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 ```
 
-// Call C++ code from JS.
+JS example:
 
 ```c++
 const char *srcCallNative = R"JS(getVM())JS";
 ```
+<!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```
@@ -78,7 +86,7 @@ JSVM OH_JSVM_GetVM: success
 
 ### OH_JSVM_GetHeapStatistics
 
-Use **OH_JSVM_GetHeapStatistics** to obtain heap statistics of a VM.
+Obtains heap statistics of a VM.
 
 CPP code:
 
@@ -132,11 +140,12 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 ```
 
-// Call C++ code from JS.
+JS example:
 
 ```c++
 const char *srcCallNative = R"JS(getHeapStatistics())JS";
 ```
+<!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
 Expected result:
 ```
 JSVM API heap totalHeapSize: 1597440
@@ -156,7 +165,7 @@ JSVM API heap usedGlobalHandlesSize: 32
 
 For details about the sample code of the previous APIs, see:
 
-[JSVM Debugging and Profiling](jsvm-debugger-cpuprofiler-heapsnapshot.md)
+[JSVM-API Debugging](./jsvm-debugger-cpuprofiler-heapsnapshot.md)
 
 ### OH_JSVM_StartCpuProfiler
 
@@ -164,15 +173,15 @@ Creates and starts a CPU profiler instance.
 
 ### OH_JSVM_StopCpuProfiler
 
-Stops the CPU profiler and outputs the result to a stream.
+Stops the CPU profiler and output the result to a stream.
 
 ### OH_JSVM_TakeHeapSnapshot
 
-Obtains a snapshot of the current heap and outputs it to a stream.
+Obtains the current heap snapshot and outputs it to the stream.
 
 ### OH_JSVM_OpenInspector
 
-Opens an inspector instance on the specified host and port for debugging JS code.
+Opens an inspector instance on a specified host and port for debugging JS code.
 
 ### OH_JSVM_CloseInspector
 
@@ -180,4 +189,4 @@ Closes all remaining inspector connections.
 
 ### OH_JSVM_WaitForDebugger
 
-Waits for the host to set up a socket connection with an inspector. After the connection is set up, the application continues to run. You can use **Runtime.runIfWaitingForDebugger** to run paused targets.
+Waits for the host to set up a socket connection with the inspector. After the connection is set up, the application continues to run and sends the **Runtime.runIfWaitingForDebugger** command.

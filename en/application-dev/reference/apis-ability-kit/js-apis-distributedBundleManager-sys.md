@@ -1,6 +1,12 @@
-# @ohos.bundle.distributedBundleManager (distributedBundleManager) (System API)
+# @ohos.bundle.distributedBundleManager (distributedBundleManager Module) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **distributedBundle** module provides APIs for managing distributed bundles.
+The module provides APIs for managing distributed bundles.
 
 > **NOTE**
 >
@@ -11,7 +17,7 @@ The **distributedBundle** module provides APIs for managing distributed bundles.
 ## Modules to Import
 
 ``` ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
+import { distributedBundleManager } from '@kit.AbilityKit';
 ```
 
 ## System Capabilities
@@ -26,7 +32,7 @@ SystemCapability.BundleManager.DistributedBundleFramework
 
 For details about the APL, see [Basic Concepts in the Permission Mechanism](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism).
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback\<RemoteAbilityInfo>): void
 
@@ -43,7 +49,7 @@ Obtains information about the remote ability that matches the given element name
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | elementName | [ElementName](js-apis-bundleManager-elementName.md)          | Yes  | Target element name.                                           |
-| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the **RemoteAbilityInfo** object obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
+| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the RemoteAbilityInfo object obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
 
 **Error codes**
 
@@ -63,16 +69,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         {
             deviceId: '1',
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
-        }, (err: BusinessError, data: distributedBundle.RemoteAbilityInfo) => {
+        }, (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo) => {
             if (err) {
                 console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
             } else {
@@ -86,7 +92,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementName: ElementName): Promise\<RemoteAbilityInfo>
 
@@ -108,7 +114,7 @@ Obtains information about the remote ability that matches the given element name
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Promise used to return the result. If the operation is successful, the **RemoteAbilityInfo** object is returned. Otherwise, an error object is returned.|
+| Promise\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Promise used to return the result. If the operation is successful, the RemoteAbilityInfo object is returned. Otherwise, an error object is returned.|
 
 **Error codes**
 
@@ -128,16 +134,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         {
             deviceId: '1',
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
-        }).then((data: distributedBundle.RemoteAbilityInfo) => {
+        }).then((data: distributedBundleManager.RemoteAbilityInfo) => {
             console.info('Operation succeed:' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
@@ -149,7 +155,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
@@ -166,7 +172,7 @@ Obtains information about the remote abilities that match the given element name
 | Name      | Type                                                        | Mandatory| Description                                                        |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>   | Yes  | **ElementName** array, whose maximum length is 10.                            |
-| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the array of **RemoteAbilityInfo** objects obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
+| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of RemoteAbilityInfo objects obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
 
 **Error codes**
 
@@ -186,11 +192,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         [
             {
                 deviceId: '1',
@@ -202,7 +208,7 @@ try {
                 bundleName: 'com.example.application2',
                 abilityName: 'EntryAbility'
             }
-        ], (err: BusinessError, data: distributedBundle.RemoteAbilityInfo[]) => {
+        ], (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo[]) => {
           if (err) {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
           } else {
@@ -216,7 +222,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteAbilityInfo>>
 
@@ -238,7 +244,7 @@ Obtains information about the remote abilities that match the given element name
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise used to return the result. If the operation is successful, an array of **RemoteAbilityInfo** objects is returned. Otherwise, an error object is returned.|
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise used to return the result. If the operation is successful, an array of RemoteAbilityInfo objects is returned. Otherwise, an error object is returned.|
 
 **Error codes**
 
@@ -258,11 +264,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         [
             {
                 deviceId: '1',
@@ -274,7 +280,7 @@ try {
                 bundleName: 'com.example.application2',
                 abilityName: 'EntryAbility'
             }
-        ]).then((data: distributedBundle.RemoteAbilityInfo[]) => {
+        ]).then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
             console.info('Operation succeed:' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
@@ -286,7 +292,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCallback\<RemoteAbilityInfo>): void
 
@@ -304,7 +310,7 @@ Obtains information about the remote ability that matches the given element name
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
 | elementName | [ElementName](js-apis-bundleManager-elementName.md)                 | Yes  | Target element name.                           |
 | locale  | string |Yes| Target locale.|
-| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the **RemoteAbilityInfo** object obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
+| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the RemoteAbilityInfo object obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
 
 **Error codes**
 
@@ -324,16 +330,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         {
             deviceId: '1',
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
-        }, 'zh-Hans-CN', (err: BusinessError, data: distributedBundle.RemoteAbilityInfo) => {
+        }, 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo) => {
           if (err) {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
           } else {
@@ -347,7 +353,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise\<RemoteAbilityInfo>
 
@@ -370,7 +376,7 @@ Obtains information about the remote ability that matches the given element name
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Promise used to return the result. If the operation is successful, the **RemoteAbilityInfo** object is returned. Otherwise, an error object is returned.|
+| Promise\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | Promise used to return the result. If the operation is successful, the RemoteAbilityInfo object is returned. Otherwise, an error object is returned.|
 
 **Error codes**
 
@@ -390,16 +396,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         {
             deviceId: '1',
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
-        }, 'zh-Hans-CN').then((data: distributedBundle.RemoteAbilityInfo) => {
+        }, 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo) => {
             console.info('Operation succeed:' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
@@ -411,7 +417,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
@@ -429,7 +435,7 @@ Obtains information about the remote abilities that match the given element name
 | ------------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
 | elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>          | Yes  | **ElementName** array, whose maximum length is 10.                  |
 | locale  | string |Yes| Target locale.|
-| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is the array of **RemoteAbilityInfo** objects obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
+| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Yes  | [Callback](../apis-basic-services-kit/js-apis-base.md#asynccallback) used to return the result. If the operation is successful, **err** is **null** and **data** is the array of RemoteAbilityInfo objects obtained. Otherwise, **err** is an error object and **data** is **undefined**.|
 
 **Error codes**
 
@@ -449,11 +455,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         [
             {
                 deviceId: '1',
@@ -465,7 +471,7 @@ try {
                 bundleName: 'com.example.application2',
                 abilityName: 'EntryAbility'
             }
-        ], 'zh-Hans-CN', (err: BusinessError, data: distributedBundle.RemoteAbilityInfo[]) => {
+        ], 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo[]) => {
           if (err) {
            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
           } else {
@@ -479,7 +485,7 @@ try {
 }
 ```
 
-## distributedBundle.getRemoteAbilityInfo
+## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise\<Array\<RemoteAbilityInfo>>
 
@@ -502,7 +508,7 @@ Obtains information about the remote abilities that match the given element name
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise used to return the result. If the operation is successful, an array of **RemoteAbilityInfo** objects is returned. Otherwise, an error object is returned.|
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise used to return the result. If the operation is successful, an array of RemoteAbilityInfo objects is returned. Otherwise, an error object is returned.|
 
 **Error codes**
 
@@ -522,11 +528,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import distributedBundle from '@ohos.bundle.distributedBundleManager';
-import { BusinessError } from '@ohos.base';
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-    distributedBundle.getRemoteAbilityInfo(
+    distributedBundleManager.getRemoteAbilityInfo(
         [
             {
                 deviceId: '1',
@@ -538,7 +544,7 @@ try {
                 bundleName: 'com.example.application2',
                 abilityName: 'EntryAbility'
             }
-        ], 'zh-Hans-CN').then((data: distributedBundle.RemoteAbilityInfo[]) => {
+        ], 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
             console.info('Operation succeed:' + JSON.stringify(data));
         }).catch((err: BusinessError) => {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
@@ -549,3 +555,17 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+
+## RemoteAbilityInfo
+
+type RemoteAbilityInfo = _RemoteAbilityInfo
+
+Defines the remote ability information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BundleManager.DistributedBundleFramework
+
+| Type                                                        | Description          |
+| ------------------------------------------------------------ | -------------- |
+| [_RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md#remoteabilityinfo) |Remote ability information.|

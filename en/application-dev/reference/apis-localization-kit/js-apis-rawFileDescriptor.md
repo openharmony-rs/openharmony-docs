@@ -1,5 +1,12 @@
 # RawFileDescriptor
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 Provides the descriptor of the HAP where the rawfile is located.
 
 > **NOTE**
@@ -18,8 +25,8 @@ import { resourceManager } from '@kit.LocalizationKit'
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-| Name    | Type   | Readable  | Writable | Description          |
+| Name    | Type   | Read-Only  | Optional | Description          |
 | ------ | ------  | ---- | ---- | ------------------ |
-| fd     | number  | Yes   | No| Pointer to the file descriptor.|
-| offset | number  | Yes   | No| Start offset.     |
-| length | number  | Yes   | No| File length.      |
+| fd     | number  | No   | No| Pointer to the file descriptor.|
+| offset | number  | No   | No| Start offset.     |
+| length | number  | No   | No| File length.      |

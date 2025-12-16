@@ -1,5 +1,12 @@
 # @ohos.hilog (HiLog日志打印)
 
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @liuyifeifei;@buzhenwang-->
+<!--Designer: @shenchenkai-->
+<!--Tester: @liyang2235-->
+<!--Adviser: @foryourself-->
+
 hilog日志系统，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容，帮助开发者了解应用/服务的运行状态，更好地调试程序。
 
 > **说明：**
@@ -89,9 +96,11 @@ hilog.debug(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
+<!--RP3-->
 ```
-08-05 12:21:47.579  2695 2703 D A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  D     hello World <private>
 ```
+<!--RP3End-->
 
 ## hilog.info
 
@@ -122,9 +131,11 @@ hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
+<!--RP4-->
 ```
-08-05 12:21:47.579  2695 2703 I A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  I     hello World <private>
 ```
+<!--RP4End-->
 
 ## hilog.warn
 
@@ -155,9 +166,11 @@ hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
+<!--RP5-->
 ```
-08-05 12:21:47.579  2695 2703 W A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  W     hello World <private>
 ```
+<!--RP5End-->
 
 ## hilog.error
 
@@ -188,9 +201,11 @@ hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
+<!--RP6-->
 ```
-08-05 12:21:47.579  2695 2703 E A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  E     hello World <private>
 ```
+<!--RP6End-->
 
 ## hilog.fatal
 
@@ -221,9 +236,11 @@ hilog.fatal(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 字符串`"hello"`填入`%{public}s`，整型数`3`填入`%{private}d`，输出日志：
 
+<!--RP7-->
 ```
-08-05 12:21:47.579  2695 2703 F A00001/testTag: hello World <private>
+08-05 12:21:47.579  2695-2703  A00001/testTag  com.example.hilogDemo  F     hello World <private>
 ```
+<!--RP7End-->
 
 ## hilog.setMinLogLevel<sup>15+</sup>
 
@@ -231,7 +248,11 @@ setMinLogLevel(level: LogLevel): void
 
 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。
 
-需要注意：如果设置的日志级别低于[全局日志级别](../../dfx/hilog.md#查看和设置日志级别)，设置不生效。
+> **注意：**
+>
+> 如果设置的日志级别低于[全局日志级别](../../dfx/hilog.md#查看和设置日志级别)，设置不生效。
+>
+> debug版本应用下，此函数不生效。
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -272,6 +293,74 @@ hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
 ```
 <!--RP1End-->
 
+## hilog.setLogLevel<sup>21+</sup>
+
+setLogLevel(level: LogLevel, prefer: PreferStrategy): void
+
+设置当前应用程序进程的最低日志级别。
+
+可通过prefer参数配置不同的偏好策略。如果选择策略PREFER_CLOSE_LOG，等同于调用setMinLogLevel函数。
+
+> **注意：**
+>
+> debug版本应用下，此函数不生效。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                                                         |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| level  | [LogLevel](#loglevel) | 是   | 日志级别。                                                   |
+| prefer  | [PreferStrategy](#preferstrategy21) | 是   | 偏好策略。                                                   |
+
+## PreferStrategy<sup>21+</sup>
+
+偏好策略。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+| 名称  |   值   | 说明                                                         |
+| ------ | --------------------- | ------------------------------------------------------------ |
+| UNSET_LOGLEVEL | 0 | 清除设置, 实际生效的最低日志级别是系统控制的最低级别。 |
+| PREFER_CLOSE_LOG | 1 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较大值。 |
+| PREFER_OPEN_LOG | 2 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较小值。 |
+
+**示例：**
+
+以全局日志级别为INFO下，打印5条不同级别的hilog日志，在打印过程中调用两次setLogLevel接口为例：
+
+```js
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
+hilog.setLogLevel(hilog.LogLevel.WARN, hilog.PreferStrategy.PREFER_OPEN_LOG);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
+hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.setLogLevel(hilog.LogLevel.DEBUG, hilog.PreferStrategy.PREFER_CLOSE_LOG);
+hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
+```
+
+由于全局日志起始为INFO，第一条日志可以正常打印。
+
+在设置进程最低日志级别为WARN, 并选择策略PREFER_OPEN_LOG后，实际生效的最低日志级别是全局日志级别INFO，所以第二条和第三条日志均可正常打印。
+
+在设置进程最低日志级别为DEBUG，并选择策略PREFER_CLOSE_LOG后（等同于hilog.setMinLogLevel(hilog.LogLevel.DEBUG)），但是此时全局日志级别为INFO，所以第四条日志不满足全局日志级别，打印失败，第五条日志可以打印。
+
+<!--RP2-->
+最终打印结果如下所示：
+```
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 2
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
+```
+<!--RP2End-->
+
+
 ## 参数格式符
 
 上述接口中，日志打印的格式化参数需按照如下格式打印：
@@ -308,12 +397,14 @@ hilog.info(0x0001, "jsHilogTest", "print boolean: %{public}s", isBol);
 ```
 
 **打印结果：**
+<!--RP8-->
 ```
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print object: {"name":"Jack","age":22}
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: private flag: <private> <private>, print null: null
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print undefined: undefined
-08-09 13:26:29.094  2266  2266 I A00001/jsHilogTest: print number: 123 456
-08-09 13:26:29.095  2266  2266 I A00001/jsHilogTest: print bigNum: 1234567890123456768 1234567890123456768
-08-09 13:26:29.095  2266  2266 I A00001/jsHilogTest: print boolean: true
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print object: {"name":"Jack","age":22}
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  private flag: <private> <private>, print null: null
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print undefined: undefined
+08-09 13:26:29.094  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print number: 123 456
+08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print bigNum: 1234567890123456768 1234567890123456768
+08-09 13:26:29.095  2266-2266  A00001/jsHilogTest  com.example.hilogDemo  I  print boolean: true
 ```
+<!--RP8End-->

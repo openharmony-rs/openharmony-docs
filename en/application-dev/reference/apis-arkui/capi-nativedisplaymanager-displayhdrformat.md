@@ -1,8 +1,18 @@
 # NativeDisplayManager_DisplayHdrFormat
+<!--Kit: ArkUI-->
+<!--Subsystem: Window-->
+<!--Owner: @oh_wangxk; @logn-->
+<!--Designer: @hejunfei1991-->
+<!--Tester: @qinliwen0417-->
+<!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} NativeDisplayManager_DisplayHdrFormat
+```
 
 ## Overview
 
-The NativeDisplayManager_DisplayHdrFormat struct describes all the HDR formats supported by a display.
+The struct describes all the HDR formats supported by a display.
 
 **Since**: 14
 

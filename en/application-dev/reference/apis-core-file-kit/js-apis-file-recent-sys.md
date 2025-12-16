@@ -1,4 +1,10 @@
 # @ohos.file.recent (Latest Access List) (System API)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
+<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 The **file.recent** module provides APIs for managing the list of recently accessed files.
 
@@ -11,7 +17,7 @@ The **file.recent** module provides APIs for managing the list of recently acces
 ## Modules to Import
 
 ```js
-import recent from '@ohos.file.recent';
+import { recent } from '@kit.CoreFileKit';
 ```
 
 ## recent.add
@@ -22,17 +28,17 @@ Adds the file of the specified URI to the recent file list.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| uri   | string | Yes  | URI of the file to add.|
+| uri   | string | Yes  | File URI.|
 
 **Error codes**
 
@@ -53,17 +59,17 @@ Removes the file of the specified URI from the recent file list.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| uri   | string | Yes  | URI of the file to remove.|
+| uri   | string | Yes  | File URI.|
 
 **Error codes**
 
@@ -84,11 +90,11 @@ Lists the files that are accessed recently.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.FileManagement.UserFileService
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.FILE_ACCESS_MANAGER
 
-**System API**: This is a system API.
+**System capability**: SystemCapability.FileManagement.UserFileService
 
 **Return value**
 
@@ -121,11 +127,13 @@ Represents information about the recent file list.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 | Name| Type  | Read-Only| Optional| Description    |
 | ------ | ------ | -------- | ------ | -------- |
-| uri | string | Yes| No| URI of the file.|
+| uri | string | Yes| No| File URI.|
 | srcPath | string | Yes| No| File path.|
 | fileName | string | Yes| No| File name.|
 | mode | number | Yes| No| [Permissions on the file](js-apis-file-fs.md#stat).|

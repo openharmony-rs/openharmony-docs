@@ -1,5 +1,12 @@
 # 开放权限（系统授权）
 
+<!--Kit: ArkUI-->
+<!--Subsystem: Security-->
+<!--Owner: @harylee-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
 此列表内所有权限均为系统授权（system_grant）的开放权限，面向所有应用开放。
 
 应用申请了system_grant权限后，系统将在用户安装应用时，自动把相应权限授予给应用。
@@ -129,9 +136,9 @@
 
 ## ohos.permission.GET_WIFI_INFO
 
-允许应用获取Wi-Fi信息。
+允许应用获取Wi-Fi信息和使用P2P能力。
 
-该权限允许应用获取Wi-Fi信息，包括Wi-Fi的开启状态、扫描结果、连接信息、连接状态、设备能力、P2P状态等信息。
+获取该权限后，应用可获取Wi-Fi信息，包括Wi-Fi的开启状态、扫描结果、连接信息、连接状态、设备能力、P2P状态等；同时，应用可使用P2P能力。
 
 **权限级别**：normal
 
@@ -485,6 +492,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：General
+
 **起始版本**：20
 
 ## ohos.permission.kernel.NET_RAW
@@ -556,6 +565,120 @@
 
 **授权方式**：系统授权（system_grant）
 
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：20
+
+**变更信息：** API 20-22，该权限仅支持在PC/2in1设备上申请；从API 23 开始，增加支持在平板上申请。
+
+## ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN
+
+允许应用在锁屏状态下被启动。
+
+获取该权限后，应用可以在锁屏状态下被启动。设备解锁后，可直接看到应用启动界面。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：21
+
+## ohos.permission.kernel.IGNORE_LIBRARY_VALIDATION
+
+允许独立二进制程序加载具有不同ownerid的独立二进制SO。
+
+仅对独立二进制程序生效，对HAP不生效。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
 **支持设备**：PC/2in1
 
 **起始版本**：20
+
+## ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK
+
+允许应用使能超时息屏不锁屏功能。
+
+设备超时息屏后默认锁屏，获取该权限后，应用超时息屏后，不进入锁屏界面。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.LOCK_WINDOW_CURSOR
+
+允许应用在窗口获焦时锁定鼠标光标。
+
+获取该权限后，应用可以在窗口获焦时锁定鼠标光标，控制鼠标光标不超过指定窗口区域，同时可控制光标是否跟随移动，失焦之后自动取消绑定。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：22
+
+## ohos.permission.CUSTOMIZE_MENU_ICON
+
+允许应用在“文件管理”的右键菜单中配置自定义图标。
+
+获取该权限后，应用可在右键菜单中配置自定义图标，帮助用户识别并拉起本应用。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：22
+
+## ohos.permission.kernel.EXEMPT_ANONYMOUS_EXECUTABLE_MEMORY
+
+允许声明匿名可执行内存。
+
+仅用于二进制程序声明匿名可执行内存。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：23
+
+## ohos.permission.INHERIT_PARENT_PERMISSION
+
+允许子进程继承父进程的权限。
+
+仅用于二进制程序继承父进程的权限。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：23
+
+## ohos.permission.GET_DONOTDISTURB_STATE
+
+允许应用获取系统的免打扰状态。
+
+获取该权限后，应用可通过接口查询系统是否处于免打扰状态。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：23

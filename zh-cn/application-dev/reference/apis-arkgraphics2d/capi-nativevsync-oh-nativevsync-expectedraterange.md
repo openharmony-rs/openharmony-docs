@@ -1,4 +1,14 @@
 # OH_NativeVSync_ExpectedRateRange
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @hudi33-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct {...} OH_NativeVSync_ExpectedRateRange
+```
 
 ## 概述
 
@@ -31,7 +41,7 @@
 
 ### OH_NativeVSync_FrameCallback()
 
-```
+```c
 typedef void (*OH_NativeVSync_FrameCallback)(long long timestamp, void *data)
 ```
 

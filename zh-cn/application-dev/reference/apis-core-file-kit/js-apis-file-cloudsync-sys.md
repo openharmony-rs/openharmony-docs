@@ -1,4 +1,10 @@
 # @ohos.file.cloudSync (端云同步能力)(系统接口)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @zsyztt; @Hermits; @reminder2352-->
+<!--Designer: @yunlanying-->
+<!--Tester: @liuhonggang123-->
+<!--Adviser: @foryourself-->
 
 该模块向应用提供端云同步能力，包括启动/停止端云同步以及启动/停止原图下载功能。
 
@@ -29,15 +35,15 @@ constructor()
 
 **示例：**
 
-  ```ts
-  let gallerySync = new cloudSync.GallerySync()
-  ```
+```ts
+let gallerySync = new cloudSync.GallerySync()
+```
 
 ### on
 
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-添加同步过程事件监听。
+云图同步对象添加同步过程事件监听。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -54,7 +60,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -65,19 +71,19 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 **示例：**
 
-  ```ts
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-    console.info("syncState：" + pg.state);
-  });
-  ```
+gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
+  console.info("syncState：" + pg.state);
+});
+```
 
 ### off
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
-移除同步过程事件监听。
+云图同步对象移除'progress'类型中指定的callback回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -94,7 +100,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -105,23 +111,23 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
 **示例：**
 
-  ```ts
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+let gallerySync = new cloudSync.GallerySync();
 
-  let callback = (pg: cloudSync.SyncProgress) => {
-    console.info("gallery sync state：" + pg.state + "error type:" + pg.error);
-  }
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("gallery sync state：" + pg.state + "error type:" + pg.error);
+}
 
-  gallerySync.on('progress', callback);
+gallerySync.on('progress', callback);
 
-  gallerySync.off('progress', callback);
-  ```
+gallerySync.off('progress', callback);
+```
 
 ### off
 
 off(evt: 'progress'): void
 
-移除同步过程事件监听。
+云图同步对象移除'progress'类型的所有回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -137,7 +143,7 @@ off(evt: 'progress'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -148,21 +154,21 @@ off(evt: 'progress'): void
 
 **示例：**
 
-  ```ts
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-      console.info("syncState：" + pg.state);
-  });
+gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
+    console.info("syncState：" + pg.state);
+});
 
-  gallerySync.off('progress');
-  ```
+gallerySync.off('progress');
+```
 
 ### start
 
 start(): Promise&lt;void&gt;
 
-异步方法启动端云同步，以Promise形式返回结果。
+异步方法启动端云同步。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -178,7 +184,7 @@ start(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -191,26 +197,27 @@ start(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
-	  console.info("syncState：" + pg.state);
-  });
+let gallerySync = new cloudSync.GallerySync();
 
-  gallerySync.start().then(() => {
-	  console.info("start sync successfully");
-  }).catch((err: BusinessError) => {
-	  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
+  console.info("syncState：" + pg.state);
+});
+
+gallerySync.start().then(() => {
+  console.info("start sync successfully");
+}).catch((err: BusinessError) => {
+  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### start
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动端云同步，以callback形式返回结果。
+异步方法启动端云同步。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -226,7 +233,7 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -239,24 +246,25 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  gallerySync.start((err: BusinessError) => {
-    if (err) {
-      console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("start sync successfully");
-    }
-  });
-  ```
+let gallerySync = new cloudSync.GallerySync();
+
+gallerySync.start((err: BusinessError) => {
+  if (err) {
+    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start sync successfully");
+  }
+});
+```
 
 ### stop
 
 stop(): Promise&lt;void&gt;
 
-异步方法停止端云同步，以Promise形式返回结果。
+异步方法停止端云同步。使用Promise异步回调。
 
 > **说明：**
 >
@@ -276,7 +284,7 @@ stop(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -286,22 +294,23 @@ stop(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  gallerySync.stop().then(() => {
-	  console.info("stop sync successfully");
-  }).catch((err: BusinessError) => {
-	  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let gallerySync = new cloudSync.GallerySync();
+
+gallerySync.stop().then(() => {
+  console.info("stop sync successfully");
+}).catch((err: BusinessError) => {
+  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### stop
 
 stop(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止端云同步，以callback形式返回结果。
+异步方法停止端云同步。使用callback异步回调。
 
 > **说明：**
 >
@@ -321,7 +330,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -331,18 +340,19 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let gallerySync = new cloudSync.GallerySync();
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  gallerySync.stop((err: BusinessError) => {
-    if (err) {
-      console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("stop sync successfully");
-    }
-  });
-  ```
+let gallerySync = new cloudSync.GallerySync();
+
+gallerySync.stop((err: BusinessError) => {
+  if (err) {
+    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop sync successfully");
+  }
+});
+```
 
 ## Download
 
@@ -360,9 +370,9 @@ constructor()
 
 **示例：**
 
-  ```ts
-  let download = new cloudSync.Download()
-  ```
+```ts
+let download = new cloudSync.Download()
+```
 
 ### on
 
@@ -385,7 +395,7 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -396,19 +406,19 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 **示例：**
 
-  ```ts
-  let download = new cloudSync.Download();
+```ts
+let download = new cloudSync.Download();
 
-  download.on('progress', (pg: cloudSync.DownloadProgress) => {
-    console.info("download state：" + pg.state);
-  });
-  ```
+download.on('progress', (pg: cloudSync.DownloadProgress) => {
+  console.info("download state：" + pg.state);
+});
+```
 
 ### off
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
-移除云文件下载过程事件监听。
+云图下载对象移除'progress'类型中指定的callback回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -425,7 +435,7 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -436,23 +446,23 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
 **示例：**
 
-  ```ts
-  let download = new cloudSync.Download();
+```ts
+let download = new cloudSync.Download();
 
-  let callback = (pg: cloudSync.DownloadProgress) => {
-    console.info("download state：" + pg.state);
-  }
+let callback = (pg: cloudSync.DownloadProgress) => {
+  console.info("download state：" + pg.state);
+}
 
-  download.on('progress', callback);
+download.on('progress', callback);
 
-  download.off('progress', callback);
-  ```
+download.off('progress', callback);
+```
 
 ### off
 
 off(evt: 'progress'): void
 
-移除云文件下载过程事件监听。
+云图下载对象移除'progress'类型的所有回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -468,7 +478,7 @@ off(evt: 'progress'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -479,21 +489,21 @@ off(evt: 'progress'): void
 
 **示例：**
 
-  ```ts
-  let download = new cloudSync.Download();
+```ts
+let download = new cloudSync.Download();
 
-  download.on('progress', (pg: cloudSync.DownloadProgress) => {
-      console.info("download state:" + pg.state);
-  });
+download.on('progress', (pg: cloudSync.DownloadProgress) => {
+    console.info("download state:" + pg.state);
+});
 
-  download.off('progress');
-  ```
+download.off('progress');
+```
 
 ### start
 
 start(uri: string): Promise&lt;void&gt;
 
-异步方法启动云文件下载，以Promise形式返回结果。
+异步方法启动云文件下载。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -515,25 +525,26 @@ start(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let download = new cloudSync.Download();
-  let uri: string = "file:///media/Photo/1";
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  download.on('progress', (pg: cloudSync.DownloadProgress) => {
-	  console.info("download state:" + pg.state);
-  });
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
 
-  download.start(uri).then(() => {
-	  console.info("start download successfully");
-  }).catch((err: BusinessError) => {
-	  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+download.on('progress', (pg: cloudSync.DownloadProgress) => {
+  console.info("download state:" + pg.state);
+});
+
+download.start(uri).then(() => {
+  console.info("start download successfully");
+}).catch((err: BusinessError) => {
+  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -547,7 +558,7 @@ start(uri: string): Promise&lt;void&gt;
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动云文件下载，以callback形式返回结果。
+异步方法启动云文件下载。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -564,7 +575,7 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -576,25 +587,26 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let download = new cloudSync.Download();
-  let uri: string = "file:///media/Photo/1";
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  download.start(uri, (err: BusinessError) => {
-    if (err) {
-      console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("start download successfully");
-    }
-  });
-  ```
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
+
+download.start(uri, (err: BusinessError) => {
+  if (err) {
+    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start download successfully");
+  }
+});
+```
 
 ### stop
 
 stop(uri: string): Promise&lt;void&gt;
 
-异步方法停止云文件下载，以Promise形式返回结果。
+异步方法停止云文件下载。使用Promise异步回调。
 
 > **说明：**
 >
@@ -620,7 +632,7 @@ stop(uri: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -630,23 +642,24 @@ stop(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let download = new cloudSync.Download();
-  let uri: string = "file:///media/Photo/1";
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  download.stop(uri).then(() => {
-	  console.info("stop download successfully");
-  }).catch((err: BusinessError) => {
-	  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
+
+download.stop(uri).then(() => {
+  console.info("stop download successfully");
+}).catch((err: BusinessError) => {
+  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### stop
 
 stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止云文件下载，以callback形式返回结果。
+异步方法停止云文件下载。使用callback异步回调。
 
 > **说明：**
 >
@@ -667,7 +680,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -677,19 +690,20 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let download = new cloudSync.Download();
-  let uri: string = "file:///media/Photo/1";
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  download.stop(uri, (err: BusinessError) => {
-    if (err) {
-      console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("stop download successfully");
-    }
-  });
-  ```
+let download = new cloudSync.Download();
+let uri: string = "file:///media/Photo/1";
+
+download.stop(uri, (err: BusinessError) => {
+  if (err) {
+    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop download successfully");
+  }
+});
+```
 
 ## FileSync<sup>12+</sup>
 
@@ -713,7 +727,7 @@ constructor(bundleName: string)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -722,9 +736,9 @@ constructor(bundleName: string)
 
 **示例：**
 
-  ```ts
-  let fileSync = new cloudSync.FileSync("com.ohos.demo")
-  ```
+```ts
+let fileSync = new cloudSync.FileSync("com.ohos.demo")
+```
 
 ## CloudFileCache<sup>11+</sup>
 
@@ -752,7 +766,7 @@ cleanCache(uri: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -765,27 +779,28 @@ cleanCache(uri: string): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  try {
-    fileCache.cleanCache(uri);
-  } catch (err) {
-    let error:BusinessError = err as BusinessError;
-    console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
-  } 
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  ```
+try {
+  fileCache.cleanCache(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error("clean cache failed with error message: " + err.message + ", error code: " + err.code);
+} 
+
+```
 
 ## cloudSync.getFileSyncState<sup>11+</sup>
 
 getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt;&gt;
 
-异步方法获取文件同步状态，以promise形式返回结果。
+异步方法获取文件同步状态。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -807,7 +822,7 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -820,25 +835,25 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let uris: Array<string> = ["file://uri"];
-  cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState>) => {
-    for(let i = 0, len = syncStates.length; i < len; i++){
-        console.info("get file sync state successfully" + syncStates[i]);
-    }
-  }).catch((err: BusinessError) => {
-	  console.error("get file sync state failed with error message: " + err.message + ", error code: " + err.code);
-  });
+let uris: Array<string> = ["file://uri"];
+cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState>) => {
+  for(let i = 0, len = syncStates.length; i < len; i++){
+    console.info("get file sync state successfully" + syncStates[i]);
+  }
+}).catch((err: BusinessError) => {
+  console.error("get file sync state failed with error message: " + err.message + ", error code: " + err.code);
+});
 
-  ```
+```
 
 ## cloudSync.getFileSyncState<sup>11+</sup>
 
 getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt;): void
 
-异步方法获取文件同步状态，以callback形式返回结果。
+异步方法获取文件同步状态。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -855,7 +870,7 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -868,20 +883,20 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let uris: Array<string> = ["file://uri"];
-  cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSync.FileSyncState>) => {
-    if (err) {
-      console.error("get file sync state with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      for(let i = 0, len = syncStates.length; i < len; i++){
-        console.info("get file sync state successfully" + syncStates[i]);
-    }
-    }
-  });
-  ```
+let uris: Array<string> = ["file://uri"];
+cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSync.FileSyncState>) => {
+  if (err) {
+    console.error("get file sync state with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    for(let i = 0, len = syncStates.length; i < len; i++){
+      console.info("get file sync state successfully" + syncStates[i]);
+  }
+  }
+});
+```
 
 ## cloudSync.getFileSyncState<sup>12+</sup>
 
@@ -907,7 +922,7 @@ getFileSyncState(uri: string): FileSyncState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -923,18 +938,19 @@ getFileSyncState(uri: string): FileSyncState
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  try {
-    let state = cloudSync.getFileSyncState(uri);
-  } catch (err) {
-    let error:BusinessError = err as BusinessError;
-    console.error("getFileSyncStatefailed with error:" + JSON.stringify(error));
-  }
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
+
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+try {
+  let state = cloudSync.getFileSyncState(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error("getFileSyncStatefailed with error:" + JSON.stringify(error));
+}
+```
 
 ## FileSyncState<sup>11+</sup>
 
@@ -985,15 +1001,15 @@ optimizeStorage(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  cloudSync.optimizeStorage().then(() => {
-	  console.info("optimize storage successfully");   // 前台UX按需阻塞等待
-  }).catch((err: BusinessError) => {
-	  console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+cloudSync.optimizeStorage().then(() => {
+  console.info("optimize storage successfully");   // 前台UX按需阻塞等待
+}).catch((err: BusinessError) => {
+  console.error("optimize storage failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSync.startOptimizeSpace<sup>17+</sup>
 
@@ -1037,24 +1053,25 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
-  let callback = (data:cloudSync.OptimizeSpaceProgress) => {
-    if (data.state == cloudSync.OptimizeState.FAILED) {
-      console.info("optimize space failed");
-    } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
-      console.info("optimize space successfully");
-    } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-      console.info("optimize space progress:" + data.progress);
-    }
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
+let callback = (data:cloudSync.OptimizeSpaceProgress) => {
+  if (data.state == cloudSync.OptimizeState.FAILED) {
+    console.info("optimize space failed");
+  } else if (data.state == cloudSync.OptimizeState.COMPLETED && data.progress == 100) {
+    console.info("optimize space successfully");
+  } else if (data.state == cloudSync.OptimizeState.RUNNING) {
+    console.info("optimize space progress:" + data.progress);
   }
-  cloudSync.startOptimizeSpace(para, callback).then(() => {
-	  console.info("start optimize space");
-  }).catch((err: BusinessError) => {
-	  console.error("start optimize space failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+}
+cloudSync.startOptimizeSpace(para, callback).then(() => {
+  console.info("start optimize space");
+}).catch((err: BusinessError) => {
+  console.error("start optimize space failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSync.stopOptimizeSpace<sup>17+</sup>
 
@@ -1081,19 +1098,20 @@ stopOptimizeSpace(): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
-  let callback = (data:cloudSync.OptimizeSpaceProgress) => {
-    if (data.state == cloudSync.OptimizeState.FAILED) {
-      console.info("optimize space failed");
-    } else if (data.state == cloudSync.OptimizeState.RUNNING) {
-      console.info("optimize space progress:" + data.progress);
-    }
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
+let callback = (data:cloudSync.OptimizeSpaceProgress) => {
+  if (data.state == cloudSync.OptimizeState.FAILED) {
+    console.info("optimize space failed");
+  } else if (data.state == cloudSync.OptimizeState.RUNNING) {
+    console.info("optimize space progress:" + data.progress);
   }
-  cloudSync.startOptimizeSpace(para, callback);
-  cloudSync.stopOptimizeSpace();   // 停止空间优化
-  ```
+}
+cloudSync.startOptimizeSpace(para, callback);
+cloudSync.stopOptimizeSpace();   // 停止空间优化
+```
 
 ## OptimizeState<sup>17+</sup>
 
@@ -1118,10 +1136,10 @@ stopOptimizeSpace(): void
 
 **系统接口**：此接口为系统接口。
 
-| 名称     | 类型   | 必填 | 说明 |
-| ---------- | ------ | ---- | ---- |
-| state | [OptimizeState](#optimizestate17) | 是   | 枚举值，优化空间状态。|
-| progress | number | 是   | 优化进度百分比，范围[0,100]。|
+| 名称     | 类型   | 只读 | 可选 | 说明 |
+| ---------- | ------ | ---- | ---- | ---- |
+| state | [OptimizeState](#optimizestate17) | 否   | 否   | 枚举值，优化空间状态。|
+| progress | number | 否   | 否   | 优化进度百分比，范围[0,100]。|
 
 ## OptimizeSpaceParam<sup>17+</sup>
 
@@ -1131,7 +1149,7 @@ stopOptimizeSpace(): void
 
 **系统接口**：此接口为系统接口。
 
-| 名称     | 类型   | 必填 | 说明 |
-| ---------- | ------ | ---- | ---- |
-| totalSize | number | 是   | 优化空间总大小。查询媒体库接口获得需要老化的所有文件总大小，由应用传入，单位byte。|
-| agingDays | number | 是   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频。|
+| 名称     | 类型   | 只读 | 可选 | 说明 |
+| ---------- | ------ | ---- | ---- | ---- |
+| totalSize | number | 否   | 否   | 优化空间总大小。查询媒体库接口获得需要老化的所有文件总大小，由应用传入，单位byte。|
+| agingDays | number | 否   | 否   | 老化天数。系统会以当前时间为基准，优化老化天数前未访问、已同步云空间的本地图片/视频。|

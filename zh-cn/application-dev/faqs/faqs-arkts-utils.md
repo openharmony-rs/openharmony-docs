@@ -1,4 +1,10 @@
 # ArkTS语言基础类库开发常见问题
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @weng-changcheng-->
+<!--Tester: @kir175; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 
 ## TaskPool、Worker和各个ArkTS引擎实例之间是否内存隔离
@@ -13,7 +19,7 @@ TaskPool的生命周期无需开发者手动去管理。有一定时间没有执
 
 ## TaskPool对于任务时间有没有限制
 
-任务时常上限3分钟（不包含Promise和async/await异步调用的耗时）。
+任务时长上限3分钟（不包含Promise和async/await异步调用的耗时）。
 
 
 ## 对于预加载任务量大的场景推荐使用Worker还是TaskPool
@@ -85,20 +91,20 @@ function printArgs(args: number): number {
 let allCount = 100; // 100: test number
 let taskArray: Array<taskpool.Task> = [];
 // 创建300个任务并添加至taskArray
-for (let i: number = 1; i < allCount; i++) {
+for (let i: number = 0; i < allCount; i++) {
   let task1: taskpool.Task = new taskpool.Task(printArgs, i);
   taskArray.push(task1);
-  let task2: taskpool.Task = new taskpool.Task(printArgs, i * 10); // 10: test number
+  let task2: taskpool.Task = new taskpool.Task(printArgs, i + 100); // 100: test number
   taskArray.push(task2);
-  let task3: taskpool.Task = new taskpool.Task(printArgs, i * 100); // 100: test number
+  let task3: taskpool.Task = new taskpool.Task(printArgs, i + 200); // 200: test number
   taskArray.push(task3);
 }
 
 // 从taskArray中获取不同的任务并给定不同优先级执行
-for (let i: number = 0; i < allCount; i+=3) { // 3: 每次执行3个任务，循环取任务时需后移3项，确保执行的是不同的任务
+for (let i: number = 0; i < allCount; i++) { // 每次执行3个任务
   taskpool.execute(taskArray[i], taskpool.Priority.HIGH);
-  taskpool.execute(taskArray[i + 1], taskpool.Priority.LOW);
-  taskpool.execute(taskArray[i + 2], taskpool.Priority.MEDIUM);
+  taskpool.execute(taskArray[i + 100], taskpool.Priority.LOW);
+  taskpool.execute(taskArray[i + 200], taskpool.Priority.MEDIUM);
 }
 ```
 
@@ -113,7 +119,7 @@ for (let i: number = 0; i < allCount; i+=3) { // 3: 每次执行3个任务，循
 可以利用TaskPool接口转换，大概可以分为如下五个场景。
 
 场景一：主线程将独立的耗时任务放到子线程执行  
-代码示例：  
+伪代码示例：  
 共享内存写法
 
 ```ts
@@ -146,7 +152,7 @@ taskpool.execute(task).then((ret: string) => {
 ```
 
 场景二：主线程将创建的类对象实例在子线程使用  
-代码示例：  
+伪代码示例：  
 共享内存写法  
 
 ```ts
@@ -179,13 +185,13 @@ class Material {
 }
 
 let material = new Material()
-taskpool.execute(runner, material).then((ret: string) => {
+taskpool.execute(runner, material).then(() => {
   // Return result
 })
 ```
 
 场景三：主线程将独立的耗时任务放到子线程执行  
-代码示例：
+伪代码示例：
 
 ```ts
 class Task {
@@ -222,13 +228,13 @@ class Task {
 }
 
 let task = new Task();
-taskpool.execute(runner, task).then((ret: string) => {
-  task.result = ret;
+taskpool.execute(runner, task).then((ret) => {
+  task.result = ret as string;
 })
 ```
 
 场景四：子线程主动更新主线程状态  
-代码示例：
+伪代码示例：
 
 ```ts
 class Task {
@@ -275,7 +281,7 @@ taskpool.execute(run).then((ret) => {
 ```
 
 场景五：子线程同步调用主线程的接口  
-代码示例：
+伪代码示例：
 
 ```ts
 class SdkU3d {
@@ -308,11 +314,11 @@ class SdkU3d {
   }
 }
 
-const workerInstance = new
-worker.ThreadWorker("xx/worker.ts");
+const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
 let sdk = SdkU3d.getInst()
 workerInstance.registerGlobalCallObject("instance_xx", sdk);
 workerInstance.postMessage("start");
+// 工作线程
 const mainPort = worker.workerPort;
 mainPort.onmessage = (e: MessageEvents): void => {
   let ret = mainPort.callGlobalCallObjectMethod("instance_xx", "getPropStr", "xx");
@@ -361,7 +367,7 @@ TaskPool与Worker不影响。两者独立，Worker是固定数量，当前是8�
 
 **原理澄清**
 
-TaskPool与Worker采用事件事件循环接收线程间通信的消息。
+TaskPool与Worker采用事件循环接收线程间通信的消息。
 Worker不支持消息的优先级。
 TaskPool中的任务支持优先级设置，会影响消息的处理优先级。
 
@@ -400,7 +406,7 @@ i32a[0] = 0;
 let producer = new worker.ThreadWorker("entry/ets/workers/worker_producer.ts");
 producer.postMessage(sab);
 
-function consumection(e: MessageEvents) {
+function consumer(e: MessageEvents) {
   let sab: SharedArrayBuffer = e.data;
   let i32a = new Int32Array(sab);
   console.info("Customer: received sab");
@@ -538,7 +544,7 @@ ArkTS层接口的异步如果不涉及I/O操作，则异步任务会在主线程
 ##  在ArkTS的主线程中使用await会堵塞主线程吗？（API 10）
 
 比如如下代码在主线程中执行：  
-`const response = await reqeust.buildCall().execute<string>();`  
+`const response = await request.buildCall().execute<string>();`  
 这种写法会导致主线程堵塞吗？
 
 **解决方案**
@@ -638,7 +644,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 **参考资料**
 
-1. [基于方舟字节码文件的安全扫描接口](https://gitee.com/openharmony/arkcompiler_runtime_core/blob/master/libark_defect_scan_aux/README.md)
+1. [基于方舟字节码文件的安全扫描接口](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/libark_defect_scan_aux/README.md)
 
 ## 目前系统的多线程内存占用大，每个线程需要一个ArkTS引擎，意味着更多的内存占用。如何解决应用需要避免开辟过多线程，并发处理任务数量受限，无法充分发挥设备性能的问题？
 
@@ -646,7 +652,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 当前ArkTS创建线程(worker)会创建一个新的ArkTS引擎实例，会占用额外的内存。
 
-同时，ArkTS提供了TaskPool并发API，类似GCD的线程池能力，可以执行任务，而且不需要开发者进行线程生命周期管理。Task会被调度到有限数量的工作线程执行，多个task会共享这些工作线程（ArkTS引擎实例），系统会根据负载情况扩容/缩容工作线程的数量，充分发挥硬性性能。
+同时，ArkTS提供了TaskPool并发API，类似GCD的线程池能力，可以执行任务，而且不需要开发者进行线程生命周期管理。Task会被调度到有限数量的工作线程执行，多个task会共享这些工作线程（ArkTS引擎实例），系统会根据负载情况扩容/缩容工作线程的数量，充分发挥硬件性能。
 
 **解决方案**
 

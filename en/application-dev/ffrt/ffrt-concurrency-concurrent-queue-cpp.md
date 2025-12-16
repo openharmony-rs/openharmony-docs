@@ -1,5 +1,12 @@
 # Function Flow Runtime Concurrent Queue (C++)
 
+<!--Kit: Function Flow Runtime Kit-->
+<!--Subsystem: Resourceschedule-->
+<!--Owner: @chuchihtung; @yanleo-->
+<!--Designer: @geoffrey_guo; @huangyouzhong-->
+<!--Tester: @lotsof; @sunxuhao-->
+<!--Adviser: @foryourself-->
+
 ## Overview
 
 The FFRT concurrent queue provides the capability of setting the priority and queue concurrency. Tasks in the queue can be executed on multiple threads at the same time, achieving better effects.
@@ -21,7 +28,7 @@ The implementation code is as follows:
 ```cpp
 #include <iostream>
 #include <unistd.h>
-#include "ffrt/ffrt.h"
+#include "ffrt/ffrt.h" // From the OpenHarmony third-party library "@ppd/ffrt"
 
 class BankQueueSystem {
 private:
@@ -98,9 +105,9 @@ The main FFRT APIs involved in the preceding example are as follows:
 
 | Name                                                                                                                         | Description        |
 | ----------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| class [task_attr](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#task_attr)   | Task attribute class.|
-| class [queue_attr](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue_attr) | Queue attribute class.|
-| class [queue](https://gitee.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue)           | Queue class.    |
+| class [task_attr](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#task_attr)   | Task attribute class.|
+| class [queue_attr](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue_attr) | Queue attribute class.|
+| class [queue](https://gitcode.com/openharmony/resourceschedule_ffrt/blob/master/docs/ffrt-api-guideline-cpp.md#queue)           | Queue class.    |
 
 > **NOTE**
 >
@@ -109,4 +116,4 @@ The main FFRT APIs involved in the preceding example are as follows:
 
 ## Constraints
 
-1. It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large, it is meaningless to exceed the number of Worker threads. If the value is too small, the system resource utilization may be low.
+It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large, it is meaningless to exceed the number of Worker threads. If the value is too small, the system resource utilization may be low.

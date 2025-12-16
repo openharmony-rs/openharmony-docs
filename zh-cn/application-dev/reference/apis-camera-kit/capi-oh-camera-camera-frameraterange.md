@@ -1,4 +1,14 @@
 # Camera_FrameRateRange
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Camera_FrameRateRange {...} Camera_FrameRateRange
+```
 
 ## 概述
 
@@ -16,7 +26,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t min | 最小帧速率。 |
-| uint32_t max | 最大帧速率。 |
+| uint32_t min | 最小帧速率，单位帧每秒。 |
+| uint32_t max | 最大帧速率，单位帧每秒。 |
 
 

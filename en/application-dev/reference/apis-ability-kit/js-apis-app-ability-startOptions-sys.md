@@ -1,6 +1,12 @@
 # @ohos.app.ability.StartOptions (StartOptions) (System API)
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025; @yangxuguang-huawei; @Luobniz21-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-**StartOptions** is used as an input parameter of [startAbility()](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextstartability-1) to specify the window mode of an ability.
+StartOptions can be used as an input parameter for APIs used to launch a UIAbility (for example, [startAbility()](js-apis-inner-application-uiAbilityContext.md#startability-1)). It specifies the options for starting the target UIAbility, including but not limited to the window mode and the display where the target UIAbility is started.
 
 > **NOTE**
 >
@@ -16,7 +22,7 @@
 import { StartOptions } from '@kit.AbilityKit';
 ```
 
-## Properties
+## StartOptions
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -24,7 +30,7 @@ import { StartOptions } from '@kit.AbilityKit';
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| windowFocused<sup>12+</sup> | boolean | No| Yes| Whether the window has focus. The default value is **true**, indicating that the window has focus.<br>**Constraints**:<br>1. This property takes effect only on 2-in-1 devices and tablets.<br>2. This property takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#uiabilitycontextstartability-1).|
+| windowFocused<sup>12+</sup> | boolean | No| Yes| Whether the window has focus. The default value is **true**, indicating that the window has focus.<br>**Constraints**:<br>1. This property takes effect only on 2-in-1 devices and tablets.<br>2. This property takes effect only in [UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1).|
 
 **Example**
 

@@ -1,6 +1,12 @@
 # ArcSlider
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **ArcSlider** component is designed for circular screens to quickly adjust settings, such as the volume and brightness.
+The **ArcSlider** component is designed for circular screens on wearables to quickly adjust settings, such as the volume and brightness.
 
 >  **NOTE**
 >
@@ -20,7 +26,7 @@ import {
   ArcSliderLayoutOptionsConstructorOptions,
   ArcSliderStyleOptionsConstructorOptions,
   ArcSliderOptionsConstructorOptions
-} from '@kit.ArkUI'
+} from '@kit.ArkUI';
 ```
 
 ## Child Components
@@ -63,15 +69,17 @@ Defines the properties of the arc slider.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name| Type| Mandatory| Decorator| Description|
+### Properties
+
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| valueOptions | [ArcSliderValueOptions](#arcslidervalueoptions) | No| @Trace | Value of the arc slider.<br>Default value: default values of all properties of [ArcSliderValueOptions](#arcslidervalueoptions)|
-| layoutOptions | [ArcSliderLayoutOptions](#arcsliderlayoutoptions) | No| @Trace | Layout of the arc slider.<br>Default value: default values of all properties of [ArcSliderLayoutOptions](#arcsliderlayoutoptions)|
-| styleOptions | [ArcSliderStyleOptions](#arcsliderstyleoptions) | No| @Trace | Style of the arc slider.<br>Default value: default values of all properties of [ArcSliderStyleOptions](#arcsliderstyleoptions)|
-| digitalCrownSensitivity | [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) | No| @Trace | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
-| onTouch | [ArcSliderTouchHandler](#arcslidertouchhandler) | No| @Trace | Callback invoked to notify the application when the arc slider is touched.<br>If no value is provided, no callback is performed.|
-| onChange | [ArcSliderChangeHandler](#arcsliderchangehandler) | No| @Trace | Callback invoked to notify the application when the progress value of the arc slider changes.<br>If no value is provided, no callback is performed.|
-| onEnlarge | [ArcSliderEnlargeHandler](#arcsliderenlargehandler) | No| @Trace | Callback invoked to notify the application when the arc slider is zoomed in or out.<br>If no value is provided, no callback is performed.|
+| valueOptions | [ArcSliderValueOptions](#arcslidervalueoptions) | No| Yes| Value of the arc slider.<br>Default value: default values of all properties of [ArcSliderValueOptions](#arcslidervalueoptions)<br>**Decorator**: @Trace|
+| layoutOptions | [ArcSliderLayoutOptions](#arcsliderlayoutoptions) | No| Yes| Layout of the arc slider.<br>Default value: default values of all properties of [ArcSliderLayoutOptions](#arcsliderlayoutoptions)<br>**Decorator**: @Trace|
+| styleOptions | [ArcSliderStyleOptions](#arcsliderstyleoptions) | No| Yes| Style of the arc slider.<br>Default value: default values of all properties of [ArcSliderStyleOptions](#arcsliderstyleoptions)<br>**Decorator**: @Trace|
+| digitalCrownSensitivity | [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) | No| Yes| Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**<br>**Decorator**: @Trace|
+| onTouch | [ArcSliderTouchHandler](#arcslidertouchhandler) | No| Yes| Callback invoked to notify the application when the arc slider is touched.<br>Default value: If this parameter is not provided, no callback will be invoked.<br>**Decorator**: @Trace|
+| onChange | [ArcSliderChangeHandler](#arcsliderchangehandler) | No| Yes| Callback invoked to notify the application when the progress value of the arc slider changes.<br>Default value: If this parameter is not provided, no callback will be invoked.<br>**Decorator**: @Trace|
+| onEnlarge | [ArcSliderEnlargeHandler](#arcsliderenlargehandler) | No| Yes| Callback invoked to notify the application when the arc slider is enlarged or reduced.<br>Default value: If this parameter is not provided, no callback will be invoked.<br>**Decorator**: @Trace|
 
 ### constructor
 
@@ -87,7 +95,7 @@ A constructor used to create an **ArcSliderOptions** instance.
 
 | Name | Type                                                        | Mandatory| Description                        |
 | ------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| options | [ArcSliderOptionsConstructorOptions](#arcslideroptionsconstructoroptions) | No  | Construction information for **ArcSliderOptions**.|
+| options | [ArcSliderOptionsConstructorOptions](#arcslideroptionsconstructoroptions) | No  | Constructor information for **ArcSliderOptions**.|
 
 ## ArcSliderValueOptions
 
@@ -99,11 +107,13 @@ Defines the value of the arc slider.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name | Type  | Mandatory| Decorator| Description                                                        |
+### Properties
+
+| Name | Type  | Read-Only| Optional| Description                                                        |
 | ----- | ------ | ---- | ---------- | ------------------------------------------------------------ |
-| progress | number | No  | @Trace     | Current progress.<br>Default value: same as the value of **min**           |
-| min   | number | No  | @Trace     | Minimum value.<br>Default value: **0**                                 |
-| max   | number | No  | @Trace     | Maximum value.<br>Default value: **100**<br>**NOTE**<br>If the value of **min** is greater than or equal to that of **max**, **min** is set to **0** and **max** **100**.<br>If the value is not within the [min, max] range, the value of **min** or **max** is used, whichever is closer.|
+| progress | number | No  | Yes    | Current progress.<br>Default value: same as the value of **min**.<br>**Decorator**: @Trace|
+| min   | number | No  | Yes    | Minimum value.<br>Default value: **0**.<br>**Decorator**: @Trace           |
+| max   | number | No  | Yes    | Maximum value.<br>Default value: **100**<br>**NOTE**<br>If the value of **min** is greater than or equal to that of **max**, **min** is set to **0** and **max** **100**.<br>If the value is not within the [min, max] range, the value of **min** or **max** is used, whichever is closer.<br>**Decorator**: @Trace|
 
 ### constructor
 
@@ -119,7 +129,7 @@ A constructor used to create an **ArcSliderValueOptions** instance.
 
 | Name | Type                                                        | Mandatory| Description                             |
 | ------- | ------------------------------------------------------------ | ---- | --------------------------------- |
-| options | [ArcSliderValueOptionsConstructorOptions](#arcslidervalueoptionsconstructoroptions) | No  | Construction information for **ArcSliderValueOptions**.|
+| options | [ArcSliderValueOptionsConstructorOptions](#arcslidervalueoptionsconstructoroptions) | No  | Constructor information for **ArcSliderValueOptions**.|
 
 ## ArcSliderLayoutOptions
 
@@ -131,10 +141,12 @@ Defines the layout of the arc slider.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name    | Type                                   | Mandatory| Decorator| Description                                                        |
-| -------- | --------------------------------------- | ---- | ---------- | ------------------------------------------------------------ |
-| reverse  | boolean                                 | No  | @Trace     | Whether the value range of the arc slider is reversed.<br>Default value: **true** (swipe from bottom to top)|
-| position | [ArcSliderPosition](#arcsliderposition) | No  | @Trace     | Position of the arc slider on the screen.<br>Default value: **ArcSliderPosition.RIGHT**|
+### Properties
+
+| Name    | Type                                   | Read-Only| Optional| Description                                                        |
+| -------- | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| reverse  | boolean                                 | No  | Yes  | Whether the value range of the arc slider is reversed. **false**: top-to-bottom sliding.<br>**true** (default): bottom-to-top sliding.<br>**Decorator**: @Trace|
+| position | [ArcSliderPosition](#arcsliderposition) | No  | Yes  | Position of the arc slider on the screen.<br>Default value: **ArcSliderPosition.RIGHT**<br>**Decorator**: @Trace|
 
 ### constructor
 
@@ -162,13 +174,15 @@ Defines the style of the arc slider.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name                | Type  | Mandatory| Decorator| Description                                                        |
-| -------------------- | ------ | ---- | ---------- | ------------------------------------------------------------ |
-| trackThickness       | number | No  | @Trace     | Stroke width of the arc slider in the normal state, in vp.<br>Default value: **5**<br>The value ranges from 5 to 16. If an invalid value is set, the default value is used.|
-| activeTrackThickness | number | No  | @Trace     | Stroke width of the arc slider when it is zoomed in, in vp.<br>Default value: **24**<br>The value ranges from 24 to 36. If an invalid value is set, the default value is used.|
-| trackColor           | string | No  | @Trace     | Background color of the stroke.<br>Default value: **#33FFFFFF**                     |
-| selectedColor        | string | No  | @Trace     | Highlight color of the stroke.<br>Default value: **#FF5EA1FF**                     |
-| trackBlur            | number | No  | @Trace     | Blur effect applied to the stroke background, in vp.<br>Default value: **20**<br>If a value less than 0 is set, the default value is used.|
+### Properties
+
+| Name                | Type  | Read-Only| Optional| Description                                                        |
+| -------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| trackThickness       | number | No  | Yes  | Stroke width of the arc slider in the normal state, in vp.<br>Default value: **5**<br>Value range: [5, 16]. If the value is invalid, the default value is used.<br>**Decorator**: @Trace|
+| activeTrackThickness | number | No  | Yes  | Stroke width of the arc slider when it is in an enlarged state, in vp.<br>Default value: **24**<br>Value range: [24, 36]. If the value is invalid, the default value is used.<br>**Decorator**: @Trace|
+| trackColor           | string | No  | Yes  | Background color of the stroke.<br>Default value: **#33FFFFFF**<br>**Decorator**: @Trace|
+| selectedColor        | string | No  | Yes  | Highlight color of the stroke.<br>Default value: **#FF5EA1FF**<br>**Decorator**: @Trace|
+| trackBlur            | number | No  | Yes  | Blur effect applied to the stroke background, in vp.<br>Default value: **20**<br>If a value less than 0 is set, the default is used.<br>**Decorator**: @Trace|
 
 ### constructor
 
@@ -184,7 +198,7 @@ A constructor used to create an **ArcSliderStyleOptions** instance.
 
 | Name | Type                                                        | Mandatory| Description                             |
 | ------- | ------------------------------------------------------------ | ---- | --------------------------------- |
-| options | [ArcSliderStyleOptionsConstructorOptions](#arcsliderstyleoptionsconstructoroptions) | No  | Construction information for **ArcSliderStyleOptions**.|
+| options | [ArcSliderStyleOptionsConstructorOptions](#arcsliderstyleoptionsconstructoroptions) | No  | Constructor information for **ArcSliderStyleOptions**.|
 
 ## ArcSliderPosition
 
@@ -235,7 +249,7 @@ Defines the callback invoked to notify the application when the progress value o
 
 type ArcSliderEnlargeHandler = (isEnlarged: boolean) => void
 
-Defines the callback invoked to notify the application when the arc slider is zoomed in or out.
+Defines the callback invoked to notify the application when the arc slider is enlarged or reduced.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -245,70 +259,72 @@ Defines the callback invoked to notify the application when the arc slider is zo
 
 | Name    | Type   | Mandatory| Description                                                        |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| isEnlarged | boolean | Yes  | Whether the arc slider is zoomed in.<br>**false**: The arc slider is zoomed out.<br>**true**: The arc slider is zoomed in.|
+| isEnlarged | boolean | Yes  | Whether the arc slider is enlarged.<br>**false**: The arc slider is in a reduced state.<br>**true**: The arc slider is in an enlarged state.|
 
 ## ArcSliderOptionsConstructorOptions
 
-Defines the construction information for **ArcSliderOptions**.
+Defines the constructor information for **ArcSliderOptions**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name                   | Type                                                       | Mandatory| Description                                                        |
-| ----------------------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| valueOptions            | [ArcSliderValueOptions](#arcslidervalueoptions)             | No  | Value of the arc slider.<br>Default value: default values of all properties of [ArcSliderValueOptions](#arcslidervalueoptions)|
-| layoutOptions           | [ArcSliderLayoutOptions](#arcsliderlayoutoptions)           | No  | Layout of the arc slider.<br>Default value: default values of all properties of [ArcSliderLayoutOptions](#arcsliderlayoutoptions)|
-| styleOptions            | [ArcSliderStyleOptions](#arcsliderstyleoptions)             | No  | Style of the arc slider.<br>Default value: default values of all properties of [ArcSliderStyleOptions](#arcsliderstyleoptions)|
-| digitalCrownSensitivity | [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) | No  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**  |
-| onTouch                 | [ArcSliderTouchHandler](#arcslidertouchhandler)             | No  | Callback invoked to notify the application when the arc slider is touched.<br>If no value is provided, no callback is performed.|
-| onChange                | [ArcSliderChangeHandler](#arcsliderchangehandler)           | No  | Callback invoked to notify the application when the progress value of the arc slider changes.<br>If no value is provided, no callback is performed.|
-| onEnlarge               | [ArcSliderEnlargeHandler](#arcsliderenlargehandler)         | No  | Callback invoked to notify the application when the arc slider is zoomed in or out.<br>If no value is provided, no callback is performed.|
+| Name                   | Type                                                       | Read-Only| Optional| Description                                                        |
+| ----------------------- | ----------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| valueOptions            | [ArcSliderValueOptions](#arcslidervalueoptions)             | No  | Yes  | Value of the arc slider.<br>Default value: default values of all properties of [ArcSliderValueOptions](#arcslidervalueoptions)|
+| layoutOptions           | [ArcSliderLayoutOptions](#arcsliderlayoutoptions)           | No  | Yes  | Layout of the arc slider.<br>Default value: default values of all properties of [ArcSliderLayoutOptions](#arcsliderlayoutoptions)|
+| styleOptions            | [ArcSliderStyleOptions](#arcsliderstyleoptions)             | No  | Yes  | Style of the arc slider.<br>Default value: default values of all properties of [ArcSliderStyleOptions](#arcsliderstyleoptions)|
+| digitalCrownSensitivity | [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) | No  | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**  |
+| onTouch                 | [ArcSliderTouchHandler](#arcslidertouchhandler)             | No  | Yes  | Callback invoked to notify the application when the arc slider is touched.<br>Default value: If this parameter is not provided, no callback will be invoked.|
+| onChange                | [ArcSliderChangeHandler](#arcsliderchangehandler)           | No  | Yes  | Callback invoked to notify the application when the progress value of the arc slider changes.<br>Default value: If this parameter is not provided, no callback will be invoked.|
+| onEnlarge               | [ArcSliderEnlargeHandler](#arcsliderenlargehandler)         | No  | Yes  | Callback invoked to notify the application when the arc slider is enlarged or reduced.<br>Default value: If this parameter is not provided, no callback will be invoked.|
 
 ## ArcSliderValueOptionsConstructorOptions
 
-Defines the construction information for **ArcSliderValueOptions**.
+Defines the constructor information for **ArcSliderValueOptions**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name | Type  | Mandatory| Description                                                        |
-| ----- | ------ | ---- | ------------------------------------------------------------ |
-| progress | number | No  | Current progress.<br>Default value: same as the value of **min**          |
-| min   | number | No  | Minimum value.<br>Default value: **0**                                 |
-| max   | number | No  | Maximum value.<br>Default value: **100**<br>**NOTE**<br>If the value of **min** is greater than or equal to that of **max**, **min** is set to **0** and **max** **100**.<br>If the value is not within the [min, max] range, the value of **min** or **max** is used, whichever is closer.|
+| Name | Type  | Read-Only| Optional| Description                                                        |
+| ----- | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| progress | number | No  | Yes | Current progress.<br>Default value: same as the value of **min**.          |
+| min   | number | No  | Yes | Minimum value.<br>Default value: **0**.                                 |
+| max   | number | No  | Yes | Maximum value.<br>Default value: **100**<br>**NOTE**<br>If the value of **min** is greater than or equal to that of **max**, **min** is set to **0** and **max** **100**.<br>If the value is not within the [min, max] range, the value of **min** or **max** is used, whichever is closer.|
 
 ## ArcSliderLayoutOptionsConstructorOptions
 
-Defines the construction information for **ArcSliderStyleOptions**.
+Defines the construction information for **ArcSliderLayoutValueOptions**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name    | Type                                   | Mandatory| Description                                                        |
-| -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| reverse  | boolean                                 | No  | Whether the value range of the arc slider is reversed.<br>Default value: **true** (swipe from bottom to top)|
-| position | [ArcSliderPosition](#arcsliderposition) | No  | Position of the arc slider on the screen.<br>Default value: **ArcSliderPosition.RIGHT**|
+| Name    | Type                                   | Read-Only| Optional| Description                                                        |
+| -------- | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| reverse  | boolean                                 | No  | Yes  | Whether the value range of the arc slider is reversed.<br>Default value: **true** (swipe from bottom to top)|
+| position | [ArcSliderPosition](#arcsliderposition) | No  | Yes  | Position of the arc slider on the screen.<br>Default value: **ArcSliderPosition.RIGHT**|
 
 ## ArcSliderStyleOptionsConstructorOptions
 
-Defines the construction information for **ArcSliderStyleOptions**.
+Defines the constructor information for **ArcSliderStyleOptions**.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name                | Type  | Mandatory| Description                                                        |
-| -------------------- | ------ | ---- | ------------------------------------------------------------ |
-| trackThickness       | number | No  | Stroke width of the arc slider in the normal state, in vp.<br>Default value: **5**<br>The value ranges from 5 to 16. If an invalid value is set, the default value is used.|
-| activeTrackThickness | number | No  | Stroke width of the arc slider when it is zoomed in, in vp.<br>Default value: **24**<br>The value ranges from 24 to 36. If an invalid value is set, the default value is used.|
-| trackColor           | string | No  | Background color of the stroke.<br>Default value: **#33FFFFFF**                     |
-| selectedColor        | string | No  | Highlight color of the stroke.<br>Default value: **#FF5EA1FF**                     |
-| trackBlur            | number | No  | Blur effect applied to the stroke background, in vp.<br>Default value: **20**<br>If a value less than 0 is set, the default value is used.|
+| Name                | Type  | Read-Only| Optional| Description                                                        |
+| -------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| trackThickness       | number | No  | Yes  | Stroke width of the arc slider in the normal state, in vp.<br>Default value: **5**<br>Value range: [5, 16]. If the value is invalid, the default value is used.|
+| activeTrackThickness | number | No  | Yes  | Stroke width of the arc slider when it is in an enlarged state, in vp.<br>Default value: **24**<br>Value range: [24, 36]. If the value is invalid, the default value is used.|
+| trackColor           | string | No  | Yes  | Background color of the stroke.<br>Default value: **#33FFFFFF**                     |
+| selectedColor        | string | No  | Yes  | Highlight color of the stroke.<br>Default value: **#FF5EA1FF**                     |
+| trackBlur            | number | No  | Yes  | Blur effect applied to the stroke background, in vp.<br>Default value: **20**<br>If a value less than 0 is set, the default is used.|
 
 ## Example
+
+This example demonstrates the basic usage of the **ArcSlider** component, supported since API version 18.
 
 ```ts
 // xxx.ets
@@ -323,7 +339,7 @@ import {
   ArcSliderLayoutOptionsConstructorOptions,
   ArcSliderStyleOptionsConstructorOptions,
   ArcSliderOptionsConstructorOptions
-} from '@kit.ArkUI'
+} from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -332,22 +348,22 @@ struct ArcSliderExample {
     progress: 60,
     min: 10,
     max: 110
-  }
+  };
 
   layoutOptionsConstructorOptions: ArcSliderLayoutOptionsConstructorOptions = {
     reverse: true,
     position: ArcSliderPosition.RIGHT
-  }
+  };
   styleOptionsConstructorOptions: ArcSliderStyleOptionsConstructorOptions = {
     trackThickness: 8,
     activeTrackThickness: 30,
     trackColor: '#ffd5d5d5',
     selectedColor: '#ff2787d9',
     trackBlur: 20
-  }
-  valueOptions: ArcSliderValueOptions = new ArcSliderValueOptions(this.valueOptionsConstructorOptions)
-  layoutOptions: ArcSliderLayoutOptions = new ArcSliderLayoutOptions(this.layoutOptionsConstructorOptions)
-  styleOptions: ArcSliderStyleOptions = new ArcSliderStyleOptions(this.styleOptionsConstructorOptions)
+  };
+  valueOptions: ArcSliderValueOptions = new ArcSliderValueOptions(this.valueOptionsConstructorOptions);
+  layoutOptions: ArcSliderLayoutOptions = new ArcSliderLayoutOptions(this.layoutOptionsConstructorOptions);
+  styleOptions: ArcSliderStyleOptions = new ArcSliderStyleOptions(this.styleOptionsConstructorOptions);
   arcSliderOptionsConstructorOptions: ArcSliderOptionsConstructorOptions = {
     valueOptions: this.valueOptions,
     layoutOptions: this.layoutOptions,
@@ -359,8 +375,8 @@ struct ArcSliderExample {
     },
     onEnlarge: (isEnlarged: boolean) => {
     }
-  }
-  arcSliderOptions: ArcSliderOptions = new ArcSliderOptions(this.arcSliderOptionsConstructorOptions)
+  };
+  arcSliderOptions: ArcSliderOptions = new ArcSliderOptions(this.arcSliderOptionsConstructorOptions);
 
   build() {
     Column() {

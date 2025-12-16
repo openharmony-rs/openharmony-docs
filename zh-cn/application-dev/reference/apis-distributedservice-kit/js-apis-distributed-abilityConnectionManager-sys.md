@@ -1,4 +1,10 @@
 # @ohos.distributedsched.abilityConnectionManager (应用多端协同管理)(系统接口)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输，包括字符串、[ArrayBuffer](../../arkts-utils/arraybuffer-object.md)字节流、图片、传输流。
 
@@ -18,7 +24,7 @@ import { abilityConnectionManager } from '@kit.DistributedServiceKit';
 
 on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;CollaborateEventInfo&gt;):&nbsp;void
 
-注册collaborateEvent事件的回调监听。
+注册collaborateEvent事件的回调监听,使用callback异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -30,7 +36,7 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | 是    |   表示事件回调类型，支持的事件类型为'collaborateEvent'，完成`collaborateEvent()`调用，触发该事件。   |
 | sessionId | number  | 是    | 表示创建的协同会话ID。    |
-| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 是    | 表示注册的回调函数。    |
+| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | 是    | 表示注册的回调函数，callback返回协同事件的信息。    |
 
 **错误码：**
 
@@ -38,8 +44,8 @@ on(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nb
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -122,7 +128,6 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.off("collaborateEvent", sessionId);
@@ -159,7 +164,6 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.off("receiveImage", sessionId);
@@ -169,7 +173,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?:&nbsp;number):&nbsp;Promise&lt;void&gt;
 
-应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片。
+应用连接成功并创建传输流后，设备A或设备B可向对端设备发送图片，使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -195,9 +199,8 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -241,7 +244,7 @@ sendImage(sessionId:&nbsp;number,&nbsp;image:&nbsp;image.PixelMap,&nbsp;quality?
 
 createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise&lt;number&gt;
 
-应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流。
+应用连接成功后，设备A或设备B可创建传输流，发送图片和视频流，使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -588,10 +591,10 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 枚举值 | 描述 |
-| -------- | -------- |
-| SEND_FAILURE   | 表示发送任务失败。 |
-| COLOR_SPACE_CONVERSION_FAILURE | 表示色彩空间转换失败。 |
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| SEND_FAILURE | 0 |表示任务发送失败。|
+| COLOR_SPACE_CONVERSION_FAILURE | 1 |表示色彩空间转换失败。|
 
 ## FlipOptions
 
@@ -599,10 +602,10 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 枚举值 | 描述 |
-| -------- | -------- |
-| HORIZONTAL   | 表示水平翻转。 |
-| VERTICAL | 表示垂直翻转。 |
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| HORIZONTAL | 0 | 表示水平翻转。 |
+| VERTICAL | 1 | 表示垂直翻转。 |
 
 ## StreamRole
 
@@ -610,10 +613,10 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 枚举值 | 描述 |
-| -------- | -------- |
-| SOURCE  | 表示流是发送流。 |
-| SINK  | 表示流是接收流。 |
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| SOURCE  | 0 | 表示流是发送流。 |
+| SINK  | 1 | 表示流是接收流。 |
 
 ## VideoPixelFormat
 
@@ -621,11 +624,11 @@ Surface配置参数。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
-| 枚举值 | 描述 |
-| -------- | -------- |
-| UNKNOWN   | 表示未知的像素格式。 |
-| NV12  | 表示NV12，YUV420半平面格式。 |
-| NV21  | 表示NV21，YUV420半平面格式。 |
+| 名称|  值 | 说明 |
+|-------|-------|-------|
+| UNKNOWN   | -1 | 表示未知的像素格式。 |
+| NV12  | 0 | 表示NV12，YUV420半平面格式。 |
+| NV21  | 1 | 表示NV21，YUV420半平面格式。 |
 
 ## ConnectOptions
 
@@ -635,8 +638,8 @@ Surface配置参数。
 
 | 名称          | 类型    | 只读   | 可选   | 说明          |
 | ----------- | ------- | ---- | ---- | ----------- |
-| needSendStream    | boolean  | 否    | 否    | true表示需要发送流，false表示不需要发送流。    |
-| needReceiveStream    | boolean  | 否    | 否    | true表示需要接收流，false表示不需要接收流。     |
+| needSendStream    | boolean  | 否    | 是    | true表示需要发送流，false表示不需要发送流。    |
+| needReceiveStream    | boolean  | 否    | 是    | true表示需要接收流，false表示不需要接收流。     |
 
 ## EventCallbackInfo
 

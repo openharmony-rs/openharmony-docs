@@ -1,11 +1,21 @@
 # Interface (AuxiliaryPicture)
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+AuxiliaryPicture类，用于读取或写入图像的辅助图数据以及获取图像的辅助图信息。目前支持的辅助图类型可参考[AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)。
+
+在调用AuxiliaryPicture的方法前，需要通过[image.createAuxiliaryPicture](arkts-apis-image-f.md#imagecreateauxiliarypicture13)或Picture的[getAuxiliaryPicture](./arkts-apis-image-Picture.md#getauxiliarypicture13)创建一个AuxiliaryPicture实例。
+
+由于图片占用内存较大，所以当AuxiliaryPicture对象使用完成后，应主动调用[release](#release13)方法及时释放对象。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 13开始支持。
-
-辅助图一般用于辅助主图进行特殊信息的展示，使图像包含更丰富的信息。辅助图图像类，用于读取或写入图像的辅助图数据以及获取图像的辅助图信息。在调用AuxiliaryPicture的方法前，需要先通过[createAuxiliaryPicture](arkts-apis-image-f.md#imagecreateauxiliarypicture13)创建一个AuxiliaryPicture实例。
 
 ## 导入模块
 
@@ -17,7 +27,7 @@ import { image } from '@kit.ImageKit';
 
 writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 
-读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象，使用Promise形式返回。
+读取ArrayBuffer中的辅助图片数据，并将数据写入AuxiliaryPicture对象。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -44,11 +54,9 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 **示例:**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
 async function WritePixelsFromBuffer(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); //需要支持hdr的图片。
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // 需要支持hdr的图片。
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -70,7 +78,7 @@ async function WritePixelsFromBuffer(context: Context) {
 
 readPixelsToBuffer(): Promise\<ArrayBuffer>
 
-读取图像像素映射数据并将数据写入ArrayBuffer，使用Promise形式返回。
+读取图像像素映射数据并将数据写入ArrayBuffer。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -84,11 +92,10 @@ readPixelsToBuffer(): Promise\<ArrayBuffer>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
 async function ReadPixelsToBuffer(context: Context) {
   const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); //需要支持hdr的图片。
+  const rawFile = await resourceMgr.getRawFileContent("hdr.jpg"); // 需要支持hdr的图片。
   let ops: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -100,7 +107,7 @@ async function ReadPixelsToBuffer(context: Context) {
     await auxPictureObj.readPixelsToBuffer().then((pixelsBuffer: ArrayBuffer) => {
       console.info('Read pixels to buffer success.' );
     }).catch((error: BusinessError) => {
-      console.error('Read pixels to buffer failed error.code: ' + JSON.stringify(error.code) + ' ,error.message:' + JSON.stringify(error.message));
+      console.error(`Read pixels to buffer failed error.code: ${error.code}, error.message: ${error.message}`);
     });
   } else {
     console.error('AuxPictureObj is null.');
@@ -125,9 +132,7 @@ getType(): AuxiliaryPictureType
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
-async function GetAuxiliaryPictureType() {
+async function GetAuxiliaryPictureType(auxPictureObj : image.AuxiliaryPicture) {
   if (auxPictureObj != null) {
     let type: image.AuxiliaryPictureType = auxPictureObj.getType();
     console.info('Success get auxiliary picture type ' +  JSON.stringify(type));
@@ -141,7 +146,7 @@ async function GetAuxiliaryPictureType() {
 
 setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
-设置辅助图元数据。
+设置辅助图元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -171,11 +176,10 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { image } from '@kit.ImageKit';
 
-async function SetAuxPictureObjMetadata(exifContext: Context) {
+async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: image.AuxiliaryPicture) {
   const exifResourceMgr = exifContext.resourceManager;
-  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg");//图片包含exif metadata。
+  const exifRawFile = await exifResourceMgr.getRawFileContent("exif.jpg");// 图片包含exif metadata。
   let exifOps: image.SourceOptions = {
     sourceDensity: 98,
   }
@@ -194,7 +198,7 @@ async function SetAuxPictureObjMetadata(exifContext: Context) {
     auxPictureObj.setMetadata(metadataType, exifMetaData).then(() => {
       console.info('Set metadata success');
     }).catch((error: BusinessError) => {
-      console.error('Set metadata failed.error.code: ${error.code}, error.message: ${error.message}');
+      console.error(`Set metadata failed.error.code: ${error.code}, error.message: ${error.message}`);
     });
   } else {
     console.error('AuxPictureObjMetaData is null');
@@ -206,7 +210,7 @@ async function SetAuxPictureObjMetadata(exifContext: Context) {
 
 getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
-从辅助图中获取元数据。
+从辅助图中获取元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -220,7 +224,7 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 
 | 类型                             | 说明             |
 | -------------------------------- | ---------------- |
-| Promise<[Metadata](arkts-apis-image-Metadata.md)> | 返回元数据对象。 |
+| Promise<[Metadata](arkts-apis-image-Metadata.md)> | Promise对象，返回元数据的Promise对象。 |
 
 **错误码：**
 
@@ -234,19 +238,17 @@ getMetadata(metadataType: MetadataType): Promise\<Metadata>
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
-async function GetAuxPictureObjMetadata() {
+async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
   if (auxPictureObj != null) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let auxPictureObjMetaData: image.Metadata | null = await auxPictureObj.getMetadata(metadataType);
     if (auxPictureObjMetaData != null) {
-      console.info('Get auxpictureobj Metadata success' );
+      console.info('Get AuxPictureObj Metadata success' );
     } else {
-      console.error('Get auxpictureobj Metadata failed');
+      console.error('Get AuxPictureObj Metadata failed');
     }
   } else {
-    console.error('Get auxpictureobj is null.');
+    console.error('Get AuxPictureObj is null.');
   }
 }
 ```
@@ -263,14 +265,12 @@ getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
 | 类型                                            | 说明                              |
 | ----------------------------------------------- | --------------------------------- |
-| [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | Promise对象，返回辅助图图像信息。 |
+| [AuxiliaryPictureInfo](arkts-apis-image-i.md#auxiliarypictureinfo13) | 返回辅助图图像信息。 |
 
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
-async function GetAuxiliaryPictureInfo() {
+async function GetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
   if(auxPictureObj != null) {
     let auxinfo: image.AuxiliaryPictureInfo = auxPictureObj.getAuxiliaryPictureInfo();
     console.info('GetAuxiliaryPictureInfo Type: ' + auxinfo.auxiliaryPictureType +
@@ -309,9 +309,8 @@ setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
 ```ts
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
-import { image } from '@kit.ImageKit';
 
-async function SetAuxiliaryPictureInfo() {
+async function SetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
   if(auxPictureObj != null) {
     let colorSpaceName = colorSpaceManager.ColorSpace.SRGB;
     let info: image.AuxiliaryPictureInfo = {
@@ -332,14 +331,16 @@ release():void
 
 释放辅助图对象，无返回值。
 
+由于图片占用内存较大，所以当AuxiliaryPicture对象使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
-async function Release() {
+async function Release(auxPictureObj: image.AuxiliaryPicture) {
   let funcName = "Release";
   if (auxPictureObj != null) {
     auxPictureObj.release();

@@ -1,5 +1,12 @@
 # 拉起邮件类应用（startAbilityByType）
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: AGC-->
+<!--Owner: @liusu23-->
+<!--Designer: @xukeke-->
+<!--Tester: @lusq-->
+<!--Adviser: @huipeizi-->
+
 本章节介绍如何拉起邮件类应用扩展面板。
 > **说明：**
 > 
@@ -59,10 +66,10 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
                             };
                             let abilityStartCallback: common.AbilityStartCallback = {
                                 onError: (code: number, name: string, message: string) => {
-                                    console.log(`onError code ${code} name: ${name} message: ${message}`);
+                                    console.error(`onError code ${code} name: ${name} message: ${message}`);
                                 },
                                 onResult: (result) => {
-                                    console.log(`onResult result: ${JSON.stringify(result)}`);
+                                    console.info(`onResult result: ${JSON.stringify(result)}`);
                                 }
                             }
 
@@ -71,7 +78,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
                                     if (err) {
                                         console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
                                     } else {
-                                        console.log(`success`);
+                                        console.info(`success`);
                                     }
                                 });
                         });
@@ -90,9 +97,9 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
 
 1. 在module.json5中新增[linkFeature](../quick-start/module-configuration-file.md#skills标签)属性并设置声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
 
-    | 取值           | 含义                      |
+    | 取值           | 含义                        |
     | --------------| ------------------------- |
-    | ComposeMail   | 声明应用支持撰写邮件功能		|
+    | ComposeMail   | 声明应用支持撰写邮件功能     |
 
     ```json
     {
@@ -102,7 +109,7 @@ startAbilityByType接口中type字段为mail，对应的wantParam参数：
               {
               "uris": [
                   {
-                  "scheme": "mailto", // 这里仅示意，应用需确保这里声明的的uri能被外部正常拉起
+                  "scheme": "mailto", // 这里仅示意，应用需确保这里声明的uri能被外部正常拉起
                   "host": "",
                   "path": "",
                   "linkFeature": "ComposeMail" // 声明应用支持撰写邮件功能

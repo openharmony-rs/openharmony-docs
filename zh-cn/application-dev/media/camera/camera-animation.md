@@ -1,6 +1,12 @@
 # 相机基础动效(ArkTS)
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
-在使用相机过程中，如相机模式切换，前后置镜头切换等场景，不可避免出现预览流替换，为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[显示动画能力](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md)实现下方三种核心场景动效：
+在使用相机过程中，当遇到相机模式切换、前后置镜头切换等场景时，会不可避免地出现预览流替换。为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[animateToImmediately](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately22)接口触发显式动画功能，实现下方三种核心场景动效。
 
 - 模式切换动效，使用预览流截图做模糊动效过渡。
   
@@ -24,7 +30,7 @@
 
 使用组件覆盖的形式实现闪黑效果。
 
-以下所有步骤中的示例代码均为自定义组件（即被@Component修饰的组件）的内部方法或逻辑。
+以下步骤中的示例代码均为自定义组件（即被@Component修饰的组件）的内部方法或逻辑。
 
 1. 导入依赖，需要导入相机框架、图片、ArkUI相关领域依赖。
 
@@ -61,12 +67,12 @@
 3. 实现闪黑动效。
 
    ```ts
-   // @Component修饰组件的内部方法
+   // @Component修饰组件的内部方法。
    flashBlackAnim() {
      console.info('flashBlackAnim E');
      this.flashBlackOpacity = 1; // 闪黑组件不透明。
      this.isShowBlack = true; // 显示闪黑组件。
-     animateToImmediately({
+     this.getUIContext().animateToImmediately({
        curve: curves.interpolatingSpring(1, 1, 410, 38),
        delay: 50, // 延时50ms，实现黑屏。
        onFinish: () => {
@@ -97,7 +103,7 @@
 
 通过预览流截图，实现模糊动效，从而完成模式切换，或是前后置切换的动效。
 
-以下除了步骤2的其他步骤中的示例代码均为自定义组件（即被@Component修饰的组件）的内部方法或逻辑。
+以下除了步骤2，其他步骤中的示例代码均为自定义组件（即被@Component修饰的组件）的内部方法或逻辑。
 
 1. 导入依赖，需要导入相机框架、图片、ArkUI相关领域依赖。
 
@@ -116,7 +122,7 @@
      public static surfaceShot: image.PixelMap;
    
      /**
-      * 获取surface截图
+      * 获取surface截图。
       * @param surfaceId
       * @returns
       */
@@ -143,12 +149,17 @@
      }
    
      /**
-      * 获取doSurfaceShot得到的截图
+      * 获取doSurfaceShot得到的截图。
       * @returns
       */
-     public static getSurfaceShot(): image.PixelMap {
-       return BlurAnimateUtil.surfaceShot;
+    public static getSurfaceShot(): image.PixelMap | undefined {
+       if (BlurAnimateUtil.surfaceShot === null || BlurAnimateUtil.surfaceShot === undefined) {
+          console.error("SurfaceShot is null!");
+          return undefined;
+        }
+        return BlurAnimateUtil.surfaceShot;
      }
+  
    }
    ```
 
@@ -160,6 +171,7 @@
 
    ```ts
    @State isShowBlur: boolean = false; // 是否显示截图组件。
+   @State isShowBlack: boolean = false; // 闪黑组件，无需使用可以删除。
    @StorageLink('modeChange') @Watch('onModeChange') modeChangeFlag: number = 0; // 模式切换动效触发入口。
    @StorageLink('switchCamera') @Watch('onSwitchCamera') switchCameraFlag: number = 0;// 前后置切换动效触发入口。
    @StorageLink('frameStart') @Watch('onFrameStart') frameStartFlag: number = 0; // 动效消失入口。
@@ -169,7 +181,7 @@
    @State shotImgBlur: number = 0; // 截图组件模糊度。
    @State shotImgOpacity: number = 1; // 截图组件透明度。
    @State shotImgScale: ScaleOptions = { x: 1, y: 1 }; // 截图组件比例。
-   @State shotImgRotation: RotateOptions = { y: 0.5, angle: 0 } // 截图组件旋转角度。
+   @State shotImgRotation: RotateOptions = { y: 0.5, angle: 0 }; // 截图组件旋转角度。
    ```
 
    截图组件的实现参考：
@@ -205,6 +217,10 @@
      console.info('showBlurAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // 后置。
      if (this.curPosition === 0) {
        console.info('showBlurAnim BACK');
@@ -224,7 +240,7 @@
      this.shotImgBlur = 0; // 无模糊。
      this.shotImgOpacity = 1; // 不透明。
      this.isShowBlur = true;  // 显示截图组件。
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Friction,
@@ -247,7 +263,7 @@
    hideBlurAnim(): void {
      this.isShowBlack = false;
      console.info('hideBlurAnim E');
-     animateToImmediately({
+     this.getUIContext().animateToImmediately({
        duration: 200,
        curve: Curve.FastOutSlowIn,
        onFinish: () => {
@@ -273,12 +289,16 @@
 
    ```ts
    /**
-    * 先向外翻转90°，前后置切换触发
+    * 先向外翻转90°，前后置切换触发。
     */
    async rotateFirstAnim() {
      console.info('rotateFirstAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // 后置切前置。
      if (this.curPosition === 1) {
        console.info('rotateFirstAnim BACK');
@@ -296,7 +316,7 @@
      this.screenshotPixelMap = shotPixel;
      this.isShowBlack = true; // 显示闪黑组件，覆盖预览流保证视觉效果。
      this.isShowBlur = true; // 显示截图组件。
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          delay: 50, // 时延保证组件缩放模糊动效先行，再翻转,视觉效果更好。
@@ -319,12 +339,16 @@
    }
    
    /**
-    * 再向内翻转90°
+    * 再向内翻转90°。
     */
    async rotateSecondAnim() {
      console.info('rotateSecondAnim E');
      // 获取已完成的surface截图。
      let shotPixel = BlurAnimateUtil.getSurfaceShot();
+     if (shotPixel === undefined) {
+       console.error(`pixelMap is undefined`);
+       return;
+     }
      // 后置。
      if (this.curPosition === 1) {
        // 直板机后置镜头内容旋转补偿90°。
@@ -338,7 +362,7 @@
        this.shotImgRotation = { y: 0.5, angle: 180 };
      }
      this.screenshotPixelMap = shotPixel;
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: curves.cubicBezierCurve(0.17, 0.00, 0.20, 1.00),
@@ -358,7 +382,7 @@
    }
    
    /**
-    * 向外翻转90°同时
+    * 向外翻转90°同时。
     */
    blurFirstAnim() {
      console.info('blurFirstAnim E');
@@ -366,7 +390,7 @@
      this.shotImgBlur = 0; //无模糊。
      this.shotImgOpacity = 1; //不透明。
      this.shotImgScale = { x: 1, y: 1 };
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Sharp,
@@ -385,11 +409,11 @@
    }
    
    /**
-    * 向内翻转90°同时
+    * 向内翻转90°同时。
     */
    blurSecondAnim() {
      console.info('blurSecondAnim E');
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Sharp,

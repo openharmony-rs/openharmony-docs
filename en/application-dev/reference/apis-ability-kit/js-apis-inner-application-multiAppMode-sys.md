@@ -1,6 +1,13 @@
 # MultiAppMode (System API)
 
-The MultiAppMode module defines whether an application supports the multi-app mode.
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wendel-->
+<!--Designer: @wendel-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
+The module defines whether an application supports the multi-app mode.
 
 > **NOTE**
 > 
@@ -10,14 +17,18 @@ The MultiAppMode module defines whether an application supports the multi-app mo
 >
 > The APIs provided by this module are system APIs.
 
-## Properties
+## How to Use
+
+The **MultiAppMode** property is obtained from [getRunningMultiAppInfo](js-apis-app-ability-appManager-sys.md#appmanagergetrunningmultiappinfo12) of **appManager**.
+
+## MultiAppMode
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Value| Description| 
-| -------- | -------- |
-| NOT_SUPPORTED | The application does not support the multi-app mode.|
-| MULTI_INSTANCE<sup>14+</sup>  | The application supports the multi-instance mode.<br>**NOTE**: This property is valid only for 2-in-1 devices. |
-| APP_CLONE | The application supports the app-clone mode.|
+| Name| Value|Description| 
+| -------- |----|-------- |
+| NOT_SUPPORTED | 0 | The application does not support the multi-app mode.|
+| MULTI_INSTANCE<sup>14+</sup>  | 1 | The application supports the multi-instance mode.<br>Note: This property is valid only for 2-in-1 devices. |
+| APP_CLONE | 2 | The application supports the app-clone mode.|

@@ -1,5 +1,12 @@
 # Querying an Asset with User Authentication (ArkTS)
 
+<!--Kit: Asset Store Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @JeremyXu-->
+<!--Designer: @skye_you-->
+<!--Tester: @nacyli-->
+<!--Adviser: @zengyawen-->
+
 ## Available APIs
 
 The following table describes the APIs used for querying an asset with user authentication. For more information, see the API reference.
@@ -14,7 +21,7 @@ The following table describes the attributes of **AssetMap** used for querying a
 
 >**NOTE**
 >
->In the following table, the attributes starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put personal data in these attributes.
+>In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 - **preQuery()** parameters
 
@@ -22,11 +29,11 @@ The following table describes the attributes of **AssetMap** used for querying a
   | --------------------- | ---------------------------| -------- | -------------------------- |
   | ALIAS                 | Type: Uint8Array<br>Length: 1-256 bytes                           | No    | Asset alias, which uniquely identifies an asset.         |
   | ACCESSIBILITY         | Type: number<br>Value range: see [Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)| No    | Access control based on the lock screen status.                                    |
-  | REQUIRE_PASSWORD_SET  | Type: boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set.    |
+  | REQUIRE_PASSWORD_SET  | Type: Boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means the asset is accessible only when a lock screen password is set. The value **false** means that the asset can be accessed regardless of whether a lock screen password is set.    |
   | AUTH_TYPE             | Type: number<br>Value range: see [AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)| No    | Type of user authentication required for accessing the asset.                 |
-  | AUTH_VALIDITY_PERIOD  | Type: number<br>Value range: 1-600 seconds       | No    | Validity period of the user authentication.            |
+  | AUTH_VALIDITY_PERIOD  | Type: number<br>Value range: 1-600 seconds       | No    | The validity period of user authentication. The default value is **60**.         |
   | SYNC_TYPE             | Type: number<br>Value range: see [SyncType](../../reference/apis-asset-store-kit/js-apis-asset.md#synctype)| No    | Type of sync supported by the asset.                          |
-  | IS_PERSISTENT         | Type: boolean                                                  | No    | Whether to retain the asset when the application is uninstalled.                |
+  | IS_PERSISTENT         | Type: Boolean                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset even after the application is uninstalled. The value **false** means the opposite.              |
   | DATA_LABEL_CRITICAL_1 | Type: Uint8Array<br>Length: 1-2048 bytes                      | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
   | DATA_LABEL_CRITICAL_2 | Type: Uint8Array<br>Length: 1-2048 bytes                     | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
   | DATA_LABEL_CRITICAL_3 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
@@ -39,7 +46,7 @@ The following table describes the attributes of **AssetMap** used for querying a
   | DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
   | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
   | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-  | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: boolean| No| Whether to query the customized asset attribute information that is encrypted. By default, the unencrypted, customized asset attribute information is queried.|
+  | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| No| Whether to query the encrypted data of service customized supplementary information. The value **true** means to query the encrypted data of service customized supplementary information; the value **false** means to query the non-encrypted data of service customized supplementary information. The default value is **false**.|
   | GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| No| Group to which the asset to be queried belongs. By default, this parameter is not specified.|
 
 - **query()** parameters
@@ -48,13 +55,13 @@ The following table describes the attributes of **AssetMap** used for querying a
   | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
   | ALIAS                 | Type: Uint8Array<br>Length: 1-256 bytes                           | Yes    | Asset alias, which uniquely identifies an asset.      |
   | AUTH_CHALLENGE        | Type: Uint8Array<br>Length: 32 bytes                              | Yes    | Challenge for the user authentication.                             |
-  | AUTH_TOKEN            | Type: Uint8Array<br>Length: 148 bytes                             | Yes    | Authorization token obtained after the user authentication is successful.                        |
+  | AUTH_TOKEN            | Type: Uint8Array<br>Length: 1-1024 bytes since API version 20<br>Length: 148 bytes for API versions 11-19      | Yes    | Authorization token obtained after the user authentication is successful.                        |
   | RETURN_TYPE           | Type: number                          | Yes    | Type of the asset query result to return.                   |
   | ACCESSIBILITY         | Type: number<br>Value range: see [Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)| No    | Access control based on the lock screen status.                                    |
-  | REQUIRE_PASSWORD_SET  | Type: boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set.    |
+  | REQUIRE_PASSWORD_SET  | Type: Boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means the asset is accessible only when a lock screen password is set. The value **false** means that the asset can be accessed regardless of whether a lock screen password is set.    |
   | AUTH_TYPE             | Type: number<br>Value range: see [AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)| No    | Type of user authentication required for accessing the asset.                 |
   | SYNC_TYPE             | Type: number<br>Value range: see [SyncType](../../reference/apis-asset-store-kit/js-apis-asset.md#synctype)| No    | Type of sync supported by the asset.                          |
-  | IS_PERSISTENT         | Type: boolean                                                  | No    | Whether to retain the asset when the application is uninstalled.                |
+  | IS_PERSISTENT         | Type: Boolean                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset even after the application is uninstalled. The value **false** means the opposite.    |
   | DATA_LABEL_CRITICAL_1 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
   | DATA_LABEL_CRITICAL_2 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
   | DATA_LABEL_CRITICAL_3 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
@@ -67,7 +74,7 @@ The following table describes the attributes of **AssetMap** used for querying a
   | DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
   | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
   | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-  | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: boolean| No| Whether to query the customized asset attribute information that is encrypted. By default, the unencrypted, customized asset attribute information is queried.|
+  | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| No| Whether to query the encrypted data of service customized supplementary information. The value **true** means to query the encrypted data of service customized supplementary information; the value **false** means to query the non-encrypted data of service customized supplementary information. The default value is **false**.|
   | GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| No| Group to which the asset to be queried belongs. By default, this parameter is not specified.|
 
 - **postQuery()** parameters
@@ -83,12 +90,14 @@ The following table describes the attributes of **AssetMap** used for querying a
 >
 > The **asset** module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 
-Query asset **demo_alias** with user authentication.
+Query asset **demo_alias** with user authentication. For details about **@ohos.userIAM.userAuth** used in the example, see [@ohos.userIAM.userAuth (User Authentication)](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10).
 
-```typescript
+<!-- @[query_user_auth_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->
+
+``` TypeScript
 import { asset } from '@kit.AssetStoreKit';
 import { util } from '@kit.ArkTS';
-import userAuth from '@ohos.userIAM.userAuth';
+import { userAuth } from '@kit.UserAuthenticationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function stringToArray(str: string): Uint8Array {
@@ -97,12 +106,12 @@ function stringToArray(str: string): Uint8Array {
 }
 
 function arrayToString(arr: Uint8Array): string {
-  let textDecoder = util.TextDecoder.create("utf-8", { ignoreBOM: true });
-  let str = textDecoder.decodeToString(arr, { stream: false })
+  let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true });
+  let str = textDecoder.decodeToString(arr, { stream: false });
   return str;
 }
 
-async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
+export async function userAuthenticate(challenge: Uint8Array): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     const authParam: userAuth.AuthParam = {
       challenge: challenge,
@@ -136,7 +145,7 @@ function preQueryAsset(): Promise<Uint8Array> {
   return new Promise((resolve, reject) => {
     try {
       let query: asset.AssetMap = new Map();
-      query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+      query.set(asset.Tag.ALIAS, stringToArray('user_auth_asset'));
       asset.preQuery(query).then((challenge: Uint8Array) => {
         resolve(challenge);
       }).catch(() => {
@@ -162,33 +171,38 @@ async function postQueryAsset(challenge: Uint8Array) {
   }
 }
 
-async function queryAsset() {
-  // step1. Call asset.preQuery to obtain the challenge value.
-  preQueryAsset().then(async (challenge: Uint8Array) => {
+export async function queryUserAuthAsset(): Promise<string> {
+  let result: string = '';
+  // Step 1. Call asset.preQuery to obtain the challenge value.
+  await preQueryAsset().then(async (challenge: Uint8Array) => {
     try {
       // Step 2. Pass in the challenge value to start the user authentication dialog box.
       let authToken: Uint8Array = await userAuthenticate(challenge);
-      // Step 3 After the user authentication is successful, pass in the challenge value and authorization token to query the plaintext of the asset.
+      // Step 3. After the user authentication is successful, pass in the challenge value and authorization token to query the plaintext of the asset.
       let query: asset.AssetMap = new Map();
-      query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
+      query.set(asset.Tag.ALIAS, stringToArray('user_auth_asset'));
       query.set(asset.Tag.RETURN_TYPE, asset.ReturnType.ALL);
       query.set(asset.Tag.AUTH_CHALLENGE, challenge);
       query.set(asset.Tag.AUTH_TOKEN, authToken);
-      let res: Array<asset.AssetMap> = await asset.query(query);
+      let res: asset.AssetMap[] = await asset.query(query);
       for (let i = 0; i < res.length; i++) {
-        // parse the secret.
+        // Parse the secret.
         let secret: Uint8Array = res[i].get(asset.Tag.SECRET) as Uint8Array;
-        // parse uint8array to string
+        // Convert Uint8Array into the string type.
         let secretStr: string = arrayToString(secret);
       }
       // Step 4. After the plaintext is obtained, call asset.postQuery to perform postprocessing.
       postQueryAsset(challenge);
+      result = 'Succeeded in querying user-auth Asset';
     } catch (error) {
       // Step 5. If the operation after preQuery() fails, call asset.postQuery to perform postprocessing.
       postQueryAsset(challenge);
+      result = 'Failed to query user-auth Asset';
     }
-  }).catch ((err: BusinessError) => {
+  }).catch((err: BusinessError) => {
     console.error(`Failed to pre-query Asset. Code is ${err.code}, message is ${err.message}`);
+    result = 'Failed to query user-auth Asset';
   })
+  return result;
 }
 ```

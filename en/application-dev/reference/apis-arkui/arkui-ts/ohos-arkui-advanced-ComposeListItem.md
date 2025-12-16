@@ -1,4 +1,10 @@
 # ComposeListItem
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The **ComposeListItem** component is a container that presents a series of items arranged in a column with the same width. You can use it to present data of the same type in a multiple and coherent row style, for example, images or text.
@@ -6,13 +12,15 @@ The **ComposeListItem** component is a container that presents a series of items
 
 > **NOTE**
 >
-> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - If the **ComposeListItem** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **ComposeListItem** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ComposeListItem** component.
 
 
 ## Modules to Import
 
 ```
-import { ComposeListItem } from "@kit.ArkUI"
+import { ComposeListItem } from "@kit.ArkUI";
 ```
 
 
@@ -20,17 +28,17 @@ import { ComposeListItem } from "@kit.ArkUI"
 
 Not supported
 
-## Attributes
-The [universal attributes](ts-component-general-attributes.md) are not supported.
-
-
 ## ComposeListItem
 
 ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
+Creates a **ComposeListItem** component that allows customization of the left, center, and right content areas.
+
 **Decorator**: @Component
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 
 | Name| Type| Mandatory| Decorator| Description|
@@ -40,23 +48,31 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
 ## ContentItem
 
+Defines elements for the left and center areas of the **ComposeListItem** component.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+ 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| iconStyle | [IconType](#icontype) | No| Icon style of the element on the left.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| icon | [ResourceStr](ts-types.md#resourcestr) | No| Icon resource of the element on the left.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Symbol icon resource of the element on the left, which has higher priority than **icon**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| primaryText | [ResourceStr](ts-types.md#resourcestr) | No| Primary text of the element in the center.<br>**Text processing rules**: Text will wrap to a new line when it exceeds the length limit.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | No| Secondary text of the element in the center.<br>**Text processing rules**: Text will wrap to a new line when it exceeds the length limit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| description | [ResourceStr](ts-types.md#resourcestr) | No| Description of the element in the center.<br>**Text processing rules**: Text will wrap to a new line when it exceeds the length limit.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| Name| Type| Read-Only| Optional| Description                                                                                                                                       |
+| -------- | -------- |---|----|-------------------------------------------------------------------------------------------------------------------------------------------|
+| iconStyle | [IconType](#icontype) | No| Yes| Icon style of the element on the left.<br>If this parameter is not set or is set to **undefined**, the icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                       |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Icon resource of the element on the left.<br>If this parameter is not set or is set to **undefined**, the icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                       |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes | Symbol icon resource of the element on the left, which has higher priority than **icon**. If both **icon** and this parameter are set, only the symbol icon is displayed.<br>If this parameter is not set or is set to **undefined**, the symbol icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| primaryText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Primary text of the element in the center.<br>If this parameter is not set or is set to **undefined**, the primary text is not displayed.<br>**Text processing rules**: Text will wrap to a new line when it exceeds the length limit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                  |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Secondary text of the element in the center.<br>If this parameter is not set or is set to **undefined**, the secondary text is not displayed.<br>**Text processing rules**: Text will wrap to a new line when it exceeds the length limit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                 |
+| description | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Description of the element in the center.<br>If this parameter is not set or is set to **undefined**, the description is not displayed.<br>**Text processing rules**: Text will wrap to a new line when it exceeds the length limit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                  |
 
 ## IconType
+
+Defines the icon type of the element on the left of the **ComposeListItem** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
@@ -71,64 +87,72 @@ ComposeListItem({contentItem?: ContentItem, operateItem?: OperateItem})
 
 ## OperateItem
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Defines the type of the element on the right of the **ComposeListItem** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| arrow | [OperateIcon](#operateicon) | No| Arrow with a size of 12 x 24 vp.|
-| icon | [OperateIcon](#operateicon) | No| First icon with a size of 24 x 24 vp.|
-| subIcon | [OperateIcon](#operateicon) | No| Second icon with a size of 24 x 24 vp.|
-| button | [OperateButton](#operatebutton) | No| Button.|
-| switch | [OperateCheck](#operatecheck) | No| Switch.|
-| checkbox | [OperateCheck](#operatecheck) | No| Check box with a size of 24 x 24 vp.|
-| radio | [OperateCheck](#operatecheck) | No| Radio button with a size of 24 x 24 vp.|
-| image | [ResourceStr](ts-types.md#resourcestr) | No| Image with a size of 48 x 48 vp.|
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Symbol with a size of 48 x 48 vp.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| text | [ResourceStr](ts-types.md#resourcestr) | No| Text.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description                                                                                                                |
+| -------- | -------- |---|---|--------------------------------------------------------------------------------------------------------------------|
+| arrow | [OperateIcon](#operateicon) | No| Yes| Arrow with a size of 12 x 24 vp.<br>If this parameter is not set or is set to **undefined**, the arrow is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
+| icon | [OperateIcon](#operateicon) | No| Yes| First icon with a size of 24 x 24 vp.<br>If this parameter is not set or is set to **undefined**, the icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| subIcon | [OperateIcon](#operateicon) | No| Yes| Second icon with a size of 24 x 24 vp.<br>If this parameter is not set or is set to **undefined**, the icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
+| button | [OperateButton](#operatebutton) | No| Yes| Button.<br>If this parameter is not set or is set to **undefined**, the button is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                      |
+| switch | [OperateCheck](#operatecheck) |  No| Yes| Switch.<br>If this parameter is not set or is set to **undefined**, the switch is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                      |
+| checkbox | [OperateCheck](#operatecheck) |  No| Yes| Check box with a size of 24 x 24 vp.<br>If this parameter is not set or is set to **undefined**, the check box is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.        |
+| radio | [OperateCheck](#operatecheck) | No| Yes| Radio button with a size of 24 x 24 vp.<br>If this parameter is not set or is set to **undefined**, the radio button is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
+| image | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Image with a size of 48 x 48 vp.<br>If this parameter is not set or is set to **undefined**, the image is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.          |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) |  No| Yes| Symbol icon with a size of 48 x 48 vp.<br>If this parameter is not set or is set to **undefined**, the symbol icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| text | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text.<br>If this parameter is not set or is set to **undefined**, the text is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                     |
 
 ## OperateIcon
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Defines the type of the icon element on the right of the **ComposeListItem** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description                                                                                                                                                                                                                                                  |
-| -------- | -------- | -------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| value | [ResourceStr](ts-types.md#resourcestr) | Yes| Resource of the icon or arrow on the right.                                                                                                                                                                                                                                          |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Resource of the symbol icon or arrow on the right, which has higher priority than **value**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| action | ()=&gt;void | No| Click event of the icon or arrow on the right.                                                                                                                                                                                                                                        |
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | No| Accessibility text, that is, accessible label name, of the icon or arrow on the right. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: **""**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                         |
-| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | No| Accessible description of the icon or arrow on the right. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.   |
-| accessibilityLevel<sup>18+</sup>       | string                                                    | No| Accessibility level of the icon or arrow on the right. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "no" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description                                                                                                                                                                                                                                                      |
+| -------- | -------- |---|---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| value | [ResourceStr](ts-types.md#resourcestr) | No| No| Resource of the icon or arrow on the right.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                          |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) |  No| Yes| Resource of the symbol icon or arrow on the right, which has higher priority than **value**.<br>If this parameter is not set or is set to **undefined**, the symbol icon is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                     |
+| action | ()=&gt;void |  No| Yes| Click event of the icon or arrow on the right.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                       |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    |  No| Yes| Accessibility text, that is, accessible label name, of the icon or arrow on the right. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: **""**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                            |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    |  No| Yes| Accessible description of the icon or arrow on the right. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
+| accessibilityLevel<sup>18+</sup>       | string                                                    |  No| Yes| Accessibility level of the icon or arrow on the right. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "no" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## OperateButton
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Defines the type of the button element on the right of the **ComposeListItem** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| text | [ResourceStr](ts-types.md#resourcestr) | No| Text of the button on the right.|
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | No| Accessibility text, that is, accessible label name, of the button on the right. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                 |
-| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | No| Accessible description of the button on the right. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>**Atomic service API**: This API can be used in atomic services since API version 18.         |
-| accessibilityLevel<sup>18+</sup>       | string                                                    | No| Accessibility level of the button on the right. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "no" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description                                                                                                                                                                                                                                                   |
+| -------- | -------- |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| text | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text of the button on the right.<br>Default value: **""**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                               |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | No| Yes| Accessibility text, that is, accessible label name, of the button on the right. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: **""**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                            |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | No| Yes| Accessible description of the button on the right. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
+| accessibilityLevel<sup>18+</sup>       | string                                                    | No| Yes| Accessibility level of the button on the right. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "no" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## OperateCheck
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Defines the type where the element on the right of the **ComposeListItem** component is **Switch**, **CheckBox**, or **Radio**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description                                                                                                                                                                                                                                                                                  |
-| -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| isCheck | boolean | No| Whether the switch, check box, or radio button on the right is selected.<br> Default value: **false**<br> **true**: selected<br> **false**: not selected                                                                                                                                                                              |
-| onChange | (value: boolean)=&gt;void | No| Callback invoked when the selected state of the switch, check box, or radio button on the right is changed.<br> **true**: from not selected to selected<br> **false**: from selected to not selected                                                                                                                                                                                        |
-| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | No| Accessibility text, that is, accessible label name, of the switch, check box, or radio button on the right. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                   |
-| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | No| Accessible description of the switch, check box, or radio button on the right. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>By default, the announcement rules for the basic components **Switch**, **CheckBox**, and **Radio** are applied.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| accessibilityLevel<sup>18+</sup>       | string                                                    | No| Accessibility level of the switch, check box, or radio button on the right. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "no" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.             |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description                                                                                                                                                                                                                                                                                  |
+| -------- | -------- |---|----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| isCheck | boolean | No| Yes | Whether the switch, check box, or radio button on the right is selected.<br> Default value: **false**.<br> **true**: selected.<br> **false**: not selected.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                          |
+| onChange | (value: boolean)=&gt;void | No| Yes | Callback invoked when the selected state of the switch, check box, or radio button on the right is changed.<br> **true**: from not selected to selected.<br> **false**: from selected to not selected.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                   |
+| accessibilityText<sup>18+</sup>        | [ResourceStr](ts-types.md#resourcestr)                    | No| Yes | Accessibility text, that is, accessible label name, of the switch, check box, or radio button on the right. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: **""**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                   |
+| accessibilityDescription<sup>18+</sup> | [ResourceStr](ts-types.md#resourcestr)                    | No| Yes | Accessible description of the switch, check box, or radio button on the right. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>By default, the announcement rules for the basic components **Switch**, **CheckBox**, and **Radio** are applied.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| accessibilityLevel<sup>18+</sup>       | string                                                    | No| Yes | Accessibility level of the switch, check box, or radio button on the right. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "no" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.           |
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.
@@ -139,7 +163,7 @@ The [universal events](ts-component-general-events.md) are not supported.
 This example demonstrates how to create a simple list item that includes a primary text, a secondary text, a description, and a button with accompanying text on the right.
 ```ts
 // This example demonstrates the basic functionality of the component, including the use of elements on the left and right.
-import { IconType, ComposeListItem, promptAction } from '@kit.ArkUI';
+import { IconType, ComposeListItem } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -160,7 +184,9 @@ struct ComposeListItemExample {
               icon: {
                 value: $r('sys.media.ohos_app_icon'),
                 action: () => {
-                  promptAction.showToast({ message: 'icon' });
+                  this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
                 } },
               text: 'Text on the right'
             })
@@ -174,9 +200,9 @@ struct ComposeListItemExample {
 ![ComposeListItem with left and right elements+text](figures/en-us_image_composelistitem_demo_01.jpg)
 
 ### Example 2: Implementing Screen Reader Announcement for Right-Side Elements
-This example shows how to use the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties to customize the screen reader announcements for different right-side elements such as icons, buttons, and radio buttons in a list item.
+This example shows how to use the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties to customize the screen reader announcements for different right-side elements such as icons, buttons, and radio buttons in a list item. This functionality is supported since API version 18.
 ```ts
-import { IconType, ComposeListItem, promptAction } from '@kit.ArkUI';
+import { IconType, ComposeListItem } from '@kit.ArkUI';
 @Entry
 @Component
 struct ComposeListItemExample {
@@ -216,7 +242,7 @@ struct ComposeListItemExample {
                 text: 'OK',
                 accessibilityText: 'This is a button',
                 accessibilityDescription: 'Double tap to activate',
-                accessibilityLevel: 'no'  // Configure this button to be not recognizable by screen readers.
+                accessibilityLevel: 'no'  // Configure this button to be not recognizable by screen reader services.
               }
             })
           })
@@ -235,11 +261,13 @@ struct ComposeListItemExample {
               icon: {
                 value: $r('sys.media.ohos_app_icon'),
                 action: () => {
-                  promptAction.showToast({ message: 'icon' });
+                this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
                 },
                 accessibilityText: 'This is an icon', // Screen reader announcement for the icon.
                 accessibilityDescription: 'Double-tap to show the toast', // Description read by screen reader for the icon action.
-                accessibilityLevel: 'yes'  // Configure this element to be focused by  screen readers.
+                accessibilityLevel: 'yes'  // Configure this element to be focused by accessibility screen readers.
               }
             })
           })
@@ -253,10 +281,10 @@ struct ComposeListItemExample {
 
 ### Example 3: Setting the Symbol Icon
 
-This example demonstrates how to use **symbolStyle** in **ContentItem**, **OperateItem**, and **OperateIcon** to set custom symbol icons.
+This example demonstrates how to use **symbolStyle** in **ContentItem**, **OperateItem**, and **OperateIcon** to set custom symbol icons. This functionality is supported since API version 18.
 
 ```ts
-import { IconType, ComposeListItem, promptAction, SymbolGlyphModifier } from '@kit.ArkUI';
+import { IconType, ComposeListItem, SymbolGlyphModifier } from '@kit.ArkUI';
 @Entry
 @Component
 struct ComposeListItemExample {
@@ -310,7 +338,9 @@ struct ComposeListItemExample {
                 value: $r('sys.symbol.car'),
                 symbolStyle: new SymbolGlyphModifier($r('sys.symbol.heart')).fontColor([Color.Orange]),
                 action: () => {
-                  promptAction.showToast({ message: 'icon' });
+                  this.getUIContext().getPromptAction().showToast({
+                    message: 'icon'
+                  });
                 }
               }
             })

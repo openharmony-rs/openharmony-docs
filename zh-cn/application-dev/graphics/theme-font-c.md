@@ -1,5 +1,10 @@
 # 使用主题字体（C/C++）
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Designer: @liumingxiang-->
+<!--Tester: @yhl0101-->
+<!--Adviser: @ge-yafang-->
 
 ## 场景介绍
 
@@ -36,7 +41,7 @@
 2. 在应用入口文件（默认工程中为EntryAbility.ets）中复写onConfigurationUpdate函数，以响应fontId变更，适配主题字体的切换和页面刷新。
 
    ```c++
-   // entryability/EntryAbility.ets
+   // entry/src/main/ets/entryability/EntryAbility.ets
    export default class EntryAbility extends UIAbility {
        // ...  
        preFontId ="";
@@ -55,9 +60,16 @@
 
 3. 本步骤及之后均为主题字体在C++侧的使用，从ArkTS到C++的调用通路需应用根据实际情况选取调用方式，本示例不作推荐。跨语言调用可参考[Node-API简介](../napi/napi-introduction.md)。
 
+   在工程的`src/main/cpp/CMakeLists.txt`文件中添加以下lib。
+   ```c++
+   libnative_drawing.so
+   ```
+
    导入头文件。
 
-   ```c++
+   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+
+   ```C++
    #include <native_drawing/drawing_font_collection.h>
    #include <native_drawing/drawing_text_typography.h>
    #include <native_drawing/drawing_register_font.h>
@@ -69,14 +81,18 @@
    >
    > 注册主题字体作用于字体管理集全局对象，故必须使用OH_Drawing_GetFontCollectionGlobalInstance获取全局字体集对象进行绘制。如若使用OH_Drawing_CreateSharedFontCollection或OH_Drawing_CreateFontCollection创建字体集对象，无法使用主题字体。OH_Drawing_GetFontCollectionGlobalInstance获取的全局字体集不允许释放，释放会造成字体绘制紊乱问题。
 
-   ```c++
+   <!-- @[theme_font_c_draw_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_GetFontCollectionGlobalInstance();
    ```
 
 5. OH_Drawing_SetTextStyleFontFamilies()接口可以用来指定字体家族名，从而实现使用指定字体。但使用主题字体，不需要使用OH_Drawing_SetTextStyleFontFamilies()接口指定字体，否则行为变更为优先使用指定字体，而不是主题字体。
 
-   ```c++
-   OH_Drawing_TextStyle textStyle = OH_Drawing_CreateTextStyle();
+   <!-- @[theme_font_c_draw_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   OH_Drawing_TextStyle *myTextStyle = OH_Drawing_CreateTextStyle();
    // const char* myFontFamilies[] = {"otherFontFamilyName"};
    // 注意不要使用此接口来指定字体
    // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
@@ -84,22 +100,25 @@
 
 6. 设置段落文本内容为"Hello World. \nThis is the theme font."，此时该段落文本将应用主题字体。
 
-   ```c++
+   <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    // 设置其他文本样式
-   OH_Drawing_SetTextStyleColor(textStyle , OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
-   OH_Drawing_SetTextStyleFontSize(textStyle , 50.0);
+   OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   // 设置字体大小为100.0
+   OH_Drawing_SetTextStyleFontSize(myTextStyle, 100.0);
    // 创建一个段落样式对象，以设置排版风格
    OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
    OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT); // 设置段落样式为左对齐
    // 创建一个段落生成器
-   OH_Drawing_TypographyCreate* handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
    // 在段落生成器中设置文本样式
-   OH_Drawing_TypographyHandlerPushTextStyle(handler, textStyle);
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, myTextStyle);
    // 在段落生成器中设置文本内容
-   const char* text = "Hello World. \nThis is the theme font.";
+   const char *text = "Hello World. \nThis is the theme font.";
    OH_Drawing_TypographyHandlerAddText(handler, text);
    // 通过段落生成器生成段落
-   OH_Drawing_Typography* typography = OH_Drawing_CreateTypography(handler);
+   OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
    ```
 
 ## 效果展示

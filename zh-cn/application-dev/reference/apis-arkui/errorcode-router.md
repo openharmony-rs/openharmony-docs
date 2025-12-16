@@ -1,26 +1,14 @@
 # 页面路由错误码
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @mayaolll-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
-
-## 100001 内部错误
-
-**错误信息**
-
-Internal error.
-
-**错误描述**
-
-当出现了开发者解决不了的内部异常错误，系统会产生此错误码，并描述具体是哪种内部错误。作为@ohos.router的错误码时，该错误码为string类型。
-
-**可能原因**
-
-未成功获取渲染引擎，解析参数失败等。
-
-**处理步骤**
-
-NA
 
 ## 100002 路由页面跳转时输入的uri错误
 
@@ -72,6 +60,10 @@ Named route error. The named route does not exist.
 
 输入的命名路由name错误或者不存在。
 
+**处理步骤**
+
+请检查输入的命名路由name是否正确或者是否存在。
+
 ## 100005 Navigation跳转时未注册builder函数
 
 **错误信息**
@@ -80,11 +72,11 @@ Builder function not registered.
 
 **错误描述**
 
-Navigation跳转时，Navigation未注册创建NavDestination组件的builder函数，系统会产生此错误码。
+Navigation跳转时，未注册创建NavDestination组件的builder函数，系统会产生此错误码。
 
 **可能原因**
 
-Navigation跳转时，Navigation未注册创建NavDestination的builder函数。
+Navigation跳转时，未注册创建NavDestination的builder函数。
 
 **处理步骤**
 

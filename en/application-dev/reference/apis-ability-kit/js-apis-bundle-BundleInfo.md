@@ -1,6 +1,12 @@
 # BundleInfo
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The BundleInfo module defines the bundle information, which can be obtained through [bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated).
+The module defines the bundle information, which can be obtained through [bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated).
 
 > **NOTE**
 > 
@@ -12,7 +18,7 @@ The BundleInfo module defines the bundle information, which can be obtained thro
 
 This API is deprecated since API version 9. You are advised to use [bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1) instead.
 
- **System capability**: SystemCapability.BundleManager.BundleFramework
+**System capability**: SystemCapability.BundleManager.BundleFramework
 
 | Name                            | Type                                                        | Read-Only| Optional| Description                                                        |
 | -------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
@@ -31,13 +37,13 @@ This API is deprecated since API version 9. You are advised to use [bundleManage
 | versionName                      | string                                                       | Yes  | No  | Version description of the bundle.                                  |
 | compatibleVersion                | number                                                       | Yes  | No  | Earliest SDK version required for running the bundle.                           |
 | targetVersion                    | number                                                       | Yes  | No  | Latest SDK version required for running the bundle.                             |
-| isCompressNativeLibs             | boolean                                                      | Yes  | No  | Whether the native libraries in the bundle are compressed. The value **true** means that the native libraries are compressed, and **false** means the opposite.                      |
+| isCompressNativeLibs             | boolean                                                      | Yes  | No  | Whether the native libraries in the bundle are compressed. **true** if compressed, **false** otherwise.                      |
 | hapModuleInfos                   | Array\<[HapModuleInfo](js-apis-bundle-HapModuleInfo.md)>     | Yes  | No  | Module configuration information.                                            |
 | entryModuleName                  | string                                                       | Yes  | No  | Name of the entry module.                                           |
 | cpuAbi                           | string                                                       | Yes  | No  | CPU and ABI information of the bundle.                                        |
 | isSilentInstallation             | string                                                       | Yes  | No  | Whether the application can be installed in silent mode.                                          |
 | minCompatibleVersionCode         | number                                                       | Yes  | No  | Earliest version compatible with the bundle in the distributed scenario.                        |
-| entryInstallationFree            | boolean                                                      | Yes  | No  | Whether installation-free is supported for the entry module. The value **true** means that installation-free is supported, and **false** means the opposite.                                       |
+| entryInstallationFree            | boolean                                                      | Yes  | No  | Whether installation-free is supported for the entry module. **true** if supported, **false** otherwise.                                       |
 | reqPermissionStates<sup>8+</sup> | Array\<number>                                               | Yes  | No  | Permission grant state. The value **0** means that the request is successful, and **-1** means the opposite.         |
 
 
@@ -48,7 +54,7 @@ This API is deprecated since API version 9. You are advised to use [bundleManage
 
 Provides the detailed information of the permissions to request from the system.
 
- **System capability**: SystemCapability.BundleManager.BundleFramework
+**System capability**: SystemCapability.BundleManager.BundleFramework
 
 | Name                 | Type                   | Read-Only| Optional| Description                  |
 | --------------------- | ----------------------- | ---- | ---- | ---------------------- |
@@ -64,7 +70,7 @@ Provides the detailed information of the permissions to request from the system.
 
 Describes the application scenario and timing for using the permission.
 
- **System capability**: SystemCapability.BundleManager.BundleFramework
+**System capability**: SystemCapability.BundleManager.BundleFramework
 
 | Name     | Type          | Read-Only| Optional| Description                       |
 | --------- | -------------- | ---- | ---- | --------------------------- |

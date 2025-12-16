@@ -1,5 +1,16 @@
 # OH_CryptoKeyPair
 
+<!--Kit: Crypto Architecture Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @zxz--3-->
+<!--Designer: @lanming-->
+<!--Tester: @PAFT-->
+<!--Adviser: @zengyawen-->
+
+```c
+typedef struct OH_CryptoKeyPair OH_CryptoKeyPair
+```
+
 ## 概述
 
 定义密钥对结构体。

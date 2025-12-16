@@ -1,4 +1,10 @@
 # @ohos.distributedsched.abilityConnectionManager (应用多端协同管理)
+<!--Kit: Distributed Service Kit-->
+<!--Subsystem: DistributedSched-->
+<!--Owner: @hobbycao-->
+<!--Designer: @gsxiaowen-->
+<!--Tester: @hanjiawei-->
+<!--Adviser: @w_Machine_cc-->
 
 abilityConnectionManager模块提供了应用协同接口管理能力。设备组网成功（需登录同账号、双端打开蓝牙）后，系统应用和三方应用可以跨设备拉起同应用的一个[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md)，拉起并连接成功后可实现跨设备数据传输（文本信息）。
 
@@ -52,7 +58,6 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
    ```ts
    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { common } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
  
    let dmClass: distributedDeviceManager.DeviceManager;
@@ -151,7 +156,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
          return sessionId;
        }
     
-       const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+       const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
@@ -207,8 +212,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| PeerInfo | 接收端的协作应用信息。 |
-| undefined | 未知情况。 |
+| [PeerInfo](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-distributed-abilityconnectionmanager#peerinfo) \| undefined | 若存在对应peeerInfo，则返回接收端的协作应用信息。若sessionId未找到，则查询失败，返回undefined。|
 
 **错误码：**
 
@@ -233,7 +237,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
-创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。
+创建协同会话成功并获得会话ID后，设备A上可进行UIAbility的连接。使用Promise异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -347,7 +351,7 @@ acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;
         return sessionId;
       }
 
-      const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+      const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
       try {
         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
         AppStorage.setOrCreate('sessionId', sessionId);
@@ -433,7 +437,7 @@ reject(token:&nbsp;string,&nbsp;reason:&nbsp;string):&nbsp;void;
 
 on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void
 
-注册connect事件的回调监听。
+注册connect事件的回调监听。使用callback异步回调。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -494,7 +498,6 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
-  import { hilog } from '@kit.PerformanceAnalysisKit';
 
   let sessionId = 100;
   abilityConnectionManager.off("connect", sessionId);

@@ -106,9 +106,9 @@ For details about how to obtain the source code, see [Obtaining Source Code](../
 
 ### Supported Sample Projects
 
-QEMU: **arm_mps2_an386**, **esp32**, **riscv32_virt**, and **SmartL_E802**. For details, see [QEMU](https://gitee.com/openharmony/device_qemu).
+QEMU: **arm_mps2_an386**, **esp32**, **riscv32_virt**, and **SmartL_E802**. For details, see [QEMU](https://gitcode.com/openharmony/device_qemu).
 
-bestechnic: **bes2600**. For details, see [device_bestechnic](https://gitee.com/openharmony/device_soc_bestechnic).
+bestechnic: **bes2600**. For details, see [device_bestechnic](https://gitcode.com/openharmony/device_soc_bestechnic).
 
 ### Community Porting Project
 
@@ -130,7 +130,7 @@ The LiteOS-M kernel porting projects for specific development boards are provide
 
 [How To Contribute](../../contribute/how-to-contribute.md)
 
-[Commit Message Specifications]((https://gitee.com/openharmony/kernel_liteos_m/wikis/Commit%20message%E8%A7%84%E8%8C%83))
+[Commit Message Specifications](https://gitee.com/openharmony/kernel_liteos_m/wikis/Commit%20message%E8%A7%84%E8%8C%83)
 
 [LiteOS-M Kernel Coding Specifications](https://gitee.com/openharmony/kernel_liteos_m/wikis/OpenHarmony%E8%BD%BB%E5%86%85%E6%A0%B8%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83)
 
@@ -144,4 +144,4 @@ Contribute a chip based on LiteOS-M:
 
 [Kernel](../../readme/kernel.md)
 
-[kernel\_liteos\_m](https://gitee.com/openharmony/kernel_liteos_m)
+[kernel\_liteos\_m](https://gitcode.com/openharmony/kernel_liteos_m)

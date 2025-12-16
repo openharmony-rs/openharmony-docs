@@ -1,4 +1,10 @@
 # @ohos.telephony.sms (SMS) (System API)
+<!--Kit: Telephony Kit-->
+<!--Subsystem: Telephony-->
+<!--Owner: @shao-yikai-->
+<!--Designer: @wnazgul-->
+<!--Tester: @jiang_99-->
+<!--Adviser: @zhang_yixin13-->
 
 The **sms** module provides basic SMS management functions. With the APIs provided by this module, you can create and send SMS messages, obtain the ID of the default SIM card used to send and receive SMS messages, and obtain and set the SMSC address.
 
@@ -1422,7 +1428,7 @@ Obtains SMS message segment information. This API uses an asynchronous callback 
 | --------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
 | slotId    | number                                                       | Yes  | SIM card slot ID. <br>- **0**: card slot 1<br>- **1**: card slot 2|
 | message   | string                                                       | Yes  | SMS message.                                     |
-| force7bit | boolean                                                      | Yes  | Whether to use 7-bit coding.                         |
+| force7bit | boolean                                                      | Yes  | Whether to use 7-bit encoding. The default value is **false**.<br>- **true**: Use 7-bit encoding.<br>- **false**: Do not use 7-bit encoding.                         |
 | callback  | AsyncCallback&lt;[SmsSegmentsInfo](#smssegmentsinfo8)&gt; | Yes  | Callback used to return the result. |
 
 **Error codes**
@@ -1467,7 +1473,7 @@ Obtains SMS message segment information. This API uses a promise to return the r
 | --------- | ------- | ---- | ----------------------------------------- |
 | slotId    | number  | Yes  | SIM card slot ID. <br>- **0**: card slot 1<br>- **1**: card slot 2|
 | message   | string  | Yes  | SMS message.                                     |
-| force7bit | boolean | Yes  | Whether to use 7-bit coding.                         |
+| force7bit | boolean | Yes  | Whether to use 7-bit encoding. The default value is **false**.<br>- **true**: Use 7-bit encoding.<br>- **false**: Do not use 7-bit encoding.                         |
 
 **Return value**
 
@@ -1518,7 +1524,7 @@ Checks whether SMS is supported on IMS. This API uses an asynchronous callback t
 | Name  | Type                        | Mandatory| Description      |
 | -------- | ---------------------------- | ---- | ---------- |
 | slotId   | number                       | Yes  | SIM card slot ID. <br>- **0**: card slot 1<br>- **1**: card slot 2|
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to indicate whether SMS is supported on IMS. The default value is **false**.<br>- **true**: SMS is supported on IMS.<br>- **false**: SMS is not supported on IMS.|
 
 **Error codes**
 

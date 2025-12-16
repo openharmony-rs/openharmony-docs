@@ -1,4 +1,10 @@
 # @ohos.fileshare (File Sharing) (System API)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @lvzhenjie; @hongjin-li_admin-->
+<!--Designer: @chenxi0605; @JerryH1011-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @foryourself-->
 
 The **fileShare** module provides APIs for granting the access permissions on a user file to another application based on the file Uniform Resource Identifier (URI). Then, the authorized application can access the file by using the [@ohos.file.fs](js-apis-file-fs.md) APIs.
 
@@ -50,7 +56,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   ```ts
   import { wantConstant } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let uri: string = 'file://docs/storage/Users/currentUser/Document/1.txt';  // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
+
+  let uri: string =
+    'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
   let bundleName: string = 'com.demo.test';
   try {
     fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
@@ -109,7 +117,9 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   ```ts
   import { wantConstant } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  let uri: string = 'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
+
+  let uri: string =
+    'file://docs/storage/Users/currentUser/Document/1.txt'; // You are advised to use the system API fileUri.getUriFromPath("Sandbox path") to generate a URI.;
   let bundleName: string = 'com.demo.test';
   try {
     fileShare.grantUriPermission(uri, bundleName, wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION |
@@ -164,25 +174,25 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
-  import fileshare from '@ohos.fileshare';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { fileShare } from '@kit.CoreFileKit';
   
   async function checkPersistentPermissionExample() {
     try {
-      let pathPolicyInfo1: fileshare.PathPolicyInfo = {
+      let pathPolicyInfo1: fileShare.PathPolicyInfo = {
         path: "/storage/Users/currentUser/Documents/1.txt",
-        operationMode: fileshare.OperationMode.READ_MODE,
+        operationMode: fileShare.OperationMode.READ_MODE,
       }
-      let pathPolicyInfo2: fileshare.PathPolicyInfo = {
+      let pathPolicyInfo2: fileShare.PathPolicyInfo = {
         path: "/storage/Users/currentUser/Desktop/2.txt",
-        operationMode: fileshare.OperationMode.READ_MODE,
+        operationMode: fileShare.OperationMode.READ_MODE,
       }
 
-      let policies: Array<fileshare.PathPolicyInfo> = [pathPolicyInfo1, pathPolicyInfo2];
-      let policyType: fileshare.PolicyType = fileshare.PolicyType.PERSISTENT_TYPE;
+      let policies: Array<fileShare.PathPolicyInfo> = [pathPolicyInfo1, pathPolicyInfo2];
+      let policyType: fileShare.PolicyType = fileShare.PolicyType.PERSISTENT_TYPE;
       let tokenid = 537688848; // Use bundleManager.getApplicationInfo() to obtain the token ID for a system application, and use bundleManager.getBundleInfoForSelf() to obtain the token ID for a non-system application.
-      
-      fileshare.checkPathPermission(tokenid, policies, policyType).then((result:Array<boolean>) => {
+
+      fileShare.checkPathPermission(tokenid, policies, policyType).then((result:Array<boolean>) => {
         for (let x of result) {
           console.info('check permission result is', x);
         }

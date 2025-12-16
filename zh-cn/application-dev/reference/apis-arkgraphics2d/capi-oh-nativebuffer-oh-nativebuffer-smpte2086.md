@@ -1,5 +1,14 @@
 # OH_NativeBuffer_Smpte2086
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_NativeBuffer_Smpte2086 {...} OH_NativeBuffer_Smpte2086
+```
 ## 概述
 
 表示smpte2086静态元数据。

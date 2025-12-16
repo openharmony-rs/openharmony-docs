@@ -1,4 +1,10 @@
 # @ohos.enterprise.networkManager（网络管理）(系统接口)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设备网络管理能力，包括查询设备IP地址、MAC地址信息等。
 
@@ -8,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-guide.md#功能介绍)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.networkManager](js-apis-enterprise-networkManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.networkManager](js-apis-enterprise-networkManager.md)。
 
 ## 导入模块
 
@@ -28,12 +34,15 @@ getAllNetworkInterfaces(admin: Want, callback: AsyncCallback&lt;Array&lt;string&
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt;            | 是    | 回调函数。当接口调用成功，err为null，data为网络接口名称数组，否则err为错误对象。     |
 
 **错误码**：
@@ -51,11 +60,13 @@ getAllNetworkInterfaces(admin: Want, callback: AsyncCallback&lt;Array&lt;string&
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getAllNetworkInterfaces(wantTemp, (err, result) => {
@@ -77,12 +88,15 @@ getAllNetworkInterfaces(admin: Want): Promise&lt;Array&lt;string&gt;&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -105,12 +119,14 @@ getAllNetworkInterfaces(admin: Want): Promise&lt;Array&lt;string&gt;&gt;
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getAllNetworkInterfaces(wantTemp).then((result) => {
@@ -130,12 +146,15 @@ getIpAddress(admin: Want, networkInterface: string, callback: AsyncCallback&lt;s
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | networkInterface    | string     | 是    | 指定网络接口。                  |
 | callback | AsyncCallback&lt;string&gt;            | 是    | 回调函数。当接口调用成功，err为null，data为IP地址，否则err为错误对象。       |
 
@@ -154,13 +173,16 @@ getIpAddress(admin: Want, networkInterface: string, callback: AsyncCallback&lt;s
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// 参数需根据实际情况进行替换
 networkManager.getIpAddress(wantTemp, 'eth0', (err, result) => {
   if (err) {
     console.error(`Failed to get ip address. Code: ${err.code}, message: ${err.message}`);
@@ -180,12 +202,15 @@ getIpAddress(admin: Want, networkInterface: string): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface    | string     | 是    | 指定网络接口。                  |
 
 **返回值：**
@@ -209,14 +234,17 @@ getIpAddress(admin: Want, networkInterface: string): Promise&lt;string&gt;
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// 参数需根据实际情况进行替换
 networkManager.getIpAddress(wantTemp, 'eth0').then((result) => {
   console.info(`Succeeded in getting ip address, result : ${result}`);
 }).catch((err: BusinessError) => {
@@ -234,12 +262,15 @@ getMac(admin: Want, networkInterface: string, callback: AsyncCallback&lt;string&
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | networkInterface    | string     | 是    | 指定网络接口。                  |
 | callback | AsyncCallback&lt;string&gt;            | 是    | 回调函数。当接口调用成功，err为null，data为设备MAC地址，否则err为错误对象。       |
 
@@ -258,13 +289,16 @@ getMac(admin: Want, networkInterface: string, callback: AsyncCallback&lt;string&
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// 参数需根据实际情况进行替换
 networkManager.getMac(wantTemp, 'eth0', (err, result) => {
   if (err) {
     console.error(`Failed to get mac. Code: ${err.code}, message: ${err.message}`);
@@ -284,12 +318,15 @@ getMac(admin: Want, networkInterface: string): Promise\<string>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface    | string     | 是    | 指定网络接口。                  |
 
 **返回值：**
@@ -313,14 +350,17 @@ getMac(admin: Want, networkInterface: string): Promise\<string>
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// 参数需根据实际情况进行替换
 networkManager.getMac(wantTemp, 'eth0').then((result) => {
   console.info(`Succeeded in getting mac, result : ${result}`);
 }).catch((err: BusinessError) => {
@@ -338,12 +378,15 @@ isNetworkInterfaceDisabled(admin: Want, networkInterface: string, callback: Asyn
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | networkInterface    | string     | 是    | 指定网络接口。                  |
 | callback | AsyncCallback&lt;boolean&gt;            | 是    | 回调函数。当接口调用成功，err为null，data为指定网络接口是否被禁用，true表示该网络接口被禁用，false表示该网络接口未被禁用，否则err为错误对象。       |
 
@@ -362,13 +405,16 @@ isNetworkInterfaceDisabled(admin: Want, networkInterface: string, callback: Asyn
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// 参数需根据实际情况进行替换
 networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0', (err, result) => {
   if (err) {
     console.error(`Failed to query network interface is disabled or not. Code: ${err.code}, message: ${err.message}`);
@@ -388,12 +434,15 @@ isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Promise&lt;bo
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface    | string     | 是    | 指定网络接口。                  |
 
 **返回值：**
@@ -417,14 +466,17 @@ isNetworkInterfaceDisabled(admin: Want, networkInterface: string): Promise&lt;bo
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// 参数需根据实际情况进行替换
 networkManager.isNetworkInterfaceDisabled(wantTemp, 'eth0').then((result) => {
   console.info(`Succeeded in querying network interface is disabled or not, result : ${result}`);
 }).catch((err: BusinessError) => {
@@ -442,12 +494,15 @@ setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: b
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | networkInterface    | string     | 是    | 指定网络接口。                  |
 | isDisabled    | boolean     | 是    | true表示禁用该网络接口，false表示开启该网络接口。                  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则err为错误对象。       |
@@ -467,13 +522,16 @@ setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: b
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// 参数需根据实际情况进行替换
 networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true, (err) => {
   if (err) {
     console.error(`Failed to set network interface disabled. Code: ${err.code}, message: ${err.message}`);
@@ -493,12 +551,15 @@ setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: b
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | networkInterface    | string     | 是    | 指定网络接口。                  |
 | isDisabled    | boolean     | 是    | true表示禁用该网络接口，false表示开启该网络接口。                  |
 
@@ -523,14 +584,17 @@ setNetworkInterfaceDisabled(admin: Want, networkInterface: string, isDisabled: b
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
+// 参数需根据实际情况进行替换
 networkManager.setNetworkInterfaceDisabled(wantTemp, 'eth0', true).then(() => {
   console.info(`Succeeded in setting network interface disabled`);
 }).catch((err: BusinessError) => {
@@ -548,12 +612,15 @@ setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: AsyncCall
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | httpProxy    | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10)     | 是    | 网络全局Http代理配置信息。                  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则err为错误对象。       |
 
@@ -572,13 +639,17 @@ setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy, callback: AsyncCall
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { connection } from '@kit.NetworkKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+
+// 参数需根据实际情况进行替换
 let exclusionStr: string = "192.168,baidu.com"
 let exclusionArray: Array<string> = exclusionStr.split(',');
 let httpProxy: connection.HttpProxy = {
@@ -606,12 +677,15 @@ setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise\<void>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | httpProxy    | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10)     | 是    | 网络全局Http代理配置信息。                  |
 
 **返回值：**
@@ -635,14 +709,18 @@ setGlobalProxy(admin: Want, httpProxy: connection.HttpProxy): Promise\<void>
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { connection } from '@kit.NetworkKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
+
+// 需根据实际情况进行替换
 let exclusionStr: string = "192.168,baidu.com"
 let exclusionArray: Array<string> = exclusionStr.split(',');
 let httpProxy: connection.HttpProxy = {
@@ -668,12 +746,15 @@ getGlobalProxy(admin: Want, callback: AsyncCallback\<connection.HttpProxy>): voi
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | callback | AsyncCallback&lt;[connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10)&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则err为错误对象。       |
 
 **错误码**：
@@ -691,11 +772,13 @@ getGlobalProxy(admin: Want, callback: AsyncCallback\<connection.HttpProxy>): voi
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getGlobalProxy(wantTemp, (err, result) => {
@@ -717,12 +800,15 @@ getGlobalProxy(admin: Want): Promise\<connection.HttpProxy>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -745,12 +831,14 @@ getGlobalProxy(admin: Want): Promise\<connection.HttpProxy>
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.getGlobalProxy(wantTemp).then(() => {
@@ -770,12 +858,15 @@ addIptablesFilterRule(admin: Want, filterRule: AddFilterRule, callback: AsyncCal
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | filterRule    | [AddFilterRule](#addfilterrule)     | 是    | 添加网络包过滤规则。                  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则err为错误对象。       |
 
@@ -794,13 +885,16 @@ addIptablesFilterRule(admin: Want, filterRule: AddFilterRule, callback: AsyncCal
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.AddFilterRule = {
+  // 需根据实际情况进行替换
   "ruleNo": 1,
   "srcAddr": "192.168.1.1-192.168.255.255",
   "destAddr": "10.1.1.1",
@@ -810,8 +904,8 @@ let filterRule: networkManager.AddFilterRule = {
   "method": networkManager.AddMethod.APPEND,
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP,
-}
+  "protocol": networkManager.Protocol.UDP
+};
 
 networkManager.addIptablesFilterRule(wantTemp, filterRule, (err) => {
   if (err) {
@@ -832,12 +926,15 @@ addIptablesFilterRule(admin: Want, filterRule: AddFilterRule): Promise\<void>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | filterRule    | [AddFilterRule](#addfilterrule)     | 是    | 添加网络包过滤规则。                  |
 
 **返回值：**
@@ -861,14 +958,17 @@ addIptablesFilterRule(admin: Want, filterRule: AddFilterRule): Promise\<void>
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.AddFilterRule = {
+  // 需根据实际情况进行替换
   "ruleNo": 1,
   "srcAddr": "192.168.1.1-192.168.255.255",
   "destAddr": "10.1.1.1",
@@ -878,8 +978,8 @@ let filterRule: networkManager.AddFilterRule = {
   "method": networkManager.AddMethod.APPEND,
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP,
-}
+  "protocol": networkManager.Protocol.UDP
+};
 
 networkManager.addIptablesFilterRule(wantTemp, filterRule).then(() => {
   console.info(`Succeeded in setting iptables filter rule`);
@@ -898,12 +998,15 @@ removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule, callback: As
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | filterRule    | [RemoveFilterRule](#removefilterrule)     | 是    | 移除网络包过滤规则。                  |
 | callback | AsyncCallback&lt;void&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则err为错误对象。       |
 
@@ -922,13 +1025,16 @@ removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule, callback: As
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.RemoveFilterRule = {
+  // 需根据实际情况进行替换
   "srcAddr": "192.168.1.1-192.168.255.255",
   "destAddr": "10.1.1.1",
   "srcPort": "8080",
@@ -936,8 +1042,8 @@ let filterRule: networkManager.RemoveFilterRule = {
   "uid": "9696",
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP,
-}
+  "protocol": networkManager.Protocol.UDP
+};
 
 networkManager.removeIptablesFilterRule(wantTemp, filterRule, (err) => {
   if (err) {
@@ -958,12 +1064,15 @@ removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule): Promise\<vo
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | filterRule    | [RemoveFilterRule](#removefilterrule)     | 是    | 移除网络包过滤规则。                  |
 
 **返回值：**
@@ -987,14 +1096,17 @@ removeIptablesFilterRule(admin: Want, filterRule: RemoveFilterRule): Promise\<vo
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let filterRule: networkManager.RemoveFilterRule = {
+  // 需根据实际情况进行替换
   "srcAddr": "192.168.1.1-192.168.255.255",
   "destAddr": "10.1.1.1",
   "srcPort": "8080",
@@ -1002,8 +1114,8 @@ let filterRule: networkManager.RemoveFilterRule = {
   "uid": "9696",
   "direction": networkManager.Direction.OUTPUT,
   "action": networkManager.Action.DENY,
-  "protocol": networkManager.Protocol.UDP,
-}
+  "protocol": networkManager.Protocol.UDP
+};
 
 networkManager.removeIptablesFilterRule(wantTemp, filterRule).then(() => {
   console.info(`Succeeded in removing iptables filter rule`);
@@ -1022,12 +1134,15 @@ listIptablesFilterRules(admin: Want, callback: AsyncCallback\<string>): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明                       |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。            |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。            |
 | callback | AsyncCallback&lt;string&gt;            | 是    | 回调函数。当接口调用成功，err为null，否则err为错误对象。       |
 
 **错误码**：
@@ -1045,11 +1160,13 @@ listIptablesFilterRules(admin: Want, callback: AsyncCallback\<string>): void
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.listIptablesFilterRules(wantTemp, (err, result) => {
@@ -1071,12 +1188,15 @@ listIptablesFilterRules(admin: Want): Promise\<string>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -1099,12 +1219,14 @@ listIptablesFilterRules(admin: Want): Promise\<string>
 **示例：**
 
 ```ts
+import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 networkManager.listIptablesFilterRules(wantTemp).then((result) => {
@@ -1120,6 +1242,7 @@ networkManager.listIptablesFilterRules(wantTemp).then((result) => {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**系统接口：** 此接口为系统接口。
 
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | ---- | ------------------------------- |
@@ -1140,6 +1263,7 @@ networkManager.listIptablesFilterRules(wantTemp).then((result) => {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**系统接口：** 此接口为系统接口。
 
 | 名称         | 类型     | 只读 | 可选 | 说明                            |
 | ----------- | --------| ---- | ---- | ------------------------------ |
@@ -1158,6 +1282,7 @@ networkManager.listIptablesFilterRules(wantTemp).then((result) => {
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**系统接口：** 此接口为系统接口。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |

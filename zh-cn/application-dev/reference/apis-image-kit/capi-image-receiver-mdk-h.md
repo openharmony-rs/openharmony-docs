@@ -1,4 +1,10 @@
 # image_receiver_mdk.h
+<!--Kit: Image Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @aulight02-->
+<!--Designer: @liyang_bryan-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -8,7 +14,7 @@
 
 **引用文件：** <multimedia/image_framework/image_receiver_mdk.h>
 
-**系统能力：** SystemCapability.Multimedia.Image
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -43,8 +49,8 @@
 
 ### OH_Image_Receiver_On_Callback()
 
-```
-typedef void (*OH_Image_Receiver_On_Callback)()
+```c
+typedef void (*OH_Image_Receiver_On_Callback)(void)
 ```
 
 **描述**
@@ -55,7 +61,7 @@ typedef void (*OH_Image_Receiver_On_Callback)()
 
 ### OH_Image_Receiver_CreateImageReceiver()
 
-```
+```c
 int32_t OH_Image_Receiver_CreateImageReceiver(napi_env env, struct OhosImageReceiverInfo info, napi_value* res)
 ```
 
@@ -82,7 +88,7 @@ int32_t OH_Image_Receiver_CreateImageReceiver(napi_env env, struct OhosImageRece
 
 ### OH_Image_Receiver_InitImageReceiverNative()
 
-```
+```c
 ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, napi_value source)
 ```
 
@@ -112,7 +118,7 @@ ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, nap
 
 ### OH_Image_Receiver_GetReceivingSurfaceId()
 
-```
+```c
 int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* native, char* id, size_t len)
 ```
 
@@ -139,7 +145,7 @@ int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* nativ
 
 ### OH_Image_Receiver_ReadLatestImage()
 
-```
+```c
 int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, napi_value* image)
 ```
 
@@ -167,7 +173,7 @@ int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, nap
 
 ### OH_Image_Receiver_ReadNextImage()
 
-```
+```c
 int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_value* image)
 ```
 
@@ -195,7 +201,7 @@ int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_
 
 ### OH_Image_Receiver_On()
 
-```
+```c
 int32_t OH_Image_Receiver_On(const ImageReceiverNative* native, OH_Image_Receiver_On_Callback callback)
 ```
 
@@ -222,7 +228,7 @@ int32_t OH_Image_Receiver_On(const ImageReceiverNative* native, OH_Image_Receive
 ### OH_Image_Receiver_GetSize()
 
 
-```
+```c
 int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct OhosImageSize* size)
 ```
 
@@ -248,7 +254,7 @@ int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct Ohos
 
 ### OH_Image_Receiver_GetCapacity()
 
-```
+```c
 int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t* capacity)
 ```
 
@@ -274,7 +280,7 @@ int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t
 
 ### OH_Image_Receiver_GetFormat()
 
-```
+```c
 int32_t OH_Image_Receiver_GetFormat(const ImageReceiverNative* native, int32_t* format)
 ```
 
@@ -300,7 +306,7 @@ int32_t OH_Image_Receiver_GetFormat(const ImageReceiverNative* native, int32_t* 
 
 ### OH_Image_Receiver_Release()
 
-```
+```c
 int32_t OH_Image_Receiver_Release(ImageReceiverNative* native)
 ```
 

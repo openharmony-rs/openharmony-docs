@@ -1,4 +1,10 @@
 # @ohos.enterprise.usbManager（USB管理）(系统接口)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供USB管理能力。
 
@@ -8,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-guide.md#功能介绍)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.usbManager](js-apis-enterprise-usbManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.usbManager](js-apis-enterprise-usbManager.md)。
 
 ## 导入模块
 
@@ -28,13 +34,15 @@ setUsbPolicy(admin: Want, usbPolicy: UsbPolicy, callback: AsyncCallback\<void>):
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | usbPolicy  | [UsbPolicy](js-apis-enterprise-usbManager.md#usbpolicy) | 是 | USB读写策略（此接口只支持READ_WRITE和READ_ONLY）。 |
 | callback | AsyncCallback\<void> | 是 | 回调函数。当接口调用成功，err为null，否则为错误对象。 |
 
@@ -53,11 +61,13 @@ setUsbPolicy(admin: Want, usbPolicy: UsbPolicy, callback: AsyncCallback\<void>):
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.READ_WRITE;
 
@@ -80,13 +90,15 @@ setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise\<void>
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
 | ----- | ----------------------------------- | ---- | ------- |
-| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。 |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | usbPolicy  | [UsbPolicy](js-apis-enterprise-usbManager.md#usbpolicy) | 是 | USB读写策略（此接口只支持READ_WRITE和READ_ONLY）。 |
 
 **返回值：**
@@ -110,14 +122,16 @@ setUsbPolicy(admin: Want, usbPolicy: UsbPolicy): Promise\<void>
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
-let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.READ_WRITE
+let policy: usbManager.UsbPolicy = usbManager.UsbPolicy.READ_WRITE;
 
 usbManager.setUsbPolicy(wantTemp, policy).then(() => {
   console.info('Succeeded in setting usb policy');
@@ -136,13 +150,15 @@ disableUsb(admin: Want, disable: boolean): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名  | 类型                                                    | 必填 | 说明                                             |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。           |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。           |
 | disable | boolean                                                 | 是   | 是否禁用USB设备，true表示禁用，false表示不禁用。 |
 
 **错误码**：
@@ -161,17 +177,19 @@ disableUsb(admin: Want, disable: boolean): void
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   usbManager.disableUsb(wantTemp, true);
   console.info(`Succeeded in disabling USB`);
 } catch (err) {
-  console.error(`Failed to disabling USB. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to disable USB. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -185,13 +203,15 @@ isUsbDisabled(admin: Want): boolean
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -214,11 +234,13 @@ isUsbDisabled(admin: Want): boolean
 **示例：**
 
 ```ts
+import { usbManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let isDisabled = usbManager.isUsbDisabled(wantTemp);

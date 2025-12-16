@@ -1,4 +1,14 @@
 # Camera_TorchStatusInfo
+<!--Kit: Camera Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @qano-->
+<!--Designer: @leo_ysl-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+```c
+typedef struct Camera_TorchStatusInfo {...} Camera_TorchStatusInfo
+```
 
 ## 概述
 

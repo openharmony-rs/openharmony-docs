@@ -1,5 +1,12 @@
 # 从TypeScript到ArkTS的适配规则
 
+<!--Kit: ArkTS-->
+<!--Subsystem: ArkCompiler-->
+<!--Owner: @husenlin-->
+<!--Designer: @qyhuo32-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @zhang_yixin13-->
+
 ArkTS规范约束了TypeScript（简称TS）中影响开发正确性或增加运行时开销的特性。本文罗列了ArkTS中限制的TS特性，并提供重构代码的建议。ArkTS保留了TS大部分语法特性，未在本文中约束的TS特性，ArkTS完全支持。例如，ArkTS支持自定义装饰器，语法与TS一致。按本文约束进行代码重构后，代码仍为合法有效的TS代码。
 
 **示例**
@@ -26,8 +33,8 @@ function addTen(x: number): number {
 
 约束分为两个级别：错误、警告。
 
-- **错误**: 必须要遵从的约束。如果不遵从该约束，将会导致程序编译失败。 
-- **警告**: 推荐遵从的约束。尽管现在违反该约束不会影响编译流程，但是在将来，违反该约束可能将会导致程序编译失败。
+- **错误**: 必须要遵从的约束。如果不遵从该约束，将会导致程序编译失败。
+- **警告**: 推荐遵从的约束。尽管现在违反该约束不会影响编译流程，但是在将来，违反该约束可能会导致程序编译失败。
 
 **不支持的特性**
 
@@ -36,7 +43,7 @@ function addTen(x: number): number {
 - 与降低运行时性能的动态类型相关的特性。
 - 需要编译器额外支持从而导致项目构建时间增加的特性。
 
-根据开发者的反馈和实际场景的数据，将来会进一步减少不支持的特性。
+根据开发者的反馈和实际场景的数据，未来将逐步减少不支持的特性。
 
 ## 概述
 
@@ -53,18 +60,23 @@ function addTen(x: number): number {
 ```typescript
 // 不支持：
 let res: any = some_api_function('hello', 'world');
-// `res`是什么？错误代码的数字？字符串？对象？
-// 该如何处理它？
 // 支持：
 class CallResult {
-  public succeeded(): boolean { ... }
-  public errorMessage(): string { ... }
+  public succeeded(): boolean {
+    return false;
+  }
+  public errorMessage(): string {
+    return '123';
+  }
+}
+function some_api_function(param1: string, param2: string): CallResult {
+  return new CallResult();
 }
 
 let res: CallResult = some_api_function('hello', 'world');
 if (!res.succeeded()) {
-  console.info('Call failed: ' + res.errorMessage());
-}
+  console.info('Call failed: ' + res.errorMessage());   
+}  
 ```
 
 `any`类型在TypeScript中并不常见，仅约1%的TypeScript代码库使用。代码检查工具（例如ESLint）也制定了一系列规则来禁止使用`any`。因此，虽然禁止`any`将导致代码重构，但重构量很小，有助于整体性能提升。
@@ -128,7 +140,7 @@ console.info('Distance between p5 and p6: ' + distance(p5, p6));
 
 修改对象布局会影响代码可读性和运行时性能。定义类后，在其他地方修改对象布局，容易引起困惑乃至引入错误。此外，还需要额外的运行时支持，增加执行开销。这与静态类型约束冲突：使用显式类型时，不应添加或删除属性。
 
-当前，只有少数项目允许在运行时变更对象布局，一些常用的代码检查工具也增加了相应的限制规则。这个约束只会导致少量代码重构，但会提升性能。
+当前，只有少数项目允许在运行时变更对象布局，一些常用的代码检查工具也增加了相应的限制规则。虽然需要少量代码重构，但由此带来的性能提升收益十分可观。
 
 ### 限制运算符的语义
 
@@ -148,7 +160,7 @@ let s = +'42'; // 编译时错误
 
 ### 不支持 structural typing
 
-假设两个不相关的类`T`和`U`拥有相同的`public`API：
+假设两个不相关的类`T`和`U`都拥有相同的`public`API：
 
 ```typescript
 class T {
@@ -188,12 +200,12 @@ greeter(t); // 是否允许？
 
 具体采用哪种方法，情况如下：
 
-- `T`和`U`没有继承关系或没有`implements`相同的接口，但由于它们具有相同的`public`API，它们“在某种程度上是相等的”，所以上述两个问题的答案都是“是”。
+- `T`和`U`没有继承关系或没有`implements`相同的接口，但由于它们具有相同的`public`API，它们“在某种程度上是相等的”，因此上述两个问题的答案都是“是”。
 - `T`和`U`没有继承关系或没有`implements`相同的接口，应当始终被视为完全不同的类型，因此上述两个问题的答案都是“否”。
 
 采用第一种方法的语言支持structural typing，而采用第二种方法的语言则不支持structural typing。目前TypeScript支持structural typing，而ArkTS不支持。
 
-关于structural typing是否有助于生成清晰、易理解的代码，目前尚未有定论。ArkTS不支持structural typing的原因如下：
+关于structural typing是否有助于生成清晰、易理解的代码，目前尚无定论。ArkTS不支持structural typing的原因如下：
 
 因为对structural typing的支持是一个重大的特性，需要在语言规范、编译器和运行时进行大量的考虑和仔细的实现。另外，由于ArkTS使用静态类型，运行时为了支持这个特性需要额外的性能开销。
 
@@ -259,7 +271,7 @@ let obj: Record<string, number> = {
 
 **错误码：10605002**
 
-在ArkTS中，对象布局在编译时确定，不可在运行时更改，因此不支持`Symbol()`API。该API在静态类型语言中通常没有实际意义。
+在ArkTS中，对象布局在编译时确定，不可在运行时更改，因此不支持`Symbol()` API。该API在静态类型语言中通常没有实际意义。
 
 ArkTS只支持`Symbol.iterator`。
 
@@ -491,7 +503,7 @@ function fn(s: string): SomeObject {
 
 **错误码：10605016**
 
-ArkTS不允许类中有多个静态块，如果存在多个静态块语句，请合并到一个静态块中。
+ArkTS不允许类中存在多个静态块。如果存在多个静态块语句，请将其合并到一个静态块中。
 
 **TypeScript**
 
@@ -520,10 +532,6 @@ class C {
   }
 }
 ```
-
-**说明**
-
-当前不支持静态块的语法。支持该语法后，在.ets文件中使用静态块需遵循此约束。
 
 ### 不支持index signature
 
@@ -633,8 +641,8 @@ class C {
 **ArkTS**
 
 ```typescript
-interface ListItem {
-  getHead(): ListItem
+interface testListItem {
+  getHead(): testListItem
 }
 
 class C {
@@ -685,7 +693,7 @@ type YI<Item, T extends Array<Item>> = Item
 
 **错误码：10605025**
 
-ArkTS不支持在`constructor`中声明类字段。在`class`中声明这些字段。
+ArkTS禁止在构造函数中声明类字段，所有字段都必须在`class`作用域内显式声明。
 
 **TypeScript**
 
@@ -735,7 +743,7 @@ class Person {
 
 **错误码：10605027**
 
-ArkTS不支持在接口中使用构造签名。建议使用函数或方法。
+ArkTS语法禁止在接口（interface）中定义构造签名。作为替代方案，建议使用普通函数或方法来实现相同功能。
 
 **TypeScript**
 
@@ -780,7 +788,7 @@ ArkTS不支持索引访问类型。
 **错误码：10605029**
 
 ArkTS不支持动态声明字段，不支持动态访问字段。只能访问已在类中声明或者继承可见的字段，访问其他字段将会造成编译时错误。
-使用点操作符访问字段，例如（`obj.field`），不支持索引访问（`obj[field]`）。
+使用点操作符访问字段，例如（`obj.field`），不支持索引访问（`obj['field']`）。
 ArkTS支持通过索引访问`TypedArray`（例如`Int32Array`）中的元素。
 
 **TypeScript**
@@ -1005,7 +1013,7 @@ let z = greet<string>();
 
 **错误码：10605038**
 
-在ArkTS中，需要显式标注对象字面量的类型，否则，将发生编译时错误。在某些场景下，编译器可以根据上下文推断出字面量的类型。
+在 ArkTS 中，需要显式标注对象字面量的类型，否则将导致编译时错误。在某些场景下，编译器可以根据上下文推断出字面量的类型。
 
 在以下上下文中不支持使用字面量初始化类和接口：
 
@@ -1189,7 +1197,7 @@ getPoint({x: 5, y: 10});
 
 **错误码：10605040**
 
-ArkTS不支持使用对象字面量声明类型，可以使用类或者接口声明类型。
+ArkTS不支持使用对象字面量声明类型，建议使用类或接口声明类型。
 
 **TypeScript**
 
@@ -1223,7 +1231,7 @@ type S = Set<O>
 
 **错误码：10605043**
 
-ArkTS将数组字面量的类型推断为所有元素的联合类型。如果其中任何一个元素的类型无法推导，则编译时会发生错误。
+ArkTS将数组字面量的类型推断为所有元素的联合类型。如果其中任何一个元素的类型无法推导，则在编译时会发生错误。
 
 **TypeScript**
 
@@ -1251,7 +1259,7 @@ let a2: C[] = [{n: 1, s: '1'}, {n: 2, s: '2'}];    // a2的类型为“C[]”
 
 **错误码：10605046**
 
-ArkTS不支持函数表达式，使用箭头函数。
+ArkTS不支持函数表达式，使用箭头函数（=>）。
 
 **TypeScript**
 
@@ -1288,8 +1296,8 @@ const Rectangle = class {
     this.width = width;
   }
 
-  height
-  width
+  height;
+  width;
 }
 
 const rectangle = new Rectangle(0.0, 0.0);
@@ -1298,17 +1306,17 @@ const rectangle = new Rectangle(0.0, 0.0);
 **ArkTS**
 
 ```typescript
-class Rectangle {
-  constructor(height: number, width: number) {
-    this.height = height;
-    this.width = width;
+class testRectangle {
+  constructor(testHeight: number, testWidth: number) {
+    this.testHeight = testHeight;
+    this.testWidth = testWidth;
   }
 
-  height: number
-  width: number
+  testHeight: number;
+  testWidth: number;
 }
 
-const rectangle = new Rectangle(0.0, 0.0);
+const rectangle = new testRectangle(0.0, 0.0);
 ```
 
 ### 类不允许`implements`
@@ -1319,7 +1327,7 @@ const rectangle = new Rectangle(0.0, 0.0);
 
 **错误码：10605051**
 
-ArkTS不允许类被`implements`，只有接口可以被`implements`。
+ArkTS中只有接口可以被`implements`，类不允许被`implements`。
 
 **TypeScript**
 
@@ -1421,20 +1429,20 @@ c3.foo(); // Extra foo
 **TypeScript**
 
 ```typescript
-class Shape {}
-class Circle extends Shape { x: number = 5 }
-class Square extends Shape { y: string = 'a' }
+class testShape {}
+class testCircle extends testShape { x: number = 5 }
+class testSquare extends testShape { y: string = 'a' }
 
-function createShape(): Shape {
-  return new Circle();
+function createShape(): testShape {
+  return new testCircle();
 }
 
-let c1 = <Circle> createShape();
+let c1 = <testCircle> createShape();
 
-let c2 = createShape() as Circle;
+let c2 = createShape() as testCircle;
 
 // 如果转换错误，不会产生编译时或运行时报错
-let c3 = createShape() as Square;
+let c3 = createShape() as testSquare;
 console.info(c3.y); // undefined
 
 // 在TS中，由于`as`关键字不会在运行时生效，所以`instanceof`的左操作数不会在运行时被装箱成引用类型
@@ -1447,21 +1455,17 @@ let e2 = (new Number(5.0)) instanceof Number; // true
 **ArkTS**
 
 ```typescript
-class Shape {}
-class Circle extends Shape { x: number = 5 }
-class Square extends Shape { y: string = 'a' }
+class testShape {}
+class testCircle extends testShape { x: number = 5 }
 
-function createShape(): Shape {
-  return new Circle();
+function createShape(): testShape {
+  return new testCircle();
 }
 
-let c2 = createShape() as Circle;
-
-// 运行时抛出ClassCastException异常：
-let c3 = createShape() as Square;
+let c1 = createShape() as testCircle;
 
 // 创建Number对象，获得预期结果：
-let e2 = (new Number(5.0)) instanceof Number; // true
+let e1 = (new Number(5.0)) instanceof Number; // true
 ```
 
 ### 不支持JSX表达式
@@ -1482,7 +1486,7 @@ let e2 = (new Number(5.0)) instanceof Number; // true
 
 **错误码：10605055**
 
-ArkTS仅允许一元运算符用于数值类型，否则会导致编译时错误。与TypeScript不同，ArkTS不支持隐式字符串到数值的转换，必须进行显式转换。
+ArkTS对一元运算符实施严格的类型检查，仅允许操作数值类型。与TypeScript不同，ArkTS禁止隐式的字符串转换到数值，开发者必须使用显式类型的转换方法。
 
 **TypeScript**
 
@@ -1538,7 +1542,7 @@ let y = +returnString(); // 编译时错误
 
 **错误码：10605059**
 
-在ArkTS中，对象布局在编译时确定，运行时不可更改。因此，删除属性的操作没有意义。
+在ArkTS中，对象布局于编译时确定，运行时不可更改，因此删除属性的操作无意义。
 
 **TypeScript**
 
@@ -1606,6 +1610,21 @@ let s2: string
 **错误码：10605065**
 
 TypeScript中，`instanceof`运算符的左操作数类型必须为`any`类型、对象类型或类型参数，否则结果为`false`。ArkTS中，`instanceof`运算符的左操作数类型必须为引用类型（如对象、数组或函数），否则会发生编译时错误。此外，左操作数必须是对象实例。
+
+**TypeScript**
+
+```typescript
+let num: number = 42;
+let result = num instanceof Number;
+console.info('result = ', result); // result = false
+```
+
+**ArkTS**
+
+```typescript
+let num: number = 42;
+let result = num instanceof Number; // 编译报错
+```
 
 ### 不支持`in`运算符
 
@@ -1794,7 +1813,7 @@ try {
 
 **错误码：10605080**
 
-由于在ArkTS中，对象布局在编译时是确定的并且在运行时无法修改，因此不支持使用`for .. in`迭代一个对象的属性。
+在ArkTS中，对象布局在编译时确定且运行时不可修改，因此不支持使用`for .. in`迭代对象属性。
 
 **TypeScript**
 
@@ -1822,7 +1841,7 @@ for (let i = 0; i < a.length; ++i) {
 
 **错误码：10605083**
 
-ArkTS不支持映射类型，使用其他语法来表示相同的语义。
+ArkTS不支持映射类型，使用其他语法表示相同语义。
 
 **TypeScript**
 
@@ -2103,7 +2122,7 @@ function* counter(start: number, end: number) {
 }
 
 for (let num of counter(1, 5)) {
-  console.info(num);
+  console.info(num.toString());
 }
 ```
 
@@ -2132,7 +2151,7 @@ foo()
 
 **错误码：10605096**
 
-ArkTS不支持`is`运算符，必须用`instanceof`运算符替代。在使用之前，必须使用`as`运算符将对象转换为需要的类型。
+在ArkTS中，不支持`is`运算符，必须使用`instanceof`运算符来替代。在使用`instanceof`之前，必须先使用`as`运算符将对象转换为所需类型。
 
 **TypeScript**
 
@@ -2161,8 +2180,8 @@ function doStuff(arg: Foo | Bar) {
   }
 }
 
-doStuff({ foo: 123, common: '123' });
-doStuff({ bar: 123, common: '123' });
+doStuff({ foo: '123', common: '123' });
+doStuff({ bar: '123', common: '123' });
 ```
 
 **ArkTS**
@@ -2376,29 +2395,29 @@ ArkTS不支持类和接口的声明合并。
 
 ```typescript
 interface Document {
-  createElement(tagName: any): Element
+  createElement(tagName: any): number;
 }
 
 interface Document {
-  createElement(tagName: string): HTMLElement
+  createElement(tagName: string): boolean;
 }
 
 interface Document {
-  createElement(tagName: number): HTMLDivElement
-  createElement(tagName: boolean): HTMLSpanElement
-  createElement(tagName: string, value: number): HTMLCanvasElement
+  createElement(tagName: number): number;
+  createElement(tagName: boolean): boolean;
+  createElement(tagName: string, value: number): string;
 }
 ```
 
 **ArkTS**
-
+ 
 ```typescript
 interface Document {
-  createElement(tagName: number): HTMLDivElement
-  createElement(tagName: boolean): HTMLSpanElement
-  createElement(tagName: string, value: number): HTMLCanvasElement
-  createElement(tagName: string): HTMLElement
-  createElement(tagName: Object): Element
+  createElement(tagName: number): number;
+  createElement(tagName: boolean): boolean;
+  createElement(tagName: string, value: number): number;
+  createElement(tagName: string): string;
+  createElement(tagName: Object): object;
 }
 ```
 
@@ -2410,7 +2429,7 @@ interface Document {
 
 **错误码：10605104**
 
-ArkTS中，接口不能继承类，只能继承其他接口。
+在ArkTS中，接口不能继承类，只能继承其他接口。
 
 **TypeScript**
 
@@ -2880,7 +2899,7 @@ class C {
     console.info(this.p);
   }
   q(r: string) {
-    return this.p == r;
+    return this.p === r;
   }
 }
 ```
@@ -2949,7 +2968,7 @@ ArkTS仅支持`Partial`、`Required`、`Readonly`和`Record`，不支持TypeScri
 
 **错误码：10605152**
 
-ArkTS不允许使用标准库函数`Function.apply`和`Function.call`。这些函数用于显式设置被调用函数的`this`参数。在ArkTS中，`this`的语义仅限于传统的OOP风格，函数体中禁止使用`this`。
+ArkTS不允许使用标准库函数`Function.apply`和`Function.call`，因为这些函数用于显式设置被调用函数的`this`参数。在ArkTS中，`this`的语义仅限于传统的OOP风格，函数体中禁止使用`this`。
 
 ### 不支持`Function.bind`
 
@@ -2970,7 +2989,7 @@ ArkTS禁用标准库函数`Function.bind`。标准库使用这些函数显式设
 
 **错误码：10605142**
 
-ArkTS不支持`as const`断言和字面量类型。标准TypeScript中，`as const`用于标注字面量类型。
+ArkTS不支持`as const`断言和字面量类型。在标准TypeScript中，`as const`用于标注字面量类型。
 
 **TypeScript**
 
@@ -3061,11 +3080,9 @@ ArkTS不允许使用TypeScript或JavaScript标准库中的某些接口。大部�
 
 ### 强制进行严格类型检查
 
-**规则：**`arkts-strict-typing`
-
 **级别：错误**
 
-**错误码：10605145**
+**错误码：10605999**
 
 在编译阶段，会进行TypeScript严格模式的类型检查，包括：
 `noImplicitReturns`, 
@@ -3103,7 +3120,7 @@ let n2: number = 0;
 
 在定义类时，如果无法在声明时或者构造函数中初始化某实例属性，那么可以使用确定赋值断言符`!`来消除`strictPropertyInitialization`的报错。
 
-使用确定赋值断言符会增加代码错误风险。开发者需确保实例属性在使用前已赋值，否则可能产生运行时异常。
+使用确定赋值断言符会增加代码错误的风险。开发者必须确保实例属性在使用前已赋值，以避免运行时异常。
 
 使用确定赋值断言符会增加运行时开销，应尽量避免使用。
 
@@ -3219,7 +3236,7 @@ import { C } from 'lib1'
 
 **错误码：10605150**
 
-在ArkTS中，除动态`import`语句外，所有`import`语句需置于其他语句之前。
+在ArkTS中，除动态 `import` 语句外，所有 `import` 语句都应置于其他语句之前。
 
 **TypeScript**
 
@@ -3278,7 +3295,7 @@ function f() {
   e5.prop;               // API18以前，编译时错误：不能访问ESObject类型变量的属性；API18以后，OK，支持点操作符访问
 
   let e6: ESObject = foo(); // OK，显式标注ESObject类型
-  let e7 = e6;              // OK，使用ESObject类型赋值
+  let e7: ESObject = e6;    // OK，使用ESObject类型赋值
   bar(e7);                  // OK，ESObject类型变量传给跨语言调用的函数
 }
 ```

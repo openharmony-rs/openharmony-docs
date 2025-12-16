@@ -1,4 +1,10 @@
 # @ohos.enterprise.bluetoothManager（蓝牙管理）(系统接口)
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供设备蓝牙管理的能力，包括设置和查询蓝牙信息等。
 
@@ -8,9 +14,9 @@
 >
 > 本模块接口仅可在Stage模型下使用。
 >
-> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-guide.md#功能介绍)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
+> 本模块接口仅对[设备管理应用](../../mdm/mdm-kit-term.md#mdm应用设备管理应用)开放，需将[设备管理应用激活](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2)后调用。
 > 
-> 当前页面仅包含本模块的系统接口，其他公开接口参见。其他公开接口参见[@ohos.enterprise.bluetoothManager](js-apis-enterprise-bluetoothManager.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.enterprise.bluetoothManager](js-apis-enterprise-bluetoothManager.md)。
 
 ## 导入模块
 
@@ -28,13 +34,15 @@ isBluetoothDisabled(admin: Want): boolean
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -57,16 +65,18 @@ isBluetoothDisabled(admin: Want): boolean
 **示例：**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
   let isDisabled: boolean = bluetoothManager.isBluetoothDisabled(wantTemp);
-  console.info(`Succeeded in query the bluetooth is disabled or not, isDisabled : ${isDisabled}`);
+  console.info(`Succeeded in querying the bluetooth is disabled or not, isDisabled : ${isDisabled}`);
 } catch(err) {
   console.error(`Failed to query the bluetooth is disabled or not. Code: ${err.code}, message: ${err.message}`);
 };
@@ -82,13 +92,15 @@ setBluetoothDisabled(admin: Want, disabled: boolean): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名   | 类型                                                    | 必填 | 说明                                      |
 | -------- | ------------------------------------------------------- | ---- | ----------------------------------------- |
-| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                    |
+| admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                    |
 | disabled | boolean                                                 | 是   | true表示禁用蓝牙，false表示解除蓝牙禁用。 |
 
 **错误码：**
@@ -106,16 +118,18 @@ setBluetoothDisabled(admin: Want, disabled: boolean): void
 **示例：**
 
 ```ts
+import { bluetoothManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
   bluetoothManager.setBluetoothDisabled(wantTemp, true);
-  console.info('Succeeded in set the bluetooth disabled.');
+  console.info('Succeeded in setting the bluetooth disabled.');
 } catch(err) {
   console.error(`Failed to set the bluetooth disabled. Code: ${err.code}, message: ${err.message}`);
 };

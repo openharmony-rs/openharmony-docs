@@ -1,17 +1,22 @@
 # ServiceAbility Switching
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
 
-The ServiceAbility component in the FA model corresponds to the ServiceExtensionAbility component in the stage model. The ServiceExtensionAbility class provides system APIs. Only system applications can create ServiceExtensionAbility instances. Therefore, ServiceAbility switching adopts different policies for system applications and third-party applications.  
+The ServiceAbility component in the [FA model](ability-terminology.md#fa-model) corresponds to the ServiceExtensionAbility component in the [stage model](ability-terminology.md#stage-model). The ServiceExtensionAbility class provides system APIs. Only system applications can create ServiceExtensionAbility instances. Therefore, ServiceAbility switching adopts different policies for system applications and third-party applications.  
 
 
 ## Switching a ServiceAbility for a System Application
 
 The procedure for switching a ServiceAbility for a system application is similar to the procedure of PageAbility switching.
 
-1. [Create a ServiceExtensionAbility](serviceextensionability.md) in the stage model.
+1. [Create a ServiceExtensionAbility](serviceextensionability-sys.md) in the stage model.
 
 2. Migrate the ServiceAbility code to the ServiceExtensionAbility.
-   
 
 The table below describes the lifecycle comparison of the ServiceAbility and ServiceExtensionAbility.
 
@@ -31,6 +36,6 @@ In the stage model, third-party applications cannot provide services for other t
 
 | Service Type| Switching Solution|
 | -------- | -------- |
-| Providing services for other third-party applications| Match a scenario-specific [ExtensionAbility](extensionability-overview.md).|
-| In-application: providing public use when it is running in the foreground| Extract the component code as a common module for other components to use.|
-| In-application: continuing running when it switches to the background| Switch the service to a [background service](serviceextensionability.md).|
+| Providing services for other third-party applications| Match a scenario-specific [ExtensionAbility](extensionability-overview.md).| 
+| In-application: providing public use when it is running in the foreground| Extract the component code as a common module for other components to use.| 
+| In-application: continuing running when it switches to the background| Switch the service to a [background service](serviceextensionability-sys.md).| 

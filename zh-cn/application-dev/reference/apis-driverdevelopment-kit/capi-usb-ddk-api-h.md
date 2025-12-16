@@ -1,4 +1,10 @@
 # usb_ddk_api.h
+<!--Kit: Driver Development Kit-->
+<!--Subsystem: Driver-->
+<!--Owner: @lixinsheng2-->
+<!--Designer: @w00373942-->
+<!--Tester: @dong-dongzhen-->
+<!--Adviser: @w_Machine_cc-->
 
 ## 概述
 
@@ -42,7 +48,7 @@
 
 ### OH_Usb_Init()
 
-```
+```c
 int32_t OH_Usb_Init(void)
 ```
 
@@ -58,11 +64,11 @@ int32_t OH_Usb_Init(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接 USB DDK 服务失败或内部错误。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存分配失败。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接 USB DDK 服务失败或内部错误。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存分配失败。 |
 
 ### OH_Usb_Release()
 
-```
+```c
 void OH_Usb_Release(void)
 ```
 
@@ -76,7 +82,7 @@ void OH_Usb_Release(void)
 
 ### OH_Usb_ReleaseResource()
 
-```
+```c
 int32_t OH_Usb_ReleaseResource(void)
 ```
 
@@ -92,11 +98,11 @@ int32_t OH_Usb_ReleaseResource(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接 USB DDK 服务失败。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接 USB DDK 服务失败。 |
 
 ### OH_Usb_GetDeviceDescriptor()
 
-```
+```c
 int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor *desc)
 ```
 
@@ -120,11 +126,11 @@ int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接usb_ddk服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参desc为空指针。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接usb_ddk服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参desc为空指针。 |
 
 ### OH_Usb_GetConfigDescriptor()
 
-```
+```c
 int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struct UsbDdkConfigDescriptor ** const config)
 ```
 
@@ -149,11 +155,11 @@ int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struc
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参config为空指针。<br>         {@link USB_DDK_IO_FAILED} 数据IO异常。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存分配失败。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参config为空指针。<br>         [USB_DDK_IO_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 数据IO异常。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存分配失败。 |
 
 ### OH_Usb_FreeConfigDescriptor()
 
-```
+```c
 void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const config)
 ```
 
@@ -174,7 +180,7 @@ void OH_Usb_FreeConfigDescriptor(const struct UsbDdkConfigDescriptor * const con
 
 ### OH_Usb_ClaimInterface()
 
-```
+```c
 int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_t *interfaceHandle)
 ```
 
@@ -199,11 +205,11 @@ int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参interfaceHandle为空指针。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存超出限制。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参interfaceHandle为空指针。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存超出限制。 |
 
 ### OH_Usb_ReleaseInterface()
 
-```
+```c
 int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)
 ```
 
@@ -226,11 +232,11 @@ int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 参数错误。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 参数错误。 |
 
 ### OH_Usb_SelectInterfaceSetting()
 
-```
+```c
 int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingIndex)
 ```
 
@@ -254,11 +260,11 @@ int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingI
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 参数错误。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 参数错误。 |
 
 ### OH_Usb_GetCurrentInterfaceSetting()
 
-```
+```c
 int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *settingIndex)
 ```
 
@@ -282,11 +288,11 @@ int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *set
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参settingIndex为空指针。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参settingIndex为空指针。 |
 
 ### OH_Usb_SendControlReadRequest()
 
-```
+```c
 int32_t OH_Usb_SendControlReadRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup *setup,uint32_t timeout, uint8_t *data, uint32_t *dataLen)
 ```
 
@@ -313,11 +319,11 @@ int32_t OH_Usb_SendControlReadRequest(uint64_t interfaceHandle, const struct Usb
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 权限校验失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参setup或者data或者dataLen为空指针，或者datalen小于读取到的数据长度。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 拷贝读取数据的内存失败。<br>         USB_DDK_IO_FAILED 数据IO异常。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 接口调用超时。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 权限校验失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参setup或者data或者dataLen为空指针，或者datalen小于读取到的数据长度。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 拷贝读取数据的内存失败。<br>         [USB_DDK_IO_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 数据IO异常。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 接口调用超时。 |
 
 ### OH_Usb_SendControlWriteRequest()
 
-```
+```c
 int32_t OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct UsbControlRequestSetup *setup,uint32_t timeout, const uint8_t *data, uint32_t dataLen)
 ```
 
@@ -344,11 +350,11 @@ int32_t OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct Us
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 权限校验失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参setup或者data为空指针。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存拷贝失败。<br>         USB_DDK_IO_FAILED 数据IO异常。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 接口调用超时。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 权限校验失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参setup或者data为空指针。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存拷贝失败。<br>         [USB_DDK_IO_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 数据IO异常。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 接口调用超时。 |
 
 ### OH_Usb_SendPipeRequest()
 
-```
+```c
 int32_t OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMap *devMmap)
 ```
 
@@ -372,11 +378,11 @@ int32_t OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMa
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参pipe为空指针或devMmap为空指针或devMmap的地址为空。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 读取数据的内存拷贝失败。<br>         USB_DDK_IO_FAILED 数据 IO 异常。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 接口超时。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参pipe为空指针或devMmap为空指针或devMmap的地址为空。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 读取数据的内存拷贝失败。<br>         [USB_DDK_IO_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 数据 IO 异常。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 接口超时。 |
 
 ### OH_Usb_SendPipeRequestWithAshmem()
 
-```
+```c
 int32_t OH_Usb_SendPipeRequestWithAshmem(const struct UsbRequestPipe *pipe, DDK_Ashmem *ashmem)
 ```
 
@@ -394,17 +400,17 @@ int32_t OH_Usb_SendPipeRequestWithAshmem(const struct UsbRequestPipe *pipe, DDK_
 | 参数项                                                         | 描述 |
 |-------------------------------------------------------------| -- |
 | [const struct UsbRequestPipe](capi-usbddk-usbrequestpipe.md) *pipe | 要传输数据的管道信息。 |
-| [DDK_Ashmem](capi-baseddk-ddk-ashmem.md) *ashmem            | 共享内存，可以通过 {@link OH_DDK_CreateAshmem}获得。 |
+| [DDK_Ashmem](capi-baseddk-ddk-ashmem.md) *ashmem            | 共享内存，可以通过[OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem)获得。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode)入参pipe为空指针或ashmem为空指针或ashmem的地址为空。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 读取数据的内存拷贝失败。<br>         USB_DDK_IO_FAILED 数据 IO 异常。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 接口超时。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode)入参pipe为空指针或ashmem为空指针或ashmem的地址为空。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 读取数据的内存拷贝失败。<br>         [USB_DDK_IO_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 数据 IO 异常。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 接口超时。 |
 
 ### OH_Usb_CreateDeviceMemMap()
 
-```
+```c
 int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap)
 ```
 
@@ -429,11 +435,11 @@ int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMa
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode)调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参devMmap为空指针。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存映射失败或devMmap的内存分配失败。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode)调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参devMmap为空指针。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存映射失败或devMmap的内存分配失败。 |
 
 ### OH_Usb_DestroyDeviceMemMap()
 
-```
+```c
 void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 ```
 
@@ -454,7 +460,7 @@ void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 
 ### OH_Usb_GetDevices()
 
-```
+```c
 int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)
 ```
 
@@ -477,6 +483,6 @@ int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         USB_DDK_NO_PERM 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参devices为空指针。 |
+| int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参devices为空指针。 |
 
 

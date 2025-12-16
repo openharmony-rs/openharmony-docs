@@ -1,13 +1,17 @@
 # Class (MediaAssetManager)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @yixiaoff-->
+<!--Designer: @liweilu1-->
+<!--Tester: @xchaosioda-->
+<!--Adviser: @w_Machine_cc-->
+
+媒体资产管理类，管理媒体资源读取。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Class首批接口从API version 11开始支持。
-
-媒体资产管理类，管理媒体资源读取。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## 导入模块
 
@@ -19,7 +23,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 static requestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;image.ImageSource&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，请求图片资源。
+根据不同的策略模式，请求图片资源。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -51,7 +55,7 @@ static requestImage(context: Context, asset: PhotoAsset, requestOptions: Request
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 14000011       | System inner fail.        |
 
 **示例：**
 
@@ -84,10 +88,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   const handler = new MediaHandler();
 
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
-      console.info('fetchResult success');
-      let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-      await photoAccessHelper.MediaAssetManager.requestImage(context, photoAsset, requestOptions, handler);
-      console.info('requestImage successfully');
+    console.info('fetchResult success');
+    let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
+    await photoAccessHelper.MediaAssetManager.requestImage(context, photoAsset, requestOptions, handler);
+    console.info('requestImage successfully');
   });
 }
 ```
@@ -96,7 +104,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;ArrayBuffer&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，请求图片资源数据。
+根据不同的策略模式，请求图片资源数据。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -128,7 +136,7 @@ static requestImageData(context: Context, asset: PhotoAsset, requestOptions: Req
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 14000011       | System inner fail.        |
 
 **示例：**
 
@@ -162,6 +170,10 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   phAccessHelper.getAssets(fetchOptions, async (err, fetchResult) => {
       console.info('fetchResult success');
       let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+      if (photoAsset === undefined) {
+      console.error('requestImageData photoAsset is undefined');
+      return;
+    }
       await photoAccessHelper.MediaAssetManager.requestImageData(context, photoAsset, requestOptions, handler);
       console.info('requestImageData successfully');
   });
@@ -172,7 +184,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;MovingPhoto&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，请求动态照片对象。动态照片对象可用于请求动态照片的资源数据。
+根据不同的策略模式，请求动态照片对象（动态照片对象可用于请求动态照片的资源数据）。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -252,7 +264,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, fileUri: string, dataHandler: MediaAssetDataHandler&lt;boolean&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，请求视频资源数据到沙箱路径。
+根据不同的策略模式，请求视频资源数据到沙箱路径。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -269,7 +281,7 @@ static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: Req
 | asset | [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)                                            | 是   | 待请求的媒体文件对象。 |
 | requestOptions  | [RequestOptions](arkts-apis-photoAccessHelper-i.md#requestoptions11)                                  | 是   | 视频请求策略模式配置项。|
 | fileUri| string                                                              | 是 | 目标写入沙箱路径uri。示例fileUri：'file://com.example.temptest/data/storage/el2/base/haps/entry/files/test.mp4'。 |
-| dataHandler  | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;boolean&gt; | 是   | 媒体资源处理器，当所请求的视频资源写入完成时会触发回调。|
+| dataHandler  | [MediaAssetDataHandler](arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)&lt;boolean&gt; | 是   | 媒体资源处理器，当所请求的视频资源写入完成时会触发回调。<br>视频资源写入成功时返回true，写入失败则返回false。|
 
 **返回值：**
 
@@ -285,8 +297,8 @@ static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: Req
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801<sup>15+</sup>   | Capability not supported.       |
-| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out; 4. Permission denied.        |
+| 801  | Capability not supported.       |
+| 14000011       | System inner fail.        |
 
 **示例：**
 
@@ -326,7 +338,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static cancelRequest(context: Context, requestId: string): Promise\<void>
 
-取消未触发回调的资产内容请求。
+取消未触发回调的资产内容请求。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -376,7 +388,7 @@ async function example(context: Context) {
 
 static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: string): Promise\<MovingPhoto>
 
-加载应用沙箱的动态照片。
+加载应用沙箱的动态照片。使用Promise异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -424,7 +436,7 @@ async function example(context: Context) {
 
 static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: QuickImageDataHandler&lt;image.Picture&gt;): Promise&lt;string&gt;
 
-根据不同的策略模式，快速请求图片资源。
+根据不同的策略模式，快速请求图片资源。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

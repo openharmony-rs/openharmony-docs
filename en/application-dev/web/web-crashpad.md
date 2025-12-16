@@ -1,8 +1,14 @@
 # Using Crashpad to Collect Web Component Crash Information
+<!--Kit: ArkWeb-->
+<!--Subsystem: Web-->
+<!--Owner: @qq_44167590-->
+<!--Designer: @hjoksky-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
-The **Web** component supports process crash information collection using Crashpad. Crashpad is a process crash information handling tool provided by the Chromium kernel. When a process (including the main process and web rendering process) crashes due to the use of a **Web** component, Crashpad writes the **minidump** file in the sandbox directory of the main process of the application. This file is in binary format and the filename extension is **.dmp**. It records crash causes, thread information, and register information. You can use this file to analyze process crashes related to **Web** components.
+The **Web** component supports process crash information collection using Crashpad. Crashpad is a tool provided by the Chromium kernel for handling process crash information. When an application process (web rendering process) crashes when using a **Web** component, Crashpad writes the **minidump** file to the sandbox directory of the main process of the application. This file is in binary format and the filename extension is **.dmp**. It records crash causes, thread information, and register information. You can use this file to analyze process crashes related to **Web** components.
 
-How to use
+Procedure:
 
 1. When a process crashes because a **Web** component is used in the application, the corresponding **dmp** file is generated in the sandbox directory of the main process of the application. The sandbox path is as follows:
 
@@ -10,7 +16,9 @@ How to use
    /data/storage/el2/log/crashpad
    ```
 
-2. Obtain the DMP file in the directory and then parse it. The procedure is as follows:
+2. Access the DMP file of the application sandbox by referring to [Accessing Files on the Native Side](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-file-native-side).
+
+3. Parse the DMP file as follows:
 
    * Use the minidump_stackwalk tool to parse the DMP file, and then you can obtain the process crash information (crash cause, thread information, and register information). The example is as follows (Linux environment):
 

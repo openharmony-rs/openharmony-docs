@@ -1,4 +1,10 @@
 # swiper开发指导
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Hu_ZeQi-->
+<!--Designer: @jiangdayuan-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 swiper为滑动容器，提供切换显示子组件的能力。具体用法请参考[swiper](../reference/apis-arkui/arkui-js/js-components-container-swiper.md)。
@@ -63,7 +69,7 @@ text{
 
 ## 添加属性
 
-swiper组件当不开启循环播放（loop="false"）时添加自动播放属性（autoplay），设置自动播放时播放时间间隔（interval），页面会自动切换并停留在最后一个子组件页面。添加digital属性启用数字导航点，设置切换时为渐隐滑动效果（scrolleffect="fade"）。
+在swiper组件不开启循环播放（loop="false"）时添加自动播放属性（autoplay），设置自动播放时播放时间间隔（interval），页面会自动切换并停留在最后一个子组件页面。添加digital属性启用数字导航点，设置切换时为渐隐滑动效果（scrolleffect="fade"）。
 
 
 ```html
@@ -371,4 +377,4 @@ export default {
 
 针对swiper开发，有以下相关实例可供参考：
 
-- [简易视频播放器（JS）（API9）](https://gitee.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)
+- [简易视频播放器（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)

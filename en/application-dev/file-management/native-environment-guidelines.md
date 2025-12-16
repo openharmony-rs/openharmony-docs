@@ -1,8 +1,14 @@
 # Obtaining the User Directory Environment (C/C++)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 ## When to Use
 
-You can use [Environment](../reference/apis-core-file-kit/_environment.md) to allow a third-party application to access files in a user directory.
+You can use [Environment](../reference/apis-core-file-kit/capi-oh-environment-h.md) to allow a third-party application to access files in a user directory.
 
 ## Constraints
 
@@ -11,7 +17,7 @@ You can use [Environment](../reference/apis-core-file-kit/_environment.md) to al
 
 ## Available APIs
 
-For details about the APIs, see [Environment](../reference/apis-core-file-kit/_environment.md).
+For details about the APIs, see [API Reference](../reference/apis-core-file-kit/capi-oh-environment-h.md).
 
 | API| Description|
 | -------- | -------- |
@@ -26,59 +32,70 @@ For details about the APIs, see [Environment](../reference/apis-core-file-kit/_e
 Add the following library to **CMakeLists.txt**.
 
 ```txt
-target_link_libraries(sample PUBLIC libohenvironment.so)
+target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 ```
 
 **Adding Header Files**
 
 ```c++
-#include <cstdio>
 #include <cstdlib>
 #include <filemanagement/environment/oh_environment.h>
 #include <filemanagement/fileio/oh_fileio.h>
+#include <hilog/log.h>
 ```
 
 1. Call **OH_Environment_GetUserDownloadDir** to obtain the sandbox path of the user **Download** directory. The memory allocated must be released using **free()**. <br>Example:
 
-    ```c
-    void GetUserDownloadDirPathExample() {
-        char *downloadPath = NULL;
-        FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
-        if (ret == 0) {
-            printf("Download Path=%s", downloadPath);
-            free(downloadPath);
-        } else {
-            printf("GetDownloadPath failed, error code is %d", ret);
-        }
+<!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
+void GetUserDownloadDirPathExample()
+{
+    char *downloadPath = nullptr;
+    FileManagement_ErrCode ret = OH_Environment_GetUserDownloadDir(&downloadPath);
+    if (ret == 0) {
+        OH_LOG_INFO(LOG_APP, "Download Path=%{public}s", downloadPath);
+        free(downloadPath);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "GetDownloadPath fail, error code is %{public}d", ret);
     }
-   ```
+}
+```
+
 
 2. Call **OH_Environment_GetUserDesktopDir** to obtain the sandbox path of the user **Desktop** directory. The memory allocated must be released using **free()**. <br>Example:
 
-    ```c
-    void GetUserDesktopDirPathExample() {
-        char *desktopPath = NULL;
-        FileManagement_ErrCode ret = OH_Environment_GetUserDesktopDir(&desktopPath);
-        if (ret == 0) {
-            printf("Desktop Path=%s", desktopPath);
-            free(desktopPath);
-        } else {
-            printf("GetDesktopPath failed, error code is %d", ret);
-        }
+<!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
+void GetUserDesktopDirPathExample()
+{
+    char *desktopPath = nullptr;
+    FileManagement_ErrCode ret = OH_Environment_GetUserDesktopDir(&desktopPath);
+    if (ret == 0) {
+        OH_LOG_INFO(LOG_APP, "Desktop Path=%{public}s", desktopPath);
+        free(desktopPath);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "GetDesktopPath fail, error code is %{public}d", ret);
     }
-   ```
+}
+```
+
 
 3. Call **OH_Environment_GetUserDocumentDir** to obtain the sandbox path of the user **Document** directory. The memory allocated must be released using **free()**. <br>Example:
 
-    ```c
-    void GetUserDocumentDirPathExample() {
-        char *documentPath = NULL;
-        FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
-        if (ret == 0) {
-            printf("Document Path=%s", documentPath);
-            free(documentPath);
-        } else {
-            printf("GetDocumentPath failed, error code is %d", ret);
-        }
+<!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->
+
+``` C++
+void GetUserDocumentDirPathExample()
+{
+    char *documentPath = nullptr;
+    FileManagement_ErrCode ret = OH_Environment_GetUserDocumentDir(&documentPath);
+    if (ret == 0) {
+        OH_LOG_INFO(LOG_APP, "Document Path=%{public}s", documentPath);
+        free(documentPath);
+    } else {
+        OH_LOG_ERROR(LOG_APP, "GetDocumentPath fail, error code is %{public}d", ret);
     }
-   ```
+}
+```

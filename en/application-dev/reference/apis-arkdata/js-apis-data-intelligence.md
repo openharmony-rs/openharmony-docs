@@ -1,10 +1,13 @@
 # @ohos.data.intelligence (ArkData Intelligence Platform)
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @my-2024-->
+<!--Designer: @cuile44; @fysun17; @AnruiWang-->
+<!--Tester: @yippo; @logic42-->
+<!--Adviser: @ge-yafang-->
 
-The ArkData Intelligence Platform (AIP) provides on-device data intelligence capabilities, enabling AI-powered data processing data on devices. To underpin AI-powered processing on devices, the AIP aims to build the following capabilities:
-- Multimodal embedding model: leverages embedding models to generate vector representations for multimodal data, mapping text, images, and other data into a unified vector space for semantic-based multimodal knowledge retrieval.
-- Multimodal data storage: supports on-device storage for vectors, inverted indexes, and other multimodal data, eliminating the need to send raw data to the server for processing. This reduces the risk of data leakage.
-- Knowledge retrieval: enables semantic retrieval of user knowledge based on capabilities such as semantic indexing, knowledge graphs, recall, and re-ranking.
-- Knowledge generation and collation: implements efficient data organization and knowledge generation based on user data such as user documents, messages, emails, photos, videos, calendar events, and screen context, enabling the transformation of data into knowledge.
+ArkData Intelligence Platform (AIP) provides application data vectorization, which leverages embedding models to convert multi-modal data such as unstructured text and images into semantic vectors.
+
 
 > **NOTE**
 >
@@ -26,6 +29,8 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 Obtains a text embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -79,6 +84,8 @@ Obtains an image embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory| Description                              |
@@ -127,9 +134,11 @@ intelligence.getImageEmbeddingModel(imageConfig)
 
 splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
-Splits text.
+Splits text. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -180,11 +189,11 @@ Represents the configuration an embedded model.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-| Name    | Type             | Mandatory| Description                                                        |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| version    | [ModelVersion](#modelversion)           | Yes  |Version of the model.|
-| isNpuAvailable | boolean                | Yes  | Whether to use the NPU to accelerate the vectorization process. The value **true** means to use the NPU, and the value **false** means the opposite. If this parameter is set to **true** but the device does not support NPUs, loading an embedding model will trigger error 31300000.|
-| cachePath | string                | No  | Local directory for model caching if the NPU is used. The value is in the /xxx/xxx/xxx format, for example, **/data**. The path cannot exceed 512 characters. <br>Default value: **""**|
+| Name    | Type             | Read-Only| Optional| Description                                                        |
+| ---------- | --------------------- | ----| ---- | ------------------------------------------------------------ |
+| version    | [ModelVersion](#modelversion)           | No| No  |Version of the model.|
+| isNpuAvailable | boolean                | No| No  | Whether to use the NPU to accelerate the vectorization process. The value **true** means to use the NPU, and the value **false** means the opposite. If this parameter is set to **true** but the device does not support NPUs, loading an embedding model will trigger error 31300000.|
+| cachePath | string                | No | Yes | Local directory for model caching if the NPU is used. The value is in the /xxx/xxx/xxx format, for example, **/data**. The path cannot exceed 512 characters. <br>Default value: **""**|
 
 ## ModelVersion
 
@@ -214,10 +223,10 @@ Represents the configuration for text splitting.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
-| Name    | Type             | Mandatory| Description                                                        |
-| ---------- | --------------------- | ---- | ------------------------------------------------------------ |
-| size    |       number     | Yes  |Maximum size of a block. The value is a non-negative integer.|
-| overlapRatio | number                | Yes  | Overlap ratio between adjacent blocks. <br>Value range: [0,1]<br>The value **0** indicates the lowest overlap ratio, and **1** indicates the highest overlap ratio.|
+| Name    | Type             | Read-Only| Optional| Description                                                        |
+| ---------- | --------------------- | ---- | ----| ------------------------------------------------------------ |
+| size    |       number     | No  | No |Maximum size of a block. The value is a non-negative integer.|
+| overlapRatio | number                | No | No  | Overlap ratio between adjacent blocks. <br>Value range: [0,1]<br>The value **0** indicates the lowest overlap ratio, and **1** indicates the highest overlap ratio.|
 
 
 ## TextEmbedding
@@ -232,9 +241,11 @@ Before calling any of the following APIs, you must obtain a **TextEmbedding** in
 
 loadModel(): Promise&lt;void&gt;
 
-Loads this embedding model. This API uses a promise to return the result.
+Loads this text embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -269,9 +280,11 @@ textEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-Releases this embedding model. This API uses a promise to return the result.
+Releases this text embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -306,17 +319,19 @@ textEmbedding.releaseModel()
 
 getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt;
 
-Obtains the embedding vector of the given text.
+Obtains the embedding vector of the given text. This API uses a promise to return the result.
 
 Before calling this API, ensure that an embedding model is successfully loaded by using [loadModel](#loadmodel).
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
 
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
 **Parameters**
 
 | Name      | Type                                   | Mandatory| Description                              |
 | ------------ | --------------------------------------- | ---- | :--------------------------------- |
-| text | string | Yes  | Text for the embedding model. It cannot exceed 512 characters.|
+| text | string | Yes  | Text for the embedding model, which cannot exceed 512 characters.|
 
 **Return value**
 
@@ -355,11 +370,13 @@ textEmbedding.getEmbedding(text)
 
 getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt;
 
-Obtains the embedding vector of a given batch of texts.
+Obtains the embedding vector of a given batch of texts. This API uses a promise to return the result.
 
 Before calling this API, ensure that an embedding model is successfully loaded by using [loadModel](#loadmodel).
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -412,9 +429,11 @@ Before calling any of the following APIs, you must obtain a **ImageEmbedding** i
 
 loadModel(): Promise&lt;void&gt;
 
-Loads this embedding model. This API uses a promise to return the result.
+Loads this image embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -449,9 +468,11 @@ imageEmbedding.loadModel()
 
 releaseModel(): Promise&lt;void&gt;
 
-Releases this embedding model. This API uses a promise to return the result.
+Releases this image embedding model. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -486,11 +507,13 @@ imageEmbedding.releaseModel()
 
 getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt;
 
-Obtains the embedding vector of the given image.
+Obtains the embedding vector of the given image. This API uses a promise to return the result.
 
 Before calling this API, ensure that an embedding model is successfully loaded by using [loadModel](#loadmodel).
 
 **System capability**: SystemCapability.DistributedDataManager.DataIntelligence.Core
+
+**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

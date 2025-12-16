@@ -1,4 +1,10 @@
 # @ohos.app.form.formObserver (formObserver)(系统接口)
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @yangyuecheng-->
+<!--Adviser: @HelloShuo-->
 
 formObserver模块提供了卡片监听方相关接口的能力，包括对同一用户下安装的卡片新增、删除、可见性变化事件的订阅和取消订阅，获取正在运行的卡片信息等。
 
@@ -45,7 +51,7 @@ import { formObserver } from '@kit.FormKit';
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.on('formAdd', callback);
@@ -86,7 +92,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.on('formAdd', bundleName, callback);
@@ -127,7 +133,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.off('formAdd', bundleName, callback);
@@ -171,7 +177,7 @@ formObserver.off('formAdd', bundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`form deleted, data: ${JSON.stringify(data)}`);
+  console.info(`form deleted, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.on('formRemove', callback);
@@ -212,7 +218,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`form deleted, data: ${JSON.stringify(data)}`);
+  console.info(`form deleted, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.on('formRemove', bundleName, callback);
@@ -253,7 +259,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log(`a new form added, data: ${JSON.stringify(data)}`);
+  console.info(`a new form added, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.off('formRemove', bundleName, callback);
@@ -298,7 +304,7 @@ formObserver.off('formRemove', bundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change visibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.on('notifyVisible', callback);
@@ -343,7 +349,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change visibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.on('notifyVisible', bundleName, callback);
@@ -384,7 +390,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change visibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change visibility, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.off('notifyVisible', bundleName, callback);
@@ -430,7 +436,7 @@ formObserver.off('notifyVisible', bundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change invisibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.on('notifyInvisible', callback);
@@ -474,7 +480,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change invisibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.on('notifyInvisible', bundleName, callback);
@@ -515,7 +521,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 let bundleName: string = 'ohos.samples.FormApplication';
 
 let callback = (data: formInfo.RunningFormInfo[]) => {
-  console.log(`form change invisibility, data: ${JSON.stringify(data)}`);
+  console.info(`form change invisibility, data: ${JSON.stringify(data)}`);
 }
 
 formObserver.off('notifyInvisible', bundleName, callback);
@@ -568,7 +574,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
     }
   }, 'com.example.ohos.formjsdemo');
 } catch(error) {
@@ -591,7 +597,7 @@ getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
 | callback | AsyncCallback&lt;Array&lt;formInfo.[RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt;&gt; | 是 |  回调函数。获取设备上正在运行的所有非临时卡片信息。当获取成功时，回调中的error为undefined，data为查询到的卡片信息。|
-| isUnusedIncluded | boolean | 是 |  是否包含未使用的卡片。 |
+| isUnusedIncluded | boolean | 是 |  表示是否包含未使用的卡片。<br>true: 表示包含未使用的卡片。<br>false: 表示不包含未使用的卡片。|
 | hostBundleName | string | 否 |  指定要查询的卡片使用方名称，指定后会仅返回该卡片使用方下正在运行的非临时卡片信息。 <br> 缺省时，返回设备上所有正在运行的非临时卡片信息。 |
 
 **错误码：**
@@ -617,7 +623,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
     }
   }, true, 'com.example.ohos.formjsdemo');
 } catch(error) {
@@ -667,7 +673,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos('com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.log(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -690,7 +696,7 @@ getRunningFormInfos(isUnusedIncluded: boolean, hostBundleName?: string):  Promis
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| isUnusedIncluded | boolean | 是 |  是否包含未使用的卡片。 |
+| isUnusedIncluded | boolean | 是 |  表示是否包含未使用的卡片。<br>true: 表示包含未使用的卡片。<br>false: 表示不包含未使用的卡片。 |
 | hostBundleName | string | 否 |  指定要查询的卡片使用方名称，指定后会仅返回该卡片使用方下正在运行的非临时卡片信息。 <br> 缺省时，返回设备上所有正在运行的非临时卡片信息。 |
 
 **返回值：**
@@ -719,7 +725,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formObserver.getRunningFormInfos(true, 'com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
-    console.log(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
+    console.info(`formObserver getRunningFormInfos, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -836,7 +842,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfosByFilter, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfosByFilter, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -916,7 +922,7 @@ getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Promise&lt;fo
 | 参数名      | 类型            | 必填 | 说明                             |
 | ----------- | --------------- | ---- | -------------------------------- |
 | formId     | string | 是   | 卡片标识。 |
-| isUnusedIncluded     | boolean | 是   | 是否包含未使用的卡片。 |
+| isUnusedIncluded     | boolean | 是   | 表示是否包含未使用的卡片。<br>true: 表示包含未使用的卡片。<br>false: 表示不包含未使用的卡片。 |
 
 **返回值：**
 
@@ -999,7 +1005,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1024,7 +1030,7 @@ getRunningFormInfoById(formId: string, isUnusedIncluded: boolean, callback: Asyn
 | 参数名      | 类型            | 必填 | 说明                             |
 | ----------- | --------------- | ---- | -------------------------------- |
 | formId     | string | 是   | 卡片标识。 |
-| isUnusedIncluded     | boolean | 是   | 是否包含未使用的卡片。 |
+| isUnusedIncluded     | boolean | 是   | 表示是否包含未使用的卡片。<br>true: 表示包含未使用的卡片。<br>false: 表示不包含未使用的卡片。 |
 | callback | AsyncCallback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | 是 | 回调函数。返回已添加的卡片信息。error为undefined，data为查询到的使用方列表信息；否则为错误对象。 |
 
 **错误码：**
@@ -1052,7 +1058,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
+      console.info(`formObserver getRunningFormInfoById, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1092,7 +1098,7 @@ try {
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Router event listening in registered form.' + JSON.stringify(data));
+  console.info('Router event listening in registered form.' + JSON.stringify(data));
 };
 formObserver.on('router', callback);
 ```
@@ -1131,7 +1137,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Router event listening in registered form.' + JSON.stringify(data));
+  console.info('Router event listening in registered form.' + JSON.stringify(data));
 };
 formObserver.on('router', hostBundleName, callback);
 ```
@@ -1170,7 +1176,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Unregister form router event Listening.' + JSON.stringify(data));
+  console.info('Unregister form router event Listening.' + JSON.stringify(data));
 };
 formObserver.off('router', hostBundleName, callback);
 ```
@@ -1207,7 +1213,7 @@ formObserver.off('router', hostBundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Message event listening in registered form.' + JSON.stringify(data));
+  console.info('Message event listening in registered form.' + JSON.stringify(data));
 };
 formObserver.on('message', callback);
 ```
@@ -1246,7 +1252,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Message event listening in registered form.' + JSON.stringify(data));
+  console.info('Message event listening in registered form.' + JSON.stringify(data));
 };
 formObserver.on('message', hostBundleName, callback);
 ```
@@ -1285,7 +1291,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Unregister form Message event Listening.' + JSON.stringify(data));
+  console.info('Unregister form Message event Listening.' + JSON.stringify(data));
 };
 formObserver.off('message', hostBundleName, callback);
 ```
@@ -1322,7 +1328,7 @@ formObserver.off('message', hostBundleName, callback);
 import { formInfo, formObserver } from '@kit.FormKit';
 
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Call event listening in registered form.' + JSON.stringify(data));
+  console.info('Call event listening in registered form.' + JSON.stringify(data));
 };
 formObserver.on('call', callback);
 ```
@@ -1361,7 +1367,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Call event listening in registered form.' + JSON.stringify(data));
+  console.info('Call event listening in registered form.' + JSON.stringify(data));
 };
 formObserver.on('call', hostBundleName, callback);
 ```
@@ -1400,7 +1406,7 @@ import { formInfo, formObserver } from '@kit.FormKit';
 
 let hostBundleName: string = 'ohos.samples.FormApplication';
 let callback = (data: formInfo.RunningFormInfo) => {
-  console.log('Unregister form Call event Listening.' + JSON.stringify(data));
+  console.info('Unregister form Call event Listening.' + JSON.stringify(data));
 };
 formObserver.off('call', hostBundleName, callback);
 ```

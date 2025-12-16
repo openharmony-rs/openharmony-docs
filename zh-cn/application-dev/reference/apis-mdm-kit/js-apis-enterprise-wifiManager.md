@@ -1,4 +1,10 @@
 # @ohos.enterprise.wifiManager（Wi-Fi管理）
+<!--Kit: MDM Kit-->
+<!--Subsystem: Customization-->
+<!--Owner: @huanleima-->
+<!--Designer: @liuzuming-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供企业设备Wi-Fi管理能力，包括查询Wi-Fi开启状态等。
 
@@ -28,13 +34,14 @@ isWifiActiveSync(admin: Want): boolean
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -56,17 +63,19 @@ isWifiActiveSync(admin: Want): boolean
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
+
 let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 
 try {
   let result: boolean = wifiManager.isWifiActiveSync(wantTemp);
-  console.info(`Succeeded in query is wifi active or not, result : ${result}`);
+  console.info(`Succeeded in querying whether the wifi is active or not, result : ${result}`);
 } catch (err) {
-  console.error(`Failed to query is wifi active or not. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to query whether the wifi is active or not. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -80,13 +89,14 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名  | 类型                                                    | 必填 | 说明                   |
 | ------- | ------------------------------------------------------- | ---- | ---------------------- |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | profile | [WifiProfile](#wifiprofile)                             | 是   | Wi-Fi配置信息。         |
 
 **错误码**：
@@ -103,14 +113,17 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
+  //需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility',
 };
 let profile: wifiManager.WifiProfile = {
+  //需根据实际情况进行替换
   'ssid': 'name',
   'preSharedKey': 'passwd',
   'securityType': wifiManager.WifiSecurityType.WIFI_SEC_TYPE_PSK
@@ -128,25 +141,26 @@ try {
 
 addAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-添加Wi-Fi白名单。添加白名单后当前设备仅允许连接该名单下的Wi-Fi。
+添加Wi-Fi允许名单。添加允许名单后当前设备仅允许连接该名单下的Wi-Fi。
 
 以下情况下，调用本接口会报策略冲突：
 
-1. 已经通过[setDiallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备Wi-Fi能力。通过[setDiallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)解除Wi-Fi禁用后，可解除冲突。
-2. 已经通过[addDisallowedWifiList](#wifimanageradddisallowedwifilist19)接口添加了Wi-Fi黑名单。通过[removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19)移除Wi-Fi黑名单后，可解除冲突。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备Wi-Fi能力。通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)解除Wi-Fi禁用后，可解除冲突。
+2. 已经通过[addDisallowedWifiList](#wifimanageradddisallowedwifilist19)接口添加了Wi-Fi禁用名单。通过[removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19)移除Wi-Fi禁用名单后，可解除冲突。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。                                       |
-| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                   | 是   | Wi-Fi白名单数组。数组总长度不能超过200。例如，若当前白名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                   | 是   | Wi-Fi允许名单数组。数组总长度不能超过200。例如，若当前允许名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
 
 **错误码**：
 
@@ -162,6 +176,7 @@ addAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
@@ -186,20 +201,21 @@ try {
 
 removeAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-移除Wi-Fi白名单。若移除白名单中的部分Wi-Fi，则当前设备仅允许连接剩下未移除的Wi-Fi。若移除白名单中的所有Wi-Fi，则当前设备可以连接任意Wi-Fi。
+移除Wi-Fi允许名单。若移除允许名单中的部分Wi-Fi，则当前设备仅允许连接剩下未移除的Wi-Fi。若移除允许名单中的所有Wi-Fi，则当前设备可以连接任意Wi-Fi。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
-| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | 待移除的Wi-Fi白名单数组。数组总长度不能超过200。                                            |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | 待移除的Wi-Fi允许名单数组。数组总长度不能超过200。                                            |
 
 **错误码**：
 
@@ -214,12 +230,13 @@ removeAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
@@ -238,25 +255,26 @@ try {
 
 getAllowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
-获取Wi-Fi白名单。
+获取Wi-Fi允许名单。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
 | 类型                               | 说明                      |
 | ---------------------------------- | ------------------------- |
-| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Wi-Fi白名单数组。 |
+| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Wi-Fi允许名单数组。 |
 
 **错误码**：
 
@@ -271,12 +289,13 @@ getAllowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getAllowedWifiList(wantTemp);
@@ -290,25 +309,26 @@ try {
 
 addDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-添加Wi-Fi黑名单。添加黑名单后当前设备不允许连接该名单下的Wi-Fi。
+添加Wi-Fi禁用名单。添加禁用名单后当前设备不允许连接该名单下的Wi-Fi。
 
 以下情况下，调用本接口会报策略冲突：
 
 1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备Wi-Fi能力。通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)解除Wi-Fi禁用后，可解除冲突。
-2. 已经通过[addAllowedWifiList](#wifimanageraddallowedwifilist19)接口添加了Wi-Fi白名单。通过[removeAllowedWifiList](#wifimanagerremoveallowedwifilist19)移除Wi-Fi白名单后，可解除冲突。
+2. 已经通过[addAllowedWifiList](#wifimanageraddallowedwifilist19)接口添加了Wi-Fi允许名单。通过[removeAllowedWifiList](#wifimanagerremoveallowedwifilist19)移除Wi-Fi允许名单后，可解除冲突。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
-| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | Wi-Fi黑名单数组。数组总长度不能超过200。例如，若当前黑名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | Wi-Fi禁用名单数组。数组总长度不能超过200。例如，若当前禁用名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
 
 **错误码**：
 
@@ -324,12 +344,13 @@ addDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
@@ -348,20 +369,21 @@ try {
 
 removeDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
-移除Wi-Fi黑名单。若移除黑名单中的部分Wi-Fi，则当前设备不允许连接黑名单内剩余的Wi-Fi。若移除黑名单中的所有Wi-Fi，则当前设备可以连接任意的Wi-Fi。
+移除Wi-Fi禁用名单。若移除禁用名单中的部分Wi-Fi，则当前设备不允许连接禁用名单内剩余的Wi-Fi。若移除禁用名单中的所有Wi-Fi，则当前设备可以连接任意的Wi-Fi。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
-| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | 待移除的Wi-Fi黑名单数组。数组总长度不能超过200。                      |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | 待移除的Wi-Fi禁用名单数组。数组总长度不能超过200。                      |
 
 **错误码**：
 
@@ -376,12 +398,13 @@ removeDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let wifiIds: Array<wifiManager.WifiAccessInfo> = [{
@@ -400,25 +423,26 @@ try {
 
 getDisallowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
-获取Wi-Fi黑名单。
+获取Wi-Fi禁用名单。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 
 **参数：**
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
 | 类型                               | 说明                      |
 | ---------------------------------- | ------------------------- |
-| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Wi-Fi黑名单数组。 |
+| Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt; | Wi-Fi禁用名单数组。 |
 
 **错误码**：
 
@@ -433,12 +457,13 @@ getDisallowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 **示例：**
 
 ```ts
+import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
 
 let wantTemp: Want = {
   //需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
-  abilityName: 'com.example.edmtest.EnterpriseAdminAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let result: Array<wifiManager.WifiAccessInfo> = wifiManager.getDisallowedWifiList(wantTemp);
@@ -459,7 +484,7 @@ Wi-Fi的SSID和BSSID信息。
 | 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | ssid          | string                           | 否   | 否 | Wi-Fi热点名称，编码格式为UTF-8，最大长度为32字节（中文字符占3位，英文字符占1位）。           |
-| bssid         | string                           | 否   | 是 | Wi-Fi热点的mac地址，例如：00:11:22:33:44:55。<br/>调用[addAllowedWifiList](#wifimanageraddallowedwifilist19)和[removeAllowedWifiList](#wifimanagerremoveallowedwifilist19)时为必填。<br/>调用[addDisallowedWifiList](#wifimanageradddisallowedwifilist19)和[removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19)时为选填（默认值为空字符串）。            |
+| bssid         | string                           | 否   | 是 | Wi-Fi热点的mac地址，例如：00:11:22:33:44:55。<br/>作为[addDisallowedWifiList](#wifimanageradddisallowedwifilist19)和[removeDisallowedWifiList](#wifimanagerremovedisallowedwifilist19)接口的入参时，该属性可选，默认值为空字符串。<br/>作为[addAllowedWifiList](#wifimanageraddallowedwifilist19)和[removeAllowedWifiList](#wifimanagerremoveallowedwifilist19)接口入参时，从API version 21开始，该属性可选，默认值为空字符串。API version 20及之前的版本，该属性必填。            |
 
 ## WifiProfile
 
@@ -528,13 +553,13 @@ IP配置信息。
 
 
 
-| 名称         | 类型                | 必填 | 说明        |
-| ------------ | ------------------- | ---- | ----------- |
-| ipAddress    | number              | 是   | IP地址。    |
-| gateway      | number              | 是   | 网关。      |
-| prefixLength | number              | 是   | 掩码。      |
-| dnsServers   | number[]            | 是   | DNS服务器。 |
-| domains      | Array&lt;string&gt; | 是   | 域信息。    |
+| 名称         | 类型                | 只读 | 可选 | 说明        |
+| ------------ | ------------------- | ---- | ----| ----------- |
+| ipAddress    | number              | 否   | 否  | IP地址。    |
+| gateway      | number              | 否   | 否  | 网关。      |
+| prefixLength | number              | 否   | 否  | 掩码。      |
+| dnsServers   | number[]            | 否   | 否  | DNS服务器。 |
+| domains      | Array&lt;string&gt; | 否   | 否  | 域信息。    |
 
 ## WifiEapProfile
 
@@ -621,7 +646,7 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | isForce | boolean                                                 | 是   | 是否强制打开Wi-Fi功能。<br/>true表示强制开启Wi-Fi，强制开启后不支持用户在设备上手动关闭Wi-Fi开关，必须采用[turnOffWifi](#wifimanagerturnoffwifi20)接口关闭。false表示非强制开启Wi-Fi，此时用户可以在设备上手动操作关闭Wi-Fi开关。 |
 
 **错误码**：
@@ -642,8 +667,9 @@ import { Want } from '@kit.AbilityKit';
 import { wifiManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
@@ -674,7 +700,7 @@ turnOffWifi(admin: Want): void
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **错误码**：
 
@@ -694,8 +720,9 @@ import { Want } from '@kit.AbilityKit';
 import { wifiManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility',
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 try {
