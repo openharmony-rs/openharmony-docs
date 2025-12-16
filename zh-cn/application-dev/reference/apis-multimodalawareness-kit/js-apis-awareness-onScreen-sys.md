@@ -136,7 +136,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 ## onScreen.OnscreenAwarenessOptions<sup>23+</sup>
 
-屏上感知参数列表。
+屏上感知参数列表，用于特定场景下获取屏上信息，如提供窗口ID用以采集应用界面内容和链接。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -146,6 +146,57 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | parameters   | Record<string, Object> | 否   | 是   | 感知参数列表，参数结果是key-value数据对象。 |
 
+## onScreen.CollectStrategy<sup>23+</sup>
+
+页面信息收集策略。
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统API**：此接口为系统接口
+
+| 名称                | 值   | 说明                   |
+| ------------------- | ---- | ---------------------- |
+| ALLOW | 1 << 0    | 应用支持采集 |
+| SPLIT_SCREEN | 1 << 1    | 应用分屏窗口采集策略。 |
+| UNSUPPORTED_APP | 1 << 2  | 应用不支持。 |
+| PRIVATE_WINDOW | 1 << 3  | 应用隐私窗口。 |
+| VM_APP | 1 << 4 | 虚拟机应用，非鸿蒙应用。 |
+
+## onScreen.EntityInfo<sup>23+</sup>
+
+提供感知到的实体信息，包括内容、链接、图像和其他实体。
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统API**：此接口为系统接口
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                     |
+| ---- | ------ | ---- | ---- | ---------------------------------------- |
+| entityName   | string | 否   | 否   | 感知结果实体名称，固定内容。 |
+| entityInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、图像和其他实体。 |
+
+
+## onScreen.OnscreenAwarenessInfo<sup>23+</sup>
+
+屏上感知参数列表。
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统API**：此接口为系统接口
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                     |
+| ---- | ------ | ---- | ---- | ---------------------------------------- |
+| resultCode  | number | 否   | 否   | 返回码，默认0 表示成功。 |
+| timestamp   | number | 否   | 否   | 表示进入特定页面的时间戳。 |
+| bundleName  | string | 否   | 是   | 应用包名。 |
+| appID      | string | 否   | 是   | 小程序ID，如微信、支付宝等三方应用小程序ID。 |
+| appIndex   | number | 否   | 是   | 应用索引。 |
+| pageId     | string | 否   | 是   | 应用页面ID。 |
+| sampleId   | string | 否   | 是   | 采集记录ID。 |
+| collectStrategy   | number | 否   | 是   | 页面采集策略，是 [CollectStrategy](#CollectStrategy) 的按位或运算组合。 |
+| displayId   | number | 否   | 是   | 屏幕ID。 |
+| windowId    | number | 否   | 是   | 窗口ID。 |
+| entityInfo  | [EntityInfo](#EntityInfo)[] | 否   | 是   | 实体信息。 |
 
 ## onScreen.getPageContent
 
@@ -270,7 +321,7 @@ sendControlEvent(event: [ControlEvent](#onscreencontrolevent)): Promise&lt;void&
    }
    ```
 
-## onScreen.subscribe
+## onScreen.subscribe<sup>23+</sup>
 subscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap), 
           callback: Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt;, 
           options?: [OnscreenAwarenessOptions](#OnscreenAwarenessOptions)): void
@@ -327,13 +378,13 @@ subscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap),
 
    try {
       onScreen.subscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo) => {
-         console.info(`subscribe failed, error: ${info.resultCode}`);
+         console.info(`subscribe resultCode: ${info.resultCode}`);
       }, onscreenAwarenessOptions);
    } catch (err) {
       console.error('subscribe failed, errCode = ' + err.code);
    }
    ```
-## onScreen.unsubscribe
+## onScreen.unsubscribe<sup>23+</sup>
 
 unsubscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap), 
             callback?: Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt;): void
@@ -375,18 +426,18 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 
 try {
   onScreen.unsubscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo) => {
-	console.info(`subscribe failed, error: ${info.resultCode}`);
+	console.info(`unsubscribe resultCode: ${info.resultCode}`);
   });
 } catch (err) {
   console.error('unsubscribe failed, errCode = ' + err.code);
 }
 ```
-## onScreen.unsubscribe
+## onScreen.trigger<sup>23+</sup>
 
-unsubscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap), 
-            callback?: Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt;): void
+trigger(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap), 
+        options?: [OnscreenAwarenessOptions](#OnscreenAwarenessOptions)): Promise&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt;
 
-关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
+主动触发屏幕内容感知，获取当前屏幕感知结果。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
