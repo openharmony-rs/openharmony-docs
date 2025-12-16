@@ -556,27 +556,24 @@ let TAG = 'vibrator:';
    取消监听,取消传入的callback需与注册的一致。
 
    <!-- @[vibrator_js_vibrator_off_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->    
-
-``` TypeScript
-  // [Start vibrator_js_vibrator_on_state_change_example]
-  // 回调函数
-  vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
-    console.info('vibrator state callback info:', JSON.stringify(data));
-    // [StartExclude vibrator_js_vibrator_on_state_change_example]
-	// ···
-  }
-  // [StartExclude vibrator_js_vibrator_on_state_change_example]
-// ···
-              try {
-                // 取消订阅 vibratorStateChange事件
-                vibrator.off('vibratorStateChange', this.vibratorStateChangeCallback);
-                // 取消订阅所有 vibratorStateChange事件
-                // vibrator.off('vibratorStateChange');
-              } catch (error) {
-                let e: BusinessError = error as BusinessError;
-                console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-              }
-```
+   
+   ``` TypeScript
+   // 回调函数
+   vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
+     console.info('vibrator state callback info:', JSON.stringify(data));
+     // ...
+   }
+   // ...
+               try {
+                 // 取消订阅 vibratorStateChange事件
+                 vibrator.off('vibratorStateChange', this.vibratorStateChangeCallback);
+                 // 取消订阅所有 vibratorStateChange事件
+                 // vibrator.off('vibratorStateChange');
+               } catch (error) {
+                 let e: BusinessError = error as BusinessError;
+                 console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+               }
+   ```
 
 
 9. 通过设备ID和马达ID获取预置振动效果信息。
