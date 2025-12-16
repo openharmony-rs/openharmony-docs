@@ -155,6 +155,16 @@ Codec MIME类型枚举。
 | BUFFERING_PERCENT | 3    | 表示缓冲百分比。可参考该事件感知缓冲进度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
 | CACHED_DURATION   | 4    |  表示已缓冲数据预估可播放时长，单位为毫秒（ms）。缓冲区中的数据变化量大于500ms，上报一次。可参考该事件做进度条。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
 
+## SoundInterruptMode <sup>23+</sup>
+
+枚举，音频的打断类型
+
+**系统能力：** SystemCapability.Multimedia.Media.SoundPool
+| 名称                                  | 值      | 说明                             |
+| ----------------------------------- | ------- | --------------------------------- |
+| NO_INTERRUPT                            | 0       | 表示对同一SoundID的音频，后者会打断前者的播放。            |
+| SAME_SOUND_INTERRUPT                            | 1       | 表示对同一个SoundID的音频，后者不会打断前者的播放，会并行播放。            |
+
 ## StateChangeReason<sup>9+</sup>
 
 表示播放或录制实例状态机切换原因的枚举，伴随state一起上报。
