@@ -52,6 +52,18 @@
 
 2. 创建段落样式，并使用构造段落生成器ParagraphBuilder生成段落实例。
    <!-- @[arkts_independent_shaping_text_paragraph_builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   let myTextStyle: text.TextStyle = {
+     // 文本大小
+     fontSize: 60
+   };
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+   };
+   let fontCollection = text.FontCollection.getGlobalInstance();
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   ```
 
 3. 添加文本内容。
    <!-- @[arkts_independent_shaping_text_add_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
