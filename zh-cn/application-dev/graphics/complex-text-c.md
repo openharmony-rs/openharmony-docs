@@ -567,6 +567,48 @@ OH_Drawing_DestroyTypography(typography);
 
 <!-- @[complex_text_c_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+// 设置文字大小
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
+// 创建着色器对象，并设置颜色、变化起始点与结束点
+OH_Drawing_Point *startPt = OH_Drawing_PointCreate(0, 0);
+// 结束点位于(900, 900)
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(900, 900);
+uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
+float pos[] = {0.0f, 0.5f, 1.0f};
+// pos数组长度为3
+OH_Drawing_ShaderEffect *colorShaderEffect =
+    OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, colors, pos, 3, OH_Drawing_TileMode::CLAMP);
+// 创建画刷对象,并将着色器添加到画刷
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
+// 将画刷添加到文本样式中
+OH_Drawing_SetTextStyleForegroundBrush(txtStyle, brush);
+// 创建排版对象，并绘制
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+const char *text = "Hello World";
+OH_Drawing_TypographyHandlerAddText(handler, text);
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+// 将段落按照排版宽度进行排版
+OH_Drawing_TypographyLayout(typography, maxWidth);
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 释放对象
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
+OH_Drawing_BrushDestroy(brush);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
 ![zh-cn_image_gradient_c](figures/zh-cn_image_gradient_c.png)
 
 ### 垂直对齐
