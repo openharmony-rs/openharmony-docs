@@ -1275,7 +1275,7 @@ setInterruptMode(interruptMode: media.SoundInterruptMode): void
 
 | 参数名   | 类型                   | 必填 | 说明                        |
 | -------- | ---------------------- | ---- | --------------------------- |
-| interruptMode | media.SoundInterruptMode | 是   | 同一ID音频在播放时的打断模式，通过[media.SoundInterruptMode](arkts-apis-media-e.md#soundinterruptmode23)枚举获取。 |
+| interruptMode | [media.SoundInterruptMode](arkts-apis-media-e.md#soundinterruptmode23) | 是   | 同一ID音频在播放时的打断模式，通过media.SoundInterruptMode枚举获取。 |
 
 **示例：**
 

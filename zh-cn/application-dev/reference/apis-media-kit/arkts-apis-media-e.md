@@ -159,6 +159,8 @@ Codec MIME类型枚举。
 
 表示在SoundPool中，同一ID的音频在播放时的打断模式的枚举。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
 | 名称                                  | 值      | 说明                             |
