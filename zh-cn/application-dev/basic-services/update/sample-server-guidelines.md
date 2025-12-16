@@ -12,7 +12,7 @@
 
     生成serverKey.pem和serverCert.cer两个文件，用于示例服务器的SSL协议通信。
 
-    ```
+    ```shell
     openssl req -newkey rsa:2048 -nodes -keyout serverKey.pem -x509 -days 365 -out serverCert.cer -subj "/C=CN/ST=GD/L=GZ/O=abc/OU=defg/CN=hijk/emailAddress=test.com"
     ```
 
@@ -22,7 +22,7 @@
 
     在build字段新增一个sub_component。
 
-    ```
+    ```json
     "sub_component": [
         "//base/update/updateservice/server_sample:testserver",
         ...
@@ -33,7 +33,7 @@
 
     进入到update_updateservice目录下，执行以下命令，建立代码目录。
 
-    ```
+    ```shell
     mkdir server_sample                            // 建立示例服务器server_sample目录
     touch server_sample/BUILD.gn                   // 创建BUILD.gn编译文件
     mkdir server_sample/include                    // 建立示例服务器头文件include目录
@@ -47,7 +47,7 @@
 
     文件BUILD.gn一共编译两个ohos组件，一个是ohos_shared_library库文件libserver_process.z.so，另一个是ohos_executable可执行文件testserver。
 
-    ```
+    ```gn
     import("//build/ohos.gni")
 
     ohos_shared_library("server_process") {
@@ -195,7 +195,7 @@
 
     建议在开发板上新建一个纯英文路径，然后将testserver、libserver_process.z.so、serverCert.cer和serverKey.pem放到同一个目录下，进入该目录，执行以下启动命令即可启动搜包服务器。
 
-    ```
+    ```shell
     ./testserver ./libserver_process.z.so &
     ```
 
