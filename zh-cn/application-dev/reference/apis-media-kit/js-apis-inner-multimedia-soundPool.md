@@ -1265,7 +1265,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 
 setInterruptMode(interruptMode: media.SoundInterruptMode): void;
 
-设置音频流的打断模式。
+设置音频流的打断模式，仅在创建soundPool之后，首次播放之前设置有效，否则将默认使用SoundInterruptMode，即同音频打断模式。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
