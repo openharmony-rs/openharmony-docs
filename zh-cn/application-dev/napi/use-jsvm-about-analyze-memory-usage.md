@@ -1,4 +1,4 @@
-# 使用DevTools进行网页JavaScript内存分析
+# 使用DevTools进行网页内存分析
 <!--Kit: NDK Development-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanjiahao-->
