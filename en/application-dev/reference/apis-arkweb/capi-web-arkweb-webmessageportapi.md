@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct {...} ArkWeb_WebMessagePortAPI
 ```
 
@@ -41,7 +41,7 @@ Defines a native API struct of the post message. Before calling this API, you ar
 
 ### postMessage()
 
-```
+```c
 ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag, const ArkWeb_WebMessagePtr webMessage)
 ```
 
@@ -65,7 +65,7 @@ Sends a message to the HTML page.
 
 ### close()
 
-```
+```c
 void (*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)
 ```
 
@@ -82,7 +82,7 @@ Closes a message port.
 
 ### setMessageEventHandler()
 
-```
+```c
 void (*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag,
         ArkWeb_OnMessageEventHandler messageEventHandler, void* userData)
 ```
