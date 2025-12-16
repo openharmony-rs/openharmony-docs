@@ -120,67 +120,7 @@
     this.title.name.value = 'ArkUI';
     ```
 
-- 当装饰的对象是array时，可以观察到数组本身的赋值和添加、删除、更新数组的变化。例子如下。
-  声明Model类。
-    <!-- @[state_change_observation_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
-  
-    ``` TypeScript
-    class Model {
-      public value: number;
-    
-      constructor(value: number) {
-        this.value = value;
-      }
-    }
-    ```
-
-  \@State装饰的对象为Model类型数组时。
-    <!-- @[state_decorate_type_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
-  
-    ``` TypeScript
-    // 数组类型
-    @State title: Model[] = [new Model(11), new Model(1)];
-    ```
-
-  数组自身的赋值可以观察到。
-    <!-- @[state_decorate_array_change_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
-  
-    ``` TypeScript
-    // 数组赋值
-    this.title = [new Model(2)];
-    ```
-
-  数组项的赋值可以观察到。
-    <!-- @[state_decorate_array_change_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
-  
-    ``` TypeScript
-    // 数组项赋值
-    this.title[0] = new Model(2);
-    ```
-
-  删除数组项可以观察到。
-    <!-- @[state_decorate_array_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
-  
-    ``` TypeScript
-    // 数组项更改
-    this.title.pop();
-    ```
-
-  新增数组项可以观察到。
-    <!-- @[state_decorate_array_change_04](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
-  
-    ``` TypeScript
-    // 数组项更改
-    this.title.push(new Model(12));
-    ```
-
-  数组项中属性的赋值观察不到。
-    <!-- @[state_decorate_array_change_05](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationArray.ets) -->
-  
-    ``` TypeScript
-    // 嵌套的属性赋值观察不到
-    this.title[0].value = 6;
-    ```
+- 当装饰的对象是Array时，可以观察到Array整体的赋值及数组元素的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。数组项中嵌套的属性赋值无法观察。详见[装饰Array类型变量](#装饰array类型变量)。
 
 - 当装饰的对象是Date时，可以观察到Date的赋值，以及通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
 
@@ -224,16 +164,25 @@
     @Entry
     @Component
     struct MyComponent {
-      @State count: number = 0;
+      @State count: number = 0; // 使用@State装饰简单类型变量
     
       build() {
-        Button(`click times: ${this.count}`)
-          .onClick(() => {
-            this.count += 1;
-          })
+        Row() {
+          Column() {
+            Button(`click times: ${this.count}`)
+              .onClick(() => {
+                this.count += 1;
+              })
+              .width(300)
+          }
+          .width('100%')
+        }
+        .height('100%')
       }
     }
     ```
+
+![state-simple](figures/state-simple.gif)
 
 ### 装饰class对象类型的变量
 
@@ -321,44 +270,68 @@
     MyComponent({ title: new Model('Hello World 2'), count: 7 })
     ```
 
-### 装饰Map类型变量
+### 装饰Array类型变量
 
-> **说明：**
->
-> 从API version 11开始，\@State支持Map类型。
-
-在下面的示例中，message类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
-<!-- @[state_scene_type_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeMap.ets) -->
+在下面的示例中，\@State装饰的变量fruits的类型为Array\<Fruit\>，点击Button改变fruits的值，视图会随之刷新。
+<!-- @[state_scene_type_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeArray.ets) -->
 
 ``` TypeScript
+class Fruit {
+  public name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+
 @Entry
 @Component
-struct MapSample {
-  @State message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
+struct ArraySample {
+  @State fruits: Fruit[] = [new Fruit('apple'), new Fruit('banana')]; // 使用@State装饰Array类型变量
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, string]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Text(`${item[1]}`).fontSize(30)
-          Divider()
+        ForEach(this.fruits, (item: Fruit) => {
+          Text(`${item.name}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init map').onClick(() => {
-          this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.set(4, 'd');
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('replace the first one').onClick(() => {
-          this.message.set(0, 'aa');
-        })
-        Button('delete the first one').onClick(() => {
-          this.message.delete(0);
-        })
+        // 对数组元素重新赋值，触发UI刷新
+        Button('Set element at index 0')
+          .onClick(() => {
+            this.fruits[0] = new Fruit('orange');
+          })
+          .width(300)
+          .margin(10)
+        // 新增数组元素，触发UI刷新
+        Button('Push element')
+          .onClick(() => {
+            this.fruits.push(new Fruit('cherry'));
+          })
+          .width(300)
+          .margin(10)
+        // 删除数组元素，触发UI刷新
+        Button('Pop element')
+          .onClick(() => {
+            this.fruits.pop();
+          })
+          .width(300)
+          .margin(10)
+        // 对数组整体重新赋值，触发UI刷新
+        Button('Reset array')
+          .onClick(() => {
+            this.fruits = [new Fruit('strawberry'), new Fruit('blueberry')];
+          })
+          .width(300)
+          .margin(10)
+        // 修改嵌套的属性，无法触发UI刷新
+        Button('Modify element[0] property')
+          .onClick(() => {
+            this.fruits[0].name = 'pineapple';
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -366,6 +339,76 @@ struct MapSample {
   }
 }
 ```
+
+![state-array](figures/state-array.gif)
+
+### 装饰Map类型变量
+
+> **说明：**
+>
+> 从API version 11开始，\@State支持Map类型。
+
+在下面的示例中，\@State装饰的变量fruits的类型为Map\<string, number\>，点击Button改变fruits的值，视图会随之刷新。
+<!-- @[state_scene_type_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeMap.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct MapSample {
+  @State fruits: Map<string, number> = new Map([['apple', 1], ['banana', 2]]); // 使用@State装饰Map类型变量
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(Array.from(this.fruits.entries()), (item: [string, number]) => {
+          Text(`key: ${item[0]}, value: ${item[1]}`)
+            .fontSize(20)
+            .margin(10)
+        })
+        // 新增键值对，触发UI刷新
+        Button('Set entry cherry')
+          .onClick(() => {
+            this.fruits.set('cherry', 3);
+          })
+          .width(300)
+          .margin(10)
+        // 更新键值对，触发UI刷新
+        Button('Update entry apple')
+          .onClick(() => {
+            this.fruits.set('apple', 4);
+          })
+          .width(300)
+          .margin(10)
+        // 删除键值对，触发UI刷新
+        Button('Delete entry apple')
+          .onClick(() => {
+            this.fruits.delete('apple');
+          })
+          .width(300)
+          .margin(10)
+        // 对Map整体重新赋值，触发UI刷新
+        Button('Reset map')
+          .onClick(() => {
+            this.fruits = new Map([['strawberry', 9], ['blueberry', 8]]);
+          })
+          .width(300)
+          .margin(10)
+        // 清空Map，触发UI刷新
+        Button('Clear map')
+          .onClick(() => {
+            this.fruits.clear();
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![state-map](figures/state-map.gif)
 
 ### 装饰Set类型变量
 
@@ -373,34 +416,51 @@ struct MapSample {
 >
 > 从API version 11开始，\@State支持Set类型。
 
-在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
+在下面的示例中，\@State装饰的变量fruits的类型为Set\<string\>，点击Button改变fruits的值，视图会随之刷新。
 <!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->
 
 ``` TypeScript
 @Entry
 @Component
 struct SetSample {
-  @State message: Set<number> = new Set([0, 1, 2, 3, 4]);
+  @State fruits: Set<string> = new Set(['apple', 'banana']); // 使用@State装饰Set类型变量
 
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.message.entries()), (item: [number, number]) => {
-          Text(`${item[0]}`).fontSize(30)
-          Divider()
+        ForEach(Array.from(this.fruits.entries()), (item: [number, number]) => {
+          Text(`${item[0]}`)
+            .fontSize(20)
+            .margin(10)
         })
-        Button('init set').onClick(() => {
-          this.message = new Set([0, 1, 2, 3, 4]);
-        })
-        Button('set new one').onClick(() => {
-          this.message.add(5);
-        })
-        Button('clear').onClick(() => {
-          this.message.clear();
-        })
-        Button('delete the first one').onClick(() => {
-          this.message.delete(0);
-        })
+        // 新增元素，触发UI刷新
+        Button('Add element')
+          .onClick(() => {
+            this.fruits.add('cherry');
+          })
+          .width(300)
+          .margin(10)
+        // 删除元素，触发UI刷新
+        Button('Delete element apple')
+          .onClick(() => {
+            this.fruits.delete('apple');
+          })
+          .width(300)
+          .margin(10)
+        // 对Set整体重新赋值，触发UI刷新
+        Button('Reset set')
+          .onClick(() => {
+            this.fruits = new Set(['strawberry', 'blueberry']);
+          })
+          .width(300)
+          .margin(10)
+        // 清空Set，触发UI刷新
+        Button('Clear set')
+          .onClick(() => {
+            this.fruits.clear();
+          })
+          .width(300)
+          .margin(10)
       }
       .width('100%')
     }
@@ -409,49 +469,64 @@ struct SetSample {
 }
 ```
 
+![state-set](figures/state-set.gif)
+
 ### 装饰Date类型变量
 
-在下面的示例中，selectedDate类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
+在下面的示例中，\@State装饰的变量selectedDate的类型为Date，点击Button改变selectedDate的值，视图会随之刷新。
 <!-- @[state_scene_type_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeDate.ets) -->
 
 ``` TypeScript
 @Entry
 @Component
 struct DatePickerExample {
-  @State selectedDate: Date = new Date('2021-08-08');
+  @State selectedDate: Date = new Date('2021-08-08'); // 使用@State装饰Date类型变量
 
   build() {
-    Column() {
-      Button('set selectedDate to 2023-07-08')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate = new Date('2023-07-08');
-        })
-      Button('increase the year by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
-        })
-      Button('increase the month by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
-        })
-      Button('increase the day by 1')
-        .margin(10)
-        .onClick(() => {
-          this.selectedDate.setDate(this.selectedDate.getDate() + 1);
-        })
-      DatePicker({
-        start: new Date('1970-1-1'),
-        end: new Date('2100-1-1'),
-        selected: this.selectedDate
-      })
-    }.width('100%')
+    Row() {
+      Column() {
+        // 通过给selectedDate重新赋值新的Date实例，触发UI刷新
+        Button('set selectedDate to 2023-07-08')
+          .onClick(() => {
+            this.selectedDate = new Date('2023-07-08');
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setFullYear接口修改年份，触发UI刷新
+        Button('increase the year by 1')
+          .onClick(() => {
+            this.selectedDate.setFullYear(this.selectedDate.getFullYear() + 1);
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setMonth接口修改月份，触发UI刷新
+        Button('increase the month by 1')
+          .onClick(() => {
+            this.selectedDate.setMonth(this.selectedDate.getMonth() + 1);
+          })
+          .margin(10)
+          .width(300)
+        // 调用Date的setDate接口修改日期，触发UI刷新
+        Button('increase the day by 1')
+          .onClick(() => {
+            this.selectedDate.setDate(this.selectedDate.getDate() + 1);
+          })
+          .margin(10)
+          .width(300)
+        DatePicker({
+          start: new Date('1970-1-1'),
+          end: new Date('2100-1-1'),
+          selected: this.selectedDate
+        }).margin(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 }
 ```
 
+![state-date](figures/state-date.gif)
 
 ### State支持联合类型实例
 
@@ -461,26 +536,32 @@ struct DatePickerExample {
 ``` TypeScript
 @Entry
 @Component
-struct EntryComponent {
-  build() {
-    Column() {
-      MyComponent()
-    }
-  }
-}
-
-@Component
-struct MyComponent {
-  @State count: number | undefined = 0;
+struct UnionTypeSample {
+  @State count: number | undefined = 0; // 使用@State装饰联合类型变量
 
   build() {
-    Column() {
-      Text(`count(${this.count})`)
-      Button('change')
-        .onClick(() => {
-          this.count = undefined;
-        })
+    Row() {
+      Column() {
+        Text(`count: ${this.count}`)
+        // 将联合类型变量从number切换为undefined，触发UI刷新
+        Button('change to undefined')
+          .onClick(() => {
+            this.count = undefined;
+          })
+          .width(300)
+          .margin(10)
+        // 将联合类型变量从undefined切换为number，触发UI刷新
+        Button('change to number')
+          .onClick(() => {
+            this.count = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
     }
+    .height('100%')
   }
 }
 ```
+![state-union](figures/state-union.gif)
