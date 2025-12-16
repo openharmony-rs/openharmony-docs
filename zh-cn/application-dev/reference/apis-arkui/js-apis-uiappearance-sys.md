@@ -123,10 +123,6 @@ ArkTS-Sta: setFontScale(fontScale: double): Promise\<void>
 
 设置系统字体大小。
 
-> **说明：**
->
-> 如果未申请`ohos.permission.UPDATE_CONFIGURATION`权限，调用该接口安装应用失败，不会返回202错误码。
-
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
 **系统能力：** SystemCapability.ArkUI.UiAppearance
@@ -188,10 +184,6 @@ ArkTS-Dyn: setFontWeightScale(fontWeightScale: number): Promise\<void>
 ArkTS-Sta: setFontWeightScale(fontWeightScale: double): Promise\<void>
 
 设置系统字体粗细。
-
-> **说明：**
->
-> 如果未申请`ohos.permission.UPDATE_CONFIGURATION`权限，调用该接口安装应用失败，不会返回202错误码。
 
 **需要权限：** ohos.permission.UPDATE_CONFIGURATION
 
