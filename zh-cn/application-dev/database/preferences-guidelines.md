@@ -289,3 +289,66 @@ preference = nullptr;
 ```
 7. 设置和获取OH_PreferencesValue。
    <!--@[PreferencesValueSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   
+   ``` C++
+   const int arg5 = 5;
+   const int arg4 = 4;
+   const int arg3 = 3;
+   int ret = PREFERENCES_OK;
+   OH_PreferencesValue* setValue = OH_PreferencesValue_Create();
+   bool boolArray[] = {true, false, true, false};
+   ret = OH_PreferencesValue_SetBoolArray(setValue, boolArray, arg4);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   uint32_t count = 0;
+   bool* outBoolArray = nullptr;
+   ret = OH_PreferencesValue_GetBoolArray(setValue, &outBoolArray, &count);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   
+   const char* strArray[] = {"hello", "world", "test"};
+   ret = OH_PreferencesValue_SetStringArray(setValue, strArray, arg3);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   char** outStrArray = nullptr;
+   ret = OH_PreferencesValue_GetStringArray(setValue, &outStrArray, &count);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   
+   int64_t int64Array[] = {1234567890LL, 9876543210LL, -1234567890LL};
+   ret = OH_PreferencesValue_SetInt64Array(setValue, int64Array, arg3);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   int64_t* outArrayInt64 = nullptr;
+   ret = OH_PreferencesValue_GetInt64Array(setValue, &outArrayInt64, &count);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   
+   double doubleArray[] = {1.1, 2.2, 3.3, 4.4};
+   ret = OH_PreferencesValue_SetDoubleArray(setValue, doubleArray, arg4);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   double* outDoubleArray = nullptr;
+   ret = OH_PreferencesValue_GetDoubleArray(setValue, &outDoubleArray, &count);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   
+   uint8_t blobData[] = {0x01, 0x02, 0x03, 0x04, 0x05};
+   ret = OH_PreferencesValue_SetBlob(setValue, blobData, arg5);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   uint8_t* outBlob = nullptr;
+   ret = OH_PreferencesValue_GetBlob(setValue, &outBlob, &count);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   ```
