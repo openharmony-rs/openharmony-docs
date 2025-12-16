@@ -51,11 +51,11 @@
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
 
 关于BLUETOOTH_INTERACTION（蓝牙传输）说明：
-- 如果应用仅申请了蓝牙长时任务，因为设备远离等原因导致蓝牙断连，系统会取消应用的蓝牙长时任务，为了保证蓝牙接续使用体验，系统支持蓝牙断开重连，断连一段时间之内如果恢复连接（具体时间受系统负载影响，最多十分钟），可以重新实现保活，需满足如下要求：
+- 如果应用仅申请了蓝牙长时任务，因设备远离等原因导致蓝牙断连，系统将取消应用的蓝牙长时任务。为确保蓝牙接续使用体验，系统支持蓝牙断开重连，在断连后的一段时间内（具体时长受系统负载影响，最长可达十分钟），如果恢复连接，可以重新实现保活，需满足以下要求：
 >
 >  1. 应用需要主动注册长时任务暂停的监听，可参考[oncontinuoustasksuspend()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)。
->  2. 蓝牙连接之后订阅[蓝牙连接状态变化](../reference/apis-connectivity-kit\js-apis-bluetooth-ble.md)的事件，断连之后，主动发起[BLE蓝牙扫描](../reference/apis-connectivity-kit\js-apis-bluetooth-ble.md#startscan15)，订阅[BLE设备扫描结果上报](../reference/apis-connectivity-kit\js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
->  3. 成功扫描到设备之后，需要主动恢复[蓝牙连接](../reference/apis-connectivity-kit\js-apis-bluetooth-ble.md#connect)。
+>  2. 蓝牙连接之后订阅[蓝牙连接状态变化](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md)的事件，断连之后，主动发起[BLE蓝牙扫描](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)，订阅[BLE设备扫描结果上报](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
+>  3. 成功扫描到设备之后，需要主动恢复[蓝牙连接](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)。
 
 ### 约束与限制
 
