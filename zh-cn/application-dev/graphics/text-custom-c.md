@@ -169,7 +169,6 @@
    OH_Drawing_DestroyRuns(runs);
    ```
 
-### 示例和效果
 
 效果展示：  
 ![ndk_independent_shaping.png](figures/ndk_independent_shaping.png)
