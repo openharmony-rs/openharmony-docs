@@ -37,6 +37,47 @@
 
 <!-- @[complex_text_c_multilingual_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
+``` C++
+// 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
+OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+// 设置文本对齐方式为居中
+OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
+// 设置 locale 为中文
+OH_Drawing_SetTypographyTextLocale(typoStyle, "zh-Hans");
+
+// 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+OH_Drawing_SetTextStyleFontSize(txtStyle, DIV_TEN(width_));
+OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
+
+// 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
+OH_Drawing_FontCollection *fc = OH_Drawing_CreateSharedFontCollection();
+// 使用 FontCollection 和 之前创建的 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
+OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+
+// 将之前创建的 TextStyle 加入 handler 中
+OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+// 设置文本内容，并将文本添加到 handler 中
+const char *text = "你好，中文\n";
+OH_Drawing_TypographyHandlerAddText(handler, text);
+
+// 通过 handler 创建一个 Typography
+OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+// 设置页面最大宽度
+double maxWidth = width_;
+OH_Drawing_TypographyLayout(typography, maxWidth);
+// 将文本绘制到画布上
+OH_Drawing_TypographyPaint(typography, cCanvas_, 0, DIV_TEN(width_));
+
+// 释放内存
+OH_Drawing_DestroyTypographyStyle(typoStyle);
+OH_Drawing_DestroyTextStyle(txtStyle);
+OH_Drawing_DestroyFontCollection(fc);
+OH_Drawing_DestroyTypographyHandler(handler);
+OH_Drawing_DestroyTypography(typography);
+```
+
 ### 效果展示
 
 ![zh-cn_image_0000002246563765](figures/zh-cn_image_0000002246563765.png)
