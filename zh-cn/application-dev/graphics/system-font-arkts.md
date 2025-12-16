@@ -31,6 +31,10 @@
 
 2. 获取系统字体信息。
    <!-- @[arkts_system_font_info_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let fontConfig = font.getUIFontConfig();
+   ```
 
 3. 在获取系统字体信息之后通过日志打印字体信息。
    <!-- @[arkts_system_font_info_print](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SystemFontInfoGet/entry/src/main/ets/pages/Index.ets) -->
