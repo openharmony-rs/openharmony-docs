@@ -168,13 +168,19 @@ console.log(`Drag interaction summarys: ${JSON.stringify(summarys)}`);
 
 ## dragInteraction.setDragSwitchState<sup>18+</sup>
 
-setDragSwitchState(enabled: boolean): void
+ArkTS-Dyn: setDragSwitchState(enabled: boolean): void
+
+ArkTS-Sta: setDragSwitchState(enabled: boolean): void
 
 控制统一拖拽功能总开关。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -198,13 +204,19 @@ dragInteraction.setDragSwitchState(false);
 
 ## dragInteraction.setAppDragSwitchState<sup>18+</sup>
 
-setAppDragSwitchState(enabled: boolean, bundleName: string): void
+ArkTS-Dyn: setAppDragSwitchState(enabled: boolean, bundleName: string): void
+
+ArkTS-Sta: setAppDragSwitchState(enabled: boolean, bundleName: string): void
 
 控制统一拖拽适配应用开关。
 
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
