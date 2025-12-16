@@ -67,6 +67,10 @@
 
 3. 添加文本内容。
    <!-- @[arkts_independent_shaping_text_add_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/shape/IndependentShaping.ets) -->
+   
+   ``` TypeScript
+   paragraphBuilder.addText('Hello World');
+   ```
 
 4. 创建行对象。获取行中所有文字的塑形结果。  
 使用createLine()方法创建一个单行对象，通过行对象getGlyphRuns()方法获取相同样式的文字单元。
