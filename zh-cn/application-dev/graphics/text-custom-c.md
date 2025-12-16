@@ -94,6 +94,16 @@
 使用OH_Drawing_LineTypographyCreateLine()方法创建一个单行对象，通过行对象OH_Drawing_TextLineGetGlyphRuns()方法获取相同样式的文字单元。
 
    <!-- @[complex_text_c_independent_shaping_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
+   
+   ``` C++
+   // 通过 handler 创建一个 Typography
+   OH_Drawing_LineTypography *lineTypography = OH_Drawing_CreateLineTypography(handler);
+   // 创建一个 TextLine，取(0, 11)的字符
+   OH_Drawing_TextLine *textLine = OH_Drawing_LineTypographyCreateLine(lineTypography, 0, 11);
+   
+   // 获取塑形结果
+   OH_Drawing_Array *runs = OH_Drawing_TextLineGetGlyphRuns(textLine);
+   ```
 
 6. 该步骤是文本塑形流程中的自定义绘制环节。通过调用OH_Drawing_GetRunGlyphs()方法获取文本中每个字符对应的字形序号，再结合OH_Drawing_GetRunFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。  
 从 API version 20 开始，新增的OH_Drawing_GetRunGlyphAdvances()方法能够返回一个数组，其中包含了每个字形在绘制时建议占用的宽度和高度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
