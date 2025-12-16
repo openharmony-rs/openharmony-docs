@@ -39,6 +39,13 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 1. 导入相关头文件。
 
    <!-- @[editExif_operations_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
+   
+   ``` C++
+   #include <string>
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/image_source_native.h>
+   #include "napi/native_api.h"
+   ```
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
