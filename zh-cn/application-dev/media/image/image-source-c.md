@@ -283,6 +283,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    - 获取图像延迟时间列表。
 
      <!-- @[get_delayTimeList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->       
+     
+     ``` C++
+     // 获取图像延迟时间列表。
+     napi_value GetDelayTimeList(napi_env env, napi_callback_info info)
+     {
+         int32_t *delayTimeList = new int32_t[g_thisImageSource->frameCnt];
+         size_t size = g_thisImageSource->frameCnt;
+         OH_LOG_INFO(LOG_APP, "GetDelayTimeList size: %{public}zu.", size);
+         Image_ErrorCode errCode = OH_ImageSourceNative_GetDelayTimeList(g_thisImageSource->source, delayTimeList, size);
+         delete[] delayTimeList;
+         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_GetDelayTimeList");
+     }
+     ```
 
 9. 释放ImageSource。
 
