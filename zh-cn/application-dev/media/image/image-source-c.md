@@ -81,6 +81,42 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    - 创建PixelMap对象。
 
      <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+     
+     ``` C++
+     // 通过图片解码参数创建PixelMap对象。
+     napi_value CreatePixelMap(napi_env env, napi_callback_info info)
+     {
+         // ops参数支持传入nullptr, 当不需要设置解码参数时，不用创建。
+         OH_DecodingOptions *ops = nullptr;
+         OH_DecodingOptions_Create(&ops);
+         // 设置为AUTO会根据图片资源格式和设备支持情况进行解码，如果图片资源为HDR资源且设备支持HDR解码则会解码为HDR的pixelmap。
+         OH_DecodingOptions_SetDesiredDynamicRange(ops, IMAGE_DYNAMIC_RANGE_AUTO);
+         
+         OH_PixelmapNative_Release(g_thisImageSource->resPixMap);
+         g_thisImageSource->resPixMap = nullptr;
+         
+         Image_ErrorCode errCode = OH_ImageSourceNative_CreatePixelmap(g_thisImageSource->source,
+                                                                       ops, &g_thisImageSource->resPixMap);
+         OH_DecodingOptions_Release(ops);
+         ops = nullptr;
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreatePixelmap failed, errCode: %{public}d.", errCode);
+             return GetJsResult(env, errCode);
+         }
+     
+         // 判断pixelmap是否为HDR内容。
+         OH_PixelmapImageInfo_Create(&g_thisImageSource->pixelmapImageInfo);
+         OH_PixelmapNative_GetImageInfo(g_thisImageSource->resPixMap, g_thisImageSource->pixelmapImageInfo);
+         bool pixelmapIsHdr;
+         OH_PixelmapImageInfo_GetDynamicRange(g_thisImageSource->pixelmapImageInfo, &pixelmapIsHdr);
+         if (pixelmapIsHdr) {
+             OH_LOG_INFO(LOG_APP, "The pixelMap's dynamicRange is HDR.");
+         }
+         OH_PixelmapImageInfo_Release(g_thisImageSource->pixelmapImageInfo);
+         g_thisImageSource->pixelmapImageInfo = nullptr;
+         return GetJsResult(env, errCode);
+     }
+     ```
 
    - 创建定义图片信息的结构体对象，并获取图片信息。
 
