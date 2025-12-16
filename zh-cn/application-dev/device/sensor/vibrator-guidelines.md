@@ -326,7 +326,7 @@ Json文件共包含3个属性。
 
    **方式一** 按照指定模式停止对应的马达振动，自定义振动不支持此类停止方式：
 
-   ​  停止固定时长振动：
+   ​	停止固定时长振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -347,7 +347,7 @@ Json文件共包含3个属性。
    }
    ```
 
-   ​  停止预置振动：
+   ​	停止预置振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
