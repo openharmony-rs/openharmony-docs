@@ -105,6 +105,8 @@
 4. 处理设备连接与断开的事件。
 
     ```ts
+    mechanicManager.on('attachStateChange', attachStateChangeCallback);
+
     function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
     console.info(`New device is connected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
     savedMechanicIds.push(mechInfo.mechId);
