@@ -108,6 +108,45 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | eventType    | [EventType](#onscreeneventtype) | 否   | 否   | 控制事件类型。 |
 | hookId    | number | 否   | 是   | 控制事件对应的hook ID。控制事件要操作的hook ID和该次会话对应的session ID都由某次会话获取的[PageContent](#onscreenpagecontent)提供。 |
 
+## onScreen.OnscreenAwarenessCap<sup>23+</sup>
+
+屏上感知能力列表.
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统API**：此接口为系统接口
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                     |
+| ---- | ------ | ---- | ---- | ---------------------------------------- |
+| capList   | string[] | 否   | 否   | 表示能力列表, 包含页面内容、页面链接、文本选择等能力。  |
+
+|能力列表|功能说明|
+| ---- | ------ |
+|contentUiTree|获取控件树信息|
+|contentUiOcr|获取OCR识别信息|
+|contentScreenshot|获取截屏信息|
+|contentLink|获取页面复访链接|
+|contentUiTreeWithImage|获取控件树和控件内图片信息|
+|interactionTextSelection|获取文本选择信息|
+|interactionClick|获取点击事件，以及控件节点信息|
+|interactionScroll|获取滚动事件，以及控件节点信息|
+|scenarioReading|获取阅读场景感知信息|
+|scenarioShortVideo|获取短视频场景的感知信息|
+|scenarioTodo|获取待办场景的感知信息|
+
+## onScreen.OnscreenAwarenessOptions<sup>23+</sup>
+
+屏上感知参数列表.
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统API**：此接口为系统接口
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                     |
+| ---- | ------ | ---- | ---- | ---------------------------------------- |
+| parameters   | Record<string, Object> | 否   | 是   | 感知参数列表，参数结果是key-value数据对象。 |
+
+
 ## onScreen.getPageContent
 
 getPageContent(options?: [ContentOptions](#onscreencontentoptions)): Promise&lt;[PageContent](#onscreenpagecontent)&gt;
@@ -179,6 +218,78 @@ sendControlEvent(event: [ControlEvent](#onscreencontrolevent)): Promise&lt;void&
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | event | [ControlEvent](#onscreencontrolevent)   | 是   | 屏上控制事件。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.SIMULATE_USER_INPUT. |
+| 202      | Permission check failed. A non-system application uses the system API. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
+| 34000001 | Service exception. |
+| 34000005 | The target is not found. |
+
+**示例**：
+
+   ```ts
+   import { onScreen } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   let options: onScreen.ContentOptions = {
+      contentUnderstand: true,
+      textOnly: true
+   };
+   let event: onScreen.ControlEvent | undefined = undefined;
+   try {
+      onScreen.getPageContent(options).then((pageContent: onScreen.PageContent) => {
+         if (pageContent.paragraphs != undefined && pageContent.paragraphs.length > 0 &&
+            pageContent.paragraphs[0].hookId != undefined) {
+            event = {
+               windowId: pageContent.windowId,
+               sessionId: pageContent.sessionId,
+               hookId: pageContent.paragraphs[0].hookId,
+               eventType: onScreen.EventType.SCROLL_TO_HOOK
+            };
+         }
+      }).catch((err: BusinessError) => {
+         console.error("get page content failed, errCode = " + err.code);
+      });
+   } catch (err) {
+      console.error('invoke failed, errCode = ' + err.code);
+   }
+   if (event != undefined) {
+      try {
+         onScreen.sendControlEvent(event).catch((err: BusinessError) => {
+            console.error("send control event failed, errCode =" + err.code);
+         })
+      } catch (err) {
+         console.error('invoke failed, errCode = ' + err.code);
+      }
+   }
+   ```
+
+## onScreen.subscribe
+subscribe(capability: [OnscreenAwarenessCap](#OnscreenAwarenessCap), 
+          callback: Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt;, 
+          options?: [OnscreenAwarenessOptions](#OnscreenAwarenessOptions)): void
+开启屏幕内容主动感知，并订阅屏幕感知结果。
+
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统API**：此接口为系统接口
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
+| capability | [ControlEvent](#onscreencontrolevent)   | 是   | 屏上控制事件。 |
+|options||
+| callback | Callback&lt;[OnscreenAwarenessInfo](#OnscreenAwarenessInfo)&gt; | 是   | 回调函数，返回屏幕感知结果。|
+
 
 **错误码**：
 
