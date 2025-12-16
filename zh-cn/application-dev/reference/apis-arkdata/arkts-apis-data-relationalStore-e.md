@@ -185,65 +185,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-使用pluginLibs加载开发者自定义分词器示例：
-
-1. 开发者需要实现一个fts5可加载分词器扩展，并将其编译成so，编译可参考[使用命令行CMake构建NDK工程](../../napi/build-with-ndk-cmake.md)。
-
-2. 将生成的so文件放置在"/libs/"目录下的相应子目录中，子目录根据系统架构确定。例如，系统架构为arm64-v8a时，放置在"/libs/arm64-v8a"目录下；系统架构为armeabi-v7a时，放置在"/libs/armeabi-v7a"目录下。
-
-3. 使用RDB加载自定义分词器。
-
-```ts
-import relationalStore from '@ohos.data.relationalStore'
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import fs from '@ohos.file.fs';
-
-export default class EntryAbility extends UIAbility {
-  async onWindowStageCreate(windowStage: window.WindowStage) {
-    let rdbStore: relationalStore.RdbStore | undefined = undefined;
-    const STORE_CONFIG: relationalStore.StoreConfig = {
-      name: "testTokenize.db",
-      securityLevel: relationalStore.SecurityLevel.S1,
-    };
-    let bundleCodeDir = this.context.bundleCodeDir;
-    // libdistributeddb_extension.so为实现的fts5可加载分词器扩展编译成的so名称
-    let soPath = bundleCodeDir + "/libs/arm64/libdistributeddb_extension.so";
-    try {
-      await fs.access(soPath);
-      console.info("Dynamic library found and accessible");
-    } catch (err) {
-      console.error("Dynamic library not accessible: " + err.message);
-      return;
-    }
-
-    let path = [soPath];
-    // 将pluginLibs配置为需要加载的动态库拓展路径。
-    STORE_CONFIG.pluginLibs = path;
-    try {
-      rdbStore = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
-      // 使用自定义分词器创建fts5虚拟表，tokenize后面是实现的分词器名称
-      await rdbStore.executeSql("CREATE VIRTUAL TABLE IF NOT EXISTS pages USING fts5(title, keywords, body, tokenize=koowork_tokenizer);");
-      console.info("CREATE VIRTUAL TABLE OK");
-      await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('歌曲', 'xxx', '1234歌曲，像北哈升');");
-      console.info("INSERT VIRTUAL TABLE OK, body is '1234歌曲，像北哈升'");
-      await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('歌曲', 'xxx', '我爱北京天安门, 天安门上太阳升');");
-      console.info("INSERT VIRTUAL TABLE OK, body is '我爱北京天安门, 天安门上太阳升'");
-      let resultSet = await rdbStore.querySql("select * from pages where body match '天安门';");
-      while (resultSet.goToNextRow()) {
-        console.info(`query result success, match body:${resultSet.getString(resultSet.getColumnIndex("body"))}`);
-      }
-      resultSet.close();
-      if (rdbStore) {
-        await rdbStore.close();
-      }
-    } catch (err) {
-      console.error("RdbStore failed, err: code=" + err.code + " message=" + err.message);
-    }
-  }
-}
-```
-
 ## AssetStatus<sup>10+</sup>
 
 描述资产附件的状态枚举。请使用枚举名称而非枚举值。
