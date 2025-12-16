@@ -69,8 +69,8 @@
 **导入相机和多媒体等模块文件**
 
 ```ts
-  import { camera } from '@kit.CameraKit';
-  import { media } from '@kit.MediaKit';
+import { camera } from '@kit.CameraKit';
+import { media } from '@kit.MediaKit';
 ```
 
 **赋予应用访问权限**
