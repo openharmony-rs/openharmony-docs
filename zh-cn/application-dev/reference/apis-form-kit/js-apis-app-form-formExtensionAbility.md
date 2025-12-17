@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 FormExtensionAbility为卡片扩展模块，提供卡片创建、销毁、刷新等生命周期回调。
@@ -169,7 +169,6 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 onChangeFormVisibility(newStatus: Record\<string, number>): void
 
 卡片提供方接收修改可见性的通知接口。
-
 该接口仅对系统应用生效，且需要将formVisibleNotify配置为true。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
