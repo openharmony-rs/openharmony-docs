@@ -78,7 +78,7 @@ import { Want } from '@kit.AbilityKit';
 
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onAddForm(want: Want) {
-    console.log(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
+    console.info(`FormExtensionAbility onAddForm, want: ${want.abilityName}`);
     let dataObj1: Record<string, string> = {
       'temperature': '11c',
       'time': '11:00'
@@ -116,7 +116,7 @@ import { FormExtensionAbility } from '@kit.FormKit';
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onCastToNormalForm(formId: string) {
     // 卡片提供方收到卡片使用方将临时卡片转常态卡片的通知时触发，开发者需根据实际需求做相应的处理
-    console.log(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
+    console.info(`FormExtensionAbility onCastToNormalForm, formId: ${formId}`);
   }
 };
 ```
