@@ -50,7 +50,7 @@ loadNativeModule(moduleName: string): Object
 | 场景            | 示例           | 
 | :------------- | :----------------------------- | 
 | 系统库模块        | 加载@ohos.或@system.        | 
-| 应用内native模块	| 加载libNativeLibrary.so |
+| 应用内native模块  | 加载libNativeLibrary.so |
 
 **示例1**：HAP加载系统库模块
 
