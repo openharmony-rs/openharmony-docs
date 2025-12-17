@@ -270,7 +270,7 @@ async function uriGetAssets(): Promise<string> {
         console.error('getThumbnail fail', err);
       }
     });
-	// ···
+  // ···
   } catch (error) {
     console.error(`uriGetAssets failed with err, code is ${error.code}, message is ${error.message}`);
     return 'ReadMediaUriFail';

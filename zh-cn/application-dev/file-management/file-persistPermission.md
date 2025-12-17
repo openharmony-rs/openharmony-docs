@@ -43,7 +43,7 @@ import { fileShare } from '@kit.CoreFileKit';
 // [StartExclude revoke_permission_example]
 export async function persistPermissionExample() {
   try {
-	// ···
+  // ···
     let documentSelectOptions = new picker.DocumentSelectOptions();
     let documentPicker = new picker.DocumentViewPicker();
     let uris = await documentPicker.select(documentSelectOptions);
