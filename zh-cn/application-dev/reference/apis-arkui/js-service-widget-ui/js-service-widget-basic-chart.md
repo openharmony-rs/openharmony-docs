@@ -1,9 +1,9 @@
 # chart
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 图表组件，用于呈现线形图、柱状图、量规图界面。
@@ -157,7 +157,7 @@
 ## 示例
 
 1. 线形图
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -167,8 +167,7 @@
      </stack>
    </div>
    ```
-
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -188,8 +187,7 @@
      height: 600px;
    }
    ```
-
-
+   
    ```json
    // xxx.json
    {
@@ -256,11 +254,11 @@
      }
    }
    ```
-
-![zh-cn_image_0000001185652902](figures/zh-cn_image_0000001185652902.png)
+   
+   ![zh-cn_image_0000001185652902](figures/zh-cn_image_0000001185652902.png)
 
 2. 柱状图
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -270,8 +268,7 @@
      </stack>
    </div>
    ```
-
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -291,8 +288,7 @@
      height: 400px;
    }
    ```
-
-
+   
    ```json
    {
      "data": {
@@ -326,12 +322,11 @@
      }
    }
    ```
-
-![barchart](figures/barchart.PNG)
+    
+   ![barchart](figures/barchart.PNG)
 
 3. 量规图
-
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -340,8 +335,7 @@
      </div>
    </div>
    ```
-
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -358,5 +352,5 @@
      weights: 4, 2, 1;
    }
    ```
-
-![gauge](figures/gauge.PNG)
+   
+   ![gauge](figures/gauge.PNG)
