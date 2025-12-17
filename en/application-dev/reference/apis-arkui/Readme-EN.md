@@ -46,7 +46,7 @@
       - [Enums](arkts-apis-uicontext-e.md)
       - [Types](arkts-apis-uicontext-t.md)
     - [@ohos.arkui.uiExtension (uiExtension)](js-apis-arkui-uiExtension.md)
-    - [@ohos.arkui.StateManagement (State Management)](js-apis-StateManagement.md)
+    - [@ohos.arkui.StateManagement (State Management)](js-apis-stateManagement.md)
     - [@ohos.curves (Interpolation Calculation)](js-apis-curve.md)
     - [@ohos.font (Custom Font Registration)](js-apis-font.md)
     - [@ohos.matrix4 (Matrix Transformation)](js-apis-matrix4.md)

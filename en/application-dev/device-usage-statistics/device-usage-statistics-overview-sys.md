@@ -6,7 +6,7 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Device usage statistics include the usage of applications, notifications, and the system. In application usage statistics, you can query the application usage, event logs, and bundle groups. The application records (usage history statistics and event records) cached by components are flushed to the database for persistent storage within 30 minutes after an event is reported.
+Device usage statistics include the usage of applications, notifications, and the system. In application usage statistics, you can query the application usage, event logs, and bundle groups. The application records (usage history statistics) cached by components are flushed to the database for persistent storage within 30 minutes after an event is reported.
 
 ## Introduction
 
@@ -24,7 +24,7 @@ Currently, you can use device usage statistics APIs to access only statistics on
   4. Application usage duration in the specified time frame at the specified interval (daily, weekly, monthly, or annually).
   5. Priority group of the caller application.
   6. Whether an application is in the idle state.
-  7. Obtain the number of FA usage records. **maxNum** specifies the maximum number of FA usage records returned. If **maxNum** is not specified, the default value **1000** will be used.
+  7. Obtain the number of FA usage records. FA usage records are sorted by time (most recent first). If **maxNum** is set, the maximum number of records returned is the value of **maxNum**. If **maxNum** is not set, the maximum number of records returned is 1,000.
   8. Number of notifications from applications based on the specified start time and end time.
   9. System events (hibernation, wakeup, lock, and unlock) that occur between the specified start time and end time.
   10. Priority group of the caller application or a given application.

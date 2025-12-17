@@ -15,3 +15,4 @@ Text box proxy. It provides methods for obtaining notifications and requests fro
 **Related module**: [InputMethod](capi-inputmethod.md)
 
 **Header file**: [inputmethod_text_editor_proxy_capi.h](capi-inputmethod-text-editor-proxy-capi-h.md)
+

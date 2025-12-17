@@ -121,7 +121,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct Index {
-  private customDialogComponentId: number = 0
+  private customDialogComponentId: number = 0;
+
   @Builder
   customDialogComponent() {
     Row({ space: 50 }) {
@@ -135,28 +136,36 @@ struct Index {
         Text('打开弹窗')
           .fontSize(30)
           .onClick(() => {
-            this.getUIContext().getPromptAction().openCustomDialog({
-              builder: () => {
-                this.customDialogComponent()
-              },
-              isModal:true,
-              showInSubWindow:false,
-              maskColor: Color.Pink,
-              maskRect:{ x: 20, y: 20, width: '90%', height: '90%' },
+            this.getUIContext()
+              .getPromptAction()
+              .openCustomDialog({
+                builder: () => {
+                  this.customDialogComponent()
+                },
+                isModal: true,
+                showInSubWindow: false,
+                maskColor: Color.Pink,
+                maskRect: {
+                  x: 20,
+                  y: 20,
+                  width: '90%',
+                  height: '90%'
+                },
 
-              dialogTransition: // 设置弹窗内容显示的过渡效果
-              TransitionEffect.translate({ x: 0, y: 290, z: 0 })
-                .animation({ duration: 4000, curve: Curve.Smooth }),// 四秒钟的偏移渐变动画
+                dialogTransition: // 设置弹窗内容显示的过渡效果
+                TransitionEffect.translate({ x: 0, y: 290, z: 0 })
+                  .animation({ duration: 4000, curve: Curve.Smooth }), // 四秒钟的偏移渐变动画
 
-              maskTransition: // 设置蒙层显示的过渡效果
-              TransitionEffect.opacity(0)
-                .animation({ duration: 4000, curve: Curve.Smooth }) // 四秒钟的透明渐变动画
+                maskTransition: // 设置蒙层显示的过渡效果
+                TransitionEffect.opacity(0)
+                  .animation({ duration: 4000, curve: Curve.Smooth }) // 四秒钟的透明渐变动画
 
-            }).then((dialogId: number) => {
-              this.customDialogComponentId = dialogId
-            })
+              })
+              .then((dialogId: number) => {
+                this.customDialogComponentId = dialogId;
+              })
               .catch((error: BusinessError) => {
-                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`)
+                console.error(`openCustomDialog error code is ${error.code}, message is ${error.message}`);
               })
           })
       }
@@ -202,7 +211,7 @@ struct Index {
               builder: () => {
                 this.customDialogComponent()
               },
-              alignment:DialogAlignment.Bottom,
+              alignment: DialogAlignment.Bottom,
               keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
               keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
             }).catch((error: BusinessError) => {

@@ -66,7 +66,7 @@ int32_t (*OH_AudioCapturer_OnReadData)(OH_AudioCapturer* capturer,void* userData
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | 指向[OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer)创建的音频流实例。 |
 | void* userData | 指向应用自定义的数据存储区域。     |
-| void* buffer | 指向播放数据存储区域，用于应用填充播放数据。      |
+| void* buffer | 指向录制数据存储区域，用于应用读取录制数据。      |
 | int32_t length | buffer的长度。     |
 
 ### OH_AudioCapturer_OnStreamEvent()

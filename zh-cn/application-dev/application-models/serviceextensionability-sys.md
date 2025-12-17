@@ -541,7 +541,7 @@ ServiceExtensionAbility服务组件在onConnect()中返回[IRemoteObject](../ref
       data.writeInt(99);
       // 开发者可发送data到目标端应用进行相应操作
       // @param code 表示客户端发送的服务请求代码。
-      // @param data 表示客户端发送的{@link MessageSequence}对象。
+      // @param data 表示客户端发送的MessageSequence对象。
       // @param reply 表示远程服务发送的响应消息对象。
       // @param options 指示操作是同步的还是异步的。
       // @return 如果操作成功返回{@code true}； 否则返回 {@code false}。

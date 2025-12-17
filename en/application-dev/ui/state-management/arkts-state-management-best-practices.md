@@ -1,5 +1,10 @@
 # Best Practices for State Management
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @s10021109-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 This guide outlines best practices for state management in ArkUI applications. Read on to discover the common pitfalls in state management and how to avoid them, with carefully selected examples of recommended and not-recommended practices.
 
@@ -114,7 +119,7 @@ struct MyComponent {
   build() {
     Column({ space: 20 }) {
       ForEach(this.updateUIArr(this.realStateArr),
-        (item: Array<number>) => {
+        (item: number) => {
           Text(`${item}`)
         })
       Text("add item")
@@ -161,7 +166,7 @@ struct CompA {
   build() {
     Column({ space: 20 }) {
       ForEach(this.realStateArr,
-        (item: Array<number>) => {
+        (item: number) => {
           Text(`${item}`)
         })
       Text("add item")
@@ -215,6 +220,7 @@ struct Title {
 @Component
 struct Page {
   @State translateObj: Translate = new Translate();
+
   build() {
     Column() {
       Title({
@@ -233,7 +239,7 @@ struct Page {
           x:this.translateObj.translateX
         })
         .onClick(() => {
-          animateTo({
+          this.getUIContext().animateTo({
             duration: 50
           },()=>{
             this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
@@ -270,6 +276,7 @@ struct Title {
 @Component
 struct Page1 {
   @State translateObj: Translate = new Translate();
+
   build() {
     Column() {
       Title()
@@ -280,7 +287,7 @@ struct Page1 {
       .height(400)
       Button("move")
         .onClick(() => {
-          animateTo({
+          this.getUIContext().animateTo({
             duration: 50
           },()=>{
             this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
@@ -303,7 +310,6 @@ When a complex object is defined as a state variable, take care to control the n
 
 During application development, you can use HiDumper to view the number of components associated with a state variable for performance optimization.
 
-
 ## Avoid Frequent Reads of State Variables in a Loop
 
 Avoid frequent reads of state variables inside a loop, such as the **for** and **while** loop. A best practice is to read state variables outside a loop.
@@ -311,7 +317,7 @@ Avoid frequent reads of state variables inside a loop, such as the **for** and *
 **Incorrect Usage**
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -345,7 +351,7 @@ struct Index {
 **Correct Usage**
 
 ```ts
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component

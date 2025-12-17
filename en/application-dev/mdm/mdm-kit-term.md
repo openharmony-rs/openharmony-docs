@@ -15,3 +15,4 @@ A Mobile Device Management (MDM) application is an enterprise-level application 
 
 ## EnterpriseAdminExtensionAbility
 **EnterpriseAdminExtensionAbility** is a mandatory component for MDM applications. When developing MDM applications for enterprises, you need to inherit from **EnterpriseAdminExtensionAbility** and implement MDM service logic in the **EnterpriseAdminExtensionAbility** instance. This component implements notifications of system management status changes and defines the callbacks to be invoked when a device administrator application is enabled or disabled or an application is installed or uninstalled. Once this ability is activated, it remains alive and will launch automatically after a system restart or user switch. Note that an MDM application with **EnterpriseAdminExtensionAbility** activated cannot be uninstalled.
+

@@ -9,15 +9,13 @@
 
 当页面信息较多时，为了让用户能够聚焦于当前显示的内容，需要对页面内容进行分类，提高页面空间利用率。[Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md)组件可以在一个页面内快速实现视图内容的切换，一方面提升查找信息的效率，另一方面精简用户单次获取到的信息量。
 
-
 ## 基本布局
 
-  Tabs组件的页面组成包含两个部分，分别是TabContent和TabBar。TabContent是内容页，TabBar是导航页签栏，页面结构如下图所示，根据不同的导航类型，布局会有区别，可以分为底部导航、顶部导航、侧边导航，其导航栏分别位于底部、顶部和侧边。
+  Tabs组件的页面组成包含两个部分，分别是[TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md)和[TabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar)。TabContent是内容页，TabBar是导航页签栏，页面结构如下图所示，根据不同的导航类型，布局会有区别，可以分为底部导航、顶部导航、侧边导航，其导航栏分别位于底部、顶部和侧边。
 
   **图1** Tabs组件布局示意图  
 
 ![tabs-layout](figures/tabs-layout.png)
-
 
 >**说明：**
 >
@@ -121,7 +119,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 ![侧边导航](figures/侧边导航.png)
 
 
-实现侧边导航栏需要将Tabs的vertical属性设置为true，vertical默认值为false，表明内容页和导航栏垂直方向排列。
+实现侧边导航栏需要将Tabs的[vertical](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#vertical)属性设置为true，vertical默认值为false，表明内容页和导航栏垂直方向排列。
 
 
 
@@ -138,9 +136,9 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 >**说明：**
 >
-> - vertical为false时，tabbar的宽度默认为撑满屏幕的宽度，需要设置barWidth为合适值。
+> - vertical为false时，tabbar的宽度默认为撑满屏幕的宽度，需要设置[barWidth](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barwidth)为合适值。
 >
-> - vertical为true时，tabbar的高度默认为实际内容的高度，需要设置barHeight为合适值。
+> - vertical为true时，tabbar的高度默认为实际内容的高度，需要设置[barHeight](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barheight)为合适值。
 
 
 ## 限制导航栏的滑动切换
@@ -185,7 +183,7 @@ Tabs({ barPosition: BarPosition.End }) {
 ![固定导航](figures/固定导航.gif)
 
 
-Tabs的barMode属性用于控制导航栏是否可以滚动，默认值为BarMode.Fixed。
+Tabs的[barMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barmode10)属性用于控制导航栏是否可以滚动，默认值为BarMode.Fixed。
 
 ```ts
 Tabs({ barPosition: BarPosition.End }) {
@@ -323,7 +321,7 @@ struct TabsExample1 {
 
 ![内容页和页签联动](figures/tabcontent_tabbar_sync.gif)
 
-若希望不滑动内容页和点击页签也能实现内容页和页签的切换，可以将currentIndex传给Tabs的index参数，通过改变currentIndex来实现跳转至指定索引值对应的TabContent内容。也可以使用TabsController，TabsController是Tabs组件的控制器，用于控制Tabs组件进行内容页切换。通过TabsController的changeIndex方法来实现跳转至指定索引值对应的TabContent内容。
+若希望不滑动内容页和点击页签也能实现内容页和页签的切换，可以将currentIndex传给Tabs的index参数，通过改变currentIndex来实现跳转至指定索引值对应的TabContent内容。也可以使用[TabsController](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscontroller)，TabsController是Tabs组件的控制器，用于控制Tabs组件进行内容页切换。通过TabsController的changeIndex方法来实现跳转至指定索引值对应的TabContent内容。
 ```ts
 @State currentIndex: number = 2;
 @State currentAnimationMode: AnimationMode = AnimationMode.CONTENT_FIRST;
@@ -369,7 +367,7 @@ Button('changeIndex').width('50%').margin({ top: 20 })
 
 ![切换指定页签](figures/TabsChange.gif)
 
-开发者可以通过Tabs组件的onContentWillChange接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
+开发者可以通过Tabs组件的[onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12)接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
   
 ```ts
 Tabs({ barPosition: BarPosition.End, controller: this.controller, index: this.currentIndex }) {
@@ -555,11 +553,11 @@ struct Demo {
 
 >  **说明：** 
 >
-> 1.TabsCacheMode枚举值为CACHE_BOTH_SIDE时，缓存当前显示的子组件和其两侧的子组件。
+> - TabsCacheMode枚举值为CACHE_BOTH_SIDE时，缓存当前显示的子组件和其两侧的子组件。
 >
-> 2.TabsCacheMode枚举值为CACHE_LATEST_SWITCHED时，缓存当前显示的子组件和最近切换过的子组件。
+> - TabsCacheMode枚举值为CACHE_LATEST_SWITCHED时，缓存当前显示的子组件和最近切换过的子组件。
 >
-> 3.存在翻页动画时，从页面1直接切换到页面3，翻页动画会包含页面2，页面2也会被加载，如果此时页面2不在缓存范围内，页面切换完成后会立马释放。
+> - 存在翻页动画时，从页面1直接切换到页面3，翻页动画会包含页面2，页面2也会被加载，如果此时页面2不在缓存范围内，页面切换完成后会立马释放。
 
 **图15** 在页面缓存场景下通过点击yellow按键切换界面。
 
@@ -621,27 +619,27 @@ struct MyComponent {
 
 1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1~3被缓存。再切换到red页，TabContent1~2释放，TabContent3~5被缓存。
 
-**图16** 默认翻页动画，CACHE_BOTH_SIDE模式示意图
+   **图16** 默认翻页动画，CACHE_BOTH_SIDE模式示意图
 
-![cachedMaxCount1](figures/cachedMaxCount1.png)
+   ![cachedMaxCount1](figures/cachedMaxCount1.png)
 
 2. 如图17所示，使用默认翻页动画，CACHE_LATEST_SWITCHED模式，n设置为2，点击TabBar切换到yellow页，TabContent1、3被缓存，TabContent2释放。再切换到red页，TabContent1、3、5被缓存，TabContent4释放。
 
-**图17** 默认翻页动画，CACHE_LATEST_SWITCHED模式示意图
+   **图17** 默认翻页动画，CACHE_LATEST_SWITCHED模式示意图
 
-![cachedMaxCount2](figures/cachedMaxCount2.png)
+   ![cachedMaxCount2](figures/cachedMaxCount2.png)
 
 3. 如图18所示，关闭翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1、3被缓存。再切换到red页，TabContent3、5被缓存，TabContent1释放。
 
-**图18** 关闭翻页动画，CACHE_BOTH_SIDE模式示意图
+   **图18** 关闭翻页动画，CACHE_BOTH_SIDE模式示意图
 
-![cachedMaxCount3](figures/cachedMaxCount3.png)
+   ![cachedMaxCount3](figures/cachedMaxCount3.png)
 
 4. 如图19所示，关闭翻页动画，CACHE_LATEST_SWITCHED模式，n设置为2，点击TabBar切换到yellow页，TabContent1、3被缓存。再切换到red页，TabContent1、3、5被缓存。
 
-**图19** 关闭翻页动画，CACHE_LATEST_SWITCHED模式示意图
+   **图19** 关闭翻页动画，CACHE_LATEST_SWITCHED模式示意图
 
-![cachedMaxCount4](figures/cachedMaxCount4.png)
+   ![cachedMaxCount4](figures/cachedMaxCount4.png)
 
 ## 相关实例
 

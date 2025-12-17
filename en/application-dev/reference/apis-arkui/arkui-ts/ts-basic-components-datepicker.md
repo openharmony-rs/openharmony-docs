@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **DatePicker** is a component for selecting a date through scrolling interaction.
 
@@ -343,6 +343,10 @@ Triggered when the date picker snaps to the selected item. This event cannot be 
 onDateChange(callback: Optional\<Callback\<Date>>)
 
 Triggered when the date picker snaps to the selected item. This event cannot be triggered by two-way bound state variables. Compared with [onDateChange<sup>10+</sup>](#ondatechange10), this API supports the **undefined** type for the **callback** parameter.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

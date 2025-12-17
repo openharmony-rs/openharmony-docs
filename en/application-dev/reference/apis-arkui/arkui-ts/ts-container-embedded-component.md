@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **EmbeddedComponent** is a component used to embed into the current page the UI provided by another [EmbeddedUIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) in the same application. The EmbeddedUIExtensionAbility runs in an independent process for UI layout and rendering.
 
@@ -59,6 +59,10 @@ onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
 Called when the started EmbeddedUIExtensionAbility is terminated by calling **terminateSelfWithResult** or **terminateSelf**.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -79,6 +83,10 @@ Called when the started EmbeddedUIExtensionAbility is terminated by calling **te
 onError(callback: ErrorCallback)
 
 Called when an error occurs during the running of the started EmbeddedUIExtensionAbility. You can obtain the error information (code, name, and message) from the callback parameters and handle the error. For details about service error codes, see [UIExtension Error Codes](../errorcode-uiextension.md).
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

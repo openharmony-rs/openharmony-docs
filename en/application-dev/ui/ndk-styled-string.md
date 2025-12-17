@@ -22,7 +22,7 @@ The following figure shows the main process for using the **NODE_TEXT_CONTENT_WI
 Since text styles are set through font engine APIs, there is no need to configure style attributes such as text color and font size when creating a **Text** component. However, basic universal attributes such as width and height still need to be set. If they are unspecified, the component automatically adapts to the text content dimensions.
 ```c++
 ArkUI_NativeNodeAPI_1 *nodeApi = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-    OH_ArkUI_QueryMod32uleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+    OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
 if (nodeApi == nullptr) {
     return;
 }
@@ -44,7 +44,7 @@ nodeApi->setAttribute(text, NODE_HEIGHT, &textHeightItem);
     
     > **NOTE**
     > 
-    > The **OH_Drawing_** prefixed APIs are provided by the Ark text engine. For details, see [Simple Text Drawing and Display (C/C++)](../graphics/simple-text-c.md) and [Complex Text Drawing and Display (C/C++)](../graphics/complex-text-c.md).
+    > The **OH_Drawing_** prefixed APIs are provided by the Ark text engine. For details, see [Drawing and Displaying Simple Text (C/C++)](../graphics/simple-text-c.md) and [Drawing and Displaying Complex Text (C/C++)](../graphics/complex-text-c.md).
     ```c++
     OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
     OH_Drawing_SetTypographyTextAlign(typographyStyle, OH_Drawing_TextAlign::TEXT_ALIGN_CENTER);

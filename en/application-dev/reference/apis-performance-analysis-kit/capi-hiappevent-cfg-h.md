@@ -19,7 +19,7 @@ Defines the configuration items of the event logging configuration function. If 
 
 **Since**: 8
 
-**Related Module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-hiappevent.md)
 
 ## Summary
 

@@ -1,4 +1,4 @@
-# @ohos.account.osAccount (System Account  Management) (System API)
+# @ohos.account.osAccount (System Account Management) (System API)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Account-->
@@ -2501,7 +2501,7 @@ Provides APIs for user authentication.
 
 constructor()
 
-A constructor used to create an instance for user authentication.
+Defines a constructor used to create an instance for user authentication.
 
 **System API**: This is a system API.
 
@@ -2974,7 +2974,7 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
 
-Performs authentication of the current user. This API uses an asynchronous callback to return the result.
+Performs authentication of the current user. 
 
 **System API**: This is a system API.
 
@@ -3050,7 +3050,7 @@ Performs authentication of the current user. This API uses an asynchronous callb
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, options: AuthOptions, callback: IUserAuthCallback): Uint8Array
 
-Starts user authentication based on the specified challenge value, authentication type (PIN, facial, or fingerprint authentication), authentication trust level, and optional parameters (such as the account ID and authentication intent). This API uses an asynchronous callback to return the result.
+Starts user authentication based on the specified challenge value, authentication type (PIN, facial, or fingerprint authentication), authentication trust level, and optional parameters (such as the account ID and authentication intent).
 
 **System API**: This is a system API.
 
@@ -3266,7 +3266,7 @@ Provides APIs for PIN authentication.
 
 constructor()
 
-Creates a PIN authentication instance.
+Defines a constructor used to create a PIN authentication instance.
 
 **System API**: This is a system API.
 
@@ -3639,7 +3639,7 @@ Authenticates a domain account by the authorization token.
 
 getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;): void
 
-Obtains information about a domain account.
+Obtains information about a domain account. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -3908,7 +3908,7 @@ Checks whether the specified domain account token is valid.
 
 getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains the domain access token based on the specified conditions.
+Obtains the domain access token based on the specified conditions. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -4773,7 +4773,7 @@ Provides APIs for user IDM.
 
 constructor()
 
-A **constructor()** used to create an instance for user IDM.
+Defines a constructor used to create an instance for user IDM.
 
 **System API**: This is a system API.
 

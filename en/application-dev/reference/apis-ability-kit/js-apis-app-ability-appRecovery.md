@@ -1,12 +1,5 @@
 # @ohos.app.ability.appRecovery (Application Recovery)
 
-<!--Kit: Performance Analysis Kit-->
-<!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
-<!--Designer: @peterhuangyu-->
-<!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
-
 The appRecovery module provides APIs for recovering faulty applications.
 
 > **NOTE**
@@ -123,7 +116,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.restartApp();
   }
 };
@@ -161,7 +154,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState();
   }
 };
@@ -205,7 +198,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.error('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState(this.context);
   }
 };

@@ -1,4 +1,4 @@
-# LiveFormExtensionContext（仅对系统应用开放）
+# LiveFormExtensionContext (系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->

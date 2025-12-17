@@ -26,7 +26,7 @@ ArkCompiler runtime captures process exceptions. The fault log generation proces
 
 ## Constraints
 
-If an exception is thrown in an asynchronous function, no JS crash will occur. You can observe the exception through [ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror).
+If an exception is thrown in an asynchronous function, no JS crash will occur. You can observe the exception through [ErrorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror). For details about the sample code, see [Exception Handling in Async Functions](../arkts-utils/arkts-runtime-faq.md#exception-handling-in-async-functions).
 
 
 ## Obtaining Logs
@@ -96,7 +96,7 @@ Page switch history: <- Page switch history
 Reason:TypeError <- Fault cause
 Error name:TypeError <- Fault type
 Error message:Cannot read property c of undefined <- Error message
-Cannot get SourceMap info, dump raw stack: <- The release package does not contain the **SourceMap** file, and the JS stack fails to parse it.
+Cannot get SourceMap info, dump raw stack: <- The release package does not contain the SourceMap file, and the JS stack fails to parse it.
 Stacktrace:
     at onPageShow entry (entry/src/main/ets/pages/Index.ets:7:13)  <- Call stack of the exception code
            ^        ^                              ^
@@ -104,7 +104,7 @@ Stacktrace:
 
 HiLog:
  ^
- Add 1000 lines of HiLog logs related to the exception to the generated crash log file.
+ HiLog logs generated before the fault occurs are added to the generated crash log file. A maximum of 1000 lines are supported.
 
 ```
 ### Log Specifications for Asynchronous Thread Stack Tracing Faults
@@ -216,7 +216,7 @@ at \<Execution method name> (\<Module name|Dependent module name|Version number|
 The following is an example:
 
 
-```
+```text
 at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 ```
 
@@ -248,7 +248,7 @@ at \<Execution method name> \<Dependent module name> (\<Source code path>:\<Line
 The following is an example:
 
 
-```
+```text
 at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 ```
 

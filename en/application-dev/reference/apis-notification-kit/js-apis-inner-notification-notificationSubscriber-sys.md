@@ -564,7 +564,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 | bundle      | string | Yes  | No  | Bundle name of the application.|
 | uid         | number | Yes  | No  | UID of the application. |
 | badgeNumber | number | Yes  | No  | Number of notifications displayed on the application icon.  |
-| instanceKey<sup>(deprecated)</sup>  | number | Yes  | Yes  | Key value of an application instance.  |
+| instanceKey<sup>(deprecated)</sup>  | number | Yes  | Yes  | Key value of an application instance. This parameter is supported since API version 12 and deprecated since API version 15. You are advised to use **appInstanceKey** instead. |
 | appInstanceKey<sup>15+</sup>  | string | Yes  | Yes  | Key value of an application instance.  |
 
 

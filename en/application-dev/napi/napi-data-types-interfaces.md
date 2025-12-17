@@ -93,7 +93,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 - If the **mode** value is **napi_tsfn_release**, the number of threads held by the thread-safe function is reduced by one. When the number of threads is reduced to 0, the thread-safe function is destroyed.
 
 - If the value is **napi_tsfn_abort**, this thread-safe function is disabled and cannot be called.
-  If **napi_tsfn_abort** is set, calling this thread-safe function using **napi_call_threadsafe_function** may cause a UAF issue. When **napi_tsfn_abort** is set, the thread-safe function is disabled and cannot be called. If **napi_call_threadsafe_function** is called, the system may return **napi_closing**, indicating that the thread-safe function is being disabled, and the data passed to the thread-safe function is not put into the queue. This means that the data may not be correctly processed. If the memory to which data points has been freed (for example, the thread-safe function resources have been freed), but the caller still tries to access or use data, a Use-After-Free(UAF) issue may occur.
+  If **napi_tsfn_abort** is set, calling this thread-safe function using **napi_call_threadsafe_function** may cause a UAF issue. When **napi_tsfn_abort** is set, the thread-safe function is disabled and cannot be called. If **napi_call_threadsafe_function** is called, the system may return **napi_closing**, indicating that the thread-safe function is being disabled, and the data passed to the thread-safe function is not put into the queue. This means that the data may not be correctly processed. If the memory to which data points has been freed (for example, the thread-safe function resources have been freed), but the caller still tries to access or use data, a Use-After-Free (UAF) issue may occur.
 
 ### napi_threadsafe_function_call_mode
 
@@ -555,9 +555,9 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_unwrap_sendable | Unwraps the native instance from an ArkTS object.|
 | napi_remove_wrap_sendable | Removes and obtains the native instance wrapped by an ArkTS object. After removal, the callback will no longer be triggered and must be manually deleted to free memory.|
 | napi_wrap_enhance | Wraps a Node-API instance into an ArkTS object and specifies the instance size. You can specify whether to execute the registered callback asynchronously (if asynchronous, it must be thread-safe).|
-|napi_create_ark_context| Creates a context.|
-|napi_switch_ark_context| Switches to the specified runtime context environment.|
-|napi_destroy_ark_context| Destroys the context created by **napi_create_ark_context**.|
+| napi_create_ark_context| Creates a context.|
+| napi_switch_ark_context| Switches to the specified runtime context environment.|
+| napi_destroy_ark_context| Destroys the context created by **napi_create_ark_context**.|
 | napi_open_critical_scope | Opens a critical scope.|
 | napi_close_critical_scope | Closes a critical scope.|
 | napi_get_buffer_string_utf16_in_critical_scope | Obtains the UTF-16 encoding memory buffer data of an ArkTS string.|
@@ -812,7 +812,7 @@ napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope);
 napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope);
 ```
 
-**napi_close_critical_scope**
+**napi_get_buffer_string_utf16_in_critical_scope**
 
 ```c
 napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,

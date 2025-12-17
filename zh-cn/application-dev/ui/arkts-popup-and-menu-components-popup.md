@@ -212,6 +212,7 @@ struct Index {
           builder: this.popupBuilder, // 气泡的内容
           placement:Placement.Bottom, // 气泡的弹出位置
           popupColor:Color.Pink, // 气泡的背景色
+          backgroundBlurStyle: BlurStyle.NONE,
           onStateChange: (e) => {
             if (!e.isVisible) {
               this.customPopup = false;

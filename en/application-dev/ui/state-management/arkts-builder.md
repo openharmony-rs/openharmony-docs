@@ -27,7 +27,7 @@ The main differences between the @Builder decorator and the @Component decorator
 
 ## How to Use
 
-The \@Builder decorator can be used in two ways: as a private custom builder function defined within a custom component (#Private Custom Builder Function) and as a global custom builder function defined globally (#Global Custom Builder Function).
+The \@Builder decorator can be used in two modes: as a [private custom builder function](#private-custom-builder-function) within a custom component, or as a [global custom builder function](#global-custom-builder-function) defined at global scope.
 
 ### Private Custom Builder Function
 
@@ -169,7 +169,7 @@ struct Parent {
 
 ## Constraints
 
-1. If [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) is not used in the function decorated by \@Builder, the parameter value cannot be modified. If the parameter value is modified, UI refresh is not triggered. If [by-reference parameter passing](#by-reference-parameter-passing) is used and only one parameter is passed, a runtime error is thrown when the internal attributes of the parameter are modified. MutableBinding helps you modify parameter values in a function decorated with \@Builder. For details, see [Changing the Input Parameters in the \@Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
+1. If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used in the function decorated by \@Builder, the parameter value cannot be modified. If the parameter value is modified, UI refresh is not triggered. If [by-reference parameter passing](#by-reference-parameter-passing) is used and only one parameter is passed, a runtime error is thrown when the internal attributes of the parameter are modified. MutableBinding helps you modify parameter values in a function decorated with \@Builder. For details, see [Changing the Input Parameters in the \@Builder Decorated Function](#changing-the-input-parameters-in-the-builder-decorated-function).
 
 2. \@Builder triggers dynamic UI rendering only when it is passed by reference and only one parameter is passed. For details, see [By-Reference Parameter Passing](#by-reference-parameter-passing).
 
@@ -867,7 +867,7 @@ Effect
 
 ### \@Builder Supports State Variable Refresh
 
-From API version 20 onwards, you can use the UIUtils.makeBinding() function, Binding class, and MutableBinding class to refresh state variables in the \@Builder function. For details, see [State Management API Reference](../../reference/apis-arkui/js-apis-StateManagement.md#makebinding20).
+From API version 20 onwards, you can use the UIUtils.makeBinding() function, Binding class, and MutableBinding class to refresh state variables in the \@Builder function. For details, see [State Management API Reference](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20).
 
 ```ts
 import { Binding, MutableBinding, UIUtils } from '@kit.ArkUI';
@@ -1389,7 +1389,7 @@ struct BackGround {
     }
   };
 
-  private Bg_list: Array<CustomBuilder> =[this.myImages(), this.myImages2()]; // Incorrect usage. Do not call the @Builder method outside the UI method.
+  private Bg_list: Array<CustomBuilder> =[this.myImages(), this.myImages2()]; // Do not call the @Builder method outside the UI method.
 
   @State bg_builder: CustomBuilder = this.myImages(); // Incorrect usage. Do not call the @Builder method outside the UI method.
   @State bg_Color: ResourceColor = Color.Orange;
@@ -1524,7 +1524,7 @@ struct MakeBindingTest {
   }
 }
 ```
-For details about the usage specifications of MutableBinding, see [State Management API Documentation](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20).
+For details about the usage specifications of MutableBinding, see [State Management API Documentation](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20).
 
 **Correct Usage**
 ```ts
@@ -1571,7 +1571,7 @@ struct MakeBindingTest {
 
 ### Changing the Input Parameters in the \@Builder Decorated Function
 
-If [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) is not used, the parameter value modified in the function decorated by \@Builder does not take effect and may cause a runtime error.
+If [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) is not used, the parameter value modified in the function decorated by \@Builder does not take effect and may cause a runtime error.
 
 **Incorrect Usage**
 ```ts
@@ -1638,7 +1638,7 @@ struct Parent {
   }
 }
 ```
-Proper use of [MutableBinding](../../reference/apis-arkui/js-apis-StateManagement.md#mutablebindingt20) helps developers modify parameter values in the function decorated with \@Builder.
+Proper use of [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) helps developers modify parameter values in the function decorated with \@Builder.
 
 **Correct Usage**
 ```ts

@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The visible area change event of a component refers to the change in the visual portion of the component on the screen. It can be used to determine whether the component is completely or partially displayed on the screen. It is usually applicable to scenarios such as advertisement exposure tracing.
 
@@ -17,6 +17,16 @@ The visible area change event of a component refers to the change in the visual 
 onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback): T
 
 Called when the visible area of the component changes.
+
+> **NOTE**
+>
+>- This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+>
+>- This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
+> 
+>- Blocking calculation of sibling components on their own nodes is not supported. Blocking calculation of all ancestor sibling nodes on their own nodes is not supported. Blocking calculation of windows is not supported. Component rotation calculation is not supported. For example, [Stack](ts-container-stack.md). [Z-order control](ts-universal-attributes-z-order.md), [rotate](ts-universal-attributes-transformation.md#rotate), and so on.
+>
+>- It does not support visibility change calculations for nodes that are not in the component tree. For example, preloaded nodes or custom nodes mounted using the [overlay](ts-universal-attributes-overlay.md#overlay) capability.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -35,20 +45,23 @@ Called when the visible area of the component changes.
 | -------- | -------- |
 | T | Current component.|
 
-> **NOTE**
->- This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
->
->- This API only takes into account the relative clipped area ratio of the component with respect to all ancestor nodes (up to the window boundary) and its own area.
-> 
->- Blocking calculation of sibling components on their own nodes is not supported. Blocking calculation of all ancestor sibling nodes on their own nodes is not supported. Blocking calculation of windows is not supported. Component rotation calculation is not supported. For example, [Stack](ts-container-stack.md). [Z-order control](ts-universal-attributes-z-order.md), [rotate](ts-universal-attributes-transformation.md#rotate), and so on.
->
->- It does not support visibility change calculations for nodes that are not in the component tree. For example, preloaded nodes or custom nodes mounted using the [overlay](ts-universal-attributes-overlay.md#overlay) capability.
-
 ## onVisibleAreaApproximateChange<sup>17+</sup>
 
-onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
+onVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): T
 
 Configures a callback for the **onVisibleAreaApproximateChange** event, with options to limit the callback execution interval.
+
+>**NOTE**
+>
+>- This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+>
+>- Compared with [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange), this API reduces calculation frequency to optimize performance when many nodes are registered. The calculation interval is controlled by the **expectedUpdateInterval** parameter in [VisibleAreaEventOptions](#visibleareaeventoptions12).
+>
+>- By default, the interval threshold of the visible area change callback includes 0. This means that, if the provided threshold is [0.5], the effective threshold will be [0.0, 0.5].
+>
+>- This API can be called in custom components since API version 18.
+>
+>- The return value type is changed from void to T since API version 21.
 
 **Atomic service API**: This API can be used in atomic services since API version 17.
 
@@ -61,13 +74,11 @@ Configures a callback for the **onVisibleAreaApproximateChange** event, with opt
 | options  | [VisibleAreaEventOptions](#visibleareaeventoptions12) | Yes  | Visible area change configuration options.|
 | event  | [VisibleAreaChangeCallback](#visibleareachangecallback12)   \| undefined | Yes  | Callback for the **onVisibleAreaChange** event. This callback is triggered when the ratio of the component's visible area to its total area approaches the threshold set in **options**.|
 
->**NOTE**
->
->- Compared with [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange), this API reduces calculation frequency to optimize performance when many nodes are registered. The calculation interval is controlled by the **expectedUpdateInterval** parameter in [VisibleAreaEventOptions](#visibleareaeventoptions12).
->
->- By default, the interval threshold of the visible area change callback includes 0. This means that, if the provided threshold is [0.5], the effective threshold will be [0.0, 0.5].
->
->- This API can be called in custom components since API version 18.
+**Return value**
+
+| Type| Description|
+| -------- | -------- |
+| T | Current component.|
 
 ## VisibleAreaEventOptions<sup>12+</sup>
 
@@ -101,7 +112,7 @@ Represents a callback for visible area changes of the component.
 
 ### Example 1: Using onVisibleAreaChange to Listen for Visible Area Changes
 
-This example demonstrates how to set an **onVisibleAreaChange** event for a component, which triggers the callback when the component is fully displayed or completely hidden.
+This example demonstrates how to set an [onVisibleAreaChange](#onvisibleareachange) event for a component, which triggers the callback when the component is fully displayed or completely hidden.
 
 ```ts
 // xxx.ets
@@ -203,7 +214,7 @@ struct ScrollExample {
 
 ### Example 2: Using onVisibleAreaApproximateChange to Listen for Visible Area Changes
 
-This example demonstrates how to set an **onVisibleAreaApproximateChange** event for a component, which triggers the callback when the component is fully displayed or completely hidden.
+This example demonstrates how to set an [onVisibleAreaApproximateChange](#onvisibleareaapproximatechange17) event for a component, which triggers the callback when the component is fully displayed or completely hidden. This feature is supported from API version 17.
 
 ```ts
 // xxx.ets

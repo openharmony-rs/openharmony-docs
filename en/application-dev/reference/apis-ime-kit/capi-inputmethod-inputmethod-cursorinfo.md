@@ -15,3 +15,4 @@ Represents the cursor information, Coordinates, width, and height of the cursor.
 **Related module**: [InputMethod](capi-inputmethod.md)
 
 **Header file**: [inputmethod_cursor_info_capi.h](capi-inputmethod-cursor-info-capi-h.md)
+

@@ -332,8 +332,6 @@ Registers a custom DNS resolver.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-**Required permission**: ohos.permission.INTERNET
-
 **Since**: 11
 
 **Deprecated from**: 13
@@ -351,7 +349,7 @@ Registers a custom DNS resolver.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success. **201**: Missing permissions.<br>         **401**: Parameter error. **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+| int32_t | **0**: Success. **401**: Parameter error.<br> **2100002**: Service connection failure.  **2100003**: Internal error.|
 
 ### OHOS_NetConn_UnregisterDnsResolver()
 
@@ -365,8 +363,6 @@ Unregisters a custom DNS resolver.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-**Required permission**: ohos.permission.INTERNET
-
 **Since**: 11
 
 **Deprecated from**: 13
@@ -377,7 +373,7 @@ Unregisters a custom DNS resolver.
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success. **201**: Missing permissions.<br>         **401**: Parameter error. **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+| int32_t | **0**: Success.<br>**2100002**: Service connection failure.<br> **2100003**: Internal error.|
 
 ### OH_NetConn_RegisterDnsResolver()
 
@@ -390,8 +386,6 @@ int32_t OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver)
 Registers a custom DNS resolver.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
-
-**Required permission**: ohos.permission.INTERNET
 
 **Since**: 13
 
@@ -406,7 +400,7 @@ Registers a custom DNS resolver.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         **NETMANAGER_EXT_SUCCESS**: Operation success.<br>         **NETMANAGER_ERR_PERMISSION_DENIED**: Permission denied.<br>         **NETMANAGER_ERR_PARAMETER_ERROR**: Parameter error. Enter a correct parameter.|
+| int32_t | Result code.<br>         **NETMANAGER_EXT_SUCCESS**: Operation success.<br>         **NETMANAGER_ERR_PARAMETER_ERROR**: Parameter error. Enter a correct parameter.|
 
 ### OH_NetConn_UnregisterDnsResolver()
 
@@ -420,15 +414,13 @@ Unregisters a custom DNS resolver.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-**Required permission**: ohos.permission.INTERNET
-
 **Since**: 13
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success. **201**: Missing permissions.<br>         **401**: Parameter error. **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
+| int32_t | **0**: Success.<br>          **2100002**: Service connection failure.<br>         **2100003**: Internal error.|
 
 ### OH_NetConn_BindSocket()
 
@@ -727,7 +719,7 @@ Queries network trace route information.
 | -- | -- |
 | char *destination | Destination address.|
 | [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) *option | Route options.|
-| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | Route result. An array pointer needs to be passed. The array size indicates the number of route hops, which is **30** by default.|
+| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) *traceRouteInfo | Route result. An array pointer needs to be passed. The array size indicates the number of route hops, which is **30** by default. If you customize the number of hops, ensure that the array size is the same as the value of **maxJumpNumber** in the **option** field.|
 
 **Returns**
 

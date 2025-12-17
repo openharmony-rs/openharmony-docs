@@ -545,7 +545,7 @@ try {
 
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
-Adds a firewall filtering rule to the device. Only IPv4 is supported.<br>
+Adds firewall rules for the device. Only IPv4 is supported.<br>
 After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all network data packets that do not meet the **ALLOW** rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -607,7 +607,7 @@ try {
 
 removeFirewallRule(admin: Want, firewallRule?: FirewallRule): void
 
-Removes a firewall filtering rule. Only IPv4 is supported.<br>
+Removes firewall rules of the device. Only IPv4 is supported.<br>
 If there is no rule with [Action](#action) being **ALLOW** after the rule is removed, the **DENY** rules that are added by default with [addFirewallRule](#networkmanageraddfirewallrule) will be removed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -679,7 +679,7 @@ try {
 
 getFirewallRules(admin: Want): Array\<FirewallRule>
 
-Queries firewall filtering rules of a device. Only IPv4 is supported.
+Checks firewall rules of the device. Only IPv4 is supported.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -734,7 +734,7 @@ try {
 
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
-Adds a domain name filtering rule for the device. Only IPv4 is supported.<br>
+Adds domain name filtering rules for the device. Only IPv4 is supported.<br>
 After a rule with [Action](#action) set to **ALLOW** is added, a rule with **Action** set to **DENY** is added by default to discard or intercept all packets for domain name resolution that do not meet the **ALLOW** rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -791,7 +791,7 @@ try {
 
 removeDomainFilterRule(admin: Want, domainFilterRule?: DomainFilterRule): void
 
-Removes a domain name filtering rule for the device. Only IPv4 is supported.<br>
+Removes domain name filtering rules for the device. Only IPv4 is supported.<br>
 If there is no rule with [Action](#action) being **ALLOW** after the rule is removed, the **DENY** rules that are added by default with [addDomainFilterRule](#networkmanageradddomainfilterrule) will be removed.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -858,7 +858,7 @@ try {
 
 getDomainFilterRules(admin: Want): Array\<DomainFilterRule>
 
-Queries a domain name filtering rule for the device. Only IPv4 is supported.
+Checks domain name filtering rules of the device. Only IPv4 is supported.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_NETWORK
 

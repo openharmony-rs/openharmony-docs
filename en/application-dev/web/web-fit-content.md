@@ -8,6 +8,8 @@
 
 When **layoutMode(WebLayoutMode.FIT_CONTENT)** is used, the size of the **Web** component can automatically fit in the page content.
 
+<!--RP1--><!--RP1End-->
+
 ## When to Use
 
 This mode is applicable to the scenario where the **Web** component needs to be expanded based on the web page height and scrolls with other system components. The following are examples:
@@ -25,7 +27,7 @@ As shown in Figure 1, the height of the **Web** component is the same as the scr
 
 **Content-fitting web layout**
 
-As shown in Figure 3, the height of both the **Web** component and the HTML5 page is 8000 px. In this case, no scroll bar is generated in the **Web** component. When a user scrolls the page, other ArkUI components are scrolled at the same time, and the **Web** component is displayed on the entire screen, as shown in Figure 4.
+As shown in Figure 3, the height of the **Web** component automatically adapts to the HTML5 page. As shown in the right figure, the height of the **Web** component and the HTML5 page is 8000 px. In this case, no scroll bar is generated in the **Web** component. When a user scrolls the page, other ArkUI components is scrolled at the same time, and the **Web** component is displayed on the entire screen. Figure 4 shows the actual effect.
 
 | Figure 3 Web layout fitting in the page content| Figure 4 Real effect of the web layout|
 | --- | --- |
@@ -156,7 +158,7 @@ The height of the DOM node of the core content is 0.
 
 If the CSS **height: <number& > vh** is conflict with the **Web** component size adaptation page layout, check whether **height: vh** is the first CSS height style from the body node. For example, in the following structure, the height of the DOM node whose ID is 2 is 0.
 
-```
+```html
 <body>
   <div id = "1">
     <div id = "2" style = "height: 100vh">Child DOM</div>
@@ -169,7 +171,7 @@ If the CSS **height: <number& > vh** is conflict with the **Web** component size
 
 - Use a specific height style for the child DOM to extend the parent element.
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2"><div style = "height: 20px"></div></div>
@@ -180,7 +182,7 @@ If the CSS **height: <number& > vh** is conflict with the **Web** component size
 
 - Use the actual height style for the parent element.
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2" style = "height: 20px">Child DOM</div>

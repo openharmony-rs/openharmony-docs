@@ -14,9 +14,7 @@
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[XComponent](ts-basic-components-xcomponent.md)。
 
-## 接口
-
-### XComponentOptions<sup>12+</sup>
+## XComponentOptions<sup>12+</sup>
 
 定义XComponent的具体配置参数。
 
@@ -32,7 +30,7 @@
   >
   > 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
 
-## 属性
+## 接口
 
 ### enableTransparentLayer<sup>18+</sup>
 

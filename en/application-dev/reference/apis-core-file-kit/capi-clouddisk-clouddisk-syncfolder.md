@@ -25,3 +25,5 @@ A struct that encapsulates the sync root property information.
 | CloudDisk_SyncFolderPath path | Sync root path.|
 | [CloudDisk_SyncFolderState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncfolderstate) state | State of the sync root path.|
 | [CloudDisk_DisplayNameInfo](capi-clouddisk-clouddisk-displaynameinfo.md) displayNameInfo | Alias of the sync root path.|
+
+

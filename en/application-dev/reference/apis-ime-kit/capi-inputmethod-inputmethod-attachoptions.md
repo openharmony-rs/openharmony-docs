@@ -15,3 +15,4 @@ Options for binding the input method.
 **Related module**: [InputMethod](capi-inputmethod.md)
 
 **Header file**: [inputmethod_attach_options_capi.h](capi-inputmethod-attach-options-capi-h.md)
+

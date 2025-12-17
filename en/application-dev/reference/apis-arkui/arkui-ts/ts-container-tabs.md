@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Tabs** component is a container component that allows users to switch between content views through tabs. Each tab page corresponds to a content view.
 
@@ -205,7 +205,7 @@ Sets the height of the tab bar. For horizontal **Tabs** components, you can set 
 
 | Name          | Type                        | Mandatory| Description                                                        |
 | ---------------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| height           | [Length](ts-types.md#length) | Yes  | Height of the tab bar.<br>Default value:<br>If the vertical attribute is set to false, the default value is 56 vp for the tab bar whose style is not set or is set to CustomBuilder.<br>If the vertical attribute is set to true, the default value is the height of the tab bar whose style is not set or is set to CustomBuilder.<br>If [SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9) is set, and the **vertical** attribute is **false**, the default value is 56 vp.<br>If **SubTabBarStyle** is set, and the **vertical** attribute is **true**, the default value is the height of the **Tabs** component.<br>If [BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9) is set, and the **vertical** attribute is **true**, the default value is the height of the **Tabs** component.<br>If **BottomTabBarStyle** is set, and the **vertical** attribute is **false**, the default value is 48 vp.|
+| height           | [Length](ts-types.md#length) | Yes  | Height of the tab bar.<br>Default value:<br>If no style is set or CustomBuilder is used to set a custom style for the TabBar and vertical is set to false, the default value is 56 vp.<br>If no style is set or CustomBuilder is used to set a custom style for the TabBar and vertical is set to true, the default value is the height of the Tabs.<br>If [SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9) is set, and the **vertical** attribute is **false**, the default value is 56 vp.<br>If **SubTabBarStyle** is set, and the **vertical** attribute is **true**, the default value is the height of the **Tabs** component.<br>If [BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9) is set, and the **vertical** attribute is **true**, the default value is the height of the **Tabs** component.<br>If **BottomTabBarStyle** is set, and the **vertical** attribute is **false**, the default value is 48 vp.|
 | noMinHeightLimit | boolean                      | Yes  | Whether to remove the minimum height limit of the tab bar when **height** is set to **'auto'**. The default value is **false**.<br>**NOTE**<br>**true**: removes the minimum height limit, allowing the height to be less than the default value.<br>**false**: enforces the minimum height limit, meaning the height cannot be less than the default value.|
 
 ### animationCurve<sup>20+</sup>
@@ -350,6 +350,10 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 Sets the background blur style of the tab bar.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -398,6 +402,10 @@ Sets the visible area of the tab bar in grid mode. For details, see **BarGridCol
 edgeEffect(edgeEffect: Optional&lt;EdgeEffect&gt;)
 
 Sets the edge effect used when the boundary of the scrolling area is reached.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 17.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -685,6 +693,10 @@ Instructions:
 7. When a custom animation is used, the layout mode of the page involved in the animation is changed to Stack. If the **zIndex** attribute is not set for related pages, the **zIndex** values of all pages are the same. In this case, the pages are rendered in the order in which they are added to the component tree (that is, the sequence of page indexes). In light of this, to control the rendering levels of pages, set the **zIndex** attribute of the pages.
 8. This attribute cannot be called in [attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -713,6 +725,10 @@ This event is triggered when any of the following occurs:
 4. When the user taps a tab on the tab bar to switch to a new page.
 
 5. When the user presses the left or right arrow key on the keyboard to switch to a new page while the tab bar has focus.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1018,7 +1034,7 @@ Sets the translation distance of the tab bar.
 
 > **NOTE**
 >
-> When a **Tabs** component is bound to a scrollable container using APIs like [bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13) or [bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13), scrolling the container will trigger the display and hide animations of the tab bar for all **Tabs** components bound to it. In this case, calling the **setTabBarTranslate** API has no effect. Therefore, avoid using **bindTabsToScrollable**, **bindTabsToNestedScrollable**, and **setTabBarTranslate** simultaneously.
+> When the Tabs component and scrollable container component are bound by using the [bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13) or [bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13) API, the display and hiding of the tab bars bound to the scrollable container component are triggered. If the setTabBarTranslate API is called, the translation distance of the tab bar will become invalid. Therefore, avoid using **bindTabsToScrollable**, **bindTabsToNestedScrollable**, and **setTabBarTranslate** simultaneously.
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
@@ -1039,7 +1055,7 @@ Sets the opacity of the tab bar.
 
 > **NOTE**
 >
-> When a **Tabs** component is bound to a scrollable container using APIs like [bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13) or [bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13), scrolling the container will trigger the display and hide animations of the tab bar for all **Tabs** components bound to it. In this case, calling the **setTabBarOpacity** API has no effect. Therefore, avoid using **bindTabsToScrollable**, **bindTabsToNestedScrollable**, and **setTabBarOpacity** simultaneously.
+> When the [bindTabsToScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstoscrollable13) or [bindTabsToNestedScrollable](../arkts-apis-uicontext-uicontext.md#bindtabstonestedscrollable13) API is used to bind the Tabs component to the scrollable container component, the display and hiding of the TabBar of all bound Tabs components are triggered during the sliding of the scrollable container component. The opacity of the TabBar set by calling the setTabBarOpacity API is invalid. Therefore, avoid using **bindTabsToScrollable**, **bindTabsToNestedScrollable**, and **setTabBarOpacity** simultaneously.
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
@@ -2377,7 +2393,7 @@ struct TabsExample {
 
 ### Example 15: Enabling Tabs to Exceed the Tab Bar Area
 
-This example shows how to enable tabs to exceed the tab bar area by setting the **clip** property of the **TabBar** using **barModifier**.
+This example shows how to enable tabs to exceed the tab bar area by setting the **clip** property of **tabBar** using **barModifier** in [TabsOptions](#tabsoptions15). This feature is supported since API version 15.
 
 ```ts
 // xxx.ets
@@ -2467,7 +2483,7 @@ struct TabsBarModifierExample {
 
 ### Example 16: Aligning Tabs
 
-This example demonstrates how to align tabs by setting the **align** property of the **TabBar** using **barModifier**.
+This example shows how to align tabs by setting the **align** property of **tabBar** using **barModifier** in [TabsOptions](#tabsoptions15). This feature is supported since API version 15.
 
 ```ts
 // xxx.ets
@@ -2570,7 +2586,7 @@ struct TabsBarModifierExample {
 
 ### Example 17: Implementing Synchronized Switching Between the Tabs and TabBar Components
 
-This example shows how to implement synchronized switching between the **Tabs** and **TabBar** components using the **onSelected** callback.
+This example shows how to implement synchronized switching between the **Tabs** and **TabBar** components using the [onSelected](#onselected18) callback, available since API version 18.
 
 ```ts
 // xxx.ets
@@ -2645,7 +2661,7 @@ struct TabsExample {
 
 ### Example 18: Releasing the Tabs Child components
 
-This example demonstrates how to release the **Tabs** child components by setting **cachedMaxCount**.
+This example demonstrates how to release the **Tabs** child components by setting [cachedMaxCount](#cachedmaxcount19), available since API version 19.
 
 ```ts
 @Entry
@@ -2699,7 +2715,7 @@ struct MyComponent {
 
 ### Example 19: Setting the Tab Bar Background Blur Effect
 
-This example shows how to set the background blur effect for the tab bar using **barBackgroundBlurStyle** and **barBackgroundEffect**.
+This example demonstrates how to set background blur effects for the **TabsBar** using **barBackgroundBlurStyle** and [barBackgroundEffect](#barbackgroundeffect18), available since API version 18.
 
 ```ts
 // xxx.ets
@@ -2824,7 +2840,7 @@ struct TabsExample {
 
 ### Example 21: Setting the Tab Switching Animation Curve
 
-This example illustrates how to set the tab switching animation curve using the **animationCurve** API, and how to combine it with **animationDuration** to set the animation duration.
+This example demonstrates how to set the tab switching animation curve using the [animationCurve](#animationcurve20) API (available since API version 20) and configure the animation duration with the **animationDuration** API.
 
 ```ts
 import { curves } from '@kit.ArkUI';

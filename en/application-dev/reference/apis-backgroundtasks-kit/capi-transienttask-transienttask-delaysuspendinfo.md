@@ -25,3 +25,5 @@ A struct that describes the returned information about a transient task.
 | -- | -- |
 | int32_t requestId | Request ID of a transient task.|
 | int32_t actualDelayTime | Remaining time, in ms.|
+
+
