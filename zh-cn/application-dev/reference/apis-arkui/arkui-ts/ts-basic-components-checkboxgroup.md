@@ -338,11 +338,11 @@ type OnCheckboxGroupChangeCallback  = (value: CheckboxGroupResult) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称  | 说明 |
-| ----- | -------------------- |
-| All   | 群组多选择框全部选择。 |
-| Part  | 群组多选择框部分选择。 |
-| None  | 群组多选择框全部没有选择。 |
+| 名称  | 值 | 说明 |
+| ----- | -------------------- | -------------------- |
+| All   | 0  | 群组多选择框全部选择。 |
+| Part  | 1 | 群组多选择框部分选择。 |
+| None  | 2 | 群组多选择框全部没有选择。 |
 
 ## CheckBoxGroupConfiguration<sup>21+</sup>对象说明
 
