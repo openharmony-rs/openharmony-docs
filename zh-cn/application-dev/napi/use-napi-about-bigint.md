@@ -257,7 +257,9 @@ try {
 cpp部分代码
 
 <!-- @[napi_get_value_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_get_value_bigint_uint64
 static napi_value GetValueBigintUint64t(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
