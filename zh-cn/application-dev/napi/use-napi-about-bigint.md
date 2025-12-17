@@ -171,11 +171,16 @@ export const createBigintWords: () => bigint | undefined; // napi_create_bigint_
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// napi_create_bigint_words
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_bigint_words: %{public}d', testNapi.createBigintWords());
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_bigint_words: %{public}d',
+    testNapi.createBigintWords());
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API NapiGetValueBigint: %{public}s', error.message);
+  // ...
 }
 ```
 
