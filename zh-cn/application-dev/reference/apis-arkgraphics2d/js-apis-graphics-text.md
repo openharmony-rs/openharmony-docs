@@ -446,7 +446,7 @@ struct GetFontCountTest {
 
 getFontPathsByType(fontType: SystemFontType): Array\<string\>
 
-根据字体类型返回该类型对应的所有字体的路径。
+获取指定字体类型的所有字体文件路径。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -466,7 +466,7 @@ getFontPathsByType(fontType: SystemFontType): Array\<string\>
 
 **示例：**
 
-```ts
+``` ts
 import { text } from '@kit.ArkGraphics2D'
 
 @Entry
