@@ -84,7 +84,12 @@ let audioHapticManagerInstance: audioHaptic.AudioHapticManager = audioHaptic.get
 
 registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
-注册音频和振动资源的Uri。使用Promise异步回调。
+通过Uri注册音频和振动资源。使用Promise异步回调。
+
+> **注意：**
+>
+> 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -99,7 +104,7 @@ registerSource(audioUri: string, hapticUri: string): Promise&lt;number&gt;
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回注册资源的source id。 |
+| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。 |
 
 **错误码：**
 
@@ -117,7 +122,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let audioUri = 'data/audioTest.wav'; // 需更改为目标音频资源的Uri。
 let hapticUri = 'data/hapticTest.json'; // 需更改为目标振动资源的Uri。
 let id = 0;
-
+// 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: number) => {
   console.info(`Promise returned to indicate that the source id of the registerd source ${value}.`);
   id = value;
@@ -130,8 +135,12 @@ audioHapticManagerInstance.registerSource(audioUri, hapticUri).then((value: numb
 
 registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFileDescriptor): Promise&lt;number&gt;
 
-通过文件描述符注册音频和振动资源，确保它们在播放时同步。
-注册资源后，此方法将通过Promise异步返回资源ID。
+通过文件描述符注册音频和振动资源。使用Promise异步回调。
+
+> **注意：**
+>
+> 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
+
 
 **系统能力：**: SystemCapability.Multimedia.AudioHaptic.Core
 
@@ -146,7 +155,7 @@ registerSourceFromFd(audioFd: AudioHapticFileDescriptor, hapticFd: AudioHapticFi
 
 | 类型               | 说明                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | 返回注册资源的资源ID。|
+| Promise&lt;number&gt; | Promise对象，返回注册的资源ID。<br>正常情况下返回注册的资源ID为非负数。若返回注册的资源ID为负数，则表示注册失败，需检查注册资源数量是否超过上限。|
 
 **示例：**
 
@@ -171,7 +180,7 @@ let hapticFd: audioHaptic.AudioHapticFileDescriptor = {
   length: hapticFile.length,
 };
 let id = 0;
-
+// 单个应用最多支持同时注册128个资源，超过之后将会注册失败（返回注册的资源ID为负数）。推荐应用合理控制注册资源数量，对于不再需要使用的资源，建议及时取消注册。
 audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: number) => {
   console.info('Succeeded in doing registerSourceFromFd.');
   id = value;
@@ -185,6 +194,10 @@ audioHapticManagerInstance.registerSourceFromFd(audioFd, hapticFd).then((value: 
 unregisterSource(id: number): Promise&lt;void&gt;
 
 取消注册音频和振动资源。使用Promise异步回调。
+
+> **注意：**
+>
+> 对于不再需要使用的资源，建议应用及时取消注册，避免出现资源泄漏或资源数量超上限等问题。
 
 **系统能力：** SystemCapability.Multimedia.AudioHaptic.Core
 
