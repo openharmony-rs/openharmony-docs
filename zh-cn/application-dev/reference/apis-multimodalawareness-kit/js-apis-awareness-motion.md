@@ -5,7 +5,8 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> - 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> 本模块首批接口从API version 15开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -32,6 +33,10 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
 
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：22
+
 | 名称            | 值   | 说明           |
 | --------------- | ---- | -------------- |
 | NOT_HELD        | 0    | 表示未握持。   |
@@ -40,9 +45,6 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 | BOTH_HANDS_HELD | 3    | 表示双手握持。 |
 | UNKNOWN_STATUS  | 16   | 表示未识别。   |
 
-**ArkTS-Dyn起始版本**：20
-
-**ArkTS-Sta起始版本**：22
 
 ## motion.on('operatingHandChanged')
 
@@ -81,16 +83,15 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import motion from '@ohos.multimodalAwareness.motion';
 
-function callback(data: motion.OperatingHandStatus) {
-    console.info("callback success: " + JSON.stringify(data));
+callback(data:motion.OperatingHandStatus) {	
+    console.info('callback success' + data);	
 }
 
-try {
-    motion.onOperatingHandChanged(callback);
-    console.info("on succeeded");
-} catch (err) {
+try {	
+    motion.on('operatingHandChanged', this.callback);  	
+    console.info("on succeeded");	
+} catch (err) {	
     let error = err as BusinessError;
     console.error("Failed on and err code is " + error.code);
 }
@@ -133,12 +134,11 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import motion from '@ohos.multimodalAwareness.motion';
 
-try {
-    motion.offOperatingHandChanged();
-    console.info("off succeeded");
-} catch (err) {
+try {	
+    motion.off('operatingHandChanged');	
+    console.info("off succeeded");	
+} catch (err) {	
     let error = err as BusinessError;
     console.error("Failed off and err code is " + error.code);
 }
@@ -147,7 +147,6 @@ try {
 ## motion.getRecentOperatingHandStatus()
 
 getRecentOperatingHandStatus(): OperatingHandStatus;
-
 
 获取最新触控操作手状态。
 
@@ -284,6 +283,7 @@ try {
   console.error('Failed off; err code = ' + error.code);
 }
 ```
+
 ## motion.onOperatingHandChanged()<sup>22+</sup>
 
 onOperatingHandChanged(callback: Callback&lt;OperatingHandStatus&gt;): void;
@@ -302,7 +302,6 @@ onOperatingHandChanged(callback: Callback&lt;OperatingHandStatus&gt;): void;
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 事件类型。type为“operatingHandChanged”，表示操作手状态变化。 |
 | callback | Callback&lt;[OperatingHandStatus](#operatinghandstatus)&gt; | 是   | 回调函数，返回操作手结果。                                   |
 
 **错误码**：
