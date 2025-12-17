@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_LineTypography OH_Drawing_LineTypography
+```
+
 ## Overview
 
 Defines a struct used to extract a single line of data from a piece of text for typography.

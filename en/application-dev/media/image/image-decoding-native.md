@@ -14,7 +14,7 @@
 >
 > You are not advised to use both sets of C APIs in your code. It may cause compatibility issues in some scenarios.
 
-Image decoding refers to the process of decoding an image in a supported format into a PixelMap for image display or [processing](image-transformation.md). Currently, the following image formats are supported: JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, and HEIF (depending on the hardware).
+Image decoding refers to the process of decoding an image in a supported format into a PixelMap for image display or [processing](image-transformation.md). Currently, the following image formats are supported: JPEG, PNG, GIF, WebP, BMP, SVG, ICO, DNG, HEIC, and WBMP<sup>23+</sup>. (The supported formats may vary depending on the hardware.)
 
 ## How to Develop
 

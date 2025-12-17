@@ -14,8 +14,6 @@
 
 - [AudioHaptic](using-audiohaptic-for-playback.md)：用于音振协同播放的ArkTS/JS API，适用于需要在播放音频时同步发起振动的场景，如来电铃声随振、键盘按键反馈、消息通知反馈等。
 
-- [OpenSL ES](using-opensl-es-for-playback.md)：一套跨平台标准化的音频Native API，同样提供音频输出能力，仅支持PCM格式，适用于从其他嵌入式平台移植，或依赖在Native层实现音频输出功能的播放应用使用。
-
 - [OHAudio](using-ohaudio-for-playback.md)：用于音频输出的Native API，此API在设计上实现归一，同时支持普通音频通路和低时延通路。仅支持PCM格式，适用于依赖Native层实现音频输出功能的场景。<!--Del-->
 
 - [TonePlayer](using-toneplayer-for-playback-sys.md)：拨号和回铃音播放ArkTS/JS API，只能在固定的类型范围内选择播放内容，无需输入媒体资源或音频数据，适用于拨号盘按键和通话回铃音的特定场景。该功能当前仅对系统应用开放。<!--DelEnd-->

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct OhosImageRect {...}
+```
+
 ## 概述
 
 定义图像矩形信息。

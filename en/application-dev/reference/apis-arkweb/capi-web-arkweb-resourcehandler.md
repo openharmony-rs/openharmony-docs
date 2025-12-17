@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```
+typedef struct ArkWeb_ResourceHandler_ ArkWeb_ResourceHandler
+```
+
 ## Overview
 
 Defines a handler for intercepted URL requests. You can use **ArkWeb_ResourceHandler** to send custom request headers and bodies.<br>

@@ -23,7 +23,7 @@ A Harmony Archive (HAR) is a static shared package that can contain code, C++ li
 > If the [startAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability) API is used to start the UIAbility in the HAR, the value of **moduleName** in the API parameter must be the module name of the [HAP](hap-package.md) or [HSP](in-app-hsp.md) that depends on the HAR.
 
 - Since API version 18, HAR supports the declaration of the [ExtensionAbility](../application-models/extensionability-overview.md) component in the configuration file. However, ExtensionAbility with entry capabilities (that is, **entity.system.home** and **ohos.want.action.home** configured for the **skill** tag) is not supported. For details about how to configure an ExtensionAbility in a HAR, see [Adding an ExtensionAbility to a Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-add-new-ability#section18891639459). For API version 17 and earlier versions, the [ExtensionAbility](../application-models/extensionability-overview.md) component cannot be declared in the configuration file.
-- A HAR does not support the declaration of the [pages](./module-configuration-file.md#pages) tag in the configuration file. Still, it can include pages, which can be redirected through [routing operations](../ui/arkts-navigation-navigation.md#routing-operations).
+- A HAR does not support the declaration of the [pages](./module-configuration-file.md#pages) tag in the configuration file. Still, it can include pages, which can be redirected through **Navigation**.
 - A HAR does not support referencing resources in the **AppScope** folder. This is because the content in the **AppScope** folder is not packaged into the HAR during building.
 - As the HSP supports only intra-application sharing, a HAR that depends on any HSP can be shared only within the same application. Do not release such a HAR to a second-party or third-party repository for other applications to use; otherwise, build failures will occur.
 - When multiple HAPs or HSPs reference the same HAR, the application package may contain multiple copies of code and resource files for the HAPs or HSPs, resulting in an unwelcome large package size.
@@ -50,15 +50,12 @@ The **Index.ets** file acts as the entry of the HAR export declaration file and 
 <!-- @[har_package_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/oh-package.json5) -->
 
 ``` JSON5
-// [Start har_package_008]
 {
-// ···
+  // ...
   "main": "Index.ets",
-// ···
+  // ...
 }
-// [End har_package_008]
 ```
-
 
 > **NOTE**
 >
@@ -186,17 +183,14 @@ Specifically, DevEco Studio collects resource files from the HAP module and its 
 
 ``` JSON5
 {
-  // [StartExclude har_package_001]
-// ···
+  // ...
   "dependencies": {
-	// ···
+    // ...
     "dayjs": "file:../dayjs",
     "lottie": "file:../lottie",
   },
-  // [EndExclude har_package_001]
 }
 ```
-
 
 ## Using a HAR
 
@@ -236,8 +230,7 @@ Use **import** to reference the classes and methods exported from the HAR. The c
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 import { Log, func } from 'library';
-// ···
-// [EndExclude har_package_011]
+// ...
 @Entry
 @Component
 struct Index {
@@ -250,8 +243,6 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-      // [StartExclude har_package_011]
-      // [StartExclude har_package_012]
       // Reference ETS classes and methods.
       Button($r('app.string.button'))
         .id('button')
@@ -264,24 +255,16 @@ struct Index {
           Log.info('har msg');
           this.message = 'func return: ' + func();
         })
-      // [EndExclude har_package_011]
-      // [EndExclude har_package_012]
+      // ...
 
-	// ···
-      // [EndExclude har_package_012]
-
-	// ···
-      // [EndExclude har_package_011]
+      // ...
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
     .height('100%')
   }
 }
-// [End har_package_012]
-// [End har_package_011]
 ```
-
 
 ### Referencing Native Methods
 Use **import** to reference the native methods exported from the HAR. The code snippet is as follows:
@@ -291,7 +274,7 @@ Use **import** to reference the native methods exported from the HAR. The code s
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
 import { nativeAdd } from 'library';
-// ···
+// ...
 @Entry
 @Component
 struct Index {
@@ -304,11 +287,7 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-	// ···
-      // [EndExclude har_package_012]
-
-      // [StartExclude har_package_010]
-      // [StartExclude har_package_012]
+      // ...
       // Reference the native method in the HAR.
       Button($r('app.string.native_add'))
         .id('nativeAdd')
@@ -319,20 +298,15 @@ struct Index {
         .onClick(() => {
           this.message = 'result: ' + nativeAdd(1, 2);
         })
-      // [EndExclude har_package_010]
-      // [EndExclude har_package_012]
 
-      // [StartExclude har_package_010]
-	// ···
+      // ...
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
     .height('100%')
   }
 }
-// [End har_package_012]
 ```
-
 
 ### Referencing Resources
 Use **$r** to reference resources in the HAR. For example, add the **name: hello_har** string (defined in the **string.json** file) and **icon_har.png** image to the **src/main/resources** directory of the HAR module, and then reference the string and image in the entry module. The code snippet is as follows:
@@ -341,8 +315,6 @@ Use **$r** to reference resources in the HAR. For example, add the **name: hello
 
 ``` TypeScript
 // entry/src/main/ets/pages/Index.ets
-// [EndExclude har_package_010]
-// [EndExclude har_package_011]
 @Entry
 @Component
 struct Index {
@@ -355,14 +327,8 @@ struct Index {
         .fontWeight(FontWeight.Bold)
         .fontSize(32)
 
-      // [StartExclude har_package_011]
-	// ···
+      // ...
 
-      // [StartExclude har_package_010]
-	// ···
-
-      // [StartExclude har_package_010]
-      // [StartExclude har_package_011]
       // Reference the string in the HAR.
       Text($r('app.string.hello_har'))
         .id('stringHar')
@@ -383,8 +349,6 @@ struct Index {
         .width('312px')
       }
       .alignListItem(ListItemAlign.Center)
-      // [EndExclude har_package_010]
-      // [EndExclude har_package_011]
     }
     .width('100%')
     .backgroundColor($r('app.color.page_background'))
@@ -392,7 +356,6 @@ struct Index {
   }
 }
 ```
-
 
 ## Building a HAR
 
@@ -404,40 +367,39 @@ The obfuscation capability is enabled by default for the HAR module. When the co
 
   <!-- @[har_package_013](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/build-profile.json5) -->
 
-``` JSON5
-{
-  "apiType": "stageMode",
-  "buildOption": {
-	// ···
-  },
-  "buildOptionSet": [
-    {
-      "name": "release",
-      "arkOptions": {
-        "obfuscation": {
-          "ruleOptions": {
-            "enable": true,
-            "files": [
-              "./obfuscation-rules.txt"
+  ``` JSON5
+  {
+    "apiType": "stageMode",
+    "buildOption": {
+      // ...
+    },
+    "buildOptionSet": [
+      {
+        "name": "release",
+        "arkOptions": {
+          "obfuscation": {
+            "ruleOptions": {
+              "enable": true,
+              "files": [
+                "./obfuscation-rules.txt"
+              ]
+            },
+            "consumerFiles": [
+              "./consumer-rules.txt"
             ]
-          },
-          "consumerFiles": [
-            "./consumer-rules.txt"
-          ]
-        }
+          }
+        },
+        // ...
       },
-	// ···
-    },
-  ],
-  "targets": [
-    {
-      "name": "default"
-    },
-	// ···
-  ]
-}
-```
-
+    ],
+    "targets": [
+      {
+        "name": "default"
+      },
+      // ...
+    ]
+  }
+  ```
 
 ### Building TS Files
 
@@ -459,26 +421,24 @@ After the ArkTS file in the HAR module is built, the product is a JS file by def
 
   <!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
 
-``` JSON5
-{
-  "module": {
-    "name": "library",
-    "type": "har",
-    "deviceTypes": [
-      "tablet",
-      "2in1"
-    ],
-    "metadata": [
-      {
-        "name": "UseTsHar",
-        "value": "true"
-      }
-    ]
+  ``` JSON5
+  {
+    "module": {
+      "name": "library",
+      "type": "har",
+      "deviceTypes": [
+        "tablet",
+        "2in1"
+      ],
+      "metadata": [
+        {
+          "name": "UseTsHar",
+          "value": "true"
+        }
+      ]
+    }
   }
-}
-```
-
-
+  ```
 
 ## Publishing a HAR
 

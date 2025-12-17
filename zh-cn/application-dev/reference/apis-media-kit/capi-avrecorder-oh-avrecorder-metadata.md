@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVRecorder_Metadata {...} OH_AVRecorder_Metadata
+```
+
 ## 概述
 
 元数据信息数据结构。

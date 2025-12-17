@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,9 +16,9 @@ XComponent持有一个Surface，开发者能通过调用[NativeWindow](../graphi
 
 | XComponent组件应用场景                | 场景简介                                      | 场景特点                                        |
 |--------------------------------------|-----------------------------------------------|------------------------------------------------|
-| [使用XComponentController管理Surface生命周期场景](#使用xcomponentcontroller管理surface生命周期) | 该场景在ArkTS侧获取SurfaceId，生命周期回调、触摸、鼠标、按键等事件回调等均在ArkTS侧触发。 | 适用于视频播放、相机预览等场景，该场景需要在ArkTS侧获取SurfaceId，并将SurfaceId传入对应接口。 |
-| [使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期) | 该场景根据XComponent组件对应的ArkUI_NodeHandle中创建OH_ArkUI_SurfaceHolder，生命周期回调、触摸等事件回调、无障碍和可变帧率回调等均在Native侧触发。 | 适用于如下场景：<br>1.有较复杂的交互逻辑、对频繁跨语言调用导致性能损耗敏感的场景。<br>2.希望能控制Surface生命周期触发时机的场景。 |
-| [使用NativeXComponent管理Surface生命周期场景](#使用nativexcomponent管理surface生命周期) | 该场景在native层获取Native XComponent实例，在Native侧注册XComponent的生命周期回调，以及触摸、鼠标、按键等事件回调。 | 与[使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期)类似，但交互事件接口不够丰富，且使用不当容易出现稳定性问题，建议使用SurfaceHolder的接口。 |
+| [使用XComponentController管理Surface生命周期场景](#使用xcomponentcontroller管理surface生命周期) | 该场景在ArkTS侧的XComponentController获取SurfaceId，生命周期回调、触摸、鼠标、按键等事件回调等均在ArkTS侧触发。 | 适用于视频播放、相机预览等媒体播放类场景，该场景需要在ArkTS侧获取SurfaceId，并将SurfaceId传入对应接口。 |
+| [使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期) | 该场景根据XComponent组件对应的ArkUI_NodeHandle创建OH_ArkUI_SurfaceHolder，生命周期回调、触摸等事件回调、无障碍和可变帧率回调等均在Native侧触发。 | 适用于如下场景：<br>1.有较复杂的交互逻辑、对频繁跨语言调用导致性能损耗敏感的场景。<br>2.希望能控制Surface生命周期触发时机的场景。 |
+| [使用NativeXComponent管理Surface生命周期场景](#使用nativexcomponent管理surface生命周期) | 该场景在native层获取Native XComponent实例，在Native侧注册XComponent的生命周期回调，以及触摸、鼠标、按键等事件回调。 | 与[使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景](#使用oh_arkui_surfaceholder管理surface生命周期)类似，但交互事件接口不够丰富，且使用不当容易出现稳定性问题，建议使用OH_ArkUI_SurfaceHolder的接口。 |
 
 ## 约束与限制
 
@@ -1583,7 +1583,7 @@ Native侧
     target_link_libraries(nativerender PUBLIC ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
     ```
 
-    上述用例具体实现可参考<!--RP3-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)<!--RP3End-->。
+    上述用例具体实现可参考<!--RP3-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP3End-->。
 
     ![示意图](./figures/drawStar.jpeg)
 
@@ -1673,7 +1673,7 @@ Native侧
 
 **开发步骤**
 
-以下步骤以SURFACE类型为例，描述了如何使用`XComponent组件`调用`Node-API`接口来创建`EGL/GLES`环境，实现在主页面绘制图形，并可以改变图形的颜色。
+以下步骤以SURFACE类型为例，描述了如何使用`XComponent组件`调用`Node-API`接口来创建`EGL/GLES`环境，实现在主页面绘制图形，并可以改变图形的颜色。以下仅包含主要步骤，详细工程请参见<!--RP4-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP4End-->。
 
 1. 在界面中定义XComponent。
 
@@ -2522,7 +2522,7 @@ Native侧
 
 6. 释放相关资源。
 
-    (1) EGLCore类下创建Release()方法，释放初始化环境时申请的资源，包含窗口display、渲染区域surface、环境上下文context等。
+    EGLCore类下创建Release()方法，释放初始化环境时申请的资源，包含窗口display、渲染区域surface、环境上下文context等。
 
     <!-- @[native_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/egl_core.cpp) -->
 
@@ -2606,10 +2606,8 @@ Native侧
 针对Native XComponent的使用，有以下相关实例可供参考：
 
 - [XComponent3D（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D)
-- [XComponent（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent)
-- [Native XComponent（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkXComponent)
 - [OpenGL三棱椎（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL)
-- [NativeXComponent（api19）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NativeXComponent)
+- [NativeXComponent（api19）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)
 
 针对ArkTS XComponent的使用，有以下相关实例可供参考：
 

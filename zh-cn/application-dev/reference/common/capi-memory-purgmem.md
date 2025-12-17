@@ -7,6 +7,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct PurgMem OH_PurgeableMemory
+```
+
 ## 概述
 
 可清除的内存结构。

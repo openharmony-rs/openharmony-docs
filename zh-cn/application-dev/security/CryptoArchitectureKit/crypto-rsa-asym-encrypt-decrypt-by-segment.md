@@ -40,14 +40,15 @@
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // 分段加密消息。
   async function rsaEncryptBySegment(pubKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
     await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, pubKey, null);
     let plainTextSplitLen = 64;
     let cipherText = new Uint8Array();
-    for (let i = 0; i < plainText.data.length; i += plainTextSplitLen ) {
-      let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen );
+    for (let i = 0; i < plainText.data.length; i += plainTextSplitLen) {
+      let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
       // 将原文按64字符进行拆分，循环调用doFinal进行加密，使用1024bit密钥时，每次加密生成128字节长度的密文。
       let updateOutput = await cipher.doFinal(updateMessageBlob);
@@ -59,6 +60,7 @@
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
+
   // 分段解密消息。
   async function rsaDecryptBySegment(priKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -78,6 +80,7 @@
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
+
   async function rsaEncryptLongMessage() {
     let message = "This is a long plainTest! This is a long plainTest! This is a long plainTest!" +
       "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!" +
@@ -106,14 +109,15 @@
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
+
   // 分段加密消息。
   function rsaEncryptBySegment(pubKey: cryptoFramework.PubKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('RSA1024|PKCS1');
     cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, pubKey, null);
     let plainTextSplitLen = 64;
     let cipherText = new Uint8Array();
-    for (let i = 0; i < plainText.data.length; i += plainTextSplitLen ) {
-      let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen );
+    for (let i = 0; i < plainText.data.length; i += plainTextSplitLen) {
+      let updateMessage = plainText.data.subarray(i, i + plainTextSplitLen);
       let updateMessageBlob: cryptoFramework.DataBlob = { data: updateMessage };
       // 将原文按64字符进行拆分，循环调用doFinal进行加密，使用1024bit密钥时，每次加密生成128字节长度的密文。
       let updateOutput = cipher.doFinalSync(updateMessageBlob);
@@ -125,6 +129,7 @@
     let cipherBlob: cryptoFramework.DataBlob = { data: cipherText };
     return cipherBlob;
   }
+
   // 分段解密消息。
   function rsaDecryptBySegment(priKey: cryptoFramework.PriKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('RSA1024|PKCS1');
@@ -144,6 +149,7 @@
     let decryptBlob: cryptoFramework.DataBlob = { data: decryptText };
     return decryptBlob;
   }
+
   function main() {
     let message = "This is a long plainTest! This is a long plainTest! This is a long plainTest!" +
       "This is a long plainTest! This is a long plainTest! This is a long plainTest! This is a long plainTest!" +

@@ -32,10 +32,10 @@ OpenHarmony SDK 5.0.0.52
 
 **Key API/Component Changes**
 
-1. API in [@ohos.multimedia.media.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.multimedia.media.d.ts):
+1. API in [@ohos.multimedia.media.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.multimedia.media.d.ts):
 AVPlayer.on(type: 'error', callback: ErrorCallback)
 
-2. API in [avplayer_base.h](https://gitee.com/openharmony/interface_sdk_c/blob/master/multimedia/player_framework/avplayer_base.h):
+2. API in [avplayer_base.h](https://gitcode.com/openharmony/interface_sdk_c/blob/master/multimedia/player_framework/avplayer_base.h):
 void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)
 
 **Adaptation Guide**

@@ -19,39 +19,33 @@ If the web debugging function is not enabled, DevTools cannot detect the web pag
 
    1. To enable the web debugging feature in application code, call the [setWebDebuggingAccess<sup>20+</sup>](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setwebdebuggingaccess20) API to set the TCP socket port and enable the web debugging feature.
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->
-    
-        ``` TypeScript
-        import { webview } from '@kit.ArkWeb';
-        import { BusinessError } from '@kit.BasicServicesKit';
-        import hilog from '@ohos.hilog';
-        
-        const TAG = '[Sample_DebuggingWireless]'
-        const DOMAIN = 0xF811
-        const BUNDLE = 'TextMenuItem_'
-        const DEBUGGING_PORT: number = 8888;
-        
-        @Entry
-        @Component
-        struct WebComponent {
-          controller: webview.WebviewController = new webview.WebviewController();
-        
-          aboutToAppear(): void {
-            try {
-              // Enable wireless web debugging and specify the TCP socket port.
-              webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
-            } catch (error) {
-              hilog.error(DOMAIN, TAG,
-                BUNDLE + `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-            }
-          }
-        
-          build() {
-            Column() {
-              Web({ src: 'www.example.com', controller: this.controller })
-            }
+      
+      ``` TypeScript
+      import { webview } from '@kit.ArkWeb';
+      import { BusinessError } from '@kit.BasicServicesKit';
+      const DEBUGGING_PORT: number = 8888;
+      
+      @Entry
+      @Component
+      struct WebComponent {
+        controller: webview.WebviewController = new webview.WebviewController();
+      
+        aboutToAppear(): void {
+          try {
+            // Enable wireless web debugging and specify the TCP socket port.
+            webview.WebviewController.setWebDebuggingAccess(true, DEBUGGING_PORT);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         }
-        ```
+      
+        build() {
+          Column() {
+            Web({ src: 'www.example.com', controller: this.controller })
+          }
+        }
+      }
+      ```
 
        > **NOTE**
        >

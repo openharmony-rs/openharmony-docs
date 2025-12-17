@@ -1,0 +1,31 @@
+| 操作 | 旧版本 | 新版本 | d.ts文件 |
+| ---- | ------ | ------ | -------- |
+|API废弃版本变更|类名：ShowNotificationOptions；<br>API声明：clickAction?: ActionResult;<br>差异内容：NA|类名：ShowNotificationOptions；<br>API声明：clickAction?: ActionResult;<br>差异内容：7|api/@system.notification.d.ts|
+|API废弃版本变更|类名：NotificationSlot；<br>API声明：level?: notification.SlotLevel;<br>差异内容：NA|类名：NotificationSlot；<br>API声明：level?: notification.SlotLevel;<br>差异内容：20|api/notification/notificationSlot.d.ts|
+|新增错误码|类名：notificationManager；<br>API声明：function publish(request: NotificationRequest, callback: AsyncCallback\<void>): void;<br>差异内容：NA|类名：notificationManager；<br>API声明：function publish(request: NotificationRequest, callback: AsyncCallback\<void>): void;<br>差异内容：1600020|api/@ohos.notificationManager.d.ts|
+|新增错误码|类名：notificationManager；<br>API声明：function publish(request: NotificationRequest): Promise\<void>;<br>差异内容：NA|类名：notificationManager；<br>API声明：function publish(request: NotificationRequest): Promise\<void>;<br>差异内容：1600020|api/@ohos.notificationManager.d.ts|
+|新增错误码|类名：notificationManager；<br>API声明：function setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void>): void;<br>差异内容：NA|类名：notificationManager；<br>API声明：function setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void>): void;<br>差异内容：801|api/@ohos.notificationManager.d.ts|
+|新增错误码|类名：notificationManager；<br>API声明：function setBadgeNumber(badgeNumber: number): Promise\<void>;<br>差异内容：NA|类名：notificationManager；<br>API声明：function setBadgeNumber(badgeNumber: number): Promise\<void>;<br>差异内容：801|api/@ohos.notificationManager.d.ts|
+|新增错误码|类名：notificationManager；<br>API声明：function openNotificationSettings(context: UIAbilityContext): Promise\<void>;<br>差异内容：NA|类名：notificationManager；<br>API声明：function openNotificationSettings(context: UIAbilityContext): Promise\<void>;<br>差异内容：801|api/@ohos.notificationManager.d.ts|
+|删除错误码|类名：notificationManager；<br>API声明：function cancelAll(): Promise\<void>;<br>差异内容：401|类名：notificationManager；<br>API声明：function cancelAll(): Promise\<void>;<br>差异内容：NA|api/@ohos.notificationManager.d.ts|
+|删除错误码|类名：notificationManager；<br>API声明：function getSlots(): Promise\<Array\<NotificationSlot>>;<br>差异内容：401|类名：notificationManager；<br>API声明：function getSlots(): Promise\<Array\<NotificationSlot>>;<br>差异内容：NA|api/@ohos.notificationManager.d.ts|
+|删除错误码|类名：notificationManager；<br>API声明：function removeAllSlots(): Promise\<void>;<br>差异内容：401|类名：notificationManager；<br>API声明：function removeAllSlots(): Promise\<void>;<br>差异内容：NA|api/@ohos.notificationManager.d.ts|
+|删除错误码|类名：notificationManager；<br>API声明：function isNotificationEnabled(): Promise\<boolean>;<br>差异内容：401|类名：notificationManager；<br>API声明：function isNotificationEnabled(): Promise\<boolean>;<br>差异内容：NA|api/@ohos.notificationManager.d.ts|
+|删除错误码|类名：notificationManager；<br>API声明：function getActiveNotificationCount(): Promise\<number>;<br>差异内容：401|类名：notificationManager；<br>API声明：function getActiveNotificationCount(): Promise\<number>;<br>差异内容：NA|api/@ohos.notificationManager.d.ts|
+|删除错误码|类名：notificationManager；<br>API声明：function getActiveNotifications(): Promise\<Array\<NotificationRequest>>;<br>差异内容：401|类名：notificationManager；<br>API声明：function getActiveNotifications(): Promise\<Array\<NotificationRequest>>;<br>差异内容：NA|api/@ohos.notificationManager.d.ts|
+|删除错误码|类名：notificationManager；<br>API声明：function requestEnableNotification(): Promise\<void>;<br>差异内容：401|类名：notificationManager；<br>API声明：function requestEnableNotification(): Promise\<void>;<br>差异内容：NA|api/@ohos.notificationManager.d.ts|
+|删除错误码|类名：notificationManager；<br>API声明：function isDistributedEnabled(): Promise\<boolean>;<br>差异内容：401|类名：notificationManager；<br>API声明：function isDistributedEnabled(): Promise\<boolean>;<br>差异内容：NA|api/@ohos.notificationManager.d.ts|
+|新增API|NA|类名：global；<br>API声明：export interface NotificationIconButton<br>差异内容：export interface NotificationIconButton|api/notification/notificationContent.d.ts|
+|新增API|NA|类名：notificationManager；<br>API声明：function getNotificationSetting(): Promise\<NotificationSetting>;<br>差异内容：function getNotificationSetting(): Promise\<NotificationSetting>;|api/@ohos.notificationManager.d.ts|
+|新增API|NA|类名：notificationManager；<br>API声明：export interface NotificationSetting<br>差异内容：export interface NotificationSetting|api/@ohos.notificationManager.d.ts|
+|新增API|NA|类名：NotificationSetting；<br>API声明：vibrationEnabled: boolean;<br>差异内容：vibrationEnabled: boolean;|api/@ohos.notificationManager.d.ts|
+|新增API|NA|类名：NotificationSetting；<br>API声明：soundEnabled: boolean;<br>差异内容：soundEnabled: boolean;|api/@ohos.notificationManager.d.ts|
+|新增API|NA|类名：NotificationSlot；<br>API声明：notificationLevel?: notificationManager.SlotLevel;<br>差异内容：notificationLevel?: notificationManager.SlotLevel;|api/notification/notificationSlot.d.ts|
+|新增API|NA|类名：NotificationRequest；<br>API声明：updateOnly?: boolean;<br>差异内容：updateOnly?: boolean;|api/notification/notificationRequest.d.ts|
+|起始版本有变化|类名：notificationManager；<br>API声明：function isNotificationEnabled(callback: AsyncCallback\<boolean>): void;<br>差异内容：9|类名：notificationManager；<br>API声明：function isNotificationEnabled(callback: AsyncCallback\<boolean>): void;<br>差异内容：11|api/@ohos.notificationManager.d.ts|
+|起始版本有变化|类名：notificationManager；<br>API声明：function isNotificationEnabled(): Promise\<boolean>;<br>差异内容：9|类名：notificationManager；<br>API声明：function isNotificationEnabled(): Promise\<boolean>;<br>差异内容：11|api/@ohos.notificationManager.d.ts|
+|起始版本有变化|类名：global；<br>API声明：export enum NotificationFlagStatus<br>差异内容：8|类名：global；<br>API声明：export enum NotificationFlagStatus<br>差异内容：11|api/notification/notificationFlags.d.ts|
+|起始版本有变化|类名：NotificationFlagStatus；<br>API声明：TYPE_NONE = 0<br>差异内容：8|类名：NotificationFlagStatus；<br>API声明：TYPE_NONE = 0<br>差异内容：11|api/notification/notificationFlags.d.ts|
+|起始版本有变化|类名：NotificationFlagStatus；<br>API声明：TYPE_OPEN = 1<br>差异内容：8|类名：NotificationFlagStatus；<br>API声明：TYPE_OPEN = 1<br>差异内容：11|api/notification/notificationFlags.d.ts|
+|起始版本有变化|类名：NotificationFlagStatus；<br>API声明：TYPE_CLOSE = 2<br>差异内容：8|类名：NotificationFlagStatus；<br>API声明：TYPE_CLOSE = 2<br>差异内容：11|api/notification/notificationFlags.d.ts|
+|新增导出符号|类名：global；<br>API声明：export interface NotificationIconButton<br>差异内容：NA|类名：global；<br>API声明：<br>差异内容：export interface NotificationIconButton|api/notification/notificationContent.d.ts|

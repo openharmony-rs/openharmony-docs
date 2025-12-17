@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct JSVM_CpuProfiler__* JSVM_CpuProfiler
+```
+
 ## Overview
 
 Defines a JavaScript CPU profiler.

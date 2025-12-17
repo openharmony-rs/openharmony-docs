@@ -4,9 +4,9 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-**Content** defines a base class for **ComponentContent** and **NodeContent**.
+**Content** defines the base class for **ComponentContent** and **NodeContent**.
 
 > **NOTE**
 >
@@ -20,7 +20,7 @@ import { Content } from '@kit.ArkUI';
 
 ## Content
 
-Defines a base class for [ComponentContent](./js-apis-arkui-ComponentContent.md) and [NodeContent](./js-apis-arkui-NodeContent.md).
+Defines the base class for [ComponentContent](./js-apis-arkui-ComponentContent.md) and [NodeContent](./js-apis-arkui-NodeContent.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

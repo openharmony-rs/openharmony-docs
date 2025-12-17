@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -136,6 +136,8 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 
 ## 示例
 
+### 示例1（设置onAccessibilityActionIntercept拦截点击事件）
+
 该示例主要演示通过使用onAccessibilityActionIntercept事件实现Toggle组件在无障碍模式下于点击事件发生之前拦截点击事件并确认是否拦截该点击事件的操作。
 
 ```ts
@@ -176,6 +178,32 @@ struct SwitchBootcamp {
               }
             })
         }.width('100%')
+      }
+      .padding(24)
+      .width('100%')
+    }
+  }
+}
+```
+
+### 示例2（设置onAccessibilityFocus回调函数）
+
+从API version 18开始，当获焦、失焦状态发生变化时，触发该回调函数。本示例展示了[onAccessibilityFocus](ts-universal-accessibility-event.md#onaccessibilityfocus)的基本用法，聚焦到"onAccessibilityFocus takes effect"时，会打印"[testingTag] isFocus current is true"，聚焦到除了"onAccessibilityFocus takes effect"以外的地方都会打印"[testingTag] isFocus current is false"。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct OnAccessibilityFocusExample {
+
+  build() {
+    NavDestination() {
+      Column() {
+        Text("onAccessibilityFocus doesn't take effect")
+        Text("onAccessibilityFocus takes effect")
+        .onAccessibilityFocus((isFocus)=>{
+          console.info('[testingTag] isFocus current is ${isFocus}')
+          })
       }
       .padding(24)
       .width('100%')

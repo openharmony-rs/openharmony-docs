@@ -17,9 +17,9 @@ Menu是菜单接口，一般用于鼠标右键弹窗、点击弹窗等。具体�
 | 名称| 类型 | 说明 |
 | --- | --- | --- |
 | aboutToAppear  | () =>  void | 菜单显示动效前的事件回调。 |
-| onAppear | () =>  void | 菜单弹出时的事件回调。 |
+| onAppear | () =>  void | 菜单弹出后的事件回调。 |
 | aboutToDisappear | () =>  void | 菜单退出动效前的事件回调。 |
-| onDisappear  | () =>  void | 菜单消失时的事件回调。 |
+| onDisappear  | () =>  void | 菜单消失后的事件回调。 |
 
 
 
@@ -151,7 +151,7 @@ Button('click for Menu')
   <!-- @[create_right_click_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/CreateMenu.ets) -->
   
   ``` TypeScript
-  Button('click for Menu')
+  Button('Right-click for Menu')
     .bindContextMenu(this.MyMenu, ResponseType.RightClick)
   ```
 
@@ -177,7 +177,7 @@ Button('click for Menu')
 ``` TypeScript
 Button('click for Menu')
   .id('click for Menu')
-  .bindContextMenu(this.MyMenu, ResponseType.RightClick, { hapticFeedbackMode: HapticFeedbackMode.ENABLED})
+  .bindMenu(this.MyMenu, { hapticFeedbackMode: HapticFeedbackMode.ENABLED})
 ```
 
 ## 菜单支持避让中轴
@@ -291,7 +291,9 @@ export struct SupportAvoidCentralAxisMenuExample {
       .height('100%')
       .width('100%')
     }
-    // ···
+    // ...
+  }
+}
 ```
 
 ## 控制子窗菜单的事件透传

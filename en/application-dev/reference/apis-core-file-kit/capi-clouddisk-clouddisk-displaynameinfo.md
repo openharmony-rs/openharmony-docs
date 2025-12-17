@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_DisplayNameInfo {...} CloudDisk_DisplayNameInfo
+```
+
 ## Overview
 
 A struct that encapsulates the display name of the sync root path.

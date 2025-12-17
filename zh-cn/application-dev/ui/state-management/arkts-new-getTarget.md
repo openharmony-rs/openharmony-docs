@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了获取状态管理框架代理前的原始对象，开发者可以使用[getTarget接口](../../reference/apis-arkui/js-apis-StateManagement.md#gettarget)。
+为了获取状态管理框架代理前的原始对象，开发者可以使用[getTarget接口](../../reference/apis-arkui/js-apis-stateManagement.md#gettarget)。
 
 在阅读本文档前，建议提前阅读：[\@Observed](./arkts-observed-and-objectlink.md)、[\@ObservedV2](./arkts-new-observedV2-and-trace.md)。
 
@@ -35,7 +35,8 @@
 
   ```ts
   import { UIUtils } from '@kit.ArkUI';
-  let res = UIUtils.getTarget(2); // 非对象类型入参，直接返回传入值，错误用法
+  let resNumber = UIUtils.getTarget(2); //非对象类型入参，编译时报错
+  let resObject = UIUtils.getTarget(2 as Object); // 非对象类型入参，绕过编译拦截，直接返回传入值，错误用法
   ```
   
   <!-- @[ApplicationLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/model/ModelViewOne.ets) -->
@@ -89,7 +90,7 @@
 
 状态管理V1有两种场景会给对象增加代理：
 
-【1】\@Observed装饰的类实例。在创建\@Observed装饰的类实例时，会给该实例添加代理。该过程发生在new对象的过程中，没有经过new操作符创建的对象是不被代理的。
+【1】\@Observed装饰的类实例。在创建\@Observed装饰的类实例时，会给该实例添加代理。该过程发生在new对象的过程中，以下示例中，没有被\@Observed装饰的类是不被代理的。
 <!-- @[nonObservedClass_outOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewGettarget/entry/src/main/ets/View/GetTargetAgent.ets) -->
 
 ``` TypeScript

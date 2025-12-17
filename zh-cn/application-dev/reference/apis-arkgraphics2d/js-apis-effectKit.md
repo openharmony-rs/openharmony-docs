@@ -1,4 +1,5 @@
 # @ohos.effectKit (图像效果)
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @hanamaru-->

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbConfigDescriptor {...} __attribute__((packed)) UsbConfigDescriptor
+```
+
 ## 概述
 
 标准配置描述符，对应USB协议中Standard Configuration Descriptor。

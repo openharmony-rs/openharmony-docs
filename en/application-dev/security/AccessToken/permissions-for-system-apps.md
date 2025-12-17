@@ -17,6 +17,18 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+Allows an application to subscribe to the startup broadcast.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
 Allows a window to be displayed with animation for an atomic service without the loading dialog box.
@@ -293,6 +305,30 @@ Allows a system application to set themes, including wallpapers, icons, skins, A
 
 **Valid since**: 11
 
+## ohos.permission.READ_ACCESSIBILITY_CONFIG
+
+Allows an application to read the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
+## ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+Allows an application to set the accessibility configuration.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
 ## ohos.permission.QUERY_ACCESSIBILITY_ELEMENT
 
 Allows an application to query accessibility elements in batches.
@@ -364,6 +400,20 @@ Allows an application to call the API for restoring factory settings.
 **Enable via ACL**: true
 
 **Valid since**: 8
+
+## ohos.permission.FORCE_FACTORY_RESET
+
+Allows a system application to forcibly restore a device to its factory settings, which cannot be interrupted.
+
+**Permission level**：system_core
+
+**Authorization mode**：system_grant
+
+**Supported devices**：general devices
+
+**Enable via ACL**：true
+
+**Valid since**：23
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -652,6 +702,22 @@ Allows an application to install and uninstall other applications except enterpr
 **Enable via ACL**: true
 
 **Valid since**: 7
+
+## ohos.permission.INSTALL_ALLOW_DOWNGRADE
+
+Allows an application to downgrade and install other applications.
+
+With this permission, the application can overwrite an installed application with an earlier version, even if a later version is already present.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Supported devices**: general devices
+
+**Enable via ACL**: true
+
+**Valid since**: 23
 
 ## ohos.permission.MANAGE_SHORTCUTS
 
@@ -3837,6 +3903,18 @@ Allows a modal UIExtension to unhide non-secure windows.
 
 **Valid since**: 12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+Allows a UIExtensionAbility to be displayed on the locked screen.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 Allows a system service to access distributed modems.
@@ -3859,7 +3937,7 @@ Allows a system application to obtain eSIM profile information and data written 
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3871,7 +3949,7 @@ Allows a system application to modify the eSIM profile and upgrade the eSIM.
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -4625,7 +4703,7 @@ Allows an application to read the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -4639,7 +4717,7 @@ Allows an application to write the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -5035,22 +5113,6 @@ Allows an application to access the sandbox directories of other extended applic
 
 **Valid since**: 19
 
-## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
-
-Allows an HAP to load independent binary .so files with different owner IDs.
-
-With this permission, the HAP can load independent binary .so files with a developer certificate or an ad-hoc signature.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Valid since**: 20
-
 ## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
 
 Allows a system application to query the certificate information of independent binary programs.
@@ -5107,6 +5169,20 @@ Allows an application to simulate user operations.
 
 **Valid since**: 20
 
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+Allows an application to access the directories of compatible applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 22
+
 ## ohos.permission.MANAGE_SELF_SKILLS
 
 Allows an application to manage its skills configuration.
@@ -5135,7 +5211,7 @@ Allows a system application to invoke the data identification and anonymization 
 
 **Supported devices**: PCs/2-in-1 devices | phones | tablets | TVs | cars
 
-**Since**: 21
+**Since**: 22
 
 ## ohos.permission.CAPTURE_SCREEN_ALL
 
@@ -5150,3 +5226,81 @@ Allows an application to capture screenshots, including privacy windows.
 **Supported devices**: general devices
 
 **Valid since**: 13
+
+## ohos.permission.GET_BACKGROUND_TASK_INFO
+
+Allows an application to obtain background task status.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Device**: general devices
+
+**Since**: 23
+
+## ohos.permission.SET_BACKGROUND_TASK_STATE
+
+Allows an application to obtain and set the user authorization status of special continous task.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Device**: general devices
+
+**Since**: 23
+
+## ohos.permission.SET_LAUNCH_REASON_MESSAGE
+
+Allows a system application to set the launch reason when starting another application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18
+
+## ohos.permission.ACCESS_SUPER_HUB
+
+Allows an application to access Super Hub.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 12
+
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+Allows an application to query and configure user identity authentication policies, and verify the authentication result.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18
+
+## ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+Allows an application to dynamically register or remove custom UTD data types.
+
+**Permission level**：system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 22

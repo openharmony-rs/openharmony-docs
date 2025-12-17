@@ -1210,7 +1210,7 @@ Writes data to the buffer of the stream. This API uses an asynchronous callback 
 
 | Type  | Description                  |
 | ------ | ---------------------- |
-| boolean | Whether there is space in the buffer of the writable stream. The value **true** means that there is still space in the buffer. The value **false** means that the buffer is full, and you are not advised to continue writing data.|
+| boolean | Whether there is space in the buffer of the writable stream. The value **true** means that there is still space in the buffer. The value **false** means that the buffer is full, and you are not advised to continue writing data. If the write function is called continuously, data is still added to the buffer until the memory overflows.|
 
 **Error codes**
 

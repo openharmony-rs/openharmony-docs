@@ -7,7 +7,7 @@
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
 
-该模块主要提供RunningLock锁相关操作的接口，包括创建、查询、持锁、释放锁等操作。
+该模块为RunningLock锁相关操作的接口，RunningLock锁提供使能接近光亮灭屏或者设备熄屏后阻止进入睡眠的能力，包括创建、查询、持锁、释放锁等操作，RunningLock锁的类型详情见[RunningLockType](#runninglocktype)。
 
 > **说明：**
 >
@@ -167,7 +167,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
     if (typeof err === 'undefined') {
         console.info('BACKGROUND lock support status: ' + data);
     } else {
-        console.log('check BACKGROUND lock support status failed, err: ' + err);
+        console.error('check BACKGROUND lock support status failed, err: ' + err);
     }
 });
 ```
@@ -202,7 +202,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
     console.info('BACKGROUND lock support status: ' + data);
 })
 .catch((err: Error) => {
-    console.log('check BACKGROUND lock support status failed, err: ' + err);
+    console.error('check BACKGROUND lock support status failed, err: ' + err);
 });
 ```
 
@@ -271,13 +271,13 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     console.info('created running lock: ' + lock);
 })
 .catch((err: Error) => {
-    console.log('create running lock failed, err: ' + err);
+    console.error('create running lock failed, err: ' + err);
 });
 ```
 
 ## RunningLock
 
-阻止系统休眠的锁。
+阻止系统睡眠的锁。
 
 ### hold<sup>9+</sup>
 
@@ -520,4 +520,4 @@ RunningLock锁的类型。
 | --------------------------------- | ---- | ------------------------------------------------------------ |
 | BACKGROUND<sup>(deprecated)</sup> | 1    | 阻止系统睡眠的锁。<br>**说明：** 从API version 7开始支持，从API version 10开始废弃。 |
 | PROXIMITY_SCREEN_CONTROL          | 2    | 接近光锁，使能接近光传感器，并根据传感器与障碍物的距离远近发起亮灭屏流程。  |
-| BACKGROUND_USER_IDLE              | 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。注意：不能阻止如盒盖等场景系统进入强制睡眠，使用方必须监听[进入强制睡眠公共事件](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁参考[闲时任务运行锁开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。|
+| BACKGROUND_USER_IDLE              | 129  | 阻止系统自动睡眠的后台闲时任务锁，持锁能保证一段时间用户不活动后系统不进入自动睡眠。注意：不能阻止如PC合盖等场景系统进入强制睡眠，使用方必须监听[进入强制睡眠公共事件](./common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，监听到事件后释放该锁。该类型锁行为存在设备差异，使用该类型锁请参考[阻止系统闲时进入睡眠开发指南](../../basic-services/powermgr/runningLock/runningLock-dev.md)。|

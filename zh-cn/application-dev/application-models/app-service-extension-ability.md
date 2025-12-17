@@ -63,7 +63,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
     其目录结构如下所示：
 
-    ```
+    ```txt
     ├── ets
     │ ├── myappserviceextability
     │ │   ├── MyAppServiceExtAbility.ets

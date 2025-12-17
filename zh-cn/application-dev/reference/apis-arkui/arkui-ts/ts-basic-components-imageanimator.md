@@ -129,7 +129,9 @@ preDecode(value: number)
 
 设置预解码的图片数量。
 
-从API version 9开始废弃。
+> **说明：**
+> 
+> 从API version 7开始支持，从API version 9开始废弃。当前无可替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -352,7 +352,7 @@ struct TextInputEventAdd {
 
 ## 选中菜单
 
-输入框中的文字被选中时会弹出包含剪切、复制、翻译、搜索的菜单。
+输入框中的文字被选中时会弹出包含剪切、复制、翻译、分享的菜单。
 
 TextInput:
 

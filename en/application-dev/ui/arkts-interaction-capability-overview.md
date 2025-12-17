@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The ArkUI framework provides comprehensive interaction capabilities, supporting direct handling of basic input events, a gesture system built upon these events, and advanced interactions including drag-and-drop and focus management.
 

@@ -59,7 +59,7 @@ BLE connection parameters can be configured, and the connection process is optim
 
 2. Register an SSH public key for access to Gitee.
 
-3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
+3. Install the [git client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading), and configure user information.
   
    ```
    git config --global user.name "yourname"
@@ -70,7 +70,7 @@ BLE connection parameters can be configured, and the connection process is optim
 4. Run the following commands to install the **repo** tool:
   
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  # If you do not have the permission, download the tool to another directory and configure it as an environment variable by running the chmod a+x /usr/local/bin/repo command.
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -83,14 +83,14 @@ Use the **repo** tool to download the source code over SSH. (You must have an SS
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta5 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b OpenHarmony-3.2-Beta5 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta5 --no-repo-verify
+   repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v3.2-Beta5 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -101,14 +101,14 @@ Use the **repo** tool to download the source code over HTTPS.
 
 - Obtain the source code from the version branch. You can obtain the latest source code of the version branch, which includes the code that has been incorporated into the branch up until the time you run the following commands:
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b OpenHarmony-3.2-Beta5 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b OpenHarmony-3.2-Beta5 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
    
 - Obtain the source code from the version tag, which is the same as that released with the version.
    ```
-   repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta5 --no-repo-verify
+   repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v3.2-Beta5 --no-repo-verify
    repo sync -c
    repo forall -c 'git lfs pull'
    ```
@@ -168,7 +168,7 @@ For details about the API changes of each subsystem, see [Changelogs](changelogs
 
 ### Chip and Development Board Adaptation
 
-For details about the adaptation status, see [SIG-Devboard](https://gitee.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
+For details about the adaptation status, see [SIG-Devboard](https://gitcode.com/openharmony/community/blob/master/sig/sig_devboard/sig_devboard.md).
 
 
 ### Samples
@@ -177,13 +177,13 @@ For details about the adaptation status, see [SIG-Devboard](https://gitee.com/op
 
 | Subsystem| Name| Introduction| Programming Language|
 | -------- | -------- | -------- | -------- |
-| Multimedia subsystem| [QR code scanning](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/media/Scan)| The sample app is used to scan QR code. With the app, you can select a QR code image from a folder to identify the QR code information.| ArkTS|
-| ArkUI | [Home Page of the Application Market](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/MultiDeviceAppDev/AppMarket)| This sample shows the home page of the application market. The page has different display effects in the small window and large window, reflecting the capability of one-time development for multi-device deployment.| ArkTS|
-| File management subsystem| [File Management](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/FileManager/FileIo)| This sample demonstrates file management. It uses the [mediaLibrary](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-medialibrary.md), [userFileManager](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-userFileManager.md) and [fileio](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-fileio.md) APIs to add and access media library files and files in the application sandbox.| ArkTS|
-| Ability framework| [Gallery Widget](https://gitee.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/ability/GalleryForm)| This sample demonstrates the display of **Gallery** images in a widget and periodic update of the widget.| ArkTS|
+| Multimedia subsystem| [QR code scanning](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/media/Scan)| The sample app is used to scan QR code. With the app, you can select a QR code image from a folder to identify the QR code information.| ArkTS|
+| ArkUI | [Home Page of the Application Market](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/MultiDeviceAppDev/AppMarket)| This sample shows the home page of the application market. The page has different display effects in the small window and large window, reflecting the capability of one-time development for multi-device deployment.| ArkTS|
+| File management subsystem| [File Management](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/FileManager/FileIo)| This sample demonstrates file management. It uses the [mediaLibrary](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-medialibrary.md), [userFileManager](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-userFileManager.md) and [fileio](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis/js-apis-fileio.md) APIs to add and access media library files and files in the application sandbox.| ArkTS|
+| Ability framework| [Gallery Widget](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony-3.2-Beta5/ability/GalleryForm)| This sample demonstrates the display of **Gallery** images in a widget and periodic update of the widget.| ArkTS|
 
 
-For more information, visit [Samples](https://gitee.com/openharmony/applications_app_samples).
+For more information, visit [Samples](https://gitcode.com/openharmony/applications_app_samples).
 
 
 ## Resolved Issues

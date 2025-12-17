@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 With image effects, you can define how a component blends with the existing content on the canvas below.
 
@@ -18,7 +18,7 @@ With image effects, you can define how a component blends with the existing cont
 
 advancedBlendMode(effect: BlendMode | Blender, type?: BlendApplyType): T
 
-Defines how the component's content (including the content of it child components) is blended with the existing content on the canvas (possibly offscreen canvas) below. This API cannot be used together with [blendMode](ts-universal-attributes-image-effect.md#blendmode11).
+Defines how the component's content (including the content of it child components) is blended with the existing content on the canvas (possibly offscreen canvas) below. This API cannot be used with [blendMode](ts-universal-attributes-image-effect.md#blendmode11).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 13.
 

@@ -12,7 +12,7 @@ PersistenceV2是应用程序中的可选单例对象。此对象的作用是持�
 
 PersistenceV2提供状态变量持久化能力，开发者可以通过connect或者globalConnect绑定同一个key，在状态变量变化和应用冷启动时，实现持久化能力。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-new-componentV2.md)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistentV2-API文档](../../reference/apis-arkui/js-apis-StateManagement.md#persistencev2)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[PersistentV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#persistencev2)。
 
 >**说明：**
 >
@@ -41,7 +41,7 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 >
 >2、数据存储路径为module级别，即哪个module调用了connect，数据副本存入对应module的持久化文件中。如果多个module使用相同的key，则数据为最先使用connect的module，并且PersistenceV2中的数据也会存入最先使用connect的module里。
 >
->3、因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同module的拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
+>3、因为存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了connect，并且该ability能被不同的module拉起， 那么ability存在多少种启动方式，就会有多少份数据副本。
 
 - globalConnect：创建或获取存储的数据。
 - remove：删除指定key的存储数据。删除PersistenceV2中不存在的key会报警告。
@@ -49,7 +49,7 @@ PersistenceV2支持应用的[主线程](../../application-models/thread-model-st
 - save：手动持久化数据。
 - notifyOnError：响应序列化或反序列化失败的回调。将数据存入磁盘时，需要对数据进行序列化；当某个key序列化失败时，错误是不可预知的；可调用该接口捕获异常。
 
-以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-StateManagement.md)。
+以上接口详细描述请参考[状态管理API指南](../../reference/apis-arkui/js-apis-stateManagement.md)。
 
 ## 使用限制
 
@@ -438,6 +438,7 @@ globalConnect虽然是应用级别的路径，但是可以设置不同的加密�
 import { PersistenceV2, Type } from '@kit.ArkUI';
 import { common, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { contextConstant } from '@kit.AbilityKit';
 
 const DOMAIN = 0x0000;
 
@@ -463,10 +464,10 @@ export class Sample {
 @ComponentV2
 struct Page1 {
   @Local refresh: number = 0;
-  // 使用key:global1连接，传入加密等级为EL1
+  // 使用key:globalConnect1连接，传入加密等级为EL1
   @Local p1: Sample =
-    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample() })!;
-  // 使用key:global2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
+    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample(), areaMode: contextConstant.AreaMode.EL1 })!;
+  // 使用key:connect2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
@@ -493,16 +494,16 @@ struct Page1 {
             deviceId: '', // deviceId为空代表本设备
             bundleName: 'com.samples.paradigmstatemanagement', // 在app.json5中查看
             moduleName: 'demo', // 在需要跳转的module的module.json5中查看，非必选参数
-            abilityName: 'NewModuleAbility', // 跳转启动的ability，在跳转模块对应的ability.ets文件中查看
+            abilityName: 'NewModuleAbility', // 跳转启动的ability，在需要跳转的module的module.json5中查看
             uri: 'src/main/ets/pages/Index'
-          }
+          };
           // context为调用方UIAbility的UIAbilityContext
           this.context.startAbility(want).then(() => {
             hilog.info(DOMAIN, 'testTag', '%{public}s', 'start ability success');
           }).catch((err: Error) => {
             hilog.error(DOMAIN, 'testTag', '%{public}s',
               `start ability failed. code is ${err.name}, message is ${err.message}`);
-          })
+          });
         })
     }
     .width('100%')
@@ -513,12 +514,13 @@ struct Page1 {
 }
 ```
 
-<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage2.ets) -->
+<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 模块2
 import { PersistenceV2, Type } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { contextConstant } from '@kit.AbilityKit';
 
 const DOMAIN = 0x0000;
 // 接受序列化失败的回调
@@ -543,10 +545,10 @@ export class Sample {
 @ComponentV2
 struct Page1 {
   @Local a: number = 0;
-  // 使用key:global1连接，传入加密等级为EL1
+  // 使用key:globalConnect1连接，传入加密等级为EL1
   @Local p1: Sample =
-    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample() })!;
-  // 使用key:global2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
+    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample(), areaMode: contextConstant.AreaMode.EL1 })!;
+  // 使用key:connect2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
 
   build() {
@@ -573,7 +575,7 @@ struct Page1 {
 当开发者对newModule使用不同启动方式会有以下现象：
 
 *   开发者直接启动newModule，分别修改globalConnect1和connect2绑定的变量，例如将childId都改成5。
-* 应用退出并清空后台，启动模块entry，通过跳转按键启动newModule，会发现globalConnect1值为5，而connect2值为1未修改。
+* 应用退出并清空后台，启动模块entry，通过跳转按键启动newModule，会发现globalConnect1值为5，而connect2值为0未修改。
 * globalConnect为应用级别存储，对于一个key，整个应用在对应加密分区只有一份存储路径；connect为module级别的存储路径，会因为module的启动方式不同而在各自的加密分区对应不同的存储路径。
 
 ## 使用建议
@@ -627,8 +629,8 @@ struct Page1 {
         .fontColor(Color.Red)
 
       /**************************** save接口 **************************/
-      // 非状态变量需要借助状态变量refresh才能刷新
-      Text('save key Sample: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
+      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
+      Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // 未被@Trace保存的对象无法自动存储，需要调用save存储
           this.p.father.groupId += 1;
@@ -709,7 +711,7 @@ struct Page1 {
         .fontColor(Color.Red)
 
       /**************************** save接口 **************************/
-      // 非状态变量需要借助状态变量refresh才能刷新
+      // 未被@Trace装饰的变量需要借助状态变量refresh才能刷新
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
           // 未被@Trace保存的对象无法自动存储，需要调用save存储

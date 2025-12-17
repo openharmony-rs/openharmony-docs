@@ -71,4 +71,5 @@ The service logic for checking whether an application is a system application is
 
 **Adaptation Guide**
 
-Modify the **UnsgnedReleasedProfileTemplate.json** file related to [app signing](https://gitee.com/openharmony/developtools_hapsigner/tree/master/dist) to change the **app-feature** field to **hos_system_app**, so that the signed application is a system application.
+Modify the **UnsgnedReleasedProfileTemplate.json** file related to [app signing](https://gitcode.com/openharmony/developtools_hapsigner/tree/master/dist) to change the **app-feature** field to **hos_system_app**, so that the signed application is a system application.
+<!--no_check-->

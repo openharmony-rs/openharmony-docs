@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_ImagePackerNative OH_ImagePackerNative
+```
+
 ## 概述
 
 ImagePacker结构体类型，用于执行ImagePacker相关操作。

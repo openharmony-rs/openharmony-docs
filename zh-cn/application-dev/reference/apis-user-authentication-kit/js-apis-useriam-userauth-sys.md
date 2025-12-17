@@ -12,6 +12,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.userIAM.userAuth (用户认证)](js-apis-useriam-userauth.md)。
 
 ## 导入模块
@@ -29,6 +30,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | 名称           | 类型                               | 只读 | 可选 | 说明                                                         |
 | -------------- | ---------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | userId<sup>18+</sup> | number | 否   | 是   |要认证的目标用户ID，值为大于等于0的正整数。默认值为当前用户的ID。<br>**系统接口**: 此接口为系统接口。|
+| credentialIdList<sup>23+</sup> | Uint8Array[] | 否 | 是 |凭据ID列表。若凭据ID列表不为空，则会认证指定的凭据ID。<br>**系统接口**: 此接口为系统接口。|
 
 ## WindowModeType<sup>10+</sup>
 
@@ -236,6 +238,7 @@ getUserAuthWidgetMgr(version: number): UserAuthWidgetMgr
 获取UserAuthWidgetMgr对象，用于执行用户身份认证。
 
 > **说明：**
+>
 > 每个UserAuthInstance只能进行一次认证，若需要再次进行认证则需重新获取UserAuthInstance。
 
 **需要权限：** ohos.permission.SUPPORT_USER_AUTH

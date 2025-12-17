@@ -29,7 +29,7 @@ This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscri
 | API| Description|
 | -------- | -------- |
 | addWatcher(watcher: Watcher): AppEventPackageHolder | Adds a watcher to listen for application events.|
-| removeWatcher(watcher: Watcher): void | Removes a watcher to unsubscribe from application events.
+| removeWatcher(watcher: Watcher): void | Removes a watcher to unsubscribe from application events.|
 ## How to Develop
 
 The following example describes how to subscribe to the memory leak event.
@@ -169,7 +169,7 @@ Since API 14, you can change the log file name extension to **.rawheap** and imp
 
 You can select either of the following methods:
 
-   Method 1: Configure the following environment variables in the **AppScope/app.json5** file of your application:
+   Method 1: Configure the following environment variables in the **AppScope/app.json5** file:
 
    ```text
    "appEnvironments": [

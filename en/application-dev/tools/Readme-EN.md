@@ -16,17 +16,18 @@
 - [Common Event Manager](cem-tool.md)
 - [Advanced Notification Manager](anm-tool.md)
 - [Enterprise Device Manager](edm-tool.md)
-- [restool](restool.md)<!--Del-->
-- [LLDB (for System Applications Only)](lldb-tool-sys.md)<!--DelEnd-->
+- [restool](restool.md)
+<!--Del-->
+- [LLDB (for System Applications Only)](lldb-tool-sys.md)
+<!--DelEnd-->
 - [param](param-tool.md)
 - [power-shell](power-shell.md)
 - [Access Token Manager](atm-tool.md)
 - [network-cfg](network-cfg.md)
-- [IME Tool](../inputmethod/inputmethod-hdc-commands-guide.md)
 <!--Del-->
 - [Account Manager](acm-tool.md)
 <!--DelEnd-->
-- Command Line Tools
+- Command Line Utilities<!--command-line-utilities-->
   - [Toybox](toybox.md)
   - [mediatool](mediatool.md)
   - [devicedebug](devicedebug-tool.md)

@@ -41,7 +41,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
-  para: Record<string, number> = { 'count': 47 };
+  public para: Record<string, number> = { 'count': 47 };
   public storage: LocalStorage = new LocalStorage(this.para);
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -420,10 +420,10 @@ let localStorageA: LocalStorage = new LocalStorage();
 localStorageA.setOrCreate('propA', 'propA');
 
 let localStorageB: LocalStorage = new LocalStorage();
-localStorageB.setOrCreate('PropB', 'PropB');
+localStorageB.setOrCreate('propB', 'propB');
 
 let localStorageC: LocalStorage = new LocalStorage();
-localStorageC.setOrCreate('PropC', 'PropC');
+localStorageC.setOrCreate('propC', 'propC');
 
 @Entry
 @Component
@@ -493,14 +493,14 @@ struct PageOneStack {
 @Component
 struct PageTwoStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropB') propB: string = 'Hello World';
+  @LocalStorageLink('propB') propB: string = 'Hello World';
 
   build() {
     NavDestination() {
       Column() {
         // 显示'Hello'，当前LocalStorage实例localStorageB没有propA对应的值，使用本地默认值'Hello'
         NavigationContentMsgStack()
-        // 显示'PropB'
+        // 显示'propB'
         Text(`${this.propB}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -522,14 +522,14 @@ struct PageTwoStack {
 @Component
 struct PageThreeStack {
   @Consume('pageInfo') pageInfo: NavPathStack;
-  @LocalStorageLink('PropC') propC: string = 'pageThreeStack';
+  @LocalStorageLink('propC') propC: string = 'pageThreeStack';
 
   build() {
     NavDestination() {
       Column() {
         // 显示'Hello'，当前LocalStorage实例localStorageC没有propA对应的值，使用本地默认值'Hello'
         NavigationContentMsgStack()
-        // 显示'PropC'
+        // 显示'propC'
         Text(`${this.propC}`)
         Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -597,7 +597,7 @@ export class MyStorageC extends MyStorageA {
 }
 ```
 
-在`pageOneStack`、`pageTwoStack`和`pageThreeStack`组件内分别创建`MyStorageA`、`MyStorageB`、`MyStorageC`的实例，并通过\@Param传递给其子组件`NavigationContentMsgStack`，从而实现类似LocalStorage实例在子组件树上共享的能力。
+在`PageOneStack`、`PageTwoStack`和`PageThreeStack`组件内分别创建`MyStorageA`、`MyStorageB`、`MyStorageC`的实例，并通过\@Param传递给其子组件`NavigationContentMsgStack`，从而实现类似LocalStorage实例在子组件树上共享的能力。
 
 <!-- @[Internal_Trace_Customize_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/Index.ets) -->
 
@@ -613,11 +613,11 @@ struct MyNavigationTestStack {
   @Builder
   PageMap(name: string) {
     if (name === 'pageOne') {
-      pageOneStack()
+      PageOneStack()
     } else if (name === 'pageTwo') {
-      pageTwoStack()
+      PageTwoStack()
     } else if (name === 'pageThree') {
-      pageThreeStack()
+      PageThreeStack()
     }
   }
 
@@ -642,7 +642,7 @@ struct MyNavigationTestStack {
 }
 
 @ComponentV2
-struct pageOneStack {
+struct PageOneStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageA: MyStorageA = new MyStorageA('PropA');
 
@@ -673,7 +673,7 @@ struct pageOneStack {
 }
 
 @ComponentV2
-struct pageTwoStack {
+struct PageTwoStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageB: MyStorageB = new MyStorageB('PropB');
 
@@ -705,7 +705,7 @@ struct pageTwoStack {
 }
 
 @ComponentV2
-struct pageThreeStack {
+struct PageThreeStack {
   pageInfo: NavPathStack = new NavPathStack();
   @Local storageC: MyStorageC = new MyStorageC('PropC');
 
@@ -755,7 +755,7 @@ struct NavigationContentMsgStack {
 
 V1:
 
-AppStorage与应用进程绑定，支持跨Ability数据共享。
+AppStorage与应用进程绑定，支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)数据共享。
 在下面的示例中，使用\@StorageLink，可以使得开发者本地的修改同步回AppStorage中。
 
 <!-- @[Internal_AppStorage_V1_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAppStorageV1one.ets) -->
@@ -1176,7 +1176,7 @@ V1中PersistentStorage提供了持久化UI数据的能力，而V2则提供了更
 
 对于PersistenceV2：
 - 与PersistenceV2关联的\@ObservedV2对象，其\@Trace属性的变化，会触发整个关联对象的自动持久化。
-- 开发者也可以调用[PersistenceV2.save](../../reference/apis-arkui/js-apis-StateManagement.md#save)和[PersistenceV2.globalConnect](./arkts-new-persistencev2.md#使用globalconnect存储数据)接口来手动触发持久化写入和读取。
+- 开发者也可以调用[PersistenceV2.save](../../reference/apis-arkui/js-apis-stateManagement.md#save)和[PersistenceV2.globalConnect](./arkts-new-persistencev2.md#使用globalconnect存储数据)接口来手动触发持久化写入和读取。
 
 V1:
 
@@ -1189,13 +1189,13 @@ class Data {
 }
 
 PersistentStorage.persistProp('numProp', 47);
-PersistentStorage.persistProp('DataProp', new Data());
+PersistentStorage.persistProp('dataProp', new Data());
 
 @Entry
 @Component
 struct Index {
   @StorageLink('numProp') numProp: number = 48;
-  @StorageLink('DataProp') dataProp: Data = new Data();
+  @StorageLink('dataProp') dataProp: Data = new Data();
 
   build() {
     Column() {
@@ -1207,13 +1207,13 @@ struct Index {
         .fontSize(30)
 
       // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
-      Text(`DataProp.name: ${this.dataProp.name}`)
+      Text(`dataProp.name: ${this.dataProp.name}`)
         .onClick(() => {
           this.dataProp.name += 'a';
         })
         .fontSize(30)
       // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
-      Text(`DataProp.id: ${this.dataProp.id}`)
+      Text(`dataProp.id: ${this.dataProp.id}`)
         .onClick(() => {
           this.dataProp.id += 1;
         })
@@ -1824,8 +1824,8 @@ struct MyImage1 {
   @Link modifier: CommonModifier;
 
   build() {
-    // 此处'app.media.img'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-    Image($r('app.media.img'))
+    // 此处'app.media.app_icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    Image($r('app.media.app_icon'))
       .attributeModifier(this.modifier as MyModifier)
   }
 }
@@ -1895,8 +1895,8 @@ struct MyImage1 {
   @Param @Require modifier: CommonModifier;
 
   build() {
-    // 此处'app.media.img2'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
-    Image($r('app.media.img2'))
+    // 此处'app.media.app_icon'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+    Image($r('app.media.app_icon'))
       .attributeModifier(this.modifier as MyModifier)
   }
 }
@@ -1996,7 +1996,6 @@ struct MyImage1 {
 @Component
 struct Index {
   @State myModifier: TextModifier = new MyModifier().width(100).height(100).margin(10);
-  // 临时存储的index数字
   index: number = 0;
 
   build() {
@@ -2077,7 +2076,6 @@ struct MyImage1 {
 struct Index {
   // 使用makeObserved的能力观测TextModifier
   @Local myModifier: TextModifier = UIUtils.makeObserved(new MyModifier().width(100).height(100).margin(10));
-  // 临时存储的index数字
   index: number = 0;
 
   build() {

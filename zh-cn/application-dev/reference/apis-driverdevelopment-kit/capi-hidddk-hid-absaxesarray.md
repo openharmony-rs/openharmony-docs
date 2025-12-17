@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
+```
+
 ## 概述
 
 绝对坐标属性数组。

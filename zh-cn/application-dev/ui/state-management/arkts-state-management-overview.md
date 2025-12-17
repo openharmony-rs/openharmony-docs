@@ -136,7 +136,7 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 - [\@Trace](arkts-new-observedV2-and-trace.md)：\@Trace装饰器装饰被\@ObservedV2装饰的class中的属性，被装饰的属性具有深度观测的能力。
 
-- [\@ComponentV2](arkts-new-componentV2.md)：使用\@ComponentV2装饰的struct中能使用新的装饰器。例如：\@Local、\@Param、\@Event、\@Once、\@Monitor、\@Provider、\@Consumer。
+- [\@ComponentV2](arkts-create-custom-components.md#componentv2)：使用\@ComponentV2装饰的struct中能使用新的装饰器。例如：\@Local、\@Param、\@Event、\@Once、\@Monitor、\@Provider、\@Consumer。
 
 - [\@Local](arkts-new-local.md)：\@Local装饰的变量为组件内部状态，无法从外部初始化。
 
@@ -148,9 +148,9 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 - [\@Monitor](arkts-new-monitor.md)：\@Monitor装饰器用于\@ComponentV2装饰的自定义组件或\@ObservedV2装饰的类中，能够对状态变量进行深度监听。
 
-- [\@Provider和\@Consumer](arkts-new-Provider-and-Consumer.md)：用于跨组件层级双向同步。
+- [\@Provider和\@Consumer](arkts-new-provider-and-consumer.md)：用于跨组件层级双向同步。
 
-- [\@Computed](arkts-new-Computed.md)：计算属性，在被计算的值变化的时候，只会计算一次。主要应用于解决UI多次重用该属性从而重复计算导致的性能问题。
+- [\@Computed](arkts-new-computed.md)：计算属性，在被计算的值变化的时候，只会计算一次。主要应用于解决UI多次重用该属性从而重复计算导致的性能问题。
 
 - [!!语法](arkts-new-binding.md)：双向绑定语法糖。
 

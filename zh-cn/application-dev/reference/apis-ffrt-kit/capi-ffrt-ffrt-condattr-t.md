@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_condattr_t
+```
+
 ## 概述
 
 FFRT条件变量属性结构。

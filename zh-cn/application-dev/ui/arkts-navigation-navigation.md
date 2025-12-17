@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-组件导航（Navigation）主要用于实现Navigation页面（NavDestination）间的跳转，支持在不同Navigation页面间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。本文将从组件导航（Navigation）的显示模式、路由操作、子页面管理、跨包跳转以及跳转动效等几个方面进行详细介绍。
+组件导航（[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)）主要用于实现Navigation页面（[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)）间的跳转，支持在不同Navigation页面间传递参数，提供灵活的跳转栈操作，从而更便捷地实现对不同页面的访问和复用。本文将从组件导航（Navigation）的显示模式、路由操作、子页面管理、跨包跳转以及跳转动效等几个方面进行详细介绍。
 
 [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)是路由导航的根视图容器，一般作为页面（@Entry）的根容器，包括单栏（Stack）、分栏（Split）和自适应（Auto）三种显示模式。Navigation组件适用于模块内和跨模块的路由切换，通过组件级路由能力实现更加自然流畅的转场体验，并提供多种标题栏样式来呈现更好的标题和内容联动效果。一次开发，多端部署场景下，Navigation组件能够自动适配窗口显示大小，在窗口较大的场景下自动切换分栏展示效果。
 
@@ -17,7 +17,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
 
 ## 设置页面显示模式
 
-Navigation组件通过mode属性设置页面的显示模式。
+[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)组件通过[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性设置页面的显示模式。
 
 - 自适应模式
 
@@ -68,6 +68,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   <!-- @[NavigationModeSplit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageDisplayModeSplit.ets) -->
   
   ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
   const DOMAIN = 0x0000;
   @Entry
   @Component
@@ -77,7 +78,7 @@ Navigation组件通过mode属性设置页面的显示模式。
       'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',  // 当前目录image文件夹下的图标资源
       'action': () => {}
     };
-    @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+    @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
     private arr: number[] = [1, 2, 3];
   
     @Builder
@@ -93,7 +94,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   
     build() {
       Column() {
-        Navigation(this.pageInfos) {
+        Navigation(this.navPathStack) {
           TextInput({ placeholder: 'search...' })
             .width('90%')
             .height(40)
@@ -111,7 +112,7 @@ Navigation组件通过mode属性设置页面的显示模式。
                   .fontWeight(500)
                   .textAlign(TextAlign.Center)
                   .onClick(() => {
-                    this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                    this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
                   })
               }
             }, (item: number) => item.toString())
@@ -155,7 +156,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   
   @Component
   export struct pageOneTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
+    @Consume('navPathStack') navPathStack: NavPathStack;
     context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
@@ -164,8 +165,8 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title('NavDestinationTitle1')
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -175,7 +176,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   
   @Component
   export struct pageTwoTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
+    @Consume('navPathStack') navPathStack: NavPathStack;
     context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
@@ -184,8 +185,8 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title('NavDestinationTitle2')
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -195,7 +196,7 @@ Navigation组件通过mode属性设置页面的显示模式。
   
   @Component
   export struct pageThreeTmp {
-    @Consume('pageInfos') pageInfos: NavPathStack;
+    @Consume('navPathStack') navPathStack: NavPathStack;
     context = this.getUIContext().getHostContext();
     build() {
       NavDestination() {
@@ -204,8 +205,8 @@ Navigation组件通过mode属性设置页面的显示模式。
         }.width('100%').height('100%')
       }.title('NavDestinationTitle3')
       .onBackPressed(() => {
-        const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+        const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
+        // $r('app.string.returnValue')资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -219,7 +220,7 @@ Navigation组件通过mode属性设置页面的显示模式。
 
 ## 设置标题栏模式
 
-标题栏在界面顶部，用于呈现界面名称和操作入口，Navigation组件通过titleMode属性设置标题栏模式。
+标题栏在界面顶部，用于呈现界面名称和操作入口，Navigation组件通过[titleMode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#titlemode)属性设置标题栏模式。
 
 > **说明：**
 > Navigation或NavDestination未设置主副标题并且没有返回键时，不显示标题栏。
@@ -262,7 +263,7 @@ Navigation组件通过mode属性设置页面的显示模式。
 
 ## 设置菜单栏
 
-菜单栏位于Navigation组件的右上角，开发者可以通过menus属性进行设置。menus支持Array&lt;[NavigationMenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationmenuitem)&gt;和[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)两种参数类型。使用Array&lt;NavigationMenuItem&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+菜单栏位于Navigation组件的右上角，开发者可以通过[menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus)属性进行设置。menus支持Array&lt;[NavigationMenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationmenuitem)&gt;和[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)两种参数类型。使用Array&lt;NavigationMenuItem&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
 **图5** 设置了3个图标的菜单栏  
 
@@ -276,9 +277,9 @@ Navigation组件通过mode属性设置页面的显示模式。
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
    };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
          }
          .menus([toolTmp, toolTmp, toolTmp])
    ```
@@ -293,9 +294,9 @@ Navigation组件通过mode属性设置页面的显示模式。
      'icon': 'resources/base/media/ic_public_add.svg',
      'action': () => {}
    };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
          }
          .menus([toolTmp, toolTmp, toolTmp])
    ```
@@ -312,9 +313,9 @@ Navigation组件通过mode属性设置页面的显示模式。
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
    };
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
          }
          // 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标
          .menus([toolTmp, toolTmp, toolTmp, toolTmp])
@@ -338,9 +339,9 @@ Navigation组件通过mode属性设置页面的显示模式。
      'action': () => {}
    };
    let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
-   // ···
-         Navigation(this.pageInfos) {
-           // ···
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
          }
          .toolbarConfiguration(tooBar)
    ```
@@ -349,7 +350,7 @@ Navigation组件通过mode属性设置页面的显示模式。
 
 Navigation路由相关的操作都是基于导航控制器[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)提供的方法进行，每个Navigation都需要创建并传入一个NavPathStack对象，用于管理页面。主要涉及页面跳转、页面返回、页面替换、页面删除、参数获取、路由拦截等功能。
 
-从API version 12开始，导航控制器允许被继承。开发者可以在派生类中自定义属性和方法，也可以重写父类的方法。派生类对象可以替代基类NavPathStack对象使用。Navigation中的NavDestination页面存在于NavPathStack中，以栈的结构管理，我们称为路由栈。具体示例代码参见：[导航控制器继承示例代码](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。
+从API version 12开始，导航控制器允许被继承。开发者可以在派生类中自定义属性和方法，也可以重写父类的方法。派生类对象可以替代基类NavPathStack对象使用。Navigation中的[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)页面存在于NavPathStack中，以栈的结构管理，我们称为路由栈。具体示例代码参见：[导航控制器继承示例代码](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。
 
 > **说明：**
 >
@@ -435,7 +436,7 @@ NavPathStack通过Push相关的接口（如[pushPath](../reference/apis-arkui/ar
 
 ### 页面返回
 
-NavPathStack通过[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop11)相关接口去实现页面返回功能。
+NavPathStack通过pop相关接口（如[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop10)、[popToName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoname10)、[popToIndex](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#poptoindex10)、[clear](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#clear10)）去实现页面返回功能。
 
    <!-- @[pop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/PageTwo.ets) -->
    
@@ -531,7 +532,7 @@ NavPathStack通过Move相关接口（如[moveToTop](../reference/apis-arkui/arku
 
 ### 参数获取
 
-NavDestination子页第一次创建时会触发[onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调，可以获取此页面对应的参数。
+[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)子页第一次创建时会触发[onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)回调，可以获取此页面对应的参数。
 
    <!-- @[onReady](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template7/PageOne.ets) -->
    
@@ -599,7 +600,7 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
 
 ### 路由拦截
 
-NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)方法，用于设置Navigation页面跳转拦截回调。该方法需要传入一个NavigationInterception对象，该对象包含三个回调函数：
+NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)方法，用于设置Navigation页面跳转拦截回调。该方法需要传入一个[NavigationInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationinterception12)对象，该对象包含三个回调函数：
 
 | 名称       | 描述                                                 |
 | ------------ | ------------------------------------------------------ |
@@ -648,7 +649,7 @@ NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic
 
 ## 子页面
 
-[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)是Navigation子页面的根容器，用于承载子页面的一些特殊属性以及生命周期等。NavDestination可以设置独立的标题栏和菜单栏等属性，使用方法与Navigation相同。NavDestination也可以通过mode属性设置不同的显示类型，用于满足不同页面的诉求。
+[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)是[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)子页面的根容器，用于承载子页面的一些特殊属性以及生命周期等。NavDestination可以设置独立的标题栏和菜单栏等属性，使用方法与Navigation相同。NavDestination也可以通过[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#mode11)属性设置不同的显示类型，用于满足不同页面的诉求。
 
 ### 页面显示类型
 
@@ -819,7 +820,7 @@ Navigation作为路由容器，其生命周期承载在NavDestination组件上�
 
 ## 页面转场
 
-Navigation默认提供了页面切换的转场动画，通过导航控制器操作时，会触发不同的转场效果（API version 13之前，Dialog类型的页面默认无转场动画。从API version13开始，Dialog类型的页面支持系统转场动画。），Navigation也提供了关闭系统转场、自定义转场以及共享元素转场的能力。系统默认动画时长由物理曲线参数决定，不同设备上动画时长存在差异。
+[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)默认提供了页面切换的转场动画，通过导航控制器操作时，会触发不同的转场效果（API version 13之前，[Dialog](arkts-base-dialog-overview.md)类型的页面默认无转场动画。从API version13开始，Dialog类型的页面支持系统转场动画。），Navigation也提供了关闭系统转场、自定义转场以及共享元素转场的能力。系统默认动画时长由物理曲线参数决定，不同设备上动画时长存在差异。
 
 ### 关闭转场
 
@@ -871,7 +872,7 @@ Navigation默认提供了页面切换的转场动画，通过导航控制器操�
 
 - NavDestination自定义转场
 
-  NavDestination支持自定义转场动画，通过设置[customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)属性即可实现单个页面的自定义转场效果。要实现这一功能，需完成以下步骤：
+  [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)支持自定义转场动画，通过设置[customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)属性即可实现单个页面的自定义转场效果。要实现这一功能，需完成以下步骤：
 
   1. 实现[NavDestination的转场代理](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationtransitiondelegate15)，针对不同的堆栈操作类型返回自定义的转场协议对象[NavDestinationTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationtransition15)。其中，event是必填参数，需在此处编写自定义转场动画的逻辑；而onTransitionEnd、duration、curve与delay为可选参数，分别对应动画结束后的回调、动画持续时间、动画曲线类型与开始前的延时。若在转场代理中返回多个转场协议对象，这些动画效果将逐层叠加。
   2. 通过调用NavDestination组件的customTransition属性，并传入上述实现的转场代理，完成自定义转场的设置。
@@ -963,7 +964,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 
 ### 系统路由表
 
-系统路由表是动态路由的一种实现方式。从API version 12开始，Navigation支持使用系统路由表的方式进行动态路由。各业务模块（[HSP](../quick-start/in-app-hsp.md)/[HAR](../quick-start/har-package.md)）中需要独立配置route_map.json文件，在触发路由跳转时，应用只需要通过NavPathStack提供的路由方法，传入需要路由的页面配置名称，此时系统会自动完成路由模块的动态加载、页面组件构建，并完成路由跳转，从而实现了开发层面的模块解耦。系统路由表支持模拟器但不支持预览器。其主要步骤如下：
+系统路由表是动态路由的一种实现方式。从API version 12开始，[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)支持使用系统路由表的方式进行动态路由。各业务模块（[HSP](../quick-start/in-app-hsp.md)/[HAR](../quick-start/har-package.md)）中需要独立配置route_map.json文件，在触发路由跳转时，应用只需要通过NavPathStack提供的路由方法，传入需要路由的页面配置名称，此时系统会自动完成路由模块的动态加载、页面组件构建，并完成路由跳转，从而实现了开发层面的模块解耦。系统路由表支持模拟器但不支持预览器。其主要步骤如下：
 
 1. 在跳转目标模块的配置文件[module.json5](../quick-start/module-configuration-file.md)添加路由表配置：
 
@@ -1031,7 +1032,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
    }
    ```
 
-4. 通过pushPathByName等路由接口进行页面跳转。(注意：此时Navigation中可以不用配置navDestination属性。)
+4. 通过[pushPathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpathbyname10)等路由接口进行页面跳转。(注意：此时Navigation中可以不用配置[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性。)
 
    <!-- @[SystemRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOne.ets) -->
    
@@ -1087,11 +1088,12 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
 <!-- @[CustomRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/CustomRoutingTable.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0000;
 @Entry
 @Component
 struct NavigationExample {
-  @Provide('pageInfos') pageInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private arr: number[] = [1, 2];
 
   @Builder
@@ -1105,7 +1107,7 @@ struct NavigationExample {
 
   build() {
     Column() {
-      Navigation(this.pageInfos) {
+      Navigation(this.navPathStack) {
         TextInput({ placeholder: 'search...' })
           .width('90%')
           .height(40)
@@ -1121,7 +1123,7 @@ struct NavigationExample {
                 .fontWeight(500)
                 .textAlign(TextAlign.Center)
                 .onClick(() => {
-                  this.pageInfos.pushPath({ name: 'NavDestinationTitle' + item });
+                  this.navPathStack.pushPath({ name: 'NavDestinationTitle' + item });
                 })
             }
           }, (item: number) => item.toString())
@@ -1129,7 +1131,7 @@ struct NavigationExample {
         .width('90%')
         .margin({ top: 12 })
       }
-      // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.mainTitle')资源文件中的value值为“主标题”
       .title($r('app.string.mainTitle'))
       .navDestination(this.pageMap)
       .mode(NavigationMode.Split)
@@ -1141,7 +1143,7 @@ struct NavigationExample {
 
 @Component
 export struct pageTwoTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
+  @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
   build() {
     NavDestination() {
@@ -1150,8 +1152,8 @@ export struct pageTwoTmp {
       }.width('100%').height('100%')
     }.title('NavDestinationTitle2')
     .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')资源文件中的value值为“返回值”
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -1161,7 +1163,7 @@ export struct pageTwoTmp {
 
 @Component
 export struct pageOneTmp {
-  @Consume('pageInfos') pageInfos: NavPathStack;
+  @Consume('navPathStack') navPathStack: NavPathStack;
   context = this.getUIContext().getHostContext();
   build() {
     NavDestination() {
@@ -1170,8 +1172,8 @@ export struct pageOneTmp {
       }.width('100%').height('100%')
     }.title('NavDestinationTitle1')
     .onBackPressed(() => {
-      const popDestinationInfo = this.pageInfos.pop(); // 弹出路由栈的栈顶元素
-      // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件
+      const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈的栈顶元素
+      // $r('app.string.returnValue')资源文件中的value值为“返回值”
       hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
         JSON.stringify(popDestinationInfo));
       return true;
@@ -1185,11 +1187,11 @@ export struct pageOneTmp {
 ### 创建导航首页
 实现步骤为：
 
-1.使用Navigation创建导航主页，并创建导航控制器NavPathStack以此来实现不同页面之间的跳转。
+1.使用[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)创建导航主页，并创建导航控制器NavPathStack以此来实现不同页面之间的跳转。
 
-2.在Navigation中增加List组件，来定义导航主页中不同的一级界面。
+2.在Navigation中增加[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)组件，来定义导航主页中不同的一级界面。
 
-3.在List内的组件添加onClick方法，并在其中使用导航控制器NavPathStack的pushPathByName方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
+3.在List内的组件添加onClick方法，并在其中使用导航控制器NavPathStack的[pushPathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpathbyname10)方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
 
 <!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
 
@@ -1197,12 +1199,12 @@ export struct pageOneTmp {
 @Entry
 @Component
 struct NavigationDemo {
-  @Provide('pathInfos') pathInfos: NavPathStack = new NavPathStack();
+  @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
   private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
   context = this.getUIContext().getHostContext();
   build() {
     Column() {
-      Navigation(this.pathInfos) {
+      Navigation(this.navPathStack) {
         // $r('app.string.enterKeyWordsToSearch')需要替换为开发者所需的字符串资源文件
         TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
           .width('90%')
@@ -1255,8 +1257,8 @@ struct NavigationDemo {
             }
             .width('100%')
             .onClick(() => {
-              // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件
-              this.pathInfos.pushPathByName(`${item}`,
+              // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“详情页面参数”
+              this.navPathStack.pushPathByName(`${item}`,
                 // 将name指定的NaviDestination页面信息入栈,传递的参数为param
                 this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
             })
@@ -1270,7 +1272,7 @@ struct NavigationDemo {
       }
       .width('100%')
       .mode(NavigationMode.Auto)
-      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件
+      // $r('app.string.settings')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置”
       .title($r('app.string.settings')) // 设置标题文字
     }
     .size({ width: '100%', height: '100%' })
@@ -1283,11 +1285,11 @@ struct NavigationDemo {
 ### 创建导航子页
 导航子页1实现步骤为：
 
-1.使用NavDestination，来创建导航子页PageOne。
+1.使用[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)，来创建导航子页PageOne。
 
-2.创建导航控制器NavPathStack并在onReady时进行初始化，获取当前所在的导航控制器，以此来实现不同页面之间的跳转。
+2.创建导航控制器[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)并在[onReady](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onready11)时进行初始化，获取当前所在的导航控制器，以此来实现不同页面之间的跳转。
 
-3.在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的pop方法，使组件可以在点击之后弹出路由栈栈顶元素实现页面的返回。
+3.在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的[pop](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pop10)方法，使组件可以在点击之后弹出路由栈栈顶元素实现页面的返回。
 
 <!-- @[NavigationExampleOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleOne.ets) -->
 
@@ -1299,7 +1301,7 @@ export function PageOneBuilder(name: string, param: string) {
 
 @Component
 export struct PageOne {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   @State value: string = '';
   context = this.getUIContext().getHostContext();
@@ -1307,7 +1309,7 @@ export struct PageOne {
   build() {
     NavDestination() {
       Column() {
-        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.settingPage')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“设置页面”
         Text(`${this.name}${this.context!.resourceManager.getStringSync($r('app.string.settingPage').id)}`)
           .width('100%')
           .fontSize(20)
@@ -1326,21 +1328,21 @@ export struct PageOne {
           .fontColor(0x666666)
           .textAlign(TextAlign.Center)
           .padding({ top: 45 })
-        // $r('app.string.stepperIndex_text24')需要替换为开发者所需的字符串资源文件
+        // $r('app.string.return')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“返回”
         Button($r('app.string.return'))
           .width('50%')
           .height(40)
           .margin({ top: 50 })
           .onClick(() => {
             //弹出路由栈栈顶元素，返回上个页面
-            this.pathInfos.pop();
+            this.navPathStack.pop();
           })
       }
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }
@@ -1352,7 +1354,7 @@ export struct PageOne {
 
 2.创建导航控制器NavPathStack并在onReady时进行初始化，获取当前所在的导航控制器，以此来实现不同页面之间的跳转。
 
-3.在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的pushPathByName方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
+3.在子页面内的组件添加onClick，并在其中使用导航控制器NavPathStack的[pushPathByName](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#pushpathbyname10)方法，使组件可以在点击之后从当前页面跳转到输入参数name在路由表内对应的页面。
 
 <!-- @[NavigationExampleTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExampleTwo.ets) -->
 
@@ -1364,7 +1366,7 @@ export function PageTwoBuilder(name: string) {
 
 @Component
 export struct PageTwo {
-  pathInfos: NavPathStack = new NavPathStack();
+  navPathStack: NavPathStack = new NavPathStack();
   name: string = '';
   private listArray: Array<string> = ['Projection', 'Print', 'VPN', 'Private DNS', 'NFC'];
   context = this.getUIContext().getHostContext();
@@ -1416,7 +1418,8 @@ export struct PageTwo {
             }
             .width('100%')
             .onClick(() => {
-              this.pathInfos.pushPathByName(`${item}`,
+              // $r('app.string.pageSettingParam')需要替换为开发者所需的字符串资源文件,资源文件中的value值为“页面设置参数”
+              this.navPathStack.pushPathByName(`${item}`,
                 this.context!.resourceManager.getStringSync($r('app.string.pageSettingParam').id));
             })
           }, (item: string): string => item)
@@ -1430,7 +1433,7 @@ export struct PageTwo {
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
       // NavDestinationContext获取当前所在的导航控制器
-      this.pathInfos = ctx.pathStack;
+      this.navPathStack = ctx.pathStack;
     })
   }
 }

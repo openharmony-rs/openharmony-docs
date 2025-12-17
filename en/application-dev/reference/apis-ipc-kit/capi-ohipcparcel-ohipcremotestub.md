@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct OHIPCRemoteStub OHIPCRemoteStub
+```
+
 ## Overview
 
 Defines an IPC remote service object.

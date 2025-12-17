@@ -22,12 +22,21 @@
 import mediaquery from '@system.mediaquery';
 ```
 
+## MediaQuery
 
-## mediaquery.matchMedia
+定义MediaQuery接口。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### matchMedia
 
 matchMedia(condition: string): MediaQueryList
 
 根据媒体查询条件，创建MediaQueryList对象。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -39,9 +48,9 @@ matchMedia(condition: string): MediaQueryList
 
 **返回值：**
 
-| 参数类型           | 说明                                       |
+| 类型           | 说明                                       |
 | -------------- | ---------------------------------------- |
-| MediaQueryList | 表示创建MediaQueryList对象的属性，详情见下表 MediaQueryList说明。 |
+| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | 表示创建MediaQueryList对象的属性，详情见下表说明。 |
 
 **示例：**
 
@@ -53,11 +62,13 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 
 定义MediaQuery事件。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 类型    | 必填   | 说明    |
-| ------- | ------- | ---- | ----- |
-| matches | boolean | 是    | 匹配结果。true表示满足查询条件，false表示不满足查询条件。 |
+| 名称      | 类型    | 只读 | 可选   | 说明    |
+| ------- | ------- | ---- | ---- | ----- |
+| matches | boolean | 否 |否    | 匹配结果。true表示满足查询条件，false表示不满足查询条件。 |
 
 ## MediaQueryList
 
@@ -65,26 +76,15 @@ let mMediaQueryList = mediaquery.matchMedia('(max-width: 466)');
 
 ### 属性
 
-**系统能力：** 以下各项对应的系统能力均为SystemCapability.ArkUI.ArkUI.Full
-
-| 名称      | 类型    | 必填   | 说明                |
-| ------- | ------- | ---- | ----------------- |
-| media   | string  | 否    | 序列化媒体查询条件，该参数为只读。 |
-| matches | boolean | 是    | 匹配结果。 true表示满足查询条件，false表示不满足查询条件。            |
-
-### onchange
-
-onchange?: (matches: boolean) => void
-
-matches状态变化时的执行函数。
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名     | 类型      | 必填   | 说明             |
-| ------- | ------- | ---- | -------------- |
-| matches | boolean | 是    | matches状态变化时值。true表示满足查询条件，false表示不满足查询条件。 |
+| 名称      | 类型    | 只读 | 可选   | 说明                |
+| ------- | ------- | ---- |---- | ----------------- |
+| media   | string  | 否|  是    | 序列化媒体查询条件，该参数为只读。 |
+| matches | boolean | 否|  是     | 匹配结果。 true表示满足查询条件，false表示不满足查询条件。            |
+| onchange | (matches: boolean) => void | 否|  是     | 匹配结果发生变化时的执行函数。matches表示是否匹配媒体查询条件，true满足查询条件，false不满足查询条件。 |
 
 
 ### MediaQueryList.addListener
@@ -92,6 +92,8 @@ matches状态变化时的执行函数。
 addListener(callback: (event: MediaQueryEvent) => void): void
 
 给MediaQueryList添加回调函数，回调函数应在onShow生命周期之前添加，即需要在onInit或onReady生命周期里添加。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,13 +124,15 @@ removeListener(callback: (event: MediaQueryEvent) => void): void
 
 移除MediaQueryList中的回调函数。
 
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名      | 类型                                | 必填   | 说明             |
 | -------- | --------------------------------- | ---- | -------------- |
-| callback | (event: MediaQueryEvent) => void) | 是    | 匹配条件发生变化的响应函数。 |
+| callback | (event: MediaQueryEvent) => void | 是    | 匹配条件发生变化的响应函数。 |
 
 **示例：**
 

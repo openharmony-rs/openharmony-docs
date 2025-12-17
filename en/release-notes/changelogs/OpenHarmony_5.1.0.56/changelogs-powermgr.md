@@ -33,7 +33,7 @@ OpenHarmony SDK 5.1.0.56
 
 **Key API/Component Changes**
 
-The following APIs in [@ohos.account.distributedAccount.d.ts](https://gitee.com/openharmony/docs/blob/master/en/application-dev/reference/apis-basic-services-kit/js-apis-distributed-account.md):
+The following APIs in [@ohos.account.distributedAccount.d.ts](https://gitcode.com/openharmony/docs/blob/master/en/application-dev/reference/apis-basic-services-kit/js-apis-distributed-account.md):
 
 - wakeup(detail: string): void
 - suspend(isImmediate?: boolean): void

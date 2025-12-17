@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioVolumeManager OH_AudioVolumeManager
+```
+
 ## Overview
 
 The struct describes an audio volume manager, which provides various functions for obtaining system volume information.

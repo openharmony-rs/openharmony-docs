@@ -6,6 +6,10 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder
+```
+
 ## Overview
 
 The struct describes the session metadata builder, which is used to construct session metadata.

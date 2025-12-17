@@ -1,4 +1,4 @@
-# Introduction
+# Introduction to ArkTS
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -90,7 +90,7 @@ Example:
 ```typescript
 let n1 = 3.14;
 let n2 = 3.141592;
-let n3 = .5;
+let n3 = 0.5;
 let n4 = 1e2;
 
 function factorial(n: number): number {
@@ -100,19 +100,17 @@ function factorial(n: number): number {
   return n * factorial(n - 1);
 }
 
-factorial(n1)  //  7.660344000000002 
-factorial(n2)  //  7.680640444893748 
-factorial(n3)  //  1 
-factorial(n4)  //  9.33262154439441e+157 
+factorial(n1)  //  7.660344000000002
+factorial(n2)  //  7.680640444893748
+factorial(n3)  //  1
+factorial(n4)  //  9.33262154439441e+157
 ```
 
-The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the Bigint type to ensure the precision as required.
+The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the BigInt type to ensure the precision as required.
 
 ```typescript
-
 let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
 console.info('bigInt:' + bigInt.toString());
-
 ```
 
 **Boolean type**
@@ -139,7 +137,7 @@ A string literal consists of zero or more characters enclosed in single (') or d
 
 ```typescript
 let s1 = 'Hello, world!\n';
-let s2 = "this is a string";
+let s2 = 'this is a string';
 let a = 'Success';
 let s3 = `The result is ${a}`;
 ```
@@ -153,16 +151,20 @@ This type has the only one value which is also void. As void is a reference type
 class Class<T> {
   //...
 }
-let instance: Class <void>
+let instance: Class<void>;
 ```
 
 **Object type**
 
-An Object type is a base type for all reference types. Any value, including values of primitive types (they will be automatically boxed), can be directly assigned to variables of the type Object. The Object type is used to represent types other than the primitive types.
+An Object type is a base type for all reference types. Any value, including values of primitive types (they will be automatically boxed), can be directly assigned to variables of the type Object.
+
+The Object type is used to represent types other than the primitive types.
+
 ```typescript
 let o1: Object = 'Alice';
-let o2: Object = ['a','b'];
+let o2: Object = ['a', 'b'];
 let o3: Object = 1;
+let o4: object = [1, 2, 3];
 ```
 
 **Array type**
@@ -245,15 +247,34 @@ function foo(animal: Animal) {
 Type Aliases provides names for anonymous types (such as array, function, object literal or union type) or alternative names for existing types.
 
 ```typescript
+// Two-dimensional array type.
 type Matrix = number[][];
+const gameBoard: Matrix = [
+  [1, 0],
+  [0, 1]
+];
+
+// Function type.
 type Handler = (s: string, no: number) => string;
-type Predicate <T> = (x: T) => boolean;
+const repeatString: Handler = (str, times) => {
+  return str.repeat(times);
+};
+console.info(repeatString('abc', 3)); // 'abcabcabc'
+
+// Generic function type.
+type Predicate<T> = (x: T) => boolean;
+const isEven: Predicate<number> = (num) => num % 2 === 0;
+
+// Object type that can be null.
 type NullableObject = Object | null;
+class Cat {}
+let animalData: NullableObject = new Cat();
+let emptyData: NullableObject = null;
 ```
 
 ### Operators
 
-Assignment operators
+**Assignment operators**
 
 Simple assignment operator **=** is used as in **x = y**.
 
@@ -319,9 +340,39 @@ Binary operators are as follows:
 | `a || b` | Logical OR|
 | `! a`      | Logical NOT|
 
+**instanceof operator**
+
+The **instanceof** operator is used to check whether an object is an instance of a specified class or its child class at runtime.
+
+Example:
+
+```typescript
+obj instanceof className
+```
+
+The type of the return value is Boolean.
+If **obj** is an instance of the **className** class or its child class, the return value is **true**. Otherwise, the return value is **false**.
+
+Example:
+
+```typescript
+class Person {}
+const person = new Person();
+if ((person instanceof Person)) {
+  console.info('true'); // true
+}
+
+class Animal {}
+class Bird extends Animal {}
+const bird = new Bird();
+if (bird instanceof Animal) {
+  console.info('true'); // true
+}
+```
+
 ### Statements
 
-**If statement**
+**if statement**
 
 An **if** statement is used to execute a sequence of statements when a logical condition is true, or another set of statements (if provided) otherwise.
 The **else** part can also contain more **if** statements.
@@ -352,7 +403,7 @@ if (s2.length != 0) {
 }
 ```
 
-**Switch statement**
+**switch statement**
 
 A **switch** statement is used to execute a sequence of statements that match the value of a **switch** expression.
 
@@ -415,7 +466,7 @@ Example:
     console.info(undefined ? 'true' : 'false'); // false
 ```
 
-**For statement**
+**for statement**
 
 The **for** statement is executed repeatedly until the specified loop exit condition result is **false**.
 
@@ -444,7 +495,7 @@ for (let i = 0; i < 10; i += 2) {
 }
 ```
 
-**For-of statement**
+**for-of statement**
 
 You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. A **for-of** statement looks as follows:
 
@@ -462,7 +513,7 @@ for (let ch of 'a string object') {
 }
 ```
 
-**While statement**
+**while statement**
 
 The **while** statement executes **statements** as long as the value of **condition** is **true**. A **while** statement looks as follows:
 
@@ -483,7 +534,7 @@ while (n < 3) {
 }
 ```
 
-**Do-while statement**
+**do-while statement**
 
 If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. A **do-while** statement looks as follows:
 
@@ -502,7 +553,7 @@ do {
 } while (i < 10)
 ```
 
-**Break statement**
+**break statement**
 
 A **break** statement is used to terminate any loop statement or the **switch** statement.
 
@@ -533,7 +584,7 @@ label: while (true) {
 }
 ```
 
-**Continue statement**
+**continue statement**
 
 A **continue** statement stops the execution of the current loop iteration and passes control to the next iteration.
 
@@ -549,7 +600,7 @@ for (let x = 0; x < 100; x++) {
 }
 ```
 
-**Throw and Try statements**
+**throw and try statements**
 
 A **throw** statement is used to throw an exception or an error:
 
@@ -572,8 +623,10 @@ The example below shows the **throw** and **try** statements used to handle the 
 ```typescript
 class ZeroDivisor extends Error {}
 
-function divide (a: number, b: number): number{
-  if (b == 0) throw new ZeroDivisor();
+function divide (a: number, b: number): number {
+  if (b == 0) {
+    throw new ZeroDivisor();
+  }
   return a / b;
 }
 
@@ -659,13 +712,14 @@ multiply(2, 3); // Return 2*3.
 
 ### Rest Parameter
 
-The last parameter of a function can be a rest parameter in the format of **...restArgs**. It allows functions to take unlimited number of arguments of any specified type.
+The last parameter of a function can be a rest parameter in the format of **...restName: Type[]**. It allows a function to receive a variable-length array for processing variable-quantity parameter inputs.
 
 ```typescript
 function sum(...numbers: number[]): number {
   let res = 0;
-  for (let n of numbers)
+  for (let n of numbers) {
     res += n;
+  }
   return res;
 }
 
@@ -1086,7 +1140,7 @@ class MyDate implements DateInterface {
 
 **Access to super**
 
-The keyword **super** can be used to access instance fields, instance methods and constructors from the super class. It is often used to extend basic functionality of child class with the required behavior taken from the super class:
+The **super** keyword can be used to access the methods and constructors of the super class. It is often used to extend basic functionality of child class with the required behavior taken from the super class:
 
 ```typescript
 class RectangleSize {
@@ -1111,7 +1165,6 @@ class FilledRectangle extends RectangleSize {
 
   draw() {
     super.draw(); // Call of the super method.
-    // super.height can be used here.
     /* Fill the rectangle. */
   }
 }
@@ -1309,13 +1362,13 @@ The generic **Record<K, V>** type is used to map the properties of a type (Key t
 ```typescript
 let map: Record<string, number> = {
   'John': 25,
-  'Mary': 21,
-}
+  'Mary': 21
+};
 
 map['John']; // 25
 ```
 
-The **K** type can be either string or number (excluding Bigint), while **V** can be any type.
+The **K** type can be either string or number (excluding BigInt), while **V** can be any type.
 
 ```typescript
 interface PersonInfo {
@@ -1494,29 +1547,29 @@ class Bird extends Animal implements CanFly, CanSwim {
 ```typescript
 interface MyInterface {
     // Error: The interface cannot contain static members.
-    static staticMethod(): void; 
+    static staticMethod(): void;
 
     // Error: The interface cannot contain static code blocks.
-    static { console.info("static") }; 
-} 
+    static { console.info('static'); };
+}
 
 abstract class MyAbstractClass {
     // Correct: An abstract class can contain static methods.
-    static staticMethod(): void { console.info("static");}
+    static staticMethod(): void { console.info('static'); }
 
     // Correct: An abstract class can contain static code blocks.
-    static { console.info("static initialization block");}
+    static { console.info('static initialization block'); }
 }
 ```
 * In abstract classes, there can be implementations of methods, but interfaces are completely abstract and there is no implementation of methods.
 ```typescript
 abstract class MyAbstractClass {
    // Correct: An abstract class can contain implementation of methods.
-   func(): void { console.info("func");}
+   func(): void { console.info('func'); }
 }
 interface MyInterface {
    // Error: Interfaces are completely abstract and there is no implementation of methods.
-   func(): void { console.info("func");}
+   func(): void { console.info('func'); }
 }
 ```
 * Abstract classes can have constructors, while interfaces cannot.
@@ -1602,12 +1655,12 @@ In a function call, type argument can be set explicitly or implicitly:
 
 ```typescript
 // Explicit type argument
-let res: string = last<string>(['aa', 'bb']);
-let res: number = last<number>([1, 2, 3]);
+let res1: string = last<string>(['aa', 'bb']);
+let res2: number = last<number>([1, 2, 3]);
 
 // Implicit type argument
 // Compiler determines the type argument based on the type of the call arguments.
-let res: number = last([1, 2, 3]);
+let res3: number = last([1, 2, 3]);
 ```
 
 ### Generic Default
@@ -1820,11 +1873,11 @@ export function add(a:number, b:number):number {
   return c;
 }
 
-// Index.ts
-import("./Calc").then((obj: ESObject) => {
-  console.info(obj.add(3, 5));  
+// Index.ets
+import('./Calc').then((obj: ESObject) => {
+  console.info(obj.add(3, 5));
 }).catch((err: Error) => {
-  console.error("Module dynamic import error: ", err);
+  console.error('Module dynamic import error: ', err);
 });
 ```
 
@@ -1969,7 +2022,7 @@ The following types can be used for annotation fields:
 >**NOTE**
 >
 > - If other types are used for annotation fields, a compile-time error occurs.
-> - The Bigint type is not supported for annotation fields.
+> - The BigInt type is not supported for annotation fields.
 
 The default value of an annotation field must be specified using a constant expression.<br>The following types of constant expressions are used:
 * Numeric literal
@@ -2030,16 +2083,16 @@ Annotations cannot be added to the **getter** and **setter** methods of a class.
   authorName: string;
 }
 
-@ClassAuthor({authorName: "John Smith"})
+@ClassAuthor({authorName: 'John Smith'})
 class MyClass {
-  private _name: string = "Bob";
+  private _name: string = 'Bob';
 
-  @ClassAuthor({authorName: "John Smith"}) // Compile-time error: Annotations cannot be added to the getter and setter methods of a class.
+  @ClassAuthor({authorName: 'John Smith'}) // Compile-time error: Annotations cannot be added to the getter and setter methods of a class.
   get name() {
     return this._name;
   }
 
-  @ClassAuthor({authorName: "John Smith"}) // Compile-time error: Annotations cannot be added to the getter and setter methods of a class.
+  @ClassAuthor({authorName: 'John Smith'}) // Compile-time error: Annotations cannot be added to the getter and setter methods of a class.
   set name(authorName: string) {
     this._name = authorName;
   }
@@ -2157,14 +2210,13 @@ export @interface Anno {}
 
 export @interface ClassAuthor {}
 
-console.info("hello");
+console.info('hello');
 
 // b.ets
 import { Anno } from './a';
 import * as ns from './a';
 
-@MyAnno
-@ns.ClassAuthor // Only the annotation of ns is referenced, which does not execute console.info of a.ets.
+// Only the Anno module is imported, which does not execute console.info of a.ets.
 class X {
   // ...
 }
@@ -2224,9 +2276,9 @@ When a compiler automatically generates .d.ets files based on ETS code, the foll
    export declare @interface ClassAuthor {}
    ```
 2. If all the following conditions are met, the annotation instance of the entity in the source code is retained in the .d.ets file.<br>
-  2.1 The annotation definition (including imported annotation) is exported.<br>
-  2.2 If the entity is a class, the class is exported.<br>
-  2.3 If the entity is a method, the class is exported, and the method is not private.
+    2.1 The annotation definition (including imported annotation) is exported.<br>
+    2.2 If the entity is a class, the class is exported.<br>
+    2.3 If the entity is a method, the class is exported, and the method is not private.
    ```typescript
    // a.ets
    import { ClassAuthor } from './author';

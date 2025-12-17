@@ -538,7 +538,7 @@ NavDestination类型。
 | SLIDE_RIGHT<sup>15+</sup> | 6 | 右侧平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | SLIDE_BOTTOM<sup>15+</sup> | 7 | 底部平移类型的系统转场动画。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 
-**说明：**
+> **说明：**
 >
 > 设置系统转场动画，支持分别设置系统标题栏动画和内容动画。
 > 
@@ -1137,6 +1137,16 @@ struct NavDest {
   stack: NavPathStack = new NavPathStack();
   @State translateY: string = '0';
 
+  @Builder
+  titleBuilder() {
+    Text(this.name)
+      .fontSize(20)
+      .height(55)
+      .fontWeight(FontWeight.Bold)
+      .width('100%')
+      .padding({ left: 16, right: 16 })
+  }
+
   build() {
     NavDestination() {
       Column() {
@@ -1150,7 +1160,7 @@ struct NavDest {
       }
       .size({ width: '100%', height: '100%' })
     }
-    .title(this.name)
+    .title(this.titleBuilder)
     .translate({ y: this.translateY })
     .onReady((context) => {
       this.name = context.pathInfo.name;
@@ -1651,14 +1661,18 @@ struct NavDest {
     .onActive((reason: NavDestinationActiveReason) => {
       let onActiveMsg: string = `[activeTest] ${this.name} onActive, reason: ${reason}`;
       console.info(onActiveMsg);
-      // API version 17之后，使用promptAction.openToast接口代替promptAction.showToast。
-      promptAction.showToast({ message: onActiveMsg });
+      // API version 17版本，请替换为promptAction.showToast接口。从API version 18开始，请使用示例中的promptAction.openToast接口。
+      promptAction.openToast({ message: onActiveMsg }).catch(() => {
+        console.info('open toast failed');
+      });
     })
     .onInactive((reason: NavDestinationActiveReason) => {
       let onInActiveMsg: string = `[activeTest] ${this.name} onInactive, reason: ${reason}`;
       console.info(onInActiveMsg);
-      // API version 17之后，使用promptAction.openToast接口代替promptAction.showToast。
-      promptAction.showToast({ message: onInActiveMsg });
+      // API version 17版本，请替换为promptAction.showToast接口。从API version 18开始，请使用示例中的promptAction.openToast接口。
+      promptAction.openToast({ message: onInActiveMsg }).catch(() => {
+        console.info('open toast failed');
+      });
     })
     .onBackPressed(() => {
       if (overlayShownTag) {

@@ -31,7 +31,7 @@ On the basis of OpenHarmony 1.1.0, OpenHarmony 2.0 adds the version for the stan
 
 
  ```shell
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-2.0-Canary --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-2.0-Canary --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
  ```
@@ -41,7 +41,7 @@ repo forall -c 'git lfs pull'
 
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-2.0-Canary --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-2.0-Canary --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -54,7 +54,7 @@ repo forall -c 'git lfs pull'
 | Source&nbsp;Code | Version | Mirror | SHA-256&nbsp;Checksum |
 | -------- | -------- | -------- | -------- |
 | Full&nbsp;code&nbsp;base | 2.0 | [Download](https://repo.huaweicloud.com/harmonyos/os/2.0/code-2.0-canary_20210601.tar.gz) | [Download](https://repo.huaweicloud.com/harmonyos/os/2.0/code-2.0-canary_20210601.tar.gz.sha256) |
-| Release&nbsp;Notes | 2.0 | [Download](https://gitee.com/openharmony/docs/blob/master/en/release-notes/OpenHarmony-2-0-Canary.md) | - |
+| Release&nbsp;Notes | 2.0 | [Download](https://gitcode.com/openharmony/docs/blob/master/en/release-notes/OpenHarmony-2-0-Canary.md) | - |
 
 
 ## What's New

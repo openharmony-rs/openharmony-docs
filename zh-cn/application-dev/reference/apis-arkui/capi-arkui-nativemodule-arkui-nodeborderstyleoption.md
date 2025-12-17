@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption
+```
+
 ## 概述
 
 定义边框样式配置项。

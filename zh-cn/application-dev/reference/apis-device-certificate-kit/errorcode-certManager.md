@@ -108,3 +108,31 @@ The device does not support the specified certificate store path.
 **处理步骤**
 
 检查输入的证书类型是否正确。
+
+## 17500010 访问USB证书凭据失败
+
+**错误信息**
+
+The USB key service access failed.
+
+**可能原因**
+
+USB硬件驱动服务发生异常。
+
+**处理步骤**
+
+检查USB是否正常连接或USB驱动是否正常工作。
+
+## 17500011 入参校验失败
+
+**错误信息**
+
+The input parameters validation failed.
+
+**可能原因**
+
+参数格式异常或参数范围无效。
+
+**处理步骤**
+
+检查接口入参格式或范围。

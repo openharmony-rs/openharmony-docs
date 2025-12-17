@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoMac OH_CryptoMac
+```
+
 ## 概述
 
 定义MAC结构。

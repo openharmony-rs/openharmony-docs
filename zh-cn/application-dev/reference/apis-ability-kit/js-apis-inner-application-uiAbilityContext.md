@@ -3478,6 +3478,11 @@ restartApp(want: Want): Promise\<void>
 > **说明：**
 >
 > 通过该接口重启进程时，不会触发进程中Ability的onDestroy生命周期回调。
+>
+> 在原子化服务调用本接口成功后的3秒内，再次调用本接口、[restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20)或[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口中的任一接口，系统将返回错误码16000064。
+>
+> 在应用调用本接口成功后的3秒内，若再次调用本接口或[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口中的任一接口，系统将返回错误码16000064。
+
 
 **原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3550,7 +3555,7 @@ struct Index {
 }
 ```
 
-### setMissionWindowIcon<sup>22+<sup>
+### setMissionWindowIcon<sup>22+</sup>
 
 setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 
@@ -3581,7 +3586,7 @@ setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 801 | Capability not supported. |
-| 16000050 | Internal error. Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
+| 16000050 | Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
 | 16000135 | The main window of this ability not exist. |
 
 **示例：**

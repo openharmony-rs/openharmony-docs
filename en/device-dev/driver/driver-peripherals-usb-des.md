@@ -80,7 +80,7 @@ The USB Host DDK comes with two modes, namely, common mode and expert mode. In c
 
 ### Available APIs
 
-The following table lists the APIs related to USB host driver development (common mode). For details about the API definitions, see the [source code](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/host/usb_ddk_interface.h).
+The following table lists the APIs related to USB host driver development (common mode). For details about the API definitions, see the [source code](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/host/usb_ddk_interface.h).
 
   **Table 1** APIs for USB host driver development (common mode)
 
@@ -94,7 +94,7 @@ The following table lists the APIs related to USB host driver development (commo
 | int32_t&nbsp;UsbFillRequest(const&nbsp;struct&nbsp;UsbRequest<br>\*request,&nbsp;const&nbsp;UsbInterfaceHandle&nbsp;\*interfaceHandle,<br>const&nbsp;struct&nbsp;UsbRequestParams&nbsp;\*params); | Fills in a request.|
 | int32_t&nbsp;UsbSubmitRequestSync(const&nbsp;struct&nbsp;UsbRequest<br>\*request); | Sends a synchronous request.|
 
-The following table lists the APIs related to USB host driver development (expert mode). For details about the API definitions, see the [source code](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/host/usb_raw_api.h).
+The following table lists the APIs related to USB host driver development (expert mode). For details about the API definitions, see the [source code](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/host/usb_raw_api.h).
 
   **Table 2** APIs for USB host driver development (expert mode)
 
@@ -112,7 +112,7 @@ The following table lists the APIs related to USB host driver development (exper
 | int32_t&nbsp;UsbRawCancelRequest(const&nbsp;struct&nbsp;UsbRawRequest<br>\*request); | Cancels a transfer request.|
 | int32_t&nbsp;UsbRawHandleRequests(const&nbsp;UsbRawHandle<br>\*devHandle); | Handles a transfer request event.|
 
-The following table lists the APIs for USB device management on the device side. For details about the API definitions, see the [source code](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_device.h).
+The following table lists the APIs for USB device management on the device side. For details about the API definitions, see the [source code](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_device.h).
 
   **Table 3** APIs for USB device management on the device side
 
@@ -122,7 +122,7 @@ The following table lists the APIs for USB device management on the device side.
 | int32_t&nbsp;UsbFnRemoveDevice(struct&nbsp;UsbFnDevice<br>\*fnDevice); | Deletes a USB device.|
 | const&nbsp;struct&nbsp;UsbFnDevice&nbsp;\*UsbFnGetDevice(const&nbsp;char<br>\*udcName); | Obtains a USB device.|
 
-The following table lists the APIs for USB interface definition on the device side. For details about the API definitions, see the [source code](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_interface.h).
+The following table lists the APIs for USB interface definition on the device side. For details about the API definitions, see the [source code](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_interface.h).
 
   **Table 4** APIs for USB interface definition on the device side
 
@@ -135,7 +135,7 @@ The following table lists the APIs for USB interface definition on the device si
 | int32_t&nbsp;UsbFnGetInterfacePipeInfo(struct&nbsp;UsbFnInterface<br>\*interface,&nbsp;uint8_t&nbsp;pipeId,&nbsp;struct&nbsp;UsbFnPipeInfo&nbsp;\*info); | Obtains pipe information.|
 | int32_t&nbsp;UsbFnSetInterfaceProp(const&nbsp;struct&nbsp;UsbFnInterface<br>\*interface,&nbsp;const&nbsp;char&nbsp;\*name,&nbsp;const&nbsp;char&nbsp;\*value); | Sets custom properties.|
 
-The following table lists the APIs for USB data request on the device side. For details about the API definitions, see the [source code](https://gitee.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_request.h).
+The following table lists the APIs for USB data request on the device side. For details about the API definitions, see the [source code](https://gitcode.com/openharmony/drivers_peripheral/blob/master/usb/interfaces/ddk/device/usbfn_request.h).
 
   **Table 5** APIs for USB data request on the device side
 
@@ -1518,11 +1518,11 @@ The core code of the USB ACM device is stored in **drivers\peripheral\usb\gadget
 
 - Code repositories:
 
-  **[drivers\_hdf\_core](https://gitee.com/openharmony/drivers_hdf_core)**
+  **[drivers\_hdf\_core](https://gitcode.com/openharmony/drivers_hdf_core)**
 
-  [drivers\_peripheral](https://gitee.com/openharmony/drivers_peripheral)
+  [drivers\_peripheral](https://gitcode.com/openharmony/drivers_peripheral)
 
-  [drivers\_interface](https://gitee.com/openharmony/drivers_interface)
+  [drivers\_interface](https://gitcode.com/openharmony/drivers_interface)
 
 - Code paths:
 

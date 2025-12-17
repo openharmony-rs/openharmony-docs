@@ -203,6 +203,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 ## 自定义样式
 
+> **说明：**
+>
+> 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
 绘制组件支持通过各种属性更改组件样式。
 
 - 通过[fill](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#fill)可以设置组件填充区域颜色。
@@ -333,6 +337,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
 - 通过[mesh](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#mesh8)设置网格效果，实现图像局部扭曲。
 
+  > **说明：**
+  >
+  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
   <!-- @[mesh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/Mesh.ets) -->
   
   ``` TypeScript
@@ -404,7 +412,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
     build() {
       Column() {
         Image(this.pixelMap)
-          .backgroundColor(Color.Blue)
+          .backgroundColor('#86C5E3')
           .width(150)
           .height(150)
           .onClick(() => {
@@ -495,6 +503,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   在Shape的(-80, -5)点绘制一个封闭路径，填充颜色0x317AF7，线条宽度3，边框颜色红色，拐角样式锐角（默认值）。
 
+  > **说明：**
+  >
+  > 示例通过commands来绘制路径，commands参数说明请参考[SVG路径描述规范](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md#svg路径描述规范)。
+
   <!-- @[shape_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/ShapeExample.ets) -->
   
   ``` TypeScript
@@ -523,7 +535,11 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 
   绘制一个直径为150的圆，和一个直径为150、线条为红色虚线的圆环（宽高设置不一致时以短边为直径）。
 
-  <!-- [circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  > **说明：**
+  >
+  > 本示例通过strokeDashArray属性设置边框间隙来实现红色虚线的圆环，strokeDashArray属性参考[strokeDashArray](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md#strokedasharray)。  
+
+  <!-- @[circle_example_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
   
   ``` TypeScript
   @Entry
@@ -541,7 +557,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .strokeWidth(3)
           .stroke(Color.Red)
           .strokeDashArray([1, 2])
-      // ···
+        // ...
       }.width('100%')
     }
   }
@@ -556,7 +572,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
 > [backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md)等通用属性作用于组件的背景区域，而不会在组件具体的内容区域生效。
 
 
-  <!-- [circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
+  <!-- @[circle_example_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ShapeDrawing/entry/src/main/ets/pages/CircleExample.ets) -->
   
   ``` TypeScript
   @Entry
@@ -564,7 +580,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   struct CircleExample {
     build() {
       Column({ space: 10 }) {
-      // ···
+        // ...
         //绘制一个直径为150的圆
         Circle()
           .width(150)

@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct WebSocket_CloseOption {...}
+```
+
 ## 概述
 
 websocket客户端主动关闭的参数。

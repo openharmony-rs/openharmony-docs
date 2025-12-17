@@ -54,13 +54,13 @@ CounterOptions定义Counter类型及样式。
 | ----------- | ---------- | ---- | ------------------------------- | ------------------------------- |
 | type | [CounterType](#countertype) | 否  | 否  | 指定当前Counter的类型。 |
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto<br>值为undefined时，按默认值处理。 |
-| numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否   | 是   | 列表型和紧凑型Counter的式样。<br>默认值：显示计数器为0的列表型或紧凑型Counter。<br>值为undefined时，按默认值处理。 |
-| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否 | 是 | 普通数字内联调节型Counter的式样。<br>默认值：显示计数器为0的普通数字内联调节型Counter。<br>值为undefined时，按默认值处理。 |
-| dateOptions | [DateStyleOptions](#datestyleoptions) | 否 | 是 | 日期型内联型Counter的式样。<br>默认值：显示0001/01/01的日期型内联型Counter。<br>值为undefined时，按默认值处理。 |
+| numberOptions | [NumberStyleOptions](#numberstyleoptions) | 否   | 是   | 列表型和紧凑型Counter的样式。<br>默认值：显示计数器为0的列表型或紧凑型Counter。<br>值为undefined时，按默认值处理。 |
+| inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | 否 | 是 | 普通数字内联调节型Counter的样式。<br>默认值：显示计数器为0的普通数字内联调节型Counter。<br>值为undefined时，按默认值处理。 |
+| dateOptions | [DateStyleOptions](#datestyleoptions) | 否 | 是 | 日期型内联型Counter的样式。<br>默认值：显示0001/01/01的日期型内联型Counter。<br>值为undefined时，按默认值处理。 |
 
 选择不同的Counter类型，需要选择对应的Counter样式。
 
-| counter类型             | counter式样        |
+| counter类型             | counter样式        |
 | ----------------------- | ------------------ |
 | CounterType.LIST        | NumberStyleOptions |
 | CounterType.COMPACT     | NumberStyleOptions |

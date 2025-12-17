@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_Point {...} Camera_Point
+```
+
 ## 概述
 
 点参数。

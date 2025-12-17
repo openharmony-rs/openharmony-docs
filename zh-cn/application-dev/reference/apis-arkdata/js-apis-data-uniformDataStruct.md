@@ -63,7 +63,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称        | 类型   | 只读 | 可选 | 说明           |
 | ----------- | ------ | ---- | ---- |--------------|
-| uniformDataType | 'general.hyperlink'| 是   | 否   | 统一数据类型标识为超链接类型数据，固定为“general.hyperlink”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。
+| uniformDataType | 'general.hyperlink'| 是   | 否   | 统一数据类型标识为超链接类型数据，固定为“general.hyperlink”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | url         | string | 否   | 否   | 链接url。       |
 | description | string | 否   | 是   | 链接内容描述，非必填字段，默认值为空字符串。 |
 | details | Record<string, string> | 否   | 是  | 是一个字典类型对象，key和value都是string类型，用于描述Hyperlink的详细属性内容。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象。非必填字段，默认值为空字典对象。 |
@@ -94,7 +94,7 @@ HTML类型数据，用于描述超文本标记语言数据。
 
 | 名称         | 类型   | 只读 | 可选 | 说明                    |
 | ------------ | ------ | ---- | ---- |-----------------------|
-| uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。
+| uniformDataType | 'general.html'| 是   | 否   | 统一数据类型标识为html类型数据，固定为“general.html”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | htmlContent  | string | 否   | 否   | html格式内容。             |
 | plainContent | string | 否   | 是   | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。 |
 | details | Record<string, string> | 否   | 是   | 是一个字典类型对象，key和value都是string类型，用于描述HTML的详细属性内容。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象。非必填字段，默认值为空字典对象。 |
@@ -125,7 +125,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称        | 类型   | 只读 | 可选 | 说明              |
 | ----------- | ------ | ---- | ---- |-----------------|
-| uniformDataType | 'openharmony.app-item'| 是   | 否   | 统一数据类型标识为桌面图标类型数据，固定为“openharmony.app-item”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。
+| uniformDataType | 'openharmony.app-item'| 是   | 否   | 统一数据类型标识为桌面图标类型数据，固定为“openharmony.app-item”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | appId       | string | 否   | 否   | 图标对应的应用id。      |
 | appName     | string | 否   | 否   | 图标对应的应用名。       |
 | appIconId   | string | 否   | 否   | 图标的图片id。        |
@@ -167,7 +167,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'general.content-form'| 是   | 否  | 统一数据类型标识为内容卡片类型数据，固定为“general.content-form”。 
+| uniformDataType | 'general.content-form'| 是   | 否  | 统一数据类型标识为内容卡片类型数据，固定为“general.content-form”。 |
 | title      | string | 否   | 否  | 内容卡片的标题。|
 | thumbData  | Uint8Array | 否   | 是  | 内容卡片对应的图片数据。|
 | description| string | 否   | 是  | 内容卡片中的描述信息。|
@@ -203,7 +203,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'openharmony.form'| 是   | 否  | 统一数据类型标识为卡片类型数据，固定为“openharmony.form”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。
+| uniformDataType | 'openharmony.form'| 是   | 否  | 统一数据类型标识为卡片类型数据，固定为“openharmony.form”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | formId     | number | 否   | 否  | 卡片id。|
 | formName   | string | 否   | 否  | 卡片名。|
 | bundleName | string | 否   | 否  | 卡片所属的bundle名。|
@@ -243,7 +243,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。
+| uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | oriUri     | string | 否   | 否  | 文件路径。|
 | fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节。|
 | details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
@@ -278,7 +278,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|
-| uniformDataType | 'openharmony.pixel-map'| 是   | 否  | 统一数据类型标识为像素图类型数据，固定为“openharmony.pixel-map”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 
+| uniformDataType | 'openharmony.pixel-map'| 是   | 否  | 统一数据类型标识为像素图类型数据，固定为“openharmony.pixel-map”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | pixelMap     | image.PixelMap | 否   | 否  | 像素图二进制数据。|
 | details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 

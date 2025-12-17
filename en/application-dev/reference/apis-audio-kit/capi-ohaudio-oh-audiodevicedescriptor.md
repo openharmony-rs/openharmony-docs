@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioDeviceDescriptor OH_AudioDeviceDescriptor
+```
+
 ## Overview
 
 The struct describes an audio device descriptor, which provides attributes of an audio device.

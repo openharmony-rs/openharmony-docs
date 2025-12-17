@@ -40,12 +40,12 @@ MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-|   名称   |          类型          | 只读 | 可选 | 说明 |
-|:---------:|:----------------------:|-----| ------ |-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) | 否   | 否 | 设置路由栈。 |
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 否 | 否 | 设置加载目标页面的路由规则。 |
-| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | 是 | 设置MultiNavigation模式变更时的回调。 |
-| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | 是 | 设置主页处于栈顶时的回调。 |
+|   名称   |          类型          | 必填 | 装饰器类型 | 说明 |
+|:---------:|:----------------------:|------ |:------:|-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | @State | 设置路由栈。 |
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | @BuilderParam | 设置加载目标页面的路由规则。 |
+| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | - | 设置MultiNavigation模式变更时的回调。 |
+| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | - | 设置主页处于栈顶时的回调。 |
 
 ## MultiNavPathStack
 
@@ -728,7 +728,7 @@ type OnHomeShowOnTopCallback = (name: string) => void
 <!--code_no_check-->
 ```typescript
 // pages/Index.ets
-import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { PageDetail1 } from './PageDetail1';
 import { PageDetail2 } from './PageDetail2';
 import { PageFull1 } from './PageFull1';
@@ -772,7 +772,7 @@ struct Index {
 <!--code_no_check-->
 ```typescript
 // pages/PageHome1.ets, 对应首页
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -781,7 +781,6 @@ export struct PageHome1 {
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
   text: string = '';
-  index: number = 0;
   param: Object = new Object();
   lastBackTime: number = 0;
 
@@ -806,7 +805,6 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // 跳转至PageHome1页面
                     this.pageStack.pushPathByName('PageHome1', 'testParam', true, SplitPolicy.HOME_PAGE);
-                    this.index++;
                   }
                 })
               Button('OpenDetail', { stateEffect: true, type: ButtonType.Capsule})
@@ -817,7 +815,6 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // 跳转至PageDetail1页面
                     this.pageStack.pushPathByName('PageDetail1', 'testParam');
-                    this.index++;
                   }
                 })
               Button('OpenFull', { stateEffect: true, type: ButtonType.Capsule})
@@ -995,7 +992,7 @@ export struct PageHome1 {
 <!--code_no_check-->
 ```typescript
 // pages/PageDetail1.ets：详情页
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -1229,7 +1226,7 @@ export struct PageDetail1 {
 <!--code_no_check-->
 ```typescript
 // pages/PageDetail2.ets: 详情页
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component
@@ -1400,7 +1397,7 @@ export struct PageDetail2 {
 <!--code_no_check-->
 ```typescript
 // pages/PageFull1.ets: 不参与分栏的页面，默认全屏展示
-import { MultiNavPathStack, SplitPolicy } from '@ohos.arkui.advanced.MultiNavigation';
+import { MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Component

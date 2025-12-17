@@ -7,6 +7,10 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct TransientTask_TransientTaskInfo {...} TransientTask_TransientTaskInfo
+```
+
 ## 概述
 
 定义所有短时任务信息结构体。
@@ -30,7 +34,7 @@
 
 ### TRANSIENT_TASK_MAX_NUM
 
-```
+```c
 #define TRANSIENT_TASK_MAX_NUM 3
 ```
 **描述**

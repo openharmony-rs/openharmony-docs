@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiCollie_DetectionParam {...} HiCollie_DetectionParam
+```
+
 ## 概述
 
 检测业务线程卡顿的相关参数。请注意，API 12及以上支持。

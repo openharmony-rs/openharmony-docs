@@ -6,13 +6,14 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Multi-instance allows an application to run on multiple pages so that a user can log in multiple accounts and run the application at the same time without affecting each other. For example, a user can run several social accounts, or primary and secondary game accounts simultaneously without frequent log-in and log-out.
+Multi-instance allows an application to run on multiple processes so that a user can log in multiple accounts and run the application at the same time without affecting each other. For example, a user can run several social accounts, or primary and secondary game accounts simultaneously without frequent log-in and log-out.
 
-Multiple application process pages on the home screen are independent in terms of the running, notification, and more. Instances share data with each other and can be switched using accounts.
+Multiple application instances on the home screen are independent in terms of the running, notification, and more. Instances share data with each other and can be switched using accounts.
 
 Relationship between multiple application instances:
 - The application icons of multiple instances are the same.
-- Instances share data and can be switched using accounts.
+- All instances share the file data in the [application file directory](../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path).
+- You can log in to a single instance by switching accounts.
 
 ## Constraints
 
@@ -22,20 +23,19 @@ Application multi-instance can run on only 2-in-1 devices.
 1. Configure the multi-instance.
 
     Configure the [multiAppMode](app-configuration-file.md#multiappmode) field in the **App/app.json5** configuration file in the project. The code snippet is as follows:
-    <!-- @[multi_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5) -->
-
-``` JSON5
-{
-  "app": {
-	// ···
-    "multiAppMode": {
-      "multiAppModeType": "multiInstance",
-      "maxCount": 5
+    <!-- @[multi_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/Multiinstance/AppScope/app.json5)  -->
+    
+    ``` JSON5
+    {
+      "app": {
+        // ...
+        "multiAppMode": {
+          "multiAppModeType": "multiInstance",
+          "maxCount": 5
+        }
+      }
     }
-  }
-}
-```
-
+    ```
 
 2. Create a multi-instance.
 

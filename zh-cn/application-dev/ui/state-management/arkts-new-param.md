@@ -17,6 +17,8 @@
 > 从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Param装饰器。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
@@ -292,7 +294,7 @@ struct Child {
 
 - 当装饰的变量是嵌套类或对象数组时，\@Param无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
   <!-- @[Param_Observe_Change_Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/param/ParamObserveChangeNestedClass.ets) -->
-
+  
   ``` TypeScript
   @ObservedV2
   class Region {
@@ -393,7 +395,7 @@ struct Child {
 ## 限制条件
 
 \@Param装饰器存在以下使用限制：
-- \@Param装饰器只能在[\@ComponentV2](arkts-new-componentV2.md)装饰器的自定义组件中使用。
+- \@Param装饰器只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰器的自定义组件中使用。
 
   ```ts
   @ComponentV2

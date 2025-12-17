@@ -93,6 +93,8 @@
 | LIVE_VIEW_INCREMENTAL_UPDATE | 1  | 增量更新 |
 | LIVE_VIEW_END                | 2  | 结束     |
 | LIVE_VIEW_FULL_UPDATE        | 3  | 全量更新 |
+| LIVE_VIEW_PENDING_CREATE<sup>23+</sup>     | 4  | 条件触发创建<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| LIVE_VIEW_PENDING_END<sup>23+</sup>        | 6  | 条件触发结束<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## NotificationIconButton<sup>18+</sup>
 
@@ -112,6 +114,8 @@
 ## IconType<sup>18+</sup>
 
 type IconType = Resource | image.PixelMap
+
+描述图标的类型。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -142,4 +146,4 @@ type IconType = Resource | image.PixelMap
 
 | 名称           | 类型    | 只读 | 可选 | 说明                             |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[wantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER |
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  否  | 是  | 点击多行文本中某一行文本消息触发的wantAgent。不同行的文本分别对应于不同的wantAgent。该字段配置的行数不能大于[lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent)字段配置的行数。<br>**系统接口**：此接口为系统接口。<br>**需要权限**：ohos.permission.NOTIFICATION_AGENT_CONTROLLER |

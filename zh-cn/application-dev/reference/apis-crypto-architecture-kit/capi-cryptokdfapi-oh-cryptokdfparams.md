@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoKdfParams OH_CryptoKdfParams
+```
+
 ## 概述
 
 定义密钥派生函数(KDF)参数结构。

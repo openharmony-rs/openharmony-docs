@@ -6,6 +6,10 @@
 <!--Tester: @panny060-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct { ... } OH_QoS_GewuCreateSessionResult
+```
+
 ## 概述
 OH_QoS_GewuCreateSession()接口的返回结果，成功时返回创建的 session，失败时 error 会置为对应的错误码 。
 

@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The custom event interception capability provided for components allows you to dynamically determine the **HitTestMode** attribute of a component based on the position where the event is triggered on the component, as well as other event information such as the input source.
 
@@ -18,6 +18,10 @@ The custom event interception capability provided for components allows you to d
 onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T
 
 Binds a custom event interception callback to a component.
+
+> **NOTE**
+>
+> This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -34,9 +38,6 @@ Binds a custom event interception callback to a component.
 | Type| Description|
 | -------- | -------- |
 | T | Current component.|
-
-> **NOTE**
->- This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 
 ## Example
 

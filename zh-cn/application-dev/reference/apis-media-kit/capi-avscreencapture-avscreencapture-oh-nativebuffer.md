@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_NativeBuffer OH_NativeBuffer
+```
+
 ## 概述
 
 提供录屏的视频原始码流类。

@@ -27,7 +27,7 @@ Learn the following basic concepts before you get started:
 
 - Subsystem 
 
-  OpenHarmony is designed with a layered architecture, which consists of the kernel layer, system service layer, framework layer, and application layer from bottom up. For details, see [OpenHarmony Technical Architecture](https://gitee.com/openharmony#technical-architecture). System functions are built from components, subsystems, and then to the system. In a multi-device deployment, you can customize subsystems and components as required. A subsystem, as a logical concept, consists of the least required components.
+  OpenHarmony is designed with a layered architecture, which consists of the kernel layer, system service layer, framework layer, and application layer from bottom up. For details, see [OpenHarmony Technical Architecture](https://gitcode.com/openharmony#technical-architecture). System functions are built from components, subsystems, and then to the system. In a multi-device deployment, you can customize subsystems and components as required. A subsystem, as a logical concept, consists of the least required components.
 
 - Component 
 

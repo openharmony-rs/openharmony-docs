@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -305,6 +305,11 @@ struct Index {
         Text() {
           SymbolSpan(undefined).attributeModifier(this.modifier)
         }
+
+        Button('更改SymbolSpanModifier')
+          .onClick(() => {
+            this.modifier = new SymbolSpanModifier($r("sys.symbol.ohos_trash")).fontColor([Color.Red]).fontSize(100);
+          })
       }
       .width('100%')
     }
@@ -312,4 +317,4 @@ struct Index {
   }
 }
 ```
-![SymbolSpanModifier](figures/symbolSpanModifier.png)
+![SymbolSpanModifier](figures/symbolSpanModifier.gif)

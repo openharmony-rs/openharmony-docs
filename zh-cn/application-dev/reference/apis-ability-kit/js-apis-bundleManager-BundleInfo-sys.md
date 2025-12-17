@@ -48,3 +48,6 @@ import { bundleManager } from '@kit.AbilityKit';
 | --------- | -------------- | ---- | ---- | ------------------- |
 | userId | number         | 否   | 是   | 用户ID。默认为当前调用方所在的用户。             |
 | appIndex | number         | 否   | 是   | 应用分身ID。默认为0，表示主应用。    |
+| bundleName<sup>23+</sup> | string         | 否   | 是   | 应用包名。默认值为空字符串。    |
+| moduleName<sup>23+</sup> | string         | 否   | 是   | Ability所属的模块名称。默认值为空字符串。    |
+| abilityName<sup>23+</sup> | string         | 否   | 是   | Ability名称。默认值为空字符串。    |

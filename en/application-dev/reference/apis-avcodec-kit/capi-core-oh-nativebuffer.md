@@ -7,6 +7,10 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_NativeBuffer OH_NativeBuffer
+```
+
 ## Overview
 
 The struct describes a native object for the graphics memory interface.

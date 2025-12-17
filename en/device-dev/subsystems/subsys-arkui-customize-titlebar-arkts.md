@@ -231,7 +231,7 @@ In this example, a custom system title bar is developed.
     ```
    Add **gen_customtitle_abc** to the build dependencies in the **foundation/arkui/ace_engine/frameworks/core/components_ng/pattern/BUILD.gn** file. The .abc file generated after compilation is stored in the **obj/foundation/arkui/ace_engine/frameworks/core/components_ng/pattern/container_modal/interfaces** directory.
    
-   For details, see the implementation in [foundation/arkui/ace_engine/frameworks/core/components_ng/pattern/container_modal/interfaces](https://gitee.com/openharmony/arkui_ace_engine/tree/master/frameworks/core/components_ng/pattern/container_modal/interfaces).
+   For details, see the implementation in [foundation/arkui/ace_engine/frameworks/core/components_ng/pattern/container_modal/interfaces](https://gitcode.com/openharmony/arkui_ace_engine/tree/master/frameworks/core/components_ng/pattern/container_modal/interfaces).
 
 
 4. Add the .abc file to a specific directory in the system, for example, **/system/lib64/**, and run the following command to set **persist.sys.arkui.customtitle** to the path of the .abc file so that the custom title bar can be read and displayed properly.

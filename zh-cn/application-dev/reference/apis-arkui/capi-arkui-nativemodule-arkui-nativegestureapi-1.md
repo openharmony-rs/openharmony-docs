@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ArkUI_NativeGestureAPI_1
+```
+
 ## 概述
 
 手势模块接口集合。
@@ -51,7 +55,7 @@
 
 ### createTapGesture()
 
-```
+```c
 ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNum)
 ```
 
@@ -75,7 +79,7 @@ ArkUI_GestureRecognizer* (*createTapGesture)(int32_t countNum, int32_t fingersNu
 
 ### createLongPressGesture()
 
-```
+```c
 ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repeatResult, int32_t durationNum)
 ```
 
@@ -100,7 +104,7 @@ ArkUI_GestureRecognizer* (*createLongPressGesture)(int32_t fingersNum, bool repe
 
 ### createPanGesture()
 
-```
+```c
 ArkUI_GestureRecognizer* (*createPanGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double distanceNum)
 ```
 
@@ -125,7 +129,7 @@ ArkUI_GestureRecognizer* (*createPanGesture)(int32_t fingersNum, ArkUI_GestureDi
 
 ### createPinchGesture()
 
-```
+```c
 ArkUI_GestureRecognizer* (*createPinchGesture)(int32_t fingersNum, double distanceNum)
 ```
 
@@ -149,7 +153,7 @@ ArkUI_GestureRecognizer* (*createPinchGesture)(int32_t fingersNum, double distan
 
 ### createRotationGesture()
 
-```
+```c
 ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double angleNum)
 ```
 
@@ -173,7 +177,7 @@ ArkUI_GestureRecognizer* (*createRotationGesture)(int32_t fingersNum, double ang
 
 ### createSwipeGesture()
 
-```
+```c
 ArkUI_GestureRecognizer* (*createSwipeGesture)(int32_t fingersNum, ArkUI_GestureDirectionMask directions, double speedNum)
 ```
 
@@ -198,7 +202,7 @@ ArkUI_GestureRecognizer* (*createSwipeGesture)(int32_t fingersNum, ArkUI_Gesture
 
 ### createGroupGesture()
 
-```
+```cc
 ArkUI_GestureRecognizer* (*createGroupGesture)(ArkUI_GroupGestureMode gestureMode)
 ```
 
@@ -221,7 +225,7 @@ ArkUI_GestureRecognizer* (*createGroupGesture)(ArkUI_GroupGestureMode gestureMod
 
 ### dispose()
 
-```
+```c
 void (*dispose)(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -238,7 +242,7 @@ void (*dispose)(ArkUI_GestureRecognizer* recognizer)
 
 ### addChildGesture()
 
-```
+```c
 int32_t (*addChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)
 ```
 
@@ -262,7 +266,7 @@ int32_t (*addChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecogniz
 
 ### removeChildGesture()
 
-```
+```c
 int32_t (*removeChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecognizer* child)
 ```
 
@@ -286,7 +290,7 @@ int32_t (*removeChildGesture)(ArkUI_GestureRecognizer* group, ArkUI_GestureRecog
 
 ### setGestureEventTarget()
 
-```
+```c
 int32_t (*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_GestureEventActionTypeMask actionTypeMask, void* extraParams,void (*targetReceiver)(ArkUI_GestureEvent* event, void* extraParams))
 ```
 
@@ -300,7 +304,7 @@ int32_t (*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_Gest
 | 参数项                                                                                       | 描述 |
 |-------------------------------------------------------------------------------------------| -- |
 | [ArkUI_GestureRecognizer](capi-arkui-nativemodule-arkui-gesturerecognizer.md)* recognizer | 需要被绑定回调事件的各类手势指针。 |
-| [ArkUI_GestureEventActionTypeMask](capi-native-gesture-h.md#变量) actionTypeMask            | 需要相应的手势事件类型集合，一次性可以注册多个回调，在回调中区分回调事件类型。例：actionTypeMask = GESTURE_EVENT_ACTION_ACCEPT | GESTURE_EVENT_ACTION_UPDATE; |
+| [ArkUI_GestureEventActionTypeMask](capi-native-gesture-h.md#变量) actionTypeMask            | 需要相应的手势事件类型集合，一次性可以注册多个回调，在回调中区分回调事件类型。例：actionTypeMask = GESTURE_EVENT_ACTION_ACCEPT \| GESTURE_EVENT_ACTION_UPDATE; |
 | void* extraParams                                                                         | targetReceiver 回调时传入的上下文数据。 |
 | targetReceiver                                                                            | 对应注册手势类型的事件回调处理， event 返回手势回调数据。 |
 
@@ -312,7 +316,7 @@ int32_t (*setGestureEventTarget)(ArkUI_GestureRecognizer* recognizer, ArkUI_Gest
 
 ### addGestureToNode()
 
-```
+```c
 int32_t (*addGestureToNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* recognizer, ArkUI_GesturePriority mode, ArkUI_GestureMask mask)
 ```
 
@@ -338,7 +342,7 @@ int32_t (*addGestureToNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* reco
 
 ### removeGestureFromNode()
 
-```
+```c
 int32_t (*removeGestureFromNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -362,7 +366,7 @@ int32_t (*removeGestureFromNode)(ArkUI_NodeHandle node, ArkUI_GestureRecognizer*
 
 ### setGestureInterrupterToNode()
 
-```
+```c
 int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))
 ```
 
@@ -386,7 +390,7 @@ int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, ArkUI_GestureInter
 
 ### getGestureType()
 
-```
+```c
 ArkUI_GestureRecognizerType (*getGestureType)(ArkUI_GestureRecognizer* recognizer)
 ```
 
@@ -409,7 +413,7 @@ ArkUI_GestureRecognizerType (*getGestureType)(ArkUI_GestureRecognizer* recognize
 
 ### setInnerGestureParallelTo()
 
-```
+```c
 int32_t (*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (*parallelInnerGesture)(ArkUI_ParallelInnerGestureEvent* event))
 ```
 
@@ -434,7 +438,7 @@ int32_t (*setInnerGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkU
 
 ### createTapGestureWithDistanceThreshold()
 
-```
+```c
 ArkUI_GestureRecognizer* (*createTapGestureWithDistanceThreshold)(int32_t countNum, int32_t fingersNum, double distanceThreshold)
 ```
 

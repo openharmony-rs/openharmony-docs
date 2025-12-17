@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd
+```
+
 ## Overview
 
 Defines the recording command class, which is used to store the set of recording commands.

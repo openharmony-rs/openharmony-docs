@@ -441,7 +441,7 @@ try {
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
-Obtains WLAN connection information. This API uses a promise to return the result.
+Obtains information about the WLAN connection. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -458,7 +458,7 @@ Obtains WLAN connection information. This API uses a promise to return the resul
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
-Obtains WLAN connection information. This API uses an asynchronous callback to return the result.
+Obtains information about the WLAN connection. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -663,7 +663,7 @@ try {
 
 getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
-Obtains P2P link information. This API uses a promise to return the result.
+Obtains P2P connection information. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -706,7 +706,7 @@ Enumerates the P2P connection states.
 
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
-Obtains P2P link information. This API uses an asynchronous callback to return the result.
+Obtains P2P connection information. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -789,7 +789,7 @@ wifi.getCurrentGroup().then(data => {
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
-Obtains the peer device list in the P2P connection. This API uses a promise to return the result.
+Obtains the P2P peer device list. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 
@@ -806,7 +806,7 @@ Obtains the peer device list in the P2P connection. This API uses a promise to r
 
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
-Obtains the peer device list in the P2P connection. This API uses an asynchronous callback to return the result.
+Obtains the P2P peer device list. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO and ohos.permission.LOCATION
 

@@ -5,7 +5,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides APIs for listening for UI component behavior changes.
 
@@ -107,7 +107,7 @@ Unregisters the listener for [NavDestination](arkui-ts/ts-basic-components-navde
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Target listener to unregister. If this parameter is omitted, all [Navigation](arkui-ts/ts-basic-components-navigation.md) listeners are removed.                |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | No  | Target listener to unregister. If this parameter is not provided, all [Navigation](arkui-ts/ts-basic-components-navigation.md) listeners are unregistered.                |
 
 **Example**
 
@@ -204,7 +204,7 @@ Unregisters the listener for [NavDestination](arkui-ts/ts-basic-components-navde
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the target [Navigation](arkui-ts/ts-basic-components-navigation.md) component.                                  |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | No  |Target listener to unregister. If this parameter is omitted, all listeners for the target [Navigation](arkui-ts/ts-basic-components-navigation.md) are removed.                |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | No  |Target listener to unregister. If this parameter is not provided, all listeners for the target [Navigation](arkui-ts/ts-basic-components-navigation.md) are unregistered.                |
 
 **Example**
 
@@ -313,7 +313,7 @@ Unregisters the listener for [NavDestination](arkui-ts/ts-basic-components-navde
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | Yes  | Event type. The value is fixed at **'navDestinationUpdateByUniqueId'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
 | navigationUniqueId  | number | Yes  | Unique ID of the target [Navigation](arkui-ts/ts-basic-components-navigation.md) component, which can be obtained using [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).                                              |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | No  | Target listener to unregister. If this parameter is omitted, all listeners for the target [Navigation](arkui-ts/ts-basic-components-navigation.md) are removed.                            |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | No  | Target listener to unregister. If this parameter is not provided, all listeners for the target [Navigation](arkui-ts/ts-basic-components-navigation.md) are unregistered.                            |
 
 **Example**
 
@@ -997,7 +997,7 @@ See the example for [on('navDestinationSwitch')](#onnavdestinationswitch12-1).
 
 on(type: 'willClick', callback: GestureEventListenerCallback): void
 
-Listens for click event instruction dispatch. The callback type is [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
+Listens for click event instruction dispatch. The registered callback function is triggered before the event is triggered. The callback type is [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1102,7 +1102,7 @@ struct ClickExample {
 
 off(type: 'willClick', callback?: GestureEventListenerCallback): void
 
-Unregisters the listener for click event instruction dispatch. The screen reader touch exploration mode is supported since API version 20.
+Unregisters the click event command dispatch listener previously registered using [on('willClick')](#onwillclick12). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1123,7 +1123,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 on(type: 'didClick', callback: GestureEventListenerCallback): void
 
-Listens for click event instruction dispatch. The callback type is [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
+Listens for click event instruction dispatch. The registered callback function is triggered after the event is triggered. The callback type is [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1144,7 +1144,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 off(type: 'didClick', callback?: GestureEventListenerCallback): void
 
-Unregisters the listener for click event instruction dispatch. The screen reader touch exploration mode is supported since API version 20.
+Unregisters the click event command dispatch listener previously registered using [on('didClick')](#ondidclick12). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1165,7 +1165,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 on(type: 'willClick', callback: ClickEventListenerCallback): void
 
-Listens for click event instruction dispatch. The callback type is [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
+Listens for click event instruction dispatch. The registered callback function is triggered before the event is triggered. The callback type is [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1186,7 +1186,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 off(type: 'willClick', callback?: ClickEventListenerCallback): void
 
-Unregisters the listener for click event instruction dispatch. The screen reader touch exploration mode is supported since API version 20.
+Unregisters the click event command dispatch listener previously registered using [on('willClick')](#onwillclick12-1). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1207,7 +1207,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 on(type: 'didClick', callback: ClickEventListenerCallback): void
 
-Listens for click event instruction dispatch. The callback type is [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
+Listens for click event instruction dispatch. The registered callback function is triggered after the event is triggered. The callback type is [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1228,7 +1228,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 off(type: 'didClick', callback?: ClickEventListenerCallback): void
 
-Unregisters the listener for click event instruction dispatch. The screen reader touch exploration mode is supported since API version 20.
+Unregisters the click event command dispatch listener previously registered using [on('didClick')](#ondidclick12-1). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1249,7 +1249,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 on(type: 'tabContentUpdate', callback: Callback\<observer.TabContentInfo\>): void
 
-Listens for [TabContent](arkui-ts/ts-container-tabcontent.md) page switch events.
+Listens for [TabContent](arkui-ts/ts-container-tabcontent.md) page switch events. Unlike [on('tabChange')](#ontabchange22), this API does not support listening for the initial tab display event when the **Tabs** component is initialized.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1345,7 +1345,7 @@ See the example for [on('tabContentUpdate')](#ontabcontentupdate12).
 
 on(type: 'tabContentUpdate', options: observer.ObserverOptions, callback: Callback\<observer.TabContentInfo\>): void
 
-Listens for [TabContent](arkui-ts/ts-container-tabcontent.md) page switch events using the [Tabs](arkui-ts/ts-container-tabs.md) component ID.
+Listens for [TabContent](arkui-ts/ts-container-tabcontent.md) page switch events using the [Tabs](arkui-ts/ts-container-tabs.md) component ID. Unlike [on('tabChange')](#ontabchange22-1), this API does not support listening for the initial tab display event when the **Tabs** component is initialized.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1438,6 +1438,243 @@ Unregisters the listener for [TabContent](arkui-ts/ts-container-tabcontent.md) p
 **Example**
 
 See the example for [on('tabContentUpdate')](#ontabcontentupdate12-1).
+
+## on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', callback: Callback\<observer.TabContentInfo\>): void
+
+Listens for tab switching events of the [Tabs](arkui-ts/ts-container-tabs.md) component. Multiple **Tabs** components are supported. Unlike [on('tabContentUpdate')](#ontabcontentupdate12), this API supports listening for the initial tab display event when the **Tabs** component is initialized.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. The value is fixed at **'tabChange'**, indicating tab switch events of the [Tabs](arkui-ts/ts-container-tabs.md) component.|
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | Yes  | Callback used to return the result. It provides the [Tabs](arkui-ts/ts-container-tabs.md) component tab switching event information using the [TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12) object.|
+
+**Example**
+
+```ts
+// Index.ets
+// This example demonstrates how to subscribe to tab switching events of Tabs components.
+// It simultaneously subscribes to two Tabs components with IDs 'tabsId1' and 'tabsId2'.
+// During initialization of both Tabs components, the display events for tab page 0 are listened for, with corresponding tab IDs 'tabContentId0' and 'tabContentId5'.
+// After users swipe on the Tabs component with ID 'tabsId1', the system detects the hiding of tab page 0 and the display of tab page 1 with ID 'tabContentId1'.
+import { uiObserver } from '@kit.ArkUI';
+
+// Define callbacks for event listeners.
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    // Add event listeners.
+    observer.on('tabChange', callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    // Remove event listeners.
+    observer.off('tabChange', callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId1')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId2')
+    }.width('100%')
+  }
+}
+```
+
+## off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', callback?: Callback\<observer.TabContentInfo\>): void
+
+Unregisters the listener for tab switching events of all [Tabs](arkui-ts/ts-container-tabs.md) components.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. The value is fixed at **'tabChange'**, indicating tab switch events of the [Tabs](arkui-ts/ts-container-tabs.md) component.|
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | No  | Target listener to unregister. If no parameter is provided, all listeners registered using the [on('tabChange')](#ontabchange22) API are unregistered.<br>Default value: **undefined**.|
+
+**Example**
+
+See the example for [on('tabChange')](#ontabchange22).
+
+## on('tabChange')<sup>22+</sup>
+
+on(type: 'tabChange', config: observer.ObserverOptions, callback: Callback\<observer.TabContentInfo\>): void
+
+Listens for tab switching events of the specified [Tabs](arkui-ts/ts-container-tabs.md) component. Unlike [on('tabContentUpdate')](#ontabcontentupdate12-1), this API supports listening for the initial tab display event when the **Tabs** component is initialized.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. The value is fixed at **'tabChange'**, indicating tab switch events of the [Tabs](arkui-ts/ts-container-tabs.md) component.|
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12)   | Yes  | ID of the target [Tabs](arkui-ts/ts-container-tabs.md) component.|
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>    | Yes  | Callback used to return the result. It provides the [Tabs](arkui-ts/ts-container-tabs.md) component tab switching event information using the [TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12) object.|
+
+**Example**
+
+```ts
+// Index.ets
+// This example demonstrates how to subscribe to tab change events of the Tabs component with ID 'tabsId'.
+// During initialization of the Tabs component, the display events for tab page 0 are listened for, with the corresponding tab ID 'tabContentId0'. After users swipe on the Tabs component, the system detects the hiding of tab page 0 and the display of tab page 1 with ID 'tabContentId1'.
+import { uiObserver } from '@kit.ArkUI';
+
+// Define callbacks for event listeners.
+function callbackFunc(info: uiObserver.TabContentInfo) {
+  console.info('tabChange', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct TabsExample {
+
+  aboutToAppear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    // Register a listener with the specified Tabs component ID.
+    observer.on('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    // Remove event listeners.
+    observer.off('tabChange', { id: 'tabsId' }, callbackFunc);
+  }
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId0')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId1')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId2')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId3')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+      .id('tabsId')
+
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#00CB87')
+        }.tabBar('green').id('tabContentId5')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#007DFF')
+        }.tabBar('blue').id('tabContentId6')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#FFBF00')
+        }.tabBar('yellow').id('tabContentId7')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#E67C92')
+        }.tabBar('pink').id('tabContentId8')
+      }
+      .width(360)
+      .height(296)
+      .backgroundColor('#F1F3F5')
+    }.width('100%')
+  }
+}
+```
+
+## off('tabChange')<sup>22+</sup>
+
+off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<observer.TabContentInfo\>): void
+
+Unregisters the listener for tab switching events of the specified [Tabs](arkui-ts/ts-container-tabs.md) component.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type. The value is fixed at **'tabChange'**, indicating tab switch events of the [Tabs](arkui-ts/ts-container-tabs.md) component.|
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12)        | Yes  | ID of the target [Tabs](arkui-ts/ts-container-tabs.md) component.|
+| callback | Callback\<observer.[TabContentInfo](js-apis-arkui-observer.md#tabcontentinfo12)\>              | No  | Target listener to unregister. If no parameter is provided, all listeners registered for the [Tabs](arkui-ts/ts-container-tabs.md) component specified by config are unregistered.<br>Default value: **undefined**.|
+
+**Example**
+
+See the example for [on('tabChange')](#ontabchange22-1).
 
 ## on('beforePanStart')<sup>19+</sup>
 
@@ -2129,7 +2366,7 @@ import { common } from '@kit.AbilityKit';
 @Component
 struct Index {
   private changeOrientation(isLandscape: boolean) {
-    let context = getContext(this) as common.UIAbilityContext;
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     window.getLastWindow(context).then((lastWindow) => {
       lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
     });
@@ -2190,3 +2427,182 @@ Unregisters previously registered window size layout breakpoint change listeners
 **Example**
 
 See the example for [on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22).
+
+## onSwiperContentUpdate<sup>23+</sup>
+
+onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
+
+Listens for content switching events of the **Swiper** component. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                         | Mandatory| Description                                                        |
+| -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
+
+**Example**
+
+```ts
+// Index.ets
+import { SwiperContentInfo } from '@kit.ArkUI';
+
+// Define callbacks for event listeners.
+function callbackFunc(info: SwiperContentInfo) {
+  console.info('swiperContentUpdate', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct SwiperExample {
+  private swiperController: SwiperController = new SwiperController();
+
+  aboutToAppear(): void {
+    // Listen for 'swiperContentUpdate' events.
+    this.getUIContext().getUIObserver().onSwiperContentUpdate(callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    // Unregister the listener for 'swiperContentUpdate' events.
+    this.getUIContext().getUIObserver().offSwiperContentUpdate(callbackFunc);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Swiper(this.swiperController) {
+        Column() {
+          Text("SwiperItem1")
+        }.width('100%').height('100%').backgroundColor('#00CB87')
+
+        Column() {
+          Text("SwiperItem2")
+        }.width('100%').height('100%').backgroundColor('#007DFF')
+
+        Column() {
+          Text("SwiperItem3")
+        }.width('100%').height('100%').backgroundColor('#FFBF00')
+
+        Column() {
+          Text("SwiperItem4")
+        }.width('100%').height('100%').backgroundColor('#E67C92')
+      }
+      .width(360)
+      .height(300)
+    }.width('100%')
+  }
+}
+```
+
+## offSwiperContentUpdate<sup>23+</sup>
+
+offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
+
+Unregister the listener for content switching events of the **Swiper** component.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                        | Mandatory| Description                                                        |
+| -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+
+**Example**
+
+See the example for the [onSwiperContentUpdate](#onswipercontentupdate23) API.
+
+## onSwiperContentUpdate<sup>23+</sup>
+
+onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
+
+Listens for content switching events of a specific **Swiper** component identified by its ID. This API uses an asynchronous callback to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\>  | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
+
+**Example**
+
+```ts
+// Index.ets
+import { SwiperContentInfo } from '@kit.ArkUI';
+
+// Define callbacks for event listeners.
+function callbackFunc(info: SwiperContentInfo) {
+  console.info('swiperContentUpdate', JSON.stringify(info));
+}
+
+@Entry
+@Component
+struct SwiperExample {
+  private swiperController: SwiperController = new SwiperController();
+
+  aboutToAppear(): void {
+    // Listen for 'swiperContentUpdate' events for the component with the specified ID.
+    this.getUIContext().getUIObserver().onSwiperContentUpdate({ id: 'swiperId' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    // Unregister the listener for 'swiperContentUpdate' events for the component with the specified ID.
+    this.getUIContext().getUIObserver().offSwiperContentUpdate({ id: 'swiperId' }, callbackFunc);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Swiper(this.swiperController) {
+        Column() {
+          Text("SwiperItem1")
+        }.width('100%').height('100%').backgroundColor('#00CB87')
+
+        Column() {
+          Text("SwiperItem2")
+        }.width('100%').height('100%').backgroundColor('#007DFF')
+
+        Column() {
+          Text("SwiperItem3")
+        }.width('100%').height('100%').backgroundColor('#FFBF00')
+
+        Column() {
+          Text("SwiperItem4")
+        }.width('100%').height('100%').backgroundColor('#E67C92')
+      }
+      .id("swiperId")
+      .width(360)
+      .height(300)
+    }.width('100%')
+  }
+}
+```
+
+## offSwiperContentUpdate<sup>23+</sup>
+
+offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
+
+Unregister the listener for content switching events of a specific **Swiper** component identified by its ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+
+**Example**
+
+See the example for the [onSwiperContentUpdate](#onswipercontentupdate23-1) API.

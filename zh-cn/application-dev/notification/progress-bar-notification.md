@@ -23,8 +23,10 @@
 ## 开发步骤
 
 1. 导入模块。
+
+   <!-- @[publish_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
    
-   ```ts
+   ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -34,13 +36,17 @@
    ```
 
 2. 查询系统是否支持进度条模板，查询结果为支持downloadTemplate模板类通知。
+
+   <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
    
-   ```ts
-   notificationManager.isSupportTemplate('downloadTemplate').then((data:boolean) => {
+   ``` TypeScript
+   notificationManager.isSupportTemplate('downloadTemplate').then((data: boolean) => {
      let isSupportTpl: boolean = data; // isSupportTpl的值为true表示支持downloadTemplate模板类通知，false表示不支持
-     hilog.info(DOMAIN_NUMBER, TAG, `Succeeded in supporting download template notification. data is ${isSupportTpl}`);
+     hilog.info(DOMAIN_NUMBER, TAG,
+       `Succeeded in supporting download template notification. data is ${isSupportTpl}`);
    }).catch((err: BusinessError) => {
-     hilog.error(DOMAIN_NUMBER, TAG, `Failed to support download template notification. Code is ${err.code}, message is ${err.message}`);
+     hilog.error(DOMAIN_NUMBER, TAG,
+       `Failed to support download template notification. Code is ${err.code}, message is ${err.message}`);
    });
    ```
    
@@ -48,8 +54,10 @@
    > 查询系统支持进度条模板后，再进行后续的步骤操作。
    
 3. 构造进度条模板对象，并发布通知。
+
+   <!-- @[pub_progress_template_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets) -->
    
-   ```ts
+   ``` TypeScript
    let notificationRequest: notificationManager.NotificationRequest = {
      id: 5,
      content: {
@@ -65,12 +73,13 @@
        name: 'downloadTemplate',
        data: { title: 'File Title', fileName: 'music.mp4', progressValue: 45 }
      }
-   }
+   };
    
    // 发布通知
    notificationManager.publish(notificationRequest, (err: BusinessError) => {
      if (err) {
-       hilog.error(DOMAIN_NUMBER, TAG, `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
+       hilog.error(DOMAIN_NUMBER, TAG,
+         `Failed to publish notification. Code is ${err.code}, message is ${err.message}`);
        return;
      }
      hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');

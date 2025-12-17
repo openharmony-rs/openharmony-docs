@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_RenderNodeMaskOption ArkUI_RenderNodeMaskOption
+```
+
 ## 概述
 
 定义节点遮罩配置项。

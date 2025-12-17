@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct VideoOutput_Callbacks {...} VideoOutput_Callbacks
+```
+
 ## 概述
 
 用于录像输出的回调。

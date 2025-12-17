@@ -10,11 +10,15 @@
 
 地址越界问题是指访问了不合法的地址，导致程序运行出现异常，通常表现为应用崩溃。
 
-开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTs和C/C++两种接口，按需选择。
+开发者可通过HiAppEvent接口订阅地址越界事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
 - [订阅踩内存事件（ArkTS）](hiappevent-watcher-address-sanitizer-events-arkts.md)
 
 - [订阅踩内存事件（C/C++）](hiappevent-watcher-address-sanitizer-events-ndk.md)
+
+> **说明：**
+>
+> 地址越界事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。不支持在原子化服务场景下使用 HiAppEvent 进行订阅。
 
 ## 检测原理
 

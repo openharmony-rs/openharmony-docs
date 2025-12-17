@@ -52,18 +52,18 @@ resourceToSendableResource(resource: Resource): SendableResource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```js
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```js
 import { sendableResourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -74,7 +74,7 @@ try {
     let message = (error as BusinessError).message;
     console.error(`resourceToSendableResource failed, error code: ${code}, message: ${message}.`);
 }
-  ```
+```
 
 ## sendableResourceManager.sendableResourceToResource
 
@@ -107,18 +107,18 @@ sendableResourceToResource(resource: SendableResource): Resource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```js
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```js
 import { sendableResourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -129,7 +129,7 @@ try {
     let message = (error as BusinessError).message;
     console.error(`sendableResourceToResource failed, error code: ${code}, message: ${message}.`);
 }
-  ```
+```
 
 ## Resource
 

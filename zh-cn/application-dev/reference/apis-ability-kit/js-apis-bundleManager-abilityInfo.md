@@ -66,5 +66,5 @@ import { bundleManager } from '@kit.AbilityKit';
 | minWindowRatio     | number  | 是   | 否   | 表示自由窗口状态下窗口的最小宽高比；取值范围0-1，例如：0.5。 |
 | maxWindowWidth     | number  | 是   | 否   | 表示自由窗口状态下窗口的最大宽度，宽度单位为vp。 |
 | minWindowWidth     | number  | 是   | 否   | 表示自由窗口状态下窗口的最小宽度，宽度单位为vp。 |
-| maxWindowHeight    | number  | 是   | 否   | 表示自由窗口状态下窗口的最大高度，宽度单位为vp。 |
-| minWindowHeight    | number  | 是   | 否   | 表示自由窗口状态下窗口的最小高度，宽度单位为vp。 |
+| maxWindowHeight    | number  | 是   | 否   | 表示自由窗口状态下窗口的最大高度，高度单位为vp。 |
+| minWindowHeight    | number  | 是   | 否   | 表示自由窗口状态下窗口的最小高度，高度单位为vp。 |

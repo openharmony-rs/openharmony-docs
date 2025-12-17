@@ -7,5 +7,5 @@
 <!--Tester: @alien0208-->
 <!--Adviser: @w_Machine_cc-->
 
-- 开发运行锁<!--running-dev-->
-  - [使用RunningLockType.BACKGROUND_USER_IDLE运行锁](runningLock/runningLock-dev.md)
+- 运行锁使用指南<!--running-dev-->
+  - [阻止系统闲时进入睡眠开发指南](runningLock/runningLock-dev.md)

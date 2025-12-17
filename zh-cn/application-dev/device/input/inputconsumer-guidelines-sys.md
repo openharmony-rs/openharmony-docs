@@ -35,7 +35,7 @@ import { inputConsumer } from '@kit.InputKit';
 
 ## 开发步骤
 
-特定全局快捷键的应用开启时调用[on](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeron)方法订阅全局快捷键，应用关闭时再用[off](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeroff)方法取消订阅全局快捷键。
+特定全局快捷键的应用开启时调用[on](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeron)方法订阅全局快捷键，应用关闭时调用[off](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeroff)方法取消订阅全局快捷键。
 
 ```js
 import { inputConsumer } from '@kit.InputKit';

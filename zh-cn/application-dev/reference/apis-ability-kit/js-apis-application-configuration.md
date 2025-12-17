@@ -32,7 +32,7 @@ import Configuration from '@ohos.application.Configuration';
 具体字段描述参考ohos.application.Configuration.d.ts文件
 
 **示例：**
-  ```ts
+```ts
 import UIAbility from '@ohos.app.ability.UIAbility';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import EnvironmentCallback from '@ohos.app.ability.EnvironmentCallback';
@@ -75,5 +75,5 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
-  ```
+```
 

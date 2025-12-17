@@ -53,25 +53,25 @@
 
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
-``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const documentViewPicker = new picker.DocumentViewPicker(context);
-      documentViewPicker.save(documentSaveOptions).then((documentSaveResult: string[]) => {
-        uris = documentSaveResult;
-        console.info('documentViewPicker.save to file succeed and uris are:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-      });
-```
+   ``` TypeScript
+   let uris: string[] = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const documentViewPicker = new picker.DocumentViewPicker(context);
+   documentViewPicker.save(documentSaveOptions).then((documentSaveResult: string[]) => {
+     uris = documentSaveResult;
+     console.info('documentViewPicker.save to file succeed and uris are:' + uris);
+     // ···
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke documentViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 
    > **注意**：
    >
    > 1. URI存储建议：
-   >	 - 避免在Picker回调中直接操作URI。
-   >	 - 建议使用全局变量保存URI以供后续使用。
+   > 	- 避免在Picker回调中直接操作URI。
+   > 	- 建议使用全局变量保存URI以供后续使用。
    >
    > 2. 快捷保存：
    > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
@@ -118,18 +118,18 @@
 
    <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
-``` TypeScript
-      let uris: string[] = [];
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      const audioViewPicker = new picker.AudioViewPicker(context);
-      audioViewPicker.save(audioSaveOptions).then((audioSelectResult: string[]) => {
-        uris = audioSelectResult;
-        console.info('audioViewPicker.save to file succeed and uri is:' + uris);
-		// ···
-      }).catch((err: BusinessError) => {
-        console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
-      });
-```
+   ``` TypeScript
+   let uris: string[] = [];
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   const audioViewPicker = new picker.AudioViewPicker(context);
+   audioViewPicker.save(audioSaveOptions).then((audioSelectResult: string[]) => {
+     uris = audioSelectResult;
+     console.info('audioViewPicker.save to file succeed and uri is:' + uris);
+     // ···
+   }).catch((err: BusinessError) => {
+     console.error(`Invoke audioViewPicker.save failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
 
 
    > **注意**：

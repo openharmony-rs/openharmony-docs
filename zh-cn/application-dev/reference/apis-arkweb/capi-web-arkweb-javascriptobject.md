@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```c
+typedef struct {...} ArkWeb_JavaScriptObject
+```
+
 ## 概述
 
 注入的JavaScript结构体。

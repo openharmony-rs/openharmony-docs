@@ -223,7 +223,7 @@ NfcVTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 getResponseFlags(): number
 
-从标签实例实例获取响应标志。
+从标签实例获取响应标志。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
@@ -249,7 +249,7 @@ console.info("nfcV responseFlags: " + responseFlags);
 
 getDsfId(): number
 
-从标签实例实例获取数据存储格式标识符（DSFID）。
+从标签实例获取数据存储格式标识符（DSFID）。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
@@ -2315,7 +2315,7 @@ function nfcTechDemo() {
         let pageIndex = 1; // 将其更改为正确的 index
         mifareUltralight.readMultiplePages(pageIndex, (err : BusinessError, data : number[])=> {
             if (err) {
-                console.log(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
+                console.error(`mifareUltralight readMultiplePages AsyncCallback Code: ${err.code}, message: ${err.message}`);
             } else {
                 console.info("mifareUltralight readMultiplePages AsyncCallback data: " + data);
             }
@@ -2554,7 +2554,7 @@ function nfcTechDemo() {
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
         }).catch((err : BusinessError)=> {
-            console.error(`defFormatable format Promise err Code: ${err.code}, message: ${err.message}`);
+            console.error(`ndefFormatable format Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`ndefFormatable format Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);

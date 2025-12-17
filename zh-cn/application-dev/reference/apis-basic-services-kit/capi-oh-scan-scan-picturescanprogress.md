@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} Scan_PictureScanProgress
+```
+
 ## 概述
 
 表示扫描仪扫描图片的进度
@@ -24,6 +28,6 @@
 | -- | -- |
 | int32_t progress | 图片进度，从0到100 |
 | int32_t fd | 扫描仪文件句柄 |
-| bool isFinal | 指示该图像是否为最后扫描的图像 |
+| bool isFinal | 指示该图像是否为最后扫描的图像。true表示该图像是最后扫描的图像，false表示该图像不是最后扫描的图像。 |
 
 

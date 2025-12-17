@@ -59,6 +59,7 @@
       - [使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
       - [使用Node-API接口产生的异常日志/崩溃分析](use-napi-about-crash.md)
       - [使用Node-API调用返回值为promise的ArkTS方法](use-napi-method-promise.md)
+      - [使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用](use-napi-about-sendable-reference.md)
     - Node-API常见问题汇总<!--napi-questions-->
       - [Node-API常见问题](use-napi-faqs.md)
       - [稳定性相关问题汇总](napi-faq-about-stability.md)
@@ -114,6 +115,7 @@
         - [JSVM通用调优实践](jsvm-optimizations.md)
     - JSVM性能调试指导<!--jsvm-performance-->
       - [使用HiSmartPerf采集V8 trace](use-jsvm-about-v8-trace.md)
+      - [使用DevTools进行网页内存分析](use-jsvm-about-analyze-memory-usage.md)
   - Longque-JS-API<!--longque-->
     - [Longque-JS-API使用指导](use-longque-js-api.md)
   - OpenMP支持<!--openmp-->
@@ -122,7 +124,7 @@
   - 资源管理<!--resource-management-->
     - [Rawfile开发指导](rawfile-guidelines.md)
   - 线程调度<!--thread-scheduling-->
-    - [QOS开发指导](qos-guidelines.md)
+    - [QoS开发指导](qos-guidelines.md)
     - [格物开发指导](gewu-ndk-api-guidelines.md)
   - 内存管理<!--memory-management-->
     - [Purgeable memory开发指导](purgeable-memory-guidelines.md)

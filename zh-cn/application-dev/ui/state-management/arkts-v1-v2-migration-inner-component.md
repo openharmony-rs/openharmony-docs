@@ -13,10 +13,10 @@
 | [\@Prop](./arkts-prop.md)                   | [\@Param](./arkts-new-param.md)                   |
 | [\@Link](./arkts-link.md)                  | [\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)    |
 |  [\@ObjectLink](./arkts-observed-and-objectlink.md)           |[\@Param](./arkts-new-param.md)[\@Event](./arkts-new-event.md)                   |
-|  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-Provider-and-Consumer.md)                | 
-| [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-Provider-and-Consumer.md)                |
+|  [\@Provide](./arkts-provide-and-consume.md)               |[\@Provider](./arkts-new-provider-and-consumer.md)                | 
+| [\@Consume](./arkts-provide-and-consume.md)               |[\@Consumer](./arkts-new-provider-and-consumer.md)                |
 | [\@Watch](./arkts-watch.md)               |[\@Monitor](./arkts-new-monitor.md)                |
-| 无计算属性相关能力，需要重复计算 | [\@Computed](./arkts-new-Computed.md)                |
+| 无计算属性相关能力，需要重复计算 | [\@Computed](./arkts-new-computed.md)                |
 
 ## 各装饰器迁移示例
 
@@ -41,10 +41,12 @@ V1：
 <!-- @[Child1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV1.ets) -->
 
 ``` TypeScript
+const INITIAL_VALUE = 10;
+
 @Entry
 @Component
 struct Child {
-  @State val: number = 10;
+  @State val: number = INITIAL_VALUE;
 
   build() {
     Text(this.val.toString())
@@ -57,10 +59,12 @@ V2迁移策略：直接替换。
 <!-- @[Child2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateEasyV2.ets) -->
 
 ``` TypeScript
+const INITIAL_VALUE = 10;
+
 @Entry
 @ComponentV2
 struct Child {
-  @Local val: number = 10;
+  @Local val: number = INITIAL_VALUE;
 
   build() {
     Text(this.val.toString())
@@ -77,8 +81,10 @@ V1：
 <!-- @[example1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV1.ets) -->
 
 ``` TypeScript
+const INITIAL_VALUE = 10;
+
 class Child {
-  public value: number = 10;
+  public value: number = INITIAL_VALUE;
 }
 
 @Component
@@ -104,9 +110,11 @@ V2迁移策略：使用\@ObservedV2和\@Trace。
 <!-- @[example2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/StateComplexV2.ets) -->
 
 ``` TypeScript
+const INITIAL_VALUE = 10;
+
 @ObservedV2
 class Child {
-  @Trace public value: number = 10;
+  @Trace public value: number = INITIAL_VALUE;
 }
 
 @ComponentV2
@@ -196,6 +204,8 @@ V1实现：
 <!-- @[Parent7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV1.ets) -->
 
 ``` TypeScript
+const INITIAL_MYVAL = 10;
+
 @Component
 struct Child {
   // @Link可以双向同步数据
@@ -215,7 +225,7 @@ struct Child {
 @Entry
 @Component
 struct Parent {
-  @State myVal: number = 10;
+  @State myVal: number = INITIAL_MYVAL;
 
   build() {
     Column() {
@@ -231,6 +241,8 @@ V2迁移策略：使用\@Param和\@Event。
 <!-- @[Parent8_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/LinkMiigrationV2.ets) -->
 
 ``` TypeScript
+const INITIAL_MYVAL = 10;
+
 @ComponentV2
 struct Child {
   // @Param搭配@Event回调实现数据双向同步
@@ -251,7 +263,7 @@ struct Child {
 @Entry
 @ComponentV2
 struct Parent {
-  @Local myVal: number = 10;
+  @Local myVal: number = INITIAL_MYVAL;
 
   build() {
     Column() {
@@ -334,12 +346,15 @@ struct Parent {
 
 V1实现：
 
-<!-- @[Parent11_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets) -->
+<!-- @[Parent11_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV1.ets) -->    
 
 ``` TypeScript
+const APPLE_INITIAL_COUNT = 5;
+const ORANGE_INITIAL_COUNT = 10;
+
 class Fruit {
-  public apple: number = 5;
-  public orange: number = 10;
+  public apple: number = APPLE_INITIAL_COUNT;
+  public orange: number = ORANGE_INITIAL_COUNT;
 }
 
 @Component
@@ -380,13 +395,16 @@ struct Parent {
 
 V2迁移策略：使用深拷贝。
 
-<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->
+<!-- @[Parent12_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropComplexV2.ets) -->    
 
 ``` TypeScript
+const APPLE_INITIAL_COUNT = 5;
+const ORANGE_INITIAL_COUNT = 10;
+
 @ObservedV2
 class Fruit {
-  @Trace public  apple: number = 5;
-  @Trace public orange: number = 10;
+  @Trace public apple: number = APPLE_INITIAL_COUNT;
+  @Trace public orange: number = ORANGE_INITIAL_COUNT;
 
   // 实现深拷贝，子组件不会修改父组件的数据
   clone(): Fruit {
@@ -511,6 +529,8 @@ V1：
 <!-- @[Parent15_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/PropSubComponentUpdateVarLocalV1.ets) -->
 
 ``` TypeScript
+const PARENT_INITIAL_STATE_VALUE = 10;
+
 @Component
 struct Child {
   @Prop localValue: number = 0;
@@ -530,7 +550,7 @@ struct Child {
 @Entry
 @Component
 struct Parent {
-  @State value: number = 10;
+  @State value: number = PARENT_INITIAL_STATE_VALUE;
 
   build() {
     Column() {
@@ -558,6 +578,7 @@ V2实现：
 import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0xFF00;
 const TAG = '[Sample_StateMigration_App]';
+const PARENT_INITIAL_LOCAL_VALUE = 10;
 
 @ComponentV2
 struct Child {
@@ -586,7 +607,7 @@ struct Child {
 @Entry
 @ComponentV2
 struct Parent {
-  @Local value: number = 10;
+  @Local value: number = PARENT_INITIAL_LOCAL_VALUE;
 
   build() {
     Column() {
@@ -750,10 +771,12 @@ V1实现：
 <!-- @[Parent21_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentInitV1.ets) -->
 
 ``` TypeScript
+const STATE_INITIAL_PARENT_VALUE = 42;
+
 @Entry
 @Component
 struct Parent {
-  @State parentValue: number = 42;
+  @State parentValue: number = STATE_INITIAL_PARENT_VALUE;
 
   build() {
     Column() {
@@ -780,10 +803,12 @@ V2迁移策略：使用\@Param接受初始值，再赋值给\@Provider。
 <!-- @[Parent22_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideParentNoInitV2.ets) -->
 
 ``` TypeScript
+const LOCAL_INITIAL_PARENT_VALUE = 42;
+
 @Entry
 @ComponentV2
 struct Parent {
-  @Local parentValue: number = 42;
+  @Local parentValue: number = LOCAL_INITIAL_PARENT_VALUE;
 
   build() {
     Column() {
@@ -812,13 +837,16 @@ struct Child {
 
 V1实现：
 
-<!-- @[GrandParent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets) -->
+<!-- @[GrandParent1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideNoAllowOverrideV1.ets) -->    
 
 ``` TypeScript
+const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
+const PARENT_REVIEW_VOTES_INITIAL = 20;
+
 @Entry
 @Component
 struct GrandParent {
-  @Provide('reviewVotes') reviewVotes: number = 40;
+  @Provide('reviewVotes') reviewVotes: number = GRANDPARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Column() {
@@ -830,7 +858,7 @@ struct GrandParent {
 @Component
 struct Parent {
   // @Provide默认不支持重载，支持重载需设置allowOverride函数
-  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = 20;
+  @Provide({ allowOverride: 'reviewVotes' }) reviewVotes: number = PARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Child()
@@ -852,10 +880,13 @@ V2迁移策略：去掉allowOverride。
 <!-- @[GrandParent2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/componentstatemigration/ProvideAllowOverrideV2.ets) -->
 
 ``` TypeScript
+const GRANDPARENT_REVIEW_VOTES_INITIAL = 40;
+const PARENT_REVIEW_VOTES_INITIAL = 20;
+
 @Entry
 @ComponentV2
 struct GrandParent {
-  @Provider('reviewVotes') reviewVotes: number = 40;
+  @Provider('reviewVotes') reviewVotes: number = GRANDPARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Column() {
@@ -867,7 +898,7 @@ struct GrandParent {
 @ComponentV2
 struct Parent {
   // @Provider默认支持重载，@Consumer向上查找最近的@Provider
-  @Provider() reviewVotes: number = 20;
+  @Provider() reviewVotes: number = PARENT_REVIEW_VOTES_INITIAL;
 
   build() {
     Child()

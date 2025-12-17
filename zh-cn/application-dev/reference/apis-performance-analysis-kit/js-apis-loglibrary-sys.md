@@ -62,7 +62,7 @@ list(logType: string): LogEntry[]
 | ------- | ----------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 
 **示例：**
 
@@ -109,7 +109,7 @@ copy(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 | -------- | ---------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **示例：**
@@ -161,7 +161,7 @@ copy(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 | ------- | ----------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **示例：**
@@ -214,7 +214,7 @@ move(logType: string, logName: string, dest: string): Promise&lt;void&gt;
 | -------- | ---------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **示例：**
@@ -266,7 +266,7 @@ move(logType: string, logName: string, dest: string, callback: AsyncCallback&lt;
 | ------- | ----------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **示例：**
@@ -312,7 +312,7 @@ remove(logType: string, logName: string): void
 | ------- | ----------------------------------------------------------------- |
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
-| 401 | Invalid argument.|
+| 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 | 21300001 | Source file does not exists.  |
 
 **示例：**

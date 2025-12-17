@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_CaptureEndInfo {...} Camera_CaptureEndInfo
+```
+
 ## 概述
 
 捕获结束信息。

@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set custom keyboard shortcuts for components, with the flexibility to define multiple shortcuts per component.
 
@@ -30,8 +30,8 @@ Sets a keyboard shortcut for the component.
 
 | Name  | Type                                 | Mandatory  | Description                                    |
 | ----- | ------------------------------------- | ---- | ---------------------------------------- |
-| value | string \| [FunctionKey](ts-appendix-enums.md#functionkey10) | Yes| Character of a hotkey (characters that can be entered through the keyboard) or [FunctionKey](ts-appendix-enums.md#functionkey10).<br>An empty string means to disable the keyboard shortcut.<br>|
-| keys  | Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> | Yes| Modifier keys.<br>The value of keys can be empty only when value is [FunctionKey](ts-appendix-enums.md#functionkey10).<br>|
+| value | string \| [FunctionKey](ts-appendix-enums.md#functionkey10) | Yes| Character key (which can be entered through the keyboard) or [function key](ts-appendix-enums.md#functionkey10).<br>An empty string means to disable the keyboard shortcut.<br>|
+| keys  | Array\<[ModifierKey](ts-appendix-enums.md#modifierkey10)> | Yes| Modifier keys.<br>This parameter can be left empty only when **value** is set to a [function key](ts-appendix-enums.md#functionkey10).<br>|
 | action  | () => void    | No   | Callback for a custom event after the keyboard shortcut is triggered.<br>                              |
 
 **Return value**
@@ -42,24 +42,24 @@ Sets a keyboard shortcut for the component.
 
 ## Precautions for Using Keyboard Shortcuts
 
-Keyboard shortcuts respond to system key combinations and take precedence over standard **OnKeyEvent** handlers. For details about key event processing logic, see [Key Event Data Flow](../../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
+Keyboard shortcuts, as system keys, take precedence over the common key event **OnKeyEvent**. For details about the key event triggering logic, see [Key Event Data Flow](../../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
 
 | Scenario                                      | Processing Logic                           | Example                                      |
 | ---------------------------------------- | ---------------------------------- | ---------------------------------------- |
-| All components that support the **onClick** event                        | Custom keyboard shortcuts are supported.                          | –                                       |
-| Requirements for custom keyboard shortcuts                                | Control keys Ctrl, Shift, Alt, and their combinations plus a single character (a character that can be entered on the keyboard) or [FunctionKey](ts-appendix-enums.md#functionkey10) of the hot key| Button('button1').keyboardShortcut('a',[ModifierKey.CTRL]) |
-| Setting one custom keyboard shortcut for multiple components                           | Only the component with the shallowest depth in the node tree responds to the shortcut key. Other components do not respond to the shortcut key.         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('a',[ModifierKey.CTRL]) |
-| When the component is focused or not                              | The component responds to the custom keyboard shortcut as long as the window has focus.                     | –                                       |
-| Using a single function key to trigger a keyboard shortcut| A keyboard shortcut can consist of a single function key without any modifier keys.| Button('button1').keyboardShortcut(FunctionKey.F2,[])                                        |
-| The input parameter **value** of **keyboardShortcut** is empty| The keyboard shortcut is disabled.<br>Shortcut keys that are bound to multiple shortcut keys cannot be unbound.| Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('',[]) |
-| Ctrl, Shift, and Alt in the keys command in **keyboardShortcut**| Both the keys on the left or right sides of the keyboard work.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
-| Character key in the **value** parameter of the **keyboardShortcut** API           | The response is case-insensitive.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
+| Components that support the **onClick** event                        | Custom keyboard shortcuts are supported.                          | –                                       |
+| Requirements for custom keyboard shortcuts                                | Modifier keys (**Ctrl**, **Shift**, **Alt**, and combinations) plus a single character or [function key](ts-appendix-enums.md#functionkey10).| Button('button1').keyboardShortcut('a',[ModifierKey.CTRL]) |
+| Multiple components with identical shortcuts                           | Only the shallowest node in the component tree responds.         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('a',[ModifierKey.CTRL]) |
+| Component focus state                              | Keyboard shortcuts respond when the window has focus, regardless of component focus.                     | –                                       |
+| Single function key shortcuts| Function keys can be used without modifier keys.| Button('button1').keyboardShortcut(FunctionKey.F2,[])                                        |
+| Empty **value** parameter in **keyboardShortcut**| The keyboard shortcut is disabled.<br>Multi-bound shortcuts cannot be unbound.| Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('',[]) |
+| Modifier key (**Ctrl**, **Shift**, **Alt**) positions| Both left and right modifier keys are recognized.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
+| Character key case sensitivity in the **value** parameter of the **keyboardShortcut** API           | The response is case-insensitive.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
 | Response to keyboard shortcuts                                  | The component responds to a keyboard shortcut when the keys specified by **keys** are pressed and the key specified by **value** triggers a down event. (Long-pressing leads to continuous response.)             | –                                       |
-| The component is hidden<br>                              | The component still responds to keyboard shortcuts.                             | –                                       |
-| Components in the [enable](ts-universal-attributes-enable.md) state                             | The component does not respond to keyboard shortcuts.                            | –                                       |
-| 1. The keyboard shortcut is the same as an existing one (including the system-defined ones).<br>2. The **value** parameter contains multiple character keys.<br>3. The **key** parameter has a duplicate modifier key.| In these cases, the keyboard shortcut is not added, and the previously added keyboard shortcuts still work.         | Button('button1').keyboardShortcut(FunctionKey.F4,[ModifierKey.ALT])<br>Button('button2').keyboardShortcut('ab',[ModifierKey.CTRL])<br>Button('button3').keyboardShortcut('ab',[ModifierKey.CTRL,ModifierKey.CTRL]) |
+| Hidden components<br>                              | The component still responds to keyboard shortcuts.                             | –                                       |
+| [Disabled](ts-universal-attributes-enable.md) components                             | Disabled components do not respond to keyboard shortcuts.                            | –                                       |
+| 1. Duplicate system shortcuts (including those same as predefined ones)<br>2. Multiple character keys in **value**<br>3. Duplicate modifier keys in **keys**| In these cases, the keyboard shortcut is not added, and the previously added keyboard shortcuts still work.         | Button('button1').keyboardShortcut(FunctionKey.F4,[ModifierKey.ALT])<br>Button('button2').keyboardShortcut('ab',[ModifierKey.CTRL])<br>Button('button3').keyboardShortcut('ab',[ModifierKey.CTRL,ModifierKey.CTRL]) |
 
-### System-defined Keyboard Shortcuts That Cannot Be Bound
+### System-Defined Keyboard Shortcuts That Cannot Be Bound
 
 The following key combinations cannot function as keyboard shortcuts:
 
@@ -158,7 +158,7 @@ struct Index {
           console.info('Trigger keyboard shortcut success.')
         }).keyboardShortcut('q', [ModifierKey.CTRL])
           .keyboardShortcut('w', [ModifierKey.CTRL])
-          .keyboardShortcut('', []) // Unbinding does not work when there are multiple keyboard shortcuts.
+          .keyboardShortcut('', []) // Unbinding does not work when there are multi-bound shortcuts.
       }
       .width('100%')
     }

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_Request {...} ScsiPeripheral_Request
+```
+
 ## 概述
 
 请求参数结构体。

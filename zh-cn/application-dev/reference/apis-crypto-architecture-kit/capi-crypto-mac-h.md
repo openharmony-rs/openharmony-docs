@@ -51,7 +51,7 @@
 
 ### CryptoMac_ParamType
 
-```
+```c
 enum CryptoMac_ParamType
 ```
 
@@ -71,7 +71,7 @@ enum CryptoMac_ParamType
 
 ### OH_CryptoMac_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)
 ```
 
@@ -97,7 +97,7 @@ OH_Crypto_ErrCode OH_CryptoMac_Create(const char *algoName, OH_CryptoMac **ctx)
 
 ### OH_CryptoMac_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType type, const Crypto_DataBlob *value)
 ```
 
@@ -124,7 +124,7 @@ OH_Crypto_ErrCode OH_CryptoMac_SetParam(OH_CryptoMac *ctx, CryptoMac_ParamType t
 
 ### OH_CryptoMac_Init()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *key)
 ```
 
@@ -157,7 +157,7 @@ OH_Crypto_ErrCode OH_CryptoMac_Init(OH_CryptoMac *ctx, const OH_CryptoSymKey *ke
 
 ### OH_CryptoMac_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *in)
 ```
 
@@ -190,7 +190,7 @@ OH_Crypto_ErrCode OH_CryptoMac_Update(OH_CryptoMac *ctx, const Crypto_DataBlob *
 
 ### OH_CryptoMac_Final()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)
 ```
 
@@ -223,7 +223,7 @@ OH_Crypto_ErrCode OH_CryptoMac_Final(OH_CryptoMac *ctx, Crypto_DataBlob *out)
 
 ### OH_CryptoMac_GetLength()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)
 ```
 
@@ -249,7 +249,7 @@ OH_Crypto_ErrCode OH_CryptoMac_GetLength(OH_CryptoMac *ctx, uint32_t *length)
 
 ### OH_CryptoMac_Destroy()
 
-```
+```c
 void OH_CryptoMac_Destroy(OH_CryptoMac *ctx)
 ```
 

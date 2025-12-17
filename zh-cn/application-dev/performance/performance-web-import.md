@@ -1929,7 +1929,6 @@ Web({ src: 'https://www.example.com', controller: this.controller })
 // src/main/ets/pages/WebInitialized.ets
 
 import { webview } from '@kit.ArkWeb';
-import { router } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry

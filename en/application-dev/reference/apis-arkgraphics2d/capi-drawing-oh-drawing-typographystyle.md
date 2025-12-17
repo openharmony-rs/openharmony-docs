@@ -5,6 +5,10 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OH_Drawing_TypographyStyle OH_Drawing_TypographyStyle
+```
+
 ## Overview
 
 Defines a struct used to manage the typography style, such as the text direction.

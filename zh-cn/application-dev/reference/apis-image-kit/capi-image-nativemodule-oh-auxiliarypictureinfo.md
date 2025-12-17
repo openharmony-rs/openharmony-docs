@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AuxiliaryPictureInfo OH_AuxiliaryPictureInfo
+```
+
 ## 概述
 
 AuxiliaryPictureInfo结构体类型，用于执行AuxiliaryPictureInfo相关操作。

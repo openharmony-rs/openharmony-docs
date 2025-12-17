@@ -6,6 +6,10 @@
 <!--Tester: @Q-haosu-->	
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} Print_PageSize
+```
+
 ## 概述
 
 纸张大小信息。

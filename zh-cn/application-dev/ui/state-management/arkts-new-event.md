@@ -16,6 +16,8 @@
 > 从API version 12开始，在\@ComponentV2装饰的自定义组件中支持使用\@Event装饰器。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
@@ -40,7 +42,7 @@
 
 ## 限制条件
 
-- \@Event只能用在[\@ComponentV2](arkts-new-componentV2.md)装饰的自定义组件中。当装饰非方法类型的变量时，不会有任何作用。
+- \@Event只能用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中。当装饰非方法类型的变量时，不会有任何作用。
 
   ```ts
   @ComponentV2
@@ -117,7 +119,7 @@ struct Child {
 <!-- @[EventDecoratorTest2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventDecorator/entry/src/main/ets/pages/EventDecoratorTest2.ets) -->
 
 ``` TypeScript
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG = '[Sample_EventDecorator]';
 const DOMAIN = 0xF811;
 const BUNDLE = 'EventDecorator_';
@@ -157,7 +159,7 @@ struct Index2 {
 
 在上面的示例中，点击文字触发\@Event函数事件改变子组件的值，打印出的日志为：
 
-```
+```text
 in changeIndex 20
 after changeIndex 0
 ```

@@ -6,6 +6,10 @@
 <!--Tester: @GbuzhidaoR-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct NN_QuantParam NN_QuantParam
+```
+
 ## 概述
 
 量化参数的句柄。

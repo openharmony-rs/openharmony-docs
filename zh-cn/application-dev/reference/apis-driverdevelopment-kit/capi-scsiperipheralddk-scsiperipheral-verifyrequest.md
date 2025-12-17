@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_VerifyRequest {...} ScsiPeripheral_VerifyRequest
+```
+
 ## 概述
 
 SCSI命令（verify）的请求结构体。
