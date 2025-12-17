@@ -275,7 +275,7 @@ zh-cn/application-dev/ui/arkts-color-effect.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-attributes-content-modifier.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-button.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-custom-dialog.md	@houguobiao	@lxl007	@Brilliantry_Rui
-zh-cn/application-dev/ui/arkts-common-components-progress-indicator.md	@weixin_52725220	@xiong0104	@Brilliantry_Ru
+zh-cn/application-dev/ui/arkts-common-components-progress-indicator.md	@xiangyuan6	@jiaoaozihao	@Brilliantry_Ru
 zh-cn/application-dev/ui/arkts-common-components-radio-button.md	@houguobiao	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-richeditor.md	@carnivore233	@mateng_Holtens	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-common-components-switch.md	@houguobiao	@lxl007	@Brilliantry_Rui
@@ -442,7 +442,7 @@ zh-cn/application-dev/ui/ui-js-component-tabs.md	@CCFFWW	@lxl007	@Brilliantry_Ru
 zh-cn/application-dev/ui/ui-js-components-button.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-canvas.md	@sunbees	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-canvasrenderingcontext2d.md	@sunbees	@liuli0427	@Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-components-chart.md	@weixin_52725220	@xiong0104	@Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-components-chart.md	@xiangyuan6	@jiaoaozihao	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-dialog.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-form.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-grid.md	@lanshouren	@liuli0427	@Brilliantry_Rui
@@ -455,7 +455,7 @@ zh-cn/application-dev/ui/ui-js-components-menu.md	@zhanghaibo0	@lxl007	@Brillian
 zh-cn/application-dev/ui/ui-js-components-offscreencanvas.md	@sunbees	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-path2d.md	@sunbees	@liuli0427	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-picker.md	@weixin_52725220	@xiong0104	@Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-components-qrcode.md	@weixin_52725220	@xiong0104	@Brilliantry_Rui
+zh-cn/application-dev/ui/ui-js-components-qrcode.md	@xiangyuan6	@jiaoaozihao	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-rating.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-search.md	@xiangyuan6	@jiaoaozihao	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-slider.md	@liyi0309	@lxl007	@Brilliantry_Rui
@@ -471,6 +471,7 @@ zh-cn/application-dev/ui/ui-js-components-toolbar.md	@jiangdayuan	@lxl007	@Brill
 zh-cn/application-dev/ui/ui-js-custom-components.md	@shiyu_huang	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/ui/ui-js-overview.md	@piggyguy	@songyanhong	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-performance-overview.md	@wild-mucor	@sally__	@Brilliantry_Rui
+zh-cn/application-dev/ui/arkts-text-faq.md @xiangyuan6	@jiaoaozihao	@Brilliantry_Rui
 
 
 [开发-ArkUI-窗口管理]
@@ -1163,7 +1164,7 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-numberv
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-parallelinnergestureevent.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-pixelroundpolicy.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-positionedges.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-progresslinearstyleoption.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-progresslinearstyleoption.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rect.md	@houguobiao	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rectshapeoption.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-rendercontentmodifierhandle.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
@@ -1297,7 +1298,7 @@ zh-cn/application-dev/reference/apis-arkui/Readme-CN.md	@xiang-shouxing	@fredyua
 zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md	@shiyu_huang	@zhangwenhan12	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-button.md	@liyi0309	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-chart.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-chart.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-divider.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-image-animator.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-image.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
@@ -1309,8 +1310,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-option.m
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-picker-view.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-picker.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-piece.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-progress.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-qrcode.md	@liyujie43	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-progress.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-qrcode.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-rating.md	@liyi0309	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-search.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-select.md	@zhanghaibo0	@lxl007	 @Brilliantry_Rui
@@ -1341,7 +1342,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-mediaqu
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-methods.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-styles.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-common-transition.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-badge.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-badge.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-dialog.md	@houguobiao	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-div.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-container-form.md	@liyi0309	@lxl007	 @Brilliantry_Rui
@@ -1389,14 +1390,14 @@ zh-cn/application-dev/reference/apis-arkui/arkui-js/Readme-CN.md	@piggyguy	@song
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-common-attributes.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-common-events.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-common-styles.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-chart.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-chart.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-image-animator.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-image.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-input.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-marquee.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-picker-view.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-progress.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-qrcode.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-progress.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-qrcode.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-slider.md	@houguobiao	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-switch.md	@houguobiao	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js-lite/js-lite-components-basic-text.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
@@ -1470,15 +1471,15 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-checkbox
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md	@houguobiao	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md	@zdustc	@zhangyue283	@ge-yafang
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-divider.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md	@xiangyuan6	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-image-sys.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-image.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-menu.md	@zhanghaibo0	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md	@zhanghaibo0	@lxl007	 @Brilliantry_Rui
@@ -1487,10 +1488,10 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navdesti
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-plugincomponent-sys.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-progress.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-progress.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-radio.md	@houguobiao	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-rating.md	@liyi0309	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-richeditor-sys.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
@@ -1510,7 +1511,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textcloc
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textinput-sys.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md	@houguobiao	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-toolbaritem.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
@@ -1542,11 +1543,11 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-in
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arclist.md	@yylong	@rongShao-Z @songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arclistitem.md	@yylong	@rongShao-Z @songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arcswiper.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-badge.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-badge.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-column-sys.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-column.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-columnsplit.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-counter.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-counter.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-embedded-component.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-flex-sys.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-flex.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
@@ -1604,7 +1605,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-gesture-settings.md	@pigg
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-gesturehandler.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-image-common.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-information-display-common.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-information-display-common.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-keyframeAnimateTo.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-media-components-video-sys.md	@sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-media-components-video.md	@sunbees	@liuli0427	 @Brilliantry_Rui
@@ -1729,12 +1730,12 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md	
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-appendix-types.md	@shiyu_huang	@zhangwenhan12	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-button.md	@liyi0309	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-calendar.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-chart.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-chart.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-clock.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-divider.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-image.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-input.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-progress.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-progress.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-span.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-basic-text.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-accessibility.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
@@ -1745,7 +1746,7 @@ zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widge
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-gradient.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-mediaquery.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-common-styles.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-badge.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-badge.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-div.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-list-item.md	@yylong	@rongShao-Z @songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-service-widget-ui/js-service-widget-container-list.md	@yylong	@rongShao-Z @songyanhong	 @Brilliantry_Rui

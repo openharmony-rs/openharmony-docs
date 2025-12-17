@@ -1,9 +1,9 @@
 # DatePicker
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @luoying_ace_admin-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滑动选择日期的组件。

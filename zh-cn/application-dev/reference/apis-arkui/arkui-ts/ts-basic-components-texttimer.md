@@ -1,7 +1,7 @@
 # TextTimer
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-Hui-->
+<!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester:@jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -233,7 +233,7 @@ TextTimer组件的控制器，用于控制文本计时器。一个TextTimer组�
 
 ### 导入对象
 
-```
+``` ts
 textTimerController: TextTimerController = new TextTimerController();
 ```
 
