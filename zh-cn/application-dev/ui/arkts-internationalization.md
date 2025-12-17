@@ -24,7 +24,7 @@
 
 1. 组件的direction属性设置为Direction.Rtl。
 
-2. 组件的direction属性设置为Direction.Auto，且当前的系统语言（如维吾尔语）的阅读习惯是从右到左。
+2. 组件的direction属性设置为Direction.Auto，且当前的系统语言（如维吾尔语）的阅读习惯是从右向左。
 
 ### 基本概念
 
