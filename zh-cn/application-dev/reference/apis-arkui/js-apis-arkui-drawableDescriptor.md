@@ -128,7 +128,7 @@ try {
 
 load(): Promise\<DrawableDescriptorLoadedResult>
 
-发起图片资源的异步加载，并返回加载结果。使用[Promise](../../arkts-utils/async-concurrency-overview.md#promise)异步回调。
+发起图片资源的异步加载，并返回加载结果。使用Promise异步回调。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
