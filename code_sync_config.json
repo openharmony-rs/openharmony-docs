@@ -4235,22 +4235,11 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/NDKGraphics2D/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp",
 				"functions":[
-					{
-						"end_line":1026,
-						"name":"complex_text_c_line_height_limit_one_text",
-						"start_line":998
-					},
-					{
-						"end_line":1060,
-						"name":"complex_text_c_line_height_limit_two_text",
-						"start_line":1031
-					},
-					{
-						"end_line":1091,
-						"name":"complex_text_c_line_spacing_text",
-						"start_line":1065
-					},
 					{
 						"end_line":84,
 						"name":"complex_text_c_multilingual_text",
@@ -4310,6 +4299,21 @@
 						"end_line":901,
 						"name":"complex_text_c_high_contrast_text",
 						"start_line":865
+					},
+					{
+						"end_line":1026,
+						"name":"complex_text_c_line_height_limit_one_text",
+						"start_line":998
+					},
+					{
+						"end_line":1060,
+						"name":"complex_text_c_line_height_limit_two_text",
+						"start_line":1031
+					},
+					{
+						"end_line":1091,
+						"name":"complex_text_c_line_spacing_text",
+						"start_line":1065
 					},
 					{
 						"end_line":993,
