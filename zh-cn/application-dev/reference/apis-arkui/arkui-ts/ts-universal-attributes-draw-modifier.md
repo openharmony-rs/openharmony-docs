@@ -319,6 +319,7 @@ struct DrawModifierExample {
         Button('create')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.create();
@@ -326,6 +327,7 @@ struct DrawModifierExample {
         Button('play')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             if (this.drawAnimator) {
@@ -335,6 +337,7 @@ struct DrawModifierExample {
         Button('changeModifier')
           .width(100)
           .height(100)
+          .borderRadius(50)
           .margin(10)
           .onClick(() => {
             this.count += 1;
