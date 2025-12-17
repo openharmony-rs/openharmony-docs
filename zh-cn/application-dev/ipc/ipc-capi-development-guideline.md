@@ -106,7 +106,7 @@ OHIPCRemoteStub *NativeChildProcess_OnConnect()
     return g_ipcStubObj.GetRemoteStub();
 }
 
-void NativeChildProcessMainProc()
+void NativeChildProcess_MainProc()
 {
     // 相当于子进程的Main函数，实现子进程的业务逻辑
     // ...

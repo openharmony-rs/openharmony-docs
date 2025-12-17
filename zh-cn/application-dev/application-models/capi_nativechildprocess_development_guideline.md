@@ -62,7 +62,7 @@ libchild_process.so
     
     ``` C++
     #include <IPCKit/ipc_kit.h>
-    // ···
+    // ...
     #include <IPCKit/ipc_cremote_object.h>
     #include <IPCKit/ipc_cparcel.h>
     #include <IPCKit/ipc_error_code.h>
@@ -108,7 +108,7 @@ libchild_process.so
         return g_ipcStubObj.GetRemoteStub();
     }
     
-    void NativeChildProcessMainProc()
+    void NativeChildProcess_MainProc()
     {
         // 相当于子进程的Main函数，实现子进程的业务逻辑
         // ...
@@ -148,7 +148,7 @@ libchild_process.so
     ``` C++
     #include <IPCKit/ipc_kit.h>
     #include <AbilityKit/native_child_process.h>
-    // ···
+    // ...
     static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
     {
         if (errCode != NCP_NO_ERROR) {
@@ -160,7 +160,7 @@ libchild_process.so
         // 保存remoteProxy对象，后续基于IPC Kit提供的API同子进程间进行IPC通信
         // 耗时操作建议转移到独立线程去处理，避免长时间阻塞回调线程
         // IPC对象使用完毕后，需要调用OH_IPCRemoteProxy_Destroy方法释放
-        // ···
+        // ...
     }
     ```
 
@@ -175,7 +175,7 @@ libchild_process.so
     ``` C++
     #include <IPCKit/ipc_kit.h>
     #include <AbilityKit/native_child_process.h>
-    // ···
+    // ...
     static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
     {
         if (errCode != NCP_NO_ERROR) {
@@ -188,7 +188,6 @@ libchild_process.so
         // 耗时操作建议转移到独立线程去处理，避免长时间阻塞回调线程
         // IPC对象使用完毕后，需要调用OH_IPCRemoteProxy_Destroy方法释放
         // ...
-        // ···
     }
     
     void CreateNativeChildProcess()
