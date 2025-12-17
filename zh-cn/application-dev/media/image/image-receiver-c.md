@@ -74,6 +74,15 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 3. 定义全局变量。
 
    <!-- @[define_receiverInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->                
+   
+   ``` C++
+   static OH_ImageReceiverNative* g_receiver = nullptr;
+   
+   static std::mutex g_mutex;
+   static std::condition_variable g_condVar;
+   static bool g_imageReady = false;
+   static OH_ImageNative* g_imageInfoResult = nullptr;
+   ```
 
 4. 定义一些工具类函数，用来处理napi的返回值和参数类型的转换。
  
