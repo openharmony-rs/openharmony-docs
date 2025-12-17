@@ -1,5 +1,10 @@
 # FormMenu
-
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @Brilliantry_Rui-->
 本组件封装了一个“添加至桌面”菜单，用于实现应用内长按组件生成“添加至桌面”菜单，点击该菜单，触发卡片添加至桌面操作。通过桌面访问该应用快捷卡片，可以直接访问该组件功能。在应用使用过程中，该组件作为留存和复访入口，可吸引用户将功能快捷添加到桌面。
 
 本组件支持应用内长按菜单快捷添加卡片到桌面：
@@ -13,17 +18,24 @@
 
 > **说明：**
 >
-> 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTs-Dyn、ArkTs-Sta。
 >
-> 该组件不支持在Wearable设备上使用。
+> - 该组件从API Version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 卡片具体开发指导请参考[卡片开发指南](../../../form/formkit-overview.md)。
+> - 该组件不支持在Wearable设备上使用。
+>
+> - 卡片具体开发指导请参考[卡片开发指南](../../../form/formkit-overview.md)。
 
 
 ## 导入模块
 
+ArkTS-Dyn导入模块：
 ```
 import { AddFormMenuItem } from '@kit.ArkUI';
+```
+ArkTS-Sta导入模块：
+```
+import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu';
 ```
 
 
@@ -50,6 +62,10 @@ AddFormMenuItem(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名           | 类型                        | 必填 | 说明                                                             |
@@ -64,12 +80,16 @@ AddFormMenuItem(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：**
-| 名称             | 类型                | 必填 | 说明                                                      |
-| --------------- | ---- | ---- | ---------------------------------------------------------------- |
-| formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 卡片数据。 |
-| callback        | AsyncCallback\<string>                                                                                                | 否 | 返回添加卡片是否成功的结果回调。返回为0表示卡片添加成功，非0表示卡片添加失败，失败时请参考[卡片错误码信息](../../apis-form-kit/errorcode-form.md)进行排查。  |
-| style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | 否 | 菜单自定义样式信息。|
+| 名称             | 类型|只读|可选| 说明                                                      |
+| --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
+| formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 是 | 卡片数据。 |
+| callback        | AsyncCallback\<string>                                                                                                | 否 | 是  | 返回添加卡片是否成功的结果回调。返回为0表示卡片添加成功，非0表示卡片添加失败，失败时请参考[卡片错误码信息](../../apis-form-kit/errorcode-form.md)进行排查。  |
+| style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | 否| 是  | 菜单自定义样式信息。|
 
 
 ## FormMenuItemStyle
@@ -78,10 +98,14 @@ AddFormMenuItem(
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTs-Sta起始版本：** 22
+
 **参数：**
-| 名称            | 类型           | 必填 | 说明 |
-| --------------- | ----------------- | ---- | ---- |
-| options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions对象说明) | 否   | 包含设置MenuItem的各项信息。|
+| 名称 | 类型 | 只读 |可选| 说明 |
+| --------------- | ----------------- | ---- | ---- | ---- |
+| options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions对象说明) | 否   | 是  | 包含设置MenuItem的各项信息。|
 
 > **说明：**
 >
@@ -91,6 +115,8 @@ AddFormMenuItem(
 支持菜单点击事件。
 
 ## 示例
+
+ArkTS-Dyn示例：
 
 ```ts
 // index.ets
@@ -114,7 +140,7 @@ struct Index {
           bundleName: 'com.example.myapplication', // 包名
           abilityName: 'EntryFormAbility', // 模块ability名称
           parameters: {
-            'ohos.extra.param.key.form_dimension': 2, // 卡片尺寸，1代表1*2卡片，2代表2*2卡片，3代表2*4卡片，4代表4*4卡片，7代表6*4卡片，6代表1*1卡片
+            'ohos.extra.param.key.form_dimension': 2, // 卡片尺寸，1代表1*2卡片，2代表2*2卡片，3代表2*4卡片，4代表4*4卡片，7代表6*4卡片
             'ohos.extra.param.key.form_name': 'widget', // 卡片名称
             'ohos.extra.param.key.module_name': 'entry' // 卡片所属的模块名称
           },
@@ -126,6 +152,142 @@ struct Index {
           callback: (error, formId) => {
             hilog.info(0x3900, tag, `callback info：error = ${JSON.stringify(error)}, formId = ${formId}`);
             if (error?.code === 0) {
+              hilog.info(0x3900, tag, "添加至桌面成功")
+            } else {
+              hilog.info(0x3900, tag, "添加至桌面失败，请尝试其它添加方式")
+            }
+          },
+          style: {
+            // options: {
+            //   startIcon: $r("app.media.icon"), // 菜单图标,可以自己提供。系统默认采用"sys.media.ic_public_add"
+            //   content: "添加到桌面",  // 菜单内容，可以自己提供。默认使用"sys.string.ohos_add_form_to_desktop"
+            //   endIcon: $r("app.media.icon") // 菜单图标，可以自己提供
+            // }
+          }
+        }
+      )
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Image($r("app.media.startIcon"))   // 自定义图片
+          .id(this.compId)
+          .width(200)
+          .height(200)
+          .bindContextMenu(this.MyMenu, ResponseType.LongPress, {
+            placement: Placement.TopLeft
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+```ts
+// WidgetCard.ets
+const local = new LocalStorage()
+
+@Entry(local)
+@Component
+struct WidgetCard {
+  @LocalStorageProp('data') data: string = 'defaultdata'; // 定义需要刷新的卡片数据
+  /*
+   * The action type.
+   */
+  readonly ACTION_TYPE: string = 'router';
+  /*
+   * The ability name.
+   */
+  readonly ABILITY_NAME: string = 'EntryAbility';
+  /*
+   * The message.
+   */
+  readonly MESSAGE: string = 'add detail';
+  /*
+   * The width percentage setting.
+   */
+  readonly FULL_WIDTH_PERCENT: string = '100%';
+  /*
+   * The height percentage setting.
+   */
+  readonly FULL_HEIGHT_PERCENT: string = '100%';
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.data)
+          .fontSize($r('app.float.font_size'))
+          .fontWeight(FontWeight.Medium)
+          .fontColor($r('app.color.item_title_font'))
+      }
+      .width(this.FULL_WIDTH_PERCENT)
+    }
+    .height(this.FULL_HEIGHT_PERCENT)
+    .backgroundImage($r('app.media.startIcon'))
+    .backgroundImageSize({ width: '100%', height: '100%' })
+    .onClick(() => {
+      postCardAction(this, {
+        action: this.ACTION_TYPE,
+        abilityName: this.ABILITY_NAME,
+        params: {
+          message: this.MESSAGE
+        }
+      });
+    })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { Entry, Component, Row, Column, Image, Menu, ContextMenuOptions, Placement, ResponseType, $r } from '@ohos.arkui.component'
+import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu'
+import { State } from '@ohos.arkui.stateManagement'
+import { formBindingData } from '@kit.FormKit';
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+import hilog from '@ohos.hilog';
+
+const tag = 'AddFormMenuItem';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Long press show menu';
+  private compId: string = 'addforms@d46313145';
+
+  createWantParams(): Record < string, undefined|null|Object > {
+    let wantParams: Record<string, undefined|null|Object> = {
+      'ohos.extra.param.key.form_dimension': 2, // 卡片尺寸，1代表1*2卡片，2代表2*2卡片，3代表2*4卡片，4代表4*4卡片，7代表6*4卡片
+      'ohos.extra.param.key.form_name': 'widget1', // 卡片名称
+      'ohos.extra.param.key.module_name': 'entry', // 卡片所属的模块名称
+    }
+    return wantParams;
+  }
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      AddFormMenuItem(
+        {
+          bundleName: 'com.example.myapplication', // 包名
+          abilityName: 'EntryFormAbility', // 模块ability名称
+          parameters: this.createWantParams(),
+        },
+        this.compId,
+        {
+          formBindingData: formBindingData.createFormBindingData({}),
+          // formBindingData: formBindingData.createFormBindingData({ data: 'share' }),
+          callback: (err: BusinessError | null, formId: String | undefined ) => {
+            hilog.info(0x3900, tag, `callback info：error = ${JSON.stringify(err)}, formId = ${formId}`);
+            if (err != null && err.code === 0) {
               hilog.info(0x3900, tag, "添加至桌面成功")
             } else {
               hilog.info(0x3900, tag, "添加至桌面失败，请尝试其它添加方式")
