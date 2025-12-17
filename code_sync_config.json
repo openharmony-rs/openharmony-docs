@@ -22289,7 +22289,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template2/TabContentTest.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":63,
 						"name":"freeze_template2_start",
 						"start_line":15
 					}
@@ -22299,7 +22299,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets",
 				"functions":[
 					{
-						"end_line":170,
+						"end_line":172,
 						"name":"freeze_template3_start",
 						"start_line":15
 					}
@@ -22309,7 +22309,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/RepeatVirtualScrollFreeze.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":84,
 						"name":"freeze_template4_start",
 						"start_line":15
 					}
@@ -22319,7 +22319,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template4/PageB.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":84,
 						"name":"freeze_template4_pageB_start",
 						"start_line":15
 					}
@@ -22349,7 +22349,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets",
 				"functions":[
 					{
-						"end_line":184,
+						"end_line":193,
 						"name":"freeze_template6_start",
 						"start_line":15
 					}
@@ -25162,7 +25162,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets",
 				"functions":[
 					{
-						"end_line":95,
+						"end_line":100,
 						"name":"persistence_v2_module_connect_storage_one",
 						"start_line":16
 					}
@@ -25920,7 +25920,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/EventPage.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":79,
 						"name":"Main_Event",
 						"start_line":17
 					}
@@ -25930,7 +25930,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/RepeatPage.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":80,
 						"name":"Main_Repeat",
 						"start_line":17
 					}
@@ -25940,7 +25940,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ObservedV2TracePage.ets",
 				"functions":[
 					{
-						"end_line":97,
+						"end_line":109,
 						"name":"Main_ObservedV2Trace",
 						"start_line":17
 					}
@@ -25950,7 +25950,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/MonitorComputedPage.ets",
 				"functions":[
 					{
-						"end_line":108,
+						"end_line":121,
 						"name":"Main_MonitorComputed",
 						"start_line":16
 					}
@@ -25960,7 +25960,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/AppStorageV2Page.ets",
 				"functions":[
 					{
-						"end_line":123,
+						"end_line":136,
 						"name":"Main_AppStorageV2",
 						"start_line":17
 					}
@@ -25970,7 +25970,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets",
 				"functions":[
 					{
-						"end_line":52,
+						"end_line":54,
 						"name":"Main_SettingPage",
 						"start_line":17
 					}
@@ -25980,7 +25980,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PersistenceV2Page.ets",
 				"functions":[
 					{
-						"end_line":149,
+						"end_line":162,
 						"name":"Main_PersistenceV2",
 						"start_line":17
 					}
@@ -25990,7 +25990,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/BuilderPage.ets",
 				"functions":[
 					{
-						"end_line":161,
+						"end_line":177,
 						"name":"Main_Builder",
 						"start_line":17
 					}
