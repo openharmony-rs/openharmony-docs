@@ -653,7 +653,7 @@ onAccept(callback: (value: string, index: number) => void)
 
 点击弹窗中的“确定”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](ts-methods-textpicker-dialog.md)中生效。
 
-从API version 10开始废弃。
+从API version 8开始支持，从API version 10开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -670,7 +670,7 @@ onCancel(callback: () => void)
 
 点击弹窗中的“取消”按钮时触发该回调。该事件仅在[文本滑动选择器弹窗](ts-methods-textpicker-dialog.md)中生效。
 
-从API version 10开始废弃。
+从API version 8开始支持，从API version 10开始废弃，无替代接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
