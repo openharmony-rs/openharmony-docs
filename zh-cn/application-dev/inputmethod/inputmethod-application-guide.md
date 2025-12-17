@@ -29,7 +29,7 @@
 
 2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ts、InputMethodService.ts、Index.ets以及KeyboardKeyData.ts。目录如下：
 
-   ``` 
+   ``` TypeScript
    /src/main/
    ├── ets/InputMethodExtensionAbility
    │       └──model/KeyboardController.ts			# 显示键盘

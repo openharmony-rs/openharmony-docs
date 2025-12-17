@@ -256,19 +256,19 @@ export default ServiceExtAbility;
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
-| text   	| string   | 否   | 否   | 划词文本。 |
-| selectionType	    | [SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
-| startDisplayX   	| number   | 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
-| startDisplayY   	| number   | 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |
-| endDisplayX   	| number   | 否   | 否   | 划词结束位置的屏幕x轴坐标，单位为px。 |
-| endDisplayY   	| number   | 否   | 否   | 划词结束位置的屏幕y轴坐标，单位为px。 |
-| startWindowX   	| number   | 否   | 否   | 划词起始位置的窗口x轴坐标，单位为px。 |
-| startWindowY   	| number   | 否   | 否   | 划词起始位置的窗口y轴坐标，单位为px。 |
-| endWindowX   	| number   | 否   | 否   | 划词结束位置的窗口x轴坐标，单位为px。 |
-| endWindowY   	| number   | 否   | 否   | 划词结束位置的窗口y轴坐标，单位为px。 |
-| displayID   	| number   | 否   | 否   | 被划词应用窗口的屏幕ID。 |
-| windowID   	| number   | 否   | 否   | 被划词应用的窗口ID。 |
-| bundleName   	| string   | 否   | 否   | 划词应用的bundleName。 |
+| text   | string   | 否   | 否   | 划词文本。 |
+| selectionType    | [SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
+| startDisplayX   | number   | 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
+| startDisplayY   | number   | 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |
+| endDisplayX   | number   | 否   | 否   | 划词结束位置的屏幕x轴坐标，单位为px。 |
+| endDisplayY   | number   | 否   | 否   | 划词结束位置的屏幕y轴坐标，单位为px。 |
+| startWindowX   | number   | 否   | 否   | 划词起始位置的窗口x轴坐标，单位为px。 |
+| startWindowY   | number   | 否   | 否   | 划词起始位置的窗口y轴坐标，单位为px。 |
+| endWindowX   | number   | 否   | 否   | 划词结束位置的窗口x轴坐标，单位为px。 |
+| endWindowY   | number   | 否   | 否   | 划词结束位置的窗口y轴坐标，单位为px。 |
+| displayID   | number   | 否   | 否   | 被划词应用窗口的屏幕ID。 |
+| windowID   | number   | 否   | 否   | 被划词应用的窗口ID。 |
+| bundleName   | string   | 否   | 否   | 划词应用的bundleName。 |
 
 ## Panel
 

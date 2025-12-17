@@ -16,7 +16,7 @@
 
 1. Q：在`OH_JSVM_RunScript`或`OH_JSVM_CallFunction`时crash，调用栈顶层为`SetReturnValue`
 
-   ```
+   ```txt
    #00 pc 0000000000c68ef0 /system/lib64/ndk/libjsvm.so(v8impl::(anonymous namespace)::FunctionCallbackWrapper::SetReturnValue(JSVM_Value__*)+16)
    #01 pc 0000000000c5ad30 /system/lib64/ndk/libjsvm.so(v8impl::(anonymous namespace)::FunctionCallbackWrapper::Invoke(v8::FunctionCallbackInfo<v8::Value> const&)+332)
    #02 pc 00000000014a9e58 /system/lib64/ndk/libjsvm.so
@@ -50,9 +50,9 @@
 
    A：检查`JSVM_CallbackStruct`是否为栈上变量。如果跨函数使用，需确保`JSVM_CallbackStruct`的生命周期长于`JSVM_Env`的生命周期。
 
-   ```
+   ```c++
    func {
-   	// ...
+      // ...
        JSVM_CallbackStruct param[] = {
            {.data = nullptr, .callback = ConsoleInfo},
            {.data = nullptr, .callback = Add},
@@ -78,7 +78,7 @@
 
 4. Q：在虚拟机引擎实例中创建JS类型实例崩溃（如`OH_JSVM_CreateDouble`），调用栈如下
 
-   ```
+   ```txt
    #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::0S::Abort()+28)
    #01 pc 0000000001408480/system/lib64/ndk/libjsvm.so(v8::Utils::ReportApiFailure(char const*,char const*)+124)
    #02 pc 00000000015c99b8/system/lib64/ndk/libjsvm.so(v8::internal::HandleScope::Extend(v8::internal::Isolate*+200)
