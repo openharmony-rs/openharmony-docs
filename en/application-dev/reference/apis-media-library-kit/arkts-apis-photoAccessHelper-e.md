@@ -10,6 +10,12 @@
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+## Modules to Import
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
+
 ## PhotoType
 
 Enumerates the media file types.
@@ -93,7 +99,7 @@ Enumerates the keys available for image or video files.
 
 | Name         | Value             | Description                                                      |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | URI of the file.<br>Note: Only the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) predicate can be used for this field during photo query.<br>**Atomic service API**: This API can be used in atomic services since API version 20.           |
+| URI           | 'uri'                 | URI of the file.<br>**NOTE**<br>Only the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) predicate can be used for this field during photo query.<br>**Atomic service API**: This API can be used in atomic services since API version 20.           |
 | PHOTO_TYPE    | 'media_type'           | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 | DISPLAY_NAME  | 'display_name'        | File name displayed. The file name must meet the following requirements:<br>- A valid file name must include a base name and a supported image or video extension.<br>- The total length of the file name must be between 1 and 255 characters.<br>- The base name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ]<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
 | SIZE          | 'size'                | File size, in bytes. The size of a moving photo includes the total size of the image and video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.   |
@@ -106,8 +112,8 @@ Enumerates the keys available for image or video files.
 | ORIENTATION   | 'orientation'         | Orientation of the file, in degrees.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 | FAVORITE      | 'is_favorite'            | Whether the file is marked as favorites.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                |
 | TITLE         | 'title'               | Title of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                |
-| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | Unix timestamp when the file was created, in milliseconds.<br>**NOTE**: The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
-| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | Unix timestamp when the file was modified, in milliseconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**NOTE**: The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
+| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | Unix timestamp when the file was created, in milliseconds.<br>**NOTE**<br>The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
+| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | Unix timestamp when the file was modified, in milliseconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**NOTE**<br>The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 | PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | Subtype of the media file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.    |
 | DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | Dynamic range type of the media asset.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 | COVER_POSITION<sup>12+</sup>   | 'cover_position'               | Position of the moving photo cover, which is the video timestamp (in μs) corresponding to the cover frame.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
@@ -215,6 +221,7 @@ Enumerates the types of recommended images.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let recommendOptions: photoAccessHelper.RecommendationOptions = {
@@ -330,3 +337,4 @@ Enumerates the sources of the image or video data.
 | ALL | 0   | Images and videos from all sources.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | CAMERA | 1   | Image or video taken by the camera.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | SCREENSHOT | 2   | Screenshot or screen capture video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+
