@@ -7833,7 +7833,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
-### setGeofenceEnabled<sup>23</sup>
+## notificationManager.setGeofenceEnabled<sup>23</sup>
 
 setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 
@@ -7902,7 +7902,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 });
 ```
 
-### isGeofenceEnabled<sup>23</sup>
+## notificationManager.isGeofenceEnabled<sup>23</sup>
 
 isGeofenceEnabled(): Promise\<boolean\>
 
