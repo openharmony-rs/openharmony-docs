@@ -14,8 +14,8 @@
 
 | 接口名                                                       | 描述                                   |
 | ------------------------------------------------------------ | -------------------------------------- |
-| on(type:'operatingHandChanged',callback:Callback&lt;OperatingHandStatus&gt;):void; | 订阅操作手感知，操作手结果通过callback返回。 |
-| off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;): void; | 取消订阅操作手感知。                   |
+| on('operatingHandChanged',callback:Callback&lt;OperatingHandStatus&gt;):void; | 订阅操作手感知，操作手结果通过callback返回。 |
+| off('operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;): void; | 取消订阅操作手感知。                   |
 | getRecentOperatingHandStatus(): OperatingHandStatus;         | 获取最新的操作手状态。                 |
 
 ### 需要权限
@@ -105,8 +105,8 @@
 
 | 接口名                                                       | 描述                                   |
 | ------------------------------------------------------------ | -------------------------------------- |
-| on(type:'holdingHandChanged',callback:Callback&lt;HoldingHandStatus&gt;): void; | 订阅握持手感知，感知结果通过callback返回。 |
-| off(type: 'holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): void; | 取消订阅握持手感知。                   |
+| on('holdingHandChanged',callback:Callback&lt;HoldingHandStatus&gt;): void; | 订阅握持手感知，感知结果通过callback返回。 |
+| off('holdingHandChanged', callback?: Callback&lt;HoldingHandStatus&gt;): void; | 取消订阅握持手感知。                   |
 
 ### 需要权限
 
