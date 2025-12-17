@@ -1305,10 +1305,10 @@ List(
      @State expandedItems: boolean[] = Array(this.routes.length).fill(false);
      @State selection: string | null = null;
    
-   // ···
+     // ...
    
      build() {
-       // ···
+       // ...
              Column() {
                List({ space: 10 }) {
                  ForEach(this.routes, (itemGroup: ItemGroupInfo) => {
@@ -1334,22 +1334,22 @@ List(
                                .height(30)
                                .width(30)
                            }
-                           .width("100%")
+                           .width('100%')
                          }
-                         .width("100%")
+                         .width('100%')
                          .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
                        })
                      }
                    }.clip(true)
                  })
                }
-               .width("100%")
+               .width('100%')
              }
              .width('100%')
              .height('100%')
              .justifyContent(FlexAlign.Start)
              .backgroundColor($r('sys.color.ohos_id_color_sub_background'))
-           // ···
+             // ...
      }
    }
    ```
@@ -1371,7 +1371,7 @@ List(
          .rotate({ angle: !!itemGroup.children.length ? (this.expandedItems[itemGroup.index] ? 180 : 0) : 180 })
          .animation({ curve: curves.interpolatingSpring(0, 1, 228, 22) })
      }
-     .width("100%")
+     .width('100%')
      .padding(10)
      .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
      .onClick(() => {
