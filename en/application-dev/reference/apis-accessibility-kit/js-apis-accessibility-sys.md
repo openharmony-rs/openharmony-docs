@@ -120,9 +120,9 @@ Accessibility node elements are UI components that support accessibility actions
 | CLEAR_FOCUS                | 3    | Clear the focus for a component.               |
 | CLICK                      | 4    | Click a component.                 |
 | LONG_CLICK                 | 5    | Long press a component.               |
-| CUT                        | 6    | Cutting the content of a component.               |
+| CUT                        | 6    | Cut the content of a component.               |
 | COPY                       | 7    | Copy the content of a component.                |
-| PASTE                      | 8    | Pasting content to a component.               |
+| PASTE                      | 8    | Paste content to a component.               |
 | SELECT                     | 9    | Select a component.                  |
 | SET_TEXT                   | 10   | Set the text of a component.              |
 | SCROLL_FORWARD             | 11   | Scroll a component forward.                |
