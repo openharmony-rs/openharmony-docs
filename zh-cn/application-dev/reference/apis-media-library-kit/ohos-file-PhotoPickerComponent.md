@@ -76,8 +76,8 @@ PhotoPickerComponent({
 | onVideoPlayStateChanged<sup>14+</sup>   | [videoPlayStateChangedCallback](#videoplaystatechangedcallback14)                    | 否   | - | 大图页视频播放状态改变时回调。<br>**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。                                  |
 | pickerController        | [PickerController](#pickercontroller)                                            | 是   | @ObjectLink | 应用可通过PickerController向Picker组件发送数据。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
 | onMovingPhotoBadgeStateChanged<sup>22+</sup> | [MovingPhotoBadgeStateChangedCallback](#movingphotobadgestatechangedcallback22) | 否 | - | 用户在Picker组件中打开/关闭动态效果时产生的回调。将图片uri和动态照片状态报给应用。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-| onScrollStopAtStart<sup>23+</sup> | [ScrollStopAtStartCallback](#scrollstopatstartcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容的起始位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
-| onScrollStopAtEnd<sup>23+</sup> | [ScrollStopAtEndCallback](#scrollstopatendcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容的结束位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| onScrollStopAtStart<sup>23+</sup> | [ScrollStopAtStartCallback](#scrollstopatstartcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容起始位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| onScrollStopAtEnd<sup>23+</sup> | [ScrollStopAtEndCallback](#scrollstopatendcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容结束位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## PickerOptions
 
@@ -190,7 +190,7 @@ type MovingPhotoBadgeStateChangedCallback = (uri: string, state: photoAccessHelp
 
 type ScrollStopAtStartCallback = () => void
 
-表示用户滑动picker宫格页，当滚动停止并处于宫格内容的开始位置时的回调事件类型。
+表示用户滑动picker宫格页，当滚动停止并处于宫格内容开始位置时的回调事件类型。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -202,7 +202,7 @@ type ScrollStopAtStartCallback = () => void
 
 type ScrollStopAtEndCallback = () => void
 
-表示用户滑动picker宫格页，当滚动停止并处于宫格内容的结束位置时的回调事件类型。
+表示用户滑动picker宫格页，当滚动停止并处于宫格内容结束位置时的回调事件类型。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
