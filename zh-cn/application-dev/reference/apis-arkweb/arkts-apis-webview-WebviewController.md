@@ -103,7 +103,7 @@ struct WebComponent {
 ```
 
 加载的html文件。
-```html
+ ```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -124,7 +124,7 @@ struct WebComponent {
       </script>
     </body>
 </html>
-```
+ ```
 
 ## initializeWebEngine
 
