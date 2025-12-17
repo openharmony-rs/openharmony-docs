@@ -1,12 +1,18 @@
-# Dark and Light Mode Adaptation
+# Implementing Dark and Light Mode Adaptation
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lushi871202-->
+<!--Designer: @lushi871202-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
 To enhance user experience, applications should adapt to the system's dark and light modes. There are two primary scenarios for implementing this adaptation:
 
-[Following the System's Color Mode](#following-the-systems-color-mode)
+[Following the system's color mode](#following-the-systems-color-mode)
 
-[Setting the Application's Color Mode Independently](#setting-the-applications-color-mode-independently)
+[Setting the color mode independently](#setting-the-color-mode-independently)
 
 ## Following the System's Color Mode
 
@@ -19,11 +25,11 @@ To enhance user experience, applications should adapt to the system's dark and l
      Figure 1 Structure of the resources directory
 
      ![colorJsonDir](figures/colorJsonDir.png)
-   
+    
      The following is the example configuration:
-   
+    
      **base/element/color.json** file:
-   
+    
      ```json
      {
        "color": [
@@ -34,9 +40,9 @@ To enhance user experience, applications should adapt to the system's dark and l
        ]
      }
      ```
-   
+    
      **dark/element/color.json** file:
-   
+    
      ```json
      {
        "color": [
@@ -73,9 +79,37 @@ To enhance user experience, applications should adapt to the system's dark and l
 
     The **Web** component supports dark color mode configuration. For details, see [Setting the Dark Mode](../web/web-set-dark-mode.md).
 
-4. Listening for Color Mode Switching Events
+4. Custom Node Adaptation
 
-    Applications can listen for system color mode changes and perform custom logic, such as initializing resources of other types. This approach works regardless of whether the application is set to follow the system's dark or light mode.
+    Custom nodes **BuilderNode** and **ComponentContent** require manual propagation of system environment change events to trigger complete node updates. For implementation details, see the [BuilderNode system environment change](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12) section.
+
+    ```ts
+    // Record the created custom node object.
+    const builderNodeMap: Array<BuilderNode<[Params]>> = new Array();
+
+    class MyFrameCallback extends FrameCallback {
+      onFrame() {
+        updateColorMode();
+      }
+    }
+
+    function updateColorMode() {
+      builderNodeMap.forEach((value, index) => {
+        // Notify the BuilderNode of the environment changes to trigger switching between light and dark modes.
+        value.updateConfiguration();
+      })
+    }
+    // ... other code ...
+    aboutToAppear() {
+    // ... other code ...
+      this.getUIContext()?.postFrameCallback(new MyFrameCallback());
+    // ... other code ...
+    }
+    ```
+
+5. Listening for Color Mode Switching Events
+
+    Applications can listen for system color mode changes and perform custom logic, such as initializing resources of other types. When an application uses [setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18) to manually set the color mode, it will not receive the **onConfigurationUpdate** callback. Except for this case, this listener remains effective regardless of whether the application follows the system's color mode changes.
 
     a. Save the current color mode to the AppStorage in the **onCreate()** lifecycle of the AbilityStage.
 
@@ -125,33 +159,324 @@ To enhance user experience, applications should adapt to the system's dark and l
     }
     ```
 
-## Setting the Application's Color Mode Independently
+6. Partial Adaptation
 
-By default, applications follow the system's color mode. Yet, you can set a fixed mode for your application regardless of the system settings.
+    Using [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md), you can set three [color modes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode): follow the system, light mode, and dark mode.
+
+    Within the scope of **WithTheme**, component styles adapt to the specified color mode by accessing the corresponding system and application resource values, ensuring components adjust their appearance based on the configured mode. For details, see [Setting a Custom Theme Style for Specific Application Pages](./theme_skinning.md#setting-a-custom-theme-style-for-specific-application-pages).
+
+## Setting the Color Mode Independently
+
+By default, applications follow the system's color mode. When configured this way, the application's color mode becomes fixed and no longer follows system changes.
+
+> **NOTE**
+> 
+> If an application is not specifically adapted for dark mode, directly following the system settings may cause display issues in dark mode. As a workaround, this method can be used to lock the application in light mode.
 
 ```ts
 onCreate(): void {
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
-  this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_DARK);
+  this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT);
 }
 ```
 
-## Default Judgment Rule
+## System Rules for Determining the Application Color Mode
 
 1. If the application calls the **setColorMode** API, its effect takes precedence.
 
 2. If the application does not call the **setColorMode** API:
 
-   - When the application has dark resources in the **dark** directory, built-in components automatically switch to dark mode.
+   - If there are dark resources in the **dark** directory of the application project, system components automatically switch to dark mode.
 
-   - When no dark resources are available, built-in components remain in light mode.
+   - If no dark resources are available, system components maintain light color appearances in dark mode.
 
      ![darkDir](figures/darkDir.png)
 
-If your application uses built-in components or colors and you want it to switch between dark and light modes along with the system, modify the code as follows to ensure a consistent user experience:
+If your application is built using system components or colors and needs to synchronize with the system's color mode, refer to the following example to modify your code and ensure proper application behavior.
 
 ```ts
 onCreate(): void {
   this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
 }
 ```
+
+## Recommendations and Precautions
+
+- Recommended Approach
+
+  Use the [AbilityStage listener callback](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate) or [Ability listener callback](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to proactively listen for system code mode changes. Execute specific service logic by binding state variables when color mode changes.
+
+- Not Recommended Approach
+
+  Avoid adapting to color mode changes through function return values in attribute settings that rely on re-executing attribute setting code during the color mode switching process. Incorrect usage:
+
+  ```ts
+  getResource() : string {
+    // Obtain the system color mode.
+    if (colorMode == "dark") {
+      return "#FF000000"
+    } else {
+      return "#FFFFFFFF"
+    }
+  }
+  // ... other code ...
+  build() {
+    // ... other code ...
+    Button.backgroundColor(this.getResource())
+    // ... other code ...
+  }
+  ```
+  The approach described in the preceding example relies on re-executing attribute setting code during the mode switching process. As the system evolves and performance optimizations are implemented, there is no guarantee that all attribute code will be re-executed. In most hot update scenarios, re-executing all page construction and attribute setting code is clearly redundant and inefficient.
+
+## Optimizing Color Mode Switching Overhead
+  
+By default, color mode switching requires a full redraw, including resetting attributes for all components. The performance overhead increases linearly with application UI complexity.
+
+Starting from API version 20, the system provides an optimized color mode switching mechanism. You can enable this capability by adding the [metadata](../quick-start/module-configuration-file.md#metadata) configuration item to reduce overhead during mode transitions.
+
+> **NOTE**
+>
+> When configuring **metadata**, ensure that color mode switching is not implemented through function return values in attribute settings.
+> <!--RP1--><!--RP1End-->
+
+1. Enable color mode switching optimization through **metadata**.
+
+   To reduce color mode switching overhead, add the **metadata** field to the **module.json5** file and ensure proper adaptation of component attributes:
+
+    ```ts
+    "metadata": [
+      {
+        "name": "configColorModeChangePerformanceInArkUI",
+        "value": "true"
+      }
+    ]
+    ```
+
+2. Ensure proper adaptation of your application's custom behavior.
+
+   After enabling color mode switching optimization, frontend code and attribute settings are not re-executed during mode switching. Only essential attributes are updated and redrawn. If your application relies on function-based attribute settings to handle mode changes, this adaptation approach will no longer work. You must implement proper adaptation before enabling the optimization. For detailed guidance, see [Recommendations and Precautions](#recommendations-and-precautions). Below are three typical adaptation scenarios:
+
+  - Returning different resource values based on the current color mode
+
+    After enabling the optimization, you can actively listen for system color mode changes using either the [AbilityStage's callback](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate) or the [Ability's callback](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate), and update the text color accordingly. Example:
+
+      ```ts
+      // EntryAbility.ets
+      import { Configuration, UIAbility } from '@kit.AbilityKit';
+
+      export default class EntryAbility extends UIAbility {
+
+        onConfigurationUpdate(newConfig: Configuration): void {
+          AppStorage.setOrCreate('colorMode', newConfig.colorMode);
+        }
+      }
+      ```
+      ```ts
+      // Index.ets
+      import { ConfigurationConstant } from '@kit.AbilityKit';
+
+      @Entry
+      @Component
+      struct MainPage {
+        @StorageLink('colorMode') @Watch('colorModeChange') colorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
+        @State textColor: Resource = $r("app.color.color_light");
+
+        colorModeChange() {
+          if (this.colorMode === ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
+            this.textColor = $r("app.color.color_light")
+          } else {
+            this.textColor = $r("app.color.color_night")
+          }
+        }
+
+        build() {
+          Column() {
+            Text('fontColor')
+              .fontColor(this.textColor)
+          }
+        }
+      }
+      ```
+
+  - Returning different resource values based on a custom theme mode
+
+    fter enabling the optimization, you need to bind both the text content and the text color of the **Text** component to state variables. When a color mode switch event occurs, update the component attributes through those state variables. Example:
+
+      ```ts
+      // ResourceTheme.ets
+      export enum ThemeMode {
+        mode1 = 0,
+        mode2
+      }
+
+      export class ResourceTheme {
+        fontColor: ResourceColor = this.getColor();
+        themeMode: ThemeMode = ThemeMode.mode1;
+
+        setThemeMode(mode: ThemeMode) {
+          this.themeMode = mode
+        }
+        getThemeMode(): ThemeMode {
+          return this.themeMode
+        }
+        getColor(): ResourceColor {
+          if (this.themeMode === ThemeMode.mode1) {
+            return $r("app.color.color_light")
+          } else {
+            return $r("app.color.color_night")
+          }
+        }
+      }
+      ```
+      ```ts
+      // Index.ets
+      import { ConfigurationConstant } from '@kit.AbilityKit';
+      import { ResourceTheme, ThemeMode } from './ResourceTheme';
+
+      @Entry
+      @Component
+      struct MainPage {
+        @StorageLink('colorMode') @Watch('colorModeChange') colorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
+        resourceTheme = new ResourceTheme();
+        @State textColor: ResourceColor = this.resourceTheme.getColor();
+        @State textContent: string = this.resourceTheme.getThemeMode().toString();
+
+        colorModeChange() {
+          if (this.colorMode === ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
+            this.resourceTheme.setThemeMode(ThemeMode.mode1)
+          } else {
+            this.resourceTheme.setThemeMode(ThemeMode.mode2)
+          }
+          this.textContent = this.resourceTheme.getThemeMode().toString()
+          this.textColor = this.resourceTheme.getColor()
+        }
+
+        build() {
+          Column() {
+            Text('ThemeMode is ' + this.textContent)
+              .fontColor(this.textColor)
+          }
+        }
+      }
+      ```
+
+  - Returning different resource values based on a member variable's value
+
+    After enabling the optimization, you need to bind the text color attribute to a state variable. During a color mode switch, update the state variable via a callback so that attribute changes are applied on the next mode switch. Example:
+
+      ```ts
+      // Index.ets
+      import { ConfigurationConstant } from '@kit.AbilityKit';
+
+      @Entry
+      @Component
+      struct MainPage {
+        mode: number = 0;
+        @StorageLink('colorMode') @Watch('colorModeChange') colorMode: ConfigurationConstant.ColorMode = ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET;
+        @State textColor: Resource = $r("app.color.color_light");
+
+        colorModeChange() {
+          if (this.mode % 2 === 0) {
+            return $r("app.color.color_light")
+          } else {
+            return $r("app.color.color_night")
+          }
+        }
+
+        build() {
+          Column() {
+            Button('change mode')
+              .onClick((event: ClickEvent) => {
+                this.mode++
+              })
+            Text('fontColor')
+              .fontColor(this.textColor)
+          }
+        }
+      }
+      ```
+
+## Using Color Inversion for Quick Dark Mode Adaptation
+
+Starting from API version 20, for applications with a large existing codebase that have already partially adapted to dark mode via [resource configuration](#following-the-systems-color-mode) or [theme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md) approaches, you can use the system's built‑in color inversion capability to quickly achieve full dark‑mode adaptation.
+
+While offering less granular control compared to resource configuration and theme modes, color inversion significantly reduces adaptation effort and prevents application package size growth from extensive resource definitions. This method provides visually acceptable results in most scenarios.
+
+> **NOTE**
+>
+> The color inversion capability requires [enabled color mode switching overhead optimization](#optimizing-color-mode-switching-overhead).
+
+1. Implement color inversion.
+
+   The ArkUI framework introduces the [OH_ArkUI_SetForceDarkConfig](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_setforcedarkconfig) API in API version 20. This feature automatically applies color inversion based on your custom algorithms during color mode switching. The inversion only affects color attributes set with non-resource values; when colors are defined via $r references, resource file configurations take precedence.
+
+   This capability proves particularly useful when applications require multiple color attribute configurations but lack comprehensive dark mode resource definitions.
+
+    > **NOTE**
+    >
+    > - Before calling **OH_ArkUI_SetForceDarkConfig**, ensure that [OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname) is loaded.
+    >
+    > - The **OH_ArkUI_SetForceDarkConfig** API must be called in the UI thread before node creation. **After a page is created, dynamically modifying the application's color inversion capability status via this API is not supported.**
+    >
+    > - The **OH_ArkUI_SetForceDarkConfig** API takes effect only at the process level. Different instances cannot use different color inversion algorithms.
+    >
+    > - The **OH_ArkUI_SetForceDarkConfig** API supports only C API implementation. This design avoids significant cross-language call overhead during frequent color mode transitions.
+    >
+    > - [DatePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-datepicker-dialog.md), [TimePickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-timepicker-dialog.md), [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md), and [TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md) do not support color inversion because they lack physical node implementations.
+    >
+    > - Nodes created using C APIs currently do not support the color inversion algorithm for their properties.
+    >
+    > - If a component has an invalid color value or **undefined** configured, the color inversion capability will not take effect.
+
+    This example demonstrates the fundamental usage of the **OH_ArkUI_SetForceDarkConfig** API. Configure a custom color inversion algorithm based on actual scenarios to display appropriate color values during color mode transitions.
+
+      ```c++
+      OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_UNDEFINED, nullptr); // Apply the default system color inversion algorithm to all components.
+      ```
+
+      ```ts
+      // Use the color inversion capability when creating components on the ArkTS side.
+      // By default, the default color inversion algorithm is applied to all components. Text colors invert during theme switching.
+      build() {
+        // ... other code ...
+        Text("Test color inversion algorithm")
+          .fontColor(Color.Black)
+        // ... other code ...
+      }
+      ```
+
+    The **OH_ArkUI_SetForceDarkConfig** API supports various configuration modes.
+      ```c++
+      // Custom color inversion algorithm function.
+      uint32_t colorInvertFunc(uint32_t color) {
+        return ~color;
+      }
+      OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_UNDEFINED, colorInvertFunc); // Apply the custom inversion algorithm to all components.
+      ```
+      ```c++
+      OH_ArkUI_SetForceDarkConfig(nullptr, false, ArkUI_NodeType::ARKUI_NODE_UNDEFINED, nullptr); // Disable color inversion for all components. The original system logic is used.
+      ```
+      ```c++
+      OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_TEXT, nullptr); // Apply the default inversion algorithm only to text components.
+      ```
+      ```c++
+      // Custom color inversion algorithm function.
+      uint32_t colorInvertFunc(uint32_t color) {
+        return ~color;
+      }
+      OH_ArkUI_SetForceDarkConfig(nullptr, true, ArkUI_NodeType::ARKUI_NODE_TEXT, colorInvertFunc); // Apply the custom inversion algorithm only to text components.
+      ```
+
+    > **NOTE**
+    >
+    > - Component-specific inversion requires global capability enablement.
+    >
+    > - The color inversion algorithm cannot be disabled only for a certain type of components when the global color inversion capability is enabled.
+
+2. Understand the following color inversion priority order that the system follows when applying color treatments:
+
+   a. Dark mode color resources
+   
+   b. Component-specific inversion algorithms
+   
+   c. Global inversion algorithms

@@ -95,6 +95,8 @@
 
 ## ArrowPointPosition<sup>11+</sup>
 
+气泡箭头的位置。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -264,6 +266,8 @@
 
 ## CheckBoxShape<sup>11+</sup>
 
+复选框Checkbox的形状。
+
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -331,7 +335,7 @@
 
 ## DialogButtonStyle<sup>10+</sup>
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+弹窗按钮的样式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1001,6 +1005,8 @@ type Nullable\<T> = T | undefined
 
 ## OptionWidthMode<sup>11+</sup>
 
+下拉菜单的宽度模式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1026,6 +1032,8 @@ type Nullable\<T> = T | undefined
 | AlternateReverse | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ## Placement<sup>8+</sup>
+
+气泡显示的位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1106,6 +1114,8 @@ type Nullable\<T> = T | undefined
 | FIT  | 1 | 缩放当前子组件以自适应父组件。 |
 
 ## ResponseType<sup>8+</sup>
+
+菜单显示的触发方式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

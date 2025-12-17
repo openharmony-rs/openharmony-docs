@@ -1,4 +1,4 @@
-# Basic Custom Dialog Box (CustomDialog) (Not Recommended)
+# Basic Custom Dialog Box (CustomDialog)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -33,7 +33,7 @@ Since API version 19, the custom dialog box provides lifecycle callbacks to noti
    ```ts
    @CustomDialog
    struct CustomDialogExample {
-     controller: CustomDialogController
+     controller?: CustomDialogController
    
      build() {
        Column() {
@@ -43,7 +43,7 @@ Since API version 19, the custom dialog box provides lifecycle callbacks to noti
      }
    }
    ```
-2. Create a builder that is bound to the decorator.
+2. Create a constructor and associate it with the decorator.
    
    ```ts
     @Entry
@@ -90,7 +90,7 @@ Custom dialog boxes support data interactions to complete various operations.
      }
      confirm: () => void = () => {
      }
-     controller: CustomDialogController;
+     controller?: CustomDialogController;
    
      build() {
        Column() {
@@ -98,14 +98,14 @@ Custom dialog boxes support data interactions to complete various operations.
          Flex({ justifyContent: FlexAlign.SpaceAround }) {
            Button('Cancel')
              .onClick(() => {
-               this.controller.close();
+               this.controller?.close();
                if (this.cancel) {
                  this.cancel();
                }
              }).backgroundColor(0xffffff).fontColor(Color.Black)
            Button('Obtain')
              .onClick(() => {
-               this.controller.close();
+               this.controller?.close();
                if (this.confirm) {
                  this.confirm();
                }
@@ -369,9 +369,14 @@ struct CustomDialogUser {
     width: '80%',
     height: '100px',
     borderWidth: 1,
-    borderStyle: BorderStyle.Dashed,// borderStyle must be used with borderWidth in pairs.
-    borderColor: Color.Blue,// borderColor must be used with borderWidth in pairs.
-    shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0}),
+    borderStyle: BorderStyle.Dashed, // borderStyle must be used with borderWidth in pairs.
+    borderColor: Color.Blue, // borderColor must be used with borderWidth in pairs.
+    shadow: ({
+      radius: 20,
+      color: Color.Grey,
+      offsetX: 50,
+      offsetY: 0
+    }),
   });
 
   // Set dialogController to null when the custom component is about to be destroyed.
@@ -615,6 +620,7 @@ import { LengthMetrics } from '@kit.ArkUI'
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
+
   build() {
     Column() {
       Column() {
@@ -631,15 +637,14 @@ struct CustomDialogExample {
 @Component
 struct Index {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-    }),
+    builder: CustomDialogExample({}),
     autoCancel: true,
     gridCount: 4,
     showInSubWindow: true,
     isModal: true,
     customStyle: false,
     cornerRadius: 30,
-    alignment:DialogAlignment.Bottom,
+    alignment: DialogAlignment.Bottom,
     keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // The dialog box automatically avoids the soft keyboard.
     keyboardAvoidDistance: LengthMetrics.vp(0) // The distance between the soft keyboard and the dialog box is 0 vp.
   })

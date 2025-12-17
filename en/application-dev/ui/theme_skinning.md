@@ -1,18 +1,27 @@
 # Configuring In-Application Theme Skinning
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lushi871202-->
+<!--Designer: @lushi871202-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
 For applications developed with ArkTS, you can switch themes within the application, such as toggling between dark and light modes or changing the skin. Note that this feature is limited to in-application use and does not apply at the UIAbility or window level. It is not available for the C-API and Node-API.
 
 ## Customizing Theme Colors
-To implement theme skinning for your application, you must define custom theme colors. Use [CustomTheme](../reference/apis-arkui/js-apis-arkui-theme.md#customtheme) to specify the colors you wish to modify. Properties of **CustomTheme** are optional: Only overridden properties are applied, and the rest inherits from the system's default settings. For details, see [System Default Token Color Values](#system-default-token-color-values). The following is an example of how to define custom theme colors:
+To implement theme switching for your application, you must define custom theme colors. Use [CustomTheme](../reference/apis-arkui/js-apis-arkui-theme.md#customtheme) to specify the colors you wish to modify. Its properties are optional. Only values that need to be changed from system defaults should be specified. Unmodified values inherit from the system's default settings. For details, see [System Default Token Color Values](#system-default-token-color-values). The following is an example of how to define custom theme colors:
 
   ```ts
+    // AppTheme.ets
     import { CustomColors, CustomTheme } from '@kit.ArkUI';
 
     export class AppColors implements CustomColors {
       // Custom theme colors
       brand: ResourceColor = '#FF75D9';
+      // Use $r to set the primary warning color to different colors in dark and light modes.
+      warning: ResourceColor = $r('sys.color.ohos_id_color_warning');
     }
 
     export class AppTheme implements CustomTheme {
@@ -23,10 +32,11 @@ To implement theme skinning for your application, you must define custom theme c
   ```
 
 ## Setting Custom Theme Colors for Application Components
-- To apply custom theme colors to your application components, set them at the page entry point. Ensure that [ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol) is executed before the page is built.
+- When setting custom theme colors at the page entry point, ensure that [ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol) is executed before the page is built.
   Use the [onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12) callback function to allow custom components to access the currently active **Theme** object.
 
   ```ts
+    // Index.ets
     import { Theme, ThemeControl } from '@kit.ArkUI';
     import { gAppTheme } from './AppTheme';
     
@@ -60,7 +70,7 @@ To implement theme skinning for your application, you must define custom theme c
                       .checked(true)
                   }
                   .width('50%')
-
+    
                   Column() {
                     Text('Dark')
                       .fontSize('16fp')
@@ -120,6 +130,21 @@ To implement theme skinning for your application, you must define custom theme c
               .borderRadius('10vp')
               .backgroundColor(this.menuItemColor)
             }
+            ListItem() {
+              Column() {
+                Text('Warning')
+                  .width('100%')
+                  .margin({ top: '5vp', left: '14fp' })
+                Button('Text')
+                  .type(ButtonType.Capsule)
+                  .role(ButtonRole.ERROR)
+                  .width('40%')
+              }
+              .width('100%')
+              .height('70vp')
+              .borderRadius('10vp')
+              .backgroundColor(this.menuItemColor)
+            }
           }
         }
         .padding('10vp')
@@ -130,9 +155,10 @@ To implement theme skinning for your application, you must define custom theme c
     }
   ```
 
-- To set [ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol) in a UIAbility, you need to use [setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme) in the **onWindowStageCreate()** API.
+- To configure [ThemeControl](../reference/apis-arkui/js-apis-arkui-theme.md#themecontrol) in a UIAbility, call [setDefaultTheme](../reference/apis-arkui/js-apis-arkui-theme.md#setdefaulttheme) inside the **onWindowStageCreate()** method to apply custom theme colors to components within the application.
 
   ```ts
+    // EntryAbility.ets
     import {AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window, CustomColors, ThemeControl } from '@kit.ArkUI';
@@ -173,16 +199,18 @@ To implement theme skinning for your application, you must define custom theme c
     }
   ```
 
-![systemTheme](figures/systemTheme.png)
+  ![systemTheme](figures/systemTheme.png)
 
-> **NOTE**
->
->If the parameter for **setDefaultTheme** is undefined, the default value is used. See [System Default Token Color Values](#system-default-token-color-values) for the default color values associated with the tokens.
+  > **NOTE**
+  >
+  > - When the parameter passed to **setDefaultTheme** is **undefined**, the previously applied custom theme is cleared. The color values corresponding to the theme tokens will then revert to the system defaults defined in [System Default Token Color Values](#system-default-token-color-values).
+  >
+  > - **setDefaultTheme** must be called after ArkUI initialization completes, specifically within the **windowStage.loadContent** completion callback.
 
 ## Setting a Custom Theme Style for Specific Application Pages
 You can use [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md) to apply the color scheme of a custom theme to the default styles of internal components. Within the scope of **WithTheme**, the color scheme of components will be adjusted according to the theme's color scheme.
 
-In the example below, components within the scope are styled with a custom theme using **WithTheme({ theme: this.myTheme })**. You can switch to a different theme style by updating **this.myTheme**. The [onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12) callback function allows custom components to access the currently active **Theme** object.
+As demonstrated in the example, **WithTheme({ theme: this.myTheme })** applies the custom theme styling to all components within its scope. Theme styles can be dynamically updated by modifying **this.myTheme**. The [onWillApplyTheme](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12) callback allows custom components to access the currently active **Theme** object.
 
   ```ts
     import { CustomColors, CustomTheme, Theme } from '@kit.ArkUI';
@@ -306,56 +334,56 @@ Example of the **dark.json** file content:
 
 ## System Default Token Color Values
 
-| Token                                      | Category                                         | Light     |                                       | Dark      |                                       |
-| ------------------------------------------ | ------------------------------------------------ | --------- | ------------------------------------- | --------- | ------------------------------------- |
-| theme.colors.brand                         | Brand color.                                     | #ff0a59f7 | ![](figures/ff0a59f7.png) | #ff317af7 | ![](figures/ff317af7.png) |
-| theme.colors.warning                       | Alert color.                                     | #ffe84026 | ![](figures/ffe84026.png) | #ffd94838 | ![](figures/ffd94838.png) |
-| theme.colors.alert                         | Warning color.                                   | #ffed6f21 | ![](figures/ffed6f21.png) | #ffdb6b42 | ![](figures/ffdb6b42.png) |
-| theme.colors.confirm                       | Confirmation color.                              | #ff64bb5c | ![](figures/ff64bb5c.png) | #ff5ba854 | ![](figures/ff5ba854.png) |
-| theme.colors.fontPrimary                   | Primary text color.                              | #e5000000 | ![](figures/e5000000.png) | #e5ffffff | ![](figures/e5ffffff.png) |
-| theme.colors.fontSecondary                 | Secondary text color.                            | #99000000 | ![](figures/99000000.png) | #99ffffff | ![](figures/99ffffff.png) |
-| theme.colors.fontTertiary                  | Tertiary text color.                             | #66000000 | ![](figures/66000000.png) | #66ffffff | ![](figures/66ffffff.png) |
-| theme.colors.fontFourth                    | Quaternary text color.                           | #33000000 | ![](figures/33000000.png) | #33ffffff | ![](figures/33ffffff.png) |
-| theme.colors.fontEmphasize                 | Highlight text color.                            | #ff0a59f7 | ![](figures/ff0a59f7.png) | #ff317af7 | ![](figures/ff317af7.png) |
-| theme.colors.fontOnPrimary                 | Primary text invert color.                       | #ffffffff | ![](figures/ffffffff.png) | #ff000000 | ![](figures/ff000000.png) |
-| theme.colors.fontOnSecondary               | Secondary text invert color.                     | #99ffffff | ![](figures/99ffffff.png) | #99000000 | ![](figures/99000000.png) |
-| theme.colors.fontOnTertiary                | Tertiary text invert color.                      | #66ffffff | ![](figures/66ffffff.png) | #66000000 | ![](figures/66000000.png) |
-| theme.colors.fontOnFourth                  | Quaternary text invert color.                    | #33ffffff | ![](figures/33ffffff.png) | #33000000 | ![](figures/33000000.png) |
-| theme.colors.iconPrimary                   | Primary icon color.                              | #e5000000 | ![](figures/e5000000.png) | #e5ffffff | ![](figures/e5ffffff.png) |
-| theme.colors.iconSecondary                 | Secondary icon color.                            | #99000000 | ![](figures/99000000.png) | #99ffffff | ![](figures/99ffffff.png) |
-| theme.colors.iconTertiary                  | Tertiary icon color.                             | #66000000 | ![](figures/66000000.png) | #66ffffff | ![](figures/66ffffff.png) |
-| theme.colors.iconFourth                    | Quaternary icon color.                           | #33000000 | ![](figures/33000000.png) | #33ffffff | ![](figures/33ffffff.png) |
-| theme.colors.iconEmphasize                 | Emphasis icon color.                             | #ff0a59f7 | ![](figures/ff0a59f7.png) | #ff317af7 | ![](figures/ff317af7.png) |
-| theme.colors.iconSubEmphasize              | Emphasis auxiliary icon color.                   | #660a59f7 | ![](figures/660a59f7.png) | #66317af7 | ![](figures/66317af7.png) |
-| theme.colors.iconOnPrimary                 | Primary icon invert color.                       | #ffffffff | ![](figures/ffffffff.png) | #ff000000 | ![](figures/ff000000.png) |
-| theme.colors.iconOnSecondary               | Secondary icon invert color.                     | #99ffffff | ![](figures/99ffffff.png) | #99000000 | ![](figures/99000000.png) |
-| theme.colors.iconOnTertiary                | Tertiary icon invert color.                      | #66ffffff | ![](figures/66ffffff.png) | #66000000 | ![](figures/66000000.png) |
-| theme.colors.iconOnFourth                  | Quaternary icon invert color.                    | #33ffffff | ![](figures/33ffffff.png) | #33000000 | ![](figures/33000000.png) |
-| theme.colors.backgroundPrimary             | Primary background color (solid, opaque).        | #ffffffff | ![](figures/ffffffff.png) | #ffe5e5e5 | ![](figures/ffe5e5e5.png) |
-| theme.colors.backgroundSecondary           | Secondary background color (solid, opaque).      | #fff1f3f5 | ![](figures/fff1f3f5.png) | #ff191a1c | ![](figures/ff191a1c.png) |
-| theme.colors.backgroundTertiary            | Tertiary background color (solid, opaque).       | #ffe5e5ea | ![](figures/ffe5e5ea.png) | #ff202224 | ![](figures/ff202224.png) |
-| theme.colors.backgroundFourth              | Quaternary background color (solid, opaque).     | #ffd1d1d6 | ![](figures/ffd1d1d6.png) | #ff2e3033 | ![](figures/ff2e3033.png) |
-| theme.colors.backgroundEmphasize           | Emphasis background color (solid, opaque).       | #ff0a59f7 | ![](figures/ff0a59f7.png) | #ff317af7 | ![](figures/ff317af7.png) |
-| theme.colors.compForegroundPrimary         | Foreground.                                      | #ff000000 | ![](figures/ff000000.png) | #ffe5e5e5 | ![](figures/ffe5e5e5.png) |
-| theme.colors.compBackgroundPrimary         | White background.                                | #ffffffff | ![](figures/ffffffff.png) | #ffffffff | ![](figures/ffffffff.png) |
-| theme.colors.compBackgroundPrimaryTran     | White transparent background.                    | #ffffffff | ![](figures/ffffffff.png) | #33ffffff | ![](figures/33ffffff.png) |
-| theme.colors.compBackgroundPrimaryContrary | Always-on background.                            | #ffffffff | ![](figures/ffffffff.png) | #ffe5e5e5 | ![](figures/ffe5e5e5.png) |
-| theme.colors.compBackgroundGray            | Gray background.                                 | #fff1f3f5 | ![](figures/fff1f3f5.png) | #ffe5e5ea | ![](figures/ffe5e5ea.png) |
-| theme.colors.compBackgroundSecondary       | Secondary background.                            | #19000000 | ![](figures/19000000.png) | #19ffffff | ![](figures/19ffffff.png) |
-| theme.colors.compBackgroundTertiary        | Tertiary background.                             | #0c000000 | ![](figures/0c000000.png) | #0cffffff | ![](figures/0cffffff.png) |
-| theme.colors.compBackgroundEmphasize       | Emphasis background.                             | #ff0a59f7 | ![](figures/ff0a59f7.png) | #ff317af7 | ![](figures/ff317af7.png) |
-| theme.colors.compBackgroundNeutral         | Black, neutral, emphasis background.             | #ff000000 | ![](figures/ff000000.png) | #ffffffff | ![](figures/ffffffff.png) |
-| theme.colors.compEmphasizeSecondary        | 20% emphasis background.                         | #330a59f7 | ![](figures/330a59f7.png) | #33317af7 | ![](figures/33317af7.png) |
-| theme.colors.compEmphasizeTertiary         | 10% emphasis background.                         | #190a59f7 | ![](figures/190a59f7.png) | #19317af7 | ![](figures/19317af7.png) |
-| theme.colors.compDivider                   | Divider color.                                   | #33000000 | ![](figures/33000000.png) | #33ffffff | ![](figures/33ffffff.png) |
-| theme.colors.compCommonContrary            | Common invert color.                             | #ffffffff | ![](figures/ffffffff.png) | #ff000000 | ![](figures/ff000000.png) |
-| theme.colors.compBackgroundFocus           | Background color in the focused state.           | #fff1f3f5 | ![](figures/fff1f3f5.png) | #ff000000 | ![](figures/fff1f3f5.png) |
-| theme.colors.compFocusedPrimary            | Primary inverted color in the focused state.     | #e5000000 | ![](figures/e5000000.png) | #e5ffffff | ![](figures/e5ffffff.png) |
-| theme.colors.compFocusedSecondary          | Secondary inverted color in the focused state.   | #99000000 | ![](figures/99000000.png) | #99ffffff | ![](figures/99ffffff.png) |
-| theme.colors.compFocusedTertiary           | Tertiary inverted color in the focused state.    | #66000000 | ![](figures/66000000.png) | #66ffffff | ![](figures/66ffffff.png) |
-| theme.colors.interactiveHover              | Common interactive color for the hover state.    | #0c000000 | ![](figures/0c000000.png) | #0cffffff | ![](figures/0cffffff.png) |
-| theme.colors.interactivePressed            | Common interactive color for the pressed state.  | #19000000 | ![](figures/19000000.png) | #19ffffff | ![](figures/19ffffff.png) |
-| theme.colors.interactiveFocus              | Common interactive color for the focused state.  | #ff0a59f7 | ![](figures/ff0a59f7.png) | #ff317af7 | ![](figures/ff317af7.png) |
-| theme.colors.interactiveActive             | Common interactive color for the active state.   | #ff0a59f7 | ![](figures/ff0a59f7.png) | #ff317af7 | ![](figures/ff317af7.png) |
-| theme.colors.interactiveSelect             | Common interactive color for the selected state. | #33000000 | ![](figures/33000000.png) | #33ffffff | ![](figures/33ffffff.png) |
-| theme.colors.interactiveClick              | Common interactive color for the clicked state.  | #19000000 | ![](figures/19000000.png) | #19ffffff | ![](figures/19ffffff.png) |
+| Token                                      | Category| Light |    Description      | Dark    |               Description                              |
+|--------------------------------------------|-----| --- |-----------| ------- | -------------------------------------------- |
+| theme.colors.brand                         | Brand color.|#ff0a59f7| ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
+| theme.colors.warning                       | Alert color.|#ffe84026| ![](figures/ffe84026.png "#ffe84026") |#ffd94838|![](figures/ffd94838.png "#ffd94838")|
+| theme.colors.alert                         | Warning color.|#ffed6f21| ![](figures/ffed6f21.png "#ffed6f21") |#ffdb6b42|![](figures/ffdb6b42.png "#ffdb6b42")|
+| theme.colors.confirm                       | Confirmation color.|#ff64bb5c| ![](figures/ff64bb5c.png "#ff64bb5c") |#ff5ba854|![](figures/ff5ba854.png "#ff5ba854")|
+| theme.colors.fontPrimary                   | Primary text color.| #e5000000 | ![](figures/e5000000.png "#e5000000") |#e5ffffff|![](figures/e5ffffff.png "#e5ffffff")|
+| theme.colors.fontSecondary                 | Secondary text color.| #99000000 | ![](figures/99000000.png "#99000000") |#99ffffff|![](figures/99ffffff.png "#99ffffff")|
+| theme.colors.fontTertiary                  | Tertiary text color.| #66000000 | ![](figures/66000000.png "#66000000") |#66ffffff|![](figures/66ffffff.png "#66ffffff")|
+| theme.colors.fontFourth                    | Quaternary text color.| #33000000 | ![](figures/33000000.png "#33000000") |#33ffffff|![](figures/33ffffff.png "#33ffffff")|
+| theme.colors.fontEmphasize                 | Highlight text color.| #ff0a59f7 | ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
+| theme.colors.fontOnPrimary                 | Primary text invert color.| #ffffffff | ![](figures/ffffffff.png "#ffffffff") |#ff000000|![](figures/ff000000.png "#ff000000")|
+| theme.colors.fontOnSecondary               | Secondary text invert color.| #99ffffff | ![](figures/99ffffff.png "#99ffffff") |#99000000|![](figures/99000000.png "#99000000")|
+| theme.colors.fontOnTertiary                | Tertiary text invert color.| #66ffffff | ![](figures/66ffffff.png "#66ffffff") |#66000000|![](figures/66000000.png "#66000000")|
+| theme.colors.fontOnFourth                  | Quaternary text invert color.| #33ffffff | ![](figures/33ffffff.png "#33ffffff") |#33000000|![](figures/33000000.png "#33000000")|
+| theme.colors.iconPrimary                   | Primary icon color.| #e5000000 | ![](figures/e5000000.png "#e5000000") |#e5ffffff|![](figures/e5ffffff.png "#e5ffffff")|
+| theme.colors.iconSecondary                 | Secondary icon color.| #99000000 | ![](figures/99000000.png "#99000000") |#99ffffff|![](figures/99ffffff.png "#99ffffff")|
+| theme.colors.iconTertiary                  | Tertiary icon color.| #66000000 | ![](figures/66000000.png "#66000000") |#66ffffff|![](figures/66ffffff.png "#66ffffff")|
+| theme.colors.iconFourth                    | Quaternary icon color.| #33000000 | ![](figures/33000000.png "#33000000") |#33ffffff|![](figures/33ffffff.png "#33ffffff")|
+| theme.colors.iconEmphasize                 | Emphasis icon color.| #ff0a59f7 | ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
+| theme.colors.iconSubEmphasize              | Emphasis auxiliary icon color.| #660a59f7 | ![](figures/660a59f7.png "#660a59f7") |#66317af7|![](figures/66317af7.png "#66317af7")|
+| theme.colors.iconOnPrimary                 | Primary icon invert color.| #ffffffff | ![](figures/ffffffff.png "#ffffffff") |#ff000000|![](figures/ff000000.png "#ff000000")|
+| theme.colors.iconOnSecondary               | Secondary icon invert color.| #99ffffff | ![](figures/99ffffff.png "#99ffffff") |#99000000|![](figures/99000000.png "#99000000")|
+| theme.colors.iconOnTertiary                | Tertiary icon invert color.| #66ffffff | ![](figures/66ffffff.png "#66ffffff") |#66000000|![](figures/66000000.png "#66000000")|
+| theme.colors.iconOnFourth                  | Quaternary icon invert color.| #33ffffff | ![](figures/33ffffff.png "#33ffffff") |#33000000|![](figures/33000000.png "#33000000")|
+| theme.colors.backgroundPrimary             | Primary background color (solid, opaque).| #ffffffff | ![](figures/ffffffff.png "#ffffffff") |#ffe5e5e5|![](figures/ffe5e5e5.png "#ffe5e5e5")|
+| theme.colors.backgroundSecondary           | Secondary background color (solid, opaque).| #fff1f3f5 | ![](figures/fff1f3f5.png "#fff1f3f5") |#ff191a1c|![](figures/ff191a1c.png "#ff191a1c")|
+| theme.colors.backgroundTertiary            | Tertiary background color (solid, opaque).| #ffe5e5ea | ![](figures/ffe5e5ea.png "#ffe5e5ea") |#ff202224|![](figures/ff202224.png "#ff202224")|
+| theme.colors.backgroundFourth              | Quaternary background color (solid, opaque).| #ffd1d1d6 | ![](figures/ffd1d1d6.png "#ffd1d1d6") |#ff2e3033|![](figures/ff2e3033.png "#ff2e3033")|
+| theme.colors.backgroundEmphasize           | Emphasis background color (solid, opaque).| #ff0a59f7 | ![](figures/ff0a59f7.png "#ff0a59f7") |#ff317af7|![](figures/ff317af7.png "#ff317af7")|
+| theme.colors.compForegroundPrimary         | Foreground.| #ff000000 | ![](figures/ff000000.png "#ff000000") | #ffe5e5e5 |![](figures/ffe5e5e5.png "#ffe5e5e5")|
+| theme.colors.compBackgroundPrimary         | White background.| #ffffffff |![](figures/ffffffff.png "#ffffffff")| #ffffffff |![](figures/ffffffff.png "#ffffffff")|
+| theme.colors.compBackgroundPrimaryTran     | White transparent background.| #ffffffff |![](figures/ffffffff.png "#ffffffff")| #33ffffff |![](figures/33ffffff.png "#33ffffff")|
+| theme.colors.compBackgroundPrimaryContrary | Always-on background.| #ffffffff |![](figures/ffffffff.png "#ffffffff")| #ffe5e5e5 |![](figures/ffe5e5e5.png "#ffe5e5e5")|
+| theme.colors.compBackgroundGray            | Gray background.| #fff1f3f5 |![](figures/fff1f3f5.png "#fff1f3f5")| #ffe5e5ea |![](figures/ffe5e5ea.png "#ffe5e5ea")|
+| theme.colors.compBackgroundSecondary       | Secondary background.| #19000000 |![](figures/19000000.png "#19000000")| #19ffffff |![](figures/19ffffff.png "#19ffffff")|
+| theme.colors.compBackgroundTertiary        | Tertiary background.| #0c000000 |![](figures/0c000000.png "#0c000000")| #0cffffff |![](figures/0cffffff.png "#0cffffff")|
+| theme.colors.compBackgroundEmphasize       | Emphasis background.| #ff0a59f7 |![](figures/ff0a59f7.png "#ff0a59f7")| #ff317af7 |![](figures/ff317af7.png "#ff317af7")|
+| theme.colors.compBackgroundNeutral         | Black, neutral, emphasis background.| #ff000000 |![](figures/ff000000.png "#ff000000")| #ffffffff |![](figures/ffffffff.png "#ffffffff")|
+| theme.colors.compEmphasizeSecondary        | 20% emphasis background.| #330a59f7 |![](figures/330a59f7.png "#330a59f7")| #33317af7 |![](figures/33317af7.png "#33317af7")|
+| theme.colors.compEmphasizeTertiary         | 10% emphasis background.| #190a59f7 |![](figures/190a59f7.png "#190a59f7")| #19317af7 |![](figures/19317af7.png "#19317af7")|
+| theme.colors.compDivider                   | Divider color.| #33000000 |![](figures/33000000.png "#33000000")| #33ffffff |![](figures/33ffffff.png "#33ffffff")|
+| theme.colors.compCommonContrary            | Common invert color.| #ffffffff |![](figures/ffffffff.png "#ffffffff")| #ff000000 |![](figures/ff000000.png "#ff000000")|
+| theme.colors.compBackgroundFocus           | Background color in the focused state.| #fff1f3f5 |![](figures/fff1f3f5.png "#fff1f3f5")| #ff000000 |![](figures/fff1f3f5.png "#fff1f3f5")|
+| theme.colors.compFocusedPrimary            | Primary inverted color in the focused state.| #e5000000 |![](figures/e5000000.png "#e5000000")| #e5ffffff |![](figures/e5ffffff.png "#e5ffffff")|
+| theme.colors.compFocusedSecondary          | Secondary inverted color in the focused state.| #99000000 |![](figures/99000000.png "#99000000")| #99ffffff |![](figures/99ffffff.png "#99ffffff")|
+| theme.colors.compFocusedTertiary           | Tertiary inverted color in the focused state.| #66000000 |![](figures/66000000.png "#66000000")| #66ffffff |![](figures/66ffffff.png "#66ffffff")|
+| theme.colors.interactiveHover              | Common interactive color for the hover state.| #0c000000 |![](figures/0c000000.png "#0c000000")| #0cffffff |![](figures/0cffffff.png "#0cffffff")|
+| theme.colors.interactivePressed            | Common interactive color for the pressed state.| #19000000 |![](figures/19000000.png "#19000000")| #19ffffff |![](figures/19ffffff.png "#19ffffff")|
+| theme.colors.interactiveFocus              | Common interactive color for the focused state.| #ff0a59f7 |![](figures/ff0a59f7.png "#ff0a59f7")| #ff317af7 |![](figures/ff317af7.png "#ff317af7")|
+| theme.colors.interactiveActive             | Common interactive color for the active state.| #ff0a59f7 |![](figures/ff0a59f7.png "#ff0a59f7")| #ff317af7 |![](figures/ff317af7.png "#ff317af7")|
+| theme.colors.interactiveSelect             | Common interactive color for the selected state.| #33000000 |![](figures/33000000.png "#33000000")| #33ffffff |![](figures/33ffffff.png "#33ffffff")|
+| theme.colors.interactiveClick              | Common interactive color for the clicked state.| #19000000 |![](figures/19000000.png "#19000000")| #19ffffff |![](figures/19ffffff.png "#19ffffff")|

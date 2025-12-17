@@ -270,7 +270,7 @@ You can create an interactive page to open or close a dialog box.
 
 ## Managing the Dialog Box Lifecycle
 
-Dialog boxes have four lifecycle events: **registerOnWillAppear**, **registerOnDidAppear**, **registerOnWillDisappear**, and **registerOnDidDisappear**.
+Starting from API version 19, four lifecycle APIs are available for callbacks before and after a dialog box is displayed and closed: **registerOnWillAppear**, **registerOnDidAppear**, **registerOnWillDisappear**, and **registerOnDidDisappear**.
 These lifecycle APIs must be called before the **show** API is invoked. The sequence of lifecycle events is as follows:
 registerOnWillAppear -> The dialog box display animation starts -> The dialog box display animation ends -> registerOnDidAppear -> The dialog box is fully displayed ->
 registerOnWillDisappear -> The dialog box exit animation starts -> The dialog box exit animation ends -> registerOnDidDisappear -> The dialog box is fully closed
