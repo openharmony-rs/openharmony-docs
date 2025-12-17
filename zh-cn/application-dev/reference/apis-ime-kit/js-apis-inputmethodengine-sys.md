@@ -153,7 +153,7 @@ panel.setShadow(20, '#000000', 20, 20);
 | NONE | 0 | 不使用流光模式。 |
 | BACKGROUND_FLUID_LIGHT  | 1 | 开启背景流光模式。此时系统面板会变为透明，流光效果需要由编辑框宿主应用实现。 |
 
-## EditorAttribute
+## EditorAttribute<sup>20+</sup>
 
 编辑框属性值。
 
@@ -163,7 +163,7 @@ panel.setShadow(20, '#000000', 20, 20);
 
 | 名称         | 类型 | 只读 | 可选 | 说明               |
 | ------------ | -------- | ---- | ---- | ------------------ |
-| fluidLightMode<sup>20+</sup> | [FluidLightMode](#fluidlightmode20) | 是 | 是 | 流光模式。如果没有设置或设置非法值，默认不使用流光模式。<br>该属性仅系统应用可以使用。|
+| fluidLightMode | [FluidLightMode](#fluidlightmode20) | 是 | 是 | 流光模式。如果没有设置或设置非法值，默认不使用流光模式。<br>该属性仅系统应用可以使用。|
 
 ## ImmersiveEffect<sup>20+</sup>
 

@@ -56,7 +56,7 @@
 
 | 名称                                       | 类型                                       | 描述                                       |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| [fillStyle](#fillstyle)                  | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;CanvasPattern | 指定绘制的填充色。<br/>-&nbsp;类型为&lt;color&gt;时，表示设置填充区域的颜色。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用&nbsp;createLinearGradient()方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用&nbsp;createPattern()方法创建。 |
+| [fillStyle](#fillstyle)                  | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](../arkui-ts/ts-components-canvas-canvaspattern.md) | 指定绘制的填充色。<br/>-&nbsp;类型为&lt;color&gt;时，表示设置填充区域的颜色。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用&nbsp;createLinearGradient()方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用&nbsp;createPattern()方法创建。 |
 | [lineWidth](#linewidth)                  | number                                   | 设置绘制线条的宽度。                               |
 | [strokeStyle](#strokestyle)              | &lt;color&gt;&nbsp;\|&nbsp;[CanvasGradient](js-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;CanvasPattern | 设置描边的颜色。<br/>-&nbsp;类型为&lt;color&gt;时，表示设置描边使用的颜色。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用&nbsp;createLinearGradient()方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用&nbsp;createPattern()方法创建。 |
 | [lineCap](#linecap)                      | string                                   | 指定线端点的样式，可选值为：<br/>-&nbsp;butt：线端点以方形结束。<br/>-&nbsp;round：线端点以圆形结束。<br/>-&nbsp;square：线端点以方形结束，该样式下会增加一个长度和线段厚度相同，宽度是线段厚度一半的矩形。<br>默认值：butt |

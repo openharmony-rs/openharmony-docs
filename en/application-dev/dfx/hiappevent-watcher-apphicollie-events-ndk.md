@@ -272,7 +272,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
        HiCollie_SetTimerParam param = {"testTimer", 1, CallBack, nullptr, HiCollie_Flag::HICOLLIE_FLAG_LOG};
        HiCollie_ErrorCode errorCode = OH_HiCollie_SetTimer(param, &id);  // Register a HiCollieTimer function to execute a one-off timeout detection task.
        if (errorCode == HICOLLIE_SUCCESS) {  // The HiCollieTimer task is successfully registered.
-           OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Log the task ID.
+           OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Print the task ID.
            sleep (2); // Simulate a time-consuming function to block the thread for 2s.
            OH_HiCollie_CancelTimer (id); // Cancel the registered timer based on the ID.
        }
@@ -400,7 +400,7 @@ The application crashes. After restarting the application, you can view the foll
 
 1. Remove the event watcher.
 
-   <!-- [APP_Hicollie_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[APP_Hicollie_RemoveWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
    
    ``` C++
    static napi_value RemoveWatcher(napi_env env, napi_callback_info info)
@@ -416,7 +416,7 @@ The application crashes. After restarting the application, you can view the foll
 
 2. Destroy the event watcher.
 
-   <!-- [APP_Hicollie_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   <!-- @[APP_Hicollie_DestroyWatcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
    
    ``` C++
    static napi_value DestroyWatcher(napi_env env, napi_callback_info info)

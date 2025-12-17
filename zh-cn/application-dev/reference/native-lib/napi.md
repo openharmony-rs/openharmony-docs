@@ -651,13 +651,11 @@ libace_napi.z.so
 
 **说明：**
 
-- OpenHarmony中，当强引用delete时直接进行回调，无需等到对象析构。
+- OpenHarmony在强引用delete的时候直接回调，标准库是在对象析构时候才会回调。
 
-- 回调主动抛出异常时，OpenHarmony会触发JSCrash。
+- 回调主动抛出异常时，OpenHarmony会触发JSCrash，标准库不会触发crash。
 
-**说明：**
-
-- 标准库中返回弱引用， OpenHarmony在result不为空时返回强引用。
+- OpenHarmony在result非空时创建强引用，标准库则创建弱引用。
 
 ### napi_fatal_exception
 

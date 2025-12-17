@@ -61,7 +61,7 @@ Defines data asset structs.<br>Asset is a data struct used in data management. Y
 
 ### Data_AssetStatus
 
-```
+```c
 enum Data_AssetStatus
 ```
 
@@ -86,13 +86,13 @@ Enumerates the data asset statuses.
 
 ### OH_Data_Asset_SetName()
 
-```
+```c
 int OH_Data_Asset_SetName(Data_Asset *asset, const char *name)
 ```
 
 **Description**
 
-Sets the name of a data asset.
+Sets the name of an asset.
 
 **Since**: 11
 
@@ -112,7 +112,7 @@ Sets the name of a data asset.
 
 ### OH_Data_Asset_SetUri()
 
-```
+```c
 int OH_Data_Asset_SetUri(Data_Asset *asset, const char *uri)
 ```
 
@@ -138,7 +138,7 @@ Sets the absolute path (URI) of an asset in the system.
 
 ### OH_Data_Asset_SetPath()
 
-```
+```c
 int OH_Data_Asset_SetPath(Data_Asset *asset, const char *path)
 ```
 
@@ -164,7 +164,7 @@ Sets the relative path of an asset in the application sandbox directory.
 
 ### OH_Data_Asset_SetCreateTime()
 
-```
+```c
 int OH_Data_Asset_SetCreateTime(Data_Asset *asset, int64_t createTime)
 ```
 
@@ -190,7 +190,7 @@ Sets the creation time for an asset.
 
 ### OH_Data_Asset_SetModifyTime()
 
-```
+```c
 int OH_Data_Asset_SetModifyTime(Data_Asset *asset, int64_t modifyTime)
 ```
 
@@ -216,7 +216,7 @@ Sets the last modification time for a data asset.
 
 ### OH_Data_Asset_SetSize()
 
-```
+```c
 int OH_Data_Asset_SetSize(Data_Asset *asset, size_t size)
 ```
 
@@ -242,7 +242,7 @@ Sets the size of an asset.
 
 ### OH_Data_Asset_SetStatus()
 
-```
+```c
 int OH_Data_Asset_SetStatus(Data_Asset *asset, Data_AssetStatus status)
 ```
 
@@ -268,7 +268,7 @@ Sets the status of an asset.
 
 ### OH_Data_Asset_GetName()
 
-```
+```c
 int OH_Data_Asset_GetName(Data_Asset *asset, char *name, size_t *length)
 ```
 
@@ -295,7 +295,7 @@ Obtains the name of a data asset.
 
 ### OH_Data_Asset_GetUri()
 
-```
+```c
 int OH_Data_Asset_GetUri(Data_Asset *asset, char *uri, size_t *length)
 ```
 
@@ -322,7 +322,7 @@ Obtains the absolute path (URI) of a data asset.
 
 ### OH_Data_Asset_GetPath()
 
-```
+```c
 int OH_Data_Asset_GetPath(Data_Asset *asset, char *path, size_t *length)
 ```
 
@@ -349,7 +349,7 @@ Obtains the relative path of a data asset.
 
 ### OH_Data_Asset_GetCreateTime()
 
-```
+```c
 int OH_Data_Asset_GetCreateTime(Data_Asset *asset, int64_t *createTime)
 ```
 
@@ -379,7 +379,7 @@ Data_Asset
 
 ### OH_Data_Asset_GetModifyTime()
 
-```
+```c
 int OH_Data_Asset_GetModifyTime(Data_Asset *asset, int64_t *modifyTime)
 ```
 
@@ -405,7 +405,7 @@ Obtains the last modification time of an asset.
 
 ### OH_Data_Asset_GetSize()
 
-```
+```c
 int OH_Data_Asset_GetSize(Data_Asset *asset, size_t *size)
 ```
 
@@ -431,7 +431,7 @@ Obtains the space occupied by an asset.
 
 ### OH_Data_Asset_GetStatus()
 
-```
+```c
 int OH_Data_Asset_GetStatus(Data_Asset *asset, Data_AssetStatus *status)
 ```
 
@@ -457,7 +457,7 @@ Obtains the status of a data asset.
 
 ### OH_Data_Asset_CreateOne()
 
-```
+```c
 Data_Asset *OH_Data_Asset_CreateOne(void)
 ```
 
@@ -475,7 +475,7 @@ Creates a [Data_Asset](capi-rdb-data-asset.md) instance.
 
 ### OH_Data_Asset_DestroyOne()
 
-```
+```c
 int OH_Data_Asset_DestroyOne(Data_Asset *asset)
 ```
 
@@ -499,7 +499,7 @@ Destroys a [Data_Asset](capi-rdb-data-asset.md) object and reclaims the memory o
 
 ### OH_Data_Asset_CreateMultiple()
 
-```
+```c
 Data_Asset **OH_Data_Asset_CreateMultiple(uint32_t count)
 ```
 
@@ -524,7 +524,7 @@ Creates a specified number of [Data_Asset](capi-rdb-data-asset.md) instances.
 
 ### OH_Data_Asset_DestroyMultiple()
 
-```
+```c
 int OH_Data_Asset_DestroyMultiple(Data_Asset **assets, uint32_t count)
 ```
 

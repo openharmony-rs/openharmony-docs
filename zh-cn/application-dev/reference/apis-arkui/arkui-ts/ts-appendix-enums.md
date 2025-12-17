@@ -95,6 +95,8 @@
 
 ## ArrowPointPosition<sup>11+</sup>
 
+气泡箭头的位置。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -274,6 +276,8 @@
 
 ## CopyOptions<sup>9+</sup>
 
+剪贴板复制范围。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 值 | 说明       |
@@ -284,6 +288,8 @@
 | CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
 
 ## CheckBoxShape<sup>11+</sup>
+
+复选框Checkbox的形状。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -304,11 +310,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-|名称	            | 值 | 说明                                   |
+|名称                | 值 | 说明                                   |
 |-------------------| -- | ------------------------------------- |
 | BEGIN             | 0  | 表冠开始转动。                          |
-| UPDATE	        | 1  | 表冠转动中。                            |
-| END	            | 2  | 表冠停止转动。                          |
+| UPDATE            | 1  | 表冠转动中。                            |
+| END                | 2  | 表冠停止转动。                          |
 
 ## CrownSensitivity<sup>18+</sup>
 
@@ -320,9 +326,9 @@
 
 | 名称           | 值  | 说明                                      |
 | -------------- | -- | ---------------------------------------- |
-| LOW 	         | 0   | 低灵敏度。                                 |
+| LOW            | 0   | 低灵敏度。                                 |
 | MEDIUM         | 1   | 中灵敏度。                                 |
-| HIGH 	         | 2   | 高灵敏度。                                 |
+| HIGH           | 2   | 高灵敏度。                                 |
 
 ## Curve
 
@@ -352,7 +358,7 @@
 
 ## DialogButtonStyle<sup>10+</sup>
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+弹窗按钮的样式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -425,6 +431,8 @@
 | None   | 2 | 滑动到边缘后无效果。                               |
 
 ## EllipsisMode<sup>11+</sup>
+
+省略的位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -557,6 +565,8 @@
 
 ## FontStyle
 
+字体样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -569,6 +579,8 @@
 | Italic | 斜体的字体样式。 |
 
 ## FontWeight
+
+字体粗细。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -623,7 +635,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 | 名称           | 值  | 说明                                      |
 | -------------- | -- | ---------------------------------------- |
-| SELF  	     | 0   | 获焦框绘制在节点自身层级。                                 |
+| SELF           | 0   | 获焦框绘制在节点自身层级。                                 |
 | TOP            | 1   | 获焦框绘制在当前实例Z序的最上层。                                 |
 
 ## FocusWrapMode<sup>20+</sup>
@@ -797,15 +809,17 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## ImageSpanAlignment<sup>10+</sup>
 
+图片基于行高的对齐方式。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                           |
-| -------- | ------------------------------ |
-| TOP      | 图片上边沿与行上边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CENTER   | 图片中间与行中间对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| BOTTOM   | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BASELINE | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| FOLLOW_PARAGRAPH<sup>20+</sup>  | 对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| 名称     | 值 | 说明                           |
+| -------- | ------------------------------ |------------------------------ |
+| TOP      | 1 | 图片上边沿与行上边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| CENTER   | 2 | 图片中间与行中间对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| BOTTOM   | 3 | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| BASELINE | 4 | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| FOLLOW_PARAGRAPH<sup>20+</sup>  | 5 |对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## InteractionHand<sup>15+</sup>
 
@@ -904,6 +918,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## LineBreakStrategy<sup>12+</sup>
 
+折行规则。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -959,6 +975,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## MarqueeUpdateStrategy<sup>12+</sup>
 
+跑马灯组件属性更新后，跑马灯的滚动策略。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1010,6 +1028,8 @@ type Nullable\<T> = T | undefined
 
 ## OptionWidthMode<sup>11+</sup>
 
+下拉菜单的宽度模式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1035,6 +1055,8 @@ type Nullable\<T> = T | undefined
 | AlternateReverse | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ## Placement<sup>8+</sup>
+
+气泡显示的位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1144,6 +1166,8 @@ type Nullable\<T> = T | undefined
 | MOUSE  | 3 | 鼠标。   |
 
 ## ResponseType<sup>8+</sup>
+
+菜单显示的触发方式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1280,83 +1304,97 @@ type Nullable\<T> = T | undefined
 
 ## TextAlign
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+文本段落在水平方向的对齐方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                  | 说明                                                         |
-| --------------------- | ------------------------------------------------------------ |
-| Start                 | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Center                | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| End                   | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| JUSTIFY<sup>10+</sup> | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| 名称     |  值  | 说明                                       |
+| ------ | ------ | ---------------------------------------- |
+| Start                     |  0  | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。。 |
+| RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## TextOverflow
 
+文本超长时的显示方式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                    | 说明                  |
-| --------------------- | ------------------- |
-| None                  | 文本超长时按最大行截断显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Clip                  | 文本超长时按最大行截断显示，与None效果相同。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Ellipsis              | 文本超长时显示不下的文本用省略号代替。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| MARQUEE<sup>10+</sup> | 文本超长时以跑马灯的方式展示。 |
+| 名称                    | 值 | 说明                  |
+| --------------------- | ------------ | ------------------- |
+| None                  | 0 | 文本超长时按最大行截断显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| Clip                  | 1 | 文本超长时按最大行截断显示，与None效果相同。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| Ellipsis              | 2 | 文本超长时显示不下的文本用省略号代替。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| MARQUEE<sup>10+</sup> | 3 | 文本超长时以跑马灯的方式展示。 |
 
 ## TextDecorationType
 
+装饰线类型。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明        |
-| ----------- | --------- |
-| Underline   | 文字下划线修饰。  |
-| LineThrough | 穿过文本的修饰线。 |
-| Overline    | 文字上划线修饰。  |
-| None        | 不使用文本装饰线。 |
+| 名称          | 值 | 说明        |
+| ----------- | ----------- | --------- |
+| None        | 0 | 不使用文本装饰线。 |
+| Underline   | 1 | 文字下划线修饰。  |
+| Overline    | 2 | 文字上划线修饰。  |
+| LineThrough | 3 | 穿过文本的修饰线。 |
 
 ## TextCase
 
+文本大小写的样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 说明         |
-| --------- | ---------- |
-| Normal    | 保持文本原有大小写。 |
-| LowerCase | 文本采用全小写。   |
-| UpperCase | 文本采用全大写。   |
+| 名称        | 值 | 说明         |
+| --------- | ----------- | ---------- |
+| Normal    | 0 | 保持文本原有大小写。 |
+| LowerCase | 1 | 文本采用全小写。   |
+| UpperCase | 2 | 文本采用全大写。   |
 
 ## TextHeightAdaptivePolicy<sup>10+</sup>
 
+文本自适应布局调整字号的方式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                      | 说明                       |
-| ----------------------- | ------------------------ |
-| MAX_LINES_FIRST         | 设置文本高度自适应方式为以[maxLines](ts-basic-components-textarea.md#maxlines10)优先。 |
-| MIN_FONT_SIZE_FIRST     | 设置文本高度自适应方式为以缩小字体优先。     |
-| LAYOUT_CONSTRAINT_FIRST | 设置文本高度自适应方式为以布局约束（高度）优先。 |
+| 名称                      | 值 | 说明                       |
+| ----------------------- | ----------- | ------------------------ |
+| MAX_LINES_FIRST         | 0 | 设置文本高度自适应方式为以[maxLines](ts-basic-components-textarea.md#maxlines10)优先。 |
+| MIN_FONT_SIZE_FIRST     | 1 | 设置文本高度自适应方式为以缩小字体优先。     |
+| LAYOUT_CONSTRAINT_FIRST | 2 | 设置文本高度自适应方式为以布局约束（高度）优先。 |
 
 ## TextContentStyle<sup>10+</sup>
 
+文本框多态样式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 说明                                                         |
-| ------- | ------------------------------------------------------------ |
-| DEFAULT | 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| INLINE  | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
+| 名称    | 值 | 说明                                                         |
+| ------- | ----------- | ------------------------------------------------------------ |
+| DEFAULT | - | 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
+| INLINE  | - | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
 
 ## TextSelectableMode<sup>12+</sup>
+
+文本可选择、可获焦状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1369,6 +1407,8 @@ type Nullable\<T> = T | undefined
 | UNSELECTABLE     | 2 | 文本不可选择，不可获焦，设置属性selection、bindSelectionMenu、copyOption均不生效。  |
 
 ## TextDecorationStyle<sup>12+</sup>
+
+装饰线样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1463,6 +1503,8 @@ type Nullable\<T> = T | undefined
 
 ## WordBreak<sup>11+</sup>
 
+断行规则。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
@@ -1479,6 +1521,6 @@ type Nullable\<T> = T | undefined
 | 名称                             | 说明                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
 | SURFACE                          | 用于EGL/OpenGLES和媒体数据写入，单独展示开发者定制的绘制内容到屏幕上。背景色设置为黑色时走显示子系统（DSS）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 12开始，该接口废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TEXTURE                          | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 20开始，该接口废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

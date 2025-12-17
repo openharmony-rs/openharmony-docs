@@ -265,7 +265,7 @@ HiAppEvent eventInfo.params.test_data=100
 
 ## Migrating Crash Events from the FaultLogger API
 
-The[@ohos.faultLogger (FaultLogger)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md) API is deprecated and no longer maintained since API version 18. You are advised to use the [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md) API to subscribe to crash events. The following describes how to migrate the crash event subscription from the FaultLogger API to the HiAppEvent API.
+The [@ohos.faultLogger (FaultLogger)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md) API is deprecated and no longer maintained since API version 18. You are advised to use the [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md) API to subscribe to crash events. The following describes how to migrate the crash event subscription from the FaultLogger API to the HiAppEvent API.
 
 **CPP_CRASH** and **JS_CRASH** defined in the [FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) of FaultLogger are crash events.
 

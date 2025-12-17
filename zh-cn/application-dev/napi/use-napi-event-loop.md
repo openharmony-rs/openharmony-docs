@@ -16,14 +16,14 @@
 
 ### 示例代码
 - 功能实现
-  <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+  <!-- @[napi_event_loop_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->  
   
   ``` C++
   #include "napi/native_api.h"
-  // ...
   #include <pthread.h>
   #include <hilog/log.h>
   #include <napi/common.h>
+  static constexpr int INT_ARG_2 = 2; // 入参索引
   // ...
   static napi_value ResolvedCallback(napi_env env, napi_callback_info info)
   {

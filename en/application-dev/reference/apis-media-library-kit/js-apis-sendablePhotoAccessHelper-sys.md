@@ -361,6 +361,8 @@ Obtains analysis data. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ\_IMAGEVIDEO
 
+Starting from API version 22, if **analysisType** is set to [ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11), the ohos.permission.MEDIA\_LOCATION permission is required. Otherwise, error code [201 Permission Denied](../errorcode-universal.md#201-permission-denied) is reported.
+
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**

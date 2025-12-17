@@ -33,7 +33,7 @@
 
 ### Input_KeyCode
 
-```
+```c
 enum Input_KeyCode
 ```
 

@@ -23,13 +23,13 @@
 
 API version 21及之前版本：
 
-```
+```ts
 import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI';
 ```
 
 API version 22及之后版本：
 
-```
+```ts
 import { ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 
@@ -344,20 +344,6 @@ import {
   ArcAlphabetIndexerAttribute
 } from '@kit.ArkUI';
 // 从API Version 22开始，无需手动导入ArcListAttribute、ArcListItemAttribute、ArcAlphabetIndexerAttribute。具体请参考ArcList、ArcListItem、ArcAlphabetIndexer的导入模块说明。
-
-@Builder
-function buildText() {
-  Stack() {
-    Text("head")
-      .fontSize(30)
-      .padding(10)
-      .backgroundColor(0xF9CF93)
-      .border({ width: '1px', color: Color.Black })
-
-    Divider().width('100%').height('1px')
-  }
-  .alignContent(Alignment.Bottom)
-}
 
 @Entry
 @Component

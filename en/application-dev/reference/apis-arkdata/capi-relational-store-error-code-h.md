@@ -32,7 +32,7 @@ Declares the error codes used for relational database (RDB) stores.
 
 ### OH_Rdb_ErrCode
 
-```
+```c
 enum OH_Rdb_ErrCode
 ```
 

@@ -34,7 +34,7 @@ vp2px(value: number): number
 >
 > 默认使用当前UI实例所在屏幕的虚拟像素比进行转换，UI实例不明确时，使用默认屏幕的虚拟像素比进行转换。
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用UIContext的[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用[vp2px](../arkts-apis-uicontext-uicontext.md#vp2px12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -64,7 +64,7 @@ px2vp(value: number): number
 >
 > 默认使用当前UI实例所在屏幕的虚拟像素比进行转换，UI实例不明确时，使用默认屏幕的虚拟像素比进行转换。
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用UIContext的[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用[px2vp](../arkts-apis-uicontext-uicontext.md#px2vp12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -92,7 +92,7 @@ fp2px(value: number): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用UIContext的[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用[fp2px](../arkts-apis-uicontext-uicontext.md#fp2px12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -120,7 +120,7 @@ px2fp(value: number): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用UIContext的[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用[px2fp](../arkts-apis-uicontext-uicontext.md#px2fp12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -148,7 +148,7 @@ lpx2px(value: number): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用UIContext的[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用[lpx2px](../arkts-apis-uicontext-uicontext.md#lpx2px12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -176,7 +176,7 @@ px2lpx(value: number): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 18开始废弃，建议使用UIContext的[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12)替代。
+> 从API version 7开始支持，从API version 18开始废弃，建议使用[px2lpx](../arkts-apis-uicontext-uicontext.md#px2lpx12)替代。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

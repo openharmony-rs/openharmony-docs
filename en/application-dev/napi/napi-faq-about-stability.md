@@ -81,10 +81,9 @@ References:
 ...
 ```
 - Answer: 
-1.   
-To save **napi_env**, you can only pass it by calling functions layer by layer because Node-API does not provide the capability of directly obtaining **napi_env**. You are not advised to save **napi_env** due to the following reasons: 
-1. If the **napi_env**'s exit is not perceived, the **use-after-free** issue may occur. 
-2. **napi_env** is strongly bound to the ArkTS thread. If **napi_env** is used by other ArkTS threads, multi-thread safety issues may occur. 
+1. To save **napi_env**, you can only pass it by calling functions layer by layer because Node-API does not provide the capability of directly obtaining **napi_env**. You are not advised to save **napi_env** due to the following reasons: 
+   - If the **napi_env**'s exit is not perceived, the **use-after-free** issue may occur. 
+   - **napi_env** is strongly bound to the ArkTS thread. If **napi_env** is used by other ArkTS threads, multi-thread safety issues may occur. 
 References: 
 [Why cannot napi_env be cached?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-ndk-73) 
 
@@ -135,3 +134,108 @@ static napi_value Test(napi_env env, napi_callback_info info)
 References:
 [Working with Cleanup Hooks Using Node-API](use-napi-about-cleanuphook.md)
  
+
+## What are the typical error scenarios of lifecycle-related development between napi_open_handle_scope and napi_close_handle_scope
+
+- Question: What should I do if the stability is affected when I use napi_open_handle_scope and napi_close_handle_scope to manage ArkTS objects? 
+Stability problems occur when **napi_open_handle_scope** and **napi_close_handle_scope** are incorrectly called. The common causes are as follows: 
+1. **napi_open_handle_scope** and **napi_close_handle_scope** are not used in pairs. A scope is opened but not closed. As a result, memory leaks occur and the program may break down.
+2. The scopes are not closed in the reverse order of opening the scope. As a result, memory corruption may occur. In the scenario where **open_scope1**, **open_scope2**, **close_scope1**, and **close_scope2** are used, the pointer is returned after **close_scope1** is called, which may overwrite the memory in **scope2** and cause memory corruption. 
+3. The scope created in the native method is not closed before the method returns. As a result, the scope pairing is disordered during function reentry, causing stability issues. 
+
+Example:
+
+```cpp
+#include "napi/native_api.h"
+#include <hilog/log.h>
+
+// 1. Global scope
+static napi_handle_scope g_globalScope = nullptr;
+
+static napi_value CallFunction(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value argv[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    
+    napi_valuetype type = napi_undefined;
+    if (argv[0] == nullptr || napi_typeof(env, argv[0], &type) != napi_ok || type != napi_function) {
+        OH_LOG_INFO(LOG_APP, "Invalid JS function parameter");
+        napi_value errRet = nullptr;
+        napi_create_int32(env, -1, &errRet);
+        return errRet;
+    }
+
+    if (!g_globalScope) {
+        OH_LOG_INFO(LOG_APP, "[Initial call] Global Scope is empty, triggering open operation");
+        napi_open_handle_scope(env, &g_globalScope);
+        // Initial call: Execute the JS function.
+        napi_value global = nullptr;
+        napi_get_global(env, &global);
+        napi_value result = nullptr;
+        napi_call_function(env, global, argv[0], argc, argv, &result);
+        return result; // Directly return the result for the initial call, and do not execute the subsequent close logic.
+    } else {
+        // Reentrant call: Return the fixed value and close the scope.
+        napi_value result = nullptr;
+        napi_create_int32(env, 10, &result);
+        OH_LOG_INFO(LOG_APP, "[Reentrant call] The global scope is not empty. Close the scope.");
+        napi_close_handle_scope(env, g_globalScope);
+        g_globalScope = nullptr;
+        return result;
+    }
+}
+```
+API declaration
+```ts
+// index.d.ts
+export const callFunction : (func : Function) => void;
+```
+ArkTS code:
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+
+function reenterFunc(count = 1) : void{
+  hilog.info(0x0000, 'testTag', `[JS] Recursion`);
+  if (count <= 0) {
+    return;
+  }
+  testNapi.callFunction(() => reenterFunc(count - 1));
+  hilog.info(0x0000, 'testTag', `[JS] Reentrant call`);
+  return;
+}
+
+try {
+  testNapi.callFunction(reenterFunc);
+  hilog.info(0x0000, 'testTag', '[Execution completed]');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', `Call error: ${error.message}`);
+}
+```
+CMakeLists.txt
+```text
+cmake_minimum_required(VERSION 3.5.0)
+project(Test)
+
+set(NATIVERENDER_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR})
+
+if(DEFINED PACKAGE_FIND_FILE)
+    include(${PACKAGE_FIND_FILE})
+endif()
+
+include_directories(${NATIVERENDER_ROOT_PATH}
+                    ${NATIVERENDER_ROOT_PATH}/include)
+
+add_library(entry SHARED napi_init.cpp)
+add_definitions( "-DLOG_DOMAIN=0xd0d0" )
+add_definitions( "-DLOG_TAG=\"testTag\"" )
+target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
+```
+- Answer:
+1. **napi_open_handle_scope** and **napi_close_handle_scope** must be used in pairs. Check whether they are used in pairs. 
+2. All scopes must be closed in the reverse order of opening. 
+3. All scopes created in the native method must be closed before the method returns. 
+
+References:
+[Performing Lifecycle Management Using Node-API](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)

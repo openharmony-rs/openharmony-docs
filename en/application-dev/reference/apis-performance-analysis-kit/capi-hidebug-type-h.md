@@ -89,7 +89,7 @@ Defines the structs of the HiDebug module.
 
 ### HiDebug_ErrorCode
 
-```
+```c
 enum HiDebug_ErrorCode
 ```
 
@@ -114,7 +114,7 @@ Enumerates the error codes used in the HiDebug module.
 
 ### HiDebug_TraceFlag
 
-```
+```c
 enum HiDebug_TraceFlag
 ```
 
@@ -131,7 +131,7 @@ Enumerates the thread types for trace collection.
 
 ### HiDebug_StackFrameType
 
-```
+```c
 enum HiDebug_StackFrameType
 ```
 
@@ -151,7 +151,7 @@ Enumerates the stack frame types.
 
 ### HIDEBUG_TRACE_TAG_FFRT
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_FFRT (1ULL << 13)
 ```
 
@@ -163,7 +163,7 @@ Indicates a function flow runtime (FFRT) task.
 
 ### HIDEBUG_TRACE_TAG_COMMON_LIBRARY
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_COMMON_LIBRARY (1ULL << 16)
 ```
 
@@ -175,7 +175,7 @@ Indicates the common library subsystem.
 
 ### HIDEBUG_TRACE_TAG_HDF
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_HDF (1ULL << 18)
 ```
 
@@ -187,7 +187,7 @@ Indicates the HDF subsystem.
 
 ### HIDEBUG_TRACE_TAG_NET
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_NET (1ULL << 23)
 ```
 
@@ -199,7 +199,7 @@ Indicates the Network.
 
 ### HIDEBUG_TRACE_TAG_NWEB
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_NWEB (1ULL << 24)
 ```
 
@@ -211,7 +211,7 @@ Indicates the NWeb.
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_AUDIO
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_AUDIO (1ULL << 27)
 ```
 
@@ -223,7 +223,7 @@ Indicates the distributed audio.
 
 ### HIDEBUG_TRACE_TAG_FILE_MANAGEMENT
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_FILE_MANAGEMENT (1ULL << 29)
 ```
 
@@ -235,7 +235,7 @@ Indicates the file management.
 
 ### HIDEBUG_TRACE_TAG_OHOS
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_OHOS (1ULL << 30)
 ```
 
@@ -247,7 +247,7 @@ Indicates the OpenHarmony OS.
 
 ### HIDEBUG_TRACE_TAG_ABILITY_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_ABILITY_MANAGER (1ULL << 31)
 ```
 
@@ -259,7 +259,7 @@ Indicates the Ability Manager.
 
 ### HIDEBUG_TRACE_TAG_CAMERA
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_CAMERA (1ULL << 32)
 ```
 
@@ -271,7 +271,7 @@ Indicates the camera module.
 
 ### HIDEBUG_TRACE_TAG_MEDIA
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_MEDIA (1ULL << 33)
 ```
 
@@ -283,7 +283,7 @@ Indicates the media module.
 
 ### HIDEBUG_TRACE_TAG_IMAGE
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_IMAGE (1ULL << 34)
 ```
 
@@ -295,7 +295,7 @@ Indicates the image module.
 
 ### HIDEBUG_TRACE_TAG_AUDIO
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_AUDIO (1ULL << 35)
 ```
 
@@ -307,7 +307,7 @@ Indicates the audio module.
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_DATA
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_DATA (1ULL << 36)
 ```
 
@@ -319,7 +319,7 @@ Indicates the distributed data management.
 
 ### HIDEBUG_TRACE_TAG_GRAPHICS
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_GRAPHICS (1ULL << 38)
 ```
 
@@ -331,7 +331,7 @@ Indicates the graphics module.
 
 ### HIDEBUG_TRACE_TAG_ARKUI
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_ARKUI (1ULL << 39)
 ```
 
@@ -343,7 +343,7 @@ Indicates the ArkUI development framework.
 
 ### HIDEBUG_TRACE_TAG_NOTIFICATION
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_NOTIFICATION (1ULL << 40)
 ```
 
@@ -355,7 +355,7 @@ Indicates the notification module.
 
 ### HIDEBUG_TRACE_TAG_MISC
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_MISC (1ULL << 41)
 ```
 
@@ -367,7 +367,7 @@ Indicates the MISC module.
 
 ### HIDEBUG_TRACE_TAG_MULTIMODAL_INPUT
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_MULTIMODAL_INPUT (1ULL << 42)
 ```
 
@@ -379,7 +379,7 @@ Indicates the multimodal input module.
 
 ### HIDEBUG_TRACE_TAG_RPC
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_RPC (1ULL << 46)
 ```
 
@@ -391,7 +391,7 @@ Indicates a remote procedure call (RPC).
 
 ### HIDEBUG_TRACE_TAG_ARK
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_ARK (1ULL << 47)
 ```
 
@@ -403,7 +403,7 @@ Indicates a JavaScript virtual machine (JSVM).
 
 ### HIDEBUG_TRACE_TAG_WINDOW_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_WINDOW_MANAGER (1ULL << 48)
 ```
 
@@ -415,7 +415,7 @@ Indicates the window manager.
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_SCREEN
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_SCREEN (1ULL << 50)
 ```
 
@@ -427,7 +427,7 @@ Indicates the distributed screen.
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_CAMERA
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_CAMERA (1ULL << 51)
 ```
 
@@ -439,7 +439,7 @@ Indicates the distributed camera.
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_FRAMEWORK
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_FRAMEWORK (1ULL << 52)
 ```
 
@@ -451,7 +451,7 @@ Indicates the distributed hardware framework.
 
 ### HIDEBUG_TRACE_TAG_GLOBAL_RESOURCE_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_GLOBAL_RESOURCE_MANAGER (1ULL << 53)
 ```
 
@@ -463,7 +463,7 @@ Indicates the global resource management.
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_DEVICE_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_DEVICE_MANAGER (1ULL << 54)
 ```
 
@@ -475,7 +475,7 @@ Indicates the distributed hardware device management.
 
 ### HIDEBUG_TRACE_TAG_SAMGR
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_SAMGR (1ULL << 55)
 ```
 
@@ -487,7 +487,7 @@ Indicates the Samgr (SA).
 
 ### HIDEBUG_TRACE_TAG_POWER_MANAGER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_POWER_MANAGER (1ULL << 56)
 ```
 
@@ -499,7 +499,7 @@ Indicates the power manager.
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_SCHEDULER
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_SCHEDULER (1ULL << 57)
 ```
 
@@ -511,7 +511,7 @@ Indicates the distributed scheduler.
 
 ### HIDEBUG_TRACE_TAG_DISTRIBUTED_INPUT
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_DISTRIBUTED_INPUT (1ULL << 59)
 ```
 
@@ -523,7 +523,7 @@ Indicates the distributed input.
 
 ### HIDEBUG_TRACE_TAG_BLUETOOTH
 
-```
+```c
 #define HIDEBUG_TRACE_TAG_BLUETOOTH (1ULL << 60)
 ```
 

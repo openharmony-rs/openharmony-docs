@@ -1,4 +1,10 @@
 # QoS 开发指导
+<!--Kit: Kernel Enhance Kit-->
+<!--Subsystem: Kernel-->
+<!--Owner: @yzl-kongzhenhua; @Leibobo-->
+<!--Designer: @wangxiayang; @lizongfeng; @zzzuo-->
+<!--Tester: @lianxuanself; @laonie666-->
+<!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
@@ -22,7 +28,7 @@ QoS(quality-of-service)，即服务质量，在OpenHarmony中QoS特性主要指�
 | QOS_DEFAULT | 默认。 | 任务完成需要几秒钟。 |
 | QOS_USER_INITIATED | 用户触发并且可见进展的任务，例如打开文档。 | 任务在几秒钟之内完成。 |
 | QOS_DEADLINE_REQUEST | 越快越好的关键任务，如页面加载。 | 任务几乎是瞬间完成的。 |
-| QOS_USER_INTERACTIVE	 | 用户交互任务（UI线程、刷新界面、动效）。 | 任务是即时的。 |
+| QOS_USER_INTERACTIVE | 用户交互任务（UI线程、刷新界面、动效）。 | 任务是即时的。 |
 
 QoS等级定义为枚举类型QoS_Level，如上表所示；枚举值定义如下。
 ### QoS_Level声明
@@ -128,7 +134,7 @@ QoS_Level level
 为某个任务设置指定的QoS等级。设置当前任务的QoS等级。开发者可以根据当前任务的重要程度，为其标记不同等级的QoS，从而获得不同的调度供给。参考[QoS实践指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-thread-priority-setting)。
 
 **样例**
-```
+```c++
 #include <stdio.h>
 #include "qos/qos.h"
 
@@ -165,7 +171,7 @@ int OH_QoS_ResetThreadQoS();
 取消某个任务设置的QoS等级。取消当前任务的QoS等级。参考[QoS实践指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-thread-priority-setting)。
 
 **样例**
-```
+```c++
 #include <stdio.h>
 #include "qos/qos.h"
 
@@ -204,7 +210,7 @@ QoS_Level *level
 获取某个任务之前最近一次设置的QoS等级；如果之前未设置任何QoS等级，则返回-1。查看当前任务的QoS等级。参考[QoS实践指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-thread-priority-setting)。
 
 **样例**
-```
+```c++
 #include <stdio.h>
 #include "qos/qos.h"
 

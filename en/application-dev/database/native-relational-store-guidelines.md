@@ -267,8 +267,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     predicates->destroy(predicates);
     predicates2->destroy(predicates2);
     ```
-    <!--@[rdb_OH_Rdb_Delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
-
+    <!--@[rdb_OH_Rdb_Delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
+    
     ``` C++
     // Delete data.
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
@@ -447,7 +447,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 
     To configure the full-text search (FTS) dynamic library, use **OH_Rdb_SetPlugins**.
-   
+    
     For details about the constraints, see the **pluginLibs** configuration item in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig).
 
     <!--@[rdb_OH_Rdb_SetPlugins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
@@ -467,8 +467,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
    Call **OH_Rdb_CreateTransaction** to create a transaction object and use this object to execute the corresponding transaction operation.
 
-    <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
-
+    <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
+    
     ``` C++
     OH_RDB_TransOptions *options = OH_RdbTrans_CreateOptions();
     // Configure the transaction type.
