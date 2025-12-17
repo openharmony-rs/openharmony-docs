@@ -634,7 +634,7 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 以下情况下，通过本接口打开Wi-Fi开关，会打开失败并提示"系统功能被禁用"：
 
-​	已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
+​已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
@@ -688,7 +688,7 @@ turnOffWifi(admin: Want): void
 
 以下情况下，通过本接口关闭Wi-Fi开关，会提示"系统功能被禁用"：
 
-​	已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
+​已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
 
