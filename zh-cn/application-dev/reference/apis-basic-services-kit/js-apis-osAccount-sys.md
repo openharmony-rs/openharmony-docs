@@ -7701,6 +7701,7 @@ ArkTS-Dyn示例：
     credType: osAccount.AuthType.PIN,
     credSubType: osAccount.AuthSubType.PIN_SIX,
     token: new Uint8Array([]),
+    additionalInfo: 'xxx'
   };
   let userIDM = new osAccount.UserIdentityManager();
   userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
@@ -9117,6 +9118,7 @@ ArkTS-Sta示例：
 | credSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
 | token        | Uint8Array                           | 否    | 否   | 指示认证令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
 | accountId<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| additionalInfo<sup>23+</sup>    | string | 否    | 是   | 凭据的附加信息，默认为空字符串。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RequestResult<sup>8+</sup>
 
