@@ -34,6 +34,8 @@
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的接口ArkTS-Sta是[deviceStatus.on](#devicestatus.on)
+
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
 **ArkTS-Dyn起始版本**：18
@@ -74,6 +76,8 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
 取消订阅设备静止姿态感知（支架态）事件。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -138,6 +142,8 @@ onSteadyStandingDetect(callback: Callback<SteadyStandingStatus>): void
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
+**相关接口**：该接口对应的接口ArkTS-Dyn是[deviceStatus.on](#devicestatus.on)
+
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
 **ArkTS-Sta起始版本**：22
@@ -169,7 +175,7 @@ try {
     console.info('on failed, err = ' + err);
 }
   ```
-  
+
 ## deviceStatus.offSteadyStandingDetect()<sup>22+</sup>
 
 offSteadyStandingDetect(callback?: Callback<SteadyStandingStatus>): void
@@ -177,6 +183,8 @@ offSteadyStandingDetect(callback?: Callback<SteadyStandingStatus>): void
 取消订阅设备静止姿态感知（支架态）事件。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
