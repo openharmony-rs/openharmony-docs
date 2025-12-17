@@ -36,7 +36,7 @@
 
 ### OH_FileUri_GetUriFromPath()
 
-```
+```c
 FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int length, char **result)
 ```
 
@@ -64,7 +64,7 @@ FileManagement_ErrCode OH_FileUri_GetUriFromPath(const char *path, unsigned int 
 
 ### OH_FileUri_GetPathFromUri()
 
-```
+```c
 FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int length, char **result)
 ```
 
@@ -92,7 +92,7 @@ FileManagement_ErrCode OH_FileUri_GetPathFromUri(const char *uri, unsigned int l
 
 ### OH_FileUri_GetFullDirectoryUri()
 
-```
+```c
 FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned int length, char **result)
 ```
 
@@ -120,7 +120,7 @@ FileManagement_ErrCode OH_FileUri_GetFullDirectoryUri(const char *uri, unsigned 
 
 ### OH_FileUri_IsValidUri()
 
-```
+```c
 bool OH_FileUri_IsValidUri(const char *uri, unsigned int length)
 ```
 
@@ -147,7 +147,7 @@ bool OH_FileUri_IsValidUri(const char *uri, unsigned int length)
 
 ### OH_FileUri_GetFileName()
 
-```
+```c
 FileManagement_ErrCode OH_FileUri_GetFileName(const char *uri, unsigned int length, char **result)
 ```
 

@@ -14,8 +14,8 @@
 
 ## 导入模块
 
-```
-import { Available } from '@kit.BasicServicesKit';
+```typescript
+import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
 ```
 
 ## Available
@@ -38,7 +38,7 @@ import { Available } from '@kit.BasicServicesKit';
 
 **示例：**
 
-  ```ts
+  ```typescript
   import { Available } from '@kit.BasicServicesKit';
 
   @Available({minApiVersion: 'OpenHarmony 22'})
@@ -48,3 +48,40 @@ import { Available } from '@kit.BasicServicesKit';
   class MyClass {}
   ```
 
+
+## SuppressWarnings<sup>23+<sup>
+
+@interface SuppressWarnings {
+  rules: Array\<SuppressWarningsType>;
+}
+
+系统提供的API注解能力，可以用于消除API产生的告警。此注解可以标注在类、函数、变量、类型、接口等API上。在源码用此注解后，编译时会根据配置的规则来抑制对应警告。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Base
+
+| 名称 | 类型 | 只读 | 可选 | 说明                       |
+| ---- | ---- | ---- | --- | -------------------------- |
+| rules | Array<[SuppressWarningsType](#suppresswarningstype23)> | 否 | 否 | 支持告警消除的规则集合|
+
+**示例：**
+  ```typescript
+  import { SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
+
+  @SuppressWarnings({rules: [SuppressWarningsType.COMPATIBILITY]})
+  function myFunc() {}
+  ```
+
+
+## SuppressWarningsType<sup>23+<sup>
+
+支持消除告警的规则。
+
+**系统能力：** SystemCapability.Base
+
+| 名称                   | 值   | 说明                           |
+| ---------------------- | ---- | ------------------------------ |
+| COMPATIBILITY     | compatibility    | 支持消除兼容性告警。 |

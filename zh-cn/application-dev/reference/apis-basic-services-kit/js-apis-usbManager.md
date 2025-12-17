@@ -936,7 +936,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，只需要填充USBDevicePipe和endpoint即可。|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，只需要填充[USBDevicePipe](#usbdevicepipe)和[USBEndpoint](#usbendpoint)即可。|
 
 **错误码：**
 
@@ -1200,7 +1200,7 @@ getAccessoryList(): Array<Readonly&lt;USBAccessory&gt;>
 
 | 类型                          | 说明                                               |
 | ----------------------------- | -------------------------------------------------- |
-| Array<Readonly&lt;USBAccessory&gt;> | 只读的USB配件列表。当前仅支持列表中包含1个USB配件。 |
+| Array<Readonly&lt;[USBAccessory](#usbaccessory14)&gt;> | 只读的USB配件列表。当前仅支持列表中包含1个USB配件。 |
 
 **错误码：**
 

@@ -10,9 +10,9 @@
 
 ### `JSVM_Status`
 
-    这是一个枚举数据类型，用来表示 JSVM-API 接口返回的状态信息。
+这是一个枚举数据类型，用来表示JSVM-API接口返回的状态信息。
 
-    每调用一次 JSVM-API 函数，都会返回一个值，用来表示操作成功与否的相关信息。
+每调用一次JSVM-API函数，都会返回一个值，用来表示操作成功与否的相关信息。
 
 ```c++
     typedef enum {
@@ -396,7 +396,9 @@ typedef JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg;
 
 JSVM 提供了多种配置选项，允许开发者在执行 `OH_JSVM_Init` 时灵活配置其行为。可以通过 `OH_JSVM_GetVMInfo` 接口获取当前 JSVM 版本所对应的 V8 引擎版本。JSVM 中可支持的选项范围与对应的 V8 引擎版本可支持的选项范围保持一致。`OH_JSVM_GetVMInfo` 接口的使用参考[使用JSVM-API接口获取JSVM API的版本号](use-jsvm-about-version.md)。
 
-**注意：** 建议开发者在没有特殊需求的情况下，仅使用 JSVM 内部的默认配置选项。
+> **注意：**
+>
+> - 建议开发者在没有特殊需求的情况下，仅使用JSVM内部的默认配置选项。
 
 场景示例：
 常规模式下初始化 VM 平台。
@@ -486,7 +488,7 @@ static JSVM_Value Add(JSVM_Env env, JSVM_CallbackInfo info) {
     JSVM_Value args[2];
     OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL);
     double num1 = 0;
-	double num2 = 0;
+    double num2 = 0;
     OH_JSVM_GetValueDouble(env, args[0], &num1);
     OH_JSVM_GetValueDouble(env, args[1], &num2);
     JSVM_Value sum = nullptr;
@@ -608,8 +610,8 @@ const concat = (...args) => args.reduce((a, b) => a + b);
 )JS";
 
 static void RunScriptWithOption(JSVM_Env env, string& src,
-								uint8_t** dataPtr = nullptr,
-								size_t* lengthPtr = nullptr) {
+                                uint8_t** dataPtr = nullptr,
+                                size_t* lengthPtr = nullptr) {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
@@ -621,34 +623,34 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     size_t length = lengthPtr ? *lengthPtr : 0;
     JSVM_Script script;
     // 编译js代码
-	JSVM_ScriptOrigin origin {
-	    // 以包名 helloworld 为例, 假如存在对应的 sourcemap, sourcemap 的路径可以是 /data/app/el2/100/base/com.example.helloworld/files/index.js.map
-	    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
-	    // 源文件名字
-	    .resourceName = "index.js",
-	    // script 在源文件中的起始行列号
-	    .resourceLineOffset = 0,
-	    .resourceColumnOffset = 0,
-	};
-	JSVM_CompileOptions option[3];
-	option[0] = {
-		.id = JSVM_COMPILE_MODE,
-		.content = { .num = compilMode }
-	};
-	JSVM_CodeCache codeCache = {
-		.cache = data,
-		.length = length
-	};
-	option[1] = {
-		.id = JSVM_COMPILE_CODE_CACHE,
-		.content = { .ptr = &codeCache }
-	};
-	// JSVM_COMPILE_ENABLE_SOURCE_MAP 选项默认值为 false，若为 true 那么对应的 sourceMapUrl 必须不为空
-	option[2] = {
-		.id = JSVM_COMPILE_ENABLE_SOURCE_MAP,
-		.content = { .boolean = true }
-	};
-	OH_JSVM_CompileScriptWithOptions(env, jsSrc, 3, option, &script);
+    JSVM_ScriptOrigin origin {
+        // 以包名 helloworld 为例, 假如存在对应的 sourcemap, sourcemap 的路径可以是 /data/app/el2/100/base/com.example.helloworld/files/index.js.map
+        .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
+        // 源文件名字
+        .resourceName = "index.js",
+        // script 在源文件中的起始行列号
+        .resourceLineOffset = 0,
+        .resourceColumnOffset = 0,
+    };
+    JSVM_CompileOptions option[3];
+    option[0] = {
+        .id = JSVM_COMPILE_MODE,
+        .content = { .num = compilMode }
+    };
+    JSVM_CodeCache codeCache = {
+        .cache = data,
+        .length = length
+    };
+    option[1] = {
+        .id = JSVM_COMPILE_CODE_CACHE,
+        .content = { .ptr = &codeCache }
+    };
+    // JSVM_COMPILE_ENABLE_SOURCE_MAP 选项默认值为 false，若为 true 那么对应的 sourceMapUrl 必须不为空
+    option[2] = {
+        .id = JSVM_COMPILE_ENABLE_SOURCE_MAP,
+        .content = { .boolean = true }
+    };
+    OH_JSVM_CompileScriptWithOptions(env, jsSrc, 3, option, &script);
 
     JSVM_Value result;
     // 执行js代码
@@ -677,18 +679,18 @@ static void RunScript(JSVM_Env env, string& src,
     JSVM_Script script;
     // 编译js代码
     if (withOrigin) {
-	    JSVM_ScriptOrigin origin {
-	        // 以包名 helloworld 为例, 假如存在对应的 sourcemap, sourcemap 的路径可以是 /data/app/el2/100/base/com.example.helloworld/files/index.js.map
-		    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
-		    // 源文件名字
-		    .resourceName = "index.js",
-		    // script 在源文件中的起始行列号
-		    .resourceLineOffset = 0,
-		    .resourceColumnOffset = 0,
-	    };
-		OH_JSVM_CompileScriptWithOrigin(env, jsSrc, data, length, true, &cacheRejected, &origin, &script);
+        JSVM_ScriptOrigin origin {
+            // 以包名 helloworld 为例, 假如存在对应的 sourcemap, sourcemap 的路径可以是 /data/app/el2/100/base/com.example.helloworld/files/index.js.map
+            .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
+            // 源文件名字
+            .resourceName = "index.js",
+            // script 在源文件中的起始行列号
+            .resourceLineOffset = 0,
+            .resourceColumnOffset = 0,
+        };
+        OH_JSVM_CompileScriptWithOrigin(env, jsSrc, data, length, true, &cacheRejected, &origin, &script);
     } else {
-	    OH_JSVM_CompileScript(env, jsSrc, data, length, true, &cacheRejected, &script);
+        OH_JSVM_CompileScript(env, jsSrc, data, length, true, &cacheRejected, &script);
     }
     printf("Code cache is %s\n", cacheRejected ? "rejected" : "used");
 

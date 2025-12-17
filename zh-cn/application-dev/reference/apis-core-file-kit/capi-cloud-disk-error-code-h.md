@@ -32,7 +32,7 @@
 
 ### CloudDisk_ErrorCode
 
-```
+```c
 enum CloudDisk_ErrorCode
 ```
 

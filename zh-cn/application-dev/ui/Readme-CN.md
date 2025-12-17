@@ -30,7 +30,7 @@
       - [\@LocalBuilder装饰器：维持组件关系](state-management/arkts-localBuilder.md)
       - [\@BuilderParam装饰器：引用\@Builder函数](state-management/arkts-builderparam.md)
       - [wrapBuilder：封装全局@Builder](state-management/arkts-wrapBuilder.md)
-      - [mutableBuilder: 实现全局@Builder动态更新](state-management/arkts-mutableBuilder.md) 
+      - [mutableBuilder：实现全局@Builder动态更新](state-management/arkts-mutableBuilder.md) 
       - [\@Styles装饰器：定义组件重用样式](state-management/arkts-style.md)
       - [\@Extend装饰器：定义扩展组件样式](state-management/arkts-extend.md)
       - [stateStyles：多态样式](state-management/arkts-statestyles.md)
@@ -68,7 +68,8 @@
         - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
       - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
-        - [\@Monitor装饰器：状态变量修改监听](state-management/arkts-new-monitor.md)
+        - [\@Monitor装饰器：状态变量修改异步监听](state-management/arkts-new-monitor.md)
+         -[\@SyncMonitor装饰器：状态变量修改同步监听](state-management/arkts-new-syncmonitor.md)
         - [\@Computed装饰器：计算属性](state-management/arkts-new-computed.md)
         - [\@Type装饰器: 标记类属性的类型](state-management/arkts-new-type.md)
       - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->

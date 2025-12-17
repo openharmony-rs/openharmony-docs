@@ -122,7 +122,7 @@
 
 ### PIXELMAP_ALPHA_TYPE
 
-```
+```c
 enum PIXELMAP_ALPHA_TYPE
 ```
 
@@ -141,7 +141,7 @@ Pixelmap透明度类型。
 
 ### PIXEL_FORMAT
 
-```
+```c
 enum PIXEL_FORMAT
 ```
 
@@ -168,7 +168,7 @@ enum PIXEL_FORMAT
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
-```
+```c
 enum OH_PixelmapNative_AntiAliasingLevel
 ```
 
@@ -187,7 +187,7 @@ Pixelmap缩放时采用的缩放算法。
 
 ### OH_Pixelmap_HdrMetadataKey
 
-```
+```c
 enum OH_Pixelmap_HdrMetadataKey
 ```
 
@@ -206,7 +206,7 @@ Pixelmap使用的HDR相关元数据信息的关键字，用于[OH_PixelmapNative
 
 ### OH_Pixelmap_HdrMetadataType
 
-```
+```c
 enum OH_Pixelmap_HdrMetadataType
 ```
 
@@ -228,7 +228,7 @@ HDR_METADATA_TYPE关键字对应的值。
 
 ### OH_PixelmapInitializationOptions_Create()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_Create(OH_Pixelmap_InitializationOptions **options)
 ```
 
@@ -252,7 +252,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_Create(OH_Pixelmap_Initializati
 
 ### OH_PixelmapInitializationOptions_GetWidth()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_GetWidth(OH_Pixelmap_InitializationOptions *options, uint32_t *width)
 ```
 
@@ -277,7 +277,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetWidth(OH_Pixelmap_Initializa
 
 ### OH_PixelmapInitializationOptions_SetWidth()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_SetWidth(OH_Pixelmap_InitializationOptions *options, uint32_t width)
 ```
 
@@ -302,7 +302,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetWidth(OH_Pixelmap_Initializa
 
 ### OH_PixelmapInitializationOptions_GetHeight()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_GetHeight(OH_Pixelmap_InitializationOptions *options, uint32_t *height)
 ```
 
@@ -327,7 +327,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetHeight(OH_Pixelmap_Initializ
 
 ### OH_PixelmapInitializationOptions_SetHeight()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_SetHeight(OH_Pixelmap_InitializationOptions *options, uint32_t height)
 ```
 
@@ -352,7 +352,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetHeight(OH_Pixelmap_Initializ
 
 ### OH_PixelmapInitializationOptions_GetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_GetPixelFormat(OH_Pixelmap_InitializationOptions *options, int32_t *pixelFormat)
 ```
 
@@ -377,7 +377,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetPixelFormat(OH_Pixelmap_Init
 
 ### OH_PixelmapInitializationOptions_SetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_SetPixelFormat(OH_Pixelmap_InitializationOptions *options, int32_t pixelFormat)
 ```
 
@@ -402,7 +402,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetPixelFormat(OH_Pixelmap_Init
 
 ### OH_PixelmapInitializationOptions_GetSrcPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_GetSrcPixelFormat(OH_Pixelmap_InitializationOptions *options, int32_t *srcpixelFormat)
 ```
 
@@ -427,7 +427,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetSrcPixelFormat(OH_Pixelmap_I
 
 ### OH_PixelmapInitializationOptions_SetSrcPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_SetSrcPixelFormat(OH_Pixelmap_InitializationOptions *options, int32_t srcpixelFormat)
 ```
 
@@ -452,7 +452,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetSrcPixelFormat(OH_Pixelmap_I
 
 ### OH_PixelmapInitializationOptions_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_GetRowStride(OH_Pixelmap_InitializationOptions *options, int32_t *rowStride)
 ```
 
@@ -477,7 +477,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetRowStride(OH_Pixelmap_Initia
 
 ### OH_PixelmapInitializationOptions_SetRowStride()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_SetRowStride(OH_Pixelmap_InitializationOptions *options, int32_t rowStride)
 ```
 
@@ -502,7 +502,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetRowStride(OH_Pixelmap_Initia
 
 ### OH_PixelmapInitializationOptions_GetAlphaType()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_GetAlphaType(OH_Pixelmap_InitializationOptions *options, int32_t *alphaType)
 ```
 
@@ -527,7 +527,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetAlphaType(OH_Pixelmap_Initia
 
 ### OH_PixelmapInitializationOptions_SetAlphaType()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_SetAlphaType(OH_Pixelmap_InitializationOptions *options, int32_t alphaType)
 ```
 
@@ -552,7 +552,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetAlphaType(OH_Pixelmap_Initia
 
 ### OH_PixelmapInitializationOptions_GetEditable()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_GetEditable(OH_Pixelmap_InitializationOptions *options, bool *editable)
 ```
 
@@ -577,7 +577,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_GetEditable(OH_Pixelmap_Initial
 
 ### OH_PixelmapInitializationOptions_SetEditable()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_SetEditable(OH_Pixelmap_InitializationOptions *options, bool editable)
 ```
 
@@ -602,7 +602,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_SetEditable(OH_Pixelmap_Initial
 
 ### OH_PixelmapInitializationOptions_Release()
 
-```
+```c
 Image_ErrorCode OH_PixelmapInitializationOptions_Release(OH_Pixelmap_InitializationOptions *options)
 ```
 
@@ -626,7 +626,7 @@ Image_ErrorCode OH_PixelmapInitializationOptions_Release(OH_Pixelmap_Initializat
 
 ### OH_PixelmapImageInfo_Create()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_Create(OH_Pixelmap_ImageInfo **info)
 ```
 
@@ -650,7 +650,7 @@ Image_ErrorCode OH_PixelmapImageInfo_Create(OH_Pixelmap_ImageInfo **info)
 
 ### OH_PixelmapImageInfo_GetWidth()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_GetWidth(OH_Pixelmap_ImageInfo *info, uint32_t *width)
 ```
 
@@ -675,7 +675,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetWidth(OH_Pixelmap_ImageInfo *info, uint3
 
 ### OH_PixelmapImageInfo_GetHeight()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_GetHeight(OH_Pixelmap_ImageInfo *info, uint32_t *height)
 ```
 
@@ -700,7 +700,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetHeight(OH_Pixelmap_ImageInfo *info, uint
 
 ### OH_PixelmapImageInfo_GetAlphaMode()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_GetAlphaMode(OH_Pixelmap_ImageInfo *info, int32_t *AlphaMode)
 ```
 
@@ -725,7 +725,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaMode(OH_Pixelmap_ImageInfo *info, i
 
 ### OH_PixelmapImageInfo_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_GetRowStride(OH_Pixelmap_ImageInfo *info, uint32_t *rowStride)
 ```
 
@@ -750,7 +750,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetRowStride(OH_Pixelmap_ImageInfo *info, u
 
 ### OH_PixelmapImageInfo_GetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_GetPixelFormat(OH_Pixelmap_ImageInfo *info, int32_t *pixelFormat)
 ```
 
@@ -775,7 +775,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetPixelFormat(OH_Pixelmap_ImageInfo *info,
 
 ### OH_PixelmapImageInfo_GetAlphaType()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, int32_t *alphaType)
 ```
 
@@ -800,7 +800,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetAlphaType(OH_Pixelmap_ImageInfo *info, i
 
 ### OH_PixelmapImageInfo_GetDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info, bool *isHdr)
 ```
 
@@ -825,7 +825,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info
 
 ### OH_PixelmapImageInfo_Release()
 
-```
+```c
 Image_ErrorCode OH_PixelmapImageInfo_Release(OH_Pixelmap_ImageInfo *info)
 ```
 
@@ -849,7 +849,7 @@ Image_ErrorCode OH_PixelmapImageInfo_Release(OH_Pixelmap_ImageInfo *info)
 
 ### OH_PixelmapNative_CreatePixelmap()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)
 ```
 
@@ -876,7 +876,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmap(uint8_t *data, size_t dataLengt
 
 ### OH_PixelmapNative_CreatePixelmapUsingAllocator()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, size_t dataLength, OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)
 ```
 
@@ -904,7 +904,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapUsingAllocator(uint8_t *data, si
 
 ### OH_PixelmapNative_ConvertPixelmapNativeToNapi()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_PixelmapNative *pixelmapNative, napi_value *pixelmapNapi)
 ```
 
@@ -930,7 +930,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeToNapi(napi_env env, OH_P
 
 ### OH_PixelmapNative_ConvertPixelmapNativeFromNapi()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, napi_value pixelmapNapi, OH_PixelmapNative **pixelmapNative)
 ```
 
@@ -956,7 +956,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertPixelmapNativeFromNapi(napi_env env, na
 
 ### OH_PixelmapNative_ReadPixels()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)
 ```
 
@@ -982,7 +982,7 @@ Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_
 
 ### OH_PixelmapNative_WritePixels()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8_t *source, size_t bufferSize)
 ```
 
@@ -1008,7 +1008,7 @@ Image_ErrorCode OH_PixelmapNative_WritePixels(OH_PixelmapNative *pixelmap, uint8
 
 ### OH_PixelmapNative_ReadPixelsFromArea()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)
 ```
 
@@ -1033,7 +1033,7 @@ Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap
 
 ### OH_PixelmapNative_WritePixelsToArea()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap, Image_PositionArea *area)
 ```
 
@@ -1058,7 +1058,7 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 
 ### OH_PixelmapNative_GetArgbPixels()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uint8_t *destination, size_t *bufferSize)
 ```
 
@@ -1084,7 +1084,7 @@ Image_ErrorCode OH_PixelmapNative_GetArgbPixels(OH_PixelmapNative *pixelmap, uin
 
 ### OH_PixelmapNative_ToSdr()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)
 ```
 
@@ -1108,7 +1108,7 @@ Image_ErrorCode OH_PixelmapNative_ToSdr(OH_PixelmapNative *pixelmap)
 
 ### OH_PixelmapNative_GetImageInfo()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_Pixelmap_ImageInfo *imageInfo)
 ```
 
@@ -1133,7 +1133,7 @@ Image_ErrorCode OH_PixelmapNative_GetImageInfo(OH_PixelmapNative *pixelmap, OH_P
 
 ### OH_PixelmapNative_Opacity()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Opacity(OH_PixelmapNative *pixelmap, float rate)
 ```
 
@@ -1158,7 +1158,7 @@ Image_ErrorCode OH_PixelmapNative_Opacity(OH_PixelmapNative *pixelmap, float rat
 
 ### OH_PixelmapNative_Scale()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Scale(OH_PixelmapNative *pixelmap, float scaleX, float scaleY)
 ```
 
@@ -1184,7 +1184,7 @@ Image_ErrorCode OH_PixelmapNative_Scale(OH_PixelmapNative *pixelmap, float scale
 
 ### OH_PixelmapNative_ScaleWithAntiAliasing()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)
 ```
 
@@ -1211,7 +1211,7 @@ Image_ErrorCode OH_PixelmapNative_ScaleWithAntiAliasing(OH_PixelmapNative *pixel
 
 ### OH_PixelmapNative_CreateScaledPixelMap()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY)
 ```
 
@@ -1238,7 +1238,7 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMap(OH_PixelmapNative *srcPix
 
 ### OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap, float scaleX, float scaleY, OH_PixelmapNative_AntiAliasingLevel level)
 ```
 
@@ -1266,7 +1266,7 @@ Image_ErrorCode OH_PixelmapNative_CreateScaledPixelMapWithAntiAliasing(OH_Pixelm
 
 ### OH_PixelmapNative_CreateAlphaPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)
 ```
 
@@ -1291,7 +1291,7 @@ Image_ErrorCode OH_PixelmapNative_CreateAlphaPixelmap(OH_PixelmapNative *srcPixe
 
 ### OH_PixelmapNative_Clone()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_PixelmapNative **dstPixelmap)
 ```
 
@@ -1316,7 +1316,7 @@ Image_ErrorCode OH_PixelmapNative_Clone(OH_PixelmapNative *srcPixelmap, OH_Pixel
 
 ### OH_PixelmapNative_CreateCroppedAndScaledPixelMap()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)
 ```
 
@@ -1344,7 +1344,7 @@ Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNati
 
 ### OH_PixelmapNative_Translate()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x, float y)
 ```
 
@@ -1370,7 +1370,7 @@ Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x
 
 ### OH_PixelmapNative_Rotate()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angle)
 ```
 
@@ -1395,7 +1395,7 @@ Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angl
 
 ### OH_PixelmapNative_Flip()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFilpHorizontally, bool shouldFilpVertically)
 ```
 
@@ -1421,7 +1421,7 @@ Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldF
 
 ### OH_PixelmapNative_Crop()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region *region)
 ```
 
@@ -1446,7 +1446,7 @@ Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region
 
 ### OH_PixelmapNative_Release()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)
 ```
 
@@ -1470,7 +1470,7 @@ Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)
 
 ### OH_PixelmapNative_Destroy()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)
 ```
 
@@ -1494,7 +1494,7 @@ Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)
 
 ### OH_PixelmapNative_ConvertAlphaFormat()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixelmap, OH_PixelmapNative* dstpixelmap, const bool isPremul)
 ```
 
@@ -1520,7 +1520,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaFormat(OH_PixelmapNative* srcpixel
 
 ### OH_PixelmapNative_CreateEmptyPixelmap()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)
 ```
 
@@ -1545,7 +1545,7 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_Initialization
 
 ### OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)
 ```
 
@@ -1571,7 +1571,7 @@ Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_
 
 ### OH_PixelmapNative_CreatePixelmapFromSurface()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)
 ```
 
@@ -1597,7 +1597,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceI
 
 ### OH_PixelmapNative_CreatePixelmapFromNativeBuffer()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)
 ```
 
@@ -1622,7 +1622,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 ### OH_PixelmapNative_GetNativeBuffer()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, OH_NativeBuffer **nativeBuffer)
 ```
 
@@ -1647,7 +1647,7 @@ Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, O
 
 ### OH_PixelmapNative_GetMetadata()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue **value)
 ```
 
@@ -1673,7 +1673,7 @@ Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 
 ### OH_PixelmapNative_SetMetadata()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue *value)
 ```
 
@@ -1699,7 +1699,7 @@ Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pi
 
 ### OH_PixelmapNative_SetColorSpaceNative()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_SetColorSpaceNative(OH_PixelmapNative *pixelmap, OH_NativeColorSpaceManager *colorSpaceNative)
 ```
 
@@ -1724,7 +1724,7 @@ Image_ErrorCode OH_PixelmapNative_SetColorSpaceNative(OH_PixelmapNative *pixelma
 
 ### OH_PixelmapNative_GetColorSpaceNative()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_GetColorSpaceNative(OH_PixelmapNative *pixelmap, OH_NativeColorSpaceManager **colorSpaceNative)
 ```
 
@@ -1749,7 +1749,7 @@ Image_ErrorCode OH_PixelmapNative_GetColorSpaceNative(OH_PixelmapNative *pixelma
 
 ### OH_PixelmapNative_SetMemoryName()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, char *name, size_t *size)
 ```
 
@@ -1775,7 +1775,7 @@ Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, cha
 
 ### OH_PixelmapNative_GetByteCount()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_GetByteCount(OH_PixelmapNative *pixelmap, uint32_t *byteCount)
 ```
 
@@ -1800,7 +1800,7 @@ Image_ErrorCode OH_PixelmapNative_GetByteCount(OH_PixelmapNative *pixelmap, uint
 
 ### OH_PixelmapNative_GetAllocationByteCount()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixelmap, uint32_t *allocationByteCount)
 ```
 
@@ -1825,7 +1825,7 @@ Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixe
 
 ### OH_PixelmapNative_AccessPixels()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_AccessPixels(OH_PixelmapNative *pixelmap, void **addr)
 ```
 
@@ -1850,7 +1850,7 @@ Image_ErrorCode OH_PixelmapNative_AccessPixels(OH_PixelmapNative *pixelmap, void
 
 ### OH_PixelmapNative_UnaccessPixels()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)
 ```
 
@@ -1874,7 +1874,7 @@ Image_ErrorCode OH_PixelmapNative_UnaccessPixels(OH_PixelmapNative *pixelmap)
 
 ### OH_PixelmapNative_GetUniqueId()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_GetUniqueId(OH_PixelmapNative *pixelmap, uint32_t *uniqueId)
 ```
 
@@ -1899,7 +1899,7 @@ Image_ErrorCode OH_PixelmapNative_GetUniqueId(OH_PixelmapNative *pixelmap, uint3
 
 ### OH_PixelmapNative_IsReleased()
 
-```
+```c
 Image_ErrorCode OH_PixelmapNative_IsReleased(OH_PixelmapNative *pixelmap, bool *released)
 ```
 

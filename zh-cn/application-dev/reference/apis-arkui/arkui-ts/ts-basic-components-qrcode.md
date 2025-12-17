@@ -24,6 +24,8 @@
 
 QRCode(value: ResourceStr)
 
+创建二维码组件，通过扫描组件显示的二维码图案可以获取二维码中包含的字符串信息。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -34,7 +36,7 @@ QRCode(value: ResourceStr)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) | 是 | 二维码内容字符串。最大支持512个字符，若超出，则截取前512个字符。 <br>从API version 20开始，支持Resource类型。 <br/>**说明：** <br/>该字符串内容必须有效，不支持null、undefined以及空内容，当传入上述内容时，将生成无效二维码。 |
+| value | [ResourceStr](ts-types.md#resourcestr) | 是 | 二维码内容字符串。最大支持512个字符，若超出，则截取前512个字符。 <br>从API version 20开始，支持Resource类型。 <br/>**说明：** <br/>设置为null时与设置字符串“null”效果一致；设置为undefined时与设置字符串“undefined”效果一致；当传入空字符串时，将生成无效二维码。 |
 
 ## 属性
 

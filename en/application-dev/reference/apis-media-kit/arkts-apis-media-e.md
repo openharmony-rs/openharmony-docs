@@ -108,23 +108,24 @@ Enumerates the media description keys.
 
 | Name                    | Value             | Description                                                        |
 | ------------------------ | --------------- | ------------------------------------------------------------ |
-| MD_KEY_TRACK_INDEX       | 'track_index'   | Track index, which is a number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_TRACK_TYPE        | 'track_type'    | Track type, which is a number. For details, see [MediaType](#mediatype8).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_CODEC_MIME        | 'codec_mime'    | Codec MIME type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_DURATION          | 'duration'      | Media duration, which is a number, in units of ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_BITRATE           | 'bitrate'       | Bit rate, which is a number, in units of bit/s. If the value is **undefined** or **0**, the bit rate is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_WIDTH             | 'width'         | Video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_HEIGHT            | 'height'        | Video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_FRAME_RATE        | 'frame_rate'    | Video frame rate, which is a number, measured in frames per 100 seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Audio channel count, which is a number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_AUD_SAMPLE_RATE   | 'sample_rate'   | Sample rate, which is a number, in units of Hz.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup>  | 'sample_depth'  | Bit depth, which is a number, in units of bits.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | Subtitle language, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | Track name, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | Codec track type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | Original video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | Original video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-
+| MD_KEY_TRACK_INDEX       | 'track_index'   | Track index. The corresponding key value type is number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_TRACK_TYPE        | 'track_type'    | Track type. The corresponding key value type is number. For details, see [MediaType](#mediatype8).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_CODEC_MIME        | 'codec_mime'    | Codec MIME type. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_DURATION          | 'duration'      | Media duration. The corresponding key value type is number, measured in ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_BITRATE           | 'bitrate'       | Bit rate. The corresponding key value type is number, measured in bit/s. If the value is **undefined** or **0**, the bit rate is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_WIDTH             | 'width'         | Video width. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_HEIGHT            | 'height'        | Video height. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_FRAME_RATE        | 'frame_rate'    | Video frame rate. The corresponding key value type is number, measured in frames per 100 seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | Audio channel count. The corresponding key value type is number.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_AUD_SAMPLE_RATE   | 'sample_rate'   | Sample rate. The corresponding key value type is number, measured in Hz.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup>  | 'sample_depth'  | Bit depth. The corresponding key value type is number, measured in bits.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_LANGUAGE<sup>12+</sup>  | 'language'  | Subtitle language. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_TRACK_NAME<sup>12+</sup>  | 'track_name'  | Track name. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_HDR_TYPE<sup>12+</sup>  | 'hdr_type'  | Codec track type. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup>  | 'original_width'  | Original video width. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup>  | 'original_height'  | Original video height. The corresponding key value type is number, measured in px.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | Reference relationships between this track and other tracks. The corresponding key value type is string, with values separated by commas (,).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | Auxiliary type of this track when it acts as a reference track. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 ## PlaybackInfoKey<sup>12+</sup>
 
 Enumerates the playback description keys.
@@ -133,11 +134,11 @@ Enumerates the playback description keys.
 
 | Name                    | Value             | Description                                                        |
 | ------------------------ | --------------- | ------------------------------------------------------------ |
-| SERVER_IP_ADDRESS        | 'server_ip_address'    | IP address of the server, which is a string. |
-| AVG_DOWNLOAD_RATE        | 'average_download_rate'| Average download rate, which is a number, in units of bit/s.|
-| DOWNLOAD_RATE            | 'download_rate'        | Download rate in one second, which is a number, in units of bit/s.|
-| IS_DOWNLOADING           | 'is_downloading'       | Download status, which is a number. The value **1** means that the downloaded is in progress, and **0** means that the download is complete.|
-| BUFFER_DURATION          | 'buffer_duration'      | Duration that the cached data can be played, which is a number, in units of seconds.|
+| SERVER_IP_ADDRESS        | 'server_ip_address'    | IP address of the server. The corresponding key value type is string. |
+| AVG_DOWNLOAD_RATE        | 'average_download_rate'| Average download rate. The corresponding key value type is number, measured in bit/s.|
+| DOWNLOAD_RATE            | 'download_rate'        | Download rate in one second. The corresponding key value type is number, measured in bit/s.|
+| IS_DOWNLOADING           | 'is_downloading'       | Download status. The corresponding key value type is number. The value **1** means that the downloaded is in progress, and **0** means that the download is complete.|
+| BUFFER_DURATION          | 'buffer_duration'      | Duration that the cached data can be played. The corresponding key value type is number, measured in seconds.|
 
 ## BufferingInfoType<sup>8+</sup>
 

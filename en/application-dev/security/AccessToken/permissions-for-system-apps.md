@@ -17,6 +17,18 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+Allows an application to subscribe to the startup broadcast.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 9
+
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
 Allows a window to be displayed with animation for an atomic service without the loading dialog box.
@@ -3891,6 +3903,18 @@ Allows a modal UIExtension to unhide non-secure windows.
 
 **Valid since**: 12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+Allows a UIExtensionAbility to be displayed on the locked screen.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 Allows a system service to access distributed modems.
@@ -3913,7 +3937,7 @@ Allows a system application to obtain eSIM profile information and data written 
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3925,7 +3949,7 @@ Allows a system application to modify the eSIM profile and upgrade the eSIM.
 
 **Enable via ACL**: true
 
-**Valid since**: 14
+**Valid since**: 13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -4679,7 +4703,7 @@ Allows an application to read the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -4693,7 +4717,7 @@ Allows an application to write the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -5089,22 +5113,6 @@ Allows an application to access the sandbox directories of other extended applic
 
 **Valid since**: 19
 
-## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
-
-Allows an HAP to load independent binary .so files with different owner IDs.
-
-With this permission, the HAP can load independent binary .so files with a developer certificate or an ad-hoc signature.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Valid since**: 20
-
 ## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
 
 Allows a system application to query the certificate information of independent binary programs.
@@ -5160,6 +5168,20 @@ Allows an application to simulate user operations.
 **Supported devices**: general devices
 
 **Valid since**: 20
+
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+Allows an application to access the directories of compatible applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 22
 
 ## ohos.permission.MANAGE_SELF_SKILLS
 
@@ -5256,3 +5278,29 @@ Allows an application to access Super Hub.
 **Enable via ACL**: true
 
 **Valid since**: 12
+
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+Allows an application to query and configure user identity authentication policies, and verify the authentication result.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18
+
+## ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+Allows an application to dynamically register or remove custom UTD data types.
+
+**Permission level**：system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 22

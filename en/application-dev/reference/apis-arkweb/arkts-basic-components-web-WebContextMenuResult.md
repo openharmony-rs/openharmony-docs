@@ -103,3 +103,11 @@ Performs the paste operation related to the context menu. The pasted content mat
 > The **ohos.permission.READ_PASTEBOARD** permission must be declared.
 
 **System capability**: SystemCapability.Web.Webview.Core
+
+## requestPasswordAutoFill<sup>23+</sup>
+
+requestPasswordAutoFill(): void
+
+Requests the username or password data in the password vault to be automatically filled in the current focused text box.
+
+**System capability**: SystemCapability.Web.Webview.Core

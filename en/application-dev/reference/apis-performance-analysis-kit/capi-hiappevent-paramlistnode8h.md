@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-```d
+```c
 typedef struct ParamListNode* ParamList
 ```
 

@@ -39,7 +39,7 @@
 
 ### Wifi_ResultCode
 
-```
+```c
 enum Wifi_ResultCode
 ```
 
@@ -63,7 +63,7 @@ enum Wifi_ResultCode
 
 ### OH_Wifi_IsWifiEnabled()
 
-```
+```c
 Wifi_ResultCode OH_Wifi_IsWifiEnabled(bool *enabled)
 ```
 
@@ -87,7 +87,7 @@ Wifi_ResultCode OH_Wifi_IsWifiEnabled(bool *enabled)
 
 ### OH_Wifi_GetDeviceMacAddress()
 
-```
+```c
 Wifi_ResultCode OH_Wifi_GetDeviceMacAddress(char *macAddr, unsigned int *macAddrLen)
 ```
 

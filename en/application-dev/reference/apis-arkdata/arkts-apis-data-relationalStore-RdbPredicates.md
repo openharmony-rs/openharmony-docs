@@ -22,7 +22,7 @@ import { relationalStore } from '@kit.ArkData';
 
 constructor(name: string)
 
-A constructor used to create an **RdbPredicates** object.
+Defines a constructor used to create an **RdbPredicates** object.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

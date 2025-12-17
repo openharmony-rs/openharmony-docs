@@ -353,7 +353,9 @@ type TransitionFinishCallback = (transitionIn: boolean) => void
 
 TransitionOptions通过指定结构体内的参数来指定转场效果。
 
-从API version 10开始不再维护，建议使用[TransitionEffect](#transitioneffect10对象说明)代替。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[TransitionEffect](#transitioneffect10对象说明)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,7 +376,7 @@ TransitionOptions通过指定结构体内的参数来指定转场效果。
 
 ### 示例1（使用同一接口实现图片出现消失）
 
-该示例主要演示如何通过同一TransitionEffect来实现图片的出现与消失，出现和消失互为逆过程。
+该示例主要演示如何通过同一[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现与消失，出现和消失互为逆过程。
 ```ts
 // xxx.ets
 @Entry
@@ -414,7 +416,7 @@ struct TransitionEffectExample1 {
 
 ### 示例2（使用不同接口实现图片出现消失）
 
-该示例主要演示使用不同TransitionEffect来实现图片的出现和消失。
+该示例主要演示使用不同[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现和消失。
 ```ts
 // xxx.ets
 @Entry
@@ -474,7 +476,7 @@ struct TransitionEffectExample2 {
 
 ### 示例3（设置父子组件为transition）
 
-该示例主要演示通过父子组件都配置transition来实现图片的出现和消失。
+该示例主要演示通过父子组件都配置[transition](#transition)来实现图片的出现和消失。
 ```ts
 // xxx.ets
 @Entry

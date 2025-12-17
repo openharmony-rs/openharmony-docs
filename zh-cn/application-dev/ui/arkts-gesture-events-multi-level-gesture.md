@@ -314,7 +314,7 @@ Column() {
 此时，单击组件B区域范围，组件A和组件B的点击手势均会触发。
 
 ### OverlayManager的事件透传
-OverlayManager事件机制，默认优先被[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)内组件先接收，不会向下传递。
+[OverlayManager](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md)事件机制，默认优先被[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)内组件先接收，不会向下传递。
 
 若希望OverlayManager下方的页面也能感应到事件，可采用hitTestBehavior(HitTestMode.Transparent)来传递事件，参考以下伪代码。
 

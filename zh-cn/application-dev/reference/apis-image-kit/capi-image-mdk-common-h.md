@@ -44,7 +44,7 @@
 
 ### IRNdkErrCode
 
-```
+```c
 enum IRNdkErrCode
 ```
 

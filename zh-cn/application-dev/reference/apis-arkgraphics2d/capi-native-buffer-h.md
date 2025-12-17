@@ -29,6 +29,7 @@
 | [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md) | OH_NativeBuffer_Plane | 单个图像平面格式信息。 |
 | [OH_NativeBuffer_Planes](capi-oh-nativebuffer-oh-nativebuffer-planes.md) | OH_NativeBuffer_Planes | OH_NativeBuffer的图像平面格式信息。 |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) | OH_NativeBuffer | 提供OH_NativeBuffer结构体声明。 |
+| [OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md) | OHIPCParcel | 提供OHIPCParcel结构体声明，用于进程间通信。 |
 
 ### 枚举
 
@@ -55,6 +56,11 @@
 | [int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)](#oh_nativebuffer_setmetadatavalue) | 为OH_NativeBuffer设置元数据属性值。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)](#oh_nativebuffer_getmetadatavalue) | 获取OH_NativeBuffer元数据属性值。<br>本接口为非线程安全类型接口。 |
 | [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的ION内存映射到进程空间，永久阻塞传入的fenceFd。<br>如果接口返回OK，系统会将fenceFd关闭，无需用户close，否则，用户需要自行关闭fenceFd。<br> 本接口需要与[OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap)接口配合使用。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parcel)](#oh_nativebuffer_writetoparcel) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对象写入IPC序列化对象中。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** buffer)](#oh_nativebuffer_readfromparcel) | 从IPC序列化对象中读取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对象。<br>本接口将会创建一个[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)，当OH_NativeBuffer对象使用完，开发者需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄漏。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSupported)](#oh_nativebuffer_issupported) | 检查系统是否支持传入的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)配置信息。<br>本接口为非线程安全类型接口。 |
+| [int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr, OH_NativeBuffer_Config* config)](#oh_nativebuffer_mapandgetconfig) | 将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的多通道ION内存映射到进程空间，并获取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)。<br>本接口为非线程安全类型接口。 |
+
 
 ## 枚举类型说明
 
@@ -504,3 +510,122 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>buffer，virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+
+### OH_NativeBuffer_WriteToParcel()
+
+```c
+int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parcel)
+```
+
+**描述**
+
+将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对象写入IPC序列化对象中。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)* buffer | 一个指向[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)实例的指针。 |
+| [OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)* parcel | 一个指向[OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)结构体实例的指针，作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>buffer或parcel为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>IPC发送失败返回SURFACE_ERROR_BINDER_ERROR。 |
+
+### OH_NativeBuffer_ReadFromParcel()
+
+```c
+int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** buffer)
+```
+
+**描述**
+
+从IPC序列化对象中读取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对象。
+
+本接口将会创建一个[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)，当OH_NativeBuffer对象使用完，开发者需要与[OH_NativeBuffer_Unreference](capi-native-buffer-h.md#oh_nativebuffer_unreference)接口配合使用，否则会存在内存泄漏。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)* parcel | 一个指向[OHIPCParcel](../apis-ipc-kit/capi-ohipcparcel-ohipcparcel.md)的结构体实例的指针。 |
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)** buffer | 一个指向[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)结构体实例的二级指针，作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>parcel或buffer为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>parcel反序列化失败返回SURFACE_ERROR_ERROR。 |
+
+### OH_NativeBuffer_IsSupported()
+
+```c
+int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSupported)
+```
+
+**描述**
+
+检查系统是否支持传入的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)配置信息。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md) config | [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)结构体实例。 |
+| bool* isSupported | 为true代表系统支持传入的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)配置信息，为false表示系统不支持传入的OH_NativeBuffer_Config配置信息，作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>isSupported为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+
+### OH_NativeBuffer_MapAndGetConfig()
+
+```c
+int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr, OH_NativeBuffer_Config* config)
+```
+
+**描述**
+
+将[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的多通道ION内存映射到进程空间，并获取[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)对应的[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)。
+
+本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)* buffer | 一个指向[OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)的结构体实例的二级指针。 |
+| void** virAddr | 一个指向映射到当前进程的虚拟内存的地址的二级指针，作为出参使用。 |
+| [OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)* config | 一个指向[OH_NativeBuffer_Config](capi-oh-nativebuffer-oh-nativebuffer-config.md)的结构体实例的指针，作为出参使用。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>buffer、virAddr或config为空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
