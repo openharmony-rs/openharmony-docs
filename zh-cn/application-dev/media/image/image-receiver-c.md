@@ -73,7 +73,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 3. 定义全局变量。
 
-   <!-- @[define_receiverInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->      
+   <!-- @[define_receiverInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->                
 
 4. 定义一些工具类函数，用来处理napi的返回值和参数类型的转换。
  
@@ -467,13 +467,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 调用相机拍照的整体流程。
 
-     <!-- @[load_cameraSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->    
+     <!-- @[load_cameraSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
 
 7. 获取Receiver接收到的图片信息。
 
    - 等待OnCallback回调通知。
 
-     <!-- @[wait_callBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->     
+     <!-- @[wait_callBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
 
    - 获取图片大小。
 

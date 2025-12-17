@@ -35,32 +35,7 @@ ArkWeb图片上传可参考：[使用Web组件上传文件](../../../web/web-fil
 ### 担心使用HEIF格式图片存在兼容性问题，需使用JPEG或PNG格式的图片，如何操作
 
 可以借助Image Kit的图片编解码能力，将HEIF图片转码成JPEG图片，示例代码如下：
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
-async function reEncoding(context : Context, fd : number) {
-    // 首先获取图片文件的fd，创建ImageSource。
-    const imageSource : image.ImageSource = image.createImageSource(fd);
-    // 创建ImagePacker，以便调用图片编码接口。
-    const imagePackerApi = image.createImagePacker();
-    // 配置图片编码选项：
-    // format应使用标准的mimetype格式，如："image/jpeg"、"image/png"、"image/heic"；
-    // quality推荐设置为80，在保证较好的图片质量的同时，可以使编码后的图片文件体积更小；
-    // needsPackProperties参数，用于控制编码时是否保存图片属性信息。默认值为false，即不保存。
-    let packOpts : image.PackingOption = { format:"image/jpeg", quality:80, needsPackProperties:false };
-    // 指定图片编码文件的存放路径。
-    const filePath : string = context.cacheDir + "/result.jpg";
-    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-    imagePackerApi.packToFile(imageSource, file.fd, packOpts).then(() => {
-        console.info('Succeed to pack the image.'); 
-    }).catch((error : BusinessError) => { 
-        console.error('Failed to pack the image. And the error is: ' + error); 
-    }).finally(()=>{
-        fs.closeSync(file.fd);
-    })
-}
-```
+<!-- @[transcoding_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets) -->     
 
 使用CAPI完成图片转码的流程也是类似的，首先创建ImageSource和ImagePacker示例，然后指定编码参数，调用图片编码接口完成转码。详细示例代码可参考[使用Image_NativeModule完成图片编码](../image-packer-c.md)。
