@@ -574,7 +574,7 @@ getViewMatrix(): Mat4x4
 ```ts
 import { Mat4x4, Scene, Node } from '@kit.ArkGraphics3D';
 
-function GetViewMatrix(): Mat4x4 {
+function GetViewMatrix(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
     .then(async (result: Scene) => {
@@ -589,7 +589,7 @@ function GetViewMatrix(): Mat4x4 {
       // 设置相机视角
       lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
       // 获取相机的视图矩阵
-      return camera.getViewMatrix();
+      let viewMatrix: Mat4x4 = camera.getViewMatrix();
     });
 }
 ```
@@ -610,7 +610,7 @@ getProjectionMatrix(): Mat4x4
 ```ts
 import { Mat4x4, Scene, Node } from '@kit.ArkGraphics3D';
 
-function GetProjectionMatrix(): Mat4x4 {
+function GetProjectionMatrix(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
     .then(async (result: Scene) => {
@@ -625,7 +625,7 @@ function GetProjectionMatrix(): Mat4x4 {
       // 设置相机视角
       lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
       // 获取相机的投影矩阵
-      return camera.getProjectionMatrix();
+      let projectionMatrix: Mat4x4 = camera.getProjectionMatrix();
     });
 }
 ```

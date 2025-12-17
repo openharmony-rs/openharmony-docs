@@ -1248,7 +1248,7 @@ function CloneNode() {
       return;
     }
     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
-    Scene.load($rawfile("gltf/AnimatedCube/glTF/AnimatedCube.glb"))
+    Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
       .then(async (extScene: Scene) => {
         let extNode = extScene.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
         console.info("test cloneNode");
