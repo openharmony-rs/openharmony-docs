@@ -6,6 +6,10 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_RDB_TransOptions OH_RDB_TransOptions
+```
+
 ## Overview
 
 Defines the [OH_RDB_TransOptions](capi-rdb-oh-rdb-transoptions.md) struct.

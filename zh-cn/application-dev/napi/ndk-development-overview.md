@@ -53,7 +53,7 @@ NDK（Native Development Kit）是OpenHarmony SDK提供的Native API、相应编
 
 ### NDK目录简介
 
-获取NDK开发包，请参考[NDK开发工具目录](build-with-ndk-cmake.md#下载ndk开发包)。
+获取NDK开发包，请参考<!--RP1-->[NDK开发工具目录](build-with-ndk-cmake.md#下载ndk开发包)<!--RP1End-->。
 
 - build目录：放置预定义的toolchain脚本文件[ohos.toolchain.cmake](build-with-ndk-overview.md#ohostoolchaincmake简介)
 

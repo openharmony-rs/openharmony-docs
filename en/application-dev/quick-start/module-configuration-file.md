@@ -6,33 +6,42 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+A module-level configuration file provides the basic configuration of the module, information about the UIAbility and ExtensionAbility components, and permissions required during application running for the compilation tool, OS, and AppGallery. Each module must contain a **module.json5** configuration file, which is stored in the ***project or module name*/AppScope/app.json5** directory, for example, **entry/src/main/module.json5**.
+
+>
+> **NOTE**
+>
+> Using the sample code in the actual project may cause a compilation failure. You need to configure the code as required. For example, if the resource file referenced by the **$** symbol does not exist in the project, you need to manually add the resource file or replace it with the actual one.
+>
+> In the configuration file, fields can be repeated. The last field is used.
+>
+
 ## Configuration File Example
 
 This topic gives an overview of the **module.json5** configuration file. To start with, let's go through an example of what this file contains.
-<!--RP1-->
-```json
+<!-- @[module_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
     "name": "entry",
     "type": "entry",
     "description": "$string:module_desc",
-    "srcEntry": "./ets/entryability/EntryAbility.ets",
     "mainElement": "EntryAbility",
     "deviceTypes": [
-      "default",
+      "tv",
       "tablet"
     ],
     "deliveryWithInstall": true,
-    "installationFree": false,
-    "pages": "$profile:main_pages",
-    "virtualMachine": "ark",
+    "pages": "$profile:main_pages", // Resource configuration, pointing to the main_pages.json configuration file defined in the profile.
     "appStartup": "$profile:app_startup_config",
     "metadata": [
       {
         "name": "string",
         "value": "string",
         "resource": "$profile:distributionFilter_config"
-      }
+      },
+      // ...
     ],
     "abilities": [
       {
@@ -46,6 +55,7 @@ This topic gives an overview of the **module.json5** configuration file. To star
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
         "skills": [
+          // ...
           {
             "entities": [
               "entity.system.home"
@@ -55,13 +65,14 @@ This topic gives an overview of the **module.json5** configuration file. To star
             ]
           }
         ],
+        // ...
         "continueType": [
           "continueType1"
         ],
         "continueBundleName": [
           "com.example.myapplication1",
           "com.example.myapplication2"
-        ]
+        ],
       }
     ],
     "requestPermissions": [
@@ -70,7 +81,7 @@ This topic gives an overview of the **module.json5** configuration file. To star
         "reason": "$string:reason",
         "usedScene": {
           "abilities": [
-            "FormAbility"
+            "EntryAbility"
           ],
           "when": "inuse"
         }
@@ -87,18 +98,12 @@ This topic gives an overview of the **module.json5** configuration file. To star
         "value": "value1"
       }
     ],
-    "hnpPackages": [
-      {
-        "package": "hnpsample.hnp",
-        "type": "public"
-      }
-    ],
-    "fileContextMenu": "$profile:menu",
-    "crossAppSharedConfig": "$profile:shared_config"
+    "fileContextMenu": "$profile:menu", // Resource configuration, which points to the menu.json configuration file defined in the profile.
+    "crossAppSharedConfig": "$profile:shared_config",
+    // ...
   }
 }
 ```
-<!--RP1End-->
 
 ## Tags in the Configuration File
 
@@ -125,7 +130,7 @@ As shown above, the **module.json5** file contains several tags.
 | [extensionAbilities](#extensionabilities) | ExtensionAbility configuration of the module. The setting is effective only for the current ExtensionAbility.| Object array| Yes (initial value: left empty)|
 | <!--DelRow-->[definePermissions](#definepermissions)| Permissions defined for the system resource HAP. Custom permissions are not supported.| Object array| Yes (initial value: left empty)|
 | [requestPermissions](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file)| A set of permissions that the application needs to request from the system for running correctly.| Object array| Yes (initial value: left empty)|
-| [testRunner](#testrunner) | Test runner of the module. For details, see [test Command](../tools/aa-tool.md#test-command).| Object| Yes (initial value: left empty)|
+| [testRunner](#testrunner) | Test runner of the module. For details, see the [test](../tools/aa-tool.md#test) command.| Object| Yes (initial value: left empty)|
 | [atomicService](#atomicservice)| Atomic service configuration.| Object| Yes (initial value: left empty) |
 | [dependencies](#dependencies)| List of shared libraries on which the module depends during running.| Object array| Yes (initial value: left empty)<br> This tag is automatically generated during compilation and build. Manual configuration does not take effect. |
 | targetModuleName | Target module name. The value is a string with a maximum of 128 bytes. The module that has this tag set provides the overlay feature. This tag is applicable only to HSPs.|String|Yes (initial value: left empty)|
@@ -147,7 +152,7 @@ As shown above, the **module.json5** file contains several tags.
 | abilityStageSrcEntryDelegator | Name of the target module corresponding to the UIAbility that the current module redirects to (different from the current module name). It is used together with the **abilitySrcEntryDelegator** tag to specify the target object for redirection.<br>**NOTE**<br>1. This tag is supported since API version 17.<br>2. This tag does not take effect when the UIAbility is started through the [startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall) API.<br>3. Configuration in the HAR and redirection to the UIAbility of the HAR are not supported.| String| Yes (initial value: left empty)|
 | crossAppSharedConfig | Name of the configuration file for inter-application sharing. The value is a string with a maximum of 255 bytes. It is used to release configurations for other applications to read. The configurations take effect when the application is installed and become invalid when the application is uninstalled. For details, see [Sharing Configurations Between Applications (ArkTS)](../database/share-config.md#configuring-the-publisher).<br>**NOTE**<br>This tag is supported since API version 20.| String| Yes (initial value: left empty)|
 | formWidgetModule | In [standalone widget package](../form/arkts-ui-widget-creation.md#method-2-creating-a-standalone-package), this tag needs to be configured for the application package to associate with the widget package. The value is the module name of the widget package, corresponding to the **name** tag in the **module.json5** file of the widget package. For details, see [FormExtensionAbility Configuration](../form/arkts-ui-widget-configuration.md#formextensionability-configuration).<br>**NOTE**<br> 1. This tag is supported since API version 20.<br> 2. This tag takes effect only in the application package of a standalone widget package. The **formExtensionModule** tag must be configured for the corresponding widget package module.| String| Yes (initial value: left empty) |
-| formExtensionModule | In [standalone widget package](../form/arkts-ui-widget-creation.md#method-2-creating-a-standalone-package), this tag needs to be configured for the widget package to associate with the application package. The value is the module name of the application package, corresponding to the **name** tag in the **module.json5** file of the application package. For details, see [Standalone Widget Package Configuration](../form/arkts-ui-widget-configuration.md#independent-widget-package-configuration).<br>**NOTE**<br>1. This tag is supported since API version 20.<br>2. This tag takes effect only in the widget package of a standalone widget package. The **formWidgetModule** tag must be configured for the corresponding application package module.| String| Yes (initial value: left empty) |
+| formExtensionModule | In [standalone widget package](../form/arkts-ui-widget-creation.md#method-2-creating-a-standalone-package), this tag needs to be configured for the widget package to associate with the application package. The value is the module name of the application package, corresponding to the **name** tag in the **module.json5** file of the application package. For details, see [Standalone Widget Package Configuration](../form/arkts-ui-widget-configuration.md#standalone-widget-package-configuration).<br>**NOTE**<br>1. This tag is supported since API version 20.<br>2. This tag takes effect only in the widget package of a standalone widget package. The **formWidgetModule** tag must be configured for the corresponding application package module.| String| Yes (initial value: left empty) |
 <!--RP6--><!--RP6End-->
 
 ## deviceTypes
@@ -161,35 +166,39 @@ As shown above, the **module.json5** file contains several tags.
 | Smart watch| wearable | Watch that provides call features.|
 | Head unit| car | - |
 | PC/2-in-1 device| 2in1 | PC, mainly used for multi-window and multi-task interactions, and keyboard and mouse operations. It fully showcases the device productivity. In the OpenHarmony topics, "2-in-1" indicates PC/2-in-1 device.|
-| Default device| default | Device that provides full access to system capabilities.|
+| Default device| default | Default device type. For details, see [Standard-System Development Boards](../../device-dev/dev-board-on-the-master.md#standard-system-development-boards).|
 <!--RP2End-->
 
 Example of the **deviceTypes** structure:
 
+<!-- @[module_deviceTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
   "module": {
     "name": "myHapName",
     "type": "feature",
-    "deviceTypes" : [
-       "tablet"
-    ]
+    "deviceTypes": [
+      "tv",
+      "tablet"
+    ],
+    // ...
   }
 }
 ```
-
 
 ## pages
 
 The **pages** tag is a profile that represents information about specified pages.
 
+<!-- @[module_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
   "module": {
     // ...
-    "pages": "$profile:main_pages", // Configured through the resource file in the profile
+    "pages": "$profile:main_pages", // Resource configuration, pointing to the main_pages.json configuration file defined in the profile.
+    // ...
   }
 }
 ```
@@ -214,10 +223,7 @@ Define the **main_pages.json** file under **resources/base/profile** in the deve
 ```json
 {
   "src": [
-    "pages/index/mainPage",
-    "pages/second/payment",
-    "pages/third/shopping_cart",
-    "pages/four/owner"
+    "pages/Index"
   ],
   "window": {
     "designWidth": 720,
@@ -239,14 +245,21 @@ The **metadata** tag represents the custom metadata of the HAP. The tag value is
 | value | Value of the data item. The value is a string with a maximum of 255 bytes.| String| Yes (initial value: left empty)|
 | resource | Custom data, which is a resource index. The value is a string with a maximum of 255 bytes. For example, **$profile:shortcuts_config** indicates that the data points to the **/resources/base/profile/shortcuts_config.json** configuration file.| String| Yes (initial value: left empty)|
 
-```json
+<!-- @[module_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
-    "metadata": [{
-      "name": "module_metadata",
-      "value": "a test demo for module metadata",
-      "resource": "$profile:shortcuts_config"
-    }]
+    // ...
+    "metadata": [
+      // ...
+      {
+        "name": "module_metadata",
+        "value": "a test demo for module metadata",
+        "resource": "$profile:shortcuts_config"
+      }
+    ],
+    // ...
   }
 }
 ```
@@ -261,7 +274,7 @@ The **abilities** tag represents the UIAbility configuration of the module, whic
 | -------- | -------- | -------- | -------- |
 | name | Name of the UIAbility, which must be unique in the entire application. The value is a string with a maximum of 127 bytes. It must start with a letter and can contain letters, digits, underscores (_), and periods (.).| String| No|
 | srcEntry | Code path of the UIAbility. The value is a string with a maximum of 127 bytes.| String| No|
-| [launchType](../application-models/uiability-launch-type.md) | Launch type of the UIAbility. The options are as follows:<br>- **multiton**: A UIAbility instance is created each time the UIAbility is started.<br>- **singleton**: A UIAbility instance is created only when the UIAbility is started for the first time.<br>- **specified**: You can determine whether to create a UIAbility instance when the application is running.<br>- **standard**: original name of **multiton**. The effect is the same as that multiton mode.| String| Yes (initial value: **"singleton"**)|
+| [launchType](../application-models/uiability-launch-type.md) | Launch type of the UIAbility. The options are as follows:<br>- **multiton**: A UIAbility instance is created each time the UIAbility is started.<br>- **singleton**: A UIAbility instance is created only when the UIAbility is started for the first time.<br>- **specified**: You can determine whether to create a UIAbility instance when the application is running.<br>- **standard**: original name of **multiton**. The effect is the same as that multiton mode. <!--RP1--><!--RP1End--> | String| Yes (initial value: **"singleton"**)|
 | description | Description of the UIAbility component, used to describe the component functions. The value is a string with a maximum of 255 bytes. It is advised to use a resource index to support multiple languages.| String| Yes (initial value: left empty)|
 | icon | [Icon](layered-image.md) of the UIAbility. The value is the index of the icon resource file.| String| Yes (initial value: left empty)|
 | label | [Name](layered-image.md) of the UIAbility displayed to users. The value is an index of a string with a maximum of 255 bytes to support multiple languages.| String| Yes (initial value: left empty)|
@@ -288,7 +301,7 @@ The **abilities** tag represents the UIAbility configuration of the module, whic
 | recoverable | Whether the application can be recovered to its previous state in case of faults.<br>- **true**: The application can be recovered to its previous state in case of faults.<br>- **false**: The application cannot be recovered to its previous state in case of faults.| Boolean| Yes (initial value: **false**)|
 | <!--DelRow-->unclearableMission | Whether the UIAbility is unclearable in Recents.<br>- **true**: The UIAbility is unclearable in Recents.<br>- **false**: The UIAbility is clearable in Recents.<br>**NOTE**<br>This configuration does not take effect in third-party applications but in system applications. To enable the configuration in system applications, apply for the application privilege **AllowMissionNotCleared**. For details, see [Application Privilege Configuration](../../device-dev/subsystems/subsys-app-privilege-config-guide.md).| Boolean| Yes (initial value: **false**)|
 | isolationProcess | Whether the component can run in an isolated process.<br>- **true**: The component can run in an isolated process.<br>- **false**: The component cannot run in an isolated process.<br>**NOTE**<br>The UIAbility can serve as an isolated process on 2-in-1 devices and tablets.| Boolean| Yes (initial value: **false**)|
-| excludeFromDock | Whether the UIAbility can be hidden from the dock.<br>- **true**: The UIAbility can be hidden from the dock.<br>- **false**: The UIAbility cannot be hidden from the dock.| Boolean| Yes (initial value: **false**)|
+| excludeFromDock | Whether the UIAbility can be hidden from the dock.<br>- **true**: The UIAbility can be hidden from the dock.<br>- **false**: The UIAbility cannot be hidden from the dock.<br>**NOTE**<br>The configuration of this tag does not take effect.| Boolean| Yes (initial value: **false**)|
 | preferMultiWindowOrientation | Multi-window orientation of the UIAbility.<br>- **default**: default value. Do not set this parameter to the default value. You are advised to set this parameter for other applications.<br>- **portrait**: portrait. This option is recommended for games in portrait mode.<br>- **landscape**: landscape. This option is recommended for games in landscape mode. With this option, the floating window and upper and lower split screens are supported in landscape mode.<br>- **landscape_auto**: automatically landscape. This option is recommended for video applications. It must be used together with the **enableLandScapeMultiWindow/disableLandScapeMultiWindow** API.| String| Yes (initial value: **default**)|
 | continueType | Continuation type of the UIAbility.| String array| Yes (initial value: name of the UIAbility)|
 | continueBundleName | List of other applications that support cross-device migration.<br>**NOTE**<br>This parameter cannot be set to the application bundle name. It is used only for migration with different bundle names.<br>This tag is supported since API version 13.| String array| Yes (initial value: left empty)|
@@ -296,58 +309,69 @@ The **abilities** tag represents the UIAbility configuration of the module, whic
 
 Example of the **abilities** structure:
 
-<!--RP3-->
-```json
+<!-- @[module_abilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+
+``` JSON5
 {
-  "abilities": [{
-    "name": "EntryAbility",
-    "srcEntry": "./ets/entryability/EntryAbility.ets",
-    "launchType":"singleton",
-    "description": "$string:description_main_ability",
-    "icon": "$media:layered_image",
-    "label": "$string:EntryAbility_label",
-    "permissions": [],
-    "metadata": [],
-    "exported": true,
-    "continuable": true,
-    "skills": [{
-      "actions": ["ohos.want.action.home"],
-      "entities": ["entity.system.home"],
-      "uris": []
-    }],
-    "backgroundModes": [
-      "dataTransfer"
+  // ...
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "launchType": "singleton",
+        "description": "$string:description_main_ability",
+        "icon": "$media:layered_image",
+        "label": "$string:EntryAbility_label",
+        "permissions": [],
+        "metadata": [],
+        "exported": true,
+        "continuable": true,
+        "skills": [
+          {
+            "actions": [
+              "ohos.want.action.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ],
+            "uris": []
+          }
+        ],
+        "backgroundModes": [
+          "dataTransfer"
+        ],
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:red",
+        "removeMissionAfterTerminate": true,
+        "orientation": "$string:orientation",
+        "supportWindowMode": [
+          "fullscreen",
+          "split",
+          "floating"
+        ],
+        "maxWindowRatio": 3.5,
+        "minWindowRatio": 0.5,
+        "maxWindowWidth": 2560,
+        "minWindowWidth": 1400,
+        "maxWindowHeight": 300,
+        "minWindowHeight": 200,
+        "excludeFromMissions": false,
+        "preferMultiWindowOrientation": "default",
+        "isolationProcess": false,
+        "continueType": [
+          "continueType1",
+          "continueType2"
+        ],
+        "continueBundleName": [
+          "com.example.myapplication1",
+          "com.example.myapplication2"
+        ],
+        "process": ":processTag"
+      }
     ],
-    "startWindow": "$profile:start_window",
-    "startWindowIcon": "$media:icon",
-    "startWindowBackground": "$color:red",
-    "removeMissionAfterTerminate": true,
-    "orientation": "$string:orientation",
-    "supportWindowMode": ["fullscreen", "split", "floating"],
-    "maxWindowRatio": 3.5,
-    "minWindowRatio": 0.5,
-    "maxWindowWidth": 2560,
-    "minWindowWidth": 1400,
-    "maxWindowHeight": 300,
-    "minWindowHeight": 200,
-    "excludeFromMissions": false,
-    "unclearableMission": false,
-    "excludeFromDock": false,
-    "preferMultiWindowOrientation": "default",
-    "isolationProcess": false,
-    "continueType": [
-      "continueType1",
-      "continueType2"
-    ],
-    "continueBundleName": [
-      "com.example.myapplication1",
-      "com.example.myapplication2"
-    ],
-    "process": ":processTag"
-  }]
+    // ...
 }
 ```
-<!--RP3End-->
 
 ## skills
 
@@ -360,7 +384,7 @@ The **skills** tag represents the feature set of [wants](../application-models/w
 | actions | Actions of wants that can be received, which can be predefined or customized.<br>You are advised not to configure multiple **actions** for a **skill**. Otherwise, the expected scenario may not be matched. For details, see [Common action and entities Values](../application-models/actions-entities.md).| String array| Yes (initial value: left empty)|
 | entities | Entities of wants that can be received.<br>You are advised not to configure multiple **entities** for a **skill**. Otherwise, the expected scenario may not be matched. For details, see [Common action and entities Values](../application-models/actions-entities.md).| String array| Yes (initial value: left empty)|
 | uris | URIs that match the wants.| Object array| Yes (initial value: left empty)|
-| permissions | Permissions required for another application to access the UIAbility or ExtensionAbility.<br>Each array element is a permission name with a maximum of 255 bytes. For details about the value, see [Application Permissions](../security/AccessToken/app-permissions.md).| String array| Yes (initial value: left empty)|
+| permissions | Permissions required for another application to access the UIAbility or ExtensionAbility component.<br>Each array element is a permission name with a maximum of 255 bytes. For details about the value, see [Application Permissions](../security/AccessToken/app-permissions.md).| String array| Yes (initial value: left empty)|
 | domainVerify | Whether to enable <!--RP7-->[domain name verification](../application-models/app-linking-startup.md#working-principles)<!--RP7End-->.<br>- **true**: Domain name verification is enabled.<br>- **false**: Domain name verification is disabled.| Boolean| Yes (initial value: **false**)|
 
 
@@ -383,35 +407,40 @@ The **skills** tag represents the feature set of [wants](../application-models/w
 
 Example of the **skills** structure:
 
+<!-- @[module_abilities_skills](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
-  "abilities": [
-    {
-      "skills": [
-        {
-          "actions": [
-            "ohos.want.action.home"
-          ],
-          "entities": [
-            "entity.system.home"
-          ],
-          "uris": [
-            {
-              "scheme":"http",
-              "host":"example.com",
-              "port":"80",
-              "path":"path",
-              "type": "text/*",
-              "linkFeature": "Login"
-            }
-          ],
-          "permissions": [],
-          "domainVerify": false
-        }
-      ]
-    }
-  ]
+  // ...
+    "abilities": [
+      {
+        // ...
+        "skills": [
+          {
+            "actions": [
+              "ohos.want.action.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ],
+            "uris": [
+              {
+                "scheme":"http",
+                "host":"example.com",
+                "port":"80",
+                "path":"path",
+                "type": "text/*",
+                "linkFeature": "Login"
+              }
+            ],
+            "permissions": [],
+            "domainVerify": false
+          },
+          // ...
+        ],
+        // ...
+    ],
+    // ...
 }
 ```
 
@@ -428,11 +457,11 @@ The **extensionAbilities** tag represents the configuration of ExtensionAbilitie
 | description | Description of the ExtensionAbility component, used to describe the component functions. The value is a string with a maximum of 255 bytes. It can be a resource index to support multiple languages.| String| Yes (initial value: left empty)|
 | icon | Icon of the ExtensionAbility. The value is the index of the icon resource file.| String| Yes (initial value: left empty)|
 | label | Name of the ExtensionAbility displayed to users. The value must be a resource index to support multiple languages. It contains a maximum of 255 bytes.| String| Yes (initial value: left empty)|
-| type | Type of the ExtensionAbility. The options are as follows:<br>- **form**: ExtensionAbility of a widget.<br>- **workScheduler**: ExtensionAbility of a deferred task.<br>- **inputMethod**: ExtensionAbility of an input method.<!--Del--><br>- **service**: service component running in the background.<!--DelEnd--><br>- **accessibility**: ExtensionAbility of an accessibility feature.<!--Del--><br>- **fileAccess**: ExtensionAbility for public data access, allowing files and folders to be provided for file management applications to display.<br>- **dataShare**: ExtensionAbility for data sharing.<br>- **staticSubscriber**: ExtensionAbility for static broadcast.<!--DelEnd--><br>- **wallpaper**: ExtensionAbility of the wallpaper.<br>- **backup**: ExtensionAbility for data backup.<br>- **enterpriseAdmin**: ExtensionAbility for [enterprise device management](../mdm/mdm-kit-admin.md). An enterprise device management application must have such ExtensionAbility.<!--Del--><br>- **window**: ExtensionAbility of a window. This type of ExtensionAbility creates a window during startup for which you can develop the GUI. The GUI you develop is combined with the windows of other applications through the **UIExtensionComponent**.<!--DelEnd--><br>- **thumbnail**: ExtensionAbility for obtaining file thumbnails. You can provide thumbnails for files of customized file types.<br>- **preview**: ExtensionAbility for preview. This type of ExtensionAbility can parse the file and display it in a window. You can combine the window with other application windows.<br>- **print**: ExtensionAbility for the print framework.<br>- **push**: ExtensionAbility for the push service.<br>- **driver**: ExtensionAbility for the driver framework. When an application configures an ExtensionAbility of the driver type, it is recognized as a driver application. Driver applications do not differentiate between users during installation, uninstall, and recovery. Moreover, when a new user account is created, the existing driver applications on the device are installed for that user. For example, when a sub-user is created, the driver applications already installed by the primary user is automatically installed for the sub-user. If a driver application is uninstalled for a sub-user, it is also removed for the primary user.<br>- **remoteNotification**: ExtensionAbility for remote notifications.<br>- **remoteLocation**: ExtensionAbility for remote location.<br>- **voip**: ExtensionAbility for VoIP calls.<br>- **action**: ExtensionAbility for custom service operations, which provides custom service operation templates based on UIExtension.<!--Del--><br>- **adsService**: ExtensionAbility for the ad service, which provides the ad service framework.<!--DelEnd--><br>- **embeddedUI**: embedded UI extension, which allows for UI embedding across processes.<br>- **insightIntentUI**: APIs that enable applications to be called by Celia intents so as to be displayed in windows.<br>- **ads**: ExtensionAbility for the ad service, which is used with the AdComponent to display the ad page in other applications. This option is only available for device manufacturers.<br>- **photoEditor**: ExtensionAbility for the image editing service, which provides an image editing service template based on UIExtension.<br>- **appAccountAuthorization**: ExtensionAbility for application account authorization extension, which is used to process account authorization requests, for example, account login authorization.<br>- **autoFill/password**: ExtensionAbility for automatically filling in usernames and passwords.<br>- **hms/account**: ExtensionAbility for application account management.<!--Del--><br>- **sysDialog/atomicServicePanel**: ExtensionAbility that provides the basic capability for building an atomic service panel. It is implemented based on UIExtensionAbility.<br>- **sysDialog/userAuth**: ExtensionAbility for local user authentication.<br>- **sysDialog/common**: ExtensionAbility for common dialog boxes.<br>- **sysDialog/power**: ExtensionAbility for the shutdown and restart dialog boxes.<br>- **sysDialog/print**: ExtensionAbility for the print modals.<br>- **sysDialog/meetimeCall**: ExtensionAbility for MeeTime calls.<br>- **sysDialog/meetimeContact**: ExtensionAbility for MeeTime contacts.<br>- **sysPicker/meetimeMessage**: ExtensionAbility for MeeTime messages.<br>- **sysPicker/meetimeContact**: ExtensionAbility for the MeeTime contact list.<br>- **sysPicker/meetimeCallLog**: ExtensionAbility for the MeeTime call history.<br>- **sysPicker/share**: ExtensionAbility for sharing.<br>- **sysPicker/mediaControl**: ExtensionAbility for media control.<br>- **sysPicker/photoPicker**: ExtensionAbility that allows a third-party application to use the corresponding UIExtensionType to open the gallery photo picker.<br>- **sysPicker/filePicker**: ExtensionAbility for file download dialog boxes.<br>- **sysPicker/audioPicker**: ExtensionAbility for the audio management dialog box.<br>- **sysPicker/photoEditor**: ExtensionAbility for the photo editor.<br>- **sys/commonUI**: non-common ExtensionAbility, which provides embedded display or dialog boxes closely related to service attributes.<!--DelEnd--><br>- **autoFill/smart**: ExtensionAbility for scenario-specific autofill services.<!--Del--><br>- **uiService**: ExtensionAbility for pop-up window service, which creates a window during the startup and supports bidirectional communication.<!--DelEnd--> <!--RP9--><!--RP9End--><br>- **recentPhoto**: ExtensionAbility for recommended recent photos.<br>- **fence**: ExtensionAbility for geofencing.<br>- **callerInfoQuery**: ExtensionAbility for enterprise contacts.<br>- **assetAcceleration**: ExtensionAbility for resource pre-download.<br>- **formEdit**: ExtensionAbility for widget editing.<br>- **distributed**: ExtensionAbility for distributed extension.<br>- **liveForm**: [ExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) for interactive widgets. This tag is supported since API version 20.<br>- **appService**: [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) for background services, which provides lifecycle callbacks to manage background services, including creation, destruction, connection, and disconnection. This tag is supported since API version 20.<!--Del--><br>- **awc/webpage**: ExtensionAbility for common web browsing.<br>- **awc/newsfeed**: ExtensionAbility for news feed.<br>- **selection**: [ExtensionAbility](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md) for word selection. This tag is supported since API version 20.<br>**NOTE**<br>For **service**, **adsService**, **staticSubscriber**, **window**, **sys/commonUI**, **fileAccess**, **selection**, **sysDialog**, **sysPicker**, **dataShare**, and **uiService** types, this configuration does not take effect in third-party applications but in system applications.<!--DelEnd--> | String| No|
-| permissions | Permissions required for another application to access the ExtensionAbility.<br>Each permission name is an array element, with a maximum of 255 bytes. For details about the value, see [Application Permissions](../security/AccessToken/app-permissions.md).| String array| Yes (initial value: left empty)|
+| type | Type of the ExtensionAbility. The options are as follows:<br>- **form**: ExtensionAbility of a widget.<br>- **workScheduler**: ExtensionAbility of a deferred task.<br>- **inputMethod**: ExtensionAbility of an input method.<!--Del--><br>- **service**: service component running in the background.<!--DelEnd--><br>- **accessibility**: ExtensionAbility of an accessibility feature.<!--Del--><br>- **fileAccess**: ExtensionAbility for public data access, allowing files and folders to be provided for file management applications to display.<br>- **dataShare**: ExtensionAbility for data sharing.<br>- **staticSubscriber**: ExtensionAbility for static broadcast.<!--DelEnd--><br>- **wallpaper**: ExtensionAbility of the wallpaper.<br>- **backup**: ExtensionAbility for data backup.<br>- **enterpriseAdmin**: ExtensionAbility for [enterprise device management](../mdm/mdm-kit-admin.md). An enterprise device management application must have such ExtensionAbility.<!--Del--><br>- **window**: ExtensionAbility of a window. This type of ExtensionAbility creates a window during startup for which you can develop the GUI. The GUI you develop is combined with the windows of other applications through the **UIExtensionComponent**.<!--DelEnd--><br>- **thumbnail**: ExtensionAbility for obtaining file thumbnails. You can provide thumbnails for files of customized file types.<br>- **preview**: ExtensionAbility for preview. This type of ExtensionAbility can parse the file and display it in a window. You can combine the window with other application windows.<br>- **print**: ExtensionAbility for the print framework.<br>- **push**: ExtensionAbility for the push service.<br>- **driver**: ExtensionAbility for the driver framework. When an application configures an ExtensionAbility of the driver type, it is recognized as a driver application. Driver applications do not differentiate between users during installation, uninstall, and recovery. Moreover, when a new user account is created, the existing driver applications on the device are installed for that user. For example, when a sub-user is created, the driver applications already installed by the primary user is automatically installed for the sub-user. If a driver application is uninstalled for a sub-user, it is also removed for the primary user.<br>- **remoteNotification**: ExtensionAbility for remote notifications.<br>- **remoteLocation**: ExtensionAbility for remote location.<br>- **voip**: ExtensionAbility for VoIP calls.<br>- **action**: ExtensionAbility for custom service operations, which provides custom service operation templates based on UIExtension.<!--Del--><br>- **adsService**: ExtensionAbility for the ad service, which provides the ad service framework.<!--DelEnd--><br>- **embeddedUI**: ExtensionAbility for embedded UI, which allows for UI embedding across processes.<br>- **insightIntentUI**: ExtensionAbility that enables applications to be called by Celia intents so as to be displayed in windows.<br>- **ads**: ExtensionAbility for the ad service, which is used with the AdComponent to display the ad page in other applications. This option is only available for device manufacturers.<br>- **photoEditor**: ExtensionAbility for the image editing service, which provides an image editing service template based on UIExtension.<br>- **appAccountAuthorization**: ExtensionAbility for application account authorization extension, which is used to process account authorization requests, for example, account login authorization.<br>- **autoFill/password**: ExtensionAbility for automatically filling in usernames and passwords.<br>- **hms/account**: ExtensionAbility for application account management.<!--Del--><br>- **sysDialog/atomicServicePanel**: ExtensionAbility that provides the basic capability for building an atomic service panel. It is implemented based on UIExtensionAbility.<br>- **sysDialog/userAuth**: ExtensionAbility for local user authentication.<br>- **sysDialog/common**: ExtensionAbility for common dialog boxes.<br>- **sysDialog/power**: ExtensionAbility for the shutdown and restart dialog boxes.<br>- **sysDialog/print**: ExtensionAbility for the print modals.<br>- **sysDialog/meetimeCall**: ExtensionAbility for MeeTime calls.<br>- **sysDialog/meetimeContact**: ExtensionAbility for MeeTime contacts.<br>- **sysPicker/meetimeMessage**: ExtensionAbility for MeeTime messages.<br>- **sysPicker/meetimeContact**: ExtensionAbility for the MeeTime contact list.<br>- **sysPicker/meetimeCallLog**: ExtensionAbility for the MeeTime call history.<br>- **sysPicker/share**: ExtensionAbility for sharing.<br>- **sysPicker/mediaControl**: ExtensionAbility for media control.<br>- **sysPicker/photoPicker**: ExtensionAbility that allows a third-party application to use the corresponding UIExtensionType to open the gallery photo picker.<br>- **sysPicker/filePicker**: ExtensionAbility for file download dialog boxes.<br>- **sysPicker/audioPicker**: ExtensionAbility for the audio management dialog box.<br>- **sysPicker/photoEditor**: ExtensionAbility for the photo editor.<br>- **sys/commonUI**: non-common ExtensionAbility, which provides embedded display or dialog boxes closely related to service attributes.<!--DelEnd--><br>- **autoFill/smart**: ExtensionAbility for scenario-specific autofill services.<!--Del--><br>- **uiService**: ExtensionAbility for pop-up window service, which creates a window during the startup and supports bidirectional communication.<!--DelEnd--> <!--RP9--><!--RP9End--><br>- **recentPhoto**: ExtensionAbility for recommended recent photos.<br>- **fence**: ExtensionAbility for geofencing.<br>- **callerInfoQuery**: ExtensionAbility for enterprise contacts.<br>- **assetAcceleration**: ExtensionAbility for resource pre-download.<br>- **formEdit**: ExtensionAbility for widget editing.<br>- **distributed**: ExtensionAbility for distributed extension.<br>- **liveForm**: [ExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md) for interactive widgets. This tag is supported since API version 20.<br>- **appService**: [AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) for background services, which provides lifecycle callbacks to manage background services, including creation, destruction, connection, and disconnection. This tag is supported since API version 20.<br>- **webNativeMessaging**: [ExtensionAbility](../reference/apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md) for web native message communication. This tag is supported since API version 21.<br>- **faultLog**: [ExtensionAbility](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md) for delayed fault notification. This tag is supported since API version 21.<br>- **notificationSubscriber**: [ExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md) for notification subscription. This tag is supported since API version 22.<!--Del--><br>- **awc/webpage**: ExtensionAbility for common web browsing.<br>- **awc/newsfeed**: ExtensionAbility for news feed.<br>- **selection**: [ExtensionAbility](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md) for word selection. This tag is supported since API version 20.<br>- **crypto**: ExtensionAbility for UKey driver application.<br>**NOTE**<br>For **service**, **adsService**, **staticSubscriber**, **window**, **sys/commonUI**, **fileAccess**, **selection**, **sysDialog**, **sysPicker**, **dataShare**, and **uiService** types, this configuration does not take effect in third-party applications but in system applications.<!--DelEnd--> | String| No|
+| permissions | Permissions required for another application to access the ExtensionAbility component.<br>Each permission name is an array element, with a maximum of 255 bytes. For details about the value, see [Application Permissions](../security/AccessToken/app-permissions.md).| String array| Yes (initial value: left empty)|
 | appIdentifierAllowList | List of applications that are allowed to start the ExtensionAbility.<br>Each **appIdentifier** is an array element. For details about **appIdentifier**, see [What is appIdentifier](../quick-start/common_problem_of_application.md#what-is-appidentifier).<br>**NOTE**<br>This tag is available only when the type of the ExtensionAbility is set to **appService**.<br>This tag is supported since API version 20.| String array| Yes (initial value: left empty)|
-| readPermission | Permission required for reading data in the ExtensionAbility. The value is a string with a maximum of 255 bytes. This tag is available only when the type of the ExtensionAbility is set to **dataShare**.| String| Yes (initial value: left empty)|
-| writePermission | Permission required for writing data to the ExtensionAbility. The value is a string with a maximum of 255 bytes. This tag is available only when the type of the ExtensionAbility is set to **dataShare**.| String| Yes (initial value: left empty)|
+| readPermission | Permission required for reading data in the ExtensionAbility. The value is a string with a maximum of 255 bytes. This tag takes effect only when **type** of the preset ExtensionAbility of the system application is set to **dataShare**. The **dataShare** type is invalid for third-party applications.| String| Yes (initial value: left empty)|
+| writePermission | Permission required for writing data to the ExtensionAbility. The value is a string with a maximum of 255 bytes. This tag takes effect only when **type** of the preset ExtensionAbility of the system application is set to **dataShare**. The **dataShare** type is invalid for third-party applications.| String| Yes (initial value: left empty)|
 | uri | Data URI provided by the ExtensionAbility. The value is a string with a maximum of 255 bytes, in the reverse domain name notation.<br>**NOTE**<br>This tag is mandatory when the type of the ExtensionAbility is set to **dataShare**.| String| Yes (initial value: left empty)|
 |skills | A set of [wants](../application-models/want-overview.md) that can be received by the ExtensionAbility.<br>Configuration rule: In an entry package, you can configure multiple **skills** attributes with the entry capability. (A **skills** attribute with the entry capability is the one that has **ohos.want.action.home** and **entity.system.home** configured.) The label and icon of the first ExtensionAbility that has **skills** configured are used as the label and icon of the entire service/application.<br>**NOTE**<br>The feature package of a service does not support the **skills** tag with the entry capability.<br>The feature package of an application supports the **skills** tag with entry capability.| Array| Yes (initial value: left empty)|
 | [metadata](#metadata)| Metadata of the ExtensionAbility component.<br>**NOTE**<br>When **type** is set to **form**, this tag cannot be left empty. In addition, an object value **ohos.extension.form** must exist. Its corresponding resource value cannot be left empty and is the level-2 resource reference of the service widgets.| Object array| Yes (initial value: left empty)|
@@ -444,42 +473,44 @@ The **extensionAbilities** tag represents the configuration of ExtensionAbilitie
 
 Example of the **extensionAbilities** structure:
 
+<!-- @[module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
-  "extensionAbilities": [
-    {
-      "name": "FormName",
-      "srcEntry": "./form/MyForm.ts",
-      "icon": "$media:icon",
-      "label" : "$string:extension_name",
-      "description": "$string:form_description",
-      "type": "form",
-      "permissions": ["ohos.permission.ACCESS_BLUETOOTH"],
-      "readPermission": "",
-      "writePermission": "",
-      "exported": true,
-      "uri":"scheme://authority/path/query",
-      "skills": [{
-        "actions": [],
-        "entities": [],
-        "uris": [],
-        "permissions": []
-      }],
-      "metadata": [
-        {
-          "name": "ohos.extension.form",
-          "resource": "$profile:form_config",
-        }
-      ],
-      "extensionProcessMode": "instance",
-      "dataGroupIds": [
-        "testGroupId1"
-      ]
-    }
-  ]
+  // ...
+    "extensionAbilities": [
+      {
+        "name": "FormName",
+        "srcEntry": "./ets/form/MyForm.ets",
+        "icon": "$media:icon",
+        "label" : "$string:extension_name",
+        "description": "$string:form_description",
+        "type": "form",
+        "permissions": ["ohos.permission.ACCESS_BLUETOOTH"],
+        "exported": true,
+        "uri":"scheme://authority/path/query",
+        "skills": [{
+          "actions": [],
+          "entities": [],
+          "uris": [],
+          "permissions": []
+        }],
+        "metadata": [
+          {
+            "name": "ohos.extension.form",
+            "resource": "$profile:form_config",
+          }
+        ],
+        "extensionProcessMode": "instance",
+        "dataGroupIds": [
+          "testGroupId1"
+        ]
+      }
+    ],
+    // ...
 }
 ```
+
 
 ## shortcuts
 
@@ -529,7 +560,9 @@ The **shortcut** information is specified in **metadata**, where:
 
 2. In the **abilities** tag of the **module.json5** file, configure the **metadata** tag for the UIAbility component to which a shortcut needs to be added so that the shortcut configuration file takes effect for the UIAbility.
 
-   ```json
+   <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+   
+   ``` JSON5
    {
      "module": {
        // ...
@@ -538,7 +571,6 @@ The **shortcut** information is specified in **metadata**, where:
            "name": "EntryAbility",
            "srcEntry": "./ets/entryability/EntryAbility.ets",
            // ...
-           "skills": [
              {
                "entities": [
                  "entity.system.home"
@@ -553,12 +585,15 @@ The **shortcut** information is specified in **metadata**, where:
                "name": "ohos.ability.shortcuts",
                "resource": "$profile:shortcuts_config"
              }
-           ]
+           ],
+           // ...
          }
-       ]
+       ],
+       // ...
      }
    }
    ```
+
 ### wants
 
 The **wants** tag provides wants information for a shortcut.
@@ -597,32 +632,40 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
 > This tag is supported since API version 10. In earlier versions, the **distroFilter** tag is used.
 
 - **Application scenario**: If a project has multiple entry-type modules and the values of **deviceType** configured for these modules overlap, you need to use this tag to distinguish the modules. In the following example, both entry-type modules support the tablet type, and therefore the **distributionFilter** tag is required.
-  ```json
+
+  <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
+  
+  ``` JSON5
   // Device types supported by entry1
   {
     "module": {
       "name": "entry1",
       "type": "entry",
-      "deviceTypes" : [
+      "deviceTypes": [
         "tv",
         "tablet"
-      ]
-    }
+      ],
+      // ...
   }
   ```
-  ```json
+
+
+  <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
+
+  ``` JSON5
   // Device types supported by entry2
   {
     "module": {
       "name": "entry2",
       "type": "entry",
-      "deviceTypes" : [
-        "car",
+      "deviceTypes": [
+        "tv",
         "tablet"
-      ]
-    }
+      ],
+      // ...
   }
   ```
+
 
 - **Configuration rule**: This tag consists of four attributes, including [screenShape](#screenshape), [screenWindow](#screenwindow), [screenDensity](#screendensity), and [countryCode](#countrycode). For details, see the following table.
 
@@ -721,21 +764,21 @@ Example:
 
 2. Configure **metadata** in the **module** tag in the **module.json5** file.
 
+  <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5)   -->
 
-    ```json
-    {
-      "module": {
-        // ...
-        "metadata": [
-          {
-            "name": "ohos.module.distribution",
-            "resource": "$profile:distributionFilter_config",
-          }
-        ]
-      }
-    }
-    ```
-
+  ``` JSON5
+  {
+    "module": {
+      // ...
+      "metadata": [
+        {
+          "name": "ohos.module.distribution",
+          "resource": "$profile:distributionFilter_config",
+        }
+      ],
+      // ...
+  }
+  ```
 
 ## testRunner
 
@@ -750,15 +793,17 @@ The **testRunner** tag represents the supported test runner.
 
 Example of the **testRunner** structure:
 
+<!-- @[module_testRunner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
 
-```json
+``` JSON5
 {
   "module": {
     // ...
     "testRunner": {
       "name": "myTestRunnerName",
       "srcPath": "etc/test/TestRunner.ts"
-    }
+    },
+    // ...
   }
 }
 ```
@@ -784,9 +829,12 @@ The **atomicService** tag represents the atomic service configuration. It is ava
 
 Example of the **atomicService** structure:
 
-```json
+<!-- @[module_atomicService](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile04/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
+	// ...
     "atomicService": {
       "preloads":[
         {
@@ -794,10 +842,11 @@ Example of the **atomicService** structure:
         }
       ],
       "resizeable": true
-    }
-  }
+    },
+	// ...
 }
 ```
+
 
 ## dependencies
 
@@ -813,16 +862,20 @@ The **dependencies** tag identifies the list of shared libraries that the module
 
 Example of the **dependencies** structure:
 
-```json
+<!-- @[module_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
+    // ...
     "dependencies": [
       {
         "bundleName":"com.share.library",
         "moduleName": "library",
         "versionCode": 10001
       }
-    ]
+    ],
+    // ...
   }
 }
 ```
@@ -841,20 +894,24 @@ The **proxyDatas** tag provides the list of data proxies provided by the module.
 
 Example of the **proxyData** structure:
 
-```json
+<!-- @[module_proxyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
+    // ...
     "proxyData": [
       {
-        "uri":"datashareproxy://com.ohos.datashare/event/Meeting",
-        "requiredReadPermission": "ohos.permission.ACCESS_BLUETOOTH",
-        "requiredWritePermission": "ohos.permission.ACCESS_BLUETOOTH",
+        "uri":"datashareproxy://ohos.app.hap.myapplication/event/Meeting",
+        "requiredReadPermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
+        "requiredWritePermission": "ohos.permission.SYSTEM_FLOAT_WINDOW",
         "metadata": {
           "name": "datashare_metadata",
           "resource": "$profile:datashare"
         }
       }
-    ]
+    ],
+    // ...
   }
 }
 ```
@@ -982,19 +1039,22 @@ The **appEnvironments** tag represents the application environment variables con
 
 Example of the **appEnvironments** structure:
 
-```json
+<!-- @[module_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
+    // ...
     "appEnvironments": [
       {
-        "name":"name1",
+        "name": "name1",
         "value": "value1"
       }
-    ]
+    ],
+    // ...
   }
 }
 ```
-
 
 ## hnpPackages
 
@@ -1010,16 +1070,20 @@ The **hnpPackages** tag provides information about the native software package c
 Example of the **hnpPackages** structure:
 
 
-```json
+<!-- @[module_hnpPackages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
 {
-  "module" : {
+  "module": {
+    // ...
     "hnpPackages": [
       {
         "package": "hnpsample.hnp",
         "type": "public"
       }
-    ]
-  }
+    ],
+    // ...
+  },
 }
 ```
 
@@ -1029,11 +1093,14 @@ The **fileContextMenu** tag provides configuration options for the context menu 
 
 Example of the **fileContextMenu** structure:
 
-```json
+<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
     // ...
-    "fileContextMenu": "$profile:menu" // Configured through the resource file in the profile
+    "fileContextMenu": "$profile:menu", // Resource configuration, which points to the menu.json configuration file defined in the profile.
+    // ...
   }
 }
 ```
@@ -1144,11 +1211,13 @@ The **systemTheme** tag points to a profile resource, which is used to specify t
 
 Example:
 
-```json
+<!-- @[module_systemTheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
+
+``` JSON5
 {
   "module": {
     // ...
-    "systemTheme": "$profile:theme_config", // Configure through the resource file of profile.
+    "systemTheme": "$profile:theme_config", // Resource configuration, which points to the theme_config.json configuration file defined in the profile.
   }
 }
 ```
@@ -1181,8 +1250,8 @@ The **definePermissions** tag represents a set of permissions defined for the sy
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | name | Name of the permission. The value can contain a maximum of 255 bytes.| String| No|
-| grantMode | Permission grant mode. The options are as follows:<br>- **system_grant**: The permission is automatically granted by the system after the application is installed.<br>- **user_grant**: The permission is dynamically requested when needed and must be granted by the user.| String| Yes (initial value: **"system_grant"**)|
-| availableLevel | Permission type. The options are as follows:<br>- **system_core**: system core permission.<br>- **system_basic**: basic system permission.<br>- **normal**: normal permission, which can be requested by all applications.| String| Yes (initial value: **"normal"**)|
+| grantMode | Permission grant mode. The options are as follows:<br>- **system_grant**: The permission is automatically granted by the system after the application is installed.<br>- **user_grant**: The permission is dynamically requested when needed and must be granted by the user.<br>- **manual_settings**: The permission must be manually granted by the user on the system settings page. This option is supported since API version 21.| String| Yes (initial value: **system_grant**)|
+| availableLevel | Permission type. The options are as follows:<br>- **system_core**: system core permission.<br>- **system_basic**: basic system permission.<br>- **normal**: normal permission, which can be requested by all applications.| String| Yes (initial value: **normal**)|
 | provisionEnable | Whether the permission (including high-level permissions) can be requested through a profile. The value **true** indicates that you can request permissions through a profile; **false** indicates the opposite.| Boolean| Yes (initial value: **true**)|
 | distributedSceneEnabled | Whether the permission can be used in distributed scenarios. The value **true** indicates that you can use the permission in distributed scenarios; **false** indicates the opposite.| Boolean| Yes (initial value: **false**)|
 | label | Brief description of the permission. The value is a resource index to the description.| String| Yes (initial value: left empty)|
@@ -1190,9 +1259,12 @@ The **definePermissions** tag represents a set of permissions defined for the sy
 
 Example of the **definePermissions** structure:
 
-```json
+<!-- @[module_definePermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
+
+``` JSON5
 {
-  "module" : {
+  "module": {
+    // ...
     "definePermissions": [
       {
         "name": "ohos.permission.ACCESS_BLUETOOTH",
@@ -1202,8 +1274,9 @@ Example of the **definePermissions** structure:
         "distributedSceneEnable": false,
         "label": "$string:EntryAbility_label"
       }
-    ]
-  }
+    ],
+    // ...
+  },
 }
 ```
 <!--DelEnd-->

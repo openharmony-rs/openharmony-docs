@@ -1,5 +1,16 @@
 # OH_AVDataSourceExt
 
+<!--Kit: AVCodec Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @mr-chencxy-->
+<!--Designer: @dpy2650--->
+<!--Tester: @baotianhao-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct OH_AVDataSourceExt {...} OH_AVDataSourceExt
+```
+
 ## Overview
 
 The struct describes a user-defined data source. User-defined data can be passed to its callback functions through the **userData** parameter.

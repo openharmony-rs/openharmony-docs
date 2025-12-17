@@ -219,7 +219,7 @@ export default class MyAbility extends UIAbility {
 
 ## WindowMode<sup>12+</sup>
 
-Enumerates the window modes in which a UIAbility can be displayed at startup. You can use it in [startAbility](js-apis-inner-application-uiAbilityContext.md#startability).
+Enumerates the window modes in which a UIAbility can be displayed at startup. You can use it in [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

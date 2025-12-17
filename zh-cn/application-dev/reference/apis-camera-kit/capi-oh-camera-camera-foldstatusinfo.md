@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_FoldStatusInfo {...} Camera_FoldStatusInfo
+```
+
 ## 概述
 
 折叠状态信息。

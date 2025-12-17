@@ -8,11 +8,9 @@
 
 ## 基本概念
 
-- 窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。
-  沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用子窗口（弹窗、悬浮窗口等辅助窗口）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
+- 窗口沉浸式能力：指对状态栏、导航栏等系统窗口进行控制，减少状态栏导航栏等系统界面的突兀感，从而使用户获得最佳体验的能力。沉浸式能力只在应用主窗口作为全屏窗口时生效。通常情况下，应用的辅助窗口（子窗、全局悬浮窗等）和处于自由窗口下的应用主窗口无法使用沉浸式能力。
 
-- 悬浮窗：全局悬浮窗口是一种特殊的应用窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。
-  悬浮窗口可以用于应用退至后台后，使用小窗继续播放视频，或者为特定的应用创建悬浮球等快速入口。应用在创建悬浮窗口前，需要申请对应的权限。
+- 全局悬浮窗：全局悬浮窗是一种特殊的应用辅助窗口，具备在应用主窗口和对应Ability退至后台后仍然可以在前台显示的能力。全局悬浮窗可以用于应用退至后台后，使用小窗继续显示UI，例如音乐应用用于显示桌面歌词等。应用在创建全局悬浮窗前，需要申请对应的权限。
 
 
 ## 场景介绍
@@ -25,7 +23,7 @@
 
 - 体验窗口沉浸式能力
 
-- 设置悬浮窗
+- 设置全局悬浮窗
 
 - 监听窗口不可交互与可交互事件
 
@@ -72,11 +70,17 @@
 3. 为主窗口加载对应的目标页面。
 
    通过`loadContent`接口加载主窗口的目标页面。
+   
+<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateMainWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+``` TypeScript
+import { UIAbility} from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatMainWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -85,30 +89,30 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error(`Failed to obtain the main window. Code:${err.code}, message:${err.message}`);
+        hilog.error(DOMAIN, TAG, `Failed to obtain the main window. Code:${err.code}, message:${err.message}`);
         return;
       }
       windowClass = data;
-      console.info(`Succeeded in obtaining the main window. Result:${data}`);
+      hilog.info(DOMAIN, TAG, `Succeeded in obtaining the main window. Result:${data}`);
       // 2.设置主窗口属性。以设置"是否可触"属性为例。
       let isTouchable: boolean = true;
       windowClass.setWindowTouchable(isTouchable, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to set the window to be touchable. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to set the window to be touchable. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.info('Succeeded in setting the window to be touchable.');
+        hilog.info(DOMAIN, TAG, `Succeeded in setting the window to be touchable.`);
       })
     })
     // 3.为主窗口加载对应的目标页面。
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in loading the content.');
+      hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
     });
   }
 };
@@ -120,7 +124,7 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**  
 > 以下几种场景不建议使用子窗口，建议优先考虑使用控件[overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。  
-> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于悬浮窗、分屏状态的主窗口范围，与控件一致。  
+> - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于悬浮窗模式、分屏模式的应用主窗口范围，与控件一致。  
 > - 分屏窗口与自由窗口模式下，主窗口位置大小发生改变时控件实时跟随变化能力优于子窗。  
 > - 部分设备平台下根据实际的系统配置限制，子窗只有系统默认的动效和圆角阴影，应用无法设置，自由度低。
 
@@ -151,10 +155,16 @@ export default class EntryAbility extends UIAbility {
 
 直接在onWindowStageCreate里面创建子窗口的整体示例代码如下：
 
-```ts
+<!-- @[create_sub_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatSubWindow]';
 
 let windowStage_: window.WindowStage | null = null;
 let sub_windowClass: window.Window | null = null;
@@ -163,58 +173,57 @@ export default class EntryAbility extends UIAbility {
   showSubWindow() {
     // 1.创建应用子窗口。
     if (windowStage_ == null) {
-      console.error('Failed to create the subwindow. Cause: windowStage_ is null');
-    }
-    else {
-      windowStage_.createSubWindow("mySubWindow", (err: BusinessError, data) => {
+      hilog.error(DOMAIN, TAG, `Failed to create the subwindow. Cause: windowStage_ is null`);
+    } else {
+      windowStage_.createSubWindow('mySubWindow', (err: BusinessError, data) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to create the subwindow. Cause: ${JSON.stringify(err)}`);
           return;
         }
         sub_windowClass = data;
         if (!sub_windowClass) {
-          console.error('sub_windowClass is null');
+          hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
           return;
         }
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        hilog.info(DOMAIN, TAG, `Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
         // 2.子窗口创建成功后，设置子窗口的位置、大小及相关属性等。
         sub_windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to move the window. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in moving the window.');
+          hilog.info(DOMAIN, TAG, `Succeeded in moving the window.`);
         });
         sub_windowClass.resize(500, 500, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to change the window size. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in changing the window size.');
+          hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
         });
         // 3.为子窗口加载对应的目标页面。
-        sub_windowClass.setUIContent("pages/page3", (err: BusinessError) => {
+        sub_windowClass.setUIContent('pages/Index', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+            hilog.info(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in loading the content.');
+          hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
           if (!sub_windowClass) {
-            console.error('sub_windowClass is null');
+            hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
             return;
           }
           // 3.显示子窗口。
           sub_windowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
-              console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+              hilog.error(DOMAIN, TAG, `Failed to show the window. Cause: ${JSON.stringify(err)}`);
               return;
             }
-            console.info('Succeeded in showing the window.');
+            hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
           });
         });
       })
@@ -223,17 +232,17 @@ export default class EntryAbility extends UIAbility {
 
   destroySubWindow() {
     if (!sub_windowClass) {
-      console.error('sub_windowClass is null');
+      hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
       return;
     }
     // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
     sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to destroy the window. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in destroying the window.');
+      hilog.info(DOMAIN, TAG, `Succeeded in destroying the window.`);
     });
   }
 
@@ -252,19 +261,26 @@ export default class EntryAbility extends UIAbility {
 
 另外，也可以在某个page页面通过点击按钮创建子窗口，整体示例代码如下：
 
-```ts
+<!-- @[create_sub_window2_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatSubWindow2]';
+
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in loading the content.');
-    })
+      hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
+    });
 
     // 给Index页面传递windowStage
     AppStorage.setOrCreate('windowStage', windowStage);
@@ -272,10 +288,16 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-```ts
+<!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript	
 // Index.ets
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatSubWindow2]';
 
 let windowStage_: window.WindowStage | undefined = undefined;
 let sub_windowClass: window.Window | undefined = undefined;
@@ -288,58 +310,57 @@ struct Index {
     windowStage_ = AppStorage.get('windowStage');
     // 1.创建应用子窗口。
     if (windowStage_ == null) {
-      console.error('Failed to create the subwindow. Cause: windowStage_ is null');
-    }
-    else {
-      windowStage_.createSubWindow("mySubWindow", (err: BusinessError, data) => {
+      hilog.error(DOMAIN, TAG, `Failed to create the subwindow. Cause: windowStage_ is null`);
+    } else {
+      windowStage_.createSubWindow('mySubWindow', (err: BusinessError, data) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to create the subwindow. Cause: ' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to create the subwindow. Cause: ${JSON.stringify(err)}`);
           return;
         }
         sub_windowClass = data;
         if (!sub_windowClass) {
-          console.error('sub_windowClass is null');
+          hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
           return;
         }
-        console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        hilog.info(DOMAIN, TAG, `Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
         // 2.子窗口创建成功后，设置子窗口的位置、大小及相关属性等。
         sub_windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to move the window. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in moving the window.');
+          hilog.info(DOMAIN, TAG, `Succeeded in moving the window.`);
         });
         sub_windowClass.resize(500, 500, (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to change the window size. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in changing the window size.');
+          hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
         });
         // 3.为子窗口加载对应的目标页面。
-        sub_windowClass.setUIContent("pages/subWindow", (err: BusinessError) => {
+        sub_windowClass.setUIContent('pages/SubWindow', (err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in loading the content.');
+          hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
           if (!sub_windowClass) {
-            console.error('sub_windowClass is null');
+            hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
             return;
           }
           // 3.显示子窗口。
           sub_windowClass.showWindow((err: BusinessError) => {
             let errCode: number = err.code;
             if (errCode) {
-              console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+              hilog.error(DOMAIN, TAG, `Failed to show the window. Cause: ${JSON.stringify(err)}`);
               return;
             }
-            console.info('Succeeded in showing the window.');
+            hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
           });
         });
       })
@@ -347,17 +368,17 @@ struct Index {
   }
   private destroySubWindow(){
     if (!sub_windowClass) {
-      console.error('sub_windowClass is null');
+      hilog.error(DOMAIN, TAG, `sub_windowClass is null`);
       return;
     }
     // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
     sub_windowClass.destroyWindow((err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to destroy the window. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in destroying the window.');
+      hilog.info(DOMAIN, TAG, `Succeeded in destroying the window.`);
     });
   }
   build() {
@@ -368,8 +389,8 @@ struct Index {
           .fontWeight(FontWeight.Bold)
         Button(){
           Text('CreateSubWindow')
-          .fontSize(24)
-          .fontWeight(FontWeight.Normal)
+            .fontSize(24)
+            .fontWeight(FontWeight.Normal)
         }.width(220).height(68)
         .margin({left:10, top:60})
         .onClick(() => {
@@ -377,8 +398,8 @@ struct Index {
         })
         Button(){
           Text('destroySubWindow')
-          .fontSize(24)
-          .fontWeight(FontWeight.Normal)
+            .fontSize(24)
+            .fontWeight(FontWeight.Normal)
         }.width(220).height(68)
         .margin({left:10, top:60})
         .onClick(() => {
@@ -392,7 +413,9 @@ struct Index {
 }
 ```
 
-```ts
+<!-- @[create_sub_window2_subwindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/SubWindow.ets) -->
+
+``` TypeScript
 // subWindow.ets
 @Entry
 @Component
@@ -436,11 +459,17 @@ struct SubWindow {
 3. 加载显示沉浸式窗口的具体内容。
 
    通过`loadContent`接口加载沉浸式窗口的具体内容。
+   
+<!-- @[set_window_system_bar_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SetWindowSystemBarEnable/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_SetWindowSystemBarEnable]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -449,29 +478,29 @@ export default class EntryAbility extends UIAbility {
     windowStage.getMainWindow((err: BusinessError, data) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to obtain the main window. Cause: ${JSON.stringify(err)}`);
         return;
       }
       windowClass = data;
-      console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+      hilog.info(DOMAIN, TAG, `Succeeded in obtaining the main window. Data: ${JSON.stringify(data)}`);
 
       // 2.实现沉浸式效果。方式一：设置导航栏、状态栏不显示。
-      let names: Array<'status' | 'navigation'> = [];
+      let names: 'status'[] | 'navigation'[] = [];
       windowClass.setWindowSystemBarEnable(names)
         .then(() => {
-          console.info('Succeeded in setting the system bar to be visible.');
+          hilog.info(DOMAIN, TAG, `Succeeded in setting the system bar to be visible.`);
         })
         .catch((err: BusinessError) => {
-          console.error('Failed to set the system bar to be visible. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to set the system bar to be visible. Cause: ${JSON.stringify(err)}`);
         });
       // 2.实现沉浸式效果。方式二：设置窗口为全屏布局，配合设置导航栏、状态栏的透明度、背景/文字颜色及高亮图标等属性，与主窗口显示保持协调一致。
       let isLayoutFullScreen = true;
       windowClass.setWindowLayoutFullScreen(isLayoutFullScreen)
         .then(() => {
-          console.info('Succeeded in setting the window layout to full-screen mode.');
+          hilog.info(DOMAIN, TAG, `Succeeded in setting the window layout to full-screen mode.`);
         })
         .catch((err: BusinessError) => {
-          console.error('Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to set the window layout to full-screen mode. Cause: ${JSON.stringify(err)}`);
         });
       let sysBarProps: window.SystemBarProperties = {
         statusBarColor: '#ff00ff',
@@ -482,117 +511,115 @@ export default class EntryAbility extends UIAbility {
       };
       windowClass.setWindowSystemBarProperties(sysBarProps)
         .then(() => {
-          console.info('Succeeded in setting the system bar properties.');
+          hilog.info(DOMAIN, TAG, `Succeeded in setting the system bar properties.`);
         })
         .catch((err: BusinessError) => {
-          console.error('Failed to set the system bar properties. Cause: ' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to set the system bar properties. Cause: ${JSON.stringify(err)}`);
         });
     })
     // 3.为沉浸式窗口加载对应的目标页面。
-    windowStage.loadContent("pages/page2", (err: BusinessError) => {
+    windowStage.loadContent('pages/Index', (err: BusinessError) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in loading the content.');
+      hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
     });
   }
 };
 ```
 
 <!--RP2-->
-## 设置悬浮窗<!--RP2End-->
+## 设置全局悬浮窗<!--RP2End-->
 
-悬浮窗可以在已有的任务基础上，创建一个始终在前台显示的窗口。即使创建悬浮窗的任务退至后台，悬浮窗仍然可以在前台显示。通常悬浮窗位于所有应用窗口之上，开发者可以创建悬浮窗，并对悬浮窗进行属性设置等操作。
+全局悬浮窗可以在已有的任务基础上，创建一个始终在前台显示的窗口。即使创建全局悬浮窗的任务退至后台，全局悬浮窗仍然可以在前台显示。通常全局悬浮窗位于所有应用窗口之上，开发者可以创建全局悬浮窗，并对全局悬浮窗进行属性设置等操作。
 
 
 ### 开发步骤
 
 <!--RP1-->
-**前提条件：** 创建`WindowType.TYPE_FLOAT`即悬浮窗类型的窗口，需要申请`ohos.permission.SYSTEM_FLOAT_WINDOW`权限，配置方式请参见[system_basic等级应用申请权限的方式](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
+**前提条件：** 创建`WindowType.TYPE_FLOAT`即全局悬浮窗类型的窗口，需要申请`ohos.permission.SYSTEM_FLOAT_WINDOW`权限，配置方式请参见[system_basic等级应用申请权限的方式](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 <!--RP1End-->
 
-1. 创建悬浮窗。
+1. 创建全局悬浮窗。
 
-   通过`window.createWindow`接口创建悬浮窗类型的窗口。
+   通过`window.createWindow`接口创建全局悬浮窗类型的窗口。
 
-2. 对悬浮窗进行属性设置等操作。
+2. 对全局悬浮窗进行属性设置等操作。
 
-   悬浮窗窗口创建成功后，可以改变其大小、位置等，还可以根据应用需要设置悬浮窗背景色、亮度等属性。
+   全局悬浮窗窗口创建成功后，可以改变其大小、位置等，还可以根据应用需要设置全局悬浮窗背景色、亮度等属性。
 
-3. 加载显示悬浮窗的具体内容。
+3. 加载显示全局悬浮窗的具体内容。
 
-   通过`setUIContent`和`showWindow`接口加载显示悬浮窗的具体内容。
+   通过`setUIContent`和`showWindow`接口加载显示全局悬浮窗的具体内容。
 
-4. 销毁悬浮窗。
+4. 销毁全局悬浮窗。
 
-   当不再需要悬浮窗时，可根据具体实现逻辑，使用`destroyWindow`接口销毁悬浮窗。
+   当不再需要全局悬浮窗时，可根据具体实现逻辑，使用`destroyWindow`接口销毁全局悬浮窗。
 
-```ts
+<!-- @[create_float_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateFloatWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_CreatFloatWindow]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     // 1.创建悬浮窗。
     let windowClass: window.Window | null = null;
     let config: window.Configuration = {
-      name: "floatWindow", windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
+      name: 'floatWindow', windowType: window.WindowType.TYPE_FLOAT, ctx: this.context
     };
     window.createWindow(config, (err: BusinessError, data) => {
       let errCode: number = err.code;
       if (errCode) {
-        console.error('Failed to create the floatWindow. Cause: ' + JSON.stringify(err));
+        hilog.error(DOMAIN, TAG, `Failed to create the floatWindow. Cause: ${JSON.stringify(err)}`);
         return;
       }
-      console.info('Succeeded in creating the floatWindow. Data: ' + JSON.stringify(data));
+      hilog.info(DOMAIN, TAG, `Succeeded in creating the floatWindow. Data: ${JSON.stringify(data)}`);
       windowClass = data;
       // 2.悬浮窗窗口创建成功后，设置悬浮窗的位置、大小及相关属性等。
       windowClass.moveWindowTo(300, 300, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to move the window. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to move the window. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.info('Succeeded in moving the window.');
+        hilog.info(DOMAIN, TAG, `Succeeded in moving the window.`);
       });
       windowClass.resize(500, 500, (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to change the window size. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to change the window size. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.info('Succeeded in changing the window size.');
+        hilog.info(DOMAIN, TAG, `Succeeded in changing the window size.`);
       });
       // 3.为悬浮窗加载对应的目标页面。
-      windowClass.setUIContent("pages/page4", (err: BusinessError) => {
+      windowClass.setUIContent('pages/Index', (err: BusinessError) => {
         let errCode: number = err.code;
         if (errCode) {
-          console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+          hilog.error(DOMAIN, TAG, `Failed to load the content. Cause: ${JSON.stringify(err)}`);
           return;
         }
-        console.info('Succeeded in loading the content.');
+        hilog.info(DOMAIN, TAG, `Succeeded in loading the content.`);
         // 3.显示悬浮窗。
         (windowClass as window.Window).showWindow((err: BusinessError) => {
           let errCode: number = err.code;
           if (errCode) {
-            console.error('Failed to show the window. Cause: ' + JSON.stringify(err));
+            hilog.error(DOMAIN, TAG, `Failed to show the window. Cause: ${JSON.stringify(err)}`);
             return;
           }
-          console.info('Succeeded in showing the window.');
+          hilog.info(DOMAIN, TAG, `Succeeded in showing the window.`);
         });
       });
       // 4.销毁悬浮窗。当不再需要悬浮窗时，可根据具体实现逻辑，使用destroy对其进行销毁。
-      windowClass.destroyWindow((err: BusinessError) => {
-        let errCode: number = err.code;
-        if (errCode) {
-          console.error('Failed to destroy the window. Cause: ' + JSON.stringify(err));
-          return;
-        }
-        console.info('Succeeded in destroying the window.');
-      });
     });
   }
 };
@@ -606,32 +633,38 @@ export default class EntryAbility extends UIAbility {
 
 在创建WindowStage对象后可通过监听`'windowStageEvent'`事件类型，监听到窗口进入前台、后台、前台可交互、前台不可交互等事件，应用可根据这些上报的事件状态进行相应的业务处理。
 
-```ts
+<!-- @[listen_window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ListenWindowStage/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+import hilog from '@ohos.hilog';
+
+const DOMAIN = 0X0000;
+const TAG: string = '[Sample_ListenWindowStage]';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
+    // ...
     try {
       windowStage.on('windowStageEvent', (data) => {
-        console.info('Succeeded in enabling the listener for window stage event changes. Data: ' +
-          JSON.stringify(data));
+        hilog.info(DOMAIN, TAG, `Succeeded in enabling the listener for window stage event changes. Data: ${JSON.stringify(data)}`);
 
         // 根据事件状态类型选择进行相应的处理
         if (data === window.WindowStageEventType.SHOWN) {
-          console.info('current window stage event is SHOWN');
+          hilog.info(DOMAIN, TAG, `current window stage event is SHOWN`);
           // 应用进入前台，默认为可交互状态
           // ...
         } else if (data === window.WindowStageEventType.HIDDEN) {
-          console.info('current window stage event is HIDDEN');
+          hilog.info(DOMAIN, TAG, `current window stage event is HIDDEN`);
           // 应用进入后台，默认为不可交互状态
           // ...
         } else if (data === window.WindowStageEventType.PAUSED) {
-          console.info('current window stage event is PAUSED');
+          hilog.info(DOMAIN, TAG, `current window stage event is PAUSED`);
           // 前台应用进入多任务，转为不可交互状态
           // ...
         } else if (data === window.WindowStageEventType.RESUMED) {
-          console.info('current window stage event is RESUMED');
+          hilog.info(DOMAIN, TAG, `current window stage event is RESUMED`);
           // 进入多任务后又继续返回前台时，恢复可交互状态
           // ...
         }
@@ -639,8 +672,7 @@ export default class EntryAbility extends UIAbility {
         // ...
       });
     } catch (exception) {
-      console.error('Failed to enable the listener for window stage event changes. Cause:' +
-        JSON.stringify(exception));
+      hilog.error(DOMAIN, TAG, `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
     }
   }
 }
@@ -652,6 +684,6 @@ export default class EntryAbility extends UIAbility {
 
 - [`Window`：一多设置典型页面（Settings）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings)
 
-- [悬浮窗（ArkTS）（API10）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowRatio)
+- [全局悬浮窗（ArkTS）（API10）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowRatio)
 
 - [窗口管理（ArkTS）（API12）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowManage)

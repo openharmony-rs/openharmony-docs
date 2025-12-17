@@ -332,7 +332,7 @@ struct MyComponent {
           Text("Hello" + item)
             .fontSize(50)
             .onAppear(() => {
-              console.log("appear:" + item);
+              console.info("appear:" + item);
             })
         }
       })

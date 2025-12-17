@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309; @liyujie43-->
 <!--Designer: @liyi0309; @weixin_52725220-->
 <!--Tester: @lxl007; @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 支持通过样式builder自定义特定组件的内容区。
 

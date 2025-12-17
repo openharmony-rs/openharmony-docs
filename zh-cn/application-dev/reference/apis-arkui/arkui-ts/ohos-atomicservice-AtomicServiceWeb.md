@@ -449,7 +449,7 @@ type OnLoadInterceptCallback = (event: OnLoadInterceptEvent) => boolean
 
 | 类型      | 说明        |
 |---------|-----------|
-| boolean | 返回资源是否被拦截 |
+| boolean | 返回资源是否被拦截，true表示被拦截。 |
 
 ## 事件
 

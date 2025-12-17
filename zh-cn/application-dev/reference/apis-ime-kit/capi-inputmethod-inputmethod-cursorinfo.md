@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_CursorInfo InputMethod_CursorInfo
+```
+
 ## 概述
 
 光标信息。光标的坐标位置、宽度和高度。

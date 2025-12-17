@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于对背景模糊等特效进行绘制合并。
 
@@ -98,10 +98,10 @@ useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
 |  设备类型    | 模糊半径(单位: px)   | 饱和度                 |  亮度  |  颜色  |
 | -------- | ---- | ---------------------- | -------- | -------- |
-| 移动设备  | 0   | 0 | 0 | '#ffffffff'
-| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033'
-| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff'
-| Tablet设备  | 0   | 0 | 0 | '#ffffffff'
+| 移动设备  | 0   | 0 | 0 | '#ffffffff' |
+| 2in1设备：深色模式  | 80   | 1.5 | 1.0 | '#e52e3033' |
+| 2in1设备：浅色模式  | 80   | 1.9 | 1.0 | '#e5ffffff' |
+| Tablet设备  | 0   | 0 | 0 | '#ffffffff' |
 
 <!--Del-->
 ## 示例

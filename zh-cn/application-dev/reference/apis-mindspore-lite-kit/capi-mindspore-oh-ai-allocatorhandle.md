@@ -7,6 +7,10 @@
 <!--Tester: @principal87-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef void *OH_AI_AllocatorHandle
+```
+
 ## 概述
 
 指向内存分配器对象句柄。

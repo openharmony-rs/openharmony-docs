@@ -199,6 +199,8 @@ FFRT_C_API void ffrt_task_attr_set_delay(ffrt_task_attr_t* attr, uint64_t delay_
 
 设置任务延迟时间。
 
+设置任务的调度延迟后，任务的输入输出依赖关系不再生效。
+
 **起始版本：** 10
 
 

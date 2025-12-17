@@ -1,10 +1,16 @@
 # Special Effect Drawing Combination
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **useEffect** attribute is used to combine the drawing of special effects, such as background blur.
 
 > **NOTE**
 >
-> The initial APIs of this module is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
 >
 
 ## useEffect
@@ -56,7 +62,7 @@ Specifies whether to apply the effect defined by <!--Del-->the parent [EffectCom
 
 useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
-Specifies whether to apply the effect defined by <!--Del-->the parent [EffectComponent](ts-container-effectcomponent-sys.md) or <!--DelEnd-->the window. Compared with [useEffect<sup>14+</sup>](#useeffect), this API supports the **undefined** type for the **useEffect** parameter.
+Specifies whether to apply the effect defined by <!--Del-->the parent [EffectComponent](ts-container-effectcomponent-sys.md) or <!--DelEnd-->the window. Compared to [useEffect<sup>14+</sup>](#useeffect), the **useEffect** parameter supports the **undefined** type.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 

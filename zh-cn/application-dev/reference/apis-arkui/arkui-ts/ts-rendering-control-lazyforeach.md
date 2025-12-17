@@ -4,14 +4,14 @@
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **说明**
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 开发者指南见：[LazyForEach开发者指南](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)。
-在大量子组件的的场景下，LazyForEach与缓存列表项、动态预加载、组件复用等方法配合使用，可以进一步提升滑动帧率并降低应用内存占用。最佳实践请参考[优化长列表加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
+在大量子组件的场景下，LazyForEach与缓存列表项、动态预加载、组件复用等方法配合使用，可以进一步提升滑动帧率并降低应用内存占用。最佳实践请参考[优化长列表加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-best-practices-long-list)。
 
 ## 接口
 
@@ -85,7 +85,7 @@ getData(index:&nbsp;number): any
 
 > **说明：** 
 >
-> 应避免在`getData`函数中执行执行耗时操作，以此来减少应用滑动时卡顿丢帧问题，最佳实践请参考[主线程耗时操作优化-循环渲染](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section4551193714439)。
+> 应避免在`getData`函数中执行耗时操作，以此来减少应用滑动时卡顿丢帧问题，最佳实践请参考[主线程耗时操作优化-循环渲染](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section4551193714439)。
 
 ### registerDataChangeListener
 
@@ -321,14 +321,12 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                      | 必填 | 说明                 |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).ADD     | 是   | 数据添加类型。         |
-| index  | number                    | 是   | 插入数据索引值。取值范围是[0, 数据源长度-1]。 |
-| count  | number                    | 否   | 插入数量，默认为1。   |
-| key    | string \| Array\<string\> | 否   | 为插入的数据分配键值，默认使用原键值。 |
+| 名称 | 类型                      | 只读 | 可选 | 说明                 |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).ADD     | 否 | 否   | 数据添加类型。         |
+| index  | number                    | 否 | 否   | 插入数据索引值。取值范围是[0, 数据源长度-1]。 |
+| count  | number                    | 否 | 是   | 插入数量，默认为1。   |
+| key    | string \| Array\<string\> | 否 | 是   | 为插入的数据分配键值，默认使用原键值。 |
 
 ### DataDeleteOperation
 
@@ -338,13 +336,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                      | 必填 | 说明                 |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).DELETE     | 是   | 数据删除类型。         |
-| index  | number                    | 是   | 起始删除位置索引值。取值范围是[0, 数据源长度-1]。|
-| count  | number                    | 否   | 删除数据数量，默认为1。    |
+| 名称 | 类型                      | 只读 | 可选 | 说明                 |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).DELETE     | 否 | 否   | 数据删除类型。         |
+| index  | number                    | 否 | 否   | 起始删除位置索引值。取值范围是[0, 数据源长度-1]。|
+| count  | number                    | 否 | 是   | 删除数据数量，默认为1。    |
 
 ### DataChangeOperation
 
@@ -354,13 +350,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                      | 必填 | 说明                 |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).CHANGE     | 是   | 数据改变类型。         |
-| index  | number                    | 是   | 改变的数据的索引值。取值范围是[0, 数据源长度-1]。|
-| key  | string                    | 否   | 为改变的数据分配新的键值，默认使用原键值。    |
+| 名称 | 类型                      | 只读 | 可选 | 说明                 |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).CHANGE     | 否 | 否   | 数据改变类型。         |
+| index  | number                    | 否 | 否   | 改变的数据的索引值。取值范围是[0, 数据源长度-1]。|
+| key  | string                    | 否 | 是   | 为改变的数据分配新的键值，默认使用原键值。    |
 
 ### DataMoveOperation
 
@@ -370,13 +364,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                      | 必填 | 说明                 |
-| ------ | ------------------------- | ---- | -------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).MOVE     | 是   | 数据移动类型。 |
-| index  | [MoveIndex](#moveindex12)        | 是   | 移动位置。取值范围是[0, 数据源长度-1]。|
-| key | string              | 否   | 为被移动的数据分配新的键值，默认使用原键值。 |
+| 名称 | 类型                      | 只读 | 可选 | 说明                 |
+| ------ | ------------------------- | ---- | ---- | -------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).MOVE     | 否 | 否   | 数据移动类型。 |
+| index  | [MoveIndex](#moveindex12)        | 否 | 否   | 移动位置。取值范围是[0, 数据源长度-1]。|
+| key | string              | 否 | 是   | 为被移动的数据分配新的键值，默认使用原键值。 |
 
 ### DataExchangeOperation
 
@@ -386,13 +378,11 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                       | 必填 | 说明                         |
-| ------ | -------------------------- | ---- | ---------------------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).EXCHANGE | 是   | 数据交换类型。                 |
-| index  | [ExchangeIndex](#exchangeindex12)            | 是   | 交换位置。取值范围是[0, 数据源长度-1]。|
-| key    | [ExchangeKey](#exchangekey12)              | 否   | 分配新的键值，默认使用原键值。 |
+| 名称 | 类型                       | 只读 | 可选 | 说明                         |
+| ------ | -------------------------- | ---- | ---- | ---------------------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).EXCHANGE | 否 | 否   | 数据交换类型。                 |
+| index  | [ExchangeIndex](#exchangeindex12)            | 否 | 否   | 交换位置。取值范围是[0, 数据源长度-1]。|
+| key    | [ExchangeKey](#exchangekey12)              | 否 | 是   | 分配新的键值，默认使用原键值。 |
 
 ### DataReloadOperation
 
@@ -402,11 +392,9 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                     | 必填 | 说明             |
-| ------ | ------------------------ | ---- | ---------------- |
-| type   | [DataOperationType](#dataoperationtype枚举说明).RELOAD | 是   | 数据全部重载类型。 |
+| 名称 | 类型                     | 只读 | 可选 | 说明             |
+| ------ | ------------------------ | ---- | ---- | ---------------- |
+| type   | [DataOperationType](#dataoperationtype枚举说明).RELOAD | 否 | 否   | 数据全部重载类型。 |
 
 ### DataOperationType枚举说明
 
@@ -431,12 +419,10 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                       | 必填 | 说明            |
-| ------ | --------------- | ---- | ------- |
-| from   | number | 是   | 起始移动位置。取值范围是[0, 数据源长度-1]。|
-| to  | number           | 是   | 目的移动位置。取值范围是[0, 数据源长度-1]。|
+| 名称 | 类型                       | 只读 | 可选 | 说明            |
+| ------ | --------------- | ---- | ---- | ------- |
+| from   | number | 否 | 否   | 起始移动位置。取值范围是[0, 数据源长度-1]。|
+| to  | number           | 否 | 否   | 目的移动位置。取值范围是[0, 数据源长度-1]。|
 
 ## ExchangeIndex<sup>12+</sup>
 
@@ -444,12 +430,10 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                       | 必填 | 说明            |
-| ------ | --------------- | ---- | ------- |
-| start   | number | 是   | 第一个交换位置。取值范围是[0, 数据源长度-1]。|
-| end  | number           | 是   | 第二个交换位置。取值范围是[0, 数据源长度-1]。|
+| 名称 | 类型                       | 只读 | 可选 | 说明            |
+| ------ | --------------- | ---- | ---- | ------- |
+| start   | number | 否 | 否   | 第一个交换位置。取值范围是[0, 数据源长度-1]。|
+| end  | number           | 否 | 否   | 第二个交换位置。取值范围是[0, 数据源长度-1]。|
 
 ## ExchangeKey<sup>12+</sup>
 
@@ -457,9 +441,7 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：**
-
-| 参数名 | 类型                       | 必填 | 说明            |
-| ------ | --------------- | ---- | ------- |
-| start   | string | 是   | 为第一个交换的位置分配新的键值，默认使用原键值。        |
-| end  | string   | 是   | 为第二个交换的位置分配新的键值，默认使用原键值。           |
+| 名称 | 类型                       | 只读 | 可选 | 说明            |
+| ------ | --------------- | ---- | ---- | ------- |
+| start   | string | 否 | 否   | 为第一个交换的位置分配新的键值，默认使用原键值。        |
+| end  | string   | 否 | 否   | 为第二个交换的位置分配新的键值，默认使用原键值。           |

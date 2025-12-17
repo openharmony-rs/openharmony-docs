@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_Drawing_MemoryStream OH_Drawing_MemoryStream
+```
+
 ## 概述
 
 用于描述内存流。

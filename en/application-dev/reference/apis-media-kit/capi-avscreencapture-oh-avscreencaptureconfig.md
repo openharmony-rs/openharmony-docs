@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVScreenCaptureConfig {...} OH_AVScreenCaptureConfig
+```
+
 ## Overview
 
 The struct describes the screen capture configuration.

@@ -1,4 +1,4 @@
-# Responding to Audio Output Device Changes
+# Handling Output Device Changes Gracefully
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-To ensure a seamless user experience when there are changes in the audio output device, it is crucial to listen for such changes and adapt accordingly.
+You can listen for audio output device changes and implement appropriate responses. For example, if the output device disconnects during music playback, the application should pause playback immediately to avoid disrupting the user.
 
 You can use [outputDeviceChangeWithInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#onoutputdevicechangewithinfo11) of the AudioRenderer to listen for audio output device changes and obtain the change reason. When the audio output device is changed due to the online/offline status change, forcible user selection, device preemption, or device selection strategy change, the system uses this API to notify the application of the change, including the audio output device information and change reason.
 

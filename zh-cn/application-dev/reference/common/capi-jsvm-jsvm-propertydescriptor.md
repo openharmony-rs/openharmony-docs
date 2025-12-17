@@ -6,6 +6,10 @@
 <!--Tester: @test_lzz-->
 <!--Adviser: @fang-jinxu-->
 
+```c
+typedef struct {...} JSVM_PropertyDescriptor
+```
+
 ## 概述
 
 属性描述符。

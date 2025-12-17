@@ -24,5 +24,5 @@ Defines configuration descriptors.
 | -- | -- |
 | struct UsbConfigDescriptor configDescriptor | Standard configuration descriptor.|
 | struct UsbDdkInterface* interface | Interfaces contained in the configuration.|
-| uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
+| const uint8_t* extra | Unresolved descriptor, including class- or vendor-specific descriptors.|
 | uint32_t extraLength | Length of the unresolved descriptor.|

@@ -47,7 +47,7 @@ getDistributedAccountAbility(): DistributedAccountAbility
 
 getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): void
 
-获取分布式账号信息，使用callback异步回调。
+获取分布式账号信息。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 

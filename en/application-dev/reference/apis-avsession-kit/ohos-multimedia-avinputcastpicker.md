@@ -48,7 +48,7 @@ This component is a custom component. Some basic knowledge of [@Component](../..
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| @Prop | Custom style. You are advised to customize a component style so that the component can be displayed quickly.|
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| @Prop | Custom style. You are advised to customize a component style for higher component rendering performance.|
 | onStateChange | [OnPickerStateCallback](#onpickerstatecallback) | No| - | Callback invoked when the device list state changes.|
 
 ## OnPickerStateCallback
@@ -79,7 +79,7 @@ import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
 @Component
 struct Index {
 
-  @State pickerImage: ResourceStr = $r('app.media.castPicker'); // Custom resources.
+  @State pickerImage: ResourceStr = $r('app.media.layered_image'); // Custom resources.
 
   private onStateChange(state: AVCastPickerState) {
     if (state == AVCastPickerState.STATE_APPEARING) {

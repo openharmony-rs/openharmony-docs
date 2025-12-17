@@ -65,251 +65,246 @@
 
 ### 单线程监听场景
 
-```ts
-import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { process } from '@kit.ArkTS';
+ 引入头文件。
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
-let registerId = -1;
-let callback: errorManager.ErrorObserver = {
-    onUnhandledException: (errMsg) => {
-        console.info(errMsg);
-    },
-    onException: (errorObj) => {
-        console.info('onException, name: ', errorObj.name);
-        console.info('onException, message: ', errorObj.message);
-        if (typeof(errorObj.stack) == 'string') {
-            console.info('onException, stack: ', errorObj.stack);
-        }
-        //回调函数执行完，采用同步退出方式，避免多次触发异常
-        let pro = new process.ProcessManager();
-        pro.exit(0);
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+ 新增监听回调函数。
+<!-- @[error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+let observer: errorManager.ErrorObserver = {
+  onUnhandledException(errorMsg) {
+    hilog.info(0x0000, 'testTag','onUnhandledException, errorMsg: ', errorMsg);
+  },
+  onException(errorObj) {
+    hilog.info(0x0000, 'testTag','onException, name: ', errorObj.name);
+    hilog.info(0x0000, 'testTag','onException, message: ', errorObj.message);
+    if (typeof(errorObj.stack) === 'string') {
+      hilog.info(0x0000, 'testTag','onException, stack: ', errorObj.stack);
     }
-}
-
-let abilityWant: Want;
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        registerId = errorManager.on("error", callback);
-        abilityWant = want;
-    }
-
-    onDestroy() {
-        console.info("[Demo] EntryAbility onDestroy");
-        errorManager.off("error", registerId, (result) => {
-            console.info("[Demo] result " + result.code + ";" + result.message);
-        });
-    }
-
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // 为已创建的主窗口设置主页面
-        console.info("[Demo] EntryAbility onWindowStageCreate");
-
-        windowStage.loadContent("pages/index", (err) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-        });
-    }
-
-    onWindowStageDestroy() {
-        // 销毁主窗口，释放相关UI资源
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-    }
-
-    onForeground() {
-        // 切换前台
-        console.info("[Demo] EntryAbility onForeground");
-    }
-
-    onBackground() {
-        // 切换后台
-        console.info("[Demo] EntryAbility onBackground");
-    }
+  }
 };
 ```
 
+ 新增触发按钮。
+<!-- @[onclick_error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Button('单线程监听场景').onClick(()=>{
+  let observerId = -1;
+  try {
+    observerId = errorManager.on('error', observer);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+  }
+}).position({x:50, y:50});
+```
+
+
 ### 进程监听异常场景
 
-```ts
-import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { process } from '@kit.ArkTS';
+ 引入头文件。
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+ 新增监听回调函数。
+<!-- @[error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 function errorFunc(observer: errorManager.GlobalError) {
-    console.info("[Demo] result name :" + observer.name);
-    console.info("[Demo] result message :" + observer.message);
-    console.info("[Demo] result stack :" + observer.stack);
-    console.info("[Demo] result instanceName :" + observer.instanceName);
-    console.info("[Demo] result instanceType :" + observer.instanceType);
-    //回调函数执行完，采用同步退出方式，避免多次触发异常
-    let pro = new process.ProcessManager();
-    pro.exit(0);
-}
-
-let abilityWant: Want;
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        errorManager.on("globalErrorOccurred", errorFunc);
-        abilityWant = want;
-    }
-
-    onDestroy() {
-        console.info("[Demo] EntryAbility onDestroy");
-        errorManager.off("globalErrorOccurred", errorFunc);
-    }
-
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // 为已创建的主窗口设置主页面
-        console.info("[Demo] EntryAbility onWindowStageCreate");
-
-        windowStage.loadContent("pages/index", (err) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-        });
-    }
-
-    onWindowStageDestroy() {
-        // 销毁主窗口，释放相关UI资源
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-    }
-
-    onForeground() {
-        // 切换前台
-        console.info("[Demo] EntryAbility onForeground");
-    }
-
-    onBackground() {
-        // 切换后台
-        console.info("[Demo] EntryAbility onBackground");
-    }
+  hilog.info(0x0000, 'testTag','result name :' + observer.name);
+  hilog.info(0x0000, 'testTag','result message :' + observer.message);
+  hilog.info(0x0000, 'testTag','result stack :' + observer.stack);
+  hilog.info(0x0000, 'testTag','result instanceName :' + observer.instanceName);
+  hilog.info(0x0000, 'testTag','result instanceType :' + observer.instanceType);
 };
+```
+
+ 新增触发按钮。
+<!-- @[onclick_error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Button('进程监听异常场景').onClick(()=>{
+  try {
+    errorManager.on('globalErrorOccurred', errorFunc);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+  }
+}).position({x:50, y:100});
 ```
 
 ### 进程监听promise异常场景
 
-```ts
-import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { process } from '@kit.ArkTS';
+ 引入头文件。
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+ 新增监听回调函数。
+<!-- @[promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 function promiseFunc(observer: errorManager.GlobalError) {
-    console.info("[Demo] result name :" + observer.name);
-    console.info("[Demo] result message :" + observer.message);
-    console.info("[Demo] result stack :" + observer.stack);
-    console.info("[Demo] result instanceName :" + observer.instanceName);
-    console.info("[Demo] result instanceType :" + observer.instanceType);
-    //回调函数执行完，采用同步退出方式，避免多次触发异常
-    let pro = new process.ProcessManager();
-    pro.exit(0);
+  hilog.info(0x0000, 'testTag','result name :' + observer.name);
+  hilog.info(0x0000, 'testTag','result message :' + observer.message);
+  hilog.info(0x0000, 'testTag','result stack :' + observer.stack);
+  hilog.info(0x0000, 'testTag','result instanceName :' + observer.instanceName);
+  hilog.info(0x0000, 'testTag','result instanceType :' + observer.instanceType);
 }
+```
 
+ 新增触发按钮。
+<!-- @[onclick_promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
-let abilityWant: Want;
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        errorManager.on("globalUnhandledRejectionDetected", promiseFunc);
-        abilityWant = want;
-    }
-
-    onDestroy() {
-        console.info("[Demo] EntryAbility onDestroy");
-        errorManager.off("globalUnhandledRejectionDetected", promiseFunc);
-    }
-
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // 为已创建的主窗口设置主页面
-        console.info("[Demo] EntryAbility onWindowStageCreate");
-
-        windowStage.loadContent("pages/index", (err) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-        });
-    }
-
-    onWindowStageDestroy() {
-        // 销毁主窗口，释放相关UI资源
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-    }
-
-    onForeground() {
-        // 切换前台
-        console.info("[Demo] EntryAbility onForeground");
-    }
-
-    onBackground() {
-        // 切换后台
-        console.info("[Demo] EntryAbility onBackground");
-    }
-};
+``` TypeScript
+Button('进程监听promise异常场景').onClick(()=>{
+  try {
+    errorManager.on('globalUnhandledRejectionDetected', promiseFunc);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+  }
+}).position({x:50, y:200});
 ```
 
 ### 主线程监听freeze
 
-```ts
-import { AbilityConstant, errorManager, UIAbility, Want } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { process } from '@kit.ArkTS';
+ 引入头文件。
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
-// Define freezeCallback
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+ 新增监听回调函数。
+<!-- @[freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 function freezeCallback() {
-    console.info("freezecallback");
+  hilog.info(0x0000, 'testTag','freezecallback');
 }
+```
 
+ 新增触发按钮。
+<!-- @[onclick_freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
-let abilityWant: Want;
+``` TypeScript
+Button('主线程监听freeze').onClick(()=>{
+  try {
+    errorManager.on('freeze', freezeCallback);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+  }
+}).position({x:50, y:300});
+```
 
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        errorManager.on("freeze", freezeCallback);
-        abilityWant = want;
-    }
+### 主线程监听消息处理耗时
 
-    onDestroy() {
-        console.info("[Demo] EntryAbility onDestroy");
-        errorManager.off("freeze", freezeCallback);
-    }
+ 引入头文件。
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
-    onWindowStageCreate(windowStage: window.WindowStage) {
-        // 为已创建的主窗口设置主页面
-        console.info("[Demo] EntryAbility onWindowStageCreate");
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
 
-        windowStage.loadContent("pages/index", (err) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-        });
-    }
+ 新增监听回调函数。
+<!-- @[loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
 
-    onWindowStageDestroy() {
-        // 销毁主窗口，释放相关UI资源
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-    }
-
-    onForeground() {
-        // 切换前台
-        console.info("[Demo] EntryAbility onForeground");
-    }
-
-    onBackground() {
-        // 切换后台
-        console.info("[Demo] EntryAbility onBackground");
-    }
+``` TypeScript
+let loopObserver: errorManager.LoopObserver = {
+  onLoopTimeOut(timeout: number) {
+    hilog.info(0x0000, 'testTag','Duration timeout: ' + timeout);
+  }
 };
 ```
+
+ 新增触发按钮。
+<!-- @[onclick_loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Button('主线程监听消息处理耗时').onClick(()=>{
+  try {
+    errorManager.on('loopObserver', 1, loopObserver);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+  }
+}).position({x:50, y:150});
+```
+
+### 进程promise监听注册被拒绝
+
+ 引入头文件。
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+```
+
+ 新增监听回调函数。
+<!-- @[unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+let promise1 = new Promise<void>(() => {}).then(() => {
+  throw new Error('uncaught error');
+});
+
+let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
+  if (promise === promise1) {
+    hilog.info(0x0000, 'testTag','promise1 is rejected');
+  }
+  hilog.info(0x0000, 'testTag','reason.name: ', reason.name);
+  hilog.info(0x0000, 'testTag','reason.message: ', reason.message);
+  if (reason.stack) {
+    hilog.info(0x0000, 'testTag','reason.stack: ', reason.stack);
+  }
+};
+```
+
+ 新增触发按钮。
+<!-- @[onclick_unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Button('进程promise监听注册被拒绝').onClick(()=>{
+  try {
+    errorManager.on('unhandledRejection', unhandledrejectionObserver);
+  } catch (paramError) {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    hilog.error(0x0000, 'testTag',`error: ${code}, ${message}`);
+  }
+}).position({x:50, y:250});
+```
+
 ### 错误处理器责任链模式场景
 
 以下示例文件均位于同一目录。

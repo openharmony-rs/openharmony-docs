@@ -16,11 +16,11 @@ An unknown error occurs.
 
 **Possible Causes**
 
-The input parameter format or data type is incorrect. As a result, data fails to be obtained or converted.
+The parameter format or data type is incorrect, causing data retrieval or conversion failures.
 
 **Procedure**
 
-Obtain the exception description, check the system error logs, and rectify the fault based on the exception description and error description in the logs.
+Check the exception description for details, review system error logs for additional context, and address the issue based on the error information found.
 
 ## 24700103 Too Many MediaKeySystem Instances
 
@@ -30,15 +30,15 @@ Too many MediaKeySystem instances.
 
 **Description**
 
-The number of MediaKeySystem instances reaches the upper limit (64).
+The maximum number of MediaKeySystem instances (64) has been reached.
 
 **Possible Causes**
 
-Invalid MediaKeySystem instances are not released in time.
+Unused MediaKeySystem instances are not properly released.
 
 **Procedure**
 
-Release MediaKeySystem instances that are no longer used.
+Release any MediaKeySystem instances that are no longer needed.
 
 ## 24700104 Too Many MediaKeySession Instances
 
@@ -48,17 +48,17 @@ Too many MediaKeySession instances.
 
 **Description**
 
-The number of MediaKeySession instances reaches the upper limit (64).
+The maximum number of MediaKeySession instances (64) has been reached.
 
 **Possible Causes**
 
-Invalid MediaKeySession instances are not released in time.
+Unused MediaKeySession instances are not properly released.
 
 **Procedure**
 
-Release MediaKeySession instances that are no longer used.
+Release any MediaKeySession instances that are no longer needed.
 
-## 24700201 Service Error
+## 24700201 Service Exception
 
 **Error Message**
 
@@ -66,14 +66,14 @@ Service error. For example, the service crashed.
 
 **Description**
 
-A DRM service error occurs.
+The DRM service encountered a fatal error.
 
 **Possible Causes**
 
-1. An error occurs during the DRM solution plugin execution.
+1. An error occurs during the DRM plugin execution.
 
-2. DRM services are suspended.
+2. The DRM service process is terminated.
 
 **Procedure**
 
-Obtain the exception description, check the system error logs, and rectify the fault based on the exception description and error description in the logs.
+Check the exception description for details, review system error logs for additional context, and address the issue based on the error information found.

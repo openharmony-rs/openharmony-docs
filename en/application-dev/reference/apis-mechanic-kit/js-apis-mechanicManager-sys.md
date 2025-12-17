@@ -276,7 +276,7 @@ console.info(`'Query rotation speed successful, speed limit information:' ${spee
 
 rotateBySpeed(mechId: number, speed: RotationSpeed, duration: number): Promise\<Result>
 
-Rotates the current body at the specified speed.
+Rotates the current body at the specified speed. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Mechanic.Core
 
@@ -289,6 +289,12 @@ Rotates the current body at the specified speed.
 | mechId | number | Yes| ID of the mechanic device.|
 | speed | [RotationSpeed](#rotationspeed) | Yes| Specified rotation speed. If the specified value is greater than the value returned by **getMaxRotationSpeed**, the value returned by **getMaxRotationSpeed** is used by default.|
 | duration | number | Yes| Rotation duration, in milliseconds. If the specified value is greater than the value returned by **getMaxRotationTime**, the value returned by **getMaxRotationTime** is used by default.|
+
+**Return value**
+
+| Type                                       | Description       |
+| ------------------------------------------- | --------- |
+| Promise\<[Result](#result)> | Promise used to return the rotation result.|
 
 **Error codes**
 

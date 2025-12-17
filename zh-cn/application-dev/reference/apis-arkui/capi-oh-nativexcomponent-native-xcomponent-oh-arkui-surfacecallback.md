@@ -4,7 +4,11 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct OH_ArkUI_SurfaceCallback OH_ArkUI_SurfaceCallback
+```
 
 ## 概述
 

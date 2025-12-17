@@ -4,7 +4,7 @@
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **CalendarPicker** component provides a drop-down calendar for users to select a date.
 
@@ -158,6 +158,10 @@ onChange(callback: Optional\<Callback\<Date>>)
 
 Triggered when a date is selected. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -180,7 +184,7 @@ Describes the parameters of the calendar picker.
 
 | Name     | Type      | Read-Only| Optional       | Description                           |
 | ----------- | ---------- | ------| --------------------------------- | --------------------------------- |
-| hintRadius | number \| [Resource](ts-types.md#resource) | No  | Yes   | Style of the background of the selected state.<br>Value range: [0, 16].<br>Unit: vp.<br>Default value: **16.0vp** (the background is a circle).<br>**NOTE**<br>If the value is **0**, the background is a right-angled rectangle. If the value is in the 0–16 range, the background is a rounded rectangle. If the value is 16 or greater, the background is a circle.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| hintRadius | number \| [Resource](ts-types.md#resource) | No  | Yes   | Style of the background of the selected state.<br>Value range: [0.0, 16.0]<br>Unit: vp.<br>Default value: **16.0** (the background is a circle).<br>**NOTE**<br>If the value is **0.0**, the background is a right-angled rectangle. If the value is in the (0.0, 16.0) range, the background is a rounded rectangle. If the value is a negative number or greater than 16.0, the default value **16.0** is used, which means the background is a circle.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | selected | Date | No  | Yes   | Date of the selected item. If the value is not set or does not comply with the date format specifications, the default value will be used.<br>Default value: current system date<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | start<sup>18+</sup> | Date | No  | Yes   | Start date.<br>Default value: **Date('0001-01-01')**<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | end<sup>18+</sup> | Date | No  | Yes   | End date.<br>Default value: **Date('5000-12-31')**.<br>Value range: \[Date('0001-01-01'), Date('5000-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 18.|

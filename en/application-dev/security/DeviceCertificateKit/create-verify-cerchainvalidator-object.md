@@ -134,7 +134,7 @@ function certChainValidatorSample(): void {
       console.error(`validate failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
       // Validation successful.
-      console.log('validate success');
+      console.info('validate success');
     }
   });
 }

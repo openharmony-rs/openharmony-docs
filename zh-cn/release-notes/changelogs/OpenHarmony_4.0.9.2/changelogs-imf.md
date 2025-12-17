@@ -34,4 +34,4 @@ off接口新增需要取消订阅的回调函数作为可选参数，需要与on
 
 **适配指导**
 
-请参考接口说明：[@ohos.inputMethod.d.ts](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-inputmethod.md)
+请参考接口说明：[@ohos.inputMethod.d.ts](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-inputmethod.md)

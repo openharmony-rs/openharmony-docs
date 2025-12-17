@@ -1,12 +1,12 @@
-# SVG新增解析能力
+# SVG标签解析能力增强
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-从API version 21开始，当Image组件的[supportSvg2](./ts-basic-components-image.md#supportsvg221)属性设置为true时，将启用新增的解析处理能力，主要涉及以下方面。
+从API version 21开始，当Image组件的[supportSvg2](./ts-basic-components-image.md#supportsvg221)属性设置为true时，将启用SVG标签解析能力增强功能，该增强功能主要包含SVG1.1规范中的以下功能。
 
 - 易用性提升：SVG图源颜色默认解析格式从#ARGB变更为符合SVG标准规范的#RGBA；引用的URL类型进行严格校验；Image组件的[colorFilter](./ts-basic-components-image.md#colorfilter9)属性对整个SVG图源生效；Image组件的[fillColor](./ts-basic-components-image.md#fillcolor20)属性不对SVG图源中fill = 'none'的元素填充颜色。
 
@@ -14,7 +14,23 @@
 
 - 解析能力扩展：viewBox属性支持对齐和缩放规则可配置；支持裁剪路径单元的解析；支持渐变单元的解析；支持遮罩单元和遮罩内容单元的解析；支持图案单元和图案内容单元的解析；支持滤镜单元和原语单元解析。
 
-- 显示效果扩展：分组标签g元素中透明度opacity对整个分组下的多层子元素生效；新增g标签内clip-path裁剪路径规则的处理；pattern新增平铺效果和偏移值处理；线性渐变和径向渐变新增平移和缩放效果；mask和filter的参数异常时默认效果变更。
+- 显示效果扩展：分组标签g元素中透明度opacity对整个分组下的多层子元素生效；增强g标签内clip-path裁剪路径规则的处理；pattern增强平铺效果和偏移值处理；线性渐变和径向渐变增强平移和缩放效果；mask和filter的参数异常时默认效果变更。
+
+## SVG标签解析能力增强对SVG图源标签和属性的影响
+
+启用增强的解析处理能力后，影响的SVG元素和属性说明如下：
+
+| 元素           | 属性                                                         | 说明                                                         |
+| -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| clipPath       | clipPathUnits                                                | clipPathUnits裁剪路径单元，指定裁剪路径的坐标系统基准。<br />clipPathUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
+| filter         | filterUnits<br />primitiveUnits<br />x<br />y<br />width<br />height | filterUnits滤镜单元，定义滤镜效果（如模糊、阴影）的坐标和尺寸基准。<br />primitiveUnits滤镜原语单元，定义滤镜内元素效果的坐标和尺寸基准。<br />filterUnits和primitiveUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。<br />x：滤镜区域x轴偏移分量，默认值 -10% 。 <br/>y：滤镜区域y轴偏移分量，默认值 -10% 。 <br/>width：滤镜区域宽，默认值120% 。 <br/>height：滤镜区域高，默认值120% 。 |
+| mask           | maskUnits<br />maskContentUnits<br />x<br />y<br />width<br />height | maskUnits遮罩单元，控制遮罩的坐标系统和内容渲染方式。<br />maskContentUnits遮罩内容单元，控制遮罩内元素的坐标系统和内容渲染方式。<br />maskUnits和maskContentUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。<br />x：遮罩区域x轴偏移分量，默认值 -10% 。<br/>y：遮罩区域y轴偏移分量，默认值 -10% 。 <br/>width：遮罩区域宽，默认值120% 。<br/>height：遮罩区域高，默认值120% 。 |
+| radialGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
+| linearGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
+| pattern        | patternUnits<br />patternContentUnits                        | patternUnits图案单元，控制图案整体（`<pattern>`）的坐标系和内容缩放。<br />patternContentUnits图案内容单元，控制图案内部元素的坐标系和内容缩放。<br />patternUnits和patternContentUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
+| g              | opacity<br />clip-path                                       | opacity透明度：对整个分组下的多层子元素生效。<br />clip-path裁剪路径：对整个分组下的多层子元素生效。 |
+| 通用           | transform                                                    | 用于对SVG元素进行2D变换（如平移、旋转、缩放、倾斜等）。<br />translate(x, y)‌：沿X/Y轴平移元素。 ‌<br />rotate(angle, [cx], [cy])‌：旋转元素（可选参数指定旋转中心）。<br /> ‌scale(sx, [sy])‌：缩放元素（单参数时X/Y轴等比缩放）。<br /> ‌skewX(angle)/skewY(angle)‌：沿X/Y轴倾斜元素。 ‌<br />matrix(a, b, c, d, e, f)‌：通过矩阵定义复杂变换。 |
+| 通用           | transform-origin                                             | 用于定义变换的基准点。需和transform属性配合使用。<br />当配置transform-origin时，按照全局中心点（transform-origin）属性指定的坐标偏移(x,y)作为变换中心点进行仿射变换。 |
 
 ## SVG易用性提升
 
@@ -192,7 +208,7 @@ struct Index {
 
 ### 支持变换全局中心点配置
 
-SVG新增支持解析transform-origin属性来配置全局中心点的能力，前后效果对比如下表格说明：
+SVG支持解析transform-origin属性来配置全局中心点的能力，前后效果对比如下表格说明：
 
 >**说明：**
 >
@@ -210,7 +226,7 @@ SVG新增支持解析transform-origin属性来配置全局中心点的能力，�
 
 ### 支持rotate旋转功能局部中心点配置
 
-SVG新增支持解析rotate旋转的局部中心点功能，例如'rotate(30, -10, -10)'的'30'是旋转角度，后2个参数'-10, -10'是旋转的局部中心点坐标。支持rotate局部中心点前后效果对比如下表格说明。
+SVG支持解析rotate旋转的局部中心点功能，例如'rotate(30, -10, -10)'的'30'是旋转角度，后2个参数'-10, -10'是旋转的局部中心点坐标。支持rotate局部中心点前后效果对比如下表格说明。
 
 >**说明：**
 >
@@ -222,7 +238,7 @@ SVG新增支持解析rotate旋转的局部中心点功能，例如'rotate(30, -1
 
 ### 支持矩阵(matrix)转换
 
-SVG新增支持解析transform属性的matrix矩阵转换能力。matrix允许对元素进行复杂的线性变换，包括平移、旋转、缩放和倾斜等，例如matrix(a, b, c, d, e, f)。其中各个字段的元素作用如下：a‌控制元素在x方向上的缩放，b‌控制元素在x方向上的倾斜，c‌控制元素在y方向上的倾斜‌，d‌控制元素在y方向上的缩放‌，e控制元素在x方向上的平移‌，f控制元素在y方向上的平移。
+SVG支持解析transform属性的matrix矩阵转换能力。matrix允许对元素进行复杂的线性变换，包括平移、旋转、缩放和倾斜等，例如matrix(a, b, c, d, e, f)。其中各个字段的元素作用如下：a‌控制元素在x方向上的缩放，b‌控制元素在x方向上的倾斜，c‌控制元素在y方向上的倾斜‌，d‌控制元素在y方向上的缩放‌，e控制元素在x方向上的平移‌，f控制元素在y方向上的平移。
 
 >**说明：**
 >
@@ -234,7 +250,7 @@ SVG新增支持解析transform属性的matrix矩阵转换能力。matrix允许�
 
 ### 支持非法值校验
 
-SVG新增支持校验transform属性非法值的能力。对于transform属性，当设置参数为非法值或者参数个数非法时，按如下表格说明处理：
+SVG支持校验transform属性非法值的能力。对于transform属性，当设置参数为非法值或者参数个数非法时，按如下表格说明处理：
 
 >**说明：**
 >
@@ -531,7 +547,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ## 显示效果扩展
 
-分组标签g元素中透明度opacity对整个分组下的多层子元素生效；新增g标签内clip-path裁剪路径规则的处理；pattern新增平铺效果和偏移值处理；线性渐变和径向渐变新增平移和缩放效果；mask和filter的参数异常时默认效果变更。
+分组标签g元素中透明度opacity对整个分组下的多层子元素生效；增强g标签内clip-path裁剪路径规则的处理；pattern增强平铺效果和偏移值处理；线性渐变和径向渐变增强平移和缩放效果；mask和filter的参数异常时默认效果变更。
 
 ### 分组标签中透明度
 
@@ -564,7 +580,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 分组标签内引用裁剪路径规则
 
-新增g标签内clip-path裁剪路径规则的处理。
+增强g标签内clip-path裁剪路径规则的处理。
 
 >**说明：**
 >
@@ -593,9 +609,9 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![](figures/fill_rule_clip_rule_before.PNG) | ![](figures/fill_rule_clip_rule_after.PNG) |
 
-### pattern新增平铺效果
+### pattern支持平铺效果
 
-pattern图案新增重复平铺效果。
+pattern图案支持重复平铺效果。
 
 >**说明：**
 >

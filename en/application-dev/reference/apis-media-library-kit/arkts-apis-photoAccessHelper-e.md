@@ -331,15 +331,16 @@ Enumerates the sources of the image or video data.
 | CAMERA | 1   | Image or video taken by the camera.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | SCREENSHOT | 2   | Screenshot or screen capture video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
-## HdrMode<sup>21+</sup>
+## MovingPhotoBadgeStateType<sup>22+</sup>
 
-Enumerates the HDR types of images.
+Enumerates the states of moving photo badges.
 
-| Name |  Value|  Description|
-| ----- |  ---- |  ---- |
-| DEFAULT |  0 |  Default type.|
-| HDR_ISO_SINGLE |  1 |  Single-layer HDR technology. |
-| HDR_ISO_DUAL |  2 |  Dual-layer HDR technology. |
-| HDR_CUVA |  3 |  HDR standard of the China UHD Video Industry Alliance. |
-| HDR_VIVID_SINGLE |  4 |  Single-layer HDR Vivid technology |
-| HDR_VIVID_DUAL |  5 |  Dual-layer HDR Vivid technology. |
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name               | Value  | Description            |
+|------------------- |--------|----------------------|
+| NOT_MOVING_PHOTO   | 0      | The media file is not a moving photo.|
+| MOVING_PHOTO_ENABLED | 1    | The moving photo effect is enabled.|
+| MOVING_PHOTO_DISABLED | 2   | The moving photo effect is disabled.|

@@ -76,8 +76,6 @@
      napi_ref wrapper_;
    };
 
-   static thread_local napi_ref g_ref = nullptr;
-
    MyObject::MyObject(double value)
        : value_(value), env_(nullptr), wrapper_(nullptr) {}
 
@@ -105,7 +103,6 @@
      napi_define_class(env, "MyObject", NAPI_AUTO_LENGTH, New, nullptr, 2,
                               properties, &cons);
 
-     napi_create_reference(env, cons, 1, &g_ref);
      napi_set_named_property(env, exports, "MyObject", cons);
      return exports;
    }
@@ -185,10 +182,12 @@
        // 使用`MyObject(...)`调用方式
        size_t argc = 1;
        napi_value args[1];
-       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       napi_value jsThis = nullptr;
+       napi_get_cb_info(env, info, &argc, args, &jsThis, nullptr);
 
        napi_value cons;
-       napi_get_reference_value(env, g_ref, &cons);
+       const char* constructorName = "MyObject";
+       napi_get_named_property(env, jsThis, constructorName, &cons);
        napi_value instance;
        napi_new_instance(env, cons, argc, args, &instance);
 

@@ -7,6 +7,10 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct Input_InterceptorEventCallback {...} Input_InterceptorEventCallback
+```
+
 ## 概述
 
 拦截回调事件结构体，拦截鼠标事件、触屏输入事件和轴事件。
@@ -129,7 +133,7 @@ typedef void (*Input_DeviceAddedCallback)(int32_t deviceId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id可能会发生变化。 |
+| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 ### Input_DeviceRemovedCallback()
 
@@ -147,6 +151,6 @@ typedef void (*Input_DeviceRemovedCallback)(int32_t deviceId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备id可能会发生变化。 |
+| int32_t deviceId | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
 
 

@@ -31,15 +31,20 @@
 
 1. 只能用在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类中，不能用在自定义组件中。
 
-    ```ts
-    class Sample {
-      data: number = 0;
-    }
-    @ObservedV2
-    class Info {
-      @Type(Sample)
-      @Trace sample: Sample = new Sample(); // 正确用法
-    }
+<!-- @[DataModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/DataModel.ets) -->
+
+``` TypeScript
+class Sample {
+  private data: number = 0;
+}
+@ObservedV2
+class Info {
+  @Type(Sample)
+  @Trace public sample: Sample = new Sample(); // 正确用法
+}
+```
+
+   ```ts
     @Observed
     class Info2 {
       @Type(Sample)
@@ -52,7 +57,7 @@
       build() {
       }
     }
-    ```
+   ```
 
 2. 不支持collections.Set、collections.Map等类型。
 
@@ -66,7 +71,9 @@
 
 ### 持久化数据
 
-```ts
+<!-- @[NewType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NewType/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { PersistenceV2, Type } from '@kit.ArkUI';
 
 @ObservedV2

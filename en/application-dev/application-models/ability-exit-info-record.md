@@ -26,23 +26,28 @@ Read [API](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#
 
 1. Obtain the reason for the last exit.
 
-    Read the last exit information of the ability from **launchParam** of the **OnCreate** lifecycle function of the UIAbility class.
+    Read the last exit information of the ability from **launchParam** of the **onCreate** lifecycle function of the UIAbility class.
 
-    ```ts
+    <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
+    
+    ``` TypeScript
     import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
-
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    const DOMAIN_NUMBER = 0xF811;
+    const TAG  = '[Sample_UnexpExit]';
     const MAX_RSS_THRESHOLD: number = 100000;
     const MAX_PSS_THRESHOLD: number = 100000;
-
+    
     function doSomething() {
-      console.info('do Something');
+      hilog.info(DOMAIN_NUMBER, TAG, 'do Something');
     }
-
+    
     function doAnotherThing() {
-      console.info('do Another Thing');
+      hilog.info(DOMAIN_NUMBER, TAG, 'do Another Thing');
     }
-
-    class MyAbility extends UIAbility {
+    
+    export default class ExitAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
         // Obtain the exit reason.
         let reason: number = launchParam.lastExitReason;
@@ -51,49 +56,59 @@ Read [API](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#
           subReason = launchParam.lastExitDetailInfo.exitSubReason;
         }
         let exitMsg: string = launchParam.lastExitMessage;
-
+        // ···
         if (launchParam.lastExitDetailInfo) {
           // Obtain the information about the process where the ability was running before it exited.
           let pid = launchParam.lastExitDetailInfo.pid;
           let processName: string = launchParam.lastExitDetailInfo.processName;
           let rss: number = launchParam.lastExitDetailInfo.rss;
           let pss: number = launchParam.lastExitDetailInfo.pss;
+        // ···
           // Obtain other information.
           let uid: number = launchParam.lastExitDetailInfo.uid;
           let timestamp: number = launchParam.lastExitDetailInfo.timestamp;
+        // ···
         }
       }
     }
     ```
 
+
 2. Perform service processing based on the last exit information.
 
     - You can add different processing logic for different exit reasons. The following provides an example.
+
+    <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
-    ```ts
+    ``` TypeScript
     if (reason === AbilityConstant.LastExitReason.APP_FREEZE) {
-        // The ability exited last time due to no response. Add processing logic here.
-        doSomething();
+      // The ability exited last time due to no response. Add processing logic here.
+      doSomething();
     } else if (reason === AbilityConstant.LastExitReason.SIGNAL && subReason === 9) {
-        // The ability exited last time because the process is terminated by the kill -9 signal. Add processing logic here.
-        doAnotherThing();
+      // The ability exited last time because the process is terminated by the kill -9 signal. Add processing logic here.
+      doAnotherThing();
     } else if (reason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
-        // The ability exited last time due to RSS control last time. Implement the processing logic here. The simplest approach is to print the information.
-        console.info(`The ability has exited last because the rss control, the lastExitReason is ${reason}, subReason is ${subReason}, lastExitMessage is ${exitMsg}.`);
+      // The ability exited last time due to RSS control last time. Implement the processing logic here. The simplest approach is to print the information.
+      hilog.info(DOMAIN_NUMBER, TAG, `The ability has exit last because the rss control, the lastExitReason is ${reason}, subReason is ${subReason}, lastExitMessage is ${exitMsg}.`);
     }
     ```
 
     - Detect abnormal application memory usage based on process information. The following provides an example.
 
-    ```ts
+    <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
+    
+    ``` TypeScript
     if (rss > MAX_RSS_THRESHOLD || pss > MAX_PSS_THRESHOLD) {
-        // If the RSS or PSS value is too high, the memory usage is close to or has reached the upper limit. Print a warning or add processing logic.
-        console.warn(`Process ${processName}(${pid}) memory usage approaches or reaches the upper limit.`);
+      // If the RSS or PSS value is too high, the memory usage is close to or has reached the upper limit. Print a warning or add processing logic.
+      hilog.warn(DOMAIN_NUMBER, TAG, `Process ${processName}(${pid}) memory usage approaches or reaches the upper limit.`);
     }
     ```
 
-    - Use the timestamp of the abnormal exit to pinpoint when the issue occurred, facilitating problem locating.
 
-    ```ts
-    console.info(`App ${uid} terminated at ${timestamp}.`);
+    - Use the timestamp of the abnormal exit to pinpoint when the issue occurred, facilitating problem locating.
+    
+    <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
+    
+    ``` TypeScript
+    hilog.info(DOMAIN_NUMBER, TAG, `App ${uid} terminated at ${timestamp}.`);
     ```

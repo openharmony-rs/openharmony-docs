@@ -1,12 +1,19 @@
 # ShellCmdResult
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @li-weifeng2024; @xuzhihao666-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The **ShellCmdResult** module provides the shell command execution result.
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> The APIs of this module can be used only in <!--RP1-->[arkxtest](../../application-test/arkxtest-guidelines.md)<!--RP1End-->.
+> The APIs of this module can be used only in <!--RP1-->[JsUnit](../../application-test/unittest-guidelines.md)<!--RP1End-->.
 
 ## Modules to Import
 
@@ -42,7 +49,7 @@ abilityDelegator.executeShellCommand(cmd, (error: BusinessError, data) => {
   if (error) {
     console.error(`executeShellCommand fail, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`executeShellCommand success, data: ${JSON.stringify(data)}`);
+    console.info(`executeShellCommand success, data: ${JSON.stringify(data)}`);
   }
 });
 ```

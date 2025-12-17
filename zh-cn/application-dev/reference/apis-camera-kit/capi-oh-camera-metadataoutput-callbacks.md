@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct MetadataOutput_Callbacks {...} MetadataOutput_Callbacks
+```
+
 ## 概述
 
 元数据输出的回调。

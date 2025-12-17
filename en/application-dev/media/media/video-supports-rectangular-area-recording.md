@@ -79,9 +79,9 @@ OH_AudioInfo audioinfo = {
 };
 OH_VideoInfo videoinfo = {.videoCapInfo = videocapinfo};
 OH_AVScreenCaptureConfig config = {.captureMode = OH_CAPTURE_HOME_SCREEN,
-                                    .dataType = OH_ORIGINAL_STREAM,
-                                    .audioInfo = audioinfo,
-                                    .videoInfo = videoinfo};
+                                   .dataType = OH_ORIGINAL_STREAM,
+                                   .audioInfo = audioinfo,
+                                   .videoInfo = videoinfo};
 OH_AVScreenCapture_Init(capture, config);
 // 1. (Optional) Set the coordinates and dimensions of the capture area. For example, the following creates a 100*100 rectangular area starting at (0, 0).
 OH_Rect* region = new OH_Rect;

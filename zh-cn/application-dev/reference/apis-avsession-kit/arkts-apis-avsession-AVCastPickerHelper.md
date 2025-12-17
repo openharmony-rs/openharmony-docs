@@ -47,8 +47,8 @@ constructor(context: Context)
 **示例：**
 
 ```ts
-import { common } from '@kit.AbilityKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -60,7 +60,7 @@ struct Index {
         Text(this.message)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)
-          .onClick(()=>{
+          .onClick(() => {
             let context = this.getUIContext().getHostContext() as Context;
             let avCastPicker = new avSession.AVCastPickerHelper(context);
           })
@@ -122,9 +122,9 @@ async function avCastPicker(context: common.Context) {
 }
 ```
 
-## restoreDefaultCommunicationDevice<sup>21+</sup>
+## resetCommunicationDevice<sup>21+</sup>
 
-restoreDefaultCommunicationDevice(): Promise\<void>
+resetCommunicationDevice(): Promise\<void>
 
 将应用通话设备恢复至默认设备。比如在语音通话场景下，手机设备的通话装置将恢复成听筒。使用Promise异步回调。
 
@@ -146,8 +146,8 @@ import { avSession } from '@kit.AVSessionKit';
 
 async function avCastPicker(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
-  avCastPicker.restoreDefaultCommunicationDevice().then(() => {
-    console.info('restoreDefaultCommunicationDevice successfully');
+  avCastPicker.resetCommunicationDevice().then(() => {
+    console.info('resetCommunicationDevice successfully');
   });
 }
 ```

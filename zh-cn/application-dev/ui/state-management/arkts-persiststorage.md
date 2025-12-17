@@ -44,14 +44,13 @@ PersistentStorage不允许的类型和值有：
 
 - 持久化经常变化的变量。
 
-PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘的操作是同步的，大量的数据本地化读写会同步在UI线程中执行，影响UI渲染性能。如果开发者需要存储大量的数据，建议使用数据库api。
-
+PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘是在UI线程同步执行的，大量数据本地读写会影响UI渲染性能。如果开发者需要存储大量的数据，建议使用[数据库api](../../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 PersistentStorage和UI实例相关联，持久化操作需要在UI实例初始化成功后（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的回调被调用时）才可以被调用，早于该时机调用会导致持久化失败。
 
 ```ts
 // EntryAbility.ets
 onWindowStageCreate(windowStage: window.WindowStage): void {
-  windowStage.loadContent('pages/Index', (err) => {
+  windowStage.loadContent('pages/PageOneMessageStorage', (err) => {
     if (err.code) {
       return;
     }
@@ -59,6 +58,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
   });
 }
 ```
+
 
 ## 使用场景
 
@@ -84,44 +84,44 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    @StorageLink('aProp') aProp: number = 48;
    ```
 
-完整代码如下：
-
-
-```ts
-PersistentStorage.persistProp('aProp', 47);
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  @StorageLink('aProp') aProp: number = 48;
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-        // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
-        // 未修改时默认值为47
-        Text(`${this.aProp}`)
-          .onClick(() => {
-            this.aProp += 1;
-          })
-      }
-    }
-  }
-}
-```
+   完整代码如下：
+   <!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) -->
+   
+   ``` TypeScript
+   PersistentStorage.persistProp('aProp', 47);
+   
+   @Entry
+   @Component
+   struct TestPageOne {
+     @State message: string = 'Hello World';
+     @StorageLink('aProp') aProp: number = 48;
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+           // 应用退出时会保存当前结果。重新启动后，会显示上一次的保存结果
+           // 未修改时默认值为47
+           Text(`${this.aProp}`)
+             .onClick(() => {
+               this.aProp += 1;
+             })
+         }
+       }
+     }
+   }
+   ```
 
 - 新应用安装后首次启动运行：
   1. 调用persistProp初始化PersistentStorage，首先查询在PersistentStorage本地文件中是否存在“aProp”，查询结果为不存在，因为应用是第一次安装。
   2. 接着查询属性“aProp”在AppStorage中是否存在，依旧不存在。
   3. 在AppStorage中创建名为“aProp”的number类型属性，属性初始值是定义的默认值47。
   4. PersistentStorage将属性“aProp”和值47写入磁盘，AppStorage中“aProp”对应的值和其后续的更改将被持久化。
-  5. 在Index组件中创建状态变量\@StorageLink('aProp') aProp，和AppStorage中“aProp”双向绑定，在创建的过程中会在AppStorage中查找，成功找到“aProp”，所以使用其在AppStorage找到的值47。
+  5. 在TestPageOne组件中创建状态变量\@StorageLink('aProp') aProp，和AppStorage中“aProp”双向绑定，在创建的过程中会在AppStorage中查找，成功找到“aProp”，所以使用其在AppStorage找到的值47。
 
   **图1** PersistProp初始化流程  
 
-![zh-cn_image_0000001553348833](figures/zh-cn_image_0000001553348833.png)
+  ![zh-cn_image_0000001553348833](figures/zh-cn_image_0000001553348833.png)
 
 - 触发点击事件后：
   1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。
@@ -132,7 +132,7 @@ struct Index {
 - 后续启动应用：
   1. 执行PersistentStorage.persistProp('aProp', 47)，首先在PersistentStorage本地文件查询“aProp”属性，成功查询到。
   2. 将在PersistentStorage查询到的值写入AppStorage中。
-  3. 在Index组件里，\@StorageLink绑定的“aProp”为PersistentStorage写入AppStorage中的值，即为上一次退出应用存入的值。
+  3. 在TestPageOne组件里，\@StorageLink绑定的“aProp”为PersistentStorage写入AppStorage中的值，即为上一次退出应用存入的值。
 
 
 ### 在PersistentStorage之前访问AppStorage中的属性
@@ -145,6 +145,7 @@ let aProp = AppStorage.setOrCreate('aProp', 47);
 PersistentStorage.persistProp('aProp', 48);
 ```
 
+
 应用在非首次运行时，先执行AppStorage.setOrCreate('aProp', 47)：属性“aProp”在AppStorage中创建，其类型为number，其值设置为指定的默认值47。“aProp”是持久化的属性，所以会被写回PersistentStorage磁盘中，PersistentStorage存储的上次退出应用的值被覆盖。
 
 PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“aProp”，值为刚刚使用AppStorage接口写入的47。
@@ -153,11 +154,18 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 
 开发者可以先判断是否需要覆盖上一次保存在PersistentStorage中的值，如果需要覆盖，再调用AppStorage的接口进行修改，如果不需要覆盖，则不调用AppStorage的接口。
 
-```ts
+<!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
+
+``` TypeScript
+const MAX_NUM: number = 50;
+```
+<!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) -->
+
+``` TypeScript
 PersistentStorage.persistProp('aProp', 48);
-if (AppStorage.get('aProp') > 50) {
-    // 如果PersistentStorage存储的值超过50，设置为47
-    AppStorage.setOrCreate('aProp',47);
+if ((AppStorage.get<number>('aProp') ?? 0) > MAX_NUM) {
+  // 如果PersistentStorage存储的值超过50，设置为47
+  AppStorage.setOrCreate('aProp', 47);
 }
 ```
 
@@ -167,22 +175,31 @@ if (AppStorage.get('aProp') > 50) {
 
 PersistentStorage支持联合类型和undefined和null，在下面的示例中，使用persistProp方法初始化“P”为undefined。通过@StorageLink('P')绑定变量p，类型为number | undefined | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
-```ts
-PersistentStorage.persistProp('P', undefined);
+<!-- @[Persistent_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFourMessageChange.ets) -->
+
+``` TypeScript
+// 定义常量替代魔法值，明确数值含义
+const DEFAULT_NUMBER: number = 10; // 默认数字值
+const FONT_SIZE_LARGE: number = 50; // 大字体尺寸
+
+// 初始化持久化属性，键名使用常量定义（若有多处使用可提取）
+const STORAGE_KEY_P: string = 'P';
+PersistentStorage.persistProp(STORAGE_KEY_P, undefined);
 
 @Entry
 @Component
 struct TestCase6 {
-  @StorageLink('P') p: number | undefined | null = 10;
+  // 使用常量作为默认值，类型明确
+  @StorageLink(STORAGE_KEY_P) p: number | undefined | null = DEFAULT_NUMBER;
 
   build() {
     Row() {
       Column() {
         Text(this.p + '')
-          .fontSize(50)
+          .fontSize(FONT_SIZE_LARGE)
           .fontWeight(FontWeight.Bold)
         Button('changeToNumber').onClick(() => {
-          this.p = 10;
+          this.p = DEFAULT_NUMBER;
         })
         Button('changeTo undefined').onClick(() => {
           this.p = undefined;
@@ -190,7 +207,7 @@ struct TestCase6 {
         Button('changeTo null').onClick(() => {
           this.p = null;
         })
-      }  
+      }
       .width('100%')
     }
     .height('100%')
@@ -198,12 +215,13 @@ struct TestCase6 {
 }
 ```
 
-
 ### 持久化Date类型变量
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新。且persistedDate的值被持久化存储。
 
-```ts
+<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) -->
+
+``` TypeScript
 PersistentStorage.persistProp('persistedDate', new Date());
 
 @Entry
@@ -258,11 +276,14 @@ struct PersistedDate {
 }
 ```
 
+
 ### 持久化Map类型变量
 
 在下面的示例中，@StorageLink装饰的persistedMapString类型为Map\<number, string\>，点击Button改变persistedMapString的值，视图会随之刷新。且persistedMapString的值被持久化存储。
 
-```ts
+<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) -->
+
+``` TypeScript
 PersistentStorage.persistProp('persistedMapString', new Map<number, string>([]));
 
 @Entry
@@ -312,7 +333,9 @@ struct PersistedMap {
 
 在下面的示例中，@StorageLink装饰的persistedSet类型为Set\<number\>，点击Button改变persistedSet的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
-```ts
+<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) -->
+
+``` TypeScript
 PersistentStorage.persistProp('persistedSet', new Set<number>([]));
 
 @Entry

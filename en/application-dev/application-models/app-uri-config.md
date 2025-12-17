@@ -75,14 +75,16 @@ The use of the **linkFeature** field enables an application to deliver a more us
 
 ### Authorization Login
 
-```json
+<!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+
+``` JSON5
 "uris": [
-    {
-        "scheme": "https",
-        "host": "developer.huawei.com",
-        "path": "consumer",
-        "linkFeature": "Login"  
-    }
+  {
+    "scheme": "https",
+    "host": "developer.huawei.com",
+    "path": "consumer",
+    "linkFeature": "Login"
+  }
 ]
 ```
 
@@ -96,13 +98,16 @@ If you have implemented a custom data clearing page and want to provide a redire
 
    The **linkFeature** field must be set to **AppStorageMgmt**, and other field values should be set based on project requirements.
 
-    ```json
+    <!-- @[pulllink_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+    
+    ``` JSON5
     {
       "name": "ClearAbility",
       "srcEntry": "./ets/clearability/ClearAbility.ets",
       "description": "$string:ClearAbility_desc",
       "icon": "$media:layered_image",
       "label": "$string:ClearAbility_label",
+      // ···
       "skills": [
         {
           "uris": [

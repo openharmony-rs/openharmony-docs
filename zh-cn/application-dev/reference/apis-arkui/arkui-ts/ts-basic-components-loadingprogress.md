@@ -1,10 +1,10 @@
 # LoadingProgress
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Owner: @Zhang-Dong-Hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester:@jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于显示加载动效的组件。
 
@@ -12,7 +12,7 @@
 
 >  **说明：**
 >
-> 该组件从API Version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 
 ## 子组件
@@ -24,7 +24,7 @@
 
 LoadingProgress()
 
-创建加载进展组件。
+创建加载进度组件。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

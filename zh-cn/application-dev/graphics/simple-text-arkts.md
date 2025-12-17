@@ -38,7 +38,7 @@
        blue: 0
      },
      // 文本大小
-     fontSize: 50
+     fontSize: 100
    };
    ```
 
@@ -59,7 +59,7 @@
    // 更新文本样式
    paragraphBuilder.pushStyle(myTextStyle);
    // 添加文本
-   paragraphBuilder.addText("Hello World");
+   paragraphBuilder.addText('Hello World');
    ```
 
 5. 排版段落并进行文本绘制。
@@ -76,21 +76,20 @@
 
 ## 完整示例
 
-```ts
+<!-- @[arkts_drawing_simple_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
-import { drawing } from '@kit.ArkGraphics2D'
 import { text } from '@kit.ArkGraphics2D'
-import { image } from '@kit.ImageKit'
-import { common2D } from '@kit.ArkGraphics2D'
 
-// 创建一个MyRenderNode类，并绘制文本。
+// 创建一个自定义的渲染节点类，用于绘制文本
 class MyRenderNode extends RenderNode {
   async draw(context: DrawContext) {
-    
-    // 绘制代码逻辑写在这里
+
+    // 获取画布对象
     let canvas = context.canvas;
-    
+    // 获取文本样式
     let myTextStyle: text.TextStyle = {
       // 文本颜色
       color: {
@@ -102,37 +101,25 @@ class MyRenderNode extends RenderNode {
       // 文本大小
       fontSize: 100
     };
-    
+
     let myParagraphStyle: text.ParagraphStyle = {
       textStyle: myTextStyle,
     };
     let fontCollection = text.FontCollection.getGlobalInstance();
-    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+    let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
     // 更新文本样式
-    paragraphBuilder.pushStyle(myTextStyle);
+    ParagraphGraphBuilder.pushStyle(myTextStyle);
     // 添加文本
-    paragraphBuilder.addText("Hello World");
+    ParagraphGraphBuilder.addText("Hello World");
 
     // 生成段落
-    let paragraph = paragraphBuilder.build();
+    let paragraph = ParagraphGraphBuilder.build();
     // 布局
     paragraph.layoutSync(1250);
     // 绘制文本
-    paragraph.paint(canvas, 10, 800);
+    paragraph.paint(canvas, 0, 100);
   }
 }
-
-// 创建一个MyRenderNode对象
-const textNode = new MyRenderNode()
-// 定义newNode的像素格式
-textNode.frame = {
-  x: 0,
-  y: 100,
-  width: 1250,
-  height: 800
-}
-textNode.pivot = { x: 0.2, y: 0.8 }
-textNode.scale = { x: 1, y: 1 }
 
 class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
@@ -150,6 +137,7 @@ class MyNodeController extends NodeController {
         width: 10,
         height: 500
       }
+      renderNode.pivot = { x: 50, y: 50 }
     }
     return this.rootNode
   }
@@ -175,31 +163,38 @@ class MyNodeController extends NodeController {
   }
 }
 
-let myNodeController: MyNodeController = new MyNodeController()
-
-async function performTask() {
-  myNodeController.clearNodes()
-  myNodeController.addNode(textNode)
-}
+// 创建一个新的 MyRenderNode 对象实例
+const newNode = new MyRenderNode();
+// 定义 newNode 的帧信息（位置和大小）
+newNode.frame = { x: 0, y: 0, width: 400, height: 600 };
 
 @Entry
 @Component
-struct Font08 {
-  @State src: Resource = $r('app.media.startIcon')
+struct RenderTest {
+  private myNodeController: MyNodeController = new MyNodeController()
   build() {
     Column() {
-      Row() {
-        NodeContainer(myNodeController)
+      Row(){
+        NodeContainer(this.myNodeController)
           .height('100%')
-          .width('100%')
-        Image(this.src)
-          .width('0%').height('0%')
-          .onComplete(
-            () => {
-              performTask();
-            })
+          .position({x : 50, y: 25})
+        Button($r("app.string.Button_label"))
+          .fontSize('16fp')
+          .fontWeight(500)
+          .margin({ bottom: 24, right: 12 })
+          .onClick(() => {
+            this.myNodeController.clearNodes()
+            this.myNodeController.addNode(newNode)
+          })
+          .width('50%')
+          .height(40)
+          .shadow(ShadowStyle.OUTER_DEFAULT_LG)
       }
       .width('100%')
+      .justifyContent(FlexAlign.Center) // 设置当前Row容器内子元素在主轴上居中对齐
+      .shadow(ShadowStyle.OUTER_DEFAULT_SM) // 设置Row容器外阴影效果
+      .alignItems(VerticalAlign.Bottom) // 设置当前Row容器内子元素在交叉轴（垂直方向）上的对齐方式为底部对齐
+      .layoutWeight(1) // 设置当前Row在父容器Column中的布局权重为1
     }
   }
 }

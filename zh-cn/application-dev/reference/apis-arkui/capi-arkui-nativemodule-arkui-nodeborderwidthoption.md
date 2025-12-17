@@ -4,7 +4,11 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_NodeBorderWidth ArkUI_NodeBorderWidthOption
+```
 
 ## 概述
 

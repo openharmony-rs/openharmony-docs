@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_ImageReceiverOptions OH_ImageReceiverOptions
+```
+
 ## 概述
 
 用于定义OH_ImageReceiverOptions数据类型名称。

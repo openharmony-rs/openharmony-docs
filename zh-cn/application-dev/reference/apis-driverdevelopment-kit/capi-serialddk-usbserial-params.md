@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbSerial_Params {...} __attribute__((aligned(8))) UsbSerial_Params
+```
+
 ## 概述
 
 定义USB SERIAL DDK使用的USB串口参数.

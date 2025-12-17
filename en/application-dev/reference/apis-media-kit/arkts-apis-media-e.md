@@ -73,11 +73,11 @@ Enumerates the codec MIME types.
 | Name        | Value                   | Description                    |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | Video in H.263 format.     |
-| VIDEO_AVC    | 'video/avc'           | Video in AVC format.      |
+| VIDEO_AVC    | 'video/avc'           | Video in AVC format.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | VIDEO_MPEG2  | 'video/mpeg2'         | Video in MPEG-2 format.    |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | Video in MPEG-4 format.    |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | Video in VP8 format.      |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | Video in H.265 format.|
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | Video in H.265 format.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | AUDIO_AAC    | 'audio/mp4a-latm'     | Audio in MP4A-LATM format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | AUDIO_VORBIS | 'audio/vorbis'        | Audio in Vorbis format.   |
 | AUDIO_FLAC   | 'audio/flac'          | Audio in FLAC format.     |
@@ -85,6 +85,20 @@ Enumerates the codec MIME types.
 | AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | Audio in G.711 μ-law format.|
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | Audio in AMR-NB format.|
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | Audio in AMR-WB format.|
+
+## AacProfile<sup>22+</sup>
+
+Enumerates the supported Advanced Audio Coding (AAC) formats.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Media.AVRecorder
+
+| Name        | Value                   | Description                       |
+| ------------ | --------------------- | --------------------------- |
+| AAC_LC       |     0                 | Standard AAC Low Complexity profile.       |
+| AAC_HE       |     1                 | AAC High Efficiency profile (also known as HE-AAC).       |
+| AAC_HE_V2    |     2                 | AAC High Efficiency Version 2 profile (also known as HE-AAC v2).    |
 
 ## MediaDescriptionKey<sup>8+</sup>
 
@@ -98,7 +112,7 @@ Enumerates the media description keys.
 | MD_KEY_TRACK_TYPE        | 'track_type'    | Track type, which is a number. For details, see [MediaType](#mediatype8).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_CODEC_MIME        | 'codec_mime'    | Codec MIME type, which is a string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_DURATION          | 'duration'      | Media duration, which is a number, in units of ms.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| MD_KEY_BITRATE           | 'bitrate'       | Bit rate, which is a number, in units of bit/s.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MD_KEY_BITRATE           | 'bitrate'       | Bit rate, which is a number, in units of bit/s. If the value is **undefined** or **0**, the bit rate is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_WIDTH             | 'width'         | Video width, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_HEIGHT            | 'height'        | Video height, which is a number, in units of px.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | MD_KEY_FRAME_RATE        | 'frame_rate'    | Video frame rate, which is a number, measured in frames per 100 seconds.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -247,7 +261,7 @@ Enumerates the container format types (CFTs).
 
 | Name       | Value   | Description                 |
 | ----------- | ----- | --------------------- |
-| CFT_MPEG_4  | 'mp4' | Video container format MP4.|
+| CFT_MPEG_4  | 'mp4' | Video container format MP4.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | CFT_MPEG_4A | 'm4a' | Audio container format M4A.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | CFT_MP3<sup>12+</sup>  | 'mp3' | Audio container format MP3.|
 | CFT_WAV<sup>12+</sup>  | 'wav' | Audio container format WAV.|
@@ -362,6 +376,18 @@ Enumerates the video fill modes during screen capture.
 | --------------------------------- | ---- | -------------------------------------------- |
 | PRESERVE_ASPECT_RATIO | 0    | Keeps the original aspect ratio, matching the aspect ratio of the physical screen.|
 | SCALE_TO_FILL | 1    | Stretches the image to fit the specified dimensions.|
+
+## PickerMode<sup>22+</sup>
+
+Enumerates the display mode for the screen capture picker.
+
+**System capability**: SystemCapability.Multimedia.Media.AVScreenCapture
+
+| Name                             | Value  | Description                                        |
+| --------------------------------- | ---- | -------------------------------------------- |
+| WINDOW_ONLY | 0    | Displays only a list of windows.|
+| SCREEN_ONLY | 1    | Displays only a list of screens.|
+| SCREEN_AND_WINDOW | 2    | Displays both screens and windows.|
 
 ## AudioEncoder<sup>(deprecated)</sup>
 

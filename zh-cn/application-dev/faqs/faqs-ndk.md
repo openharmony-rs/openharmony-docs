@@ -318,7 +318,7 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 
 1. [Native与ArkTS对象绑定](../napi/use-napi-object-wrap.md)
 
-## 如何获取当前支持多线程调用的NDK接口范围？(API 21)
+## 如何获取当前支持多线程调用的NDK接口范围？(API 22)
 
 **解决方案**
 
@@ -330,7 +330,7 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 
 [NDK支持多线程创建组件](../ui/ndk-build-on-multi-thread.md)
 
-## 如何获取和使用支持多线程调用的NDK接口？(API 21)
+## 如何获取和使用支持多线程调用的NDK接口？(API 22)
 
 调用[OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)接口，入参传入[ARKUI_MULTI_THREAD_NATIVE_NODE](../reference/apis-arkui/capi-native-interface-h.md#arkui_nativeapivariantkind)以获取多线程NDK接口集合。例如：
 
@@ -353,7 +353,7 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 
 [NDK支持多线程创建组件](../ui/ndk-build-on-multi-thread.md)
 
-## 调用多线程NDK接口返回ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD错误码，该如何解决？(API 21)
+## 调用多线程NDK接口返回ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD错误码，该如何解决？(API 22)
 
 **解决方案**
 
@@ -368,7 +368,7 @@ libc++_shared.so被打包到应用目录下了，每个应用都有一份独立�
 1. [NDK支持多线程创建组件](../ui/ndk-build-on-multi-thread.md)
 2. [ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD](../reference/apis-arkui/capi-native-type-h.md#arkui_errorcode)
 
-## 在使用多线程NDK接口时，如何保证多线程操作ArkUI组件是线程安全的？(API 21)
+## 在使用多线程NDK接口时，如何保证多线程操作ArkUI组件是线程安全的？(API 22)
 
 **解决方案**
 

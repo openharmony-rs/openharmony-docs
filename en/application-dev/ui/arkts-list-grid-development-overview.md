@@ -29,7 +29,7 @@ To support items that span multiple rows or columns, configure the grid using [G
 
 Waterfall flow is a multi-column layout where columns have equal width but items can vary in height. It is well-suited for staggered layouts such as image feeds, video previews, and product recommendations.
 
-To support mixed layouts with varying column counts on the same page, use WaterFlowSections](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowoptions).
+To support mixed layouts with varying column counts on the same page, use [WaterFlowSections](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowoptions).
 
 ![](figures/waterflow.png)
 

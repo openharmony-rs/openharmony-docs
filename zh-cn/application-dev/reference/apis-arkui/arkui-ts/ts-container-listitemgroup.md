@@ -5,9 +5,25 @@
 <!--Owner: @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 该组件用来展示列表item分组，宽度默认充满[List](ts-container-list.md)组件，必须配合List组件来使用。
+
+ListItemGroup的懒加载是指组件按需加载可见区域可见的子组件。相比全量加载，使用懒加载可以提升应用启动速度，减少内存消耗。ListItemGroup和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，懒加载能力存在差异：
+
+ - 当ListItemGroup和ForEach结合，会一次性创建所有的子节点，在需要的时候布局和渲染屏幕范围内的节点。当用户滑动时，划出屏幕范围的节点不会下树销毁，划入屏幕范围的节点会布局和渲染。
+
+ - 当ListItemGroup和LazyForEach结合，会一次性创建、布局、渲染屏幕范围的节点。当用户滑动时，划出屏幕范围的节点会下树销毁，划入屏幕范围的节点会创建、布局、渲染。
+
+ - 当ListItemGroup和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的懒加载行为和LazyForEach一致。当ListItemGroup和不带virtualScroll的Repeat结合，它的懒加载行为和ForEach一致。
+
+ListItemGroup的预加载是指除了加载显示区域可见区域外子组件外，还支持空闲时隙提前加载部分显示区域外不可见的子组件。使用预加载可以减少滚动丢帧，提升流畅性。预加载需要结合懒加载才会生效。ListItemGroup和[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)、[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)结合，预加载能力存在差异：
+
+ - 当ListItemGroup和ForEach结合，如果设置了[cachedCount](./ts-container-list.md#cachedcount)，除了会布局显示区域内子组件外，还会在空闲时隙根据List组件的cachedCount属性预布局显示区域外cachedCount范围内的子节点。
+
+ - 当ListItemGroup和LazyForEach结合，如果设置了[cachedCount](./ts-container-list.md#cachedcount)，除了会创建和布局显示区域内子组件外，还会在空闲时隙根据List组件的cachedCount属性预创建和预布局显示区域外cachedCount范围内的子节点。
+
+ - 当ListItemGroup和带[virtualScroll](./ts-rendering-control-repeat.md#virtualscroll)的Repeat结合，它的预加载行为和LazyForEach一致。当ListItemGroup和不带virtualScroll的Repeat结合，它的预加载行为和ForEach一致。
 
 > **说明：**
 >
@@ -22,7 +38,6 @@
 ## 子组件
 
 包含[ListItem](ts-container-listitem.md)子组件。支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
-
 
 ## 接口
 
@@ -85,7 +100,7 @@ childrenMainSize(value: ChildrenMainSize)
 
 设置ListItemGroup组件的子组件在主轴方向的大小信息。
 
-**说明：**
+> **说明：**
 >
 > - 必须同时给所在的List组件设置childrenMainSize属性才可以正常生效。
 
@@ -118,7 +133,7 @@ List组件卡片样式枚举。
 
 ### 示例1（设置吸顶/吸底）
 
-该示例通过stick实现了Header吸顶和Footer吸底的效果。
+该示例通过[sticky](ts-container-list.md#sticky9)实现了Header吸顶和Footer吸底的效果。
 
 ListDataSource实现了LazyForEach数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给List和ListItemGroup提供子组件。
 
@@ -337,9 +352,9 @@ interface ArrObject {
 
 ### 示例3（设置Header/Footer）
 
-该示例通过ComponentContent设置Header/Footer。
+该示例通过[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)设置Header/Footer。
 
-ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](./ts-container-list.md#示例1添加滚动事件)。
+ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](#示例1设置吸顶吸底)。
 
 <!--code_no_check-->
 ```ts
@@ -473,3 +488,168 @@ struct ListItemGroupExample {
 ```
 
 ![zh-cn_image_listitemgroup_example03](figures/zh-cn_image_listitemgroup_example03.gif)
+
+### 示例4（设置多列布局）
+
+该示例展示了ListItemGroup在多列布局中的使用，通过设置List组件的[lanes](./ts-container-list.md#lanes9)属性实现多列布局。
+
+ListDataSource说明及完整代码参考[示例1设置吸顶/吸底](#示例1设置吸顶吸底)。
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+import { TimeTable, ProjectsDataSource, TimeTableDataSource } from './ListDataSource';
+
+class HeadBuilderParams {
+  text: string | Resource;
+
+  constructor(text: string | Resource) {
+    this.text = text;
+  }
+}
+
+class FootBuilderParams {
+  num: number | Resource;
+
+  constructor(num: number | Resource) {
+    this.num = num;
+  }
+}
+
+@Builder
+function itemHead(params: HeadBuilderParams) {
+  Text(params.text)
+    .fontSize(20)
+    .height('48vp')
+    .width('100%')
+    .padding(10)
+    .backgroundColor($r('sys.color.background_tertiary'))
+}
+
+@Builder
+function itemFoot(params: FootBuilderParams) {
+  Text('共' + params.num.toString() + '节课')
+    .fontSize(20)
+    .height('48vp')
+    .width('100%')
+    .padding(10)
+    .backgroundColor($r('sys.color.background_tertiary'))
+}
+
+@Component
+struct MyItemGroup {
+  item: TimeTable = { title: '', projects: [] };
+  header?: ComponentContent<HeadBuilderParams> = undefined;
+  footer?: ComponentContent<FootBuilderParams> = undefined;
+  headerParam = new HeadBuilderParams(this.item.title);
+  footerParam = new FootBuilderParams(this.item.projects.length);
+  itemArr: ProjectsDataSource = new ProjectsDataSource([]);
+
+  aboutToAppear(): void {
+    this.header = new ComponentContent(this.getUIContext(), wrapBuilder(itemHead), this.headerParam);
+    this.footer = new ComponentContent(this.getUIContext(), wrapBuilder(itemFoot), this.footerParam);
+    this.itemArr = new ProjectsDataSource(this.item.projects);
+  }
+
+  GetHeader() {
+    this.header?.update(new HeadBuilderParams(this.item.title));
+    return this.header;
+  }
+
+  GetFooter() {
+    this.footer?.update(new FootBuilderParams(this.item.projects.length));
+    return this.footer;
+  }
+
+  build() {
+    ListItemGroup({
+      headerComponent: this.GetHeader(),
+      footerComponent: this.GetFooter()
+    }) {
+      LazyForEach(this.itemArr, (project: string) => {
+        ListItem() {
+          // 修改ListItem样式以适应多列布局
+          Column() {
+            Text(project)
+              .fontSize(20)
+              .textAlign(TextAlign.Center)
+          }
+          .width('100%')
+          .height(80)
+          .padding(8)
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor($r('sys.color.background_secondary'))
+          .borderRadius(12)
+          .shadow({
+            radius: 4,
+            color: '#20000000',
+            offsetX: 0,
+            offsetY: 2
+          })
+        }
+      }, (item: string) => item)
+    }
+    .divider({
+      strokeWidth: 2,
+      color: $r('sys.color.background_tertiary'),
+      startMargin: 20,
+      endMargin: 20
+    })
+  }
+}
+
+@Entry
+@Component
+struct ListItemGroupExample {
+  itemGroupArray: TimeTableDataSource = new TimeTableDataSource([]);
+
+  aboutToAppear(): void {
+    let timeTable: TimeTable[] = [
+      {
+        title: '星期一',
+        projects: ['语文', '数学', '英语', '物理', '化学', '生物']
+      },
+      {
+        title: '星期二',
+        projects: ['历史', '地理', '政治', '体育', '美术', '音乐']
+      },
+      {
+        title: '星期三',
+        projects: ['计算机', '编程', '算法', '数据结构', '网络']
+      },
+      {
+        title: '星期四',
+        projects: ['文学', '写作', '阅读', '书法']
+      },
+      {
+        title: '星期五',
+        projects: ['实验', '生活', '奥数', '高数', '中医']
+      }
+    ];
+    this.itemGroupArray = new TimeTableDataSource(timeTable);
+  }
+
+  build() {
+    Column() {
+      List({ space: 15 }) {
+        LazyForEach(this.itemGroupArray, (item: TimeTable) => {
+          MyItemGroup({ item: item })
+        }, (item: TimeTable) => item.title)
+      }
+      .lanes(3) // 设置3列布局
+      .alignListItem(ListItemAlign.Center) // 交叉轴居中对齐
+      .layoutWeight(1)
+      .scrollBar(BarState.Auto)
+      .width('100%')
+      .margin(10)
+    }
+    .backgroundColor($r('sys.color.background_primary'))
+    .width('100%')
+    .height('100%')
+    .padding(10)
+  }
+}
+```
+
+![list_multicolumn_layout](figures/list_multicolumn_layout.gif)

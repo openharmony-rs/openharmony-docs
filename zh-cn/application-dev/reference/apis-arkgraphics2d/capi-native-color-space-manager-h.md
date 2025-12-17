@@ -1,4 +1,10 @@
 # native_color_space_manager.h
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @xubo233-->
+<!--Designer: @dizuo1-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 
 ## 概述
 
@@ -45,7 +51,7 @@
 
 ### ColorSpaceName
 
-```
+```c
 enum ColorSpaceName
 ```
 
@@ -94,7 +100,7 @@ enum ColorSpaceName
 
 ### OH_NativeColorSpaceManager_CreateFromName()
 
-```
+```c
 OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpaceName colorSpaceName)
 ```
 
@@ -121,7 +127,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromName(ColorSpace
 
 ### OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma()
 
-```
+```c
 OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGamma(ColorSpacePrimaries primaries, float gamma)
 ```
 
@@ -139,7 +145,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 | 参数项 | 描述 |
 | -- | -- |
 | [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) primaries | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的色彩原色。 |
-| float gamma | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的伽马值，伽马值为一个浮点数，用于矫正亮度范围。<br>伽马值通常为正值，负值会使弱光区域更亮，强光区域变暗，伽马值为0表示线性色彩空间。 |
+| float gamma | 表示创建[OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)的伽马值，伽马值为一个浮点数，用于校正亮度范围。<br>伽马值通常为正值，负值会使弱光区域更亮，强光区域变暗，伽马值为0表示线性色彩空间。 |
 
 **返回：**
 
@@ -149,7 +155,7 @@ OH_NativeColorSpaceManager* OH_NativeColorSpaceManager_CreateFromPrimariesAndGam
 
 ### OH_NativeColorSpaceManager_Destroy()
 
-```
+```c
 void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -170,7 +176,7 @@ void OH_NativeColorSpaceManager_Destroy(OH_NativeColorSpaceManager* nativeColorS
 
 ### OH_NativeColorSpaceManager_GetColorSpaceName()
 
-```
+```c
 int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -197,7 +203,7 @@ int OH_NativeColorSpaceManager_GetColorSpaceName(OH_NativeColorSpaceManager* nat
 
 ### OH_NativeColorSpaceManager_GetWhitePoint()
 
-```
+```c
 WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 
@@ -224,7 +230,7 @@ WhitePointArray OH_NativeColorSpaceManager_GetWhitePoint(OH_NativeColorSpaceMana
 
 ### OH_NativeColorSpaceManager_GetGamma()
 
-```
+```c
 float OH_NativeColorSpaceManager_GetGamma(OH_NativeColorSpaceManager* nativeColorSpaceManager)
 ```
 

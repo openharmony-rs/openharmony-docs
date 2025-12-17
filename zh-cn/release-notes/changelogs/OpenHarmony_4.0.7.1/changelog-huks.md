@@ -95,4 +95,4 @@ huks.initSession(keyAlias, signOptions);
 
 **适配指导**
 
-接口使用的示例代码可参考[密钥访问控制_细粒度用户身份认证访问控制](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/security/huks-guidelines.md#%E5%AF%86%E9%92%A5%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6)，接口定义参考[HuksTag](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-huks.md#hukstag)。
+接口使用的示例代码可参考[密钥访问控制_细粒度用户身份认证访问控制](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/security/huks-guidelines.md#%E5%AF%86%E9%92%A5%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6)，接口定义参考[HuksTag](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-huks.md#hukstag)。

@@ -4,7 +4,7 @@
 <!--Owner: @aohui-->
 <!--Designer: @yaomingliu-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements the **ConsoleMessage** object. For details about the sample code, see [onConsole](./arkts-basic-components-web-events.md#onconsole).
 
@@ -100,3 +100,17 @@ Obtains the path and name of the web page source file.
 | Type    | Description           |
 | ------ | ------------- |
 | string | Path and name of the web page source file.|
+
+## getSource<sup>23+</sup>
+
+getSource(): ConsoleMessageSource
+
+Obtains the log source of this console message.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type    | Description           |
+| ------ | ------------- |
+| [ConsoleMessageSource](./arkts-basic-components-web-e.md#consolemessagesource23) | Log source of the console message.|

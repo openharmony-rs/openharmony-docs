@@ -236,6 +236,15 @@ export default class EntryAbility extends UIAbility {
 3. 获取特定技术类型的NFC标签对象。
 4. 执行读写接口完成标签数据的读取或写入数据到标签。
 
+应用程序需要支持后台读卡时，需要在应用的属性配置文件中，声明与NFC相关的属性值。比如，在module.json5文件中，声明下面属性值。
+
+> **说明：**
+>
+>1. 声明"actions"字段的内容填写，必须包含"ohos.nfc.tag.action.TAG_FOUND"，不能更改。
+>2. 声明技术时"uris"中"type"字段的内容填写，前缀必须是"tag-tech/"，后面接着NfcA/NfcB/NfcF/NfcV/IsoDep/Ndef/MifareClassic/MifareUL/NdefFormatable"中的一个。如果存在多个"type"时，需要分行填写。填写错误会造成解析失败。
+>3. 声明权限时"requestPermissions"中的"name"字段的内容填写，必须是"ohos.permission.NFC_TAG"，不能更改。
+>4. Wearable设备不支持后台读卡。
+
 ```ts
     "abilities": [
       {

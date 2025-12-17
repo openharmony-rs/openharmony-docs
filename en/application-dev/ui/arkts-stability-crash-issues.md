@@ -1,4 +1,4 @@
-# Debugging Common UI-Related Application Crash Issues
+# Common UI-Related Application Crash Issues
 
 This topic outlines frequent misuse patterns of ArkUI APIs that may lead to application crashes. It is intended to help you recognize and avoid common pitfalls during development.
 

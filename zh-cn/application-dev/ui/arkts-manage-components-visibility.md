@@ -1,10 +1,10 @@
 # 感知组件可见性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
 组件可见性是指组件在屏幕上的显示状态，通过感知可见性，应用能够实现以下典型场景：

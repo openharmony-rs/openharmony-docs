@@ -1120,7 +1120,7 @@ In V1, **PersistentStorage** provides UI data persistence. In V2, this functiona
 
 **PersistenceV2** advantages:
 - When an \@ObservedV2 object is associated with **PersistenceV2**, changes to its \@Trace properties automatically trigger persistence of the entire object.
-- You can manually trigger persistence operations by calling the [PersistenceV2.save](../../reference/apis-arkui/js-apis-StateManagement.md#save) and [PersistenceV2.globalConnect](./arkts-new-persistencev2.md#globalconnect-creating-or-obtaining-stored-data) APIs.
+- You can manually trigger persistence operations by calling the [PersistenceV2.save](../../reference/apis-arkui/js-apis-StateManagement.md#save) and [PersistenceV2.globalConnect](./arkts-new-persistencev2.md#using-globalconnect-to-store-data) APIs.
 
 V1:
 

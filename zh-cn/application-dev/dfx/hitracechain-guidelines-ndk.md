@@ -91,7 +91,9 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
 
 3. 编辑“entry &gt; src &gt; main &gt; cpp &gt; napi_init.cpp”文件，使用HiTraceChain跟踪多线程任务，完整的示例代码如下：
 
-   ```cpp
+   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->   
+   
+   ``` C++
    #include <thread>
    
    #include "hilog/log.h"
@@ -114,7 +116,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
        OH_HiTrace_ClearId();
        OH_LOG_INFO(LogType::LOG_APP, "Print2, HiTraceChain end");
    }
-
+   
    void Print1(HiTraceId id)
    {
        // 为当前线程设置HiTraceId
@@ -148,7 +150,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
        size_t argc = 2;
        napi_value args[2] = {nullptr};
    
-       napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
    
        napi_valuetype valuetype0;
        napi_typeof(env, args[0], &valuetype0);
@@ -200,10 +202,12 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
        napi_module_register(&demoModule);
    }
    ```
-
+   
    编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，在按钮点击事件里调用Add方法，完整的示例代码如下：
-
-   ```ts
+   
+   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->   
+   
+   ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import testNapi from 'libentry.so';
    
@@ -212,7 +216,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
    @Entry
    @Component
    struct Index {
-     @State message: string = "clickTime=0";
+     @State message: string = 'clickTime=0';
      @State clickTime: number = 0;
    
      build() {
@@ -226,7 +230,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
              .fontWeight(FontWeight.Bold)
              .onClick(() => {
                this.clickTime++;
-               this.message = "clickTime=" + this.clickTime;
+               this.message = 'clickTime=' + this.clickTime;
                hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
              })
          }
@@ -236,7 +240,7 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
      }
    }
    ```
-
+   
 4. 点击DevEco Studio界面中的运行按钮，运行应用工程。然后点击设备上“clickTime=0”按钮，触发业务逻辑。
 
 5. 在DevEco Studio Log窗口查看分布式跟踪的相关信息。

@@ -7,7 +7,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-网络连接管理提供管理网络一些基础能力，包括获取默认激活的数据网络、获取所有激活数据网络列表、开启关闭飞行模式、获取网络能力信息等功能。
+网络连接管理提供一些网络基础能力，包括获取默认激活的数据网络、获取所有激活数据网络列表、开启关闭飞行模式、获取网络能力信息等功能。
 
 > **说明：**
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -396,7 +396,7 @@ connection.factoryReset().then(() => {
 
 ## ProxyMode<sup>20+</sup>
 
-表示代理模式的枚举。
+表示代理模式的枚举。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -411,7 +411,7 @@ connection.factoryReset().then(() => {
 
 setProxyMode(mode: ProxyMode): Promise\<void\>
 
-设置代理模式。
+设置代理模式。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -445,11 +445,12 @@ setProxyMode(mode: ProxyMode): Promise\<void\>
 **示例：**
 
 ```ts
-import { connection, ProxyMode } from '@kit.NetworkKit';
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.setProxyMode(ProxyMode.AUTO).then(() => {
+connection.setProxyMode(connection.ProxyMode.PROXY_MODE_AUTO).then(() => {
     console.info("Proxy mode set successfully.");
-}).catch(error => {
+}).catch((error: BusinessError) => {
     console.error("Error setting proxy mode:", error);
 });
 ```
@@ -458,7 +459,7 @@ connection.setProxyMode(ProxyMode.AUTO).then(() => {
 
 getProxyMode(): Promise\<ProxyMode\>
 
-获取当前的代理模式。
+获取当前的代理模式。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -470,17 +471,18 @@ getProxyMode(): Promise\<ProxyMode\>
 
 | 类型                        | 说明                          |
 |---------------------------| ------------------------ |
-| Promise\<[ProxyMode](#proxymode20)\> | 返回的Promise对象，包含当前代理模式。 |
+| Promise\<[ProxyMode](#proxymode20)\> | Promise对象，返回当前代理模式。 |
 
 
 **示例：**
 
 ```ts
 import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getProxyMode().then(mode => {
     console.info("Current proxy mode:", mode);
-}).catch(error => {
+}).catch((error: BusinessError) => {
     console.error("Error getting proxy mode:", error);
 });
 ```

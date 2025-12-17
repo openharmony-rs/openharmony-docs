@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @zhangyafei-echo; @xuzhihao666-->
-<!--Designer: @zhangyafei-echo-->
+<!--Owner: @zexin_c; @xuzhihao666-->
+<!--Designer: @xhz-sz-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
@@ -674,7 +674,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 ```ts
 // Index.ets
 import { UIExtensionContentSession } from '@kit.AbilityKit';
-import uiExtension from '@ohos.arkui.uiExtension';
+import { uiExtension } from '@kit.ArkUI';
 
 @Entry()
 @Component

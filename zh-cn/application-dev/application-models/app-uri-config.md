@@ -75,14 +75,16 @@
 
 ### 授权登录场景
 
-```json
+<!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+
+``` JSON5
 "uris": [
-    {
-        "scheme": "https",
-        "host": "developer.huawei.com",
-        "path": "consumer",
-        "linkFeature": "Login"  
-    }
+  {
+    "scheme": "https",
+    "host": "developer.huawei.com",
+    "path": "consumer",
+    "linkFeature": "Login"
+  }
 ]
 ```
 
@@ -96,13 +98,16 @@
 
    其中，linkFeature字段必须配置为AppStorageMgmt，其他字段取值请根据实际情况修改为实际值。
 
-    ```json
+    <!-- @[pulllink_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
+    
+    ``` JSON5
     {
       "name": "ClearAbility",
       "srcEntry": "./ets/clearability/ClearAbility.ets",
       "description": "$string:ClearAbility_desc",
       "icon": "$media:layered_image",
       "label": "$string:ClearAbility_label",
+      // ···
       "skills": [
         {
           "uris": [

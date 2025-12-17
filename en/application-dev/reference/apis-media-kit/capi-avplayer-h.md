@@ -65,7 +65,7 @@ The file declares the AVPlayer APIs. You can use the native AVPlayer APIs to pla
 | [bool OH_AVPlayer_IsPlaying(OH_AVPlayer *player)](#oh_avplayer_isplaying) | - | Checks whether an AVPlayer is playing.|
 | [bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)](#oh_avplayer_islooping) | - | Checks whether an AVPlayer is looping.|
 | [OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)](#oh_avplayer_setlooping) | - | Enables loop playback.|
-| [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | Sets an AVPlayer callback.<br> The callbacks [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) set by using this function can transfer limited information. In addition, it is inconvenient for the application to distinguish between multiple AVPlayer instances.<br> Therefore, since API version 12, [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback) are provided to set the callbacks [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback), respectively.|
+| [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | Sets an AVPlayer callback.<br> The callbacks [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) set by using this function can transfer limited information. In addition, it is inconvenient for the application to distinguish between multiple AVPlayer instances.<br> Starting from API version 12, [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback) are provided to set the callbacks [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback), respectively.|
 | [OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_selecttrack) | - | Selects an audio or subtitle track.<br> By default, the first audio track with data is played, and the subtitle track is not played.<br> After the setting takes effect, the original track becomes invalid. Set the subtitle track to the prepared, playing, paused, or completed state, and set the audio track to the prepared state.|
 | [OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_deselecttrack) | - | Deselects an audio or subtitle track.|
 | [OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)](#oh_avplayer_getcurrenttrack) | - | Obtains the currently valid track. You can set the track to the prepared, playing, paused, or completed state.|
@@ -74,6 +74,8 @@ The file declares the AVPlayer APIs. You can use the native AVPlayer APIs to pla
 | [OH_AVErrCode OH_AVPlayer_SetDecryptionConfig(OH_AVPlayer *player, MediaKeySession *mediaKeySession, bool secureVideoPath)](#oh_avplayer_setdecryptionconfig) | - | Sets the decryption information.|
 | [OH_AVErrCode OH_AVPlayer_SetOnInfoCallback(OH_AVPlayer *player, OH_AVPlayerOnInfoCallback callback, void *userData)](#oh_avplayer_setoninfocallback) | - | Sets a callback for the event indicating that the AVPlayer receives a message.|
 | [OH_AVErrCode OH_AVPlayer_SetOnErrorCallback(OH_AVPlayer *player, OH_AVPlayerOnErrorCallback callback, void *userData)](#oh_avplayer_setonerrorcallback) | - | Sets a callback for the event indicating that an error occurs in the AVPlayer.|
+| [OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)](#oh_avplayer_getmediadescription) | - | Obtains the media source information for the AVPlayer. This function can be called when the playback resource is configured and the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state.<br> You must manually release the returned OH_AVFormat pointer object when it is no longer needed.|
+| [OH_AVFormat *OH_AVPlayer_GetTrackDescription(OH_AVPlayer *player, uint32_t index)](#oh_avplayer_gettrackdescription) | - | Obtains the media source track information for the AVPlayer by index. This function can be called when the playback resource is configured and the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state.<br> You must manually release the returned OH_AVFormat pointer object when it is no longer needed.|
 
 ## Function Description
 
@@ -439,7 +441,7 @@ Sets the loudness of the AVPlayer. This function can be called when the AVPlayer
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The loudness is set successfully.<br>         **AV_ERR_INVALID_VAL**: The **player** parameter is nullptr, or the **loudnessGain** parameter is invalid.<br>         **AV_ERR_INVALID_STATE**: The function is called in an abnormal state, or the **usage** parameter in **audioRendererInfo** is not [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MUSIC,<br>              [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)..STREAM_USAGE_MOVIE, or [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage)..STREAM_USAGE_AUDIOBOOK.<br>         **AV_ERR_SERVICE_DIED**: A system error occurs.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The loudness is set successfully.<br>         **AV_ERR_INVALID_VAL**: The **player** parameter is nullptr, or the **loudnessGain** parameter is invalid.<br>         **AV_ERR_INVALID_STATE**: The function is called in an abnormal state, or the **usage** parameter in **audioRendererInfo** is not [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MUSIC,<br>              [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MOVIE, or [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_AUDIOBOOK.<br>         **AV_ERR_SERVICE_DIED**: A system error occurs.|
 
 ### OH_AVPlayer_Seek()
 
@@ -918,7 +920,7 @@ Enables loop playback.
 | Parameter| Description|
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
-| bool loop | Whether to enable loop playback.|
+| bool loop | Whether to enable loop playback. **true** to play in a loop, **false** otherwise. |
 
 **Returns**
 
@@ -934,7 +936,7 @@ OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback
 
 **Description**
 
-Sets an AVPlayer callback.<br> The callbacks [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) set by using this function can transfer limited information. In addition, it is inconvenient for the application to distinguish between multiple AVPlayer instances.<br> Therefore, since API version 12, [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback) are provided to set the callbacks [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback), respectively.
+Sets an AVPlayer callback.<br> The callbacks [OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo) and [OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror) set by using this function can transfer limited information. In addition, it is inconvenient for the application to distinguish between multiple AVPlayer instances.<br> Starting from API version 12, [OH_AVPlayer_SetOnInfoCallback](#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback](#oh_avplayer_setonerrorcallback) are provided to set the callbacks [OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback) and [OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback), respectively.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -961,9 +963,7 @@ OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 
 **Description**
 
-Selects an audio or subtitle track.<br>By default, the first audio track with data is played, and the subtitle track is not played.<br>After the setting takes effect, the original track becomes invalid. Set the subtitle track to the prepared, playing, paused, or completed state, and set the audio track to the prepared state.
-
-This function is not supported yet.
+Selects an audio or subtitle track.<br> By default, the first audio track with data is played, and the subtitle track is not played.<br> After the setting takes effect, the original track becomes invalid. Set the subtitle track to the prepared, playing, paused, or completed state, and set the audio track to the prepared state.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -992,8 +992,6 @@ OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)
 
 Deselects an audio or subtitle track.
 
-This function is not supported yet.
-
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
 **Since**: 11
@@ -1020,8 +1018,6 @@ OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType,
 **Description**
 
 Obtains the currently valid track. You can set the track to the prepared, playing, paused, or completed state.
-
-This function is not supported yet.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -1115,7 +1111,7 @@ Sets the decryption information.
 | -- | -- |
 | [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
 | [MediaKeySession](capi-avplayer-mediakeysession.md) *mediaKeySession | Pointer to the media key session with the decryption feature.|
-| bool secureVideoPath | Whether a secure decoder is required.|
+| bool secureVideoPath | Whether a secure decoder is required. **true** if required, **false** otherwise.|
 
 **Returns**
 
@@ -1178,3 +1174,56 @@ Sets a callback for the event indicating that an error occurs in the AVPlayer.
 | Type| Description|
 | -- | -- |
 | [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_NO_MEMORY**: Memory allocation fails.<br>         **AV_ERR_INVALID_VAL**: The input parameter **player** is nullptr or the function fails to be executed.|
+
+### OH_AVPlayer_GetMediaDescription()
+
+```
+OH_AVFormat *OH_AVPlayer_GetMediaDescription(OH_AVPlayer *player)
+```
+
+**Description**
+
+Obtains the media source information for the AVPlayer. This function can be called when the playback resource is configured and the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state.<br> You must manually release the returned OH_AVFormat pointer object when it is no longer needed.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVFormat](capi-videoprocessing-oh-avformat.md) * | Media source information obtained. If the operation fails, nullptr is returned.<br> Possible cause:<br>   1. The **player** pointer is invalid.<br>   2. The playback resource is invalid.|
+
+### OH_AVPlayer_GetTrackDescription()
+
+```
+OH_AVFormat *OH_AVPlayer_GetTrackDescription(OH_AVPlayer *player, uint32_t index)
+```
+
+**Description**
+
+Obtains the media source track information for the AVPlayer by index. This function can be called when the playback resource is configured and the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state.<br> You must manually release the returned OH_AVFormat pointer object when it is no longer needed.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Since**: 22
+
+**Parameters**
+
+| Parameter| Description|
+| -- | -- |
+| [OH_AVPlayer](capi-avplayer-oh-avplayer.md) *player | Pointer to the OH_AVPlayer instance.|
+| uint32_t index | Index of the track.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVFormat](capi-videoprocessing-oh-avformat.md) * | Track information obtained. If the operation fails, nullptr is returned.<br> Possible cause:<br>   1. The **player** pointer is invalid.<br>   2. The playback resource is invalid.<br>   3. The track index is out of the range for the playback source file array.|

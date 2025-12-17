@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiDebug_Backtrace_Object__* HiDebug_Backtrace_Object
+```
+
 ## 概述
 
 用于栈回溯及栈解析的对象。

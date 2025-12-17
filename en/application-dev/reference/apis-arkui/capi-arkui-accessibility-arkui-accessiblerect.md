@@ -4,7 +4,7 @@
 <!--Owner: @zhanghangkai10241-->
 <!--Designer: @lmleon-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -22,7 +22,7 @@ Provides the coordinate position where the node is located.
 
 | Name| Description|
 | -- | -- |
-| int32_t leftTopX | X coordinate of the upper left corner.|
-| int32_t leftTopY | Y coordinate of the upper left corner.|
-| int32_t rightBottomX | X coordinate of the lower right corner.|
-| int32_t rightBottomY | Y coordinate of the lower right corner.|
+| int32_t leftTopX | X-coordinate of the upper left corner.|
+| int32_t leftTopY | Y-coordinate of the upper left corner.|
+| int32_t rightBottomX | X-coordinate of the lower right corner.|
+| int32_t rightBottomY | Y-coordinate of the lower right corner.|

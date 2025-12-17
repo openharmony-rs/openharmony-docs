@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ImageBitmap对象可以存储canvas渲染的像素数据。从API version 11开始，当应用创建[Worker线程](../../../arkts-utils/worker-introduction.md)，支持使用postMessage将ImageBitmap实例传到Worker中进行绘制，并使用onmessage接收Worker线程发送的绘制结果进行显示。
 
@@ -50,7 +50,7 @@ constructor(data: PixelMap)
 
 constructor(src: string, unit: LengthMetricsUnit)
 
-通过ImageSrc创建ImageBitmap对象。
+通过ImageSrc创建ImageBitmap对象，支持使用unit配置Path2D对象的单位模式。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -69,7 +69,7 @@ constructor(src: string, unit: LengthMetricsUnit)
 
 constructor(data: PixelMap, unit: LengthMetricsUnit)
 
-通过PixelMap创建ImageBitmap对象。
+通过PixelMap创建ImageBitmap对象，支持使用unit配置Path2D对象的单位模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

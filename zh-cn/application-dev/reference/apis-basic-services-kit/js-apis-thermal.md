@@ -23,7 +23,7 @@ import {thermal} from '@kit.BasicServicesKit';
 
 registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
-订阅热档位变化时的回调提醒。
+**方法介绍：** 订阅热档位变化时的回调提醒。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -31,7 +31,7 @@ registerThermalLevelCallback(callback: Callback&lt;ThermalLevel&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                           |
 | -------- | ---------------------------- | ---- | ------------------------------ |
-| callback | Callback&lt;ThermalLevel&gt; | 是   | 回调函数，返回变化后的热档位；该参数是一个函数类型。 |
+| callback | Callback&lt;[ThermalLevel](#thermallevel)&gt; | 是   | 回调函数，返回变化后的热档位；该参数是一个函数类型。 |
 
 **错误码：**
 
@@ -58,7 +58,7 @@ try {
 
 unregisterThermalLevelCallback(callback?: Callback\<void>): void
 
-取消订阅热档位变化时的回调提醒。
+**方法介绍：** 取消订阅热档位变化时的回调提醒。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -93,15 +93,16 @@ try {
 
 getLevel(): ThermalLevel
 
-获取当前热档位信息。
+**方法介绍：** 获取当前热档位信息。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
+
 
 **返回值：**
 
 | 类型         | 说明         |
 | ------------ | ------------ |
-| ThermalLevel | 热档位信息。 |
+| [ThermalLevel](#thermallevel) | 热档位信息。 |
 
 **示例：**
 
@@ -116,7 +117,7 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[thermal.registerThermalLevelCallback](#thermalregisterthermallevelcallback9)替代。
 
-订阅热档位变化时的回调提醒。
+**方法介绍：** 订阅热档位变化时的回调提醒。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -124,7 +125,7 @@ subscribeThermalLevel(callback: AsyncCallback&lt;ThermalLevel&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;ThermalLevel&gt; | 是   | 回调函数。AsyncCallback只返回一个参数，为热档位信息。|
+| callback | AsyncCallback&lt;[ThermalLevel](#thermallevel)&gt; | 是   | 回调函数。AsyncCallback只返回一个参数，为热档位信息。|
 
 **示例：**
 
@@ -140,7 +141,7 @@ unsubscribeThermalLevel(callback?: AsyncCallback\<void>): void
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[thermal.unregisterThermalLevelCallback](#thermalunregisterthermallevelcallback9)替代。
 
-取消订阅热档位变化时的回调提醒。
+**方法介绍：** 取消订阅热档位变化时的回调提醒。使用callback异步回调。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -164,7 +165,7 @@ getThermalLevel(): ThermalLevel
 
 > **说明：**<br>从API version 9开始不再维护，建议使用[thermal.getLevel](#thermalgetlevel9)替代。
 
-获取当前热档位信息。
+**方法介绍：** 获取当前热档位信息。
 
 **系统能力：** SystemCapability.PowerManager.ThermalManager
 
@@ -172,7 +173,7 @@ getThermalLevel(): ThermalLevel
 
 | 类型           | 说明     |
 | ------------ | ------ |
-| ThermalLevel | 热档位信息。 |
+| [ThermalLevel](#thermallevel) | 热档位信息。 |
 
 **示例：**
 

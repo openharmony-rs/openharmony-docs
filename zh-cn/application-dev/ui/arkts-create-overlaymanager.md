@@ -4,7 +4,7 @@
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 浮层（OverlayManager）用于在页面（Page）之上展示自定义的UI内容，位于Dialog、Popup、Menu、BindSheet、BindContentCover和Toast等组件之下，展示范围为当前窗口的安全区内，适用于常驻悬浮等场景。
 
@@ -25,12 +25,18 @@
 
 在OverlayManager上[新增指定节点（addComponentContent）](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontent12)、[删除指定节点（removeComponentContent）](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#removecomponentcontent12)、[显示所有节点（showAllComponentContents）](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#showallcomponentcontents12)和[隐藏所有节点（hideAllComponentContents）](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#hideallcomponentcontents12)。
 
-```ts
+<!-- @[OverlayManager_Demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets) -->
+
+``` TypeScript
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_dialogproject]';
+const DOMAIN: number = 0xFF00;
 
 class Params {
-  text: string = "";
-  offset: Position;
+  public text: string = '';
+  public offset: Position;
 
   constructor(text: string, offset: Position) {
     this.text = text;
@@ -47,85 +53,91 @@ function builderText(params: Params) {
   }.offset(params.offset)
 }
 
-function initOverlayNode(uiContext: UIContext): OverlayManager {
-  uiContext.setOverlayManagerOptions({
-    enableBackPressedEvent: true
-  });
-  return uiContext.getOverlayManager();
-}
-
 @Entry
 @Component
-struct OverlayExample {
+export struct OverlayManagerComponent {
   @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
-  @StorageLink("componentOffset") componentOffset: Position = { x: 0, y: 30 };
+  @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 30 };
 
   build() {
-    Column({ space: 10 }) {
-      Button("递增componentContentIndex: " + this.componentContentIndex).onClick(() => {
-        ++this.componentContentIndex;
-      })
-      Button("递减componentContentIndex: " + this.componentContentIndex).onClick(() => {
-        --this.componentContentIndex;
-      })
-      Button("增加ComponentContent" + this.contentArray.length).onClick(() => {
-        let componentContent = new ComponentContent(
-          this.uiContext, wrapBuilder<[Params]>(builderText),
-          new Params(this.message + (this.contentArray.length), this.componentOffset)
-        );
-        this.contentArray.push(componentContent);
-        this.overlayNode.addComponentContent(componentContent, this.componentContentIndex);
-      })
-      Button("递增arrayIndex: " + this.arrayIndex).onClick(() => {
-        ++this.arrayIndex;
-      })
-      Button("递减arrayIndex: " + this.arrayIndex).onClick(() => {
-        --this.arrayIndex;
-      })
-      Button("删除ComponentContent" + this.arrayIndex).onClick(() => {
-        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
-          let componentContent = this.contentArray.splice(this.arrayIndex, 1);
-          this.overlayNode.removeComponentContent(componentContent.pop());
-        } else {
-          console.info("arrayIndex有误");
-        }
-      })
-      Button("显示ComponentContent" + this.arrayIndex).onClick(() => {
-        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
-          let componentContent = this.contentArray[this.arrayIndex];
-          this.overlayNode.showComponentContent(componentContent);
-        } else {
-          console.info("arrayIndex有误");
-        }
-      })
-      Button("隐藏ComponentContent" + this.arrayIndex).onClick(() => {
-        if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
-          let componentContent = this.contentArray[this.arrayIndex];
-          this.overlayNode.hideComponentContent(componentContent);
-        } else {
-          console.info("arrayIndex有误");
-        }
-      })
-      Button("显示所有ComponentContent").onClick(() => {
-        this.overlayNode.showAllComponentContents();
-      })
-      Button("隐藏所有ComponentContent").onClick(() => {
-        this.overlayNode.hideAllComponentContents();
-      })
+    // ···
+      Column({ space: 10 }) {
+        Button('Increment componentContentIndex:' + this.componentContentIndex)
+          .onClick(() => {
+            ++this.componentContentIndex;
+          })
+        Button('Decrement componentContentIndex:' + this.componentContentIndex)
+          .onClick(() => {
+            --this.componentContentIndex;
+          })
+        Button('Add ComponentContent:' + this.contentArray.length)
+          .onClick(() => {
+            let componentContent = new ComponentContent(
+              this.uiContext, wrapBuilder<[Params]>(builderText),
+              new Params(this.message + (this.contentArray.length), this.componentOffset)
+            )
+            this.contentArray.push(componentContent);
+            this.overlayNode.addComponentContent(componentContent, this.componentContentIndex);
+          })
+        Button('Increment arrayIndex:' + this.arrayIndex)
+          .onClick(() => {
+            ++this.arrayIndex;
+          })
+        Button('Decrement arrayIndex:' + this.arrayIndex)
+          .onClick(() => {
+            --this.arrayIndex;
+          })
+        Button('Delete ComponentContent:' + this.arrayIndex)
+          .onClick(() => {
+            if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+              let componentContent = this.contentArray.splice(this.arrayIndex, 1);
+              this.overlayNode.removeComponentContent(componentContent.pop());
+            } else {
+              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+            }
+          })
+        Button('Show ComponentContent:' + this.arrayIndex)
+          .onClick(() => {
+            if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+              let componentContent = this.contentArray[this.arrayIndex];
+              this.overlayNode.showComponentContent(componentContent);
+            } else {
+              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+            }
+          })
+        Button('Hide ComponentContent:' + this.arrayIndex)
+          .onClick(() => {
+            if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+              let componentContent = this.contentArray[this.arrayIndex];
+              this.overlayNode.hideComponentContent(componentContent);
+            } else {
+              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+            }
+          })
+        Button('Show All ComponentContent')
+          .onClick(() => {
+            this.overlayNode.showAllComponentContents();
+          })
+        Button('Hide All ComponentContent')
+          .onClick(() => {
+            this.overlayNode.hideAllComponentContents();
+          })
 
-      Button("跳转页面").onClick(() => {
-        this.getUIContext().getRouter().pushUrl({
-          url: 'pages/Second'
-        })
-      })
-    }
-    .width('100%')
-    .height('100%')
+        Button('Go')
+          .onClick(() => {
+            this.getUIContext().getRouter().pushUrl({
+              url: 'pages/Second'
+            })
+          })
+      }
+      .width('100%')
+      .height('100%')
+    // ···
   }
 }
 ```
@@ -133,12 +145,14 @@ struct OverlayExample {
 
 显示一个始终在屏幕左侧的悬浮球，点击可以弹出alertDialog弹窗。
 
-```ts
+<!-- @[OverlayManager_Demo2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerAlertDialog.ets) -->
+
+``` TypeScript
 import { ComponentContent, OverlayManager } from '@kit.ArkUI';
 
 class Params {
-  context: UIContext;
-  offset: Position;
+  public context: UIContext;
+  public offset: Position;
   constructor(context: UIContext, offset: Position) {
     this.context = context;
     this.offset = offset;
@@ -170,8 +184,7 @@ function builderOverlay(params: Params) {
 
 @Entry
 @Component
-struct OverlayExample {
-  @State message: string = 'ComponentContent';
+export struct OverlayManagerAlertDialog {
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   private overlayContent:ComponentContent<Params>[] = [];
@@ -193,25 +206,33 @@ struct OverlayExample {
   }
 
   build() {
-    Column() {
+    // ...
+      Column() {
 
-    }
-    .width('100%')
-    .height('100%')
+      }
+      .width('100%')
+      .height('100%')
+    // ...
   }
 }
-
 ```
 ![overlayManager-demo2](figures/overlaymanager-demo_2.gif)
 
 从API version 18开始，可以通过调用UIContext中getOverlayManager方法获取OverlayManager对象，并利用该对象在指定层级上新增指定节点（[addComponentContentWithOrder](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md#addcomponentcontentwithorder18)），层次高的浮层会覆盖在层级低的浮层之上。
 
-```ts
+<!-- @[OverlayManager_Demo3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets) -->
+
+``` TypeScript
 import { ComponentContent, LevelOrder, OverlayManager } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG: string = '[Sample_dialogproject]';
+const DOMAIN: number = 0xFF00;
 
 class Params {
-  text: string = "";
-  offset: Position;
+  public text: string = '';
+  public offset: Position;
+
   constructor(text: string, offset: Position) {
     this.text = text;
     this.offset = offset;
@@ -221,66 +242,78 @@ class Params {
 @Builder
 function builderTopText(params: Params) {
   Column() {
-    Stack(){
+    Stack() {
       Text(params.text)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-    }.width(300).height(200).padding(5).backgroundColor('#F7F7F7').alignContent(Alignment.Top)
+    }
+    .width(300)
+    .height(200)
+    .padding(5)
+    .backgroundColor('#F7F7F7')
+    .alignContent(Alignment.Top)
   }.offset(params.offset)
 }
 
 @Builder
 function builderNormalText(params: Params) {
   Column() {
-    Stack(){
+    Stack() {
       Text(params.text)
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
-    }.width(300).height(400).padding(5).backgroundColor('#D5D5D5').alignContent(Alignment.Top)
+    }
+    .width(300)
+    .height(400)
+    .padding(5)
+    .backgroundColor('#D5D5D5')
+    .alignContent(Alignment.Top)
   }.offset(params.offset)
 }
 
 @Entry
 @Component
-struct Index {
+export struct OverlayManagerWithOrder {
   private ctx: UIContext = this.getUIContext();
   private overlayManager: OverlayManager = this.ctx.getOverlayManager();
   @StorageLink('contentArray') contentArray: ComponentContent<Params>[] = [];
   @StorageLink('componentContentIndex') componentContentIndex: number = 0;
   @StorageLink('arrayIndex') arrayIndex: number = 0;
-  @StorageLink('componentOffset') componentOffset: Position = {x: 0, y: 80};
+  @StorageLink('componentOffset') componentOffset: Position = { x: 0, y: 80 };
 
   build() {
-    Row() {
-      Column({ space: 5 }) {
-        Button('点击打开置顶弹窗')
-          .onClick(() => {
-            let componentContent = new ComponentContent(
-              this.ctx, wrapBuilder<[Params]>(builderTopText),
-              new Params('我是置顶弹窗', this.componentOffset)
-            );
-            this.contentArray.push(componentContent);
-            this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100000));
+    // ···
+      Row() {
+        Column({ space: 5 }) {
+          Button('Open Top-Level Dialog Box')
+            .onClick(() => {
+              let componentContent = new ComponentContent(
+                this.ctx, wrapBuilder<[Params]>(builderTopText),
+                new Params('I am a top-level dialog box', this.componentOffset)
+              );
+              this.contentArray.push(componentContent);
+              this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(100000));
+            })
+          Button('Open Normal Dialog Box')
+            .onClick(() => {
+              let componentContent = new ComponentContent(
+                this.ctx, wrapBuilder<[Params]>(builderNormalText),
+                new Params('I am a normal dialog box', this.componentOffset)
+              );
+              this.contentArray.push(componentContent);
+              this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(0));
+            })
+          Button('Remove Dialog Box').onClick(() => {
+            if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
+              let componentContent = this.contentArray.splice(this.arrayIndex, 1);
+              this.overlayManager.removeComponentContent(componentContent.pop());
+            } else {
+              hilog.info(DOMAIN, TAG, '%{public}s', 'arrayIndex error');
+            }
           })
-        Button('点击打开普通弹窗')
-          .onClick(() => {
-            let componentContent = new ComponentContent(
-              this.ctx, wrapBuilder<[Params]>(builderNormalText),
-              new Params('我是普通弹窗', this.componentOffset)
-            );
-            this.contentArray.push(componentContent);
-            this.overlayManager.addComponentContentWithOrder(componentContent, LevelOrder.clamp(0));
-          })
-        Button("点击移除弹窗").onClick(()=>{
-          if (this.arrayIndex >= 0 && this.arrayIndex < this.contentArray.length) {
-            let componentContent = this.contentArray.splice(this.arrayIndex, 1);
-            this.overlayManager.removeComponentContent(componentContent.pop());
-          } else {
-            console.info("arrayIndex有误");
-          }
-        })
-      }.width('100%')
-    }
+        }.width('100%')
+      }
+    // ···
   }
 }
 ```

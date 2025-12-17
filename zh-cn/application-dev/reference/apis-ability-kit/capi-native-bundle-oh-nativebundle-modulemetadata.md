@@ -6,6 +6,10 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} OH_NativeBundle_ModuleMetadata
+```
+
 ## 概述
 
 模块元数据的信息。

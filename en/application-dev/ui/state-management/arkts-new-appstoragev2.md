@@ -27,20 +27,7 @@ AppStorageV2 supports state sharing among multiple UIAbility instances in the [m
 
 ## How to Use
 
-### connect: Creating or Obtaining Stored Data
-
-```JavaScript
-static connect<T extends object>(
-    type: TypeConstructorWithArgs<T>,
-    keyOrDefaultCreator?: string | StorageDefaultCreator<T>,
-    defaultCreator?: StorageDefaultCreator<T> 
-): T | undefined;
-```
-
-| connect      | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameters        | **type**: specified type. If no **key** is specified, the name of the **type** is used as the **key**.<br>**keyOrDefaultCreator**: specified key or default constructor.<br>**defaultCreator**: default constructor.                                         |
-| Return value      | Returns the data if creation or acquisition is successful; otherwise, returns **undefined**.|
+- **connect**: creates or obtains stored data.
 
 >**NOTE**
 >
@@ -54,42 +41,28 @@ static connect<T extends object>(
 >
 >5. When matching the key with the [\@Observed](arkts-observed-and-objectlink.md) object, specify the key or customize the **name** property.
 
-### remove: Deleting the Stored Data of a Specified Key
-
-```JavaScript
-static remove<T>(keyOrType: string | TypeConstructorWithArgs<T>): void;
-```
-
-| remove       | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameters        | **keyOrType**: key to be deleted. If the key is of the **Type**, the key to be deleted is the name of the **Type**.                                         |
-| Return value      | N/A|
+- **remove**: deletes the stored data of a specified key.
 
 >**NOTE**
 >
 >If a key that does not exist in AppStorageV2 is deleted, a warning is reported.
 
-### keys: Returning All Keys Stored in AppStorageV2
+- **keys**: returns all keys in AppStorageV2.
 
-```JavaScript
-static keys(): Array<string>;
-```
-
-| keys         | Description                                                 |
-| ------------ | ----------------------------------------------------- |
-| Parameters        | N/A                                        |
-| Return value      | All keys stored in AppStorageV2.|
+For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Management)](../../reference/apis-arkui/js-apis-StateManagement.md#appstoragev2).
 
 
 ## Constraints
 
-1. This singleton must be used together with the UI thread only. Other threads, for example, @Sendable decorator is not supported.
+1. Only the class type is supported.
 
-2. Types such as **collections.Set** and **collections.Map** are not supported.
+2. This singleton must be used together with the UI thread only. Other threads, for example, @Sendable decorator is not supported.
 
-3. Non-built-in types, such as PixelMap, NativePointer, ArrayList, and other native types, are not supported.
+3. Types such as **collections.Set** and **collections.Map** are not supported.
 
-4. Primitive types, such as string, number, and boolean, are not supported.
+4. Non-built-in types, such as [PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md), NativePointer, and [ArrayList](../../reference/apis-arkts/js-apis-arraylist.md), are not supported.
+
+5. Primitive types, such as string, number, and boolean, are not supported. Note: The lack of support for storing primitive types means that the type passed to the **connect** API cannot be a primitive type. However, the class passed to **connect** can contain primitive types.
 
 ## Use Scenarios
 

@@ -8,7 +8,7 @@
 
 ## 简介
 
-使用Node-API的六个关于string的接口，可以实现Node-API模块与ArkTS字符串的交互。
+使用Node-API的八个关于string的接口，可以实现Node-API模块与ArkTS字符串的交互。
 
 ## 基本概念
 
@@ -31,6 +31,8 @@
 | napi_create_string_utf16 | 需要通过UTF16编码的C字符串创建ArkTS string值时使用这个函数。 |
 | napi_get_value_string_latin1 | 需要将ArkTS的字符类型的数据转换为ISO-8859-1编码的字符时使用这个函数。 |
 | napi_create_string_latin1 | 需要通过ISO-8859-1编码的字符串创建ArkTS string值时使用这个函数。 |
+| napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
+| napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |
 
 ## 使用示例
 
@@ -338,6 +340,130 @@ import testNapi from 'libentry.so';
 hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s', testNapi.createStringLatin1());
 ```
 <!-- @[ark_napi_create_string_latin1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+### napi_create_external_string_utf16
+
+创建一个引用外部资源的UTF-16编码的ArkTS字符串。
+
+cpp部分代码
+
+<!-- @[napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
+// hint参数可以传递一些额外的信息，如引用计数等，也可以忽略此参数，直接传入nullptr
+static void StringFinalizerUTF16(void* data, void* hint)
+{
+    // 释放外部资源
+    delete[] static_cast<char16_t*>(data);
+}
+
+static napi_value CreateExternalStringUtf16(napi_env env, napi_callback_info info)
+{
+    const char16_t source[] = u"你好, World!, successes to create UTF-16 string! 111";
+    napi_value result = nullptr;
+    int char16tLength = sizeof(source) / sizeof(char16_t);
+    // 在堆上动态分配内存，并复制字符串内容
+    char16_t* str = new char16_t[char16tLength];
+    std::copy(source, source + char16tLength, str);
+    // 当创建出来的字符串在ArkTS侧生命周期结束被GC回收时，会调用StringFinalizerUTF16函数，调用方式为StringFinalizerUTF16(str, finalize_hint);
+    // 如果finalize_callback传入nullptr，则不会调用任何回调函数。开发者需要自行管理外部资源str的生命周期。
+    napi_status status = napi_create_external_string_utf16(
+        env,
+        str,                    // 外部字符串缓冲区
+        NAPI_AUTO_LENGTH,       // 字符串长度，传入NAPI_AUTO_LENGTH表示字符串以'\0'结尾
+        StringFinalizerUTF16,   // 字符串的析构回调函数
+        nullptr,                // 传递给析构回调函数的hint参数，本例不需要
+        &result                 // 接受创建的ArkTS字符串值
+    );
+    if (status != napi_ok) {
+        // 处理错误
+        napi_throw_error(env, nullptr, "Failed to create utf16 string");
+        return nullptr;
+    }
+    return result;
+}
+```
+
+接口声明
+
+<!-- @[napi_create_external_string_utf16_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const CreateExternalStringUtf16: () => string | void;
+```
+
+ArkTS侧示例代码
+
+<!-- @[ark_napi_create_external_string_utf16](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+  testNapi.CreateExternalStringUtf16());
+```
+通过napi_create_external_string_utf16接口创建出的ArkTS string对象受GC管理，其生命周期结束，GC会回收ArkTS string对象，同时触发StringFinalizerUTF16函数来回收ArkTS string对象指向的native侧资源。
+
+### napi_create_external_string_ascii
+
+创建一个引用外部资源的ASCII编码的ArkTS字符串。
+
+cpp部分代码
+
+<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+// 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
+// hint参数可以传递一些额外的信息，如引用计数等，也可以忽略此参数，直接传入nullptr
+static void StringFinalizerASCII(void* data, void* hint)
+{
+    // 释放外部资源
+    delete[] static_cast<char*>(data);
+}
+
+static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info info)
+{
+    const char source[] = "hello, World!, successes to create ASCII string! 111";
+    napi_value result = nullptr;
+    int charLength = sizeof(source) / sizeof(char);
+    // 在堆上动态分配内存，并复制字符串内容
+    char* str = new char[charLength];
+    std::copy(source, source + charLength, str);
+    // 当创建出来的字符串在ArkTS侧生命周期结束被GC回收时，会调用StringFinalizerASCII函数，调用方式为StringFinalizerASCII(str, finalize_hint);
+    // 如果finalize_callback传入nullptr，则不会调用任何回调函数。开发者需要自行管理外部资源str的生命周期。
+    napi_status status = napi_create_external_string_ascii(
+        env,
+        str,                    // 外部字符串缓冲区
+        NAPI_AUTO_LENGTH,       // 字符串长度，传入NAPI_AUTO_LENGTH表示字符串以'\0'结尾
+        StringFinalizerASCII,   // 字符串的析构回调函数
+        nullptr,                // 传递给析构回调函数的hint参数，本例不需要
+        &result                 // 接受创建的ArkTS字符串值
+    );
+    if (status != napi_ok) {
+        // 处理错误
+        napi_throw_error(env, nullptr, "Failed to create ascii string");
+        return nullptr;
+    }
+    return result;
+}
+```
+
+接口声明
+
+<!-- @[napi_create_external_string_ascii_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const CreateExternalStringAscii: () => string | void;
+```
+
+ArkTS侧示例代码
+
+<!-- @[ark_napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public}s',
+  testNapi.CreateExternalStringAscii());
+```
+通过napi_create_external_string_ascii接口创建出的ArkTS string对象受GC管理，其生命周期结束，GC会回收ArkTS string对象，同时触发StringFinalizerASCII函数来回收ArkTS string对象指向的native侧资源。
 
 以上代码如果要在native cpp中打印日志，需在CMakeLists.txt文件中添加以下配置信息（并添加头文件：#include "hilog/log.h"）：
 

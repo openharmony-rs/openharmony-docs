@@ -4,7 +4,7 @@
 <!--Owner: @song-song-song-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The custom layout of a custom component is used to lay out its child components through data calculation.
 
@@ -44,7 +44,7 @@ Invoked when the custom component needs to determine its size. Through this call
 
 ## onPlaceChildren<sup>10+</sup>
 
-onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions):void
+onPlaceChildren?(selfLayoutInfo: GeometryInfo, children: Array&lt;Layoutable&gt;, constraint: ConstraintSizeOptions): void
 
 Invoked when the custom component needs to determine the positions of its child components. Through this callback the component receives its child component size constraints from the ArkUI framework. State variables should not be changed in this callback.
 
@@ -93,7 +93,7 @@ Provides the child component layout information.
 
 ### layout
 
-layout(position: Position) : void
+layout(position: Position): void
 
 Applies the specified position information to the child component.
 
@@ -109,7 +109,7 @@ Applies the specified position information to the child component.
 
 ### getMargin<sup>12+</sup>
 
-getMargin() : DirectionalEdgesT\<number>
+getMargin(): DirectionalEdgesT\<number>
 
 Obtains the margin values of the child component.
 
@@ -125,7 +125,7 @@ Obtains the margin values of the child component.
 
  ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number>
+getPadding(): DirectionalEdgesT\<number>
 
  Obtains the padding values of the child component.
 
@@ -141,7 +141,7 @@ getPadding() : DirectionalEdgesT\<number>
 
 ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number>
+getBorderWidth(): DirectionalEdgesT\<number>
 
 Obtains the border widths of the child component.
 
@@ -198,7 +198,7 @@ Provides the child component position information.
 
  ### getMargin<sup>12+</sup>
 
- getMargin() : DirectionalEdgesT\<number\>
+ getMargin(): DirectionalEdgesT\<number\>
 
  Obtains the margin values of the child component.
 
@@ -214,7 +214,7 @@ Provides the child component position information.
 
 ### getPadding<sup>12+</sup>
 
-getPadding() : DirectionalEdgesT\<number\>
+getPadding(): DirectionalEdgesT\<number\>
 
 Obtains the padding values of the child component.
 
@@ -230,7 +230,7 @@ Obtains the padding values of the child component.
 
  ### getBorderWidth<sup>12+</sup>
 
-getBorderWidth() : DirectionalEdgesT\<number\>
+getBorderWidth(): DirectionalEdgesT\<number\>
 
 Obtains the border widths of the child component.
 
@@ -247,7 +247,7 @@ Obtains the border widths of the child component.
 
 ## MeasureResult<sup>10+</sup>
 
-Provides the measurement result of the component. This API inherits from [SizeResult] (#sizeresult10).
+Provides the measurement result of the component. This API inherits from [SizeResult](#sizeresult10).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -280,7 +280,9 @@ onLayout?(children: Array&lt;LayoutChild&gt;, constraint: ConstraintSizeOptions)
 
 Invoked when the custom component lays out its child components. Through this callback the component receives its child component layout information and size constraint from the ArkUI framework. State variables should not be changed in this callback.
 
-This API is supported since API version 9 and deprecated since API version 10. You are advised to use [onPlaceChildren](#onplacechildren10) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [onPlaceChildren](#onplacechildren10) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -299,7 +301,9 @@ onMeasure?(children: Array&lt;LayoutChild&gt;, constraint: ConstraintSizeOptions
 
 Invoked when the custom component needs to determine its size. Through this callback the component receives its child component layout information and its own size constraints from the ArkUI framework. State variables should not be changed in this callback.
 
-This API is supported since API version 9 and deprecated since API version 10. You are advised to use [onMeasureSize](#onmeasuresize10) instead.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [onMeasureSize](#onmeasuresize10) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -316,7 +320,11 @@ This API is supported since API version 9 and deprecated since API version 10. Y
 
 Child component layout information.
 
-This API is supported since API version 9 and deprecated since API version 10. It is supported in ArkTS widgets.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [Measurable](#measurable10) or [Layoutable](#layoutable10) instead.
+
+### Name
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -329,14 +337,54 @@ This API is supported since API version 9 and deprecated since API version 10. I
 | constraint | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)   | No|No|Constraint size of the child component.                      |
 | borderInfo | [LayoutBorderInfo](#layoutborderinfodeprecated)              | No|No|Provides the border information of the child component.                    |
 | position   | [Position](ts-types.md#position)                             | No|No|Position coordinates of the child component.                      |
-| measure    | (childConstraint: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)) |No|No| Method called to apply the size constraint to the child component.|
-| layout     | (childLayoutInfo: [LayoutInfo](#layoutinfodeprecated)) | No|No|Method called to apply the specified position information to the child component.|
+
+### measure<sup>(deprecated)</sup>
+
+measure(childConstraint: ConstraintSizeOptions)
+
+Method called to apply the size constraint to the child component.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [measure](#measure) instead.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name       | Type    |Mandatory| Description              |
+|------------|-----------|------|------------------|
+| childConstraint   | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) | Yes | Constraints on the size range of the child component.|
+
+### layout<sup>(deprecated)</sup>
+
+layout(childLayoutInfo: LayoutInfo)
+
+Applies the specified position information to the child component.
+
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [layout](#layout) instead.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name       | Type    |Mandatory| Description              |
+|------------|-----------|------|------------------|
+| childLayoutInfo   | [LayoutInfo](#layoutinfodeprecated) | Yes |Provides the layout information of the child component.|
 
 ## LayoutBorderInfo<sup>(deprecated)</sup>
 
 Provides the border information of the child component.
 
-This API is supported since API version 9 and deprecated since API version 10. It is supported in ArkTS widgets.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [getBorderWidth](#getborderwidth12), [getMargin](#getmargin12), and [getPadding](#getpadding12) instead.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -352,7 +400,9 @@ This API is supported since API version 9 and deprecated since API version 10. I
 
 Provides the layout information of the child component.
 
-This API is supported since API version 9 and deprecated since API version 10. It is supported in ArkTS widgets.
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 10.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

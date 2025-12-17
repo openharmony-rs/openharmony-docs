@@ -10,13 +10,17 @@ The **wrapBuilder** function encapsulates global @Builder functions to improve c
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 11.
+>
+> Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## wrapBuilder
 
 wrapBuilder\<Args extends Object[]>(builder: (...args: Args) => void): WrappedBuilder\<Args>
 
 A template function that returns a **WrappedBuilder** object. The template parameter **Args extends Object[]** represents the parameter list of the builder function to be encapsulated.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -25,6 +29,12 @@ A template function that returns a **WrappedBuilder** object. The template param
 | Name        | Type                                  | Mandatory| Description                                                        |
 | -------------- | -------------------------------------- | ---- | ---- |
 | builder        | (...args: Args) => void                | Yes  | Global function decorated with @Builder.|
+
+**Return value**
+
+| Type                 | Description                      |
+| --------------------- | -------------------------- |
+| [WrappedBuilder\<Args>](#wrappedbuilder) | **WrappedBuilder** object.|
 
 **Example**
 
@@ -40,9 +50,9 @@ let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(MyBuilder);
 
 Implements the encapsulation class for @Builder functions. The template parameter **Args extends Object[]** must match the parameter type list of the @Builder function.
 
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+### Properties
 
-### Attributes
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,13 +67,15 @@ constructor(builder: (...args: Args) => void)
 
 A constructor used to create a **WrappedBuilder** instance.
 
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name   | Type                                   | Mandatory| Description                                                             |
 | --------- | --------------------------------------- | ---- | ----------------------------------------------------------------- |
-| builder   | (...args: Args) => void)               | Yes| Global function decorated with @Builder.|
+| builder   | (...args: Args) => void               | Yes| Global function decorated with @Builder.|
 
 **Example**
 

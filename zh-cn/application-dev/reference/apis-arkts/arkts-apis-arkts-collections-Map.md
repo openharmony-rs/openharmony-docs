@@ -5,13 +5,13 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
+一种非线性数据结构。
+
 > **说明：**
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 此模块仅支持在ArkTS文件（文件后缀为.ets）中导入使用。
-
-一种非线性数据结构。
 
 文档中存在泛型的使用，涉及以下泛型标记符：
 
@@ -93,6 +93,44 @@ const myMap1: collections.Map<number, SharedClass> = new collections.Map<number,
 let obj = new Object();
 const myMap2: collections.Map<number, Object> = new collections.Map<number, Object>([[1, obj]]);
 ```
+
+## constructor
+
+constructor(iterable: Iterable\<readonly \[K, V]>)
+
+创建ArkTS Map对象的构造函数。
+
+**原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                              |
+| ------ | ---- | ---- | ------------------------------- |
+| iterable | Iterable\<readonly \[K, V]> | 是 | 用于构造ArkTS Map的对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息                                                |
+| -------- | ------------------------------------------------------- |
+| 401      | Parameter error.                                        |
+| 10200012 | The ArkTS Map's constructor cannot be directly invoked. |
+
+**示例：**
+
+```ts
+const mapper = new Map([
+  ['1', 'a'],
+  ['2', 'b'],
+]);
+let newMap = new collections.Map<string, string>(mapper.entries());
+console.info(newMap.get('1')); // 预期输出： a
+console.info(newMap.get('2')); // 预期输出： b
+```
+
 
 ## entries
 entries(): IterableIterator<[K, V]>

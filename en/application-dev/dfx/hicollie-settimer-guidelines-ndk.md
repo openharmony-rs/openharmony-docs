@@ -20,7 +20,7 @@ Task execution timeout indicates that the execution duration of the monitored se
 
 - For details about how to use the APIs (such as parameter usage restrictions and value ranges), see [HiCollie](../reference/apis-performance-analysis-kit/capi-hicollie-h.md).
 
-- The fault log file is saved in the **/data/log/faultlog/faultlogger/** directory. The file name format is **syswarning-application bundle name-application UID-second-level time.log**.
+- The fault log file is saved in the **device/data/log/warninglog/** directory. The file name format is **syswarning-application bundle name-application UID-second-level time.log**.
 
 ## How to Develop
 
@@ -54,91 +54,97 @@ The following describes how to add a button in the application and click the but
 
 3. In the **napi_init.cpp** file, import dependency header files, define **LOG_TAG** and test methods, and register **TestHiCollieTimerNdk** as an ArkTS API.
 
-   ```c++
-   #include "napi/native_api.h"
-   #include "hicollie/hicollie.h"
-   #include "hilog/log.h"
+   Import the header files and define **LOG_TAG**.
+
+   <!-- @[EventSub_napi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
-   #include <unistd.h>
+   ``` C++
+   #include "napi/native_api.h"
+   #include "json/json.h"
+   #include "hilog/log.h"
+   #include "hiappevent/hiappevent.h"
+   #include "hiappevent/hiappevent_event.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"
+   ```
+
+   <!-- @[Hicollie_Set_Timer_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
+   ``` C++
+   #include <unistd.h>
+   #include "hicollie/hicollie.h"
+   ```
+
+   Construct a scenario where the task execution times out, and use the **OH_HiCollie_SetTimer** and **OH_HiCollie_CancelTimer** functions to monitor the task.
+
+   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    // Define the callback.
    void CallBack(void*)
    {
-     OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimerNdk CallBack");  // Logs are printed in the callback.
+       OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimerNdk CallBack");  // Logs are printed in the callback.
    }
    
    static napi_value TestHiCollieTimerNdk(napi_env env, napi_callback_info info)
    {
-     int id;
-     HiCollie_SetTimerParam param = {"testTimer", 1, CallBack, nullptr, HiCollie_Flag::HICOLLIE_FLAG_LOG};  // Set HiCollieTimer parameters (timer name, timeout interval, callback, callback parameters, and behavior after timeout).
-     HiCollie_ErrorCode errorCode = OH_HiCollie_SetTimer(param, &id);  // Register a HiCollieTimer function to execute a one-off timeout detection task.
-     if (errorCode == HICOLLIE_SUCCESS) {  // The HiCollieTimer task is successfully registered.
-       OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Log the task ID.
-       sleep (2); // Simulate a time-consuming function to block the thread for 2s.
-       OH_HiCollie_CancelTimer (id); // Cancel the registered timer based on the ID.
-     }
-     return nullptr;
+       int id;
+       // Set HiCollieTimer parameters (timer task name, timeout interval, callback, callback parameters, and behavior after timeout).
+       HiCollie_SetTimerParam param = {"testTimer", 1, CallBack, nullptr, HiCollie_Flag::HICOLLIE_FLAG_LOG};
+       HiCollie_ErrorCode errorCode = OH_HiCollie_SetTimer(param, &id);  // Register a HiCollieTimer function to execute a one-off timeout detection task.
+       if (errorCode == HICOLLIE_SUCCESS) {  // The HiCollieTimer task is successfully registered.
+           OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Log the task ID.
+           sleep (2); // Simulate a time-consuming function to block the thread for 2s.
+           OH_HiCollie_CancelTimer (id); // Cancel the registered timer based on the ID.
+       }
+       return nullptr;
    }
+   ```
+
+   Register **TestHiCollieTimerNdk** as an ArkTS API in the **desc[]** array in the **Init** function.
+
+   <!-- @[test_hicollie_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "TestHiCollieTimerNdk", nullptr, TestHiCollieTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr }      // Register TestHiCollieTimerNdk as an ArkTS API.
-      };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
+   ``` C++
+   // Register TestHiCollieTimerNdk as an ArkTS API.
+   { "TestHiCollieTimerNdk", nullptr, TestHiCollieTimerNdk, nullptr, nullptr, nullptr, napi_default, nullptr },
    ```
 
 4. In the **index.d.ts** file, define the ArkTS API.
 
-   ```ts
+   <!-- @[test_hicollie_timer_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+   
+   ``` TypeScript
    export const TestHiCollieTimerNdk: () => void;
    ```
 
 5. Edit the **Index.ets** file.
+   Import the header file for calling the C API.
 
-   ```ts
+   <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import testNapi from 'libentry.so';
+   ```
+
+   Add a button on the **Index** page to trigger the **TestHiCollieTimerNdk** method.
+
+   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = 'Hello World';
-   
-     build() {
-       Row() {
-         Column() {
-           Button("TestHiCollieTimerNdk")
-             .fontSize(50)
-             .fontWeight(FontWeight.Bold)
-             .onClick(testNapi.TestHiCollieTimerNdk);  //Add a click event to trigger the testHiCollieTimerNdk method.
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
+   ``` TypeScript
+   // Add a click event to trigger the TestHiCollieTimerNdk method.
+   Button('TestHiCollieTimerNdk')
+     .type(ButtonType.Capsule)
+     .margin({
+       top: 20
+     })
+     .backgroundColor('#0D9FFB')
+     .width('80%')
+     .height('5%')
+     .onClick(() => {
+       testNapi.TestHiCollieTimerNdk();
+     })
    ```
 
 6. Click the **Run** button in DevEco Studio to run the project.

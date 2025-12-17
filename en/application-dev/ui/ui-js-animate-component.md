@@ -1,5 +1,10 @@
 # Component Animation
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Create and run an animation shortcut on the component. For details, see [Universal Methods](../reference/apis-arkui/arkui-js/js-components-common-methods.md).
 

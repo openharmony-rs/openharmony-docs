@@ -1,4 +1,14 @@
 # OH_NativeVSync
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @alexcii-->
+<!--Designer: @hudi33-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
+
+```c
+typedef struct OH_NativeVSync OH_NativeVSync
+```
 
 ## 概述
 

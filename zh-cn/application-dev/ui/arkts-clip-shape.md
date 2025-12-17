@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 可利用[clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)接口将组件裁剪为所需的形状。调用该接口后，可以保留该形状覆盖的组件部分，同时移除组件的其余部分。裁剪形状本身是不可见的。
 
@@ -19,8 +19,9 @@
 ## 裁剪圆形
 
 通过设置CircleShape，将图片裁剪为圆形。
+<!-- @[ClipShapeExampleA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample1.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { CircleShape } from '@kit.ArkUI';
 
@@ -50,8 +51,9 @@ struct ClipShapeExample {
 ## 裁剪椭圆形
 
 通过设置EllipseShape，将图片裁剪为椭圆形。
+<!-- @[ClipShapeExampleB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample2.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { EllipseShape } from '@kit.ArkUI';
 
@@ -79,8 +81,9 @@ struct ClipShapeExample {
 ## 裁剪矩形
 
 通过设置RectShape，将图片裁剪为矩形。
+<!-- @[ClipShapeExampleC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample3.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { RectShape } from '@kit.ArkUI';
 
@@ -108,8 +111,9 @@ struct ClipShapeExample {
 ## 裁剪不规则形状
 
 通过设置PathShape，将图片裁剪为不规则形状。
+<!-- @[ClipShapeExampleD](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample4.ets) -->
 
-```ts
+``` TypeScript
 // xxx.ets
 import { PathShape } from '@kit.ArkUI';
 

@@ -44,16 +44,21 @@ The following describes the UIAbility launch scenarios and lifecycle callback pr
 
 The system triggers the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) callback when the UIAbility instance is created for the first time. Within this callback, you can execute the startup logic that only occurs once during the entire lifecycle of the UIAbility.
 
-```ts
+<!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
+  // ···
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     // Execute the service logic that occurs only once during the entire lifecycle of the UIAbility.
   }
-  // ...
+  // ···
 }
 ```
+
 
 ### onWindowStageCreate()
 
@@ -66,55 +71,63 @@ In the **onWindowStageCreate()** callback, use [loadContent()](../reference/apis
 > - The timing of the [WindowStage events](../reference/apis-arkui/arkts-apis-window-e.md#windowstageeventtype9) may vary according to the development scenario. For details about how to use WindowStage, see [Window Development](../windowmanager/application-window-stage.md).
 > - The UIAbility lifecycle varies with the product type when the main window of an application is switched from the foreground to the background. For details, see [Differentiated Lifecycle Behaviors Across Different Devices](../windowmanager/window-overview.md#differentiated-lifecycle-behaviors-across-different-devices).
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN_NUMBER: number = 0xFF00;
-
-export default class EntryAbility extends UIAbility {
-  // ...
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // Subscribe to the WindowStage events (gaining or losing focus, switching to the foreground or background, or becoming interactive or non-interactive in the foreground).
-    try {
-      windowStage.on('windowStageEvent', (data) => {
-        let stageEventType: window.WindowStageEventType = data;
-        switch (stageEventType) {
-          case window.WindowStageEventType.SHOWN: // Switch to the foreground.
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage foreground.`);
-            break;
-          case window.WindowStageEventType.ACTIVE: // Gain focus.
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage active.`);
-            break;
-          case window.WindowStageEventType.INACTIVE: // Lose focus.
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage inactive.`);
-            break;
-          case window.WindowStageEventType.HIDDEN: // Switch to the background.
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage background.`);
-            break;
-          case window.WindowStageEventType.RESUMED: // Interactive in the foreground.
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage resumed.`);
-            break;
-          case window.WindowStageEventType.PAUSED: // Non-interactive in the foreground.
-            hilog.info(DOMAIN_NUMBER, 'testTag', `windowStage paused.`);
-            break;
-          default:
-            break;
-        }
+  <!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+  
+  ``` TypeScript
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  // ···
+  
+  const DOMAIN = 0x0000;
+  
+  export default class EntryAbility extends UIAbility {
+  
+    // ···
+  
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      // ···
+      // Subscribe to the WindowStage events (gaining or losing focus, switching to the foreground or background, or becoming interactive or non-interactive in the foreground).
+      try {
+        windowStage.on('windowStageEvent', (data) => {
+          let stageEventType: window.WindowStageEventType = data;
+          switch (stageEventType) {
+            case window.WindowStageEventType.SHOWN: // Switch to the foreground.
+              hilog.info(DOMAIN, 'testTag', `windowStage foreground.`);
+              break;
+            case window.WindowStageEventType.ACTIVE: // Gain focus.
+              hilog.info(DOMAIN, 'testTag', `windowStage active.`);
+              break;
+            case window.WindowStageEventType.INACTIVE: // Lose focus.
+              hilog.info(DOMAIN, 'testTag', `windowStage inactive.`);
+              break;
+            case window.WindowStageEventType.HIDDEN: // Switch to the background.
+              hilog.info(DOMAIN, 'testTag', `windowStage background.`);
+              break;
+            case window.WindowStageEventType.RESUMED: // Interactive in the foreground.
+              hilog.info(DOMAIN, 'testTag', `windowStage resumed.`);
+              break;
+            case window.WindowStageEventType.PAUSED: // Non-interactive in the foreground.
+              hilog.info(DOMAIN, 'testTag', `windowStage paused.`);
+              break;
+            default:
+              break;
+          }
+        });
+      } catch (exception) {
+        hilog.error(DOMAIN, 'testTag',
+          `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
+      }
+      hilog.info(DOMAIN, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
+      // Set the page to be loaded.
+      windowStage.loadContent('pages/Index', (err) => {
+        // ···
       });
-    } catch (exception) {
-      hilog.error(DOMAIN_NUMBER, 'testTag',
-        `Failed to enable the listener for window stage event changes. Cause: ${JSON.stringify(exception)}`);
     }
-    hilog.info(DOMAIN_NUMBER, 'testTag', `%{public}s`, `Ability onWindowStageCreate`);
-    // Set the page to be loaded.
-    windowStage.loadContent('pages/Index', (err, data) => {
-      // ...
-    });
+  
+  // ···
   }
-}
-```
+  ```
 
 ### onForeground()
 
@@ -122,16 +135,20 @@ The system triggers the [onForeground](../reference/apis-ability-kit/js-apis-app
 
 For example, the application has obtained the location permission. Before the UI is displayed, you can enable the location service in the **onForeground()** callback to obtain the location information.
 
-```ts
+<!-- @[onForeground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
   onForeground(): void {
     // Apply for the resources required by the system or re-apply for the resources released in onBackground().
   }
-  // ...
+
+// ···
 }
 ```
 
@@ -142,16 +159,20 @@ Once the UI of the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability
 
 **onBackground()** is executed quickly. Therefore, do not perform time-consuming operations, such as saving user data or executing database transactions, within this callback.
 
-```ts
+<!-- @[onBackground](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
   onBackground(): void {
     // Release useless resources while the UI is invisible.
   }
-  // ...
+
+// ···
 }
 ```
 
@@ -159,23 +180,28 @@ export default class EntryAbility extends UIAbility {
 ### onWindowStageWillDestroy()
 The system triggers the [onWindowStageWillDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagewilldestroy12) callback when the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance is about to be destroyed, but still usable. Within this callback, you can release resources obtained through the WindowStage and unsubscribe from WindowStage events.
 
-```ts
+<!-- @[onWindowStageWillDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-const DOMAIN_NUMBER: number = 0xFF00;
+const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-  windowStage: window.WindowStage | undefined = undefined;
-  // ...
+  public windowStage: window.WindowStage | undefined = undefined;
+
+// ···
+
   onWindowStageCreate(windowStage: window.WindowStage): void {
+    // Load UI resources.
     this.windowStage = windowStage;
-    // ...
+    // ···
   }
 
-  onWindowStageWillDestroy(windowStage: window.WindowStage) {
+  onWindowStageWillDestroy(windowStage: window.WindowStage): void {
     // Release the resources obtained through the windowStage object.
     // Unsubscribe from the WindowStage events (gaining or losing focus, switching to the foreground or background, or becoming interactive or non-interactive in the foreground) in the onWindowStageWillDestroy() callback.
     try {
@@ -185,29 +211,38 @@ export default class EntryAbility extends UIAbility {
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      hilog.error(DOMAIN_NUMBER, 'testTag', `Failed to disable the listener for windowStageEvent. Code is ${code}, message is ${message}`);
+      hilog.error(DOMAIN, 'testTag', `Failed to disable the listener for windowStageEvent. Code is ${code}, message is ${message}`);
     }
   }
+
+// ···
 }
 ```
 
 ### onWindowStageDestroy()
 The system triggers the [onWindowStageDestroy()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagedestroy) callback before the [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md) instance is destroyed, while the WindowStage instance is destroyed and can no longer be used. Within this callback, you can release UI resources.
 
-```ts
+<!-- @[onWindowStageDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // Load UI resources.
+    // ···
   }
 
-  onWindowStageDestroy() {
+// ···
+
+  onWindowStageDestroy(): void {
     // Release UI resources.
   }
+  // ···
 }
 ```
 
@@ -218,15 +253,20 @@ The system triggers the [onDestroy](../reference/apis-ability-kit/js-apis-app-ab
 For example, when you call [terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself) to instruct the system to stop the current UIAbility instance, the system triggers the **onDestroy()** callback.
 <!--RP1-->Similarly, when a user swipes up on the recent tasks list to close a UIAbility instance, the system triggers the **onDestroy()** callback.<!--RP1End-->
 
-```ts
+<!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
-  onDestroy() {
+  onDestroy(): void {
     // Release system resources and save data.
   }
+
+// ···
 }
 ```
 
@@ -234,17 +274,17 @@ export default class EntryAbility extends UIAbility {
 
 The system triggers the [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) callback when an already running UIAbility is launched again. Within this callback, you can update the resources and data to be loaded, which will be used for UI display.
 
-```ts
+<!-- @[onNewWant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/ets/entryability/EntryAbility.ets) -->  
+
+``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+// ···
 
 export default class EntryAbility extends UIAbility {
-  // ...
+// ···
 
   onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam) {
     // Update resources and data.
   }
 }
 ```
-
-
-

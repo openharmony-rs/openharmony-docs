@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 当路由([router](../js-apis-router.md))进行切换时，可以通过在[pageTransition](ts-custom-component-lifecycle.md#pagetransition9)函数中自定义页面入场和页面退场的转场动效。详细指导请参考[页面转场动画](../../../ui/arkts-page-transition-animation.md)。
 
@@ -12,7 +12,7 @@
 >
 > 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> 为了实现更好的转场效果，推荐使用[Navigation组件](../../../ui/arkts-navigation-navigation.md)和[模态转场](../../../ui/arkts-modal-transition.md)。
+> 为了实现更好的转场效果，推荐使用[Navigation组件](../../../ui/arkts-navigation-architecture.md)和[模态转场](../../../ui/arkts-modal-transition.md)。
 
 ## PageTransitionEnter
 

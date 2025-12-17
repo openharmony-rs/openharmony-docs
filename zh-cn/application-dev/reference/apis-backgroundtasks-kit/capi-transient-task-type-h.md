@@ -4,7 +4,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## 概述
@@ -46,7 +46,7 @@
 
 ### TransientTask_ErrorCode
 
-```
+```c
 enum TransientTask_ErrorCode
 ```
 
@@ -73,7 +73,7 @@ enum TransientTask_ErrorCode
 
 ### TransientTask_Callback()
 
-```
+```c
 typedef void (*TransientTask_Callback)(void)
 ```
 

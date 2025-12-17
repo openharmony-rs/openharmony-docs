@@ -101,7 +101,7 @@ isAlwaysOnVpnEnabled(bundleName: string): Promise\<boolean>
 
 | 类型              | 说明                           |
 | ----------------- | ------------------------------ |
-| Promise\<boolean> | 返回应用alway on vpn开关状态。 |
+| Promise\<boolean> | Promise对象。返回true表示应用alway on vpn开启状态；返回false表示关闭状态。 |
 
 **错误码：**
 
@@ -128,7 +128,7 @@ let want: Want = {
 vpnExtension.isAlwaysOnVpnEnabled(want.bundleName).then((data : boolean) => {
   console.info('isAlwaysOnVpnEnabled success.');
 }).catch((err : BusinessError) => {
-  console.error('setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error('isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
 });
 ```
 

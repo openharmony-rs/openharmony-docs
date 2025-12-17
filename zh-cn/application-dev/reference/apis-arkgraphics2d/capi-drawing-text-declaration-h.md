@@ -37,4 +37,4 @@
 | [OH_Drawing_TextTab](capi-drawing-oh-drawing-texttab.md) | OH_Drawing_TextTab | 用于管理文本制表符。 |
 | [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) | OH_Drawing_TextLine | 用于管理文本行。 |
 | [OH_Drawing_Run](capi-drawing-oh-drawing-run.md) | OH_Drawing_Run | 用于管理文本渲染单元。 |
-
+| [OH_Drawing_FontFullDescriptor](capi-drawing-oh-drawing-fontfulldescriptor.md) | OH_Drawing_FontFullDescriptor | 用于描述字体的详细信息，即字体描述符。 |

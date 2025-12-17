@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct NetConn_NetAddr {...} NetConn_NetAddr
+```
+
 ## 概述
 
 网络地址。

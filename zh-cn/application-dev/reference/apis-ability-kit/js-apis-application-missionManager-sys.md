@@ -85,7 +85,7 @@ let listenerId = missionManager.registerMissionListener({
 
 unregisterMissionListener(listenerId: number, callback: AsyncCallback&lt;void&gt;): void
 
-解注册任务状态监听器。
+解注册任务状态监听器。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -140,7 +140,7 @@ missionManager.unregisterMissionListener(listenerId, (error) => {
 
 unregisterMissionListener(listenerId: number): Promise&lt;void&gt;
 
-反注册任务状态监听器。使用Promise异步回调。
+解注册任务状态监听器。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 
@@ -700,7 +700,7 @@ clearMission(missionId: number): Promise&lt;void&gt;
 
 clearAllMissions(callback: AsyncCallback&lt;void&gt;): void
 
-清理所有未锁定的任务，使用callback异步回调。
+清理所有未锁定的任务。使用callback异步回调。
 
 **需要权限**：ohos.permission.MANAGE_MISSIONS
 

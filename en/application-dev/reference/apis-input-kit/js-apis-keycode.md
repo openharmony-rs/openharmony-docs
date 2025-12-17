@@ -1,6 +1,13 @@
 # @ohos.multimodalInput.keyCode (Keycode)
 
-The **keyCode** module provides keycode values for key devices, such as the keyboard, power key, camera key, and the like.
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
+The **keyCode** module provides key codes of key devices, including keyboards, CDs, and gamepads.
 
 > **NOTE**
 > 
@@ -14,7 +21,7 @@ import { KeyCode } from '@kit.InputKit';
 
 ## KeyCode
 
-Keycode value.
+Enumerates the key codes.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
@@ -24,10 +31,9 @@ Keycode value.
 | KEYCODE_UNKNOWN                  |  -1 | Unknown key                       |
 | KEYCODE_HOME                     |  1 | Function (Home) key                 |
 | KEYCODE_BACK                     |  2 | Back key                        |
-| KEYCODE_HEADSETHOOK<sup>20+</sup>              |  6 | Play/Pause key for wired headset                        |
 | KEYCODE_SEARCH<sup>13+</sup> | 9 | Search key|
-| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | Play/Pause key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
-| KEYCODE_MEDIA_STOP               |  11 | Stop key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | Play/Pause key<br>Difference between this key and **KEYCODE_PLAYPAUSE**:<br>**KEYCODE_PLAYPAUSE** is an earlier definition, while **KEYCODE_MEDIA_PLAY_PAUSE** is designed for modern media key devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
+| KEYCODE_MEDIA_STOP               |  11 | Media: Stop Key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
 | KEYCODE_MEDIA_NEXT               |  12 | Next key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
 | KEYCODE_MEDIA_PREVIOUS           |  13 | Previous key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
 | KEYCODE_MEDIA_REWIND            |  14 | Rewind key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
@@ -126,9 +132,9 @@ Keycode value.
 | KEYCODE_INSERT                   |  2083 | Insert key                        |
 | KEYCODE_FORWARD                  |  2084 | Forward key                        |
 | KEYCODE_MEDIA_PLAY               |  2085 | Play key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| KEYCODE_MEDIA_PAUSE              |  2086 | Pause key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| KEYCODE_MEDIA_CLOSE              |  2087 | Close key                    |
-| KEYCODE_MEDIA_EJECT              |  2088 | Eject key                    |
+| KEYCODE_MEDIA_PAUSE              |  2086 | Media: Pause Key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_CLOSE              |  2087 | Media: Close Key                    |
+| KEYCODE_MEDIA_EJECT              |  2088 | Media: Eject Key                    |
 | KEYCODE_MEDIA_RECORD             |  2089 | Record key                    |
 | KEYCODE_F1                       |  2090 | F1 key                     |
 | KEYCODE_F2                       |  2091 | F2 key                     |
@@ -206,9 +212,9 @@ Keycode value.
 | KEYCODE_CALC                     |  2626 | Calc key, which is used to start the calculator application       |
 | KEYCODE_FILE                     |  2627 | File key                       |
 | KEYCODE_BOOKMARKS                |  2628 | Bookmarks key                        |
-| KEYCODE_NEXT                     |  2629 | Next key                      |
-| KEYCODE_PLAYPAUSE                |  2630 | Play/Pause key                     |
-| KEYCODE_PREVIOUS                 |  2631 | Previous key                      |
+| KEYCODE_NEXT                     |  2629 | Page Down key                      |
+| KEYCODE_PLAYPAUSE                |  2630 | Play/Pause key<br>Difference between this key and **KEYCODE_MEDIA_PLAY_PAUSE**:<br>**KEYCODE_PLAYPAUSE** is an earlier definition, while **KEYCODE_MEDIA_PLAY_PAUSE** is designed for modern media key devices.                     |
+| KEYCODE_PREVIOUS                 |  2631 | Page Up key                      |
 | KEYCODE_STOPCD                   |  2632 | Stop CD key                      |
 | KEYCODE_CONFIG                   |  2634 | Config key                        |
 | KEYCODE_REFRESH                  |  2635 | Refresh key                        |
@@ -365,3 +371,7 @@ Keycode value.
 | KEYCODE_BTN_7                    |  3107 | Button 7                        |
 | KEYCODE_BTN_8                    |  3108 | Button 8                        |
 | KEYCODE_BTN_9                    |  3109 | Button 9                        |
+| KEYCODE_DAGGER_CLICK<sup>18+</sup> | 3211 | Single tapping the smart watch's X-TAP sensor|
+| KEYCODE_DAGGER_DOUBLE_CLICK<sup>18+</sup> | 3212 | Double tapping the smart watch's X-TAP sensor|
+| KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | Long-pressing the smart watch's X-TAP sensor|
+| KEYCODE_DIV<sup>20+</sup> | 3220 | Left button of the smart watch|

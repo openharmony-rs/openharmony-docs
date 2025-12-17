@@ -28,7 +28,7 @@ API 9
 
 **变更的接口/组件**
 
-[@ohos.account.appAccount.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.account.appAccount.d.ts)中如下接口：
+[@ohos.account.appAccount.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.account.appAccount.d.ts)中如下接口：
 
 - setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback\<void>): void
 

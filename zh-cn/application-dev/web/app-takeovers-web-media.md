@@ -148,32 +148,31 @@ Web组件提供了应用接管网页中媒体播放的能力，用来支持应�
 
 1. 在应用启动阶段，应用应保存UIContext，以便后续的同层渲染绘制流程能够使用该UIContext。
 
-   ```ts
-   // xxxAbility.ets
-
-   import { UIAbility } from '@kit.AbilityKit';
-   import { window } from '@kit.ArkUI';
-
-   export default class EntryAbility extends UIAbility {
-     onWindowStageCreate(windowStage: window.WindowStage): void {
-       windowStage.loadContent('pages/Index', (err, data) => {
-         if (err && err.code) {
-           return;
-         }
-
-         let mainWindow = windowStage.getMainWindowSync();
-         if (mainWindow) {
-           // 保存UIContext， 在后续的同层渲染绘制中使用。
-           AppStorage.setOrCreate<UIContext>("UIContext", mainWindow.getUIContext());
-         } else {
-           console.error("Failed to get the main window");
-         }
-       });
-     }
-
-     // ... 其他需要重写的方法 ...
-   }
-   ```
+  <!-- @[allow_subsequent_rendering_to_use_ui](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+  
+  ``` TypeScript
+  import { window } from '@kit.ArkUI';
+  
+  export default class Entry2Ability extends UIAbility {
+  // ···
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      windowStage.loadContent('pages/Index', (err, data) => {
+        if (err && err.code) {
+          return;
+        }
+        
+        let mainWindow = windowStage.getMainWindowSync();
+        if (mainWindow) {
+          // 保存UIContext， 在后续的同层渲染绘制中使用。
+          AppStorage.setOrCreate<UIContext>('UIContext', mainWindow.getUIContext());
+        } else {
+          console.error('Failed to get the main window');
+        }
+      });
+    }
+  // ···
+  }
+  ```
 
 2. 应用使用ArkWeb内核创建的Surface进行同层渲染绘制。
 

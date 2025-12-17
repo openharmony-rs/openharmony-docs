@@ -44,7 +44,7 @@ Adds the permission to an application for accessing the serial port device.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

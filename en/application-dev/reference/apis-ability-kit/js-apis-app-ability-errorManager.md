@@ -822,7 +822,7 @@ Describes the object related to the exception event name, message, error stack i
 
 | Name | Type | Read Only | Optional | Description |
 | ---- | ----- | ---- | ----- | ------ |
-| instanceName | string | No| No| Name of a VM instance.|
+| instanceName | string | No| No| Name of a VM instance.<br>**NOTE**<br>Rules for the **instanceName** field in exceptions in the TaskPool thread:<br> - **globalErrorOccurred** events: identified as "TaskPool Thread + method name".<br> - **globalUnhandledRejectionDetected** events: identified as "TaskPool Thread + task name".<br> - If identified as "TaskPool Thread" only, the exception occurs within an asynchronous callback.|
 | instanceType | [InstanceType](#instancetype18) | No| No| Type of the VM instance.|
 
 ## InstanceType<sup>18+</sup>

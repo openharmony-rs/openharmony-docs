@@ -1,5 +1,12 @@
 # @ohos.net.policy (Network Policy Management)
 
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+
 The **policy** module provides APIs for managing network policies, which allow you to use firewall technology to control and manage the data traffic used.
 
 > **NOTE**

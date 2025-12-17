@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_ControlCenterStatusInfo {...} Camera_ControlCenterStatusInfo
+```
+
 ## Overview
 
 The struct describes the effect status information of a camera controller.

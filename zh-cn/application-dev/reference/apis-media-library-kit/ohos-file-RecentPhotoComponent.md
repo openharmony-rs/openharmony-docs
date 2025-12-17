@@ -55,13 +55,13 @@ RecentPhotoComponent，是最近图片组件，可用于访问公共目录下的
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称                    | 类型                                                                                      | 必填  | 说明   |
-|-------------------------|-----------------------------------------------------------------------------------------|-------|--------|
-| period                  | number                                                                                  | 否    | 配置显示多久时间段内的最近图片，单位为秒（s）。最长可配置时长为1天（86400s）。<br/>当值小于等于0、大于86400或者未配置时，默认按最长时间段1天显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
-| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 最近图片控件显示的文件类型，默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                         |
-| photoSource             | [PhotoSource](#photosource)                                                             | 否    | 配置最近图片视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                               |
-| isAutoRefreshSupported<sup>20+</sup>  | boolean                                                                                 | 否    | 配置最近照片组件在符合要求的最近图片或视频发生变更（包括新增、删除、修改）时是否进行刷新。<br/>当组件原显示的最近图片或视频被删除，而无符合要求的图片或视频时，则显示占位符，组件不自动退出。<br/>默认为false，不支持自动刷新；配置为true时显示全量照片；period字段失效。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
-| colorMode<sup>20+</sup>               | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode)                                                      | 否    | 支持应用配置占位符的颜色模式。<br/>当isAutoRefreshSupported为true，且无符合要求的最近图片或视频时，显示占位符，字段生效。<br/>默认为跟随系统深浅色模式。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+| 名称                    | 类型                                                                                      | 只读 | 可选  | 说明   |
+|-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
+| period                  | number                                                                                  | 否 | 是    | 配置显示多久时间段内的最近图片，单位为秒（s）。最长可配置时长为1天（86400s）。<br/>当值小于等于0、大于86400或者未配置时，默认按最长时间段1天显示最近图片。当配置时间段内无符合的图片或视频时，组件不显示。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
+| MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型，默认为PhotoViewMIMETypes.IMAGE_VIDEO_TYPE。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                         |
+| photoSource             | [PhotoSource](#photosource)                                                             | 否    | 是 | 配置最近图片视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br> **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。                               |
+| isAutoRefreshSupported<sup>20+</sup>  | boolean                                                                                 | 否    | 是| 配置最近照片组件在符合要求的最近图片或视频发生变更（包括新增、删除、修改）时是否进行刷新。<br/>当组件原显示的最近图片或视频被删除，而无符合要求的图片或视频时，则显示占位符，组件不自动退出。<br/>默认为false，不支持自动刷新；配置为true时显示全量照片；period字段失效。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
+| colorMode<sup>20+</sup>               | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode)                                                      | 否    | 是 | 支持应用配置占位符的颜色模式。<br/>当isAutoRefreshSupported为true，且无符合要求的最近图片或视频时，显示占位符，字段生效。<br/>默认为跟随系统深浅色模式。<br> **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。|
 
 ## RecentPhotoInfo<sup>13+</sup>
 
@@ -71,10 +71,10 @@ RecentPhotoComponent，是最近图片组件，可用于访问公共目录下的
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| 名称         | 类型     | 必填  | 说明                                                        |
-|------------|--------|-------|-----------------------------------------------------------|
-| dateTaken  | number | 否    | 最近图片/视频的拍摄时间，单位为毫秒。（距1970年一月一日的毫秒数值）。                     |
-| identifier | string | 否    | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。 |
+| 名称         | 类型     | 只读 | 可选  | 说明                                                        |
+|------------|--------|-------|-------|-----------------------------------------------------------|
+| dateTaken  | number | 否 | 是    | 最近图片/视频的拍摄时间，单位为毫秒。（距1970年1月1日的毫秒数值）。                     |
+| identifier | string | 否 | 是    | 最近图片/视频的名称hash值，用于辅助应用区分最新图片组件将要显示的图片/视频与之前曾显示过的图片/视频是否为同一个。 |
 
 ## RecentPhotoCheckResultCallback
 

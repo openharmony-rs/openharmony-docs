@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AuxiliaryPictureNative OH_AuxiliaryPictureNative
+```
+
 ## 概述
 
 AuxiliaryPicture结构体类型，用于执行AuxiliaryPicture相关操作。

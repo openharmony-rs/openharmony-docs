@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoSign OH_CryptoSign
+```
+
 ## 概述
 
 定义签名结构体。

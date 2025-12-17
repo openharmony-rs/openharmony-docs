@@ -77,7 +77,7 @@
 
 ### AVSession_Type
 
-```
+```c
 enum AVSession_Type
 ```
 
@@ -96,7 +96,7 @@ enum AVSession_Type
 
 ### AVSession_PlaybackState
 
-```
+```c
 enum AVSession_PlaybackState
 ```
 
@@ -124,7 +124,7 @@ enum AVSession_PlaybackState
 
 ### AVSession_LoopMode
 
-```
+```c
 enum AVSession_LoopMode
 ```
 
@@ -144,7 +144,7 @@ enum AVSession_LoopMode
 
 ### AVSession_ControlCommand
 
-```
+```c
 enum AVSession_ControlCommand
 ```
 
@@ -165,7 +165,7 @@ enum AVSession_ControlCommand
 
 ### AVSessionCallback_Result
 
-```
+```c
 enum AVSessionCallback_Result
 ```
 
@@ -185,7 +185,7 @@ enum AVSessionCallback_Result
 
 ### OH_AVSessionCallback_OnCommand()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession* session,AVSession_ControlCommand command, void* userData)
 ```
 
@@ -197,7 +197,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession*
 
 ### OH_AVSessionCallback_OnFastForward()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session,uint32_t seekTime, void* userData)
 ```
 
@@ -209,7 +209,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSess
 
 ### OH_AVSessionCallback_OnRewind()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* session,uint32_t seekTime, void* userData)
 ```
 
@@ -221,7 +221,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* 
 
 ### OH_AVSessionCallback_OnSeek()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* session,uint64_t seekTime, void* userData)
 ```
 
@@ -233,7 +233,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* se
 
 ### OH_AVSessionCallback_OnSetLoopMode()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session,AVSession_LoopMode curLoopMode, void* userData)
 ```
 
@@ -245,7 +245,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSess
 
 ### OH_AVSessionCallback_OnToggleFavorite()
 
-```
+```c
 typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session,const char* assetId, void* userData)
 ```
 
@@ -257,7 +257,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVS
 
 ### OH_AVSession_Create()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* sessionTag,const char* bundleName, const char* abilityName, OH_AVSession** avsession)
 ```
 
@@ -286,7 +286,7 @@ AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* se
 
 ### OH_AVSession_Destroy()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 ```
 
@@ -311,7 +311,7 @@ AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 
 ### OH_AVSession_Activate()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 ```
 
@@ -336,7 +336,7 @@ AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 
 ### OH_AVSession_Deactivate()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 ```
 
@@ -361,7 +361,7 @@ AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 
 ### OH_AVSession_GetSessionType()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession_Type* sessionType)
 ```
 
@@ -387,7 +387,7 @@ AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession
 
 ### OH_AVSession_GetSessionId()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char** sessionId)
 ```
 
@@ -413,7 +413,7 @@ AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char*
 
 ### OH_AVSession_SetAVMetadata()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetadata* avmetadata)
 ```
 
@@ -439,7 +439,7 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 
 ### OH_AVSession_SetPlaybackState()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession,AVSession_PlaybackState playbackState)
 ```
 
@@ -465,7 +465,7 @@ AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession,AVSessio
 
 ### OH_AVSession_SetPlaybackPosition()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession,AVSession_PlaybackPosition* playbackPosition)
 ```
 
@@ -491,7 +491,7 @@ AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession,AVSes
 
 ### OH_AVSession_SetFavorite()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorite)
 ```
 
@@ -517,7 +517,7 @@ AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorit
 
 ### OH_AVSession_SetLoopMode()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_LoopMode loopMode)
 ```
 
@@ -543,7 +543,7 @@ AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_Lo
 
 ### OH_AVSession_RegisterCommandCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession,AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback, void* userData)
 ```
 
@@ -571,7 +571,7 @@ AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession,A
 
 ### OH_AVSession_UnregisterCommandCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession,AVSession_ControlCommand command, OH_AVSessionCallback_OnCommand callback)
 ```
 
@@ -598,7 +598,7 @@ AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession
 
 ### OH_AVSession_RegisterForwardCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnFastForward callback, void* userData)
 ```
 
@@ -625,7 +625,7 @@ AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession,O
 
 ### OH_AVSession_UnregisterForwardCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnFastForward callback)
 ```
 
@@ -651,7 +651,7 @@ AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession
 
 ### OH_AVSession_RegisterRewindCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnRewind callback, void* userData)
 ```
 
@@ -678,7 +678,7 @@ AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession,OH
 
 ### OH_AVSession_UnregisterRewindCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnRewind callback)
 ```
 
@@ -704,7 +704,7 @@ AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,
 
 ### OH_AVSession_RegisterSeekCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSeek callback, void* userData)
 ```
 
@@ -731,7 +731,7 @@ AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession,OH_A
 
 ### OH_AVSession_UnregisterSeekCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSeek callback)
 ```
 
@@ -757,7 +757,7 @@ AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession,OH
 
 ### OH_AVSession_RegisterSetLoopModeCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSetLoopMode callback, void* userData)
 ```
 
@@ -784,7 +784,7 @@ AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsessi
 
 ### OH_AVSession_UnregisterSetLoopModeCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnSetLoopMode callback)
 ```
 
@@ -810,7 +810,7 @@ AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avses
 
 ### OH_AVSession_RegisterToggleFavoriteCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnToggleFavorite callback, void* userData)
 ```
 
@@ -837,7 +837,7 @@ AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avse
 
 ### OH_AVSession_UnregisterToggleFavoriteCallback()
 
-```
+```c
 AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession,OH_AVSessionCallback_OnToggleFavorite callback)
 ```
 

@@ -74,7 +74,7 @@ SEI信息内容，描述SEI信息的负载类型和数据。
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string] | Object | 否  | 否  | 该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)；每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
+| [key: string] | Object | 否  | 是  | 该键值对支持的key取值范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)；每个key值的Object类型和范围，请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)对应Key值的说明。 |
 
 **示例：**
 
@@ -116,7 +116,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称          | 类型   | 只读 | 可选  | 说明                                                         |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [key: string]| Object | 否  | 否  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
+| [key: string]| Object | 否  | 是  | 该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。<br>每个key值的Object类型和范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
 
 ## AVRecorderConfig<sup>9+</sup>
 
@@ -149,6 +149,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | audioBitrate     | number                                       | 否   | 是   | 音频编码比特率，选择音频录制时必填。<br>支持范围：<br>- AAC编码格式支持比特率范围[32000, 500000]。<br>- G711-mulaw编码格式支持比特率大小：64000。<br>- MP3编码格式支持范围[8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000]。<br>当使用MP3编码格式时，采样率和比特率的映射关系： <br>- 采样率使用16K以下时，对应比特率范围为[8000 - 64000]。<br>- 采样率使用16K~32K时对应的比特率范围为[8000, 160000]。<br>- 采样率使用32K以上时对应的比特率范围为[32000, 320000]。<br>- AMR_NB编码格式支持比特率范围[4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200]。<br>- AMR_WB编码格式支持比特率范围[6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850]。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
 | audioChannels    | number                                       | 否   | 是   | 音频采集声道数，选择音频录制时必填。<br>- AAC编码格式支持范围[1, 8]。<br>- G711-mulaw编码格式支持大小：1。<br>- MP3编码格式支持范围[1, 2]。<br>- AMR-NB和AMR-WB编码格式支持大小：1。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。       |
 | audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | 否   | 是   | 音频编码格式，选择音频录制时必填。<br>当前支持AUDIO_AAC、AUDIO_MP3、AUDIO_G711MU、AUDIO_AMR_NB和AUDIO_AMR_WB。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。     |
+| aacProfile<sup>22+</sup>       | [AacProfile](arkts-apis-media-e.md#aacprofile22)             | 否   | 是   | 音频编码扩展格式，默认为AAC_LC格式。<br>当前支持类型：AAC_LC、AAC_HE和AAC_HE_V2。<br> **原子化服务API：** 从API version 22 开始，该接口支持在原子化服务中使用。     |
 | audioSampleRate  | number                                       | 否   | 是   | 音频采样率，选择音频录制时必填。<br>支持范围：<br>- AAC编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]。<br>- G711-mulaw编码支持采样率大小：8000。<br>- MP3编码支持采样率范围[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]。<br>- AMR_NB编码支持采样率大小：8000。<br>- AMR_WB编码支持采样率大小：16000。<br>可变比特率模式，码率仅作参考。<br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
 | fileFormat       | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否   | 否   | 文件的容器格式，必要参数。当前支持MP4、M4A、MP3、WAV、AMR、AAC封装格式，当前AAC音频封装默认为ADTS帧头格式。不支持在MP4封装格式下使用AUDIO_MP3编码格式。<br>**原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。|
 | videoBitrate     | number                                       | 否   | 是   | 视频编码比特率，选择视频录制时必填，支持范围[10000, 100000000]。  |
@@ -220,14 +221,14 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称            | 类型                                    | 只读 | 可选 | 说明                                                         |
 | --------------- | ---------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| audioBitrate | number     | 否 | 是 | 输出音频的码率，单位为比特率（bps），支持范围[1-500000]。默认设置为48Kbps。|
-| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式，当前仅支持AAC。默认设置为AAC。                   |
-| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否 | 否   | 输出视频文件的封装格式，当前视频文件仅支持MP4。|
-| videoBitrate         | number | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p，480P]默认码率值为1Mbps，(480P,720P]默认码率值为2Mbps，(720P,1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。|
-| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否 | 是   | 输出视频的编码格式，当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。|
-| videoFrameWidth        | number | 否 |  是   | 输出视频帧的宽，单位为像素（px），支持范围[240-3840]。默认设置为源视频帧的宽。|
-| videoFrameHeight        | number | 否 |  是   | 输出视频帧的高，单位为像素（px），支持范围[240-2160]。默认设置为源视频帧的高。|
-| enableBFrame<sup>20+</sup> | boolean | 否 |  是   | 转码使能B帧编码。true表示开启B帧编码，默认为不开启B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。|
+| audioBitrate | number     | 否 | 是 | 输出音频的码率，单位为比特率（bps），支持范围[1, 500000]。默认设置为48Kbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| audioCodec | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)     | 否 | 是  | 输出音频的编码格式，当前仅支持AAC。默认设置为AAC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| fileFormat         | [ContainerFormatType](arkts-apis-media-e.md#containerformattype8) | 否 | 否   | 输出视频文件的封装格式，当前视频文件仅支持MP4。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| videoBitrate         | number | 否 |  是  | 输出视频的码率，单位为比特率（bps）。默认码率按输出视频的分辨率设置，[240p, 480P]默认码率值为1Mbps，(480P, 720P]默认码率值为2Mbps，(720P, 1080P]默认码率值为4Mbps，1080P及以上默认值为8Mbps。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| videoCodec        | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8) | 否 | 是   | 输出视频的编码格式，当前仅支持AVC和HEVC。若源视频编码格式为HEVC，则默认设置为HEVC，否则默认设置为AVC。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| videoFrameWidth        | number | 否 |  是   | 输出视频帧的宽，单位为像素（px），支持范围[240, 3840]。默认设置为源视频帧的宽。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| videoFrameHeight        | number | 否 |  是   | 输出视频帧的高，单位为像素（px），支持范围[240, 2160]。默认设置为源视频帧的高。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| enableBFrame<sup>20+</sup> | boolean | 否 |  是   | 转码使能B帧编码。true表示开启B帧编码，默认为不开启B帧编码。<br>B帧视频编码相关的约束和限制可以参考文档[B帧视频编码约束和限制](../../media/avcodec/video-encoding-b-frame.md#约束和限制)。如果当前不符合B帧视频编码的约束和限制，将忽略B帧，按不使能B帧进行编码。 <br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 
 ## AVMetadata<sup>11+</sup>
@@ -238,30 +239,31 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
 | ------ | ------ | ---- | ---- |------------------------------------------------------------ |
-| album     | string | 否 | 是 | 专辑的标题。当前版本AVRecorder不支持该属性的设置。     |
-| albumArtist | string | 否 | 是 | 专辑的艺术家。当前版本AVRecorder不支持该属性的设置。 |
-| artist | string | 否 | 是 | 媒体资源的艺术家。当前版本AVRecorder不支持该属性的设置。 |
-| author | string | 否 | 是 | 媒体资源的作者。当前版本AVRecorder不支持该属性的设置。 |
-| dateTime | string | 否 | 是 | 媒体资源的创建时间。当前版本AVRecorder不支持该属性的设置。 |
-| dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。当前版本AVRecorder不支持该属性的设置。 |
-| composer | string | 否 | 是 | 媒体资源的作曲家。当前版本AVRecorder不支持该属性的设置。 |
-| duration | string | 否 | 是 | 媒体资源的时长。当前版本AVRecorder不支持该属性的设置。 |
+| album     | string | 否 | 是 | 专辑的标题。不支持AVRecorder设置该属性。     |
+| albumArtist | string | 否 | 是 | 专辑的艺术家。不支持AVRecorder设置该属性。 |
+| artist | string | 否 | 是 | 媒体资源的艺术家。不支持AVRecorder设置该属性。 |
+| author | string | 否 | 是 | 媒体资源的作者。不支持AVRecorder设置该属性。 |
+| dateTime | string | 否 | 是 | 媒体资源的创建时间。不支持AVRecorder设置该属性。 |
+| dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。不支持AVRecorder设置该属性。 |
+| composer | string | 否 | 是 | 媒体资源的作曲家。不支持AVRecorder设置该属性。 |
+| duration | string | 否 | 是 | 媒体资源的时长。不支持AVRecorder设置该属性。 |
 | genre | string | 否 | 是 | 媒体资源的类型或体裁。|
-| hasAudio | string | 否 | 是 | 媒体资源是否包含音频。当前版本AVRecorder不支持该属性的设置。 |
-| hasVideo | string | 否 | 是 | 媒体资源是否包含视频。当前版本AVRecorder不支持该属性的设置。 |
-| mimeType | string | 否 | 是 | 媒体资源的mime类型。当前版本AVRecorder不支持该属性的设置。 |
-| trackCount | string | 否 | 是 | 媒体资源的轨道数量。当前版本AVRecorder不支持该属性的设置。 |
-| sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。当前版本AVRecorder不支持该属性的设置。 |
-| title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。当前版本AVRecorder不支持该属性的设置。 |
-| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
-| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。当前版本AVRecorder不支持该属性的设置。 |
+| hasAudio | string | 否 | 是 | 媒体资源是否包含音频。不支持AVRecorder设置该属性。 |
+| hasVideo | string | 否 | 是 | 媒体资源是否包含视频。不支持AVRecorder设置该属性。 |
+| mimeType | string | 否 | 是 | 媒体资源的mime类型。不支持AVRecorder设置该属性。 |
+| trackCount | string | 否 | 是 | 媒体资源的轨道数量。不支持AVRecorder设置该属性。 |
+| sampleRate | string | 否 | 是 | 音频的采样率，单位为赫兹（Hz）。不支持AVRecorder设置该属性。 |
+| title | string | 否 | 是 | 媒体资源的标题。当前版本为只读参数。不支持AVRecorder设置该属性。 |
+| description<sup>23+</sup> | string | 否 | 是 | 媒体资源的描述信息。当前版本为只读参数。不支持AVRecorder设置该属性。 |
+| videoHeight | string | 否 | 是 | 视频的高度，单位为像素（px）。不支持AVRecorder设置该属性。 |
+| videoWidth | string | 否 | 是 | 视频的宽度，单位为像素（px）。不支持AVRecorder设置该属性。 |
 | videoOrientation | string | 否 | 是 | 视频的旋转方向，单位为度（°）。|
-| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。当前版本AVRecorder不支持该属性的设置。 |
+| hdrType<sup>12+</sup> | [HdrType](arkts-apis-media-e.md#hdrtype12) | 否 | 是 | 媒体资源的HDR类型。不支持AVRecorder设置该属性。 |
 | location<sup>12+</sup> | [Location](#location) | 否 | 是 | 视频的地理位置信息。 |
 | customInfo<sup>12+</sup> | Record<string, string> | 否 | 是 | 从moov.meta.list 获取的自定义参数键值映射。|
-| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。当前版本AVRecorder不支持该属性的设置。|
+| tracks<sup>20+</sup> | Array\<[MediaDescription](#mediadescription8)> | 否 | 是 | 媒体资源的轨道信息。不支持AVRecorder设置该属性。|
 
-### AVMetadata.tracks支持的MediaDescriptionKey说明
+### AVMetadata.tracks支持的MediaDescriptionKey<sup>8+</sup>说明
 
 AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)的范围如下：
 
@@ -275,11 +277,11 @@ AVMetadata.tracks支持的[MediaDescriptionKey](arkts-apis-media-e.md#mediadescr
 | MD_KEY_FRAME_RATE | 'frame_rate' | 视频 |
 | MD_KEY_AUD_CHANNEL_COUNT | 'channel_count' | 音频 |
 | MD_KEY_AUD_SAMPLE_RATE | 'sample_rate' | 音频 |
-| MD_KEY_HDR_TYPE | 'hdr_type' | 视频 |
-| MD_KEY_ORIGINAL_WIDTH | 'original_width' | 视频 |
-| MD_KEY_ORIGINAL_HEIGHT | 'original_height' | 视频 |
-| MD_KEY_BITRATE | 'bitrate' | 音频 |
-| MD_KEY_AUD_SAMPLE_DEPTH | 'sample_depth' | 音频 |
+| MD_KEY_HDR_TYPE<sup>12+</sup> | 'hdr_type' | 视频 |
+| MD_KEY_ORIGINAL_WIDTH<sup>21+</sup> | 'original_width' | 视频 |
+| MD_KEY_ORIGINAL_HEIGHT<sup>21+</sup> | 'original_height' | 视频 |
+| MD_KEY_BITRATE | 'bitrate' | 音频、视频（从API version 21开始，AVMetadata.tracks支持该值获取。） |
+| MD_KEY_AUD_SAMPLE_DEPTH<sup>12+</sup> | 'sample_depth' | 音频（从API version 21开始，AVMetadata.tracks支持该值获取。） |
 
 ## PixelMapParams<sup>12+</sup>
 
@@ -343,18 +345,18 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 let mediaSourceLoader: media.MediaSourceLoader = {
   open: (request: media.MediaSourceLoadingRequest) => {
-    console.log(`Opening resource: ${request.url}`);
+    console.info(`Opening resource: ${request.url}`);
     // 成功打开资源，返回唯一的句柄, 保证uuid和request对应。
     uuid += 1;
     requests.set(uuid, request);
     return uuid;
   },
   read: (uuid: number, requestedOffset: number, requestedLength: number) => {
-    console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+    console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
     // 判断uuid是否合法、存储read请求，不要在read请求阻塞去推送数据和头信息。
   },
   close: (uuid: number) => {
-    console.log(`Closing resource with handle ${uuid}`);
+    console.info(`Closing resource with handle ${uuid}`);
     // 清除当前uuid相关资源。
     requests.remove(uuid);
   }
@@ -385,7 +387,7 @@ async function setupPlayer() {
 | preferredHdr | boolean | 否   | 是   | 表示播放策略是否为hdr。true表示是，false表示不是，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | enableSuperResolution<sup>18+</sup> | boolean | 否   | 是   | 表示是否使能超分功能。true表示使能超分，false表示不使能超分，默认为false。<br>若不使能超分，则后续不能调用超分相关接口。若使能超分，则超分功能默认开启，默认目标分辨率为1920x1080，单位为像素。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | showFirstFrameOnPrepare<sup>17+</sup> | boolean | 否   | 是   | 播放策略true是Prepare之后显示视频起播首帧，false是Prepare之后不显示视频起播首帧，默认不显示。<br>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 |
-| mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 关闭输出的媒体类型。<br>API 12-19，仅支持设置MediaType.MEDIA_TYPE_AUD。API 20起，增加支持MediaType.MEDIA_TYPE_VID。 |
+| mutedMediaType | [MediaType](arkts-apis-media-e.md#mediatype8) | 否   | 是   | 关闭输出的媒体类型。<br>API version 12-19，仅支持设置MediaType.MEDIA_TYPE_AUD。API version 20起，增加支持MediaType.MEDIA_TYPE_VID。 |
 | preferredAudioLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选音轨语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | preferredSubtitleLanguage<sup>13+</sup> | string | 否   | 是   | 播放策略首选字幕语言。dash场景下应用可按需设置。非dash场景暂不支持，建议缺省。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | preferredBufferDurationForPlaying<sup>18+</sup> | number | 否   | 是   | 播放策略首选起播缓冲水线。当起播缓冲时间超过该值，开始播放。单位为秒（s），取值范围[0, 20]。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |

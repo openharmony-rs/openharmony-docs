@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -20,7 +20,7 @@ Defines text styles for the ArkUI text component on the native side.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Example**: <!--RP1-->[StyledStringNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StyledStringNDK)<!--RP1End-->
+**Sample**: <!--RP1-->[StyledStringSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StyledStringSample)<!--RP1End-->
 
 ## Summary
 
@@ -303,4 +303,3 @@ Converts styled string information into HTML.
 | Type| Description|
 | -- | -- |
 | const char* | HTML object. The pointer is managed internally and should be destroyed by calling **OH_ArkUI_StyledString_Descriptor_Destroy()** when no longer needed to free the memory.|
-<!--no_check-->

@@ -1,4 +1,10 @@
-# NDK API Overview
+# NDK-Based UI Development Overview
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The ArkUI framework offers NDK APIs for building UIs with C/C++, including component creation, UI tree control, attribute configuration, and event handling. While ArkTS and the ArkUI declarative framework are recommended for most UI development, use the ArkUI NDK APIs when:
@@ -45,7 +51,7 @@ The ArkUI NDK APIs provide the following capabilities:
 
 ![NDK Access](figures/ndk_access.png)
 
-- The ArkTS declarative UI frontend and the NDK APIs both expose ArkUI's underlying capabilities. Compared with the ArkTS declarative UI frontend, NDK APIs not only strip away the declarative UI syntax such as state management but also streamline component capabilities, encapsulating the core functions of ArkUI components through C APIs.
+- The ArkTS declarative UI frontend and the NDK APIs both expose ArkUI's underlying capabilities. Compared to the ArkTS declarative UI frontend, NDK APIs not only strip away the declarative UI syntax such as state management but also streamline component capabilities, encapsulating the core functions of ArkUI components through C APIs.
 
 - NDK-created UI components must be mounted through ArkTS placeholder components. Once mounted, they coexist with ArkTS components on the same UI tree, following uniform layout and event-handling rules.
 
@@ -57,23 +63,24 @@ Using the NDK for UI development involves the following tasks.
 
 | Task| Description|
 | -------- | -------- |
-| [Getting Started with the NDK](../napi/ndk-development-overview.md)| Introduces the suitable scenarios and essential knowledge for the NDK.|
+| [Getting Started with the NDK](../napi/ndk-development-overview.md)| Introduces the use scenarios and essential knowledge of the NDK.|
 | [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md)| Explains how to mount the NDK-developed UI onto ArkTS pages for rendering and display.|
-| [Listening for Component Events](ndk-listen-to-component-events.md)| Describes how to register event listeners for components and add gesture interactions.|
+| [Adding Interaction Events](ndk-listen-to-component-events.md)| Describes how to add interaction events for components.|
 | [Using Animations](ndk-use-animation.md)| Introduces how to add animations on the native side.|
 | [Building Layouts](ndk-loading-long-list.md) | Describes how to use container components to build layouts on the native side.|
 | [Building Dialog Boxes](ndk-build-pop-up-window.md)| Introduces how to build dialog boxes.|
 | [Building Custom Components](ndk-build-custom-components.md)| Describes how to build custom components with the NDK to achieve unique UI elements.|
 | [Embedding ArkTS Components](ndk-embed-arkts-components.md)| Explains how to build pages on the native side that include ArkTS components.|
+| [Building a Rendering Node](ndk-embed-render-components.md)| Explains how to build a rendering node on the native side.|
 | [Integrating Accessibility Through XComponent](ndk-accessibility-xcomponent.md)| Describes how to connect third-party systems to the UI platform through **XComponent**.|
 | [Implementing Custom Drawing](arkts-user-defined-draw.md)| Describes how to use custom drawing capabilities to render custom content.|
 | [Querying and Operating Custom Nodes](ndk-node-query-operate.md) | Introduces how to query and operate custom nodes.|
 | [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md) | Introduces how to launch **EmbeddedUIExtensionAbility** with **EmbeddedComponent** on the native side. This is mainly used in modular development scenarios with process isolation requirements.|
-| [Using Text](ndk-styled-string.md) | Describes how to render styled text using the **Text** component and how to listen for text box events.|
-| [Ensuring Functionality in Multi-Instance Scenarios](ndk-scope-task.md) | Introduces how to ensure the normal functionality of API calls in NDK multi-threaded scenarios.|
+| [Using Text](ndk-styled-string.md) | Introduces how to use the **Text** component and font engine.|
+| [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md) | Introduces how to ensure the normal functionality of API calls in NDK multi-threaded scenarios.|
+| [Creating Multi-threaded Components with the NDK](ndk-build-on-multi-thread.md)| Introduces how to create multi-threaded UI components using NDK.|
 
 
 ## Precautions
 
 When using NDK APIs to develop UIs, ensure that all UI API calls are made on the application's main thread to prevent multi-threading issues, which can lead to crashes.
-<!--no_check-->

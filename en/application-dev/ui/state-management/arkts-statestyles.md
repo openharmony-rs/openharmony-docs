@@ -25,6 +25,8 @@ stateStyles is an attribute method that sets the style based on the internal sta
 
 - disabled
 
+- clicked
+
 - selected<sup>10+</sup>
 
 > **NOTE**
@@ -37,7 +39,7 @@ stateStyles is an attribute method that sets the style based on the internal sta
 
 ### Common Scenarios
 
-This example shows the most basic application scenario of stateStyles. **Button1** is the first component and **Button2** the second component. When either of these components is pressed, the black style specified for **pressed** takes effect. When the **Tab** key is pressed for sequential navigation, **Button1** obtains focus first and is displayed in the pink style specified for **focus**. When **Button 2** is focused, it is displayed in the pink style specified for **focus**, and **Button1** changes to the blue style specified for **normal**.
+This example shows the most basic application scenario of stateStyles. **Button1** is the first component and **Button2** the second component. When either of these components is pressed, the black style specified for **pressed** takes effect. When the **Tab** key is pressed for sequential navigation, **Button1** obtains focus and is displayed in the pink style specified for **focused**. When **Button 2** is focused, it is displayed in the pink style specified for **focused**, and **Button1** changes to the blue style specified for **normal**.
 
 
 ```ts
@@ -128,8 +130,8 @@ stateStyles can use **this** to bind regular variables and state variables in a 
 @Entry
 @Component
 struct CompWithInlineStateStyles {
-  @State focusedColor: Color = Color.Red;
-  normalColor: Color = Color.Green;
+  @State focusedColor: Color = 0xD5D5D5;
+  normalColor: Color = 0x004AAF;
 
   build() {
     Column() {
@@ -145,7 +147,7 @@ struct CompWithInlineStateStyles {
           }
         })
         .onClick(() => {
-          this.focusedColor = Color.Pink;
+          this.focusedColor = 0x707070;
         })
         .margin('30%')
     }
@@ -153,8 +155,8 @@ struct CompWithInlineStateStyles {
 }
 ```
 
-By default, the button is displayed in green in the normal state. When you press the **Tab** key for the first time, the button obtains focus and is displayed in the red style specified for **focus**. After a click event occurs and you press the **Tab** key again, the button obtains focus and changes to the pink style.
+By default, the button is displayed in blue in the normal state. When you press the **Tab** key for the first time, the button obtains focus and is displayed in the light gray style specified for **focused**. After a click event occurs and you press the **Tab** key again, the button obtains focus and changes to dark gray.
 
   **Figure 3** Change of the styles in focused state by a click 
 
-![Video_2023-03-17_144605](figures/Video_2023-03-17_144605.gif)
+![focus-stateStyles](figures/focus-stateStyles.gif)

@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct {...} OH_AudioSession_DeactivatedEvent
+```
+
 ## 概述
 
 音频会话已停用事件。

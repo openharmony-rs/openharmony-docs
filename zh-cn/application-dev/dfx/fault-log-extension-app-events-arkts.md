@@ -7,25 +7,35 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-从API version 21开始，FaultLogExtensionAbility提供了事件订阅接口，用于应用故障事件（包括[崩溃](./cppcrash-guidelines.md)和[冻屏](./appfreeze-guidelines.md)事件）的延迟通知。当应用无法启动或长时间未启动，可以不依赖应用启动而实现故障的hiappevent订阅上报。
+从API version 21开始，FaultLogExtensionAbility提供了事件订阅接口，用于应用故障事件（包括[崩溃](./cppcrash-guidelines.md)和[冻屏](./appfreeze-guidelines.md)事件）的延迟通知。当应用无法启动或长时间未启动，可以不依赖应用启动而实现故障的hiAppEvent订阅上报。
+
+FaultLogExtensionAbility仅在应用发生崩溃或冻屏事件，并且应用长时间未被重新启动的情况下，用于补充处理故障事件，不能替代[主进程](../application-models/process-model-stage.md#基本进程类型)正常启动时进行故障事件处理。
+
+应用发生崩溃或者冻屏事件30分钟后拉起FaultLogExtensionAbility进程，实际拉起时间可能会因为系统调度有所延迟。该30分钟是设备非休眠状态下累积的时间。测试时需要保持测试设备屏幕常亮，防止设备休眠。灭屏状态下设备可能会休眠，导致实际接收到回调的时间延长。
 
 ## 约束与限制
 
 - FaultLogExtensionAbility被拉起后只有很短的时间完成故障处理，建议处理时间不要超过10秒。超时没有处理完成可以在[onDisconnect](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#ondisconnect)中保存状态。
 
-- 从开机或上次拉起FaultLogExtensionAbility后，应用首次触发崩溃或冻屏开始计时。在拉起FaultLogExtensionAbility前反复触发崩溃或冻屏事件均不会重新计时。
+- 从开机或上次拉起FaultLogExtensionAbility后，应用首次触发崩溃或冻屏开始计时。在拉起FaultLogExtensionAbility前反复触发崩溃或冻屏事件均不会重新计时。计时30分钟后拉起FaultLogExtensionAbility进程。
 
 - FaultLogExtensionAbility自身崩溃时，不会再次被系统服务拉起。
 
 - FaultLogExtensionAbility调用限制的API名单见[附录](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md#附录)。
+
+- FaultLogExtensionAbility进程中订阅的事件需要在主进程中使用hiAppEvent进行订阅。否则，会出现在[FaultLogExtensionAbility进程没有接收到回调事件](#faultlogextensionability进程没有接收到回调事件)的问题。
+
+- FaultLogExtensionAbility进程中仅订阅崩溃、应用冻屏事件，不订阅除这两类外的系统事件。否则，会发生[系统事件重复上报](#系统事件重复上报)的问题。
+
+- FaultLogExtensionAbility进程和主进程定义的watcher名字不能重复。否则，会发生[部分事件丢失](#部分事件丢失)的问题。
+
+- 接入FaultLogExtensionAbility能力后，若应用故障发生后设备重启，重启后不会拉起FaultLogExtensionAbility进程。
 
 ## 接口说明
 
 API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.FaultLogExtensionAbility (故障延迟通知)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md)。
 
 仅适用于Stage模型。
-
-接入FaultLogExtensionAbility能力后，若应用故障发生后设备重启，重启后不支持重启前故障的接口回调。
 
 **订阅接口功能介绍**：
 
@@ -64,8 +74,8 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
      // 在onCreate函数中添加系统事件的订阅
      hiAppEvent.addWatcher ({
       // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-      name: "watcher",
-      // 开发者可以订阅兴感趣的系统事件，此处是订阅了应用冻屏事件
+      name: "EntryAbilityWatcher",
+      // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
       appEventFilters: [
         {
           domain: hiAppEvent.domain.OS,
@@ -96,62 +106,62 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
     // 重写onFaultReportReady函数
     onFaultReportReady() {
       hilog.info(0x0000, 'testTag', `FaultLogExtensionAbility onFaultReportReady`);
-     hiAppEvent.addWatcher({
-      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
-      name: "watcher",
-      // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
-      appEventFilters: [
-        {
-          domain: hiAppEvent.domain.OS,
-          names: [hiAppEvent.event.APP_FREEZE]
-        }
-      ],
-      // 开发者可以自行实现订阅回调函数，以便对订阅获取到的事件数据进行自定义处理
-      onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-        hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
-        for (const eventGroup of appEventGroups) {
-          // 开发者可以根据事件集合中的事件名称区分不同的系统事件
-          hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
-          for (const eventInfo of eventGroup.appEventInfos) {
-            // 开发者可以对事件集合中的事件数据进行自定义处理，此处是将事件数据打印在日志中
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
-            // 开发者可以获取到应用冻屏事件发生的时间戳
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
-            // 开发者可以获取到应用冻屏事件发生时应用的前后台状态
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
-            // 开发者可以获取到应用冻屏事件发生时应用的版本信息
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
-            // 开发者可以获取到应用冻屏事件发生时应用的包名
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
-            // 开发者可以获取到应用冻屏事件发生时应用的进程名称
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
-            // 开发者可以获取到应用冻屏事件发生时应用的进程id
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
-            // 开发者可以获取到应用冻屏事件发生的异常类型、异常原因
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
-            // 开发者可以获取到应用冻屏事件发生时日志信息
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
-            // 开发者可以获取到应用冻屏事件发生时主线程未处理消息
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler=${eventInfo.params['event_handler']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
-            // 开发者可以获取到应用冻屏事件发生时同步binder调用信息
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder=${eventInfo.params['peer_binder']}`);
-            // 开发者可以获取到应用冻屏事件发生时全量线程调用栈
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
-            // 开发者可以获取到应用冻屏事件发生时内存信息
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
-            // 开发者可以获取到应用冻屏事件发生时的故障日志文件
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+      hiAppEvent.addWatcher({
+        // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+        name: "FaultLogExtensionAbilityWatcher",
+        // 开发者可以订阅感兴趣的系统事件，此处是订阅了应用冻屏事件
+        appEventFilters: [
+          {
+            domain: hiAppEvent.domain.OS,
+            names: [hiAppEvent.event.APP_FREEZE]
+          }
+        ],
+        // 开发者可以自行实现订阅回调函数，以便对订阅获取到的事件数据进行自定义处理
+        onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+          hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
+          for (const eventGroup of appEventGroups) {
+            // 开发者可以根据事件集合中的事件名称区分不同的系统事件
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
+            for (const eventInfo of eventGroup.appEventInfos) {
+              // 开发者可以对事件集合中的事件数据进行自定义处理，此处是将事件数据打印在日志中
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
+              // 开发者可以获取到应用冻屏事件发生的时间戳
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
+              // 开发者可以获取到应用冻屏事件发生时应用的前后台状态
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
+              // 开发者可以获取到应用冻屏事件发生时应用的版本信息
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
+              // 开发者可以获取到应用冻屏事件发生时应用的包名
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
+              // 开发者可以获取到应用冻屏事件发生时应用的进程名称
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
+              // 开发者可以获取到应用冻屏事件发生时应用的进程id
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
+              // 开发者可以获取到应用冻屏事件发生的异常类型、异常原因
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
+              // 开发者可以获取到应用冻屏事件发生时日志信息
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
+              // 开发者可以获取到应用冻屏事件发生时主线程未处理消息
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler=${eventInfo.params['event_handler']}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
+              // 开发者可以获取到应用冻屏事件发生时同步binder调用信息
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder=${eventInfo.params['peer_binder']}`);
+              // 开发者可以获取到应用冻屏事件发生时全量线程调用栈
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
+              // 开发者可以获取到应用冻屏事件发生时内存信息
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
+              // 开发者可以获取到应用冻屏事件发生时的故障日志文件
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+            }
           }
         }
-      }
-    });
+      });
     }
    }
    ```
@@ -170,7 +180,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 ## 调测验证
 
-点击DevEco Studio界面的运行按钮，启动应用工程。在应用界面点击“AppInput”按钮，触发崩溃事件。应用退出后，设备不得重启，等待30分钟左右。
+点击DevEco Studio界面的运行按钮，启动应用工程。在应用界面点击“AppInput”按钮，触发冻屏事件。应用退出后，设备不得重启，等待30分钟左右。
 
 在HiLog窗口搜索“testTag”关键字，查看FaultLogExtensionAbility执行回调函数的结果：
 
@@ -186,3 +196,22 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
    FaultLogExtensionAbility onDisconnect
    ```
   表示FaultLogExtensionAbility依次执行连接、处理和断开。
+
+## FaultLogExtensionAbility常见问题
+
+### FaultLogExtensionAbility进程没有接收到回调事件
+
+FaultLogExtensionAbility进程启动后，没有收到hiAppEvent订阅的回调。可能是以下原因导致：
+
+- 在FaultLogExtensionAbility进程启动前，主进程已经订阅并处理了事件。
+- 在FaultLogExtensionAbility进程中的订阅是应用安装后的首次订阅。hiAppEvent不感知在订阅操作前发生的事件，需要主进程中正常订阅相关事件，发生故障后hiAppEvent才会记录相关事件，在拉起FaultLogExtensionAbility后进行回调。
+
+### 系统事件重复上报
+
+系统事件将通过hiAppEvent回调通知所有订阅了该事件的事件观察者。当FaultLogExtensionAbility进程与主进程同时存在，并且均订阅了同一个系统事件时，触发该系统事件后，两个进程皆将接收到相应的事件回调。
+
+### 部分事件丢失
+
+在应用启动之后，事件观察者注册之前发生的事件丢失。检查是否注册了多个同名的事件观察者。
+
+hiAppEvent为了保障事件不丢失，hiAppEvent在应用启动后，事件观察者注册前会先扫描应用上次退出前未移除的事件观察者的订阅过滤条件，并据此对事件进行订阅保存。 重复注册相同名称的事件观察者，后一次注册的事件观察者信息会覆盖前一次的事件观察者信息，导致订阅过滤条件被覆盖，事件丢失。

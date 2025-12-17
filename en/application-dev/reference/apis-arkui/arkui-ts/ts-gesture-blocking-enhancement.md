@@ -1,10 +1,10 @@
 # Gesture Blocking Enhancement
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Gesture blocking enhancement offers components the capability to block gestures. You can handle built-in gestures in parallel with gestures that have a higher priority as needed, and can dynamically control the triggering of gesture events.
 
@@ -108,21 +108,24 @@ type GestureRecognizerJudgeBeginCallback = (event: BaseGestureEvent, current: Ge
 
 Represents a custom gesture recognizer judgment callback type.
 
+**Atomic service API**: This API can be used in atomic services since API version 12.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11) | Yes  | Information about the current basic gesture event.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | Yes  | Gesture recognizer object that is about to respond.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | Yes  | Other gesture recognizer objects in the response chain.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | No  | Touch recognizers in the response chain. The default value is **null**, indicating no responsive touch recognizers in the current gesture-bound component and its descendants.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11) | Yes  | Information about the current basic gesture event.|
+| current | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | Yes  | Gesture recognizer object that is about to respond.|
+| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | Yes  | Other gesture recognizer objects in the response chain.|
+| touchRecognizers<sup>20+</sup> | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | No  | Touch recognizers in the response chain. The default value is **null**, indicating no responsive touch recognizers in the current gesture-bound component and its descendants.|
+
 **Return value**
 
 | Type    | Description       |
 | ------ | --------- |
-| [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult12) | Judgment result indicating whether gesture recognition succeeds.|
+| [GestureJudgeResult](./ts-gesture-common.md#gesturejudgeresult11) | Judgment result indicating whether gesture recognition succeeds.|
 
 ## onTouchTestDone<sup>20+</sup>
 
@@ -703,7 +706,7 @@ struct FatherControlChild {
 
  ### Example 5: Customizing Gesture Recognizer Participation in Gesture Processing
 
-This example shows how to use **onTouchTestDone** to specify whether gesture recognizers participate in subsequent gesture processing. When the callback is triggered, it calls **preventBegin()** to prevent gesture recognizers from participating in further processing.
+This example demonstrates how to use [onTouchTestDone](#ontouchtestdone20) to exclude a gesture recognizer from subsequent gesture processing, available from API version 20. When the callback is triggered, [preventBegin](./ts-gesture-common.md#preventbegin20) is called to prevent the recognizer from participating in further processing.
 
 ```ts
 // xxx.ets

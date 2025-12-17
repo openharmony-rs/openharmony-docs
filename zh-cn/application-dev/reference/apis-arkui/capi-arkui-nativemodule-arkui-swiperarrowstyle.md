@@ -4,7 +4,11 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_SwiperArrowStyle ArkUI_SwiperArrowStyle
+```
 
 ## 概述
 

@@ -61,7 +61,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let server: string = "ntpserver.com";
@@ -118,7 +118,7 @@ import { BusinessError } from '@ohos.base';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   systemManager.getNTPServer(wantTemp);
@@ -167,7 +167,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 默认升级策略
 let otaUpdatePolicy1: systemManager.OtaUpdatePolicy = {
@@ -286,7 +286,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let policy: systemManager.OtaUpdatePolicy= systemManager.getOtaUpdatePolicy(wantTemp);
@@ -301,6 +301,9 @@ try {
 notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;void&gt;
 
 通知系统更新包信息。内网升级场景下，需要先调用该接口通知系统更新包，再调用[systemManager.setOtaUpdatePolicy](#systemmanagersetotaupdatepolicy)设置升级策略。
+> **说明：**
+> 
+> 该接口比较耗时，当调用此接口后，后续如果在应用主线程调用其他同步接口时需要等待该接口异步返回。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -313,7 +316,7 @@ notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;vo
 | 参数名 | 类型                                | 必填 | 说明           |
 | ------ | ----------------------------------- | ---- | -------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
-| packageInfo  | [UpdatePackageInfo](#updatepackageinfo) | 是   | 系统更新包信息。 |
+| packageInfo  | [UpdatePackageInfo](#updatepackageinfo) | 是   | 系统更新包信息。<br/>**说明：** 传入的UpdatePackageInfo.packages.path必须是“update”开头的zip压缩包，传入其他形式的文件会报9201004错误码。 |
 
 **返回值：**
 
@@ -339,11 +342,12 @@ notifyUpdatePackages(admin: Want, packageInfo: UpdatePackageInfo): Promise&lt;vo
 import { systemManager } from '@kit.MDMKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let notify: systemManager.NotifyDescription = {
   // 需根据实际情况进行替换
@@ -354,12 +358,36 @@ let description: systemManager.PackageDescription = {
   // 需根据实际情况进行替换
   "notify": notify
 };
-let updatePackages: Array<systemManager.Package> = [{
+let updatePackages: Array<systemManager.Package> = [];
+// 应用沙箱路径，需根据实际情况进行替换
+let fileDir = "/xxxx/xxxx/";
+let path1: string = "update_sd_base.zip";
+let path2: string = "update_sd_cust_xxxxx_all_cn.zip";
+let path3: string = "update_sd_preload_xxxxx_all_cn_R1.zip";
+let fd1: number = fs.openSync(fileDir + path1, fs.OpenMode.READ_ONLY).fd;
+let fd2: number = fs.openSync(fileDir + "xxxxx/" + path2, fs.OpenMode.READ_ONLY).fd;
+let fd3: number = fs.openSync(fileDir + "xxxxx/" + path3, fs.OpenMode.READ_ONLY).fd;
+let package1: systemManager.Package = {
   // 需根据实际情况进行替换
   "type": systemManager.PackageType.FIRMWARE,
-  "path": "path",
-  "fd": 60
-}];
+  "path": path1,
+  "fd": fd1
+};
+let package2: systemManager.Package = {
+  // 需根据实际情况进行替换
+  "type": systemManager.PackageType.FIRMWARE,
+  "path": path2,
+  "fd": fd2
+};
+let package3: systemManager.Package = {
+  // 需根据实际情况进行替换
+  "type": systemManager.PackageType.FIRMWARE,
+  "path": path3,
+  "fd": fd3
+};
+updatePackages.push(package1);
+updatePackages.push(package2);
+updatePackages.push(package3);
 let updatePackageInfo: systemManager.UpdatePackageInfo = {
   // 需根据实际情况进行替换
   "version" : "1.0",
@@ -419,7 +447,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateResult(wantTemp, "1.0").then((result:systemManager.UpdateResult) => {
     console.info(`Succeeded in getting update result: ${JSON.stringify(result)}`);
@@ -471,7 +499,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 systemManager.getUpdateAuthData(wantTemp).then((result: string) => {
     console.info(`Succeeded in getting update auth data: ${JSON.stringify(result)}`);
@@ -526,7 +554,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 需根据实际情况进行替换
@@ -588,7 +616,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 需根据实际情况进行替换
@@ -652,7 +680,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 
 // 需根据实际情况进行替换
@@ -708,7 +736,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 // 需根据实际情况进行替换
 let isEnable: boolean = true;
@@ -766,7 +794,7 @@ import { Want } from '@kit.AbilityKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   let isEnable: boolean = systemManager.getInstallLocalEnterpriseAppEnabled(wantTemp);
@@ -818,7 +846,7 @@ import { systemManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 let isAllowed: boolean = true;
 try {
@@ -875,7 +903,7 @@ import { systemManager } from '@kit.MDMKit';
 let wantTemp: Want = {
   // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
-  abilityName: 'EntryAbility'
+  abilityName: 'EnterpriseAdminAbility'
 };
 try {
   systemManager.getAutoUnlockAfterReboot(wantTemp);

@@ -6,6 +6,10 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
+```c
+typedef struct {...} ArkWeb_ComponentAPI
+```
+
 ## 概述
 
 Component相关的Native API结构体。

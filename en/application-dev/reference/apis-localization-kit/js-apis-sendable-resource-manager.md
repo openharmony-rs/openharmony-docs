@@ -1,5 +1,12 @@
 # @ohos.sendableResourceManager (Resource Manager)
 
+<!--Kit: Localization Kit-->
+<!--Subsystem: Global-->
+<!--Owner: @liule_123-->
+<!--Designer: @buda_wy-->
+<!--Tester: @lpw_work-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **sendableResourceManager** module provides the [resourceToSendableResource](#sendableresourcemanagerresourcetosendableresource) and [sendableResourceToResource](#sendableresourcemanagersendableresourcetoresource) APIs to implement conversion between [Resource](#resource) and [SendableResource](#sendableresource) objects.
 
 A **Resource** object can be held by the [Sendable](../../arkts-utils/arkts-sendable.md) class after being converted into a **SendableResource** object. After cross-thread transmission, the **Sendable** class converts the **SendableResource** object into a **Resource** object and uses it as an input parameter for the API used to obtain resources.
@@ -11,7 +18,7 @@ A **Resource** object can be held by the [Sendable](../../arkts-utils/arkts-send
 ## Modules to Import
 
 ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
+import { sendableResourceManager } from '@kit.LocalizationKit';
 ```
 
 ## sendableResourceManager.resourceToSendableResource
@@ -19,6 +26,8 @@ import sendableResourceManager from '@ohos.sendableResourceManager';
 resourceToSendableResource(resource: Resource): SendableResource
 
 Converts a **Resource** object to a **SendableResource** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -55,8 +64,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
   ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
-import { BusinessError } from '@ohos.base';
+import { sendableResourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let sendableResource: sendableResourceManager.SendableResource = sendableResourceManager.resourceToSendableResource($r('app.string.test'));
@@ -72,6 +81,8 @@ try {
 sendableResourceToResource(resource: SendableResource): Resource
 
 Converts a **SendableResource** object to a **Resource** object.
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
@@ -108,37 +119,35 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
   ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
-import { BusinessError } from '@ohos.base';
+import { sendableResourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let resource: sendableResourceManager.Resource = sendableResourceManager.sendableResourceToResource(sendableResourceManager.resourceToSendableResource($r('app.string.test')));
 } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
-    console.error(`resourceToSendableResource failed, error code: ${code}, message: ${message}.`);
+    console.error(`sendableResourceToResource failed, error code: ${code}, message: ${message}.`);
 }
   ```
 
 ## Resource
 
-Defines a **Resource** object.
+type Resource = _Resource
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.ResourceManager
 
-**Parameters**
-
-| Name        | Type    | Read-Only  | Optional |Description         |
-| ---------- | ------ | ----- | ----  | ---------------|
-| bundleName | string | No   | No| Bundle name of the application.|
-| moduleName | string | No   | No| Module name of the application.|
-| id         | number | No   | No| Resource ID.     |
-| params     | any[] | No   | Yes| Other resource parameters, including the resource name, substitution value for the formatting API, and quantifier for the singular-plural formatting API.     |
-| type       | number | No   | Yes| Resource type.     |
+| Type   | Description  |
+| ------  | ---- | 
+|[_Resource](js-apis-resource.md#resource-1)| Defines a **Resource** object.|
 
 ## SendableResource
 
 type SendableResource = _SendableResource
+
+**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Global.ResourceManager
 

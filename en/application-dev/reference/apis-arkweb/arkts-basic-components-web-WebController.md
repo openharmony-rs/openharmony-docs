@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc; @aohui; @zourongchun-->
 <!--Designer: @LongLie; @yaomingliu; @zhufenghao-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 Implements a **WebController** to control the behavior of the **Web** component. A **WebController** can control only one **Web** component, and the APIs in the **WebController** can be invoked only after it has been bound to the target **Web** component.
 
@@ -340,7 +340,7 @@ This API is deprecated since API version 9. You are advised to use [getHitTest<s
 
 | Type                             | Description         |
 | ------------------------------- | ----------- |
-| [HitTestType](./arkts-basic-components-web-e.md#hittesttype) | Element type of the area being clicked.|
+| [HitTestType](./arkts-basic-components-web-e.md#hittesttypedeprecated) | Element type of the area being clicked.|
 
 **Example**
 

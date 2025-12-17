@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoAsymKeyGenerator OH_CryptoAsymKeyGenerator
+```
+
 ## 概述
 
 定义非对称密钥生成器结构体。

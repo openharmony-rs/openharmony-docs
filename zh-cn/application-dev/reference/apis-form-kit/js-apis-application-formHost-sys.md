@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @yangyuecheng-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 formHost模块提供了卡片使用方相关接口的能力，包括对使用方同一用户下安装的卡片进行删除、释放、请求更新，获取信息、状态等操作。
 
@@ -79,7 +79,7 @@ import Base from '@ohos.base';
 
 let formId: string = '12400633174999288';
 formHost.deleteForm(formId).then(() => {
-  console.log('formHost deleteForm success');
+  console.info('formHost deleteForm success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
 });
@@ -112,7 +112,7 @@ formHost.releaseForm(formId, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost releaseForm, error: ${JSON.stringify(error)}`);
   } else {
-    console.log('formHost releaseForm success');
+    console.info('formHost releaseForm success');
   }
 });
 ```
@@ -145,7 +145,7 @@ formHost.releaseForm(formId, true, (error: Base.BusinessError) => {
   if (error.code) {
     console.error(`formHost releaseForm, error: ${JSON.stringify(error)}`);
   } else {
-    console.log('formHost releaseForm success');
+    console.info('formHost releaseForm success');
   }
 });
 ```
@@ -180,7 +180,7 @@ import Base from '@ohos.base';
 
 let formId: string = '12400633174999288';
 formHost.releaseForm(formId, true).then(() => {
-  console.log('formHost releaseForm success');
+  console.info('formHost releaseForm success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost releaseForm, error: ${JSON.stringify(error)}`);
 });
@@ -245,7 +245,7 @@ import Base from '@ohos.base';
 
 let formId: string = '12400633174999288';
 formHost.requestForm(formId).then(() => {
-  console.log('formHost requestForm success');
+  console.info('formHost requestForm success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost requestForm, error: ${JSON.stringify(error)}`);
 });
@@ -310,7 +310,7 @@ import Base from '@ohos.base';
 
 let formId: string = '12400633174999288';
 formHost.castTempForm(formId).then(() => {
-  console.log('formHost castTempForm success');
+  console.info('formHost castTempForm success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost castTempForm, error: ${JSON.stringify(error)}`);
 });
@@ -375,7 +375,7 @@ import Base from '@ohos.base';
 
 let formId: string[] = ['12400633174999288'];
 formHost.notifyVisibleForms(formId).then(() => {
-  console.log('formHost notifyVisibleForms success');
+  console.info('formHost notifyVisibleForms success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost notifyVisibleForms, error: ${JSON.stringify(error)}`);
 });
@@ -440,7 +440,7 @@ import Base from '@ohos.base';
 
 let formId: string[] = ['12400633174999288'];
 formHost.notifyInvisibleForms(formId).then(() => {
-  console.log('formHost notifyInvisibleForms success');
+  console.info('formHost notifyInvisibleForms success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
 });
@@ -505,7 +505,7 @@ import Base from '@ohos.base';
 
 let formId: string[] = ['12400633174999288'];
 formHost.enableFormsUpdate(formId).then(() => {
-  console.log('formHost enableFormsUpdate success');
+  console.info('formHost enableFormsUpdate success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost enableFormsUpdate, error: ${JSON.stringify(error)}`);
 });
@@ -570,7 +570,7 @@ import Base from '@ohos.base';
 
 let formId: string[] = ['12400633174999288'];
 formHost.disableFormsUpdate(formId).then(() => {
-  console.log('formHost disableFormsUpdate success');
+  console.info('formHost disableFormsUpdate success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost disableFormsUpdate, error: ${JSON.stringify(error)}`);
 });
@@ -624,7 +624,7 @@ import Base from '@ohos.base';
 
 let formId: string = '12400633174999288';
 formHost.isSystemReady().then(() => {
-  console.log('formHost isSystemReady success');
+  console.info('formHost isSystemReady success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost isSystemReady, error: ${JSON.stringify(error)}`);
 });
@@ -656,7 +656,7 @@ formHost.getAllFormsInfo((error: Base.BusinessError, data: formInfo.FormInfo[]) 
   if (error.code) {
     console.error(`formHost getAllFormsInfo, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -684,7 +684,7 @@ getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
   import Base from '@ohos.base';
 
   formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
+    console.info(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
   }).catch((error: Base.BusinessError) => {
     console.error(`formHost getAllFormsInfo, error: ${JSON.stringify(error)}`);
   });
@@ -717,7 +717,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', (error: Base.BusinessError,
   if (error.code) {
     console.error(`formHost getFormsInfo, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -750,7 +750,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: Base.Busin
   if (error.code) {
     console.error(`formHost getFormsInfo, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -785,7 +785,7 @@ getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formI
   import Base from '@ohos.base';
 
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: Base.BusinessError) => {
     console.error(`formHost getFormsInfo, error: ${JSON.stringify(error)}`);
   });
@@ -818,7 +818,7 @@ formHost.deleteInvalidForms(formIds, (error: Base.BusinessError, data: number) =
   if (error.code) {
     console.error(`formHost deleteInvalidForms, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+    console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -852,7 +852,7 @@ import Base from '@ohos.base';
 
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 formHost.deleteInvalidForms(formIds).then((data: number) => {
-  console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+  console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost deleteInvalidForms, error: ${JSON.stringify(error)}`);
 });
@@ -896,7 +896,7 @@ formHost.acquireFormState(want, (error:Base.BusinessError, data: formInfo.FormSt
   if (error.code) {
     console.error(`formHost acquireFormState, error: ${JSON.stringify(error)}`);
   } else {
-    console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+    console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
   }
 });
 ```
@@ -941,7 +941,7 @@ let want: Want = {
   }
 };
 formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-  console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+  console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost acquireFormState, error: ${JSON.stringify(error)}`);
 });
@@ -972,7 +972,7 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 import Base from '@ohos.base';
 
 formHost.on('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1001,7 +1001,7 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 import Base from '@ohos.base';
 
 formHost.off('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1066,7 +1066,7 @@ import Base from '@ohos.base';
 
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 formHost.notifyFormsVisible(formIds, true).then(() => {
-  console.log('formHost notifyFormsVisible success');
+  console.info('formHost notifyFormsVisible success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost notifyFormsVisible, error: ${JSON.stringify(error)}`);
 });
@@ -1133,7 +1133,7 @@ import Base from '@ohos.base';
 
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
-  console.log('formHost notifyFormsEnableUpdate success');
+  console.info('formHost notifyFormsEnableUpdate success');
 }).catch((error: Base.BusinessError) => {
   console.error(`formHost notifyFormsEnableUpdate, error: ${JSON.stringify(error)}`);
 });

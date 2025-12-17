@@ -44,7 +44,9 @@ libchild_process.so
 
 **头文件**
 
-```c++
+<!-- @[child_process_head_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
+
+``` C++
 #include <IPCKit/ipc_kit.h>
 #include <AbilityKit/native_child_process.h>
 ```
@@ -54,56 +56,58 @@ libchild_process.so
     在子进程中，实现必要的两个函数**NativeChildProcess_OnConnect**及**NativeChildProcess_MainProc**并导出（假设代码所在的文件名为ChildProcessSample.cpp）。其中NativeChildProcess_OnConnect方法返回的OHIPCRemoteStub对象负责与主进程进行IPC通信，具体实现方法请参考[IPC通信开发指导（C/C++)](../ipc/ipc-capi-development-guideline.md)，本文不再赘述。
 
     子进程启动后会先调用NativeChildProcess_OnConnect获取IPC Stub对象，之后再调用NativeChildProcess_MainProc移交主线程控制权，该函数返回后子进程随即退出。
-
-    ```c++
+    
+    <!-- @[child_process_must_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/ChildProcessSample.cpp) -->
+    
+    ``` C++
     #include <IPCKit/ipc_kit.h>
+    // ···
     #include <IPCKit/ipc_cremote_object.h>
     #include <IPCKit/ipc_cparcel.h>
     #include <IPCKit/ipc_error_code.h>
-
+    
     class IpcCapiStubTest {
     public:
         explicit IpcCapiStubTest();
         ~IpcCapiStubTest();
-        OHIPCRemoteStub* GetRemoteStub();
-        static int OnRemoteRequest(uint32_t code, const OHIPCParcel *data,  OHIPCParcel *reply, void  *userData);
+        OHIPCRemoteStub *GetRemoteStub();
+        static int OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData);
+    
     private:
         OHIPCRemoteStub *stub_{nullptr};
-    }; 
-
-    IpcCapiStubTest::IpcCapiStubTest() {
+    };
+    
+    IpcCapiStubTest::IpcCapiStubTest()
+    {
         // 创建stub对象
-        stub_ = OH_IPCRemoteStub_Create("testIpc",  &IpcCapiStubTest::OnRemoteRequest,
-            nullptr, this);
+        stub_ = OH_IPCRemoteStub_Create("testIpc", &IpcCapiStubTest::OnRemoteRequest, nullptr, this);
     }
-
-    IpcCapiStubTest::~IpcCapiStubTest() {
+    
+    IpcCapiStubTest::~IpcCapiStubTest()
+    {
         if (stub_ != nullptr) {
             OH_IPCRemoteStub_Destroy(stub_);
         }
     }
-
-    OHIPCRemoteStub* IpcCapiStubTest::GetRemoteStub() {
-        return stub_;
-    }
-
-    int IpcCapiStubTest::OnRemoteRequest(uint32_t code, const OHIPCParcel *data,  OHIPCParcel *reply, void  *userData) {
+    
+    OHIPCRemoteStub *IpcCapiStubTest::GetRemoteStub() { return stub_; }
+    
+    int IpcCapiStubTest::OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel *reply, void *userData)
+    {
         return OH_IPC_SUCCESS;
     }
-
-
-    IpcCapiStubTest ipcStubObj;
-
+    
+    IpcCapiStubTest g_ipcStubObj;
+    
     extern "C" {
-
-    OHIPCRemoteStub* NativeChildProcess_OnConnect()
+    OHIPCRemoteStub *NativeChildProcess_OnConnect()
     {
         // ipcRemoteStub指向子进程实现的ipc stub对象，用于接收来自主进程的IPC消息并响应
         // 子进程根据业务逻辑控制其生命周期
-        return ipcStubObj.GetRemoteStub();
+        return g_ipcStubObj.GetRemoteStub();
     }
-
-    void NativeChildProcess_MainProc()
+    
+    void NativeChildProcessMainProc()
     {
         // 相当于子进程的Main函数，实现子进程的业务逻辑
         // ...
@@ -112,6 +116,7 @@ libchild_process.so
     
     } // extern "C"
     ```
+
 
 2. 子进程-编译为动态链接库。
 
@@ -137,10 +142,12 @@ libchild_process.so
 
 3. 主进程-实现子进程启动结果回调函数。
 
-    ```c++
+    <!-- @[main_handle_child_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
+    
+    ``` C++
     #include <IPCKit/ipc_kit.h>
     #include <AbilityKit/native_child_process.h>
-
+    // ···
     static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
     {
         if (errCode != NCP_NO_ERROR) {
@@ -148,11 +155,11 @@ libchild_process.so
             // ...
             return;
         }
-
+    
         // 保存remoteProxy对象，后续基于IPC Kit提供的API同子进程间进行IPC通信
         // 耗时操作建议转移到独立线程去处理，避免长时间阻塞回调线程
         // IPC对象使用完毕后，需要调用OH_IPCRemoteProxy_Destroy方法释放
-        // ...
+        // ···
     }
     ```
 
@@ -162,10 +169,12 @@ libchild_process.so
 
     调用API启动Native子进程，需要注意返回值为NCP_NO_ERROR仅代表成功调用native子进程启动逻辑，实际的启动结果通过第二个参数中指定的回调函数异步通知。需注意**仅允许在主进程中创建子进程**。
 
-    ```c++
+    <!-- @[main_processIpc_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/MainProcessSample.cpp) -->
+    
+    ``` C++
     #include <IPCKit/ipc_kit.h>
     #include <AbilityKit/native_child_process.h>
-
+    // ···
     static void OnNativeChildProcessStarted(int errCode, OHIPCRemoteProxy *remoteProxy)
     {
         if (errCode != NCP_NO_ERROR) {
@@ -173,22 +182,26 @@ libchild_process.so
             // ...
             return;
         }
-        
+    
         // 保存remoteProxy对象，后续基于IPC Kit提供的API同子进程间进行IPC通信
         // 耗时操作建议转移到独立线程去处理，避免长时间阻塞回调线程
         // IPC对象使用完毕后，需要调用OH_IPCRemoteProxy_Destroy方法释放
         // ...
+        // ···
     }
     
-    void CreateNativeChildProcess() {
+    void CreateNativeChildProcess()
+    {
         // 第一个参数"libchildprocesssample.so"为实现了子进程必要导出方法的动态库文件名称
         int32_t ret = OH_Ability_CreateNativeChildProcess("libchildprocesssample.so", OnNativeChildProcessStarted);
         if (ret != NCP_NO_ERROR) {
             // 子进程未能正常启动时的异常处理
             // ...
         }
+        g_result = ret;
     }
     ```
+
 
 5. 主进程-添加编译依赖项。
 
@@ -228,7 +241,9 @@ libchild_process.so
 
 **头文件**
 
-```c++
+<!-- @[create_native_child_param_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
+
+``` C++
 #include <AbilityKit/native_child_process.h>
 ```
 
@@ -236,11 +251,11 @@ libchild_process.so
 
     在子进程中，实现参数为[NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md)的入口函数并导出（假设代码所在的文件名为ChildProcessSample.cpp）。子进程启动后会调用该入口函数，该函数返回后子进程随即退出。
 
-    ```c++
+    <!-- @[child_process_necessary_export_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildProcessFunc.cpp) -->
+    
+    ``` C++
     #include <AbilityKit/native_child_process.h>
-
     extern "C" {
-
     /**
      * 子进程的入口函数，实现子进程的业务逻辑
      * 函数名称可以自定义，在主进程调用OH_Ability_StartNativeChildProcess方法时指定，此示例中为Main
@@ -256,11 +271,12 @@ libchild_process.so
             char *fdName = current->fdName;
             int32_t fd = current->fd;
             current = current->next;
-            // 业务逻辑..
+            // 实现业务逻辑
         }
     }
     } // extern "C"
     ```
+
 
 2. 子进程-编译为动态链接库。
 
@@ -288,47 +304,59 @@ libchild_process.so
 
     调用API启动Native子进程，返回值为NCP_NO_ERROR代表成功启动native子进程。
 
-    ```c++
+    <!-- @[main_process_launch_native_child](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/MainProcessFunc.cpp) -->
+    
+    ``` C++
     #include <AbilityKit/native_child_process.h>
-    #include <stdlib.h>
-    #include <string.h>
+    #include <cstdlib>
+    #include <cstring>
     #include <fcntl.h>
-
-    void startNativeChildProcess()
+    // ···
+    int32_t g_fdNameMaxLength = 4;
+    
+    void StartNativeChildProcess()
     {
         // ...
         NativeChildProcess_Args args;
         // 设置entryParams，支持传输的最大数据量为150KB
-        args.entryParams = (char*)malloc(sizeof(char) * 10);
-        (void)strcpy(args.entryParams, "testParam");
-
+        const size_t testParamLen = sizeof("testParam") - 1;
+        const size_t entryParamsSize = 10;
+        args.entryParams = (char *)malloc(sizeof(char) * entryParamsSize);
+        if (args.entryParams != nullptr) {
+            (void)strlcpy(args.entryParams, "testParam", testParamLen);
+            args.entryParams[testParamLen] = '\0';
+        }
+    
         // 插入节点到链表头节点中
-        args.fdList.head = (NativeChildProcess_Fd*)malloc(sizeof(NativeChildProcess_Fd));
+        args.fdList.head = (NativeChildProcess_Fd *)malloc(sizeof(NativeChildProcess_Fd));
         // fd关键字，最多不超过20个字符
-        args.fdList.head->fdName = (char*)malloc(sizeof(char) * 4);
-        (void)strcpy(args.fdList.head->fdName, "fd1");
+        const size_t fd1Len = sizeof("fd1") - 1;
+        const size_t fdNameSize = 10;
+        args.fdList.head->fdName = (char *)malloc(sizeof(char) * g_fdNameMaxLength);
+        if (args.fdList.head->fdName != nullptr) {
+            (void)strlcpy(args.fdList.head->fdName, "fd1", fdNameSize);
+            args.fdList.head->fdName[fd1Len] = '\0';
+        }
         // 获取fd逻辑
         int32_t fd = open("/data/storage/el2/base/haps/entry/files/test.txt", O_RDWR | O_CREAT, 0644);
         args.fdList.head->fd = fd;
         // 此处只插入一个fd记录，根据需求可以插入更多fd记录到链表中，最多不超过16个
         args.fdList.head->next = NULL;
-        NativeChildProcess_Options options = {
-            .isolationMode = NCP_ISOLATION_MODE_ISOLATED
-        };
-
+        NativeChildProcess_Options options = {.isolationMode = NCP_ISOLATION_MODE_ISOLATED};
+    
         // 第一个参数"libchildprocesssample.so:Main"为实现了子进程Main方法的动态库文件名称和入口方法名
         int32_t pid = -1;
-        Ability_NativeChildProcess_ErrCode ret = OH_Ability_StartNativeChildProcess(
-            "libchildprocesssample.so:Main", args, options, &pid);
+        Ability_NativeChildProcess_ErrCode ret =
+            OH_Ability_StartNativeChildProcess("libchildprocesssample.so:Main", args, options, &pid);
         if (ret != NCP_NO_ERROR) {
             // 释放NativeChildProcess_Args中的内存空间防止内存泄漏
             // 子进程未能正常启动时的异常处理
             // ...
         }
-
+    
         // 其他逻辑
-        // ...
-
+    // ···
+    
         // 释放NativeChildProcess_Args中的内存空间防止内存泄漏
     }
     ```
@@ -370,7 +398,9 @@ libchild_process.so
 
 **头文件**
 
-```c++
+<!-- @[child_get_start_params_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
+
+``` C++
 #include <AbilityKit/native_child_process.h>
 ```
 
@@ -378,12 +408,13 @@ libchild_process.so
 
 [OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess)创建子进程后，子进程内的任意so和任意子线程可以通过调用[OH_Ability_GetCurrentChildProcessArgs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_getcurrentchildprocessargs)()获取到子进程的启动参数[NativeChildProcess_Args](../reference/apis-ability-kit/capi-nativechildprocess-args.md)，便于操作相关的文件描述符。
 
-```c++
+<!-- @[child_get_start_params_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessParams/entry/src/main/cpp/ChildGetStartParams.cpp) -->
+
+``` C++
 #include <AbilityKit/native_child_process.h>
 #include <thread>
 
 extern "C" {
-
 void ThreadFunc()
 {
     // 获取子进程的启动参数
@@ -400,7 +431,7 @@ void ThreadFunc()
         char *fdName = current->fdName;
         int32_t fd = current->fd;
         current = current->next;
-        // 业务逻辑..
+        // 实现业务逻辑
     }
 }
 
@@ -410,7 +441,7 @@ void ThreadFunc()
  */
 void Main(NativeChildProcess_Args args)
 {
-    // 业务逻辑..
+    // 实现业务逻辑
 
     // 创建线程
     std::thread tObj(ThreadFunc);

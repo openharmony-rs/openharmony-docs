@@ -49,6 +49,8 @@ The **queue.h** file declares the queue APIs in C.
 | [FFRT_C_API ffrt_function_header_t* ffrt_queue_attr_get_callback(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_callback) | Obtains the callback that is invoked when a queue task times out.|
 | [FFRT_C_API void ffrt_queue_attr_set_max_concurrency(ffrt_queue_attr_t* attr, const int max_concurrency)](#ffrt_queue_attr_set_max_concurrency) | Sets the maximum concurrency for a queue, which must be a concurrent queue.|
 | [FFRT_C_API int ffrt_queue_attr_get_max_concurrency(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_max_concurrency) | Obtains the maximum concurrency of a queue, which must be a concurrent queue.|
+| [FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mode)](#ffrt_queue_attr_set_thread_mode) | Sets the running mode of tasks in the queue. By default, the coroutine mode is used.|
+| [FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)](#ffrt_queue_attr_get_thread_mode) | Obtains the running mode of tasks in the queue.|
 | [FFRT_C_API ffrt_queue_t ffrt_queue_create(ffrt_queue_type_t type, const char* name, const ffrt_queue_attr_t* attr)](#ffrt_queue_create) | Creates a queue.|
 | [FFRT_C_API void ffrt_queue_destroy(ffrt_queue_t queue)](#ffrt_queue_destroy) | Destroys a queue.|
 | [FFRT_C_API void ffrt_queue_submit(ffrt_queue_t queue, ffrt_function_header_t* f, const ffrt_task_attr_t* attr)](#ffrt_queue_submit) | Submits a task to a queue.|
@@ -226,6 +228,7 @@ FFRT_C_API void ffrt_queue_attr_set_callback(ffrt_queue_attr_t* attr, ffrt_funct
 **Description**
 
 Sets a callback that is invoked when a queue task times out.
+You are not advised to call the `exit` function in `f`. Otherwise, undefined behavior may occur.
 
 **Since**: 10
 
@@ -306,6 +309,51 @@ Obtains the maximum concurrency of a concurrent queue.
 | Type| Description|
 | -- | -- |
 | FFRT_C_API int | Returns the maximum concurrency.|
+
+### ffrt_queue_attr_set_thread_mode()
+
+```
+FFRT_C_API void ffrt_queue_attr_set_thread_mode(ffrt_queue_attr_t* attr, bool mode)
+```
+
+**Description**
+
+Sets the running mode of tasks in the queue. By default, the coroutine mode is used.
+
+**Since**: 20
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md)* attr | Pointer to the queue attribute.|
+| bool mode | Sets the running mode of the queue task. The value **true** indicates the thread mode, and the value **false** indicates the coroutine mode.|
+
+### ffrt_queue_attr_get_thread_mode()
+
+```
+FFRT_C_API bool ffrt_queue_attr_get_thread_mode(const ffrt_queue_attr_t* attr)
+```
+
+**Description**
+
+Obtains the running mode of tasks in the queue.
+
+**Since**: 20
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [const ffrt_queue_attr_t](capi-ffrt-ffrt-queue-attr-t.md)* attr | Pointer to the queue attribute.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| FFRT_C_API bool | The value **true** indicates the thread mode, and the value **false** indicates the coroutine mode.|
 
 ### ffrt_queue_create()
 

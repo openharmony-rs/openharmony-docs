@@ -1,4 +1,10 @@
 # In-Application Embedded Component (EmbeddedComponent)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @dutie123-->
+<!--Designer: @lmleon-->
+<!--Tester: @fredyuan0912-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **EmbeddedComponent** allows the current page to embed UI content provided by other EmbeddedUIExtensionAbilities within the same application. These UIs run in independent processes, offering enhanced security and stability.
 
@@ -20,7 +26,7 @@ Be aware of the component's usage constraints and lifecycle management to maximi
 
 - Device Requirements
 
-  The **EmbeddedComponent** is supported only on devices configured with multi-process permissions.
+  The **EmbeddedComponent** is supported only on devices that support [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md).
 
 - Applicable Scope
 
@@ -113,23 +119,23 @@ const TAG: string = '[ExampleEmbeddedAbility]'
 
 export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   onCreate() {
-    console.log(TAG, `onCreate`);
+    console.info(TAG, `onCreate`);
   }
 
   onForeground() {
-    console.log(TAG, `onForeground`);
+    console.info(TAG, `onForeground`);
   }
 
   onBackground() {
-    console.log(TAG, `onBackground`);
+    console.info(TAG, `onBackground`);
   }
 
   onDestroy() {
-    console.log(TAG, `onDestroy`);
+    console.info(TAG, `onDestroy`);
   }
 
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
-    console.log(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
+    console.info(TAG, `onSessionCreate, want: ${JSON.stringify(want)}`);
     let param: Record<string, UIExtensionContentSession> = {
       'session': session
     };
@@ -139,7 +145,7 @@ export default class ExampleEmbeddedAbility extends EmbeddedUIExtensionAbility {
   }
 
   onSessionDestroy(session: UIExtensionContentSession) {
-    console.log(TAG, `onSessionDestroy`);
+    console.info(TAG, `onSessionDestroy`);
   }
 }
 ```
@@ -173,13 +179,12 @@ The following is an implementation of the entry component of the provider applic
 ```ts
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
-let storage = new LocalStorage();
-
-@Entry(storage)
+@Entry
 @Component
 struct Extension {
   @State message: string = 'EmbeddedUIExtensionAbility Index';
-  private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
+  private localStorage: LocalStorage|undefined = this.getUIContext().getSharedLocalStorage();
+  private session: UIExtensionContentSession | undefined = this.localStorage?.get<UIExtensionContentSession>('session');
 
   build() {
     Column() {
@@ -205,23 +210,23 @@ Key considerations for implementing the entry page:
 
 1. Session management
 
-  Properly obtain and use the **UIExtensionContentSession** instances to ensure communication with the host application.
+   Properly obtain and use the **UIExtensionContentSession** instances to ensure communication with the host application.
 
 2. Result return
 
-  When returning results to the host through **terminateSelfWithResult**, specify:
+   When returning results to the host through **terminateSelfWithResult**, specify:
 
-  - **resultCode**: result code.
+   - **resultCode**: result code.
 
-  - **want**: recipient of the result.
+   - **want**: recipient of the result.
 
 3. Page lifecycle
 
-  Manage the lifecycle of the entry page to ensure proper resource cleanup.
+   Manage the lifecycle of the entry page to ensure proper resource cleanup.
 
 4. Style configuration
 
-  Properly configure page element styles to display the page as expected.
+   Properly configure page element styles to display the page as expected.
 
 **Configuration**
 
@@ -239,18 +244,8 @@ Key considerations for implementing the entry page:
 
 **Expected Results**
 
-1. An error message appears since multi-process mode is disabled by default.
+1. Start the application on the device that supports **EmbeddedUIExtensionAbility**.
 
-![en-us_image_0000001502261185](figures/en-us_image_0000001502261185.jpg)
+   ![en-us_image_0000001502261065](figures/en-us_image_0000001502261065.jpg)
 
-2. Use the following hdc command to enable multi-process mode. Then, restart the device:
-
-```bash
-hdc shell param set persist.sys.abilityms.multi_process_model true
-```
-
-3. The UI is displayed correctly after the application starts.
-
-![en-us_image_0000001502261065](figures/en-us_image_0000001502261065.jpg)
-
-4. Clicking the **terminateSelfWithResult** button hides the provider content and displays **onTerminated** information on the host page.
+2. Clicking the **terminateSelfWithResult** button hides the provider content and displays **onTerminated** information on the host page.

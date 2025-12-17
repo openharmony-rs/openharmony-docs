@@ -18,7 +18,7 @@ Resource对象通过转换为SendableResource对象后，可以被[Sendable类](
 ## 导入模块
 
 ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
+import { sendableResourceManager } from '@kit.LocalizationKit';
 ```
 
 ## sendableResourceManager.resourceToSendableResource
@@ -52,20 +52,20 @@ resourceToSendableResource(resource: Resource): SendableResource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
-import { BusinessError } from '@ohos.base';
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```js
+import { sendableResourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let sendableResource: sendableResourceManager.SendableResource = sendableResourceManager.resourceToSendableResource($r('app.string.test'));
@@ -74,7 +74,7 @@ try {
     let message = (error as BusinessError).message;
     console.error(`resourceToSendableResource failed, error code: ${code}, message: ${message}.`);
 }
-  ```
+```
 
 ## sendableResourceManager.sendableResourceToResource
 
@@ -107,29 +107,29 @@ sendableResourceToResource(resource: SendableResource): Resource
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **示例：**
-  ```json
-  // 资源文件路径: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```js
-import sendableResourceManager from '@ohos.sendableResourceManager';
-import { BusinessError } from '@ohos.base';
+```json
+// 资源文件路径: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```js
+import { sendableResourceManager } from '@kit.LocalizationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     let resource: sendableResourceManager.Resource = sendableResourceManager.sendableResourceToResource(sendableResourceManager.resourceToSendableResource($r('app.string.test')));
 } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
-    console.error(`resourceToSendableResource failed, error code: ${code}, message: ${message}.`);
+    console.error(`sendableResourceToResource failed, error code: ${code}, message: ${message}.`);
 }
-  ```
+```
 
 ## Resource
 

@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 动态设置组件绑定的手势，支持在属性设置时使用if/else语法。
 
@@ -21,6 +21,8 @@ gestureModifier(modifier:&nbsp;GestureModifier): T
 >  **说明：**
 >
 >  gestureModifier不支持自定义组件。
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -4,7 +4,7 @@
 <!--Owner: @yp99ustc-->
 <!--Designer: @LongLie-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
 
 There are many reasons for white screen issues on web pages. This topic describes how to troubleshoot common white screen issues.
 
@@ -13,19 +13,23 @@ There are many reasons for white screen issues on web pages. This topic describe
 3. In complex layout scenarios, check the rendering mode and component constraints.
 4. Handle the compatibility problem of the HTML5 code.
 5. Check the keywords related to the lifecycle and network loading in the log.
+6. Check whether the Secure Shield mode is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb).
 
 ## Checking Permissions and Network Status
 If the network or file access permission is not added for the application, or the network status of the device is poor, the **Web** component will fail to be loaded or page elements will be missing, resulting in a white screen.
 * Check the network status of the device, including whether the device is connected to the network and whether the built-in browser of the device can access web pages.
 * Ensure that the network permission **ohos.permission.INTERNET** is added to the application (mandatory for accessing online pages).
-  ```
-  // Add the required permission in module.json5.
-  "requestPermissions":[
-     {
+
+    <!-- @[INTERNET](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/module.json5) -->
+
+    ``` JSON5
+    "requestPermissions":[
+      {
         "name" : "ohos.permission.INTERNET"
-     }
-  ]
-  ```
+      }
+    ],
+    ```
+
 * The following table lists attributes used to enable related permissions.
     | Name  | Description |                       
     | ----   | -------------------------------- |
@@ -35,57 +39,61 @@ If the network or file access permission is not added for the application, or th
     | [onlineImageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#onlineimageaccess) | Sets whether to enable online image loading (through HTTP and HTTPS).|
     | [javaScriptAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptaccess) | Sets whether to enable JavaScript script execution.| 
 
+    <!-- @[OpenPermissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/OpenPermissions.ets) -->
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .domStorageAccess(true)
-          .fileAccess(true)
-          .imageAccess(true)
-          .onlineImageAccess(true)
-          .javaScriptAccess(true)
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .domStorageAccess(true)
+            .fileAccess(true)
+            .imageAccess(true)
+            .onlineImageAccess(true)
+            .javaScriptAccess(true)
+        }
       }
     }
-  }
-  ```
+    ```
+
+
 * Modify the [UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) and check whether the page is restored.
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    @State customUserAgent: string = ' DemoApp';
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-        .onControllerAttached(() => {
-          console.info("onControllerAttached");
-          try {
-            let userAgent = this.controller.getUserAgent() + this.customUserAgent;
-            this.controller.setCustomUserAgent(userAgent);
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
+    <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
+    
+    ``` TypeScript
+    import { webview } from '@kit.ArkWeb';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    @Entry
+    @Component
+    struct WebComponent {
+      controller: webview.WebviewController = new webview.WebviewController();
+      @State customUserAgent: string = ' DemoApp';
+    
+      build() {
+        Column() {
+          Web({ src: 'www.example.com', controller: this.controller })
+            .onControllerAttached(() => {
+              console.info('onControllerAttached');
+              try {
+                let userAgent = this.controller.getUserAgent() + this.customUserAgent;
+                this.controller.setCustomUserAgent(userAgent);
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+            })
+        }
       }
     }
-  }
-  ```
+    ```
+
 ## Debugging Pages by Using DevTools
 If a white screen issue persists after the network and permission configurations are correctly configured, use DevTools to debug the frontend page and listen for the web-related error reporting APIs to locate the error type.
 
@@ -94,7 +102,7 @@ If a white screen issue persists after the network and permission configurations
    ![web-white-devtools](figures/web-white-devtools.PNG)
 
 2. Check the console to see if there are any exceptions caused by the Mixed Content policy or CORS policy, or JS errors. For details, see [Resolving Cross-Origin Resource Access](web-cross-origin.md). For security purposes, the ArkWeb kernel does not allow the file and resource protocols to access cross-origin requests. As such, the **Web** component blocks such accesses when loading local offline resources. When **Web** components cannot access local cross-origin resources, the DevTools console displays the following error message:
-    ```
+    ```txt
     Access to script at 'xxx' from origin 'xxx' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes:   http, arkweb, data, chrome-extension, chrome, https, chrome-untrusted.
     ```
     You can use either of the following methods to solve the problem:
@@ -168,12 +176,13 @@ If a white screen issue persists after the network and permission configurations
 
     ```html
     <!-- main/resources/rawfile/index.html -->
+    <!DOCTYPE html>
     <html>
     <head>
   	  <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     <body>
-    <script crossorigin src="./js/script.js"></script>
+      <script crossorigin src="./js/script.js"></script>
     </body>
     </html>
     ```
@@ -213,28 +222,29 @@ If a white screen issue persists after the network and permission configurations
 
     If a path is not any of the preceding paths, an error code 401 is reported and the path list fails to be set. If the path list is empty, the access scope of the file protocol complies with the [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) rule. The following is an example:
 
-    ```ts
-    // main/ets/pages/Index.ets
+    <!-- @[SetPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/ets/pages/SetPath.ets) -->
+    
+    ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     @Entry
     @Component
     struct WebComponent {
       controller: WebviewController = new webview.WebviewController();
       uiContext: UIContext = this.getUIContext();
-
+    
       build() {
         Row() {
-          Web({ src: "", controller: this.controller })
+          Web({ src: '', controller: this.controller })
             .onControllerAttached(() => {
               try {
                 // Set the list of paths that allow cross-origin access.
                 this.controller.setPathAllowingUniversalAccess([
                   this.uiContext.getHostContext()!.resourceDir,
-                  this.uiContext.getHostContext()!.filesDir + "/example"
+                  this.uiContext.getHostContext()!.filesDir + '/example'
                 ])
-                this.controller.loadUrl("file://" + this.uiContext.getHostContext()!.resourceDir + "/index.html")
+                this.controller.loadUrl('file://' + this.uiContext.getHostContext()!.resourceDir + '/index.html')
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
               }
@@ -247,6 +257,7 @@ If a white screen issue persists after the network and permission configurations
     }
     ```
 
+	  HTML code:
     ```html
     <!-- main/resources/resfile/index.html -->
     <!DOCTYPE html>
@@ -255,7 +266,7 @@ If a white screen issue persists after the network and permission configurations
     <head>
         <meta charset="utf-8">
         <title>Demo</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,   viewport-fit=cover">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
         <script>
   		  function getFile() {
   			  var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
@@ -283,9 +294,9 @@ If a white screen issue persists after the network and permission configurations
     </head>
 
     <body>
-    <div class="page">
-        <button id="example" onclick="getFile()">loadFile</button>
-    </div>
+      <div class="page">
+          <button id="example" onclick="getFile()">loadFile</button>
+      </div>
     <div id="text"></div>
     </body>
 
@@ -323,7 +334,7 @@ The **Web** component provides the capability of adapting to the page layout. Fo
 - Do not enable the **RESIZE_CONTENT** attribute in **FIT_CONTENT** mode to avoid layout invalidation.
 - If the CSS **height: <number& > vh** is conflict with the **Web** component size adaptation page layout, check whether **height: vh** is the first CSS height style from the body node. As shown in the following example. The height of the DOM node whose ID is 2 is 0, causing a white screen.
 
-  ```
+  ```html
   <body>
     <div id = "1">
       <div id = "2" style = "height: 100vh">Child DOM</div>
@@ -333,7 +344,7 @@ The **Web** component provides the capability of adapting to the page layout. Fo
   ```
   The reference solution to the white screen problem is as follows:
   - Use a specific height style for the child DOM to extend the parent element.
-    ```
+    ```html
     <body>
       <div id = "1">
         <div id = "2"><div style = "height: 20px"><div/></div>
@@ -342,7 +353,7 @@ The **Web** component provides the capability of adapting to the page layout. Fo
     </body>
     ```
   - Use the actual height style for the parent element.
-    ```
+    ```html
     <body>
       <div id = "1">
         <div id = "2" style = "height: 20px">Child DOM</div>
@@ -366,7 +377,7 @@ To avoid white screen issues, you can handle the compatibility issue as follows:
    })
    ```
 ## Monitoring Memory and Lifecycle
-If the memory usage reaches the threshold, the rendering process will be terminated, causing a white screen. Similarly, a white screen will occur if the rendering process fails to start or is abnormally terminated. You can check the cause in logs. For example, check whether the **Web** component is correctly bound to the **WebController** or whether the white screen occurs because the **Web** component is released too early. Check the information related to the render process in the log, for example, whether a memory leak causes insufficient rendering memory. The keyword **MEMORY_PRESSURE_LEVEL_CRITICAL** indicates that the memory usage has reached the threshold. In this case, the web page may encounter exceptions such as black screen, artifacts, or flicker. You need to check whether a memory leak occurs, and whether the render process starts successfully or exits abnormally.
+If the memory usage reaches the threshold, the rendering process will be terminated, causing a white screen. Similarly, a white screen will occur if the rendering process fails to start or is abnormally terminated. You can check the cause in logs. For example, check whether the **Web** component is correctly bound to the **WebController** or whether the white screen occurs because the **Web** component is released too early. Check the information related to the render process in the log, for example, whether a memory leak causes insufficient rendering memory. The keyword **MEMORY_PRESSURE_LEVEL_CRITICAL** indicates that the memory usage has reached the threshold. In this case, the web page may encounter exceptions such as black screen, artifacts, or flicker. You need to check whether a memory leak occurs. Check whether the render process starts successfully or exits abnormally.
 
 The following table lists log keywords and the corresponding descriptions.
 
@@ -375,7 +386,7 @@ The following table lists log keywords and the corresponding descriptions.
 | StartRenderProcess failed | The rendering process fails to be started.|
 | MEMORY_PRESSURE_LEVEL_CRITICAL | The device memory pressure reaches the threshold. If the device continues to be used, a black screen, screen flickering, or white screen may occur.|
 | crashpad SandboxedHandler::HandlerCrash, received signo = xxx | The render process crashes, causing problems such as white screen and **Web** component suspension.|
-| SharedContextState context lost via Skia OOM | The shared memory is insufficient, which may cause the application to crash, produce artifacts, or become suspended.
+| SharedContextState context lost via Skia OOM | The shared memory is insufficient, which may cause the application to crash, produce artifacts, or become suspended.|
 | CreateNativeViewGLSurfaceEGLOhos::normal surface | The EGL surface is successfully created. If this log is not displayed, a white screen occurs.|
 | INFO: request had no response within 5 seconds | Network timeout.|
 | final url: ***, error_code xxx(net::ERR_XXX) | An error is reported during the main resource loading.|
@@ -388,7 +399,7 @@ The following figure shows the key points contained during the **Web** component
 | NWebRenderMain start  | The child process starts.|
 | RendererMain startup,<br> render thread init | The child process initialization starts.|
 | event_message: WillProcessNavigationResponse source_id xxx navigation_handle id: xxx| The response of the main resource is received.|
-| event_message: commit navigation in main frame, routing_id: 4, url: *** | The navigation is committed to the child process.
+| event_message: commit navigation in main frame, routing_id: 4, url: *** | The navigation is committed to the child process.|
 | RenderFrameImpl::CommitNavigation,<br> event_message: page load start | The child process receives the commit message.|
 | NWebHandlerDelegate::OnNavigationEntryCommitted,<br> event_message: Commit source_id xxx | The main process receives **DidCommitNavigation**.|
 | event_message: load_timing_info errpr_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
@@ -397,3 +408,20 @@ The following figure shows the key points contained during the **Web** component
 | NWebHandlerDelegate::OnFirstContentfulPaint| The first frame content is displayed.|
 | event_message: content load finished | The page content parsing is complete.|
 | event_message: page load finished,<br> NWebHandlerDelegate::OnLoadEnd,<br> NWebHandlerDelegate::MainFrame OnLoadEnd,<br> NWebHandlerDelegate::OnFirstMeaningfulPaint | The page and sub-resources are loaded.|
+
+## White Screen During HTML5 Page Loading Due to Inconsistent Default WebView Loading Processes
+
+**Symptom**
+
+The HTML5 page is properly loaded through WebView on the phone, but a white screen is displayed on the tablet, and PC/2-in-1 device.
+
+**Possible causes**
+
+The WebView on the tablet, and PC/2-in-1 device uses multi-process loading by default, and iframe is loaded using sub-processes by default. After the main process is loaded, if the sub-process is not loaded, a white screen is displayed.
+
+**Solution**
+
+Use **setRenderProcessMode()** to set the WebView rendering mode to single-process loading.
+   ```ts
+   webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.SINGLE);
+   ```

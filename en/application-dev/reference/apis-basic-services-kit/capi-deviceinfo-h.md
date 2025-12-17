@@ -1,4 +1,10 @@
 # deviceinfo.h
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
@@ -514,7 +520,7 @@ Obtains the ISV distribution OS API version.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an ISV distribution OS API version.<br> If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned.|
+| int | Returns an ISV distribution OS API version.<br>If no ISV is specified, the value of [OH_GetOSFullName](#oh_getosfullname) is returned. |
 
 ### OH_GetDistributionOSReleaseType()
 

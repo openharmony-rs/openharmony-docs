@@ -29,7 +29,7 @@
 | [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) | OH_AudioSession_Strategy | 音频会话策略。 |
 | [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) | OH_AudioSession_DeactivatedEvent | 音频会话已停用事件。 |
 | [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) | OH_AudioSession_StateChangedEvent | 音频会话状态变更事件。 |
-| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) | OH_AudioSessionManager | 声明音频会话管理器。<br> 用于管理音频会话相关功能。 |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) | OH_AudioSessionManager | 声明音频会话管理器。用于管理音频会话相关功能。 |
 
 ### 枚举
 
@@ -68,7 +68,7 @@
 | [OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audiosessionmanager_getavailabledevices) | - | 获取音频可选设备列表。 |
 | [OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)](#oh_audiosessionmanager_registeravailabledeviceschangecallback) | - | 注册可用设备更改回调。 |
 | [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)](#oh_audiosessionmanager_unregisteravailabledeviceschangecallback) | - | 取消注册可用设备更改回调。 |
-| [OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiosessionmanager_selectmediainputdevice) | - | 设置媒体输入设备。此功能不适用于呼叫录音，即[SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)为SOURCE_TYPE_VOICE_CMMUNICATION的场景不适用。<br> 在存在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与所选设备不同。<br> 应用程序可以使用[OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback)注册一个回调来监听实际的输入设备。 |
+| [OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)](#oh_audiosessionmanager_selectmediainputdevice) | - | 设置媒体输入设备。此功能不适用于呼叫录音，即[SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。<br> 在存在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与所选设备不同。<br> 应用程序可以使用[OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback)注册一个回调来监听实际的输入设备。 |
 | [OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)](#oh_audiosessionmanager_getselectedmediainputdevice) | - | 获得通过[OH_AudioSessionManager_SelectMediaInputDevice](#oh_audiosessionmanager_selectmediainputdevice)设置的媒体输入设备。 |
 | [OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)](#oh_audiosessionmanager_setbluetoothandnearlinkpreferredrecordcategory) | - | 设置在使用蓝牙或星闪进行录音时，应用程序的设备偏好分类。应用程序可以在蓝牙或星闪连接之前设置此分类，系统将在设备连接时优先使用蓝牙或星闪进行录音。<br> 在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与当前设置的偏好设备不同。<br> 应用程序可以使用[OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback)注册一个回调来监听实际的输入设备。 |
 | [OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)](#oh_audiosessionmanager_getbluetoothandnearlinkpreferredrecordcategory) | - | 获取应用程序设置的在使用蓝牙或星闪进行录音时的设备偏好分类。 |
@@ -80,7 +80,7 @@
 
 ### OH_AudioSession_ConcurrencyMode
 
-```
+```c
 enum OH_AudioSession_ConcurrencyMode
 ```
 
@@ -99,7 +99,7 @@ enum OH_AudioSession_ConcurrencyMode
 
 ### OH_AudioSession_Scene
 
-```
+```c
 enum OH_AudioSession_Scene
 ```
 
@@ -117,7 +117,7 @@ enum OH_AudioSession_Scene
 
 ### OH_AudioSession_StateChangeHint
 
-```
+```c
 enum OH_AudioSession_StateChangeHint
 ```
 
@@ -138,7 +138,7 @@ enum OH_AudioSession_StateChangeHint
 
 ### OH_AudioSession_OutputDeviceChangeRecommendedAction
 
-```
+```c
 enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 ```
 
@@ -155,7 +155,7 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 ### OH_AudioSession_DeactivatedReason
 
-```
+```c
 enum OH_AudioSession_DeactivatedReason
 ```
 
@@ -172,7 +172,7 @@ enum OH_AudioSession_DeactivatedReason
 
 ### OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
-```
+```c
 enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 ```
 
@@ -194,7 +194,7 @@ enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
 ### OH_AudioSession_StateChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChangedEvent event)
 ```
 
@@ -212,7 +212,7 @@ typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChange
 
 ### OH_AudioSession_AvailableDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
 ```
 
@@ -227,11 +227,11 @@ typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_Ch
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype) type | 设备连接状态类型，已连接或断开。 |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 音频设备描述符数组。不再继续使用audioDeviceDescriptorArray指针时，请使用[OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices)进行释放。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 音频设备描述符数组。<br> 不再继续使用audioDeviceDescriptorArray指针时，请使用[OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices)进行释放。 |
 
 ### OH_AudioSession_CurrentInputDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason)
 ```
 
@@ -245,12 +245,12 @@ typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDevice
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *devices | 音频设备描述符数组。不再继续使用devices指针时，请使用[OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices)进行释放。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *devices | 音频设备描述符数组。<br> 不再继续使用devices指针时，请使用[OH_AudioSessionManager_ReleaseDevices](#oh_audiosessionmanager_releasedevices)进行释放。 |
 | [OH_AudioStream_DeviceChangeReason](capi-native-audiostream-base-h.md#oh_audiostream_devicechangereason) changeReason | 设备变更原因。 |
 
 ### OH_AudioSession_CurrentOutputDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason, OH_AudioSession_OutputDeviceChangeRecommendedAction recommendedAction)
 ```
 
@@ -270,7 +270,7 @@ typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDevic
 
 ### OH_AudioSession_DeactivatedCallback()
 
-```
+```c
 typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_DeactivatedEvent event)
 ```
 
@@ -288,7 +288,7 @@ typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_Deactivat
 
 ### OH_AudioManager_GetAudioSessionManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionManager **audioSessionManager)
 ```
 
@@ -312,7 +312,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionMana
 
 ### OH_AudioSessionManager_ActivateAudioSession()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessionManager *audioSessionManager, const OH_AudioSession_Strategy *strategy)
 ```
 
@@ -337,7 +337,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessio
 
 ### OH_AudioSessionManager_DeactivateAudioSession()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSessionManager *audioSessionManager)
 ```
 
@@ -361,7 +361,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSess
 
 ### OH_AudioSessionManager_IsAudioSessionActivated()
 
-```
+```c
 bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audioSessionManager)
 ```
 
@@ -385,7 +385,7 @@ bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audi
 
 ### OH_AudioSessionManager_RegisterSessionDeactivatedCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)
 ```
 
@@ -410,7 +410,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
 
 ### OH_AudioSessionManager_UnregisterSessionDeactivatedCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)
 ```
 
@@ -435,7 +435,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallbac
 
 ### OH_AudioSessionManager_SetScene()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_Scene scene)
 ```
 
@@ -450,7 +450,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *au
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | 指向[OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager)创建的音频会话管理实例。 |
-| [OH_AudioSession_Scene](#oh_audiosession_scene) scene | 音频会话场景。 |
+| [OH_AudioSession_Scene](#oh_audiosession_scene) scene | 指向[OH_AudioSession_Scene](#oh_audiosession_scene)要设置的音频会话场景。 |
 
 **返回：**
 
@@ -460,7 +460,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *au
 
 ### OH_AudioSessionManager_RegisterStateChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)
 ```
 
@@ -485,7 +485,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_Audi
 
 ### OH_AudioSessionManager_UnregisterStateChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)
 ```
 
@@ -510,19 +510,22 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_Au
 
 ### OH_AudioSessionManager_SetDefaultOutputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type deviceType)
 ```
 
 **描述**
 
 设置默认本机内置发声设备。
-> **说明：**
-> 本接口适用范围如下：
->
-> - 当设置的[OH_AudioSession_Scene](#oh_audiosession_scene)为VoIP场景时，激活AudioSession后立即生效；如果OH_AudioSession_Scene为非VoIP场景，激活AudioSession时不会生效，直到启动播放的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。
-> - 本接口允许在[OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) 创建后随时调用。系统记录应用设置的默认本机内置发声设备，但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。
-> - 本接口优先级低于[AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)。如果使用AVCastPicker切换过发声设备，再次调用本接口切换设备将不生效。
+
+>**说明：** 
+>本接口适用范围如下：
+* 当设置的[OH_AudioSession_Scene](#oh_audiosession_scene)为VoIP场景时，激活AudioSession后立即生效。
+* 如果[OH_AudioSession_Scene](#oh_audiosession_scene)为非VoIP场景，激活AudioSession时不会生效。
+* 直到启动播放的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。
+* 本接口允许在[OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md)创建后随时调用。系统记录应用设置的默认本机内置发声设备，但只有激活AudioSession后才能生效。
+* 应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。
+* 本接口优先级低于[AVCastPicker](../apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)。如果使用AVCastPicker切换过发声设备，再次调用本接口切换设备将不生效。
 
 **起始版本：** 20
 
@@ -541,7 +544,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 
 ### OH_AudioSessionManager_GetDefaultOutputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type *deviceType)
 ```
 
@@ -566,7 +569,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSess
 
 ### OH_AudioSessionManager_ReleaseDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
 ```
 
@@ -591,7 +594,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManag
 
 ### OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)
 ```
 
@@ -616,7 +619,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCa
 
 ### OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)
 ```
 
@@ -641,7 +644,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChange
 
 ### OH_AudioSessionManager_GetAvailableDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)
 ```
 
@@ -667,7 +670,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSession
 
 ### OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)
 ```
 
@@ -693,7 +696,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallb
 
 ### OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)
 ```
 
@@ -718,13 +721,13 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCal
 
 ### OH_AudioSessionManager_SelectMediaInputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)
 ```
 
 **描述**
 
-设置媒体输入设备。此功能不适用于呼叫录音，即[SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)为SOURCE_TYPE_VOICE_CMMUNICATION的场景不适用。<br> 在存在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与所选设备不同。<br> 应用程序可以使用[OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback)注册一个回调来监听实际的输入设备。
+设置媒体输入设备。此功能不适用于呼叫录音，即[SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)为SOURCE_TYPE_VOICE_COMMUNICATION的场景不适用。<br> 在存在更高优先级的并发录音流的场景中，应用程序实际使用的输入设备可能与所选设备不同。<br> 应用程序可以使用[OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](#oh_audiosessionmanager_registercurrentinputdevicechangecallback)注册一个回调来监听实际的输入设备。
 
 **起始版本：** 21
 
@@ -743,7 +746,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSess
 
 ### OH_AudioSessionManager_GetSelectedMediaInputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)
 ```
 
@@ -768,7 +771,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_Audi
 
 ### OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)
 ```
 
@@ -793,7 +796,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRec
 
 ### OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)
 ```
 
@@ -818,7 +821,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRec
 
 ### OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)
 ```
 
@@ -843,7 +846,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCal
 
 ### OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)
 ```
 
@@ -868,7 +871,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeC
 
 ### OH_AudioSessionManager_ReleaseDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)
 ```
 

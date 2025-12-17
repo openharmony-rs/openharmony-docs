@@ -507,7 +507,7 @@ ethernet.off('interfaceStateChange');
 
 getEthernetDeviceInfos(): Promise\<Array\<EthernetDeviceInfos>>
 
-获取以太网设备信息。使用Promise异步回调。
+获取本机以太网卡的设备信息（如供应商名称、产品名称、最大连接速率等）使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -519,7 +519,7 @@ getEthernetDeviceInfos(): Promise\<Array\<EthernetDeviceInfos>>
 
 | 类型                | 说明                                                        |
 | ------------------- | ----------------------------------------------------------- |
-| Promise\<Array\<[EthernetDeviceInfos](#ethernetdeviceinfos20)>>  | 以Promise形式返回执行结果。成功返回以太网设备信息列表，失败返回对应错误码。 |
+| Promise\<Array\<[EthernetDeviceInfos](#ethernetdeviceinfos20)>>  | Promise对象，返回本次执行结果。成功返回以太网设备信息列表，失败返回对应错误码。 |
 
 **错误码：**
 

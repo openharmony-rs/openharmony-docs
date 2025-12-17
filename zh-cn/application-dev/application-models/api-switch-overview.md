@@ -63,7 +63,7 @@ startAbility接口由FA模型切换到Stage模型的示例：
 
   ```
 
-- Stage示例示例
+- Stage模型示例
 
   ```ts
   import { hilog } from '@kit.PerformanceAnalysisKit';

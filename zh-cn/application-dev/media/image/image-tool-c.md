@@ -1,4 +1,4 @@
-# 使用Image_NativeModule编辑图片EXIF信息
+# 使用Image_NativeModule编辑图片Exif信息
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -6,13 +6,13 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Image Kit提供图片EXIF信息的读取与编辑能力。
+Image Kit提供图片Exif信息的读取与编辑能力。
 
-EXIF（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。当前支持JPEG、PNG、HEIF格式，且需要图片包含EXIF信息。
+Exif（Exchangeable image file format）是专门为数码相机的照片设定的文件格式，可以记录数码照片的属性信息和拍摄数据。当前支持JPEG、PNG、HEIF、WEBP<sup>23+</sup>格式，且需要图片包含Exif信息。
 
-在图库等应用中，需要查看或修改数码照片的EXIF信息。由于摄像机的手动镜头参数无法自动写入到EXIF信息中或者因为相机断电等原因会导致拍摄时间出错，这时需要手动修改错误的EXIF数据，即可使用本功能。
+在图库等应用中，需要查看或修改数码照片的Exif信息。由于摄像机的手动镜头参数无法自动写入到Exif信息中或者因为相机断电等原因会导致拍摄时间出错，这时需要手动修改错误的Exif数据，即可使用本功能。
 
-OpenHarmony目前仅支持对部分EXIF信息的查看和修改，具体支持的范围请参见：[OHOS_IMAGE_PROPERTY_XXX](../../reference/apis-image-kit/capi-image-common-h.md#变量)。
+OpenHarmony目前仅支持对部分Exif信息的查看和修改，具体支持的范围请参见：[OHOS_IMAGE_PROPERTY_XXX](../../reference/apis-image-kit/capi-image-common-h.md#变量)。
 
 ## 开发步骤
 
@@ -26,13 +26,13 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 ### Native接口调用
 
-EXIF信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSource_GetImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) 和 [OH_ImageSource_ModifyImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty)。
+Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSource_GetImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) 和 [OH_ImageSource_ModifyImageProperty](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty)。
 
 在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
-**读取和编辑图片EXIF信息接口使用示例**
+**读取和编辑图片Exif信息接口使用示例**
 
-在创建ImageSource实例后，读取、编辑EXIF信息。
+在创建ImageSource实例后，读取、编辑Exif信息。
 
 ```c++
 #include <string>
@@ -76,7 +76,7 @@ static napi_value exifTest(napi_env env, napi_callback_info info)
         return getJsResult(env, errCode);
     }
 
-    // 读取EXIF信息，OHOS_IMAGE_PROPERTY_BITS_PER_SAMPLE为每个像素比特数。
+    // 读取Exif信息，OHOS_IMAGE_PROPERTY_BITS_PER_SAMPLE为每个像素比特数。
     Image_String getKey;
     const std::string PIXEL_X_DIMENSION = OHOS_IMAGE_PROPERTY_BITS_PER_SAMPLE;
     getKey.data = (char *)PIXEL_X_DIMENSION.c_str();
@@ -88,7 +88,7 @@ static napi_value exifTest(napi_env env, napi_callback_info info)
         return getJsResult(env, errCode);
     }
 
-    // 编辑EXIF信息，OHOS_IMAGE_PROPERTY_ORIENTATION为图片方向。
+    // 编辑Exif信息，OHOS_IMAGE_PROPERTY_ORIENTATION为图片方向。
     Image_String setKey;
     const std::string ORIENTATION = OHOS_IMAGE_PROPERTY_ORIENTATION;
     setKey.data = (char *)ORIENTATION.c_str();

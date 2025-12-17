@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_FrameShutterInfo {...} Camera_FrameShutterInfo
+```
+
 ## 概述
 
 帧快门回调信息。

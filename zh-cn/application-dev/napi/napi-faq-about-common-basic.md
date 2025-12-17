@@ -206,7 +206,7 @@ ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callab
 | load module failed. $ERRMSG. | 动态库加载失败。$ERRMSG表示加载失败原因，一般常见原因是so文件不存在、依赖的so文件不存在或者符号未定义，需根据加载失败原因具体分析。 |
 | try to load abc file from $FILEPATH failed. | 通常加载动态库和abc文件为二选一：如果是要加载动态库并且加载失败，该告警可以忽略；如果是要加载abc文件，则该错误打印的原因是abc文件不存在，$FILEPATH表示模块路径。 |
 
-5. 如果有明确的Error message，可以通过Error message判断当前问题。
+4. 如果有明确的Error message，可以通过Error message判断当前问题。
 
 | **Error message** | **修改建议** |
 | -------- | -------- |

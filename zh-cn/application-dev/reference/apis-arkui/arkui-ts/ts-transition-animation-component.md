@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件内转场主要通过transition属性配置转场参数，在组件插入和删除时显示过渡动效，主要用于容器组件中的子组件插入和删除时，提升用户体验。 
 
@@ -45,7 +45,11 @@ transition(value: TransitionOptions | TransitionEffect): T
 
 transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallback&gt;): T
 
-组件插入显示和删除隐藏的过渡效果。
+组件插入显示和删除隐藏的过渡效果。同[transition](#transition)相比，增加了转场动画结束的回调。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -76,10 +80,10 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 | 名称     | 值 | 说明     |
 | ------ | ------ | ------ |
-| TOP    | - | 窗口的上边缘。 |
-| BOTTOM | - | 窗口的下边缘。 |
-| START  | - | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
-| END    | - | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
+| TOP    | 0 | 窗口的上边缘。 |
+| BOTTOM | 1 | 窗口的下边缘。 |
+| START  | 2 | 窗口的起始边缘，LTR时为左边缘，RTL时为右边缘。 |
+| END    | 3 | 窗口的终止边缘，LTR时为右边缘，RTL时为左边缘。 |
 
 ## TransitionEffect<sup>10+</sup>对象说明
 
@@ -174,7 +178,7 @@ scale(options: ScaleOptions): TransitionEffect\<"scale">
 
 | 参数名 | 类型                                   | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | ------------------ |
-| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>-&nbsp;centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
+| options  | [ScaleOptions](ts-universal-attributes-transformation.md#scaleoptions对象说明)      | 是   | 组件转场时的缩放效果，为插入时起点和删除时终点的值。设置的缩放值在组件当前的scale属性上进行叠加，如组件当前scale值为0.8，当转场缩放值设置为0.5时，组件入场动画的缩放值将从0.4开始执行。<br/>-x：横向放大倍数（或缩小比例）。<br/>-y：纵向放大倍数（或缩小比例）。<br/>-z：当前为二维显示，该参数无效。<br/>-&nbsp;centerX、centerY指缩放中心点，centerX和centerY默认值是"50%"，即默认以组件的中心点为缩放中心点。<br/>-&nbsp;中心点为(0, 0)代表组件的左上角。<br>**说明：** <br>设置centerX、centerY为非法字符串时（例如，"illegalString"），默认值为"0"。 |
 
 **返回值：**
 

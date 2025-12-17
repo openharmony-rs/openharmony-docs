@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-To use the flashlight mode, you manipulate your phone to turn on the flashlight, which then stays on persistently.
+To use the flashlight mode, you manipulate your device to turn on the flashlight, which then stays on persistently.
 
 When you use the flashlight mode with a camera application, the following situations may occur:
 

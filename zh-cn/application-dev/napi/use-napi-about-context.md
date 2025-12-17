@@ -22,7 +22,7 @@
 
 这意味着当前线程上原始的上下文环境和新创建的上下文环境是相互隔离的，即上下文环境中的globalThis对象不同。
 
-开发者可以通过新创建的上下文环境进行模块化加载，加载生成的模块化对象将挂载在当前上下文环境中的globalThis对象上，不同的模块加载在不同的上下文环境中，可以避免一个模块对globalThis对象的上属性的修改影响到另一个模块对globalThis对象上属性的访问。
+开发者可以通过新创建的上下文环境进行模块化加载，加载生成的模块化对象将挂载在当前上下文环境中的globalThis对象上，不同的模块加载在不同的上下文环境中，可以避免一个模块对globalThis对象上的属性的修改影响到另一个模块对globalThis对象上属性的访问。
 
 当然部分的Node-API标准接口和扩展接口也进行上下文的适配，这意味着调用这些Node-API的接口，上下文环境会根据接口入参的napi_env来主动进行上下文的切换动作，开发者不需要主动调用napi_switch_ark_context来进行上下文环境的切换。
 
@@ -68,7 +68,7 @@
 |napi_ref_threadsafe_function | 否 |
 |napi_add_async_cleanup_hook | 否 |
 |napi_remove_async_cleanup_hook | 否 |
-node_api_get_module_file_name | 否 |
+|node_api_get_module_file_name | 否 |
 |napi_get_last_error_info | 否 |
 |napi_get_undefined | 否 |
 |napi_get_null | 否 |
@@ -84,6 +84,8 @@ node_api_get_module_file_name | 否 |
 |napi_create_string_latin1 | 否 |
 |napi_create_string_utf8 | 否 |
 |napi_create_string_utf16 | 否 |
+|napi_create_external_string_ascii | 否 |
+|napi_create_external_string_utf16 | 否 |
 |napi_create_symbol | 否 |
 |napi_create_function | 是 |
 |napi_create_error | 是 |
@@ -215,6 +217,9 @@ node_api_get_module_file_name | 否 |
 |napi_run_event_loop | napi_invalid_arg |
 |napi_stop_event_loop | napi_invalid_arg |
 |napi_get_uv_event_loop | napi_invalid_arg |
+|napi_create_strong_sendable_reference | napi_invalid_arg |
+|napi_delete_strong_sendable_reference | napi_invalid_arg |
+|napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
 ### 示例代码
 - 模块注册

@@ -4,7 +4,11 @@
 <!--Owner: @ccfriend; @liao_qian-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
-<!--Adviser: @w_Machine_ccn-->
+<!--Adviser: @w_Machine_cc-->
+
+```
+typedef struct AVSession_PlaybackPosition {...} AVSession_PlaybackPosition
+```
 
 ## Overview
 

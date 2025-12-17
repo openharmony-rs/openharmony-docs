@@ -71,12 +71,12 @@ The column or key names are returned as a string array, in which the strings are
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
-| Name       | Type     | Mandatory| Description                    |
-| ----------- | ------------- | ---- | ------------------------ |
-| columnNames | Array&lt;string&gt; | Yes  | Names of all columns in the result set.  |
-| columnCount | number        | Yes  | Number of columns in the result set.        |
-| rowCount    | number        | Yes  | Number of rows in the result set.        |
-| isClosed    | boolean       | Yes  | Whether the result set is closed. The value **true** means the result set is closed; the value **false** means the opposite.|
+| Name       | Type     | Read-Only| Optional| Description                    |
+| ----------- | ------------- | ---- | ---- | ------------------------ |
+| columnNames | Array&lt;string&gt; | No| No  | Names of all columns in the result set.  |
+| columnCount | number        | No| No  | Number of columns in the result set.        |
+| rowCount    | number        | No| No  | Number of rows in the result set.        |
+| isClosed    | boolean       | No| No  | Whether the result set is closed. The value **true** means the result set is closed; the value **false** means the opposite.|
 
 ### goToFirstRow
 

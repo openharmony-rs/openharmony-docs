@@ -38,7 +38,7 @@
 
 **问题现象**
 
-Stage模型中的ServiceExtensionAbility是系统接口，第三方应用不支持调用，如何在Stage模型中如何创建后台服务？
+Stage模型中的ServiceExtensionAbility是系统接口，第三方应用不支持调用，如何在Stage模型中创建后台服务？
 
 **解决措施**
 

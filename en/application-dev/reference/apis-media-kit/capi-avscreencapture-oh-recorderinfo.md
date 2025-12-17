@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_RecorderInfo {...} OH_RecorderInfo
+```
+
 ## Overview
 
 The struct describes the recording file information.

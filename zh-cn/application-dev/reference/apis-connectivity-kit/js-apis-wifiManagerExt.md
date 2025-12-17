@@ -89,11 +89,11 @@ disableHotspot(): void
   }
 ```
 
-## wifiManagerExt.getSupportedPowerMode<sup>9+</sup>
+## wifiManagerExt.getSupportedPowerMode
 
 getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
-获取支持的功率模式，使用Promise异步回调。
+获取支持的功率模式。使用Promise异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -103,7 +103,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Array&lt;[PowerMode](#powermode9)&gt;&gt; | Promise对象。表示功率模式。 |
+  | Promise&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | Promise对象。表示功率模式。 |
 
 **错误码：**
 
@@ -114,7 +114,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2701000 | Operation failed. |
-## PowerMode<sup>9+</sup>
+## PowerMode
 
 表示功率模式的枚举。
 
@@ -127,11 +127,11 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 | THROUGH_WALL | 2 | 穿墙模式。 |
 
 
-## wifiManagerExt.getSupportedPowerMode<sup>9+</sup>
+## wifiManagerExt.getSupportedPowerMode
 
 getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): void
 
-获取支持的功率模式，使用callback异步回调。
+获取支持的功率模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -141,7 +141,7 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode9)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示支持的功率模式。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示支持的功率模式。如果err为非0，表示处理出现错误。 |
 
 **错误码：**
 
@@ -156,24 +156,18 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 **示例：**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
-  wifiManagerExt.getSupportedPowerMode((err, data:wifiManagerExt.PowerMode[]) => {
-      if (err) {
-          console.error("get supported power mode info error");
-          return;
-      }
-      console.info("get supported power mode info: " + JSON.stringify(data));
-  });
-
-  wifiManagerExt.getSupportedPowerMode().then(data => {
-      console.info("get supported power mode info: " + JSON.stringify(data));
-  }).catch((error) => {
-      console.error("get supported power mode error");
-  });
+wifiManagerExt.getSupportedPowerMode((err, data: wifiManagerExt.PowerMode[]) => {
+    if (err) {
+        console.error("get supported power mode info error: ", err);
+        return;
+    }
+    console.info("get supported power mode info: " + JSON.stringify(data));
+});
 ```
 
-## wifiManagerExt.getPowerMode<sup>9+</sup>
+## wifiManagerExt.getPowerMode
 
 getPowerMode(): Promise&lt;PowerMode&gt;
 
@@ -190,7 +184,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[PowerMode](#powermode9)&gt; | Promise对象。表示功率模式。 |
+  | Promise&lt;[PowerMode](#powermode)&gt; | Promise对象。表示功率模式。 |
 
 **错误码：**
 
@@ -215,11 +209,11 @@ getPowerMode(): Promise&lt;PowerMode&gt;
   }
 ```
 
-## wifiManagerExt.getPowerMode<sup>9+</sup>
+## wifiManagerExt.getPowerMode
 
 getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
-获取功率模式，使用callback异步回调。
+获取功率模式。使用callback异步回调。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -229,7 +223,7 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[PowerMode](#powermode9)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果err为非0，表示处理出现错误。 |
 
 **错误码：**
 
@@ -278,7 +272,7 @@ setPowerMode(mode: PowerMode) : void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| mode | [PowerMode](#powermode9) | 是 | 功率模式。 |
+| mode | [PowerMode](#powermode) | 是 | 功率模式。 |
 
 **错误码：**
 

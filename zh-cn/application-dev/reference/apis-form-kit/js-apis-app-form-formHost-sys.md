@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 formHost模块提供了卡片使用方相关接口的能力，包括对使用方同一用户下安装的卡片进行删除、释放、请求更新、获取卡片信息、状态等操作。
 
@@ -63,7 +63,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log('formHost deleteForm success');
+      console.info('formHost deleteForm success');
     }
   });
 } catch (error) {
@@ -118,7 +118,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.deleteForm(formId).then(() => {
-    console.log('formHost deleteForm success');
+    console.info('formHost deleteForm success');
   }).catch((error: BusinessError) => {
     console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
   });
@@ -275,7 +275,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.releaseForm(formId, true).then(() => {
-    console.log('formHost releaseForm success');
+    console.info('formHost releaseForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -380,7 +380,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.requestForm(formId).then(() => {
-    console.log('formHost requestForm success');
+    console.info('formHost requestForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -439,7 +439,7 @@ try {
     'ohos.extra.param.key.host_bg_inverse_color': '#ff000000' as Object
   };
   formHost.requestFormWithParams(formId, params).then(() => {
-    console.log('formHost requestFormWithParams success');
+    console.info('formHost requestFormWithParams success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -544,7 +544,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string = '12400633174999288';
   formHost.castToNormalForm(formId).then(() => {
-    console.log('formHost castTempForm success');
+    console.info('formHost castTempForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -645,7 +645,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyVisibleForms(formId).then(() => {
-    console.log('formHost notifyVisibleForms success');
+    console.info('formHost notifyVisibleForms success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -746,7 +746,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.notifyInvisibleForms(formId).then(() => {
-    console.log('formHost notifyInvisibleForms success');
+    console.info('formHost notifyInvisibleForms success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -849,7 +849,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.enableFormsUpdate(formId).then(() => {
-    console.log('formHost enableFormsUpdate success');
+    console.info('formHost enableFormsUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -954,7 +954,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formId: string[] = ['12400633174999288'];
   formHost.disableFormsUpdate(formId).then(() => {
-    console.log('formHost disableFormsUpdate success');
+    console.info('formHost disableFormsUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1033,7 +1033,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.isSystemReady().then(() => {
-    console.log('formHost isSystemReady success');
+    console.info('formHost isSystemReady success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1082,7 +1082,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getAllFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1126,7 +1126,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getAllFormsInfo().then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
+    console.info(`formHost getAllFormsInfo data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1177,7 +1177,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1228,7 +1228,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+      console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1281,7 +1281,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry').then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1339,7 +1339,7 @@ const filter: formInfo.FormInfoFilter = {
 };
 try {
   formHost.getFormsInfo(filter).then((data: formInfo.FormInfo[]) => {
-    console.log(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
+    console.info(`formHost getFormsInfo, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });
@@ -1390,7 +1390,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+      console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -1442,7 +1442,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = new Array('12400633174999288', '12400633174999289');
   formHost.deleteInvalidForms(formIds).then((data: number) => {
-    console.log(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
+    console.info(`formHost deleteInvalidForms, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1504,7 +1504,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
     }
   });
 } catch (error) {
@@ -1567,7 +1567,7 @@ let want: Want = {
 };
 try {
   formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
-    console.log(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
+    console.info(`formHost acquireFormState, data: ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1610,7 +1610,7 @@ on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 import { formHost } from '@kit.FormKit';
 
 formHost.on('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1648,7 +1648,7 @@ off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 import { formHost } from '@kit.FormKit';
 
 formHost.off('formUninstall', (formId: string) => {
-  console.log(`formHost on formUninstall, formId: ${formId}`);
+  console.info(`formHost on formUninstall, formId: ${formId}`);
 });
 ```
 
@@ -1748,7 +1748,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsVisible(formIds, true).then(() => {
-    console.log('formHost notifyFormsVisible success');
+    console.info('formHost notifyFormsVisible success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1853,7 +1853,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
-    console.log('formHost notifyFormsEnableUpdate success');
+    console.info('formHost notifyFormsEnableUpdate success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -1959,7 +1959,7 @@ let formId: string = '12400633174999288';
 let deviceId: string = 'EFC11C0C53628D8CC2F8CB5052477E130D075917034613B9884C55CD22B3DEF2';
 try {
   formHost.shareForm(formId, deviceId).then(() => {
-    console.log('formHost shareForm success');
+    console.info('formHost shareForm success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2060,7 +2060,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formIds: string[] = new Array('12400633174999288', '12400633174999289');
 try {
   formHost.notifyFormsPrivacyProtected(formIds, true).then(() => {
-    console.log('formHost notifyFormsPrivacyProtected success');
+    console.info('formHost notifyFormsPrivacyProtected success');
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2113,7 +2113,7 @@ try {
     if (error) {
       console.error(`error, code: ${error.code}, message: ${error.message}`);
     } else {
-      console.log(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
+      console.info(`formHost acquireFormData, data: ${JSON.stringify(data)}`);
     }
   });
 } catch(error) {
@@ -2167,7 +2167,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let formId: string = '12400633174999288';
 try {
   formHost.acquireFormData(formId).then((data) => {
-    console.log('formHost acquireFormData success' + data);
+    console.info('formHost acquireFormData success' + data);
   }).catch((error: BusinessError) => {
     console.error(`error, code: ${error.code}, message: ${error.message}`);
   });
@@ -2247,7 +2247,7 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.log(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info : ${JSON.stringify(form)}`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
@@ -2261,7 +2261,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.log('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
           }
         })
     }
@@ -2275,7 +2275,7 @@ struct CardExample {
 
 setRouterProxy(formIds: Array&lt;string&gt;, proxy: Callback&lt;Want&gt;): Promise&lt;void&gt;
 
-设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。
+设置卡片跳转代理。使用Promise异步回调，返回卡片跳转所需要Want信息。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2346,7 +2346,7 @@ struct CardExample {
         .size({ width: this.fwidth, height: this.fheight })
         .visibility(Visibility.Visible)
         .onAcquired((form) => {
-          console.log(`testTag form info : ${JSON.stringify(form)}`);
+          console.info(`testTag form info : ${JSON.stringify(form)}`);
           this.formId = form.id;
           try {
             let formIds: string[] = [this.formId.toString()];
@@ -2362,7 +2362,7 @@ struct CardExample {
               console.error(`set router proxy error, code: ${err.code}, message: ${err.message}`);
             })
           } catch (e) {
-            console.log('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
+            console.error('formHost setRouterProxy catch exception: ' + JSON.stringify(e));
           }
         })
     }
@@ -2466,7 +2466,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.clearRouterProxy(formIds).then(() => {
-    console.log('formHost clear rourter proxy success');
+    console.info('formHost clear rourter proxy success');
   }).catch((err: BusinessError) => {
     console.error(`formHost clear router proxy error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2570,7 +2570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let formIds: string[] = ['12400633174999288'];
   formHost.setFormsRecyclable(formIds).then(() => {
-    console.log('setFormsRecyclable success');
+    console.info('setFormsRecyclable success');
   }).catch((err: BusinessError) => {
     console.error(`setFormsRecyclable error, code: ${err.code}, message: ${err.message}`);
   });
@@ -2837,7 +2837,7 @@ try {
 
 updateFormLockedState(formId: string, isLocked: boolean): Promise&lt;void&gt;
 
-通知卡片管控状态更新。
+通知卡片管控状态更新。使用Promise异步回调。
 
 卡片管控状态是指，应用使能了应用锁管控，对应应用的卡片也会跟随使能应用锁管控，此时卡片页面会使用加锁的蒙板样式遮罩卡片。在管控状态下，操作和使用卡片需要输入加锁时设置的密码。
 
@@ -2885,7 +2885,7 @@ let isLocked: boolean = true;
 
 try {
   formHost.updateFormLockedState(this.formId, this.isLocked).then(() => {
-    console.log(`formHost updateFormLockedState success`);
+    console.info(`formHost updateFormLockedState success`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2897,7 +2897,7 @@ try {
 
 on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-订阅互动卡片动效请求事件。
+订阅互动卡片动效请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -2926,7 +2926,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('formOverflow', (request: formInfo.OverflowRequest) => {
-    console.log(`formHost on formOverflow, formId is ${request.formId}`);
+    console.info(`formHost on formOverflow, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2937,7 +2937,7 @@ try {
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
 
-取消订阅互动卡片动效请求事件。
+取消订阅互动卡片动效请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -2966,7 +2966,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.off('formOverflow', (request: formInfo.OverflowRequest) => {
-    console.log(`formHost off formOverflow, formId is ${request.formId}`);
+    console.info(`formHost off formOverflow, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -2977,7 +2977,7 @@ try {
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
 
-订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3006,7 +3006,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.on('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
-    console.log(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
+    console.info(`formHost on changeSceneAnimationState, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -3017,7 +3017,7 @@ try {
 
 off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeSceneAnimationState&gt;): void
 
-取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3046,7 +3046,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   formHost.off('changeSceneAnimationState', (request: formInfo.ChangeSceneAnimationStateRequest): void => {
-    console.log(`formHost off changeSceneAnimationState, formId is ${request.formId}`);
+    console.info(`formHost off changeSceneAnimationState, formId is ${request.formId}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
@@ -3057,7 +3057,7 @@ try {
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 
-订阅卡片位置尺寸查询请求事件。
+订阅卡片位置尺寸查询请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3088,7 +3088,7 @@ try {
   formHost.on('getFormRect', (formId: string): Promise<formInfo.Rect> => {
     // 卡片使用方需要对查询请求进行处理，计算并返回卡片尺寸、位置信息
     return new Promise<formInfo.Rect>((resolve: Function) => {
-      console.log(`formHost on getFormRect, formId is ${formId}`);
+      console.info(`formHost on getFormRect, formId is ${formId}`);
       let formRect: formInfo.Rect = {left: 0, top: 0, width: 0, height: 0};
       resolve(formRect);
     })
@@ -3102,7 +3102,7 @@ try {
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 
-取消订阅卡片位置尺寸查询请求事件。
+取消订阅卡片位置尺寸查询请求事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 

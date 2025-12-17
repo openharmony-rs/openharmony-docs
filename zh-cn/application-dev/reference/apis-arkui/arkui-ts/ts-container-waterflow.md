@@ -5,7 +5,7 @@
 <!--Owner: @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 瀑布流容器，由“行”和“列”分割的单元格所组成，通过容器自身的排列规则，将不同大小的“项目”自上而下，如瀑布般紧密布局。
 
@@ -63,8 +63,8 @@ WaterFlow(options?:  WaterFlowOptions)
 | footer |  [CustomBuilder](ts-types.md#custombuilder8) | 否   | 是 | 设置WaterFlow尾部组件。<br/>**说明：** <br/>使用方法参见[示例1](#示例1使用基本瀑布流)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 是 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 是 | 可滚动组件的控制器，与可滚动组件绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略columnsTemplate和rowsTemplate属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 是 | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略[columnsTemplate](#columnstemplate)和[rowsTemplate](#rowstemplate)属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
+| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 是 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 
 ## WaterFlowSections<sup>12+</sup>
@@ -268,7 +268,7 @@ columnsTemplate(value: string)
 
 例如，'1fr 1fr 2fr' 是将父组件分3列，将父组件允许的宽分为4等份，第1列占1份，第2列占1份，第3列占2份。
 
-可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见示例2。
+可使用columnsTemplate('repeat(auto-fill,track-size)')根据给定的列宽track-size自动计算列数，其中repeat、auto-fill为关键字，track-size为可设置的宽度，支持的单位包括px、vp、%或有效数字，默认单位为vp，使用方法参见[示例2](#示例2自动计算列数)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -279,6 +279,29 @@ columnsTemplate(value: string)
 | 参数名 | 类型   | 必填 | 说明                                           |
 | ------ | ------ | ---- | ---------------------------------------------- |
 | value  | string | 是   | 当前瀑布流组件布局列的数量。<br/>默认值：'1fr' |
+
+### columnsTemplate<sup>22+</sup>
+
+columnsTemplate(value: string | ItemFillPolicy)
+
+设置当前瀑布流组件布局列的数量，不设置时默认1列。
+
+当value设置为string类型时，使用方法参考[columnsTemplate(value: string)](#columnstemplate)。
+
+当value设置为ItemFillPolicy类型时，将根据WaterFlow组件宽度对应[断点类型](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)确定列数。
+
+例如，ItemFillPolicy.BREAKPOINT_DEFAULT在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列，且每列均为1fr。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                                 | 必填 | 说明                                                      |
+| ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
+| value  | string&nbsp;\|&nbsp;[ItemFillPolicy](./ts-types.md#itemfillpolicy22) | 是   | 当前瀑布流组件布局列的数量。 |
+
 
 ### rowsTemplate
 
@@ -368,15 +391,15 @@ layoutDirection优先级高于rowsTemplate和columnsTemplate。根据layoutDirec
 
 - layoutDirection设置纵向布局（FlexDirection.Column 或 FlexDirection.ColumnReverse）
 
-  此时columnsTemplate有效（如果未设置，取默认值）。例如columnsTemplate设置为"1fr 1fr"、rowsTemplate设置为"1fr 1fr 1fr"时，瀑布流组件纵向布局，辅轴均分成横向2列。
+  此时columnsTemplate有效（如果未设置，取默认值）。例如columnsTemplate设置为'1fr 1fr'、rowsTemplate设置为'1fr 1fr 1fr'时，瀑布流组件纵向布局，辅轴均分成横向2列。
 
 - layoutDirection设置横向布局（FlexDirection.Row 或 FlexDirection.RowReverse）
 
-  此时rowsTemplate有效（如果未设置，取默认值）。例如columnsTemplate设置为"1fr 1fr"、rowsTemplate设置为"1fr 1fr 1fr"时，瀑布流组件横向布局，辅轴均分成纵向3列。
+  此时rowsTemplate有效（如果未设置，取默认值）。例如columnsTemplate设置为'1fr 1fr'、rowsTemplate设置为'1fr 1fr 1fr'时，瀑布流组件横向布局，辅轴均分成纵向3列。
 
 - layoutDirection未设置布局方向
 
-  布局方向为layoutDirection的默认值：FlexDirection.Column，此时columnsTemplate有效。例如columnsTemplate设置为"1fr 1fr"、rowsTemplate设置为"1fr 1fr 1fr"时，瀑布流组件纵向布局，辅轴均分成横向2列。
+  布局方向为layoutDirection的默认值：FlexDirection.Column，此时columnsTemplate有效。例如columnsTemplate设置为'1fr 1fr'、rowsTemplate设置为'1fr 1fr 1fr'时，瀑布流组件纵向布局，辅轴均分成横向2列。
 
 ### enableScrollInteraction<sup>10+</sup>
 
@@ -436,7 +459,7 @@ cachedCount(value: number)
 
 设置预加载的FlowItem数量。
 
-只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了virtualScroll开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，超出显示及缓存范围的FlowItem会被释放。
+只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了[virtualScroll](ts-rendering-control-repeat.md#virtualscroll)开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，超出显示及缓存范围的FlowItem会被释放。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -454,7 +477,7 @@ cachedCount(count: number, show: boolean)
 
 设置预加载的FlowItem数量，并配置是否显示预加载节点。
 
-配合[裁剪](ts-universal-attributes-sharp-clipping.md#clip12)或[内容裁剪](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
+配合[clip](ts-universal-attributes-sharp-clipping.md#clip12)或[clipContent](ts-container-scrollable-common.md#clipcontent14)属性可以显示出预加载节点。
 
 只在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和开启了virtualScroll开关的[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中生效，超出显示及缓存范围的FlowItem会被释放。
 
@@ -483,7 +506,7 @@ syncLoad(enable: boolean)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enable   | boolean | 是   | 是否同步加载WaterFlow区域内所有子组件。<br/>true表示同步加载，false表示异步加载。默认值：true。<br/>**说明：** <br/>设置为false时，在首次显示、不带动画scrollToIndex跳转场景，若当帧布局耗时超过50ms，会将WaterFlow区域内尚未布局的子组件延后到下一帧进行布局。 |
+| enable   | boolean | 是   | 是否同步加载WaterFlow区域内所有子组件。<br/>true表示同步加载，false表示异步加载。<br/>默认值：true。<br/>**说明：** <br/>设置为false时，在首次显示、不带动画[scrollToIndex](ts-container-scroll.md#scrolltoindex)跳转场景，若当帧布局耗时超过50ms，会将WaterFlow区域内尚未布局的子组件延后到下一帧进行布局。 |
 
 ## 事件
 
@@ -557,6 +580,10 @@ onScrollIndex(event: (first: number, last: number) => void)
 
 瀑布流显示区域上第一个子组件/最后一个组件的索引值有变化就会触发。
 
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -568,7 +595,7 @@ onScrollIndex(event: (first: number, last: number) => void)
 | first  | number | 是   | 当前显示的瀑布流起始位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 | last   | number | 是   | 当前显示的瀑布流终止位置的索引值。<br/>取值范围：[0, 子节点总数-1] |
 
-通过`last`参数可以判断是否“继续加载数据”，参考[示例3使用分组](#示例3使用分组)中"即将触底时提前增加数据"的处理逻辑。
+通过`last`参数可以判断是否“继续加载数据”，参考[示例3使用分组](#示例3使用分组)中“即将触底时提前增加数据”的处理逻辑。
 
 当WaterFlow列表为空时，使用不同的WaterFlowOptions参数会导致onScrollIndex事件的返回值有所不同。具体差异请参见下表：
 
@@ -893,7 +920,7 @@ struct WaterFlowDemo {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12).height('16')
               // 注意：需要确保对应的jpg文件存在才会正常显示
               Image('res/waterFlowTest(' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
@@ -906,7 +933,7 @@ struct WaterFlowDemo {
           .backgroundColor(this.colors[item % this.colors.length])
         }, (item: string) => item)
       }
-      .columnsTemplate("1fr 1fr")    // 设置2列等宽布局
+      .columnsTemplate('1fr 1fr')    // 设置2列等宽布局
       .columnsGap(10)
       .rowsGap(5)
       .backgroundColor(0xFAEEE0)
@@ -914,7 +941,7 @@ struct WaterFlowDemo {
       .height('100%')
       // 触底加载数据：滚动到底部时触发分页加载
       .onReachEnd(() => {
-        console.info("onReachEnd")
+        console.info('onReachEnd')
 
         // 模拟分页加载：当数据超过200条时停止加载
         if (this.dataSource.totalCount() > 200) {
@@ -997,7 +1024,7 @@ struct WaterFlowDemo {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12).height('16')
               // 存在对应的jpg文件才会显示图片
               Image('res/waterFlowTest(' + item % 5 + ').jpg')
             }
@@ -1027,7 +1054,7 @@ struct WaterFlowDemo {
 
 ### 示例3（使用分组）
 该示例展示了分组的初始化以及splice、push、update、values、length等接口的不同效果。
-如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滑动组件)。
+如果配合状态管理V2使用，详情见：[WaterFlow与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#滚动组件)。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
@@ -1280,7 +1307,7 @@ struct WaterFlowDemo {
 ![waterflowSections.png](figures/waterflowSections.png)
 
 ### 示例4（双指缩放改变列数）
-该示例通过[priorityGesture](ts-gesture-settings.md)和[PinchGesture](ts-basic-gestures-pinchgesture.md)实现了双指缩放改变列数效果。
+该示例通过[priorityGesture](ts-gesture-settings.md#prioritygesture)和[PinchGesture](ts-basic-gestures-pinchgesture.md)实现了双指缩放改变列数效果。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
@@ -1303,7 +1330,7 @@ struct ReusableFlowItem {
 
   build() {
     Column() {
-      Text("N" + this.item).fontSize(12).height('16')
+      Text('N' + this.item).fontSize(12).height('16')
       // 注意：需要确保对应的jpg文件存在才会正常显示
       Image('res/waterFlow(' + this.item % 5 + ').jpg')
         .objectFit(ImageFit.Fill)
@@ -1347,7 +1374,7 @@ struct WaterFlowDemo {
 
   // 组件生命周期：初始化数据和恢复上次的列数设置
   aboutToAppear() {
-    // 读取上次最后切换到到列数
+    // 读取上次最后切换到的列数
     let lastCount = AppStorage.get<number>('columnsCount');
     if (typeof lastCount != 'undefined') {
       this.columns = lastCount;
@@ -1526,7 +1553,7 @@ struct WaterFlowDemo {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12).height('16')
             }
           }
           .width('100%')
@@ -1554,7 +1581,7 @@ struct WaterFlowDemo {
 
 ### 示例6（单边边缘效果）
 
-该示例通过edgeEffect接口，实现了WaterFlow组件设置单边边缘效果。
+该示例通过[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)接口，实现了WaterFlow组件设置单边边缘效果。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
@@ -1599,7 +1626,7 @@ struct WaterFlowDemo {
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text('N' + item).fontSize(12).height('16')
             }
           }
           .width('100%')
@@ -1628,18 +1655,18 @@ struct WaterFlowDemo {
 
 ### 示例7（WaterFlow组件设置和改变尾部组件）
 
-该示例通过footerContent接口，实现了WaterFlow组件设置尾部组件。通过ComponentContent的update函数更新尾部组件。
+从API version 18开始，该示例通过[WaterFlowOptions对象说明](#waterflowoptions对象说明)的footerContent接口，实现了WaterFlow组件设置尾部组件。通过[ComponentContent](../js-apis-arkui-ComponentContent.md)的update函数更新尾部组件。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
 <!--code_no_check-->
 ```ts
 // Index.ets
-import { ComponentContent, UIContext } from "@kit.ArkUI";
+import { ComponentContent, UIContext } from '@kit.ArkUI';
 import { WaterFlowDataSource } from './WaterFlowDataSource';
 
 class Params {
-  text: string = "";
+  text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -1660,8 +1687,8 @@ function buildText(params: Params) {
 @Entry
 @Component
 struct Index {
-  @State message1: string = "已经到底了";
-  @State message2: string = "加载更多";
+  @State message1: string = '已经到底了';
+  @State message2: string = '加载更多';
   @State colors: number[] = [0xD5D5D5, 0x7F7F7F, 0xF7F7F7];
   @State minSize: number = 80;
   @State maxSize: number = 180;
@@ -1672,7 +1699,7 @@ struct Index {
   // 动态尾部组件：使用ComponentContent创建可更新的尾部组件
   // ComponentContent<Params>：泛型指定参数类型
   // wrapBuilder<[Params]>(buildText)：包装Builder函数
-  // new Params(this.message1)：初始参数，显示"已经到底了"
+  // new Params(this.message1)：初始参数，显示'已经到底了'
   footerContent: ComponentContent<Params> = new ComponentContent<Params>(
     this.context,
     wrapBuilder<[Params]>(buildText),
@@ -1705,17 +1732,17 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("更新footer").width('90%').margin(20)
+        Button('更新footer').width('90%').margin(20)
           .onClick((event?: ClickEvent) => {
             // 调用ComponentContent的update方法更新尾部组件
-            // 传入新的Params对象，文本内容从"已经到底了"变为"加载更多"
+            // 传入新的Params对象，文本内容从'已经到底了'变为'加载更多'
             this.footerContent.update(new Params(this.message2));
           })
         WaterFlow({ footerContent: this.footerContent }) {
           LazyForEach(this.dataSource, (item: number) => {
             FlowItem() {
               Column() {
-                Text("N" + item).fontSize(12).height('16')
+                Text('N' + item).fontSize(12).height('16')
               }
               .width('100%')
               .height(this.itemHeightArray[item % 100])
@@ -1726,7 +1753,7 @@ struct Index {
           }, (item: number) => item.toString())
         }
         .columnsTemplate('1fr')
-        .height("90%")
+        .height('90%')
       }
       .width('100%')
       .height('100%')
@@ -1740,7 +1767,7 @@ struct Index {
 
 ### 示例8（WaterFlow组件实现下拉刷新）
 
-该示例通过Refresh组件和WaterFlow组件，实现了下拉刷新瀑布流组件数据源。
+该示例通过[Refresh](ts-container-refresh.md)组件和WaterFlow组件，实现了下拉刷新瀑布流组件数据源。
 
 WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
 
@@ -1829,3 +1856,183 @@ struct WaterFlowDemo {
 ```
 
 ![waterFlow_refresh](figures/waterFlow_refresh.gif)
+
+### 示例9（WaterFlow组件基于断点配置列数）
+
+从API version 22开始，该示例展示了WaterFlow组件支持基于断点配置列数效果。
+
+<!--code_no_check-->
+```ts
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowDemo {
+  minSize: number = 80;
+  maxSize: number = 180;
+  colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemHeightArray: number[] = [];
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：在组件即将出现时初始化尺寸数组
+  aboutToAppear() {
+    this.setItemSizeArray();
+  }
+
+  build() {
+    Column({ space: 2 }) {
+      WaterFlow() {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12).height('16')
+              // 注意：需要确保对应的jpg文件存在才会正常显示
+              Image('res/waterFlowTest(' + item % 5 + ').jpg')
+                .objectFit(ImageFit.Fill)
+                .width('100%')
+                .layoutWeight(1)
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[item % 100])
+          .backgroundColor(this.colors[item % this.colors.length])
+        }, (item: string) => item)
+      }
+      .key('waterFlow')
+      // 设置WaterFlow按断点决定列数
+      .columnsTemplate({fillType:PresetFillType.BREAKPOINT_SM2MD3LG5})
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .margin('20vp')
+      .width('100%')
+      .height('30%')
+    }
+  }
+}
+```
+WaterFlow宽度属于sm及更小的断点区间时显示2列。
+
+![sm_waterflow](figures/waterFlow_itemFillPolicy_SM.png)
+
+WaterFlow宽度属于md断点区间时显示3列。
+
+![md_waterflow](figures/waterFlow_itemFillPolicy_MD.png)
+
+WaterFlow宽度属于lg及更大的断点区间时显示5列。
+
+![lg_waterflow](figures/waterFlow_itemFillPolicy_LG.png)
+
+
+### 示例10（WaterFlow组件实现获取内容高度）
+
+从API version 22 开始，该示例通过WaterFlow组件，实现了获取内容高度。
+
+WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#示例1使用基本瀑布流)。
+
+<!--code_no_check-->
+```ts
+// Index.ets
+import { WaterFlowDataSource } from './WaterFlowDataSource';
+
+@Entry
+@Component
+struct WaterFlowContentSizeDemo {
+  @State minSize: number = 80;
+  @State maxSize: number = 180;
+  @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
+  @State contentWidth: number = -1;
+  @State contentHeight: number = -1;
+  scroller: Scroller = new Scroller();
+  dataSource: WaterFlowDataSource = new WaterFlowDataSource();
+  private itemWidthArray: number[] = [];
+  private itemHeightArray: number[] = [];
+
+  // 计算FlowItem宽/高
+  getSize() {
+    let ret = Math.floor(Math.random() * this.maxSize);
+    return (ret > this.minSize ? ret : this.minSize);
+  }
+
+  // 设置FlowItem的宽/高数组
+  setItemSizeArray() {
+    for (let i = 0; i < 100; i++) {
+      this.itemWidthArray.push(this.getSize());
+      this.itemHeightArray.push(this.getSize());
+    }
+  }
+
+  // 组件生命周期：在组件即将出现时初始化尺寸数组
+  aboutToAppear() {
+    this.setItemSizeArray();
+  }
+
+  @Builder
+  itemFoot() {
+    Column() {
+      Text(`到底啦...`)
+        .fontSize(10)
+        .backgroundColor(Color.Red)
+        .width(50)
+        .height(50)
+        .align(Alignment.Center)
+        .margin({ top: 2 })
+    }
+  }
+
+  build() {
+    Column({ space: 2 }) {
+      // 点击按钮来调用contentSize函数获取内容尺寸
+      Button('GetContentSize')
+        .onClick(() => {
+          // 通过调用contentSize函数获取内容尺寸的宽度值
+          this.contentWidth = this.scroller.contentSize().width;
+          // 通过调用contentSize函数获取内容尺寸的高度值
+          this.contentHeight = this.scroller.contentSize().height;
+        }).margin(5)
+      // 将获取到的内容尺寸信息通过文本进行呈现
+      Text('Width:' + this.contentWidth)
+        .fontColor(Color.Red)
+        .height(30)
+      Text('Height:' + this.contentHeight)
+        .fontColor(Color.Red)
+        .height(30)
+
+      WaterFlow({ scroller: this.scroller, footer: this.itemFoot() }) {
+        LazyForEach(this.dataSource, (item: number) => {
+          FlowItem() {
+            Column() {
+              Text('N' + item).fontSize(12).height('16')
+            }
+          }
+          .width('100%')
+          .height(this.itemHeightArray[item % 100])
+          .backgroundColor(this.colors[item % this.colors.length])
+        }, (item: string) => item)
+      }
+      .columnsTemplate('1fr 1fr') // 设置2列等宽布局
+      .columnsGap(10)
+      .rowsGap(5)
+      .backgroundColor(0xFAEEE0)
+      .width('100%')
+      .height('80%')
+    }
+  }
+}
+```
+
+![waterFlow_refresh](figures/waterFlow_contentsize.gif)

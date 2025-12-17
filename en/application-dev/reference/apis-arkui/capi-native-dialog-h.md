@@ -4,7 +4,7 @@
 <!--Owner: @houguobiao-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -20,15 +20,17 @@ Declares a set of custom dialog box APIs of ArkUI on the native side.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
+**Sample**: <!--RP1-->[NativeDialogSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeDialogSample)<!--RP1End-->
+
 ## Summary
 
 ### Structs
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) | ArkUI_NativeDialogAPI_1 | Defines a struct for the custom dialog box APIs on the native side.|
-| [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) | ArkUI_NativeDialogAPI_2 | Defines a struct for the custom dialog box APIs on the native side.|
-| [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md) | ArkUI_NativeDialogAPI_3 | Defines a struct for the custom dialog box APIs on the native side.|
+| [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md) | ArkUI_NativeDialogAPI_1 | Provides a collection of native-side custom dialog box APIs provided by ArkUI.|
+| [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) | ArkUI_NativeDialogAPI_2 | Provides a collection of native-side custom dialog box APIs provided by ArkUI.|
+| [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md) | ArkUI_NativeDialogAPI_3 | Provides a collection of native-side custom dialog box APIs provided by ArkUI.|
 | [ArkUI_DialogDismissEvent](capi-arkui-nativemodule-arkui-dialogdismissevent.md) | ArkUI_DialogDismissEvent | Defines a struct for a dialog box dismiss event.|
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md) | ArkUI_CustomDialogOptions | Defines a struct for custom dialog box options.|
 

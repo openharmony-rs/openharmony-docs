@@ -31,7 +31,7 @@
 
 
 ## 编译态包结构
-不同类型的Module编译后会生成对应的HAP、HAR、HSP等文件，开发态视图与编译态视图的对照关系如下：
+不同类型的Module编译后会生成对应的HAP、HAR、HSP等文件，编译后可通过DevEco Studio或打包工具打包成APP包，用于上架应用市场。编译HAP和HSP时，会把它们所依赖的HAR直接编译到HAP和HSP中，因此打包成APP包后，编译打包视图中只有.hap和.hsp文件，没有.har文件。开发态视图与编译态视图的对照关系如下：
 
 **图2** 开发态与编译态的工程结构视图
 
@@ -42,9 +42,6 @@
 - **resources目录**：AppScope目录下的资源文件会合入到Module下面资源目录中，如果两个目录下存在重名文件，编译打包后只会保留AppScope目录下的资源文件。
 - **module配置文件**：AppScope目录下的app.json5文件字段会合入到Module下面的module.json5文件之中，编译后生成HAP或HSP最终的module.json文件。
 
-> **说明：**
->
-> 在编译HAP和HSP时，会把它们所依赖的HAR直接编译到HAP和HSP中。
 
 ## 发布态包结构
 
@@ -54,8 +51,8 @@
 
 > **说明：**
 >
-> - App Pack是发布上架到应用市场的基本单元，但是不能在设备上直接安装和运行。
-> - 在[应用签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)、云端分发、端侧安装时，都是以HAP/HSP为单位进行签名、分发和安装的。
+> - App Pack是发布上架到应用市场的基本单元。
+> - 在[应用签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)时，是以HAP/HSP/APP为单位进行签名的；在云端分发、端侧安装时，是以HAP/HSP为单位进行分发和安装的。
 
 **图3** 编译发布与上架部署流程图
 

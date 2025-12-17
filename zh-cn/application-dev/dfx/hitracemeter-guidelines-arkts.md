@@ -24,6 +24,8 @@ HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调�
 | hiTraceMeter.finishAsyncTrace(level: HiTraceOutputLevel, name: string, taskId: number): void | 结束一个异步时间片跟踪事件，分级控制跟踪输出。<br/>level、name和taskId必须与流程开始的startAsyncTrace()对应参数值保持一致。<br/>**说明**：从API version 19开始，支持该接口。 |
 | hiTraceMeter.traceByValue(level: HiTraceOutputLevel, name: string, count: number): void | 整数跟踪事件，分级控制跟踪输出。<br/>name和count两个参数分别用来标记一个跟踪的整数变量名及整数值。<br/>**说明**：从API version 19开始，支持该接口。 |
 | hiTraceMeter.isTraceEnabled(): boolean | 判断当前是否开启应用trace捕获。<br/>使用hitrace命令行工具等方式开启采集时返回true。未开启采集或停止采集后返回false，此时调用HiTraceMeter性能跟踪打点接口无效。<br/>**说明**：从API version 19开始，支持该接口。 |
+| hiTraceMeter.registerTraceListener(callback: TraceEventListener): number | 注册应用trace捕获开关通知回调，使用callback异步回调。<br/>注册成功后，立即执行一次回调函数，后续回调函数由应用trace捕获开关状态变化触发执行。<br/>**说明**：从API version 22开始，支持该接口。 |
+| hiTraceMeter.unregisterTraceListener(index: number): number | 注销应用trace捕获开关通知回调。<br/>**说明**：从API version 22开始，支持该接口。 |
 
 > **注意：**
 >
@@ -60,6 +62,8 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
 | count | number | 是 | 整数变量的值。 |
 | customCategory | string | 是 | 自定义聚类名称，用于聚合同一类异步跟踪打点。<br/>若不需要聚类，可传入一个空字符串。 |
 | customArgs | string | 否 | 自定义键值对，若有多组键值对，使用逗号进行分隔，例"key1=value1,key2=value2"。<br/>若不需要该参数，可不传入该参数或传入一个空字符串。 |
+| callback | (boolean) => void | 是 | 注册的回调函数。 |
+| index | number | 是 | registerTraceListener()返回的回调索引。 |
 
 > **说明：**
 >
@@ -90,7 +94,9 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
 
 2. 编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，在文本点击事件处理业务中使用HiTraceMeter性能跟踪打点接口，完整的示例代码如下。
 
-   ```ts
+   <!-- @[hitracemeter_arkts_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->   
+   
+   ``` TypeScript
    import { hiTraceMeter, hilog } from '@kit.PerformanceAnalysisKit';
    
    @Entry
@@ -129,33 +135,33 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
                hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1001);
                // 结束taskId为1002的异步跟踪任务
                hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1002);
-               
+   
                // 开始同步跟踪任务
                hiTraceMeter.startSyncTrace(COMMERCIAL, 'myTestSyncTrace', 'key=value');
                // 业务流程
                hilog.info(0x0000, 'testTrace', 'myTraceTest running, synchronizing trace');
                // 结束同步跟踪任务
                hiTraceMeter.finishSyncTrace(COMMERCIAL);
-               
+   
                // 若通过HiTraceMeter性能打点接口传递的参数的生成过程比较复杂，此时可以通过isTraceEnabled判断当前是否开启应用trace捕获，
                // 在未开启应用trace捕获时，避免该部分性能损耗
                if (hiTraceMeter.isTraceEnabled()) {
-                   let customArgs = 'key0=value0';
-                   for(let index = 1; index < 10; index++) {
-                       customArgs += `,key${index}=value${index}`
-                   }
-                   hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003, 'categoryTest', customArgs);
-                   hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
-                   hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003);
+                 let customArgs = 'key0=value0';
+                 for (let index = 1; index < 10; index++) {
+                   customArgs += `,key${index}=value${index}`
+                 }
+                 hiTraceMeter.startAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003, 'categoryTest', customArgs);
+                 hilog.info(0x0000, 'testTrace', 'myTraceTest running, taskId: 1003');
+                 hiTraceMeter.finishAsyncTrace(COMMERCIAL, 'myTestAsyncTrace', 1003);
                } else {
-                   hilog.info(0x0000, 'testTrace', 'myTraceTest running, trace is not enabled');
+                 hilog.info(0x0000, 'testTrace', 'myTraceTest running, trace is not enabled');
                }
              })
-          }
-          .width('100%')
-        }
-        .height('100%')
-      }
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
    }
    ```
 

@@ -1,12 +1,15 @@
 # Native Buffer Development (C/C++)
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Designer: @conan13234-->
+<!--Tester: @nobuggers-->
+<!--Adviser: @ge-yafang-->
+## Overview
 
-## When to Use
+The NativeBuffer module provides the **shared memory** function, supporting memory allocation, usage, query, and release.
 
-The native buffer module provides APIs that you can use to apply for, use, and release the shared memory, and query memory properties.
-
-The following scenario is common for native buffer development:
-
-Use the native buffer APIs to create an **OH_NativeBuffer** instance, obtain memory properties, and map the corresponding ION memory to the process address space.
+In common development scenarios, you can use Native APIs to apply for OH_NativeBuffer instances, obtain memory attributes, and map the ION memory to the process space.
 
 ## Available APIs
 
@@ -20,11 +23,11 @@ Use the native buffer APIs to create an **OH_NativeBuffer** instance, obtain mem
 | OH_NativeBuffer_Unmap (OH_NativeBuffer \*buffer) | Unmaps the ION memory allocated to an **OH_NativeBuffer** instance from the process address space.| 
 | OH_NativeBuffer_GetSeqNum (OH_NativeBuffer \*buffer) | Obtains the sequence number of an **OH_NativeBuffer** instance.| 
 
-For details about the APIs, see [native_buffer](../reference/apis-arkgraphics2d/_o_h___native_buffer.md).
+For details about the APIs, see [native_buffer](../reference/apis-arkgraphics2d/capi-oh-nativebuffer.md).
 
 ## How to Develop
 
-The following describes how to use the aforementioned APIs to create an **OH_NativeBuffer** instance, obtain memory properties, and map the corresponding ION memory to the process address space.
+The following describes how to use the native APIs provided by `NativeBuffer` to create a `OH_NativeBuffer` instance, obtain the memory attribute information, and map the ION memory to the process space.
 
 **Adding Dynamic Link Libraries**
 
@@ -39,49 +42,52 @@ libnative_buffer.so
 ```
 
 1. Create an **OH_NativeBuffer** instance.
-    ```c++
-    #include <iostream>
+    <!-- @[nativebuffer_alloc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
+    ``` C++
     OH_NativeBuffer_Config config {
         .width = 0x100,
         .height = 0x100,
+        .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
+        .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
     };
-    OH_NativeBuffer* buffer = OH_NativeBuffer_Alloc(&config);
-    if (buffer == nullptr) {
-        std::cout << "OH_NativeBuffer_Alloc Failed" << std::endl;
+
+    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&config);
+    if (nativeBuffer == nullptr) {
+        LOGE("OH_NativeBuffer_Alloc fail, nativeBuffer is null");
     }
     ```
-   
-2. If the application needs to access the memory space of the **OH_NativeBuffer** instance, map the ION memory allocated to the instance to the process address space by calling **OH_NativeBuffer_Map**.
-    ```c++
-    // Map the ION memory to the process address space.
-    void* virAddr = nullptr;
-    int32_t ret = OH_NativeBuffer_Map(buffer, &virAddr); // After mapping, the start address of the memory is returned through the parameter virAddr.
-    if (ret != 0) {
-        std::cout << "OH_NativeBuffer_Map Failed" << std::endl;
-    }
 
-    // Unmap the ION memory from the process address space when it is no longer needed.
-    ret = OH_NativeBuffer_Unmap(buffer);
+2. If the application needs to access the memory space of the **OH_NativeBuffer** instance, map the ION memory allocated to the instance to the process address space
+    If the application needs to access the buffer memory space, map the ION memory to the process address space by calling OH_NativeBuffer_Map.
+    <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+    ``` C++
+    void* virAddr = nullptr;
+    int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr);
     if (ret != 0) {
-        std::cout << "OH_NativeBuffer_Unmap Failed" << std::endl;
+        LOGE("OH_NativeBuffer_Map Failed");
+    }
+    // ···
+    ret = OH_NativeBuffer_Unmap(nativeBuffer);
+    if (ret != 0) {
+        LOGE("OH_NativeBuffer_Unmap Failed");
     }
     ```
 
 3. Obtain the memory properties.
-    ```c++
-    // Obtain the properties of the OH_NativeBuffer instance.
+    <!-- @[nativebuffer_getconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+    ``` C++
     OH_NativeBuffer_Config config2 = {};
-    OH_NativeBuffer_GetConfig(buffer, &config2);
-    // Obtain the sequence number of the OH_NativeBuffer instance.
-     uint32_t hwBufferID = OH_NativeBuffer_GetSeqNum(buffer);
+    OH_NativeBuffer_GetConfig(nativeBuffer, &config2);
+    uint32_t hwBufferID = OH_NativeBuffer_GetSeqNum(nativeBuffer);
     ```
 
 4. Destroy the **OH_NativeBuffer** instance.
-    ```c++
-    // Call OH_NativeBuffer_Unreference to decrease the reference count by 1. When the reference count reaches 0, the instance is destroyed.
-    ret = OH_NativeBuffer_Unreference(buffer);
-    if (ret != 0) {
-        std::cout << "OH_NativeBuffer_Unreference Failed" << std::endl;
-    }
+    <!-- @[nativebuffer_unreference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+
+    ``` C++
+    OH_NativeBuffer_Unreference(nativeBuffer);
+    nativeBuffer = nullptr;
     ```

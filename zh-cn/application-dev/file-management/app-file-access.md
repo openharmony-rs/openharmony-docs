@@ -61,13 +61,17 @@ import { buffer } from '@kit.ArkTS';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[create_and_read_File](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function createFile(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
   // 文件不存在时创建并打开文件，文件存在时打开文件
   let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   // 写入一段内容至文件
-  let writeLen = fs.writeSync(file.fd, "Try to write str.");
-  console.info("The length of str is: " + writeLen);
+  let writeLen = fs.writeSync(file.fd, 'Try to write str.');
+  console.info('The length of str is: ' + writeLen);
   // 创建一个大小为1024字节的ArrayBuffer对象，用于存储从文件中读取的数据
   let arrayBuffer = new ArrayBuffer(1024);
   // 设置读取的偏移量和长度
@@ -79,11 +83,12 @@ function createFile(context: common.UIAbilityContext): void {
   let readLen = fs.readSync(file.fd, arrayBuffer, readOptions);
   // 将ArrayBuffer对象转换为Buffer对象，并转换为字符串输出
   let buf = buffer.from(arrayBuffer, 0, readLen);
-  console.info("the content of file: " + buf.toString());
+  console.info('the content of file: ' + buf.toString());
   // 关闭文件
   fs.closeSync(file);
 }
 ```
+
 
 ### 读取文件内容并写入到另一个文件
 
@@ -97,6 +102,10 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[read_write_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function readWriteFile(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
   // 打开文件
@@ -126,6 +135,7 @@ function readWriteFile(context: common.UIAbilityContext): void {
 }
 ```
 
+
 > **说明：**
 >
 > 使用读写接口时，需注意可选项参数offset的设置。对于已存在且读写过的文件，文件偏移指针默认在上次读写操作的终止位置。
@@ -142,12 +152,16 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[read_write_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 async function readWriteFileWithStream(context: common.UIAbilityContext): Promise<void> {
   let filesDir = context.filesDir;
   // 创建并打开输入文件流
   let inputStream = fs.createStreamSync(filesDir + '/test.txt', 'r+');
   // 创建并打开输出文件流
-  let outputStream = fs.createStreamSync(filesDir + '/destFile.txt', "w+");
+  let outputStream = fs.createStreamSync(filesDir + '/destFile.txt', 'w+');
 
   let bufSize = 4096;
   let readSize = 0;
@@ -172,6 +186,8 @@ async function readWriteFileWithStream(context: common.UIAbilityContext): Promis
 }
 ```
 
+
+
 > **说明：**
 >
 > 使用流接口时，需注意流的及时关闭。同时流的异步接口应严格遵循异步接口使用规范，避免同步、异步接口混用。流接口不支持并发读写。
@@ -187,14 +203,17 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
-// 查看文件列表
+```
+<!--@[get_list_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function getListFile(context: common.UIAbilityContext): void {
   let listFileOption: ListFileOptions = {
     recursion: false,
     listNum: 0,
     filter: {
-      suffix: [".png", ".jpg", ".txt"],
-      displayName: ["test*"],
+      suffix: ['.png', '.jpg', '.txt'],
+      displayName: ['test*'],
       fileSizeOver: 0,
       lastModifiedAfter: new Date(0).getTime()
     }
@@ -206,6 +225,7 @@ function getListFile(context: common.UIAbilityContext): void {
   }
 }
 ```
+
 
 ### 使用文件流
 
@@ -219,12 +239,16 @@ import { common } from '@kit.AbilityKit';
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+```
+<!--@[copy_file_with_readable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function copyFileWithReadable(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
   // 创建文件可读流
-  const rs = fs.createReadStream(`${filesDir}/read.txt`);
+  const rs = fs.createReadStream(`${filesDir}/test.txt`);
   // 创建文件可写流
-  const ws = fs.createWriteStream(`${filesDir}/write.txt`);
+  const ws = fs.createWriteStream(`${filesDir}/destFile.txt`);
   // 暂停模式拷贝文件。在拷贝数据时，将原始数据暂停，然后将数据复制到另一个位置，适用于对数据完整性和一致性要求较高的场景
   rs.on('readable', () => {
     const data = rs.read();
@@ -234,13 +258,18 @@ function copyFileWithReadable(context: common.UIAbilityContext): void {
     ws.write(data);
   });
 }
+```
 
+
+<!--@[copy_file_with_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function copyFileWithData(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
   // 创建文件可读流
-  const rs = fs.createReadStream(`${filesDir}/read.txt`);
+  const rs = fs.createReadStream(`${filesDir}/test.txt`);
   // 创建文件可写流
-  const ws = fs.createWriteStream(`${filesDir}/write.txt`);
+  const ws = fs.createWriteStream(`${filesDir}/destFile.txt`);
   // 流动模式拷贝文件。数据的读取和写入是同时进行的，不需要暂停原始数据的访问，适用于对数据实时性要求较高的场景
   rs.on('data', (emitData) => {
     const data = emitData?.data;
@@ -251,6 +280,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
   });
 }
 ```
+
 
 ### 使用文件哈希流
 
@@ -265,6 +295,11 @@ import { common } from '@kit.AbilityKit';
 // 获取应用文件路径，请在组件内获取context
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
+
+```
+<!--@[hash_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+
+``` TypeScript
 function hashFileWithStream(context: common.UIAbilityContext) {
   let filesDir = context.filesDir;
   const filePath = `${filesDir}/test.txt`;
@@ -282,5 +317,4 @@ function hashFileWithStream(context: common.UIAbilityContext) {
     console.info(`hashResult: ${hashResult}, fileHash: ${fileHash}`);
   });
 }
-
 ```

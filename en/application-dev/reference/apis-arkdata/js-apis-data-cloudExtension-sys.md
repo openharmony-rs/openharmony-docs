@@ -36,11 +36,11 @@ Represents the data sharing result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name         | Type                         | Mandatory | Description          |
-| ----------- | --------------------------- | --- | ------------ |
-| code        | number                      | Yes  | Error code.      |
-| description | string                      | No  | Detailed description of the error code. The default value is **undefined**.      |
-| value       | T                           | No  | Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.      |
+| Name         | Type                         | Read-Only| Optional| Description          |
+| ----------- | --------------------------- | ---- | ---- | ------------ |
+| code        | number                      | No  | No  | Error code.      |
+| description | string                      | No  | Yes  | Detailed description of the error code. The default value is **undefined**.      |
+| value       | T                           | No  | Yes  | Value returned. The specific type is specified by the **T** parameter. The default value is **undefined**.      |
 
 ## CloudAsset
 
@@ -48,10 +48,10 @@ Represents the cloud asset information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name   | Type  | Mandatory| Description                                |
-| ------- | ------ | ---- | ------------------------------------ |
-| assetId | string | Yes  | Asset ID.                            |
-| hash    | string | Yes  | Hashed value of the asset modification time and size.|
+| Name   | Type  | Read-Only| Optional| Description                                |
+| ------- | ------ | ---- | ---- | ------------------------------------ |
+| assetId | string | No  | No  | Asset ID.                            |
+| hash    | string | No  | No  | Hashed value of the asset modification time and size.|
 
 ## CloudAssets
 
@@ -69,13 +69,13 @@ Represents the cloud service information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name          | Type   | Mandatory| Description                                                        |
-| -------------- | ------- | ---- | ------------------------------------------------------------ |
-| enableCloud    | boolean | Yes  | Whether the cloud service is enabled. The value **true** means that the cloud service is enabled, and the value **false** means the opposite.|
-| id             | string  | Yes  | Cloud account ID generated using SHA-256.                          |
-| totalSpace     | number  | Yes  | Total account space on the server, in KB.                                |
-| remainingSpace | number  | Yes  | Available account space on the server, in KB.                              |
-| user           | number  | Yes  | Current user ID of the device.                                          |
+| Name          | Type   | Read-Only| Optional| Description                                                        |
+| -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
+| enableCloud    | boolean | No  | No  | Whether the cloud service is enabled. The value **true** means that the cloud service is enabled, and the value **false** means the opposite.|
+| id             | string  | No  | No  | Cloud account ID generated using SHA-256.                          |
+| totalSpace     | number  | No  | No  | Total account space on the server, in KB.                                |
+| remainingSpace | number  | No  | No  | Available account space on the server, in KB.                              |
+| user           | number  | No  | No  | Current user ID of the device.                                          |
 
 ## Flag
 
@@ -124,10 +124,10 @@ Represents the cloud information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name     | Type                                               | Mandatory| Description          |
-| --------- | --------------------------------------------------- | ---- | -------------- |
-| cloudInfo | [ServiceInfo](#serviceinfo)                         | Yes  | Cloud service information.  |
-| apps      | Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt; | Yes  | Brief application information.|
+| Name     | Type                                               | Read-Only| Optional| Description          |
+| --------- | --------------------------------------------------- | ---- | ---- | -------------- |
+| cloudInfo | [ServiceInfo](#serviceinfo)                         | No  | No | Cloud service information.  |
+| apps      | Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt; | No  | No  | Brief application information.|
 
 ## CloudData
 
@@ -135,11 +135,11 @@ Represents the cloud data.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name      | Type                                                      | Mandatory| Description                                                        |
-| ---------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| nextCursor | string                                                     | Yes  | Cursor for data query.                                                  |
-| hasMore    | boolean                                                    | Yes  | Whether there is data to be queried on the server. The value **true** means there is data to be queried on the server; the value **false** means the opposite.|
-| values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | Yes  | Array of data to be queried, which consists of the data value and [ExtensionValue](#extensionvalue).|
+| Name      | Type                                                      | Read-Only| Optional| Description                                                        |
+| ---------- | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| nextCursor | string                                                     | No  | No  | Cursor for data query.                                                  |
+| hasMore    | boolean                                                    | No  | No  | Whether there is data to be queried on the server. The value **true** means there is data to be queried on the server; the value **false** means the opposite.|
+| values     | Array&lt;Record&lt;string, [CloudType](#cloudtype)&gt;&gt; | No  | No  | Array of data to be queried, which consists of the data value and [ExtensionValue](#extensionvalue).|
 
 ## AppBriefInfo
 
@@ -147,12 +147,12 @@ Represents the brief application information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name       | Type   | Mandatory| Description                              |
-| ----------- | ------- | ---- | ---------------------------------- |
-| appId       | string  | Yes  | Application ID.                     |
-| bundleName  | string  | Yes  | Bundle name of the application.                        |
-| cloudSwitch | boolean | Yes  | Whether the cloud service is enabled for the application. The value **true** means the cloud service is enabled; the value **false** means the opposite.|
-| instanceId  | number  | Yes  | Application twin ID. The value **0** indicates the application itself, and the twin ID increases in ascending order.|
+| Name       | Type   | Read-Only| Optional| Description                              |
+| ----------- | ------- | ---- | ---- | ---------------------------------- |
+| appId       | string  | No  | No  | Application ID.                     |
+| bundleName  | string  | No  | No  | Bundle name of the application.                        |
+| cloudSwitch | boolean | No  | No  | Whether the cloud service is enabled for the application. The value **true** means the cloud service is enabled; the value **false** means the opposite.|
+| instanceId  | number  | No  | No  | Application twin ID. The value **0** indicates the application itself, and the twin ID increases in ascending order.|
 
 ## FieldType
 
@@ -177,13 +177,13 @@ Represents a field in the database.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name    | Type                     | Mandatory| Description                  |
-| -------- | ------------------------- | ---- | ---------------------- |
-| alias    | string                    | Yes  | Alias of the field in the table.|
-| colName  | string                    | Yes  | Name of the column, in which the field is located.                |
-| type     | [FieldType](#fieldtype) | Yes  | Type of the field.            |
-| primary  | boolean                   | Yes  | Whether the current column is the primary key. The value **true** means the current column is the primary key; the value **false** means the opposite.|
-| nullable | boolean                   | Yes  | Whether the current column can be null. The value **true** means the current column can be null; the value **false** means the opposite.     |
+| Name    | Type                     | Read-Only| Optional | Description                  |
+| -------- | ------------------------- | ---- | ---- | ---------------------- |
+| alias    | string                    | No  | No  | Alias of the field in the table.|
+| colName  | string                    | No  | No  | Name of the column, in which the field is located.                |
+| type     | [FieldType](#fieldtype)   | No  | No  | Type of the field.            |
+| primary  | boolean                   | No  | No  | Whether the current column is the primary key. The value **true** means the current column is the primary key; the value **false** means the opposite.|
+| nullable | boolean                   | No  | No  | Whether the current column can be null. The value **true** means the current column can be null; the value **false** means the opposite.     |
 
 ## Table
 
@@ -191,11 +191,11 @@ Represents the table information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name  | Type                        | Mandatory| Description                        |
-| ------ | ---------------------------- | ---- | ---------------------------- |
-| alias  | string                       | Yes  | Alias of the table in the database.|
-| name   | string                       | Yes  | Table name.                      |
-| fields | Array&lt;[Field](#field)&gt; | Yes  | Field information in the table.  |
+| Name  | Type                        | Read-Only| Optional| Description                        |
+| ------ | ---------------------------- | ---- | ---- | ---------------------------- |
+| alias  | string                       | No  | No  | Alias of the table in the database.|
+| name   | string                       | No  | No  | Table name.                      |
+| fields | Array&lt;[Field](#field)&gt; | No  | No  | Field information in the table.  |
 
 ## Database
 
@@ -203,11 +203,11 @@ Represents the database information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name  | Type                        | Mandatory| Description                            |
-| ------ | ---------------------------- | ---- | -------------------------------- |
-| name   | string                       | Yes  | Name of the database.                    |
-| alias  | string                       | Yes  | Alias of the database on the server.      |
-| tables | Array&lt;[Table](#table)&gt; | Yes  | Table in the database, including the detailed data information.|
+| Name  | Type                        | Read-Only| Optional| Description                            |
+| ------ | ---------------------------- | ---- | ---- | -------------------------------- |
+| name   | string                       | No  | No  | Name of the database.                    |
+| alias  | string                       | No  | No  | Alias of the database on the server.      |
+| tables | Array&lt;[Table](#table)&gt; | No  | No  | Table in the database, including the detailed data information.|
 
 ## AppSchema
 
@@ -215,11 +215,11 @@ Represents the application database schema.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name      | Type                                | Mandatory| Description              |
-| ---------- | ------------------------------------ | ---- | ------------------ |
-| bundleName | string                               | Yes  | Bundle name of the application.        |
-| version    | number                               | Yes  | Version of the database schema.|
-| databases  | Array&lt;[Database](#database)&gt; | Yes  | Database information of the application.|
+| Name      | Type                                | Read-Only| Optional| Description              |
+| ---------- | ------------------------------------ | ---- | ---- | ------------------ |
+| bundleName | string                               | No  | No  | Bundle name of the application.        |
+| version    | number                               | No  | No  | Version of the database schema.|
+| databases  | Array&lt;[Database](#database)&gt;   | No  | No  | Database information of the application.|
 
 ## SubscribeId
 
@@ -227,10 +227,10 @@ Represents the subscription ID information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name         | Type  | Mandatory| Description                  |
-| ------------- | ------ | ---- | ---------------------- |
-| databaseAlias | string | Yes  | Name of the database on the server.|
-| id            | string | Yes  | Subscription ID.             |
+| Name         | Type  | Read-Only| Optional| Description                  |
+| ------------- | ------ | ---- | ---- | ---------------------- |
+| databaseAlias | string | No  | No  | Name of the database on the server.|
+| id            | string | No  | No  | Subscription ID.             |
 
 ## SubscribeInfo
 
@@ -238,10 +238,10 @@ Represents the subscription information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name          | Type                                                        | Mandatory| Description                |
-| -------------- | ------------------------------------------------------------ | ---- | -------------------- |
-| expirationTime | number                                                       | Yes  | Subscription expiration time, in ms.|
-| subscribe      | Record&lt;string, Array&lt;[SubscribeId](#subscribeid)&gt;&gt; | Yes  | Subscription information.          |
+| Name          | Type                                                        | Read-Only| Optional| Description                |
+| -------------- | ------------------------------------------------------------   | ---- | ---- | -------------------- |
+| expirationTime | number                                                         | No  | No  | Subscription expiration time, in ms.|
+| subscribe      | Record&lt;string, Array&lt;[SubscribeId](#subscribeid)&gt;&gt; | No  | No  | Subscription information.          |
 
 ## LockInfo
 
@@ -249,10 +249,10 @@ Represents the cloud database lock information.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
-| Name    | Type  | Mandatory| Description                           |
-| -------- | ------ | ---- | ------------------------------- |
-| interval | number | Yes  | Lock period of the cloud database, in seconds.|
-| lockId   | number | Yes  | Lock ID.                         |
+| Name    | Type  | Read-Only| Optional| Description                           |
+| -------- | ------ | ---- | ---- | ------------------------------- |
+| interval | number | No  | No   | Lock period of the cloud database, in seconds.|
+| lockId   | number | No  | No   | Lock ID.                         |
 
 ## ErrorCode
 
@@ -448,7 +448,7 @@ Provides APIs for performing cloud database operations.
 
 generateId(count: number): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
 
-Generates IDs for the data records inserted to the cloud database. The IDs are unique.
+Generates IDs for the data records inserted to the cloud database. The IDs are unique. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -486,7 +486,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 update(table: string, values: Array&lt;Record&lt;string, CloudType>>, extensions: Array&lt;Record&lt;string, CloudType>> ): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType>>>>
 
-Updates data in the cloud.
+Updates data in the cloud. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -524,7 +524,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 insert(table: string, values: Array<Record<string, CloudType>>, extensions: Array<Record<string, CloudType>>): Promise<Array<Result<Record<string, CloudType&gt;&gt;&gt;&gt;
 
-Inserts data to a cloud database table.
+Inserts data to a cloud database table. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -562,7 +562,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 delete(table: string, extensions: Array&lt;Record&lt;string, CloudType>> ): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType&gt;&gt;&gt;&gt;
 
-Deletes data from a cloud database table.
+Deletes data from a cloud database table. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -599,7 +599,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCursor: string): Promise&lt;Result&lt;CloudData&gt;&gt;
 
-Queries data in a cloud database table.
+Queries data in a cloud database table. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -645,7 +645,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
-Locks this cloud database.
+Locks this cloud database. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -683,7 +683,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
-Extends the lock period of the database.
+Extends the lock period of the database. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -727,7 +727,7 @@ class MyCloudDB implements cloudExtension.CloudDB {
 
 unlock(lockId: number): Promise&lt;Result&lt;boolean&gt;&gt;
 
-Unlocks a cloud database.
+Unlocks a cloud database. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -1090,7 +1090,7 @@ Provides APIs for uploading and downloading assets.
 
 download(table: string, gid: string, prefix: string, assets: Array&lt;CloudAsset&gt;): Promise&lt;Array&lt;Result&lt;CloudAsset&gt;&gt;&gt;
 
-Downloads assets.
+Downloads assets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
@@ -1126,7 +1126,7 @@ class MyAssetLoader implements cloudExtension.AssetLoader {
 
 upload(table: string, gid: string, assets: Array&lt;CloudAsset&gt;): Promise&lt;Array&lt;Result&lt;CloudAsset&gt;&gt;&gt;
 
-Uploads assets.
+Uploads assets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 

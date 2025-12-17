@@ -6,9 +6,13 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_TextConfig InputMethod_TextConfig
+```
+
 ## 概述
 
-输入框配置。输入框的配置信息。
+输入框的配置信息。
 
 **起始版本：** 12
 

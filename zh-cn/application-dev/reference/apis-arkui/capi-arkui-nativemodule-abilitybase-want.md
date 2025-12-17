@@ -1,4 +1,14 @@
 # AbilityBase_Want
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
+<!--Tester: @fredyuan912-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct AbilityBase_Want AbilityBase_Want
+```
 
 ## 概述
 

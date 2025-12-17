@@ -1,5 +1,10 @@
 # Bundle Management Development
-
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @wanghang904-->
+<!--Designer: @hanfeng6-->
+<!--Tester: @kongjing2-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## How do I determine whether an application is a system application? (API version 9)
 
@@ -9,7 +14,7 @@ Use **bundleManager.getApplicationInfo** (available only for system applications
 
 **References**
 
-[bundleManager](../reference/apis-ability-kit/js-apis-bundleManager.md)
+[@ohos.bundle.bundleManager \(Bundle Management Module\)](../reference/apis-ability-kit/js-apis-bundleManager.md)
 
 
 ## How do I obtain the version code and version name of an application? (API version 9)
@@ -129,7 +134,7 @@ Currently, only system applications can call the API to query information about 
 
 **References**
 
-[@ohos.bundle.bundleManager \(bundleManager\)](../reference/apis-ability-kit/js-apis-bundleManager.md)
+[@ohos.bundle.bundleManager \(Bundle Management Module\)](../reference/apis-ability-kit/js-apis-bundleManager.md)
 
 
 ## How do I query the PID of a process? (API version 9)

@@ -312,7 +312,7 @@ struct CardExample {
         .size({width:360,height:360})
         .visibility(Visibility.Visible)
         .onAcquired((form: FormCallbackInfo)=>{
-          console.log(`form info : ${JSON.stringify(form)}`);
+          console.info(`form info : ${JSON.stringify(form)}`);
           // Invalid form id
           if (form.id == -1) {
             this.formId = form.idString;
@@ -321,10 +321,10 @@ struct CardExample {
           }
         })
         .onError((err)=>{
-          console.log(`fail to add form, err: ${JSON.stringify(err)}`);
+          console.error(`fail to add form, err: ${JSON.stringify(err)}`);
         })
         .onUninstall((form: FormCallbackInfo)=>{
-          console.log(`uninstall form success : ${JSON.stringify(form)}`);
+          console.info(`uninstall form success : ${JSON.stringify(form)}`);
           // Invalid form id
           if (form.id == -1) {
             this.formId = form.idString;
@@ -333,7 +333,7 @@ struct CardExample {
           }
         })
         .onUpdate((form: FormCallbackInfo)=>{
-          console.log(`form update done : ${JSON.stringify(form)}`);
+          console.info(`form update done : ${JSON.stringify(form)}`);
         })
     }
     .width('100%')

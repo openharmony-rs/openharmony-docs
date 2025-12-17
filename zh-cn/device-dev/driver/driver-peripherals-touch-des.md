@@ -102,7 +102,7 @@ Input HDF驱动提供给系统服务Input Service调用的HDI驱动能力接口�
   | int32_t (*RunCapacitanceTest)(uint32_t devIndex, uint32_t testType, char *result, uint32_t length); | 执行容值自检测试 | 
   | int32_t (*RunExtraCommand)(uint32_t devIndex, InputExtraCmd *cmd);                                  | 执行拓展指令     | 
 
-更多接口请参考[Input驱动仓](https://gitee.com/openharmony/drivers_peripheral/tree/master/input)。
+更多接口请参考[Input驱动仓](https://gitcode.com/openharmony/drivers_peripheral/tree/master/input)。
 
 ### 开发步骤
 

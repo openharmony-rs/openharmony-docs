@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbDdkConfigDescriptor {...} UsbDdkConfigDescriptor
+```
+
 ## 概述
 
 配置描述符。

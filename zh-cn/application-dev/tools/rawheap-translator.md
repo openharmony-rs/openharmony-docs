@@ -123,7 +123,7 @@ MacOS系统中解析示例
 
 rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对象数量呈强正相关。当ArkTS堆内存占用较大、存活对象数量较多时，生成的rawheap文件会更大，耗时也会更长。开发者可以订阅[资源泄漏事件](../dfx/hiappevent-watcher-resourceleak-events.md)，自定义事件处理逻辑。
 
-从API version 20开始，虚拟机支持两种规格的HeapDump。
+从API version 20开始，虚拟机支持两种规格的HeapDump，具体切换操作可参考[设置当前进程转储虚拟机原始堆快照的裁剪级别](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)。
 | 规格 | 特点 |
 | :--- | :--- |
 | TRIM_LEVEL_1 | dump速度快，生成的rawheap文件大。<br>API version 20之前版本，虚拟机默认为TRIM_LEVEL_1规格。 |

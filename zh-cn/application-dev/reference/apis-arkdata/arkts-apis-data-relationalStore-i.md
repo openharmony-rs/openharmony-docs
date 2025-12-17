@@ -26,7 +26,7 @@
 | allowRebuild<sup>12+</sup> | boolean | 否 | 是 | 指定数据库是否支持异常时自动删除，并重建一个空库空表，默认不删除。<br/>true：自动删除。<br/>false：不自动删除。<br/>从API version 12开始，支持此可选参数。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | isReadOnly<sup>12+</sup> | boolean | 否 | 是 | 指定数据库是否只读，默认为数据库可读写。<br/>true：只允许从数据库读取数据，不允许对数据库进行写操作，否则会返回错误码801。<br/>false：允许对数据库进行读写操作。<br/>从API version 12开始，支持此可选参数。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | pluginLibs<sup>12+</sup> | Array\<string> | 否 | 是 | 表示包含有fts（Full-Text Search，即全文搜索引擎）等能力的动态库名的数组。<br/>**使用约束：** <br/>1. 动态库名的数量限制最多为16个，如果超过该数量会开库失败，返回错误。<br/>2. 动态库名需为本应用沙箱路径下或系统路径下的动态库，如果动态库无法加载会开库失败，返回错误。<br/>3. 动态库名需为完整路径，用于被sqlite加载。<br/>样例：[context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]，其中context.bundleCodeDir是应用沙箱对应的路径，"/libs/arm64/"表示子目录，libtokenizer.so表示动态库的文件名。当此参数不填时，默认不加载动态库。<br/>4. 动态库需要包含其全部依赖，避免依赖项丢失导致无法运行。<br/>例如：在ndk工程中，使用默认编译参数构建libtokenizer.so，此动态库依赖c++标准库。在加载此动态库时，由于namespace与编译时不一致，链接到了错误的libc++_shared.so，导致`__emutls_get_address`符号找不到。要解决此问题，需在编译时静态链接c++标准库，具体请参见[NDK工程构建概述](../../napi/build-with-ndk-overview.md)。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
-| cryptoParam<sup>14+</sup> | [CryptoParam](#cryptoparam14) | 否 | 是 | 指定用户自定义的加密参数。<br/>当此参数不填时，使用默认的加密参数，见[CryptoParam](#cryptoparam14)各参数默认值。<br/>此配置只有在encrypt选项设置为真时才有效。<br/>从API version 14开始，支持此可选参数。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
+| cryptoParam<sup>14+</sup> | [CryptoParam](#cryptoparam14) | 否 | 是 | 指定用户自定义的加密参数。<br/>当此参数不填时，使用默认的加密参数，见[CryptoParam](#cryptoparam14)各参数默认值。<br/>此配置只有在encrypt选项设置为真或密钥非空时才有效。<br/>从API version 14开始，支持此可选参数。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | vector<sup>18+</sup> | boolean | 否 | 是 | 指定数据库是否是向量数据库，true表示向量数据库，false表示关系型数据库，默认为false。<br/>向量数据库适用于存储和处理高维向量数据，关系型数据库适用于存储和处理结构化数据。<br/>当使用向量数据库时，在调用deleteRdbStore接口前，应当确保向量数据库已打开的RdbStore和ResultSet均已成功关闭。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | tokenizer<sup>17+</sup> | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17) | 否 | 是 | 指定用户在fts场景下使用哪种分词器。<br/>当此参数不填时，则在fts下不支持中文以及多国语言分词，但仍可支持英文分词。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
 | persist<sup>18+</sup> | boolean | 否 | 是 | 指定数据库是否需要持久化。true表示持久化，false表示不持久化，即内存数据库。默认为true。<br/>内存数据库不支持加密、backup、restore、跨进程访问及分布式能力，securityLevel属性会被忽略。<br/>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |
@@ -34,7 +34,7 @@
 
 ## CryptoParam<sup>14+</sup>
 
-数据库加密参数配置。此配置只有在StoreConfig的encrypt选项设置为true时有效。
+数据库加密参数配置。此配置只有在StoreConfig的encrypt选项设置为true或密钥非空时有效。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -69,13 +69,13 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称     | 类型                               | 必填 | 说明                                                         |
-| -------- | ---------------------------------- | ---- | ------------------------------------------------------------ |
-| table    | string                             | 是   | 表示发生变化的表的名称。                                     |
-| type     | [ChangeType](arkts-apis-data-relationalStore-e.md#changetype10)        | 是   | 表示发生变化的数据的类型，数据或者资产附件发生变化。         |
-| inserted | Array\<string\> \| Array\<number\> | 是   | 记录插入数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示插入数据的行号。 |
-| updated  | Array\<string\> \| Array\<number\> | 是   | 记录更新数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示更新数据的行号。 |
-| deleted  | Array\<string\> \| Array\<number\> | 是   | 记录删除数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示删除数据的行号。 |
+| 名称     | 类型                               | 只读 | 可选  | 说明                                                         |
+| -------- | ---------------------------------- | ---- | ---- |------------------------------------------------------------ |
+| table    | string                             | 否   |   否   | 表示发生变化的表的名称。                                     |
+| type     | [ChangeType](arkts-apis-data-relationalStore-e.md#changetype10)        | 否   |   否   | 表示发生变化的数据的类型，数据或者资产附件发生变化。         |
+| inserted | Array\<string\> \| Array\<number\> | 否   |   否   | 记录插入数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示插入数据的行号。 |
+| updated  | Array\<string\> \| Array\<number\> | 否   |   否   | 记录更新数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示更新数据的行号。 |
+| deleted  | Array\<string\> \| Array\<number\> | 否   |   否   | 记录删除数据的位置，如果该表的主键是string类型，该值是主键的值，否则该值表示删除数据的行号。 |
 
 ## DistributedConfig<sup>10+</sup>
 
@@ -95,12 +95,12 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称       | 类型   | 必填 | 说明                                     |
-| ---------- | ------ | ---- | ---------------------------------------- |
-| total      | number | 是   | 表示数据库表中需要端云同步的总行数。     |
-| successful | number | 是   | 表示数据库表中端云同步成功的行数。       |
-| failed     | number | 是   | 表示数据库表中端云同步失败的行数。       |
-| remained   | number | 是   | 表示数据库表中端云同步剩余未执行的行数。 |
+| 名称       | 类型   | 只读 | 可选  | 说明                                     |
+| ---------- | ------ | ---- | ---- |---------------------------------------- |
+| total      | number | 否   |   否   | 表示数据库表中需要端云同步的总行数。     |
+| successful | number | 否   |   否   | 表示数据库表中端云同步成功的行数。       |
+| failed     | number | 否   |   否   | 表示数据库表中端云同步失败的行数。       |
+| remained   | number | 否   |   否   | 表示数据库表中端云同步剩余未执行的行数。 |
 
 ## TableDetails<sup>10+</sup>
 
@@ -108,10 +108,10 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称     | 类型                      | 必填 | 说明                                       |
-| -------- | ------------------------- | ---- | ------------------------------------------ |
-| upload   | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 是   | 表示数据库表中端云同步上传过程的统计信息。 |
-| download | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 是   | 表示数据库表中端云同步下载过程的统计信息。 |
+| 名称     | 类型                      | 只读 | 可选  | 说明                                       |
+| -------- | ------------------------- | ---- | ---- |------------------------------------------ |
+| upload   | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 否   |   否   | 表示数据库表中端云同步上传过程的统计信息。 |
+| download | [Statistic](arkts-apis-data-relationalStore-i.md#statistic10) | 否   |   否   | 表示数据库表中端云同步下载过程的统计信息。 |
 
 ## ProgressDetails<sup>10+</sup>
 
@@ -119,11 +119,11 @@
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-| 名称     | 类型                                              | 必填 | 说明                                                         |
-| -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | 是   | 表示端云同步过程。                                           |
-| code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | 是   | 表示端云同步过程的状态。                                     |
-| details  | Record<string, [TableDetails](#tabledetails10)> | 是   | 表示端云同步各表的统计信息。<br>键表示表名，值表示该表的端云同步过程统计信息。 |
+| 名称     | 类型                                              | 只读 | 可选  | 说明                                                         |
+| -------- | ------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| schedule | [Progress](arkts-apis-data-relationalStore-e.md#progress10)                            | 否   |   否   | 表示端云同步过程。                                           |
+| code     | [ProgressCode](arkts-apis-data-relationalStore-e.md#progresscode10)                  | 否   |   否   | 表示端云同步过程的状态。                                     |
+| details  | Record<string, [TableDetails](#tabledetails10)> | 否   |   否   | 表示端云同步各表的统计信息。<br>键表示表名，值表示该表的端云同步过程统计信息。 |
 
 ## SqlExecutionInfo<sup>12+</sup>
 
@@ -133,11 +133,11 @@
 
 | 名称     | 类型                                               | 只读 | 可选  |说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ---- | -------------------------------------------------------- |
-| sql<sup>12+</sup>           | Array&lt;string&gt;            | 否   |   否   | 表示执行的SQL语句的数组。当[batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert)的参数太大时，可能有多个SQL。      |
-| totalTime<sup>12+</sup>      | number                        | 否   |   否   | 表示执行SQL语句的总时间，单位为μs。                                    |
-| waitTime<sup>12+</sup>       | number                        | 否   |   否   | 表示获取句柄的时间，单位为μs。                                         |
-| prepareTime<sup>12+</sup>    | number                        | 否   |   否   | 表示准备SQL和绑定参数的时间，单位为μs。                                 |
-| executeTime<sup>12+</sup>    | number                        | 否   |   否   | 表示执行SQL语句的时间，单位为μs。 |
+| sql | Array&lt;string&gt; | 否 | 否 | 表示执行的SQL语句的数组。当[batchInsert](arkts-apis-data-relationalStore-RdbStore.md#batchinsert)的参数太大时，可能有多个SQL。 |
+| totalTime   | number | 否 | 否 | 表示执行SQL语句的总时间，单位为μs。 |
+| waitTime    | number | 否 | 否 | 表示获取句柄的时间，单位为μs。 |
+| prepareTime | number | 否 | 否 | 表示准备SQL和绑定参数的时间，单位为μs。 |
+| executeTime | number | 否 | 否 | 表示执行SQL语句的时间，单位为μs。 |
 
 ## SqlInfo<sup>20+</sup>
 
@@ -147,8 +147,8 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| sql<sup>20+</sup>  | string | 否 | 否 | 表示执行的sql语句。 |
-| args<sup>20+</sup> | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否 | 否 | 表示执行SQL中的参数信息。 |
+| sql  | string | 否 | 否 | 表示执行的sql语句。 |
+| args | Array&lt;[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)&gt; | 否 | 否 | 表示执行SQL中的参数信息。 |
 
 ## ExceptionMessage<sup>20+</sup>
 
@@ -158,9 +158,9 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| code<sup>20+</sup> | number | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
-| message<sup>20+</sup> | string | 否 | 否 | 表示执行SQL返回的错误信息。 |
-| sql<sup>20+</sup> | string | 否 | 否 | 表示报错执行的SQL语句。 |
+| code | number | 否 | 否 | 表示执行SQL返回的错误码，对应的取值和含义请见[sqlite错误码](https://www.sqlite.org/rescode.html) |
+| message | string | 否 | 否 | 表示执行SQL返回的错误信息。 |
+| sql | string | 否 | 否 | 表示报错执行的SQL语句。 |
 
 ## TransactionOptions<sup>14+</sup>
 

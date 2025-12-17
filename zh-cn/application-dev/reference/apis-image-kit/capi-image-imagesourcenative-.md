@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ImageSourceNative_ ImageSourceNative
+```
+
 ## 概述
 
 为图像源方法定义native层图像源对象。

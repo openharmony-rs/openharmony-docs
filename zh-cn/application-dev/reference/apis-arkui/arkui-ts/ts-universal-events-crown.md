@@ -4,7 +4,7 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
    指扭动表冠时触发的事件，事件的分发依赖于应用焦点，开发者可以通过[焦点事件](ts-universal-attributes-focus.md)自定义事件处理。
 
 >  **说明：**
@@ -24,6 +24,10 @@
 onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
 组件获焦以后扭动表冠时触发该回调。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -51,11 +55,11 @@ onDigitalCrown(handler: Optional&lt;Callback&lt;CrownEvent&gt;&gt;): T
 
 | 名称                   | 类型       | 只读    |  可选   |  说明                                                       |
 | --------------------- | ------------- | ---------- |------------ |-------------------------------------- |
-| timestamp	        | number	 |  否     | 否    |时间戳。                                  |
-| angularVelocity	| number	 |  否     | 否    |旋转角速度，每秒转的角度(°/s)。                   |
-| degree	        | number 	 |  否     | 否    |相对旋转角度。<br>单位：度。<br>取值范围:[-360, 360]。     |
-| action	        | [CrownAction](ts-appendix-enums.md#crownaction18)   |  否     | 否    |表冠动作。  |
-| stopPropagation	| Callback\<void>    |  否      | 否    |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。                         |
+| timestamp         | number   |  否     | 否    |时间戳。                                  |
+| angularVelocity | number   |  否     | 否    |旋转角速度，每秒转的角度(°/s)。                   |
+| degree          | number   |  否     | 否    |相对旋转角度。<br>单位：度。<br>取值范围:[-360, 360]。     |
+| action          | [CrownAction](ts-appendix-enums.md#crownaction18)   |  否     | 否    |表冠动作。  |
+| stopPropagation | Callback\<void>    |  否      | 否    |阻止[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。                         |
 
 ## 示例
 该示例实现了组件注册表冠事件，接收表冠事件数据上报内容。

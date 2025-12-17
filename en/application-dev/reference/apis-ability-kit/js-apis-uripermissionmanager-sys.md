@@ -1,5 +1,12 @@
 # @ohos.application.uriPermissionManager (URI Permission Management) (System API)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @dsz2025-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The **uriPermissionManager** module provides capabilities for granting the permission on a file to another application and revoking the granted permissions. The file is identified by a uniform resource identifier (URI).
 
 > **NOTE**
@@ -24,7 +31,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 > **NOTE**
 >
-> If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
+>- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -92,7 +100,8 @@ Grants the URI permission to an application. If the call is successful, the appl
 
 > **NOTE**
 >
-> If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
+>- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -165,6 +174,7 @@ Grants the URI permission to an application. If the call is successful, the appl
 > 
 >- If an application has the ohos.permission.PROXY_AUTHORIZATION_URI permission, it can grant the accessible URIs of another application. If the application does not have this permission, it can grant only its own URI permissions.
 >- This API can be used to grant URI access permission to a cloned application. You need to specify the application bundle name and index of the cloned application.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -258,7 +268,8 @@ Revokes the URI permission from an application. This API uses an asynchronous ca
 
 > **NOTE**
 > 
-> This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
+>- This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -310,7 +321,8 @@ Revokes the URI permission from an application. This API uses a promise to retur
 
 > **NOTE**
 > 
-> This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
+>- This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -368,6 +380,7 @@ Revokes the URI permission from an application. This API uses a promise to retur
 > 
 >- This API can be used to revoke the URI permission of another application obtained by this application or URI permission granted by this application.
 >- This API can be used to revoke the URI permissions granted to a cloned application. You need to specify the application bundle name and index of the cloned application.
+>- URI processing involves encoding and decoding. Therefore, the input URI must be obtained through the [getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API. For URIs combined by the application, the system cannot guarantee their functions.
 
 **System API**: This is a system API.
 
@@ -431,7 +444,7 @@ Revokes the URI permission from an application. This API uses a promise to retur
 
       // revoke uri permission of clone application
       try {
-        let appCloneIndex: number = 0;
+        let appCloneIndex: number = 1;
         uriPermissionManager.revokeUriPermission(uri, targetBundleName, appCloneIndex)
           .then(() => {
             console.info('revokeUriPermission succeeded.');
@@ -451,11 +464,11 @@ grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTokenId: nu
 
 Grants the URI access permission of the current application to the target application through the unique key of the Unified Data Management Framework (UDMF) data. The permission will be revoked after the target application exits. This API uses a promise to return the result.
 
-This API takes effect only on phones, 2-in-1 devices, and tablets.
-
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -525,13 +538,13 @@ grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, callerTok
 
 Grants the URI access permission of the specified application to the target application through the unique key of the Unified Data Management Framework (UDMF) data. The permission will be revoked after the target application exits. This API uses a promise to return the result.
 
-This API takes effect only on phones, 2-in-1 devices, and tablets.
-
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.GRANT_URI_PERMISSION_AS_CALLER (available only to system applications)
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior differences**: This API can be properly called only on phones, 2-in-1 devices, and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 

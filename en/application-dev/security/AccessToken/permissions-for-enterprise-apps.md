@@ -3,8 +3,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Security-->
 <!--Owner: @harylee-->
-<!--SE: @linshuqing; @hehehe-li-->
-<!--TSE: @leiyuqian-->
+<!--Designer: @linshuqing; @hehehe-li-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
 
 The following permissions are open to <!--Del-->system applications and <!--DelEnd-->enterprise applications.
 
@@ -107,6 +108,8 @@ With this permission, the application can obtain the runtime information of othe
 
 Allows an application to listen for the state of another application.
 
+With this permission, the application can register an application state observer.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -138,6 +141,8 @@ such as the app bundle name and version.
 ## ohos.permission.GET_WIFI_CONFIG
 
 Allows an application to obtain the Wi-Fi configuration.
+
+With this permission, the application can obtain Wi-Fi configurations, such as the SSID, PSK, and encryption mode.
 
 **Permission level**: system_basic
 
@@ -215,21 +220,6 @@ With this permission, the system application can terminate other running applica
 **Valid since**: 12
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 13. From API version 14, it is available to normal enterprise applications.
-
-## ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
-
-Allows a system application or carrier application to set the eSIM nickname and activate the eSIM.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 14
-
-**Changelog**: The permission level is **normal** in API versions 13 and **system_basic** since API versions 14.
 
 ## ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -472,7 +462,7 @@ Allows an enterprise application to manage antivirus software.
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -487,7 +477,7 @@ Allows enterprise antivirus software to register with the system and update basi
 <!--Del-->
 **Enable via ACL**: true<!--DelEnd-->
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
 
@@ -522,3 +512,20 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 20
+
+## ohos.permission.sec.ACCESS_UDID
+
+Allows an application to obtain the Unified Device ID (UDID).
+
+The UDID uniquely identifies a device.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Valid since**: 7
+
+**Changelog**: This permission is available only to system applications in API versions 7 to 19. From API version 20, it is available to normal enterprise applications.

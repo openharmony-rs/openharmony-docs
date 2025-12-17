@@ -1,5 +1,12 @@
 # @ohos.app.ability.ConfigurationConstant (Constants Related to Environment Variables)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @wkljy-->
+<!--Designer: @li-weifeng2024-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 The ConfigurationConstant module provides preset enumerated values related to [Configuration](js-apis-app-ability-configuration.md) operations.
 
 > **NOTE**

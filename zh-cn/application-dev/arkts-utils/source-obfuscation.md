@@ -126,6 +126,7 @@ test(a2);
 | 输出未混淆名单 | [`-print-kept-names`](#-print-kept-names) |
 | 缩减语言预置白名单 | [`-extra-options strip-language-default`](#-extra-options-strip-language-default) |
 | 缩减系统预置白名单 | [`-extra-options strip-system-api-args`](#-extra-options-strip-system-api-args) |
+| 不保留未参与编译模块名称 | [`-extra-options strip-not-compiled-module-name`](#-extra-options-strip-not-compiled-module-name) |
 | 保留声明文件参数 | [`-keep-parameter-names`](#-keep-parameter-names) |
 | 合并依赖模块选项 | [`-enable-lib-obfuscation-options`](#-enable-lib-obfuscation-options) |
 | 通过注释在源码中标记白名单 | [`-use-keep-in-source`](#-use-keep-in-source) |
@@ -561,9 +562,19 @@ test(a2);
 
 通过对比开启和关闭`-extra-options strip-system-api-args`选项时系统API白名单文件（systemApiCache.json）中ReservedLocalNames和ReservedPropertyNames字段的内容差异，该差异即为系统白名单的具体减少范围，ReservedGlobalNames字段的内容不会产生变化。
 
+### -extra-options strip-not-compiled-module-name
+
+当前混淆的白名单中**默认包含了项目中所有的模块名称**。如果开发者源码中的文件名与模块名称重名，混淆工具会保留这些文件名。
+
+开发者可通过配置`-extra-options strip-not-compiled-module-name`选项来混淆与未参与编译的模块同名的文件。
+
+从API version 22开始，支持此选项。
+
+开启该选项后，仅编译的模块及其直接和间接依赖的本地源码Har模块名称加入混淆白名单，其余模块名称不会被保留。
+
 **使用-extra-options选项的方法如下**：
 
-在混淆配置文件中添加`-extra-options`前缀和选项，且前缀与选项之间不能包含其他内容。支持开启单个选项或同时开启两个选项。例如：
+在混淆配置文件中添加`-extra-options`前缀和选项，且前缀与选项之间不能包含其他内容。支持开启单个选项或同时开启多个选项。例如：
 
 单个选项：
 
@@ -574,15 +585,24 @@ strip-language-default
 -extra-options strip-language-default
 ```
 
-同时开启两个选项：
+同时开启多个选项：
 
 ```
--extra-options strip-language-default, strip-system-api-args
+-extra-options strip-language-default, strip-system-api-args, strip-not-compiled-module-name
 
--extra-options strip-language-default strip-system-api-args
+-extra-options strip-language-default strip-system-api-args strip-not-compiled-module-name
+
+-extra-options
+strip-language-default strip-system-api-args strip-not-compiled-module-name
+
+-extra-options
+strip-language-default
+strip-system-api-args
+strip-not-compiled-module-name
 
 -extra-options strip-language-default
 -extra-options strip-system-api-args
+-extra-options strip-not-compiled-module-name
 ```
 
 ### -keep-parameter-names
@@ -1066,7 +1086,7 @@ async function func() {
 
 ```
 
-3.在使用[跨包路由](../ui/arkts-navigation-navigation.md#跨包路由)进行路由跳转时，传递给动态路由的路径应被保留。动态路由提供系统路由表和自定义路由表两种方式。若采用自定义路由表进行跳转，配置白名单的方式与第二种动态引用场景一致。若采用系统路由表进行跳转，则需将模块下`resources/base/profile/route_map.json`文件中`pageSourceFile`字段对应的路径添加到白名单中。
+3.在使用[跨包路由](../ui/arkts-navigation-cross-package.md)进行路由跳转时，传递给动态路由的路径应被保留。动态路由提供系统路由表和自定义路由表两种方式。若采用自定义路由表进行跳转，配置白名单的方式与第二种动态引用场景一致。若采用系统路由表进行跳转，则需将模块下`resources/base/profile/route_map.json`文件中`pageSourceFile`字段对应的路径添加到白名单中。
 
 ```json
 {
@@ -1389,6 +1409,7 @@ a*
 | -print-kept-names | 输出未混淆名单 | 18 |
 | -extra-options strip-language-default | 缩减语言预置白名单 | 18 |
 | -extra-options strip-system-api-args | 缩减系统预置白名单 | 18 |
+| -extra-options strip-not-compiled-module-name | 不保留未参与编译模块名称 | 22 |
 | -keep-parameter-names | 保留声明文件参数 | 18 |
 | -enable-lib-obfuscation-options | 合并依赖模块选项 | 18 |
 | -use-keep-in-source          | 通过注释在源码中标记白名单 | 19 |

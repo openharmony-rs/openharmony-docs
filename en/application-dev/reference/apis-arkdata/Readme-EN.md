@@ -43,13 +43,14 @@
   - [@ohos.data.dataShareResultSet (DataShare Result Set) (System API)](js-apis-data-DataShareResultSet-sys.md)
   - [@ohos.data.distributedKVStore (Distributed KV Store) (System API)](js-apis-distributedKVStore-sys.md)
   - [@ohos.data.relationalStore (RDB Store) (System API)](js-apis-data-relationalStore-sys.md)
+  - [@ohos.data.uniformTypeDescriptor (Uniform Data Definition and Description) (System API)](js-apis-data-uniformTypeDescriptor-sys.md)
   <!--DelEnd-->
   - APIs No Longer Maintained<!--arkdata-arkts-dep-->
     - [@ohos.data.distributedData (Distributed Data Management)](js-apis-distributed-data.md)
     - [@ohos.data.rdb (RDB)](js-apis-data-rdb.md)
     - [@ohos.data.storage (Lightweight Data Storage)](js-apis-data-storage.md)
     - [@system.storage (Data Storage)](js-apis-system-storage.md)
-    - data/rdb
+    - data/rdb<!--data-rdb-->
       - [resultSet (Result Set)](js-apis-data-resultset.md) 
 - ArkTS Components<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (Content Card)](js-apis-data-UdmfComponents.md)
@@ -127,6 +128,7 @@
     - [OH_UdsPixelMap](capi-udmf-oh-udspixelmap.md)
     - [OH_UdsArrayBuffer](capi-udmf-oh-udsarraybuffer.md)
     - [OH_UdsContentForm](capi-udmf-oh-udscontentform.md)
+    - [OH_UdsDetails](capi-udmf-oh-udsdetails.md)
     - [OH_Utd](capi-udmf-oh-utd.md)
 - Error Codes<!--arkdata-arkts-errcode-->
   - [RDB Error Codes](errorcode-data-rdb.md)

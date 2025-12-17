@@ -37,6 +37,7 @@ Enumerates the bundle flags, which indicate the type of bundle information to ob
 | GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | Used to obtain the bundle information with the file context menu configuration. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | Used to obtain the bundle information with the router map. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | GET_BUNDLE_INFO_WITH_SKILL<sup>12+</sup>      | 0x00000800 | Used to obtain the bundle information with the skills. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_ABILITY**, and **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| GET_BUNDLE_INFO_WITH_ENTRY_MODULE<sup>22+</sup>      | 0x00010000 | Used to obtain the bundle information with the HAP module information. It is valid only for bundleInfo.hapModulesInfo corresponding to the entry module. If the entry module does not exist, the bundleInfo.hapModulesInfo list is empty. The obtained bundle information does not contain information about the signature, application, ability, ExtensionAbility, or permission.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## ExtensionAbilityType
 
@@ -74,8 +75,9 @@ Enumerates the types of ExtensionAbility components.
 | DISTRIBUTED<sup>20+</sup> | 28 | [DistributedExtensionAbility](../apis-distributedservice-kit/js-apis-distributedExtensionAbility.md): provides extended capabilities for distributed services and lifecycle callbacks for creation, destruction, and connection of the DistributedExtensionAbility.|
 | APP_SERVICE<sup>20+</sup> | 29 | [AppServiceExtensionAbility](../apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md): provides backend service capabilities for enterprise common applications.|
 | LIVE_FORM<sup>20+</sup> | 30 | [LiveFormExtensionAbility](../apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md): provides extended capabilities for interactive widgets, and provides lifecycle callbacks for creating and destroying interactive widgets.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | WebNativeMessagingExtensionAbility: ExtensionAbility for communication between browser extensions and native applications.|
+| WEB_NATIVE_MESSAGING<sup>21+</sup> | 32 | [WebNativeMessagingExtensionAbility](../apis-arkweb/arkts-apis-web-webNativeMessagingExtensionAbility.md): provides extended capabilities for web native message communication.|
 | FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md): provides extended capabilities for delayed fault notifications.|
+| NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md): provides extended capabilities for notification subscription.|
 | UNSPECIFIED      | 255 | The ability type is not specified. <!--Del-->It can be used in [queryExtensionAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo) to obtain ExtensionAbility components of all types.<!--DelEnd-->|
 <!--RP2--><!--RP2End-->
 
@@ -233,7 +235,7 @@ Enumerates the ability flags, which indicate the type of ability information to 
 
 getBundleInfoForSelf(bundleFlags: number): Promise\<BundleInfo>
 
-Obtains the bundle information based on the given bundle flags. This API uses a promise to return the result.
+Obtains the bundle information of the current application based on the given bundle flags. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -285,7 +287,7 @@ try {
 
 getBundleInfoForSelf(bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
 
-Obtains the bundle information based on the given bundle flags. This API uses an asynchronous callback to return the result.
+Obtains the bundle information of the current application based on the given bundle flags. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -749,7 +751,7 @@ try {
 
 getBundleInfoForSelfSync(bundleFlags: number): BundleInfo
 
-Obtains the bundle information of this bundle based on the given bundle flags. This API returns the result synchronously.
+Obtains the bundle information of the current application based on the given bundle flags. This API returns the result synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -856,7 +858,7 @@ Obtains the **Want** parameters of the [entry UIAbility](../../quick-start/appli
 
 | Type                               | Description                                       |
 | ----------------------------------- | ------------------------------------------- |
-| [Want](js-apis-app-ability-want.md) | Want object that contains the bundle name and ability name.|
+| [Want](js-apis-app-ability-want.md) | Want object that contains only the bundle name and ability name.|
 
 **Error codes**
 
@@ -1553,6 +1555,52 @@ bundleManager.cleanBundleCacheFilesForSelf().then(() => {
 });
 ```
 
+## bundleManager.getPluginBundlePathForSelf<sup>22+</sup>
+
+getPluginBundlePathForSelf(pluginBundleName: string): string
+
+Obtains the installation path of a specified plugin in the current [application sandbox](../../file-management/app-sandbox-directory.md).
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
+**Parameters**
+
+| Name           | Type   | Mandatory| Description               |
+| ---------------- | ------ | ---- | ------------------ |
+| pluginBundleName | string | Yes  | Bundle name of the target plugin.|
+
+**Return value**
+
+| Type    | Description                 |
+| ------- | --------------------- |
+| string  | Installation path of the target plugin in the current application sandbox.|
+
+**Error codes**
+
+For details about the error codes, see [Bundle Error Codes](errorcode-bundle.md).
+
+| ID | Error Message                                 |
+| -------- | --------------------------------------- |
+| 17700001 | The specified bundleName is not found. |
+
+**Example**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Use the actual bundle name of the plugin.
+let pluginBundleName = 'com.ohos.pluginDemo';
+try {
+  let path = bundleManager.getPluginBundlePathForSelf(pluginBundleName);
+  hilog.info(0x0000, 'testTag', 'getPluginBundlePathForSelf successfully. path: %{public}s', path);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getPluginBundlePathForSelf failed. Cause: %{public}s', message);
+}
+```
+
 ## ApplicationInfo
 
 type ApplicationInfo = _ApplicationInfo
@@ -1818,5 +1866,4 @@ Describes the identity information of an application clone.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |Identity information of an application clone.|
-
 <!--no_check-->

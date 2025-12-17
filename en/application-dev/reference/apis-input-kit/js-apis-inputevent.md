@@ -1,5 +1,12 @@
 # @ohos.multimodalInput.inputEvent (Input Event)
 
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
+
 The **inputEvent** module provides the basic events reported by the device.
 
 > **NOTE**
@@ -20,10 +27,10 @@ Represents an input event.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 
-| Name        | Type  | Readable  | Writable  | Description            |
+| Name        | Type  | Read-Only  | Optional  | Description            |
 | ---------- | ------ | ---- | ---- | -------------- |
-| id         | number | Yes   | No   | Event ID.|
-| deviceId   | number | Yes   | No   | ID of the device that reports the input event.   |
-| actionTime | number | Yes   | No   | Time when the input event is reported.     |
-| screenId   | number | Yes   | No   | ID of the target screen.        |
-| windowId   | number | Yes   | No   | ID of the target window.        |
+| id         | number | No   | No   | Event ID.|
+| deviceId   | number | No   | No   | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.   |
+| actionTime | number | No   | No   | Time when the input event is reported.     |
+| screenId   | number | No   | No   | ID of the target screen.        |
+| windowId   | number | No   | No   | ID of the target window.        |

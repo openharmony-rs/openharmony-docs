@@ -863,7 +863,7 @@ Sets whether to mute the audio input stream when an audio interruption occurs.
 | Name| Description|
 | -- | -- |
 | [OH_AudioStreamBuilder](capi-ohaudio-oh-audiostreambuilderstruct.md)* builder | Pointer to an audio stream builder instance, which is created by calling [OH_AudioStreamBuilder_Create](#oh_audiostreambuilder_create).|
-| bool muteWhenInterrupted | Whether to mute the audio stream when an audio interruption occurs. **true** to mute, **false** otherwise.|
+| bool muteWhenInterrupted | Whether to mute the audio stream when an audio interruption occurs. **true** to mute, **false** otherwise (default interruption mode used).|
 
 **Returns**
 

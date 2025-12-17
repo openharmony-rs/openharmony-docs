@@ -1,4 +1,10 @@
 # Image
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyujie43-->
+<!--Designer: @weixin_52725220-->
+<!--Tester: @xiong0104-->
+<!--Adviser: @HelloCrease-->
 
 The **Image** component is usually used to display images in applications. It supports data sources of the following types: [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md), [ResourceStr](ts-types.md#resourcestr), and [DrawableDescriptor](#drawabledescriptor10). Supported image formats include PNG, JPG, JPEG, BMP, SVG, WEBP, GIF, and HEIF. Note that the APNG and SVGA formats are not supported.
 
@@ -6,7 +12,7 @@ The **Image** component is usually used to display images in applications. It su
 >
 > This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> To use shortcut keys to copy the **Image** component, the component must be [in focus](../../../ui/arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable). By default, the **Image** component is not focusable. To enable it to gain focus, set both the [focusable](ts-universal-attributes-focus.md#focusable) and [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9) attributes to **true**.
+> When keyboard shortcuts are used to copy an **Image** component, the **Image** component must be in a focused state. For instructions on how to set focus, see [Setting Whether a Component Is Focusable](../../../ui/arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable). By default, the **Image** component is not focusable. To enable it to gain focus, set both the [focusable](ts-universal-attributes-focus.md#focusable) and [focusOnTouch](ts-universal-attributes-focus.md#focusontouch9) attributes to **true**.
 >
 > The **Image** component supports SVG image sources. For details about SVG tags, see [SVG Tags](./ts-basic-svg.md).
 >
@@ -48,7 +54,7 @@ If the **Image** component does not have its width and height set, its size adap
 
 | Name | Type                                    | Mandatory  | Description                                    |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr)\| [DrawableDescriptor](#drawabledescriptor10) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>1. **PixelMap**: an array of pixels storing graphical information. This type is usually used in image editing scenarios.<br>2. **ResourceStr**: a string or a **Resource** object.<br>The string type can be used to load local images and, more frequently, online images. When using an image referenced using a relative path, for example, **Image("common/test.jpg")**, the **Image** component cannot be called across bundles or modules. If an image needs to be used globally, you are advised to use the **Resource** format. The following types of strings are supported:<br>- Base64 strings<br>- Strings with the **file://** prefix, that is, [application sandbox URIs](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10): **file://\<bundleName>/\<sandboxPath>**, When accessing a path that contains special characters, use [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) to transform the path into a URI that can handle special symbols. In addition, ensure that the application has the read permission to the files in the specified path.<br>The **Resource** format allows for access across bundles and modules. It is recommended for accessing local images.<br>3. **DrawableDescriptor**: an object created when the passed resource ID or name belongs to a common image. If the [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) type is passed in, the PixelMap array animation can be played.<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
+| src  | [PixelMap](ts-image-common.md#pixelmap) \| [ResourceStr](ts-types.md#resourcestr)\| [DrawableDescriptor](#drawabledescriptor10) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>1. **PixelMap**: an array of pixels storing graphical information. This type is usually used in image editing scenarios.<br>2. **ResourceStr**: a string or a **Resource** object.<br>The string type can be used to load local images and, more frequently, online images. When [using a local image referenced using a relative path](#example-25-displaying-an-image-using-a-relative-path), the **Image** component cannot be called across bundles or modules. If an image needs to be used globally, you are advised to use the Resource format.<br>\- Base64 strings are supported.<br>- When providing an HTTPS network image URL, refer to [Example 2: Downloading and Displaying Static Online Images](#example-2-downloading-and-displaying-static-online-images) for implementation guidance.<br>- The value can be a string prefixed with file://. The application sandbox URI is file://\<bundleName>/\<sandboxPath>. For details about how to construct the application sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an application sandbox URI using the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the application has the read permission to the files in the specified path.<br>The Resource format allows for access across bundles and modules. It is recommended for accessing local images. For details, see [Cross-HAP/HSP Resources](../../../quick-start/resource-categories-and-access.md#cross-haphsp-resources).<br>3. **DrawableDescriptor**: an object created when the passed resource ID or name belongs to a common image. If the [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) type is passed in, the PixelMap array animation can be played.<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
 
 >**NOTE**
 >
@@ -74,13 +80,13 @@ Obtains an image. The [ImageContent](#imagecontent12) type allows you to specify
 
 | Name | Type                                    | Mandatory  | Description                                    |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr)\| [DrawableDescriptor](#drawabledescriptor10)\| [ImageContent](#imagecontent12) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>For details about how to use **PixelMap**, **ResourceStr**, and **DrawableDescriptor**, see the **scr** parameter description of [Image](#image-1).<br> [ImageContent](#imagecontent12): image content.<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
+| src  | [PixelMap](ts-image-common.md#pixelmap) \| [ResourceStr](ts-types.md#resourcestr)\| [DrawableDescriptor](#drawabledescriptor10)\| [ImageContent](#imagecontent12) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>For details about how to use **PixelMap**, **ResourceStr**, and **DrawableDescriptor**, see the **scr** parameter description of [Image](#image-1).<br> [ImageContent](#imagecontent12): image content.<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
 
 ### Image<sup>12+</sup>
 
 Image(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions: ImageAIOptions)
 
-Obtains an image. The [imageAIOptions](ts-image-common.md#imageaioptions) parameter allows you to set AI image analysis options.
+Obtains an image. The [imageAIOptions](ts-image-common.md#imageaioptions12) parameter allows you to set AI image analysis options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -90,8 +96,8 @@ Obtains an image. The [imageAIOptions](ts-image-common.md#imageaioptions) parame
 
 | Name | Type                                    | Mandatory  | Description                                    |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) \| [ResourceStr](ts-types.md#resourcestr)\| [DrawableDescriptor](#drawabledescriptor10) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>For details about how to use **PixelMap**, **ResourceStr**, and **DrawableDescriptor**, see the **scr** parameter description of [Image](#image-1).<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
-| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions) | Yes  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.|
+| src  | [PixelMap](ts-image-common.md#pixelmap) \| [ResourceStr](ts-types.md#resourcestr)\| [DrawableDescriptor](#drawabledescriptor10) | Yes   | Data source of the image. Local and online sources are supported. For details about how to reference an image, see [Loading Image Resources](../../../ui/arkts-graphics-display.md#loading-image-resources).<br>For details about how to use **PixelMap**, **ResourceStr**, and **DrawableDescriptor**, see the **scr** parameter description of [Image](#image-1).<br>**NOTE**<br>- ArkTS widgets support GIF animations, but the animations only play once on display.<br>- ArkTS widgets do not support the strings with the **http:/\/** or **file:/\/** prefix.|
+| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | Yes  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.|
 
 ## Attributes
 
@@ -105,7 +111,7 @@ For details about how to use the attributes, see [Setting Attributes](../../../u
 
 alt(value: string | Resource  | PixelMap)
 
-Sets the placeholder image displayed during loading.
+Sets the placeholder image displayed during image loading.
 
 The placeholder image supports configuration of [objectFit](#objectfit) for setting the fill effect, which is consistent with the fill effect of the image.
 
@@ -121,7 +127,33 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type                                                    | Mandatory| Description                                                        |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string \| [Resource](ts-types.md#resource) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | Yes  | Placeholder image displayed during loading. Local images (in PNG, JPG, BMP, SVG, GIF, or HEIF format) and [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) objects are supported, but online images are not.<br>Default value: **null**.<br>When the value is switched from a valid one (an image resource that can be parsed and loaded correctly) to an invalid one (an image path that cannot be parsed or loaded), the component retains the previously successfully loaded image content without clearing or resetting it.|
+| value  | string \| [Resource](ts-types.md#resource) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | Yes  | Placeholder image displayed during loading. Local images (in PNG, JPG, BMP, SVG, GIF, or HEIF format) and [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) objects are supported, but online images are not.<br>- Base64 strings<br>- The value can be a string prefixed with file://. The application sandbox URI is file://\<bundleName>/\<sandboxPath>. For details about how to construct the application sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an application sandbox URI using the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the application has the read permission to the files in the specified path.<br>Default value: **null**.<br>When the value is switched from a valid one (an image resource that can be parsed and loaded correctly) to an invalid one (an image path that cannot be parsed or loaded), the component retains the previously successfully loaded image content without clearing or resetting it.|
+
+### alt<sup>22+</sup>
+
+alt(src: ResourceStr | PixelMap  | ImageAlt)
+
+Sets the placeholder image during image loading and when image loading fails.
+
+> **NOTE**
+>
+> When a placeholder image is configured using [ImageAlt](#imagealt22), the image takes effect based on the placeholder image sources that are being loaded or fail to be loaded. If the placeholder image is not configured, it is not displayed by default.
+
+The placeholder image supports configuration of [objectFit](#objectfit) for setting the fill effect, which is consistent with the fill effect of the image.
+
+This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 22.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                                    | Mandatory| Description                                                        |
+| ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| src  | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\| [ImageAlt](#imagealt22) | Yes  | Placeholder image displayed during loading or in case of loading failure. Local images (in PNG, JPG, BMP, SVG, GIF, or HEIF format) and [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) objects are supported, but online images are not.<br>- Base64 strings<br>- The value can be a string prefixed with file://. The application sandbox URI is file://\<bundleName>/\<sandboxPath>. For details about how to construct the application sandbox path URI, see [constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10). The sandbox path must be converted to an application sandbox URI using the [fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath) API before being passed in for display. In addition, ensure that the application has the read permission to the files in the specified path.|
 
 ### objectFit
 
@@ -165,7 +197,7 @@ This attribute is strongly related to the [objectFit](#objectfit) setting and on
 
 objectRepeat(value: ImageRepeat)
 
-Sets how the image is repeated. When set to repeat, the image is repeated from the center to edges, and the last image will be clipped if it does not fit in the component. This attribute is not applicable to SVG images.
+Sets how the image is repeated. When set to repeat, the image is repeated from the center to edges. The last image will be clipped if it does not fit in the component. This attribute is not applicable to SVG images.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
@@ -284,7 +316,7 @@ This attribute does not take effect when:
 
 | Name| Type   | Mandatory| Description                                            |
 | ------ | ------- | ---- | ------------------------------------------------ |
-| value  | boolean | Yes  | Whether the image display size follows the size of the image source.<br>Default value: **false**.<br>**NOTE**<br>**false** or not set: The image display size does not follow the size of the image source.<br>**true**: The image display size follows the size of the image source. |
+| value  | boolean | Yes  | Whether the image display size follows the size of the image source.<br>Default value: **false**.<br>**NOTE**<br>**false** or not set: The image display size does not follow the size of the image source.<br> **true**: The image display size follows the size of the image source.|
 
 ### fillColor
 
@@ -304,7 +336,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type                                      | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Fill color to be superimposed on the image.<br>**NOTE**<br> By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Fill color to be superimposed on the image.<br>**NOTE**<br> By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode.<br>Since API version 21, when [supportSvg2](#supportsvg221) is set to true, fillColor depends on the parameter configuration of the fill attribute in the SVG image source. If fill is set to none for the SVG image source, fillColor does not take effect.|
 
 ### fillColor<sup>15+</sup>
 
@@ -322,7 +354,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type                                      | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15) | Yes  | Fill color to be superimposed on the image.<br>**NOTE**<br> By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode.|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15) | Yes  | Fill color to be superimposed on the image.<br>**NOTE**<br> By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode.<br>Since API version 21, when [supportSvg2](#supportsvg221) is set to true, fillColor depends on the parameter configuration of the fill attribute in the SVG image source. If fill is set to none for the SVG image source, fillColor does not take effect.|
 
 ### fillColor<sup>20+</sup>
 
@@ -340,7 +372,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type                                      | Mandatory| Description          |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Fill color to be superimposed on the image.<br>**NOTE**<br> By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode.|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | Yes  | Fill color to be superimposed on the image.<br>**NOTE**<br> By default, no fill color is applied. If an invalid value is passed, the system uses the default theme color: black in light mode and white in dark mode.<br>Since API version 21, when [supportSvg2](#supportsvg221) is set to true, fillColor depends on the parameter configuration of the fill attribute in the SVG image source. If fill is set to none for the SVG image source, fillColor does not take effect.|
 
 ### autoResize
 
@@ -366,7 +398,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to resize the image source based on the size of the display area during image decoding. This resizing can help reduce the memory usage. For example, if the size of the original image is 1920 x 1080 and the size of the display area is 200 x 200, you can set this attribute to **true** so that the image is downsampled to 200 x 200.<br>Default value: **false**.<br>**true**: Enable resizing.<br>**false**: Disable resizing.|
+| value  | boolean | Yes  | Whether to resize the image source based on the size of the display area during image decoding. This resizing can help reduce the memory usage. For example, if the original image size is 800 x 1200 and the display area size is 200 x 200, the image will be downsampled and decoded to 200 x 300 (the actual calculation result depends on the configuration of the scaling and padding types, and the calculation result may vary), greatly reducing the memory occupied by the image.<br>Default value: **false**.<br>**true**: Enable resizing.<br>**false**: Disable resizing.|
 
 ### syncLoad<sup>8+</sup>
 
@@ -388,7 +420,7 @@ If image flickering occurs during loading, set **syncLoad** to **true**. For det
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and the placeholder image is not displayed.<br>Default value: **false**<br>**true**: Load the image synchronously.<br>**false**: Load the image asynchronously.|
+| value  | boolean | Yes  | Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and the placeholder image is not displayed.<br>Default value: **false**. **true**: Load the image synchronously. **false**: Load the image asynchronously.<br>If the main thread is blocked for more than 6s, the application will be frozen. For details, [Application Freeze Detection](../../../dfx/appfreeze-guidelines.md).|
 
 ### copyOption<sup>9+</sup>
 
@@ -428,7 +460,9 @@ When this attribute is set, [renderMode](#rendermode) is not effective.
 
 | Name| Type                                   | Mandatory| Description                                                        |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) | Yes  | 1. Color filter of the image. The input parameter is a 4 x 5 RGBA transformation matrix.<br>The first row of the matrix represents vector values for R (red), the second row for G (green), the third row for B (blue), and the fourth row for A (alpha).<br>When the diagonal values of the matrix are 1 and all other values are 0, the original colors of the image are retained.<br> **Calculation rule:**<br>If the input filter matrix is as follows (value range: [0, 1]):<br>![image-matrix-1](figures/image_matrix_1.png) <br>And the pixel point is [R, G, B, A] with color values in the [0, 255] range,<br>then the color after filtering is [R', G', B', A'].<br>![image-matrix-2](figures/image_matrix_2.png)<br>2. The ColorFilter type of **@ohos.graphics.drawing** can be used as an input parameter since API version 12.<br>**NOTE**<br>This parameter is not available for SVG images in API version 11 and earlier versions.<br>The DrawingColorfilter type can be used in atomic services since API version 12. For SVG sources, the effect only applies when the **stroke** property is set (regardless of the value).|
+| value  | [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) | Yes  | 1. Color filter of the image. The input parameter is a 4 x 5 RGBA transformation matrix.<br>2. The ColorFilter type of **@ohos.graphics.drawing** can be used as an input parameter since API version 12.<br>**NOTE**<br>This parameter is not available for SVG images in API version 11 and earlier versions.<br>The DrawingColorfilter type can be used in atomic services since API version 12. For SVG sources, the effect only applies when the **stroke** property is set (regardless of the value).<br>Since API version 21, when [supportSvg2](#supportsvg221) is set to true, colorFilter takes effect on the entire SVG image source.|
+
+The color filter uses a 4 x 5 matrix to set the color filter of the image. The first row of the matrix indicates the vector value of R (red), the second row indicates the vector value of G (green), and the third row indicates the vector value of B (blue). The fourth row represents a vector value of A (transparency), and the four rows represent different vector values of RGBA.<br>When the diagonal values of the matrix are 1 and all other values are 0, the original colors of the image are retained.<br> **Calculation rule:**<br>If the input filter matrix is as follows (value range: [0, 1]):<br>![image-matrix-1](figures/image_matrix_1.png) <br>And the pixel point is [R, G, B, A] with color values in the [0, 255] range,<br>then the color after filtering is [R', G', B', A'].<br>![image-matrix-2](figures/image_matrix_2.png)
 ### draggable<sup>9+</sup>
 
 draggable(value: boolean)
@@ -451,13 +485,13 @@ enableAnalyzer(enable: boolean)
 
 Sets whether to enable the AI image analyzer, which supports subject recognition, text recognition, and object lookup.<!--RP3--><!--RP3End-->
 
-This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md) attribute. If they are set at the same time, the **CustomBuilder** attribute in **overlay** has no effect. This attribute depends on device capabilities.
+This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md) attribute. If both attributes are set, the [CustomBuilder](ts-types.md#custombuilder8) attribute in the overlay becomes invalid. This attribute depends on device capabilities.
 
 Images to be analyzed must be static, non-vector images. That is, SVG and GIF images cannot be analyzed. [Pixel maps](../../apis-image-kit/arkts-apis-image-PixelMap.md) in [RGBA_8888](../../apis-image-kit/arkts-apis-image-e.md#pixelmapformat7) format can be passed in for analysis. For details, see [Example 5: Enabling the AI Image Analyzer](#example-5-enabling-the-ai-image-analyzer).
 
-The placeholder images (specified by **alt**) cannot be analyzed. An image can be analyzed only when **objectRepeat** is set to **ImageRepeat.NoRepeat** and [obscured](ts-universal-attributes-obscured.md) is disabled.
+The [alt](#alt) placeholder image cannot be analyzed. The [objectRepeat](#objectrepeat) attribute can be analyzed only when [ImageRepeat](ts-appendix-enums.md#imagerepeat).NoRepeat is used. The privacy mask attribute [obscured](ts-universal-attributes-obscured.md) cannot be analyzed when it is enabled.
 
-Analysis is performed based on the complete original image. If the **clip**, **margin**, **borderRadius**, **position**, or **objectFit** attribute is set, the image is not displayed completely. If **renderMode** is used to apply a mask, analysis is still performed based on the complete original image. The **copyOption** attribute does not affect the AI image analyzer functionality.
+Analysis is performed based on the complete original image. If the [clip](ts-universal-attributes-sharp-clipping.md#clip12), [margin](ts-universal-attributes-size.md#margin), [borderRadius](ts-universal-attributes-border.md#borderradius), [position](ts-universal-attributes-location.md#position), and [objectFit](#objectfit) attributes are set, the image is not completely displayed. Alternatively, if the [renderMode](#rendermode) attribute is used to set the mask, the analysis is still performed based on the complete original image. The [copyOption](#copyoption9) attribute does not affect the AI analysis function.
 
 This attribute does not take effect when the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
@@ -473,7 +507,7 @@ This attribute does not take effect when the parameter type of the component is 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable  | boolean | Yes  | Whether to enable the AI image analyzer.<br>Default value: **false**<br>**true**: Enable the AI image analyzer.<br>**false**: Disable the AI image analyzer.|
+| enable  | boolean | Yes  | Whether the image component supports AI analysis.<br>If this parameter is set to true, the image component supports AI analysis. If this parameter is set to false, the image component does not support AI analysis.<br>Default value: **false**.|
 
 ### resizable<sup>11+</sup>
 
@@ -513,7 +547,7 @@ Sets whether to secure sensitive information on widgets.
 
 | Name   | Type   | Mandatory| Description                    |
 | --------- | ------- | ---- | ------------------------ |
-| supported | boolean | Yes  | Whether to secure sensitive information on widgets.<br>**false** (default): Do not secure sensitive information on widgets.<br>**true**: Secure sensitive information on widgets, obscuring the image with a semi-transparent background style in privacy mode.<br>**NOTE**<br>If this parameter is set to **null**, the image is not obscured.<br>Obscuring requires [widget framework support](./ts-universal-attributes-obscured.md).|
+| supported | boolean | Yes  | Whether to secure sensitive information on widgets.<br>**false** (default): Do not secure sensitive information on widgets.<br>**true**: Secure sensitive information on widgets, obscuring the image with a semi-transparent background style in privacy mode.<br>**NOTE**<br>If this parameter is set to **null**, the image is not obscured.<br>Entering the privacy mode requires the support of the card framework.|
 
 ### dynamicRangeMode<sup>12+</sup>
 
@@ -521,7 +555,7 @@ dynamicRangeMode(value: DynamicRangeMode)
 
 Sets the dynamic range of the image to be displayed. This attribute is not applicable to SVG images.
 
-<!--RP1--><!--RP1End-->
+Device behavior difference: This API takes effect on mobile phones, PCs/2-in-1, and tablets, but does not take effect on other device types.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -547,7 +581,7 @@ Sets the display orientation of the image content.
 
 | Name| Type                                   | Mandatory| Description                            |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| orientation  | [ImageRotateOrientation](#imagerotateorientation14) | Yes  | Display orientation of the image content.<br>GIF and SVG images are not supported.<br>For images containing rotation or flip information, use **ImageRotateOrientation.AUTO**.<br>Default value: **ImageRotateOrientation.UP**<br>When set to **undefined**, the value is treated as **ImageRotateOrientation.AUTO**.|
+| orientation  | [ImageRotateOrientation](#imagerotateorientation14) | Yes  | Display orientation of the image content.<br>Only static bitmaps can be displayed.<br>For images containing rotation or flip information, use **ImageRotateOrientation.AUTO**.<br>Default value: **ImageRotateOrientation.UP**<br>If this attribute is set to undefined or null, the value is ImageRotateOrientation.AUTO.|
 
 ### hdrBrightness<sup>19+</sup>
 
@@ -568,6 +602,42 @@ If this attribute and the [dynamicRangeMode](#dynamicrangemode12) attribute are 
 | Name  | Type   | Mandatory| Description                  |
 | -------- | ------- | ---- | ---------------------- |
 | brightness | number | Yes  | Brightness of HDR images displayed by the component. This API only takes effect for HDR image sources.<br>Default value: **1.0**.<br>Value range: [0.0, 1.0]. Values less than 0 or greater than 1.0 are treated as **1.0**. **0**: The image is displayed at SDR brightness.<br>**1**: The image is displayed at the highest allowed HDR brightness. |
+
+### supportSvg2<sup>21+</sup>
+
+supportSvg2(enable: boolean)
+
+Sets whether to enable [enhanced SVG parsing](ts-image-svg2-capabilities.md). When this feature is enabled, SVG image rendering behavior changes accordingly.
+
+After the **Image** component is created, the value of this attribute cannot be dynamically changed.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 21.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                        |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| enable | boolean | Yes  | Whether to enable enhanced SVG parsing.<br>Default value: **false**.<br>**true**: Enable enhanced SVG parsing. **false**: Use original SVG parsing.|
+
+### contentTransition<sup>21+</sup>
+
+contentTransition(transition: ContentTransitionEffect)
+
+Applies a transition animation when image content changes. **OPACITY** provides fade effects, while **IDENTITY** applies no animation.
+
+**Atomic service API**: This API can be used in atomic services since API version 21.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type                                   | Mandatory| Description                            |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21) | Yes  | Type of the content conversion animation.<br>This attribute does not take effect for dynamic image resources.<br>Default value: ContentTransitionEffect.IDENTITY<br>If the value is undefined or null, the value is ContentTransitionEffect.IDENTITY.|
 
 ## ImageContent<sup>12+</sup>
 
@@ -595,10 +665,10 @@ Interpolation effect of the image.
 
 | Name    | Value| Description                      |
 | ------ | - | -------------------------- |
-| None   | 0 | Nearest neighbor interpolation.                  |
-| Low    | 1 | Bilinear interpolation.                    |
-| Medium | 2 | MipMap interpolation.                    |
-| High   | 3 | Cubic interpolation. This mode produces scaled images of the highest possible quality, but may require more image rendering time.|
+| None   | - | Nearest neighbor interpolation.                  |
+| Low    | - | Bilinear interpolation.                    |
+| Medium | - | MipMap interpolation.                    |
+| High   | - | Cubic interpolation. This mode produces scaled images of the highest possible quality, but may require more image rendering time.|
 
 ## ImageRenderMode
 
@@ -610,10 +680,10 @@ Enumerates the rendering modes of images.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Value| Description          |
-| -------- | - | -------------- |
-| Original | 0 | Render image pixels as they are in the original source image.|
-| Template | 1 | Render image pixels to create a monochrome template image.|
+| Name    | Value  | Description          |
+| -------- | ---- | -------------- |
+| Original | -    | Render image pixels as they are in the original source image.|
+| Template | -    | Render image pixels to create a monochrome template image.|
 
 ## ResizableOptions<sup>11+</sup>
 
@@ -623,27 +693,28 @@ Defines the resizable image options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| --------- |-----------|-----------|-----------|
-| slice | [EdgeWidths](#edgewidths) |  No | Edge widths in different directions of a component.<br>**NOTE**<br>This parameter takes effect only when values of **bottom** and **right** are both greater than 0.<br> When a number is passed, the default unit is vp.|
-| lattice<sup>12+</sup> | [DrawingLattice](#drawinglattice12) |  No | Lattice object, which is used to divide the image by lattice.<br>**NOTE**<br> A lattice object can be created through the **createImageLattice** API of the **@ohos.graphics.drawing** module. The lattices on both even columns and even rows are fixed.<br>This parameter does not take effect for the [backgroundImageResizable](ts-universal-attributes-background.md#backgroundimageresizable12) API.<br> When a number is passed, the default unit is px.|
+| Name| Type| Read-Only| Optional| Description|
+| --------- |-----------|-----------|-----------|-----------|
+| slice | [EdgeWidths](ts-types.md#edgewidths9) |  No |  Yes | Edge widths in different directions of a component.<br>**NOTE**<br>This parameter takes effect only when values of **bottom** and **right** are both greater than 0.<br>When top is set, the top of the image is stretched, and the pixel value of the image remains unchanged.<br>When right is set, the right part of the image is stretched, and the pixel value of the image remains unchanged.<br>When bottom is set, the bottom of the image is stretched, and the pixel value of the image remains unchanged.<br>When left is set, the left part of the image is stretched, and the pixel value of the image remains unchanged.<br>The default width of each direction is 0. The default unit is vp.<br>Figure 1 Effect after EdgeWidths is set|
+| lattice<sup>12+</sup> | [DrawingLattice](#drawinglattice12) |  No |  Yes | Lattice object, which is used to divide the image by lattice.<br>**NOTE**<br> A lattice object can be created through the **createImageLattice** API of the **@ohos.graphics.drawing** module. The lattices on both even columns and even rows are fixed.<br>This parameter does not take effect for the [backgroundImageResizable](ts-universal-attributes-background.md#backgroundimageresizable12) API.<br> When a number is passed, the default unit is px.|
 
-## EdgeWidths
+**Figure 1** Effect after EdgeWidths is set
+![edgewidths](figures/edgewidths.png)
 
-Edge widths in different directions of a component.
+## ImageAlt<sup>22+</sup>
 
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Sets the placeholder image.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 22.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description|
-| --------- |-----------|-----------|-----------|
-|  top    |  [Length](ts-types.md#length)  |  No | Pixel value of the image that remains unchanged when the top side of the image is stretched.<br>Default value: **0**<br>Unit: vp|
-|  right  |  [Length](ts-types.md#length)  |  No | Pixel value of the image that remains unchanged when the right side of the image is stretched.<br>Default value: **0**<br>Unit: vp|
-|  bottom |  [Length](ts-types.md#length)  |  No | Pixel value of the image that remains unchanged when the bottom side of the image is stretched.<br>Default value: **0**<br>Unit: vp|
-|  left   |  [Length](ts-types.md#length)  |  No | Pixel value of the image that remains unchanged when the left side of the image is stretched.<br>Default value: **0**<br>Unit: vp|
-
-![edgewidths](figures/edgewidths.png)
+| Name    | Type | Read-Only | Optional   | Description          |
+| -------- | ---- | -----|-----|---- |
+| placeholder | [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  |  No  |    Yes |  Placeholder image during loading.|
+| error |   [ResourceStr](ts-types.md#resourcestr)  \|  [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)   |   No |   Yes  |  Placeholder image upon loading failure.|
 
 ## DynamicRangeMode<sup>12+</sup>
 
@@ -667,7 +738,7 @@ Describes the desired display orientation for image content.
 
 | Name    | Value   | Description                   |
 | ------ | -------------------------- | -------------------------- |
-| AUTO | 0 | Use EXIF metadata for display orientation, with support for rotation and mirroring.<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>![imageRotateOrientation_0](figures/imageRotateOrientation_0.png) |
+| AUTO | 0 | Use EXIF metadata for display orientation, with support for rotation and mirroring.<br>Images of the PixelMap and DrawableDescriptor types do not contain header information. When this API is called, the image display effect does not change.<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>![imageRotateOrientation_0](figures/imageRotateOrientation_0.png) |
 | UP | 1 | Display original pixel data without transformation.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | RIGHT | 2 | Display the image after rotating it 90 degrees clockwise.<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>![imageRotateOrientation_2](figures/imageRotateOrientation_2.png) |
 | DOWN | 3 | Display the image after rotating it 180 degrees clockwise.<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>![imageRotateOrientation_3](figures/imageRotateOrientation_3.png) |
@@ -681,16 +752,20 @@ Describes the desired display orientation for image content.
 
 Provides the image decoding size.
 
+> **NOTE**
+>
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type      | Mandatory| Description          |
-| ------ | --------- | ---- | ------------- |
-| width<sup>7+</sup>  | number | Yes  | Width of the decoded image.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| height<sup>7+</sup>  | number | Yes  | Height of the decoded image.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| Name| Type      | Read-Only| Optional| Description          |
+| ------ | --------- | ---- | ------------- | ------------- |
+| width<sup>7+</sup>  | number | No | No | Width of the decoded image.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| height<sup>7+</sup>  | number | No | No| Height of the decoded image.<br>Unit: vp.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## DrawableDescriptor<sup>10+</sup>
 
@@ -782,15 +857,15 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 
 | Name                      | Type  | Mandatory| Description                                                        |
 | ---------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| width                        | number | Yes  | Width of the image.<br>Unit: pixel                                   |
-| height                       | number | Yes  | Height of the image.<br>Unit: pixel                                   |
-| componentWidth               | number | Yes  | Width of the component.<br>Unit: pixel                                   |
-| componentHeight              | number | Yes  | Height of the component.<br>Unit: pixel                                   |
-| loadingStatus                | number | Yes  | Loading status of the image.<br>**NOTE**<br>If the return value is **0**, the image is successfully loaded. If the return value is **1**, the image is successfully decoded.|
-| contentWidth<sup>10+</sup>   | number | Yes  | Actual rendered width of the image.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentHeight<sup>10+</sup>  | number | Yes  | Actual rendered height of the image.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentOffsetX<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the x-axis.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
-| contentOffsetY<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the y-axis<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| width                        | number | Yes  | Width of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Unit: pixel                                   |
+| height                       | number | Yes  | Height of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Unit: pixel                                   |
+| componentWidth               | number | Yes  | Width of the component.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Unit: pixel                                   |
+| componentHeight              | number | Yes  | Height of the component.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>Unit: pixel                                   |
+| loadingStatus                | number | Yes  | Loading status of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**NOTE**<br>If the return value is **0**, the image is successfully loaded. If the return value is **1**, the image is successfully decoded.|
+| contentWidth<sup>10+</sup>   | number | Yes  | Actual rendered width of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| contentHeight<sup>10+</sup>  | number | Yes  | Actual rendered height of the image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| contentOffsetX<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the x-axis.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
+| contentOffsetY<sup>10+</sup> | number | Yes  | Offset of the rendered content relative to the component on the y-axis<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>Unit: pixel<br>**NOTE**<br>This parameter is valid only when the return value of **loadingStatus** is **1**.|
 
 ### onError<sup>9+</sup>
 
@@ -810,7 +885,7 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 
 | Name  | Type                                      | Mandatory| Description                      |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| callback | [ImageErrorCallback](#imageerrorcallback9) | Yes  | Callback triggered when an error occurs during image loading.<br>**NOTE**<br>Whenever possible, implement this callback to quickly identify failure reasons. For details, see the [ImageError error code reference](#imageerror9).|
+| callback | [ImageErrorCallback](#imageerrorcallback9) | Yes  | Callback triggered when an error occurs during image loading.<br>**NOTE**<br>Whenever possible, implement this callback to quickly identify failure reasons. For details, see the [ImageError](#imageerror9) error code reference.|
 
 ### onFinish
 
@@ -818,13 +893,19 @@ onFinish(event: () =&gt; void)
 
 Triggered when the animation playback in the loaded SVG image is complete. If the animation is an infinite loop, this callback is not triggered.
 
-Only SVG images are supported. This event is not triggered if the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
+Only images in SVG format are supported. This event is not triggered if the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                      |
+| -------- | ------------------------------------------ | ---- | -------------------------- |
+| event | () => void                               | Yes   | Triggered when the animation playback in the loaded SVG image is complete. If the animation is an infinite loop, this callback is not triggered.|
 
 ## ImageErrorCallback<sup>9+</sup>
 
@@ -832,13 +913,15 @@ type ImageErrorCallback = (error: ImageError) => void
 
 Represents the callback triggered when an error occurs during image loading.
 
-The callback is not triggered if the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
+This event is not triggered if the parameter type of the component is [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
 
 | Name| Type                      | Mandatory| Description                              |
 | ------ | -------------------------- | ---- | ---------------------------------- |
@@ -854,12 +937,12 @@ This event is not triggered if the parameter type of the component is [AnimatedD
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type  | Mandatory| Description                     |
-| --------------- | ------ | ---- | ------------------------- |
-| componentWidth  | number | Yes  | Width of the component.<br>Unit: pixel<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| componentHeight | number | Yes  | Height of the component.<br>Unit: pixel<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| message<sup>10+</sup>         | string | Yes  | Error information.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| error<sup>20+</sup>         | [BusinessError\<void>](#businesserror20) | No  | Error information returned when an error occurs during image loading, where **code** represents the error code and **message** indicates the error message. For details, see the **ImageError** error code reference below.<br>Default value: **{ code : -1, message : "" }**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| Name         | Type  | Read-Only| Optional| Description                     |
+| --------------- | ------ | ---- | ------------------------- | ------------------------- |
+| componentWidth  | number | No | No | Width of the component.<br>Unit: pixel<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| componentHeight | number | No | No | Height of the component.<br>Unit: pixel<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| message<sup>10+</sup>         | string | No | No | Error information.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| error<sup>20+</sup>         | [BusinessError\<void>](#businesserror20) | No | Yes | Error information returned when an error occurs during image loading, where **code** represents the error code and **message** indicates the error message. For details, see the error code reference below.<br>Default value: **{ code : -1, message : "" }**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 20.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## BusinessError<sup>20+</sup>
 
@@ -888,9 +971,9 @@ The table below describes the **ImageError** error codes. The **error** property
 | 102013    | async http task of uri failed. | Data loading| Network file|
 | 102030    | wrong code format.             | Data loading| Base64 string file|
 | 102031    | decode base64 image failed.    | Data loading| Base64 string file|
-| 102050    | path is too long.              | Data loading| Base64 string file|
+| 102050    | path is too long.              | Data loading| Sandbox file|
 | 102051    | read data failed.              | Data loading| Sandbox file|
-| 102070    | get image data by name failed. | Data loading| Sandbox file|
+| 102070    | get image data by name failed. | Data loading| Resource file|
 | 102071    | get image data by id failed.   | Data loading| Resource file|
 | 102072    | uri is invalid.                | Data loading| Resource file|
 | 102090    | uri is invalid.                | Data loading| In-package file|
@@ -920,20 +1003,24 @@ struct ImageExample1 {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row() {
           // Load a PNG image.
+          // Replace $r('app.media.ic_camera_master_ai_leaf') with the image resource file you use.
           Image($r('app.media.ic_camera_master_ai_leaf'))
             .width(110).height(110).margin(15)
             .overlay('png', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           // Load a GIF image.
+          // Replace $r('app.media.loading') with the image resource file you use.
           Image($r('app.media.loading'))
             .width(110).height(110).margin(15)
             .overlay('gif', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
         }
         Row() {
           // Load an SVG image.
+          // Replace $r('app.media.ic_camera_master_ai_clouded') with the image resource file you use.
           Image($r('app.media.ic_camera_master_ai_clouded'))
             .width(110).height(110).margin(15)
             .overlay('svg', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
           // Load a JPG image.
+          // Replace $r('app.media.ic_public_favor_filled') with the image resource file you use.
           Image($r('app.media.ic_public_favor_filled'))
             .width(110).height(110).margin(15)
             .overlay('jpg', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
@@ -967,7 +1054,7 @@ struct ImageExample2 {
   }
 
   requestImageUrl(url: string) {
-    http.createHttp().request(url, (error: BusinessError, data: http.HttpResponse)=> {
+    http.createHttp().request(url, (error: BusinessError, data: http.HttpResponse) => {
       if (error) {
         console.error(`request image failed: url: ${url}, code: ${error.code}, message: ${error.message}`);
       } else {
@@ -988,8 +1075,10 @@ struct ImageExample2 {
         imgSource.createPixelMap(options).then((pixelMap: PixelMap) => {
           console.error('image createPixelMap success');
           this.pixelMapImg = pixelMap;
+          imgSource.release();
+        }).catch(() => {
+          imgSource.release();
         })
-        imgSource.release()
       }
     })
   }
@@ -997,6 +1086,7 @@ struct ImageExample2 {
   build() {
     Column() {
       Image(this.pixelMapImg)
+        // Replace $r('app.media.img') with the image resource file you use.
         .alt($r('app.media.img'))
         .objectFit(ImageFit.None)
         .width('100%')
@@ -1028,9 +1118,9 @@ struct Index {
     try {
       // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory.
       cacheDownload.download(this.src, options);
-      console.error(`Resource downloaded successfully. `);
+      console.info(`success to download the resource. `);
     } catch (err) {
-      console.error(`Failed to download the resource. err: ${JSON.stringify(err)}`);
+      console.error(`Failed to download the resource: code: ${err.code}, message: ${err.message}`);
     }
   }
 
@@ -1057,8 +1147,11 @@ This example demonstrates how to add the [onClick](ts-universal-events-click.md#
 @Entry
 @Component
 struct ImageExample3 {
+  // Replace $r('app.media.earth') with the image resource file you use.
   private imageOne: Resource = $r('app.media.earth');
+  // Replace $r('app.media.star') with the image resource file you use.
   private imageTwo: Resource = $r('app.media.star');
+  // Replace $r('app.media.moveStar') with the image resource file you use.
   private imageThree: Resource = $r('app.media.moveStar');
   @State src: Resource = this.imageOne;
   @State src2: Resource = this.imageThree;
@@ -1088,8 +1181,9 @@ struct ImageExample3 {
 ![en-us_image_0000001607845173](figures/en-us_image_0000001607845173.gif)
 
 ### Example 5: Enabling the AI Image Analyzer
-<!--RP2-->
+
 This example shows how to enable the AI image analyzer using the [enableAnalyzer](#enableanalyzer11) API.
+<!--RP2-->
 
 ```ts
 import { image } from '@kit.ImageKit';
@@ -1105,6 +1199,7 @@ struct ImageExample4 {
   };
 
   async aboutToAppear() {
+    // Replace $r('app.media.app_icon') with the image resource file you use.
     this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.app_icon'));
   }
 
@@ -1124,11 +1219,7 @@ struct ImageExample4 {
     }
   }
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
@@ -1157,12 +1248,14 @@ struct Index {
   build() {
     Column({ space: 5 }) {
       // Original image effect
+      // Replace $r('app.media.landscape') with the image resource file you use.
       Image($r("app.media.landscape"))
         .width(200).height(200)
         .border({ width: 2, color: Color.Pink })
         .objectFit(ImageFit.Contain)
 
       // Set the resizable attribute to stretch the image in different directions.
+      // Replace $r('app.media.landscape') with the image resource file you use.
       Image($r("app.media.landscape"))
         .resizable({
           slice: {
@@ -1230,12 +1323,14 @@ struct drawingLatticeTest {
       Column({ space: 10 }) {
         Text('Original Image').fontSize(20).fontWeight(700)
         Column({ space: 10 }) {
+          // Replace $r('app.media.mountain') with the image resource file you use.
           Image($r('app.media.mountain'))
             .width(260).height(260)
         }.width('100%')
 
         Text('Resize by lattice').fontSize(20).fontWeight(700)
         Column({ space: 10 }) {
+          // Replace $r('app.media.mountain') with the image resource file you use.
           Image($r('app.media.mountain'))
             .objectRepeat(ImageRepeat.X)
             .width(260)
@@ -1257,14 +1352,14 @@ struct drawingLatticeTest {
 This example demonstrates how to play an animation using a **PixelMap** array through an [AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12) object.
 
 ```ts
-import {AnimationOptions, AnimatedDrawableDescriptor} from '@kit.ArkUI';
+import { AnimationOptions, AnimatedDrawableDescriptor } from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
 
 @Entry
 @Component
 struct ImageExample {
   pixelMaps: PixelMap[] = [];
-  options: AnimationOptions = { iterations: 1 };
+  @State options: AnimationOptions = { iterations: 1 };
   @State animated: AnimatedDrawableDescriptor | undefined = undefined;
 
   async aboutToAppear() {
@@ -1281,6 +1376,7 @@ struct ImageExample {
             console.info('finish');
           })
       }.height('50%')
+
       Row() {
         Button('once').width(100).padding(5).onClick(() => {
           this.options = { iterations: 1 };
@@ -1295,11 +1391,7 @@ struct ImageExample {
   }
 
   private async getPixmapListFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap[] = await imageSource.createPixelMapList({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
@@ -1309,11 +1401,7 @@ struct ImageExample {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent({
-      bundleName: resource.bundleName,
-      moduleName: resource.moduleName,
-      id: resource.id
-    });
+    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
     let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
     let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
       desiredPixelFormat: image.PixelMapFormat.RGBA_8888
@@ -1323,9 +1411,13 @@ struct ImageExample {
   }
 
   private async getPixelMaps() {
-    let myPixelMaps:PixelMap[] = await this.getPixmapListFromMedia($r('app.media.mountain')); // Add images.
+    // Replace $r('app.media.mountain') with the image resource file you use.
+    let myPixelMaps: PixelMap[] = await this.getPixmapListFromMedia($r('app.media.mountain')); // Add images.
+    // Replace $r('app.media.sky') with the image resource file you use.
     myPixelMaps.push(await this.getPixmapFromMedia($r('app.media.sky')));
+    // Replace $r('app.media.clouds') with the image resource file you use.
     myPixelMaps.push(await this.getPixmapFromMedia($r('app.media.clouds')));
+    // Replace $r('app.media.landscape') with the image resource file you use.
     myPixelMaps.push(await this.getPixmapFromMedia($r('app.media.landscape')));
     return myPixelMaps;
   }
@@ -1344,7 +1436,9 @@ import { drawing, common2D } from '@kit.ArkGraphics2D';
 @Entry
 @Component
 struct ImageExample3 {
+  // Replace $r('app.media.1') with the image resource file you use.
   private imageOne: Resource = $r('app.media.1');
+  // Replace $r('app.media.2') with the image resource file you use.
   private imageTwo: Resource = $r('app.media.2');
   @State src: Resource = this.imageOne;
   @State src2: Resource = this.imageTwo;
@@ -1379,6 +1473,7 @@ struct ImageExample3 {
         })
 
       // When the image to be loaded is in SVG format:
+      // Replace $r('app.media.test_self') with the image resource file you use.
       Image($r('app.media.test_self'))
         .width(110)
         .height(110)
@@ -1407,12 +1502,14 @@ struct ImageExample{
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row() {
           // Load a PNG image.
+          // Replace $r('app.media.sky') with the image resource file you use.
           Image($r('app.media.sky'))
             .width(110).height(110).margin(15)
             .overlay('png', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .border({ width: 2, color: Color.Pink })
             .objectFit(ImageFit.TOP_START)
           // Load a GIF image.
+          // Replace $r('app.media.loading') with the image resource file you use.
           Image($r('app.media.loading'))
             .width(110).height(110).margin(15)
             .overlay('gif', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
@@ -1421,12 +1518,14 @@ struct ImageExample{
         }
         Row() {
           // Load an SVG image.
+          // Replace $r('app.media.svg') with the image resource file you use.
           Image($r('app.media.svg'))
             .width(110).height(110).margin(15)
             .overlay('svg', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
             .border({ width: 2, color: Color.Pink })
             .objectFit(ImageFit.TOP_END)
           // Load a JPG image.
+          // Replace $r('app.media.jpg') with the image resource file you use.
           Image($r('app.media.jpg'))
             .width(110).height(110).margin(15)
             .overlay('jpg', { align: Alignment.Bottom, offset: { x: 0, y: 20 } })
@@ -1450,6 +1549,7 @@ This example demonstrates the effect of displaying images with [ResourceStr](ts-
 @Component
 struct ImageContentExample {
   @State imageSrcIndex: number = 0;
+  // Replace $r('app.media.app_icon') with the image resource file you use.
   @State imageSrcList: (ResourceStr | ImageContent)[] = [$r('app.media.app_icon'), ImageContent.EMPTY];
 
   build() {
@@ -1480,6 +1580,7 @@ This example shows how to secure sensitive information on widgets using the [pri
 struct ImageExample {
   build() {
     Column({ space: 10 }) {
+      // Replace $r('app.media.startIcon') with the image resource file you use.
       Image($r('app.media.startIcon'))
         .width(50)
         .height(50)
@@ -1521,6 +1622,7 @@ struct ImageExample11 {
     this.moveImg.pop();
     this.moveImg.push('imageScanEffect');
     setTimeout(() => {
+      // Replace $r('app.media.img') with the image resource file you use.
       this.imgResource = $r('app.media.img');
     }, 3000);
     this.getUIContext()?.animateTo({
@@ -1608,6 +1710,7 @@ struct Test {
     Row() {
       Column({ space: 50 }) {
         Column({ space: 5 }) {
+          // Replace $r('app.media.example') with the image resource file you use.
           Image($r('app.media.example'))
             .border({ width:2, color: Color.Black })
             .objectFit(ImageFit.Contain)
@@ -1617,6 +1720,7 @@ struct Test {
             .fontSize('25px')
         }
         Column({ space: 5 }) {
+          // Replace $r('app.media.example') with the image resource file you use.
           Image($r('app.media.example'))
             .border({ width:2, color: Color.Black })
             .objectFit(ImageFit.None)
@@ -1628,6 +1732,7 @@ struct Test {
             .fontSize('25px')
         }
         Column({ space: 5 }) {
+          // Replace $r('app.media.example') with the image resource file you use.
           Image($r('app.media.example'))
             .objectFit(ImageFit.MATRIX)
             .imageMatrix(this.matrix1)
@@ -1657,12 +1762,14 @@ struct Index {
   @State borderRadiusValue: number = 10;
   build() {
     Column() {
+      // Replace $r('app.media.sky') with the image resource file you use.
       Image($r('app.media.sky'))
         .sourceSize({width:1393, height:1080})
         .height(300)
         .width(300)
         .objectFit(ImageFit.Contain)
         .borderWidth(1)
+      // Replace $r('app.media.sky') with the image resource file you use.
       Image($r('app.media.sky'))
         .sourceSize({width:13, height:10})
         .height(300)
@@ -1689,6 +1796,7 @@ struct Index {
   @State borderRadiusValue: number = 10;
   build() {
     Column() {
+      // Replace $r('app.media.sky') with the image resource file you use.
       Image($r('app.media.sky'))
         .renderMode(ImageRenderMode.Template)
         .height(300)
@@ -1715,6 +1823,7 @@ struct Index {
   @State borderRadiusValue: number = 10;
   build() {
     Column() {
+      // Replace $r('app.media.sky') with the image resource file you use.
       Image($r('app.media.sky'))
         .objectRepeat(ImageRepeat.Y)
         .height('90%')
@@ -1741,12 +1850,14 @@ struct Index {
   build() {
     Column() {
       Text('FillColor not set')
+      // Replace $r('app.media.svgExample') with the image resource file you use.
       Image($r('app.media.svgExample'))
         .height(100)
         .width(100)
         .objectFit(ImageFit.Contain)
         .borderWidth(1)
       Text('fillColor set to ColorContent.ORIGIN')
+      // Replace $r('app.media.svgExample') with the image resource file you use.
       Image($r('app.media.svgExample'))
         .height(100)
         .width(100)
@@ -1754,6 +1865,7 @@ struct Index {
         .borderWidth(1)
         .fillColor(ColorContent.ORIGIN)
       Text('fillColor set to Color.Blue')
+      // Replace $r('app.media.svgExample') with the image resource file you use.
       Image($r('app.media.svgExample'))
         .height(100)
         .width(100)
@@ -1761,6 +1873,7 @@ struct Index {
         .borderWidth(1)
         .fillColor(Color.Blue)
       Text('fillColor set to undefined')
+      // Replace $r('app.media.svgExample') with the image resource file you use.
       Image($r('app.media.svgExample'))
         .height(100)
         .width(100)
@@ -1788,28 +1901,34 @@ const TAG = 'AceImage';
 @Entry
 @Component
 struct Index {
+  // Replace 'img_1' with the image resource file you use.
   @State imgUrl: string = 'img_1';
   @State bright: number = 0; // The default brightness is 0.
   aboutToAppear(): void {
     // Obtain media resources from the resource manager.
     let img = this.getUIContext().getHostContext()?.resourceManager.getMediaByNameSync(this.imgUrl);
     // Create an image source and obtain image information.
-    let imageSource = image.createImageSource(img?.buffer.slice(0));
-    let imageInfo = imageSource.getImageInfoSync();
-    // Check whether the image information is obtained successfully.
-    if (imageInfo == undefined) {
-      console.error(TAG, 'Failed to obtain the image information.');
+    if (img && img.buffer) {
+      let imageSource = image.createImageSource(img?.buffer.slice(0));
+      let imageInfo = imageSource.getImageInfoSync();
+      // Check whether the image information is obtained successfully.
+      if (imageInfo == undefined) {
+        console.error(TAG, 'Failed to obtain the image information.');
+      } else {
+        // After the image information is obtained successfully, print the HDR status.
+        console.info(TAG, 'imageInfo.isHdr:' + imageInfo.isHdr);
+      }
     } else {
-      // After the image information is obtained successfully, print the HDR status.
-      console.info(TAG, 'imageInfo.isHdr:' + imageInfo.isHdr);
+      console.error(TAG, 'Failed to obtain the image buffer.');
     }
   }
 
   build() {
     Column() {
+      // Replace $r('app.media.img_1') with the image resource file you use.
       Image($r('app.media.img_1')).width('50%')
         .height('auto')
-        .margin({top:160})
+        .margin({ top: 160 })
         .hdrBrightness(this.bright) // Set the HDR image brightness controlled by the bright state.
       Button('Adjust Brightness 0 -> 1')
         .onClick(() => {
@@ -1838,12 +1957,14 @@ struct Index {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row() {
           // The image does not follow the system language direction.
+          // Replace $r('app.media.ocean') with the image resource file you use.
           Image($r('app.media.ocean'))
             .width(110).height(110).margin(15)
             .matchTextDirection(false)
         }
         Row() {
           // The image follows the system language direction.
+          // Replace $r('app.media.ocean') with the image resource file you use.
           Image($r('app.media.ocean'))
             .width(110).height(110).margin(15)
             .matchTextDirection(true)
@@ -1869,6 +1990,7 @@ struct OrientationExample {
       Row({ space: 25 }) {
         Column() {
           Text('AUTO')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.AUTO)
@@ -1876,6 +1998,7 @@ struct OrientationExample {
 
         Column() {
           Text('UP')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.UP)
@@ -1883,6 +2006,7 @@ struct OrientationExample {
 
         Column() {
           Text('RIGHT')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.RIGHT)
@@ -1892,6 +2016,7 @@ struct OrientationExample {
       Row({ space: 25 }) {
         Column() {
           Text('DOWN')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.DOWN)
@@ -1899,6 +2024,7 @@ struct OrientationExample {
 
         Column() {
           Text('LEFT')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.LEFT)
@@ -1906,6 +2032,7 @@ struct OrientationExample {
 
         Column() {
           Text('UP_MIRRORED')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.UP_MIRRORED)
@@ -1915,6 +2042,7 @@ struct OrientationExample {
       Row({ space: 15 }) {
         Column() {
           Text('RIGHT_MIRRORED')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.RIGHT_MIRRORED)
@@ -1922,6 +2050,7 @@ struct OrientationExample {
 
         Column() {
           Text('DOWN_MIRRORED')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.DOWN_MIRRORED)
@@ -1929,6 +2058,7 @@ struct OrientationExample {
 
         Column() {
           Text('LEFT_MIRRORED')
+          // Replace $r('app.media.hello') with the image resource file you use.
           Image($r('app.media.hello'))
             .width(125).height(125)
             .orientation(ImageRotateOrientation.LEFT_MIRRORED)
@@ -1993,6 +2123,7 @@ struct Example {
     try {
       const resourceMgr: resourceManager.ResourceManager = context.resourceManager;
       // Obtain the content of the resource file with EXIF data as Uint8Array.
+      // Replace 'hello.jpg' with the image resource file you use.
       const fileData: Uint8Array = await resourceMgr.getRawFileContent('hello.jpg');
       console.info('Successfully get RawFileContent');
       // Convert the array to an ArrayBuffer and return the ArrayBuffer.
@@ -2036,6 +2167,7 @@ struct Example {
     Column({ space: 40 }) {
       Column({ space: 10 }) {
         Text('before').fontSize(20).fontWeight(700)
+        // Replace 'hello.jpg' with the image resource file you use.
         Image($rawfile('hello.jpg'))
           .width(100)
           .height(100)
@@ -2086,6 +2218,7 @@ struct fillColorMetricsDemo {
   build() {
     Column() {
       Text("FillColor is " + this.colorArrayStr[this.arrayIdx])
+      // Replace $r('app.media.svgExample') with the image resource file you use.
       Image($r('app.media.svgExample'))
         .width(110).height(110).margin(15)
         .fillColor(this.colorArray[this.arrayIdx])
@@ -2095,16 +2228,19 @@ struct fillColorMetricsDemo {
         })
       Blank().height(30).width('100%')
       Text("FillColor is SRGB Red")
+      // Replace $r('app.media.svgExample') with the image resource file you use.
       Image($r('app.media.svgExample'))
         .width(110).height(110).margin(15)
         .fillColor(this.sRGBRed)
       Blank().height(30).width('100%')
       Text("FillColor is SRGB Green")
+      // Replace $r('app.media.svgExample') with the image resource file you use.
       Image($r('app.media.svgExample'))
         .width(110).height(110).margin(15)
         .fillColor(this.sRGBGreen)
       Blank().height(30).width('100%')
       Text("FillColor is SRGB Blue")
+      // Replace $r('app.media.svgExample') with the image resource file you use.
       Image($r('app.media.svgExample'))
         .width(110).height(110).margin(15)
         .fillColor(this.sRGBBlue)
@@ -2114,4 +2250,166 @@ struct fillColorMetricsDemo {
 ```
 
 ![colorMetrics](figures/colorMetrics.gif)
+
+
+### Example 24: Displaying an Image Using an Application Sandbox Path
+
+This example demonstrates how to display an image using the application sandbox path, where a preloaded image named **cloud.png** is placed in the **haps/entry/files** directory of the current application.
+
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+
+@Entry
+@Component
+struct Index {
+  private getSandBoxUri(): string {
+    let context = this.getUIContext().getHostContext();
+    if (!context) {
+      return '';
+    }
+    // /data/storage/el2/base/haps/entry/files/cloud.png
+    // Obtain the URI from the file path in the application sandbox.
+    // Replace '/cloud.png' with the image resource file required by the developer.
+    return fileUri.getUriFromPath(context.filesDir + '/cloud.png');
+  }
+
+  build() {
+    Column() {
+      Image(this.getSandBoxUri())
+        .width(150)
+        .height(150)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![sandBox](figures/cloud1.png)
+
+### Example 25: Displaying an Image Using a Relative Path
+
+This example demonstrates how to display an image using a relative path. First, create a common directory at the same level as the project's **pages** directory. Then, place a preloaded image named **cloud1.png** in the **common** directory and display it using the relative path.
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 10 }) {
+      Image('common/cloud1.png')
+        .width(100)
+        .height(100)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+![relativePath](figures/cloud1.png)
+
+### Example 26: Displaying an SVG Image with the supportSvg2 Attribute
+
+This example enables the SVG parsing capabilities by setting the [supportSvg2](#supportsvg221) attribute.
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Text('supportSvg2 is set to true')
+        // Replace $r('app.media.cloud1') with the image resource file you use.
+        Image($rawfile('image.svg'))
+          .width(200)
+          .height(200)
+          .border({ width: 2, color: 'red' })
+          .supportSvg2(true)
+          .margin({ bottom: 30 })
+        Text('supportSvg2 is set to false (default value)')
+        // Replace $r('app.media.cloud1') with the image resource file you use.
+        Image($rawfile('image.svg'))
+          .width(200)
+          .height(200)
+          .border({ width: 2, color: 'red' })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![sandBox](figures/svg2.PNG)
+
+### Example 27: Implementing Fade-in/Fade-out Transition Effects for Images Using the ContentTransition Attribute
+
+This example demonstrates how to achieve smooth image transitions by setting the [contentTransition](#contenttransition21) attribute to a fade-in/fade-out effect when switching image sources upon click.
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  // Replace $r('app.media.icon') with the image resource file you use.
+  @State imageResource: Resource = $r('app.media.icon');
+
+  build() {
+    Row() {
+      Column() {
+        Image(this.imageResource)
+          .width(200)
+          .height(200)
+          // Enable the fade-in/fade-out transition effect.
+          .contentTransition(ContentTransitionEffect.OPACITY)
+          .onClick(() => {
+            // Replace $r('app.media.cloud1') with the image resource file you use.
+            this.imageResource = $r('app.media.cloud1')
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+![sandBox](figures/trans.gif)
+
+### Example 28: Using the alt Attribute to Set Images for Loading and Failure States
+
+This example demonstrates how to display specified images during the loading process and upon image loading failure by setting the [alt](#alt22) attribute.
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  build() {
+      Column() {
+      Text('Both placeholder and error attributes set')
+      // Set an incorrect website address to trigger the placeholder and error attributes of alt.
+      Image("https://www.example.com/xxx.png")
+      // Replace $r('app.media.startIcon') and $r('app.media.example') with the image resource file you use.
+        .alt({ placeholder: $r('app.media.startIcon'), error: $r('app.media.example') })
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('Only placeholder attribute set')
+      Image("https://www.example.com/xxx.png")
+        .alt({ placeholder: $r('app.media.startIcon')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      Text('Only error attribute set')
+      Image("https://www.example.com/xxx.png")
+        .alt({error: $r('app.media.example')})
+        .width(100)
+        .height(100)
+        .margin(20)
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+![sandBox](figures/imagealt.gif)
 <!--no_check-->

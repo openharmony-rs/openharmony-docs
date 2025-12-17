@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoSymCipher OH_CryptoSymCipher
+```
+
 ## 概述
 
 定义对称加解密结构体。

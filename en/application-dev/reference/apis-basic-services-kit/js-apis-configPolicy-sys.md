@@ -53,7 +53,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   let relpath: string = 'etc/config.xml';
   configPolicy.getOneCfgFile(relpath, (error: BusinessError, value: string) => {
     if (error == null) {
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } else {
       console.error('error: ' + error.code + ', ' + error.message);
     }
@@ -97,7 +97,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     try {
       let relpath: string = 'etc/config.xml';
       let value: string = await configPolicy.getOneCfgFile(relpath);
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -139,7 +139,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   configPolicy.getCfgFiles('etc/config.xml', (error: BusinessError, value: Array<string>) => {
     if (error == null) {
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } else {
       console.error('error: ' + error.code + ', ' + error.message);
     }
@@ -183,7 +183,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     try {
       let relpath: string = 'etc/config.xml';
       let value: Array<string> = await configPolicy.getCfgFiles(relpath);
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -223,7 +223,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   configPolicy.getCfgDirList((error: BusinessError, value: Array<string>) => {
     if (error == null) {
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } else {
       console.error('error: ' + error.code + ', ' + error.message);
     }
@@ -252,7 +252,7 @@ Obtains the list of configuration level directories. This API uses a promise to 
   async function fetchCfgDirList() {
     try {
       let value: Array<string> = await configPolicy.getCfgDirList();
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -297,7 +297,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
     (error: BusinessError, value: string) => {
       if (error == null) {
-        console.log('value is ' + value);
+        console.info('value is ' + value);
       } else {
         console.error('error: ' + error.code + ', ' + error.message);
       }
@@ -341,7 +341,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
     (error: BusinessError, value: string) => {
       if (error == null) {
-        console.log('value is ' + value);
+        console.info('value is ' + value);
       } else {
         console.error('error: ' + error.code + ', ' + error.message);
       }
@@ -388,7 +388,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       let relpath: string = 'etc/config.xml';
       let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
       let value: string = await configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra);
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -433,13 +433,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let relpath: string = 'etc/config.xml';
     let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
     let result: string = configPolicy.getOneCfgFileSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
-    console.log('result is ' + result);
+    console.info('result is ' + result);
   } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
@@ -481,7 +481,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
     (error: BusinessError, value: Array<string>) => {
       if (error == null) {
-        console.log('value is ' + value);
+        console.info('value is ' + value);
       } else {
         console.error('error: ' + error.code + ', ' + error.message);
       }
@@ -524,7 +524,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra,
     (error: BusinessError, value: Array<string>) => {
       if (error == null) {
-        console.log('value is ' + value);
+        console.info('value is ' + value);
       } else {
         console.error('error: ' + error.code + ', ' + error.message);
       }
@@ -571,7 +571,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       let relpath: string = 'etc/config.xml';
       let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
       let value: Array<string> = await configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra);
-      console.log('value is ' + value);
+      console.info('value is ' + value);
     } catch (error) {
       let code = (error as BusinessError).code;
       let message = (error as BusinessError).message;
@@ -616,13 +616,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let relpath: string = 'etc/config.xml';
     let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
     let result: Array<string> = configPolicy.getCfgFilesSync(relpath, configPolicy.FollowXMode.USER_DEFINED, extra);
-    console.log('result is ' + result);
+    console.info('result is ' + result);
   } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;
@@ -648,11 +648,11 @@ Obtains the list of configuration level directories. This API returns the result
 **Example**
 
   ```ts
-  import { BusinessError } from '@ohos.base';
+  import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   try {
     let result: Array<string> = configPolicy.getCfgDirListSync();
-    console.log('result is ' + result);
+    console.info('result is ' + result);
   } catch (error) {
     let code = (error as BusinessError).code;
     let message = (error as BusinessError).message;

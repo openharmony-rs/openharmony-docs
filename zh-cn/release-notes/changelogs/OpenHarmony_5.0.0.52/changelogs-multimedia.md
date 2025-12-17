@@ -32,10 +32,10 @@
 
 **变更的接口/组件**
 
-1. [@ohos.multimedia.media.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.multimedia.media.d.ts)中接口：
+1. [@ohos.multimedia.media.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.multimedia.media.d.ts)中接口：
 AVPlayer.on(type: 'error', callback: ErrorCallback)。
 
-2. [avplayer_base.h](https://gitee.com/openharmony/interface_sdk_c/blob/master/multimedia/player_framework/avplayer_base.h)中接口：
+2. [avplayer_base.h](https://gitcode.com/openharmony/interface_sdk_c/blob/master/multimedia/player_framework/avplayer_base.h)中接口：
 void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCode, const char *errorMsg)。
 
 **适配指导**

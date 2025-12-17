@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioStreamInfo {...} OH_AudioStreamInfo
+```
+
 ## Overview
 
 The struct describes the audio stream information, which is used to describe the basic audio format.

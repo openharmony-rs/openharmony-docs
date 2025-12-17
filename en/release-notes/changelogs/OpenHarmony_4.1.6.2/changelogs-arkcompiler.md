@@ -30,4 +30,4 @@ ArkCompiler AOT enabling mode
 
 **Adaptation Guide**
 
-For details, see [AOT Guide](https://gitee.com/openharmony/arkcompiler_ets_runtime/blob/master/docs/aot-guide_zh.md).
+For details, see [AOT Guide](https://gitcode.com/openharmony/arkcompiler_ets_runtime/blob/master/docs/aot-guide_zh.md).

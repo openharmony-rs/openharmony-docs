@@ -1,10 +1,10 @@
 # 拖拽控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 组件提供了一些属性和接口，可用于配置组件对拖拽事件的响应行为，或影响系统对拖拽事件的处理方式，包括是否允许被拖拽，自定义拖拽预览图的外观等。
 
@@ -18,7 +18,9 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 - 默认支持拖入能力的组件（目标组件可响应拖入数据）：[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)、[RichEditor](ts-basic-components-richeditor.md)，开发者可通过设置这些组件的[allowDrop](ts-universal-attributes-drag-drop.md#allowdrop)属性为null来禁用对默认拖入能力的支持。
 
-<!--RP1--><!--RP1End-->其他组件需要开发者将draggable属性设置为true，并在onDragStart等接口中实现数据传输相关内容，才能正确处理拖拽。
+- 不支持拖出能力的组件（不可从组件上拖出数据）：[ArcScrollBar](./ts-basic-components-arcscrollbar.md)、[MultiNavigation](./ohos-arkui-advanced-MultiNavigation.md)、[ToolBarItem](./ts-basic-components-toolbaritem.md)、[ArcSlider](./ohos-arkui-advanced-ArcSlider.md)、[Span](./ts-basic-components-span.md)、[ImageSpan](./ts-basic-components-imagespan.md)、[ContainerSpan](./ts-basic-components-containerspan.md)、[SymbolSpan](./ts-basic-components-symbolSpan.md)、[ArcAlphabetIndexer](./ts-container-arc-alphabet-indexer.md)、[OffscreenCanvas](./ts-components-offscreencanvas.md)、[Menu](./ts-basic-components-menu.md)、[MenuItem](./ts-basic-components-menuitem.md)、[MenuItemGroup](./ts-basic-components-menuitemgroup.md)、[PasteButton](./ts-security-components-pastebutton.md)、[SaveButton](./ts-security-components-savebutton.md)、[WithTheme](./ts-container-with-theme.md)、[NavPushPathHelper](./ohos-atomicservice-NavPushPathHelper.md)、[ContentSlot](./ts-components-contentSlot.md)、[Chip](./ohos-arkui-advanced-Chip.md)、[ExceptionPrompt](./ohos-arkui-advanced-ExceptionPrompt.md)、[Filter](./ohos-arkui-advanced-Filter.md)、[FormMenu](./ohos-arkui-advanced-formmenu.md)、[Popup](./ohos-arkui-advanced-Popup.md)、[SelectionMenu](./ohos-arkui-advanced-SelectionMenu.md)、[SplitLayout](./ohos-arkui-advanced-SplitLayout.md)以及所有弹窗类组件。
+
+<!--RP1--><!--RP1End-->其他支持拖出能力的组件需要开发者将draggable属性设置为true，并在onDragStart等接口中实现数据传输相关内容，才能正确处理拖拽。
 
 > **说明：**
 >
@@ -26,7 +28,7 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 ## allowDrop
 
-allowDrop(value: Array&lt;UniformDataType&gt; | null): T
+allowDrop(value: Array&lt;UniformDataType&gt; | null | Array&lt;string&gt;): T
 
 设置该组件上允许落入的数据类型。如果未设置allowDrop，组件将默认接受所有数据类型。
 
@@ -38,7 +40,7 @@ allowDrop(value: Array&lt;UniformDataType&gt; | null): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                            |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> | 是   | 设置该组件上允许落入的数据类型。从API version 12开始，允许设置成null使该组件不接受所有的数据类型。|
+| value  | Array\<[UniformDataType](#uniformdatatype)> \| null<sup>12+</sup> \| Array\<string><sup>23+</sup> | 是   | 设置该组件上允许落入的数据类型。从API version 12开始，允许设置成null使该组件不接受所有的数据类型。从API version 23开始，支持设置自定义数据类型Array\<string>，自定义数据类型为应用自行定义的数据类型字符串，字符串无明确格式要求，但不应与UniformDataType标准类型格式重复，建议以易记易区分为原则来定义。|
 
 **返回值：**
 
@@ -96,6 +98,10 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 
 自定义组件拖拽过程中的预览图，仅用于设置浮起效果或者禁用浮起效果。
 
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -118,6 +124,10 @@ dragPreview(preview: CustomBuilder | DragItemInfo | string, config?: PreviewConf
 dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions): T
 
 设置拖拽过程中预览图处理模式，数量角标的显示以及预览图浮起的交互模式。不支持onItemDragStart拖拽方式。
+
+>**说明：**
+>
+> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -219,7 +229,7 @@ type ImageModifier = ImageModifier
 ## 示例
 ### 示例1（允许拖拽和落入）
 
-示例1通过配置allowDrop设置组件是否可落入，通过配置draggable设置组件是否可拖拽。
+示例1通过配置[allowDrop](#allowdrop)设置组件是否可落入，通过配置[draggable](#draggable)设置组件是否可拖拽。
 
 ```ts
 // xxx.ets
@@ -339,7 +349,7 @@ struct ImageExample {
 
 ### 示例2（设置预览图）
 
-示例2通过配置dragPreview设置拖拽过程的预览图。
+示例2通过配置[dragPreview](#dragpreview11)设置拖拽过程的预览图。
 
 ```ts
 // xxx.ets
@@ -404,7 +414,7 @@ struct DragPreviewDemo{
 
 ### 示例3（设置背板图样式）
 
-示例3通过配置dragPreviewOptions为ENABLE_DEFAULT_SHADOW、ENABLE_DEFAULT_RADIUS和ENABLE_DRAG_ITEM_GRAY_EFFECT设置默认阴影、统一圆角效果与灰显效果。
+示例3通过配置[dragPreviewOptions](#dragpreviewoptions11)为ENABLE_DEFAULT_SHADOW、ENABLE_DEFAULT_RADIUS设置默认阴影和统一圆角效果。从API version 18开始，通过配置[dragPreviewOptions](#dragpreviewoptions11)为ENABLE_DRAG_ITEM_GRAY_EFFECT设置灰显效果。
 
 ```ts
 // xxx.ets
@@ -441,7 +451,7 @@ struct dragPreviewOptionsDemo{
 
 ### 示例4（设置多选拖拽）
 
-示例4通过配置isMultiSelectionEnabled实现Grid组件的多选拖拽效果。
+示例4通过配置[isMultiSelectionEnabled](#draginteractionoptions12)实现Grid组件的多选拖拽效果。
 
 ```ts
 @Entry
@@ -481,7 +491,7 @@ struct Example {
 
 ### 示例5（设置默认点按效果）
 
-示例5通过配置defaultAnimationBeforeLifting实现Grid组件的默认点按效果。
+示例5通过配置[defaultAnimationBeforeLifting](#draginteractionoptions12)实现Grid组件的默认点按效果。
 
 ```ts
 @Entry
@@ -521,7 +531,7 @@ struct Example {
 
 ### 示例6（自定义背板图样式）
 
-示例6通过配置ImageModifier实现Image组件的自定义背板图样式。
+示例6通过配置[ImageModifier](#imagemodifier12)实现Image组件的自定义背板图样式。
 
 ```ts
 // xxx.ets
@@ -794,7 +804,7 @@ struct ImageDrag {
 ![imageDrag.gif](figures/imageDrag.gif)
 
 ### 示例8（设置图片拖拽震动）
-示例8通过设置enableHapticFeedback实现图片拖拽的震动效果。
+从API version 18开始，示例8通过设置[enableHapticFeedback](#draginteractionoptions12)实现图片拖拽的震动效果。
 ```ts
 // xxx.ets
 @Entry
@@ -842,7 +852,7 @@ struct DragPreviewDemo{
 ```
 
 ### 示例9（自定义预览图）
-示例9通过配置onlyForLifting实现自定义预览图，仅用于浮起效果以及配置isLiftingDisabled实现禁用浮起效果。
+从API version 15开始，示例9通过配置[onlyForLifting](./ts-universal-events-drag-drop.md#previewconfiguration15)实现自定义预览图，仅用于浮起效果以及配置[isLiftingDisabled](#draginteractionoptions12)实现禁用浮起效果。
 ```ts
 // xxx.ets
 @Entry
@@ -940,7 +950,7 @@ struct LiftingExampleDemo {
 ![isLiftingDisabled.gif](figures/isLiftingDisabled.gif)
 
 ### 示例10（以拖拽预览图初始尺寸计算跟手点位置）
-示例10通过配置DragPreviewMode.ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW实现根据拖拽预览图的初始尺寸来计算拖拽过程中跟手点位置。当设置DragPreviewMode.ENABLE_MULTI_TILE_EFFECT时，该属性不生效。
+从API version 19开始，示例10通过配置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW实现根据拖拽预览图的初始尺寸来计算拖拽过程中跟手点位置。当设置[DragPreviewMode](#dragpreviewmode11枚举说明)为ENABLE_MULTI_TILE_EFFECT时，该属性不生效。
 ```ts
 @Entry
 @Component
@@ -1020,7 +1030,7 @@ struct Index {
 ![touchPointer.gif](figures/touchPointer.gif)
 
 ### 示例11（长按浮起预览图与拖拽预览图过渡动效）
-示例11通过配置DraggingSizeChangeEffect实现不同拖拽过渡效果。
+从API version 19开始，示例11通过配置[DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)实现不同拖拽过渡效果。
 ```ts
 @Entry
 @Component
@@ -1105,3 +1115,132 @@ struct Index {
 ```
 
 ![sizeChangeEffect.gif](figures/sizeChangeEffect.gif)
+
+### 示例12（设置自定义组件落入）
+从API version 23开始，示例12通过组件的[onDragStart](ts-universal-events-drag-drop.md#ondragstart)接口传递其类型，并在目标组件的[allowDrop](#allowdrop)属性中设置允许该类型落入，即可实现自定义组件的拖拽落入功能。
+```ts
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct CustomExample {
+  // 用于存储已放置的组件信息
+  @State droppedItems: Array<string> = []
+
+  build() {
+    Column() {
+      // 标题
+      Text('自定义组件拖拽落入')
+        .fontSize(25)
+        .fontWeight(FontWeight.Bold)
+        .margin(10)
+
+      // 拖拽区域和放置区域的容器
+      Row() {
+        // 左侧 - 拖拽起始区域
+        Column() {
+          Text('拖拽源区域')
+            .fontSize(18)
+            .fontWeight(FontWeight.Medium)
+            .margin(10)
+
+          // 自定义组件 - 可拖拽
+          CustomCard({ title: '自定义卡片', color: Color.Blue })
+            .draggable(true)
+            .onDragStart((event: DragEvent) => {
+              // 构造符合UnifiedData类型的数据
+              let customCardData : Record<string, string> = {
+                'uniformDataType' : 'custom.card',
+                'value' : '自定义卡片'
+              }
+              let unifiedRecord = new unifiedDataChannel.UnifiedRecord('custom.card', customCardData);
+              let unifiedData = new unifiedDataChannel.UnifiedData(unifiedRecord);
+              event.setData(unifiedData);
+            })
+        }
+        .backgroundColor(Color.White)
+        .border({ color: '#ff0e0303', width: 1 })
+        .width('40%')
+        .height(300)
+
+        // 右侧 - 放置区域
+        Column() {
+          Text('放置区域')
+            .fontSize(18)
+            .fontWeight(FontWeight.Medium)
+            .margin(10)
+
+          // 放置区域内容
+          if (this.droppedItems.length === 0) {
+            Text('将组件拖到此处')
+              .fontSize(16)
+              .opacity(0.6)
+          } else {
+            // 显示已放置的组件
+            ForEach(this.droppedItems, (item: string) => {
+              CustomCard({ title: item, color: Color.Blue })
+            }, (item: string) => item)
+          }
+        }
+        .backgroundColor(Color.White)
+        .border({ color: '#ff0e0303', width: 1 })
+        .width('40%')
+        .height(300)
+        // 允许放置的类型 - 字符串数组形式
+        .allowDrop(['custom.card'])
+        .onDrop((event: DragEvent) => {
+          console.info('setData onDrop success');
+          let data = event.getData()
+          let arr: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+          if (arr.length > 0) {
+            if (arr[0].getTypes()[0] === 'custom.card') {
+              let customCardData = arr[0].getValue() as Record<string, string>;
+              this.droppedItems.push(customCardData.value)
+            }
+          }
+        })
+      }
+      .justifyContent(FlexAlign.SpaceAround)
+      .width('100%')
+      .height('70%')
+
+      // 操作说明
+      Text('操作说明：长按左侧卡片并拖拽到右侧区域')
+        .fontSize(14)
+        .opacity(0.7)
+        .margin(10)
+    }
+    .width('100%')
+    .height('65%')
+    .backgroundColor('#f8f9fa')
+  }
+}
+
+// 自定义卡片组件
+@Component
+struct CustomCard {
+  title: string = '默认标题'
+  color: Color = Color.Gray
+
+  build() {
+    Column() {
+      Text(this.title)
+        .fontSize(16)
+        .fontColor(Color.White)
+        .fontWeight(FontWeight.Medium)
+        .margin(5)
+
+      Text('这是一个自定义组件')
+        .fontColor(Color.White)
+        .fontSize(14)
+        .opacity(0.7)
+    }
+    .backgroundColor(this.color)
+    .borderRadius(12)
+    .width(120)
+    .height(100)
+  }
+}
+```
+
+![customComponentAllowDrop.gif](figures/customComponentAllowDrop.gif)

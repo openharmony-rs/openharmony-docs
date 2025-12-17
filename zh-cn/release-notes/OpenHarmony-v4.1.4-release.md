@@ -24,9 +24,9 @@
 
 1. 注册码云gitee帐号。
 
-2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)。
+2. 注册码云SSH公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)。
 
-3. 安装[git客户端](https://gitee.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitee.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
+3. 安装[git客户端](https://gitcode.com/link?target=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2F%25E8%25B5%25B7%25E6%25AD%25A5-%25E5%25AE%2589%25E8%25A3%2585-Git)和[git-lfs](https://gitcode.com/vcs-all-in-one/git-lfs?_from=gitee_search#downloading)并配置用户信息。
    ```
    git config --global user.name "yourname"
    git config --global user.email "your-email-address"
@@ -35,7 +35,7 @@
 
 4. 安装码云repo工具，可以执行如下命令。
    ```
-   curl -s https://gitee.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
+   curl -s https://gitcode.com/oschina/repo/raw/fork_flow/repo-py3 > /usr/local/bin/repo  #如果没有权限，可下载至其他目录，并将其配置到环境变量中chmod a+x /usr/local/bin/repo
    pip3 install -i https://repo.huaweicloud.com/repository/pypi/simple requests
    ```
 
@@ -44,12 +44,12 @@
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 
 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
 ```
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.1.4-Release --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v4.1.4-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -60,7 +60,7 @@ repo forall -c 'git lfs pull'
 
 从版本发布Tag节点获取源码。可获取与版本发布时完全一致的源码。
 ```
-repo init -u https://gitee.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.1.4-Release --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest -b refs/tags/OpenHarmony-v4.1.4-Release --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -93,70 +93,70 @@ repo forall -c 'git lfs pull'
 
 | ISSUE单 | 问题描述 |
 | -------- | -------- |
-| [IC3RPF](https://gitee.com/openharmony/communication_dsoftbus/issues/IC3RPF?from=project-issue) | fix:Add null detection and  deinit                           |
-| [IC4D1Q](https://gitee.com/openharmony/communication_ipc/issues/IC4D1Q?from=project-issue) | IPC安全问题挑单                                              |
-| [IC4FOW](https://gitee.com/openharmony/communication_dsoftbus/issues/IC4FOW?from=project-issue) | 【分布式软总线】传输代码安全漏洞需修复                       |
-| [IBLSXD](https://gitee.com/openharmony-sig/security_security_component_manager/issues/IBLSXD?from=project-issue) | 安全控件scId重复使用漏洞                                     |
-| [IC2SOO](https://gitee.com/openharmony/kernel_linux_5.10/issues/IC2SOO?from=project-issue) | 代码回合4.1                                                  |
-| [IC2V5S](https://gitee.com/openharmony/communication_ipc/issues/IC2V5S?from=project-issue) | RemoteObjectTranslateWhenRcv问题同步回合4.1                  |
-| [IC1FQC](https://gitee.com/openharmony/arkui_ace_engine/issues/IC1FQC?from=project-issue) | 安全编码问题_0415                                            |
-| [IC179F](https://gitee.com/openharmony/arkui_ace_engine/issues/IC179F?from=project-issue) | scrollbar编译告警修改                                        |
-| [IC14FS](https://gitee.com/openharmony/arkui_ace_engine/issues/IC14FS?from=project-issue) | Dialog数组越界                                               |
-| [IBYLBN](https://gitee.com/openharmony/developtools_syscap_codec/issues/IBYLBN?from=project-issue) | 修复栈溢出问题4.1                                            |
-| [IBTUSR](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBTUSR?from=project-issue) | 3个漏洞修复代码挑单合入4.1                                   |
-| [IBGXUO](https://gitee.com/openharmony/filemanagement_dfs_service/issues/IBGXUO?from=project-issue) | 【RK3568】cloudfileservice进程被 相机录像事件拉起之后不会自动退出 |
-| [IBT30S](https://gitee.com/openharmony/multimedia_av_codec/issues/IBT30S?from=project-issue) | fix nullptr bug in 4.1 branch                                |
-| [IBQY5G](https://gitee.com/openharmony/arkui_ace_engine/issues/IBQY5G?from=project-issue) | fixFDLeak问题挑单                                            |
-| [IBQTJP](https://gitee.com/openharmony/bundlemanager_bundle_framework/issues/IBQTJP?from=project-issue) | 元服务免安装多线程问题修复挑4.1                              |
-| [IBR3V5](https://gitee.com/openharmony/communication_dsoftbus/issues/IBR3V5?from=project-issue) | 【分布式软总线】【传输】fd泄露优化                           |
-| [IBP0R4](https://gitee.com/openharmony/startup_init/issues/IBP0R4?from=project-issue) | init_group_manager.c中数组越界问题整改 4.1-release           |
+| [IC3RPF](https://gitcode.com/openharmony/communication_dsoftbus/issues/IC3RPF?from=project-issue) | fix:Add null detection and  deinit                           |
+| [IC4D1Q](https://gitcode.com/openharmony/communication_ipc/issues/IC4D1Q?from=project-issue) | IPC安全问题挑单                                              |
+| [IC4FOW](https://gitcode.com/openharmony/communication_dsoftbus/issues/IC4FOW?from=project-issue) | 【分布式软总线】传输代码安全漏洞需修复                       |
+| [IBLSXD](https://gitcode.com/openharmony-sig/security_security_component_manager/issues/IBLSXD?from=project-issue) | 安全控件scId重复使用漏洞                                     |
+| [IC2SOO](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IC2SOO?from=project-issue) | 代码回合4.1                                                  |
+| [IC2V5S](https://gitcode.com/openharmony/communication_ipc/issues/IC2V5S?from=project-issue) | RemoteObjectTranslateWhenRcv问题同步回合4.1                  |
+| [IC1FQC](https://gitcode.com/openharmony/arkui_ace_engine/issues/IC1FQC?from=project-issue) | 安全编码问题_0415                                            |
+| [IC179F](https://gitcode.com/openharmony/arkui_ace_engine/issues/IC179F?from=project-issue) | scrollbar编译告警修改                                        |
+| [IC14FS](https://gitcode.com/openharmony/arkui_ace_engine/issues/IC14FS?from=project-issue) | Dialog数组越界                                               |
+| [IBYLBN](https://gitcode.com/openharmony/developtools_syscap_codec/issues/IBYLBN?from=project-issue) | 修复栈溢出问题4.1                                            |
+| [IBTUSR](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBTUSR?from=project-issue) | 3个漏洞修复代码挑单合入4.1                                   |
+| [IBGXUO](https://gitcode.com/openharmony/filemanagement_dfs_service/issues/IBGXUO?from=project-issue) | 【RK3568】cloudfileservice进程被 相机录像事件拉起之后不会自动退出 |
+| [IBT30S](https://gitcode.com/openharmony/multimedia_av_codec/issues/IBT30S?from=project-issue) | fix nullptr bug in 4.1 branch                                |
+| [IBQY5G](https://gitcode.com/openharmony/arkui_ace_engine/issues/IBQY5G?from=project-issue) | fixFDLeak问题挑单                                            |
+| [IBQTJP](https://gitcode.com/openharmony/bundlemanager_bundle_framework/issues/IBQTJP?from=project-issue) | 元服务免安装多线程问题修复挑4.1                              |
+| [IBR3V5](https://gitcode.com/openharmony/communication_dsoftbus/issues/IBR3V5?from=project-issue) | 【分布式软总线】【传输】fd泄露优化                           |
+| [IBP0R4](https://gitcode.com/openharmony/startup_init/issues/IBP0R4?from=project-issue) | init_group_manager.c中数组越界问题整改 4.1-release           |
 
 **表4** 修复安全问题列表
 
 | ISSUE单                                                      | 问题描述                                                     |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| [IC50QY](https://gitee.com/openharmony/kernel_linux_5.10/issues/IC50QY?from=project-issue) | 【漏洞】  4.1-Release CVE补丁同步                            |
-| [IBXXSV](https://gitee.com/openharmony/third_party_freetype/issues/IBXXSV?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】openeuler:freetype组件存在漏洞CVE-2025-27363 |
-| [IC1YRZ](https://gitee.com/openharmony/kernel_linux_5.10/issues/IC1YRZ?from=project-issue) | 【漏洞】 4.1-Release CVE同步                                 |
-| [IBXXSW](https://gitee.com/openharmony/third_party_skia/issues/IBXXSW?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】openeuler:expat组件存在漏洞CVE-2024-8176 |
-| [IBXWML](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWML?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57981 |
-| [IBXWN5](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWN5?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21764 |
-| [IBXWNB](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWNB?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21785 |
-| [IBT0OJ](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT0OJ?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-48657 |
-| [IBT0UG](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT0UG?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57798 |
-| [IBT0XE](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT0XE?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57884 |
-| [IBT0Z1](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT0Z1?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57888 |
-| [IBT0ZN](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT0ZN?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57913 |
-| [IBT11B](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT11B?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-58005 |
-| [IBT12A](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT12A?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21648 |
-| [IBT12Y](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT12Y?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21728 |
-| [IBT13J](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBT13J?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21814 |
-| [IBXWM0](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWM0?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49046 |
-| [IBXWM2](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWM2?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49135 |
-| [IBXWM4](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWM4?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49443 |
-| [IBXWM6](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWM6?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49630 |
-| [IBXWM7](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWM7?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49632 |
-| [IBXWMB](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWMB?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49651 |
-| [IBXWMC](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWMC?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57977 |
-| [IBXWMJ](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWMJ?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57980 |
-| [IBXWMP](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWMP?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-58017 |
-| [IBXWMQ](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWMQ?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-58020 |
-| [IBXWMT](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWMT?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-58058 |
-| [IBXWMY](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWMY?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21760 |
-| [IBXWN1](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWN1?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21762 |
-| [IBXWN7](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBXWN7?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21776 |
-| [IBW4JQ](https://gitee.com/openharmony/kernel_liteos_m/issues/IBW4JQ?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-901221769187168256  |
-| [IBZWP0](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBZWP0?from=project-issue) | 【漏洞】 master CVE同步至4.1-Release                         |
-| [IBZA9I](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBZA9I?from=project-issue) | 【漏洞】 master CVE同步至4.1-Release                         |
-| [IBVOLV](https://gitee.com/openharmony/web_webview/issues/IBVOLV?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-901929006431997952  |
-| [IBY0M9](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBY0M9?from=project-issue) | 【漏洞】 4.1-Release CVE同步                                 |
-| [IBWHEH](https://gitee.com/openharmony/kernel_liteos_a/issues/IBWHEH?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-905293076359024640  |
-| [IBWHG7](https://gitee.com/openharmony/kernel_liteos_a/issues/IBWHG7?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-905292975204995072  |
-| [IBWHIW](https://gitee.com/openharmony/kernel_liteos_a/issues/IBWHIW?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-905292389982146560  |
-| [IBT05Z](https://gitee.com/openharmony/third_party_cJSON/issues/IBT05Z?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】third_party_cJSONl组件存在漏洞CVE-2024-31755 |
-| [IBRFCU](https://gitee.com/openharmony/kernel_linux_5.10/issues/IBRFCU?from=project-issue) | 【漏洞】 4.1-release CVE同步                                 |
-| [IBIH4L](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBIH4L?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 CVE-864686037719322624  |
-| [IBIH4V](https://gitee.com/openharmony/arkcompiler_ets_runtime/issues/IBIH4V?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 CVE-864685912552902656  |
+| [IC50QY](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IC50QY?from=project-issue) | 【漏洞】  4.1-Release CVE补丁同步                            |
+| [IBXXSV](https://gitcode.com/openharmony/third_party_freetype/issues/IBXXSV?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】openeuler:freetype组件存在漏洞CVE-2025-27363 |
+| [IC1YRZ](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IC1YRZ?from=project-issue) | 【漏洞】 4.1-Release CVE同步                                 |
+| [IBXXSW](https://gitcode.com/openharmony/third_party_skia/issues/IBXXSW?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】openeuler:expat组件存在漏洞CVE-2024-8176 |
+| [IBXWML](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWML?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57981 |
+| [IBXWN5](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWN5?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21764 |
+| [IBXWNB](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWNB?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21785 |
+| [IBT0OJ](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT0OJ?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-48657 |
+| [IBT0UG](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT0UG?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57798 |
+| [IBT0XE](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT0XE?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57884 |
+| [IBT0Z1](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT0Z1?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57888 |
+| [IBT0ZN](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT0ZN?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57913 |
+| [IBT11B](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT11B?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-58005 |
+| [IBT12A](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT12A?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21648 |
+| [IBT12Y](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT12Y?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21728 |
+| [IBT13J](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBT13J?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21814 |
+| [IBXWM0](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWM0?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49046 |
+| [IBXWM2](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWM2?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49135 |
+| [IBXWM4](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWM4?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49443 |
+| [IBXWM6](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWM6?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49630 |
+| [IBXWM7](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWM7?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49632 |
+| [IBXWMB](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWMB?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2022-49651 |
+| [IBXWMC](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWMC?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57977 |
+| [IBXWMJ](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWMJ?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-57980 |
+| [IBXWMP](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWMP?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-58017 |
+| [IBXWMQ](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWMQ?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-58020 |
+| [IBXWMT](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWMT?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2024-58058 |
+| [IBXWMY](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWMY?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21760 |
+| [IBXWN1](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWN1?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21762 |
+| [IBXWN7](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBXWN7?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】linux kernel组件存在漏洞CVE-2025-21776 |
+| [IBW4JQ](https://gitcode.com/openharmony/kernel_liteos_m/issues/IBW4JQ?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-901221769187168256  |
+| [IBZWP0](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBZWP0?from=project-issue) | 【漏洞】 master CVE同步至4.1-Release                         |
+| [IBZA9I](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBZA9I?from=project-issue) | 【漏洞】 master CVE同步至4.1-Release                         |
+| [IBVOLV](https://gitcode.com/openharmony/web_webview/issues/IBVOLV?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-901929006431997952  |
+| [IBY0M9](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBY0M9?from=project-issue) | 【漏洞】 4.1-Release CVE同步                                 |
+| [IBWHEH](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBWHEH?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-905293076359024640  |
+| [IBWHG7](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBWHG7?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-905292975204995072  |
+| [IBWHIW](https://gitcode.com/openharmony/kernel_liteos_a/issues/IBWHIW?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 vul-905292389982146560  |
+| [IBT05Z](https://gitcode.com/openharmony/third_party_cJSON/issues/IBT05Z?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】third_party_cJSONl组件存在漏洞CVE-2024-31755 |
+| [IBRFCU](https://gitcode.com/openharmony/kernel_linux_5.10/issues/IBRFCU?from=project-issue) | 【漏洞】 4.1-release CVE同步                                 |
+| [IBIH4L](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBIH4L?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 CVE-864686037719322624  |
+| [IBIH4V](https://gitcode.com/openharmony/arkcompiler_ets_runtime/issues/IBIH4V?from=project-issue) | 【漏洞】 【OpenHarmony-4.1-Release】 CVE-864685912552902656  |
 
 ## 遗留缺陷列表
 

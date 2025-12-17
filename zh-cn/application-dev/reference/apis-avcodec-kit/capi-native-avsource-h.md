@@ -48,7 +48,7 @@
 
 ### OH_AVSource_CreateWithDataSource()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 ```
 
@@ -65,7 +65,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVDataSource](_codec_base.md#oh_avdatasource) *dataSource | 用户自定义数据源。 |
+| [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) *dataSource | 用户自定义数据源。 |
 
 **返回：**
 
@@ -75,7 +75,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 ### OH_AVSource_CreateWithDataSourceExt()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource, void *userData)
 ```
 
@@ -92,7 +92,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVDataSourceExt](_codec_base.md#oh_avdatasourcereadatext) *dataSource | 指向数据源结构体的指针，该结构体可用于获取输入数据。 |
+| [OH_AVDataSourceExt](capi-codecbase-oh-avdatasourceext.md) *dataSource | 指向数据源结构体的指针，该结构体可用于获取输入数据。 |
 | void *userData | 指向用户自定义数据的指针。 |
 
 **返回：**
@@ -103,7 +103,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSourceExt(OH_AVDataSourceExt *dataSource,
 
 ### OH_AVSource_CreateWithURI()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 ```
 
@@ -130,7 +130,7 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 ### OH_AVSource_CreateWithFD()
 
-```
+```c
 OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -159,7 +159,7 @@ OH_AVSource *OH_AVSource_CreateWithFD(int32_t fd, int64_t offset, int64_t size)
 
 ### OH_AVSource_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 ```
 
@@ -186,7 +186,7 @@ OH_AVErrCode OH_AVSource_Destroy(OH_AVSource *source)
 
 ### OH_AVSource_GetSourceFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 ```
 
@@ -213,7 +213,7 @@ OH_AVFormat *OH_AVSource_GetSourceFormat(OH_AVSource *source)
 
 ### OH_AVSource_GetTrackFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex)
 ```
 
@@ -241,7 +241,7 @@ OH_AVFormat *OH_AVSource_GetTrackFormat(OH_AVSource *source, uint32_t trackIndex
 
 ### OH_AVSource_GetCustomMetadataFormat()
 
-```
+```c
 OH_AVFormat *OH_AVSource_GetCustomMetadataFormat(OH_AVSource *source)
 ```
 

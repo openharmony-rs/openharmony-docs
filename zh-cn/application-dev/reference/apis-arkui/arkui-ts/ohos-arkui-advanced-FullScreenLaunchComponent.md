@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 全屏启动原子化服务组件，当被拉起方授权使用方可以嵌入式运行原子化服务时，使用方全屏嵌入式运行原子化服务；未授权时，使用方跳出式拉起原子化服务。
 
@@ -152,6 +152,7 @@ import { window } from '@kit.ArkUI';
 
 const DOMAIN = 0x0000;
 
+@Entry
 @Component
 struct Index {
   private storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
@@ -195,7 +196,7 @@ struct Index {
   }
 
   testSetSystemBarEnable() {
-    let window: window.Window | undefined = this.storage.get("window");
+    let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setWindowSystemBarEnable(["status"])
     p?.then(() => {
       console.info('setWindowSystemBarEnable success');
@@ -205,7 +206,7 @@ struct Index {
   }
 
   testSetGestureBackEnable() {
-    let window: window.Window | undefined = this.storage.get("window");
+    let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setGestureBackEnabled(true)
     p?.then(() => {
       console.info('setGestureBackEnabled success');
@@ -215,7 +216,7 @@ struct Index {
   }
 
   testSetImmersiveEnable() {
-    let window: window.Window | undefined = this.storage.get("window");
+    let window: window.Window | undefined = this.storage?.get("window");
     try {
       window?.setImmersiveModeEnabledState(true)
     } catch (err) {
@@ -224,7 +225,7 @@ struct Index {
   }
 
   testSetSpecificSystemBarEnabled() {
-    let window: window.Window | undefined = this.storage.get("window");
+    let window: window.Window | undefined = this.storage?.get("window");
     let p = window?.setSpecificSystemBarEnabled('navigationIndicator', false, false)
     p?.then(() => {
       console.info('setSpecificSystemBarEnabled success');

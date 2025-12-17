@@ -1,4 +1,10 @@
 # Introduction to Sensor Service Kit
+<!--Kit: Sensor Service Kit-->
+<!--Subsystem: Sensors-->
+<!--Owner: @dilligencer-->
+<!--Designer: @butterls-->
+<!--Tester: @murphy84-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## When to Use
 
@@ -19,9 +25,9 @@ Sensor Service Kit enables applications to obtain raw data from sensors and prov
 
 - To use sensor functions, ensure that the device where your application runs has the required sensor components.
 
-- To obtain data of certain sensors, you need to request the required permissions.
+- To obtain data of some sensors, you need to request the required permissions.
 
-- The **on** and **off** APIs work in pairs. If listening for sensor data is no longer needed, call the **off** API to disable event listening.
+- The APIs for subscribing to and unsubscribing from sensor data work in pairs. If you do not need sensor data, call the unsubscription API to stop sensor data reporting.
 
 - If a dynamic sensor is disconnected, the application needs to disable listening for sensor data changes.
 

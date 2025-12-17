@@ -4,7 +4,7 @@
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于修饰组件，为[Gauge](ts-basic-components-gauge.md)和[DataPanel](ts-basic-components-datapanel.md)组件提供信息展示能力的公共接口。
 
@@ -16,6 +16,8 @@
 ## MultiShadowOptions
 
 投影样式。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_Location {...} Camera_Location
+```
+
 ## 概述
 
 拍照位置。

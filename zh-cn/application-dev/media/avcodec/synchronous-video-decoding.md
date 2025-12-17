@@ -7,7 +7,7 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
-从API 20开始，支持视频解码同步模式。
+从API version 20开始，支持视频解码同步模式。
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频解码。
 
@@ -109,7 +109,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     ```
 2. 调用OH_VideoDecoder_Configure()配置解码器。
 
-    - 详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/_codec_base.md#媒体数据键值对)。
+    - 详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
     - 参数校验规则请参考[OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)。
     - 参数取值范围可以通过能力查询接口获取，具体示例请参考[获取支持的编解码能力](obtain-supported-codecs.md)。
 

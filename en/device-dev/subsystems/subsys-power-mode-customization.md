@@ -21,7 +21,7 @@ OpenHarmony supports the following four power modes, each of which corresponds t
 
 ### Constraints
 
-The configuration path for battery level customization is subject to the [configuration policy](https://gitee.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
+The configuration path for battery level customization is subject to the [configuration policy](https://gitcode.com/openharmony/customization_config_policy). In this development guide, `/vendor` is used as an example of the configuration path. During actual development, you need to modify the customization path based on the product configuration policy.
 
 ## How to Develop
 
@@ -37,11 +37,11 @@ For details about the requirements on the Linux environment, see [Quick Start](.
 
 ### Getting Started with Development
 
-The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate power mode customization.
+The following uses [DAYU200](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568) as an example to illustrate power mode customization.
 
-1. Create the `power_manager` folder in the product directory [vendor/hihope/rk3568](https://gitee.com/openharmony/vendor_hihope/tree/master/rk3568).
+1. Create the `power_manager` folder in the product directory [vendor/hihope/rk3568](https://gitcode.com/openharmony/vendor_hihope/tree/master/rk3568).
 
-2. Create a target folder by referring to the [default power mode configuration folder](https://gitee.com/openharmony/powermgr_power_manager/tree/master/services/native/profile), and install it in `//vendor/hihope/rk3568/power_manager`. The content is as follows:
+2. Create a target folder by referring to the [default power mode configuration folder](https://gitcode.com/openharmony/powermgr_power_manager/tree/master/services/native/profile), and install it in `//vendor/hihope/rk3568/power_manager`. The content is as follows:
      
     ```text
     profile
@@ -49,7 +49,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
     ├── power_mode_config.xml
     ```
 
-3. Write the custom `power_mode_config.xml` file by referring to the [power_mode_config.xml](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_mode_config.xml) file in the default power mode configuration folder.
+3. Write the custom `power_mode_config.xml` file by referring to the [power_mode_config.xml](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_mode_config.xml) file in the default power mode configuration folder.
 
     The **proxy** node is used to configure the power mode.
 
@@ -87,7 +87,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
         </proxy>
     ``` 
 
-4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn) file in the default power mode configuration folder to pack the `power_mode_config.xml` file to the `/vendor/etc/power_config` directory. The configuration is as follows:
+4. Write the `BUILD.gn` file by referring to the [BUILD.gn](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/BUILD.gn) file in the default power mode configuration folder to pack the `power_mode_config.xml` file to the `/vendor/etc/power_config` directory. The configuration is as follows:
 
     ```shell
     import("//base/powermgr/power_manager/powermgr.gni") 
@@ -107,7 +107,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 
     ```
 
-5. Add the build target to `module_list` in [ohos.build](https://gitee.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
+5. Add the build target to `module_list` in [ohos.build](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/ohos.build) in the `/vendor/hihope/rk3568` directory. For example:
  
     ```json
     {
@@ -278,7 +278,7 @@ The following uses [DAYU200](https://gitee.com/openharmony/vendor_hihope/tree/ma
 
 ## Reference
 
-During development, you can refer to the [default power mode configuration](https://gitee.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_mode_config.xml).
+During development, you can refer to the [default power mode configuration](https://gitcode.com/openharmony/powermgr_power_manager/blob/master/services/native/profile/power_mode_config.xml).
 
  
 

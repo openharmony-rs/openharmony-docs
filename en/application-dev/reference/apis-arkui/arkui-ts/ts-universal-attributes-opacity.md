@@ -1,10 +1,10 @@
-# Opacity
+# Opacity Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 You can set the opacity of a component.
 
@@ -40,7 +40,7 @@ Sets the opacity of the component.
 
 opacity(opacity: Optional\<number | Resource>): T
 
-Sets the opacity of the component. Compared with [opacity](#opacity-1), this API supports the **undefined** type for the **opacity** parameter.
+Sets the opacity of the component. Compared with [opacity](#opacity), this API supports the **undefined** type for the **opacity** parameter.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 

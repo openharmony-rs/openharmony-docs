@@ -856,3 +856,79 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1
 
 **起始版本**：21
+
+## ohos.permission.SUBSCRIBE_NOTIFICATION
+
+允许应用读取系统或者已安装应用发布的通知。
+
+<!--RP55--><!--RP55End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：22
+
+## ohos.permission.CUSTOM_SCREEN_RECORDING
+
+允许应用无需弹窗录制屏幕。
+
+获取该权限后，应用在录制屏幕时不再每次弹出隐私告警弹窗。
+
+<!--RP56--><!--RP56End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
+
+允许应用使用外部native程序。
+
+包括加载外部动态链接库(so)、二进制文件(bin)等。
+
+<!--RP57--><!--RP57End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：22
+
+## ohos.permission.GET_IP_MAC_INFO
+
+允许应用获取网络设备的IP和MAC地址。
+
+<!--RP58-->
+用于网络连接或者识别，不支持用于设备定位。
+<!--RP58End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：General
+
+**起始版本**：22
+
+## ohos.permission.atomicService.MANAGE_AGING
+
+允许原子化服务申请差异化的老化策略。
+
+<!--RP59--><!--RP59End-->
+
+**权限级别**：system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**: Phone | PC/2in1 | Tablet
+
+**起始版本**: 23

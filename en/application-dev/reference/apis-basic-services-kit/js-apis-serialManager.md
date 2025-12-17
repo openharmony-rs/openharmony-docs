@@ -76,7 +76,7 @@ Checks whether the application has the permission to access the serial port devi
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -117,7 +117,7 @@ if (serialManager.hasSerialRight(portId)) {
 
 requestSerialRight(portId: number): Promise&lt;boolean&gt;
 
-Requests the permission for the application to access the serial port device. After the application exits, the access permission on the serial port device is automatically removed. After the application is restarted, you need to request the permission again.
+Requests the permission for the application to access the serial port device. After the application exits, the access permission on the serial port device is automatically removed. After the application is restarted, you need to request the permission again. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -135,7 +135,7 @@ Requests the permission for the application to access the serial port device. Af
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -194,7 +194,7 @@ Opens a serial port device.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -248,7 +248,7 @@ try {
 
 ## serialManager.getAttribute
 
-getAttribute(portId: number): Readonly&lt;[SerialAttribute](#serialattribute)&gt;
+getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 
 Obtains the configuration parameters of a specified serial port.
 
@@ -268,7 +268,7 @@ Obtains the configuration parameters of a specified serial port.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -334,7 +334,7 @@ try {
 
 ## serialManager.setAttribute
 
-setAttribute(portId: number, attribute: [SerialAttribute](#serialattribute)): void
+setAttribute(portId: number, attribute: SerialAttribute): void
 
 Sets the parameters of the serial port. If this method is not called, the default configuration parameters are used (baud rate: 9600 bit/s; data bit: 8; parity bit: 0; stop bit: 1).
 
@@ -349,7 +349,7 @@ Sets the parameters of the serial port. If this method is not called, the defaul
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -419,7 +419,7 @@ try {
 
 read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Reads data from the serial port device asynchronously.
+Reads data from the serial port device asynchronously. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -439,7 +439,7 @@ Reads data from the serial port device asynchronously.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -524,7 +524,7 @@ Reads data from the serial port device synchronously.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -590,7 +590,7 @@ try {
 
 write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt;
 
-Writes data to the serial port device asynchronously.
+Writes data to the serial port device asynchronously. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.USB.USBManager.Serial
 
@@ -610,7 +610,7 @@ Writes data to the serial port device asynchronously.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -695,7 +695,7 @@ Writes data to the serial port device synchronously.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -773,7 +773,7 @@ Closes the serial port device.
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -849,7 +849,7 @@ Cancels the permission to access the serial port device when the application is 
 
 **Error codes**
 
-For details about the error codes, see [USB Service Error Codes](errorcode-usb.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [USB Error Codes](errorcode-usb.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |

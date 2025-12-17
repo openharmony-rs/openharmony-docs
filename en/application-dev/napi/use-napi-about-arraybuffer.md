@@ -317,4 +317,4 @@ Test Node-API napi_create_arraybuffer:[object ArrayBuffer]
 ## NOTE
 
 - Lifecycle and memory management: When using Node-API to process **ArrayBuffer** objects, note that the lifecycle of the buffer data segment of the **void*** type is managed by the engine and [cannot be deleted by users. Otherwise, a double free error may occur](napi-guidelines.md#avoiding-releasing-the-obtained-buffer-repeatedly).
-- Allocated buffer size: When the value of byte_length is large, no exception is thrown when the allocation fails. The memory specified by **data** is **nullptr**. It is recommended that ***data == nullptr** be strictly checked and the upper limit of **byte_length** be checked to avoid OOM.
+- Allocated buffer size: When the value of **byte_length** is large, no exception is thrown when the allocation fails. The memory specified by **data** is **nullptr**. It is recommended that <b class="+ topic/ph hi-d/b " id="b16766104775719">*data == nullptr</b> be strictly checked and the upper limit of <b class="+ topic/ph hi-d/b " id="b3523352205717">byte_length</b> be checked to avoid OOM.

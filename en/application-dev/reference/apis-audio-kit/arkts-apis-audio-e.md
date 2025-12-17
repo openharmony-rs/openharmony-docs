@@ -12,7 +12,7 @@
 
 ## AudioVolumeType
 
-Enumerates the audio stream types.
+Enumerates the audio volume types.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -290,7 +290,7 @@ Enumerates the audio channel layouts of audio files.
 
 ## StreamUsage
 
-Enumerates the audio stream usage types.
+Enumerates the types of audio streams played.
 
 **System capability**: SystemCapability.Multimedia.Audio.Core
 
@@ -428,7 +428,7 @@ Enumerates whether an audio stream can be recorded by other applications.
 | -------------------- | ---- | -------------------------------- |
 | PRIVACY_TYPE_PUBLIC  | 0    | The audio stream can be recorded or screen-projected by other applications and is not privacy-related.|
 | PRIVACY_TYPE_PRIVATE | 1    | The audio stream cannot be recorded or screen-projected by other applications.|
-| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | The audio stream can be recorded or screen-projected by other applications and is privacy-related.<br> For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, audio streams of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) type cannot be recorded or screen-projected by other applications.<br> However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen-projected by other applications.<br> **Atomic service API**: This API can be used in atomic services since API version 21.|
+| PRIVACY_TYPE_SHARED<sup>21+</sup>  | 2    | The audio stream can be recorded or screen-projected by other applications and is privacy-related.<br> For example, if the privacy policy is **PRIVACY_TYPE_PUBLIC**, audio streams of the [STREAM_USAGE_VOICE_COMMUNICATION](#streamusage) type cannot be recorded or screen-projected by other applications.<br> However, if the privacy policy is **PRIVACY_TYPE_SHARED**, these audio streams can be recorded or screen-projected by other applications.|
 
 ## ChannelBlendMode<sup>11+</sup>
 
@@ -493,7 +493,7 @@ Enumerates the blocked statuses of audio devices.
 
 ## SourceType<sup>8+</sup>
 
-Enumerates the audio source types.
+Enumerates the types of audio streams captured.
 
 | Name                                        |  Value    | Description                  |
 | :------------------------------------------- | :----- | :--------------------- |

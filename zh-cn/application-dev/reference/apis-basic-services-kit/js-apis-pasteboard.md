@@ -91,8 +91,8 @@ createData(mimeType: string, value: ValueType): PasteData
 **示例2：**
 
   ```ts
- let dataText = 'hello';
- let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, dataText);
+  let dataText = 'hello';
+  let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, dataText);
   ```
 
 ## pasteboard.createData<sup>14+</sup>
@@ -175,16 +175,16 @@ createRecord(mimeType: string, value: ValueType): PasteDataRecord
 **示例1：**
 
   ```ts
-let dataXml = new ArrayBuffer(256);
-let pasteDataRecord: pasteboard.PasteDataRecord = pasteboard.createRecord('app/xml', dataXml);
+  let dataXml = new ArrayBuffer(256);
+  let pasteDataRecord: pasteboard.PasteDataRecord = pasteboard.createRecord('app/xml', dataXml);
   ```
 
 **示例2：**
 
   ```ts
-let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
-let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
-pasteData.replaceRecord(0, record);
+  let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+  let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
+  pasteData.replaceRecord(0, record);
   ```
 
 ## pasteboard.getSystemPasteboard
@@ -1081,7 +1081,7 @@ addRecord(mimeType: string, value: ValueType): void
 
 getMimeTypes(): Array&lt;string&gt;
 
-获取剪贴板中[PasteDataProperty](#pastedataproperty7)的mimeTypes列表，当剪贴板内容为空时，返回列表为空。
+获取剪贴板中[PasteDataProperty](#pastedataproperty7)的mimeTypes列表，接口调用异常时返回undefined。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2725,7 +2725,7 @@ setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| data | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 是 | 	需要写入剪贴板中的数据。 |
+| data | [unifiedDataChannel.UnifiedData](../apis-arkdata/js-apis-data-unifiedDataChannel.md#unifieddata) | 是 | 需要写入剪贴板中的数据。 |
 
 **返回值：**
 
@@ -2898,7 +2898,7 @@ try {
 
 detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&gt;
 
-检测**本地**剪贴板中存在的模式，使用Promise异步回调。
+检测**本地**剪贴板中存在的[Pattern](#pattern13)模式，使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -2906,7 +2906,7 @@ detectPatterns(patterns: Array&lt;Pattern&gt;): Promise&lt;Array&lt;Pattern&gt;&
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| patterns | [Array&lt;Pattern&gt;](#pattern13) | 是 | 	需要在剪贴板中检测的模式。 |
+| patterns | [Array&lt;Pattern&gt;](#pattern13) | 是 | 需要在剪贴板中检测的模式。 |
 
 **返回值：**
 
@@ -3088,4 +3088,75 @@ try {
 } catch (err) {
     console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
 };
+```
+### UpdateCallback <sup>22+</sup>
+
+type UpdateCallback = () => void
+
+表示剪贴板内容变更的回调
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
+
+onRemoteUpdate(callback: UpdateCallback): void
+
+订阅跨设备剪贴板内容变化事件，当远端设备系统剪贴板中内容变化时触发用户程序的回调。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [UpdateCallback](#updatecallback-22) | 是 | 剪贴板中内容变化时触发的用户程序的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401      | Possible causes: Incorrect parameters types. |
+
+**示例：**
+
+```ts
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The remote pasteboard has changed.');
+};
+systemPasteboard.onRemoteUpdate(listener);
+```
+
+### offRemoteUpdate(callback?: UpdateCallback)<sup>22+</sup>
+
+offRemoteUpdate(callback?: UpdateCallback): void
+
+取消订阅跨设备剪贴板内容变化事件。
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明                                                      |
+| -------- | -------- | -------- |---------------------------------------------------------|
+| callback | [UpdateCallback](#updatecallback-22) | 否 | 远端设备剪贴板中内容变化时触发的用户程序的回调。如果此参数未填，表明清除本应用的所有远端监听回调，否则表示清除指定远端监听回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+
+**示例：**
+
+```ts
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+let listener = () => {
+    console.info('The remote pasteboard has changed.');
+};
+systemPasteboard.offRemoteUpdate(listener);
 ```

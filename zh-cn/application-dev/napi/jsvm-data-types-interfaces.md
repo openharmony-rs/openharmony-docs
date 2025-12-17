@@ -805,7 +805,7 @@ RunWithOption: success: 1
 RunWithOrigin: success: 1
 ```
 
-OH_JSVM_CreateCodeCache 接口用法可参考[使用 code cache 加速编译](use-jsvm-about-code-cache.md)。
+OH_JSVM_CreateCodeCache接口用法可参考[使用code cache加速编译](use-jsvm-about-code-cache.md)。
 
 ### 使用 JSVM-API WebAssembly 接口编译 wasm module
 
@@ -2010,7 +2010,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
 ```
 场景示例：设置父类并通过DefineClassOptions设置监听拦截属性操作
 
-具体示例参考[使用JSVM进行class相关开发](use-jsvm-about-class.md)。
+具体示例参考[使用JSVM-API接口进行class相关开发](use-jsvm-about-class.md)。
 
 ### 版本管理
 

@@ -197,12 +197,14 @@ Obtains a list of ability resource information that supports opening a specific 
 
 **Required permissions**: ohos.permission.GET_ABILITY_INFO
 
+**Device behavior differences**: This API can be properly called only on PCs/2-in-1 devices. If it is called on other device types, error code 201 is returned.
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | char* fileType | File type to query. You are advised to use [UTD types](../../database/uniform-data-type-descriptors.md) such as 'general.plain-text' and 'general.image'. For compatibility, [MIME types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com) (for example, 'text/xml') and file name extensions (for example, '.png') are also currently accepted. For details about the mappings between file name extensions and file types, see [Prebuilt UTDs](../../database/uniform-data-type-list.md). '\*/\*' is not supported.|
-| OH_NativeBundle_AbilityResourceInfo** abilityResourceInfo | Double pointer to the list of ability resource information.|
+| [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)** abilityResourceInfo | Double pointer to the list of ability resource information.|
 | size_t* size | Pointer to the size of the ability resource information list.|
 
 **Returns**

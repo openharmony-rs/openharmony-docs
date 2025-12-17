@@ -838,7 +838,7 @@ DAHelper.delete('dataability:///com.example.DataAbility', (error, data) => {
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), predicates: dataAbility.DataAbilityPredicates, callback: AsyncCallback\<number>): void
+update(uri: string, valuesBucket: rdb.ValuesBucket, predicates: dataAbility.DataAbilityPredicates, callback: AsyncCallback\<number>): void
 
 更新数据库中的数据记录。使用callback异步回调。
 
@@ -885,7 +885,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da, (error, data) 
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), predicates?: dataAbility.DataAbilityPredicates): Promise\<number>
+update(uri: string, valuesBucket: rdb.ValuesBucket, predicates?: dataAbility.DataAbilityPredicates): Promise\<number>
 
 更新数据库中的数据记录。使用Promise异步回调。
 
@@ -933,7 +933,7 @@ DAHelper.update('dataability:///com.example.DataAbility', va, da).then((data) =>
 
 ## DataAbilityHelper.update
 
-update(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-data-rdb.md#valuesbucket), callback: AsyncCallback\<number>): void
+update(uri: string, valuesBucket: rdb.ValuesBucket, callback: AsyncCallback\<number>): void
 
 predicates筛选条件为空，自定义更新数据库的处理逻辑。使用callback异步回调。
 
@@ -1346,4 +1346,4 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ---- | ---- | ---- | ---- |
-| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | 否 | 否 | 数据存储在键值对中。 |
+| [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | 否 | 是 | 数据存储在键值对中。 |

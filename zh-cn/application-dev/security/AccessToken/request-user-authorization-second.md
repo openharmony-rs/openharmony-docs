@@ -24,15 +24,19 @@
 
 以下示例代码展示了如何再次拉起弹框申请ohos.permission.APPROXIMATELY_LOCATION权限。
 
-```ts
+<!-- @[second_request_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondpages/Index.ets) -->
+
+``` TypeScript
 import { abilityAccessCtrl, Context, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-atManager.requestPermissionOnSetting(context, ['ohos.permission.APPROXIMATELY_LOCATION']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
-  console.info(`requestPermissionOnSetting success, result: ${data}`);
-}).catch((err: BusinessError) => {
-  console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
-});
+// ···
+          let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+          let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+          atManager.requestPermissionOnSetting(context, ['ohos.permission.APPROXIMATELY_LOCATION']).then((data: Array<abilityAccessCtrl.GrantStatus>) => {
+            console.info(`requestPermissionOnSetting success, result: ${data}`);
+          }).catch((err: BusinessError) => {
+            console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
+          });
 ```
+

@@ -44,7 +44,7 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
->  This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionContext.startability](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-1) instead.
+> This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionContext.startability](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-1) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -93,7 +93,7 @@ class WindowExtAbility extends WindowExtensionAbility {
           return;
         }
         // Carry out normal service processing.
-        console.log('startAbility succeed');
+        console.info('startAbility succeed');
       });
     } catch (paramError) {
       // Process input parameter errors.
@@ -113,7 +113,7 @@ Starts an ability. This API uses a promise to return the result.
 
 > **NOTE**
 >
->  This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionContext.startability](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-2) instead.
+> This API is supported since API version 9 and deprecated since API version 21. You are advised to use [UIExtensionContext.startability](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md#startability-2) instead.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
 
@@ -161,7 +161,7 @@ class WindowExtAbility extends WindowExtensionAbility {
       this.context.startAbility(want, options)
         .then(() => {
           // Carry out normal service processing.
-          console.log('startAbility succeed');
+          console.info('startAbility succeed');
         })
         .catch((error: BusinessError) => {
           // Process service logic errors.

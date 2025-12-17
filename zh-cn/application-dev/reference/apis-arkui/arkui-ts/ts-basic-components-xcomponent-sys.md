@@ -1,10 +1,10 @@
-# XComponent
+# XComponent (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zjsxstar-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 提供用于图形绘制和媒体数据写入的Surface，XComponent负责将其嵌入到视图中，支持应用自定义Surface位置和大小。
 
@@ -14,15 +14,11 @@
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[XComponent](ts-basic-components-xcomponent.md)。
 
-## 接口
-
-### XComponentOptions<sup>12+</sup>
+## XComponentOptions<sup>12+</sup>
 
 定义XComponent的具体配置参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -34,7 +30,7 @@
   >
   > 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
 
-## 属性
+## 接口
 
 ### enableTransparentLayer<sup>18+</sup>
 

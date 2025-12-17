@@ -4,7 +4,11 @@
 <!--Owner: @fenglinbailu-->
 <!--Designer: @lanshouren-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef struct ArkUI_LayoutConstraint ArkUI_LayoutConstraint
+```
 
 ## 概述
 

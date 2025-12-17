@@ -53,7 +53,7 @@ The camera module encapsulates camera operations in camera preview, photographin
 
 ### Available APIs
 
-The following table describes the C++ APIs generated from the Interface Definition Language (IDL). For details about the interface declaration, see the IDL files in [https://gitee.com/openharmony/drivers_interface/tree/master/camera/v1_1/](https://gitee.com/openharmony/drivers_interface/tree/master/camera).
+The following table describes the C++ APIs generated from the Interface Definition Language (IDL). For details about the interface declaration, see the IDL files in [https://gitcode.com/openharmony/drivers_interface/tree/master/camera/v1_1/](https://gitcode.com/openharmony/drivers_interface/tree/master/camera).
 
 The parameters passed in the HDI cannot exceed the capability range obtained by **GetCameraAbility**. Even if the parameters beyond the capability range can be passed in APIs such as **UpdateSettings**, **CommitStreams**, and **Capture** with no error returned, unexpected behavior may be caused.
 
@@ -592,7 +592,7 @@ The camera driver development procedure is as follows:
 
 ### Development Example
 
-There is a [ohos_camera_demo](https://gitee.com/openharmony/drivers_peripheral/tree/master/camera/test/demo) in the **/drivers/peripheral/camera/hal/test/demo** directory. After the system is started, the executable file **ohos_camera_demo** is generated in the **/vendor/bin** directory. This demo implements basic camera capabilities such as preview and photographing. 
+There is a [ohos_camera_demo](https://gitcode.com/openharmony/drivers_peripheral/tree/master/camera/test/demo) in the **/drivers/peripheral/camera/hal/test/demo** directory. After the system is started, the executable file **ohos_camera_demo** is generated in the **/vendor/bin** directory. This demo implements basic camera capabilities such as preview and photographing. 
 The following uses the demo to describe how to use the HDI to implement **PreviewOn()** and **CaptureON()**.
 
 1. Construct a **CameraDemo** object in the **main** function. This object contains methods for initializing the camera and starting, stopping, and releasing streams. The **mainDemo->InitSensors()** function is used to initialize the **CameraHost**, and the **mainDemo->InitCameraDevice()** function is used to initialize the **CameraDevice**.

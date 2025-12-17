@@ -39,7 +39,8 @@
 1. 在DevEco Studio中新建工程，选择“Empty Ability”，编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块：
 
    ```ts
-   import { hiAppEvent, hilog, hidebug } from '@kit.PerformanceAnalysisKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：

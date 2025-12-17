@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 设置点光源样式。
 
@@ -64,7 +64,12 @@ struct Index {
 
       Flex()
         .pointLight({
-          lightSource: { intensity: this.lightIntensity, positionX: "50%", positionY: "50%", positionZ: 80 },
+          lightSource: {
+            intensity: this.lightIntensity,
+            positionX: "50%",
+            positionY: "50%",
+            positionZ: 80
+          },
           bloom: this.bloomValue
         })
         .animation({ duration: 333 })

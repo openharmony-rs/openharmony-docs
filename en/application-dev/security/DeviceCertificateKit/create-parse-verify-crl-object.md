@@ -119,37 +119,37 @@ function crlSample(): void {
       return;
     }
     // The X509CRL instance is successfully created.
-    console.log('createX509CRL success');
+    console.info('createX509CRL success');
 
     // Obtain the CRL version.
     let version = x509Crl.getVersion();
     // Obtain the CRL type.
     let revokedType = x509Crl.getType();
-    console.log(`X509 CRL version: ${version}, type :${revokedType}`);
+    console.info(`X509 CRL version: ${version}, type :${revokedType}`);
 
     // Obtain the CRL issuer name.
     let issuerName = x509Crl.getIssuerName(cert.EncodingType.ENCODING_UTF8);
-    console.log(`X509 CRL issuerName: ${issuerName}`);
+    console.info(`X509 CRL issuerName: ${issuerName}`);
 
     // Obtain the string-type data of the CRL object.
     let crlString = x509Crl.toString(cert.EncodingType.ENCODING_UTF8);
-    console.log(`X509 CRL crlString: ${crlString}`);
+    console.info(`X509 CRL crlString: ${crlString}`);
 
 
     // Pass in the public key binary data to convertKey() of @ohos.security.cryptoFramework to obtain a public key instance.
     try {
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
-      console.log('createAsyKeyGenerator success');
+      console.info('createAsyKeyGenerator success');
       let pubEncodingBlob: cryptoFramework.DataBlob = {
         data: pubKeyData,
       };
       keyGenerator.convertKey(pubEncodingBlob, null, (e, keyPair) => {
         if (e == null) {
-          console.log('convert key success');
+          console.info('convert key success');
           x509Crl.verify(keyPair.pubKey, (err, data) => {
             if (err == null) {
               // Signature verification is successful.
-              console.log('verify success');
+              console.info('verify success');
             } else {
               // Signature verification fails.
               console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
@@ -177,21 +177,21 @@ function crlSample(): void {
         try {
           // Check whether the certificate has been revoked.
           revokedFlag = x509Crl.isRevoked(cert);
-          console.log(`revokedFlag is: ${revokedFlag}`);
+          console.info(`revokedFlag is: ${revokedFlag}`);
           if (!revokedFlag) {
-              console.log('the given cert is not revoked.');
+              console.info('the given cert is not revoked.');
               return;
           }
           // Obtain the revoked certificate based on the serial number.
           try {
             let crlEntry = x509Crl.getRevokedCert(serial);
-            console.log('get getRevokedCert success');
+            console.info('get getRevokedCert success');
             let serialNumber = crlEntry.getSerialNumber();
-            console.log(`crlEntry serialNumber is: ${serialNumber}`);
+            console.info(`crlEntry serialNumber is: ${serialNumber}`);
 
             // Obtain the revocation date of the certificate.
             let date = crlEntry.getRevocationDate();
-            console.log(`revocation date is: ${date}`);
+            console.info(`revocation date is: ${date}`);
           } catch (error) {
             let e: BusinessError = error as BusinessError;
             console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);

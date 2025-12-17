@@ -41,9 +41,11 @@ AbilityStage is not automatically generated in the default project of DevEco Stu
 
 3. Open the **MyAbilityStage.ets** file, and import the dependency package of AbilityStage. Customize a class that inherits from AbilityStage, and add the required lifecycle callbacks. The following code snippet adds the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate) lifecycle callback.
 
-    ```ts
+    <!-- @[my_example_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
+
+    ``` TypeScript
     import { AbilityStage, Want } from '@kit.AbilityKit';
-    
+
     export default class MyAbilityStage extends AbilityStage {
       onCreate(): void {
         // This callback is triggered when the HAP is loaded for the first time. In this callback, you can initialize the module (for example, pre-load resources and create threads).
@@ -58,13 +60,15 @@ AbilityStage is not automatically generated in the default project of DevEco Stu
 
 4. In the [module.json5 file](../quick-start/module-configuration-file.md), set **srcEntry** to specify the code path of the module as the entry for loading the HAP.
 
-    ```json
+    <!-- @[abilityModule_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/module.json5) -->
+
+    ``` JSON5
     {
       "module": {
         "name": "entry",
         "type": "entry",
         "srcEntry": "./ets/myabilitystage/MyAbilityStage.ets",
-        // ...
+        // ···
       }
     }
     ```
@@ -79,38 +83,40 @@ Here is an example of how to use the callback functions of the AbilityStage comp
 
 - When the application process is terminated, the **onDestroy()** callback of the AbilityStage component is triggered.
 
-    ```ts
-    import { EnvironmentCallback, AbilityStage } from '@kit.AbilityKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
+  <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
 
-    export default class MyAbilityStage extends AbilityStage {
-      onCreate(): void {
-        console.info('AbilityStage onCreate');
-        let envCallback: EnvironmentCallback = {
-          onConfigurationUpdated(config) {
-            console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
-            let language = config.language; // Current language of the application.
-            let colorMode = config.colorMode; // Dark/Light mode.
-            let direction = config.direction; // Screen orientation.
-            let fontSizeScale = config.fontSizeScale; // Font size scaling factor.
-            let fontWeightScale = config.fontWeightScale; // Font weight scaling factor.
-          },
-          onMemoryLevel(level) {
-            console.info(`onMemoryLevel level: ${level}`);
-          }
-        };
-        try {
-          let applicationContext = this.context.getApplicationContext();
-          let callbackId = applicationContext.on('environment', envCallback);
-          console.info(`callbackId: ${callbackId}`);
-        } catch (paramError) {
-          console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
+  ``` TypeScript
+  import { EnvironmentCallback, AbilityStage } from '@kit.AbilityKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  export default class MyAbilityStage extends AbilityStage {
+    onCreate(): void {
+      console.info('AbilityStage onCreate');
+      let envCallback: EnvironmentCallback = {
+        onConfigurationUpdated(config) {
+          console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
+          let language = config.language; // Current language of the application.
+          let colorMode = config.colorMode; // Dark/Light mode.
+          let direction = config.direction; // Screen orientation.
+          let fontSizeScale = config.fontSizeScale; // Font size scaling factor.
+          let fontWeightScale = config.fontWeightScale; // Font weight scaling factor.
+        },
+        onMemoryLevel(level) {
+          console.info(`onMemoryLevel level: ${level}`);
         }
-      }
-
-      onDestroy(): void {
-        // Use onDestroy() to listen for the ability destruction event.
-        console.info('AbilityStage onDestroy');
+      };
+      try {
+        let applicationContext = this.context.getApplicationContext();
+        let callbackId = applicationContext.on('environment', envCallback);
+        console.info(`callbackId: ${callbackId}`);
+      } catch (paramError) {
+        console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
       }
     }
-    ```
+
+    onDestroy(): void {
+      // Use onDestroy() to listen for the ability destruction event.
+      console.info('AbilityStage onDestroy');
+    }
+  }
+  ```

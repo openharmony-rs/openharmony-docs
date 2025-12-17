@@ -58,7 +58,7 @@ screen.getAllScreens((err: BusinessError, data: Array<screen.Screen>) => {
     return;
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
-  if(data.length > 0 ){
+  if (data.length > 0) {
     screenClass = data[0];
   }
 });
@@ -446,6 +446,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -453,7 +454,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 screen.createVirtualScreen(option, (err: BusinessError, data: screen.Screen) => {
   const errCode: number = err.code;
@@ -513,6 +515,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = { 
@@ -520,7 +523,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -803,7 +807,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 screen.isScreenRotationLocked().then((isLocked: boolean) => {
-  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${islocked}`);
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
 });
@@ -839,12 +843,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
-const errCode: number = err.code;
-if (errCode) {
-  console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
-  return;
-}
-console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${islocked}`);
+  const errCode: number = err.code;
+  if (errCode) {
+    console.error(`Failed to get the screen rotation lock status. Code:${err.code}, message is ${err.message}`);
+    return;
+  }
+  console.info(`Succeeded in getting the screen rotation lock status. isLocked: ${isLocked}`);
 });
 ```
 
@@ -1362,6 +1366,7 @@ Defines virtual screen parameters.
 | height    | number   | No  | No  | Height of the virtual screen, in px. The value must be an integer.|
 | density   | number   | No  | No  | Density of the virtual screen, in px. The value must be a floating-point number.|
 | surfaceId | string   | No  | No  | Surface ID of the virtual screen.       |
+| supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable, **false** otherwise. The default value is **true**.|
 
 ## Screen
 
@@ -1425,6 +1430,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1432,7 +1438,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1494,6 +1501,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1501,7 +1509,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1556,6 +1565,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1563,7 +1573,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1626,6 +1637,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1633,7 +1645,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1690,6 +1703,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1697,7 +1711,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {
@@ -1760,6 +1775,7 @@ class VirtualScreenOption {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let option : VirtualScreenOption = {
@@ -1767,7 +1783,8 @@ let option : VirtualScreenOption = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 screen.createVirtualScreen(option).then((data: screen.Screen) => {

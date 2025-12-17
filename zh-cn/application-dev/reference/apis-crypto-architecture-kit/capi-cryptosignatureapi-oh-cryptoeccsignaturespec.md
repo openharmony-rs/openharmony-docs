@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoEccSignatureSpec OH_CryptoEccSignatureSpec
+```
+
 ## 概述
 
 定义ECC签名规范结构体。

@@ -182,6 +182,31 @@ Describes the display mode of a device and the corresponding physical screen res
 | physicalWidth   | number | Yes| No| Width of the device, in px. The value is an integer greater than 0.|
 | physicalHeight  | number | Yes| No| Height of the device, in px. The value is an integer greater than 0.|
 
+## BrightnessInfo<sup>22+</sup>
+Describes the screen brightness information. The information comes from the underlying screen data.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name                       | Type     | Read-Only| Optional| Description              |
+| --------------------------- | -------- | ---- | ---- | ------------------ |
+| currentHeadroom             | number    | Yes | No  | Dynamic brightness headroom. The value is a floating-point number greater than 0. The default value is **1.0**.|
+| maxHeadroom                 | number    | Yes | No  | Maximum brightness headroom. The value is a floating-point number greater than 0. The default value is **1.0**.|
+| sdrNits                     | number    | Yes | No  | Screen brightness. The value is a floating-point number greater than 0. The default value is **500.0**.|
+
+## BrightnessCallback<sup>22+</sup>
+Defines the callback function used to listen for screen brightness information.
+
+type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name            | Type| Mandatory| Description              |
+| ----------------- | ---- | ---- | ------------------|
+| data1             | T1   | Yes  | Display ID. The value is of the number type.          |
+| data2             | T2   | Yes  | Brightness information. The value is of the [BrightnessInfo](#brightnessinfo22) type.          |
+
 ## ScreenShape<sup>18+</sup>
 
 Enumerates the screen shapes of a display.
@@ -206,6 +231,7 @@ Describes the virtual screen parameters.
 | height    | number   | No  | No  | Height of the virtual screen, in px. The value must be a positive integer.|
 | density   | number   | No  | No  | Density of the virtual screen, in px. The value is a floating-point number.|
 | surfaceId | string   | No  | No  | Surface ID of the virtual screen, which can be customized. The maximum length for this parameter is 4096 bytes. If it goes beyond that, only the first 4096 bytes are used.       |
+| supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable, **false** otherwise. The default value is **true**.|
 
 ## Position<sup>20+</sup>
 
@@ -273,6 +299,51 @@ try {
   displayClass = display.getDisplayByIdSync(displayId);
 } catch (exception) {
   console.error(`Failed to get display. Code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## display.getBrightnessInfo<sup>22+</sup>
+
+getBrightnessInfo(displayId: number): [BrightnessInfo](#brightnessinfo22)
+
+Obtains the screen brightness information of a display. If the screen does not support HDR, the **currentHeadroom** and **maxHeadroom** fields in the returned [BrightnessInfo](#brightnessinfo22) object use the default values. For virtual screens, the **sdrNits** field in the BrightnessInfo object uses the default value.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name| Type                     | Mandatory| Description      |
+| ------ | ------------------------- | ---- |----------|
+| displayId     | number             | Yes  | Display ID. The value must be an integer greater than or equal to 0.|
+
+**Return value**
+
+| Type                          | Description                                          |
+| ------------------------------| ----------------------------------------------|
+| [BrightnessInfo](#brightnessinfo22)  | Screen brightness information.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 801     | Capability not supported.|
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+
+**Example**
+
+```ts 
+import { display } from '@kit.ArkUI';
+
+try {
+  let brightNessInfo = display.getBrightnessInfo(0);
+  console.info(`brightness info: ${JSON.stringify(brightNessInfo)}`);
+} catch (error) {
+  console.error(`Failed to getDisplayBrightness. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -767,6 +838,86 @@ let callback: Callback<display.FoldStatus> = (data: display.FoldStatus) => {
 display.off('foldStatusChange', callback);
 ```
 
+## display.on('brightnessInfoChange')<sup>22+</sup>
+
+on(type: 'brightnessInfoChange', callback: BrightnessCallback&lt;number, BrightnessInfo>): void
+
+Subscribes to events related to screen brightness information changes. If the screen does not support HDR, the **currentHeadroom** and **maxHeadroom** fields in the [BrightnessInfo](#brightnessinfo22) object use the default values. For virtual screens, the **sdrNits** field in the BrightnessInfo object uses the default value.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                                                   |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| type     | string                                   | Yes  | Event type. The value is fixed at **'brightnessInfoChange'**, indicating that the screen brightness information is changed.|
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt;| Yes  | Callback used to return the display ID (parameter 1) and the corresponding screen brightness information (parameter 2).|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 801     | Capability not supported.|
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+
+**Example**
+
+```ts
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.on("brightnessInfoChange", callback);
+} catch (error) {
+  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+}
+```
+
+## display.off('brightnessInfoChange')<sup>22+</sup>
+
+off(type: 'brightnessInfoChange', callback?: BrightnessCallback&lt;number, BrightnessInfo>): void
+
+Unsubscribes from events related to screen brightness information changes.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                                      | Mandatory| Description                                                   |
+| -------- |------------------------------------------| ---- | ------------------------------------------------------- |
+| type     | string                                   | Yes  | Event type. The value is fixed at **'brightnessInfoChange'**, indicating that the screen brightness information is changed.|
+| callback | [BrightnessCallback](#brightnesscallback22)&lt;number, [BrightnessInfo](#brightnessinfo22)&gt; | No  | Callback used to return the brightnessInfo status change. If this parameter is not specified, all subscriptions to the specified event are canceled. The first parameter indicates the display ID, and the second parameter indicates the screen brightness information.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Display Error Codes](errorcode-display.md).
+
+| ID| Error Message|
+| ------- | ----------------------- |
+| 801     | Capability not supported.|
+| 1400003 | This display manager service works abnormally. |
+| 1400004 | Parameter error. Possible cause: 1.Invalid parameter range. |
+
+**Example**
+
+```ts
+let callback: display.BrightnessCallback<number, display.BrightnessInfo> = (id: number, data: display.BrightnessInfo) => {
+  console.info(`Listening enabled ${id}. Data: ${JSON.stringify(data)}`);
+};
+try {
+  display.off("brightnessInfoChange", callback);
+} catch (error) {
+  console.error(`brightnessInfoChange error. Code ${error.code}, message: ${error.message}`);
+}
+```
+
 ## display.on('foldAngleChange')<sup>12+</sup>
 
 on(type: 'foldAngleChange', callback: Callback&lt;Array&lt;number&gt;&gt;): void
@@ -848,7 +999,7 @@ display.off('foldAngleChange', callback);
 
 on(type: 'captureStatusChange', callback: Callback&lt;boolean&gt;): void
 
-Subscribes to screen capture, casting, or recording status changes.
+Subscribes to events indicating whether the device's screen content is being captured.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -858,8 +1009,8 @@ Subscribes to screen capture, casting, or recording status changes.
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture, casting, or recording status changes.|
-| callback | Callback&lt;boolean&gt; | Yes| Callback used to return the status change during screen capture, casting, or recording. The value **true** means the start of screen casting or recording, and **false** means the end of screen casting or recording. In the case of screen capture, only **true** is returned once.|
+| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture status changes.|
+| callback | Callback&lt;boolean&gt; | Yes| Callback used to return the result indicating whether the device's screen content is being captured. **true** is returned when screen content is being captured (including active screen capture, casting, recording, or the creation of a virtual screen that could be captured). **false** is returned when screen content is no longer being captured. In the case of screen capture, **true** is returned only once.|
 
 **Error codes**
 
@@ -885,7 +1036,7 @@ display.on('captureStatusChange', callback);
 
 off(type: 'captureStatusChange', callback?: Callback&lt;boolean&gt;): void
 
-Unsubscribes from screen capture, casting, or recording status changes.
+Unsubscribes from events indicating whether the device's screen content is being captured.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -895,8 +1046,8 @@ Unsubscribes from screen capture, casting, or recording status changes.
 
 | Name  | Type                                      | Mandatory| Description                                                   |
 | -------- |-------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture, casting, or recording status changes.|
-| callback | Callback&lt;boolean&gt; | No| Callback used to return the status change during screen capture, casting, or recording. The value **true** means the start of screen casting or recording, and **false** means the end of screen casting or recording. In the case of screen capture, only **true** is returned once. If this parameter is not specified, all subscriptions to the specified event are canceled.|
+| type     | string                                   | Yes| Event type. The event **'captureStatusChange'** is triggered when the screen capture status changes.|
+| callback | Callback&lt;boolean&gt; | No| Callback used to return the result indicating whether the device's screen content is being captured. **true** is returned when screen content is being captured (including active screen capture, casting, recording, or the creation of a virtual screen that could be captured). **false** is returned when screen content is no longer being captured. In the case of screen capture, **true** is returned only once. If this parameter is not specified, all subscriptions to the specified event are canceled.|
 
 **Error codes**
 
@@ -924,7 +1075,7 @@ display.off('captureStatusChange', callback);
 ## display.isCaptured<sup>12+</sup>
 isCaptured(): boolean
 
-Checks whether the display is being captured, projected, or recorded.
+Checks whether the device's screen content is being captured.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -934,7 +1085,7 @@ Checks whether the display is being captured, projected, or recorded.
 
 | Type| Description|
 | ----------------------------------------------- | ------------------------------------------------------- |
-| boolean | **true**: The display is being captured, projected, or recorded.<br> **false**: The display is not being captured, projected, or recorded.|
+| boolean | Check result for whether the device's screen content is being captured. **true** is returned when screen content is being captured (including active screen capture, casting, recording, or the creation of a virtual screen that could be captured). **false** is returned when screen content is no longer being captured.|
 
 **Error codes**
 
@@ -1086,6 +1237,7 @@ class VirtualScreenConfig {
   height : number = 0;
   density : number = 0;
   surfaceId : string = '';
+  supportsFocus ?: boolean = true;
 }
 
 let config : VirtualScreenConfig = {
@@ -1093,7 +1245,8 @@ let config : VirtualScreenConfig = {
   width: 1080,
   height: 2340,
   density: 2,
-  surfaceId: ''
+  surfaceId: '',
+  supportsFocus: false
 };
 
 display.createVirtualScreen(config).then((screenId: number) => {

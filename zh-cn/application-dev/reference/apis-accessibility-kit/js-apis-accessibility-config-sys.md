@@ -46,8 +46,6 @@ import { config } from '@kit.AccessibilityKit';
 | ignoreRepeatClick<sup>11+</sup>    | [Config](#config)\<boolean>                                                                | 否 | 否 | 表示忽略重复点击功能启用状态。配合repeatClickInterval使用。true表示已启用忽略重复点击功能，false表示未启用忽略重复点击功能，默认值为false。                   |
 | repeatClickInterval<sup>11+</sup>  | [Config](#config)&lt;[RepeatClickInterval](#repeatclickinterval11)&gt;                     | 否 | 否 | 表示忽略重复点击功能配置。                                             |
 
-boolean返回值的含义：True表示开启，False表示关闭。
-[]()
 ## enableAbility
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
@@ -148,6 +146,66 @@ config.enableAbility(name, capability, (err: BusinessError) => {
     return;
   }
   console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`); 
+});
+```
+
+## enableAbilityWithCallback<sup>23+</sup>
+
+enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capability&gt;, connectCallback: ConnectCallback): Promise&lt;void&gt;
+
+启用辅助扩展，并指定[ConnectCallback](#connectcallback23)作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| name | string                                                                       | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
+| capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | 是 | 辅助扩展应用的能力属性。 |
+| connectCallback | [ConnectCallback](#connectcallback23)                             | 是 | 辅助扩展应用的状态发生变化时调用的回调函数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 9300001 | Invalid bundle name or ability name.  |
+| 9300002 | Target ability already enabled. |
+
+**示例：**
+
+```ts
+import { accessibility, config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let name: string = 'com.ohos.example/axExtension';
+let capability: accessibility.Capability[] = ['retrieve'];
+let connectCallback: config.ConnectCallback = {
+  onDisconnect: () => {
+    console.info(`Ability is disconnected.`)
+  }
+}
+
+config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
+  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -694,6 +752,36 @@ config.highContrastText.off((data: boolean) => {
   console.info(`Unsubscribe highContrastText success, result: ${JSON.stringify(data)}`);
 });
 ```
+
+## ConnectCallback<sup>23+</sup>
+
+通过[enableAbilityWithCallback](#enableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
+| ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
+| onDisconnect | [OnDisconnectCallback](#ondisconnectcallback23) | 否   | 否   | 辅助扩展应用的连接断开时调用的回调函数。 |
+
+
+## OnDisconnectCallback<sup>23+</sup>
+
+type OnDisconnectCallback = () => void
+
+描述AccessibilityExtensionAbility断开连接的回调接口。
+
+**系统接口**：此类型为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**模型约束**：此类型仅可在Stage模型下使用。
+
 
 ## DaltonizationColorFilter
 

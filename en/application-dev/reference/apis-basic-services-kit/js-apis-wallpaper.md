@@ -1,5 +1,12 @@
 # @ohos.wallpaper (Wallpaper)
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: MiscServices-->
+<!--Owner: @dreamsky8023-->
+<!--Designer: @dreamsky8023-->
+<!--Tester: @murphy84-->
+<!--Adviser: @fang-jinxu-->
+
 The **wallpaper** module provides APIs for switching between wallpapers. Since API version 9, the APIs of this module function as system APIs, and only system applications are allowed to switch between wallpapers. Applications that use the wallpaper, for example, the home screen, need to subscribe to wallpaper changes and update the wallpaper accordingly.
 
 > **NOTE**
@@ -36,12 +43,12 @@ Defines the RGBA color space for the wallpaper.
 
 **System capability**: SystemCapability.MiscServices.Wallpaper
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| red | number | Yes| Yes| Red color. The value ranges from 0 to 255.|
-| green | number | Yes| Yes| Green color. The value ranges from 0 to 255.|
-| blue | number | Yes| Yes| Blue color. The value ranges from 0 to 255.|
-| alpha | number | Yes| Yes| Alpha value. The value ranges from 0 to 255.|
+| red | number | No| No| Red color. The value ranges from 0 to 255.|
+| green | number | No| No| Green color. The value ranges from 0 to 255.|
+| blue | number | No| No| Blue color. The value ranges from 0 to 255.|
+| alpha | number | No| No| Alpha value. The value ranges from 0 to 255.|
 
 
 ## wallpaper.on('colorChange')<sup>(deprecated)</sup>
@@ -772,5 +779,3 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     console.error(`failed to createPixelMap because: ${JSON.stringify(error)}`);
 });
 ```
-
- <!--no_check--> 

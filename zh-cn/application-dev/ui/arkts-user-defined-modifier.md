@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ArkUI框架提供一系列基于Modifier的自定义扩展能力，通过与UI分离的方式，对已有UI组件的属性、手势、内容进行扩展修改，以满足开发者在不改变UI组件底层实现的情况下，快速调整UI组件外观、行为等需求。自定义扩展包括[AttributeModifier](arkts-user-defined-extension-attributeModifier.md)、[GestureModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gesture-modifier.md#gesturemodifier-1)、[ContentModifier](arkts-common-attributes-content-modifier.md)等。其中[AttributeModifier](arkts-user-defined-extension-attributeModifier.md)和[AttributeUpdater](arkts-user-defined-extension-attributeUpdater.md)允许开发者通过自定义类设置属性，扩展了属性设置的实现方式，能够与组件属性设置方式混合使用。例如，使用自定义扩展处理特定的逻辑或复杂交互，使用组件设置方式处理简单静态属性等。
 

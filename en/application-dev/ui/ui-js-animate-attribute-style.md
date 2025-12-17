@@ -1,7 +1,12 @@
 # Attribute Style Animation
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @CCFFWW-->
+<!--Designer: @CCFFWW-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
-
-**Keyframes** is used to scale a component by dynamically setting the width and height of its parent component. Set the scale attribute for child components to scale the child and parent components at the same time. Then, set the opacity attribute to display or hide the child and parent components.
+**Keyframes** is used to scale a component by dynamically setting the width and height of its parent component. Set the **scale** attribute for child components to scale the child and parent components at the same time. Then, set the **opacity** attribute to display or hide the child and parent components.
 
 
 ```html
@@ -88,6 +93,6 @@ text {
 
 
 > **NOTE**
-> - The values of animation attributes are not sequenced. However, the values of duration and delay are parsed based on the sequence in which they are displayed.
-> 
+> - The values of **animation** attributes are not sequenced. However, the values of **duration** and **delay** are parsed based on the sequence in which they are displayed.
+>
 > - The **animation-duration** attribute must be set. Otherwise, the duration is 0, which means there is no animation effect. When **animation-fill-mode** is set to **forwards**, the component directly displays the style of the last frame.

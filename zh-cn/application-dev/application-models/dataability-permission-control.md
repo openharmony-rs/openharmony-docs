@@ -65,7 +65,7 @@ DataAbility作为服务端，在被拉起的时候，会根据config.json里面�
 
   **表1** 接口对应的读写权限配置
 
-| 需要配置读权限的接口 | 需要配置写权限的接口 | 据实际操作配置读写权限的接口 |
+| 需要配置读权限的接口 | 需要配置写权限的接口 | 根据实际操作配置读写权限的接口 |
 | -------- | -------- | -------- |
 | query、normalizeUri、denormalizeUri、openfile（传入mode有'r'） | insert、batchInsert、delete、update、openfile（传入mode有'w'） | executeBatch |
 

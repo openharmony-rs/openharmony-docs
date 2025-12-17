@@ -1005,7 +1005,7 @@ Defines a callback function for low-latency status changes during audio playback
 | -- | -- |
 | [OH_AudioRenderer](capi-ohaudio-oh-audiorendererstruct.md)* renderer | Pointer to an audio renderer instance, which is created by calling [OH_AudioStreamBuilder_GenerateRenderer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generaterenderer).|
 | void* userData | Pointer to the data storage area customized by the application.|
-| status | Low-latency status.|
+| [OH_AudioStream_FastStatus](capi-native-audiostream-base-h.md#oh_audiostream_faststatus) status | Low-latency status.|
 
 ### OH_AudioRenderer_SetLoudnessGain()
 

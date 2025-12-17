@@ -4,7 +4,7 @@
 <!--Owner: @CCFFWW-->
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 用于对组件进行旋转、平移、缩放、矩阵变换等操作。
 
@@ -504,7 +504,7 @@ struct MatrixExample {
 
 ### 示例4（通过transform3D实现图形变换）
 
-该示例通过设置transform3D实现图形变换效果。
+从API version 20开始，该示例通过设置[transform3D](#transform3d20)实现图形变换效果。
 
 ```ts
 import { matrix4 } from '@kit.ArkUI';
@@ -541,14 +541,13 @@ struct Tests {
 
 ### 示例5（按各轴旋转角的方式实现旋转）
 
-该示例通过设置rotate的[RotateAngleOptions](#rotateangleoptions20对象说明)参数实现旋转效果。
+从API version 20开始，该示例通过设置rotate的[RotateAngleOptions](#rotateangleoptions20对象说明)参数实现旋转效果。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct Index {
-
   build() {
     Row() {
       Column() {
@@ -564,7 +563,13 @@ struct Index {
         Image($r("app.media.startIcon"))
           .width(200)
           .height(200)
-          .rotate({ angleX: 60, angleY: -125, angleZ: 75, centerX: 100, centerZ: 20})
+          .rotate({
+            angleX: 60,
+            angleY: -125,
+            angleZ: 75,
+            centerX: 100,
+            centerZ: 20
+          })
       }
       .width('100%')
     }

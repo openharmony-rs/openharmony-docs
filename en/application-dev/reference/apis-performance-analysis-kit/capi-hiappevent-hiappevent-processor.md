@@ -3,15 +3,20 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--SE: @junjie_shi-->
-<!--TSE: @gcw_KuLfPSbe-->
+<!--Designer: @junjie_shi-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+```c
+typedef struct HiAppEvent_Processor HiAppEvent_Processor
+```
 
 ## Overview
 
-Defines the processor for application events.
+Defines a processor for application events.
 
 **Since**: 18
 
-**Related Module**: [HiAppEvent](capi-hiappevent.md)
+**Related module**: [HiAppEvent](capi-hiappevent.md)
 
-**Header File**: [hiappevent.h](capi-hiappevent-h.md)
+**Header file**: [hiappevent.h](capi-hiappevent-h.md)

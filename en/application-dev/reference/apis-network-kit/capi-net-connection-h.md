@@ -633,7 +633,7 @@ NetConn_ErrorCode OH_NetConn_SetPacUrl(const char *pacUrl)
 
 **Description**
 
-Sets the URL of the system-level proxy auto-config (PAC) script.
+Sets the URL of the system-level Proxy Auto Config (PAC) script, for example, **http://127.0.0.1:21998/PacProxyScript.pac**. You can obtain the proxy information by parsing the URL.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
 

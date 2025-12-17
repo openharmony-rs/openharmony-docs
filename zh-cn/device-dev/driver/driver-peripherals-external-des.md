@@ -939,11 +939,11 @@ WLAN驱动模块向上层提供两种能力接口：HDI接口和HAL接口。
 
 - 代码仓库如下：
 
-  **[drivers\_hdf\_core](https://gitee.com/openharmony/drivers_hdf_core)**
+  **[drivers\_hdf\_core](https://gitcode.com/openharmony/drivers_hdf_core)**
 
-  [drivers\_peripheral](https://gitee.com/openharmony/drivers_peripheral)
+  [drivers\_peripheral](https://gitcode.com/openharmony/drivers_peripheral)
 
-  [drivers\_interface](https://gitee.com/openharmony/drivers_interface)
+  [drivers\_interface](https://gitcode.com/openharmony/drivers_interface)
 
 - 代码路径如下：
 

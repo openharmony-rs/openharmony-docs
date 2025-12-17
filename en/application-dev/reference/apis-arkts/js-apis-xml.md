@@ -152,7 +152,7 @@ console.info(result); // <d/>
 
 setDeclaration(): void
 
-Sets a file declaration.
+Sets a file declaration with encoding.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -535,7 +535,7 @@ Sets an attribute.
 
 | Name| Type  | Mandatory| Description           |
 | ------ | ------ | ---- | --------------- |
-| name   | string | Yes  | Key of the attribute. The total length of the XML cannot exceed 100,000 characters.|
+| name   | string | Yes  | Key of the attribute. The total length of the XML cannot exceed 100,000 characters. This field cannot be empty.|
 | value  | string | Yes  | Value of the attribute. The total length of the XML cannot exceed 100,000 characters.|
 
 **Error codes**
@@ -739,8 +739,8 @@ Sets the namespace for an element tag.
 
 | Name   | Type  | Mandatory| Description                          |
 | --------- | ------ | ---- | ------------------------------ |
-| prefix    | string | Yes  | Prefix of the element and its child elements. The total length of the XML cannot exceed 100,000 characters.|
-| namespace | string | Yes  | Namespace to set. The total length of the XML cannot exceed 100,000 characters.|
+| prefix    | string | Yes  | Prefix of the element and its child elements. The total length of the XML cannot exceed 100,000 characters. This field cannot be empty.|
+| namespace | string | Yes  | Namespace to set. The total length of the XML cannot exceed 100,000 characters. This field cannot be empty.|
 
 **Error codes**
 
@@ -1105,14 +1105,14 @@ Defines the XML parsing options.
 **System capability**: SystemCapability.Utils.Lang
 
 
-| Name                          | Type                                                        | Mandatory| Description                                   |
-| ------------------------------ | ------------------------------------------------------------ | ---- | --------------------------------------- |
-| supportDoctype                 | boolean                                                      | No  | Whether to parse the document type. The value **true** means to parse the document type, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| ignoreNameSpace                | boolean                                                      | No  | Whether to ignore the namespace. If the namespace is ignored, it will not be parsed. The value **true** means to ignore the namespace, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| tagValueCallbackFunction       | (name: string, value: string) =&gt; boolean | No  | Start tag, tag value, and end tag of parsing. The default value is **undefined**, indicating no parsing.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | No  | Parsing attribute and attribute value. The default value is **undefined**, indicating no parsing.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| tokenValueCallbackFunction     | (eventType: [EventType](#eventtype), value: [ParseInfo](#parseinfo)) =&gt; boolean | No  | Parsing element's [EventType](#eventtype) and [ParseInfo](#parseinfo). The default value is **undefined**, indicating no parsing.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| attributeWithTagCallbackFunction<sup>20+</sup> | [AttributeWithTagCb](#attributewithtagcb20) | No| Tag name, attribute name, and attribute value of parsing. The default value is **undefined**, indicating that no parsing is performed.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| Name                          | Type                                                        | Read-Only| Optional| Description                                   |
+| ------------------------------ | ------------------------------------------------------------ | ---- | ---- | --------------------------------------- |
+| supportDoctype                 | boolean                                                      | No  | Yes  | Whether to parse the document type. The value **true** means to parse the document type, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| ignoreNameSpace                | boolean                                                      | No  | Yes  | Whether to ignore the namespace. If the namespace is ignored, it will not be parsed. The value **true** means to ignore the namespace, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| tagValueCallbackFunction       | (name: string, value: string) =&gt; boolean | No  | Yes  | Start tag, tag value, and end tag of parsing. The default value is **undefined**, indicating no parsing.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| attributeValueCallbackFunction | (name: string, value: string) =&gt; boolean | No  | Yes  | Parsing attribute and attribute value. The default value is **undefined**, indicating no parsing.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| tokenValueCallbackFunction     | (eventType: [EventType](#eventtype), value: [ParseInfo](#parseinfo)) =&gt; boolean | No  | Yes  | Parsing element's [EventType](#eventtype) and [ParseInfo](#parseinfo). The default value is **undefined**, indicating no parsing.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| attributeWithTagCallbackFunction<sup>20+</sup> | [AttributeWithTagCb](#attributewithtagcb20) | No| Yes  | Tag name, attribute name, and attribute value of parsing. The default value is **undefined**, indicating that no parsing is performed.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## ParseInfo
 

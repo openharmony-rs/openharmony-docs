@@ -36,3 +36,9 @@ Your application can use the location function only after the user has granted t
 Since the location information is considered sensitive, your application still needs to obtain the location access permission from the user even if the user has turned on the location function. The system will provide the location service for your application only after it has been granted the permission to access the device location information.
 
 Depending on the hardware support, Location Kit provides different capabilities on different devices. For example, a GPS or Beidou positioning chip provides devices with the GNSS positioning capabilities. If a WLAN or cellular network module, instead of a positioning chip, is available, then the devices can use the WLAN or base station positioning capabilities.
+
+### Related Examples
+
+The following sample is provided to help you better understand how to use Location Kit:
+
+- [`Location`: Location Kit (ArkTS) (API9) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Location)

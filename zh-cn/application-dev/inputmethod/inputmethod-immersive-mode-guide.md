@@ -18,20 +18,26 @@
 
 ## 接入指导
 1. 前台应用[设置编辑框沉浸模式](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#keyboardappearance15)。示例代码如下。
-   ```ts
-   TextArea({text: "hello world"})
-      .keyboardAppearance(KeyboardAppearance.IMMERSIVE)
-   ```
+
+<!-- @[input_case_input_KeyboardAppearance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
+
+``` TypeScript
+      TextArea({placeholder: '沉浸模式'})
+        .keyboardAppearance(KeyboardAppearance.IMMERSIVE)
+
+      TextArea({placeholder: '非沉浸模式'})
+        .keyboardAppearance(KeyboardAppearance.NONE_IMMERSIVE)
+```
+
 
 2. 输入法应用[订阅编辑框属性变化事件](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oneditorattributechanged10)，通过回调参数EditorAttribute中的immersiveMode字段感知前台应用期望的沉浸模式。示例代码如下。
 
-   ```ts
-   import { inputMethodEngine } from '@kit.IMEKit';
+<!-- @[input_case_input_immersiveModeeditorAttributeChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets) -->
 
-   inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
-      console.info("received editorAttributeChanged, immersiveMode: " + attr.immersiveMode);
-   })
-   ```
+``` TypeScript
+    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+```
+
 
 3. 输入法应用[设置沉浸模式](../reference/apis-ime-kit/js-apis-inputmethodengine.md#setimmersivemode15)。 
    - IMMERSIVE表示沉浸模式由输入法应用决定。
@@ -40,24 +46,19 @@
 
 
    设置沉浸模式，示例代码如下。setImmersiveMode接口需使用[createPanel](../reference/apis-ime-kit/js-apis-inputmethodengine.md#createpanel10)获取到Panel实例后，通过实例调用。
-   ```ts
-   import { inputMethodEngine } from '@kit.IMEKit';
    
-   let panelInfo: inputMethodEngine.PanelInfo = {
-     type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
-     flag: inputMethodEngine.PanelFlag.FLG_FIXED
-   };
-   let inputMethodAbility: inputMethodEngine.InputMethodAbility = inputMethodEngine.getInputMethodAbility();
-   // createPanel需要在InputMethodExtensionAbility的Create声明周期中完成，this.context是InputMethodExtensionAbility中的InputMethodExtensionContext
-   inputMethodAbility.createPanel(this.context, panelInfo).then(async (panel: inputMethodEngine.Panel) => {
-     let inputPanel: inputMethodEngine.Panel = panel;
-     try {
-       inputPanel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.LIGHT_IMMERSIVE);
-     } catch (err) {
-       let error: BusinessError = err as BusinessError;
-       console.error(`Failed to setImmersiveMode, code: ${error.code}, message: ${error.message}`);
-     }
-   }).catch((err: BusinessError) => {
-     console.log(`Failed to createPanel, code: ${err.code}, message: ${err.message}`);
-   });
-   ```
+<!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+    // 感知是否设置沉浸模式，如果是沉浸模式选择沉浸模式类型
+    // [Start input_case_input_immersiveModeeditorAttributeChanged]
+    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
+      // [End input_case_input_immersiveModeeditorAttributeChanged]
+      console.log('recv editorAttributeChanged, immersiveMode: ', JSON.stringify(attr.immersiveMode));
+      if (attr.immersiveMode == 1) {
+        this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
+        console.log('recv editorAttributeChanged, panel:', JSON.stringify(this.panel?.getImmersiveMode()));
+      }
+    })
+```
+

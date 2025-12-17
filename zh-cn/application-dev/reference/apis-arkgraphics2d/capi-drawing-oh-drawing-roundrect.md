@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_Drawing_RoundRect OH_Drawing_RoundRect
+```
+
 ## 概述
 
 用于描述圆角矩形。

@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct UsbDdkInterfaceDescriptor {...} UsbDdkInterfaceDescriptor
+```
+
 ## 概述
 
 接口描述符。

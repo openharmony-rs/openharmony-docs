@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+struct Image_Size {...}
+```
+
 ## 概述
 
 图像大小结构体。

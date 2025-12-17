@@ -4,7 +4,7 @@
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @cheng-shichang-->
 <!--Designer: @zhouben25-->
-<!--Tester: @fenglili18-->
+<!--Tester: @leetestnady-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **backgroundTaskManager** module provides APIs to request background tasks. You can use the APIs to request transient tasks, continuous tasks, or efficiency resources to prevent the application process from being terminated or suspended when your application is switched to the background.
@@ -219,3 +219,15 @@ Efficiency resource information.
 | reason                         | string  | No   | No   | Reason for requesting the resource.      |
 | uid                            | number  | No   | No   | Application UID.    |
 | pid                            | number  | No   | No   | Application PID.  |
+
+## BackgroundTaskMode<sup>21+</sup>
+
+Defines the main type of a continuous task.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+| Name                    | Value | Description                   |
+| ------------------------ | ---- | --------------------- |
+| MODE_ALLOW_WIFI_AWARE           | 7         | WLAN-related services.           |

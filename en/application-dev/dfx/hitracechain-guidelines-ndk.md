@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @qq_437963121-->
-<!--Designer: @MontSaintMichel-->
+<!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
@@ -91,152 +91,156 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
 
 3. In the **entry > src > main > cpp > napi_init.cpp** file, use HiTraceChain to trace multi-thread tasks. The sample code is as follows:
 
-   ```cpp
-   #include <thread>
-   
-   #include "hilog/log.h"
-   #include "hitrace/trace.h"
-   #include "napi/native_api.h"
-   
-   #undef LOG_TAG
-   #define LOG_TAG "testTag"
-   
-   void Print2(HiTraceId id)
-   {
-       // Set a HiTraceId for the thread.
-       OH_HiTrace_SetId(&id);
-       // Generate a spanId.
-       id = OH_HiTrace_CreateSpan();
-       // Set a HiTraceId with the spanId for the thread.
-       OH_HiTrace_SetId(&id);
-       OH_LOG_INFO(LogType::LOG_APP, "Print2");
-       // End the distributed tracing of the thread. This functionality is the same as that of OH_HiTrace_EndChain().
-       OH_HiTrace_ClearId();
-       OH_LOG_INFO(LogType::LOG_APP, "Print2, HiTraceChain end");
-   }
+   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->
 
-   void Print1(HiTraceId id)
-   {
-       // Set a HiTraceId for the thread.
-       OH_HiTrace_SetId(&id);
-       // Generate a spanId.
-       id = OH_HiTrace_CreateSpan();
-       // Set a HiTraceId with the spanId for the thread.
-       OH_HiTrace_SetId(&id);
-       OH_LOG_INFO(LogType::LOG_APP, "Print1");
-       std::thread(Print2, OH_HiTrace_GetId()).detach();
-       // End the distributed tracing of the thread.
-       OH_HiTrace_EndChain();
-       OH_LOG_INFO(LogType::LOG_APP, "Print1, HiTraceChain end");
-   }
-   
-   static napi_value Add(napi_env env, napi_callback_info info)
-   {
-       // Start distributed tracing when the task starts.
-       HiTraceId hiTraceId = OH_HiTrace_BeginChain("testTag: hiTraceChain begin", HiTrace_Flag::HITRACE_FLAG_DEFAULT);
-       // Check whether the generated hiTraceId is valid. If yes, a HiLog log is generated.
-       if (OH_HiTrace_IsIdValid(&hiTraceId)) {
-           OH_LOG_INFO(LogType::LOG_APP, "HiTraceId is valid");
-       }
-       // Enable the HITRACE_FLAG_INCLUDE_ASYNC flag, indicating that HiTraceId is automatically transferred in the asynchronous mechanism supported by the system.
-       OH_HiTrace_EnableFlag(&hiTraceId, HiTrace_Flag::HITRACE_FLAG_INCLUDE_ASYNC);
-       // Check whether the HITRACE_FLAG_INCLUDE_ASYNC flag of HiTraceId is enabled. If yes, set the HiTraceId to the thread TLS.
-       if (OH_HiTrace_IsFlagEnabled(&hiTraceId, HiTrace_Flag::HITRACE_FLAG_INCLUDE_ASYNC)) {
-           OH_HiTrace_SetId(&hiTraceId);
-           OH_LOG_INFO(LogType::LOG_APP, "HITRACE_FLAG_INCLUDE_ASYNC is enabled");
-       }
-       size_t argc = 2;
-       napi_value args[2] = {nullptr};
-   
-       napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
-   
-       napi_valuetype valuetype0;
-       napi_typeof(env, args[0], &valuetype0);
-   
-       napi_valuetype valuetype1;
-       napi_typeof(env, args[1], &valuetype1);
-   
-       double value0;
-       napi_get_value_double(env, args[0], &value0);
-   
-       double value1;
-       napi_get_value_double(env, args[1], &value1);
-   
-       napi_value sum;
-       napi_create_double(env, value0 + value1, &sum);
-   
-       // Create a thread to execute the print task and transfer the HiTraceId of the thread.
-       std::thread(Print1, OH_HiTrace_GetId()).detach();
-       // Stop the distributed tracing when the task is complete.
-       OH_HiTrace_EndChain();
-       OH_LOG_INFO(LogType::LOG_APP, "Add, HiTraceChain end");
-   
-       return sum;
-   }
-   
-   EXTERN_C_START
-   static napi_value Init(napi_env env, napi_value exports)
-   {
-       napi_property_descriptor desc[] = {
-           { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
-       };
-       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-       return exports;
-   }
-   EXTERN_C_END
-   
-   static napi_module demoModule = {
-       .nm_version = 1,
-       .nm_flags = 0,
-       .nm_filename = nullptr,
-       .nm_register_func = Init,
-       .nm_modname = "entry",
-       .nm_priv = ((void*)0),
-       .reserved = { 0 },
-   };
-   
-   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-   {
-       napi_module_register(&demoModule);
-   }
-   ```
+``` C++
+#include <thread>
 
+#include "hilog/log.h"
+#include "hitrace/trace.h"
+#include "napi/native_api.h"
+
+#undef LOG_TAG
+#define LOG_TAG "testTag"
+
+void Print2(HiTraceId id)
+{
+    // Set a HiTraceId for the thread.
+    OH_HiTrace_SetId(&id);
+    // Generate a spanId.
+    id = OH_HiTrace_CreateSpan();
+    // Set a HiTraceId with the spanId for the thread.
+    OH_HiTrace_SetId(&id);
+    OH_LOG_INFO(LogType::LOG_APP, "Print2");
+    // End the distributed tracing of the thread. This functionality is the same as that of OH_HiTrace_EndChain().
+    OH_HiTrace_ClearId();
+    OH_LOG_INFO(LogType::LOG_APP, "Print2, HiTraceChain end");
+}
+
+void Print1(HiTraceId id)
+{
+    // Set a HiTraceId for the thread.
+    OH_HiTrace_SetId(&id);
+    // Generate a spanId.
+    id = OH_HiTrace_CreateSpan();
+    // Set a HiTraceId with the spanId for the thread.
+    OH_HiTrace_SetId(&id);
+    OH_LOG_INFO(LogType::LOG_APP, "Print1");
+    std::thread(Print2, OH_HiTrace_GetId()).detach();
+    // End the distributed tracing of the thread.
+    OH_HiTrace_EndChain();
+    OH_LOG_INFO(LogType::LOG_APP, "Print1, HiTraceChain end");
+}
+
+static napi_value Add(napi_env env, napi_callback_info info)
+{
+    // Start distributed tracing when the task starts.
+    HiTraceId hiTraceId = OH_HiTrace_BeginChain("testTag: hiTraceChain begin", HiTrace_Flag::HITRACE_FLAG_DEFAULT);
+    // Check whether the generated hiTraceId is valid. If yes, a HiLog log is generated.
+    if (OH_HiTrace_IsIdValid(&hiTraceId)) {
+        OH_LOG_INFO(LogType::LOG_APP, "HiTraceId is valid");
+    }
+    // Enable the HITRACE_FLAG_INCLUDE_ASYNC flag, indicating that HiTraceId is automatically transferred in the asynchronous mechanism supported by the system.
+    OH_HiTrace_EnableFlag(&hiTraceId, HiTrace_Flag::HITRACE_FLAG_INCLUDE_ASYNC);
+    // Check whether the HITRACE_FLAG_INCLUDE_ASYNC flag of HiTraceId is enabled. If yes, set the HiTraceId to the thread TLS.
+    if (OH_HiTrace_IsFlagEnabled(&hiTraceId, HiTrace_Flag::HITRACE_FLAG_INCLUDE_ASYNC)) {
+        OH_HiTrace_SetId(&hiTraceId);
+        OH_LOG_INFO(LogType::LOG_APP, "HITRACE_FLAG_INCLUDE_ASYNC is enabled");
+    }
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    napi_valuetype valuetype0;
+    napi_typeof(env, args[0], &valuetype0);
+
+    napi_valuetype valuetype1;
+    napi_typeof(env, args[1], &valuetype1);
+
+    double value0;
+    napi_get_value_double(env, args[0], &value0);
+
+    double value1;
+    napi_get_value_double(env, args[1], &value1);
+
+    napi_value sum;
+    napi_create_double(env, value0 + value1, &sum);
+
+    // Create a thread to execute the print task and transfer the HiTraceId of the thread.
+    std::thread(Print1, OH_HiTrace_GetId()).detach();
+    // Stop the distributed tracing when the task is complete.
+    OH_HiTrace_EndChain();
+    OH_LOG_INFO(LogType::LOG_APP, "Add, HiTraceChain end");
+
+    return sum;
+}
+
+EXTERN_C_START
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = {
+        { "add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr }
+    };
+    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+    return exports;
+}
+EXTERN_C_END
+
+static napi_module demoModule = {
+    .nm_version = 1,
+    .nm_flags = 0,
+    .nm_filename = nullptr,
+    .nm_register_func = Init,
+    .nm_modname = "entry",
+    .nm_priv = ((void*)0),
+    .reserved = { 0 },
+};
+
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+{
+    napi_module_register(&demoModule);
+}
+```
+   
    In the **entry > src > main > ets > pages > Index.ets** file, call the **Add** method in the button click event. The sample code is as follows:
+   
+   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master//code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
 
-   ```ts
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
-   
-   const DOMAIN = 0x0000;
-   
-   @Entry
-   @Component
-   struct Index {
-     @State message: string = "clickTime=0";
-     @State clickTime: number = 0;
-   
-     build() {
-       Row() {
-         Column() {
-           Button(this.message)
-             .fontSize(20)
-             .margin(5)
-             .width(350)
-             .height(60)
-             .fontWeight(FontWeight.Bold)
-             .onClick(() => {
-               this.clickTime++;
-               this.message = "clickTime=" + this.clickTime;
-               hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
-             })
-         }
-         .width('100%')
-       }
-       .height('100%')
-     }
-   }
-   ```
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
 
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'clickTime=0';
+  @State clickTime: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        Button(this.message)
+          .fontSize(20)
+          .margin(5)
+          .width(350)
+          .height(60)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+            this.clickTime++;
+            this.message = 'clickTime=' + this.clickTime;
+            hilog.info(DOMAIN, 'testTag', 'Test NAPI 2 + 3 = %{public}d', testNapi.add(2, 3));
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+   
 4. Click the **Run** button in DevEco Studio to run the project. Then, click **clickTime=0** on the device to trigger the service logic.
 
 5. In the **Log** window of DevEco Studio, view the distributed tracing information.
@@ -257,4 +261,4 @@ The following table describes the APIs provided to extend **HiTraceId**. These A
 
    - The **[chainId spanId parentSpanId]** information added before the HiLog log is **HiTraceId** information. For example, **[a92ab19ae90197d 236699a 2544fdb]** indicates that the trace chain ID (**chainId**) is **a92ab19ae90197d**, the span ID (**spanId**) is **236699a**, and the parent span ID (**parentSpanId**) is **2544fdb**.
    - Transfer the **HiTraceId**, create a **spanId**, and set it to the child thread created by **std::thread**. The HiLog logs of the Print1 and Print2 services running in the child thread also carry the same trace ID **a92ab19ae90197d** as that of the main thread.
-   - After the distributed tracing is ended using **OH_HiTrace_EndChain** or **OH_HiTrace_ClearId**, the HiLog print information does not carry the **HiTraceId** information.
+   - After the distributed tracing is ended using **OH_HiTrace_EndChain()** or **OH_HiTrace_ClearId()**, the HiLog print information does not carry the **HiTraceId** information.

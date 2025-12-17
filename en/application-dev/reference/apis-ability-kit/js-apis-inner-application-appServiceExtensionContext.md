@@ -30,7 +30,7 @@ Before using the AppServiceExtensionContext module, you must define a child clas
 **Example**
 
 ```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 export default class AppServiceExtension extends AppServiceExtensionAbility {
   onCreate(want: Want) {
@@ -280,7 +280,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
 **Example**
 
 ```ts
-import { AppServiceExtensionAbility } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

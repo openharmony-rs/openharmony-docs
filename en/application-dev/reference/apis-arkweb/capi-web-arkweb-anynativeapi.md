@@ -4,7 +4,11 @@
 <!--Owner: @weixin_41848015-->
 <!--Designer: @libing23232323-->
 <!--Tester: @ghiker-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @HelloShuo-->
+
+```
+typedef struct {...} ArkWeb_AnyNativeAPI
+```
 
 ## Overview
 

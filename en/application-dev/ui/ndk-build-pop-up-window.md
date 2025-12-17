@@ -1,4 +1,10 @@
 # Building a Dialog Box
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 You can display a custom dialog box by creating a dialog controller or by creating a custom dialog content object, and then setting its styles and content.
@@ -7,32 +13,32 @@ You can display a custom dialog box by creating a dialog controller or by creati
 [Displaying a custom dialog box through a dialog controller](#displaying-a-custom-dialog-box-through-a-dialog-controller): In this approach, you use the APIs defined in a struct named **ArkUI_NativeDialogAPI_x** (where *x* denotes the version) for dialog box control.
 
 
-[Displaying a custom dialog box through a custom dialog content object](#displaying-a-custom-dialog-box-through-a-custom-dialog-content-object): In this approach, you use the APIs defined in the functions of [native_dialog.h](../reference/apis-arkui/native__dialog_8h.md#functions).
+[Displaying a custom dialog box through a custom dialog content object](#displaying-a-custom-dialog-box-through-a-custom-dialog-content-object): In this approach, you use the APIs defined in the functions of [native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md#functions).
 
 
 > **NOTE**
 >
-> - For details about how to display a custom dialog box through a dialog controller, see [openCustomDialogWithController](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialogwithcontroller18).
+> - For details about how to display a custom dialog box through a dialog controller, see [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18).
 > 
-> - For details about how to display a custom dialog box through a custom dialog content object, see [openCustomDialog](../reference/apis-arkui/js-apis-arkui-UIContext.md#opencustomdialog12).
+> - For details about how to display a custom dialog box through a custom dialog content object, see [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12).
 > 
-> - [OH_ArkUI_QueryModuleInterfaceByName](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_querymoduleinterfacebyname) is used to obtain a collection of native module APIs of a specified type. You can call APIs in the native module using the returned data of the **ArkUI_NativeDialogHandle** type.
+> - [OH_ArkUI_QueryModuleInterfaceByName](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname) is used to obtain a collection of native module APIs of a specified type. You can call APIs in the native module using the returned data of the **ArkUI_NativeDialogHandle** type.
 
 ## Creating and Destroying a Custom Dialog Box
 
 ### Displaying a Custom Dialog Box Through a Dialog Controller
 
 - Creating a Dialog Controller
-  [ArkUI_NativeDialogHandle](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_nativedialoghandle) represents a pointer to the dialog controller, which you can create by calling the [create](../reference/apis-arkui/_ark_u_i___native_dialog_a_p_i__1.md#create) API of [ArkUI_NativeDialogAPI_x](../reference/apis-arkui/_ark_u_i___native_dialog_a_p_i__1.md).
+  [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md) represents a pointer to the dialog controller, which you can create by calling the [create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create) API of [ArkUI_NativeDialogAPI_x](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md).
 This API returns data of the **ArkUI_NativeDialogHandle** type.
-  ```
+  ```c
   ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
       OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
   auto dialogController = dialogAPI->create();
   ```
 
 - Destroying the Dialog Controller<br>When dialog box operations are no longer needed, actively call the **dispose** API to destroy the dialog controller object.
-  ```
+  ```c
   ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
       OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
   dialogAPI->dispose(dialogController);
@@ -41,9 +47,9 @@ This API returns data of the **ArkUI_NativeDialogHandle** type.
 ### Displaying a Custom Dialog Box Through a Custom Dialog Content Object
 
 - Creating a Dialog Content Object
-  You can create a custom dialog content object [ArkUI_CustomDialogOptions](../reference/apis-arkui/_ark_u_i___native_module.md#arkui_customdialogoptions) by calling the [OH_ArkUI_CustomDialog_CreateOptions](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_customdialog_createoptions) API,
+  You can create a custom dialog content object [ArkUI_CustomDialogOptions](../reference/apis-arkui/capi-arkui-nativemodule-arkui-customdialogoptions.md) by calling the OH_ArkUI_CustomDialog_CreateOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_createoptions) API,
 which returns a pointer of the **ArkUI_CustomDialogOptions** type.
-  ```
+  ```c
   auto textNode = std::make_shared<ArkUITextNode>();
   auto dialogOptions = OH_ArkUI_CustomDialog_CreateOptions(textNode->GetHandle());
   ```
@@ -51,8 +57,8 @@ which returns a pointer of the **ArkUI_CustomDialogOptions** type.
   > 
   > For details about how to declare **ArkUITextNode**, refer to the implementation of the text component in the [ArkUINode.h](../ui/ndk-access-the-arkts-page.md) file.
 
-- Destroying a Dialog Content Object<br>When dialog box operations are no longer needed, actively call the [OH_ArkUI_CustomDialog_DisposeOptions](../reference/apis-arkui/_ark_u_i___native_module.md#oh_arkui_customdialog_disposeoptions) API to destroy the dialog content object.
-  ```
+- Destroying the Dialog Controller<br>When dialog box operations are no longer needed, actively call the [OH_ArkUI_CustomDialog_DisposeOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_disposeoptions) API to destroy the dialog controller object.
+  ```c
   OH_ArkUI_CustomDialog_DisposeOptions(dialogOptions);
   ```
 
@@ -61,7 +67,7 @@ which returns a pointer of the **ArkUI_CustomDialogOptions** type.
 You can set the alignment, offset, corner radius of the background, background color, mask color, and region of the dialog box.
 
 1. Create a dialog box content node.
-   ```
+   ```c
    ArkUI_NodeHandle CreateDialogContent() {
        ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
@@ -94,71 +100,75 @@ You can set the alignment, offset, corner radius of the background, background c
    }
    ```
 
-2. Control dialog box styles using either of the following methods. For details about the dialog box APIs, see [native_dialog.h](../reference/apis-arkui/native__dialog_8h.md).
+2. Control dialog box styles using either of the following methods. For details about the dialog box APIs, see [native_dialog.h](../reference/apis-arkui/capi-native-dialog-h.md).
 
-- Using the controller
-   ```
-   void ShowDialog() {
-       ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
-           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
-       if (!dialogController) {
-           dialogController = dialogAPI->create();
-       }
-       auto contentNode = CreateDialogContent();
-       dialogAPI->setContent(dialogController, contentNode);
-       dialogAPI->setContentAlignment(dialogController, static_cast<int32_t>(ARKUI_ALIGNMENT_BOTTOM), 0, 0);
-       dialogAPI->setBackgroundColor(dialogController, 0xffffffff);
-       dialogAPI->setCornerRadius(dialogController, 6, 6, 6, 6);
-       dialogAPI->setModalMode(dialogController, false);
-       dialogAPI->setAutoCancel(dialogController, true);
-       dialogAPI->show(dialogController, false);
-   }
-   ```
+   - Using the controller
 
-- Using **dialogOptions**
-   ```
-   constexpr int32_t id = 0;
-   void openDialogCallBack(int32_t dialogId) {
-       id = dialogId;
-   }
-   void OpenCustomDialog() {
-       auto contentNode = CreateDialogContent();
-       auto dialogOptions = OH_ArkUI_CustomDialog_CreateOptions(contentNode);
-       OH_ArkUI_CustomDialog_SetAlignment(dialogOptions, static_cast<int32_t>(ARKUI_ALIGNMENT_BOTTOM), 0, 0);
-       OH_ArkUI_CustomDialog_SetBackgroundColor(dialogOptions, 0xffffffff);
-       OH_ArkUI_CustomDialog_SetCornerRadius(dialogOptions, 6, 6, 6, 6);
-       OH_ArkUI_CustomDialog_SetModalMode(dialogOptions, false);
-       OH_ArkUI_CustomDialog_SetAutoCancel(dialogOptions, true);
-       OH_ArkUI_CustomDialog_SetBorderWidth(dialogOptions, 2, 2, 2, 2, ARKUI_LENGTH_METRIC_UNIT_PX);
-       OH_ArkUI_CustomDialog_SetBorderStyle(dialogOptions, ARKUI_BORDER_STYLE_SOLID, ARKUI_BORDER_STYLE_SOLID,ARKUI_BORDER_STYLE_SOLID, ARKUI_BORDER_STYLE_SOLID);
-       OH_ArkUI_CustomDialog_OpenDialog(dialogOptions, openDialogCallBack);
-   }
-   ```
+     ```c
+     void ShowDialog() {
+         ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
+             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
+         if (!dialogController) {
+             dialogController = dialogAPI->create();
+         }
+         auto contentNode = CreateDialogContent();
+         dialogAPI->setContent(dialogController, contentNode);
+         dialogAPI->setContentAlignment(dialogController, static_cast<int32_t>(ARKUI_ALIGNMENT_BOTTOM), 0, 0);
+         dialogAPI->setBackgroundColor(dialogController, 0xffffffff);
+         dialogAPI->setCornerRadius(dialogController, 6, 6, 6, 6);
+         dialogAPI->setModalMode(dialogController, false);
+         dialogAPI->setAutoCancel(dialogController, true);
+         dialogAPI->show(dialogController, false);
+     }
+     ```
+
+   - Using **dialogOptions**
+
+     ```c
+     constexpr int32_t id = 0;
+     void openDialogCallBack(int32_t dialogId) {
+         id = dialogId;
+     }
+     void OpenCustomDialog() {
+         auto contentNode = CreateDialogContent();
+         auto dialogOptions = OH_ArkUI_CustomDialog_CreateOptions(contentNode);
+         OH_ArkUI_CustomDialog_SetAlignment(dialogOptions, static_cast<int32_t>(ARKUI_ALIGNMENT_BOTTOM), 0, 0);
+         OH_ArkUI_CustomDialog_SetBackgroundColor(dialogOptions, 0xffffffff);
+         OH_ArkUI_CustomDialog_SetCornerRadius(dialogOptions, 6, 6, 6, 6);
+         OH_ArkUI_CustomDialog_SetModalMode(dialogOptions, false);
+         OH_ArkUI_CustomDialog_SetAutoCancel(dialogOptions, true);
+         OH_ArkUI_CustomDialog_SetBorderWidth(dialogOptions, 2, 2, 2, 2, ARKUI_LENGTH_METRIC_UNIT_PX);
+         OH_ArkUI_CustomDialog_SetBorderStyle(dialogOptions, ARKUI_BORDER_STYLE_SOLID, ARKUI_BORDER_STYLE_SOLID,ARKUI_BORDER_STYLE_SOLID, ARKUI_BORDER_STYLE_SOLID);
+         OH_ArkUI_CustomDialog_OpenDialog(dialogOptions, openDialogCallBack);
+     }
+     ```
 
 3. Close the dialog box using either of the following methods:
 
-- Using the controller
-   ```
-   void CloseDialog() {
-       ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
-           OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
-       dialogAPI->close(dialogController);
-   }
-   ```
+   - Using the controller
 
-- Using **dialogOptions**
-   ```
-   void CloseCustomDialog() {
-       OH_ArkUI_CustomDialog_CloseDialog(id);
-   }
-   ```
+     ```c
+     void CloseDialog() {
+         ArkUI_NativeDialogAPI_1 *dialogAPI = reinterpret_cast<ArkUI_NativeDialogAPI_1 *>(
+             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_DIALOG, "ArkUI_NativeDialogAPI_1"));
+         dialogAPI->close(dialogController);
+     }
+     ```
+
+   - Using **dialogOptions**
+
+     ```
+     void CloseCustomDialog() {
+         OH_ArkUI_CustomDialog_CloseDialog(id);
+     }
+     ```
 
 ## Interacting with the Dialog Box
 
 You can create an interactive page to open or close a dialog box.
 
 1. Create a button that, when clicked, will trigger the display of a dialog box. For details about how to obtain and use nodes of the ArkUI_NodeContentHandle type, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
-   ```
+   ```c
    constexpr int32_t BUTTON_CLICK_ID = 1;
    bool isShown = false;
    ArkUI_NativeDialogHandle dialogController;
@@ -199,61 +209,63 @@ You can create an interactive page to open or close a dialog box.
 
 2. Create a button event callback function to trigger the display or closure of the dialog box when the button is clicked.
 
-- Using the controller
-   ```
-   void OnButtonClicked(ArkUI_NodeEvent *event) {
-       if (!event || !buttonNode) {
-           return;
-       }
-       auto eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
-       if (eventId == BUTTON_CLICK_ID) {
-           ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-               OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-           if (isShown) {
-               isShown = false;
-               ArkUI_AttributeItem labelItem = {.string = "Show Dialog Box"};
-               nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
-               CloseDialog();
-           } else {
-               isShown = true;
-               ArkUI_AttributeItem labelItem = {.string = "Close Dialog Box"};
-               nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
-               ShowDialog();
-           }
-       }
-   }
-   ```
+   - Using the controller
 
-- Using **dialogOptions**
-   ```
-   constexpr int32_t id = 0;
-   void openDialogCallBack(int32_t dialogId) {
-       id = dialogId;
-   }
-   void OnButtonClicked(ArkUI_NodeEvent *event) {
-       if (!event || !buttonNode) {
-           return;
-       }
-       auto eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
-       if (eventId == BUTTON_CLICK_ID) {
-           ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
-               OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
-           if (isShown) {
-               isShown = false;
-               ArkUI_AttributeItem labelItem = {.string = "Show Dialog Box"};
-               nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
-               CloseCustomDialog();
-           } else {
-               isShown = true;
-               ArkUI_AttributeItem labelItem = {.string = "Close Dialog Box"};
-               nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
-               OpenCustomDialog();
-           }
-       }
-   }
-   ```
+     ```c
+     void OnButtonClicked(ArkUI_NodeEvent *event) {
+         if (!event || !buttonNode) {
+             return;
+         }
+         auto eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
+         if (eventId == BUTTON_CLICK_ID) {
+             ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+                 OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+             if (isShown) {
+                 isShown = false;
+                 ArkUI_AttributeItem labelItem = {.string = "Show Dialog Box"};
+                 nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
+                 CloseDialog();
+             } else {
+                 isShown = true;
+                 ArkUI_AttributeItem labelItem = {.string = "Close Dialog Box"};
+                 nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
+                 ShowDialog();
+             }
+         }
+     }
+     ```
 
-   ![en-us_image_0000001902966196](figures/en-us_image_0000001902966196.gif)
+   - Using **dialogOptions**
+
+     ```c
+     constexpr int32_t id = 0;
+     void openDialogCallBack(int32_t dialogId) {
+         id = dialogId;
+     }
+     void OnButtonClicked(ArkUI_NodeEvent *event) {
+         if (!event || !buttonNode) {
+             return;
+         }
+         auto eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
+         if (eventId == BUTTON_CLICK_ID) {
+             ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+                 OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+             if (isShown) {
+                 isShown = false;
+                 ArkUI_AttributeItem labelItem = {.string = "Show Dialog Box"};
+                 nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
+                 CloseCustomDialog();
+             } else {
+                 isShown = true;
+                 ArkUI_AttributeItem labelItem = {.string = "Close Dialog Box"};
+                 nodeAPI->setAttribute(buttonNode, NODE_BUTTON_LABEL, &labelItem);
+                 OpenCustomDialog();
+             }
+         }
+     }
+     ```
+
+![en-us_image_0000001902966196](figures/en-us_image_0000001902966196.gif)
 
 
 ## Managing the Dialog Box Lifecycle
@@ -264,7 +276,7 @@ registerOnWillAppear -> The dialog box display animation starts -> The dialog bo
 registerOnWillDisappear -> The dialog box exit animation starts -> The dialog box exit animation ends -> registerOnDidDisappear -> The dialog box is fully closed
 
 The following is an example of creating a dialog box that triggers lifecycle callback functions when the dialog box is displayed and closed. For details about how to obtain and use nodes of the ArkUI_NodeContentHandle type, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
-   ```
+   ```c
     ArkUI_NodeHandle CreateDialogContent() {
         ArkUI_NativeNodeAPI_1 *nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
             OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));

@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ImageReceiverNative_ ImageReceiverNative
+```
+
 ## 概述
 
 用于定义ImageReceiverNative数据类型名称。

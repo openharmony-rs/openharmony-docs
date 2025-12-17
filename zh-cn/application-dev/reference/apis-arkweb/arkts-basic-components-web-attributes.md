@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通用属性仅支持[aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur)、[backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[bindMenu ](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)、[bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)、[borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12)、[constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)、[defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9)、[groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9)、[displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority)、[enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)、[flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)、[flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)、[layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)、[id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)、[gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[touchable](../apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated)、[margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor)、[offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)、[visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)、[scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)、[responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)、[size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity)、[shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)、[sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)、[transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md)、[position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)。
+通用属性仅支持[aspectRatio](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#aspectratio)、[backdropBlur](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backdropblur)、[backgroundColor](../apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、[bindContentCover](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)、[bindContextMenu](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)、[bindMenu ](../apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)、[bindSheet](../apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)、[borderColor](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、[borderRadius](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)、[borderStyle](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderstyle)、[borderWidth](../apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、[clip](../apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clip12)、[constraintSize](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#constraintsize)、[defaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)、[focusable](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)、[tabIndex](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabindex9)、[groupDefaultFocus](../apis-arkui/arkui-ts/ts-universal-attributes-focus.md#groupdefaultfocus9)、[displayPriority](../apis-arkui/arkui-ts/ts-universal-attributes-layout-constraints.md#displaypriority)、[enabled](../apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)、[flexBasis](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)、[flexShrink](../apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)、[layoutWeight](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#layoutweight)、[id](../apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)、[gridOffset](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[gridSpan](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[useSizeType](../apis-arkui/arkui-ts/ts-universal-attributes-grid.md#属性)、[height](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)、[touchable](../apis-arkui/arkui-ts/ts-universal-attributes-click.md#touchabledeprecated)、[margin](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[markAnchor](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#markanchor)、[offset](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#offset)、[width](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[zIndex](../apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)、[visibility](../apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)、[scale](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#scale)、[translate](../apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate)、[responseRegion](../apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)、[size](../apis-arkui/arkui-ts/ts-universal-attributes-size.md#size)、[opacity](../apis-arkui/arkui-ts/ts-universal-attributes-opacity.md#opacity)、[shadow](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)、[sharedTransition](../apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md)、[transition](../apis-arkui/arkui-ts/ts-transition-animation-component.md)、[position](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#position)、[direction](../apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)。
 
 > **说明：**
 >
@@ -275,7 +275,7 @@ mixedMode(mixedMode: MixedMode)
 
 | 参数名       | 类型                        | 必填   | 说明      |
 | --------- | --------------------------- | ---- | --------- |
-| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.None。  |
+| mixedMode | [MixedMode](./arkts-basic-components-web-e.md#mixedmode) | 是    | 要设置的混合内容模式。<br>传入undefined或null时为MixedMode.All。  |
 
 **示例：**
 
@@ -853,7 +853,7 @@ blockNetwork(block: boolean)
 
 | 参数名   | 类型    | 必填   | 说明                |
 | ----- | ------- | ---- | ------------------- |
-| block | boolean | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>传入undefined或null时为true。 |
+| block | boolean | 是    | 设置Web组件是否允许从网络加载资源。<br>true表示不允许从网络加载资源，false表示允许从网络加载资源。<br>传入undefined或null时为false。 |
 
 **示例：**
 
@@ -1714,8 +1714,11 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
           "if (typeof(Storage) !== 'undefined') {" +
           "   localStorage.setItem('color', 'Red');" +
           "}";
+      private localStorage2: string =
+          "console.info('runJavaScriptOnDocumentStart urlRegexRules Matching succeeded.')";
       @State scripts: Array<ScriptItem> = [
-          { script: this.localStorage, scriptRules: ["*"] }
+          { script: this.localStorage, scriptRules: ["*"] },
+          { script: this.localStorage2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
       ];
 
       build() {
@@ -1792,8 +1795,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -1856,8 +1861,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -2411,7 +2418,7 @@ metaViewport(enabled: boolean)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2427,7 +2434,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 加载的html文件。
 ```html
 <!--index.html-->
@@ -2453,10 +2460,10 @@ textAutosizing(textAutosizing: boolean)
 > **说明：**
 >
 > - 文本字体大小自动调整生效需要满足的前置条件：
-> - 1. 设备形态为：Phone、Tablet、Wearable、TV。
-> - 2. Web组件视口宽度 < 980px。
-> - 3. 页面文本量大，页面文本的字号*字符数 ≥ 3920。
-> - 4. 前端无metaViewport设置，或metaViewport设置中无"width"和"initial-scale"属性。
+>   - 设备形态为：Phone、Tablet、Wearable、TV。
+>   - Web组件视口宽度 < 980px。
+>   - 页面文本量大，页面文本的字号*字符数 ≥ 3920。
+>   - 前端无metaViewport设置，或metaViewport设置中无"width"和"initial-scale"属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2626,7 +2633,7 @@ Web组件自定义文本选择菜单。
 
 在[onMenuItemClick](../apis-arkui/arkui-ts/ts-text-common.md#onmenuitemclick12)中，可以自定义菜单选项的回调函数。该函数在菜单选项被点击后触发，并根据返回值决定是否执行系统默认的回调。返回true不执行系统回调，返回false继续执行系统回调。
 
-在[onPrepareMenu<sup>20+</sup>](../apis-arkui/arkui-ts/ts-text-common.md#onpreparemenu20)中，当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行修改、增加、删除菜单选项，实现动态更新菜单。
+在[onPrepareMenu<sup>20+</sup>](../apis-arkui/arkui-ts/ts-text-common.md#属性-1)中，当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行修改、增加、删除菜单选项，实现动态更新菜单。
 
 本接口在与[selectionMenuOptions<sup>(deprecated)</sup>](#selectionmenuoptionsdeprecated)同时使用时，会使selectionMenuOptions<sup>(deprecated)</sup>不生效。
 
@@ -3547,10 +3554,8 @@ AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才�
 | enable  | boolean | 是   | 是否启用Web文本识别，true表示启用，false表示不启用。<br>传入undefined或null时属性重置为默认值。 |
 
 > **说明：** 
-> 
-> 当enableSelectedDataDetector未配置或设置为true，若已配置[selectedDataDetectorConfig](#selecteddatadetectorconfig22)属性，则以其types配置为准。
 >
-> 当enableSelectedDataDetector未配置或设置为true，且未配置[selectedDataDetectorConfig](#selecteddatadetectorconfig22)属性时，将遵循[dataDetectorConfig](#datadetectorconfig20)中types的配置；若[dataDetectorConfig](#datadetectorconfig20)也未配置，则默认识别所有类型。
+> 当enableSelectedDataDetector未配置或设置为true时，将遵循[dataDetectorConfig](#datadetectorconfig20)中types的配置；若[dataDetectorConfig](#datadetectorconfig20)也未配置，则默认识别所有类型。
 > 
 > 当enableSelectedDataDetector设置为false时，不激活实体文本选择AI菜单项。
 
@@ -3584,65 +3589,6 @@ AI菜单生效时，需在选中范围内，包括一个完整的AI实体，才�
   <body>
       <p> 电话：400-123-4567 </p>
       <p> 邮箱：example@example.com </p>
-  </body>
-  </html>
-  ```
-
-## selectedDataDetectorConfig<sup>22+</sup>
-
-selectedDataDetectorConfig(config: selectDataDetectorConfig)
-
-文本选择AI菜单项识别配置。
-
-[enableSelectedDataDetector](#enableselecteddatadetector22)未配置或设置为true时，selectedDataDetectorConfig的配置才能生效。
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**参数：** 
-
-| 参数名 | 类型                                                        | 必填 | 说明                                                         |
-| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| config | [selectDataDetectorConfig](../apis-arkui/arkui-ts/ts-text-common.md#selectdatadetectorconfig22对象说明) | 是   | 文本识别配置。|
-
-
-**示例：**
-
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
-
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Web({ src: $rawfile("index.html"), controller: this.controller })
-          .enableSelectedDataDetector(true)
-          .selectedDataDetectorConfig({
-            types: [
-              TextDataDetectorType.PHONE_NUMBER,
-              TextDataDetectorType.EMAIL
-            ]
-            }
-          )
-      }
-    }
-  }
-  ```
-加载的html文件
-  ```html
-  <!-- index.html -->
-  <!DOCTYPE html>
-  <html>
-  <head>
-      <title>selectedDataDetectorConfig示例</title>
-  </head>
-  <body>
-      <p> 电话：400-123-4567 </p>
-      <p> 邮箱：12345678901@example.com </p>
-      <p> 网址：www.example.com（此项不识别）</p>
   </body>
   </html>
   ```
@@ -3691,6 +3637,54 @@ gestureFocusMode(mode: GestureFocusMode)
   </head>
   <body>
     <input type="text" placeholder="Text">
+  </body>
+  </html>
+  ```
+
+## rotateRenderEffect<sup>22+</sup>
+
+rotateRenderEffect(effect: WebRotateEffect)
+
+设置Web组件旋转时，宽高动画过程中组件内容的填充方式。若未显式调用属性，默认保持动画终态的内容大小，内容始终与组件左上角对齐。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名              | 类型                              | 必填   | 说明          |
+| ------------------- | ------------------------------   | ------ | ------------- |
+| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect22) | 是     | 设置Web组件旋转时，宽高动画过程中组件内容的填充方式。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State effect: WebRotateEffect = WebRotateEffect.TOPLEFT_EFFECT;
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .rotateRenderEffect(this.effect)
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>测试网页</title>
+  </head>
+  <body>
+    <p>测试网页</p>
   </body>
   </html>
   ```
@@ -3857,13 +3851,81 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
             detectionMethods:[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]
           })
           .onDetectedBlankScreen((event: BlankScreenDetectionEventInfo)=>{
-            console.log(`Found blank screen on ${event.url}.`);
-            console.log(`The blank screen reason is ${event.blankScreenReason}.`);
-            console.log(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
+            console.info(`Found blank screen on ${event.url}.`);
+            console.info(`The blank screen reason is ${event.blankScreenReason}.`);
+            console.info(`The blank screen detail is ${event.blankScreenDetails?.detectedContentfulNodesCount}.`);
           })
       }
     }
   }
+  ```
+
+## enableImageAnalyzer<sup>23+</sup>
+
+enableImageAnalyzer(enable: boolean)
+
+设置是否启用网页图片AI分析，当前支持图片文字识别功能，该功能默认开启。
+
+> **说明：** 
+>
+> 长按或鼠标悬停在图片文字上时，触发图片AI分析，可以选中图片中的文字。能够触发分析的图片规格如下。
+>
+> - 图片的原始长宽均不小于100px。
+>
+> - 在[设备类型](../../quick-start/module-configuration-file.md#devicetypes标签)不为2in1的设备上，需要图片渲染宽度超过网页宽度的80%。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean | 是   | 是否启用网页图片AI分析，true表示启用，false表示不启用。<br>传入undefined或null时重置为true。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableImageAnalyzer(true) // 如果需要关闭图片分析能力，需要显式设置为false
+      }
+    }
+  }
+  ```
+
+  加载的html文件：
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .image-container {
+        width: 90%;
+      }
+      .image-container img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <!--example.jpg为html同目录下图片-->
+      <img src="example.jpg" alt="待AI分析的图片">
+    </div>
+  </body>
+  </html>
   ```
 
 ## password<sup>(deprecated)</sup>

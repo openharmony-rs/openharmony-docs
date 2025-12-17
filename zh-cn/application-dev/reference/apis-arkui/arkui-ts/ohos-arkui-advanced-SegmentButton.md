@@ -4,7 +4,7 @@
 <!--Owner: @xieziang-->
 <!--Designer: @youzhi92-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 分段按钮组件包含页签类分段按钮、胶囊类单选分段按钮和胶囊类多选分段按钮。
 
@@ -71,26 +71,26 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | 名称                  | 类型                                                         | 只读                                                     | 可选                                                     | 说明                                                       |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | type                    | “tab” \|“capsule”                                  | 否                                       | 否                                       | 分段按钮组件的类型。<br/>**说明：**<br/>'tab'：页签类分段按钮，适用于页面或内容区域的切换场景。<br/>'capsule'：胶囊类分段按钮，适用于单选或多选的选择场景。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| multiply                | boolean                                                      | 否                                                  | 否                                               | 分段按钮组件是否可以多选。<br/>true: 可多选；false: 不可多选。页签类分段按钮只支持单选，设置`multiply`为`true`不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| multiply                | boolean                                                      | 否                                                  | 否                                               | 分段按钮组件是否可以多选。<br/>true: 可多选；false: 不可多选。页签类分段按钮只支持单选，设置`multiply`为`true`不生效。<br/>值为undefined时，分段按钮不支持多选。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | buttons                 | [SegmentButtonItemOptionsArray](#segmentbuttonitemoptionsarray) | 否 | 否 | 分段按钮组件的按钮信息，包括图标和文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否              | 分段按钮组件的按钮未选中态的文本颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否               | 分段按钮组件的按钮选中态的文本颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮未选中态的字体大小，不支持百分比设置。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮选中态的字体大小，不支持百分比设置。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮未选中态的字体粗细。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮选中态的字体粗细。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的底板颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的按钮选中态底板颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否                     | 否                    | 分段按钮组件的图片尺寸。<br>**说明：**<br/>`imageSize`属性对仅图标按钮和图标+文本按钮生效，对仅文字按钮无效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的按钮内边距。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的文本内边距。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是             | 分段按钮组件的按钮内边距。<br>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`<br>图标+文本按钮默认值：`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是               | 文本内边距。<br/>默认值：0<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 分段按钮组件的布局方向。<br/>默认值：Direction.Auto<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 否              | 分段按钮组件的背景模糊材质。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否              | 分段按钮组件的按钮未选中态的文本颜色。<br/>值为undefined时，颜色为$r('sys.color.ohos_id_color_text_secondary')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否               | 分段按钮组件的按钮选中态的文本颜色。<br/>值为undefined时，type为"tab"时，颜色为`$r('sys.color.ohos_id_color_text_primary')`。<br/>type为"capsule"时，颜色为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮未选中态的字体大小，不支持百分比设置。<br/>值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 否           | 分段按钮组件的按钮选中态的字体大小，不支持百分比设置。<br/>值为undefined时，字体大小为$r('sys.float.ohos_id_text_size_body2')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮未选中态的字体粗细。<br/>值为undefined时，字体粗细为FontWeight.Regular。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 否             | 分段按钮组件的按钮选中态的字体粗细。<br/>值为undefined时，字体粗细为FontWeight.Medium。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的底板颜色。<br/>值为undefined时，背板颜色为$r('sys.color.ohos_id_color_button_normal')。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 否                | 分段按钮组件的按钮选中态底板颜色。<br/>值为undefined时，type为"tab"时，底板颜色为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>type为"capsule"时，底板颜色为`$r('sys.color.ohos_id_color_emphasize')`。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否                     | 否                    | 分段按钮组件的图片尺寸。<br>值为undefined时，图片尺寸为{ width: 24, height: 24 }。<br>**说明：**<br/>`imageSize`属性对仅图标按钮和图标+文本按钮生效，对仅文字按钮无效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的按钮内边距。<br>值为undefined时，仅图标按钮和仅文字按钮内边距：`{ top: 4, right: 8, bottom: 4, left: 8 }`<br/>图标+文本按钮内边距：`{ top: 6, right: 8, bottom: 6, left: 8 }<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 否 | 分段按钮组件的文本内边距。<br/>值为undefined时，文本内边距为0。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是             | 分段按钮组件的按钮内边距。<br>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`<br>图标+文本按钮默认值：`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是               | 文本内边距。<br/>默认值：0<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 分段按钮组件的布局方向。<br/>默认值：Direction.Auto<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 否              | 分段按钮组件的背景模糊材质。<br/>值为undefined时，背景模糊材质为BlurStyle.NONE。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -188,24 +188,24 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 
 | 名称                  | 类型                                                         | 只读                                                     | 可选                                                     | 说明                                                       |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 按钮未选中态的文本颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_secondary')<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 按钮选中态的文本颜色。<br/>默认值：<br>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_text_primary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 是            | 按钮未选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 是            | 按钮选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 是              | 按钮未选中态的字体粗细。<br/>默认值：FontWeight.Regular<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 是              | 按钮选中态的字体粗细。<br/>默认值：FontWeight.Medium<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 底板颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 按钮选中态的底板颜色。<br/>默认值：<br>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否                     | 是                     | 图片尺寸。<br>默认值：{ width: 24, height: 24 }<br/>**说明：**<br/>`imageSize`属性仅对图标按钮和图标+文本按钮生效，对纯文本按钮无效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 按钮内边距。<br/>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: 4, right: 8, bottom: 4, left: 8 }`<br>图标+文本按钮默认值：`{ top: 6, right: 8, bottom: 6, left: 8 }`<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 文本内边距。<br/>默认值：0<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是               | 按钮内边距。<br/>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`<br>图标+文本按钮默认值：`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是               | 文本内边距。<br/>默认值：0<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 布局方向。<br/>默认值：Direction.Auto<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 是               | 背景模糊材质。<br/>默认值：BlurStyle.NONE<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| fontColor               | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 按钮未选中态的文本颜色。<br/>默认值：$r('sys.color.ohos_id_color_text_secondary')<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedFontColor       | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 按钮选中态的文本颜色。<br/>默认值：<br>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_text_primary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fontSize                | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 是            | 按钮未选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedFontSize        | [DimensionNoPercentage](#dimensionnopercentage)              | 否            | 是            | 按钮选中态的字体大小（不支持百分比设置）。<br/>默认值：$r('sys.float.ohos_id_text_size_body2')<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| fontWeight              | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 是              | 按钮未选中态的字体粗细。<br/>默认值：FontWeight.Regular<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | 否              | 是              | 按钮选中态的字体粗细。<br/>默认值：FontWeight.Medium<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 底板颜色。<br/>默认值：$r('sys.color.ohos_id_color_button_normal')<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | 否                 | 是                 | 按钮选中态的底板颜色。<br/>默认值：<br>type为"tab"时，默认值为`$r('sys.color.ohos_id_color_foreground_contrary')`。<br/>type为"capsule"时，默认值为`$r('sys.color.ohos_id_color_emphasize')`。<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | 否                     | 是                     | 图片尺寸。<br>默认值：{ width: 24, height: 24 }<br/>值为undefined时，按默认值处理。<br>**说明：**<br/>`imageSize`属性仅对图标按钮和图标+文本按钮生效，对纯文本按钮无效果。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 按钮内边距。<br/>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: 4, right: 8, bottom: 4, left: 8 }`<br>图标+文本按钮默认值：`{ top: 6, right: 8, bottom: 6, left: 8 }`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | 否 | 是 | 文本内边距。<br/>默认值：0<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是               | 按钮内边距。<br/>默认值：<br>仅图标按钮和仅文字按钮默认值：`{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`<br>图标+文本按钮默认值：`{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| localizedTextPadding<sup>12+</sup>   | [LocalizedPadding](ts-types.md#localizedpadding12)                 | 否               | 是               | 文本内边距。<br/>默认值：0<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction)                                             | 否                                           | 是                                           | 布局方向。<br/>默认值：Direction.Auto<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| backgroundBlurStyle     | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)                 | 否               | 是               | 背景模糊材质。<br/>默认值：BlurStyle.NONE<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | 否 | 是 | 边框圆角模式，用于控制圆角计算方式。<br/>默认值：BorderRadiusMode.DEFAULT<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮整体容器的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，此属性不生效，需要用itemBorderRadius配置圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_container_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否 | 是 | 分段按钮中按钮项的边框圆角半径。<br/>**说明：**<br/>此属性仅在borderRadiusMode为BorderRadiusMode.CUSTOM时生效。<br/>对于胶囊类多选按钮(type为'capsule'且multiply为true)，只能控制两端的选项圆角。<br/>圆角大小受组件尺寸限制，最大值为组件宽或高的一半，不支持百分比设置。<br/>默认值：`$r('sys.float.segmentbutton_selected_background_shape')`<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## BorderRadiusMode<sup>20+</sup>
 
@@ -253,7 +253,7 @@ type DimensionNoPercentage = PX | VP | FP | LPX | Resource
 | 名称      | 类型                                              | 只读 | 可选 | 说明                        |
 | -------- | ------------------------------------------------- | ---- | ----------------------------- | ----------------------------- |
 | buttons  | [SegmentButtonItemTuple](#segmentbuttonitemtuple) | 否 | 否  | 按钮信息。                    |
-| multiply | boolean                                           | 否  | 是  | 是否可以多选。<br>默认值：false<br>true表示可以多选，false表示不可以多选。 |
+| multiply | boolean                                           | 否  | 是  | 是否可以多选。<br>默认值：false<br>值为undefined时，按默认值处理。<br>true表示可以多选，false表示不可以多选。 |
 
 ## ItemRestriction
 
@@ -319,7 +319,7 @@ type SegmentButtonItemArray = Array\<SegmentButtonTextItem> | Array\<SegmentButt
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息。
+> SegmentButtonItemOptionsArray仅支持保存2到5个按钮信息元素。
 
 ### constructor
 
@@ -367,7 +367,7 @@ push(...items: SegmentButtonItemArray): number
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息。若超过按钮数量个数的限制，此方法将无效。
+>分段按钮组件数组仅支持保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，添加按钮信息元素失败。
 
 ### pop
 
@@ -389,7 +389,7 @@ pop(): SegmentButtonItemOptions | undefined
 
 >**说明：**
 >
->分段按钮组件仅支持2到5个按钮，SegmentButtonItemOptionsArray只保存2到5个按钮信息，若超过按钮信息个数限制，此方法将无效。
+>分段按钮组件数组仅支持保存2到5个按钮信息，若移除后按钮组件数量不在个数限制范围内，移除按钮信息元素失败。 
 
 ### shift
 
@@ -411,13 +411,13 @@ shift(): SegmentButtonItemOptions | undefined
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息，若超过按钮信息个数限制时，此方法将无效。
+>分段按钮组件数组仅支持保存2到5个按钮信息，若移除后按钮组件数量不在个数限制范围内，移除按钮信息元素失败。 
 
 ### unshift
 
 unshift(...items: SegmentButtonItemArray): number
 
-在数组开头添加新的元素，返回添加元素后数组的长度。
+在数组开头添加一个新的元素，返回添加元素后数组的长度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -440,7 +440,7 @@ unshift(...items: SegmentButtonItemArray): number
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息，若超过按钮信息个数限制，此方法将无效。
+>分段按钮组件数组仅支持保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，添加按钮信息元素失败。 
 
 ### splice
 
@@ -471,7 +471,7 @@ splice(start: number, deleteCount: number, ...items: SegmentButtonItemOptions[])
 
 >**说明：**
 >
->分段按钮组件支持2到5个按钮，SegmentButtonItemOptionsArray保存2到5个按钮信息，若超过按钮信息个数限制，此方法将无效。
+>分段按钮组件数组仅保存2到5个按钮信息，若超过分段按钮组件数量个数的限制，不再删除和替换按钮信息元素。
 
 ### create
 
@@ -537,8 +537,8 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 | 名称 | 类型                                   | 只读 | 可选 | 说明      |
 | ---- | -------------------------------------- | ---- | ---------- | ---------- |
 | text | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 按钮文本。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| accessibilityLevel<sup>13+</sup> | string | 否  | 是  | 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，为用户解释组件操作，设置详细解释文本，帮助用户理解操作后果。若组件有文本和无障碍说明，选中时先播报文本，再播报无障碍说明。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| accessibilityLevel<sup>13+</sup> | string | 否  | 是  | 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，为用户解释组件操作，设置详细解释文本，帮助用户理解操作后果。若组件有文本和无障碍说明，选中时先播报文本，再播报无障碍说明。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
 ## SegmentButtonIconItem
 
@@ -550,12 +550,12 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 |名称      | 类型                                   | 只读 | 可选 | 说明               |
 | ------------ | -------------------------------------- | ---- | -------------------- | -------------------- |
-| icon         | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 未选中态的按钮图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 选中态的按钮图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| accessibilityLevel<sup>13+</sup> | string | 否  | 是  | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。   |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| icon         | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 未选中态的按钮图标。<br/>值为undefined时，不显示图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 选中态的按钮图标。<br/>值为undefined时，不显示图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| accessibilityLevel<sup>13+</sup> | string | 否  | 是  | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
 >**说明：**
 >
@@ -571,13 +571,13 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 | 名称         | 类型                                   | 只读 | 可选 | 说明                 |
 | ------------ | -------------------------------------- | ---- | -------------------- | -------------------- |
-| icon         | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 未选中态的按钮图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 选中态的按钮图标。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。   |
-| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| text         | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 按钮文本。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
-| accessibilityLevel<sup>13+</sup> | string | 否  | 是  | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。   |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| icon         | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 未选中态的按钮图标。<br/>值为undefined时，不显示图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 选中态的按钮图标。<br/>值为undefined时，不显示图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| text         | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 按钮文本。<br/>值为undefined时，不显示文本内容。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| accessibilityLevel<sup>13+</sup> | string | 否  | 是  | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
 >**说明：**
 >
@@ -597,13 +597,13 @@ static create(elements: SegmentButtonItemTuple): SegmentButtonItemOptionsArray
 
 | 名称         | 类型                                   | 只读 | 可选 | 说明                 |
 | ------------ | -------------------------------------- | ---- | -------------------- | -------------------- |
-| icon         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态的按钮图标。<br/>默认值：不显示未选中态的按钮图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态的按钮图标。<br/>默认值：不显示选中态按钮图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| text         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 按钮文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| accessibilityLevel<sup>13+</sup> | string | 否  | 是  | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。   |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| icon         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态的按钮图标。<br/>默认值：不显示未选中态的按钮图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态的按钮图标。<br/>默认值：不显示选中态按钮图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| text         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 按钮文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| accessibilityLevel<sup>13+</sup> | string | 否  | 是  | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -634,13 +634,13 @@ constructor(options: SegmentButtonItemOptionsConstructorOptions)
 
 | 名称         | 类型                                   | 只读 | 可选 | 说明              |
 | ------------ | -------------------------------------- | ---- | -------------------- | -------------------- |
-| icon         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态的按钮图标。<br/>默认值：不显示未选中态的按钮图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态的按钮图标。<br/>默认值：不显示选中态的按钮图标。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| text         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 按钮文本。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| accessibilityLevel<sup>13+</sup> | string | 否 | 是  | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。   |
-| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：空字符串。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| icon         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态的按钮图标。<br/>默认值：不显示未选中态的按钮图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| iconAccessibilityText<sup>13+</sup>         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 未选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态的按钮图标。<br/>默认值：不显示选中态的按钮图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| selectedIconAccessibilityText<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 选中态按钮图标的无障碍文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| text         | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 按钮文本。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| accessibilityLevel<sup>13+</sup> | string | 否 | 是  | 无障碍重要性，用于控制当前组件是否可被无障碍辅助服务所识别。<br/>支持的值为:<br/>"auto"：当前组件可被无障碍辅助服务所识别。<br/>"yes"：当前组件可被无障碍辅助服务所识别。<br/>"no"：当前组件不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br/>默认值："auto"<br/>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| accessibilityDescription<sup>13+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否  | 是  | 无障碍说明，用于为用户进一步说明当前组件，开发人员可为组件的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从组件本身属性与无障碍文本中了解到时。若组件既拥有文本属性又拥有无障碍说明属性，则组件被选中时，先播报组件的文本属性，再播报无障碍说明属性的内容。<br/>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 

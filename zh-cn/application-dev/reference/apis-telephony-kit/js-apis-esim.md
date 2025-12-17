@@ -19,7 +19,7 @@ eSIM卡管理模块提供了eSIM卡管理的基础能力，包括获取指定卡
 import { eSIM } from '@kit.TelephonyKit';
 ```
 
-## eSIM.isSupported<sup>18+</sup>
+## eSIM.isSupported
 
 isSupported\(slotId: number\): boolean
 
@@ -54,11 +54,11 @@ isSupported\(slotId: number\): boolean
 ```ts
 import { eSIM } from '@kit.TelephonyKit';
 
-let isSupported: boolean = eSIM.isSupported(0);
-console.log(`the esim is Supported:` + isSupported);
+let isSupported: boolean = eSIM.isSupported(1);
+console.info(`the esim is Supported:` + isSupported);
 ```
 
-## eSIM.addProfile<sup>18+</sup>
+## eSIM.addProfile
 
 addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
@@ -72,7 +72,7 @@ addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
 | 参数名 | 类型                                            | 必填 | 说明                                   |
 | ------ |-----------------------------------------------| ---- | -------------------------------------- |
-| profile | [DownloadableProfile](#downloadableprofile18) | 是   | 可下载的配置文件信息。 |
+| profile | [DownloadableProfile](#downloadableprofile) | 是   | 可下载的配置文件信息。 |
 
 **返回值：**
 
@@ -110,13 +110,13 @@ let profile: eSIM.DownloadableProfile = {
 };
 
 eSIM.addProfile(profile).then(() => {
-    console.log(`addProfile invoking succeeded.`);
-}).catch((err: BusinessError) => {
+    console.info(`addProfile invoking succeeded.`);
+}).catch((err: BusinessError<void>) => {
     console.error(`addProfile, promise: err->${JSON.stringify(err)}`);
 });
 ```
 
-## DownloadableProfile<sup>18+</sup>
+## DownloadableProfile
 
 可下载的配置文件。
 

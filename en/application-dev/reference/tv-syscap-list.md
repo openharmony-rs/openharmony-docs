@@ -1,4 +1,4 @@
-# SystemCapability List
+# TV
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->

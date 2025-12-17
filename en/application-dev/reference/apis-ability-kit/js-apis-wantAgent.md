@@ -820,13 +820,13 @@ wantAgent.getWantAgent({
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name          | Type                          | Mandatory| Description                   |
-| -------------- | ------------------------------ | ---- | ---------------------- |
-| info           | WantAgent                       | Yes  | A triggered WantAgent object.      |
-| want           | Want                            | Yes  | An existing triggered Want.    |
-| finalCode      | number                          | Yes  | Request code that triggers the WantAgent object.|
-| finalData      | string                          | Yes  | Final data collected by the common event. |
-| extraInfo      | { [key: string]: any }            | No  | Extra information.              |
+| Name          | Type                          | Read-Only| Optional| Description               |
+| -------------- | ----------------------------- | ---- | ---- | ------------------ |
+| info           | WantAgent                       | No  | No  | A triggered WantAgent object.      |
+| want           | Want                            | No  | No  | An existing triggered Want.    |
+| finalCode      | number                          | No  | No  | Request code that triggers the WantAgent object.|
+| finalData      | string                          | No  | No  | Final data collected by the common event. |
+| extraInfo      | { [key: string]: any }          | No  | Yes  | Extra information.              |
 
 ## WantAgent
 

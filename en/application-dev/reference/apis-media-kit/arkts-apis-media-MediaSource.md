@@ -65,7 +65,7 @@ let uuid: number = 1;
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 
 let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLoadingRequest) => {
-  console.log(`Opening resource: ${request.url}`);
+  console.info(`Opening resource: ${request.url}`);
   // Open the resource and return a unique handle, ensuring the mapping between the UUID and request.
   uuid += 1;
   requests.set(uuid, request);
@@ -73,12 +73,12 @@ let sourceOpenCallback: media.SourceOpenCallback = (request: media.MediaSourceLo
 };
 
 let sourceReadCallback: media.SourceReadCallback = (uuid: number, requestedOffset: number, requestedLength: number) => {
-  console.log(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
+  console.info(`Reading resource with handle ${uuid}, offset: ${requestedOffset}, length: ${requestedLength}`);
   // Check whether the UUID is valid and store the read request. Avoid blocking the request while pushing data and header information.
 };
 
 let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
-  console.log(`Closing resource with handle ${uuid}`);
+  console.info(`Closing resource with handle ${uuid}`);
   // Clear resources related to the current UUID.
   requests.remove(uuid);
 };

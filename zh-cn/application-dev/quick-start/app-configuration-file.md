@@ -6,12 +6,24 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
+应用级配置文件，包含应用的全局配置信息和特定设备类型的配置信息，用于向编译工具、操作系统和应用市场提供应用的基本信息。每个工程下必须包含一个app.json5配置文件，文件所在目录为`工程名称/AppScope/app.json5`。
+
+>
+> **说明：**
+>
+> 配置文件中的示例代码直接拷贝到工程中可能编译不通过，请开发者根据需求进行配置。例如：通过$符号引用的资源文件如果工程中不存在，需要开发者手动添加或替换为实际的资源文件。
+>
+> 配置文件中，字段可以重复，以最后一个配置为准。
+>
+
 ## 配置文件示例
 
 
-先通过一个示例，整体认识一下app.json5配置文件。
+先通过一个示例，了解app.json5配置文件的结构和内容。
 
-```json
+<!-- @[app_json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
     "bundleName": "com.application.myapplication",
@@ -27,8 +39,6 @@
     "car": {
       "minAPIVersion": 8
     },
-    "targetBundleName": "com.application.test",
-    "targetPriority": 50,
     "appEnvironments": [
       {
         "name":"name1",
@@ -37,7 +47,7 @@
     ],
     "maxChildProcess": 5,
     "multiAppMode": {
-      "multiAppModeType": "multiInstance",
+      "multiAppModeType": "appClone",
       "maxCount": 5
     },
     "hwasanEnabled": false,
@@ -54,6 +64,7 @@
   }
 }
 ```
+
 ## 配置文件标签
 
 app.json5配置文件包含以下标签。
@@ -113,15 +124,19 @@ app.json5配置文件包含以下标签。
 
 appEnvironments标签示例：
 
-```json
+<!-- @[app_json5_appEnvironments](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
+    // ...
     "appEnvironments": [
       {
         "name":"name1",
         "value": "value1"
       }
-    ]
+    ],
+    // ...
   }
 }
 ```
@@ -139,13 +154,17 @@ appEnvironments标签示例：
 
 multiAppMode标签示例：
 
-```json
+<!-- @[app_json5_multiAppMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
+    // ...
     "multiAppMode": {
       "multiAppModeType": "appClone",
       "maxCount": 5
-    }
+    },
+    // ...
   }
 }
 ```
@@ -156,10 +175,14 @@ multiAppMode标签示例：
 
 configuration标签示例：
 
-```json
+<!-- @[app_json5_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppConfigurationFile/AppScope/app.json5) -->
+
+``` JSON5
 {
   "app": {
-    "configuration": "$profile:configuration"  
+    // ...
+    "configuration": "$profile:configuration",
+    // ...
   }
 }
 ```
@@ -171,7 +194,7 @@ configuration标签示例：
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
 | fontSizeScale | 应用字体大小是否跟随系统，支持的取值如下：<br/>-&nbsp;followSystem：跟随系统。<br/>-&nbsp;nonFollowSystem：不跟随系统。| 字符串 | 该标签可缺省，缺省值为nonFollowSystem。 |
-| fontSizeMaxScale | 应用字体大小选择跟随系统后，配置的应用字体最大放大倍数，支持的取值为：1、1.15、1.3、1.45、1.75、2、3.2。	 <br/> 例如配置应用字体最大放大倍数为1.75，系统字体标准大小为10fp。<br/>（1）如果设置中调整系统字体放大倍数为1.5倍，应用会跟随系统一起调整为15fp。<br/>（2）如果设置中调整系统字体放大倍数为2倍，此时系统的字体大小为20fp，但由于应用配置的最大放大倍数为1.75，所以此时应用的字体大小为17.5fp。 <br/> **说明**<br/> fontSizeScale为nonFollowSystem时，该项不生效。 | 字符串 | 该标签可缺省，缺省值为3.2。 |
+| fontSizeMaxScale | 应用字体大小选择跟随系统后，配置的应用字体最大放大倍数，支持的取值为：1、1.15、1.3、1.45、1.75、2、3.2。 <br/> 例如配置应用字体最大放大倍数为1.75，系统字体标准大小为10fp。<br/>（1）如果设置中调整系统字体放大倍数为1.5倍，应用会跟随系统一起调整为15fp。<br/>（2）如果设置中调整系统字体放大倍数为2倍，此时系统的字体大小为20fp，但由于应用配置的最大放大倍数为1.75，所以此时应用的字体大小为17.5fp。 <br/> **说明**<br/> fontSizeScale为nonFollowSystem时，该项不生效。 | 字符串 | 该标签可缺省，缺省值为3.2。 |
 
 configuration标签示例：
 

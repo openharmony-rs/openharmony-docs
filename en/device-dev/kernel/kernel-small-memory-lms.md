@@ -34,7 +34,7 @@ LMS uses shadow memory mapping to mark the system memory state. There are three 
 
 ### Kernel Mode
 
-The LMS module of the OpenHarmony LiteOS-A kernel provides the following APIs. For more details, see [API reference](https://gitee.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_lms.h).
+The LMS module of the OpenHarmony LiteOS-A kernel provides the following APIs. For more details, see [API reference](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/kernel/include/los_lms.h).
 
   **Table 1** APIs of the LMS module
 
@@ -259,7 +259,7 @@ The key output information is as follows:
 
 ### User-Mode Development Process
 
-Add the following to the app build script to be checked. For details about the sample code, see [/kernel/liteos_a/apps/lms/BUILD.gn](https://gitee.com/openharmony/kernel_liteos_a/blob/master/apps/lms/BUILD.gn).
+Add the following to the app build script to be checked. For details about the sample code, see [/kernel/liteos_a/apps/lms/BUILD.gn](https://gitcode.com/openharmony/kernel_liteos_a/blob/master/apps/lms/BUILD.gn).
 
 
 ```

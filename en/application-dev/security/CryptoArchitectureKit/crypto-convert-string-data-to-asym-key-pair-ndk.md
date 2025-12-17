@@ -16,8 +16,6 @@ This topic walks you through on how to convert a string in PEM format into an RS
 > - The public key must comply with X.509 specifications, PKCS\#1 specifications, and PEM encoding format.
 >
 > - The private key must comply with the PKCS\#8, PKCS\#1 specifications, and the PEM encoding format.
->
-> - Currently, only RSA asymmetric keys can be converted.
 
 ## Adding the Dynamic Library in the CMake Script
 ```txt

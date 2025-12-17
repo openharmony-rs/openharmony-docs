@@ -4,7 +4,11 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
+
+```
+typedef ArkUI_GestureRecognizerHandle* ArkUI_GestureRecognizerHandleArray
+```
 
 ## 概述
 

@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoDigest OH_CryptoDigest
+```
+
 ## 概述
 
 定义摘要结构体。

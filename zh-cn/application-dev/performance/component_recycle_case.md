@@ -281,7 +281,7 @@ export struct OneMomentNoModifier {
 正例：
 
 ```typescript
-import { AttributeUpdater } from '@ohos.arkui.modifier';
+import { AttributeUpdater } from "@kit.ArkUI";
 
 export class MyTextUpdater extends AttributeUpdater<TextAttribute> {
   private color: string | number | Resource = "";

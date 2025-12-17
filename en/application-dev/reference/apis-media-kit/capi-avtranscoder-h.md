@@ -187,7 +187,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | Pointer to an OH_AVTranscoder_Config instance, which is created by running [OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create).|
-| const char *mimeType | Pointer to the encoding format of the output video. For details, see [native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#variables).|
+| const char *mimeType | Pointer to the encoding format of the output video. For details, see [native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
@@ -219,7 +219,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | Pointer to an OH_AVTranscoder_Config instance, which is created by running [OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create).|
-| const char *mimeType | Pointer to the encoding format of the output audio. For details, see [native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#variables).|
+| const char *mimeType | Pointer to the encoding format of the output audio. For details, see [native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
@@ -251,7 +251,7 @@ This function must be called before [OH_AVTranscoder_Prepare](#oh_avtranscoder_p
 | Name| Description|
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | Pointer to an OH_AVTranscoder_Config instance, which is created by running [OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create).|
-| [OH_AVOutputFormat](../apis-avcodec-kit/_codec_base.md#oh_avoutputformat-1) mimeType | Container format of the output video. For details, see [native_avcodec_base.h](../apis-avcodec-kit/native__avcodec__base_8h.md#variables).|
+| [OH_AVOutputFormat](../apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avoutputformat) mimeType | Container format of the output video. For details, see [native_avcodec_base.h](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 

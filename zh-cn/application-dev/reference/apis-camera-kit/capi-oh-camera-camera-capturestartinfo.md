@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Camera_CaptureStartInfo {...} Camera_CaptureStartInfo
+```
+
 ## 概述
 
 拍照开始信息。

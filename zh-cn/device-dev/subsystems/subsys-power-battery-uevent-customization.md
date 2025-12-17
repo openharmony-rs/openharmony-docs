@@ -22,7 +22,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 本文以RK3568开发板为例，介绍uevent事件的定制方法。
 
-1. 修改[HDI层电池服务配置文件夹中的battery_config.json](https://gitee.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile)与[service层电池服务配置文件夹中的battery_config.json](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile)定制后的uevent事件配置如下：
+1. 修改[HDI层电池服务配置文件夹中的battery_config.json](https://gitcode.com/openharmony/drivers_peripheral/tree/master/battery/interfaces/hdi_service/profile)与[service层电池服务配置文件夹中的battery_config.json](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile)定制后的uevent事件配置如下：
 
     ```json
     {
@@ -68,7 +68,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 调测验证 
 
-1. 更改[uevent接收代码](https://gitee.com/openharmony/drivers_peripheral/blob/master/battery/interfaces/hdi_service/src/battery_thread.cpp),强制接收配置文件中的uevent事件BATTERY_UNDER_VOLTAGE=1：
+1. 更改[uevent接收代码](https://gitcode.com/openharmony/drivers_peripheral/blob/master/battery/interfaces/hdi_service/src/battery_thread.cpp),强制接收配置文件中的uevent事件BATTERY_UNDER_VOLTAGE=1：
    ```c++
     void BatteryThread::UeventCallback(void* service)
     {
@@ -104,7 +104,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 4. 设备启动后接收到uevent时关机。
     
 ## 参考 
-开发过程中可参考的配置文件路径：[uevent事件配置源码路径](https://gitee.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile/) 
+开发过程中可参考的配置文件路径：[uevent事件配置源码路径](https://gitcode.com/openharmony/powermgr_battery_manager/tree/master/services/native/profile/) 
 
 默认配置：
 

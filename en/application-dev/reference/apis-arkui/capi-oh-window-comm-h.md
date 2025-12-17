@@ -30,6 +30,9 @@ The file declares the common enums and definitions of the window manager.
 | [OH_PixelmapNative](capi-struct.md) | OH_PixelmapNative | Describes the pixel image information.|
 | [WindowManager_WindowProperties](capi-windowmanager-windowproperties.md) | WindowManager_WindowProperties | Describes the window properties.|
 | [WindowManager_AvoidArea](capi-windowmanager-avoidarea.md) | WindowManager_AvoidArea | Describes the avoid area.|
+| [WindowManager_MainWindowInfo](capi-windowmanager-windowmanager-mainwindowinfo.md) | WindowManager_MainWindowInfo | Describes the main window information.|
+| [WindowManager_WindowSnapshotConfig](capi-windowmanager-windowmanager-windowsnapshotconfig.md) | WindowManager_WindowSnapshotConfig | Describes the configuration of the main window screenshot.|
+
 
 ### Enums
 

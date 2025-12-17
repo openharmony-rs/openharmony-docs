@@ -22,13 +22,16 @@
 
 1. 在UIAbility中调用[eventHub.on()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhubon)方法注册一个自定义事件“event1”，eventHub.on()有如下两种调用方式，使用其中一种即可。
 
-    ```ts
+    <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    import { UIAbility, Context, Want, AbilityConstant } from '@kit.AbilityKit';
-
-    const DOMAIN_NUMBER: number = 0xFF00;
+    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+    // ···
+    
+    const DOMAIN = 0x0000;
     const TAG: string = '[EventAbility]';
-
+    
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 获取eventHub
@@ -38,25 +41,28 @@
         eventhub.on('event1', (data: string) => {
           // 触发事件，完成相应的业务操作
         });
-        hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onCreate');
+        hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onCreate');
       }
-
-      // ...
-      eventFunc(argOne: Context, argTwo: Context): void {
-        hilog.info(DOMAIN_NUMBER, TAG, '1. ' + `${argOne}, ${argTwo}`);
+    
+      eventFunc(argOne: object, argTwo: object): void {
+        hilog.info(DOMAIN, TAG, '1. ' + `${argOne}, ${argTwo}`);
         return;
       }
+    
+    // ···
     }
     ```
 
 2. 在UI中通过[eventHub.emit()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhubemit)方法触发该事件，在触发事件的同时，根据需要传入参数信息。
 
-    ```ts
+    <!-- @[EventHubPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/pages/EventHubPage.ets) -->
+
+    ``` TypeScript
     import { common } from '@kit.AbilityKit';
 
     @Entry
     @Component
-    struct Page_EventHub {
+    struct EventHubPage {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
       eventHubFunc(): void {
@@ -71,11 +77,10 @@
 
       build() {
         Column() {
-          // ...
           List({ initialIndex: 0 }) {
             ListItem() {
               Row() {
-                // ...
+                // ···
               }
               .onClick(() => {
                 this.eventHubFunc();
@@ -83,12 +88,12 @@
                   message: 'EventHubFuncA'
                 });
               })
+            // ···
             }
 
-            // ...
             ListItem() {
               Row() {
-                // ...
+                // ···
               }
               .onClick(() => {
                 this.context.eventHub.off('event1');
@@ -96,12 +101,12 @@
                   message: 'EventHubFuncB'
                 });
               })
+            // ···
             }
-            // ...
           }
-          // ...
+        // ···
         }
-        // ...
+        // ···
       }
     }
     ```
@@ -116,14 +121,21 @@
    
 4. 在自定义事件“event1”使用完成后，可以根据需要调用[eventHub.off()](../reference/apis-ability-kit/js-apis-inner-application-eventHub.md#eventhuboff)方法取消该事件的订阅。
 
-    ```ts
+    <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    
+    ``` TypeScript
+    // ···
     import { UIAbility } from '@kit.AbilityKit';
-
+    // ···
+    
     export default class EntryAbility extends UIAbility {
-      // ... 
+    // ···
+    
       onDestroy(): void {
         this.context.eventHub.off('event1');
       }
+    
+    // ···
     }
     ```
 

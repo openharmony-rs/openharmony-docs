@@ -109,7 +109,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -156,7 +156,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -203,7 +203,7 @@ on(type: 'appForegroundState', observer: AppForegroundStateObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -255,7 +255,7 @@ on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bun
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -306,7 +306,7 @@ off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -370,7 +370,7 @@ off(type: 'abilityFirstFrameState', observer?: AbilityFirstFrameStateObserver): 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -495,7 +495,7 @@ try {
 
 getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 
-获取当前所有前台应用的信息。该应用信息由[AppStateData](js-apis-inner-application-appStateData.md)定义。
+获取当前所有前台应用的信息。该应用信息由[AppStateData](js-apis-inner-application-appStateData.md)定义。使用callback异步回调。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -516,7 +516,7 @@ getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -547,7 +547,7 @@ try {
 
 getForegroundApplications(): Promise\<Array\<AppStateData>>
 
-获取当前所有前台应用的信息。该应用信息由[AppStateData](js-apis-inner-application-appStateData.md)定义。
+获取当前所有前台应用的信息。该应用信息由[AppStateData](js-apis-inner-application-appStateData.md)定义。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -568,7 +568,7 @@ getForegroundApplications(): Promise\<Array\<AppStateData>>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -620,7 +620,7 @@ killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -684,7 +684,7 @@ killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: bo
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -743,7 +743,7 @@ killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCal
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -771,7 +771,7 @@ appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountC
 
 killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
 
-通过Bundle名称终止进程。
+通过Bundle名称终止进程。使用callback异步回调。
 
 **需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -793,7 +793,7 @@ killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -826,7 +826,7 @@ try {
 
 killProcessesByBundleName(bundleName: string): Promise\<void>
 
-通过Bundle名称终止进程。
+通过Bundle名称终止进程。使用Promise异步回调。
 
 **需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
@@ -853,7 +853,7 @@ killProcessesByBundleName(bundleName: string): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -882,7 +882,7 @@ try {
 
 clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>)
 
-通过Bundle名称清除应用数据。
+通过Bundle名称清除应用数据。使用callback异步回调。
 
 **需要权限**：ohos.permission.CLEAN_APPLICATION_DATA
 
@@ -904,7 +904,7 @@ clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>)
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -937,7 +937,7 @@ try {
 
 clearUpApplicationData(bundleName: string): Promise\<void>
 
-通过Bundle名称清除应用数据。
+通过Bundle名称清除应用数据。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLEAN_APPLICATION_DATA
 
@@ -964,7 +964,7 @@ clearUpApplicationData(bundleName: string): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -993,7 +993,7 @@ try {
 
 getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
 
-通过pid查询对应进程占用的内存大小。
+通过pid查询对应进程占用的内存大小。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1012,7 +1012,7 @@ getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1044,7 +1044,7 @@ try {
 
 getProcessMemoryByPid(pid: number): Promise\<number>
 
-通过pid查询对应进程占用的内存大小。
+通过pid查询对应进程占用的内存大小。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1068,7 +1068,7 @@ getProcessMemoryByPid(pid: number): Promise\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1097,7 +1097,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-通过bundleName获取有关运行进程的信息。
+通过bundleName获取有关运行进程的信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1116,7 +1116,7 @@ getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<A
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1148,7 +1148,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessInformation>>
 
-通过bundleName获取有关运行进程的信息。
+通过bundleName获取有关运行进程的信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1172,7 +1172,7 @@ getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessIn
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1201,7 +1201,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-通过bundleName和userId获取有关运行进程的信息。
+通过bundleName和userId获取有关运行进程的信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1221,7 +1221,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1254,7 +1254,7 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<Array\<ProcessInformation>>
 
-通过bundleName和userId获取有关运行进程的信息。
+通过bundleName和userId获取有关运行进程的信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1279,7 +1279,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1309,7 +1309,7 @@ try {
 
 isApplicationRunning(bundleName: string): Promise\<boolean>
 
-查询单个应用是否正在运行。使用Promise异步回调。
+查询所有用户下指定包名的应用是否正在运行。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1327,7 +1327,7 @@ isApplicationRunning(bundleName: string): Promise\<boolean>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<boolean> | Promise对象。返回true表示查询的应用正在运行，返回false表示查询的应用没有运行。 |
+| Promise\<boolean> | Promise对象。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。 |
 
 **错误码**：
 
@@ -1336,7 +1336,7 @@ isApplicationRunning(bundleName: string): Promise\<boolean>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1359,7 +1359,7 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-查询单个应用是否正在运行。使用callback异步回调。
+查询所有用户下指定包名的应用是否正在运行。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -1371,8 +1371,8 @@ isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): voi
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| bundleName    | string   | 是    | 表示要查询的共享库包名。 |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示查询的应用正在运行，返回false表示查询的应用没有运行。 |
+| bundleName    | string   | 是    | 表示要查询的应用的包名。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。返回true表示至少存在一个用户正在运行指定包名的应用，返回false表示所有用户下指定包名的应用都没有运行。|
 
 **错误码**：
 
@@ -1381,7 +1381,7 @@ isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): voi
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1549,7 +1549,7 @@ try {
 
 getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
-根据应用包名获取系统中运行态的应用多开（即在一个设备上运行多个相同的应用）的相关信息，使用Promise异步回调。
+根据应用包名获取系统中运行态的应用多开（即在一个设备上运行多个相同的应用）的相关信息。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -1577,7 +1577,7 @@ getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
+| 201 | Permission denied. |
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | 16000072 | App clone or multi-instance is not supported. |
@@ -1633,7 +1633,7 @@ terminateMission(missionId: number): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1672,7 +1672,7 @@ struct Index {
 
 getSupportedProcessCachePids(bundleName : string): Promise\<Array\<number>>
 
-查询当前应用中支持缓存后快速启动的进程PID。
+查询当前应用中支持缓存后快速启动的进程PID。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1733,7 +1733,7 @@ try {
 
 clearUpAppData(bundleName: string, appCloneIndex?: number): Promise\<void>
 
-根据Bundle名称和应用分身索引，清除指定应用的数据。
+根据Bundle名称和应用分身索引，清除指定应用的数据。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLEAN_APPLICATION_DATA
 
@@ -1761,7 +1761,7 @@ clearUpAppData(bundleName: string, appCloneIndex?: number): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16000073 | The app clone index is invalid. |
@@ -1863,8 +1863,7 @@ try {
 
 getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<KeepAliveBundleInfo>>
 
-获取指定用户下指定类型的保活应用信息。该应用信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义。
-使用Promise异步回调。
+获取指定用户下指定类型的保活应用信息。该应用信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -1894,7 +1893,7 @@ getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<Ke
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |
@@ -1925,7 +1924,7 @@ try {
 
 killProcessesInBatch(pids: Array\<number>): Promise\<void>
 
-批量终止进程。
+批量终止进程。使用Promise异步回调。
 
 **需要权限**：ohos.permission.KILL_APP_PROCESSES
 
@@ -1954,7 +1953,7 @@ killProcessesInBatch(pids: Array\<number>): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801 | Capability not supported. |
 | 16000050 | Internal error. |

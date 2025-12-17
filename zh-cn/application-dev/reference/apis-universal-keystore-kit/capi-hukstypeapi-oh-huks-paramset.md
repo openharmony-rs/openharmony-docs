@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_ParamSet {...}
+```
+
 ## 概述
 
 定义参数集的结构体类型。

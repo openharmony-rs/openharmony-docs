@@ -10,13 +10,13 @@
 - 蓝牙<!--bluetooth-->
   - [蓝牙服务开发概述](bluetooth/bluetooth-overview.md)
   - [蓝牙设置](bluetooth/br-development-guide.md)
-- 传统蓝牙<!--bluetooth-br-->
-  - [查找设备](bluetooth/br-discovery-development-guide.md)
-  - [配对与连接设备](bluetooth/br-pair-device-development-guide.md)
-  - [连接和传输数据](bluetooth/spp-development-guide.md)
-- 低功耗蓝牙<!--bluetooth-ble-->
-  - [查找设备](bluetooth/ble-development-guide.md)
-  - [连接和传输数据](bluetooth/gatt-development-guide.md)
+  - 传统蓝牙<!--bluetooth-br-->
+    - [查找设备](bluetooth/br-discovery-development-guide.md)
+    - [配对与连接设备](bluetooth/br-pair-device-development-guide.md)
+    - [连接和传输数据](bluetooth/spp-development-guide.md)
+  - 低功耗蓝牙<!--bluetooth-ble-->
+    - [查找设备](bluetooth/ble-development-guide.md)
+    - [连接和传输数据](bluetooth/gatt-development-guide.md)
 - NFC<!--nfc-->
   - [NFC标签读写开发指南](nfc/nfc-tag-access-guide.md)
   - [HCE卡模拟开发指南](nfc/nfc-hce-guide.md)

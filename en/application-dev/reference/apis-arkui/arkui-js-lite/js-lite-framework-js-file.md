@@ -1,4 +1,10 @@
 # app.js
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yihao-lin-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Application Lifecycle<sup>4+</sup>
 
@@ -44,7 +50,7 @@ Declare the application object in **app.js**.
 // app.js
 export default {
     data: {
-        test: "by getAPP"
+        test: "by getApp"
     },
     onCreate() {
         console.info('Application onCreate');

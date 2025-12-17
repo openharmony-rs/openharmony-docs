@@ -4,7 +4,7 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -170,7 +170,7 @@ struct DrawModifierExample {
       end: 2
     });
     this.drawAnimator.onFrame = (value: number) => {
-      console.log('frame value =', value);
+      console.info('frame value =', value);
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
       tempModifier.scaleX = Math.abs(value - 1);
       tempModifier.scaleY = Math.abs(value - 1);
@@ -226,10 +226,10 @@ struct DrawModifierExample {
             // Switch between DrawModifier instances.
             this.count += 1;
             if (this.count % 2 === 1) {
-              console.log('change to full modifier');
+              console.info('change to full modifier');
               this.modifier = this.fullModifier;
             } else {
-              console.log('change to front modifier');
+              console.info('change to front modifier');
               this.modifier = this.frontModifier;
             }
           })
@@ -306,3 +306,126 @@ struct DrawModifierExample {
 }
 ```
 ![drawForeground.png](figures/drawForeground.png)
+
+## Adjusting the Transformation Matrix of the Custom Drawing Canvas
+
+Since API version 12, you can override the default drawing behavior by implementing the [drawContent](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawcontent) API of **DrawModifier**.
+
+Use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) to adjust the transformation matrix of the custom drawing canvas.
+
+> **NOTE**
+> 
+> - [getTotalMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#gettotalmatrix12) obtains the transformation matrix of the temporary command-recording canvas.
+> 
+> - To apply transformations to the canvas, use [concatMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#concatmatrix12) instead of [setMatrix](../../application-dev/reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md#setmatrix12). This is because **setMatrix** overwrites the existing transformation matrix inherited from the actual canvas.
+
+**ArkTS API sample code**
+
+```ts
+import { DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+function drawImage(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+  canvas.concatMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+function drawImage1(canvas: DrawingCanvas) {
+  let matrix = new drawing.Matrix();
+  matrix.setTranslation(100, 100);
+
+  // 1. getTotalMatrix obtains the transformation matrix of the temporary command-recording canvas.
+  // 2. Use concatMatrix instead of setMatrix to apply transformations, as setMatrix overwrites the existing transformation matrix inherited from the actual canvas.
+  canvas.getTotalMatrix();
+  canvas.setMatrix(matrix);
+  const pen = new drawing.Pen();
+  pen.setStrokeWidth(5);
+  pen.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachPen(pen);
+  const brush = new drawing.Brush();
+  brush.setColor({
+    alpha: 255,
+    red: 0,
+    green: 0,
+    blue: 255
+  });
+  canvas.attachBrush(brush);
+  canvas.drawRect({
+    left: 10,
+    top: 10,
+    right: 110,
+    bottom: 60
+  });
+  canvas.detachPen();
+}
+
+class MyDrawModifier1 extends DrawModifier {
+  drawContent(drawContext: DrawContext): void {
+    drawImage1(drawContext.canvas)
+  }
+}
+
+class MyDrawModifier extends DrawModifier {
+  drawContent(drawContext: DrawContext): void {
+    drawImage(drawContext.canvas)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  myDrawModifier: MyDrawModifier = new MyDrawModifier();
+  myDrawModifier1: MyDrawModifier = new MyDrawModifier1();
+
+  build() {
+    Row() {
+      Column() {
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier).position({x:10,y:10})
+      }
+      .borderWidth(1)
+      .height(200)
+      .width('45%')
+
+      Column() {
+        Stack().width(300).height(300).drawModifier(this.myDrawModifier1).position({x:10,y:10})
+      }
+      .borderWidth(1)
+      .height(200)
+      .width('45%')
+    }.height('100%')
+    .width('100%').position({x:10,y:10})
+
+  }
+}
+```
+![drawModifier-canvas](./figures/drawModifier-canvas.png)

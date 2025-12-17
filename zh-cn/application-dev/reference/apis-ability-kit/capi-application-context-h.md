@@ -2,7 +2,7 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @zhangyafei-echo-->
+<!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
@@ -37,6 +37,7 @@
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetbundlecodedir) | 获取本应用的应用级的安装文件目录。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetdistributedfilesdir) | 获取本应用的应用级的分布式文件目录。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetcloudfiledir) | 获取本应用的应用级的云文件目录。 |
+| [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetlogfiledir) | 获取本应用的应用级的日志文件目录。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(const char* moduleName, char* buffer, const int32_t bufferSize, int32_t* writeLength)](#oh_abilityruntime_applicationcontextgetresourcedir) | 获取应用级别的资源目录。     |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *want)](#oh_abilityruntime_startselfuiability) | 启动当前应用的UIAbility。 |
 | [AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(AbilityBase_Want *want,AbilityRuntime_StartOptions *options)](#oh_abilityruntime_startselfuiabilitywithstartoptions) | 通过StartOptions启动当前应用的UIAbility。 |
@@ -49,7 +50,7 @@
 
 ### OH_AbilityRuntime_ApplicationContextGetCacheDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -75,7 +76,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* b
 
 ### OH_AbilityRuntime_ApplicationContextGetAreaMode()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(AbilityRuntime_AreaMode* areaMode)
 ```
 
@@ -99,7 +100,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(Ability
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleName()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char* buffer, int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -125,7 +126,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char*
 
 ### OH_AbilityRuntime_ApplicationContextGetTempDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -151,7 +152,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 
 ### OH_AbilityRuntime_ApplicationContextGetFilesDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -177,7 +178,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 
 ### OH_AbilityRuntime_ApplicationContextGetDatabaseDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -203,7 +204,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char
 
 ### OH_AbilityRuntime_ApplicationContextGetPreferencesDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -229,7 +230,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(c
 
 ### OH_AbilityRuntime_ApplicationContextGetBundleCodeDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -255,7 +256,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(ch
 
 ### OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFilesDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -281,7 +282,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFiles
 
 ### OH_AbilityRuntime_ApplicationContextGetCloudFileDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -305,9 +306,35 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(cha
 | -- | -- |
 | [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 查询成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或者writeLength为空，或者缓冲区大小小于需要写入的大小。<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 应用上下文不存在，如在应用创建的[子进程](capi-childprocess.md)中应用级别上下文不存在。 |
 
+### OH_AbilityRuntime_ApplicationContextGetLogFileDir()
+
+```c
+AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char* buffer, const int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述**
+
+获取本应用的应用级的日志文件目录。
+
+**起始版本：** 22
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| char* buffer | 指向缓冲区的指针，用于接收日志文件目录。 |
+| const int32_t bufferSize | 缓冲区大小，单位为字节。 |
+| int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 返回执行结果。<br>ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 查询成功。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 入参buffer或者writeLength为空，或者缓冲区大小小于需要写入的大小。<br>ABILITY_RUNTIME_ERROR_CODE_CONTEXT_NOT_EXIST - 应用上下文不存在，如在应用创建的[子进程](capi-childprocess.md)中应用级别上下文不存在。 |
+
 ### OH_AbilityRuntime_ApplicationContextGetResourceDir()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(const char* moduleName, char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
 
@@ -334,7 +361,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(cons
 
 ### OH_AbilityRuntime_StartSelfUIAbility()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *want)
 ```
 
@@ -387,7 +414,7 @@ void startSelfUIAbilityTest()
 
 ### OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(AbilityBase_Want *want,AbilityRuntime_StartOptions *options)
 ```
 
@@ -454,7 +481,7 @@ void demo()
 
 ### OH_AbilityRuntime_ApplicationContextGetVersionCode()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int64_t* versionCode)
 ```
 
@@ -478,7 +505,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int6
 
 ### OH_AbilityRuntime_StartSelfUIAbilityWithPidResult()
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(AbilityBase_Want *want, AbilityRuntime_StartOptions *options, int32_t *targetPid)
 ```
 
@@ -550,7 +577,7 @@ void demo()
 
 ### OH_AbilityRuntime_ApplicationContextGetLaunchParameter
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
     char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```
@@ -599,7 +626,7 @@ static napi_value GetLaunchParameter(napi_env env, napi_callback_info info)
 
 ### OH_AbilityRuntime_ApplicationContextGetLatestParameter
 
-```
+```c
 AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
     char* buffer, const int32_t bufferSize, int32_t* writeLength)
 ```

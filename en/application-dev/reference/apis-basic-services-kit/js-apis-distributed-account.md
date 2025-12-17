@@ -10,7 +10,7 @@
 The **distributedAccount** module provides APIs for managing distributed accounts, including querying and updating account login states.
 
 > **NOTE**
-> 
+>
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -34,6 +34,7 @@ Obtains a **DistributedAccountAbility** instance.
   | [DistributedAccountAbility](#distributedaccountability) | **DistributedAccountAbility** instance obtained. This instance provides APIs for querying and updating the login state of a distributed account.||
 
 **Example**
+
   ```ts
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   ```
@@ -46,7 +47,7 @@ Provides APIs for querying and updating the login state of a distributed account
 
 getOsAccountDistributedInfo(callback: AsyncCallback&lt;DistributedInfo&gt;): void
 
-Obtains distributed account information. This API uses an asynchronous callback to return the result.
+Obtains the distributed account information. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Account.OsAccount
 
@@ -69,6 +70,7 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300001 | System service exception. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -114,15 +116,16 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300001 | System service exception. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   try {
     accountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-        console.info('distributed information: ' + JSON.stringify(data));
+      console.info('distributed information: ' + JSON.stringify(data));
     }).catch((err: BusinessError) => {
-        console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+      console.error(`getOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -150,9 +153,10 @@ Queries the distributed account information. This API uses an asynchronous callb
   | callback | AsyncCallback&lt;[DistributedInfo](#distributedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the distributed account information obtained. Otherwise, **err** is an error object.|
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   accountAbility.queryOsAccountDistributedInfo(
     (err: BusinessError, data: distributedAccount.DistributedInfo) => {
@@ -185,14 +189,15 @@ Queries the distributed account information. This API uses a promise to return t
   | Promise&lt;[DistributedInfo](#distributedinfo)&gt; | Promise used to return the distributed account information obtained.|
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   accountAbility.queryOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
-      console.info('distributed information: ' + JSON.stringify(data));
+    console.info('distributed information: ' + JSON.stringify(data));
   }).catch((err: BusinessError) => {
-      console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+    console.error(`queryOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   });
   ```
 
@@ -226,12 +231,13 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300003 | Account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   let accountInfo: distributedAccount.DistributedInfo =
-    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+    { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
   try {
     accountAbility.setOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
       if (err) {
@@ -281,17 +287,18 @@ For details about the error codes, see [Account Management Error Codes](errorcod
 | 12300003 | Account not found. |
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   let accountInfo: distributedAccount.DistributedInfo =
-    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+    { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
   try {
     accountAbility.setOsAccountDistributedInfo(accountInfo).then(() => {
-        console.info('setOsAccountDistributedInfo successfully');
+      console.info('setOsAccountDistributedInfo successfully');
     }).catch((err: BusinessError) => {
-        console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+      console.error(`setOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -321,12 +328,13 @@ Updates the distributed account information. This API uses an asynchronous callb
   | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the distributed account information is updated successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   let accountInfo: distributedAccount.DistributedInfo =
-    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+    { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
   accountAbility.updateOsAccountDistributedInfo(accountInfo, (err: BusinessError) => {
     if (err) {
       console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
@@ -362,16 +370,17 @@ Updates the distributed account information. This API uses a promise to return t
   | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Example**
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const accountAbility: distributedAccount.DistributedAccountAbility = distributedAccount.getDistributedAccountAbility();
   let accountInfo: distributedAccount.DistributedInfo =
-    {id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN'};
+    { id: '12345', name: 'ZhangSan', event: 'Ohos.account.event.LOGIN' };
   accountAbility.updateOsAccountDistributedInfo(accountInfo).then(() => {
-      console.info('updateOsAccountDistributedInfo successfully');
-   }).catch((err: BusinessError) => {
-      console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
+    console.info('updateOsAccountDistributedInfo successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`updateOsAccountDistributedInfo exception: code is ${err.code}, message is ${err.message}`);
   });
   ```
 

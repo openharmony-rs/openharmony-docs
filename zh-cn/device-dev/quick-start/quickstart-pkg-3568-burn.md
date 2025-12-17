@@ -13,4 +13,4 @@
 
 ## 操作步骤
 
-使用RKDevTool的详细操作方法，请参考《[HiHope_DAYU200烧录指导](https://gitee.com/hihope_iot/docs/blob/master/HiHope_DAYU200/docs/%E7%83%A7%E5%BD%95%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3.md)》。
+使用RKDevTool的详细操作方法，请参考《[HiHope_DAYU200烧录指导](https://gitcode.com/hihope_iot/docs/blob/master/HiHope_DAYU200/docs/%E7%83%A7%E5%BD%95%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3.md)》。

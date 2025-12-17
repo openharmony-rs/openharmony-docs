@@ -1,4 +1,10 @@
 # @ohos.bundle.appDomainVerify (应用域名校验)(系统接口)
+<!--Kit: Ability Kit-->
+<!--Subsystem: BundleManager-->
+<!--Owner: @hw-xpc-->
+<!--Designer: @xuchuanqi87-->
+<!--Tester: @sl_sunshineGirl-->
+<!--Adviser: @Brilliantry_Rui-->
 
 本模块提供应用域名校验能力，支持查询应用与域名之间的映射关系。
 
@@ -46,7 +52,7 @@ queryAssociatedDomains(bundleName: string): string[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle.appDomainVerify错误码](errorcode-appDomainVerify.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle.appDomainVerify错误码](errorcode-appDomainVerify-sys.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -59,12 +65,13 @@ queryAssociatedDomains(bundleName: string): string[]
 
 ```ts
 import { appDomainVerify } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 获取包名为"com.example.app1"的应用所关联的域名列表
 let bundleName = "com.example.app1";
 let domains = appDomainVerify.queryAssociatedDomains(bundleName);
 domains.forEach(domain => {
-  console.log(`app:${bundleName} associate with domain:${domain}`);
+  hilog.info(0x0000, 'testTag', `app:${bundleName} associate with domain:${domain}`);
 });
 ```
 
@@ -94,7 +101,7 @@ queryAssociatedBundleNames(domain: string): string[]
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle.appDomainVerify错误码](errorcode-appDomainVerify.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle.appDomainVerify错误码](errorcode-appDomainVerify-sys.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -107,11 +114,12 @@ queryAssociatedBundleNames(domain: string): string[]
 
 ```ts
 import { appDomainVerify } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 获取域名"example.com"应用所关联的包名列表
 let domain = "example.com";
 let bundleNames = appDomainVerify.queryAssociatedBundleNames(domain);
 bundleNames.forEach(bundleName => {
-  console.log(`domain:${domain} associate with app:${bundleName}`);
+  hilog.info(0x0000, 'testTag', `domain:${domain} associate with app:${bundleName}`);
 });
 ```

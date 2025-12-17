@@ -36,7 +36,7 @@ Obtains the Want in a WantAgent object. This API uses an asynchronous callback t
 | Name    | Type                 | Mandatory| Description                           |
 | -------- | --------------------- | ---- | ------------------------------- |
 | agent    | [WantAgent](js-apis-app-ability-wantAgent.md#wantagent)             | Yes  | Target WantAgent object.                  |
-| callback | AsyncCallback\<[Want](js-apis-app-ability-want.md)\> | Yes  | Callback used to return the Want.|
+| callback | AsyncCallback\<[Want](js-apis-app-ability-want.md)\> | Yes  | Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **data** is the Want data obtained. Otherwise, **err** contains the corresponding error code and error information.|
 
 **Error codes**
 
@@ -94,7 +94,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
   }
   // getWant callback
   let getWantCallback = (err: BusinessError, data: Want) => {
-    if(err) {
+    if(err.code) {
       console.error(`getWant failed, code: ${err.code}, message: ${err.message}.`);
     } else {
       console.info(`getWant success, data: ${JSON.stringify(data)}.`);

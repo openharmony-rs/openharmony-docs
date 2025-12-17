@@ -58,7 +58,7 @@
 
 ### OH_AudioDevice_ChangeType
 
-```
+```c
 enum OH_AudioDevice_ChangeType
 ```
 
@@ -75,7 +75,7 @@ enum OH_AudioDevice_ChangeType
 
 ### OH_AudioDevice_Role
 
-```
+```c
 enum OH_AudioDevice_Role
 ```
 
@@ -92,7 +92,7 @@ enum OH_AudioDevice_Role
 
 ### OH_AudioDevice_Type
 
-```
+```c
 enum OH_AudioDevice_Type
 ```
 
@@ -125,7 +125,7 @@ enum OH_AudioDevice_Type
 
 ### OH_AudioDevice_Flag
 
-```
+```c
 enum OH_AudioDevice_Flag
 ```
 
@@ -144,7 +144,7 @@ enum OH_AudioDevice_Flag
 
 ### OH_AudioDevice_Usage
 
-```
+```c
 enum OH_AudioDevice_Usage
 ```
 
@@ -165,7 +165,7 @@ enum OH_AudioDevice_Usage
 
 ### OH_AudioDevice_BlockStatus
 
-```
+```c
 enum OH_AudioDevice_BlockStatus
 ```
 
@@ -185,7 +185,7 @@ enum OH_AudioDevice_BlockStatus
 
 ### OH_AudioDeviceDescriptor_GetDeviceRole()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioDevice_Role *deviceRole)
 ```
 
@@ -211,7 +211,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescr
 
 ### OH_AudioDeviceDescriptor_GetDeviceType()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioDevice_Type *deviceType)
 ```
 
@@ -237,7 +237,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescr
 
 ### OH_AudioDeviceDescriptor_GetDeviceId()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t *id)
 ```
 
@@ -263,7 +263,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescrip
 
 ### OH_AudioDeviceDescriptor_GetDeviceName()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **name)
 ```
 
@@ -289,7 +289,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescr
 
 ### OH_AudioDeviceDescriptor_GetDeviceAddress()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **address)
 ```
 
@@ -315,7 +315,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDe
 
 ### OH_AudioDeviceDescriptor_GetDeviceSampleRates()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t **sampleRates, uint32_t *size)
 ```
 
@@ -342,7 +342,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceSampleRates(OH_AudioDevi
 
 ### OH_AudioDeviceDescriptor_GetDeviceChannelCounts()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDeviceDescriptor *audioDeviceDescriptor,uint32_t **channelCounts, uint32_t *size)
 ```
 
@@ -369,7 +369,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceChannelCounts(OH_AudioDe
 
 ### OH_AudioDeviceDescriptor_GetDeviceDisplayName()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDeviceDescriptor *audioDeviceDescriptor,char **displayName)
 ```
 
@@ -395,7 +395,7 @@ OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceDisplayName(OH_AudioDevi
 
 ### OH_AudioDeviceDescriptor_GetDeviceEncodingTypes()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceEncodingTypes(OH_AudioDeviceDescriptor *audioDeviceDescriptor,OH_AudioStream_EncodingType **encodingTypes, uint32_t *size)
 ```
 

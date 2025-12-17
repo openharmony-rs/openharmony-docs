@@ -22,13 +22,13 @@ import { appManager } from '@kit.AbilityKit';
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-| Name                     | Type  | Mandatory | Description      |
-| ------------------------- | ------ | ---- | --------- |
-| bundleName  | string | Yes  | Bundle name.|
-| uid          | number | Yes  | UID of the application.  |
-| state        | number | Yes  | Application state.<br>**0**: The application is being initialized.<br>**1**: The application has been initialized and is ready.<br>**2**: The application is running in the foreground.<br>**3**: The application is having the focus. (This state is reserved.)<br>**4**: The application is running in the background.<br>**5**: The application has exited.|
-| isSplitScreenMode | boolean | Yes| Whether the application is in split-screen mode.<br>**true**: The application is in split-screen mode.<br>**false**: The application is not in split-screen mode.|
-| isFloatingWindowMode | boolean | Yes| Whether the application is in floating window mode.<br>**true**: The application is in floating window mode.<br>**false**: The application is not in floating window mode.|
+| Name                     | Type  | Read-Only | Optional | Description      |
+| ------------------------- | ------ | ---- | ---- | ---------- |
+| bundleName  | string | No  | No  | Bundle name.|
+| uid          | number | No  | No  | UID of the application.  |
+| state        | number | No  | No  | Application state.<br>**0**: The application is being initialized.<br>**1**: The application has been initialized and is ready.<br>**2**: The application is running in the foreground.<br>**3**: The application is having the focus. (This state is reserved.)<br>**4**: The application is running in the background.<br>**5**: The application has exited.|
+| isSplitScreenMode | boolean | No| No| Whether the application is in split-screen mode.<br>**true**: The application is in split-screen mode.<br>**false**: The application is not in split-screen mode.|
+| isFloatingWindowMode | boolean | No| No| Whether the application is in floating window mode.<br>**true**: The application is in floating window mode.<br>**false**: The application is not in floating window mode.|
 
 **Example**
 
@@ -37,7 +37,7 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
     console.info(`appStateData.bundleName: ${appStateData.bundleName}`);
     console.info(`appStateData.uid: ${appStateData.uid}`);
@@ -45,22 +45,22 @@ let applicationStateObserver: appManager.ApplicationStateObserver = {
     console.info(`appStateData.isSplitScreenMode: ${appStateData.isSplitScreenMode}`);
     console.info(`appStateData.isFloatingWindowMode: ${appStateData.isFloatingWindowMode}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };

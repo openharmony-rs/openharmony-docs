@@ -401,7 +401,7 @@ padding(value: Padding | Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) |是 |安全控件的内边距。<br/>默认值：上下8vp，左右16vp。|
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) |是 |安全控件的内边距。<br/>默认值：上下8vp，左右16vp。<br/>**说明**：本参数不支持设置百分比字符串数据类型。若设置百分比字符串，则对应内边距显示为0。|
 
 **返回值：**
 
@@ -445,7 +445,7 @@ textIconSpace(value: Dimension): T
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | [Dimension](ts-types.md#dimension10) |是 |安全控件中图标和文字的间距。不支持设置百分比字符串。从API 14开始，若设置值为负值，则使用默认值。<br/>默认值：4vp。|
+| value | [Dimension](ts-types.md#dimension10) |是 |安全控件中图标和文字的间距。<br/>默认值：4vp。<br/>**说明**：本参数不支持设置百分比字符串数据类型，若设置百分比字符串，则图标和文字的间距显示为0；从API 14开始，若设置值为负值，则使用默认值。|
 
 **返回值：**
 
@@ -803,6 +803,29 @@ enabled(respond: boolean): T
 | -------- | -------- |
 | T | 返回安全控件的属性。 |
 
+## focusBox<sup>22+</sup>
+
+focusBox(style: FocusBoxStyle): T
+
+设置安全控件系统焦点框样式。
+如果不设置，焦点框默认形状为矩形。设置后，焦点框形状将与背托形状保持一致。具体图示可查阅[示例4](#示例4)。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| style  | [FocusBoxStyle](ts-universal-attributes-focus.md#focusboxstyle12对象说明) | 是   | 设置安全控件系统焦点框样式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回安全控件的属性。 |
+
 
 
 ## SecurityComponentLayoutDirection枚举说明
@@ -973,6 +996,8 @@ struct Index {
 ![SaveBotton_alignRules_1.png](figures/SaveBotton_alignRules_1.png)
 
 ### 示例3
+
+安全控件文本高度自适应。
 
 ```ts
 @Entry
@@ -1310,3 +1335,69 @@ struct Index {
 ```
 
 ![security_component_demo_shot.jpg](figures/security_component_demo_shot.jpg)
+
+### 示例4
+
+设置安全控件系统焦点框样式。
+
+```ts
+import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column({ space: 30 }) {
+        Column({ space: 15 }) {
+          Text('不设置focusBox属性的默认安全控件')
+          SaveButton()
+        }
+
+        Column({ space: 15 }) {
+          Text('紧贴安全控件的黑色焦点框')
+          SaveButton()
+            .focusBox({
+              margin: new LengthMetrics(0),
+              strokeColor: ColorMetrics.rgba(0, 0, 0),
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text('较大的红色焦点框')
+          SaveButton()
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text('矩形安全控件')
+          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Normal })
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+
+        Column({ space: 15 }) {
+          Text('圆形安全控件')
+          SaveButton({ icon: SaveIconStyle.FULL_FILLED, text: SaveDescription.DOWNLOAD, buttonType: ButtonType.Circle })
+            .focusBox({
+              margin: new LengthMetrics(10),
+              strokeColor: ColorMetrics.rgba(255, 0, 0),
+              strokeWidth: LengthMetrics.px(10)
+            })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+![security_component_focus_box.png](figures/security_component_focus_box.gif)
