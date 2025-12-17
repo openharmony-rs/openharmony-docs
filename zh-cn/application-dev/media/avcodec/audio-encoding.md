@@ -17,7 +17,7 @@
 
 - 音频录制
 
-  通过录制传入PCM，然后编码出对应格式的码流，最后[封装](audio-video-muxer.md)成想要的格式。
+  通过录制传入PCM，然后编码出对应格式的码流，最后[封装](audio-video-muxer.md)为所需格式的音频文件。
 - 音频编辑
 
   编辑PCM后导出音频文件的场景，需要编码成对应音频格式后再[封装](audio-video-muxer.md)成文件。
@@ -55,7 +55,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 ### 开发步骤
 
-1. 添加头文件。
+1. 添加所需的头文件。
 
     ```cpp
     #include <multimedia/player_framework/native_avcodec_audiocodec.h>
@@ -66,20 +66,20 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     #include <multimedia/player_framework/native_avbuffer.h>
     ```
 
-2. 创建编码器实例对象，OH_AVCodec *为编码器实例指针。
+2. 创建编码器实例对象，OH_AVCodec*为编码器实例指针。
 
    应用可以通过媒体类型或编解码器名称创建编码器。
 
-   方法一：通过 Mimetype 创建编码器。
+   方法一：通过mime type创建编码器。
     ```cpp
     // 设置判定是否为编码；设置true表示当前是编码。
     bool isEncoder = true;
     // 通过媒体类型创建编码器。
     OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, isEncoder);
     ```
-   方法二：通过 codec name 创建编码器。
+   方法二：通过codec name创建编码器。
     ```cpp
-    // 通过 codecname 创建编码器。
+    // 通过codec name创建编码器。
     OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
     const char *name = OH_AVCapability_GetName(capability);
     OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByName(name);
@@ -122,7 +122,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    开发者可以通过处理该回调报告的信息，确保编码器正常运转。
 
    > **注意：**
-   > 回调中不建议进行耗时操作。
+   >
+   > 请勿在回调中调用编码器的相关接口或进行耗时操作。
 
     ```cpp
     // OH_AVCodecOnError回调函数的实现。
@@ -391,8 +392,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    使用情况：
 
-   * 在文件EOS之后，需要调用刷新。
-   * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid 为true）可以调用，然后重新调用OH_AudioCodec_Start。
+   * 在编码输出buffer属性为AVCODEC_BUFFER_FLAGS_EOS后，若想重新使用相同配置进行编码时，需要调用刷新。
+   * 在执行过程中遇到可继续执行的错误时（即OH_AudioCodec_IsValid()为true）可以调用刷新，然后调用OH_AudioCodec_Start()重新开始编码。
 
     ```c++
     // 刷新编码器 audioEnc_。
@@ -409,7 +410,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 10. （可选）调用OH_AudioCodec_Reset()重置编码器。
 
-    调用OH_AudioCodec_Reset()后，编码器回到初始化的状态，需要调用OH_AudioCodec_Configure()重新配置，然后调用OH_AudioCodec_Start()重新开始编码。
+    调用OH_AudioCodec_Reset()后，编码器回到初始化状态，重置前获取到的输入/输出buffer都无法继续使用，需先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始编码。启动后重新获取输入/输出buffer。
 
     ```c++
     // 重置编码器 audioEnc_。
@@ -426,7 +427,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 11. 调用OH_AudioCodec_Stop()停止编码器。
 
-    停止后，可以通过Start重新进入已启动状态（started），但需要注意的是，如果编码器之前已输入数据，则需要重新输入编码器数据。
+    停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 终止编码器 audioEnc_。
@@ -439,10 +440,11 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 12. 调用OH_AudioCodec_Destroy()销毁编码器实例，释放资源。
 
     > **说明：**
-    > 资源不能重复销毁
+    >
+    > 禁止重复销毁编码器。
 
     ```c++
-    // 调用OH_AudioCodec_Destroy, 注销编码器。
+    // 调用OH_AudioCodec_Destroy, 销毁编码器。
     int32_t ret = OH_AudioCodec_Destroy(audioEnc_);
     if (ret != AV_ERR_OK) {
         // 异常处理。

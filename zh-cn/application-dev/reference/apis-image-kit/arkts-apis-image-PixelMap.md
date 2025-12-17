@@ -6,18 +6,20 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
+图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
+
+从API version 11开始，PixelMap支持通过worker跨线程调用。当PixelMap通过[Worker](../apis-arkts/js-apis-worker.md)跨线程后，原线程的PixelMap的所有接口均不能调用，否则将报错501 服务器不具备完成请求的功能。
+
+在调用PixelMap的方法前，可以通过[image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)传入像素数据创建一个PixelMap对象，也可以通过[ImageSource](arkts-apis-image-ImageSource.md)进行图片解码创建PixelMap对象。
+
+开发原子化服务请通过[ImageSource](arkts-apis-image-ImageSource.md)构建PixelMap对象。
+
+图片使用的内存往往较大，在PixelMap对象使用完成后，应主动调用[release](#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 7开始支持。
-
-图像像素类，用于读取或写入图像数据以及获取图像信息。在调用PixelMap的方法前，需要先通过[createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)创建一个PixelMap实例。目前pixelmap序列化大小最大128MB，超过会送显失败。大小计算方式为(宽\*高\*每像素占用字节数)。
-
-从API version 11开始，PixelMap支持通过worker跨线程调用。当PixelMap通过[Worker](../apis-arkts/js-apis-worker.md)跨线程后，原线程的PixelMap的所有接口均不能调用，否则将报错501 服务器不具备完成请求的功能。  
-
-在调用PixelMap的方法前，需要先通过[image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8)构建一个PixelMap对象。
-
-开发原子化服务请通过[ImageSource](arkts-apis-image-ImageSource.md)构建PixelMap对象。
 
 ## 导入模块
 
@@ -2396,7 +2398,7 @@ async function GetMetadata(context: Context) {
 
 setMetadata(key: HdrMetadataKey, value: HdrMetadataValue): Promise\<void>
 
-设置PixelMap元数据。
+设置PixelMap元数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2690,9 +2692,11 @@ async function Unmarshalling() {
 
 release(): Promise\<void\>
 
-释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用将会失败。使用Promise异步回调。
+释放PixelMap对象（释放后，任何访问该对象内部数据的方法调用都会失败）。使用Promise异步回调。
 
-ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+图片使用的内存往往较大，在PixelMap对象使用完成后，应主动调用该方法及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **注意：**
 >
@@ -2730,9 +2734,11 @@ async function Release(pixelMap:image.PixelMap) {
 
 release(callback: AsyncCallback\<void\>): void
 
-释放PixelMap对象。释放后，任何访问该对象内部数据的方法调用将会失败。使用callback形式返回释放结果。
+释放PixelMap对象（释放后，任何访问该对象内部数据的方法调用都会失败）。使用callback形式返回释放结果。
 
-ArkTS有内存回收机制，PixelMap对象不调用release方法，内存最终也会由系统统一释放。但图片使用的内存往往较大，为尽快释放内存，建议应用在使用完成后主动调用release方法提前释放内存。
+图片使用的内存往往较大，在PixelMap对象使用完成后，应主动调用该方法及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 > **注意：**
 >
@@ -2773,7 +2779,9 @@ async function Release(pixelMap:image.PixelMap) {
 
 convertPixelFormat(targetPixelFormat: PixelMapFormat): Promise\<void>
 
-YUV和RGB类型互转，目前仅支持NV12/NV21与RGB888/RGBA8888/RGB565/BGRA8888/RGBAF16互转，YCRCB_P010/YCBCR_P010与RGBA1010102互转。
+YUV和RGB类型互转。使用Promise异步回调。
+
+支持NV12/NV21与RGB888/RGBA8888/RGB565/BGRA8888/RGBAF16互转，YCRCB_P010/YCBCR_P010与RGBA1010102互转。
 
 从API18开始，可用于ASTC_4x4类型转为RGBA_8888类型，目前仅支持ASTC_4x4转为RGBA_8888。
 

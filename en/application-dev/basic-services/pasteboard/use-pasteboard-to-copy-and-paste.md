@@ -16,7 +16,7 @@ The [pasteboard](../../reference/apis-basic-services-kit/js-apis-pasteboard.md) 
 - To ensure the accuracy of the pasteboard data, only one copy can be performed at a time.
 - In API version 12 and later, [permission control](get-pastedata-permission-guidelines.md) is added to the pasteboard reading API to enhance user privacy protection.
 
-## Using a Basic Data Types
+## Using Basic Data Types for Copy and Paste
 
 Currently, the following basic data types are supported for copy and paste: text, HTML, URI, Want, and pixel map. The data types supported by ArkTS APIs are different from those supported by NDK APIs. You need to match the data types with the corresponding APIs during usage.
 
@@ -53,27 +53,32 @@ After obtaining URI data using the **getData** API, use the [fs.copy](../../refe
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
-// ···
+import { hilog } from '@kit.PerformanceAnalysisKit';
+// ...
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-
-// ···
+// ...
+  export async function setPlainData(content: string): Promise<void> {
     let pasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, content);
     await systemPasteboard.setData(pasteData);
-    // ···
+  }
+  export async function getPlainData(): Promise<string> {
     // Read data from the system pasteboard.
     let data = await systemPasteboard.getData();
+    // Obtain the number of records from the pasteboard.
     let recordCount = data.getRecordCount();
+    // Obtain the corresponding record information from the pasteboard data.
     let result = '';
     for (let i = 0; i < recordCount; i++) {
       let record = data.getRecord(i).toPlainText();
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Get data success, record:' + record);
-      result = record;
+      result += record;
     }
+    return result;
+  }
 ```
 
 
-## Using a Unified Data Object
+## Using Unified Data Objects for Copy and Paste
 
 To facilitate data interactions between the pasteboard and other applications and reduce the workload of data type adaptation, the pasteboard supports a unified data object for copying and pasting. For details about the unified data object, see [Unified Data Channel](../../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md).
 
@@ -83,12 +88,12 @@ Currently, the following basic data types are supported for copy and paste: text
 
 For details about the APIs, see [API Reference](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12).
 
-| Name| Description                                                                                                                                       |
-| -------- |----------------------------------------------------------------------------------------------------------------------------------------|
-| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | Writes the data of a unified data object to the system pasteboard. |
-| setUnifiedDataSync(data: udc.UnifiedData): void | Writes the data of a unified data object to the system pasteboard. This API returns the result synchronously.                                                                                                                         |
-| getUnifiedData(): Promise\<udc.UnifiedData\> | Reads the data of a unified data object from the system pasteboard.                                                                                                                         |
-| getUnifiedDataSync(): udc.UnifiedData | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously. |
+| Name| Description                                                                                                  |
+| -------- |---------------------------------------------------------------------------------------------------|
+| setUnifiedData(data: udc.UnifiedData): Promise\<void\> | Writes the data of a unified data object to the system pasteboard.                  |
+| setUnifiedDataSync(data: udc.UnifiedData): void | Writes the data of a unified data object to the system pasteboard. This API returns the result synchronously.         |
+| getUnifiedData(): Promise\<udc.UnifiedData\> | Reads the data of a unified data object from the system pasteboard.                          |
+| getUnifiedDataSync(): udc.UnifiedData | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously.                 |
 
 ### Example
 
@@ -96,10 +101,10 @@ For details about the APIs, see [API Reference](../../reference/apis-basic-servi
 
 ``` TypeScript
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-
-// ···
+const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+// ...
   // 1. Construct a PlainText data object.
   export async function handleUniformData() {
     let plainText: uniformDataStruct.PlainText = {

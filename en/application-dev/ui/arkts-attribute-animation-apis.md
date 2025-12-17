@@ -15,14 +15,14 @@ Continuous visual effects on the UI resulting from changes to animatable propert
 
 | Animation API| Scope| Principle| Use Scenario|
 | -------- | -------- | -------- | -------- |
-| animateTo | UI changes caused by property changes in closures.<br>Transition for appearance and disappearance.| This API is a common function. It animates the differences between the UIs before and after state variables in the closure change.<br>This API supports multiple calls and nesting.| A single set of animation parameters is used to animate multiple properties.<br>Animations need to be nested.|
+| animateTo | UI changes caused by property changes in closures.<br>Transition for appearance and disappearance.| This API is a common function. It animates the differences between the UIs before and after state variables in the closure change.<br>This API supports multiple calls and nesting.| A single set of animation parameters is used to animate multiple properties.<br>Animations need to be nested.<br>Note: To achieve multiple animation cycles, it is recommended that you set the **playMode** and **iterations** properties of [AnimateParam](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam) or use **keyframeAnimateTo**.|
 | animation | UI changes caused by property changes bound to components through property APIs.| This API automatically detects changes to animatable properties and applies animations.<br>As the API call sequence of the component is from bottom to top, this API applies only to the properties declared above it in the component chain.<br>In a component, you can set **animation** for individual properties based on the API call sequence.| Different animation parameters are used for different properties.|
 | keyframeAnimateTo | Segmented property animation caused by property changes in multiple closures.| This API is a common function. It animates the difference between state variables in each closure and the previous state.<br>This API supports multiple calls, but nesting is not recommended.| Multiple animations are applied to the same property sequentially.|
 
 ## animateTo
 
 
-```
+```ts
 animateTo(value: AnimateParam, event: () => void): void
 ```
 
@@ -159,7 +159,7 @@ struct attrAnimationDemo3 {
 
 ## keyframeAnimateTo
 
-```
+```ts
 keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>): void
 ```
 
@@ -233,7 +233,6 @@ struct KeyframeAnimateToDemo {
 }
 ```
 
-
 ![keyframeAnimateTo1](figures/keyframeAnimateTo1.gif)
 
 > **NOTE**
@@ -242,3 +241,5 @@ struct KeyframeAnimateToDemo {
 > - Apply property animations only to consistently visible components. For those components whose visibility may change, use the [transition animation](arkts-transition-overview.md).
 > 
 > - Avoid using end callbacks with property animations. Property animations are applied to states that have occurred. As such, you do not need to process the end logic. If end callbacks are needed, be sure to correctly handle the data management for continuous operations.
+>
+> - If transition animations are disabled in Developer options, or if the UIAbility switches from the foreground to the background, the end callback will be triggered immediately. You are advised to verify your scenario and avoid placing time‑dependent logic in this callback.

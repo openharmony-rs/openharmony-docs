@@ -4800,7 +4800,7 @@ getAllOAuthTokens(name: string, owner: string): Promise&lt;Array&lt;OAuthTokenIn
 
 getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过setOAuthTokenVisibility(#setoauthtokenvisibilitydeprecated)来设置）。使用callback异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated)来设置）。使用callback异步回调。
 
 > **说明：**
 >
@@ -4834,7 +4834,7 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt
 
 getOAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
-获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过setOAuthTokenVisibility(#setoauthtokenvisibilitydeprecated)来设置）。使用Promise异步回调。
+获取指定应用账号的特定鉴权类型的授权列表，即被授权的包名数组（令牌的授权列表通过[setOAuthTokenVisibility](#setoauthtokenvisibilitydeprecated)来设置）。使用Promise异步回调。
 
 > **说明：**
 >
@@ -5157,8 +5157,8 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 | 名称                            | 值                    | 说明                   |
 | -------------------------------- | ---------------------- | ----------------------- |
-| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。  |
-| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。         |
+| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br>**说明：**从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_CREATE_ACCOUNT_IMPLICITLY替代。  |
+| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br>**说明：**从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_AUTH替代。         |
 | ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。  |
 | ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。         |
 | ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。  |

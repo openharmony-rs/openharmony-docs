@@ -1862,7 +1862,9 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: [promptAction.
 
 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。
 
-从API version11开始不再维护，建议使用[showActionMenu](#showactionmenu11)。
+> **说明：** 
+>
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[showActionMenu](#showactionmenu11)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full。
 

@@ -79,6 +79,7 @@ struct PageOne {
         })
       Button('go to next page').fontSize(30)
         .onClick(() => {
+          // 此处传入的url，需要开发者自行替换。
           this.getUIContext().getRouter().pushUrl({ url: 'View/PageTwo' });
         })
     }

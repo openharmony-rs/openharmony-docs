@@ -66,7 +66,7 @@ The following table lists the APIs related to user preference persistence. For m
 | API                                                    | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | getPreferencesSync(context: Context, options: Options): Preferences | Obtains a **Preferences** instance. This API returns the result synchronously. An asynchronous API is also provided.                   |
-| putSync(key: string, value: ValueType): void                 | Writes data to the **Preferences** instance. This API returns the result synchronously. An asynchronous API is also provided.|
+| putSync(key: string, value: ValueType): void                 | Writes data to the **Preferences** instance. You can use **flush()** to persist the **Preferences** instance data. This API returns the result synchronously. An asynchronous API is also provided.|
 | hasSync(key: string): boolean                                | Checks whether the **Preferences** instance contains the KV pair with the given key. The value **true** means the instance contains the KV pair; the value **false** means the opposite. The key cannot be empty. This API returns the result synchronously. An asynchronous API is also provided.|
 | getSync(key: string, defValue: ValueType): ValueType         | Obtains the value of the specified key. If the value is null or not of the default value type, **defValue** is returned. This API returns the result synchronously. An asynchronous API is also provided.|
 | deleteSync(key: string): void                                | Deletes a KV pair from the **Preferences** instance. This API returns the result synchronously. An asynchronous API is also provided.|
@@ -93,7 +93,8 @@ The following table lists the APIs related to user preference persistence. For m
 
    If **false** is returned, the platform does not support GSKV. In this case, use XML.
 
-<!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)--> 
+   <!--@[isStorageTypeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)--> 
+   
    ``` TypeScript
    let isGskvSupported = preferences.isStorageTypeSupported(preferences.StorageType.GSKV);
    Logger.info('Is gskv supported on this platform: ' + isGskvSupported);
@@ -103,8 +104,17 @@ The following table lists the APIs related to user preference persistence. For m
 
    Call **getPreferencesSync()** to obtain a **Preferences** instance in the default XML format.
 
+   The context is defined as follows:
+   <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
+   const context = EntryAbility.getContext();
+   ```
+
+   Call **getPreferencesSync()** to obtain a **Preferences** instance in the default XML format.
+
    <!--Del-->Stage model:<!--DelEnd-->
-<!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[GetPreferencesSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
    ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,7 +148,7 @@ The following table lists the APIs related to user preference persistence. For m
    If you want to use GSKV and the platform supports it, you can obtain the **Preferences** instance as follows. However, the storage type cannot be changed once selected.
    <!--Del-->Stage model:<!--DelEnd-->
 
-<!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[GetPreferencesSyncGSKV](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
    ``` TypeScript
    import { UIAbility } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -182,11 +192,9 @@ The following table lists the APIs related to user preference persistence. For m
 
    Example:
    
-
-<!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[PutSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
-   import { util } from '@kit.ArkTS';
    if (dataPreferences.hasSync('startup')) {
      Logger.info('The key startup is contained.');
    } else {
@@ -205,8 +213,9 @@ The following table lists the APIs related to user preference persistence. For m
 
    Example:
 
-<!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[GetSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    let val = dataPreferences.getSync('startup', 'default');
    Logger.info('The startup value is ' + val);
@@ -216,13 +225,12 @@ The following table lists the APIs related to user preference persistence. For m
    val = textDecoder.decodeToString(uInt8Array2 as Uint8Array);
    Logger.info('The uInt8 value is ' + val);
    ```
-
 6. Delete data.
 
    Call **deleteSync()** to delete a KV pair. Example:
 
-<!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[DeleteSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    dataPreferences.deleteSync('startup');
    ```
@@ -231,8 +239,8 @@ The following table lists the APIs related to user preference persistence. For m
 
    You can use **flush()** to persist the data held in a **Preferences** instance to a file. Example:
 
-<!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[Flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    dataPreferences.flush((err: BusinessError) => {
      if (err) {
@@ -247,11 +255,11 @@ The following table lists the APIs related to user preference persistence. For m
 
    Specify an observer as the callback to return the data changes for an application.
 
-   If the preferences data is stored in the default format (XML), the observer callback will be triggered only after the subscribed value changes and **flush()** is executed.
+   If the preferences data is stored in the default format (XML), the observer callback will be triggered only after the subscribed **key** value changes and **flush()** is executed.
 
    Example:
 
-<!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   <!--@[XMLOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
 
    ``` TypeScript
    let observer = (key: string) => {
@@ -277,11 +285,11 @@ The following table lists the APIs related to user preference persistence. For m
    })
    ```
 
-   If the preferences data is stored in GSKV format, the observer callback will be triggered after the subscribed value changes (without the need for calling **flush()**).
+   If the preferences data is stored in GSKV format, the observer callback will be triggered after the subscribed **key** value changes (without the need for calling **flush()**).
 
    Example:
-<!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[GSKVOn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    let observer = (key: string) => {
      Logger.info('The key ' + key + ' changed.');
@@ -308,10 +316,17 @@ The following table lists the APIs related to user preference persistence. For m
    >
    > - If GSKV is used, this API cannot be called concurrently with other APIs (including multiple processes). Otherwise, unexpected behavior may occur.
 
+   The context is defined as follows:
+   <!--@[DefineContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
+   ``` TypeScript
+   const context = EntryAbility.getContext();
+   ```
+
    Example:
 
-<!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
-
+   <!--@[DeleteXMLPreferences](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesSamples/entry/src/main/ets/pages/PreferencesInterface.ets)-->
+   
    ``` TypeScript
    let options: preferences.Options = { name: 'myStore' };
    preferences.deletePreferences(context, options, (err: BusinessError) => {
@@ -322,4 +337,5 @@ The following table lists the APIs related to user preference persistence. For m
      Logger.info('Succeeded in deleting preferences.');
    })
    ```
+
 <!--RP1--><!--RP1End-->

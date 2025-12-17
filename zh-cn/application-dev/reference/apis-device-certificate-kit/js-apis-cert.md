@@ -330,10 +330,10 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称      | 类型                  | 只读 | 可选 | 说明                        |
 | --------- | --------------------- | ---- | ---- | --------------------------- |
-| CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。              |
-| CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。 |
-| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。 |
-| nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。 |
+| CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。如果配置了CACert，则校验证书链时只使用CACert，不再使用CAPubKey和CASubject。             |
+| CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。仅在未配置CACert时生效。 |
+| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。仅在配置了CAPubKey时生效。校验对象根据CAPubKey类型（自签或上级）决定是校验根证书的主题还是颁发者。|
+| nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。只校验当前证书链的叶子证书。 |
 
 ## RevocationCheckOptions<sup>12+</sup>
 
@@ -344,12 +344,12 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
 | REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持从证书CDP扩展中获取第一个CRL分发点地址检查证书吊销状态，或从证书AIA扩展中获取第一个OCSP服务器地址检查证书吊销状态。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
 | REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
-
+| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | 如果开启了该能力，通过访问网络获取CRL或OCSP响应进行吊销状态的校验时，忽略网络不可达错误。默认关闭，默认情况下，网络不可达可能导致证书链校验失败。<br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## ValidationPolicyType<sup>12+</sup>
 
@@ -413,6 +413,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | date         | string                                            | 否   | 是  |表示需要校验证书的有效期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | 否   | 否   |表示信任锚列表。  <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                     |
 | trustSystemCa<sup>20+</sup>| boolean | 否   | 是  |表示是否使用系统预置CA证书校验证书链。true表示使用；false表示不使用。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| allowDownloadIntermediateCa<sup>23+</sup>| boolean | 否   | 是  |表示是否允许尝试从网络下载缺失的中间CA证书。<br>true表示允许；false表示不允许。默认值为false。<br>下载地址将从证书AIA扩展中获取，如需使用网络下载，需申请ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | 否   | 是  |表示需要校验证书是否在证书吊销列表中。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | 否   | 是  |表示需要在线校验证证书吊销状态的参数对象。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | 否   | 是  |表示需要校验证书的策略类型。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|

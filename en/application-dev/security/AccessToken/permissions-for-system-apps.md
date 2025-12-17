@@ -4703,7 +4703,7 @@ Allows an application to read the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -4717,7 +4717,7 @@ Allows an application to write the parental control website configuration.
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | tablets | 2-in-1 devices
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Valid since**: 19
 
@@ -5113,22 +5113,6 @@ Allows an application to access the sandbox directories of other extended applic
 
 **Valid since**: 19
 
-## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
-
-Allows an HAP to load independent binary .so files with different owner IDs.
-
-With this permission, the HAP can load independent binary .so files with a developer certificate or an ad-hoc signature.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Valid since**: 20
-
 ## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
 
 Allows a system application to query the certificate information of independent binary programs.
@@ -5184,6 +5168,20 @@ Allows an application to simulate user operations.
 **Supported devices**: general devices
 
 **Valid since**: 20
+
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+Allows an application to access the directories of compatible applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | PC/2in1 | Tablet
+
+**Since**: 22
 
 ## ohos.permission.MANAGE_SELF_SKILLS
 
@@ -5292,3 +5290,17 @@ Allows an application to query and configure user identity authentication polici
 **Enable via ACL**: true
 
 **Valid since**: 18
+
+## ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+Allows an application to dynamically register or remove custom UTD data types.
+
+**Permission level**：system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 22

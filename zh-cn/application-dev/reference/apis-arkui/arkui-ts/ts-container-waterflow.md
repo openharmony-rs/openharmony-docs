@@ -1949,6 +1949,7 @@ WaterFlowDataSource说明及完整代码参考[示例1使用基本瀑布流](#�
 ```ts
 // Index.ets
 import { WaterFlowDataSource } from './WaterFlowDataSource';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2000,10 +2001,16 @@ struct WaterFlowContentSizeDemo {
       // 点击按钮来调用contentSize函数获取内容尺寸
       Button('GetContentSize')
         .onClick(() => {
-          // 通过调用contentSize函数获取内容尺寸的宽度值
-          this.contentWidth = this.scroller.contentSize().width;
-          // 通过调用contentSize函数获取内容尺寸的高度值
-          this.contentHeight = this.scroller.contentSize().height;
+            // Scroller未绑定组件时会抛异常，需要加上try catch保护
+          	try {
+              // 通过调用contentSize函数获取内容尺寸的宽度值
+              this.contentWidth = this.scroller.contentSize().width;
+              // 通过调用contentSize函数获取内容尺寸的高度值
+              this.contentHeight = this.scroller.contentSize().height;
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            }
         }).margin(5)
       // 将获取到的内容尺寸信息通过文本进行呈现
       Text('Width:' + this.contentWidth)

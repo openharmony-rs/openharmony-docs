@@ -88,6 +88,7 @@
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md) | ArkUI_TextMenuItemArray | 定义文本菜单项数组结构体。 |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | 定义文本菜单扩展项结构体。 |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | 定义自定义文本选择菜单结构体。 |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式。 |
 
 ### 枚举
 
@@ -3316,7 +3317,7 @@ enum ArkUI_TextResponseType
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单，此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
 
 ### ArkUI_MarqueeStartPolicy
-```
+```c
 enum ArkUI_MarqueeStartPolicy
 ```
 
@@ -3332,7 +3333,7 @@ enum ArkUI_MarqueeStartPolicy
 | ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | 获焦以及鼠标悬浮时开始滚动。|
 
 ### ArkUI_MarqueeUpdatePolicy
-```
+```c
 enum ArkUI_MarqueeUpdatePolicy
 ```
 
@@ -3427,7 +3428,7 @@ enum ArkUI_RenderStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDERSTRATEGY_FAST  = 0 | 	在线绘制模式。 |
+| ARKUI_RENDERSTRATEGY_FAST  = 0 | 在线绘制模式。 |
 | ARKUI_RENDERSTRATEGY_OFFSCREEN = 1 | 离屏绘制模式。 |
 
 
@@ -11788,3 +11789,83 @@ ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_Text
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) | 更新策略。|
+
+### OH_ArkUI_SelectedDragPreviewStyle_Create()
+
+```c
+ArkUI_SelectedDragPreviewStyle* OH_ArkUI_SelectedDragPreviewStyle_Create();
+```
+
+**描述**
+
+创建选中状态下拖拽文本预览样式对象。
+
+**起始版本：** 23
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
+
+
+### OH_ArkUI_SelectedDragPreviewStyle_Dispose()
+
+```c
+void OH_ArkUI_SelectedDragPreviewStyle_Dispose(ArkUI_SelectedDragPreviewStyle* config)
+```
+
+**描述**
+
+销毁选中状态下拖拽文本预览样式对象。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* config | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
+
+### OH_ArkUI_SelectedDragPreviewStyle_SetColor()
+
+```c
+void  OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle* config, uint32_t color);
+```
+
+**描述**
+
+设置选中态拖拽文本预览样式的背景色。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* config | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
+| uint32_t color  | 选中态拖拽文本预览样式的的背景，格式为RGBA。|
+
+### OH_ArkUI_SelectedDragPreviewStyle_GetColor()
+
+```c
+uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewStyle* config)
+```
+
+**描述**
+
+获取选中态拖拽文本预览样式的背景色。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* config | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| uint32_t color | 选中态拖拽文本预览样式的的背景，格式为RGBA。 |

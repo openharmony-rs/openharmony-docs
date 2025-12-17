@@ -3241,6 +3241,8 @@ getClonedAssetUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, stri
 
 通过克隆后的资产URI列表获取当前uri。使用Promise异步回调。
 
+为控制数据库表空间占用规模，当前每次克隆时都会自动将上次存储的克隆数据进行清除，所以该接口只保存最近一次克隆时用户新/旧设备uri的对应关系。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
@@ -3297,6 +3299,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 getClonedAlbumUris(oldUris: Array&lt;string&gt;): Promise&lt;Map&lt;string, string&gt;&gt;
 
 通过克隆后的相册URI列表获取当前uri。使用Promise异步回调。
+
+为控制数据库表空间占用规模，当前每次克隆时都会自动将上次存储的克隆数据进行清除，所以该接口只保存最近一次克隆时用户新/旧设备uri的对应关系。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5311,6 +5315,8 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 **需要权限**：ohos.permission.READ\_IMAGEVIDEO
 
+从API version 22开始，当analysisType为[ANALYSIS\_DETAIL\_ADDRESS](#analysistype11)时，需要增加权限ohos.permission.MEDIA\_LOCATION，无权限则会抛出[权限校验失败错误码201](../errorcode-universal.md#201-权限校验失败)。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
@@ -5541,6 +5547,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | dateModified<sup>18+</sup>    | number | 是    | 是   | 相册修改时间。<br>**系统接口**：此接口为系统接口。|
 | coverUriSource<sup>20+</sup>    | number | 是    | 是   | 相册封面来源。<br>**系统接口**：此接口为系统接口。|
 | uploadStatus<sup>22+</sup>    | boolean | 是    | 否   | 表示是否允许相册同步到云空间或家庭存储。true表示允许，false表示不允许。<br>**系统接口**：此接口为系统接口。|
+| HIDDEN<sup>23+</sup>    | boolean | 是    | 是   | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ### recoverAssets<sup>(deprecated)</sup>
 
@@ -11130,7 +11137,7 @@ async function example(context: Context) {
 
 ## AlbumType
 
-枚举，相册类型，表示是用户相册还是系统预置相册。
+枚举，相册类型。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -11221,6 +11228,7 @@ async function example(context: Context) {
 | DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | 相册修改的时间戳（单位：毫秒）。<br>**系统接口**：此接口为系统接口。            |
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | 相册封面的来源。<br>**系统接口**：此接口为系统接口。            |
 | UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | 相册同步状态。<br>**系统接口**：此接口为系统接口。            |
+| HIDDEN<sup>23+</sup>     | 'hidden'      | 相册为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。            |
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -11793,6 +11801,7 @@ async function example(context: Context) {
 | hiddenCoverInfo | [PhotoAssetChangeInfo](#photoassetchangeinfo20)  | 否 | 是 | 相册隐藏封面资产的信息。<br>**系统接口**：此接口为系统接口。 |
 | orderSection | number  | 否 | 是 | 相册的排序区域，用于确认相册在图库中的展示区域。<br>**系统接口**：此接口为系统接口。 |
 | albumOrder | number  | 否 | 是 | 相册的排序值。<br>**系统接口**：此接口为系统接口。 |
+| HIDDEN<sup>23+</sup>    | boolean  | 否 | 是 | 相册是否为隐藏状态。true表示相册为隐藏状态，false表示相册不为隐藏状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## AlbumChangeData<sup>20+</sup>
 

@@ -148,19 +148,19 @@ lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system�
 
 ## 环境准备
 - 本地调试
-	- 无需使用DevEco IDE，可以直接在设备端进行调试。
+   - 无需使用DevEco IDE，可以直接在设备端进行调试。
     - 选择静态化的lldb路径并使用hdc传输到设备：
     ```bash
     hdc file send \ohos-sdk\[system]\native\llvm\lib\clang\[version]\bin\aarch64-linux-ohos\lldb /data/local/tmp/debugserver
-	 ```
+    ```
    -  选择lldb server路径（根据设备CPU架构选择）并使用hdc传输到设备：
     
     ```bash
     hdc file send \ohos-sdk\[system]\native\llvm\lib\clang\[version]\bin\aarch64-linux-ohos\lldb-server /data/local/tmp/debugserver
     ```
 - 远程调试（主要调试方式）
-	- 一键调试：
-    	- 下载HUAWEI IDE，根据IDE的调试方法即可进行一键调试：通过DevEco Studio调试。
+   - 一键调试：
+      - 下载HUAWEI IDE，根据IDE的调试方法即可进行一键调试：通过DevEco Studio调试。
         - 支持Windows/Mac连接OpenHarmony设备，支持调试Native C++应用。
         - 直接使用DevEco Studio的Debug功能即可，无需手动推送lldb或lldb-server。
     - 手动调试：

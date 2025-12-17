@@ -54,7 +54,7 @@ Declares APIs for discovering and connecting to scanners, scanning pictures, que
 
 ### Scan_ErrorCode
 
-```
+```c
 enum Scan_ErrorCode
 ```
 
@@ -87,7 +87,7 @@ Enumerates the error codes.
 
 ### Scan_ScannerDiscoveryCallback()
 
-```
+```c
 typedef void (*Scan_ScannerDiscoveryCallback)(Scan_ScannerDevice** devices, int32_t deviceCount)
 ```
 
@@ -106,7 +106,7 @@ Discovers scanners. The memory pointed to by the pointer registered via [OH_Scan
 
 ### OH_Scan_Init()
 
-```
+```c
 int32_t OH_Scan_Init()
 ```
 
@@ -128,7 +128,7 @@ Initiates the scan service, initializes the scan client, and connects the client
 
 ### OH_Scan_StartScannerDiscovery()
 
-```
+```c
 int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 ```
 
@@ -156,7 +156,7 @@ Starts scanner discovery and registers a callback used to process the discovered
 
 ### OH_Scan_OpenScanner()
 
-```
+```c
 int32_t OH_Scan_OpenScanner(const char* scannerId)
 ```
 
@@ -184,7 +184,7 @@ Opens a scanner.
 
 ### OH_Scan_CloseScanner()
 
-```
+```c
 int32_t OH_Scan_CloseScanner(const char* scannerId)
 ```
 
@@ -212,7 +212,7 @@ Closes a connected scanner.
 
 ### OH_Scan_GetScannerParameter()
 
-```
+```c
 Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t* errorCode)
 ```
 
@@ -241,7 +241,7 @@ Obtains the scanner setting options. The memory to which the returned struct poi
 
 ### OH_Scan_SetScannerParameter()
 
-```
+```c
 int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option, const char* value)
 ```
 
@@ -271,7 +271,7 @@ Sets the option parameters of a scanner. The option values are obtained through 
 
 ### OH_Scan_StartScan()
 
-```
+```c
 int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 ```
 
@@ -300,7 +300,7 @@ Starts scanning.
 
 ### OH_Scan_CancelScan()
 
-```
+```c
 int32_t OH_Scan_CancelScan(const char* scannerId)
 ```
 
@@ -328,7 +328,7 @@ Cancels scanning.
 
 ### OH_Scan_GetPictureScanProgress()
 
-```
+```c
 int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanProgress* prog)
 ```
 
@@ -357,7 +357,7 @@ Obtains the progress of scanning a picture by the scanner. A non-null value must
 
 ### OH_Scan_Exit()
 
-```
+```c
 int32_t OH_Scan_Exit()
 ```
 
