@@ -104,6 +104,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 import { Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
+// 通过以下方式导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行。
 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
@@ -218,6 +219,7 @@ export default class MyLiveFormExtensionAbility extends LiveFormExtensionAbility
 // pages/MyLiveFormPage.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { rpc } from '@kit.IPCKit';
+// 通过以下方式导入LiveFormExtensionContext，在DevEco Studio中标红，但不影响编译运行。
 import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
 
 @Entry
