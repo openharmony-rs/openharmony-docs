@@ -295,13 +295,17 @@ export const getValueBigintUint64t: (bigUint64: bigint) => boolean | undefined; 
 ArkTS侧示例代码
 
 <!-- @[ark_napi_get_value_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// napi_get_value_bigint_uint64
 let bigUint = BigInt(5555555555555555);
 try {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_value_bigint_uint64: %{public}s',
-             JSON.stringify(testNapi.getValueBigintUint64t(bigUint)));
+    JSON.stringify(testNapi.getValueBigintUint64t(bigUint)));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API NapiGetValueBigint: %{public}s', error.message);
+  // ...
 }
 ```
 
