@@ -477,6 +477,26 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 调用相机拍照的整体流程。
 
      <!-- @[load_cameraSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     static napi_value TakePhoto(napi_env env, napi_callback_info info)
+     {
+         if (g_receiver == nullptr) {
+             OH_LOG_ERROR(LOG_APP, "ImageReceiver not initialized.");
+             return GetJsResultDemo(env, IMAGE_BAD_PARAMETER);
+         }
+         uint64_t surfaceId = 0;
+         Image_ErrorCode errCode = OH_ImageReceiverNative_GetReceivingSurfaceId(g_receiver, &surfaceId);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "Get surfaceId failed.");
+             return GetJsResultDemo(env, errCode);
+         }
+     
+         auto surfaceId_c = ConvertUint64ToCharTemp(surfaceId);
+         Camera_ErrorCode photoRet = StartTakePhoto(surfaceId_c.get());
+         return GetJsResultDemo(env, photoRet);
+     }
+     ```
 
 7. 获取Receiver接收到的图片信息。
 
