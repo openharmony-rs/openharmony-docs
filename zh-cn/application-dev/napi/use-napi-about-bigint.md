@@ -95,7 +95,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_bigint_int64: %{public}
 cpp部分代码
 
 <!-- @[napi_create_bigint_uint64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_create_bigint_uint64
 static napi_value CreateBigintUint64t(napi_env env, napi_callback_info info)
 {
     // 声明uint64_t的变量value
