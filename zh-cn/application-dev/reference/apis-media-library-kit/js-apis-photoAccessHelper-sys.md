@@ -11711,6 +11711,21 @@ async function example(context: Context) {
 | 名称  |  值 |  说明 |
 | ----- |  ---- | ---- |
 | COLOR_STYLE_PHOTO<sup>18+</sup> |  12 | 推荐风格 **系统接口**：此接口为系统接口。|
+| CAT<sup>23+</sup> |  13 | 猫 **系统接口**：此接口为系统接口。|
+| DOG<sup>23+</sup> |  14 | 狗 **系统接口**：此接口为系统接口。|
+| ARCHITECTURE<sup>23+</sup> |  15 | 建筑 **系统接口**：此接口为系统接口。|
+| LANDSCAPE<sup>23+</sup> |  16 | 风景 **系统接口**：此接口为系统接口。|
+
+## RecommendationOptions<sup>11+</sup>
+
+图片推荐选项(基于图片数据分析结果，依赖设备适配)。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称                    | 类型                | 只读 | 可选 | 说明                          |
+| ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
+| recommendationTypeList<sup>23+</sup> | [Array<RecommendationType>](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 如果需要根据枚举值同时推荐多个分类的图片，则配置此参数。**系统接口**：此接口为系统接口。|
+
 
 ## ThumbnailChangeStatus<sup>20+</sup>
 
