@@ -45,7 +45,7 @@
 
 |差异点|DEFAULT|TOP_MOST|
 | --- | --- | --- |
-| 是否创建子窗	 | 否 | 是 |
+| 是否创建子窗 | 否 | 是 |
 | 层级 | 显示在主窗内，层级和主窗一致，一般比较低 | 显示在子窗中，一般比主窗层级高，比其他弹窗类组件层级高，比软键盘和权限弹窗层级低 |
 | 是否避让软键盘 | 软键盘抬起时，必定上移软键盘的高度 | 软键盘抬起时，只有toast被遮挡时，才会避让，且避让后toast底部距离软键盘高度为80vp |
 | UIExtension内布局 | 以UIExtension为主窗中布局，对齐方式与UIExtension对齐 | 以宿主窗口为主窗中布局，对齐方式与宿主窗口对齐 |
@@ -149,7 +149,7 @@ struct toastExample {
 适用于提示框停留时间较长，用户操作可以提前关闭提示框的场景。
 
 ```ts
-import { LengthMetrics, PromptAction } from '@kit.ArkUI';
+import { PromptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -165,18 +165,15 @@ struct toastExample {
         .type(ButtonType.Capsule)
         .height(100)
         .onClick(() => {
-          try {
-            this.promptAction.openToast({
-              message: 'Toast Message',
-              duration: 10000,
-            }).then((toastId: number) => {
-              this.toastId = toastId;
-            });
-          } catch (error) {
-            let message = (error as BusinessError).message;
-            let code = (error as BusinessError).code;
-            console.error(`OpenToast error code is ${code}, message is ${message}`);
-          };
+          this.promptAction.openToast({
+            message: 'Toast Message',
+            duration: 10000,
+          }).then((toastId: number) => {
+            this.toastId = toastId;
+          })
+            .catch((error: BusinessError) => {
+              console.error(`openToast error code is ${error.code}, message is ${error.message}`);
+            })
         })
       Blank().height(50);
       Button('Close Toast')
