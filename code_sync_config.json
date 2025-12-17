@@ -31725,5 +31725,50 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/ui/arkts-interaction-development-guide-gamepad.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/CommonKey.ets",
+				"functions":[
+					{
+						"end_line":52,
+						"name":"gamepad_common_key",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/DirectionKey.ets",
+				"functions":[
+					{
+						"end_line":54,
+						"name":"gamepad_direction_key",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/Joystick.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"gamepad_joystick",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/GamepadSample.ets",
+				"functions":[
+					{
+						"end_line":69,
+						"name":"gamepad_sample",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
