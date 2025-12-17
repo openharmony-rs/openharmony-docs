@@ -30,7 +30,7 @@ typedef struct TimeZoneRuleQuery {...} TimeZoneRuleQuery
 | double base | 查询的基准时间。 |
 | int32_t prevRawOffset | 上一次的时区原始偏移量。 |
 | int32_t prevDSTSavings | 上一次的夏令时偏移量。 |
-| bool inclusive | 查询结果是否包含基准时间。 |
+| bool inclusive | 查询结果是否包含基准时间。true：查询结果包含基准时间；false：查询结果不包含基准时间。 |
 | double result | 查询结果。 |
 
 
