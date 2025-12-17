@@ -9223,11 +9223,13 @@ export default class EntryAbility extends UIAbility {
 
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
-设置当前窗口是否启用返回手势功能，仅主窗全屏模式下生效，2in1设备下不生效。
+设置当前窗口是否启用返回手势功能，仅主窗全屏模式下生效。
 禁用返回手势功能后，当前应用会禁用手势热区，侧滑返回功能失效；切换到其他应用或者回到桌面后，手势热区恢复，侧滑返回功能正常。
 开启返回手势功能后，当前应用会恢复手势热区，侧滑返回功能正常。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在其他设备上可正常调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
