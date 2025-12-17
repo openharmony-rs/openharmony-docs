@@ -598,7 +598,7 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| supported  | boolean \| undefined | 是   | 当前Grid组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点，false表示不支持空分支节点。默认值false。</br>**说明：**</br>传入undefined的行为是将当前属性重置为默认值 |
+| supported  | boolean \| undefined | 是   | 当前Grid组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，将当前属性重置为false。 |
 
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
