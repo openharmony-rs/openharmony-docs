@@ -367,11 +367,11 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
  **配置参考**
  
-1. 配置应用信任证书：https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/http-request#%E9%85%8D%E7%BD%AE%E8%AF%81%E4%B9%A6%E6%A0%A1%E9%AA%8C
+1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）
 2. 配置请求级CA证书：
-- 通过caPath和caData字段配置HTTPS请求CA证书：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-http#httprequestoptions
-- 通过caPath字段配置WebSocket请求CA证书  ：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-websocket#websocketrequestoptions
-- 通过ca字段指定TLS请求CA证书：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-socket#tlssecureoptions9
+- 通过[httprequestoptions](../../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书
+- 通过[websocketrequestoptions]()的caPath字段配置WebSocket请求CA证书https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-websocket#websocketrequestoptions
+- 通过[tlssecureoptions]()的ca字段指定TLS请求CA证书https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-socket#tlssecureoptions9
 3. 配置跳过证书校验：
 - HTTPS：通过remoteValidation = 'skip' 配置：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-http#remotevalidation18
 - WebSocket：通过skipServerCertVerification = false 配置：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-websocket#websocketrequestoptions
