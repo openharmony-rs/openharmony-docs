@@ -272,7 +272,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
    <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
    
    ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
@@ -281,7 +281,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
          Navigation(this.navPathStack) {
            // ...
          }
-         .menus([toolTmp, toolTmp, toolTmp])
+         .menus([menuItem, menuItem, menuItem])
    ```
 
 图片也可以引用resources中的资源。
@@ -289,7 +289,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
    <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
    
    ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'resources/base/media/ic_public_add.svg',
      'action': () => {}
@@ -298,7 +298,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
          Navigation(this.navPathStack) {
            // ...
          }
-         .menus([toolTmp, toolTmp, toolTmp])
+         .menus([menuItem, menuItem, menuItem])
    ```
 
 **图6** 设置了4个图标的菜单栏  
@@ -308,7 +308,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
    <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
    
    ``` TypeScript
-   let toolTmp: NavigationMenuItem  = {
+   let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
@@ -318,7 +318,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
            // ...
          }
          // 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标
-         .menus([toolTmp, toolTmp, toolTmp, toolTmp])
+         .menus([menuItem, menuItem, menuItem, menuItem])
    ```
 
 ## 设置工具栏
@@ -973,9 +973,9 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
     ``` JSON5
     {
       "module": {
-        // ···
-        "routerMap": "$profile:route_map",
-        // ···
+        // ...
+        "routerMap": "$profile:router_map",
+        // ...
       }
     }
     ```
@@ -1341,7 +1341,7 @@ export struct PageOne {
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
-      // NavDestinationContext获取当前所在的导航控制器
+      // 通过NavDestinationContext获取当前所在页面的导航控制器
       this.navPathStack = ctx.pathStack;
     })
   }

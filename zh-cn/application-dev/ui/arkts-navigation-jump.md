@@ -131,7 +131,7 @@ export function BasicNavDestinationBuilder() {
 
 @Component
 struct BasicNavDestination {
-  // 2.在NavDestination中获取导航控制器
+  // 在NavDestination中获取导航控制器
   stack: NavPathStack = AppStorage.get<NavPathStack>('basicNavigationStack')!;
 
   build() {
@@ -165,7 +165,7 @@ export struct PageOne {
       // ...
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
-      // NavDestinationContext获取当前所在的导航控制器
+      // 通过NavDestinationContext获取当前所在页面的导航控制器
       this.navPathStack = ctx.pathStack;
     })
   }
@@ -607,7 +607,7 @@ export struct PageOne {
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
-      // NavDestinationContext获取当前所在的导航控制器
+      // 通过NavDestinationContext获取当前所在页面的导航控制器
       this.navPathStack = ctx.pathStack;
     })
   }
