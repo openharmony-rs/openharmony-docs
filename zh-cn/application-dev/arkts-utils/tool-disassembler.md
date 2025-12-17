@@ -16,7 +16,7 @@ Disassembler是ArkTS反汇编工具。如果需要分析方舟字节码文件（
 
 反汇编命令如下：
 
-```
+```text
 ark_disasm.exe [options] input_file output_file
 ```
 
@@ -44,7 +44,7 @@ options选项说明：
 
 假设已存在方舟字节码文件：test.abc，其源代码如下：
 
-```
+```ts
 let i = 99;
 function show(){return i;}
 show();
@@ -53,20 +53,20 @@ show();
 
 执行如下命令生成反汇编文件：test.txt，文件内包含操作码及格式等信息。
 
-```
+```text
 ark_disasm.exe test.abc test.txt
 ```
 
 查看反汇编文件的内容。
 
 
-```
+```text
 cat test.txt
 ```
 
 内容如下：
 
-```
+```text
 # source binary: test.abc                                                    // 反汇编的方舟字节码文件
 
 .language ECMAScript
@@ -117,13 +117,13 @@ L_ESSlotNumberAnnotation:
 使用参数--verbose，可打印偏移量等更多详细信息。
 
 
-```
+```text
 ark_disasm.exe --verbose test.abc test.txt
 ```
 
 此处列出部分示例。
 
-```
+```text
 .record _ESSlotNumberAnnotation { # offset: 0x00cd, size: 0x0026 (38)                                  // 这里打印了模块在方舟字节码文件中具体的位置和大小
 }
 
