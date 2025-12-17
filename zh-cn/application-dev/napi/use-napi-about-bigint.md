@@ -71,8 +71,9 @@ static napi_value CreateBigintInt64t(napi_env env, napi_callback_info info)
 
 index.d.ts
 <!-- @[napi_create_bigint_int64_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const createBigintInt64t: () => bigint;
+
+``` TypeScript
+export const createBigintInt64t: () => bigint; // napi_create_bigint_int64
 ```
 
 
