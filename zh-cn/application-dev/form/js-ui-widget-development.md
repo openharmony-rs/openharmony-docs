@@ -56,7 +56,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
 ### 创建卡片FormExtensionAbility
 
-创建Stage模型的卡片，需实现FormExtensionAbility生命周期接口。先参考<!--RP1-->[DevEco Studio服务卡片开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-service-widget-V5)<!--RP1End-->生成服务卡片模板。
+创建Stage模型的卡片，需实现FormExtensionAbility生命周期接口。先参考<!--RP1-->[创建ArkTS卡片](./arkts-ui-widget-creation.md#创建arkts卡片)<!--RP1End-->生成服务卡片模板。
 
 1. 在EntryFormAbility.ets中，导入相关模块。
     ```ts

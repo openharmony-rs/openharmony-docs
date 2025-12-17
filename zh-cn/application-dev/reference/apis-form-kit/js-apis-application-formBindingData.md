@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import formBindingData from '@ohos.application.formBindingData';
+import { formBindingData } from '@kit.FormKit';
 ```
 
 ## FormBindingData
