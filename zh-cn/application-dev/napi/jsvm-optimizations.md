@@ -74,14 +74,14 @@ JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,
 
 - 将生成code cache必需的前置编译也放到新增的线程上，这样编译选项可以分开使用：生成code cache打开`eager compile`，冷启动运行则关闭，这样做的缺点是可能进一步提高运行时的峰值资源占用，优点是code cache生成和运行可以完全解耦，不再需要考虑生成code cache的时间点。该流程的伪代码如下所示
 
-```
+```cpp
 async_create_code_cache() {
   compile_with_eager_compile();
   create_code_cache();
   save_code_cache();
 }
 
-...
+
 
 if (has_code_cache) {
   evaluate_script_with_code_cache();
@@ -94,14 +94,14 @@ if (has_code_cache) {
 
 - 在启动过程中的所有路径运行完之后，再启动新线程生成code cache，这样不必使用`eager compile`也能获取足量的code cache，同时保证热启动性能不受影响，这样做的缺点是生成code cache的时间点受限，优点是峰值资源占用相对更少，且不必生成过量的code cache导致io变慢。这个流程可以用如下所示的伪代码来表示
 
-```
+```cpp
 async_create_code_cache() {
   compile_with_out_eager_compile();
   create_code_cache();
   save_code_cache();
 }
 
-...
+
 
 if (has_code_cache) {
   evaluate_script_with_code_cache();
@@ -109,7 +109,7 @@ if (has_code_cache) {
   evaluate_script_without_code_cache();
 }
 
-...
+
 
 if (script_run_completed) {
   start_thread(async_create_code_cache());
