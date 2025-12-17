@@ -374,7 +374,7 @@
 | abilityName | string   | 否   | 否   | Ability的名称。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22|
 | windowId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 窗口ID。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22|
 | windowStatusType | [WindowStatusType](arkts-apis-window-e.md#windowstatustype11) | 否   | 否   | 窗口模式枚举。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22|
-| isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22|
+| isFocused | boolean | 否   | 是   | 窗口是否获焦。true表示窗口获焦；false表示窗口未获焦。返回值与[isFocused()](arkts-apis-window-Window.md#isfocused12)接口一致。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 22|
 | globalDisplayRect<sup>20+</sup> | [Rect](arkts-apis-window-i.md#rect7)   | 否   | 是   | 全局坐标系下的窗口尺寸。扩展屏场景下以主屏左上角为坐标原点，虚拟屏场景下以虚拟屏左上角为坐标原点。默认值：[0, 0, 0, 0]。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22|
 
 ## TransitionAnimation<sup>20+</sup>
