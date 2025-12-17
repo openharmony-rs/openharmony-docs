@@ -52,7 +52,9 @@ import testNapi from 'libentry.so';
 cpp部分代码
 
 <!-- @[napi_create_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_create_bigint_int64
 static napi_value CreateBigintInt64t(napi_env env, napi_callback_info info)
 {
     // 声明int64_t的变量value
