@@ -192,7 +192,9 @@ try {
 cpp部分代码
 
 <!-- @[napi_get_value_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_get_value_bigint_int64
 static napi_value GetValueBigintInt64t(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -210,11 +212,11 @@ static napi_value GetValueBigintInt64t(napi_env env, napi_callback_info info)
     // 如果接口调用成功正常调用则返回true给ArkTS侧
     napi_value returnValue = nullptr;
     if (status == napi_ok) {
-      napi_get_boolean(env, true, &returnValue);
-      return returnValue;
+        napi_get_boolean(env, true, &returnValue);
+        return returnValue;
     } else {
-      napi_throw_error(env, nullptr, "napi_get_value_bigint_int64 failed");
-      return nullptr;
+        napi_throw_error(env, nullptr, "napi_get_value_bigint_int64 failed");
+        return nullptr;
     }
 }
 ```
