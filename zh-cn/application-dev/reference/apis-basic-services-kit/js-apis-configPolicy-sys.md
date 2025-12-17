@@ -26,7 +26,7 @@ import { configPolicy } from '@kit.BasicServicesKit';
 getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 
 获取指定文件名优先级最高的配置文件路径。使用callback异步回调。
-例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml，最终返回优先级最高的/sys_pod/etc/config.xml。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml，最终返回优先级最高的是：/sys_pod/etc/config.xml。
 
 **系统能力：**SystemCapability.Customization.ConfigPolicy
 
@@ -35,7 +35,7 @@ getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 | 参数名    | 类型                         | 必填 | 说明                                  |
 | -------- | --------------------------- | ---- | ------------------------------------ |
 | relPath  | string                      | 是   | 配置文件名。                           |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则为错误对象 |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
 **错误码：**
 
@@ -113,7 +113,7 @@ getOneCfgFile(relPath: string): Promise&lt;string&gt;
 getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 获取指定文件名的所有文件列表，按优先级从低到高。使用callback异步回调。
-例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml。最终返回/system/etc/config.xml, /sys_pod/etc/config.xml。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml。
 
 **系统能力：**SystemCapability.Customization.ConfigPolicy
 
@@ -122,7 +122,7 @@ getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 | 参数名   | 类型                                     | 必填 | 说明                       |
 | -------- | ---------------------------------------- | ---- | -------------------------- |
 | relPath  | string                                   | 是   | 配置文件名。                 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则err为错误对象。 |
 
 **错误码：**
 
@@ -206,7 +206,7 @@ getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 | 参数名   | 类型                                     | 必填 | 说明                               |
 | -------- | ---------------------------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取配置层级目录列表成功，err为undefined，data为获取到的配置层级目录列表；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取配置层级目录列表成功，err为undefined，data为获取到的配置层级目录列表；否则err为错误对象。 |
 
 **错误码：**
 
@@ -268,7 +268,7 @@ getCfgDirList(): Promise&lt;Array&lt;string&gt;&gt;
 getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;string&gt;)
 
 根据提供的跟随模式获取指定文件名优先级最高的配置文件路径。使用callback异步回调。
-例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT。最终返回/sys_pod/etc/carrier/46060/etc/config.xml。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT。最终返回的是：/sys_pod/etc/carrier/46060/etc/config.xml。
 
 **系统能力：**SystemCapability.Customization.ConfigPolicy
 
@@ -278,7 +278,7 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&
 | ---------- | ----------------------------- | ---- | ------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                 |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                   |
-| callback   | AsyncCallback&lt;string&gt;   | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则为错误对象。 |
+| callback   | AsyncCallback&lt;string&gt;   | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
 **错误码：**
 
@@ -310,7 +310,7 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&
 getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;string&gt;)
 
 根据跟随模式获取指定文件优先级最高的配置文件路径。使用callback异步回调。
-例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回/sys_pod/etc/carrier/46060/etc/config.xml。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回的是：/sys_pod/etc/carrier/46060/etc/config.xml。
 
 **系统能力：**SystemCapability.Customization.ConfigPolicy
 
@@ -320,8 +320,8 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback:
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 是   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时有效。 |
-| callback   | AsyncCallback&lt;string&gt;   | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则为错误对象。 |
+| extra      | string                        | 是   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
+| callback   | AsyncCallback&lt;string&gt;   | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
 **错误码：**
 
@@ -362,7 +362,7 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时有效。 |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
 
 **返回值：**
 
@@ -412,8 +412,8 @@ getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): st
 | 参数名     | 类型                          | 必填 | 说明                                                 |
 | ---------- | ----------------------------- | ---- | ----------------------------------------------------|
 | relPath    | string                        | 是   | 配置文件名。                                           |
-| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用DEFAULT。                    |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时有效。 |
+| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用[DEFAULT](#default_mode)。                    |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
 
 **返回值：**
 
@@ -451,7 +451,7 @@ getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): st
 getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用callback异步回调。
-例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT。最终返回/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
 
 **系统能力：**SystemCapability.Customization.ConfigPolicy
 
@@ -461,7 +461,7 @@ getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt
 | ---------- | ---------------------------------------- | ---- | -------------------------- |
 | relPath    | string                                   | 是   | 配置文件名。                 |
 | followMode | [FollowXMode](#followxmode11)            | 是   | 跟随模式。                   |
-| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则为错误对象。 |
+| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则err为错误对象。 |
 
 **错误码：**
 
@@ -492,7 +492,7 @@ getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt
 getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用callback异步回调。
-例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
 
 **系统能力：**SystemCapability.Customization.ConfigPolicy
 
@@ -502,8 +502,8 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: A
 | ---------- | ---------------------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                                   | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11)            | 是   | 跟随模式。                                               |
-| extra      | string                                   | 是   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时有效。 |
-| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则为错误对象。 |
+| extra      | string                                   | 是   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
+| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则err为错误对象。 |
 
 **错误码：**
 
@@ -544,7 +544,7 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&l
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时有效。 |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
 
 **返回值：**
 
@@ -594,8 +594,8 @@ getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Arra
 | 参数名     | 类型                          | 必填 | 说明                                                   |
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
-| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用DEFAULT。                    |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时有效。 |
+| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用[DEFAULT](#default_mode)。                    |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
 
 **返回值：**
 
@@ -662,11 +662,11 @@ getCfgDirListSync(): Array&lt;string&gt;
 
 **系统能力:** SystemCapability.Customization.ConfigPolicy
 
-| 名称              | 值  | 说明                                                                                            |
-| ---------------- | --- | ----------------------------------------------------------------------------------------------- |
-| DEFAULT          | 0   | 默认模式，会根据各配置层级下的followx_file_list.cfg文件配置的跟随规则进行文件查找。                       |
-| NO_RULE_FOLLOWED | 1   | 不跟随模式，不会使用任何跟随规则，即使存在followx_file_list.cfg文件。                                   |
-| SIM_DEFAULT      | 10  | 跟随默认卡模式，会根据默认卡的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                      |
-| SIM_1            | 11  | 跟随卡1模式，会根据卡1的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                           |
-| SIM_2            | 12  | 跟随卡2模式，会根据卡2的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                           |
-| USER_DEFINED     | 100 | 用户自定义模式，会根据入参extra提供的跟随规则进行配置文件获取，忽略各配置层级下的followx_file_list.cfg文件。 | 
+| 名称                           | 值  | 说明                                                                                            |
+| ----------------------------- | --- | ----------------------------------------------------------------------------------------------- |
+| DEFAULT<a id="default_mode"/> | 0   | 默认模式，会根据各配置层级下的followx_file_list.cfg文件配置的跟随规则进行文件查找。                   |
+| NO_RULE_FOLLOWED              | 1   | 不跟随模式，不会使用任何跟随规则，即使存在followx_file_list.cfg文件。                                |
+| SIM_DEFAULT                   | 10  | 跟随默认卡模式，会根据默认卡的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                   |
+| SIM_1                         | 11  | 跟随卡1模式，会根据卡1的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                        |
+| SIM_2                         | 12  | 跟随卡2模式，会根据卡2的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                        |
+| USER_DEFINED<a id="user_defined"/> | 100 | 用户自定义模式，会根据入参extra提供的跟随规则进行配置文件获取，忽略各配置层级下的followx_file_list.cfg文件。 | 
