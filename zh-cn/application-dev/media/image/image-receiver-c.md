@@ -503,6 +503,27 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 等待OnCallback回调通知。
 
      <!-- @[wait_callBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
+     
+     ``` C++
+     // 同步等待。
+     static OH_ImageNative* NotifyJsImageInfoSync()
+     {
+         std::unique_lock<std::mutex> lock(g_mutex);
+         g_imageReady = false;
+         g_imageInfoResult = nullptr;
+     
+         // 等待OnCallback回调通知。
+         bool ret = g_condVar.wait_for(lock, std::chrono::seconds(1), [] {
+             OH_LOG_INFO(LOG_APP, "NotifyJsImageInfoSync: wait_for wakeup, g_imageReady=%{public}d", g_imageReady);
+             return g_imageReady;
+         });
+         if (!ret) {
+             OH_LOG_ERROR(LOG_APP, "NotifyJsImageInfoSync: wait_for timeout.");
+             return nullptr;
+         }
+         return g_imageInfoResult;
+     }
+     ```
 
    - 获取图片大小。
 
