@@ -438,6 +438,21 @@ Web布局模式的配置。
 | -------------- | -- | ------------------  |
 | AMBIENT     | 3 | 适用于网页游戏场景，支持Web游戏声音与系统音乐同时播放。对应系统音频流类型STREAM_USAGE_GAME。|
 
+## WebRotateEffect<sup>22+</sup>
+
+组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称                       | 值 | 说明           |
+| -------------------------- | -- | ------------- |
+| TOPLEFT_EFFECT                    | 0 | 默认值，组件旋转时，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。 |
+| RESIZE_COVER_EFFECT | 1 | 组件旋转时，保持动画终态内容的宽高比进行缩小或放大，使内容两边都大于或等于组件两边，且与组件保持中心对齐，显示内容的中间部分。 |
+
 ## NativeEmbedParamStatus<sup>21+</sup>
 
 定义同层渲染object标签内嵌param元素的状态变化类型，当添加param元素时触发ADD，修改param元素属性触发UPDATE，删除param元素触发DELETE。
