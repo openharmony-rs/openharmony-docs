@@ -54,7 +54,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 **描述**
 
-为用户自定义数据源的资源对象创建OH_AVSource实例，可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。
+为用户自定义数据源的资源对象创建OH_AVSource实例，可以通过调用[OH_AVSource_Destroy](#oh_avsource_destroy)接口释放实例。<br>参数dataSource生命周期需与返回的指针OH_AVSource *保持一致。
 
 **系统能力：** SystemCapability.Multimedia.Media.Spliter
 
@@ -65,7 +65,7 @@ OH_AVSource *OH_AVSource_CreateWithDataSource(OH_AVDataSource *dataSource)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) *dataSource | 用户自定义数据源。<br>参数dataSource生命周期需与返回的指针OH_AVSource *保持一致。 |
+| [OH_AVDataSource](capi-codecbase-oh-avdatasource.md) *dataSource | 用户自定义数据源。 |
 
 **返回：**
 
