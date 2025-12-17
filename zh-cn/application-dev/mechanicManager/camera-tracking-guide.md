@@ -232,4 +232,4 @@
 **验证结果说明**
 
 - 如果 `getAttachedMechDevices` 返回设备列表，表示设备识别成功。
-- 如果 `getCameraTrackingEnabled` 返回真，智能拍摄跟踪启用成功。应用打开相机后，画面中出现人脸时，设备会跟随人脸转动。00000000000000000
+- 如果 `getCameraTrackingEnabled` 返回真，智能拍摄跟踪启用成功。应用打开相机后，画面中出现人脸时，设备会跟随人脸转动。
