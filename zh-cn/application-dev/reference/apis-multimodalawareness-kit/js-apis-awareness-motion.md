@@ -54,6 +54,8 @@ on(type: 'operatingHandChanged', callback: Callback&lt;OperatingHandStatus&gt;):
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的接口ArkTS-Sta是[onOperatingHandChanged](#motiononoperatinghandChanged22)
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
@@ -104,6 +106,8 @@ off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;
 取消订阅触控操作手感知事件。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[offOperatingHandChanged](#motionoffoperatinghandChanged22)
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
@@ -292,6 +296,8 @@ onOperatingHandChanged(callback: Callback&lt;OperatingHandStatus&gt;): void;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口**：该接口对应的接口ArkTS-Dyn是[on](#motiononoperatinghandchanged)
+
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
 **系统能力**：SystemCapability.MultimodalAwareness.Motion
@@ -341,6 +347,8 @@ offOperatingHandChanged(callback?: Callback&lt;OperatingHandStatus&gt;): void;
 取消订阅触控操作手感知事件。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[off](#motionoffoperatinghandchanged)
 
 **需要权限**：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE
 
