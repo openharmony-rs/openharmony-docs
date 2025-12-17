@@ -10911,7 +10911,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template1/BindContentCoverDemo.ets",
 				"functions":[
 					{
-						"end_line":197,
+						"end_line":209,
 						"name":"bind_content_cover",
 						"start_line":16
 					}
@@ -10921,7 +10921,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template2/BindSheetDemo.ets",
 				"functions":[
 					{
-						"end_line":115,
+						"end_line":124,
 						"name":"bind_sheet_demo",
 						"start_line":16
 					}
@@ -10931,7 +10931,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template3/BindMenuDemo.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":65,
 						"name":"bind_menu_demo",
 						"start_line":16
 					}
@@ -10941,7 +10941,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template4/BindContextMenuDemo.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":88,
 						"name":"bind_context_menu_demo",
 						"start_line":16
 					}
@@ -10961,7 +10961,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template6/ModalTransitionWithIf.ets",
 				"functions":[
 					{
-						"end_line":205,
+						"end_line":212,
 						"name":"modal_transition_with_if",
 						"start_line":16
 					}
