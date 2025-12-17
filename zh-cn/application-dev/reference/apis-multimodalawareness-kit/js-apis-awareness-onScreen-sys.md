@@ -193,10 +193,10 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | appIndex   | number | 否   | 是   | 应用索引。 |
 | pageId     | string | 否   | 是   | 应用页面ID。 |
 | sampleId   | string | 否   | 是   | 采集记录ID。 |
-| collectStrategy   | number | 否   | 是   | 页面采集策略，是 [CollectStrategy](#onscreenCollectStrategy23) 的按位或运算组合。 |
+| collectStrategy   | number | 否   | 是   | 页面采集策略，是 [CollectStrategy](#onscreencollectstrategy23) 的按位或运算组合。 |
 | displayId   | number | 否   | 是   | 屏幕ID。 |
 | windowId    | number | 否   | 是   | 窗口ID。 |
-| entityInfo  | [EntityInfo](#onscreenEntityInfo23)[] | 否   | 是   | 实体信息。 |
+| entityInfo  | [EntityInfo](#onscreenentityinfo23)[] | 否   | 是   | 实体信息。 |
 
 ## onScreen.getPageContent
 
@@ -322,9 +322,9 @@ sendControlEvent(event: [ControlEvent](#onscreencontrolevent)): Promise&lt;void&
    ```
 
 ## onScreen.subscribe<sup>23+</sup>
-subscribe(capability: [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23), 
-          callback: Callback&lt;[OnscreenAwarenessInfo](#OnscreenOnscreenAwarenessInfo23)&gt;, 
-          options?: [OnscreenAwarenessOptions](#OnscreenOnscreenAwarenessOptions23)): void
+subscribe(capability: [OnscreenAwarenessCap](#onscreenonscreenawarenessCap23), 
+          callback: Callback&lt;[OnscreenAwarenessInfo](#onscreenonscreenawarenessInfo23)&gt;, 
+          options?: [OnscreenAwarenessOptions](#onscreenonscreenawarenessoptions23)): void
 
 开启屏幕内容主动感知，并订阅屏幕感知结果。
 
@@ -340,9 +340,9 @@ subscribe(capability: [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23),
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23)   | 是   | 屏上感知能力列表。 |
-| options|[OnscreenAwarenessOptions](#OnscreenOnscreenAwarenessOptions23)| 否   | 屏上感知参数列表。|
-| callback | Callback&lt;[OnscreenAwarenessInfo](#OnscreenOnscreenAwarenessInfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。|
+| capability | [OnscreenAwarenessCap](#onscreenonscreenawarenessCap23)   | 是   | 屏上感知能力列表。 |
+| options|[OnscreenAwarenessOptions](#onscreenonscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenonscreenawarenessInfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。|
 
 
 **错误码**：
@@ -386,8 +386,8 @@ subscribe(capability: [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23),
    ```
 ## onScreen.unsubscribe<sup>23+</sup>
 
-unsubscribe(capability: [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23), 
-            callback?: Callback&lt;[OnscreenAwarenessInfo](#OnscreenOnscreenAwarenessInfo23)&gt;): void
+unsubscribe(capability: [OnscreenAwarenessCap](#onscreenonscreenawarenessCap23), 
+            callback?: Callback&lt;[OnscreenAwarenessInfo](#onscreenonscreenawarenessInfo23)&gt;): void
 
 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
 
@@ -399,8 +399,8 @@ unsubscribe(capability: [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23),
 
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
-| capability | [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23)   | 是   | 屏上感知能力列表。 |
-| callback | Callback&lt;[OnscreenAwarenessInfo](#OnscreenOnscreenAwarenessInfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。|
+| capability | [OnscreenAwarenessCap](#onscreenonscreenawarenessCap23)   | 是   | 屏上感知能力列表。 |
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenonscreenawarenessInfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。|
 
 **错误码**：
 
@@ -434,8 +434,8 @@ try {
 ```
 ## onScreen.trigger<sup>23+</sup>
 
-trigger(capability: [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23), 
-        options?: [OnscreenAwarenessOptions](#OnscreenOnscreenAwarenessOptions23)): Promise&lt;[OnscreenAwarenessInfo](#OnscreenOnscreenAwarenessInfo23)&gt;
+trigger(capability: [OnscreenAwarenessCap](#onscreenonscreenawarenessCap23), 
+        options?: [OnscreenAwarenessOptions](#onscreenonscreenawarenessoptions23)): Promise&lt;[OnscreenAwarenessInfo](#onscreenonscreenawarenessInfo23)&gt;
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
 
@@ -447,15 +447,15 @@ trigger(capability: [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23),
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#OnscreenOnscreenAwarenessCap23)   | 是   | 屏上感知能力列表。 |
-| options|[OnscreenAwarenessOptions](#OnscreenOnscreenAwarenessOptions23)| 否   | 屏上感知参数列表。|
+| capability | [OnscreenAwarenessCap](#onscreenonscreenawarenessCap23)   | 是   | 屏上感知能力列表。 |
+| options|[OnscreenAwarenessOptions](#onscreenonscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
 
 **返回值：**
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo](#OnscreenOnscreenAwarenessInfo23)&gt; | Promise对象，返回屏幕感知结果。 |
+  | Promise&lt;[OnscreenAwarenessInfo](#onscreenonscreenawarenessInfo23)&gt; | Promise对象，返回屏幕感知结果。 |
 **错误码**：
 
 以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
