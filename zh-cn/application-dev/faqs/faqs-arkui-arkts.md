@@ -1,10 +1,10 @@
 # ArkTS语法使用常见问题
 
-<!--Kit: ArkUI-->	
-<!--Subsystem: ArkUI-->	
-<!--Owner: @zzq212050299;@zhangboren;@maorh-->	
-<!--Designer: @s10021109;@keerecles-->	
-<!--Tester: @TerryTsao-->	
+<!--Kit: ArkUI--> 
+<!--Subsystem: ArkUI--> 
+<!--Owner: @zzq212050299;@zhangboren;@maorh-->  
+<!--Designer: @s10021109;@keerecles-->  
+<!--Tester: @TerryTsao--> 
 <!--Adviser: @zhang_yixin13-->
 
 ## ArkUI如何通过代码动态创建组件(API 9)

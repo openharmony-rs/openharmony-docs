@@ -524,8 +524,8 @@ class C {
   }
 }
 
-let s: C = new C(-2); 	//抛出异常
-let t: C = { value: -2 };	//ArkTS不支持
+let s: C = new C(-2);   //抛出异常
+let t: C = { value: -2 }; //ArkTS不支持
 ```
 
 如果允许使用`C`来标注object literal的类型，变量`t`会导致行为的二义性。ArkTS禁止通过object literal绕过这一行为。
@@ -1660,11 +1660,11 @@ class Test {
 
 2.对于对象类型（包括函数类型）`A`，如果不确定如何初始化，建议按照以下方式之一进行初始化：
 
-​	方式(i)  `prop: A | null = null`
+​ 方式(i)  `prop: A | null = null`
 
-​	方式(ii) `prop?: A`
+​ 方式(ii) `prop?: A`
 
-​	方式三(iii) `prop： A | undefined = undefined`
+​ 方式三(iii) `prop： A | undefined = undefined`
 
 - 从性能角度看，`null`类型仅用于编译期的类型检查，不会影响虚拟机性能。而`undefined | A`被视为联合类型，运行时可能产生额外开销。
 - 从代码可读性、简洁性的角度来说，`prop?:A`是`prop： A | undefined = undefined`的语法糖，**推荐使用可选属性的写法**。
