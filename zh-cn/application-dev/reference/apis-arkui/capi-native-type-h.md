@@ -89,6 +89,7 @@
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | 定义文本菜单扩展项结构体。 |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | 定义自定义文本选择菜单结构体。 |
 | [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式。 |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md) | ArkUI_MotionPathOptions | 定义路径动画的运动路径配置项。 |
 
 ### 枚举
 
@@ -11868,3 +11869,251 @@ uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewSty
 | 类型 | 说明 |
 | -- | -- |
 | uint32_t color | 选中态拖拽文本预览样式的的背景，格式为RGBA。 |
+
+### OH_ArkUI_MotionPathOptions_Create()
+
+``` c
+ArkUI_MotionPathOptions* OH_ArkUI_MotionPathOptions_Create()
+```
+
+**描述：**
+
+创建路径动画的运动路径配置项。
+
+**起始版本：** 23
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。<br>新建的[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)对象中，路径动画的运动路径path值为空字符串，路径动画起点进度from值为0，路径动画终点进度to值为1，组件是否沿路径旋转rotatable值为false。 |
+
+### OH_ArkUI_MotionPathOptions_Dispose()
+
+``` c
+void OH_ArkUI_MotionPathOptions_Dispose(ArkUI_MotionPathOptions* options)
+```
+
+**描述：**
+
+
+销毁路径动画的运动路径配置项。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+
+### OH_ArkUI_MotionPathOptions_SetPath()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetPath(ArkUI_MotionPathOptions* options, const char* svgPath)
+```
+
+**描述：**
+
+设置路径动画的运动路径。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| const char* svgPath | 路径动画的运动路径字符串。<br>该路径支持使用"start"和"end"作为起点和终点的占位符，例如："Mstart.x start.y L50 50 Lend.x end.y Z"。路径字符串格式请参考[绘制路径](../../ui/ui-js-components-svg-path.md)。若设置为空字符串，等效于未设置路径动画。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_MotionPathOptions_GetPath()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetPath(const ArkUI_MotionPathOptions* options, char* svgPathBuffer, const int32_t bufferSize, int32_t* writeLength)
+```
+
+**描述：**
+
+获取路径动画的运动路径配置项中存储的运动路径字符串。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| char* svgPathBuffer | 存储运动路径字符串的缓冲区指针。 |
+| const int32_t bufferSize | svgPathBuffer参数的缓冲区大小。 |
+| int32_t* writeLength | 返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)时，表示实际写入缓冲区的字符串长度。 <br> 返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)时，表示如果为入参异常，writeLength不会被赋值，如果为拷贝异常，writeLength为可容纳目标字符串的最小缓冲区大小。 <br> 返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode)时，表示可容纳目标字符串的最小缓冲区大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) 缓冲区大小不足。 |
+
+### OH_ArkUI_MotionPathOptions_SetFrom()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetFrom(ArkUI_MotionPathOptions* options, const float from)
+```
+
+**描述：**
+
+设置路径动画起点进度。进度指已移动路径长度与总路径长度的比值。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| const float from | 路径动画的起点进度，取值范围为[0.0, 1.0]，且需满足from小于或等于终点进度to，否则将返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode)错误码。<br>to的含义参考[OH_ArkUI_MotionPathOptions_SetTo](#oh_arkui_motionpathoptions_setto)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) from超出[0.0, 1.0]范围，或from大于终点进度to。  |
+
+### OH_ArkUI_MotionPathOptions_GetFrom()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetFrom(const ArkUI_MotionPathOptions* options, float* from)
+```
+
+**描述：**
+
+获取路径动画的运动路径配置项中的路径动画起点进度。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| float* from | 用于接收路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)中起点进度值的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t |  错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_MotionPathOptions_SetTo()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetTo(ArkUI_MotionPathOptions* options, const float to)
+```
+
+**描述：**
+
+设置路径动画终点进度。进度指已移动路径长度与总路径长度的比值。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| const float to | 路径动画的终点进度，取值范围为[0.0, 1.0]，且需满足to大或等于起点进度from；否则将返回[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode)错误码。<br>from的含义参考[OH_ArkUI_MotionPathOptions_SetFrom](#oh_arkui_motionpathoptions_setfrom)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t |  错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。<br>[ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) to超出[0.0, 1.0]范围，或to小于起点进度from。  |
+
+### OH_ArkUI_MotionPathOptions_GetTo()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetTo(const ArkUI_MotionPathOptions* options, float* to)
+```
+
+**描述：**
+
+获取路径动画的运动路径配置项中的路径动画终点进度。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| float* to | 用于接收路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)中终点进度值的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_MotionPathOptions_SetRotatable()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_SetRotatable(ArkUI_MotionPathOptions* options, const bool rotatable)
+```
+
+**描述：**
+
+设置组件是否沿运动路径旋转。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| const bool rotatable | 组件是否沿路径旋转。true表示组件沿路径旋转；false表示组件不沿路径旋转。默认值：false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_MotionPathOptions_GetRotatable()
+
+``` c
+ArkUI_ErrorCode OH_ArkUI_MotionPathOptions_GetRotatable(const ArkUI_MotionPathOptions* options, bool* rotatable)
+```
+
+**描述：**
+
+获取组件是否沿运动路径旋转。
+
+**起始版本：** 23
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | 指向路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)的指针。 |
+| bool* rotatable | 用于接收路径动画的运动路径配置项[ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)中rotatable参数值的指针，表示组件是否沿路径旋转。<br>true表示组件沿路径旋转；false表示组件不沿路径旋转。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
