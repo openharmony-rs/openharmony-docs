@@ -34,7 +34,11 @@ ArkWeb图片上传可参考：[使用Web组件上传文件](../../../web/web-fil
 
 ### 担心使用HEIF格式图片存在兼容性问题，需使用JPEG或PNG格式的图片，如何操作
 
-可以借助Image Kit的图片编解码能力，将HEIF图片转码成JPEG图片，示例代码如下：
+可以借助Image Kit的图片编解码能力，将HEIF图片转码成JPEG或PNG格式的图片。
+
+转码的本质是将HEIF图片解码后，把解码的结果重新编码为JPEG或PNG格式的图片。通过配置编码参数，开发者可以更加灵活地控制最终获取到的图片文件格式、图片质量以及图片属性。
+
+示例代码如下：
 
 <!-- @[transcoding_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets) -->     
 
