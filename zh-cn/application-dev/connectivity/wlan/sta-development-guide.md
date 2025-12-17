@@ -132,5 +132,5 @@ try {
      console.error(`WiFi Connection failed. ${error.message}`);
    }
    ```
-6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate9)。
+6. Wi-Fi连接状态值，详情请参考[ConnState](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#connstate)。
 7. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
