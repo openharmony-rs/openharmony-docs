@@ -6,9 +6,11 @@
 
 > **说明：**
 >
-> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 该组件不支持在Wearable设备上使用。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件不支持在Wearable设备上使用。
 
 
 ## 导入模块
@@ -40,17 +42,21 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 
 | 名称 | 类型 | 必填  | 装饰器类型 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| multiFilters | Array&lt;[FilterParams](#filterparams)&gt; | 是   | ArkTS1.1: \@Prop<br>ArkTS1.2: \@PropRef | 多条件筛选列表。<br/>原子化服务仅ArkTS1.1支持。 |
-| additionFilters | [FilterParams](#filterparams) | 否   | ArkTS1.1: \@Prop<br>ArkTS1.2: \@PropRef | 附加快捷筛选项。<br/>原子化服务仅ArkTS1.1支持。 |
-| filterType | [FilterType](#filtertype) | 否   | ArkTS1.1: \@Prop<br>ArkTS1.2: \@PropRef | 筛选器的样式类型。<br/>原子化服务仅ArkTS1.1支持。 |
-| onFilterChanged | (filterResults: Array&lt;[FilterResult](#filterresult)&gt;)&nbsp;=&gt;&nbsp;void | 是   | - | 用户点击后的回调事件。回调函数的参数为选中的筛选项结果列表。 |
-| container | ()=&gt;void | 是   | \@BuilderParam | 筛选结果展示区域自定义内容，通过尾随闭包形式传入。 |
+| multiFilters | Array&lt;[FilterParams](#filterparams)&gt; | 是   | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 多条件筛选列表。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
+| additionFilters | [FilterParams](#filterparams) | 否   | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 附加快捷筛选项。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
+| filterType | [FilterType](#filtertype) | 否   | ArkTS-Dyn: \@Prop<br>ArkTS-Sta: \@PropRef | 筛选器的样式类型。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
+| onFilterChanged | (filterResults: Array&lt;[FilterResult](#filterresult)&gt;)&nbsp;=&gt;&nbsp;void | 是   | - | 用户点击后的回调事件。回调函数的参数为选中的筛选项结果列表。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
+| container | ()=&gt;void | 是   | \@BuilderParam | 筛选结果展示区域自定义内容，通过尾随闭包形式传入。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
 
 ## FilterParams
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 必填 | 说明                                                              |
 | -------- | -------- | -------- |-----------------------------------------------------------------|
@@ -63,6 +69,10 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | MULTI_LINE_FILTER | 0 | 多行可折叠类型筛选器。 |
@@ -73,6 +83,10 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 必填 | 说明                                                                       |
 | -------- | -------- | -------- |--------------------------------------------------------------------------|
@@ -87,6 +101,7 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 
 该示例设置FilterType属性为MULTI_LINE_FILTER，实现多行可折叠类型筛选器。
 
+ArkTS-Dyn示例：
 ```ts
 import { Filter, FilterParams, FilterResult, FilterType } from '@kit.ArkUI';
 
@@ -140,6 +155,70 @@ struct Index {
           })
         }.backgroundColor(Color.Gray)
         .padding({ left: 20, right: 20 })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, Component, Column, List, ForEach, ListItem, Text, TextAlign, Color, Padding, Margin
+} from '@kit.ArkUI';
+import { Filter, FilterParams, FilterResult, FilterType } from '@ohos.arkui.advanced.Filter';
+
+@Entry
+@Component
+struct Index {
+  private filterParam: Array<FilterParams> = [{
+    name: '月份',
+    options: ['全部', '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+  },
+    {
+      name: '年份',
+      options: ['全部', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012',
+        '2011', '2010', '2009', '2008'],
+    },
+    {
+      name: '节气',
+      options: ['全部', '立春', '雨水', '惊蛰', '春分', '清明', '谷雨', '立夏', '小满', '芒种', '夏至', '小暑', '大暑',
+        '立秋', '处暑', '白露', '秋分', '寒露', '霜降', '立冬', '小雪', '大雪', '冬至', '小寒', '大寒'],
+    }];
+  // additionFilters筛选行name必传，不可为空，否则整行不显示
+  private additionParam: FilterParams =
+    { name: '您还可以搜', options: ['运营栏目1', '运营栏目2', '运营栏目3', '运营栏目4', '运营栏目5', '运营栏目6'] };
+  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  build() {
+    Column() {
+      Filter({
+        multiFilters: this.filterParam,
+        additionFilters: this.additionParam,
+        filterType: FilterType.MULTI_LINE_FILTER,
+        onFilterChanged: (select: Array<FilterResult>) => {
+          console.log('rec filter change');
+          for (let filter of select) {
+            console.log('name:' + filter.name + ',index:' + filter.index + ',value:' + filter.value);
+          }
+        }
+      }) {
+        List({ initialIndex: 0 }) {
+          ForEach(this.arr, (item: number, index: int) => {
+            ListItem() {
+              Text(item.toString())
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(Color.White)
+                .margin({ top: 10, bottom: 10 } as Margin)
+            }
+          })
+        }.backgroundColor(Color.Gray)
+        .padding({ left: 20, right: 20 } as Padding)
       }
     }
     .height('100%')
