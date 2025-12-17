@@ -29,6 +29,8 @@
   - [键值型数据库跨设备数据同步 (ArkTS)](data-sync-of-kv-store.md)
   - [关系型数据库跨设备数据同步 (ArkTS)](data-sync-of-rdb-store.md)
   - [分布式数据对象跨设备数据同步 (ArkTS)](data-sync-of-distributed-data-object.md)
+<!--RP1-->
+<!--RP1End-->
 - 数据可靠性与安全性<!--data-reliability-security-->
   - [数据可靠性与安全性概述](data-reliability-security-overview.md)
   - [数据库备份与恢复 (ArkTS)](data-backup-and-restore.md)
@@ -52,3 +54,4 @@
 - [应用数据向量化 (ArkTS)](aip-data-intelligence-embedding.md)
 - [SQLite调试工具指导](sqlite-database-debug-tool.md)
 - [ArkData术语](data-terminology.md)
+- [ArkData常见问题](data-faq.md)

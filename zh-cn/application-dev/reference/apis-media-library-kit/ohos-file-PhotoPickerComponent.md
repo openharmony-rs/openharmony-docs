@@ -79,7 +79,7 @@ PhotoPickerComponent({
 
 ## PickerOptions
 
-Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10)。
+Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -338,7 +338,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | 是 | 需要保存到图库的应用沙箱图片/视频uri。trustedUris一般来自[replacePhotoPickerPreview](#replacephotopickerpreview15)替换显示成功的newUri。 |
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | 是 | 返回保存后新生成的媒体库文件对应的uri。             |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：** 传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。             |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。             |
 | saveMode | [SaveMode](#savemode15)           | 否 | 图片保存模式。             |
 
 ### updatePickerOptions<sup>22+</sup>
@@ -378,10 +378,10 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 | size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。     |
 | duration   | number                | 否 | 是   | 视频的时长（单位：毫秒），图片/动态图片时返回-1。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | 否 | 是   | 图片类型，包括DEFAULT、MOVING_PHOTO和BRUST。<br>非特殊类型图片默认为DEFAULT（0）。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。 |
-| dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
-| orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1.“TOP-left”，图像未旋转。<br>2.“TOP-right”，镜像水平翻转。<br>3.“Bottom-right”，图像旋转180°。<br>4.“Bottom-left”，镜像垂直翻转。<br>5.“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6.“Right-top”，顺时针旋转90°。<br>7.“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8.“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+| dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
+| orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1.“TOP-left”，图像未旋转。<br>2.“TOP-right”，镜像水平翻转。<br>3.“Bottom-right”，图像旋转180°。<br>4.“Bottom-left”，镜像垂直翻转。<br>5.“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6.“Right-top”，顺时针旋转90°。<br>7.“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8.“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
 | movingPhotoBadgeState<sup>22+</sup> | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否 | 是   | 动态照片的状态。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-
+| VideoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#videomode22) | 否 | 是   | 视频文件的log模式。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
 ## ItemInfo
 
 继承自[BaseItemInfo](#baseiteminfo)，增加私有参数itemType。

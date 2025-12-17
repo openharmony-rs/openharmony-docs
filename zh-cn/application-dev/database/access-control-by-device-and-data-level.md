@@ -173,28 +173,25 @@
 具体接口及功能，可见[关系型数据库](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 
-  
-```ts
-import { UIAbility } from '@kit.AbilityKit';
+<!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
+
+``` TypeScript
 import { relationalStore } from '@kit.ArkData';
-import { BusinessError } from '@kit.BasicServicesKit';
 
-export default class EntryAbility extends UIAbility {
-  async onCreate(): Promise<void> {
-    let store: relationalStore.RdbStore | undefined = undefined;
-    let context = this.context;
+let store: relationalStore.RdbStore | undefined = undefined;
+let context = getContext();
 
-    try {
-      const STORE_CONFIG: relationalStore.StoreConfig = {
-        name: 'RdbTest.db',
-        securityLevel: relationalStore.SecurityLevel.S3
-      };
-      store = await relationalStore.getRdbStore(context, STORE_CONFIG);
-      console.info('Succeeded in getting RdbStore.')
-    } catch (e) {
-      const err = e as BusinessError;
-      console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
-    }
+export async function accessControlByDeviceAndDataLevel() {
+  try {
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: 'RdbTest.db',
+      // 设置数据库安全级别为S3
+      securityLevel: relationalStore.SecurityLevel.S3
+    };
+    store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+    console.info('Succeeded in getting RdbStore.')
+  } catch (err) {
+    console.error(`Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
   }
 }
 ```

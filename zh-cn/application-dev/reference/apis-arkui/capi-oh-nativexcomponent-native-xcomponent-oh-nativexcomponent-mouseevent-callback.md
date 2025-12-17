@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct OH_NativeXComponent_MouseEvent_Callback {...} OH_NativeXComponent_MouseEvent_Callback
 ```
 
@@ -33,7 +33,7 @@ typedef struct OH_NativeXComponent_MouseEvent_Callback {...} OH_NativeXComponent
 
 ### DispatchMouseEvent()
 
-```
+```c
 void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 ```
 
@@ -53,7 +53,7 @@ void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 
 ### DispatchHoverEvent()
 
-```
+```c
 void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)
 ```
 

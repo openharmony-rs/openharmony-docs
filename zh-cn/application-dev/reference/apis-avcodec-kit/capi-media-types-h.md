@@ -33,7 +33,7 @@
 
 ### OH_Core_HdrType
 
-```
+```c
 enum OH_Core_HdrType
 ```
 

@@ -15,7 +15,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { contact } from '@kit.ContactsKit';
 ```
 
@@ -4566,6 +4566,7 @@ let myContact: contact.Contact = {
 ## ContactAttributes
 
 联系人属性列表，一般作为入参用来标识希望查询的联系人属性。
+
 当传入为null时，默认查询全部属性。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。

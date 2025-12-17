@@ -6,8 +6,8 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
-typedef struct {...} OH_NativeBundle_Metadata
+```c
+typedef struct OH_NativeBundle_Metadata {...} OH_NativeBundle_Metadata
 ```
 
 ## Overview

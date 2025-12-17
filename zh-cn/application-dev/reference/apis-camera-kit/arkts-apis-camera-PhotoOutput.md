@@ -1214,7 +1214,7 @@ isPhotoQualityPrioritizationSupported(qualityPrioritization: PhotoQualityPriorit
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import camera from '@kit.CameraKit';
+import { camera } from '@kit.CameraKit';
 let photoOutput: camera.PhotoOutput;
 
 function isPhotoQualityPrioritizationSupported(qualityPrioritization: camera.PhotoQualityPrioritization): boolean {
@@ -1260,7 +1260,7 @@ setPhotoQualityPrioritization(qualityPrioritization: PhotoQualityPrioritization)
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import camera from '@kit.CameraKit';
+import { camera } from '@kit.CameraKit';
 let photoOutput: camera.PhotoOutput;
 
 function setPhotoQualityPrioritization(qualityPrioritization: camera.PhotoQualityPrioritization): void {

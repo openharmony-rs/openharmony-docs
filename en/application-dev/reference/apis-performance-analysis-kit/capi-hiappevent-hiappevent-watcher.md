@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiAppEvent_Watcher HiAppEvent_Watcher
+```
+
 ## Overview
 
 Defines the watcher for application events.

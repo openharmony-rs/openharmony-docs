@@ -45,7 +45,7 @@ MyApplication
 │   ├── src
 │   │   └── main
 |   |       ├── cpp
-|   |       |   ├── CMakeLists.txt    //C++原生代码编译的配置文件 
+|   |       |   ├── CMakeLists.txt    //C++代码编译的配置文件 
 |   |       |   └── napi_init.cpp     //NAPI模块初始化的C++文件
 │   │       ├── ets
 │   │       │   └── pages
@@ -161,15 +161,15 @@ export { nativeMulti } from './src/main/ets/utils/nativeTest';
 <!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-        // library/src/main/ets/pages/Index.ets
-        // 正确用例
-        Image($r('app.media.example'))
-          .id('example')
-          .borderRadius('48px')
-        // // 错误用例
-        Image("../../resources/base/media/example.png")
-          .id('example')
-          .borderRadius('48px')
+// library/src/main/ets/pages/Index.ets
+// 正确用例
+Image($r('app.media.example'))
+  .id('example')
+  .borderRadius('48px')
+// // 错误用例
+Image("../../resources/base/media/example.png")
+  .id('example')
+  .borderRadius('48px')
 ```
 
 
@@ -490,4 +490,4 @@ export struct Library_Menu {
 ```
 
 
-页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-navigation.md#路由操作)。
+页面跳转和页面返回都使用了Navigation的特性，详情参考[Navigation跳转](../ui/arkts-navigation-jump.md#路由操作)。

@@ -41,7 +41,7 @@
 
 ### OH_ResourceManager_GetRawFileName()
 
-```
+```c
 const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 ```
 
@@ -71,7 +71,7 @@ const char *OH_ResourceManager_GetRawFileName(RawDir *rawDir, int index)
 
 ### OH_ResourceManager_GetRawFileCount()
 
-```
+```c
 int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 ```
 
@@ -100,7 +100,7 @@ int OH_ResourceManager_GetRawFileCount(RawDir *rawDir)
 
 ### OH_ResourceManager_CloseRawDir()
 
-```
+```c
 void OH_ResourceManager_CloseRawDir(RawDir *rawDir)
 ```
 

@@ -137,8 +137,7 @@ struct WebComponent {
 
 Web组件支持前端页面上传图片文件时调用相机即时拍照，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求并自行拉起相机，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面调用相机的请求。
 
-此示例中，应用侧通过监听[onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)事件并返回`true`拦截ArkWeb默认弹窗,并调用系统CameraPicker拉起相机。
-应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
+此示例中，应用侧通过监听[onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)事件并返回`true`拦截ArkWeb默认弹窗,并调用系统CameraPicker拉起相机。应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
 
 ```ts
 // xxx.ets
@@ -323,8 +322,7 @@ struct Index {
 
 ## 自定义处理js接口拉起的文件请求
 
-从API version 23开始，在OnShowFileSelectorEvent的FileSelectorParam中新增接口
-getSuggestedName()、getDefaultPath()、getDescriptions()、isAcceptAllOptionExcluded()。
+从API version 23开始，在OnShowFileSelectorEvent的FileSelectorParam中新增接口getSuggestedName()、getDefaultPath()、getDescriptions()、isAcceptAllOptionExcluded()。
 
 新增接口对上传保存文件能力进行了增强，以对标W3C能力，用于支持用户获取到HTML前端通过`showSaveFilePicker`、`showOpenFilePicker`、`showDirectoryPicker`等方法传递的option参数(参考下方加载的html文件)里的数据。
 
@@ -337,6 +335,8 @@ API version 23 新增支持如下option中的成员：
 `excludeAcceptAllOption`对应接口[isAcceptAllOptionExcluded](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#isacceptalloptionexcluded23)。
 
 `startIn`对应接口[getDefaultPath](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdefaultpath23)。
+
+`types`对应接口[getAcceptableFileTypes](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getacceptablefiletypes23)。
 
 index.html代码。
 ```html
@@ -353,15 +353,16 @@ index.html代码。
     async function saveFile() {
         const options = {
             startIn: 'documents',
-            suggestedName: 'example',
+            suggestedName: 'example.txt',
             types: [
                 {
                     description: '文本文件',
-                    accept: {'text/plain': ['.txt']}
+                    accept: {'text/plain': ['.txt','.text','.doc','.docx'],
+                             'video/mp4': ['.mp4','.avi','.av1','.vp9']}
                 },
                 {
                     description: '视频',
-                    accept: {'video/mp4': ['.mp4']}
+                    accept: {'video/mp4': ['.mp4','.avi','.av1','.vp9']}
                 }
             ],
             excludeAcceptAllOption: true
@@ -405,6 +406,16 @@ function getUri(path : string) {
   }
   return defaultBasePath + path;
 }
+
+function getFileName(name : string) {
+  let fileName = name;
+  let lastDotIndex = name.lastIndexOf('.');
+  if (lastDotIndex !== -1) {
+    fileName = name.substring(0, lastDotIndex);
+  }
+  return fileName;
+}
+
 @Entry
 @Component
 struct WebComponent {
@@ -420,12 +431,21 @@ struct WebComponent {
           console.info('onShowFileSelector AcceptAllOptionExcluded is ' + event.fileSelector.isAcceptAllOptionExcluded());
           const documentSaveOptions = new picker.DocumentSaveOptions();
           documentSaveOptions.newFileNames = new Array<string>();
-          documentSaveOptions.newFileName.push(event.fileSelector.getSuggestedName());
+          documentSaveOptions.newFileNames.push(getFileName(event.fileSelector.getSuggestedName()));
           documentSaveOptions.defaultFilePathUri = getUri(event.fileSelector.getDefaultPath());
+          let accepts : Array<Array<AcceptableFileType>> = event.fileSelector.getAcceptableFileTypes();
           let descriptions : Array<string> = event.fileSelector.getDescriptions();
           documentSaveOptions.fileSuffixChoices = new Array<string>();
-          for (let i = 0; i < descriptions.length; i++) {
-            documentSaveOptions.fileSuffixChoices.push(descriptions[i] + '(.mp3,.mp4)' + '|' + '.mp3,.mp4');
+          let n = accepts.length;
+          for (let i = 0; i < n; i++) {
+            let m = accepts[i].length;
+            let extList = Array<string>();
+            for (let j = 0; j < m; j++) {
+              extList.push(accepts[i][j].acceptableType.join(','));
+            }
+            let ext = extList.join(',');
+            let desc = descriptions[i] + '(' + ext + ')' + '|';
+            documentSaveOptions.fileSuffixChoices.push(desc + ext);
           }
           if (!event.fileSelector.isAcceptAllOptionExcluded()) {
             documentSaveOptions.fileSuffixChoices.push('所有文件(*.*)' + '|' + '*.*');

@@ -419,6 +419,7 @@
     - [SaveButton](arkui-ts/ts-security-components-savebutton.md)
     <!--Del-->
     - [SaveButton (系统接口)](arkui-ts/ts-security-components-savebutton-sys.md)
+    - [安全控件通用属性 (系统接口)](arkui-ts/ts-securitycomponent-attributes-sys.md)
     <!--DelEnd-->
   - 主题<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
@@ -681,6 +682,7 @@
     - [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
     - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
+    - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
     - [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)
@@ -729,6 +731,7 @@
     - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
     - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
     - [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
+    - [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)

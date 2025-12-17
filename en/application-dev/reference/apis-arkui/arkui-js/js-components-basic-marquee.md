@@ -1,4 +1,10 @@
 # marquee
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @hddgzw-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >

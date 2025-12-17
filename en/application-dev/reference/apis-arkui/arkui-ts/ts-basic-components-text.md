@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @HelloCrease-->
 
@@ -1300,8 +1300,7 @@ Binds to or updates the specified styled string.
 >
 >  Since API version 15, the **TextController** object retains the styled string. Once it is bound to a **Text** component, the stored content is automatically applied and rendered.
 >  
->  This behavior difference is especially relevant when you set styled strings in the [aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear) lifecycle callback. It is ineffective in API version 14 and earlier, but works as expected since API version 15. For best practices, see [Creating and Applying a StyledString Object](../../../ui/arkts-styled-string.md#creating-and-applying-a-styledstring-object).
-
+>  This behavior difference is especially relevant when you set styled strings in the [aboutToAppear](./ts-custom-component-lifecycle.md#abouttoappear) lifecycle callback. It is ineffective in API version 14 and earlier, but works as expected since API version 15. For best practices, see [Creating and Applying a StyledString or MutableStyledString Object](../../../ui/arkts-styled-string.md#creating-and-applying-a-styledstring-or-mutablestyledstring-object).
 
 
 ### getLayoutManager<sup>12+</sup>
@@ -2175,7 +2174,7 @@ struct TextExample11 {
 
 ### Example 12: Setting Custom Menu Extensions
 
-This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can also be configured through the [onPrepareMenu](ts-text-common.md#onpreparemenu20) callback (available since API version 20).
+This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can also be configured through the [OnPrepareMenuCallback](ts-text-common.md#onpreparemenucallback20) callback (available since API version 20).
 
 ```ts
 // xxx.ets

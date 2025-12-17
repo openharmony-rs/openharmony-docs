@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -60,7 +60,7 @@
 | color                    | &lt;color&gt;              | \#e6000000 | 否    | 单行输入框或者按钮的文本颜色。                          |
 | font-size                | &lt;length&gt;             | 16px       | 否    | 单行输入框或者按钮的文本尺寸。                          |
 | allow-scale              | boolean                    | true       | 否    | 单行输入框或者按钮的文本尺寸是否跟随系统设置字体缩放尺寸进行放大缩小。true表示跟随，false表示不跟随。<br/>如果在config描述文件中针对ability配置了fontSize的config-changes标签，则应用不会重启而直接生效。 |
-| placeholder-color        | &lt;color&gt;              | \#99000000 | 否    | 单行输入框的提示文本的颜色，type为text\|email\|date\|time\|number\|password时生效。 |
+| placeholder-color        | &lt;color&gt;              | \#99000000 | 否    | 单行输入框的提示文本的颜色，type为text \| email \| date \| time \| number \| password时生效。 |
 | font-weight              | number&nbsp;\|&nbsp;string | normal     | 否    | 单行输入框或者按钮的字体粗细，见[text组件font-weight的样式属性](js-components-basic-text.md#样式)。 |
 | caret-color<sup>6+</sup> | &lt;color&gt;              | -          | 否    | 设置输入光标的颜色。                               |
 
@@ -93,9 +93,9 @@
 
 | 名称                  | 参数                                       | 描述                                       |
 | ------------------- | ---------------------------------------- | ---------------------------------------- |
-| focus               | {<br>&nbsp;focus:&nbsp;true\|false<br>&nbsp;}，<br>focus不传值时默认为true。 | 使组件获得或者失去焦点，type为text\|email\|date\|time\|number\|password时，可弹出或收起输入法。 |
-| showError           | {<br>&nbsp;error:&nbsp;string&nbsp;<br>} | 展示输入错误提示，type为text\|email\|date\|time\|number\|password时生效。 |
-| delete<sup>6+</sup> | -                                        | type为text\|email\|date\|time\|number\|password时，根据当前光标位置删除文本内容，如果当前输入组件没有光标，默认删除最后一个字符并展示光标。 |
+| focus               | {<br>&nbsp;focus:&nbsp;true\|false<br>&nbsp;}，<br>focus不传值时默认为true。 | 使组件获得或者失去焦点，type为text \| email \| date \| time \| number \| password时，可弹出或收起输入法。 |
+| showError           | {<br>&nbsp;error:&nbsp;string&nbsp;<br>} | 展示输入错误提示，type为text \| email \| date \| time \| number \| password时生效。 |
+| delete<sup>6+</sup> | -                                        | type为text \| email \| date \| time \| number \| password时，根据当前光标位置删除文本内容，如果当前输入组件没有光标，默认删除最后一个字符并展示光标。 |
 
 ## 示例
 

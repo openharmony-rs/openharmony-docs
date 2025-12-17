@@ -64,7 +64,7 @@
 
 ### OH_AVPixelFormat
 
-```
+```c
 enum OH_AVPixelFormat
 ```
 
@@ -90,7 +90,7 @@ enum OH_AVPixelFormat
 
 ### OH_AVFormat_Create()
 
-```
+```c
 struct OH_AVFormat *OH_AVFormat_Create(void)
 ```
 
@@ -110,7 +110,7 @@ struct OH_AVFormat *OH_AVFormat_Create(void)
 
 ### OH_AVFormat_CreateAudioFormat()
 
-```
+```c
 struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t sampleRate, int32_t channelCount)
 ```
 
@@ -139,7 +139,7 @@ struct OH_AVFormat *OH_AVFormat_CreateAudioFormat(const char *mimeType, int32_t 
 
 ### OH_AVFormat_CreateVideoFormat()
 
-```
+```c
 struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t width, int32_t height)
 ```
 
@@ -166,7 +166,7 @@ struct OH_AVFormat *OH_AVFormat_CreateVideoFormat(const char *mimeType, int32_t 
 
 ### OH_AVFormat_Destroy()
 
-```
+```c
 void OH_AVFormat_Destroy(struct OH_AVFormat *format)
 ```
 
@@ -187,7 +187,7 @@ void OH_AVFormat_Destroy(struct OH_AVFormat *format)
 
 ### OH_AVFormat_Copy()
 
-```
+```c
 bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)
 ```
 
@@ -215,7 +215,7 @@ bool OH_AVFormat_Copy(struct OH_AVFormat *to, struct OH_AVFormat *from)
 
 ### OH_AVFormat_SetIntValue()
 
-```
+```c
 bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_t value)
 ```
 
@@ -244,7 +244,7 @@ bool OH_AVFormat_SetIntValue(struct OH_AVFormat *format, const char *key, int32_
 
 ### OH_AVFormat_SetLongValue()
 
-```
+```c
 bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64_t value)
 ```
 
@@ -273,7 +273,7 @@ bool OH_AVFormat_SetLongValue(struct OH_AVFormat *format, const char *key, int64
 
 ### OH_AVFormat_SetFloatValue()
 
-```
+```c
 bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, float value)
 ```
 
@@ -302,7 +302,7 @@ bool OH_AVFormat_SetFloatValue(struct OH_AVFormat *format, const char *key, floa
 
 ### OH_AVFormat_SetDoubleValue()
 
-```
+```c
 bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, double value)
 ```
 
@@ -331,7 +331,7 @@ bool OH_AVFormat_SetDoubleValue(struct OH_AVFormat *format, const char *key, dou
 
 ### OH_AVFormat_SetStringValue()
 
-```
+```c
 bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, const char *value)
 ```
 
@@ -360,7 +360,7 @@ bool OH_AVFormat_SetStringValue(struct OH_AVFormat *format, const char *key, con
 
 ### OH_AVFormat_SetBuffer()
 
-```
+```c
 bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const uint8_t *addr, size_t size)
 ```
 
@@ -390,7 +390,7 @@ bool OH_AVFormat_SetBuffer(struct OH_AVFormat *format, const char *key, const ui
 
 ### OH_AVFormat_GetIntValue()
 
-```
+```c
 bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_t *out)
 ```
 
@@ -419,7 +419,7 @@ bool OH_AVFormat_GetIntValue(struct OH_AVFormat *format, const char *key, int32_
 
 ### OH_AVFormat_GetLongValue()
 
-```
+```c
 bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64_t *out)
 ```
 
@@ -448,7 +448,7 @@ bool OH_AVFormat_GetLongValue(struct OH_AVFormat *format, const char *key, int64
 
 ### OH_AVFormat_GetFloatValue()
 
-```
+```c
 bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, float *out)
 ```
 
@@ -477,7 +477,7 @@ bool OH_AVFormat_GetFloatValue(struct OH_AVFormat *format, const char *key, floa
 
 ### OH_AVFormat_GetDoubleValue()
 
-```
+```c
 bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, double *out)
 ```
 
@@ -506,7 +506,7 @@ bool OH_AVFormat_GetDoubleValue(struct OH_AVFormat *format, const char *key, dou
 
 ### OH_AVFormat_GetStringValue()
 
-```
+```c
 bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, const char **out)
 ```
 
@@ -535,7 +535,7 @@ bool OH_AVFormat_GetStringValue(struct OH_AVFormat *format, const char *key, con
 
 ### OH_AVFormat_GetBuffer()
 
-```
+```c
 bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t **addr, size_t *size)
 ```
 
@@ -565,7 +565,7 @@ bool OH_AVFormat_GetBuffer(struct OH_AVFormat *format, const char *key, uint8_t 
 
 ### OH_AVFormat_GetIntBuffer()
 
-```
+```c
 bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32_t **addr, size_t *size)
 ```
 
@@ -595,7 +595,7 @@ bool OH_AVFormat_GetIntBuffer(struct OH_AVFormat *format, const char *key, int32
 
 ### OH_AVFormat_DumpInfo()
 
-```
+```c
 const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
 ```
 
@@ -622,7 +622,7 @@ const char *OH_AVFormat_DumpInfo(struct OH_AVFormat *format)
 
 ### OH_AVFormat_SetIntBuffer()
 
-```
+```c
 bool OH_AVFormat_SetIntBuffer(struct OH_AVFormat *format, const char *key, const int32_t *addr, size_t size)
 ```
 

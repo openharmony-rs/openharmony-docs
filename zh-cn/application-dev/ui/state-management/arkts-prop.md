@@ -8,7 +8,7 @@
 
 \@Prop装饰的变量可以和父组件建立单向同步关系。
 
-在阅读\@Prop文档前，建议开发者首先了解[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
+在阅读\@Prop文档前，建议开发者首先了解[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
 > **说明：**
 >
@@ -54,7 +54,7 @@
 
 \@Prop装饰的数据可以观察到以下变化。
 
-- 当装饰支持类型，可以观察到赋值的变化。
+- 当装饰支持类型，可以观察到赋值的变化。简单类型完整示例请参考[父组件\@State到子组件\@Prop简单数据类型同步](#父组件state到子组件prop简单数据类型同步)。
 
   ```ts
   // 简单类型
@@ -67,7 +67,7 @@
   this.title = new Model('Hi');
   ```
 
-- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。
+- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop简单类型的同步](#从父组件中的state类对象属性到prop简单类型的同步)。
 
   <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
@@ -112,7 +112,7 @@
 
 对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考[@Prop嵌套场景](#prop嵌套场景)。
 
-- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。
+- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。数组类型完整示例请参考[父组件\@State数组项到子组件\@Prop简单数据类型同步](#父组件state数组项到子组件prop简单数据类型同步)。
 
   ```ts
   // @Prop装饰的对象为数组时
@@ -968,242 +968,6 @@ struct Zoo {
         .onClick(() => {
           // 赋值为undefined
           this.animal = undefined;
-        })
-    }
-  }
-}
-```
-
-## 常见问题
-
-### \@Prop装饰状态变量未初始化错误
-
-\@Prop需要被初始化，如果没有进行本地初始化的，则必须通过父组件进行初始化。如果进行了本地初始化，那么是可以不通过父组件进行初始化的。
-
-【反例】
-
-```ts
-@Observed
-class Commodity {
-  public price: number = 0;
-
-  constructor(price: number) {
-    this.price = price;
-  }
-}
-
-@Component
-struct PropChild {
-  @Prop fruit: Commodity; // 未进行本地初始化
-
-  build() {
-    Text(`PropChild fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State fruit: Commodity[] = [new Commodity(1)];
-
-  build() {
-    Column() {
-      Text(`Parent fruit ${this.fruit[0].price}`)
-        .onClick(() => {
-          this.fruit[0].price += 1;
-        })
-
-      // @Prop本地没有初始化，也没有从父组件初始化
-      PropChild()
-    }
-  }
-}
-```
-
-【正例】
-
-<!-- @[prop_fourteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFourteen.ets) -->
-
-``` TypeScript
-@Observed
-class Commodity {
-  public price: number = 0;
-
-  constructor(price: number) {
-    this.price = price;
-  }
-}
-
-@Component
-struct PropChild1 {
-  @Prop fruit: Commodity; // 未进行本地初始化
-
-  build() {
-    Text(`PropChild1 fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Component
-struct PropChild2 {
-  @Prop fruit: Commodity = new Commodity(1); // 进行本地初始化
-
-  build() {
-    Text(`PropChild2 fruit ${this.fruit.price}`)
-      .onClick(() => {
-        this.fruit.price += 1;
-      })
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State fruit: Commodity[] = [new Commodity(1)];
-
-  build() {
-    Column() {
-      Text(`Parent fruit ${this.fruit[0].price}`)
-        .onClick(() => {
-          this.fruit[0].price += 1;
-        })
-
-      // @PropChild1本地没有初始化，必须从父组件初始化
-      PropChild1({ fruit: this.fruit[0] })
-      // @PropChild2本地进行了初始化，可以不从父组件初始化，也可以从父组件初始化
-      PropChild2()
-      PropChild2({ fruit: this.fruit[0] })
-    }
-  }
-}
-```
-
-### 使用a.b(this.object)形式调用，不会触发UI刷新
-
-在build方法内，当@Prop装饰的变量是Object类型、且通过a.b(this.object)形式调用时，b方法内传入的是this.object的原始对象，修改其属性，无法触发UI刷新。如下例中，通过静态方法Score.changeScore1或者this.changeScore2修改自定义组件Child中的this.score.value时，UI不会刷新。
-
-【反例】
-
-```ts
-class Score {
-  value: number;
-  constructor(value: number) {
-    this.value = value;
-  }
-
-  static changeScore1(param1:Score) {
-    param1.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      Child({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct Child {
-  @Prop score: Score;
-
-  changeScore2(param2:Score) {
-    param2.value += 2;
-  }
-
-  build() {
-    Column({space:8}) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(()=>{
-          // 通过静态方法调用，无法触发UI刷新
-          Score.changeScore1(this.score);
-        })
-      Button(`changeScore2`)
-        .onClick(()=>{
-          // 使用this通过自定义组件内部方法调用，无法触发UI刷新
-          this.changeScore2(this.score);
-        })
-    }
-  }
-}
-```
-
-可以通过如下先赋值、再调用新赋值的变量的方式为this.score加上Proxy代理，实现UI刷新。
-
-【正例】
-
-<!-- @[prop_fifteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFifteen.ets) -->
-
-``` TypeScript
-class Score {
-  public value: number;
-
-  constructor(value: number) {
-    this.value = value;
-  }
-
-  static changeScore1(score: Score) {
-    score.value += 1;
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State score: Score = new Score(1);
-
-  build() {
-    Column({ space: 8 }) {
-      Text(`The value in Parent is ${this.score.value}.`)
-        .fontSize(30)
-        .fontColor(Color.Red)
-      Child({ score: this.score })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Component
-struct Child {
-  @Prop score: Score;
-
-  changeScore2(score: Score) {
-    score.value += 2;
-  }
-
-  build() {
-    Column({ space: 8 }) {
-      Text(`The value in Child is ${this.score.value}.`)
-        .fontSize(30)
-      Button(`changeScore1`)
-        .onClick(() => {
-          // 通过赋值添加 Proxy 代理
-          let score1 = this.score;
-          Score.changeScore1(score1);
-        })
-      Button(`changeScore2`)
-        .onClick(() => {
-          // 通过赋值添加 Proxy 代理
-          let score2 = this.score;
-          this.changeScore2(score2);
         })
     }
   }

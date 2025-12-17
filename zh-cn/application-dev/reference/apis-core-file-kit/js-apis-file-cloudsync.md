@@ -125,9 +125,9 @@ constructor()
 
 **示例：**
 
-  ```ts
-  let fileSync = new cloudSync.FileSync()
-  ```
+```ts
+let fileSync = new cloudSync.FileSync()
+```
 
 ### on<sup>12+</sup>
 
@@ -155,14 +155,14 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 
 **示例：**
 
-  ```ts
-  let fileSync = new cloudSync.FileSync();
-  let callback = (pg: cloudSync.SyncProgress) => {
-    console.info("file sync state：" + pg.state + "error type:" + pg.error);
-  }
+```ts
+let fileSync = new cloudSync.FileSync();
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+}
 
-  fileSync.on('progress', callback);
-  ```
+fileSync.on('progress', callback);
+```
 
 ### off<sup>12+</sup>
 
@@ -190,17 +190,17 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
 **示例：**
 
-  ```ts
-  let fileSync = new cloudSync.FileSync();
+```ts
+let fileSync = new cloudSync.FileSync();
 
-  let callback = (pg: cloudSync.SyncProgress) => {
-    console.info("file sync state：" + pg.state + "error type:" + pg.error);
-  }
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+}
 
-  fileSync.on('progress', callback);
+fileSync.on('progress', callback);
 
-  fileSync.off('progress', callback);
-  ```
+fileSync.off('progress', callback);
+```
 
 ### start<sup>12+</sup>
 
@@ -230,23 +230,23 @@ start(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  let callback = (pg: cloudSync.SyncProgress) => {
-    console.info("file sync state：" + pg.state + "error type:" + pg.error);
-  }
+let callback = (pg: cloudSync.SyncProgress) => {
+  console.info("file sync state：" + pg.state + "error type:" + pg.error);
+}
 
-  fileSync.on('progress', callback);
+fileSync.on('progress', callback);
 
-  fileSync.start().then(() => {
-    console.info("start sync successfully");
-  }).catch((err: BusinessError) => {
-    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileSync.start().then(() => {
+  console.info("start sync successfully");
+}).catch((err: BusinessError) => {
+  console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### start<sup>12+</sup>
 
@@ -276,19 +276,19 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.start((err: BusinessError) => {
-    if (err) {
-      console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("start sync successfully");
-    }
-  });
-  ```
+fileSync.start((err: BusinessError) => {
+  if (err) {
+    console.error("start sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start sync successfully");
+  }
+});
+```
 
 ### stop<sup>12+</sup>
 
@@ -317,17 +317,17 @@ stop(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.stop().then(() => {
-    console.info("stop sync successfully");
-  }).catch((err: BusinessError) => {
-    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileSync.stop().then(() => {
+  console.info("stop sync successfully");
+}).catch((err: BusinessError) => {
+  console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### stop<sup>12+</sup>
 
@@ -356,19 +356,19 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.stop((err: BusinessError) => {
-    if (err) {
-      console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("stop sync successfully");
-    }
-  });
-  ```
+fileSync.stop((err: BusinessError) => {
+  if (err) {
+    console.error("stop sync failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop sync successfully");
+  }
+});
+```
 
 ### getLastSyncTime<sup>12+</sup>
 
@@ -395,19 +395,19 @@ getLastSyncTime(): Promise&lt;number&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.getLastSyncTime().then((timeStamp: number) => {
-    let date = new Date(timeStamp);
-    console.info("get last sync time successfully:"+ date);
-  }).catch((err: BusinessError) => {
-    console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
-  });
+fileSync.getLastSyncTime().then((timeStamp: number) => {
+  let date = new Date(timeStamp);
+  console.info("get last sync time successfully:"+ date);
+}).catch((err: BusinessError) => {
+  console.error("get last sync time failed with error message: " + err.message + ", error code: " + err.code);
+});
 
-  ```
+```
 
 ### getLastSyncTime<sup>12+</sup>
 
@@ -434,20 +434,20 @@ getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileSync = new cloudSync.FileSync();
+let fileSync = new cloudSync.FileSync();
 
-  fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
-    if (err) {
-      console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      let date = new Date(timeStamp);
-      console.info("get last sync time successfully:"+ date);
-    }
-  });
-  ```
+fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
+  if (err) {
+    console.error("get last sync time with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    let date = new Date(timeStamp);
+    console.info("get last sync time successfully:"+ date);
+  }
+});
+```
 
 ## CloudFileCache<sup>11+</sup>
 
@@ -473,9 +473,9 @@ constructor()
 
 **示例：**
 
-  ```ts
-  let fileCache = new cloudSync.CloudFileCache();
-  ```
+```ts
+let fileCache = new cloudSync.CloudFileCache();
+```
 
 ### on<sup>11+</sup>
 
@@ -503,21 +503,21 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (pg: cloudSync.DownloadProgress) => {
-    console.info("download state：" + pg.state);
-  };
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (pg: cloudSync.DownloadProgress) => {
+  console.info("download state：" + pg.state);
+};
 
-  try {
-    fileCache.on('progress', callback);
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+try {
+  fileCache.on('progress', callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### on<sup>20+</sup>
 
@@ -545,26 +545,26 @@ on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): voi
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (data: cloudSync.MultiDownloadProgress) => {
-    console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSync.State.COMPLETED) {
-      console.info('Batch download finished.');
-    } else if (data.state == cloudSync.State.FAILED) {
-      console.info(`Batch download stopped, error type: ${data.errType}.`);
-    }
-  };
-
-  try {
-    fileCache.on('batchDownload', callback);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.COMPLETED) {
+    console.info('Batch download finished.');
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
   }
-  ```
+};
+
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### off<sup>11+</sup>
 
@@ -592,23 +592,23 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
+let fileCache = new cloudSync.CloudFileCache();
 
-  let callback = (pg: cloudSync.DownloadProgress) => {
-    console.info("download state：" + pg.state);
-  }
+let callback = (pg: cloudSync.DownloadProgress) => {
+  console.info("download state：" + pg.state);
+}
 
-  try {
-    fileCache.on('progress', callback);
-    fileCache.off('progress', callback);
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+try {
+  fileCache.on('progress', callback);
+  fileCache.off('progress', callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### off<sup>20+</sup>
 
@@ -636,22 +636,22 @@ off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): v
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (pg: cloudSync.MultiDownloadProgress) => {
-    console.info("download state：" + pg.state);
-  }
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (pg: cloudSync.MultiDownloadProgress) => {
+  console.info("download state：" + pg.state);
+}
 
-  try {
-    fileCache.on('batchDownload', callback);
-    fileCache.off('batchDownload', callback);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+try {
+  fileCache.on('batchDownload', callback);
+  fileCache.off('batchDownload', callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### start<sup>11+</sup>
 
@@ -687,29 +687,29 @@ start(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  try {
-    fileCache.on('progress', (pg: cloudSync.DownloadProgress) => {
-      console.info("download state:" + pg.state);
-    });
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Error code: ${error.code}, message: ${error.message}`);
-  }
-
-  fileCache.start(uri).then(() => {
-    console.info("start download successfully");
-  }).catch((err: BusinessError) => {
-    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+try {
+  fileCache.on('progress', (pg: cloudSync.DownloadProgress) => {
+    console.info("download state:" + pg.state);
   });
-  ```
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Error code: ${error.code}, message: ${error.message}`);
+}
+
+fileCache.start(uri).then(() => {
+  console.info("start download successfully");
+}).catch((err: BusinessError) => {
+  console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### start<sup>11+</sup>
 
@@ -740,22 +740,22 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  fileCache.start(uri, (err: BusinessError) => {
-    if (err) {
-      console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("start download successfully");
-    }
-  });
-  ```
+fileCache.start(uri, (err: BusinessError) => {
+  if (err) {
+    console.error("start download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("start download successfully");
+  }
+});
+```
 
 ### startBatch<sup>20+</sup>
 
@@ -794,26 +794,26 @@ startBatch(uris: Array&lt;string&gt;, fileType?: DownloadFileType): Promise&lt;n
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  try {
-    fileCache.on('batchDownload', (pg: cloudSync.MultiDownloadProgress) => {
-      console.info(`batch download state：${pg.state}`);
-    });
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
-  }
-
-  let uriList: Array<string> = [];
-  fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
-    console.info(`start batch download successfully, taskId: ${downloadId}`);
-  }).catch((err: BusinessError) => {
-    console.error(`start download failed with error message: ${err.message}, error code: ${err.code}`);
+let fileCache = new cloudSync.CloudFileCache();
+try {
+  fileCache.on('batchDownload', (pg: cloudSync.MultiDownloadProgress) => {
+    console.info(`batch download state：${pg.state}`);
   });
-  ```
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to unregister download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  console.info(`start batch download successfully, taskId: ${downloadId}`);
+}).catch((err: BusinessError) => {
+  console.error(`start download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### stop<sup>11+</sup>
 
@@ -851,20 +851,20 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  fileCache.stop(uri, true).then(() => {
-    console.info("stop download successfully");
-  }).catch((err: BusinessError) => {
-    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileCache.stop(uri, true).then(() => {
+  console.info("stop download successfully");
+}).catch((err: BusinessError) => {
+  console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### stop<sup>11+</sup>
 
@@ -896,22 +896,22 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  fileCache.stop(uri, (err: BusinessError) => {
-    if (err) {
-      console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("stop download successfully");
-    }
-  });
-  ```
+fileCache.stop(uri, (err: BusinessError) => {
+  if (err) {
+    console.error("stop download failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("stop download successfully");
+  }
+});
+```
 
 ### stopBatch<sup>20+</sup>
 
@@ -948,28 +948,28 @@ stopBatch(downloadId: number, needClean?: boolean): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let taskId = -1;
-  let uriList: Array<string> = [];
-  let fileCache = new cloudSync.CloudFileCache();
-  fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
-    taskId = downloadId;
-    console.info("start batch download successfully");
+let taskId = -1;
+let uriList: Array<string> = [];
+let fileCache = new cloudSync.CloudFileCache();
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  taskId = downloadId;
+  console.info("start batch download successfully");
+}).catch((err: BusinessError) => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+
+let needStop = true;
+if (needStop && taskId > 0) {
+  fileCache.stopBatch(taskId, true).then(() => {
+    console.info("stop batch download successfully");
   }).catch((err: BusinessError) => {
-    console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+    console.error(`stop batch download failed with error message: ${err.message}, error code: ${err.code}`);
   });
-
-  let needStop = true;
-  if (needStop && taskId > 0) {
-    fileCache.stopBatch(taskId, true).then(() => {
-      console.info("stop batch download successfully");
-    }).catch((err: BusinessError) => {
-      console.error(`stop batch download failed with error message: ${err.message}, error code: ${err.code}`);
-    });
-  }
-  ```
+}
+```
 
 ### cleanFileCache<sup>20+</sup>
 
@@ -1001,22 +1001,22 @@ cleanFileCache(uri: string): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let fileCache = new cloudSync.CloudFileCache();
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let fileCache = new cloudSync.CloudFileCache();
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  try {
-    fileCache.cleanFileCache(uri);
-  } catch (err) {
-    let error:BusinessError = err as BusinessError;
-    console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
-  } 
+try {
+  fileCache.cleanFileCache(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error("clean file cache failed with error message: " + err.message + ", error code: " + err.code);
+}
 
-  ```
+```
 
 ## DownloadErrorType<sup>11+</sup>
 
@@ -1100,35 +1100,35 @@ getFailedFiles(): Array&lt;FailedFileInfo&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let taskId = -1;
-  let failedList: Array<cloudSync.FailedFileInfo> = [];
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (data: cloudSync.MultiDownloadProgress) => {
-    console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSync.State.FAILED) {
-      console.info(`Batch download stopped, error type: ${data.errType}.`);
-      failedList = data.getFailedFiles();
-    }
-  };
-
-  try {
-    fileCache.on('batchDownload', callback);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+let taskId = -1;
+let failedList: Array<cloudSync.FailedFileInfo> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.FAILED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    failedList = data.getFailedFiles();
   }
+};
 
-  let uriList: Array<string> = [];
-  fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
-    taskId = downloadId;
-    console.info("start batch download successfully");
-  }).catch((err: BusinessError) => {
-    console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  taskId = downloadId;
+  console.info("start batch download successfully");
+}).catch((err: BusinessError) => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### getSuccessfulFiles<sup>20+</sup>
 
@@ -1154,33 +1154,33 @@ getSuccessfulFiles(): Array&lt;string&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let finishedList: Array<string> = [];
-  let fileCache = new cloudSync.CloudFileCache();
-  let callback = (data: cloudSync.MultiDownloadProgress) => {
-    console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSync.State.COMPLETED) {
-      console.info(`Batch download stopped, error type: ${data.errType}.`);
-      finishedList = data.getSuccessfulFiles();
-    }
-  };
-
-  try {
-    fileCache.on('batchDownload', callback);
-  } catch (e) {
-    const error = e as BusinessError;
-    console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+let finishedList: Array<string> = [];
+let fileCache = new cloudSync.CloudFileCache();
+let callback = (data: cloudSync.MultiDownloadProgress) => {
+  console.info(`Batch download progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSync.State.COMPLETED) {
+    console.info(`Batch download stopped, error type: ${data.errType}.`);
+    finishedList = data.getSuccessfulFiles();
   }
+};
 
-  let uriList: Array<string> = [];
-  fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
-    console.info(`start batch download successfully, taskId: ${downloadId}`);
-  }).catch((err: BusinessError) => {
-    console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+try {
+  fileCache.on('batchDownload', callback);
+} catch (e) {
+  const error = e as BusinessError;
+  console.error(`Failed to register download callback, error code: ${error.code}, message: ${error.message}`);
+}
+
+let uriList: Array<string> = [];
+fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then((downloadId: number) => {
+  console.info(`start batch download successfully, taskId: ${downloadId}`);
+}).catch((err: BusinessError) => {
+  console.error(`start batch download failed with error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ## cloudSync.registerChange<sup>12+</sup>
 
@@ -1212,22 +1212,22 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 
 **示例：**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let onCallback1 = (changeData: cloudSync.ChangeData) => {
-    if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-      //file had added, do something
-    } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-      //file had removed, do something
-    }
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let onCallback1 = (changeData: cloudSync.ChangeData) => {
+  if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
+    //file had added, do something
+  } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
+    //file had removed, do something
   }
-  cloudSync.registerChange(uri, false, onCallback1);
-  // 取消注册监听
-  cloudSync.unregisterChange(uri);
-  ```
+}
+cloudSync.registerChange(uri, false, onCallback1);
+// 取消注册监听
+cloudSync.unregisterChange(uri);
+```
 
 ## cloudSync.unregisterChange<sup>12+</sup>
 
@@ -1257,22 +1257,22 @@ unregisterChange(uri: string): void
 
 **示例：**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let onCallback1 = (changeData: cloudSync.ChangeData) => {
-    if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-      //file had added, do something
-    } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-      //file had removed, do something
-    }
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let onCallback1 = (changeData: cloudSync.ChangeData) => {
+  if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
+    //file had added, do something
+  } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
+    //file had removed, do something
   }
-  cloudSync.registerChange(uri, false, onCallback1);
-  // 取消注册监听
-  cloudSync.unregisterChange(uri);
-  ```
+}
+cloudSync.registerChange(uri, false, onCallback1);
+// 取消注册监听
+cloudSync.unregisterChange(uri);
+```
 
 ## NotifyType<sup>12+</sup>
 
@@ -1321,15 +1321,15 @@ unregisterChange(uri: string): void
 
 配置文件cloudkit_config.json样例：
 
-  ```json
-  {
-    "cloudKitConfig": {
-      "cloudFileSyncConfig": {
-        "manualConflictResolutionEnable": "true"
-      }
+```json
+{
+  "cloudKitConfig": {
+    "cloudFileSyncConfig": {
+      "manualConflictResolutionEnable": "true"
     }
   }
-  ```
+}
+```
 
 ## VersionDownloadProgress<sup>20+</sup>
 
@@ -1367,9 +1367,9 @@ constructor()
 
 **示例：**
 
-  ```ts
-  let fileVersion = new cloudSync.FileVersion();
-  ```
+```ts
+let fileVersion = new cloudSync.FileVersion();
+```
 
 ### getHistoryVersionList<sup>20+</sup>
 
@@ -1413,24 +1413,24 @@ getHistoryVersionList(uri: string, versionNumLimit: number): Promise&lt;Array&lt
 
 **示例：**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let limit = 10;
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let limit = 10;
 
-  fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync.HistoryVersion>) => {
-    for(let i = 0, len = versionList.length; i < len; i++) {
-      console.info("get history versionId: " + versionList[i].versionId);
-    }
-  }).catch((err: BusinessError) => {
-    console.error("get history version failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileVersion.getHistoryVersionList(uri, limit).then((versionList: Array<cloudSync.HistoryVersion>) => {
+  for(let i = 0, len = versionList.length; i < len; i++) {
+    console.info("get history versionId: " + versionList[i].versionId);
+  }
+}).catch((err: BusinessError) => {
+  console.error("get history version failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### downloadHistoryVersion<sup>20+</sup>
 
@@ -1471,32 +1471,32 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;[Ve
 
 **示例：**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let versionId = '123456'; // 以 getHistoryVersionList 方法返回的格式为准，此处仅作为 demo 示例。
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let versionId = '123456'; // 以 getHistoryVersionList 方法返回的格式为准，此处仅作为 demo 示例。
 
-  let callback = (data: cloudSync.VersionDownloadProgress) => {
-    if (data.state == cloudSync.State.RUNNING) {
-      console.info("download progress: " + data.progress);
-    } else if (data.state == cloudSync.State.FAILED) {
-      console.info("download failed errType: " + data.errType);
-    } else if (data.state == cloudSync.State.COMPLETED) {
-      console.info("download version file success");
-    }
-  };
+let callback = (data: cloudSync.VersionDownloadProgress) => {
+  if (data.state == cloudSync.State.RUNNING) {
+    console.info("download progress: " + data.progress);
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info("download failed errType: " + data.errType);
+  } else if (data.state == cloudSync.State.COMPLETED) {
+    console.info("download version file success");
+  }
+};
 
-  fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: string) => {
-    console.info("success to begin download, downloadFileUri: " + fileUri);
-  }).catch((err: BusinessError) => {
-    console.error("download history version file failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: string) => {
+  console.info("success to begin download, downloadFileUri: " + fileUri);
+}).catch((err: BusinessError) => {
+  console.error("download history version file failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### replaceFileWithHistoryVersion<sup>20+</sup>
 
@@ -1538,39 +1538,39 @@ replaceFileWithHistoryVersion(originalUri: string, versionUri: string): Promise&
 
 **示例：**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  let versionId = '123456'; // 以 getHistoryVersionList 方法返回的格式为准，此处仅作为 demo 示例。
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+let versionId = '123456'; // 以 getHistoryVersionList 方法返回的格式为准，此处仅作为 demo 示例。
 
-  let callback = (data: cloudSync.VersionDownloadProgress) => {
-    if (data.state == cloudSync.State.RUNNING) {
-      console.info("download progress: " + data.progress);
-    } else if (data.state == cloudSync.State.FAILED) {
-      console.info("download failed errType: " + data.errType);
-    } else if (data.state == cloudSync.State.COMPLETED) {
-      console.info("download version file success");
-    }
-  };
+let callback = (data: cloudSync.VersionDownloadProgress) => {
+  if (data.state == cloudSync.State.RUNNING) {
+    console.info("download progress: " + data.progress);
+  } else if (data.state == cloudSync.State.FAILED) {
+    console.info("download failed errType: " + data.errType);
+  } else if (data.state == cloudSync.State.COMPLETED) {
+    console.info("download version file success");
+  }
+};
 
-  let versionUri = "";
-  fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: string) => {
-    versionUri = fileUri;
-    console.info("success to begin download, downloadFileUri: " + fileUri);
-  }).catch((err: BusinessError) => {
-    console.error(`download history version file failed with error message: ${err.message}, error code: ${err.code}`);
-  });
-  fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
-    console.info("replace file with history version success.");
-  }).catch((err: BusinessError) => {
-    console.error("replace file with history version filed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let versionUri = "";
+fileVersion.downloadHistoryVersion(uri, versionId, callback).then((fileUri: string) => {
+  versionUri = fileUri;
+  console.info("success to begin download, downloadFileUri: " + fileUri);
+}).catch((err: BusinessError) => {
+  console.error(`download history version file failed with error message: ${err.message}, error code: ${err.code}`);
+});
+fileVersion.replaceFileWithHistoryVersion(uri, versionUri).then(() => {
+  console.info("replace file with history version success.");
+}).catch((err: BusinessError) => {
+  console.error("replace file with history version filed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### isFileConflict<sup>20+</sup>
 
@@ -1610,21 +1610,21 @@ isFileConflict(uri: string): Promise&lt;boolean&gt;
 
 **示例：**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
-    console.info("current file is conflict: " + isConflict);
-  }).catch((err: BusinessError) => {
-    console.error("get current file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+fileVersion.isFileConflict(uri).then((isConflict: boolean) => {
+  console.info("current file is conflict: " + isConflict);
+}).catch((err: BusinessError) => {
+  console.error("get current file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ### clearFileConflict<sup>20+</sup>
 
@@ -1662,28 +1662,28 @@ clearFileConflict(uri: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { fileUri } from '@kit.CoreFileKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { fileUri } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let fileVersion = new cloudSync.FileVersion();
+let fileVersion = new cloudSync.FileVersion();
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
 
-  let isConflict = false;
-  fileVersion.isFileConflict(uri).then((isConflictRet: boolean) => {
-    isConflict = isConflictRet;
-    console.info("current file is conflict: " + isConflictRet);
-  }).catch((err: BusinessError) => {
-    console.error(`get current file conflict flag failed with error message: ${err.message}, error code: ${err.code}`);
-  });
-  fileVersion.clearFileConflict(uri).then(() => {
-    console.info("clean file conflict flag success");
-  }).catch((err: BusinessError) => {
-    console.error("clean file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let isConflict = false;
+fileVersion.isFileConflict(uri).then((isConflictRet: boolean) => {
+  isConflict = isConflictRet;
+  console.info("current file is conflict: " + isConflictRet);
+}).catch((err: BusinessError) => {
+  console.error(`get current file conflict flag failed with error message: ${err.message}, error code: ${err.code}`);
+});
+fileVersion.clearFileConflict(uri).then(() => {
+  console.info("clean file conflict flag success");
+}).catch((err: BusinessError) => {
+  console.error("clean file conflict flag failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSync.getCoreFileSyncState<sup>20+</sup>
 
@@ -1723,19 +1723,19 @@ getCoreFileSyncState(uri: string): FileState
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileUri } from '@kit.CoreFileKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileUri } from '@kit.CoreFileKit';
 
-  let path = "/data/storage/el2/cloud/1.txt";
-  let uri = fileUri.getUriFromPath(path);
-  try {
-    let state = cloudSync.getCoreFileSyncState(uri);
-  } catch (err) {
-    let error:BusinessError = err as BusinessError;
-    console.error(`getCoreFileSyncState failed with error ${error.code}, message is ${error.message}`);
-  }
-  ```
+let path = "/data/storage/el2/cloud/1.txt";
+let uri = fileUri.getUriFromPath(path);
+try {
+  let state = cloudSync.getCoreFileSyncState(uri);
+} catch (err) {
+  let error:BusinessError = err as BusinessError;
+  console.error(`getCoreFileSyncState failed with error ${error.code}, message is ${error.message}`);
+}
+```
 
 ## FileState<sup>20+</sup>
 

@@ -6,6 +6,10 @@
 <!--Tester: @murphy1984-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct InputMethod_TextConfig InputMethod_TextConfig
+```
+
 ## Overview
 
 Represents the text box configuration information.

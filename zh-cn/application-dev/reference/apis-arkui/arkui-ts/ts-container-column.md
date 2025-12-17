@@ -25,7 +25,7 @@
 ### Column
 Column(options?: ColumnOptions)
 
-创建垂直方向线性布局容器，可以设置子组件的间距，间距类型为number或string类型。
+创建垂直方向线性布局容器，可以设置子组件的间距。
 
 >  **说明：**
 >
@@ -41,12 +41,12 @@ Column(options?: ColumnOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions<sup>18+</sup>](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距。 |
+| options<sup>18+</sup> | [ColumnOptions](#columnoptions18对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number或string类型。 |
 
 ### Column<sup>18+</sup>
 Column(options?: ColumnOptions | ColumnOptionsV2)
 
-创建垂直方向线性布局容器，可以设置子组件的间距，间距类型为number、string或Resource类型。
+创建垂直方向线性布局容器，可以设置子组件的间距。
 
 **卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
@@ -58,7 +58,7 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距。 |
+| options | [ColumnOptions](#columnoptions18对象说明) \| [ColumnOptionsV2](#columnoptionsv218对象说明) | 否 | 纵向布局元素垂直方向间距，支持设置number、string或Resource类型。 |
 
 ## ColumnOptions<sup>18+</sup>对象说明
 
@@ -104,7 +104,7 @@ Column组件构造函数中space支持的数据类型，取值类型为下表类
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-|类型	|说明|
+|类型|说明|
 |---|---|
 |number|表示类型为数字，可取任意值。|
 |string|表示值类型为字符串，可取任意值。|
@@ -183,7 +183,9 @@ reverse(isReversed: Optional\<boolean\>)
 
 ## 示例
 
-设置垂直方向的布局属性，如间距、对齐方式等。
+### 示例1（设置Column组件的布局属性）
+
+本示例展示设置Column组件的布局属性，如间距、对齐方式等属性后的效果。
 
 ```json
 // resources/base/element/string.json
@@ -255,3 +257,33 @@ struct ColumnExample {
 ```
 
 ![column](figures/column.png)
+
+### 示例2（设置反转属性）
+
+本示例展示设置Column组件的reverse属性后的效果。
+
+```ts
+@Entry
+@Component
+struct ColumnReverseSample {
+  build() {
+    Column() {
+      Text("1")
+        .width(50)
+        .height(100)
+        .backgroundColor(0xAFEEEE)
+
+      Text("2")
+        .width(50)
+        .height(100)
+        .backgroundColor(0x00FFFF)
+    }
+    .height(300)
+    .width(100)
+    .border({ width: 1 })
+    .reverse(true)
+  }
+}
+```
+
+![column](figures/column_reverse.png)

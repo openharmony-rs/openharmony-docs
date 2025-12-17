@@ -40,7 +40,7 @@
 | stride<sup>11+</sup> | number | 否  | 否  | 跨距，内存中每行像素所占的空间。stride >= region.size.width*4 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | pixelFormat<sup>12+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否  |  否 | 像素格式。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 | alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | 否  |  否  |透明度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
-| mimeType<sup>12+</sup> | string  |  否  |   否  |图片真实格式（MIME type）。  |
+| mimeType<sup>12+</sup> | string  |  否  |   否  |图片真实格式（MIME type）。<br>图片解码和图片编码支持格式的范围不同，请避免直接将解码得到的图片真实格式作为图片编码时[PackingOption](#packingoption)的format。<br>可以使用[ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#属性)的supportedFormats属性和[ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#属性)的supportedFormats属性查看解码和编码支持的格式范围。  |
 | isHdr<sup>12+</sup> | boolean  |  否  | 否  | true表示图片为高动态范围（HDR），false表示图片非高动态范围（SDR）。对于[ImageSource](arkts-apis-image-ImageSource.md)，代表源图片是否为HDR；对于[PixelMap](arkts-apis-image-PixelMap.md)，代表解码后的pixelmap是否为HDR。 |
 
 ## Size
@@ -100,7 +100,7 @@ PixelMap的初始化选项。
 | editable                 | boolean                            | 否   | 是 | 图像像素是否可被编辑。true表示可被编辑，false表示不可被编辑。设为false时，可提升图像的渲染和传输性能。默认值为false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。|
 | srcPixelFormat<sup>12+</sup>  | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是 | 传入的buffer数据的像素格式。默认值为BGRA_8888。|
 | pixelFormat              | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | 否 | 是| 生成的pixelMap的像素格式。默认值为RGBA_8888。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。     |
-| scaleMode<sup>9+</sup>   | [ScaleMode](arkts-apis-image-e.md#scalemode9)           | 否  | 是 | 缩略值。默认值为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
+| scaleMode<sup>9+</sup>   | [ScaleMode](arkts-apis-image-e.md#scalemode9)           | 否  | 是 | 缩放模式。默认值为0。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。       |
 | size                     | [Size](#size)                      | 否  | 否|创建图片大小。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。 |
 
 ## DecodingOptions<sup>7+</sup>
@@ -131,7 +131,7 @@ PixelMap的初始化选项。
 
 | 名称                     | 类型                                                    | 只读 | 可选 | 说明                                                         |
 | ------------------------ | ------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| desiredAuxiliaryPictures | Array\<[AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)> | 否   | 否   | 设置AuxiliaryPicture类型，默认解码所有AuxiliaryPicture类型。 |
+| desiredAuxiliaryPictures | Array\<[AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13)> | 否   | 否   | 设置AuxiliaryPicture类型，当未指定或传入空的Array时，系统会解码所有可用的AuxiliaryPicture类型。 <br>如果不希望解码任何辅助图，可以直接解码为PixelMap，使用PixelMap创建仅包含主图的Picture。|
 
 ## Region<sup>8+</sup>
 

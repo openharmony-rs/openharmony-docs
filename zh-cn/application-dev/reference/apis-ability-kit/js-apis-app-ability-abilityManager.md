@@ -94,7 +94,8 @@ restartSelfAtomicService(context: Context): void
 >
 > - 当前仅支持以独立窗口方式拉起原子化服务。
 >
-> - 该接口的两次调用时间间隔不能低于3秒。
+> - 在调用本接口成功后的3秒内，再次调用本接口、[ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)或[UIAbilityContext.restartApp()](js-apis-inner-application-uiAbilityContext.md#restartapp22)接口中的任一接口，系统将返回错误码16000064。
+
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

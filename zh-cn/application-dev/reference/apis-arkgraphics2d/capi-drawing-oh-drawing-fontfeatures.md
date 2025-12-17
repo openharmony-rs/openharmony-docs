@@ -5,7 +5,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-```
+```c
 typedef struct OH_Drawing_FontFeatures OH_Drawing_FontFeatures
 ```
 

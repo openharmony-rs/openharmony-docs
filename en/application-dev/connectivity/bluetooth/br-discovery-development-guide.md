@@ -1,4 +1,4 @@
-# Bluetooth Discovery Development
+# Device Discovery
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

@@ -1,8 +1,16 @@
 # @system.file (文件存储)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 > **说明：**
 >
-> - 从API Version 10开始，该接口不再维护，推荐使用新接口[`@ohos.file.fs`](js-apis-file-fs.md)。
+> - 模块维护策略：
+>   - 对于Lite Wearable设备类型，该模块长期维护，正常使用。
+>   - 对于支持该模块的其他设备类型，该模块从API Version 10开始不再维护，推荐使用新接口[`@ohos.file.fs`](js-apis-file-fs.md)。
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -20,7 +28,7 @@ move(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.moveFile](js-apis-file-fs.md#fsmovefile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.moveFile](js-apis-file-fs.md#fsmovefile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -69,7 +77,7 @@ copy(Object): void
 
 > **说明**：
 >
-> 从API version 10开始废弃，请使用[fs.copyFile](js-apis-file-fs.md#fscopyfile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.copyFile](js-apis-file-fs.md#fscopyfile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -119,7 +127,7 @@ list(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -182,7 +190,7 @@ get(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -241,7 +249,7 @@ delete(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.unlink](js-apis-file-fs.md#fsunlink)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.unlink](js-apis-file-fs.md#fsunlink)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -289,7 +297,7 @@ writeText(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -340,7 +348,7 @@ writeArrayBuffer(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -391,7 +399,7 @@ readText(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.readText](js-apis-file-fs.md#fsreadtext)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.readText](js-apis-file-fs.md#fsreadtext)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -449,7 +457,7 @@ readArrayBuffer(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.read](js-apis-file-fs.md#fsread)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.read](js-apis-file-fs.md#fsread)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -507,7 +515,7 @@ access(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.access](js-apis-file-fs.md#fsaccess)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.access](js-apis-file-fs.md#fsaccess)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -555,7 +563,7 @@ mkdir(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.mkdir](js-apis-file-fs.md#fsmkdir)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.mkdir](js-apis-file-fs.md#fsmkdir)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -603,7 +611,7 @@ rmdir(Object): void
 
 > **说明**： 
 >
-> 从API version 10开始废弃，请使用[fs.rmdir](js-apis-file-fs.md#fsrmdir)替代。
+> 除Lite Wearable外，从API version 10开始废弃，请使用[fs.rmdir](js-apis-file-fs.md#fsrmdir)替代。
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO.Lite
 

@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -34,7 +34,7 @@ static measureText(options: MeasureOptions): number
 
 > **说明：**
 >
-> 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例，再通过此实例调用替代方法[measureText](arkts-apis-uicontext-measureutils.md#measuretext12)。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)获取[MeasureUtils](arkts-apis-uicontext-measureutils.md)实例，再通过此实例调用替代方法[measureText](arkts-apis-uicontext-measureutils.md#measuretext12)。
 >
 > 从API version 12开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getMeasureUtils](arkts-apis-uicontext-uicontext.md#getmeasureutils12)方法获取当前UI上下文关联的[MeasureUtils](arkts-apis-uicontext-measureutils.md)对象。
 >

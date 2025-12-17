@@ -6,15 +6,15 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-> **说明：**
-> 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 提供管理关系数据库（RDB）方法的接口。
 
 在使用以下API前，请先通过[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore-1)方法获取RdbStore实例，并使用该实例调用对应接口方法。
 
 在此基础上，建议优先使用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)方法完成数据库表结构和初始数据的初始化，以确保相关接口调用的前置条件已满足。
+
+> **说明：**
+> 
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 

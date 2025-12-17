@@ -131,7 +131,7 @@ HybridStack: <- CPP和JS之间跨语言的代码调用栈
 
 HiLog:
  ^
- 在生成的崩溃日志文件中追加异常相关1000行hilog日志
+ 在生成的崩溃日志文件中追加产生故障之前的流水日志，最多1000行
 
 ```
 ### 异步线程栈跟踪故障场景日志规格
@@ -187,7 +187,7 @@ Stacktrace:
 
 > **注意：**
 >
-> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在[系统路由表](../ui/arkts-navigation-navigation.md#系统路由表)中定义。
+> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在[系统路由表](../ui/arkts-navigation-cross-package.md#系统路由表)中定义。
 >
 > 当应用发生前后台切换时，对应的页面URL为空，但是会将enters foreground、leaves foreground作为特殊的页面名进行填充。
 >
@@ -246,7 +246,7 @@ at &lt;执行方法名&gt; (&lt;本模块名|依赖的模块名|版本号|编译
 示例如下：
 
 
-```
+```text
 at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 ```
 
@@ -278,7 +278,7 @@ at &lt;执行方法名&gt; &lt;源码依赖的模块名&gt; (&lt;源码路径&gt
 示例如下：
 
 
-```
+```text
 at onPageShow har1 (har1/src/main/ets/pages/Index.ets:7:13)
 ```
 

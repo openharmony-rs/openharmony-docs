@@ -565,9 +565,11 @@ With this permission, the application can set the background color the shadow vi
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 20
+
+**Changelog**: This permission is available only on PCs/2-in-1 devices from API versions 20 to 22. Since API version 23, this permission is also available on tablet.
 
 ## ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN
 
@@ -664,5 +666,19 @@ This permission applies only to binary programs.
 **Authorization mode**: system_grant
 
 **Supported devices**: PCs/2-in-1 devices
+
+**Since**: 23
+
+## ohos.permission.GET_DONOTDISTURB_STATE
+
+Allows an application to obtain the Do Not Disturb state of the system.
+
+With this permission, the application can query whether the system is in the Do Not Disturb state via an API call.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: Phone | Tablet
 
 **Since**: 23

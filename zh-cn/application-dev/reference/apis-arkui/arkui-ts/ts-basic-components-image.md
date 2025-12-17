@@ -649,6 +649,26 @@ contentTransition(transition: ContentTransitionEffect)
 | ------ | --------------------------------------- | ---- | -------------------------------- |
 | transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
 
+### antialiased<sup>23+</sup>
+
+antialiased(isAntialiased: Optional\<boolean>)
+
+设置位图图片边缘是否开启抗锯齿。
+
+> **说明：**
+>
+> 如果图片设置了背景色属性([backgroundColor](ts-universal-attributes-background.md#backgroundcolor))，图片的抗锯齿属性设置为true不会影响背景色的锯齿效果。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                             |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| isAntialiased  | Optional\<boolean> | 是   | 设置位图图片边缘是否开启抗锯齿。<br/> true表示开启边缘抗锯齿；false表示不开启边缘抗锯齿。<br/>设置为undefined时，不开启边缘抗锯齿。|
+
 ## ImageContent<sup>12+</sup>
 
 指定图像内容。
@@ -945,8 +965,6 @@ type ImageErrorCallback = (error: ImageError) => void
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时该事件不触发。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 类型   | 只读 | 可选 | 说明                      |
@@ -955,6 +973,7 @@ type ImageErrorCallback = (error: ImageError) => void
 | componentHeight | number | 否  | 否  | 组件的高。<br/>单位：px<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | message<sup>10+</sup>         | string | 否  | 否  | 报错信息。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | error<sup>20+</sup>         | [BusinessError\<void>](#businesserror20) | 否  | 是  | 图片加载异常返回的报错信息，其中code为错误码，message为错误信息。报错信息请参考以下错误信息的详细介绍。<br/>默认值：{ code : -1, message : "" }<br/>**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| downloadInfo<sup>23+</sup> | [RequestDownloadInfo](#requestdownloadinfo23) | 否 | 是 | 网络图片下载的详细信息，包含下载资源、网络、性能等信息。当图片来源为网络图片且下载失败时将携带此字段。<br/>默认值：null<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## BusinessError<sup>20+</sup>
 
@@ -999,6 +1018,24 @@ type BusinessError\<T = void> = BusinessError\<T>
 | 103200    | image data size is invalid.    | 数据加载 | 位图文件 |
 | 111000    | image source create failed.    | 数据解码 | 位图文件 |
 | 111001    | pixelmap create failed.        | 数据解码 | 位图文件 |
+
+## RequestDownloadInfo<sup>23+</sup>
+
+type RequestDownloadInfo = DownloadInfo
+
+用于描述网络图片加载失败或异常时的下载信息。该对象包含本次下载任务的资源信息、网络信息以及性能统计信息，可用于定位加载异常的具体原因。
+
+**需要权限：** ohos.permission.GET_NETWORK_INFO
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型  | 说明   |
+| ---- | ------ |
+| [DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
 
 ## 示例
 
@@ -2424,3 +2461,75 @@ struct ImageExample {
 }
 ```
 ![sandBox](figures/imagealt.gif)
+
+### 示例29（使用onError回调监听网络图片加载异常信息）
+
+该示例演示如何通过[onError](#onerror9)回调获取网络图片加载异常时的详细下载信息[ImageError](#imageerror9)。当图片加载失败时，可通过ImageError中的downloadInfo属性获取网络图片下载的详细信息，包括下载的资源信息、网络请求信息以及性能统计信息，有助于快速定位网络异常或资源错误原因。
+
+从API version 23开始，ImageError新增downloadInfo属性。
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
+        .height(100)
+        .width(100)
+        .onError((e)=>{
+          console.info("DownLoadErrorInfo : " + JSON.stringify(e?.downloadInfo))
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### 示例30（设置位图图片边缘抗锯齿）
+
+该示例演示了如何通过设置antialiased接口开启位图图片边缘的抗锯齿功能。
+
+从API version 23开始，新增[antialiased](#antialiased23)接口。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State imageResource: Resource = $r('app.media.icon');
+
+  build() {
+    Row() {
+      Blank()
+        .width(50)
+
+      Column() {
+        Blank()
+          .height(20)
+        Text('没有设置抗锯齿的有旋转角度的图片')
+        Blank()
+          .height(20)
+        Image(this.imageResource)
+          .width(50)
+          .height(50)
+          .rotate({angle: 1})
+
+        Blank()
+          .height(20)
+        Text('设置了抗锯齿的有旋转角度的图片')
+        Blank()
+          .height(20)
+        Image(this.imageResource)
+          .width(50)
+          .height(50)
+          .rotate({angle: 1})
+          .antialiased(true)
+      }
+    }
+  }
+}
+```
+
+![sandBox](figures/antialiased.PNG)

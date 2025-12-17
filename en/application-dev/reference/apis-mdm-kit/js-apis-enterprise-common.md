@@ -44,3 +44,26 @@ It is used as an input parameter in the [addUserNonStopApps](./js-apis-enterpris
 | appIdentifier          | string       | No  | No| [Unique identifier](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) of an application. You can call the [bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2) API to obtain **bundleInfo.signatureInfo.appIdentifier**.          |
 | accountId        | number       | No  | No| Account ID. The value is an integer greater than or equal to 0.<br> You can obtain the account ID by calling the [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) API.           |
 | appIndex        | number       | No  | No| Index of the application clone. The value is an integer greater than or equal to 0.<br> You can obtain the index by calling the [getAppCloneIdentity](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetappcloneidentity14) API.          |
+
+## InstallationResult
+
+An object that holds the application installation result.
+This object is used as a callback parameter in [EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonmarketappinstallresult22).
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name         | Type                            | Read-Only| Optional| Description                                                       |
+| ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
+| result        | [Result](#result)       | No  | No| Application installation result.           |
+| message        | string       | No  | No| Application installation result message.          |
+
+## Result
+
+Enumerates application installation results.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+| Name        | Value| Description                           |
+| ----------- | -------- | ------------------------------- |
+| SUCCESS | 0  | The application is installed successfully.|
+| FAIL | -1  | The application fails to be installed.|

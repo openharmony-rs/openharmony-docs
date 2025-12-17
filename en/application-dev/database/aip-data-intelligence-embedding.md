@@ -44,114 +44,141 @@ Application data vectorization involves converting raw application data into vec
 
 The following table lists the APIs related to application data vectorization. For more APIs and their usage, see [ArkData Intelligence Platform](../reference/apis-arkdata/js-apis-data-intelligence.md).
 
-| API| Description|
+| API| Description| 
 | -------- | -------- |
-| getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | Obtains a text embedding model.|
-| loadModel(): Promise&lt;void&gt; | Loads this text embedding model.|
-| splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | Splits text.|
-| getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given text.|
+| getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | Obtains a text embedding model.| 
+| loadModel(): Promise&lt;void&gt; | Loads this text embedding model.| 
+| splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | Splits text.| 
+| getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given text.| 
 | getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Array&lt;number&gt;&gt;&gt; | Obtains the embedding vector of a given batch of text.|
-| releaseModel(): Promise&lt;void&gt; | Releases this text embedding model.|
-| getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt; | Obtains an image embedding model.|
-| loadModel(): Promise&lt;void&gt; | Loads this image embedding model.|
-| getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given image.|
-| releaseModel(): Promise&lt;void&gt; | Releases this image embedding model.|
+| releaseModel(): Promise&lt;void&gt; | Releases this text embedding model.| 
+| getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt; | Obtains an image embedding model.| 
+| loadModel(): Promise&lt;void&gt; | Loads this image embedding model.| 
+| getEmbedding(image: Image): Promise&lt;Array&lt;number&gt;&gt; | Obtains the embedding vector of the given image.| 
+| releaseModel(): Promise&lt;void&gt; | Releases this image embedding model.| 
 
 ## How to Develop Text Vectorization
 
 1. Import the **intelligence** module.
 
-   ```ts
+   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { intelligence } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Obtain a text embedding model using the **getTextEmbeddingModel** method. The sample code is as follows:
+2. Obtain a text embedding model
+   using the **getTextEmbeddingModel** method. The sample code is as follows:
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-
+   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+    ``` TypeScript
    let textConfig:intelligence.ModelConfig = {
      version:intelligence.ModelVersion.BASIC_MODEL,
      isNpuAvailable:false,
      cachePath:"/data"
    }
    let textEmbedding:intelligence.TextEmbedding;
-
+   ```
+   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+    ``` TypeScript
    intelligence.getTextEmbeddingModel(textConfig)
      .then((data:intelligence.TextEmbedding) => {
-       console.info("Succeeded in getting TextModel");
+       console.info('Succeeded in getting TextModel');
        textEmbedding = data;
+       // ...
      })
      .catch((err:BusinessError) => {
-       console.error("Failed to get TextModel and code is " + err.code);
+       console.error('Failed to get TextModel and code is ' + err.code);
+       // ...
      })
    ```
 
-3. Load this embedding model using the **loadModel** method. The sample code is as follows:
+3. Load this embedding model
+   using the **loadModel** method. The sample code is as follows:
 
-   ```ts
+   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    textEmbedding.loadModel()
      .then(() => {
-       console.info("Succeeded in loading Model");
+       console.info('Succeeded in loading Model');
+       // ...
      })
      .catch((err:BusinessError) => {
-       console.error("Failed to load Model and code is " + err.code);
+       console.error('Failed to load Model and code is ' + err.code);
+       // ...
      })
    ```
 
 4. Split text. If the data length exceeds the limit, call **splitText()** to split the data into smaller text blocks and then vectorize them.
     The sample code is as follows:
 
-   ```ts
+   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    let splitConfig:intelligence.SplitConfig = {
      size:10,
      overlapRatio:0.1
    }
    let splitText = 'text';
-
+   
    intelligence.splitText(splitText, splitConfig)
      .then((data:Array<string>) => {
-       console.info("Succeeded in splitting Text");
+       console.info('Succeeded in splitting Text');
+       // ...
      })
      .catch((err:BusinessError) => {
-       console.error("Failed to split Text and code is " + err.code);
+       console.error('Failed to split Text and code is ' + err.code);
+       // ...
      })
    ```
 
 5. Obtain the embedding vector of the given text using the **getEmbedding** method. The given text can be a single piece of text or a collection of multiple text entries.
     The sample code is as follows:
 
-   ```ts
+   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+    ``` TypeScript
    let text = 'text';
    textEmbedding.getEmbedding(text)
      .then((data:Array<number>) => {
-       console.info("Succeeded in getting Embedding");
+       console.info('Succeeded in getting Embedding');
+       // ...
      })
      .catch((err:BusinessError) => {
-       console.error("Failed to get Embedding and code is " + err.code);
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
      })
-   ```
-
-   ```ts
+   
    let batchTexts = ['text1','text2'];
    textEmbedding.getEmbedding(batchTexts)
      .then((data:Array<Array<number>>) => {
-       console.info("Succeeded in getting Embedding");
+       console.info('Succeeded in getting Embedding');
+       // ...
      })
      .catch((err:BusinessError) => {
-       console.error("Failed to get Embedding and code is " + err.code);
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
      })
    ```
 
-6. Release this text embedding model using the **releaseModel** method. The sample code is as follows:
+6. Release this text embedding model
+   using the **releaseModel** method. The sample code is as follows:
 
-   ```ts
+   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    textEmbedding.releaseModel()
      .then(() => {
-       console.info("Succeeded in releasing Model");
+       console.info('Succeeded in releasing Model');
+       // ...
      })
      .catch((err:BusinessError) => {
-       console.error("Failed to release Model and code is " + err.code);
+       console.error('Failed to release Model and code is ' + err.code);
+       // ...
      })
    ```
 
@@ -159,63 +186,89 @@ The following table lists the APIs related to application data vectorization. Fo
 
 1. Import the **intelligence** module.
 
-   ```ts
+   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { intelligence } from '@kit.ArkData';
+   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Obtain an image embedding model using the **getImageEmbeddingModel** method. The sample code is as follows:
+2. Obtain an image embedding model
+   using the **getImageEmbeddingModel** method. The sample code is as follows:
 
-   ```ts
+   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    let imageConfig:intelligence.ModelConfig = {
      version:intelligence.ModelVersion.BASIC_MODEL,
      isNpuAvailable:false,
      cachePath:"/data"
    }
    let imageEmbedding:intelligence.ImageEmbedding;
-
+   ```
+   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    intelligence.getImageEmbeddingModel(imageConfig)
      .then((data:intelligence.ImageEmbedding) => {
-       console.info("Succeeded in getting ImageModel");
+       console.info('Succeeded in getting ImageModel');
        imageEmbedding = data;
+       // ...
      })
      .catch((err:BusinessError) => {
-       console.error("Failed to get ImageModel and code is " + err.code);
+       console.error('Failed to get ImageModel and code is ' + err.code);
+       // ...
      })
    ```
 
-3. Load this image embedding model using the **loadModel** method. The sample code is as follows:
+3. Load this image embedding model
+   using the **loadModel** method. The sample code is as follows:
 
-   ```ts
+    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    imageEmbedding.loadModel()
      .then(() => {
-        console.info("Succeeded in loading Model");
+       console.info('Succeeded in loading Model');
+       // ...
      })
      .catch((err:BusinessError) => {
-        console.error("Failed to load Model and code is " + err.code);
+       console.error('Failed to load Model and code is ' + err.code);
+       // ...
      })
    ```
 
-4. Obtain the embedding vector of the given image using the **getEmbedding** method. The sample code is as follows:
+4. Obtain the embedding vector of the given image
+   using the **getEmbedding** method. The sample code is as follows:
 
-    ```ts
-    let image = "file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg";
-    imageEmbedding.getEmbedding(image)
-      .then((data:Array<number>) => {
-        console.info("Succeeded in getting Embedding");
-      })
-      .catch((err:BusinessError) => {
-        console.error("Failed to get Embedding and code is " + err.code);
-      })
-    ```
+    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+   imageEmbedding.getEmbedding(image)
+     .then((data:Array<number>) => {
+       console.info('Succeeded in getting Embedding');
+       // ...
+     })
+     .catch((err:BusinessError) => {
+       console.error('Failed to get Embedding and code is ' + err.code);
+       // ...
+     })
+   ```
 
-5. Release this image embedding model using the **releaseModel** method. The sample code is as follows:
+5. Release this image embedding model
+   using the **releaseModel** method. The sample code is as follows:
 
-    ```ts
-    imageEmbedding.releaseModel()
-      .then(() => {
-        console.info("Succeeded in releasing Model");
-      })
-      .catch((err:BusinessError) => {
-        console.error("Failed to release Model and code is " + err.code);
-      })
-    ```
+   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   imageEmbedding.releaseModel()
+     .then(() => {
+       console.info('Succeeded in releasing Model');
+       // ...
+     })
+     .catch((err:BusinessError) => {
+       console.error('Failed to release Model and code is ' + err.code);
+       // ...
+     })
+   ```

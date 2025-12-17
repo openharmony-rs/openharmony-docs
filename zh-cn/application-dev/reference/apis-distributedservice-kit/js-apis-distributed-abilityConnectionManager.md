@@ -58,7 +58,6 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
    ```ts
    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { common } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
  
    let dmClass: distributedDeviceManager.DeviceManager;

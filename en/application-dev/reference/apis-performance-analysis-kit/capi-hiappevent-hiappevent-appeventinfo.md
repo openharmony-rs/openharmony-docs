@@ -7,6 +7,10 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct HiAppEvent_AppEventInfo {...} HiAppEvent_AppEventInfo
+```
+
 ## Overview
 
 Defines a struct for the information about a single event, including the domain, name, type, and custom parameter list in JSON string format.

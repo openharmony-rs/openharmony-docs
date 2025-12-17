@@ -43,7 +43,7 @@
 
 ### OH_TextAvoidInfo_Create()
 
-```
+```c
 InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double height)
 ```
 
@@ -69,7 +69,7 @@ InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double heig
 
 ### OH_TextAvoidInfo_Destroy()
 
-```
+```c
 void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)
 ```
 
@@ -88,7 +88,7 @@ void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)
 
 ### OH_TextAvoidInfo_SetPositionY()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)
 ```
 
@@ -114,7 +114,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *i
 
 ### OH_TextAvoidInfo_SetHeight()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)
 ```
 
@@ -140,7 +140,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info
 
 ### OH_TextAvoidInfo_GetPositionY()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)
 ```
 
@@ -166,7 +166,7 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *i
 
 ### OH_TextAvoidInfo_GetHeight()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)
 ```
 

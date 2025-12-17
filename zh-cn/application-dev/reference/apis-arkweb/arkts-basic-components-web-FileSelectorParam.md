@@ -148,4 +148,18 @@ isAcceptAllOptionExcluded(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否包含一个不应用任何文件类型过滤器的选项。<br>true表示不包含，false表示包含，默认为false。 |
+| boolean | 返回是否包含一个不应用任何文件类型过滤器的选项。<br>true表示不包含，false表示包含。 |
+
+## getAcceptableFileTypes<sup>23+</sup>
+
+getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
+
+获取文件types信息。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`types`。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型              | 说明        |
+| --------------- | --------- |
+| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件types信息。 |

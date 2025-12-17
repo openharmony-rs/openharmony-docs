@@ -921,7 +921,7 @@ ReactiveComponentContent的构造函数。
 | 参数名    | 类型                                      | 必填 | 说明                               |
 | --------- | ----------------------------------------- | ---- | ---------------------------------- |
 | uiContext | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 创建对应节点时所需的UI上下文。 |
-| builder  | [WrappedBuilder\<[T]>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参@Builder函数的WrappedBuilder对象。 |
+| builder  | [WrappedBuilder\<T>](../../ui/state-management/arkts-wrapBuilder.md) | 是   |   封装带参@Builder函数的WrappedBuilder对象。 |
 | config | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)  | 是   |  作用是配置Builder的构建行为，BuildOptions中所有属性都是可选的，默认值为BuildOptions中对应的默认值。                                        |
 | ...args     | T      | 否   | WrappedBuilder对象封装的builder函数的参数。负责将外部数据传递给构造函数中指定的WrappedBuilder&lt;T&gt;构建函数。支持多个入参。默认值为undefined。|
 

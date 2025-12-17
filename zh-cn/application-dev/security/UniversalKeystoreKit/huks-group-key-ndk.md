@@ -26,7 +26,8 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 初始化密钥属性集。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)。
+2. 初始化密钥属性集。需要添加群组密钥标签[OH_HUKS_TAG_KEY_ACCESS_GROUP](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，
+[OH_HUKS_TAG_KEY_OVERRIDE](../../reference/apis-universal-keystore-kit//capi-native-huks-type-h.md#oh_huks_tag)，避免密钥被覆盖。
 
 3. 调用[OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 

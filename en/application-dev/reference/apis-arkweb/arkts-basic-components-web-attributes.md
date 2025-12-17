@@ -1401,8 +1401,8 @@ Sets whether to allow a new window to automatically open through JavaScript.
 
 **Example**
 
-  ```ts
-  // xxx.ets
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 // There are two Web components on the same page. When the WebComponent object opens a new window, the NewWebViewComp object is displayed.
@@ -1462,7 +1462,7 @@ struct WebComponent {
         }
     }
 }
-  ```
+```
 **Example of the HTML file**
 
 ```html
@@ -1714,8 +1714,11 @@ Injects a JavaScript script into the **Web** component. When the specified page 
           "if (typeof(Storage) !== 'undefined') {" +
           "   localStorage.setItem('color', 'Red');" +
           "}";
+      private localStorage2: string =
+          "console.info('runJavaScriptOnDocumentStart urlRegexRules Matching succeeded.')";
       @State scripts: Array<ScriptItem> = [
-          { script: this.localStorage, scriptRules: ["*"] }
+          { script: this.localStorage, scriptRules: ["*"] },
+          { script: this.localStorage2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
       ];
 
       build() {
@@ -1792,8 +1795,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -1856,8 +1861,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -2411,7 +2418,7 @@ Sets whether the **viewport** attribute of the **meta** tag is enabled. When thi
 
 **Example**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2427,7 +2434,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 HTML file to be loaded:
 ```html
 <!--index.html-->
@@ -3112,7 +3119,7 @@ struct SelectionMenuLongPress {
     </div>
 
     <div class="context">
-        <a href="https://www.example.com">Touch and hold the link to display the menu</a>
+        <a  href="https://www.example.com">Touch and hold the link to display the menu</a>
     </div>
 
     <div class="context">
@@ -3851,6 +3858,140 @@ Sets the blank screen detection configuration, such as whether to enable the det
       }
     }
   }
+  ```
+
+## enableImageAnalyzer<sup>23+</sup>
+
+enableImageAnalyzer(enable: boolean)
+
+Sets whether to enable AI analyzer for web images. Currently, the image text recognition is supported, which is enabled by default.
+
+> **NOTE**
+>
+> When you long-press or hover the mouse over the image text, AI analyzer is triggered and the text in the image can be selected. The specifications of images that can trigger analyzer are as follows:
+>
+> - The original width and height of the image are greater than or equal to 100 pixels.
+>
+> - For [devices](../../quick-start/module-configuration-file.md#devicetypes) other than 2-in-1 devices, the image rendering width must exceed 80% of the web page width.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean | Yes  | Whether to enable AI analyzer for web page images. The value **true** means to enable AI analyzer, and **false** means the opposite.<br>If **undefined** or **null** is passed in, the value is reset to **true**.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableImageAnalyzer(true) // To disable the image analyzer, set this parameter to false.
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .image-container {
+        width: 90%;
+      }
+      .image-container img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <!--example.jpg is in the same directory as the HTML file-->
+      <img src="example.jpg" alt="Image to be analyzed by AI">
+    </div>
+  </body>
+  </html>
+  ```
+
+## enableAutoFill<sup>23+</sup>
+
+enableAutoFill(value: boolean)
+
+Sets whether to enable web page autofill. By default, this feature is enabled.
+
+<!--RP1-->
+> **NOTE**
+>
+> The autofill feature of this API depends on SmartFill service and Password Autofill Service.
+<!--RP1End-->
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| value  | boolean | Yes  | Whether to enable autofill for web pages. The value **true** means to enable autofill, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableAutoFill(true)
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
+      <title>Autofill test</title>
+    </head>
+    <body>
+      <h4 align="center">Autofill test</h4>
+      <form method="post" action="">
+        <div align="center">
+          <label for="name" style="width: 120px; display: inline-block; text-align: end;">Name:</label>
+          <input type="text" id="name" autocomplete="name"/><br/><br/>
+          <label for="tel-national" style="width: 120px; display: inline-block; text-align: end;">Mobile number:</label>
+          <input type="text" id="tel-national" autocomplete="tel-national"/><br/><br/>
+        </div>
+        <div align="center">
+          <button type="submit" style="width: 80px">Submit</button>
+        </div>
+      </form>
+    </body>
+  </html>
   ```
 
 ## password<sup>(deprecated)</sup>

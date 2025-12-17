@@ -48,11 +48,11 @@ SideBarContainer( type?: SideBarContainerType )
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| Embed | 侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于minContentWidth + minSideBarWidth，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。|
-| Overlay | 侧边栏浮在内容区上面，不会影响内容区的大小。 |
-| AUTO<sup>10+</sup> | 组件尺寸大于等于minSideBarWidth+minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth+minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。|
+| 名称 | 值 | 说明 |
+| -------- | -------- |-------- |
+| Embed | 0 |侧边栏嵌入到组件内，和内容区并列显示。<br/>整体容器大小不变时，显示侧边栏会导致内容区缩小，隐藏侧边栏会扩大内容区。<br/>组件尺寸小于minContentWidth + minSideBarWidth，并且未设置showSideBar时，侧边栏自动隐藏。<br/>未设置minSideBarWidth或者minContentWidth采用未设置接口的默认值进行计算。<br/> 组件在自动隐藏后，如果通过点击控制按钮唤出侧边栏，则侧边栏悬浮在内容区上显示。|
+| Overlay | 1 |侧边栏浮在内容区上面，不会影响内容区的大小。 |
+| AUTO<sup>10+</sup> | 2 |组件尺寸大于等于minSideBarWidth+minContentWidth时，采用Embed模式显示。<br/>组件尺寸小于minSideBarWidth+minContentWidth时，采用Overlay模式显示。<br/>未设置minSideBarWidth或minContentWidth时，会使用未设置接口的默认值进行计算，若计算的值小于600vp，则使用600vp做为模式切换的断点值。|
 
 ## 属性
 
