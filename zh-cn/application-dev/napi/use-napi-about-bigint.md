@@ -341,14 +341,20 @@ export const getValueBigintWords: (bigIntWords: bigint) => bigint | undefined;
 ArkTS侧示例代码
 
 <!-- @[ark_napi_get_value_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/ets/pages/Index.ets) -->
-```ts
+
+``` TypeScript
+// napi_get_value_bigint_words
 let bigInt = BigInt(-5555555555555555);
 let bigUint = BigInt(5555555555555555);
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_value_bigint_words signBit is: %{public}d', testNapi.getValueBigintWords(bigInt));
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_value_bigint_words signBit is: %{public}d', testNapi.getValueBigintWords(bigUint));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_value_bigint_words signBit is: %{public}d',
+    testNapi.getValueBigintWords(bigInt));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_value_bigint_words signBit is: %{public}d',
+    testNapi.getValueBigintWords(bigUint));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API NapiGetValueBigint: %{public}s', error.message);
+  // ...
 }
 ```
 
