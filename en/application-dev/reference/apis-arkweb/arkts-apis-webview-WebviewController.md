@@ -4787,7 +4787,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address to visit. 
+    // Replace "https://www.example1.com/post?e=f&g=h" with a real URL to visit.
     webview.WebviewController.prefetchResource(
       {
         url: "https://www.example1.com/post?e=f&g=h",
@@ -4834,7 +4834,7 @@ struct WebComponent {
     Column() {
       Web({ src: "https://www.example.com/", controller: this.controller })
         .onAppear(() => {
-          // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address to visit. 
+          // Replace "https://www.example1.com/post?e=f&g=h" with a real URL to visit.
           webview.WebviewController.prefetchResource(
             {
               url: "https://www.example1.com/post?e=f&g=h",
@@ -7249,7 +7249,7 @@ HTML file to be loaded:
   <body>
     <video id="video" width="400px" height="400px" autoplay>
     </video>
-    <input type="button" title="HTML5 Camera" value="Enable Camera" onclick="getMedia()"/>
+    <input type="button" title="HTML5 camera" value="Enable camera" onclick="getMedia()" />
     <script>
       function getMedia() {
         let constraints = {
@@ -8394,7 +8394,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-Sets a path list. When a file protocol accesses resources in the path list, it can access the local files across domains. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API. The paths in the list must be any of the following:
+Sets a path list. When the file protocol accesses resources in the path list, cross-origin access to local files and other online resources is allowed. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API. The paths in the list must be any of the following:
 
 1. The path of subdirectory of the application file directory. (The application file directory is obtained using [Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in the Ability Kit.) For example:
 
