@@ -5808,8 +5808,8 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 >   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
 >   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 > - 针对2in1设备：
->   - 在API version 14之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
->   - 从API version 14开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+>   - 在OpenHarmony5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+>   - 从OpenHarmony5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5886,8 +5886,8 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 >   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
 >   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
 > - 针对2in1设备：
->   - 在API version 14之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
->   - 从API version 14开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+>   - 在OpenHarmony5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+>   - 从OpenHarmony5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
