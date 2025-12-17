@@ -99,7 +99,7 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 
 6. 在成功创建ImageSource对象后，读取、编辑Exif信息。
 
-   >**说明：**
+   > **说明：**
    >
    > 创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
 
