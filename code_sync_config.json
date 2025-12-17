@@ -26922,7 +26922,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets",
 				"functions":[
 					{
-						"end_line":106,
+						"end_line":107,
 						"name":"request_permission_in_UIAbility",
 						"start_line":18
 					}
@@ -26932,7 +26932,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":66,
 						"name":"request_permission_in_UI",
 						"start_line":17
 					}
