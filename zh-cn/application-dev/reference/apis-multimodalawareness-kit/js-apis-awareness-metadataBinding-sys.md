@@ -22,6 +22,8 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>
 
 **ArkTS模式**：该接口适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的接口ArkTS-Sta是[encodeImage](#metadataBindingencodeImage20)
+
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
 **系统API**：此接口为系统接口
@@ -71,6 +73,8 @@ function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
 
 **ArkTS模式**：该接口适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的接口ArkTS-Sta是[decodeImage](#metadataBindingdecodeImage20)
+
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
 **系统API**：此接口为系统接口
@@ -117,6 +121,8 @@ notifyMetadataBindingEvent(metadata: string): void;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的接口ArkTS-Sta是[notifyMetadataBindingEvent](#metadataBindingnotifyMetadataBindingEvent20)
+
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
 **系统API**：此接口为系统接口
@@ -159,6 +165,8 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>
 在图片中加入信息
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[encodeImage](#metadataBindingencodeImage)
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
@@ -209,6 +217,8 @@ function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
 解析图片中携带的信息。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[decodeImage](#metadataBindingdecodeImage)
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
@@ -263,6 +273,8 @@ notifyMetadataBindingEvent(metadata: string): void;
 推送待嵌入的信息给调用编码接口的应用或服务。
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[notifyMetadataBindingEvent](#metadataBindingnotifyMetadataBindingEvent)
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding
 
