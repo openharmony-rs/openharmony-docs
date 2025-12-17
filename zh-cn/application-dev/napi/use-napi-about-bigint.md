@@ -138,7 +138,9 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_bigint_uint64: %{public
 cpp部分代码
 
 <!-- @[napi_create_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_create_bigint_words
 static napi_value CreateBigintWords(napi_env env, napi_callback_info info)
 {
     // 使用napi_create_bigint_words接口创建一个BigInt对象
