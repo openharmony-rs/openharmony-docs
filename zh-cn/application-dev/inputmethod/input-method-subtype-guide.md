@@ -32,7 +32,8 @@
    ```
    
 2. 子类型配置文件`input_method_config.json`需要放在应用资源目录的profile文件夹中，格式如下，字段释义参照[InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md#inputmethodsubtype)；开发者需要严格按照配置文件格式及字段进行子类型信息配置，locale字段的配置参照[i18n-locale-culture](.././internationalization/i18n-locale-culture.md#实现原理)。
-   ```
+
+   ``` JSON5
    {
      "subtypes": [
        {
