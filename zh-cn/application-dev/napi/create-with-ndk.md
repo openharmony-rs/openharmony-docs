@@ -1,5 +1,10 @@
 # 创建NDK工程
-
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @fang-jinxu-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @fang-jinxu-->
 
 下面通过DevEco Studio的NDK工程模板，来演示如何创建一个NDK工程。
 
