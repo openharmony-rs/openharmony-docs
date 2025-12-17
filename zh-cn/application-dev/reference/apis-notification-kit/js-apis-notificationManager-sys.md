@@ -6559,7 +6559,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。 |
 | ENABLE   | 2   | 应用通知的优先级开关为全部通知状态。 |
 
-### setGeofenceEnabled<sup>23+</sup>
+## notificationManager.setGeofenceEnabled<sup>23+</sup>
 
 setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 
@@ -6609,7 +6609,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 });
 ```
 
-### isGeofenceEnabled<sup>23+</sup>
+## notificationManager.isGeofenceEnabled<sup>23+</sup>
 
 isGeofenceEnabled(): Promise\<boolean\>
 
