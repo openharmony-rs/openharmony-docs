@@ -78,14 +78,14 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
            }, (error: BusinessError) => {
              if (error) {
                console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-			   return;
+         return;
              }
              console.info('Succeed in starting vibration');
           
            });
          } catch (err) {
            let e: BusinessError = err as BusinessError;
-		   console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+       console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
          }
        }
      })
@@ -237,14 +237,14 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
            }, (error: BusinessError) => {
              if (error) {
                console.error(`Failed to start vibration. Code: ${error.code}, message: ${error.message}`);
-			         return;
+               return;
              }
              console.info('Succeed in starting vibration');
           
            });
          } catch (err) {
            let e: BusinessError = err as BusinessError;
-		       console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+           console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
          }
        }
      })
@@ -1242,23 +1242,23 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
    // 使用try catch对可能出现的异常进行捕获
    try {
      let pointsMe: vibrator.VibratorCurvePoint[] = [
-	     { time: 0, intensity: 0, frequency: -7 },
-	     { time: 42, intensity: 1, frequency: -6 },
-	     { time: 128, intensity: 0.94, frequency: -4 },
-	     { time: 217, intensity: 0.63, frequency: -14 },
-	     { time: 763, intensity: 0.48, frequency: -14 },
-	     { time: 1125, intensity: 0.53, frequency: -10 },
-	     { time: 1503, intensity: 0.42, frequency: -14 },
-	     { time: 1858, intensity: 0.39, frequency: -14 },
-	     { time: 2295, intensity: 0.34, frequency: -17 },
-	     { time: 2448, intensity: 0.21, frequency: -14 },
-	     { time: 2468, intensity: 0, frequency: -21 }
+       { time: 0, intensity: 0, frequency: -7 },
+       { time: 42, intensity: 1, frequency: -6 },
+       { time: 128, intensity: 0.94, frequency: -4 },
+       { time: 217, intensity: 0.63, frequency: -14 },
+       { time: 763, intensity: 0.48, frequency: -14 },
+       { time: 1125, intensity: 0.53, frequency: -10 },
+       { time: 1503, intensity: 0.42, frequency: -14 },
+       { time: 1858, intensity: 0.39, frequency: -14 },
+       { time: 2295, intensity: 0.34, frequency: -17 },
+       { time: 2448, intensity: 0.21, frequency: -14 },
+       { time: 2468, intensity: 0, frequency: -21 }
      ] // VibratorCurvePoint参数最少设置4个，最大设置16个
      let param: vibrator.ContinuousParam = {
-	     intensity: 97,
-	     frequency: 34,
-	     points:pointsMe,
-	     index: 0
+       intensity: 97,
+       frequency: 34,
+       points:pointsMe,
+       index: 0
      }
      builder.addContinuousEvent(0, 2468, param);
      console.info(`addContinuousEvent builder is ${builder.build()}`);
@@ -1307,9 +1307,9 @@ addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilde
    // 使用try catch对可能出现的异常进行捕获
    try {
      let param: vibrator.TransientParam = {
-	     intensity: 80,
-	     frequency: 70,
-	     index: 0
+       intensity: 80,
+       frequency: 70,
+       index: 0
      }
      builder.addTransientEvent(0, param);
      console.info(`addTransientEvent builder is ${builder.build()}`);
@@ -1342,9 +1342,9 @@ build(): VibratorPattern;
    let builder = new vibrator.VibratorPatternBuilder();
    try {
      let param: vibrator.TransientParam = {
-	     intensity: 80,
-	     frequency: 70,
-	     index: 0
+       intensity: 80,
+       frequency: 70,
+       index: 0
      }
      builder.addTransientEvent(0, param);
      console.info(`addTransientEvent builder is ${builder.build()}`);
@@ -1354,17 +1354,17 @@ build(): VibratorPattern;
    }
    try {
      vibrator.startVibration({
-	     type: "pattern",
-	     pattern: builder.build()
+       type: "pattern",
+       pattern: builder.build()
      }, {
-	   usage: "alarm", // 根据实际选择类型归属不同的开关管控
+     usage: "alarm", // 根据实际选择类型归属不同的开关管控
      }, (error) => {
-	   if (error) {
-	     let e: BusinessError = error as BusinessError;
-	     console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
-	   } else {
-	     console.info(`vibrate success`);
-	   }
+     if (error) {
+       let e: BusinessError = error as BusinessError;
+       console.error(`Vibrate fail. Code: ${e.code}, message: ${e.message}`);
+     } else {
+       console.info(`vibrate success`);
+     }
      });
    } catch(error) {
      let e: BusinessError = error as BusinessError;
