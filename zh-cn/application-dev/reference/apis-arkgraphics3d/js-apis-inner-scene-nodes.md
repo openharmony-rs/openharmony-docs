@@ -568,7 +568,7 @@ getViewMatrix(): Mat4x4
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| [Mat4x4](js-apis-inner-scene-types.md#mat4x4) | 返回获取相机的视图矩阵。 |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x4) | 返回相机的视图矩阵。 |
 
 **示例：**
 ```ts
@@ -604,7 +604,7 @@ getProjectionMatrix(): Mat4x4
 **返回值：**
 | 类型 | 说明 |
 | ---- | ---- |
-| [Mat4x4](js-apis-inner-scene-types.md#mat4x4) | 返回获取相机的投影矩阵。 |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x4) | 返回相机的投影矩阵。 |
 
 **示例：**
 ```ts
