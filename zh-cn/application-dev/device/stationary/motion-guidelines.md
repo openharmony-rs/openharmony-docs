@@ -50,39 +50,85 @@
 1. 导入模块。
 
    ```ts
-   import motion from '@ohos.multimodalAwareness.motion';
+   import { motion } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 定义回调函数接收操作手结果
 
    ```
-   let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
-     console.info('callback succeeded' + data);
+   callback(data:motion.OperatingHandStatus) {	
+     console.info('callback success' + data);	
    };
    ```
 
 3. 订阅操作手感知
 
    ```
-   try {
-      motion.onOperatingHandChanged(callback);
-      console.info("on succeeded");
-   } catch (err) {
+   try {	
+      motion.on('operatingHandChanged', this.callback);	
+      console.info("on succeeded");	
+   } catch (err) {	
       let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
    }
    ```
 
 4. 取消订阅操作手感知
 
    ```
+   try {	
+      motion.off('operatingHandChanged');	
+      console.info("off succeeded");	
+   } catch (err) {	
+      let error = err as BusinessError;
+   }
+   ```
+
+5. 获取最新操作手状态
+
+   ```
    try {
-      motion.offOperatingHandChanged();
-      console.info("off succeeded");
+      let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
+      console.info('get succeeded' + data);
    } catch (err) {
       let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
+      console.error("Failed get and err code is " + error.code);
+   }
+   ```
+   1. 导入模块。
+
+   ```ts
+   import { motion } from '@kit.MultimodalAwarenessKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
+
+2. 定义回调函数接收操作手结果
+
+   ```
+   function callback(data:motion.OperatingHandStatus) {	
+     console.info('callback success' + data);	
+   };
+   ```
+
+3. 订阅操作手感知
+
+   ```
+   try {	
+      motion.onOperatingHandChanged(callback);	
+      console.info("on succeeded");	
+   } catch (err) {	
+      let error = err as BusinessError;
+   }
+   ```
+
+4. 取消订阅操作手感知
+
+   ```
+   try {	
+      motion.offOperatingHandChanged();	
+      console.info("off succeeded");	
+   } catch (err) {	
+      let error = err as BusinessError;
    }
    ```
 
@@ -98,7 +144,6 @@
    }
    ```
 
-
 ## 获取握持手状态开发指导
 
 ### 接口说明
@@ -112,13 +157,13 @@
 
 使用motion模块获取用户握持手时，需要权限： ohos.permission.DETECT_GESTURE，具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-  ```
-  "requestPermissions":[
-      {
-        "name" : "ohos.permission.DETECT_GESTURE"
-      }
-    ]
-  ```
+```
+"requestPermissions":[
+   {
+      "name" : "ohos.permission.DETECT_GESTURE"
+   }
+   ]
+```
   
 ### 约束与限制
 
