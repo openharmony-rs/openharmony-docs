@@ -1936,7 +1936,7 @@ setSpecificSystemBarEnabled(name: SpecificSystemBar, enable: boolean, enableAnim
 
 设置主窗口状态栏、<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏，使用Promise异步回调。
 
-调用生效后返回并不表示状态栏和<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏模式（悬浮窗、分屏等场景）下配置不生效，进入非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)的全屏模式后配置生效。
+调用生效后返回并不表示状态栏和<!--RP15-->三键导航栏<!--RP15End-->的显示或隐藏已完成。子窗口调用后不生效。主窗口在非全屏/最大化模式（悬浮窗、分屏等场景）下配置不生效，进入全屏/最大化模式后配置生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
