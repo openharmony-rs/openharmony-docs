@@ -528,6 +528,7 @@ mediaPlayGestureAccess(access: boolean)
 multiWindowAccess(multiWindow: boolean)
 
 设置是否开启多窗口权限。
+
 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew事件](./arkts-basic-components-web-events.md#onwindownew9)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -4191,6 +4192,7 @@ Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本�
 zoomControlAccess(zoomControlAccess: boolean)
 
 设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
+
 当属性没有显式调用时，默认允许通过组合按键进行缩放。
 
 **系统能力：** SystemCapability.Web.Webview.Core

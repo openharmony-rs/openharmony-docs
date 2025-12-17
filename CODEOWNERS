@@ -551,8 +551,8 @@ zh-cn/application-dev/basic-services/common-event/itc-with-emitter.md @fang-jinx
 zh-cn/application-dev/basic-services/common-event/native-common-event-*.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
 
 [开发-Basic Services Kit-设备管理]
-zh-cn/application-dev/device/usb-overview.md @w_Machine_cc @Kevin-Lau @liuhonggang123 @fang-jinxu
-zh-cn/application-dev/device/usb-guidelines.md @w_Machine_cc @Kevin-Lau @liuhonggang123 @fang-jinxu
+zh-cn/application-dev/device/usb-overview.md  @Kevin-Lau @liuhonggang123 @fang-jinxu
+zh-cn/application-dev/device/usb-guidelines.md  @Kevin-Lau @liuhonggang123 @fang-jinxu
 
 [开发-Basic Services Kit-升级服务]
 zh-cn/application-dev/basic-services/update/Readme-CN.md  @fang-jinxu
@@ -631,7 +631,7 @@ zh-cn/application-dev/device/driverdevelopment-overview.md @w00373942 @dong-dong
 zh-cn/application-dev/device/environmental-preparation.md @w00373942 @dong-dongzhen @hu-zhiqiong
 zh-cn/application-dev/device/driverextensionability.md @w00373942 @dong-dongzhen @hu-zhiqiong
 zh-cn/application-dev/device/externaldevice-guidelines.md @w00373942 @dong-dongzhen @hu-zhiqiong
-zh-cn/application-dev/device/usb-ddk-guidelines.md  @w00373942 @dong-dongzhen @hu-zhiqiong
+zh-cn/application-dev/device/usb-ddk-guidelines.md @w00373942 @dong-dongzhen @hu-zhiqiong
 zh-cn/application-dev/device/hid-ddk-guidelines.md @w00373942 @dong-dongzhen @hu-zhiqiong
 zh-cn/application-dev/device/usb-serial-ddk-guidelines.md @w00373942 @dong-dongzhen @hu-zhiqiong
 zh-cn/application-dev/device/scsi-peripheral-ddk-guidelines.md  @w00373942 @dong-dongzhen @hu-zhiqiong
@@ -801,7 +801,7 @@ zh-cn/application-dev/napi/neural-network-runtime-guidelines.md @ge-yafang @prin
 [开发-NDK]
 zh-cn/application-dev/napi/  @fang-jinxu
 zh-cn/application-dev/napi/rawfile-guidelines.md @Brilliantry_Rui @Buda-Liu @budda-wang @lpw_work
-zh-cn/application-dev/napi/usb-ddk-guidelines.md @w_Machine_cc @Kevin-Lau @liuhonggang123
+zh-cn/application-dev/napi/usb-ddk-guidelines.md @Kevin-Lau @liuhonggang123
 
 
 [开发-Notification Kit]
@@ -1901,21 +1901,21 @@ zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-CommonEventSer
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtension*.md @fang-jinxu @dongqingran @wulong158 @wanghong1997
 
 [API参考-Basic Services Kit-设备管理]
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-battery.md  @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-brightness.md  @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-battery-info.md @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-power.md @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-runninglock.md @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-thermal.md @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-usbManager.md @w_Machine_cc @Kevin-Lau @liuhonggang123 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-usb*.md @w_Machine_cc @Kevin-Lau @liuhonggang123 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-battery-info-sys.md @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-batteryStatistics-sys.md @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-brightness-sys.md @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-charger-sys.md @w_Machine_cc  @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-battery.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-brightness.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-battery-info.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-power.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-runninglock.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-thermal.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-usbManager.md @Kevin-Lau @liuhonggang123 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-usb*.md @Kevin-Lau @liuhonggang123 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-battery-info-sys.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-batteryStatistics-sys.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-brightness-sys.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-charger-sys.md @alien0208 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-enterprise-usbManager-sys.md @liuzuming @Brilliantry_Rui  @lpw_work @caiminggang @w_Machine_cc @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-power-sys.md @w_Machine_cc  @alien0208 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-usbManager-sys.md @w_Machine_cc @Kevin-Lau @liuhonggang123 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-power-sys.md @alien0208 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-usbManager-sys.md @Kevin-Lau @liuhonggang123 @fang-jinxu
 
 [API参考-Basic Services Kit-数据文件处理]
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request-sys.md   @murphy1984 @hu-kai45 @fang-jinxu
