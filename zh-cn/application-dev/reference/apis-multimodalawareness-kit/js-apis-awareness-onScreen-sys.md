@@ -391,6 +391,8 @@ unsubscribe(capability: [OnscreenAwarenessCap](#onscreenonscreenawarenesscap23),
 
 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
 
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
 **设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
@@ -438,6 +440,8 @@ trigger(capability: [OnscreenAwarenessCap](#onscreenonscreenawarenesscap23),
         options?: [OnscreenAwarenessOptions](#onscreenonscreenawarenessoptions23)): Promise&lt;[OnscreenAwarenessInfo](#onscreenonscreenawarenessinfo23)&gt;
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
+
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
