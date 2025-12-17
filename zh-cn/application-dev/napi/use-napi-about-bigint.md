@@ -226,8 +226,9 @@ static napi_value GetValueBigintInt64t(napi_env env, napi_callback_info info)
 
 index.d.ts
 <!-- @[napi_get_value_bigint_int64_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const getValueBigintInt64t: (bigInt64: bigint) => boolean | undefined;
+
+``` TypeScript
+export const getValueBigintInt64t: (bigInt64: bigint) => boolean | undefined; // napi_get_value_bigint_int64
 ```
 
 
