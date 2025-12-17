@@ -30,7 +30,7 @@ loadNativeModule(moduleName: string): Object;
 | 场景            | 示例           | 
 | :------------- | :----------------------------- | 
 | 系统库模块        | 加载@ohos.或@system.        | 
-| 应用内Native模块	| 加载libNativeLibrary.so |
+| 应用内Native模块  | 加载libNativeLibrary.so |
 
 ## 使用示例
 

@@ -48,15 +48,15 @@ ArkGuard支持基础的名称混淆功能，不支持控制混淆、数据混淆
 // example.ts
 // 混淆前
 class A1 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 class A2 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 function test(input: A1) {
-	console.info(input.prop1);
+    console.info(input.prop1);
 }
 
 let a2 = new A2();
@@ -67,15 +67,15 @@ test(a2);
 ```typescript
 // 混淆后
 class A1 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 class A2 {
-	a: string = '';
+    a: string = '';
 }
 
 function test(input: A1) {
-	console.info(input.prop1);
+    console.info(input.prop1);
 }
 
 let a2 = new A2();
@@ -137,7 +137,7 @@ test(a2);
 // test.ts
 // 混淆前：
 class TestA {
-	static prop1: number = 0;
+    static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -145,7 +145,7 @@ TestA.prop1;
 ```ts
 // 混淆后：
 class TestA {
-	static i: number = 0;
+    static i: number = 0;
 }
 TestA.i;
 ```
@@ -261,7 +261,7 @@ let s = 0;
 ```ts
 // 混淆前：
 namespace ns {
-	export type customT = string;
+    export type customT = string;
 }
 ```
 
@@ -321,7 +321,7 @@ const module = import('../a/b');
 ```ts
 // 混淆前：
 class TestA {
-	static prop1: number = 0;
+    static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -342,7 +342,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 ```ts
 // 混淆前：
 if (flag) {
-	console.info("hello");
+    console.info("hello");
 }
 ```
 
@@ -795,7 +795,7 @@ a*
 
 ```txt
 class A {
-	'*'= 1
+    '*'= 1
 }
 -keep-property-name
 *
