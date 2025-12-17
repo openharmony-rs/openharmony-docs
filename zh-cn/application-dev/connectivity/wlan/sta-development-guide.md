@@ -103,12 +103,12 @@ try {
        bssid : "****",
        preSharedKey : "****",
        securityType : 0
-	   }
+     }
 
        // 更新当前Wi-Fi连接状态
      wifiManager.on("wifiConnectionChange", recvWifiConnectionChangeFunc);
        // 添加候选网络配置
-	   wifiManager.addCandidateConfig(config).then(result => {
+       wifiManager.addCandidateConfig(config).then(result => {
        // 连接指定网络
        wifiManager.connectToCandidateConfig(result);
      });
