@@ -649,6 +649,26 @@ contentTransition(transition: ContentTransitionEffect)
 | ------ | --------------------------------------- | ---- | -------------------------------- |
 | transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
 
+### antialiased<sup>23+</sup>
+
+antialiased(isAntialiased: Optional\<boolean>)
+
+设置位图图片边缘是否开启抗锯齿。
+
+> **说明：**
+>
+> 如果图片设置了背景色属性([backgroundColor](ts-universal-attributes-background.md#backgroundcolor))，图片的抗锯齿属性设置为true不会影响背景色的锯齿效果。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                             |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| isAntialiased  | Optional\<boolean> | 是   | 设置位图图片边缘是否开启抗锯齿。<br/> true表示开启边缘抗锯齿；false表示不开启边缘抗锯齿。<br/>设置为undefined时，不开启边缘抗锯齿。|
+
 ## ImageContent<sup>12+</sup>
 
 指定图像内容。
@@ -2466,3 +2486,50 @@ struct Index {
   }
 }
 ```
+
+### 示例30（设置位图图片边缘抗锯齿）
+
+该示例演示了如何通过设置antialiased接口开启位图图片边缘的抗锯齿功能。
+
+从API version 23开始，新增[antialiased](#antialiased23)接口。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State imageResource: Resource = $r('app.media.icon');
+
+  build() {
+    Row() {
+      Blank()
+        .width(50)
+
+      Column() {
+        Blank()
+          .height(20)
+        Text('没有设置抗锯齿的有旋转角度的图片')
+        Blank()
+          .height(20)
+        Image(this.imageResource)
+          .width(50)
+          .height(50)
+          .rotate({angle: 1})
+
+        Blank()
+          .height(20)
+        Text('设置了抗锯齿的有旋转角度的图片')
+        Blank()
+          .height(20)
+        Image(this.imageResource)
+          .width(50)
+          .height(50)
+          .rotate({angle: 1})
+          .antialiased(true)
+      }
+    }
+  }
+}
+```
+
+![sandBox](figures/antialiased.PNG)
