@@ -17,7 +17,7 @@
 
 ## 导入模块
 
-```js
+```ts
 import { AVInputCastPicker } from '@kit.AVSessionKit';
 ```
 
@@ -27,7 +27,7 @@ import { AVInputCastPicker } from '@kit.AVSessionKit';
 
 ## AVInputCastPicker
 
-```
+```ts
 AVInputCastPicker({
   customPicker?: CustomBuilder;
   onStateChange?: OnPickerStateCallback;
