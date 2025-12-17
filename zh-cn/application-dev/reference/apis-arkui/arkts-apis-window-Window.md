@@ -6685,7 +6685,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. |
-| 1300016 | Parameter error. Possible cause: 1. Invaild parameter range. 2. Invalid parameter length. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
 **示例：**
 
@@ -8212,7 +8212,7 @@ isFocused(): boolean
 ```ts
 try {
   let focus = windowClass.isFocused();
-  console.info(`Succeeded in checking whether the window is focused. Data: JSON.stringify(focus)`);
+  console.info(`Succeeded in checking whether the window is focused. Data: ${focus}`);
 } catch (exception) {
   console.error(`Failed to check whether the window is focused. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -8317,7 +8317,7 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invaild. |
+| 1300009 | The parent window is invalid. |
 
 **示例：**
 
@@ -8366,7 +8366,7 @@ getParentWindow(): Window
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invaild. |
+| 1300009 | The parent window is invalid. |
 
 **示例：**
 
