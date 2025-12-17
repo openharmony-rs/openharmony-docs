@@ -27,7 +27,7 @@ BigInt是ArkTS中用于表示任意精度整数的数据类型，它能够处理
 | napi_create_bigint_words | 用于根据提供的64位无符号（uint64）整数创建BigInt对象的函数。 |
 | napi_get_value_bigint_int64 | 用于从BigInt对象中获取64位带符号整数（int64）值的函数。 |
 | napi_get_value_bigint_uint64 | 用于从BigInt对象中获取64位无符号整数（uint64）值的函数。 |
-| napi_get_value_bigint_words | 用于从BigInt对象中获取底层的64位无符号（uint64）字。 |
+| napi_get_value_bigint_words | 用于从BigInt对象中获取底层的64位无符号（uint64）整数。 |
 
 
 ## 使用示例
