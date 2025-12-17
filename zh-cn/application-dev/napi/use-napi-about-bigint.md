@@ -374,8 +374,9 @@ static napi_value GetValueBigintWords(napi_env env, napi_callback_info info)
 
 index.d.ts
 <!-- @[napi_get_value_bigint_words_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const getValueBigintWords: (bigIntWords: bigint) => bigint | undefined;
+
+``` TypeScript
+export const getValueBigintWords: (bigIntWords: bigint) => bigint | undefined; // napi_get_value_bigint_words
 ```
 
 
