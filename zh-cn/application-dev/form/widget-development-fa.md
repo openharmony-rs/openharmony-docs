@@ -61,7 +61,7 @@ FA卡片开发，即基于[FA模型](../application-models/fa-model-development-
 
 ### 实现卡片生命周期接口
 
-创建FA模型的卡片，需实现卡片的生命周期接口。先参考<!--RP1-->[创建服务卡片](./arkts-ui-widget-creation.md#创建arkts卡片)<!--RP1End-->生成服务卡片模板。
+创建FA模型的卡片，需实现卡片的生命周期接口。先参考<!--RP1-->[创建服务卡片](./arkts-ui-widget-creation.md)<!--RP1End-->生成服务卡片模板。
 
 1. 在form.ts中，导入相关模块
    
