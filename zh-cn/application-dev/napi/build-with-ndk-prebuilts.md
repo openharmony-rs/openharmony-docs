@@ -53,6 +53,7 @@ include_directories(
 如果预构建so没有`SONAME`，链接器将会将so的绝对路径插入到依赖这个so的二进制文件的`dynamic section`中。当这些二进制文件随hap包发布运行时，动态加载器（`dynamic loader`）可能最终无法找到这个so而导致错误。
 
 可以使用`llvm-readelf`工具查看so文件是否设置了`SONAME`。`llvm-readelf`工具路径为：`${DevEco Studio安装目录}/sdk/default/openharmony/native/llvm/bin`或者`${command-line-tools安装目录}/sdk/default/openharmony/native/llvm/bin/llvm-readelf`。
+
 示例如下：
 
 ```bash
@@ -60,7 +61,8 @@ include_directories(
 0x000000000000000e (SONAME)             Library soname: [libavcodec_ffmpeg.so]
 ```
 
-若预构建so使用cmake进行构建，则所有的so默认会设置`SONAME`（只要目标平台支持）。  
+若预构建so使用cmake进行构建，则所有的so默认会设置`SONAME`（只要目标平台支持）。
+
 若预构建so使用其他构建工具，可以通过配置`ldflags`来设置。
 
 ```bash
