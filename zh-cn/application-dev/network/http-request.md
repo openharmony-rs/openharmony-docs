@@ -367,19 +367,19 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
  **配置参考**
  
-1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）
+1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）。
 2. 配置请求级CA证书：
-- 通过[httprequestoptions](../../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书
-- 通过[websocketrequestoptions]()的caPath字段配置WebSocket请求CA证书https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-websocket#websocketrequestoptions
-- 通过[tlssecureoptions]()的ca字段指定TLS请求CA证书https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-socket#tlssecureoptions9
+- 通过[httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书。
+- 通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的caPath字段配置WebSocket请求CA证书。
+- 通过[tlssecureoptions](../reference/apis-network-kit/js-apis-socket#tlssecureoptions9)的ca字段指定TLS请求CA证书。
 3. 配置跳过证书校验：
-- HTTPS：通过remoteValidation = 'skip' 配置：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-http#remotevalidation18
-- WebSocket：通过skipServerCertVerification = false 配置：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-websocket#websocketrequestoptions
-- TLSSocket：通过skipRemoteValidation = false 配置：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-socket#tlsconnectoptions9
+- HTTPS：通过[remoteValidation](../reference/apis-network-kit/js-apis-http.md#remotevalidation18) = 'skip' 配置。
+- WebSocket：通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的skipServerCertVerification = false 配置。
+- TLSSocket：通过[tlsconnectoptions](../reference/apis-network-kit/js-apis-socket#tlsconnectoptions9)的skipRemoteValidation = false 配置。
 
  **调试参考**
  
-- 通过API校验指定证书是否可信：https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-networksecurity#networksecuritycertverification
+- 通过API校验指定证书是否可信：可参考[networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification)。
 - 通过openssl命令校验域名服务器证书链是否被系统信任：hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief。若出现`Verification: OK`说明证书链可信。将`-trace -showcerts`替换为`-brief`可以打印详细的TLS握手信息。
 
 
