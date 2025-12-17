@@ -178,7 +178,7 @@ Web页面出现白屏的原因众多，本文列举了若干常见白屏问题�
     <!-- main/resources/rawfile/index.html -->
     <html>
     <head>
-  	  <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     <body>
       <script crossorigin src="./js/script.js"></script>
