@@ -364,6 +364,34 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
    - 创建相机捕获会话，用于捕获相机拍摄的照片。
 
      <!-- @[create_captureSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
+     
+     ``` C++
+     Camera_CaptureSession* CreateAndStartSession(Camera_Manager* cameraManager, Camera_Input* cameraInput, int sessionMode)
+     {
+         Camera_CaptureSession* captureSession = nullptr;
+         Camera_ErrorCode ret = OH_CameraManager_CreateCaptureSession(cameraManager, &captureSession);
+         if (captureSession == nullptr || ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreateCaptureSession failed.");
+             return nullptr;
+         }
+         ret = OH_CaptureSession_SetSessionMode(captureSession, static_cast<Camera_SceneMode>(sessionMode));
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetSessionMode failed.");
+             return nullptr;
+         }
+         ret = OH_CaptureSession_BeginConfig(captureSession);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_BeginConfig failed.");
+             return nullptr;
+         }
+         ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
+         if (ret != CAMERA_OK) {
+             OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
+             return nullptr;
+         }
+         return captureSession;
+     }
+     ```
 
    - 开启捕获会话。
 
