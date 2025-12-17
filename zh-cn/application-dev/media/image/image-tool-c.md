@@ -101,7 +101,7 @@ Exif信息的读取与编辑相关C API接口的详细介绍请参见[OH_ImageSo
 
    >**说明：**
    >
-   >创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
+   > 创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
 
    <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
