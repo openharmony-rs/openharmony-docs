@@ -86,8 +86,8 @@
 
 | 接口名                                                       | 描述                                   |
 | ------------------------------------------------------------ | -------------------------------------- |
-| on('operatingHandChanged',callback:Callback&lt;OperatingHandStatus&gt;):void; | 订阅操作手感知，操作手结果通过callback返回。 |
-| off('operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;): void; | 取消订阅操作手感知。                   |
+| onOperatingHandChanged(callback:Callback&lt;OperatingHandStatus&gt;):void; | 订阅操作手感知，操作手结果通过callback返回。 |
+| offOperatingHandChanged(callback?: Callback&lt;OperatingHandStatus&gt;): void; | 取消订阅操作手感知。                   |
 | getRecentOperatingHandStatus(): OperatingHandStatus;         | 获取最新的操作手状态。                 |
 
 ### 约束与限制
