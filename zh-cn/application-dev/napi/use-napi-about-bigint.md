@@ -317,7 +317,9 @@ try {
 cpp部分代码
 
 <!-- @[napi_get_value_bigint_words](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/napi_init.cpp) -->
-```cpp
+
+``` C++
+// napi_get_value_bigint_words
 static napi_value GetValueBigintWords(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -336,6 +338,14 @@ static napi_value GetValueBigintWords(napi_env env, napi_callback_info info)
     if (wordCount == 0) {
         OH_LOG_ERROR(LOG_APP, "Node-API , wordCount is 0, invalid BigInt or empty value.");
         napi_throw_error(env, nullptr, "napi_get_value_bigint_words returned wordCount 0");
+        return nullptr;
+    }
+    
+    const size_t MAX_ALLOWED_WORDS = 1024; // 限制wordCount上限（业务防护，根据实际场景调整）示例：最多允许1024个uint64_t（8KB）
+    if (wordCount > MAX_ALLOWED_WORDS) {
+        OH_LOG_ERROR(LOG_APP, "Node-API , wordCount(%{public}zu) exceeds max limit(%{public}zu)",
+            wordCount, MAX_ALLOWED_WORDS);
+        napi_throw_error(env, nullptr, "wordCount is too large");
         return nullptr;
     }
     // 分配足够空间存储所有word
