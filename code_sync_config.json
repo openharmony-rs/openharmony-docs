@@ -31710,5 +31710,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/arkts-utils/sendable-constraints.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":32,
+						"name":"har_package_014",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
