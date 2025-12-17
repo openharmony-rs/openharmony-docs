@@ -528,6 +528,7 @@ mediaPlayGestureAccess(access: boolean)
 multiWindowAccess(multiWindow: boolean)
 
 设置是否开启多窗口权限。
+
 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew事件](./arkts-basic-components-web-events.md#onwindownew9)。
 
 **系统能力：** SystemCapability.Web.Webview.Core

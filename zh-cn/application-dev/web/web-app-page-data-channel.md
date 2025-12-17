@@ -171,6 +171,7 @@
 
 ### 为什么H5向应用侧发送消息接收不到？
 检查传递的数据类型是否正确，WebMessage支持的数据类型有string和ArrayBuffer。  
+
 如果想要传递对象类型则需要将对象类型通过JSON.stringify方法转换为string类型再进行传递。示例如下：
 
 ```ts
