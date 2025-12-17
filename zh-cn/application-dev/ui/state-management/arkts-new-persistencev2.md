@@ -466,7 +466,12 @@ struct Page1 {
   @Local refresh: number = 0;
   // 使用key:globalConnect1连接，传入加密等级为EL1
   @Local p1: Sample =
-    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample(), areaMode: contextConstant.AreaMode.EL1 })!;
+    PersistenceV2.globalConnect({
+      type: Sample,
+      key: 'globalConnect1',
+      defaultCreator: () => new Sample(),
+      areaMode: contextConstant.AreaMode.EL1
+    })!;
   // 使用key:connect2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -619,7 +624,7 @@ struct Page1 {
   @Local p: Sample = PersistenceV2.connect(Sample, 'connect3', () => new Sample())!;
 
   build() {
-    Column({space: 5}) {
+    Column({ space: 5 }) {
       /**************************** 显示数据 **************************/
       Text('Key connect3: ' + this.p.father.childId.toString())
         .onClick(() => {

@@ -168,7 +168,8 @@ struct FreezeChild {
   @Param message: number = 0;
   @Param index: number = 0;
 
-  @Monitor('message') onMessageUpdated(mon: IMonitor) {
+  @Monitor('message')
+  onMessageUpdated(mon: IMonitor) {
     hilog.info(DOMAIN, 'testTag', `FreezeChild message callback func ${this.message}, index: ${this.index}`);
   }
 
@@ -214,7 +215,8 @@ struct MyNavigationTestStack {
   @Provider('pageInfo') pageInfo: NavPathStack = new NavPathStack();
   @Local message: number = 0;
 
-  @Monitor('message') info() {
+  @Monitor('message')
+  info() {
     hilog.info(DOMAIN, 'testTag', `freeze-test MyNavigation message callback ${this.message}`);
   }
 
@@ -343,7 +345,8 @@ struct NavigationContentMsgStack {
   @Param message: number = 0;
   @Param index: number = 0;
 
-  @Monitor('message') info() {
+  @Monitor('message')
+  info() {
     hilog.info(DOMAIN, 'testTag', `freeze-test NavigationContent message callback ${this.message}`);
     hilog.info(DOMAIN, 'testTag', `freeze-test ---- called by content ${this.index}`);
   }
@@ -448,6 +451,7 @@ struct RepeatVirtualScrollFreeze {
 struct ChildComponent {
   @Param @Require message: string = '';
   @Param @Require bgColor: Color = Color.Pink;
+
   @Monitor('bgColor')
   onBgColorChange(monitor: IMonitor) {
     // bgColor改变时，缓存池中组件不刷新，不会打印日志
@@ -477,12 +481,13 @@ struct ChildComponent {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
-// ···
+// ...
 // 关闭组件冻结
 @ComponentV2({ freezeWhenInactive: false })
 struct ChildComponent1 {
   @Param @Require message: string = '';
   @Param @Require bgColor: Color = Color.Pink;
+
   @Monitor('bgColor')
   onBgColorChange(monitor: IMonitor) {
     // bgColor改变时，缓存池组件也会刷新，并打印日志
@@ -644,8 +649,10 @@ const TAB_STATE_INITIAL_VALUE = 47;
 struct ChildOfParamComponent {
   @Require @Param childVal: number;
 
-  @Monitor('childVal') onChange(m: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', `Appmonitor ChildOfParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  @Monitor('childVal')
+  onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag',
+      `Appmonitor ChildOfParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
   }
 
   build() {
@@ -659,14 +666,16 @@ struct ChildOfParamComponent {
 struct ParamComponent {
   @Require @Param val: number;
 
-  @Monitor('val') onChange(m: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', `Appmonitor ParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  @Monitor('val')
+  onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag',
+      `Appmonitor ParamComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
   }
 
   build() {
     Column() {
       Text(`val： ${this.val}`)
-      ChildOfParamComponent({childVal: this.val})
+      ChildOfParamComponent({ childVal: this.val })
     }
   }
 }
@@ -675,8 +684,10 @@ struct ParamComponent {
 struct DelayComponent {
   @Require @Param delayVal1: number;
 
-  @Monitor('delayVal1') onChange(m: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', `Appmonitor DelayComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  @Monitor('delayVal1')
+  onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag',
+      `Appmonitor DelayComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
   }
 
   build() {
@@ -686,36 +697,39 @@ struct DelayComponent {
   }
 }
 
-@ComponentV2 ({freezeWhenInactive: true})
+@ComponentV2({ freezeWhenInactive: true })
 struct TabsComponent {
   private controller: TabsController = new TabsController();
   @Local tabState: number = TAB_STATE_INITIAL_VALUE;
 
-  @Monitor('tabState') onChange(m: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', `Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
+  @Monitor('tabState')
+  onChange(m: IMonitor) {
+    hilog.info(DOMAIN, 'testTag',
+      `Appmonitor TabsComponent: changed ${m.dirty[0]}: ${m.value()?.before} -> ${m.value()?.now}`);
   }
 
   build() {
-    Column({space: 10}) {
+    Column({ space: 10 }) {
       Button(`Incr state ${this.tabState}`)
         .fontSize(25)
         .onClick(() => {
           hilog.info(DOMAIN, 'testTag', 'Button increment state value');
           this.tabState = this.tabState + 1;
         })
-
-      Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller}) {
+      Tabs({ barPosition: BarPosition.Start, index: 0, controller: this.controller }) {
         TabContent() {
-          ParamComponent({val: this.tabState})
+          ParamComponent({ val: this.tabState })
         }.tabBar('Update')
         TabContent() {
-          DelayComponent({delayVal1: this.tabState})
+          DelayComponent({ delayVal1: this.tabState })
         }.tabBar('DelayUpdate')
       }
       .vertical(false)
       .scrollable(true)
       .barMode(BarMode.Fixed)
-      .barWidth(400).barHeight(150).animationDuration(400)
+      .barWidth(400)
+      .barHeight(150)
+      .animationDuration(400)
       .width('100%')
       .height(200)
       .backgroundColor(0xF5F5F5)

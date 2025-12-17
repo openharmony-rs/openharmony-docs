@@ -1243,7 +1243,7 @@ Navigation和TabContent混用时，之所以会解锁TabContent标签的子节�
 <!-- @[arkts_custom_components_freeze10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentMixing1.ets) -->
 
 ``` TypeScript
-import { hilog, hiTraceMeter } from '@kit.PerformanceAnalysisKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 const DOMAIN = 0x0001;
 const TAG = 'FreezeChild';
 
