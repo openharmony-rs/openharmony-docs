@@ -1132,11 +1132,11 @@ enum ArkUI_ShadowStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | 超小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM | 小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD | 中阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG | 大阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM | 浮动小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD | 浮动中阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM = 1 | 小阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD = 2 | 中阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG = 3 | 大阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM = 4 | 浮动小阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD = 5 | 浮动中阴影。 |
 
 ### ArkUI_AnimationCurve
 
@@ -1395,8 +1395,8 @@ enum ArkUI_SliderBlockStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | 使用默认滑块（圆形）。 |
-| ARKUI_SLIDER_BLOCK_STYLE_IMAGE | 使用图片资源作为滑块。 |
-| ARKUI_SLIDER_BLOCK_STYLE_SHAPE | 使用自定义形状作为滑块。 |
+| ARKUI_SLIDER_BLOCK_STYLE_IMAGE = 1 | 使用图片资源作为滑块。 |
+| ARKUI_SLIDER_BLOCK_STYLE_SHAPE = 2 | 使用自定义形状作为滑块。 |
 
 ### ArkUI_SliderDirection
 
@@ -1414,7 +1414,7 @@ enum ArkUI_SliderDirection
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | 方向为纵向。 |
-| ARKUI_SLIDER_DIRECTION_HORIZONTAL | 方向为横向。 |
+| ARKUI_SLIDER_DIRECTION_HORIZONTAL = 1 | 方向为横向。 |
 
 ### ArkUI_SliderStyle
 
@@ -1432,8 +1432,8 @@ enum ArkUI_SliderStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SLIDER_STYLE_OUT_SET = 0 | 滑块在滑轨上。 |
-| ARKUI_SLIDER_STYLE_IN_SET | 滑块在滑轨内。 |
-| ARKUI_SLIDER_STYLE_NONE | 无滑块。 |
+| ARKUI_SLIDER_STYLE_IN_SET = 1 | 滑块在滑轨内。 |
+| ARKUI_SLIDER_STYLE_NONE = 2 | 无滑块。 |
 
 ### ArkUI_CheckboxShape
 
@@ -1451,7 +1451,7 @@ enum ArkUI_CheckboxShape
 | 枚举项 | 描述 |
 | -- | -- |
 | ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | 圆形。 |
-| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE | 圆角方形。 |
+| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE = 1 | 圆角方形。 |
 
 ### ArkUI_AnimationPlayMode
 
@@ -1508,7 +1508,7 @@ enum ArkUI_AdaptiveColor
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | 不使用取色模糊。 |
-| ARKUI_ADAPTIVE_COLOR_AVERAGE | 使用取色模糊。 |
+| ARKUI_ADAPTIVE_COLOR_AVERAGE = 1 | 使用取色模糊。 |
 
 ### ArkUI_ColorMode
 
@@ -1563,18 +1563,18 @@ enum ArkUI_BlurStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_BLUR_STYLE_THIN = 0 | 轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_REGULAR | 普通厚度材质模糊。 |
-| ARKUI_BLUR_STYLE_THICK | 厚材质模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_THIN | 近距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR | 中距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_THICK | 远距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK | 超远距景深模糊。 |
-| ARKUI_BLUR_STYLE_NONE | 关闭模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN | 组件超轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_THIN | 组件轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_REGULAR | 组件普通材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_THICK | 组件厚材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK | 组件超厚材质模糊。 |
+| ARKUI_BLUR_STYLE_REGULAR = 1 | 普通厚度材质模糊。 |
+| ARKUI_BLUR_STYLE_THICK = 2 | 厚材质模糊。 |
+| ARKUI_BLUR_STYLE_BACKGROUND_THIN = 3 | 近距景深模糊。 |
+| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR = 4 | 中距景深模糊。 |
+| ARKUI_BLUR_STYLE_BACKGROUND_THICK = 5 | 远距景深模糊。 |
+| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK = 6 | 超远距景深模糊。 |
+| ARKUI_BLUR_STYLE_NONE = 7 | 关闭模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN = 8 | 组件超轻薄材质模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_THIN = 9 | 组件轻薄材质模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_REGULAR = 10 | 组件普通材质模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_THICK = 11 | 组件厚材质模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK = 12 | 组件超厚材质模糊。 |
 
 ### ArkUI_BlurStyleActivePolicy
 
@@ -1592,8 +1592,8 @@ enum ArkUI_BlurStyleActivePolicy
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | 模糊效果跟随窗口焦点状态变化，非焦点不模糊，焦点模糊。 |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE | 一直有模糊效果。 |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE | 一直无模糊效果。 |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE = 1 | 一直有模糊效果。 |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE = 2 | 一直无模糊效果。 |
 
 ### ArkUI_VerticalAlignment
 
@@ -2331,8 +2331,8 @@ enum ArkUI_ButtonType
 | 枚举项 | 描述                      |
 | -- |-------------------------|
 | ARKUI_BUTTON_TYPE_NORMAL = 0 | 普通按钮，默认不带圆角。            |
-| ARKUI_BUTTON_TYPE_CAPSULE | 胶囊型按钮，圆角默认为高度的一半。       |
-| ARKUI_BUTTON_TYPE_CIRCLE | 圆形按钮。                   |
+| ARKUI_BUTTON_TYPE_CAPSULE = 1 | 胶囊型按钮，圆角默认为高度的一半。       |
+| ARKUI_BUTTON_TYPE_CIRCLE = 2 | 圆形按钮。                   |
 | ARKUI_BUTTON_ROUNDED_RECTANGLE = 8 | 圆角矩形按钮。<br>**起始版本：** 19 |
 
 ### ArkUI_RenderFit
