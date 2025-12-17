@@ -1129,10 +1129,10 @@ try {
 
 | 名称           | 类型            | 可读 | 可写 | 说明                           |
 | ---------      | -------------- | ---- | ---- | ------------------------       |
-| displayX       | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 鼠标指针位于屏幕的X坐标上的位置。 |
-| displayY       | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 鼠标指针位于屏幕的y坐标上的位置。 |
-| displayWidth   | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 屏幕宽度，单位：px。                      |
-| displayHeight  | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 屏幕高度，单位：px。                      |
+| displayX       | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 否   | 鼠标指针位于屏幕的X坐标上的位置。 |
+| displayY       | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 否   | 鼠标指针位于屏幕的y坐标上的位置。 |
+| displayWidth   | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 否   | 屏幕宽度，单位：px。                      |
+| displayHeight  | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 否   | 屏幕高度，单位：px。                      |
 
 ## CooperateState<sup>11+</sup>
 
@@ -1146,16 +1146,16 @@ try {
 
 | 名称                           | 类型    | 可读 | 可写 | 说明                   |
 | ------------------------------ | ------ | ---- | ---- | ---------------------- |
-| COOPERATE_PREPARE              | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示准备键鼠穿越。     |
-| COOPERATE_UNPREPARE            | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示取消键鼠穿越准备。 |
-| COOPERATE_ACTIVATE             | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示启动键鼠穿越。     |
-| COOPERATE_ACTIVATE_SUCCESS     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越启动成功。 |
-| COOPERATE_ACTIVATE_FAIL        | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越启动失败。 |
-| COOPERATE_DEACTIVATE_SUCCESS   | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越停止成功。 |
-| COOPERATE_DEACTIVATE_FAIL      | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越停止失败。 |
-| COOPERATE_SESSION_DISCONNECTED | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越会话断开。 |
-| COOPERATE_ACTIVATE_FAILURE     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越无法启动。 |
-| COOPERATE_DEACTIVATE_FAILURE   | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越无法停止。 |
+| COOPERATE_PREPARE              | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示准备键鼠穿越。     |
+| COOPERATE_UNPREPARE            | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示取消键鼠穿越准备。 |
+| COOPERATE_ACTIVATE             | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示启动键鼠穿越。     |
+| COOPERATE_ACTIVATE_SUCCESS     | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越启动成功。 |
+| COOPERATE_ACTIVATE_FAIL        | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越启动失败。 |
+| COOPERATE_DEACTIVATE_SUCCESS   | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越停止成功。 |
+| COOPERATE_DEACTIVATE_FAIL      | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越停止失败。 |
+| COOPERATE_SESSION_DISCONNECTED | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越会话断开。 |
+| COOPERATE_ACTIVATE_FAILURE     | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越无法启动。 |
+| COOPERATE_DEACTIVATE_FAILURE   | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是   | 否   | 表示键鼠穿越无法停止。 |
 
 ## MouseLocation<sup>12+</sup>
 
@@ -1169,10 +1169,10 @@ try {
 
 | 名称           | 类型           | 可读 | 可写 | 说明                     |
 | ---------     | -------------- | ---- | ---- | ------------------------ |
-| displayX      | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 鼠标X坐标位置。 |
-| displayY      | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 鼠标Y坐标位置。 |
-| displayWidth  | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 鼠标所在屏幕宽度，单位：px。 |
-| displayHeight | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 否   | 鼠标所在屏幕高度，单位：px。 |
+| displayX      | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 否   | 鼠标X坐标位置。 |
+| displayY      | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 否   | 鼠标Y坐标位置。 |
+| displayWidth  | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 否   | 鼠标所在屏幕宽度，单位：px。 |
+| displayHeight | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 是   | 否   | 鼠标所在屏幕高度，单位：px。 |
 
 ## CooperateOptions<sup>20+</sup>
 
@@ -1186,9 +1186,9 @@ try {
 
 | 名称      | 类型           | 只读 | 可选 | 说明                     |
 | --------- | -------------- | ---- | ---- | ------------------------ |
-| displayX      | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 否   | 否   | 鼠标X坐标位置。 |
-| displayY      | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 否   | 否   | 鼠标Y坐标位置。 |
-| displayId     | ArkTS-Dyn: number <br>ArkTS-Sta: long         | 否   | 否   | 对端设备屏幕标识。 |
+| displayX      | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 否   | 否   | 鼠标X坐标位置。 |
+| displayY      | ArkTS-Dyn: number <br/>ArkTS-Sta: int         | 否   | 否   | 鼠标Y坐标位置。 |
+| displayId     | ArkTS-Dyn: number <br/>ArkTS-Sta: long         | 否   | 否   | 对端设备屏幕标识。 |
 
 ## cooperate.prepare<sup>(deprecated)</sup>
 
