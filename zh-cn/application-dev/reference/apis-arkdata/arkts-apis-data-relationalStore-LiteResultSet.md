@@ -773,7 +773,7 @@ getCurrentRowData(): RowData
 try {
   let resultSet: relationalStore.LiteResultSet | undefined;
   // 联表查询EMPLOYEE1和EMPLOYEE2，并获取当前行包含重名列名的值。store为获取到的RdbStore实例。
-  let resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
   if (resultSet != undefined) {
     resultSet.goToNextRow();
     const rowData = resultSet.getCurrentRowData();
@@ -904,7 +904,7 @@ getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
 try {
   let resultSet: relationalStore.LiteResultSet | undefined;
   // 联表查询EMPLOYEE1和EMPLOYEE2，并获取多行包含重名列名的值。store为获取到的RdbStore实例。
-  let resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  resultSet = await store.querySqlWithoutRowCount("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
   // 以查到50条数据为例
   // 示例1：仅指定maxCount
   if (resultSet != undefined) {
