@@ -162,8 +162,9 @@ static napi_value CreateBigintWords(napi_env env, napi_callback_info info)
 
 index.d.ts
 <!-- @[napi_create_bigint_words_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-```ts
-export const createBigintWords: () => bigint | undefined;
+
+``` TypeScript
+export const createBigintWords: () => bigint | undefined; // napi_create_bigint_words
 ```
 
 
