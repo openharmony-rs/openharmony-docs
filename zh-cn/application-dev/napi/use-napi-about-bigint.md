@@ -80,8 +80,11 @@ export const createBigintInt64t: () => bigint; // napi_create_bigint_int64
 ArkTS侧示例代码
 
 <!-- @[ark_napi_create_bigint_int64](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIBigint/entry/src/main/ets/pages/Index.ets) -->
-```ts
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_bigint_int64: %{public}d', testNapi.createBigintInt64t());
+
+``` TypeScript
+// napi_create_bigint_int64
+hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_bigint_int64: %{public}d',
+  testNapi.createBigintInt64t());
 ```
 
 
