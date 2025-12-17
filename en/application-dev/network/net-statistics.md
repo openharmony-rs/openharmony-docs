@@ -211,7 +211,7 @@ class Data {
 }
 
 let callback = (data: Data) => {
-  console.log('on netStatsChange, data:' + JSON.stringify(data));
+  console.info('on netStatsChange, data:' + JSON.stringify(data));
 };
 // Subscribe to traffic change events.
 statistics.on('netStatsChange', callback);
