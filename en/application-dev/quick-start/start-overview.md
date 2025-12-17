@@ -25,7 +25,7 @@ For more details, see [Introduction to ArkUI](../ui/arkui-overview.md).
 
 ### Application Model
 
-The application model is the abstraction of capabilities required by an application. It provides components and mechanisms required for running the application. By adhering to a unified model, you can streamline application development, making it more efficient and straightforward. For details, see [Elements of the Application Model](../application-models/application-models.md#elements-of-the-application-model).
+The application model abstracts the capabilities required by an application and provides components and mechanisms required for running the application. By adhering to a unified model, you can streamline application development, making it more efficient and straightforward. For details, see [Elements of the Application Model](../application-models/application-models.md#elements-of-the-application-model).
 
 Along its evolution, OpenHarmony has provided two application models:
 

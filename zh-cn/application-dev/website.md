@@ -274,6 +274,7 @@
       - [应用数据向量化 (ArkTS)](database/aip-data-intelligence-embedding.md)
       - [SQLite调试工具指导](database/sqlite-database-debug-tool.md)
       - [ArkData术语](database/data-terminology.md)
+      - [ArkData常见问题](database/data-faq.md)
     - ArkTS（方舟编程语言）<!--arkts-->
       - [ArkTS简介](arkts-utils/arkts-overview.md)
       - ArkTS基础类库<!--arkts-utils-->
@@ -763,7 +764,6 @@
         - [窗口元数据配置](windowmanager/window-config-m.md)
         <!--Del-->
         - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](windowmanager/system-window-stage-sys.md)
-        - [WindowExtensionAbility（仅对系统应用开放）](windowmanager/windowextensionability-sys.md)
         <!--DelEnd-->
         - [使用WindowManager管理多模输入事件（C/C++）](windowmanager/native-window-event-filter.md)
         - 应用启动页的配置与使用<!--launch-page-->
@@ -949,6 +949,7 @@
             <!--Del-->
             - [场景动效类型互动卡片开发指导（仅对系统应用开放）](form/arkts-ui-liveform-sceneanimation-development-sys.md)
             <!--DelEnd-->
+          - [ArkTS卡片适配常见问题](form/arkts-ui-widget-adapt-faq.md)
       - JS卡片开发<!--form-js-ui-->
         - [JS卡片概述](form/js-ui-widget-overview.md)
         - [JS卡片开发指导（Stage模型）](form/js-ui-widget-development.md)
@@ -1209,8 +1210,6 @@
           - [证书CMS验签](security/DeviceCertificateKit/create-cms-verify-object.md)
           - [证书CMS解封装](security/DeviceCertificateKit/create-cms-decapsulation-object.md)
           - [证书PKCS12的创建和解析](security/DeviceCertificateKit/create-parse-pkcs12.md)
-          - [支持本地证书链吊销状态校验时仅校验终端实体证书](security/DeviceCertificateKit/create-only-check-leaf-cert-revocate-object.md)
-          - [支持在线校验证书链中的中间CA证书的吊销状态](security/DeviceCertificateKit/create-online-check-intermediate-certificateonly-object.md)
         - 证书管理<!--certmanager-->
           - [证书管理概述](security/DeviceCertificateKit/certManager-overview.md)
           - [应用证书凭据开发指导](security/DeviceCertificateKit/certManager-private-credential-guidelines.md)
@@ -1682,6 +1681,10 @@
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
+      - 音频编创<!--audio-production-creation-->
+        - [音频编创开发概述(C/C++)](media/audio/audio-suite.md)
+        - [离线编辑(C/C++)](media/audio/audio-suite-manual-rendering.md)
+        - [实时渲染(C/C++)](media/audio/audio-suite-real-time-rendering.md)
       - OpenSL ES开发指导(不再推荐)<!--not-recommended-->
         - [从OpenSL ES切换OHAudio(C/C++)](media/audio/replace-opensles-by-ohaudio.md)
         - [使用OpenSL ES开发音频播放功能(C/C++)](media/audio/using-opensl-es-for-playback.md)
@@ -2125,6 +2128,7 @@
               - [JSVM通用调优实践](napi/jsvm-optimizations.md)
         - JSVM性能调试指导<!--jsvm-performance-->
             - [使用HiSmartPerf采集V8 trace](napi/use-jsvm-about-v8-trace.md)
+            - [使用DevTools进行网页内存分析](napi/use-jsvm-about-analyze-memory-usage.md)
       - Longque-JS-API<!--longque-->
         - [Longque-JS-API使用指导](napi/use-longque-js-api.md)
       - OpenMP支持<!--openmp-->
@@ -3180,6 +3184,7 @@
           - [SaveButton](reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)
           <!--Del-->
           - [SaveButton (系统接口)](reference/apis-arkui/arkui-ts/ts-security-components-savebutton-sys.md)
+          - [安全控件通用属性 (系统接口)](reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes-sys.md)
           <!--DelEnd-->
         - 主题<!--themes-->
           - [WithTheme](reference/apis-arkui/arkui-ts/ts-container-with-theme.md)
@@ -3662,6 +3667,7 @@
           - [ArkUI_TextMenuItemArray](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmenuitemarray.md)
           - [ArkUI_TextEditMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
           - [ArkUI_TextSelectionMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
+          - [ArkUI_SelectedDragPreviewStyle](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)

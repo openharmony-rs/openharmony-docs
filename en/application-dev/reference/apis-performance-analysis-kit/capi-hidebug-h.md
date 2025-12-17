@@ -54,7 +54,7 @@ Defines the APIs for debugging.
 
 ### OH_HiDebug_GetSystemCpuUsage()
 
-```
+```c
 double OH_HiDebug_GetSystemCpuUsage()
 ```
 
@@ -72,7 +72,7 @@ Obtains the CPU usage of the system. Note that this API involves cross-process c
 
 ### OH_HiDebug_GetAppCpuUsage()
 
-```
+```c
 double OH_HiDebug_GetAppCpuUsage()
 ```
 
@@ -90,7 +90,7 @@ Obtains the CPU usage of an application. Note that this API involves cross-proce
 
 ### OH_HiDebug_GetAppThreadCpuUsage()
 
-```
+```c
 HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 ```
 
@@ -108,7 +108,7 @@ Obtains the CPU usage of all threads of an application. Note that this API invol
 
 ### OH_HiDebug_FreeThreadCpuUsage()
 
-```
+```c
 void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)
 ```
 
@@ -127,7 +127,7 @@ Releases the **HiDebug_ThreadCpuUsagePtr**.
 
 ### OH_HiDebug_GetSystemMemInfo()
 
-```
+```c
 void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 ```
 
@@ -146,7 +146,7 @@ Obtains system memory information.
 
 ### OH_HiDebug_GetAppNativeMemInfo()
 
-```
+```c
 void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)
 ```
 
@@ -165,7 +165,7 @@ Obtains the memory information of an application process. Note that this API nee
 
 ### OH_HiDebug_GetAppNativeMemInfoWithCache()
 
-```
+```c
 void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInfo, bool forceRefresh)
 ```
 
@@ -185,7 +185,7 @@ Obtains the memory information of an application process. This API has a cache m
 
 ### OH_HiDebug_GetAppMemoryLimit()
 
-```
+```c
 void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)
 ```
 
@@ -204,7 +204,7 @@ Obtains the memory limit of an application process.
 
 ### OH_HiDebug_StartAppTraceCapture()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64_t tags, uint32_t limitSize, char* fileName, uint32_t length)
 ```
 
@@ -233,7 +233,7 @@ Starts application trace collection.
 
 ### OH_HiDebug_StopAppTraceCapture()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 ```
 
@@ -251,7 +251,7 @@ Stops application trace collection.
 
 ### OH_HiDebug_GetGraphicsMemory()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 ```
 
@@ -276,7 +276,7 @@ Obtains the size of the GPU memory. Note that this API involves multiple cross-p
 
 ### OH_HiDebug_BacktraceFromFp()
 
-```
+```c
 int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)
 ```
 
@@ -304,7 +304,7 @@ Performs stack back-tracing based on the given fp address. This function is asyn
 
 ### OH_HiDebug_SymbolicAddressCallback()
 
-```
+```c
 typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)
 ```
 
@@ -325,7 +325,7 @@ If the [OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress
 
 ### OH_HiDebug_SymbolicAddress()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)
 ```
 
@@ -353,7 +353,7 @@ Obtains detailed symbol information based on the specified PC address. This func
 
 ### OH_HiDebug_CreateBacktraceObject()
 
-```
+```c
 HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 ```
 
@@ -371,7 +371,7 @@ Creates an object for stack backtracing and parsing. This function is not asyn-s
 
 ### OH_HiDebug_DestroyBacktraceObject()
 
-```
+```c
 void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 ```
 
@@ -390,7 +390,7 @@ Destroys the object created by [OH_HiDebug_CreateBacktraceObject](capi-hidebug-h
 
 ### OH_HiDebug_SetMallocDispatchTable()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)
 ```
 
@@ -415,7 +415,7 @@ Sets the MallocDispatch table of the basic C library to replace the custom memor
 
 ### OH_HiDebug_GetDefaultMallocDispatchTable()
 
-```
+```c
 HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)
 ```
 
@@ -433,7 +433,7 @@ Obtains the default MallocDispatch table of the system C library. You can call [
 
 ### OH_HiDebug_RestoreMallocDispatchTable()
 
-```
+```c
 void OH_HiDebug_RestoreMallocDispatchTable(void)
 ```
 
@@ -445,7 +445,7 @@ Restores the MallocDispatch table of the system C library.
 
 ### OH_HiDebug_GetGraphicsMemorySummary()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug_GraphicsMemorySummary *summary)
 ```
 
@@ -471,7 +471,7 @@ Obtains the detailed GPU memory usage of an application.
 
 ### OH_HiDebug_ThreadLiteSamplingCallback()
 
-```
+```c
 typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)
 ```
 
@@ -489,7 +489,7 @@ Triggered for the lightweight Perf sampling stack content. Note: The sampling da
 
 ### OH_HiDebug_RequestThreadLiteSampling()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)
 ```
 
@@ -510,4 +510,4 @@ Performs Perf sampling on the specified threads and returns the sampling stack c
 
 | Type| Description|
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br> **HIDEBUG_SUCCESSS**: Sampling successful.<br>**HIDEBUG_INVALID_ARGUMENT**: Invalid parameter.<br>         **HIDEBUG_NOT_SUPPORTED**: Perf sampling not supported.<br>         **HIDEBUG_UNDER_SAMPLING**: A sampling task is in progress.<br>         **HIDEBUG_RESOURCE_UNAVAILABLE**: Sampling resources are insufficient or the upper call limit is reached.|
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | Result code.<br> **HIDEBUG_SUCCESS**: Sampling successful.<br>**HIDEBUG_INVALID_ARGUMENT**: Invalid parameter.<br>         **HIDEBUG_NOT_SUPPORTED**: Perf sampling not supported.<br>         **HIDEBUG_UNDER_SAMPLING**: A sampling task is in progress.<br>         **HIDEBUG_RESOURCE_UNAVAILABLE**: Sampling resources are insufficient or the upper call limit is reached.|

@@ -74,7 +74,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> 从API version 23开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1337,7 +1337,9 @@ getCaretRect(): RectResult | undefined
 
 deleteBackward(): void
 
-提供删除字符能力。预览场景删除输入框尾部字符，编辑场景删除光标前字符，选中场景删除选中内容。
+提供删除字符能力。没有内容被选中时，删除当前光标位置前的1个字符。有内容被选中时，删除选中内容。
+
+该接口不支持预上屏场景使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1571,7 +1573,7 @@ getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphResult>
 
 getSelection(): RichEditorSelection
 
-获取选中内容。未选中时，返回光标所在span信息。
+获取选中内容的范围和span信息。未选中时，返回光标所在span信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1834,6 +1836,7 @@ SymbolSpan样式选项。
 | lineBreakStrategy<sup>12+</sup> | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | 否 | 是 | 设置折行规则。 <br />默认值：LineBreakStrategy.GREEDY<br />在wordBreak不等于breakAll的时候生效，不支持连字符。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | paragraphSpacing<sup>19+</sup> | number | 否    | 是 | 设置段落间距大小。<br/>单位：fp<br/>段落间距默认大小为0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是 | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| textDirection<sup>23+</sup> | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## LeadingMarginPlaceholder<sup>11+</sup>
 

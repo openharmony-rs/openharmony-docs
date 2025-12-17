@@ -13,7 +13,7 @@
 >
 > - 从API version 22开始，支持使用TreeSet容器类对象实现跨线程数据传递。
 > 
-> - 容器类对象跨线程传递时，只能传递数据，类方法会丢失。使用[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标识为Sendable类后，类实例对象跨线程传递后，可携带类方法。
+> - 容器类对象跨线程传递时，只能传递数据，自定义方法会丢失。如果需要自定义方法，则需要使用[@Sendable装饰器](arkts-sendable.md#sendable装饰器)标识为Sendable function后，自定义方法可以跨线程传递。
 
 ## 使用示例
 
@@ -52,7 +52,7 @@ struct Index {
         })
         .onClick(() => {
           // 1. 创建Test实例objA
-          let treeSet : TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
+          let treeSet: TreeSet<number> = new TreeSet<number>(sendableCompareFunc);
 
           treeSet.add(1);
           treeSet.add(5);
@@ -63,7 +63,7 @@ struct Index {
           // 3. 执行任务
           taskpool.execute(task).then(() => {
             console.info('taskpool: execute task success!');
-          }).catch((e:BusinessError) => {
+          }).catch((e: BusinessError) => {
             console.error(`taskpool: execute task: Code: ${e.code}, message: ${e.message}`);
           })
           this.message = 'success';
