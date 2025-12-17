@@ -274,6 +274,7 @@
       - [应用数据向量化 (ArkTS)](database/aip-data-intelligence-embedding.md)
       - [SQLite调试工具指导](database/sqlite-database-debug-tool.md)
       - [ArkData术语](database/data-terminology.md)
+      - [ArkData常见问题](database/data-faq.md)
     - ArkTS（方舟编程语言）<!--arkts-->
       - [ArkTS简介](arkts-utils/arkts-overview.md)
       - ArkTS基础类库<!--arkts-utils-->
