@@ -164,7 +164,7 @@ enum PIXEL_FORMAT
 | PIXEL_FORMAT_NV12 = 9 | NV12格式。 |
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102格式。 |
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010格式。 |
-| PIXEL_FORMAT_YCRCB_P010 =12 | YCRCB_P010格式。 |
+| PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010格式。 |
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -765,7 +765,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetPixelFormat(OH_Pixelmap_ImageInfo *info,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | 被操作的OH_Pixelmap_ImageInfo指针。 |
-| int32_t *pixelFormat | 像素格式。 |
+| int32_t *pixelFormat | [像素格式](#pixel_format)。 |
 
 **返回：**
 
