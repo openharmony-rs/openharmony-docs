@@ -1240,7 +1240,7 @@ cloneNode(node: Node, parent: Node, name: string): Node | null
 
 **示例：**
 ```ts
-import { Scene } from '@kit.ArkGraphics3D';
+import { Scene, Node } from '@kit.ArkGraphics3D';
 
 function CloneNode() {
   Scene.load().then(async (result: Scene | undefined) => {
@@ -1250,9 +1250,9 @@ function CloneNode() {
     // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
     Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
       .then(async (extScene: Scene) => {
-        let extNode = extScene.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
+        let extNode: Node | null = extScene.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
         console.info("test cloneNode");
-        let clone = result.cloneNode(extNode, result.root, "scene");
+        let clone: Node | null = result.cloneNode(extNode, result.root, "scene");
         if (clone) {
           clone.position.x = 5;
         }

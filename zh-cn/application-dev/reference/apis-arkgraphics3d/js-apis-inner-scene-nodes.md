@@ -572,7 +572,7 @@ getViewMatrix(): Mat4x4
 
 **示例：**
 ```ts
-import { Mat4x4, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
 
 function GetViewMatrix(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
@@ -608,7 +608,7 @@ getProjectionMatrix(): Mat4x4
 
 **示例：**
 ```ts
-import { Mat4x4, Scene, Node } from '@kit.ArkGraphics3D';
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
 
 function GetProjectionMatrix(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
