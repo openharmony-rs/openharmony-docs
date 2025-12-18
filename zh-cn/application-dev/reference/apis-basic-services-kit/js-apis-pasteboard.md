@@ -245,7 +245,7 @@ let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboa
 | ---------------------------------- | --- | ------------------------------------------------------------------------------------- |
 | INAPP                              | 0   | 表示仅允许同应用内粘贴。 </br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 | LOCALDEVICE                        | 1   | 表示允许在任何应用内粘贴。<!--RP1--><!--RP1End--> </br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
-| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> ArkTS-Dyn起始版本: 9 |
+| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 ## pasteboard.createHtmlData<sup>(deprecated)</sup>
 
@@ -1369,7 +1369,9 @@ pasteData.setProperty(prop);
 
 ### getRecord<sup>9+</sup>
 
-getRecord(index: int): PasteDataRecord
+ArkTS-Dyn:getRecord(index: number): PasteDataRecord
+
+ArkTS-Sta:getRecord(index: int): PasteDataRecord
 
 获取剪贴板内容中指定下标的条目。
 
@@ -1385,7 +1387,7 @@ getRecord(index: int): PasteDataRecord
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | int | 是 | 指定条目的下标。 |
+| index | ArkTS-Dyn:number</br>ArkTS-Sta:int | 是 | 指定条目的下标。 |
 
 **返回值：**
 
@@ -1411,7 +1413,9 @@ let record: pasteboard.PasteDataRecord = pasteData.getRecord(0);
 
 ### getRecordCount<sup>7+</sup>
 
-getRecordCount(): int
+ArkTS-Dyn:getRecordCount(): number
+
+ArkTS-Sta:getRecordCount(): int
 
 获取剪贴板内容中条目的个数。
 
@@ -1427,7 +1431,7 @@ getRecordCount(): int
 
 | 类型 | 说明 |
 | -------- | -------- |
-| int | 条目的个数。 |
+| ArkTS-Dyn:number</br>ArkTS-Sta:int | 条目的个数。 |
 
 **示例：**
 
@@ -1506,7 +1510,9 @@ let hasType: boolean = pasteData.hasType(pasteboard.MIMETYPE_TEXT_PLAIN);
 
 ### removeRecord<sup>9+</sup>
 
-removeRecord(index: int): void
+ArkTS-Dyn:removeRecord(index: number): void
+
+ArkTS-Sta:removeRecord(index: int): void
 
 移除剪贴板内容中指定下标的条目。
 
@@ -1522,7 +1528,7 @@ removeRecord(index: int): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | int | 是 | 指定的下标。 |
+| index | ArkTS-Dyn:number</br>ArkTS-Sta:int | 是 | 指定的下标。 |
 
 **错误码：**
 
@@ -1542,7 +1548,9 @@ pasteData.removeRecord(0);
 
 ### replaceRecord<sup>9+</sup>
 
-replaceRecord(index: int, record: PasteDataRecord): void
+ArkTS-Dyn:replaceRecord(index: number, record: PasteDataRecord): void
+
+ArkTS-Sta:replaceRecord(index: int, record: PasteDataRecord): void
 
 替换剪贴板内容中指定下标的条目。
 
@@ -1558,7 +1566,7 @@ replaceRecord(index: int, record: PasteDataRecord): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | int | 是 | 指定的下标。 |
+| index | ArkTS-Dyn:number</br>ArkTS-Sta:int | 是 | 指定的下标。 |
 | record | [PasteDataRecord](#pastedatarecord7) | 是 | 被替换后的条目数据内容。 |
 
 **错误码：**
@@ -2004,6 +2012,8 @@ onUpdate(callback: UpdateCallback): void
 
 订阅系统剪贴板内容变化事件，当系统剪贴板中内容变化时触发用户程序的回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
 **ArkTS-Sta起始版本：** 23
@@ -2029,6 +2039,8 @@ systemPasteboard.onUpdate(listener);
 offUpdate(callback?: UpdateCallback): void
 
 取消订阅系统剪贴板内容变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -3463,7 +3475,9 @@ struct PasteboardTest {
 
 ### getChangeCount<sup>18+</sup>
 
-getChangeCount(): long
+ArkTS-Dyn:getChangeCount(): number
+
+ArkTS-Sta:getChangeCount(): long
 
 获取剪贴板内容的变化次数。
 
@@ -3485,7 +3499,7 @@ getChangeCount(): long
 
 | 类型 | 说明 |
 | -------- | -------- |
-| long | 返回读取到的剪贴板内容变化次数。 |
+| ArkTS-Dyn:number</br>ArkTS-Sta:long | 返回读取到的剪贴板内容变化次数。 |
 
 **示例：**
 
