@@ -17,3 +17,21 @@
 
 <!-- @[trust_array_constructed_from_p12_file_during_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateTrustanchorFromP12.ets) -->
 
+``` TypeScript
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function test() {
+  // ...
+  try {
+    cert.createTrustAnchorsWithKeyStore(p12Data, '123456').then((data) => {
+      console.info('createTrustAnchorsWithKeyStore success, the num of result is :' + data.length);
+    }).catch((err: BusinessError) => {
+      console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${err.code}, message: ${err.message}`);
+    })
+  } catch (error) {
+    console.error(`createTrustAnchorsWithKeyStore failed, errCode: ${error.code}, message: ${error.message}`);
+  }
+}
+```
+
