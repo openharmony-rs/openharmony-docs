@@ -75,7 +75,7 @@ int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t len
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
 | void *buf | 用于接收读取数据的缓冲区指针。 |
 | size_t length | 读取数据的字节长度。 |
 
@@ -102,7 +102,7 @@ int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int when
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
+|[const RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
 | long offset | 表示指定的偏移量。 |
 | int whence | 读写位置，有以下场景: <br> 0: 读写位置为文件起始位置加上offset。 <br> 1: 读写位置为当前位置加上offset。 <br> 2: 读写位置为文件末尾加上offset。 |
 
@@ -154,7 +154,7 @@ long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
 
 **返回：**
 
@@ -202,7 +202,7 @@ long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
+| [const RawFile](capi-rawfile-rawfile.md) *rawFile | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。 |
 
 **返回：**
 
@@ -286,7 +286,7 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descri
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) &descriptor | 包含rawfile文件描述符，以及在HAP包中的起始位置和长度。 |
+|[ const RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) &descriptor | 包含rawfile文件描述符，以及在HAP包中的起始位置和长度。 |
 
 **返回：**
 
@@ -336,7 +336,7 @@ int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, in
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
 | void *buf | 用于接收读取数据的缓冲区指针。 |
 | int64_t length | 读取数据的字节长度。 |
 
@@ -363,7 +363,7 @@ int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, i
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
 | int64_t offset | 表示指定的偏移量。 |
 | int whence | 读写位置，有以下场景: <br> 0: 读写位置为文件起始位置加上offset。 <br> 1: 读写位置为当前位置加上offset。 <br> 2: 读写位置为文件末尾加上offset。 |
 
@@ -415,7 +415,7 @@ int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
 
 **返回：**
 
@@ -463,7 +463,7 @@ int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
 
 **返回：**
 
@@ -488,7 +488,7 @@ bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFile
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
+| [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | 表示指向[RawFile64](capi-rawfile-rawfile64.md)的指针。 |
 | [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) *descriptor | 显示rawfile文件描述符，以及在HAP包中的起始位置和长度。 |
 
 **返回：**
