@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-[napi_create_async_work](../reference/native-lib/napi.md#napi_create_async_work)是Node-API接口之一，用于创建一个异步工作对象。在需要执行耗时操作的场景中使用，避免阻塞env所在的ArkTS线程，确保应用程序的性能和响应性能。例如以下场景：
+[napi_create_async_work](../reference/native-lib/napi.md#napi_create_async_work)是Node-API接口之一，用于创建一个异步工作对象。在需要执行耗时操作的场景中使用，避免阻塞env所在的ArkTS线程，确保应用程序的性能和响应速度。例如以下场景：
 
 - 文件操作：读取大型文件或执行复杂的文件操作时，可以使用异步工作对象来避免阻塞env所在的ArkTS线程。
 
@@ -129,18 +129,18 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    接口对应的.d.ts描述
 
-    ```ts
-   export const asyncWork: (data: number) => Promise<number>;
-    ```
-    ArkTS侧调用接口
+     ``` ts
+     export const asyncWork: (data: number) => Promise<number>;
+     ```
+   ArkTS侧调用接口
 
-    ```ts
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
-   testNapi.asyncWork(1024).then((result) => {
-       hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
-   });
-   ```
+     ``` ts
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     import testNapi from 'libentry.so';
+     testNapi.asyncWork(1024).then((result) => {
+         hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
+     });
+     ```
    运行结果：result is 1024
 
 ## 使用callback方式示例

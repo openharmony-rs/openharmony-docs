@@ -14,7 +14,7 @@
 
 ### 添加链接库
 
-在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so、libpixelmap.so以及日志依赖libhilog_ndk.z.so。
+在进行应用开发之前，开发者需要打开native工程的src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加libimage_source.so、libpixelmap.so以及日志功能依赖的libhilog_ndk.z.so。
 
 ```txt
 target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixelmap.so)
@@ -28,158 +28,343 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 **解码接口使用示例**
 
-在创建ImageSource实例后，进行指定属性值的获取和修改、通过解码参数创建PixelMap对象、获取图像帧数等操作。
+> **说明：**
+>
+> 部分接口在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
-```c++
-#include <string>
-#include <hilog/log.h>
-#include <multimedia/image_framework/image/image_common.h>
-#include <multimedia/image_framework/image/image_source_native.h>
-#include <multimedia/image_framework/image/pixelmap_native.h>
+1. 导入相关头文件。
 
-#undef LOG_DOMAIN
-#undef LOG_TAG
-#define LOG_DOMAIN 0x3200
-#define LOG_TAG "MY_TAG"
+   <!-- @[decodingPixel_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   
+   ``` C++
+   #include <string>
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/image_source_native.h>
+   #include "napi/native_api.h"
+   #include <multimedia/image_framework/image/image_common.h>
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+   ```
 
-#define NUM_0 0
-#define NUM_1 1
+2. 日志宏定义可参考下述代码按实际需求自行修改。
 
-// 处理napi返回值。
-napi_value getJsResult(napi_env env, int result) {
-    napi_value resultNapi = nullptr;
-    napi_create_int32(env, result, &resultNapi);
-    return resultNapi;
-}
+   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   
+   ``` C++
+   #undef LOG_DOMAIN
+   #undef LOG_TAG
+   #define LOG_DOMAIN 0x3200
+   #define LOG_TAG "IMAGE_SAMPLE"
+   ```
 
-static napi_value sourceTest(napi_env env, napi_callback_info info)
-{
-    napi_value argValue[NUM_1] = {0};
-    size_t argCount = NUM_1;
-    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1 ||
-        argValue[NUM_0] == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest napi_get_cb_info failed, argCount: %{public}lu.", static_cast<int>(argCount));
-        return getJsResult(env, IMAGE_BAD_PARAMETER);
-    }
-    char name[1024];
-    size_t nameSize = 1024;
-    napi_get_value_string_utf8(env, argValue[NUM_0], name, 1024, &nameSize);
-    // 获取解码能力范围。
-    Image_MimeType* mimeType = nullptr;
-    size_t length = 0;
-    Image_ErrorCode errCode = OH_ImageSourceNative_GetSupportedFormats(&mimeType, &length);
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_GetSupportedFormats failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
-    for (size_t count = 0; count < length; count++) {
-        OH_LOG_INFO(LOG_APP, "Decode supportedFormats:%{public}s", mimeType[count].data);
-    }
-    // 创建ImageSource实例。
-    OH_ImageSourceNative *source = nullptr;
-    errCode = OH_ImageSourceNative_CreateFromUri(name, nameSize, &source);
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_CreateFromUri failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
+3. 定义ImageSourceNative类。
 
-    // 创建定义图片信息的结构体对象，并获取图片信息。
-    OH_ImageSource_Info *imageInfo;
-    OH_ImageSourceInfo_Create(&imageInfo);
-    errCode = OH_ImageSourceNative_GetImageInfo(source, 0, imageInfo);
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_GetImageInfo failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
+   <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->     
+   
+   ``` C
+   class ImageSourceNative {
+   public:
+       OH_ImageSource_Info *imageInfo;
+       OH_ImageSourceNative *source = nullptr;
+       OH_PixelmapNative *resPixMap = nullptr;
+       OH_Pixelmap_ImageInfo *pixelmapImageInfo = nullptr;
+       uint32_t frameCnt = 0;
+       ImageSourceNative() {}
+       ~ImageSourceNative() {}
+   };
+   ```
+   
+4. 创建ImageSourceNative的一个实例。
 
-    // 获取指定属性键的值。
-    uint32_t width, height;
-    OH_ImageSourceInfo_GetWidth(imageInfo, &width);
-    OH_ImageSourceInfo_GetHeight(imageInfo, &height);
-    OH_ImageSourceInfo_Release(imageInfo);
-    OH_LOG_INFO(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_GetImageInfo success, width: %{public}d, height: %{public}d.", width, height);
-    Image_String getKey;
-    const std::string PIXEL_X_DIMENSION = "PixelXDimension";
-    getKey.data = (char *)PIXEL_X_DIMENSION.c_str();
-    getKey.size = PIXEL_X_DIMENSION.length();
-    Image_String getValue;
-    errCode = OH_ImageSourceNative_GetImageProperty(source, &getKey, &getValue);
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_GetImageProperty failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
+   <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->        
+   
+   ``` C++
+   static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
+   ```
+   
+5. 创建GetJsResult函数处理napi返回值。
 
-    // 修改指定属性键的值。
-    Image_String setKey;
-    const std::string ORIENTATION = "Orientation";
-    setKey.data = (char *)ORIENTATION.c_str();
-    setKey.size = ORIENTATION.length();
-    Image_String setValue;
-    setValue.data = (char *)"4";
-    setValue.size = 1;
-    errCode = OH_ImageSourceNative_ModifyImageProperty(source, &setKey, &setValue);
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_ModifyImageProperty failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->       
+   
+   ``` C++
+   // 处理napi返回值。
+   napi_value GetJsResult(napi_env env, int result)
+   {
+       napi_value resultNapi = nullptr;
+       napi_create_int32(env, result, &resultNapi);
+       return resultNapi;
+   }
+   ```
 
-    // 通过图片解码参数创建PixelMap对象。
-    OH_DecodingOptions *ops = nullptr;
-    OH_DecodingOptions_Create(&ops);
-    // 设置为AUTO会根据图片资源格式解码，如果图片资源为HDR资源则会解码为HDR的pixelmap。
-    OH_DecodingOptions_SetDesiredDynamicRange(ops, IMAGE_DYNAMIC_RANGE_AUTO);
-    OH_PixelmapNative *resPixMap = nullptr;
+6. 常量定义。
 
-    // ops参数支持传入nullptr, 当不需要设置解码参数时，不用创建。
-    errCode = OH_ImageSourceNative_CreatePixelmap(source, ops, &resPixMap);
-    OH_DecodingOptions_Release(ops);
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_CreatePixelmap failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
+   <!-- @[define_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+   
+   ``` C++
+   const int MAX_STRING_LENGTH = 1024;
+   ```
 
-    // 判断pixelmap是否为hdr内容。
-    OH_Pixelmap_ImageInfo *pixelmapImageInfo = nullptr;
-    OH_PixelmapImageInfo_Create(&pixelmapImageInfo);
-    OH_PixelmapNative_GetImageInfo(resPixMap, pixelmapImageInfo);
-    bool pixelmapIsHdr;
-    OH_PixelmapImageInfo_GetDynamicRange(pixelmapImageInfo, &pixelmapIsHdr);
-    OH_PixelmapImageInfo_Release(pixelmapImageInfo);
+7. 创建ImageSource实例。
 
-    // 获取图像帧数。
-    uint32_t frameCnt = 0;
-    errCode = OH_ImageSourceNative_GetFrameCount(source, &frameCnt);
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_GetFrameCount failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
+   <!-- @[decodingPixel_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+   
+   ``` C++
+   // 返回ErrorCode。
+   napi_value ReturnErrorCode(napi_env env, Image_ErrorCode errCode, std::string funcName)
+   {
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "%{public}s failed, errCode: %{public}d.", funcName.c_str(), errCode);
+           return GetJsResult(env, errCode);
+       }
+       return GetJsResult(env, errCode);
+   }
+   
+   // 获取解码能力范围。
+   napi_value GetSupportedFormats(napi_env env, napi_callback_info info)
+   {
+       Image_MimeType* mimeType = nullptr;
+       size_t length = 10;
+       Image_ErrorCode errCode = OH_ImageSourceNative_GetSupportedFormats(&mimeType, &length);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetSupportedFormats failed, "
+                        "errCode: %{public}d.", errCode);
+           return GetJsResult(env, errCode);
+       }
+       for (size_t count = 0; count < length; count++) {
+           OH_LOG_INFO(LOG_APP, "Decode supportedFormats: %{public}s", mimeType[count].data);
+       }
+       return GetJsResult(env, errCode);
+   }
+   
+   // 创建ImageSource实例。
+   napi_value CreateImageSource(napi_env env, napi_callback_info info)
+   {
+       napi_value argValue[1] = {nullptr};
+       size_t argCount = 1;
+       if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < 1 ||
+           argValue[0] == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "CreateImageSource napi_get_cb_info failed!");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+   
+       char name[MAX_STRING_LENGTH];
+       size_t nameSize = MAX_STRING_LENGTH;
+       napi_get_value_string_utf8(env, argValue[0], name, MAX_STRING_LENGTH, &nameSize);
+   
+       Image_ErrorCode errCode = OH_ImageSourceNative_CreateFromUri(name, nameSize, &g_thisImageSource->source);
+       return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_CreateFromUri");
+   }
+   ```
 
-    // 通过图片解码参数创建Pixelmap列表。
-    OH_DecodingOptions *opts = nullptr;
-    OH_DecodingOptions_Create(&opts);
-    OH_PixelmapNative **resVecPixMap = new OH_PixelmapNative*[frameCnt];
-    size_t outSize = frameCnt;
-    errCode = OH_ImageSourceNative_CreatePixelmapList(source, opts, resVecPixMap, outSize);
-    OH_DecodingOptions_Release(opts);
-    delete[] resVecPixMap;
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_CreatePixelmapList failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
+8. 在创建ImageSource实例后，进行指定属性值的获取和修改、通过解码参数创建PixelMap对象、获取图像帧数等操作。
 
-    // 获取图像延迟时间列表。
-    int32_t *delayTimeList = new int32_t[frameCnt];
-    size_t size = frameCnt;
-    errCode = OH_ImageSourceNative_GetDelayTimeList(source, delayTimeList, size);
-    delete[] delayTimeList;
-    if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNativeCTest sourceTest OH_ImageSourceNative_GetDelayTimeList failed, errCode: %{public}d.", errCode);
-        return getJsResult(env, errCode);
-    }
+   - 创建PixelMap对象。
 
-    // 释放ImageSource实例。
-    OH_ImageSourceNative_Release(source);
-    OH_LOG_INFO(LOG_APP, "ImageSourceNativeCTest sourceTest success.");
-    return getJsResult(env, IMAGE_SUCCESS);
-}
-```
+     <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+     
+     ``` C++
+     // 通过图片解码参数创建PixelMap对象。
+     napi_value CreatePixelMap(napi_env env, napi_callback_info info)
+     {
+         // ops参数支持传入nullptr, 当不需要设置解码参数时，不用创建。
+         OH_DecodingOptions *ops = nullptr;
+         OH_DecodingOptions_Create(&ops);
+         // 设置为AUTO会根据图片资源格式和设备支持情况进行解码，如果图片资源为HDR资源且设备支持HDR解码则会解码为HDR的pixelmap。
+         OH_DecodingOptions_SetDesiredDynamicRange(ops, IMAGE_DYNAMIC_RANGE_AUTO);
+         
+         OH_PixelmapNative_Release(g_thisImageSource->resPixMap);
+         g_thisImageSource->resPixMap = nullptr;
+         
+         Image_ErrorCode errCode = OH_ImageSourceNative_CreatePixelmap(g_thisImageSource->source,
+                                                                       ops, &g_thisImageSource->resPixMap);
+         OH_DecodingOptions_Release(ops);
+         ops = nullptr;
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreatePixelmap failed, errCode: %{public}d.", errCode);
+             return GetJsResult(env, errCode);
+         }
+     
+         // 判断pixelmap是否为HDR内容。
+         OH_PixelmapImageInfo_Create(&g_thisImageSource->pixelmapImageInfo);
+         OH_PixelmapNative_GetImageInfo(g_thisImageSource->resPixMap, g_thisImageSource->pixelmapImageInfo);
+         bool pixelmapIsHdr;
+         OH_PixelmapImageInfo_GetDynamicRange(g_thisImageSource->pixelmapImageInfo, &pixelmapIsHdr);
+         if (pixelmapIsHdr) {
+             OH_LOG_INFO(LOG_APP, "The pixelMap's dynamicRange is HDR.");
+         }
+         OH_PixelmapImageInfo_Release(g_thisImageSource->pixelmapImageInfo);
+         g_thisImageSource->pixelmapImageInfo = nullptr;
+         return GetJsResult(env, errCode);
+     }
+     ```
+
+   - 创建定义图片信息的结构体对象，并获取图片信息。
+
+     <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+     
+     ``` C++
+     // 创建定义图片信息的结构体对象，并获取图片信息。
+     napi_value GetImageInfo(napi_env env, napi_callback_info info)
+     {
+         OH_ImageSourceInfo_Create(&g_thisImageSource->imageInfo);
+         Image_ErrorCode errCode = OH_ImageSourceNative_GetImageInfo(g_thisImageSource->source,
+                                                                     0, g_thisImageSource->imageInfo);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceInfo_Create failed, errCode: %{public}d.", errCode);
+             return GetJsResult(env, errCode);
+         }
+         
+         uint32_t width;
+         uint32_t height;
+         OH_ImageSourceInfo_GetWidth(g_thisImageSource->imageInfo, &width);
+         OH_ImageSourceInfo_GetHeight(g_thisImageSource->imageInfo, &height);
+         OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageInfo success,"
+                    "width: %{public}d, height: %{public}d.", width, height);
+         OH_ImageSourceInfo_Release(g_thisImageSource->imageInfo);
+         g_thisImageSource->imageInfo = nullptr;
+         return GetJsResult(env, width); // 返回获取到info信息的width。
+     }
+     ```
+
+   - 读取、编辑Exif信息。
+
+     <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+     
+     ``` C++
+     // 获取指定property的value值。
+     napi_value GetImageProperty(napi_env env, napi_callback_info info)
+     {
+         napi_value argValue[1] = {nullptr};
+         size_t argCount = 1;
+         if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < 1 ||
+             argValue[0] == nullptr) {
+             OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_cb_info failed!");
+             return GetJsResult(env, IMAGE_BAD_PARAMETER);
+         }
+         // 修改指定属性键的值。
+         char key[MAX_STRING_LENGTH];
+         size_t keySize = MAX_STRING_LENGTH;
+         napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+         Image_String getKey;
+         getKey.data = key;
+         getKey.size = keySize;
+         Image_String getValue;
+         OH_LOG_INFO(LOG_APP, "OH_ImageSourceNative_GetImageProperty key: %{public}s.", getKey.data);
+         Image_ErrorCode errCode = OH_ImageSourceNative_GetImagePropertyWithNull(g_thisImageSource->source,
+                                                                                 &getKey, &getValue);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetImageProperty failed, errCode: %{public}d.", errCode);
+             return GetJsResult(env, errCode);
+         }
+         napi_value resultNapi = nullptr;
+         napi_create_string_utf8(env, getValue.data, getValue.size, &resultNapi);
+         free(getValue.data);
+         getValue.data = nullptr;
+         return resultNapi;
+     }
+     
+     // 修改指定property的value值。
+     napi_value ModifyImageProperty(napi_env env, napi_callback_info info)
+     {
+         napi_value argValue[2] = {nullptr};
+         size_t argCount = 2;
+         const size_t minCount = 2;
+         if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < minCount ||
+             argValue[0] == nullptr || argValue[1] == nullptr) {
+             OH_LOG_ERROR(LOG_APP, "ModifyImageProperty napi_get_cb_info failed!");
+             return GetJsResult(env, IMAGE_BAD_PARAMETER);
+         }
+     
+         // 获取要修改的key值。
+         char key[MAX_STRING_LENGTH];
+         size_t keySize = MAX_STRING_LENGTH;
+         napi_get_value_string_utf8(env, argValue[0], (char *)key, sizeof(key), &keySize);
+         Image_String setKey;
+         setKey.data = key;
+         setKey.size = keySize;
+         OH_LOG_INFO(LOG_APP, "ModifyImageProperty key: %{public}s.", setKey.data);
+         
+         // 获取要修改的value值。
+         char value[MAX_STRING_LENGTH];
+         size_t valueSize;
+         napi_get_value_string_utf8(env, argValue[1], (char *)value, MAX_STRING_LENGTH, &valueSize);
+         Image_String setValue;
+         setValue.data = value;
+         setValue.size = valueSize;
+         OH_LOG_INFO(LOG_APP, "ModifyImageProperty value: %{public}s.", setValue.data);
+     
+         Image_ErrorCode errCode = OH_ImageSourceNative_ModifyImageProperty(g_thisImageSource->source, &setKey, &setValue);
+         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_ModifyImageProperty");
+     }
+     ```
+
+   - 获取图像帧数。
+
+     <!-- @[get_frameCount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
+     
+     ``` C++
+     // 获取图像帧数。
+     napi_value GetFrameCount(napi_env env, napi_callback_info info)
+     {
+         Image_ErrorCode errCode = OH_ImageSourceNative_GetFrameCount(g_thisImageSource->source,
+                                                                      &g_thisImageSource->frameCnt);
+         if (errCode != IMAGE_SUCCESS) {
+             OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_GetFrameCount failed, errCode: %{public}d.", errCode);
+             return GetJsResult(env, errCode);
+         }
+         return GetJsResult(env, g_thisImageSource->frameCnt); // 返回获取到的图像帧数。
+     }
+     ```
+
+   - 通过图片解码参数创建Pixelmap列表。
+
+     <!-- @[create_pixelmapList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->            
+     
+     ``` C++
+     // 通过图片解码参数创建Pixelmap列表。
+     napi_value CreatePixelmapList(napi_env env, napi_callback_info info)
+     {
+         OH_DecodingOptions *opts = nullptr;
+         OH_DecodingOptions_Create(&opts);
+         OH_PixelmapNative** resVecPixMap = new OH_PixelmapNative* [g_thisImageSource->frameCnt];
+         size_t outSize = g_thisImageSource->frameCnt;
+         Image_ErrorCode errCode = OH_ImageSourceNative_CreatePixelmapList(g_thisImageSource->source,
+                                                                           opts, resVecPixMap, outSize);
+         OH_DecodingOptions_Release(opts);
+         opts = nullptr;
+         delete[] resVecPixMap;
+         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_CreatePixelmapList");
+     }
+     ```
+
+   - 获取图像延迟时间列表。
+
+     <!-- @[get_delayTimeList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->       
+     
+     ``` C++
+     // 获取图像延迟时间列表。
+     napi_value GetDelayTimeList(napi_env env, napi_callback_info info)
+     {
+         int32_t *delayTimeList = new int32_t[g_thisImageSource->frameCnt];
+         size_t size = g_thisImageSource->frameCnt;
+         OH_LOG_INFO(LOG_APP, "GetDelayTimeList size: %{public}zu.", size);
+         Image_ErrorCode errCode = OH_ImageSourceNative_GetDelayTimeList(g_thisImageSource->source, delayTimeList, size);
+         delete[] delayTimeList;
+         return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_GetDelayTimeList");
+     }
+     ```
+
+9. 释放ImageSource。
+
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->       
+   
+   ``` C++
+   // 释放资源。
+   napi_value ReleaseImageSource(napi_env env, napi_callback_info info)
+   {
+       Image_ErrorCode errCode = OH_ImageSourceNative_Release(g_thisImageSource->source);
+       g_thisImageSource->source = nullptr;
+       OH_PixelmapNative_Release(g_thisImageSource->resPixMap);
+       g_thisImageSource->resPixMap = nullptr;
+       return ReturnErrorCode(env, errCode, "OH_ImageSourceNative_Release");
+   }
+   ```

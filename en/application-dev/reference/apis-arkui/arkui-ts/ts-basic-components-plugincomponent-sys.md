@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **PluginComponent** allows an application to display external UI from another application. To implement update through inter-process communication (IPC), see [@ohos.pluginComponent](../js-apis-plugincomponent.md).
 
@@ -48,10 +48,10 @@ Defines options for constructing a **PluginComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type  | Description                       |
-| ---------- | ------ | --------------------------- |
-| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9) | Template of the **PluginComponent**, which is bound to the component defined by the provider.               |
-| data<sup>9+</sup>       | any    | Data passed to the **PluginComponent** provider.|
+| Name      | Type  | Read-Only|Optional| Description                       |
+| ---------- | ------ | ------ | ------ |--------------------------- |
+| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9) | No| No| Template of the **PluginComponent**, which is bound to the component defined by the provider.               |
+| data<sup>9+</sup>       | any | No| No | Data passed to the **PluginComponent** provider.|
 
 ## PluginComponentTemplate<sup>9+</sup>
 
@@ -59,10 +59,10 @@ Defines options for constructing a **PluginComponent**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type  | Description                       |
-| ---------- | ------ | --------------------------- |
-| source     | string | Component template name.               |
-| bundleName | string | Bundle name of the provider ability.|
+| Name      | Type | Read-Only| Optional| Description                       |
+| ---------- | ------ | ------ | ------ | --------------------------- |
+| source     | string | No| No| Component template name.               |
+| bundleName | string | No| No| Bundle name of the provider ability.|
 
 ## Attributes
 
@@ -143,10 +143,10 @@ Data provided when the error occurs.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name      | Type  | Description                       |
-| ---------- | ------ | -------------------------- |
-| errcode<sup>9+</sup>    | number | Error code.                   |
-| msg<sup>9+</sup>        | string | Error message.                 |
+| Name      | Type | Read-Only| Optional| Description                       |
+| ---------- | ------ | ------ | ------ |-------------------------- |
+| errcode<sup>9+</sup>    | number | No| No|Error code.                   |
+| msg<sup>9+</sup>        | string | No| No|Error message.                 |
 
 Error code 1 is the default error code. The following table describes the error information and handling suggestions.
 

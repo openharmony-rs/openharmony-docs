@@ -245,7 +245,6 @@ class Options {
   length?: number;
 }
 
-let bufferSize: number = 0;
 let audioRenderer: audio.AudioRenderer | undefined = undefined;
 let audioStreamInfo: audio.AudioStreamInfo = {
   samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // Sampling rate.
@@ -265,6 +264,7 @@ let file: fs.File;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
 
 async function initArguments(context: common.UIAbilityContext) {
+  let bufferSize: number = 0;
   let path = context.cacheDir;
   // This is just an example. Replace the file with the PCM file to be played by the application.
   let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
@@ -363,7 +363,6 @@ async function stop() {
       if (err) {
         console.error('Renderer stop failed.');
       } else {
-        fs.close(file);
         console.info('Renderer stop success.');
       }
     });
@@ -383,6 +382,7 @@ async function release() {
       if (err) {
         console.error('Renderer release failed.');
       } else {
+        fs.closeSync(file);
         console.info('Renderer release success.');
       }
     });

@@ -124,7 +124,7 @@ You can use either the ArkTS or native API to determine whether an API is availa
   - Method 2: Import a module using the **import** API. If the current device does not support the module, the import result is **undefined**. Before using an API, you must make sure the API is available.
 
 	```ts
-	import geolocationManager from '@ohos.geoLocationManager';
+	import { geolocationManager } from '@kit.LocationKit';
 
 	try {
 	geolocationManager.getCurrentLocation((location) => {

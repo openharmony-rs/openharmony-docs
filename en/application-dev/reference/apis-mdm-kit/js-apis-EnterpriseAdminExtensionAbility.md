@@ -27,7 +27,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 onAdminEnabled(): void
 
-Called when the device administrator application is enabled by the enterprise administrator or employee. Upon receiving the event notification from the system, the device administrator application can set initialization policies in this callback.
+Called when the device administrator application is enabled. After an enterprise administrator or employee deploys and enables the device administrator application, the system notifies the device administrator application that the admin permission has been granted. The device administrator application can initialize policies within this callback. No registration is required. This callback is triggered by default after the device administrator application is enabled.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -49,7 +49,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 
 onAdminDisabled(): void
 
-Called when the device administrator application is disabled by the enterprise administrator or employee. Upon receiving the event notification from the system, the device administrator application can use this callback to notify the enterprise administrator that the device is no longer under management.
+Called when the device administrator application is disabled. After an enterprise administrator or employee disables the device administrator application, the system notifies the application that the admin permission has been revoked. The device administrator application can use this callback to notify the enterprise administrator that the device is no longer under management. No registration is required. This callback is triggered by default after the device administrator application is disabled.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -421,7 +421,7 @@ Called when an application exits the kiosk mode. This callback contains the appl
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-  
+
 **Parameters**
 
 | Name  | Type                                 | Mandatory  | Description     |
@@ -437,6 +437,89 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onKioskModeExiting(bundleName: string, accountId: number): void {
     console.info(`Succeeded in calling onKioskModeExiting callback, bundleName:${bundleName}, accountId:${accountId}`);
+  }
+};
+```
+
+## EnterpriseAdminExtensionAbility.onMarketAppInstallResult<sup>22+</sup>
+
+onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void
+
+Called when an application is installed via the [bundleManager.installMarketApps](./js-apis-enterprise-bundleManager.md#bundlemanagerinstallmarketapps22) API. This callback contains the application bundle name and installation result.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+  
+**Parameters**
+
+| Name  | Type                                 | Mandatory  | Description     |
+| ----- | ----------------------------------- | ---- | ------- |
+| bundleName | string | Yes   | Application bundle name on AppGallery.|
+| result | [common.InstallationResult](./js-apis-enterprise-common.md#installationresult) | Yes   | Installation result.|
+
+**Example**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onMarketAppInstallResult(bundleName: string, result: common.InstallationResult): void {
+    console.info(`Succeeded in calling onMarketAppInstallResult callback, bundleName:${bundleName}, result:${result}`);
+  }
+};
+```
+
+## EnterpriseAdminExtensionAbility.onDeviceAdminEnabled<sup>23+</sup>
+
+onDeviceAdminEnabled(bundleName: string): void
+
+Called only for the super device administrator application when the device administrator application is enabled. After an enterprise administrator or employee deploys and enables the device administrator application, the system notifies the super device administrator application that the admin permission has been granted. The super device administrator application can initialize policies within this callback. No registration is required. This callback is triggered by default after the device administrator application is enabled.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description              |
+| ---------- | ------ | ---- | ------------------ |
+| bundleName | string | Yes  | Bundle name of the application enabled.|
+
+**Example**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onDeviceAdminEnabled(bundleName: string) {
+  }
+};
+```
+
+## EnterpriseAdminExtensionAbility.onDeviceAdminDisabled<sup>23+</sup>
+
+onDeviceAdminDisabled(bundleName: string): void
+
+Called only for the super device administrator application when the device administrator application is disabled. After an enterprise administrator or employee disables the device administrator application, the system notifies the super device administrator application that the admin permission has been revoked. The super device administrator application can use this callback to notify the enterprise administrator that the device is no longer under management. No registration is required. This callback is triggered by default after the device administrator application is disabled.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name    | Type  | Mandatory| Description                  |
+| ---------- | ------ | ---- | ---------------------- |
+| bundleName | string | Yes  | Bundle name of the application disabled.|
+
+**Example**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onDeviceAdminDisabled(bundleName: string) {
   }
 };
 ```

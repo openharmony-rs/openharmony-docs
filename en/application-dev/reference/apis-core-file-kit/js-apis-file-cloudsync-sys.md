@@ -199,6 +199,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
@@ -247,6 +248,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.start((err: BusinessError) => {
@@ -294,6 +296,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.stop().then(() => {
@@ -339,6 +342,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let gallerySync = new cloudSync.GallerySync();
 
   gallerySync.stop((err: BusinessError) => {
@@ -523,6 +527,7 @@ Starts to download a cloud file. This API uses a promise to return the result.
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -584,6 +589,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -638,6 +644,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -685,6 +692,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let download = new cloudSync.Download();
   let uri: string = "file:///media/Photo/1";
 
@@ -774,6 +782,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -932,6 +941,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
   try {
@@ -1045,6 +1055,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
   let callback = (data:cloudSync.OptimizeSpaceProgress) => {
     if (data.state == cloudSync.OptimizeState.FAILED) {
@@ -1089,6 +1100,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let para:cloudSync.OptimizeSpaceParam = {totalSize: 1073741824, agingDays: 30};
   let callback = (data:cloudSync.OptimizeSpaceProgress) => {
     if (data.state == cloudSync.OptimizeState.FAILED) {

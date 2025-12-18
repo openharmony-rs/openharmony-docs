@@ -193,7 +193,7 @@
 | general.contact                     | general.object                |               -                        |                                            -                                           | 所有联系人类数据的基类型。                       |
 | general.executable                  | general.object                |               -                        |                                            -                                           | 所有可执行文件的基类型。                        |
 | general.c-object                    | general.executable            | .o                                     | application/x-object                                                                   | 编译后的C对象文件。                          |
-| general.octet-stream                | general.object                |               -                        | application/octet-stream                   -                                           | 任意二进制数据类型。                          |
+| general.octet-stream                | general.object                |               -                        | application/octet-stream                                                              | 任意二进制数据类型。                          |
 | general.mesh-model                  | general.object                | .msh,.mesh,.silo                       | model/mesh                                                                             | 三维网格模型数据类型。                         |
 | general.certificate                 | general.object                |                -                       |                                            -                                           | 安全证书数据基类型。                         |
 | general.cer-certificate             | general.certificate           | .cer                                   | application/pkix-cert                                                                  | 互联网安全证书。                            |
@@ -240,7 +240,7 @@
 | debian.deb                 | general.archive          | .deb,.udeb                            | application/x-debian-package,application/vnd.debian.binary-package  | Debian系统中的软件安装包类型。                |
 | com.android.apk            | general.archive          | .apk, .apks, .aab, .xapk, .apkm, .akp | application/vnd.android.package-archive                             | Android安装包文件类型。                   |
 | redhat.rpm-archive         | general.archive          | .rpm                                  | application/x-rpm                                                   | RedHat软件安装包类型。                    |
-| com.huawei.hmos.settings.wifi  | general.text         | .hmoswifi                             |                                                                     | HarmonyOS wifi分享配置文件类型。                    |
+| com.huawei.hmos.settings.wifi  | general.text         | .hmoswifi                             |-                                                                  | HarmonyOS wifi分享配置文件类型。                    |
 | openharmony.dlp            | general.composite-object | .dlp                                  |-                                                                    | OpenHarmony系统定义的基于账号身份加密的文件类型。     |
 
 ## 应用定义类型

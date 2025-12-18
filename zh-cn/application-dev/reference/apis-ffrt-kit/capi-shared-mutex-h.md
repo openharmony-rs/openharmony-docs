@@ -39,7 +39,7 @@
 
 ### ffrt_rwlock_init()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* attr)
 ```
 
@@ -65,7 +65,7 @@ FFRT_C_API int ffrt_rwlock_init(ffrt_rwlock_t* rwlock, const ffrt_rwlockattr_t* 
 
 ### ffrt_rwlock_wrlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -90,7 +90,7 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_trywrlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -115,7 +115,7 @@ FFRT_C_API int ffrt_rwlock_trywrlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_rdlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -140,7 +140,7 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_tryrdlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -165,7 +165,7 @@ FFRT_C_API int ffrt_rwlock_tryrdlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_unlock()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 ```
 
@@ -190,7 +190,7 @@ FFRT_C_API int ffrt_rwlock_unlock(ffrt_rwlock_t* rwlock)
 
 ### ffrt_rwlock_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 ```
 

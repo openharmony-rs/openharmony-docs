@@ -891,6 +891,62 @@ try {
 }
 ```
 
+## bundleManager.installMarketApps<sup>22+</sup>
+
+installMarketApps(admin: Want, bundleNames: Array\<string>): void
+
+Downloads and installs an application from AppGallery.
+> **NOTE**
+>
+> After this API is successfully called, an application download task is generated on the home screen. The task is the same as that created during download from AppGallery. Upon completion of the download and installation, the installation result is returned through the [EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonmarketappinstallresult22) callback.<!--RP1--><!--RP1End-->
+
+**Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name      | Type                                                   | Mandatory| Description                  |
+| ------------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility.        |
+| bundleNames    | Array&lt;string&gt;                                                  | Yes  | Application bundle name list. A maximum of 10 bundle names can be passed at a time. The bundle name must be the same as that on AppGallery. Otherwise, the download task cannot be created, and error code 9201002 will be reported.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9201002  | Failed to install the application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let bundleNames: Array<string> = [ 'com.huaweicloud.m' ];
+try {
+    bundleManager.installMarketApps(wantTemp, bundleNames);
+    console.info(`Succeeded in installing market apps.`);
+} catch(err) {
+    console.error(`Failed to install market apps. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## AppDistributionType<sup>20+</sup>
 
 Defines the distribution type of the application signing certificate. For details, please refer to the **appDistributionType** attribute of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).

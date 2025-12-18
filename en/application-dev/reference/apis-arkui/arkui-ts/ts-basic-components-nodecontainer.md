@@ -4,16 +4,16 @@
 <!--Owner: @xiang-shouxing-->
 <!--Designer: @xiang-shouxing-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-The **NodeContainer** component is a basic component that is used to mount custom nodes (such as [FrameNode](../js-apis-arkui-frameNode.md) or [BuilderNode](../js-apis-arkui-builderNode.md)) and dynamically control the mounting and unmounting of nodes through [NodeController](../js-apis-arkui-nodeController.md). This component does not support adding child nodes at the end. It accepts a [NodeController](../js-apis-arkui-nodeController.md) instance API and needs to be used together with NodeController.
+**NodeContainer** is a basic component for mounting custom nodes (such as [FrameNode](../js-apis-arkui-frameNode.md) or [BuilderNode](../js-apis-arkui-builderNode.md)) and dynamically managing node attachment and detachment through [NodeController](../js-apis-arkui-nodeController.md). This component does not support adding trailing child components and requires a [NodeController](../js-apis-arkui-nodeController.md) instance for operation. It must be used in combination with **NodeController**.
 
 > **NOTE**
 >
 > This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > Only custom [FrameNodes](../js-apis-arkui-frameNode.md) or the root FrameNode obtained from a [BuilderNode](../js-apis-arkui-builderNode.md) can be attached to this component.
-> The system component [proxy node](../js-apis-arkui-frameNode.md#ismodifiable12) obtained through query cannot be mounted.
+> [Proxy nodes](../js-apis-arkui-frameNode.md#ismodifiable12) of built-in system components obtained through querying cannot be attached to this component.
 >
 > This component does not work with the [attribute modifier](./ts-universal-attributes-attribute-modifier.md).
 >

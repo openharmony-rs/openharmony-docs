@@ -93,6 +93,8 @@ Enumerates the statuses of the common live view.
 | LIVE_VIEW_INCREMENTAL_UPDATE | 1  | The live view is updated in incremental mode.|
 | LIVE_VIEW_END                | 2  | The live view is ended.    |
 | LIVE_VIEW_FULL_UPDATE        | 3  | The live view is updated in full mode.|
+| LIVE_VIEW_PENDING_CREATE<sup>23+</sup>     | 4  | The live view is created by condition.<br>**Model restriction**: This API can be used only in the stage model.|
+| LIVE_VIEW_PENDING_END<sup>23+</sup>        | 6  | The live view is terminated by condition.<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## NotificationIconButton<sup>18+</sup>
 
@@ -112,6 +114,8 @@ Describes the information of a system notification button.
 ## IconType<sup>18+</sup>
 
 type IconType = Resource | image.PixelMap
+
+Describes the icon types.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -142,4 +146,4 @@ Enumerates live view types.
 
 | Name          | Type   | Read-Only| Optional| Description                            |
 | -------------- | ------ | ---- | --- | -------------------------------- |
-| lineWantAgents<sup>20+</sup>       | Array<[wantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  No | Yes | **wantAgent**s triggered when a line of text in the multi-line text is tapped. The text in different lines corresponds to different **wantAgent**s. The maximum number of lines configured for this field is equal to the value of [lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent).<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER|
+| lineWantAgents<sup>20+</sup>       | Array<[WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)> |  No | Yes | **wantAgent**s triggered when a line of text in the multi-line text is tapped. The text in different lines corresponds to different **wantAgent**s. The maximum number of lines configured for this field is equal to the value of [lines](./js-apis-inner-notification-notificationContent.md#notificationmultilinecontent).<br>**System API**: This is a system API.<br>**Required permissions**: ohos.permission.NOTIFICATION_AGENT_CONTROLLER|

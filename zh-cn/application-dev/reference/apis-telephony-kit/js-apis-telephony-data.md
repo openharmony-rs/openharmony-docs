@@ -371,7 +371,7 @@ import { data } from '@kit.TelephonyKit';
 try {
     let isEnabled: boolean = data.isCellularDataEnabledSync();
     console.info(`isCellularDataEnabledSync success : ${isEnabled}`);
-} catch (error) {
+} catch (err) {
     console.error(`isCellularDataEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
 ```
@@ -514,7 +514,7 @@ import { data } from '@kit.TelephonyKit';
 try {
     let isEnabled: boolean = data.isCellularDataRoamingEnabledSync(0);
     console.info(`isCellularDataRoamingEnabledSync success : ${isEnabled}`);
-} catch (error) {
+} catch (err) {
     console.error(`isCellularDataRoamingEnabledSync fail. code: ${err.code}, message: ${err.message}`);  
 }
 ```

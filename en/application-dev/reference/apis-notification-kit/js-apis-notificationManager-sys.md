@@ -545,6 +545,66 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 })
 ```
 
+## notificationManager.getAllNotificationEnabledBundles<sup>23+</sup>
+
+getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
+
+Obtains the list of applications that are allowed to publish notifications by a specified user. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type            | Mandatory| Description          |
+| ------ | ---------------- | ---- | -------------- |
+| userId   | int | Yes| Target user.|
+
+**Return value**
+
+| Type     | Description       | 
+|---------|-----------|
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | Returns a list of applications that allow notifications.| 
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+getAllNotificationEnabledBundlesByUserId = (userId: number): void => {
+let funcName: string = 'getAllNotificationEnabledBundlesByUserId';
+
+try {
+  notificationManager.getAllNotificationEnabledBundles(userId)
+    .then((data: Array<notificationManager.BundleOption>) => {
+    hilog.info(DOMAIN, TAG, `${funcName} success. data: ${JSON.stringify(data)}`);
+  })
+  .catch((err: BusinessError) => {
+    hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+  });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
 ## notificationManager.isNotificationEnabled
 
 isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
@@ -983,7 +1043,7 @@ notificationManager.isBadgeDisplayed(bundle).then((data: boolean) => {
 
 setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
-Sets the notification slot for a specified application. This API uses a promise to return the result.
+Sets the slot flags for a specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3389,7 +3449,7 @@ notificationManager.setNotificationEnableSlot(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncCallback\<boolean\>): void
 
-Checks whether a specified notification slot type is enabled for a specified application. This API uses an asynchronous callback to return the result.
+Checks whether a notification slot type is enabled for the specified application. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3446,7 +3506,7 @@ notificationManager.isNotificationSlotEnabled(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolean\>  
 
-Checks whether a specified notification slot type is enabled for a specified application. This API uses a promise to return the result.
+Checks whether a notification slot type is enabled for the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4427,7 +4487,7 @@ notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationMa
 
 addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
-Adds the Do Not Disturb profile configuration information. This API uses a promise to return the result.
+Adds the Do Not Disturb profile. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4441,7 +4501,7 @@ Adds the Do Not Disturb profile configuration information. This API uses a promi
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes| Configuration information about the Do Not Disturb profile.|
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes| Do Not Disturb profile.|
 
 **Return value**
 
@@ -4494,11 +4554,11 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 });
 ```
 
-## notificationManager.removeDoNotDisturbProfile<sup>12+</sup>
+## notificationManager.addDoNotDisturbProfile<sup>23+</sup>
 
-removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
+addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
 
-Deletes the Do Not Disturb profile configuration. This API uses a promise to return the result.
+Adds the Do Not Disturb profile for a specified user. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4512,7 +4572,111 @@ Deletes the Do Not Disturb profile configuration. This API uses a promise to ret
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes | Configuration information about the Do Not Disturb profile.|
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes| Do Not Disturb profile.|
+| userId   | int | Yes| ID of the target user.|
+
+**Return value**
+
+| Type     | Description       |
+|---------|-----------|
+| Promise\<void\> | Promise that returns no result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600012  | No memory space.                    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+addDoNotDisturbProfileByUserId = (
+  userId: number, 
+  bundleList: string, 
+  uidList: string, 
+  id: number
+): void => {
+  let fName: string = 'addDoNotDisturbProfileByUserId';
+
+  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
+    hilog.info(DOMAIN, TAG, `${fName} parameters are incorrect. Insert the bundleList and uidList that are separated by commas.`);
+    return;
+  }
+
+  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+  let arrUid: string[] = uidList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+
+  if (arrBundle.length === 0 || arrUid.length === 0) {
+    hilog.info(DOMAIN, TAG, `${fName} does not specify an application.`);
+    return;
+  }
+
+  let cnt: number = Math.min(arrBundle.length, arrUid.length);
+  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
+  for (let i = 0; i < cnt; i++) {
+    trustList[i] = {
+      bundle: arrBundle[i].trim(),
+      uid: Number(arrUid[i].trim())
+    };
+  }
+
+  let templates: Array<notificationManager.DoNotDisturbProfile> = [
+    {
+      id: id,
+      name: 'working mode',
+      trustlist: trustList
+    }
+  ];
+
+  try {
+    notificationManager.addDoNotDisturbProfile(templates, userId)
+      .then(() => {
+        hilog.info(DOMAIN, TAG, `${fName} success. ${userId}, ${JSON.stringify(templates)}`);
+      })
+      .catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
+      });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
+## notificationManager.removeDoNotDisturbProfile<sup>12+</sup>
+
+removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
+
+Deletes the Do Not Disturb profile. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type            | Mandatory| Description          |
+| ------ | ---------------- | ---- | -------------- |
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes | Do Not Disturb profile.|
 
 **Return value**
 
@@ -4551,6 +4715,108 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+## notificationManager.removeDoNotDisturbProfile<sup>23+</sup>
+
+removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
+
+Deletes the Do Not Disturb profile of a specified user. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type            | Mandatory| Description          |
+| ------ | ---------------- | ---- | -------------- |
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes | Do Not Disturb profile.|
+| userId   | int | Yes| ID of the target user.|
+
+**Return value**
+
+| Type     | Description       |
+|---------|-----------|
+| Promise\<void\> | Promise that returns no result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600012  | No memory space.                    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+removeDoNotDisturbProfileByUserId = (
+  userId: number,
+  bundleList: string,
+  uidList: string,
+  id: number
+): void => {
+  let funcName: string = 'removeDoNotDisturbProfileByUserId';
+
+  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
+    hilog.info(DOMAIN, TAG, `${funcName} parameters are incorrect. Insert the bundleList and uidList that are separated by commas.`);
+    return;
+  }
+
+  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+  let arrUid: string[] = uidList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+
+  if (arrBundle.length === 0 || arrUid.length === 0) {
+    hilog.info(DOMAIN, TAG, `${funcName} does not specify an application.`);
+    return;
+  }
+
+  let cnt: number = Math.min(arrBundle.length, arrUid.length);
+  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
+  for (let i = 0; i < cnt; i++) {
+    trustList[i] = {
+      bundle: arrBundle[i].trim(),
+      uid: Number(arrUid[i].trim())
+    };
+  }
+
+  let templates: Array<notificationManager.DoNotDisturbProfile> = [
+    {
+      id: id,
+      name: 'working mode',
+      trustlist: trustList
+    }
+  ];
+
+  try {
+    notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
+      hilog.info(DOMAIN, TAG, `${funcName} success. userId: ${userId}, templates: ${JSON.stringify(templates)}`);
+    })
+      .catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+      });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
 ```
 
 ## notificationManager.setAdditionalConfig<sup>12+</sup>
@@ -4610,7 +4876,7 @@ notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundl
 
 getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
 
-Queries the configuration information about the Do Not Disturb profile. This API uses a promise to return the result.
+Queries the Do Not Disturb profile. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4657,6 +4923,70 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 }).catch((err: BusinessError) => {
   console.error(`getDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+
+## notificationManager.getDoNotDisturbProfile<sup>23+</sup>
+
+getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
+
+Queries the Do Not Disturb profile of a specified user. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type            | Mandatory| Description          |
+| ------ | ---------------- | ---- | -------------- |
+| id   | number | Yes | ID of the Do Not Disturb profile.|
+| userId   | int | Yes | Target user.|
+
+
+**Return value**
+
+| Type     | Description       |
+|---------|-----------|
+| Promise\<[DoNotDisturbProfile](#donotdisturbprofile12)\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600019  | The do-not-disturb profile does not exist.                    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+getDoNotDisturbProfileByUserId = (id: number, userId: number): void => {
+  let fName: string = 'getDoNotDisturbProfileByUserId';
+  hilog.info(DOMAIN, TAG, `${fName} id: ${id}, userId: ${userId}`);
+  try {
+    notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationManager.DoNotDisturbProfile) => {
+      hilog.info(DOMAIN, TAG, `${fName} success. data: ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
 ```
 
 ## notificationManager.disableNotificationFeature<sup>18+</sup>
@@ -5059,7 +5389,7 @@ Checks whether a device enables cross-device notification. This API uses a promi
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.  |
 
 **Error codes**
 
@@ -5118,7 +5448,7 @@ Sets whether the device of a specified type enables cross-device notification. T
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no result.  |
 
 **Error codes**
 
@@ -5171,7 +5501,7 @@ Obtains the device types that enable cross-device notification. This API uses a 
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<Array\<string\>\> | Promise used to return the result.|
+| Promise\<Array\<string\>\> | Promise used to return the result.  |
 
 **Error codes**
 
@@ -5357,7 +5687,7 @@ Batch sets whether to display badges for specified applications. This API uses a
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| badges   | Map<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>| Yes  | List containing bundle names and badge display statuses.|
+| badges   | Map<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean> | Yes  | List containing bundle names and badge display statuses.|
 
 **Return value**
 
@@ -5573,6 +5903,387 @@ notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notifica
 }).catch((err: BusinessError) => {
     hilog.info(0x0000, 'testTag', `getReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+
+## notificationManager.isPriorityEnabled<sup>23+</sup>
+
+isPriorityEnabled(): Promise\<boolean\>
+
+Checks whether the priority notification is enabled.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<boolean\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.isPriorityEnabled().then((result : boolean) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled result is ${result}`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityEnabled<sup>23+</sup>
+
+setPriorityEnabled(enable: boolean): Promise\<void\>
+
+Sets the enabling status of the priority notification.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| enable   | boolean | Yes | Whether to enable the priority notification.<br> - **true**: The priority notification is enabled.<br> - **false**: The priority notification is disabled.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.setPriorityEnabled(false).then(() => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled success`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isPriorityEnabledByBundle<sup>23+</sup>
+
+isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
+
+Checks whether the priority notification for a specified application is enabled.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<[PriorityEnableStatus](#priorityenablestatus23)\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle result is ${result}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityEnabledByBundle<sup>23+</sup>
+
+setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableStatus): Promise\<void\>
+
+Sets the enabling status of the priority notification for an application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | Yes| Whether the priority notification for an application is enabled.<br> - **DISABLE**: The priority notification is disabled.<br> - **ENABLE_BY_INTELLIGENT**: The priority notification can be enabled through intelligent recognition, user keyword matching, or application rule matching.<br> - **ENABLE**: The priority notification is enabled for all applications.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getBundlePriorityConfig<sup>23+</sup>
+
+getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
+
+Obtains the priority configuration of an application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<string\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig value is ${value}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setBundlePriorityConfig<sup>23+</sup>
+
+setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
+
+Sets the priority configuration of an application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+| value | string | Yes| Priority configuration of an application.|
+
+**Return value**
+
+| Type           | Description                    |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Notification Error Codes](./errorcode-notification.md), and [Bundle Error Codes](../../reference/apis-ability-kit/errorcode-bundle.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.onBadgeNumberQuery<sup>22+</sup>
+
+onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
+
+Registers a callback for querying the number of application badges.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                    |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<long\> | Yes | Number of target application badges.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try{
+    notificationManager.onBadgeNumberQuery(
+        async (bundleOption: notificationManager.BundleOption) => {
+            return 1;
+        }
+    );
+} catch(err) {
+    hilog.info(0x0000, 'testTag', `onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.offBadgeNumberQuery<sup>22+</sup>
+
+offBadgeNumberQuery(): void
+
+Unregisters the callback for querying the number of application badges.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try{
+    notificationManager.offBadgeNumberQuery();
+} catch(err) {
+    hilog.info(0x0000, 'testTag', `offBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## DoNotDisturbDate
@@ -5792,7 +6503,7 @@ Describes the custom ringtone information.
 
 | Name   | Type    | Read-Only| Optional| Description                    |
 | ------- | ------- | ---- | ---- | ----------------------- |
-| ringtoneType | [ringtoneType](#ringtonetype21)  |  No | No  | Type of the ringtone.|
+| ringtoneType | [RingtoneType](#ringtonetype21)  |  No | No  | Type of the ringtone.|
 | ringtoneTitle | string  |  No | Yes  | Title of the ringtone. |
 | ringtoneFileName | string  |  No | Yes  | File name of the ringtone. |
 | ringtoneUri | string  |  No | Yes  | URI of the ringtone. |
@@ -5810,3 +6521,129 @@ Describes the information about the application reminder.
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No| Bundle information of the application.|
 | reminderFlags | long | No| No| Reminder flag.|
 | silentReminderEnabled | boolean | No| No| Whether the silent reminder is enabled. The value **true** indicates that the silent reminder is enabled, and the value **false** indicates the opposite.|
+
+## PriorityNotificationType<sup>23+</sup>
+
+Describes the priority type of a notification.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name                | Value | Description                              |
+| --------------------| --- | --------------------------------- |
+| PAYMENT_DUE   | "PAYMENT_DUE"   | Payment and repayment.                |
+| TRANSACTION_ALERT   | "TRANSACTION_ALERT"   | Account balance reminder.                |
+| EXPRESS_PROGRESS   | "EXPRESS_PROGRESS"   | Express progress.                |
+| MISS_CALL   | "MISS_CALL"   | Missed call.                |
+| TRAVEL_ALERT   | "TRAVEL_ALERT"   | Abnormal traveling.                |
+| ACCOUNT_ALERT   | "ACCOUNT_ALERT"   | Account security.                |
+| APPOINTMENT_REMINDER   | "APPOINTMENT_REMINDER"   | Appointment reminder.                |
+| TRAFFIC_NOTICE   | "TRAFFIC_NOTICE"   | Traffic violation.                |
+| KEY_PROGRESS   | "KEY_PROGRESS"   | Key progress.                |
+| PUBLIC_EVENT   | "PUBLIC_EVENT"   | Important common event.                |
+| IOT_WARNING   | "IOT_WARNING"   | IoT warning.                |
+| CUSTOM_KEYWORD   | "CUSTOM_KEYWORD"   | Custom keyword.                |
+
+## PriorityEnableStatus<sup>23+</sup>
+
+Describes the enabling status of the priority notification for an application.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**System API**: This is a system API.
+
+| Name                | Value | Description                              |
+| --------------------| --- | --------------------------------- |
+| DISABLE    | 0   | The priority notification is disabled.|
+| ENABLE_BY_INTELLIGENT  | 1  | The priority notification is enabled by intelligent recognition.|
+| ENABLE   | 2   | The priority notification is enabled for all applications.|
+
+### setGeofenceEnabled<sup>23+</sup>
+
+setGeofenceEnabled(enabled: boolean):  Promise\<void\>
+
+Sets the enabling state of geofencing. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name     | Type                 | Mandatory| Description                        |
+| --------- | --------------------- | ---- | ---------------------------- |
+| enabled   | boolean | Yes | Whether geofencing is enabled. The value **true** indicates that geofencing is enabled, and the value **false** indicates the opposite.|
+
+**Return value**
+
+| Type           | Description                                  |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise that returns no result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.setGeofenceEnabled(true).then(() => {
+  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### isGeofenceEnabled<sup>23+</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+Checks whether geofencing is enabled. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Return value**
+
+| Type              | Description                                                        |
+| ------------------ | ------------------------------------------------------------ |
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that geofencing is enabled, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```

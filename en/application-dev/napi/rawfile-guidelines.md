@@ -54,11 +54,11 @@ After the project is created, the **cpp** directory is created in the project di
     <!-- @[declare_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ResourceManagement/RawFile/entry/src/main/cpp/types/libentry/Index.d.ts) -->
     
     ``` TypeScript
-    import resourceManager from '@kit.LocalizationKit';
-    export const getFileList: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => Array<String>;
-    export const getRawFileContent: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => Uint8Array;
-    export const getRawFileDescriptor: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => resourceManager.resourceManager.RawFileDescriptor;
-    export const isRawDir: (resmgr: resourceManager.resourceManager.ResourceManager, path: string) => boolean;
+    import { resourceManager } from '@kit.LocalizationKit';
+    export const getFileList: (resMgr: resourceManager.ResourceManager, path: string) => Array<String>;
+    export const getRawFileContent: (resMgr: resourceManager.ResourceManager, path: string) => Uint8Array;
+    export const getRawFileDescriptor: (resMgr: resourceManager.ResourceManager, path: string) => resourceManager.RawFileDescriptor;
+    export const isRawDir: (resMgr: resourceManager.ResourceManager, path: string) => boolean;
     ```
 
 3. Modify the source file.
@@ -258,7 +258,7 @@ After the project is created, the **cpp** directory is created in the project di
             return result;
         }
     
-        // Save df (file descriptor) to the result object.
+        // Save fd to the result object.
         napi_value fd;
         status = napi_create_int32(env, descriptor.fd, &fd);
         if (status != napi_ok) {
@@ -410,11 +410,13 @@ After the project is created, the **cpp** directory is created in the project di
              this.rawfileListMsg = 'FileList = ' + rawFileList;
              hilog.info(DOMAIN, TAG, this.rawfileListMsg);
  
+             // Replace 'subrawfile' with the actual resource.
              let ret: boolean = testNapi.isRawDir(this.resMgr, 'subrawfile');
              this.retMsg = 'isRawDir = ' + ret;
              hilog.info(DOMAIN, TAG, this.retMsg);
  
              // Pass in the JS resource object and the relative path of the rawfile.
+             // Replace 'rawfile1.txt' with the actual resource.
              let rawfileArray: Uint8Array = testNapi.getRawFileContent(this.resMgr, 'rawfile1.txt');
              // Convert Uint8Array to a string.
              let textDecoder: util.TextDecoder = new util.TextDecoder();
@@ -423,6 +425,7 @@ After the project is created, the **cpp** directory is created in the project di
              hilog.info(DOMAIN, TAG, this.rawfileContentMsg);
  
              // Pass in the JS resource object and the rawfile name.
+             // Replace 'rawfile1.txt' with the actual resource.
              let rawfileDescriptor: resourceManager.RawFileDescriptor =
                testNapi.getRawFileDescriptor(this.resMgr, 'rawfile1.txt');
              this.rawfileDescriptorMsg = 'RawFileDescriptor.length = ' + rawfileDescriptor.length;

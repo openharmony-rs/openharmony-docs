@@ -98,7 +98,7 @@ Obtains the supported power models. This API uses an asynchronous callback to re
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerModel](#powermodel)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is 0 and **data** is the power models obtained. If **err** is not **0**, an error has occurred.|
+  | callback | AsyncCallback&lt;Array&lt;[PowerModel](#powermodel)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is 0 and **data** is the power models obtained. If the operation fails, **err** is not **0**.|
 
 
 ## wifiext.getPowerModel

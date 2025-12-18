@@ -881,3 +881,97 @@ try {
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 };
 ```
+
+## defaultAppManager.setDefaultApplicationForAppClone<sup>23+</sup>
+
+setDefaultApplicationForAppClone(type: string, elementName: ElementName, appIndex: number, userId?: number): void
+
+Sets an application clone as the default application of the specified type. This API returns the result synchronously.
+
+**Required permissions**: ohos.permission.SET_DEFAULT_APPLICATION or a combination of ohos.permission.SET_DEFAULT_APPLICATION and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+- If **userId** is the current user, the ohos.permission.SET_DEFAULT_APPLICATION permission is required.
+- If **userId** is not the current user, the ohos.permission.SET_DEFAULT_APPLICATION and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permissions are required.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.DefaultApp
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name     | Type  | Mandatory| Description                                     |
+| ----------- | ------ | ---- | --------------------------------------- |
+| type        | string | Yes  | Type of the application. The value can be a value of [ApplicationType](js-apis-defaultAppManager.md#applicationtype), [MIMEType](../../database/uniform-data-type-list.md#generic-utds), or [UniformDataType](../apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype).|
+| elementName | [ElementName](js-apis-bundleManager-elementName.md#elementname-1) | Yes| Element information of the application. Only **bundleName**, **abilityName**, and **moduleName** are used, and the three properties must be set.                          |
+| appIndex    | number | Yes  | Index of the application clone.<br>The options include 1, 2, 3, 4, and 5.|
+| userId      | number | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9).<br>The default value is the user ID of the caller.                           |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bundle Error Codes](errorcode-bundle.md).
+
+| ID| Error Message                                      |
+| -------- | ---------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 801 | Capability not supported. |
+| 17700004 | The specified user ID is not found.            |
+| 17700025 | The specified type is invalid.                 |
+| 17700028 | The specified ability does not match the type. |
+| 17700061 | AppIndex not in valid range. |
+
+**Example**
+
+```ts
+import { defaultAppManager } from '@kit.AbilityKit';
+import { uniformTypeDescriptor } from '@kit.ArkData';
+
+let appIndex = 1;
+try {
+  defaultAppManager.setDefaultApplicationForAppClone(defaultAppManager.ApplicationType.BROWSER, {
+    // Use the actual bundle name, module name, and ability name.
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, appIndex);
+  console.info('Operation successful.');
+} catch (error) {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+};
+
+let userId = 100;
+try {
+  defaultAppManager.setDefaultApplicationForAppClone(defaultAppManager.ApplicationType.BROWSER, {
+    // Use the actual bundle name, module name, and ability name.
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, appIndex, userId);
+  console.info('Operation successful.');
+} catch (error) {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+};
+
+try {
+  defaultAppManager.setDefaultApplicationForAppClone("image/png", {
+    // Use the actual bundle name, module name, and ability name.
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, appIndex, userId);
+  console.info('Operation successful.');
+} catch (error) {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+};
+
+try {
+  defaultAppManager.setDefaultApplicationForAppClone(uniformTypeDescriptor.UniformDataType.AVI, {
+    // Use the actual bundle name, module name, and ability name.
+    bundleName: "com.example.myapplication",
+    moduleName: "module01",
+    abilityName: "EntryAbility"
+  }, appIndex, userId);
+  console.info('Operation successful.');
+} catch (error) {
+  console.error('Operation failed. Cause: ' + JSON.stringify(error));
+};
+```

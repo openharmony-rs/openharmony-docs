@@ -17,6 +17,7 @@
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | [onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformcreate)                  | 互动卡片界面对象创建的回调函数。   |
 | [onLiveFormDestroy(liveFormInfo: LiveFormInfo): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformdestroy)                                                    | 互动卡片界面对象销毁、资源清理的回调函数。  |
+| [LiveFormExtensionContext](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 |
 | [startAbilityByLiveForm(want: Want): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md#startabilitybyliveform)| 拉起互动卡片提供方（应用）的页面。 |
 | [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | 卡片提供方发起互动卡片动效请求。   |
 | [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | 卡片提供方发起取消互动卡片动效请求。 |
@@ -30,7 +31,7 @@
 
     通过[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)创建互动卡片，创建时加载互动卡片页面。
 
-    <!-- @[liveform_LiveFormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets) -->
+    <!-- @[liveform_LiveFormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets
@@ -71,13 +72,14 @@
 
 2. 实现互动卡片页面
 
-    <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) -->
+    <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-    import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    import { common } from '@kit.AbilityKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -96,7 +98,7 @@
       private formId: string | undefined = undefined;
       private formRect: formInfo.Rect | undefined = undefined;
       private formBorderRadius: number | undefined = undefined;
-      private liveFormContext: LiveFormExtensionContext | undefined = undefined;
+      private liveFormContext: common.LiveFormExtensionContext | undefined = undefined;
     
       aboutToAppear(): void {
         this.uiContext = this.getUIContext();
@@ -112,7 +114,7 @@
         this.formId = this.storageForMyLiveFormPage?.get<string>('formId');
         this.formRect = this.storageForMyLiveFormPage?.get<formInfo.Rect>('formRect');
         this.formBorderRadius = this.storageForMyLiveFormPage?.get<number>('borderRadius');
-        this.liveFormContext = this.storageForMyLiveFormPage?.get<LiveFormExtensionContext>('context');
+        this.liveFormContext = this.storageForMyLiveFormPage?.get<common.LiveFormExtensionContext>('context');
       }
     
       // 执行动效
@@ -212,13 +214,13 @@
 
     在module.json5配置文件中[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)下配置LiveFormExtensionAbility。
 
-    <!-- @[liveform_moudlejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) -->
+    <!-- @[liveform_moudlejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) --> 
     
     ``` JSON5
     // entry/src/main/module.json5
-    // ···
+    // ...
         "extensionAbilities": [
-        // ···
+          // ...
           {
             "name": "MyLiveFormExtensionAbility",
             "srcEntry": "./ets/myliveformextensionability/MyLiveFormExtensionAbility.ets",
@@ -226,7 +228,7 @@
             "type": "liveForm"
           }
         ],
-        // ···
+        // ...
     ```
 
     在main_pages.json文件中声明互动卡片页面。
@@ -247,7 +249,7 @@
 
     非激活态卡片页面开发同普通卡片开发流程完全一致，在widgetCard.ets中完成。widgetCard.ets文件在卡片创建时自动生成，卡片创建流程可以参考[创建ArkTS卡片](arkts-ui-widget-creation.md)。在非激活态卡片页面实现点击卡片时，发起卡片动效请求。
 
-    <!-- @[liveform_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) -->
+    <!-- @[liveform_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -329,12 +331,13 @@
 
     互动卡片通过调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考[formInfo.OverflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20)。其中，互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](arkts-ui-liveform-sceneanimation-overview.md#请求参数约束)。
 
-    <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+    <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
     import { formInfo, formProvider, FormExtensionAbility } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../common/Constants';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     
@@ -397,7 +400,7 @@
 
 2. 互动卡片动效工具函数实现
 
-    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) -->
+    <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/common/Constants.ets

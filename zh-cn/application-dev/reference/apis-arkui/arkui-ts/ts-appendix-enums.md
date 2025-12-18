@@ -26,23 +26,25 @@
 
 ## Alignment
 
+定义容器元素绘制区域内的子元素的对齐方式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明       |
-| ----------- | -------- |
-| TopStart    | 顶部起始端。   |
-| Top         | 顶部横向居中。  |
-| TopEnd      | 顶部尾端。    |
-| Start       | 起始端纵向居中。 |
-| Center      | 横向和纵向居中。 |
-| End         | 尾端纵向居中。  |
-| BottomStart | 底部起始端。   |
-| Bottom      | 底部横向居中。  |
-| BottomEnd   | 底部尾端。    |
+| 名称        | 值 | 说明       |
+| ----------- | - | -------- |
+| TopStart    | 0 | 顶部起始端。   |
+| Top         | 1 | 顶部横向居中。  |
+| TopEnd      | 2 | 顶部尾端。    |
+| Start       | 3 | 起始端纵向居中。 |
+| Center      | 4 | 横向和纵向居中。 |
+| End         | 5 | 尾端纵向居中。  |
+| BottomStart | 6 | 底部起始端。   |
+| Bottom      | 7 |底部横向居中。  |
+| BottomEnd   | 8 | 底部尾端。    |
 
 ## AnimationPropertyType<sup>20+</sup>
 
@@ -61,20 +63,24 @@
 
 ## AnimationStatus
 
+用于动画播放状态。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明        |
-| ------- | --------- |
-| Initial | 动画初始状态。   |
-| Running | 动画处于播放状态。 |
-| Paused  | 动画处于暂停状态。 |
-| Stopped | 动画处于停止状态。 |
+| 名称      |值| 说明        |
+| ------- |-| --------- |
+| Initial |0| 动画初始状态。   |
+| Running |1| 动画处于播放状态。 |
+| Paused  |2| 动画处于暂停状态。 |
+| Stopped |3| 动画处于停止状态。 |
 
 ## AppRotation<sup>12+</sup>
+
+定义应用方向旋转角度。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -89,6 +95,8 @@
 
 ## ArrowPointPosition<sup>11+</sup>
 
+气泡箭头的位置。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -100,6 +108,8 @@
 | END | 'End' | 水平方向：位于父组件最右侧；垂直方向：位于父组件最下侧。 |
 
 ## Axis
+
+定义轴的方向。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -132,20 +142,29 @@
 
 定义焦点轴事件的轴类型。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
-
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| ABS_X  | 0    | 游戏手柄X轴。 |
-| ABS_Y  | 1    | 游戏手柄Y轴。 |
-| ABS_Z  | 2    | 游戏手柄Z轴。 |
-| ABS_RZ | 3    | 游戏手柄RZ轴。 |
-| ABS_GAS | 4    | 游戏手柄GAS轴。 |
-| ABS_BRAKE | 5    | 游戏手柄BRAKE轴。 |
-| ABS_HAT0X | 6    | 游戏手柄HAT0X轴。 |
-| ABS_HAT0Y | 7    | 游戏手柄HAT0Y轴。 |
+| ABS_X  | 0    | 游戏手柄X轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_Y  | 1    | 游戏手柄Y轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_Z  | 2    | 游戏手柄Z轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_RZ | 3    | 游戏手柄RZ轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_GAS | 4    | 游戏手柄GAS轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_BRAKE | 5    | 游戏手柄BRAKE轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT0X | 6    | 游戏手柄HAT0X轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT0Y | 7    | 游戏手柄HAT0Y轴。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| ABS_RX<sup>23+</sup> | 8 | 游戏手柄RX轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_RY<sup>23+</sup> | 9 | 游戏手柄RY轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_THROTTLE<sup>23+</sup> | 10 | 游戏手柄THROTTLE轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_RUDDER<sup>23+</sup> | 11 | 游戏手柄RUDDER轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_WHEEL<sup>23+</sup> | 12 | 游戏手柄WHEEL轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT1X<sup>23+</sup> | 13 | 游戏手柄HAT1X轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT1Y<sup>23+</sup> | 14 | 游戏手柄HAT1Y轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT2X<sup>23+</sup> | 15 | 游戏手柄HAT2X轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT2Y<sup>23+</sup> | 16 | 游戏手柄HAT2Y轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT3X<sup>23+</sup> | 17 | 游戏手柄HAT3X轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| ABS_HAT3Y<sup>23+</sup> | 18 | 游戏手柄HAT3Y轴。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## AxisType<sup>22+</sup>
 
@@ -163,33 +182,39 @@
 
 ## BarState
 
+用于设置滚动条的状态。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明                 |
-| ---- | ------------------ |
-| Off  | 不显示。               |
-| On   | 常驻显示。              |
-| Auto | 按需显示(触摸时显示，2s后消失)。 |
+| 名称   | 值 | 说明                 |
+| ---- | --- | ------------------ |
+| Off  | 0 | 不显示。               |
+| On   | 2 | 常驻显示。              |
+| Auto | 1 | 按需显示(触摸时显示，2s后消失)。 |
 
 ## BorderStyle
 
+定义元素的边框线条样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                            |
-| ------ | ----------------------------- |
-| Dotted | 显示为一系列圆点，圆点半径为borderWidth的一半。 |
-| Dashed | 显示为一系列短的方形虚线。                 |
-| Solid  | 显示为一条实线。                      |
+| 名称   | 值 | 说明                            |
+| ------ | --- | ----------------------------- |
+| Dotted | 0 | 显示为一系列圆点，圆点半径为borderWidth的一半。 |
+| Dashed | 1 | 显示为一系列短的方形虚线。                 |
+| Solid  | 2 |显示为一条实线。                      |
 
 ## ClickEffectLevel<sup>10+</sup>
+
+定义点击效果的级别及对应动效参数。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -251,6 +276,8 @@
 
 ## CopyOptions<sup>9+</sup>
 
+剪贴板复制范围。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称          | 值 | 说明       |
@@ -261,6 +288,8 @@
 | CROSS_DEVICE<sup>(deprecated)</sup> | 3 | 支持跨设备复制。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**说明：** 从API version 11开始支持，从API version 12开始废弃。 |
 
 ## CheckBoxShape<sup>11+</sup>
+
+复选框Checkbox的形状。
 
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
@@ -281,11 +310,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-|名称	            | 值 | 说明                                   |
+|名称                | 值 | 说明                                   |
 |-------------------| -- | ------------------------------------- |
 | BEGIN             | 0  | 表冠开始转动。                          |
-| UPDATE	        | 1  | 表冠转动中。                            |
-| END	            | 2  | 表冠停止转动。                          |
+| UPDATE            | 1  | 表冠转动中。                            |
+| END                | 2  | 表冠停止转动。                          |
 
 ## CrownSensitivity<sup>18+</sup>
 
@@ -297,9 +326,9 @@
 
 | 名称           | 值  | 说明                                      |
 | -------------- | -- | ---------------------------------------- |
-| LOW 	         | 0   | 低灵敏度。                                 |
+| LOW            | 0   | 低灵敏度。                                 |
 | MEDIUM         | 1   | 中灵敏度。                                 |
-| HIGH 	         | 2   | 高灵敏度。                                 |
+| HIGH           | 2   | 高灵敏度。                                 |
 
 ## Curve
 
@@ -329,7 +358,7 @@
 
 ## DialogButtonStyle<sup>10+</sup>
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+弹窗按钮的样式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -342,17 +371,19 @@
 
 ## Direction
 
+定义元素水平布局的方向。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明          |
-| ---- | ----------- |
-| Ltr  | 元素从左到右布局。   |
-| Rtl  | 元素从右到左布局。   |
-| Auto | 使用系统默认布局方向。 |
+| 名称  | 值   | 说明          |
+| ---- | ---- | ----------- |
+| Ltr  | 0 | 元素从左到右布局。   |
+| Rtl  | 1 |元素从右到左布局。   |
+| Auto | 2 |使用系统默认布局方向。 |
 
 ## DividerMode<sup>19+</sup>枚举说明
 
@@ -369,19 +400,23 @@
 
 ## Edge
 
+用于控制滚动组件在布局中的对齐位置。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                             | 说明                                                         |
-| -------------------------------- | ------------------------------------------------------------ |
-| Top                              | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Center<sup>(deprecated) </sup>   | 竖直方向居中位置。<br/> 从API version 9开始废弃。            |
-| Bottom                           | 竖直方向下边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Baseline<sup>(deprecated) </sup> | 交叉轴方向文本基线位置。<br/> 从API version 9开始废弃。      |
-| Start                            | 水平方向起始位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Middle<sup>(deprecated) </sup>   | 水平方向居中位置。<br/> 从API version 9开始废弃。            |
-| End                              | 水平方向末尾位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称                             | 值 | 说明                                                         |
+| -------------------------------- | --- | ------------------------------------------------------------ |
+| Top                              | 0 | 竖直方向上边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Center<sup>(deprecated) </sup>   | 1 | 竖直方向居中位置。<br/> 从API version 9开始废弃。            |
+| Bottom                           | 2 | 竖直方向下边缘。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Baseline<sup>(deprecated) </sup> | 3 | 交叉轴方向文本基线位置。<br/> 从API version 9开始废弃。      |
+| Start                            | 4 | 水平方向起始位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Middle<sup>(deprecated) </sup>   | 5 | 水平方向居中位置。<br/> 从API version 9开始废弃。            |
+| End                              | 6 | 水平方向末尾位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## EdgeEffect
+
+定义滚动容器的滑动效果。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -389,13 +424,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                                       |
-| ------ | ---------------------------------------- |
-| Spring | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
-| Fade   | 阴影效果，滑动到边缘后会有圆弧状的阴影。                     |
-| None   | 滑动到边缘后无效果。                               |
+| 名称     | 值 | 说明                                       |
+| ------ | --- | ---------------------------------------- |
+| Spring | 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
+| Fade   | 1 | 阴影效果，滑动到边缘后会有圆弧状的阴影。                     |
+| None   | 2 | 滑动到边缘后无效果。                               |
 
 ## EllipsisMode<sup>11+</sup>
+
+省略的位置。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -436,28 +473,30 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明           |
-| ---- | ------------ |
-| ESC  | 表示键盘上ESC功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| F1   | 表示键盘上F1功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F2   | 表示键盘上F2功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F3   | 表示键盘上F3功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F4   | 表示键盘上F4功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F5   | 表示键盘上F5功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F6   | 表示键盘上F6功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F7   | 表示键盘上F7功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F8   | 表示键盘上F8功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F9   | 表示键盘上F9功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
-| F10  | 表示键盘上F10功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| F11  | 表示键盘上F11功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| F12  | 表示键盘上F12功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| TAB<sup>12+</sup>  | 表示键盘上TAB功能键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DPAD_UP<sup>12+</sup>   | 表示键盘上UP方向键。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DPAD_DOWN<sup>12+</sup> | 表示键盘上DOWN方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DPAD_LEFT<sup>12+</sup> | 表示键盘上LEFT方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| DPAD_RIGHT<sup>12+</sup> | 表示键盘上RIGHT方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| 名称   | 值 | 说明           |
+| ---- | ------------ | ------------ |
+| ESC  | 0 | 表示键盘上ESC功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| F1   | 1 | 表示键盘上F1功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F2   | 2 | 表示键盘上F2功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F3   | 3 | 表示键盘上F3功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F4   | 4 | 表示键盘上F4功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F5   | 5 | 表示键盘上F5功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F6   | 6 | 表示键盘上F6功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F7   | 7 | 表示键盘上F7功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F8   | 8 | 表示键盘上F8功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F9   | 9 | 表示键盘上F9功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。  |
+| F10  | 10 | 表示键盘上F10功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| F11  | 11 | 表示键盘上F11功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| F12  | 12 | 表示键盘上F12功能键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TAB<sup>12+</sup>  | 13 | 表示键盘上TAB功能键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DPAD_UP<sup>12+</sup>   | 14 | 表示键盘上UP方向键。  <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DPAD_DOWN<sup>12+</sup> | 15 | 表示键盘上DOWN方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DPAD_LEFT<sup>12+</sup> | 16 | 表示键盘上LEFT方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| DPAD_RIGHT<sup>12+</sup> | 17 | 表示键盘上RIGHT方向键。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 
 ## FillMode
+
+设置当前播放方向下，动画开始前和结束后的状态。动画结束后的状态由fillMode和reverse属性共同决定。例如，fillMode为Forwards表示停止时维持动画最后一个关键帧的状态，若reverse为false则维持正播的最后一帧，即最后一张图，若reverse为true则维持逆播的最后一帧，即第一张图。
 
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -465,14 +504,16 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 说明                                       |
-| --------- | ---------------------------------------- |
-| None      | 动画未执行时，不应用任何样式到目标；播放完成后，恢复初始默认状态。     |
-| Forwards  | 目标将保留动画执行期间最后一个关键帧的状态。                   |
-| Backwards | 动画应用于目标时，立即采用第一个关键帧定义的值，并在delay期间保留此值。第一个关键帧取决于playMode，playMode为Normal或Alternate时，帧为from状态；playMode为Reverse或AlternateReverse时，帧为to状态。 |
-| Both      | 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
+| 名称        |值| 说明                                       |
+| --------- |-| ---------------------------------------- |
+| None      |0| 动画未执行时，不应用任何样式到目标；播放完成后，恢复初始默认状态。     |
+| Forwards  |1| 目标将保留动画执行期间最后一个关键帧的状态。                   |
+| Backwards |2| 动画应用于目标时，立即采用第一个关键帧定义的值，并在delay期间保留此值。第一个关键帧取决于playMode，playMode为Normal或Alternate时，帧为from状态；playMode为Reverse或AlternateReverse时，帧为to状态。 |
+| Both      |3| 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
 
 ## FlexAlign
+
+定义元素在容器主轴上的对齐格式。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -491,6 +532,8 @@
 
 ## FlexDirection
 
+定义子组件在Flex容器上排列的方向，即主轴的方向。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -506,6 +549,8 @@
 
 ## FlexWrap
 
+定义Flex容器是单行/列还是多行/列排列。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -520,6 +565,8 @@
 
 ## FontStyle
 
+字体样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -532,6 +579,8 @@
 | Italic | 斜体的字体样式。 |
 
 ## FontWeight
+
+字体粗细。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -548,7 +597,20 @@
 | Bold    | - |700字重，字体较粗。   |
 | Bolder  | - |900字重，字体非常粗。 |
 
+FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参value的类型之一。value是FontWeight、number、[ResourceStr](./ts-types.md#resourcestr)类型时，映射关系如下。
+
+| FontWeight | number | ResourceStr |
+| ---------------- | ------ | ------ |
+| Lighter | 100 |'lighter' |
+| Normal  | 400 |'normal' |
+| Regular | 400 |'regular' |
+| Medium  | 500 |'medium' |
+| Bold    | 700 |'bold'   |
+| Bolder  | 900 |'bolder' |
+
 ## FoldStatus<sup>11+</sup>
+
+定义设备的折叠状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -573,7 +635,7 @@
 
 | 名称           | 值  | 说明                                      |
 | -------------- | -- | ---------------------------------------- |
-| SELF  	     | 0   | 获焦框绘制在节点自身层级。                                 |
+| SELF           | 0   | 获焦框绘制在节点自身层级。                                 |
 | TOP            | 1   | 获焦框绘制在当前实例Z序的最上层。                                 |
 
 ## FocusWrapMode<sup>20+</sup>
@@ -611,6 +673,8 @@
 
 ## HorizontalAlign
 
+定义子组件在水平方向上的对齐方式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -625,6 +689,8 @@
 
 ## HoverEffect<sup>8+</sup>
 
+定义组件悬浮效果的类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -637,6 +703,8 @@
 | None      | 不设置效果。         |
 
 ## HitTestMode<sup>9+</sup>
+
+定义触摸测试的响应逻辑及节点阻塞规则。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -667,6 +735,8 @@
 
 ## ImageFit
 
+用于设置图片填充效果。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称        | 值    | 说明                              |
@@ -690,6 +760,8 @@
 
 ## ItemAlign
 
+定义元素在容器中交叉轴的对齐方式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -707,20 +779,24 @@
 
 ## ImageRepeat
 
+用于设置图片重复样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明            |
-| -------- | ------------- |
-| X        | 只在水平轴上重复绘制图片。 |
-| Y        | 只在垂直轴上重复绘制图片。 |
-| XY       | 在两个轴上重复绘制图片。  |
-| NoRepeat | 不重复绘制图片。      |
+| 名称       |值| 说明            |
+| -------- |-| ------------- |
+| NoRepeat |0| 不重复绘制图片。      |
+| X        |1| 只在水平轴上重复绘制图片。 |
+| Y        |2| 只在垂直轴上重复绘制图片。 |
+| XY       |3| 在两个轴上重复绘制图片。  |
 
 ## ImageSize
+
+用于设置图片宽高效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -733,15 +809,17 @@
 
 ## ImageSpanAlignment<sup>10+</sup>
 
+图片基于行高的对齐方式。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                           |
-| -------- | ------------------------------ |
-| TOP      | 图片上边沿与行上边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CENTER   | 图片中间与行中间对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| BOTTOM   | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| BASELINE | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| FOLLOW_PARAGRAPH<sup>20+</sup>  | 对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| 名称     | 值 | 说明                           |
+| -------- | ------------------------------ |------------------------------ |
+| TOP      | 1 | 图片上边沿与行上边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| CENTER   | 2 | 图片中间与行中间对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| BOTTOM   | 3 | 图片下边沿与行下边沿对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| BASELINE | 4 | 图片下边沿与文本BaseLine对齐。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| FOLLOW_PARAGRAPH<sup>20+</sup>  | 5 |对齐方式跟随Text父组件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## InteractionHand<sup>15+</sup>
 
@@ -759,28 +837,34 @@
 
 ## KeySource
 
+定义触发按键事件的设备类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称       | 说明         |
-| -------- | ---------- |
-| Unknown  | 输入设备类型未知。  |
-| Keyboard | 输入设备类型为键盘。 |
-| JOYSTICK<sup>15+</sup> | 输入设备类型为游戏手柄。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| 名称       | 值 | 说明         |
+| -------- | ---------- | ---------- |
+| Unknown  | 0 | 输入设备类型未知。  |
+| Keyboard | 4 | 输入设备类型为键盘。 |
+| JOYSTICK<sup>15+</sup> | 5 | 输入设备类型为游戏手柄。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。|
 
 ## KeyType
 
+定义按键操作的状态类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明    |
-| ---- | ----- |
-| Down | 按键按下。 |
-| Up   | 按键松开。 |
+| 名称   | 值 | 说明    |
+| ---- | ----- | ----- |
+| Down | 0 | 按键按下。 |
+| Up   | 1 | 按键松开。 |
 
 ## LineJoinStyle
+
+线条连接样式。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -788,11 +872,11 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 说明         |
-| ----- | ---------- |
-| Bevel | 使用斜角连接路径段。 |
-| Miter | 使用尖角连接路径段。 |
-| Round | 使用圆角连接路径段。 |
+| 名称 | 值 | 说明 |
+| -------- | ---- | ------------- |
+| Miter | 0 | 使用尖角连接路径段。  |
+| Round | 1 | 使用圆角连接路径段。  |
+| Bevel | 2 | 使用斜角连接路径段。  |
 
 ## LocalizedAlignment<sup>20+</sup>
 
@@ -818,19 +902,23 @@
 
 ## LineCapStyle
 
+线条端点样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                            |
-| ------ | ----------------------------- |
-| Butt   | 线条两端为平行线，不额外扩展。               |
-| Round  | 在线条两端延伸半个圆，直径等于线宽。            |
-| Square | 在线条两端延伸一个矩形，宽度等于线宽的一半，高度等于线宽。 |
+| 名称 | 值 | 说明 |
+| ------ | ---- | ------------- |
+| Butt   | 0 | 线条两端为平行线，不额外扩展。    |
+| Round  | 1 | 在线条两端延伸半个圆，直径等于线宽。  |
+| Square | 2 | 在线条两端延伸一个矩形，宽度等于线宽的一半，高度等于线宽。   |
 
 ## LineBreakStrategy<sup>12+</sup>
+
+折行规则。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -848,16 +936,18 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明       |
-| ------- | -------- |
-| Left    | 鼠标左键。    |
-| Right   | 鼠标右键。    |
-| Middle  | 鼠标中键。    |
-| Back    | 鼠标左侧后退键。 |
-| Forward | 鼠标左侧前进键。 |
-| None    | 无按键。     |
+| 名称      | 值 | 说明       |
+| ------- | -------- | -------- |
+| Left    | 1 | 鼠标左键。    |
+| Right   | 2 | 鼠标右键。    |
+| Middle  | 4 | 鼠标中键。    |
+| Back    | 8 | 鼠标左侧后退键。 |
+| Forward | 16 | 鼠标左侧前进键。 |
+| None    | 0 | 无按键。     |
 
 ## MouseAction<sup>8+</sup>
+
+定义鼠标操作的动作类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -867,7 +957,7 @@
 | Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
 
@@ -877,13 +967,15 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 说明           |
-| ----- | ------------ |
-| CTRL  | 表示键盘上Ctrl键。  |
-| SHIFT | 表示键盘上Shift键。 |
-| ALT   | 表示键盘上Alt键。   |
+| 名称    | 值 | 说明           |
+| ----- | ------------ | ------------ |
+| CTRL  | 0 | 表示键盘上Ctrl键。  |
+| SHIFT | 1 | 表示键盘上Shift键。 |
+| ALT   | 2 | 表示键盘上Alt键。   |
 
 ## MarqueeUpdateStrategy<sup>12+</sup>
+
+跑马灯组件属性更新后，跑马灯的滚动策略。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -896,16 +988,18 @@
 
 ## NestedScrollMode<sup>10+</sup>
 
+定义嵌套滚动组件中的嵌套模式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                             |
-| ------ | ------------------------------ |
-| SELF_ONLY   | 只自身滚动，不与父组件联动。  |
-| SELF_FIRST | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则子组件触发边缘效果。        |
-| PARENT_FIRST  | 父组件先滚动，父组件滚动到边缘以后自身滚动。自身滚动到边缘后，如果有边缘效果，会触发自身的边缘效果，否则触发父组件的边缘效果。 |
-| PARALLEL  | 自身和父组件同时滚动，自身和父组件都到达边缘以后，如果自身有边缘效果，则自身触发边缘效果，否则父组件触发边缘效果。|
+| 名称     | 值 | 说明                             |
+| ------ | --- | ------------------------------ |
+| SELF_ONLY   | 0 | 只自身滚动，不与父组件联动。  |
+| SELF_FIRST | 1 | 自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则子组件触发边缘效果。        |
+| PARENT_FIRST  | 2 | 父组件先滚动，父组件滚动到边缘以后自身滚动。自身滚动到边缘后，如果有边缘效果，会触发自身的边缘效果，否则触发父组件的边缘效果。 |
+| PARALLEL  | 3 | 自身和父组件同时滚动，自身和父组件都到达边缘以后，如果自身有边缘效果，则自身触发边缘效果，否则父组件触发边缘效果。|
 
 ## Nullable\<T><sup>11+</sup>
 
@@ -934,6 +1028,8 @@ type Nullable\<T> = T | undefined
 
 ## OptionWidthMode<sup>11+</sup>
 
+下拉菜单的宽度模式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -959,6 +1055,8 @@ type Nullable\<T> = T | undefined
 | AlternateReverse | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ## Placement<sup>8+</sup>
+
+气泡显示的位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1035,23 +1133,41 @@ type Nullable\<T> = T | undefined
 
 | 名称            | 值   | 说明                                                         |
 | --------------- | ---- | ------------------------------------------------------------ |
-| ARKUI_ITEMFILLPOLICY_NONE | -1    | 没有设置响应式断点规格。 |
 | BREAKPOINT_DEFAULT         | 0    | 针对List和Swiper组件：在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。<br> 针对Grid和WaterFlow组件：在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。                                       |
 | BREAKPOINT_SM1MD2LG3 | 1    | 在组件宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。 |
 | BREAKPOINT_SM2MD3LG5 | 2    | 在组件宽度属于sm及更小的断点区间时显示2列，属于md断点区间时显示3列，属于lg及更大的断点区间时显示5列。 |
 
 ## RelateType
 
+定义子组件的填充方式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称   | 说明             |
-| ---- | -------------- |
-| FILL | 缩放当前子组件以填充满父组件。 |
-| FIT  | 缩放当前子组件以自适应父组件。 |
+| 名称   | 值   | 说明             |
+| ---- | ---- | -------------- |
+| FILL | 0 | 缩放当前子组件以填充满父组件。 |
+| FIT  | 1 | 缩放当前子组件以自适应父组件。 |
+
+## ResponseRegionSupportedTool<sup>22+</sup>
+
+触摸热区适用的输入工具类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称   | 值 | 说明                             |
+| ------ | -----|------------------------------- |
+| ALL    | 0 | 所有输入工具类型。   |
+| FINGER | 1 | 手指。   |
+| PEN    | 2 | 手写笔。 |
+| MOUSE  | 3 | 鼠标。   |
 
 ## ResponseType<sup>8+</sup>
+
+菜单显示的触发方式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1144,6 +1260,8 @@ type Nullable\<T> = T | undefined
 
 ## TouchType
 
+定义触摸操作的触发状态类型。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值   | 说明                               |
@@ -1158,6 +1276,8 @@ type Nullable\<T> = T | undefined
 | HOVER_CANCEL<sup>20+</sup> | 12    | 无障碍模式下，取消当前触发的事件。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 
 ## TitleHeight<sup>9+</sup>
+
+设置标题栏的推荐高度。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1184,83 +1304,97 @@ type Nullable\<T> = T | undefined
 
 ## TextAlign
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+文本段落在水平方向的对齐方式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                  | 说明                                                         |
-| --------------------- | ------------------------------------------------------------ |
-| Start                 | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Center                | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| End                   | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| JUSTIFY<sup>10+</sup> | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| 名称     |  值  | 说明                                       |
+| ------ | ------ | ---------------------------------------- |
+| Start                     |  0  | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。。 |
+| RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## TextOverflow
 
+文本超长时的显示方式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                    | 说明                  |
-| --------------------- | ------------------- |
-| None                  | 文本超长时按最大行截断显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Clip                  | 文本超长时按最大行截断显示，与None效果相同。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Ellipsis              | 文本超长时显示不下的文本用省略号代替。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| MARQUEE<sup>10+</sup> | 文本超长时以跑马灯的方式展示。 |
+| 名称                    | 值 | 说明                  |
+| --------------------- | ------------ | ------------------- |
+| None                  | 0 | 文本超长时按最大行截断显示。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| Clip                  | 1 | 文本超长时按最大行截断显示，与None效果相同。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| Ellipsis              | 2 | 文本超长时显示不下的文本用省略号代替。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| MARQUEE<sup>10+</sup> | 3 | 文本超长时以跑马灯的方式展示。 |
 
 ## TextDecorationType
 
+装饰线类型。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明        |
-| ----------- | --------- |
-| Underline   | 文字下划线修饰。  |
-| LineThrough | 穿过文本的修饰线。 |
-| Overline    | 文字上划线修饰。  |
-| None        | 不使用文本装饰线。 |
+| 名称          | 值 | 说明        |
+| ----------- | ----------- | --------- |
+| None        | 0 | 不使用文本装饰线。 |
+| Underline   | 1 | 文字下划线修饰。  |
+| Overline    | 2 | 文字上划线修饰。  |
+| LineThrough | 3 | 穿过文本的修饰线。 |
 
 ## TextCase
 
+文本大小写的样式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 说明         |
-| --------- | ---------- |
-| Normal    | 保持文本原有大小写。 |
-| LowerCase | 文本采用全小写。   |
-| UpperCase | 文本采用全大写。   |
+| 名称        | 值 | 说明         |
+| --------- | ----------- | ---------- |
+| Normal    | 0 | 保持文本原有大小写。 |
+| LowerCase | 1 | 文本采用全小写。   |
+| UpperCase | 2 | 文本采用全大写。   |
 
 ## TextHeightAdaptivePolicy<sup>10+</sup>
 
+文本自适应布局调整字号的方式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                      | 说明                       |
-| ----------------------- | ------------------------ |
-| MAX_LINES_FIRST         | 设置文本高度自适应方式为以[maxLines](ts-basic-components-textarea.md#maxlines10)优先。 |
-| MIN_FONT_SIZE_FIRST     | 设置文本高度自适应方式为以缩小字体优先。     |
-| LAYOUT_CONSTRAINT_FIRST | 设置文本高度自适应方式为以布局约束（高度）优先。 |
+| 名称                      | 值 | 说明                       |
+| ----------------------- | ----------- | ------------------------ |
+| MAX_LINES_FIRST         | 0 | 设置文本高度自适应方式为以[maxLines](ts-basic-components-textarea.md#maxlines10)优先。 |
+| MIN_FONT_SIZE_FIRST     | 1 | 设置文本高度自适应方式为以缩小字体优先。     |
+| LAYOUT_CONSTRAINT_FIRST | 2 | 设置文本高度自适应方式为以布局约束（高度）优先。 |
 
 ## TextContentStyle<sup>10+</sup>
 
+文本框多态样式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称    | 说明                                                         |
-| ------- | ------------------------------------------------------------ |
-| DEFAULT | 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
-| INLINE  | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
+| 名称    | 值 | 说明                                                         |
+| ------- | ----------- | ------------------------------------------------------------ |
+| DEFAULT | - | 默认风格。光标宽度为1.5vp，光标高度与文本选中底板高度和字体大小相关。 |
+| INLINE  | - | 内联输入风格。文本选中底板高度与输入框高度相同。<br/>内联输入是在有明显的编辑态/非编辑态的区分场景下使用，例如：文件列表视图中的重命名。<br/>不支持showError属性。<br/>内联模式下，不支持拖入文本。 |
 
 ## TextSelectableMode<sup>12+</sup>
+
+文本可选择、可获焦状态。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1273,6 +1407,8 @@ type Nullable\<T> = T | undefined
 | UNSELECTABLE     | 2 | 文本不可选择，不可获焦，设置属性selection、bindSelectionMenu、copyOption均不生效。  |
 
 ## TextDecorationStyle<sup>12+</sup>
+
+装饰线样式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1301,6 +1437,8 @@ type Nullable\<T> = T | undefined
 
 ## VerticalAlign
 
+定义子组件在垂直方向上的对齐格式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -1315,17 +1453,19 @@ type Nullable\<T> = T | undefined
 
 ## Visibility
 
+定义组件的可见性及布局占位状态。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称      | 说明               |
-| ------- | ---------------- |
-| Hidden  | 隐藏，但参与布局进行占位。    |
-| Visible | 显示。              |
-| None    | 隐藏，但不参与布局，不进行占位。 |
+| 名称      | 值 | 说明               |
+| ------- | ---------------- | ---------------- |
+| Hidden  | 1 | 隐藏，但参与布局进行占位。    |
+| Visible | 0 | 显示。              |
+| None    | 2 | 隐藏，但不参与布局，不进行占位。 |
 
 ## Week
 
@@ -1363,6 +1503,8 @@ type Nullable\<T> = T | undefined
 
 ## WordBreak<sup>11+</sup>
 
+断行规则。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 | 说明                                   |
@@ -1379,6 +1521,6 @@ type Nullable\<T> = T | undefined
 | 名称                             | 说明                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
 | SURFACE                          | 用于EGL/OpenGLES和媒体数据写入，单独展示开发者定制的绘制内容到屏幕上。背景色设置为黑色时走显示子系统（DSS）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 12开始，该接口废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TEXTURE                          | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 20开始，该接口废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

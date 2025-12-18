@@ -50,7 +50,7 @@ Provides APIs, enums, and structs for accessing the **PreferencesValue** object.
 
 ### Preference_ValueType
 
-```
+```c
 enum Preference_ValueType
 ```
 
@@ -73,7 +73,7 @@ Enumerates the data types of **PreferencesValue**.
 
 ### OH_PreferencesPair_GetKey()
 
-```
+```c
 const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t index)
 ```
 
@@ -99,7 +99,7 @@ Obtains the key based on the specified index from the KV data.
 
 ### OH_PreferencesPair_GetPreferencesValue()
 
-```
+```c
 const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_PreferencesPair *pairs, uint32_t index)
 ```
 
@@ -126,7 +126,7 @@ Obtains the value based on the specified index from the KV pairs.
 
 ### OH_PreferencesValue_GetValueType()
 
-```
+```c
 Preference_ValueType OH_PreferencesValue_GetValueType(const OH_PreferencesValue *object)
 ```
 
@@ -151,7 +151,7 @@ Obtains the data type of a **PreferencesValue** instance.
 
 ### OH_PreferencesValue_GetInt()
 
-```
+```c
 int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)
 ```
 
@@ -177,7 +177,7 @@ Obtains an integer from an [OH_PreferencesValue](capi-preferences-oh-preferences
 
 ### OH_PreferencesValue_GetBool()
 
-```
+```c
 int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)
 ```
 
@@ -203,7 +203,7 @@ Obtains a Boolean value from an [OH_PreferencesValue](capi-preferences-oh-prefer
 
 ### OH_PreferencesValue_GetString()
 
-```
+```c
 int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **value, uint32_t *valueLen)
 ```
 

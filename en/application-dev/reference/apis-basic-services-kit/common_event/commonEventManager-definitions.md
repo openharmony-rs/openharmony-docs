@@ -1497,7 +1497,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_BAD_REMOVAL"
+**Value**: "usual.event.data.DISK_REMOVED"
 
 
 ### COMMON_EVENT_DISK_UNMOUNTED
@@ -1508,7 +1508,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_UNMOUNTABLE"
+**Value**: "usual.event.data.DISK_UNMOUNTED"
 
 
 ### COMMON_EVENT_DISK_MOUNTED
@@ -1531,7 +1531,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_REMOVED"
+**Value**: "usual.event.data.DISK_BAD_REMOVAL"
 
 
 ### COMMON_EVENT_DISK_UNMOUNTABLE
@@ -1542,7 +1542,7 @@ Below are reserved common events that are not supported yet.
 
 **Required permissions**: ohos.permission.STORAGE_MANAGER (for system applications only)
 
-**Value**: "usual.event.data.DISK_UNMOUNTED"
+**Value**: "usual.event.data.DISK_UNMOUNTABLE"
 
 
 ### COMMON_EVENT_DISK_EJECT

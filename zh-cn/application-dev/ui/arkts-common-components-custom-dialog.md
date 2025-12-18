@@ -9,7 +9,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 > **说明：**
 > 
-> 当前，ArkUI弹出框默认为非页面级弹出框，在页面路由跳转时，如果开发者未调用close方法将其关闭，弹出框将不会自动关闭。若需实现在跳转页面时覆盖弹出框的场景，可以使用[组件导航子页面显示类型的弹窗类型](arkts-navigation-navigation.md#页面显示类型)或者[页面级弹出框](arkts-embedded-dialog.md)。
+> 当前，ArkUI弹出框默认为非页面级弹出框，在页面路由跳转时，如果开发者未调用close方法将其关闭，弹出框将不会自动关闭。若需实现在跳转页面时覆盖弹出框的场景，可以使用[组件导航子页面显示类型的弹窗类型](./arkts-navigation-navdestination.md#页面显示类型)或者[页面级弹出框](arkts-embedded-dialog.md)。
 
 默认为模态弹窗且有蒙层，不可与蒙层下方控件进行交互（不支持点击和手势等向下透传）。可以通过配置[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的isModal属性来实现模态和非模态弹窗，详细说明可参考[弹窗的种类](arkts-dialog-overview.md#弹窗的种类)。
 
@@ -49,7 +49,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    
 
 
-2. 创建构造器，与装饰器呼应相连。
+2. 创建构造器，与装饰器相互连接。
    <!-- @[create_custom_dialog_new_customDialog_controller_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
    
    ``` TypeScript
@@ -192,8 +192,8 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
             Text($r('app.string.the_second_page_is')+`：${this.textValue}`)
               .fontSize(20)
           } else {
-            // $r('app.string.wether_to_get_the_second_page')资源文件中的value为'是否获取第二个页面的内容'
-            Text($r('app.string.wether_to_get_the_second_page'))
+            // $r('app.string.whether_to_get_the_second_page')资源文件中的value为'是否获取第二个页面的内容'
+            Text($r('app.string.whether_to_get_the_second_page'))
               .fontSize(20)
           }
           Flex({ justifyContent: FlexAlign.SpaceAround }) {

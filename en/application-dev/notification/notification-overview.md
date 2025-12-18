@@ -11,6 +11,7 @@ With Notification Kit, you can publish local notifications from your application
 
 ## When to Use
 When an application is running, you can use the Notification Kit to publish notifications to users.<!--RP1--><!--RP1End-->
+
 You can use the local notification capability in multiple scenarios. For example, synchronize the upload and download progress of the user, send instant customer service payment notifications, and update the number of steps.
 
 ## Capability Scope

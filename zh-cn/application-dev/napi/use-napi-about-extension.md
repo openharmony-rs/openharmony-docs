@@ -1,4 +1,4 @@
-# 使用Node-API扩展能力接口
+# 使用Node-API进行扩展能力功能开发
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
@@ -25,7 +25,7 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import taskpool from '@kit.ArkTS';
+import { taskpool } from '@kit.ArkTS';
 ```
 
 ## 模块加载
@@ -245,7 +245,7 @@ let value2 = testNapi.createObjectWithNameProperties('ls');
 try {
   hilog.info(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties:%{public}s', JSON.stringify(value2));
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'TNode-API napi_create_object_with_named_properties: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Node-API napi_create_object_with_named_properties: %{public}s', error.message);
 }
 ```
 

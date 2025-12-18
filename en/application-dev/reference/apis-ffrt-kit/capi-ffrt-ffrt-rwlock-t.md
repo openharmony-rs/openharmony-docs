@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_rwlock_t
+```
+
 ## Overview
 
 The **ffrt_rwlock_t** struct describes an FFRT read-write lock.

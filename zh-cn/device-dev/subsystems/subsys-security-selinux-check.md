@@ -73,7 +73,7 @@ partition label is not allow to use, check '/data/log u:object_r:data_file:s0' f
 
 ### 拦截原因
 
-说明以下`file_contexts`中的定义是非法的，因为为`/data/log`配置了标签`u:object_r:data_file:s0`，该标签属于一级目录标签：
+说明以下`file_contexts`中的定义是非法的，原因是为`/data/log`路径配置了标签`u:object_r:data_file:s0`，该标签属于一级目录标签：
 ```text
 /data/log   u:object_r:data_file:s0
 ```
@@ -133,7 +133,7 @@ partition label is not allow to use, check '/data/log u:object_r:data_file:s0' f
 
 ### 拦截原因
 
-上述报错是因为，在user策略和开发者策略中，主体`appspawn`和客体`appspawn_exec`，都同时拥有`execute`和`execute_no_trans`权限：
+上述报错是因为在user策略和开发者策略中，主体`appspawn`和客体`appspawn_exec`，都同时拥有`execute`和`execute_no_trans`权限：
 ```text
 allow appspawn appspawn_exec:file { execute execute_no_trans };
 ```
@@ -240,7 +240,7 @@ developer_only(`
 
 ### 拦截原因
 
-上述报错是因为，新增了sh的策略`"allow sh vendor_file:dir search;"`，对应的cil形式为`"(allow sh vendor_file (dir (search)))"`，同时违反了user和developer下的进程基线，期望的cil形式基线是`"(allow sh vendor_file (dir ()))"`。
+上述报错是因为新增了sh的策略`"allow sh vendor_file:dir search;"`，对应的cil形式为`"(allow sh vendor_file (dir (search)))"`，同时违反了user和developer下的进程基线，期望的cil形式基线是`"(allow sh vendor_file (dir ()))"`。
 
 ### 修复方法
 
@@ -674,7 +674,7 @@ Solution:
 
 ### 拦截原因
 
-出现这个报错是因为，`accessibility_param`是一个系统参数的标签类型，定义是`type accessibility_param, parameter_attr;`，未关联正确的参数属性。
+出现这个报错是因为`accessibility_param`是一个系统参数的标签类型，定义是`type accessibility_param, parameter_attr;`，未关联正确的参数属性。
 
 ### 修复方法
 

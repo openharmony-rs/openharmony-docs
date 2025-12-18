@@ -38,7 +38,7 @@
 
 ### ffrt_cond_init()
 
-```
+```c
 FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr)
 ```
 
@@ -64,7 +64,7 @@ FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr)
 
 ### ffrt_cond_signal()
 
-```
+```c
 FFRT_C_API int ffrt_cond_signal(ffrt_cond_t* cond)
 ```
 
@@ -89,7 +89,7 @@ FFRT_C_API int ffrt_cond_signal(ffrt_cond_t* cond)
 
 ### ffrt_cond_broadcast()
 
-```
+```c
 FFRT_C_API int ffrt_cond_broadcast(ffrt_cond_t* cond)
 ```
 
@@ -114,7 +114,7 @@ FFRT_C_API int ffrt_cond_broadcast(ffrt_cond_t* cond)
 
 ### ffrt_cond_wait()
 
-```
+```c
 FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 ```
 
@@ -140,7 +140,7 @@ FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 
 ### ffrt_cond_timedwait()
 
-```
+```c
 FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const struct timespec* time_point)
 ```
 
@@ -167,7 +167,7 @@ FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const
 
 ### ffrt_cond_destroy()
 
-```
+```c
 FFRT_C_API int ffrt_cond_destroy(ffrt_cond_t* cond)
 ```
 

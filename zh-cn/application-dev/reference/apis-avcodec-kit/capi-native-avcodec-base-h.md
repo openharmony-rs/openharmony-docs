@@ -40,7 +40,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_MediaType](#oh_mediatype) | OH_MediaType | 媒体类型。 |
-| [OH_AACProfile](#oh_aacprofile) | OH_AACProfile | AAC档次。<!--Del-->（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<!--DelEnd--> |
+| [OH_AACProfile](#oh_aacprofile) | OH_AACProfile | AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<!--DelEnd--> |
 | [OH_AVCProfile](#oh_avcprofile) | OH_AVCProfile | AVC档次。 |
 | [OH_HEVCProfile](#oh_hevcprofile) | OH_HEVCProfile | HEVC档次。 |
 | [OH_VVCProfile](#oh_vvcprofile) | OH_VVCProfile | VVC档次。 |
@@ -115,7 +115,7 @@
 | const char * OH_AVCODEC_MIMETYPE_AUDIO_G711A | G711A音频解码器的MIME类型。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_ED_KEY_TIME_STAMP | 表示surfacebuffer时间戳的键，值类型为int64_t。<br>**起始版本：** 9<br>**废弃版本：** 14<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_ED_KEY_EOS | 表示surfacebuffer流结束符的键，值类型为int32_t。<br>**起始版本：** 9<br>**废弃版本：** 14<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_TRACK_TYPE | 轨道媒体类型的键，值类型为int32_t，请参见[OH_MediaType](#oh_mediatype)。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_TRACK_TYPE | 轨道媒体类型的键，值类型为int32_t，请参见[OH_MediaType](capi-native-avcodec-base-h.md#oh_mediatype)。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_CODEC_MIME | 编解码器MIME类型的键，值类型为string。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_DURATION | 媒体文件持续时间的键，单位为微秒，值类型为int64_t。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_BITRATE | 比特率的键，值类型为int64_t。可以通过能力查询接口[OH_AVCapability_GetEncoderBitrateRange](capi-native-avcapability-h.md#oh_avcapability_getencoderbitraterange)接口来获取取值范围。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -130,11 +130,12 @@
 | const char * OH_MD_KEY_AUD_CHANNEL_COUNT | 音频通道计数键，值类型为int32_t。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_AUD_SAMPLE_RATE | 音频采样率键，值类型为int32_t。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_I_FRAME_INTERVAL | 关键帧间隔的键，值类型为int32_t，单位为毫秒。该键是可选的且只用于视频编码。<br> 负值表示只有第一帧是关键帧，0表示所有帧都是关键帧，正值表示每(frameRate * 设置值)/1000帧一个关键帧。默认值为1000。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_ROTATION | surface旋转角度的键，旋转方向为顺时针。值类型为int32_t，值为{0, 90, 180, 270}，默认值为0。<br> 该键只在视频解码Surface模式下使用。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_ROTATION | surface旋转角度的键，旋转方向为顺时针。值类型为int32_t，值为{0, 90, 180, 270}，默认值为0。<br> 该键只在视频解码Surface模式下使用。<br> 设置视频解码surface模式旋转时，推荐使用OH_MD_KEY_VIDEO_TRANSFORM_TYPE键。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_TRANSFORM_TYPE | 视频翻转角度的键，值类型为int32_t，请参见[OH_NativeBuffer_TransformType](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)。<br>此键用于设置视频解码surface模式的翻转角度。若未指定，默认值为0 ([NATIVEBUFFER_ROTATE_NONE](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype))。<br> 此键与OH_MD_KEY_ROTATION互斥。若两者同时设置，以OH_MD_KEY_VIDEO_TRANSFORM_TYPE为准，推荐使用OH_MD_KEY_VIDEO_TRANSFORM_TYPE键。<br> 注意：OH_NativeBuffer_TransformType中指定的角度表示逆时针旋转，这与[OH_MD_KEY_ROTATION](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)定义的旋转方向相反。<br> 对应关系如下:<br> - [NATIVEBUFFER_ROTATE_NONE](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 0。<br> - [NATIVEBUFFER_ROTATE_90](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 270。<br> - [NATIVEBUFFER_ROTATE_180](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 180。<br> - [NATIVEBUFFER_ROTATE_270](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 90。<br><br>**起始版本：** 22 |
 | const char * OH_MD_KEY_RANGE_FLAG | 视频YUV值域标志的键，值类型为int32_t，1表示full range，0表示limited range，默认值为0。配置非0值将按照配置1处理，表示full range。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_COLOR_PRIMARIES | 视频色域的键，值类型为int32_t，默认值为COLOR_PRIMARY_UNSPECIFIED。请参见[OH_ColorPrimary](#oh_colorprimary)，遵循H.273标准Table2。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_TRANSFER_CHARACTERISTICS | 视频传递函数的键，值类型为int32_t，默认值为TRANSFER_CHARACTERISTIC_UNSPECIFIED。请参见[OH_TransferCharacteristic](#oh_transfercharacteristic)，遵循H.273标准Table3。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_MATRIX_COEFFICIENTS | 视频矩阵系数的键，值类型为int32_t，默认值为MATRIX_COEFFICIENT_UNSPECIFIED。请参见[OH_MatrixCoefficient](#oh_matrixcoefficient)，遵循H.273标准Table4。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_COLOR_PRIMARIES | 视频色域的键，值类型为int32_t，默认值为COLOR_PRIMARY_UNSPECIFIED。请参见[OH_ColorPrimary](capi-native-avcodec-base-h.md#oh_colorprimary)，遵循H.273标准Table2。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_TRANSFER_CHARACTERISTICS | 视频传递函数的键，值类型为int32_t，默认值为TRANSFER_CHARACTERISTIC_UNSPECIFIED。请参见[OH_TransferCharacteristic](capi-native-avcodec-base-h.md#oh_transfercharacteristic)，遵循H.273标准Table3。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_MATRIX_COEFFICIENTS | 视频矩阵系数的键，值类型为int32_t，默认值为MATRIX_COEFFICIENT_UNSPECIFIED。请参见[OH_MatrixCoefficient](capi-native-avcodec-base-h.md#oh_matrixcoefficient)，遵循H.273标准Table4。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_REQUEST_I_FRAME | 请求立即编码I帧的键。值类型为int32_t。在调用[OH_VideoEncoder_SetParameter](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter)阶段使用，或随帧立即生效。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_QUALITY | 所需编码质量的键。值类型为int32_t，默认值为50。在H.264、H.265编码场景值范围可以通过能力查询接口[OH_AVCapability_GetEncoderQualityRange](capi-native-avcapability-h.md#oh_avcapability_getencoderqualityrange)来获取取值范围，此键仅适用于配置在恒定质量模式下的编码器。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_CODEC_CONFIG | 编解码器特定数据的键，视频中表示传递SPS/PPS，音频中表示传递extraData，值类型为uint8_t\*。 <!--Del-->（视频编解码此功能暂未支持）<!--DelEnd--><br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -214,7 +215,7 @@
 
 ### OH_MediaType
 
-```
+```c
 enum OH_MediaType
 ```
 
@@ -236,7 +237,7 @@ enum OH_MediaType
 
 ### OH_AACProfile
 
-```
+```c
 enum OH_AACProfile
 ```
 
@@ -256,7 +257,7 @@ AAC档次。<!--Del--><br/>（AAC_PROFILE_HE、AAC_PROFILE_HE_V2暂未开放）<
 
 ### OH_AVCProfile
 
-```
+```c
 enum OH_AVCProfile
 ```
 
@@ -276,7 +277,7 @@ AVC档次。
 
 ### OH_HEVCProfile
 
-```
+```c
 enum OH_HEVCProfile
 ```
 
@@ -298,7 +299,7 @@ HEVC档次。
 
 ### OH_VVCProfile
 
-```
+```c
 enum OH_VVCProfile
 ```
 
@@ -330,7 +331,7 @@ VVC档次。
 
 ### OH_MPEG2Profile
 
-```
+```c
 enum OH_MPEG2Profile
 ```
 
@@ -353,7 +354,7 @@ MPEG2档次。
 
 ### OH_MPEG4Profile
 
-```
+```c
 enum OH_MPEG4Profile
 ```
 
@@ -385,7 +386,7 @@ MPEG4档次。
 
 ### OH_H263Profile
 
-```
+```c
 enum OH_H263Profile
 ```
 
@@ -404,7 +405,7 @@ H.263档次。
 
 ### OH_AVOutputFormat
 
-```
+```c
 enum OH_AVOutputFormat
 ```
 
@@ -429,7 +430,7 @@ enum OH_AVOutputFormat
 
 ### OH_AVSeekMode
 
-```
+```c
 enum OH_AVSeekMode
 ```
 
@@ -449,7 +450,7 @@ enum OH_AVSeekMode
 
 ### OH_ScalingMode
 
-```
+```c
 enum OH_ScalingMode
 ```
 
@@ -472,7 +473,7 @@ enum OH_ScalingMode
 
 ### OH_BitsPerSample
 
-```
+```c
 enum OH_BitsPerSample
 ```
 
@@ -500,7 +501,7 @@ enum OH_BitsPerSample
 
 ### OH_ColorPrimary
 
-```
+```c
 enum OH_ColorPrimary
 ```
 
@@ -528,7 +529,7 @@ enum OH_ColorPrimary
 
 ### OH_TransferCharacteristic
 
-```
+```c
 enum OH_TransferCharacteristic
 ```
 
@@ -562,7 +563,7 @@ enum OH_TransferCharacteristic
 
 ### OH_MatrixCoefficient
 
-```
+```c
 enum OH_MatrixCoefficient
 ```
 
@@ -593,7 +594,7 @@ enum OH_MatrixCoefficient
 
 ### OH_AVCLevel
 
-```
+```c
 enum OH_AVCLevel
 ```
 
@@ -630,7 +631,7 @@ AVC级别。
 
 ### OH_HEVCLevel
 
-```
+```c
 enum OH_HEVCLevel
 ```
 
@@ -660,7 +661,7 @@ HEVC级别。
 
 ### OH_VVCLevel
 
-```
+```c
 enum OH_VVCLevel
 ```
 
@@ -692,7 +693,7 @@ VVC级别。
 
 ### OH_MPEG2Level
 
-```
+```c
 enum OH_MPEG2Level
 ```
 
@@ -713,7 +714,7 @@ MPEG2级别。
 
 ### OH_MPEG4Level
 
-```
+```c
 enum OH_MPEG4Level
 ```
 
@@ -740,7 +741,7 @@ MPEG4级别。
 
 ### OH_H263Level
 
-```
+```c
 enum OH_H263Level
 ```
 
@@ -765,7 +766,7 @@ H.263级别。
 
 ### OH_TemporalGopReferenceMode
 
-```
+```c
 enum OH_TemporalGopReferenceMode
 ```
 
@@ -785,7 +786,7 @@ enum OH_TemporalGopReferenceMode
 
 ### OH_BitrateMode
 
-```
+```c
 enum OH_BitrateMode
 ```
 
@@ -809,7 +810,7 @@ enum OH_BitrateMode
 
 ### OH_AVCodecOnError()
 
-```
+```c
 typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *userData)
 ```
 
@@ -838,7 +839,7 @@ typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *us
 
 ### OH_AVCodecOnStreamChanged()
 
-```
+```c
 typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format, void *userData)
 ```
 
@@ -860,7 +861,7 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 
 ### OH_AVCodecOnNeedInputData()
 
-```
+```c
 typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, void *userData)
 ```
 
@@ -874,7 +875,7 @@ typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 **废弃版本：** 11
 
-**替代接口：** [OH_AVCodecOnNeedInputBuffer](#oh_avcodeconneedinputbuffer)
+**替代接口：** [OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)
 
 **参数：**
 
@@ -887,7 +888,7 @@ typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 ### OH_AVCodecOnNewOutputData()
 
-```
+```c
 typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_AVMemory *data, OH_AVCodecBufferAttr *attr, void *userData)
 ```
 
@@ -901,7 +902,7 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 **废弃版本：** 11
 
-**替代接口：** [OH_AVCodecOnNewOutputBuffer](#oh_avcodeconnewoutputbuffer)
+**替代接口：** [OH_AVCodecOnNewOutputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconnewoutputbuffer)
 
 **参数：**
 
@@ -915,7 +916,7 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 
 ### OH_AVCodecOnNeedInputBuffer()
 
-```
+```c
 typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 ```
 
@@ -938,7 +939,7 @@ typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 ### OH_AVCodecOnNewOutputBuffer()
 
-```
+```c
 typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
 ```
 
@@ -961,7 +962,7 @@ typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 ### OH_AVDataSourceReadAt()
 
-```
+```c
 typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int64_t pos)
 ```
 
@@ -989,7 +990,7 @@ typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int6
 
 ### OH_AVDataSourceReadAtExt()
 
-```
+```c
 typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, int64_t pos, void *userData)
 ```
 

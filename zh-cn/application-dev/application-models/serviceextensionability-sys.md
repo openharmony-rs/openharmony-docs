@@ -80,7 +80,7 @@ interface OHOS.IIdlServiceExt {
 
 在DevEco Studio工程Module对应的ets目录下手动新建名为IdlServiceExt的目录，将[IDL工具](../IDL/idl-guidelines.md)生成的文件复制到该目录下，并创建一个名为idl_service_ext_impl.ts的文件，作为idl接口的实现：
 
-```
+```txt
 ├── ets
 │ ├── IdlServiceExt
 │ │   ├── i_idl_service_ext.ts      # 生成文件
@@ -127,7 +127,7 @@ export default class ServiceExtImpl extends IdlServiceExtStub {
 
 2. 在ServiceExtAbility目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为ServiceExtAbility.ets。
 
-    ```
+    ```txt
     ├── ets
     │ ├── IdlServiceExt
     │ │   ├── i_idl_service_ext.ets      # 生成文件

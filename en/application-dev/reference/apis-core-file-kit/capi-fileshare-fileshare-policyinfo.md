@@ -6,6 +6,10 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct FileShare_PolicyInfo {...} FileShare_PolicyInfo
+```
+
 ## Overview
 
 Represents the permission policy information.

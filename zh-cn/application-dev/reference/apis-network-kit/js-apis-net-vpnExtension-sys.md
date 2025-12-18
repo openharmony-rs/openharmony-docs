@@ -8,6 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 三方VPN管理模块，支持三方VPN的启动和停止功能。
+
 三方VPN是指由第三方提供的VPN服务，它们通常提供更多的功能和更广泛的网络连接选项，包括更多的安全和隐私功能，以及更全面的定制选项。
 
 > **说明：**
@@ -101,7 +102,7 @@ isAlwaysOnVpnEnabled(bundleName: string): Promise\<boolean>
 
 | 类型              | 说明                           |
 | ----------------- | ------------------------------ |
-| Promise\<boolean> | 返回应用alway on vpn开关状态。 |
+| Promise\<boolean> | Promise对象。返回true表示应用alway on vpn开启状态；返回false表示关闭状态。 |
 
 **错误码：**
 
@@ -128,7 +129,7 @@ let want: Want = {
 vpnExtension.isAlwaysOnVpnEnabled(want.bundleName).then((data : boolean) => {
   console.info('isAlwaysOnVpnEnabled success.');
 }).catch((err : BusinessError) => {
-  console.error('setAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
+  console.error('isAlwaysOnVpnEnabled fail, err-> ${JSON.stringify(err)}');
 });
 ```
 

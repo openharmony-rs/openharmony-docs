@@ -528,6 +528,7 @@ mediaPlayGestureAccess(access: boolean)
 multiWindowAccess(multiWindow: boolean)
 
 设置是否开启多窗口权限。
+
 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew事件](./arkts-basic-components-web-events.md#onwindownew9)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -753,7 +754,7 @@ copyOptions(value: CopyOptions)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -769,7 +770,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 
 ## textZoomRatio<sup>9+</sup>
 
@@ -1401,8 +1402,8 @@ allowWindowOpenMethod(flag: boolean)
 
 **示例：**
 
-  ```ts
-  // xxx.ets
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 // 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
@@ -1462,7 +1463,7 @@ struct WebComponent {
         }
     }
 }
-  ```
+```
 **HTML示例：**
 
 ```html
@@ -1634,7 +1635,7 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1660,7 +1661,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1714,8 +1715,11 @@ runJavaScriptOnDocumentStart(scripts: Array\<ScriptItem>)
           "if (typeof(Storage) !== 'undefined') {" +
           "   localStorage.setItem('color', 'Red');" +
           "}";
+      private localStorage2: string =
+          "console.info('runJavaScriptOnDocumentStart urlRegexRules Matching succeeded.')";
       @State scripts: Array<ScriptItem> = [
-          { script: this.localStorage, scriptRules: ["*"] }
+          { script: this.localStorage, scriptRules: ["*"] },
+          { script: this.localStorage2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
       ];
 
       build() {
@@ -1782,7 +1786,7 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1792,8 +1796,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnDocumentEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnDocumentEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -1808,7 +1814,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1846,7 +1852,7 @@ runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1856,8 +1862,10 @@ struct Index {
   controller: webview.WebviewController = new webview.WebviewController();
   private jsStr: string =
     "window.document.getElementById(\"result\").innerHTML = 'this is msg from runJavaScriptOnHeadEnd'";
+  private jsStr2: string = "console.info('runJavaScriptOnHeadEnd urlRegexRules Matching succeeded.')";
   @State scripts: Array<ScriptItem> = [
-    { script: this.jsStr, scriptRules: ["*"] }
+    { script: this.jsStr, scriptRules: ["*"] },
+    { script: this.jsStr2, scriptRules: [], urlRegexRules: [{secondLevelDomain: "", rule: ".*index.html"}] }
   ];
 
   build() {
@@ -1872,7 +1880,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1978,7 +1986,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 | 参数名   | 类型                                     | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。
+| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。|
 
 **示例：**
 
@@ -2411,7 +2419,7 @@ metaViewport(enabled: boolean)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -2427,7 +2435,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 加载的html文件。
 ```html
 <!--index.html-->
@@ -3853,6 +3861,140 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
   }
   ```
 
+## enableImageAnalyzer<sup>23+</sup>
+
+enableImageAnalyzer(enable: boolean)
+
+设置是否启用网页图片AI分析，当前支持图片文字识别功能，该功能默认开启。
+
+> **说明：** 
+>
+> 长按或鼠标悬停在图片文字上时，触发图片AI分析，可以选中图片中的文字。能够触发分析的图片规格如下。
+>
+> - 图片的原始长宽均不小于100px。
+>
+> - 在[设备类型](../../quick-start/module-configuration-file.md#devicetypes标签)不为2in1的设备上，需要图片渲染宽度超过网页宽度的80%。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| enable  | boolean | 是   | 是否启用网页图片AI分析，true表示启用，false表示不启用。<br>传入undefined或null时重置为true。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableImageAnalyzer(true) // 如果需要关闭图片分析能力，需要显式设置为false
+      }
+    }
+  }
+  ```
+
+  加载的html文件：
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .image-container {
+        width: 90%;
+      }
+      .image-container img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="image-container">
+      <!--example.jpg为html同目录下图片-->
+      <img src="example.jpg" alt="待AI分析的图片">
+    </div>
+  </body>
+  </html>
+  ```
+
+## enableAutoFill<sup>23+</sup>
+
+enableAutoFill(value: boolean)
+
+设置是否启用网页自动填充，默认开启。
+
+<!--RP1-->
+> **说明：**
+>
+> 本接口的自动填充功能，依赖“智能填充服务”和“密码填充服务”的支持。
+<!--RP1End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| value  | boolean | 是   | 是否启用网页自动填充，true表示启用，false表示不启用。<br>传入undefined或null时为true。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableAutoFill(true)
+      }
+    }
+  }
+  ```
+
+  加载的html文件：
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
+      <title>自动填充测试</title>
+    </head>
+    <body>
+      <h4 align="center">自动填充测试</h4>
+      <form method="post" action="">
+        <div align="center">
+          <label for="name" style="width: 120px; display: inline-block; text-align: end;">姓名:</label>
+          <input type="text" id="name" autocomplete="name"/><br/><br/>
+          <label for="tel-national" style="width: 120px; display: inline-block; text-align: end;">手机号:</label>
+          <input type="text" id="tel-national" autocomplete="tel-national"/><br/><br/>
+        </div>
+        <div align="center">
+          <button type="submit" style="width: 80px">提交</button>
+        </div>
+      </form>
+    </body>
+  </html>
+  ```
+
 ## password<sup>(deprecated)</sup>
 
 password(password: boolean)
@@ -4050,6 +4192,7 @@ Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本�
 zoomControlAccess(zoomControlAccess: boolean)
 
 设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
+
 当属性没有显式调用时，默认允许通过组合按键进行缩放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
