@@ -219,6 +219,7 @@ unprepareCooperate(): Promise&lt;void&gt;;
 | 202 | Not system application. |
 
 **示例：**
+
 ```ts	
 import { BusinessError } from '@ohos.base';	
 try {	
