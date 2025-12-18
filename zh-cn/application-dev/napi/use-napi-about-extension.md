@@ -1510,6 +1510,8 @@ testNapi.testNapiWrapEnhance();
 
 [使用扩展的Node-API接口创建、销毁和使用Sendable强引用](use-napi-about-sendable-reference.md)
 
+## napi支持抛出错误对象的code属性类型为number的ArkTS Error
+
 ### 接口描述
 
 | 接口                      | 描述                                                       |
