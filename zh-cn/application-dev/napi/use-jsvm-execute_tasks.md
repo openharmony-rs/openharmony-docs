@@ -143,7 +143,7 @@ static int32_t TestJSVM() {
 ```
 <!-- @[oh_jsvm_pump_message_loop_and_perform_microtask_checkpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/pumpmessageloop/src/main/cpp/hello.cpp) -->
 预期输出结果：
-```
+```txt
 JSVM API TEST: Called with instance [object Object]
 JSVM API TEST: Called Finally
 ```
@@ -242,7 +242,7 @@ static int32_t TestJSVM() {
 ```
 
 预期输出结果：
-```
+```txt
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask : 1
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask before calling OH_JSVM_PerformMicrotaskCheckpoint: 0
 Policy :JSVM_MICROTASK_AUTO, evaluateMicrotask after calling OH_JSVM_PerformMicrotaskCheckpoint: 1
