@@ -320,7 +320,7 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback:
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 是   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
+| extra      | string                        | 是   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 | callback   | AsyncCallback&lt;string&gt;   | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
 **错误码：**
@@ -362,7 +362,7 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 
 **返回值：**
 
@@ -412,8 +412,8 @@ getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): st
 | 参数名     | 类型                          | 必填 | 说明                                                 |
 | ---------- | ----------------------------- | ---- | ----------------------------------------------------|
 | relPath    | string                        | 是   | 配置文件名。                                           |
-| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用[DEFAULT](#default_mode)。                    |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
+| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用[DEFAULT](#followxmode11)。                    |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 
 **返回值：**
 
@@ -502,7 +502,7 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: A
 | ---------- | ---------------------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                                   | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11)            | 是   | 跟随模式。                                               |
-| extra      | string                                   | 是   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
+| extra      | string                                   | 是   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 | callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则err为错误对象。 |
 
 **错误码：**
@@ -544,7 +544,7 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&l
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 
 **返回值：**
 
@@ -594,8 +594,8 @@ getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Arra
 | 参数名     | 类型                          | 必填 | 说明                                                   |
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
-| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用[DEFAULT](#default_mode)。                    |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#user_defined)时有效。 |
+| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用[DEFAULT](#followxmode11)。                    |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 
 **返回值：**
 
@@ -664,9 +664,9 @@ getCfgDirListSync(): Array&lt;string&gt;
 
 | 名称                           | 值  | 说明                                                                                            |
 | ----------------------------- | --- | ----------------------------------------------------------------------------------------------- |
-| DEFAULT<a id="default_mode"/> | 0   | 默认模式，会根据各配置层级下的followx_file_list.cfg文件配置的跟随规则进行文件查找。                   |
+| DEFAULT                       | 0   | 默认模式，会根据各配置层级下的followx_file_list.cfg文件配置的跟随规则进行文件查找。                   |
 | NO_RULE_FOLLOWED              | 1   | 不跟随模式，不会使用任何跟随规则，即使存在followx_file_list.cfg文件。                                |
 | SIM_DEFAULT                   | 10  | 跟随默认卡模式，会根据默认卡的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                   |
 | SIM_1                         | 11  | 跟随卡1模式，会根据卡1的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                        |
 | SIM_2                         | 12  | 跟随卡2模式，会根据卡2的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                        |
-| USER_DEFINED<a id="user_defined"/> | 100 | 用户自定义模式，会根据入参extra提供的跟随规则进行配置文件获取，忽略各配置层级下的followx_file_list.cfg文件。 | 
+| USER_DEFINED                  | 100 | 用户自定义模式，会根据入参extra提供的跟随规则进行配置文件获取，忽略各配置层级下的followx_file_list.cfg文件。 | 
