@@ -7873,7 +7873,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/ets/pages/RenderingProperties.ets",
 				"functions":[
 					{
-						"end_line":197,
+						"end_line":218,
 						"name":"rendering_properties",
 						"start_line":16
 					}
@@ -10331,7 +10331,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDraw.ets",
 				"functions":[
 					{
-						"end_line":152,
+						"end_line":166,
 						"name":"frameNodeDraw_start",
 						"start_line":16
 					}
@@ -10361,7 +10361,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeDisposed.ets",
 				"functions":[
 					{
-						"end_line":116,
+						"end_line":120,
 						"name":"frameNodeDisposed_start",
 						"start_line":16
 					}
@@ -10381,7 +10381,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeLazyForEach.ets",
 				"functions":[
 					{
-						"end_line":212,
+						"end_line":225,
 						"name":"frameNodeLazyForEach_start",
 						"start_line":16
 					}
@@ -17090,7 +17090,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/PostTouchEvent.ets",
 				"functions":[
 					{
-						"end_line":87,
+						"end_line":90,
 						"name":"Main_PostTouchEvent",
 						"start_line":15
 					}
