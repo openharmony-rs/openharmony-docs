@@ -1,5 +1,12 @@
 # AutoStartupCallback (系统接口)
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @littlejerry1-->
+<!--Designer: @ccllee1-->
+<!--Tester: @lixueqing513-->
+<!--Adviser: @huipeizi-->
+
 应用设置为开机自启动时的回调函数。
 
 > **说明：**
