@@ -16,7 +16,7 @@ AtomicServiceSearch为开发者提供满足定制化需求的功能，内容包�
 
 ## 导入模块
 
-```
+``` ts
 import { AtomicServiceSearch } from '@kit.ArkUI';
 ```
 
