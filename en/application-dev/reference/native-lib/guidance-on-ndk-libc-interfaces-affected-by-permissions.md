@@ -1,10 +1,4 @@
 # NDK-Related musl libc Interface Usage Restrictions
-<!--Kit: NDK Development-->
-<!--Subsystem: commonlibrary-->
-<!--Owner: @liyiming13-->
-<!--Designer: @huang_huijin-->
-<!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
 
 ## Overview
 
@@ -18,11 +12,11 @@ When developing an application using DevEco Studio or NDK, you may need to use t
 ### Determining Process Termination Due to Seccomp
 
 - Check the process fault logs. If the error cause is **signal:SIGSYS** and the stack top is in the ld-musl-{architecture}.so.1 library, the process termination may be caused by the Seccomp mechanism.
-    ```
+    ```shell
     cat /data/log/faultlog/faultlogger/cppcrash-xxxx
     ```
     Incorrect example:
-    ```
+    ```txt
     Process name:com.example.myapplication
     Reason:Signal:SIGSYS(UNKNOWN)
     Fault thread Info:

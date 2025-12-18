@@ -114,8 +114,8 @@ The file declares the capture session concepts.
 | [Camera_ErrorCode OH_CaptureSession_SetWhiteBalanceMode(Camera_CaptureSession* session, Camera_WhiteBalanceMode whiteBalanceMode)](#oh_capturesession_setwhitebalancemode) | - | Sets a white balance mode.|
 | [Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceRange(Camera_CaptureSession* session, int32_t *minColorTemperature, int32_t *maxColorTemperature)](#oh_capturesession_getwhitebalancerange) | - | Obtains the supported white balance color temperature range.|
 | [Camera_ErrorCode OH_CaptureSession_IsControlCenterSupported(Camera_CaptureSession* session, bool* isSupported)](#oh_capturesession_iscontrolcentersupported) | - | Checks whether the camera controller is supported.|
-| [Camera_ErrorCode OH_CaptureSession_GetSupportedEffectType(Camera_CaptureSession* session,Camera_ControlCenterEffectType** types, uint32_t* size)](#oh_capturesession_getsupportedeffecttype) | - | Obtains the effect types supported by the camera controller.|
-| [Camera_ErrorCode OH_CaptureSession_DeleteSupportedEffectType(Camera_CaptureSession* session,Camera_ControlCenterEffectType* types, uint32_t size)](#oh_capturesession_deletesupportedeffecttype) | - | Deletes the effect types supported by the camera controller.|
+| [Camera_ErrorCode OH_CaptureSession_GetSupportedEffectTypes(Camera_CaptureSession* session,Camera_ControlCenterEffectType** types, uint32_t* size)](#oh_capturesession_getsupportedeffecttypes) | - | Obtains the effect types supported by the camera controller.|
+| [Camera_ErrorCode OH_CaptureSession_DeleteSupportedEffectTypes(Camera_CaptureSession* session,Camera_ControlCenterEffectType* types, uint32_t size)](#oh_capturesession_deletesupportedeffecttypes) | - | Deletes the effect types supported by the camera controller.|
 | [Camera_ErrorCode OH_CaptureSession_EnableControlCenter(Camera_CaptureSession* session, bool enabled)](#oh_capturesession_enablecontrolcenter) | - | Enables or disables the camera controller.|
 | [Camera_ErrorCode OH_CaptureSession_RegisterControlCenterEffectStatusChangeCallback(Camera_CaptureSession* session,OH_CaptureSession_OnControlCenterEffectStatusChange controlCenterEffectStatusChange)](#oh_capturesession_registercontrolcentereffectstatuschangecallback) | - | Registers a callback to listen for effect status changes of a camera controller.|
 | [Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCallback(Camera_CaptureSession* session,OH_CaptureSession_OnControlCenterEffectStatusChange controlCenterEffectStatusChange)](#oh_capturesession_unregistercontrolcentereffectstatuschangecallback) | - | Unregisters the callback used to listen for effect status changes of a camera controller.|
@@ -458,7 +458,7 @@ Commits the configuration for a capture session.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_AddInput()
 
@@ -743,7 +743,7 @@ Starts a capture session.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_Stop()
 
@@ -768,7 +768,7 @@ Stops a capture session.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_Release()
 
@@ -793,7 +793,7 @@ Releases a CaptureSession instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_HasFlash()
 
@@ -1587,7 +1587,7 @@ Sets a preconfigured resolution type.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_PreconfigWithRatio()
 
@@ -1614,7 +1614,7 @@ Sets a preconfigured resolution type with an aspect ratio.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_GetExposureValue()
 
@@ -1640,7 +1640,7 @@ Obtains the exposure value.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_GetFocalLength()
 
@@ -1902,7 +1902,7 @@ Enables or disables automatic device switching.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_RegisterSystemPressureLevelChangeCallback()
 
@@ -2102,6 +2102,7 @@ Camera_ErrorCode OH_CaptureSession_GetWhiteBalanceMode(Camera_CaptureSession* se
 
 Obtains the white balance mode in use.
 
+**Since**: 20
 
 **Parameters**
 
@@ -2222,10 +2223,10 @@ Checks whether the camera controller is supported.
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK = 0**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.|
 
-### OH_CaptureSession_GetSupportedEffectType()
+### OH_CaptureSession_GetSupportedEffectTypes()
 
 ```
-Camera_ErrorCode OH_CaptureSession_GetSupportedEffectType(Camera_CaptureSession* session,Camera_ControlCenterEffectType** types, uint32_t* size)
+Camera_ErrorCode OH_CaptureSession_GetSupportedEffectTypes(Camera_CaptureSession* session,Camera_ControlCenterEffectType** types, uint32_t* size)
 ```
 
 **Description**
@@ -2249,10 +2250,10 @@ Obtains the effect types supported by the camera controller.
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.|
 
-### OH_CaptureSession_DeleteSupportedEffectType()
+### OH_CaptureSession_DeleteSupportedEffectTypes()
 
 ```
-Camera_ErrorCode OH_CaptureSession_DeleteSupportedEffectType(Camera_CaptureSession* session,Camera_ControlCenterEffectType* types, uint32_t size)
+Camera_ErrorCode OH_CaptureSession_DeleteSupportedEffectTypes(Camera_CaptureSession* session,Camera_ControlCenterEffectType* types, uint32_t size)
 ```
 
 **Description**
@@ -2300,7 +2301,7 @@ Enables or disables the camera controller.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK = 0**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK = 0**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_CaptureSession_RegisterControlCenterEffectStatusChangeCallback()
 

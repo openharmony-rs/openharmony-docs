@@ -34,6 +34,9 @@
   <!--Del-->
   - [Distributed Audio Playback (for System Applications Only)](distributed-audio-playback-sys.md)
   <!--DelEnd-->
+  <!--Del-->
+  - [Collaborative Audio Management (for System Applications Only)](audio-collaborative-management-sys.md)
+  <!--DelEnd-->
 - Audio Recording<!--audio-recording-->
   - [Audio Recording Overview](audio-recording-overview.md)
   - [Using AudioCapturer for Audio Recording](using-audiocapturer-for-recording.md)
