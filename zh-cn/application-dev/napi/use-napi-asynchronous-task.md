@@ -266,5 +266,6 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 ## 注意事项
 - 调用napi_cancel_async_work接口，无论底层uv是否失败都会返回napi_ok。若因为底层uv导致取消任务失败，complete callback中的status会传入对应错误值，请在complete callback中对status进行处理。
 - NAPI的异步工作项（napi_async_work）建议单次使用。napi_queue_async_work后，该napi_async_work需在complete回调执行时或执行后，通过napi_delete_async_work完成释放。同一个napi_async_work只允许释放一次，重复释放会导致未定义行为。
+
 `napi_async_work`的`execute_cb`运行在一个独立的工作线程中，该线程从uv线程池中取出。不同工作线程之间互不影响。
 - 在任务的执行时序上，`napi_async_work`仅保证`complete_cb`在`execute_cb`之后执行。不同`napi_async_work`的`execute_cb`在各自的工作线程上运行，因此无法保证不同`execute_cb`的执行顺序。如果任务执行需要顺序，建议使用`napi_threadsafe_function`系列接口，这些接口是保序的。具体使用方法可参考[链接](use-napi-thread-safety.md)。

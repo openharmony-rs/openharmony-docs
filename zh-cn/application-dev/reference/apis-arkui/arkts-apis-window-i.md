@@ -28,7 +28,7 @@
 
 ## SystemBarProperties
 
-状态栏<!--Del-->、三键导航栏的<!--DelEnd-->属性。在设置窗口级状态栏<!--Del-->、三键导航栏<!--DelEnd-->属性时使用。
+状态栏<!--Del-->、三键导航栏的<!--DelEnd-->属性。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -40,8 +40,8 @@
 | navigationBarColor                     | string   |  否  |  是   | 三键导航栏背景颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`'#00FF00'`或`'#FF00FF00'`。默认值：`'#66000000'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | isNavigationBarLightIcon<sup>7+</sup>  | boolean  |  否  |  是   | 三键导航栏图标是否为高亮状态。true表示高亮；false表示不高亮。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
 | navigationBarContentColor<sup>8+</sup> | string   |  否  |  是   | 三键导航栏文字颜色。当设置此属性后，`isNavigationBarLightIcon`属性设置无效。默认值：`'#E5FFFFFF'`。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否使能状态栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager|
-| enableNavigationBarAnimation<sup>12+</sup> | boolean   |  否  |  是   | 是否使能三键导航栏属性变化时动画效果。true表示变化时使能动画效果；false表示没有使能动画效果。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.Window.SessionManager|
+| enableStatusBarAnimation<sup>12+</sup> | boolean  |  否  |  是   | 是否启用状态栏属性变化时的动画效果。true表示启用；false表示不启用。默认值：false。 <br> **系统能力：** SystemCapability.Window.SessionManager|
+| enableNavigationBarAnimation<sup>12+</sup> | boolean   |  否  |  是   | 是否启用三键导航栏属性变化时的动画效果。true表示启用；false表示不启用。默认值：false。 <br><!--RP13--><!--RP13End--> **系统能力：** SystemCapability.Window.SessionManager|
 
 ## StatusBarProperty<sup>18+</sup>
 

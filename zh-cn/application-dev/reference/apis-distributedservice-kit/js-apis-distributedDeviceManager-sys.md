@@ -194,7 +194,7 @@ replyUiAction(action: number, actionResult: string): void
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
- try {
+  try {
     /*
       action = 0 - 允许授权
       action = 1 - 取消授权

@@ -99,4 +99,4 @@ Freeform windows can enter immersive layout by hiding the decoration bar.
 
 In immersive layout, an application window's component layout expands from the safe area to the entire window. You can use [isImmersiveLayout](../reference/apis-arkui/arkts-apis-window-Window.md#isimmersivelayout20) to check whether the window is in immersive layout.
 
-For details about immersive development and implementation in different window forms in multi-device scenarios, see [Immersive Window](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive).
+For details about immersive development and implementation in different window forms in multi-device scenarios, see [Immersive Window](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-device-window-immersive).
