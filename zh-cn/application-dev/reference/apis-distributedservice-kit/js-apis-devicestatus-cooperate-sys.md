@@ -16,7 +16,7 @@ import cooperate from '@ohos.cooperate';
 
 ## cooperate.prepareCooperate<sup>11+</sup>
 
-prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
+prepareCooperate(callback: AsyncCallback&lt;void&gt;): void
 
 准备键鼠穿越，使用Callback异步回调。
 
@@ -127,7 +127,7 @@ try {
 
 ## cooperate.unprepareCooperate<sup>11+</sup>
 
-unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
+unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void
 
 取消键鼠穿越准备，使用Callback异步回调。
 
@@ -385,7 +385,7 @@ try {
 
 ## cooperate.deactivateCooperate<sup>11+</sup>
 
-deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
+deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 停止键鼠穿越，使用Callback异步回调。
 
@@ -517,7 +517,7 @@ try {
 
 ## cooperate.getCooperateSwitchState<sup>11+</sup>
 
-getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;): void;
+getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 获取目标设备键鼠穿越开关的状态，使用Callback异步回调。
 
@@ -866,7 +866,7 @@ try {
 
 ## on('cooperateMouse')<sup>12+</sup>
 
-on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void;
+on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void
 
 注册监听指定设备鼠标光标位置。
 
@@ -1265,7 +1265,7 @@ try {
 
 ## cooperate.prepare<sup>(deprecated)</sup>
 
-prepare(callback: AsyncCallback&lt;void&gt;): void;
+prepare(callback: AsyncCallback&lt;void&gt;): void
 
 准备键鼠穿越，使用Callback异步回调。
 
@@ -1351,7 +1351,7 @@ try {
 
 ## cooperate.unprepare<sup>(deprecated)</sup>
 
-unprepare(callback: AsyncCallback&lt;void&gt;): void;
+unprepare(callback: AsyncCallback&lt;void&gt;): void
 
 取消键鼠穿越准备，使用Callback异步回调。
 
@@ -1435,7 +1435,7 @@ try {
 
 ## cooperate.activate<sup>(deprecated)</sup>
 
-activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback&lt;void&gt;): void;
+activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback&lt;void&gt;): void
 
 启动键鼠穿越，使用Callback异步回调。
 
@@ -1536,7 +1536,7 @@ try {
 
 ## cooperate.deactivate<sup>(deprecated)</sup>
 
-deactivate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void;
+deactivate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 停止键鼠穿越，使用Callback异步回调。
 
@@ -1629,7 +1629,7 @@ try {
 
 ## cooperate.getCrossingSwitchState<sup>(deprecated)</sup>
 
-getCrossingSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;): void;
+getCrossingSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 获取目标设备键鼠穿越开关的状态，使用Callback异步回调。
 
@@ -1726,7 +1726,7 @@ try {
 
 ## on('cooperate')<sup>(deprecated)</sup>
 
-on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateMsg }&gt;): void;
+on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateMsg }&gt;): void
 
 注册监听键鼠穿越状态。
 
@@ -1768,7 +1768,7 @@ try {
 
 ## off('cooperate')<sup>(deprecated)</sup>
 
-off(type: 'cooperate', callback?: Callback&lt;void&gt;): void;
+off(type: 'cooperate', callback?: Callback&lt;void&gt;): void
 
 取消监听键鼠穿越状态。
 
@@ -1826,8 +1826,6 @@ try {
   console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
-
 
 ##  CooperateMsg<sup>(deprecated)</sup>
 
