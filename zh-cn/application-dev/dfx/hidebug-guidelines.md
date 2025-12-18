@@ -340,8 +340,8 @@ HiDebug提供添加诊断信息的接口，开发者可根据业务需要将诊�
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| OH_HiDebug_SetCrashObj | 将诊断信息添加到当前崩溃上下文中 |
-| OH_HiDebug_ResetCrashObj | 从当前崩溃上下文中分离已添加的诊断信息。 |
+| OH_HiDebug_SetCrashObj | 将诊断信息添加到当前崩溃上下文中。<br/>**说明**：从API version 23开始，支持该接口。 |
+| OH_HiDebug_ResetCrashObj | 从当前崩溃上下文中分离已添加的诊断信息。<br/>**说明**：从API version 23开始，支持该接口。 |
 
 ## 其他
 
