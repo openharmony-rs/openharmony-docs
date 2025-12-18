@@ -2248,7 +2248,7 @@ try {
 
 off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
 
-取消融合压力传感器数据。
+取消订阅融合压力传感器数据。
 
 **系统能力**：SystemCapability.Sensors.Sensor
 
@@ -6581,7 +6581,7 @@ try {
 
 | 名称            | 类型   | 只读 | 可选 | 说明                                           |
 | -------------- | ------ | ---- | ---- | ---------------------------------------------- |
-| fusionPressure | number | 否   | 否   | 施加在融合压力传感器上的压强，单位 : %     |
+| fusionPressure | number | 否   | 否   | 施加在融合压力传感器上的压力值百分比，单位 : %     |
 
 
 ## GravityResponse
