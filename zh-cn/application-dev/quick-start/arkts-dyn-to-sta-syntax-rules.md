@@ -4134,6 +4134,90 @@ ArkTS-Sta
 import { MainPage } from 'library/src/main/ets/components/MainPage'
 ```
 
+## 不支持enableV2Compatibility和makeV1Observed方法
+
+**规则：** `arkui-no-enableV2Compatibility-and-makeV1Observed-function`
+
+**规则解释：**
+
+ArkTS-Sta不支持enableV2Compatibility方法和makeV1Observed方法。
+
+**变更原因：**
+ 
+由于ArkTS-Sta状态管理V1和V2天然支持V1/V2状态变量的传递，因此无需使用enableV2Compatibility方法与makeV1Observed方法进行状态变量的转换。
+
+**适配建议：**
+
+删除UIUtils.enableV2Compatibility方法和UIUtils.makeV1Observed方法的调用。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+// main.ets
+import { UIUtils } from '@kit.ArkUI';
+
+class ObservedV2Class {
+  name: string = 'a';
+}
+
+@Entry
+@Component
+export struct V2DecoratorDecorateObserveV2 {
+  @State ObservedV2ClassLocal: ObservedV2Class = UIUtils.makeV1Observed(new ObservedV2Class());
+  build() {
+    Column() {
+      CompV1({ ObservedV2Class: UIUtils.enableV2Compatibility(this.ObservedV2ClassLocal) })
+    }
+  }
+}
+
+@ComponentV2
+struct CompV1 {
+  @Param @Require ObservedV2Class: ObservedV2Class;
+
+  build() {
+    Column() {
+      Text(`name =  ${this.ObservedV2Class.name}`)
+    }
+  }
+}
+```
+
+ArkTS-Sta
+
+```typescript
+// main.ets
+import { Entry, Component, State, Column, ComponentV2, Param, Require, Text } from '@kit.ArkUI';
+
+class ObservedV2Class {
+  name: string = 'a';
+}
+
+@Entry
+@Component
+export struct V2DecoratorDecorateObserveV2 {
+  @State ObservedV2ClassLocal: ObservedV2Class = new ObservedV2Class();
+  build() {
+    Column() {
+      CompV1({ ObservedV2Class: this.ObservedV2ClassLocal })
+    }
+  }
+}
+
+@ComponentV2
+struct CompV1 {
+  @Param @Require ObservedV2Class: ObservedV2Class;
+
+  build() {
+    Column() {
+      Text(`name =  ${this.ObservedV2Class.name}`)
+    }
+  }
+}
+```
+
 ## Number类型逻辑运算符结果类型变更
 
 **场景描述：**
