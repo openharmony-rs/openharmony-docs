@@ -32,6 +32,8 @@ ConsoleMessage的信息级别。
 
 ## MixedMode
 
+混合内容模式。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 8
@@ -61,6 +63,8 @@ ConsoleMessage的信息级别。
 | Unknown       | 7 | 未知内容。                    |
 
 ## CacheMode
+
+缓存模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -237,12 +241,12 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称                          | 值 | 说明            |
-| --------------------------- | --------------- | ------------- |
-| ArkTS-Dyn: MidiSysex  <br>ArkTS-Sta: MIDI_SYSEX| TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: VIDEO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: VIDEO_CAPTURE| TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: AUDIO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: AUDIO_CAPTURE| TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: SENSOR<sup>12+</sup> <br>ArkTS-Sta: SENSOR| TYPE_SENSOR | 传感器资源，例如加速度传感器。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
+| 名称                          | 值 | 说明            |    可申请的权限          |
+| --------------------------- | --------------- | ------------- |  ---------------------|
+| ArkTS-Dyn: MidiSysex  <br>ArkTS-Sta: MIDI_SYSEX| TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 22|暂不支持申请使用MIDI(Musical Instrument Digital Interface)设备相关权限。|
+| ArkTS-Dyn: VIDEO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: VIDEO_CAPTURE| TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|相机权限：ohos.permission.CAMERA。|
+| ArkTS-Dyn: AUDIO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: AUDIO_CAPTURE| TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|麦克风权限：ohos.permission.MICROPHONE。|
+| ArkTS-Dyn: SENSOR<sup>12+</sup> <br>ArkTS-Sta: SENSOR| TYPE_SENSOR | 传感器资源，例如加速度传感器。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|加速度传感器权限：ohos.permission.ACCELEROMETER、 <br>陀螺仪传感器权限：ohos.permission.GYROSCOPE。 |
 
 ## ContextMenuSourceType<sup>9+</sup>
 
