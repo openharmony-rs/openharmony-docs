@@ -1,4 +1,10 @@
 # loadNativeModule (同步动态加载系统库接口)
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @yao_dashuai-->
+<!--Designer: @yao_dashuai-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
 
 本模块提供了同步动态加载系统库接口的能力。
 
@@ -50,7 +56,7 @@ loadNativeModule(moduleName: string): Object
 | 场景            | 示例           | 
 | :------------- | :----------------------------- | 
 | 系统库模块        | 加载@ohos.或@system.        | 
-| 应用内native模块	| 加载libNativeLibrary.so |
+| 应用内native模块  | 加载libNativeLibrary.so |
 
 **示例1**：HAP加载系统库模块
 

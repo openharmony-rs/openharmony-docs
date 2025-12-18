@@ -12739,7 +12739,7 @@ CmsGenerator对象用于生成CMS（Cryptographic Message Syntax）格式的消�
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
 用于为内容类型为SIGNED_DATA的CMS添加签名者信息。
-	
+
 > **说明：**
 >
 > 由于openssl不支持自签名证书的验签操作，因此自签名证书不能作为签名者。
@@ -13645,7 +13645,7 @@ CmsParser对象用于对已签名跟封装的CMS（Cryptographic Message Syntax�
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 用于把CMS格式的数据转成CMS对象。使用Promise异步回调。
-	
+
 > **说明：**
 >
 > 支持PEM跟DER格式的CMS数据。string对应PEM格式；Uint8Array对应DER格式数据。
