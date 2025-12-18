@@ -98,7 +98,7 @@ let screenClass: screen.Screen | null = null;
 let promise: Promise<Array<screen.Screen>> = screen.getAllScreens();
 promise.then((data: Array<screen.Screen>) => {
   if(data.length > 0){
-  	screenClass = data[0];
+    screenClass = data[0];
   }
   console.info(`Succeeded in getting all screens. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
