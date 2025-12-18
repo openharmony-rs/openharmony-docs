@@ -29,8 +29,9 @@
 1. 通过context获取到Canvas画布对象。
 
    <!-- @[arkts_multi_language_text_drawing_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
-
+   
    ``` TypeScript
+   // 绘制代码逻辑写在这里
    let canvas = context.canvas;
    ```
 
