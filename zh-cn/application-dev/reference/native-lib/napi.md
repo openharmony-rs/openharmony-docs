@@ -181,6 +181,8 @@ libace_napi.z.so
 |FUNC|node_api_get_module_file_name|用于获取加载项加载位置的绝对路径。|11|
 |FUNC|napi_add_finalizer|当js `Object`中的对象被垃圾回收时调用注册的napi_finalize回调。|11|
 |FUNC|napi_fatal_exception|向js抛出 `UncaughtException`。|12|
+|FUNC|napi_create_external_string_utf16 | 需要通过外部UTF-16编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |22|
+|FUNC|napi_create_external_string_ascii | 需要通过外部ASCII编码的字符串缓冲区创建ArkTS字符串值且避免内存拷贝时使用此函数。 |22|
 
 ## 已导出符号列表与标准库对应符号的差异
 
@@ -678,6 +680,18 @@ libace_napi.z.so
 **返回：**
 
 - 当length数值过大时，标准库中会直接抛出异常并中断进程，OpenHarmony中会尝试分配内存，若分配失败则抛出异常并返回undefined。
+
+### napi_create_external_string_utf16
+
+**参数：**
+
+- 标准库支持一个额外参数copied用于指示字符串内容是否被复制，OpenHarmony中不支持该参数，字符串内容始终不会被复制。
+
+### napi_create_external_string_ascii
+
+**参数：**
+
+- 标准库支持一个额外参数copied用于指示字符串内容是否被复制，OpenHarmony中不支持该参数，字符串内容始终不会被复制。
 
 ## 未从Node-API组件标准库中导出的符号列表
 
@@ -1544,6 +1558,27 @@ typedef void (*napi_finalize)(napi_env env,
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] finalize_data：指向需要清理的用户数据的指针。
+
+- [in] finalize_hint：上下文提示，用于辅助清理过程。
+
+**返回：**
+
+- void：此回调函数无返回值。
+
+### napi_finalize_callback回调函数说明
+
+```cpp
+typedef void (*napi_finalize_callback)(void* finalize_data,
+                                       void* finalize_hint);
+```
+
+**描述：**
+
+用于定义通过接口napi_create_external_string_utf16和napi_create_external_string_ascii创建出的ArkTS string对象生命周期结束时触发的回调函数。
+
+**参数：**
 
 - [in] finalize_data：指向需要清理的用户数据的指针。
 
