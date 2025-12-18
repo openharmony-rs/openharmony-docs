@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct VkImportNativeBufferInfoOHOS {...} VkImportNativeBufferInfoOHOS
+```
+
 ## Overview
 
 The struct describes the pointer to an OH_NativeBuffer struct.

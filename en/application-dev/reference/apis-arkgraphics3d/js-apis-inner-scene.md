@@ -16,7 +16,7 @@ The module is the basic module of ArkGraphics 3D and provides common data types 
 ## Modules to Import
 ```ts
 import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters,RenderResourceFactory,
-  SceneResourceFactory, SceneComponent, RenderContext, RenderParameters, Scene } from '@kit.ArkGraphics3D';
+  SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceParameters
@@ -820,6 +820,14 @@ function registerResourcePath(): void {
 }
 ```
 
+## RenderConfiguration<sup>23+</sup>
+Describes the rendering configuration.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+| Name| Type| Read Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| shadowResolution| [Vec2](js-apis-inner-scene-types.md#vec2) | No| Yes| Global shadow map resolution. The default value is **undefined**, indicating that the shadow map resolution is set to 1024 * 1024. The value must be greater than 0 for the parameter to take effect. If the input value is a floating-point number, it will be truncated to an integer; if the input value is less than or equal to 0, the input will be ignored, and the original configuration will be retained.|
+
 ## RenderParameters<sup>15+</sup>
 Describes the rendering parameters.
 
@@ -841,6 +849,7 @@ Describes a scene.
 | environment | [Environment](js-apis-inner-scene-resources.md#environment) | No| No| Environment object.|
 | animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | Yes| No| Animation objects in the 3D scene.|
 | root | [Node](js-apis-inner-scene-nodes.md#node) \| null | Yes| No| Root node in the 3D scene tree.|
+| renderConfiguration<sup>23+</sup> | [RenderConfiguration](#renderconfiguration23)  | Yes| No| Rendering configuration.|
 
 ### load
 static load(uri?: ResourceStr): Promise\<Scene>
