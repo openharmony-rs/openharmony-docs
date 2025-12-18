@@ -6684,7 +6684,7 @@ getId(): Promise\<number>
 获取控件对象的id值。
 
 > **说明：**
-> 从API version 8开始支持，从API version 9开始废弃，被废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](#getid9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest
 
