@@ -45,7 +45,7 @@ The file declares the functions related to an audio resource manager.
 
 ### OH_AudioManager_GetAudioResourceManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioResourceManager(OH_AudioResourceManager **resourceManager)
 ```
 
@@ -72,7 +72,7 @@ Before using the features related to the audio resource manager, you must obtain
 
 ### OH_AudioResourceManager_CreateWorkgroup()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioResourceManager_CreateWorkgroup(OH_AudioResourceManager *resourceManager,const char *name, OH_AudioWorkgroup **group)
 ```
 
@@ -99,7 +99,7 @@ Creates an audio workgroup.
 
 ### OH_AudioResourceManager_ReleaseWorkgroup()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioResourceManager_ReleaseWorkgroup(OH_AudioResourceManager *resourceManager,OH_AudioWorkgroup *group)
 ```
 
@@ -125,7 +125,7 @@ Releases an audio workgroup.
 
 ### OH_AudioWorkgroup_AddCurrentThread()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_AddCurrentThread(OH_AudioWorkgroup *group, int32_t *tokenId)
 ```
 
@@ -151,7 +151,7 @@ Adds a thread to an audio workgroup.
 
 ### OH_AudioWorkgroup_RemoveThread()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_RemoveThread(OH_AudioWorkgroup *group, int32_t tokenId)
 ```
 
@@ -177,7 +177,7 @@ Removes a thread from an audio workgroup.
 
 ### OH_AudioWorkgroup_Start()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_Start(OH_AudioWorkgroup *group, uint64_t startTime, uint64_t deadlineTime)
 ```
 
@@ -204,7 +204,7 @@ Notifies the system that an audio workgroup starts working and provides the expe
 
 ### OH_AudioWorkgroup_Stop()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioWorkgroup_Stop(OH_AudioWorkgroup *group)
 ```
 

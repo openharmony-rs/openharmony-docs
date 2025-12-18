@@ -88,7 +88,7 @@ The file declares the DRM data types.
 
 ### DRM_EventType
 
-```
+```c
 enum DRM_EventType
 ```
 
@@ -111,7 +111,7 @@ Enumerates the types of events that can be subscribed to.
 
 ### DRM_ContentProtectionLevel
 
-```
+```c
 enum DRM_ContentProtectionLevel
 ```
 
@@ -133,7 +133,7 @@ Enumerates the content protection levels.
 
 ### DRM_MediaKeyType
 
-```
+```c
 enum DRM_MediaKeyType
 ```
 
@@ -152,7 +152,7 @@ Enumerates the types of media keys.
 
 ### DRM_MediaKeyRequestType
 
-```
+```c
 enum DRM_MediaKeyRequestType
 ```
 
@@ -175,7 +175,7 @@ Enumerates the types of media key requests.
 
 ### DRM_OfflineMediaKeyStatus
 
-```
+```c
 enum DRM_OfflineMediaKeyStatus
 ```
 
@@ -195,7 +195,7 @@ Enumerates the statuses of offline media keys.
 
 ### DRM_CertificateStatus
 
-```
+```c
 enum DRM_CertificateStatus
 ```
 
@@ -220,7 +220,7 @@ Enumerates the device certificate statuses.
 
 ### DRM_MediaKeySystemInfoCallback()
 
-```
+```c
 typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)
 ```
 
