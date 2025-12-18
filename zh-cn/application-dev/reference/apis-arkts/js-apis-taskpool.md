@@ -1671,7 +1671,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1720,7 +1720,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }
@@ -1822,7 +1822,7 @@ import { taskpool } from '@kit.ArkTS';
 function delay(args: number): number {
   let t: number = Date.now();
   while ((Date.now() - t) < 1000) {
-	  continue;
+    continue;
   }
   return args;
 }

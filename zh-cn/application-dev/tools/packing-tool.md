@@ -253,8 +253,8 @@ APPQF包由一个或多个HQF文件组成。这些HQF包在应用市场会从APP
 **APPQF打包合法性校验**
 - 在打包生成APPQF包时，确保每个HQF的[patch.json文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-incremental-debugging#section28031446182019)中的versionName、versionCode、patchVersionName、patchVersionCode保持一致。
 - 所有HQF不得重复。HQF重复是指同时满足以下两个条件：
-	1. 两个HQF的patch.json文件中module下的name字段相同。
-	2. 两个HQF的patch.json文件中module下的deviceTypes属性相交（至少存在一个相同的设备类型）。
+    1. 两个HQF的patch.json文件中module下的name字段相同。
+    2. 两个HQF的patch.json文件中module下的deviceTypes属性相交（至少存在一个相同的设备类型）。
 
 示例:
 
