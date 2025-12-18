@@ -53,6 +53,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | [JSVM_Deferred__*](capi-jsvm-jsvm-deferred--8h.md)                                                | JSVM_Deferred                           | Defines the deferred object.                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg                 | Defines the pointer type of the struct that contains the property handler.                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)                                         | JSVM_Callback   | Defines the pointer types of the native functions provided by user. These functions are exposed to JavaScript via JSVM-API.                                |
+| [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md) | JSVM_CompileProfile | Defines the compilation sampling file transferred together with **JSVM_COMPILE_COMPILE_PROFILE**.|
 
 ### Enums
 
@@ -91,6 +92,12 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | [typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const char* message)](#jsvm_handlerforfatalerror)                                       | JSVM_CDECL* JSVM_HandlerForFatalError | Defines a pointer to the handler for Fatal-Error callback.|
 | [typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)](#jsvm_handlerforpromisereject) | JSVM_CDECL* JSVM_HandlerForPromiseReject | Defines a pointer to the handler for Promise-Reject callback.|
 
+### Variables
+
+| Name| typedef Keyword| Description|
+| ---- | ------------- | ---- |
+| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. Prerequisite is as follows: The current compiler is not a C++ compiler or|| the compiler is a Microsoft Visual C++ compiler and the version is earlier than Visual Studio 2015 (excluded).|
+
 ## Enum Description
 
 ### JSVM_PropertyAttributes
@@ -105,15 +112,18 @@ Enumerates the behaviors of controlling JavaScript object properties.
 
 **Since**: 11
 
-| Enum Item                                                                            | Description                                                 |
-|---------------------------------------------------------------------------------|-----------------------------------------------------|
-| JSVM_DEFAULT = 0                                                                | No explicit attribute set on the property.                                      |
-| JSVM_WRITABLE = 1 << 0                                                          | Writable property.                                           |
-| JSVM_ENUMERABLE = 1 << 1                                                        | Enumerable property.                                          |
-| JSVM_CONFIGURABLE = 1 << 2                                                      | Configurable property.                                          |
-| JSVM_STATIC = 1 << 10                                                           | Static property of the class, instead of the default instance property. Used only by **OH_JSVM_DefineClass**.|
-| JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE                        |Configurable, writable, but not enumerable property, like a method of a JavaScript class.                     |
-| JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE | Writable, enumerable, and configurable property, like a property set by value assignment in JavaScript.|
+| Enum Item                                                                               | Description                                                 |
+|---------------------------------------------------------------------------------------|-----------------------------------------------------|
+| JSVM_DEFAULT = 0                                                                      | No explicit attribute set on the property.                                      |
+| JSVM_WRITABLE = 1 << 0                                                                | Writable property.                                           |
+| JSVM_ENUMERABLE = 1 << 1                                                              | Enumerable property.                                          |
+| JSVM_CONFIGURABLE = 1 << 2                                                            | Configurable property.                                          |
+| JSVM_NO_RECEIVER_CHECK = 1 << 3                                                       | Receiver used to mark the local methods does not need to be checked. If **JSVM_NO_RECEIVER_CHECK** is not set, the method accepts only the instance of the defined class as the receiver. Otherwise, an exception "TypeError: illegal call" is thrown to JSVM.                                          |
+| JSVM_STATIC = 1 << 10                                                                 | Static property of the class, instead of the default instance property. Used only by **OH_JSVM_DefineClass**.|
+| JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE                              | Configurable, writable, but not enumerable property, like a method of a JavaScript class.                     |
+| JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK         | Class method whose receiver does not need to be checked.                     |
+| JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE       | Writable, enumerable, and configurable property, like a property set by value assignment in JavaScript.|
+| JSVM_JSPROPERTY_NO_RECEIVER_CHECK = JSVM_DEFAULT_JSPROPERTY \| JSVM_NO_RECEIVER_CHECK | Object property whose receiver does not need to be checked.|
 
 ### JSVM_ValueType
 
@@ -471,7 +481,7 @@ Enumerates reject events for a promise.
 | -- | -- |
 | JSVM_PROMISE_REJECT_OTHER_REASONS = 0 | A promise is rejected, but the rejection reason is unknown or unclear.|
 | JSVM_PROMISE_REJECT_WITH_NO_HANDLER = 1 | A promise is rejected but no handler is available.|
-| JSVM_PROMISE_HANDLER_ADDED_AFTER_REJECT = 2 | A handler is added after a promise is rejected.|
+| JSVM_PROMISE_ADD_HANDLER_AFTER_REJECTED = 2 | A handler is added after a promise is rejected.|
 | JSVM_PROMISE_REJECT_AFTER_RESOLVED = 3 | Attempts to reject a promise after this promise is resolved.|
 | JSVM_PROMISE_RESOLVE_AFTER_RESOLVED = 4 | Attempts to resolve a promise after this promise is resolved.|
 
