@@ -3639,6 +3639,10 @@
           - [ArkUI_GridItemRect](reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemrect.md)
           - [ArkUI_GridItemSize](reference/apis-arkui/capi-arkui-nativemodule-arkui-griditemsize.md)
           - [ArkUI_GridLayoutOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-gridlayoutoptions.md)
+          - [ArkUI_TouchTestInfo](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfo.md)
+          - [ArkUI_TouchTestInfoItem](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
+          - [ArkUI_TouchTestInfoItem*](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
+          - [ArkUI_TouchTestInfoItemHandle*](reference/apis-arkui/capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)
