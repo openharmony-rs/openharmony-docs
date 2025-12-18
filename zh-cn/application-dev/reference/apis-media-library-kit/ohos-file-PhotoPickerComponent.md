@@ -21,8 +21,9 @@ import {
   PhotoPickerComponent, PickerController, PickerOptions,
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
   MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement,
-  ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback
-} from '@ohos.file.PhotoPickerComponent';
+  ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, SingleLineConfig,
+    BadgeConfig, PreselectedInfo, SaveMode, BadgeType, VideoPlayerState, ItemDisplayRatio
+} from '@kit.MediaLibraryKit';
 ```
 
 ## 属性
@@ -735,10 +736,10 @@ import {
   ExceedMaxSelectedCallback,
   CurrentAlbumDeletedCallback,
   videoPlayStateChangedCallback,
-  VideoPlayerState
-} from '@ohos.file.PhotoPickerComponent';
+  VideoPlayerState,
+  photoAccessHelper
+} from '@kit.MediaLibraryKitt';
 import { dataSharePredicates } from '@kit.ArkData';
-import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry
