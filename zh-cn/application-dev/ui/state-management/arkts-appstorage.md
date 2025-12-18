@@ -480,6 +480,31 @@ struct SetSample {
 }
 ```
 
+### AppStroage在多页面中共享使用
+
+在下面示例中，Index和Page页面通过同一个全局AppStorage对象共享linkA数据。在一处修改其值，另一处也能获取到更新后的值。
+
+<!-- @[appstorage_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Index.ets) --> 
+
+<!-- @[appstorage_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/Page.ets) --> 
+
+使用Navigation时，需要手动添加系统路由表文件src/main/resources/base/profile/router_map.json，并在module.json5中添加:"routerMap": "$profile:router_map"。
+
+```json
+{
+  "routerMap": [
+    {
+      "name": "Page",
+      "pageSourceFile": "src/main/ets/pages/Page.ets",
+      "buildFunction": "PageBuilder",
+      "data": {
+        "description": "AppStorage example"
+      }
+    }
+  ]
+}
+```
+
 ## AppStorage使用建议
 
 ### 不建议借助@StorageLink的双向同步机制实现事件通知
