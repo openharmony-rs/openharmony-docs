@@ -1257,7 +1257,7 @@ if (store != undefined) {
 
 queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;LiteResultSet&gt;
 
-根据指定条件查询数据库中的数据，查询时不计算行数，与[query](#query14)接口相比，性能优化约30%。使用Promise异步回调。
+根据指定条件查询数据库中的数据，查询时不计算行数，性能优于[query](#query14)接口。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1287,37 +1287,39 @@ queryWithoutRowCount(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 **示例：**
 
 ```ts
-let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-predicates.equalTo("NAME", "Rose");
-if (store != undefined) {
-  try {
-    const transaction = await store.createTransaction();
-    let resultSet: relationalStore.LiteResultSet | undefined;
+async function queryWithoutRowCountExample(store : relationalStore.RdbStore) {
+  let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  predicates.equalTo("NAME", "Rose");
+  if (store != undefined) {
     try {
-      resultSet = await transaction.queryWithoutRowCount(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
-      if (resultSet != undefined) {
-        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-        while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      const transaction = await store.createTransaction();
+      let resultSet: relationalStore.LiteResultSet | undefined;
+      try {
+        resultSet = await transaction.queryWithoutRowCount(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+        if (resultSet != undefined) {
+          // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+          while (resultSet.goToNextRow()) {
+            const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+            const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+            console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+          }
+          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+          resultSet.close();
         }
+        await transaction.commit();
+      } catch (err) {
+        console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
         // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        resultSet.close();
+        if (resultSet != undefined) {
+          resultSet.close();
+        }
+        await transaction.rollback();
       }
-      await transaction.commit();
     } catch (err) {
-      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      if (resultSet != undefined) {
-        resultSet.close();
-      }
-      await transaction.rollback();
+      console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
     }
-  } catch (err) {
-    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -1327,7 +1329,6 @@ if (store != undefined) {
 queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt;): LiteResultSet
 
 根据指定条件查询数据库中的数据，查询时不计算行数。对queryWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
-
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1357,37 +1358,39 @@ queryWithoutRowCountSync(predicates: RdbPredicates, columns?: Array&lt;string&gt
 **示例：**
 
 ```ts
-let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
-predicates.equalTo("NAME", "Rose");
-if (store != undefined) {
-  try {
-    const transaction = await store.createTransaction();
-    let resultSet: relationalStore.LiteResultSet | undefined;
+async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore) {
+  let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
+  predicates.equalTo("NAME", "Rose");
+  if (store != undefined) {
     try {
-      resultSet = transaction.queryWithoutRowCountSync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
-      if (resultSet != undefined) {
-        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-        while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+      const transaction = await store.createTransaction();
+      let resultSet: relationalStore.LiteResultSet | undefined;
+      try {
+        resultSet = transaction.queryWithoutRowCountSync(predicates, ["ID", "NAME", "AGE", "SALARY", "CODES"]);
+        if (resultSet != undefined) {
+          // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+          while (resultSet.goToNextRow()) {
+            const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+            const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+            console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+          }
+          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+          resultSet.close();
         }
+        await transaction.commit();
+      } catch (err) {
+        console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
         // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        resultSet.close();
+        if (resultSet != undefined) {
+          resultSet.close();
+        }
+        await transaction.rollback();
       }
-      await transaction.commit();
     } catch (err) {
-      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      if (resultSet != undefined) {
-        resultSet.close();
-      }
-      await transaction.rollback();
+      console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
     }
-  } catch (err) {
-    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -1396,7 +1399,7 @@ if (store != undefined) {
 
 querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet&gt;
 
-根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。与[querySql](#querysql14)接口相比，性能优化约30%。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
+根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。性能优于[querySql](#querysql14)接口。。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -1427,35 +1430,37 @@ querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise
 **示例：**
 
 ```ts
-if (store != undefined) {
-  try {
-  const transaction = await store.createTransaction();
-  let resultSet: relationalStore.LiteResultSet | undefined;
+async function querySqlWithoutRowCountExample(store : relationalStore.RdbStore) {
+  if (store != undefined) {
     try {
-      resultSet = await transaction.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
-      if (resultSet != undefined) {
-        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-        while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    const transaction = await store.createTransaction();
+    let resultSet: relationalStore.LiteResultSet | undefined;
+      try {
+        resultSet = await transaction.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
+        if (resultSet != undefined) {
+          // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+          while (resultSet.goToNextRow()) {
+            const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+            const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+            console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+          }
+          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+          resultSet.close();
         }
+        await transaction.commit();
+      } catch (err) {
+        console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
         // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        resultSet.close();
+        if (resultSet != undefined) {
+          resultSet.close();
+        }
+        await transaction.rollback();
       }
-      await transaction.commit();
     } catch (err) {
-      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      if (resultSet != undefined) {
-        resultSet.close();
-      }
-      await transaction.rollback();
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
     }
-  } catch (err) {
-  console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -1485,7 +1490,7 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
@@ -1495,35 +1500,37 @@ querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):Lite
 **示例：**
 
 ```ts
-if (store != undefined) {
-  try {
-  const transaction = await store.createTransaction();
-  let resultSet: relationalStore.LiteResultSet | undefined;
+async function querySqlWithoutRowCountSyncExample(store : relationalStore.RdbStore) {
+  if (store != undefined) {
     try {
-      resultSet = transaction.querySqlWithoutRowCountSync('select * from EMPLOYEE where name = ?', ["Rose"]);
-      if (resultSet != undefined) {
-        // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
-        while (resultSet.goToNextRow()) {
-          const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
-          const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
-          const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-          const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
-          console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+    const transaction = await store.createTransaction();
+    let resultSet: relationalStore.LiteResultSet | undefined;
+      try {
+        resultSet = transaction.querySqlWithoutRowCountSync('select * from EMPLOYEE where name = ?', ["Rose"]);
+        if (resultSet != undefined) {
+          // resultSet是一个数据集合的游标，默认指向第-1个记录，有效的数据从0开始。
+          while (resultSet.goToNextRow()) {
+            const id = resultSet.getLong(resultSet.getColumnIndex("ID"));
+            const name = resultSet.getString(resultSet.getColumnIndex("NAME"));
+            const age = resultSet.getLong(resultSet.getColumnIndex("AGE"));
+            const salary = resultSet.getDouble(resultSet.getColumnIndex("SALARY"));
+            console.info(`id=${id}, name=${name}, age=${age}, salary=${salary}`);
+          }
+          // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
+          resultSet.close();
         }
+        await transaction.commit();
+      } catch (err) {
+        console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
         // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-        resultSet.close();
+        if (resultSet != undefined) {
+          resultSet.close();
+        }
+        await transaction.rollback();
       }
-      await transaction.commit();
     } catch (err) {
-      console.error(`Query failed, code is ${err.code}, message is ${err.message}`);
-      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
-      if (resultSet != undefined) {
-        resultSet.close();
-      }
-      await transaction.rollback();
+    console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
     }
-  } catch (err) {
-  console.error(`createTransaction failed, code is ${err.code},message is ${err.message}`);
   }
 }
 ```
@@ -1557,7 +1564,7 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。其中，14800011错误码处理可参考[数据库备份与恢复](../../database/data-backup-and-restore.md)。
 
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
