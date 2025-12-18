@@ -2919,7 +2919,7 @@
           - 其他<!--other-property-->
             - [复用标识](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)
             - [复用选项](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)
-            - [自定义窗口工具栏](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
+            - [工具栏设置](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
         - 手势处理<!--gesture-handling-->
           - 绑定手势<!--gesture-binding-->
             - [绑定手势方法](reference/apis-arkui/arkui-ts/ts-gesture-settings.md)
