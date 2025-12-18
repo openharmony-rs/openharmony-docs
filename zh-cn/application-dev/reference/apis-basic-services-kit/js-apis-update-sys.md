@@ -1546,7 +1546,7 @@ restorer.factoryReset().then(() => {
 });
 ```
 
-### forceFactoryReset
+### forceFactoryReset<sup>23</sup>
 
 forceFactoryReset(): Promise\<void>
 
