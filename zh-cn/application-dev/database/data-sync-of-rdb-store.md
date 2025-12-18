@@ -16,9 +16,7 @@
 
 关系型数据库跨设备数据同步，支持应用在多设备间同步存储的关系型数据。
 
-- 分布式表：支持组网内多设备间数据同步的数据库表。来自其他设备的数据将同步至本地，通过
-  [DistributedTableType](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)配置数据写入对端的存储方式，
-  参考（开发步骤中3<默认:[DEVICE_COLLABORATION](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)>，4<[DEVICE_COLLABORATION](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)>，5<[SINGLE_VERSION](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)>）。
+- 分布式表：支持组网内多设备间数据同步的数据库表。来自其他设备的数据将同步至本地，通过[DistributedTableType](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)配置数据写入对端的存储方式，参考（开发步骤中3\4\5）。
 - 数据同步：将设备上数据库中分布式表发生的变更，同步至组网内其他设备。有推送数据和拉取数据两种方式触发同步。
 - 数据变化通知：组网内其他设备数据发生的变化同步至当前设备时，会执行已注册的回调函数。
 
@@ -103,12 +101,18 @@
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，默认端端分布式表类型。
    <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
 
+   <!-- -->
+
 4. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，设备协作表。
    <!--@[setCollaborationDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+
+   <!-- -->
 
 5. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，单版本表。
    配置单版本跨端分布式表时，需要将分布式表类型设置为[SINGLE_VERSION](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype)。且必须配置对应dbschema文件，用以描述数据库表结构信息以及要做跨端同步字段信息，schema文件路径必须为/src/main/resources/rawfile/arkdata/schema/sync_schema.json。
    <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+
+   <!-- -->
    sync_schema.json文件示例：
    <(https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/resources/rawfile/arkdata/schema/sync_schema.json)>
    schema文件中必须满足以下要求：
