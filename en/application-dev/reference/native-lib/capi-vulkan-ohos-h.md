@@ -64,7 +64,7 @@ The file declares the Vulkan interfaces extended by OpenHarmony.
 
 ###  PFN_vkCreateSurfaceOHOS()
 
-```
+```c
 typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
 ```
 
@@ -94,7 +94,7 @@ Defines the function pointer for creating a Vulkan surface.
 
 ### vkCreateSurfaceOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkCreateSurfaceOHOS(VkInstance instance, const VkSurfaceCreateInfoOHOS* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface)
 ```
 
@@ -124,7 +124,7 @@ Creates a Vulkan surface.
 
 ### PFN_vkGetNativeBufferPropertiesOHOS()
 
-```
+```c
 typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)
 ```
 
@@ -153,7 +153,7 @@ Defines a function pointer used to obtain OH_NativeBuffer properties.
 
 ### PFN_vkGetMemoryNativeBufferOHOS()
 
-```
+```c
 typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)
 ```
 
@@ -182,7 +182,7 @@ Defines a function pointer used to obtain an OH_NativeBuffer instance.
 
 ### vkGetNativeBufferPropertiesOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, const struct OH_NativeBuffer* buffer, VkNativeBufferPropertiesOHOS* pProperties)
 ```
 
@@ -211,7 +211,7 @@ Obtains the properties of an OH_NativeBuffer instance.
 
 ### vkGetMemoryNativeBufferOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, const VkMemoryGetNativeBufferInfoOHOS* pInfo, struct OH_NativeBuffer** pBuffer)
 ```
 
@@ -240,17 +240,19 @@ Obtains an OH_NativeBuffer instance.
 
 ### vkGetSwapchainGrallocUsageOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)
 ```
 
 **Description**
 
-Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag.
+Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. As an application developer, you do not need to use this function.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
+
+**Deprecated from**: 23
 
 
 **Parameters**
@@ -270,17 +272,19 @@ Returns the appropriate gralloc usage flag based on the given Vulkan device, ima
 
 ### vkAcquireImageOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)
 ```
 
 **Description**
 
-Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects.
+Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. As an application developer, you do not need to use this function.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
+
+**Deprecated from**: 23
 
 
 **Parameters**
@@ -301,17 +305,19 @@ Obtains the ownership of the swap chain image and imports the fence of the exter
 
 ### vkQueueSignalReleaseImageOHOS()
 
-```
+```c
 VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)
 ```
 
 **Description**
 
-Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it.
+Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. As an application developer, you do not need to use this function.
 
 **System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
+
+**Deprecated from**: 23
 
 
 **Parameters**
