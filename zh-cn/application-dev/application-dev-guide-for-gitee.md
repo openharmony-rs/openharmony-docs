@@ -50,7 +50,8 @@
 
 ### 工具
 
-DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。在[工具](https://developer.harmonyos.com/cn/docs/documentation/doc-guides/ohos-deveco-studio-overview-0000001263280421)部分，讲解了DevEco Studio工具的详细用法，包括使用该工具进行工程创建、应用签名、应用调试、应用安装运行的指导。
+DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。
+在[工具](https://developer.harmonyos.com/cn/docs/documentation/doc-guides/ohos-deveco-studio-overview-0000001263280421)部分，讲解了DevEco Studio工具的详细用法，包括使用该工具进行工程创建、应用签名、应用调试、应用安装运行的指导。
 
 ### 示例教程
 
@@ -63,5 +64,5 @@ DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。在[工具](ht
 
 ### Readme
 
-如果需要了解各子系统的原理和基本信息，可以参考“[docs/zh-cn/readme](../readme.md)”目录中各子系统readme的介绍。
+如果需要了解各子系统的原理和基本信息，可以参考“[docs/zh-cn/readme](../readme)”目录中各子系统readme的介绍。
 
