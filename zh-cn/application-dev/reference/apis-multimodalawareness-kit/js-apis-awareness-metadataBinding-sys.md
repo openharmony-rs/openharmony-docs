@@ -18,7 +18,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 
 encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>;	
 
-在图片中加入信息  	
+在图片中加入信息。
 
 **系统能力**：SystemCapability.MultimodalAwareness.metadataBinding	
 

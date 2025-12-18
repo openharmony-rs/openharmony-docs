@@ -73,6 +73,48 @@ try {
 }
 ```
 
+## deviceStatus.onSteadyStandingDetect()<sup>22+</sup>
+
+onSteadyStandingDetect(callback: Callback<SteadyStandingStatus>): void
+
+订阅设备静止姿态感知（支架态）事件。
+
+**ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[on('steadyStandingDetect')](#devicestatusonsteadystandingdetect)
+
+**系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**ArkTS-Sta起始版本**：22
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | 是   | 回调函数，返回设备静止姿态感知（支架态）状态信息。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[设备状态感知错误码](errorcode-deviceStatus.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
+| 32500001 | Service exception. |
+| 32500002 | Subscription failed. |
+
+**示例**：
+
+  ```ts
+try {
+    deviceStatus.onSteadyStandingDetect((data:deviceStatus.SteadyStandingStatus) => {
+        console.info('now status = ' + data);
+    });
+} catch (err) {
+    console.info('on failed, err = ' + err);
+}
+  ```
+
 ## deviceStatus.off('steadyStandingDetect')
 
 off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt;): void;
@@ -136,48 +178,6 @@ off(type: 'steadyStandingDetect', callback?: Callback&lt;SteadyStandingStatus&gt
   } catch (err) {
     console.info('off failed, err = ' + err);
   }
-  ```
-
-## deviceStatus.onSteadyStandingDetect()<sup>22+</sup>
-
-onSteadyStandingDetect(callback: Callback<SteadyStandingStatus>): void
-
-订阅设备静止姿态感知（支架态）事件。
-
-**ArkTS模式**：该接口适用于ArkTS-Sta。
-
-**相关接口**：该接口对应的接口ArkTS-Dyn是[on('steadyStandingDetect')](#devicestatusonsteadystandingdetect)
-
-**系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
-
-**ArkTS-Sta起始版本**：22
-
-**参数**：
-
-| 参数名   | 类型                             | 必填 | 说明                                                         |
-| -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[SteadyStandingStatus](#steadystandingstatus)&gt; | 是   | 回调函数，返回设备静止姿态感知（支架态）状态信息。|
-
-**错误码**：
-
-以下错误码的详细介绍请参见[设备状态感知错误码](errorcode-deviceStatus.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
-| 32500001 | Service exception. |
-| 32500002 | Subscription failed. |
-
-**示例**：
-
-  ```ts
-try {
-    deviceStatus.onSteadyStandingDetect((data:deviceStatus.SteadyStandingStatus) => {
-        console.info('now status = ' + data);
-    });
-} catch (err) {
-    console.info('on failed, err = ' + err);
-}
   ```
 
 ## deviceStatus.offSteadyStandingDetect()<sup>22+</sup>
