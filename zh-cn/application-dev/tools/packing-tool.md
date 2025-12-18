@@ -945,6 +945,210 @@ Failed to check the consistency of bundleType.
 2. 确认各 HSP 模块的 bundleType 配置一致。
 Make sure the bundleType is consistency for different modules.
 
+### 10013011 解析patch.json中模块名失败
+**错误信息**
+
+Failed to parse patch module name from patch.json.
+
+**错误描述**
+
+解析patch.json中模块名失败。
+
+**可能原因**
+
+1. patch.json文件内”module“标签内不包含”name“属性。
+
+**处理步骤**
+
+1. 确认patch.json文件内”module“标签内包含”name“属性。
+
+### 10013012 获取FA模型模块的config.json文件失败
+**错误信息**
+
+Failed to parse FA hap verify info from config.json.
+
+**错误描述**
+
+获取FA模型模块的config.json文件失败。
+
+**可能原因**
+
+1. 打包FA模型app时，有HAP/HSP不包含config.json文件。
+
+**处理步骤**
+
+1. 打包FA模型app时，确认所有HAP/HSP包含config.json文件。
+
+### 10013013 解析FA模型模块的config.json文件失败
+**错误信息**
+
+Failed to parse config.json for the FA module.
+
+**错误描述**
+
+解析FA模型模块的config.json文件失败。
+
+**可能原因**
+1. config.json文件的”app“标签内不包含”version“标签。
+2. config.json文件的”app“标签内”version“标签不包含”code“标签。
+3. config.json文件的”app“标签内”version“标签不包含”name“标签。
+4. config.json文件的”app“标签内不包含”apiVersion“标签。
+5. config.json文件的”module“标签内不包含”distro“标签。
+6. config.json文件的”module“标签内”distro“标签不包含”moduleName“标签。
+7. config.json文件的”module“标签内不包含”package“标签。
+
+**处理步骤**
+1. 确认config.json文件的”app“标签内包含”version“标签。
+2. 确认config.json文件的”app“标签内”version“标签包含”code“标签。
+3. 确认config.json文件的”app“标签内”version“标签包含”name“标签。
+4. 确认config.json文件的”app“标签内包含”apiVersion“标签。
+5. 确认config.json文件的”module“标签内包含”distro“标签。
+6. 确认config.json文件的”module“标签内”distro“标签包含”moduleName“标签。
+7. 确认config.json文件的”module“标签内包含”package“标签。
+
+### 10013014 合并pack.info文件失败
+**错误信息**
+
+Merge two pack.info into one pack.info file failed.
+
+**错误描述**
+
+合并pack.info文件失败。
+
+**可能原因**
+
+1. 校验pack.info文件失败。
+2. 合并pack.info文件抛异常。
+
+**处理步骤**
+
+1. 查看顶部错误码信息，确认具体错误信息。
+2. 根据日志中“Error Message:**”信息异常信息。
+
+### 10013015 校验pack.info文件失败
+**错误信息**
+
+Verify pack.info file failed.
+
+**错误描述**
+
+校验pack.info文件失败。
+
+**可能原因**
+
+1. 参与合并的两个pack.info文件其中一个不包含”summary“标签。
+2. 参与合并的两个pack.info文件其中一个不包含”app“标签。
+3. 校验pack.info文件中”app“标签失败。
+
+**处理步骤**
+
+1. 确认参与合并的两个pack.info文件均包含”summary“标签。
+2. 确认参与合并的两个pack.info文件均包含”app“标签。
+
+### 10013016 合并pack.info文件时校验失败
+**错误信息**
+
+Verify app in pack.info failed.
+
+**错误描述**
+
+合并pack.info文件时校验失败。
+
+**可能原因**
+
+1. 参与合并的两个pack.info文件的bundleName不一致。
+2. 参与合并的两个pack.info文件的bundleType不一致。
+3. 参与合并的两个pack.info文件其中一个”app“标签内不包含”version“标签。
+4. 参与合并的两个pack.info文件”app“标签内”code“标签值不一致。
+
+**处理步骤**
+
+1. 确认参与合并的两个pack.info文件的bundleName一致。
+2. 确认参与合并的两个pack.info文件的bundleType一致。
+3. 确认参与合并的两个pack.info文件”app“标签内包含”version“标签。
+4. 确认参与合并的两个pack.info文件”app“标签内”code“标签值一致。
+
+### 10013017 校验pack.info文件的bundleType失败
+**错误信息**
+
+Verify bundleType in pack.info file failed.
+
+**错误描述**
+
+校验pack.info文件的bundleType失败。
+
+**可能原因**
+
+1. 参与合并的两个pack.info文件的bundleType不一致。
+
+**处理步骤**
+
+1. 确认参与合并的两个pack.info文件的bundleType一致。
+
+### 10013018 res模式打包解析pack.info文件”forms“标签失败
+
+**错误信息**
+
+Parse forms name in pack.info file failed.
+
+**错误描述**
+
+res模式打包解析pack.info文件”forms“标签失败。
+
+**可能原因**
+
+1. pack.info文件不包含”summary“标签。
+2. pack.info文件中”summary“标签内不包含”modules“标签。
+3. pack.info文件中”summary“标签内”modules“标签中某个元素不包含”distro“标签。
+4. pack.info文件中”summary/modules/distro“标签不包含”moduleName“标签。
+
+**处理步骤**
+
+1. 确认pack.info文件包含”summary“标签。
+2. 确认pack.info文件中”summary“标签内包含”modules“标签。
+3. 确认pack.info文件中”summary“标签内”modules“标签中各元素均包含”distro“标签。
+4. 确认pack.info文件中”summary/modules/distro“标签包含”moduleName“标签。
+
+### 10013019 multiApp模式打包合并pack.info文件失败
+**错误信息**
+
+Failed to merge pack.info objects.
+
+**错误描述**
+
+multiApp模式打包合并pack.info文件失败。
+
+**可能原因**
+
+1. 参与合并的两个pack.info文件其中一个不包含”summary“标签。
+2. 参与合并的两个pack.info文件其中一个”summary“标签内不包含”modules“标签。
+3. 参与合并的两个pack.info文件其中一个不包含”packages“标签。
+
+**处理步骤**
+
+1. 确认参与合并的两个pack.info文件均包含”summary“标签。
+2. 确认参与合并的两个pack.info文件”summary“标签内包含”modules“标签。
+3. 确认参与合并的两个pack.info文件均包含”packages“标签。
+
+### 10013020 合并pack.info文件失败
+**错误信息**
+
+Failed to merge two pack.info files into one pack.info file by packagePair.
+
+**错误描述**
+
+合并pack.info文件失败。
+
+**可能原因**
+
+1. 校验pack.info文件失败。
+2. 合并pack.info文件抛异常。
+
+**处理步骤**
+
+1. 查看顶部错误码信息，确认具体错误信息。
+2. 根据日志中“Error Message:**”信息异常信息。
+
 ### 10014001 未找到可用文件
 **错误信息**
 
