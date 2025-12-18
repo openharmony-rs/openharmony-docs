@@ -7,8 +7,15 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../application-models/extensionability-overview.md)的派生类。
+
 CryptoExtensionAbility给驱动厂商提供外部密钥管理扩展能力所需接口定义，包括打开/关闭资源、PIN码认证、签名验签、导出证书等接口。
-CryptoExtensionAbility可以隔离底层硬件（Ukey驱动）厂商实现差异。三方驱动HAP应用如需定义自身外部密钥管理扩展能力；首先，需继承CryptoExtensionAbility并完成相关的接口实现；然后，通过Provider注册接口完成能力注册；最后，由HUKS和证书管理将对应的密钥管理扩展能力开放给北向应用。
+
+CryptoExtensionAbility可以隔离底层硬件（Ukey驱动）厂商实现差异。
+
+三方驱动HAP应用如需定义自身外部密钥管理扩展能力：
+
+首先，需继承CryptoExtensionAbility并完成相关的接口实现。其次，通过Provider注册接口完成能力注册。最后，由HUKS和证书管理将对应的密钥管理扩展能力开放给应用。
 
 ## 核心能力实现
 
