@@ -134,7 +134,7 @@ which are returned when an API call is incorrect or the **on()** API is used to 
 | DEVICE_DISABLED            | 7400108    | The camera is disabled for security reasons.    |
 | DEVICE_PREEMPTED           | 7400109    | The camera is preempted.    |
 | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | The configuration conflicts with the current configuration.    |
-| SERVICE_FATAL_ERROR        | 7400201    | An error occurs in the camera service.    |
+| SERVICE_FATAL_ERROR        | 7400201    | The camera service is abnormal.    |
 
 ## TorchMode<sup>11+</sup>
 

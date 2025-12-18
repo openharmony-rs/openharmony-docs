@@ -250,3 +250,4 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Multimedia.Image.ImageCreator
 - SystemCapability.Ability.AppStartup
 - SystemCapability.Ability.AppExtension.PhotoEditorExtension
+- SystemCapability.Multimedia.Audio.SuiteEngine
