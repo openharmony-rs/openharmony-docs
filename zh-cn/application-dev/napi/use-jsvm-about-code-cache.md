@@ -28,6 +28,7 @@ JSVM提供了生成并使用code cache加速编译过程的方法，其获取和
 下面的伪代码是一个典型的使用方法，其中第二次编译，如果cacheRejected为true，那么说明code cache被拒绝无法生效，运行时间会与无code cache时间相同；为false则这次运行将会极大加快。
 
 其中使用到的JSVM-API可以参考 [JSVM数据类型与接口说明](./jsvm-data-types-interfaces.md)，这里仅展示调用的步骤。
+
 外层跨语言交互的部分可以参考 [使用JSVM-API实现JS与C/C++语言交互开发流程](./use-jsvm-process.md)。
 
 ```c++
@@ -123,9 +124,11 @@ cache rejected: 0
 ## 注意事项
 
 上述代码中使用了code cache进行编译：`OH_JSVM_CompileScript(env, jsSrc, dataPtr, length, true, &cacheRejected, &script);`
+
 这个接口的传入参数中包含cacheRejected，用于接收实际编译过程中code cache是否被拒绝的状态，具体包括多种情况：
 
 -code cache校验失败
+
 -code cache校验成功
 - 内存中存在编译缓存，code cache没有被校验
 

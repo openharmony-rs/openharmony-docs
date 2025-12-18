@@ -37,18 +37,23 @@ NDK（Native Development Kit）是OpenHarmony SDK提供的Native API、相应编
 ### 前置知识
 
 - **Linux C语言编程知识**
+
   内核、libc基础库基于POSIX等标准扩展而来，掌握基本的Linux C编程知识能够更好的帮助理解OpenHarmony NDK开发。
 
 - **CMake使用知识**
+
   CMake是OpenHarmony默认支持的构建系统。请先通过[CMake官方文档](https://cmake.org/cmake/help/v3.16/guide/tutorial/)了解基础用法。
 
 - **Node Addons开发知识**
+
   ArkTS采用Node-API作为跨语言调用接口，熟悉基本的[Node Addons开发模式](https://nodejs.org/api/addons.html)，可以更好理解NDK中Node-API的使用。
 
 - **Clang/LLVM编译器使用知识**
+
   具备一定的Clang/LLVM编译器基础知识，能够帮助开发者编译出更优的Native动态库。
 
 - **[Node-API](napi-introduction.md)**
+
   曾用名NAPI，是OpenHarmony中提供ArkTS/JS与C/C++跨语言调用的接口，该接口基于Node.js的Node-API扩展而来，但不完全兼容。
 
 ### NDK目录简介
