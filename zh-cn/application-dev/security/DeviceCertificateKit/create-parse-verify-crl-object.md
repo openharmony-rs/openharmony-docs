@@ -38,3 +38,120 @@
 9.  调用[X509CRLEntry.getRevocationDate](../../reference/apis-device-certificate-kit/js-apis-cert.md#getrevocationdate11)获取被吊销日期。
 
 <!-- @[create_parse_verify_certificate_revocation_list_objects](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParseVerifyCrlObject.ets) -->
+
+``` TypeScript
+
+
+import { cert } from '@kit.DeviceCertificateKit';
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { util } from '@kit.ArkTS';
+
+// ...
+// CRL示例
+function crlSample(): void {
+  let textEncoder = new util.TextEncoder();
+  let encodingBlob: cert.EncodingBlob = {
+    // 将CRL数据从string转为Unit8Array。
+    data: textEncoder.encodeInto(crlData),
+    // CRL格式，仅支持PEM和DER格式。在这个例子中，CRL用的是PEM格式。
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  // 创建X509CRL实例。
+  cert.createX509CRL(encodingBlob, (err, x509Crl) => {
+    if (err != null) {
+      // 创建X509CRL实例失败。
+      console.error(`createX509Crl failed, errCode: ${err.code}, errMsg:${err.message} `);
+      return;
+    }
+    // 创建X509CRL实例成功。
+    console.info('createX509CRL success');
+
+    // 获取CRL的版本。
+    let version = x509Crl.getVersion();
+    // 获取证书吊销列表类型。
+    let revokedType = x509Crl.getType();
+    console.info(`X509 CRL version: ${version}, type :${revokedType}`);
+
+    // 获取证书吊销列表颁发者名称。
+    let issuerName = x509Crl.getIssuerName(cert.EncodingType.ENCODING_UTF8);
+    console.info(`X509 CRL issuerName: ${issuerName}`);
+
+    // 获取证书吊销列表对象的字符串类型数据。
+    let crlString = x509Crl.toString(cert.EncodingType.ENCODING_UTF8);
+    console.info(`X509 CRL crlString: ${crlString}`);
+
+
+    // 公钥的二进制数据需要传入@ohos.security.cryptoFramework的convertKey()方法去获取公钥对象。
+    try {
+      let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
+      console.info('createAsyKeyGenerator success');
+      let pubEncodingBlob: cryptoFramework.DataBlob = {
+        data: pubKeyData,
+      };
+      keyGenerator.convertKey(pubEncodingBlob, null, (e, keyPair) => {
+        if (e == null) {
+          console.info('convert key success');
+          x509Crl.verify(keyPair.pubKey, (err, data) => {
+            if (err == null) {
+              // 签名验证成功。
+              console.info('verify success');
+            } else {
+              // 签名验证失败。
+              console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
+            }
+          });
+        } else {
+          console.error(`convert key failed, message: ${e.message}, code: ${e.code} `);
+        }
+      })
+    } catch (error) {
+      let e: BusinessError = error as BusinessError;
+      console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
+    }
+
+    // 使用certFramework的createX509Cert()方法创建一个X509Cert实例。
+    let certBlob: cert.EncodingBlob = {
+      data: textEncoder.encodeInto(certData),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let revokedFlag = true;
+    let serial: bigint = BigInt('0');
+    cert.createX509Cert(certBlob, (err, cert) => {
+      serial = cert.getCertSerialNumber();
+      if (err == null) {
+        try {
+          // 检查证书是否被吊销。
+          revokedFlag = x509Crl.isRevoked(cert);
+          console.info(`revokedFlag is: ${revokedFlag}`);
+          if (!revokedFlag) {
+            console.info('the given cert is not revoked.');
+            return;
+          }
+          // 根据序列号来获取被吊销的证书。
+          try {
+            let crlEntry = x509Crl.getRevokedCert(serial);
+            console.info('get getRevokedCert success');
+            let serialNumber = crlEntry.getSerialNumber();
+            console.info(`crlEntry serialNumber is: ${serialNumber}`);
+
+            // 获取被吊销证书的吊销日期。
+            let date = crlEntry.getRevocationDate();
+            console.info(`revocation date is: ${date}`);
+          } catch (error) {
+            let e: BusinessError = error as BusinessError;
+            console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
+          }
+        } catch (error) {
+          let e: BusinessError = error as BusinessError;
+          console.error(`isRevoked failed, errCode: ${e.code}, errMsg:${e.message}`);
+        }
+      } else {
+        console.error(`create x509 cert failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      }
+    })
+
+  });
+}
+```
