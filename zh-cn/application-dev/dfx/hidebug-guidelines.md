@@ -332,6 +332,17 @@ HiDebug提供了启停[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/be
 | hidebug.disableGwpAsanGrayscale | 停止使能GWP-ASan。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.getGwpAsanGrayscaleState | 获取当前GWP-ASan剩余使能天数。<br/>**说明**：从API version 20开始，支持该接口。 |
 
+## 添加诊断信息到崩溃上下文
+
+HiDebug提供添加诊断信息的接口，开发者可根据业务需要将诊断信息添加到崩溃上下文。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| OH_HiDebug_SetCrashObj | 将诊断信息添加到当前崩溃上下文中 |
+| OH_HiDebug_ResetCrashObj | 从当前崩溃上下文中分离已添加的诊断信息。 |
+
 ## 其他
 
 HiDebug提供了获取应用调试状态和启动系统进程DUMP信息采集等功能。
