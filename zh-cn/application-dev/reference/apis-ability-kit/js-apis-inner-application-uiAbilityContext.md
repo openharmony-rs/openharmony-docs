@@ -2820,7 +2820,7 @@ struct UIServiceExtensionAbility {
 
 ### setAbilityInstanceInfo<sup>15+<sup>
 
-setAbilityInstanceInfo(label: string, icon: image.PixelMap) : Promise&lt;void&gt;
+setAbilityInstanceInfo(label: string, icon: image.PixelMap): Promise&lt;void&gt;
 
 设置当前UIAbility实例的图标和标签信息。图标与标签信息可在任务中心和快捷栏的界面中显示。使用Promise异步回调。
 
@@ -2897,7 +2897,7 @@ export default class EntryAbility extends UIAbility {
 
 ### revokeDelegator<sup>17+</sup>
 
-revokeDelegator() : Promise&lt;void&gt;
+revokeDelegator(): Promise&lt;void&gt;
 
 如果Module下首个UIAbility启动时期望重定向到另一个UIAbility，该重定向的UIAbility被称为“DelegatorAbility”。DelegatorAbility的设置详见当前接口示例的步骤1。
 
