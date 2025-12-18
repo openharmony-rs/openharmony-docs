@@ -6219,7 +6219,6 @@ async function demo() {
 }
 ```
 
-
 ## By<sup>(deprecated)</sup>
 
 UiTest框架通过By类提供了丰富的控件特征描述API，用于进行控件筛选来匹配/查找出目标控件。<br>
