@@ -72,7 +72,7 @@
 4. 初始化段落对象，并添加文本。
 
    <!-- @[arkts_multi_language_text_drawing_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
-
+   
    ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
    let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
