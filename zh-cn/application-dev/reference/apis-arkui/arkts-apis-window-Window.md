@@ -4773,9 +4773,9 @@ off(type: 'windowTitleButtonRectChange', callback?: Callback&lt;TitleButtonRect&
 
 ```ts
 windowClass.setUIContent('pages/WindowPage').then(() => {
-	const callback = (titleButtonRect: window.TitleButtonRect) => {
-		// ...
-	}
+  const callback = (titleButtonRect: window.TitleButtonRect) => {
+    // ...
+  }
   try {
     // 通过on接口开启监听
     windowClass?.on('windowTitleButtonRectChange', callback);

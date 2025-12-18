@@ -157,14 +157,14 @@ setData(key: string, value: object): boolean
 ```js
 // setData的value参数，可以是基本数据类型。
 dragStart(e) {
-	var isSetOK = e.dataTransfer.setData('name', 1);
+    var isSetOK = e.dataTransfer.setData('name', 1);
 },
 // setData的value参数，也可以是对象类型。
 dragStart(e) {
-	var person = new Object();
-	person.name = "tom";
-	person.age = 21;
-	var isSetOK = e.dataTransfer.setData('person', person);
+    var person = new Object();
+    person.name = "tom";
+    person.age = 21;
+    var isSetOK = e.dataTransfer.setData('person', person);
 }
 ```
 ### getData<sup>9+</sup>
@@ -189,13 +189,13 @@ getData(key: string): object
 
 ```js
 dragStart(e) {
-	var person = new Object();
-	person.name = "tom";
-	person.age = 21;
-	e.dataTransfer.setData('person', person);
+    var person = new Object();
+    person.name = "tom";
+    person.age = 21;
+    e.dataTransfer.setData('person', person);
 },
 dragEnd(e){
-	var person = e.dataTransfer.getData('person');
+    var person = e.dataTransfer.getData('person');
 },
 ```
 ### clearData<sup>9+</sup>
@@ -221,7 +221,7 @@ clearData(key?: string): boolean
 
 ```js
 dragEnd(e) {
-	var isSuccess = e.dataTransfer.clearData('name');
+    var isSuccess = e.dataTransfer.clearData('name');
 }
 ```
 ### setDragImage<sup>9+</sup>
