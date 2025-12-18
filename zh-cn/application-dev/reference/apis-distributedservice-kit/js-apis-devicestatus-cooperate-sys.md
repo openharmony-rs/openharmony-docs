@@ -46,6 +46,8 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 **示例:**
 
+ArkTS-Dyn示例:
+
 ```ts	
 import { BusinessError } from '@ohos.base';	
 try {	
@@ -61,37 +63,8 @@ try {
 }
 ```
 
-## cooperate.prepareCooperate<sup>22+</sup>
+ArkTS-Sta示例:
 
-prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
-
-准备键鼠穿越，使用Callback异步回调。
-
-**需要权限**：ohos.permission.COOPERATE_MANAGER
-
-**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
-
-**ArkTS模式**：该接口适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本**：22
-
-**参数**：
-
-| 参数名   | 类型                      | 必填 | 说明                                                         |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，准备键鼠穿越成功时，err为undefined，否则为错误对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[ohos.devicestatus错误码](errorcode-devicestatus.md)。
-
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
-
-**示例:**
 ```ts
 import { BusinessError } from '@ohos.base';
 try {
@@ -106,7 +79,6 @@ try {
   console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
 
 ## cooperate.prepareCooperate<sup>11+</sup>
 
@@ -1189,6 +1161,7 @@ try {
 ```
 
 ArkTS-Sta示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";
