@@ -60,7 +60,7 @@
 3. 初始化段落样式。
 
    <!-- @[arkts_multi_language_text_drawing_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
-
+   
    ``` TypeScript
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
