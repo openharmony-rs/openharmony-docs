@@ -304,9 +304,9 @@ type Matrix4Transit = Matrix4Transit
 
 | 名称 | 类型                       | 只读 | 可选 | 说明            |
 | ---- | -------------------------- | ---- | ---- | --------------- |
-| x    | number&nbsp;\|&nbsp;string | 否   | 是   | x轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
-| y    | number&nbsp;\|&nbsp;string | 否   | 是   | y轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
-| z    | number&nbsp;\|&nbsp;string | 否   | 是   | z轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。<br/>默认值：0.0 |
+| x    | number&nbsp;\|&nbsp;string | 否   | 是   | x轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>默认值：0<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
+| y    | number&nbsp;\|&nbsp;string | 否   | 是   | y轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>默认值：0<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
+| z    | number&nbsp;\|&nbsp;string | 否   | 是   | z轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>默认值：0<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
 
 ## ScaleOptions对象说明
 
