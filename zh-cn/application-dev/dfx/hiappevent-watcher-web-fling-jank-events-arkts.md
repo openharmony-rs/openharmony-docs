@@ -1,0 +1,136 @@
+# 订阅ArkWeb抛滑丢帧事件（ArkTS）
+
+<!--Kit: Performance Analysis Kit-->
+<!--Subsystem: HiviewDFX-->
+<!--Owner: @pxlstrong-->
+<!--Designer: @pxlstrong-->
+<!--Tester: @gcw_KuLfPSbe-->
+<!--Adviser: @foryourself-->
+
+## 简介
+
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅ArkWeb抛滑丢帧事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+
+## 接口说明
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| addWatcher(watcher: Watcher): AppEventPackageHolder | 添加应用事件观察者，以添加对应用事件的订阅。 |
+| removeWatcher(watcher: Watcher): void | 移除应用事件观察者，以移除对应用事件的订阅。 |
+
+## 开发步骤
+以订阅发生Web抛滑丢帧生成ArkWeb抛滑丢帧事件为例，说明开发步骤。
+1. 在DevEco Studio中新建工程，选择“Empty Ability”，编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块：
+
+   ```ts
+    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+    import { webIdToUrlMap } from '../pages/Index';
+   ```
+
+2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
+
+   ```ts
+    hiAppEvent.addWatcher({
+      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
+      name: "watcher",
+      // 开发者可以订阅感兴趣的系统事件，此处是订阅了主线程超时事件
+      appEventFilters: [
+        {
+          domain: hiAppEvent.domain.OS,
+          names: [hiAppEvent.event.SCROLL_ARKWEB_FLING_JANK]
+        }
+      ],
+      // 开发者可以自行实现订阅实时回调函数，以便对订阅获取到的事件数据进行自定义处理
+      onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
+        for (const eventGroup of appEventGroups) {
+          // 开发者可以根据事件集合中的事件名称区分不同的系统事件
+          hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
+          for (const eventInfo of eventGroup.appEventInfos) {
+            // 开发者可以对事件集合中的事件数据进行自定义处理，此处是将事件数据打印在日志中
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
+            // 开发者可以获取到开始抛滑事件的时间戳
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.start_time=${eventInfo.params['start_time']}`);
+            // 开发者可以获取到抛滑动效持续的时间长度
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.duration=${eventInfo.params['duration']}`);
+            // 开发者可以获取到发生卡顿的的web页面对应的Id
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.web_id=${eventInfo.params['web_id']}`);
+            // 开发者可以获取抛滑阶段发生丢帧的最大时长
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.max_app_frame_time=${eventInfo.params['max_app_frame_time']}`);
+            const webId: number = eventInfo.params['web_id'];
+            //webIdToUrlMap时定义的变量用于实现url与web_id的映射
+            const currentUrl = webIdToUrlMap.get(webId);
+            // 开发者可以获取到发生卡顿的页面
+            hilog.info(0x0000, 'testTag', `HiAppEvent get currentUrl=${currentUrl}`);
+          }
+        }
+      }
+    });
+   ```
+
+3. 编辑工程中的“entry > src > main > ets  > pages > Index.ets”文件，在build下加载web网页，并定期下发耗时任务阻塞应用主线程触发丢帧，示例代码如下：
+    
+   ```ts
+    import web_webview from '@ohos.web.webview';
+
+    // 用于存储web_id到url的映射
+    export const webIdToUrlMap = new Map<number, string>();
+
+    @Entry
+    @Component
+    struct Index {
+      controller = new web_webview.WebviewController();
+  
+      build() {
+        Column() {
+          Web({ src: 'https://baidu.com',
+                controller: this.controller
+            })
+            .height("100%")
+            .onPageBegin((event) => {
+              // 每次跳转到新页面都更新webId到url的映射关系
+              if (event) {
+                const newUrl = event.url;
+                const webId = this.controller.getWebId();
+                webIdToUrlMap.set(webId, newUrl);
+              }
+            })
+            .onPageEnd(() => {
+              // 每2s阻塞应用主线程200ms
+              setInterval(() => {
+                const endTime = Date.now() + 200;
+                while (Date.now() < endTime) {}
+            }, 2000);
+          })
+        }
+      }
+    }
+   ```
+   > **注意：**
+   >
+   > 如果一个页面需包含多个Web网页，需创建多个webview组件，每个webview组件加载一个网页。
+
+ 4. 编辑工程中的“entry > src > main > module.json5”文件，添加网络访问权限。
+
+    ```json
+     "requestPermissions": [
+       {
+         "name": "ohos.permission.INTERNET"
+       }
+     ],
+    ```
+
+ 5. 点击DevEco Studio界面中的运行按钮，运行应用工程，滑动页面，当系统检测到故障时触发ArkWeb抛滑卡顿事件。
+
+ 6. 每次抛滑过程中发生卡顿50ms及以上场景，可以在Log窗口看到对系统事件数据的处理日志：
+
+    ```text
+     HiAppEvent eventInfo.domain=OS
+     HiAppEvent eventInfo.name=SCROLL_ARKWEB_FLING_JANK
+     HiAppEvent eventInfo.params.start_time=1765892111768
+     HiAppEvent eventInfo.params.duration=1554
+     HiAppEvent eventInfo.params.web_id=1
+     HiAppEvent eventInfo.params.max_app_frame_time=195
+     HiAppEvent get currentUrl=https://www.baidu.com
+    ```
