@@ -2362,7 +2362,8 @@ struct ListNodeTest {
       Button('change').onClick(() => {
         this.flag = !this.flag;
       })
-    }.borderWidth(1)
+    }
+    .borderWidth(1)
     .width("100%")
   }
 }
@@ -3149,6 +3150,76 @@ struct Index {
   }
 }
 ```
+
+### convertPositionToWindow<sup>23+</sup>
+
+convertPositionToWindow(positionByLocal: Position): Position
+
+将点的坐标从当前节点的坐标系转换为当前节点所在窗口的坐标系。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| positionByLocal | [Position](./js-apis-arkui-graphics.md#position) | 是   | 当前节点坐标系中的相对坐标。 |
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| [Position](./js-apis-arkui-graphics.md#position) | 当前节点所在窗口的坐标系中的转换坐标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100026   | The current FrameNode has been disposed. |
+| 100028   | The current FrameNode is not on the main tree. |
+
+**示例：**
+
+请参考[局部与窗口坐标转化示例](#局部与窗口坐标转化示例)。
+
+### convertPositionFromWindow<sup>23+</sup>
+
+convertPositionFromWindow(positionByWindow: Position): Position
+
+将点的坐标从当前节点所在窗口的坐标系转换为当前节点的坐标系。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明                                                     |
+| ------- | -------- | ---- | ------------------------------------------------------------ |
+| positionByWindow | [Position](./js-apis-arkui-graphics.md#position) | 是   | 当前节点所在窗口的坐标系中的相对坐标。 |
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| [Position](./js-apis-arkui-graphics.md#position) | 当前节点坐标系中的转换坐标。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100026   | The current FrameNode has been disposed. |
+| 100028   | The current FrameNode is not on the main tree. |
+
+**示例：**
+
+请参考[局部与窗口坐标转化示例](#局部与窗口坐标转化示例)。
 
 ## TypedFrameNode<sup>12+</sup>
 
@@ -10710,6 +10781,69 @@ struct Index {
         .onClick(() => {
           this.myNodeController.removeAdoptedChild();
         })
+    }
+  }
+}
+```
+
+## 局部与窗口坐标转化示例
+
+该示例演示了如何通过FrameNode的[convertPositionToWindow](#convertpositiontowindow23)和[convertPositionFromWindow](#convertpositionfromwindow23)接口进行局部与窗口坐标转化。
+
+从API version 23开始，新增convertPositionToWindow和convertPositionFromWindow接口。
+
+```ts
+import { Position } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ConvertPositionWithWindow {
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .id('testNodeA')
+        .fontSize($r('app.float.page_text_font_size')) // 请开发者替换为实际的资源文件
+        .fontWeight(FontWeight.Bold)
+      Button('运行convertPositionToWindow和convertPositionFromWindow测试')
+        .onClick(() => {
+          this.runBasicTest();
+        })
+        .margin(20)
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private runBasicTest() {
+    // 等待UI渲染完成
+    if (!this.uiContext) {
+      return;
+    }
+    const nodeA = this.uiContext.getAttachedFrameNodeById('testNodeA');
+
+    if (!nodeA) {
+      console.info('无法获取测试节点');
+      return;
+    }
+
+    const testPoint: Position = { x: 10, y: 10 };
+    try {
+      const result: Position = nodeA.convertPositionToWindow(testPoint); // 显式声明可能返回undefined
+      console.info(`相对于节点的(10, 10)坐标转换到相对于窗口的坐标为(${result.x}, ${result.y})`);
+    } catch (e) {
+      const exception = e as BusinessError<void>;
+      console.error(`convertPositionToWindow throw error! code: ${exception.code}, message: ${exception.message}`);
+    }
+
+    try {
+      const result: Position = nodeA.convertPositionFromWindow(testPoint); // 显式声明可能返回undefined
+      console.info(`相对于窗口的(10, 10)坐标转换到相对于该节点的坐标为(${result.x}, ${result.y})`);
+    } catch (e) {
+      const exception = e as BusinessError<void>;
+      console.error(`convertPositionFromWindow throw error! code: ${exception.code}, message: ${exception.message}`);
     }
   }
 }
