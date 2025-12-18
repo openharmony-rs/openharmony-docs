@@ -115,7 +115,7 @@ const char* srcCallNative = R"JS(globalThis.UseCodeCache())JS";
 <!-- @[jsvm_code_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/aboutcodecache/src/main/cpp/hello.cpp) -->
 
 预期的输出结果如下：
-```
+```txt
 first run result: 98304
 second run result: 98304
 cache rejected: 0
