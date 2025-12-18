@@ -648,7 +648,9 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 | flag  | boolean | 否 | 否 | 此项业务占用是否需要在“设置-存储”界面单独展示，true表示单独显示，false表示不单独显示。 |
 
 ## storageStatistics.setExtBundleStats<sup>23+</sup>
-setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
+ArkTS-Dyn: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
+
+ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
 
 系统中的业务上报自身的空间占用信息，以Promise方式返回。
 
@@ -658,12 +660,16 @@ setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;void&gt;
 
 **系统接口**：该接口为系统接口。
 
+**ArkTS-Dyn起始版本**： 23
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
   | 参数名     | 类型                                 | 必填 | 说明                       |
   | ---------- | ------------------------------------ | ---- | -------------------------- |
-  | userId | number | 是   | 用户id。                       |
-  | stats   | stats: ExtBundleStats | 是   | 系统中指定业务的空间占用信息。 |
+  | userId | int | 是   | 用户id。                       |
+  | stats   | ExtBundleStats | 是   | 系统中指定业务的空间占用信息。 |
 
 **返回值：**
 
