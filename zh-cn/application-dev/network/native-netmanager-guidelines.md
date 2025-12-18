@@ -147,8 +147,8 @@ libnet_connection.so
    ```
 4. 在工程的index.d.ts文件中定义两个函数的类型。
 
-- GetDefaultNet函数接受一个数字参数code，返回一个数字类型的值。
-- NetId函数不接受参数，返回一个数字类型的值。
+   - GetDefaultNet函数接受一个数字参数code，返回一个数字类型的值。
+   - NetId函数不接受参数，返回一个数字类型的值。
 
    <!-- @[defining_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
