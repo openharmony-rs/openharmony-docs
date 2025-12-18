@@ -14,7 +14,7 @@ Different from the OpenSL ES APIs, the OHAudio APIs support low-latency playback
 
 The table below lists the differences in the features supported by the APIs.
 
-| | OpenSL ES| OHAudio |
+| Feature| OpenSL ES| OHAudio |
 | --- | --- | --- |
 | Audio streaming playback| Supported| Supported|
 | Audio streaming recording| Supported| Supported|

@@ -1,5 +1,10 @@
 # OpenGL
-
+<!--Kit: ArkGraphics 2D-->
+<!--Subsystem: Graphics-->
+<!--Owner: @samhu1989-->
+<!--Designer: @shi-yang-2012-->
+<!--Tester: @zhaoxiaoguang2-->
+<!--Adviser: @ge-yafang-->
 [OpenGL](https://www.khronos.org/opengl/) is a cross-platform graphics API that specifies a standard software interface for 3D graphics processing hardware. OpenHarmony supports OpenGL 3.0.
 
 ## Supported Capabilities
@@ -42,7 +47,7 @@ libEGL.so
 #include <GL/glcorearb.h>
 ```
 **Modifying the app.json5 Configuration File**
-```c++
+```json
 "appEnvironments": [
  {
    "name":"NEED_OPENGL",
@@ -50,8 +55,6 @@ libEGL.so
  }
 ],
 ```
-
-
 ## References
 
 To use the OpenGL API in your application development, familiarize yourself with the NDK development process and the **XComponent** usage, which are described in the following topics:
