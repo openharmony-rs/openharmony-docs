@@ -923,6 +923,7 @@ void uv_close(uv_handle_t* handle, uv_close_cb close_cb)
 ```
 
   handle：要关闭的句柄。
+  
   close_cb：处理该句柄的函数，用来进行内存管理等操作。
 
 调用`uv_close`后，首先将要关闭的handle挂载到loop的closing_handles队列上，然后等待loop所在线程运行`uv__run_closing_handles`函数。最后回调函数close_cb将会在loop的下一次迭代中执行。因此，释放内存等操作应该在close_cb中进行。并且这种异步的关闭操作会带来多线程问题，开发者需要谨慎处理`uv_close`的时序问题，并且保证在close_cb执行之前handles的生命周期。
