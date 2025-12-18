@@ -46,8 +46,6 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 
 **示例:**
 
-ArkTS-Dyn示例
-
 ```ts	
 import { BusinessError } from '@ohos.base';	
 try {	
@@ -63,8 +61,37 @@ try {
 }
 ```
 
-ArkTS-Sta示例:
+## cooperate.prepareCooperate<sup>22+</sup>
 
+prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
+
+准备键鼠穿越，使用Callback异步回调。
+
+**需要权限**：ohos.permission.COOPERATE_MANAGER
+
+**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本**：22
+
+**参数**：
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，准备键鼠穿越成功时，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.devicestatus错误码](errorcode-devicestatus.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+
+**示例:**
 ```ts
 import { BusinessError } from '@ohos.base';
 try {
@@ -79,6 +106,7 @@ try {
   console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
 
 ## cooperate.prepareCooperate<sup>11+</sup>
 
@@ -1348,8 +1376,6 @@ try {
 }
 ```
 
-
-
 ## cooperate.unprepare<sup>(deprecated)</sup>
 
 unprepare(callback: AsyncCallback&lt;void&gt;): void;
@@ -1502,8 +1528,6 @@ activate(targetNetworkId: string, inputDeviceId: number): Promise&lt;void&gt;;
 | targetNetworkId | string                       |  是   | 键鼠穿越目标设备描述符。             |
 | inputDeviceId | number                       |  是   | 待穿越输入设备标识符。 |
 
-
-
 **返回值**：
 
 | 参数名                  | 说明                             |
@@ -1601,7 +1625,6 @@ deactivate(isUnchained: boolean): Promise&lt;void&gt;;
 | isUnchained | boolean | 是   | 是否关闭跨设备链路。<br> ture表示关闭跨设备链路，false表示不关闭。 |
 
 
-
 **返回值**：
 
 | 参数名                | 说明                            |
@@ -1630,8 +1653,6 @@ try {
   console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
-
 
 ## cooperate.getCrossingSwitchState<sup>(deprecated)</sup>
 
@@ -1772,8 +1793,6 @@ try {
 }
 ```
 
-
-
 ## off('cooperate')<sup>(deprecated)</sup>
 
 off(type: 'cooperate', callback?: Callback&lt;void&gt;): void;
@@ -1858,91 +1877,3 @@ try {
 | COOPERATE_DEACTIVATE_FAIL | 6 | 表示键鼠穿越停止失败。 |
 | COOPERATE_SESSION_DISCONNECTED | 7 | 表示键鼠穿越会话断开。 |
 
-## cooperate.prepareCooperate<sup>22+</sup>
-
-prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
-
-准备键鼠穿越，使用Callback异步回调。
-
-**需要权限**：ohos.permission.COOPERATE_MANAGER
-
-**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
-
-**ArkTS模式**：该接口适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本**：22
-
-**参数**：
-
-| 参数名   | 类型                      | 必填 | 说明                                                         |
-| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，准备键鼠穿越成功时，err为undefined，否则为错误对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[ohos.devicestatus错误码](errorcode-devicestatus.md)。
-
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
-
-示例：
-```ts
-import { BusinessError } from '@ohos.base';
-try {
-  cooperate.prepareCooperate((error: error:  BusinessError<void>|null, info: undefined) => {
-    if (error) {
-      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-      return;
-    }
-    console.info(`Keyboard mouse crossing prepareCooperate success.`);
-  });
-} catch (error) {
-  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
-## cooperate.prepareCooperate<sup>22+</sup>
-
-prepareCooperate(): Promise&lt;void&gt;;
-
-准备键鼠穿越，使用Promise异步方式返回结果。
-
-**需要权限**：ohos.permission.COOPERATE_MANAGER
-
-**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
-
-**ArkTS模式**：该接口适用于ArkTS-Sta。
-
-**ArkTS-Sta起始版本**：22
-
-**返回值：**
-
-| 参数                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
-
-**示例**：
-
-```ts
-import { BusinessError } from '@ohos.base';
-try {
-  cooperate.prepareCooperate().then(() => {
-    console.info(`Keyboard mouse crossing prepareCooperate success.`);
-  });
-} catch (error) {
-  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
