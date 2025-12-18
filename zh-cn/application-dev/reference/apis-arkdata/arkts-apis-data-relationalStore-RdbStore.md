@@ -2133,7 +2133,7 @@ async function querySqlWithoutRowCountEmployee(store : relationalStore.RdbStore)
 
 querySqlWithoutRowCountSync(sql: string, bindArgs?: Array&lt;ValueType&gt;):LiteResultSet
 
-根据指定SQL语句查询数据库中的数据，查询时不计算行数。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对querySqlWithoutRowCountSync同步接口获得的LiteesultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
+根据指定SQL语句查询数据库中的数据，查询时不计算行数。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。对querySqlWithoutRowCountSync同步接口获得的LiteResultSet进行操作时，若逻辑复杂且循环次数过多，可能造成freeze问题，建议将此步骤放到[taskpool](../apis-arkts/js-apis-taskpool.md)线程中执行。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 

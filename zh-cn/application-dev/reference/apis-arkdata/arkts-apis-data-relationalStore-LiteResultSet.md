@@ -119,10 +119,10 @@ async function getColumnIndexExample(store : relationalStore.RdbStore){
     let resultSet: relationalStore.LiteResultSet | undefined;
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
-        const idIndex = resultSet.getColumnIndex("ID");
-        const nameIndex = resultSet.getColumnIndex("NAME");
-        const ageIndex = resultSet.getLong(resultSet.getColumnIndex("AGE"));
-        const salaryIndex = resultSet.getColumnIndex("SALARY");
+      const idIndex = resultSet.getColumnIndex("ID");
+      const nameIndex = resultSet.getColumnIndex("NAME");
+      const ageIndex = resultSet.getColumnIndex("AGE");
+      const salaryIndex = resultSet.getColumnIndex("SALARY");
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -176,10 +176,10 @@ async function getColumnNameExample(store : relationalStore.RdbStore){
     let resultSet: relationalStore.LiteResultSet | undefined;
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
-        const id = resultSet.getColumnName(0);
-        const name = resultSet.getColumnName(1);
-        const age = resultSet.getColumnName(2);
-        const salary = resultSet.getColumnName(3);
+      const id = resultSet.getColumnName(0);
+      const name = resultSet.getColumnName(1);
+      const age = resultSet.getColumnName(2);
+      const salary = resultSet.getColumnName(3);
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -372,7 +372,7 @@ async function goToNextRowExample(store : relationalStore.RdbStore) {
 
 getValue(columnIndex: number): ValueType
 
-获取当前行中指定列的值。如果值类型为INTEGER，值大于Number.MAX_SAFE_INTEGER或小于Number.MIN_SAFE_INTEGER且不希望丢失精度，建议使用[getString](#getstring)接口获取。
+获取当前行中指定列的值。如果值类型为INTEGER，值大于Number.MAX_SAFE_INTEGER或小于Number.MIN_SAFE_INTEGER时，如果不希望丢失精度，建议使用[getString](#getstring23)接口获取。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -421,7 +421,7 @@ async function getValueExample(store : relationalStore.RdbStore) {
 
 getBlob(columnIndex: number): Uint8Array
 
-以字节数组的形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组。
+以字节数组的形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组。如果当前列的数据类型为ASSRET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -471,7 +471,7 @@ async function getBlobExample(store : relationalStore.RdbStore) {
 
 getString(columnIndex: number): string
 
-以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble)接口获取。
+以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble23)接口获取。如果当前列的数据类型为ASSRET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -521,7 +521,7 @@ async function getStringExample(store : relationalStore.RdbStore) {
 
 getLong(columnIndex: number): number
 
-以Long形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成Long类型返回指定值，如果该列内容为空时，会返回0。如果当前列的数据类型为INTEGER，值大于Number.MAX_SAFE_INTEGER 或小于Number.MIN_SAFE_INTEGER 且不希望丢失精度，建议使用[getString](#getstring)接口获取。如果当前列的数据类型为DOUBLE且不希望丢失精度，建议使用[getDouble](#getdouble)接口获取。
+以Long形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT会转成Long类型返回指定值，非数字的TEXT、BLOB类型会返回0。如果该列内容为空时，会返回0。如果当前列的数据类型为INTEGER，值大于Number.MAX_SAFE_INTEGER 或小于Number.MIN_SAFE_INTEGER时，如果不希望丢失精度，建议使用[getString](#getstring23)接口获取。如果当前列的数据类型为DOUBLE且不希望丢失精度，建议使用[getDouble](#getdouble23)接口获取。如果当前列的数据类型为ASSRET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -537,7 +537,7 @@ getLong(columnIndex: number): number
 
 | 类型   | 说明                                                         |
 | ------ | ------------------------------------------------------------ |
-| number | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble)，对于INTEGER类型的值使用[getString](#getstring)。 |
+| number | 以Long形式返回指定列的值。<br>该接口支持的精度范围是：Number.MIN_SAFE_INTEGER ~ Number.MAX_SAFE_INTEGER，若超出该范围，建议对于DOUBLE类型的值使用[getDouble](#getdouble23)，对于INTEGER类型的值使用[getString](#getstring23)。 |
 
 **错误码：**
 
@@ -571,7 +571,7 @@ async function getLongExample(store : relationalStore.RdbStore) {
 
 getDouble(columnIndex: number): number
 
-以double形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成double类型返回指定值，如果该列内容为空时，会返回0.0，其他类型则返回14800041。
+以double形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT会转成double类型返回指定值，非数字的TEXT、BLOB类型会返回0.0。如果该列内容为空时，会返回0.0，其他类型则返回14800041。如果当前列的数据类型为ASSRET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -731,7 +731,7 @@ getRow(): ValuesBucket
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 返回指定行的值。当结果集中包含重名列时，返回值会不符合预期，建议使用[getCurrentRowData](#getcurrentrowdata)接口获取。 |
+| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 返回指定行的值。当结果集中包含重名列时，返回值会不符合预期，建议使用[getCurrentRowData](#getcurrentrowdata23)接口获取。 |
 
 **错误码：**
 
@@ -759,6 +759,7 @@ async function getRowExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const rowData = resultSet.getRow();
+      console.info(`rowData: ${JSON.stringify(rowData)}`);
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
@@ -809,6 +810,7 @@ async function getCurrentRowDataExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const rowData = resultSet.getCurrentRowData();
+      console.info(`rowData: ${JSON.stringify(rowData)}`);
     }
   } catch (err) {
     console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
@@ -837,7 +839,7 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。当结果集中包含重名列时，返回值会不符合预期，建议使用[getRowsData](#getrowsdata)接口获取。 |
+| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。当结果集中包含重名列时，返回值会不符合预期，建议使用[getRowsData](#getrowsdata23)接口获取。 |
 
 **错误码：**
 
@@ -886,7 +888,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
       }
     }
   } catch (err) {
-  console.error(`failed, code is ${err.code}, message is ${err.message}`);
+    console.error(`failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
@@ -1049,8 +1051,8 @@ async function closeExample(store : relationalStore.RdbStore) {
     let resultSet: relationalStore.LiteResultSet | undefined;
     resultSet = await store.querySqlWithoutRowCount('select * from EMPLOYEE where name = ?', ["Rose"]);
     if (resultSet != undefined) {
-}
-    resultSet.close();
+      resultSet.close();
+    }
   }
 } catch (err) {
   console.error(`failed, code is ${err.code}, message is ${err.message}`);
