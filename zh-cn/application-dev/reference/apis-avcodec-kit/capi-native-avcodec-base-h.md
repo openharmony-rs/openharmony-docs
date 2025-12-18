@@ -47,6 +47,8 @@
 | [OH_MPEG2Profile](#oh_mpeg2profile) | OH_MPEG2Profile | MPEG2档次。 |
 | [OH_MPEG4Profile](#oh_mpeg4profile) | OH_MPEG4Profile | MPEG4档次。 |
 | [OH_H263Profile](#oh_h263profile) | OH_H263Profile | H.263档次。 |
+| [OH_VC1Profile](#oh_vc1profile) | OH_VC1Profile | VC-1档次。 |
+| [OH_WMV3Profile](#oh_wmv3profile) | OH_WMV3Profile | WMV3档次。 |
 | [OH_AVOutputFormat](#oh_avoutputformat) | OH_AVOutputFormat | 封装器支持的输出文件格式。 |
 | [OH_AVSeekMode](#oh_avseekmode) | OH_AVSeekMode | 跳转模式。 |
 | [OH_ScalingMode](#oh_scalingmode) | OH_ScalingMode | 缩放模式，只在Surface模式下使用。(API14废弃) |
@@ -60,6 +62,8 @@
 | [OH_MPEG2Level](#oh_mpeg2level) | OH_MPEG2Level | MPEG2级别。 |
 | [OH_MPEG4Level](#oh_mpeg4level) | OH_MPEG4Level | MPEG4级别。 |
 | [OH_H263Level](#oh_h263level) | OH_H263Level | H.263级别。 |
+| [OH_VC1Level](#oh_vc1level) | OH_VC1Level | VC-1级别。 |
+| [OH_WMV3Level](#oh_wmv3level) | OH_WMV3Level | WMV3级别。 |
 | [OH_TemporalGopReferenceMode](#oh_temporalgopreferencemode) | OH_TemporalGopReferenceMode | 时域图片组参考模式。 |
 | [OH_BitrateMode](#oh_bitratemode) | OH_BitrateMode | 编码器的比特率模式。 |
 
@@ -90,6 +94,10 @@
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG4_PART2 | 视频MPEG4 Part2编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG2 | 视频MPEG2编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_H263 | H.263视频编解码器的MIME类型。<br>**起始版本：** 17<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_VC1 | VC-1视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MSVIDEO1（Microsoft Video 1）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | WMV3视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MJPEG（Motion JPEG）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_JPG | JPG图片编码的MIME类型，仅用于封装JPG封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_PNG | PNG图片编码的MIME类型，仅用于封装PNG封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_IMAGE_BMP | BMP图片编码的MIME类型，仅用于封装BMP封面时使用。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -204,12 +212,12 @@
 | const char * OH_MD_KEY_SQR_FACTOR | 指定SQR码控模式的质量参数，取值范围为[0, 51]（同编码量化参数QP），值越小，编码输出码率越大，质量越好。<br> 在Configure/SetParameter阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_MAX_BITRATE | 指定SQR码控模式的最大码率，使用[OH_AVCapability_GetEncoderBitrateRange](capi-native-avcapability-h.md#oh_avcapability_getencoderbitraterange)方法获取取值范围（同OH_MD_KEY_BITRATE），单位bps，值类型为int64_t。<br> 在Configure/SetParameter阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_ENCODER_ENABLE_PTS_BASED_RATECONTROL | 使能基于显示时间戳(PTS)的码控模式的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。<br>该键值是可选的且只用于视频编码。<br> 如果使能，则必须在每个视频帧中携带PTS信息，并发送到编码器。Surface模式下，通过[OH_NativeWindow_NativeWindowHandleOpt](../apis-arkgraphics2d/capi-external-window-h.md#oh_nativewindow_nativewindowhandleopt)接口设置PTS，时间单位为纳秒(ns)；Buffer模式下，通过[OH_AVBuffer_SetBufferAttr](capi-native-avbuffer-h.md#oh_avbuffer_setbufferattr)接口设置PTS，时间单位为微秒(us)。<br> 在Configure阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_REFERENCE_TRACK_IDS | 媒体文件轨道间参考、被参考关系，值类型为int32_t\*。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_REFERENCE_TRACK_IDS | 媒体文件轨道间参考、被参考关系，值类型为int32_t*。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_TRACK_REFERENCE_TYPE | 媒体文件辅助轨类型，值类型为string。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_TRACK_DESCRIPTION | 媒体文件辅助轨描述信息，值类型为string。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_ENABLE_SYNC_MODE | 使能音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选。<br>如果使能，需要注意：<br> 1. 编解码器不可设置回调函数。<br> 2. 必须使用缓冲区查询接口替代回调。<br> 3. 只能在Configure阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | 用于指定视频解码器关闭时是否输出空白帧的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选的且仅用于视频解码Surface模式。<br> 使能后，视频解码器在停止或释放时将输出空白帧（通常为黑色），以确保显示设备平滑过渡到无信号状态。该机制可避免因解码器突然终止导致的显示残留或画面闪烁问题。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口或[OH_AVCodecOnStreamChanged](#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口或[OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 
 ## 枚举类型说明
 
@@ -402,6 +410,45 @@ H.263档次。
 | -- | -- |
 | H263_PROFILE_BASELINE = 0 | 基线档次。 |
 | H263_PROFILE_VERSION_1_BACKWARD_COMPATIBILITY = 2 | 版本1向后兼容档次。 |
+
+### OH_VC1Profile
+
+```c
+enum OH_VC1Profile
+```
+
+**描述**
+
+VC-1档次。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| VC1_PROFILE_SIMPLE = 0 | 简单档次。 |
+| VC1_PROFILE_MAIN = 1 | 主档次。 |
+| VC1_PROFILE_ADVANCED = 2 | 高级档次。 |
+
+### OH_WMV3Profile
+
+```c
+enum OH_WMV3Profile
+```
+
+**描述**
+
+WMV3档次。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| WMV3_PROFILE_SIMPLE = 0 | 简单档次。 |
+| WMV3_PROFILE_MAIN = 1 | 主档次。 |
 
 ### OH_AVOutputFormat
 
@@ -763,6 +810,51 @@ H.263级别。
 | H263_LEVEL_50 = 5 | 级别50。 |
 | H263_LEVEL_60 = 6 | 级别60。 |
 | H263_LEVEL_70 = 7 | 级别70。 |
+
+### OH_VC1Level
+
+```c
+enum OH_VC1Level
+```
+
+**描述**
+
+VC-1级别。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| VC1_LEVEL_L0 = 0 | 级别L0。 |
+| VC1_LEVEL_L1 = 1 | 级别L1。 |
+| VC1_LEVEL_L2 = 2 | 级别L2。 |
+| VC1_LEVEL_L3 = 3 | 级别L3。 |
+| VC1_LEVEL_L4 = 4 | 级别L4。 |
+| VC1_LEVEL_LOW = 5 | 低级别。 |
+| VC1_LEVEL_MEDIUM = 6 | 中级别。 |
+| VC1_LEVEL_HIGH = 7 |  高级别。 |
+
+### OH_WMV3Level
+
+```c
+enum OH_WMV3Level
+```
+
+**描述**
+
+WMV3级别。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
+**起始版本：** 22
+
+| 枚举项 | 描述 |
+| -- | -- |
+| WMV3_LEVEL_LOW = 0 | 低级别。 |
+| WMV3_LEVEL_MEDIUM = 1 | 中级别。 |
+| WMV3_LEVEL_HIGH = 2 | 高级别。 |
 
 ### OH_TemporalGopReferenceMode
 
