@@ -138,8 +138,8 @@ OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, arkUINativ
 .
 |——cpp
 |    |——types
-|    |	  |——libentry
-|    |	  |	   |——index.d.ts 提供Native和ArkTS侧的桥接方法。
+|    |      |——libentry
+|    |      |       |——index.d.ts 提供Native和ArkTS侧的桥接方法。
 |    |——napi_init.cpp 与index.d.ts对应的桥接方法对接Native侧的定义处。
 |    |——NativeEntry.cpp 桥接方法的Native侧实现。
 |    |——NativeEntry.h 桥接方法的Native侧定义。

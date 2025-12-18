@@ -547,7 +547,7 @@ Native侧
 
 **生命周期**：
 
-- OnSurfaceCreated回调    	
+- OnSurfaceCreated回调    
 
   触发时刻：XComponent创建完成且创建好Surface后达成以下两个条件中的一个触发。
   1. 组件上树且autoInitialize = true。
@@ -1496,7 +1496,7 @@ Native侧
 
 **生命周期**：
 
-- OnSurfaceCreated回调    	
+- OnSurfaceCreated回调    
 
   触发时刻：XComponent创建完成且创建好Surface后触发。
 
