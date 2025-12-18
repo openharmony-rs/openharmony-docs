@@ -329,7 +329,7 @@ EGL初始化成功之后，需要确定可用渲染表面的类型和配置，�
 
     ```cpp
     // 如以上代码所示这里指定所需配置的属性为
-	EGLint attribList[] = {
+    EGLint attribList[] = {
             EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,  // 指定了渲染类型为 OpenGL ES 3
             EGL_RED_SIZE, 8,    // 指定红色缓冲区的位数是8位
             EGL_GREEN_SIZE, 8,  // 指定绿色缓冲区的位数是8位

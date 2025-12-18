@@ -32,11 +32,11 @@
    ``` TypeScript
    /src/main/
    ├── ets/InputMethodExtensionAbility
-   │       └──model/KeyboardController.ts			# 显示键盘
-   │       └──InputMethodService.ts				# 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
+   │       └──model/KeyboardController.ts      # 显示键盘
+   │       └──InputMethodService.ts        # 自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调
    │       └──pages
-   │         └── Index.ets						# 绘制键盘，添加输入删除功能
-   │         └── KeyboardKeyData.ts			    # 键盘属性定义
+   │         └── Index.ets            # 绘制键盘，添加输入删除功能
+   │         └── KeyboardKeyData.ts          # 键盘属性定义
    ├── resources/base/profile/main_pages.json  
    ```
 
