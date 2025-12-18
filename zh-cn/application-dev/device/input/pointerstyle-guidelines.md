@@ -39,7 +39,7 @@ import { pointer } from '@kit.InputKit';
 3. 应用退出全屏播放。
 4. 在应用中调用鼠标光标显示接口显示光标。
 
-<!-- @[pointer_visible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[pointer_visible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
         Text("Click to hide pointer")
@@ -96,7 +96,7 @@ import { pointer } from '@kit.InputKit';
 4. 取色结束。
 5. 设置鼠标光标样式为默认样式。
 
-<!-- @[pointer_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[pointer_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
         Text(`Click to set the mouse pointer style to the color picker style`)
