@@ -44,8 +44,22 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-示例：
-
+**ArkTS-Dyn示例**：	
+```ts	
+import { BusinessError } from '@ohos.base';	
+try {	
+  cooperate.prepareCooperate((error: BusinessError) => {	
+    if (error) {	
+      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
+      return;
+    }
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+**ArkTS-Sta示例**：
 ```ts
 import { BusinessError } from '@ohos.base';
 try {
@@ -95,16 +109,16 @@ prepareCooperate(): Promise&lt;void&gt;;
 
 ```ts
 import { BusinessError } from '@ohos.base';
-try {
-  cooperate.prepareCooperate().then(() => {
-    console.info(`Keyboard mouse crossing prepareCooperate success.`);
-  });
-} catch (error) {
+try {	
+  cooperate.prepareCooperate().then(() => {	
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);	
+  }, (error: BusinessError) => {
+    console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });	
+} catch (error) {	
   console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
-
 
 ## cooperate.unprepareCooperate<sup>11+</sup>
 
@@ -134,8 +148,22 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**示例：**
-
+**ArkTS-Dyn示例：**
+```ts	
+import { BusinessError } from '@ohos.base';	
+try {	
+  cooperate.unprepareCooperate((error: BusinessError) => {	
+    if (error) {	
+      console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
+      return;
+    }
+    console.info(`Keyboard mouse crossing unprepareCooperate success.`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+**ArkTS-Sta示例：**
 ```ts
 import { BusinessError } from '@ohos.base';
 try {
@@ -181,18 +209,18 @@ unprepareCooperate(): Promise&lt;void&gt;;
 | 202 | Not system application. |
 
 **示例：**
-
-```ts
-import { BusinessError } from '@ohos.base';
-try {
-  cooperate.prepareCooperate().then(() => {
-        console.log(`Keyboard mouse crossing prepareCooperate success.`);
-    });
-} catch (error) {
-  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+```ts	
+import { BusinessError } from '@ohos.base';	
+try {	
+  cooperate.unprepareCooperate().then(() => {	
+    console.info(`Keyboard mouse crossing unprepareCooperate success.`);	
+  }, (error: BusinessError) => {	
+    console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {	
+  console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
 }
 ```
-
 
 
 ## cooperate.activateCooperate<sup>11+</sup>
@@ -230,8 +258,25 @@ ArkTS-Sta: activateCooperate(targetNetworkId: string, inputDeviceId: int, callba
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
-**示例：**
+**ArkTS-Dyn示例**：
+```ts
+import { BusinessError } from '@ohos.base';
+let targetNetworkId = "networkId";	
+let inputDeviceId = 0;	
+try {	
+  cooperate.activateCooperate(targetNetworkId, inputDeviceId, (error: BusinessError) => {	
+    if (error) {	
+      console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
+      return;
+    }
+    console.info(`Start Keyboard mouse crossing success.`);
+  });
+} catch (error) {
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
 
+**ArkTS-Sta示例**：
 ```ts
 import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";
@@ -289,7 +334,24 @@ ArkTS-Sta: activateCooperate(targetNetworkId: string, inputDeviceId: int): Promi
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
-**示例：**
+**ArkTS-Dyn示例**:
+
+```ts
+import { BusinessError } from '@ohos.base';
+let targetNetworkId = "networkId";
+let inputDeviceId = 0;
+try {	
+ cooperate.activateCooperate(targetNetworkId, inputDeviceId).then(() => {	
+    console.info(`Start Keyboard mouse crossing success.`);	
+  }, (error: BusinessError) => {
+    console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });	
+} catch (error) {	
+  console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+**ArkTS-Sta示例**:
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -303,8 +365,6 @@ try {
   console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
-
 
 ## cooperate.deactivateCooperate<sup>11+</sup>
 
@@ -337,7 +397,24 @@ deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): 
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**示例**：
+**ArkTS-Dyn示例**:
+
+```ts
+import { BusinessError } from '@ohos.base';	
+try {	
+  cooperate.deactivateCooperate(false, (error: BusinessError) => {	
+    if (error) {	
+      console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
+      return;
+    }
+    console.info(`Stop Keyboard mouse crossing success.`);
+  });
+} catch (error) {
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+**ArkTS-Sta示例**:
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -389,7 +466,21 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 | 201 | Permission denied. |
 | 202 | Not system application. |
 
-**示例**：
+**ArkTS-Dyn示例**:
+
+```ts
+import { BusinessError } from '@ohos.base';
+try {	
+  cooperate.deactivateCooperate(false).then(() => {	
+    console.info(`Stop Keyboard mouse crossing success.`);	
+  }, (error: BusinessError) => {
+    console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });	
+} catch (error) {	
+  console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+**ArkTS-Sta示例**:
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -401,8 +492,6 @@ try {
   console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
-
 
 ## cooperate.getCooperateSwitchState<sup>11+</sup>
 
@@ -435,8 +524,24 @@ getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**示例：**
+**ArkTS-Dyn示例**:
+```ts
+import { BusinessError } from '@ohos.base';
+let deviceDescriptor = "networkId";
+try {	
+  cooperate.getCooperateSwitchState(deviceDescriptor, (error: BusinessError, data: boolean) => {	
+    if (error) {	
+      console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
+      return;
+    }
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);
+  });
+} catch (error) {
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
 
+**ArkTS-Sta示例**:
 ```ts
 import { BusinessError } from '@ohos.base';
 let deviceDescriptor = "networkId";
@@ -489,8 +594,22 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**示例**：
+**ArkTS-Dyn示例**:
+```ts
+import { BusinessError } from '@ohos.base';
+let deviceDescriptor = "networkId";
+try {	
+  cooperate.getCooperateSwitchState(deviceDescriptor).then((data: boolean) => {	
+    console.info(`Get the status success, data: ${JSON.stringify(data)}`);	
+  }, (error: BusinessError) => {
+    console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+  });
+} catch (error) {
+  console.error(`Get the status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
 
+**ArkTS-Sta示例**:
 ```ts
 import { BusinessError } from '@ohos.base';
 let deviceDescriptor = "networkId";
@@ -503,8 +622,6 @@ try {
 }
 ```
 
-
-
 ## on('cooperateMessage')<sup>11+</sup>
 
 on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void
@@ -512,6 +629,8 @@ on(type: 'cooperateMessage', callback: Callback&lt;CooperateMessage&gt;): void
 注册监听键鼠穿越状态。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[onCooperateMessage)](#onCooperateMessage22)
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
@@ -543,14 +662,12 @@ function callback(msg: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
 }
-try {
-  cooperate.onCooperateMessage(callback);
-} catch (error) {
-  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+try {	
+  cooperate.on('cooperateMessage', callback);	
+} catch (error) {	
+  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
 }
 ```
-
-
 
 ## off('cooperateMessage')<sup>11+</sup>
 
@@ -560,6 +677,8 @@ off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
+**相关接口**：该接口对应的接口ArkTS-Sta是[offCooperateMessage)](#offCooperateMessage22)
+
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -595,11 +714,11 @@ function callbackOff(msgOff: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOff)}`);
   return false;
 }
-try {
-  cooperate.onCooperateMessage(callbackOn);
-  cooperate.offCooperateMessage(callbackOff);
-} catch (error) {
-  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+try {	
+  cooperate.on('cooperateMessage', callbackOn);	
+  cooperate.off('cooperateMessage', callbackOff);	
+} catch (error) {	
+  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
 }
 ```
 
@@ -609,9 +728,9 @@ function callbackOn(msg: cooperate.CooperateMessage) {
   console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
   return false;
 }
-try {
-  cooperate.onCooperateMessage(callbackOn);
-  cooperate.offCooperateMessage(callbackOff);
+try {	
+  cooperate.on('cooperateMessage', callbackOn);	
+  cooperate.off('cooperateMessage');
 } catch (error) {
   console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
@@ -625,6 +744,8 @@ onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口**：该接口对应的接口ArkTS-Dyn是[on('cooperateMessage'))](#oncooperateMessage11)
+
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -635,7 +756,6 @@ onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'   |
 | callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 是   | 回调函数，异步返回键鼠穿越状态消息。 |
 
 **错误码：**
@@ -670,6 +790,8 @@ offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口**：该接口对应的接口ArkTS-Dyn是[off('cooperateMessage'))](#offcooperateMessage11)
+
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -680,7 +802,6 @@ offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperate'。                                |
 | callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
 **错误码：**
@@ -712,110 +833,16 @@ try {
   console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
-## onCooperateMessage<sup>22+</sup>
-
-onCooperateMessage(callback: Callback&lt;CooperateMessage&gt;): void
-
-注册监听键鼠穿越状态。
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**需要权限**：ohos.permission.COOPERATE_MANAGER
-
-**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
-
-**ArkTS-Sta起始版本**：22
-
-**参数**：
-
-| 参数名   | 类型                                                  | 必填 | 说明                                 |
-| -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperateMessage'   |
-| callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 是   | 回调函数，异步返回键鼠穿越状态消息。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
-
-**示例**：
-
-```ts
-function callback(msg: cooperate.CooperateMessage) {
-  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msg)}`);
-  return false;
-}
-try {
-  cooperate.onCooperateMessage(callback);
-} catch (error) {
-  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
-## offCooperateMessage<sup>22+</sup>
-
-offCooperateMessage(callback?: Callback&lt;CooperateMessage&gt;): void
-取消监听键鼠穿越状态。
-
-**ArkTS模式**：该接口仅适用于ArkTS-Sta。
-
-**需要权限**：ohos.permission.COOPERATE_MANAGER
-
-**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
-
-**ArkTS-Sta起始版本**：22
-
-**参数：**
-
-| 参数名   | 类型                                                  | 必填 | 说明                                                         |
-| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperate'。                                |
-| callback | Callback&lt;[CooperateMessage](#cooperatemessage11)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息          |
-| -------- | ----------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
-
-**示例**：
-
-```ts
-// 取消注册单个回调函数
-function callbackOn(msgOn: cooperate.CooperateMessage) {
-  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOn)}`);
-  return false;
-}
-function callbackOff(msgOff: cooperate.CooperateMessage) {
-  console.info(`Keyboard mouse crossing event: ${JSON.stringify(msgOff)}`);
-  return false;
-}
-try {
-  cooperate.onCooperateMessage(callbackOn);
-  cooperate.offCooperateMessage(callbackOff);
-} catch (error) {
-  console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-}
-```
-
 
 ## on('cooperateMouse')<sup>12+</sup>
 
-on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void
+on(type: 'cooperateMouse', networkId: string, callback: Callback&lt;MouseLocation&gt;): void;
 
 注册监听指定设备鼠标光标位置。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[onCooperateMouseEvent)](#onCooperateMouseEvent22)
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
@@ -848,15 +875,13 @@ function callback(data: cooperate.MouseLocation) {
   console.info('displayX:' + data.displayX + 'displayY:' + data.displayX + 'displayWidth:' +
     data.displayWidth + 'displayHeight:' + data.displayHeight );
 }
-try {
-  let networkId: string = 'Default';
-  cooperate.onCooperateMouse(networkId, callback);
-} catch (error) {
-  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+try {	
+  let networkId: string = 'Default';	
+  cooperate.on('cooperateMouse', networkId, callback);	
+} catch (error) {	
+  console.error(`Register failed, error: ${JSON.stringify(error, [`code`, `message`])}`);	
 }
 ```
-
-
 
 ## off('cooperateMouse')<sup>12+</sup>
 
@@ -865,6 +890,8 @@ off(type: 'cooperateMouse', networkId: string, callback?: Callback&lt;MouseLocat
 取消监听指定设备鼠标光标位置。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的接口ArkTS-Sta是[offCooperateMouseEvent](#offCooperateMouseEvent22)
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
@@ -904,8 +931,8 @@ function callbackOff(data: cooperate.MouseLocation) {
 }
 try {
   let networkId: string = 'Default';
-  cooperate.onCooperateMouse( networkId, callbackOn);
-  cooperate.offCooperateMouse( networkId, callbackOff);
+  cooperate.on('cooperateMouse', networkId, callbackOn);
+  cooperate.off('cooperateMouse', networkId, callbackOff);
 } catch (error) {
   console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
@@ -918,8 +945,8 @@ function callbackOn(data: cooperate.MouseLocation) {
 }
 try {
   let networkId: string = 'Default';
-  cooperate.onCooperateMouse( networkId, callbackOn);
-  cooperate.offCooperateMouse( networkId);
+  cooperate.on('cooperateMouse', networkId, callbackOn);
+  cooperate.off('cooperateMouse', networkId);
 } catch (error) {
   console.error(`Execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
@@ -933,6 +960,8 @@ onCooperateMouseEvent(networkId: string, callback: Callback&lt;MouseLocation&gt;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
+**相关接口**：该接口对应的接口ArkTS-Dyn是[on('CooperateMous')](#oncooperateMouse12)
+
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
 **系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
@@ -943,7 +972,6 @@ onCooperateMouseEvent(networkId: string, callback: Callback&lt;MouseLocation&gt;
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'。   |
 | networkId| string                                                | 是   | 目标设备描述符。   |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 是   | 回调函数，异步返回指定监听设备鼠标光标位置信息。 |
 
@@ -972,7 +1000,6 @@ try {
 }
 ```
 
-
 ## offCooperateMouseEvent<sup>22+</sup>
 
 offCooperateMouseEvent(networkId: string, callback?: Callback&lt;MouseLocation&gt;): void
@@ -980,6 +1007,8 @@ offCooperateMouseEvent(networkId: string, callback?: Callback&lt;MouseLocation&g
 取消监听指定设备鼠标光标位置。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的接口ArkTS-Dyn是[off('CooperateMous')](#offcooperateMouse12)
 
 **需要权限**：ohos.permission.COOPERATE_MANAGER
 
@@ -991,7 +1020,6 @@ offCooperateMouseEvent(networkId: string, callback?: Callback&lt;MouseLocation&g
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                                | 是   | 监听类型，取值为'cooperateMouse'。                                |
 | networkId| string                                                | 是   | 目标设备描述符。   |
 | callback | Callback&lt;[MouseLocation](#mouselocation12)&gt; | 否   | 需要取消注册的回调函数，若无此参数，则取消当前应用注册的所有回调函数。 |
 
@@ -1040,7 +1068,6 @@ try {
 }
 ```
 
-
 ## cooperate.activateCooperateWithOptions<sup>20+</sup>
 
 ArkTS-Dyn: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: number,
@@ -1084,8 +1111,7 @@ ArkTS-Sta: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: 
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
-**示例**：
-
+**ArkTS-Dyn示例**:
 ```ts
 import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";
@@ -1101,6 +1127,19 @@ try {
 }
 ```
 
+**ArkTS-Sta示例**:
+```ts
+import { BusinessError } from '@ohos.base';
+let targetNetworkId = "networkId";
+let inputDeviceId = 0;
+try {
+    cooperate.activateCooperateWithOptions(targetNetworkId, inputDeviceId).then(() => {
+        console.info(`activateCooperateWithOptions success.`);
+    });
+} catch (error) {
+    console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
 
 ## CooperateMessage<sup>11+</sup>
 
@@ -1362,8 +1401,6 @@ try {
 }
 ```
 
-
-
 ## cooperate.activate<sup>(deprecated)</sup>
 
 activate(targetNetworkId: string, inputDeviceId: number, callback: AsyncCallback&lt;void&gt;): void;
@@ -1466,8 +1503,6 @@ try {
   console.error(`Start Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-
-
 
 ## cooperate.deactivate<sup>(deprecated)</sup>
 
@@ -1662,8 +1697,6 @@ try {
 }
 ```
 
-
-
 ## on('cooperate')<sup>(deprecated)</sup>
 
 on(type: 'cooperate', callback: Callback&lt;{ networkId: string, msg: CooperateMsg }&gt;): void;
@@ -1791,3 +1824,92 @@ try {
 | COOPERATE_DEACTIVATE_SUCCESS | 5 | 表示键鼠穿越停止成功。 |
 | COOPERATE_DEACTIVATE_FAIL | 6 | 表示键鼠穿越停止失败。 |
 | COOPERATE_SESSION_DISCONNECTED | 7 | 表示键鼠穿越会话断开。 |
+
+## cooperate.prepareCooperate<sup>22+</sup>
+
+prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
+
+准备键鼠穿越，使用Callback异步回调。
+
+**需要权限**：ohos.permission.COOPERATE_MANAGER
+
+**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本**：22
+
+**参数**：
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，准备键鼠穿越成功时，err为undefined，否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[ohos.devicestatus错误码](errorcode-devicestatus.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+
+示例：
+```ts
+import { BusinessError } from '@ohos.base';
+try {
+  cooperate.prepareCooperate((error: error:  BusinessError<void>|null, info: undefined) => {
+    if (error) {
+      console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+      return;
+    }
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
+
+## cooperate.prepareCooperate<sup>22+</sup>
+
+prepareCooperate(): Promise&lt;void&gt;;
+
+准备键鼠穿越，使用Promise异步方式返回结果。
+
+**需要权限**：ohos.permission.COOPERATE_MANAGER
+
+**系统能力**：SystemCapability.Msdp.DeviceStatus.Cooperate
+
+**ArkTS模式**：该接口适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本**：22
+
+**返回值：**
+
+| 参数                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息          |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+
+**示例**：
+
+```ts
+import { BusinessError } from '@ohos.base';
+try {
+  cooperate.prepareCooperate().then(() => {
+    console.info(`Keyboard mouse crossing prepareCooperate success.`);
+  });
+} catch (error) {
+  console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+}
+```
