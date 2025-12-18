@@ -154,19 +154,19 @@ void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
     event.displayY = OH_Input_GetTouchEventDisplayY(touchEvent);
     event.actionTime = OH_Input_GetTouchEventActionTime(touchEvent);
-	// ···
+    // ...
 }
 
 static napi_value AddTouchEventMonitor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_AddTouchEventMonitor(OnTouchEventCallback);
-	// ···
+    // ...
 }
 
 static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_RemoveTouchEventMonitor(OnTouchEventCallback);
-	// ···
+    // ...
 }
 ```
 
