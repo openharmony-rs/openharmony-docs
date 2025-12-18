@@ -347,16 +347,18 @@ function ButtonBuilder(params: Params) {
   .backgroundColor(Color.Gray)
 }
 
+// 创建并初始化BuilderNode
 class MyNodeController extends NodeController {
   private rootNode: BuilderNode<[Params]> | null = null;
   private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(ButtonBuilder);
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new BuilderNode(uiContext);
-    this.rootNode.build(this.wrapBuilder, { text: "this is a string" })
+    this.rootNode.build(this.wrapBuilder, { text: "this is a string" });
     return this.rootNode.getFrameNode();
   }
 
+  // 转发触摸事件到BuilderNode
   postTouchEvent(touchEvent: TouchEvent): void {
     if (this.rootNode == null) {
       return;
@@ -381,6 +383,7 @@ struct MyComponent {
         .height(300)
         .backgroundColor(Color.Pink)
         .onTouch((event) => {
+          // 事件非空时，将触摸事件转发给节点控制器
           if (event != undefined) {
             this.nodeController.postTouchEvent(event);
           }
@@ -957,7 +960,7 @@ struct TextBuilder {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .margin({ bottom: 36 })
-          .fontColor($r(`app.color.text_color`))
+          .fontColor($r(`app.color.text_color`)) // 开发者可在资源目录下的color.json文件中自定义颜色
           .backgroundColor($r(`app.color.start_window_background`))
       }
     }
