@@ -55,7 +55,7 @@ ArkTS-Sta接口说明：
 
 3. 订阅操作手感知
 
-   ArkTS-Dyn示例
+   ArkTS-Dyn示例:
 
    ```ts
    try {
@@ -67,7 +67,7 @@ ArkTS-Sta接口说明：
    }
    ```
 
-   ArkTS-Sta示例
+   ArkTS-Sta示例:
 
    ```ts
    try {
@@ -81,7 +81,7 @@ ArkTS-Sta接口说明：
 
 4. 取消订阅操作手感知
 
-   ArkTS-Dyn示例
+   ArkTS-Dyn示例:
 
    ```ts
    try {
@@ -93,7 +93,7 @@ ArkTS-Sta接口说明：
    }
    ```
 
-   ArkTS-Sta示例
+   ArkTS-Sta示例:
 
    ```ts
    try {

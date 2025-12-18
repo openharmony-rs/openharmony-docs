@@ -48,7 +48,7 @@ ArkTS-Sta接口说明：
 
 2. 订阅设备静止姿态（支架态）感知事件。
 
-  ArkTS-Dyn示例
+  ArkTS-Dyn示例:
 
   ```ts
   try {
@@ -60,7 +60,7 @@ ArkTS-Sta接口说明：
   }
   ```
 
-  ArkTS-Sta示例
+  ArkTS-Sta示例:
 
     ```ts
   try {
@@ -74,7 +74,7 @@ ArkTS-Sta接口说明：
 
 3. 取消订阅本客户端订阅的所有设备静止姿态（支架态）感知事件。
 
-  ArkTS-Dyn示例
+  ArkTS-Dyn示例:
 
   ```ts
   try {
@@ -84,7 +84,7 @@ ArkTS-Sta接口说明：
   }
   ```
 
-  ArkTS-Sta示例
+  ArkTS-Sta示例:
 
   ```ts
   try {
@@ -96,7 +96,7 @@ ArkTS-Sta接口说明：
 
 4. 取消订阅设备静止姿态（支架态）感知事件的特定回调。
 
-  ArkTS-Dyn示例
+  ArkTS-Dyn示例:
 
   ```ts
   import { Callback } from '@ohos.base';
@@ -117,8 +117,8 @@ ArkTS-Sta接口说明：
     console.info('off failed, err = ' + err);
   }
   ```
-  
-  ArkTS-Sta示例
+
+  ArkTS-Sta示例:
 
   ```ts
   import { Callback } from '@ohos.base';
