@@ -42,45 +42,45 @@ import { pointer } from '@kit.InputKit';
 <!-- @[pointer_visible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTsPointer/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-        Text("Click to hide pointer")
-          .onClick(() => {
-            // 1.应用切换到全屏播放
-            // 2.调用鼠标光标隐藏接口隐藏光标
-            try {
-              pointer.setPointerVisible(false, (error: Error) => {
-                if (error) {
-                  hilog.error(DOMAIN, 'Pointer', `Set pointer visible failed, error: %{public}s`,
-                    JSON.stringify(error, ["code", "message"]));
-                  return;
-                }
-                hilog.info(DOMAIN, 'Pointer', 'Set pointer visible success.');
-              });
-            } catch (error) {
-              hilog.error(DOMAIN, 'Pointer', `The mouse pointer hide attributes is failed. %{public}s`,
-                JSON.stringify(error, ["code", "message"]));
-            }
-          })
-		// ···
+Text("Click to hide pointer")
+  .onClick(() => {
+    // 1.应用切换到全屏播放
+    // 2.调用鼠标光标隐藏接口隐藏光标
+    try {
+      pointer.setPointerVisible(false, (error: Error) => {
+        if (error) {
+          hilog.error(DOMAIN, 'Pointer', `Set pointer visible failed, error: %{public}s`,
+            JSON.stringify(error, ["code", "message"]));
+          return;
+        }
+        hilog.info(DOMAIN, 'Pointer', 'Set pointer visible success.');
+      });
+    } catch (error) {
+      hilog.error(DOMAIN, 'Pointer', `The mouse pointer hide attributes is failed. %{public}s`,
+        JSON.stringify(error, ["code", "message"]));
+    }
+  })
+  // ...
 
-        // 3.应用退出全屏播放
-        // 4.调用鼠标光标显示接口显示光标
-        Text("Click to display pointer")
-          .onClick(() => {
-            try {
-              pointer.setPointerVisible(true, (error: Error) => {
-                if (error) {
-                  hilog.error(DOMAIN, 'Pointer', `Set pointer visible failed, error: %{public}s`,
-                    JSON.stringify(error, ["code", "message"]));
-                  return;
-                }
-                hilog.info(DOMAIN, 'Pointer', 'Set pointer visible success.');
-              });
-            } catch (error) {
-              hilog.error(DOMAIN, 'Pointer', `Set pointer visible failed, error: %{public}s`,
-                JSON.stringify(error, ["code", "message"]));
-            }
-          })
-		// ···
+// 3.应用退出全屏播放
+// 4.调用鼠标光标显示接口显示光标
+Text("Click to display pointer")
+  .onClick(() => {
+    try {
+      pointer.setPointerVisible(true, (error: Error) => {
+        if (error) {
+          hilog.error(DOMAIN, 'Pointer', `Set pointer visible failed, error: %{public}s`,
+            JSON.stringify(error, ["code", "message"]));
+          return;
+        }
+        hilog.info(DOMAIN, 'Pointer', 'Set pointer visible success.');
+      });
+    } catch (error) {
+      hilog.error(DOMAIN, 'Pointer', `Set pointer visible failed, error: %{public}s`,
+        JSON.stringify(error, ["code", "message"]));
+    }
+  })
+  // ...
 ```
 
 
