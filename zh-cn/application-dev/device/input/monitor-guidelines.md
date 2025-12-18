@@ -115,19 +115,19 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
     event.axisType = OH_Input_GetMouseEventAxisType(mouseEvent);
     event.axisValue = OH_Input_GetMouseEventAxisValue(mouseEvent);
     event.actionTime = OH_Input_GetMouseEventActionTime(mouseEvent);
-	// ···
+    // ...
 }
 
 static napi_value AddMouseEventMonitor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_AddMouseEventMonitor(OnMouseEventCallback);
-	// ···
+    // ...
 }
 
 static napi_value RemoveMouseEventMonitor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_RemoveMouseEventMonitor(OnMouseEventCallback);
-	// ···
+    // ...
 }
 ```
 
