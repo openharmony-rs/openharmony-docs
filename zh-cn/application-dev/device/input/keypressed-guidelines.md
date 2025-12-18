@@ -37,7 +37,7 @@
 
 ``` TypeScript
 import { inputConsumer, KeyEvent } from '@kit.InputKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { KeyCode } from '@kit.InputKit';
 
 const DOMAIN = 0x0000;
@@ -186,6 +186,5 @@ struct TestDemo14 {
     }.width('100%').height('100%')
   }
 }
-
 ```
 
