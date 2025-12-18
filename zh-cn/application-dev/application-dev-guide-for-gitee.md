@@ -63,5 +63,5 @@ DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。在[工具](ht
 
 ### Readme
 
-如果需要了解各子系统的原理和基本信息，可以参考“[docs/zh-cn/readme](../readme)”目录中各子系统readme的介绍。
+如果需要了解各子系统的原理和基本信息，可以参考“[docs/zh-cn/readme](../readme.md)”目录中各子系统readme的介绍。
 
