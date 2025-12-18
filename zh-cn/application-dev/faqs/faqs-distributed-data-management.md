@@ -1,5 +1,11 @@
 # 数据管理开发常见问题
 
+<!--Kit: ArkData-->
+<!--Subsystem: DistributedDataManager-->
+<!--Owner: @widecode-->
+<!--Designer: @widecode-->
+<!--Tester: @logic42-->
+<!--Adviser: @ge-yafang-->
 
 ## 关系型数据库rdb中如何进行加密(API 9)
 
@@ -40,7 +46,7 @@
 
 示例：
 
-```
+```ts
 AppStorage.Link('varA')
 PersistentStorage.PersistProp("varA", "111");
 @Entry
@@ -88,7 +94,7 @@ PixelMap应该被转换成相应的ArrayBuffer再放进数据库。
 
 示例：
 
-```
+```shell
  hdc file recv /data/app/el2/100/database/<bundleName>/entry/db/<tableName>  ./<path>
 ```
 
