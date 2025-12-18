@@ -146,7 +146,7 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 ### OH_ResourceManager_OpenRawFile64()
 
 ```c
-OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, const char *fileName)
+RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, const char *fileName)
 ```
 
 **描述**
