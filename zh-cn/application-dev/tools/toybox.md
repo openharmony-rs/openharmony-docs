@@ -347,10 +347,10 @@ cat可以打印文件内容，如果试图cat一个目录，会有报错 "Is a d
 
 1. 实际调用的是shell的实现而非toybox。
 
-对于time/test/pwd/realpath/ulimit/kill等命令，shell会直接使用自己的实现。
+   对于time/test/pwd/realpath/ulimit/kill等命令，shell会直接使用自己的实现。
 
-此时如果想要调用toybox命令，请使用"toybox [command] [arguments...]"的格式。
+   此时如果想要调用toybox命令，请使用"toybox [command] [arguments...]"的格式。
 
 2. 设备未将该命令配置给toybox，而是有另外的实现。
 
-此时如果想要调用toybox命令，请使用"toybox [command] [arguments...]"的格式。
+   此时如果想要调用toybox命令，请使用"toybox [command] [arguments...]"的格式。
