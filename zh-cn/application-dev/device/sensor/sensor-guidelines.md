@@ -102,7 +102,7 @@
      const sensorList: sensor.Sensor[] = sensor.getSensorListByDeviceSync(this.deviceId);
      console.info(`sensorList length: ${sensorList.length}`);
      console.info(`sensorList: ${JSON.stringify(sensorList)}`);
-     // ···
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
@@ -117,10 +117,10 @@
    try {
      this.deviceId = -1;
      // 第二个参数deviceId 非必填
-     const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELERO this.   deviceId);
+     const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELEROMETER, this.deviceId);
      console.info(`sensorList length: ${sensorList.length}`);
      console.info(`sensorList Json: ${JSON.stringify(sensorList)}`);
-     // ···
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
@@ -222,7 +222,7 @@
          deviceId: ${data.deviceId} deviceName: ${data.deviceName}
          sensorId: ${data.sensorId} sensorIndex:${data.sensorIndex} isSensorOnline: ${data.isSensorOnline}`);
      });
-     // ···
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
@@ -236,7 +236,7 @@
    ``` TypeScript
    try {
      sensor.off('sensorStatusChange');
-     // ···
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
