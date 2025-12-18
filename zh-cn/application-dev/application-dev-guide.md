@@ -1,5 +1,12 @@
 # 应用开发导读
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @lingminghw--->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @lingminghw--->
+
 应用开发文档用于指导开发者通过OpenHarmony提供的接口完成应用开发。当前应用开发文档提供了在标准系统上开发应用的JS接口。
 
 在应用开发的文档中，您可以获取到如下几方面的内容：
