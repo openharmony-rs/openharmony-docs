@@ -2582,3 +2582,55 @@ struct SearchTest {
 ```
 
 ![selectedDragPreviewStyle](figures/searchSelectedDragPreviewStyle.png)
+
+### 示例25（删除文本框内的最后一个字符）
+
+该示例通过调用[deleteBackward](ts-types.md#deletebackward23)接口删除文本框内最后一个字符。
+
+从API version 23开始，新增[deleteBackward](ts-types.md#deletebackward23)接口。
+
+ArkTS-Dyn示例：
+
+``` typescript
+import { Entry, Component, SearchController, Column, Search, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Page {
+  controller: SearchController = new SearchController();
+
+  build() {
+    Column() {
+      Search({ placeholder: '搜索框示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` typescript
+import { Entry, Component, SearchController, Column, Search, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Page {
+  controller: SearchController = new SearchController();
+
+  build() {
+    Column() {
+      Search({ placeholder: '搜索框示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+![searchDeleteBackward](figures/Search_DeleteBackward.gif)

@@ -3674,3 +3674,52 @@ struct TextInputTest {
 ```
 
 ![selectedDragPreviewStyle](figures/textInputSelectedDragPreviewStyle.png)
+
+### 示例25（删除文本框内的最后一个字符）
+
+该示例通过调用[deleteBackward](ts-types.md#deletebackward23)接口删除文本框内最后一个字符。
+
+从API version 23开始，新增[deleteBackward](ts-types.md#deletebackward23)接口。
+
+ArkTS-Dyn示例：
+``` typescript
+@Entry
+@Component
+struct Page {
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: 'TextInput输入框Deletebackward示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` typescript
+import { Entry, Component, TextInputController, Column, TextInput, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Page {
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: 'TextInput输入框Deletebackward示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+![textInputDeleteBackward](figures/TextInput_DeleteBackward.gif)
