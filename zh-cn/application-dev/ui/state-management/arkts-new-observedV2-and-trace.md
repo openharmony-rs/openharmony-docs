@@ -378,7 +378,7 @@ struct Index {
 
 - 继承自\@ObservedV2的类无法和\@State等V1的装饰器混用，运行时报错。
 
-<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->   
+<!-- @[Inheritance_Mixture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagerestrictions/InheritanceMixture.ets) -->
 
 ``` TypeScript
 // 以@State装饰器为例
@@ -960,7 +960,7 @@ let isInfoByParse: boolean = parseInfo instanceof Info; // false
 
 class-transformer可以通过如下命令安装。
 
-```
+```text
 ohpm install class-transformer
 ```
 
@@ -988,7 +988,7 @@ let isInfoByTransformed: boolean = transformedInfo instanceof Info; // true
 
 reflect-metadata可以通过如下命令安装。
 
-```
+```text
 ohpm install reflect-metadata@0.2.1
 ```
 

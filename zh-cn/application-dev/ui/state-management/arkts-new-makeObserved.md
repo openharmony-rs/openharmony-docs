@@ -252,7 +252,7 @@ collections.Array可以触发UI刷新的API有：
 - 改变数组项本身：sort、fill
 
 其他API不会改变原始数组，所以不会触发UI刷新。
-<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) -->
+<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) --> 
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -372,12 +372,12 @@ struct Page4 {
   }
 }
 ```
-
+![makeobserved-array](figures/makeobserved-array.gif)
 
 **collections.Map**
 
 collections.Map可以触发UI刷新的API有：set、clear、delete。
-<!-- @[foreach_mapCollect_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page5.ets) -->
+<!-- @[foreach_mapCollect_keys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page5.ets) --> 
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -430,12 +430,12 @@ struct Page5 {
   }
 }
 ```
-
+![makeobserved-map](figures/makeobserved-map.gif)
 
 **collections.Set**
 
 collections.Set可以触发UI刷新的API有：add、clear、delete。
-<!-- @[Array_rom_shallow_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page6.ets) -->
+<!-- @[Array_rom_shallow_copy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page6.ets) --> 
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -490,7 +490,7 @@ struct Page6 {
   }
 }
 ```
-
+![makeobserved-set](figures/makeobserved-set.gif)
 
 ### makeObserved的入参为JSON.parse的返回值
 JSON.parse返回Object，无法使用@Trace装饰其属性，可以使用makeObserved使其变为可观察数据。
@@ -547,7 +547,7 @@ struct Page7 {
 makeObserved可以和V2的装饰器一起使用。对于[@Monitor](./arkts-new-monitor.md)和[@Computed](./arkts-new-computed.md)，因为makeObserved传入@Observed或ObservedV2装饰的类实例会返回其自身，所以@Monitor或者@Computed不能定义在class中，只能定义在自定义组件里。
 
 例子如下：
-<!-- @[name_change_from_monitor_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets) -->
+<!-- @[name_change_from_monitor_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets) --> 
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -621,7 +621,7 @@ struct Child {
   }
 }
 ```
-
+![makeobserved-componentv2](figures/makeobserved-componentv2.gif)
 
 ### makeObserved在@Component内使用
 makeObserved不能和V1的状态变量装饰器一起使用，但可以在@Component装饰的自定义组件里使用。
