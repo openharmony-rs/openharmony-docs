@@ -2,12 +2,11 @@
 
 ## 概述
 
- - 本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
- - 本模块支持记忆链接的功能。
-
 MetadataBinding（记忆链接）指由第三方应用提供[鸿蒙App Linking链接](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/applinking-introduction)，系统将当前用户浏览的内容与鸿蒙App Linking链接进行关联并保存的功能。
 
 详细的接口介绍请参考[MetadataBinding接口](../../reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding.md)。
+
+本模块首批接口从API version 18开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 场景介绍
 
