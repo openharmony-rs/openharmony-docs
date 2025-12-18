@@ -760,7 +760,70 @@ Parse json object exception.
 
 **可能原因**
 
+1、JSON 文本语法错误：缺括号、引号、非法转义等。
 
+**处理步骤**
+
+1、确认JSON 文本语法正确。
+
+### 10013002 解析json配置失败
+**错误信息**
+
+Parse json profile failed.
+
+**错误描述**
+
+解析json配置失败。
+
+**可能原因**
+
+1. module.json/config.json文件不包含”app“标签。
+2. module.json/config.json文件不包含”module“标签。
+3. 解析module.json/config.json文件异常。
+
+**处理步骤**
+
+1. 确认module.json/config.json文件包含”app“标签。
+2. 确认module.json/config.json文件包含”module“标签。
+3. 确认JSON 文本语法正确。
+
+### 10013003 检查atomicService属性失败
+**错误信息**
+
+Check module atomicService invalid.
+
+**错误描述**
+
+检查atomicService属性失败。
+
+**可能原因**
+
+1. HAP/HSP的bundleType不是atomicService时module.json配置了”atomicService“标签。
+
+**处理步骤**
+
+1. 确认HAP/HSP的bundleType不是atomicService时module.json不允许配置”atomicService“标签。
+
+### 10013004 解析module.json文件失败
+**错误信息**
+
+Failed to parse module.json for the Stage module.
+
+**错误描述**
+
+解析module.json文件失败。
+
+**可能原因**
+
+1. module.json文件内不包含”versionCode“标签。
+2. module.json文件内不包含”versionName“标签。
+3. module.json文件内”module“标签内不包含”name“标签。
+
+**处理步骤**
+
+1. 确认module.json文件内包含”versionCode“标签。
+2. 确认module.json文件内包含”versionName“标签。
+3. 确认module.json文件内”module“标签内包含”name“标签。
 
 ### 10013005 检查模块bundleType失败
 **错误信息**
@@ -769,38 +832,38 @@ Failed to parse module.json and bundleType.
 
 **错误描述**
 
-检查模块bundleType失败。
+解析bundleType属性失败。
 
 **可能原因**
 
-不符合配置要求，例如：
-1. 模块的[app.json5](../quick-start/app-configuration-file.md)配置文件中`bundleType`为app，但[module.json5](../quick-start/module-configuration-file.md)中的`installationFree`属性值为true。
-2. 模块的app.json5配置文件中`bundleType`为atomicService，但module.json5中的`installationFree`属性值为false。
-3. 模块的app.json5配置文件中`bundleType`为shared，但module.json5中的`type`属性值不是shared。
+1. module.json文件内”module“标签内不包含”type“标签。
+2. module.json文件内”app“标签内”bundleType“标签值为”app“时，module.json文件内”module“标签内”installationFree“标签值为true。
+3. module.json文件内”app“标签内”bundleType“标签值为”atomicService“时，module.json文件内”module“标签内”installationFree“标签值为false。"
+
 
 **处理步骤**
 
-1. 确保app.json5配置文件中`bundleType`为app时，module.json5中的`installationFree`属性值为false。
-2. 确保app.json5配置文件中`bundleType`为atomicService时，module.json5中的`installationFree`属性值为true。
-3. 确保app.json5配置文件中`bundleType`为shared时，module.json5中的`type`属性值也是shared。
-4. 当有多条报错信息时，优先根据第一条报错信息进行排查。
+1. 确认module.json文件内”module“标签内包含”type“标签。
+2. module.json文件内”app“标签内”bundleType“标签值为”app“时，确认module.json文件内”module“标签内”installationFree“标签值为false。
+3. module.json文件内”app“标签内”bundleType“标签值为”appService“时，确认module.json文件内”module“标签内”installationFree“标签值为true。
+
 
 ### 10013006 检查entry模块中的ability失败
 **错误信息**
 
-check entry module at least one ability failed.
+Check entry module at least one ability failed.
 
 **错误描述**
 
-Entry类型包中没有ability。
+检查模块的ability属性失败。
 
 **可能原因**
 
-Entry类型包中不存在ability，该错误可能是由于`module.json5`未配置`abilities`或者`abilities`配置为空引起。
+1. HAP的type是entry且bundleType是atomicService时不包含ability。
 
 **处理步骤**
 
-检查[module.json5](../quick-start/module-configuration-file.md)，确保Entry类型包`abilities`正确配置了ability。
+1. HAP的type是entry且bundleType是atomicService时确认包含至少一个ability。
 
 ### 10013007 检查installationFree错误
 **错误信息**
@@ -813,15 +876,74 @@ Check module atomicService installationFree invalid.
 
 **可能原因**
 
-1. `app.json5`中的`bundleType`配置了无效值。
-2. 当`bundleType`为shared时，`module.json5`中`installationFree`未设置为false。
-3. 当`installationFree`为true时，`bundleType`未设置为atomicService。
+1. module.json文件内”app“标签内”bundleType“标签值为”app“时，module.json文件内”module“标签内”installationFree“标签值为true。
+2. module.json文件内”app“标签内”bundleType“标签值为”atomicService“时，module.json文件内”module“标签内”installationFree“标签值为false。
+3. module.json文件内”app“标签内”bundleType“标签值为”shared“时，module.json文件内”module“标签内”installationFree“标签值为true。
+4. module.json文件内”app“标签内”bundleType“标签值为”appService“时，module.json文件内”module“标签内”installationFree“标签值为true。
+5. module.json文件内”app“标签内”bundleType“标签值为”appPlugin“时，module.json文件内”module“标签内”installationFree“标签值为true。
 
 **处理步骤**
 
-1. 检查[app.json5](../quick-start/app-configuration-file.md)，确保`bundleType`设置为app，atomicService，shared<!--Del-->，appService<!--DelEnd-->之一。
-2. 如果`bundleType`为shared，确保[module.json5](../quick-start/module-configuration-file.md)中的`installationFree`设置为false。
-3. 如果`installationFree`为true，确保`bundleType`设置为atomicService。
+1. module.json文件内”app“标签内”bundleType“标签值为”app“时，确认module.json文件内”module“标签内”installationFree“标签值为false。
+2. module.json文件内”app“标签内”bundleType“标签值为”atomicService“时，确认module.json文件内”module“标签内”installationFree“标签值为true。
+3. module.json文件内”app“标签内”bundleType“标签值为”shared“时，确认module.json文件内”module“标签内”installationFree“标签值为false。
+4. module.json文件内”app“标签内”bundleType“标签值为”appService“时，确认module.json文件内”module“标签内”installationFree“标签值为false。
+5. module.json文件内”app“标签内”bundleType“标签值为”appPlugin“时，确认module.json文件内”module“标签内”installationFree“标签值为false。
+
+### 10013008 解析bundleName属性失败
+**错误信息**
+
+Get the bundleName from json file failed.
+
+**错误描述**
+
+解析bundleName属性失败。
+
+**可能原因**
+
+1. module.json文件内”app“标签内不包含”bundleName“属性。
+
+**处理步骤**
+
+1. 确认module.json文件内”app“标签内包含”bundleName“属性。
+
+### 10013009 解析proxyData属性失败
+**错误信息**
+
+Failed to parse module.json and proxyData object.
+
+**错误描述**
+
+解析proxyData属性失败。
+
+**可能原因**
+
+1. module.json文件内”module“标签内”proxyData“标签中某个元素不包含”uri“标签。
+2. module.json文件内”module“标签内”proxyDatas“标签中某个元素不包含”uri“标签。
+
+**处理步骤**
+
+1. 确认module.json文件内”module“标签内”proxyData“标签中各元素包含”uri“标签。
+2. module.json文件内”module“标签内”proxyDatas“标签中各元素包含”uri“标签。
+
+### 10013010 检查bundleType一致性失败
+**错误信息**
+
+Failed to check the consistency of bundleType.
+
+**错误描述**
+
+检查bundleType一致性失败。
+
+**可能原因**
+
+1. 各 HAP 模块的 bundleType 配置不一致。
+2. 各 HSP 模块的 bundleType 配置不一致。
+
+**处理步骤**
+1. 确认各 HAP 模块的 bundleType 配置一致。
+2. 确认各 HSP 模块的 bundleType 配置一致。
+Make sure the bundleType is consistency for different modules.
 
 ### 10014001 未找到可用文件
 **错误信息**
