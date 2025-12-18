@@ -337,7 +337,7 @@ let vpnConfig: vpnExtension.VpnConfig = {
   dnsAddresses: ['223.x.x.5', '223.x.x.6'],
   // VPN生效受信任的应用信息列表的应用。
   trustedApplications: ['com.test.browser'],
-  // 不生效VPN被阻止的应用信息列表的应用。
+  // 被阻止的应用信息列表。
   blockedApplications: ['com.test.games'],
 }
 ```
