@@ -503,4 +503,4 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回SURFACE_ERROR_OK。<br>buffer，virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>buffer，virAddr是空指针或fenceFd小于0时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>映射失败时返回NATIVE_ERROR_UNKNOWN。 |
