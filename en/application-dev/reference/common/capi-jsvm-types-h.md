@@ -53,6 +53,7 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | [JSVM_Deferred__*](capi-jsvm-jsvm-deferred--8h.md)                                                | JSVM_Deferred                           | Defines the deferred object.                                                                                                                                                                                                                                                                                                                                                                                                             |
 | [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg                 | Defines the pointer type of the struct that contains the property handler.                                                                                                                                                                                                                                                                                                                                                                                                          |
 | [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)                                         | JSVM_Callback   | Defines the pointer types of the native functions provided by user. These functions are exposed to JavaScript via JSVM-API.                                |
+| [JSVM_CompileProfile](capi-jsvm-jsvm-compileprofile.md) | JSVM_CompileProfile | Defines the compilation sampling file transferred together with **JSVM_COMPILE_COMPILE_PROFILE**.|
 
 ### Enums
 
@@ -91,11 +92,17 @@ Defines JSVM-API types. JSVM-API is used to provide independent, standard, and c
 | [typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const char* message)](#jsvm_handlerforfatalerror)                                       | JSVM_CDECL* JSVM_HandlerForFatalError | Defines a pointer to the handler for Fatal-Error callback.|
 | [typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)](#jsvm_handlerforpromisereject) | JSVM_CDECL* JSVM_HandlerForPromiseReject | Defines a pointer to the handler for Promise-Reject callback.|
 
+### Variables
+
+| Name| typedef Keyword| Description|
+| ---- | ------------- | ---- |
+| uint16_t    | char16_t   | Create an alias, **char16_t**, for **uint16_t**.<br>This code ensures that the **char16_t** type is available in all target compilation environments, even in some old environments that do not support it. **char16_t** is a new basic data type introduced in C++11. It is used to store 16-bit characters and represent UTF-16-encoded characters.<br>If the compiler does not recognize **char16_t**, manually define a custom type whose underlying implementation is a 16-bit unsigned integer. Prerequisite is as follows: The current compiler is not a C++ compiler|or| the compiler is a Microsoft Visual C++ compiler and the version is earlier than Visual Studio 2015 (excluded).|
+
 ## Enum Description
 
 ### JSVM_PropertyAttributes
 
-```
+```c
 enum JSVM_PropertyAttributes
 ```
 
@@ -105,19 +112,22 @@ Enumerates the behaviors of controlling JavaScript object properties.
 
 **Since**: 11
 
-| Enum Item                                                                            | Description                                                 |
-|---------------------------------------------------------------------------------|-----------------------------------------------------|
-| JSVM_DEFAULT = 0                                                                | No explicit attribute set on the property.                                      |
-| JSVM_WRITABLE = 1 << 0                                                          | Writable property.                                           |
-| JSVM_ENUMERABLE = 1 << 1                                                        | Enumerable property.                                          |
-| JSVM_CONFIGURABLE = 1 << 2                                                      | Configurable property.                                          |
-| JSVM_STATIC = 1 << 10                                                           | Static property of the class, instead of the default instance property. Used only by **OH_JSVM_DefineClass**.|
-| JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE                        |Configurable, writable, but not enumerable property, like a method of a JavaScript class.                     |
-| JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE | Writable, enumerable, and configurable property, like a property set by value assignment in JavaScript.|
+| Enum Item                                                                               | Description                                                 |
+|---------------------------------------------------------------------------------------|-----------------------------------------------------|
+| JSVM_DEFAULT = 0                                                                      | No explicit attribute set on the property.                                      |
+| JSVM_WRITABLE = 1 << 0                                                                | Writable property.                                           |
+| JSVM_ENUMERABLE = 1 << 1                                                              | Enumerable property.                                          |
+| JSVM_CONFIGURABLE = 1 << 2                                                            | Configurable property.                                          |
+| JSVM_NO_RECEIVER_CHECK = 1 << 3                                                       | Receiver used to mark the local methods does not need to be checked. If **JSVM_NO_RECEIVER_CHECK** is not set, the method accepts only the instance of the defined class as the receiver. Otherwise, an exception "TypeError: illegal call" is thrown to JSVM.                                          |
+| JSVM_STATIC = 1 << 10                                                                 | Static property of the class, instead of the default instance property. Used only by **OH_JSVM_DefineClass**.|
+| JSVM_DEFAULT_METHOD = JSVM_WRITABLE \| JSVM_CONFIGURABLE                              | Configurable, writable, but not enumerable property, like a method of a JavaScript class.                     |
+| JSVM_METHOD_NO_RECEIVER_CHECK = JSVM_DEFAULT_METHOD \| JSVM_NO_RECEIVER_CHECK         | Class method whose receiver does not need to be checked.                     |
+| JSVM_DEFAULT_JSPROPERTY = JSVM_WRITABLE \| JSVM_ENUMERABLE \| JSVM_CONFIGURABLE       | Writable, enumerable, and configurable property, like a property set by value assignment in JavaScript.|
+| JSVM_JSPROPERTY_NO_RECEIVER_CHECK = JSVM_DEFAULT_JSPROPERTY \| JSVM_NO_RECEIVER_CHECK | Object property whose receiver does not need to be checked.|
 
 ### JSVM_ValueType
 
-```
+```c
 enum JSVM_ValueType
 ```
 
@@ -142,7 +152,7 @@ Enumerates **JSVM_Value** types.
 
 ### JSVM_TypedarrayType
 
-```
+```c
 enum JSVM_TypedarrayType
 ```
 
@@ -168,7 +178,7 @@ Enumerates **TypedArray** types.
 
 ### JSVM_Status
 
-```
+```c
 enum JSVM_Status
 ```
 
@@ -209,7 +219,7 @@ Enumerates complete status codes indicating whether the JSVM-API call is success
 
 ### JSVM_KeyCollectionMode
 
-```
+```c
 enum JSVM_KeyCollectionMode
 ```
 
@@ -226,7 +236,7 @@ Enumerates ranges of properties to be searched for.
 
 ### JSVM_KeyFilter
 
-```
+```c
 enum JSVM_KeyFilter
 ```
 
@@ -247,7 +257,7 @@ Enumerates key filters. You can use OR to construct a composite filter.
 
 ### JSVM_KeyConversion
 
-```
+```c
 enum JSVM_KeyConversion
 ```
 
@@ -264,7 +274,7 @@ Enumerates key conversion options.
 
 ### JSVM_MemoryPressureLevel
 
-```
+```c
 enum JSVM_MemoryPressureLevel
 ```
 
@@ -282,7 +292,7 @@ Enumerates memory pressure levels.
 
 ### JSVM_RegExpFlags
 
-```
+```c
 enum JSVM_RegExpFlags
 ```
 
@@ -307,7 +317,7 @@ Enumerates regular expression flags. They can be used to enable a set of flags.
 
 ### JSVM_InitializedFlag
 
-```
+```c
 enum JSVM_InitializedFlag
 ```
 
@@ -324,7 +334,7 @@ Enumerates the initialization modes of flags.
 
 ### JSVM_WasmOptLevel
 
-```
+```c
 enum JSVM_WasmOptLevel
 ```
 
@@ -341,7 +351,7 @@ Enumerates WebAssembly optimization levels.
 
 ### JSVM_CacheType
 
-```
+```c
 enum JSVM_CacheType
 ```
 
@@ -358,7 +368,7 @@ Enumerates cache types.
 
 ### JSVM_MicrotaskPolicy
 
-```
+```c
 enum JSVM_MicrotaskPolicy
 ```
 
@@ -375,7 +385,7 @@ Enumerates JSVM microtask execution policies.
 
 ### JSVM_TraceCategory
 
-```
+```c
 enum JSVM_TraceCategory
 ```
 
@@ -397,7 +407,7 @@ Enumerates categories of the JSVM internal trace events.
 
 ### JSVM_CBTriggerTimeForGC
 
-```
+```c
 enum JSVM_CBTriggerTimeForGC
 ```
 
@@ -414,7 +424,7 @@ Enumerates the timings when the callback is triggered.
 
 ### JSVM_GCType
 
-```
+```c
 enum JSVM_GCType
 ```
 
@@ -435,7 +445,7 @@ Enumerates GC types.
 
 ### JSVM_GCCallbackFlags
 
-```
+```c
 enum JSVM_GCCallbackFlags
 ```
 
@@ -457,7 +467,7 @@ Enumerates GC callback flags.
 
 ### JSVM_PromiseRejectEvent
 
-```
+```c
 enum JSVM_PromiseRejectEvent
 ```
 
@@ -471,13 +481,13 @@ Enumerates reject events for a promise.
 | -- | -- |
 | JSVM_PROMISE_REJECT_OTHER_REASONS = 0 | A promise is rejected, but the rejection reason is unknown or unclear.|
 | JSVM_PROMISE_REJECT_WITH_NO_HANDLER = 1 | A promise is rejected but no handler is available.|
-| JSVM_PROMISE_HANDLER_ADDED_AFTER_REJECT = 2 | A handler is added after a promise is rejected.|
+| JSVM_PROMISE_ADD_HANDLER_AFTER_REJECTED = 2 | A handler is added after a promise is rejected.|
 | JSVM_PROMISE_REJECT_AFTER_RESOLVED = 3 | Attempts to reject a promise after this promise is resolved.|
 | JSVM_PROMISE_RESOLVE_AFTER_RESOLVED = 4 | Attempts to resolve a promise after this promise is resolved.|
 
 ### JSVM_MessageErrorLevel
 
-```
+```c
 enum JSVM_MessageErrorLevel
 ```
 
@@ -498,7 +508,7 @@ Enumerates error message levels.
 
 ### JSVM_DefineClassOptionsId
 
-```
+```c
 enum JSVM_DefineClassOptionsId
 ```
 
@@ -516,7 +526,7 @@ Enumerates definition modes for a class.
 
 ### JSVM_DebugOption
 
-```
+```c
 enum JSVM_DebugOption
 ```
 
@@ -535,7 +545,7 @@ Enumerates debugging options.
 
 ### JSVM_Finalize()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_Finalize)(JSVM_Env env,void* finalizeData,void* finalizeHint)
 ```
 
@@ -547,7 +557,7 @@ Defines a pointer to the **JSVM_Finalize** function. It is passed in when a nati
 
 ### JSVM_OutputStream()
 
-```
+```c
 typedef bool (JSVM_CDECL* JSVM_OutputStream)(const char* data,int size,void* streamData)
 ```
 
@@ -565,7 +575,7 @@ Defines a pointer to the callback of the ASCII output stream. **data** indicates
 
 ### JSVM_HandlerForGC()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_HandlerForGC)(JSVM_VM vm, JSVM_GCType gcType, JSVM_GCCallbackFlags flags, void* data)
 ```
 
@@ -577,7 +587,7 @@ Defines a pointer to the handler for GC callback.
 
 ### JSVM_HandlerForOOMError()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_HandlerForOOMError)(const char* location,const char* detail,bool isHeapOOM)
 ```
 
@@ -589,7 +599,7 @@ Defines a pointer to the handler for OOM-Error callback.
 
 ### JSVM_HandlerForFatalError()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_HandlerForFatalError)(const char* location,const char* message)
 ```
 
@@ -601,7 +611,7 @@ Defines a pointer to the handler for Fatal-Error callback.
 
 ### JSVM_HandlerForPromiseReject()
 
-```
+```c
 typedef void (JSVM_CDECL* JSVM_HandlerForPromiseReject)(JSVM_Env env, JSVM_PromiseRejectEvent rejectEvent, JSVM_Value rejectInfo)
 ```
 
