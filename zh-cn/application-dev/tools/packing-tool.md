@@ -1149,10 +1149,56 @@ Failed to merge two pack.info files into one pack.info file by packagePair.
 1. 查看顶部错误码信息，确认具体错误信息。
 2. 根据日志中“Error Message:**”信息异常信息。
 
-### 10014001 未找到可用文件
+### 10013021 合并pack.info文件失败
 **错误信息**
 
-File available not found exception.
+Failed to merge two pack.info json objects into one pack.info json object by packagePair.
+
+**错误描述**
+
+合并pack.info文件失败。
+
+**可能原因**
+
+1. 参与合并的两个pack.info文件其中一个不包含”summary“标签。
+2. 参与合并的两个pack.info文件其中一个”summary“标签内不包含”modules“标签。
+3. 参与合并的两个pack.info文件其中一个不包含”packages“标签。
+4. 某app包的pack.info文件中”summary/modules/distro“标签声明的moduleName集合与app包内实际模块不匹配。
+5. 某app包的pack.info文件中”packages“标签声明的”name“集合与app包内模块文件名不匹配。
+
+**处理步骤**
+
+1. 确认参与合并的两个pack.info文件均包含”summary“标签。
+2. 确认参与合并的两个pack.info文件”summary“标签包含”modules“标签。
+3. 确认参与合并的两个pack.info文件均包含”packages“标签。
+4. 确认app包的pack.info文件中”summary/modules/distro“标签声明的moduleName集合与app包内实际模块匹配。
+5. 确认app包的pack.info文件中”packages“标签声明的”name“集合与app包内模块文件名匹配。
+
+### 10013022 解析pack.info文件的forms属性失败
+**错误信息**
+
+Failed to parse pack.info forms.
+
+**错误描述**
+
+解析pack.info文件的forms属性失败。
+
+**可能原因**
+
+1. pack.info文件中forms标签内某元素不包含”defaultDimension“标签。
+2. pack.info文件中forms标签内某元素”defaultDimension“标签值包含多个‘*’。
+3. pack.info文件中forms标签内某元素不包含”supportDimensions“标签。
+
+**处理步骤**
+
+1. 确认pack.info文件中forms标签内各元素均包含”defaultDimension“标签。
+2. 确认pack.info文件中forms标签内各元素”defaultDimension“标签值均只包含1个‘*’。
+3. 确认pack.info文件中forms标签各某元素均包含”supportDimensions“标签。
+
+### 10014001 使用打包工具打包时，需要打包的文件不可使用
+**错误信息**
+
+File avaiable not found exception.
 
 **错误描述**
 
@@ -1169,6 +1215,155 @@ File available not found exception.
 1. 确认提供的文件路径正确，并检查该文件是否存在。
 2. 检查是否有程序（如压缩软件、文件管理器）占用文件，关闭相关进程后重试。
 3. 检查并调整文件的访问权限，例如当前用户可以读取、修改、删除文件。
+
+### 10014002 关闭zip归档输出流抛异常
+**错误信息**
+
+Close zip output stream exception.
+
+**错误描述**
+
+关闭zip归档输出流抛异常。
+
+**可能原因**
+
+1. 磁盘I/O失败。
+2. 磁盘空间不足。
+
+**处理步骤**
+
+根据日志中“Error Message:**”信息确认具体错误信息，下面列举可能原因对应的处理措施。
+1. 确认磁盘正常。
+2. 确认磁盘空间剩余配额充足。
+Please check the related exception message and modify the operation.
+
+### 10014003 关闭I/O 输入流抛异常
+**错误信息**
+
+IO exception when closing stream.
+
+**错误描述**
+
+关闭I/O 输入流抛异常。
+
+**可能原因**
+
+1. 底层文件描述符已经异常失效。
+
+**处理步骤**
+
+根据日志中“Error Message:**”信息确认异常。
+1. 检查系统日志， 确认文件系统/磁盘正常。
+
+### 10014004 解析文件内容失败
+**错误信息**
+
+Get file content failed.
+
+**错误描述**
+
+解析文件内容失败。
+
+**可能原因**
+
+1. 文件I/O操作抛异常。
+
+**处理步骤**
+
+根据日志中“Error Message:**”信息确认异常。
+
+### 10014005 文件不存在
+**错误信息**
+
+Parse file not exist.
+
+**错误描述**
+
+文件不存在。
+
+**可能原因**
+
+1. 文件不存在。
+
+**处理步骤**
+
+根据日志中“Error Message:**”信息确认文件路径，确认文件存在。
+
+### 10014006 解析文件大小失败
+**错误信息**
+
+Get file size failed.
+
+**错误描述**
+
+解析文件大小失败。
+
+**可能原因**
+
+1. 文件不存在。
+2. 路径指向的不是文件。
+
+**处理步骤**
+
+根据日志中“Error Message:**”信息确认文件路径，确认文件存在且是文件类型。
+
+### 10014007 文件I/O异常
+**错误信息**
+
+File IO exception.
+
+**错误描述**
+
+文件I/O异常。
+
+**可能原因**
+
+1. 文件不存在。
+2. 操作文件权限不足。
+3. 磁盘空间不足。
+
+**处理步骤**
+
+根据日志中“Error Message:**”信息确认文件路径。
+1. 确认文件存在。
+2. 确认当前用户拥有操作文件权限。
+3. 确认磁盘空间剩余配额充足。
+
+### 10014008 压缩文件抛异常
+**错误信息**
+
+Compress file exception.
+
+**错误描述**
+
+压缩文件抛异常。
+
+**可能原因**
+
+1、打包压缩文件时抛异常。
+
+**处理步骤**
+
+根据日志中“Error Message:**”信息，确认异常。
+1. 检查系统日志，确认文件系统/磁盘正常。
+
+### 10014009 删除文件失败
+**错误信息**
+
+File delete failed.
+
+**错误描述**
+
+删除文件失败。
+
+**可能原因**
+
+1. 文件被其它进程占用。
+
+**处理步骤**
+
+根据日志中“Error Message:**”信息确认文件路径。
+1. 确认文件当前不被其它进程占用，手动删除文件。
 
 ### 10016001 校验应用属性失败
 **错误信息**
