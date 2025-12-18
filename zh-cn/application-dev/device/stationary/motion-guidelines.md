@@ -10,10 +10,20 @@
 
 ### 接口说明
 
+ArkTS-Dyn接口说明：
+
 | 接口名                                                       | 描述                                   |
 | ------------------------------------------------------------ | -------------------------------------- |
 | on(type:'operatingHandChanged',callback:Callback&lt;OperatingHandStatus&gt;):void; | 订阅操作手感知，操作手结果通过callback返回。 |
 | off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;): void; | 取消订阅操作手感知。                   |
+| getRecentOperatingHandStatus(): OperatingHandStatus;         | 获取最新的操作手状态。                 |
+
+ArkTS-Sta接口说明：
+
+| 接口名                                                       | 描述                                   |
+| ------------------------------------------------------------ | -------------------------------------- |
+| onOperatingHandChanged(callback:Callback&lt;OperatingHandStatus&gt;):void; | 订阅操作手感知，操作手结果通过callback返回。 |
+| offOperatingHandChanged(callback?: Callback&lt;OperatingHandStatus&gt;): void; | 取消订阅操作手感知。                   |
 | getRecentOperatingHandStatus(): OperatingHandStatus;         | 获取最新的操作手状态。                 |
 
 ### 约束与限制
@@ -37,7 +47,7 @@
 
 2. 定义回调函数接收操作手结果
 
-   ```
+   ```ts
    callback(data:motion.OperatingHandStatus) {
      console.info('callback success' + data);
    };
@@ -45,7 +55,9 @@
 
 3. 订阅操作手感知
 
-   ```
+   ArkTS-Dyn示例:
+
+   ```ts
    try {
       motion.on('operatingHandChanged', this.callback);
       console.info("on succeeded");
@@ -55,9 +67,23 @@
    }
    ```
 
+   ArkTS-Sta示例:
+
+   ```ts
+   try {
+      motion.onOperatingHandChanged(callback);
+      console.info("on succeeded");
+   } catch (err) {
+      let error = err as BusinessError;
+      console.error("Failed on and err code is " + error.code);
+   }
+   ```
+
 4. 取消订阅操作手感知
 
-   ```
+   ArkTS-Dyn示例:
+
+   ```ts
    try {
       motion.off('operatingHandChanged');
       console.info("off succeeded");
@@ -67,9 +93,21 @@
    }
    ```
 
+   ArkTS-Sta示例:
+
+   ```ts
+   try {
+      motion.offOperatingHandChanged();
+      console.info("off succeeded");
+   } catch (err) {
+      let error = err as BusinessError;
+      console.error("Failed off and err code is " + error.code);
+   }
+   ```
+
 5. 获取最新操作手状态
 
-   ```
+   ```ts
    try {
       let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
       console.info('get success' + data);
@@ -78,7 +116,6 @@
       console.error("Failed get and err code is " + error.code);
    }
    ```
-
 
 ## 获取握持手状态开发指导
 
@@ -112,7 +149,7 @@
 
 2. 定义回调函数接收握持手结果
 
-   ```
+   ```ts
    callback(data:motion.HoldingHandStatus) {
      console.info('callback success' + data);
    };
@@ -120,7 +157,7 @@
 
 3. 订阅握持手感知
 
-   ```
+   ```ts
    try {
       motion.on('holdingHandChanged', this.callback);
       console.info("on succeeded");
@@ -132,7 +169,7 @@
 
 4. 取消订阅握持手感知
 
-   ```
+   ```ts
    try {
       motion.off('holdingHandChanged');
       console.info("off succeeded");
