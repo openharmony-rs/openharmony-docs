@@ -121,7 +121,7 @@
     let locale: Intl.Locale = new Intl.Locale('ar');
     // mirrorPath = 'tmp/out/data/'
     mirrorPath = i18n.I18NUtil.getUnicodeWrappedFilePath(path, delimiter, locale);
-    
+  
     // 传入非镜像语言，不处理路径
     let localeZh: Intl.Locale = new Intl.Locale('zh');
     // unMirrorPath = '/data/out/tmp'

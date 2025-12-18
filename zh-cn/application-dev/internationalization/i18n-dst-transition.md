@@ -21,7 +21,7 @@
 1. 导入模块。
 
    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/TimezoneDstSetting.ets) -->
-
+   
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
    ```

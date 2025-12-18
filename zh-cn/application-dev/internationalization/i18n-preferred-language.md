@@ -52,6 +52,7 @@
    <!-- @[clear_preferred_language](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
    
    ``` TypeScript
+   // 清除应用的偏好语言
    try {
      i18n.System.setAppPreferredLanguage('default'); // 清除应用偏好语言
    } catch (error) {
