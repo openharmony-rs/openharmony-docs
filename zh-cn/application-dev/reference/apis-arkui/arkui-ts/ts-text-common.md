@@ -1174,16 +1174,16 @@ constructor(options?: NumericTextTransitionOptions)
 
 ## TextDirection<sup>22+</sup>
 
-文本方向。
+文本排版方向。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                   | 值  | 说明                  |
 | --------------------- | -------  | ------------------- |
-| LTR                   | 0  | 文本方向从左到右。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| RTL                   | 1  | 文本方向从右到左。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| DEFAULT<sup>23+</sup> | 2  | 文本方向遵循组件布局方向。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| AUTO<sup>23+</sup>    | 3  | 文本方向遵循文本书写方向属性，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本方向为从左到右。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| LTR                   | 0  | 文本排版方向从左到右。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| RTL                   | 1  | 文本排版方向从右到左。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| DEFAULT<sup>23+</sup> | 2  | 文本排版方向遵循组件布局方向。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| AUTO<sup>23+</sup>    | 3  | 遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## InputMethodExtraConfig<sup>22+</sup>
 
