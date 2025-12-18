@@ -1,5 +1,11 @@
 # 语言编译运行时常见问题
 
+<!--Kit: NDK-->
+<!--Subsystem: arkcompiler-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @shilei123-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @fang-jinxu-->
 
 ## 从rawfile中获取json格式的字符串后，转换成对应的object对象后，再去调用实例方法时直接崩溃(API 9)
 
