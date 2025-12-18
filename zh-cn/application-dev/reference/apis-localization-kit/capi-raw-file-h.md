@@ -231,7 +231,7 @@ bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDesc
 | 参数项                                               | 描述 |
 |---------------------------------------------------| -- |
 | [const RawFile](capi-rawfile-rawfile.md) *rawFile  | 表示指向[RawFile](capi-rawfile-rawfile.md)的指针。  |
-|  descriptor  |  显示rawfile文件描述符，以及在HAP包中的起始位置和长度。  |
+|  RawFileDescriptor &descriptor  |  显示rawfile文件描述符，以及在HAP包中的起始位置和长度。  |
 
 **返回：**
 
