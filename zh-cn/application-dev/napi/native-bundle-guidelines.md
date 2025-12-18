@@ -452,7 +452,7 @@
 
 **5. js侧调用**
 
-1. 打开src\main\ets\pages\index.ets, 导入"libentry.so"。
+1. 打开src/main/ets/pages/index.ets, 导入"libentry.so"。
 
 
 2. 调用Native接口打印出获取的信息内容。示例如下：
