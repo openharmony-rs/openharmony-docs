@@ -695,7 +695,9 @@ ArkTS-Sta: dynamicRangeMode(value: DynamicRangeMode | undefined)
 
 ### orientation<sup>14+</sup>
 
-orientation(orientation: ImageRotateOrientation)
+ArkTS-Dyn: orientation(orientation: ImageRotateOrientation)
+
+ArkTS-Sta: orientation(orientation: ImageRotateOrientation | undefined)
 
 设置图像内容的显示方向。
 
@@ -703,11 +705,15 @@ orientation(orientation: ImageRotateOrientation)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
-| orientation  | [ImageRotateOrientation](#imagerotateorientation14) | 是   | 图像内容的显示方向。<br/>不支持gif和svg类型的图片。<br/>如果需要显示携带旋转角度信息或翻转信息的图片，建议使用ImageRotateOrientation.AUTO进行设置。<br/>默认值：ImageRotateOrientation.UP<br/>设置为undefined或null时，取值为ImageRotateOrientation.AUTO。 |
+| orientation  | ArkTS-Dyn: [ImageRotateOrientation](#imagerotateorientation14) <br/>ArkTS-Sta: [ImageRotateOrientation](#imagerotateorientation14) \|&nbsp;undefined | 是   | 图像内容的显示方向。<br/>不支持gif和svg类型的图片。<br/>如果需要显示携带旋转角度信息或翻转信息的图片，建议使用ImageRotateOrientation.AUTO进行设置。<br/>ArkTS-Dyn：设置为undefined或null时，取值为ImageRotateOrientation.AUTO。<br/>ArkTS-Sta：设置为undefined时，取值为ImageRotateOrientation.UP。 |
 
 ### hdrBrightness<sup>19+</sup>
 
