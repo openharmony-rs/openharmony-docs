@@ -100,7 +100,7 @@ const char *srcCallNative = "HandleScopeFor()";
 <!-- @[oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openhandlescope/src/main/cpp/hello.cpp) -->
 
 预期输出
-```
+```txt
 JSVM HandleScopeFor: success
 ```
 
@@ -165,7 +165,7 @@ const char *srcCallNative = "escapableHandleScopeTest()";
 
 预期输出
 
-```
+```txt
 JSVM EscapableHandleScopeTest: success
 ```
 
@@ -253,7 +253,7 @@ const char *srcCallNative = "useReference()";
 
 预期结果：
 
-```
+```txt
 JSVM OH_JSVM_ReferenceRef, count = 2.
 JSVM OH_JSVM_ReferenceUnref, count = 1.
 JSVM UseReference success
