@@ -40,7 +40,7 @@
 2. 初始化文本样式。
 
    <!-- @[arkts_multi_language_text_drawing_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets) -->
-
+   
    ``` TypeScript
    let myTextStyle: text.TextStyle = {
      color: {
