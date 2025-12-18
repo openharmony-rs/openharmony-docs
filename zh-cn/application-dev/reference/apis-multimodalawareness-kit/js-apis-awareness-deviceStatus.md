@@ -146,7 +146,7 @@ onSteadyStandingDetect(callback: Callback<SteadyStandingStatus>): void
 
 **ArkTS模式**：该接口适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的接口ArkTS-Dyn是[on](#devicestatusonsteadystandingdetect)
+**相关接口**：该接口对应的接口ArkTS-Dyn是[on('steadyStandingDetect')](#devicestatusonsteadystandingdetect)
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
@@ -188,11 +188,11 @@ offSteadyStandingDetect(callback?: Callback<SteadyStandingStatus>): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的接口ArkTS-Dyn是[off](#devicestatusoffsteadystandingdetect)
+**相关接口**：该接口对应的接口ArkTS-Dyn是[off('steadyStandingDetect')](#devicestatusoffsteadystandingdetect)
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
-**ArkTS-Dyn起始版本**：22
+**ArkTS-Sta起始版本**：22
 
 **参数**：
 
