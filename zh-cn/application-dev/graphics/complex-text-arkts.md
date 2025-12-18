@@ -187,7 +187,7 @@
 5. 排版段落并进行文本绘制。
 
    <!-- @[arkts_multi_line_text_drawing_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
-
+   
    ``` TypeScript
    // 生成段落
    let paragraph = paragraphBuilder.build();
