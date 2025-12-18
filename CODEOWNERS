@@ -260,7 +260,7 @@ zh-cn/application-dev/arkts-utils/tool-disassembler.md @oatuwwutao @luobohua @hu
 
 
 [开发-ArkUI-UI开发]
-zh-cn/application-dev/ui/state-management/ @zhang_yixin13 @zhangwenhan12 @s10021109 @jiyujia926 @seaside_wu
+zh-cn/application-dev/ui/state-management/ @zhang_yixin13  @s10021109 @jiyujia926 @seaside_wu
 zh-cn/application-dev/ui/rendering-control/ @zhang_yixin13 @liuli0427 @keerecles @liubihao
 zh-cn/application-dev/ui/arkts-advanced-components-arcbutton.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-animation-smoothing.md	@CCFFWW	@lxl007	@Brilliantry_Rui
@@ -419,7 +419,7 @@ zh-cn/application-dev/ui/ndk-waterflow.md	@zcdqs	@rongShao-Z @songyanhong	@Brill
 zh-cn/application-dev/ui/Readme-CN.md			@Brilliantry_Rui
 zh-cn/application-dev/ui/theme_skinning.md	@lushi871202	@sally__	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-dark-light-color-adaptation.md	@lushi871202	@sally__	@Brilliantry_Rui
-zh-cn/application-dev/ui/ui-ide-previewer.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/ui/ui-ide-previewer.md	@zhangboren		@zhang_yixin13
 zh-cn/application-dev/ui/ui-inspector-profiler.md	@lushi871202	@sally__	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-animate-attribute-style.md	@CCFFWW	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-animate-background-position-style.md	@CCFFWW	@lxl007	@Brilliantry_Rui
@@ -468,7 +468,7 @@ zh-cn/application-dev/ui/ui-js-components-swiper.md	@jiangdayuan	@lxl007	@Brilli
 zh-cn/application-dev/ui/ui-js-components-switch.md	@liyi0309	@lxl007	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-text.md	@xiangyuan6	@jiaoaozihao	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-js-components-toolbar.md	@jiangdayuan	@lxl007	@Brilliantry_Rui
-zh-cn/application-dev/ui/ui-js-custom-components.md	@shiyu_huang	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/ui/ui-js-custom-components.md	@shiyu_huang		@zhang_yixin13
 zh-cn/application-dev/ui/ui-js-overview.md	@piggyguy	@songyanhong	@Brilliantry_Rui
 zh-cn/application-dev/ui/ui-performance-overview.md	@wild-mucor	@sally__	@Brilliantry_Rui
 zh-cn/application-dev/ui/arkts-text-faq.md @xiangyuan6	@jiaoaozihao	@Brilliantry_Rui
@@ -750,9 +750,9 @@ zh-cn/application-dev/device/input  @zhang_yixin13  @hanruofei @Lyuxin
 zh-cn/application-dev/dfx/uinput.md @zhaoxueyuan @hanruofei @Lyuxin @zhang_yixin13
 
 [开发-IPC Kit]
-zh-cn/application-dev/connectivity/ipc-rpc-overview.md @zhang_yixin13 @xdx1921  @zhaopeng_gitee @zhang-yang123321
-zh-cn/application-dev/connectivity/ipc-rpc-development-guideline.md @zhang_yixin13 @xdx1921  @zhaopeng_gitee @zhang-yang123321
-zh-cn/application-dev/connectivity/subscribe-remote-state.md @zhang_yixin13 @xdx1921  @zhaopeng_gitee @zhang-yang123321
+zh-cn/application-dev/connectivity/ipc-rpc-overview.md @zhang_yixin13 @xdx1921  @zhaopeng_gitee @Lyuxin
+zh-cn/application-dev/connectivity/ipc-rpc-development-guideline.md @zhang_yixin13 @xdx1921  @zhaopeng_gitee @Lyuxin
+zh-cn/application-dev/connectivity/subscribe-remote-state.md @zhang_yixin13 @xdx1921  @zhaopeng_gitee @Lyuxin
 
 
 
@@ -1243,7 +1243,7 @@ zh-cn/application-dev/reference/apis-arkui/errorcode-promptAction.md	@liyi0309	@
 zh-cn/application-dev/reference/apis-arkui/errorcode-router.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-scroll.md	@yylong	@rongShao-Z @songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-snapshot.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/errorcode-stateManagement.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/errorcode-stateManagement.md	@s10021109		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/errorcode-styled-string.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-system-resource.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/errorcode-uicontext.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
@@ -1295,7 +1295,7 @@ zh-cn/application-dev/reference/apis-arkui/js-apis-system-router.md	@jiangdayuan
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance-sys.md	@lushi871202	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/js-apis-uiappearance.md	@lushi871202	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/Readme-CN.md	@xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/_ark_ui_compile.md	@zhangboren		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-appendix-types.md	@shiyu_huang	@zhangwenhan12	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-button.md	@liyi0309	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-js/js-components-basic-chart.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
@@ -1585,8 +1585,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-waterflow.md	@z
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-with-theme.md	@lushi871202	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-api.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-layout.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md	@zhangboren		@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md	@s10021109		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md	@sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md	@sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-drawing-components-line.md	@sunbees	@liuli0427	 @Brilliantry_Rui
@@ -1626,11 +1626,11 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-pixel-units.md	@xiang-sho
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md	@keerecles	@zhangwenhan12	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md	@keerecles	@zhangwenhan12	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md	@keerecles	@zhangwenhan12	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md	@s10021109		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-sys.md	@s10021109	@zhangwenhan12	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md	@s10021109		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md	@s10021109	@zhangwenhan12	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md	@s10021109		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common-sys.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
@@ -1693,7 +1693,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-popu
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-renderfit.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md	@s10021109	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md	@s10021109		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition-sys.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
@@ -1707,7 +1707,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-use-
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-area-change-event.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md	@zhangboren	@zhangwenhan12	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-previewer.md	@zhangboren		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-size-change-event.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md	@piggyguy	@songyanhong	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-universal-entry.md	@s10021109	@zhangwenhan12	@zhang_yixin13
@@ -2266,7 +2266,7 @@ zh-cn/application-dev/reference/apis-input-kit/ @zhang_yixin13   @hanruofei @Lyu
 
 
 [API参考-IPC Kit]
-zh-cn/application-dev/reference/apis-ipc-kit/js-apis-rpc.md @xdx1921 @zhang_yixin13 @zhaopeng_gitee @zhang-yang123321
+zh-cn/application-dev/reference/apis-ipc-kit/js-apis-rpc.md @xdx1921 @zhang_yixin13 @zhaopeng_gitee @Lyuxin
 
 [API参考-Localization Kit]
 zh-cn/application-dev/reference/apis-localization-kit  @ningningW  @lpw_work 
