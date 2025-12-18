@@ -49,6 +49,7 @@ ArkTS-Sta接口说明：
 2. 订阅设备静止姿态（支架态）感知事件。
 
   ArkTS-Dyn示例
+
   ```ts
   try {
     deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
@@ -58,7 +59,9 @@ ArkTS-Sta接口说明：
     console.info('on failed, err = ' + err);
   }
   ```
+
   ArkTS-Sta示例
+
     ```ts
   try {
     deviceStatus.onSteadyStandingDetect((data:deviceStatus.SteadyStandingStatus) => {
@@ -72,6 +75,7 @@ ArkTS-Sta接口说明：
 3. 取消订阅本客户端订阅的所有设备静止姿态（支架态）感知事件。
 
   ArkTS-Dyn示例
+
   ```ts
   try {
     deviceStatus.off('steadyStandingDetect');
@@ -79,7 +83,9 @@ ArkTS-Sta接口说明：
     console.info('off failed, err = ' + err);
   }
   ```
+
   ArkTS-Sta示例
+
   ```ts
   try {
     deviceStatus.offSteadyStandingDetect();
@@ -91,6 +97,7 @@ ArkTS-Sta接口说明：
 4. 取消订阅设备静止姿态（支架态）感知事件的特定回调。
 
   ArkTS-Dyn示例
+
   ```ts
   import { Callback } from '@ohos.base';
   // 定义callback变量
@@ -110,7 +117,9 @@ ArkTS-Sta接口说明：
     console.info('off failed, err = ' + err);
   }
   ```
+  
   ArkTS-Sta示例
+
   ```ts
   import { Callback } from '@ohos.base';
   // 定义callback变量

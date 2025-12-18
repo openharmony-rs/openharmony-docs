@@ -18,70 +18,6 @@ ArkTS-Dyn接口说明：
 | off(type: 'operatingHandChanged', callback?: Callback&lt;OperatingHandStatus&gt;): void; | 取消订阅操作手感知。                   |
 | getRecentOperatingHandStatus(): OperatingHandStatus;         | 获取最新的操作手状态。                 |
 
-### 约束与限制
-
- - 设备需支持触控屏并兼容特定芯片。
-
- - 指关节操作不属于使用手操作场景。
-
- - 窗口旋转场景，多指同时操作场景不支持。
-
- - 能力有效范围：不包含距离屏幕边缘8mm内区域。
-
-### 开发步骤
-
-1. 导入模块。
-
-   ```ts
-   import { motion } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
-
-2. 定义回调函数接收操作手结果
-
-   ```
-   callback(data:motion.OperatingHandStatus) {
-     console.info('callback success' + data);
-   };
-   ```
-
-3. 订阅操作手感知
-
-   ```
-   try {
-      motion.on('operatingHandChanged', this.callback);
-      console.info("on succeeded");
-   } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed on and err code is " + error.code);
-   }
-   ```
-
-4. 取消订阅操作手感知
-
-   ```
-   try {
-      motion.off('operatingHandChanged');
-      console.info("off succeeded");
-   } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed off and err code is " + error.code);
-   }
-   ```
-
-5. 获取最新操作手状态
-
-   ```
-   try {
-      let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
-      console.info('get success' + data);
-   } catch (err) {
-      let error = err as BusinessError;
-      console.error("Failed get and err code is " + error.code);
-   }
-   ```
-### 接口说明
-
 ArkTS-Sta接口说明：
 
 | 接口名                                                       | 描述                                   |
@@ -111,15 +47,29 @@ ArkTS-Sta接口说明：
 
 2. 定义回调函数接收操作手结果
 
-   ```
-   function callback(data:motion.OperatingHandStatus) {
+   ```ts
+   callback(data:motion.OperatingHandStatus) {
      console.info('callback success' + data);
    };
    ```
 
 3. 订阅操作手感知
 
+   ArkTS-Dyn示例
+
+   ```ts
+   try {
+      motion.on('operatingHandChanged', this.callback);
+      console.info("on succeeded");
+   } catch (err) {
+      let error = err as BusinessError;
+      console.error("Failed on and err code is " + error.code);
+   }
    ```
+
+   ArkTS-Sta示例
+
+   ```ts
    try {
       motion.onOperatingHandChanged(callback);
       console.info("on succeeded");
@@ -131,7 +81,21 @@ ArkTS-Sta接口说明：
 
 4. 取消订阅操作手感知
 
+   ArkTS-Dyn示例
+
+   ```ts
+   try {
+      motion.off('operatingHandChanged');
+      console.info("off succeeded");
+   } catch (err) {
+      let error = err as BusinessError;
+      console.error("Failed off and err code is " + error.code);
+   }
    ```
+
+   ArkTS-Sta示例
+
+   ```ts
    try {
       motion.offOperatingHandChanged();
       console.info("off succeeded");
@@ -143,7 +107,7 @@ ArkTS-Sta接口说明：
 
 5. 获取最新操作手状态
 
-   ```
+   ```ts
    try {
       let data:motion.OperatingHandStatus = motion.getRecentOperatingHandStatus();
       console.info('get success' + data);
@@ -185,7 +149,7 @@ ArkTS-Sta接口说明：
 
 2. 定义回调函数接收握持手结果
 
-   ```
+   ```ts
    callback(data:motion.HoldingHandStatus) {
      console.info('callback success' + data);
    };
@@ -193,7 +157,7 @@ ArkTS-Sta接口说明：
 
 3. 订阅握持手感知
 
-   ```
+   ```ts
    try {
       motion.on('holdingHandChanged', this.callback);
       console.info("on succeeded");
@@ -205,7 +169,7 @@ ArkTS-Sta接口说明：
 
 4. 取消订阅握持手感知
 
-   ```
+   ```ts
    try {
       motion.off('holdingHandChanged');
       console.info("off succeeded");
