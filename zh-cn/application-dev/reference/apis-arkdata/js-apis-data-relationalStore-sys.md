@@ -1169,7 +1169,7 @@ if (resultSet != undefined) {
 }
 ```
 
-## LiteResultSet
+## LiteResultSet<sup>23+</sup>
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
@@ -1178,6 +1178,8 @@ if (resultSet != undefined) {
 getFloat32Array(columnIndex: number): Float32Array
 
 以浮点数组的形式获取当前行中指定列的值。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

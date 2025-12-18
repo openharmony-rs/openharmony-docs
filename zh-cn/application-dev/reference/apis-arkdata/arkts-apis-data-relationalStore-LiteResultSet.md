@@ -8,7 +8,9 @@
 
 > **说明：**
 > 
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本class首批接口从API version 23开始支持。
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
@@ -22,7 +24,7 @@ LiteResultSet实例不会实时刷新。使用结果集后，如果数据库中�
 import { relationalStore } from '@kit.ArkData';
 ```
 
-## getColumnNames
+## getColumnNames<sup>23+</sup>
 
 getColumnNames(): Array\<string>
 
@@ -72,7 +74,7 @@ async function getColumnNamesExample(store : relationalStore.RdbStore){
 }
 ```
 
-## getColumnIndex
+## getColumnIndex<sup>23+</sup>
 
 getColumnIndex(columnName: string): number
 
@@ -128,7 +130,7 @@ async function getColumnIndexExample(store : relationalStore.RdbStore){
 }
 ```
 
-## getColumnName
+## getColumnName<sup>23+</sup>
 
 getColumnName(columnIndex: number): string
 
@@ -185,7 +187,7 @@ async function getColumnNameExample(store : relationalStore.RdbStore){
 }
 ```
 
-## getColumnType
+## getColumnType<sup>23+</sup>
 
 getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
@@ -251,7 +253,7 @@ async function getColumnTypeExample(store : relationalStore.RdbStore){
 }
 ```
 
-## getColumnTypeSync
+## getColumnTypeSync<sup>23+</sup>
 
 getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
@@ -317,7 +319,7 @@ async function getColumnTypeSyncExample(store : relationalStore.RdbStore){
 }
 ```
 
-## goToNextRow
+## goToNextRow<sup>23+</sup>
 
 goToNextRow(): boolean
 
@@ -366,7 +368,7 @@ async function goToNextRowExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getValue
+## getValue<sup>23+</sup>
 
 getValue(columnIndex: number): ValueType
 
@@ -415,7 +417,7 @@ async function getValueExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getBlob
+## getBlob<sup>23+</sup>
 
 getBlob(columnIndex: number): Uint8Array
 
@@ -465,7 +467,7 @@ async function getBlobExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getString
+## getString<sup>23+</sup>
 
 getString(columnIndex: number): string
 
@@ -515,7 +517,7 @@ async function getStringExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getLong
+## getLong<sup>23+</sup>
 
 getLong(columnIndex: number): number
 
@@ -565,7 +567,7 @@ async function getLongExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getDouble
+## getDouble<sup>23+</sup>
 
 getDouble(columnIndex: number): number
 
@@ -615,7 +617,7 @@ async function getDoubleExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getAsset
+## getAsset<sup>23+</sup>
 
 getAsset(columnIndex: number): Asset
 
@@ -665,7 +667,7 @@ async function getAssetExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getAssets
+## getAssets<sup>23+</sup>
 
 getAssets(columnIndex: number): Assets
 
@@ -715,7 +717,7 @@ async function getAssetsExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getRow
+## getRow<sup>23+</sup>
 
 getRow(): ValuesBucket
 
@@ -764,7 +766,7 @@ async function getRowExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getCurrentRowData
+## getCurrentRowData<sup>23+</sup>
 
 getCurrentRowData(): RowData
 
@@ -814,7 +816,7 @@ async function getCurrentRowDataExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getRows
+## getRows<sup>23+</sup>
 
 getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
@@ -889,7 +891,7 @@ async function getRowsExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## getRowsData
+## getRowsData<sup>23+</sup>
 
 getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
 
@@ -973,7 +975,7 @@ async function getRowsDataExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## isColumnNull
+## isColumnNull<sup>23+</sup>
 
 isColumnNull(columnIndex: number): boolean
 
@@ -1029,7 +1031,7 @@ async function isColumnNullExample(store : relationalStore.RdbStore) {
 }
 ```
 
-## close
+## close<sup>23+</sup>
 
 close(): void
 
