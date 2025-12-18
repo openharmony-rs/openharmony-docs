@@ -132,7 +132,7 @@
 2. 初始化文本样式。
 
    <!-- @[arkts_multi_line_text_drawing_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets) -->
-
+   
    ``` TypeScript
    let myTextStyle: text.TextStyle = {
      color: {
@@ -142,8 +142,8 @@
        blue: 0
      },
      fontSize: 50,
-     // 当wordBreak为text.WordBreak.BREAK_HYPHEN时，需要设置语言偏好，段落会在不同语言偏好下呈现不同的文本断词效果
-     locale: "en-gb"
+     // 当wordBreak为text.WordBreak.BREAK_HYPHEN时，需要为段落设置语言偏好，段落会在不同语言偏好下呈现不同的文本断词效果
+     locale: 'en-gb'
    };
    ```
 
