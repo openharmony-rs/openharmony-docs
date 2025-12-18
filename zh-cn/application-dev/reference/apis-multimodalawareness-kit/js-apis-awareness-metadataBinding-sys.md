@@ -46,8 +46,23 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>
 |32100001  | Internal handling failed. File creation failed.|	
 |32100002  | Encoding failed. Possible causes: 1. Image processing error; 2. Channel coding error.|	
 
-**示例**：	
+**ArkTS-Dyn示例**：	
+```ts	
+import image from '@ohos.multimedia.image';	
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
+import { BusinessError } from '@kit.BasicServicesKit';	
 
+let captureImage: image.PixelMap | undefined = undefined;	
+let metadata: string = "";	
+let srcImage: image.PixelMap | undefined = undefined;	
+metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) =>{	
+	captureImage = pixelMap;	
+}).catch((error:BusinessError)=>{	
+	console.error("encode image error" + error);	
+});	
+```
+
+**ArkTS-Sta示例**：	
 ```ts	
 import image from '@ohos.multimedia.image';	
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
@@ -95,7 +110,21 @@ function decodeImage(encodedImage: image.PixelMap): Promise\<string\>
 |32100001  | Internal handling failed. File creation failed.|	
 |32100003  | Decoding failed. Possible causes: 1. Image not encoded; 2. Image destroyed.|	
 
-**示例：**  	
+**ArkTS-Dyn示例**:
+```ts	
+import image from '@ohos.multimedia.image';	
+import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
+import { BusinessError } from '@kit.BasicServicesKit';	
+
+let encodeImage: image.PixelMap | undefined = undefined;	
+let captrueMetadata: string = "";	
+metadataBinding.decodeImage(encodeImage).then((metadata: string) =>{	
+	captrueMetadata = metadata;	
+}).catch((error:BusinessError)=>{	
+	console.error("decode image error" + error);	
+}); 	
+```
+**ArkTS-Sta示例**:
 ```ts	
 import image from '@ohos.multimedia.image';	
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
