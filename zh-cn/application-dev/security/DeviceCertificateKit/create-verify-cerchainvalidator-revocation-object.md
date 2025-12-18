@@ -389,3 +389,70 @@ async function doTestCaCheck() {
 在线CRL检查忽略网络不可达异常示例：
 
 <!-- @[ignore-network-unreachable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/IgnoreNetworkUnreachable.ets) -->
+
+``` TypeScript
+
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { util } from '@kit.ArkTS';
+
+// string转Uint8Array。
+function stringToUint8Array(str: string): Uint8Array {
+  const encoder = new util.TextEncoder();
+  return encoder.encodeInto(str);
+}
+// ...
+async function createX509Cert(certData: string): Promise<cert.X509Cert> {
+  // 证书二进制数据，需业务自行赋值。
+  let encodingBlob: cert.EncodingBlob = {
+    data: stringToUint8Array(certData),
+    // 根据encodingData的格式进行赋值，支持FORMAT_PEM和FORMAT_DER。
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
+  };
+
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error('createX509Cert failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+  }
+  return x509Cert;
+}
+
+async function createX509CertChain(): Promise<cert.X509CertChain> {
+  const root = await createX509Cert(rootCert);
+  const intermediate = await createX509Cert(intermediateCert);
+  const leaf = await createX509Cert(leafCert);
+  let x509CertChain: cert.X509CertChain = {} as cert.X509CertChain;
+  try {
+    x509CertChain = cert.createX509CertChain([leaf, intermediate, root]);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error('createX509CertChain failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+  }
+  return x509CertChain;
+}
+
+async function validateCRL() {
+  const certChain = await createX509CertChain();
+  console.info('createX509CertChain success');
+  const root = await createX509Cert(rootCert);
+  // 证书链校验数据，需业务自行赋值。
+  const param: cert.CertChainValidationParameters = {
+    trustAnchors: [{ CACert: root }],
+    revocationCheckParam: {
+      options: [
+        cert.RevocationCheckOptions.REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR,
+        cert.RevocationCheckOptions.REVOCATION_CHECK_OPTION_ACCESS_NETWORK
+      ],
+    }
+  }
+  try {
+    await certChain.validate(param);
+    console.info('validateCRL success.');
+  } catch (err) {
+    console.error(`X509CertChain validate failed: errCode: ${err.code}, message: ${err.message}`);
+  }
+}
+```
