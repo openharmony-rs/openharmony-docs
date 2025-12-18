@@ -1,5 +1,12 @@
 # 应用开发导读
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @lingminghw--->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @lingminghw--->
+
 应用开发文档用于指导开发者通过OpenHarmony提供的接口完成应用开发。当前应用开发文档提供了在标准系统上开发应用的JS接口。
 
 在应用开发的文档中，您可以获取到如下几方面的内容：
@@ -24,8 +31,7 @@
 
 ## 工具
 
-DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。
-在[工具](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)部分，讲解了DevEco Studio工具的详细用法，包括使用该工具进行工程创建、应用签名、应用调试、应用安装运行的指导。
+DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。在[工具](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)部分，讲解了DevEco Studio工具的详细用法，包括使用该工具进行工程创建、应用签名、应用调试、应用安装运行的指导。
 
 ## 示例教程
 

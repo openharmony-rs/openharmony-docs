@@ -413,7 +413,6 @@ struct BindMenuDemo {
     Column() {
       Button('click')
         .backgroundColor(0x409eff)
-        .borderRadius(5)
         // 第二步: 通过bindMenu接口将菜单数据绑定给元素
         .bindMenu(this.items)
     }

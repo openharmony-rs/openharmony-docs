@@ -29,6 +29,8 @@
   - [Cross-Device Sync of KV Stores (ArkTS)](data-sync-of-kv-store.md)
   - [Cross-Device Sync of RDB Stores (ArkTS)](data-sync-of-rdb-store.md)
   - [Cross-Device Sync of Distributed Data Objects (ArkTS)](data-sync-of-distributed-data-object.md)
+<!--RP1-->
+<!--RP1End-->
 - Data Reliability and Security<!--data-reliability-security-->
   - [Data Reliability and Security Overview](data-reliability-security-overview.md)
   - [Database Backup and Restore (ArkTS)](data-backup-and-restore.md)

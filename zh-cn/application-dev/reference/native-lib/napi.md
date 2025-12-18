@@ -651,13 +651,11 @@ libace_napi.z.so
 
 **说明：**
 
-- OpenHarmony中，当强引用delete时直接进行回调，无需等到对象析构。
+- OpenHarmony在强引用delete的时候直接回调，标准库是在对象析构时候才会回调。
 
-- 回调主动抛出异常时，OpenHarmony会触发JSCrash。
+- 回调主动抛出异常时，OpenHarmony会触发JSCrash，标准库不会触发crash。
 
-**说明：**
-
-- 标准库中返回弱引用， OpenHarmony在result不为空时返回强引用。
+- OpenHarmony在result非空时创建强引用，标准库则创建弱引用。
 
 ### napi_fatal_exception
 
@@ -738,6 +736,7 @@ libace_napi.z.so
 |FUNC|napi_create_strong_sendable_reference|创建指向Sendable ArkTS对象的Sendable强引用。|22|
 |FUNC|napi_delete_strong_sendable_reference|删除Sendable强引用。|22|
 |FUNC|napi_get_strong_sendable_reference_value|根据Sendable强引用获取其关联的ArkTS对象值。|22|
+|FUNC|napi_throw_business_error|抛出一个带文本信息的ArkTS Error, 其错误对象的code属性类型为number类型。|23|
 
 > 说明：
 >
@@ -1658,4 +1657,27 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 
 如果API成功，则返回napi_ok。
 
+### napi_throw_business_error
+
+```cpp
+napi_status napi_throw_business_error(napi_env env,
+                                      int32_t errorCode,
+                                      const char* msg);
+```
+
+**描述：**
+
+抛出一个带文本信息的ArkTS Error, 指定错误码为int32_t类型，错误信息为字符串类型。使用该接口需要注意以下几点：
+1. 入参env和msg不可以为nullptr，否则会返回napi_invalid_arg。
+2. 当前上下文中存在ArkTS Error的时候，调用接口会返回napi_pending_exception。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+- [in] errorCode：int32_t类型的错误码，用于设置在错误对象上。
+- [in] msg：表示要与错误关联的文本的C字符串。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
 <!--no_check-->

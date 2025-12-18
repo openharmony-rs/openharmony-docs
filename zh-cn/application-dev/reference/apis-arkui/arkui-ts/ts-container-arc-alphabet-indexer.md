@@ -23,13 +23,13 @@
 
 API version 21及之前版本：
 
-```
+```ts
 import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI';
 ```
 
 API version 22及之后版本：
 
-```
+```ts
 import { ArcAlphabetIndexer } from '@kit.ArkUI';
 ```
 

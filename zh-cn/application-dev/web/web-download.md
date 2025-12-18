@@ -100,6 +100,7 @@ struct WebComponent {
 ## 使用Web组件发起一个下载任务
 
 使用[startDownload()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#startdownload11)接口发起一个下载。
+
 Web组件发起的下载会根据当前显示的url以及Web组件默认的Referrer Policy来计算referrer。
 
 在下面的示例中，先点击setDownloadDelegate按钮向Web注册一个监听类，然后点击startDownload主动发起了一个下载，该下载任务也会通过设置的DownloadDelegate来通知app下载的进度。

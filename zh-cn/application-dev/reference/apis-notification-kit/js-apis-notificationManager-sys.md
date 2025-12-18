@@ -6600,6 +6600,7 @@ setGeofenceEnabled(enabled: boolean):  Promise\<void\>
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setGeofenceEnabled(true).then(() => {
   hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
@@ -6638,6 +6639,7 @@ isGeofenceEnabled(): Promise\<boolean\>
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.isGeofenceEnabled().then((data: boolean) => {
   hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);

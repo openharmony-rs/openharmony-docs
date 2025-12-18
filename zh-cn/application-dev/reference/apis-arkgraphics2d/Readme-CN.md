@@ -124,7 +124,6 @@
     - [OH_NativeBuffer_Plane](capi-oh-nativebuffer-oh-nativebuffer-plane.md)
     - [OH_NativeBuffer_Planes](capi-oh-nativebuffer-oh-nativebuffer-planes.md)
     - [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md)
-    - [OHIPCParcel](capi-oh-nativebuffer-ohipcparcel.md)
     - [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md)
     - [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md)
     - [DisplaySoloist_ExpectedRateRange](capi-nativedisplaysoloist-displaysoloist-expectedraterange.md)

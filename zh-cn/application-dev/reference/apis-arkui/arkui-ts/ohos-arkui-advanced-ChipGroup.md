@@ -25,7 +25,7 @@ import { ChipSize, ChipGroup } from '@kit.ArkUI';
 
 ## ChipGroup
 
-```
+```ts
 ChipGroup({
   items: ChipGroupItemOptions[],
   itemStyle?: ChipItemStyle,
@@ -52,8 +52,8 @@ ChipGroup({
 | itemStyle       | [ChipItemStyle](#chipitemstyle)                 | 否   | @Prop | `Chip`的`style`属性，如颜色，大小等，参考[ChipItemStyle](#chipitemstyle)类型。<br/>默认值：<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>值为undefined时，按默认值处理。 |
 | selectedIndexes | Array&lt;number&gt;                             | 否   | @Prop | 被选中Chip的索引。<br/>默认值：[0]<br>值为undefined时，按默认值处理。  |
 | multiple        | boolean                                         | 否   | @Prop | 是否选中多个芯片。<br/>`true`：支持多个芯片选中；`false`：仅支持单个芯片选中。<br>默认值：`false`<br>值为undefined时，按默认值处理。 |
-| chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br/>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>值为undefined时，按默认值处理。 |
-| chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | @Prop | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br/>默认值：{ top: 14, bottom: 14 }<br>值为undefined时，按默认值处理。 |
+| chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | 否   | @Prop | 左右内边距及Chip之间间距。参考[ChipGroupSpaceOptions](#chipgroupspaceoptions)类型。<br/>默认值：{ itemSpace: 8, startSpace: 16, endSpace: 16 }<br>单位：vp<br/>值为undefined时，按默认值处理。 |
+| chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | 否   | @Prop | 设置ChipGroup的上下内边距，以控制整体高度。类型为[ChipGroupPaddingOptions](#chipgrouppaddingoptions)。<br/>默认值：{ top: 14, bottom: 14 }<br>单位：vp<br/>值为undefined时，按默认值处理。 |
 | onChange        | Callback\<Array\<number>>  | 否   | -  | Chip状态改变时的回调方法。<br/>若为undefined，表示解绑事件。                                                              |
 | suffix          | Callback\<void\>                                        | 否   | @BuilderParam | 最右侧的builder由开发者自定义，需引入[IconGroupSuffix](#icongroupsuffix)接口。<br/>默认不传入时，没有suffix。<br>值为undefined时，没有suffix。 |
 
@@ -78,7 +78,7 @@ ChipGroupItemOptions定义每个Chip的非通用属性。
 | prefixIcon   | [IconOptions](#iconoptions)   | 否  | 是  | 前缀Image图标属性。<br>默认值：没有前缀Image图标。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | prefixSymbol | [ChipSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsymbolglyphoptions12) | 否  | 是  | 前缀SymbolGlyph图标属性。<br>默认值：没有前缀SymbolGlyph图标。<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | label        | [LabelOptions](#labeloptions) | 否  | 否  | 文本属性。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                            |
-| suffixIcon<sup>(deprecated)</sup>   | [IconOptions](#iconoptions) | 否  | 是 | 后缀Image图标属性。<br/>默认值：不显示后缀Image图标。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。**说明：** 从API version 12开始支持，从API version 14开始废弃，建议使用suffixImageIcon替代。 |
+| suffixIcon<sup>(deprecated)</sup>   | [IconOptions](#iconoptions) | 否  | 是 | 后缀Image图标属性。<br/>默认值：不显示后缀Image图标。<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **说明：** 从API version 12开始支持，从API version 14开始废弃，建议使用suffixImageIcon替代。 |
 | suffixSymbol | [ChipSymbolGlyphOptions](ohos-arkui-advanced-Chip.md#chipsymbolglyphoptions12) | 否  | 是 | 后缀SymbolGlyph图标属性。<br>默认值：不显示后缀SymbolGlyph图标。<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | allowClose   | boolean                       | 否  | 是  | 删除图标是否显示。<br>false表示删除图标不显示，true表示删除图标显示。<br/>默认值：false<br>值为undefined时，按默认值处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | suffixImageIcon<sup>14+</sup> | [SuffixImageIconOptions](#suffiximageiconoptions14) | 否 | 是 | 后缀Image图标属性。<br>默认值：不显示后缀Image图标。<br>值为undefined时，按默认值处理。<br/> **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -142,8 +142,8 @@ ChipGroupPaddingOptions定义了ChipGroup的上下内边距，用于控制其整
 
 | 名称   | 类型            | 只读 | 可选 | 说明                                                      |
 | ------ | -------------- | ---- | ------------------------------------------------            | ------------------------------------------------            |
-| top    | [Length](ts-types.md#length)         | 否  | 否  | ChipGroup的上方内边距（不支持百分比）。<br/>默认值：14<br/>为undefined时，top取默认值。     |
-| bottom | [Length](ts-types.md#length)         | 否  | 否  | ChipGroup的下方内边距（不支持百分比）。<br/>默认值：14<br/>为undefined时，bottom取默认值。     |
+| top    | [Length](ts-types.md#length)         | 否  | 否  | ChipGroup的上方内边距（不支持百分比）。<br/>默认值：14<br/> 单位：vp<br/> 为undefined时，top取默认值。     |
+| bottom | [Length](ts-types.md#length)         | 否  | 否  | ChipGroup的下方内边距（不支持百分比）。<br/>默认值：14<br/> 单位：vp<br/>为undefined时，bottom取默认值。     |
 
 ## SuffixImageIconOptions<sup>14+</sup>
 

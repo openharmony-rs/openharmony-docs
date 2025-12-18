@@ -9,6 +9,7 @@
 ## 简介
 
 在JSVM-API中，JSVM_Value是一个表示JavaScript值的抽象类型，它可以表示任何JavaScript值，包括基本类型（如数字、字符串、布尔值）和对象类型（如数组、函数、对象等）。
+
 JSVM_Value的生命周期与JavaScript值的生命周期相关。JavaScript值被垃圾回收后，JSVM_Value将不再有效。避免在JavaScript值不存在时使用JSVM_Value。
 
 框架层的scope通常用于管理JSVM_Value的生命周期。在JSVM-API中，可以使用OH_JSVM_OpenHandleScope和OH_JSVM_CloseHandleScope函数来创建和销毁scope。通过在scope内创建JSVM_Value，可以确保在scope结束时自动释放JSVM_Value，避免内存泄漏。
@@ -99,13 +100,14 @@ const char *srcCallNative = "HandleScopeFor()";
 <!-- @[oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openhandlescope/src/main/cpp/hello.cpp) -->
 
 预期输出
-```
+```txt
 JSVM HandleScopeFor: success
 ```
 
 ### OH_JSVM_OpenEscapableHandleScope、OH_JSVM_CloseEscapableHandleScope、OH_JSVM_EscapeHandle
 
 通过接口 OH_JSVM_OpenEscapableHandleScope 创建出一个可逃逸的 handle scope，可将 1 个范围内声明的值返回到父作用域。创建的 scope 需使用 OH_JSVM_CloseEscapableHandleScope 进行关闭。OH_JSVM_EscapeHandle 将传入的 JavaScript 对象的生命周期提升到其父作用域。
+
 通过上述接口可以更灵活的使用管理传入的 JavaScript 对象，特别是在处理跨作用域的值传递时非常有用。
 
 cpp 部分代码：
@@ -163,7 +165,7 @@ const char *srcCallNative = "escapableHandleScopeTest()";
 
 预期输出
 
-```
+```txt
 JSVM EscapableHandleScopeTest: success
 ```
 
@@ -251,14 +253,16 @@ const char *srcCallNative = "useReference()";
 
 预期结果：
 
-```
+```txt
 JSVM OH_JSVM_ReferenceRef, count = 2.
 JSVM OH_JSVM_ReferenceUnref, count = 1.
 JSVM UseReference success
 ```
 
 ### OH_JSVM_AddFinalizer
+
 为 JavaScript 对象添加 JSVM_Finalize 回调，当 JavaScript 对象被垃圾回收时执行函数回调，该接口通常被用于释放与 JavaScript 对象相关的原生对象。如果传入的参数类型不是 JavaScript 对象，该接口调用失败并返回错误码。
+
 Finalizer 方法被注册后无法取消，如果在调用 OH_JSVM_DestroyEnv 前均未被执行，则在 OH_JSVM_DestroyEnv 时执行。
 
 cpp 部分代码：

@@ -45,7 +45,7 @@ You can call the functions to create an audio stream manager and set and manage 
 
 ### OH_AudioManager_GetAudioStreamManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManager **streamManager)
 ```
 
@@ -69,7 +69,7 @@ Obtains the handle to the audio stream manager.
 
 ### OH_AudioStreamManager_GetDirectPlaybackSupport()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStreamManager *audioStreamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, OH_AudioStream_DirectPlaybackMode *directPlaybackMode)
 ```
 
@@ -96,7 +96,7 @@ Obtains the direct playback mode supported by an audio stream.
 
 ### OH_AudioStreamManager_IsAcousticEchoCancelerSupported()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType sourceType, bool *supported)
 ```
 
@@ -122,7 +122,7 @@ Checks whether the audio stream of the specified source type supports acoustic e
 
 ### OH_AudioStreamManager_IsFastPlaybackSupported()
 
-```
+```c
 bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)
 ```
 
@@ -148,7 +148,7 @@ Checks whether the current device supports low-latency playback for the specifie
 
 ### OH_AudioStreamManager_IsFastRecordingSupported()
 
-```
+```c
 bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_SourceType source)
 ```
 
@@ -174,7 +174,7 @@ Checks whether the current device supports low-latency recording for the specifi
 
 ### OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice()
 
-```
+```c
 bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType source)
 ```
 

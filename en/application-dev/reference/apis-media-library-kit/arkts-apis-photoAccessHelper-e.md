@@ -10,6 +10,12 @@
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+## Modules to Import
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
+
 ## PhotoType
 
 Enumerates the media file types.
@@ -58,6 +64,7 @@ Enumerates the album types.
 | --------| ---- | ------------|
 | USER                | 0    | User album.  |
 | SYSTEM              | 1024 | System album.|
+| SOURCE<sup>22+</sup>| 2048 | Album created by an application.|
 
 ## AlbumSubtype
 
@@ -71,6 +78,7 @@ Enumerate the album subtypes.
 | FAVORITE        | 1025       | Favorites.|
 | VIDEO  | 1026       | Video album.|
 | IMAGE<sup>12+</sup>               | 1031       | Photo album.|
+| SOURCE\_GENERIC<sup>22+</sup>     | 2049       | Source album.|
 | ANY    | 2147483647 | Any album.|
 
 ## PositionType<sup>16+</sup>
@@ -93,7 +101,7 @@ Enumerates the keys available for image or video files.
 
 | Name         | Value             | Description                                                      |
 | ------------- | ------------------- | ---------------------------------------------------------- |
-| URI           | 'uri'                 | URI of the file.<br>Note: Only the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) predicate can be used for this field during photo query.<br>**Atomic service API**: This API can be used in atomic services since API version 20.           |
+| URI           | 'uri'                 | URI of the file.<br>**NOTE**<br>Only the [DataSharePredicates.equalTo](../apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) predicate can be used for this field during photo query.<br>**Atomic service API**: This API can be used in atomic services since API version 20.           |
 | PHOTO_TYPE    | 'media_type'           | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 | DISPLAY_NAME  | 'display_name'        | File name displayed. The file name must meet the following requirements:<br>- A valid file name must include a base name and a supported image or video extension.<br>- The total length of the file name must be between 1 and 255 characters.<br>- The base name must not contain any invalid characters, which are:.. \ / : * ? " ' ` < > \| { } [ ]<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
 | SIZE          | 'size'                | File size, in bytes. The size of a moving photo includes the total size of the image and video.<br>**Atomic service API**: This API can be used in atomic services since API version 20.   |
@@ -106,8 +114,8 @@ Enumerates the keys available for image or video files.
 | ORIENTATION   | 'orientation'         | Orientation of the file, in degrees.<br>**Atomic service API**: This API can be used in atomic services since API version 20. |
 | FAVORITE      | 'is_favorite'            | Whether the file is marked as favorites.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                |
 | TITLE         | 'title'               | Title of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                |
-| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | Unix timestamp when the file was created, in milliseconds.<br>**NOTE**: The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
-| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | Unix timestamp when the file was modified, in milliseconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**NOTE**: The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
+| DATE_ADDED_MS<sup>12+</sup>  | 'date_added_ms'          | Unix timestamp when the file was created, in milliseconds.<br>**NOTE**<br>The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.     |
+| DATE_MODIFIED_MS<sup>12+</sup>  | 'date_modified_ms'    | Unix timestamp when the file was modified, in milliseconds. This value is updated when the file content is modified, but not when the file name is modified.<br>**NOTE**<br>The photos queried cannot be sorted based on this field.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 | PHOTO_SUBTYPE<sup>12+</sup>   | 'subtype'               | Subtype of the media file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.    |
 | DYNAMIC_RANGE_TYPE<sup>12+</sup>   | 'dynamic_range_type'               | Dynamic range type of the media asset.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
 | COVER_POSITION<sup>12+</sup>   | 'cover_position'               | Position of the moving photo cover, which is the video timestamp (in μs) corresponding to the cover frame.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
@@ -118,6 +126,8 @@ Enumerates the keys available for image or video files.
 | DATE_TAKEN_MS<sup>13+</sup>  | 'date_taken_ms'  | Unix timestamp when the image was captured, in milliseconds.<br>**Atomic service API**: This API can be used in atomic services since API version 20.  |
 | POSITION<sup>16+</sup>  | 'position'            | File location type.<br>**Atomic service API**: This API can be used in atomic services since API version 20.       |
 | MEDIA_SUFFIX<sup>18+</sup>  | 'media_suffix'            | File name extension.                              |
+| OWNER_ALBUM_ID<sup>22+</sup>  | 'owner_album_id' | ID of the album to which the photo belongs.|
+| ASPECT_RATIO<sup>22+</sup>  | 'aspect_ratio'            | Aspect ratio of the image or video.<br> **Model restriction**: This API can be used only in the stage model.|
 
 ## AlbumKeys
 
@@ -129,6 +139,7 @@ Enumerates the album keys.
 | ------------- | ------------------- | ---------------------------------------------------------- |
 | URI           | 'uri'                 | URI of the album.                                                  |
 | ALBUM_NAME    | 'album_name'          | Name of the album.                                                  |
+| ALBUM_LPATH<sup>22+</sup>          | 'lpath'                 | Virtual path of the album.<br>Albums and their virtual path values:<br>- Camera application album: '/DCIM/Camera'<br>- Screenshot application album: '/Pictures/Screenshots'<br>- Screen recording application album: '/Pictures/Screenrecords'<br>- User-created album: '/Pictures/Users/{Custom album name}'                    |
 
 ## ResourceType<sup>11+</sup>
 
@@ -215,6 +226,7 @@ Enumerates the types of recommended images.
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let recommendOptions: photoAccessHelper.RecommendationOptions = {
@@ -344,3 +356,15 @@ Enumerates the states of moving photo badges.
 | NOT_MOVING_PHOTO   | 0      | The media file is not a moving photo.|
 | MOVING_PHOTO_ENABLED | 1    | The moving photo effect is enabled.|
 | MOVING_PHOTO_DISABLED | 2   | The moving photo effect is disabled.|
+
+
+## VideoMode<sup>22+</sup>
+
+Enumerates the log modes of video files.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  Default type.<br>A value of **0** indicates that the video is either not in log mode or its type has not yet been determined. This value may later be updated to **1** for some videos after type determination, so it is not recommended for use in queries.|
+| LOG_VIDEO |  1 |  Video file in log mode. |

@@ -93,6 +93,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 - mode值为napi_tsfn_release时：表示将tsfn中持有的线程数减一，当线程数减到0时，线程安全函数tsfn将被销毁。
 
 - mode值为napi_tsfn_abort时：该tsfn关闭，不能再调用此tsfn。
+
   如果设置为napi_tsfn_abort，利用napi_call_threadsafe_function接口调用此tsfn时，该行为可能导致UAF问题————当napi_tsfn_abort被设置时，tsfn立刻关闭，不能再被调用。如果此时调用napi_call_threadsafe_function，系统可能会返回napi_closing状态，表示tsfn正在关闭，但是传递给tsfn的data并未被放入队列中，这意味着data可能未被正确处理。如果data指向的内存已经被释放（例如，tsfn的资源被释放），但调用者仍然尝试访问或使用data，就会出现UAF(Use-After-Free)问题。
 
 ### napi_threadsafe_function_call_mode
@@ -575,6 +576,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 |
 | napi_delete_strong_sendable_reference | 删除Sendable强引用。 |
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 |
+| napi_throw_business_error | 抛出一个带文本信息的ArkTS Error, 其错误对象的code属性类型为number。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -870,6 +872,14 @@ napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_re
 napi_status napi_get_strong_sendable_reference_value(napi_env env,
                                                      napi_sendable_ref ref,
                                                      napi_value* result);
+```
+
+**napi_throw_business_error**
+
+```c
+napi_status napi_throw_business_error(napi_env env,
+                                      int32_t errorCode,
+                                      const char* msg);
 ```
 
 ### 其他实用工具

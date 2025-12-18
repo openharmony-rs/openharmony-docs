@@ -22,6 +22,9 @@
 | napi_throw | 抛出一个js value。 | napi_invalid_arg | 入参error不为js Error类型 | 确保入参正确 |
 | napi_throw_error | 抛出一个带文本信息的js Error。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_throw_error | 抛出一个带文本信息的js Error。 | napi_invalid_arg | 入参msg为nullptr | 确保入参正确 |
+| napi_throw_business_error | 抛出一个带文本信息且错误对象的code属性类型为number类型的ArkTS Error对象。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_throw_business_error | 抛出一个带文本信息且错误对象的code属性类型为number类型的ArkTS Error对象。 | napi_invalid_arg | 入参msg为nullptr | 确保入参正确 |
+| napi_throw_business_error | 抛出一个带文本信息且错误对象的code属性类型为number类型的ArkTS Error对象。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS Error | 根据异常信息（hilog/crash栈）处理异常 |
 | napi_throw_type_error | 抛出一个带文本信息的js TypeError。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_throw_type_error | 抛出一个带文本信息的js TypeError。 | napi_invalid_arg | 入参msg为nullptr | 确保入参正确 |
 | napi_throw_range_error | 抛出一个带文本信息的js RangeError。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |

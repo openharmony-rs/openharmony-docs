@@ -9255,7 +9255,7 @@ createRotationMatrix(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;n
 
 **示例**：
 
- ```ts
+```ts
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9268,7 +9268,7 @@ promise.then((data: Array<number>) => {
 }).catch((reason: BusinessError) => {
   console.info("Succeeded in getting promise::catch", reason);
 })
- ```
+```
 
 ## sensor.createQuaternion<sup>(deprecated)</sup>
 
