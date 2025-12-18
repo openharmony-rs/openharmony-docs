@@ -1424,7 +1424,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API. |             |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -1461,7 +1461,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API. |             |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -1787,7 +1787,7 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API. |             |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
@@ -1826,7 +1826,7 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 
 | 错误码ID       | 错误信息                                                  |
 | -------  | ---------------------------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API. |             |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 
 **示例：**
 
