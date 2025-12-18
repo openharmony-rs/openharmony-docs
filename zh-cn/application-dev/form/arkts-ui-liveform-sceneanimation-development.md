@@ -50,7 +50,7 @@
         // liveFormInfo.rect字段表示非激活态卡片组件相对激活态UI的位置和尺寸信息
         let formRect: formInfo.Rect = liveFormInfo.rect;
         storage.setOrCreate('formRect', formRect);
-        console.log(`MyLiveFormExtensionAbility onSessionCreate formId: ${formId}` +
+        console.info(`MyLiveFormExtensionAbility onSessionCreate formId: ${formId}` +
           `, borderRadius: ${borderRadius}, formRectInfo: ${JSON.stringify(formRect)}`);
     
         // 加载互动页面
@@ -58,7 +58,7 @@
       }
     
       onLiveFormDestroy(liveFormInfo: LiveFormInfo) {
-        console.log(`MyLiveFormExtensionAbility onDestroy`);
+        console.info(`MyLiveFormExtensionAbility onDestroy`);
       }
     };
     ```
@@ -336,7 +336,7 @@
     
       private requestOverflow(formId: string, formWidth: number, formHeight: number): void {
         if (formWidth <= 0 || formHeight <= 0) {
-          console.log('requestOverflow failed, form size is not correct.');
+          console.info('requestOverflow failed, form size is not correct.');
           return;
         }
     
@@ -357,12 +357,12 @@
             // 指定是否使用系统提供的默认切换动效
             useDefaultAnimation: true,
           }).then(() => {
-            console.log('requestOverflow requestOverflow succeed');
+            console.info('requestOverflow requestOverflow succeed');
           }).catch((error: BusinessError) => {
-            console.log(`requestOverflow requestOverflow catch error` + `, code: ${error.code}, message: ${error.message}`);
+            console.info(`requestOverflow requestOverflow catch error` + `, code: ${error.code}, message: ${error.message}`);
           })
         } catch (e) {
-          console.log(`requestOverflow call requestOverflow catch error` + `, code: ${e.code}, message: ${e.message}`);
+          console.info(`requestOverflow call requestOverflow catch error` + `, code: ${e.code}, message: ${e.message}`);
         }
       }
     }
