@@ -46,7 +46,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>
 |32100001  | Internal handling failed. File creation failed.|	
 |32100002  | Encoding failed. Possible causes: 1. Image processing error; 2. Channel coding error.|	
 
-**ArkTS-Dyn示例**：	
+**ArkTS-Dyn示例**:
 ```ts	
 import image from '@ohos.multimedia.image';	
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
@@ -61,8 +61,7 @@ metadataBinding.encodeImage(srcImage, metadata).then((pixelMap: image.PixelMap) 
 	console.error("encode image error" + error);	
 });	
 ```
-
-**ArkTS-Sta示例**：	
+**ArkTS-Sta示例**:
 ```ts	
 import image from '@ohos.multimedia.image';	
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';	
