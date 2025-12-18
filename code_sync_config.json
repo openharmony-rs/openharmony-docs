@@ -32964,5 +32964,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/mechanicManager/camera-tracking-guide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets",
+				"functions":[
+					{
+						"end_line":18,
+						"name":"import_mechanicManager",
+						"start_line":16
+					},
+					{
+						"end_line":204,
+						"name":"get_mechDevices",
+						"start_line":179
+					},
+					{
+						"end_line":350,
+						"name":"set_cameraTracking_enabled",
+						"start_line":334
+					},
+					{
+						"end_line":424,
+						"name":"on_trackingStateChange",
+						"start_line":404
+					},
+					{
+						"end_line":60,
+						"name":"handle_tracking_event",
+						"start_line":25
+					},
+					{
+						"end_line":455,
+						"name":"off_trackingStateChange",
+						"start_line":449
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets",
+				"functions":[
+					{
+						"end_line":87,
+						"name":"on_attachStateChange",
+						"start_line":72
+					},
+					{
+						"end_line":34,
+						"name":"handle_device_attached_detached",
+						"start_line":22
+					},
+					{
+						"end_line":111,
+						"name":"off_attachStateChange",
+						"start_line":108
+					}
+				]
+			}
+		]
 	}
 ]
