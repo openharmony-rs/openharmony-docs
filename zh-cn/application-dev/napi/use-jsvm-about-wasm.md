@@ -227,6 +227,6 @@ const char *srcCallNative = R"JS(wasmDemo())JS";
 ```
 <!-- @[jsvm_wasm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/webassembly/src/main/cpp/hello.cpp) -->
 预期输出
-```
+```txt
 JSVM resultInt: 975178312
 ```
