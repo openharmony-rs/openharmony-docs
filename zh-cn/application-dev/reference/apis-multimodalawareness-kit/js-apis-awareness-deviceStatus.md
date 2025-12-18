@@ -21,6 +21,10 @@
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
+**ArkTS-Dyn起始版本**: 18
+
+**ArkTS-Sta起始版本**: 22
+
 | 名称                | 值   | 说明                   |
 | ------------------- | ---- | ---------------------- |
 | STATUS_EXIT  | 0    | 表示设备退出支架态。 |
