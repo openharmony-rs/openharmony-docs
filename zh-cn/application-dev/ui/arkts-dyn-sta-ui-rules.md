@@ -2322,3 +2322,93 @@ struct Child {
   }
 }
 ```
+
+## PersistenceV2的connect接口不再接受2个回调类型的入参
+
+**规则解释：**
+
+在ArkTS-Sta中，[PersistenceV2](./state-management-static/arkts-static-new-persistencev2.md)的connect接口只接受一个类型是`() => T`的参数，不支持同时传入2个`() => T`参数的用法。
+
+**变更原因：**
+
+在ArkTS-Dyn中，PersistenceV2的connect接口可以同时在第二个参数和第三个参数中传入相同的类型为`() => T`的参数，但是这种情况下第三个参数是无效的。
+
+**适配建议：**
+
+去除多余的参数。
+
+**示例：**
+
+ArkTS-Dyn
+
+```ts
+import { PersistenceV2 } from '@kit.ArkUI';
+
+@ObservedV2
+class Message {
+  @Trace userID: number;
+  constructor(userID?: number) {
+    this.userID = userID ?? 1;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  // 回调`() => new Message()`传递了2次，只有第一个生效。
+  @Local message: Message = PersistenceV2.connect<Message>(Message, () => new Message(), () => new Message())!;
+  build() {
+    Column() {
+      Text(`${this.message.userID}`)
+      Button('Change userID')
+        .onClick(() => {
+          this.message.userID += 1;
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta
+
+```ts
+'use static'
+import { ObservedV2, Trace, Entry, ComponentV2, Local, PersistenceV2, Column, Text, Button } from '@kit.ArkUI';
+
+@ObservedV2
+class Message {
+  @Trace userID: number;
+  constructor(userID?: number) {
+    this.userID = userID ?? 1;
+  }
+}
+
+// ArkTS-Sta的PersistenceV2需要额外提供序列化和反序列化实现
+function messageToJson(message: Message): jsonx.JsonElement {
+  const root = new jsonx.JsonElement();
+  const userIDElement = new jsonx.JsonElement();
+  userIDElement.setDouble(message.userID);
+  root.setElement('userID', userIDElement);
+  return root;
+}
+function messageFromJson(json: jsonx.JsonElement): Message {
+  return new Message(json.getElement('userID').asDouble());
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local message: Message = PersistenceV2.connect<Message>(Type.from<Message>(), 
+    messageToJson, messageFromJson, // 传入序列化和反序列化实现
+    () => new Message())!; // 回调`() => new Message()`只传1次。
+  build() {
+    Column() {
+      Text(`${this.message.userID}`)
+      Button('Change userID')
+        .onClick(() => {
+          this.message.userID += 1;
+        })
+    }
+  }
+}
+```
