@@ -44,7 +44,10 @@ prepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**ArkTS-Dyn示例**：	
+**示例:**
+
+ArkTS-Dyn示例
+
 ```ts	
 import { BusinessError } from '@ohos.base';	
 try {	
@@ -59,7 +62,9 @@ try {
   console.error(`Keyboard mouse crossing prepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-**ArkTS-Sta示例**：
+
+ArkTS-Sta示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 try {
@@ -148,7 +153,10 @@ unprepareCooperate(callback: AsyncCallback&lt;void&gt;): void;
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**ArkTS-Dyn示例：**
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts	
 import { BusinessError } from '@ohos.base';	
 try {	
@@ -163,7 +171,9 @@ try {
   console.error(`Keyboard mouse crossing unprepareCooperate failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-**ArkTS-Sta示例：**
+
+ArkTS-Sta示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 try {
@@ -258,7 +268,10 @@ ArkTS-Sta: activateCooperate(targetNetworkId: string, inputDeviceId: int, callba
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
-**ArkTS-Dyn示例**：
+**示例:**
+
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";	
@@ -276,7 +289,8 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";
@@ -334,7 +348,9 @@ ArkTS-Sta: activateCooperate(targetNetworkId: string, inputDeviceId: int): Promi
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
-**ArkTS-Dyn示例**:
+**示例:**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -351,7 +367,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**:
+ArkTS-Sta示例:
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -397,7 +413,9 @@ deactivateCooperate(isUnchained: boolean, callback: AsyncCallback&lt;void&gt;): 
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**ArkTS-Dyn示例**:
+**示例:**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@ohos.base';	
@@ -414,7 +432,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**:
+ArkTS-Sta示例:
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -466,7 +484,9 @@ deactivateCooperate(isUnchained: boolean): Promise&lt;void&gt;;
 | 201 | Permission denied. |
 | 202 | Not system application. |
 
-**ArkTS-Dyn示例**:
+**示例:**
+
+ArkTS-Dyn示例:
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -480,7 +500,8 @@ try {
   console.error(`Stop Keyboard mouse crossing failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
-**ArkTS-Sta示例**:
+
+ArkTS-Sta示例:
 
 ```ts
 import { BusinessError } from '@ohos.base';
@@ -524,7 +545,10 @@ getCooperateSwitchState(networkId: string, callback: AsyncCallback&lt;boolean&gt
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**ArkTS-Dyn示例**:
+**示例:**
+
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 let deviceDescriptor = "networkId";
@@ -541,7 +565,8 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**:
+ArkTS-Sta示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 let deviceDescriptor = "networkId";
@@ -594,7 +619,10 @@ getCooperateSwitchState(networkId: string): Promise&lt;boolean&gt;;
 | 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 
-**ArkTS-Dyn示例**:
+**示例:**
+
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 let deviceDescriptor = "networkId";
@@ -609,7 +637,8 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**:
+ArkTS-Sta示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 let deviceDescriptor = "networkId";
@@ -1111,7 +1140,10 @@ ArkTS-Sta: activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: 
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
 | 20900001 | Service exception. Possible causes: 1. A system error, such as null pointer, container-related exception, or IPC exception. 2. N-API invocation exception or invalid N-API status. |
 
-**ArkTS-Dyn示例**:
+**示例:**
+
+ArkTS-Dyn示例:
+
 ```ts
 import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";
@@ -1127,7 +1159,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**:
+ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@ohos.base';
 let targetNetworkId = "networkId";
