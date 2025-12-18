@@ -428,7 +428,7 @@ Webview提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超
 
 [JSVM](../reference/common/capi-jsvm.md)
 
-## PC端无法使用`requestPointerLock`鼠标锁定功能
+## 无法使用`requestPointerLock`鼠标锁定功能
 
 **问题描述**
 
