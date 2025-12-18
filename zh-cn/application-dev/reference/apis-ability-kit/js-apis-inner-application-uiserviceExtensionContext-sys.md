@@ -144,10 +144,6 @@ terminateSelf(): Promise&lt;void&gt;
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码：**
-
-无。
-
 **示例：**
 
 ```ts
@@ -310,6 +306,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 16000006   | Cross-user operations are not allowed.         |
 | 16000008   | The crowdtesting application expires.        |
 | 16000011   | The context does not exist.         |
+| 16000013   | The application is controlled by EDM.       |
 | 16000050   | Internal error.        |
 | 16000053   | The ability is not on the top of the UI.        |
 | 16000055   | Installation-free timed out.         |
@@ -321,8 +318,6 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 import { common, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-// The client needs to import idl_service_ext_proxy.ts provided by the server to the local project.
-import IdlServiceExtProxy from '../IdlServiceExt/idl_service_ext_proxy';
 
 const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -337,54 +332,39 @@ let want: Want = {
 let options: common.ConnectOptions = {
   onConnect(elementName, remote: rpc.IRemoteObject): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
-    if (remote === null) {
-      hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
-      return;
-    }
-    let serviceExtProxy: IdlServiceExtProxy = new IdlServiceExtProxy(remote);
-    // Communication is carried out by API calling, without exposing RPC details.
-    serviceExtProxy.processData(1, (errorCode: number, retVal: number) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `processData, errorCode: ${errorCode}, retVal: ${retVal}`);
-    });
-    serviceExtProxy.insertDataToMap('theKey', 1, (errorCode: number) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `insertDataToMap, errorCode: ${errorCode}`);
-    })
   },
   onDisconnect(elementName): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
   },
   onFailed(code: number): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+    hilog.info(DOMAIN_NUMBER, TAG, `onFailed callback, ${code}`);
   }
 };
+
 @Entry
 @Component
 struct Page_UIServiceExtensionAbility {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
           }
           .onClick(() => {
-            let context: common.UIServiceExtensionContext = this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
+            let context: common.UIServiceExtensionContext =
+              this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
             // The ID returned after the connection is set up must be saved. The ID will be used for disconnection.
             connectionId = context.connectServiceExtensionAbility(want, options);
             // The background service is connected.
             this.getUIContext().getPromptAction().showToast({
-              message: $r('app.string.SuccessfullyConnectBackendService')
+              message: 'SuccessfullyConnectBackendService'
             });
             // connectionId = context.connectAbility(want, options);
             hilog.info(DOMAIN_NUMBER, TAG, `connectionId is : ${connectionId}`);
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
@@ -433,36 +413,34 @@ const TAG: string = '[Page_ServiceExtensionAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
 let connectionId: number;
+
 @Entry
 @Component
 struct Page_UIServiceExtensionAbility {
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
           }
           .onClick(() => {
-            let context: common.UIServiceExtensionContext = this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
+            let context: common.UIServiceExtensionContext =
+              this.getUIContext().getHostContext() as common.UIServiceExtensionContext;
             // connectionId为调用connectServiceExtensionAbility接口时的返回值，需开发者自行维护
             context.disconnectServiceExtensionAbility(connectionId).then(() => {
               hilog.info(DOMAIN_NUMBER, TAG, 'disconnectServiceExtensionAbility success');
               // 成功断连后台服务
               this.getUIContext().getPromptAction().showToast({
-                message: $r('app.string.SuccessfullyDisconnectBackendService')
+                message: 'SuccessfullyDisconnectBackendService'
               });
-            }).catch((error: BusinessError) => {
-              hilog.error(DOMAIN_NUMBER, TAG, 'disconnectServiceExtensionAbility failed');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG,
+                `disconnectServiceExtensionAbility failed, err code: ${err.code}, err msg: ${err.message}`);
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
