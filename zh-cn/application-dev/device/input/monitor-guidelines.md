@@ -71,19 +71,19 @@ void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
-	// ···
+    // ...
 }
 
 static napi_value AddKeyEventMonitor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_AddKeyEventMonitor(OnKeyEventCallback);
-	// ···
+    // ...
 }
 
 static napi_value RemoveKeyEventMonitor(napi_env env, napi_callback_info info)
 {
     Input_Result ret = OH_Input_RemoveKeyEventMonitor(OnKeyEventCallback);
-	// ···
+    // ...
 }
 ```
 
