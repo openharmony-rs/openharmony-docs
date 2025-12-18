@@ -83,7 +83,7 @@ enum Hid_DeviceProp
 
 ### Hid_EventType
 
-```
+```c
 enum Hid_EventType
 ```
 

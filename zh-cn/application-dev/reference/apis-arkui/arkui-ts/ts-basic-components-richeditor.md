@@ -74,7 +74,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> 从API version 23开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -567,6 +567,22 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
+
+### selectedDragPreviewStyle<sup>23+</sup>
+
+selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
+
+设置拖动预览样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| valve | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 拖动预览样式。如果设置为undefined，样式将被重置。 |
 
 ## 事件
 
@@ -1337,7 +1353,9 @@ getCaretRect(): RectResult | undefined
 
 deleteBackward(): void
 
-提供删除字符能力。预览场景删除输入框尾部字符，编辑场景删除光标前字符，选中场景删除选中内容。
+提供删除字符能力。没有内容被选中时，删除当前光标位置前的1个字符。有内容被选中时，删除选中内容。
+
+该接口不支持预上屏场景使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1387,7 +1405,7 @@ addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImageSpanOptions
 
 添加图片内容，如果组件光标闪烁，插入后光标位置更新为新插入图片的后面。
 
-不建议直接添加网络图片。
+该接口为同步接口，在弱网环境下，直接添加网络图片可能会阻塞UI线程造成冻屏问题。不建议直接添加网络图片。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1571,7 +1589,7 @@ getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphResult>
 
 getSelection(): RichEditorSelection
 
-获取选中内容。未选中时，返回光标所在span信息。
+获取选中内容的范围和span信息。未选中时，返回光标所在span信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1834,6 +1852,7 @@ SymbolSpan样式选项。
 | lineBreakStrategy<sup>12+</sup> | [LineBreakStrategy](ts-appendix-enums.md#linebreakstrategy12) | 否 | 是 | 设置折行规则。 <br />默认值：LineBreakStrategy.GREEDY<br />在wordBreak不等于breakAll的时候生效，不支持连字符。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | paragraphSpacing<sup>19+</sup> | number | 否    | 是 | 设置段落间距大小。<br/>单位：fp<br/>段落间距默认大小为0。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 | textVerticalAlign<sup>20+</sup> | [TextVerticalAlign](ts-text-common.md#textverticalalign20) |  否  | 是 | 设置文本段落在垂直方向的对齐方式。<br/>默认值：TextVerticalAlign.BASELINE <br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| textDirection<sup>23+</sup> | [TextDirection](ts-text-common.md#textdirection22) |  否  | 是 | 设置文本方向。<br/>默认值：TextDirection.DEFAULT<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## LeadingMarginPlaceholder<sup>11+</sup>
 
@@ -6385,3 +6404,34 @@ struct CompressLeadingPunctuationDemo {
 }
 ```
 ![CompressLeadingPunctuation](figures/richEditorCompressLeadingPunctuation.gif)
+
+### 示例37（设置拖动预览样式）
+该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置拖动预览样式。
+
+从API version 23开始，新增selectedDragPreviewStyle接口。
+
+```ts
+@Entry
+@Component
+struct RichEditorDemo {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build() {
+    Column({ space: 2 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('RichEditor selectedDragPreviewStyle')
+        })
+        .borderWidth(1)
+        .borderColor(Color.Green)
+        .draggable(true)
+        .selectedDragPreviewStyle({ color: Color.Gray })
+        .width('100%')
+        .height('20%')
+    }
+  }
+}
+```
+
+![DeleteBackward](figures/selectedDragPreviewStyle.gif)

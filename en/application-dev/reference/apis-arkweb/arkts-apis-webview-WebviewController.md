@@ -1085,7 +1085,7 @@ struct WebComponent {
 
 ## registerJavaScriptProxy
 
-registerJavaScriptProxy(object: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
+registerJavaScriptProxy(jsObject: object, name: string, methodList: Array\<string>, asyncMethodList?: Array\<string>, permission?: string): void
 
 Registers a proxy for interaction between the application and web pages loaded by the **Web** component. Registers a JavaScript object with the window. APIs of this object can then be invoked in the window.
 <br>For the example, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).
@@ -1106,7 +1106,7 @@ Registers a proxy for interaction between the application and web pages loaded b
 
 | Name    | Type      | Mandatory| Description                                       |
 | ---------- | -------------- | ---- | ------------------------------------------------------------ |
-| object     | object         | Yes  | Application-side JavaScript object to be registered. Methods and attributes can be declared separately, but cannot be registered and used at the same time. If an object contains only attributes, HTML5 can access the attributes in the object. If an object contains only methods, HTML5 can access the methods in the object.<br>1. The parameter and return value can be any of the following types:<br>string, number, boolean.<br>2. Dictionary or Array, with a maximum of 10 nested layers and 10,000 data records per layer.<br>3. Object, which must contain the **methodNameListForJsProxy:[fun1, fun2]** attribute, where **fun1** and **fun2** are methods that can be called.<br>4. The parameter also supports Function and Promise. Their callback cannot have return values.<br>5. The return value supports Promise. Its callback cannot have a return value.|
+| jsObject     | object         | Yes  | Application-side JavaScript object to be registered. Methods and attributes can be declared separately, but cannot be registered and used at the same time. If an object contains only attributes, HTML5 can access the attributes in the object. If an object contains only methods, HTML5 can access the methods in the object.<br>1. The parameter and return value can be any of the following types:<br>string, number, boolean.<br>2. Dictionary or Array, with a maximum of 10 nested layers and 10,000 data records per layer.<br>3. Object, which must contain the **methodNameListForJsProxy:[fun1, fun2]** attribute, where **fun1** and **fun2** are methods that can be called.<br>4. The parameter also supports Function and Promise. Their callback cannot have return values.<br>5. The return value supports Promise. Its callback cannot have a return value.|
 | name       | string         | Yes  | Name of the object to be registered, which is the same as that invoked in the window. After registration, the window can use this name to access the JavaScript object at the application side.|
 | methodList | Array\<string> | Yes  | Synchronous methods of the JavaScript object to be registered at the application side.                      |
 | asyncMethodList<sup>12+</sup> | Array\<string> | No  | Asynchronous methods of the JavaScript object to be registered at the application side. The default value is null. Asynchronous methods cannot obtain return values. |
@@ -4913,7 +4913,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 | ID | Error Message                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed. |
 | 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.                                                 |
 
 **Example**
@@ -4927,7 +4926,7 @@ export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     console.info("EntryAbility onCreate");
     webview.WebviewController.initializeWebEngine();
-    // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address to visit. 
+    // Replace "https://www.example1.com/post?e=f&g=h" with a real URL to visit.
     webview.WebviewController.prefetchResource(
       {
         url: "https://www.example1.com/post?e=f&g=h",
@@ -4974,7 +4973,7 @@ struct WebComponent {
     Column() {
       Web({ src: "https://www.example.com/", controller: this.controller })
         .onAppear(() => {
-          // Replace "https://www.example1.com/post?e=f&g=h" with the actual website address to visit. 
+          // Replace "https://www.example1.com/post?e=f&g=h" with a real URL to visit.
           webview.WebviewController.prefetchResource(
             {
               url: "https://www.example1.com/post?e=f&g=h",
@@ -7378,8 +7377,10 @@ struct WebComponent {
   }
 }
 ```
+
 HTML file to be loaded:
- ```html
+
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -7389,7 +7390,7 @@ HTML file to be loaded:
   <body>
     <video id="video" width="400px" height="400px" autoplay>
     </video>
-    <input type="button" title="HTML5 Camera" value="Enable Camera" onclick="getMedia()"/>
+    <input type="button" title="HTML5 camera" value="Enable camera" onclick="getMedia()" />
     <script>
       function getMedia() {
         let constraints = {
@@ -7409,7 +7410,7 @@ HTML file to be loaded:
     </script>
   </body>
 </html>
- ```
+```
 
 ## stopCamera<sup>12+</sup>
 
@@ -7608,7 +7609,7 @@ The API is recommended for use in conjunction with dynamic components. Employ of
    }
    ```
 
-JavaScript resources can also be obtained through [network requests](../apis-network-kit/js-apis-http.md). However, the HTTP response header obtained using this method is not in the standard HTTP response header format. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is e-tag, convert it to E-Tag before using it.
+   JavaScript resources can also be obtained through [network requests](../apis-network-kit/js-apis-http.md). However, the HTTP response header obtained using this method is not in the standard HTTP response header format. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is e-tag, convert it to E-Tag before using it.
 
 4. Compile the code of the service component.
 
@@ -8037,11 +8038,10 @@ After **webview.WebviewController.SetRenderProcessMode(webview.RenderProcessMode
 
 **Error codes**
 
-For details about the error codes, see [Webview Error Codes](errorcode-webview.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Invalid input parameter.Possible causes: 1. Mandatory parameters are left unspecified.2. Incorrect parameter types.3. Parameter verification failed.                                     |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 | 17100002 | URL error. The webpage corresponding to the URL is invalid, or the URL length exceeds 2\*1024\*1024.  |
 
@@ -8534,7 +8534,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-Sets a path list. When a file protocol accesses resources in the path list, it can access the local files across domains. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API. The paths in the list must be any of the following:
+Sets a path list. When the file protocol accesses resources in the path list, cross-origin access to local files and other online resources is allowed. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API. The paths in the list must be any of the following:
 
 1. The path of subdirectory of the application file directory. (The application file directory is obtained using [Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in the Ability Kit.) For example:
 
@@ -10272,6 +10272,40 @@ Obtains the current ArkWeb kernel version.
 
 For details, see [setActiveWebEngineVersion](#setactivewebengineversion20).
 
+## isActiveWebEngineEvergreen<sup>23+</sup>
+
+static isActiveWebEngineEvergreen(): boolean
+
+Checks whether the system is using the evergreen kernel, that is, the latest kernel.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type| Description|
+| ------ | ------ |
+| boolean | Whether the system is using the evergreen kernel. If the system is using the evergreen kernel, **true** is returned. Otherwise, **false** is returned.|
+
+**Example**
+
+This example shows how to determine whether the evergreen kernel is used in the EntryAbility creation phase.
+
+```ts
+// xxx.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info("EntryAbility onCreate")
+    if (webview.WebviewController.isActiveWebEngineEvergreen()) {
+      console.info("Active Web Engine is Evergreen")
+    }
+    console.info("EntryAbility onCreate done")
+  }
+}
+```
+
 ## setAutoPreconnect<sup>21+</sup>
 
 static setAutoPreconnect(enabled: boolean): void
@@ -10356,7 +10390,7 @@ Queries the currently effective site isolation mode.
 
 | Type                                     | Description                                                        |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | Site isolation mode.<br>getSiteIsolationMode() queries the currently effective site isolation mode.
+| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | Site isolation mode.<br>getSiteIsolationMode() queries the currently effective site isolation mode.|
 
 
 **Example**
@@ -10553,21 +10587,21 @@ struct WebComponent {
     Column() {
       Button("resumeMicrophone").onClick(() => {
         try {
-          this.controller.startMicrophone();
+          this.controller.resumeMicrophone();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
       Button("pauseMicrophone").onClick(() => {
         try {
-          this.controller.stopMicrophone();
+          this.controller.pauseMicrophone();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
       })
       Button("stopMicrophone").onClick(() => {
         try {
-          this.controller.closeMicrophone();
+          this.controller.stopMicrophone();
         } catch (error) {
           console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
         }
@@ -10596,14 +10630,17 @@ struct WebComponent {
             })
           }
         })
-        .onMicrophoneCaptureStateChange((info:MicrophoneCaptureStateInfo)=>{
-          console.info("MicrophoneCapture from ", info.originalState, " to ", info.newState);
+        .onMicrophoneCaptureStateChange((event: MicrophoneCaptureStateChangeInfo) => {
+          console.info("MicrophoneCapture from ", event.originalState, " to ", event.newState);
+        })
     }
   }
 }
 ```
+
 HTML file to be loaded:
- ```html
+
+```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
@@ -10633,7 +10670,7 @@ HTML file to be loaded:
    </script>
  </body>
 </html>
- ```
+```
 
 ## pauseMicrophone<sup>23+</sup>
 
@@ -10674,4 +10711,3 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 For the complete sample code, see [resumeMicrophone](#resumemicrophone23).
-```

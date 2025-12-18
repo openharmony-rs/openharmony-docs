@@ -210,7 +210,7 @@ Describes the extended configuration of window change event listening, which is 
 | Name      | Type  | Read-Only| Optional| Description                 |
 | ---------- | ------ | ---- | ---- | --------------------- |
 | timeout | number | No  | Yes  | Listening timeout interval, in milliseconds. The default value is 10000.     |
-| bundleName       | string | No  | Yes  | Bundle name of the window to listen for. By default, all windows are listened for.      |
+| bundleName       | string | No  | Yes  | Bundle name of the window to be listened for. By default, all windows are listened for.      |
 
 
 ## ComponentEventOptions<sup>22+</sup>
@@ -400,7 +400,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
-let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE) // Use case-insensitive regular expression to match the ID attribute value of the component.
+let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // Use case-insensitive regular expression to match the ID attribute value of the component.
 ```
 
 ### type<sup>9+</sup>
@@ -859,7 +859,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located after the given attribute component.
-let on: On = ON.type('Text').isAfter(ON.text('123'));  // Search for the first <Text> component located after the component whose text is 123.
+let on: On = ON.type('Text').isAfter(ON.text('123')); // Search for the first <Text> component located after the component whose text is 123.
 ```
 
 ### within<sup>10+</sup>
@@ -898,7 +898,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
-let on: On = ON.text('java').within(ON.type('Scroll'));  // Search for the child component whose text is java within the <Scroller> component.
+let on: On = ON.text('java').within(ON.type('Scroll')); // Search for the child component whose text is java within the <Scroller> component.
 ```
 
 ### inWindow<sup>10+</sup>
@@ -5109,7 +5109,7 @@ async function demo() {
 
 ### injectKnucklePointerAction<sup>22+</sup>
 
-injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise<\void>
+injectKnucklePointerAction(pointers: PointerMatrix, speed?: number): Promise\<void>
 
 Simulates a multi-point knuckle scrolling operation.
 

@@ -624,8 +624,9 @@ onBackground(): void {
 
 **完整示例**
 
+<!--RP1-->
 [复用和释放离线Web组件示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3)
-
+<!--RP1End-->
 
 ## 常见白屏问题排查
 

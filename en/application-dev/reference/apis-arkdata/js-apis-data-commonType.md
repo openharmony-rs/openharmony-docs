@@ -46,7 +46,7 @@ Represents asset (such as a file, image, or video) information. For details, see
 | path       | string                      | No  | No  | Application sandbox path of the asset.          |
 | createTime | string                      | No  | No  | Time when the asset was created.            |
 | modifyTime | string                      | No  | No  | Time when the asset was last modified.        |
-| size       | string                      | No  | No  | Size of the asset.              |
+| size       | string                      | No  | No  | Size of the asset. Ensure that the storage format and value logic are consistent across the end-to-end link. It is recommended that all system nodes use the standard processing format (unit: byte; value: a non-negative integer).|
 | status     | [AssetStatus](#assetstatus) | No  | Yes  | Asset status. The default value is **ASSET_NORMAL**.|
 
 ## Assets

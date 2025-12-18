@@ -51,7 +51,7 @@ import Base from '@ohos.base';
 
 //发布公共事件回调
 function publishCB(err:Base.BusinessError) {
-	if (err.code) {
+    if (err.code) {
         console.error(`publish failed, code is ${err.code}`);
     } else {
         console.info("publish");
@@ -90,14 +90,14 @@ import CommonEventManager from '@ohos.commonEventManager';
 
 //公共事件相关信息
 let options:CommonEventManager.CommonEventPublishData = {
-	code: 0,			 //公共事件的初始代码
-	data: "initial data",//公共事件的初始数据
-	isOrdered: true	 //有序公共事件
+    code: 0,             //公共事件的初始代码
+    data: "initial data",//公共事件的初始数据
+    isOrdered: true  //有序公共事件
 }
 
 //发布公共事件回调
 function publishCB(err:Base.BusinessError) {
-	if (err.code) {
+    if (err.code) {
         console.error(`publish failed, code is ${err.code}`);
     } else {
         console.info("publish");
@@ -278,7 +278,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 import Base from '@ohos.base';
 import CommonEventManager from '@ohos.commonEventManager';
 
-let subscriber:CommonEventManager.CommonEventSubscriber;	// 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
+let subscriber:CommonEventManager.CommonEventSubscriber;    // 用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
 
 // 订阅者信息
 let subscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {

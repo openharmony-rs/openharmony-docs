@@ -527,3 +527,16 @@ Enumerates the microphone capture states.
 | NONE   | 0    | The microphone is not working.|
 | PAUSED | 1    | The microphone is paused.|
 | ACTIVE | 2    | The microphone is active.|
+
+## NavigationPolicy<sup>23+</sup>
+
+Enumerates the modes of opening a new window in the WebView.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name                          | Value| Description          |
+| ----------------------------- | -- | ------------ |
+| NEW_POPUP                     | 0 | Open in a new pop-up window.  |
+| NEW_WINDOW                    | 1 | Open in a new window.  |
+| NEW_BACKGROUND_TAB            | 2 | Open in a new tab in background.|
+| NEW_FOREGROUND_TAB            | 3 | Open in a new tab in foreground.|

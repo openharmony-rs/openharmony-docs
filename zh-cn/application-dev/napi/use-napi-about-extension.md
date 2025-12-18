@@ -1509,3 +1509,16 @@ testNapi.testNapiWrapEnhance();
 **napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference、napi_get_strong_sendable_reference_value**
 
 [使用扩展的Node-API接口创建、销毁和使用Sendable强引用](use-napi-about-sendable-reference.md)
+
+### 接口描述
+
+| 接口                      | 描述                                                       |
+| ------------------------- | ---------------------------------------------------------- |
+| napi_throw_business_error | 抛出带文本信息的ArkTS Error，其错误对象的code属性类型为number。|
+
+
+### 使用示例
+
+**napi_throw_business_error**
+
+[使用扩展的Node-API接口抛出ArkTS异常](use-napi-about-error.md)

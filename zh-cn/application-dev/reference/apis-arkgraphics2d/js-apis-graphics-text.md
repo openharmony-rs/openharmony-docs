@@ -292,7 +292,12 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 根据字体文件路径获取字体描述符数组。使用Promise异步回调。
 
-如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
+> **说明：**
+>
+> - 如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
+>
+> - [FontDescriptor](#fontdescriptor14)中的weight字段并不精准对应字体文件内部的字重数值，而是将字体文件中的实际字重四舍五入映射到[FontWeight](#fontweight)枚举值后的结果。例如，字体文件字重350会映射为400，对应枚举为W400。
+
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -434,6 +439,53 @@ struct GetFontCountTest {
         .onClick(() => {
           let fontCount = text.getFontCount("file:///system/fonts/NotoSansCJK-Regular.ttc")
           console.info("file count: " + fontCount)
+        })
+    }.width("100%")
+    .height("100%")
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+## text.getFontPathsByType<sup>23+</sup>
+
+getFontPathsByType(fontType: SystemFontType): Array\<string\>
+
+获取指定字体类型的所有字体文件路径。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| fontType | [SystemFontType](#systemfonttype14) | 是 | 指定的字体类型。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Array\<string\> | 字体文件路径列表。 |
+
+**示例：**
+
+``` ts
+import { text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct GetFontPathsByTypeTest {
+  build() {
+    Column({ space: 10 }) {
+      Button("get font path")
+        .onClick(() => {
+          let fontList = text.getFontPathsByType(text.SystemFontType.ALL)
+          console.info("file count: " + fontList.length)
+          for (let index = 0; index < fontList.length; index++) {
+            console.info("file path: " + fontList[index])
+          }
         })
     }.width("100%")
     .height("100%")

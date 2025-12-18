@@ -29,7 +29,7 @@
 
 2. 在InputMethodExtensionAbility目录下，右键选择“New > File”，新建四个文件，分别为KeyboardController.ts、InputMethodService.ts、Index.ets以及KeyboardKeyData.ts。目录如下：
 
-   ``` 
+   ``` TypeScript
    /src/main/
    ├── ets/InputMethodExtensionAbility
    │       └──model/KeyboardController.ts			# 显示键盘
@@ -248,10 +248,10 @@
    
      // 设置监听子类型事件，改变输入法应用界面
      inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-       if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+       if (inputMethodSubtype.id === 'InputMethodExtAbility') {
          AppStorage.setOrCreate('subtypeChange', 0);
        }
-       if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+       if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
          AppStorage.setOrCreate('subtypeChange', 1);
        }
      });

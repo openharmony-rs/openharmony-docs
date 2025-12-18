@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_VBucket
 ```
 
@@ -32,7 +32,7 @@ Defines a struct for the types of the key and value in a KV pair.
 
 | Name                                                        | Description                                               |
 | ------------------------------------------------------------ | --------------------------------------------------- |
-| [int (*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | Puts a char * value into the **OH_VBucket** object in the given column.          |
+| [int (*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | Puts a char* value into the **OH_VBucket** object in the given column.          |
 | [int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | Puts an int64_t value into the **OH_VBucket** object in the given column.        |
 | [int (*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | Puts a double value into the **OH_VBucket** object in the given column.         |
 | [int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | Puts a const uint8_t * value into the **OH_VBucket** object in the given column.|
@@ -45,7 +45,7 @@ Defines a struct for the types of the key and value in a KV pair.
 
 ### putText()
 
-```
+```c
 int (*putText)(OH_VBucket *bucket, const char *field, const char *value)
 ```
 
@@ -71,7 +71,7 @@ Puts a char* value into the **OH_VBucket** object in the given column.
 
 ### putInt64()
 
-```
+```c
 int (*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)
 ```
 
@@ -97,7 +97,7 @@ Puts an int64_t value into the **OH_VBucket** object in the given column.
 
 ### putReal()
 
-```
+```c
 int (*putReal)(OH_VBucket *bucket, const char *field, double value)
 ```
 
@@ -123,7 +123,7 @@ Puts a double value into the **OH_VBucket** object in the given column.
 
 ### putBlob()
 
-```
+```c
 int (*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)
 ```
 
@@ -150,7 +150,7 @@ Puts a const uint8_t * value into the **OH_VBucket** object in the given column.
 
 ### putNull()
 
-```
+```c
 int (*putNull)(OH_VBucket *bucket, const char *field)
 ```
 
@@ -175,7 +175,7 @@ Puts a null value into the **OH_VBucket** object in the given column.
 
 ### clear()
 
-```
+```c
 int (*clear)(OH_VBucket *bucket)
 ```
 
@@ -199,7 +199,7 @@ Clears an **OH_VBucket** object.
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_VBucket *bucket)
 ```
 

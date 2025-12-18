@@ -95,6 +95,8 @@
 
 ## ArrowPointPosition<sup>11+</sup>
 
+气泡箭头的位置。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -191,8 +193,8 @@
 | 名称   | 值 | 说明                 |
 | ---- | --- | ------------------ |
 | Off  | 0 | 不显示。               |
-| On   | 2 | 常驻显示。              |
 | Auto | 1 | 按需显示(触摸时显示，2s后消失)。 |
+| On   | 2 | 常驻显示。              |
 
 ## BorderStyle
 
@@ -287,6 +289,8 @@
 
 ## CheckBoxShape<sup>11+</sup>
 
+复选框Checkbox的形状。
+
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -354,7 +358,7 @@
 
 ## DialogButtonStyle<sup>10+</sup>
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+弹窗按钮的样式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -422,7 +426,7 @@
 
 | 名称     | 值 | 说明                                       |
 | ------ | --- | ---------------------------------------- |
-| Spring | 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
+| Spring | 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。<br />API version 22及之前版本，拖动滚动条，滚动组件的弹性物理动效不生效。<br />从API version 23开始，通过手指拖动滚动条，滚动组件的弹性物理动效可以生效。通过鼠标拖动滚动条，滚动组件的弹性物理动效不能生效。 |
 | Fade   | 1 | 阴影效果，滑动到边缘后会有圆弧状的阴影。                     |
 | None   | 2 | 滑动到边缘后无效果。                               |
 
@@ -1024,6 +1028,8 @@ type Nullable\<T> = T | undefined
 
 ## OptionWidthMode<sup>11+</sup>
 
+下拉菜单的宽度模式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1049,6 +1055,8 @@ type Nullable\<T> = T | undefined
 | AlternateReverse | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ## Placement<sup>8+</sup>
+
+气泡显示的位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1158,6 +1166,8 @@ type Nullable\<T> = T | undefined
 | MOUSE  | 3 | 鼠标。   |
 
 ## ResponseType<sup>8+</sup>
+
+菜单显示的触发方式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1296,16 +1306,16 @@ type Nullable\<T> = T | undefined
 
 文本段落在水平方向的对齐方式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                  | 值 | 说明                                                         |
-| --------------------- | ------------------ | ------------------------------------------------------------ |
-| Start                 | 0 | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| Center                | 1 | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| End                   | 2 | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| JUSTIFY<sup>10+</sup> | 3 | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。 |
+| 名称     |  值  | 说明                                       |
+| ------ | ------ | ---------------------------------------- |
+| Start                     |  0  | 水平对齐首部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Center                    |  1  | 水平居中对齐。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| End                       |  2  | 水平对齐尾部。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| JUSTIFY<sup>10+</sup>     |  3  | 双端对齐。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| LEFT<sup>23+</sup>        |  4  | 左对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。。 |
+| RIGHT<sup>23+</sup>       |  5  | 右对齐。<br/>**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## TextOverflow
 
@@ -1511,6 +1521,6 @@ type Nullable\<T> = T | undefined
 | 名称                             | 说明                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
 | SURFACE                          | 用于EGL/OpenGLES和媒体数据写入，单独展示开发者定制的绘制内容到屏幕上。背景色设置为黑色时走显示子系统（DSS）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 12开始，该接口废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| COMPONENT<sup>(deprecated)</sup> | 使用XComponent作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | TEXTURE                          | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 20开始，该接口废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| NODE<sup>(deprecated)</sup>      | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |

@@ -8,7 +8,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 当前窗口实例，窗口管理器管理的基本单元。
 
@@ -1653,7 +1655,7 @@ API version 14之前，该接口在所有设备中可正常调用。
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and sub windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -1692,7 +1694,7 @@ getImmersiveModeEnabledState(): boolean
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------------- |
 | 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and sub windows are supported. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **示例：**
 
@@ -2270,7 +2272,11 @@ export default class EntryAbility extends UIAbility {
 
 setPreferredOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-设置主窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。子窗口调用后不生效。
+设置窗口的显示方向属性，使用callback异步回调。相关横竖屏开发实践查询[横竖屏切换](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-landscape-and-portrait-development)。
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，仅支持主窗口调用且生效，其他窗口类型调用后不生效。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，支持主窗口和WindowType为TYPE_WALLET_SWIPE_CARD的系统窗口调用且生效，其他窗口类型调用后不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5790,13 +5796,21 @@ export default class EntryAbility extends UIAbility {
 
 setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void
 
-主窗口设置当前设备屏幕亮度，无法设置虚拟屏（如投屏所在的屏幕）的屏幕亮度，使用callback异步回调。
+主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用callback异步回调。
 
-当窗口退至后台时，系统会恢复至设置屏幕亮度前的系统控制中心亮度。不建议同时调用此接口，否则可能引发时序问题。
+窗口亮度生效时只会影响当前设备屏幕亮度，无法修改虚拟屏（如投屏所在的屏幕）的屏幕亮度。
+
+当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
+
+当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议窗口退至后台时调用此接口，否则可能引发时序问题。
 
 > **说明：**
->- 针对非2in1设备，窗口设置当前窗口亮度生效时，控制中心不可以调整系统屏幕亮度。当接口入参为-1或当前窗口退至后台时，窗口亮度恢复为系统屏幕亮度，控制中心可以调整系统屏幕亮度。
->- 针对2in1设备，在API version 14之前，窗口设置屏幕亮度生效时，控制中心和快捷键不可以调整系统屏幕亮度。当接口入参为-1或当前窗口退至后台时，窗口亮度恢复为系统屏幕亮度，控制中心和快捷键可以调整系统屏幕亮度。从API version 14开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+> - 针对非2in1设备：
+>   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
+>   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
+> - 针对2in1设备：
+>   - 在OpenHarmony5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+>   - 从OpenHarmony5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -5860,13 +5874,21 @@ export default class EntryAbility extends UIAbility {
 
 setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
-主窗口设置当前设备屏幕亮度，无法设置虚拟屏（如投屏所在的屏幕）的屏幕亮度，使用Promise异步回调。
+主窗口设置窗口亮度。当窗口处于前台且获焦时，窗口亮度生效。使用Promise异步回调。
 
-当窗口退至后台时，系统会恢复至设置屏幕亮度前的系统控制中心亮度。不建议同时调用此接口，否则可能引发时序问题。
+窗口亮度生效时只会影响当前设备屏幕亮度，无法修改虚拟屏（如投屏所在的屏幕）的屏幕亮度。
+
+当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
+
+当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议窗口退至后台时调用此接口，否则可能引发时序问题。
 
 > **说明：**
->- 针对非2in1设备，窗口设置当前窗口亮度生效时，控制中心不可以调整系统屏幕亮度。当接口入参为-1或当前窗口退至后台时，窗口亮度恢复为系统屏幕亮度，控制中心可以调整系统屏幕亮度。
->- 针对2in1设备，在API version 14之前，窗口设置屏幕亮度生效时，控制中心和快捷键不可以调整系统屏幕亮度。当接口入参为-1或当前窗口退至后台时，窗口亮度恢复为系统屏幕亮度，控制中心和快捷键可以调整系统屏幕亮度。从API version 14开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
+> - 针对非2in1设备：
+>   - 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，当前窗口的窗口亮度生效时，控制中心调整系统屏幕亮度不生效。
+>   - 从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，当前窗口的窗口亮度生效时，控制中心可以调整系统屏幕亮度，同时会将当前窗口恢复为系统屏幕亮度。
+> - 针对2in1设备：
+>   - 在OpenHarmony5.0.2之前，窗口设置屏幕亮度生效时，控制中心或快捷键调整系统屏幕亮度不生效。
+>   - 从OpenHarmony5.0.2开始，窗口亮度与系统屏幕亮度保持一致，可以通过本接口、控制中心或者快捷键设置系统屏幕亮度。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6684,7 +6706,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. |
-| 1300016 | Parameter error. Possible cause: 1. Invaild parameter range. 2. Invalid parameter length. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
 **示例：**
 
@@ -7489,7 +7511,7 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only sub windows and float windows are supported. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported. |
 
 **示例：**
 
@@ -8211,7 +8233,7 @@ isFocused(): boolean
 ```ts
 try {
   let focus = windowClass.isFocused();
-  console.info(`Succeeded in checking whether the window is focused. Data: JSON.stringify(focus)`);
+  console.info(`Succeeded in checking whether the window is focused. Data: ${focus}`);
 } catch (exception) {
   console.error(`Failed to check whether the window is focused. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -8320,7 +8342,7 @@ setParentWindow(windowId: number): Promise&lt;void&gt;
 | 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invaild. |
+| 1300009 | The parent window is invalid. |
 
 **示例：**
 
@@ -8373,7 +8395,7 @@ getParentWindow(): Window
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.    |
 | 1300004 | Unauthorized operation. |
-| 1300009 | The parent window is invaild. |
+| 1300009 | The parent window is invalid. |
 
 **示例：**
 
@@ -9221,11 +9243,13 @@ export default class EntryAbility extends UIAbility {
 
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
-设置当前窗口是否启用返回手势功能，仅主窗全屏模式下生效，2in1设备下不生效。
+设置当前窗口是否启用返回手势功能，仅主窗全屏模式下生效。
 禁用返回手势功能后，当前应用会禁用手势热区，侧滑返回功能失效；切换到其他应用或者回到桌面后，手势热区恢复，侧滑返回功能正常。
 开启返回手势功能后，当前应用会恢复手势热区，侧滑返回功能正常。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在其他设备上可正常调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -9461,9 +9485,9 @@ getWindowCornerRadius(): number
 
 **设备行为差异：**
 
-API version 23之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
-从API version 23开始，该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -10232,8 +10256,8 @@ convertOrientationAndRotation(from: RotationInfoType, to: RotationInfoType, valu
 ```ts
 try {
   let originalValue: number = 0;
-  let fromType: Window.RotationInfoType = Window.RotationInfoType.WINDOW_ORIENTATION;
-  let toType: Window.RotationInfoType = Window.RotationInfoType.DISPLAY_ORIENTATION;
+  let fromType: window.RotationInfoType = window.RotationInfoType.WINDOW_ORIENTATION;
+  let toType: window.RotationInfoType = window.RotationInfoType.DISPLAY_ORIENTATION;
   let convertedValue: number = windowClass.convertOrientationAndRotation(fromType, toType, originalValue);
   console.info(`Convert ${originalValue} of type: ${fromType} to ${convertedValue} of type: ${toType}`);
 } catch (exception) {
@@ -10271,7 +10295,7 @@ setWindowSystemBarProperties(systemBarProperties: SystemBarProperties, callback:
 | 错误码ID | 错误信息                                                                                                     |
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |	
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
 | 1300002  | This window state is abnormal.                                                                               |
 | 1300003  | This window manager service works abnormally.                                                                |
 
