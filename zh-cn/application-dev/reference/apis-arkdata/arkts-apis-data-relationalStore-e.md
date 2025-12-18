@@ -356,3 +356,14 @@ export default class EntryAbility extends UIAbility {
 | ASSETS        | 6    | 表示列类型为[Assets](arkts-apis-data-relationalStore-t.md#assets10)。                            |
 | FLOAT_VECTOR  | 7    | 表示列类型为Float32Array。                                   |
 | UNLIMITED_INT | 8    | 表示列类型为bigint。                                         |
+
+## DistributedTableType<sup>23+</sup>
+
+描述端端分布式表的分布式表类型的枚举。请使用枚举名称而非枚举值。
+此配置项为数据库级配置，如果数据库中有多张表需要同步，则所有表必须使用相同的端端分布式表类型。
+DistributedTableType[关系型数据库跨设备数据同步](../../database/data-sync-of-rdb-store.md)。
+
+| 名称                | 值   | 说明                                                                                                 |
+| ------------------ | --- | -------------------------------------------------------------------------------------------------- |
+| DEVICE_COLLABORATION | 0  | 设备协作表，数据写入对端按设备ID隔离。<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core               |
+| SINGLE_VERSION  | 1   | 单版本表，数据写入对端直接写入对端本地表中。<br>**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core |

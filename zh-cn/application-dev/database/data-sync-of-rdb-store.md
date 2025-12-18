@@ -16,7 +16,9 @@
 
 关系型数据库跨设备数据同步，支持应用在多设备间同步存储的关系型数据。
 
-- 分布式表：支持组网内多设备间数据同步的数据库表。来自其他设备的数据将同步至本地，并通过与设备ID关联的表名进行存储。
+- 分布式表：支持组网内多设备间数据同步的数据库表。来自其他设备的数据将同步至本地，通过
+  [DistributedTableType](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)配置数据写入对端的存储方式，
+  参考（开发步骤中3<默认:[DEVICE_COLLABORATION](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)>，4<[DEVICE_COLLABORATION](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)>，5<[SINGLE_VERSION](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype23)>）。
 - 数据同步：将设备上数据库中分布式表发生的变更，同步至组网内其他设备。有推送数据和拉取数据两种方式触发同步。
 - 数据变化通知：组网内其他设备数据发生的变化同步至当前设备时，会执行已注册的回调函数。
 
@@ -32,6 +34,9 @@
 业务将数据写入关系型数据库后，向数据管理服务发起同步请求。
 
 数据管理服务从应用沙箱内读取待同步数据，根据对端设备的deviceId将数据发送到其他设备的数据管理服务。再由数据管理服务将数据写入同应用的数据库内。
+
+设备协作表与单版表的区别在于，单版表在数据同步至对端时由数据管理服务直接写入数据库本地表中；设备协作表在数据同步至对端时，由数据管理服务写入到对端创建的分布式表中，同步数据不会合并至数据库本地表，可通过接口obtainDistributedTableName查询分布式表名。
+![relationalStore_DeviceDistributedTable_CollaborationVsSignle](figures/relationalStore_DeviceDistributedTable_CollaborationVsSignle.jpg)
 
 
 ### 数据变化通知机制
@@ -50,6 +55,14 @@
 - 单个数据库最多支持注册8个订阅数据变化的回调。
 
 - 不支持将含有复合键的表设置为分布式表。
+  
+- 设备协作表与单版表为库级配置，不支持分布式表类型升级转换，不支持同一数据库中不同表配置不同分布式表类型。
+  
+- 配置单版本表必须配置对应的dbschema文件，否则无法创建单版本表，且schema文件路径必须为/src/main/resources/rawfile/arkdata/schema/sync_schema.json。
+  
+- schema文件约束见开发步骤5，必须严格按照demo中格式配置，若违反约束则分布式表设置或者升级会出错，若有疑问请联系开发人员。
+  
+- 端端分布式表和端云分布式表不能同时配置。
 
 ## 接口说明
 
@@ -87,29 +100,50 @@
    1. 需要申请ohos.permission.DISTRIBUTED_DATASYNC权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
    2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
-3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表。
-   <!--@[setDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
-   
-   ``` TypeScript
-   let context = getContext();
-   let store: relationalStore.RdbStore | undefined = undefined;
-   // ···
-     const STORE_CONFIG: relationalStore.StoreConfig = {
-       name: 'RdbTest.db', // 数据库文件名
-       securityLevel: relationalStore.SecurityLevel.S3 // 数据库安全级别
-     };
-     // 打开数据库并设置分布式表
-     relationalStore.getRdbStore(context, STORE_CONFIG).then(async (rdbStore: relationalStore.RdbStore) => {
-       store = rdbStore;
-       await store.executeSql('CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB)');
-       // 将已创建的表设置分布式表。
-       await store.setDistributedTables(['EMPLOYEE']);
-     }).catch((err: BusinessError) => {
-       hilog.error(DOMAIN, 'rdbDataSync', `Get RdbStore failed, code is ${err.code}, message is ${err.message}`);
-     });
-   ```
+3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，默认端端分布式表类型。
+   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
 
-4. 订阅组网内其他设备的数据变化消息。
+4. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，设备协作表。
+   <!--@[setCollaborationDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+
+5. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，单版本表。
+   配置单版本跨端分布式表时，需要将分布式表类型设置为[SINGLE_VERSION](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#distributedtabletype)。且必须配置对应dbschema文件，用以描述数据库表结构信息以及要做跨端同步字段信息，schema文件路径必须为/src/main/resources/rawfile/arkdata/schema/sync_schema.json。
+   <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   sync_schema.json文件示例：
+   <(https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/resources/rawfile/arkdata/schema/sync_schema.json)>
+   schema文件中必须满足以下要求：
+   - schema有变化时version需要增加；
+   - 设备协作表模式不支持配置schema，设置设备协作表默认不读取schema文件；
+   - 同步列变化时，存量数据会重新同步；
+   - 指定同步列不能为空；
+   - 自增字段，不能跨端同步；
+   - 自增表下，不支持指定非主键列接冲突时又同步主键列（自增字段不允许跨端同步）；
+   - 同步的列必须存在于表结构中；
+   - 无主键表不支持指定列同步；
+   - 不支持解冲突列变化；
+   - special列只能有一个，如果主键列同步，则必须配置主键列为special列；
+   - 非自增表下，不能配置非主键列解冲突，主键为非自增，必须配置主键列为special列；
+   - 若主键为自增属性，必须配置一个非主键列为special列用以解冲突，且special列必须为unique列；
+   - 表中非自增not null列必须有默认值，否则要指定同步；
+   - 若数据库表中有多个unique列，所有unique列都必须同步；若存在多个unique列，数据同步至对端有可能会出现数据冲突现象而无法写入，请知晓！
+   - schema升级时指定同步字段只能新增不能减少。
+   schema文件结构：
+   --dbSchema:schema名称，必须为"dbSchema"，不允许修改; 可配置多个数据库；<必填字段>
+     --version: dbSchema版本号，每次修改dbSchema时需要增加；int类型；<必填字段>
+     --bundleName: 应用包名；string类型；必须与应用bundle信息保持一致，否则读取schema失败；<必填字段>
+     --dbName: 数据库名；string类型；如demo中数据库名为"RdbTest.db"，则该字段需配置为"RdbTest";<必填字段>
+     --tables: 表结构信息，可以有多个table；<必填字段>
+       --tableName: 表名；string类型；<必填字段>
+       --deviceSyncFields: 跨端同步字段信息；不能为空，array<string>; 且配置的字段名必须存在与fields中；<必填字段>
+       --cloudType: 表类型；array<string>，可选参数["Local", "Cloud DB", "Device DB"]; <必填字段>
+       --fields: 字段信息，可以有多个field；<必填字段>
+         --columnName: 字段名；string类型；<必填字段>
+         --type: 字段类型；string类，可选参数["Text", "Integer", "Long", "Float", "Double", "Blob", "Asset"]；<必填字段>
+         --primaryKey: 是否为special跨端同步解冲突列；bool类型；此处置为true，则表示该字段为同步至对端写入时指定解冲突列，与表中主键无关；<必填字段>
+         --autoIncrement: 是否自增；bool类型；<必填字段>
+         --notNull: 是否非空；bool类型；<非必填字段>
+
+6. 订阅组网内其他设备的数据变化消息。
    1. 调用[on('dataChange')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#ondatachange)接口监听其他设备的数据变化，当数据变化同步至当前设备时，将执行订阅的回调方法，入参为数据发生变化的设备ID列表。
    2. 通过设备ID获取与设备对应的分布式表表名，查询对应设备分布式表中的数据。
    <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
@@ -150,7 +184,7 @@
    }
    ```
 
-5. 同步当前设备数据变化至组网内其他设备。
+7. 同步当前设备数据变化至组网内其他设备。
    1. 当前设备分布式表中的数据发生变化后，调用RdbStore的[sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1)接口传入[SYNC_MODE_PUSH](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode)参数推送数据变化至其他设备。
    2. 通过谓词的[inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices)方法指定推送的目标设备。
   
@@ -203,7 +237,7 @@
    }
    ```
 
-6. 拉取组网内其他设备的数据变化。
+8. 拉取组网内其他设备的数据变化。
    1. 当前设备可调用RdbStore的[sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1)接口传入[SYNC_MODE_PULL](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode)参数拉取组网内其他设备的数据变化。
    2. 通过谓词的[inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices)方法指定拉取的目标设备。
    
@@ -249,7 +283,7 @@
    }
    ```
 
-7. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的[remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)方法查询组网内指定设备上分布式表中的数据。
+9. 当数据未完成同步，或未触发数据同步时，可使用RdbStore的[remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)方法查询组网内指定设备上分布式表中的数据。
    <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
    ``` TypeScript
