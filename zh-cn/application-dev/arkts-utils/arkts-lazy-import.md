@@ -315,7 +315,7 @@ ReferenceError: module environment is undefined
 A文件执行过程完成了变量定义赋值并进行导出，对应A文件的耗时。B文件定义了一个函数并导出，对应B文件的耗时。
 在Index文件执行时，B文件的导出函数func被顶层执行，因此B文件的导出是无法优化的，在工具侧就会显示used。但是A文件的导出变量a在Index文件的myFunc函数被调用时才使用，如果冷启动阶段没有其他文件调用myFunc函数，那么A文件在工具侧就会显示unused，即可以延迟加载。
 
- ```ts
+```ts
 // Index.ets
 import { a } from './A';
 import { func } from './B';
@@ -347,7 +347,7 @@ export function func() {
 
 在冷启动阶段，导出内容被其他文件使用的文件称为used file。  
 
-- 场景1：通过静态加载加载的文件，其父文件（parentModule）代表该文件的引入方。
+- 场景1：通过静态加载所加载的文件，其父文件（parentModule）代表该文件的引入方。
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
@@ -362,7 +362,7 @@ export function func() {
     console.info("example ", a); // a变量在outter文件执行时就被使用
     ```  
 
-- 场景2：通过静态加载加载的文件，存在多个父文件。  
+- 场景2：通过静态加载所加载的文件，存在多个父文件。  
 
     ```text
     // 说明：显示顺序不代表父文件的加载顺序。
@@ -383,7 +383,7 @@ export function func() {
     console.info("example ", a); // a变量在innerinner文件执行时就被使用
     ```  
 
-- 场景3：通过静态加载加载的文件，存在多个导出，但是只显示了一部分。
+- 场景3：通过静态加载所加载的文件，存在多个导出，但是只显示了一部分。
 
     ```text
     used file 1: &entry/src/main/ets/pages/1&, cost time: 0.248ms
@@ -536,9 +536,9 @@ struct Index {
 
 **优化效果**
 
-|     | 加载文件耗时（微秒μs） |
-|-----|--------------|
-| 优化前 | 412us        |
-| 优化后 | 350us        |
+| 优化效果 | 加载文件耗时（微秒μs） |
+|---------| --------------------- |
+| 优化前 | 412us              |
+| 优化后 | 350us              |
 
 根据上述优化前后案例Trace图对比分析，使用延迟加载后应用冷启动时不再加载A文件，在资源加载阶段减少因加载冗余文件产生的耗时约15%，提高了应用冷启动性能。（由于案例仅演示场景，优化数据仅做参考，在实际业务中随着引用文件的复杂度提高，引用文件数量增多，优化效果也会随之提升。）

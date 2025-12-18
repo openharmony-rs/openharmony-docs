@@ -248,3 +248,4 @@ SysCap，全称SystemCapability，即系统能力，指操作系统中每一个�
 - SystemCapability.Multimedia.Image.ImageCreator
 - SystemCapability.Ability.AppStartup
 - SystemCapability.Ability.AppExtension.PhotoEditorExtension
+- SystemCapability.Multimedia.Audio.SuiteEngine

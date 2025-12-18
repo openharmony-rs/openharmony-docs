@@ -6,8 +6,8 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) 回调函数的返回值类型。
-接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。
+[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的返回值类型。接管网页媒体的播放器和 ArkWeb 内核之间的一个接口类。
+
 ArkWeb 内核通过该接口类的实例对象来控制应用创建的用来接管网页媒体的播放器。
 
 > **说明：**

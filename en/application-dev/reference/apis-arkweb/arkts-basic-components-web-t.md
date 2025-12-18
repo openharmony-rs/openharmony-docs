@@ -368,3 +368,21 @@ Defines a callback triggered when the text selection changes.
 **Example**
 
 For details about the complete sample code, see [onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23).
+
+## OnFirstScreenPaintCallback<sup>23+<sup>
+
+type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
+
+Defines a callback triggered when the first screen paint is complete.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|--------|------|------|------|
+| event | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | Yes| Details about the first screen paint.|
+
+**Example**
+
+For details about the complete sample code, see [onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23).

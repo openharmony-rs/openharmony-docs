@@ -45,7 +45,7 @@ Allows the application to access the albums in the user directory without any pe
 |--------------------|-----------------------------------------------------|-----|---------------------------------|
 | albumPickerOptions | [AlbumPickerOptions](#albumpickeroptions)           | No  | **AlbumPicker** configuration.<br> **Atomic service API**: This API can be used in atomic services since API version 12.             |
 | onAlbumClick       | (albumInfo: [AlbumInfo](#albuminfo)) => boolean     | No  | Callback used to return the album URI when an album is selected by a user. No special processing is performed on the return value.<br> **Atomic service API**: This API can be used in atomic services since API version 12.   |
-| onEmptyAreaClick<sup>13+</sup>   | [EmptyAreaClickCallback](#emptyareaclickcallback13) | No  | Callback to be invoked when the blank area of the **AlbumPickerComponent** is tapped, which is used to notify the application of the tap.<br> **Atomic service API**: This API can be used in atomic services since API version 13.|	
+| onEmptyAreaClick<sup>13+</sup>   | [EmptyAreaClickCallback](#emptyareaclickcallback13) | No  | Callback to be invoked when the blank area of the **AlbumPickerComponent** is tapped, which is used to notify the application of the tap.<br> **Atomic service API**: This API can be used in atomic services since API version 13.|
 | albumPickerController<sup>20+</sup>   | [AlbumPickerController](#albumpickercontroller20) | No  | A controller that enables applications to send data to the **AlbumPickerComponent**.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## AlbumPickerOptions
