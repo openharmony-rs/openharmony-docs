@@ -1128,6 +1128,48 @@ async function  test(){
 }
 ```
 
+## getCurrentPresentationTimeStamp<sup>23+</sup>
+
+getCurrentPresentationTimeStamp(): long
+
+获取当前播放位置，可以在playing/paused/completed状态调用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型                                                   | 说明                                              |
+| ------------------------------------------------------ | ------------------------------------------------- |
+| long | 返回当前播放位置的时间，单位：微秒（us）。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function  test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.prepare().then(() => {
+    console.info('Succeeded in preparing');
+    let currentPresentation: long = avPlayer.getCurrentPresentationTimeStamp();
+    console.info(`AVPlayer getCurrentPresentationTimeStamp== ${currentPresentation}`);
+  }, (err: BusinessError) => {
+    console.error('Failed to prepare,error message is :' + err.message);
+  });
+}
+```
+
 ## selectTrack<sup>12+</sup>
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
