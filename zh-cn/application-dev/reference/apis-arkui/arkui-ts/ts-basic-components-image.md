@@ -653,7 +653,7 @@ contentTransition(transition: ContentTransitionEffect)
 
 antialiased(isAntialiased: Optional\<boolean>)
 
-设置位图图片边缘是否开启抗锯齿。
+设置位图图片边缘是否开启抗锯齿。未通过该接口设置时，默认不开启抗锯齿。SVG类型图片不支持该属性。
 
 > **说明：**
 >
@@ -2489,7 +2489,7 @@ struct Index {
 
 ### 示例30（设置位图图片边缘抗锯齿）
 
-该示例演示了如何通过设置antialiased接口开启位图图片边缘的抗锯齿功能。
+该示例演示了如何通过设置[antialiased](#antialiased23)接口开启位图图片边缘的抗锯齿功能。
 
 从API version 23开始，新增[antialiased](#antialiased23)接口。
 
