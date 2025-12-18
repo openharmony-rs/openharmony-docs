@@ -367,12 +367,12 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
  **配置参考**
  
-   1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）。
-   2. 配置请求级CA证书：
+1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)）。
+2. 配置请求级CA证书：
    - 通过[httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书。
    - 通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的caPath字段配置WebSocket请求CA证书。
    - 通过[tlssecureoptions](../reference/apis-network-kit/js-apis-socket.md#tlssecureoptions9)的ca字段指定TLS请求CA证书。
-   3. 配置跳过证书校验：
+3. 配置跳过证书校验：
    - HTTPS：通过[remoteValidation](../reference/apis-network-kit/js-apis-http.md#remotevalidation18) = 'skip' 配置。
    - WebSocket：通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的skipServerCertVerification = false 配置。
    - TLSSocket：通过[tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9)的skipRemoteValidation = false 配置。
