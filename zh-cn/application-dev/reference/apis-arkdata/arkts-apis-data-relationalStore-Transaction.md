@@ -1399,7 +1399,7 @@ async function queryWithoutRowCountSyncExample(store : relationalStore.RdbStore)
 
 querySqlWithoutRowCount(sql: string, bindArgs?: Array&lt;ValueType&gt;): Promise&lt;LiteResultSet&gt;
 
-根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。性能优于[querySql](#querysql14)接口。。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
+根据指定条件查询数据库中的数据，查询时不计算行数。使用Promise异步回调。性能优于[querySql](#querysql14)接口。SQL语句中的各种表达式和操作符之间的关系操作符号不超过1000个。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
