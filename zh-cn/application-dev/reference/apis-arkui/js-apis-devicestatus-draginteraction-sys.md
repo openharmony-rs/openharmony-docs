@@ -5,7 +5,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块接口均为系统接口。
 
 ## 导入模块
@@ -168,9 +168,7 @@ console.log(`Drag interaction summarys: ${JSON.stringify(summarys)}`);
 
 ## dragInteraction.setDragSwitchState<sup>18+</sup>
 
-ArkTS-Dyn: setDragSwitchState(enabled: boolean): void
-
-ArkTS-Sta: setDragSwitchState(enabled: boolean): void
+setDragSwitchState(enabled: boolean): void
 
 控制统一拖拽功能总开关。
 
@@ -204,9 +202,7 @@ dragInteraction.setDragSwitchState(false);
 
 ## dragInteraction.setAppDragSwitchState<sup>18+</sup>
 
-ArkTS-Dyn: setAppDragSwitchState(enabled: boolean, bundleName: string): void
-
-ArkTS-Sta: setAppDragSwitchState(enabled: boolean, bundleName: string): void
+setAppDragSwitchState(enabled: boolean, bundleName: string): void
 
 控制统一拖拽适配应用开关。
 
