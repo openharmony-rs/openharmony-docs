@@ -1409,8 +1409,6 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**：ohos.permission.UPDATE_SYSTEM
-
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -1445,8 +1443,6 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 取消注册事件监听。使用callback异步回调。
 
 **系统能力**：SystemCapability.Update.UpdateService
-
-**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
 
@@ -1564,7 +1560,7 @@ forceFactoryReset(): Promise\<void>
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。当强制恢复出厂执行失败时，有回调；执行成功无回调。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码**：
 
@@ -1772,8 +1768,6 @@ on(eventClassifyInfo: EventClassifyInfo, taskCallback: UpgradeTaskCallback): voi
 
 **系统能力**：SystemCapability.Update.UpdateService
 
-**需要权限**：ohos.permission.UPDATE_SYSTEM
-
 **参数：**
 
 | 参数名               | 类型                                       | 必填   | 说明   |
@@ -1810,8 +1804,6 @@ off(eventClassifyInfo: EventClassifyInfo, taskCallback?: UpgradeTaskCallback): v
 取消注册事件监听。使用callback异步回调。
 
 **系统能力**：SystemCapability.Update.UpdateService
-
-**需要权限**：ohos.permission.UPDATE_SYSTEM
 
 **参数：**
 
