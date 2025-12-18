@@ -30,10 +30,10 @@ napi_create_reference这个接口内部实现会new一个C++对象，因此，�
 使用Node-API时导致内存泄漏的常见原因：  
 1. napi_value不在napi_handle_scope管理中，导致napi_value持有的ArkTS对象无法释放，该问题常见于直接使用uv_queue_work的场景中。解决方法是添加napi_open_handle_scope和napi_close_handle_scope接口。
 
-此类泄漏可通过snapshot分析定位原因，泄漏的ArkTS对象distance为1，即不知道被谁持有，这种情况下一般就是被native（napi_value是个指针，指向native持有者）持有了，且napi_value不在napi_handle_scope范围内，可参考[易错API的使用规范](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)   
+   此类泄漏可通过snapshot分析定位原因，泄漏的ArkTS对象distance为1，即不知道被谁持有，这种情况下一般就是被native（napi_value是个指针，指向native持有者）持有了，且napi_value不在napi_handle_scope范围内，可参考[易错API的使用规范](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)   
 2. 使用 `napi_create_reference` 为 ArkTS 对象创建了强引用（`initial_refcount` 参数大于 0），且一直未删除，导致 ArkTS 对象无法被回收。`napi_create_reference` 接口内部会创建一个 C++ 对象，因此这种泄漏通常表现为ArkTS对象与Native对象的双重泄漏。可以使用 Allocation 工具捕获Native对象泄漏栈，检查是否存在 `napi_create_reference` 相关的栈帧。  
 
-[基础内存分析：Allocation分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-allocations)  
+   [基础内存分析：Allocation分析](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-allocations)  
 
 3. 被其它存活的ArkTS对象持有时，使用snapshot查看泄漏对象的持有者。  
 

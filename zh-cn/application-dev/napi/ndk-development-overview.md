@@ -67,7 +67,7 @@ NDK（Native Development Kit）是OpenHarmony SDK提供的Native API、相应编
   CMake编译时需要读取该文件中的默认值，比如编译器架构、C++库链接方式等，因此在编译时会通过CMAKE_TOOLCHAIN_FILE指出该文件的路径，便于CMake在编译时定位到该文件。
 
 - build-tools文件夹：放置NDK提供的编译工具
-  ```
+  ```shell
   # 键入下一行命令查看CMake的版本
   cmake -version
   # 结果
