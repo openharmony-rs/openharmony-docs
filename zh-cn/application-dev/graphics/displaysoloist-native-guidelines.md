@@ -90,6 +90,54 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
 2. 定义演示页面，包含两个XComponent组件。
    <!-- @[display_soloist_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import XComponentContext from '../interface/XComponentContext';
+   // ...
+   
+   @Entry
+   @Component
+   struct Index {
+     private xComponentContext1: XComponentContext | undefined = undefined;
+     private xComponentContext2: XComponentContext | undefined = undefined;
+   
+     // ...
+   
+     build() {
+       Column() {
+         Row() {
+           // ...
+   
+           XComponent({
+             id: 'xcomponentId_30',
+             type: XComponentType.SURFACE,
+             libraryname: 'entry'
+           })
+             .onLoad((xComponentContext) => {
+               this.xComponentContext1 = xComponentContext as XComponentContext;
+             }).width('640px')
+             // ...
+         }.height('40%')
+   
+         Row() {
+           // ...
+   
+           XComponent({
+             id: 'xcomponentId_120',
+             type: XComponentType.SURFACE,
+             libraryname: 'entry'
+           })
+             .onLoad((xComponentContext) => {
+               this.xComponentContext2 = xComponentContext as XComponentContext;
+             }).width('640px')
+             // ...
+         }.height('40%')
+   
+         // ...
+       }
+     }
+   }
+   ```
 
    ``` TypeScript
    import XComponentContext from '../interface/XComponentContext';
