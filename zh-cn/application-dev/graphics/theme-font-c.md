@@ -88,6 +88,25 @@
 6. 设置段落文本内容为"Hello World. \nThis is the theme font."，此时该段落文本将应用主题字体。
 
    <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 设置其他文本样式
+   OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   // 设置字体大小为100.0
+   OH_Drawing_SetTextStyleFontSize(myTextStyle, 100.0);
+   // 创建一个段落样式对象，以设置排版风格
+   OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
+   OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT); // 设置段落样式为左对齐
+   // 创建一个段落生成器
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // 在段落生成器中设置文本样式
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, myTextStyle);
+   // 在段落生成器中设置文本内容
+   const char *text = "Hello World. \nThis is the theme font.";
+   OH_Drawing_TypographyHandlerAddText(handler, text);
+   // 通过段落生成器生成段落
+   OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+   ```
 
 
 ## 效果展示
