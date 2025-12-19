@@ -1727,3 +1727,88 @@ subscriber.finishCommonEvent().then(() => {
   console.error(`Failed to finish common event. Code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+## 使用@ohos.transfer进行CommonEventSubscriber类型转换
+
+ArkTS-Dyn中使用ArkTS-Sta的CommonEventSubscriber对象。
+
+**示例：**
+
+- 在ArkTS-Sta模块中将ArkTS-Sta CommonEventSubscriber转换成ArkTS-Dyn CommonEventSubscriber，传入到ArkTS-Dyn子模块`library`中。
+
+  ArkTS-Sta示例：
+  ```TypeScript
+  'use static'
+  import { transfer } from '@kit.ArkTS';
+  import { CommonEventSubscriberStaticToDynamic } from 'library';
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+
+  let subscriber: commonEventManager.CommonEventSubscriber;
+  let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+    events: ['event']
+  };
+  try {
+    subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
+    let dynamicHandler = transfer.transferDynamic(subscriber, 'CommonEventManager.CommonEventSubscriber');
+    CommonEventSubscriberStaticToDynamic(dynamicHandler);
+  } catch (e: BusinessError) {
+    console.error('transferDynamic catch error：-----------' + e.message);
+  }
+  ```
+
+- 创建ArkTS-Dyn子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn CommonEventSubscriber的方法。
+
+  ArkTS-Dyn示例：
+  ```TypeScript
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+  export function CommonEventSubscriberStaticToDynamic(subscriber_: any) {
+    try {
+      let subscriber: commonEventManager.CommonEventSubscriber = subscriber_ as commonEventManager.CommonEventSubscriber;
+      let subscribeInfo = subscriber.getSubscribeInfoSync();
+      console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
+    } catch (e: BusinessError) {
+      console.error('CommonEventSubscriberStaticToDynamic catch Error: ' + e.message);
+    }
+  }
+  ```
+
+ArkTS-Sta中使用ArkTS-Dyn的CommonEventSubscriber对象。
+
+**示例：**
+
+- 在ArkTS-Dyn模块创建得到ArkTS-Dyn CommonEventSubscriber对象，传到ArkTS-Sta子模块`library`中。
+
+  ArkTS-Dyn示例：
+  ```TypeScript
+  import { CommonEventSubscriberDynamicToStatic } from 'library';
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+
+  let dynamicSubscriber: commonEventManager.CommonEventSubscriber;
+  let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
+    events: ['event']
+  };
+  try {
+    dynamicSubscriber = commonEventManager.createSubscriberSync(subscribeInfo);
+    CommonEventSubscriberDynamicToStatic(dynamicSubscriber);
+  } catch (e: BusinessError) {
+    console.error('transferDynamic catch error：' + e.message);
+  }
+  ```
+
+- 创建ArkTS-Sta子模块`library`，在`library/src/main/ets/components`目录提供接收ArkTS-Dyn CommonEventSubscriber的方法。
+
+  ArkTS-Sta示例：
+  ```TypeScript
+  'use static'
+  import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
+
+  export function CommonEventSubscriberDynamicToStatic(dynObject: Object | undefined | null) {
+    try {
+      let staticSubscriber: commonEventManager.CommonEventSubscriber = transfer.transferStatic(dynObject, 'CommonEventManager.CommonEventSubscriber') as commonEventManager.CommonEventSubscriber;
+      let subscribeInfo = staticSubscriber.getSubscribeInfoSync();
+      console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
+    } catch (e: BusinessError) {
+        console.error('CommonEventSubscriberDynamicToStatic catch error：' + e.message);
+    }
+  }
+  ```
