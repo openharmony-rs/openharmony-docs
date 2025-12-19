@@ -8,7 +8,7 @@
 
 ## 应用运行过程中出现高概率闪退怎么进行定位解决
 
-- 具体问题：在使用Node-API开发过程中，应用运行过程中出现高概率闪退，出现cppcrash栈，栈顶为系统库libark_jsruntime.so，崩溃栈前几帧也有libace_napi.z.so，怎么进行定位解决？  
+- 具体问题：在使用Node-API开发过程中，应用运行过程中出现高概率闪退，出现cpp crash栈，栈顶为系统库libark_jsruntime.so，崩溃栈前几帧也有libace_napi.z.so，怎么进行定位解决？  
 
 复现概率高，每次崩溃栈略有区别，但是共性都是：崩溃栈顶是系统库的libark_jsruntime.so或者libace_napi.z.so    
 - 崩溃信息如下：  
@@ -59,7 +59,7 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
 ## 线程池中并发调用ArkTS方法如何处理线程安全问题
 
-- 现有个场景，ArkTS中有个类方法，对这个方法创建了napi_ref引用，现想在C++线程池中并发的调用ArkTS方法，有以下几个问题：  
+- 现有个场景，ArkTS中有个类方法，对这个方法创建了napi_ref引用，现想在C++线程池中并发地调用ArkTS方法，有以下几个问题：  
 1. 可以在C++创建的线程池中调用napi_ref缓存的ArkTS类方法吗？  
 2. 回调到ArkTS要怎么确保线程安全？  
 
