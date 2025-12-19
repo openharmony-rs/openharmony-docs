@@ -28332,6 +28332,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets",
 				"functions":[
 					{
 						"end_line":21,
@@ -28339,19 +28343,19 @@
 						"start_line":15
 					},
 					{
-						"end_line":111,
+						"end_line":127,
 						"name":"PublicEventNoInformation",
-						"start_line":100
+						"start_line":116
 					},
 					{
-						"end_line":38,
+						"end_line":47,
 						"name":"PublicEventInformation",
-						"start_line":32
+						"start_line":41
 					},
 					{
-						"end_line":128,
+						"end_line":145,
 						"name":"PublicEventCarryingInformation",
-						"start_line":117
+						"start_line":134
 					}
 				]
 			}
@@ -28362,6 +28366,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets",
 				"functions":[
 					{
 						"end_line":21,
@@ -28370,18 +28378,23 @@
 					},
 					{
 						"end_line":30,
-						"name":"CreateSubscriberInformation",
+						"name":"CreateCustomSubscriberInformation",
 						"start_line":23
 					},
 					{
-						"end_line":55,
-						"name":"CreateSubscriberCallback",
-						"start_line":43
+						"end_line":39,
+						"name":"CreateSystemSubscriberInformation",
+						"start_line":32
 					},
 					{
-						"end_line":75,
+						"end_line":66,
+						"name":"CreateSubscriberCallback",
+						"start_line":54
+					},
+					{
+						"end_line":89,
 						"name":"SubscribeToPublicEvents",
-						"start_line":61
+						"start_line":74
 					}
 				]
 			}
@@ -28392,6 +28405,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/pages/CreatSubscribeInfo.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets",
 				"functions":[
 					{
 						"end_line":21,
@@ -28399,9 +28416,9 @@
 						"start_line":15
 					},
 					{
-						"end_line":94,
+						"end_line":109,
 						"name":"UnsubscribePublicEvents",
-						"start_line":81
+						"start_line":96
 					}
 				]
 			}
@@ -28541,31 +28558,35 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationBadges.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets",
 				"functions":[
 					{
-						"end_line":23,
+						"end_line":24,
 						"name":"manage_notification_badges_header",
 						"start_line":16
 					},
 					{
-						"end_line":69,
+						"end_line":72,
 						"name":"add_badge_count",
-						"start_line":61
+						"start_line":64
 					},
 					{
-						"end_line":82,
+						"end_line":86,
 						"name":"reduce_badge_count",
-						"start_line":74
+						"start_line":78
 					},
 					{
-						"end_line":102,
+						"end_line":107,
 						"name":"increase_badge_count_seq",
-						"start_line":87
+						"start_line":92
 					},
 					{
-						"end_line":122,
+						"end_line":128,
 						"name":"update_badge_count_idempotent",
-						"start_line":107
+						"start_line":113
 					}
 				]
 			}
@@ -28580,6 +28601,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/CancelNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28604,6 +28629,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ClearDuplicateNotifications.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets",
 				"functions":[
 					{
 						"end_line":19,
@@ -28628,6 +28657,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/RequestEnableNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets",
 				"functions":[
 					{
 						"end_line":24,
@@ -28657,6 +28690,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/ManageNotificationWays.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28691,6 +28728,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/UpdateNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/UpdateNotification.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28720,6 +28761,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/AddWantAgent.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets",
 				"functions":[
 					{
 						"end_line":24,
@@ -28759,6 +28804,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets",
 				"functions":[
 					{
 						"end_line":23,
@@ -28771,9 +28820,9 @@
 						"start_line":87
 					},
 					{
-						"end_line":128,
+						"end_line":129,
 						"name":"pub_progress_template_req_notify",
-						"start_line":101
+						"start_line":102
 					}
 				]
 			}
@@ -28788,6 +28837,10 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/pages/PublishNotification.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets",
 				"functions":[
 					{
 						"end_line":23,
