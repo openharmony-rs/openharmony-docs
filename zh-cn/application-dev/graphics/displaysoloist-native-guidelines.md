@@ -66,6 +66,16 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
 1. 定义ArkTS接口文件XComponentContext.ts，用来对接Native层。
    <!-- @[display_soloist_export_interface_xcomponent_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/ets/interface/XComponentContext.ts) -->
+   
+   ``` TypeScript
+   export default interface XComponentContext {
+     register(): void;
+   
+     unregister(): void;
+   
+     destroy(): void;
+   };
+   ```
 
 2. 定义演示页面，包含两个XComponent组件。
    <!-- @[display_soloist_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/ets/pages/Index.ets) -->
