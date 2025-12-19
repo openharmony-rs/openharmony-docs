@@ -478,7 +478,7 @@ getString(columnIndex: number): string
 
 以字符串形式获取当前行中指定列的值。
 
-如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。<br>
+如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值；如果该列内容为空，则会返回空字符串""。<br>
 如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble23)接口获取。<br>
 如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
