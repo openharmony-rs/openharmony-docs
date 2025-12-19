@@ -228,6 +228,50 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
    SampleXComponent类会在后面的绘制图形中创建。
    <!-- @[display_soloist_export_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/plugin/plugin_manager.cpp) -->
+   
+   ``` C++
+   void PluginManager::Export(napi_env env, napi_value exports)
+   {
+       nativeXComponentMap_.clear();
+       pluginRenderMap_.clear();
+       if ((env == nullptr) || (exports == nullptr)) {
+           SAMPLE_LOGE("Export: env or exports is null");
+           return;
+       }
+   
+       napi_value exportInstance = nullptr;
+       if (napi_get_named_property(env, exports, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance) != napi_ok) {
+           SAMPLE_LOGE("Export: napi_get_named_property fail");
+           return;
+       }
+   
+       OH_NativeXComponent *nativeXComponent = nullptr;
+       if (napi_unwrap(env, exportInstance, reinterpret_cast<void **>(&nativeXComponent)) != napi_ok) {
+           SAMPLE_LOGE("Export: napi_unwrap fail");
+           return;
+       }
+   
+       char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
+       uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
+       if (OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+           SAMPLE_LOGE("Export: OH_NativeXComponent_GetXComponentId fail");
+           return;
+       }
+   
+       std::string id(idStr);
+       auto context = PluginManager::GetInstance();
+       if ((context != nullptr) && (nativeXComponent != nullptr)) {
+           context->SetNativeXComponent(id, nativeXComponent);
+           auto render = context->GetRender(id);
+           if (render != nullptr) {
+               render->RegisterCallback(nativeXComponent);
+               render->Export(env, exports);
+           } else {
+               SAMPLE_LOGE("render is nullptr");
+           }
+       }
+   }
+   ```
 
    ``` C++
    void PluginManager::Export(napi_env env, napi_value exports)
