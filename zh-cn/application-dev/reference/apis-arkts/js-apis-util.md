@@ -5949,7 +5949,7 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.[Symbol.iterator]<sup>9+</sup>](#symboliterator9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 
