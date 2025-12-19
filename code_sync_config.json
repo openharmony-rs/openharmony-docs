@@ -4483,16 +4483,49 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/pages/Index.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":146,
-						"name":"arkts_theme_font_index",
-						"start_line":16
+						"end_line":21,
+						"name":"arkts_theme_font_import",
+						"start_line":19
+					},
+					{
+						"end_line":31,
+						"name":"arkts_theme_font_font_collection",
+						"start_line":28
+					},
+					{
+						"end_line":46,
+						"name":"arkts_theme_font_text_style",
+						"start_line":32
+					},
+					{
+						"end_line":54,
+						"name":"arkts_theme_font_build",
+						"start_line":47
+					},
+					{
+						"end_line":102,
+						"name":"arkts_theme_font_create_render_node",
+						"start_line":61
+					},
+					{
+						"end_line":111,
+						"name":"arkts_theme_font_export_update",
+						"start_line":103
 					}
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
 						"end_line":55,
@@ -29050,6 +29083,10 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp",
 				"functions":[
 					{
 						"end_line":20,
@@ -29057,19 +29094,19 @@
 						"start_line":16
 					},
 					{
-						"end_line":389,
+						"end_line":397,
 						"name":"theme_font_c_draw_text_step1",
-						"start_line":387
+						"start_line":395
 					},
 					{
-						"end_line":395,
+						"end_line":403,
 						"name":"theme_font_c_draw_text_step2",
-						"start_line":390
+						"start_line":398
 					},
 					{
-						"end_line":414,
+						"end_line":422,
 						"name":"theme_font_c_draw_text_step3",
-						"start_line":397
+						"start_line":405
 					}
 				]
 			}
