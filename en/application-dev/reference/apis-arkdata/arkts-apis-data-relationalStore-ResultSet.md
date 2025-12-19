@@ -28,7 +28,7 @@ import { relationalStore } from '@kit.ArkData';
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| columnNames | Array&lt;string&gt; | Yes| No| Names of all columns in the result set.|
+| columnNames | Array&lt;string&gt; | Yes| No| Names of all columns in the result set. If the result set contains duplicate column names, the return values are not as expected. You are advised to use the [getColumnNames](#getcolumnnames23) API to obtain the column names.|
 | columnCount | number | Yes| No| Number of columns in the result set.|
 | rowCount | number | Yes| No| Number of rows in the result set.|
 | rowIndex | number | Yes| No| Index of the current row in the result set.<br>Default value: **-1**. The index position starts from **0**.|
@@ -37,6 +37,53 @@ import { relationalStore } from '@kit.ArkData';
 | isEnded | boolean | Yes| No| Whether the result set pointer is after the last row. The value **true** means the pointer is after the last row.|
 | isStarted | boolean | Yes| No| Whether the result set pointer is moved. The value **true** means the pointer is moved.|
 | isClosed | boolean | Yes| No| Whether the result set is closed. The value **true** means the result set is closed.|
+
+## getColumnNames<sup>23+</sup>
+
+getColumnNames(): Array\<string>
+
+Obtains the names of all columns in the result set.
+
+The column names are returned in a string array. The sequence of strings in the array is the same as that of columns in the result set.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Return value**
+
+| Type  | Description              |
+| ------ | ------------------ |
+| Array&lt;string&gt; | Names of all columns in the result set obtained. Duplicate column names can be obtained.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md). For details about how to handle error 14800011, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**Example**:
+
+```ts
+try {
+  // Query EMPLOYEE1 and EMPLOYEE2 and obtain the duplicate column names. store is the obtained RdbStore instance.
+  let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  if (resultSet != undefined) {
+    const names = resultSet.getColumnNames();
+  }
+} catch (err) {
+  console.error(`Failed to get column names: code:${err.code}, message:${err.message}`);
+}
+```
 
 ## getColumnIndex
 
@@ -56,7 +103,7 @@ Obtains the column index based on the column name.
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Column index obtained.|
+| number | Column index obtained. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -114,7 +161,7 @@ Obtains the column name based on the column index.
 
 | Type  | Description              |
 | ------ | ------------------ |
-| string | Column name obtained.|
+| string | Column name obtained. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -171,7 +218,7 @@ Obtains the column type based on the specified column index or column name. This
 
 | Type                                | Description                               |
 | ------------------------------------ | ----------------------------------- |
-| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise used to return the column type obtained.|
+| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise used to return the column type obtained. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -235,7 +282,7 @@ Obtains the column type based on the specified column index or column name. This
 
 | Type                       | Description                  |
 | --------------------------- | ---------------------- |
-| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | Column type obtained.|
+| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | Column type obtained. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -992,7 +1039,7 @@ if (resultSet != undefined) {
 
 getRow(): ValuesBucket
 
-Obtains the current row.
+Obtains this row.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1000,7 +1047,7 @@ Obtains the current row.
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
-| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Value of the specified row.|
+| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Value of the specified row. If the result set contains duplicate column names, the return value is not as expected. You are advised to use the [getCurrentRowData](#getcurrentrowdata23) API.|
 
 **Error codes**
 
@@ -1051,12 +1098,11 @@ Obtains a specified amount of data from the result set. This API uses a promise 
 | maxCount | number | Yes  | Number of rows to obtain. The value is a positive integer. If the value is not a positive integer, error 401 will be thrown.|
 | position | number | No  | Start position for obtaining data from the result set. The value is a non-negative integer. If this parameter is not specified, data is obtained from the current row of the result set (by default, it is the first row of the result set when data is obtained for the first time). If the value is not a non-negative integer, error code 401 will be thrown.|
 
-
 **Return value**
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
-| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached.|
+| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached. If the result set contains duplicate column names, the return values are not as expected. You are advised to use the [getRowsData](#getrowsdata23) API.|
 
 **Error codes**
 
@@ -1108,6 +1154,134 @@ async function proccessRows(resultSet: relationalStore.ResultSet) {
       position += rows.length;
     }
   }
+}
+```
+
+## getCurrentRowData<sup>23+</sup>
+
+getCurrentRowData(): RowData
+
+Obtains the values of all columns in this row.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Return value**
+
+| Type             | Description                          |
+| ---------------- | ---------------------------- |
+| [RowData](arkts-apis-data-relationalStore-t.md#rowdata23) | Values of all columns in this row obtained. The values of columns with the same name can be obtained.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md). For details about how to handle error 14800011, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+
+**Example**:
+
+```ts
+try {
+  // Query EMPLOYEE1 and EMPLOYEE2 and obtain the values of the current row that contain duplicate column names. store is the obtained RdbStore instance.
+  let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  if (resultSet != undefined) {
+    resultSet.goToFirstRow();
+    const rowData = resultSet.getCurrentRowData();
+  }
+} catch (err) {
+  console.error(`Failed to get row data: code:${err.code}, message:${err.message}`);
+}
+```
+
+## getRowsData<sup>23+</sup>
+
+getRowsData(maxCount: number, position?: number): Promise<Array\<RowsData>>
+
+Obtains data of a specified number of rows from the specified position. This API uses a promise to return the result. Do not call this API concurrently with other APIs of [ResultSet](arkts-apis-data-relationalStore-ResultSet.md). Otherwise, unexpected data may be obtained.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name     | Type  | Mandatory| Description                   |
+| ----------- | ------ | ---- | ----------------------- |
+| maxCount | number | Yes  | Number of rows to obtain. The value is a positive integer. If the value is not a positive integer, error 14800001 will be thrown.|
+| position | number | No  | Start position for obtaining data from the result set. The value is a non-negative integer. If this parameter is not specified, data is obtained from the current row of the result set (by default, it is the first row of the result set when data is obtained for the first time). If the value is not a non-negative integer, error code 14800001 will be thrown.|
+
+**Return value**
+
+| Type             | Description                          |
+| ---------------- | ---------------------------- |
+| Promise<[RowsData](arkts-apis-data-relationalStore-t.md#rowsdata23)> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached. The values of columns with the same name can be obtained.|
+
+**Error codes**
+
+For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md). For details about how to handle error 14800011, see [Database Backup and Restore](../../database/data-backup-and-restore.md).
+
+| **ID**| **Error Message**                                                |
+|-----------| ------------------------------------------------------------ |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | Failed to open the database because it is corrupted. |
+| 14800012  | ResultSet is empty or pointer index is out of bounds. |
+| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800019  | The SQL must be a query statement. |
+| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800026  | SQLite: The database is out of memory. |
+| 14800028  | SQLite: Some kind of disk I/O error occurred. |
+| 14800030  | SQLite: Unable to open the database file. |
+| 14800031  | SQLite: TEXT or BLOB exceeds size limit. |
+
+**Example**:
+
+```ts
+try {
+  // Query EMPLOYEE1 and EMPLOYEE2 and obtain the values of multiple rows that contain duplicate column names. store is the obtained RdbStore instance.
+  let resultSet: relationalStore.ResultSet = await store.querySql("SELECT e1.NAME, e2.NAME, e1.AGE, e2.AGE FROM EMPLOYEE1 e1 LEFT JOIN EMPLOYEE2 e2 ON e1.SALARY=e2.SALARY");
+  // Obtain 50 rows of data.
+  // Example 1: Specify only maxCount.
+  if (resultSet != undefined) {
+    let rowsData: relationalStore.RowsData;
+    // Obtain data from the current row of the result set. By default, the first fetch starts from the first row of the current result set. Subsequent fetches start from the row following the last row retrieved.
+    // getRowsData automatically moves the current row of the result set to the row following the last row retrieved by the previous getRowsData call. You do not need to use APIs such as goToFirstRow and goToNextRow.
+    let maxCount: number = 50;
+    let rowCount: number = 0;
+    while ((rowsData = await resultSet.getRowsData(maxCount)).length != 0) {
+      rowsData.forEach((rowData, index) => {
+        // Query result of the row specified by rowCount + index + 1
+        console.info(`${rowCount + index + 1}: ${rowData}`);
+      });
+      rowCount += rowsData.length;
+    }
+  }
+
+  // Example 2: Specify maxCount and position.
+  if (resultSet != undefined) {
+    let rowsData: relationalStore.RowsData;
+    let maxCount: number = 50;
+    let position: number = 50;
+    while ((rowsData = await resultSet.getRowsData(maxCount, position)).length != 0) {
+      rowsData.forEach((rowData, index) => {
+        // Query result of the row specified by position + index + 1
+        console.info(`${position + index + 1}: ${rowData}`);
+      });
+      position += rowsData.length;
+    }
+  }
+} catch (err) {
+  console.error(`Failed to get rows data: code:${err.code}, message:${err.message}`);
 }
 ```
 

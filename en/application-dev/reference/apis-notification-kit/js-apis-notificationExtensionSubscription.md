@@ -198,7 +198,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 isUserGranted(): Promise\<boolean\>
 
-Checks whether the user has granted the permission to access notifications on this device. This API uses a promise to return the result.
+Checks whether the **Allow access to notifications on this device** switch is turned on. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -238,7 +238,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-Obtains the applications whose notifications can be accessed. This API uses a promise to return the result.
+Obtains the applications that are allowed to access device notifications. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -248,7 +248,7 @@ Obtains the applications whose notifications can be accessed. This API uses a pr
 
 | Type    | Description       | 
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise used to return the applications whose notifications can be accessed.       |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise used to return the applications obtained.       |
 
 **Error codes**
 
