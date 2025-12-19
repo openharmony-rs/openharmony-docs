@@ -7,97 +7,106 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-Text measurement is the process of evaluating the size and layout of text during graphics drawing, and calculating the space (such as the width, height, and other related information) occupied by the text under a given font and style. Text measurement is used in scenarios such as text typesetting, layout, rendering, and adjustment of the text display position and size, to better control and adjust the layout and presentation of the UI to meet the design expectations.
+Text measurement refers to the process of evaluating the size and layout of text and calculating the space (such as the width, height, and other related information) occupied by the text in a given font and style during graphics drawing. Text measurement helps manage typography, layout, rendering, and adjustments for text position and size. It ensures precise UI layouts and presentations align with design goals.
 
-Currently, the following text measurement capabilities are supported:
+The following text measurement capabilities are supported:
 
-- **Text width**: measures the horizontal length of the given text in a specific font, size, and style.
+- **Measurement of text width**: measures the horizontal length of the given text in a specific font, size, and style.
 
-- **Text height**: measures the vertical height of the given text, which usually involves the ascent and descent of the font.
+- **Measurement of text height**: measures the vertical height of the given text, which usually involves the ascender and descender of the font.
 
-- **Line spacing**: measures the vertical distance between multiple lines of text, which is usually related to the line spacing of the font.
+- **Measurement of line spacing**: measures the vertical distance between multiple lines of text, which is usually related to the line spacing of the font.
 
-- **Character spacing**: measures the horizontal distance between characters, which is usually related to the glyph and font design.
+- **Measurement of character spacing**: measures the horizontal distance between individual characters, which is usually related to the glyph and font design.
 
 
 ## Available APIs
 
-The following table lists the APIs commonly used for text measurement. For details about the APIs, see [drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md).
+The following table lists the common APIs for text measurement. For details, see [drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md).
 
 | Name| Description| 
 | -------- | -------- |
-| double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography\*) | Obtains the width of the longest line. You are advised to round up the returned value.| 
-| double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography\*) | Obtains the width of the longest line (including the width of the current line indentation). You are advised to round up the returned value.| 
+| double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography\*) | Obtains the width of the longest line. You are advised to round up the return value in actual use.| 
+| double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography\*) | Obtains the width of the longest line, including its indentation. You are advised to round up the return value in actual use.| 
 | size_t OH_Drawing_TypographyGetLineCount (OH_Drawing_Typography\* ) | Obtains the number of lines.| 
-| OH_Drawing_LineMetrics\* OH_Drawing_TypographyGetLineMetrics (OH_Drawing_Typography\* ) | Obtains the measurement information of a paragraph line, including the height, width, and start coordinates of the line.| 
+| OH_Drawing_LineMetrics\* OH_Drawing_TypographyGetLineMetrics (OH_Drawing_Typography\* ) | Obtains the metrics about a certain line in a paragraph, including the height, width, and start coordinates of a line.| 
 | double OH_Drawing_TextStyleGetLetterSpacing (OH_Drawing_TextStyle \*) | Obtains the letter spacing of a text style.| 
 
 
 ## How to Develop
 
-1. Add the following library to the `src/main/cpp/CMakeLists.txt` file of the project:
+1. Add the following library to the `src/main/cpp/CMakeLists.txt` file of the project.
    ```c++
    libnative_drawing.so
    ```
 
 2. Import the required header files.
 
-   ```c++
+   <!-- @[c_text_metrics_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    #include <native_drawing/drawing_font_collection.h>
-   #include <native_drawing/drawing_text_declaration.h>
    #include <native_drawing/drawing_text_typography.h>
+   #include <native_drawing/drawing_text_declaration.h>
    ```
 
-3. Create a paragraph generator ParagraphBuilder and set the paragraph style.
+3. Create a paragraph generator **ParagraphBuilder** and set the paragraph style.
 
-   ```c++
-   // Create a paragraph style.
-   OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-   // Create a paragraph generator.
-   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, OH_Drawing_CreateFontCollection());
+   <!-- @[c_text_metrics_create_paragraph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    // Create a text style and set the font size to 50.
-   OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
-   OH_Drawing_SetTextStyleFontSize(txtStyle, 50);
-   OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
-   // Add text to the generator.
-   const char *text = "Text measurement information for typesetting";
+   OH_Drawing_SetTextStyleColor(myTextStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   OH_Drawing_SetTextStyleFontSize(myTextStyle, 50.0);
+   // Create a paragraph style object to set the typography style.
+   OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
+   // Set the alignment mode of the paragraph style to left alignment.
+   OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT);
+   // Create a paragraph generator.
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // Set the text style in the paragraph generator.
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, myTextStyle);
+   // Add the text content to the paragraph generator.
+   const char *text = "Text metrics for typography measurement";
    OH_Drawing_TypographyHandlerAddText(handler, text);
-   // Construct a paragraph through the generator.
+   // Generate a paragraph using the paragraph generator.
    OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
    ```
 
-4. Call the typesetting API and set the paragraph width.
+4. Call the typography API and set the paragraph width.
 
-   ```c++
-   // Set the paragraph width to 1000.
-   OH_Drawing_TypographyLayout(typography, 1000);
-   ```
-
-5. Call the API for obtaining paragraph measurement information to obtain the specified data.
-
-   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[c_text_metrics_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
-   // Case 1: Obtain the width of the longest line after typesetting.
-   double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
-   DRAWING_LOGI("Line %{public}d: longestLine: %{public}f", longestLine);
+   // Shape the paragraph and set the width to maxWidth.
+   OH_Drawing_TypographyLayout(typography, maxWidth);
+   ```
+
+5. Call the paragraph measurement API to obtain the desired data.
+
+   <!-- @[c_text_metrics_get_all_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKTextMeasurement/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
-   // Case 2: Obtain the number of lines in a paragraph after typesetting.
+   ``` C++
+   // Case 1: Obtain the width of the longest line after typography.
+   double longestLine = OH_Drawing_TypographyGetLongestLine(typography);
+   DRAWING_LOGI("Line %{public}d longestLine: %{public}f", longestLine);
+   
+   // Case 2: Obtain the number of lines in the paragraph after typography.
    size_t lineCnt = OH_Drawing_TypographyGetLineCount(typography);
    DRAWING_LOGI("lineCnt: %{public}zu", lineCnt);
    
-   // Case 3: Obtain the measurement information of each line in a paragraph.
+   // Case 3: Obtain the metrics of each line in the paragraph.
    OH_Drawing_LineMetrics *lineMetrics = OH_Drawing_TypographyGetLineMetrics(typography);
    int lineMetricsSize = OH_Drawing_LineMetricsGetSize(lineMetrics);
    for (int i = 0; i < lineMetricsSize; ++i) {
-   // lineMetrics is the text measurement information after typesetting.
-   double curLineAscender = lineMetrics[i].ascender;
+   // lineMetrics is the text metrics measured after typography.
+   double curLineAscender = -lineMetrics[i].ascender;
    double curLineWidth = lineMetrics[i].width;
-       DRAWING_LOGI("Line %{public}d: lineMetrics ascender: %{public}f", i + 1, curLineAscender);
-       DRAWING_LOGI("Line %{public}d: lineMetrics width: %{public}f", i + 1, curLineWidth);
+       DRAWING_LOGI("Line %{public}d lineMetrics ascender: %{public}f", i + 1, curLineAscender);
+       DRAWING_LOGI("Line %{public}d lineMetrics width: %{public}f", i + 1, curLineWidth);
    }
    
-   // Case 4: Obtain the maximum line width of the paragraph and the maximum line width with indentation.
+   // Case 4: Obtain the width of the longest line in the paragraph and the width of the longest line with indentation.
    double longestLineWithIndent = OH_Drawing_TypographyGetLongestLineWithIndent(typography);
    DRAWING_LOGI("longestLineWithIndent: %{public}f", longestLineWithIndent);
    
@@ -105,8 +114,8 @@ The following table lists the APIs commonly used for text measurement. For detai
    // Obtain the font metrics of a text style.
    bool result = OH_Drawing_TextStyleGetFontMetrics(typography, myTextStyle, &fontMetrics);
    DRAWING_LOGI("result: %{public}zu, fontMetrics ascent: %{public}f" , result, fontMetrics.ascent);
-   // Obtain the line metrics in a typography object. This function must be called after OH_Drawing_TypographyLayout is called.
+   // Obtain the line metrics in a typography object. This API must be called after OH_Drawing_TypographyLayout is called.
    OH_Drawing_LineMetrics lineMetric;
    OH_Drawing_TypographyGetLineMetricsAt(typography, 0, &lineMetric);
-   DRAWING_LOGI("lineMetrics ascender: %{public}f" ,lineMetric.ascender of the first line");
+   DRAWING_LOGI("Line 1 lineMetrics ascender: %{public}f", -lineMetric.ascender);
    ```
