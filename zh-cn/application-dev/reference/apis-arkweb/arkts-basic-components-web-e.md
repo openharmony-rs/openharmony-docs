@@ -481,3 +481,20 @@ Web布局模式的配置。
 | NONE   | 0    | 麦克风未工作。 |
 | PAUSED | 1    | 麦克风暂停中。 |
 | ACTIVE | 2    | 麦克风捕获中。 |
+
+## NavigationPolicy<sup>23+</sup>
+
+WebView中新窗口的打开方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                           | 值 | 说明           |
+| ----------------------------- | -- | ------------ |
+| NEW_POPUP                     | 0 | 在新弹窗中打开。   |
+| NEW_WINDOW                    | 1 | 在新窗口中打开。   |
+| NEW_BACKGROUND_TAB            | 2 | 在新标签页中以后台方式打开。 |
+| NEW_FOREGROUND_TAB            | 3 | 在新标签页中以前台方式打开。 |
