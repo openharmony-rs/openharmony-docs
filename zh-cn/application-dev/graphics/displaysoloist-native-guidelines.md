@@ -132,6 +132,23 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
     创建一个PluginManger单例类，用于管理NativeXComponent。
    <!-- @[display_soloist_create_plugin_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/plugin/plugin_manager.h) -->
+   
+   ``` C
+   class PluginManager {
+   public:
+       ~PluginManager();
+   
+       static PluginManager *GetInstance();
+   
+       void SetNativeXComponent(std::string &id, OH_NativeXComponent *nativeXComponent);
+       SampleXComponent *GetRender(std::string &id);
+       void Export(napi_env env, napi_value exports);
+   
+   private:
+       std::unordered_map<std::string, OH_NativeXComponent *> nativeXComponentMap_;
+       std::unordered_map<std::string, SampleXComponent *> pluginRenderMap_;
+   };
+   ```
 
    SampleXComponent类会在后面的绘制图形中创建。
    <!-- @[display_soloist_export_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/plugin/plugin_manager.cpp) -->
