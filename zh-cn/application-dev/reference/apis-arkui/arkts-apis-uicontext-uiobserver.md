@@ -2596,13 +2596,13 @@ off(type: 'windowSizeLayoutBreakpointChange', callback?: Callback\<observer.Wind
 
 参考[on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22)接口示例。
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 监听Swiper内容的切换事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2610,7 +2610,7 @@ onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                         |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
 
 **示例：**
 
@@ -2664,13 +2664,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 取消监听Swiper内容的切换事件。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2678,19 +2678,19 @@ offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 | 参数名   | 类型                         | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate23)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate22)接口示例。
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
 
 通过Swiper组件的id监听Swiper内容的切换事件。使用callback异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2699,7 +2699,7 @@ onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<Swip
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的Swiper组件信息。                                   |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\>  | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\>  | 是   | 回调函数。携带SwiperContentInfo，返回Swiper内容切换的信息。  |
 
 **示例：**
 
@@ -2754,13 +2754,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
 
 取消通过Swiper组件id监听的Swiper内容切换事件。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2769,11 +2769,11 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<Sw
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的Swiper组件信息。                                   |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消该Swiper上所有的监听回调。 |
 
 **示例：**
 
-参考[onSwiperContentUpdate](#onswipercontentupdate23-1)接口示例。
+参考[onSwiperContentUpdate](#onswipercontentupdate22-1)接口示例。
 
 ## onRouterPageSizeChange<sup>23+</sup>
 
