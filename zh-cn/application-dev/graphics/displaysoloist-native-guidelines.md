@@ -201,6 +201,47 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
    定义每帧回调函数内容。
    <!-- @[display_soloist_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
+   
+   ``` C++
+   static void TestCallback(long long timestamp, long long targetTimestamp, void *data)
+   {
+       // ...
+       OH_NativeXComponent *component = nullptr;
+       component = static_cast<OH_NativeXComponent *>(data);
+       if (component == nullptr) {
+           SAMPLE_LOGE("TestCallback: component is null");
+           return;
+       }
+   
+       char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
+       uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
+       if (OH_NativeXComponent_GetXComponentId(component, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+           SAMPLE_LOGE("TestCallback: Unable to get XComponent id");
+           return;
+       }
+   
+       std::string id(idStr);
+       auto render = SampleXComponent::GetInstance(id);
+       OHNativeWindow *nativeWindow = render->GetNativeWindow();
+       uint64_t width;
+       uint64_t height;
+   
+       int32_t xSize = OH_NativeXComponent_GetXComponentSize(component, nativeWindow, &width, &height);
+       if ((xSize == OH_NATIVEXCOMPONENT_RESULT_SUCCESS) && (render != nullptr)) {
+           render->Prepare();
+           render->Create();
+           if (id == "xcomponentId_30") {
+               int offset = 16;
+               render->ConstructPath(offset, offset, render->defaultOffsetY);
+           }
+           if (id == "xcomponentId_120") {
+               int offset = 4;
+               render->ConstructPath(offset, offset, render->defaultOffsetY);
+           }
+           // ...
+       }
+   }
+   ```
 
    使用DisplaySoloist接口配置帧率和注册每帧回调函数。如果使用OH_DisplaySoloist_Create创建DisplaySoloist实例时传入的参数useExclusiveThread为true，则OH_DisplaySoloist_FrameCallback以独占线程方式执行，否则OH_DisplaySoloist_FrameCallback以共享线程方式执行。
 
