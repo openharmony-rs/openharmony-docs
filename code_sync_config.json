@@ -19352,7 +19352,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page5.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":67,
 						"name":"foreach_mapCollect_keys",
 						"start_line":15
 					}
@@ -19382,7 +19382,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page8.ets",
 				"functions":[
 					{
-						"end_line":86,
+						"end_line":89,
 						"name":"name_change_from_monitor_value",
 						"start_line":15
 					}
@@ -23147,7 +23147,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":103,
 						"name":"appStorageV2_index",
 						"start_line":15
 					}
