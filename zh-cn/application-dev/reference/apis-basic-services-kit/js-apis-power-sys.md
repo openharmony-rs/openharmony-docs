@@ -378,6 +378,10 @@ registerShutdownCallback(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
+ArkTS-Dyn起始版本：23
+
+ArkTS-Sta起始版本：23
+
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                           |
@@ -418,6 +422,10 @@ unregisterShutdownCallback(callback?: Callback\<void>): void
 **需要权限：** ohos.permission.REBOOT
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
+
+ArkTS-Dyn起始版本：23
+
+ArkTS-Sta起始版本：23
 
 **参数：**
 
