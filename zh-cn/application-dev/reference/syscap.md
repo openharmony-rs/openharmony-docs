@@ -116,7 +116,7 @@ DevEco Studio会根据创建的工程所支持的设置自动配置联想能力�
 
     ```ts
     if (canIUse("SystemCapability.ArkUI.ArkUI.Full")) {
-	   console.info("该设备支持SystemCapability.ArkUI.ArkUI.Full");
+    console.info("该设备支持SystemCapability.ArkUI.ArkUI.Full");
     } else {
        console.info("该设备不支持SystemCapability.ArkUI.ArkUI.Full");
     }

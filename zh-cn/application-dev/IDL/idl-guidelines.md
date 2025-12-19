@@ -134,7 +134,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 ### IDL文件编写规范
 一个idl文件只能定义一个interface类型，且该interface名称必须和文件名相同。idl文件的接口定义使用BNF范式描述，其基本定义的形式如下：
 
-```
+```text
 [<*interface_attr_declaration*>]interface<*interface_name_with_namespace*>{<*method_declaration*>}
 ```
 
@@ -142,7 +142,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 接口内的方法声明形式为：
 
-```
+```text
 [<*method_attr_declaration*>]<*result_type*><*method_declaration*>
 ```
 
@@ -150,7 +150,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 参数声明的形式为：
 
-```
+```text
 [<*formal_param_attr*>]<*type*><*identifier*>
 ```
 
@@ -159,7 +159,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 ## 获取IDL工具
 ### 方法一（推荐）：
 1. 在linux系统，下载OpenHarmony的两个仓：[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓、[third_party_bounds_checking_function](https://gitcode.com/openharmony/third_party_bounds_checking_function)代码仓。
-2. 进入[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓，在Makefile所在目录执行make命令（**注意修改MakefileLinux中关于bounds_checking_function的相对位置**）。
+2. 进入[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓，在Makefile所在目录执行make命令。注意修改MakefileLinux中关于bounds_checking_function的相对位置。
 3. make执行完成后，在当前目录下会生成idl-gen可执行文件，可用于idl文件本地调试。
 
 ### 方法二：
@@ -201,11 +201,13 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 -d后的dir为目标输出目录，以输出文件夹名为IIdlTestServiceTs为例，在idl可执行文件所在目录下执行`idl -gen-ts -d IIdlTestServiceTs -c IIdlTestServiceTs/IIdlTestService.idl`，将会在执行环境的dir目录（即IIdlTestServiceTs目录）中生成接口文件、Stub文件、Proxy文件。
 
-> **注意**：生成的接口类文件名称和.idl文件名称保持一致，否则会生成代码时会出现错误。
+> **注意**：<br>
+> 
+> 生成的接口类文件名称和.idl文件名称保持一致，否则会生成代码时会出现错误。
 
 以名为`IIdlTestService.idl`的.idl文件、目标输出文件夹为IIdlTestServiceTs为例，其目录结构应类似于:
 
-```
+```text
 ├── IIdlTestServiceTs  # idl代码输出文件夹
 │   ├── i_idl_test_service.ts  # 生成文件
 │   ├── idl_test_service_proxy.ts  # 生成文件
@@ -468,7 +470,7 @@ export default class MySequenceable implements rpc.Parcelable {
 
 例如，此处构建一个名为IQuickFixManager.idl的文件，文件内具体内容如下：
 
-```
+```text
 /*
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -588,7 +590,7 @@ interface OHOS.AAFwk.IQuickFixManager {
    ]
    ```
 
-6. 在BUILD.gn中添加模板文件的外部依赖。
+4. 在BUILD.gn中添加模板文件的外部依赖。
 
    模板文件的外部依赖需要自己添加到external_deps里。
 
