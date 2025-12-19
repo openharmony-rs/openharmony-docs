@@ -70,7 +70,7 @@ import { formInfo } from '@kit.FormKit';
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
 | hostBundleName  | string               | 是    | 否     | 使用方卡片所属包的Bundle名称。                   |
 | visibilityType  | [VisibilityType](js-apis-app-form-formInfo.md#visibilitytype)               | 是    | 否     | 卡片当前可见类型枚举。                   |
-| formUsageState<sup>11+</sup> | [FormUsageState](#formusagestate11)         | 是    | 否     | 卡片当前使用状态枚举。默认值为FormUsageState.USED |
+| formUsageState<sup>11+</sup> | [FormUsageState](#formusagestate11)         | 是    | 否     | 卡片当前使用状态枚举。默认值为FormUsageState.USED。 |
 | formDescription<sup>11+</sup> | string         | 是    | 否     | 提供方卡片配置文件中的描述信息。   |
 | extraData<sup>12+</sup> | Record<string, Object> | 是    | 是     | 卡片的额外数据。   |
 
