@@ -151,6 +151,14 @@
    > - API version 18之前，应用调用OH_NativeXComponent_RegisterOnFrameCallback接口设置回调函数，如果没有取消注册，在XComponent实例存在期间，能一直收到期望回调。
    > - 从API version 18开始，应用调用OH_NativeXComponent_RegisterOnFrameCallback接口设置回调函数，如果没有取消注册，只在XComponent上树期间，能收到期望回调。
    <!-- @[display_sync_register_on_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
+   
+   ``` C++
+   void SampleXComponent::RegisterOnFrameCallback(OH_NativeXComponent *nativeXComponent)
+   {
+       // ...
+       OH_NativeXComponent_RegisterOnFrameCallback(nativeXComponent, TestCallback);
+   }
+   ```
    <!-- @[display_sync_napi_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
    <!-- @[display_sync_napi_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
 
