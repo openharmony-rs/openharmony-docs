@@ -736,14 +736,14 @@ zh-cn/application-dev/IDL/ @huipeizi @liveery @alien0208
 zh-cn/application-dev/IDL/idl-guidelines.md @huipeizi @liveery @alien0208
 
 [开发-IME kit]
-zh-cn/application-dev/inputmethod/  @murphy1984   @zhang_yixin13   
-zh-cn/application-dev/kit-readme/Readme-IME-Kit.md  @murphy1984   @zhang_yixin13  
-zh-cn/application-dev/inputmethod/Readme-CN.md  @murphy1984   @zhang_yixin13  
-zh-cn/application-dev/inputmethod/custom_input_box_guide.md  @murphy1984   @zhang_yixin13  
-zh-cn/application-dev/inputmethod/ime-kit-intro.md  @murphy1984   @zhang_yixin13  
-zh-cn/application-dev/inputmethod/input_method_subtype_guide.md  @murphy1984  @zhang_yixin13   
-zh-cn/application-dev/inputmethod/inputmethod_application_guide.md  @murphy1984  @zhang_yixin13  
-zh-cn/application-dev/inputmethod/switch_inputmehod_guide.md  @murphy1984  @zhang_yixin13  
+zh-cn/application-dev/inputmethod/  @murphy84   @zhang_yixin13   
+zh-cn/application-dev/kit-readme/Readme-IME-Kit.md  @murphy84   @zhang_yixin13  
+zh-cn/application-dev/inputmethod/Readme-CN.md  @murphy84   @zhang_yixin13  
+zh-cn/application-dev/inputmethod/custom_input_box_guide.md  @murphy84   @zhang_yixin13  
+zh-cn/application-dev/inputmethod/ime-kit-intro.md  @murphy84   @zhang_yixin13  
+zh-cn/application-dev/inputmethod/input_method_subtype_guide.md  @murphy84  @zhang_yixin13   
+zh-cn/application-dev/inputmethod/inputmethod_application_guide.md  @murphy84  @zhang_yixin13  
+zh-cn/application-dev/inputmethod/switch_inputmehod_guide.md  @murphy84  @zhang_yixin13  
 
 [开发-Input kit]
 zh-cn/application-dev/device/input  @zhang_yixin13  @hanruofei @Lyuxin
@@ -2258,7 +2258,7 @@ zh-cn/application-dev/reference/apis-form-kit/  @ylsnow  @cmz001  @HelloShuo  @t
 
 
 [API参考-IME kit]
-zh-cn/application-dev/reference/apis-ime-kit/ @murphy1984 @zhang_yixin13 
+zh-cn/application-dev/reference/apis-ime-kit/ @murphy84 @zhang_yixin13 
 
 
 [API参考-Input Kit]
