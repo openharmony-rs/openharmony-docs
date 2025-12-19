@@ -638,7 +638,7 @@ accessibilityStateDescription(description: string | Resource | undefined): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>undefined：播报文本默认为空。 |
+| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>设置文本超过1000字符时，截取前1000字符进行播报。<br/>undefined：播报文本默认为空。 |
 
 **返回值：**
 
