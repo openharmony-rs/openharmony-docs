@@ -100,7 +100,6 @@ nameCache.json文件：
 **UI混淆差异**
 
 字节码混淆不提供UI混淆的能力。
-
 由于字节码中UI组件存在大量字符串的形式绑定属性、方法、类、变量等，字节码混淆已通过系统白名单扫描的机制，保证功能正常。
 
 **以字符串的形式作为函数参数绑定属性**
@@ -189,21 +188,13 @@ callargs2 0x2e, v2, v3
 3. 参考本文已有的问题，若是相似场景可参考对应的解决方法快速解决。
 4. 若常见案例中未找到相似案例，建议依据各项配置功能正向定位（若不需要相应功能，可删除对应配置项）。
 5. 应用运行时崩溃分析方法：
-
     a.打开应用运行日志或者点击DevEco Studio中出现的Crash弹窗，找到运行时崩溃栈。
-
     b.应用运行时崩溃栈中的行号为编译产物的行号，方法名也可能为混淆后名称；因此排查时建议直接根据崩溃栈查看编译产物，进而分析哪些名称不能被混淆，然后将其配置进白名单中。
-
 6. 应用在运行时未崩溃但出现功能异常的分析方法（比如白屏）：
-
     a.打开应用运行日志：选择HiLog，检索与功能异常直接相关的日志，定位问题发生的上下文。
-
     b.定位异常代码段：通过分析日志，找到导致功能异常的具体代码块。
-
     c.增强日志输出：在疑似异常的功能代码中，对处理的数据字段增加日志记录。
-
     d.分析并确定关键字段：通过对新增日志输出的分析，识别是否由于混淆导致该字段的数据异常。
-
     e.配置白名单保护关键字段：将确认在混淆后对应用功能产生直接影响的关键字段添加到白名单中。
 
 ## 常规配置问题处理
@@ -229,9 +220,7 @@ callargs2 0x2e, v2, v3
 **案例一：报错内容为 ERROR: [Class]get different name for method.**
 
 **问题现象**：使用@CustomDialog，自定义对话框，内部再弹出另一个对话框，开启字节码混淆后，执行build失败，报错信息为：
-
 Error message: ArkTSCompilerError: ArkTS:ERROR Failed to execute ByteCode Obfuscate.
-
 Error message: [Class]get different name for method:&entry/src/main/ets/pages/XXXX&.#~@0>#setController^1.
 
 ```ts
@@ -307,15 +296,12 @@ let jsonProp = jsonData.i.j;
 ```
 
 开启属性混淆后，"jsonProperty"被混淆成随机字符"j"，但json文件中为原始名称，从而导致值为undefined。
-
 **解决方案**：使用-keep-property-name选项将json文件里的字段配置到白名单。
 
 **案例二：使用了数据库相关的字段，开启属性混淆后，出现报错**
 
 报错内容为table Account has no column named a23 in 'INSERT INTO Account(a23)'。
-
 代码里使用了数据库字段，混淆时该SQL语句中字段名称被混淆，但数据库中字段为原始名称，从而导致报错。
-
 **解决方案**：使用-keep-property-name选项将使用到的数据库字段配置到白名单。
 
 **案例三：使用Record<string, Object>作为对象的类型时，该对象里的属性被混淆，导致功能异常**
@@ -692,7 +678,6 @@ person["m"] = 20;
 **案例二：报错为Cannot find module 'ets/appability/AppAbility' which is application Entry Point**
 
 由于系统会在应用运行时加载ability文件，用户需要手动配置相应的白名单，防止指定文件被混淆，导致运行失败。
-
 **解决方案**：使用-keep-file-name选项，将src/main/module.json5文件中，'srcEntry'字段所对应的路径配置到白名单中。
 
 ```txt
@@ -704,13 +689,9 @@ AppAbility
 **HAP与HSP依赖相同的本地源码HAR模块，可能会出现的问题。**
 
 * 若开启文件名混淆，会出现以下问题：
-
     **问题一**：单例功能异常问题。原因是HAP与HSP独立执行构建与混淆流程，本地源码HAR模块在HAP与HSP的包中可能会出现相同的文件名被混淆成不同文件名的情况。
-
     **问题二**：接口调用失败问题。原因是HAP与HSP独立执行构建与混淆流程，本地源码HAR模块在HAP与HSP的包中可能会出现不同的文件名被混淆成相同的文件名的情况。
-
 * 若开启-enable-export-obfuscation和-enable-toplevel-obfuscation选项，在应用运行时会出现加载接口失败的问题。
-
     原因是HAP与HSP独立执行构建与混淆流程，本地源码HAR模块中暴露的接口在HAP与HSP中被混淆成不同的名称。
 
 **解决方案**：
