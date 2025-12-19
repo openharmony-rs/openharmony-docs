@@ -74,7 +74,9 @@ let getDelayData: unifiedDataChannel.GetDelayData = ((type: string) => {
 
 ## ValueType<sup>12+</sup>
 
-type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined
+ArkTS-Dyn: type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer | object | null | undefined
+
+ArkTS-Sta: type ValueType = int | long | double | string | boolean | image.PixelMap | Want | ArrayBuffer | RecordData | null | undefined
 
 用于表示统一数据记录允许的数据字段类型。
 
@@ -82,6 +84,11 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+ArkTS-Dyn类型声明:
 | 类型 | 说明 |
 | -------- | -------- |
 | number | 表示number的类型。 |
@@ -91,6 +98,21 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | Want | 表示[Want](../apis-ability-kit/js-apis-app-ability-want.md)的类型。 |
 | ArrayBuffer | 表示ArrayBuffer的类型。 |
 | object | 表示object的类型。 |
+| null | 表示null。 |
+| undefined | 表示undefined。 |
+
+ArkTS-Sta类型声明:
+| 类型 | 说明 |
+| -------- | -------- |
+| int | 表示int的类型。 |
+| long | 表示long的类型。 |
+| double | 表示double的类型。 |
+| string | 表示string的类型。 |
+| boolean | 表示boolean的类型。 |
+| image.PixelMap | 表示[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)的类型。 |
+| Want | 表示[Want](../apis-ability-kit/js-apis-app-ability-want.md)的类型。 |
+| ArrayBuffer | 表示ArrayBuffer的类型。 |
+| RecordData | 表示RecordData的类型。 |
 | null | 表示null。 |
 | undefined | 表示undefined。 |
 
