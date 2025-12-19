@@ -62,6 +62,34 @@
    >
    > 订阅函数运行于UI主线程，故涉及UI线程的耗时操作不应运行于订阅函数中，以免影响性能。
    <!-- @[display_sync_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
+   CreateDisplaySyncSlow() {
+     let range: ExpectedFrameRateRange = {
+       expected: 30,
+       min: 0,
+       max: 120
+     };
+   
+     let draw30 = (intervalInfo: displaySync.IntervalInfo) => {
+       if (this.isBigger_30) {
+         this.drawFirstSize += 1;
+         if (this.drawFirstSize > 150) {
+           this.isBigger_30 = false;
+         }
+       } else {
+         this.drawFirstSize -= 1;
+         if (this.drawFirstSize < 25) {
+           this.isBigger_30 = true;
+         }
+       }
+     };
+   
+     this.backDisplaySyncSlow = displaySync.create();
+     this.backDisplaySyncSlow.setExpectedFrameRateRange(range);
+     this.backDisplaySyncSlow.on("frame", draw30);
+   }
+   ```
 
 5. 开始每帧回调。
    <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
