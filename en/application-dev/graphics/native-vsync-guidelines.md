@@ -1,4 +1,4 @@
-# Native VSync Development (C/C++)
+# NativeVSync Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @Felix-fangyang; @BruceXu; @alexci-->
@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The NativeVSync module is used to obtain the system VSync signal, create and destroy an OH_NativeVSync instance, and set the VSync callback function. When the VSync signal is triggered, the callback function is called.
+The NativeVSync module is used to obtain the system VSync signal, create and destroy an **OH_NativeVSync** instance, and set the VSync callback function. When the VSync signal is triggered, the callback function is called.
 
 ## Available APIs
 
@@ -22,7 +22,7 @@ For details about the APIs, see [native_vsync](../reference/apis-arkgraphics2d/c
 
 ## How to Develop
 
-The following steps describe how to use Native APIs provided by NativeVSync to create and destroy an OH_NativeVSync instance, and set a VSync callback function.
+The following steps describe how to use the native APIs provided by NativeVSync to create and destroy an **OH_NativeVSync** instance and set the VSync callback function.
 
 **Adding Dynamic Link Libraries**
 
@@ -36,7 +36,7 @@ libnative_vsync.so
 #include <native_vsync/native_vsync.h>
 ```
 
-1. **Define a VSync callback function.**
+1. Define a VSync callback function.
     <!-- @[vsync_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
 
     ``` C++
