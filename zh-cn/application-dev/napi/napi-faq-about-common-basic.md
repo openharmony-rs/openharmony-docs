@@ -31,15 +31,15 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 - 排查建议：  
 1. 可根据以下文档进行排查：     
 
-[ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callable或明确的Error message](napi-faq-about-common-basic.md#arkts侧报错显示undefined)  
+	[ArkTS侧import xxx from libxxx.so后，使用xxx报错显示undefined/not callable或明确的Error message](napi-faq-about-common-basic.md#arkts侧报错显示undefined)  
 
-[模块注册与模块命名](napi-guidelines.md#模块注册与模块命名)  
+	[模块注册与模块命名](napi-guidelines.md#模块注册与模块命名)  
 
 2. 同时也可参考动态加载能力是否可以满足该场景：
 
-[napi_load_module_with_info支持的场景](use-napi-load-module-with-info.md#napi_load_module_with_info支持的场景)  
+	[napi_load_module_with_info支持的场景](use-napi-load-module-with-info.md#napi_load_module_with_info支持的场景)  
 
-[napi_load_module支持的场景](use-napi-load-module.md#napi_load_module支持的场景)  
+	[napi_load_module支持的场景](use-napi-load-module.md#napi_load_module支持的场景)  
 
 ## 在大量需要调用ArkTS方法进行通信的场景中如何保证异步任务的有序性
 
@@ -54,12 +54,13 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule()
 
 1. napi_async_work系列接口只能保证execute_cb在complete_cb之前执行，但无法保证不同napi_async_work的时序。  
 
-[napi_queue_async_work_with_qos](../../application-dev/reference/native-lib/napi.md#napi_queue_async_work_with_qos)是在普通napi_queue_async_work的基础上，支持自定义qos优先级，而这里只是指定libuv调度任务时使用线程的优先级，不是指任务的优先级，所以也无法保证任务的时序。   
+	[napi_queue_async_work_with_qos](../../application-dev/reference/native-lib/napi.md#napi_queue_async_work_with_qos)是在普通napi_queue_async_work的基础上，支持自定义qos优先级，而这里只是指定libuv调度任务时使用线程的优先级，不是指任务的优先级，所以也无法保证任务的时序。   
+
 2. napi_threadsafe_function系列接口内部维护了一个队列，可以保证任务执行的顺序。 
 
-napi_call_threadsafe_function按先入先出的顺序执行。
+	napi_call_threadsafe_function按先入先出的顺序执行。
 
-napi_call_threadsafe_function_with_priority根据指定的入队方式执行。
+	napi_call_threadsafe_function_with_priority根据指定的入队方式执行。
 
 [使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务](use-call-threadsafe-function-with-priority.md)
 
@@ -170,10 +171,11 @@ napi_value NapiGenericFailure(napi_env env, napi_callback_info)
 - 解决方案参考：  
 1. 使用napi_threadsafe_function系列的Node-API接口，这系列接口，相当于在C++线程抛任务回到ArkTS线程执行ArkTS方法  
 
-[使用Node-API接口进行线程安全开发](use-napi-thread-safety.md)  
+	[使用Node-API接口进行线程安全开发](use-napi-thread-safety.md)  
+
 2. 在C++线程创建出ArkTS运行环境  
 
-[使用Node-API接口创建ArkTS运行时环境](use-napi-ark-runtime.md)   
+	[使用Node-API接口创建ArkTS运行时环境](use-napi-ark-runtime.md)   
 
 ## 是否有不拷贝的napi_get_value_string_utf8接口或者能力
 
@@ -194,13 +196,16 @@ napi_value NapiGenericFailure(napi_env env, napi_callback_info)
 
 1. napi_env和ArkTS线程是绑定的，napi_env不能跨线程使用，否则会导致稳定性问题。可参考文档
 
-[多线程限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-process#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%99%90%E5%88%B6)。
+	[多线程限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-process#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%99%90%E5%88%B6)。
+
 2. 在使用env调用napi接口时，需要注意，大部分的napi接口只能在env所在的ArkTS线程上调用，不然会出现多线程安全问题。
 
-可参考该文档的第四点【multi-thread】 [开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。   
+	可参考该文档的第四点【multi-thread】 [开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。   
+
 3. 最好不要缓存napi env，否则容易出现多线程安全问题和use-after-free问题。
 
-可参考该文档的第八点【use-after-free】[开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。 
+	可参考该文档的第八点【use-after-free】[开发者使用napi接口时，跨线程使用napi_env或napi_value引发多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。 
+
 4. [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73)。
 
 ## napi_call_threadsafe_function执行顺序不符合预期
@@ -222,7 +227,8 @@ posttask(c);
 - 排查方向：  
 1. 是否使用的是同一个napi_threadsafe_function，若使用不同实例，则无法保障执行顺序一致；   
 
-注：对于同一个napi_threadsafe_function来说，napi_call_threadsafe_function是保序的，接口内维护了一个队列，先调用就会先执行。  
+	注：对于同一个napi_threadsafe_function来说，napi_call_threadsafe_function是保序的，接口内维护了一个队列，先调用就会先执行。  
+
 2. 是否能保证实际napi_threadsafe_function的调用顺序是a -> b -> c；   
 
 
