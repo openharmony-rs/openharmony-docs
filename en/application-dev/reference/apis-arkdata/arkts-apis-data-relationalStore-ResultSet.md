@@ -28,7 +28,7 @@ import { relationalStore } from '@kit.ArkData';
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| columnNames | Array&lt;string&gt; | Yes| No| Names of all columns in the result set.|
+| columnNames | Array&lt;string&gt; | Yes| No| Names of all columns in the result set. If the result set contains duplicate column names, the return values are not as expected.|
 | columnCount | number | Yes| No| Number of columns in the result set.|
 | rowCount | number | Yes| No| Number of rows in the result set.|
 | rowIndex | number | Yes| No| Index of the current row in the result set.<br>Default value: **-1**. The index position starts from **0**.|
@@ -56,7 +56,7 @@ Obtains the column index based on the column name.
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Column index obtained.|
+| number | Column index obtained. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -108,7 +108,7 @@ Obtains the column name based on the column index.
 
 | Name     | Type  | Mandatory| Description                      |
 | ----------- | ------ | ---- | -------------------------- |
-| columnIndex | number | Yes  | Column index.|
+| columnIndex | number | Yes  | Column index. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Return value**
 
@@ -171,7 +171,7 @@ Obtains the column type based on the specified column index or column name. This
 
 | Type                                | Description                               |
 | ------------------------------------ | ----------------------------------- |
-| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise used to return the column type obtained.|
+| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise used to return the column type obtained. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -235,7 +235,7 @@ Obtains the column type based on the specified column index or column name. This
 
 | Type                       | Description                  |
 | --------------------------- | ---------------------- |
-| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | Column type obtained.|
+| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | Column type obtained. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -992,7 +992,7 @@ if (resultSet != undefined) {
 
 getRow(): ValuesBucket
 
-Obtains the current row.
+Obtains this row.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1000,7 +1000,7 @@ Obtains the current row.
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
-| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Value of the specified row.|
+| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | Value of the specified row. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -1056,7 +1056,7 @@ Obtains a specified amount of data from the result set. This API uses a promise 
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
-| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached.|
+| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached. If the result set contains duplicate column names, the return values are not as expected.|
 
 **Error codes**
 
