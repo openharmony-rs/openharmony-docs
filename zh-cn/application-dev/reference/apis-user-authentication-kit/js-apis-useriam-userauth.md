@@ -510,6 +510,7 @@ try {
 ## UserAuthInstance<sup>10+</sup>
 
 用于执行用户身份认证，并支持使用统一用户身份认证控件。
+
 使用以下接口前，需先通过[getUserAuthInstance](#userauthgetuserauthinstance10)方法获取UserAuthInstance对象。
 
 ### on<sup>10+</sup>

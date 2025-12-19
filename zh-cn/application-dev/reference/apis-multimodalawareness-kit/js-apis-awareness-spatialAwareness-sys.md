@@ -106,8 +106,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.onDistanceMeasure
 
-onDistanceMeasure(configParams: DistanceMeasurementConfigParams,
-    callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
+onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 订阅测距事件后，返回测距结果。
 
@@ -155,8 +154,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.offDistanceMeasure
 
-offDistanceMeasure(configParams: DistanceMeasurementConfigParams,
-    callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
+offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DistanceMeasurementResponse&gt;): void;
 
 取消订阅测距事件。取消订阅测距事件后，不会发生测距。
 
@@ -204,8 +202,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.onIndoorOrOutdoorIdentify
 
-onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
-    callback: Callback&lt;DoorPositionResponse&gt;): void;
+onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback: Callback&lt;DoorPositionResponse&gt;): void;
 订阅门内外识别事件后返回结果。返回设备在门内还是门外的信息。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
@@ -252,8 +249,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.offIndoorOrOutdoorIdentify
 
-offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams,
-    callback?: Callback&lt;DoorPositionResponse&gt;): void;
+offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callback?: Callback&lt;DoorPositionResponse&gt;): void;
 
 取消识别门内外订阅事件。不返回门内外信息。
 

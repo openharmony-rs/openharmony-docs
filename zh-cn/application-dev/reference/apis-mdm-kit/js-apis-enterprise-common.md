@@ -35,6 +35,7 @@ import { common } from '@kit.MDMKit';
 ## ApplicationInstance
 
 应用的实例数据。
+
 该接口目前在[addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22)、[removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22)、[addFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddfreezeexemptedapps22)、[removeFreezeExemptedApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremovefreezeexemptedapps22)、[setAbilityDisabled](./js-apis-enterprise-applicationManager.md#applicationmanagersetabilitydisabled23)、[isAbilityDisabled](./js-apis-enterprise-applicationManager.md#applicationmanagerisabilitydisabled23)接口中作为入参使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
@@ -48,6 +49,7 @@ import { common } from '@kit.MDMKit';
 ## InstallationResult
 
 应用安装结果。
+
 该对象目前在[EnterpriseAdminExtensionAbility.onMarketAppInstallResult](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonmarketappinstallresult22)作为回调入参使用。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

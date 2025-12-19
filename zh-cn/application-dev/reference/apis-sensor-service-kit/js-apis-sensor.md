@@ -943,8 +943,7 @@ try {
 
 ### ROTATION_VECTOR<sup>9+</sup>
 
-on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;,
-        options?: Options): void
+on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options): void
 
 订阅旋转矢量传感器数据。
 
@@ -992,8 +991,7 @@ try {
 
 ### SIGNIFICANT_MOTION<sup>9+</sup>
 
-on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
 订阅有效运动传感器数据。
 
