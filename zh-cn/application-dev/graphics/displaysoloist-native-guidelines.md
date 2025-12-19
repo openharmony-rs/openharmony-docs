@@ -32,6 +32,10 @@
 CMakeLists.txt中添加以下lib。
 <!-- @[display_soloist_add_lib](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/CMakeLists.txt) -->
 
+``` Text
+target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnative_window.so libace_ndk.z.so libnative_display_soloist.so)
+```
+
 **头文件**
 <!-- @[display_soloist_import_module_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.h) -->
 <!-- @[display_soloist_import_module_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
