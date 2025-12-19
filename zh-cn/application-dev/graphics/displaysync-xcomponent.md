@@ -54,6 +54,10 @@
    #include "napi/native_api.h"
    ```
    <!-- @[display_sync_import_module_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
+   
+   ``` C++
+   #include <native_drawing/drawing_text_typography.h>
+   ```
 
    ``` C++
    #include <native_drawing/drawing_text_typography.h>
