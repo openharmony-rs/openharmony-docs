@@ -378,9 +378,9 @@ registerShutdownCallback(callback: Callback&lt;boolean&gt;): void
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
-ArkTS-Dyn起始版本：23
+**ArkTS-Dyn起始版本：** 23
 
-ArkTS-Sta起始版本：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -423,9 +423,9 @@ unregisterShutdownCallback(callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.PowerManager.PowerManager.Core
 
-ArkTS-Dyn起始版本：23
+**ArkTS-Dyn起始版本：** 23
 
-ArkTS-Sta起始版本：23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
