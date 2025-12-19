@@ -213,7 +213,7 @@ struct OnHover {
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
-<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
 ``` TypeScript
 class ListDataSource implements IDataSource {
@@ -263,12 +263,12 @@ class ListDataSource implements IDataSource {
 @Component
 struct ListExample {
   private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  private allSelectedItems: Array<number> = []
-  @State isSelected: boolean[] = []
+  private allSelectedItems: Array<number> = [];
+  @State isSelected: boolean[] = [];
 
   @Styles
   selectedStyle(): void {
-    .backgroundColor(Color.Green)
+    .backgroundColor(Color.Blue);
   }
 
   isItemSelected(item: number): boolean {
@@ -304,25 +304,25 @@ struct ListExample {
             // 判断是否按下鼠标左键
             if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
               // 判断之前是否已经是选中状态
-              let isSelected: boolean = this.isItemSelected(index)
+              let isSelected: boolean = this.isItemSelected(index);
               // 判断修饰键状态
-              let isCtrlPressing: boolean = false
+              let isCtrlPressing: boolean = false;
               if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState(['Ctrl'])
+                isCtrlPressing = event.getModifierKeyState(['Ctrl']);
               }
               // 如果没有按着ctrl键点鼠标，则强制清理掉其他选中的条目并只让当前条目选中
               if (!isCtrlPressing) {
-                this.allSelectedItems = []
+                this.allSelectedItems = [];
                 for (let i = 0; i < this.isSelected.length; i++) {
-                  this.isSelected[i] = false
+                  this.isSelected[i] = false;
                 }
               }
               if (isSelected) {
-                this.allSelectedItems.filter(item => item !== index)
-                this.isSelected[index] = false
+                this.allSelectedItems.filter(item => item !== index);
+                this.isSelected[index] = false;
               } else {
-                this.allSelectedItems.push(index)
-                this.isSelected[index] = true
+                this.allSelectedItems.push(index);
+                this.isSelected[index] = true;
               }
             }
           })
