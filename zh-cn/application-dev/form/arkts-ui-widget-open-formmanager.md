@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 从API version 18开始，Form Kit提供在应用内将ArkTS卡片添加到桌面的能力，以方便用户后续便捷查看信息或快速进入应用。

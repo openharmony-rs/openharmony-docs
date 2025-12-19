@@ -1,5 +1,4 @@
 # @ohos.application.formBindingData (卡片数据绑定类)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->

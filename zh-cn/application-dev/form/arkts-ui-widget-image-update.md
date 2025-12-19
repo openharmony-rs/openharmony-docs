@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 在卡片上通常需要展示本地图片或从网络上下载的图片，获取本地图片和网络图片需要通过FormExtensionAbility来实现，如下示例代码介绍了如何在卡片上显示本地图片和网络图片。

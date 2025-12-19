@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 以下内容介绍基于ArkTS声明式开发范式语言开发卡片。
