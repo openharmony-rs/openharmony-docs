@@ -36,10 +36,10 @@
 | [typedef void (\*OH_ImageReceiver_OnCallback)(OH_ImageReceiverNative *receiver)](#oh_imagereceiver_oncallback) | OH_ImageReceiver_OnCallback | 定义native层图片的回调方法。 |
 | [typedef void (\*OH_ImageReceiver_ImageArriveCallback)(OH_ImageReceiverNative *receiver, void *userData)](#oh_imagereceiver_imagearrivecallback) | OH_ImageReceiver_ImageArriveCallback | ImageArrive事件的回调方法。 |
 | [Image_ErrorCode OH_ImageReceiverOptions_Create(OH_ImageReceiverOptions **options)](#oh_imagereceiveroptions_create) | - | 创建应用层OH_ImageReceiverOptions对象。 |
-| [Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options, Image_Size* size)](#oh_imagereceiveroptions_getsize) | - | 获取OH_ImageReceiverOptions对象的Image_Size信息。 |
-| [Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options, Image_Size size)](#oh_imagereceiveroptions_setsize) | - | 设置OH_ImageReceiverOptions对象的Image_Size信息。 |
-| [Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* options, int32_t* capacity)](#oh_imagereceiveroptions_getcapacity) | - | 获取OH_ImageReceiverOptions对象的图片缓存容量的信息。 |
-| [Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* options, int32_t capacity)](#oh_imagereceiveroptions_setcapacity) | - | 设置OH_ImageReceiverOptions对象的图片缓存容量的信息。 |
+| [Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options, Image_Size* size)](#oh_imagereceiveroptions_getsize) | - | 获取OH_ImageReceiverOptions对象的Image_Size。 |
+| [Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options, Image_Size size)](#oh_imagereceiveroptions_setsize) | - | 设置OH_ImageReceiverOptions对象的Image_Size。 |
+| [Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* options, int32_t* capacity)](#oh_imagereceiveroptions_getcapacity) | - | 获取OH_ImageReceiverOptions对象的图片缓存容量。 |
+| [Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* options, int32_t capacity)](#oh_imagereceiveroptions_setcapacity) | - | 设置OH_ImageReceiverOptions对象的图片缓存容量。 |
 | [Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options)](#oh_imagereceiveroptions_release) | - | 释放OH_ImageReceiverOptions对象。 |
 | [Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, OH_ImageReceiverNative** receiver)](#oh_imagereceivernative_create) | - | 创建应用层OH_ImageReceiverNative对象。 |
 | [Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNative* receiver, uint64_t* surfaceId)](#oh_imagereceivernative_getreceivingsurfaceid) | - | 通过OH_ImageReceiverNative获取SurfaceId。 |
@@ -112,7 +112,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options
 
 **描述**
 
-获取OH_ImageReceiverOptions对象的Image_Size信息。
+获取OH_ImageReceiverOptions对象的Image_Size。
 
 **起始版本：** 12
 
@@ -138,7 +138,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 
 **描述**
 
-设置OH_ImageReceiverOptions对象的Image_Size信息。
+设置OH_ImageReceiverOptions对象的Image_Size。
 
 **起始版本：** 12
 
@@ -164,7 +164,7 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 
 **描述**
 
-获取OH_ImageReceiverOptions对象的图片缓存容量的信息。
+获取OH_ImageReceiverOptions对象的图片缓存容量。
 
 **起始版本：** 12
 
@@ -190,7 +190,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 
 **描述**
 
-设置OH_ImageReceiverOptions对象的图片缓存容量的信息。
+设置OH_ImageReceiverOptions对象的图片缓存容量。
 
 **起始版本：** 12
 
