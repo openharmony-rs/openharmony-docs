@@ -89,6 +89,7 @@ ArkTS-Sta: type ValueType = int | long | double | string | boolean | image.Pixel
 **ArkTS-Sta起始版本：** 23
 
 ArkTS-Dyn类型声明：
+
 | 类型 | 说明 |
 | -------- | -------- |
 | number | number类型。 |
@@ -102,6 +103,7 @@ ArkTS-Dyn类型声明：
 | undefined | 表示无初始值。 |
 
 ArkTS-Sta类型声明：
+
 | 类型 | 说明 |
 | -------- | -------- |
 | int | int类型。 |
