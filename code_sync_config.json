@@ -8600,9 +8600,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAndTabsLinkage.ets",
 				"functions":[
 					{
-						"end_line":131,
+						"end_line":135,
 						"name":"swiper_tabs_linkage",
-						"start_line":18
+						"start_line":19
 					}
 				]
 			},
@@ -12703,7 +12703,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/ets/pages/PageThree.ets",
 				"functions":[
 					{
-						"end_line":203,
+						"end_line":210,
 						"name":"page_three",
 						"start_line":15
 					}
@@ -13857,7 +13857,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListContents.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":87,
 						"name":"arcListContentsTitle_start",
 						"start_line":15
 					}
@@ -13927,7 +13927,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets",
 				"functions":[
 					{
-						"end_line":183,
+						"end_line":186,
 						"name":"arcAlphabetIndexer_start",
 						"start_line":20
 					}
@@ -13982,7 +13982,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrolling.ets",
 				"functions":[
 					{
-						"end_line":147,
+						"end_line":148,
 						"name":"WaterFlowInfiniteScrolling_start",
 						"start_line":96
 					}
@@ -14002,7 +14002,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowDynamicSwitchover.ets",
 				"functions":[
 					{
-						"end_line":188,
+						"end_line":190,
 						"name":"waterFlowDynamicSwitchover_start",
 						"start_line":40
 					}
@@ -15242,7 +15242,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/ProgressCase1.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":37,
 						"name":"progress_example",
 						"start_line":15
 					}
@@ -16017,7 +16017,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshOpposite.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":61,
 						"name":"builder_param_problem_not_refresh_opposite",
 						"start_line":15
 					}
@@ -16027,7 +16027,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/builderParam/BuilderParamProblemNotRefreshPositive.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":62,
 						"name":"builder_param_problem_not_refresh_positive",
 						"start_line":15
 					}
@@ -17367,7 +17367,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/InheritFreezeOptionsPage.ets",
 				"functions":[
 					{
-						"end_line":205,
+						"end_line":209,
 						"name":"Main_InheritFreezeOptionsPage",
 						"start_line":15
 					}
@@ -17642,9 +17642,9 @@
 						"start_line":21
 					},
 					{
-						"end_line":63,
+						"end_line":66,
 						"name":"control_scrolling",
-						"start_line":30
+						"start_line":32
 					}
 				]
 			},
@@ -17697,9 +17697,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/TaggedListItems.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":51,
 						"name":"add_tags_to_list_items",
-						"start_line":29
+						"start_line":31
 					}
 				]
 			},
@@ -29914,7 +29914,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":67,
 						"name":"state_problem_unregister_state_callback",
 						"start_line":16
 					}
