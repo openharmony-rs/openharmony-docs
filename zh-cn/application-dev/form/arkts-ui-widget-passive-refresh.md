@@ -48,11 +48,11 @@
   import { FormExtensionAbility, formProvider } from '@kit.FormKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   const TAG: string = 'UpdateByTimeFormAbility';
   const FIVE_MINUTE: number = 5;
   const DOMAIN_NUMBER: number = 0xFF00;
-  
+
   export default class UpdateByTimeFormAbility extends FormExtensionAbility {
     onFormEvent(formId: string, message: string): void {
       // Called when a specified message event defined by the form provider is triggered.
@@ -61,16 +61,19 @@
         // 设置过5分钟后更新卡片内容
         formProvider.setFormNextRefreshTime(formId, FIVE_MINUTE, (err: BusinessError) => {
           if (err) {
-            hilog.info(DOMAIN_NUMBER, TAG, `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
+            hilog.info(DOMAIN_NUMBER, TAG,
+              `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
             return;
           } else {
             hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTiming.');
           }
         });
       } catch (err) {
-        hilog.info(DOMAIN_NUMBER, TAG, `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+        hilog.info(DOMAIN_NUMBER, TAG,
+          `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
       }
     }
+
     // ... 
   }
   ```
