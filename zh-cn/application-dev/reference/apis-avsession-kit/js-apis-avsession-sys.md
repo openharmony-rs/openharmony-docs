@@ -119,6 +119,58 @@ avSession.getAllSessionDescriptors((err: BusinessError, descriptors: avSession.A
 });
 ```
 
+## avSession.getSessionDescriptors<sup>22+</sup>
+
+getSessionDescriptors(category: SessionCategory): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
+
+根据不同的会话类别获取对应的会话描述。使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名    | 类型                              | 必填 | 说明            |
+| --------  | ----------------------------------| ---- |  ---------------|
+| category  |  [SessionCategory](#sessioncategory22) |  是  | 指定会话的类别。|
+
+
+**返回值：**
+
+| 类型                                                                        | 说明                                   |
+| --------------------------------------------------------------------------- | -------------------------------------- |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](#avsessiondescriptor)\>\>\> | Promise对象。返回对应类别的会话描述的只读对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. |
+| 6600101  | Session service exception. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((descriptors: avSession.AVSessionDescriptor[]) => {
+  console.info(`getSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+  if (descriptors.length > 0) {
+    console.info(`getSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
+    console.info(`GetSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
+    console.info(`GetSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`GetSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## avSession.getHistoricalSessionDescriptors<sup>10+</sup>
 
 getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
@@ -2558,3 +2610,17 @@ aVCastController.off('videoSizeChange');
 | --------------------------- | ---- | ----------- |
 | DEVICE_LOG_FULL       | 1    | 日志已满。    |
 | DEVICE_LOG_EXCEPTION       | 2    | 日志写入异常。 |
+
+## SessionCategory<sup>22+</sup>
+
+表示不同场景会话类别的枚举。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager
+
+**系统接口：** 此接口是系统接口。
+
+| 名称                |  值  | 说明         |
+| --------------------| ---- | ----------- |
+| CATEGORY_ACTIVE     |  1   | 可以在系统控制入口显示的会话类别。 |
+| CATEGORY_NOT_ACTIVE |  2   | 集成部分功能的会话类别。|
+| CATEGORY_ALL        |  3   | 所有会话类别。 |
