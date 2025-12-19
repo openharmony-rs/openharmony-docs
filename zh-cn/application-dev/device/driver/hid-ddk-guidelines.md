@@ -222,7 +222,7 @@ libhid.z.so
        int32_t ret = OH_Hid_SendReport(DataParser::GetInstance().getHidObject(), HID_OUTPUT_REPORT, dataBuff,
                                        sizeof(dataBuff));
        if (ret != HID_DDK_SUCCESS) {
-          OH_LOG_ERROR(LOG_APP, "OH_Hid_SendReport failed. ret: %{public}u", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_Hid_SendReport failed. ret: %{public}u", ret);
        }
        ```
 
