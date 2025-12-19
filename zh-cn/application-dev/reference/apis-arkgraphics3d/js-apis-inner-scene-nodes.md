@@ -111,16 +111,13 @@ function layerMask(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| NODE | 1 | 结点是空结点。 |
-| GEOMETRY | 2 | 几何类型结点。 |
-| CAMERA | 3 | 相机类型结点。 |
-| LIGHT | 4 | 灯光类型结点。 |
+| NODE | 1 | 结点是空结点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| GEOMETRY | 2 | 几何类型结点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| CAMERA | 3 | 相机类型结点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| LIGHT | 4 | 灯光类型结点。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 
 ## Container\<T>
 定义场景对象的容器。容器提供了一种将场景对象分组到层次结构中的方法。
@@ -459,8 +456,8 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| innerAngle<sup>22+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。以弧度制表示，默认值为0。设置的值必须大于等于0，小于等于outerAngle。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22 |
-| outerAngle<sup>22+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。以弧度制表示，默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 <br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22|
+| innerAngle<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。以弧度制表示，默认值为0。设置的值必须大于等于0，小于等于outerAngle。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| outerAngle<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。以弧度制表示，默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 <br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
 > **注意：** 
 > 

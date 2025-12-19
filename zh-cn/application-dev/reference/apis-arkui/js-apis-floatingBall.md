@@ -10,7 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -26,6 +28,10 @@ isFloatingBallEnabled(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -35,6 +41,8 @@ isFloatingBallEnabled(): boolean
 **示例：**
 
 ```ts
+// xxx.ets
+
 let enable: boolean = floatingBall.isFloatingBallEnabled();
 console.info('Floating ball enabled is: ' + enable);
 ```
@@ -46,6 +54,10 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 创建闪控球控制器，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
@@ -73,7 +85,10 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+// xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
@@ -95,11 +110,39 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import common from '@ohos.app.ability.common';
+
+let floatingBallController: floatingBall.FloatingBallController | undefined = undefined;
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回的结果是 UIAbilityContext
+let ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let config: floatingBall.FloatingBallConfiguration = {
+  context: ctx,
+};
+try {
+  floatingBall.create(config).then((data: floatingBall.FloatingBallController) => {
+    floatingBallController = data;
+    console.info(`Succeeded in creating floating ball controller. Data: ${data}`);
+  }).catch((err: Error) => {
+    console.error(`Failed to create floating ball controller. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e: Error) {
+  console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
+}     
+```
+
 ## FloatingBallConfiguration
 
 创建闪控球控制器时需要提供的参数配置。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
@@ -123,11 +166,15 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 |------------|------------|------------|------------|
-| params | [FloatingBallParams](#floatingballparams) | 是 | 启动闪控球的参数。 |
+| params | [FloatingBallParams](#floatingballparams) | 是 | 启动闪控球的参数。|
 
 **返回值：**
 
@@ -152,7 +199,10 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+// xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let startParams: floatingBall.FloatingBallParams = {
@@ -171,6 +221,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+
+let startParams: floatingBall.FloatingBallParams = {
+  template: floatingBall.FloatingBallTemplate.EMPHATIC,
+  title: 'title',
+  content: 'content'
+};
+try {
+  floatingBallController.startFloatingBall(startParams).then(() => {
+    console.info('Succeeded in starting floating ball.');
+  }).catch((err: Error) => {
+    console.error(`Failed to start floating ball. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e: Error) {
+  console.error(`Failed to start floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ### updateFloatingBall
 
 updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
@@ -178,6 +249,10 @@ updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 更新闪控球，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -209,7 +284,10 @@ updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+// xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let updateParams: floatingBall.FloatingBallParams = {
@@ -228,6 +306,27 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+
+let updateParams: floatingBall.FloatingBallParams = {
+  template: floatingBall.FloatingBallTemplate.EMPHATIC,
+  title: 'title2',
+  content: 'content2'
+};
+try {
+  floatingBallController.updateFloatingBall(updateParams).then(() => {
+    console.info('Succeeded in updating floating ball.');
+  }).catch((err: Error) => {
+    console.error(`Failed to update floating ball. Cause:${err.code}, message:${err.message}`);
+  });
+} catch(e: Error) {
+  console.error(`Failed to update floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ### stopFloatingBall
 
 stopFloatingBall(): Promise&lt;void&gt;
@@ -235,6 +334,10 @@ stopFloatingBall(): Promise&lt;void&gt;
 停止闪控球，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -254,12 +357,27 @@ stopFloatingBall(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+// xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 floatingBallController.stopFloatingBall().then(() => {
   console.info('Succeeded in stopping floating ball.');
 }).catch((err: BusinessError) => {
+  console.error(`Failed to stop floating ball. Cause:${err.code}, message:${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+
+floatingBallController.stopFloatingBall().then(() => {
+  console.info('Succeeded in stopping floating ball.');
+}).catch((err: Error) => {
   console.error(`Failed to stop floating ball. Cause:${err.code}, message:${err.message}`);
 });
 ```
@@ -270,7 +388,13 @@ on(type: 'stateChange', callback: Callback&lt;FloatingBallState&gt;): void
 
 注册闪控球生命周期状态变化的监听事件。不再使用时，取消监听以避免内存泄漏。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -293,6 +417,8 @@ on(type: 'stateChange', callback: Callback&lt;FloatingBallState&gt;): void
 **示例：**
 
 ```ts
+// xxx.ets
+
 let onStateChange = (state: floatingBall.FloatingBallState) => {
   console.info('Floating ball stateChange: ' + state);
 };
@@ -303,13 +429,65 @@ try {
 }
 ```
 
+### onStateChange<sup>22+</sup>
+
+onStateChange(callback: Callback&lt;FloatingBallState&gt;): void
+
+注册闪控球生命周期状态变化的监听事件。不再使用时，取消监听以避免内存泄漏。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#onstatechange)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| callback | Callback&lt;[FloatingBallState](#floatingballstate)&gt; | 是 | 回调函数。返回当前的闪控球生命周期状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. |
+| 1300022 | Repeated floating ball operation. |
+| 1300023 | Floating ball internal error. |
+| 1300024 | The floating ball window state is abnormal. |
+
+**示例：**
+
+```ts
+// xxx.ets
+
+let onStateChangeEvent = (state: floatingBall.FloatingBallState) => {
+  console.info(`Floating ball stateChange:${state}`);
+};
+try {
+  floatingBallController.onStateChange(onStateChangeEvent);
+} catch(e: Error) {
+  console.error(`Failed to onStateChange floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ### off('stateChange')
 
 off(type: 'stateChange', callback?: Callback&lt;FloatingBallState&gt;): void
 
 取消闪控球生命周期状态变化的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -331,6 +509,8 @@ off(type: 'stateChange', callback?: Callback&lt;FloatingBallState&gt;): void
 **示例：**
 
 ```ts
+// xxx.ets
+
 let onStateChange = (state: floatingBall.FloatingBallState) => {
   console.info('Floating ball stateChange: ' + state);
 };
@@ -341,13 +521,64 @@ try {
 }
 ```
 
+### offStateChange<sup>22+</sup>
+
+offStateChange(callback?: Callback&lt;FloatingBallState&gt;): void
+
+取消闪控球生命周期状态变化的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('stateChange')](#offstatechange)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| callback | Callback&lt;[FloatingBallState](#floatingballstate)&gt; | 否 | 回调函数。返回当前的闪控球生命周期状态。若传入参数，则停止该监听。若未传入参数，则停止所有闪控球生命周期状态变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. |
+| 1300023 | Floating ball internal error. |
+| 1300024 | The floating ball window state is abnormal. |
+
+**示例：**
+
+```ts
+// xxx.ets
+
+let onStateChangeEvent = (state: floatingBall.FloatingBallState) => {
+  console.info(`Floating ball stateChange:${state}`);
+};
+try {
+  floatingBallController.offStateChange(onStateChangeEvent);
+} catch(e: Error) {
+  console.error(`Failed to offStateChange floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ### on('click')
 
 on(type: 'click', callback: Callback&lt;void&gt;): void
 
 注册闪控球的点击监听事件，不使用时，取消监听以避免内存泄漏。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onClick](#onclick22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -370,6 +601,8 @@ on(type: 'click', callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+// xxx.ets
+
 let onClick = () => {
   console.info('Floating ball onClick');
 };
@@ -380,13 +613,65 @@ try {
 }
 ```
 
+### onClick<sup>22+</sup>
+
+onClick(callback: Callback&lt;void&gt;): void
+
+注册闪控球的点击监听事件，不使用时，取消监听以避免内存泄漏。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('click')](#onclick)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| callback | Callback&lt;void&gt; | 是 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. |
+| 1300022 | Repeated floating ball operation. |
+| 1300023 | Floating ball internal error. |
+| 1300024 | The floating ball window state is abnormal. |
+
+**示例：**
+
+```ts
+// xxx.ets
+
+let onClickEvent = () => {
+  console.info('Floating ball onClick');
+};
+try {
+  floatingBallController.onClick(onClickEvent);
+} catch(e: Error) {
+  console.error(`Failed to on click floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ### off('click')
 
 off(type: 'click', callback?: Callback&lt;void&gt;): void
 
 取消闪控球点击的监听事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offClick](#offclick22)。
+
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -408,12 +693,59 @@ off(type: 'click', callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
+// xxx.ets
+
 let onClick = () => {
   console.info('Floating ball onClick');
 };
 try {
   floatingBallController.off('click', onClick);
 } catch(e) {
+  console.error(`Failed to off click floating ball. Cause:${e.code}, message:${e.message}`);
+}
+```
+
+### offClick<sup>22+</sup>
+
+offClick(callback?: Callback&lt;void&gt;): void
+
+取消闪控球点击的监听事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('click')](#offclick)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| callback | Callback&lt;void&gt; | 否 | 回调函数。当点击闪控球事件发生时的回调。该回调函数不返回任何参数。若传入参数，则关闭特定的监听。若未传入参数，则关闭所有闪控球点击的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300019 | Wrong parameters for operating the floating ball. |
+| 1300023 | Floating ball internal error. |
+| 1300024 | The floating ball window state is abnormal. |
+
+**示例：**
+
+```ts
+// xxx.ets
+
+let onClickEvent = () => {
+  console.info('Floating ball onClick');
+};
+try {
+  floatingBallController.offClick(onClickEvent);
+} catch(e: Error) {
   console.error(`Failed to off click floating ball. Cause:${e.code}, message:${e.message}`);
 }
 ```
@@ -425,6 +757,10 @@ getFloatingBallWindowInfo(): Promise&lt;FloatingBallWindowInfo&gt;
 获得闪控球窗口信息，使用Promise异步回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -447,12 +783,27 @@ getFloatingBallWindowInfo(): Promise&lt;FloatingBallWindowInfo&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+// xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 floatingBallController.getFloatingBallWindowInfo().then((data: floatingBall.FloatingBallWindowInfo) => {
   console.info('Succeeded in getting floating ball window info. Info: ' + JSON.stringify(data));
 }).catch((err: BusinessError) => {
+  console.error(`Failed to get floating ball window info. Cause code: ${err.code}, message: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+
+floatingBallController.getFloatingBallWindowInfo().then((data: floatingBall.FloatingBallWindowInfo) => {
+  console.info('Succeeded in getting floating ball window info. Info: ' + JSON.stringify(data));
+}).catch((err: Error) => {
   console.error(`Failed to get floating ball window info. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
@@ -466,6 +817,10 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 **需要权限：** ohos.permission.USE_FLOAT_BALL
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -497,7 +852,10 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
+// xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { Want } from '@kit.AbilityKit';
 
@@ -516,11 +874,36 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Want } from '@kit.AbilityKit';
+
+let want: Want = {
+  bundleName: 'xxx.xxx.xxx',
+  abilityName: 'EntryAbility'
+};
+try {
+  floatingBallController.restoreMainWindow(want).then(() => {
+    console.info('Succeeded in restoring floating ball main window.');
+  }).catch((err: Error) => {
+    console.error(`Failed to restore floating ball main window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch(e: Error) {
+  console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
+}
+```
+
 ## FloatingBallParams
 
 启动和更新闪控球的配置参数。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
@@ -536,6 +919,10 @@ try {
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 值 | 说明 |
 |------------|------------|------------|
 | STARTED | 1 | 表示闪控球启动。 |
@@ -546,6 +933,10 @@ try {
 闪控球模板类型的枚举。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 值 | 说明 |
 |------------|------------|------------|
@@ -560,6 +951,10 @@ try {
 
 **系统能力：** SystemCapability.Window.SessionManager
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
-| windowId | number | 是 | 否 | 闪控球窗口ID。 |
+| windowId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 否 | 闪控球窗口ID。 |

@@ -43,7 +43,9 @@ Shape(value?: PixelMap)
 
 ### viewPort
 
-viewPort(value: ViewportRect)
+ArkTS-Dyn: viewPort(value: ViewportRect)
+
+ArkTS-Sta: viewPort(value: ViewportRect | undefined)
 
 设置形状的视口。 
 
@@ -53,11 +55,15 @@ viewPort(value: ViewportRect)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) | 是 | Viewport绘制属性。 |
+| value | ArkTS-Dyn: [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明)<br/>ArkTS-Sta: [ViewportRect](ts-drawing-components-shape.md#viewportrect18对象说明) \| undefined | 是 | Viewport绘制属性。<br/>默认值：{ x: 0, y: 0, width: Shape组件的宽度, height: Shape组件的高度 }<br/>取值为undefined按照默认值处理。 |
 
 ## ViewportRect<sup>18+</sup>对象说明
 用于描述Viewport的绘制属性。
@@ -347,7 +353,9 @@ ArkTS-Sta: antiAlias(value: boolean | undefined)
 
 ### mesh<sup>8+</sup>
 
-mesh(value: Array&lt;any&gt;, column: number, row: number)
+ArkTS-Dyn: mesh(value: Array&lt;any&gt;, column: number, row: number)
+
+ArkTS-Sta: mesh(value: Array&lt;double&gt; | undefined, column: int | undefined, row: int | undefined)
 
 设置mesh效果。
 
@@ -357,13 +365,17 @@ mesh(value: Array&lt;any&gt;, column: number, row: number)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：** 
 
 | 参数名 | 类型                | 必填 | 说明                                                         |
 | ------ | ------------------- | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;any&gt; | 是   | 长度（column + 1）* （row + 1）* 2的数组，记录扭曲后的位图各个顶点位置。 |
-| column | number              | 是   | mesh矩阵列数。                                               |
-| row    | number              | 是   | mesh矩阵行数。                                               |
+| value  | ArkTS-Dyn: Array&lt;any&gt; <br/>ArkTS-Sta: Array&lt;double&gt; \| undefined| 是   | 长度（column + 1）* （row + 1）* 2的数组，记录扭曲后的位图各个顶点位置。<br/>取值为undefined，或取异常值null、NaN和Infinity时，按照无效值处理，图像不发生变化。 |
+| column | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | mesh矩阵列数。 <br/>取值为undefined，或取异常值null、NaN和Infinity时，按照无效值处理，图像不发生变化。 |
+| row    | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | mesh矩阵行数。 <br/>取值为undefined，或取异常值null、NaN和Infinity时，按照无效值处理，图像不发生变化。 |
 
 ## 示例
 

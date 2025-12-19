@@ -1564,6 +1564,70 @@ ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
 | ---------------- | ------- | ---- | ----------------------------------------------- |
 | enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用，undefined表示禁用。|
 
+### includeFontPadding<sup>23+</sup>
+
+ArkTS-Dyn: includeFontPadding(include: Optional\<boolean>)
+
+ArkTS-Sta: includeFontPadding(include: boolean | undefined)
+
+设置是否在首行和尾行增加间距以避免文字截断。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| include | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。<br/>undefined表示在首行和尾行不增加间距。 |
+
+### fallbackLineSpacing<sup>23+</sup>
+
+ArkTS-Dyn: fallbackLineSpacing(enabled: Optional\<boolean>)
+
+ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
+
+针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 行高是否基于文字实际高度自适应，此接口只在行高小于文字实际高度时生效。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。<br/>undefined表示行高不基于文字实际高度自适应。 |
+
+### selectedDragPreviewStyle<sup>23+</sup>
+
+selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
+
+设置文本输入框内文本拖拽时的背板样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                             | 必填 | 说明                                                       |
+| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
+
 ## InputType枚举说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -3543,3 +3607,119 @@ struct Index {
 }
 ```
 ![textInputCompressLeadingPunctuation](figures/textInputCompressLeadingPunctuation.gif)
+
+### 示例23（设置自适应间距）
+
+该示例通过[includeFontPadding](#includefontpadding23)接口增加首行尾行间距和[fallbackLineSpacing](#fallbacklinespacing23)接口设置自适应行间距。
+
+从API version 23开始，新增[includeFontPadding](#includefontpadding23)和[fallbackLineSpacing](#fallbacklinespacing23)接口。
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ClickEvent, TextInputOptions, TextAreaOptions, TextInput, TextArea, SearchOptions, Search } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  @State stateVar: string = 'state var';
+  message: string = 'var';
+
+  changeValue() {
+    this.stateVar += '~'
+  }
+
+  build() {
+    Column(undefined) {
+      Text('正常文字显示').padding(20)
+      TextInput({text: 'ཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུག'} as TextInputOptions).lineHeight(5)
+      Text('打开自适应显示').padding(20)
+      TextInput({text: 'ཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུག'} as TextInputOptions).lineHeight(5).includeFontPadding(true).fallbackLineSpacing(true)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+
+```
+
+![TextInputIncludeFontPadding](figures/TextInputIncludeFontPadding.jpg)
+
+### 示例24（设置文本拖拽时的背板样式）
+
+该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置文本拖拽时的背板样式。
+
+从API version 23开始，新增selectedDragPreviewStyle接口。
+
+```ts
+import { Entry, TextInput, Column, Component, CopyOptions } from '@ohos.arkui.component'
+@Entry
+@Component
+struct TextInputTest {
+  build() {
+    Column() {
+      TextInput({ text: "HelloWorld", placeholder: 'please input words' })
+        .copyOption(CopyOptions.InApp)
+        .width(200)
+        .height(50)
+        .margin(150)
+        .draggable(true)
+        .selectedDragPreviewStyle({color: 'rgba(227, 248, 249, 1)'})
+    }
+    .height('100%')
+  }
+}
+```
+
+![selectedDragPreviewStyle](figures/textInputSelectedDragPreviewStyle.png)
+
+### 示例25（删除文本框内的最后一个字符）
+
+该示例通过调用[deleteBackward](ts-types.md#deletebackward23)接口删除文本框内最后一个字符。
+
+从API version 23开始，新增[deleteBackward](ts-types.md#deletebackward23)接口。
+
+ArkTS-Dyn示例：
+``` typescript
+@Entry
+@Component
+struct Page {
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: 'TextInput输入框Deletebackward示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` typescript
+import { Entry, Component, TextInputController, Column, TextInput, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Page {
+  controller: TextInputController = new TextInputController();
+
+  build() {
+    Column() {
+      TextInput({ text: 'TextInput输入框Deletebackward示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+![textInputDeleteBackward](figures/TextInput_DeleteBackward.gif)

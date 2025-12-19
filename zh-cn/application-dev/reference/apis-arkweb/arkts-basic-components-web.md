@@ -199,6 +199,49 @@ ArkTS-Sta示例：
   }
   ```
 
+指定Web组件是否将鼠标事件作为触屏事件处理。
+
+ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller1: webview.WebviewController = new webview.WebviewController();
+    controller2: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller1, emulateTouchFromMouseEvent: false })
+        Web({ src: 'www.w3.org', controller: this.controller2, emulateTouchFromMouseEvent: true })
+      }
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Web, Column, Component, Entry } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller1: webview.WebviewController = new webview.WebviewController(undefined);
+    controller2: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller1, emulateTouchFromMouseEvent: false })
+        Web({ src: 'www.w3.org', controller: this.controller2, emulateTouchFromMouseEvent: true })
+      }
+    }
+  }
+  ```
+
 加载本地网页。
 
 通过$rawfile方式加载。

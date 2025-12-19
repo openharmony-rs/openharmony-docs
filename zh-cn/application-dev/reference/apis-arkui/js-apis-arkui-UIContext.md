@@ -1141,6 +1141,32 @@ struct TextPickerDialogExample {
 }
 ```
 
+## showTextPickerDialog<sup>20+</sup>
+
+showTextPickerDialog(style: TextPickerDialogOptions \| TextPickerDialogOptionsExt): void
+
+定义文本滑动选择器弹窗并弹出，与[showTextPickerDialog](#showtextpickerdialog)相比，新增了对[TextPickerDialogOptionsExt](arkui-ts/ts-methods-textpicker-dialog.md#textpickerdialogoptionsext20对象说明)类型入参的支持。
+
+>  **说明：**
+>
+>  不支持在输入法类型窗口中使用子窗（showInSubwindow为true）的showTextPickerDialog，详情见输入法框架的约束与限制说明[createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1)。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：** 
+
+| 参数名  | 类型                                                         | 必填 | 说明                           |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------ |
+| style | [TextPickerDialogOptions](arkui-ts/ts-methods-textpicker-dialog.md#textpickerdialogoptions对象说明) \| [TextPickerDialogOptionsExt](arkui-ts/ts-methods-textpicker-dialog.md#textpickerdialogoptionsext20对象说明) | 是   | 配置文本滑动选择器弹窗的参数。 |
+
 ### createAnimator
 
 createAnimator(options: AnimatorOptions): AnimatorResult

@@ -142,6 +142,18 @@ pasteAndMatchStyle(): void
 
 **ArkTS-Sta起始版本：** 22
 
+## requestPasswordAutoFill<sup>23+</sup>
+
+requestPasswordAutoFill(): void
+
+请求密码保险箱中的用户名或密码数据自动填充到当前获得焦点的输入框中。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 ## 使用@ohos.transfer进行WebContextMenuResult类型转换
 
 ArkTS-Dyn中使用ArkTS-Sta的WebContextMenuResult对象。

@@ -450,6 +450,38 @@ Web布局模式的配置。
 | UPDATE                        | 1 | 更改param元素属性。   |
 | DELETE                        | 2 | 删除param元素。 |
 
+## CameraCaptureState<sup>23+</sup>
+
+定义摄像头使用状态的值。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 值   | 说明         |
+| ------ | ---- | ------------ |
+| NONE   | 0    | 摄像头未工作。 |
+| PAUSED | 1    | 摄像头暂停中。 |
+| ACTIVE | 2    | 摄像头捕获中。 |
+
+## MicrophoneCaptureState<sup>23+</sup>
+
+定义麦克风使用状态的值。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 值   | 说明         |
+| ------ | ---- | ------------ |
+| NONE   | 0    | 麦克风未工作。 |
+| PAUSED | 1    | 麦克风暂停中。 |
+| ACTIVE | 2    | 麦克风捕获中。 |
+
 ## NavigationPolicy<sup>23+</sup>
 
 WebView中新窗口的打开方式。
