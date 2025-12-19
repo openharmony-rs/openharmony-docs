@@ -372,7 +372,9 @@ async function goToNextRowExample(store : relationalStore.RdbStore) {
 
 getValue(columnIndex: number): ValueType
 
-获取当前行中指定列的值。如果值类型为INTEGER，值大于Number.MAX_SAFE_INTEGER或小于Number.MIN_SAFE_INTEGER时，如果不希望丢失精度，建议使用[getString](#getstring23)接口获取。
+获取当前行中指定列的值。
+
+如果值类型为INTEGER，值大于Number.MAX_SAFE_INTEGER或小于Number.MIN_SAFE_INTEGER时，如果不希望丢失精度，建议使用[getString](#getstring23)接口获取。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -421,7 +423,10 @@ async function getValueExample(store : relationalStore.RdbStore) {
 
 getBlob(columnIndex: number): Uint8Array
 
-以字节数组的形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组。如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
+以字节数组的形式获取当前行中指定列的值。
+
+如果当前列的数据类型为INTEGER、DOUBLE、TEXT、BLOB类型，会转成字节数组类型返回指定值，如果该列内容为空时，会返回空字节数组。<br>
+如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -471,7 +476,11 @@ async function getBlobExample(store : relationalStore.RdbStore) {
 
 getString(columnIndex: number): string
 
-以字符串形式获取当前行中指定列的值，如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble23)接口获取。如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
+以字符串形式获取当前行中指定列的值。
+
+如果当前列中的值为INTEGER、DOUBLE、TEXT、BLOB类型，会以字符串形式返回指定值，如果是当前列中的值为INTEGER，并且为空，则会返回空字符串""。<br>
+如果当前列中的值为DOUBLE类型，可能存在精度的丢失，建议使用[getDouble](#getdouble23)接口获取。<br>
+如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -521,7 +530,12 @@ async function getStringExample(store : relationalStore.RdbStore) {
 
 getLong(columnIndex: number): number
 
-以Long形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT会转成Long类型返回指定值，非数字的TEXT、BLOB类型会返回0。如果该列内容为空时，会返回0。如果当前列的数据类型为INTEGER，值大于Number.MAX_SAFE_INTEGER 或小于Number.MIN_SAFE_INTEGER时，如果不希望丢失精度，建议使用[getString](#getstring23)接口获取。如果当前列的数据类型为DOUBLE且不希望丢失精度，建议使用[getDouble](#getdouble23)接口获取。如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
+以Long形式获取当前行中指定列的值。
+
+如果当前列的数据类型为INTEGER、DOUBLE、TEXT会转成Long类型返回指定值，非数字的TEXT、BLOB类型会返回0。如果该列内容为空时，会返回0。<br>
+如果当前列的数据类型为INTEGER，值大于Number.MAX_SAFE_INTEGER 或小于Number.MIN_SAFE_INTEGER时，如果不希望丢失精度，建议使用[getString](#getstring23)接口获取。<br>
+如果当前列的数据类型为DOUBLE时，如果不希望丢失精度，建议使用[getDouble](#getdouble23)接口获取。<br>
+如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -571,7 +585,10 @@ async function getLongExample(store : relationalStore.RdbStore) {
 
 getDouble(columnIndex: number): number
 
-以double形式获取当前行中指定列的值，如果当前列的数据类型为INTEGER、DOUBLE、TEXT会转成double类型返回指定值，非数字的TEXT、BLOB类型会返回0.0。如果该列内容为空时，会返回0.0，其他类型则返回14800041。如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。
+以double形式获取当前行中指定列的值。
+
+如果当前列的数据类型为INTEGER、DOUBLE、TEXT会转成double类型返回指定值，非数字的TEXT、BLOB类型会返回0.0。如果该列内容为空时，会返回0.0。<br>
+如果当前列的数据类型为ASSET、ASSETS、FLOATVECTOR、BIGINT类型，会返回14800041。<br>
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -621,7 +638,9 @@ async function getDoubleExample(store : relationalStore.RdbStore) {
 
 getAsset(columnIndex: number): Asset
 
-以[Asset](arkts-apis-data-relationalStore-i.md#asset10)形式获取当前行中指定列的值，如果当前列的数据类型为Asset类型，会以Asset类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800041。
+以[Asset](arkts-apis-data-relationalStore-i.md#asset10)形式获取当前行中指定列的值。
+
+如果当前列的数据类型为Asset类型，会以Asset类型返回指定值；如果当前列中的值为null时，会返回null；如果当前列的数据类型非Asset类型，则返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -671,7 +690,9 @@ async function getAssetExample(store : relationalStore.RdbStore) {
 
 getAssets(columnIndex: number): Assets
 
-以[Assets](arkts-apis-data-relationalStore-t.md#assets10)形式获取当前行中指定列的值，如果当前列的数据类型为Assets类型，会以Assets类型返回指定值，如果当前列中的值为null时，会返回null，其他类型则返回14800041。
+以[Assets](arkts-apis-data-relationalStore-t.md#assets10)形式获取当前行中指定列的值。
+
+如果当前列的数据类型为Assets类型，会以Assets类型返回指定值；如果当前列中的值为null时，会返回null；如果当前列的数据类型非Assets类型，则返回14800041。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
