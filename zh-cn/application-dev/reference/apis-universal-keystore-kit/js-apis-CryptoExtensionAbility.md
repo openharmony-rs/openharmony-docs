@@ -382,10 +382,10 @@ import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.Un
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onUpdateSession(initHandle: string, params: huks.HuksOptions): Promise<HuksCryptoExtensionResult> {
-    const certs: Array<CryptoExtensionAbility.HuksCryptoExtensionCertInfo> = [];
+    let outBuffer: Uint8Array = new Uint8Array(1024);
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
-      outData: certs
+      outData: outBuffer
     };
 
     // ...
@@ -422,10 +422,10 @@ import { huks, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.Un
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onFinishSession(initHandle: string, params: huks.HuksOptions): Promise<HuksCryptoExtensionResult> {
-    const certs: Array<CryptoExtensionAbility.HuksCryptoExtensionCertInfo> = [];
+    let outBuffer: Uint8Array = new Uint8Array(1024);
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
-      outData: certs
+      outData: outBuffer
     };
 
     // ...
@@ -458,11 +458,12 @@ onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksE
 **示例：**
 
 ```ts
-import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
+  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onExportCertificate(resourceId: string, params?: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
-    const certInfoSetArray: Array<CryptoExtensionAbility.HuksCryptoExtensionCertInfo> = []
+    const certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
       certs: certInfoSetArray
@@ -497,11 +498,12 @@ onEnumCertificates(params?: Array\<huksExternalCrypto.HuksExternalCryptoParam>):
 **示例：**
 
 ```ts
-import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto, CryptoExtensionAbility, HuksCryptoExtensionResult,
+  HuksCryptoExtensionCertInfo } from '@kit.UniversalKeystoreKit';
 
 export default class CryptoExtension extends CryptoExtensionAbility {
   onEnumCertificates(params?: Array<huksExternalCrypto.HuksExternalCryptoParam>): Promise<HuksCryptoExtensionResult> {
-    const certInfoSetArray: Array<CryptoExtensionAbility.HuksCryptoExtensionCertInfo> = []
+    const certInfoSetArray: Array<HuksCryptoExtensionCertInfo> = []
     const result: HuksCryptoExtensionResult = {
       resultCode: 0,
       certs: certInfoSetArray
