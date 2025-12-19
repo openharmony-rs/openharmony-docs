@@ -107,9 +107,10 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 ```
 
 **Including Header Files**
-<!--@[rdb_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[rdb_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
 ``` C++
+#include <cstdlib>
 #include <database/data/data_asset.h>
 #include <database/rdb/oh_cursor.h>
 #include <database/rdb/oh_predicates.h>
@@ -447,7 +448,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     ```
 
     To configure the full-text search (FTS) dynamic library, use **OH_Rdb_SetPlugins**.
-   
+    
     For details about the constraints, see the **pluginLibs** configuration item in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig).
 
     <!--@[rdb_OH_Rdb_SetPlugins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
