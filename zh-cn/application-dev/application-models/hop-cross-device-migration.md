@@ -657,7 +657,7 @@ export default class MigrationAbility extends UIAbility {
   >
   > 自API 12起，由于直接使用[跨设备文件访问](../file-management/file-access-across-devices.md)实现文件的迁移难以获取文件同步完成的时间，为了保证更高的成功率，文件数据的迁移不建议继续通过该方式实现，推荐使用分布式数据对象携带资产的方式进行。开发者此前通过跨设备文件访问实现的文件迁移依然生效。
 
-#### 基础数据的迁移
+**基础数据的迁移**
 
 使用分布式数据对象，需要在源端[onContinue()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncontinue)接口中进行数据保存，并在对端的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)/[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)接口中进行数据恢复。
 
@@ -819,7 +819,7 @@ export default class MigrationAbility extends UIAbility {
 }
 ```
 
-#### 文件资产的迁移
+**文件资产的迁移**
 
 对于图片、文档等文件类数据，需要先将其转换为[资产`commonType.Asset`](../reference/apis-arkdata/js-apis-data-commonType.md#asset)类型，再封装到分布式数据对象中进行迁移。迁移实现方式与普通的分布式数据对象类似，下例中仅针对区别部分进行说明。
 
@@ -946,6 +946,34 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 const TAG: string = '[MigrationAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
 
+// 数据对象定义
+class ParentObject {
+  mother: string
+  father: string
+
+  constructor(mother: string, father: string) {
+    this.mother = mother
+    this.father = father
+  }
+}
+
+class SourceObject {
+  name: string | undefined
+  age: number | undefined
+  isVis: boolean | undefined
+  parent: ParentObject | undefined
+  attachment: commonType.Asset | undefined // 新增资产属性
+
+  constructor(name: string | undefined, age: number | undefined, isVis: boolean | undefined,
+              parent: ParentObject | undefined, attachment: commonType.Asset | undefined) {
+    this.name = name
+    this.age = age
+    this.isVis = isVis
+    this.parent = parent
+    this.attachment = attachment;
+  }
+}
+
 export default class MigrationAbility extends UIAbility {
   d_object?: distributedDataObject.DataObject;
 
@@ -988,7 +1016,7 @@ export default class MigrationAbility extends UIAbility {
 ```ts
 // 导入模块
 import { distributedDataObject, commonType } from '@kit.ArkData';
-import { UIAbility } from '@kit.AbilityKit';
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 // 数据对象定义
 class SourceObject {
