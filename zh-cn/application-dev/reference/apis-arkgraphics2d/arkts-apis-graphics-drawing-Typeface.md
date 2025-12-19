@@ -376,12 +376,12 @@ isBold(): boolean
 
 **示例：**
 
-```ts
+``` ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 const font = new drawing.Font();
 let typeface = font.getTypeface();
-let result = typeface.isBold();
+let result = typeface?.isBold();
 ```
 
 ## isItalic<sup>23+</sup>
@@ -404,10 +404,10 @@ isItalic(): boolean
 
 **示例：**
 
-```ts
+``` ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 const font = new drawing.Font();
 let typeface = font.getTypeface();
-let result = typeface.isItalic();
+let result = typeface?.isItalic();
 ```
