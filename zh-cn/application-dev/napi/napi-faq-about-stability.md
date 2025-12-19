@@ -84,9 +84,9 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 - 排查建议：  
 1. 确认是否napi_value出了scope还在使用，导致use-after-scope问题。  
 
- 	可参考文档：
+   可参考文档：
 
-	[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
+   [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
 
 2. 保存时建议使用napi_ref，而不是直接保存napi_value。
 
