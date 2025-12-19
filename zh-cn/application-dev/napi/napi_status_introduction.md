@@ -130,14 +130,6 @@
 | napi_create_string_utf16 | 通过UTF16编码的C字符串数据创建js String。 | napi_invalid_arg | 入参str为nullptr | 确保入参正确 |
 | napi_create_string_utf16 | 通过UTF16编码的C字符串数据创建js String。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
 | napi_create_string_utf16 | 通过UTF16编码的C字符串数据创建js String。 | napi_invalid_arg | 入参length值不为NAPI_AUTO_LENGTH，但超过INT_MAX | 确保入参正确 |
-| napi_create_external_string_ascii | 通过ASCII编码的外部字符串数据创建js String。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_create_external_string_ascii | 通过ASCII编码的外部字符串数据创建js String。 | napi_invalid_arg | 入参str为nullptr | 确保入参正确 |
-| napi_create_external_string_ascii | 通过ASCII编码的外部字符串数据创建js String。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
-| napi_create_external_string_ascii | 通过ASCII编码的外部字符串数据创建js String。 | napi_invalid_arg | 入参length值不为NAPI_AUTO_LENGTH，但超过INT_MAX | 确保入参正确 |
-| napi_create_external_string_utf16 | 通过UTF16编码的外部字符串数据创建js String。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_create_external_string_utf16 | 通过UTF16编码的外部字符串数据创建js String。 | napi_invalid_arg | 入参str为nullptr | 确保入参正确 |
-| napi_create_external_string_utf16 | 通过UTF16编码的外部字符串数据创建js String。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
-| napi_create_external_string_utf16 | 通过UTF16编码的外部字符串数据创建js String。 | napi_invalid_arg | 入参length值不为NAPI_AUTO_LENGTH，但超过INT_MAX | 确保入参正确 |
 | napi_get_array_length | 获取array的length。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_get_array_length | 获取array的length。 | napi_invalid_arg | 入参value为nullptr | 确保入参正确 |
 | napi_get_array_length | 获取array的length。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
