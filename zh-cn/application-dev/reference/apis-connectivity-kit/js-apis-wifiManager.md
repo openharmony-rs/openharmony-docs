@@ -462,7 +462,6 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | WIFI_SEC_TYPE_INVALID | 0 | 无效加密类型。 |
