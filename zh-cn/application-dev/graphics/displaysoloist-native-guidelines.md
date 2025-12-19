@@ -350,6 +350,58 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
 5. TS层注册和取消注册每帧回调，销毁OH_DisplaySoloist实例。
    <!-- @[display_soloist_disappear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   aboutToDisappear(): void {
+     // ...
+     if (this.xComponentContext1) {
+       this.xComponentContext1.unregister();
+       this.xComponentContext1.destroy();
+     }
+     if (this.xComponentContext2) {
+       this.xComponentContext2.unregister();
+       this.xComponentContext2.destroy();
+     }
+   }
+   
+   // ...
+   
+       Row() {
+         Button('Start')
+           .id('Start')
+           .fontSize(14)
+           .fontWeight(500)
+           .margin({ bottom: 20, right: 6, left: 6 })
+           .onClick(() => {
+             if (this.xComponentContext1) {
+               this.xComponentContext1.register();
+             }
+             if (this.xComponentContext2) {
+               this.xComponentContext2.register();
+             }
+           })
+           .width('30%')
+           .height(40)
+           .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+   
+         Button('Stop')
+           .id('Stop')
+           .fontSize(14)
+           .fontWeight(500)
+           .margin({ bottom: 20, left: 6 })
+           .onClick(() => {
+             if (this.xComponentContext1) {
+               this.xComponentContext1.unregister();
+             }
+             if (this.xComponentContext2) {
+               this.xComponentContext2.unregister();
+             }
+           })
+           .width('30%')
+           .height(40)
+           .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+       }
+   ```
 
 <!--RP1-->
 ## 相关实例
