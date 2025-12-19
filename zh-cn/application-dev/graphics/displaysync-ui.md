@@ -36,6 +36,25 @@
 
 3. 定义两个文本组件。
    <!-- @[display_sync_create_text_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
+   @State drawFirstSize: number = 25;
+   @State drawSecondSize: number = 25;
+   
+   // ...
+   
+   @Builder
+   doSomeRenderFirst() {
+     Text('30')
+       .fontSize(this.drawFirstSize)
+   }
+   
+   @Builder
+   doSomeRenderSecond() {
+     Text('60')
+       .fontSize(this.drawSecondSize)
+   }
+   ```
 
 4. 通过DisplaySync实例设置帧率和注册订阅函数。
 
