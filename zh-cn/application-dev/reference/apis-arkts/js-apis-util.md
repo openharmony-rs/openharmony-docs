@@ -560,6 +560,34 @@ console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
 
+## util.ArkTSVM<sup>23+</sup>
+
+ArkTSVM是一个接口类，用于给开发者提供虚拟机的维测能力。
+
+### setMultithreadingDetectionEnabled<sup>23+</sup>
+
+setMultithreadingDetectionEnabled(enabled: boolean):void
+
+打开或者关闭多线程检测开关，如果enabled为true则打开，为false则关闭。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 |
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+//打开多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(true);
+//关闭多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+```
+
 ## TextDecoderOptions<sup>11+</sup>
 
 解码相关选项参数，包含两个属性fatal和ignoreBOM。
