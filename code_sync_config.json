@@ -24202,7 +24202,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV2.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":76,
 						"name":"Internal_Common_Modifier_V2",
 						"start_line":15
 					}
@@ -24222,7 +24222,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":84,
 						"name":"Internal_Module_Modifier_V2",
 						"start_line":15
 					}
@@ -24761,7 +24761,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArray.ets",
 				"functions":[
 					{
-						"end_line":93,
+						"end_line":94,
 						"name":"TextComponent1_start",
 						"start_line":15
 					}
@@ -24771,7 +24771,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayUpdate.ets",
 				"functions":[
 					{
-						"end_line":119,
+						"end_line":120,
 						"name":"Information_start",
 						"start_line":15
 					}
@@ -24781,7 +24781,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayBig.ets",
 				"functions":[
 					{
-						"end_line":183,
+						"end_line":184,
 						"name":"StateArrayBig_start",
 						"start_line":15
 					}
@@ -24801,7 +24801,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayTrack.ets",
 				"functions":[
 					{
-						"end_line":182,
+						"end_line":184,
 						"name":"StateArrayTrack_start",
 						"start_line":15
 					}
@@ -24811,7 +24811,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayObserved.ets",
 				"functions":[
 					{
-						"end_line":158,
+						"end_line":160,
 						"name":"StateArrayObserve_start",
 						"start_line":15
 					}
@@ -24841,7 +24841,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayNo.ets",
 				"functions":[
 					{
-						"end_line":161,
+						"end_line":163,
 						"name":"StateArrayNo_start",
 						"start_line":15
 					}
@@ -24861,7 +24861,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets",
 				"functions":[
 					{
-						"end_line":151,
+						"end_line":152,
 						"name":"StateArrayLazy_start",
 						"start_line":15
 					}
@@ -24871,7 +24871,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy2.ets",
 				"functions":[
 					{
-						"end_line":152,
+						"end_line":154,
 						"name":"StateArrayLazy2_start",
 						"start_line":15
 					}
@@ -24881,7 +24881,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":66,
 						"name":"StateArrayForeach_start",
 						"start_line":15
 					}
@@ -24891,7 +24891,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":75,
 						"name":"TextComponent_start",
 						"start_line":15
 					}
@@ -29859,7 +29859,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPageOpposite/PlayDetailPage.ets",
 				"functions":[
 					{
-						"end_line":39,
+						"end_line":42,
 						"name":"state_problem_arrow_function_opposite",
 						"start_line":16
 					}
@@ -29879,7 +29879,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/playDetailPagePositive/PlayDetailPage.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":43,
 						"name":"state_problem_arrow_function_positive",
 						"start_line":16
 					}
@@ -29904,7 +29904,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets",
 				"functions":[
 					{
-						"end_line":32,
+						"end_line":31,
 						"name":"state_problem_not_update_in_build_error_02",
 						"start_line":16
 					}
@@ -30014,7 +30014,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":76,
 						"name":"precise_control_counterexamples",
 						"start_line":16
 					}
@@ -30024,7 +30024,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":64,
 						"name":"precise_control_positive_cases",
 						"start_line":16
 					}
@@ -30074,7 +30074,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets",
 				"functions":[
 					{
-						"end_line":151,
+						"end_line":152,
 						"name":"StateArrayLazy_start",
 						"start_line":15
 					}
@@ -30084,7 +30084,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy2.ets",
 				"functions":[
 					{
-						"end_line":152,
+						"end_line":154,
 						"name":"StateArrayLazy2_start",
 						"start_line":15
 					}
@@ -30094,7 +30094,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":66,
 						"name":"StateArrayForeach_start",
 						"start_line":15
 					}
@@ -30104,7 +30104,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets",
 				"functions":[
 					{
-						"end_line":74,
+						"end_line":75,
 						"name":"TextComponent_start",
 						"start_line":15
 					}
