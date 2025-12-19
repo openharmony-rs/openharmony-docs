@@ -114,7 +114,7 @@ libscsi.z.so
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Init** 初始化SCSI Peripheral DDK。
 
    <!-- @[driver_scsi_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+   
    ``` C++
    // 初始化SCSI Peripheral DDK
    int32_t ret = OH_ScsiPeripheral_Init();
