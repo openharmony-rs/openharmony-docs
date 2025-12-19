@@ -34,6 +34,10 @@
 2. 导入依赖的相关模块。
 
    <!-- @[arkts_theme_font_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { text } from '@kit.ArkGraphics2D';
+   ```
 
 3. 使用getGlobalInstance()接口获取全局字体集对象，系统框架在注册主题字体过程中仅会将主题字体信息传入全局字体集对象中。
 
