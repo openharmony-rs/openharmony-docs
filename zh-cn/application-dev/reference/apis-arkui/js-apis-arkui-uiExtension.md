@@ -418,7 +418,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 }
 ```
 
-### createSubWindowWithOptions<sup>22+</sup>
+### createSubWindowWithOptions<sup>23+</sup>
 
 createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOptions, followCreatorLifecycle: boolean): Promise&lt;window.Window&gt;
 
