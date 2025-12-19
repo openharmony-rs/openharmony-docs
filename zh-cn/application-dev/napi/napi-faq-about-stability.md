@@ -30,13 +30,13 @@ Tid:15894, Name:e.myapplication
 - 以下定位问题的思路，可作为参考：   
 1. 排查是否存在多线程安全问题（概率较大）。   
 
-	DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。 
+   DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。 
 
-	[常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
 
-	DevEco Studio开关：   
+   DevEco Studio开关：   
 
-	![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
+   ![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
 
 2. 使用Node-API接口时入参非法导致。   
 
@@ -85,9 +85,9 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 - 排查建议：  
 1. 确认是否napi_value出了scope还在使用，导致use-after-scope问题。  
 
-	可参考文档：
+   可参考文档：
 
-	[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
+   [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
 
 2. 保存时建议使用napi_ref，而不是直接保存napi_value。
 
@@ -103,23 +103,23 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 - 参考方案：  
 1. 关于保存napi_env：  
 
-	 Node-API没有提供直接获取napi_env的能力，只能通过逐层函数调用传递。一般不推荐保存napi_env，有两个原因：  
+   Node-API没有提供直接获取napi_env的能力，只能通过逐层函数调用传递。一般不推荐保存napi_env，有两个原因：  
   
- 	 其一，napi_env退出时候如果没有被使用方感知到，很容易出现use-after-free问题；  
+   其一，napi_env退出时候如果没有被使用方感知到，很容易出现use-after-free问题；  
   
- 	 其二，napi_env和ArkTS线程是强绑定的，如果napi_env放在其它ArkTS线程使用，就会有多线程安全问题。  
+   其二，napi_env和ArkTS线程是强绑定的，如果napi_env放在其它ArkTS线程使用，就会有多线程安全问题。  
   
- 	 可参考文档：
+   可参考文档：
   
-	 [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73) 。 
+   [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73) 。 
 
 2. 该问题的关键在于：  
   
-  	如果要强行保存env，必须感知env是否退出，可以使用napi_add_env_cleanup_hook的回调进行感知。同时，在开发过程中打开多线程检测开关，避免出现多线程安全问题。  
+   如果要强行保存env，必须感知env是否退出，可以使用napi_add_env_cleanup_hook的回调进行感知。同时，在开发过程中打开多线程检测开关，避免出现多线程安全问题。  
   
- 	可参考文档：
+   可参考文档：
   
- 	[常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120) 。  
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120) 。  
 
 3. 对于崩溃问题本身，该崩溃可能发生在调用napi_call_function时，入参 func 有问题，即非法入参，开发者可排查napi_value是否被缓存。这种情况可能是napi_value被缓存后，napi_value超出napi_handle_scope作用域导致失效。 
 
