@@ -1866,10 +1866,10 @@ fastApp模式打包检查pack.info文件失败。
 
 1. --pack-info-path参数指向的pack.info文件的“packages”标签中有两个元素的“name”标签值相同。
 2. --pack-info-path参数指向的pack.info文件不包含“packages”标签或“packages”标签内容为空。
-3. --hap-path参数指向的HAP包的pack.info文件的packages”标签中元素个数大于1。
+3. --hap-path参数指向的HAP包的pack.info文件的“packages”标签中元素个数大于1。
 4. --pack-info-path参数指向的pack.info文件的“packages”标签不包含--hap-path参数指向的HAP包。
 5. --hap-path参数指向的HAP包中存在两个HAP包的pack.info文件的packages/name”标签值相同。
-6. --hsp-path参数指向的HSP包的pack.info文件的packages”标签中元素个数大于1。
+6. --hsp-path参数指向的HSP包的pack.info文件的“packages”标签中元素个数大于1。
 7. --pack-info-path参数指向的pack.info文件的“packages”标签不包含--hsp-path参数指向的HSP包。
 8. --hsp-path参数指向的HSP包中存在两个HSP包的pack.info文件的packages/name”标签值相同。
 
@@ -1878,10 +1878,10 @@ fastApp模式打包检查pack.info文件失败。
 根据日志中“Error Message:”信息，确认存在问题文件的路径。
 1. --pack-info-path参数指向的pack.info文件的“packages”标签中有两个元素的“name”标签值相同。
 2. --pack-info-path参数指向的pack.info文件不包含“packages”标签或“packages”标签内容为空。
-3. --hap-path参数指向的HAP包的pack.info文件的packages”标签中元素个数大于1。
+3. --hap-path参数指向的HAP包的pack.info文件的“packages”标签中元素个数大于1。
 4. --pack-info-path参数指向的pack.info文件的“packages”标签不包含--hap-path参数指向的HAP包。
 5. --hap-path参数指向的HAP包中存在两个HAP包的pack.info文件的packages/name”标签值相同。
-6. --hsp-path参数指向的HSP包的pack.info文件的packages”标签中元素个数大于1。
+6. --hsp-path参数指向的HSP包的pack.info文件的“packages”标签中元素个数大于1。
 7. --pack-info-path参数指向的pack.info文件的“packages”标签不包含--hsp-path参数指向的HSP包。
 8. --hsp-path参数指向的HSP包中存在两个HSP包的pack.info文件的packages/name”标签值相同。
 
