@@ -660,9 +660,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
     console.info(`Attachment failed with reason: ${reason}.`);
-	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
-	}
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 ```
@@ -689,9 +689,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
     console.info(`Attachment failed with reason: ${reason}.`);
-	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
-	}
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
