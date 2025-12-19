@@ -76,6 +76,15 @@
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
    <!-- @[arkts_theme_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 在段落生成器中设置文本样式
+   paragraphGraphBuilder.pushStyle(myTextStyle);
+   // 在段落生成器中设置文本内容
+   paragraphGraphBuilder.addText("Hello World. \nThis is the theme font.");
+   // 通过段落生成器生成段落
+   let paragraph = paragraphGraphBuilder.build();
+   ```
 
 6. 创建渲染节点，并保存到数组。（此处示例代码为简化逻辑，采用数组作为容器，实际开发中应结合应用情况选择更恰当的容器来保证节点的添加与删除对应。）
 
