@@ -418,12 +418,14 @@ test(a2);
 1. 文件顶层的调用。
 
    例如：
+   
    ```js
    console.info("in tolevel");
    ```
 2. 代码块中的调用。
 
    例如：
+
    ```
    function foo() {
     console.info('in block');
@@ -432,6 +434,7 @@ test(a2);
 3. module或namespace中的调用。
 
    例如：
+
    ```ts
    // example.ts
    namespace ns {
@@ -441,6 +444,7 @@ test(a2);
 4. switch语句中的调用。
  
    例如：
+
     ```ts
     function getDayName(day: number): string {
       switch (day) {

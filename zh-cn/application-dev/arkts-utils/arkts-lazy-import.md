@@ -297,19 +297,25 @@ ReferenceError: module environment is undefined
 例如，设置时间为1秒，工具将记录主线程和子线程各自启动后1秒内的文件执行情况。  
 
 文件生成路径：`data/app/el2/100/base/${bundleName}/files`
+
 主线程文件名：`${bundleName}_redundant_file.txt`
+
 子线程文件名：`${bundleName}_${tId}_redundant_file.txt`
 
 > **说明：**
 >
 > 1. 主线程文件名不含线程号信息，因此写入文件时会发生覆盖。
+>
 > 2. 子线程文件名包含线程号tId，且每个tId唯一，确保每个子线程对应一个单独的文件。若需查找对应线程文件，可依据日志中的线程号或使用trace工具查看线程号进行匹配。
 
 **示例**
-当前测试应用bundleName为com.example.myapplication，应用内创建了一个子线程，线程号为18089（随机）。  
+当前测试应用bundleName为com.example.myapplication，应用内创建了一个子线程，线程号为18089（随机）。 
+
 文件生成路径：data/app/el2/100/base/com.example.myapplication/files  
-主线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_redundant_file.txt  
-子线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_18089_redundant_file.txt  
+
+主线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_redundant_file.txt 
+
+子线程文件名：data/app/el2/100/base/com.example.myapplication/files/com.example.myapplication_18089_redundant_file.txt 
 ![deferrable-tool-file](figures/deferrable-tool-file.png)
 
 ### 检测原理
