@@ -584,6 +584,29 @@ selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | valve | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 拖动预览样式。如果设置为undefined，样式将被重置。 |
 
+### singleLine<sup>23+</sup>
+
+singleLine(isEnable: boolean | undefined)
+
+设置是否启用单行模式。未通过该接口设置时，默认不启用单行模式。
+
+> **说明：**
+>
+> 单行模式不显示滚动条。
+>
+> 单行模式下换行符会显示为空格。
+>
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型               | 必填 | 说明                                                         |
+| ----- | -------------------- | --- | ------------------------------------------------------------ |
+| isEnable | boolean \| undefined | 是 | 是否启用单行模式。<br/>true表示启用单行模式；false表示不启用单行模式。<br/>设置为undefined或null时，按照false处理，不启用单行模式。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持[OnDidChangeCallback](ts-text-common.md#ondidchangecallback12)、[StyledStringChangedListener](ts-text-common.md#styledstringchangedlistener12)、[StyledStringChangeValue](ts-text-common.md#styledstringchangevalue12)和以下事件：
@@ -6435,3 +6458,44 @@ struct RichEditorDemo {
 ```
 
 ![DeleteBackward](figures/selectedDragPreviewStyle.gif)
+
+### 示例38（设置单行模式）
+
+该示例通过[singleLine](#singleline23)接口设置单行模式。
+
+从API version 23开始，新增singleLine接口。
+
+``` ts
+@Entry
+@Component
+struct SingleLineDemo {
+  controller: RichEditorController = new RichEditorController();
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 30 } };
+  exampleText: string = '这是一段示例文本\n这是一段示例文本\n这是一段示例文本';
+  @State enableSingleLine: boolean = false;
+
+  build() {
+    Column() {
+      Row() {
+        RichEditor({ controller: this.controller })
+          .onReady(() => {
+            this.controller.addTextSpan(this.exampleText, this.textSpanOptions)
+          })
+          .singleLine(this.enableSingleLine)
+          .border({ width: 1, color: Color.Black })
+          .margin(10)
+      }
+      Row() {
+        Button('切换单行模式').onClick((event: ClickEvent) => {
+          this.enableSingleLine = true
+        }).margin(5)
+        Button('切换多行模式').onClick((event: ClickEvent) => {
+          this.enableSingleLine = false
+        }).margin(5)
+      }
+    }
+  }
+}
+```
+
+![SingleLine](figures/richEditorSingleLine.gif)
