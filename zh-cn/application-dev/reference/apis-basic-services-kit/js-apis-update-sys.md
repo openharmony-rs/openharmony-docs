@@ -1,4 +1,4 @@
-# @ohos.update (升级)
+# @ohos.update (升级)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Update-->
 <!--Owner: @RainyDay_005; @huangsiping3-->
@@ -2099,7 +2099,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 ## UpgradeTaskCallback
 
-(eventInfo: EventInfo): void
+type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 事件回调。
 
@@ -2162,7 +2162,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | LIVE          | 2    | 热升级。  |
 | LIVE_AND_COLD | 3    | 融合升级。 |
 
-## OtaMode<sup>20+</sup>
+## OtaMode<sup>22</sup>
 
 升级模式。
 
