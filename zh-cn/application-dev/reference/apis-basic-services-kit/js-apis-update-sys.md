@@ -1546,7 +1546,7 @@ restorer.factoryReset().then(() => {
 });
 ```
 
-### forceFactoryReset<sup>23</sup>
+### forceFactoryReset<sup>23+</sup>
 
 forceFactoryReset(): Promise\<void>
 
@@ -1905,7 +1905,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | size            | number                              | 否 | 否 | 升级包大小，单位为B。    |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
-| otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | 否 | 是 | 升级模式。     |
+| otaMode<sup>22+</sup> | [OtaMode](#otamode22)                 | 否 | 是 | 升级模式。     |
 
 ## DescriptionOptions
 
@@ -2162,7 +2162,7 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | LIVE          | 2    | 热升级。  |
 | LIVE_AND_COLD | 3    | 融合升级。 |
 
-## OtaMode<sup>22</sup>
+## OtaMode<sup>22+</sup>
 
 升级模式。
 
