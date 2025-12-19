@@ -58,6 +58,10 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 ```
 <!-- @[display_soloist_import_module_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
 
+``` C++
+#include <native_display_soloist/native_display_soloist.h>
+```
+
 ### 开发步骤
 
 1. 定义ArkTS接口文件XComponentContext.ts，用来对接Native层。
