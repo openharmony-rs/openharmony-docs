@@ -93,6 +93,32 @@
 
 5. 开始每帧回调。
    <!-- @[display_sync_start_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
+   Button('Start')
+     .id('CustomDrawStart')
+     .fontSize(14)
+     .fontWeight(500)
+     .margin({ bottom: 10, left: 5 })
+     .fontColor(Color.White)
+     .onClick((): void => {
+       if (this.backDisplaySyncSlow == undefined) {
+         this.CreateDisplaySyncSlow();
+       }
+       if (this.backDisplaySyncFast == undefined) {
+         this.CreateDisplaySyncFast();
+       }
+       if (this.backDisplaySyncSlow) {
+         this.backDisplaySyncSlow.start();
+       }
+       if (this.backDisplaySyncFast) {
+         this.backDisplaySyncFast.start();
+       }
+     })
+     .width('20%')
+     .height(40)
+     .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+   ```
 
    > **说明：**
    >
