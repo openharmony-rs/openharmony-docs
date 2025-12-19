@@ -21,7 +21,7 @@ import wifi from '@ohos.wifi';
 ```
 
 
-## wifi.isWifiActive
+## wifi.isWifiActive<sup>deprecated</sup>
 
 isWifiActive(): boolean
 
@@ -30,6 +30,9 @@ isWifiActive(): boolean
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
+
+>**说明：**
+>从API version 9开始废弃。建议使用[wifimanager.iswifiactive](js-apis-wifiManager.md#wifimanageriswifiactive)替代。
 
 **返回值：**
 
