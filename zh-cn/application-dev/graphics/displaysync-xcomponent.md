@@ -182,6 +182,46 @@
 
 5. TS层注册和取消注册每帧回调。
    <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
+   
+   ``` TypeScript
+   Row() {
+     Button('Start')
+       .id('Start')
+       .fontSize(14)
+       .fontWeight(500)
+       .margin({ bottom: 20, right: 6, left: 6 })
+       .onClick(() => {
+         if (this.xComponentContext1) {
+           this.xComponentContext1.register();
+         }
+         if (this.xComponentContext2) {
+           this.xComponentContext2.register();
+         }
+       })
+       .width('30%')
+       .height(40)
+       .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+   
+     Button('Stop')
+       .id('Stop')
+       .fontSize(14)
+       .fontWeight(500)
+       .margin({ bottom: 20, left: 6 })
+       .onClick(() => {
+         if (this.xComponentContext1) {
+           this.xComponentContext1.unregister();
+         }
+         if (this.xComponentContext2) {
+           this.xComponentContext2.unregister();
+         }
+       })
+       .width('30%')
+       .height(40)
+       .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+   
+     // ...
+   }
+   ```
 
 <!--RP1-->
 ## 相关实例
