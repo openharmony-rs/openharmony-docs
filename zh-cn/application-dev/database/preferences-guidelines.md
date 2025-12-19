@@ -172,6 +172,27 @@ libohpreferences.so
    ```
    调用OH_Preferences_RegisterDataObserver注册3个Key的数据变更订阅。
    <!--@[RegisterDataObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   
+   ``` C++
+   // 3. 对key_int、key_bool和key_string注册数据变更订阅。
+   const char *keys[] = {"key_int", "key_bool", "key_string"};
+   int ret = OH_Preferences_RegisterDataObserver(preference, nullptr, DataChangeObserverCallback, keys, 3);
+   if (ret != PREFERENCES_OK) {
+       (void)OH_Preferences_Close(preference);
+       // 错误处理
+   }
+   // 兼容多种类型的注册数据变更订阅。
+   int contextData = 42;
+   ret = OH_Preferences_RegisterMultiProcessDataObserver(preference, &contextData, DataChangeObserverCallback);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   // 取消兼容多种类型的注册数据变更订阅。
+   ret = OH_Preferences_UnregisterMultiProcessDataObserver(preference, &contextData, DataChangeObserverCallback);
+   if (ret != PREFERENCES_OK) {
+       // 错误处理
+   }
+   ```
 4. 设置Preferences实例中的键值数据。
    <!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 ``` C++
