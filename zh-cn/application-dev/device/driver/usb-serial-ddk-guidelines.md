@@ -155,13 +155,13 @@ libusb_serial_ndk.z.so
    ``` C++
    // 设置软件流控
    OH_UsbSerial_SetFlowControl(dev, USB_SERIAL_SOFTWARE_FLOW_CONTROL);
-   
+       
    // 清空缓冲区
    OH_UsbSerial_Flush(dev);
-   
+       
    // 清空输入缓冲区
    OH_UsbSerial_FlushInput(dev);
-   
+       
    // 清空输出缓冲区
    OH_UsbSerial_FlushOutput(dev);
    ```
