@@ -334,14 +334,14 @@ HiDebug提供了启停[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/be
 
 ## 添加诊断信息到崩溃上下文
 
-HiDebug提供添加维测信息的接口，开发者可根据业务需要将维测信息添加到当前崩溃日志中。
+HiDebug提供添加维测信息的接口，开发者可根据业务需要将维测信息添加到崩溃日志中，若程序发生崩溃，可在当前崩溃日志中找到该维测信息。
 
 ### 接口说明（C/C++）
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| OH_HiDebug_SetCrashObj | 将崩溃时的维测信息添加到当前崩溃日志中。<br/>**说明**：从API version 23开始，支持该接口。 |
-| OH_HiDebug_ResetCrashObj | 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。<br/>**说明**：从API version 23开始，支持该接口。 |
+| OH_HiDebug_SetCrashObj | 将维测信息添加到当前崩溃日志中。<br/>**说明**：从API version 23开始，支持该接口。 |
+| OH_HiDebug_ResetCrashObj | 与OH_HiDebug_SetCrashObj配对使用，将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态，若未与OH_HiDebug_SetCrashObj配对使用，可能导致多次使用OH_HiDebug_SetCrashObj时，崩溃日志中的维测信息非期望值。<br/>**说明**：从API version 23开始，支持该接口。 |
 
 ## 其他
 
