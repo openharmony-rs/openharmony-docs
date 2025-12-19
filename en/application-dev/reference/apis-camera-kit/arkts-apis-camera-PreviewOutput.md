@@ -584,26 +584,3 @@ function stopPreviewOutput(previewOutput: camera.PreviewOutput): void {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
