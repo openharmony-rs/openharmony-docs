@@ -28,6 +28,10 @@
 
    CMakeLists.txt中添加以下lib。
    <!-- @[display_sync_add_lib](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/CMakeLists.txt) -->
+   
+   ``` Text
+   target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnative_window.so libace_ndk.z.so)
+   ```
 
    ``` Text
    target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnative_window.so libace_ndk.z.so)
