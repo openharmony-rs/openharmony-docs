@@ -249,14 +249,14 @@ libhid.z.so
 
        <!-- @[driver_hid_report_step4_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
-        ``` C++
-        // nonblock取值：1启用非阻塞，0禁用非阻塞
-        ret = OH_Hid_SetNonBlocking(DataParser::GetInstance().getHidObject(), nonblockTag);
-        if (ret != HID_DDK_SUCCESS) {
-            OH_LOG_ERROR(LOG_APP, "OH_Hid_SetNonBlocking failed. ret: %{public}u", ret);
-            return false;
-        }
-        ```
+       ``` C++
+       // nonblock取值：1启用非阻塞，0禁用非阻塞
+       ret = OH_Hid_SetNonBlocking(DataParser::GetInstance().getHidObject(), nonblockTag);
+       if (ret != HID_DDK_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_Hid_SetNonBlocking failed. ret: %{public}u", ret);
+           return false;
+       }
+       ```
 
 
      - 使用 **hid_ddk_api.h** 的 **OH_Hid_Read** 或者 **OH_Hid_ReadTimeout** 以非阻塞模式或者阻塞模式从HID设备读取一个输入报告。
