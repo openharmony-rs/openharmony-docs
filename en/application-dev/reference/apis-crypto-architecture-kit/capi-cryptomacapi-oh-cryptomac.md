@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoMac OH_CryptoMac
+```
+
 ## Overview
 
 Defines a struct for a message authentication code (MAC).
