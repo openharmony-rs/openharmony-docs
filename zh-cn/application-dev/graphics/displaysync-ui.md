@@ -124,6 +124,19 @@
    >
    > 创建的DisplaySync实例在start使能后需要aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
    <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
+   aboutToDisappear() {
+     if (this.backDisplaySyncSlow) {
+       this.backDisplaySyncSlow.stop();
+       this.backDisplaySyncSlow = undefined;
+     }
+     if (this.backDisplaySyncFast) {
+       this.backDisplaySyncFast.stop();
+       this.backDisplaySyncFast = undefined;
+     }
+   }
+   ```
 
 6. 结束每帧回调。
    <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
