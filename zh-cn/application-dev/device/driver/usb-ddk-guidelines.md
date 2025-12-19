@@ -95,7 +95,7 @@ libusb_ndk.z.so
    // 初始化USB DDK
    int32_t ret = OH_Usb_Init();
    OH_LOG_INFO(LOG_APP, "OH_Usb_Init ret=:%{public}d\n", ret);
-   // ···
+   // ...
    struct UsbDeviceDescriptor devDesc;
    // 获取设备描述符
    ret = OH_Usb_GetDeviceDescriptor(g_devHandle, &devDesc);
