@@ -385,7 +385,7 @@ if (flag) {
   
 4. switch语句中的调用
 
-    例如
+    例如：
   
     ```js
     switch (value) {
@@ -448,6 +448,7 @@ if (flag) {
 ### -enable-bytecode-obfuscation-debugging
 
 控制字节码混淆是否输出调试信息，开启后会生成混淆日志，请参考[混淆效果](bytecode-obfuscation-guide.md#查看混淆效果)，默认不开启。
+
 需要在已配置`-enable-bytecode-obfuscation`的基础上使用。
 
 ## 保留选项
