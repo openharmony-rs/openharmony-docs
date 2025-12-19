@@ -106,7 +106,10 @@ import IIdlTestObserver from "./i_idl_test_observer"
 ```
 
 ### 数组类型
-数组类型使用“T[]”表示，其中T可以是基本数据类型、sequenceable数据类型、interface类型和数组类型。该类型在C++生成代码中将被生成为std::vector&lt;T&gt;类型。
+数组类型使用“T[]”表示，其中T可以是基本数据类型、sequenceable数据类型、interface类型和数组类型。
+
+该类型在C++生成代码中将被生成为std::vector&lt;T&gt;类型。
+
 OpenHarmony IDL数组数据类型与TS数据类型、C++数据类型的对应关系如下表所示：
 
 |OpenHarmony IDL数据类型  | C++数据类型           | TS数据类型     |
@@ -136,6 +139,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 ```
 
 其中，<*interface_attr_declaration*>表示接口属性声明。当前仅支持“oneway”属性，表示该接口中的接口都是单向方法，即调用方法后不用等待该方法执行即可返回。这个属性为可选项，如果未声明该属性，则默认为同步调用方法。接口名需要包含完整的接口头文件目录及命名空间，且必须包含方法声明，不允许出现空接口。
+
 接口内的方法声明形式为：
 
 ```
@@ -143,6 +147,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 ```
 
 其中，<*method_attr_declaration*>表示接口属性说明。当前仅支持“oneway”属性，表示该方法为单向方法，即调用方法后不用等待该方法执行即可返回。这个属性为可选项，如果未声明该属性，则默认为同步调用方法。<*result_type*>为返回值类型，<*method_declaration*>是方法名和各个参数声明。
+
 参数声明的形式为：
 
 ```
@@ -159,6 +164,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 ### 方法二：
 首先，打开DevEco Studio—>Tools—>SDK Manager，查看OpenHarmony SDK的本地安装路径，此处以DevEco Studio 3.0.0.993版本为例，查看方式如下图所示。
+
 ![SDKpath](./figures/SDKpath.png)
 ![SDKpath](./figures/SDKpath2.png)
 
@@ -585,6 +591,7 @@ interface OHOS.AAFwk.IQuickFixManager {
 6. 在BUILD.gn中添加模板文件的外部依赖。
 
    模板文件的外部依赖需要自己添加到external_deps里。
+
    若之前已存在，不需要重复添加，若重复添加会导致编译错误。
 
    ```bash

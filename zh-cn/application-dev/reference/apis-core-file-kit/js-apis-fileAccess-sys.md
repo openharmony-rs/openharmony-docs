@@ -615,6 +615,7 @@ FileAccessHelper对象。
 getRoots() : Promise&lt;RootIterator&gt;
 
 以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用Promise异步回调。
+
 该方法返回迭代器对象RootIterator，然后通过[next](#next-1)方法返回[RootInfo](#rootinfo)。
 
 **系统接口**：此接口为系统接口。
@@ -669,6 +670,7 @@ async function getRoots() {
 getRoots(callback:AsyncCallback&lt;RootIterator&gt;) : void
 
 以异步方法获取helper对象连接的文件管理服务类的设备根节点信息。使用callback异步回调。
+
 callback带回迭代器对象RootIterator，然后通过[next](#next-1)方法返回[RootInfo](#rootinfo)。
 
 **系统接口**：此接口为系统接口。

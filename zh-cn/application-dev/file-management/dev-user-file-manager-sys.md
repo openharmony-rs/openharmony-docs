@@ -13,6 +13,7 @@ OpenHarmony预置了FileManager文件管理器。系统应用开发者也可以�
 开发用户文件管理器的相关API详细介绍请参见[API参考](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md)。
 
 1. 权限配置和导入模块。
+
    申请ohos.permission.FILE_ACCESS_MANAGER和ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
    > **说明：**
@@ -31,6 +32,7 @@ OpenHarmony预置了FileManager文件管理器。系统应用开发者也可以�
    其中fileAccess提供了文件基础操作的API，fileExtensionInfo提供了应用开发的关键结构体。
 
 3. 查询设备列表。
+
    开发者可以获取当前系统所有文件管理服务端管理的设备属性，也可以获取某个文件管理服务端管理的设备属性。应用开发者可以按需过滤设备。
 
    在文件访问框架中，使用RootInfo用于表示设备的属性信息。以下示例可以获取所有设备的RootInfo。
@@ -81,6 +83,7 @@ OpenHarmony预置了FileManager文件管理器。系统应用开发者也可以�
    ```
 
 4. 浏览目录。
+
    在文件访问框架中，使用FileInfo表示一个文件（目录）的基础信息。开发者可以使用listfile接口遍历下一级所有文件（目录）的迭代器对象；也可以通过scanfile过滤指定目录，获取满足条件的迭代器对象。
 
     listfile和scanfile接口当前支持RootInfo对象调用，可用于支撑遍历下一级文件或过滤整个目录树。同时，接口也支持FileInfo对象调用，用于支撑遍历下一级文件或过滤指定目录。
@@ -139,6 +142,7 @@ OpenHarmony预置了FileManager文件管理器。系统应用开发者也可以�
    ```
 
 5. 操作文件或目录。
+
    开发者可以集成文件访问框架的接口，完成一些用户行为，比如删除文件（目录）、重命名文件（目录）、新建文件（目录）、移动文件（目录）等。以下示例展示了如何创建一个文件，其他接口请参见[API参考](../reference/apis-core-file-kit/js-apis-fileAccess-sys.md)。
 
    ```ts
