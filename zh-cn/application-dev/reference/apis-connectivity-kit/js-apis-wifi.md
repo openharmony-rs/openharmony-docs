@@ -53,13 +53,16 @@ try {
 }
 ```
 
-## wifi.scan
+## wifi.scan<sup>deprecated</sup>
 
 scan(): boolean
 
 启动WLAN扫描。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.LOCATION
+
+>**说明：**
+> - 从API version 9开始废弃。建议使用[wifimanager.scan](js-apis-wifiManager.md#wifimanagerscandeprecated)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -81,7 +84,7 @@ try {
 }
 ```
 
-## wifi.getScanInfos
+## wifi.getScanInfos<sup>deprecated</sup>
 
 getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
@@ -89,6 +92,9 @@ getScanInfos(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 ohos.permission.LOCATION)
 ohos.permission.GET_WIFI_PEERS_MAC权限仅系统应用可申请。
+
+>**说明：**
+> - 从API version 9开始废弃。建议使用[wifimanager.getScanInfos](js-apis-wifiManager.md#wifimanagergetScanInfoList10)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -139,7 +145,7 @@ wifi.getScanInfos().then(result => {
 ```
 
 
-## WifiScanInfo
+## WifiScanInfo<sup>deprecated</sup>
 
 WLAN热点信息。
 
@@ -148,15 +154,15 @@ WLAN热点信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
-| bssid | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
-| capabilities | string | 否 | 否 | 热点能力。 |
-| securityType | [WifiSecurityType](#wifisecuritytype) | 否 | 否 | WLAN加密类型。 |
-| rssi | number | 否 | 否 | 热点的信号强度(dBm)。 |
-| band | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHZ；2表示5GHZ。|
-| frequency | number | 否 | 否 | WLAN接入点的频率。 |
-| channelWidth | number | 否 | 否 | WLAN接入点的带宽。 |
-| timestamp | number | 否 | 否 | 时间戳。 |
+| ssid<sup>9+</sup> | string | 否 | 否 | 热点的SSID，最大长度为32字节，编码格式为UTF-8。 |
+| bssid<sup>9+</sup> | string | 否 | 否 | 热点的BSSID，例如：00:11:22:33:44:55。 |
+| capabilities<sup>9+</sup> | string | 否 | 否 | 热点能力。 |
+| securityType<sup>9+</sup> | [WifiSecurityType](#wifisecuritytype) | 否 | 否 | WLAN加密类型。 |
+| rssi<sup>9+</sup> | number | 否 | 否 | 热点的信号强度(dBm)。 |
+| band<sup>9+</sup> | number | 否 | 否 | WLAN接入点的频段。1表示2.4GHZ；2表示5GHZ。|
+| frequency<sup>9+</sup> | number | 否 | 否 | WLAN接入点的频率。 |
+| channelWidth<sup>9+</sup> | number | 否 | 否 | WLAN接入点的带宽。 |
+| timestamp<sup>9+</sup> | number | 否 | 否 | 时间戳。 |
 
 
 ## WifiSecurityType
