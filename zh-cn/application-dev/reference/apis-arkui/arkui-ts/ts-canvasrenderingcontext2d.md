@@ -2953,7 +2953,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
 
 drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh: number): void
 
-将图像裁剪后拉伸或压缩绘制。
+将图像拉伸或压缩绘制。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用，卡片中不支持PixelMap对象。
 
