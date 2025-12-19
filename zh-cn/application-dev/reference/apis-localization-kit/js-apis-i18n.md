@@ -4143,7 +4143,6 @@ getSystemLocale(): string
 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[System.getSystemLocale](#getsystemlocaledeprecated)代替。
 
-
 获取系统区域ID。
 
 **系统能力：** SystemCapability.Global.I18n
