@@ -276,4 +276,4 @@ WebViewController与Web组件的绑定状态。
 | x  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域左上角x坐标。    |
 | y  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形区域左上角y坐标。    |
 | width  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形的宽度。 <br/>单位：px。    |
-| height  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形的高度。 <br>单位：px    |
+| height  | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 否   | 否   | 矩形的高度。 <br/>单位：px。    |
