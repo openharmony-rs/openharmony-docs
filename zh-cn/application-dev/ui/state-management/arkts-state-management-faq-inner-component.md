@@ -64,7 +64,6 @@ struct Index {
   build() {
     Column() {
       Text(`${this.message++}`)
-
       Text(`${this.message++}`)
     }
     .height('100%')
@@ -358,10 +357,8 @@ struct ConsumerChild {
 <!-- @[state_problem_complex_solution_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets) -->
 
 ``` TypeScript
-import { UIUtils } from '@ohos.arkui.StateManagement';
+import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const DOMAIN = 0x0000;
 
 class DataObj {
   public name: string = 'default name';
@@ -395,7 +392,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   build() {
@@ -579,9 +576,11 @@ struct Parent {
 class Translate {
   public translateX: number = 20;
 }
+
 @Component
 struct Title {
   @ObjectLink translateObj: Translate;
+
   build() {
     Row() {
       // $r('app.media.background')需要替换为开发者所需的资源文件。
@@ -589,7 +588,7 @@ struct Title {
         .width(50)
         .height(50)
         .translate({
-          x:this.translateObj.translateX // this.translateObj.translateX 绑定在Image和Text组件上。
+          x: this.translateObj.translateX // this.translateObj.translateX 绑定在Image和Text组件上。
         })
       Text('Title')
         .fontSize(20)
@@ -599,6 +598,7 @@ struct Title {
     }
   }
 }
+
 @Entry
 @Component
 struct Page {
@@ -615,18 +615,18 @@ struct Page {
       .width(200)
       .height(400)
       .translate({
-        x:this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
+        x: this.translateObj.translateX //this.translateObj.translateX 绑定在Stack和Button组件上。
       })
       Button('move')
         .translate({
-          x:this.translateObj.translateX
+          x: this.translateObj.translateX
         })
         .onClick(() => {
           this.getUIContext().animateTo({
             duration: 50
-          },()=>{
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
+          }, () => {
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+          });
         })
     }
   }
@@ -644,6 +644,7 @@ struct Page {
 class PageTranslate {
   public translateX: number = 20;
 }
+
 @Component
 struct PageTitle {
   build() {
@@ -657,6 +658,7 @@ struct PageTitle {
     }
   }
 }
+
 @Entry
 @Component
 struct Page1 {
@@ -674,12 +676,13 @@ struct Page1 {
         .onClick(() => {
           this.getUIContext().animateTo({
             duration: 50
-          },()=>{
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
+          }, () => {
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+          });
         })
     }
-    .translate({ // 子组件Stack和Button设置了同一个translate属性，可以统一到Column上设置。
+    .translate({
+      // 子组件Stack和Button设置了同一个translate属性，可以统一到Column上设置。
       x: this.translateObj.translateX
     })
   }
@@ -880,6 +883,7 @@ struct Index {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -1030,6 +1034,7 @@ struct MyComponent {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -1117,6 +1122,7 @@ class MyDataSource extends BasicDataSource {
 class StringData {
   @Track public message: string;
   @Track public imgSrc: Resource;
+
   constructor(message: string, imgSrc: Resource) {
     this.message = message;
     this.imgSrc = imgSrc;
@@ -1185,6 +1191,7 @@ struct ChildComponent {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 
@@ -1247,6 +1254,7 @@ struct Page {
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 const DOMAIN_NUMBER: number = 0XFF00;
 const TAG: string = '[Sample_StateManagement]';
 

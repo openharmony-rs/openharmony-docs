@@ -158,7 +158,10 @@ struct PlayDetailPage {
 
   build() {
     Stack() {
-      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Text(this.vm.coverUrl)
+        .width(100)
+        .height(100)
+        .backgroundColor(this.vm.coverUrl)
       Row() {
         Button('Change Color')
           .onClick(() => {
@@ -200,7 +203,10 @@ struct PlayDetailPage {
 
   build() {
     Stack() {
-      Text(this.vm.coverUrl).width(100).height(100).backgroundColor(this.vm.coverUrl)
+      Text(this.vm.coverUrl)
+        .width(100)
+        .height(100)
+        .backgroundColor(this.vm.coverUrl)
       Row() {
         Button('Change Color')
           .onClick(() => {

@@ -1798,7 +1798,7 @@ V1：
 <!-- @[Internal_Common_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV1.ets) -->
 
 ``` TypeScript
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { CommonModifier } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1868,8 +1868,7 @@ V2：
 <!-- @[Internal_Common_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV2.ets) -->
 
 ``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { UIUtils, CommonModifier } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -1944,7 +1943,7 @@ V1：
 <!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) -->
 
 ``` TypeScript
-import { TextModifier } from '@ohos.arkui.modifier';
+import { TextModifier } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -2022,8 +2021,7 @@ V2：
 <!-- @[Internal_Module_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets) -->
 
 ``` TypeScript
-import { UIUtils } from '@kit.ArkUI';
-import { TextModifier } from '@ohos.arkui.modifier';
+import { UIUtils, TextModifier } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
