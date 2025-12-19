@@ -52,6 +52,12 @@
    导入头文件。
 
    <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   #include <native_drawing/drawing_font_collection.h>
+   #include <native_drawing/drawing_text_typography.h>
+   #include <native_drawing/drawing_register_font.h>
+   ```
 
 
 4. 创建字体管理器。
