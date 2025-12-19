@@ -140,6 +140,26 @@
 
 6. 结束每帧回调。
    <!-- @[display_sync_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
+   Button('Stop')
+     .id('CustomDrawStop')
+     .fontSize(14)
+     .fontWeight(500)
+     .margin({ bottom: 10, left: 5 })
+     .fontColor(Color.White)
+     .onClick((): void => {
+       if (this.backDisplaySyncSlow) {
+         this.backDisplaySyncSlow.stop();
+       }
+       if (this.backDisplaySyncFast) {
+         this.backDisplaySyncFast.stop();
+       }
+     })
+     .width('20%')
+     .height(40)
+     .shadow(ShadowStyle.OUTER_DEFAULT_LG)
+   ```
 
 <!--RP1-->
 ## 相关实例
