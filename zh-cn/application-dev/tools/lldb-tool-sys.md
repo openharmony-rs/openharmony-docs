@@ -176,6 +176,7 @@ lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system�
 ### 使用LLDB工具启动并调试应用
 
    此处以在Linux x86_64环境下，调试一个使用Clang编译器生成的、带有调试信息的可执行文件a.out为例。
+   
    源文件：hello.cpp
 ```cpp
 #include <iostream>
@@ -238,6 +239,7 @@ int main() {
 **使用LLDB工具调试已经启动的应用。**
 
 此处以手机环境调试使用clang编译器生成的带有调试信息的可执行文件a.out为例。
+
 源文件：hello.cpp
 
 ```cpp

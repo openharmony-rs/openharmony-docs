@@ -198,7 +198,7 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 onPreDrag(callback: Callback\<PreDragStatus>): T
 
-绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。此接口不支持在鼠标拖拽中触发。
+绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。拖拽发起前的各阶段可参考[PreDragStatus](#predragstatus12枚举说明)。此接口不支持在鼠标拖拽中触发。
 
 > **说明：**
 >

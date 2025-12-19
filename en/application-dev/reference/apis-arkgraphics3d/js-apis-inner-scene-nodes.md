@@ -400,8 +400,8 @@ A spotlight emits a conical beam of light in a specific direction, with the inte
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| innerAngle<sup>22+</sup> | number | No| Yes| Angle from the center of the spotlight to the start of the decay, corresponding to the semi-apex angle of the cone, within which the light intensity does not decay with angle. It is represented in radians. The default value is **0**. The value must be greater than or equal to **0** and less than or equal to **outerAngle**.|
-| outerAngle<sup>22+</sup> | number | No| Yes| Angle from the center of the spotlight to the end of the decay, corresponding to the semi-apex angle of the cone, beyond which there is no light intensity. It is represented in radians. The default value is **PI/4**. The value must be greater than or equal to **innerAngle** and less than or equal to **PI/2**.|
+| innerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the start of the decay, corresponding to the semi-apex angle of the cone, within which the light intensity does not decay with angle. It is represented in radians. The default value is **0**. The value must be greater than or equal to **0** and less than or equal to **outerAngle**.|
+| outerAngle<sup>23+</sup> | number | No| Yes| Angle from the center of the spotlight to the end of the decay, corresponding to the semi-apex angle of the cone, beyond which there is no light intensity. It is represented in radians. The default value is **PI/4**. The value must be greater than or equal to **innerAngle** and less than or equal to **PI/2**.|
 
 > **NOTE**
 > 
