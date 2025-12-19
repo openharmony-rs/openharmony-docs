@@ -12,7 +12,7 @@
 > Media Library Kit提供图片和视频的管理能力，当需要读取和保存音频文件时，请使用[AudioViewPicker（音频选择器对象）](../../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)。
 
 1. 导入选择器模块和文件管理模块。
-
+   <!-- @[PickerMediaLibrary_import](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
    ```ts
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { fileIo } from '@kit.CoreFileKit';
@@ -21,6 +21,7 @@
 
 2. 创建图片-音频类型文件选择选项实例。
 
+   <!-- @[PickerMediaLibrary_createOptions](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
    ```ts
    const photoSelectOptions = new photoAccessHelper.PhotoSelectOptions();
    ```
@@ -28,6 +29,7 @@
 3. 配置可选的媒体文件类型和媒体文件的最大数目。
    以下示例以图片选择为例，媒体文件类型请参见[PhotoViewMIMETypes](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photoviewmimetypes)。
 
+   <!-- @[PickerMediaLibrary_configOptions](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
    ```ts
    photoSelectOptions.MIMEType = photoAccessHelper.PhotoViewMIMETypes.IMAGE_TYPE; // 过滤选择媒体文件类型为IMAGE。
    photoSelectOptions.maxSelectNumber = 5; // 选择媒体文件的最大数目。
@@ -35,6 +37,7 @@
 
 4. 创建图库选择器实例，调用[PhotoViewPicker.select](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)接口拉起图库界面进行文件选择。文件选择成功后，返回[PhotoSelectResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectresult)结果集。
 
+   <!-- @[PickerMediaLibrary_select](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
    ```ts
    let uris: Array<string> = [];
    const photoViewPicker = new photoAccessHelper.PhotoViewPicker();
@@ -56,6 +59,7 @@
 
 1. 待界面从图库返回后，再通过一个类似按钮的组件去调用其他函数，使用[fileIo.openSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过[媒体文件uri](../../file-management/user-file-uri-intro.md#媒体文件uri)打开这个文件得到fd。这里需要注意接口权限参数是fileIo.OpenMode.READ_ONLY。
 
+   <!-- @[PickerMediaLibrary_openFile](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
    ```ts
    try {
      let uri: string = '';
@@ -68,6 +72,7 @@
 
 2. 通过fd使用[fileIo.readSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#readsync)接口读取这个文件内的数据，读取完成后关闭fd。
 
+   <!-- @[PickerMediaLibrary_readFileData](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
    ```ts
    try {
      // buffer为缓冲区长度，由开发者自定义。
@@ -86,6 +91,7 @@
 
 1. 定义媒体资源处理器[MediaAssetDataHandler](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetDataHandler.md)，系统在资源准备就绪时向应用回调onDataPrepared。
 
+   <!-- @[PickerMediaLibrary_handler](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
    ```ts
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { dataSharePredicates } from '@kit.ArkData';
@@ -107,6 +113,7 @@
    > **注意：**
    > 出于对用户隐私安全的保护，对媒体资源EXIF中的地理位置和拍摄参数信息做了去隐私化处理。如果需要获取被去隐私化的EXIF信息，需要[申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.MEDIA_LOCATION'。
 
+   <!-- @[PickerMediaLibrary_getMediaResource](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/common/utils/MediaLibraryPickerUtils.ets) -->
    ```ts 
    async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
      let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
