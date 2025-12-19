@@ -170,6 +170,15 @@
    }
    ```
    <!-- @[display_sync_napi_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
+   
+   ``` C++
+   napi_value SampleXComponent::NapiUnregister(napi_env env, napi_callback_info info)
+   {
+       // ...
+           OH_NativeXComponent_UnregisterOnFrameCallback(nativeXComponent);
+           // ...
+   }
+   ```
 
 5. TS层注册和取消注册每帧回调。
    <!-- @[display_sync_start_and_stop_per_frame_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
