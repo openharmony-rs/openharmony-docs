@@ -2528,26 +2528,106 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets",
-				"functions":[
-					{
-						"end_line":138,
-						"name":"arkts_multi_language_text",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multilanguage/MultilanguageText.ets",
 				"functions":[
 					{
-						"end_line":153,
-						"name":"arkts_multi_line_text",
-						"start_line":16
+						"end_line":26,
+						"name":"arkts_multi_language_text_drawing_step1",
+						"start_line":23
+					},
+					{
+						"end_line":40,
+						"name":"arkts_multi_language_text_drawing_step2",
+						"start_line":28
+					},
+					{
+						"end_line":46,
+						"name":"arkts_multi_language_text_drawing_step3",
+						"start_line":42
+					},
+					{
+						"end_line":54,
+						"name":"arkts_multi_language_text_drawing_step4",
+						"start_line":47
+					},
+					{
+						"end_line":62,
+						"name":"arkts_multi_language_text_drawing_step5",
+						"start_line":55
 					}
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/multiline/MultilineText.ets",
+				"functions":[
+					{
+						"end_line":26,
+						"name":"arkts_multi_line_text_drawing_step1",
+						"start_line":23
+					},
+					{
+						"end_line":40,
+						"name":"arkts_multi_line_text_drawing_step2",
+						"start_line":28
+					},
+					{
+						"end_line":52,
+						"name":"arkts_multi_line_text_drawing_step3",
+						"start_line":42
+					},
+					{
+						"end_line":62,
+						"name":"arkts_multi_line_text_drawing_step4",
+						"start_line":53
+					},
+					{
+						"end_line":77,
+						"name":"arkts_multi_line_text_drawing_step5",
+						"start_line":70
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample1.ets",
 				"functions":[
 					{
 						"end_line":160,
@@ -2557,7 +2637,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample2.ets",
 				"functions":[
 					{
 						"end_line":177,
@@ -2567,7 +2647,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample3.ets",
 				"functions":[
 					{
 						"end_line":142,
@@ -2577,7 +2657,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample4.ets",
 				"functions":[
 					{
 						"end_line":152,
@@ -2587,7 +2667,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample5.ets",
 				"functions":[
 					{
 						"end_line":138,
@@ -2597,7 +2677,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample6.ets",
 				"functions":[
 					{
 						"end_line":140,
@@ -2607,7 +2687,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample7.ets",
 				"functions":[
 					{
 						"end_line":142,
@@ -2617,7 +2697,7 @@
 				]
 			},
 			{
-				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/ArkGraphics2D/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets",
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/ComplexTextDrawing/entry/src/main/ets/pages/complexStyle/ComplexStyleExample8.ets",
 				"functions":[
 					{
 						"end_line":140,
