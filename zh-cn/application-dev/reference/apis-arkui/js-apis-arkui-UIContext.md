@@ -3600,7 +3600,7 @@ struct MyStateSample {
 }
 ```
 
-### setImageCacheCount<sup>22+</sup>
+### setImageCacheCount<sup>23+</sup>
 
 ArkTS-Dyn: setImageRawDataCacheSize(value: number): void
 
@@ -3612,13 +3612,13 @@ setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-ar
 
 setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3682,7 +3682,7 @@ struct Index {
 }
 ```
 
-### setImageRawDataCacheSize<sup>22+</sup>
+### setImageRawDataCacheSize<sup>23+</sup>
 
 ArkTS-Dyn: setImageRawDataCacheSize(value: number): void
 
@@ -3692,13 +3692,13 @@ ArkTS-Sta: setImageRawDataCacheSize(value: int): void
 
 setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
