@@ -13,6 +13,7 @@
 > **说明**
 >
 >ArkWeb抛滑丢帧事件仅提供发生卡顿的Web组件对应的web_id，最长丢帧时长等数据，不提供卡顿日志等信息，需应用自身结合信息获取卡顿页面结合业界成熟的[DevTools工具](../web/web-debugging-with-devtools.md)复现并排查页面问题。
+> 从API version 23开始，ArkWeb抛滑丢帧事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
 
 
 
@@ -25,10 +26,6 @@ ArkWeb在渲染绘制完成之后会生成buffer，并将生成的buffer送至�
 开发者可以通过HiAppEvent提供接口订阅ArkWeb抛滑丢帧事件“SCROLL_ARKWEB_FLING_JANK”，系统检测到ArkWeb抛滑卡顿后，会抓取维测信息通过HiAppEvent将ArkWeb抛滑丢帧数据回调给应用进程。
 
 - [订阅ArkWeb抛滑丢帧事件（ArkTS）](hiappevent-watcher-web-fling-jank-events-arkts.md)
-
-> **说明：**
->
-> 从API version 23开始，ArkWeb抛滑丢帧事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
 
 ## params字段说明
 
