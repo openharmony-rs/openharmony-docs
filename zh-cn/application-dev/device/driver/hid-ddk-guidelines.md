@@ -263,14 +263,14 @@ libhid.z.so
 
        <!-- @[driver_hid_report_step4_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
-        ``` C++
-        if (nonblock) {
-            ret = OH_Hid_Read(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff), &bytesRead);
-        } else {
-            ret = OH_Hid_ReadTimeout(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff),
-                                     CONST_TIMEOUT, &bytesRead);
-        }
-        ```
+       ``` C++
+       if (nonblock) {
+           ret = OH_Hid_Read(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff), &bytesRead);
+       } else {
+           ret = OH_Hid_ReadTimeout(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff),
+                                    CONST_TIMEOUT, &bytesRead);
+       }
+       ```
 
 
      - 使用 **hid_ddk_api.h** 的 **OH_Hid_GetReport** 从HID设备读取一个输入报告。
