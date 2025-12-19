@@ -52,15 +52,15 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 
 |  装饰器类别  |                            装饰器                            |
 | :----------: | :----------------------------------------------------------: |
-| 组件内装饰器 | \@State、\@Prop、\@Link、\@ObjectLink、\@Provide、\@Consume、\@StorageProp、\@StorageLink、\@LocalStorageProp、\@LocalStorageLink、\@Watch |
+| 组件内装饰器 | [\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)、[\@ObjectLink](./arkts-observed-and-objectlink.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Consume](./arkts-provide-and-consume.md)、[\@StorageProp](./arkts-appstorage.md)、[\@StorageLink](./arkts-appstorage.md)、[\@LocalStorageProp](./arkts-localstorage.md)、[\@LocalStorageLink](./arkts-localstorage.md)、[\@Watch](./arkts-watch.md) |
 | 类相关装饰器 |                     \@Observed、\@Track                      |
 
 ### 状态管理V2的装饰器
 
 |  装饰器类别  |                            装饰器                            |
 | :----------: | :----------------------------------------------------------: |
-| 组件内装饰器 | \@Local、\@Param、\@Provider、\@Consumer、\@Once、\@Event、\@Monitor、\@Computed |
-| 类相关装饰器 |                \@ObservedV2、\@Trace、\@Type                 |
+| 组件内装饰器 | [\@Local](./arkts-new-local.md)、[\@Param](./arkts-new-param.md)、[\@Provider](./arkts-new-provider-and-consumer.md)、[\@Consumer](./arkts-new-provider-and-consumer.md)、[\@Once](./arkts-new-once.md)、[\@Event](./arkts-new-event.md)、[\@Monitor](./arkts-new-monitor.md)、[\@Computed](./arkts-new-computed.md) |
+| 类相关装饰器 |                [\@ObservedV2](./arkts-new-observedV2-and-trace.md)、[\@Trace](./arkts-new-observedV2-and-trace.md)、[\@Type](./arkts-new-type.md)                 |
 
 ### 状态管理装饰器支持的数据类型总览
 
