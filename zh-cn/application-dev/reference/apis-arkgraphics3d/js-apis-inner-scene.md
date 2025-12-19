@@ -1301,7 +1301,7 @@ function CloneNode() {
     .then(async (result: Scene) => {
       let node = result.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube") as Node;
       let parent = result.root as Node;
-      let name = "cloneNode_"
+      let name = "cloneNode_";
       let clone = result.cloneNode(node, parent, name);
       if (clone) {
         clone.position.x = 5;
