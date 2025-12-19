@@ -42,6 +42,11 @@
 3. 使用getGlobalInstance()接口获取全局字体集对象，系统框架在注册主题字体过程中仅会将主题字体信息传入全局字体集对象中。
 
    <!-- @[arkts_theme_font_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取字体管理器全局FontCollection实例
+   let fontCollection = text.FontCollection.getGlobalInstance();
+   ```
 
 4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例，用于生成段落。
    > **说明：**
