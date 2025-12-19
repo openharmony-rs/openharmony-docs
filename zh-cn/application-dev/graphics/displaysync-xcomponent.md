@@ -179,6 +179,28 @@
 
 4. Native层配置帧率和注册回调函数。
    <!-- @[display_sync_napi_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
+   
+   ``` C++
+   static void TestCallback(OH_NativeXComponent *component, uint64_t timestamp, uint64_t targetTimestamp)
+   {
+       // ...
+       
+       int32_t xSize = OH_NativeXComponent_GetXComponentSize(component, nativeWindow, &width, &height);
+       if ((xSize == OH_NATIVEXCOMPONENT_RESULT_SUCCESS) && (render != nullptr)) {
+           render->Prepare();
+           render->Create();
+           if (id == "xcomponentId_30") {
+               int offset = 16;
+               render->ConstructPath(offset, offset, render->defaultOffsetY);
+           }
+           if (id == "xcomponentId_120") {
+               int offset = 4;
+               render->ConstructPath(offset, offset, render->defaultOffsetY);
+           }
+           // ...
+       }
+   }
+   ```
 
    ``` C++
    static void TestCallback(OH_NativeXComponent *component, uint64_t timestamp, uint64_t targetTimestamp)
