@@ -30,13 +30,13 @@ Tid:15894, Name:e.myapplication
 - 以下定位问题的思路，可作为参考：   
 1. 排查是否存在多线程安全问题（概率较大）。   
 
-DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。 
+   DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。 
 
-[常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
 
-DevEco Studio开关：   
+   DevEco Studio开关：   
 
-![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
+   ![DevEco Studio多线程开关](figures/zh_cn_image_20-25-06-40-15-09.png)   
 2. 使用Node-API接口时入参非法导致。   
 - 这种情况一般是崩溃栈上的so会很浅，so调用了某个具体的Node-API接口，比如调用了napi_call_function之类的接口，然后Node-API又调到了libark_jsruntime的so，然后直接崩溃在libark_jsruntime里面。  
 
@@ -84,9 +84,9 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 - 排查建议：  
 1. 确认是否napi_value出了scope还在使用，导致use-after-scope问题。  
 
-可参考文档：
+ 	可参考文档：
 
-[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
+	[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
 
 2. 保存时建议使用napi_ref，而不是直接保存napi_value。
 
