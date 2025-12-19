@@ -705,7 +705,7 @@ blur(radius: number): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -794,7 +794,7 @@ blur(radius: number, tileMode: TileMode): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -872,7 +872,7 @@ invert(): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -963,7 +963,7 @@ setColorMatrix(colorMatrix: Array\<number>): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -1055,7 +1055,7 @@ brightness(bright: number): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
@@ -1137,7 +1137,7 @@ grayscale(): Filter
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';	
+import { image } from '@kit.ImageKit';
 import { effectKit } from '@kit.ArkGraphics2D';
 import { common } from '@kit.AbilityKit';
 // 传入读取的图片数据
