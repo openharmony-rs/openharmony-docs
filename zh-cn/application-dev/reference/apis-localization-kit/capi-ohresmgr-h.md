@@ -861,7 +861,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetIntPluralStringByName(const Nati
 | const char *resName | 资源名称。 |
 | uint32_t num |  数量值（整数）。根据当前语言的复数规则获取该数量值对应的字符串数字。 |
 | char **resultValue | 写入resultValue的结果。 |
-| [](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#).[](capi-ohresmgr-h.md#) | 格式化字符串资源参数，可变参数，支持const char*、int、float类型。 |
+| ...| 格式化字符串资源参数，可变参数，支持const char*、int、float类型。 |
 
 **返回：**
 
