@@ -643,9 +643,6 @@ function GetViewMatrix(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
     .then(async (result: Scene) => {
-      if (!result.root) {
-        return;
-      }
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
       let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
       // 创建相机
@@ -683,9 +680,6 @@ function GetProjectionMatrix(): void {
   // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
   Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
     .then(async (result: Scene) => {
-      if (!result.root) {
-        return;
-      }
       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
       let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
       // 创建相机
