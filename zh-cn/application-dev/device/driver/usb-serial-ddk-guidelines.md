@@ -136,11 +136,11 @@ libusb_serial_ndk.z.so
    params.parity = 0;
    // 设置串口参数
    OH_UsbSerial_SetParams(dev, &params);
-   
+       
    // 设置波特率
    uint32_t baudRate = NUM_BAUDRATE;
    OH_UsbSerial_SetBaudRate(dev, baudRate);
-   
+       
    // 设置超时时间
    int timeout = 500;
    OH_UsbSerial_SetTimeout(dev, timeout);
