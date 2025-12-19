@@ -67,8 +67,6 @@ EGLint minorVersion;
 EGLNativeWindowType win;
 display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
 eglInitialize(display, &majorVersion, &minorVersion);
-display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-eglInitialize(display, &majorVersion, &minorVersion);
 EGLint attribs[] = {
     EGL_RENDERABLE_TYPE,
     EGL_OPENGL_ES2_BIT,
