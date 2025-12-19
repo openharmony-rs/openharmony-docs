@@ -38,6 +38,24 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
 **头文件**
 <!-- @[display_soloist_import_module_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.h) -->
+
+``` C
+#include <ace/xcomponent/native_interface_xcomponent.h>
+#include <arpa/nameser.h>
+#include <bits/alltypes.h>
+#include <native_window/external_window.h>
+#include <native_drawing/drawing_bitmap.h>
+#include <native_drawing/drawing_color.h>
+#include <native_drawing/drawing_canvas.h>
+#include <native_drawing/drawing_pen.h>
+#include <native_drawing/drawing_brush.h>
+#include <native_drawing/drawing_path.h>
+#include <cstdint>
+#include <map>
+#include <sys/mman.h>
+#include <string>
+#include "napi/native_api.h"
+```
 <!-- @[display_soloist_import_module_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
 
 ### 开发步骤
