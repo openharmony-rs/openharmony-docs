@@ -31,6 +31,29 @@ Text('60')
 定义按钮组件的显式动画，请求绘制帧率为30，范例如下：
 <!-- @[display_sync_explicit_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/PropertyAnimationDisplaySync.ets) -->
 
+``` TypeScript
+Button('Start')
+  // ...
+  .onClick(() => {
+    // ...
+
+    this.uiContext?.animateTo({
+      duration: 1200,
+      iterations: 10,
+      // ...
+      expectedFrameRateRange: {
+        expected: 30,
+        min: 0,
+        max: 120,
+      },
+    }, () => {
+      // ...
+    })
+
+    // ...
+  })
+```
+
 <!--RP1-->
 ## 相关实例
 
