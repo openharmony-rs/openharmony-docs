@@ -55,7 +55,7 @@ Obtains a full-quality image.
 | Name| Description|
 | -- | -- |
 | [OH_PhotoNative](capi-oh-camera-oh-photonative.md)* photo | Pointer to an OH_PhotoNative instance.|
-| [OH_ImageNative](../apis-image-kit/capi-image-imagenative-.md)** mainImage | Double pointer to the full-quality image, which is an OH_ImageNative instance.|
+| [OH_ImageNative](../apis-image-kit/capi-image-nativemodule-oh-imagenative.md)** mainImage | Double pointer to the full-quality image, which is an OH_ImageNative instance.|
 
 **Returns**
 
