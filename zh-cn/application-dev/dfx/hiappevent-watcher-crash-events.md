@@ -22,7 +22,7 @@
 
 > **说明：**
 >
-> 崩溃事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)和原子化服务场景下使用HiAppEvent进行订阅。从API version 22开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用HiAppEvent进行订阅。
+> 崩溃事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)，原子化服务和[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用HiAppEvent进行订阅。
 
 ## 检测原理
 
