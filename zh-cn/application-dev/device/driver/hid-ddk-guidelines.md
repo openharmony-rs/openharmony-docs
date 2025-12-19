@@ -293,18 +293,18 @@ libhid.z.so
 
        <!-- @[driver_hid_report_step4_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
-        ``` C++
-        uint8_t dataBuff[NUM_EIGHT] = { 0x00 };
-        // 指定报告编号
-        dataBuff[0] = 0x07;
-        // 读取特性报告
-        int32_t ret = OH_Hid_GetReport(DataParser::GetInstance().getHid2Object(), HID_FEATURE_REPORT, dataBuff,
-                                       sizeof(dataBuff));
-        if (ret != HID_DDK_SUCCESS) {
-            OH_LOG_ERROR(LOG_APP, "OH_Hid_GetReport failed. ret: %{public}u", ret);
-            return nullptr;
-        }
-        ```
+       ``` C++
+       uint8_t dataBuff[NUM_EIGHT] = { 0x00 };
+       // 指定报告编号
+       dataBuff[0] = 0x07;
+       // 读取特性报告
+       int32_t ret = OH_Hid_GetReport(DataParser::GetInstance().getHid2Object(), HID_FEATURE_REPORT, dataBuff,
+                                      sizeof(dataBuff));
+       if (ret != HID_DDK_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_Hid_GetReport failed. ret: %{public}u", ret);
+           return nullptr;
+       }
+       ```
 
 5. 获取设备原始信息、原始名称、物理地址、原始唯一标识符（可选）。
 
