@@ -32,7 +32,7 @@ isWifiActive(): boolean
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 >**说明：**
->从API version 9开始废弃。建议使用[wifimanager.iswifiactive](js-apis-wifiManager.md#wifimanageriswifiactive)替代。
+> - 从API version 9开始废弃。建议使用[wifimanager.iswifiactive](js-apis-wifiManager.md#wifimanageriswifiactive)替代。
 
 **返回值：**
 
