@@ -14,6 +14,10 @@
 
 1. 导入模块。
    <!-- @[display_sync_by_ui_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
+   import { displaySync } from '@kit.ArkGraphics2D';
+   ```
 
 2. 定义和构建DisplaySync对象。
    <!-- @[display_sync_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
