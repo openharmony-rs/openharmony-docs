@@ -65,7 +65,6 @@
      unregister(): void;
    };
    ```
-   ```
 
 2. 定义ArkTS接口文件XComponentContext.ts，用来对接Native层。
    <!-- @[display_sync_export_interface_xcomponent_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/interface/XComponentContext.ts) -->
