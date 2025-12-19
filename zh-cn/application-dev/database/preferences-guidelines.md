@@ -133,43 +133,43 @@ libohpreferences.so
    ```
 3. 订阅回调函数为DataChangeObserverCallback。
    <!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-// 数据变更回调函数
-void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count)
-{
-    for (uint32_t i = 0; i < count; i++) {
-        // 获取索引i对应的PreferenceValue
-        const OH_PreferencesValue *pValue = OH_PreferencesPair_GetPreferencesValue(pairs, i);
-        // 获取PreferencesValue的数据类型
-        Preference_ValueType type = OH_PreferencesValue_GetValueType(pValue);
-        int ret = PREFERENCES_OK;
-        if (type == PREFERENCE_TYPE_INT) {
-            int intValue = 0;
-            ret = OH_PreferencesValue_GetInt(pValue, &intValue);
-            if (ret == PREFERENCES_OK) {
-                // 业务逻辑
-            }
-        } else if (type == PREFERENCE_TYPE_BOOL) {
-            bool boolValue = true;
-            ret = OH_PreferencesValue_GetBool(pValue, &boolValue);
-            if (ret == PREFERENCES_OK) {
-                // 业务逻辑
-            }
-        } else if (type == PREFERENCE_TYPE_STRING) {
-            char *stringValue = nullptr;
-            uint32_t valueLen = 0;
-            ret = OH_PreferencesValue_GetString(pValue, &stringValue, &valueLen);
-            if (ret == PREFERENCES_OK) {
-                // 业务逻辑
-                OH_Preferences_FreeString(stringValue);
-            }
-        } else {
-            // 无效类型
-        }
-    }
-}
-```
+   
+   ``` C++
+   // 数据变更回调函数
+   void DataChangeObserverCallback(void *context, const OH_PreferencesPair *pairs, uint32_t count)
+   {
+       for (uint32_t i = 0; i < count; i++) {
+           // 获取索引i对应的PreferenceValue
+           const OH_PreferencesValue *pValue = OH_PreferencesPair_GetPreferencesValue(pairs, i);
+           // 获取PreferencesValue的数据类型
+           Preference_ValueType type = OH_PreferencesValue_GetValueType(pValue);
+           int ret = PREFERENCES_OK;
+           if (type == PREFERENCE_TYPE_INT) {
+               int intValue = 0;
+               ret = OH_PreferencesValue_GetInt(pValue, &intValue);
+               if (ret == PREFERENCES_OK) {
+                   // 业务逻辑
+               }
+           } else if (type == PREFERENCE_TYPE_BOOL) {
+               bool boolValue = true;
+               ret = OH_PreferencesValue_GetBool(pValue, &boolValue);
+               if (ret == PREFERENCES_OK) {
+                   // 业务逻辑
+               }
+           } else if (type == PREFERENCE_TYPE_STRING) {
+               char *stringValue = nullptr;
+               uint32_t valueLen = 0;
+               ret = OH_PreferencesValue_GetString(pValue, &stringValue, &valueLen);
+               if (ret == PREFERENCES_OK) {
+                   // 业务逻辑
+                   OH_Preferences_FreeString(stringValue);
+               }
+           } else {
+               // 无效类型
+           }
+       }
+   }
+   ```
    调用OH_Preferences_RegisterDataObserver注册3个Key的数据变更订阅。
    <!--@[RegisterDataObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 4. 设置Preferences实例中的键值数据。
