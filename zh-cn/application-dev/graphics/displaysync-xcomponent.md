@@ -55,7 +55,14 @@
    ```
    <!-- @[display_sync_import_module_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
    
+  
+   <!-- @[display_sync_export_interface_xcomponent_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/interface/XComponentContext.ts) -->
+   
    ``` C++
+
+   ```
+
+2. 定义ArkTS接口文件XComponentContext.ts，用来对接Native层。
    <!-- @[display_sync_export_interface_xcomponent_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/interface/XComponentContext.ts) -->
    
    ``` TypeScript
@@ -65,9 +72,6 @@
      unregister(): void;
    };
    ```
-
-2. 定义ArkTS接口文件XComponentContext.ts，用来对接Native层。
-   <!-- @[display_sync_export_interface_xcomponent_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/interface/XComponentContext.ts) -->
 
 3. 定义演示页面，包含两个XComponent组件。
    <!-- @[display_sync_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/XComponentDisplaySync.ets) -->
