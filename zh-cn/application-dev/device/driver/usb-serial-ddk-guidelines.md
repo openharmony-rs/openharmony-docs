@@ -178,7 +178,7 @@ libusb_serial_ndk.z.so
    uint8_t writeBuff[NUM_EIGHT] = {0x01, 0x03, 0x00, 0x00, 0x00, 0x01, 0x84, 0xA};
    // 发送数据
    OH_UsbSerial_Write(dev, writeBuff, sizeof(writeBuff), &bytesWritten);
-   
+       
    // 接收数据
    uint8_t readBuff[100];
    uint32_t bytesRead = 0;
