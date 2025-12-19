@@ -297,11 +297,11 @@ libohpreferences.so
 
 6. 调用OH_Preferences_Close关闭Preferences实例，关闭后需要将实例指针置空。
    <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
-``` C++
-// 6. 使用完Preferences实例后需要关闭实例，关闭后需要将指针置空。
-(void)OH_Preferences_Close(preference);
-preference = nullptr;
-
-```
+   
+   ``` C++
+   // 6. 使用完Preferences实例后需要关闭实例，关闭后需要将指针置空。
+   (void)OH_Preferences_Close(preference);
+   preference = nullptr;
+   ```
 7. 设置和获取OH_PreferencesValue数据。
    <!--@[PreferencesValueSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
