@@ -203,7 +203,7 @@ libscsi.z.so
 
 10. 写入数据（可选）。
 
-   使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Write10** 写数据到设备指定逻辑块。
+    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Write10** 写数据到设备指定逻辑块。
 
    <!-- @[driver_scsi_step10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
@@ -223,7 +223,7 @@ libscsi.z.so
 
 12. 以CDB方式发送SCSI命令（可选）。
 
-   使用 **scsi_peripheral_api.h** 的 **OH_SCSIPeripheral_SendRequestByCdb** 发送SCSI命令。
+    使用 **scsi_peripheral_api.h** 的 **OH_SCSIPeripheral_SendRequestByCdb** 发送SCSI命令。
 
    <!-- @[driver_scsi_step12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
@@ -233,7 +233,7 @@ libscsi.z.so
 
 13. 销毁缓冲区（可选）。
 
-   在所有请求处理完毕，程序退出前，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_DestroyDeviceMemMap** 销毁缓冲区。
+    在所有请求处理完毕，程序退出前，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_DestroyDeviceMemMap** 销毁缓冲区。
 
    <!-- @[driver_scsi_step13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
@@ -243,7 +243,7 @@ libscsi.z.so
 
 14. 关闭设备。
 
-   在销毁缓冲区后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Close** 关闭设备。
+    在销毁缓冲区后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Close** 关闭设备。
 
    <!-- @[driver_scsi_step14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
@@ -253,7 +253,7 @@ libscsi.z.so
 
 15. 释放DDK。
 
-   在关闭SCSI设备后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Release** 释放SCSI Peripheral DDK。
+    在关闭SCSI设备后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Release** 释放SCSI Peripheral DDK。
 
    <!-- @[driver_scsi_step15](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
