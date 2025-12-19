@@ -250,6 +250,103 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
    > - 实例在调用NapiRegister后，在不需要进行帧率控制时，应进行NapiUnregister操作，避免内存泄漏问题。
    > - 在页面跳转时，应进行NapiUnregister和NapiDestroy操作，避免内存泄漏问题。
    <!-- @[display_soloist_napi_register_and_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
+   
+   ``` C++
+   static std::unordered_map<std::string, OH_DisplaySoloist *> g_displaySync;
+   
+   // ...
+   
+   void ExecuteDisplaySoloist(std::string id, DisplaySoloist_ExpectedRateRange range, bool useExclusiveThread,
+                              OH_NativeXComponent *nativeXComponent)
+   {
+       OH_DisplaySoloist *nativeDisplaySoloist = nullptr;
+       if (g_displaySync.find(id) == g_displaySync.end()) {
+           g_displaySync[id] = OH_DisplaySoloist_Create(useExclusiveThread);
+       }
+       nativeDisplaySoloist = g_displaySync[id];
+       OH_DisplaySoloist_SetExpectedFrameRateRange(nativeDisplaySoloist, &range);
+       OH_DisplaySoloist_Start(nativeDisplaySoloist, TestCallback, nativeXComponent);
+   }
+   
+   napi_value SampleXComponent::NapiRegister(napi_env env, napi_callback_info info)
+   {
+       // ...
+   
+       napi_value thisArg;
+       if (napi_get_cb_info(env, info, nullptr, nullptr, &thisArg, nullptr) != napi_ok) {
+           SAMPLE_LOGE("NapiRegister: napi_get_cb_info fail");
+           return nullptr;
+       }
+   
+       napi_value exportInstance;
+       if (napi_get_named_property(env, thisArg, OH_NATIVE_XCOMPONENT_OBJ, &exportInstance) != napi_ok) {
+           SAMPLE_LOGE("NapiRegister: napi_get_named_property fail");
+           return nullptr;
+       }
+   
+       OH_NativeXComponent *nativeXComponent = nullptr;
+       if (napi_unwrap(env, exportInstance, reinterpret_cast<void **>(&nativeXComponent)) != napi_ok) {
+           SAMPLE_LOGE("NapiRegister: napi_unwrap fail");
+           return nullptr;
+       }
+   
+       char idStr[OH_XCOMPONENT_ID_LEN_MAX + 1] = {'\0'};
+       uint64_t idSize = OH_XCOMPONENT_ID_LEN_MAX + 1;
+       if (OH_NativeXComponent_GetXComponentId(nativeXComponent, idStr, &idSize) != OH_NATIVEXCOMPONENT_RESULT_SUCCESS) {
+           SAMPLE_LOGE("NapiRegister: Unable to get XComponent id");
+           return nullptr;
+       }
+       SAMPLE_LOGI("RegisterID = %{public}s", idStr);
+       std::string id(idStr);
+       SampleXComponent *render = SampleXComponent().GetInstance(id);
+       if (render != nullptr) {
+           DisplaySoloist_ExpectedRateRange range;
+           bool useExclusiveThread = false;
+           if (id == "xcomponentId30") {
+               range = {30, 120, 30};
+           }
+   
+           if (id == "xcomponentId120") {
+               range = {30, 120, 120};
+           }
+           ExecuteDisplaySoloist(id, range, useExclusiveThread, nativeXComponent);
+       }
+       return nullptr;
+   }
+   
+   napi_value SampleXComponent::NapiUnregister(napi_env env, napi_callback_info info)
+   {
+       // ...
+           OH_DisplaySoloist_Stop(g_displaySync[id]);
+           // ...
+   }
+   
+   napi_value SampleXComponent::NapiDestroy(napi_env env, napi_callback_info info)
+   {
+       // ...
+           OH_DisplaySoloist_Destroy(g_displaySync[id]);
+           g_displaySync.erase(id);
+           // ...
+   }
+   
+   // ...
+   
+   void SampleXComponent::Export(napi_env env, napi_value exports)
+   {
+       if ((env == nullptr) || (exports == nullptr)) {
+           SAMPLE_LOGE("Export: env or exports is null");
+           return;
+       }
+       napi_property_descriptor desc[] = {
+           {"register", nullptr, SampleXComponent::NapiRegister, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"unregister", nullptr, SampleXComponent::NapiUnregister, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"destroy", nullptr, SampleXComponent::NapiDestroy, nullptr, nullptr, nullptr, napi_default, nullptr}};
+   
+       if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
+           SAMPLE_LOGE("Export: napi_define_properties failed");
+       }
+   }
+   ```
 
 5. TS层注册和取消注册每帧回调，销毁OH_DisplaySoloist实例。
    <!-- @[display_soloist_disappear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/ets/pages/Index.ets) -->
