@@ -424,12 +424,12 @@
    **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[Call调用开发指南（同设备）](../application-models/uiability-intra-device-interaction.md#通过call调用实现uiability交互仅对系统应用开放)和[Call调用开发指南（跨设备）](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
    <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
-
+   
    ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg';
- 
+   
    let mContext: Context;
-
+   
    function startContinuousTask() {
      let wantAgentInfo : wantAgent.WantAgentInfo = {
        // 点击通知后，将要执行的动作列表
@@ -446,7 +446,7 @@
        // 点击通知后，动作执行属性
        actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
      };
-
+   
      // 通过wantAgent模块的getWantAgent方法获取WantAgent对象
      // 在原子化服务中，使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
@@ -458,7 +458,7 @@
        });
      });
    }
-
+   
    function stopContinuousTask() {
      backgroundTaskManager.stopBackgroundRunning(mContext).then(() => {
        console.info(`Succeeded in operationing stopBackgroundRunning.`);
@@ -466,29 +466,29 @@
        console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
      });
    }
-
+   
    class MyParcelable implements rpc.Parcelable {
-     private num: number = 0;
-     private str: string = '';
-
+     public num: number = 0;
+     public str: string = '';
+   
      constructor(num: number, str: string) {
        this.num = num;
        this.str = str;
      }
-
+   
      marshalling(messageSequence: rpc.MessageSequence) {
        messageSequence.writeInt(this.num);
        messageSequence.writeString(this.str);
        return true;
      }
-
+   
      unmarshalling(messageSequence: rpc.MessageSequence) {
        this.num = messageSequence.readInt();
        this.str = messageSequence.readString();
        return true;
      }
    }
-
+   
    function sendMsgCallback(data: rpc.MessageSequence) {
      console.info('BgTaskAbility funcCallBack is called ' + data);
      let receivedData: MyParcelable = new MyParcelable(0, '');
@@ -504,27 +504,27 @@
      }
      return new MyParcelable(10, 'Callee test');
    }
-
+   
    export default class BgTaskAbility extends UIAbility {
      // Ability创建
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-       console.info("[Demo] BgTaskAbility onCreate");
+       console.info('[Demo] BgTaskAbility onCreate');
        try {
-         this.callee.on(MSG_SEND_METHOD, sendMsgCallback)
+         this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
        } catch (error) {
          console.error(`${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
        }
        mContext = this.context;
      }
-     
+   
      // Ability销毁
      onDestroy() {
        console.info('[Demo] BgTaskAbility onDestroy');
      }
-
+   
      onWindowStageCreate(windowStage: window.WindowStage) {
        console.info('[Demo] BgTaskAbility onWindowStageCreate');
-
+   
        windowStage.loadContent('pages/Index', (error, data) => {
          if (error.code) {
            console.error(`load content failed with error ${JSON.stringify(error)}`);
@@ -533,15 +533,15 @@
          console.info(`load content succeed with data ${JSON.stringify(data)}`);
        });
      }
-
+   
      onWindowStageDestroy() {
        console.info('[Demo] BgTaskAbility onWindowStageDestroy');
      }
-      
+   
      onForeground() {
        console.info('[Demo] BgTaskAbility onForeground');
      }
-
+   
      onBackground() {
        console.info('[Demo] BgTaskAbility onBackground');
      }
