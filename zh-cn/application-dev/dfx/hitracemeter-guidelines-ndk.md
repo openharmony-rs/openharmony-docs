@@ -31,7 +31,6 @@ HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调�
 >
 > [用户态trace格式](hitracemeter-view.md#用户态trace格式说明)使用竖线 | 作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，以防止trace解析异常。
 
-
 ### 接口分类
 
 HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异步时间片跟踪接口和整数跟踪接口。HiTraceMeter接口实现均为同步，同步和异步针对的是被跟踪的业务。同步业务使用同步时间片跟踪接口，异步业务使用异步时间片跟踪接口。HiTraceMeter打点接口可与[HiTraceChain](hitracechain-guidelines-ndk.md)一起使用，进行跨设备、跨进程或跨线程的打点关联与分析。
@@ -39,17 +38,22 @@ HiTraceMeter打点接口主要分为三类：同步时间片跟踪接口、异�
 
 ### 接口使用场景
 
-
 - 同步时间片跟踪接口
+
   用于顺序执行的打点场景，需按序成对使用OH_HiTrace_StartTraceEx()接口和OH_HiTrace_FinishTraceEx()接口，否则会导致trace文件在smartperf等可视化工具上显示异常。
 
 - 异步时间片跟踪接口
+
   在异步操作执行前调用OH_HiTrace_StartAsyncTraceEx()接口进行开始打点，在异步操作完成后调用OH_HiTrace_FinishAsyncTraceEx()接口进行结束打点。  
+
   解析trace时，通过name和taskId参数识别不同的异步跟踪。所以这两个接口必须按序成对使用，并传入相同的name和taskId。  
+
   不同的异步流程中应使用不同的name和taskId，但在异步跟踪流程不会同时发生的情况下，可以使用相同的name和taskId。  
+  
   调用错误会导致trace文件在smartperf等可视化工具上显示异常。
 
 - 整数跟踪接口
+
   用于跟踪整数变量。整数值变动时调用OH_HiTrace_CountTraceEx()接口，可在smartperf的泳道图中观察变动情况。由于从开始采集到首次打点存在时间差，这段时间的数值无法查看。
 
 
