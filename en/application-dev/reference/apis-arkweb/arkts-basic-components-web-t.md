@@ -285,7 +285,7 @@ Defines a callback triggered when the **param** element embedded in the same-lay
 
 | Name| Type| Mandatory| Description|
 |--------|------|------|------|
-| event | [NativeEmbedParamDataInfo](./arkts-basic-components-web-i.md#nativeembedparamdatainfo21) | Yes| Detailed information about the changes of the **param** element embedded in the **object** tag.|
+| event | NativeEmbedParamDataInfo | Yes| Detailed information about the changes of the **param** element embedded in the **object** tag.|
 
 **Example**
 

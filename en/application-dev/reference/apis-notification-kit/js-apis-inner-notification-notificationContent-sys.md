@@ -101,6 +101,8 @@ Describes the information of a system notification button.
 
 type IconType = Resource | image.PixelMap
 
+Describes the icon types.
+
 **System capability**: SystemCapability.Notification.Notification
 
 **System API**: This is a system API.

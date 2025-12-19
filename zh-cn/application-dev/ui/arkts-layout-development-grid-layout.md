@@ -327,32 +327,32 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 
     ```ts
-  let Gspan:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
-  GridCol({ span: 2 }){}
-  GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }){}
-  GridCol(){}.span(2)
-  GridCol(){}.span(Gspan)
+    let Gspan:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
+    GridCol({ span: 2 }){}
+    GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }){}
+    GridCol(){}.span(2)
+    GridCol(){}.span(Gspan)
     ```
 
 - 设置offset。
 
 
     ```ts
-  let Goffset:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
-  GridCol({ offset: 2, span: 1 }){}
-  GridCol({ offset: { xs: 2, sm: 2, md: 2, lg: 2 }, span: 1 }){}
-  GridCol({ span: 1 }){}.offset(Goffset) 
+    let Goffset:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
+    GridCol({ offset: 2, span: 1 }){}
+    GridCol({ offset: { xs: 2, sm: 2, md: 2, lg: 2 }, span: 1 }){}
+    GridCol({ span: 1 }){}.offset(Goffset) 
     ```
 
 - 设置order。
 
 
     ```ts
-  let Gorder:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
-  GridCol({ order: 2, span: 1 }){}
-  GridCol({ order: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }){}
-  GridCol({ span: 1 }){}.order(2)
-  GridCol({ span: 1 }){}.order(Gorder)
+    let Gorder:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
+    GridCol({ order: 2, span: 1 }){}
+    GridCol({ order: { xs: 1, sm: 2, md: 3, lg: 4 }, span: 1 }){}
+    GridCol({ span: 1 }){}.order(2)
+    GridCol({ span: 1 }){}.order(Gorder)
     ```
 
 
@@ -445,26 +445,31 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 - 当offset类型为number时，子组件偏移相同列数。
 
 
-    ```ts
+    ``` TypeScript
     @Entry
     @Component
-    struct Index {
+    struct OffsetNumberExample {
       @State bgColors: ResourceColor[] =
         ['rgb(213,213,213)', 'rgb(150,150,150)', 'rgb(0,74,175)', 'rgb(39,135,217)', 'rgb(61,157,180)', 'rgb(23,169,141)',
           'rgb(255,192,0)', 'rgb(170,10,33)'];
+
       build() {
-        GridRow() {
-          ForEach(this.bgColors, (color:ResourceColor, index?:number|undefined) => {
-            GridCol({ offset: 2, span: 1 }) {
-              Row() {
-                Text('' + index)
-              }.width('100%').height('50vp')
-            }
-            .backgroundColor(color)
-          })
-        }
+        Column() {
+          GridRow({ columns: 12 }) {
+            ForEach(this.bgColors, (color: ResourceColor, index?: number | undefined) => {
+              GridCol({ offset: 2, span: 1 }) {
+                Row() {
+                  Text('' + index)
+                }.width('100%').height('50vp')
+              }
+              .backgroundColor(color)
+            })
+          }
+
+          Blank().width('100%').height(150)
+        }.border({ color: 'rgb(39,135,217)', width: 2 })
       }
-    }                
+    }
     ```
 
     ![zh-cn_image_0000001563060705](figures/zh-cn_image_0000001563060705.png)
@@ -474,7 +479,7 @@ span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-con
 - 当offset类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，各个尺寸下数值可不同。
 
 
-     ``` TypeScript
+    ``` TypeScript
     @Entry
     @Component
     struct OffsetColumnOptionExample {

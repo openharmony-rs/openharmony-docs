@@ -226,7 +226,7 @@ Example 11: Execute test cases for a specified number of times.
 * Checking the test result
 
 1. During the test execution in the CLI, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -234,7 +234,7 @@ Example 11: Execute test cases for a specified number of times.
     OHOS_REPORT_STATUS: stream=
     OHOS_REPORT_STATUS: test=testExample
     OHOS_REPORT_STATUS_CODE: 1
-
+    
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -255,10 +255,10 @@ Example 11: Execute test cases for a specified number of times.
     | OHOS_REPORT_STATUS_CODE | Execution status of the current test case. **1**: The test case starts to be executed. **0**: The test case is successfully executed. **-1**: An error is reported during the test case execution. **-2**: The test case fails to be executed.|
     | OHOS_REPORT_STATUS: consuming | Time spent in executing the current test case, in milliseconds.|
 2. After the command execution is complete, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
-
+    
     OHOS_REPORT_RESULT: breakOnError model, Stopping whole test suite if one specific test case failed or error
     OHOS_REPORT_STATUS: taskconsuming=16029
     ```
@@ -597,7 +597,7 @@ Since@ohos/hypium 1.0.1, JSUnit supports the mock capability. For details about 
 
 **Mockit**
 
-Mockit is used to specify the instances and functions to be mocked.
+MockKit is used to specify the instances and functions to be mocked.
 | Name| Description                |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mocks a function in a class instance. Asynchronous functions are supported.                                                |
@@ -1078,7 +1078,7 @@ export default function staticTest() {
       let mocker: MockKit = new MockKit();
       // Mock method_1 of the ClassName object.
       let func_1: Function = mocker.mockFunc(ClassName, ClassName.method_1);
-      // It is expected that 'ock_data' is returned after the function is mocked.
+      // It is expected that 'mock_data' is returned after the function is mocked.
       when(func_1)(ArgumentMatchers.any).afterReturn('mock_data');
       let mock_result = ClassName.method_1();
       expect(mock_result).assertEqual('mock_data');// The assertion is successful.

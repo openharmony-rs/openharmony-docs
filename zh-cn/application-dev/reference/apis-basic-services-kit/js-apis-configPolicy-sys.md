@@ -7,7 +7,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
-配置策略提供按预先定义的定制配置层级获取对应定制配置目录和文件路径的能力。
+配置策略提供按系统预定义的定制配置层级获取对应目录和文件路径的能力。
 
 >  **说明：**
 >
@@ -25,19 +25,19 @@ import { configPolicy } from '@kit.BasicServicesKit';
 
 getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 
-使用callback形式返回指定文件名的最高优先级配置文件路径。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml，最终返回/sys_pod/etc/config.xml。
+获取指定文件名优先级最高的配置文件路径。使用callback异步回调。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml，最终返回优先级最高的是：/sys_pod/etc/config.xml。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
-| 参数名   | 类型                        | 必填 | 说明                                       |
-| -------- | --------------------------- | ---- | ------------------------------------------ |
-| relPath  | string                      | 是   | 配置文件名。                                 |
-| callback | AsyncCallback&lt;string&gt; | 是   | 异步回调，用于返回最高优先级配置文件的路径。 |
+| 参数名    | 类型                         | 必填 | 说明                                  |
+| -------- | --------------------------- | ---- | ------------------------------------ |
+| relPath  | string                      | 是   | 配置文件名。                           |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -51,11 +51,11 @@ getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
   import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
   let relpath: string = 'etc/config.xml';
-  configPolicy.getOneCfgFile(relpath, (error: BusinessError, value: string) => {
-    if (error == null) {
-      console.info('value is ' + value);
+  configPolicy.getOneCfgFile(relpath, (err: BusinessError, data: string) => {
+    if (err == null) {
+      console.info('data is ' + data);
     } else {
-      console.error('error: ' + error.code + ', ' + error.message);
+      console.error('err: ' + err.code + ', ' + err.message);
     }
   });
   ```
@@ -64,9 +64,9 @@ getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 
 getOneCfgFile(relPath: string): Promise&lt;string&gt;
 
-使用Promise形式返回指定文件名的最高优先级配置文件路径。
+获取指定文件名优先级最高的配置文件路径。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -74,19 +74,19 @@ getOneCfgFile(relPath: string): Promise&lt;string&gt;
 | ------- | ------ | ---- | ---------- |
 | relPath | string | 是   | 配置文件名。 |
 
-**错误码**：
+**返回值：**
+
+| 类型                   | 说明                     |
+| ---------------------- | ------------------------ |
+| Promise&lt;string&gt;  | Promise对象，返回优先级最高的配置文件路径。 |
+
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                       |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
-
-**返回值：**
-
-| 类型                   | 说明                     |
-| ---------------------- | ------------------------ |
-| Promise&lt;string&gt;  | 返回最高优先级配置文件的路径。 |
 
 **示例：**
 
@@ -112,19 +112,19 @@ getOneCfgFile(relPath: string): Promise&lt;string&gt;
 
 getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
-按优先级从低到高，使用callback形式返回指定文件名所有的文件列表。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml，最终返回/system/etc/config.xml, /sys_pod/etc/config.xml。
+获取指定文件名的所有文件列表，按优先级从低到高。使用callback异步回调。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
 | 参数名   | 类型                                     | 必填 | 说明                       |
 | -------- | ---------------------------------------- | ---- | -------------------------- |
 | relPath  | string                                   | 是   | 配置文件名。                 |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 异步回调，用于返回文件列表。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则err为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -137,11 +137,11 @@ getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
   ```ts
   import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
-  configPolicy.getCfgFiles('etc/config.xml', (error: BusinessError, value: Array<string>) => {
-    if (error == null) {
-      console.info('value is ' + value);
+  configPolicy.getCfgFiles('etc/config.xml', (err: BusinessError, data: Array<string>) => {
+    if (err == null) {
+      console.info('data is ' + data);
     } else {
-      console.error('error: ' + error.code + ', ' + error.message);
+      console.error('err: ' + err.code + ', ' + err.message);
     }
   });
   ```
@@ -150,9 +150,9 @@ getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 getCfgFiles(relPath: string): Promise&lt;Array&lt;string&gt;&gt;
 
-按优先级从低到高，使用Promise形式返回指定文件名所有的文件列表。
+获取指定文件名的所有文件列表，按优先级从低到高。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -160,19 +160,19 @@ getCfgFiles(relPath: string): Promise&lt;Array&lt;string&gt;&gt;
 | ------- | ------ | ---- | ---------- |
 | relPath | string | 是   | 配置文件名。 |
 
-**错误码**：
+**返回值：**
+
+| 类型                               | 说明     |
+| ---------------------------------- | -------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回文件列表。 |
+
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                       |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types.|
-
-**返回值：**
-
-| 类型                               | 说明     |
-| ---------------------------------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | 返回文件列表。 |
 
 **示例：**
 
@@ -198,17 +198,17 @@ getCfgFiles(relPath: string): Promise&lt;Array&lt;string&gt;&gt;
 
 getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
-使用callback形式返回配置层级目录列表。
+获取配置层级目录列表，按优先级从低到高。使用callback异步回调。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
 | 参数名   | 类型                                     | 必填 | 说明                               |
 | -------- | ---------------------------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 异步回调，用于返回配置层级目录列表。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取配置层级目录列表成功，err为undefined，data为获取到的配置层级目录列表；否则err为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -221,11 +221,11 @@ getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
   ```ts
   import { configPolicy, BusinessError } from '@kit.BasicServicesKit';
 
-  configPolicy.getCfgDirList((error: BusinessError, value: Array<string>) => {
-    if (error == null) {
-      console.info('value is ' + value);
+  configPolicy.getCfgDirList((err: BusinessError, data: Array<string>) => {
+    if (err == null) {
+      console.info('data is ' + data);
     } else {
-      console.error('error: ' + error.code + ', ' + error.message);
+      console.error('err: ' + err.code + ', ' + err.message);
     }
   });
   ```
@@ -234,15 +234,15 @@ getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 getCfgDirList(): Promise&lt;Array&lt;string&gt;&gt;
 
-使用Promise形式返回配置层级目录列表。
+获取配置层级目录列表，按优先级从低到高。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **返回值：**
 
 | 类型                               | 说明             |
 | ---------------------------------- | ---------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | 返回配置层级目录列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回配置层级目录列表。 |
 
 **示例：**
 
@@ -267,10 +267,10 @@ getCfgDirList(): Promise&lt;Array&lt;string&gt;&gt;
 
 getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;string&gt;)
 
-根据提供的跟随模式获取指定文件名的最高优先级配置文件路径，并使用callback形式返回。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml，且设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT，最终返回/sys_pod/etc/carrier/46060/etc/config.xml。
+根据提供的跟随模式获取指定文件名优先级最高的配置文件路径。使用callback异步回调。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT。最终返回的是：/sys_pod/etc/carrier/46060/etc/config.xml。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -278,9 +278,9 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&
 | ---------- | ----------------------------- | ---- | ------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                 |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                   |
-| callback   | AsyncCallback&lt;string&gt;   | 是   | 异步回调，用于返回最高优先级配置文件的路径。 |
+| callback   | AsyncCallback&lt;string&gt;   | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -295,11 +295,11 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
-    (error: BusinessError, value: string) => {
-      if (error == null) {
-        console.info('value is ' + value);
+    (err: BusinessError, data: string) => {
+      if (err == null) {
+        console.info('data is ' + data);
       } else {
-        console.error('error: ' + error.code + ', ' + error.message);
+        console.error('err: ' + err.code + ', ' + err.message);
       }
     });
 
@@ -309,10 +309,10 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&
 
 getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;string&gt;)
 
-根据提供的跟随模式获取指定文件名的最高优先级配置文件路径，并使用callback形式返回。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml，且设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"，最终返回/sys_pod/etc/carrier/46060/etc/config.xml。
+根据跟随模式获取指定文件优先级最高的配置文件路径。使用callback异步回调。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回的是：/sys_pod/etc/carrier/46060/etc/config.xml。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -320,10 +320,10 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback:
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 是   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时有效。 |
-| callback   | AsyncCallback&lt;string&gt;   | 是   | 异步回调，用于返回最高优先级配置文件的路径。             |
+| extra      | string                        | 是   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
+| callback   | AsyncCallback&lt;string&gt;   | 是   | 回调函数。当获取配置文件路径成功，err为undefined，data为获取到的优先级最高的配置文件路径；否则err为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -339,11 +339,11 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback:
   let relpath: string = 'etc/config.xml';
   let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
   configPolicy.getOneCfgFile(relpath, configPolicy.FollowXMode.USER_DEFINED, extra,
-    (error: BusinessError, value: string) => {
-      if (error == null) {
-        console.info('value is ' + value);
+    (err: BusinessError, data: string) => {
+      if (err == null) {
+        console.info('data is ' + data);
       } else {
-        console.error('error: ' + error.code + ', ' + error.message);
+        console.error('err: ' + err.code + ', ' + err.message);
       }
     });
   ```
@@ -352,9 +352,9 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback:
 
 getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise&lt;string&gt;
 
-根据提供的跟随模式获取指定文件名的最高优先级配置文件路径，并使用Promise形式返回。
+根据提供的跟随模式，获取指定文件名优先级最高的配置文件路径。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -362,21 +362,21 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时必填。 |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 
-**错误码**：
+**返回值：**
+
+| 类型                   | 说明                     |
+| ---------------------- | ------------------------ |
+| Promise&lt;string&gt;  | Promise对象，返回优先级最高的配置文件路径。 |
+
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                       |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
-
-**返回值：**
-
-| 类型                   | 说明                     |
-| ---------------------- | ------------------------ |
-| Promise&lt;string&gt;  | 返回最高优先级配置文件的路径。 |
 
 **示例：**
 
@@ -403,32 +403,31 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise
 
 getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): string
 
-根据提供的跟随模式返回指定文件名的最高优先级配置文件路径。
+根据提供的跟随模式，获取指定文件名优先级最高的配置文件路径。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
 | 参数名     | 类型                          | 必填 | 说明                                                 |
 | ---------- | ----------------------------- | ---- | ----------------------------------------------------|
 | relPath    | string                        | 是   | 配置文件名。                                           |
-| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用DEFAULT。                    |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时必填。 |
+| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用[DEFAULT](#followxmode11)。                    |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 
-**错误码**：
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ------------------------ |
+| string | 返回优先级最高的配置文件路径。 |
+
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                       |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
-
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| string | 返回最高优先级配置文件的路径。 |
-
 
 **示例：**
 
@@ -451,10 +450,10 @@ getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): st
 
 getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
-按优先级从低到高，根据提供的跟随模式获取指定文件名所有的文件列表，并使用callback形式返回。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml，且设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT，最终返回/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
+根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用callback异步回调。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -462,9 +461,9 @@ getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt
 | ---------- | ---------------------------------------- | ---- | -------------------------- |
 | relPath    | string                                   | 是   | 配置文件名。                 |
 | followMode | [FollowXMode](#followxmode11)            | 是   | 跟随模式。                   |
-| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 异步回调，用于返回文件列表。 |
+| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则err为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -479,11 +478,11 @@ getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt
 
   let relpath: string = 'etc/config.xml';
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT,
-    (error: BusinessError, value: Array<string>) => {
-      if (error == null) {
-        console.info('value is ' + value);
+    (err: BusinessError, data: Array<string>) => {
+      if (err == null) {
+        console.info('data is ' + data);
       } else {
-        console.error('error: ' + error.code + ', ' + error.message);
+        console.error('err: ' + err.code + ', ' + err.message);
       }
     });
   ```
@@ -492,10 +491,10 @@ getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt
 
 getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
-按优先级从低到高，根据提供的跟随模式获取指定文件名所有的文件列表，并使用callback形式返回。
-例如，config.xml在设备中存在以下路径（优先级从低到高）：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml，且设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"，最终返回/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
+根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用callback异步回调。
+例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -503,10 +502,10 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: A
 | ---------- | ---------------------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                                   | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11)            | 是   | 跟随模式。                                               |
-| extra      | string                                   | 是   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时有效。 |
-| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 异步回调，用于返回文件列表。                             |
+| extra      | string                                   | 是   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
+| callback   | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。当获取文件列表成功，err为undefined，data为获取到的文件列表；否则err为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
@@ -522,11 +521,11 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: A
   let relpath: string = 'etc/config.xml';
   let extra: string = 'etc/carrier/${telephony.sim.opkey0}';
   configPolicy.getCfgFiles(relpath, configPolicy.FollowXMode.SIM_DEFAULT, extra,
-    (error: BusinessError, value: Array<string>) => {
-      if (error == null) {
-        console.info('value is ' + value);
+    (err: BusinessError, data: Array<string>) => {
+      if (err == null) {
+        console.info('data is ' + data);
       } else {
-        console.error('error: ' + error.code + ', ' + error.message);
+        console.error('err: ' + err.code + ', ' + err.message);
       }
     });
   ```
@@ -535,9 +534,9 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: A
 
 getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&lt;Array&lt;string&gt;&gt;
 
-根据提供的跟随模式按优先级从低到高，获取指定文件名所有的文件列表，并使用Promise形式返回。
+根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用Promise异步回调。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -545,21 +544,21 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&l
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
 | followMode | [FollowXMode](#followxmode11) | 是   | 跟随模式。                                               |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时必填。 |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 
-**错误码**：
+**返回值：**
+
+| 类型                               | 说明     |
+| ---------------------------------- | -------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回文件列表。 |
+
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                       |
 | ------- | ---------------------------------------------------------------------------- |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
-
-**返回值：**
-
-| 类型                               | 说明     |
-| ---------------------------------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | 返回文件列表。 |
 
 **示例：**
 
@@ -586,25 +585,17 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&l
 
 getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Array&lt;string&gt;
 
-根据提供的跟随模式返回指定文件名所有的文件列表。
+根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
 | 参数名     | 类型                          | 必填 | 说明                                                   |
 | ---------- | ----------------------------- | ---- | ------------------------------------------------------ |
 | relPath    | string                        | 是   | 配置文件名。                                             |
-| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用DEFAULT。                    |
-| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为USER_DEFINED时必填。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                                       |
-| ------- | ---------------------------------------------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
+| followMode | [FollowXMode](#followxmode11) | 否   | 跟随模式，不设置时，默认使用[DEFAULT](#followxmode11)。                    |
+| extra      | string                        | 否   | 用户自定义跟随规则，仅在followMode为[USER_DEFINED](#followxmode11)时有效。 |
 
 **返回值：**
 
@@ -612,6 +603,13 @@ getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Arra
 | ------------------- | -------- |
 | Array&lt;string&gt; | 返回文件列表。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| ------- | ---------------------------------------------------------------------------- |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.|
 
 **示例：**
 
@@ -634,9 +632,9 @@ getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Arra
 
 getCfgDirListSync(): Array&lt;string&gt;
 
-返回配置层级目录列表。
+获取配置层级目录列表，按优先级从低到高。
 
-**系统能力**：SystemCapability.Customization.ConfigPolicy
+**系统能力：**SystemCapability.Customization.ConfigPolicy
 
 **返回值：**
 
@@ -664,11 +662,11 @@ getCfgDirListSync(): Array&lt;string&gt;
 
 **系统能力:** SystemCapability.Customization.ConfigPolicy
 
-| 名称             | 值  | 说明                                                                                                                       |
-| ---------------- | --- | -------------------------------------------------------------------------------------------------------------------------- |
-| DEFAULT          | 0   | 默认模式，此模式下会根据各配置层级下的followx_file_list.cfg文件配置的跟随规则进行文件查找。                                |
-| NO_RULE_FOLLOWED | 1   | 不跟随模式，此模式下不会使用任何跟随规则，即使存在followx_file_list.cfg文件。                                              |
-| SIM_DEFAULT      | 10  | 跟随默认卡模式，此模式下会根据默认卡的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                                |
-| SIM_1            | 11  | 跟随卡1模式，此模式下会根据卡1的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                                      |
-| SIM_2            | 12  | 跟随卡2模式，此模式下会根据卡2的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                                      |
-| USER_DEFINED     | 100 | 用户自定义模式，此模式会根据入参extra提供的跟随规则进行配置文件获取。此模式会忽略各配置层级下的followx_file_list.cfg文件。 |
+| 名称                           | 值  | 说明                                                                                            |
+| ----------------------------- | --- | ----------------------------------------------------------------------------------------------- |
+| DEFAULT                       | 0   | 默认模式，会根据各配置层级下的followx_file_list.cfg文件配置的跟随规则进行文件查找。                   |
+| NO_RULE_FOLLOWED              | 1   | 不跟随模式，不会使用任何跟随规则，即使存在followx_file_list.cfg文件。                                |
+| SIM_DEFAULT                   | 10  | 跟随默认卡模式，会根据默认卡的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                   |
+| SIM_1                         | 11  | 跟随卡1模式，会根据卡1的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                        |
+| SIM_2                         | 12  | 跟随卡2模式，会根据卡2的opkey在各配置层级下的etc/carrier/${opkey}下查找文件。                        |
+| USER_DEFINED                  | 100 | 用户自定义模式，会根据入参extra提供的跟随规则进行配置文件获取，忽略各配置层级下的followx_file_list.cfg文件。 | 

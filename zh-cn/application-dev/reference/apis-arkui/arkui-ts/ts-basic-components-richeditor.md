@@ -1282,7 +1282,7 @@ addImageSpan(value: PixelMap | ResourceStr, options?: RichEditorImageSpanOptions
 
 添加图片内容，如果组件光标闪烁，插入后光标位置更新为新插入图片的后面。
 
-不建议直接添加网络图片。
+该接口为同步接口，在弱网环境下，直接添加网络图片可能会阻塞UI线程造成冻屏问题。不建议直接添加网络图片。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1466,7 +1466,7 @@ getParagraphs(value?: RichEditorRange): Array\<RichEditorParagraphResult>
 
 getSelection(): RichEditorSelection
 
-获取选中内容。未选中时，返回光标所在span信息。
+获取选中内容的范围和span信息。未选中时，返回光标所在span信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -6,7 +6,7 @@ avCastPickerParam提供了[@ohos.multimedia.avCastPicker](ohos-multimedia-avcast
 >
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
-## AVCastPickerState<sup>11+</sup>
+## AVCastPickerState
 
 投播组件设备列表状态参数选项。
 

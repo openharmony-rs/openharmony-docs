@@ -170,6 +170,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 ### 生成VPN Id
 
 创建新的VPN时，应生成一个VPN Id作为VPN的唯一标识。
+
 可参考如下示例：
 
 ```ts

@@ -106,8 +106,6 @@ The [onNativeEmbedObjectParamChange()](../reference/apis-arkweb/arkts-basic-comp
 
 - A maximum of 500 **param** element changes can be reported at a time. More changes will be reported subsequently.
 
-- For details about the report, see [NativeEmbedParamDataInfo](../reference/apis-arkweb/arkts-basic-components-web-i.md#nativeembedparamdatainfo21).
-
 **Constraints**:
 
 - A maximum of five same-layer tag can be displayed on a web page. Otherwise, the rendering performance deteriorates.

@@ -476,7 +476,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print
+## print.print<sup>10+</sup>
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -522,7 +522,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print
+## print.print<sup>10+</sup>
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 

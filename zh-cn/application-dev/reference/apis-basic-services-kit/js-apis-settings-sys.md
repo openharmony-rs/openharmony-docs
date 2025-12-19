@@ -10,7 +10,7 @@
 ## 导入模块
 
 ```js
-import settings from '@ohos.settings';
+import { settings } from '@kit.BasicServicesKit';
 ```
 
 ## domainName

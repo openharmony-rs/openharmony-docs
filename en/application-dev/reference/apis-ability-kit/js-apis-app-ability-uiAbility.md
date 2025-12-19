@@ -782,7 +782,7 @@ Triggered by the system just before the UIAbility is about to close (for example
 
 > **NOTE**
 >
-> - Starting from API version 15, this callback is not executed when[UIAbility.onPrepareToTerminateAsync](#onpreparetoterminateasync15) is implemented. When [AbilityStage.onPrepareTerminationAsync](js-apis-app-ability-abilityStage.md#onprepareterminationasync15) or [AbilityStage.onPrepareTermination](js-apis-app-ability-abilityStage.md#onpreparetermination15) is implemented, this callback is not executed if the user right-clicks the dock bar or system tray to close the UIAbility.
+> - Starting from API version 15, this callback is not executed when [UIAbility.onPrepareToTerminateAsync](#onpreparetoterminateasync15) is implemented. When [AbilityStage.onPrepareTerminationAsync](js-apis-app-ability-abilityStage.md#onprepareterminationasync15) or [AbilityStage.onPrepareTermination](js-apis-app-ability-abilityStage.md#onpreparetermination15) is implemented, this callback is not executed if the user right-clicks the dock bar or system tray to close the UIAbility.
 > - Additionally, if the application or a third-party framework registers a listener for [window.WindowStage.on('windowStageClose')](../apis-arkui/arkts-apis-window-WindowStage.md#onwindowstageclose14), this callback is not executed.
 
 **Required permissions**: ohos.permission.PREPARE_APP_TERMINATE
@@ -916,11 +916,10 @@ onCollaborate(wantParam: Record&lt;string, Object&gt;): AbilityConstant.Collabor
 
 Callback invoked to return the collaboration result in multi-device collaboration scenarios.
 
-> **NOTE**
->
-> - This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
-> - When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
-> - During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
+ **NOTE**
+- This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
+- When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
+- During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -1596,6 +1595,8 @@ Defines the callback that is invoked when the stub on the target UIAbility is di
 ### (msg: string)<sup>10+</sup>
 
 (msg: string): void
+
+Defines the callback that is invoked when the remote UIAbility state changes in the collaboration scenario.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 

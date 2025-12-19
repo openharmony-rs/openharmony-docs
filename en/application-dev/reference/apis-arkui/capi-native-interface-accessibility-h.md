@@ -79,7 +79,7 @@ Declares the APIs for accessing Native Accessibility features.
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)](#oh_arkui_accessibilityelementinfosetaccessibilityfocused) | Sets the accessibility focus state of an **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)](#oh_arkui_accessibilityelementinfosetselected) | Sets whether the **ArkUI_AccessibilityElementInfo** object is selected.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)](#oh_arkui_accessibilityelementinfosetclickable) | Sets whether the **ArkUI_AccessibilityElementInfo** object is clickable.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)](#oh_arkui_accessibilityelementinfosetlongclickable) | Sets whether the **ArkUI_AccessibilityElementInfo** object supports long-press gestures.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)](#oh_arkui_accessibilityelementinfosetlongclickable) | Sets whether the **ArkUI_AccessibilityElementInfo** object supports long press gestures.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementInfo* elementInfo, bool isEnabled)](#oh_arkui_accessibilityelementinfosetenabled) | Sets whether the **ArkUI_AccessibilityElementInfo** object is enabled.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)](#oh_arkui_accessibilityelementinfosetispassword) | Sets whether the **ArkUI_AccessibilityElementInfo** object is a password.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)](#oh_arkui_accessibilityelementinfosetscrollable) | Sets whether the **ArkUI_AccessibilityElementInfo** object is scrollable.|
@@ -860,7 +860,7 @@ int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityEle
 **Description**
 
 
-Sets whether the **ArkUI_AccessibilityElementInfo** object supports long-press gestures.
+Sets whether the **ArkUI_AccessibilityElementInfo** object supports long press gestures.
 
 **Since**: 13
 
@@ -870,7 +870,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object supports long-press g
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| bool longClickable | Whether long-press gestures are supported. **true**: supported; **false**: not supported. The default value is **false**.|
+| bool longClickable | Whether long press gestures are supported. **true**: supported; **false**: not supported. The default value is **false**.|
 
 **Returns**
 
