@@ -125,7 +125,7 @@
 
 启用目标拍摄功能后，设备将自动识别人脸并进行跟踪拍摄。
 
-1. 启用摄像头的智能拍摄功能。
+1. 启用摄像头的目标拍摄功能。
    <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     try {
