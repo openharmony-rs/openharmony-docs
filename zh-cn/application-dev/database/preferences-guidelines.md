@@ -237,6 +237,63 @@ libohpreferences.so
    ```
 5. 获取Preferences实例中的键值数据。
    <!--@[PreferencesCrudGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
+   
+   ``` C++
+   // 5. 获取Preferences实例中的KV数据。
+   int intValue = 0;
+   int ret = PREFERENCES_OK;
+   const char *keys[] = {"key_int", "key_bool", "key_string"};
+   ret = OH_Preferences_GetInt(preference, keys[0], &intValue);
+   if (ret == PREFERENCES_OK) {
+       // 业务逻辑
+   }
+       
+   bool boolValue = false;
+   ret = OH_Preferences_GetBool(preference, keys[1], &boolValue);
+   if (ret == PREFERENCES_OK) {
+       // 业务逻辑
+   }
+       
+   char *stringValue = nullptr;
+   uint32_t valueLen = 0;
+   int32_t stringIndex = 2;
+   ret = OH_Preferences_GetString(preference, keys[stringIndex], &stringValue, &valueLen);
+   if (ret == PREFERENCES_OK) {
+       // 业务逻辑
+       // 使用完OH_Preferences_GetString接口后，需要对字符串进行释放。
+       OH_Preferences_FreeString(stringValue);
+       stringValue = nullptr;
+   }
+   
+   OH_PreferencesValue* getIntValue = OH_PreferencesValue_Create();
+   if (getIntValue  == nullptr) {
+       // 错误处理
+   }
+   ret = OH_Preferences_GetValue(preference, "int_key", &getIntValue);
+   if (ret == PREFERENCES_OK) {
+       // 业务逻辑
+   }
+   
+   OH_PreferencesPair* pairs = nullptr;
+   uint32_t count = 0;
+   ret = OH_Preferences_GetAll(preference, &pairs, &count);
+   if (ret == PREFERENCES_OK) {
+       // 业务逻辑
+       if (pairs != nullptr) {
+           // 销毁例对象中所有的KV数据。
+           OH_PreferencesPair_Destroy(pairs, count);
+       }
+   }
+   
+   // 查询Preferences实例中的Key是否有数据
+   bool result = OH_Preferences_HasKey(preference, "int_key");
+   if (result == true) {
+       // 有数据 业务逻辑
+   }
+   
+   // 清理缓存数据
+   ret = OH_Preferences_ClearCache(preference);
+   ```
 
 6. 调用OH_Preferences_Close关闭Preferences实例，关闭后需要将实例指针置空。
    <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
