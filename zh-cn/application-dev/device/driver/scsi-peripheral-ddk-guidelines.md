@@ -185,7 +185,7 @@ libscsi.z.so
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_ParseBasicSenseInfo** 解析基本的sense data，包括Information、Command specific information、Sense key specific字段。
 
    <!-- @[driver_scsi_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+   
    ``` C++
    int32_t ret = OH_ScsiPeripheral_ParseBasicSenseInfo(response.senseData, SCSIPERIPHERAL_MAX_SENSE_DATA_LEN,
        &senseInfo);
