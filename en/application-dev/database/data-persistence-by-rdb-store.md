@@ -75,7 +75,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    
    Stage model:
    
-   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->
+   <!--@[persistence_get_store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)--> 
    
    ``` TypeScript
    import { relationalStore} from '@kit.ArkData'; // Import the relationalStore module.
@@ -84,7 +84,6 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
    const DOMAIN = 0x0000;
    
    let store: relationalStore.RdbStore | undefined = undefined;
-   let context = getContext();
    let tokenType = relationalStore.Tokenizer.ICU_TOKENIZER;
    let tokenTypeSupported = relationalStore.isTokenizerSupported(tokenType);
    if (!tokenTypeSupported) {
@@ -105,7 +104,7 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
      // (Optional) Type of the tokenizer used in full-text search (FTS) mode. Only English word segmentation is supported in FTS by default.
      tokenizer: tokenType,
    };
-   // ···
+   // ...
      // Check the RDB store version. If the version is incorrect, upgrade or downgrade the RDB store.
      // For example, the RDB store version is 3 and the table structure is EMPLOYEE (NAME, AGE, SALARY, CODES, IDENTITY).
      // Execute the SQL statement for table creation. IDENTITY is of the BIGINT type and is set to UNLIMITED INT.
