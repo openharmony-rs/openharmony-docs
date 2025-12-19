@@ -198,7 +198,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 isUserGranted(): Promise\<boolean\>
 
-获取用户是否授权"允许获取本机通知"开关。使用Promise异步回调。
+查询"允许获取本机通知"的开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -238,7 +238,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-获取用户授权"已获取的本机通知"通知开关的应用列表。使用Promise异步回调。
+获取指定应用中"已获取的本机通知"通知开关开启的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -248,7 +248,7 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回用户授权"已获取的本机通知"通知开关的应用列表。        |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中"已获取的本机通知"通知开关开启的应用列表。        |
 
 **错误码：**
 

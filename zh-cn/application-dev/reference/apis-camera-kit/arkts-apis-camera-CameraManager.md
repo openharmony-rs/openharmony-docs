@@ -972,6 +972,56 @@ function getCameraDevice(cameraManager: camera.CameraManager, position: camera.C
 }
 ```
 
+## getCameraDevices<sup>23+</sup>
+
+getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectType: ConnectionType): Array\<CameraDevice>
+
+根据相机位置、相机类型数组和连接类型查询符合条件的相机列表。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                                                    | 必填 | 说明                                                 |
+| ----------- | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
+| position    | [CameraPosition](arkts-apis-camera-e.md#cameraposition) | 是   | 相机的位置。 |
+| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | 是   | 相机的类型。 |
+| connectType | [ConnectionType](arkts-apis-camera-e.md#connectiontype) | 是   | 相机的连接类型。 |
+
+**返回值：**
+
+| 类型                                                       | 说明                                                       |
+| ---------------------------------------------------------- | ---------------------------------------------------------- |
+| Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)> | 根据相机位置、相机类型数组和连接类型查询符合条件的相机列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+
+**示例：**
+
+```ts
+import { camera } from '@kit.CameraKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getCameraDevices(cameraManager: camera.CameraManager, position: camera.CameraPosition, types: Array<camera.CameraType>, connectType: camera.ConnectionType): void {
+  try {
+    let cameraDevs: Array<camera.CameraDevice> = [];
+    cameraDevs = cameraManager.getCameraDevices(position, types, connectType);
+  } catch (error) {
+    // 失败返回错误码并处理。
+    let err = error as BusinessError;
+    console.error(`The getCameraDevices call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## getCameraConcurrentInfos<sup>18+</sup>
 
 getCameraConcurrentInfos(cameras: Array\<CameraDevice\>): Array\<CameraConcurrentInfo\>

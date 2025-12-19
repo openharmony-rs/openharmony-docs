@@ -274,6 +274,7 @@
       - [应用数据向量化 (ArkTS)](database/aip-data-intelligence-embedding.md)
       - [SQLite调试工具指导](database/sqlite-database-debug-tool.md)
       - [ArkData术语](database/data-terminology.md)
+      - [ArkData常见问题](database/data-faq.md)
     - ArkTS（方舟编程语言）<!--arkts-->
       - [ArkTS简介](arkts-utils/arkts-overview.md)
       - ArkTS基础类库<!--arkts-utils-->
@@ -569,6 +570,7 @@
             - [支持鼠标输入事件](ui/arkts-interaction-development-guide-mouse.md)
             - [支持触控板输入事件](ui/arkts-interaction-development-guide-touchpad.md)
             - [支持键盘输入事件](ui/arkts-interaction-development-guide-keyboard.md)
+            - [支持游戏手柄输入事件](ui/arkts-interaction-development-guide-gamepad.md)
             - [支持表冠输入事件](ui/arkts-common-events-crown-event.md)
           - [添加手势响应](ui/arkts-interaction-development-guide-support-gesture.md)
             - [绑定手势方法](ui/arkts-gesture-events-binding.md)
@@ -763,7 +765,6 @@
         - [窗口元数据配置](windowmanager/window-config-m.md)
         <!--Del-->
         - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](windowmanager/system-window-stage-sys.md)
-        - [WindowExtensionAbility（仅对系统应用开放）](windowmanager/windowextensionability-sys.md)
         <!--DelEnd-->
         - [使用WindowManager管理多模输入事件（C/C++）](windowmanager/native-window-event-filter.md)
         - 应用启动页的配置与使用<!--launch-page-->
@@ -897,6 +898,8 @@
         - [设置分布式文件数据等级](file-management/set-security-label.md)
         - [跨设备文件访问](file-management/file-access-across-devices.md)
         - [跨设备文件拷贝](file-management/file-copy-across-devices.md)
+      - 端云文件协同<!--cloud-sync-file-->
+        - [端云文件协同概述](file-management/cloud-sync-file-overview.md)
     - Form Kit（卡片开发服务）<!--form-kit-->
       - [Form Kit简介](form/formkit-overview.md)
       - ArkTS卡片开发（推荐）<!--arkts-ui-->
@@ -912,6 +915,9 @@
             - [ArkTS卡片使用画布组件绘制自定义图形](form/arkts-ui-widget-page-custom-drawing.md)
             - [ArkTS卡片界面适配深浅色模式](form/arkts-ui-widget-dark-light-color-adapt.md)
             - [ArkTS卡片使用自定义字体](form/arkts-ui-widget-load-custom-font.md)
+            <!--Del-->
+            - [ArkTS卡片模糊提亮和玻璃材质适配（仅对系统应用开放）](form/arkts-ui-widget-visual-effect-sys.md)
+            <!--DelEnd-->
           - ArkTS卡片页面刷新<!--arkts-ui-widget-interaction-->
             - [ArkTS卡片页面刷新概述](form/arkts-ui-widget-interaction-overview.md)
             - [ArkTS卡片主动刷新](form/arkts-ui-widget-active-refresh.md)
@@ -944,6 +950,7 @@
             <!--Del-->
             - [场景动效类型互动卡片开发指导（仅对系统应用开放）](form/arkts-ui-liveform-sceneanimation-development-sys.md)
             <!--DelEnd-->
+          - [ArkTS卡片适配常见问题](form/arkts-ui-widget-adapt-faq.md)
       - JS卡片开发<!--form-js-ui-->
         - [JS卡片概述](form/js-ui-widget-overview.md)
         - [JS卡片开发指导（Stage模型）](form/js-ui-widget-development.md)
@@ -1204,8 +1211,6 @@
           - [证书CMS验签](security/DeviceCertificateKit/create-cms-verify-object.md)
           - [证书CMS解封装](security/DeviceCertificateKit/create-cms-decapsulation-object.md)
           - [证书PKCS12的创建和解析](security/DeviceCertificateKit/create-parse-pkcs12.md)
-          - [支持本地证书链吊销状态校验时仅校验终端实体证书](security/DeviceCertificateKit/create-only-check-leaf-cert-revocate-object.md)
-          - [支持在线校验证书链中的中间CA证书的吊销状态](security/DeviceCertificateKit/create-online-check-intermediate-certificateonly-object.md)
         - 证书管理<!--certmanager-->
           - [证书管理概述](security/DeviceCertificateKit/certManager-overview.md)
           - [应用证书凭据开发指导](security/DeviceCertificateKit/certManager-private-credential-guidelines.md)
@@ -1428,8 +1433,8 @@
           - [压缩与解压](basic-services/compress/deflate-and-inflate.md)
         <!--Del-->
         - 划词服务<!--selectioninput-->
-          - [划词服务概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro-sys.md)
-          - [实现一个划词应用（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide-sys.md)
+          - [划词服务子系统概述](basic-services/selectionInput/selection-services-intro-sys.md)
+          - [实现一个划词扩展能力](basic-services/selectionInput/selection-services-application-guide-sys.md)
         <!--DelEnd-->
       - Function Flow Runtime Kit（任务并发调度服务）<!--ffrt-kit-->
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
@@ -1658,6 +1663,9 @@
         <!--Del-->
         - [分布式音频播放(仅对系统应用开放)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
+        <!--Del-->
+        - [移动全景声管理（仅对系统应用开放）](media/audio/audio-collaborative-management-sys.md)
+        <!--DelEnd-->
       - 音频录制<!--audio-recording-->
         - [音频录制开发概述](media/audio/audio-recording-overview.md)
         - [使用AudioCapturer开发音频录制功能](media/audio/using-audiocapturer-for-recording.md)
@@ -1677,6 +1685,10 @@
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
+      - 音频编创<!--audio-production-creation-->
+        - [音频编创开发概述(C/C++)](media/audio/audio-suite.md)
+        - [离线编辑(C/C++)](media/audio/audio-suite-manual-rendering.md)
+        - [实时渲染(C/C++)](media/audio/audio-suite-real-time-rendering.md)
       - OpenSL ES开发指导(不再推荐)<!--not-recommended-->
         - [从OpenSL ES切换OHAudio(C/C++)](media/audio/replace-opensles-by-ohaudio.md)
         - [使用OpenSL ES开发音频播放功能(C/C++)](media/audio/using-opensl-es-for-playback.md)
@@ -1812,7 +1824,6 @@
           - [编辑图片EXIF信息](media/image/image-tool-c.md)
         - 图片接收<!--image-receiving-c-->
           - [使用Image_NativeModule完成图片接收](media/image/image-receiver-c.md)
-          - [使用Image_NativeModule处理图像信息](media/image/image-info-c.md)
       - Image Kit常见问题<!--image-faqs-->
         - [如何处理HEIF图片](media/image/image-faqs/heif-adapter-faq.md)
         - [如何获取图片的旋转角度信息](media/image/image-faqs/image-rotate-faq.md)
@@ -2103,14 +2114,14 @@
             - [使用JSVM-API进行异常的定制化处理](napi/use-jsvm-trigger-exceptions.md)
             - [使用JSVM-API感知JSVM引擎生命周期管理](napi/use-jsvm-trigger-gc.md)
             - [使用JSVM-API接口进行private相关开发](napi/use-jsvm-about-private.md)
-            - [使用JSVM-API接创建 external string](napi/use-jsvm-about-external-string.md)
+            - [使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发](napi/use-jsvm-about-external-string.md)
             - [使用JSVM-API提供的proxy接口](napi/use-jsvm-about-proxy.md)
             - [使用JSVM-API接口进行well-known symbols相关开发](napi/use-jsvm-about-well-known-symbols.md)
-            - [使用JSVM-API接口进行装箱类型判断相关开发](napi/use-jsvm-about-wrapper-object.md)
+            - [使用JSVM-API接口进行Wrapper object相关开发](napi/use-jsvm-about-wrapper-object.md)
             - [使用JSVM-API接口创建和获取数值](napi/use-jsvm-basic-data-types.md)
         - JSVM-API典型使用场景指导<!--jsvm-scenarios-->
             - [JSVM-API调试&定位](napi/jsvm-debugger-cpuprofiler-heapsnapshot.md)
-            - [JSVM-API Tracing](napi/use-jsvm-about-trace.md)
+            - [使用JSVM-API接口进行Trace相关开发](napi/use-jsvm-about-trace.md)
             - [JSVM-API 申请JIT权限指导](napi/jsvm-apply-jit-profile.md)
             - [JSVM-API 坚盾守护模式](napi/jsvm-secure-shield-mode.md)
             - [JSVM-API 内存泄漏问题定位指导](napi/jsvm-locate-memory-leak.md)
@@ -2120,6 +2131,7 @@
               - [JSVM通用调优实践](napi/jsvm-optimizations.md)
         - JSVM性能调试指导<!--jsvm-performance-->
             - [使用HiSmartPerf采集V8 trace](napi/use-jsvm-about-v8-trace.md)
+            - [使用DevTools进行网页内存分析](napi/use-jsvm-about-analyze-memory-usage.md)
       - Longque-JS-API<!--longque-->
         - [Longque-JS-API使用指导](napi/use-longque-js-api.md)
       - OpenMP支持<!--openmp-->
@@ -2128,7 +2140,7 @@
       - 资源管理<!--resource-management-->
         - [Rawfile开发指导](napi/rawfile-guidelines.md)
       - 线程调度<!--thread-scheduling-->
-        - [QOS开发指导](napi/qos-guidelines.md)
+        - [QoS开发指导](napi/qos-guidelines.md)
         - [格物开发指导](napi/gewu-ndk-api-guidelines.md)
       - 内存管理<!--memory-management-->
         - [Purgeable memory开发指导](napi/purgeable-memory-guidelines.md)
@@ -3175,6 +3187,7 @@
           - [SaveButton](reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)
           <!--Del-->
           - [SaveButton (系统接口)](reference/apis-arkui/arkui-ts/ts-security-components-savebutton-sys.md)
+          - [安全控件通用属性 (系统接口)](reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes-sys.md)
           <!--DelEnd-->
         - 主题<!--themes-->
           - [WithTheme](reference/apis-arkui/arkui-ts/ts-container-with-theme.md)
@@ -3657,6 +3670,7 @@
           - [ArkUI_TextMenuItemArray](reference/apis-arkui/capi-arkui-nativemodule-arkui-textmenuitemarray.md)
           - [ArkUI_TextEditMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
           - [ArkUI_TextSelectionMenuOptions](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
+          - [ArkUI_SelectedDragPreviewStyle](reference/apis-arkui/capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
       - 错误码<!--arkui-arkts-errcode-->
         - UI界面<!--arkui-ui-arkts-errcode-->
           - [接口调用异常错误码](reference/apis-arkui/errorcode-internal.md)

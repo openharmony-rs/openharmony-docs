@@ -1,9 +1,9 @@
 # 进度条 (Progress)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 Progress是进度条显示组件，显示内容通常为目标操作的当前进度。具体用法请参考[Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)。

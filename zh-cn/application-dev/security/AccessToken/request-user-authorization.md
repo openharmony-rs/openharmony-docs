@@ -141,6 +141,7 @@
        for (let i = 0; i < length; i++) {
          if (grantStatus[i] === 0) {
            // 用户授权，可以继续访问目标操作。
+           console.info(`${permissions[i]} is granted by user.`);
          } else {
            // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限。
            return;
@@ -153,15 +154,15 @@
    }
    
    export default class SecondAbility extends UIAbility {
-   // ···
+     // ...
      onWindowStageCreate(windowStage: window.WindowStage): void {
-       // ···
+       // ...
        windowStage.loadContent('secondpages/Index', (err) => {
          reqPermissionsFromUser(permissions, this.context);
-       // ···
+         // ...
        });
      }
-   // ···
+     // ...
    }
    ```
 
@@ -185,6 +186,7 @@
        for (let i = 0; i < length; i++) {
          if (grantStatus[i] === 0) {
            // 用户授权，可以继续访问目标操作
+           console.info(`${permissions[i]} is granted by user.`);
          } else {
            // 用户拒绝授权，提示用户必须授权才能访问当前页面的功能，并引导用户到系统设置中打开相应的权限
            return;
@@ -205,7 +207,7 @@
      }
    
      build() {
-       // ···
+       // ...
      }
    }
    ```

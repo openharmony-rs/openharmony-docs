@@ -86,8 +86,11 @@ Web媒体策略的配置。
 |  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
 |  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的高度，使其覆盖网页内容。false表示不覆盖网页内容，跟原视频图层高度一样，嵌入在网页中。<br>默认值：false。 |
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+> **说明：**
+>
+> 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
 自定义菜单扩展项。
 
 **系统能力：** SystemCapability.Web.Webview.Core

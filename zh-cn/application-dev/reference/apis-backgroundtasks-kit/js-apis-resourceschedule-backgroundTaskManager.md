@@ -1375,7 +1375,7 @@ stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;vo
 | 参数名       | 类型                                 | 必填   | 说明                                       |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | 是    | 应用运行的上下文。 |
-| continuousTaskId   | number | 是    | 长时任务ID。</br>**说明 :** 可以通过[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)接口的返回值获取当前申请的长时任务ID，或者通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口获取所有长时任务信息。  |
+| continuousTaskId   | number | 是    | 长时任务ID。<br>**说明**：可以通过[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)接口的返回值获取当前申请的长时任务ID，或者通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口获取所有长时任务信息。  |
 
 **返回值**：
 
@@ -1455,7 +1455,7 @@ export default class EntryAbility extends UIAbility {
 | BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。                  |
 | MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
 | VOIP<sup>13+</sup> | 8    | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->                 |
-| TASK_KEEPING            | 9    | 计算任务（仅对2in1设备开放）。<br/>使用场景举例：杀毒软件。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。        |
+| TASK_KEEPING            | 9    | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。        |
 
 ## ContinuousTaskNotification<sup>12+</sup>
 

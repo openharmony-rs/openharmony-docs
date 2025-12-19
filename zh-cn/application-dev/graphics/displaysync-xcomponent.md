@@ -112,7 +112,7 @@
                // 120Hz绘制时，每帧移动的距离为4像素
                render->ConstructPath(4, 4, render->defaultOffsetY);
            }
-     	 // ...
+       // ...
        }
    }
    ```
@@ -188,5 +188,5 @@
 <!--RP1-->
 ## 相关实例
 
-- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySync)
+- [DisplaySync (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySync)
 <!--RP1End-->

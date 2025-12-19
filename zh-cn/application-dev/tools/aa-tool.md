@@ -535,7 +535,7 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
 ## onMemoryLevel回调命令（send-memory-level）
 
-从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。
+从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
 
 ```bash
 # 触发onMemoryLevel回调
@@ -603,11 +603,11 @@ The specified ability does not exist.
 
 1. 检查aa命令的-a的参数abilityName和-b的参数bundleName是否正确。
 2. 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 3. 多HAP应用需确认Ability所属的HAP是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的HAP和Ability，说明Ability所属的HAP未被安装。
-    ```
+    ```bash
     hdc shell bm dump -n 包名
     ```
 
@@ -683,7 +683,7 @@ Failed to obtain ability information.
 
 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
 
-  ```
+  ```bash
   hdc shell bm dump -a
   ```
 
@@ -761,11 +761,11 @@ Failed to obtain application information.
 
 1. 检查aa命令的-a的参数abilityName和-b的参数bundleName是否正确。
 2. 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 3. 多HAP应用需确认Ability所属的HAP是否已被安装。可使用如下命令查询应用的包信息，若安装的应用中没有对应的HAP和Ability，说明Ability所属的HAP未被安装。
-    ```
+    ```bash
     hdc shell bm dump -n 包名
     ```
 
@@ -1005,7 +1005,7 @@ Failed to retrieve specified package information.
 
 1. 检查指定的包名是否正确。
 2. 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 
@@ -1028,7 +1028,7 @@ Failed to terminate the process.
 
 1. 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
 
-    ```
+    ```bash
     hdc shell bm dump -a
     ```
 2. 尝试重启设备。
@@ -1109,7 +1109,7 @@ aa attach/detach命令指定的包名不存在。
 
 检查指定的bundleName对应的应用是否安装。可使用如下命令查询已安装的应用列表，若该bundleName不在查询结果中，说明应用未安装成功。
 
-  ```
+  ```bash
   hdc shell bm dump -a
   ```
 

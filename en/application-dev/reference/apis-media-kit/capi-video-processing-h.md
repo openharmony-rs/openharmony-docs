@@ -52,7 +52,7 @@ It provides video processing capabilities, including color space conversion, met
 
 ### OH_VideoProcessing_InitializeEnvironment()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)
 ```
 
@@ -78,7 +78,7 @@ For details about how and when to release the environment, see [OH_VideoProcessi
 
 ### OH_VideoProcessing_DeinitializeEnvironment()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_DeinitializeEnvironment(void)
 ```
 
@@ -102,7 +102,7 @@ Do not call this function when a video processing instance is running.
 
 ### OH_VideoProcessing_IsColorSpaceConversionSupported()
 
-```
+```c
 bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo,const VideoProcessing_ColorSpaceInfo* destinationVideoInfo)
 ```
 
@@ -128,7 +128,7 @@ Checks whether color space conversion is supported during video processing.
 
 ### OH_VideoProcessing_IsMetadataGenerationSupported()
 
-```
+```c
 bool OH_VideoProcessing_IsMetadataGenerationSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo)
 ```
 
@@ -153,7 +153,7 @@ Checks whether metadata generation is supported during video processing.
 
 ### OH_VideoProcessing_Create()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Create(OH_VideoProcessing** videoProcessor, int type)
 ```
 
@@ -179,7 +179,7 @@ Creates a video processing instance.
 
 ### OH_VideoProcessing_Destroy()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Destroy(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -206,7 +206,7 @@ Before destroying the instance, call [OH_VideoProcessing_Stop](#oh_videoprocessi
 
 ### OH_VideoProcessing_RegisterCallback()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_RegisterCallback(OH_VideoProcessing* videoProcessor,const VideoProcessing_Callback* callback, void* userData)
 ```
 
@@ -235,7 +235,7 @@ The callback function should be registered before video processing starts. Durin
 
 ### OH_VideoProcessing_SetSurface()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* videoProcessor,const OHNativeWindow* window)
 ```
 
@@ -263,7 +263,7 @@ An output surface must be set before video processing starts.
 
 ### OH_VideoProcessing_GetSurface()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* videoProcessor, OHNativeWindow** window)
 ```
 
@@ -291,7 +291,7 @@ An input surface must be created before video processing starts, and it must be 
 
 ### OH_VideoProcessing_SetParameter()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* videoProcessor,const OH_AVFormat* parameter)
 ```
 
@@ -317,7 +317,7 @@ Sets video processing parameters.
 
 ### OH_VideoProcessing_GetParameter()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* videoProcessor, OH_AVFormat* parameter)
 ```
 
@@ -343,7 +343,7 @@ Obtains video processing parameters.
 
 ### OH_VideoProcessing_Start()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -370,7 +370,7 @@ After video processing starts, the callback [OH_VideoProcessingCallback_OnState]
 
 ### OH_VideoProcessing_Stop()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProcessor)
 ```
 
@@ -397,7 +397,7 @@ After video processing stops, the callback [OH_VideoProcessingCallback_OnState](
 
 ### OH_VideoProcessing_RenderOutputBuffer()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessing_RenderOutputBuffer(OH_VideoProcessing* videoProcessor, uint32_t index)
 ```
 
@@ -425,7 +425,7 @@ If the callback function [OH_VideoProcessingCallback_OnNewOutputBuffer](capi-vid
 
 ### OH_VideoProcessingCallback_Create()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Callback** callback)
 ```
 
@@ -450,7 +450,7 @@ Creates a video processing callback object.
 
 ### OH_VideoProcessingCallback_Destroy()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_Destroy(VideoProcessing_Callback* callback)
 ```
 
@@ -475,7 +475,7 @@ Destroys a video processing callback object. The video processing callback objec
 
 ### OH_VideoProcessingCallback_BindOnError()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnError onError)
 ```
 
@@ -501,7 +501,7 @@ Binds the callback function [OH_VideoProcessingCallback_OnError](capi-video-proc
 
 ### OH_VideoProcessingCallback_BindOnState()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnState onState)
 ```
 
@@ -527,7 +527,7 @@ Binds the callback function [OH_VideoProcessingCallback_OnState](capi-video-proc
 
 ### OH_VideoProcessingCallback_BindOnNewOutputBuffer()
 
-```
+```c
 VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnNewOutputBuffer onNewOutputBuffer)
 ```
 

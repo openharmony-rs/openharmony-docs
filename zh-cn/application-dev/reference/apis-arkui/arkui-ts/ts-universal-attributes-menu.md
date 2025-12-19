@@ -244,6 +244,8 @@ bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: Co
 | onDidDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 是 | 菜单消失后的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2. onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | previewScaleMode<sup>20+</sup> | [PreviewScaleMode](#previewscalemode20枚举说明) | 否 | 是 | 预览图缩放方式。<br />默认值：PreviewScaleMode.AUTO<br />**说明：**<br />布局空间不足时，控制预览图的缩放方式。未设置或设置undefined按照PreviewScaleMode.AUTO处理。当设置成PreviewScaleMode.CONSTANT时，如果预览图过大，剩余的空间不足以放置菜单时，菜单将重叠显示在预览图之下。<br />预览图的最大宽高不会超过预览图最大可布局区域（窗口大小减去上下左右的安全边距）。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | availableLayoutArea<sup>20+</sup> | [AvailableLayoutArea](#availablelayoutarea20枚举说明) | 否 | 是 | 设置预览图宽高的可布局区域，预览图的百分比依据此设置计算，最终可能因安全区限制而被压缩或裁剪。<br /> **说明：** <br />未设置或设置为undefined时，百分比依据窗口大小计算。若设置为AvailableLayoutArea.SAFE_AREA，预览图的可布局区域为窗口大小减去上下左右的安全边距。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| keyboardAvoidMode<sup>23+</sup> | [MenuKeyboardAvoidMode](#menukeyboardavoidmode23枚举说明) | 否 | 是 | 设置菜单是否避让软键盘。<br /> **说明：** <br />未设置或设置为undefined时，按照MenuKeyboardAvoidMode.NONE处理。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 **表1：同时设置offset与placement时菜单的偏移位置** 
 
@@ -394,6 +396,19 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 | 名称  | 值 | 说明                                   |
 | ----- | -  | --------------------------------------|
 | SAFE_AREA  | 0  | 参考可布局区域大小为窗口大小减去上下左右安全边距。 |
+
+## MenuKeyboardAvoidMode<sup>23+</sup>枚举说明
+
+菜单避让软键盘的模式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称  | 值 | 说明                                   |
+| ----- | -  | --------------------------------------|
+| NONE  | 0  | 菜单不避让软键盘。 |
+| TRANSLATE_AND_RESIZE | 1 | 菜单避让软键盘。如果空间不足，会平移或重新调整菜单大小避让软键盘。 |
 
 ## 示例
 
@@ -1365,3 +1380,69 @@ struct Index {
 ```
 
 ![bindContextMenuWithType](figures/bindContextMenuWithType.gif)
+
+### 示例20（设置菜单避让软键盘）
+
+该示例通过在bindMenu中配置keyboardAvoidMode设置菜单避让软键盘，通过minKeyboardAvoidDistance设置菜单避让软键盘的最小距离。
+
+从API version 23开始，[ContextMenuOptions](#contextmenuoptions10)中新增keyboardAvoidMode、minKeyboardAvoidDistance属性。
+
+``` ts
+import { inputMethod } from '@kit.IMEKit';
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private inputController: inputMethod.InputMethodController = inputMethod.getController();
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ content: 'MenuItemContent' })
+      MenuItem({ content: 'MenuItemContent' })
+      MenuItem({ content: 'MenuItemContent' })
+      MenuItem({ content: 'MenuItemContent' })
+      MenuItem({ content: 'MenuItemContent' })
+    }
+  }
+
+  build() {
+    RelativeContainer() {
+      Button('Click Show Menu')
+        .alignRules({
+          center: { anchor: '__container__', align: VerticalAlign.Center },
+          middle: { anchor: '__container__', align: HorizontalAlign.Center },
+        })
+        .bindMenu(this.MyMenu, {
+          keyboardAvoidMode: MenuKeyboardAvoidMode.TRANSLATE_AND_RESIZE,
+          minKeyboardAvoidDistance: LengthMetrics.vp(20)
+        })
+        .onClick(() => {
+          setTimeout(() => {
+            this.attachAndListener()
+          }, 2000)
+        })
+    }
+    .height('100%')
+    .width('100%')
+
+  }
+
+  async attachAndListener() {
+    focusControl.requestFocus('Index')
+    try {
+      await this.inputController.attach(true, {
+        inputAttribute: {
+          textInputType: inputMethod.TextInputType.TEXT,
+          enterKeyType: inputMethod.EnterKeyType.SEARCH
+        }
+      })
+    } catch (err) {
+      console.error('Fail to attach')
+    }
+  }
+}
+```
+
+![menu-keyboard-avoid](figures/menuKeyboardAvoid.gif)

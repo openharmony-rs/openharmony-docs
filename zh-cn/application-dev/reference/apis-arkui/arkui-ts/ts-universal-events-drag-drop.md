@@ -198,7 +198,7 @@ onDragEnd(event: (event: DragEvent, extraParams?: string) => void): T
 
 onPreDrag(callback: Callback\<PreDragStatus>): T
 
-绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。此接口不支持在鼠标拖拽中触发。
+绑定此事件的组件，当处于手势拖拽发起前的不同阶段时，触发回调。拖拽发起前的各阶段可参考[PreDragStatus](#predragstatus12枚举说明)。此接口不支持在鼠标拖拽中触发。
 
 > **说明：**
 >
@@ -660,7 +660,11 @@ setDataLoadParams(dataLoadParams: DataLoadParams): void
 
 getX(): number
 
-当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。从API version 10开始不再维护，建议使用[getWindowX()](#getwindowx10)代替。
+当前拖拽点相对于窗口左上角的x轴坐标，单位为vp。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[getWindowX](#getwindowx10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -674,7 +678,11 @@ getX(): number
 
 getY(): number
 
-当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。从API version 10开始不再维护，建议使用[getWindowY()](#getwindowy10)代替。
+当前拖拽点相对于窗口左上角的y轴坐标，单位为vp。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[getWindowY](#getwindowy10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -77,18 +77,18 @@ onAction(event: (event: GestureEvent) => void)
 
 用于点击手势获取点击位置坐标。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x | number | 否 | 否 | 相对于组件左上角的x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| y | number | 否 | 否 | 相对于组件左上角的y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| windowX | number | 否 | 否 | 相对于窗口的左上角x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| windowY | number | 否 | 否 | 相对于窗口的左上角y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| displayX | number | 否 | 否 | 相对于屏幕的左上角x坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
-| displayY | number | 否 | 否 | 相对于屏幕的左上角y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp |
+| x | number | 否 | 否 | 相对于组件左上角的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| y | number | 否 | 否 | 相对于组件左上角的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| windowX | number | 否 | 否 | 相对于窗口的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| windowY | number | 否 | 否 | 相对于窗口的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| displayX | number | 否 | 否 | 相对于屏幕的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| displayY | number | 否 | 否 | 相对于屏幕的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| globalDisplayX<sup>23+</sup> | number | 否 | 是 | 相对于主屏幕左上角为原点的坐标系中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| globalDisplayY<sup>23+</sup> | number | 否 | 是 | 相对于主屏幕左上角为原点的坐标系中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## 示例
 
@@ -152,6 +152,9 @@ struct TapGestureExample {
                 console.info(`windowY = ${JSON.stringify(event.tapLocation?.windowY)}`)
                 console.info(`displayX = ${JSON.stringify(event.tapLocation?.displayX)}`)
                 console.info(`displayY = ${JSON.stringify(event.tapLocation?.displayY)}`)
+                // 从API version 23开始，新增globalDisplayX和globalDisplayY属性。
+                console.info(`globalDisplayX = ${JSON.stringify(event.tapLocation?.globalDisplayX)}`)
+                console.info(`globalDisplayY = ${JSON.stringify(event.tapLocation?.globalDisplayY)}`)
               }
             })
         )

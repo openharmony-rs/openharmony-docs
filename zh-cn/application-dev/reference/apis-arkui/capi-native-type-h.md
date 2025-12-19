@@ -62,8 +62,8 @@
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | 定义窗口属性的HostWindowInfo类信息。 |
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | 定义ActiveChildrenInfo类信息。 |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | 定义跨语言配置项。 |
-| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | 声明want。 |
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | 为EmbeddedComponent定义EmbeddedComponentOption。 |
+| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | 声明元能力want结构。 |
+| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | 为EmbeddedComponent定义参数EmbeddedComponentOption。 |
 | [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | 定义组件无障碍状态。 |
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | ArkUI_AccessibilityValue | 定义组件无障碍信息值。 |
 | [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | 系统字体变更事件定义。 |
@@ -88,6 +88,7 @@
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md) | ArkUI_TextMenuItemArray | 定义文本菜单项数组结构体。 |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | 定义文本菜单扩展项结构体。 |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | 定义自定义文本选择菜单结构体。 |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | 定义选中状态下文本拖拽预览样式。 |
 
 ### 枚举
 
@@ -966,7 +967,7 @@ enum ArkUI_ShadowType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SHADOW_TYPE_COLOR = 0 | 颜色。 |
-| ARKUI_SHADOW_TYPE_BLUR | 模糊。 |
+| ARKUI_SHADOW_TYPE_BLUR = 1 | 模糊。 |
 
 ### ArkUI_DatePickerMode
 
@@ -1293,11 +1294,11 @@ enum ArkUI_ShadowStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | 超小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM | 小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD | 中阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG | 大阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM | 浮动小阴影。 |
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD | 浮动中阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM = 1 | 小阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD = 2 | 中阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG = 3 | 大阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM = 4 | 浮动小阴影。 |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD = 5 | 浮动中阴影。 |
 
 ### ArkUI_AnimationCurve
 
@@ -1315,18 +1316,18 @@ enum ArkUI_AnimationCurve
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_CURVE_LINEAR = 0 | 动画从头到尾的速度都是相同。 |
-| ARKUI_CURVE_EASE | 动画以低速开始，然后加快，在结束前变慢。 |
-| ARKUI_CURVE_EASE_IN | 动画以低速开始。 |
-| ARKUI_CURVE_EASE_OUT | 动画以低速结束。 |
-| ARKUI_CURVE_EASE_IN_OUT | 动画以低速开始和结束。 |
-| ARKUI_CURVE_FAST_OUT_SLOW_IN | 动画标准曲线。 |
-| ARKUI_CURVE_LINEAR_OUT_SLOW_IN | 动画减速曲线。 |
-| ARKUI_CURVE_FAST_OUT_LINEAR_IN | 动画加速曲线。 |
-| ARKUI_CURVE_EXTREME_DECELERATION | 动画急缓曲线。 |
-| ARKUI_CURVE_SHARP | 动画锐利曲线。 |
-| ARKUI_CURVE_RHYTHM | 动画节奏曲线。 |
-| ARKUI_CURVE_SMOOTH | 动画平滑曲线。 |
-| ARKUI_CURVE_FRICTION | 动画阻尼曲线。 |
+| ARKUI_CURVE_EASE = 1 | 动画以低速开始，然后加快，在结束前变慢。 |
+| ARKUI_CURVE_EASE_IN = 2 | 动画以低速开始。 |
+| ARKUI_CURVE_EASE_OUT = 3 | 动画以低速结束。 |
+| ARKUI_CURVE_EASE_IN_OUT = 4 | 动画以低速开始和结束。 |
+| ARKUI_CURVE_FAST_OUT_SLOW_IN = 5 | 动画标准曲线。 |
+| ARKUI_CURVE_LINEAR_OUT_SLOW_IN = 6 | 动画减速曲线。 |
+| ARKUI_CURVE_FAST_OUT_LINEAR_IN = 7 | 动画加速曲线。 |
+| ARKUI_CURVE_EXTREME_DECELERATION = 8 | 动画急缓曲线。 |
+| ARKUI_CURVE_SHARP = 9 | 动画锐利曲线。 |
+| ARKUI_CURVE_RHYTHM = 10 | 动画节奏曲线。 |
+| ARKUI_CURVE_SMOOTH = 11 | 动画平滑曲线。 |
+| ARKUI_CURVE_FRICTION = 12 | 动画阻尼曲线。 |
 
 ### ArkUI_SwiperArrow
 
@@ -1556,8 +1557,8 @@ enum ArkUI_SliderBlockStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | 使用默认滑块（圆形）。 |
-| ARKUI_SLIDER_BLOCK_STYLE_IMAGE | 使用图片资源作为滑块。 |
-| ARKUI_SLIDER_BLOCK_STYLE_SHAPE | 使用自定义形状作为滑块。 |
+| ARKUI_SLIDER_BLOCK_STYLE_IMAGE = 1 | 使用图片资源作为滑块。 |
+| ARKUI_SLIDER_BLOCK_STYLE_SHAPE = 2 | 使用自定义形状作为滑块。 |
 
 ### ArkUI_SliderDirection
 
@@ -1575,7 +1576,7 @@ enum ArkUI_SliderDirection
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | 方向为纵向。 |
-| ARKUI_SLIDER_DIRECTION_HORIZONTAL | 方向为横向。 |
+| ARKUI_SLIDER_DIRECTION_HORIZONTAL = 1 | 方向为横向。 |
 
 ### ArkUI_SliderStyle
 
@@ -1593,8 +1594,8 @@ enum ArkUI_SliderStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SLIDER_STYLE_OUT_SET = 0 | 滑块在滑轨上。 |
-| ARKUI_SLIDER_STYLE_IN_SET | 滑块在滑轨内。 |
-| ARKUI_SLIDER_STYLE_NONE | 无滑块。 |
+| ARKUI_SLIDER_STYLE_IN_SET = 1 | 滑块在滑轨内。 |
+| ARKUI_SLIDER_STYLE_NONE = 2 | 无滑块。 |
 
 ### ArkUI_CheckboxShape
 
@@ -1612,7 +1613,7 @@ enum ArkUI_CheckboxShape
 | 枚举项 | 描述 |
 | -- | -- |
 | ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | 圆形。 |
-| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE | 圆角方形。 |
+| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE = 1 | 圆角方形。 |
 
 ### ArkUI_AnimationPlayMode
 
@@ -1630,9 +1631,9 @@ enum ArkUI_AnimationPlayMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | 动画正向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_REVERSE | 动画反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_REVERSE = 1 | 动画反向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ### ArkUI_ImageSize
 
@@ -1669,7 +1670,7 @@ enum ArkUI_AdaptiveColor
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | 不使用取色模糊。 |
-| ARKUI_ADAPTIVE_COLOR_AVERAGE | 使用取色模糊。 |
+| ARKUI_ADAPTIVE_COLOR_AVERAGE = 1 | 使用取色模糊。 |
 
 ### ArkUI_ColorMode
 
@@ -1724,18 +1725,18 @@ enum ArkUI_BlurStyle
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_BLUR_STYLE_THIN = 0 | 轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_REGULAR | 普通厚度材质模糊。 |
-| ARKUI_BLUR_STYLE_THICK | 厚材质模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_THIN | 近距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR | 中距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_THICK | 远距景深模糊。 |
-| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK | 超远距景深模糊。 |
-| ARKUI_BLUR_STYLE_NONE | 关闭模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN | 组件超轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_THIN | 组件轻薄材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_REGULAR | 组件普通材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_THICK | 组件厚材质模糊。 |
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK | 组件超厚材质模糊。 |
+| ARKUI_BLUR_STYLE_REGULAR = 1 | 普通厚度材质模糊。 |
+| ARKUI_BLUR_STYLE_THICK = 2 | 厚材质模糊。 |
+| ARKUI_BLUR_STYLE_BACKGROUND_THIN = 3 | 近距景深模糊。 |
+| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR = 4 | 中距景深模糊。 |
+| ARKUI_BLUR_STYLE_BACKGROUND_THICK = 5 | 远距景深模糊。 |
+| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK = 6 | 超远距景深模糊。 |
+| ARKUI_BLUR_STYLE_NONE = 7 | 关闭模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN = 8 | 组件超轻薄材质模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_THIN = 9 | 组件轻薄材质模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_REGULAR = 10 | 组件普通材质模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_THICK = 11 | 组件厚材质模糊。 |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK = 12 | 组件超厚材质模糊。 |
 
 ### ArkUI_BlurStyleActivePolicy
 
@@ -1753,8 +1754,8 @@ enum ArkUI_BlurStyleActivePolicy
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | 模糊效果跟随窗口焦点状态变化，非焦点不模糊，焦点模糊。 |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE | 一直有模糊效果。 |
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE | 一直无模糊效果。 |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE = 1 | 一直有模糊效果。 |
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE = 2 | 一直无模糊效果。 |
 
 ### ArkUI_VerticalAlignment
 
@@ -1947,35 +1948,35 @@ enum ArkUI_BlendMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_BLEND_MODE_NONE = 0 | 将上层图像直接覆盖到下层图像上，不进行任何混合操作。 |
-| ARKUI_BLEND_MODE_CLEAR | 将源像素覆盖的目标像素清除为完全透明。 |
-| ARKUI_BLEND_MODE_SRC | r = s，只显示源像素。 |
-| ARKUI_BLEND_MODE_DST | r = d，只显示目标像素。 |
-| ARKUI_BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d，将源像素按照透明度进行混合，覆盖在目标像素上。 |
-| ARKUI_BLEND_MODE_DST_OVER | r = d + (1 - da) * s，将目标像素按照透明度进行混合，覆盖在源像素上。 |
-| ARKUI_BLEND_MODE_SRC_IN | r = s * da，只显示源像素中与目标像素重叠的部分。 |
-| ARKUI_BLEND_MODE_DST_IN | r = d * sa，只显示目标像素中与源像素重叠的部分。 |
-| ARKUI_BLEND_MODE_SRC_OUT | r = s * (1 - da)，只显示源像素中与目标像素不重叠的部分。 |
-| ARKUI_BLEND_MODE_DST_OUT | r = d * (1 - sa)，只显示目标像素中与源像素不重叠的部分。 |
-| ARKUI_BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa)，在源像素和目标像素重叠的地方绘制源像素，在源像素和目标像素不重叠的地方绘制目标像素。 |
-| ARKUI_BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da)，在源像素和目标像素重叠的地方绘制目标像素，在源像素和目标像素不重叠的地方绘制源像素。 |
-| ARKUI_BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa)，只显示源像素与目标像素不重叠的部分。 |
-| ARKUI_BLEND_MODE_PLUS | r = min(s + d, 1)，将源像素值与目标像素值相加，并将结果作为新的像素值。 |
-| ARKUI_BLEND_MODE_MODULATE | r = s * d，将源像素与目标像素进行乘法运算，并将结果作为新的像素值。 |
-| ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d，将两个图像的像素值相加，然后减去它们的乘积来实现混合。 |
-| ARKUI_BLEND_MODE_OVERLAY | 根据目标像素来决定使用MULTIPLY混合模式还是SCREEN混合模式。 |
-| ARKUI_BLEND_MODE_DARKEN | rc = s + d - max(s * da, d * sa), ra = kSrcOver，当两个颜色重叠时，较暗的颜色会覆盖较亮的颜色。 |
-| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver，将源图像和目标图像中的像素进行比较，选取两者中较亮的像素作为最终的混合结果。|
-| ARKUI_BLEND_MODE_COLOR_DODGE | 使目标像素变得更亮来反映源像素。 |
-| ARKUI_BLEND_MODE_COLOR_BURN | 使目标像素变得更暗来反映源像素。 |
-| ARKUI_BLEND_MODE_HARD_LIGHT | 根据源像素的值来决定目标像素变得更亮或者更暗。根据源像素来决定使用MULTIPLY混合模式还是SCREEN混合模式。 |
-| ARKUI_BLEND_MODE_SOFT_LIGHT | 根据源像素来决定使用LIGHTEN混合模式还是DARKEN混合模式。 |
-| ARKUI_BLEND_MODE_DIFFERENCE | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver，对比源像素和目标像素，亮度更高的像素减去亮度更低的像素，产生高对比度的效果。 |
-| ARKUI_BLEND_MODE_EXCLUSION | rc = s + d - two(s * d), ra = kSrcOver，对比源像素和目标像素，亮度更高的像素减去亮度更低的像素，产生柔和的效果。 |
-| ARKUI_BLEND_MODE_MULTIPLY | r = s * (1 - da) + d * (1 - sa) + s * d，将源图像与目标图像进行乘法混合，得到一张新的图像。 |
-| ARKUI_BLEND_MODE_HUE | 保留源图像的亮度和饱和度，但会使用目标图像的色调来替换源图像的色调。 |
-| ARKUI_BLEND_MODE_SATURATION | 保留目标像素的亮度和色调，但会使用源像素的饱和度来替换目标像素的饱和度。 |
-| ARKUI_BLEND_MODE_COLOR | 保留源像素的饱和度和色调，但会使用目标像素的亮度来替换源像素的亮度。 |
-| ARKUI_BLEND_MODE_LUMINOSITY | 保留目标像素的色调和饱和度，但会用源像素的亮度替换目标像素的亮度。 |
+| ARKUI_BLEND_MODE_CLEAR = 1 | 将源像素覆盖的目标像素清除为完全透明。 |
+| ARKUI_BLEND_MODE_SRC = 2 | r = s，只显示源像素。 |
+| ARKUI_BLEND_MODE_DST = 3 | r = d，只显示目标像素。 |
+| ARKUI_BLEND_MODE_SRC_OVER = 4 | r = s + (1 - sa) * d，将源像素按照透明度进行混合，覆盖在目标像素上。 |
+| ARKUI_BLEND_MODE_DST_OVER = 5 | r = d + (1 - da) * s，将目标像素按照透明度进行混合，覆盖在源像素上。 |
+| ARKUI_BLEND_MODE_SRC_IN = 6 | r = s * da，只显示源像素中与目标像素重叠的部分。 |
+| ARKUI_BLEND_MODE_DST_IN = 7 | r = d * sa，只显示目标像素中与源像素重叠的部分。 |
+| ARKUI_BLEND_MODE_SRC_OUT = 8 | r = s * (1 - da)，只显示源像素中与目标像素不重叠的部分。 |
+| ARKUI_BLEND_MODE_DST_OUT = 9 | r = d * (1 - sa)，只显示目标像素中与源像素不重叠的部分。 |
+| ARKUI_BLEND_MODE_SRC_ATOP = 10 | r = s * da + d * (1 - sa)，在源像素和目标像素重叠的地方绘制源像素，在源像素和目标像素不重叠的地方绘制目标像素。 |
+| ARKUI_BLEND_MODE_DST_ATOP = 11 | r = d * sa + s * (1 - da)，在源像素和目标像素重叠的地方绘制目标像素，在源像素和目标像素不重叠的地方绘制源像素。 |
+| ARKUI_BLEND_MODE_XOR = 12 | r = s * (1 - da) + d * (1 - sa)，只显示源像素与目标像素不重叠的部分。 |
+| ARKUI_BLEND_MODE_PLUS = 13 | r = min(s + d, 1)，将源像素值与目标像素值相加，并将结果作为新的像素值。 |
+| ARKUI_BLEND_MODE_MODULATE = 14 | r = s * d，将源像素与目标像素进行乘法运算，并将结果作为新的像素值。 |
+| ARKUI_BLEND_MODE_SCREEN = 15 | r = s + d - s * d，将两个图像的像素值相加，然后减去它们的乘积来实现混合。 |
+| ARKUI_BLEND_MODE_OVERLAY = 16 | 根据目标像素来决定使用MULTIPLY混合模式还是SCREEN混合模式。 |
+| ARKUI_BLEND_MODE_DARKEN = 17 | rc = s + d - max(s * da, d * sa), ra = kSrcOver，当两个颜色重叠时，较暗的颜色会覆盖较亮的颜色。 |
+| ARKUI_BLEND_MODE_LIGHTEN = 18 | rc = s + d - min(s * da, d * sa), ra = kSrcOver，将源图像和目标图像中的像素进行比较，选取两者中较亮的像素作为最终的混合结果。|
+| ARKUI_BLEND_MODE_COLOR_DODGE = 19 | 使目标像素变得更亮来反映源像素。 |
+| ARKUI_BLEND_MODE_COLOR_BURN = 20 | 使目标像素变得更暗来反映源像素。 |
+| ARKUI_BLEND_MODE_HARD_LIGHT = 21 | 根据源像素的值来决定目标像素变得更亮或者更暗。根据源像素来决定使用MULTIPLY混合模式还是SCREEN混合模式。 |
+| ARKUI_BLEND_MODE_SOFT_LIGHT = 22 | 根据源像素来决定使用LIGHTEN混合模式还是DARKEN混合模式。 |
+| ARKUI_BLEND_MODE_DIFFERENCE = 23 | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver，对比源像素和目标像素，亮度更高的像素减去亮度更低的像素，产生高对比度的效果。 |
+| ARKUI_BLEND_MODE_EXCLUSION = 24 | rc = s + d - two(s * d), ra = kSrcOver，对比源像素和目标像素，亮度更高的像素减去亮度更低的像素，产生柔和的效果。 |
+| ARKUI_BLEND_MODE_MULTIPLY = 25 | r = s * (1 - da) + d * (1 - sa) + s * d，将源图像与目标图像进行乘法混合，得到一张新的图像。 |
+| ARKUI_BLEND_MODE_HUE = 26 | 保留源图像的亮度和饱和度，但会使用目标图像的色调来替换源图像的色调。 |
+| ARKUI_BLEND_MODE_SATURATION = 27 | 保留目标像素的亮度和色调，但会使用源像素的饱和度来替换目标像素的饱和度。 |
+| ARKUI_BLEND_MODE_COLOR = 28 | 保留源像素的饱和度和色调，但会使用目标像素的亮度来替换源像素的亮度。 |
+| ARKUI_BLEND_MODE_LUMINOSITY = 29 | 保留目标像素的色调和饱和度，但会用源像素的亮度替换目标像素的亮度。 |
 
 ### ArkUI_Direction
 
@@ -2034,8 +2035,8 @@ enum ArkUI_ColorStrategy
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_COLOR_STRATEGY_INVERT = 0 | 前景色为控件背景色的反色。 |
-| ARKUI_COLOR_STRATEGY_AVERAGE | 控件背景阴影色为控件背景阴影区域的平均色。 |
-| ARKUI_COLOR_STRATEGY_PRIMARY | 控件背景阴影色为控件背景阴影区域的主色。 |
+| ARKUI_COLOR_STRATEGY_AVERAGE = 1 | 控件背景阴影色为控件背景阴影区域的平均色。 |
+| ARKUI_COLOR_STRATEGY_PRIMARY = 2 | 控件背景阴影色为控件背景阴影区域的主色。 |
 
 ### ArkUI_FlexAlignment
 
@@ -2173,9 +2174,9 @@ enum ArkUI_ClipType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_CLIP_TYPE_RECTANGLE = 0 | 矩形类型。 |
-| ARKUI_CLIP_TYPE_CIRCLE | 圆形类型。 |
-| ARKUI_CLIP_TYPE_ELLIPSE | 椭圆形类型。 |
-| ARKUI_CLIP_TYPE_PATH | 路径类型。 |
+| ARKUI_CLIP_TYPE_CIRCLE = 1 | 圆形类型。 |
+| ARKUI_CLIP_TYPE_ELLIPSE = 2 | 椭圆形类型。 |
+| ARKUI_CLIP_TYPE_PATH = 3 | 路径类型。 |
 
 ### ArkUI_ShapeType
 
@@ -2193,9 +2194,9 @@ enum ArkUI_ShapeType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_SHAPE_TYPE_RECTANGLE = 0 | 矩形类型。 |
-| ARKUI_SHAPE_TYPE_CIRCLE | 圆形类型。 |
-| ARKUI_SHAPE_TYPE_ELLIPSE | 椭圆形类型。 |
-| ARKUI_SHAPE_TYPE_PATH | 路径类型。 |
+| ARKUI_SHAPE_TYPE_CIRCLE = 1 | 圆形类型。 |
+| ARKUI_SHAPE_TYPE_ELLIPSE = 2 | 椭圆形类型。 |
+| ARKUI_SHAPE_TYPE_PATH = 3 | 路径类型。 |
 
 ### ArkUI_LinearGradientDirection
 
@@ -2205,7 +2206,6 @@ enum ArkUI_LinearGradientDirection
 
 **描述：**
 
-
 定义渐变方向结构。
 
 **起始版本：** 12
@@ -2213,15 +2213,15 @@ enum ArkUI_LinearGradientDirection
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0 | 向左渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_TOP | 向上渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT | 向右渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM | 向下渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP | 向左上渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM | 向左下渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP | 向右上渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM | 向右下渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_NONE | 不渐变。 |
-| ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM | 自定义渐变方向. |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_TOP = 1 | 向上渐变。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT = 2 | 向右渐变。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM = 3 | 向下渐变。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP = 4 | 向左上渐变。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM = 5 | 向左下渐变。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP = 6 | 向右上渐变。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM = 7 | 向右下渐变。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_NONE = 8 | 不渐变。 |
+| ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM = 9 | 自定义渐变方向. |
 
 ### ArkUI_WordBreak
 
@@ -2296,9 +2296,9 @@ enum ArkUI_TransitionEdge
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_TRANSITION_EDGE_TOP = 0 | 窗口的上边缘。 |
-| ARKUI_TRANSITION_EDGE_BOTTOM | 窗口的下边缘。 |
-| ARKUI_TRANSITION_EDGE_START | 窗口的左边缘。 |
-| ARKUI_TRANSITION_EDGE_END | 窗口的右边缘。 |
+| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | 窗口的下边缘。 |
+| ARKUI_TRANSITION_EDGE_START = 2 | 窗口的左边缘。 |
+| ARKUI_TRANSITION_EDGE_END = 3 | 窗口的右边缘。 |
 
 ### ArkUI_FinishCallbackType
 
@@ -2316,7 +2316,7 @@ enum ArkUI_FinishCallbackType
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FINISH_CALLBACK_REMOVED = 0 | 当整个动画结束并立即删除时，将触发回调。 |
-| ARKUI_FINISH_CALLBACK_LOGICALLY | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。 |
+| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | 当动画在逻辑上处于下降状态，但可能仍处于其长尾状态时，将触发回调。 |
 
 ### ArkUI_ListItemAlignment
 
@@ -2353,7 +2353,7 @@ enum ArkUI_BlendApplyType
 | 枚举项 | 描述 |
 | -- | -- |
 | BLEND_APPLY_TYPE_FAST = 0 | 在目标图像上按顺序混合视图的内容. |
-| BLEND_APPLY_TYPE_OFFSCREEN | 将此组件和子组件内容绘制到离屏画布上，然后整体进行混合. |
+| BLEND_APPLY_TYPE_OFFSCREEN = 1 | 将此组件和子组件内容绘制到离屏画布上，然后整体进行混合. |
 
 ### ArkUI_LengthMetricUnit
 
@@ -2537,8 +2537,8 @@ enum ArkUI_ButtonType
 | 枚举项 | 描述                      |
 | -- |-------------------------|
 | ARKUI_BUTTON_TYPE_NORMAL = 0 | 普通按钮，默认不带圆角。            |
-| ARKUI_BUTTON_TYPE_CAPSULE | 胶囊型按钮，圆角默认为高度的一半。       |
-| ARKUI_BUTTON_TYPE_CIRCLE | 圆形按钮。                   |
+| ARKUI_BUTTON_TYPE_CAPSULE = 1 | 胶囊型按钮，圆角默认为高度的一半。       |
+| ARKUI_BUTTON_TYPE_CIRCLE = 2 | 圆形按钮。                   |
 | ARKUI_BUTTON_ROUNDED_RECTANGLE = 8 | 圆角矩形按钮。<br>**起始版本：** 19 |
 
 ### ArkUI_RenderFit
@@ -2557,21 +2557,21 @@ enum ArkUI_RenderFit
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_RENDER_FIT_CENTER = 0 | 保持动画终态的内容大小，并且内容始终与组件保持中心对齐。 |
-| ARKUI_RENDER_FIT_TOP | 保持动画终态的内容大小，并且内容始终与组件保持顶部中心对齐。 |
-| ARKUI_RENDER_FIT_BOTTOM | 保持动画终态的内容大小，并且内容始终与组件保持底部中心对齐。 |
-| ARKUI_RENDER_FIT_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左侧对齐。 |
-| ARKUI_RENDER_FIT_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右侧对齐。 |
-| ARKUI_RENDER_FIT_TOP_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。 |
-| ARKUI_RENDER_FIT_TOP_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右上角对齐。 |
-| ARKUI_RENDER_FIT_BOTTOM_LEFT | 保持动画终态的内容大小，并且内容始终与组件保持左下角对齐。 |
-| ARKUI_RENDER_FIT_BOTTOM_RIGHT | 保持动画终态的内容大小，并且内容始终与组件保持右下角对齐。 |
-| ARKUI_RENDER_FIT_RESIZE_FILL | 不考虑动画终态内容的宽高比，并且内容始终缩放到组件的大小。 |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内，且与组件保持中心对齐。 |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内。当组件宽方向有剩余时，内容与组件保持左侧对齐，当组件高方向有剩余时，内容与组件保持顶部对齐。 |
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内。当组件宽方向有剩余时，内容与组件保持右侧对齐，当组件高方向有剩余时，内容与组件保持底部对齐。 |
-| ARKUI_RENDER_FIT_RESIZE_COVER | 保持动画终态内容的宽高比进行缩小或放大，使内容两边都大于或等于组件两边，且与组件保持中心对齐，显示内容的中间部分。 |
-| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT | 保持动画终态内容的宽高比进行缩小或放大，使内容的两边都恰好大于或等于组件两边。当内容宽方向有剩余时，内容与组件保持左侧对齐，显示内容的左侧部分。当内容高方向有剩余时，内容与组件保持顶部对齐，显示内容的顶侧部分。 |
-| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT | 保持动画终态内容的宽高比进行缩小或放大，使内容的两边都恰好大于或等于组件两边。当内容宽方向有剩余时，内容与组件保持右侧对齐，显示内容的右侧部分。当内容高方向有剩余时，内容与组件保持底部对齐，显示内容的底侧部分。 |
+| ARKUI_RENDER_FIT_TOP = 1 | 保持动画终态的内容大小，并且内容始终与组件保持顶部中心对齐。 |
+| ARKUI_RENDER_FIT_BOTTOM = 2 | 保持动画终态的内容大小，并且内容始终与组件保持底部中心对齐。 |
+| ARKUI_RENDER_FIT_LEFT = 3 | 保持动画终态的内容大小，并且内容始终与组件保持左侧对齐。 |
+| ARKUI_RENDER_FIT_RIGHT = 4 | 保持动画终态的内容大小，并且内容始终与组件保持右侧对齐。 |
+| ARKUI_RENDER_FIT_TOP_LEFT = 5 | 保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。 |
+| ARKUI_RENDER_FIT_TOP_RIGHT = 6 | 保持动画终态的内容大小，并且内容始终与组件保持右上角对齐。 |
+| ARKUI_RENDER_FIT_BOTTOM_LEFT = 7 | 保持动画终态的内容大小，并且内容始终与组件保持左下角对齐。 |
+| ARKUI_RENDER_FIT_BOTTOM_RIGHT = 8 | 保持动画终态的内容大小，并且内容始终与组件保持右下角对齐。 |
+| ARKUI_RENDER_FIT_RESIZE_FILL = 9 | 不考虑动画终态内容的宽高比，并且内容始终缩放到组件的大小。 |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN = 10 | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内，且与组件保持中心对齐。 |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT = 11 | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内。当组件宽方向有剩余时，内容与组件保持左侧对齐，当组件高方向有剩余时，内容与组件保持顶部对齐。 |
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT = 12 | 保持动画终态内容的宽高比进行缩小或放大，使内容完整显示在组件内。当组件宽方向有剩余时，内容与组件保持右侧对齐，当组件高方向有剩余时，内容与组件保持底部对齐。 |
+| ARKUI_RENDER_FIT_RESIZE_COVER = 13 | 保持动画终态内容的宽高比进行缩小或放大，使内容两边都大于或等于组件两边，且与组件保持中心对齐，显示内容的中间部分。 |
+| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT = 14 | 保持动画终态内容的宽高比进行缩小或放大，使内容的两边都恰好大于或等于组件两边。当内容宽方向有剩余时，内容与组件保持左侧对齐，显示内容的左侧部分。当内容高方向有剩余时，内容与组件保持顶部对齐，显示内容的顶侧部分。 |
+| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT = 15 | 保持动画终态内容的宽高比进行缩小或放大，使内容的两边都恰好大于或等于组件两边。当内容宽方向有剩余时，内容与组件保持右侧对齐，显示内容的右侧部分。当内容高方向有剩余时，内容与组件保持底部对齐，显示内容的底侧部分。 |
 
 ### ArkUI_SwiperIndicatorType
 
@@ -2607,9 +2607,9 @@ enum ArkUI_AnimationDirection
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | 动画正向循环播放。 |
-| ARKUI_ANIMATION_DIRECTION_REVERSE | 动画反向循环播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE | 动画交替循环播放，奇数次正向播放，偶数次反向播放。 |
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE | 动画反向交替循环播放，奇数次反向播放，偶数次正向播放。 |
+| ARKUI_ANIMATION_DIRECTION_REVERSE = 1 | 动画反向循环播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | 动画交替循环播放，奇数次正向播放，偶数次反向播放。 |
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | 动画反向交替循环播放，奇数次反向播放，偶数次正向播放。 |
 
 ### ArkUI_ListItemSwipeActionState
 
@@ -2680,10 +2680,10 @@ enum ArkUI_AnimationStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_STATUS_INITIAL | 动画初始状态。 |
-| ARKUI_ANIMATION_STATUS_RUNNING | 动画处于播放状态。 |
-| ARKUI_ANIMATION_STATUS_PAUSED | 动画处于暂停状态。 |
-| ARKUI_ANIMATION_STATUS_STOPPED | 动画处于停止状态。 |
+| ARKUI_ANIMATION_STATUS_INITIAL = 0 | 动画初始状态。 |
+| ARKUI_ANIMATION_STATUS_RUNNING = 1 | 动画处于播放状态。 |
+| ARKUI_ANIMATION_STATUS_PAUSED = 2 | 动画处于暂停状态。 |
+| ARKUI_ANIMATION_STATUS_STOPPED = 3 | 动画处于停止状态。 |
 
 ### ArkUI_AnimationFillMode
 
@@ -2700,10 +2700,10 @@ enum ArkUI_AnimationFillMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ANIMATION_FILL_MODE_NONE | 动画未执行时不会将任何样式应用于目标，动画播放完成之后恢复初始默认状态。 |
-| ARKUI_ANIMATION_FILL_MODE_FORWARDS | 目标将保留动画执行期间最后一个关键帧的状态。 |
-| ARKUI_ANIMATION_FILL_MODE_BACKWARDS | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在delay期间保留此值。 |
-| ARKUI_ANIMATION_FILL_MODE_BOTH | 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
+| ARKUI_ANIMATION_FILL_MODE_NONE = 0 | 动画未执行时不会将任何样式应用于目标，动画播放完成之后恢复初始默认状态。 |
+| ARKUI_ANIMATION_FILL_MODE_FORWARDS = 1 | 目标将保留动画执行期间最后一个关键帧的状态。 |
+| ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | 动画将在应用于目标时立即应用第一个关键帧中定义的值，并在delay期间保留此值。 |
+| ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | 动画将遵循Forwards和Backwards的规则，从而在两个方向上扩展动画属性。 |
 
 ### ArkUI_ErrorCode
 
@@ -3203,8 +3203,8 @@ enum ArkUI_FocusPriority
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_FOCUS_PRIORITY_AUTO  = 0 | 默认优先级。 |
-| ARKUI_FOCUS_PRIORITY_PRIOR   | 先前的优先级。 |
-| ARKUI_FOCUS_PRIORITY_PREVIOUS   | 上一个焦点优先级。 |
+| ARKUI_FOCUS_PRIORITY_PRIOR = 2000   | 容器内优先获焦的优先级。 |
+| ARKUI_FOCUS_PRIORITY_PREVIOUS = 3000   | 上一次容器整体失焦时获焦节点的优先级。 |
 
 ### ArkUI_MenuPolicy
 
@@ -3246,7 +3246,7 @@ enum ArkUI_ResponseRegionSupportedTool
 
 ### ArkUI_TextMenuItemId
 
-```cc
+```c
 enum ArkUI_TextMenuItemId
 ```
 
@@ -3316,7 +3316,7 @@ enum ArkUI_TextResponseType
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单，此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
 
 ### ArkUI_MarqueeStartPolicy
-```
+```c
 enum ArkUI_MarqueeStartPolicy
 ```
 
@@ -3332,7 +3332,7 @@ enum ArkUI_MarqueeStartPolicy
 | ARKUI_MARQUEESTARTPOLICY_ONFOCUS = 1 | 获焦以及鼠标悬浮时开始滚动。|
 
 ### ArkUI_MarqueeUpdatePolicy
-```
+```c
 enum ArkUI_MarqueeUpdatePolicy
 ```
 
@@ -3427,7 +3427,7 @@ enum ArkUI_RenderStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_RENDERSTRATEGY_FAST  = 0 | 	在线绘制模式。 |
+| ARKUI_RENDERSTRATEGY_FAST  = 0 | 在线绘制模式。 |
 | ARKUI_RENDERSTRATEGY_OFFSCREEN = 1 | 离屏绘制模式。 |
 
 
@@ -11788,3 +11788,83 @@ ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_Text
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) | 更新策略。|
+
+### OH_ArkUI_SelectedDragPreviewStyle_Create()
+
+```c
+ArkUI_SelectedDragPreviewStyle* OH_ArkUI_SelectedDragPreviewStyle_Create();
+```
+
+**描述**
+
+创建选中状态下拖拽文本预览样式对象。
+
+**起始版本：** 23
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
+
+
+### OH_ArkUI_SelectedDragPreviewStyle_Dispose()
+
+```c
+void OH_ArkUI_SelectedDragPreviewStyle_Dispose(ArkUI_SelectedDragPreviewStyle* config)
+```
+
+**描述**
+
+销毁选中状态下拖拽文本预览样式对象。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* config | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
+
+### OH_ArkUI_SelectedDragPreviewStyle_SetColor()
+
+```c
+void  OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle* config, uint32_t color);
+```
+
+**描述**
+
+设置选中态拖拽文本预览样式的背景色。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* config | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
+| uint32_t color  | 选中态拖拽文本预览样式的的背景，格式为RGBA。|
+
+### OH_ArkUI_SelectedDragPreviewStyle_GetColor()
+
+```c
+uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewStyle* config)
+```
+
+**描述**
+
+获取选中态拖拽文本预览样式的背景色。
+
+**起始版本：** 23
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)* config | 指向ArkUI_SelectedDragPreviewStyle对象的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| uint32_t color | 选中态拖拽文本预览样式的的背景，格式为RGBA。 |

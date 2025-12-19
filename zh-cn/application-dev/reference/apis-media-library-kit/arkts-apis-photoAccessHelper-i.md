@@ -10,6 +10,12 @@
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
+## 导入模块
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+```
+
 ## MediaChangeRequest<sup>11+</sup>
 
 媒体变更请求，资产变更请求和相册变更请求的父类型。
@@ -89,6 +95,7 @@ title参数的规格如下：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let textInfo: photoAccessHelper.TextContextInfo = {

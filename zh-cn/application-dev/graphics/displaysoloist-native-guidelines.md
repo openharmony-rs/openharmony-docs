@@ -203,7 +203,7 @@ libnative_display_soloist.so
                // 120Hz绘制时，每帧移动的距离为4像素
                render->ConstructPath(4, 4, render->defaultOffsetY);
            }
-     	 // ...
+       // ...
        }
    }
    ```
@@ -366,5 +366,5 @@ libnative_display_soloist.so
 
 针对可变帧率的开发，有以下相关实例可供参考：
 
-- [DisplaySoloist分级管控 (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/graphic/DisplaySoloist)
+- [DisplaySoloist分级管控 (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySoloist)
 <!--RP1End-->
