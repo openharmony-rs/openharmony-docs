@@ -3472,6 +3472,7 @@
           - [ArkUI_EventModule](reference/apis-arkui/capi-arkui-eventmodule.md)
           - [WindowManager](reference/apis-arkui/capi-windowmanager.md)
           - [OH_DisplayManager](reference/apis-arkui/capi-oh-displaymanager.md)
+          - [ArkUI_RenderNodeUtils](reference/apis-arkui/capi-arkui-rendernodeutils.md)
         - 头文件<!--arkui-headerfile-->
           - [drag_and_drop.h](reference/apis-arkui/capi-drag-and-drop-h.md)
           - [drawable_descriptor.h](reference/apis-arkui/capi-drawable-descriptor-h.md)
