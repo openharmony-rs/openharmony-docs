@@ -6898,7 +6898,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 });
 ```
 
-## notificationManager.setBadgeDisplayStatusByBundles<sup>22+</sup>
+## notificationManager.setBadgeDisplayStatusByBundles<sup>21+</sup>
 
 setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<void\>
 
@@ -6975,7 +6975,7 @@ try{
 };
 ```
 
-## notificationManager.getBadgeDisplayStatusByBundles<sup>22+</sup>
+## notificationManager.getBadgeDisplayStatusByBundles<sup>21+</sup>
 
 getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean>>
 
@@ -7061,7 +7061,7 @@ try{
 };
 ```
 
-## notificationManager.setReminderInfoByBundles<sup>22+</sup>
+## notificationManager.setReminderInfoByBundles<sup>21+</sup>
 
 setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Promise\<void\>
 
@@ -7081,7 +7081,7 @@ setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Prom
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| reminderInfos | Array<[NotificationReminderInfo](#notificationreminderinfo22)> | 是 | 设置应用通知提醒信息的列表。 |
+| reminderInfos | Array<[NotificationReminderInfo](#notificationreminderinfo21)> | 是 | 设置应用通知提醒信息的列表。 |
 
 **返回值：**
 
@@ -7147,7 +7147,7 @@ try{
 };
 ```
 
-## notificationManager.getReminderInfoByBundles<sup>22+</sup>
+## notificationManager.getReminderInfoByBundles<sup>21+</sup>
 
 getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<NotificationReminderInfo\>\>
 
@@ -7173,7 +7173,7 @@ getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<Notif
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise<Array<[NotificationReminderInfo](#notificationreminderinfo22)>> | Promise对象，返回包含应用提醒信息的Promise对象。 |
+| Promise<Array<[NotificationReminderInfo](#notificationreminderinfo21)>> | Promise对象，返回包含应用提醒信息的Promise对象。 |
 
 **错误码**：
 
@@ -7193,7 +7193,6 @@ getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<Notif
 ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let bundles: Array<notificationManager.BundleOption> = [
     {
@@ -7815,7 +7814,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | --- | --- |
 | [_NotificationLiveViewContent](js-apis-inner-notification-notificationContent-sys.md#notificationliveviewcontent11) | 描述普通实况通知。 |
 
-## NotificationReminderInfo<sup>22+</sup>
+## NotificationReminderInfo<sup>21+</sup>
 
 描述指定应用提醒方式信息。
 
