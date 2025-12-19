@@ -21,6 +21,18 @@
 
 2. 定义和构建DisplaySync对象。
    <!-- @[display_sync_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct Index {
+     // ...
+   
+     private backDisplaySyncSlow: displaySync.DisplaySync | undefined = undefined;
+     private backDisplaySyncFast: displaySync.DisplaySync | undefined = undefined;
+     // ...
+   }
+   ```
 
 3. 定义两个文本组件。
    <!-- @[display_sync_create_text_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DispalySync/CustomDrawDisplaySync.ets) -->
