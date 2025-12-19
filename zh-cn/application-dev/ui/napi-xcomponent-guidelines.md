@@ -649,10 +649,11 @@ Native侧
 1. 在界面中定义XComponent。
 
     <!-- @[page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/ets/pages/PageThree.ets) -->
-
+    
     ``` TypeScript
     import native from 'libnativerender.so';
-    // ···
+    import { common } from '@kit.AbilityKit';
+    // ...
     @Component
     export struct PageThree {
       @State isShow: boolean = true;
@@ -661,10 +662,12 @@ Native侧
       @State expected: number = 60;
       needSoftKeyboard: boolean = false;
       @State needSoftKeyboardState: string = 'needSoftKeyboard=' + this.needSoftKeyboard;
-      @State text: string = '单指点击XComponent软键盘消失';
+      private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      // 请在resources\base\element\string.json文件中配置name为'pagethree_text1' ，value为非空字符串的资源
+      @State text: string = this.context.resourceManager.getStringByNameSync('pagethree_text1');
       controller: TextInputController = new TextInputController();
       myNodeController: MyNodeController = new MyNodeController();
-
+    
       build() {
         NavDestination() {
         Column() {
@@ -691,8 +694,9 @@ Native侧
                 .defaultFocus(true)
             }
           }.height(200)
-
-          Button('创建/销毁').onClick(() => {
+    
+          // 请将$r('app.string.pagethree_text2')替换为实际资源文件，在本示例中该资源文件的value值为"创建/销毁"
+          Button($r('app.string.pagethree_text2')).onClick(() => {
             this.isShow = !this.isShow;
           }).width('50%')
             .margin({
@@ -701,9 +705,10 @@ Native侧
               left: 12,
               right: 12
             })
-
+    
           Column() {
-            Text('期望帧率设置：')
+            // 请将$r('app.string.pagethree_text3')替换为实际资源文件，在本示例中该资源文件的value值为"期望帧率设置："
+            Text($r('app.string.pagethree_text3'))
               .textAlign(TextAlign.Start)
               .fontSize(15)
               .border({ width: 1 })
@@ -744,13 +749,15 @@ Native侧
             }).width('100%')
               .id('expectedSlider')
           }.backgroundColor('#F0FAFF')
-
+    
           Button(this.needSoftKeyboardState)
             .onClick(() => {
               this.needSoftKeyboard = !this.needSoftKeyboard;
               this.needSoftKeyboardState = 'needSoftKeyboard=' + this.needSoftKeyboard;
               native.setNeedSoftKeyboard(this.myNodeController.xComponentId, this.needSoftKeyboard);
-              this.text = this.needSoftKeyboard ? '单指点击XComponent软键盘不消失' : '单指点击XComponent软键盘消失'
+              // 请在resources\base\element\string.json文件中配置name为'pagethree_text1'和'pagethree_text4' ，value为非空字符串的资源
+              this.text = this.needSoftKeyboard ? this.context.resourceManager.getStringByNameSync('pagethree_text4')
+                : this.context.resourceManager.getStringByNameSync('pagethree_text1')
             })
             .width('50%')
             .margin({
@@ -759,7 +766,7 @@ Native侧
               left: 12,
               right: 12
             })
-          // ···
+          // ...
         }
         .width('100%')
       }

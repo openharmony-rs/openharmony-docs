@@ -689,13 +689,13 @@ List组件初始化时，可以通过scroller参数绑定一个[Scroller](../ref
 Stack({ alignContent: Alignment.Bottom }) {
   // 将listScroller用于初始化List组件的scroller参数，完成listScroller与列表的绑定。
   List({ space: 20, scroller: this.listScroller }) {
-  // ···
+    // ...
   }
 
   Button() {
-  // ···
+    // ...
   }
-  // ···
+  // ...
   .onClick(() => {
     // 点击按钮时，指定跳转位置，返回列表顶部
     this.listScroller.scrollToIndex(0);
@@ -841,7 +841,7 @@ ListItem() {
     position: BadgePosition.RightTop,
     style: { badgeSize: 16, badgeColor: '#FA2A2D' }
   }) {
-  // ···
+    // ...
   }
 }
 ```

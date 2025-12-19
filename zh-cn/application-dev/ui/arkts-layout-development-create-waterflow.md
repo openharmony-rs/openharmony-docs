@@ -40,7 +40,8 @@ itemFoot() {
   Row() {
     LoadingProgress()
       .color(Color.Blue).height(50).aspectRatio(1).width('20%')
-    Text(`正在加载`)
+    // 请将$r('app.string.waterFlow_text1')替换为实际资源文件，在本示例中该资源文件的value值为"正在加载 "
+    Text($r('app.string.waterFlow_text1'))
       .fontSize(20)
       .width('30%')
       .height(50)
@@ -177,14 +178,15 @@ export struct WaterFlowDynamicSwitchover {
   // 通过状态变量设置列数，可以按需修改触发布局更新
   @State columns: number = 2;
 
-// ···
+  // ...
   build() {
     NavDestination() {
       Column({ space: 12 }) {
         // $r('app.string.WaterFlowDynamicSwitchover_title')需要替换为开发者所需的资源文件
         ComponentCard({ title: $r('app.string.WaterFlowDynamicSwitchover_title') }) {
           Column({ space: 2 }) {
-            Button('切换列数').fontSize(20).onClick(() => {
+            // 请将$r('app.string.waterFlow_text2')替换为实际资源文件，在本示例中该资源文件的value值为"切换列数 "
+            Button($r('app.string.waterFlow_text2')).fontSize(20).onClick(() => {
               if (this.columns === 2) {
                 this.columns = 1;
               } else {
@@ -218,7 +220,7 @@ export struct WaterFlowDynamicSwitchover {
                 }, 1000);
               }
             })
-            // ···
+            // ...
           }
         }
       }
