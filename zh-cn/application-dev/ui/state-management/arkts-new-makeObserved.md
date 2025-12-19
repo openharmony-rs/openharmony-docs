@@ -396,14 +396,15 @@ class Info {
 @Entry
 @ComponentV2
 struct Page5 {
-  mapCollect: collections.Map<string, Info> = UIUtils.makeObserved(new collections.Map<string, Info>([['a', new Info(10)], ['b', new Info(20)]]));
+  mapCollect: collections.Map<string, Info> =
+    UIUtils.makeObserved(new collections.Map<string, Info>([['a', new Info(10)], ['b', new Info(20)]]));
 
   build() {
     Column() {
       // this.mapCollect.keys()返回迭代器。Foreach不支持迭代器，所以要Array.from浅拷贝生成数据。
       ForEach(Array.from(this.mapCollect.keys()), (item: string) => {
         Text(`${this.mapCollect.get(item)?.id}`).onClick(() => {
-          let value: Info|undefined = this.mapCollect.get(item);
+          let value: Info | undefined = this.mapCollect.get(item);
           if (value) {
             value.id++;
           }
@@ -570,11 +571,13 @@ class Info {
 struct Page8 {
   @Local message: Info = UIUtils.makeObserved(new Info(20));
 
+  // 当message.id发生变化时，触发该函数调用
   @Monitor('message.id')
   onStrChange(monitor: IMonitor) {
     hilog.info(DOMAIN, TAG, `name change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
+  // 当message.id和message.age发生变化，需要重新计算时，触发该函数调用
   @Computed
   get ageId() {
     hilog.info(DOMAIN, TAG, '---------Computed----------');
@@ -603,7 +606,8 @@ struct Page8 {
       Button('change Info')
         .id('buttonChangeInfo')
         .onClick(() => {
-        this.message = UIUtils.makeObserved(new Info(200));
+          // 返回类实例本身，并赋值给message，触发@Computed和@Monitor
+          this.message = UIUtils.makeObserved(new Info(200));
       })
 
       Child({message: this.message})

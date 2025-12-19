@@ -144,11 +144,13 @@ struct Child {
           this.name = this.message.userName;
         })
       // remove key Message, 会从AppStorageV2中删除key为Message的对象
+      // remove之后，修改父子组件的userID，父子组件同步变化，因为remove只是从AppStorageV2删除，不会影响组件中已存在的数据
       Button('remove key: Message')
         .onClick(() => {
           AppStorageV2.remove<Message>(Message);
         })
       // connect key Message, 会从AppStorageV2中添加key为Message的对象
+      // remove之后，重新添加，修改父子组件的userID，可以发现数据已经不同步，父组件重新connect之后，数据一致
       Button('connect key: Message')
         .onClick(() => {
           this.message = AppStorageV2.connect<Message>(Message, () => new Message(10, 'Lucy'))!;
