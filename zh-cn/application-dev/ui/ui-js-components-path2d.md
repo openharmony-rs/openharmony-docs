@@ -42,8 +42,6 @@ canvas {
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
-
 export default {
     onShow() {
         let ctx = this.$refs.canvas.getContext('2d', {
@@ -145,15 +143,13 @@ text {
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
-
 export default {
     data: {
         ctx: null,
         path1: null,
         path2: null,
         path3: null,
-        isAdd: "addPath2",
+        isAdd: 'addPath2',
         isChange: true,
         textName: 'change'
     },
@@ -174,18 +170,18 @@ export default {
         this.ctx.stroke(this.path1);
     },
     addPath() {
-        if (this.isAdd == "addPath2") {
+        if (this.isAdd == 'addPath2') {
             // 删除指定区域的绘制内容
             this.ctx.clearRect(0, 0, 600, 600);
             this.ctx.beginPath();
             // 将另一个的路径添加到当前路径对象中
             this.path2.addPath(this.path1);
             this.ctx.stroke(this.path2);
-            this.isAdd = "clearPath2";
+            this.isAdd = 'clearPath2';
         } else {
             this.ctx.clearRect(0, 0, 600, 600);
             this.ctx.stroke(this.path1);
-            this.isAdd = "addPath2";
+            this.isAdd = 'addPath2';
         }
     },
     setTransform() {
@@ -197,13 +193,13 @@ export default {
             this.path3.setTransform(2, 0.1, 0.1, 2, 0, 0);
             this.ctx.stroke(this.path3);
             this.isChange = !this.isChange;
-            this.textName = "back"
+            this.textName = 'back';
         } else {
             this.ctx.clearRect(0, 0, 600, 600);
             this.path3.setTransform(0.5, -0.1, -0.1, 0.5, 0, 0);
             this.ctx.stroke(this.path3);
             this.isChange = !this.isChange;
-            this.textName = "change";
+            this.textName = 'change';
         }
     }
 }

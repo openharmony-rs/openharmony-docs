@@ -54,12 +54,6 @@ getContext(type: '2d', options?:  ContextAttrOptions): CanvasRenderingContext2D
 | type                 | string             | 是    | 设置为'2d'，返回值为2D绘制对象，该对象可用于在画布组件上绘制矩形、文本、图片等。 |
 | options<sup>6+</sup> | ContextAttrOptions | 否    | 当前仅支持配置是否开启抗锯齿功能，默认为关闭。                  |
 
-  **表1** ContextAttrOptions
-
-| 参数名       | 类型      | 说明                  |
-| --------- | ------- | ------------------- |
-| antialias | boolean | 是否开启抗锯齿功能，默认为false，表示不开启抗锯齿功能。 |
-
 **返回值：** 
 
 | 类型                                       | 说明                   |
@@ -84,6 +78,16 @@ toDataURL(type?: string, quality?: number): string
 | 类型     | 说明        |
 | ------ | --------- |
 | string | 图像的URL地址。 |
+
+## ContextAttrOptions<sup>6+</sup>
+
+用于配置Canvas渲染上下文属性的选项对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称      | 类型     | 只读   | 可选   | 说明  |
+| -------- | -------- | ------- | ---- | ---------------------------------------- |
+| antialias | boolean | 否   |  是   | 是否开启抗锯齿功能。<br/>true表示开启抗锯齿功能；false表示不开启抗锯齿功能。<br/>默认值：false |
 
 ## 示例
 
