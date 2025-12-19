@@ -19,11 +19,12 @@
 | removeWatcher(watcher: Watcher): void | 移除应用事件观察者，以移除对应用事件的订阅。 |
 
 ## 开发步骤
-以订阅发生Web抛滑丢帧生成ArkWeb抛滑丢帧事件为例，说明开发步骤。
+以触发ArkWeb抛滑丢帧并生成ArkWeb抛滑丢帧事件为例，说明开发步骤。
 1. 在DevEco Studio中新建工程，选择“Empty Ability”，编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块：
 
    ```ts
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   // 该变量在/pages/Index.ets文件中进行定义，用于实现webId到网页url的映射
    import { webIdToUrlMap } from '../pages/Index';
    ```
 
@@ -33,7 +34,7 @@
    hiAppEvent.addWatcher({
       // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
       name: "watcher",
-      // 开发者可以订阅感兴趣的系统事件，此处是订阅了主线程超时事件
+      // 开发者可以订阅感兴趣的系统事件，此处是订阅了ArkWeb抛滑丢帧事件
       appEventFilters: [
         {
           domain: hiAppEvent.domain.OS,
@@ -57,12 +58,12 @@
             // 开发者可以获取到发生卡顿的的web页面对应的Id
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.web_id=${eventInfo.params['web_id']}`);
             // 开发者可以获取抛滑阶段发生丢帧的最大时长
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params. max_app_frame_time=${eventInfo.params['max_app_frame_time']}`);
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.max_app_frame_time=${eventInfo.params['max_app_frame_time']}`);
             const webId: number = eventInfo.params['web_id'];
-            //webIdToUrlMap时定义的变量用于实现url与web_id的映射
+            //webIdToUrlMap时定义的变量用于实现webId到url的映射，通过系统侧获取的web_id查询到发生丢帧的网页
             const currentUrl = webIdToUrlMap.get(webId);
             // 开发者可以获取到发生卡顿的页面
-            hilog.info(0x0000, 'testTag', `HiAppEvent get currentUrl=$ {currentUrl}`);
+            hilog.info(0x0000, 'testTag', `HiAppEvent get currentUrl=${currentUrl}`);
           }
         }
       }
@@ -89,7 +90,7 @@
            })
            .height("100%")
            .onPageBegin((event) => {
-             // 每次跳转到新页面都更新webId到url的映射关系
+             // 每次跳转到新页面都更新webId到url的映射关系，便于后续通过系统侧提供的web_id查询到发生丢帧的网页
              if (event) {
                const newUrl = event.url;
                const webId = this.controller.getWebId();
@@ -121,7 +122,7 @@
     ],
     ```
 
- 5. 点击DevEco Studio界面中的运行按钮，运行应用工程，滑动页面，当系统检测到故障时触发ArkWeb抛滑卡顿事件。
+ 5. 点击DevEco Studio界面中的运行按钮，运行应用工程，滑动页面，当系统检测到故障时触发ArkWeb抛滑丢帧事件。
 
  6. 每次抛滑过程中发生卡顿50ms及以上场景，可以在Log窗口看到对系统事件数据的处理日志：
 
