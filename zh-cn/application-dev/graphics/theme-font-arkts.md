@@ -150,6 +150,29 @@
 8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
 
    <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window } from '@kit.ArkUI';
+   import { updateRenderNodeData } from '../pages/Index';
+   
+   // ...
+   
+   export default class EntryAbility extends UIAbility {
+     preFontId = "";
+     // ...
+   
+     onConfigurationUpdate(newConfig: Configuration): void {
+       let fontId = newConfig.fontId;
+       if (fontId && fontId !== this.preFontId) {
+         this.preFontId = fontId;
+         updateRenderNodeData();
+         // ...
+       }
+     }
+   }
+   ```
 
 
 ## 效果展示
