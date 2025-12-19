@@ -88,33 +88,33 @@ ArkTS-Sta: type ValueType = int | long | double | string | boolean | image.Pixel
 
 **ArkTS-Sta起始版本：** 23
 
-ArkTS-Dyn类型声明:
+ArkTS-Dyn类型声明：
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 表示number的类型。 |
-| string | 表示string的类型。 |
-| boolean | 表示boolean的类型。 |
-| image.PixelMap | 表示[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)的类型。 |
-| Want | 表示[Want](../apis-ability-kit/js-apis-app-ability-want.md)的类型。 |
-| ArrayBuffer | 表示ArrayBuffer的类型。 |
-| object | 表示object的类型。 |
-| null | 表示null。 |
-| undefined | 表示undefined。 |
+| number | number类型。 |
+| string | string类型。 |
+| boolean | boolean类型。 |
+| image.PixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)类型。 |
+| Want | [Want](../apis-ability-kit/js-apis-app-ability-want.md)类型。 |
+| ArrayBuffer | ArrayBuffer类型。 |
+| object | object类型。 |
+| null | null类型。 |
+| undefined | 表示无初始值。 |
 
-ArkTS-Sta类型声明:
+ArkTS-Sta类型声明：
 | 类型 | 说明 |
 | -------- | -------- |
-| int | 表示int的类型。 |
-| long | 表示long的类型。 |
-| double | 表示double的类型。 |
-| string | 表示string的类型。 |
-| boolean | 表示boolean的类型。 |
-| image.PixelMap | 表示[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)的类型。 |
-| Want | 表示[Want](../apis-ability-kit/js-apis-app-ability-want.md)的类型。 |
-| ArrayBuffer | 表示ArrayBuffer的类型。 |
-| RecordData | 表示RecordData的类型。 |
-| null | 表示null。 |
-| undefined | 表示undefined。 |
+| int | int类型。 |
+| long | long类型。 |
+| double | double类型。 |
+| string | string类型。 |
+| boolean | boolean类型。 |
+| image.PixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)类型。 |
+| Want | [Want](../apis-ability-kit/js-apis-app-ability-want.md)类型。 |
+| ArrayBuffer | ArrayBuffer类型。 |
+| RecordData | RecordData类型。 |
+| null | null类型。 |
+| undefined | 表示无初始值。 |
 
 ## UnifiedDataProperties<sup>12+</sup>
 
