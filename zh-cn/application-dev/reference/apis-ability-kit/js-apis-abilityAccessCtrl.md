@@ -457,6 +457,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
     console.info('requestPermissionsFromUser data permissions:' + data.permissions);
     console.info('requestPermissionsFromUser data authResults:' + data.authResults);
     console.info('requestPermissionsFromUser data dialogShownResults:' + data.dialogShownResults);
+    console.info('requestPermissionsFromUser data errorReasons:' + data.errorReasons);
   }
 });
 ```
@@ -475,6 +476,7 @@ atManager.requestPermissionsFromUser(context, ['ohos.permission.CAMERA'], (err: 
     console.info('requestPermissionsFromUser data permissions:' + data?.permissions);
     console.info('requestPermissionsFromUser data authResults:' + data?.authResults);
     console.info('requestPermissionsFromUser data dialogShownResults:' + data?.dialogShownResults);
+    console.info('requestPermissionsFromUser data errorReasons:' + data?.errorReasons);
   }
 });
 ```
