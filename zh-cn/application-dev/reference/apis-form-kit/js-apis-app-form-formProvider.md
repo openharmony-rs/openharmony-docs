@@ -464,7 +464,7 @@ struct Page {
 
 closeFormEditAbility(isMainPage?: boolean): void
 
-打开卡片编辑页。
+关闭卡片编辑页。
 
 **系统能力：** SystemCapability.Ability.Form
 
