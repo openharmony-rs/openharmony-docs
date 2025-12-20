@@ -89,7 +89,7 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 
 startUIAbility(want: Want): Promise&lt;void&gt;
 
-拉起应用自身的UIAbility。使用Promise异步回调。
+拉起卡片所属应用的UIAbility。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -126,14 +126,16 @@ import { FormEditExtensionAbility } from '@kit.FormKit'
 import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
 export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   abilityName: string = 'FormEditSecPageAbility'
+
   onSessionCreate(want: Want, session: UIExtensionContentSession) {
     try {
       this.context.startUIAbility({
         abilityName: 'EntryAbility1',
       }).then(() => {
-        console.log(TAG, `startUIAbility success`);
+        console.info(TAG, `startUIAbility success`);
       });
     } catch (e) {
       console.error(TAG, `startUIAbility failed:${e}`);
@@ -141,5 +143,4 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
     }
   }
 }
-
 ```
