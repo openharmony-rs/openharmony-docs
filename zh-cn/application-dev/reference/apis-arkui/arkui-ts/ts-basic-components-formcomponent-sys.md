@@ -1,10 +1,10 @@
 # FormComponent (系统接口)
-<!--Kit: Form Kit-->	
-<!--Subsystem: Ability-->	
-<!--Owner: @cx983299475-->	
-<!--Designer: @xueyulong-->	
-<!--Tester: @chenmingze-->	
-<!--Adviser: @Brilliantry_Rui-->
+<!--Kit: Form Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @cx983299475-->
+<!--Designer: @xueyulong-->
+<!--Tester: @chenmingze-->
+<!--Adviser: @HelloShuo-->
 
 提供卡片组件，实现卡片的显示功能。
 
@@ -167,7 +167,7 @@ allowUpdate(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | boolean | 是   | 是否允许卡片更新，ture表示允许卡片更新，false表示不允许卡片更新。<br/>默认值：true。 |
+| value  | boolean | 是   | 是否允许卡片更新，true表示允许卡片更新，false表示不允许卡片更新。<br/>默认值：true。 |
 
 ### visibility
 

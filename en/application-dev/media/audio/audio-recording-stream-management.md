@@ -43,16 +43,14 @@ The figure below shows the call relationship of audio stream management.
 
 ![Call relationship of recording stream management](figures/invoking-relationship-recording-stream-mgmt.png)
 
-During application development, first use **getStreamManager()** to create an AudioStreamManager instance. Then call **on('audioCapturerChange')** to listen for audio stream changes and obtain a notification when the audio stream state or device changes. To cancel the listening for these changes, call **off('audioCapturerChange')**. You can call **getCurrentAudioCapturerInfoArray()** to obtain information such as the unique ID of the recording stream, UID of the recording stream client, and stream status.
+During application development, you must call [getStreamManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getstreammanager9) to create an AudioStreamManager instance, through which you can manage audio streams.
 
 For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md).
 
 ## How to Develop
 
 1. Create an AudioStreamManager instance.
-   
-   Before using AudioStreamManager APIs, you must use **getStreamManager()** to create an AudioStreamManager instance.
-     
+
    ```ts
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -61,8 +59,8 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
    let audioStreamManager = audioManager.getStreamManager();
    ```
 
-2. Use **on('audioCapturerChange')** to listen for audio recording stream changes. If the application needs to receive a notification when the audio recording stream state or device changes, it can subscribe to this event.
-     
+2. Use [on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9) to listen for audio recording stream changes. If the application needs to receive a notification when the audio recording stream state or device changes, it can subscribe to this event.
+
    ```ts
    audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
      for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -85,16 +83,14 @@ For details about the APIs, see [AudioStreamManager](../../reference/apis-audio-
    });
    ```
 
-3. (Optional) Use **off('audioCapturerChange')** to cancel listening for audio recording stream changes.
-     
+3. (Optional) Use [off('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiocapturerchange9) to cancel listening for audio recording stream changes.
+
    ```ts
    audioStreamManager.off('audioCapturerChange');
    console.info('CapturerChange Off is called');
    ```
 
-4. (Optional) Call **getCurrentAudioCapturerInfoArray()** to obtain information about the current audio recording stream.
-   
-   This API can be used to obtain the unique ID of the audio recording stream, UID of the audio recording client, audio status, and other information about the AudioCapturer.
+4. (Optional) Use [getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9) to obtain the information about all audio recording streams. This API can be used to obtain the unique ID of the audio recording stream, audio capturer information, and audio capturer device information.
 
    > **NOTE**
    > 

@@ -51,8 +51,8 @@ To release an application to the application market, the bundle must be first pa
 
 > **NOTE**
 >
-> - The App Pack is merely used to release an application to the application market and cannot be directly installed or run on devices.
-> - [Applications are signed](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing), distributed in the cloud, and installed on the device, all of which are performed in units of HAP or HSP.
+> - App Pack is the basic unit used to release an application to the AppGallery.
+> - [Applications are signed](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing) in the units of HAP, HSP, and App Pack, while they are distributed from the cloud and installed on the device in the units of HAP and HSP.
 
 **Figure 3** Compilation, release, and deployment process
 

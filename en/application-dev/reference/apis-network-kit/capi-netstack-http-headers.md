@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_Headers Http_Headers
+```
+
 ## Overview
 
 Defines the header of an HTTP request or response.

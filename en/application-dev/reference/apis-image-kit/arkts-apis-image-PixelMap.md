@@ -31,8 +31,8 @@ import { image } from '@kit.ImageKit';
 
 | Name             | Type   | Read Only| Optional| Description                      |
 | -----------------| ------- | ---- | ---- | -------------------------- |
-| isEditable<sup>7+</sup>        | boolean | Yes  | No  | Whether the PixelMap is editable. **true** if editable, **false** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
-| isStrideAlignment<sup>11+</sup> | boolean | Yes  | No  | Whether the PixelMap uses DMA memory. **true** if the PixelMap uses DMA memory, **false** otherwise.|
+| isEditable<sup>7+</sup>        | boolean | Yes  | No  | Whether the image pixels are editable. **true** if editable, **false** otherwise. The value **false** provides better image rendering and transmission performance.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
+| isStrideAlignment<sup>11+</sup> | boolean | Yes  | No  | Whether the row data of the image is memory aligned. The value **true** means that the row data is memory-aligned, and there may be blank bytes padded at the end of each row to meet alignment requirements. The value **false** means that the row data is not memory-aligned, and rows are packed contiguously with no padding bytes at the end.|
 
 ## readPixelsToBuffer<sup>7+</sup>
 
@@ -2736,7 +2736,7 @@ ArkTS supports memory reclamation. Even if the application does not call **relea
 
 > **NOTE**
 >
-> Release refers to an ArkTS object relinquishing control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
+> Release occurs when an ArkTS object relinquishes control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -2905,7 +2905,7 @@ Checks whether this PixelMap object is released. If released, any attempt to acc
 
 > **NOTE**
 >
-> Release refers to an ArkTS object relinquishing control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
+> Release occurs when an ArkTS object relinquishes control over its associated native object. The memory occupied by the native object is reclaimed only after all managing ArkTS objects have relinquished their control.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 

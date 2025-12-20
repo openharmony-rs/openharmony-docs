@@ -39,7 +39,7 @@
 
 ### OH_Drawing_GpuContextCreateFromGL()
 
-```
+```c
 OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOptions gpuContextOptions)
 ```
 
@@ -70,7 +70,7 @@ OH_Drawing_GpuContext* OH_Drawing_GpuContextCreateFromGL(OH_Drawing_GpuContextOp
 
 ### OH_Drawing_GpuContextCreate()
 
-```
+```c
 OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)
 ```
 
@@ -90,7 +90,7 @@ OH_Drawing_GpuContext* OH_Drawing_GpuContextCreate(void)
 
 ### OH_Drawing_GpuContextDestroy()
 
-```
+```c
 void OH_Drawing_GpuContextDestroy(OH_Drawing_GpuContext* gpuContext)
 ```
 

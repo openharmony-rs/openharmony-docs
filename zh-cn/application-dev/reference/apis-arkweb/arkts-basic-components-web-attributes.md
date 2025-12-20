@@ -753,7 +753,7 @@ copyOptions(value: CopyOptions)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -769,7 +769,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 
 ## textZoomRatio<sup>9+</sup>
 
@@ -1401,8 +1401,8 @@ allowWindowOpenMethod(flag: boolean)
 
 **示例：**
 
-  ```ts
-  // xxx.ets
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 // 在同一界面有两个Web组件。在WebComponent新开窗口时，会跳转到NewWebViewComp。
@@ -1462,7 +1462,7 @@ struct WebComponent {
         }
     }
 }
-  ```
+```
 **HTML示例：**
 
 ```html
@@ -1634,7 +1634,7 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1660,7 +1660,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1782,7 +1782,7 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1808,7 +1808,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1846,7 +1846,7 @@ runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1872,7 +1872,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1978,7 +1978,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 | 参数名   | 类型                                     | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。
+| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。|
 
 **示例：**
 

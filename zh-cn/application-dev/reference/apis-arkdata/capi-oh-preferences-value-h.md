@@ -50,7 +50,7 @@
 
 ### Preference_ValueType
 
-```
+```c
 enum Preference_ValueType
 ```
 
@@ -73,7 +73,7 @@ enum Preference_ValueType
 
 ### OH_PreferencesPair_GetKey()
 
-```
+```c
 const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t index)
 ```
 
@@ -99,7 +99,7 @@ const char *OH_PreferencesPair_GetKey(const OH_PreferencesPair *pairs, uint32_t 
 
 ### OH_PreferencesPair_GetPreferencesValue()
 
-```
+```c
 const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_PreferencesPair *pairs, uint32_t index)
 ```
 
@@ -126,7 +126,7 @@ const OH_PreferencesValue *OH_PreferencesPair_GetPreferencesValue(const OH_Prefe
 
 ### OH_PreferencesValue_GetValueType()
 
-```
+```c
 Preference_ValueType OH_PreferencesValue_GetValueType(const OH_PreferencesValue *object)
 ```
 
@@ -151,7 +151,7 @@ Preference_ValueType OH_PreferencesValue_GetValueType(const OH_PreferencesValue 
 
 ### OH_PreferencesValue_GetInt()
 
-```
+```c
 int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)
 ```
 
@@ -177,7 +177,7 @@ int OH_PreferencesValue_GetInt(const OH_PreferencesValue *object, int *value)
 
 ### OH_PreferencesValue_GetBool()
 
-```
+```c
 int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)
 ```
 
@@ -203,7 +203,7 @@ int OH_PreferencesValue_GetBool(const OH_PreferencesValue *object, bool *value)
 
 ### OH_PreferencesValue_GetString()
 
-```
+```c
 int OH_PreferencesValue_GetString(const OH_PreferencesValue *object, char **value, uint32_t *valueLen)
 ```
 

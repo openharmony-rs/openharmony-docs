@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **Matrix2D** allows you to perform matrix transformation, such as scaling, rotating, and translating.
 
@@ -52,7 +52,7 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Read Only| Optional  | Description|
+| Name| Type| Read-Only| Optional  | Description|
 | ----- | ----- | --------------- | ------ | ------------------------ |
 | scaleX         | number | No| Yes| Horizontal scaling coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
 | scaleY         | number | No| Yes| Vertical scaling coefficient. The value range is not limited.<br>If the value is undefined, it is regarded as an invalid value. If the value is NaN or Infinity, the Matrix2D will be abnormal.|
@@ -63,7 +63,7 @@ Constructs a two-dimensional transformation matrix object. The default value is 
 
 >  **NOTE**
 >  
->  You can use the [px2vp](ts-pixel-units.md#pixel-unit-conversion) API to convert the unit.
+>  You can use the [px2vp](ts-pixel-units.md#px2vpdeprecated) API for unit conversion.
 
 **Example**
 

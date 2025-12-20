@@ -20,9 +20,11 @@
 
 > **说明：**
 >
-> 建议使用文本组件构建当前数值文本和辅助文本。
+> - 支持的子组件类型：系统组件和自定义组件，支持条件渲染控制[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)，不支持循环渲染控制[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)和[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)。
 >
-> 若子组件宽高为百分比形式，则基准范围为以外圆环做为内切圆的矩形。
+> - 建议使用文本组件构建当前数值文本和辅助文本。
+>
+> - 若子组件宽高为百分比形式，则基准范围为以外圆环做为内切圆的矩形。
 
 
 ## 接口
@@ -161,7 +163,7 @@ strokeWidth(length: Length)
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| length | [Length](ts-types.md#length) | 是   | 环形量规图的环形厚度。<br/>默认值：4<br/>单位：vp<br/>**说明：** <br/>设置小于0的值时，按默认值显示。<br/>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br/>不支持百分比。 |
+| length | [Length](ts-types.md#length) | 是   | 环形量规图的环形厚度。<br/>默认值：4<br/>单位：vp<br/>**说明：** <br/>设置小于等于0的值时，按默认值显示。<br/>环形厚度的最大值为圆环的半径，超过最大值按最大值处理。<br/>不支持百分比。 |
 
 ### description<sup>11+</sup>
 

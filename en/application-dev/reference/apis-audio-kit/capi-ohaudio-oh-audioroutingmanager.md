@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```
+typedef struct OH_AudioRoutingManager OH_AudioRoutingManager
+```
+
 ## Overview
 
 The struct describes an audio routing manager, which is used for routing and device-related functions.

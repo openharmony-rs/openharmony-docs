@@ -53,7 +53,7 @@ static napi_value GetPropertyNames(napi_env env, napi_callback_info info)
 {
     // Parse the ArkTS input parameters.
     size_t argc = 1;
-    napi_value args[1] = {nullptr};
+    napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // Obtain the names of all the enumerable properties of the object in the form of a string array and output the string array in result.
     napi_value result;
@@ -80,12 +80,13 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let propertyNames = testNapi.getPropertyNames(obj);
   if (Array.isArray(propertyNames) && propertyNames.length > 0) {
     hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property_names: %{public}s', propertyNames[0]);
@@ -112,7 +113,7 @@ static napi_value SetProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed from ArkTS. The first parameter specifies the object, the second parameter specifies the property name, and the third parameter specifies the property value to set.
     size_t argc = 3;
-    napi_value args[3] = {nullptr};
+    napi_value args[3] = { nullptr };
     napi_status status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     if (status != napi_ok) {
         napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
@@ -143,12 +144,13 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let result = testNapi.setProperty(obj, "code", "hi");
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_property: %{public}s', JSON.stringify(result));
 } catch (error) {
@@ -170,7 +172,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // The first parameter specifies the target object, and the second specifies the property name. Call napi_get_property to obtain the value of the property.
     napi_value result;
@@ -197,12 +199,13 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property: %{public}s', testNapi.getProperty(obj, "message"));
 } catch (error) {
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_property error: %{public}s', error.message);
@@ -223,7 +226,7 @@ static napi_value HasProperty(napi_env env, napi_callback_info info)
 {
     // Pass in two parameters from ArkTS. The first parameter specifies the target object, and the second parameter specifies the property to check.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // Pass the parameters to napi_has_property. If the API is successfully called, convert the result to napi_value and return napi_value. Otherwise, throw an error.
@@ -255,12 +258,13 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let resultFalse = testNapi.hasProperty(obj, 0);
   let resultTrue = testNapi.hasProperty(obj, "data");
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_property: %{public}s', JSON.stringify(resultFalse));
@@ -286,7 +290,7 @@ static napi_value DeleteProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     napi_valuetype valueType;
@@ -323,10 +327,11 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 class Obj {
   first: number = 0;
 }
-let obj: Obj = { first: 1};
+let obj: Obj = { first: 1 };
 hilog.info(0x0000, 'testTag', 'Test Node-API napi_delete_property first: %{public}s', testNapi.deleteProperty(obj, 'first'));
 // Set the new property to unconfigurable.
 // The Object.defineProperty method is not supported in DevEco Studio 4.1.0.400 or later. It must be used in TS.
@@ -351,7 +356,7 @@ static napi_value NapiHasOwnProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     // Check whether the first parameter is an object.
     napi_valuetype valueTypeObj;
@@ -482,7 +487,7 @@ static napi_value NapiGetNamedProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     const int32_t strLength = 32;
     char strKey[strLength] = "";
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -551,7 +556,7 @@ static napi_value NapiHasNamedProperty(napi_env env, napi_callback_info info)
 {
     // Obtain the two parameters passed from ArkTS.
     size_t argc = 2;
-    napi_value args[2] = {nullptr};
+    napi_value args[2] = { nullptr };
     const int32_t strLength = 32;
     char strKey[strLength] = "";
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -586,6 +591,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 interface NestedObj {
   nestedStr: string;
   nestedNum: number;
@@ -638,7 +644,7 @@ static napi_value SetterCallback(napi_env env, napi_callback_info info)
 {
     // Obtain the parameters passed to setter.
     size_t argc = 1;
-    napi_value argv[1] = {nullptr};
+    napi_value argv[1] = { nullptr };
     napi_value result;
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     size_t length = 0;
@@ -718,6 +724,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // Define a property of the method type.
 hilog.info(0x0000, 'testTag', 'Test Node-API define_method_properties:%{public}d', testNapi.defineMethodProperties()
   .defineMethodPropertiesExample());
@@ -745,7 +752,7 @@ static napi_value GetAllPropertyNames(napi_env env, napi_callback_info info)
 {
     // obtain the parameter.
     size_t argc = 1;
-    napi_value args[1] = {nullptr};
+    napi_value args[1] = { nullptr };
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
 
     // Obtain all property names of the given object.
@@ -776,12 +783,13 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 try {
   class Obj {
     data: number = 0
     message: string = ""
   }
-  let obj: Obj = { data: 0, message: "hello world"};
+  let obj: Obj = { data: 0, message: "hello world" };
   let propertyNames = testNapi.getAllPropertyNames(obj);
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_all_property_names: %{public}s', JSON.stringify(propertyNames));
 } catch (error) {

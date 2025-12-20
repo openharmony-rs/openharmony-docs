@@ -167,7 +167,7 @@ static fromHtml(html: string): Promise\<StyledString>
 使用方法参考[示例12（fromHtml和toHtml互相转换）](#示例12fromhtml和tohtml互相转换)。
 
 | 标签名称 | 说明                   |
-|-------------|----------------------------|
+| ------------- | ---------------------------- |
 | \<p\>       | 段落，分隔文本段落         |
 | \<span\>    | 行内文本，支持样式设置。API version 17及之前，\<span\>设置的background-color属性转换不生效。     |
 | \<img\>     | 插入图片                   |
@@ -1236,6 +1236,8 @@ abstract getLeadingMargin(): LengthMetrics
 | first | boolean |  否  | 否  | 当前行是否是段落的首行。<br/>true：首行；false：非首行。 |
 
 ## StyledStringKey枚举说明
+
+范围属性字符串样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

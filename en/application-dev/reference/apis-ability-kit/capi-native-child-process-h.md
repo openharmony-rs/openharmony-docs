@@ -60,12 +60,13 @@ A maximum of 512 child processes can be started through this module and [childPr
 | [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | Registers a callback to listen for child process exit. If the same callback function is registered repeatedly, only one of them is kept.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | Unregisters the callback used to listen for child process exit.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool enableIsolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | Sets whether the child process uses an independent UID. This setting takes effect only when **NativeChildProcess_IsolationMode** is set to **NCP_ISOLATION_MODE_ISOLATED**.|
+| [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid))](#oh_ability_killchildprocess) | - | Terminates a child process created by the current process.|
 
 ## Enum Description
 
 ### Ability_NativeChildProcess_ErrCode
 
-```
+```c
 enum Ability_NativeChildProcess_ErrCode
 ```
 
@@ -89,11 +90,12 @@ Defines an enum for the error codes used by the native child process module.
 | NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | The number of native child processes reaches the maximum.|
 | NCP_ERR_LIB_LOADING_FAILED = 16010007 | The child process fails to load the DLL because the file does not exist or the corresponding method is not implemented or exported.|
 | NCP_ERR_CONNECTION_FAILED = 16010008 | The child process fails to call the OnConnect method of the DLL. An invalid IPC object pointer may be returned.|
-| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | The parent process calls the **OH_Ability_UnregisterNativeChildProcessExitCallback** function to unregister a callback function, but the callback function is not found.|
+| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | The parent process calls the **OH_Ability_UnregisterNativeChildProcessExitCallback** function to unregister a callback function, but the callback function is not found.<br>**Since**: 20|
+| NCP_ERR_INVALID_PID = 16010010 | The specified PID does not exist, does not belong to a child process of the current process, or belongs to a child process started in SELF_FORK mode by calling [childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess).<br>**Since**: 22|
 
 ### NativeChildProcess_IsolationMode
 
-```
+```c
 enum NativeChildProcess_IsolationMode
 ```
 
@@ -113,7 +115,7 @@ Enumerates the sharing modes available for the data sandbox and network environm
 
 ### OH_Ability_CreateChildProcessConfigs()
 
-```
+```c
 Ability_ChildProcessConfigs* OH_Ability_CreateChildProcessConfigs()
 ```
 
@@ -131,7 +133,7 @@ Creates a child process configuration object. When this object is no longer need
 
 ### OH_Ability_DestroyChildProcessConfigs()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_DestroyChildProcessConfigs(Ability_ChildProcessConfigs* configs)
 ```
 
@@ -156,7 +158,7 @@ Destroys a child process configuration object and releases its memory. After thi
 
 ### OH_Ability_ChildProcessConfigs_SetIsolationMode()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationMode(Ability_ChildProcessConfigs* configs, NativeChildProcess_IsolationMode isolationMode)
 ```
 
@@ -182,7 +184,7 @@ Sets the sharing mode of the data sandbox and network environment for a child pr
 
 ### OH_Ability_ChildProcessConfigs_SetIsolationUid()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool isolationUid)
 ```
 
@@ -210,7 +212,7 @@ This setting takes effect only when **NativeChildProcess_IsolationMode** is set 
 
 ### OH_Ability_ChildProcessConfigs_SetProcessName()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetProcessName(Ability_ChildProcessConfigs* configs,const char* processName)
 ```
 
@@ -236,7 +238,7 @@ Sets the process name in a child process configuration object.
 
 ### OH_Ability_OnNativeChildProcessStarted()
 
-```
+```c
 typedef void (*OH_Ability_OnNativeChildProcessStarted)(int errCode, OHIPCRemoteProxy *remoteProxy)
 ```
 
@@ -251,15 +253,15 @@ Defines a callback function for notifying the child process startup result.
 | Name| Description|
 | -- | -- |
 | int errCode | Error code returned by the callback function.<br>[NCP_NO_ERROR](capi-native-child-process-h.md#ability_nativechildprocess_errcode): The child process is created successfully.<br>[NCP_ERR_LIB_LOADING_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode): Loading the DLL file fails or the necessary export function is not implemented in the DLL.<br>[NCP_ERR_CONNECTION_FAILED](capi-native-child-process-h.md#ability_nativechildprocess_errcode): The **OnConnect** method implemented in the DLL does not return a valid IPC stub pointer.<br>For details, see [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode).|
-| [OHIPCRemoteProxy *remoteProxy](../apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md) | Pointer to the IPC object of the child process. If an exception occurs, the value may be nullptr. The pointer must be released by calling [OH_IPCRemoteProxy_Destory](../apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy) when it is no longer needed.|
+| [OHIPCRemoteProxy *remoteProxy](../apis-ipc-kit/capi-ohipcparcel-ohipcremoteproxy.md) | Pointer to the IPC object of the child process. If an exception occurs, the value may be nullptr. The pointer must be released by calling [OH_IPCRemoteProxy_Destroy](../apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy) when it is no longer needed.|
 
 **Reference**
 
-[OH_IPCRemoteProxy_Destory](../apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)
+[OH_IPCRemoteProxy_Destroy](../apis-ipc-kit/capi-ipc-cremote-object-h.md#oh_ipcremoteproxy_destroy)
 
 ### OH_Ability_CreateNativeChildProcess()
 
-```
+```c
 int OH_Ability_CreateNativeChildProcess(const char* libName,OH_Ability_OnNativeChildProcessStarted onProcessStarted)
 ```
 
@@ -296,7 +298,7 @@ The DLL specified must implement and export the following functions:<br>1. OHIPC
 
 ### OH_Ability_CreateNativeChildProcessWithConfigs()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_CreateNativeChildProcessWithConfigs(const char* libName,Ability_ChildProcessConfigs* configs, OH_Ability_OnNativeChildProcessStarted onProcessStarted)
 ```
 
@@ -330,7 +332,7 @@ The DLL specified must implement and export the following functions:<br>1. OHIPC
 
 ### OH_Ability_StartNativeChildProcess()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcess(const char* entry, NativeChildProcess_Args args,NativeChildProcess_Options options, int32_t *pid)
 ```
 
@@ -365,7 +367,7 @@ The following is an example:<br>void Main(NativeChildProcess_Args args);<br>The 
 
 ### OH_Ability_StartNativeChildProcessWithConfigs()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_StartNativeChildProcessWithConfigs(const char* entry, NativeChildProcess_Args args, Ability_ChildProcessConfigs* configs, int32_t *pid)
 ```
 
@@ -396,7 +398,7 @@ The following is an example:<br>void Main(NativeChildProcess_Args args);<br>The 
 
 ### OH_Ability_GetCurrentChildProcessArgs()
 
-```
+```c
 NativeChildProcess_Args* OH_Ability_GetCurrentChildProcessArgs()
 ```
 
@@ -414,7 +416,7 @@ Used by a child process, after being started by calling [OH_Ability_StartNativeC
 
 ### OH_Ability_OnNativeChildProcessExit()
 
-```
+```c
 typedef void (*OH_Ability_OnNativeChildProcessExit)(int32_t pid, int32_t signal)
 ```
 
@@ -439,7 +441,7 @@ Defines a callback to listen for child process exit.
 
 ### OH_Ability_RegisterNativeChildProcessExitCallback()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)
 ```
 
@@ -465,7 +467,7 @@ The parameter must implement the entry function [OH_Ability_OnNativeChildProcess
 
 ### OH_Ability_UnregisterNativeChildProcessExitCallback()
 
-```
+```c
 Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)
 ```
 
@@ -489,3 +491,32 @@ The parameter must implement the entry function [OH_Ability_OnNativeChildProcess
 | Type| Description|
 | -- | -- |
 | [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br>**NCP_ERR_INVALID_PARAM**: An input parameter is invalid.<br>**NCP_ERR_INTERNAL**: An internal error occurs.<br>**NCP_ERR_CALLBACK_NOT_EXIST**: The callback function is not found.<br>For details, see **Ability_NativeChildProcess_ErrCode**.|
+
+### OH_Ability_KillChildProcess()
+
+```c
+Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)
+```
+
+**Description**
+
+Terminates a child process created by the current process.
+
+> **NOTE**
+>
+> This function cannot be used to terminate a child process started in SELF_FORK mode by calling [childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess).
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| int32_t pid | PID of the child process to terminate.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Ability_NativeChildProcess_ErrCode](capi-native-child-process-h.md#ability_nativechildprocess_errcode) | **NCP_NO_ERROR**: The call is successful.<br> **NCP_ERR_SERVICE_ERROR**: Server error.<br>**NCP_ERR_INVALID_PID**: The input PID is invalid.<br>For details, see **Ability_NativeChildProcess_ErrCode**.|

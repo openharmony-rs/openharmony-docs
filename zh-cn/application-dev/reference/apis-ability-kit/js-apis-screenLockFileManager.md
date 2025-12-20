@@ -2,8 +2,8 @@
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @hongjin-li_admin-->
-<!--Designer: @JerryH1011-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
@@ -17,6 +17,17 @@
 ```ts
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
+
+## DataType
+
+枚举，指定锁屏下访问的敏感数据类型。
+
+ **系统能力：** SystemCapability.Security.ScreenLockFileManager
+
+| 名称       | 值         | 说明           |
+| ---------- | ---------- | -------------- |
+| MEDIA_DATA | 0x00000001 | 媒体类型数据。 |
+| ALL_DATA   | 0xffffffff | 所有敏感加密数据。     |
 
 ## AccessStatus
 

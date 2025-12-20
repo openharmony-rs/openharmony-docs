@@ -51,7 +51,7 @@
 
 ### OH_PreferencesDataObserver()
 
-```
+```c
 typedef void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPair *pairs, uint32_t count)
 ```
 
@@ -72,7 +72,7 @@ typedef void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPa
 
 ### OH_Preferences_Open()
 
-```
+```c
 OH_Preferences *OH_Preferences_Open(OH_PreferencesOption *option, int *errCode)
 ```
 
@@ -98,7 +98,7 @@ OH_Preferences *OH_Preferences_Open(OH_PreferencesOption *option, int *errCode)
 
 ### OH_Preferences_Close()
 
-```
+```c
 int OH_Preferences_Close(OH_Preferences *preference)
 ```
 
@@ -123,7 +123,7 @@ int OH_Preferences_Close(OH_Preferences *preference)
 
 ### OH_Preferences_GetInt()
 
-```
+```c
 int OH_Preferences_GetInt(OH_Preferences *preference, const char *key, int *value)
 ```
 
@@ -150,7 +150,7 @@ int OH_Preferences_GetInt(OH_Preferences *preference, const char *key, int *valu
 
 ### OH_Preferences_GetBool()
 
-```
+```c
 int OH_Preferences_GetBool(OH_Preferences *preference, const char *key, bool *value)
 ```
 
@@ -177,7 +177,7 @@ int OH_Preferences_GetBool(OH_Preferences *preference, const char *key, bool *va
 
 ### OH_Preferences_GetString()
 
-```
+```c
 int OH_Preferences_GetString(OH_Preferences *preference, const char *key, char **value, uint32_t *valueLen)
 ```
 
@@ -205,7 +205,7 @@ int OH_Preferences_GetString(OH_Preferences *preference, const char *key, char *
 
 ### OH_Preferences_FreeString()
 
-```
+```c
 void OH_Preferences_FreeString(char *string)
 ```
 
@@ -224,7 +224,7 @@ void OH_Preferences_FreeString(char *string)
 
 ### OH_Preferences_SetInt()
 
-```
+```c
 int OH_Preferences_SetInt(OH_Preferences *preference, const char *key, int value)
 ```
 
@@ -251,7 +251,7 @@ int OH_Preferences_SetInt(OH_Preferences *preference, const char *key, int value
 
 ### OH_Preferences_SetBool()
 
-```
+```c
 int OH_Preferences_SetBool(OH_Preferences *preference, const char *key, bool value)
 ```
 
@@ -278,7 +278,7 @@ int OH_Preferences_SetBool(OH_Preferences *preference, const char *key, bool val
 
 ### OH_Preferences_SetString()
 
-```
+```c
 int OH_Preferences_SetString(OH_Preferences *preference, const char *key, const char *value)
 ```
 
@@ -305,7 +305,7 @@ int OH_Preferences_SetString(OH_Preferences *preference, const char *key, const 
 
 ### OH_Preferences_Delete()
 
-```
+```c
 int OH_Preferences_Delete(OH_Preferences *preference, const char *key)
 ```
 
@@ -335,7 +335,7 @@ OH_Preferences_ErrCode
 
 ### OH_Preferences_RegisterDataObserver()
 
-```
+```c
 int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)
 ```
 
@@ -364,7 +364,7 @@ int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *contex
 
 ### OH_Preferences_UnregisterDataObserver()
 
-```
+```c
 int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)
 ```
 
@@ -397,7 +397,7 @@ OH_Preferences_ErrCode
 
 ### OH_Preferences_IsStorageTypeSupported()
 
-```
+```c
 int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *isSupported)
 ```
 

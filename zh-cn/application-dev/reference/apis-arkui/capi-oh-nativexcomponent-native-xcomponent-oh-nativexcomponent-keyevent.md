@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-```
+```c
 typedef struct OH_NativeXComponent_KeyEvent OH_NativeXComponent_KeyEvent
 ```
 

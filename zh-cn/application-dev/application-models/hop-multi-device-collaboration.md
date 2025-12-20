@@ -136,36 +136,36 @@
     struct Page_CollaborateAbility {
       private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       build() {
-        Column() {
-          //...
-          List({ initialIndex: 0 }) {
+        Row() {
+          Column() {
             //...
-            ListItem() {
-              Row() {
-                //...
-              }
-              .onClick(() => {
-                let want: Want = {
-                  deviceId: getRemoteDeviceId(),
-                  bundleName: 'com.samples.stagemodelabilityinteraction',
-                  abilityName: 'CollaborateAbility',
-                  moduleName: 'entry' // moduleName非必选
-                };
-                // context为发起端UIAbility的AbilityContext
-                this.context.startAbility(want).then(() => {
-                  promptAction.openToast({
-                    message: 'SuccessfulCollaboration'
+            List({ initialIndex: 0 }) {
+              //...
+              ListItem() {
+
+                Button('test').onClick(() => {
+                  let want: Want = {
+                    deviceId: getRemoteDeviceId(),
+                    bundleName: 'com.samples.stagemodelabilityinteraction', //换成本地包名和页面名
+                    abilityName: 'CollaborateAbility',
+                    moduleName: 'entry' // moduleName非必选
+                  };
+                  // context为发起端UIAbility的AbilityContext
+                  this.context.startAbility(want).then(() => {
+                    promptAction.openToast({
+                      message: 'SuccessfulCollaboration'
+                    });
+                  }).catch((err: BusinessError) => {
+                    hilog.error(DOMAIN_NUMBER, TAG, `startAbility err: ` + JSON.stringify(err));
                   });
-                }).catch((err: BusinessError) => {
-                  hilog.error(DOMAIN_NUMBER, TAG, `startAbility err: ` + JSON.stringify(err));
-                });
-              })
+                })
+              }
+              //...
             }
             //...
           }
           //...
         }
-        //...
       }
     }
     ```
@@ -297,7 +297,7 @@
               .onClick(() => {
                 let want: Want = {
                   deviceId: getRemoteDeviceId(),
-                  bundleName: 'com.samples.stagemodelabilityinteraction',
+                  bundleName: 'com.samples.stagemodelabilityinteraction', //替换成本地包名和页面名
                   abilityName: 'ServiceExtAbility',
                   moduleName: 'entry' // moduleName非必选
                 };
@@ -422,7 +422,7 @@
               .onClick(() => {
                 let want: Want = {
                   deviceId: getRemoteDeviceId(),
-                  bundleName: 'com.samples.stagemodelabilityinteraction',
+                  bundleName: 'com.samples.stagemodelabilityinteraction', //替换成本地包名和页面名
                   abilityName: 'CollaborateAbility',
                   moduleName: 'entry' // moduleName非必选
                 };
@@ -479,7 +479,7 @@
 3. 如果已有后台服务，请直接进入下一步；如果没有，则[实现一个后台服务（仅对系统应用开放）](serviceextensionability-sys.md#实现一个后台服务仅对系统应用开放)。
 
 4. 连接一个后台服务。
-   - 实现IAbilityConnection接口。IAbilityConnection提供了以下方法供开发者实现：[onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect)是用来处理连接Service成功的回调，[onDisconnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#ondisconnect)是用来处理Service异常终止的回调，[onFailed()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onfailed)是用来处理连接Service失败的回调。
+   - 实现AbilityConnection接口。AbilityConnection提供了以下方法供开发者实现：[onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect)是用来处理连接Service成功的回调，[onDisconnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#ondisconnect)是用来处理Service异常终止的回调，[onFailed()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onfailed)是用来处理连接Service失败的回调。
    - 设置目标组件参数，包括目标设备ID、Bundle名称、Ability名称。
    - 调用connectServiceExtensionAbility()发起连接。
    - 连接成功，收到目标设备返回的服务句柄。
@@ -570,7 +570,7 @@
               .onClick(() => {
                 let want: Want = {
                   'deviceId': getRemoteDeviceId(),
-                  'bundleName': 'com.samples.stagemodelabilityinteraction',
+                  'bundleName': 'com.samples.stagemodelabilityinteraction', //换成本地包名和页面名
                   'abilityName': 'ServiceExtAbility'
                 };
                 // 建立连接后返回的Id需要保存下来，在解绑服务时需要作为参数传入

@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Array OH_Drawing_Array
+```
+
 ## Overview
 
 Defines a struct for an array object, which is used to store multiple objects of the same type.

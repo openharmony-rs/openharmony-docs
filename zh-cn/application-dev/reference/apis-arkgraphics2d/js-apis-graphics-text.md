@@ -265,7 +265,7 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Button("get fontDesciptor")
+        Button("get fontDescriptor")
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
           .width(300)
@@ -292,7 +292,11 @@ getFontDescriptorsFromPath(path: string | Resource): Promise&lt;Array&lt;FontDes
 
 根据字体文件路径获取字体描述符数组。使用Promise异步回调。
 
-如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
+> **说明：**
+>
+> - 如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
+>
+> - [FontDescriptor](#fontdescriptor14)中的weight字段并不精准对应字体文件内部的字重数值，而是将字体文件中的实际字重四舍五入映射到[FontWeight](#fontweight)枚举值后的结果。例如，字体文件字重350会映射为400，对应枚举为W400。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -320,7 +324,7 @@ import { text } from '@kit.ArkGraphics2D'
 struct GetFontDescriptorsFromPathTest {
   build() {
     Column({ space: 10 }) {
-      Button("get fontDesciptors")
+      Button("get fontDescriptors")
         .onClick(async () => {
           let promise = text.getFontDescriptorsFromPath("file:///system/fonts/NotoSansCJK-Regular.ttc")
           promise.then((fontFullDescriptors) => {

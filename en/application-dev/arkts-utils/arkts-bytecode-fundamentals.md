@@ -193,8 +193,9 @@ In Ark bytecode, a lexical environment may be considered as an array with multip
 
 |xxx|xxx|xxx|xxx|   <-- Current lexical environment.
 ```
-**NOTE**<br>
-The logic related to **lexical** is used in the compiler. As the Ark Compiler evolves, new lexical instruction scenarios may emerge. Existing **lexical** instruction scenarios may no longer involve lexical-related instructions due to requirement evolution and code refactoring.
+> **NOTE**
+>
+> The logic related to **lexical** is used in the compiler. As the Ark Compiler evolves, new lexical instruction scenarios may emerge. Existing **lexical** instruction scenarios may no longer involve lexical-related instructions due to requirement evolution and code refactoring.
 Example:
 ```ts
 // index.ts

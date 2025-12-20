@@ -1,4 +1,10 @@
 # Filter
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @fengluochenai-->
+<!--Designer: @YanSanzo-->
+<!--Tester: @ybhou1993-->
+<!--Adviser: @Brilliantry_Rui-->
 
 
 The advanced filter component allows users to filter data with multiple criteria combined. It consists of a floating bar and filters therein. The floating bar can be expanded to reveal the filters, which come in a multi-line collapsible or multi-line list style. For added convenience, you can append an additional quick filter.
@@ -6,9 +12,9 @@ The advanced filter component allows users to filter data with multiple criteria
 
 > **NOTE**
 >
-> This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> This component is not supported on wearables.
+> - If the **Filter** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **Filter** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **Filter** component.
 
 
 ## Modules to Import
@@ -22,9 +28,6 @@ import { Filter } from '@kit.ArkUI';
 
 Not supported
 
-## Attributes
-The [universal attributes](ts-component-general-attributes.md) are not supported.
-
 ## Filter
 
 Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParams, filterType?: FilterType, onFilterChanged: (filterResults: Array&lt;FilterResult&gt;) =&gt; void, container: ()=&gt; void })
@@ -35,6 +38,8 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
 **Parameters**
 
 
@@ -42,7 +47,7 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 | -------- | -------- | -------- | -------- | -------- |
 | multiFilters | Array&lt;[FilterParams](#filterparams)&gt; | Yes  | \@Prop | List of filter criteria.|
 | additionFilters | [FilterParams](#filterparams) | No  | \@Prop | Additional quick filter.|
-| filterType | [FilterType](#filtertype) | No  | \@Prop | Filter type.|
+| filterType | [FilterType](#filtertype) | No  | \@Prop | Filter type.<br>Default value: **FilterType.LIST_FILTER**.|
 | onFilterChanged | (filterResults: Array&lt;[FilterResult](#filterresult)&gt;) =&gt; void | Yes  | - | Callback invoked when the filter criteria is changed. The input parameter is the list of selected filter criteria.|
 | container | ()=&gt;void | Yes  | \@BuilderParam | Custom content of the filtering result display area, which is passed in a trailing closure.|
 
@@ -52,16 +57,20 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description                                                             |
-| -------- | -------- | -------- |-----------------------------------------------------------------|
-| name | [ResourceStr](ts-types.md#resourcestr) | Yes| Name of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated.             |
-| options | Array&lt;[ResourceStr](ts-types.md#resourcestr)&gt; | Yes| Options of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>The text is truncated with an ellipsis (...) if it is too long.|
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description                                                             |
+| -------- | -------- |----|----|-----------------------------------------------------------------|
+| name | [ResourceStr](ts-types.md#resourcestr) | No | No | Name of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated.             |
+| options | Array&lt;[ResourceStr](ts-types.md#resourcestr)&gt; | No | No | Options of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>The text is truncated with an ellipsis (...) if it is too long.|
 
 ## FilterType
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
@@ -74,11 +83,13 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type| Mandatory| Description                                                                      |
-| -------- | -------- | -------- |--------------------------------------------------------------------------|
-| name | [ResourceStr](ts-types.md#resourcestr) | Yes| Name of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated.                      |
-| index | number | Yes| Index of the selected option of the filter criterion.<br>Value range: an integer no less than -1<br>The default value is **-1**, indicating that there is no selected option. Values less than -1 are treated as no selected option.|
-| value | [ResourceStr](ts-types.md#resourcestr) | Yes| Value of the selected option of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated.                 |
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name| Type| Read-Only| Optional| Description                                                                      |
+| -------- | -------- |---|---|--------------------------------------------------------------------------|
+| name | [ResourceStr](ts-types.md#resourcestr) | No| No| Name of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated.                      |
+| index | number | No| No| Index of the selected option of the filter criterion.<br>Value range: an integer no less than -1<br>The default value is **-1**, indicating that there is no selected option. Values less than -1 are treated as no selected option.|
+| value | [ResourceStr](ts-types.md#resourcestr) | No| No| Value of the selected option of the filter criterion.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated.                 |
 
 ## Events
 The [universal events](ts-component-general-events.md) are not supported.
@@ -119,9 +130,9 @@ struct Index {
         additionFilters: this.additionParam,
         filterType: FilterType.MULTI_LINE_FILTER,
         onFilterChanged: (select: Array<FilterResult>) => {
-          console.log('rec filter change');
+          console.info('rec filter change');
           for (let filter of select) {
-            console.log('name:' + filter.name + ',index:' + filter.index + ',value:' + filter.value);
+            console.info('name:' + filter.name + ',index:' + filter.index + ',value:' + filter.value);
           }
         }
       }) {

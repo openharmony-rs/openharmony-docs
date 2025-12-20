@@ -4,7 +4,7 @@
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 **CanvasPattern** represents an object, created by the [createPattern](ts-canvasrenderingcontext2d.md#createpattern) API, describing an image filling pattern based on the image and repetition mode.
 

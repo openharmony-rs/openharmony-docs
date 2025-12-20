@@ -53,7 +53,9 @@ Before getting started, familiarity with the following basics is helpful.
 
 ### NDK Directory Structure
 
-- **build** folder: contains the predefined toolchain script **ohos.toolchain.cmake**.
+For details about how to obtain the NDK, see <!--RP1-->[Building an NDK Project with CMake](build-with-ndk-cmake.md#downloading-the-ndk)<!--RP1End-->.
+
+- **build** directory: stores the predefined toolchain script file [ohos.toolchain.cmake](build-with-ndk-overview.md#introduction-to-ohostoolchaincmake).
 
   ![](figures/en_image_0000001770128125.png)
 

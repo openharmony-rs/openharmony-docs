@@ -27,28 +27,29 @@ You can use the OH_Drawing_BrushSetBlendMode() API to apply the blend mode to a 
 
 The following uses a brush to set the overlay blend mode as an example (the canvas does not have a background color to prevent the background color from interfering with the blend mode effect. The default black background is used). The key example and effect diagram are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_mixed_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a brush object.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the target pixel color.
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
 // Set the brush effect of the target pixel to the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a rectangle object.
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 600, 600);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value600_, value600_);
 // Draw a rectangle (target pixel).
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Set the source pixel color.
-OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF));
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MIN, RGBA_MIN, 0xFF));
 // Set the blending mode to overlay.
 OH_Drawing_BrushSetBlendMode(brush, OH_Drawing_BlendMode::BLEND_MODE_PLUS);
 // Set the brush effect of the source pixel to the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a point object for the center of the circle.
-OH_Drawing_Point *point = OH_Drawing_PointCreate(600, 600);
+OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
 // Draw a circle (source pixel).
-OH_Drawing_CanvasDrawCircle(canvas, point, 300);
+OH_Drawing_CanvasDrawCircle(canvas, point, value300_);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
 // Destroy objects.
@@ -56,7 +57,6 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_BrushDestroy(brush);
 OH_Drawing_PointDestroy(point);
 ```
-<!-- [ndk_graphics_draw_mixed_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ![image_0000002158744138](figures/image_0000002158744138.png)
 
@@ -75,8 +75,9 @@ You can use the OH_Drawing_CreateDashPathEffect() API to set the path effect. Th
 
 The following uses the dashed line effect of a rectangle as an example. The key example and effect are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a pen.
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // Set the stroke color of the paint.
@@ -91,7 +92,7 @@ OH_Drawing_PenSetPathEffect(pen, pathEffect);
 // Set the pen on the canvas. Ensure that the canvas object has been obtained.
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // Create a rectangle.
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 // Draw the rectangle.
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the paint from the canvas.
@@ -101,7 +102,6 @@ OH_Drawing_PenDestroy(pen);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_PathEffectDestroy(pathEffect);
 ```
-<!-- [ndk_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | Dashed line effect disabled| Dashed line effect enabled|
 | -------- | -------- |
@@ -133,12 +133,13 @@ You can use the OH_Drawing_ShaderEffectCreateLinearGradient() API to create the 
 
 The following uses drawing a rectangle and setting the linear gradient shader effect using a brush as an example. The key example and effect diagram are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Start point
 OH_Drawing_Point *startPt = OH_Drawing_PointCreate(20, 20);
 // End point
-OH_Drawing_Point *endPt = OH_Drawing_PointCreate(900, 900);
+OH_Drawing_Point *endPt = OH_Drawing_PointCreate(value900_, value900_);
 // Color array
 uint32_t colors[] = {0xFFFFFF00, 0xFFFF0000, 0xFF0000FF};
 // Relative position array
@@ -152,8 +153,8 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // Set the brush on the canvas. Ensure that the canvas object has been obtained.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
-  // Draw a rectangle.
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+ // Draw the rectangle.
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -164,7 +165,6 @@ OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(startPt);
 OH_Drawing_PointDestroy(endPt);
 ```
-<!-- [ndk_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 The following figure shows the rectangle with the linear gradient shader effect.
 
@@ -179,16 +179,17 @@ The implementation method is similar to that of the linear gradient shader. The 
 
 The following uses drawing a rectangle and setting the radial gradient shader effect using a brush as an example. The key example and effect diagram are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Coordinates of the center point
-OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(500, 500);
+OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(value500_, value500_);
 // Radius
-float radius = 600;
+float radius = value600_;
 // Color array
 uint32_t gColors[] = {0xFFFF0000, 0xFF00FF00, 0xFF0000FF};
 // Relative position array
-float gPos[] = {0.0f, 0.25f, 0.75f};
+float_t gPos[] = {0.0f, 0.25f, 0.75f};
 // Create a radial gradient shader effect.
 OH_Drawing_ShaderEffect *colorShaderEffect =
     OH_Drawing_ShaderEffectCreateRadialGradient(centerPt, radius, gColors, gPos, 3, OH_Drawing_TileMode::REPEAT);
@@ -198,8 +199,8 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // Set the brush on the canvas. Ensure that the canvas object has been obtained.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
-  // Draw a rectangle.
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+ // Draw the rectangle.
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -209,7 +210,6 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(centerPt);
 ```
-<!-- [ndk_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 The following figure shows the rectangle with the radial gradient shader effect.
 
@@ -224,10 +224,11 @@ The implementation is similar to that of the linear gradient shader. The differe
 
 The following example shows how to draw a rectangle and set the fan gradient shader effect using a brush. The key code and effect are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Center point
-OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(500, 500);
+OH_Drawing_Point *centerPt = OH_Drawing_PointCreate(value500_, value500_);
 // Color array
 uint32_t colors[3] = {0xFF00FFFF, 0xFFFF00FF, 0xFFFFFF00};
 // Relative position array
@@ -241,8 +242,8 @@ OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 OH_Drawing_BrushSetShaderEffect(brush, colorShaderEffect);
 // Set the brush on the canvas. Ensure that the canvas object has been obtained.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 900, 900);
-  // Draw a rectangle.
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value100_, value100_, value900_, value900_);
+ // Draw the rectangle.
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -252,7 +253,6 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_ShaderEffectDestroy(colorShaderEffect);
 OH_Drawing_PointDestroy(centerPt);
 ```
-<!-- [ndk_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 The following figure shows the rectangle drawn in this example.
 
@@ -308,8 +308,9 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
 The following uses drawing a rectangle and setting the color filter effect with a 5x4 color matrix by using a brush as an example. The key example and effect diagram are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a brush.
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // Set the anti-aliasing of the brush.
@@ -323,7 +324,7 @@ const float matrix[20] = {
     0, 0, 0.5f, 0.5f, 0,
     0, 0, 0.5f, 0.5f, 0
 };
-
+    
 // Create a filter color.
 OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
 // Create a filter object.
@@ -335,7 +336,7 @@ OH_Drawing_BrushSetFilter(brush, filter);
 // Set the brush on the canvas. Ensure that the canvas object has been obtained.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 // Create a rectangle.
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 // Draw the rectangle.
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the brush from the canvas.
@@ -346,7 +347,6 @@ OH_Drawing_ColorFilterDestroy(colorFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
-<!-- [ndk_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | No color filter effect| Color filter effect of a 5x4 color matrix|
 | -------- | -------- |
@@ -369,8 +369,9 @@ Currently, only the following two image filters are supported:
 
 The following uses the image filter effect of drawing a rectangle and adding a blur effect using a brush as an example. The key example and effect diagram are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a pen.
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // Set anti-aliasing for the brush.
@@ -391,7 +392,7 @@ OH_Drawing_PenSetFilter(pen, filter);
 // Set the pen on the canvas. Ensure that the canvas object has been obtained.
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // Create a rectangle.
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 // Draw the rectangle.
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the paint from the canvas.
@@ -402,7 +403,6 @@ OH_Drawing_ImageFilterDestroy(imageFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
-<!-- [ndk_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | Image without the filter effect| Image with the filter effect|
 | -------- | -------- |
@@ -425,8 +425,9 @@ You can use the OH_Drawing_MaskFilterCreateBlur() API to create a mask filter wi
 
 The following uses drawing a rectangle and setting the mask filter effect using a paint as an example. The key example and effect are as follows:
 
-```c++
-// sample_graphics.cpp
+<!-- @[ndk_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
 // Create a pen.
 OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
 // Set anti-aliasing for the brush.
@@ -446,7 +447,7 @@ OH_Drawing_PenSetFilter(pen, filter);
 // Set the pen on the canvas. Ensure that the canvas object has been obtained.
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // Create a rectangle.
-OH_Drawing_Rect *rect = OH_Drawing_RectCreate(300, 300, 900, 900);
+OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 // Draw the rectangle.
 OH_Drawing_CanvasDrawRect(canvas, rect);
 // Remove the paint from the canvas.
@@ -457,7 +458,6 @@ OH_Drawing_MaskFilterDestroy(maskFilter);
 OH_Drawing_RectDestroy(rect);
 OH_Drawing_FilterDestroy(filter);
 ```
-<!-- [ndk_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 | No mask filter effect| Mask filter effect|
 | -------- | -------- |
@@ -468,5 +468,5 @@ OH_Drawing_FilterDestroy(filter);
 
 The following samples are related to Drawing (C/C++):
 
-- [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

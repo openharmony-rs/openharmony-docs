@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_WaterfallDisplayAreaRects
+```
+
 ## Overview
 
 The struct describes the curved area on a waterfall display.

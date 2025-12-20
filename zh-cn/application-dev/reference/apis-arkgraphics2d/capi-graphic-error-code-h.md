@@ -26,7 +26,7 @@
 
 ### OHNativeErrorCode
 
-```
+```c
 enum OHNativeErrorCode
 ```
 

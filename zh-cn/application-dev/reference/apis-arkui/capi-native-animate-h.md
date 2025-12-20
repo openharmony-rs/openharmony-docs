@@ -29,7 +29,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_ExpectedFrameRateRange](capi-arkui-nativemodule-arkui-expectedframeraterange.md) | ArkUI_ExpectedFrameRateRange | 设置动画的期望帧率。 |
-| [ArkUI_AnimateCompleteCallback](capi-arkui-nativemodule-arkui-animatecompletecallback.md) | ArkUI_AnimateCompleteCallback | 动画播放完成回调类型。 |
+| [ArkUI_AnimateCompleteCallback](capi-arkui-nativemodule-arkui-animatecompletecallback.md) | ArkUI_AnimateCompleteCallback | 动画播放结束回调类型。 |
 | [ArkUI_NativeAnimateAPI_1](capi-arkui-nativemodule-arkui-nativeanimateapi-1.md) | ArkUI_NativeAnimateAPI_1 | ArkUI提供的Native侧动画接口集合。 |
 | [ArkUI_AnimateOption](capi-arkui-nativemodule-arkui-animateoption.md) | ArkUI_AnimateOption | 设置动画效果相关参数。 |
 | [ArkUI_Curve](capi-arkui-nativemodule-arkui-curve.md) | ArkUI_Curve | 提供曲线的插值对象定义。 |
@@ -138,7 +138,7 @@
 
 ### OH_ArkUI_AnimateOption_Create()
 
-```
+```c
 ArkUI_AnimateOption* OH_ArkUI_AnimateOption_Create()
 ```
 
@@ -157,7 +157,7 @@ ArkUI_AnimateOption* OH_ArkUI_AnimateOption_Create()
 
 ### OH_ArkUI_AnimateOption_Dispose()
 
-```
+```c
 void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)
 ```
 
@@ -176,7 +176,7 @@ void OH_ArkUI_AnimateOption_Dispose(ArkUI_AnimateOption* option)
 
 ### OH_ArkUI_AnimateOption_GetDuration()
 
-```
+```c
 uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 ```
 
@@ -202,7 +202,7 @@ uint32_t OH_ArkUI_AnimateOption_GetDuration(ArkUI_AnimateOption* option)
 
 ### OH_ArkUI_AnimateOption_GetTempo()
 
-```
+```c
 float OH_ArkUI_AnimateOption_GetTempo(ArkUI_AnimateOption* option)
 ```
 
@@ -228,7 +228,7 @@ float OH_ArkUI_AnimateOption_GetTempo(ArkUI_AnimateOption* option)
 
 ### OH_ArkUI_AnimateOption_GetCurve()
 
-```
+```c
 ArkUI_AnimationCurve OH_ArkUI_AnimateOption_GetCurve(ArkUI_AnimateOption* option)
 ```
 
@@ -254,7 +254,7 @@ ArkUI_AnimationCurve OH_ArkUI_AnimateOption_GetCurve(ArkUI_AnimateOption* option
 
 ### OH_ArkUI_AnimateOption_GetDelay()
 
-```
+```c
 int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)
 ```
 
@@ -280,7 +280,7 @@ int32_t OH_ArkUI_AnimateOption_GetDelay(ArkUI_AnimateOption* option)
 
 ### OH_ArkUI_AnimateOption_GetIterations()
 
-```
+```c
 int32_t OH_ArkUI_AnimateOption_GetIterations(ArkUI_AnimateOption* option)
 ```
 
@@ -306,7 +306,7 @@ int32_t OH_ArkUI_AnimateOption_GetIterations(ArkUI_AnimateOption* option)
 
 ### OH_ArkUI_AnimateOption_GetPlayMode()
 
-```
+```c
 ArkUI_AnimationPlayMode OH_ArkUI_AnimateOption_GetPlayMode(ArkUI_AnimateOption* option)
 ```
 
@@ -332,7 +332,7 @@ ArkUI_AnimationPlayMode OH_ArkUI_AnimateOption_GetPlayMode(ArkUI_AnimateOption* 
 
 ### OH_ArkUI_AnimateOption_GetExpectedFrameRateRange()
 
-```
+```c
 ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(ArkUI_AnimateOption* option)
 ```
 
@@ -358,7 +358,7 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimateOption_GetExpectedFrameRateRange(A
 
 ### OH_ArkUI_AnimateOption_SetDuration()
 
-```
+```c
 void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t value)
 ```
 
@@ -379,7 +379,7 @@ void OH_ArkUI_AnimateOption_SetDuration(ArkUI_AnimateOption* option, int32_t val
 
 ### OH_ArkUI_AnimateOption_SetTempo()
 
-```
+```c
 void OH_ArkUI_AnimateOption_SetTempo(ArkUI_AnimateOption* option, float value)
 ```
 
@@ -400,7 +400,7 @@ void OH_ArkUI_AnimateOption_SetTempo(ArkUI_AnimateOption* option, float value)
 
 ### OH_ArkUI_AnimateOption_SetCurve()
 
-```
+```c
 void OH_ArkUI_AnimateOption_SetCurve(ArkUI_AnimateOption* option, ArkUI_AnimationCurve value)
 ```
 
@@ -421,7 +421,7 @@ void OH_ArkUI_AnimateOption_SetCurve(ArkUI_AnimateOption* option, ArkUI_Animatio
 
 ### OH_ArkUI_AnimateOption_SetDelay()
 
-```
+```c
 void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 ```
 
@@ -442,7 +442,7 @@ void OH_ArkUI_AnimateOption_SetDelay(ArkUI_AnimateOption* option, int32_t value)
 
 ### OH_ArkUI_AnimateOption_SetIterations()
 
-```
+```c
 void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t value)
 ```
 
@@ -463,7 +463,7 @@ void OH_ArkUI_AnimateOption_SetIterations(ArkUI_AnimateOption* option, int32_t v
 
 ### OH_ArkUI_AnimateOption_SetPlayMode()
 
-```
+```c
 void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_AnimationPlayMode value)
 ```
 
@@ -484,7 +484,7 @@ void OH_ArkUI_AnimateOption_SetPlayMode(ArkUI_AnimateOption* option, ArkUI_Anima
 
 ### OH_ArkUI_AnimateOption_SetExpectedFrameRateRange()
 
-```
+```c
 void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* option, ArkUI_ExpectedFrameRateRange* value)
 ```
 
@@ -505,7 +505,7 @@ void OH_ArkUI_AnimateOption_SetExpectedFrameRateRange(ArkUI_AnimateOption* optio
 
 ### OH_ArkUI_AnimateOption_SetICurve()
 
-```
+```c
 void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHandle value)
 ```
 
@@ -530,7 +530,7 @@ void OH_ArkUI_AnimateOption_SetICurve(ArkUI_AnimateOption* option, ArkUI_CurveHa
 
 ### OH_ArkUI_AnimateOption_GetICurve()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 ```
 
@@ -556,7 +556,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimateOption_GetICurve(ArkUI_AnimateOption* option)
 
 ### OH_ArkUI_KeyframeAnimateOption_Create()
 
-```
+```c
 ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)
 ```
 
@@ -582,7 +582,7 @@ ArkUI_KeyframeAnimateOption* OH_ArkUI_KeyframeAnimateOption_Create(int32_t size)
 
 ### OH_ArkUI_KeyframeAnimateOption_Dispose()
 
-```
+```c
 void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)
 ```
 
@@ -602,7 +602,7 @@ void OH_ArkUI_KeyframeAnimateOption_Dispose(ArkUI_KeyframeAnimateOption* option)
 
 ### OH_ArkUI_KeyframeAnimateOption_SetDelay()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* option, int32_t value)
 ```
 
@@ -629,7 +629,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDelay(ArkUI_KeyframeAnimateOption* opt
 
 ### OH_ArkUI_KeyframeAnimateOption_SetIterations()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption* option, int32_t value)
 ```
 
@@ -656,7 +656,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetIterations(ArkUI_KeyframeAnimateOption
 
 ### OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (*onFinish)(void* userData))
 ```
 
@@ -684,7 +684,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnFinishCallback(ArkUI_KeyframeAn
 
 ### OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option, ArkUI_ExpectedFrameRateRange* frameRate)
 ```
 
@@ -711,7 +711,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetExpectedFrameRate(ArkUI_KeyframeAnimat
 
 ### OH_ArkUI_KeyframeAnimateOption_SetDuration()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* option, int32_t value, int32_t index)
 ```
 
@@ -739,7 +739,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetDuration(ArkUI_KeyframeAnimateOption* 
 
 ### OH_ArkUI_KeyframeAnimateOption_SetCurve()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* option, ArkUI_CurveHandle value, int32_t index)
 ```
 
@@ -771,7 +771,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_SetCurve(ArkUI_KeyframeAnimateOption* opt
 
 ### OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(ArkUI_KeyframeAnimateOption* option, void* userData, void (*event)(void* userData), int32_t index)
 ```
 
@@ -800,7 +800,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_RegisterOnEventCallback(ArkUI_KeyframeAni
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDelay()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* option)
 ```
 
@@ -826,7 +826,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDelay(ArkUI_KeyframeAnimateOption* opt
 
 ### OH_ArkUI_KeyframeAnimateOption_GetIterations()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_GetIterations(ArkUI_KeyframeAnimateOption* option)
 ```
 
@@ -852,7 +852,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetIterations(ArkUI_KeyframeAnimateOption
 
 ### OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate()
 
-```
+```c
 ArkUI_ExpectedFrameRateRange* OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRate(ArkUI_KeyframeAnimateOption* option)
 ```
 
@@ -878,7 +878,7 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_KeyframeAnimateOption_GetExpectedFrameRat
 
 ### OH_ArkUI_KeyframeAnimateOption_GetDuration()
 
-```
+```c
 int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* option, int32_t index)
 ```
 
@@ -905,7 +905,7 @@ int32_t OH_ArkUI_KeyframeAnimateOption_GetDuration(ArkUI_KeyframeAnimateOption* 
 
 ### OH_ArkUI_KeyframeAnimateOption_GetCurve()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_KeyframeAnimateOption_GetCurve(ArkUI_KeyframeAnimateOption* option, int32_t index)
 ```
 
@@ -932,7 +932,7 @@ ArkUI_CurveHandle OH_ArkUI_KeyframeAnimateOption_GetCurve(ArkUI_KeyframeAnimateO
 
 ### OH_ArkUI_AnimatorOption_Create()
 
-```
+```c
 ArkUI_AnimatorOption* OH_ArkUI_AnimatorOption_Create(int32_t keyframeSize)
 ```
 
@@ -962,7 +962,7 @@ ArkUI_AnimatorOption* OH_ArkUI_AnimatorOption_Create(int32_t keyframeSize)
 
 ### OH_ArkUI_AnimatorOption_Dispose()
 
-```
+```c
 void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)
 ```
 
@@ -981,7 +981,7 @@ void OH_ArkUI_AnimatorOption_Dispose(ArkUI_AnimatorOption* option)
 
 ### OH_ArkUI_AnimatorOption_SetDuration()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_t value)
 ```
 
@@ -1008,7 +1008,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDuration(ArkUI_AnimatorOption* option, int32_
 
 ### OH_ArkUI_AnimatorOption_SetDelay()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t value)
 ```
 
@@ -1035,7 +1035,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDelay(ArkUI_AnimatorOption* option, int32_t v
 
 ### OH_ArkUI_AnimatorOption_SetIterations()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int32_t value)
 ```
 
@@ -1066,7 +1066,7 @@ int32_t OH_ArkUI_AnimatorOption_SetIterations(ArkUI_AnimatorOption* option, int3
 
 ### OH_ArkUI_AnimatorOption_SetFill()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_AnimationFillMode value)
 ```
 
@@ -1093,7 +1093,7 @@ int32_t OH_ArkUI_AnimatorOption_SetFill(ArkUI_AnimatorOption* option, ArkUI_Anim
 
 ### OH_ArkUI_AnimatorOption_SetDirection()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI_AnimationDirection value)
 ```
 
@@ -1120,7 +1120,7 @@ int32_t OH_ArkUI_AnimatorOption_SetDirection(ArkUI_AnimatorOption* option, ArkUI
 
 ### OH_ArkUI_AnimatorOption_SetCurve()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_CurveHandle value)
 ```
 
@@ -1151,7 +1151,7 @@ int32_t OH_ArkUI_AnimatorOption_SetCurve(ArkUI_AnimatorOption* option, ArkUI_Cur
 
 ### OH_ArkUI_AnimatorOption_SetBegin()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float value)
 ```
 
@@ -1182,7 +1182,7 @@ int32_t OH_ArkUI_AnimatorOption_SetBegin(ArkUI_AnimatorOption* option, float val
 
 ### OH_ArkUI_AnimatorOption_SetEnd()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value)
 ```
 
@@ -1213,7 +1213,7 @@ int32_t OH_ArkUI_AnimatorOption_SetEnd(ArkUI_AnimatorOption* option, float value
 
 ### OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(ArkUI_AnimatorOption* option, ArkUI_ExpectedFrameRateRange* value)
 ```
 
@@ -1240,7 +1240,7 @@ int32_t OH_ArkUI_AnimatorOption_SetExpectedFrameRateRange(ArkUI_AnimatorOption* 
 
 ### OH_ArkUI_AnimatorOption_SetKeyframe()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float time, float value, int32_t index)
 ```
 
@@ -1269,7 +1269,7 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframe(ArkUI_AnimatorOption* option, float 
 
 ### OH_ArkUI_AnimatorOption_SetKeyframeCurve()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_SetKeyframeCurve(ArkUI_AnimatorOption* option, ArkUI_CurveHandle value, int32_t index)
 ```
 
@@ -1301,7 +1301,7 @@ int32_t OH_ArkUI_AnimatorOption_SetKeyframeCurve(ArkUI_AnimatorOption* option, A
 
 ### OH_ArkUI_AnimatorOption_GetDuration()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_GetDuration(ArkUI_AnimatorOption* option)
 ```
 
@@ -1327,7 +1327,7 @@ int32_t OH_ArkUI_AnimatorOption_GetDuration(ArkUI_AnimatorOption* option)
 
 ### OH_ArkUI_AnimatorOption_GetDelay()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)
 ```
 
@@ -1353,7 +1353,7 @@ int32_t OH_ArkUI_AnimatorOption_GetDelay(ArkUI_AnimatorOption* option)
 
 ### OH_ArkUI_AnimatorOption_GetIterations()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)
 ```
 
@@ -1379,7 +1379,7 @@ int32_t OH_ArkUI_AnimatorOption_GetIterations(ArkUI_AnimatorOption* option)
 
 ### OH_ArkUI_AnimatorOption_GetFill()
 
-```
+```c
 ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* option)
 ```
 
@@ -1405,7 +1405,7 @@ ArkUI_AnimationFillMode OH_ArkUI_AnimatorOption_GetFill(ArkUI_AnimatorOption* op
 
 ### OH_ArkUI_AnimatorOption_GetDirection()
 
-```
+```c
 ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOption* option)
 ```
 
@@ -1431,7 +1431,7 @@ ArkUI_AnimationDirection OH_ArkUI_AnimatorOption_GetDirection(ArkUI_AnimatorOpti
 
 ### OH_ArkUI_AnimatorOption_GetCurve()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)
 ```
 
@@ -1457,7 +1457,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetCurve(ArkUI_AnimatorOption* option)
 
 ### OH_ArkUI_AnimatorOption_GetBegin()
 
-```
+```c
 float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)
 ```
 
@@ -1483,7 +1483,7 @@ float OH_ArkUI_AnimatorOption_GetBegin(ArkUI_AnimatorOption* option)
 
 ### OH_ArkUI_AnimatorOption_GetEnd()
 
-```
+```c
 float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)
 ```
 
@@ -1509,7 +1509,7 @@ float OH_ArkUI_AnimatorOption_GetEnd(ArkUI_AnimatorOption* option)
 
 ### OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange()
 
-```
+```c
 ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(ArkUI_AnimatorOption* option)
 ```
 
@@ -1535,7 +1535,7 @@ ArkUI_ExpectedFrameRateRange* OH_ArkUI_AnimatorOption_GetExpectedFrameRateRange(
 
 ### OH_ArkUI_AnimatorOption_GetKeyframeTime()
 
-```
+```c
 float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int32_t index)
 ```
 
@@ -1562,7 +1562,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeTime(ArkUI_AnimatorOption* option, int3
 
 ### OH_ArkUI_AnimatorOption_GetKeyframeValue()
 
-```
+```c
 float OH_ArkUI_AnimatorOption_GetKeyframeValue(ArkUI_AnimatorOption* option, int32_t index)
 ```
 
@@ -1589,7 +1589,7 @@ float OH_ArkUI_AnimatorOption_GetKeyframeValue(ArkUI_AnimatorOption* option, int
 
 ### OH_ArkUI_AnimatorOption_GetKeyframeCurve()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetKeyframeCurve(ArkUI_AnimatorOption* option, int32_t index)
 ```
 
@@ -1616,7 +1616,7 @@ ArkUI_CurveHandle OH_ArkUI_AnimatorOption_GetKeyframeCurve(ArkUI_AnimatorOption*
 
 ### OH_ArkUI_AnimatorEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_AnimatorEvent_GetUserData(ArkUI_AnimatorEvent* event)
 ```
 
@@ -1642,7 +1642,7 @@ void* OH_ArkUI_AnimatorEvent_GetUserData(ArkUI_AnimatorEvent* event)
 
 ### OH_ArkUI_AnimatorOnFrameEvent_GetUserData()
 
-```
+```c
 void* OH_ArkUI_AnimatorOnFrameEvent_GetUserData(ArkUI_AnimatorOnFrameEvent* event)
 ```
 
@@ -1668,7 +1668,7 @@ void* OH_ArkUI_AnimatorOnFrameEvent_GetUserData(ArkUI_AnimatorOnFrameEvent* even
 
 ### OH_ArkUI_AnimatorOnFrameEvent_GetValue()
 
-```
+```c
 float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 ```
 
@@ -1694,7 +1694,7 @@ float OH_ArkUI_AnimatorOnFrameEvent_GetValue(ArkUI_AnimatorOnFrameEvent* event)
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFrameCallback()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(ArkUI_AnimatorOption* option, void* userData, void (*callback)(ArkUI_AnimatorOnFrameEvent* event))
 ```
 
@@ -1722,7 +1722,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnFrameCallback(ArkUI_AnimatorOption* op
 
 ### OH_ArkUI_AnimatorOption_RegisterOnFinishCallback()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(ArkUI_AnimatorOption* option, void* userData, void (*callback)(ArkUI_AnimatorEvent* event))
 ```
 
@@ -1750,7 +1750,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnFinishCallback(ArkUI_AnimatorOption* o
 
 ### OH_ArkUI_AnimatorOption_RegisterOnCancelCallback()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(ArkUI_AnimatorOption* option, void* userData, void (*callback)(ArkUI_AnimatorEvent* event))
 ```
 
@@ -1778,7 +1778,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnCancelCallback(ArkUI_AnimatorOption* o
 
 ### OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback()
 
-```
+```c
 int32_t OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(ArkUI_AnimatorOption* option, void* userData, void (*callback)(ArkUI_AnimatorEvent* event))
 ```
 
@@ -1806,7 +1806,7 @@ int32_t OH_ArkUI_AnimatorOption_RegisterOnRepeatCallback(ArkUI_AnimatorOption* o
 
 ### OH_ArkUI_Animator_ResetAnimatorOption()
 
-```
+```c
 int32_t OH_ArkUI_Animator_ResetAnimatorOption(ArkUI_AnimatorHandle animatorHandle, ArkUI_AnimatorOption* option)
 ```
 
@@ -1833,7 +1833,7 @@ int32_t OH_ArkUI_Animator_ResetAnimatorOption(ArkUI_AnimatorHandle animatorHandl
 
 ### OH_ArkUI_Animator_Play()
 
-```
+```c
 int32_t OH_ArkUI_Animator_Play(ArkUI_AnimatorHandle animatorHandle)
 ```
 
@@ -1859,7 +1859,7 @@ int32_t OH_ArkUI_Animator_Play(ArkUI_AnimatorHandle animatorHandle)
 
 ### OH_ArkUI_Animator_Finish()
 
-```
+```c
 int32_t OH_ArkUI_Animator_Finish(ArkUI_AnimatorHandle animatorHandle)
 ```
 
@@ -1885,7 +1885,7 @@ int32_t OH_ArkUI_Animator_Finish(ArkUI_AnimatorHandle animatorHandle)
 
 ### OH_ArkUI_Animator_Pause()
 
-```
+```c
 int32_t OH_ArkUI_Animator_Pause(ArkUI_AnimatorHandle animatorHandle)
 ```
 
@@ -1911,7 +1911,7 @@ int32_t OH_ArkUI_Animator_Pause(ArkUI_AnimatorHandle animatorHandle)
 
 ### OH_ArkUI_Animator_Cancel()
 
-```
+```c
 int32_t OH_ArkUI_Animator_Cancel(ArkUI_AnimatorHandle animatorHandle)
 ```
 
@@ -1937,7 +1937,7 @@ int32_t OH_ArkUI_Animator_Cancel(ArkUI_AnimatorHandle animatorHandle)
 
 ### OH_ArkUI_Animator_Reverse()
 
-```
+```c
 int32_t OH_ArkUI_Animator_Reverse(ArkUI_AnimatorHandle animatorHandle)
 ```
 
@@ -1963,7 +1963,7 @@ int32_t OH_ArkUI_Animator_Reverse(ArkUI_AnimatorHandle animatorHandle)
 
 ### OH_ArkUI_Curve_CreateCurveByType()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_Curve_CreateCurveByType(ArkUI_AnimationCurve curve)
 ```
 
@@ -1989,7 +1989,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCurveByType(ArkUI_AnimationCurve curve)
 
 ### OH_ArkUI_Curve_CreateStepsCurve()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_Curve_CreateStepsCurve(int32_t count, bool end)
 ```
 
@@ -2016,7 +2016,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateStepsCurve(int32_t count, bool end)
 
 ### OH_ArkUI_Curve_CreateCubicBezierCurve()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_Curve_CreateCubicBezierCurve(float x1, float y1, float x2, float y2)
 ```
 
@@ -2045,7 +2045,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCubicBezierCurve(float x1, float y1, floa
 
 ### OH_ArkUI_Curve_CreateSpringCurve()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, float stiffness, float damping)
 ```
 
@@ -2074,7 +2074,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringCurve(float velocity, float mass, f
 
 ### OH_ArkUI_Curve_CreateSpringMotion()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampingFraction, float overlapDuration)
 ```
 
@@ -2106,7 +2106,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateSpringMotion(float response, float dampin
 
 ### OH_ArkUI_Curve_CreateResponsiveSpringMotion()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, float dampingFraction, float overlapDuration)
 ```
 
@@ -2138,7 +2138,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateResponsiveSpringMotion(float response, fl
 
 ### OH_ArkUI_Curve_CreateInterpolatingSpring()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float mass, float stiffness, float damping)
 ```
 
@@ -2171,7 +2171,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateInterpolatingSpring(float velocity, float
 
 ### OH_ArkUI_Curve_CreateCustomCurve()
 
-```
+```c
 ArkUI_CurveHandle OH_ArkUI_Curve_CreateCustomCurve(void* userData, float (*interpolate)(float fraction, void* userdata))
 ```
 
@@ -2198,7 +2198,7 @@ ArkUI_CurveHandle OH_ArkUI_Curve_CreateCustomCurve(void* userData, float (*inter
 
 ### OH_ArkUI_Curve_DisposeCurve()
 
-```
+```c
 void OH_ArkUI_Curve_DisposeCurve(ArkUI_CurveHandle curveHandle)
 ```
 
@@ -2218,7 +2218,7 @@ void OH_ArkUI_Curve_DisposeCurve(ArkUI_CurveHandle curveHandle)
 
 ### OH_ArkUI_CreateOpacityTransitionEffect()
 
-```
+```c
 ArkUI_TransitionEffect* OH_ArkUI_CreateOpacityTransitionEffect(float opacity)
 ```
 
@@ -2244,7 +2244,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateOpacityTransitionEffect(float opacity)
 
 ### OH_ArkUI_CreateTranslationTransitionEffect()
 
-```
+```c
 ArkUI_TransitionEffect* OH_ArkUI_CreateTranslationTransitionEffect(ArkUI_TranslationOptions* translate)
 ```
 
@@ -2270,7 +2270,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateTranslationTransitionEffect(ArkUI_Transla
 
 ### OH_ArkUI_CreateScaleTransitionEffect()
 
-```
+```c
 ArkUI_TransitionEffect* OH_ArkUI_CreateScaleTransitionEffect(ArkUI_ScaleOptions* scale)
 ```
 
@@ -2296,7 +2296,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateScaleTransitionEffect(ArkUI_ScaleOptions*
 
 ### OH_ArkUI_CreateRotationTransitionEffect()
 
-```
+```c
 ArkUI_TransitionEffect* OH_ArkUI_CreateRotationTransitionEffect(ArkUI_RotationOptions* rotate)
 ```
 
@@ -2322,7 +2322,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateRotationTransitionEffect(ArkUI_RotationOp
 
 ### OH_ArkUI_CreateMovementTransitionEffect()
 
-```
+```c
 ArkUI_TransitionEffect* OH_ArkUI_CreateMovementTransitionEffect(ArkUI_TransitionEdge edge)
 ```
 
@@ -2348,7 +2348,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateMovementTransitionEffect(ArkUI_Transition
 
 ### OH_ArkUI_CreateAsymmetricTransitionEffect()
 
-```
+```c
 ArkUI_TransitionEffect* OH_ArkUI_CreateAsymmetricTransitionEffect(ArkUI_TransitionEffect* appear, ArkUI_TransitionEffect* disappear)
 ```
 
@@ -2379,7 +2379,7 @@ ArkUI_TransitionEffect* OH_ArkUI_CreateAsymmetricTransitionEffect(ArkUI_Transiti
 
 ### OH_ArkUI_TransitionEffect_Dispose()
 
-```
+```c
 void OH_ArkUI_TransitionEffect_Dispose(ArkUI_TransitionEffect* effect)
 ```
 
@@ -2399,7 +2399,7 @@ void OH_ArkUI_TransitionEffect_Dispose(ArkUI_TransitionEffect* effect)
 
 ### OH_ArkUI_TransitionEffect_Combine()
 
-```
+```c
 int32_t OH_ArkUI_TransitionEffect_Combine(ArkUI_TransitionEffect* firstEffect, ArkUI_TransitionEffect* secondEffect)
 ```
 
@@ -2426,7 +2426,7 @@ int32_t OH_ArkUI_TransitionEffect_Combine(ArkUI_TransitionEffect* firstEffect, A
 
 ### OH_ArkUI_TransitionEffect_SetAnimation()
 
-```
+```c
 int32_t OH_ArkUI_TransitionEffect_SetAnimation(ArkUI_TransitionEffect* effect, ArkUI_AnimateOption* animation)
 ```
 

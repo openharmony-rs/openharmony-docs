@@ -339,14 +339,14 @@ Enumerates the image rotation angles.
 
 | Enum Item| Description|
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br> Starting from API version 21, the enumerated value [CAMERA_IMAGE_ROTATION_0](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br>**Since**: 21|
-| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br> Starting from API version 21, the enumerated value [CAMERA_IMAGE_ROTATION_90](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br>**Since**: 21|
-| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br> Starting from API version 21, the enumerated value [CAMERA_IMAGE_ROTATION_180](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br>**Since**: 21|
-| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br> Starting from API version 21, the enumerated value [CAMERA_IMAGE_ROTATION_270](#camera_imagerotation) is recommended.|
-| CAMERA_IMAGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br>**Since**: 21|
+| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_0](#camera_imagerotation) is recommended.|
+| CAMERA_IMAGE_ROTATION_0 = 0 | The image rotates 0 degrees.<br>**Since**: 22|
+| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_90](#camera_imagerotation) is recommended.|
+| CAMERA_IMAGE_ROTATION_90 = 90 | The image rotates 90 degrees.<br>**Since**: 22|
+| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_180](#camera_imagerotation) is recommended.|
+| CAMERA_IMAGE_ROTATION_180 = 180 | The image rotates 180 degrees.<br>**Since**: 22|
+| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br> Starting from API version 22, the enumerated value [CAMERA_IMAGE_ROTATION_270](#camera_imagerotation) is recommended.|
+| CAMERA_IMAGE_ROTATION_270 = 270 | The image rotates 270 degrees.<br>**Since**: 22|
 
 ### Camera_QualityLevel
 
@@ -396,12 +396,12 @@ Enumerates the flashlight modes.
 
 | Enum Item| Description|
 | -- | -- |
-| OFF = 0 | The flashlight is always off.<br> Starting from API version 21, the enumerated value [CAMERA_TORCH_MODE_OFF](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_OFF = 0 | The flashlight is always off.<br>**Since**: 21|
-| ON = 1 | The flashlight is always on.<br> Starting from API version 21, the enumerated value [CAMERA_TORCH_MODE_ON](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_ON = 1 | The flashlight is always on.<br>**Since**: 21|
-| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br> Starting from API version 21, the enumerated value [CAMERA_TORCH_MODE_AUTO](#camera_torchmode) is recommended.|
-| CAMERA_TORCH_MODE_AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br>**Since**: 21|
+| OFF = 0 | The flashlight is always off.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_OFF](#camera_torchmode) is recommended.|
+| CAMERA_TORCH_MODE_OFF = 0 | The flashlight is always off.<br>**Since**: 22|
+| ON = 1 | The flashlight is always on.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_ON](#camera_torchmode) is recommended.|
+| CAMERA_TORCH_MODE_ON = 1 | The flashlight is always on.<br>**Since**: 22|
+| AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br> Starting from API version 22, the enumerated value [CAMERA_TORCH_MODE_AUTO](#camera_torchmode) is recommended.|
+| CAMERA_TORCH_MODE_AUTO = 2 | The flashlight will be turned on automatically based on the ambient lighting level.<br>**Since**: 22|
 
 ### Camera_SmoothZoomMode
 
@@ -417,8 +417,8 @@ Enumerates the smooth zoom modes.
 
 | Enum Item| Description|
 | -- | -- |
-| NORMAL = 0 | Bessel curve mode.<br> Starting from API version 21, the enumerated value [CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode) is recommended.|
-| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | Bessel curve mode.<br>**Since**: 21|
+| NORMAL = 0 | Bessel curve mode.<br> Starting from API version 22, the enumerated value [CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode) is recommended.|
+| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | Bessel curve mode.<br>**Since**: 22|
 
 ### Camera_SystemPressureLevel
 
@@ -509,12 +509,12 @@ Enumerates the fold statuses.
 
 | Enum Item| Description|
 | -- | -- |
-| NON_FOLDABLE = 0 | Unfoldable.<br> Starting from API version 21, the enumerated value [CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | Unfoldable.<br>**Since**: 21|
-| EXPANDED = 1 | Unfolded.<br> Starting from API version 21, the enumerated value [CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_EXPANDED = 1 | Unfolded.<br>**Since**: 21|
-| FOLDED = 2 | Folded.<br> Starting from API version 21, the enumerated value [CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus) is recommended.|
-| CAMERA_FOLD_STATUS_FOLDED = 2 | Folded.<br>**Since**: 21|
+| NON_FOLDABLE = 0 | Unfoldable.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus) is recommended.|
+| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | Unfoldable.<br>**Since**: 22|
+| EXPANDED = 1 | Unfolded.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus) is recommended.|
+| CAMERA_FOLD_STATUS_EXPANDED = 1 | Unfolded.<br>**Since**: 22|
+| FOLDED = 2 | Folded.<br> Starting from API version 22, the enumerated value [CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus) is recommended.|
+| CAMERA_FOLD_STATUS_FOLDED = 2 | Folded.<br>**Since**: 22|
 
 ### Camera_QualityPrioritization
 

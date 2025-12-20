@@ -129,18 +129,18 @@ napi_queue_async_work接口使用uv_queue_work能力，并管理回调中napi_va
 
    接口对应的.d.ts描述
 
-   ``` ts
-   export const asyncWork: (data: number) => Promise<number>;
-   ```
-    ArkTS侧调用接口
+     ``` ts
+     export const asyncWork: (data: number) => Promise<number>;
+     ```
+   ArkTS侧调用接口
 
-   ``` ts
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   import testNapi from 'libentry.so';
-   testNapi.asyncWork(1024).then((result) => {
-       hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
-   });
-   ```
+     ``` ts
+     import { hilog } from '@kit.PerformanceAnalysisKit';
+     import testNapi from 'libentry.so';
+     testNapi.asyncWork(1024).then((result) => {
+         hilog.info(0x0000, 'XXX', 'result is %{public}d', result);
+     });
+     ```
    运行结果：result is 1024
 
 ## 使用callback方式示例

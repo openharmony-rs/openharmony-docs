@@ -13,8 +13,8 @@ This module provides APIs for accessing the resources of a WorkSchedulerExtensio
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
-> The APIs of this module can be used only in the stage model.
+> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
+> - The APIs of this module can be used only in the stage model.
 
 ## Usage
 

@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_UdmfDataLoadParams OH_UdmfDataLoadParams
+```
+
 ## Overview
 
 Defines a struct for data loading parameters.

@@ -12,7 +12,7 @@
 
 - 仿射变换能力扩展：支持变换全局中心点可配置；支持rotate旋转的局部中心点；支持矩阵(matrix)转换方式；支持非法值的校验；裁剪路径内支持仿射变换操作；组合场景支持仿射变换操作。
 
-- 解析能力扩展：viewBox属性支持对齐和缩放规则可配置；支持裁剪路径单元的解析；支持渐变单元的解析；支持遮罩单元和遮罩内容单元的解析；支持图案单元和图案内容单元的解析；支持滤镜单元和原语单元解析。
+- 解析能力扩展：[viewBox](./ts-image-svg2-capabilities.md#viewbox属性支持对齐和缩放规则可配置)属性支持对齐和缩放规则的自定义配置；支持裁剪路径单元的解析；支持渐变单元的解析；支持遮罩单元和遮罩内容单元的解析；支持图案单元和图案内容单元的解析；支持滤镜单元和原语单元解析。
 
 - 显示效果扩展：分组标签g元素中透明度opacity对整个分组下的多层子元素生效；增强g标签内clip-path裁剪路径规则的处理；pattern增强平铺效果和偏移值处理；线性渐变和径向渐变增强平移和缩放效果；mask和filter的参数异常时默认效果变更。
 
@@ -22,15 +22,15 @@
 
 | 元素           | 属性                                                         | 说明                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| clipPath       | clipPathUnits                                                | clipPathUnits裁剪路径单元，指定裁剪路径的坐标系统基准。<br />clipPathUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
-| filter         | filterUnits<br />primitiveUnits<br />x<br />y<br />width<br />height | filterUnits滤镜单元，定义滤镜效果（如模糊、阴影）的坐标和尺寸基准。<br />primitiveUnits滤镜原语单元，定义滤镜内元素效果的坐标和尺寸基准。<br />filterUnits和primitiveUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。<br />x：滤镜区域x轴偏移分量，默认值 -10% 。 <br/>y：滤镜区域y轴偏移分量，默认值 -10% 。 <br/>width：滤镜区域宽，默认值120% 。 <br/>height：滤镜区域高，默认值120% 。 |
-| mask           | maskUnits<br />maskContentUnits<br />x<br />y<br />width<br />height | maskUnits遮罩单元，控制遮罩的坐标系统和内容渲染方式。<br />maskContentUnits遮罩内容单元，控制遮罩内元素的坐标系统和内容渲染方式。<br />maskUnits和maskContentUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。<br />x：遮罩区域x轴偏移分量，默认值 -10% 。<br/>y：遮罩区域y轴偏移分量，默认值 -10% 。 <br/>width：遮罩区域宽，默认值120% 。<br/>height：遮罩区域高，默认值120% 。 |
-| radialGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
-| linearGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
-| pattern        | patternUnits<br />patternContentUnits                        | patternUnits图案单元，控制图案整体（`<pattern>`）的坐标系和内容缩放。<br />patternContentUnits图案内容单元，控制图案内部元素的坐标系和内容缩放。<br />patternUnits和patternContentUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
+| clipPath       | clipPathUnits                                                | clipPathUnits裁剪路径单元，指定裁剪路径的坐标系统基准。<br />clipPathUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
+| filter         | filterUnits<br />primitiveUnits<br />x<br />y<br />width<br />height | filterUnits滤镜单元，定义滤镜效果（如模糊、阴影）的坐标和尺寸基准。<br />primitiveUnits滤镜原语单元，定义滤镜内元素效果的坐标和尺寸基准。<br />filterUnits和primitiveUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。<br />x：滤镜区域x轴偏移分量，默认值 -10% 。 <br/>y：滤镜区域y轴偏移分量，默认值 -10% 。 <br/>width：滤镜区域宽，默认值120% 。 <br/>height：滤镜区域高，默认值120% 。 |
+| mask           | maskUnits<br />maskContentUnits<br />x<br />y<br />width<br />height | maskUnits遮罩单元，控制遮罩的坐标系统和内容渲染方式。<br />maskContentUnits遮罩内容单元，控制遮罩内元素的坐标系统和内容渲染方式。<br />maskUnits和maskContentUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。<br />x：遮罩区域x轴偏移分量，默认值 -10% 。<br/>y：遮罩区域y轴偏移分量，默认值 -10% 。 <br/>width：遮罩区域宽，默认值120% 。<br/>height：遮罩区域高，默认值120% 。 |
+| radialGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
+| linearGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
+| pattern        | patternUnits<br />patternContentUnits                        | patternUnits图案单元，控制图案整体（`<pattern>`）的坐标系和内容缩放。<br />patternContentUnits图案内容单元，控制图案内部元素的坐标系和内容缩放。<br />patternUnits和patternContentUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
 | g              | opacity<br />clip-path                                       | opacity透明度：对整个分组下的多层子元素生效。<br />clip-path裁剪路径：对整个分组下的多层子元素生效。 |
 | 通用           | transform                                                    | 用于对SVG元素进行2D变换（如平移、旋转、缩放、倾斜等）。<br />translate(x, y)‌：沿X/Y轴平移元素。 ‌<br />rotate(angle, [cx], [cy])‌：旋转元素（可选参数指定旋转中心）。<br /> ‌scale(sx, [sy])‌：缩放元素（单参数时X/Y轴等比缩放）。<br /> ‌skewX(angle)/skewY(angle)‌：沿X/Y轴倾斜元素。 ‌<br />matrix(a, b, c, d, e, f)‌：通过矩阵定义复杂变换。 |
-| 通用           | transform-origin                                             | 用于定义变换的基准点。需和transform属性配合使用。<br />当配置transform-origin时，按照全局中心点（transform-origin）属性指定的坐标偏移(x,y)作为变换中心点进行仿射变换。 |
+| 通用           | transform-origin                                             | 用于定义变换的基准点。需和[transform](./ts-universal-attributes-transformation.md#transform)属性配合使用。<br />当配置transform-origin时，按照全局中心点（transform-origin）属性指定的坐标偏移(x,y)作为变换中心点进行仿射变换。 |
 
 ## SVG易用性提升
 
@@ -42,7 +42,7 @@ SVG图源颜色默认解析格式从#ARGB变更为符合SVG标准规范的#RGBA�
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置[objectFit](../../apis-media-library-kit/ohos-multimedia-movingphotoview.md#objectfit)参数。
 
 SVG图源属性设置8位十六进制格式的颜色时，示例图源和效果如下：
 
@@ -72,13 +72,13 @@ SVG图源属性设置4位十六进制格式的颜色时，示例图源和效果�
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="10" width="180" height="80" fill="#8888" />
+        <rect x="10" y="10" width="180" height="80" fill="#0000" />
 </svg>
 ```
 
 | 提升前                                                | 提升后                                                |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| 系统会把4位的十六进制颜色当#ARGB格式解析并显示。<br>例如fill="#8888"的矩形显示效果。<br> ![提升前](figures/4hex_color_before.png) | 系统会把4位的十六进制颜色当#RGBA解析并显示。<br>例如fill="#8888"的矩形显示效果（全透明）。<br> ![提升后](figures/4hex_color_after.png) |
+| 系统会把4位的十六进制颜色当#ARGB格式解析并显示。<br>例如fill="#8888"的矩形显示效果。<br> ![提升前](figures/4hex_color_before.png) | 系统会把4位的十六进制颜色当#RGBA解析并显示。<br>例如fill="#0000"的矩形显示效果（全透明）。<br> ![提升后](figures/4hex_color_after.png) |
 
 ### 引用国际化资源标识（IRI）类型严格校验
 
@@ -175,7 +175,7 @@ struct Index {
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
   <!-- 矩形 -->
-  <rect x="10" y="10" width="180" height="80" stroke="blue" stroke-width='2' fill="none"/>
+  <rect x="10" y="10" width="180" height="80" fill="none"/>
 </svg>
 ```
 ```ts
@@ -204,15 +204,15 @@ struct Index {
 
 ## 仿射变换能力扩展
 
-对于transform属性：支持变换全局中心点可配置；支持rotate旋转的局部中心点；支持矩阵(matrix)转换方式；支持非法值的校验；裁剪路径内支持仿射变换操作；组合场景支持仿射变换操作。
+对于[transform](./ts-universal-attributes-transformation.md#transform)属性：支持变换全局中心点可配置；支持rotate旋转的局部中心点；支持矩阵(matrix)转换方式；支持非法值的校验；裁剪路径内支持仿射变换操作；组合场景支持仿射变换操作。
 
 ### 支持变换全局中心点配置
 
-SVG支持解析transform-origin属性来配置全局中心点的能力，前后效果对比如下表格说明：
+SVG支持解析[transform-origin](../arkui-js/js-components-common-animation.md)属性来配置全局中心点的能力，前后效果对比如下表格说明：
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的'[objectFit](./ts-basic-components-image.md#objectfit)'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
 
 |                           SVG场景                            |                        扩展前                         |                        扩展后                         |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -261,7 +261,7 @@ SVG支持校验transform属性非法值的能力。对于transform属性，当�
 | 当变形功能参数为非法值，如rotate旋转功能的角度参数为非法值：'transform="rotate(30deg)"'。 | 按照第一个参数可解析出的数值(30)作为旋转角度进行旋转。</br> ![](figures/except_angel_invalid_before.PNG) | 不做旋转。</br>  ![](figures/except_angel_invalid_after.PNG) |
 | 当变形功能参数为非法值，如rotate旋转功能的局部中心点参数为非法：'transform="rotate(30,abc,abc)"'。 | 按照SVG的ViewPort左上角坐标点(0,0)作为变换中心点，并根据旋转角度30度进行旋转。</br>  ![](figures/except_rotate_x_y_invalid_before.PNG) | 不做旋转。</br>  ![](figures/except_rotate_x_y_invalid_after.PNG) |
 | 当变形功能参数数量为非法时，如scale功能的参数个数为非法：'transform="scale(0.5, 0.5, 0.5)"'。 | 取前2个合法参数作为x轴和y轴的缩放比例(0.5,0.5)缩放。</br>  ![](figures/except_para_amount_invalid_before.PNG) | 不做变形。</br>  ![](figures/except_para_amount_invalid_after.PNG) |
-| 当链式调用多个变形功能，其中某个功能参数为非法，如'transform="rotate(30) skewX(abc) scale(0.5, 0.5)"'。 | 不处理非法的变形功能skewX，处理合法的变形功能rotate和scale。</br>  ![](figures/except_list_invalid_before.PNG) | 所有的做变形功能均不处理。</br>  ![](figures/except_list_invalid_after.PNG) |
+| 当链式调用多个变形功能，其中某个功能参数为非法，如'transform="rotate(30) skewX(abc) scale(0.5, 0.5)"'。 | 不处理非法的变形功能skewX，处理合法的变形功能rotate和scale。</br>  ![](figures/except_list_invalid_before.PNG) | 所有的变形功能均不处理。</br>  ![](figures/except_list_invalid_after.PNG) |
 
 ### 裁剪路径内支持仿射变换操作
 
@@ -340,7 +340,7 @@ transform操作在g标签中，且不包含scale操作。
 
 ## SVG解析能力扩展
 
-viewBox属性支持对齐和缩放规则可配置；支持裁剪路径单元的解析；支持渐变单元的解析；支持遮罩单元和遮罩内容单元的解析；支持图案单元和图案内容单元的解析；支持滤镜单元和原语单元解析。
+[viewBox](./ts-image-svg2-capabilities.md#viewbox属性支持对齐和缩放规则可配置)属性支持对齐和缩放规则的自定义配置；支持裁剪路径单元的解析；支持渐变单元的解析；支持遮罩单元和遮罩内容单元的解析；支持图案单元和图案内容单元的解析；支持滤镜单元和原语单元解析。
 
 ### viewBox属性支持对齐和缩放规则可配置
 
@@ -394,7 +394,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持裁剪路径单元的解析
 
-支持裁剪路径单元值clipPathUnits的解析，增加clipPathUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持裁剪路径单元值[clipPathUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加clipPathUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
@@ -419,7 +419,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持渐变单元的解析
 
-支持裁剪路径单元值gradientUnits的解析，增加gradientUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持渐变单元值[gradientUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加gradientUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
@@ -463,7 +463,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持遮罩单元和遮罩内容单元的解析
 
-支持遮罩单元maskUnits和遮罩内容单元maskContentUnits的解析，增加maskContentUnits和maskUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持遮罩单元[maskUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和遮罩内容单元[maskContentUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加maskContentUnits和maskUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
@@ -488,7 +488,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持图案单元和图案内容单元的解析
 
-支持图案单元patternUnits和图案内容单元patternContentUnits的解析，增加patternUnits和patternContentUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持图案单元[patternUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和图案内容单元[patternContentUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加patternUnits和patternContentUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
@@ -514,7 +514,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持滤镜单元和原语单元解析
 
-支持滤镜单元filterUnits和原语单元primitiveUnits的解析，增加filterUnits和primitiveUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。目前支持到的原语有feFlood,feOffset,feGaussianBlur,feBlood,feColorMatrix,feComposite。
+支持滤镜单元[filterUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和原语单元[primitiveUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加filterUnits和primitiveUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。目前支持到的原语有feFlood,feOffset,feGaussianBlur,feBlood,feColorMatrix,feComposite。
 
 >**说明：**
 >
@@ -611,7 +611,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### pattern支持平铺效果
 
-pattern图案支持重复平铺效果。
+[pattern](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)图案支持重复平铺效果。
 
 >**说明：**
 >
@@ -661,7 +661,7 @@ pattern图案支持重复平铺效果。
 
 ### 线性渐变
 
-linearGradient线性渐变支持做平移和缩放。
+[linearGradient](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)线性渐变支持做平移和缩放。
 
 >**说明：**
 >
@@ -686,7 +686,7 @@ linearGradient线性渐变支持做平移和缩放。
 
 ### 径向渐变
 
-radialGradient径向渐变支持做平移和缩放。
+[radialGradient](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)径向渐变支持做平移和缩放。
 
 >**说明：**
 >
@@ -711,7 +711,7 @@ radialGradient径向渐变支持做平移和缩放。
 
 ### mask参数异常时默认效果变更
 
-mask遮罩的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
+[mask](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)遮罩的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
 
 >**说明：**
 >
@@ -735,7 +735,7 @@ mask遮罩的x、y、width、height等参数允许是数字、百分数、小数
 
 ### filter参数异常时默认效果变更
 
-filter滤镜的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
+[filter](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)滤镜的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
 
 >**说明：**
 >

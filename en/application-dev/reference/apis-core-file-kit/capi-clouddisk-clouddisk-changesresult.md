@@ -6,6 +6,10 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct CloudDisk_ChangesResult {...} CloudDisk_ChangesResult
+```
+
 ## Overview
 
 A struct that encapsulates the file change result under the sync root path. It includes the next change sequence number, end flag, and an array of change data items.

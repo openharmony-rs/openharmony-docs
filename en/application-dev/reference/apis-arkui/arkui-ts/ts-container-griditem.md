@@ -5,7 +5,7 @@
 <!--Owner: @zcdqs; @fangyuhao-->
 <!--Designer: @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **GridItem** component provides a single item in a grid.
 
@@ -137,9 +137,11 @@ Sets the end column number of the component.
 
 forceRebuild(value: boolean)
 
-Whether to re-create the component when it is being built. Whether to re-create the component is automatically determined based on the component attributes and child component changes. No manual configuration is required.
+Sets whether to re-create the component when it is being built.
 
-This API is deprecated since API version 9.
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. Whether to re-create the component is automatically determined based on the component attributes and child component changes. No manual configuration is required.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,7 +149,7 @@ This API is deprecated since API version 9.
 
 | Name| Type   | Mandatory| Description                                                   |
 | ------ | ------- | ---- | ------------------------------------------------------- |
-| value  | boolean | Yes  | Sets whether to re-create the component when it is being built.<br>Default value: **false**.|
+| value  | boolean | Yes  | Whether to re-create the component when it is being built.<br>Default value: **false**.|
 
 ### selectable<sup>8+</sup>
 

@@ -78,7 +78,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 // Call the C++ code from JS.
 const char* srcCallNative = R"JS(const myObject = {};
     const proto = getPrototype(myObject);
-    console.log(proto === Object.prototype);)JS";
+    console.info(proto === Object.prototype);)JS";
 ```
 <!-- @[oh_jsvm_get_prototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutObject/getprototype/src/main/cpp/hello.cpp) -->
 

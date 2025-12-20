@@ -4,7 +4,7 @@
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The overlay feature allows you to place elements on top of a component.
 
@@ -43,7 +43,7 @@ Adds an overlay to this component, which can be text, a custom component, or [Co
 
 >  **NOTE**
 >
->  The overlay node does not support mount/unmount events such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisAppear](./ts-universal-events-show-hide.md#ondisappear).
+>  The overlay node does not support mount/unmount events, such as [onAppear](./ts-universal-events-show-hide.md#onappear) and [onDisAppear](./ts-universal-events-show-hide.md#ondisappear).
 
 ## OverlayOptions<sup>12+</sup>
 
