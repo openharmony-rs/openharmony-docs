@@ -8,11 +8,15 @@
 
 ## Introduction to Image Rotation Angles
 
-In digital photography, the shooting device (such as a smartphone or camera) saves the rotation angle (orientation) information of the image in the **Orientation** field of the Exchangeable Image File Format (EXIF) data of the image. The information does not alter the pixel content of the image. It instructs the image viewer how to correctly display the image orientation.
+In digital photography, the shooting device (such as a smartphone or camera) saves the rotation angle (orientation) information of the image in the **Orientation** field of the Exchangeable Image File Format (Exif) data of the image.
 
-The EXIF standard defines the orientation values, their corresponding string representations, and operational instructions, as listed in the table below.
+The information does not alter the pixel content of the image. It instructs the image viewer how to correctly display the image orientation.
 
-| Value    | String Representation     | Operational Instructions                       |
+The Exif standard outlines eight Orientation values along with their string representations.
+
+To properly display an image, you need to carry out the specific operations associated with these values, as detailed in the table below.
+
+| Value    | String Representation     | Operations Required for Proper Image Display   |
 |--------|----------------|--------------------------------|
 | 1      | "Top-left"     | Normal orientation (no rotation required).          |
 | 2      | "Top-right"    | Horizontal mirror flip.                  |
@@ -29,7 +33,7 @@ In C/C++ scenarios, for details about how to read and edit the rotation angle in
 
 ## FAQs
 
-### What should I do If the image rotation angle is null?
+### What should I do if the image rotation angle is null?
 
 Some images may lack EXIF data or may not have the **Orientation** field written in the EXIF data. These images do not require rotation (consistent with the case where **Orientation** is 1).
 

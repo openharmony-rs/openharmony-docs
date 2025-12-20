@@ -26,7 +26,7 @@ The file declares the error codes used by the image effector.
 
 ### ImageEffect_ErrorCode
 
-```
+```c
 enum ImageEffect_ErrorCode
 ```
 
