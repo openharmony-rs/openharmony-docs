@@ -1211,7 +1211,7 @@ create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback&l
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[createWindow()](#windowcreatewindow9)。
+> 从API version 8开始支持，从API version 9开始废弃，推荐使用[createWindow()](#windowcreatewindow9)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1251,7 +1251,7 @@ create(ctx: BaseContext, id: string, type: WindowType): Promise&lt;Window&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[createWindow()](#windowcreatewindow9-1)。
+> 从API version 8开始支持，从API version 9开始废弃，推荐使用[createWindow()](#windowcreatewindow9-1)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
