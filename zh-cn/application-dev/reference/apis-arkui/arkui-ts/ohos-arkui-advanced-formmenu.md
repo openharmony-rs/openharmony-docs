@@ -27,7 +27,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { AddFormMenuItem } from '@kit.ArkUI';
 ```
 
