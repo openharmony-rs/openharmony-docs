@@ -116,7 +116,7 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
-notifyMetadataBindingEvent(metadata: string): Promise&lt;string&gt;
+notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 推送待嵌入的信息给调用编码接口的应用或服务。
 
