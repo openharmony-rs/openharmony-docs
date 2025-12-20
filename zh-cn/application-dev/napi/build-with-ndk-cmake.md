@@ -64,9 +64,9 @@ mac使用 SDK 包解压完成效果如下图所示：
 
     ![zh-cn_image_20-25-11-18-11-56](figures/zh-cn_image_20-25-11-18-11-56.PNG)
 
-    打开命令框，输入{cmake实际安装路径}\cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
+    打开命令框，输入cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
 
-    ![zh-cn_image_20-25-11-18-11-59](figures/zh-cn_image_20-25-11-18-11-59.PNG)
+    ![zh-cn_image_20-25-12-23-11-59](figures/zh-cn_image_20-25-12-23-11-59.PNG)
 
 
 2. 查看CMake默认路径。
