@@ -23,10 +23,14 @@ import { systemTimer } from '@kit.BasicServicesKit';
 
 | 名称                | 类型   | 值   | 说明                                          |
 | ------------------- | ------ | ---- |---------------------------------------------|
-| TIMER_TYPE_REALTIME | ArkTS-Dyn: number<br>ArkTS-Sta: int | 1    | 系统启动时间定时器（定时器启动时间不能晚于当前设置的系统时间）。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 22|
-| TIMER_TYPE_WAKEUP   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 2    | 唤醒定时器（如果未配置为唤醒定时器，则系统处于休眠状态下不会触发，直到退出休眠状态）。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 22|
-| TIMER_TYPE_EXACT    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 4    | 精准定时器（系统时间修改的情况下，可能会出现最多1s的前后偏移误差）。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 22|
-| TIMER_TYPE_IDLE     | number | 8    | IDLE模式定时器（仅支持系统服务配置，不支持应用配置）。<br>ArkTS-Dyn起始版本: 7|
+| TIMER_TYPE_REALTIME | ArkTS-Dyn: number<br>ArkTS-Sta: int | 1    | 系统启动时间定时器（定时器启动时间不能晚于当前设置的系统时间）。|
+| TIMER_TYPE_WAKEUP   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 2    | 唤醒定时器（如果未配置为唤醒定时器，则系统处于休眠状态下不会触发，直到退出休眠状态）。|
+| TIMER_TYPE_EXACT    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 4    | 精准定时器（系统时间修改的情况下，可能会出现最多1s的前后偏移误差）。|
+| TIMER_TYPE_IDLE     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 8    | IDLE模式定时器（仅支持系统服务配置，不支持应用配置）。|
+
+**ArkTS-Dyn起始版本:** 7
+
+**ArkTS-Sta起始版本:** 23
 
  ## TimerOptions
 
@@ -36,13 +40,13 @@ import { systemTimer } from '@kit.BasicServicesKit';
 
 | 名称       |                     类型               |     只读       |     可选    |                        说明                             |
 |------------| ------------------------------------- | -------------- | -----------| --------------------------------------------------------|
-| type | ArkTS-Dyn: number<br>ArkTS-Sta: int    |  否 |  否   | 定时器类型，可以使用 '\|' 多选。<br>取值为1，表示为系统启动时间定时器（定时器启动时间不能晚于当前设置的系统时间）；<br>取值为2，表示为唤醒定时器；<br>取值为4，表示为精准定时器（APP被冻结时，定时器也会被冻结，并且定时器受统一心跳管控，因此即使是精准定时器也不能确保在指定时间点触发）；<br>取值为8，表示为IDLE模式定时器（仅支持系统服务配置，不支持应用配置）<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 22 |
-| repeat | boolean                                |  否 | 否  | 是否为循环定时器。<br>true为循环定时器，false为单次定时器。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 22  |
-| autoRestore<sup>15+</sup> | boolean                |  否 | 是   | 是否在设备重启后恢复。<br>true为重启后恢复，false为重启后不恢复。<br>仅支持非`TIMER_TYPE_REALTIME`类型且配置了wantAgent的定时器配置为true。<br>ArkTS-Dyn起始版本: 15 |
-| name<sup>15+</sup> | string                        |  否 | 是 | 定时器名称，长度不超过64字节。<br>同一个UID中不可以同时存在两个同名定时器。如果创建了一个和之前已创建的定时器名字相同的定时器，先创建的定时器会被销毁。<br>ArkTS-Dyn起始版本: 15<br>ArkTS-Sta起始版本: 22|
-| interval  | ArkTS-Dyn: number<br>ArkTS-Sta: long  |   否 | 是   | 定时器时间间隔。默认值为0。<br>如果是循环定时器，interval值最小为1s，最大为365天，建议interval值不小于5000毫秒；<br>单次定时器interval值为0。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 22 |
-| wantAgent | WantAgent                             |   否 | 是  | 设置通知的WantAgent，定时器到期后通知（支持拉起应用MainAbility，不支持拉起ServiceAbility）。<br>ArkTS-Dyn起始版本: 7 |
-| callback  | void                                  |  否 | 是  | 用户需要执行的回调函数。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 22 |
+| type | ArkTS-Dyn: number<br>ArkTS-Sta: int    |  否 |  否   | 定时器类型，可以使用 '\|' 多选。<br>取值为1，表示为系统启动时间定时器（定时器启动时间不能晚于当前设置的系统时间）；<br>取值为2，表示为唤醒定时器；<br>取值为4，表示为精准定时器（APP被冻结时，定时器也会被冻结，并且定时器受统一心跳管控，因此即使是精准定时器也不能确保在指定时间点触发）；<br>取值为8，表示为IDLE模式定时器（仅支持系统服务配置，不支持应用配置）<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 23 |
+| repeat | boolean                                |  否 | 否  | 是否为循环定时器。<br>true为循环定时器，false为单次定时器。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 23  |
+| autoRestore<sup>15+</sup> | boolean                |  否 | 是   | 是否在设备重启后恢复。<br>true为重启后恢复，false为重启后不恢复。<br>仅支持非`TIMER_TYPE_REALTIME`类型且配置了wantAgent的定时器配置为true。<br>ArkTS-Dyn起始版本: 15<br>ArkTS-Sta起始版本: 23 |
+| name<sup>15+</sup> | string                        |  否 | 是 | 定时器名称，长度不超过64字节。<br>同一个UID中不可以同时存在两个同名定时器。如果创建了一个和之前已创建的定时器名字相同的定时器，先创建的定时器会被销毁。<br>ArkTS-Dyn起始版本: 15<br>ArkTS-Sta起始版本: 23|
+| interval  | ArkTS-Dyn: number<br>ArkTS-Sta: long  |   否 | 是   | 定时器时间间隔。默认值为0。<br>如果是循环定时器，interval值最小为1s，最大为365天，建议interval值不小于5000毫秒；<br>单次定时器interval值为0。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 23 |
+| wantAgent | WantAgent                             |   否 | 是  | 设置通知的WantAgent，定时器到期后通知（支持拉起应用MainAbility，不支持拉起ServiceAbility）。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 23 |
+| callback  | void                                  |  否 | 是  | 用户需要执行的回调函数。<br>ArkTS-Dyn起始版本: 7<br>ArkTS-Sta起始版本: 23 |
 
 
 ## systemTimer.createTimer
@@ -59,7 +63,7 @@ ArkTS-Sta: createTimer(options: TimerOptions, callback: AsyncCallback&lt;long&gt
 
 **ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -137,7 +141,7 @@ ArkTS-Sta: createTimer(options: TimerOptions): Promise&lt;long&gt;
 
 **ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -214,7 +218,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long, callback: AsyncCallback&lt
 
 **ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -307,7 +311,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -401,7 +405,7 @@ ArkTS-Sta: stopTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void&gt;
 
 **ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -494,7 +498,7 @@ ArkTS-Sta: stopTimer(timer: long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -589,7 +593,7 @@ ArkTS-Sta: destroyTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 
 **ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -685,7 +689,7 @@ ArkTS-Sta: destroyTimer(timer: long): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 7
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 

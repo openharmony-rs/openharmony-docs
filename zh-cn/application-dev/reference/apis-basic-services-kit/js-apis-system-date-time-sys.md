@@ -22,7 +22,7 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 **ArkTS-Dyn起始版本:** 10
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
@@ -43,7 +43,7 @@ ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -119,7 +119,7 @@ ArkTS-Sta: setTime(time : long) : Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -308,7 +308,7 @@ ArkTS-Sta: setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): v
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -379,7 +379,7 @@ ArkTS-Sta: setTimezone(timezone: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 9
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -453,7 +453,7 @@ ArkTS-Sta: updateNtpTime(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本:** 14
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -516,7 +516,7 @@ ArkTS-Sta: getNtpTime(): long
 
 **ArkTS-Dyn起始版本:** 14
 
-**ArkTS-Sta起始版本:** 22
+**ArkTS-Sta起始版本:** 23
 
 **返回值**：
 
