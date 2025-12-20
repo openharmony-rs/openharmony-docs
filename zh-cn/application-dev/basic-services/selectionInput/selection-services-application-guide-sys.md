@@ -126,13 +126,13 @@
       constructor(des: string) {
         super(des);
       }
+
       onRemoteMessageRequest(
         code: number,
         data: rpc.MessageSequence,
         reply: rpc.MessageSequence,
         options: rpc.MessageOption
       ): boolean | Promise<boolean> {
-        hilog.info(0x0000, 'SelectionExtensionAbility', `enter onRemoteMessageRequest code: ${code}`);
         return true;
       }
     }

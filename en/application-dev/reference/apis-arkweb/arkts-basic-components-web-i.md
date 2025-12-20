@@ -49,6 +49,18 @@ Describes the **ScriptItem** object registered with the **Web** component throug
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | No |  No   | JavaScript script to be registered and executed.|
 | scriptRules | Array\<string> | No |  No   | Matching rules for allowed sources.<br>1. To allow URLs from all sources, use the wildcard (\*).<br>2. If exact match is required, specify the exact URL, for example, **https:\//www\.example.com**.<br>3. For fuzzy match, you can use a wildcard (\*) in the website URL, for example, **https://*.example.com**. Websites such as "x,*.y.com" and "* foobar.com" are not allowed.<br>4. If the source is an IP address, follow rule 2.<br>5. For protocols other than HTTP/HTTPS (custom protocols), exact match and fuzzy match are not supported, and the protocol must end with **://**, for example, **resource://**.<br>6. If one of the preceding rules is not met in **scriptRules**, the **scriptRules** does not take effect.|
+| urlRegexRules<sup>23+</sup>  | Array\<[UrlRegexRule](./arkts-basic-components-web-i.md#urlregexrule23)\> | No |  Yes   | Regular expression matching rules for allowed sources. **urlRegexRules** is used for matching only when **scriptRules** is set to **[]**.|
+
+## UrlRegexRule<sup>23+</sup>
+
+Defines the URL regular expression rule.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name         | Type | Read-Only| Optional| Description           |
+| ----------- | ------ | --- | -----|---------------- |
+| secondLevelDomain | string | No | No   | Exact match of the second-level domain. For example, the second-level domain name of "https://www.example.com" is **example.com**, and that of "https://www.example.com.cn" is **example.com.cn**. If the URL does not have a second-level domain name, the value is empty.|
+| rule | string | No | No   | URL regular expression. URL regular expression matching is performed only after **secondLevelDomain** is matched successfully.|
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
@@ -863,3 +875,36 @@ Defines the configuration options of the blank screen detection policy.
 | detectionTiming | double[] | No| Yes| Interval for checking whether a blank screen occurs after the loading, in seconds.<br> <br>**NOTE**<br>1. Duplicate values are ignored.<br>2. The value must be greater than 0. Otherwise, the value is ignored.<br>Default value: **[1.0, 3.0, 5.0]**.|
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | No| Yes| Methods of the detection policy. The value is an array.<br>**NOTE**<br>1. Duplicate values are ignored.<br>Default value: **[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]**. |
 | contentfulNodesCountThreshold | int | No| Yes| Threshold for number of detected contentful nodes. This parameter takes effect only when the contentful node detection policy is used.<br>The value ranges from 0 to the maximum number of nodes in the detection policy. If the value is less than or equal to the threshold, the near-blank screen is triggered.<br>Default value: **0**.|
+
+## CameraCaptureStateChangeInfo<sup>23+</sup>
+
+Defines the state information of the camera before and after the callback is triggered.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | No| No| Original state.  |
+| newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | No| No| New state.  |
+
+## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
+
+Defines the state information of the microphone before and after the callback is triggered.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| Original state.  |
+| newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | No| No| New state.  |
+
+## AcceptableFileType<sup>23+</sup>
+
+Defines the file types recommended by the web page when the file selector pulls files.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name | Type                    | Read-Only| Optional| Description            |
+| :---- | :------------------------- | :--- | :--- | :--------------- |
+| mimeType | string | No| No  | MIME type of the file.|
+| acceptableType | Array\<string\> | No| No  | Array of acceptable file types.|

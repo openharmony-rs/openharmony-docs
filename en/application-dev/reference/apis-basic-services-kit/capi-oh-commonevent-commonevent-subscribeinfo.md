@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-```
+```c
 typedef struct CommonEvent_SubscribeInfo CommonEvent_SubscribeInfo
 ```
 

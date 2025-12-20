@@ -41,7 +41,7 @@ isWifiActiveSync(admin: Want): boolean
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -96,7 +96,7 @@ setWifiProfileSync(admin: Want, profile: WifiProfile): void
 
 | 参数名  | 类型                                                    | 必填 | 说明                   |
 | ------- | ------------------------------------------------------- | ---- | ---------------------- |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | profile | [WifiProfile](#wifiprofile)                             | 是   | Wi-Fi配置信息。         |
 
 **错误码**：
@@ -159,7 +159,7 @@ addAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
 | 参数名       | 类型                                                       | 必填 | 说明                                                         |
 | ------------ | -------------------------------------------------------    | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md)    | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                   | 是   | Wi-Fi允许名单数组。数组总长度不能超过200。例如，若当前允许名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
 
 **错误码**：
@@ -214,7 +214,7 @@ removeAllowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | 待移除的Wi-Fi允许名单数组。数组总长度不能超过200。                                            |
 
 **错误码**：
@@ -268,7 +268,7 @@ getAllowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -327,7 +327,7 @@ addDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | Wi-Fi禁用名单数组。数组总长度不能超过200。例如，若当前禁用名单数组中已有100个Wi-Fi，则最多支持通过该接口再添加100个。 |
 
 **错误码**：
@@ -382,7 +382,7 @@ removeDisallowedWifiList(admin: Want, list: Array&lt;WifiAccessInfo&gt;): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | list         | Array&lt;[WifiAccessInfo](#wifiaccessinfo19)&gt;                | 是   | 待移除的Wi-Fi禁用名单数组。数组总长度不能超过200。                      |
 
 **错误码**：
@@ -436,7 +436,7 @@ getDisallowedWifiList(admin: Want): Array&lt;WifiAccessInfo&gt;
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **返回值：**
 
@@ -646,7 +646,7 @@ turnOnWifi(admin: Want, isForce: boolean): void
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。                                       |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
 | isForce | boolean                                                 | 是   | 是否强制打开Wi-Fi功能。<br/>true表示强制开启Wi-Fi，强制开启后不支持用户在设备上手动关闭Wi-Fi开关，必须采用[turnOffWifi](#wifimanagerturnoffwifi20)接口关闭。false表示非强制开启Wi-Fi，此时用户可以在设备上手动操作关闭Wi-Fi开关。 |
 
 **错误码**：
@@ -700,7 +700,7 @@ turnOffWifi(admin: Want): void
 
 | 参数名 | 类型                                                    | 必填 | 说明                   |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **错误码**：
 

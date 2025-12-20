@@ -1719,7 +1719,7 @@ queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[TouchEvent](js-apis-touchevent-sys.md#touchevent)&gt;&gt; | Promise对象，返回查询到的触屏输入事件。包含以下有效信息：<br/>- actionTime：触屏输入事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。<br/>- [SourceType](js-apis-touchevent.md#sourcetype)：触摸来源的设备类型。<br/>- [isInject](js-apis-touchevent-sys.md#touchevent)：表示该触屏输入事件是否为注入事件。<br/>- pressure：压力值，取值范围是[0.0, 1.0]，0.0表示不支持。<br/>- tiltX：相对YZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜。<br/>- tiltY：相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向下倾斜。 |
+| Promise&lt;Array&lt;[TouchEvent](js-apis-touchevent-sys.md#touchevent)&gt;&gt; | Promise对象，返回查询到的触屏输入事件。包含以下有效信息：<br/>- actionTime：触屏输入事件发生的时间，表示从1970.1.1 00:00:00 GMT逝去的微秒数。<br/>- [SourceType](js-apis-touchevent.md#sourcetype)：触摸来源的设备类型。<br/>- [isInject](js-apis-touchevent-sys.md#touchevent)：表示该触屏输入事件是否为注入事件。<br/>- pressure：压力值，取值范围是[0.0, 1.0]，0.0表示不支持。<br/>- tiltX：相对YZ平面的角度，取值的范围[-90, 90]，其中正值是向右倾斜。<br/>- tiltY：相对XZ平面的角度，取值的范围[-90, 90]，其中正值是向下倾斜。<br/>- screenX：相对于屏幕左上角的X轴坐标，取值范围[0.0, 屏幕宽度]，向右递增。仅限指定应用获取。<br/>- screenY：相对于屏幕左上角的Y轴坐标，取值范围[0.0, 屏幕高度]，向下递增。仅限指定应用获取。 |
 
 **错误码**：
 

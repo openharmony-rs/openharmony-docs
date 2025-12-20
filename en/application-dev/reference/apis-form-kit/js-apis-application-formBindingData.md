@@ -5,13 +5,13 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 The **FormBindingData** module provides APIs for widget data binding. You can use the APIs to create a **FormBindingData** object and obtain related information.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This module is deprecated since API version 9. You are advised to use [formBindingData](js-apis-app-form-formBindingData.md) instead.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This module is deprecated since API version 9. You are advised to use [formBindingData](js-apis-app-form-formBindingData.md) instead.
 ## Modules to Import
 
 ```ts
@@ -24,9 +24,9 @@ Describes a **FormBindingData** object.
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| data | Object | Yes| Data to be displayed on the JS widget. The value can be an object containing multiple key-value pairs or a string in JSON format.|
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- |-------- | -------- | -------- |
+| data | Object | No|No| Data to be displayed on the JS widget. The value can be an object containing multiple key-value pairs or a string in JSON format.|
 
 
 ## formBindingData.createFormBindingData
@@ -57,11 +57,13 @@ Creates a **FormBindingData** object.
 import { formBindingData } from '@kit.FormKit';
 import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
+
 @Entry
 @Component
 struct Index {
   content = this.getUIContext().getHostContext() as common.UIAbilityContext;
   pathDir: string = this.content.filesDir;
+
   createFormBindingData() {
     try {
       let filePath = this.pathDir + "/form.png";
@@ -79,9 +81,10 @@ struct Index {
       console.error(`catch error, error: ${JSON.stringify(error)}`);
     }
   }
+
   build() {
     Button('createFormBindingData')
-      .onClick((event: ClickEvent)=>{
+      .onClick((event: ClickEvent) => {
         this.createFormBindingData();
       })
   }

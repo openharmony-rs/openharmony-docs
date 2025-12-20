@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -169,6 +169,16 @@ clearPreviewText(): void
 通知输入法清除当前的预上屏文本内容。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### deleteBackward<sup>23+</sup>
+
+deleteBackward(): void
+
+删除基础控制器`controller`绑定的文本输入框内文本光标前的一个字符。如果在调用此功能前已用鼠标或键盘选中了部分文本，则会删除被选中的文本。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

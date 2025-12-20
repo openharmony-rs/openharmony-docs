@@ -6,14 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+WhiteBalance inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
+
+It provides APIs to process white balance, including obtaining and setting the white balance mode and white balance value.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 20.
-
-WhiteBalance inherits from [WhiteBalanceQuery](arkts-apis-camera-WhiteBalanceQuery.md).
-
-It provides APIs to process white balance, including obtaining and setting the white balance mode and white balance value.
 
 ## Modules to Import
 

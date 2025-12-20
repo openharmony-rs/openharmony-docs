@@ -545,6 +545,66 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 })
 ```
 
+## notificationManager.getAllNotificationEnabledBundles<sup>23+</sup>
+
+getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
+
+获取指定用户下允许通知的应用程序列表。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明           |
+| ------ | ---------------- | ---- | -------------- |
+| userId   | int | 是 | 要获取允许通知的应用程序列表的用户。 |
+
+**返回值：**
+
+| 类型      | 说明        | 
+|---------|-----------|
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | 返回允许通知的应用程序列表。 | 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+getAllNotificationEnabledBundlesByUserId = (userId: number): void => {
+let funcName: string = 'getAllNotificationEnabledBundlesByUserId';
+
+try {
+  notificationManager.getAllNotificationEnabledBundles(userId)
+    .then((data: Array<notificationManager.BundleOption>) => {
+    hilog.info(DOMAIN, TAG, `${funcName} success. data: ${JSON.stringify(data)}`);
+  })
+  .catch((err: BusinessError) => {
+    hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+  });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
 ## notificationManager.isNotificationEnabled
 
 isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
@@ -4494,6 +4554,110 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 });
 ```
 
+## notificationManager.addDoNotDisturbProfile<sup>23+</sup>
+
+addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
+
+向指定用户添加勿扰模式配置信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明           |
+| ------ | ---------------- | ---- | -------------- |
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | 是 | 勿扰模式的配置信息。 |
+| userId   | int | 是 | 添加勿扰模式配置信息的用户ID。 |
+
+**返回值：**
+
+| 类型      | 说明        |
+|---------|-----------|
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+addDoNotDisturbProfileByUserId = (
+  userId: number, 
+  bundleList: string, 
+  uidList: string, 
+  id: number
+): void => {
+  let fName: string = 'addDoNotDisturbProfileByUserId';
+
+  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
+    hilog.info(DOMAIN, TAG, `${fName} 参数不正确. 请输入逗号分割的一一对应的bundleList和uidList`);
+    return;
+  }
+
+  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+  let arrUid: string[] = uidList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+
+  if (arrBundle.length === 0 || arrUid.length === 0) {
+    hilog.info(DOMAIN, TAG, `${fName} 没有指定应用.`);
+    return;
+  }
+
+  let cnt: number = Math.min(arrBundle.length, arrUid.length);
+  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
+  for (let i = 0; i < cnt; i++) {
+    trustList[i] = {
+      bundle: arrBundle[i].trim(),
+      uid: Number(arrUid[i].trim())
+    };
+  }
+
+  let templates: Array<notificationManager.DoNotDisturbProfile> = [
+    {
+      id: id,
+      name: '工作模式',
+      trustlist: trustList
+    }
+  ];
+
+  try {
+    notificationManager.addDoNotDisturbProfile(templates, userId)
+      .then(() => {
+        hilog.info(DOMAIN, TAG, `${fName} success. ${userId}, ${JSON.stringify(templates)}`);
+      })
+      .catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
+      });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
 ## notificationManager.removeDoNotDisturbProfile<sup>12+</sup>
 
 removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
@@ -4551,6 +4715,108 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+## notificationManager.removeDoNotDisturbProfile<sup>23+</sup>
+
+removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
+
+删除指定用户的勿扰模式配置。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明           |
+| ------ | ---------------- | ---- | -------------- |
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | 是  | 勿扰模式的配置信息。 |
+| userId   | int | 是 | 删除勿扰模式配置的用户ID。 |
+
+**返回值：**
+
+| 类型      | 说明        |
+|---------|-----------|
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600012  | No memory space.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+removeDoNotDisturbProfileByUserId = (
+  userId: number,
+  bundleList: string,
+  uidList: string,
+  id: number
+): void => {
+  let funcName: string = 'removeDoNotDisturbProfileByUserId';
+
+  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
+    hilog.info(DOMAIN, TAG, `${funcName} 参数不正确. 请输入逗号分割的一一对应的bundleList和uidList`);
+    return;
+  }
+
+  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+  let arrUid: string[] = uidList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+
+  if (arrBundle.length === 0 || arrUid.length === 0) {
+    hilog.info(DOMAIN, TAG, `${funcName} 没有指定应用.`);
+    return;
+  }
+
+  let cnt: number = Math.min(arrBundle.length, arrUid.length);
+  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
+  for (let i = 0; i < cnt; i++) {
+    trustList[i] = {
+      bundle: arrBundle[i].trim(),
+      uid: Number(arrUid[i].trim())
+    };
+  }
+
+  let templates: Array<notificationManager.DoNotDisturbProfile> = [
+    {
+      id: id,
+      name: '工作模式',
+      trustlist: trustList
+    }
+  ];
+
+  try {
+    notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
+      hilog.info(DOMAIN, TAG, `${funcName} success. userId: ${userId}, templates: ${JSON.stringify(templates)}`);
+    })
+      .catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+      });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
 ```
 
 ## notificationManager.setAdditionalConfig<sup>12+</sup>
@@ -4657,6 +4923,70 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 }).catch((err: BusinessError) => {
   console.error(`getDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+
+## notificationManager.getDoNotDisturbProfile<sup>23+</sup>
+
+getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
+
+查询指定用户的勿扰模式配置信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口在Wearable、TV中返回801错误码，在其他设备类型中可正常调用。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型             | 必填 | 说明           |
+| ------ | ---------------- | ---- | -------------- |
+| id   | number | 是  | 勿扰模式编号。 |
+| userId   | int | 是  | 待查询勿扰模式配置信息的用户。 |
+
+
+**返回值：**
+
+| 类型      | 说明        |
+|---------|-----------|
+| Promise\<[DoNotDisturbProfile](#donotdisturbprofile12)\> | Promise对象，返回勿扰模式的配置信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600019  | The do-not-disturb profile does not exist.                    |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+getDoNotDisturbProfileByUserId = (id: number, userId: number): void => {
+  let fName: string = 'getDoNotDisturbProfileByUserId';
+  hilog.info(DOMAIN, TAG, `${fName} id: ${id}, userId: ${userId}`);
+  try {
+    notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationManager.DoNotDisturbProfile) => {
+      hilog.info(DOMAIN, TAG, `${fName} success. data: ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
 ```
 
 ## notificationManager.disableNotificationFeature<sup>18+</sup>
@@ -5357,7 +5687,7 @@ setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<voi
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| badges   | Map<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)， boolean> | 是   | 应用包名信息和角标显示状态的列表。 |
+| badges   | Map<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean> | 是   | 应用包名信息和角标显示状态的列表。 |
 
 **返回值：**
 
@@ -5573,6 +5903,387 @@ notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notifica
 }).catch((err: BusinessError) => {
     hilog.info(0x0000, 'testTag', `getReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+
+## notificationManager.isPriorityEnabled<sup>23+</sup>
+
+isPriorityEnabled(): Promise\<boolean\>
+
+获取通知优先级总开关状态。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<boolean\> | Promise对象，返回包含通知优先级总开关使能状态的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.isPriorityEnabled().then((result : boolean) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled result is ${result}`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityEnabled<sup>23+</sup>
+
+setPriorityEnabled(enable: boolean): Promise\<void\>
+
+设置通知优先级总开关。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| enable   | boolean | 是  | 所有通知的优先使能状态。<br> - true：允许设置为优先通知。<br> - false：禁止设置为优先通知。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.setPriorityEnabled(false).then(() => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled success`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isPriorityEnabledByBundle<sup>23+</sup>
+
+isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
+
+获取应用通知优先级开关状态。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<[PriorityEnableStatus](#priorityenablestatus23)\> | Promise对象，返回包含应用通知优先级开关状态的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle result is ${result}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityEnabledByBundle<sup>23+</sup>
+
+setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableStatus): Promise\<void\>
+
+设置应用通知优先级开关。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | 是 | 应用通知优先级开关状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getBundlePriorityConfig<sup>23+</sup>
+
+getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
+
+获取应用的优先功能配置。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<string\> | Promise对象，返回包含应用优先功能配置的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig value is ${value}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setBundlePriorityConfig<sup>23+</sup>
+
+setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
+
+设置应用的优先功能配置。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 是 | 指定应用的包信息。|
+| value | string | 是 | 应用的优先功能配置。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.      |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.onBadgeNumberQuery<sup>22+</sup>
+
+onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise\<long\>): void
+
+注册应用角标数量查询回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| callback   | (bundle: [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)) => Promise\<long\> | 是  | 应用角标数量查询函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try{
+    notificationManager.onBadgeNumberQuery(
+        async (bundleOption: notificationManager.BundleOption) => {
+            return 1;
+        }
+    );
+} catch(err) {
+    hilog.info(0x0000, 'testTag', `onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## notificationManager.offBadgeNumberQuery<sup>22+</sup>
+
+offBadgeNumberQuery(): void
+
+取消应用角标数量查询回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+try{
+    notificationManager.offBadgeNumberQuery();
+} catch(err) {
+    hilog.info(0x0000, 'testTag', `offBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
+}
 ```
 
 ## DoNotDisturbDate
@@ -5792,7 +6503,7 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 | 名称    | 类型     | 只读 | 可选 | 说明                     |
 | ------- | ------- | ---- | ---- | ----------------------- |
-| ringtoneType | [ringtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
+| ringtoneType | [RingtoneType](#ringtonetype21)  |  否  | 否   | 铃声的类型。|
 | ringtoneTitle | string  |  否  | 是   | 铃声的标题。  |
 | ringtoneFileName | string  |  否  | 是   | 铃声的文件名称。  |
 | ringtoneUri | string  |  否  | 是   | 铃声的URI。  |
@@ -5810,3 +6521,129 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
 | reminderFlags | long | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
+
+## PriorityNotificationType<sup>23+</sup>
+
+描述通知的优先级类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| PAYMENT_DUE   | "PAYMENT_DUE"   | 表示通知优先级类型为缴费还款。                 |
+| TRANSACTION_ALERT   | "TRANSACTION_ALERT"   | 表示通知优先级类型为动账提醒。                 |
+| EXPRESS_PROGRESS   | "EXPRESS_PROGRESS"   | 表示通知优先级类型为物流进展。                 |
+| MISS_CALL   | "MISS_CALL"   | 表示通知优先级类型为未接来电。                 |
+| TRAVEL_ALERT   | "TRAVEL_ALERT"   | 表示通知优先级类型为出行异常。                 |
+| ACCOUNT_ALERT   | "ACCOUNT_ALERT"   | 表示通知优先级类型为账号安全。                 |
+| APPOINTMENT_REMINDER   | "APPOINTMENT_REMINDER"   | 表示通知优先级类型为预约提醒。                 |
+| TRAFFIC_NOTICE   | "TRAFFIC_NOTICE"   | 表示通知优先级类型为交通违规。                 |
+| KEY_PROGRESS   | "KEY_PROGRESS"   | 表示通知优先级类型为关键进展通知。                 |
+| PUBLIC_EVENT   | "PUBLIC_EVENT"   | 表示通知优先级类型为重要公共事件。                 |
+| IOT_WARNING   | "IOT_WARNING"   | 表示通知优先级类型为预警通知。                 |
+| CUSTOM_KEYWORD   | "CUSTOM_KEYWORD"   | 表示通知优先级类型为用户自定义关键词。                 |
+
+## PriorityEnableStatus<sup>23+</sup>
+
+描述应用通知的优先级开关状态。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 值  | 说明                               |
+| --------------------| --- | --------------------------------- |
+| DISABLE    | 0   | 应用通知的优先级开关为关闭状态。 |
+| ENABLE_BY_INTELLIGENT  | 1  | 应用通知的优先级开关为智能识别状态。 |
+| ENABLE   | 2   | 应用通知的优先级开关为全部通知状态。 |
+
+### setGeofenceEnabled<sup>23+</sup>
+
+setGeofenceEnabled(enabled: boolean):  Promise\<void\>
+
+设置地理围栏的启用状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                         |
+| --------- | --------------------- | ---- | ---------------------------- |
+| enabled   | boolean | 是  | 设置地理围栏开关。true表示开启地理围栏，false表示关闭地理围栏。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise对象。无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.setGeofenceEnabled(true).then(() => {
+  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### isGeofenceEnabled<sup>23+</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+检查地理围栏功能是否已启用。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**返回值：**
+
+| 类型               | 说明                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| Promise\<boolean\> | Promise对象，返回地理围栏开关状态的Promise对象。返回true表示地理围栏功能已启用，返回false表示地理围栏功能未启用。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+
+**示例：**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```

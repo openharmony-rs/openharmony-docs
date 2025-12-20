@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、bmp、svg、gif和heif，不支持apng和svga格式，具体用法请参考[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件。
+开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg、bmp、svg、webp、gif和heif，不支持apng和svga格式，具体用法请参考[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件。
 
 
 Image通过调用接口来创建，接口调用形式如下：
@@ -401,7 +401,7 @@ Image加载的SVG图源路径设置方法如下所示：
   ```
 SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，本地位图路径设置为跟SVG图源同级的相对路径：
 
-```
+```xml
 <svg width="200" height="200">
   <image width="200" height="200" xlink:href="sky.png"></image>
 </svg>
@@ -416,7 +416,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ### 设置图片缩放类型
 
-通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放。
+通过设置[objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md#objectfit)属性，可以使图片在高度和宽度确定的框内进行缩放。
 
 
   <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->   
@@ -512,7 +512,7 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 
 ### 图片插值
 
-当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用interpolation属性对图片进行插值，以提高显示清晰度。
+当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用[interpolation](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#interpolation)属性对图片进行插值，以提高显示清晰度。
 
 
   <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->    

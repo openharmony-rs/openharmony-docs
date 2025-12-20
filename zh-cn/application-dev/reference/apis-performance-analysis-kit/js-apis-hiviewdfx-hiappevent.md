@@ -393,6 +393,9 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | onTrigger        | (curRow: number, curSize: number, holder: [AppEventPackageHolder](#appeventpackageholder)) => void |  否   | 是   | 订阅回调函数，需要与回调触发条件triggerCondition一同传入才会生效，函数入参说明如下：<br>curRow：在本次回调触发时的订阅事件总数量； <br>curSize：在本次回调触发时的订阅事件总大小，单位为byte；  <br/>holder：订阅数据持有者对象，可以通过其对订阅事件进行处理。 |
 | onReceive<sup>11+</sup>        | (domain: string, appEventGroups: Array<[AppEventGroup](#appeventgroup11)>) => void |  否   | 是 | 订阅实时回调函数，与回调函数onTrigger同时存在时，只触发此回调，函数入参说明如下：<br>domain：回调事件的领域名称； <br>appEventGroups：回调事件集合。 |
 
+> **说明：**
+>
+> 不建议在回调函数中执行[移除观察者](#hiappeventremovewatcher)的操作，watcher一旦被移除，则其原有的订阅回调功能也会随之失效，可能会造成某些事件发生后无订阅回调情况。
 
 ## TriggerCondition
 
@@ -425,7 +428,8 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 > **说明：**
 >
-> 系统事件中：地址越界事件和任务执行超时事件不支持在元服务中订阅。启动耗时事件、滑动丢帧事件、CPU高负载事件、24h功耗器件分解统计事件和音频卡顿事件均不支持在元服务和分身应用中订阅。
+> 不同类型应用上，系统事件的订阅规格不同，具体规格可参见[HiAppEvent约束与限制](../../dfx/hiappevent-intro.md#约束与限制)。
+
 
 ## AppEventPackageHolder
 

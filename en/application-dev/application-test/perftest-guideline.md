@@ -54,7 +54,7 @@ The following describes how to collect the execution duration and CPU usage of a
     <!-- @[metricsDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
     ``` TypeScript
-    let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ]; // Define the metrics to be tested.
+    let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE]; // Define the metrics to be tested.
     ```
 
 2. Define the code segment to be tested and the environment reset code segment.
@@ -64,7 +64,7 @@ The following describes how to collect the execution duration and CPU usage of a
     <!-- @[callbackDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
     ``` TypeScript
-    let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean >) => { // Define the code segment to be tested.
+    let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => { // Define the code segment to be tested.
       Utils.CalculateTest();
       finish(true);
     };
@@ -75,7 +75,7 @@ The following describes how to collect the execution duration and CPU usage of a
     <!-- @[resetCodeDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
     ``` TypeScript
-    let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean >) => { // Define the code segment for environment reset.
+    let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => { // Define the code segment for environment reset.
       Utils.Reset();
       finish(true);
     };
@@ -88,12 +88,13 @@ The following describes how to collect the execution duration and CPU usage of a
     <!-- @[strategyDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
     ``` TypeScript
-    let perfTestStrategy: PerfTestStrategy = {  // Define a test strategy.
+    let perfTestStrategy: PerfTestStrategy = {
+      // Define the test policy.
       metrics: metrics,
       actionCode: actionCode,
       resetCode: resetCode,
-      bundleName: "com.samples.test.perftest", // Bundle name of the application to be tested. Replace it with the actual bundle name.
-      iterations: 10,  // Number of test iterations.
+      bundleName: 'com.samples.test.perftest', // Bundle name of the application to be tested. Replace it with the actual bundle name.
+      iterations: 10, // Number of test iterations.
       timeout: 20000  // Timeout interval for executing a code segment.
     };
     ```
@@ -144,11 +145,13 @@ The following example describes how to collect basic performance data during the
     export class Utils {
       static num: number = 0;
       static maxNum: number = 10000;
+    
       public static CalculateTest() {
         for (let index = 0; index < Utils.maxNum; index++) {
           Utils.num++;
         }
       }
+    
       public static Reset() {
         Utils.num = 0;
       }
@@ -159,57 +162,44 @@ The following example describes how to collect basic performance data during the
 
     <!-- @[CPUMetric_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
-    ```TypeScript
-    import { describe, it, expect, Level } from '@ohos/hypium';
-    import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult, abilityDelegatorRegistry } from '@kit.TestKit';
-    import { Utils } from '../../../main/ets/utils/Utils'
+    ``` TypeScript
+    import { describe, expect, it, Level } from '@ohos/hypium';
+    import { abilityDelegatorRegistry, PerfMeasureResult, PerfMetric, PerfTest, PerfTestStrategy } from '@kit.TestKit';
+    import { Utils } from '../../../main/ets/utils/Utils';
     
     export default function PerfTestTest() {
       describe('PerfTestTest2', () => {
         it('testExample1', 0, async (done: Function) => {
-          // [Start metricsDefine_sample]
-          let metrics: Array<PerfMetric> = [ PerfMetric.DURATION, PerfMetric.CPU_USAGE ]; // Define the metrics to be tested.
-          // [End metricsDefine_sample]
-          // [Start callbackDefine_sample]
-          let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean >) => { // Define the code segment to be tested.
+          let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE]; // Define the metrics to be tested.
+          let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => { // Define the code segment to be tested.
             Utils.CalculateTest();
             finish(true);
           };
-          // [End callbackDefine_sample]
-          // [Start resetCodeDefine_sample]
-          let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean >) => { // Define the code segment for environment reset.
+          let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => { // Define the code segment for environment reset.
             Utils.Reset();
             finish(true);
           };
-          // [End resetCodeDefine_sample]
-          // [Start strategyDefine_sample]
-          let perfTestStrategy: PerfTestStrategy = {  // Define a test strategy.
+          let perfTestStrategy: PerfTestStrategy = {
+            // Define the test policy.
             metrics: metrics,
             actionCode: actionCode,
             resetCode: resetCode,
-            bundleName: "com.samples.test.perftest", // Bundle name of the application to be tested. Replace it with the actual bundle name.
-            iterations: 10,  // Number of test iterations.
+            bundleName: 'com.samples.test.perftest', // Bundle name of the application to be tested. Replace it with the actual bundle name.
+            iterations: 10, // Number of test iterations.
             timeout: 20000  // Timeout interval for executing a code segment.
           };
-          // [End strategyDefine_sample]
           try {
-            // [Start startTest_sample]
             let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // Create a test task object PerfTest.
             await perfTest.run(); // Execute the test. Use await to wait for the completion of the asynchronous function.
-            // [End startTest_sample]
-            // [Start getResult_sample]
             let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION); // Obtain the test result of the duration.
             let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE); // Obtain the test result of the CPU usage.
-            // [End getResult_sample]
-            // [Start exit_sample]
             perfTest.destroy(); // Destroy the PerfTest object.
-            // [End exit_sample]
             expect(res1.average).assertLessOrEqual(1000); // Assert the performance test result.
             expect(res2.average).assertLessOrEqual(30); // Assert the performance test result.
           } catch (error) {
-            expect(false).assertTrue()
+            expect(false).assertTrue();
           }
-          done()
+          done();
         })
       })
     }
@@ -222,13 +212,14 @@ The following example describes how to test the frame rate of list scrolling in 
 1. Write the **PageListPage.ets** page code in the **main** > **ets** > **pages** folder as the test demo.
 
     <!-- @[scroll_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/main/ets/pages/PageListPage.ets) -->
-
-    ```TypeScript
+    
+    ``` TypeScript
     @Entry
     @Component
     struct ListPage {
-      scroller: Scroller = new Scroller()
-      private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      scroller: Scroller = new Scroller();
+      private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    
       build() {
         Row() {
           Column() {
@@ -261,62 +252,72 @@ The following example describes how to test the frame rate of list scrolling in 
 
     <!-- @[slideFps_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/perftest/entry/src/ohosTest/ets/test/SlideFps.test.ets) -->
     
-    ```TypeScript
-    import { describe, it, expect, Level } from '@ohos/hypium';
-    import { PerfMetric, PerfTest, PerfTestStrategy, PerfMeasureResult } from '@kit.TestKit';
-    import { abilityDelegatorRegistry, Driver, ON } from '@kit.TestKit';
+    ``` TypeScript
+    import { describe, expect, it, Level } from '@ohos/hypium';
+    import {
+      abilityDelegatorRegistry,
+      Driver,
+      ON,
+      PerfMeasureResult,
+      PerfMetric,
+      PerfTest,
+      PerfTestStrategy
+    } from '@kit.TestKit';
     import { Want } from '@kit.AbilityKit';
     
     const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-      export default function PerfTestTest() {
-        describe('PerfTestTest1', () => {
-        it('testExample2',Level.LEVEL3, async (done: Function) => {
-            let driver = Driver.create();
+    
+    export default function PerfTestTest() {
+      describe('PerfTestTest1', () => {
+        it('testExample2', Level.LEVEL3, async (done: Function) => {
+          let driver = Driver.create();
+          await driver.delayMs(1000);
+          const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
+          // Replace the bundleName and abilityName with the actual ones.
+          const want: Want = {
+            bundleName: bundleName,
+            abilityName: 'EntryAbility'
+          };
+          await delegator.startAbility(want); // Start the test application.
+          await driver.delayMs(1000);
+          let toPageListBtn = await driver.findComponent(ON.id('toPageList'));
+          await toPageListBtn.click();
+          await driver.delayMs(1000);
+          let scroll = await driver.findComponent(ON.type('Scroll'));
+          await driver.delayMs(1000);
+          let center = await scroll.getBoundsCenter(); // Obtain the coordinates of the Scroll component.
+          await driver.delayMs(1000);
+          let metrics: Array<PerfMetric> = [PerfMetric.LIST_SWIPE_FPS]; // Specify the test metric to the frame rate during list scrolling.
+          let actionCode = async (finish: Callback<boolean>) => { // Use UITest to scroll the list in the test code segment.
+            await driver.fling({ x: center.x, y: Math.floor(center.y * 3 / 2) },
+              { x: center.x, y: Math.floor(center.y / 2) }, 50, 20000);
+            await driver.delayMs(3000);
+            finish(true);
+          };
+          let resetCode = async (finish: Callback<boolean>) => { // Reset the environment by scrolling to the top of the list.
+            await scroll.scrollToTop(40000);
             await driver.delayMs(1000);
-            const bundleName = abilityDelegatorRegistry.getArguments().bundleName;
-            // Replace the bundleName and abilityName with the actual ones.
-            const want: Want = {
-                bundleName: bundleName,
-                abilityName: 'EntryAbility'
-            };
-            await delegator.startAbility(want); // Start the test application.
-            await driver.delayMs(1000);
-            let toPageListBtn = await driver.findComponent(ON.id('toPageList'));
-            await toPageListBtn.click();
-            await driver.delayMs(1000);
-            let scroll = await driver.findComponent(ON.type('Scroll'));
-            await driver.delayMs(1000);
-            let center = await scroll.getBoundsCenter(); // Obtain the coordinates of the Scroll component.
-            await driver.delayMs(1000);
-            let metrics: Array<PerfMetric> = [PerfMetric.LIST_SWIPE_FPS]  // Specify the test metric to the frame rate during list scrolling.
-            let actionCode = async (finish: Callback<boolean>) => { // Use UITest to scroll the list in the test code segment.
-                await driver.fling({x: center.x, y: Math.floor(center.y * 3 / 2)}, {x: center.x, y: Math.floor(center.y / 2)}, 50, 20000);
-                await driver.delayMs(3000);
-                finish(true);
-            };
-            let resetCode = async (finish: Callback<boolean>) => {  // Reset the environment by scrolling to the top of the list.
-                await scroll.scrollToTop(40000);
-                await driver.delayMs(1000);
-                finish(true);
-            };
-            let perfTestStrategy: PerfTestStrategy = {  // Define a test strategy.
-                metrics: metrics,
-                actionCode: actionCode,
-                resetCode: resetCode,
-                iterations: 5,  // Specify the number of test iterations.
-                timeout: 50000, // Specify the timeout interval of actionCode and resetCode.
-            };
-            try {
-                let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // Create a test task object PerfTest.
-                await perfTest.run(); // Execute the test. Use await to wait for the completion of the asynchronous function.
-                let res: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.LIST_SWIPE_FPS); // Obtain the test result of the frame rate during list scrolling.
-                perfTest.destroy(); // Destroy the PerfTest object.
-                expect(res.average).assertLargerOrEqual(30);  // Assert the performance test result.
-            } catch (error) {
-                console.error(`Failed to execute perftest. Cause:${JSON.stringify(error)}`);
-            }
-            done();
-          })
+            finish(true);
+          };
+          let perfTestStrategy: PerfTestStrategy = {
+            // Define the test policy.
+            metrics: metrics,
+            actionCode: actionCode,
+            resetCode: resetCode,
+            iterations: 5, // Specify the number of test iterations.
+            timeout: 50000, // Specify the timeout interval of actionCode and resetCode.
+          };
+          try {
+            let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // Create a test task object PerfTest.
+            await perfTest.run(); // Execute the test. Use await to wait for the completion of the asynchronous function.
+            let res: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.LIST_SWIPE_FPS); // Obtain the test result of the frame rate during list scrolling.
+            perfTest.destroy(); // Destroy the PerfTest object.
+            expect(res.average).assertLargerOrEqual(30); // Assert the performance test result.
+          } catch (error) {
+            console.error(`Failed to execute perftest. Cause:${JSON.stringify(error)}`);
+          }
+          done();
+        })
       })
     }
     ```

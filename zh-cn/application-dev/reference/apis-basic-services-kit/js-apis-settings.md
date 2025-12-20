@@ -1101,3 +1101,81 @@ let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
 let helper = featureAbility.acquireDataAbilityHelper(uri);
 let ret:string = settings.setValueSync(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, '100');
 ```
+
+## settings.openInputMethodSettings<sup>23+</sup>
+
+openInputMethodSettings(context: Context): void
+
+打开输入法设置页面。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+
+**示例**：
+
+<!--code_no_check-->
+```js
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 跳转输入法设置页面。
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+settings.openInputMethodSettings(context);
+```
+
+## settings.openInputMethodDetail<sup>23+</sup>
+
+openInputMethodDetail(context: Context, bundleName: string, inputMethodId: string): void
+
+打开输入法详情页面。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | Context                | 是   | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| bundleName      | string          | 是   | 拉起输入法的对应包名 |
+| inputMethodId   | string          | 是   | 输入法扩展在应用内唯一标识[id](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+
+**示例**：
+
+<!--code_no_check-->
+```js
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 跳转输入法详情页面。
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let bundleName: string = "target inputMethod bundle name";
+let inputMethodId: string = "target inputMethod id";
+settings.openInputMethodDetail(context, bundleName, inputMethodId);
+```

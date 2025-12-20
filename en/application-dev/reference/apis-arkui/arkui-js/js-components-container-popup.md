@@ -1,4 +1,10 @@
 # popup
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liyi0309-->
+<!--Designer: @liyi0309-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -95,6 +101,7 @@ The following methods are supported.
   flex-direction: column;
   align-items: center;
   padding-top: 200px;
+  padding-left: 200px;
 }
 .popup {
   mask-color: gray;
@@ -104,7 +111,7 @@ The following methods are supported.
 }
 .button {
   width: 220px;
-  height: 70px;
+  height: 100px;
   margin-top: 50px;
 }
 ```

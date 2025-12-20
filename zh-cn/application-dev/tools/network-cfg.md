@@ -1,6 +1,15 @@
 # network-cfg工具
 
-network-cfg是为开发人员提供用于设置网络相关参数的工具（其中"cfg"为"config"的缩写），例如给Wi-Fi设置代理等。
+<!--Kit: Network Kit-->
+<!--Subsystem: Communication-->
+<!--Owner: @wmyao_mm-->
+<!--Designer: @guo-min_net-->
+<!--Tester: @tongxilin-->
+<!--Adviser: @zhang_yixin13-->
+network-cfg是为开发人员提供的用于设置网络相关参数的工具（其中"cfg"为"config"的缩写），例如给Wi-Fi设置代理等。
+>**说明：**
+>
+>network-cfg工具从API version 20开始支持。
 
 ## 环境要求
 

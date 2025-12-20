@@ -61,6 +61,7 @@ Application component that has the UI. It provides lifecycle callbacks such as c
 | launchWant | [Want](js-apis-app-ability-want.md) | No| No| Want in the request used to [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability) the UIAbility. The value is the Want received in [onCreate](#oncreate).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | lastRequestWant | [Want](js-apis-app-ability-want.md) | No| No| Want in the most recent request to launch the UIAbility.<br>- On the first launch of a UIAbility, it is the Want parameter received in [onCreate](#oncreate).<br>- On subsequent launches, it is the most recent Want received in [onNewWant](#onnewwant).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | callee | [Callee](#callee) | No| No| Background communication object created by the system for the UIAbility, known as the Callee UIAbility (Callee), which is capable of receiving data sent from the Caller object.|
+| specifiedId<sup>23+</sup> | string | No| Yes| Custom UIAbility ID. This parameter is available only when the UIAbility launch mode is set to [specified](../../application-models/uiability-launch-type.md#specified).|
 
 
 ### onCreate
@@ -916,10 +917,11 @@ onCollaborate(wantParam: Record&lt;string, Object&gt;): AbilityConstant.Collabor
 
 Callback invoked to return the collaboration result in multi-device collaboration scenarios.
 
- **NOTE**
-- This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
-- When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
-- During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
+> **NOTE**
+>
+> - This callback does not support ability launch in [specified mode](../../application-models/uiability-launch-type.md#specified).
+> - When you use methods such as [startAbility](./js-apis-inner-application-uiAbilityContext.md#startability) to start an application, you must include **FLAG_ABILITY_ON_COLLABORATE** in [Flags](js-apis-app-ability-wantConstant.md#flags) in the Want object.
+> - During a [cold start](../../application-models/uiability-intra-device-interaction.md#cold-starting-uiability), this callback must be invoked before [onForeground](#onforeground) or after [onBackground](#onbackground). During a [hot start](../../application-models/uiability-intra-device-interaction.md#hot-starting-uiability), this callback must be invoked before [onNewWant](#onnewwant).
 
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -1247,7 +1249,7 @@ Called when the remote UIAbility state changes in the collaboration scenario. Th
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback) | Yes| Callback used to return the result.|
+| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback10) | Yes| Callback used to return the result.|
 
 **Error codes**
 
@@ -1576,9 +1578,7 @@ export default class MainUIAbility extends UIAbility {
 
 ## OnReleaseCallback
 
-### (msg: string)
-
-(msg: string): void
+type OnReleaseCallback = (msg: string) => void
 
 Defines the callback that is invoked when the stub on the target UIAbility is disconnected.
 
@@ -1590,11 +1590,9 @@ Defines the callback that is invoked when the stub on the target UIAbility is di
 | --- | ----- | --- | -------- |
 | msg | string | Yes| Message used for disconnection.|
 
-## OnRemoteStateChangeCallback
+## OnRemoteStateChangeCallback<sup>10+</sup>
 
-### (msg: string)<sup>10+</sup>
-
-(msg: string): void
+type OnRemoteStateChangeCallback = (msg: string) => void
 
 Defines the callback that is invoked when the remote UIAbility state changes in the collaboration scenario.
 
@@ -1608,9 +1606,7 @@ Defines the callback that is invoked when the remote UIAbility state changes in 
 
 ## CalleeCallback
 
-### (indata: rpc.MessageSequence)
-
-(indata: rpc.MessageSequence): rpc.Parcelable
+type CalleeCallback = (indata: rpc.MessageSequence) => rpc.Parcelable
 
 Defines the callback of the registration message notification of the UIAbility.
 

@@ -2,9 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_AccessibilityProviderCallbacksWithInstance
+```
 
 ## Overview
 
@@ -34,7 +38,7 @@ Defines the callback function struct for third-party operation providers in mult
 
 ### findAccessibilityNodeInfosById()
 
-```
+```c
 int32_t (*findAccessibilityNodeInfosById)(const char* instanceId, int64_t elementId,ArkUI_AccessibilitySearchMode mode, int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
 ```
 
@@ -62,7 +66,7 @@ Callback function implemented by the third-party platform and registered with th
 
 ### findAccessibilityNodeInfosByText()
 
-```
+```c
 int32_t (*findAccessibilityNodeInfosByText)(const char* instanceId, int64_t elementId, const char* text,int32_t requestId, ArkUI_AccessibilityElementInfoList* elementList)
 ```
 
@@ -90,7 +94,7 @@ Callback function implemented by the third-party platform and registered with th
 
 ### findFocusedAccessibilityNode()
 
-```
+```c
 int32_t (*findFocusedAccessibilityNode)(const char* instanceId, int64_t elementId,ArkUI_AccessibilityFocusType focusType, int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -118,7 +122,7 @@ Callback function implemented by the third-party platform and registered with th
 
 ### findNextFocusAccessibilityNode()
 
-```
+```c
 int32_t (*findNextFocusAccessibilityNode)(const char* instanceId, int64_t elementId, ArkUI_AccessibilityFocusMoveDirection direction,int32_t requestId, ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -146,7 +150,7 @@ Callback function implemented by the third-party platform and registered with th
 
 ### executeAccessibilityAction()
 
-```
+```c
 int32_t (*executeAccessibilityAction)(const char* instanceId, int64_t elementId,ArkUI_Accessibility_ActionType action, ArkUI_AccessibilityActionArguments *actionArguments, int32_t requestId)
 ```
 
@@ -174,7 +178,7 @@ Callback function implemented by the third-party platform and registered with th
 
 ### clearFocusedFocusAccessibilityNode()
 
-```
+```c
 int32_t (*clearFocusedFocusAccessibilityNode)(const char* instanceId)
 ```
 
@@ -198,7 +202,7 @@ Callback function implemented by the third-party platform and registered with th
 
 ### getAccessibilityNodeCursorPosition()
 
-```
+```c
 int32_t (*getAccessibilityNodeCursorPosition)(const char* instanceId, int64_t elementId,int32_t requestId, int32_t* index)
 ```
 

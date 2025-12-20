@@ -238,7 +238,9 @@ MethodIndexData是一个无符号32位整数，划分为3个部分。
 | 24 - 31      | `reserved`       | `uint8_t`        | 方舟字节码文件内部使用的保留字段。                           |
 
 
-#### FunctionKind
+
+**FunctionKind**
+
 
 | **名称**           | **值** | **说明**   |
 | ------------------------ | ------------ | ---------------- |
@@ -396,11 +398,15 @@ MethodIndexData是一个无符号32位整数，划分为3个部分。
 | `line_number_program_idx` | `uleb128`        | 一个索引，指向一个在[LineNumberProgramIndex](#linenumberprogramindex)中的位置，该位置的值是一个指向Line number program的偏移量。Line number program的长度可变，以`END_SEQUENCE`操作码结束。 |
 
 
-#### Constant pool
+
+**Constant pool**
+
 常量池（Constant pool）是DebugInfo中存放常量的结构。很多方法都具有相似的行号程序，其区别仅在于变量名、变量类型和文件名。为了对这类行号程序进行去重，程序中引用的所有常量都存储在常量池。在解释程序时，状态机维护一个指向常量池的指针。当状态机解释一条需要常量参数的指令时，会从内存常量池指针指向的位置读取值，然后递增指针。
 
 
-#### State machine
+
+**State machine**
+
 状态机（State machine）的作用是产生[DebugInfo](#debuginfo)信息。状态机中有以下的寄存器：
 
 | **名称**    | **初始值**                                             | **说明**                                               |
@@ -413,7 +419,9 @@ MethodIndexData是一个无符号32位整数，划分为3个部分。
 | `constant_pool_ptr` | [DebugInfo](#debuginfo)中常量池的起始地址 | 指向当前常量值的指针。                                       |
 
 
-#### Line number program
+
+**Line number program**
+
 一个行号程序（Line number program）由指令组成。每条指令都包含一个字节的操作码以及可选参数。根据操作码的不同，参数的值可能被编码在指令中（称为指令参数），或者需要从常量池中获取（称为常量池参数）。
 
 | **操作码**  | **值** | **指令参数**   | **常量池参数**    | **参数说明** | **说明**  |

@@ -13,7 +13,7 @@ The application sandbox is an isolation mechanism used to prevent malicious data
 
 - The application sandbox limits the scope of data visible to an application. By default, each application can access only its own application files and the system files required for its running. On the device platform where all files are mounted, the File Manager application can view the data stored by other applications under the **el2/base** directory.
 
-- In each application sandbox directory, the application can save and process its application files in the application file directory, and can only read the system files and directories. To access [user files](user-file-overview.md), the application needs to call specific APIs and have authorization from the user.
+- In each application sandbox directory, the application can save and process its application files in the application file directory, and can only read the system files and directories. To access user files, see [User File Overview](user-file-overview.md).
 
 The following figure illustrates the file access mechanism in the application sandbox.
 
@@ -78,11 +78,11 @@ The following figure shows the application file directory structure. The path of
 
    > **NOTE**
    >
-   > Unless otherwise required, application data is placed in the **el2** directory for security purposes. The data that needs to be accessed before the first user authentication (such as the clock, alarm, and wallpaper data) is placed in the **el1** directory.
+   > - Unless otherwise required, application data is placed in the **el2** directory for security purposes. The data that needs to be accessed before the first user authentication (such as the clock, alarm, and wallpaper data) is placed in the **el1** directory.
    >
-   > You can listen for the [COMMON_EVENT_USER_UNLOCKED](../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_user_unlocked) event to detect that the first user authentication is complete.
+   > - You can listen for the [COMMON_EVENT_USER_UNLOCKED](../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_user_unlocked) event to detect that the first user authentication is complete.
    >
-   > For details about the operations on **el1/** and **el2/**, see [Obtaining and Modifying el Directories](../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels).
+   > - For details about the operations on **el1/** and **el2/**, see [Obtaining and Modifying el Directories](../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels).
 
 4. Level 4 and level 5 directories:
    The application's global data is stored in the **distributedfiles** directory and **files**, **cache**, **preferences**, and **temp** in **base**. You can use **ApplicationContext** to obtain the application file paths of these directories.

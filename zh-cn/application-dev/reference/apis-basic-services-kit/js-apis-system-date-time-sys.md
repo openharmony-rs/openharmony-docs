@@ -457,7 +457,6 @@ setAutoTimeStatus(status: boolean): Promise&lt;void&gt;
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
-| 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 13000001  | Network connection error or OS error. Possible causes: System memory is insufficient or Calls the underlying system interface failed|
 
 

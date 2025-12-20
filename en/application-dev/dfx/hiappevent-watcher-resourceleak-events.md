@@ -17,6 +17,10 @@ This topic describes the fields of the resource leak event. For details about ho
 
 - - [Subscribing to Resource Leak Events (C/C++)](hiappevent-watcher-resourceleak-events-ndk.md)
 
+> **NOTE**
+>
+> Resource leak events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, resource leak events can be subscribed to using HiAppEvent in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
 ## Detection Principles
 
 For details about the detection principles, see [Resource Leak Detection](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/resource-leak-guidelines).

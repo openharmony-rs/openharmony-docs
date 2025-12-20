@@ -47,7 +47,7 @@
 
 ### OH_Drawing_TileMode
 
-```
+```c
 enum OH_Drawing_TileMode
 ```
 
@@ -69,7 +69,7 @@ enum OH_Drawing_TileMode
 
 ### OH_Drawing_ShaderEffectCreatePixelMapShader()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreatePixelMapShader(OH_Drawing_PixelMap* pixelMap,OH_Drawing_TileMode tileX, OH_Drawing_TileMode tileY, const OH_Drawing_SamplingOptions* samplingOptions,const OH_Drawing_Matrix* matrix)
 ```
 
@@ -100,7 +100,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreatePixelMapShader(OH_Drawing_
 
 ### OH_Drawing_ShaderEffectCreateColorShader()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateColorShader(const uint32_t color)
 ```
 
@@ -127,7 +127,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateColorShader(const uint32_t
 
 ### OH_Drawing_ShaderEffectCreateLinearGradient()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Drawing_Point* startPt,const OH_Drawing_Point* endPt, const uint32_t* colors,const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)
 ```
 
@@ -159,7 +159,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Dr
 
 ### OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix(const OH_Drawing_Point2D* startPt, const OH_Drawing_Point2D* endPt, const uint32_t* colors, const float* pos,uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -192,7 +192,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMat
 
 ### OH_Drawing_ShaderEffectCreateRadialGradient()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Drawing_Point* centerPt, float radius,const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)
 ```
 
@@ -224,7 +224,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Dr
 
 ### OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix(const OH_Drawing_Point2D* centerPt, float radius, const uint32_t* colors, const float* pos, uint32_t size,OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -257,7 +257,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMat
 
 ### OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatrix(const OH_Drawing_Point* centerPt,const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -289,7 +289,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatr
 
 ### OH_Drawing_ShaderEffectCreateSweepGradient()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Drawing_Point* centerPt,const uint32_t* colors, const float* pos, uint32_t size, OH_Drawing_TileMode tileMode)
 ```
 
@@ -316,11 +316,11 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Dra
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* |  函数会返回一个指针，指针指向创建的着色器对象[OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)。<br>存在以下任意一种情况时，会返回空指针：1.可用内存为空；2.centerPt、colors任意为空；3.tileMode超出枚举范围。
+| [OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)* |  函数会返回一个指针，指针指向创建的着色器对象[OH_Drawing_ShaderEffect](capi-drawing-oh-drawing-shadereffect.md)。<br>存在以下任意一种情况时，会返回空指针：1.可用内存为空；2.centerPt、colors任意为空；3.tileMode超出枚举范围。|
 
 ### OH_Drawing_ShaderEffectCreateImageShader()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Image* image,OH_Drawing_TileMode tileX, OH_Drawing_TileMode tileY, const OH_Drawing_SamplingOptions* samplingOptions,const OH_Drawing_Matrix* matrix)
 ```
 
@@ -351,7 +351,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Ima
 
 ### OH_Drawing_ShaderEffectCreateTwoPointConicalGradient()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(const OH_Drawing_Point2D* startPt,float startRadius, const OH_Drawing_Point2D* endPt, float endRadius, const uint32_t* colors, const float* pos,uint32_t size, OH_Drawing_TileMode tileMode, const OH_Drawing_Matrix* matrix)
 ```
 
@@ -386,7 +386,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(co
 
 ### OH_Drawing_ShaderEffectCreateCompose()
 
-```
+```c
 OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderEffect* dst,OH_Drawing_ShaderEffect* src, OH_Drawing_BlendMode mode)
 ```
 
@@ -415,7 +415,7 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderE
 
 ### OH_Drawing_ShaderEffectDestroy()
 
-```
+```c
 void OH_Drawing_ShaderEffectDestroy(OH_Drawing_ShaderEffect* shaderEffect)
 ```
 

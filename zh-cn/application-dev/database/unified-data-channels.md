@@ -56,10 +56,10 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. 创建一个统一数据对象并插入到UDMF的公共数据通路中。
@@ -216,10 +216,10 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-
+    
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-    import hilog from '@ohos.hilog';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. 查询存储在UDMF公共数据通路中的全量统一数据对象。

@@ -419,6 +419,7 @@
     - [SaveButton](arkui-ts/ts-security-components-savebutton.md)
     <!--Del-->
     - [SaveButton (系统接口)](arkui-ts/ts-security-components-savebutton-sys.md)
+    - [安全控件通用属性 (系统接口)](arkui-ts/ts-securitycomponent-attributes-sys.md)
     <!--DelEnd-->
   - 主题<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
@@ -490,7 +491,7 @@
     <!--Del-->
     - [应用级变量的状态管理（系统接口）](arkui-ts/ts-state-management-sys.md)
     <!--DelEnd-->
-  - 响应式环境变量<!--arkts-env-system-property-->
+  - 响应式环境变量<!--responsive-env-system-property-->
     - [\@Env：环境变量](arkui-ts/ts-env-system-property.md)
   - 公共定义<!--common-definitions-->
     - [基础类型定义](arkui-ts/ts-types.md)
@@ -675,12 +676,16 @@
     - [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)
     - [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)
     - [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)
+    - [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)
     - [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)
     - [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)
     - [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)
     - [ArkUI_StyledString](capi-arkui-nativemodule-arkui-styledstring.md)
+    - [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)
+    - [ArkUI_TextMarqueeOption](capi-arkui-nativemodule-arkui-textmarqueeoption.md)
     - [ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)
     - [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)
+    - [ArkUI_TextContentBaseController](capi-arkui-nativemodule-arkui-textcontentbasecontroller.md)
     - [PictureInPicture_PipConfig](capi-pictureinpicture-pipconfig.md)
     - [WindowManager_Rect](capi-windowmanager-rect.md)
     - [OH_PixelmapNative](capi-struct.md)
@@ -722,6 +727,11 @@
     - [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
     - [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
     - [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
+    - [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)
+    - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
+    - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
+    - [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
+    - [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)

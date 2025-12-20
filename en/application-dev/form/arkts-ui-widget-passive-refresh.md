@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 This section provides the development guidelines for passive update. For details about the update process, see [Passive Update](./arkts-ui-widget-interaction-overview.md#passive-update).
 
@@ -26,7 +26,6 @@ Form Kit provides the following methods for interval-based update:
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -39,40 +38,56 @@ Form Kit provides the following methods for interval-based update:
     ]
   }
   ```
- > **NOTE**
+  > **NOTE**
   >
   > To use interval-based update, set the `updateEnabled` field to `true` in the **form_config.json** file.
 
 - Setting the next update time: The widget will be updated at the next specified time, which is specified by calling [setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime), at the minimum of 5 minutes. For example, you can configure the widget to update within 5 minutes after the API is called.
 
-  ```ts
-  import { FormExtensionAbility, formProvider } from '@kit.FormKit';
+  <!-- @[set_form_next_refreshime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) -->
+  
+  ``` TypeScript
+  // entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts
+  import { formBindingData, FormExtensionAbility, formInfo, formProvider } from '@kit.FormKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { Want } from '@kit.AbilityKit';
   
   const TAG: string = 'UpdateByTimeFormAbility';
   const FIVE_MINUTE: number = 5;
   const DOMAIN_NUMBER: number = 0xFF00;
   
   export default class UpdateByTimeFormAbility extends FormExtensionAbility {
+    onAddForm(want: Want): formBindingData.FormBindingData {
+      // Called when the widget host creates a widget. The widget data binding class is returned.
+      let formData = {};
+      return formBindingData.createFormBindingData(formData);
+    }
+  // ···
     onFormEvent(formId: string, message: string): void {
-      // Called when a specified message event defined by the form provider is triggered.
+      // Called when the message event of the postCardAction API of the widget provider is triggered.
       hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${JSON.stringify(message)}`);
       try {
         // Configure the widget to update in 5 minutes.
         formProvider.setFormNextRefreshTime(formId, FIVE_MINUTE, (err: BusinessError) => {
           if (err) {
-            hilog.info(DOMAIN_NUMBER, TAG, `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
+            hilog.error(DOMAIN_NUMBER, TAG,
+              `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
             return;
           } else {
             hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTiming.');
           }
         });
       } catch (err) {
-        hilog.info(DOMAIN_NUMBER, TAG, `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code}, message: ${(err as BusinessError).message}`);
+        hilog.error(DOMAIN_NUMBER, TAG,
+          `Failed to setFormNextRefreshTime. Code: ${(err as BusinessError).code},
+           message: ${(err as BusinessError).message}`);
       }
     }
-    // ... 
+    onAcquireFormState(want: Want): formInfo.FormState {
+      // Called when the widget host queries the widget state. The initial state is returned by default.
+      return formInfo.FormState.READY;
+    }
   }
   ```
 
@@ -106,7 +121,6 @@ Form Kit provides the following methods for time-specific widget update:
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -133,11 +147,10 @@ Form Kit provides the following methods for time-specific widget update:
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
-        "multiScheduledUpdateTime": "11:30,16:30,",
+        "multiScheduledUpdateTime": "11:30,16:30",
         "updateDuration": 0,
         "defaultDimension": "2*2",
         "supportDimensions": [
@@ -186,7 +199,6 @@ Form Kit provides the following methods for conditional updates:
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",

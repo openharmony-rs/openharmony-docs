@@ -55,7 +55,7 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 
 ### OH_AbilityBase_CreateWant()
 
-```
+```c
 AbilityBase_Want* OH_AbilityBase_CreateWant(AbilityBase_Element element)
 ```
 
@@ -80,7 +80,7 @@ AbilityBase_Want* OH_AbilityBase_CreateWant(AbilityBase_Element element)
 
 ### OH_AbilityBase_DestroyWant()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 ```
 
@@ -104,7 +104,7 @@ AbilityBase_ErrorCode OH_AbilityBase_DestroyWant(AbilityBase_Want* want)
 
 ### OH_AbilityBase_SetWantElement()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, AbilityBase_Element element)
 ```
 
@@ -130,7 +130,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantElement(AbilityBase_Want* want, Abil
 
 ### OH_AbilityBase_GetWantElement()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, AbilityBase_Element* element)
 ```
 
@@ -156,7 +156,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantElement(AbilityBase_Want* want, Abil
 
 ### OH_AbilityBase_SetWantCharParam()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, const char* key, const char* value)
 ```
 
@@ -182,7 +182,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantCharParam(AbilityBase_Want* want, co
 
 ### OH_AbilityBase_GetWantCharParam()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, const char* key,char* value, size_t valueSize)
 ```
 
@@ -210,7 +210,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantCharParam(AbilityBase_Want* want, co
 
 ### OH_AbilityBase_AddWantFd()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const char* key, int32_t fd)
 ```
 
@@ -236,7 +236,7 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 
 ### OH_AbilityBase_GetWantFd()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const char* key, int32_t* fd)
 ```
 
@@ -262,7 +262,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantFd(AbilityBase_Want* want, const cha
 
 ### OH_AbilityBase_SetWantUri()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const char* uri)
 ```
 
@@ -287,7 +287,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantUri(AbilityBase_Want* want, const ch
 
 ### OH_AbilityBase_GetWantUri()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* uri, size_t uriSize)
 ```
 
@@ -313,7 +313,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantUri(AbilityBase_Want* want, char* ur
 
 ### OH_AbilityBase_SetWantInt32Param()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t value)
 ```
 
@@ -340,7 +340,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantInt32Param(AbilityBase_Want* want, c
 
 ### OH_AbilityBase_GetWantInt32Param()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, const char* key, int32_t* value)
 ```
 
@@ -366,7 +366,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantInt32Param(AbilityBase_Want* want, c
 
 ### OH_AbilityBase_SetWantBoolParam()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, const char* key, bool value)
 ```
 
@@ -392,7 +392,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantBoolParam(AbilityBase_Want* want, co
 
 ### OH_AbilityBase_GetWantBoolParam()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, const char* key, bool* value)
 ```
 
@@ -418,7 +418,7 @@ AbilityBase_ErrorCode OH_AbilityBase_GetWantBoolParam(AbilityBase_Want* want, co
 
 ### OH_AbilityBase_SetWantDoubleParam()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, const char* key, double value)
 ```
 
@@ -444,7 +444,7 @@ AbilityBase_ErrorCode OH_AbilityBase_SetWantDoubleParam(AbilityBase_Want* want, 
 
 ### OH_AbilityBase_GetWantDoubleParam()
 
-```
+```c
 AbilityBase_ErrorCode OH_AbilityBase_GetWantDoubleParam(AbilityBase_Want* want, const char* key, double* value)
 ```
 

@@ -82,6 +82,55 @@ For details, see [AccessibilityElement.spans](#accessibilityelement12).
 | accessibilityDescription          | string | No | No|Accessibility description of the hyperlink.       |
 | accessibilityLevel          | string | No | No|Accessibility level of the hyperlink.       |
 
+## FocusRule<sup>23+</sup>
+
+type FocusRule = 'bypassSelf' | 'bypassSelfDescendants' | 'checkSelf' | 'checkSelfBypassDescendants'
+
+Defines a focus rule for determining the start node and its descendants when searching for a focusable node.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+| Type           | Description         |
+| -------- | ------- |
+| 'bypassSelf'       | Checks only the descendants of the start node. The value is fixed at **'bypassSelf'**.|
+| 'bypassSelfDescendants'     | Skips the check on the start node and all its descendants. The value is fixed at **'bypassSelfDescendants'**.|
+| 'checkSelf'     | Checks whether the start node is focusable. If yes, use this node; otherwise, checks its descendants. The value is fixed at **'checkSelf'**.|
+| 'checkSelfBypassDescendants' | Checks whether the start node is focusable. If yes, use this node; otherwise, skips the check on all its descendants. The value is fixed at **'checkSelfBypassDescendants'**.|
+
+## FocusCondition<sup>23+</sup>
+
+type FocusCondition = 'forward' | 'backward' | 'findLast' | 'getForwardScrollAncestor' | 'getBackwardScrollAncestor' | 'getScrollableAncestor'
+
+Defines a condition for querying the focusable node.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+| Type      | Description     |
+| -------- | ------- |
+| 'forward'       | Queries the next focusable node. The value is fixed at **'forward'**.|
+| 'backward'     | Queries the next focusable node. The value is fixed at **'backward'**.|
+| 'findLast'     | Queries the last child node of the start node. The value is fixed at **'findLast'**.|
+| 'getForwardScrollAncestor' | Queries the parent component that supports forward scrolling. The value is fixed at **'getForwardScrollAncestor'**.|
+| 'getBackwardScrollAncestor'| Queries the parent component that supports backward scrolling. The value is fixed at **'getBackwardScrollAncestor'**.|
+| 'getScrollableAncestor' | Queries the parent component that supports scrolling in any direction. The value is fixed at **'getScrollableAncestor'**.|
+
+## FocusMoveResult<sup>23+</sup>
+
+Queries the return value type of the target accessibility nodes.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+| Name                 | Type    | Read-Only |Optional| Description                               |
+| ------------------- | ------ | ---- | ----|--------------------------------- |
+| target | Array<[AccessibilityElement](#accessibilityelement12)> | No| No| Target accessibility nodes.|
+| result | [FocusMoveResultCode](./js-apis-accessibility-sys.md#focusmoveresultcode23)  | No| No| Type of the return value.|
+
 
 ## startAbility<sup>12+</sup>
 
@@ -120,7 +169,7 @@ import {
   AccessibilityExtensionContext
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import Want from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 
 export default class AccessibilityManager {
   private static instance: AccessibilityManager;
@@ -872,7 +921,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityFocused<sup>20+</sup> | boolean | No| Yes| Whether the element is focused for accessibility purposes. The value **true** indicates that the element is focused, and **false** indicates the opposite.<br>Default value: **false**.|
 | bundleName<sup>20+</sup> | string                                                             | No | Yes | Bundle name.|
-| checkable<sup>20+</sup> | boolean | No| Yes| Whether the element can be checked. The value **true** indicates that the element can be checked, and **false** indicates the opposite.<br>Default value: **false**.|
+| checkable<sup>20+</sup> | boolean | No| Yes| Whether the element is checkable. The value **true** indicates that the element is checkable, and **false** indicates the opposite.<br>Default value: **false**.|
 | checked<sup>20+</sup> | boolean | No| Yes| Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
 | clickable<sup>20+</sup> | boolean | No| Yes| Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
 | componentId<sup>20+</sup> | number | No| Yes| ID of the component to which the element belongs.<br>Default value: **-1**.|
@@ -883,7 +932,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | editable<sup>20+</sup> | boolean | No| Yes| Whether the element is editable. The value **true** indicates that the element is editable, and **false** indicates the opposite.<br>Default value: **false**.|
 | endIndex<sup>20+</sup> | number                                                             | No | Yes | Index of the last list item displayed on the screen.<br>Default value: **0**.|
 | error<sup>20+</sup> | string                                                             | No | Yes | Error status of the element.|
-| focusable<sup>20+</sup> | boolean | No| Yes| Whether the element can be focused. The value **true** indicates that the element can be focused, and **false** indicates the opposite.<br>Default value: **false**.|
+| focusable<sup>20+</sup> | boolean | No| Yes| Whether the element is focusable. The value **true** indicates that the element is focusable, and **false** indicates the opposite.<br>Default value: **false**.|
 | hintText<sup>20+</sup> | string                                                             | No | Yes | Hint text.|
 | inputType<sup>20+</sup> | number                                                             | No | Yes | Type of the input text.<br>Default value: **0**.|
 | inspectorKey<sup>20+</sup> | string                                                             | No | Yes | Inspector key.|
@@ -1219,7 +1268,7 @@ Executes a specific action based on the specified action type and input paramete
 
 | Name        | Type                                    | Mandatory  | Description                                                      |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node. |
+| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node.
 | parameters | [Parameter](#parameter20) | No   | Parameters set for the action. This parameter is left empty by default.                           |
 
 **Return value**
@@ -1655,6 +1704,57 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
         console.info("findElementById componentId: " + element.componentId);
     }).catch((err: BusinessError) => {
         console.error(`findElementById failed, code: ${err.code}, message: ${err.message}`);
+    })
+}).catch((err: BusinessError) => {
+  console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
+})
+```
+
+### findElementsByCondition<sup>23+</sup>
+
+findElementsByCondition(rule: FocusRule, condition: FocusCondition): Promise\<FocusMoveResult>
+
+Finds a focusable node by conditions. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | ---- | -------- | ------------------------------------------------------------ |
+| rule | [FocusRule](#focusrule23) | Yes| Rule for checking the current node and its descendants.|
+| condition | [FocusCondition](#focuscondition23) | Yes| Condition for finding a focusable node.|
+
+**Return value**
+
+| Type                                     | Description                  |
+| ---------------------------------------- | --------------------- |
+| Promise\<[FocusMoveResult](#focusmoveresult23)> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                   |
+| ------- | ---------------------------------------- |
+| 201 | Permission verification failed.The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+
+```ts
+
+import { AccessibilityElement } from '@kit.AccessibilityKit';
+
+axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) => {
+    focus.findElementsByCondition("bypassSelf", "forward").then((res: FocusMoveResult) => {
+        console.info("findElementsByCondition result: " + res.result);
+    }).catch((err: BusinessError) => {
+        console.error(`findElementsByCondition failed, code: ${err.code}, message: ${err.message}`);
     })
 }).catch((err: BusinessError) => {
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);

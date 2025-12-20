@@ -31,7 +31,7 @@ Defines C APIs for the radio module.
 
 ### OH_Telephony_GetNetworkState()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state)
 ```
 
@@ -60,7 +60,7 @@ Obtains the network status.
 
 ### OH_Telephony_GetNetworkStateForSlot()
 
-```
+```c
 Telephony_RadioResult OH_Telephony_GetNetworkStateForSlot(int32_t slotId, Telephony_NetworkState *state)
 ```
 

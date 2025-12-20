@@ -61,6 +61,7 @@ import { UIAbility } from '@kit.AbilityKit';
 | launchWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | UIAbility[冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时接收到的Want参数，取值为[onCreate](#oncreate)接收到的Want参数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | lastRequestWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | 最近一次拉起UIAbility请求的Want参数。<br>- 首次拉起UIAbility时，取值为[onCreate](#oncreate)接收到的Want参数。<br>- 重复拉起UIAbility时，取值为[onNewWant](#onnewwant)最近一次接收到的Want参数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
 | callee | [Callee](#callee) | 否 | 否 | 系统为UIAbility创建的后台通信对象，Callee UIAbility（被调用方）可以通过Callee对象接收Caller对象发送的数据。 |
+| specifiedId<sup>23+</sup> | string | 否 | 是 | 仅当UIAbility启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)时存在，取值为开发者自定义的UIAbility标识。 |
 
 
 ### onCreate
@@ -916,10 +917,11 @@ onCollaborate(wantParam: Record&lt;string, Object&gt;): AbilityConstant.Collabor
 
 UIAbility生命周期回调，在多设备协同场景下，协同方应用在被拉起的过程中返回是否接受协同。
 
- **说明：**
-- 该生命周期回调不支持[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)。
-- 通过[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](js-apis-app-ability-wantConstant.md#flags)为FLAG_ABILITY_ON_COLLABORATE。
-- [冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在[onForeground](#onforeground)前或[onBackground](#onbackground)后调用；[热启动](../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在[onNewWant](#onnewwant)前调用。
+> **说明：**
+>
+> - 该生命周期回调不支持[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)。
+> - 通过[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](js-apis-app-ability-wantConstant.md#flags)为FLAG_ABILITY_ON_COLLABORATE。
+> - [冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在[onForeground](#onforeground)前或[onBackground](#onbackground)后调用；[热启动](../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在[onNewWant](#onnewwant)前调用。
 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -1055,7 +1057,7 @@ Caller UIAbility向Callee UIAbility发送消息，Callee UIAbility处理完成�
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| method | string | 是 | 由Caller和Calle双方约定好的方法名，Callee方通过该字段区分消息类型。 |
+| method | string | 是 | 由Caller和Callee双方约定好的方法名，Callee方通过该字段区分消息类型。 |
 | data | [rpc.Parcelable](../apis-ipc-kit/js-apis-rpc.md#parcelable9) | 是 | 由Caller向Callee发送的消息内容，消息内容是序列化的数据。 |
 
 **返回值：**
@@ -1247,7 +1249,7 @@ onRemoteStateChange(callback: OnRemoteStateChangeCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback) | 是 | 回调函数，返回onRemoteStateChange回调结果。 |
+| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback10) | 是 | 回调函数，返回onRemoteStateChange回调结果。 |
 
 **错误码：**
 
@@ -1576,9 +1578,7 @@ export default class MainUIAbility extends UIAbility {
 
 ## OnReleaseCallback
 
-### (msg: string)
-
-(msg: string): void
+type OnReleaseCallback = (msg: string) => void
 
 注册通用组件服务端Stub（桩）断开监听通知的回调函数类型。
 
@@ -1590,11 +1590,9 @@ export default class MainUIAbility extends UIAbility {
 | --- | ----- | --- | -------- |
 | msg | string | 是 | 用于传递释放消息。 |
 
-## OnRemoteStateChangeCallback
+## OnRemoteStateChangeCallback<sup>10+</sup>
 
-### (msg: string)<sup>10+</sup>
-
-(msg: string): void
+type OnRemoteStateChangeCallback = (msg: string) => void
 
 注册协同场景下跨设备组件状态变化监听通知的回调函数类型。
 
@@ -1608,9 +1606,7 @@ export default class MainUIAbility extends UIAbility {
 
 ## CalleeCallback
 
-### (indata: rpc.MessageSequence)
-
-(indata: rpc.MessageSequence): rpc.Parcelable
+type CalleeCallback = (indata: rpc.MessageSequence) => rpc.Parcelable
 
 通用组件服务端注册消息通知的回调函数类型。
 

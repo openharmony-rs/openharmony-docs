@@ -23,6 +23,10 @@ You can use the APIs provided by HiAppEvent to subscribe to the main thread jank
 
 - [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md)
 
+> **NOTE**
+>
+> Mainthread jank events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, this feature is also supported for [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
 ## Custom Parameters
 
 The **setEventConfig** API cannot automatically stop the sampling stack when the main thread timeout event ends. Since API Version 22, the **configEventPolicy** API is provided to automatically stop the sampling stack when the main thread timeout event ends.
@@ -420,7 +424,7 @@ The following value ranges are described based on the variable types after conve
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP, "3");
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
 
-   int ret == OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
+   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
    if (ret == HIAPPEVENT_SUCCESS) {{
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
