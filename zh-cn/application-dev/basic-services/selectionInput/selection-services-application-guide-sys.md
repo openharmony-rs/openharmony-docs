@@ -36,13 +36,13 @@
     ```text
     /src/main/
     ├── ets/
-    │   ├── selectionextability
-    │   |   └── SelectionExtAbility.ets     # 划词扩展类
     │   ├── models
     │   |   └── SelectionModel.ets     # 划词模块管理类
-    │   └── pages
-    │       ├── MainPanel.ets                    # 主面板
-    │       └── MenuPanel.ets                    # 菜单面板
+    │   ├── pages
+    │   |   ├── MainPanel.ets                    # 主面板
+    │   |   └── MenuPanel.ets                    # 菜单面板
+    │   └── selectionextability
+    │       └── SelectionExtAbility.ets     # 划词扩展类
     ├── resources/base/profile/main_pages.json
     ├── module.json5                             # 配置文件
     ```
@@ -116,33 +116,29 @@
     }
     ```
 
-3. 在`SelectionExtensionAbility.ets`文件中实现扩展能力类，该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)，用于实现划词扩展生命周期管理。
+3. 在`SelectionExtAbility.ets`文件中实现扩展能力类，该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)，用于实现划词扩展生命周期管理。
     ```ts
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
     import { Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
 
     class SelectionAbilityStub extends rpc.RemoteObject {
-      constructor(des) {
-        if (typeof des === 'string') {
-          super(des);
-        } else {
-          return null;
-        }
+      constructor(des: string) {
+        super(des);
       }
-
       onRemoteMessageRequest(
         code: number,
         data: rpc.MessageSequence,
         reply: rpc.MessageSequence,
         options: rpc.MessageOption
       ): boolean | Promise<boolean> {
+        hilog.info(0x0000, 'SelectionExtensionAbility', `enter onRemoteMessageRequest code: ${code}`);
         return true;
       }
     }
 
     class SelectionExtAbility extends SelectionExtensionAbility {
-      panel_: selectionManager.Panel = undefined;
+      private panel_: selectionManager.Panel | undefined = undefined;
 
       onConnect(want: Want): rpc.RemoteObject {
         // 当SelectionExtensionAbility实例完成创建时，系统会触发该回调。开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、监听划词事件等）。
@@ -172,7 +168,7 @@
     }
 
     class SelectionExtAbility extends SelectionExtensionAbility {
-      panel_: selectionManager.Panel = undefined;
+      private panel_: selectionManager.Panel | undefined = undefined;
 
       onConnect(want: Want): rpc.RemoteObject {
         SelectionModel.getInstance().setContext(this.context);
@@ -221,6 +217,10 @@
         } catch (error) {
           console.error(`Failed to get selection content: ${JSON.stringify(error)}`);
         }
+        if (!this.panel_) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
+          return;
+        }
         this.panel_.moveTo(info.startDisplayX, info.startDisplayY)    // 将弹窗移动到用户鼠标划词的起始点
           .then(() => {
             hilog.info(0x0000, 'SelectionExtensionAbility', 'Move succeed.');
@@ -246,7 +246,7 @@
     }
     ```
 
-5. 在`SelectionExtensionAbility.ets`文件末尾将扩展能力类导出，供项目中其他类引用。
+5. 在`SelectionExtAbility.ets`文件末尾将扩展能力类导出，供项目中其他类引用。
     ```ts
     export default SelectionExtAbility;
     ```
@@ -412,7 +412,7 @@
         "extensionAbilities": [
           {
             "name": "SelectionExtAbility",
-            "srcEntry": "./ets/selectionextability/SelectionExtensionAbility.ets",
+            "srcEntry": "./ets/selectionextability/SelectionExtAbility.ets",
             "type": "selection",
             "exported": false,
           }
