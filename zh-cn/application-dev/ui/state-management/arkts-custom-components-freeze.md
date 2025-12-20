@@ -73,6 +73,7 @@ struct Page1 {
         })
       Button('go to next page').fontSize(30)
         .onClick(() => {
+          // 此处传入的url，需要开发者自行替换。
           this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
         })
     }
@@ -1360,7 +1361,7 @@ struct Page {
 
 ![freeze](figures/freeze_lazyforeach.png)
 
-向下滑动LazyForEach，让cachedCount补充节点，点击`add sum`，搜索打印日志：sum：Change，出现了8条打印。
+向下滑动LazyForEach，让cachedCount补充节点，点击`add sum`，搜索打印日志：sum: Change，出现了8条打印。
 
 ![freeze](figures/freeze_lazyforeach_add.png)
 

@@ -42,15 +42,13 @@ The sample application consists of two parts: JS code and C++ code.
 The JS code is used to implement the service logic, such as creating a tunnel, establishing a VPN, enabling VPN protection, and destroying a VPN.
 
 ```js
-import Want from '@ohos.app.ability.Want';
-import VpnExtensionAbility from '@ohos.app.ability.VpnExtensionAbility';
-import vpnExt from '@ohos.net.vpnExtension';
-import hilog from '@ohos.hilog';
-import common from '@ohos.app.ability.common';
+import { Want } from '@kit.AbilityKit';
+import { VpnExtensionAbility } from '@kit.NetworkKit';
+import { vpnExtension } from '@kit.NetworkKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // vpn_client is a portable .so file in C language, for example, import vpn_client from 'libvpn_client.so'.
 
-import socket from '@ohos.net.socket';
 
 const TAG: string = "[MyVpnExtAbility]";
 let g_tunFd = -1;
@@ -397,3 +395,9 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) {
     napi_module_register(&demoModule);
 }
 ```
+
+## Samples
+
+The following samples are provided to help you better better understand how to develop VPN management:
+
+- [VPN Application](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case)

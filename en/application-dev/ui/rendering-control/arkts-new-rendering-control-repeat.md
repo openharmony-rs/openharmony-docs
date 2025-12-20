@@ -38,7 +38,7 @@ Each iteration can only create one child component, which must be compatible wit
 >
 > The functionality of **Repeat** depends on dynamic modifications to array properties. If the array object is sealed or frozen, certain **Repeat** features may not function properly, as these operations prevent property extensions or lock existing property configurations.
 >
-> Common scenarios that may trigger this issue:<br>1. Observable data conversion: When a regular array (such as [collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)) is converted into observable data using [makeObserved](../../reference/apis-arkui/js-apis-StateManagement.md#makeobserved), some implementations may automatically seal the array.<br>2. Intentional object protection: explicit calls to **Object.seal()** or **Object.freeze()** to prevent array modifications.
+> Common scenarios that may trigger this issue:<br>1. Observable data conversion: When a regular array (such as [collections.Array](../../reference/apis-arkts/arkts-apis-arkts-collections-Array.md)) is converted into observable data using [makeObserved](../../reference/apis-arkui/js-apis-stateManagement.md#makeobserved), some implementations may automatically seal the array.<br>2. Intentional object protection: explicit calls to **Object.seal()** or **Object.freeze()** to prevent array modifications.
 
 ## How It Works
 
@@ -150,41 +150,46 @@ After execution, the UI is displayed as shown below.
 > **Repeat** handles child components through four operations: creation, update, reuse, and destruction. The difference between node update and node reuse is as follows:
 > 
 > - Node update: The node is not destroyed, and its properties are updated based on changes to state variables.
-> - Node reuse: The old node is not destroyed but moved to the idle node cache pool. When a new node is needed, **Repeat** obtains a reusable node from the cache pool and updates its properties accordingly.
+> - Node reuse: The old node is not destroyed but moved to the idle node reuse pool. When a new node is needed, **Repeat** obtains a reusable node from the reuse pool and updates its properties accordingly.
 
-When scrolling occurs or the array data changes, **Repeat** moves child nodes that fall outside the effective loading range to the cache pool. These nodes are disconnected from the page component tree but not destroyed. When new components are needed, nodes from the cache pool are reused.
+When scrolling occurs or the array data changes, **Repeat** moves child nodes that fall outside the effective loading range to the reuse pool. These nodes are disconnected from the page component tree but not destroyed. When new components are needed, nodes from the reuse pool are reused.
 
 By default, node reuse is enabled for **Repeat**. Since API version 18, you can configure the **reusable** field to specify whether to enable node reuse. For better rendering performance, you are advised to keep node reuse enabled. For a code example, see [VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions).
 
 Since API version 18, **Repeat** supports L2 caching of frozen custom components. For details, see [Freezing a Custom Component](../state-management/arkts-custom-components-freezeV2.md#repeat).
 
-The following illustrates the rendering logic of child components under typical [scroll](#scrolling-scenario) and [data update](#data-update-scenario) scenarios. In the figure below, the L1 cache represents the effective loading area managed by **Repeat**, and the L2 cache refers to the idle node cache pool for each rendering template.
+The following illustrates the rendering logic of child components under typical [scroll](#scrolling-scenario) and [data update](#data-update-scenario) scenarios.
 
-For this example, we define an array with 20 items. The first 5 items use template type **'aa'**, while the remaining items use template type **'bb'**. The cache pool capacity is set to 3 nodes for template **'aa'** and 4 nodes for template **'bb'**. The size of the preload area of the container component is 2. For demonstration purposes, one idle node is added to the **aa** cache pool, and two in the **bb** cache pool.
+A 20-item array is defined, with the first 5 items using template type **aa** (rendering light blue components) and the remaining items using template type **bb** (rendering orange components). The reuse pool capacity is set to 3 nodes for template **aa** and 4 nodes for template **bb**. The size of the preload area of the container component is 2. For demonstration purposes, one idle node is added to the **aa** reuse pool, and two in the **bb** reuse pool.
 
-The following figure shows the list node status after initial rendering.
+The list node states during initial rendering are shown below (template type is abbreviated as **ttype** in the figure ).
 
-![Repeat-Start](figures/Repeat-Start.PNG)
+![Repeat-Reuse-1](figures/repeat-reuse-1.png)
 
 ### Scrolling Scenario
 
-When the user swipes the screen to the right by the distance of one node, **Repeat** starts to reuse nodes from the cache pool. The node whose index is 10 enters the effective loading area, and its template type is identified as **bb**. Because the **bb** cache pool is not empty, **Repeat** obtains an idle node from this pool for reuse and updates the node's properties. The child component's descendant components involving data items and indexes are updated synchronously based on V2 state management rules. Other nodes within the effective loading area only require index updates.
+When you scroll down the screen by the distance of one node, **Repeat** reuses nodes from the reuse pool.
 
-The node whose index is 0 moves out of the effective loading area. When the UI main thread is idle, the system checks whether the **aa** cache pool is full. If it is not full, the system adds the node to the corresponding cache pool; otherwise, **Repeat** destroys redundant nodes.
+1. The node whose index is 10 enters the effective loading range, and its template type is identified as **bb**. Because the **bb** reuse pool is not empty, **Repeat** obtains an idle node from this pool for reuse and updates the node's properties (data item and index). The child component's descendant components involving data items and indexes are updated synchronously based on state management V2 rules.<br>
+2. The node whose index is 0 moves out of the effective loading area. When the UI main thread is idle, the system checks whether the **aa** reuse pool is full. If it is not full, the system adds the node to the corresponding reuse pool;<br>
+3. Other nodes within the effective loading range only require index updates. If a reuse pool reaches capacity during this process, excess nodes are destroyed during subsequent UI thread idle periods.
 
-![Repeat-Slide](figures/Repeat-Slide.PNG)
+![Repeat-Reuse-2](figures/repeat-reuse-2.png)
 
 ### Data Update Scenario
 
-Perform the following array update operations based on the previous section: Delete the node whose index is 4 and change **item_7** to **new_7**.
+Perform the following array update operations based on the previous section: Delete the node whose index is 4 and change **07** to **new**.
 
-After the node whose index is 4 is deleted, it is invalidated and added to the **aa** cache pool. The subsequent nodes move leftwards, with the newly entering **item_11** node reusing an idle node in the **bb** cache pool, while other nodes only receive index updates.  
+1. After deleting node whose index is 4, node **05** shifts forward. According to template calculation rules, the new node **05** now has template type **aa**. It directly reuses the old node 04, updates data item and index, and adds the old node **05** to the **bb** reuse pool.<br>
+2. The subsequent nodes move leftwards, with the newly entering **11** node reusing an idle node in the **bb** reuse pool, while other nodes only receive index updates.<br>
+3. When the node data changes from **07** to **new**, the page detects the data source update and triggers re-rendering. The re-rendering logic in **Repeat** checks whether the node data item at the current index has changed. If only the key value changes but the item remains the same, the UI is not refreshed.
 
-![Repeat-Update1](figures/Repeat-Update1.PNG)
+![Repeat-Reuse-3](figures/repeat-reuse-3.png)
 
-Then, as the **item_5** node moves leftwards and its index is updated to 4, its template type changes to **aa** according to calculation rules. This requires reusing an idle node from the **aa** cache pool and adding the old node back to the **bb** cache pool.  
+### Node Reuse Inspection
 
-![Repeat-Update2](figures/Repeat-Update2.PNG)
+You can verify node reuse using the DevEco Testing tool. After launching the tool, select the utility menu.
+Choose **UIViewer** from the utility options. This tool captures device snapshots, component tree structures, and node attributes. In the component tree on the right, select the **Repeat** subnode. The node attributes displayed in the lower right corner include the node ID. You can determine whether a component has been reused or newly created by checking whether the node ID remains the same.
 
 ## Key Generation
 
@@ -200,8 +205,52 @@ When using **.key()**, pay attention to the following:
 
 - Even if the array changes, you must ensure that keys remain unique across all items in the array.
 - The **.key()** function must return a consistent key for the same data item across all executions.
+To achieve optimal performance, you are advised to define custom key values that are independent of the index. When the key value of the current item changes, the existing item is destroyed and a new item is created to display the updated content. If the key value is index-dependent, operations such as adding or deleting data items (even those unrelated to the current item) may trigger unnecessary destruction and recreation of nodes, leading to avoidable UI re-rendering.
 - While technically allowed, using **index** in **.key()** is discouraged. Indexes change when items are added, removed, or rearranged, causing keys to shift and forcing **Repeat** to re-create components, which degrades performance.
 - (Recommended) Convert simple-type arrays into class object arrays with a **readonly id** property initialized using a unique value.
+
+Key value generation example:
+
+```ts
+@ObservedV2
+class ExampleData {
+  @Trace str: string;
+  num: number;
+
+  constructor(s: string, n: number) {
+    this.str = s;
+    this.num = n;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local exampleList: Array<ExampleData> = [];
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.exampleList.push(new ExampleData(`data${i}`, i));
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 10 }) {
+        Repeat(this.exampleList)
+          .each((obj: RepeatItem<ExampleData>) => {
+            ListItem() {
+              Text(obj.item.str).fontSize(50)
+            }
+          })
+          .key(item => item.str) // The UI is refreshed based on the str attribute. It is recommended to return a stable value in the key generation function. Note that key generation is independent of the item index.
+      }
+    }
+  }
+}
+```
+
+In the preceding sample code, the key value generation function is defined using **.key()**. Each child component's key is derived from the **str** attribute of the **item** object.
 
 ## Precise Lazy Loading
 
@@ -412,9 +461,9 @@ The figure below shows the effect.
 
 ## Content Position Preservation
 
-The content position preservation feature, introduced in API version 20, maintains visible component positions when data is inserted or deleted before the current viewport area.
+The content position preservation feature maintains visible component positions when data is inserted or deleted before the current viewport area.
 
-For this feature to work, the parent container must be a **List** component and the [maintainVisibleContentPosition](../../reference/apis-arkui/arkui-ts/ts-container-list.md#maintainvisiblecontentposition12) attribute must be set to **true**.
+Since API version 20, for this feature to work, the parent container must be a **List** component and the [maintainVisibleContentPosition](../../reference/apis-arkui/arkui-ts/ts-container-list.md#maintainvisiblecontentposition12) attribute must be set to **true**.
 
 **Example**
 
@@ -626,7 +675,7 @@ struct RepeatVirtualScroll2T {
 }
 ```
 
-This example demonstrates the implementation of 100 items using a custom class **RepeatClazz** with a string property **message**. The **cachedCount** attribute of the **List** component is set to **2**, and the sizes of the idle node cache pools for the **'odd'** and **'even'** templates are set to **3** and **1**, respectively. After execution, the UI is displayed as shown below.
+This example demonstrates the implementation of 100 items using a custom class **RepeatClazz** with a string property **message**. The **cachedCount** attribute of the **List** component is set to **2**, and the sizes of the idle node reuse pools for the **'odd'** and **'even'** templates are set to **3** and **1**, respectively. After execution, the UI is displayed as shown below.
 
 ![Repeat-VirtualScroll-2T-Demo](figures/Repeat-VirtualScroll-2T-Demo.gif)
 
@@ -1316,7 +1365,7 @@ struct EntryCompSucc {
       .childrenMainSize(this.listChildrenSize)
       .alignListItem(ListItemAlign.Center)
       .onScrollIndex((start, end) => {
-        console.log('onScrollIndex', start, end);
+        console.info('onScrollIndex', start, end);
         // Lazy loading
         if (this.vehicleItems.length < 50) {
           for (let i = 0; i < 10; i++) {
@@ -1337,103 +1386,73 @@ The figure below shows the effect.
 
 ### Using Repeat with @Builder
 
-When **Repeat** is used together with @Builder, the parameter of the **RepeatItem** type must be passed as a whole to the component for data changes to be detected. If only **RepeatItem.item** or **RepeatItem.index** is passed, UI rendering exceptions will occur.
+When **Repeat** is used in combination with @Builder, passing only **RepeatItem.item** or **RepeatItem.index** by value does not trigger a UI refresh within the @Builder function. To ensure the component responds to data changes, it is recommended to [pass parameters by reference](../state-management/arkts-builder.md#by-reference-parameter-passing). Specifically, pass the entire **RepeatItem** object so that the component can observe changes to its internal state. Since API version 20, you can also use the [UIUtils.makeBinding()](../../reference/apis-arkui/js-apis-stateManagement.md#makebinding20) function, along with the [Binding](../../reference/apis-arkui/js-apis-stateManagement.md#bindingt20) and [MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20) classes, to update state variables within @Builder functions.
 
 The sample code is as follows:
 
 ```ts
+import { UIUtils, Binding } from '@kit.ArkUI';
+
 @Entry
 @ComponentV2
 struct RepeatBuilderPage {
-  @Local simpleList1: Array<number> = [];
-  @Local simpleList2: Array<number> = [];
+  @Local simpleList: Array<number> = [];
 
   aboutToAppear(): void {
     for (let i = 0; i < 100; i++) {
-      this.simpleList1.push(i);
-      this.simpleList2.push(i);
+      this.simpleList.push(i);
     }
-  }
-
-  build() {
-    Column({ space: 20 }) {
-      Text('Repeat + @Builder: Left (incorrect) vs. Right (correct). Scroll to see differences.')
-        .fontSize(15)
-        .fontColor(Color.Gray)
-
-      Row({ space: 20 }) {
-        List({ initialIndex: 5, space: 20 }) {
-          Repeat<number>(this.simpleList1)
-            .each((ri) => {})
-            .virtualScroll({ totalCount: this.simpleList1.length })
-            .templateId((item: number, index: number) => 'default')
-            .template('default', (ri) => {
-              ListItem() {
-                Column() {
-                  Text('Text id = ' + ri.item)
-                    .fontSize(20)
-                  this.buildItem1 (ri.item) // Incorrect. To avoid rendering issues, change it to this.buildItem1(ri).
-                }
-              }
-              .border({ width: 1 })
-              .width('90%')
-            }, { cachedCount: 3 })
-        }
-        .cachedCount(1)
-        .border({ width: 1 })
-        .width('45%')
-        .height('60%')
-
-        List({ initialIndex: 5, space: 20 }) {
-          Repeat<number>(this.simpleList2)
-            .each((ri) => {})
-            .virtualScroll({ totalCount: this.simpleList2.length })
-            .templateId((item: number, index: number) => 'default')
-            .template('default', (ri) => {
-              ListItem() {
-                Column() {
-                  Text('Text id = ' + ri.item)
-                    .fontSize(20)
-                  this.buildItem2(ri) // Correct. The rendering is normal.
-                }
-              }
-              .border({ width: 1 })
-              .width('90%')
-            }, { cachedCount: 3 })
-        }
-        .cachedCount(1)
-        .border({ width: 1 })
-        .width('45%')
-        .height('60%')
-      }
-    }
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 
   @Builder
-  // The @Builder parameter must be of the RepeatItem type for proper rendering.
-  buildItem1(item: number) {
-    Text('Builder1 id = ' + item)
+  buildItem1(bindingData: Binding<number>) { // Use Binding or MutableBinding to receive input and access the value via the value property.
+    Text('[Binding] item: ' + bindingData.value)
       .fontSize(20)
-      .fontColor(Color.Red)
-      .margin({ top: 2 })
   }
 
   @Builder
   buildItem2(ri: RepeatItem<number>) {
-    Text('Builder2 id = ' + ri.item)
+    Text('[RepeatItem] item: ' + ri.item)
       .fontSize(20)
-      .fontColor(Color.Red)
-      .margin({ top: 2 })
+  }
+
+  @Builder
+  buildItem3(data: number) {
+    Text('[number] item: ' + data)
+      .fontSize(20).fontColor(Color.Red)
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      List({ space: 20 }) {
+        Repeat<number>(this.simpleList)
+          .each((ri) => {
+            ListItem() {
+              Column({ space: 2 }) {
+                this.buildItem1(UIUtils.makeBinding<number>(() => ri.item)) // Use the UIUtils.makeBinding() function to update state variables within the @Builder function.
+                this.buildItem2(ri) // Reference passing: triggers UI refresh on data change.
+                this.buildItem3(ri.item) // Value passing: does not trigger UI refresh.
+              }
+            }.border({ width: 1 })
+          }).virtualScroll()
+      }
+      .cachedCount(1).border({ width: 1 })
+      .width('70%').height('60%').alignListItem(ListItemAlign.Center)
+
+      Button('click to change data.').onClick(() => {
+        this.simpleList[0] = 10000; // Update the first item to 10000.
+      })
+    }
+    .width('100%').height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 
-The following figure shows the display effect. Scroll down on the page to observe the difference: The left side demonstrates incorrect usage, while the right side shows the correct usage. (**Text** components are in black, while **Builder** components are in red). The preceding code shows the error-prone scenario during development, where only the value, instead the entire **RepeatItem** object, is passed in the @Builder function.
+In this example, parameters passed to @Builder include the following: **makeBinding()**, reference passing, and value passing. The figure below illustrates the UI behavior. When the button is clicked to update the data, components using value passing will not reflect the change in the UI.
 
-![Repeat-Builder](figures/Repeat-Builder.gif)
+![Repeat-Builder](figures/Repeat-Builder.png)
 
 ### Managing Full-Screen Expansion with expandSafeArea
 
-In versions earlier than API version 18, if a Repeat child component has the **expandSafeArea** property declared, the child component cannot expand to full screen. Since API version 18, child components declaring the **expandSafeArea** property can expand to full screen display.
+In versions earlier than API version 18, if a Repeat child component has the **expandSafeArea** property declared, the child component cannot expand to full screen. Since API version 18, child components declaring the **expandSafeArea** property can expand to full-screen display.

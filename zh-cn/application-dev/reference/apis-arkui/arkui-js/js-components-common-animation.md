@@ -16,9 +16,9 @@
 | 名称                                | 类型                                       | 描述                                       |
 | --------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | transform-origin                  | string<sup>6+</sup>&nbsp;\|<br>&nbsp;&lt;percentage&gt;&nbsp;\|<br>&nbsp;&lt;length&gt;&nbsp;string<sup>6+</sup>&nbsp;\|<br>&nbsp;&lt;percentage&gt;&nbsp;\|&nbsp;&lt;length&gt; | 变换对象的原点位置，支持px和百分比(相对于动画目标组件)，如果仅设置一个值，另一个值为50%，第一个string的可选值为：left&nbsp;\|&nbsp;center&nbsp;\|&nbsp;right&nbsp;，第二个string的可选值为：top&nbsp;\|&nbsp;center&nbsp;\|&nbsp;bottom。<br/>示例：<br/>transform-origin:&nbsp;200px&nbsp;30%。<br/>transform-origin:&nbsp;100px&nbsp;top。<br/>transform-origin:&nbsp;center&nbsp;center。<br>默认值：center&nbsp;center |
-| transform                         | string                                   | 支持同时设置平移/旋转/缩放的属性。<br/>详见表 transform操作说明。 |
+| transform                         | string                                   | 支持同时设置平移/旋转/缩放的属性。<br/>详情请参见表1 transform操作说明。 |
 | animation<sup>6+</sup>            | string                                   | 格式：duration&nbsp;\|&nbsp;timing-function&nbsp;\|&nbsp;delay&nbsp;\|&nbsp;iteration-count&nbsp;\|&nbsp;direction&nbsp;\|&nbsp;fill-mode&nbsp;\|&nbsp;play-state&nbsp;\|&nbsp;name，每个字段不区分先后，但是&nbsp;duration&nbsp;/&nbsp;delay&nbsp;按照出现的先后顺序解析。<br>默认值：0s&nbsp;ease&nbsp;0s&nbsp;1&nbsp;normal&nbsp;none&nbsp;running&nbsp;none |
-| animation-name                    | string                                   | 指定\@keyframes，详见表 @keyframes属性说明。        |
+| animation-name                    | string                                   | 指定\@keyframes，详情请参见表2 @keyframes属性说明。        |
 | animation-delay                   | &lt;time&gt;                             | 定义动画播放的延迟时间。支持的单位为[s(秒)\|ms(毫秒)&nbsp;]，默认单位为ms，格式为：1000ms或1s。<br>默认值：0 |
 | animation-duration                | &lt;time&gt;                             | 定义一个动画周期。支持的单位为[s(秒)\|ms(毫秒)&nbsp;]，默认单位为ms，格式为：1000ms或1s。<br/>必须设置animation-duration&nbsp;样式，否则时长为&nbsp;0将不会播放动画。<br>默认值：0 |
 | animation-iteration-count         | number&nbsp;\|&nbsp;infinite             | 定义动画播放的次数，默认播放一次，可通过设置为infinite无限次播放。<br>默认值：1 |
@@ -64,7 +64,7 @@
 | opacity                          | number                                   | 1            | 动画执行后应用到组件上的不透明度值，为介于0到1间的数值，默认为1。       |
 | width                            | &lt;length&gt;                           | -            | 动画执行后应用到组件上的宽度值。                         |
 | height                           | &lt;length&gt;                           | -            | 动画执行后应用到组件上的高度值。                         |
-| transform                        | string                                   | -            | 定义应用在组件上的变换类型，见表 transform操作说明。          |
+| transform                        | string                                   | -            | 定义应用在组件上的变换类型，详情请参见表1 transform操作说明。          |
 | background-position<sup>6+</sup> | string&nbsp;\|&nbsp;&lt;percentage&gt;&nbsp;\|&nbsp;&lt;length&gt;&nbsp;string&nbsp;\|<br>&nbsp;&lt;percentage&gt;&nbsp;\|&nbsp;&lt;length&gt; | 50%&nbsp;50% | 背景图位置。单位支持百分比和px，第一个值是水平位置，第二个值是垂直位置。如果仅设置一个值，另一个值为50%。第一个string的可选值为：left&nbsp;\|&nbsp;center&nbsp;\|&nbsp;right&nbsp;，第二个string的可选值为：top&nbsp;\|&nbsp;center&nbsp;\|&nbsp;bottom。<br/>示例：<br/>-&nbsp;background-position:&nbsp;200px&nbsp;30%<br/>-&nbsp;background-position:&nbsp;100px&nbsp;top<br/>-&nbsp;background-position:&nbsp;center&nbsp;center |
 
 

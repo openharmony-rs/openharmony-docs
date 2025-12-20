@@ -22,7 +22,7 @@ import { ble } from '@kit.ConnectivityKit';
 ```
 
 
-## ProfileConnectionState<sup>10+</sup>
+## ProfileConnectionState
 
 type ProfileConnectionState = constant.ProfileConnectionState
 

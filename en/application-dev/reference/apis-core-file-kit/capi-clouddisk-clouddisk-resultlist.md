@@ -26,3 +26,5 @@ A struct that encapsulates the file sync result. It includes the absolute path o
 | bool isSuccess{false} | Whether the operation is successful. The value **true** indicates the operation is successful; the value **false** (default) indicates the opposite.  |
 | [CloudDisk_SyncState](capi-oh-cloud-disk-manager-h.md#clouddisk_syncstate) syncState | File sync state. It takes effect only when **isSuccess** is set to true.|
 | [CloudDisk_ErrorReason](capi-oh-cloud-disk-manager-h.md#clouddisk_errorreason) errorReason | Reason why the file sync state fails to be obtained. It takes effect only when **isSuccess** is set to **false**.|
+
+

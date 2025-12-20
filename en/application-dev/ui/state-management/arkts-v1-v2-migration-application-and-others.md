@@ -728,7 +728,7 @@ The approach of creating global \@ObservedV2 and \@Trace decorated instances des
 
 V1:
 
-AppStorage is bound to the application process and enables data sharing across abilities.
+AppStorage is bound to the application process and enables data sharing across [abilities](../../reference/apis-ability-kit/js-apis-app-ability-ability.md).
 Using \@StorageLink allows local modifications to synchronize back to AppStorage.
 
 ```ts
@@ -1120,7 +1120,7 @@ In V1, **PersistentStorage** provides UI data persistence. In V2, this functiona
 
 **PersistenceV2** advantages:
 - When an \@ObservedV2 object is associated with **PersistenceV2**, changes to its \@Trace properties automatically trigger persistence of the entire object.
-- You can manually trigger persistence operations by calling the [PersistenceV2.save](../../reference/apis-arkui/js-apis-StateManagement.md#save) and [PersistenceV2.globalConnect](./arkts-new-persistencev2.md#using-globalconnect-to-store-data) APIs.
+- You can manually trigger persistence operations by calling the [PersistenceV2.save](../../reference/apis-arkui/js-apis-stateManagement.md#save) and [PersistenceV2.globalConnect](./arkts-new-persistencev2.md#using-globalconnect-to-store-data) APIs.
 
 V1:
 
@@ -1269,8 +1269,8 @@ struct Page1 {
 For large applications already using V1, a complete one-time migration to V2 is often impractical. Instead, migration typically occurs incrementally by components and modules, resulting in the coexistence of both V1 and V2 components.
 
 A typical scenario is as follows:
-- The parent component is written using V1 state management (\@Component with \@LocalStorageLink as the data source).
-- The child component is written using V2 state management (\@ComponentV2 with \@Param to receive data).
+- The parent component is written using V1 state management (for example, \@Component with \@LocalStorageLink as the data source).
+- The child component is written using V2 state management (for example, \@ComponentV2 with \@Param to receive data).
 
 In this case, migration can be achieved using the following strategy:
 - Declare a class decorated with \@ObservedV2 to encapsulate V1 data.
@@ -1714,7 +1714,7 @@ In V1, you can use [\@State](./arkts-state.md) to observe changes.
 The following is an example.
 
 ```ts
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { CommonModifier } from '@kit.ArkUI';
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1779,8 +1779,7 @@ In V2, [\@Local](./arkts-new-local.md) can only observe changes to the variable 
 The following is an example:
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
-import { CommonModifier } from '@ohos.arkui.modifier';
+import { UIUtils, CommonModifier } from '@kit.ArkUI';
 
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -1850,7 +1849,7 @@ In V1, you can use [\@State](./arkts-state.md) to observe changes.
 The following is an example:
 
 ```ts
-import { TextModifier } from '@ohos.arkui.modifier';
+import { TextModifier } from '@kit.ArkUI';
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {
@@ -1923,8 +1922,7 @@ In V2, [\@Local](./arkts-new-local.md) can only observe its own changes, but can
 The following is an example:
 
 ```ts
-import { UIUtils } from '@kit.ArkUI';
-import { TextModifier } from '@ohos.arkui.modifier';
+import { UIUtils, TextModifier } from '@kit.ArkUI';
 
 class MyModifier extends TextModifier {
   applyNormalAttribute(instance: TextModifier): void {

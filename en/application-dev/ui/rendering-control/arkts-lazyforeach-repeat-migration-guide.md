@@ -506,7 +506,7 @@ struct ChildComponent {
 
 **Migrating to Repeat**
 
-**Repeat** is designed to work with state management V2, which provides the [@ObserveV2 and @Trace](../state-management/arkts-new-observedV2-and-trace.md) decorators for deep observation of sub-properties. During migration, you need to replace the @Observed and @ObjectLink decorators with @ObserveV2 and @Trace respectively.
+**Repeat** is designed to work with state management V2, which provides the [@ObservedV2 and @Trace](../state-management/arkts-new-observedV2-and-trace.md) decorators for deep observation of sub-properties. During migration, you need to replace the @Observed and @ObjectLink decorators with @ObservedV2 and @Trace respectively.
 
 The following example demonstrates the implementation after migration:
 

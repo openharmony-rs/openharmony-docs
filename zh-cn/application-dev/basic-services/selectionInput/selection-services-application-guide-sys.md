@@ -129,7 +129,7 @@
     }
 
     class SelectionExtAbility extends SelectionExtensionAbility {
-      panel_: selectionManager.Panel = undefined;
+      private panel_: selectionManager.Panel | undefined = undefined;
 
       onConnect(want: Want): rpc.RemoteObject {
         // 当SelectionExtensionAbility实例完成创建时，系统会触发该回调。开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、监听划词事件等）。

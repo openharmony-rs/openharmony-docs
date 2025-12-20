@@ -65,7 +65,7 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称         | 类型       | 只读 | 可选 | 说明                |
 |------------|----------|----|----|-------------------|
-| dnsServers | string[] | 是  | 否  | 下载资源时使用的DNS服务器列表。 |
+| dnsServers | string[] | 是  | 否  | 下载资源时使用的dns服务器列表。 |
 
 ## PerformanceInfo<sup>20+</sup>
 
@@ -280,8 +280,8 @@ setFileCacheSize(bytes: number): void
   }
   ```
 
-> ​**说明：​**​
->
+> **说明：**
+​>
 > * 预下载模块下载的网络缓存文件会保存在应用沙箱的缓存目录中。
 > * 应用可以借助该接口的能力达成清理缓存文件的目的。
 > * 不建议应用直接对缓存目录和文件进行修改，以避免功能异常。

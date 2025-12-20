@@ -5,7 +5,7 @@
 <!--Owner: @shengu_lancer; @yylong-->
 <!--Designer: @yylong-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Scroll** component scrolls the content when the layout size of a component exceeds the size of its parent component.
 
@@ -60,7 +60,7 @@ Sets the scrolling direction. The scrolling offset is reset after the value is c
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
 | value  | [ScrollDirection](#scrolldirection) | Yes  | Scrolling direction.<br>Default value: **ScrollDirection.Vertical**|
 
-When the scrolling direction is set to [ScrollDirection.FREE](#scrolldirection), the scroll component supports only some capabilities. For details, see [Capabilities Supported in Free Scrolling Mode](#scrolldirection).
+When the scroll direction is set to [ScrollDirection.FREE](#scrolldirection), the Scroll component only supports partial capabilities. For details, refer to [capabilities supported in free scroll mode](#scrolldirection).
 
 ### scrollBar
 
@@ -271,7 +271,7 @@ Minimum gesture zoom ratio of the scroll component content.
 
 zoomScale(scale: number)
 
-Sets the zoom ratio of the scroll component content.
+Sets the zoom ratio of the Scroll component content.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -281,7 +281,7 @@ Sets the zoom ratio of the scroll component content.
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| scale  | number  | Yes  |Zoom ratio of the scroll component content. This parameter supports [!!](../../../ui/state-management/arkts-new-binding.md).<br>Default value: **1**.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value 1 is used.|
+| scale  | number  | Yes  |Zoom ratio of the Scroll component content. This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).<br>Default value: **1**.<br>Value range: (0, +∞). If the value is less than or equal to 0, the default value 1 is used.|
 
 ### enableBouncesZoom<sup>20+</sup>
 
@@ -402,7 +402,7 @@ Notes:
 
 3. This event supports the out-of-bounds bounce effect.
 
-This API is deprecated since API version 12. You are advised to use the [onWillScroll](#onwillscroll12) event instead.
+This API is deprecated since API version 12. You are advised to use [onWillScroll](#onwillscroll12) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -412,8 +412,8 @@ This API is deprecated since API version 12. You are advised to use the [onWillS
 
 | Name | Type                                                     | Mandatory| Description                  |
 | ------- | --------------------------------------------------------- | ---- | ---------------------- |
-| xOffset     | number                                                  | Yes  | Horizontal offset per frame during scrolling. A positive offset indicates scrolling to the left, and a negative offset indicates scrolling to the right.<br>Unit: vp|
-| yOffset     | number                                                  | Yes  | Vertical offset per frame during scrolling. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward.<br>Unit: vp|
+| xOffset     | number                                                  | Yes  | Horizontal offset relative to the previous frame. A positive offset indicates scrolling to the left, and a negative offset indicates scrolling to the right.<br>Unit: vp|
+| yOffset     | number                                                  | Yes  | Vertical offset relative to the previous frame. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward.<br>Unit: vp|
 
 ### onWillScroll<sup>12+</sup>
 
@@ -491,7 +491,7 @@ Notes:
 | ------ | --------------------------------- | ---- | ------------------ |
 | event   | [OnScrollEdgeCallback](#onscrolledgecallback18) | Yes  | Edge position to scroll to.<br>When Scroll is set to horizontal scrolling, [Edge.Center](ts-appendix-enums.md#edge) indicates the start position in the horizontal direction, and [Edge.Baseline](ts-appendix-enums.md#edge) indicates the end position in the horizontal direction. The enumerated values [Edge.Center](ts-appendix-enums.md#edge) and [Edge.Baseline](ts-appendix-enums.md#edge) have been deprecated. You are advised to use the [onReachStart](ts-container-scrollable-common.md#onreachstart11) and [onReachEnd](ts-container-scrollable-common.md#onreachend11) events to listen for whether the scroll component scrolls to the boundary.|
 
-### onScrollEnd<sup>(deprecated) </sup>
+### onScrollEnd<sup>(deprecated)</sup>
 
 onScrollEnd(event: () => void)
 
@@ -613,8 +613,8 @@ Represents the callback triggered when the **Scroll** component scrolls.
 
 | Name     | Type                                                   | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| xOffset     | number                                                  | Yes  | Horizontal offset per frame during scrolling. A positive offset indicates scrolling to the left, and a negative offset indicates scrolling to the right.<br>Unit: vp|
-| yOffset     | number                                                  | Yes  | Vertical offset per frame during scrolling. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward.<br>Unit: vp|
+| xOffset     | number                                                  | Yes  | Horizontal offset relative to the previous frame. A positive offset indicates scrolling to the left, and a negative offset indicates scrolling to the right.<br>Unit: vp|
+| yOffset     | number                                                  | Yes  | Vertical offset relative to the previous frame. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward.<br>Unit: vp|
 | scrollState | [ScrollState](ts-container-list.md#scrollstate)| Yes | Current scrolling state.                                              |
 
 >  **NOTE**
@@ -635,8 +635,8 @@ Callback triggered before scrolling.
 
 | Name     | Type                                                   | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| xOffset     | number                                                  | Yes  | Horizontal offset per frame during scrolling. A positive offset indicates scrolling to the left, and a negative offset indicates scrolling to the right.<br>Unit: vp|
-| yOffset     | number                                                  | Yes  | Vertical offset per frame during scrolling. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward.<br>Unit: vp|
+| xOffset     | number                                                  | Yes  | Horizontal offset relative to the previous frame. A positive offset indicates scrolling to the left, and a negative offset indicates scrolling to the right.<br>Unit: vp|
+| yOffset     | number                                                  | Yes  | Vertical offset relative to the previous frame. A positive offset indicates scrolling upward, and a negative offset indicates scrolling downward.<br>Unit: vp|
 | scrollState | [ScrollState](ts-container-list.md#scrollstate)| Yes | Current scrolling state.                                              |
 | scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | Yes| Source of the current scrolling operation.|
 
@@ -683,11 +683,11 @@ Represents the callback triggered before each frame scrolling starts.
 
 | Type                    | Description                |
 | ------------------------ | -------------------- |
-| [OnScrollFrameBeginHandlerResult](#onscrollframebeginhandlerresult18)| Actual scroll offset.|
+| [OnScrollFrameBeginHandlerResult](#onscrollframebeginhandlerresult18) | Actual scroll offset.|
 
 ## OnScrollFrameBeginHandlerResult<sup>18+</sup>
 
-Actual scrolling offset returned by [OnScrollFrameBeginCallback](#onscrollframebegincallback18).
+Represents the actual scroll offset relative to the previous frame returned by [OnScrollFrameBeginCallback](#onscrollframebegincallback18).
 
 > **NOTE**
 >
@@ -699,7 +699,7 @@ Actual scrolling offset returned by [OnScrollFrameBeginCallback](#onscrollframeb
 
 | Name | Type | Read Only| Optional| Description |
 | ----- | ------ | ---- | -- | ----- |
-| offsetRemain<sup>9+</sup>     | number | No  | No| Actual scroll offset.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| offsetRemain<sup>9+</sup>     | number | No  | No| Actual scroll offset relative to the previous frame.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## ScrollOnDidZoomCallback<sup>20+</sup>
 
@@ -760,7 +760,7 @@ Scrolls to the specified position.
 
 | Name  | Type| Mandatory  | Description     |
 | ----- | ---- | ---- | --------- |
-| options | [ScrollOptions](#scrolloptions18)| Yes   | Parameters for scrolling to the specified position.
+| options | [ScrollOptions](#scrolloptions18) | Yes   | Parameters for scrolling to the specified position.
 
 >  **NOTE**
 >
@@ -846,7 +846,8 @@ Scrolls to the next or previous page. This API is no longer maintained since API
 
 currentOffset(): OffsetResult
 
-Obtains the current scrolling offset.
+Obtains the current scroll offset.
+The Grid, List, and WaterFlow components support lazy loading. If the component content is not loaded and laid out, the total content offset is estimated, which may be inaccurate. The List component can use the [childrenMainSize](./ts-container-list.md#childrenmainsize12) attribute to solve the problem of inaccurate estimation.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -856,7 +857,7 @@ Obtains the current scrolling offset.
 
 | Type | Description|
 | -------- | -------- |
-|  [OffsetResult<sup>11+</sup>](#offsetresult11) | Obtains the scrolling offset.<br>**NOTE**<br>If **Scroller** is not bound to a container component or the container component is released abnormally, the return value for **currentOffset** is null.|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11) | Current scroll offset.<br>**NOTE**<br>If **Scroller** is not bound to a container component or the container component is released abnormally, the return value for **currentOffset** is null.|
 
 ### scrollToIndex
 
@@ -1033,7 +1034,7 @@ Provides parameters for customizing scroll animations.
 | ----- | ------ | ------ | -- | ----------------- |
 | duration | number | No| Yes| Scrolling duration.<br>Default value: **1000**<br>**NOTE**<br>A value less than 0 evaluates to the default value.|
 | curve | [Curve](ts-appendix-enums.md#curve) \| [ICurve](../js-apis-curve.md#icurve9) | No| Yes| Scrolling curve.<br>Default value: **Curve.Ease**|
-| canOverScroll | boolean | No| Yes| Sets whether to convert the scrolling animation to an out-of-bounds rebound animation after it scrolls to the boundary.<br>Default value: **false**<br>**NOTE**<br> Only when this attribute is set to true and edgeEffect of the component is set to [EdgeEffect.Spring] (ts-appendix-enums.md#edgeeffect), the animation scrolling to the boundary is converted to the out-of-bounds rebound animation. When this attribute is set to false: Scrolling to the boundary directly stops the animation and does not convert it to an out-of-bounds rebound animation.<br>Since API version 20, if canOverScroll in [ScrollOptions](#scrolloptions18) is set to true, the scrolling animation can stay at the boundary. After the scrolling animation crosses the boundary, it will not be converted into a rebounding animation.|
+| canOverScroll | boolean | No| Yes| Sets whether to convert the scrolling animation to an out-of-bounds rebound animation after it scrolls to the boundary.<br>Default value: **false**<br>**NOTE**<br> Only when this attribute is set to true and edgeEffect of the component is set to [EdgeEffect.Spring](ts-appendix-enums.md#edgeeffect), the animation scrolling to the boundary is converted to the out-of-bounds rebound animation. When this attribute is set to false: Scrolling to the boundary directly stops the animation and does not convert it to an out-of-bounds rebound animation.<br>Since API version 20, if canOverScroll in [ScrollOptions](#scrolloptions18) is set to true, the scrolling animation can stay at the boundary. After the scrolling animation crosses the boundary, it will not be converted into a rebounding animation.|
 
 ## ScrollAlign<sup>10+</sup>
 
@@ -1114,8 +1115,8 @@ Provides parameters for scrolling to a specific position in a scrollable contain
 
 | Name   | Type                                                    | Read Only| Optional| Description                                                    |
 | --------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| xOffset<sup>10+</sup>   | number \| string                                   | No  | No| Horizontal scrolling offset.<br>**NOTE**<br>This parameter cannot be set in percentage.<br>This parameter takes effect only when the scroll axis is the x-axis.<br>Value range: If the value is less than 0, scrolling without animation is performed and the value 0 is used. Animated scrolling stops at the starting position by default. By setting the **animation** parameter, you can enable a bounce effect when the scrolling goes beyond the boundary.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| yOffset<sup>10+</sup>   | number \| string                                   | No  | No| Vertical scrolling offset.<br>**NOTE**<br>This parameter cannot be set in percentage.<br>This parameter takes effect only when the scroll axis is the y-axis.<br>Value range: If the value is less than 0, scrolling without animation is performed and the value 0 is used. Animated scrolling stops at the starting position by default. By setting the **animation** parameter, you can enable a bounce effect when the scrolling goes beyond the boundary.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| xOffset<sup>10+</sup>   | number \| string                                   | No  | No| Horizontal scroll offset.<br>**NOTE**<br>This parameter cannot be set in percentage.<br>This parameter takes effect only when the scroll axis is the x-axis.<br>Value range: If the value is less than 0, scrolling without animation is performed and the value 0 is used. Animated scrolling stops at the starting position by default. By setting the **animation** parameter, you can enable a bounce effect when the scrolling goes beyond the boundary.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| yOffset<sup>10+</sup>   | number \| string                                   | No  | No| Vertical scroll offset.<br>**NOTE**<br>This parameter cannot be set in percentage.<br>This parameter takes effect only when the scroll axis is the y-axis.<br>Value range: If the value is less than 0, scrolling without animation is performed and the value 0 is used. Animated scrolling stops at the starting position by default. By setting the **animation** parameter, you can enable a bounce effect when the scrolling goes beyond the boundary.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | animation<sup>10+</sup> | [ScrollAnimationOptions](#scrollanimationoptions12) \| boolean | No  | Yes| Animation configuration, which includes the following:<br>- **ScrollAnimationOptions**: custom animation settings.<br>- **boolean**: whether to enable the default spring animation.<br>Default value:<br>ScrollAnimationOptions: { duration: 1000, curve: Curve.Ease, canOverScroll: false } <br>boolean: false<br>**NOTE**<br>Currently, the **List**, **Scroll**, **Grid**, and **WaterFlow** support the **Boolean** type and **ICurve**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | canOverScroll<sup>20+</sup>   | boolean                                   | No  | Yes| Whether the scrolling target position can stay beyond the boundary. The scrolling can stay beyond the boundary only when edgeEffect of the component is set to EdgeEffect.Spring.<br>If this parameter is set to true, the scrolling can stay beyond the boundary. If this parameter is set to false, the scrolling cannot stay beyond the boundary.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -1765,7 +1766,7 @@ struct StickyNestedScroll {
 
 ### Example 11 (Free scrolling and zooming)
 
-This example implements the free scrolling and zooming effects of the Scroll component.
+This example demonstrates how to implement free scrolling and scaling of the **Scroll** component. This functionality is supported since API version 20.
 ```ts
 @Entry
 @Component

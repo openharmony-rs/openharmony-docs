@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Navigator** component provides redirection.
 
@@ -22,6 +22,8 @@ Supported
 
 ## APIs
 
+### Navigator
+
 Navigator(value?: {target: string, type?: NavigationType})
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -34,6 +36,14 @@ Navigator(value?: {target: string, type?: NavigationType})
 | ------ | -------------- | ---- | ---------------------------------------------- |
 | target | string         | Yes  | Path of the target page to be redirected to.    |
 | type   | [NavigationType](#navigationtype) | No  | Navigation type.<br>Default value: **NavigationType.Push**|
+
+### Navigator
+
+Navigator()
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ## NavigationType
 
@@ -85,7 +95,7 @@ Sets the data that needs to be passed to the target page during redirection.
 
 target(value: string)
 
-Path of the target page to be redirected to. The target page must be added to the **main_pages.json** file.
+Sets the path of the target page to be redirected to. The target page must be added to the **main_pages.json** file.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

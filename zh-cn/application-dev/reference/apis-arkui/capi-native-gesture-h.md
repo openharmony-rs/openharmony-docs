@@ -1,7 +1,7 @@
 # native_gesture.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -236,14 +236,14 @@ enum ArkUI_GestureRecognizerType
 | 枚举项 | 描述                                |
 | -- |-----------------------------------|
 | TAP_GESTURE = 0 | 敲击手势。                             |
-| LONG_PRESS_GESTURE | 长按手势。                             |
-| PAN_GESTURE | 滑动手势。                             |
-| PINCH_GESTURE | 捏合手势。                             |
-| ROTATION_GESTURE | 旋转手势。                             |
-| SWIPE_GESTURE | 快滑手势。                             |
-| GROUP_GESTURE | 手势组合。                             |
-| CLICK_GESTURE | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
-| DRAG_DROP | 用于拖放的拖拽手势。<br>**起始版本：** 20        |
+| LONG_PRESS_GESTURE = 1 | 长按手势。                             |
+| PAN_GESTURE = 2 | 滑动手势。                             |
+| PINCH_GESTURE = 3 | 捏合手势。                             |
+| ROTATION_GESTURE = 4 | 旋转手势。                             |
+| SWIPE_GESTURE = 5 | 快滑手势。                             |
+| GROUP_GESTURE = 6 | 手势组合。                             |
+| CLICK_GESTURE = 7 | 通过onClick注册的点击手势。<br>**起始版本：** 20 |
+| DRAG_DROP = 8 | 用于拖放的拖拽手势。<br>**起始版本：** 20        |
 
 ### ArkUI_GestureInterruptResult
 
@@ -261,7 +261,7 @@ enum ArkUI_GestureInterruptResult
 | 枚举项 | 描述 |
 | -- | -- |
 | GESTURE_INTERRUPT_RESULT_CONTINUE = 0 | 手势继续。 |
-| GESTURE_INTERRUPT_RESULT_REJECT | 手势打断。 |
+| GESTURE_INTERRUPT_RESULT_REJECT = 1 | 手势打断。 |
 
 ### ArkUI_GestureRecognizerState
 

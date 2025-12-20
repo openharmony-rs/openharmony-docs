@@ -123,7 +123,7 @@ struct PixelRoundExample {
         .backgroundColor('#ffe5e5e5')
     }
 }
-```	
+```
 
 In this example, when pixel rounding is initially disabled (that is, the **pixelRound** attribute is not set on the parent and child components), the component appearance is normal. You can increase the width of the parent component by clicking the button. The initial width is set at 301.2 px to provide a baseline for observing visual changes. As you increase the width, you may notice that at certain widths, a 1 px gap appears on the right side of the parent component. You can modify the example code to perform similar tests in the vertical dimension to see whether a similar issue occurs when the height of the components is changed.
 

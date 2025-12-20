@@ -390,3 +390,39 @@ Device connection error.
 **Solution**
 
 Make sure that devices (for example, mobile phone and the watch) are properly connected.
+
+## 1600022 Invalid Bundle Information
+
+**Error Message**
+
+The specified bundle is invalid.
+
+**Description**
+
+This error code is reported when the bundle information is invalid.
+
+**Possible Causes**
+
+The specified bundle name does not exist.
+
+**Solution**
+
+Check whether the bundle information is correct.
+
+## 1600024 Custom Ringtones Not Configured
+
+**Error Message**
+
+The specified bundle has no custom ringtone information.
+
+**Description**
+
+This error code is reported when the custom ringtones are not configured for the specified application.
+
+**Possible Causes**
+
+Custom ringtones are not configured for the specified application.
+
+**Solution**
+
+Check whether custom ringtones are configured for the specified application.

@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-The [addMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#clearmonitor20) APIs enable you to dynamically add or remove listeners for state variables in state management V2.
+The [addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20) APIs enable you to dynamically add or remove listeners for state variables in state management V2.
 
 Before using these APIs, it is recommended that you familiarize yourself with the following concepts: [\@ObservedV2/\@Trace](./arkts-new-observedV2-and-trace.md) and [\@Monitor](./arkts-new-monitor.md).
 
@@ -18,7 +18,7 @@ Before using these APIs, it is recommended that you familiarize yourself with th
 ## Overview
 The [\@Monitor](./arkts-new-monitor.md) decorator, when declared within an [\@ObservedV2](./arkts-new-observedV2-and-trace.md) or [\@ComponentV2](./arkts-new-componentV2.md) decorated class, automatically applies the same listener callback to all instances of that class. These \@Monitor decorated callbacks are static and cannot be removed.
 
-For scenarios requiring dynamic management of listeners, use the [addMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-StateManagement.md#clearmonitor20) APIs to add or remove listeners on individual \@ObservedV2 and \@ComponentV2 instances.
+For scenarios requiring dynamic management of listeners, use the [addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20) APIs to add or remove listeners on individual \@ObservedV2 and \@ComponentV2 instances.
 
 - To use **addMonitor** and **clearMonitor**, you must import the **UIUtils** utility.
 
@@ -136,7 +136,7 @@ struct Page {
   }
 }
 ```
-- The [isSynchronous](../../reference/apis-arkui/js-apis-StateManagement.md#monitoroptions20) configuration option for a listener is established during its initial registration and becomes immutable thereafter. Any subsequent attempt to modify it for the same listener will fail and produce an error log.
+- The [isSynchronous](../../reference/apis-arkui/js-apis-stateManagement.md#monitoroptions20) configuration option for a listener is established during its initial registration and becomes immutable thereafter. Any subsequent attempt to modify it for the same listener will fail and produce an error log.
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 

@@ -15,7 +15,7 @@
 在AudioVolumeGroupManager中提供了管理麦克风状态的方法，接口的详细说明请参考[API文档](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md)。
 
 1. 创建audioVolumeGroupManager对象。
-     
+
    ```ts
    import { audio } from '@kit.AudioKit';
 
@@ -28,9 +28,9 @@
      console.info('audioVolumeGroupManager create success.');
    }
    ```
-<!--Del-->
-2. **(仅对系统应用开放)** 调用on('micStateChange')监听麦克风状态变化，当麦克风静音状态发生变化时将通知应用。
-   
+
+2. 调用[on('micStateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#onmicstatechange9)监听麦克风状态变化，当麦克风静音状态发生变化时将通知应用。
+
    目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
    ```ts
@@ -41,10 +41,9 @@
      });
    }
    ```
-<!--DelEnd-->
 
-3. 调用isMicrophoneMute查询麦克风当前静音状态，返回true为静音，false为非静音。
-     
+3. 调用[isMicrophoneMute](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)查询麦克风当前静音状态，返回true为静音，false为非静音。
+
    ```ts
    // 查询麦克风是否静音。
    async function isMicrophoneMute() {
@@ -53,9 +52,10 @@
      });
    }
    ```
-<!--Del-->
-4. **(仅对系统应用开放)** 根据查询结果的实际情况，调用setMicrophoneMute设置麦克风静音状态，入参输入true为静音，false为非静音。
-     
+
+   <!--Del-->
+4. **（仅对系统应用开放）** 根据查询结果的实际情况，调用[setMicMute](../../reference/apis-audio-kit/js-apis-audio-sys.md#setmicmute11)设置麦克风静音状态，入参输入true为静音，false为非静音。
+
    ```ts
    // 设置麦克风静音，入参为true。
    async function setMicrophoneMuteTrue() {
@@ -76,11 +76,11 @@
 
 参考以下示例，完成从设置麦克风静音到取消麦克风静音的过程。
 
-```ts
+   ```ts
    import { audio } from '@kit.AudioKit';
-   
+
    let audioVolumeGroupManager: audio.AudioVolumeGroupManager;
-   
+
    async function loadVolumeGroupManager() {
      const groupid = audio.DEFAULT_VOLUME_GROUP_ID;
      audioVolumeGroupManager = await audio.getAudioManager().getVolumeManager().getVolumeGroupManager(groupid);
@@ -128,5 +128,5 @@
      await setMicrophoneMuteTrue();
      await isMicrophoneMute();
    }
-```
-<!--DelEnd--> 
+   ```
+   <!--DelEnd--> 

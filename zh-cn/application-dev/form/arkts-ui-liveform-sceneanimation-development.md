@@ -69,7 +69,9 @@
     // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
     import { formInfo, formProvider } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // LiveFormExtensionContext导入编译器会标红，但是可以正常编译运行。
     import LiveFormExtensionContext from 'application/LiveFormExtensionContext';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../../common/Constants';
     
     const ANIMATION_RECT_SIZE: number = 100;
@@ -244,7 +246,6 @@
             Text('点击触发互动卡片动效')
               .fontSize($r('app.float.font_size'))
               .fontWeight(FontWeight.Medium)
-              // $r('sys.color.font_primary')需开发者根据实际情况替换相应的资源或值
               .fontColor($r('sys.color.font_primary'))
           }
           .width('100%')
@@ -318,6 +319,7 @@
       FormExtensionAbility,
     } from '@kit.FormKit';
     import { BusinessError } from '@kit.BasicServicesKit';
+    // Constants实现参考“互动卡片动效工具函数实现”小节
     import { Constants } from '../common/Constants';
     
     export default class EntryFormAbility extends FormExtensionAbility {
@@ -387,6 +389,7 @@
       public static readonly OVERFLOW_DURATION: number = 3500;
     }
     ```
+
 ## 实现效果
 以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 [formProvider.cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) 接口，打断当前破框动效，卡片切换为非激活态。
 

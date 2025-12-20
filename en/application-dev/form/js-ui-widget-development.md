@@ -15,7 +15,7 @@ The **FormExtensionAbility** class has the following APIs. For details, see [For
 | -------- | -------- |
 | onAddForm(want:&nbsp;Want):&nbsp;formBindingData.FormBindingData                                 | Called to notify the widget provider that a widget is being created.|
 | onCastToNormalForm(formId:&nbsp;string):&nbsp;void                                               | Called to notify the widget provider that a temporary widget is being converted to a normal one.|
-| onUpdateForm(formId:&nbsp;string):&nbsp;void                                                     | Called to notify the widget provider that a widget is being updated.|
+| onUpdateForm(formId: string, wantParams?: Record<string, Object>): void                          | Called to notify the widget provider that a widget is being updated.|
 | onChangeFormVisibility(newStatus:&nbsp;Record&lt;string,&nbsp;number&gt;):&nbsp;void             | Called to notify the widget provider that the widget visibility status is being changed.|
 | onFormEvent(formId:&nbsp;string,&nbsp;message:&nbsp;string):&nbsp;void                           | Called to instruct the widget provider to process a widget event.|
 | onRemoveForm(formId:&nbsp;string):&nbsp;void                                                     | Called to notify the widget provider that a widget is being destroyed.|
@@ -30,7 +30,7 @@ The following table lists some APIs provided by the **formProvider** class. For 
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;formBindingData.FormBindingData,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | Updates a widget. This API uses an asynchronous callback to return the result.|
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;formBindingData.FormBindingData):&nbsp;Promise&lt;void&gt; | Updates a widget. This API uses a promise to return the result.|
 
-The **FormBindingData** class has the following APIs. For details, see [FormBindingData](../reference/apis-form-kit/js-apis-app-form-formBindingData.md).
+The following table lists some APIs provided by the **formBindingData** class. For details about the APIs, see [API Reference](../reference/apis-form-kit/js-apis-app-form-formBindingData.md).
 
 | Name| Description|
 | -------- | -------- |
@@ -84,7 +84,7 @@ To create a widget in the stage model, you need to implement the lifecycle callb
         return formData;
       }
       onCastToNormalForm(formId: string): void {
-        // Called when a temporary widget is being converted into a normal one. The widget provider should respond to the conversion.
+        // Called when the widget host converts a temporary widget into a normal one. The widget provider should respond to the conversion. (Currently, there is no temporary widget scenario.)
         hilog.info(DOMAIN_NUMBER, TAG, '[EntryFormAbility] onCastToNormalForm');
       }
       onUpdateForm(formId: string): void {
@@ -120,7 +120,6 @@ To create a widget in the stage model, you need to implement the lifecycle callb
     ```
 
 > **NOTE**
->
 > FormExtensionAbility cannot reside in the background. Therefore, continuous tasks cannot be processed in the widget lifecycle callbacks.
 
 
@@ -153,7 +152,7 @@ To create a widget in the stage model, you need to implement the lifecycle callb
    }
    ```
 
-2. Configure the widget configuration information. In the **metadata** configuration item of FormExtensionAbility, you can specify the resource index of specific configuration information of the widget. For example, if **resource** is set to **$profile:form_config**, **form_config.json** in the **resources/base/profile/** directory of the development view is used as the profile configuration file of the widget. The following table describes the internal structure of the profile configuration file.
+2. Configure the widget configuration information. In the **metadata** configuration item of FormExtensionAbility, you can specify the resource index of specific configuration information of the widget. For example, if **resource** is set to **$profile:form_jscard_config**, **form_jscard_config.json** in the **resources/base/profile/** directory of the development view is used as the profile configuration file of the widget. The following table describes the internal structure of the profile configuration file.
 
    **Table 1** Widget profile configuration file
 
@@ -164,8 +163,8 @@ To create a widget in the stage model, you need to implement the lifecycle callb
    | src | Full path of the UI code corresponding to the widget.| String| No|
    | window | Window-related configurations.| Object| Yes|
    | isDefault | Whether the widget is a default one. Each UIAbility has only one default widget.<br>- **true**: The widget is the default one.<br>- **false**: The widget is not the default one.| Boolean| No|
-   | colorMode | Color mode of the widget.<br>- **auto**: auto-adaptive color mode<br>- **dark**: dark color mode<br>- **light**: light color mode| String| Yes (initial value: **auto**)|
-   | supportDimensions | Grid styles supported by the widget.<br>- **1 * 2**: indicates a grid with one row and two columns.<br>- **2 * 2**: indicates a grid with two rows and two columns.<br>- **2 * 4**: indicates a grid with two rows and four columns.<br>- **4 * 4**: indicates a grid with four rows and four columns.| String array| No|
+   | colorMode<sup>(deprecated)</sup> | Color mode of the widget.<br>- **auto**: following the system color mode<br>- **dark**: dark color mode<br>- **light**: light color mode<br>**Note:**<br>1. This configuration item is supported since API version 12 and deprecated since API version 20. The color mode follows the system color mode.<br>| String| Yes (initial value: **auto**)|
+   | supportDimensions | Supported widget dimensions. The options are as follows:<!--RP2--><!--RP2End--><br>- **1 * 2**: indicates a grid with one row and two columns.<br>- **2 * 2**: indicates a grid with two rows and two columns.<br>- **2 * 4**: indicates a grid with two rows and four columns.<br>- **2 * 3**: indicates a grid with two rows and three columns.<br>- **3 * 3**: indicates a grid with three rows and three columns.<br>- **4 * 4**: indicates a grid with four rows and four columns.<br>- **6 * 4**: indicates a grid with six rows and four columns.<br>**Note**: **2 * 3** and **3 * 3** support only watches<!--RP3--><!--RP3End-->.| String array| No|
    | defaultDimension | Default grid style of the widget. The value must be available in the **supportDimensions** array of the widget.| String| No|
    | updateEnabled | Whether the widget can be updated periodically.<br>- **true**: The widget can be updated at a specified interval (**updateDuration**) or at the scheduled time (**scheduledUpdateTime**). **updateDuration** takes precedence over **scheduledUpdateTime**.<br>- **false**: The widget cannot be updated periodically.| Boolean| No|
    | scheduledUpdateTime | Scheduled time to update the widget. The value is in 24-hour format and accurate to minute.<br>**updateDuration** takes precedence over **scheduledUpdateTime**. If both are specified, the value specified by **updateDuration** is used.| String| Yes (initial value: **0:0**)|
@@ -188,7 +187,6 @@ To create a widget in the stage model, you need to implement the lifecycle callb
            "designWidth": 720,
            "autoDesignWidth": true
          },
-         "colorMode": "auto",
          "isDefault": true,
          "updateEnabled": true,
          "scheduledUpdateTime": "10:30",
@@ -303,7 +301,7 @@ The **Want** object passed in by the widget host to the widget provider contains
 
 - Normal widget: a widget persistently used by the widget host
 
-- Temporary widget: a widget temporarily used by the widget host
+- Temporary widget: a widget temporarily used by the widget host. (Currently, there is no temporary widget scenario.)
 
 Data of a temporary widget will be deleted on the Widget Manager if the widget framework is killed and restarted. The widget provider, however, is not notified of the deletion and still keeps the data. Therefore, the widget provider needs to clear the data of temporary widgets proactively if the data has been kept for a long period of time. If the widget host has converted a temporary widget into a normal one, the widget provider should change the widget data from temporary storage to persistent storage. Otherwise, the widget data may be deleted by mistake.
 
@@ -512,7 +510,7 @@ The following are examples:
   }
 
   .detail_text {
-      ffont-family: HarmonyHeiTi;
+      font-family: HarmonyHeiTi;
       font-size: 12px;
       color: rgba(255, 255, 255, 0.60);
       letter-spacing: 0.51px;
@@ -552,9 +550,9 @@ The following are examples:
   }
   ```
 
-  > **NOTE**
-  >
-  > **JSON Value** in **data** supports multi-level nested data. When updating data, ensure that complete data is carried.
+  Note:
+
+  **JSON Value** in **data** supports multi-level nested data. When updating data, ensure that complete data is carried.
 
   Assume that a widget is displaying the course information of Mr. Zhang on July 18, as shown in the following code snippet.
   ```ts
@@ -629,3 +627,5 @@ The following are examples:
     }
   };
   ```
+<!--Del-->
+<!--DelEnd-->

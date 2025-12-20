@@ -77,8 +77,7 @@ Using the NDK for UI development involves the following tasks.
 | [Querying and Operating Custom Nodes](ndk-node-query-operate.md) | Introduces how to query and operate custom nodes.|
 | [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md) | Introduces how to launch **EmbeddedUIExtensionAbility** with **EmbeddedComponent** on the native side. This is mainly used in modular development scenarios with process isolation requirements.|
 | [Using Text](ndk-styled-string.md) | Introduces how to use the **Text** component and font engine.|
-| [Ensuring Functionality in Multi-Instance Scenarios](ndk-scope-task.md) | Introduces how to ensure the normal functionality of API calls in NDK multi-threaded scenarios.|
-| [Creating Multi-threaded Components with NDK](ndk-build-on-multi-thread.md)| Introduces how to create multi-threaded UI components using NDK.|
+| [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md) | Introduces how to ensure the normal functionality of API calls in NDK multi-threaded scenarios.|
 
 
 ## Precautions

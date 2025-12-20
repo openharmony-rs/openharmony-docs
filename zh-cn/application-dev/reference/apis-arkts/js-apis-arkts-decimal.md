@@ -2515,7 +2515,7 @@ data1 = data2.toString(); // data1:'1.23e-7'
 
 valueOf(): string
 
-返回一个字符串，表示此 Decimal 的值，负零包含减号。
+返回一个字符串，表示此 Decimal 的值，负零包含负号。
 
 **原子化服务API**：从API version 12 开始，该接口支持在原子化服务中使用。
 

@@ -9,7 +9,9 @@
 
 Node-API扩展接口`napi_open_critical_scope`用于打开临界区作用域，`napi_close_critical_scope`用于关闭临界区作用域。
 
-**注意**：非临界接口不能在临界区作用域使用，且同一执行环境中只能打开一个临界区作用域。建议仅在需要临界接口时打开临界区作用域，使用后应及时关闭。
+> **注意**：
+>
+> 非临界接口不能在临界区作用域使用，且同一执行环境中只能打开一个临界区作用域。建议仅在需要临界接口时打开临界区作用域，使用后应及时关闭。
 
 ## 场景介绍
 
@@ -25,11 +27,11 @@ Node-API扩展接口`napi_open_critical_scope`用于打开临界区作用域，`
 | napi_close_critical_scope                      | 关闭临界区作用域                          | napi_generic_failure       |
 | napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据 | napi_generic_failure       |
 
-**注意：**
-
-当ArkTS String以UTF-16编码存储时，`napi_get_buffer_string_utf16_in_critical_scope`才能正确获取其内存缓冲区，否则该函数返回错误。
-
-`napi_create_string_utf16`和`napi_create_string_utf8`的功能是将输入数据以指定编码传递给虚拟机。这些函数不控制字符串在虚拟机的内部存储编码方式。
+>**注意：**  
+>
+>1.当ArkTS String以UTF-16编码存储时，`napi_get_buffer_string_utf16_in_critical_scope`才能正确获取其内存缓冲区，否则该函数返回错误。
+>  
+>2.`napi_create_string_utf16`和`napi_create_string_utf8`的功能是将输入数据以指定编码传递给虚拟机。这些函数不控制字符串在虚拟机的内部存储编码方式。
 
 ## 示例代码
 

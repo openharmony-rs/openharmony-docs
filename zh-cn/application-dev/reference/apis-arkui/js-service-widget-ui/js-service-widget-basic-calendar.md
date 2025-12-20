@@ -38,7 +38,7 @@
 | day            | int    | 表示具体哪一天。                                |
 | month          | int    | 表示月份。                                   |
 | year           | int    | 表示年份。                                   |
-| isFirstOfLuanr | boolean  | 表示是否是农历的第一天，在农历第一天的数据下绘制横线。取值true，表示是农历的第一天。取值false，表示不是农历的第一天。             |
+| isFirstOfLunar | boolean  | 表示是否是农历的第一天，在农历第一天的数据下绘制横线。取值true，表示是农历的第一天。取值false，表示不是农历的第一天。             |
 | hasSchedule    | boolean  | 表示是否有日程，在有日程的日期数据上绘制圆。取值true，表示当前有日程。取值false，表示当前无日程。               |
 | markLunarDay   | boolean  | 表示节假日时，农历数据部分是否会变成蓝色。取值true，表示当天为节假日时，农历数据部分会变成蓝色。取值false，表示当天为节假日时，农历数据部分不会变成蓝色。                       |
 | lunarDay       | string | 农历日期。                                   |

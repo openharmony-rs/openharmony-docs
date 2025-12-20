@@ -23,8 +23,8 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| VkStructureType sType | 结构体类型。 |
-| const void* pNext | 下一级结构体指针。 |
-| VkDeviceMemory memory | VkDeviceMemory对象。 |
+| VkStructureType sType | 结构体类型，值必须为VK_STRUCTURE_TYPE_MEMORY_GET_NATIVE_BUFFER_INFO_OHOS。 |
+| const void* pNext | 下一级结构体指针，值必须为空。 |
+| VkDeviceMemory memory | VkDeviceMemory对象，值必须为一个有效的VkDeviceMemory对象。 |
 
 

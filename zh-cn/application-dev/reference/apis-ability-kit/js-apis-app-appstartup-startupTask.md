@@ -57,9 +57,9 @@ export default class StartupTask_001 extends StartupTask {
     // ...
   }
 
-  onDependencyCompleted(dependence: string, result: Object): void {
-    hilog.info(0x0000, 'testTag', 'StartupTask_001 onDependencyCompleted, dependence: %{public}s, result: %{public}s',
-      dependence, JSON.stringify(result));
+  onDependencyCompleted(dependency: string, result: Object): void {
+    hilog.info(0x0000, 'testTag', 'StartupTask_001 onDependencyCompleted, dependency: %{public}s, result: %{public}s',
+      dependency, JSON.stringify(result));
     // ...
   }
 }
@@ -70,7 +70,7 @@ export default class StartupTask_001 extends StartupTask {
 
 init(context: AbilityStageContext): Promise\<Object \| void\>
 
-当所有依赖的启动任务都执行完成后，该方法将会被调用。开发者可以在该回调中执行该启动任务的初始化操作。
+当所有依赖的启动任务都执行完成后，该方法将会被调用。开发者可以在该回调中执行该启动任务的初始化操作。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
@@ -104,7 +104,7 @@ export default class StartupTask_001 extends StartupTask {
     return "StartupTask_001";
   }
 
-  onDependencyCompleted(dependence: string, result: Object): void {
+  onDependencyCompleted(dependency: string, result: Object): void {
     // ...
   }
 }

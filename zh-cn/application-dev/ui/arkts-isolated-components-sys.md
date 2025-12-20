@@ -233,14 +233,14 @@ struct Index {
 
 2. 将本应用构建生成的modules.abc文件通过DevEco Studio或hdc工具上传至应用沙箱路径/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files下，其中，hdc工具参考命令如下：
 
-```bash
-hdc file send modules.abc /data/app/el2/100/base/com.example.isolateddemo/haps/entry/files/
-```
+   ```bash
+   hdc file send modules.abc /data/app/el2/100/base/com.example.isolateddemo/haps/entry/files/
+   ```
 
 3. 打开应用页面，点击"verifyAbc"按钮进行校验，输出"VerifyAbc successfully"日志；
 
-![zh-cn_image_0000001746521386](figures/zh-cn_image_0000001746521386.jpg)
+   ![zh-cn_image_0000001746521386](figures/zh-cn_image_0000001746521386.jpg)
 
-![zh-cn_image_0000001502381065](figures/zh-cn_image_0000001502381065.png)
+   ![zh-cn_image_0000001502381065](figures/zh-cn_image_0000001502381065.png)
 
 4. 点击"showIsolatedComponent"按钮，显示IsolatedComponent组件，内容为"Hello World"。

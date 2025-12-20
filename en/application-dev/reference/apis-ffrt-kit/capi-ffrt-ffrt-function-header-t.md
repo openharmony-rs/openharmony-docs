@@ -26,3 +26,5 @@ The **ffrt_function_header_t** struct describes a task execution function.
 | [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) exec | Function used to execute a task.|
 | [ffrt_function_t](capi-type-def-h.md#ffrt_function_t) destroy | Function used to destroy a task.|
 | uint64_t reserve[2] | Reserved bit, which must be set to **0**.|
+
+

@@ -6,7 +6,8 @@
 <!--Tester: @csp1992-->
 <!--Adviser: @luwy2025-->
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**
+> **说明：**
+
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/reference/errorcode-universal.md)。
 
 

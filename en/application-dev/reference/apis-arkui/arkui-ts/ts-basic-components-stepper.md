@@ -4,7 +4,7 @@
 <!--Owner: @mayaolll-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Stepper** component provides a step navigator, suitable for guiding users through a step-by-step task completion process.
 
@@ -46,7 +46,7 @@ None
 
 onFinish(callback: () => void)
 
-Invoked when the **nextLabel** of the last **StepperItem** in the **Stepper** is clicked and the **ItemState** attribute is set to **Normal**.
+Triggered when the [nextLabel](ts-basic-components-stepperitem.md#nextlabel) of the last [StepperItem](ts-basic-components-stepperitem.md) in the step navigator is tapped and the [ItemState](ts-basic-components-stepperitem.md#itemstate) attribute is Normal.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -62,7 +62,7 @@ Invoked when the **nextLabel** of the last **StepperItem** in the **Stepper** is
 
 onSkip(callback: () =&gt; void)
 
-Invoked when the current **StepperItem** is **ItemState.Skip** and the **nextLabel** is clicked.
+Triggered when the [nextLabel](ts-basic-components-stepperitem.md#nextlabel) is tapped when the current [StepperItem](ts-basic-components-stepperitem.md) is in the ItemState.Skip state.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -78,7 +78,7 @@ Invoked when the current **StepperItem** is **ItemState.Skip** and the **nextLab
 
 onChange(callback: (prevIndex: number, index: number) =&gt; void)
 
-Invoked when the **prevLabel** of the current **StepperItem** is clicked to switch to the previous step page; or when the **nextLabel** of the current (not the last) **StepperItem** is clicked to switch to the next step page and the **ItemState** attribute is set to **Normal**.
+Triggered when the [prevLabel](ts-basic-components-stepperitem.md#prevlabel) of the current StepperItem is tapped to switch steps. Alternatively, this callback is triggered when the [nextLabel](ts-basic-components-stepperitem.md#nextlabel) of the current StepperItem is tapped, the current page is not the last StepperItem of the stepper navigator, and the [ItemState](ts-basic-components-stepperitem.md#itemstate) attribute is Normal.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -95,7 +95,7 @@ Invoked when the **prevLabel** of the current **StepperItem** is clicked to swit
 
 onNext(callback: (index: number, pendingIndex: number) =&gt; void)
 
-Invoked when the **nextLabel** of the current (not the last) **StepperItem** is clicked and the **ItemState** attribute is set to **Normal**.
+Triggered when the next step is switched by clicking [nextLabel](ts-basic-components-stepperitem.md#nextlabel) of a StepperItem, the current page is not the last StepperItem in the stepper navigator, and the [ItemState](ts-basic-components-stepperitem.md#itemstate) attribute is Normal.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -112,7 +112,7 @@ Invoked when the **nextLabel** of the current (not the last) **StepperItem** is 
 
 onPrevious(callback: (index: number, pendingIndex: number) =&gt; void)
 
-Invoked when the **prevLabel** of the current **StepperItem** is clicked to switch to the previous step page.
+Triggered when a user taps [prevLabel](ts-basic-components-stepperitem.md#prevlabel) of the StepperItem to switch to the previous step.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

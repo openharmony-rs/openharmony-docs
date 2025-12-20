@@ -101,8 +101,9 @@ startVpnExtensionAbility(want: Want): Promise\<void>
 Stage 模型示例：
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -119,13 +120,18 @@ struct Index {
     Row() {
       Column() {
         Text(this.message)
-          .fontSize(50)
+          .fontSize(40)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
-        }.width('100%')
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
+      }.width('100%')
     }.height('100%')
   }
 }
@@ -171,8 +177,9 @@ stopVpnExtensionAbility(want: Want): Promise\<void>
 Stage 模型示例：
 
 ```ts
-import { common, Want } from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 import { vpnExtension } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let want: Want = {
   deviceId: "",
@@ -191,16 +198,25 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold).onClick(() => {
-          console.info("btn click") })
+          console.info("btn click")
+        })
         Button('Start Extension').onClick(() => {
-          vpnExtension.startVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.startVpnExtensionAbility(want).then(() => {
+            console.info('startVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('startVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
         Button('Stop Extension').onClick(() => {
           console.info("btn end")
-          vpnExtension.stopVpnExtensionAbility(want);
-        }).width('70%').fontSize(45).margin(16)
+          vpnExtension.stopVpnExtensionAbility(want).then(() => {
+            console.info('stopVpnExtensionAbility success');
+          }).catch((err: BusinessError) => {
+            console.error('stopVpnExtensionAbility error: ' + JSON.stringify(err));
+          })
+        }).width('70%').fontSize(30).margin(16)
 
-        }.width('100%')
+      }.width('100%')
     }.height('100%')
   }
 }

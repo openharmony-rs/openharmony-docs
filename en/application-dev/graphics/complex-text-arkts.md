@@ -64,7 +64,7 @@ In the scenario where multilingual text is used, you can specify the **locale** 
    // Update the text style.
    paragraphBuilder.pushStyle(myTextStyle);
    // Add text.
-   paragraphBuilder.addText ('Hello, world');
+   paragraphBuilder.addText ('你好，世界');
    ```
 
 5. Arrange paragraphs and draw text.
@@ -104,7 +104,7 @@ class MyRenderNode extends RenderNode {
         blue: 0
       },
       fontSize: 50,
-      // Set the language preference to simplified Chinese.
+      // Set the language preference to Simplified Chinese.
       locale: 'zh-Hans'
     };
 
@@ -116,7 +116,7 @@ class MyRenderNode extends RenderNode {
     // Update the text style.
     paragraphBuilder.pushStyle(myTextStyle);
     // Add text.
-    paragraphBuilder.addText ('Hello, world');
+    paragraphBuilder.addText ('你好，世界');
     // Generate a paragraph.
     let paragraph = paragraphBuilder.build();
     // Layout
@@ -1785,3 +1785,4 @@ The effect is as follows.
 | -------- | -------- |
 | DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 | ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+<!--no_check-->

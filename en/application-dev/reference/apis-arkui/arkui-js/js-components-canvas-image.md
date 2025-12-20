@@ -1,4 +1,10 @@
 # Image
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @sd-wu-->
+<!--Designer: @sunbees-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >
@@ -41,7 +47,7 @@ export default {
             ctx.drawImage(img, 0, 0, 360, 250);
         };
         img.onerror = function () {
-            console.log('Image load fail');
+            console.error('Image load fail');
         };
     }
 }

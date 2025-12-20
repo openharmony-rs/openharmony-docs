@@ -256,7 +256,7 @@ export default {
   },
   change(e) {
     promptAction.showToast({
-      message: 'Content:'+ e.text,
+      message: 'Content:' + e.text,
       duration: 2000
     })
   }

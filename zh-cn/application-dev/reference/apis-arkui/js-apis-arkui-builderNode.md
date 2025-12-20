@@ -308,7 +308,7 @@ class TextNodeController extends NodeController {
   makeNode(context: UIContext): FrameNode | null {
     this.textNode = new BuilderNode(context);
     this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
-    // 返回当前BuiderNode包含的FrameNode
+    // 返回当前BuilderNode包含的FrameNode
     return this.textNode.getFrameNode();
   }
 }
@@ -452,7 +452,7 @@ class TextNodeController extends NodeController {
     const rootRenderNode = this.rootNode.getRenderNode();
     if (rootRenderNode !== null) {
       rootRenderNode.appendChild(renderNode);
-    // 将BuiderNode的RenderNode挂至其他RenderNode
+    // 将BuilderNode的RenderNode挂至其他RenderNode
       renderNode.appendChild(textRenderNode);
     }
 
@@ -555,7 +555,7 @@ class TextNodeController extends NodeController {
     return this.textNode.getFrameNode();
   }
 
-  // 根据传入参数更新BuiderNode
+  // 根据传入参数更新BuilderNode
   update(message: string) {
     if (this.textNode !== null) {
       this.textNode.update(new Params(message));
@@ -688,7 +688,7 @@ class MyNodeController extends NodeController {
         event.changedTouches[i].y = uiContext.vp2px(offsetY + event.changedTouches[i].y);
       }
     }
-    // 将事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postTouchEvent(event);
     console.info("result " + result);
     return result;
@@ -728,7 +728,7 @@ dispose(): void
 
 > **说明：**
 >
-> 当BuilderNode对象调用dispose之后，会与后端实体节点解除引用关系。若前端对象BuilderNode无法释放，容易导致内存泄漏。建议在不再需要对该BuilderNode对象进行操作时，开发者主动调用dispose释放后端节点，以减少引用关系的复杂性，降低内存泄漏的风险。
+> 当BuilderNode对象调用dispose之后，会与后端实体节点解除引用关系。若前端对象BuilderNode无法释放，容易导致内存泄漏。建议在不再需要对该BuilderNode对象进行操作时，开发者主动调用dispose释放后端节点，以减少引用关系的复杂性，降低内存泄漏的风险。具体场景可见[BuilderNode前后端循环引用导致的内存泄漏问题](../../ui/arkts-user-defined-node-faq.md#buildernode前后端循环引用导致的内存泄漏问题)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1208,7 +1208,7 @@ isDisposed(): boolean
 
 | 类型    | 说明               |
 | ------- | ------------------ |
-| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。
+| boolean | 后端实体节点是否解除引用。true为节点已与后端实体节点解除引用，false为节点未与后端实体节点解除引用。 |
 
 **示例：**
 
@@ -1667,7 +1667,7 @@ class MyNodeController extends NodeController {
       mouseEvent.x = uiContext.vp2px(mouseEvent.x)
       mouseEvent.y = uiContext.vp2px(mouseEvent.y)
     }
-    // 将鼠标事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将鼠标事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -1700,7 +1700,7 @@ class MyNodeController extends NodeController {
         touchEvent.touches[i].displayY = uiContext.vp2px(offsetY + touchEvent.touches[i].y);
       }
     }
-    // 将触摸事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -1815,7 +1815,7 @@ class MyNodeController extends NodeController {
       }
     }
 
-    // 将触摸事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将触摸事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
   }
@@ -1909,7 +1909,7 @@ class MyNodeController extends NodeController {
       axisEvent.x = uiContext.vp2px(axisEvent.x)
       axisEvent.y = uiContext.vp2px(axisEvent.y)
     }
-    // 将轴事件派发至BuiderNode创建的FrameNode上，result记录派发是否成功
+    // 将轴事件派发至BuilderNode创建的FrameNode上，result记录派发是否成功
     let result = this.rootNode.postInputEvent(event);
     return result;
   }

@@ -24,7 +24,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | ---- | ------------- | ---- |
-| [OHIPCParcel](capi-ohipcparcel.md) | OHIPCParcel | IPC序列化对象。 |
+| [OHIPCParcel](capi-ohipcparcel-ohipcparcel.md)| OHIPCParcel | IPC序列化对象。 |
 | [OHIPCRemoteProxy](capi-ohipcparcel-ohipcremoteproxy.md) | OHIPCRemoteProxy | IPC远端代理对象。 |
 | [OHIPCRemoteStub](capi-ohipcparcel-ohipcremotestub.md) | OHIPCRemoteStub | IPC远端服务对象。 |
 
@@ -73,7 +73,7 @@
 ### OH_IPC_MemAllocator()
 
 ```C
-typedef void* (OH_IPC_MemAllocator)(int32_t len)
+typedef void* (*OH_IPC_MemAllocator)(int32_t len)
 ```
 
 **描述：**

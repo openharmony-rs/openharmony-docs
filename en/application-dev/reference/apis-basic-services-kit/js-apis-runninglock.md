@@ -167,7 +167,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND, (
     if (typeof err === 'undefined') {
         console.info('BACKGROUND lock support status: ' + data);
     } else {
-        console.log('check BACKGROUND lock support status failed, err: ' + err);
+        console.error('check BACKGROUND lock support status failed, err: ' + err);
     }
 });
 ```
@@ -202,7 +202,7 @@ runningLock.isRunningLockTypeSupported(runningLock.RunningLockType.BACKGROUND)
     console.info('BACKGROUND lock support status: ' + data);
 })
 .catch((err: Error) => {
-    console.log('check BACKGROUND lock support status failed, err: ' + err);
+    console.error('check BACKGROUND lock support status failed, err: ' + err);
 });
 ```
 
@@ -271,7 +271,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
     console.info('created running lock: ' + lock);
 })
 .catch((err: Error) => {
-    console.log('create running lock failed, err: ' + err);
+    console.error('create running lock failed, err: ' + err);
 });
 ```
 

@@ -1,9 +1,9 @@
 # Notification Kit<!--notification-api-->
 
 - ArkTS APIs<!--notification-arkts-->
-  - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)
+  - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)<!--Del-->
   - [@ohos.notificationManager (NotificationManager) (System API)](js-apis-notificationManager-sys.md)
-  - [@ohos.notificationSubscribe (NotificationSubscribe) (System API)](js-apis-notificationSubscribe-sys.md)
+  - [@ohos.notificationSubscribe (NotificationSubscribe) (System API)](js-apis-notificationSubscribe-sys.md)<!--DelEnd-->
   - Notification<!--notification-->
     - [NotificationActionButton](js-apis-inner-notification-notificationActionButton.md)
     - [NotificationCommonDef](js-apis-inner-notification-notificationCommonDef.md)

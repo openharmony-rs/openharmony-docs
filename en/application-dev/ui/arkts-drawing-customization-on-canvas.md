@@ -59,7 +59,7 @@ You can draw custom graphics on the canvas in any of the following ways:
     // Configure the parameters of the CanvasRenderingContext2D and OffscreenCanvasRenderingContext2D objects, including whether to enable anti-aliasing. The value true indicates that anti-aliasing is enabled.
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    // Create an OffscreenCanvas object. width indicates the width of the offscreen canvas, and height indicates the height of the offscreen canvas.
+    // Create an OffscreenCanvas object. width indicates the width of the offscreen canvas, and height indicates the height of the offscreen canvas. OffscreenCanvasRenderingContext2D handles offscreen graphics rendering.
     private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
    
     build() {
@@ -120,7 +120,7 @@ Canvas(this.context)
 
 After **onReady()** is invoked, you can use the **Canvas** component for drawing. Alternatively, you can separately define the **Path2d** object to build an ideal path without the **Canvas** component and **onReady()** lifecycle callback, and then use the **Canvas** component for drawing after **onReady()** is invoked.
 
-- After the **onReady()** callback of the **Canvas** component is invoked, use the **CanvasRenderingContext2D** and **OffscreenCanvasRenderingContext2D** objects to call related APIs for drawing.
+- Use the **CanvasRenderingContext2D** object to call related APIs for drawing.
 
   ```ts
   Canvas(this.context)
@@ -398,7 +398,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
 
 - Using the [setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange) API, available since API version 13
 
-   ```ts
+  ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
@@ -443,7 +443,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
                 if (this.timerId == -2) {
                   this.timerId = setInterval(() => {
                     this.drawRandomCircle()
-                  }, 50)
+                  }, 500)
                 }
               }
             })
@@ -453,7 +453,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -462,11 +462,11 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
     }
   }
   ```
-![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
+  ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
 
 - Using the [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) API, available since API version 17
 
-   ```ts
+  ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
@@ -509,7 +509,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
                   if (this.timerId == -2) {
                     this.timerId = setInterval(() => {
                       this.drawRandomCircle()
-                    }, 50)
+                    }, 500)
                   }
                 }
               })
@@ -518,7 +518,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -527,7 +527,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
     }
   }
   ```
-![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
+  ![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 
 ## Example Scenario
 

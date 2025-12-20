@@ -26,3 +26,5 @@ A struct that encapsulates the file change result under the sync root path. It i
 | bool isEof{false} | Whether the change is the last entry in the sync root path's change history. The value **true** means it is the last one; the value **false** means it is not.|
 | size_t bufferLength{0} | Number of elements in the change history array.|
 | [CloudDisk_ChangeData](capi-clouddisk-clouddisk-changedata.md) changeDatas[] | Change history array.|
+
+

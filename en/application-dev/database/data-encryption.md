@@ -77,7 +77,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## Encrypting an RDB Store 
+## Encrypting an RDB Store
 
 The **encrypt** property in [StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig) specifies whether to encrypt the RDB store. The value **true** means to encrypt the RDB store, and **false** means the opposite.
 

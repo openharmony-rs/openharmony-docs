@@ -6,11 +6,11 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-To enhance the capability of the state management framework to store global UI status variables of applications, you are advised to use AppStorageV2.
+To enhance the capability of the state management framework to share global UI state variables of applications, you are advised to use AppStorageV2.
 
 AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across abilities.
 
-Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [AppStorageV2 API reference](../../reference/apis-arkui/js-apis-StateManagement.md#appstoragev2).
+Before reading this topic, you are advised to read [\@ComponentV2](./arkts-new-componentV2.md), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and [AppStorageV2 API reference](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
 
 >**NOTE**
 >
@@ -49,7 +49,7 @@ AppStorageV2 supports state sharing among multiple UIAbility instances in the [m
 
 - **keys**: returns all keys in AppStorageV2.
 
-For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Management)](../../reference/apis-arkui/js-apis-StateManagement.md#appstoragev2).
+For details about the preceding APIs, see [@ohos.arkui.StateManagement (State Management)](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
 
 
 ## Constraints

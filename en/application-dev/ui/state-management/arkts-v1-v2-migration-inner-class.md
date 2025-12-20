@@ -4,7 +4,7 @@
 <!--Owner: @jiyujia926-->
 <!--Designer: @s10021109-->
 <!--Tester: @TerryTsao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This document explains how to migrate data object state variables from V1 to V2.
 | V1 Decorator               | V2 Decorator                 |

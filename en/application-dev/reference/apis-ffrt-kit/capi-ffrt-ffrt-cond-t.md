@@ -24,3 +24,4 @@ The **ffrt_cond_t** struct describes a condition variable.
 | Name| Description|
 | -- | -- |
 | uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a condition variable.|
+

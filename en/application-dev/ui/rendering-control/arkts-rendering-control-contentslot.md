@@ -27,16 +27,16 @@ abstract class Content {
 
 | Name| Description|
 | -------- | -------- |
-|OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, ArkUI_NodeContentCallback callback)|Registers an event with the **Content** manager.|
-|OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeContentEvent* event)|Obtains the type of the event triggered on the **Content**.|
-|OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)|Adds a child component to **Content**.|
-|OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)|Inserts a child component into **Content**.|
-|OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)|Removes a child component from **Content**.|
-|OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)|Obtains the pointer to **Content** in ArkTS from the native side.|
-|OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)|Obtains the **Content** object that triggers the attach and detach events.|
-|OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)|Sets the custom attributes on **Content**.|
-|OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)|Obtains the custom attributes from **Content**.|
-|typedef enum {<br>   NOTE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NOTE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} ArkUI_NodeContentEventType|Enumerates the event types on **Content**.|
+|[OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, ArkUI_NodeContentCallback callback)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_registercallback)|Registers an event with the **Content** manager.|
+|[OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeContentEvent* event)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontentevent_geteventtype)|Obtains the type of the event triggered on the **Content**.|
+|[OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_addnode)|Adds a child component to **Content**.|
+|[OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node, int32_t position)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_insertnode)|Inserts a child component into **Content**.|
+|[OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_NodeHandle node)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_removenode)|Removes a child component from **Content**.|
+|[OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, ArkUI_NodeContentHandle* content)](../../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodecontentfromnapivalue)|Obtains the pointer to **Content** in ArkTS from the native side.|
+|[OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontentevent_getnodecontenthandle)|Obtains the **Content** object that triggers the attach and detach events.|
+|[OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_setuserdata)|Sets the custom attributes on **Content**.|
+|[OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_getuserdata)|Obtains the custom attributes from **Content**.|
+|[typedef enum {<br>   NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} ArkUI_NodeContentEventType](../../reference/apis-arkui/capi-native-node-h.md#arkui_nodecontenteventtype)|Enumerates the event types on **Content**.|
 
 ## Development and Implementation
 
@@ -215,7 +215,7 @@ struct Parent {
 
   build() {
     Column() {
-      ContentSlot(this.nodeContent_1) // nodeContent_1 will be mounted to the next Contentslot node and cannot be displayed here.
+      ContentSlot(this.nodeContent_1) // nodeContent_1 will be mounted to the next ContentSlot node and cannot be displayed here.
       ContentSlot(this.nodeContent_1) // Content is displayed properly.
       ContentSlot(this.nodeContent_2) // Content is displayed properly.
     }

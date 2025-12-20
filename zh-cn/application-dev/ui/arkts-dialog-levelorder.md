@@ -83,13 +83,13 @@ struct Index {
 
   @Builder normalCustomDialog(index: number) {
     Column() {
-      Text("我是普通弹窗" + index).fontSize(30)
+      Text('我是普通弹窗' + index).fontSize(30)
     }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
   }
 
   @Builder topCustomDialog() {
     Column() {
-      Text("我是置顶弹窗").fontSize(30)
+      Text('我是置顶弹窗').fontSize(30)
       Row({ space: 50 }) {
         Button('点我打开普通弹窗')
           .onClick(() => {
@@ -100,7 +100,7 @@ struct Index {
               levelOrder: LevelOrder.clamp(0),
             })
               .catch((err: BusinessError) => {
-                console.error("openCustomDialog error: " + err.code + " " + err.message)
+                console.error('openCustomDialog error: ' + err.code + '' + err.message)
               })
             this.dialogIndex++
           })
@@ -120,7 +120,7 @@ struct Index {
               },
               levelOrder: LevelOrder.clamp(100000)
             }).catch((err: BusinessError) => {
-              console.error("openCustomDialog error: " + err.code + " " + err.message)
+              console.error('openCustomDialog error: ' + err.code + '' + err.message)
             })
           })
       }.width('100%')

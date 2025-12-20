@@ -74,7 +74,7 @@ and(): DataSharePredicates
 
 Creates a **DataSharePredicates** object to add the AND condition.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -84,7 +84,7 @@ Currently, both the RDB stote and KV store support this predicate.
 
 | Type                                       | Description                  |
 | ------------------------------------------- | ---------------------- |
-| [DataSharePredicates](#datasharepredicates) | **DataSharePredicates** object with the AND condition.|
+| [DataSharePredicates](#datasharepredicates) | **DataSharePredicates** object with the AND operator.|
 
 **Example**
 
@@ -101,7 +101,7 @@ orderByAsc(field: string): DataSharePredicates
 
 Creates a **DataSharePredicates** object that sorts records in ascending order.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -132,7 +132,7 @@ orderByDesc(field: string): DataSharePredicates
 
 Creates a **DataSharePredicates** object that sorts data in descending order.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -163,7 +163,7 @@ limit(total: number, offset: number): DataSharePredicates
 
 Creates a **DataSharePredicates** object to specify the number of records in the result and the start position.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -193,9 +193,9 @@ predicates.equalTo("NAME", "Rose").limit(10, 3);
 
 in(field: string, value: Array&lt;ValueType&gt;): DataSharePredicates
 
-Sets a **DataSharePredicates** object to match the data that is within the specified range.
+Creates a **DataSharePredicates** object to match the data that is within the specified range.
 
-Currently, both the RDB stote and KV store support this predicate.
+Currently, both the RDB store and KV store support this predicate.
 
 **System capability**: SystemCapability.DistributedDataManager.DataShare.Core
 

@@ -24,3 +24,5 @@ The **ffrt_mutex_t** struct describes an FFRT mutex.
 | Name| Description|
 | -- | -- |
 | uint32_t storage[(ffrt_mutex_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a mutex.|
+
+

@@ -8,6 +8,8 @@
 
 The **Web** component can be used to display web pages. It can be used with the [@ohos.web.webview](arkts-apis-webview.md) module, which provides APIs for web control.
 
+<!--RP1--><!--RP1End-->
+
 > **NOTE**
 >
 > - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
@@ -144,7 +146,9 @@ Example of using the **Web** component to specify the shared rendering process.
   }
   ```
 
-Example of loading the local web page using **$rawfile()**:
+Example of loading local web pages using **$rawfile()**:
+
+ 
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -163,7 +167,7 @@ Example of loading the local web page using **$rawfile()**:
   }
   ```
 
-Example of loading the local resource file through the resources protocol.
+Load the resource file through the resources protocol.
 
 When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead.
   ```ts

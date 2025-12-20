@@ -20,7 +20,9 @@ Models come in a multitude of formats, but currently, ArkGraphics 3D supports on
 
 A glTF model can contain key elements of a 3D scene, including the light, camera, and model. If a glTF model contains a camera, you can use the APIs provided by ArkGraphics 3D to load the glTF model to render the 3D scene in the camera view. If the model does not contain a camera, you can use the ArkGraphics 3D APIs to create a camera for rendering. Due to the large size, a 3D model is usually loaded in asynchronous mode. After a model is loaded, a scene object is returned, based on which you can edit the 3D scene.
 
-You can call the [load](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#load) API provided by **Scene** to load a glTF model. The sample code is as follows:
+The **load()** API of **Scene** is used to load glTF models. The API supports model files in .gltf and .glb formats, with .glb being a binary format that is content-equivalent to .gltf but more efficient for loading and usage. It provides two methods for loading models: relative path loading using $rawfile() to read built-in resource files from the **resources/rawfile/** directory of the application, and absolute path loading from the application sandbox directory. The API supports only accessing sandbox files created or written by the application itself. For specific examples, see [load()](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#load).
+
+The following example demonstrates loading a .glb model using a relative path:
 ```ts
 import { Scene } from '@kit.ArkGraphics3D';
 

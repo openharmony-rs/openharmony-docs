@@ -24,3 +24,5 @@ The **ffrt_task_attr_t** struct describes a concurrent task attribute.
 | Name| Description|
 | -- | -- |
 | uint32_t storage[(ffrt_task_attr_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Storage size of a task attribute.|
+
+
