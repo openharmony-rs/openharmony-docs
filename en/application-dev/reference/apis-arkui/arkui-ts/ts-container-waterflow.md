@@ -26,7 +26,7 @@ Subcomponents can be dynamically generated using rendering control types [if/els
 >  **NOTE**
 >
 >  When its **visibility** attribute is set to **None**, a **FlowItem** is not displayed in the container, but its **columnsGap**, **rowsGap**, and **margin** settings are still effective.
->  If there are a large number of child components, you are advised to use lazy loading, data caching, component reuse, fixed width and height, and layout optimization to improve performance and reduce memory usage. For details, see [Optimizing the Frame Loss Caused by Slow Waterfall Loading](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-waterflow-performance-optimization).
+>  If there are a large number of child components, you are advised to use lazy loading, data caching, component reuse, fixed width and height, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
 >
 > In vertical layout mode, WaterFlow calculates the accumulated height of child components in each column and places new child components in the column with the smallest accumulated height to keep the overall layout compact.
 >
