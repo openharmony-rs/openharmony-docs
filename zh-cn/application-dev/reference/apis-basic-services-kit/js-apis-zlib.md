@@ -25,7 +25,7 @@ zipFile(inFile: string, outFile: string, options: Options): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.compressFile](#zlibcompressfile9)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.compressFile](#zlibcompressfile9)替代。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -72,7 +72,7 @@ unzipFile(inFile:string, outFile:string, options: Options): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.decompressFile](#zlibdecompressfile9)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.decompressFile](#zlibdecompressfile9)替代。
 >
 > 传入的压缩包内部文件或者文件夹名称不能包含“../”，否则会返回-1错误码。
 
@@ -3825,10 +3825,8 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 ## ErrorCode<sup>(deprecated)<sup>
 
 > **说明：**
-> 
-> 本模块首批接口从API version 7 开始支持。
-> 
-> 从API Version 9开始，该模块不再维护。
+>  
+> 从API version 7开始支持，从API version 9开始废弃，暂无替代接口。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 

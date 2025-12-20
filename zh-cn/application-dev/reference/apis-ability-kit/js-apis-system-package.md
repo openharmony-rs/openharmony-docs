@@ -17,13 +17,16 @@
 ## 导入模块
 
 
-```
+```ts
 import Package from '@system.package';
 ```
 
 
 ## package.hasInstalled<sup>(deprecated)</sup>
-> 从API version 9开始不再维护，推荐使用该模块[@ohos.bundle.bundleManager](js-apis-bundleManager.md)。
+
+> **说明：**
+>
+> 从API version 3开始支持，从API version 9开始废弃，建议使用[getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)替代。
 
 hasInstalled(options: CheckPackageHasInstalledOptions): void
 
@@ -63,7 +66,9 @@ struct MainPage {
 
 ## CheckPackageHasInstalledResponse
 
-> 从API version 9开始不再维护。
+> **说明：**
+>
+> 从API version 3开始支持，从API version 9开始废弃。
 
 指示应用包是否已安装。
 
@@ -75,7 +80,9 @@ struct MainPage {
 
 ## CheckPackageHasInstalledOptions
 
-> 从API version 9开始不再维护。
+> **说明：**
+>
+> 从API version 3开始支持，从API version 9开始废弃。
 
 查询包是否已安装时的选项。
 
