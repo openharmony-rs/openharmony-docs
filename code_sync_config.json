@@ -19667,7 +19667,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template1/Index.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":34,
 						"name":"rotation",
 						"start_line":17
 					}
@@ -19677,7 +19677,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/rotation/template2/Index.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":53,
 						"name":"rotation_page",
 						"start_line":15
 					}
