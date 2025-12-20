@@ -476,7 +476,7 @@ closeFormEditAbility(isMainPage?: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md#801-该设备不支持此api)和[卡片错误码](errorcode-form.md)。
 
 | 错误码ID    | 错误信息 |
 |----------| -------- |
@@ -486,7 +486,7 @@ closeFormEditAbility(isMainPage?: boolean): void
 **示例：**
 
 ```ts
-import { router } from '@kit.ArkUI';
+import { formProvider } from '@kit.FormKit';
 
 const TAG: string = 'FormEditDemo-Page] -->';
 
@@ -496,7 +496,7 @@ struct Page {
   @State message: string = 'Hello World';
 
   aboutToAppear(): void {
-    console.log(`${TAG} aboutToAppear.....`);
+    console.info(`${TAG} aboutToAppear.....`);
   }
 
   build() {
@@ -510,7 +510,7 @@ struct Page {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          console.log(`${TAG} onClick.....`);
+          console.info(`${TAG} onClick.....`);
           formProvider.closeFormEditAbility();
         })
     }

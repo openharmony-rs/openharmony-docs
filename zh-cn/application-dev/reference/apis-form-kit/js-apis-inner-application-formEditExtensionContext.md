@@ -86,9 +86,9 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
 
 ### startUIAbility<sup>23+<sup>
 
-startUIAbility(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>
+startUIAbility(want: Want): Promise&lt;void&gt;
 
-拉起应用自身的UIAbility。
+拉起应用自身的UIAbility。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -98,12 +98,13 @@ startUIAbility(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis-
 
   | 参数名 | 类型    | 必填 | 说明                                   |
   | ------ | ------ | ---- | ------------------------------------- |
-  | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 应用自身UIAbility的ability信息。|
+  | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md#want)  | 是   | 应用自身UIAbility的ability信息。|
 
 **返回值：**
+
   | 类型 | 说明    |
   | ------ | ------ |
-  | Promise<[void](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise对象，返回void。  |
+  | Promise&lt;void&gt;   |  Promise对象，返回void。  |
 
 **错误码：**
 
@@ -111,11 +112,10 @@ startUIAbility(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis-
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Target ability is not UI ability.                 |
 | 16500050 | An IPC connection error happened.                            |
 | 16500100 | Failed to obtain the configuration information.                        |
 | 16000130 | The target UIAbility does not belong to the caller.                       |
-| 16501014 | The form edit page is not in the foreground. The current operation is not supported.                       |
+| 16501014 | The form edit page is not in the foreground. The current operation is not supported. |
 | 16000121 | The target component type is not a UIAbility.                       |
 
 **示例：**
