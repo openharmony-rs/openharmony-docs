@@ -472,7 +472,7 @@ closeFormEditAbility(isMainPage?: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                                 |
 | ------ | ------ |----|----------------------------------------------------|
-| isMainPage | boolean | 否  | 是否为主编辑页，true表示是主编辑页，false表示不是主编辑页。<br/>默认值：true。 |
+| isMainPage | boolean | 否  | 是否关闭一级卡片编辑页，true表示关闭一级编辑页，false表示关闭非一级编辑页。<br/>默认值：true。 |
 
 **错误码：**
 
