@@ -38,6 +38,7 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
   | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 第三方应用需要被桌面拉起的编辑页面信息。|
 
 **返回值：**
+
   | 类型 | 说明    |
   | ------ | ------ |
   | Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise对象，返回AbilityResult。  |
