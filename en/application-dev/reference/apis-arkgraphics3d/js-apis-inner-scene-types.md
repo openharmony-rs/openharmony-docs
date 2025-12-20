@@ -195,6 +195,17 @@ For example, with radius=0.5, height=1, and segmentCount=20, the mesh and UV lay
 
 ![cylinder](figures/cylinder.png)
 
+## Mat4x4<sup>23+</sup>
+A camera matrix, which is a mathematical tool for transforming 3D world coordinates into 2D image coordinates.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+| Name| Type| Read Only| Optional| Description|
+| ---- | ---- | ---- | ---- | ---- |
+| x | [Vec4](#vec4) | No| No| The first column of the matrix, represented as a four-dimensional vector.|
+| y | [Vec4](#vec4) | No| No| The second column of the matrix, represented as a four-dimensional vector.|
+| z | [Vec4](#vec4) | No| No| The third column of the matrix, represented as a four-dimensional vector.|
+| w | [Vec4](#vec4) | No| No| The fourth column of the matrix, represented as a four-dimensional vector.|
+
 ## Position3
 type Position3 = Vec3
 
