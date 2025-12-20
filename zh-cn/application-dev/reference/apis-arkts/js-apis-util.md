@@ -236,7 +236,7 @@ cb('hello world', (err : Object, ret : string) => {
 
 promisify(original: (err: Object, value: Object) =&gt; void): Function
 
-处理异步函数并返回一个Promise函数。
+接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -466,7 +466,7 @@ console.info("result = " + result);
 
 promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
-处理异步函数并返回promise函数。
+接收一个采用“错误优先”回调模式的函数，即以`(err, value) => callback`作为最后一个参数，并返回其Promise函数。
 
 > **说明：**
 >
@@ -5887,7 +5887,7 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.[Symbol.iterator]<sup>9+</sup>](#symboliterator9)替代。
 
 **系统能力：** SystemCapability.Utils.Lang
 

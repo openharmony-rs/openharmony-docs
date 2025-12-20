@@ -58,7 +58,6 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
    ```ts
    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { common } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
  
    let dmClass: distributedDeviceManager.DeviceManager;
@@ -97,7 +96,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
      createSession(): void {
        // 定义peer信息
        const peerInfo: abilityConnectionManager.PeerInfo = {
-         deviceId: "sinkDeviceId",
+         deviceId: getRemoteDeviceId()!,
          bundleName: 'com.example.remotephotodemo',
          moduleName: 'entry',
          abilityName: 'EntryAbility',

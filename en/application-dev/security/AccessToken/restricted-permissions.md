@@ -490,7 +490,7 @@ With this permission, the application can call APIs to perform virtual screen ma
 
 **Authorization mode**: system_grant
 
-**Since**: 18
+**Since**: 16
 
 ## ohos.permission.MANAGE_APN_SETTING
 

@@ -16,7 +16,7 @@
 
 onAxisEvent(event: Callback\<AxisEvent>): T
 
-鼠标滚轮滚动或触控板双指滑动时触发该回调。
+鼠标滚轮滚动或触控板双指轻触滑动、双指捏合时触发该回调。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 

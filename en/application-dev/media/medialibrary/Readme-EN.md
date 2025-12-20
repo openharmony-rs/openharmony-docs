@@ -1,4 +1,4 @@
-# Media Library Kit (Media File Management Service)
+# Media Library Kit
 
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->

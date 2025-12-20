@@ -26,10 +26,10 @@ The specified bundle name does not exist.
 **Solution**<br>
 1. Check whether the spelling of the bundle name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check the command output. If the bundle is not installed, an error is reported.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700002 Module Name Does Not Exist
 
@@ -46,10 +46,10 @@ The specified module name does not exist.
 **Solution**<br>
 1. Check whether the spelling of the module name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether the module name exists in the list of the **hapModuleNames** field in the output. If not, the module is not installed.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700003 Ability Name Does Not Exist
 
@@ -62,14 +62,16 @@ The specified ability name does not exist.
 **Possible Causes**<br>
 1. The ability name is misspelled.
 2. The application does not have the ability specified by **abilityName**.
+3. When [bundleManager.getProfileByAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyability) or [bundleManager.getProfileByExtensionAbility](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetprofilebyextensionability) is used for query based on a combination of ability name and module name, the application does not have the module specified by **moduleName** or the specified ability under that module.
 
 **Solution**<br>
 1. Check whether the spelling of the ability name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether **abilityInfos** under the **hapModuleInfos** field in the output contains an entry where the name equals this ability name. If no such entry is found, the ability name does not exist.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+3. Run the [dump command](../../tools/bm-tool.md#dump), and check the **hapModuleNames** field in the output. If the specified module name is not in the list, the application has not installed the module, and the ability under that module also does not exist.
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700004 User ID Does Not Exist
 
@@ -233,10 +235,10 @@ The version number is earlier than the version in use.
 Ensure that the version of the bundle to install is not earlier than the version in use.
 
 1. To query the version of an existing application, run [the dump command](../../dfx/hdc.md#environment-setup). The output contains the version code of the installed application. If multiple version codes are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
-```
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell "bm dump -n com.xxx.demo |grep versionCode"
-```
+    ```shell
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell "bm dump -n com.xxx.demo |grep versionCode"
+    ```
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
@@ -285,7 +287,7 @@ The application corresponding to the UID does not exist.
 
 **Solution**<br>
 Check whether the UID exists in the system. Run the [dump command](../../tools/bm-tool.md#dump), and check the UID of the installed application. If multiple UIDs are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
-```
+```shell
 # Replace **com.xxx.demo** with the actual bundle name.
 hdc shell "bm dump -n com.xxx.demo |grep uid"
 ```
@@ -933,7 +935,7 @@ An AppClone instance cannot be created for an application that is not in appClon
 The multi-app mode is set to another mode other than appClone.
 
 **Solution**<br>
-1. Check whether the application to update supports clones.
+1. Check whether the application to update supports clones.<!--DelEnd-->
 
 ## 17700070 Invalid Shortcut ID
 
@@ -949,6 +951,7 @@ A shortcut with the same bundle name, clone index, user ID, and shortcut ID alre
 **Solution**<br>
 1. Check whether the bundle name and shortcut ID are correct.
 
+<!--Del-->
 ## 17700071 Enterprise Applications Cannot Be Installed
 **Error Message**<br>
 It is not allowed to install the enterprise bundle.
@@ -1201,7 +1204,7 @@ The **pluginDistributionIDs** in the signing certificate profile does not confor
 
 **Solution**<br>
 Reconfigure the **app-services-capabilities** field in the [profile](../../security/app-provision-structure.md) as follows:
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1223,7 +1226,7 @@ The **pluginDistributionIDs** between the plugin and the application do not shar
 
 **Solution**<br>
 Reconfigure the **pluginDistributionIDs** field in the [profile](../../security/app-provision-structure.md) as follows:
-```
+```json
 "app-services-capabilities":{
     "ohos.permission.kernel.SUPPORT_PLUGIN":{
         "pluginDistributionIDs":"value-1,value-2,···"
@@ -1282,7 +1285,7 @@ The system throws an uncaught error code, such as IPC failure or file copy failu
 
 2. If the request still fails after the preceding steps are performed for three to five times, check whether a crash file containing **foundation** exists in the **/data/log/faultlog/faultlogger/** directory of the device.
 
-    ```
+    ```shell
     hdc shell
     cd /data/log/faultlog/faultlogger/
     ls -ls
@@ -1290,7 +1293,7 @@ The system throws an uncaught error code, such as IPC failure or file copy failu
 
 3. Export the crash file and log file and submit them to [online tickets](https://developer.huawei.com/consumer/en/support/feedback/#/) for help.
 
-    ```
+    ```shell
     hdc file recv /data/log/faultlog/faultlogger/
     hdc file recv /data/log/hilog/
     ```

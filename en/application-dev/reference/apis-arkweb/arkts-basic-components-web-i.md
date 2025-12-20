@@ -649,7 +649,7 @@ Represents input parameters of the callback used to intercept the soft keyboard 
 | Name            | Type  | Read-Only  | Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | controller | [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)  | No| No| Controller used to control the input, deletion, and closure of the custom keyboard.|
-| attributes | Record<string, string> | No| No| Attribute of the web page element that triggers the display of the soft keyboard.
+| attributes | Record<string, string> | No| No| Attribute of the web page element that triggers the display of the soft keyboard.|
 
 ## WebKeyboardOptions<sup>12+</sup>
 
@@ -661,7 +661,7 @@ Represents the return value of the callback that intercepts the soft keyboard st
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | No| No| Whether to use the system's default soft keyboard.<br>The value **true** means to use the system's default soft keyboard, and **false** means the opposite.<br>Default value: **true**.|
 | enterKeyType | number | No| Yes| Type of the **Enter** key on the system soft keyboard. For details about the value range, see [EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10). This parameter is optional and the default value is **UNSPECIFIED**. This parameter is valid only when **useSystemKeyboard** is set to **true** and **enterKeyType** is set to a valid value.|
-| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| Yes| Builder of a custom keyboard. This parameter is required when **useSystemKeyboard** is set to **false**. After it is set, the **Web** component starts the custom keyboard as configured.
+| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| Yes| Builder of a custom keyboard. This parameter is required when **useSystemKeyboard** is set to **false**. After it is set, the **Web** component starts the custom keyboard as configured.|
 
 
 ## FirstMeaningfulPaint<sup>12+</sup>

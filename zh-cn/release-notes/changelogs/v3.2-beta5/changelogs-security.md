@@ -16,7 +16,7 @@ setSeed(seed : DataBlob) : void;
 
 **适配指导**
 查看API参考中setSeed对应的接口适配指南：
-[加解密算法库框架-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cryptoFramework.md)
+[加解密算法库框架-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cryptoFramework.md)
 
 
 ## cl.security.2 interface DataArray 从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -32,7 +32,7 @@ interface DataArray从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.securit
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.3 interface EncodingFormat从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -48,7 +48,7 @@ interface EncodingFormat从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.se
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.4 interface EncodingBlob 从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -64,7 +64,7 @@ interface EncodingBlob 从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.sec
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.5 interface CertChainData从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -80,7 +80,7 @@ interface CertChainData从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.sec
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.6 interface X509Cert从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -96,7 +96,7 @@ interface X509Cert从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.7 function createX509Cert从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -112,7 +112,7 @@ function createX509Cert从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.sec
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.8 interface X509CrlEntry从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -128,7 +128,7 @@ interface X509CrlEntry从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.secu
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.9 interface X509Crl从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -144,7 +144,7 @@ interface X509Crl从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.10 function createX509Crl从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -160,7 +160,7 @@ function createX509Crl从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.secu
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.11 interface CertChainValidator从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -176,7 +176,7 @@ interface CertChainValidator从@ohos.security.cryptoFramework.d.ts 迁移至@oho
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.12 function createCertChainValidator从@ohos.security.cryptoFramework.d.ts 迁移至@ohos.security.cert.d.ts
@@ -192,7 +192,7 @@ function createCertChainValidator从@ohos.security.cryptoFramework.d.ts 迁移�
 重新import并使用对应的.d.ts文件：
 import cryptoCert from '@ohos.security.cert';
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.13 X509Cert 的getPublicKey功能变更，由异步接口改为同步接口
@@ -210,7 +210,7 @@ getPublicKey() : cryptoFramework.PubKey;
 
 **适配指导**
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.14 X509Cert 的checkValidityWithDate功能变更，由异步接口改为同步接口
@@ -228,7 +228,7 @@ checkValidityWithDate(date: string) : void;
 
 **适配指导**
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.15 X509CrlEntry 的getCertIssuer功能变更，由异步接口改为同步接口
@@ -247,7 +247,7 @@ getCertIssuer() : DataBlob;
 
 **适配指导**
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.16 X509CrlEntry 的getRevocationDate功能变更，由异步接口改为同步接口
@@ -266,7 +266,7 @@ getRevocationDate() : string;
 
 **适配指导**
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.17 X509Crl 的isRevoked功能变更，由异步接口改为同步接口
@@ -285,7 +285,7 @@ isRevoked(cert : X509Cert) : boolean;
 
 **适配指导**
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.18 X509Crl 的getRevokedCert功能变更，由异步接口改为同步接口
@@ -304,7 +304,7 @@ getRevokedCert(serialNumber : number) : X509CrlEntry;
 
 **适配指导**
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.19 X509Crl 的getRevokedCertWithCert功能变更，由异步接口改为同步接口
@@ -323,7 +323,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry;
 
 **适配指导**
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 
 ## cl.security.20 X509Crl 的getTbsInfo功能变更，由异步接口改为同步接口
@@ -342,7 +342,7 @@ getTbsInfo() : DataBlob;
 
 **适配指导**
 查看API参考中对应的接口适配指南：
-[证书-API参考](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
+[证书-API参考](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-cert.md)
 
 ## cl.security.21 HUKS支持No-Hash的签名模式
 

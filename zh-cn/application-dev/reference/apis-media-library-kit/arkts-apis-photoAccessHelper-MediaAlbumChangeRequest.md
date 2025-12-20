@@ -72,7 +72,9 @@ getAlbum(): Album
 
 获取当前相册变更请求中的相册。
 
-**注意**：对于创建相册的变更请求，在调用[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)提交生效之前，该接口返回null。
+> **注意：**
+>
+> 对于创建相册的变更请求，在调用接口[applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11)的提交生效之前，该接口会返回null。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 

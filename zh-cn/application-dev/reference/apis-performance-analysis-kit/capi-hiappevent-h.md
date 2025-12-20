@@ -1077,7 +1077,7 @@ int OH_HiAppEvent_SetReportEvent(HiAppEvent_Processor* processor, const char* do
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md)* processor | 指向处理者的指针（即OH_HiAppEvent_CreateProcessor接口返回的指针）。 |
 | const char* domain | 上报事件的领域。 |
 | const char* name | 上报事件的名称。 |
-| bool isRealTime | 是否实时上报。 |
+| bool isRealTime | 是否实时上报。配置为true表示实时上报，false表示不实时上报 |
 
 **返回：**
 

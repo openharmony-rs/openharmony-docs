@@ -1,7 +1,7 @@
 # native_interface_focus.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -56,7 +56,7 @@ enum ArkUI_KeyProcessingMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_KEY_PROCESSING_MODE_FOCUS_NAVIGATION = 0 | 按键事件用于移动焦点。 |
-| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT | 按键事件向上传递给祖先组件。 |
+| ARKUI_KEY_PROCESSING_MODE_FOCUS_ANCESTOR_EVENT = 1 | 按键事件向上传递给祖先组件。 |
 
 
 ## 函数说明

@@ -64,9 +64,9 @@ HiDebug can obtain the GPU memory information of an application. In graphics-int
 
 ### APIs (C/C++)
 
-| Name| Description                                            |
+| Name| Description  |
 | -------- | -------- |
-| OH_HiDebug_GetGraphicsMemory | Obtains the GPU memory size of an application.                   |
+| OH_HiDebug_GetGraphicsMemory | Obtains the GPU memory size of an application.|
 
 ## Obtaining CPU Usage
 

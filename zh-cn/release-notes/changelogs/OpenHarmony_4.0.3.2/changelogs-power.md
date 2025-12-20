@@ -62,7 +62,7 @@
 
 ## cl.powermgr.3 系统公共事件行为变更
 
-电量信息通过[@ohos.commonEventManager (公共事件模块)](https://gitee.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-commonEventManager.md)提供了如下几种系统公共事件:
+电量信息通过[@ohos.commonEventManager (公共事件模块)](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/reference/apis/js-apis-commonEventManager.md)提供了如下几种系统公共事件:
 
 - COMMON_EVENT_BATTERY_LOW，表示电池电量低的的公共事件的动作，包含剩余电池电量百分比信息；
 - COMMON_EVENT_BATTERY_OKAY，表示电池电量正常的公共事件的动作，包含剩余电池电量百分比信息；

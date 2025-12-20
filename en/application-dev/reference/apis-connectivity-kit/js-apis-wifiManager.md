@@ -628,7 +628,7 @@ Adds the candidate network configuration. This API uses a promise to return the 
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. The value of **bssidType** is a random device address by default.|
+| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. If **bssidType** is left unspecified, its value is a random device address by default.|
 
 **Return value**
 
@@ -683,7 +683,7 @@ Adds the configuration of a candidate network. This API uses an asynchronous cal
 
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. The value of **bssidType** is random device address by default.|
+| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. If **bssidType** is left unspecified, its value is a random device address by default.|
 | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If **err** is **0**, the operation is successful. **data** indicates the ID of the network configuration to add. If **data** is **-1**, the network configuration fails to be added.<br> If the value of **err** is not **0**, an error has occurred during the operation.|
 
 **Error codes**
@@ -1203,7 +1203,7 @@ Obtains the WLAN signal level.
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | rssi | number | Yes| RSSI of the hotspot, in dBm.|
-  | band | number | Yes| Frequency band of the WLAN AP. The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
+  | band | number | Yes| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
 
 **Return value**
 
@@ -1645,7 +1645,7 @@ Represents IPv4 information.
 
 | **Name**| **Type**| **Read-only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | number | No| No| IP address. The **ipAddress** value is of the number type and needs to be converted to the common IP address format. For details, see [IP Address Format Conversion](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-connectivity-4).|
+| ipAddress | number | No| No| IP address. The **ipAddress** value is of the number type and needs to be converted to the common IP address format. For details, see [IP Address Format Conversion](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4).|
 | gateway | number | No| No| Gateway.|
 | netmask | number | No| No| Subnet mask.|
 | primaryDns | number | No| No| IP address of the preferred DNS server.|
@@ -1779,7 +1779,6 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | **ID**| **Error Message**|
 | -------- | -------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2695,7 +2694,7 @@ Subscribes to WLAN connection state changes. When the service exits, call off(ty
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN connection state.|
+  | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN State.|
 
 **WLAN connection states**
 
@@ -3090,7 +3089,7 @@ Subscribes to P2P connection state changes. When the service exits, call off(typ
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | Yes| Callback used to return the P2P connection state change.|
 
 **Error codes**
 
@@ -3163,7 +3162,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | Yes| Callback used to return the P2P device state change.|
 
 **Error codes**
 
@@ -3234,7 +3233,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | Yes| Callback used to return the WLAN state. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | Yes| Callback used to return the P2P peer device state changes. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
@@ -3303,7 +3302,7 @@ Subscribes to P2P persistent group changes. When the service exits, call off(typ
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-  | callback | Callback&lt;void&gt; | Yes| Callback used to return the WLAN state.|
+  | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group change.|
 
 **Error codes**
 
@@ -3374,7 +3373,7 @@ Subscribes to P2P device discovery changes. When the service exits, call off(typ
   | **Name**| **Type**| **Mandatory**| **Description**|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
-  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery change.|
+  | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery changes.|
 
 **P2P discovered device states**
 

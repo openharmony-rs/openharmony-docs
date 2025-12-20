@@ -10,9 +10,9 @@
 
 ### `JSVM_Status`
 
-    这是一个枚举数据类型，用来表示 JSVM-API 接口返回的状态信息。
+这是一个枚举数据类型，用来表示JSVM-API接口返回的状态信息。
 
-    每调用一次 JSVM-API 函数，都会返回一个值，用来表示操作成功与否的相关信息。
+每调用一次JSVM-API函数，都会返回一个值，用来表示操作成功与否的相关信息。
 
 ```c++
     typedef enum {
@@ -396,7 +396,9 @@ typedef JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg;
 
 JSVM 提供了多种配置选项，允许开发者在执行 `OH_JSVM_Init` 时灵活配置其行为。可以通过 `OH_JSVM_GetVMInfo` 接口获取当前 JSVM 版本所对应的 V8 引擎版本。JSVM 中可支持的选项范围与对应的 V8 引擎版本可支持的选项范围保持一致。`OH_JSVM_GetVMInfo` 接口的使用参考[使用JSVM-API接口获取JSVM API的版本号](use-jsvm-about-version.md)。
 
-**注意：** 建议开发者在没有特殊需求的情况下，仅使用 JSVM 内部的默认配置选项。
+> **注意：**
+>
+> - 建议开发者在没有特殊需求的情况下，仅使用JSVM内部的默认配置选项。
 
 场景示例：
 常规模式下初始化 VM 平台。

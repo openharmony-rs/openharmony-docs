@@ -42,7 +42,7 @@ get size(): Size
 
 | 类型          | 说明                                       |
 | ----------- | ---------------------------------------- |
-| [Size](#size) | DrawingRenderingContext的尺寸信息。 |
+| [Size](#size-1) | DrawingRenderingContext的尺寸信息。 |
 
 ## canvas
 

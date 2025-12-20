@@ -1,7 +1,7 @@
 # drag_and_drop.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -136,8 +136,8 @@ enum ArkUI_DragResult
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_DRAG_RESULT_SUCCESSFUL = 0 | 拖拽处理成功。 |
-| ARKUI_DRAG_RESULT_FAILED | 拖拽处理失败。 |
-| ARKUI_DRAG_RESULT_CANCELED | 拖拽处理取消。 |
+| ARKUI_DRAG_RESULT_FAILED = 1 | 拖拽处理失败。 |
+| ARKUI_DRAG_RESULT_CANCELED = 2 | 拖拽处理取消。 |
 
 ### ArkUI_DropOperation
 
@@ -155,7 +155,7 @@ enum ArkUI_DropOperation
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_DROP_OPERATION_COPY = 0 | 复制行为。 |
-| ARKUI_DROP_OPERATION_MOVE | 剪切行为。 |
+| ARKUI_DROP_OPERATION_MOVE = 1 | 剪切行为。 |
 
 ### ArkUI_PreDragStatus
 
@@ -173,13 +173,13 @@ enum ArkUI_PreDragStatus
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_PRE_DRAG_STATUS_UNKNOWN = -1 | Unknown。 |
-| ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING | 拖拽手势启动阶段。 |
-| ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG | 拖拽准备完成，可发起拖拽阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED | 拖拽浮起动效发起阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED | 拖拽浮起动效结束阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED | 拖拽落回动效发起阶段。 |
-| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED | 拖拽落回动效结束阶段。 |
-| ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG | 拖拽浮起落位动效中断。 |
+| ARKUI_PRE_DRAG_STATUS_ACTION_DETECTING = 0 | 拖拽手势启动阶段。 |
+| ARKUI_PRE_DRAG_STATUS_READY_TO_TRIGGER_DRAG = 1 | 拖拽准备完成，可发起拖拽阶段。 |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_STARTED = 2 | 拖拽浮起动效发起阶段。 |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LIFT_FINISHED = 3 | 拖拽浮起动效结束阶段。 |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_STARTED = 4 | 拖拽落回动效发起阶段。 |
+| ARKUI_PRE_DRAG_STATUS_PREVIEW_LANDING_FINISHED = 5 | 拖拽落回动效结束阶段。 |
+| ARKUI_PRE_DRAG_STATUS_CANCELED_BEFORE_DRAG = 6 | 拖拽浮起落位动效中断。 |
 
 ### ArkUI_DragPreviewScaleMode
 
@@ -197,7 +197,7 @@ enum ArkUI_DragPreviewScaleMode
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_DRAG_PREVIEW_SCALE_AUTO = 0 | 系统根据拖拽场景自动改变跟手点位置，根据规则自动对拖拽背板图进行缩放变换等。 |
-| ARKUI_DRAG_PREVIEW_SCALE_DISABLED | 禁用系统对拖拽背板图的缩放行为。 |
+| ARKUI_DRAG_PREVIEW_SCALE_DISABLED = 1 | 禁用系统对拖拽背板图的缩放行为。 |
 
 ### ArkUI_DragStatus
 
@@ -215,8 +215,8 @@ enum ArkUI_DragStatus
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_DRAG_STATUS_UNKNOWN = -1 | 未知的拖拽状态。 |
-| ARKUI_DRAG_STATUS_STARTED | 拖拽开始。 |
-| ARKUI_DRAG_STATUS_ENDED | 拖拽结束。 |
+| ARKUI_DRAG_STATUS_STARTED = 0 | 拖拽开始。 |
+| ARKUI_DRAG_STATUS_ENDED = 1 | 拖拽结束。 |
 
 
 ## 函数说明

@@ -20,7 +20,6 @@
 | -------- | -------- |
 | THREAD_BLOCK_6S | 应用主线程卡死超时 |
 | APP_INPUT_BLOCK | 用户输入响应超时 |
-| LIFECYCLE_TIMEOUT | Ability生命周期切换超时 |
 
 当应用发生上述故障时，为了保证可恢复，会杀死应用。并上报应用冻屏事件，可通过HiAppEvent订阅[应用冻屏事件](hiappevent-watcher-freeze-events.md)。
 
@@ -47,27 +46,6 @@
 **图2**
 
 ![app_input_block](figures/app_input_block.png)
-
-### 生命周期切换超时
-
-**概述**：生命周期切换超时分为[UIAbility生命周期](../application-models/uiability-lifecycle.md)切换超时和[PageAbility生命周期](../application-models/pageability-lifecycle.md)切换超时。
-
-该故障发生在生命周期切换过程中，影响应用内Ability的切换或者不同PageAbility之间的切换。
-
-**检测原理**：foundation的AMS服务向应用进程发送生命周期切换指令，随后等待应用返回结果，固定时间内未成功移除任务将上报故障。
-
-生命周期切换超时由LIFECYCLE_HALF_TIMEOUT和LIFECYCLE_TIMEOUT两个事件组合而成。LIFECYCLE_HALF_TIMEOUT作为LIFECYCLE_TIMEOUT的告警事件，抓取binder等信息。
-
-**图3**
-
-![lifecycle_timeout](figures/lifecycle_timeout.png)
-
-不同的生命周期超时，对应的超时时间各不相同。具体如下表所示：
-
-| 生命周期 | 超时时间 |
-| -------- | -------- |
-| Load | 10s |
-| Foreground | 5s |
 
 ## 日志获取
 
@@ -197,8 +175,69 @@ mainHandler dump is:
 | PROCESS_NAME | 应用进程名。 |
 | MSG | 发生故障时间及EventHandler信息。 |
 | task name | 任务队列中的任务名。 |
+
+EventHandler信息，具体解释如下：
+
+dump信息组成结构：
+
+| 主要信息字段 | 说明 |
+| -------- | -------- |
+| EventHandler dump begin curTime | 获取dump信息时间。 |
+| Event runner | EventHandler对应的线程名和线程号。 |
+| Current Running | 当前正在执行的完整任务信息。 |
+| History event queue information | 历史执行任务信息。 |
+| VIP priority event queue information | VIP级任务队列信息。 |
+| Immediate priority event queue information | 立即执行任务队列信息。 |
+| High priority event queue information | 高优先级任务队列信息。 |
+| Low priority event queue information | 低优先级任务队列信息。 |
+| Idle priority event queue information | 挂起任务队列信息。 |
+
+任务组成部分：
+
+| 主要信息字段 | 说明 |
+| -------- | -------- |
+| send thread | 提交任务线程号。 |
+| send time | 提交任务时间。 |
+| task name | 任务队列中的任务名。 |
+| priority | 任务优先级。 |
+| caller | 任务提交方法。 |
+| handle time | 任务预期执行时间。与实际的任务执行时间（trigger time）可能存在偏差 |
 | trigger time | 任务执行时间。 |
 | completeTime time | 任务执行完成时间（如果没有打印则表示该任务未执行完成）。 |
+EventHandler信息，具体解释如下：
+
+dump信息组成结构：
+
+| 主要信息字段 | 说明 |
+| -------- | -------- |
+| EventHandler dump begin curTime | 获取dump信息时间。 |
+| Event runner | EventHandler对应的线程名和线程号。 |
+| Current Running | 当前正在执行的完整任务信息。 |
+| History event queue information | 历史执行任务信息。 |
+| VIP priority event queue information | VIP级任务队列信息。 |
+| Immediate priority event queue information | 立即执行任务队列信息。 |
+| High priority event queue information | 高优先级任务队列信息。 |
+| Low priority event queue information | 低优先级任务队列信息。 |
+| Idle priority event queue information | 挂起任务队列信息。 |
+
+任务组成部分：
+
+| 主要信息字段 | 说明 |
+| -------- | -------- |
+| send thread | 提交任务线程号。 |
+| send time | 提交任务时间。 |
+| task name | 任务队列中的任务名。 |
+| priority | 任务优先级。 |
+| caller | 任务提交方法。 |
+| handle time | 任务预期执行时间。与实际的任务执行时间（trigger time）可能存在偏差 |
+| trigger time | 任务执行时间。 |
+| completeTime time | 任务执行完成时间（如果没有打印则表示该任务未执行完成）。 |
+
+> **说明：**
+>
+> EventHandler信息中，开发者只需重点关注EventHandler dump begin curTime，trigger time和completeTime time时间即可。
+>
+> EventHandler信息详细指导可参考：[查看eventHandler信息](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-freeze-way#section190014865618)
 
 ### 堆栈信息
 
@@ -267,7 +306,7 @@ pid context     request started max ready   free_async_space
 
 进程间通信调用信息解释如下：
 
-| | |
+| 主要信息字段 | 说明 |
 | -------- | -------- |
 | xxx:xxx to xxx:xxx | 客户端进程号、线程号 to 服务端进程号、线程号。其中async表示异步，无async表示同步。 |
 | code | 客户端和服务端达成一致约束的业务码。 |
@@ -325,7 +364,7 @@ Details of Processes:
     1685       0.53%           0.31%          0.22%          879838               59636            foundation     
 ```
 
-| | |
+| 主要信息字段 | 说明 |
 | -------- | -------- |
 | PID | 进程PID。 |
 | Total Usage | CPU使用率，Total Usage = User Space+Kernel Space。 |
@@ -347,90 +386,3 @@ ReclaimAvailBuffer:                    4676608 kB
 ```
 
 整机内存信息如上所示，其中ReclaimAvailBuffer为整机剩余可用内存，主要用于确认是否是低内存问题。
-
-## 日志差异性信息
-
-生命周期超时事件
-
-```
-DOMAIN:AAFWK
-STRINGID:LIFECYCLE_TIMEOUT
-TIMEOUT TIMESTAMP:2025/02/10-21:40:59:113
-PID:1561
-UID:20010039
-PACKAGE_NAME:com.example.myapplication
-PROCESS_NAME:com.example.myapplication
-MSG:ability:EntryAbility background timeout
-server actions for ability:
-2025-02-10 21:40:56.376; AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts.
-2025-02-10 21:40:56.377; ServiceInner::UpdateAbilityState
-server actions for app:
-2025-02-10 21:40:56.397; AppRunningRecord::OnWindowVisibilityChanged
-2025-02-10 21:40:56.851; AppRunningRecord::OnWindowVisibilityChanged
-2025-02-10 21:40:58.668; AppRunningRecord::OnWindowVisibilityChanged
-client actions for ability:
-2025-02-10 21:40:56.378; AbilityThread::ScheduleAbilityTransaction
-2025-02-10 21:40:56.378; AbilityThread::HandleAbilityTransaction
-2025-02-10 21:40:56.382; JsUIAbility::OnStart begin
-2025-02-10 21:40:56.382; JsUIAbility::OnStart end
-2025-02-10 21:40:56.387; JsUIAbility::OnSceneCreated begin
-2025-02-10 21:40:56.388; JsUIAbility::OnSceneCreated end
-2025-02-10 21:40:56.388; JsUIAbility::WindowScene::GoForeground begin
-2025-02-10 21:40:56.389; UIAbilityImpl::WindowLifeCycleImpl::AfterForeground
-2025-02-10 21:40:56.390; JsUIAbility::OnForeground begin
-client actions for app:
-```
-
-下面用两个完整生命周期切换示例来解释MSG中的信息。
-
-（1）load 阶段事件（应用进程未创建举例）
-
-| | | |
-| -------- | -------- | -------- |
-| server | client | 描述 |
-| AbilityRecord::LoadAbility; the LoadAbility lifecycle starts. |- | 开始。 |
-| AppMgrServiceInner::LoadAbility | -| 创建进程前。 |
-| AppMgrService::AttachApplication | -| 进程创建成功，进程attach。 |
-| ServiceInner::AttachApplication | -| 进程attach。 |
-| ServiceInner::LaunchApplication | -| 调度应用执行加载流程。 |
-| AppRunningRecord::LaunchApplication | -| 调度应用执行加载流程。 |
-| AppScheduler::ScheduleLaunchApplication | -| 调度应用执行加载流程。 |
-| -| ScheduleLaunchApplication | 应用收到加载调度请求。 |
-| -| HandleLaunchApplication begin | 应用加载开始。 |
-| -| HandleLaunchApplication end | 应用加载结束。 |
-| AppRunningRecord::LaunchPendingAbilities | -| 调度应用启动ability。 |
-| -| MainThread::ScheduleLaunchAbility | 应用收到请求加载ability。 |
-| -| MainThread::HandleLaunchAbility | 主线程处理。 |
-| -| JsAbilityStage::Create | 加载abilityStage。 |
-| -| JsAbilityStage::OnCreate begin | abilityStage onCreate生命周期开始。 |
-| -| JsAbilityStage::OnCreate end | abilityStage onCreate生命周期结束。 |
-| -| AbilityThread::Attach | ability attach到ams，load过程结束。 |
-
-（2）foreground 阶段事件，冷启动
-
-| | | |
-| -------- | -------- | -------- |
-| server | client | 描述 |
-| AbilityRecord::ProcessForegroundAbility; the ProcessForegroundAbility lifecycle starts. |  | 开始。 |
-| ServiceInner::UpdateAbilityState | -| 先调度应用前台。 |
-| AppRunningRecord::ScheduleForegroundRunning | -| 调度应用前台。 |
-| AppScheduler::ScheduleForegroundApplication | -| 调度应用前台。 |
-| -| ScheduleForegroundApplication | 应用收到调度。 |
-| -| HandleForegroundApplication | 主线程执行调度。 |
-| AppMgrService::AppForegrounded | -| 应用前台完成。 |
-| ServiceInner::AppForegrounded | -| 应用前台完成。 |
-| -| AbilityThread::ScheduleAbilityTransaction | 应用收到ability前台调度。 |
-| -| AbilityThread::HandleAbilityTransaction | 主线程执行ability前台调度。 |
-| -| JsUIAbility::OnStart begin | onCreate生命周期开始。 |
-| -| JsUIAbility::OnStart end | onCreate生命周期结束。 |
-| -| JsUIAbility::OnSceneCreated begin | 创建窗口scene开始。 |
-| -| JsUIAbility::OnSceneCreated end | 创建窗口scene结束。 |
-| -| JsUIAbility::OnWillForeground begin | -|
-| -| JsUIAbility::OnWillForeground end |- |
-| -| JsUIAbility::WindowScene::GoForeground begin | 调用窗口接口执行 goForeground。 |
-| -| UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | 窗口迁台后回调。 |
-| -| JsUIAbility::OnForeground begin | onForeground生命周期开始。 |
-| -| JsUIAbility::OnForeground end | onForeground生命周期结束。 |
-| -|  | 当窗口回调和onForeground都完成后，前台生命周期结束。 |
-
-参考[日志规格](#日志规格)分析其他日志信息。特别说明：大多数情况下，生命周期切换时主线程会卡死。可以结合两个日志的堆栈和BinderCatcher信息对比查看。

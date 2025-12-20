@@ -36,7 +36,7 @@ HiAppEvent is an event logging mechanism provided for recording faults, statisti
 
 In the current system application sandbox mechanism, an application process can access only its own application sandbox directory. For details, see [Application Sandbox](../file-management/app-sandbox-directory.md). However, the system event information is not stored in the application sandbox directory. As a result, the information cannot be directly obtained.
 
-The application calls the **addWatcher** API of HiAppEvent to subscribe to system events and create a shared directory. When the application process is faulty, the DFX system captures the related information, generates events and logs, and shares them to the shared directory. After detecting an event, HiAppEvent sends the event to the application.
+The application calls the **addWatcher** API of HiAppEvent to subscribe to system events and create a shared directory. When the application process is faulty, the DFX system captures the related information, generates events and logs, and writes them to the shared directory. After detecting an event, HiAppEvent sends the event to the application.
 
 ![hiappevent-watch-systemevents](figures/hiappevent-watch-systemevents.PNG)
 
@@ -47,6 +47,10 @@ After calling the addWatcher API to subscribe to the application event, the appl
 HiAppEvent associates application events based on the event domain and event name, and sends the events to the application using the callback set through the **addWatcher** API.
 
 ![hiappevent-watch-appevents](figures/hiappevent-watch-appevents.PNG)
+
+> **NOTE**
+>
+> If an application has subscribed to an event but exits before the callback is triggered, the callback of the event will be executed after the application calls **addWatcher** at the next startup. For example, if an application subscribes to the crash event and exits due to a crash, the event callback is executed after **addWatcher** is called upon the next startup.
 
 ## Constraints
 

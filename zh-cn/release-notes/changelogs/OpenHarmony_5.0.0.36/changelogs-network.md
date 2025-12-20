@@ -31,7 +31,7 @@ API version
 
 | 接口文件                                                                                                               |
 |--------------------------------------------------------------------------------------------------------------------|
-| [ohos.net.webSocket.d.ts](https://gitee.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.webSocket.d.ts) |
+| [ohos.net.webSocket.d.ts](https://gitcode.com/openharmony/interface_sdk-js/blob/master/api/@ohos.net.webSocket.d.ts) |
 
 **适配指导**
 

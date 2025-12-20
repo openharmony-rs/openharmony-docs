@@ -73,8 +73,11 @@ Web媒体策略的配置。
 |  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
 |  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的高度，使其覆盖网页内容。false表示不覆盖网页内容，跟原视频图层高度一样，嵌入在网页中。<br>默认值：false。 |
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+> **说明：**
+>
+> 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
 自定义菜单扩展项。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -649,7 +652,7 @@ Web组件进入全屏回调事件的详情。
 | 名称             | 类型   | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | controller | [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)  | 否 | 否 | 提供控制自定义键盘的输入、删除、关闭等操作。 |
-| attributes | Record<string, string> | 否 | 否 | 触发本次软键盘弹出的网页元素属性。
+| attributes | Record<string, string> | 否 | 否 | 触发本次软键盘弹出的网页元素属性。|
 
 ## WebKeyboardOptions<sup>12+</sup>
 
@@ -661,7 +664,7 @@ Web组件进入全屏回调事件的详情。
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | 否 | 否 | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
 | enterKeyType | number | 否 | 是 | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，默认值为UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
-| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。
+| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。|
 
 
 ## FirstMeaningfulPaint<sup>12+</sup>
@@ -687,7 +690,7 @@ Web组件进入全屏回调事件的详情。
 | largestImagePaintTime     | number | 否 | 是   | 最大图片加载的时间，单位是以毫秒表示。   |
 | largestTextPaintTime      | number | 否 | 是   | 最大文本加载时间，单位是以毫秒表示。     |
 | largestImageLoadStartTime | number | 否 | 是   | 最大图片开始加载时间，单位是以毫秒表示。 |
-| largestImageLoadEndTime   | number | 否 | 是   | 最大图片结束记载时间，单位是以毫秒表示。 |
+| largestImageLoadEndTime   | number | 否 | 是   | 最大图片结束加载时间，单位是以毫秒表示。 |
 | imageBPP                  | number | 否 | 是   | 最大图片像素位数。                           |
 
 ## NativeEmbedDataInfo<sup>11+</sup>

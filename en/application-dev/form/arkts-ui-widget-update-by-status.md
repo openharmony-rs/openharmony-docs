@@ -18,7 +18,6 @@ There are cases where multiple copies of the same widget are added to the home s
           "designWidth": 720,
           "autoDesignWidth": true
         },
-        "colorMode": "auto",
         "isDefault": true,
         "updateEnabled": true,
         "scheduledUpdateTime": "10:30",
@@ -40,6 +39,7 @@ There are cases where multiple copies of the same widget are added to the home s
   @Entry(storageUpdateByStatus)
   @Component
   struct WidgetUpdateByStatusCard {
+    // Replace $r('app.string.to_be_refreshed') with the resource file you use.
     @LocalStorageProp('textA') textA: Resource = $r('app.string.to_be_refreshed');
     @LocalStorageProp('textB') textB: Resource = $r('app.string.to_be_refreshed');
     @State selectA: boolean = false;
@@ -62,6 +62,7 @@ There are cases where multiple copies of the same widget are added to the home s
                   }
                 });
               })
+            // Replace $r('app.string.status_a') with the resource file you use.
             Text($r('app.string.status_a'))
               .fontColor('#000000')
               .opacity(0.9)
@@ -86,6 +87,7 @@ There are cases where multiple copies of the same widget are added to the home s
                   }
                 });
               })
+            // Replace $r('app.string.status_b') with the resource file you use.
             Text($r('app.string.status_b'))
               .fontColor('#000000')
               .opacity(0.9)
@@ -128,6 +130,7 @@ There are cases where multiple copies of the same widget are added to the home s
         .width('100%')
         .alignItems(HorizontalAlign.Start)
       }.width('100%').height('100%')
+      // Replace $r('app.media.CardUpdateByStatus') with the resource file you use.
       .backgroundImage($r('app.media.CardUpdateByStatus'))
       .backgroundImageSize(ImageSize.Cover)
     }
@@ -149,23 +152,18 @@ There are cases where multiple copies of the same widget are added to the home s
   export default class UpdateByStatusFormAbility extends FormExtensionAbility {
     onAddForm(want: Want): formBindingData.FormBindingData {
       let formId: string = '';
-      let isTempCard: boolean;
       if (want.parameters) {
         formId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
-        isTempCard = want.parameters[formInfo.FormParam.TEMPORARY_KEY] as boolean;
-        if (isTempCard === false) { // If the widget is a normal one, the widget information is persisted.
-          hilog.info(DOMAIN_NUMBER, TAG, 'Not temp card, init db for:' + formId);
-          let promise: Promise<preferences.Preferences> = preferences.getPreferences(this.context, 'myStore');
-          promise.then(async (storeDB: preferences.Preferences) => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded to get preferences.');
-            await storeDB.put('A' + formId, 'false');
-            await storeDB.put('B' + formId, 'false');
-            await storeDB.flush();
-          }).catch((err: BusinessError) => {
-            hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
-          });
-        }
-    }
+        let promise: Promise<preferences.Preferences> = preferences.getPreferences(this.context, 'myStore');
+        promise.then(async (storeDB: preferences.Preferences) => {
+          hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded to get preferences.');
+          await storeDB.put('A' + formId, 'false');
+          await storeDB.put('B' + formId, 'false');
+          await storeDB.flush();
+        }).catch((err: BusinessError) => {
+          hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
+        });
+      }
       let formData: Record<string, Object | string> = {};
       return formBindingData.createFormBindingData(formData);
     }
@@ -182,19 +180,8 @@ There are cases where multiple copies of the same widget are added to the home s
       });
     }
   
-    // If the widget is a temporary one, it is recommended that the widget information be persisted when the widget is converted to a normal one.
-    onCastToNormalForm(formId: string): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onCastToNormalForm, formId:' + formId);
-      let promise: Promise<preferences.Preferences> = preferences.getPreferences(this.context, 'myStore');
-      promise.then(async (storeDB: preferences.Preferences) => {
-        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded to get preferences.');
-        await storeDB.put('A' + formId, 'false');
-        await storeDB.put('B' + formId, 'false');
-        await storeDB.flush();
-      }).catch((err: BusinessError) => {
-      hilog.info(DOMAIN_NUMBER, TAG, `Failed to get preferences. ${JSON.stringify(err)}`);
-      });
-    }
+    // This callback function is not required for the widget host.
+    onCastToNormalForm(formId: string): void { }
   
     onUpdateForm(formId: string): void {
       let promise: Promise<preferences.Preferences> = preferences.getPreferences(this.context, 'myStore');
@@ -250,4 +237,4 @@ There are cases where multiple copies of the same widget are added to the home s
 
 > **NOTE**
 >
-> When the local database is used for widget information persistence, it is recommended that [TEMPORARY_KEY](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formparam) be used in the [onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform) lifecycle callback to determine whether the currently added widget is a normal one. If the widget is a normal one, the widget information is directly persisted. If the widget is a temporary one, the widget information is persisted when the widget is converted to a normal one ([onCastToNormalForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityoncasttonormalform)). In addition, the persistent widget information needs to be deleted when the widget is destroyed ([onRemoveForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonremoveform)), preventing the database size from continuously increasing due to repeated widget addition and deletion.
+> When persisting widget information via a local database, it is recommended to first perform the persistence during the [onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform) lifecycle. Additionally, when a widget is destroyed (using [onRemoveForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonremoveform)), you should delete its persisted data to prevent the database file from growing continuously due to repeated addition and removal of widgets.

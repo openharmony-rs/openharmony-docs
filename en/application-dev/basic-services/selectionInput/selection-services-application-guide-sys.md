@@ -14,9 +14,9 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
 
 1. Create a project for the word selection application on DevEco Studio.
 
-    1. In the **ets** directory of a module in the project, right-click and choose **New** > **Directory** to create a directory named **ServiceExtAbility**.
+    1.1 In the **ets** directory of a module in the project, right-click and choose **New** > **Directory** to create a directory named **ServiceExtAbility**.
 
-    2. In the **pages** directory, create two page files **MainPanel.ets** and **MenuPanel.ets** from the menu bar. In the **ServiceExtAbility** directory, right-click and choose **New** > **File** to create the **SelectionExtensionAbility.ts** file. The directory structure is as follows:
+    1.2 In the **pages** directory, create two page files **MainPanel.ets** and **MenuPanel.ets** from the menu bar. In the **ServiceExtAbility** directory, right-click and choose **New** > **File** to create the **SelectionExtensionAbility.ts** file. The directory structure is as follows:
 
     ```
     /src/main/
@@ -72,7 +72,7 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
     ```
     In the preceding code, the [onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#onconnect) callback is triggered when the word selection extension is started. You can listen for word selection events in this callback to create the word selection panel, set the panel content, and move, display, or hide the panel. The [onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md#ondisconnect) callback is triggered when the word selection extension is disabled. You can destroy the panel in this callback. For details about some operations, see steps 3, 4, and 5.
 
-3. Listen for the word selection events using the **on** API when SelectionExtensionAbility is started.
+3. Listen for the word selection events using the **on** API when SelectionExtensionAbility is started,
     ```ts
     selectionManager.on('selectionCompleted', (info: selectionManager.SelectionInfo) => {
     });
@@ -129,9 +129,11 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
 
 1. Set system parameters to configure the word selection service.
 
-    1. Enable word selection service.
-    2. Set the current application as the word selection application.
-    3. Set the operation mode for word selection.
+    1.1 Enable the word selection service.
+    
+    1.2 Set the current application as the word selection application.
+    
+    1.3 Set the operation mode for word selection.
 
 2. Monitor the process of starting SelectionExtensionAbility via logs.
 

@@ -4,8 +4,8 @@ The **FormAgent** module provides APIs related to the widget agent. Currently, y
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are system APIs.
+> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -67,7 +67,7 @@ try {
       console.error(`callback error, code: ${error.code}, message: ${error.message})`);
       return;
     }
-    console.log(`formAgent requestPublishForm, form ID is: ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm, form ID is: ${JSON.stringify(data)}`);
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
@@ -129,7 +129,7 @@ let want: Want = {
 };
 try {
   formAgent.requestPublishForm(want).then((data: string) => {
-    console.log(`formAgent requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
+    console.info(`formAgent requestPublishForm success, form ID is : ${JSON.stringify(data)}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message})`);
   });

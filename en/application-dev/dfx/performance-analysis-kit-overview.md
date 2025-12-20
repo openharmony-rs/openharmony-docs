@@ -51,7 +51,7 @@ Performance Analysis Kit provides a collection of capabilities for improving app
 
 - Provides [HiDebug](hidebug-guidelines.md), [HiAppEvent](hiappevent-intro.md) and [HiLog](hilog-guidelines-arkts.md) APIs to build an Application Performance Management (APM) SDK on the device for interconnection with the APM developed by vendors.
 
-- Provides the functionalities of customizing [application events](event-subscription-overview.md#application-events) and subscribing to system events so that you can quickly collect events required for O&M.
+- Provides [HiAppEvent system events](event-subscription-overview.md#system-events) and [application events](event-subscription-overview.md#application-events) for subscribing to events (such as crash and application freeze events) triggered during application running, and quickly records and collects event information required for O&M.
 
 **Powerful Exception Detection and Handling Mechanism**
 

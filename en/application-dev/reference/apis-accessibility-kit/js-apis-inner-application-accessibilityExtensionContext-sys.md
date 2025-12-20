@@ -77,7 +77,7 @@ For details, see [AccessibilityElement.spans](#accessibilityelement12).
 | Name                 | Type    | Read-Only |Optional| Description                               |
 | ------------------- | ------ | ---- | ----|--------------------------------- |
 | spanId             | number | No  |No|Hyperlink ID.                |
-| spanText          | string | No| No|Text content of the hyperlink.       |
+| spanText          | string | No | No|Text content of the hyperlink.       |
 | accessibilityText          | string | No | No|Accessibility text of the hyperlink.       |
 | accessibilityDescription          | string | No | No|Accessibility description of the hyperlink.       |
 | accessibilityLevel          | string | No | No|Accessibility level of the hyperlink.       |
@@ -120,7 +120,7 @@ import {
   AccessibilityExtensionContext
 } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import Want from '@kit.AbilityKit';
+import { Want } from '@kit.AbilityKit';
 
 export default class AccessibilityManager {
   private static instance: AccessibilityManager;
@@ -735,7 +735,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | Permission verification failed.The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 9300003 | No accessibility permission to perform the operation. |
-| 9300006 | The target application failed to connect to accessibility service. |
+| 9300006 |  The target application failed to connect to accessibility service. |
 
 **Example**
 
@@ -872,7 +872,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
 | accessibilityFocused<sup>20+</sup> | boolean | No| Yes| Whether the element is focused for accessibility purposes. The value **true** indicates that the element is focused, and **false** indicates the opposite.<br>Default value: **false**.|
 | bundleName<sup>20+</sup> | string                                                             | No | Yes | Bundle name.|
-| checkable<sup>20+</sup> | boolean | No| Yes| Whether the element can be checked. The value **true** indicates that the element can be checked, and **false** indicates the opposite.<br>Default value: **false**.|
+| checkable<sup>20+</sup> | boolean | No| Yes| Whether the element is checkable. The value **true** indicates that the element is checkable, and **false** indicates the opposite.<br>Default value: **false**.|
 | checked<sup>20+</sup> | boolean | No| Yes| Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
 | clickable<sup>20+</sup> | boolean | No| Yes| Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
 | componentId<sup>20+</sup> | number | No| Yes| ID of the component to which the element belongs.<br>Default value: **-1**.|
@@ -883,7 +883,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | editable<sup>20+</sup> | boolean | No| Yes| Whether the element is editable. The value **true** indicates that the element is editable, and **false** indicates the opposite.<br>Default value: **false**.|
 | endIndex<sup>20+</sup> | number                                                             | No | Yes | Index of the last list item displayed on the screen.<br>Default value: **0**.|
 | error<sup>20+</sup> | string                                                             | No | Yes | Error status of the element.|
-| focusable<sup>20+</sup> | boolean | No| Yes| Whether the element can be focused. The value **true** indicates that the element can be focused, and **false** indicates the opposite.<br>Default value: **false**.|
+| focusable<sup>20+</sup> | boolean | No| Yes| Whether the element is focusable. The value **true** indicates that the element is focusable, and **false** indicates the opposite.<br>Default value: **false**.|
 | hintText<sup>20+</sup> | string                                                             | No | Yes | Hint text.|
 | inputType<sup>20+</sup> | number                                                             | No | Yes | Type of the input text.<br>Default value: **0**.|
 | inspectorKey<sup>20+</sup> | string                                                             | No | Yes | Inspector key.|
@@ -1219,7 +1219,7 @@ Executes a specific action based on the specified action type and input paramete
 
 | Name        | Type                                    | Mandatory  | Description                                                      |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node. |
+| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node.
 | parameters | [Parameter](#parameter20) | No   | Parameters set for the action. This parameter is left empty by default.                           |
 
 **Return value**

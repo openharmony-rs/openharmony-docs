@@ -671,6 +671,10 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 通知宿主应用页面开始加载。此方法在每次主frame加载时调用一次，因此对于包含iframes或frameset的页面，onLoadStarted仅针对主frame调用一次。这意味着当嵌入式frame的内容发生变化时，如点击iframe中的链接或Fragment跳转（即跳转到#fragment_id的导航）等，不会调用onLoadStarted。
 
+> **说明：**
+>
+> - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -708,6 +712,12 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 通知宿主应用页面已加载完成。此方法仅在主frame加载完成时被调用。对于片段跳转（即导航至#fragment_id），onLoadFinished同样会被触发。
+
+> **说明：**
+>
+> - 片段导航也会触发onLoadFinished，但onPageEnd不会被触发。
+> - 如果主框架在页面完全加载之前被自动重定向，onLoadFinished只会触发一次。onPageEnd会在每次主框架导航时触发。
+> - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1691,7 +1701,7 @@ struct Index {
     ```
 
 2. 构造 `CertManagerService` 对象以对接证书管理。
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     // CertMgrService.ets
     import { bundleManager, common, Want } from "@kit.AbilityKit";
@@ -1749,7 +1759,7 @@ struct Index {
     }
     ```
 3. 实现双向认证功能。
-<!--code_no_check-->
+    <!--code_no_check-->
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
@@ -3365,8 +3375,7 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
       Column() {
         Web({ src: 'www.example.com', controller: this.controller })
           .onSafeBrowsingCheckResult((callback) => {
-            let jsonData = JSON.stringify(callback);
-            let json: OnSafeBrowsingCheckResultCallback = JSON.parse(jsonData);
+            let json: ThreatType = JSON.parse(JSON.stringify(callback)).threatType;
             console.info("onSafeBrowsingCheckResult: [threatType]= " + json);
           })
       }
@@ -4361,30 +4370,30 @@ onOverrideErrorPage(callback: OnOverrideErrorPageCallback)
 **示例：**
 
   ```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-  build() {
-    Column() {
-      Web({ src: "www.error-test.com", controller: this.controller })
-       .onControllerAttached(() => {
-            this.controller.setErrorPageEnabled(true);
-            if (!this.controller.getErrorPageEnabled()) {
-                this.controller.setErrorPageEnabled(true);
-            }
-        })
-        .onOverrideErrorPage(event => {
-              let htmlStr = "<html><h1>error occur : ";
-              htmlStr += event.error.getErrorCode();
-              htmlStr += "</h1></html>";
-              return htmlStr;
-        })
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    build() {
+      Column() {
+        Web({ src: "www.error-test.com", controller: this.controller })
+         .onControllerAttached(() => {
+              this.controller.setErrorPageEnabled(true);
+              if (!this.controller.getErrorPageEnabled()) {
+                  this.controller.setErrorPageEnabled(true);
+              }
+          })
+          .onOverrideErrorPage(event => {
+                let htmlStr = "<html><h1>error occur : ";
+                htmlStr += event.error.getErrorCode();
+                htmlStr += "</h1></html>";
+                return htmlStr;
+          })
+      }
     }
   }
-}
   ```
 
 ## onSslErrorReceive<sup>(deprecated)</sup>
@@ -4429,7 +4438,10 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
-从API version 10开始不再维护，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+> **说明：**
+>
+> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4557,6 +4569,6 @@ onRenderExited(callback: (event?: { detail: object }) => boolean)
 
 **参数：**
 
-| 参数名              | 类型                                     | 必填   | 说明             |
+| 参数名  | 类型  | 必填  | 说明 |
 | ---------------- | ---------------------------------------- | ---- | ---------------- |
 | callback |(event?: { detail: object }) => boolean | 是    | 渲染过程退出时触发。 |

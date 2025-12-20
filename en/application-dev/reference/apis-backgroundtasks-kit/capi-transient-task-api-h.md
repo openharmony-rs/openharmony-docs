@@ -135,3 +135,5 @@ Obtains all information about a transient task, including the remaining quota of
 | Type| Description|
 | -- | -- |
 | int32_t | Returns 0 if the operation is successful.<br>         Returns 9900001 if the client information of the transient task fails to be verified.<br>         Returns 9900003 if the Parcel read/write operation fails.<br>         Returns 9900004 if the system service fails.<br>         For details about the error codes, see [TransientTask_ErrorCode](capi-transient-task-type-h.md#transienttask_errorcode).|
+
+

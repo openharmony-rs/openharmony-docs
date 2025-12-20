@@ -78,7 +78,7 @@ PhotoPickerComponent({
 
 ## PickerOptions
 
-Picker配置选项，继承自[BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10)。
+Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -149,7 +149,7 @@ type CurrentAlbumDeletedCallback = () => void
 
 type videoPlayStateChangedCallback = (state: VideoPlayerState) => void
 
-大图页视频播放状态改变时回调。
+大图页视频播放状态改变时的回调事件。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -282,7 +282,7 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | 是 | 需要保存到图库的应用沙箱图片/视频uri。trustedUris一般来自[replacePhotoPickerPreview](#replacephotopickerpreview15)替换显示成功的newUri。 |
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | 是 | 返回保存后新生成的媒体库文件对应的uri。             |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：** 传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。              |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | 否 | 需要保存的文件对应的配置参数。<br>**注意：**<br>传入'subtype'选项，配置项不生效，仅支持保存DEFAULT类型图片。              |
 | saveMode | [SaveMode](#savemode15)           | 否 | 图片保存模式。             |
 
 ## BaseItemInfo
@@ -295,12 +295,12 @@ saveTrustedPhotoAssets(trustedUris: Array&lt;string&gt;, callback: AsyncCallback
 
 | 名称     | 类型    | 只读 | 可选  | 说明                                                |
 |----------|--------|-----|-----|---------------------------------------------------|
-| uri      | string                | 否 | 是   | 图片、视频的uri（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。|
-| mimeType | string                | 否 | 是   | 图片、视频的mimeType（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。|
-| width    | number                | 否 | 是   | 图片、视频的宽（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。|
-| height   | number                | 否 | 是   | 图片、视频的高（单位：像素）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。|
-| size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。|
-| duration   | number                | 否 | 是   | 视频的时长（单位：毫秒），图片/动态图片时返回-1（[ItemType](#itemtype)为ThUMBNAIL时支持，否则为空）。|
+| uri      | string                | 否 | 是   | 图片、视频的uri。<br>[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。|
+| mimeType | string                | 否 | 是   | 图片、视频的mimeType。<br>[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。|
+| width    | number                | 否 | 是   | 图片、视频的宽（单位：像素）。<br>[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。|
+| height   | number                | 否 | 是   | 图片、视频的高（单位：像素）。<br>[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。|
+| size     | number                | 否 | 是   | 图片、视频的大小（单位：字节）。<br>[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。|
+| duration   | number                | 否 | 是   | 视频的时长（单位：毫秒），图片/动态图片时返回-1。<br>[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。|
 
 ## ItemInfo
 

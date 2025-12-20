@@ -35,10 +35,10 @@
 
 **方式一（推荐）**
 
-通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitee.com/help/articles/4191)）。
+通过repo + ssh 下载（需注册公钥，请参考[码云帮助中心](https://gitcode.com/help/articles/4191)）。
 
 ```shell
-repo init -u git@gitee.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v2.2-Beta2 --no-repo-verify
+repo init -u git@gitcode.com:openharmony/manifest.git -b refs/tags/OpenHarmony-v2.2-Beta2 --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -48,7 +48,7 @@ repo forall -c 'git lfs pull'
 通过repo + https 下载。
 
 ```shell
-repo init -u https://gitee.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v2.2-Beta2 --no-repo-verify
+repo init -u https://gitcode.com/openharmony/manifest.git -b refs/tags/OpenHarmony-v2.2-Beta2 --no-repo-verify
 repo sync -c
 repo forall -c 'git lfs pull'
 ```
@@ -65,7 +65,7 @@ repo forall -c 'git lfs pull'
 | Hi3518解决方案（二进制） | 2.2 | [站点](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_aries-2.2-Beta2.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_aries-2.2-Beta2.tar.gz.sha256) |
 | Hi3516解决方案-LiteOS（二进制） | 2.2 | [站点](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_taurus-2.2-Beta2.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_taurus-2.2-Beta2.tar.gz.sha256) |
 | Hi3516解决方案-Linux（二进制） | 2.2 | [站点](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_taurus_linux-2.2-Beta2.tar.gz) | [SHA256校验码](https://repo.huaweicloud.com/harmonyos/os/2.2-Beta2/hispark_taurus_linux-2.2-Beta2.tar.gz.sha256) |
-| Release&nbsp;Notes | 2.2 | [站点](https://gitee.com/openharmony/docs/blob/master/zh-cn/release-notes/OpenHarmony-v2.2-beta2.md) | - |
+| Release&nbsp;Notes | 2.2 | [站点](https://gitcode.com/openharmony/docs/blob/master/zh-cn/release-notes/OpenHarmony-v2.2-beta2.md) | - |
 
 
 ## 更新说明
@@ -114,24 +114,24 @@ API变更请参考：
 
 | ISSUE单号                                                    | 问题描述                                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [I3I31W](https://gitee.com/openharmony/kernel_liteos_a/issues/I3I31W) | ActsNFSTest.bin会引起内核crash                               |
-| [I3D49E](https://gitee.com/openharmony/docs/issues/I3D49E)   | uboot的路径不对                                              |
-| [I3D71U](https://gitee.com/openharmony-retired/drivers_adapter_khdf_liteos/issues/I3D71U) | 【驱动子系统】反复reset，启动到hmac_main_init SUCCESSULLY后，高概率出现系统挂死 |
+| [I3I31W](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3I31W) | ActsNFSTest.bin会引起内核crash                               |
+| [I3D49E](https://gitcode.com/openharmony/docs/issues/I3D49E)   | uboot的路径不对                                              |
+| [I3D71U](https://gitcode.com/openharmony-retired/drivers_adapter_khdf_liteos/issues/I3D71U) | 【驱动子系统】反复reset，启动到hmac_main_init SUCCESSULLY后，高概率出现系统挂死 |
 | I3DGZW | 【应用程序框架子系统】HI3516开源板进入屏保后 ，点击触摸屏，出现蓝屏问题 |
-| [I3DHIL](https://gitee.com/openharmony/community/issues/I3DHIL) | 【系统问题】HI3518开源板剩余空间不足，导致ACTS用例大量失败   |
+| [I3DHIL](https://gitcode.com/openharmony/community/issues/I3DHIL) | 【系统问题】HI3518开源板剩余空间不足，导致ACTS用例大量失败   |
 | I3DU36 | 【应用程序框架子系统】ipcamera bm 查询命令失效               |
-| [I3EALU](https://gitee.com/openharmony/multimedia_camera_lite/issues/I3EALU) | 【媒体子系统】cameraActs 用例执行时，找不到相机配置文件，初始失败 |
-| [I3EGUX](https://gitee.com/openharmony/release-management/issues/I3EGUX) | 【可靠性问题】反复reset，出现一次KIdle进程crash，系统挂死无法启动 |
-| [I3EH4E](https://gitee.com/openharmony/community/issues/I3EH4E) | 【流水线问题】高概率出现：uname无响应，然后执行reset也无响应 |
-| [I3EQJA](https://gitee.com/openharmony/kernel_liteos_a/issues/I3EQJA) | 【文件系统】cat /proc/mounts功能不可用                       |
-| [I3EQRC](https://gitee.com/openharmony/kernel_liteos_a/issues/I3EQRC) | 磁盘文件映射延迟测试：并发3个测试进程，系统crash             |
-| [I3HVL0](https://gitee.com/openharmony/docs/issues/I3HVL0)   | 3861编译失败，报错[OHOS ERROR] Fatal error: invalid -march= option:rv32imac |
-| [I3TS1Y](https://gitee.com/openharmony/kernel_liteos_a/issues/I3TS1Y) | 压力场景下文件相关Vnode资源耗尽                              |
-| [I3TXT8](https://gitee.com/openharmony/startup_init_lite/issues/I3TXT8) | 孤儿进程无法回收，压力场景下TCB资源耗尽                      |
-| [I3UWXI](https://gitee.com/openharmony/applications_sample_wifi_iot/issues/I3UWXI) | libwap.so 存在已知一般漏洞： CVE-2021-30004，CVSS：5.3；漏洞发布日期：2021-04-02，不符合产品发布要求，需要解决。 |
-| [I3SWY2](https://gitee.com/openharmony/kernel_liteos_a/issues/I3SWY2) | 高概率出现KProcess进程挂死，质量不达标                       |
-| [I3YJRO](https://gitee.com/openharmony/kernel_liteos_m/issues/I3YJRO) | liteos-a內核模块可配置编译失败                               |
-| [I3YNWM](https://gitee.com/openharmony/kernel_liteos_a/issues/I3YNWM) | 文件系统维测增强功能在该版本有问题                           |
-| [I3VEOG](https://gitee.com/openharmony/kernel_liteos_a/issues/I3VEOG) | bin目录下没有mksh和toybox，导致已转测的toybox命令集无法测试  |
+| [I3EALU](https://gitcode.com/openharmony/multimedia_camera_lite/issues/I3EALU) | 【媒体子系统】cameraActs 用例执行时，找不到相机配置文件，初始失败 |
+| [I3EGUX](https://gitcode.com/openharmony/release-management/issues/I3EGUX) | 【可靠性问题】反复reset，出现一次KIdle进程crash，系统挂死无法启动 |
+| [I3EH4E](https://gitcode.com/openharmony/community/issues/I3EH4E) | 【流水线问题】高概率出现：uname无响应，然后执行reset也无响应 |
+| [I3EQJA](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3EQJA) | 【文件系统】cat /proc/mounts功能不可用                       |
+| [I3EQRC](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3EQRC) | 磁盘文件映射延迟测试：并发3个测试进程，系统crash             |
+| [I3HVL0](https://gitcode.com/openharmony/docs/issues/I3HVL0)   | 3861编译失败，报错[OHOS ERROR] Fatal error: invalid -march= option:rv32imac |
+| [I3TS1Y](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3TS1Y) | 压力场景下文件相关Vnode资源耗尽                              |
+| [I3TXT8](https://gitcode.com/openharmony/startup_init_lite/issues/I3TXT8) | 孤儿进程无法回收，压力场景下TCB资源耗尽                      |
+| [I3UWXI](https://gitcode.com/openharmony/applications_sample_wifi_iot/issues/I3UWXI) | libwap.so 存在已知一般漏洞： CVE-2021-30004，CVSS：5.3；漏洞发布日期：2021-04-02，不符合产品发布要求，需要解决。 |
+| [I3SWY2](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3SWY2) | 高概率出现KProcess进程挂死，质量不达标                       |
+| [I3YJRO](https://gitcode.com/openharmony/kernel_liteos_m/issues/I3YJRO) | liteos-a內核模块可配置编译失败                               |
+| [I3YNWM](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3YNWM) | 文件系统维测增强功能在该版本有问题                           |
+| [I3VEOG](https://gitcode.com/openharmony/kernel_liteos_a/issues/I3VEOG) | bin目录下没有mksh和toybox，导致已转测的toybox命令集无法测试  |
 
 

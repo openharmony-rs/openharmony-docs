@@ -1,4 +1,4 @@
-# 使用Node-API扩展能力接口
+# 使用Node-API进行扩展能力功能开发
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
@@ -25,7 +25,7 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import taskpool from '@kit.ArkTS';
+import { taskpool } from '@kit.ArkTS';
 ```
 
 ## 模块加载
@@ -1448,3 +1448,48 @@ testNapi.testNapiWrapEnhance();
 **napi_create_ark_context、napi_switch_ark_context、napi_destroy_ark_context**
 
 [使用扩展的Node-API接口创建、切换和销毁上下文环境](use-napi-about-context.md)
+
+## napi提供通过指针访问ArkTS String内存数据的功能
+
+### 接口描述
+
+| 接口                                           | 描述                                         |
+| ---------------------------------------------- | -------------------------------------------- |
+| napi_get_buffer_string_utf16_in_critical_scope | 获取以Utf16编码的ArkTS String的内存数据缓冲区 |
+
+### 使用示例
+
+**napi_get_buffer_string_utf16_in_critical_scope**
+
+[使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
+
+## napi实现临界区作用域
+
+### 接口描述
+
+| 接口                      | 描述             |
+| ------------------------- | ---------------- |
+| napi_open_critical_scope  | 打开临界区作用域 |
+| napi_close_critical_scope | 关闭临界区作用域 |
+
+### 使用示例
+
+**napi_open_critical_scope、napi_close_critical_scope**
+
+[使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
+
+## napi支持创建轻量级的强引用对象
+
+### 接口描述
+
+| 接口                            | 描述                                  |
+| ------------------------------- | ------------------------------------- |
+| napi_create_strong_reference    | 创建指向ArkTS对象的强引用             |
+| napi_delete_strong_reference    | 删除强引用                            |
+| napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值 |
+
+### 使用示例
+
+**napi_create_strong_reference、napi_delete_strong_reference、napi_get_value_strong_reference**
+
+[使用扩展的Node-API接口创建、销毁和使用强引用对象](use-napi-about-strong-reference.md)

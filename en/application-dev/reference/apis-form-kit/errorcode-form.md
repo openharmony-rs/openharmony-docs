@@ -134,8 +134,13 @@ The widget does not belong to the application.
 
 **Solution**
 
-1. Check the ownership of the widget ID.
+<!--Del-->
+1. 
+<!--DelEnd-->
+Check whether the widget ID belongs to the application.
+<!--Del-->
 2. Upgrade the application permission to **SystemApp**.
+<!--DelEnd-->
 
 ## 16501006 Failed to Connect to the Widget Rendering Service
 

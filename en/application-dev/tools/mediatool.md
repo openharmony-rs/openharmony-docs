@@ -314,7 +314,7 @@ uri
 
 ### Media Library URI Introduction and Obtaining Method
 
-The URI uniquely identifies a media library asset. Each URI corresponds to a media asset. mediatool uses the URI to determine the media asset object to be operated.
+The URI uniquely identifies a media library asset. mediatool uses the URI to determine the media asset object to be operated.
 
 To obtain the URI, perform the following steps:
 

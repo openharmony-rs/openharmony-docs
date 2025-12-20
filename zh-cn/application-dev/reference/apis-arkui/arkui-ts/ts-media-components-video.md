@@ -63,13 +63,13 @@ Video(value: VideoOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                 | 说明           |
-| -------------------- | -------------- |
-| Speed_Forward_0_75_X | 0.75倍速播放。 |
-| Speed_Forward_1_00_X | 1倍速播放。    |
-| Speed_Forward_1_25_X | 1.25倍速播放。 |
-| Speed_Forward_1_75_X | 1.75倍速播放。 |
-| Speed_Forward_2_00_X | 2倍速播放。    |
+| 名称                  | 值         | 说明           |
+| -------------------- | ---------- | -------------- |
+| Speed_Forward_0_75_X | 0.75 | 0.75倍速播放。 |
+| Speed_Forward_1_00_X | 1 | 1倍速播放。 |
+| Speed_Forward_1_25_X | 1.25 | 1.25倍速播放。 |
+| Speed_Forward_1_75_X | 1.75 | 1.75倍速播放。 |
+| Speed_Forward_2_00_X | 2 | 2倍速播放。 |
 
 ## 属性
 

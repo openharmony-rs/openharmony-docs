@@ -32,7 +32,7 @@ void (*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)
 
 当鼠标事件被触发时调用。
 
-**起始版本：** 8
+**起始版本：** 9
 
 **参数：**
 
@@ -52,7 +52,7 @@ void (*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)
 
 当悬停事件被触发时调用。
 
-**起始版本：** 8
+**起始版本：** 9
 
 **参数：**
 

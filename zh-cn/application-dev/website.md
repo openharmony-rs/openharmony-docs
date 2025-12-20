@@ -274,6 +274,7 @@
       - [应用数据向量化 (ArkTS)](database/aip-data-intelligence-embedding.md)
       - [SQLite调试工具指导](database/sqlite-database-debug-tool.md)
       - [ArkData术语](database/data-terminology.md)
+      - [ArkData常见问题](database/data-faq.md)
     - ArkTS（方舟编程语言）<!--arkts-->
       - [ArkTS简介](arkts-utils/arkts-overview.md)
       - ArkTS基础类库<!--arkts-utils-->
@@ -370,6 +371,7 @@
           - [方舟字节码基本原理](arkts-utils/arkts-bytecode-fundamentals.md)
           - [方舟字节码函数命名规则](arkts-utils/arkts-bytecode-function-name.md)
           - [编译期自定义修改方舟字节码](arkts-utils/customize-bytecode-during-compilation.md)
+          - [方舟字节码生成常见问题](arkts-utils/es2abc-faq.md)
         - [Disassembler反汇编工具](arkts-utils/tool-disassembler.md)
         - ArkGuard源码混淆工具<!--arkts-arkguard-->
           - [ArkGuard混淆概述](arkts-utils/source-obfuscation-overview.md)
@@ -733,6 +735,7 @@
         - UI开发常见问题<!--ui-development-faq-->
           - [自定义节点常见问题](ui/arkts-user-defined-node-faq.md)
           - [按钮与选择组件常见问题](ui/arkts-select-component-faq.md)
+          - [使用文本常见问题](ui/arkts-text-faq.md)
       - 窗口管理<!--window-manager-->
         - [窗口开发概述](windowmanager/window-overview.md)
         - [管理应用窗口（Stage模型）](windowmanager/application-window-stage.md)
@@ -1620,11 +1623,11 @@
         - [共享音频输入](media/audio/audio-recording-concurrency.md)
         - [实现音频耳返](media/audio/audio-ear-monitor.md)
         - [实现音频低时延耳返](media/audio/audio-ear-monitor-loopback.md)
-	  - 音频设备路由管理<!--audio-device-->
-	    - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
-		- [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
-		- [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
-	    - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
+      - 音频设备路由管理<!--audio-device-->
+        - [查询和监听音频输入设备](media/audio/audio-input-device-management.md)
+        - [查询和监听音频输出设备](media/audio/audio-output-device-management.md)
+        - [实现音频输出设备路由切换](media/audio/audio-output-device-switcher.md)
+        - [响应输出设备变更时合理暂停](media/audio/audio-output-device-change.md)
       - 音频通话<!--audio-call-->
         - [音频通话开发概述](media/audio/audio-call-overview.md)
         - [开发音频通话功能](media/audio/audio-call-development.md)
@@ -2006,6 +2009,8 @@
           - [使用Node-API接口进行模块加载](napi/use-napi-load-module-with-info.md)
           - [使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的的任务](napi/use-call-threadsafe-function-with-priority.md)
           - [使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境](napi/use-napi-about-context.md)
+          - [使用扩展的Node-API接口创建对ArkTS对象的强引用](napi/use-napi-about-strong-reference.md)
+          - [使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](napi/use-napi-about-critical.md)
           - [使用Node-API接口产生的异常日志/崩溃分析](napi/use-napi-about-crash.md)
           - [使用Node-API调用返回值为promise的ArkTS方法](napi/use-napi-method-promise.md)
         - Node-API常见问题汇总<!--napi-questions-->
@@ -2045,9 +2050,9 @@
           - [使用JSVM-API判断给定的两个JS value是否严格相等](napi/use-jsvm-strict-equals.md)
           - [使用JSVM-API进行异常的定制化处理](napi/use-jsvm-trigger-exceptions.md)
           - [使用JSVM-API感知JSVM引擎生命周期管理](napi/use-jsvm-trigger-gc.md)
-          - [使用JSVM-API接口进行 private 属性相关开发](napi/use-jsvm-about-private.md)
+          - [使用JSVM-API接口进行private相关开发](napi/use-jsvm-about-private.md)
           - [使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发](napi/use-jsvm-about-external-string.md)
-          - [使用JSVM-API接口进行Proxy相关开发](napi/use-jsvm-about-proxy.md)
+          - [使用JSVM-API提供的proxy接口](napi/use-jsvm-about-proxy.md)
           - [使用JSVM-API接口进行Well-known symbols相关开发](napi/use-jsvm-about-well-known-symbols.md)
           - [使用JSVM-API接口进行Wrapper object相关开发](napi/use-jsvm-about-wrapper-object.md)
           - [使用JSVM-API接口创建基本数据类型](napi/use-jsvm-basic-data-types.md)
@@ -2071,7 +2076,7 @@
       - 资源管理<!--resource-management-->
         - [Rawfile开发指导](napi/rawfile-guidelines.md)
       - 线程调度<!--thread-scheduling-->
-        - [QOS开发指导](napi/qos-guidelines.md)
+        - [QoS开发指导](napi/qos-guidelines.md)
         - [格物开发指导](napi/gewu-ndk-api-guidelines.md)
       - 内存管理<!--memory-management-->
         - [Purgeable memory开发指导](napi/purgeable-memory-guidelines.md)
@@ -3102,6 +3107,7 @@
           - [SaveButton](reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)
           <!--Del-->
           - [SaveButton (系统接口)](reference/apis-arkui/arkui-ts/ts-security-components-savebutton-sys.md)
+          - [安全控件通用属性 (系统接口)](reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes-sys.md)
           <!--DelEnd-->
         - 主题<!--themes-->
           - [WithTheme](reference/apis-arkui/arkui-ts/ts-container-with-theme.md) 
@@ -4674,8 +4680,8 @@
           <!--Del-->
           - [@ohos.sensor(传感器)(系统接口)](reference/apis-sensor-service-kit/js-apis-sensor-sys.md)
           <!--DelEnd-->
-          - [@ohos.sensor(传感器)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-sensor.md)
-          - [@ohos.vibrator(振动)(已废弃接口)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
+          - [@system.sensor (传感器)](reference/apis-sensor-service-kit/js-apis-system-sensor.md)
+          - [@system.vibrator (振动)](reference/apis-sensor-service-kit/js-apis-system-vibrate.md)
         - C API<!--sensor-service-c-->
           - 模块<!--sensor-service-module-->
             - [Sensor](reference/apis-sensor-service-kit/_sensor.md)
@@ -5348,7 +5354,7 @@
           - [模块描述](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing.md)
           - [Class (Brush)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md)
           - [Class (Canvas)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)
-          - [Class (ClorFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)
+          - [Class (ColorFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)
           - [Class (Font)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md)
           - [Class (ImageFilter)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ImageFilter.md)
           - [Class (Lattice)](reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)
@@ -5732,6 +5738,7 @@
         - [JSVM_Deferred__*](reference/common/capi-jsvm-jsvm-deferred--8h.md)
         - [JSVM_CallbackStruct*](reference/common/capi-jsvm-jsvm-callbackstruct8h.md)
         - [JSVM_PropertyHandlerConfigurationStruct*](reference/common/capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)
+        - [JSVM_CompileProfile](reference/common/capi-jsvm-jsvm-compileprofile.md)
         - [PurgMem*](reference/common/capi-memory-purgmem.md)
   - 标准库<!--standard-library-->
     - [libc标准库](reference/native-lib/musl.md)

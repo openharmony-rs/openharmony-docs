@@ -47,13 +47,6 @@ function builderText(params: Params) {
   }.offset(params.offset)
 }
 
-function initOverlayNode(uiContext: UIContext): OverlayManager {
-  uiContext.setOverlayManagerOptions({
-    enableBackPressedEvent: true
-  });
-  return uiContext.getOverlayManager();
-}
-
 @Entry
 @Component
 struct OverlayExample {
@@ -171,7 +164,6 @@ function builderOverlay(params: Params) {
 @Entry
 @Component
 struct OverlayExample {
-  @State message: string = 'ComponentContent';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: OverlayManager = this.uiContext.getOverlayManager();
   private overlayContent:ComponentContent<Params>[] = [];

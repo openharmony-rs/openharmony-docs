@@ -64,6 +64,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(150)
@@ -89,6 +90,8 @@ struct SnapshotExample {
   }
 }
 ```
+
+![Getscreent](figures/Getscreent.gif)
 
 ## get<sup>12+</sup>
 
@@ -142,6 +145,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.icon'))
           .autoResize(true)
           .width(150)
@@ -282,7 +286,7 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 | 参数名  | 类型                                                 | 必填 | 说明                                                    |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | 是   | 自定义组件构建函数。<br/>**说明：** 不支持全局builder。<br/>builder的根组件宽高为0时，截图操作会失败并抛出100001错误码。 |
-| delay   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置syncload为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒<br/> 取值范围：[0, +∞)，小于0时按默认值处理。|
+| delay   | number | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置[syncload](arkui-ts/ts-basic-components-image.md#syncload8)为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 默认值：300 <br/> 单位：毫秒<br/> 取值范围：[0, +∞)，小于0时按默认值处理。|
 | checkImageStatus  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成，如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)           | 否    | 截图相关的自定义参数。 |
 
@@ -408,11 +412,12 @@ struct SnapshotExample {
   build() {
     Column() {
       Row() {
-        Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        Image(this.pixmap).width(150).height(150).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
-          .width(200)
-          .height(200)
+          .width(150)
+          .height(150)
           .margin(5)
           .id("root")
       }
@@ -487,6 +492,7 @@ class MyNodeController extends NodeController {
     this.node.commonAttribute.width('100%').height('100%');
 
     let image = typeNode.createNode(uiContext, 'Image');
+    // $r('app.media.img')需要替换为开发者所需的图像资源文件
     image.initialize($r('app.media.img')).width('100%').height('100%').autoResize(true);
     this.imageNode = image;
 
@@ -586,6 +592,7 @@ class MyNodeController extends NodeController {
     this.node.commonAttribute.width('100%').height('100%');
 
     let image = typeNode.createNode(uiContext, 'Image');
+    // $r('app.media.img')需要替换为开发者所需的图像资源文件
     image.initialize($r('app.media.img')).width('100%').height('100%').autoResize(true);
     this.imageNode = image;
 

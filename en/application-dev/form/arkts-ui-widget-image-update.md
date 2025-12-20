@@ -187,5 +187,3 @@ Typically, a widget includes local images or online images downloaded from the n
 > - The **Image** component displays images in the remote memory based on the (**memory://**) identifier in the input parameter (**memory://fileName**). The value of **fileName** must be consistent with the key in the object (**'formImages': {key: fd}**) passed by the EntryFormAbility.
 >
 > - The **Image** component determines whether to update the image by comparing the values of **imgName** consecutively passed by the EntryFormAbility. It updates the image only when the values are different.
->
-> - The size of the image displayed on the widget must be less than 2 MB.

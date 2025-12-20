@@ -56,15 +56,15 @@
 
 提供surface类型xcomponent，支持相机预览等能力。
 
-   ```html
+```html
 <!-- xxx.hml -->
 <div style="height: 500px; width: 500px; flex-direction: column; justify-content: center; align-items: center;">
 	<text id = 'camera' class = 'title'>camera_display</text>
 	<xcomponent id = 'xcomponent' type = 'surface' onload = 'onload' ondestroy = 'ondestroy'></xcomponent>
 </div>
-   ```
+```
 
-   ```js
+```js
 // xxx.js
 import camera from '@ohos.multimedia.camera';
 export default {
@@ -75,4 +75,4 @@ export default {
         })
     }
 }
-   ```
+```

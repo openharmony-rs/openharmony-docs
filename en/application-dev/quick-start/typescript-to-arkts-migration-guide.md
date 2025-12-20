@@ -693,7 +693,7 @@ type YI<Item, T extends Array<Item>> = Item
 
 **Error code: 10605025**
 
-ArkTS does not support declaring class fields in **constructor**. Declare class fields inside the **class** declaration instead.
+ArkTS does not support declaring class fields in **constructor**. Explicitly declare class fields inside the **class** scope instead.
 
 **TypeScript**
 

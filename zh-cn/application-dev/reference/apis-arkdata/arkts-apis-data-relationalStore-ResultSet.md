@@ -6,15 +6,15 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-> **说明：**
-> 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
 
 ResultSet实例不会实时刷新。使用结果集后，如果数据库中的数据发生变化（如增删改操作），需要重新查询才能获取到最新的数据。
 
 下列API示例中，都需先使用[query](arkts-apis-data-relationalStore-RdbStore.md#query)、[querySql](arkts-apis-data-relationalStore-RdbStore.md#querysql)、[remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery-1)、[queryLockedRow](arkts-apis-data-relationalStore-RdbStore.md#querylockedrow12)等query类方法中任一方法获取到ResultSet实例，再通过此实例调用对应方法。
+
+> **说明：**
+> 
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -28,7 +28,7 @@ import { relationalStore } from '@kit.ArkData';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| columnNames | Array&lt;string&gt; | 是 | 否 | 获取结果集中所有列的名称。 |
+| columnNames | Array&lt;string&gt; | 是 | 否 | 获取结果集中所有列的名称。当结果集中包含重名列时，获取的列名会不符合预期。 |
 | columnCount | number | 是 | 否 | 获取结果集中列的数量。 |
 | rowCount | number | 是 | 否 | 获取结果集中行的数量。 |
 | rowIndex | number | 是 | 否 | 获取结果集当前行的索引位置，默认值为-1。索引位置下标从0开始。 |
@@ -56,7 +56,7 @@ getColumnIndex(columnName: string): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回指定列的索引。 |
+| number | 返回指定列的索引。当结果集中包含重名列时，返回值会不符合预期。 |
 
 **错误码：**
 
@@ -108,7 +108,7 @@ getColumnName(columnIndex: number): string
 
 | 参数名      | 类型   | 必填 | 说明                       |
 | ----------- | ------ | ---- | -------------------------- |
-| columnIndex | number | 是   | 表示结果集中指定列的索引。 |
+| columnIndex | number | 是   | 表示结果集中指定列的索引。当结果集中包含重名列时，返回值会不符合预期。 |
 
 **返回值：**
 
@@ -171,7 +171,7 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 
 | 类型                                 | 说明                                |
 | ------------------------------------ | ----------------------------------- |
-| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise对象。返回指定列的数据类型。 |
+| Promise<[ColumnType](arkts-apis-data-relationalStore-e.md#columntype18)> | Promise对象。返回指定列的数据类型。当结果集中包含重名列时，通过列名获取的结果会不符合预期。 |
 
 **错误码：**
 
@@ -235,7 +235,7 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 
 | 类型                        | 说明                   |
 | --------------------------- | ---------------------- |
-| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | 返回指定列的数据类型。 |
+| [ColumnType](arkts-apis-data-relationalStore-e.md#columntype18) | 返回指定列的数据类型。当结果集中包含重名列时，通过列名获取的结果会不符合预期。 |
 
 **错误码：**
 
@@ -1000,7 +1000,7 @@ getRow(): ValuesBucket
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 返回指定行的值。 |
+| [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket) | 返回指定行的值。当结果集中包含重名列时，返回值会不符合预期。 |
 
 **错误码：**
 
@@ -1056,7 +1056,7 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 
 | 类型              | 说明                           |
 | ---------------- | ---------------------------- |
-| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。 |
+| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | 返回maxCount条数据，剩余数据不足maxCount条则返回剩余数据，返回空数组时代表已经遍历到结果集的末尾。当结果集中包含重名列时，返回值会不符合预期。 |
 
 **错误码：**
 

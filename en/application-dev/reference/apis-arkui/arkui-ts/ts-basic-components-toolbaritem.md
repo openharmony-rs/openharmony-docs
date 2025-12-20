@@ -6,13 +6,13 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @HelloCrease-->
 
-You can use the **ToolBarItem** component to add toolbar items to the title bar using the [toolbar](ts-universal-attributes-toolbar.md#toolbar-1) universal attribute.
+You can use the **ToolBarItem** component to add toolbar items to the title bar using the [toolbar](ts-universal-attributes-toolbar.md#toolbar) universal attribute.
 
 >  **NOTE**
 >
 >  This component is supported since API version 20. Updates will be marked with a superscript to indicate their earliest API version.
 >
->  This component is typically used with the [toolbar](ts-universal-attributes-toolbar.md#toolbar-1) universal attribute.
+>  This component is typically used with the [toolbar](ts-universal-attributes-toolbar.md#toolbar) universal attribute.
 
 
 ## Child Components
@@ -25,7 +25,7 @@ This component can contain a single child component.
 
 ToolBarItem(options?: ToolBarItemOptions)
 
-Creates a toolbar item at the beginning of the corresponding column in the title bar by default. The column position is determined by the component's [toolbar](ts-universal-attributes-toolbar.md#toolbar-1) attribute configuration.
+Creates a toolbar item at the beginning of the corresponding column in the title bar by default. The column position is determined by the component's [toolbar](ts-universal-attributes-toolbar.md#toolbar) attribute configuration.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

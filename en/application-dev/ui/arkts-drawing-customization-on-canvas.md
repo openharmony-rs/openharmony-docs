@@ -398,7 +398,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
 
 - Using the [setOnVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-uicommonevent.md#setonvisibleareaapproximatechange) API, available since API version 13
 
-   ```ts
+  ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
@@ -443,7 +443,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
                 if (this.timerId == -2) {
                   this.timerId = setInterval(() => {
                     this.drawRandomCircle()
-                  }, 50)
+                  }, 500)
                 }
               }
             })
@@ -453,7 +453,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -462,11 +462,11 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
     }
   }
   ```
-![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
+  ![canvas_RenderingContext](figures/Canvas_RenderingContext.gif)
 
 - Using the [onVisibleAreaApproximateChange](../reference/apis-arkui/arkui-ts/ts-universal-component-visible-area-change-event.md#onvisibleareaapproximatechange17) API, available since API version 17
 
-   ```ts
+  ```ts
   import { ColorMetrics } from '@kit.ArkUI';
 
   @Entry
@@ -509,7 +509,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
                   if (this.timerId == -2) {
                     this.timerId = setInterval(() => {
                       this.drawRandomCircle()
-                    }, 50)
+                    }, 500)
                   }
                 }
               })
@@ -518,7 +518,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
             if (this.timerId < 0) {
               this.timerId = setInterval(() => {
                 this.drawRandomCircle()
-              }, 50)
+              }, 500)
             }
           })
       }
@@ -527,7 +527,7 @@ To improve performance and avoid unnecessary rendering, you can listen for **Can
     }
   }
   ```
-![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
+  ![canvas_onVisibleAreaApproximateChange](figures/Canvas_onVisibleAreaApproximateChange.gif)
 
 ## Example Scenario
 

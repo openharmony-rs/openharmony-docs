@@ -4,9 +4,9 @@
 <!--Owner: @songshenke-->
 <!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
 <!--Tester: @Filger-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zengyawen-->
 
-OHAudio is a set of C APIs introduced in API version 10. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only and are suitable for playback applications that implement audio output at the native layer.
+OHAudio is a set of C APIs introduced in API version 10. These APIs are normalized in design and support both common and low-latency audio channels. They support the PCM format only and are suitable for applications that implement audio output at the native layer.
 
 OHAudio audio playback state transition
 
@@ -102,7 +102,7 @@ The following walks you through how to implement simple playback:
       > 
       > - Once the callback function finishes its execution, the audio service queues the data in the buffer for playback. Therefore, do not change the buffered data outside the callback. Regarding the last frame, if there is insufficient data to completely fill the buffer, you must concatenate the available data with padding to ensure that the buffer is full. This prevents any residual dirty data in the buffer from adversely affecting the playback effect.
 
-      Since API version 12, you can call [OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback) to set **audioDataSize**.
+      Starting from API version 12, you can call [OH_AudioStreamBuilder_SetFrameSizeInCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setframesizeincallback) to set **audioDataSize**.
 
       ```cpp
       // Customize a data writing function.
@@ -402,6 +402,12 @@ OH_AudioRenderer_WriteDataWithMetadataCallback metadataCallback = MyOnWriteDataW
 // Set the callback function for writing both PCM data and metadata.
 OH_AudioStreamBuilder_SetWriteDataWithMetadataCallback(builder, metadataCallback, nullptr);
 ```
+
+## Samples
+
+The following sample is provided to help you better understand how to develop audio playback with **OHAudio**:
+
+- [OHAudio Recording and Playback](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/OHAudio)
 
 <!--RP1-->
 <!--RP1End-->

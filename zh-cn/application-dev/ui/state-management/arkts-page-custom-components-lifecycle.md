@@ -169,6 +169,6 @@ Parent onDidBuild
 Child aboutToAppear
 Child onDidBuild
 ```
-当showchild为默认值true时，该示例的生命周期流程图如下所示：
+当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
 ![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-demo2.png)

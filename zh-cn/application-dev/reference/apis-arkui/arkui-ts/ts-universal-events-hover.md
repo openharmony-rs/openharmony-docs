@@ -71,7 +71,7 @@ onHoverMove(event: Callback&lt;HoverEvent&gt;): T
 | windowY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于应用窗口左上角的y轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
 | displayX<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于应用屏幕左上角的x轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
 | displayY<sup>15+</sup> |number|否|是|鼠标光标或手写笔位置相对于应用屏幕左上角的y轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。|
-| stopPropagation | () => void |否|否| 阻塞事件冒泡。 <br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
+| stopPropagation | () => void |否|否| 阻塞[事件冒泡](../../../ui/arkts-interaction-basic-principles.md#事件冒泡)。 <br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。|
 | globalDisplayX<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | globalDisplayY<sup>20+</sup> | number |否|是| 鼠标光标或手写笔位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
@@ -154,6 +154,6 @@ struct OnHoverMoveEventExample {
 
 示意图：
 
-手写悬浮在Button组件上时，UI不断刷新笔尖的位置信息：
+手写笔悬浮在Button组件上时，UI不断刷新笔尖的位置信息：
 
 ![onHoverMove](figures/onHoverMove.png)

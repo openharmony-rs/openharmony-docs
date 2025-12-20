@@ -134,7 +134,7 @@ Download the generated trace file to the local PC by running the **hdc file recv
 
 > **NOTE**
 >
-> Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command to check whether the application specified in the command can be debugged. The expected output is **"appProvisionType": "debug"**.
+> Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command to check whether the application specified in the command is a debug-type application. The expected output is **"appProvisionType": "debug"**.
 
 For example, run the following command to check the bundle name **com.example.myapplication**:
 
@@ -354,7 +354,7 @@ This command reads the basic memory statistics of the system. After the command 
 Use DevEco Studio to obtain the memory data.
 ![en-us_image_0000002357083514](figures/en-us_image_0000002357083514.png)
 
-You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **Memory** to use the **memory plug-in** feature of the profiler. The preceding figure shows the process smaps memory information in the selected time range.
+You can go to **DevEco Studio** -> **Profiler** -> **Allocation** and select **Memory** to use the **memory plugin** feature of the profiler. The preceding figure shows the process smaps memory information in the selected time range.
 
 ### xpower-plugin
 
@@ -715,7 +715,7 @@ The captured trace file is empty.
 
 **Possible Causes and Solution**
 
-Check whether the generated file is in the **/data/local/tmp/** directory. If the target path is a folder in **/data/local/tmp**, run the **chmod 777** command on the folder. If the user version uses **nativehook** or **network profiler** to capture a no-debug application, no data can be captured. (For details, see changelog https://gitcode.com/openharmony/docs/pulls/57419.)
+Check whether the generated file is in the **/data/local/tmp/** directory. If the target path is a folder in **/data/local/tmp**, run the **chmod 777** command on the folder. If the application captured by the nativehook or network profiler plugin in the user version is not a [debug-type application](#applications-signed-by-the-debug-certificate), no data can be captured.
 
 ### What should I do if the profiling data may be inaccurate?
 

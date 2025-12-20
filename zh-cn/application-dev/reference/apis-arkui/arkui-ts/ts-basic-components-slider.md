@@ -549,7 +549,7 @@ minLabel(value: string)
 
 > **说明：** 
 >
-> 从API Version 9开始废弃，使用[SliderOptions](#slideroptions对象说明)中的min属性替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用min替代。min是[SliderOptions](#slideroptions对象说明)中的属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -567,7 +567,7 @@ maxLabel(value: string)
 
 > **说明：** 
 >
-> 从API Version 9开始废弃，使用[SliderOptions](#slideroptions对象说明)中的max属性替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用max替代。max是[SliderOptions](#slideroptions对象说明)中的属性。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

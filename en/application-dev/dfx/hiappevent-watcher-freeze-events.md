@@ -1,4 +1,5 @@
 # Application Freeze Event Overview
+
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @rr_cn-->
@@ -39,7 +40,7 @@ The **params** attribute in the event information is described as follows.
 | uid | number | User ID of an application.|
 | uuid | string | Error ID, which is generated based on fault information and uniquely identifies crash faults of the same type.|
 | exception | object | Exception information. For details, see **exception**.|
-| hilog | string[] | Log information.|
+| hilog | string[] | Log information. For the application freeze event, a maximum of 100 lines of faulty process log information can be obtained from the hilog buffer.|
 | event_handler | string[] | Events not yet handled by the main thread.|
 | event_handler_size_3s | string | Number of tasks in the task stack at 3s during the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-application-main-thread-timeout). This parameter is available only in the application freeze event.|
 | event_handler_size_6s | string | Number of tasks in the task stack at 6s during the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-application-main-thread-timeout). This parameter is available only in the application freeze event.|
