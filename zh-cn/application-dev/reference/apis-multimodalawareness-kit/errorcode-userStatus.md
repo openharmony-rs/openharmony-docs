@@ -15,7 +15,6 @@
 **错误信息**
 
 Service exception. Possible causes:
-
 <br>&emsp;1. System error, such as a null pointer and container-related exception. 
 <br>&emsp;2. Node-API invocation exception, such as invalid Node-API status.
 
@@ -39,7 +38,6 @@ Service exception. Possible causes:
 **错误信息**
 
 Subscription failed. Possible causes: 
-
 <br>&emsp;1. Callback registration failed.
 <br>&emsp;2. Failed to bind the native object to the JS wrapper.
 <br>&emsp;3. Node-API invocation exception, such as invalid Node-API status.
@@ -65,7 +63,6 @@ Subscription failed. Possible causes:
 **错误信息**
 
 Unsubscription failed. Possible causes: 
-
 <br>&emsp;1. Callback failure.
 <br>&emsp;2. Node-API invocation exception, such as invalid Node-API status.
 <br>&emsp;3. IPC request exception.
