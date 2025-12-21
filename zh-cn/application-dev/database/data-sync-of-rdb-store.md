@@ -102,12 +102,10 @@
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，默认分布式表类型（多设备协同表模式）。
    <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
 
-4. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，多设备协同表模式。
-   需要将[DistributedConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#distributedconfig10)中[DistributedTableType](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#DistributedTableType)配置为DEVICE_COLLABORATION。
+4. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，多设备协同表模式。需要将[DistributedConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#distributedconfig10)中[DistributedTableType](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#DistributedTableType)配置为DEVICE_COLLABORATION。
    <!--@[setCollaborationDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
 
-5. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，单版本表模式。
-   需要将[DistributedConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#distributedconfig10)中[DistributedTableType](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#DistributedTableType)配置为SINGLE_VERSION。
+5. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表，单版本表模式。需要将[DistributedConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#distributedconfig10)中[DistributedTableType](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#DistributedTableType)配置为SINGLE_VERSION。
    <!--@[setSingleDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
 
 6. 订阅组网内其他设备的数据变化消息。

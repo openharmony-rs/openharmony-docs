@@ -51,8 +51,7 @@
 | setDistributedTables(tables: Array&lt;string&gt;, type: DistributedType, config: DistributedConfig, callback: AsyncCallback&lt;void&gt;): void | 设置分布式同步表。 | 
 | sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void | 分布式数据同步。 | 
 | on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | 订阅分布式数据变化。 | 
-| off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | 取消订阅分布式数据变化。 | 
-| obtainDistributedTableName(device: string, table: string, callback: AsyncCallback&lt;string&gt;): void | 根据本地数据库表名获取指定设备上的表名。 | 
+| off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | 取消订阅分布式数据变化。 |
 | remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: Array&lt;string&gt; , callback: AsyncCallback&lt;ResultSet&gt;): void | 根据指定条件查询远程设备数据库中的数据。 |
 
 ## 开发步骤
@@ -104,7 +103,7 @@ schema文件路径必须为：../entry/src/main/resources/rawfile/arkdata/schema
 
 schema文件为json格式，dbSchema下可以配置多个数据库。
 
-- dbSchema：schema名称，string，不允许自定义，必填字段。
+- dbSchema：schema名称，array[db]，必填字段。
     - version：当前schema版本，int，必填字段。
     - bundleName：应用身份信息，string，必填字段。
     - dbName：数据库名，string，必填字段。eg. 如示例中数据库名为"RdbTest.db"，此处配置为："RdbTest"。
