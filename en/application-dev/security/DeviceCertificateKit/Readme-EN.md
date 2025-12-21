@@ -23,10 +23,11 @@
   - [Certificate Signature Verification with CMS](create-cms-verify-object.md)
   - [Certificate Decapsulation with CMS](create-cms-decapsulation-object.md)
   - [Creating and Parsing a Certificate with PKCS #12](create-parse-pkcs12.md)
-  - [Checking the Revocation Status of Local Certificate Chain with Only Leaf Certificate Checked](create-only-check-leaf-cert-revocate-object.md)
-  - [Checking the Revocation Status of Intermediate CA Certificates in a Certificate Chain Online](create-online-check-intermediate-certificateonly-object.md)
+  - [Online Validation of Certificate Revocation Status of a Certificate Chain](create-verify-cerchainvalidator-revocation-object.md)
+  - [Downloading the Missing Intermediate CA Certificate During Certificate Chain Validation](allow-download-Intermediate-Cert.md)
 - Certificate Management<!--certmanager-->
   - [Certificate Management Overview](certManager-overview.md)
   - [Application Certificate Development](certManager-private-credential-guidelines.md)
   - [CA Certificate Development](certManager-ca-certs-guidelines.md)
   - [Certificate Management Dialog Box Development](certManagerDialog-guidelines.md)
+<!--no_check-->
