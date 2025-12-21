@@ -30,7 +30,7 @@
 
 从API version 23开始，支持单版本表模式进行数据存储。
 
-[单版本表模式](data-sync-of-rdb-store.md#数据同步存储机制#单版本表模式)。
+[单版本表模式](data-sync-of-rdb-store.md#数据同步存储机制##单版本表模式)。
 
 ## 约束限制
 
@@ -40,7 +40,7 @@
 
 - 不支持将含有复合键的表设置为分布式表。
 
-- 单版本表模式使用需要配置schema文件，用以指定同步列以及指定解冲突列，schema约束和格式见：[schema约束](#schema约束)，[schema格式](#schema格式)。。
+- 单版本表模式使用需要配置schema文件，用以指定同步列以及指定解冲突列，schema约束和格式见：[schema约束](#schema约束)，[schema格式](#schema格式)。
 
 - 同一张表不能同时配置为端端分布式表和端云分布式表，且不支持切换。
 
@@ -93,7 +93,7 @@
 
 ## schema格式
 
-### shcema示例
+### schema示例
 
 可参考示例：[schema示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/resources/rawfile/arkdata/schema/sync_schema.json)。
 
@@ -122,7 +122,7 @@ schema文件为json格式，dbSchema下可以配置多个数据库。
 
 ## schema约束
 
-- 不持支解冲突列变化。
+- 不支持解冲突列变化。
   - 错误示例：
     - 旧版本schema：
       ``` Json
