@@ -992,8 +992,7 @@ try {
 
 ### SIGNIFICANT_MOTION<sup>9+</sup>
 
-on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.SIGNIFICANT_MOTION, callback: Callback&lt;SignificantMotionResponse&gt;, options?: Options): void
 
 订阅有效运动传感器数据。
 
@@ -1038,8 +1037,7 @@ try {
 
 ###  WEAR_DETECTION<sup>9+</sup>
 
-on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.WEAR_DETECTION, callback: Callback&lt;WearDetectionResponse&gt;, options?: Options): void
 
 订阅佩戴检测传感器数据。
 
