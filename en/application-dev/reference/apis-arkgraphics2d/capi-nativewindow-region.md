@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct {...} Region
+```
+
 ## Overview
 
 The **Region** struct describes the rectangle (dirty region) where the content is to be updated in the local **OHNativeWindow**.

@@ -1,5 +1,8 @@
 # OH_LowPowerAudioSink
 
+```c
+typedef struct OH_LowPowerAudioSink OH_LowPowerAudioSink
+```
 ## Overview
 
 The struct describes the declaration for the LowPowerAudioSink.

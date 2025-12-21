@@ -98,7 +98,9 @@ The following uses custom font registration method 1 as an example to draw the t
 
 Ensure that the custom font file has been placed in the correct path on the device.
 
-```ts
+<!-- @[arkts_custom_font](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/CustomFont/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Index.ets
 import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
 import { UIContext } from '@kit.ArkUI'
@@ -222,7 +224,7 @@ struct RenderTest {
       .backgroundColor(Color.White)
 
       Row() {
-        Button("load font")
+        Button($r('app.string.Button_load_font'))
           .fontSize('16fp')
           .fontWeight(500)
           .margin({ bottom: 24, right: 12 })
@@ -235,14 +237,14 @@ struct RenderTest {
           .width('30%')
           .height(40)
           .shadow(ShadowStyle.OUTER_DEFAULT_LG)
-        Button("unload font")
+        Button($r('app.string.Button_unload_font'))
           .fontSize('16fp')
           .fontWeight(500)
           .margin({ bottom: 24, right: 12 })
           .onClick(() => {
             // Deregister a custom font.
             fontCollection.unloadFontSync(familyName)
-            // Refresh the node that uses the font collection after the deregistration.
+            // Refresh the node that uses the font collection after the font is unregistered.
             newNode.invalidate()
           })
           .width('30%')

@@ -270,7 +270,7 @@ getId(): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回后端实例唯一标识的ID，取值范围：(0, +∞) |
+| number | 返回后端实例唯一标识的ID，取值范围：[-1, +∞) |
 
 **示例：**
 
@@ -432,6 +432,8 @@ animateTo(value: AnimateParam, event: () => void): void
 > - 在组件出现和消失时，可以通过[组件内转场](../apis-arkui/arkui-ts/ts-transition-animation-component.md)添加动画效果。
 > - 组件内转场不支持的属性，可以参考[显式动画](./arkui-ts/ts-explicit-animation.md)中的[示例2](./arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > - 某些场景下，在[状态管理V2](../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
+> - UIAbility从前台切换至后台时会立即结束仍在步进中的有限循环动画，从而触发[onFinish动画播放完成回调](arkui-ts/ts-explicit-animation.md#animateparam对象说明)。
+> - 在设置的开发者选项中关闭过渡动画，动画会当帧结束，onFinish动画播放完成回调会立即执行，请避免在回调中加入时序相关的功能逻辑。
 
 **参数：**
 
@@ -1019,46 +1021,49 @@ struct DatePickerDialogExample {
   selectedDate: Date = new Date("2010-1-1");
 
   build() {
-    Column() {
-      Button("DatePickerDialog")
-        .margin(20)
-        .onClick(() => {
-          this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-1-1"),
-            end: new Date("2100-12-31"),
-            selected: this.selectedDate,
-            showTime: true,
-            useMilitaryTime: false,
-            dateTimeOptions: { hour: "numeric", minute: "2-digit" },
-            onDateAccept: (value: Date) => {
-              // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
-              this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
-            },
-            onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
-            },
-            onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
-            },
-            onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
-            },
-            onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
-            },
-            onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
-            },
-            onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
-            }
+    Row(){
+      Column() {
+        Button("DatePickerDialog")
+          .margin(20)
+          .onClick(() => {
+            this.getUIContext().showDatePickerDialog({
+              start: new Date("2000-1-1"),
+              end: new Date("2100-12-31"),
+              selected: this.selectedDate,
+              showTime: true,
+              useMilitaryTime: false,
+              dateTimeOptions: { hour: "numeric", minute: "2-digit" },
+              onDateAccept: (value: Date) => {
+                // 通过Date的setFullYear方法设置按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
+                this.selectedDate = value;
+                console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              },
+              onCancel: () => {
+                console.info("DatePickerDialog:onCancel()");
+              },
+              onDateChange: (value: Date) => {
+                console.info("DatePickerDialog:onDateChange()" + value.toString());
+              },
+              onDidAppear: () => {
+                console.info("DatePickerDialog:onDidAppear()");
+              },
+              onDidDisappear: () => {
+                console.info("DatePickerDialog:onDidDisappear()");
+              },
+              onWillAppear: () => {
+                console.info("DatePickerDialog:onWillAppear()");
+              },
+              onWillDisappear: () => {
+                console.info("DatePickerDialog:onWillDisappear()");
+              }
+            })
           })
-        })
-    }.width('100%')
+      }.width('100%')
+    }.height('100%')
   }
 }
 ```
+![showDatePickerDialog](figures/showDatePickerDialog.gif)
 
 ## showTimePickerDialog
 
@@ -1173,34 +1178,37 @@ struct TextPickerDialogExample {
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4', 'banana5'];
   private select: number  = 0;
   build() {
-    Column() {
-      Button('showTextPickerDialog')
-        .margin(30)
-        .onClick(() => {
-          this.getUIContext().showTextPickerDialog({
-            range: this.fruits,
-            selected: this.select,
-            onAccept: (value: TextPickerResult) => {
-              // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
-              let selectedVal = new SelectedValue();
-              let selectedArr = new SelectedArray();
-              if (value.index){
-                value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+    Row(){
+      Column() {
+        Button('showTextPickerDialog')
+          .margin(30)
+          .onClick(() => {
+            this.getUIContext().showTextPickerDialog({
+              range: this.fruits,
+              selected: this.select,
+              onAccept: (value: TextPickerResult) => {
+                // 设置select为按下确定按钮时候的选中项index，这样当弹窗再次弹出时显示选中的是上一次确定的选项
+                let selectedVal = new SelectedValue();
+                let selectedArr = new SelectedArray();
+                if (value.index){
+                  value.index instanceof Array?selectedArr.set(value.index) : selectedVal.set(value.index);
+                }
+                console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
+              },
+              onCancel: () => {
+                console.info("TextPickerDialog:onCancel()");
+              },
+              onChange: (value: TextPickerResult) => {
+                console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
               }
-              console.info("TextPickerDialog:onAccept()" + JSON.stringify(value));
-            },
-            onCancel: () => {
-              console.info("TextPickerDialog:onCancel()");
-            },
-            onChange: (value: TextPickerResult) => {
-              console.info("TextPickerDialog:onChange()" + JSON.stringify(value));
-            }
-          });
-        })
-    }.width('100%').margin({ top: 5 })
+            });
+          })
+      }.width('100%').margin({ top: 5 })
+    }.height('100%')
   }
 }
 ```
+![showTextPickerDialog](figures/showTextPickerDialog.gif)
 
 ## showTextPickerDialog<sup>20+</sup>
 
@@ -1461,7 +1469,7 @@ export default class EntryAbility extends UIAbility{
       windowStage.loadContent('pages/Index', (err, data) => {
         let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
         let KeyboardAvoidMode = uiContext.getKeyboardAvoidMode();
-        console.info(0x0000, "KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
+        console.info("KeyboardAvoidMode:", JSON.stringify(KeyboardAvoidMode));
       });
     }
 }
@@ -3500,96 +3508,6 @@ export default class EntryAbility extends UIAbility {
       UIContext.setResourceManagerCacheMaxCountForHSP(5);
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
-  }
-}
-```
-
-## setImageCacheCount<sup>22+</sup>
-
-setImageCacheCount(value: number): void
-
-设置内存中缓存解码后图片的数量上限，以加快同源图片的再次加载速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载超过上限时，会移除最久未使用的缓存。建议根据应用内存需求，合理设置缓存数量，避免内存使用过高。
-
-setImageCacheCount方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
-
-setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵活，后续不继续演进。对于复杂情况，更推荐使用[ImageKnife](https://gitcode.com/openharmony-tpc/ImageKnife)。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| value | number | 是 | 内存中解码后图片的缓存数量。<br>取值范围：[0, +∞) |
-
-**示例：**
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  onPageShow() {
-    // 设置解码后图片内存缓存上限为100张
-    this.getUIContext().setImageCacheCount(100);
-    console.info('Application onPageShow');
-  }
-  onDestroy() {
-    console.info('Application onDestroy');
-  }
-
-  build() {
-    Row(){
-      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
-        .width(200)
-        .height(50)
-    }.width('100%')
-  }
-}
-```
-
-## setImageRawDataCacheSize<sup>22+</sup>
-
-setImageRawDataCacheSize(value: number): void
-
-设置内存中缓存解码前图片数据的大小上限，单位为字节，以加快再次加载同源图片的速度。默认值为0，表示不缓存。缓存使用LRU策略，新图片加载后，若解码前数据超过上限，会删除最久未使用的图片数据缓存。建议根据应用内存需求，设置合理的缓存上限，避免内存使用过高。
-
-setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或[aboutToAppear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)里面设置才生效。
-
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| value | number | 是 | 内存中解码前图片数据的缓存大小，单位为字节。<br>取值范围：[0, +∞) |
-
-**示例：**
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  onPageShow() {
-    // 设置解码前图片数据内存缓存上限为100MB (100MB=100*1024*1024B=104857600B)
-    this.getUIContext().setImageRawDataCacheSize(104857600); 
-    console.info('Application onPageShow');
-  }
-  onDestroy() {
-    console.info('Application onDestroy');
-  }
-
-  build() {
-    Row(){
-      Image('https://www.example.com/xxx.png') // 请填写一个具体的网络图片地址
-        .width(200)
-        .height(50)
-    }.width('100%')
   }
 }
 ```

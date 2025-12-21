@@ -46,7 +46,7 @@ The file declares the structs and enums of the LowPowerVideoSink.
 
 ### OH_LowPowerVideoSink_OnDataNeeded()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink,OH_AVSamplesBuffer* buffer,void *userData)
 ```
 
@@ -67,7 +67,7 @@ Called when the LowPowerVideoSink needs more data. This callback is included in 
 
 ### OH_LowPowerVideoSink_OnError()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink,OH_AVErrCode errCode,const char* errMsg,void* userData)
 ```
 
@@ -89,7 +89,7 @@ Called when an error occurs in the LowPowerVideoSink.
 
 ### OH_LowPowerVideoSink_OnTargetArrived()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink,const int64_t targetPts,const bool isTimeout,void* userData)
 ```
 
@@ -106,12 +106,12 @@ Called when the LowPowerVideoSink reaches the target point. This callback is inc
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
 | const int64_t targetPts | Presentation timestamp (PTS) of the target point.|
-| const bool isTimeout | Whether the wait for the target point has timed out. If it has timed out, this value is **false**.|
+| const bool isTimeout | Whether the wait for the target point has timed out. **true** if timed out, **false** otherwise.|
 | void* userData | Pointer to the data on which the caller depends when executing the callback.|
 
 ### OH_LowPowerVideoSink_OnRenderStarted()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 
@@ -131,7 +131,7 @@ Called when the LowPowerVideoSink starts rendering. This callback is included in
 
 ### OH_LowPowerVideoSink_OnStreamChanged()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink, OH_AVFormat* format, void* userData)
 ```
 
@@ -152,7 +152,7 @@ Called when the stream changes in the LowPowerVideoSink. This callback is includ
 
 ### OH_LowPowerVideoSink_OnFirstFrameDecoded()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 
@@ -172,7 +172,7 @@ Called when the first frame is successfully decoded in the LowPowerVideoSink. Th
 
 ### OH_LowPowerVideoSink_OnEos()
 
-```
+```c
 typedef void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* userData)
 ```
 

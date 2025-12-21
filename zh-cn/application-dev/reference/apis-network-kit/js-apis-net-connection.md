@@ -2131,7 +2131,6 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
     console.info(`macAddress:${data[0].macAddress}`);
   }
 }).catch((error: BusinessError) => {
-  console.error("error fetching ip neigh table:", Code:JSON.stringify(error));
   console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
 });
 ```

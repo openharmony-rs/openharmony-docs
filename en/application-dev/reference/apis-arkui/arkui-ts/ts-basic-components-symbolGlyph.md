@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **SymbolGlyph** component represents a symbol glyph.<!--RP1--><!--RP1End-->
 
@@ -46,6 +46,10 @@ fontColor(value: Array&lt;ResourceColor&gt;)
 
 Sets the color of the **SymbolGlyph** component.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -65,6 +69,10 @@ fontSize(value: number | string | Resource)
 Sets the size of the **SymbolGlyph** component. When using the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
 The display size of the symbol glyph is controlled by the **fontSize** setting. Once **width** or **height** is specified, other universal attributes will only affect the size of the component's placeholder, not the symbol glyph itself.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -86,6 +94,10 @@ Sets the font weight of the **SymbolGlyph** component. For the number type, the 
 
 The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -103,6 +115,10 @@ The **sys.symbol.ohos_lungs** icon does not support font weight setting.
 renderingStrategy(value: SymbolRenderingStrategy)
 
 Sets the rendering strategy of the **SymbolGlyph** component.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -125,6 +141,10 @@ The figure below shows the effects of different rendering strategies.
 effectStrategy(value: SymbolEffectStrategy)
 
 Sets the effect strategy of the **SymbolGlyph** component.
+
+>**NOTE**
+>
+> This API can be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 12.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -246,7 +266,7 @@ Sets the shadow effect of the **SymbolGlyph** component.
 
 | Name| Type| Mandatory| Description |
 | ------ | ---- | ---- | ----- |
-| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)\> ; | Yes | Shadow effect of the **SymbolGlyph** component.<br>Unit: [vp](ts-pixel-units.md)<br>Default value: {<br>radius: 0,<br>color: Color.Black<br>offsetX: 0,<br>offsetY: 0<br>} <br>The fill and type attributes and the enumerated values of ColoringStrategy in color are not supported.|
+| shadow  |[Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)\>  | Yes | Shadow effect of the **SymbolGlyph** component.<br>Unit: [vp](ts-pixel-units.md)<br>Default value: {<br>radius: 0,<br>color: Color.Black<br>offsetX: 0,<br>offsetY: 0<br>} <br>The fill and type attributes and the enumerated values of ColoringStrategy in color are not supported.|
 
 ## ScaleSymbolEffect<sup>12+</sup>
 
@@ -463,7 +483,7 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 
 constructor(scope?: EffectScope, replaceType?: ReplaceEffectType)
 
-A constructor used to create a **ReplaceSymbolEffect** instance, which comes with a replace animation effect.
+A constructor used to create a **ReplaceSymbolEffect** instance, which comes with a replace animation effect. The replace effect type can be specified.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 20.
 

@@ -28,7 +28,7 @@ static show(options?: DatePickerDialogOptions)
 
 > **说明：**
 > 
-> 从API version 18开始废弃。建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)替代。
+>  从API version 11开始支持，从API version 18开始废弃。建议使用[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)替代，showDatePickerDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
 >
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)来明确UI的执行上下文。
 
@@ -120,16 +120,16 @@ static show(options?: DatePickerDialogOptions)
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-01-01");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             showTime: true,
             useMilitaryTime: false,
@@ -137,25 +137,25 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             },
             onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
+              console.info('DatePickerDialog:onCancel()');
             },
             onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
+              console.info('DatePickerDialog:onDateChange()' + value.toString());
             },
             onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
+              console.info('DatePickerDialog:onDidAppear()');
             },
             onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
+              console.info('DatePickerDialog:onDidDisappear()');
             },
             onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
+              console.info('DatePickerDialog:onWillAppear()');
             },
             onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
+              console.info('DatePickerDialog:onWillDisappear()');
             }
           })
         })
@@ -175,16 +175,16 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-01-01");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             disappearTextStyle: { color: '#297bec', font: { size: '20fp', weight: FontWeight.Bold } },
             textStyle: { color: Color.Black, font: { size: '18fp', weight: FontWeight.Normal } },
@@ -216,25 +216,25 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             },
             onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
+              console.info('DatePickerDialog:onCancel()');
             },
             onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
+              console.info('DatePickerDialog:onDateChange()' + value.toString());
             },
             onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
+              console.info('DatePickerDialog:onDidAppear()');
             },
             onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
+              console.info('DatePickerDialog:onDidDisappear()');
             },
             onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
+              console.info('DatePickerDialog:onWillAppear()');
             },
             onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
+              console.info('DatePickerDialog:onWillDisappear()');
             }
           });
         })
@@ -257,16 +257,16 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-01-01");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             showTime: true,
             useMilitaryTime: false,
@@ -276,25 +276,25 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             },
             onCancel: () => {
-              console.info("DatePickerDialog:onCancel()");
+              console.info('DatePickerDialog:onCancel()');
             },
             onDateChange: (value: Date) => {
-              console.info("DatePickerDialog:onDateChange()" + value.toString());
+              console.info('DatePickerDialog:onDateChange()' + value.toString());
             },
             onDidAppear: () => {
-              console.info("DatePickerDialog:onDidAppear()");
+              console.info('DatePickerDialog:onDidAppear()');
             },
             onDidDisappear: () => {
-              console.info("DatePickerDialog:onDidDisappear()");
+              console.info('DatePickerDialog:onDidDisappear()');
             },
             onWillAppear: () => {
-              console.info("DatePickerDialog:onWillAppear()");
+              console.info('DatePickerDialog:onWillAppear()');
             },
             onWillDisappear: () => {
-              console.info("DatePickerDialog:onWillDisappear()");
+              console.info('DatePickerDialog:onWillDisappear()');
             },
             enableHoverMode: true,
             hoverModeArea: HoverModeAreaType.TOP_SCREEN
@@ -316,23 +316,23 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-01-01");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             alignment: DialogAlignment.Center,
             offset: { dx: 20, dy: 0 },
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -352,16 +352,16 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-01-01");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             maskRect: {
               x: 30,
@@ -372,7 +372,7 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -392,16 +392,16 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-01-01");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             backgroundColor: 'rgb(204, 226, 251)',
             backgroundBlurStyle: BlurStyle.NONE,
@@ -409,7 +409,7 @@ struct DatePickerDialogExample {
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -429,38 +429,38 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-11-09");
+  selectedDate: Date = new Date('2010-11-09');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             lunar: false,
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
 
-      Button("Lunar DatePickerDialog")
+      Button('Lunar DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             lunar: true,
             lunarSwitch: true,
             onDateAccept: (value: Date) => {
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -480,22 +480,22 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-10-13");
+  selectedDate: Date = new Date('2010-10-13');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             mode: DatePickerMode.MONTH_AND_DAY,
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -516,22 +516,22 @@ struct DatePickerDialogExample {
 @Component
 struct DatePickerDialogExample {
   @State isLoop: boolean = true;
-  selectedDate: Date = new Date("2009-12-31");
+  selectedDate: Date = new Date('2009-12-31');
 
   build() {
     Column() {
-      Button("DatePickerDialog")
+      Button('DatePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
-            start: new Date("2000-01-01"),
-            end: new Date("2100-12-31"),
+            start: new Date('2000-01-01'),
+            end: new Date('2100-12-31'),
             selected: this.selectedDate,
             canLoop: this.isLoop,
             onDateAccept: (value: Date) => {
               // 保存按下确定按钮时的日期，这样当弹窗再次弹出时显示选中的是上一次确定的日期
               this.selectedDate = value;
-              console.info("DatePickerDialog:onDateAccept()" + value.toString());
+              console.info('DatePickerDialog:onDateAccept()' + value.toString());
             }
           });
         })
@@ -558,19 +558,18 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-01-01");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
-      // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("DatePickerDialog")
+        Button('DatePickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showDatePickerDialog({
-              start: new Date("2000-01-01"),
-              end: new Date("2100-12-31"),
+              start: new Date('2000-01-01'),
+              end: new Date('2100-12-31'),
               selected: this.selectedDate,
               backgroundColor: undefined,
               backgroundBlurStyle: BlurStyle.Thin,
@@ -598,19 +597,19 @@ struct DatePickerDialogExample {
 @Entry
 @Component
 struct DatePickerDialogExample {
-  selectedDate: Date = new Date("2010-01-01");
+  selectedDate: Date = new Date('2010-01-01');
 
   build() {
     Stack({ alignContent: Alignment.Top }) {
       // $r('app.media.bg')需要替换为开发者所需的图像资源文件。
       Image($r('app.media.bg'))
       Column() {
-        Button("DatePickerDialog")
+        Button('DatePickerDialog')
           .margin(20)
           .onClick(() => {
             this.getUIContext().showDatePickerDialog({
-              start: new Date("2000-01-01"),
-              end: new Date("2100-12-31"),
+              start: new Date('2000-01-01'),
+              end: new Date('2100-12-31'),
               selected: this.selectedDate,
               backgroundColor: undefined,
               backgroundBlurStyle: BlurStyle.Thin,

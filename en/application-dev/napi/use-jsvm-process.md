@@ -217,7 +217,6 @@ By referring to [Node-API Development Process](use-napi-process.md#implementing-
 ## Calling C/C++ APIs in ArkTS
 
 ```ts
-import hilog from '@ohos.hilog';
 // Import the native APIs.
 import napitest from 'libentry.so';
 

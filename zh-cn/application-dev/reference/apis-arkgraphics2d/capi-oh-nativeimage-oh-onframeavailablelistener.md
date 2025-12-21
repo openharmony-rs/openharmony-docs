@@ -40,7 +40,7 @@ typedef struct OH_OnFrameAvailableListener {...} OH_OnFrameAvailableListener
 
 ### OH_OnFrameAvailable()
 
-```
+```c
 typedef void (*OH_OnFrameAvailable)(void *context)
 ```
 

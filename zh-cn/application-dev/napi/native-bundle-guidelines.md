@@ -35,7 +35,7 @@
 
 **2. 添加依赖**
 
-创建完成后，DevEco Studio会在工程生成cpp目录，目录有types/libentry/index.d.ts、napi_init.cpp、CMakeLists.txt等文件。
+创建完成后，DevEco Studio会在工程生成cpp目录，目录中包含types/libentry/index.d.ts、napi_init.cpp、CMakeLists.txt等文件。
 
 1. 打开src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加包管理的libbundle_ndk.z.so。
 
@@ -457,7 +457,7 @@ export const getAbilityResourceInfo: (fileType: string) => object;      // 新�
 
 **5. js侧调用**
 
-1. 打开src\main\ets\pages\index.ets, 导入"libentry.so"。
+1. 打开src/main/ets/pages/index.ets, 导入"libentry.so"。
 
 
 2. 调用Native接口打印出获取的信息内容。示例如下：

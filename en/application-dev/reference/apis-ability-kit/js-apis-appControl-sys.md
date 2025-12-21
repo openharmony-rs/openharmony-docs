@@ -55,7 +55,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -111,7 +111,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -168,7 +168,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -222,7 +222,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -275,7 +275,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -334,7 +334,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -388,7 +388,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -441,7 +441,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is empty string. |
 
 **Example**
 
@@ -493,7 +493,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **Example**
@@ -548,7 +548,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **Example**
@@ -556,7 +556,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 
@@ -566,6 +565,8 @@ try {
 } catch (error) {
   let message = (error as BusinessError).message;
   console.error('getDisposedRule failed ' + message);
+}
+```
 }
 ```
 
@@ -599,7 +600,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
-| 17700005 |  The specified app ID is an empty string.  |
+| 17700005 | The specified app ID is invalid. |
 | 17700061 | AppIndex is not in the valid range. |
 
 **Example**
@@ -958,7 +959,7 @@ Describes an uninstallation disposed rule.
 
 | Name     | Type          | Read-Only| Optional| Description                       |
 | --------- | -------------- | ---- | ---- | --------------------------- |
-| want | [Want](js-apis-app-ability-want.md)     | No  | No  | Page displayed when the application is disposed of.|
+| want | [Want](js-apis-app-ability-want.md)     | No  | No  | Component displayed when the application is disposed of.|
 | UninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | No  | No  | Type of the ability to start during interception.|
 | priority | number | No| No| Priority of the disposed rule, which is used to sort the query results of the rule list. The value is an integer. A smaller value indicates a higher priority.|
 
@@ -972,8 +973,8 @@ Enumerates the types of abilities during uninstallation.
 
 | Name   | Value  | Description                |
 | ------- | ---- | -------------------- |
-| EXTENSION | 1    | Extension ability.|
-| UI_EXTENSION<sup>22+</sup> | 2    | UIExtensionAbility component.|
+| EXTENSION | 1    | ExtensionAbility component. Only [ExtensionAbility](../../quick-start/module-configuration-file.md#extensionabilities) components of the service type is supported.<br>The ExtensionAbility component is determined by bundleName, moduleName, and abilityName in want.|
+| UI_EXTENSION<sup>22+</sup> | 2    | UIExtensionAbility component.<br>The UIExtensionAbility is determined by bundleName, moduleName, and abilityName in want, and the **ability.want.params.uiExtensionType** field in **want.parameters** is set to [UIExtensionAbility](../../application-models/uiextensionability-sys.md).|
 
 ## DisposedRuleConfiguration<sup>20+</sup>
 

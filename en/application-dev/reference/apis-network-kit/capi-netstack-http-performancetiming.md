@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_PerformanceTiming {...} Http_PerformanceTiming
+```
+
 ## Overview
 
 Defines the HTTP response timing information, which will be collected via {@link Http_Response.performanceTiming}.

@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_TextBox OH_Drawing_TextBox
+```
+
 ## Overview
 
 Defines a struct for a text box, which is used to receive the rectangle size, direction, and quantity.

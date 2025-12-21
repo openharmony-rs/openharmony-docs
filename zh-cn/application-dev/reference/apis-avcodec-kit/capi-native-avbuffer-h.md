@@ -50,7 +50,7 @@
 
 ### OH_AVBuffer_Create()
 
-```
+```c
 OH_AVBuffer *OH_AVBuffer_Create(int32_t capacity)
 ```
 
@@ -77,7 +77,7 @@ OH_AVBuffer *OH_AVBuffer_Create(int32_t capacity)
 
 ### OH_AVBuffer_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 ```
 
@@ -104,7 +104,7 @@ OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 
 ### OH_AVBuffer_GetBufferAttr()
 
-```
+```c
 OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr *attr)
 ```
 
@@ -132,7 +132,7 @@ OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr
 
 ### OH_AVBuffer_SetBufferAttr()
 
-```
+```c
 OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBufferAttr *attr)
 ```
 
@@ -160,7 +160,7 @@ OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBuff
 
 ### OH_AVBuffer_GetParameter()
 
-```
+```c
 OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)
 ```
 
@@ -187,7 +187,7 @@ OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)
 
 ### OH_AVBuffer_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *format)
 ```
 
@@ -215,7 +215,7 @@ OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *fo
 
 ### OH_AVBuffer_GetAddr()
 
-```
+```c
 uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 ```
 
@@ -262,7 +262,7 @@ uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 
 ### OH_AVBuffer_GetCapacity()
 
-```
+```c
 int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)
 ```
 
@@ -289,7 +289,7 @@ int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)
 
 ### OH_AVBuffer_GetNativeBuffer()
 
-```
+```c
 OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)
 ```
 

@@ -10,13 +10,13 @@
 
 程序崩溃类问题：通过C++崩溃时调用栈查询FAQ的方式定位代码问题
 
-程序执行结果不符合预期类问题：需应用通过JSVM-API调用返回值定位到执行失败或执行结果不符合预期的位置，通过函数名查询FAQ
+程序执行结果不符合预期类问题：需要应用通过JSVM-API调用返回值定位到执行失败或执行结果不符合预期的位置，通过函数名查询FAQ
 
 ## 程序崩溃类
 
 1. Q：在`OH_JSVM_RunScript`或`OH_JSVM_CallFunction`时crash，调用栈顶层为`SetReturnValue`
 
-   ```
+   ```txt
    #00 pc 0000000000c68ef0 /system/lib64/ndk/libjsvm.so(v8impl::(anonymous namespace)::FunctionCallbackWrapper::SetReturnValue(JSVM_Value__*)+16)
    #01 pc 0000000000c5ad30 /system/lib64/ndk/libjsvm.so(v8impl::(anonymous namespace)::FunctionCallbackWrapper::Invoke(v8::FunctionCallbackInfo<v8::Value> const&)+332)
    #02 pc 00000000014a9e58 /system/lib64/ndk/libjsvm.so
@@ -50,9 +50,9 @@
 
    A：检查`JSVM_CallbackStruct`是否为栈上变量。如果跨函数使用，需确保`JSVM_CallbackStruct`的生命周期长于`JSVM_Env`的生命周期。
 
-   ```
+   ```c++
    func {
-   	// ...
+      // ...
        JSVM_CallbackStruct param[] = {
            {.data = nullptr, .callback = ConsoleInfo},
            {.data = nullptr, .callback = Add},
@@ -74,11 +74,11 @@
 
 3. Q：`OH_JSVM_ReferenceRef`、`OH_JSVM_ReferenceUnRef`、`OH_JSVM_CreateReference`、`OH_JSVM_DeleteReference`时程序崩溃
 
-   A：检查是否同时有多个线程持有和释放`JSVM_Ref`，见 [多线程共享引擎实例](jsvm-guidelines.md#多线程共享引擎实例)
+   A：检查是否同时有多个线程持有和释放`JSVM_Ref`，见[多线程共享引擎实例](jsvm-guidelines.md#多线程共享引擎实例)
 
 4. Q：在虚拟机引擎实例中创建JS类型实例崩溃（如`OH_JSVM_CreateDouble`），调用栈如下
 
-   ```
+   ```txt
    #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::0S::Abort()+28)
    #01 pc 0000000001408480/system/lib64/ndk/libjsvm.so(v8::Utils::ReportApiFailure(char const*,char const*)+124)
    #02 pc 00000000015c99b8/system/lib64/ndk/libjsvm.so(v8::internal::HandleScope::Extend(v8::internal::Isolate*+200)
@@ -96,6 +96,6 @@
 
    A：`JSVM_PENDING_EXCEPTION`表明当前虚拟机环境中存在未处理的异常，可能是由于本次调用产生的`JS`异常，也可能是之前调用产生的未被清理的异常。可以通过在函数调用前插入`OH_JSVM_GetAndClearLastException`排查之前是否有未清除的异常。如果为之前的未清理异常，检查是否有JSVM接口调用未处理异常返回值；如果是本次产生的异常，需清理异常，避免影响后续的函数调用。获取并清理异常的函数为`OH_JSVM_GetAndClearLastException`
 
-3. Q：JS执行时无法找到 `OH_JSVM_DefineClass` 定义的类
+3. Q：JS执行时无法找到`OH_JSVM_DefineClass`定义的类
 
    A：检查是否将定义的类绑定到上下文中，见[上下文绑定对象](jsvm-guidelines.md#上下文绑定对象)

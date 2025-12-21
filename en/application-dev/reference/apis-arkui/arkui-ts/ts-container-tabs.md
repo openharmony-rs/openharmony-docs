@@ -50,7 +50,7 @@ Provides parameters for configuring the **Tabs** component, including tab positi
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type                             | Read Only| Optional  | Description                                    |
+| Name        | Type                             | Read-Only| Optional  | Description                                    |
 | ----------- | --------------------------------- | ---- | --------- | ------------------------------- |
 | barPosition<sup>7+</sup> | [BarPosition](#barposition)| No| Yes   | Position of the **Tabs** component.<br>Default value: **BarPosition.Start**<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 | index<sup>7+</sup>       | number                            | No| Yes  | Index of the currently displayed tab.<br>Default value: **0**<br>**NOTE**<br>A value less than 0 evaluates to the default value.<br>The value ranges from 0 to the number of **TabContent** nodes minus 1.<br>When the tab is switched by changing the index, the tab switching animation does not take effect. When **changeIndex** of **TabController** is used for tab switching, the tab switching animation is enabled by default. You can disable the animation by setting **animationDuration** to **0**.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>When the **Tabs** component is rebuilt, system resources are switched (for example, system font or theme changes), or component attributes change, the **Tab** component will switch to the one specified by **index**. To prevent this behavior, you are advised to use two-way binding.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -466,7 +466,7 @@ Describes the divider style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type                                    | Read Only| Optional  | Description                                      |
+| Name         | Type                                    | Read-Only| Optional  | Description                                      |
 | ----------- | ---------------------------------------- | ---- | ------ | ---------------------------------- |
 | strokeWidth | [Length](ts-types.md#length)             | No| No   | Width of the divider. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)          |
 | color       | [ResourceColor](ts-types.md#resourcecolor) | No| Yes   | Color of the divider.<br>Default value: **#33182431**               |
@@ -481,7 +481,7 @@ Implements a **BarGridColumnOptions** object for setting the visible area of the
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type                                    | Read Only| Optional  | Description                                      |
+| Name         | Type                                    | Read-Only| Optional  | Description                                      |
 | ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
 | margin | [Dimension](ts-types.md#dimension10)             | No| Yes   | Column margin in grid mode. It cannot be set in percentage.<br>Default value: **24.0**<br>Unit: vp                       |
 | gutter      | [Dimension](ts-types.md#dimension10) | No| Yes   | Column gutter (that is, gap between columns) in grid mode. It cannot be set in percentage.<br>Default value: **24.0**<br>Unit: vp                    |
@@ -497,7 +497,7 @@ Implements a **ScrollableBarModeOptions** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name         | Type                                    | Read Only| Optional  | Description                                      |
+| Name         | Type                                    | Read-Only| Optional  | Description                                      |
 | ----------- | ---------------------------------------- | ---- | ------- | --------------------------------- |
 | margin | [Dimension](ts-types.md#dimension10)          | No| Yes   | Left and right margin of the tab bar in scrollable mode. It cannot be set in percentage.<br>Default value: **0.0**<br>Unit: vp<br>Value range: [0, +∞)|
 | nonScrollableLayoutStyle      | [LayoutStyle](#layoutstyle10) | No| Yes  | Tab layout mode of the tab bar when not scrolling in scrollable mode.<br>Default value: **LayoutStyle.ALWAYS_CENTER**          |
@@ -890,7 +890,7 @@ Describes the animation information of the **Tabs** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type     | Read Only| Optional| Description                                      |
+| Name           | Type     | Read-Only| Optional| Description                                      |
 | ------------- | ---------- | ---- | ---- | ------------------------ |
 | currentOffset | number | No| No| Offset of the currently displayed element relative to the start position of the **Tabs** component along the main axis.<br> Unit: vp.<br>Default value: **0**.|
 | targetOffset | number | No| No| Offset of the target element relative to the start position of the **Tabs** component along the main axis.<br> Unit: vp.<br>Default value: **0**.|
@@ -906,7 +906,7 @@ Provides the information about the custom tab switching animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type        | Read Only| Optional  | Description                                      |
+| Name           | Type        | Read-Only| Optional  | Description                                      |
 | ------------- | ---------------- | ------ | ---- |---------------------- |
 | timeout | number | No| Yes| Timeout for the custom tab switching animation. The timer starts when the switching begins. If this timeframe passes without you calling the **finishTransition** API in [TabContentTransitionProxy](#tabcontenttransitionproxy11), the component will assume that the custom animation has ended and will proceed directly with subsequent operations.<br>Default value: **1000**<br>Unit: ms<br>Value range: [0, +∞)|
 | transition | [Callback](./ts-types.md#callback12)\<[TabContentTransitionProxy](#tabcontenttransitionproxy11)> | No| No| Content of the custom tab switching animation.|
@@ -923,7 +923,7 @@ Implements the proxy object returned during the execution of the custom switchin
 
 ### Attributes
 
-| Name | Type    | Read Only| Optional| Description                        |
+| Name | Type    | Read-Only| Optional| Description                        |
 | ----- | ------- | ---- | ---- | --------------------------- |
 | from | number | No| No| Zero-based index of the source page in the custom animation.|
 | to | number | No| No| Zero-based index of the target page in the custom animation.|

@@ -1,4 +1,4 @@
-# @ohos.file.cloudSync (Device-Cloud Synchronization)
+# @ohos.file.cloudSync (Device-Cloud Sync)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @zsyztt; @Hermits; @reminder2352-->
@@ -232,6 +232,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   let callback = (pg: cloudSync.SyncProgress) => {
@@ -277,6 +278,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.start((err: BusinessError) => {
@@ -317,6 +319,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.stop().then(() => {
@@ -355,6 +358,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.stop((err: BusinessError) => {
@@ -393,6 +397,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.getLastSyncTime().then((timeStamp: number) => {
@@ -431,6 +436,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileSync = new cloudSync.FileSync();
 
   fileSync.getLastSyncTime((err: BusinessError, timeStamp: number) => {
@@ -499,6 +505,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let callback = (pg: cloudSync.DownloadProgress) => {
     console.info("download state: " + pg.state);
@@ -587,6 +594,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
+
   let fileCache = new cloudSync.CloudFileCache();
 
   let callback = (pg: cloudSync.DownloadProgress) => {
@@ -682,6 +690,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -734,6 +743,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -778,6 +788,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 | -------- | -------- |
 | 13600001 | IPC error. Possible causes: 1.IPC failed or timed out. 2.Failed to load the service.                                                                                              |
 | 13900020 | Invalid argument. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                                                                     |
+| 14000002 | Invalid uri. |
 | 22400004 | Exceed the maximum limit.                                                                                                                                                         |
 | 22400005 | Inner error. Possible causes: 1.Failed to access the database or execute the SQL statement. 2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
@@ -843,6 +854,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -887,6 +899,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileUri } from '@kit.CoreFileKit';
+
   let fileCache = new cloudSync.CloudFileCache();
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
@@ -1201,6 +1214,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { fileUri } from '@kit.CoreFileKit';
+
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
   let onCallback1 = (changeData: cloudSync.ChangeData) => {
@@ -1245,6 +1259,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
   ```ts
   import { fileUri } from '@kit.CoreFileKit';
+
   let path = "/data/storage/el2/cloud/1.txt";
   let uri = fileUri.getUriFromPath(path);
   let onCallback1 = (changeData: cloudSync.ChangeData) => {

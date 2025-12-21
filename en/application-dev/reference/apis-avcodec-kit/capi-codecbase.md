@@ -19,7 +19,7 @@ The CodecBase module provides the variables, attributes, and functions for basic
 
 | Name| Description|
 | -- | -- |
-| [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | Declares the enums used for audio encoding and decoding.|
+| [avcodec_audio_channel_layout.h](capi-avcodec-audio-channel-layout-h.md) | Declares the enums used for audio codec channel layouts.|
 | [native_avcodec_base.h](capi-native-avcodec-base-h.md) | Declares the native APIs used for basic audio and video multiplexing, demultiplexing, encoding, and decoding.|
 
 ## Media Codec Formats
@@ -41,12 +41,13 @@ The table below lists the media codec formats. The type is a constant string.
 | OH_AVCODEC_MIMETYPE_AUDIO_AMR_WB | MIME type of the AMR-WB audio decoder.                          |
 | OH_AVCODEC_MIMETYPE_AUDIO_APE | MIME type of the APE audio decoder.                        |
 | OH_AVCODEC_MIMETYPE_AUDIO_ALAC | MIME type of the Apple Lossless Audio Codec (ALAC) audio decoder.|
-| OH_AVCODEC_MIMETYPE_AUDIO_AC3 | MIME type of the AC3 audio decoder.                        |
+| OH_AVCODEC_MIMETYPE_AUDIO_AC3 | MIME type of the Dolby Audio Coding 3 (AC 3) audio decoder.|
+| OH_AVCODEC_MIMETYPE_AUDIO_EAC3 | MIME type of the Enhanced AC-3 (EAC3) audio decoder.|
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAV1 | MIME type of the Windows Media Audio (WMA) V1 audio decoder.|
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAV2 | MIME type of the WMA V2 audio decoder.|
 | OH_AVCODEC_MIMETYPE_AUDIO_WMAPRO | MIME type of the WMA Pro audio decoder.|
-| OH_AVCODEC_MIMETYPE_AUDIO_GSM | MIME type of the GSM audio decoder.                        |
-| OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | MIME type of the GSM MS audio decoder.               |
+| OH_AVCODEC_MIMETYPE_AUDIO_GSM | MIME type of the Global System for Mobile Communications (GSM) audio decoder.|
+| OH_AVCODEC_MIMETYPE_AUDIO_GSM_MS | MIME type of the GSM Microsoft variant (MS) audio decoder.|
 | OH_AVCODEC_MIMETYPE_VIDEO_VVC | MIME type of the VVC (H.266) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_HEVC | MIME type of the HEVC (H.265) video codec.                   |
 | OH_AVCODEC_MIMETYPE_VIDEO_AVC | MIME type of the AVC (H.264) video codec.                    |

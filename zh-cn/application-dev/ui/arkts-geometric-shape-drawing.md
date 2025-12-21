@@ -73,10 +73,10 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   
   class TmpOne {
-    public x:number = 0;
-    public y:number = 0;
-    public width:number = 300;
-    public height:number = 300;
+    public x: number = 0;
+    public y: number = 0;
+    public width: number = 300;
+    public height: number = 300;
   }
   
   @Entry
@@ -89,8 +89,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
       Column() {
         // 画一个宽高都为75的圆
         // $r('app.string.OriginalSizeCircle')需要替换为开发者所需的资源文件
-        Text($r('app.string.OriginalSizeCircle'))
-        Circle({ width: 75, height: 75 }).fill('#E87361')
+        Text($r('app.string.OriginalSizeCircle')).margin({ top: 20 })
+        Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
   
         Row({ space: 10 }) {
           Column() {
@@ -100,13 +100,13 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
             // $r('app.string.EnlargedCircle')需要替换为开发者所需的资源文件
             Text($r('app.string.EnlargedCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#0097D4')
-              Circle({ width: 75, height: 75 }).fill('#E87361')
+              Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
+              Circle({ width: 75, height: 75 }).fill('rgb(213, 213, 213)')
             }
             .viewPort(this.viep)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('rgb(23, 169, 141)')
           }
   
           Column() {
@@ -116,13 +116,13 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
             // $r('app.string.ShrunkCircle')需要替换为开发者所需的资源文件
             Text($r('app.string.ShrunkCircle'))
             Shape() {
-              Rect().width('100%').height('100%').fill('#BDDB69')
-              Circle({width: 75, height: 75}).fill('#E87361')
+              Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
+              Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
             }
             .viewPort(this.viep1)
             .width(150)
             .height(150)
-            .backgroundColor('#F5DC62')
+            .backgroundColor('rgb(23, 169, 141)')
           }
         }
       }
@@ -130,7 +130,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![2023032401632](figures/2023032401632.jpg)
+  ![2023032401632](figures/2023032401632.png)
 
 - 创建一个宽高都为300的shape组件，背景色为黄色，创建一个宽高都为300的viewPort。用一个蓝色的矩形来填充viewPort，在viewPort中绘制一个半径为75的圆。
 
@@ -518,9 +518,14 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
         Shape() {
           Path().width(200).height(60).commands('M0 0 L400 0 L400 150 Z')
         }
-        .viewPort({ x: -80, y: -5, width: 500, height: 300 })
-        .fill(0x317AF7)
-        .stroke(Color.Red)
+        .viewPort({
+          x: -80,
+          y: -5,
+          width: 500,
+          height: 300
+        })
+        .fill('rgb(213, 213, 213)')
+        .stroke('rgb(39, 135, 217)')
         .strokeWidth(3)
         .strokeLineJoin(LineJoinStyle.Miter)
         .strokeMiterLimit(5)
@@ -529,7 +534,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   }
   ```
 
-  ![场景1](figures/场景1.jpg)
+  ![场景1](figures/场景1.png)
 
 ### 绘制圆和圆环
 

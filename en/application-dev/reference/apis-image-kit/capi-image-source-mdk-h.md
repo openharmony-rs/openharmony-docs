@@ -83,7 +83,7 @@ The file declares the APIs used to decode an image source into a PixelMap.
 
 ### OH_ImageSource_Create()
 
-```
+```c
 int32_t OH_ImageSource_Create(napi_env env, struct OhosImageSource* src, struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -110,11 +110,11 @@ Creates an ImageSource object at the JavaScript native layer based on the specif
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br>**IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br>**IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br>**IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br>**IMAGE_RESULT_SOURCE_DATA_INCOMPLETE**: The image source data is incomplete.<br>**IMAGE_RESULT_SOURCE_DATA**: The image source data is incorrect.<br>IMAGE_RESULT_GET_DATA_ABNORMAL: An error occurs during image data retrieval.<br>**IMAGE_RESULT_TOO_LARGE**: The image data is too large.<br>**IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br>**IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br>**IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: EXIF is not supported for image decoding.<br>**IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.<br>**IMAGE_RESULT_FILE_DAMAGED**: The file is damaged.<br>**IMAGE_RESULT_FILE_FD_ERROR**: The file descriptor is incorrect.<br>**IMAGE_RESULT_STREAM_SIZE_ERROR**: The data stream is incorrect.<br>**IMAGE_RESULT_SEEK_FAILED**: Seeking the file fails.<br>**IMAGE_RESULT_PEEK_FAILED**: Peeking the file fails.<br>**IMAGE_RESULT_FREAD_FAILED**: Reading the file fails.|
+| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br>**IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br>**IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br>**IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br>**IMAGE_RESULT_SOURCE_DATA_INCOMPLETE**: The image source data is incomplete.<br>**IMAGE_RESULT_SOURCE_DATA**: The image source data is incorrect.<br>IMAGE_RESULT_GET_DATA_ABNORMAL: An error occurs during image data retrieval.<br>**IMAGE_RESULT_TOO_LARGE**: The image data is too large.<br>**IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br>**IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br>**IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: Exif is not supported for image decoding.<br>**IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.<br>**IMAGE_RESULT_FILE_DAMAGED**: The file is damaged.<br>**IMAGE_RESULT_FILE_FD_ERROR**: The file descriptor is incorrect.<br>**IMAGE_RESULT_STREAM_SIZE_ERROR**: The data stream is incorrect.<br>**IMAGE_RESULT_SEEK_FAILED**: Seeking the file fails.<br>**IMAGE_RESULT_PEEK_FAILED**: Peeking the file fails.<br>**IMAGE_RESULT_FREAD_FAILED**: Reading the file fails.|
 
 ### OH_ImageSource_CreateFromUri()
 
-```
+```c
 int32_t OH_ImageSource_CreateFromUri(napi_env env, char* uri, size_t size,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -143,7 +143,7 @@ Creates an ImageSource object at the JavaScript native layer based on the specif
 
 ### OH_ImageSource_CreateFromFd()
 
-```
+```c
 int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -171,7 +171,7 @@ Creates an ImageSource object at the JavaScript native layer based on the specif
 
 ### OH_ImageSource_CreateFromData()
 
-```
+```c
 int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSize,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -200,7 +200,7 @@ Creates an ImageSource object at the JavaScript native layer based on the specif
 
 ### OH_ImageSource_CreateFromRawFile()
 
-```
+```c
 int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -229,7 +229,7 @@ Creates an ImageSource object at the JavaScript native layer based on the specif
 
 ### OH_ImageSource_CreateIncremental()
 
-```
+```c
 int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* source, struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -261,7 +261,7 @@ Creates an ImageSource object at the JavaScript native layer based on the specif
 
 ### OH_ImageSource_CreateIncrementalFromData()
 
-```
+```c
 int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, size_t dataSize,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -290,7 +290,7 @@ Creates an ImageSource object of the incremental type at the JavaScript native l
 
 ### OH_ImageSource_GetSupportedFormats()
 
-```
+```c
 int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormatList* res)
 ```
 
@@ -315,7 +315,7 @@ Obtains all supported decoding formats.
 
 ### OH_ImageSource_InitNative()
 
-```
+```c
 ImageSourceNative* OH_ImageSource_InitNative(napi_env env, napi_value source)
 ```
 
@@ -345,7 +345,7 @@ Converts an ImageSource object at the JavaScript native layer into an [ImageSour
 
 ### OH_ImageSource_CreatePixelMap()
 
-```
+```c
 int32_t OH_ImageSource_CreatePixelMap(const ImageSourceNative* native,struct OhosImageDecodingOps* ops, napi_value *res)
 ```
 
@@ -372,7 +372,7 @@ Decodes an ImageSourceNative object to obtain a PixelMap object at the JavaScrip
 
 ### OH_ImageSource_CreatePixelMapList()
 
-```
+```c
 int32_t OH_ImageSource_CreatePixelMapList(const ImageSourceNative* native,struct OhosImageDecodingOps* ops, napi_value *res)
 ```
 
@@ -395,11 +395,11 @@ Decodes an ImageSourceNative object to obtain all PixelMap objects at the JavaSc
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_CREATE_ENCODER_FAILED**: Failed to create the encoder.<br> **IMAGE_RESULT_CHECK_FORMAT_ERROR**: The check format is incorrect.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST**: The shared memory does not exist.<br> **IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL**: Data in the shared memory is abnormal.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_MALLOC_ABNORMAL**: The image is incorrect.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_INIT_ABNORMAL**: The image input data is incorrect.<br> **IMAGE_RESULT_CROP**: An error occurs during image cropping.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_ENCODE_FAILED**: Failed to add the PixelMap.<br> **IMAGE_RESULT_HW_DECODE_UNSUPPORT**: Image hardware decoding is not supported.<br> **IMAGE_RESULT_HW_DECODE_FAILED**: Hardware decoding fails.<br>**IMAGE_RESULT_ERR_IPC**: IPC fails.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_ALPHA_TYPE_ERROR**: Hardware decoding fails.<br> **IMAGE_RESULT_ALLOCATER_TYPE_ERROR**: Hardware decoding fails.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: EXIF is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
+| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_CREATE_ENCODER_FAILED**: Failed to create the encoder.<br> **IMAGE_RESULT_CHECK_FORMAT_ERROR**: The check format is incorrect.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_ERR_SHAMEM_NOT_EXIST**: The shared memory does not exist.<br> **IMAGE_RESULT_ERR_SHAMEM_DATA_ABNORMAL**: Data in the shared memory is abnormal.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_MALLOC_ABNORMAL**: The image is incorrect.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_INIT_ABNORMAL**: The image input data is incorrect.<br> **IMAGE_RESULT_CROP**: An error occurs during image cropping.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_ENCODE_FAILED**: Failed to add the PixelMap.<br> **IMAGE_RESULT_HW_DECODE_UNSUPPORT**: Image hardware decoding is not supported.<br> **IMAGE_RESULT_HW_DECODE_FAILED**: Hardware decoding fails.<br>**IMAGE_RESULT_ERR_IPC**: IPC fails.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_ALPHA_TYPE_ERROR**: Hardware decoding fails.<br> **IMAGE_RESULT_ALLOCATER_TYPE_ERROR**: Hardware decoding fails.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: Exif is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
 
 ### OH_ImageSource_GetDelayTime()
 
-```
+```c
 int32_t OH_ImageSource_GetDelayTime(const ImageSourceNative* native,struct OhosImageSourceDelayTimeList* res)
 ```
 
@@ -421,11 +421,11 @@ Obtains the delay time list from an ImageSourceNative object (such as GIF image 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: EXIF is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
+| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: Exif is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
 
 ### OH_ImageSource_GetFrameCount()
 
-```
+```c
 int32_t OH_ImageSource_GetFrameCount(const ImageSourceNative* native, uint32_t *res)
 ```
 
@@ -447,11 +447,11 @@ Obtains the number of frames from an ImageSourceNative object.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: EXIF is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
+| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: Exif is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
 
 ### OH_ImageSource_GetImageInfo()
 
-```
+```c
 int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t index,struct OhosImageSourceInfo* info)
 ```
 
@@ -474,11 +474,11 @@ Obtains image source information from an ImageSourceNative object by index.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: EXIF is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
+| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br>**OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: Exif is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
 
 ### OH_ImageSource_GetImageProperty()
 
-```
+```c
 int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)
 ```
 
@@ -501,11 +501,11 @@ Obtains the value of an image property from an ImageSourceNative object.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br> **OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: EXIF is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
+| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br> **OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: Exif is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
 
 ### OH_ImageSource_ModifyImageProperty()
 
-```
+```c
 int32_t OH_ImageSource_ModifyImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)
 ```
 
@@ -528,11 +528,11 @@ Modifies the value of an image property of an ImageSourceNative object.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br> **OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: EXIF is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
+| int32_t | Result code defined in [IRNdkErrCode](capi-image-mdk-common-h.md#irndkerrcode):<br> **OHOS_IMAGE_RESULT_SUCCESS**: The operation is successful.<br> **IMAGE_RESULT_BAD_PARAMETER**: A parameter is incorrect.<br> **IMAGE_RESULT_JNI_ENV_ABNORMAL**: The JNI environment is abnormal.<br> **IMAGE_RESULT_INVALID_PARAMETER**: A parameter is invalid.<br> **IMAGE_RESULT_GET_DATA_ABNORMAL**: Failed to obtain image data.<br> **IMAGE_RESULT_DECODE_FAILED**: Decoding fails.<br> **IMAGE_RESULT_DECODE_HEAD_ABNORMAL**: An error occurs during decoding of the image header.<br> **IMAGE_RESULT_CREATE_DECODER_FAILED**: Failed to create the decoder.<br> **IMAGE_RESULT_THIRDPART_SKIA_ERROR**: Skia error.<br> **IMAGE_RESULT_DATA_ABNORMAL**: The input image data is incorrect.<br> **IMAGE_RESULT_DECODE_ABNORMAL**: Image decoding fails.<br> **IMAGE_RESULT_DATA_UNSUPPORT**: Image initialization error.<br> **IMAGE_RESULT_UNKNOWN_FORMAT**: The image format is unknown.<br> **IMAGE_RESULT_PLUGIN_REGISTER_FAILED**: Failed to register the plugin.<br> **IMAGE_RESULT_PLUGIN_CREATE_FAILED**: Failed to create the plugin.<br> **IMAGE_RESULT_INDEX_INVALID**: The index is invalid.<br> **IMAGE_RESULT_DECODE_EXIF_UNSUPPORT**: Exif is not supported for image decoding.<br> **IMAGE_RESULT_PROPERTY_NOT_EXIST**: The image property does not exist.|
 
 ### OH_ImageSource_UpdateData()
 
-```
+```c
 int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosImageSourceUpdateData* data)
 ```
 
@@ -558,7 +558,7 @@ Updates the data of an ImageSourceNative object.
 
 ### OH_ImageSource_Release()
 
-```
+```c
 int32_t OH_ImageSource_Release(ImageSourceNative* native)
 ```
 

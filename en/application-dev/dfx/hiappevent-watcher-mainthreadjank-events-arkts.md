@@ -22,7 +22,7 @@ This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscri
 
 ### Adding an Event Watcher
 
-The following describes how to subscribe to the main thread jank event, which is reported when a task running in the main thread times out.
+The following walks you through on how to subscribe to the main thread jank event.
 
 1. Create an ArkTS application project. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules. The sample code is as follows:
 
@@ -32,7 +32,7 @@ The following describes how to subscribe to the main thread jank event, which is
     import { fileIo as fs } from '@kit.CoreFileKit';
    ```
 
-2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in APIs such as **onCreate()** and **onForeground()** at a proper position. The sample code is as follows:
+2. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, add a watcher in lifecycle APIs such as **onCreate()** and **onForeground()** at a proper position. The sample code is as follows:
 
    ```ts
     hiAppEvent.addWatcher({
@@ -199,7 +199,7 @@ The following describes how to subscribe to the main thread jank event, which is
 
    > **NOTE**
    >
-   > To enable the main thread checker to capture trace data when a task times out, ensure that the nolog version is used and **Developer Options** is disabled.
+   > Before starting the timeout trace capture of the main thread, ensure that you use the [nolog version](performance-analysis-kit-terminology.md#nolog-version) and disable **Developer options**.
 
    ```ts
      @Entry
@@ -228,7 +228,15 @@ The following describes how to subscribe to the main thread jank event, which is
 
 6. Click the **Run** button in DevEco Studio to run the project.
 
-  The main thread jank event can be captured only when two timeout events are detected consecutively. You can click the timeout trigger button twice consecutively to trigger the main thread jank event.
+   > **NOTE**
+   >
+   > By default, the system starts main thread jank event detection 10 seconds after the application is launched because the application startup process is time-consuming.
+   >
+   > If you use the **setEventConfig** API to set sampling stack parameters, the system starts main thread jank event detection after the time specified by **ignore_startup_time**.
+
+   The main thread jank event is triggered when two consecutive timeout events are detected within the interval of the detection task.
+  
+   You can quickly click the timeout button for two or three times to trigger the main thread jank event.
 
 ### Verifying the Subscription
 

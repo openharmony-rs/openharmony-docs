@@ -6,18 +6,22 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-When accessibility mode is enabled, touch events are converted into accessibility hover events.
+In accessibility mode, touch events are converted to accessibility hover events.
 
 >  **NOTE**
 >
 >  - This event is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
->  - Currently, conversion into accessibility hover events can only be initiated by enabling accessibility mode.
+>  - Currently, accessibility hover events are only triggered when accessibility mode is enabled.
 
 ## onAccessibilityHover
 
 onAccessibilityHover(callback: AccessibilityCallback): T
 
-Invoked in accessibility mode when a single finger touches the bound component.
+Triggered in accessibility mode when a single finger touches the bound component.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -39,7 +43,7 @@ Invoked in accessibility mode when a single finger touches the bound component.
 
 type AccessibilityCallback = (isHover: boolean, event: AccessibilityHoverEvent) => void
 
-Represents the accessibility hover event callback, which is effective when accessibility mode is enabled.
+Defines the callback type for accessibility hover events, active in accessibility mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -49,7 +53,7 @@ Represents the accessibility hover event callback, which is effective when acces
 
 | Name             | Type                               | Mandatory| Description                                                        |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| isHover             | boolean                             | Yes  | Whether a finger is hovering over the component in accessibility mode. The accessibility hover event is converted from a touch event, with the value **true** when the finger enters the component and **false** when it exits.|
+| isHover             | boolean                             | Yes  | Hover state. **true**: The finger enters the component. **false**: The finger exits the component.|
 | event | [AccessibilityHoverEvent](#accessibilityhoverevent) | Yes  | **AccessibilityHoverEvent** object.                                  |
 
 ## AccessibilityHoverEvent
@@ -63,20 +67,20 @@ Inherits from [BaseEvent](ts-gesture-customize-judge.md#baseevent8).
 | Name             | Type      | Read-Only| Optional| Description     |
 | --------------- | ---------- | ------- | ------- | ------- |
 | type             | [AccessibilityHoverType](ts-appendix-enums.md#accessibilityhovertype12) | No| No| Accessibility hover type.               |
-| x                      | number                         | No| No| X coordinate of the finger's position relative to the upper left corner of the component being touched.<br>Unit: vp<br>|
-| y                      | number                         | No| No| Y coordinate of the finger's position relative to the upper left corner of the component being touched.<br>Unit: vp<br>|
-| windowX                | number                         | No| No| X coordinate of the finger's position relative to the upper left corner of the application window.<br>Unit: vp<br>|
-| windowY                | number                         | No| No| Y coordinate of the finger's position relative to the upper left corner of the application window.<br>Unit: vp<br>|
-| displayX               | number                         | No| No| X coordinate of the finger's position relative to the upper left corner of the display.<br>Unit: vp<br>|
-| displayY               | number                         | No| No| Y coordinate of the finger's position relative to the upper left corner of the display.<br>Unit: vp<br>|
-| globalDisplayX<sup>20+</sup> | number                   | No| Yes| X coordinate of the finger position relative to the upper left corner of the global screen.<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| globalDisplayY<sup>20+</sup> | number                   | No| Yes| Y coordinate of the finger position relative to the upper left corner of the global screen.<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| x                      | number                         | No| No| X-coordinate of the finger's position relative to the upper left corner of the component.<br>Unit: vp<br>|
+| y                      | number                         | No| No| Y-coordinate of the finger's position relative to the upper left corner of the component.<br>Unit: vp<br>|
+| windowX                | number                         | No| No| X-coordinate of the finger's position relative to the upper left corner of the application window.<br>Unit: vp<br>|
+| windowY                | number                         | No| No| Y-coordinate of the finger's position relative to the upper left corner of the application window.<br>Unit: vp<br>|
+| displayX               | number                         | No| No| X-coordinate of the finger's position relative to the upper left corner of the application screen.<br>Unit: vp<br>|
+| displayY               | number                         | No| No| Y-coordinate of the finger's position relative to the upper left corner of the application screen.<br>Unit: vp<br>|
+| globalDisplayX<sup>20+</sup> | number                   | No| Yes| X-coordinate of the finger position relative to the upper left corner of the global display.<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayY<sup>20+</sup> | number                   | No| Yes| Y-coordinate of the finger position relative to the upper left corner of the global display.<br>Unit: vp<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## onAccessibilityHoverTransparent<sup>20+</sup>
 
 onAccessibilityHoverTransparent(callback: AccessibilityTransparentCallback): T
 
-The current touch position is in the component area where the callback API is registered, but the accessibility floating event is not responded. Only finger touch is supported. The following components cannot be connected to a third-party UI framework in the touch position: [UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md), [Web](../../apis-arkweb/arkts-basic-components-web.md), <!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md) and <!--DelEnd-->[XComponent](ts-basic-components-xcomponent.md). In the preceding scenario, the callback does not take effect.
+Triggered when a touch interaction occurs within the area of the component that does not respond to the accessibility hover event. This callback only supports finger touches. It has no effect in the following senarios: [UIExtension](../../apis-arkui/js-apis-arkui-uiExtension.md), [Web](../../apis-arkweb/arkts-basic-components-web.md), <!--Del-->[FormComponent](ts-basic-components-formcomponent-sys.md), <!--DelEnd-->and [XComponent](ts-basic-components-xcomponent.md) integrated with a third-party UI framework.  
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -85,7 +89,7 @@ The current touch position is in the component area where the callback API is re
 **Parameters**
 | Name       | Type                   | Mandatory | Description                         |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [AccessibilityTransparentCallback](ts-universal-accessibility-hover-event.md#accessibilitytransparentcallback20) | Yes  |  Provides the touch event that does not respond to the user input after the accessibility mode is enabled. This callback is triggered when the single-finger touch does not respond to the accessibility floating event after the accessibility mode is enabled.|
+| callback      | [AccessibilityTransparentCallback](ts-universal-accessibility-hover-event.md#accessibilitytransparentcallback20) | Yes  |  Callback invoked when a touch interaction occurs within the area of the component that does not respond to the accessibility hover event.|
 
 **Return value**
 
@@ -97,7 +101,7 @@ The current touch position is in the component area where the callback API is re
 
 type AccessibilityTransparentCallback = (event: TouchEvent) => void
 
-Provides touch events that fail to respond to user input after the accessibility mode is enabled.
+Defines the callback type for touch events that do not trigger accessibility responses in accessibility mode.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -107,11 +111,11 @@ Provides touch events that fail to respond to user input after the accessibility
 
 | Name             | Type                               | Mandatory| Description                                                        |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event | [TouchEvent] (ts-universal-events-touch.md#touchevent object description)| Yes  | Original touch event.<br>Note: A touch event type [TouchType] (ts-appendix-enums.md#touchtype) of the TouchEvent object is one of four accessibility floating event types, and the four accessibility floating event types are HOVER_ENTER, HOVER_MOVE, HOVER_EXIT, and HOVER_CANCEL.
+| event | [TouchEvent](ts-universal-events-touch.md#touchevent)| Yes  | Original touch event.<br>Note: The **TouchEvent** object's [TouchType](ts-appendix-enums.md#touchtype) corresponds to four accessibility hover event types: **HOVER_ENTER**, **HOVER_MOVE**, **HOVER_EXIT**, and HOVER_CANCEL.
 
 ## Example
 
-### Example 1 (using the onAccessibilityHover event)
+### Example 1: Using the onAccessibilityHover Event
 
 This example demonstrates how to use the **onAccessibilityHover** event to customize a button in accessibility mode.
 
@@ -143,9 +147,9 @@ struct OnAccessibilityHoverEventExample {
 }
 ```
 
-### Example 2 (Capturing a Touch Event of a Component That Cannot Be Focused Without Accessibility)
+### Example 2: Capturing a Touch Event on a Non-Focusable Component
 
-The sample code captures touch events of components that cannot be focused in accessible mode and displays the event information in the text below the component.
+This example shows how to capture a touch events from a component that cannot receive focus in accessibility mode and display event details in the text area below.
 
 ```ts
 @Entry

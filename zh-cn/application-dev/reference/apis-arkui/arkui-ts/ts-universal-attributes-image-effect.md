@@ -921,6 +921,8 @@ systemBarEffect(): T
 
 ## ShadowStyle<sup>10+</sup>枚举说明
 
+组件阴影效果。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -935,6 +937,8 @@ systemBarEffect(): T
 | OUTER_FLOATING_MD | 5 | 浮动中阴影。 |
 
 ## BlendMode<sup>11+</sup>枚举说明
+
+混合模式。
 
 >  **说明：**
 >
@@ -1307,9 +1311,7 @@ struct Index {
 }
 ```
 
-<br/>BlendMode.OVERLAY,BlendApplyType.OFFSCREEN<br/>
 ![zh-cn_image_effect_blendMode2](figures/zh-cn_image_effect_blendMode.png)
-<br/>不同的混合模式搭配是否需要离屏从而产生不同的效果。
 
 ### 示例5（前景智能取反色）
 

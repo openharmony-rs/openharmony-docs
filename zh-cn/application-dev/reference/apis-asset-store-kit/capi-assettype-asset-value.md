@@ -7,7 +7,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
-```
+```c
 typedef union {...} Asset_Value
 ```
 

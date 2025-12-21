@@ -887,22 +887,6 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：22
 
-## ohos.permission.ALLOW_EXTERNAL_NATIVE_CODE
-
-允许应用使用外部native程序。
-
-包括加载外部动态链接库(so)、二进制文件(bin)等。
-
-<!--RP57--><!--RP57End-->
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**支持设备**：PC/2in1
-
-**起始版本**：22
-
 ## ohos.permission.GET_IP_MAC_INFO
 
 允许应用获取网络设备的IP和MAC地址。
@@ -934,3 +918,19 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：PC/2in1
 
 **起始版本**：22
+
+## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
+
+允许应用加载二进制证书签名的共享库。
+
+<!--RP61--><!--RP61End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**：20
+
+**变更信息**：在API 20-21，该权限面向系统应用开放；从API 22开始，面向普通应用开放。

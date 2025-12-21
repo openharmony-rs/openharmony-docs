@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+```
+typedef struct OHIPCParcel OHIPCParcel
+```
+
 ## **Overview**
 
 Provides access to an IPC parcelable object.

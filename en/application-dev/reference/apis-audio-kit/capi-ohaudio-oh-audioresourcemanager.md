@@ -6,6 +6,10 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AudioResourceManager OH_AudioResourceManager
+```
+
 ## Overview
 
 The struct describes an audio resource manager, which is used to manage audio resources.

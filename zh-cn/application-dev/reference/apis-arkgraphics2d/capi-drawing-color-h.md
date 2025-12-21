@@ -31,7 +31,7 @@
 
 ### OH_Drawing_ColorSetArgb()
 
-```
+```c
 uint32_t OH_Drawing_ColorSetArgb(uint32_t alpha, uint32_t red, uint32_t green, uint32_t blue)
 ```
 

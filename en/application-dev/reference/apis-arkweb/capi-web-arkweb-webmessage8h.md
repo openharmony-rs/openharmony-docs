@@ -7,6 +7,11 @@
 <!--Adviser: @HelloShuo-->
 
 
+```
+typedef struct ArkWeb_WebMessage* ArkWeb_WebMessagePtr
+```
+
+
 ## Overview
 
 Defines a pointer to the post message.

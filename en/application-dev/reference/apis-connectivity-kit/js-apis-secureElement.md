@@ -13,7 +13,7 @@ The instances of the following types are mentioned in this topic:
 
 | Type   | Description                                          |
 | ------- | ---------------------------------------------- |
-| Reader  | SE supported by the device. If eSE and SIM are supported, two instances will be returned.|
+| Reader  | SE supported by the device. If eSE, SIM, and SIM2 are supported, three instances will be returned.|
 | Session | Session created on an SE **Reader** instance.|
 | Channel | Channel set up by a **Session** instance. The channel can be a basic channel or a logical channel.  |
 
@@ -417,13 +417,13 @@ try {
 ```
 ## Reader
 
-A **Reader** instance indicates the SEs supported by a device. If eSE and SIM are supported, two instances will be returned. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
+A Reader instance indicates the SEs supported by a device. If eSE, SIM, and SIM2 are supported, three instances will be returned. You can use [SEService.getReaders](#seservicegetreaders) to obtain a **Reader** instance.
 
 ### Reader.getName
 
 getName(): string
 
-Obtains the name of this reader. The name is **SIM** for a SIM reader and **eSE** for an eSE.
+Obtains the name of this reader. The name is **SIM** for a SIM reader, **SIM2** for a SIM2 reader, and **eSE** for an eSE.
 
 **System capability**: SystemCapability.Communication.SecureElement
 
@@ -453,7 +453,7 @@ let seReaders : omapi.Reader[];
 // Initialize seReaders before using it.
 
 try {
-    let reader = seReaders[0]; // Set the expected reader (ese or sim).
+    let reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
     let name = reader.getName();
     hilog.info(0x0000, 'testTag', 'name %{public}s', JSON.stringify(name));
 } catch (error) {
@@ -496,7 +496,7 @@ let seReaders : omapi.Reader[];
 // Initialize seReaders before using it.
 
 try {
-    let reader = seReaders[0]; // Set the expected reader (ese or sim).
+    let reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
     let isPresent = reader.isSecureElementPresent();
     hilog.info(0x0000, 'testTag', 'isPresent %{public}s', JSON.stringify(isPresent));
 } catch (error) {
@@ -541,7 +541,7 @@ let seSession : omapi.Session;
 // Initialize seReaders before using it.
 function secureElementDemo() {
     try {
-        let reader = seReaders[0]; // Set the expected reader (ese or sim).
+        let reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
@@ -584,7 +584,7 @@ let reader : omapi.Reader;
 // Initialize seReaders before using it.
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; // Set the expected reader (ese or sim).
+        reader = seReaders[0]; //  Set the expected reader (eSE, SIM, or SIM2).
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));
@@ -643,7 +643,7 @@ let reader : omapi.Reader;
 // Initialize seReaders before using it.
 function secureElementDemo() {
     try {
-        reader = seReaders[0]; // Set the expected reader (ese or sim).
+        reader = seReaders[0]; // Set the expected reader (eSE, SIM, or SIM2).
         seSession = reader.openSession();
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'openSession error %{public}s', JSON.stringify(error));

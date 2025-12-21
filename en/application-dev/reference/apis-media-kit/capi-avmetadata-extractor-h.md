@@ -42,7 +42,7 @@ The file declares the AVMetadataExtractor APIs. You can use the APIs to obtain m
 
 ### OH_AVMetadataExtractor_Create()
 
-```
+```c
 OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)
 ```
 
@@ -62,7 +62,7 @@ Creates an OH_AVMetadataExtractor instance.
 
 ### OH_AVMetadataExtractor_SetFDSource()
 
-```
+```c
 OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor,int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -92,7 +92,7 @@ Sets a data source based on the media file descriptor.
 
 ### OH_AVMetadataExtractor_FetchMetadata()
 
-```
+```c
 OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extractor, OH_AVFormat* avMetadata)
 ```
 
@@ -122,7 +122,7 @@ This function must be called after [OH_AVMetadataExtractor_SetFDSource](#oh_avme
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 
-```
+```c
 OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extractor, OH_PixelmapNative** pixelMap)
 ```
 
@@ -152,7 +152,7 @@ This function must be called after [OH_AVMetadataExtractor_SetFDSource](#oh_avme
 
 ### OH_AVMetadataExtractor_Release()
 
-```
+```c
 OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)
 ```
 

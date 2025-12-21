@@ -55,19 +55,19 @@ Invoke the **navigator.mediaDevices.getUserMedia()** API in JavaScript to start 
 In the following example, when a user clicks the button for enabling the camera on the frontend page and the **onConfirm** button, the **Web** component starts the camera and microphone.
 
 - Application code:
-
-  ```ts
-  // xxx.ets
+  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { abilityAccessCtrl } from '@kit.AbilityKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
-
+  
     aboutToAppear() {
       // Enable web frontend page debugging.
       webview.WebviewController.setWebDebuggingAccess(true);
@@ -82,7 +82,7 @@ In the following example, when a user clicks the button for enabling the camera 
         console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
       })
     }
-
+  
     build() {
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })

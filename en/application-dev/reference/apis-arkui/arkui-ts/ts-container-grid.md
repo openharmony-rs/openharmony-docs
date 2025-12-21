@@ -68,7 +68,7 @@ To improve the performance of the grid in scenarios such as jump and column quan
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type     | Read Only  | Optional| Description                   |
+| Name   | Type     | Read-Only  | Optional| Description                   |
 | ----- | ------- | ---- | --  | --------------------- |
 | regularSize  | [number, number]  | No   | No| Number of rows and columns occupied by a grid item with regular size. The only supported value is **[1, 1]**, meaning that the grid item occupies one row and one column.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | irregularIndexes | number[] | No   | Yes| Size of the GridItem at the specified index in the Grid. The size is irregular. When **onGetIrregularSizeByIndex** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -865,7 +865,7 @@ Provides information about the position and length of the scrollbar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type        | Read Only| Optional|   Description        |
+| Name        | Type        | Read-Only| Optional|   Description        |
 | ----------- | ------------ | ---- | ---- | ---------- |
 | totalOffset | number | No| No|  Total offset of the grid content relative to the display area, in px.   |
 | totalLength   | number | No| No|  Total length of the grid content, in px.   |

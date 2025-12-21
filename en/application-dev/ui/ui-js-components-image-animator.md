@@ -306,7 +306,7 @@ export default {
         src: 'common/landscape4.jpg',
       }
     ],
-    revVal:'Reverse'
+    revVal: 'Reverse'
   },
   onInit() {
   },
@@ -324,15 +324,15 @@ export default {
   },
   getimgstate(e) {
     promptAction.showToast({
-      message: 'Current state:' + this.$element('img').getState()
+      message: 'Current state: ' + this.$element('img').getState()
     })
   },
   revimg(e) {
     this.rev = !this.rev
     if (this.rev) {
-      this.revVal ='Play Forward'
+      this.revVal = 'Play Forward'
     } else {
-      this.revVal ='Reverse'
+      this.revVal = 'Reverse'
     }
   }
 }
