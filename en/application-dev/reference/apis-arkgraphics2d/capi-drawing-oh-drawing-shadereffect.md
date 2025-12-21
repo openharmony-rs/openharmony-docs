@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_ShaderEffect OH_Drawing_ShaderEffect
+```
+
 ## Overview
 
 Defines a struct for a shader effect, which is used to describe the source color of the drawn content.

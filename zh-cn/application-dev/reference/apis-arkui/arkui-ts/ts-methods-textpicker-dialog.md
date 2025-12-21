@@ -28,7 +28,7 @@ static show(options?: TextPickerDialogOptions)
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog)替代。
+> 从API version 11开始支持，从API version 18开始废弃。建议使用[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)替代，showDatePickerDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
 >
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTextPickerDialog](../arkts-apis-uicontext-uicontext.md#showtextpickerdialog)来明确UI的执行上下文。
 
@@ -545,6 +545,8 @@ struct TextPickerDialogExample {
 ### 示例8（设置选中项的背景样式）
 
 该示例通过selectedBackgroundStyle属性设置文本选择器选中项的背景样式。
+
+从API version 20开始，新增了[TextPickerDialogOptions](#textpickerdialogoptions对象说明)的selectedBackgroundStyle属性。
 
 ```ts
 // xxx.ets

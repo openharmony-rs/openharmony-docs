@@ -6,12 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+FlashQuery provides APIs to query the flash status and mode of a camera device.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - This interface was first introduced in API version 12. In this version, a compatibility change was made that preserved the initial version information of inner elements. As a result, you might see outer element's @since version number being higher than that of the inner elements. However, this discrepancy does not affect the functionality of the interface.
-
-FlashQuery provides APIs to query the flash status and mode of a camera device.
 
 ## Modules to Import
 

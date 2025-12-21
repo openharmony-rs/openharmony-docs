@@ -4,7 +4,7 @@
 <!--Owner: @hddgzw-->
 <!--Designer: @pssea-->
 <!--Tester: @jiaoaozihao-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **Marquee** component is used to display a scrolling piece of text. Text scrolling is activated only when the content width exceeds the component's width.
 
@@ -15,7 +15,7 @@ The **Marquee** component is used to display a scrolling piece of text. Text scr
 >
 >  To ensure that scrolling frame rates are not affected, it is recommended that the number of **Marquee** components in a scroll container does not exceed four, or alternatively, use the [Text](ts-basic-components-text.md) component's [TextOverflow.MARQUEE](ts-appendix-enums.md#textoverflow) as a substitute.
 >
-> For the scenario where the frame rate of the Marquee component is dynamic, you can use the [MarqueeDynamicSyncScene](../arkts-apis-uicontext-marqueedynamicsyncscene.md) API.
+> For the scenario where the frame rate of the **Marquee** component is dynamic, you can use the [MarqueeDynamicSyncScene](../arkts-apis-uicontext-marqueedynamicsyncscene.md) API.
 >
 > If the text width is less than the **Marquee** component width, use the [property animation](ts-animatorproperty.md) to implement scrolling.
 

@@ -5,6 +5,10 @@
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+```
+typedef struct {...} OH_NativeBuffer_Config
+```
 ## Overview
 
 The **OH_NativeBuffer_Config** struct describes the **OH_NativeBuffer** attribute configuration, which is used when you apply for a new **OH_NativeBuffer** instance or query the attributes of an existing instance.

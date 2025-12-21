@@ -6,6 +6,10 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AudioBuffer {...} OH_AudioBuffer
+```
+
 ## Overview
 
 The struct describes the configuration such as the size, type, and timestamp of audio data.

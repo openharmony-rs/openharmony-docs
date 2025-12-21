@@ -166,13 +166,13 @@ Use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessH
 - A PhotoAccessHelper instance is obtained.
 - The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-Example: Rename the first image in the obtained image assets.
+Example: Rename an image named **oldTestPhoto**.
 
 **How to Develop**
 
 1. Set the fetch options.
 2. Call [PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1) to obtain image assets.
-3. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the first image from the obtained file assets.
+3. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the image asset to rename.
 4. Call [MediaAssetChangeRequest.setTitle](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#settitle11) to rename the image.
 5. Call [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to save the modification to the database.
 
@@ -182,6 +182,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
+  predicates.equalTo(photoAccessHelper.PhotoKeys.TITLE, 'oldTestPhoto')
   let fetchOptions: photoAccessHelper.FetchOptions = {
     fetchColumns: ['title'],
     predicates: predicates

@@ -41,7 +41,7 @@ The file declares the AVImageGenerator APIs. You can use the APIs to extract vid
 
 ### OH_AVImageGenerator_Create()
 
-```
+```c
 OH_AVImageGenerator* OH_AVImageGenerator_Create(void)
 ```
 
@@ -61,7 +61,7 @@ Creates an OH_AVImageGenerator instance, which is used to generate video frames 
 
 ### OH_AVImageGenerator_SetFDSource()
 
-```
+```c
 OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator,int32_t fd, int64_t offset, int64_t size)
 ```
 
@@ -91,7 +91,7 @@ Sets a data source based on the media file descriptor.
 
 ### OH_AVImageGenerator_FetchFrameByTime()
 
-```
+```c
 OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator,int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)
 ```
 
@@ -123,7 +123,7 @@ This function must be called after [OH_AVImageGenerator_SetFDSource](#oh_avimage
 
 ### OH_AVImageGenerator_Release()
 
-```
+```c
 OH_AVErrCode OH_AVImageGenerator_Release(OH_AVImageGenerator* generator)
 ```
 

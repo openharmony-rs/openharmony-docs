@@ -427,3 +427,14 @@ Webview提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超
 **参考链接**
 
 [JSVM](../reference/common/capi-jsvm.md)
+
+## 无法使用`requestPointerLock`鼠标锁定功能
+
+**问题描述**
+
+1. html调用`requestPointerLock`后，鼠标隐藏但仍然可以移出Web区域。
+2. html调用`requestPointerLock`时，返回错误`SecurityError: The root document of this element is not valid for pointer lock.`。
+
+**解决措施**
+
+从API version 22开始，ArkWeb支持完整的鼠标锁定功能，该功能需要应用权限[ohos.permission.LOCK_WINDOW_CURSOR](../security/AccessToken/permissions-for-all.md#ohospermissionlock_window_cursor)。

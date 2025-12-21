@@ -61,11 +61,11 @@ Toggle的样式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                                                         |
-| -------- | ------------------------------------------------------------ |
-| Checkbox | 提供单选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
-| Switch   | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)默认值为：<br>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
-| Button   | 提供状态按钮样式。如子组件设置文本，文本内容将显示在按钮内。默认高度为28vp，宽度无默认值。 |
+| 名称     | 值   | 说明                                                         |
+| -------- | ---- | ------------------------------------------------------------ |
+| Checkbox | 0    | 提供单选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
+| Switch   | 1    | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)默认值为：<br>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
+| Button   | 2    | 提供状态按钮样式。如子组件设置文本，文本内容将显示在按钮内。默认高度为28vp，宽度无默认值。 |
 
 ## 属性
 
@@ -150,7 +150,7 @@ Switch类型的样式。
 | 名称              | 类型                                        | 只读 | 可选 | 说明                                                         |
 | ----------------- | ------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | pointRadius       | number \|  [Resource](ts-types.md#resource) | 否   | 是   | 设置Switch类型的圆形滑块半径，单位为vp。<br />**说明：**<br/>不支持百分比，设定值小于0时按照默认算法设置，设定值大于等于0时按照设定值设置。<br/>未设定此属性时，圆形滑块半径根据默认算法设置。<br/>默认算法：（组件高度（单位：vp） / 2） - （2vp * 组件高度（单位：vp） / 20vp）。 |
-| unselectedColor   | [ResourceColor](ts-types.md#resourcecolor)  | 否   | 是   | 设置Switch类型关闭状态的背景颜色。<br />默认值：深色和浅色模式下均为0x337F7F7F。从API version 20开始，如果开启了[优化深浅色模式切换开销](../../../ui/ui-dark-light-color-adaptation.md#优化深浅色模式切换开销)能力，浅色模式下默认值为0x337F7F7F，深色模式下默认值为0x19000000。   |
+| unselectedColor   | [ResourceColor](ts-types.md#resourcecolor)  | 否   | 是   | 设置Switch类型关闭状态的背景颜色。<br />默认值：深色和浅色模式下均为0x337F7F7F。从API version 20开始，如果开启了[优化深浅色模式切换开销](../../../ui/ui-dark-light-color-adaptation.md#优化深浅色模式切换开销)能力，浅色模式下默认值为0x19000000，表现效果为10%透明度的黑色；深色模式下默认值为0x19FFFFFF，表现效果为10%透明度的白色。   |
 | pointColor        | [ResourceColor](ts-types.md#resourcecolor)  | 否   | 是   | 设置Switch类型的圆形滑块颜色。<br />默认值：$r('sys.color.ohos_id_color_foreground_contrary') |
 | trackBorderRadius | number \|  [Resource](ts-types.md#resource) | 否   | 是   | 设置Switch类型的滑轨的圆角，单位为vp。<br />**说明：**<br/>不支持百分比，设定值小于0时按照默认算法设置，设定值大于组件高度一半时按照组件高度一半设置，其他场合按照设定值设置。<br/>未设定此属性时，滑轨圆角根据默认算法设置。<br/>默认算法：组件高度（单位：vp） / 2。 |
 

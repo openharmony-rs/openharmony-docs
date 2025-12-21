@@ -6,6 +6,10 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct {...} NativeDisplayManager_Rect
+```
+
 ## Overview
 
 The struct describes a rectangle.

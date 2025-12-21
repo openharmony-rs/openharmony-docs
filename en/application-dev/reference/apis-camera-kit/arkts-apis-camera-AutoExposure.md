@@ -6,14 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+AutoExposure inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
+
+It provides APIs related to auto exposure.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 11.
-
-AutoExposure inherits from [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md).
-
-It provides APIs related to auto exposure.
 
 ## Modules to Import
 

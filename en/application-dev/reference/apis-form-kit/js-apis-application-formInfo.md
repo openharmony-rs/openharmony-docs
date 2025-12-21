@@ -4,13 +4,13 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 The **formInfo** module provides types and enums related to the widget information and state.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> This module is deprecated since API version 9. You are advised to use [formInfo](js-apis-app-form-formInfo.md) instead.
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This module is deprecated since API version 9. You are advised to use [formInfo](js-apis-app-form-formInfo.md) instead.
 
 ## Modules to Import
 
@@ -24,26 +24,26 @@ Widget information.
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name       | Type                | Readable   | Writable    | Description                                                        |
+| Name       | Type                | Read-Only   | Optional    | Description                                                        |
 | ----------- | -------- |-------- | -------------------- | ------------------------------------------------------------ |
-| bundleName  | string               | Yes   | No     | Name of the bundle to which the widget belongs.                  |
-| moduleName  | string               | Yes   | No     | Name of the module to which the widget belongs.                      |
-| abilityName | string               | Yes   | No     | Name of the ability to which the widget belongs.                    |
-| name        | string               | Yes   | No     | Widget name.                                |
-| description | string               | Yes   | No     | Description of the widget.  |
-| type        | [FormType](#formtype)             | Yes   | No     | Type of the widget. Currently, only JS widgets are supported.|
-| jsComponentName      | string               | Yes   | No     | Component name of the JS widget.              |
-| colorMode  | [ColorMode](#colormode) | Yes   | No     | Color mode of the widget.                                      |
-| isDefault    | boolean      | Yes   | No     | Whether the widget is the default one.                             |
-| updateEnabled  | boolean               | Yes   | No     | Whether the widget is updatable.                   |
-| formVisibleNotify  | boolean               | Yes   | No     | Whether to send a notification when the widget is visible.           |
-| relatedBundleName | string               | Yes   | No     | Name of the associated bundle to which the widget belongs.          |
-| scheduledUpdateTime        | string               | Yes   | No     | Time when the widget was updated.    |
-| formConfigAbility | string               | Yes   | No     | Configuration ability of the widget.  |
-| updateDuration        | number             | Yes   | No     | Update period of the widget.|
-| defaultDimension  | number | Yes   | No     | Default dimension of the widget.                                      |
-| supportDimensions    | Array&lt;number&gt;      | Yes   | No     | Dimensions supported by the widget.                |
-| customizeData    | {[key: string]: [value: string]}      | Yes   | No     | Custom data of the widget.        |
+| bundleName  | string               | No   | No     | Name of the bundle to which the widget belongs.                  |
+| moduleName  | string               | No   | No     | Name of the module to which the widget belongs.                      |
+| abilityName | string               | No   | No     | Name of the ability to which the widget belongs.                    |
+| name        | string               | No   | No     | Widget name.                                |
+| description | string               | No   | No     | Description of the widget.  |
+| type        | [FormType](#formtype)             | No   | No     | Type of the widget. Currently, only JS widgets are supported.|
+| jsComponentName      | string               | No   | No     | Component name of the JS widget.              |
+| colorMode  | [ColorMode](#colormode) | No   | No     | Color mode of the widget.                                      |
+| isDefault    | boolean      | No   | No     | Whether the widget is the default one.<br>- **true**: The widget is the default one.<br>- **false**: The widget is not the default one.|
+| updateEnabled  | boolean               | No   | No     | Whether the widget is updatable.<br>- **true**: The widget can be updated periodically.<br>- **false**: The widget cannot be updated periodically.|
+| formVisibleNotify  | boolean               | No   | No     | Whether to send a notification when the widget is visible.<br>- **true**: The widget provider is notified of the status change.<br>- **false**: The widget provider is not notified of the status change.|
+| relatedBundleName | string               | No   | No     | Name of the associated bundle to which the widget belongs.          |
+| scheduledUpdateTime        | string               | No   | No     | Time when the widget was updated.    |
+| formConfigAbility | string               | No   | No     | Configuration ability of the widget.  |
+| updateDuration        | number             | No   | No     | Update period of the widget.|
+| defaultDimension  | number | No   | No     | Default dimension of the widget.                                      |
+| supportDimensions    | Array&lt;number&gt;      | No   | No     | Dimensions supported by the widget.                |
+| customizeData    | {[key: string]: [value: string]}      | No   | No     | Custom data of the widget.        |
 
 ## FormType
 
@@ -73,10 +73,10 @@ Describes the widget state information.
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name       | Type                | Readable   | Writable    | Description                                                        |
+| Name       | Type                | Read-Only   | Optional    | Description                                                        |
 | ----------- | -------- |-------- | -------------------- | ------------------------------------------------------------ |
-| formState  | [FormState](#formstate)               | Yes   | No     | Widget state.                         |
-| want  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)               | Yes   | No     | Want text.   |
+| formState  | [FormState](#formstate)               | No   | No     | Widget state.                         |
+| want  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)               | No   | No     | Want text.   |
 
 ##  FormState
 

@@ -24,7 +24,7 @@ For details about more canvas operations and API parameters, see [drawing.Canvas
 
 ## Clipping
 
-Clipping is a common operation in graphics processing. It is used to restrict the drawing area and draw only in the specified area. The effect is achieved only after the clipping operation is performed before drawing.
+Clipping is a common operation in graphics processing. It is used to restrict the drawing area on the canvas. The effect is achieved only after the clipping operation is performed before drawing.
 
 The following clipping operations are supported:
 
@@ -64,8 +64,9 @@ Use the clipRect() API to clip a rectangle. There are three input parameters:
 - doAntiAlias indicates whether to enable anti-aliasing. If the value is true, the anti-aliasing function is enabled. When a graphic is drawn, the edge pixels of the graphic are blurred in a semi-transparent manner. If the value is false, the anti-aliasing function is disabled.
 
 
-```ts
-// CanvasOperationState.ets
+<!-- @[arkts_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+``` TypeScript
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the color to blue.
@@ -73,15 +74,14 @@ brush.setColor(0xFF, 0x00,  0x00, 0xFF);
 // Set the brush filling effect.
 canvas.attachBrush(brush);
 // Create a rectangle object.
-let rect: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
+let rect: common2D.Rect = { left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 };
 // Clip the rectangle.
 canvas.clipRect(rect);
 // Draw a circle.
-canvas.drawCircle(300, 300, 300);
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_300);
 // Remove the filling effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | Original image| Image after cropping|
@@ -121,8 +121,9 @@ Use the translate() API to translate the canvas. The API accepts two parameters,
 A simple example and a schematic diagram are as follows:
 
 
-```ts
-// CanvasOperationState.ets
+<!-- @[arkts_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+``` TypeScript
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the color to red.
@@ -130,13 +131,12 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // Set the brush filling effect.
 canvas.attachBrush(brush);
 // Translate the canvas.
-canvas.translate(300, 300);
+canvas.translate(VALUE_300, VALUE_300);
 // Draw a rectangle.
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
-// Remove the fill effect.
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
+// Remove the filling effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | Original image| Rotated image|
@@ -152,8 +152,10 @@ Use the rotate() API to rotate the canvas. The API accepts three parameters, whi
 The following is a simple example and a diagram:
 
 
-```ts
-// CanvasOperationState.ets
+
+<!-- @[arkts_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+``` TypeScript
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the color to red.
@@ -161,13 +163,12 @@ brush.setColor(0xFF, 0xFF, 0x00, 0x00);
 // Set the brush filling effect.
 canvas.attachBrush(brush);
 // Rotate the canvas clockwise by 45 degrees.
-canvas.rotate(45, 200, 200);
+canvas.rotate(45, VALUE_200, VALUE_200);
 // Draw a rectangle.
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
-// Remove the fill effect.
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
+// Remove the filling effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | Original image| Rotated image|
@@ -183,8 +184,10 @@ Use the scale() API to scale the canvas. The API accepts two parameters, which a
 The following is a simple example and a schematic diagram:
 
 
-```ts
-// CanvasOperationState.ets
+
+<!-- @[arkts_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+``` TypeScript
 // Create a brush.
 let brush = new drawing.Brush();
 // Set the color to red.
@@ -194,11 +197,10 @@ canvas.attachBrush(brush);
 // Perform the zoom-in operation.
 canvas.scale(2, 2);
 // Draw a rectangle.
-canvas.drawRect({ left: 200, top: 200, right: 600, bottom: 600 });
-// Remove the fill effect.
+canvas.drawRect({ left: VALUE_200, top: VALUE_200, right: VALUE_600, bottom: VALUE_600 });
+// Remove the filling effect.
 canvas.detachBrush();
 ```
-<!-- [arkts_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 
 | Original image| Image after scaling|
@@ -225,8 +227,10 @@ The following table lists the APIs used for saving and restoring the canvas stat
 The following is a simple example and diagram:
 
 
-```ts
-// CanvasOperationState.ets
+
+<!-- @[arkts_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
+
+``` TypeScript
 // Create a pen.
 let pen = new drawing.Pen();
 // Set the color to red.
@@ -240,15 +244,14 @@ canvas.save();
 // Zoom in on the x-axis and y-axis by two times.
 canvas.scale(2, 2);
 // Draw a circle. Because the zoom-in operation has been performed, a large circle is drawn.
-canvas.drawCircle(300, 300, 200);
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
 // Restore the canvas status to the original status without zoom-in or zoom-out.
 canvas.restore();
 // Draw a circle. Because the canvas status has been restored to the original status without zoom-in or zoom-out, a small circle is drawn.
-canvas.drawCircle(300, 300, 200);
+canvas.drawCircle(VALUE_300, VALUE_300, VALUE_200);
 // Remove the stroke effect.
 canvas.detachPen();
 ```
-<!-- [arkts_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/CanvasOperationState.ets) -->
 
 ![Screenshot_20241129152510415](figures/Screenshot_20241129152510415.jpg)
 
@@ -257,5 +260,5 @@ canvas.detachPen();
 
 The following samples are available for you to develop Drawing (ArkTS) applications:
 
-- [ArkTSGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/ArkTSGraphicsDraw)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

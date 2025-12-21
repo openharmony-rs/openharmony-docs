@@ -7,6 +7,10 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Filter OH_Filter
+```
+
 ## Overview
 
 Defines a struct for a filter used to generate a filter PixelMap.

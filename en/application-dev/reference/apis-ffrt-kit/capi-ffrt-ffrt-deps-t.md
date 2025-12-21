@@ -7,6 +7,10 @@
 <!--Tester: @lotsof; @sunxuhao-->
 <!--Adviser: @foryourself-->
 
+```c
+typedef struct {...} ffrt_deps_t
+```
+
 ## Overview
 
 The **ffrt_deps_t** struct describes dependencies.

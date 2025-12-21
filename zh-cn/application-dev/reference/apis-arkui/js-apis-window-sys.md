@@ -18,6 +18,8 @@
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.window (窗口)](arkts-apis-window.md)。
+>
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## 导入模块
 
@@ -2474,7 +2476,7 @@ setTouchableAreas(rects: Array&lt;Rect&gt;): void
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal.                |
-| 1300003 | This window manager service works abnormally. |                       |
+| 1300003 | This window manager service works abnormally. |
 
 **示例：**
 

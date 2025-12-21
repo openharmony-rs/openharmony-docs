@@ -1,18 +1,28 @@
 # ContextMenu
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @Armstrong15-->
+<!--Designer: @zhanghaibo0-->
+<!--Tester: @lxl007-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The menu bound to a component through [bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu12) on a page can be closed as needed.
 
 >  **NOTE**
 >
-> The APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
->
-> Since API version 12, you can use the [getContextMenuController](../js-apis-arkui-UIContext.md#contextmenucontroller12) API in [UIContext](../js-apis-arkui-UIContext.md#uicontext) to obtain the UI context.
+> The initial APIs of this module are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 
-## ContextMenu.close
+## ContextMenu.close<sup>(deprecated)</sup>
 
 static close()
 
 Closes the menu bound to this component through [bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu12) on a page.
+
+>  **NOTE**
+>
+> This API is deprecated since API version 18. You are advised to use [getContextMenuController](../arkts-apis-uicontext-uicontext.md#getcontextmenucontroller12) in [UIContext](../arkts-apis-uicontext-uicontext.md) to obtain the [ContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md) instance and then use this instance to call the [close](../arkts-apis-uicontext-contextmenucontroller.md#close12) API.
+>
+> Since API version 12, you can use the [getContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md) API in [UIContext](../arkts-apis-uicontext-uicontext.md) to specify the UI execution context.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -24,7 +34,9 @@ This example demonstrates how to call the **ContextMenu.close** API to close a c
 
 >  **NOTE**
 >
-> For clarity in UI execution context, you are advised to use the [getContextMenuController](../js-apis-arkui-UIContext.md#contextmenucontroller12) API in [UIContext](../js-apis-arkui-UIContext.md#uicontext).
+> For clarity in UI execution context, you are advised to use the [getContextMenuController](../arkts-apis-uicontext-contextmenucontroller.md) API in [UIContext](../arkts-apis-uicontext-uicontext.md).
+
+<!--deprecated_code_no_check-->
 
 ```ts
 // xxx.ets
@@ -33,11 +45,11 @@ This example demonstrates how to call the **ContextMenu.close** API to close a c
 struct Index {
   @Builder MenuBuilder() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button('Test ContextMenu1')
+      Button('ContextMenu1')
       Divider().strokeWidth(2).margin(5).color(Color.Black)
-      Button('Test ContextMenu2')
+      Button('ContextMenu2')
       Divider().strokeWidth(2).margin(5).color(Color.Black)
-      Button('Test ContextMenu3')
+      Button('ContextMenu3')
     }
     .width(200)
     .height(160)
@@ -46,7 +58,7 @@ struct Index {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Column() {
-        Text("Test ContextMenu")
+        Text('Long press to show ContextMenu')
           .fontSize(20)
           .width('100%')
           .height(500)

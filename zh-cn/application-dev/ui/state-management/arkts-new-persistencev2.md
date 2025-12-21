@@ -431,7 +431,7 @@ globalConnect虽然是应用级别的路径，但是可以设置不同的加密�
 
 示例代码如下：开发者需要在项目基础上，新建一个module，并按照示例代码跳转到新module中。
 
-<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) -->
+<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) --> 
 
 ``` TypeScript
 // 模块1
@@ -466,7 +466,12 @@ struct Page1 {
   @Local refresh: number = 0;
   // 使用key:globalConnect1连接，传入加密等级为EL1
   @Local p1: Sample =
-    PersistenceV2.globalConnect({ type: Sample, key: 'globalConnect1', defaultCreator: () => new Sample(), areaMode: contextConstant.AreaMode.EL1 })!;
+    PersistenceV2.globalConnect({
+      type: Sample,
+      key: 'globalConnect1',
+      defaultCreator: () => new Sample(),
+      areaMode: contextConstant.AreaMode.EL1
+    })!;
   // 使用key:connect2连接，使用构造函数形式，加密参数不传入默认加密等级为EL2
   @Local p2: Sample = PersistenceV2.connect(Sample, 'connect2', () => new Sample())!;
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -584,7 +589,7 @@ struct Page1 {
 
 ### connect向globalConnect迁移实现
 
-<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) -->
+<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) --> 
 
 ``` TypeScript
 // 使用connect存储数据
@@ -619,7 +624,7 @@ struct Page1 {
   @Local p: Sample = PersistenceV2.connect(Sample, 'connect3', () => new Sample())!;
 
   build() {
-    Column({space: 5}) {
+    Column({ space: 5 }) {
       /**************************** 显示数据 **************************/
       Text('Key connect3: ' + this.p.father.childId.toString())
         .onClick(() => {

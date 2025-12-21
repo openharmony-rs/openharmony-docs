@@ -241,3 +241,4 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Graphic.Graphic2D.WebGL2
 - SystemCapability.Ability.AppStartup
 - SystemCapability.Ability.AppExtension.PhotoEditorExtension
+- SystemCapability.Multimedia.Audio.SuiteEngine

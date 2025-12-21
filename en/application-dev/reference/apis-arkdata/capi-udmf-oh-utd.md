@@ -6,6 +6,10 @@
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
+```c
+typedef struct OH_Utd OH_Utd
+```
+
 ## Overview
 
 Defines a struct for a UTD.

@@ -93,6 +93,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 - mode值为napi_tsfn_release时：表示将tsfn中持有的线程数减一，当线程数减到0时，线程安全函数tsfn将被销毁。
 
 - mode值为napi_tsfn_abort时：该tsfn关闭，不能再调用此tsfn。
+
   如果设置为napi_tsfn_abort，利用napi_call_threadsafe_function接口调用此tsfn时，该行为可能导致UAF问题————当napi_tsfn_abort被设置时，tsfn立刻关闭，不能再被调用。如果此时调用napi_call_threadsafe_function，系统可能会返回napi_closing状态，表示tsfn正在关闭，但是传递给tsfn的data并未被放入队列中，这意味着data可能未被正确处理。如果data指向的内存已经被释放（例如，tsfn的资源被释放），但调用者仍然尝试访问或使用data，就会出现UAF(Use-After-Free)问题。
 
 ### napi_threadsafe_function_call_mode
@@ -312,6 +313,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_string_utf8 | 通过UTF8编码的C字符串数据创建ArkTS String。 |
 | napi_get_value_string_latin1 | 获取给定ArkTS value对应的ISO-8859-1编码的字符串。 |
 | napi_get_value_string_utf8 | 获取给定ArkTS value对应的UTF8编码的字符串。 |
+| napi_create_external_string_utf16 | 通过给定的UTF-16编码的字符串缓冲区来创建ArkTS字符串，该方法能避免字符串的内存拷贝。 |
+| napi_create_external_string_ascii | 通过给定的ASCII编码的字符串缓冲区来创建ArkTS字符串，该方法能避免字符串的内存拷贝。 |
 
 ### date相关
 

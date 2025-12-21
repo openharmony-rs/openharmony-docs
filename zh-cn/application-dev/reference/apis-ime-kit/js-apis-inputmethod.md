@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块主要面向普通前台应用（备忘录、信息、设置等系统应用与三方应用），提供对输入法（输入法应用）的控制、管理能力，包括显示/隐藏输入法软键盘、切换输入法、获取所有输入法列表等等。
@@ -638,6 +638,65 @@ setSimpleKeyboardEnabled(enable: boolean): void
   inputMethod.setSimpleKeyboardEnabled(enable);
 ```
 
+## inputMethod.onAttachmentDidFail<sup>22+</sup>
+
+onAttachmentDidFail(callback: Callback&lt;AttachFailureReason&gt;): void
+
+订阅绑定失败事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | 是 | 回调函数，返回绑定失败的原因，仅当注册者进程触发的绑定失败时，调用该回调函数。|
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
+  (reason: inputMethod.AttachFailureReason): void => {
+    console.info(`Attachment failed with reason: ${reason}.`);
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
+  };
+inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
+```
+
+## inputMethod.offAttachmentDidFail<sup>22+</sup>
+
+offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
+
+取消订阅绑定失败事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | 否 | 取消订阅的回调函数，需要与订阅接口传入的保持一致。参数不填写时，取消订阅该事件的所有回调函数。|
+
+**示例：**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
+  (reason: inputMethod.AttachFailureReason): void => {
+    console.info(`Attachment failed with reason: ${reason}.`);
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
+  };
+inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
+inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
+```
+
 ## TextInputType<sup>10+</sup>
 
 文本输入类型。
@@ -726,7 +785,7 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| enterKeyType<sup>10+</sup>  | [EnterKeyType](#enterkeytype10) | 否 | 否 | 输入法enter键类型。|
+| enterKeyType  | [EnterKeyType](#enterkeytype10) | 否 | 否 | 输入法enter键类型。|
 
 ## InputAttribute<sup>10+</sup>
 
@@ -736,8 +795,8 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| textInputType<sup>10+</sup>  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。|
-| enterKeyType<sup>10+</sup>  | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。|
+| textInputType  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。|
+| enterKeyType  | [EnterKeyType](#enterkeytype10) | 否 | 否 | Enter键功能类型。|
 | placeholder<sup>20+</sup> | string | 否 | 是 | 编辑框设置的占位符信息。 <br/>- 编辑框设置占位符信息时，长度不超过255个字符（如果超出将会自动截断为255个字符），用于提示或引导用户输入临时性文本或符号。（例如：提示输入项为"必填"或"非必填"的输入结果反馈。）<br/>- 编辑框没有设置占位符信息时，默认为空字符串。<br/>- 该字段在调用[attach](#attach10)时提供给输入法应用。|
 | abilityName<sup>20+</sup> | string | 否 | 是 | 编辑框设置的ability名称。<br/>- 编辑框设置ability名称时，长度不超过127个字符（如果超出将会自动截断为127个字符）。<br/>- 编辑框未设置ability名称时，默认为空字符串。<br/>- 该字段在调用绑定[attach](#attach10)时提供给输入法应用。|
 
@@ -749,10 +808,10 @@ Enter键的功能类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| inputAttribute<sup>10+</sup>  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。|
-| cursorInfo<sup>10+</sup>  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。|
-| selection<sup>10+</sup>  | [Range](#range10) | 否 | 是 | 文本选中的范围。|
-| windowId<sup>10+</sup>  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| inputAttribute  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。|
+| cursorInfo  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。|
+| selection  | [Range](#range10) | 否 | 是 | 文本选中的范围。|
+| windowId  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 | newEditBox<sup>20+</sup> | boolean | 否 | 是 | 表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。 |
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 否 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
 
@@ -767,7 +826,7 @@ Enter键的功能类型。
 | left  | number | 否 | 否 | 光标的横坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
 | top  | number | 否 | 否 | 光标的纵坐标，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度。|
 | width  | number | 否 | 否 | 光标的宽度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的宽度。|
-| height  | number | 否 | 否 | 光标的高度,单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度|
+| height  | number | 否 | 否 | 光标的高度，单位为px。该参数应为整数，最小值为0，最大值为当前屏幕的高度|
 
 ## Range<sup>10+</sup>
 
@@ -922,6 +981,18 @@ type SetPreviewTextCallback = (text: string, range: Range) => void
 | ------- | ----------------- | ---- | ----------------------------- |
 | text    | string            | 是   | 预览文本内容。                 |
 | range   | [Range](#range10) | 是   | 文本的选中范围。 |
+
+## AttachFailureReason<sup>22+</sup>
+
+枚举，绑定失败的原因。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+| 名称 | 值 |说明 |
+| -------- | -------- |-------- |
+| CALLER_NOT_FOCUSED    | 0 |表示调用者非焦点窗口所属应用导致的失败。 |
+| IME_ABNORMAL  | 1 |表示输入法应用异常导致的失败。 |
+| SERVICE_ABNORMAL  | 2 |表示输入法框架服务异常导致的失败。 |
 
 ## InputMethodController
 

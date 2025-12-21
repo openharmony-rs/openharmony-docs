@@ -6,6 +6,10 @@
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+typedef struct {...} OH_IPC_MessageOption
+```
+
 ## Overview
 
 Defines an IPC message.

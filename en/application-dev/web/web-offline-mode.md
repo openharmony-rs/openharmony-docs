@@ -29,25 +29,20 @@ This example shows how to create an offline **Web** component in advance and att
 >
 > When creating **Web** components, be mindful that each component consumes a significant amount of memory (about 200 MB) and computing resources. To optimize resource usage, limit the number of offline **Web** components created at a time.
 
-```ts
-// Carrier ability
-// EntryAbility.ets
-import { createNWeb } from '../pages/common'
+<!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
 onWindowStageCreate(windowStage: window.WindowStage): void {
   windowStage.loadContent('pages/Index', (err, data) => {
-    let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
-    if (!windowClass) {
-      console.info('windowClass is null');
-      return;
-    }
     // Create a dynamic Web component, in which the UIContext should be passed. The component can be created at any time after loadContent() is called.
-    createNWeb("https://www.example.com", windowClass.getUIContext());
-    if (err && err.code) {
+    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
       return;
     }
   });
 }
 ```
+<!--  -->
 
 ```ts
 // Create a NodeController instance.
@@ -135,10 +130,10 @@ export const getNWeb = (url: ResourceStr) : myNodeController | undefined => {
   return NodeMap.get(url);
 }
 ```
+<!--  -->
+<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-// Use the pages of NodeController.
-// Index.ets
+``` TypeScript
 import { getNWeb } from './common'
 @Entry
 @Component
@@ -148,9 +143,9 @@ struct Index {
       Column() {
         // NodeContainer is used to bind to the NodeController. A rebuild call triggers makeNode.
         // The Page page is bound to the NodeController through the NodeContainer API to display the dynamic component.
-        NodeContainer(getNWeb("https://www.example.com"))
-          .height("90%")
-          .width("100%")
+        NodeContainer(getNWeb('www.example.com'))
+          .height('90%')
+          .width('100%')
       }
       .width('100%')
     }
@@ -158,6 +153,7 @@ struct Index {
   }
 }
 ```
+<!--  -->
 
 ## Pre-starting the Web Rendering Process
 
@@ -170,25 +166,20 @@ To save time required for starting the web rendering process when the **Web** co
 
 In the following example, a **Web** component is pre-created during **onWindowStageCreate** phase to load a blank page. In this way, the rendering process is started in advance. When the index is redirected to index2, the time required for starting and initializing the rendering process of the Web component is reduced.
 
-```ts
-// Carrier ability
-// EntryAbility.ets
-import { createNWeb } from '../pages/common'
+<!-- @[entry_ability_window_stage_created_after_page_loaded](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/entry1ability/Entry1Ability.ets) -->
+
+``` TypeScript
 onWindowStageCreate(windowStage: window.WindowStage): void {
   windowStage.loadContent('pages/Index', (err, data) => {
-    let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
-    if (!windowClass) {
-      console.info('windowClass is null');
-      return;
-    }
     // Create an empty dynamic Web component, in which the UIContext should be passed. The component can be created at any time after loadContent() is called.
-    createNWeb("about:blank", windowClass.getUIContext());
-    if (err && err.code) {
+    createNWeb('about: blank', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
       return;
     }
   });
 }
 ```
+<!--  -->
 
 ```ts
 // Create a NodeController instance.
@@ -276,21 +267,23 @@ export const getNWeb = (url: ResourceStr) : myNodeController | undefined => {
   return NodeMap.get(url);
 }
 ```
+<!--  -->
+<!-- @[navigate_to_web_page_pre_start_webview_load](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/Index.ets) -->
 
-```ts
-// index.ets
+``` TypeScript
+import router from '@ohos.router';
 import { webview } from '@kit.ArkWeb';
 
 @Entry
 @Component
 struct Index1 {
-  webviewController: webview.WebviewController = new webview.WebviewController();
-  
+  WebviewController: webview.WebviewController = new webview.WebviewController();
+
   build() {
     Column() {
       // The rendering process has been pre-started.
-      Button("Go to Web Page").onClick(()=>{
-        this.getUIContext().getRouter().pushUrl({url: "pages/index2"});
+      Button($r('app.string.Jump_to_Web_Page')).onClick(()=>{
+        router.pushUrl({url: 'pages/index2'});
       })
         .width('100%')
         .height('100%')
@@ -298,20 +291,22 @@ struct Index1 {
   }
 }
 ```
+<!--  -->
 
-```ts
-// index2.ets
-import { webview } from '@kit.ArkWeb';
+<!-- @[nodeContainer_bind_controller_show_dynamic_pages](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry1/src/main/ets/pages/index2.ets) -->
+
+``` TypeScript
+import web_webview from '@ohos.web.webview';
 
 @Entry
 @Component
 struct index2 {
-  webviewController: webview.WebviewController = new webview.WebviewController();
-  
+  webviewController: web_webview.WebviewController = new web_webview.WebviewController();
+
   build() {
     Row() {
       Column() {
-        Web({src: 'https://www.example.com', controller: this.webviewController})
+        Web({src: 'www.example.com', controller: this.webviewController})
           .width('100%')
           .height('100%')
       }
@@ -321,6 +316,7 @@ struct index2 {
   }
 }
 ```
+<!--  -->
 
 ## Pre-rendering Web Pages
 
@@ -334,30 +330,20 @@ To pre-render a web page, create an offline **Web** component in advance and act
 > 2. In this solution, the invisible **Web** component in the background is activated. Due to this activation, avoid pre-rendering pages that automatically play audio or video, as this could inadvertently lead to unintended media playback. Check and manage the behavior of the page on the application side.
 > 3. The pre-rendered web page is continuously rendered in the background. To prevent overheating and power consumption, you are advised to stop the rendering process immediately after the pre-rendering is complete. The following example shows how to use [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) to determine the time for stopping pre-rendering. This API can be used in HTTP and HTTPS online web pages.
 
-```ts
-// Carrier ability
-// EntryAbility.ets
-import {createNWeb} from '../pages/common';
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
+<!-- @[entry_ability_window_stage_created_after_specified_page_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/Index', (err, data) => {
-      let windowClass: window.Window = windowStage.getMainWindowSync(); // Obtain the main window of the application.
-      if (!windowClass) {
-        console.info('windowClass is null');
-        return;
-      }
-      // Create a dynamic ArkWeb component, in which the UIContext should be passed. The component can be created at any time after loadContent() is called.
-      createNWeb("https://www.example.com", windowClass.getUIContext());
-      if (err && err.code) {
-        return;
-      }
-    });
-  }
+``` TypeScript
+onWindowStageCreate(windowStage: window.WindowStage): void {
+  windowStage.loadContent('pages/Index', (err, data) => {
+    // Create a dynamic Web component, in which the UIContext should be passed. The component can be created at any time after loadContent() is called.
+    createNWeb('www.example.com', windowStage.getMainWindowSync().getUIContext());
+    if (err.code) {
+      return;
+    }
+  });
 }
 ```
+<!--  -->
 
 ```ts
 // Create a NodeController instance.
@@ -455,11 +441,11 @@ export const getNWeb = (url : string) : myNodeController | undefined => {
 }
 ```
 
-```ts
-// Use the pages of NodeController.
-// Index.ets
-import {createNWeb, getNWeb} from './common';
+<!--  -->
+<!-- @[nodeContainer_bind_controller_to_show_dynamic_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { getNWeb } from './common'
 @Entry
 @Component
 struct Index {
@@ -468,9 +454,9 @@ struct Index {
       Column() {
         // NodeContainer is used to bind to the NodeController. A rebuild call triggers makeNode.
         // The Page page is bound to the NodeController through the NodeContainer API to display the dynamic component.
-        NodeContainer(getNWeb("https://www.example.com"))
-          .height("90%")
-          .width("100%")
+        NodeContainer(getNWeb('www.example.com'))
+          .height('90%')
+          .width('100%')
       }
       .width('100%')
     }
@@ -478,6 +464,7 @@ struct Index {
   }
 }
 ```
+<!--  -->
 
 ## Common Troubleshooting Procedure
 
@@ -485,12 +472,14 @@ struct Index {
 
 Check whether the network permission has been added to **module.json5**. For details, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
 
-```ts
+<!-- @[add_network_permission](https://gitcode.com/liveLoad/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
+
+``` JSON5
 "requestPermissions":[
-    {
-      "name" : "ohos.permission.INTERNET"
-    }
-  ]
+  {
+    "name" : "ohos.permission.INTERNET"
+  }
+],
 ```
 
 2. Check the logic for binding [NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md) to the node.

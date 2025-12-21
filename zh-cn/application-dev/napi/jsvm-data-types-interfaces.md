@@ -401,6 +401,7 @@ JSVM 提供了多种配置选项，允许开发者在执行 `OH_JSVM_Init` 时�
 > - 建议开发者在没有特殊需求的情况下，仅使用JSVM内部的默认配置选项。
 
 场景示例：
+
 常规模式下初始化 VM 平台。
 ```c++
 static void NormalInit(bool &vmInit) {
@@ -419,6 +420,7 @@ static void NormalInit(bool &vmInit) {
 ```
 
 场景示例：
+
 初始化低内存占用的 VM 平台。
 ```c++
 static void LowMemoryInit(bool &vmInit) {
@@ -439,6 +441,7 @@ static void LowMemoryInit(bool &vmInit) {
 ```
 
 场景示例：
+
 初始化低GC触发频次的 VM 平台。
 ```c++
 static void LowGCFrequencyInit(bool &vmInit) {
@@ -459,6 +462,7 @@ static void LowGCFrequencyInit(bool &vmInit) {
 ```
 
 执行结果：
+
 使用以上三个接口可以分别初始化具备不同特性的 VM 平台。初始化之后，可以创建 VM 实例，并执行 JavaScript 脚本。
 相比 NormalInit 接口，LowGCFrequencyInit 接口初始化的VM平台 GC 触发频次更低。
 相比 NormalInit 接口，LowMemoryInit 接口初始化的VM平台内存占用更少。
@@ -466,6 +470,7 @@ static void LowGCFrequencyInit(bool &vmInit) {
 **创建 VM 实例**
 
 场景示例:
+
 创建及销毁 JavaScript 引擎实例，包含创建及销毁 JS 执行上下文环境
 ```c++
 bool VM_INIT = false;
@@ -488,7 +493,7 @@ static JSVM_Value Add(JSVM_Env env, JSVM_CallbackInfo info) {
     JSVM_Value args[2];
     OH_JSVM_GetCbInfo(env, info, &argc, args, NULL, NULL);
     double num1 = 0;
-	double num2 = 0;
+    double num2 = 0;
     OH_JSVM_GetValueDouble(env, args[0], &num1);
     OH_JSVM_GetValueDouble(env, args[1], &num2);
     JSVM_Value sum = nullptr;
@@ -580,6 +585,7 @@ static napi_value MyJSVMDemo([[maybe_unused]] napi_env _env, [[maybe_unused]] na
 | OH_JSVM_RunScript               | 执行编译脚本，如果没有 JIT 权限支持，执行含wasm的脚本会失败，在特定场景下存在性能差异，并打印一行日志提示开发者                                                                             |
 
 场景示例：
+
 编译及执行 JS 代码（创建 VM 实例，注册函数，执行 JS，销毁 VM 实例）
 
 cpp 部分代码
@@ -610,8 +616,8 @@ const concat = (...args) => args.reduce((a, b) => a + b);
 )JS";
 
 static void RunScriptWithOption(JSVM_Env env, string& src,
-								uint8_t** dataPtr = nullptr,
-								size_t* lengthPtr = nullptr) {
+                                uint8_t** dataPtr = nullptr,
+                                size_t* lengthPtr = nullptr) {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
 
@@ -623,34 +629,34 @@ static void RunScriptWithOption(JSVM_Env env, string& src,
     size_t length = lengthPtr ? *lengthPtr : 0;
     JSVM_Script script;
     // 编译js代码
-	JSVM_ScriptOrigin origin {
-	    // 以包名 helloworld 为例, 假如存在对应的 sourcemap, sourcemap 的路径可以是 /data/app/el2/100/base/com.example.helloworld/files/index.js.map
-	    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
-	    // 源文件名字
-	    .resourceName = "index.js",
-	    // script 在源文件中的起始行列号
-	    .resourceLineOffset = 0,
-	    .resourceColumnOffset = 0,
-	};
-	JSVM_CompileOptions option[3];
-	option[0] = {
-		.id = JSVM_COMPILE_MODE,
-		.content = { .num = compilMode }
-	};
-	JSVM_CodeCache codeCache = {
-		.cache = data,
-		.length = length
-	};
-	option[1] = {
-		.id = JSVM_COMPILE_CODE_CACHE,
-		.content = { .ptr = &codeCache }
-	};
-	// JSVM_COMPILE_ENABLE_SOURCE_MAP 选项默认值为 false，若为 true 那么对应的 sourceMapUrl 必须不为空
-	option[2] = {
-		.id = JSVM_COMPILE_ENABLE_SOURCE_MAP,
-		.content = { .boolean = true }
-	};
-	OH_JSVM_CompileScriptWithOptions(env, jsSrc, 3, option, &script);
+    JSVM_ScriptOrigin origin {
+        // 以包名 helloworld 为例, 假如存在对应的 sourcemap, sourcemap 的路径可以是 /data/app/el2/100/base/com.example.helloworld/files/index.js.map
+        .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
+        // 源文件名字
+        .resourceName = "index.js",
+        // script 在源文件中的起始行列号
+        .resourceLineOffset = 0,
+        .resourceColumnOffset = 0,
+    };
+    JSVM_CompileOptions option[3];
+    option[0] = {
+        .id = JSVM_COMPILE_MODE,
+        .content = { .num = compilMode }
+    };
+    JSVM_CodeCache codeCache = {
+        .cache = data,
+        .length = length
+    };
+    option[1] = {
+        .id = JSVM_COMPILE_CODE_CACHE,
+        .content = { .ptr = &codeCache }
+    };
+    // JSVM_COMPILE_ENABLE_SOURCE_MAP 选项默认值为 false，若为 true 那么对应的 sourceMapUrl 必须不为空
+    option[2] = {
+        .id = JSVM_COMPILE_ENABLE_SOURCE_MAP,
+        .content = { .boolean = true }
+    };
+    OH_JSVM_CompileScriptWithOptions(env, jsSrc, 3, option, &script);
 
     JSVM_Value result;
     // 执行js代码
@@ -679,18 +685,18 @@ static void RunScript(JSVM_Env env, string& src,
     JSVM_Script script;
     // 编译js代码
     if (withOrigin) {
-	    JSVM_ScriptOrigin origin {
-	        // 以包名 helloworld 为例, 假如存在对应的 sourcemap, sourcemap 的路径可以是 /data/app/el2/100/base/com.example.helloworld/files/index.js.map
-		    .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
-		    // 源文件名字
-		    .resourceName = "index.js",
-		    // script 在源文件中的起始行列号
-		    .resourceLineOffset = 0,
-		    .resourceColumnOffset = 0,
-	    };
-		OH_JSVM_CompileScriptWithOrigin(env, jsSrc, data, length, true, &cacheRejected, &origin, &script);
+        JSVM_ScriptOrigin origin {
+            // 以包名 helloworld 为例, 假如存在对应的 sourcemap, sourcemap 的路径可以是 /data/app/el2/100/base/com.example.helloworld/files/index.js.map
+            .sourceMapUrl = "/data/app/el2/100/base/com.example.helloworld/files/index.js.map",
+            // 源文件名字
+            .resourceName = "index.js",
+            // script 在源文件中的起始行列号
+            .resourceLineOffset = 0,
+            .resourceColumnOffset = 0,
+        };
+        OH_JSVM_CompileScriptWithOrigin(env, jsSrc, data, length, true, &cacheRejected, &origin, &script);
     } else {
-	    OH_JSVM_CompileScript(env, jsSrc, data, length, true, &cacheRejected, &script);
+        OH_JSVM_CompileScript(env, jsSrc, data, length, true, &cacheRejected, &script);
     }
     printf("Code cache is %s\n", cacheRejected ? "rejected" : "used");
 
@@ -814,6 +820,7 @@ OH_JSVM_CreateCodeCache接口用法可参考[使用code cache加速编译](use-j
 **场景介绍**
 
 JSVM-API WebAssembly 接口提供了 WebAssembly 字节码编译、WebAssembly 函数优化、WebAssembly cache 序列化和反序列化的能力。
+
 详见[使用 JSVM-API WebAssembly 接口](use-jsvm-about-wasm.md)。
 
 **接口说明**
@@ -854,6 +861,7 @@ JSVM-API WebAssembly 接口提供了 WebAssembly 字节码编译、WebAssembly �
 | OH_JSVM_CreateSyntaxError| 创建一个JS SyntaxError并返回 |
 
 场景示例：
+
 以TypeError为例。创建、判断，并抛出JS TypeError。
 
 ```c++
@@ -923,6 +931,7 @@ if (status != JSVM_OK) // 当执行失败出现异常时
 | OH_JSVM_ReleaseScript | 释放持久化保存过的 JSVM_Script，释放之后 JSVM_Script 不再可用，应当置为空 |
 
 场景示例：
+
 通过handle scope保护在scope范围内创建的对象在该范围内不被回收。
 
 ```c++
@@ -1024,6 +1033,7 @@ JSVM_CALL(OH_JSVM_CloseHandleScope(env, scope));
 |OH_JSVM_CreateSet | 创建一个新的 JavaScript Set对象 |
 
 场景示例:
+
 创建指定长度的JavaScript数组。
 
 ```c++
@@ -1127,6 +1137,7 @@ OH_JSVM_CreateSet(env, &value);
 |OH_JSVM_GetUndefined | 返回 JavaScript Undefined 对象 |
 
 场景示例：
+
 创建64位的 BigInt，并获取64位 Int 值。
 
 ```c++
@@ -1227,6 +1238,7 @@ JS值操作和抽象操作。
 |OH_JSVM_IsDetachedArraybuffer | 检查给定的 ArrayBuffer 是否已被分离(detached) |
 
 场景示例:
+
 判断JS值是否为Array类型
 
 ```c++
@@ -1365,6 +1377,7 @@ JS对象属性的增加、删除、获取和判断。
 |OH_JSVM_ObjectGetPrototypeOf | 获取给定JavaScript对象的原型。 |
 
 场景示例:
+
 JS对象属性的增加、删除、获取和判断。
 
 ```c++
@@ -1446,6 +1459,7 @@ JS函数操作。
 |OH_JSVM_CreateFunctionWithScript | 根据传入的函数体和函数参数列表，创建一个新的 JavaScript Function对象 |
 
 场景示例:
+
 创建JavaScript函数操作。
 
 ```c++
@@ -1532,6 +1546,7 @@ OH_JSVM_CreateFunctionWithScript(env, "add", JSVM_AUTO_LENGTH, 2, argus, script,
 |OH_JSVM_DefineClassWithOptions | 定义一个具有给定类名、构造函数、属性和回调处理程序、父类的JavaScript类，并根据传入了DefineClassOptions来决定是否需要为所定义的Class设置属性代理、预留internal-field槽位、为class作为函数进行调用时设置函数回调。|
 
 场景示例：
+
 对象绑定操作。
 
 ```c++
@@ -1608,6 +1623,7 @@ static napi_value TestWrap(napi_env env1, napi_callback_info info)
 ```
 
 场景示例：
+
 对象绑定及监听拦截属性操作。
 
 ```c++
@@ -2027,6 +2043,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
 |OH_JSVM_GetVMInfo| 返回虚拟机的信息 |
 
 场景示例：
+
 获取当前版本信息。
 
 ```c++
@@ -2054,6 +2071,7 @@ OH_JSVM_GetVersion(env, &versionId);
 > 使用 BackingStore 属于高危操作，使用者需确保内存使用正确。请参考下方正确示例，谨慎操作。
 
 场景示例：
+
 内存管理。
 
 ```c++
@@ -2156,6 +2174,7 @@ Promise相关操作。
 |OH_JSVM_IsPromise| 查询Promise是否为原生Promise对象 |
 
 场景示例：
+
 Promise相关操作。
 
 ```c++
@@ -2198,6 +2217,7 @@ JSON操作。
 |OH_JSVM_JsonStringify| 将对象字符串化，并返回成功转换后的字符串 |
 
 场景示例：
+
 解析JSON操作。
 
 ```c++
@@ -2221,6 +2241,7 @@ OH_JSVM_JsonParse(env, jsonString, &result);
 |OH_JSVM_CreateEnvFromSnapshot| 基于启动快照创建jsvm环境 |
 
 场景示例：
+
 [创建和使用虚拟机的启动快照。](use-jsvm-create-snapshot.md)
 
 ### 检查传入的值是否可调用
@@ -2235,6 +2256,7 @@ OH_JSVM_JsonParse(env, jsonString, &result);
 |OH_JSVM_IsCallable| 检查传入的值是否可调用 |
 
 场景示例：
+
 检查传入的值是否可调用。
 
 ```c++
@@ -2316,6 +2338,7 @@ Lock操作。
 |OH_JSVM_ReleaseLock| 释放指定环境的锁 |
 
 场景示例：
+
 加锁解锁操作。
 
 ```c++
@@ -2420,6 +2443,7 @@ static napi_value Add([[maybe_unused]] napi_env _env, [[maybe_unused]] napi_call
 |OH_JSVM_GetInstanceData| 获取与当前运行的JSVM环境相关联的数据 |
 
 场景示例：
+
 设置并获取与当前运行的JSVM环境相关联的数据。
 
 ```c++

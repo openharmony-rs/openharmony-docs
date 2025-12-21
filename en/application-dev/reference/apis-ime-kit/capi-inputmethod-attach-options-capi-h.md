@@ -144,7 +144,7 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 
 **Description**
 
-Obtains the value that indicates whether to display the keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).
+Obtains the reason for requesting the keyboard from [InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md).
 
 **Since**: 15
 

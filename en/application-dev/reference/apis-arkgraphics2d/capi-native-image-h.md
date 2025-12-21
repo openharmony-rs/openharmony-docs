@@ -56,7 +56,7 @@ This file declares the functions for obtaining and using **NativeImage**.
 | [int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, int32_t height)](#oh_consumersurface_setdefaultsize) | - | Sets the default size of a geometric shape.<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)](#oh_nativeimage_setdropbuffermode) | - | Sets the frame-dropping mode for rendering of an **OH_NativeImage** instance.<br>In frame-dropping mode, most buffers produced by the producer are discarded, and only the latest buffer is rendered promptly.<br>This mode does not guarantee high frame rates.<br>It is recommended that you can call this function immediately after [OH_NativeImage_Create](capi-native-image-h.md#oh_nativeimage_create).<br>This function takes effect only when it is used together with [OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage).<br>This function is not thread-safe.|
 | [OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, uint32_t textureTarget, bool singleBufferMode)](#oh_nativeimage_createwithsinglebuffermode) | - | Creates an **OH_NativeImage** instance with the texture ID. The instance is associated with the texture ID and texture target of OpenGL ES, and determines whether to set the single-buffer mode.<br>This function must be used in pair with [OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy). Otherwise, memory leak occurs.<br>This function is not thread-safe.|
-| [OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferMode)](#oh_consumersurface_createwithsinglebuffermode) | - | Creates an [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md) instance as the consumer of the surface and determines whether to set the single-buffer mode.<br>This function is used only for memory rotation of the surface consumer. The created [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md) does not perform memory rendering.<br>This function must be used in pair with [OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy). Otherwise, memory leak occurs.<br>This function is not thread-safe.|
+| [OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferMode)](#oh_consumersurface_createwithsinglebuffermode) | - | Creates an [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md) instance as the consumer of the surface and determines whether to set the single-buffer mode.<br>This function is used only for memory rotation of the surface consumer. The created [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md) does not perform memory rendering.<br>This function cannot be used in together with [OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage).<br>This function must be used in pair with [OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy). Otherwise, memory leak occurs.<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)](#oh_nativeimage_releasetextimage) | - | Unbinds **SurfaceBuffer** from the texture and restores the texture to the unused state.<br>In single-buffer mode, this function is called to release the texture. Otherwise, the producer cannot request a buffer next time.<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_ColorSpace* colorSpace)](#oh_nativeimage_getcolorspace) | - | Obtains the color space of the texture image that is most recently passed to [OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage).<br>This function is not thread-safe.|
 | [int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OHNativeWindowBuffer** nativeWindowBuffer, int* fenceFd)](#oh_nativeimage_acquirelatestnativewindowbuffer) | - | Obtains the **OHNativeWindowBuffer** recently produced by the producer through the **OH_NativeImage** of the consumer, and discards other buffers.<br>The consumer can receive the callback of all available buffers (including discarded buffers) through the callback registered by [OH_OnFrameAvailableListener](capi-oh-nativeimage-oh-onframeavailablelistener.md).<br>This function cannot be used in together with [OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage).<br>This function is not thread-safe.|
@@ -105,7 +105,7 @@ Creates an **OH_NativeImage** instance to be associated with the specified OpenG
 | Name| Description|
 | -- | -- |
 | uint32_t textureId | OpenGL ES texture ID.|
-| uint32_t textureTarget | OpenGL ES texture target.|
+| uint32_t textureTarget | OpenGL ES texture target. The value can be **GL_TEXTURE_2D** or **GL_TEXTURE_EXTERNAL_OES**. For details, see [How do I choose between the texture types GL_TEXTURE_2D and GL_TEXTURE_EXTERNAL_OES?](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-12).|
 
 **Returns**
 
@@ -627,7 +627,7 @@ This function is not thread-safe.
 | Name| Description|
 | -- | -- |
 | uint32_t textureId | OpenGL ES texture ID.|
-| uint32_t textureTarget | OpenGL ES texture target.|
+| uint32_t textureTarget | OpenGL ES texture target. For details, see [How do I choose between the texture types GL_TEXTURE_2D and GL_TEXTURE_EXTERNAL_OES?](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-12).|
 | bool singleBufferMode | Whether to set the single-buffer mode. **true**: yes; **false**: no.|
 
 **Returns**
@@ -647,6 +647,8 @@ OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferM
 Creates an [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md) instance as the consumer of the surface and determines whether to set the single-buffer mode.
 
 This function is used only for memory rotation of the surface consumer. The created [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md) does not perform memory rendering.
+
+This function cannot be used in together with [OH_NativeImage_UpdateSurfaceImage](capi-native-image-h.md#oh_nativeimage_updatesurfaceimage).
 
 This function must be used in pair with [OH_NativeImage_Destroy](capi-native-image-h.md#oh_nativeimage_destroy). Otherwise, memory leak occurs.
 

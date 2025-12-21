@@ -5,7 +5,7 @@
 <!--Owner: @yylong; @zcdqs-->
 <!--Designer: @yylong; @zcdqs-->
 <!--Tester: @liuzhenshuo-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 >
@@ -24,3 +24,7 @@ This error code is reported when an API is called through a controller but no co
 **Possible Causes**
 
 The API called requires a controller, but the component is not bound to one.
+
+**Solution**
+
+Verify that the controller is properly bound to a component and that the component has not been released.
