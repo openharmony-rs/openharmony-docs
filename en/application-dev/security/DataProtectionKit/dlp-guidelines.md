@@ -6,6 +6,7 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+<!--RP1-->
 The Data Loss Prevention (DLP) service is a system solution provided to prevent leakage of sensitive data. It provides a file format called DLP. A DLP file consists of the original file in ciphertext and the authorization credential, and ".dlp" is added to the end of the original file name (including the file name extension), for example, **test.docx.dlp**.
 
 A DLP file can be accessed only after successful device-cloud authentication (network connection required). The permissions for accessing a DLP file include the following:
@@ -85,11 +86,11 @@ Prerequisites for using this API: The DLP credential server has been connected.
         }
       }
     
-      let context = getContext () as common.UIAbilityContext; // Obtain the UIAbility context.
+      let context = new UIContext().getHostContext() as common.UIAbilityContext; // Obtain the current UIAbilityContext.
     
       try {
-        console.log('openDLPFile:' + JSON.stringify(want));
-        console.log('openDLPFile: delegator:' + JSON.stringify(context));
+        console.info('openDLPFile:' + JSON.stringify(want));
+        console.info('openDLPFile: delegator:' + JSON.stringify(context));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile:' + JSON.stringify(want));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'openDLPFile: delegator:' + JSON.stringify(context));
         context.startAbility(want);
@@ -144,7 +145,7 @@ Prerequisites for using this API: The DLP credential server has been connected.
       try {
         let fileUri: string = this.uri;
         let fileName: string = this.fileName;
-        let context = getContext () as common.UIAbilityContext; // Obtain the UIAbility context.
+        let context = new UIContext().getHostContext() as common.UIAbilityContext; // Obtain the current UIAbilityContext.
         let want: Want = {
           'uri': fileUri,
           'parameters': {
@@ -175,7 +176,7 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     isInSandbox() {
       dlpPermission.isInSandbox().then((data) => {
         this.result = 'isInSandbox result: ' + JSON.stringify(data);
-        console.log('isInSandbox result: ' + JSON.stringify(data));
+        console.info('isInSandbox result: ' + JSON.stringify(data));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'isInSandbox result: ' + JSON.stringify(data));
       }).catch((err:BusinessError) => {
         this.result = 'isInSandbox error: ' + JSON.stringify(err);
@@ -194,7 +195,7 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     getDLPPermissionInfo() {
       dlpPermission.getDLPPermissionInfo().then((data) => {
         this.result = 'getDLPPermissionInfo result: ' + JSON.stringify(data);
-        console.log('getDLPPermissionInfo, result: ' + JSON.stringify(data));
+        console.info('getDLPPermissionInfo, result: ' + JSON.stringify(data));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPPermissionInfo result: ' + JSON.stringify(data));
       }).catch((err:BusinessError) => {
         this.result = 'getDLPPermissionInfo error: ' + JSON.stringify(err);
@@ -211,8 +212,8 @@ Prerequisites for using this API: The DLP file has been opened by the demo appli
     ``` TypeScript
     getDLPSupportedFileTypes() {
       dlpPermission.getDLPSupportedFileTypes((err, result) => {
-        console.log('getDLPSupportedFileTypes: ' + JSON.stringify(err));
-        console.log('getDLPSupportedFileTypes: ' + JSON.stringify(result));
+        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(err));
+        console.info('getDLPSupportedFileTypes: ' + JSON.stringify(result));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(err));
         hilog.info(HILOG_DLP_DOMAIN, HILOG_TAG, 'getDLPSupportedFileTypes: ' + JSON.stringify(result));
         this.result = 'getDLPSupportedFileTypes result: ' + JSON.stringify(result);
@@ -387,7 +388,7 @@ Prerequisites for using this API: The DLP credential server has been connected.
     ``` TypeScript
     startDLPManagerForResult() {
       try {
-        let context = getContext () as common.UIAbilityContext; // Obtain the UIAbility context.
+        let context = new UIContext().getHostContext() as common.UIAbilityContext; // Obtain the current UIAbilityContext.
         let want:Want = {
           'uri': this.uri,
           'parameters' : {
@@ -518,3 +519,5 @@ Prerequisites for using this API: The DLP credential server has been connected.
       }
     }
     ```
+
+<!--RP1End-->
