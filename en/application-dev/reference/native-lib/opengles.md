@@ -318,26 +318,27 @@ After the EGL display connection is initialized, determine the type and configur
 
    You are advised to use this method if no special configuration is required, because it is easier to obtain the optimal configuration.
 
-    ```cpp
-    EGLBoolean eglChooseConfig(EGLDisplay dpy,     // Handle to the EGL display connection for which configurations are selected.
-                        const EGLint *attrib_list, // An integer array of pointers to attributes. Each element in the array consists of an attribute name (for example, EGL_RED_SIZE) and attribute value, and the array is terminated with EGL_NONE. An example attribute array is {EGL_RED_SIZE, 8, EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8, EGL_NONE}.
-                           EGLConfig *configs,     // An array of pointers to the selected configurations. The eglChooseConfig function selects the configurations that match the attributes from the available configurations and stores them in this array.
-                           EGLint config_size,     // Size of the configs array.
-                           EGLint *num_config);    // Number of configurations that match the attributes.
-    ```
+  ```cpp
+  EGLBoolean eglChooseConfig(EGLDisplay dpy,     // Handle to the EGL display connection for which configurations are selected.
+                      const EGLint *attrib_list, // An integer array of pointers to attributes. Each element in the array consists of an attribute name (for example, EGL_RED_SIZE) and attribute value, and the array is terminated with EGL_NONE. An example attribute array is {EGL_RED_SIZE, 8, EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8, EGL_NONE}.
+                          EGLConfig *configs,     // An array of pointers to the selected configurations. The eglChooseConfig function selects the configurations that match the attributes from the available configurations and stores them in this array.
+                          EGLint config_size,     // Size of the configs array.
+                          EGLint *num_config);    // Number of configurations that match the attributes.
+  ```
 
-    ```cpp
-    // Here, the following attributes are used:
-	EGLint attribList[] = {
-            EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,  // The renderable type is OpenGL ES 3.
-            EGL_RED_SIZE, 8, // The number of bits in the red buffer is 8.
-            EGL_GREEN_SIZE, 8, // The number of bits in the green buffer is 8.
-            EGL_BLUE_SIZE, 8,   // The number of bits in the blue buffer is 8.
-            EGL_NONE
-    };
-    eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
-    ```
-   When you call the **eglChooseConfig** function, the system returns EGL configurations that match the specified attributes in **attribList**. The configurations are stored in the **mEGLConfig** parameter. In the sample code, **configsNum** is set to **1**, indicating that the **mEGLConfig** array can hold only one configuration. Although this setting limits the number of configurations returned, it is usually enough for most applications. Moreover, **configsNum** reflects the total number of configurations that meet the specified attributes, providing a full count of available options.
+  ```cpp
+  // Here, the following attributes are used:
+  EGLint attribList[] = {
+          EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,  // The renderable type is OpenGL ES 3.
+          EGL_RED_SIZE, 8, // The number of bits in the red buffer is 8.
+          EGL_GREEN_SIZE, 8, // The number of bits in the green buffer is 8.
+          EGL_BLUE_SIZE, 8,   // The number of bits in the blue buffer is 8.
+          EGL_NONE
+  };
+  eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
+  ```
+
+  When you call the **eglChooseConfig** function, the system returns EGL configurations that match the specified attributes in **attribList**. The configurations are stored in the **mEGLConfig** parameter. In the sample code, **configsNum** is set to **1**, indicating that the **mEGLConfig** array can hold only one configuration. Although this setting limits the number of configurations returned, it is usually enough for most applications. Moreover, **configsNum** reflects the total number of configurations that meet the specified attributes, providing a full count of available options.
 
 - Use **eglGetConfigs** to query all supported configurations and use **eglGetConfigAttrib** to filter the desired ones.
 
