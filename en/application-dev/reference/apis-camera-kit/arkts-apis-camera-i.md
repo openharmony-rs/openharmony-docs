@@ -312,3 +312,15 @@ Describes the effect status information of a camera controller.
 | -------- | ---------- | -------- | -------- | ---------- |
 | effectType | [ControlCenterEffectType](arkts-apis-camera-e.md#controlcentereffecttype20) |   Yes   |    No   | Effect type of the camera controller.|
 | isActive | boolean | Yes| No| Whether the camera controller is activated. **true** if activated, **false** otherwise.|
+
+## IsoInfo<sup>22+</sup>
+
+Describes the information about the sensitivity (ISO) settings.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+| Name| Type   | Read-only| Optional| Description          |
+| ---- | ------- | ---- |--| -------------- |
+| iso  | number  | Yes  | Yes| ISO.       |
