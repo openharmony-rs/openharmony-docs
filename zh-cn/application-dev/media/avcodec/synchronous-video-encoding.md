@@ -245,7 +245,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                 bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_WIDTH, &width) &&
                                  OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_HEIGHT, &height);
                 if (!getIntRet) {
-                 	// 异常处理。
+                    // 异常处理。
                 }
                 break;
             }
@@ -482,7 +482,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_STRIDE, &widthStride) &&
                                      OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_SLICE_HEIGHT, &heightStride);
                      if (!getIntRet) {
-                     	// 异常处理。
+                        // 异常处理。
                      }
                     isFirstFrame = false;
                 }
