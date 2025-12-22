@@ -188,6 +188,9 @@ import { StorageLink } from '@ohos.arkui.stateManagement';
 
 - AppStorage同一进程内共享，UIAbility和<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability.md)<!--DelEnd-->是两个进程，所以在<!--Del-->[<!--DelEnd-->UIExtensionAbility<!--Del-->](../../application-models/uiextensionability.md)<!--DelEnd-->中不共享主进程的AppStorage。
 
+3. \@StoragePropRef/\@StorageLink不支持装饰Function 与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@StoragePropRef/\@StorageLink装饰Function 与() => void类型变量的校验，编译期会报错。
+
 ## 使用场景
 
 ### 从应用逻辑使用AppStorage和LocalStorage

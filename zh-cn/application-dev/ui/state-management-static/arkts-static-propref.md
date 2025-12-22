@@ -102,8 +102,8 @@ import { PropRef } from '@ohos.arkui.stateManagement';
 - 若初始化时传入undefined类型，该值将不会生效，而是使用本地的默认值。
 - 若从数据源更新时传入undefined，则本次从数据源的更新不会生效。
 
-2. \@PropRef不支持装饰Function 与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
-从API version 23开始，添加对\@PropRef装饰Function 与() => void类型变量的校验，编译期会报错。
+2. \@PropRef不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@PropRef装饰Function与() => void类型变量的校验，编译期会报错。
 
 ## 使用场景
 
