@@ -33,7 +33,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;PhotoAsset&gt;&gt;): void
 
-获取相册中的文件。该方法使用callback形式来返回。
+获取相册中的文件。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -44,7 +44,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | 是   | 检索选项。 |
-| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt;&gt; | 是   | callback返回图片和视频数据结果集。 |
+| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt;&gt; | 是   | 回调函数。当获取相册中的文件成功，err为undefined，data为获取到的图片和视频数据结果集[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)；否则为错误对象。 |
 
 **错误码：**
 
@@ -93,7 +93,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
-获取相册中的文件。该方法使用Promise来返回。
+获取相册中的文件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
