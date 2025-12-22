@@ -233,11 +233,11 @@ export struct AccessibilityText {
       Row() {
         // ...
         Column() {
-          // $r('app.media.UniversalAttributesAccessibility_text5')需要替换为开发者所需的文本资源文件
+          // 请将$r('app.media.UniversalAttributesAccessibility_text5')替换为实际资源文件
           Text($r('app.string.UniversalAttributesAccessibility_text5'))
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
-          // $r('app.media.UniversalAttributesAccessibility_text6')需要替换为开发者所需的文本资源文件
+          // 请将$r('app.media.UniversalAttributesAccessibility_text6')替换为实际资源文件
           Text($r('app.string.UniversalAttributesAccessibility_text6'))
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
@@ -245,9 +245,9 @@ export struct AccessibilityText {
         .width('100%')
           .accessibilityGroup(true)
           .accessibilityLevel('yes')
-          // $r('app.media.UniversalAttributesAccessibility_text7')需要替换为开发者所需的文本资源文件
+          // 请将$r('app.media.UniversalAttributesAccessibility_text7')替换为实际资源文件
           .accessibilityText($r('app.string.UniversalAttributesAccessibility_text7'))
-          // $r('app.media.UniversalAttributesAccessibility_text8')需要替换为开发者所需的文本资源文件
+          // 请将$r('app.media.UniversalAttributesAccessibility_text8')替换为实际资源文件
           .accessibilityDescription($r('app.string.UniversalAttributesAccessibility_text8'))
           .accessibilityVirtualNode(this.customAccessibilityNode)
           .accessibilityChecked(true)
