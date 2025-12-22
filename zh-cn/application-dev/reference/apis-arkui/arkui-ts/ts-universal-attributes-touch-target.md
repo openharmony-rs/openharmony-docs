@@ -1,7 +1,7 @@
 # 触摸热区设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -11,7 +11,8 @@
 
 >  **说明：**
 >
-> - 从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 > - 设置触摸热区属性时，手指需在热区内按下，随后抬起时若满足事件响应条件，事件将被触发。此外，在当前手势结束前，若条件满足，可持续触发的事件也会被激活。
 
 ## responseRegion
@@ -99,15 +100,15 @@ responseRegionList(regions: Array&lt;ResponseRegion&gt;): T
 
   >  **说明：**
   >
-  >  x和y可以设置正负值百分比。当x设置为'100%'时表示热区往右偏移组件本身宽度大小，当x设置为'-100%'时表示热区往左偏移组件本身宽度大小。当y设置为'100%'时表示热区往下偏移组件本身高度大小，当y设置为'-100%'时表示热区往上偏移组件本身高度大小。
+  > - x和y可以设置正负值百分比。当x设置为'100%'时表示热区往右偏移组件本身宽度大小，当x设置为'-100%'时表示热区往左偏移组件本身宽度大小。当y设置为'100%'时表示热区往下偏移组件本身高度大小，当y设置为'-100%'时表示热区往上偏移组件本身高度大小。
   >
-  >  width和height只能设置正值百分比。width：'100%'表示热区宽度设置为该组件本身的宽度。比如组件本身宽度是100vp，那么'100%'表示热区宽度也为100vp。height：'100%'表示热区高度设置为该组件本身的高度。
+  > - width和height只能设置正值百分比。width：'100%'表示热区宽度设置为该组件本身的宽度。比如组件本身宽度是100vp，那么'100%'表示热区宽度也为100vp。height：'100%'表示热区高度设置为该组件本身的高度。
   >
-  >  百分比相对于组件自身宽高进行计算。
+  > - 百分比相对于组件自身宽高进行计算。
   >
-  >  当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
+  > - 当父组件设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)(true)时，子组件的响应会受到父组件触摸热区的影响，不在父组件触摸热区内的子组件无法响应手势和事件。
   >
-  >  width和height不支持calc()的动态计算。
+  > - width和height不支持calc()的动态计算。
 
 ## ResponseRegion<sup>22+</sup>对象说明
 
@@ -187,7 +188,9 @@ struct TouchTargetExample {
 
 ### 示例2（通过responseRegionList接口设置触摸热区）
 
-从API version 23开始，该示例通过responseRegionList设置按钮的触摸热区以响应点击事件。
+该示例通过[responseRegionList](#responseregionlist22)设置按钮的触摸热区以响应点击事件。
+
+从API version 22开始，新增responseRegionList接口。
 
 ```ts
 // xxx.ets
@@ -243,7 +246,7 @@ struct TouchTargetExample {
 
 ### 示例3（设置鼠标的触摸热区以响应点击事件）
 
-从API version 10开始，该示例通过[mouseResponseRegion](ts-universal-attributes-touch-target.md#mouseresponseregion10)设置鼠标的触摸热区以响应点击事件。
+该示例通过[mouseResponseRegion](ts-universal-attributes-touch-target.md#mouseresponseregion10)设置鼠标的触摸热区以响应点击事件。
 
 ```ts
 // xxx.ets
