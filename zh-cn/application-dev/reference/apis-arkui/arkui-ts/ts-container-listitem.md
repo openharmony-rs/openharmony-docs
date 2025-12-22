@@ -71,7 +71,7 @@ sticky(value: Sticky)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[List组件sticky属性](ts-container-list.md#sticky9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[sticky](ts-container-list.md#sticky9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

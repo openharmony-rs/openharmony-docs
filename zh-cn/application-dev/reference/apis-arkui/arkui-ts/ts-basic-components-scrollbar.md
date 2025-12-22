@@ -144,13 +144,14 @@ struct ScrollBarExample {
                   .textAlign(TextAlign.Center)
                   .margin({ top: 5 })
               }
-            }, (item:number) => item.toString())
+            }, (item: number) => item.toString())
           }.margin({ right: 15 })
         }
         .width('90%')
         .scrollBar(BarState.Off)
         .scrollable(ScrollDirection.Vertical)
-        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical,state: BarState.Auto }) {
+
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }) {
           Text()
             .width(20)
             .height(100)
@@ -162,7 +163,6 @@ struct ScrollBarExample {
   }
 }
 ```
-
 
 ![zh-cn_image_0000001232775585](figures/zh-cn_image_0000001232775585.gif)
 
@@ -211,7 +211,6 @@ struct ScrollBarExample {
 }
 ```
 
-
 ![zh-cn_image_scrollbar](figures/zh-cn_image_scrollbar.gif)
 
 ## 示例3（支持嵌套滚动）
@@ -219,12 +218,13 @@ struct ScrollBarExample {
 从API version 20开始，该示例通过[enableNestedScroll](#enablenestedscroll14)属性使ScrollBar组件支持嵌套滚动。
 ```ts
 import { ColorMetrics } from '@kit.ArkUI'
+
 @Entry
 @Component
 struct StickyNestedScroll {
   listScroller: Scroller = new Scroller();
   @State array: number[] = [];
-  @State scrollBarColor:ColorMetrics = ColorMetrics.rgba(24, 35, 48, 0.4);
+  @State scrollBarColor: ColorMetrics = ColorMetrics.rgba(24, 35, 48, 0.4);
 
   @Styles
   listCard() {
@@ -266,8 +266,9 @@ struct StickyNestedScroll {
       .scrollBar(BarState.Off)
       .width('100%')
       .height('100%')
-      ScrollBar({ scroller: this.listScroller})
-        .position({right:0})
+
+      ScrollBar({ scroller: this.listScroller })
+        .position({ right: 0 })
         .enableNestedScroll(true)
         .scrollBarColor(this.scrollBarColor)
     }
@@ -280,4 +281,5 @@ struct StickyNestedScroll {
   }
 }
 ```
+
 ![EnableNestedScroll](figures/EnableNestedScroll.gif)
