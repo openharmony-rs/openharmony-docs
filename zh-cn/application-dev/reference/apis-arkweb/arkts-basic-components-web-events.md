@@ -5374,7 +5374,7 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 >
 > - 渲染未完成时，若用户输入或滚动页面，将会立即上报回调函数。
 >
-> - 预加载网页中，网页会被预先加载，用户真正使用时再触发渲染，因此这种场景下，导航开始时间和绘制完成时间的差值可能会比较大。
+> - 该接口适用于在即时加载场景下获取首屏渲染时间，在预加载或预渲染场景下使用无法达到预期。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
