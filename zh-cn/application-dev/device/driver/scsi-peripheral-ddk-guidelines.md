@@ -245,11 +245,11 @@ libscsi.z.so
 
     在销毁缓冲区后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Close** 关闭设备。
 
-   <!-- @[driver_scsi_step14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
+    <!-- @[driver_scsi_step14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
-   ``` C++
-   ret = OH_ScsiPeripheral_Close(&g_scsiPeripheralDevice);
-   ```
+    ``` C++
+    ret = OH_ScsiPeripheral_Close(&g_scsiPeripheralDevice);
+    ```
 
 15. 释放DDK。
 
