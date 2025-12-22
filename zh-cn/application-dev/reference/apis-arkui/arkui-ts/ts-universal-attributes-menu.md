@@ -273,6 +273,7 @@ bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, options?: Co
 | [bindMenu<sup>11+</sup>](#bindmenu11) | Placement.BottomLeft |
 | [bindContextMenu<sup>8+</sup>](#bindcontextmenu8) | Placement.Top |
 | [bindContextMenu<sup>12+</sup>](#bindcontextmenu12) | Placement.BottomLeft |
+| [bindContextMenu<sup>23+</sup>](#bindcontextmenu23) | Placement.Top |
 
 ## MenuPreviewMode<sup>11+</sup>
 
