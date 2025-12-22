@@ -984,7 +984,7 @@ notificationManager.setBadgeNumber(badgeNumber, setBadgeNumberCallback);
 
 ## notificationManager.getBadgeNumber<sup>22+</sup>
 
-getBadgeNumber(): Promise\<long\>
+getBadgeNumber(): Promise\<number\>
 
 获取当前应用角标数量。使用Promise异步回调。
 
@@ -994,7 +994,7 @@ getBadgeNumber(): Promise\<long\>
 
 | 类型              | 说明                                        |
 | ----------------- | ------------------------------------------- |
-| Promise\<long\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
+| Promise\<number\> | Promise对象，返回当前应用角标数量。（查询的角标数量与当前应用通知开关，桌面角标开关是否开启无关） |
 
 **错误码：**
 
@@ -1014,7 +1014,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 notificationManager.getBadgeNumber().then((badgeNumber) => {
   console.info(`Succeeded in getting badge number, badgeNumber is ${JSON.stringify(badgeNumber)}`);
 }).catch((err: BusinessError) => {
-  console.info(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to get badge number. Code is ${err.code}, message is ${err.message}`);
 });
 ```
 
