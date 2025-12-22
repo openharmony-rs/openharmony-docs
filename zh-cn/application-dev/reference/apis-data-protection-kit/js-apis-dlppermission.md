@@ -1123,6 +1123,9 @@ async function ExampleFunction() {
 isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
 查询当前系统是否提供加密保护特性，使用Promise方式异步返回结果。
+>**说明：**
+>
+> 该接口由MDM配置使能，且使能场景属于2B设备，2C设备暂不支持。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
