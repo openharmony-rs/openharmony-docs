@@ -1122,14 +1122,14 @@ async function ExampleFunction() {
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
 isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
-查询当前系统是否提供DLP特性，使用Promise方式异步返回结果。
+查询当前系统是否提供加密保护特性，使用Promise方式异步返回结果。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前系统提供DLP特性，返回false表示不提供DLP特性。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前系统提供加密保护特性，返回false表示不提供加密保护特性。 |
 
 **错误码：**
 
