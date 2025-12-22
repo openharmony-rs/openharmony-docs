@@ -9253,11 +9253,6 @@
 						"start_line":16
 					},
 					{
-						"end_line":42,
-						"name":"setDistributedTables",
-						"start_line":24
-					},
-					{
 						"end_line":79,
 						"name":"on_data_change",
 						"start_line":45
@@ -9276,6 +9271,11 @@
 						"end_line":194,
 						"name":"data_remote_query",
 						"start_line":168
+					},
+					{
+						"end_line":47,
+						"name":"setDefaultDistributedTables",
+						"start_line":24
 					}
 				]
 			}
