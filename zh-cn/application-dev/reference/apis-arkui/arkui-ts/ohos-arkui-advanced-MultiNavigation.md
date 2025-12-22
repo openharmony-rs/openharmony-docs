@@ -18,7 +18,7 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
 ## 导入模块
 
-```
+```ts
 import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 ```
 
