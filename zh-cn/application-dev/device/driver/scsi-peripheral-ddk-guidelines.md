@@ -216,7 +216,7 @@ libscsi.z.so
     使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Verify10** 校验指定逻辑块。
 
     <!-- @[driver_scsi_step11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+    
     ``` C++
     int32_t ret = OH_ScsiPeripheral_Verify10(g_scsiPeripheralDevice, &request, &response);
     ```
@@ -226,7 +226,7 @@ libscsi.z.so
     使用 **scsi_peripheral_api.h** 的 **OH_SCSIPeripheral_SendRequestByCdb** 发送SCSI命令。
 
     <!-- @[driver_scsi_step12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+    
     ``` C++
     int32_t ret = OH_ScsiPeripheral_SendRequestByCdb(g_scsiPeripheralDevice, &request, &response);
     ```
@@ -236,7 +236,7 @@ libscsi.z.so
     在所有请求处理完毕，程序退出前，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_DestroyDeviceMemMap** 销毁缓冲区。
 
     <!-- @[driver_scsi_step13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+    
     ``` C++
     ret = OH_ScsiPeripheral_DestroyDeviceMemMap(g_scsiDeviceMemMap);
     ```
@@ -246,7 +246,7 @@ libscsi.z.so
     在销毁缓冲区后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Close** 关闭设备。
 
     <!-- @[driver_scsi_step14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+    
     ``` C++
     ret = OH_ScsiPeripheral_Close(&g_scsiPeripheralDevice);
     ```
@@ -256,7 +256,7 @@ libscsi.z.so
     在关闭SCSI设备后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Release** 释放SCSI Peripheral DDK。
 
     <!-- @[driver_scsi_step15](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+    
     ``` C++
     ret = OH_ScsiPeripheral_Release();
     ```
