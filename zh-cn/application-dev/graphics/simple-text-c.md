@@ -25,6 +25,13 @@
 2. 初始化段落样式，设置文本对齐方式为居中对齐。
 
    <!-- @[drawing_simple_text_c_create_typographyStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 创建一个 TypographyStyle 创建 Typography 时需要使用
+   OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+   // 设置文本对齐方式为居中
+   OH_Drawing_SetTypographyTextAlign(typoStyle, TEXT_ALIGN_CENTER);
+   ```
 
 3. 初始化文本样式，此处设置字体颜色为纯黑色，字体大小为60，字重为400。
 
