@@ -1428,12 +1428,12 @@ struct SearchExample {
   build(){
     Column() {
       Text('Builder').margin(10).border({ width: 1 })
-      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
         .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
 
       Text('ComponentContent').margin(10).border({ width: 1 })
-      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+      Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
         .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
     }
