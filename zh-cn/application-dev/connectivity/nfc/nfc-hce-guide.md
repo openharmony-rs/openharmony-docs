@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ## 简介
-近场通信(Near Field Communication，NFC)是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，电子设备上的应用程序模拟NFC卡片和NFC读卡器通信，实现NFC刷卡业务。OFFHOST(Off Host Card Emulation)，称为基于安全芯片的卡模拟，卡由设备中的一个单独芯片(称为安全单元)进行模拟。无线运营商很多SIM卡都包含安全单元。
+近场通信(Near Field Communication，NFC)是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，电子设备上的应用程序模拟NFC卡片和NFC读卡器通信，实现NFC刷卡业务。OFFHOST(Off Host Card Emulation)，称为基于安全芯片的卡模拟，卡由设备中的一个单独芯片(称为安全单元)进行模拟。无线运营商很多SIM卡都包含安全单元(当前只支持SIM作为安全单元)。
 
 ## 场景介绍
 应用程序模拟NFC卡片，和NFC读卡器通信完成NFC刷卡业务。从使用场景上，可以分成HCE应用前台刷卡和HCE应用后台刷卡。
@@ -334,7 +334,7 @@ export default class EntryAbility extends UIAbility {
             	"name": "payment-aid",
                 "value": "XXX....XXX"
             },
-             // metadata必须包含"secureElement"
+             // metadata必须包含"secureElement",当前只支持SIM作为安全单元
            {
             	"name": "secureElement",
                 "value": "SIM"
