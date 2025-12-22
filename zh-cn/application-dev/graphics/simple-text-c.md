@@ -79,6 +79,15 @@
 6. 释放内存
 
    <!-- @[drawing_simple_text_c_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 释放内存
+   OH_Drawing_DestroyTypographyStyle(typoStyle);
+   OH_Drawing_DestroyTextStyle(txtStyle);
+   OH_Drawing_DestroyFontCollection(fc);
+   OH_Drawing_DestroyTypographyHandler(handler);
+   OH_Drawing_DestroyTypography(typography);
+   ```
 
 ## 效果展示
 
