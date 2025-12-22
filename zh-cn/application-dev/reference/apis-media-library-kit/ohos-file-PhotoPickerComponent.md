@@ -644,7 +644,7 @@ import {
   videoPlayStateChangedCallback,
   VideoPlayerState，
   photoAccessHelper
-} from '@kit.MediaLibraryKitt';
+} from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
 
