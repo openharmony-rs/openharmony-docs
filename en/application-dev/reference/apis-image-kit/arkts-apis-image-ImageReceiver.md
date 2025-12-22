@@ -6,14 +6,16 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
+
+Before calling any APIs in ImageReceiver, you must use [image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11) to create an ImageReceiver instance.
+
+Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call [release](#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 9.
-
-The **ImageReceiver** class provides APIs to obtain the surface ID of a component, read the latest image, read the next image, and release the ImageReceiver instance. The ImageReceiver acts as the receiver and consumer of images. Its parameter properties do not actually affect the received images. The configuration of image properties should be done on the sending side (the producer), such as when creating a camera preview stream with [createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput).
-
-Before calling any APIs in ImageReceiver, you must use [createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11) to create an ImageReceiver instance.
 
 ## Modules to Import
 
@@ -95,7 +97,9 @@ readLatestImage(callback: AsyncCallback\<Image>): void
 
 Reads the latest image from the ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
-This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+> **NOTE**
+>
+> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -127,7 +131,9 @@ readLatestImage(): Promise\<Image>
 
 Reads the latest image from the ImageReceiver instance. This API uses a promise to return the result.
 
-This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+> **NOTE**
+>
+> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -157,7 +163,9 @@ readNextImage(callback: AsyncCallback\<Image>): void
 
 Reads the next image from the ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
-This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+> **NOTE**
+>
+> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -189,7 +197,9 @@ readNextImage(): Promise\<Image>
 
 Reads the next image from the ImageReceiver instance. This API uses a promise to return the result.
 
-This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
+> **NOTE**
+>
+> This API can be called to receive data only after the [on](#on9) callback is triggered. When the [Image](arkts-apis-image-Image.md) object returned by this API is no longer needed, call [release](arkts-apis-image-Image.md#release9) to release the object. New data can be received only after the release.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -217,7 +227,7 @@ async function ReadNextImage(receiver : image.ImageReceiver) {
 
 on(type: 'imageArrival', callback: AsyncCallback\<void>): void
 
-Listens for image arrival events.
+Listens for image arrival events. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -242,7 +252,7 @@ async function On(receiver : image.ImageReceiver) {
 
 off(type: 'imageArrival', callback?: AsyncCallback\<void>): void
 
-Unregisters the callback function that is triggered when the buffer is released.
+Unregisters the callback function that is triggered when the buffer is released. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -271,7 +281,9 @@ release(callback: AsyncCallback\<void>): void
 
 Releases this ImageReceiver instance. This API uses an asynchronous callback to return the result.
 
-ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the ImageReceiver object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -303,7 +315,9 @@ release(): Promise\<void>
 
 Releases this ImageReceiver instance. This API uses a promise to return the result.
 
-ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the ImageReceiver object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+Images occupy a large amount of memory. When you finish using an ImageReceiver instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageReceiver
 

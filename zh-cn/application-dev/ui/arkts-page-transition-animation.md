@@ -190,12 +190,12 @@ struct PageTransitionSrc1 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // 路由到下一个页面，push操作
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionDst1' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // 返回到上一页面，相当于pop操作
             this.getUIContext().getRouter().back();
@@ -243,12 +243,12 @@ struct PageTransitionDst1 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // 路由到下一页面，push操作
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionSrc1' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // 返回到上一页面，相当于pop操作
             this.getUIContext().getRouter().back();
@@ -301,12 +301,12 @@ struct PageTransitionSrc2 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // 路由到下一页面，push操作
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionDst2' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // 返回到上一页面，相当于pop操作
             this.getUIContext().getRouter().back();
@@ -340,7 +340,7 @@ struct PageTransitionSrc2 {
 struct PageTransitionDst2 {
   build() {
     Column() {
-       // $r('app.media.forest')需要替换为开发者所需的资源文件
+      // $r('app.media.forest')需要替换为开发者所需的资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -349,12 +349,12 @@ struct PageTransitionDst2 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // 路由到下一页面，push操作
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionSrc2' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // 返回到上一页面，相当于pop操作
             this.getUIContext().getRouter().back();

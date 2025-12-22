@@ -23,12 +23,12 @@ A higher data security label and device security level indicate stricter encrypt
 
 The data can be rated into four security levels as below. For details, see [OH_Rdb_SecurityLevel](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_securitylevel).
 
-| Risk Level| Security Level| Definition| Example|
+  | Risk Level| Security Level| Definition| Example| 
 | -------- | -------- | -------- | -------- |
-| Critical| S4 | Special data types defined by industry laws and regulations, involving the most private individual information or data that may cause severe adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Political opinions, religious and philosophical belief, trade union membership, genetic data, biological information, health and sexual life status, sexual orientation, device authentication, and personal credit card information|
-| High| S3 | Data that may cause critical adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Individual real-time precise positioning information and movement trajectory|
-| Moderate| S2 | Data that may cause major adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Detailed addresses and nicknames of individuals|
-| Low| S1 | Data that may cause minor adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Gender, nationality, and user application records|
+| Critical| S4 | Special data types defined by industry laws and regulations, involving the most private individual information or data that may cause severe adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Political opinions, religious and philosophical belief, trade union membership, genetic data, biological information, health and sexual life status, sexual orientation, device authentication, and personal credit card information| 
+| High| S3 | Data that may cause critical adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Individual real-time precise positioning information and movement trajectory| 
+| Moderate| S2 | Data that may cause major adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Detailed addresses and nicknames of individuals| 
+| Low| S1 | Data that may cause minor adverse impact on an individual or group once disclosed, tampered with, corrupted, or destroyed.| Gender, nationality, and user application records| 
 
 
 ### Device Security Levels
@@ -51,7 +51,7 @@ In cross-device data sync, data access is controlled based on the device securit
 |SL2|S1 to S2|
 |SL3|S1 to S3|
 |SL4|S1 to S4|
-|SL5|S1 to S4|
+|SL5|S1 to S4| 
 <!--RP2-->
 The security level of development boards RK3568 and Hi3516 is SL1. The database with data security label S1 can be synced with RK3568 and Hi3516, but the databases with labels S2-S4 cannot.
 <!--RP2End-->
@@ -68,11 +68,15 @@ When creating an RDB store, call the **OH_Rdb_SetSecurityLevel** API to specify 
 
 2. Include header files.
 
-    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
     
     ``` C++
+    #include <cstring>
     #include "database/rdb/relational_store.h"
+    #include "hilog/log.h"
     ```
+
+
 
 3. Call **OH_Rdb_SetSecurityLevel** to set the database security level.
 

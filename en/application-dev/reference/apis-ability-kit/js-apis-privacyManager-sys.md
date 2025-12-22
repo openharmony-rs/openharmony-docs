@@ -160,7 +160,7 @@ Obtains historical permission usage records. This API uses a promise to return t
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise<[PermissionUsedResponse](#permissionusedresponse)> | Promise used to return the permission usage records.|
+| Promise<[PermissionUsedResponse](#permissionusedresponse)> | Promise used to return the permission usage records obtained.|
 
 **Error codes**
 
@@ -257,7 +257,7 @@ privacyManager.getPermissionUsedRecord(request, (err: BusinessError, data: priva
 
 setPermissionUsedRecordToggleStatus(status: boolean): Promise&lt;void&gt;
 
-Sets whether to record the permission usage of this user. This API uses a promise to return the result.
+Sets whether to record the permission usage of this user. Sets the permission usage record switch for this user. This API uses a promise to return the result.
 
 If **status** is **true**, [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) can be called to add permission usage records. If **status** is set **false**, [addPermissionUsedRecord](#privacymanageraddpermissionusedrecord) does not add permission usage records. Instead, it deletes the historical records of the user.
 
@@ -316,7 +316,7 @@ Obtains the settings of the permission usage record switch for this user. This A
 
 | Type         | Description                                   |
 | ------------- | --------------------------------------- |
-| Promise&lt;boolean&gt; | Promise used to return the switch settings. **true** to enable, **false** otherwise.|
+| Promise&lt;boolean&gt; | Promise used to return the result. Returns **true** if the switch is enabled. Returns **false** if the switch is disabled.|
 
 **Error codes**
 
@@ -707,7 +707,7 @@ privacyManager.stopUsingPermission(tokenID, 'ohos.permission.READ_AUDIO', (err: 
 
 on(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback: Callback&lt;ActiveChangeResponse&gt;): void
 
-Subscribes to changes in the permission usage status of the specified permissions.
+Subscribes to changes in the permission usage status of the specified permissions. This API uses an asynchronous callback to return the result.
 
 Multiple callbacks can be registered for the same **permissionList**.
 
@@ -723,7 +723,7 @@ The same callback cannot be registered for the **permissionList** with overlappi
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'activeStateChange'**, which indicates the permission usage change.  |
 | permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. If this parameter is not specified, this API will subscribe to usage changes of all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | Yes| Callback used to return the permission usage change.|
+| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | Yes| Callback used to return the object of subscribing to state changes of the specified permission.|
 
 **Error codes**
 
@@ -760,7 +760,7 @@ try {
 
 off(type: 'activeStateChange', permissionList: Array&lt;Permissions&gt;, callback?: Callback&lt;ActiveChangeResponse&gt;): void
 
-Unsubscribes from changes in the permission usage of the specified permissions.
+Unsubscribes from changes in the permission usage of the specified permissions. This API uses an asynchronous callback to return the result.
 
 During unsubscribing, if no callback is passed, all callbacks in **permissionList** are deleted in batches.
 
@@ -773,8 +773,8 @@ During unsubscribing, if no callback is passed, all callbacks in **permissionLis
 | Name            | Type                  | Mandatory| Description                                                         |
 | ------------------ | --------------------- | ---- | ------------------------------------------------------------ |
 | type               | string                | Yes  | Event type. The value is **'activeStateChange'**, which indicates the permission usage change.  |
-| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in **on()**. If this parameter is not specified, this API will unsubscribe from usage changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
-| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | No| Callback to unregister.|
+| permissionList | Array&lt;Permissions&gt;   | Yes  | List of target permissions. The value must be the same as that in [on](#privacymanageron). If this parameter is not specified, this API will unsubscribe from usage changes for all permissions. For details about the permissions, see [Application Permissions](../../security/AccessToken/app-permissions.md).|
+| callback | Callback&lt;[ActiveChangeResponse](#activechangeresponse)&gt; | No| Callback used to return the object of canceling the subscription to state changes of the specified token ID and permission.|
 
 **Error codes**
 
@@ -786,7 +786,7 @@ For details about the error codes, see [Access Control Error Codes](errorcode-ac
 | 202 | Not system app. Interface caller is not a system app. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100001 | Invalid parameter. The permissionList is not in the listening list. |
-| 12100004 | The API is not used in pair with 'on'. |
+| 12100004 | The API is not used in pair with "on". |
 | 12100007 | The service is abnormal. |
 | 12100008 | Out of memory. |
 
@@ -824,7 +824,7 @@ Obtains information about how a sensitive permission is used by an application.
 
 | Type         | Description                                   |
 | ------------- | --------------------------------------- |
-| Promise&lt;Array&lt;[PermissionUsedTypeInfo](#permissionusedtypeinfo12)&gt;&gt; | Promise used to return the information obtained.|
+| Promise&lt;Array&lt;[PermissionUsedTypeInfo](#permissionusedtypeinfo12)&gt;&gt; | Promise used to return the list of permission access types.|
 
 **Error codes**
 
@@ -952,11 +952,11 @@ Represents the details of a single access record.
 
 | Name      | Type            | Read-Only| Optional| Description                                      |
 | -------- | -------------- | ---- | ---- | ---------------------------------------- |
-| status  | number         | No   | No   | Access status.                                |
-| lockScreenStatus<sup>11+</sup>  | number         | No   | Yes   | Status of the screen during the access.<br> - **1**: The screen is not locked when the permission is used.<br> - **2**: The screen is locked when the permission is used.                                |
+| status  | number         | No   | No   | Access status.|
+| lockScreenStatus<sup>11+</sup>  | number         | No   | Yes   | Status of the screen during the access.<br> - **1**: The screen is not locked when the permission is used.<br> - **2**: The screen is locked when the permission is used.|
 | timestamp | number         | No   | No   | Access timestamp, in ms.|
-| accessDuration  | number         | No   | No   | Access duration, in ms.                                |
-| count<sup>11+</sup> | number | No| Yes   | Number of successful or failed accesses.
+| accessDuration  | number         | No   | No   | Access duration, in ms.|
+| count<sup>11+</sup> | number | No| Yes   | Number of successful or failed accesses.|
 | usedType<sup>12+</sup> | [PermissionUsedType](#permissionusedtype12) | No| Yes   | Means for using the sensitive permission.|
 
 ## PermissionActiveStatus

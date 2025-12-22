@@ -1744,9 +1744,9 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
-**说明：** 从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1763,7 +1763,6 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1794,9 +1793,9 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 
 **系统接口：** 此接口为系统接口。
 
-**说明：** 从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1813,7 +1812,6 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1839,9 +1837,9 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
-**说明：** 从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1858,7 +1856,6 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -1889,9 +1886,9 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统接口：** 此接口为系统接口。
 
-**说明：** 从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
-
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -1908,7 +1905,6 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 

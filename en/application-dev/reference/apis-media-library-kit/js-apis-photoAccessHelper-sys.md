@@ -1971,7 +1971,7 @@ async function example(context: Context) {
 
 ### createAssetsForAppWithMode<sup>12+</sup>
 
-createAssetsForAppWithMode(boundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
+createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
 
 Creates assets with a temporary permission. This API uses a promise to return the result.
 
@@ -1985,7 +1985,7 @@ Creates assets with a temporary permission. This API uses a promise to return th
 
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| boundleName| string | Yes| Bundle name of the target application.|
+| bundleName| string | Yes| Bundle name of the target application.|
 | appName| string | Yes| Name of the target application.|
 | appId| string | Yes| ID of the target application.|
 | tokenId| number| Yes| Unique identifier for the temporary authorization.|
@@ -5547,6 +5547,7 @@ Provides APIs to manage albums.
 | dateModified<sup>18+</sup>    | number | Yes   | Yes  | Time when the album was modified.<br>**System API**: This is a system API.|
 | coverUriSource<sup>20+</sup>    | number | Yes   | Yes  | Source URI of the album cover.<br>**System API**: This is a system API.|
 | uploadStatus<sup>22+</sup>    | boolean | Yes   | No  | Whether the album can be synced to cloud storage or family storage. **true** if it can be synced, **false** otherwise.<br>**System API**: This is a system API.|
+| HIDDEN<sup>23+</sup>    | boolean | Yes   | Yes  | Whether the album is hidden. **true** if hidden, **false** otherwise.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 
 ### recoverAssets<sup>(deprecated)</sup>
 
@@ -6062,7 +6063,7 @@ Obtains portrait album assets that meet filter criteria.
 | Name| Type| Mandatory| Description|
 | --- | --- | --- | --- |
 | optionCheck | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes| Fetch options, which limit the number of assets returned.|
-| filter | string | No| Filter option, which is a JSON string.<br>Currently, only **currentFileId** is supported, which indicates the file ID of the currently displayed featured portrait card. An example is '{"currentFileId":"123"}'.<br>If this parameter is not provided, assets are returned from the beginning. If it is provided, assets are returned from the one after the given **currentFileId**.|
+| filter | string | No| Filter option, which must be a JSON string.<br>Currently, only **currentFileId** is supported, which indicates the file ID of the currently displayed featured portrait card. An example is '{"currentFileId":"123"}'.<br>If this parameter is not provided, assets are returned from the beginning.<br>If **currentFileId** is provided, assets with scores less than or equal to the calculated score based on the **currentFileId** are returned.|
 
 **Return value**
 
@@ -7416,7 +7417,7 @@ Creates a MediaAlbumChangeRequest instance.
 The album name must meet the following requirements:
 - The total length of the album name must be between 1 and 255 characters.
 - It must not contain any invalid characters, which are:<br> . .. \ / : * ? " ' ` < > | { } [ ]
-- The album name is case-insensitive.
+- The characters are case insensitive.
 - Duplicate album names are not allowed.
 
 **System API**: This is a system API.
@@ -8440,7 +8441,7 @@ Provides APIs for managing the **Highlights** album, which is an automatically g
 
 constructor(album: Album)
 
-A constructor used to create a **Highlights** album instance.
+Constructor.
 
 **System API**: This is a system API.
 
@@ -8681,7 +8682,7 @@ The subtitle must meet the following requirements:
 
 - The total length of the subtitle must be between 0 and 255 characters.
 - It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
-- The subtitle is case-insensitive.
+- The characters are case insensitive.
 
 **System API**: This is a system API.
 
@@ -8811,7 +8812,7 @@ Provides APIs for managing the analysis album change request.
 
 constructor(album: Album)
 
-A constructor used to create an **Analysis** album instance.
+Constructor.
 
 **System API**: This is a system API.
 
@@ -9029,6 +9030,68 @@ async function SetRelationshipExample(context: Context, relationship: string) {
 }
 ```
 
+### createAnalysisAlbumRequest<sup>23+</sup>
+
+static createAnalysisAlbumRequest(context: Context, name: string, subtype: AlbumSubtype): MediaAnalysisAlbumChangeRequest
+
+Creates a change request for the **Analysis** album.
+
+> **NOTE**
+>
+> The album name must meet the following requirements:
+> - The total length of the album name must be between 1 and 255 characters.
+> - The album name cannot contain any of the following characters:.. \ / : * ? " ' ` < > | { } [ ]
+> - The characters are case insensitive.
+> - Duplicate album names are not allowed.
+
+​**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**Parameters**
+
+| Name | Type   | Mandatory| Description                      |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | Yes  | Context of the ability instance.|
+| name | string | Yes  | Name of the album.|
+| subtype |  [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | Yes  | Subtype of the album.|
+
+**Return value**
+
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18) | MediaAnalysisAlbumChangeRequest instance created.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202   |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. | 
+| 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+
+**Example**
+
+For details about how to create a photoAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('createAlbumRequestDemo');
+  try {
+    let albumName: string = 'newAlbumName' + new Date().getTime();
+    let albumChangeRequest: photoAccessHelper.MediaAnalysisAlbumChangeRequest = photoAccessHelper.MediaAnalysisAlbumChangeRequest.createAnalysisAlbumRequest(context, albumName, photoAccessHelper.AlbumSubtype.PORTRAIT);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('apply createAlbumRequest successfully');
+  } catch (err) {
+    console.error(`createAlbumRequestDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## MediaHighlightAlbumChangeRequest<sup>21+</sup> 
 
 Provides APIs for managing the media album change request. It inherits from [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18).
@@ -9039,7 +9102,7 @@ Provides APIs for managing the media album change request. It inherits from [Med
 
 constructor(album: Album)
 
-A constructor used to create a **Highlights** album instance.
+Constructor.
 
 **System API**: This is a system API.
 
@@ -9160,7 +9223,7 @@ Implements an **Analysis** album.
 
 constructor(album: Album)
 
-A constructor used to create an **Analysis** album instance.
+Constructor.
 
 **System API**: This is a system API.
 
@@ -10594,7 +10657,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
-  console.info('jsbatchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+  console.info('batchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
 }
 async function example(context: Context) {
   console.info('OnDownloadProgressChangeDemo');
@@ -10863,7 +10926,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | --- | --- |
 | 202 | Called by non-system application. |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The fileter criteria or fetchColumns that are not supported by options are transferred. |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -11136,7 +11199,7 @@ Enumerates the types of changes that trigger the media asset or album change eve
 
 ## AlbumType
 
-Enumerates the album types.
+Enumerates the album types,
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -11227,6 +11290,7 @@ Enumerates the album keys.
 | DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | Timestamp when the album was modified, in milliseconds.<br>**System API**: This is a system API.           |
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | Source URI of the album cover.<br>**System API**: This is a system API.           |
 | UPLOAD_STATUS<sup>22+</sup>     | 'upload_status'      | Synchronization status of the album.<br>**System API**: This is a system API.           |
+| HIDDEN<sup>23+</sup>     | 'hidden'      | Hidden status.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.           |
 
 ## HiddenPhotosDisplayMode<sup>11+</sup>
 
@@ -11799,6 +11863,7 @@ Describes the information about an album.
 | hiddenCoverInfo | [PhotoAssetChangeInfo](#photoassetchangeinfo20)  | No| Yes| Information of the hidden album cover asset.<br>**System API**: This is a system API.|
 | orderSection | number  | No| Yes| Section that defines the order of the album, specifying where the album is displayed in the Gallery.<br>**System API**: This is a system API.|
 | albumOrder | number  | No| Yes| Sorting value of the album.<br>**System API**: This is a system API.|
+| HIDDEN<sup>23+</sup>    | boolean  | No| Yes| Whether the album is hidden. **true** if hidden, **false** otherwise.<br>**Model restriction**: This API can be used only in the stage model.<br>**System API**: This is a system API.|
 
 ## AlbumChangeData<sup>20+</sup>
 

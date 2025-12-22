@@ -312,12 +312,15 @@ let propertyId = "SKF_EnumDev";
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
 console.info(`promise: await huksExternalCrypto getProperty`);
-try {
-  await huksExternalCrypto.getProperty(testResourceId, propertyId, extProperties)
-    .then((data) => {
-      console.info(`promise: getProperty success, data: ` + JSON.stringify(data));
-    });
-} catch (error) {
-  console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+async function testFunction() : Promise<void>
+{
+  try {
+    await huksExternalCrypto.getProperty(testResourceId, propertyId, extProperties)
+      .then((data) => {
+        console.info(`promise: getProperty success, data: ` + JSON.stringify(data));
+      });
+  } catch (error) {
+    console.error(`promise: getProperty failed, errCode : ${error.code}, errMsg : ${error.message}`);
+  }
 }
 ```

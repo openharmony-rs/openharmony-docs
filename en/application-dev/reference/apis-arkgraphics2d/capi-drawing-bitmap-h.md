@@ -12,7 +12,7 @@
 This file declares the functions related to the bitmap in the drawing module.
 
 <!--RP1-->
-**Sample**: [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
+**Sample**: [NDKAPIDrawing (API Version 20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **File to include**: <native_drawing/drawing_bitmap.h>
 
@@ -50,7 +50,7 @@ This file declares the functions related to the bitmap in the drawing module.
 
 ### OH_Drawing_BitmapCreate()
 
-```
+```c
 OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)
 ```
 
@@ -70,7 +70,7 @@ Creates an **OH_Drawing_Bitmap** object.
 
 ### OH_Drawing_BitmapDestroy()
 
-```
+```c
 void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -91,7 +91,7 @@ Destroys an **OH_Drawing_Bitmap** object and reclaims the memory occupied by the
 
 ### OH_Drawing_BitmapCreateFromPixels()
 
-```
+```c
 OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imageInfo, void* pixels, uint32_t rowBytes)
 ```
 
@@ -120,7 +120,7 @@ Creates an **OH_Drawing_Bitmap** object, with the address of the memory for stor
 
 ### OH_Drawing_BitmapBuild()
 
-```
+```c
 void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap,const uint32_t width, const uint32_t height, const OH_Drawing_BitmapFormat* bitmapFormat)
 ```
 
@@ -144,7 +144,7 @@ Initializes the width and height of a bitmap and sets the pixel format for the b
 
 ### OH_Drawing_BitmapGetWidth()
 
-```
+```c
 uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -171,7 +171,7 @@ Obtains the width of a bitmap.<br>This API may return an error code. For details
 
 ### OH_Drawing_BitmapGetHeight()
 
-```
+```c
 uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -198,7 +198,7 @@ Obtains the height of a bitmap.<br>This API may return an error code. For detail
 
 ### OH_Drawing_BitmapGetColorFormat()
 
-```
+```c
 OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -225,7 +225,7 @@ Obtains the pixel format of a bitmap.<br>This API may return an error code. For 
 
 ### OH_Drawing_BitmapGetAlphaFormat()
 
-```
+```c
 OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -252,7 +252,7 @@ Obtains the alpha component of a bitmap.<br>This API may return an error code. F
 
 ### OH_Drawing_BitmapGetPixels()
 
-```
+```c
 void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -279,7 +279,7 @@ Obtains the pixel address of a bitmap. You can use this address to obtain the pi
 
 ### OH_Drawing_BitmapGetImageInfo()
 
-```
+```c
 void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_Info* imageInfo)
 ```
 
@@ -301,7 +301,7 @@ Obtains the image information of a bitmap.<br>This API may return an error code.
 
 ### OH_Drawing_BitmapReadPixels()
 
-```
+```c
 bool OH_Drawing_BitmapReadPixels(OH_Drawing_Bitmap* bitmap, const OH_Drawing_Image_Info* dstInfo,void* dstPixels, size_t dstRowBytes, int32_t srcX, int32_t srcY)
 ```
 

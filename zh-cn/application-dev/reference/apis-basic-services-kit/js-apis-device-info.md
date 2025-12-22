@@ -39,7 +39,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | productModelAlias<sup>14+</sup> | string | 是 | 认证型号别名。<br/>**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。<br/>示例：TAS-AL00 |
 | softwareModel | string | 是 | 内部软件子型号。<br/>示例：<!--RP5-->TAS-AL00<!--RP5End--> |
 | hardwareModel | string | 是 | 硬件版本号。<br/>示例：<!--RP6-->TASA00CVN1<!--RP6End--> |
-| hardwareProfile<sup>(deprecated) </sup> | string | 是 | 硬件Profile。<br/>**说明**：<br/>从API version 6 开始支持，从API version 9 开始废弃。<br/>示例：default |
+| hardwareProfile<sup>(deprecated) </sup> | string | 是 | 硬件Profile。<br/>**说明**：<br/>从API version 6 开始支持，从API version 9 开始废弃，建议使用[syscap能力](../syscap.md)替代。<br/>示例：default |
 | serial | string | 是 | 设备序列号SN(Serial Number)。<br/>**说明**：可作为设备唯一识别码。<br/>**需要权限**：ohos.permission.sec.ACCESS_UDID(该权限只允许系统应用及企业定制应用申请) <br/>示例：序列号随设备差异 |
 | bootloaderVersion | string | 是 | Bootloader版本号。<br/>示例：bootloader |
 | abiList | string | 是 | 应用二进制接口（Abi）。<br/>示例：arm64-v8a |
