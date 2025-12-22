@@ -641,7 +641,7 @@ class MyClass {
   static data: string = 'data000';
   static bar(arg: string): string {
     console.info('bar arg is ' + arg);
-  return MyClass.data;
+    return MyClass.data;
   }
 }
 
