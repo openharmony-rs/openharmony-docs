@@ -365,19 +365,19 @@ addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
 > **说明**
 > 
-> 1、防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：<br>
+> 1. 防火墙规则优先级说明（[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)和[addNetFirewallRule](#netfirewalladdnetfirewallrule)无调用顺序要求）：<br>
 > （1）调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为阻止，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：<br>
-> 	&emsp;&nbsp;◦  显式阻止规则<br>
->	&emsp;&nbsp;◦  显式允许规则<br>
->	&emsp;&nbsp;◦  默认阻止策略<br>
+> &emsp;&nbsp;◦  显式阻止规则<br>
+> &emsp;&nbsp;◦  显式允许规则<br>
+> &emsp;&nbsp;◦  默认阻止策略<br>
 > （2）调用[setNetFirePolicy](#netfirewallsetnetfirewallpolicy)设置默认策略为允许，调用[addNetFirewallRule](#netfirewalladdnetfirewallrule)新增显式规则，规则优先级由高到低为：<br>
->	&emsp;&nbsp;◦  显式允许规则<br>
->	&emsp;&nbsp;◦  显式阻止规则<br>
->	&emsp;&nbsp;◦  默认允许策略<br>
-> 2、规则类型补充说明：<br>
+> &emsp;&nbsp;◦  显式允许规则<br>
+> &emsp;&nbsp;◦  显式阻止规则<br>
+> &emsp;&nbsp;◦  默认允许策略<br>
+> 2. 规则类型补充说明：<br>
 >（1）当addNetFirewallRule的入参rule.type配置为RULE_IP时：<br>
->	&emsp;&nbsp;◦  若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；<br>
->	&emsp;&nbsp;◦  若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。<br>
+> &emsp;&nbsp;◦  若rule.action为RULE_ALLOW，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段允许通行；<br>
+> &emsp;&nbsp;◦  若rule.action 为RULE_DENY，且rule.localIps、rule.remoteIps均不配置，规则生效为全IP段拦截。<br>
 >（2）当adNetFirewallRule的入参rule.type配置为RULE_DOMAIN时，若rule.domains未配置， 该规则不生效。<br>
 
 **需要权限**：ohos.permission.MANAGE_NET_FIREWALL
