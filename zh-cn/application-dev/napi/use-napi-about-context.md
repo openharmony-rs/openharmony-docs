@@ -199,6 +199,7 @@
 |napi_delete_serialization_data | 否 |
 |napi_call_threadsafe_function_with_priority | 否 |
 |napi_wrap_enhance | 是 |
+|napi_throw_business_error | 是 |
 
 ## 不支持多运行时上下文环境调用的NAPI接口
 | 接口 | 多运行时上下文环境调用返回值 |

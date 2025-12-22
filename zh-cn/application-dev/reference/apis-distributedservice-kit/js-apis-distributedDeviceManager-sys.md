@@ -194,7 +194,7 @@ replyUiAction(action: number, actionResult: string): void
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
- try {
+  try {
     /*
       action = 0 - 允许授权
       action = 1 - 取消授权
@@ -237,6 +237,7 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 | 错误码ID | 错误信息                                                        |
 | -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                            |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 
@@ -294,6 +295,7 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 | 错误码ID | 错误信息                                                        |
 | -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.    |
 | 202 | Permission verification failed. A non-system application calls a system API.                              |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter type; 3. Parameter verification failed; 4. The size of specified type is greater than 255. |
 

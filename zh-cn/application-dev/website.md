@@ -274,6 +274,7 @@
       - [应用数据向量化 (ArkTS)](database/aip-data-intelligence-embedding.md)
       - [SQLite调试工具指导](database/sqlite-database-debug-tool.md)
       - [ArkData术语](database/data-terminology.md)
+      - [ArkData常见问题](database/data-faq.md)
     - ArkTS（方舟编程语言）<!--arkts-->
       - [ArkTS简介](arkts-utils/arkts-overview.md)
       - ArkTS基础类库<!--arkts-utils-->
@@ -569,6 +570,7 @@
             - [支持鼠标输入事件](ui/arkts-interaction-development-guide-mouse.md)
             - [支持触控板输入事件](ui/arkts-interaction-development-guide-touchpad.md)
             - [支持键盘输入事件](ui/arkts-interaction-development-guide-keyboard.md)
+            - [支持游戏手柄输入事件](ui/arkts-interaction-development-guide-gamepad.md)
             - [支持表冠输入事件](ui/arkts-common-events-crown-event.md)
           - [添加手势响应](ui/arkts-interaction-development-guide-support-gesture.md)
             - [绑定手势方法](ui/arkts-gesture-events-binding.md)
@@ -1431,8 +1433,8 @@
           - [压缩与解压](basic-services/compress/deflate-and-inflate.md)
         <!--Del-->
         - 划词服务<!--selectioninput-->
-          - [划词服务概述（仅对系统应用开放）](basic-services/selectionInput/selection-services-intro-sys.md)
-          - [实现一个划词应用（仅对系统应用开放）](basic-services/selectionInput/selection-services-application-guide-sys.md)
+          - [划词服务子系统概述](basic-services/selectionInput/selection-services-intro-sys.md)
+          - [实现一个划词扩展能力](basic-services/selectionInput/selection-services-application-guide-sys.md)
         <!--DelEnd-->
       - Function Flow Runtime Kit（任务并发调度服务）<!--ffrt-kit-->
         - [Function Flow Runtime Kit概述](ffrt/ffrt-overview.md)
@@ -1661,6 +1663,9 @@
         <!--Del-->
         - [分布式音频播放(仅对系统应用开放)](media/audio/distributed-audio-playback-sys.md)
         <!--DelEnd-->
+        <!--Del-->
+        - [移动全景声管理（仅对系统应用开放）](media/audio/audio-collaborative-management-sys.md)
+        <!--DelEnd-->
       - 音频录制<!--audio-recording-->
         - [音频录制开发概述](media/audio/audio-recording-overview.md)
         - [使用AudioCapturer开发音频录制功能](media/audio/using-audiocapturer-for-recording.md)
@@ -1819,7 +1824,6 @@
           - [编辑图片EXIF信息](media/image/image-tool-c.md)
         - 图片接收<!--image-receiving-c-->
           - [使用Image_NativeModule完成图片接收](media/image/image-receiver-c.md)
-          - [使用Image_NativeModule处理图像信息](media/image/image-info-c.md)
       - Image Kit常见问题<!--image-faqs-->
         - [如何处理HEIF图片](media/image/image-faqs/heif-adapter-faq.md)
         - [如何获取图片的旋转角度信息](media/image/image-faqs/image-rotate-faq.md)
@@ -2110,14 +2114,14 @@
             - [使用JSVM-API进行异常的定制化处理](napi/use-jsvm-trigger-exceptions.md)
             - [使用JSVM-API感知JSVM引擎生命周期管理](napi/use-jsvm-trigger-gc.md)
             - [使用JSVM-API接口进行private相关开发](napi/use-jsvm-about-private.md)
-            - [使用JSVM-API接创建 external string](napi/use-jsvm-about-external-string.md)
+            - [使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发](napi/use-jsvm-about-external-string.md)
             - [使用JSVM-API提供的proxy接口](napi/use-jsvm-about-proxy.md)
             - [使用JSVM-API接口进行well-known symbols相关开发](napi/use-jsvm-about-well-known-symbols.md)
-            - [使用JSVM-API接口进行装箱类型判断相关开发](napi/use-jsvm-about-wrapper-object.md)
+            - [使用JSVM-API接口进行Wrapper object相关开发](napi/use-jsvm-about-wrapper-object.md)
             - [使用JSVM-API接口创建和获取数值](napi/use-jsvm-basic-data-types.md)
         - JSVM-API典型使用场景指导<!--jsvm-scenarios-->
             - [JSVM-API调试&定位](napi/jsvm-debugger-cpuprofiler-heapsnapshot.md)
-            - [JSVM-API Tracing](napi/use-jsvm-about-trace.md)
+            - [使用JSVM-API接口进行Trace相关开发](napi/use-jsvm-about-trace.md)
             - [JSVM-API 申请JIT权限指导](napi/jsvm-apply-jit-profile.md)
             - [JSVM-API 坚盾守护模式](napi/jsvm-secure-shield-mode.md)
             - [JSVM-API 内存泄漏问题定位指导](napi/jsvm-locate-memory-leak.md)
@@ -2590,6 +2594,7 @@
           - [Functions](reference/apis-arkdata/arkts-apis-data-relationalStore-f.md)
           - [Interface (RdbStore)](reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md)
           - [Interface (ResultSet)](reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md)
+          - [Class (LiteResultSet)](reference/apis-arkdata/arkts-apis-data-relationalStore-LiteResultSet.md)
           - [Interface (Transaction)](reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md)
           - [Interfaces (其他)](reference/apis-arkdata/arkts-apis-data-relationalStore-i.md)
           - [Class (RdbPredicates)](reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md)
@@ -2981,7 +2986,7 @@
           - 其他<!--other-property-->
             - [复用标识](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)
             - [复用选项](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)
-            - [自定义窗口工具栏](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
+            - [工具栏设置](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
         - 手势处理<!--gesture-handling-->
           - 绑定手势<!--gesture-binding-->
             - [绑定手势方法](reference/apis-arkui/arkui-ts/ts-gesture-settings.md)
@@ -3183,6 +3188,7 @@
           - [SaveButton](reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)
           <!--Del-->
           - [SaveButton (系统接口)](reference/apis-arkui/arkui-ts/ts-security-components-savebutton-sys.md)
+          - [安全控件通用属性 (系统接口)](reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes-sys.md)
           <!--DelEnd-->
         - 主题<!--themes-->
           - [WithTheme](reference/apis-arkui/arkui-ts/ts-container-with-theme.md)

@@ -33,8 +33,8 @@ function addTen(x: number): number {
 
 约束分为两个级别：错误、警告。
 
-- **错误**: 必须要遵从的约束。如果不遵从该约束，将会导致程序编译失败。
-- **警告**: 推荐遵从的约束。尽管现在违反该约束不会影响编译流程，但是在将来，违反该约束可能会导致程序编译失败。
+- 错误：必须要遵从的约束。如果不遵从该约束，将会导致程序编译失败。
+- 警告：推荐遵从的约束。尽管现在违反该约束不会影响编译流程，但是在将来，违反该约束可能会导致程序编译失败。
 
 **不支持的特性**
 
@@ -1706,7 +1706,9 @@ for (let i = 1; i < data.length; ++i) {
 **错误码：10605071**
 
 在ArkTS中，逗号运算符仅适用于`for`循环语句，用于明确执行顺序。
->**注意：** 这与声明变量和函数参数传递时使用的逗号分隔符不同。
+> **注意：** 
+>
+> - 这与声明变量和函数参数传递时使用的逗号分隔符不同。
 
 **TypeScript**
 
@@ -2499,11 +2501,11 @@ function createPerson(Ctor: PersonCtor, n: string, a: number): Person {
   return Ctor(n, a);
 }
 
-let Impersonizer: PersonCtor = (n: string, a: number): Person => {
+let Impersonate: PersonCtor = (n: string, a: number): Person => {
   return new Person(n, a);
 }
 
-const person = createPerson(Impersonizer, 'John', 30);
+const person = createPerson(Impersonate, 'John', 30);
 ```
 
 ### 只能使用类型相同的编译时表达式初始化枚举成员

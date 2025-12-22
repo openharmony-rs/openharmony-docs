@@ -79,6 +79,10 @@ To implement real-time audio monitoring, create a shared buffer to store the cap
     }
 ```
 
+> **NOTE**
+>
+> Avoid setting the shared buffer too large, as it can increase audio feedback latency and degrade user experience. You should select a proper buffer size that balances latency and jitter tolerance to maintain optimal performance.
+
 ### Setting Audio Stream Parameters
 
 The following provides an example of setting parameters for the audio recording stream:

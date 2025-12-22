@@ -44,6 +44,22 @@ Image组件默认按照居中裁剪，例如组件宽高设置相同，原图长
 
 Image加载成功且组件不设置宽高时，其显示大小自适应父组件。
 
+>**说明：**
+>
+> - Image直接传入URL可能会带来的潜在性能问题，例如：(1) 大图加载时无法提前下载，白块显示的时间较长；(2) 小图设置同步加载，在弱网环境下，可能会阻塞UI线程造成冻屏问题；(3) 在快速滑动的瀑布流中，无法提前对即将要显示的图片进行下载，导致滑动白块较多。不同场景下，性能问题会有不同的表现，建议将网络下载部分与Image的显示剥离，可提前下载或者异步下载。如果图片加载过程中出现白色块，请参考[Image白块问题解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
+>
+> - src由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件应保持显示此前成功加载的图片内容，不进行清除或重置操作。
+>
+> - 当Image组件入参为[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型时，只有当PixelMap对象发生变化（即指向一个新的PixelMap实例），Image组件才能感知到数据的变化。仅修改PixelMap对象的内容（如像素值）而不更换对象引用，无法触发数据变化的感知。
+>
+> - Image组件入参为Base64字符串时，Base64字符串通用格式为`data:image/subtype;base64,Base64EncodedData`，其中subtype为类型声明，Base64EncodedData为数据对应的base64编码，其他为固定字符串。例如：png图像对应的入参为`data:image/png;base64,iVBORw0KGgo...`。
+>
+>   1. image/subType用于声明数据内容的类型。Image组件不会强制校验声明的类型与Base64解码后的实际图片格式是否完全一致。在部分场景下，即使声明的类型与真实格式不一致，图片仍可能正常显示。为避免未来行为变化或未知问题，建议始终保持类型与实际图片格式一致。
+>
+>   2. Image组件不支持`data:image/*;base64,Base64EncodedData`的通配写法，subType必须显示声明具体的图片类型。
+>
+>   3. Image组件不支持通过Base64字符串形式加载SVG图片。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -55,14 +71,6 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
 | src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。当[使用相对路径引用本地图片](#示例25使用相对路径显示图片)时，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2下载与显示静态网络图片](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[跨HAP/HSP包应用资源](../../../quick-start/resource-categories-and-access.md#跨haphsp包应用资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
-
->**说明：**
->
-> Image直接传入URL可能会带来的潜在性能问题，例如：(1) 大图加载时无法提前下载，白块显示的时间较长；(2) 小图设置同步加载，在弱网环境下，可能会阻塞UI线程造成冻屏问题；(3) 在快速滑动的瀑布流中，无法提前对即将要显示的图片进行下载，导致滑动白块较多。不同场景下，性能问题会有不同的表现，建议将网络下载部分与Image的显示剥离，可提前下载或者异步下载。如果图片加载过程中出现白色块，请参考[Image白块问题解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
->
-> src由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件应保持显示此前成功加载的图片内容，不进行清除或重置操作。
->
-> 当Image组件入参为[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型时，只有当PixelMap对象的引用发生变化（即指向一个新的PixelMap实例），Image组件才能感知到数据的变化。仅修改PixelMap对象的内容（如像素值）而不更换对象引用，无法触发数据变化的感知。
 
 ### Image<sup>12+</sup>
 
@@ -648,6 +656,26 @@ contentTransition(transition: ContentTransitionEffect)
 | 参数名 | 类型                                    | 必填 | 说明                             |
 | ------ | --------------------------------------- | ---- | -------------------------------- |
 | transition  | [ContentTransitionEffect](ts-image-common.md#contenttransitioneffect21对象说明) | 是   | 过渡动效的类型。<br/>其中取值为ContentTransitionEffect.OPACITY表示淡入淡出效果，取值为ContentTransitionEffect.IDENTITY表示无动画效果。<br/>默认值：ContentTransitionEffect.IDENTITY <br/>设置为undefined或null时，取值为ContentTransitionEffect.IDENTITY。<br/>**说明**：对动态图片资源不生效。 |
+
+### antialiased<sup>23+</sup>
+
+antialiased(isAntialiased: Optional\<boolean>)
+
+设置位图图片边缘是否开启抗锯齿。
+
+> **说明：**
+>
+> 如果图片设置了背景色属性([backgroundColor](ts-universal-attributes-background.md#backgroundcolor))，图片的抗锯齿属性设置为true不会影响背景色的锯齿效果。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                    | 必填 | 说明                             |
+| ------ | --------------------------------------- | ---- | -------------------------------- |
+| isAntialiased  | Optional\<boolean> | 是   | 设置位图图片边缘是否开启抗锯齿。<br/> true表示开启边缘抗锯齿；false表示不开启边缘抗锯齿。<br/>设置为undefined时，不开启边缘抗锯齿。|
 
 ## ImageContent<sup>12+</sup>
 
@@ -2466,3 +2494,50 @@ struct Index {
   }
 }
 ```
+
+### 示例30（设置位图图片边缘抗锯齿）
+
+该示例演示了如何通过设置antialiased接口开启位图图片边缘的抗锯齿功能。
+
+从API version 23开始，新增[antialiased](#antialiased23)接口。
+
+```ts
+@Entry
+@Component
+struct ImageExample {
+  // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+  @State imageResource: Resource = $r('app.media.icon');
+
+  build() {
+    Row() {
+      Blank()
+        .width(50)
+
+      Column() {
+        Blank()
+          .height(20)
+        Text('没有设置抗锯齿的有旋转角度的图片')
+        Blank()
+          .height(20)
+        Image(this.imageResource)
+          .width(50)
+          .height(50)
+          .rotate({angle: 1})
+
+        Blank()
+          .height(20)
+        Text('设置了抗锯齿的有旋转角度的图片')
+        Blank()
+          .height(20)
+        Image(this.imageResource)
+          .width(50)
+          .height(50)
+          .rotate({angle: 1})
+          .antialiased(true)
+      }
+    }
+  }
+}
+```
+
+![sandBox](figures/antialiased.PNG)

@@ -49,6 +49,8 @@ This type of permissions must be declared in the application installation packag
 
 ### manual_settings (Manual Authorization)
 
+From API version 21, **manual_settings** (manual authorization) is supported.
+
 manual_settings permissions need to be manually set. The application with this type of permission can access user personal information, and the operations allowed may have a critical impact on the system or users.
 
 This type of permissions must be declared in the application installation package and authorized by the user in the system settings. The application has the permission only after the user has set it.

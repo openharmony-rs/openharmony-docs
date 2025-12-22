@@ -56,7 +56,7 @@ Enumerates the dynamic range types of media assets.
 
 ## AlbumType
 
-Enumerates the album types.
+Enumerates the album types, for example, user albums, system albums, or albums created by an application.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -368,3 +368,30 @@ Enumerates the log modes of video files.
 | ----- |  ---- |  ---- |
 | DEFAULT |  0 |  Default type.<br>A value of **0** indicates that the video is either not in log mode or its type has not yet been determined. This value may later be updated to **1** for some videos after type determination, so it is not recommended for use in queries.|
 | LOG_VIDEO |  1 |  Video file in log mode. |
+
+## OperationType<sup>22+</sup>
+
+Enumerates the predicates.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name                   | Value| Description                         |
+| -----------------------|---- | -------------------------------- |
+| EQUAL_TO    | 1  | Checks for equality, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| NOT_EQUAL_TO    | 2   | Checks for inequality, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| GREATER_THAN    | 3   | Checks whether the value is greater than the predicate, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| LESS_THAN    | 4   | Checks whether the value is less than the predicate, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| GREATER_THAN_OR_EQUAL_TO    | 5   | Checks whether the value is greater than or equal to the predicate, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| LESS_THAN_OR_EQUAL_TO    | 6   | Checks whether the value is less than or equal to the predicate, using the first element of the **value** array to match the predicate. If the array is longer, only the first element is considered.|
+| AND    | 7   | Logical 'AND', similar to 'and' in database queries. No **field** or **value** is needed.|
+| OR    | 8  | Logical 'OR', similar to 'or' in database queries. No **field** or **value** is needed.|
+| IN    | 9   | Matches fields within a specified range, with a maximum value length of 10.|
+| NOT_IN    | 10   | Matches fields outside a specified range, with a maximum value length of 10.|
+| BEGIN_WRAP    | 11   | Adds a left parenthesis to the predicate, similar to "(" in database queries. It must be used with a right parenthesis. No **field** or **value** is needed.|
+| END_WRAP    | 12   | Adds a right parenthesis to the predicate, similar to ")" in database queries. It must be used with a left parenthesis. No **field** or **value** is needed.|
+| BETWEEN    | 13   | Matches fields within a specified range,<br>including both endpoints (closed interval). It uses the first two elements of the **value** array, where the first element is the lower boundary and the second is the upper boundary. For example, in the array [1, 2, 3, 4], the first two elements are used, with 1 as the lower boundary and 2 as the upper boundary.|
+| NOT_BETWEEN    | 14   | Matches fields outside a specified range,<br>excluding both endpoints (open interval). It uses the first two elements of the **value** array, where the first element is the lower boundary and the second is the upper boundary. For example, in the array [1, 2, 3, 4], the first two elements are used, with 1 as the lower boundary and 2 as the upper boundary.|
