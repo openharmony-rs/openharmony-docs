@@ -116,7 +116,7 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
-notifyMetadataBindingEvent(metadata: string): void
+notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 Transfers metadata to the application or service that calls the encoding API.
 
