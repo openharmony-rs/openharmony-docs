@@ -114,6 +114,9 @@ import { geoLocationManager } from '@kit.LocationKit';
 | needStartScan |  boolean | 否 | 否 | true：需要发起扫描。<br/>false：不需要发起扫描。 **系统API**：此接口为系统接口。|
 | scanInterval |  number | 否 | 是 | 表示扫描的时间间隔。单位是毫秒，默认值是10000毫秒，取值范围为大于0。 **系统API**：此接口为系统接口。|
 | scanTimeout |  number | 否 | 是 | 表示单次扫描的超时时间。单位是毫秒，默认值是10000毫秒，取值范围为大于0小于600000。 **系统API**：此接口为系统接口。|
+| slotId<sup>23+ |  number | 否 | 是 | 表示SIM卡的卡槽号。 **系统API**：此接口为系统接口。|
+| arfcn<sup>23+ |  Array&lt;number&gt; | 否 | 是 | 表示绝对射频信道号。 **系统API**：此接口为系统接口。|
+| plmnId<sup>23+ |  Array&lt;number&gt; | 否 | 是 | 表示SIM卡的PLMN号码 **系统API**：此接口为系统接口。|
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -175,6 +178,29 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 | rssi | number | 否 | 否 | 蓝牙设备的信号强度(dBm)。 **系统API**：此接口为系统接口。|
 | timestamp | number | 否 | 否 | 时间戳。 **系统API**：此接口为系统接口。|
 
+
+## CellInfo<sup>23+</sup>
+
+蜂窝扫描信息。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**系统API**：此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| timeSinceBoot | number | 否 | 否 | 表示自启动以来的时间。 **系统API**：此接口为系统接口。|
+| cellId | number | 否 | 否 | 表示小区ID。 **系统API**：此接口为系统接口。|
+| lac | number | 否 | 否 | 表示位置区码。 **系统API**：此接口为系统接口。|
+| mcc | number | 否 | 否 | 表示移动国家码。 **系统API**：此接口为系统接口。|
+| mnc | number | 否 | 否 | 表示移动网络代码。 **系统API**：此接口为系统接口。|
+| rat | number | 否 | 否 | 表示无线接入技术。 **系统API**：此接口为系统接口。|
+| signalIntensity | number | 否 | 否 | 表示信号强度。 **系统API**：此接口为系统接口。|
+| arfcn | number | 否 | 否 | 表示绝对射频信道号。 **系统API**：此接口为系统接口。|
+| pci | number | 否 | 否 | 表示物理小区标识。 **系统API**：此接口为系统接口。|
+| additionsMap | Map&lt;string, string&gt; | 否 | 否 | 附加信息。 **系统API**：此接口为系统接口。|
+
+
 ## LocationPrivacyType
 
 定位服务隐私协议类型。
@@ -201,6 +227,7 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 | -------- | -------- | -------- |
 | WIFI  | 1 | 表示WiFi扫描信息。 **系统API**：此接口为系统接口。|
 | BLUETOOTH | 2 | 表示蓝牙扫描信息。 **系统API**：此接口为系统接口。|
+| CELLULAR<sup>23+ | 3 | 表示蜂窝扫描信息。 **系统API**：此接口为系统接口。|
 
 
 ## LocationIconStatus<sup>12+</sup>
