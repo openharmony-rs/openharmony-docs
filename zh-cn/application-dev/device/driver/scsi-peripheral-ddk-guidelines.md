@@ -206,7 +206,7 @@ libscsi.z.so
     使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Write10** 写数据到设备指定逻辑块。
 
     <!-- @[driver_scsi_step10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+    
     ``` C++
     int32_t ret = OH_ScsiPeripheral_Write10(g_scsiPeripheralDevice, &request, &response);
     ```
