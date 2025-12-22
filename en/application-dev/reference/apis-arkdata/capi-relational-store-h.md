@@ -120,7 +120,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_SubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)](#oh_rdb_subscribeautosyncprogress) | - | Subscribes to the auto sync progress of an RDB store.<br>The registered callback will be invoked to return the auto sync progress.|
 | [int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObserver *observer)](#oh_rdb_unsubscribeautosyncprogress) | - | Unsubscribes from the auto sync process of an RDB store.|
 | [int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_lockrow) | - | Locks data in an RDB store based on specified conditions. The locked data will be blocked from the device-cloud sync.|
-| [int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_unlockrow) | - | Unlocks data in an RDB store based on the specified conditions.|
+| [int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_unlockrow) | - | Unlocks data in an RDB store based on specified conditions.|
 | [OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length)](#oh_rdb_querylockedrow) | - | Queries the locked data in an RDB store.|
 | [int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *options, OH_Rdb_Transaction **trans)](#oh_rdb_createtransaction) | - | Creates a transaction object.|
 | [int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char *attachName, int64_t waitTime,size_t *attachedNumber)](#oh_rdb_attach) | - | Attaches a database file to the database that is currently connected.|
@@ -203,7 +203,7 @@ Enumerates the database tokenizer types.
 | -- | -- |
 | RDB_NONE_TOKENIZER = 1 | No tokenizer is used.|
 | RDB_ICU_TOKENIZER = 2 | ICU tokenizer.|
-| RDB_CUSTOM_TOKENIZER = 3 | Custom tokenizer.	<br>**Since**: 18|
+| RDB_CUSTOM_TOKENIZER = 3 | Custom tokenizer.<br>**Since**: 18|
 
 ### Rdb_DistributedType
 
@@ -1825,7 +1825,7 @@ Defines a callback used to return the device-cloud sync progress.
 
 | Parameter              | Description          |
 |-------------------|--------------|
-| void *context     |              |
+| void *context     | Pointer to the context of the callback data.|
 | [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progressDetails | Details about the device-cloud sync progress.|
 
 ### Rdb_SyncCallback()
@@ -1962,7 +1962,7 @@ int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 **Description**
 
-Unlocks data in an RDB store based on the specified conditions.
+Unlocks data in an RDB store based on specified conditions.
 
 **Since**: 12
 
