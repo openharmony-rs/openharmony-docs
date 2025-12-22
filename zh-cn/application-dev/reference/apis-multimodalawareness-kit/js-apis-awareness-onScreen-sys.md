@@ -256,7 +256,7 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 
 sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
 
-在需要控制的窗口在桌面上时，在调用[onScreen.getPageContent](#getpagecontent)后，根据其返回的段落信息，调用该接口发送屏上控制事件。
+在需要控制的窗口在桌面上时，在调用[onScreen.getPageContent](#onscreengetpagecontent)后，根据其返回的段落信息，调用该接口发送屏上控制事件。
 
 **需要权限**：ohos.permission.SIMULATE_USER_INPUT.
 
