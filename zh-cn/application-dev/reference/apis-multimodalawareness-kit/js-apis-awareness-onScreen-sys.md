@@ -110,7 +110,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 ## OnscreenAwarenessCap<sup>23+</sup>
 
-屏上感知能力列表.
+屏上感知能力（包括阅读场景感知、OCR识别等功能）。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -164,7 +164,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 ## EntityInfo<sup>23+</sup>
 
-提供感知到的实体信息，包括内容、链接、图像和其他实体。
+提供感知到的实体信息，包括内容、链接、图像和其他类型的实体。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -173,12 +173,12 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | entityName   | string | 否   | 否   | 感知结果实体名称，固定内容。 |
-| entityInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、图像和其他实体。 |
+| entityInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、图像和其他实体。|
 
 
 ## OnscreenAwarenessInfo<sup>23+</sup>
 
-屏上感知参数列表。
+屏上感知返回信息列表。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -196,7 +196,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | collectStrategy   | number | 否   | 是   | 页面采集策略，是 [CollectStrategy](#collectstrategy23) 的按位或运算组合。 |
 | displayId   | number | 否   | 是   | 屏幕ID。 |
 | windowId    | number | 否   | 是   | 窗口ID。 |
-| entityInfo  | [EntityInfo](#entityinfo23)[] | 否   | 是   | 实体信息。 |
+| entityInfo  | [EntityInfo](#entityinfo23)[] | 否   | 是   | 实体信息。|
 
 ## onScreen.getPageContent
 
