@@ -5373,6 +5373,8 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
 > - 接口在首屏绘制完成后，需要等待一定时间没有新的渲染信息需要处理后，才会上报回调。接口回调时刻和首屏渲染完成时刻不同。
 >
 > - 渲染未完成时，若用户输入或滚动页面，将会立即上报回调函数。
+>
+> - 预加载网页中，网页会被预先加载，用户真正使用时再触发渲染，因此这种场景下，导航开始时间和绘制完成时间的差值可能会比较大。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
