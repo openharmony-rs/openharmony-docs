@@ -65,13 +65,13 @@ export default class EntryAbility extends UIAbility {
 
 ### 属性
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
-| 名称        | 类型                                 | 只读 | 可选 | 说明                     |
-| ----------- | ----------------------------------- | ---- | ---- | ------------------------ |
+| 名称        | 类型      | 只读 | 可选 | 说明                     |
+| ----------- | ------------- | ---- | ---- | ------------------------ |
 | columnNames | Array&lt;string&gt;                 | 否 | 否   | 结果集中所有列的名称。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | columnCount | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否   | 结果集中的列数。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| rowCount    | number        | 否 | 否   | 结果集中的行数。         |
+| rowCount    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否   | 结果集中的行数。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | isClosed    | boolean                             | 否 | 否   | 标识当前结果集是否关闭。如果结果集已关闭，则为true；否则为false。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 
 ### goToFirstRow
@@ -81,6 +81,10 @@ goToFirstRow(): boolean
 转到结果集的第一行。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -104,7 +108,11 @@ goToLastRow(): boolean
 
 转到结果集的最后一行。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -127,7 +135,11 @@ goToNextRow(): boolean
 
 转到结果集的下一行。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -150,7 +162,7 @@ goToPreviousRow(): boolean
 
 转到结果集的上一行。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -179,7 +191,7 @@ ArkTS-Sta: goTo(offset: int): boolean
 
 相对于当前位置向前或向后移动指定行数。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -215,7 +227,7 @@ ArkTS-Sta: goToRow(position: int): boolean
 
 转到结果集的指定行。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -253,7 +265,7 @@ ArkTS-Sta: getBlob(columnIndex: int): Uint8Array
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是Blob类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -288,19 +300,25 @@ if (resultSet != undefined) {
 
 ### getString
 
-getString(columnIndex: number): string
+ArkTS-Dyn: getString(columnIndex: number): string
+
+ArkTS-Sta: getString(columnIndex: int): string
 
 以字符串形式获取当前行中指定列的值。
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是string类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是       | 指定的列索引，从0开始。 |
 
 **返回值：**
 
@@ -321,25 +339,31 @@ if (resultSet != undefined) {
 
 ### getLong
 
-getLong(columnIndex: number): number
+ArkTS-Dyn: getLong(columnIndex: number): number
+
+ArkTS-Sta: getLong(columnIndex: int): long
 
 以长整数值形式获取当前行中指定列的值。
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是long类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | **参数名**  | **类型** | **必填** | 说明                    |
 | ----------- | -------- | -------- | ----------------------- |
-| columnIndex | number   | 是       | 指定的列索引，从0开始。 |
+| columnIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是       | 指定的列索引，从0开始。 |
 
 **返回值：**
 
 | 类型   | 说明                       |
 | ------ | -------------------------- |
-| number | 以长整数值形式返回指定列的值。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long | 以长整数值形式返回指定列的值。 |
 
 **示例：**
 
@@ -362,7 +386,7 @@ ArkTS-Sta: getDouble(columnIndex: int): double
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是double类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -399,7 +423,11 @@ close(): void
 
 对结果集调用此方法将释放其所有资源并使其无效。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -411,13 +439,19 @@ if (resultSet != undefined) {
 
 ### getColumnIndex
 
-getColumnIndex(columnName: string): number
+ArkTS-Dyn: getColumnIndex(columnName: string): number
+
+ArkTS-Sta: getColumnIndex(columnName: string): int
 
 根据指定的列名获取列索引。
 
 列名作为输入参数传递。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -429,7 +463,7 @@ getColumnIndex(columnName: string): number
 
 | 类型   | 说明               |
 | ------ | ------------------ |
-| number | 返回指定列的索引。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回指定列的索引。 |
 
 **示例：**
 
@@ -451,7 +485,7 @@ ArkTS-Sta: getColumnName(columnIndex: int): string
 
 列索引作为输入参数传递。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -489,7 +523,7 @@ ArkTS-Sta: getDataType(columnIndex: int): DataType
 
 如果当前行中指定的列或键的值为空，或者指定的列或键不是DataType类型，则使用方需要确定是否抛出此异常。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -521,7 +555,7 @@ if (resultSet != undefined) {
 
 数据类型枚举。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 

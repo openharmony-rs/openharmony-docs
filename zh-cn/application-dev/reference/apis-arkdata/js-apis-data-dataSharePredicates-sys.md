@@ -37,9 +37,13 @@ contains(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -69,9 +73,9 @@ beginsWith(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -105,9 +109,9 @@ endsWith(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -141,9 +145,13 @@ isNull(field: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -172,9 +180,13 @@ isNotNull(field: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -203,9 +215,9 @@ unlike(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库及键值型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -239,9 +251,9 @@ glob(field: string, value: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -275,9 +287,9 @@ distinct(): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -304,9 +316,13 @@ groupBy(fields: Array&lt;string&gt;): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -335,9 +351,9 @@ indexedBy(field: string): DataSharePredicates
 
 目前仅关系型数据库支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -370,9 +386,9 @@ prefixKey(prefix: string): DataSharePredicates
 
 目前仅KVDB支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -405,9 +421,9 @@ inKeys(keys: Array&lt;string&gt;): DataSharePredicates
 
 目前仅KVDB支持该谓词。
 
-**系统接口：**  此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
 **ArkTS-Dyn起始版本：** 9
 
