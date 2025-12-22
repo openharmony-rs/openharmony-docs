@@ -1646,11 +1646,14 @@ wifi.on("p2pStateChange", recvP2pStateChangeFunc);
 wifi.off("p2pStateChange", recvP2pStateChangeFunc);
 ```
 
-## wifi.on('p2pConnectionChange')<sup>8+</sup>
+## wifi.on('p2pConnectionChange')<sup>deprecated</sup>
 
 on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 注册P2P连接状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pconnectionchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1664,11 +1667,14 @@ on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): vo
   | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo8)&gt; | 是 | 状态改变回调函数。 |
 
 
-## wifi.off('p2pConnectionChange')<sup>8+</sup>
+## wifi.off('p2pConnectionChange')<sup>deprecated</sup>
 
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 取消注册P2P连接状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pconnectionchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1696,11 +1702,14 @@ wifi.on("p2pConnectionChange", recvP2pConnectionChangeFunc);
 wifi.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 ```
 
-## wifi.on('p2pDeviceChange')<sup>8+</sup>
+## wifi.on('p2pDeviceChange')<sup>deprecated</sup>
 
 on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 注册P2P设备状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdevicechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
 
@@ -1714,11 +1723,14 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
   | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice8)&gt; | 是 | 状态改变回调函数。 |
 
 
-## wifi.off('p2pDeviceChange')<sup>8+</sup>
+## wifi.off('p2pDeviceChange')<sup>deprecated</sup>
 
 off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 取消注册P2P设备状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pdevicechange)替代。
 
 **需要权限：** ohos.permission.LOCATION
 
@@ -1746,11 +1758,14 @@ wifi.on("p2pDeviceChange", recvP2pDeviceChangeFunc);
 wifi.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
 ```
 
-## wifi.on('p2pPeerDeviceChange')<sup>8+</sup>
+## wifi.on('p2pPeerDeviceChange')<sup>deprecated</sup>
 
 on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 注册P2P对端设备状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppeerdevicechange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.LOCATION
 
@@ -1764,11 +1779,14 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
   | callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice8)&gt; | 是 | 状态改变回调函数。 |
 
 
-## wifi.off('p2pPeerDeviceChange')<sup>8+</sup>
+## wifi.off('p2pPeerDeviceChange')<sup>deprecated</sup>
 
 off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
 取消注册P2P对端设备状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2ppeerdevicechange)替代。
 
 **需要权限：** ohos.permission.LOCATION
 
@@ -1796,11 +1814,14 @@ wifi.on("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 wifi.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 ```
 
-## wifi.on('p2pPersistentGroupChange')<sup>8+</sup>
+## wifi.on('p2pPersistentGroupChange')<sup>deprecated</sup>
 
 on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 注册P2P永久组状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2ppersistentgroupchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1814,11 +1835,14 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
   | callback | Callback&lt;void&gt; | 是 | 状态改变回调函数。 |
 
 
-## wifi.off('p2pPersistentGroupChange')<sup>8+</sup>
+## wifi.off('p2pPersistentGroupChange')<sup>deprecated</sup>
 
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 取消注册P2P永久组状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2ppersistentgroupchange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1847,11 +1871,14 @@ wifi.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
 
 ```
 
-## wifi.on('p2pDiscoveryChange')<sup>8+</sup>
+## wifi.on('p2pDiscoveryChange')<sup>deprecated</sup>
 
 on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 注册发现设备状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.on](js-apis-wifiManager.md#wifimanageronp2pdiscoverychange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1872,11 +1899,14 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 | 1 | 发现成功。 |
 
 
-## wifi.off('p2pDiscoveryChange')<sup>8+</sup>
+## wifi.off('p2pDiscoveryChange')<sup>deprecated</sup>
 
 off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 取消注册发现设备状态改变事件。
+
+>**说明：**
+> - 从API version 8开始支持，从API version 9开始废弃。建议使用[wifiManager.off](js-apis-wifiManager.md#wifimanageroffp2pdiscoverychange)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
