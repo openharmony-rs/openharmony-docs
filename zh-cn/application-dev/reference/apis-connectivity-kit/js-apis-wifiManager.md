@@ -597,6 +597,7 @@ WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议�
  - 方式二:通过配置preSharedKey进行链接。[WifiDeviceConfig](#wifideviceconfig)中关键字段的配置如下:
    - preSharedKey传参为路由器上设置的密码;
    - securityType设置为WIFI_SEC_TYPE_WAPI_PSK。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
