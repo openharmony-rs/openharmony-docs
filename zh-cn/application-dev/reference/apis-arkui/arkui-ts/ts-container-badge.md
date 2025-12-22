@@ -1,7 +1,7 @@
 # Badge
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Zhang-Dong-Hui-->
+<!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester:@jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -94,7 +94,7 @@ BadgeParamWithNumber继承自[BadgeParam](#badgeparam对象说明)，具有Badge
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | count | number | 否 | 否 | 设置提醒消息数。<br/>**说明：** <br/>当该值小于等于0且小于maxCount时不显示信息标记。<br/>取值范围：[-2147483648,2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。 |
-| maxCount | number | 否 | 是 | 最大消息数，超过最大消息时仅显示maxCount+。<br/>默认值：99<br/>取值范围：[-2147483648,2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。 |
+| maxCount | number | 否 | 是 | 最大消息数，超过最大消息时仅显示maxCount+，如maxCount是99时，显示`99+`。<br/>默认值：99<br/>取值范围：[-2147483648,2147483647]。超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。 |
 
 ## BadgeParamWithString对象说明
 
@@ -128,7 +128,7 @@ BadgeParamWithString继承自[BadgeParam](#badgeparam对象说明)，具有Badge
 
 ## BadgeStyle对象说明
 
-Badge的样式。
+Badge的样式。包括文本颜色、尺寸、字重、圆点颜色和尺寸。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -160,7 +160,7 @@ Badge的样式。
 
 ### 示例1（设置标记组件内容）
 
-该示例通过value和count属性，实现了传入空值、字符、数字时标记组件展现不同的效果。
+该示例通过[BadgeParamWithNumber](#badgeparamwithnumber对象说明)的入参value、[BadgeParamWithString](#badgeparamwithstring对象说明)的入参count，实现了传入空值、字符、数字时标记组件展现不同的效果。
 
 ```ts
 // xxx.ets
@@ -335,7 +335,7 @@ struct Index {
         style: {},
         position: BadgePosition.RightTop,
       }) {
-        Image($r("app.media.startIcon"))
+        Image($r('app.media.startIcon'))
           .width(50)
           .height(50)
       }

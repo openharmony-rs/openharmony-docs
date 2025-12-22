@@ -405,15 +405,15 @@ Allows an application to call the API for restoring factory settings.
 
 Allows a system application to forcibly restore a device to its factory settings, which cannot be interrupted.
 
-**Permission level**：system_core
+**Permission level**: system_core
 
-**Authorization mode**：system_grant
+**Authorization mode**: system_grant
 
-**Supported devices**：general devices
+**Supported devices**: general devices
 
-**Enable via ACL**：true
+**Enable via ACL**: true
 
-**Valid since**：23
+**Since**: 23
 
 ## ohos.permission.ASSIST_DEVICE_UPDATE
 
@@ -707,7 +707,7 @@ Allows an application to install and uninstall other applications except enterpr
 
 Allows an application to downgrade and install other applications.
 
-With this permission, the application can overwrite an installed application with an earlier version, even if a later version is already present.
+With this permission, the system application can overwrite an installed application with an earlier version, even if a later version is already present.
 
 **Permission level**: system_core
 
@@ -717,7 +717,7 @@ With this permission, the application can overwrite an installed application wit
 
 **Enable via ACL**: true
 
-**Valid since**: 23
+**Since**: 23
 
 ## ohos.permission.MANAGE_SHORTCUTS
 
@@ -961,6 +961,31 @@ Allows an enterprise normal bundle to be installed on enterprise devices.
 
 **Valid since**: 10
 
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+Allows installation of enterprise MDM applications on enterprise devices.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+Allows automatic updates of enterprise MDM applications on enterprise devices.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+
+**Enable via ACL**: true
+
+**Valid since**: 10
+
 ## ohos.permission.UPDATE_MIGRATE
 
 Allows data migration during the update process.
@@ -1092,6 +1117,20 @@ Allows the basic system information and system ability (SA) information to be du
 **Enable via ACL**: true
 
 **Valid since**: 9
+
+## ohos.permission.HIVIEW_TRACE_MANAGE
+
+Allows a system service or system application to enable or disable system trace.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
 
 ## ohos.permission.DEVICE_STANDBY_EXEMPTION
 
@@ -5113,22 +5152,6 @@ Allows an application to access the sandbox directories of other extended applic
 
 **Valid since**: 19
 
-## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
-
-Allows an HAP to load independent binary .so files with different owner IDs.
-
-With this permission, the HAP can load independent binary .so files with a developer certificate or an ad-hoc signature.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Supported devices**: PCs/2-in-1 devices
-
-**Valid since**: 20
-
 ## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
 
 Allows a system application to query the certificate information of independent binary programs.
@@ -5185,6 +5208,20 @@ Allows an application to simulate user operations.
 
 **Valid since**: 20
 
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+Allows an application to access the directory containing compatible applications.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 22
+
 ## ohos.permission.MANAGE_SELF_SKILLS
 
 Allows an application to manage its skills configuration.
@@ -5239,13 +5276,13 @@ Allows an application to obtain background task status.
 
 **Enable via ACL**: true
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 23
 
 ## ohos.permission.SET_BACKGROUND_TASK_STATE
 
-Allows an application to obtain and set the user authorization status of special continous task.
+Allows an application to obtain and set the user authorization status of special continuous tasks.
 
 **Permission level**: system_basic
 
@@ -5253,7 +5290,7 @@ Allows an application to obtain and set the user authorization status of special
 
 **Enable via ACL**: true
 
-**Device**: general devices
+**Supported devices**: general devices
 
 **Since**: 23
 
@@ -5281,6 +5318,18 @@ Allows an application to access Super Hub.
 
 **Valid since**: 12
 
+## ohos.permission.ACCESS_USER_ACCOUNT_INFO
+
+Allows a system application to access user account information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 18
+
 ## ohos.permission.USE_USER_ACCESS_MANAGER
 
 Allows an application to query and configure user identity authentication policies, and verify the authentication result.
@@ -5292,3 +5341,17 @@ Allows an application to query and configure user identity authentication polici
 **Enable via ACL**: true
 
 **Valid since**: 18
+
+## ohos.permission.MANAGE_DYNAMIC_UTD_TYPE
+
+Allows an application to dynamically register or remove custom UTD data types.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 22

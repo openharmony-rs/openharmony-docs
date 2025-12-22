@@ -21,6 +21,10 @@ Call **OH_Rdb_SetEncrypted** to set whether to encrypt an RDB store. If **isEncr
 
 When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set custom keys and algorithms for encryption or decryption.
 
+
+
+
+
 1. Add the following library to **CMakeLists.txt**.
 
     ```txt
@@ -29,10 +33,12 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
 
 2. Include header files.
 
-    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
     
     ``` C++
+    #include <cstring>
     #include "database/rdb/relational_store.h"
+    #include "hilog/log.h"
     ```
 
 
@@ -41,80 +47,80 @@ When **isEncrypted** is set to **true**, call **OH_Rdb_SetCryptoParam** to set c
 
     * Scenario 1: If no custom encryption/decryption parameter is configured, the default configuration is used.
 
-    <!-- @[DefaultConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+      <!-- @[DefaultConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
-    ``` C++
-    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
-    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
-    OH_Rdb_SetBundleName(config, "com.example.nativedemo");
-    OH_Rdb_SetStoreName(config, "RdbTest.db");
-    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
-    // Set the database to be created or opened in encryption mode.
-    OH_Rdb_SetEncrypted(config, true);
-    int errCode = 0;
-    // Create an OH_Rdb_Store instance.
-    OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
-    OH_Rdb_CloseStore(store);
-    store = nullptr;
-    OH_Rdb_DestroyConfig(config);
-    config = nullptr;
-    ```
+      ``` C++
+      OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+      OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
+      OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
+      OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+      OH_Rdb_SetStoreName(config, "RdbTest.db");
+      OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+      // Set the database to be created or opened in encryption mode.
+      OH_Rdb_SetEncrypted(config, true);
+      int errCode = 0;
+      // Create an OH_Rdb_Store instance.
+      OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+      OH_Rdb_CloseStore(store);
+      store = nullptr;
+      OH_Rdb_DestroyConfig(config);
+      config = nullptr;
+      ```
 
 
 
     * Scenario 2: Call **OH_Rdb_SetCryptoParam** to configure encryption parameters. The database is encrypted and decrypted using the custom key and algorithm parameters.
     
       If custom configuration is not required, you can use the default encryption configuration.
+
+      <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
-    <!-- @[CustomizedConfigRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
-    
-    ``` C++
-    OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
-    OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
-    OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
-    OH_Rdb_SetStoreName(config, "RdbTestConfigEncryptParam.db");
-    OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
-    OH_Rdb_SetBundleName(config, "com.example.nativedemo");
-    // Set the database to be created or opened in encryption mode.
-    OH_Rdb_SetEncrypted(config, true);
-    // Create a custom encryption parameter object.
-    OH_Rdb_CryptoParam *cryptoParam = OH_Rdb_CreateCryptoParam();
-        
-    // Hard-coded keys are used as an example. You should use a secure key management service in actual development.
-    uint8_t key[6] = {0x31, 0x32, 0x33, 0x34, 0x35, 0x36};
-    // Use the specified key to open the encrypted database. If no key is specified, the database generates and saves the key and uses the generated key.
-    const int32_t length = 6;
-    OH_Crypto_SetEncryptionKey(cryptoParam, key, length);
-    // Clear the key information after it is used.
-    for (size_t i = 0; i < sizeof(key); i++) {
-        key[i] = 0;
-    }
-    // Set the number of iterations of the KDF algorithm, which must be greater than 0. If the value is not specified or the number of iterations is 0, the default value 10000 and the default encryption algorithm are used.
-    const int64_t iteration = 64000;
-    OH_Crypto_SetIteration(cryptoParam, iteration);
-    // Set the encryption algorithm. If it is not specified, AES_256_GCM is used by default.
-    OH_Crypto_SetEncryptionAlgo(cryptoParam, Rdb_EncryptionAlgo::RDB_AES_256_CBC);
-    // Set the HMAC algorithm. If it is not specified, SHA-256 is used by default.
-    OH_Crypto_SetHmacAlgo(cryptoParam, RDB_HMAC_SHA512);
-    // Set the KDF algorithm. If it is not specified, SHA-256 is used by default.
-    OH_Crypto_SetKdfAlgo(cryptoParam, RDB_KDF_SHA512);
-    // Set the page size used when the database is encrypted. The value must be an integer ranging from 1024 to 65536 and be a power of 2. If it is not specified, the default value 1024 is used.
-    const int64_t pageSize = 4096;
-    OH_Crypto_SetCryptoPageSize(cryptoParam, pageSize);
-    // Set the custom encryption parameters.
-    OH_Rdb_SetCryptoParam(config, cryptoParam);
-        
-    int errCode = 0;
-    OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
-    // Destroy the custom encryption parameter object.
-    OH_Rdb_DestroyCryptoParam(cryptoParam);
-    cryptoParam = nullptr;
-    OH_Rdb_CloseStore(store);
-    store = nullptr;
-    OH_Rdb_DestroyConfig(config);
-    config = nullptr;
-    ```
+      ``` C++
+      OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
+      OH_Rdb_SetDatabaseDir(config, "/data/storage/el2/database");
+      OH_Rdb_SetArea(config, RDB_SECURITY_AREA_EL2);
+      OH_Rdb_SetStoreName(config, "RdbTestConfigEncryptParam.db");
+      OH_Rdb_SetSecurityLevel(config, OH_Rdb_SecurityLevel::S3);
+      OH_Rdb_SetBundleName(config, "com.example.nativedemo");
+      // Set the database to be created or opened in encryption mode.
+      OH_Rdb_SetEncrypted(config, true);
+      // Create a custom encryption parameter object.
+      OH_Rdb_CryptoParam *cryptoParam = OH_Rdb_CreateCryptoParam();
+          
+      // Hard-coded keys are used as an example. You should use a secure key management service in actual development.
+      uint8_t key[6] = {0x31, 0x32, 0x33, 0x34, 0x35, 0x36};
+      // Use the specified key to open the encrypted database. If no key is specified, the database generates and saves the key and uses the generated key.
+      const int32_t length = 6;
+      OH_Crypto_SetEncryptionKey(cryptoParam, key, length);
+      // Clear the key information after it is used.
+      for (size_t i = 0; i < sizeof(key); i++) {
+          key[i] = 0;
+      }
+      // Set the number of iterations of the KDF algorithm, which must be greater than 0. If the value is not specified or the number of iterations is 0, the default value 10000 and the default encryption algorithm are used.
+      const int64_t iteration = 64000;
+      OH_Crypto_SetIteration(cryptoParam, iteration);
+      // Set the encryption algorithm. If it is not specified, AES_256_GCM is used by default.
+      OH_Crypto_SetEncryptionAlgo(cryptoParam, Rdb_EncryptionAlgo::RDB_AES_256_CBC);
+      // Set the HMAC algorithm. If it is not specified, SHA-256 is used by default.
+      OH_Crypto_SetHmacAlgo(cryptoParam, RDB_HMAC_SHA512);
+      // Set the KDF algorithm. If it is not specified, SHA-256 is used by default.
+      OH_Crypto_SetKdfAlgo(cryptoParam, RDB_KDF_SHA512);
+      // Set the page size used when the database is encrypted. The value must be an integer ranging from 1024 to 65536 and be a power of 2. If it is not specified, the default value 1024 is used.
+      const int64_t pageSize = 4096;
+      OH_Crypto_SetCryptoPageSize(cryptoParam, pageSize);
+      // Set the custom encryption parameters.
+      OH_Rdb_SetCryptoParam(config, cryptoParam);
+          
+      int errCode = 0;
+      OH_Rdb_Store *store = OH_Rdb_CreateOrOpen(config, &errCode);
+      // Destroy the custom encryption parameter object.
+      OH_Rdb_DestroyCryptoParam(cryptoParam);
+      cryptoParam = nullptr;
+      OH_Rdb_CloseStore(store);
+      store = nullptr;
+      OH_Rdb_DestroyConfig(config);
+      config = nullptr;
+      ```
 
 4. Since API version 22, you can use **OH_Rdb_RekeyEx** to change the key or encryption parameters of an encrypted database as required.
    The database key and encryption parameters can be changed in the following scenarios:

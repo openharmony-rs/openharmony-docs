@@ -605,6 +605,8 @@ HAP/HSP包没有签名。
 
 **处理步骤**
 
+请开发者根据实际场景选择自动签名或者手动签名，例如无法连接互联网的情况下推荐使用手动签名方式，详情参考[使用场景说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section54361623194519)。
+
 方法一. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
 
 方法二. 使用手动签名，请参考[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)。
@@ -782,55 +784,52 @@ error: install parse profile prop check error.
 
 **可能原因**
 
-1. [app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中的bundleName、[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中name不符合命名规则。
+1. [app.json5配置文件](../quick-start/app-configuration-file.md#配置文件标签)中的bundleName、[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中name不符合命名规则。<!--Del-->
 
-<!--Del-->
-2. [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities标签)中type字段配置为service或dataShare。
-<!--DelEnd-->
-
+2. [extensionAbilities](../quick-start/module-configuration-file.md#extensionabilities标签)中type字段配置为service或dataShare。<!--DelEnd-->
 
 **处理步骤**
-1. 根据命名规则调整app.json5配置文件中bundleName、module.json5文件中的name字段。
-<!--Del-->
+1. 根据命名规则调整app.json5配置文件中bundleName、module.json5文件中的name字段。<!--Del-->
+
 2. 若extensionAbilities中type字段配置为service或dataShare，应用需要配置[allowAppUsePrivilegeExtension特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)，配置方式如下。
 
     1. 获取新的签名指纹。
 
-        a. 在工程级build-profile.json5(工程根目录下)文件中，signingConfigs字段内的profile的值即为签名文件的存储路径。
+        * 在工程级build-profile.json5(工程根目录下)文件中，signingConfigs字段内的profile的值即为签名文件的存储路径。
 
-        b. 打开该签名文件（后缀为.p7b），打开后在文件内搜索“development-certificate”，将“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”以及中间的信息拷贝到新的文本中，注意换行并去掉换行符，保存为一个新的.cer文件，如命名为xxx.cer。
+        * 打开该签名文件（后缀为.p7b），打开后在文件内搜索“development-certificate”，将“-----BEGIN CERTIFICATE-----”和“-----END CERTIFICATE-----”以及中间的信息拷贝到新的文本中，注意换行并去掉换行符，保存为一个新的.cer文件，如命名为xxx.cer。
 
-        新的.cer文件格式如下图（仅作为格式示意，内容以实际为准）：
+           新的.cer文件格式如下图（仅作为格式示意，内容以实际为准）：
 
-        ![示例图](figures/zh-cn_image_0000001585521364.png)
+           ![示例图](figures/zh-cn_image_0000001585521364.png)
 
-        c. 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
+        * 使用keytool工具（在DevEco Studio安装目录下的jbr/bin文件夹内），执行如下命令，通过.cer文件获取证书指纹的SHA256值。
 
             ```shell
             keytool -printcert -file xxx.cer
             ```
-        d. 将证书指纹中SHA256的内容去掉冒号，即为最终要获得的签名指纹。
+        * 将证书指纹中SHA256的内容去掉冒号，即为最终要获得的签名指纹。
 
-        如下图（仅作为格式示意，内容以实际为准）：
+           如下图（仅作为格式示意，内容以实际为准）：
 
-        ![示例图](figures/zh-cn_image_0000001635921233.png)
+           ![示例图](figures/zh-cn_image_0000001635921233.png)
 
-        去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
+           去掉冒号后的签名指纹为：5753DDBC1A8EF88A62058A9FC4B6AFAFC1C5D8D1A1B86FB3532739B625F8F3DB。
 
     2. 获取设备的特权管控白名单文件install_list_capability.json。
 
-        a. 连接设备，进入shell。
+        * 连接设备，进入shell。
 
             ```shell
             hdc shell
             ```
-        b. 执行如下命令查看设备的特权管控白名单文件install_list_capability.json。
+        * 执行如下命令查看设备的特权管控白名单文件install_list_capability.json。
 
             ```shell
             // 设备中查询白名单文件的位置
             find /system -name install_list_capability.json
             ```
-        c. 执行如下命令拉取install_list_capability.json。
+        * 执行如下命令拉取install_list_capability.json。
 
             ```shell
             hdc target mount
@@ -838,7 +837,7 @@ error: install parse profile prop check error.
             ```
 
     3. 将步骤1获取到的签名指纹配置到install_list_capability.json文件的app_signature中，注意要配置到对应的bundleName下。
-    ![示例图](figures/zh-cn_image_0000001635641893.png)
+       ![示例图](figures/zh-cn_image_0000001635641893.png)
     4. 将修改后的install_list_capability.json文件重新推到设备上，并重启设备。
 
         ```shell
@@ -1021,6 +1020,23 @@ error: install invalid hap name.
 
 检查安装包的名称后缀是否正确。
 
+### 9568276 安装应用已存在
+**错误信息**
+
+error: install already exist.
+
+**错误描述**
+
+应用已存在，bundleName重复导致安装失败。
+
+**可能原因**
+
+bundleName重复导致安装失败。
+
+**处理步骤**
+
+请更换应用的bundleName。
+
 ### 9568267 entry模块已存在
 **错误信息**
 
@@ -1098,8 +1114,9 @@ error: signature verification failed due to not trusted app source.
 **处理步骤**
 
 <!--RP9-->
-<!--RP9End--><!--Del-->1. <!--DelEnd-->使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。
-<!--Del-->
+<!--RP9End-->
+1. 使用[自动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。在连接设备后，重新为应用进行签名。<!--Del-->
+
 2. 如果使用的是手动签名，对于OpenHarmony应用，请参考[OpenHarmony应用手动签名](../security/hapsigntool-guidelines.md)，在UnsgnedDebugProfileTemplate.json文件中添加该调试设备的**UDID**。
 
     1. 获取当前设备的UDID。
@@ -1120,8 +1137,8 @@ error: signature verification failed due to not trusted app source.
 
     3. 在UnsgnedDebugProfileTemplate.json文件的device-ids字段中，添加当前设备的UDID。
 
-3. 使用文本编辑器打开已签名的HAP，检查签名中是否包含调试设备的UDID，搜索device-ids。
-<!--DelEnd-->
+3. 使用文本编辑器打开已签名的HAP，检查签名中是否包含调试设备的UDID，搜索device-ids。<!--DelEnd-->
+
 
 
 ### 9568286 安装应用的签名证书profile文件中的类型与已安装应用的不相同
@@ -1214,8 +1231,6 @@ error: install failed due to update hap token failed.
     hdc file recv /data/log/hilog/
     ```
 
-
-<!--Del-->
 ### 9568291 singleton不一致导致安装失败
 **错误信息**
 
@@ -1233,10 +1248,28 @@ error: install failed due to singleton not same.
 
 方案1：卸载已安装的应用包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的应用包。
 
-方案2：更新包调整singleton配置，与已安装包配置一致，重新打包，再更新应用包。<!--DelEnd-->
+方案2：更新包调整singleton配置，与已安装包配置一致，重新打包，再更新应用包。
+
+
+### 9568293 SysCap不一致导致安装失败
+**错误信息**
+
+error: install failed due to check syscap filed.
+
+**错误描述**
+
+SysCap不一致导致安装失败。
+
+**可能原因**
+
+多个HAP/HSP中配置的[SysCap](./../reference/syscap.md)不一致。
+
+**处理步骤**
+
+检查多HAP/HSP中配置的SysCap，请保持一致。
 
 <!--Del-->
-### 9568294 应用类别不一致导致的安装失败
+### 9568294 appType不一致导致的安装失败
 **错误信息**
 
 error: install failed due to apptype not same.
@@ -1251,8 +1284,9 @@ error: install failed due to apptype not same.
 
 **处理步骤**
 
-* 方案1：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再安装新的HAP包。
-* 方案2：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[应用/元服务签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。<!--DelEnd-->
+* 方案一：卸载已安装的HAP包（PC/2in1设备需要确保所有用户下都卸载完成），再安装新的HAP包。
+* 方案二：保证多HAP/HSP使用同一个证书签名，保证签名的一致性。
+* 方案三：修改待安装HAP包的签名文件中的app-feature字段，确保与已安装包配置一致，重新打包、签名[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)，再重试安装。<!--DelEnd-->
 
 ### 9568297 由于设备sdk版本较低导致安装失败
 **错误信息**
@@ -1278,8 +1312,6 @@ error: install failed due to older sdk version in the device.
   如果镜像提供的api版本为10，且应用编译所使用的SDK版本也为10，仍出现该报错，可能是由于镜像版本较低，未兼容新版本SDK校验规则，请将镜像版本更新为最新版本。
 
 * 场景二：对于需要运行在OpenHarmony设备上的应用，请确认runtimeOS已改为OpenHarmony。
-
-
 
 ### 9568299 安装信息异常
 
@@ -1557,6 +1589,25 @@ error: install version downgrade.
 **处理步骤**
 
 1. 卸载已安装的应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），重新安装新应用。
+
+### 9568264 安装检验签名一致性失败
+**错误信息**
+
+error: install verification failed.
+
+**错误描述**
+
+安装时，校验签名一致性失败。
+
+**可能原因**
+
+校验唯一标识[appIdentifier](./../quick-start/common_problem_of_application.md#什么是appidentifier)不一样，导致安装失败。
+
+**处理步骤**
+
+方法一：如果应用可以卸载，可以先卸载应用（PC/2in1设备需要确保所有用户下都卸载完成<!--RP10--><!--RP10End-->），再重新安装。
+
+方法二：签名文件Profile可以用文本编辑器打开，搜索`app-identifier`字段，调整安装参数中的appIdentifier，需要和签名文件Profile保持一致。
 
 
 ### 9568301 模块类型不一致
@@ -2449,6 +2500,61 @@ error: installd set selinux label failed.
 
     ![示例图](figures/zh-cn_image_9568359_2.png)
 
+
+### 9568360 安装overlay应用出现错误
+**错误信息**
+
+error: internal error of overlay installation.
+
+**错误描述**
+
+安装overlay应用出现错误。
+
+**可能原因**
+
+解析overlay安装包失败或者安装内部出现异常导致安装失败。
+
+**处理步骤**
+
+方法一：重新编译overlay应用再尝试安装。
+
+方法二：设备重启之后，再尝试安装。
+
+### 9568361 overlay应用中目标包名为空导致安装失败
+**错误信息**
+
+error: invalid bundle name of overlay installation.
+
+**错误描述**
+
+overlay应用中目标包名为空导致安装失败。
+
+**可能原因**
+
+overlay应用中targetBundleName为空。
+
+**处理步骤**
+
+检查overlay应用中的[app.json5配置文件](../quick-start/app-configuration-file.md)的targetBundleName字段是否配置。
+
+### 9568362 overlay应用中目标模块名称为空导致安装失败
+**错误信息**
+
+error: invalid module name of overlay installation.
+
+**错误描述**
+
+overlay应用中目标模块名称为空导致安装失败。
+
+**可能原因**
+
+overlay应用中targetModuleName为空。
+
+**处理步骤**
+
+检查overlay应用中的[module.json5配置文件](../quick-start/module-configuration-file.md)的targetModuleName字段是否配置。
+
+
 ### 9568398 企业MDM应用/普通企业应用不允许安装
 **错误信息**
 
@@ -2815,10 +2921,9 @@ error: Failed to install the plugin because host application check permission fa
 
 **处理步骤**
 
-1. 参考[权限申请指导](../security/AccessToken/declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)。
-<!--Del-->
-2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)。
-<!--DelEnd-->
+1. 参考[权限申请指导](../security/AccessToken/declare-permissions.md)申请[ohos.permission.kernel.SUPPORT_PLUGIN权限](../security/AccessToken/restricted-permissions.md#ohospermissionkernelsupport_plugin)。<!--Del-->
+
+2. 该权限等级为system_basic，若[应用APL等级](../security/AccessToken/app-permission-mgmt-overview.md#权限机制中的基本概念)低于system_basic，请[申请受限权限](../security/AccessToken/declare-permissions-in-acl.md)。<!--DelEnd-->
 
 
 ### 9568333 模块名称为空
@@ -2944,6 +3049,7 @@ error: Install parse profile prop type error.
 
 使用DevEco Studio重新构建、打包、安装。
 
+
 ### 9568345 配置文件中的字符串长度或者数组大小过大
 **错误信息**
 
@@ -2960,6 +3066,25 @@ error: too large size of string or array type element in the profile.
 **处理步骤**
 
 使用DevEco Studio重新构建、打包、安装。
+
+
+### 9568346 解析安装包获取SysCap信息失败
+
+**错误信息**
+
+error: install parse syscap error.
+
+**错误描述**
+
+安装过程中，解析安装包获取[SysCap](./../reference/syscap.md)信息失败。
+
+**可能原因**
+
+HAP/HSP包损坏。
+
+**处理步骤**
+
+尝试重新安装，如果还是失败，请重新编译签名打包出新的包，再安装新编译的HAP/HSP。
 
 
 ### 9568347 解析本地so文件失败

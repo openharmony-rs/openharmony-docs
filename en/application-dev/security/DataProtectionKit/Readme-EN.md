@@ -8,6 +8,4 @@
 
 - DLP Service<!--dlp-->
   - [DLP Service Overview](dlp-overview.md)
-  <!--Del-->
-  - [DLP Service Development](dlp-guidelines.md)
-  <!--DelEnd-->
+  - [DLP Service Development](dlp-guidelines.md)<!--RP1--><!--RP1End-->

@@ -672,6 +672,10 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 
 通知宿主应用页面开始加载。此方法在每次主frame加载时调用一次，因此对于包含iframes或frameset的页面，onLoadStarted仅针对主frame调用一次。这意味着当嵌入式frame的内容发生变化时，如点击iframe中的链接或Fragment跳转（即跳转到#fragment_id的导航）等，不会调用onLoadStarted。
 
+> **说明：**
+>
+> - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：**
@@ -709,6 +713,12 @@ onLoadStarted(callback: Callback\<OnLoadStartedEvent\>)
 onLoadFinished(callback: Callback\<OnLoadFinishedEvent\>)
 
 通知宿主应用页面已加载完成。此方法仅在主frame加载完成时被调用。对于片段跳转（即导航至#fragment_id），onLoadFinished同样会被触发。
+
+> **说明：**
+>
+> - 片段导航也会触发onLoadFinished，但onPageEnd不会被触发。
+> - 如果主框架在页面完全加载之前被自动重定向，onLoadFinished只会触发一次。onPageEnd会在每次主框架导航时触发。
+> - 当弹出窗口的文档在加载之前被JavaScript修改时，它将模拟触发onLoadStarted，并将URL设置为空，因为显示当前正在加载的URL可能不安全。onPageBegin将不会被模拟。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1354,6 +1364,7 @@ onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean\>)
 onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEvent\>)
 
 通知用户加载资源时发生SSL错误，只支持主资源。
+
 如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
 
 > **说明：**
@@ -2515,10 +2526,13 @@ onFullScreenExit(callback: () => void)
 onWindowNew(callback: Callback\<OnWindowNewEvent\>)
 
 使能multiWindowAccess情况下，通知用户新建窗口请求。
+
 若不调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口，会造成render进程阻塞。
+
 如果没有创建新窗口，调用[setWebController](./arkts-basic-components-web-ControllerHandler.md#setwebcontroller9)接口时设置成null，通知Web没有创建新窗口。
 
 新窗口需避免直接覆盖在原Web组件上，且应与主页面以相同形式明确显示其URL（如地址栏）以防止用户混淆。若无法实现可信的URL可视化管理，则需考虑禁止创建新窗口。
+
 需注意：新窗口请求来源无法可靠追溯，可能由第三方iframe发起，应用需默认采取沙箱隔离、限制权限等防御性措施以确保安全。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -3437,6 +3451,7 @@ onOverScroll(callback: Callback\<OnOverScrollEvent\>)
 onControllerAttached(callback: () => void)
 
 当Controller成功绑定到Web组件时触发该回调，并且该Controller必须为WebviewController，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。
+
 因该回调调用时网页还未加载，无法在回调中使用有关操作网页的接口，例如[zoomIn](./arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](./arkts-apis-webview-WebviewController.md#zoomout)等，可以使用[loadUrl](./arkts-apis-webview-WebviewController.md#loadurl)、[getWebId](./arkts-apis-webview-WebviewController.md#getwebid)等操作网页不相关的接口。
 
 组件生命周期详情可参考[Web组件的生命周期](../../web/web-event-sequence.md)。
@@ -4825,7 +4840,10 @@ onFileSelectorShow(callback: (event?: { callback: Function, fileSelector: object
 onUrlLoadIntercept(callback: (event?: { data:string | WebResourceRequest }) => boolean)
 
 当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。
-从API version 10开始不再维护，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
+
+> **说明：**
+>
+> API version 8开始支持，从API version 10开始废弃，建议使用[onLoadIntercept<sup>10+</sup>](#onloadintercept10)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -5013,6 +5031,14 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 
 可以通过startCamera，stopCamera，closeCamera这三个接口来切换摄像头的状态。这三个接口分别对应开启，暂停，停止摄像头功能。示例使用场景详见[startCamera](arkts-apis-webview-WebviewController.md#startcamera12)。
 
+> **说明：**
+>
+> 当前网页正在使用摄像头时，返回在捕获中状态。
+>
+> 当前网页暂停使用摄像头时，返回暂停中状态。
+>
+> 当前网页完全没有使用摄像头时，返回无状态。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：** 
@@ -5020,14 +5046,6 @@ onCameraCaptureStateChange(callback: OnCameraCaptureStateChangeCallback)
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
 | Callback  | [OnCameraCaptureStateChangeCallback](arkts-basic-components-web-t.md#oncameracapturestatechangecallback23) | 是   | 回调函数。当摄像头捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
-
-> **说明：** 
-> 
-> 当前网页正在使用摄像头时，返回在使用状态。
->
-> 当前网页暂停使用摄像头时，返回暂停状态。
-> 
-> 当前网页完全没有使用摄像头时，返回未使用状态。
 
 **示例：**
 
@@ -5150,6 +5168,20 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 
 可以通过resumeMicrophone，pauseMicrophone，stopMicrophone这三个接口来切换麦克风的状态。这三个接口功能分别对应解除暂停，暂停，停止麦克风。示例使用场景详见[网页中麦克风的使用](./arkts-apis-webview-WebviewController.md#resumemicrophone23)。
 
+> **说明：**
+>
+> 当前网页正在使用麦克风时，返回捕获中状态；当前网页暂停使用麦克风时，返回暂停中状态；当前网页完全没有使用麦克风时，返回未工作状态。
+>
+> 当前麦克风处于捕获中状态时，设置暂停使用，当前麦克风变为暂停中状态。可通过ArkWeb设置麦克风开始使用状态进行恢复捕捉。
+>
+> 当前麦克风处于捕获中状态时，设置停止使用，当前麦克风停止捕捉，麦克风变为未工作状态。除非重新前端开始捕捉，否则无法恢复。
+>
+> 当前麦克风处于暂停中状态时，设置开始使用，当前麦克风继续捕捉，变为捕获中状态。
+>
+> 当前麦克风处于暂停中状态时，设置停止使用，当前麦克风停止捕捉，变为未工作状态。除非重新前端开始捕捉，否则无法恢复。
+>
+> 当前麦克风处于未工作状态时，设置开始使用以及暂停使用，麦克风状态均不发生变化。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **参数：** 
@@ -5157,21 +5189,6 @@ onMicrophoneCaptureStateChange(callback: OnMicrophoneCaptureStateChangeCallback)
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
 | Callback  | [OnMicrophoneCaptureStateChangeCallback](./arkts-basic-components-web-t.md#onmicrophonecapturestatechangecallback23) | 是   | 回调函数。当麦克风捕获状态改变时触发该回调，返回原来的状态和改变后的状态。 |
-
-> **说明：** 
-> 
-> 当前网页正在使用麦克风时，返回Active状态；当前网页暂停使用麦克风时，返回Paused状态；当前网页完全没有使用麦克风时，返回None状态。
->
-> 当前正在使用麦克风时，设置暂停使用，当前麦克风暂停捕捉。可通过ArkWeb设置麦克风开始使用状态进行恢复捕捉。
-> 
-> 当前正在使用麦克风时，设置停止使用，当前麦克风停止捕捉。除非重新前端开始捕捉，否则无法恢复。
-> 
-> 当前暂停使用麦克风状态，设置开始使用，当前麦克风继续捕捉。
-> 
-> 当前暂停使用麦克风状态，设置停止使用，当前麦克风停止捕捉。除非重新前端开始捕捉，否则无法恢复。
-> 
-> 当前不在使用麦克风状态，设置开始使用以及暂停使用，麦克风状态均不发生变化。
-
 
 **示例：**
 

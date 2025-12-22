@@ -28,7 +28,7 @@
 | MULTI_DEVICE_CONNECTION | 多设备互联。 | multiDeviceConnection | 分布式业务连接、投播。<br> **说明：** 支持在原子化服务中使用。 |
 | <!--DelRow-->WIFI_INTERACTION | WLAN相关业务（仅对系统应用开放）。 | wifiInteraction  | 通过WLAN传输文件时退后台。 |
 | VOIP<sup>13+</sup> | 音视频通话。 | voip  | 某些聊天类应用（具有音视频业务）音频、视频通话时退后台。|
-| TASK_KEEPING | 计算任务（仅对PC/2in1设备开放）。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
+| TASK_KEEPING | 计算任务。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 | taskKeeping  | 如杀毒软件。 |
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup> | 多媒体相关业务。 | avPlaybackAndRecord  | 音视频播放，录制，音视频通话时退后台。在上述三种场景下，选择本类型或对应类型的长时任务均可。例如：音视频播放场景下，选择AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD任意一个即可。 |
 | MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。 | specialScenarioProcessing  | 在后台进行导出媒体文件，使用三方投播组件在后台进行投播。|
 
@@ -49,6 +49,14 @@
 - 如果应用不满足上述接入规范，退至后台播放时会被系统静音并冻结，无法在后台正常播放，直到应用重新切回前台时，才会解除静音并恢复播放。
 
 - 从API version 20开始，申请AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请长时任务成功后会在通知栏显示通知；接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。
+
+关于BLUETOOTH_INTERACTION（蓝牙相关业务）说明：
+
+如果应用仅申请了蓝牙长时任务，因设备远离等原因导致蓝牙断连，系统将取消应用的蓝牙长时任务。为确保蓝牙接续使用体验，在断连后的一段时间内（具体时长受系统负载影响，最长可达十分钟），如果恢复连接，可以通过如下操作，重新保活，实现在后台长时间运行。
+
+1. 应用需要主动注册长时任务暂停监听的事件，可参考[on('continuousTaskSuspend')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustasksuspend20)。
+2. 蓝牙连接之后通过[on('connectionStateChange')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onconnectionstatechange)订阅蓝牙连接状态变化的事件，断连之后，通过[startScan](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#startscan15)主动发起BLE蓝牙扫描，订阅BLE设备扫描结果上报[on('BLEDeviceFind')](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#onbledevicefind15)事件，检测设备是否重回连接范围。
+3. 成功扫描到设备之后，需要通过[connect](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md#connect)主动恢复蓝牙连接。
 
 ### 约束与限制
 
@@ -416,12 +424,12 @@
    **跨设备或跨应用**申请长时任务示例代码如下。跨设备或跨应用在后台执行长时任务时，可以通过Call的方式在后台创建并运行UIAbility，具体使用请参考[Call调用开发指南（同设备）](../application-models/uiability-intra-device-interaction.md#通过call调用实现uiability交互仅对系统应用开放)和[Call调用开发指南（跨设备）](../application-models/hop-multi-device-collaboration.md#通过跨设备call调用实现多端协同)。
    
    <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
-
+   
    ``` TypeScript
    const MSG_SEND_METHOD: string = 'CallSendMsg';
- 
+   
    let mContext: Context;
-
+   
    function startContinuousTask() {
      let wantAgentInfo : wantAgent.WantAgentInfo = {
        // 点击通知后，将要执行的动作列表
@@ -438,7 +446,7 @@
        // 点击通知后，动作执行属性
        actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
      };
-
+   
      // 通过wantAgent模块的getWantAgent方法获取WantAgent对象
      // 在原子化服务中，使用wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {替换下面一行代码
      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
@@ -450,7 +458,7 @@
        });
      });
    }
-
+   
    function stopContinuousTask() {
      backgroundTaskManager.stopBackgroundRunning(mContext).then(() => {
        console.info(`Succeeded in operationing stopBackgroundRunning.`);
@@ -458,29 +466,29 @@
        console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
      });
    }
-
+   
    class MyParcelable implements rpc.Parcelable {
-     private num: number = 0;
-     private str: string = '';
-
+     public num: number = 0;
+     public str: string = '';
+   
      constructor(num: number, str: string) {
        this.num = num;
        this.str = str;
      }
-
+   
      marshalling(messageSequence: rpc.MessageSequence) {
        messageSequence.writeInt(this.num);
        messageSequence.writeString(this.str);
        return true;
      }
-
+   
      unmarshalling(messageSequence: rpc.MessageSequence) {
        this.num = messageSequence.readInt();
        this.str = messageSequence.readString();
        return true;
      }
    }
-
+   
    function sendMsgCallback(data: rpc.MessageSequence) {
      console.info('BgTaskAbility funcCallBack is called ' + data);
      let receivedData: MyParcelable = new MyParcelable(0, '');
@@ -496,27 +504,27 @@
      }
      return new MyParcelable(10, 'Callee test');
    }
-
+   
    export default class BgTaskAbility extends UIAbility {
      // Ability创建
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-       console.info("[Demo] BgTaskAbility onCreate");
+       console.info('[Demo] BgTaskAbility onCreate');
        try {
-         this.callee.on(MSG_SEND_METHOD, sendMsgCallback)
+         this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
        } catch (error) {
          console.error(`${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
        }
        mContext = this.context;
      }
-     
+   
      // Ability销毁
      onDestroy() {
        console.info('[Demo] BgTaskAbility onDestroy');
      }
-
+   
      onWindowStageCreate(windowStage: window.WindowStage) {
        console.info('[Demo] BgTaskAbility onWindowStageCreate');
-
+   
        windowStage.loadContent('pages/Index', (error, data) => {
          if (error.code) {
            console.error(`load content failed with error ${JSON.stringify(error)}`);
@@ -525,15 +533,15 @@
          console.info(`load content succeed with data ${JSON.stringify(data)}`);
        });
      }
-
+   
      onWindowStageDestroy() {
        console.info('[Demo] BgTaskAbility onWindowStageDestroy');
      }
-      
+   
      onForeground() {
        console.info('[Demo] BgTaskAbility onForeground');
      }
-
+   
      onBackground() {
        console.info('[Demo] BgTaskAbility onBackground');
      }

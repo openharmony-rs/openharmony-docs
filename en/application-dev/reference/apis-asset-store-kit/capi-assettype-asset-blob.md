@@ -7,6 +7,10 @@
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct {...} Asset_Blob
+```
+
 ## Overview
 
 Defines a binary array, that is, an array of bytes with variable length.

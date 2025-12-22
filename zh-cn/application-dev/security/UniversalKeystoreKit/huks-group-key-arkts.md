@@ -7,13 +7,13 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-群组密钥支持的HUKS密钥操作及详细介绍参考[群组密钥介绍](huks-group-key-overview.md)，本文档以[AES/CBC/NoPadding加解密](#aescbcnopadding加解密)、[X25519非对称密钥协商](#x25519非对称密钥协商)、[PBKDF2派生密钥](#pbkdf2派生密钥)为例展示群组密钥使用方法。
+群组密钥支持的HUKS密钥操作及详细介绍参考[群组密钥介绍](huks-group-key-overview.md)，本文档以[AES/CBC/PKCS7加解密](#aescbcpkcs7加解密)、[X25519非对称密钥协商](#x25519非对称密钥协商)、[PBKDF2派生密钥](#pbkdf2派生密钥)为例展示群组密钥使用方法。
 
 **配置文件**
 
 使用群组密钥之前，需要在app.json5文件中配置群组信息，配置方法参考[配置文件示例](../../quick-start/app-configuration-file.md#配置文件示例)中assetAccessGroups字段的配置方式。
 
-## AES/CBC/NoPadding加解密
+## AES/CBC/PKCS7加解密
 
 ### 开发步骤
 
@@ -63,13 +63,13 @@
 
 ```ts
 /*
- * 以下以AES/CBC/NoPadding的Promise操作使用为例
+ * 以下以AES/CBC/PKCS7的Promise操作使用为例
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from "@kit.BasicServicesKit";
 
-let aesKeyAlias = 'groupKey_test_aesKeyAlias';
+let aesKeyAlias = 'groupKeyTestAesKeyAlias';
 let handle: number;
 let plainText = '123456';
 let IV = cryptoFramework.createRandom().generateRandomSync(12).data;
@@ -124,7 +124,7 @@ function GetAesEncryptProperties() {
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT
   }, {
     tag: huks.HuksTag.HUKS_TAG_PADDING,
-    value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
   }, {
     tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
     value: huks.HuksCipherMode.HUKS_MODE_CBC
@@ -150,7 +150,7 @@ function GetAesDecryptProperties() {
     value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
   }, {
     tag: huks.HuksTag.HUKS_TAG_PADDING,
-    value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    value: huks.HuksKeyPadding.HUKS_PADDING_PKCS7
   }, {
     tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
     value: huks.HuksCipherMode.HUKS_MODE_CBC
@@ -265,13 +265,19 @@ async function DeleteKey() {
    * 模拟删除密钥场景
    * 1. 获取密钥别名
    */
-  let emptyOptions: huks.HuksOptions = {
-    properties: []
+  let deleteProperties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_ACCESS_GROUP,
+      value: StringToUint8Array(group)
+    }
+  ]
+  let deleteOptions: huks.HuksOptions = {
+    properties: deleteProperties
   }
   /*
    * 2. 调用deleteKeyItem删除密钥
    */
-  await huks.deleteKeyItem(aesKeyAlias, emptyOptions)
+  await huks.deleteKeyItem(aesKeyAlias, deleteOptions)
     .then(() => {
       console.info(`promise: delete data success`);
     }).catch((error: BusinessError) => {
@@ -445,7 +451,7 @@ async function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) 
       .then(() => {
         console.info(`promise: generateKeyItem success`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: generateKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: generateKeyItem failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: generateKeyItem input arg invalid`);
@@ -461,7 +467,7 @@ async function initSession(keyAlias: string, huksOptions: huks.HuksOptions) {
         handle = data.handle;
         console.info(`promise: initSession success`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: initSession failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: initSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: initSession input arg invalid`);
@@ -476,7 +482,7 @@ async function updateSession(handle: number, huksOptions: huks.HuksOptions) {
       .then((data) => {
         console.info(`promise: updateSession success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
       }).catch((error: BusinessError) => {
-        console.error(`promise: updateSession failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: updateSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: updateSession input arg invalid`);
@@ -492,7 +498,7 @@ async function finishSession(handle: number, huksOptions: huks.HuksOptions) {
         finishOutData = data.outData as Uint8Array;
         console.info(`promise: finishSession success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
       }).catch((error: BusinessError) => {
-        console.error(`promise: finishSession failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: finishSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: finishSession input arg invalid`);
@@ -508,7 +514,7 @@ async function exportKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
         exportKey = data.outData as Uint8Array;
         console.info(`promise: exportKey success, data is ` + Uint8ArrayToString(data.outData as Uint8Array));
       }).catch((error: BusinessError) => {
-        console.error(`promise: exportKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: exportKeyItem failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: exportKeyItem input arg invalid`);
@@ -523,7 +529,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
       .then(() => {
         console.info(`promise: deleteKeyItem success`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: deleteKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: deleteKeyItem failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: deleteKeyItem input arg invalid`);
@@ -616,7 +622,7 @@ function Uint8ArrayToString(fileData: Uint8Array) {
 /*
  * 确定密钥别名和封装密钥属性参数集
  */
-let srcKeyAlias = "pbkdf2_Key";
+let srcKeyAlias = "pbkdf2Key";
 let salt = "mySalt";
 let iterationCount = 10000;
 let derivedKeySize = 32;
@@ -730,7 +736,7 @@ async function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) 
       .then(() => {
         console.info(`promise: generateKeyItem success`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: generateKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: generateKeyItem failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: generateKeyItem input arg invalid`);
@@ -745,7 +751,7 @@ async function initSession(keyAlias: string, huksOptions: huks.HuksOptions) {
         handle = data.handle;
         console.info(`promise: initSession success`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: initSession failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: initSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: initSession input arg invalid`);
@@ -760,7 +766,7 @@ async function updateSession(handle: number, huksOptions: huks.HuksOptions) {
         let outData = data.outData as Uint8Array;
         console.info(`promise: updateSession success, data = ${Uint8ArrayToString(outData)}`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: updateSession failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: updateSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: updateSession input arg invalid`);
@@ -775,7 +781,7 @@ async function finishSession(handle: number, huksOptions: huks.HuksOptions) {
         let outData = data.outData as Uint8Array;
         console.info(`promise: finishSession success, data = ${Uint8ArrayToString(outData)}`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: finishSession failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: finishSession failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: finishSession input arg invalid`);
@@ -789,7 +795,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
       .then(() => {
         console.info(`promise: deleteKeyItem success`);
       }).catch((error: BusinessError) => {
-        console.error(`promise: deleteKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: deleteKeyItem failed, errCode: ${error.code}, errMsg: ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: deleteKeyItem input arg invalid`);

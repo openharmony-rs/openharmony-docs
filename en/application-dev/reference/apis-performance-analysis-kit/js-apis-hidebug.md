@@ -879,7 +879,7 @@ Obtains the specified system [GC](../../arkts-utils/gc-introduction.md) statisti
 
 | Name  | Type  | Mandatory| Description         |
 | -------- | ------ | ---- |-------------|
-| item | string | Yes  | Type of the statistics to obtain. The following statistics can be obtained:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by the GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GCs triggered by the current thread.|
+| item | string | Yes  | Type of the statistics to obtain. The following statistics can be obtained:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GC times triggered by the current thread.|
 
 **Return value**
 
@@ -1042,7 +1042,7 @@ Describes the key-value pair used to store GC statistics. This type does not sup
 
 | Type     | Description                         |
 | -----------| ---------------------------- |
-| Record&lt;string, number&gt;     | Key-value pair format used to store GC statistics. It contains the following information:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by the GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GCs triggered by the current thread.   |
+| Record&lt;string, number&gt;     | Key-value pair format used to store GC statistics. It contains the following information:<br>**"ark.gc.gc-count"**: number of GC times of the current thread.<br>**"ark.gc.gc-time"**: total GC duration triggered by the current thread, in milliseconds.<br>**"ark.gc.gc-bytes-allocated"**: size of the Ark VM memory allocated to the current thread, in bytes.<br>**"ark.gc.gc-bytes-freed"**: memory freed by GC of the current thread, in bytes.<br> **"ark.gc.fullgc-longtime-count"**: number of longtime full GC times triggered by the current thread.   |
 
 ## JsRawHeapTrimLevel<sup>20+</sup>
 
@@ -1395,5 +1395,5 @@ Describes the GPU memory data of an application, including the GL and Graph part
 
 | Name     | Type    | Read Only | Optional| Description                                                                             |
 | --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
-| gl  | number |  No |   No | GL memory size (DMA memory usage of the process), in KB, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.|
-| graph  | number |  No |   No | Graph memory size (memory occupied by RenderService for loading required resources, such as images and textures), in KB.                        |
+| gl  | number |  No |   No | GL memory size (memory occupied by RenderService for loading required resources, such as images and textures), in KB.|
+| graph  | number |  No |   No | Graph memory size (DMA memory usage of the process), in KB, including the DMA buffers obtained directly through the API and those obtained through **allocator_host**.|

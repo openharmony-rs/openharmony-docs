@@ -528,6 +528,7 @@ mediaPlayGestureAccess(access: boolean)
 multiWindowAccess(multiWindow: boolean)
 
 设置是否开启多窗口权限。
+
 使能多窗口权限时，需要实现onWindowNew事件，示例代码参考[onWindowNew事件](./arkts-basic-components-web-events.md#onwindownew9)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -753,7 +754,7 @@ copyOptions(value: CopyOptions)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -769,7 +770,7 @@ struct WebComponent {
     }
   }
 }
-  ```
+```
 
 ## textZoomRatio<sup>9+</sup>
 
@@ -1634,7 +1635,7 @@ javaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1660,7 +1661,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1785,7 +1786,7 @@ runJavaScriptOnDocumentEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1813,7 +1814,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1851,7 +1852,7 @@ runJavaScriptOnHeadEnd(scripts: Array\<ScriptItem>)
 
 **示例：**
 
-  ```ts
+```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
@@ -1879,7 +1880,7 @@ struct Index {
     }
   }
 }
-  ```
+```
 
 ```html
 <!--index.html-->
@@ -1985,7 +1986,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 | 参数名   | 类型                                     | 必填   | 说明             |
 | ----- | ---------------------------------------- | ---- | ---------------- |
-| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。
+| value | [NestedScrollOptions](../apis-arkui/arkui-ts/ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| [NestedScrollOptionsExt](./arkts-basic-components-web-i.md#nestedscrolloptionsext14)<sup>14+</sup> | 是    | 可滚动组件滚动时的嵌套滚动选项。<br> value为NestedScrollOptions（向前、向后两个方向）类型时，scrollForward、scrollBackward默认滚动选项为[NestedScrollMode.SELF_FIRST](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10)。 <br> value为NestedScrollOptionsExt（上下左右四个方向）类型时，scrollUp、scrollDown、scrollLeft、scrollRight默认滚动选项为NestedScrollMode.SELF_FIRST。|
 
 **示例：**
 
@@ -4141,7 +4142,7 @@ Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本�
 
 | 参数名              | 类型                                                         | 必填   | 说明          |
 | ------------------- | ----------------------------------------------------------    | ---- | ------------- |
-| expandedMenuOptions | Array<[ExpandedMenuItemOptions](./arkts-basic-components-web-i.md#expandedmenuitemoptions12)> | 是    | 扩展菜单选项。<br/>菜单项数量，及菜单的content大小、startIcon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。|
+| expandedMenuOptions | Array<[ExpandedMenuItemOptions](./arkts-basic-components-web-i.md#expandedmenuitemoptionsdeprecated)> | 是    | 扩展菜单选项。<br/>菜单项数量，及菜单的content大小、startIcon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。|
 
 **示例：**
 
@@ -4191,6 +4192,7 @@ Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本�
 zoomControlAccess(zoomControlAccess: boolean)
 
 设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
+
 当属性没有显式调用时，默认允许通过组合按键进行缩放。
 
 **系统能力：** SystemCapability.Web.Webview.Core

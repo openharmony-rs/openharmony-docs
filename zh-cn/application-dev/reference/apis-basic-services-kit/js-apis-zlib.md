@@ -3872,11 +3872,11 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 | OK         | 0    | 函数调用成功。该接口支持在原子化服务中使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | STREAM_END | 1    | 函数调用成功，表示已处理了整个数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | NEED_DICT  | 2    | 函数调用成功，表示需要预设字典才能继续解压缩。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| ERRNO<sup>22+</sup>| -1 | 函数调用失败，表示文件操作错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| STREAM_ERROR<sup>22+</sup>| -2 | 函数调用失败，表示压缩或解压缩流错误。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| DATA_ERROR<sup>22+</sup>| -3 | 函数调用失败，表示输入数据不正确。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| MEM_ERROR<sup>22+</sup>| -4 | 函数调用失败，表示内存分配失败。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| BUF_ERROR<sup>22+</sup>| -5 | 函数调用失败，表示输入缓冲区不正确。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| ERRNO<sup>23+</sup>| -1 | 函数调用失败，表示文件操作错误。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| STREAM_ERROR<sup>23+</sup>| -2 | 函数调用失败，表示压缩或解压缩流错误。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| DATA_ERROR<sup>23+</sup>| -3 | 函数调用失败，表示输入数据不正确。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| MEM_ERROR<sup>23+</sup>| -4 | 函数调用失败，表示内存分配失败。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| BUF_ERROR<sup>23+</sup>| -5 | 函数调用失败，表示输入缓冲区不正确。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ZStream<sup>12+</sup>
 

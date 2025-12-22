@@ -47,7 +47,7 @@ Provides APIs for symmetric keys.
 
 ### OH_CryptoSymKeyGenerator_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Create(const char *algoName, OH_CryptoSymKeyGenerator **ctx)
 ```
 
@@ -73,7 +73,7 @@ Creates a symmetric key generator instance based on the given algorithm name.
 
 ### OH_CryptoSymKeyGenerator_Generate()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Generate(OH_CryptoSymKeyGenerator *ctx, OH_CryptoSymKey **keyCtx)
 ```
 
@@ -99,7 +99,7 @@ Randomly generates a symmetric key.
 
 ### OH_CryptoSymKeyGenerator_Convert()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymKeyGenerator_Convert(OH_CryptoSymKeyGenerator *ctx,const Crypto_DataBlob *keyData, OH_CryptoSymKey **keyCtx)
 ```
 
@@ -126,7 +126,7 @@ Converts binary data into a symmetric key.
 
 ### OH_CryptoSymKeyGenerator_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoSymKeyGenerator_GetAlgoName(OH_CryptoSymKeyGenerator *ctx)
 ```
 
@@ -151,7 +151,7 @@ Obtains the algorithm of a symmetric key generator instance.
 
 ### OH_CryptoSymKeyGenerator_Destroy()
 
-```
+```c
 void OH_CryptoSymKeyGenerator_Destroy(OH_CryptoSymKeyGenerator *ctx)
 ```
 
@@ -170,7 +170,7 @@ Destroys a symmetric key generator instance.
 
 ### OH_CryptoSymKey_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoSymKey_GetAlgoName(OH_CryptoSymKey *keyCtx)
 ```
 
@@ -195,7 +195,7 @@ Obtains the algorithm of a symmetric key.
 
 ### OH_CryptoSymKey_GetKeyData()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoSymKey_GetKeyData(OH_CryptoSymKey *keyCtx, Crypto_DataBlob *out)
 ```
 
@@ -221,7 +221,7 @@ Obtains symmetric key data from a key instance.
 
 ### OH_CryptoSymKey_Destroy()
 
-```
+```c
 void OH_CryptoSymKey_Destroy(OH_CryptoSymKey *keyCtx)
 ```
 

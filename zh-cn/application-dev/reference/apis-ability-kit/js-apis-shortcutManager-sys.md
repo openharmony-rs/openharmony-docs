@@ -289,13 +289,13 @@ addDynamicShortcutInfos(shortcutInfo: Array\<ShortcutInfo>, userId: number): Pro
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201 | Verify permission denied. |
-| 202 | Permission denied, non-system app called system api. |
-| 801 | Capability not support. |
-| 17700001 | The specified bundle name is not found.|
-| 17700002 | The specified module name is not found.|
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found.|
+| 17700002 | The specified module is not found.|
 | 17700003 | The specified ability is not found.|
-| 17700004 | The specified user ID is not found.|
+| 17700004 | The specified user id is not found.|
 | 17700026 | The specified bundle is disabled.|
 | 17700061 | The specified app index is invalid.|
 | 17700070 | The specified shortcut id is illegal.|
@@ -311,8 +311,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const bundleName = "com.example.dynamic";
 let moduleName = 'entry';
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
-  { id: "1", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 },
-  { id: "2", bundleName: bundleName, moduleName: moduleName, appIndex: 0, sourceType: 2 }
+  {
+    id: "1",
+    bundleName: bundleName,
+    moduleName: moduleName,
+    appIndex: 0,
+    sourceType: 2
+  },
+  {
+    id: "2",
+    bundleName: bundleName,
+    moduleName: moduleName,
+    appIndex: 0,
+    sourceType: 2
+  }
 ]
 
 try {
@@ -320,8 +332,8 @@ try {
     .then(() => {
       console.info('addDynamicShortcutInfos success');
     }).catch((err: Error) => {
-      console.error(`addDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
-    });
+    console.error(`addDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
 } catch (err) {
   console.error(`addDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
@@ -364,11 +376,11 @@ deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId: number,
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201 | Verify permission denied. |
-| 202 | Permission denied, non-system app called system api. |
-| 801 | Capability not support. |
-| 17700001 | The specified bundle name is not found.|
-| 17700004 | The specified user ID is not found.|
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found.|
+| 17700004 | The specified user id is not found.|
 | 17700026 | The specified bundle is disabled.|
 | 17700061 | The specified app index is invalid.|
 | 17700070 | The specified shortcut id is illegal.|
@@ -387,8 +399,8 @@ try {
     .then(() => {
       console.info('deleteDynamicShortcutInfos success');
     }).catch((err: Error) => {
-      console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
-    });
+    console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
 } catch (err) {
   console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
@@ -425,10 +437,10 @@ setShortcutsEnabled(shortcutsInfo: Array\<ShortcutInfo>, isEnabled: boolean): Pr
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
-| 201 | Verify permission denied. |
-| 202 | Permission denied, non-system app called system api. |
-| 801 | Capability not support. |
-| 17700001 | The specified bundle name is not found.|
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found.|
 | 17700070 | The specified shortcut id is illegal.|
 
 **示例：**
@@ -440,8 +452,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // 请开发者替换为实际的快捷方式id、bundleName。
 const bundleName = "com.example.myapplication";
 const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
-  { id: "1", bundleName: bundleName, appIndex: 0, sourceType: 1 },
-  { id: "2", bundleName: bundleName, appIndex: 0, sourceType: 1 }
+  {
+    id: "1",
+    bundleName: bundleName,
+    appIndex: 0,
+    sourceType: 1
+  },
+  {
+    id: "2",
+    bundleName: bundleName,
+    appIndex: 0,
+    sourceType: 1
+  }
 ]
 
 try {
@@ -449,8 +471,8 @@ try {
     .then(() => {
       console.info('setShortcutsEnabled success');
     }).catch((err: Error) => {
-      console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
-    });
+    console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
+  });
 } catch (err) {
   console.error(`setShortcutsEnabled errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }

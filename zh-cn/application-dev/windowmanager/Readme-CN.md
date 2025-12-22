@@ -12,7 +12,6 @@
 - [窗口元数据配置](window-config-m.md)
 <!--Del-->
 - [管理系统窗口 (仅Stage模型支持) (仅对系统应用开放)](system-window-stage-sys.md)
-- [WindowExtensionAbility（仅对系统应用开放）](windowextensionability-sys.md)
 <!--DelEnd-->
 - [使用WindowManager管理多模输入事件（C/C++）](native-window-event-filter.md)
 <!--RP1-->

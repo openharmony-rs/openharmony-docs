@@ -27,7 +27,9 @@
 
 6. 调用[CertCRLCollection.selectCRLs](../../reference/apis-device-certificate-kit/js-apis-cert.md#selectcrls11)查找所有与[X509CRLMatchParameters](../../reference/apis-device-certificate-kit/js-apis-cert.md#x509crlmatchparameters11)匹配的证书吊销列表数组，并返回结果。
 
-```ts
+<!-- @[certificate_collection_and_certificate_revocation_list_collection_object_creation_and_acquisition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateGetCertCrlObject.ets) -->
+
+``` TypeScript
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
@@ -118,5 +120,3 @@ async function sample() {
   }
 }
 ```
-
-## 

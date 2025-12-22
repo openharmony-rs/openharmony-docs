@@ -72,6 +72,8 @@ transition(effect: TransitionEffect, onFinish: Optional&lt;TransitionFinishCallb
 
 ## TransitionEdge<sup>10+</sup>
 
+转场边缘类型。
+
 **卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -376,7 +378,7 @@ TransitionOptions通过指定结构体内的参数来指定转场效果。
 
 ### 示例1（使用同一接口实现图片出现消失）
 
-该示例主要演示如何通过同一TransitionEffect来实现图片的出现与消失，出现和消失互为逆过程。
+该示例主要演示如何通过同一[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现与消失，出现和消失互为逆过程。
 ```ts
 // xxx.ets
 @Entry
@@ -416,7 +418,7 @@ struct TransitionEffectExample1 {
 
 ### 示例2（使用不同接口实现图片出现消失）
 
-该示例主要演示使用不同TransitionEffect来实现图片的出现和消失。
+该示例主要演示使用不同[TransitionEffect](#transitioneffect10对象说明)来实现图片的出现和消失。
 ```ts
 // xxx.ets
 @Entry
@@ -476,7 +478,7 @@ struct TransitionEffectExample2 {
 
 ### 示例3（设置父子组件为transition）
 
-该示例主要演示通过父子组件都配置transition来实现图片的出现和消失。
+该示例主要演示通过父子组件都配置[transition](#transition)来实现图片的出现和消失。
 ```ts
 // xxx.ets
 @Entry

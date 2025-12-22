@@ -401,7 +401,7 @@ string资源配置attr属性示例如下，其中string1字符串被标记为不
 
   > **说明** 
   >
-  > hsp包名必须写在[]内，rawfile下有多层目录，需要从rawfile下面第一个目录开始写，如`$rawfile('[hsp].oneDir/twoDir/icon.png')`，使用`$r`和`$rawfile`跨包访问HSP包资源无法提供编译时的资源校验，需要开发者自行保证使用资源存在于对应包中。
+  > hsp包名必须写在[]内，rawfile下有多层目录，需要从rawfile下面第一个目录开始写，如`$rawfile('[hsp].firstDir/secondDir/icon.png')`，使用`$r`和`$rawfile`跨包访问HSP包资源无法提供编译时的资源校验，需要开发者自行保证使用资源存在于对应包中。
 
 
 ### 系统资源

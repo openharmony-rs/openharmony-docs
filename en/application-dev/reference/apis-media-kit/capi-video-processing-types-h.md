@@ -63,7 +63,7 @@ The file declares the video processing types.
 
 ### VideoDetailEnhancer_QualityLevel
 
-```
+```c
 enum VideoDetailEnhancer_QualityLevel
 ```
 
@@ -88,7 +88,7 @@ Enumerates the quality levels for detail enhancement. For details about the enum
 
 ### VideoMetadataGeneratorStyleControl
 
-```
+```c
 enum VideoMetadataGeneratorStyleControl
 ```
 
@@ -113,7 +113,7 @@ Enumerates the style modes available for video metadata generation. For details 
 
 ### VideoProcessing_ErrorCode
 
-```
+```c
 enum VideoProcessing_ErrorCode
 ```
 
@@ -139,7 +139,7 @@ Enumerates the video processing error codes.
 
 ### VideoProcessing_State
 
-```
+```c
 enum VideoProcessing_State
 ```
 
@@ -159,7 +159,7 @@ Enumerates the video processing states. The video processing state is reported t
 
 ### OH_VideoProcessingCallback_OnError()
 
-```
+```c
 typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProcessor, VideoProcessing_ErrorCode error, void* userData)
 ```
 
@@ -189,7 +189,7 @@ The following error codes are defined in [VideoProcessing_ErrorCode](#videoproce
 
 ### OH_VideoProcessingCallback_OnState()
 
-```
+```c
 typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProcessor, VideoProcessing_State state, void* userData)
 ```
 
@@ -211,7 +211,7 @@ After [OH_VideoProcessing_Start](capi-video-processing-h.md#oh_videoprocessing_s
 
 ### OH_VideoProcessingCallback_OnNewOutputBuffer()
 
-```
+```c
 typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing* videoProcessor, uint32_t index, void* userData)
 ```
 

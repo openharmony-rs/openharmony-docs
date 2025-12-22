@@ -21,7 +21,7 @@ Describes the **BundleOption** information, that is, the bundle information of a
 | Name  | Type  | Read Only| Optional| Description  |
 | ------ | ------ | ----| -- |  ------ |
 | bundle | string | No | No| Application name.|
-| uid    | number | No | Yes| UID of an application, which is obtained from [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md). The default value is **0**.|
+| uid    | number | No | Yes| UID of an application, which is obtained from [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md). The default value is **0**. This parameter is mandatory for telematics devices.|
 
 ## GrantedBundleInfo<sup>22+</sup> 
 

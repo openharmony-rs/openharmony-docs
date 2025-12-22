@@ -160,7 +160,7 @@
        - [Global Popup Independent of UI Components (openPopup)](arkts-popup-and-menu-components-uicontext-popup.md)
      - Binding Modal Pages<!--arkts-bind-modal-->
         - [Modal Page Overview](arkts-modal-overview.md)
-        - [Binding a Semi-Modal Page (bindSheet)](arkts-sheet-page.md)
+        - [Binding a Modal Sheet (bindSheet)](arkts-sheet-page.md)
         - [Binding a Full-Modal Page (bindContentCover)](arkts-contentcover-page.md)
      - [Using Toasts (Toast)](arkts-create-toast.md)
      - [Managing Overlays (OverlayManager)](arkts-create-overlaymanager.md)

@@ -590,15 +590,6 @@ onBackClick() {
 
 ![(figures/router-add-query-box-before-back.gif)](figures/namedroute-jump-to-mypage.gif)
 
-在使用页面路由Router相关功能之前，需要在代码中先导入Router模块。
-
-
-<!-- @[page_router_hsp1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets) -->
-
-``` TypeScript
-import { router } from '@kit.ArkUI';
-```
-
 在想要跳转到的共享包[HAR](../quick-start/har-package.md)或者[HSP](../quick-start/in-app-hsp.md)页面里，给[@Entry](../ui/state-management/arkts-create-custom-components.md#entry)修饰的自定义组件EntryOptions命名：
 
 <!-- @[page_router_hsp2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets) -->

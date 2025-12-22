@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块面向输入法应用（包括系统输入法应用、三方输入法应用），为输入法应用提供能力，包括：创建软键盘窗口、插入/删除字符、选中文本、监听物理键盘按键事件等。
@@ -1688,7 +1688,7 @@ panel.startMoving();
 
 getDisplayId(): Promise\<number>
 
-获取当前窗口的所在id,使用Promise异步回调。
+获取当前窗口的所在id，使用Promise异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2380,7 +2380,7 @@ getSystemPanelCurrentInsets(displayId: number): Promise\<SystemPanelInsets>
 
 | 参数名   | 类型                   | 必填 | 说明     |
 | -------- | ---------------------- | ---- | -------- |
-| displayId | number | 是   | 输入法键盘所在屏幕的displayId,可通过[getDisplayId](#getdisplayid15)获取 |
+| displayId | number | 是   | 输入法键盘所在屏幕的displayId，可通过[getDisplayId](#getdisplayid15)获取 |
 
 **返回值：**
 
@@ -4145,7 +4145,7 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
 
 sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&lt;void&gt;
 
-发送私有数据至需要与输入法应用通信的系统其他部分。
+发送私有数据至需要与输入法应用通信的系统其他部分。使用promise异步回调。
 
 >**说明:**
 >
@@ -4771,11 +4771,11 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 ## TextInputClient<sup>(deprecated)</sup>
 
+下列API示例中都需使用[on('inputStart')](#oninputstartdeprecated)回调获取到TextInputClient实例，再通过此实例调用对应方法。
+
 > **说明：** 
 >
 > 从API version 8开始支持，API version 9开始废弃，建议使用[InputClient](#inputclient9)替代。
-
-下列API示例中都需使用[on('inputStart')](#oninputstartdeprecated)回调获取到TextInputClient实例，再通过此实例调用对应方法。
 
 ### getForward<sup>(deprecated)</sup>
 

@@ -29,3 +29,4 @@
   - [Querying Assets (C/C++)](asset-native-query.md)
   - [Managing Assets in a Group (C/C++)](asset-native-group-access-control.md)
   - [Syncing Assets (Backup and Restore) (C/C++)](asset-native-sync.md)
+<!--no_check-->

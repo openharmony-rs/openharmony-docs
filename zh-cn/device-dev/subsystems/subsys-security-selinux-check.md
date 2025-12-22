@@ -64,7 +64,7 @@ u:object_r:module_update_file:s0
 
 在`file_contexts`配置中，不合理的使用一级目录标签，会触发编译报错，关键报错信息`partition label is not allow to use`，报错如下：
 
-```
+```text
 partition label is not allow to use, check '/data/log u:object_r:data_file:s0' failed in file out/rk3568/obj/base/security/selinux_adapter/file_contexts:213
  There are two solutions:
  1. Add '/data/log u:object_r:data_file:s0' to whitelist file 'partition_label_use_whitelist.txt' under 'base/security/selinux_adapter/sepolicy';
@@ -260,7 +260,7 @@ developer_only(`
 ### 删除冗余的基线
 
 当整改了不合理的基线策略后，删除了不合理的策略，但是未同时删除基线时，也会触发编译报错，关键报错信息`check 'xxx' baseline in user mode failed`，xxx表示高危进程标签，报错如下：
-```
+```text
         check 'sh' baseline in user mode failed
                 expect rule: (allow sh rootfs (dir (search))); actual rule: (allow sh rootfs (dir ()))
         There are two solutions:
@@ -897,7 +897,7 @@ type hdf_devmgr_exec, exec_attr, file_attr, system_file_attr;
 
 当整改路径的 `file_contexts` 后，未同时删除白名单时，会触发编译报错。关键报错信息`Add following file path to "user" field in file_contexts_typeattr_whitelist.json file`。后续提示 `Change "permissive_list" of "path": xxx` 表示需要将指定路径从 `xxx` 的白名单 `permissive_list` 中移除。拦截提示中的 `to "user" field` 说明该路径需要从 `user` 项中移除。报错如下：
 
-```
+```text
 Check security context of file and its associated attributes in user mode failed.
 
 
@@ -995,3 +995,74 @@ Check security context of filesystem in user mode failed.
 Delete any unused data from "user" field under "permissive_list" field of "tracefs" in virtfs_whitelist.json file:
             tracefs_trace_marker_file
 ```
+
+## 访问资源权限的一致性检查
+
+### 检查说明
+
+在系统演进过程中，为遵循进程和文件资源权限最小化原则，降低安全风险，开发者会修改已有的进程和数据资源的标签，使用独立标签。
+
+设备上已有的数据，在触发系统机制刷新标签前（如，应用升级场景可能会更新应用沙箱目录的标签），仍然使用原有标签；而在标签更新后，则会使用新标签。
+
+为了保证系统上使用新旧两种标签时，不会因为权限不一致导致功能或兼容性问题，需要检查其相关策略的一致性。
+
+### 编译拦截
+
+配置指定资源的权限不一致会触发编译报错。关键报错信息`Check consistency of 'xxx' and 'xxx' failed in user mode.`，报错如下：
+
+```text
+[Error] Check consistency of 'normal_hap_data_file' and 'appdat' failed in user mode.
+Violate list (policy)
+   (allow distributed_isolate_hap normal_hap_data_file (dir (ioctl setattr search getattr open read)))
+Solution: add the above policy to 'appdat'.
+
+Violate list (policy)
+   normal_hap_data_file: (allowx distributed_isolate_hap normal_hap_data_file (file ((0xf50c 0xf546))))
+   appdat: (allowx distributed_isolate_hap appdat (file ((0xf50c))))
+Solution: the above policy should be consisent.
+
+Violate list (types)
+   typeattribute appdat data_service_file_attr;
+Solution: add the above typeattribute to 'normal_hap_data_file'.
+```
+
+### 拦截原因
+
+出现这些报错是因为`normal_hap_data_file`和`appdat`的权限不一致。存在以下3种不一致的情况。
+
+1. 主体对`normal_hap_data_file`为标签的目录具有的访问权限`{ioctl setattr search getattr open read}`，对`appdat`为标签的目录缺少这些权限。对应的策略为：
+    ```text
+    allow distributed_isolate_hap normal_hap_data_file:dir { getattr ioctl open read search setattr };
+    ```
+
+2. 主体对`normal_hap_data_file`和`appdat`为标签的文件都具有`ioctl`的权限，但可以使用的`ioctlcmd`不同，但`normal_hap_data_file`允许使用`{0x5413 0xf50c 0xf546}`命令，而`appdat`仅允许使用`{0x5413 0xf50c}`命令，对应的策略为：
+
+    ```text
+    allowxperm distributed_isolate_hap appdat:file ioctl { 0x5413 0xf50c };
+    allowxperm distributed_isolate_hap normal_hap_data_file:file ioctl { 0x5413 0xf50c 0xf546 };
+    ```
+
+3. 类型`normal_hap_data_file`和`appdat`关联的属性存在差异。`appdat`关联了属性`data_service_file_attr`，而`normal_hap_data_file`未关联该属性，对应的策略为：
+    ```text
+    typeattribute appdat data_service_file_attr;
+    ```
+
+
+### 修复方法
+
+修改不合理的类型定义或权限，以满足要求。例如，针对以上报错的修复方法如下：
+
+1. 对于`(allow distributed_isolate_hap normal_hap_data_file (dir (ioctl setattr search getattr open read)))`的报错，可以根据提示通过为客体`appdat`增加以下权限来修复。
+    ```text
+    allow distributed_isolate_hap appdat:dir { getattr ioctl open read search setattr };
+    ```
+
+2. 对于报错中`normal_hap_data_file`和`appdat`已有`ioctl`权限可以使用的`ioctlcmd`不一致的情况，可以根据提示通过给`normal_hap_data_file`增加以下权限来修复。
+    ```text
+    allowxperm distributed_isolate_hap normal_app_data:file ioctl { 0xf546 };
+    ```
+
+3. 对于报错中`normal_hap_data_file`和`appdat`关联属性的不一致的情况，可以根据提示给`normal_hap_data_file`关联同样的属性。
+    ```text
+    typeattribute normal_hap_data_file data_service_file_attr;
+    ```

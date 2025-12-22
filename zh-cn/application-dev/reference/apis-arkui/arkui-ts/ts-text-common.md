@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -149,23 +149,24 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 | 名称           | 类型              | 只读   | 可选  | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| CUT  | [TextMenuItemId](#textmenuitemid12) |  是  |  否 | 默认裁剪。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| COPY  | [TextMenuItemId](#textmenuitemid12) |  是  |  否  | 默认复制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| PASTE | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认粘贴。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认全选。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 可对选中的文本进行润色、摘要提取、排版等。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译。对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供AI问询能力。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充。提供自动填充内容能力，仅支持[Search](ts-basic-components-search.md)/[TextInput](ts-basic-components-textinput.md)/[TextArea](ts-basic-components-textarea.md)/[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| CUT  | [TextMenuItemId](#textmenuitemid12) |  是  |  否 | 默认裁剪，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| COPY  | [TextMenuItemId](#textmenuitemid12) |  是  |  否  | 默认复制，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PASTE | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认粘贴，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 默认全选，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 互通服务，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否   | 拍摄输入，为一级菜单项。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 可对选中的文本进行润色、摘要提取、排版等，为一级菜单项。该菜单项依赖大模型能力，否则不生效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 翻译，为一级菜单项。对选中的文本提供翻译服务。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 分享，为一级菜单项。对选中的文本提供分享服务，拉起分享窗口分享选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 搜索，为一级菜单项。对选中的文本提供搜索服务，拉起浏览器搜索选中文本内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 打开链接，为一级菜单项。对选中的URL提供跳转服务，拉起浏览器搜索或者应用页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建邮件，为一级菜单项。对选中的邮箱地址提供跳转服务，拉起邮箱应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 呼叫，为一级菜单项。对选中的电话号码跳转服务，拉起电话拨号页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 导航前往，为一级菜单项。对选中的地址提供跳转服务，拉起地图应用。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 新建日程，为一级菜单项。对选中的日期和时间提供跳转服务，拉起新建日程页面。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 对选中的文本提供AI问询能力，为一级菜单项。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 自动填充，为一级菜单项。点击后会展开二级菜单项“密码保险箱”，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | 是    | 否    | 密码保险箱，为二级菜单项。点击该菜单项后会拉起密码保险箱应用，该应用提供自动填充账号密码能力，仅支持[Search](ts-basic-components-search.md)、[TextInput](ts-basic-components-textinput.md)、[TextArea](ts-basic-components-textarea.md)或[RichEditor](ts-basic-components-richeditor.md)。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
@@ -239,7 +240,7 @@ equals(id: TextMenuItemId): boolean
 
 onCreateMenu(menuItems: Array\<TextMenuItem>): Array\<TextMenuItem>
 
-在菜单创建时触发该回调，可在该回调中进行菜单数据设置。
+在菜单创建时触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -271,7 +272,7 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 
 | 参数名  | 类型                              | 必填 | 说明   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItem | [TextMenuItem](#textmenuitem12对象说明) | 是   | 菜单项。 |
+| menuItem | [TextMenuItem](#textmenuitem12对象说明) | 是   | 菜单项。<br/>**说明：** <br/>从API version 23开始，对于具备可展开二级菜单能力的一级菜单项，例如自动填充，仅执行系统默认逻辑，不会执行用户自定义逻辑。 |
 | range | [TextRange](#textrange12) | 是   | 选中的文本信息。 |
 
 **返回值：**
@@ -284,7 +285,7 @@ onMenuItemClick(menuItem: TextMenuItem, range: TextRange): boolean
 
 type OnPrepareMenuCallback = (menuItems: Array\<TextMenuItem\>) => Array\<TextMenuItem\>
 
-当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。
+当文本选择区域变化后显示菜单之前触发该回调，可在该回调中进行菜单数据设置。入参和返回值只包含一级菜单项，不包含二级菜单项。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -331,7 +332,7 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | -- | -- | -- | -- |
 | value | string | 是 | 文本框内正式上屏的文本内容。 |
 | previewText | [PreviewText](#previewtext12) | 否 | 预上屏文本信息，包含预上屏起始位置和文本内容。 |
-| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15对象说明) | 否 | 文本内容变化信息，包含变化前后的选区范围、变化前的文本内容和预上屏文本信息。 |
+| options<sup>15+</sup> | [TextChangeOptions](#textchangeoptions15对象说明) | 否 | 文本内容变化信息，包含文本的选中区范围、文本框内正式上屏的文本内容、预上屏文本内容。 |
 
 ## TextDataDetectorType<sup>11+</sup>枚举说明
 
@@ -1145,6 +1146,18 @@ constructor(options?: NumericTextTransitionOptions)
 | -------- | -------- | -------- | -------- | -------- |
 | constraintWidth | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | 否 | 是 | 设置被计算文本布局宽度。若不设置则宽度为单行布局所占最大宽度值。 |
 
+## SelectedDragPreviewStyle<sup>23+</sup>对象说明
+
+文本拖拽时的背板样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| color | [ResourceColor](ts-types.md#resourcecolor)  | 否 | 是 | 用于设置文本拖拽时的背板颜色。<br/>默认值：跟随主题。默认主题时，浅色模式显示白色，深色模式显示黑色。 |
+
 ## TextContentAlign<sup>21+</sup>
 
 文本内容区垂直对齐方向。
@@ -1163,14 +1176,14 @@ constructor(options?: NumericTextTransitionOptions)
 
 文本方向。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                   | 值  | 说明                  |
 | --------------------- | -------  | ------------------- |
-| LTR                   | 0  | 从左到右。 |
-| RTL                | 1  | 从右到左。 |
+| LTR                   | 0  | 文本方向从左到右。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| RTL                   | 1  | 文本方向从右到左。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| DEFAULT<sup>23+</sup> | 2  | 文本方向遵循组件布局方向。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| AUTO<sup>23+</sup>    | 3  | 文本方向遵循文本书写方向属性，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本方向为从左到右。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## InputMethodExtraConfig<sup>22+</sup>
 
