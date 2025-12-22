@@ -160,7 +160,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
 | 13900020 | Invalid argument.|
-| 13500014 | The device does not support this ferture.|
+| 13500014 | The device does not support this feature.|
 | 13500016 | Task timed out. |
 | 13500017 | Garbage collection failed. |
 
