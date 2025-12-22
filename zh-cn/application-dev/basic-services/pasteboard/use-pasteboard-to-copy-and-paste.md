@@ -22,7 +22,7 @@
 
 -剪贴板数据定义对应PasteData，复制应用通过向剪贴板服务写入PasteData实现数据复制，粘贴应用通过读取剪贴板服务的PasteData实现数据粘贴，PasteData整体结构示意如下：
 
-（图片）
+![pasteboard](figures/pasteboard.png)
 
 - 1.Record对应复制数据的不同内容片段； </br>
 - 2.Entry对应同一份数据的不同格式； </br>
