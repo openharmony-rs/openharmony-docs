@@ -1,5 +1,12 @@
 # Using mailto to Start an Email Application
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @sxsxjc-->
+<!--Designer: @stardrift1-->
+<!--Tester: @Lww11964-->
+<!--Adviser: @huipeizi-->
+
 ## When to Use
 
 You can create hyperlinks that link to email addresses through mailto, so that users can easily access email clients by touching the hyperlinks present within websites or applications. You can also preset the recipient, subject, and body of the email in the mailto: fields to save the time when composing emails.
@@ -122,12 +129,12 @@ struct Index {
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void { 
         // Callback of the application cold start lifecycle, where other services are processed.
-        parseMailto(want);
+        this.parseMailto(want);
       }
     
       onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // Callback of the application hot start lifecycle, where other services are processed.
-        parseMailto(want);
+        this.parseMailto(want);
       }
     
       public parseMailto(want: Want) {

@@ -378,7 +378,7 @@ Defines parameters of subscription filtering conditions of a [Watcher](#watcher)
 
 > **NOTE**
 >
-> In system events, address sanitizer events and task execution timeout events cannot be subscribed to in atomic services. Time-consuming launch events, frame loss events, high CPU load events, battery usage statistics events, and audio jank events cannot be subscribed to in atomic services and application clones.
+> In system events, address sanitizer events and task execution timeout events cannot be subscribed to in atomic services. High CPU load events, battery usage statistics events, and audio jank events cannot be subscribed to in atomic services and application clones. Time-consuming launch events and frame loss events cannot be subscribed to in application clones.
 
 ## AppEventPackageHolder
 
@@ -759,14 +759,14 @@ Adds the configuration information of the data processor. The configuration file
 
 | Name    | Type       | Mandatory| Description             |
 | ---------  | ---------- | ---- | -------------    |
-| processorName  |  string  | Yes  | <!--RP2-->Processor name, which can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP2End-->|
+| processorName  |  string  | Yes  | <!--RP2-->Name of a data processor. It can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP2End-->|
 | configName  |  string  | No  | <!--RP3-->Name of the data processor configuration. The corresponding configuration can be loaded from the configuration file. The default value is **SDK_OCG**. It can contain only letters, digits, underscores (_), and dollar signs ($). It cannot start with a digit and cannot exceed 256 characters.<!--RP3End-->|
 
 **Return value**
 
 | Type   | Description                  |
 | ------ | ---------------------- |
-| Promise&lt;number&gt; | Promise that returns the unique ID of the added event data processor, which can be used to remove the data processor. If the adding fails, error code **11105001** is returned.|
+| Promise&lt;number&gt; |  Promise that returns the unique ID of the added event data processor, which can be used to remove the data processor. If the adding fails, error code **11105001** is returned.|
 
 **Error codes**
 

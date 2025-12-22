@@ -35,7 +35,7 @@
 
 **2. 添加依赖**
 
-创建完成后，DevEco Studio会在工程生成cpp目录，目录有types/libentry/index.d.ts、napi_init.cpp、CMakeLists.txt等文件。
+创建完成后，DevEco Studio会在工程生成cpp目录，目录中包含types/libentry/index.d.ts、napi_init.cpp、CMakeLists.txt等文件。
 
 1. 打开src/main/cpp/CMakeLists.txt，在target_link_libraries依赖中添加包管理的libbundle_ndk.z.so。
 
@@ -91,6 +91,7 @@
     static napi_value IsDebugMode(napi_env env, napi_callback_info info);
     static napi_value GetModuleMetadata(napi_env env, napi_callback_info info);
     static napi_value GetAbilityResourceInfo(napi_env env, napi_callback_info info);
+    ```
 3. 在src/main/cpp/napi_init.cpp文件中获取Native的包信息对象，并转为js的包信息对象，即可在js侧获取应用的信息：
 
     ```c++
@@ -393,23 +394,23 @@
 
 **4. 接口暴露**
 
-在src/main/cpp/types/libentry/Index.d.ts文件中，声明暴露接口。
+    在src/main/cpp/types/libentry/Index.d.ts文件中，声明暴露接口。
 
-```js
-export const add: (a: number, b: number) => number;
-export const getCurrentApplicationInfo: () => object;   // 新增暴露方法 getCurrentApplicationInfo
-export const getAppId: () => string;                    // 新增暴露方法 getAppId
-export const getAppIdentifier: () => string;            // 新增暴露方法 getAppIdentifier
-export const getMainElementName: () => object;          // 新增暴露方法 getMainElementName
-export const getCompatibleDeviceType: () => string;     // 新增暴露方法 getCompatibleDeviceType
-export const isDebugMode: () => string;                 // 新增暴露方法 isDebugMode
-export const getModuleMetadata: () => object;           // 新增暴露方法 getModuleMetadata
-export const getAbilityResourceInfo: (fileType: string) => object;      // 新增暴露方法 getAbilityResourceInfo
-```
+    ```js
+    export const add: (a: number, b: number) => number;
+    export const getCurrentApplicationInfo: () => object;   // 新增暴露方法 getCurrentApplicationInfo
+    export const getAppId: () => string;                    // 新增暴露方法 getAppId
+    export const getAppIdentifier: () => string;            // 新增暴露方法 getAppIdentifier
+    export const getMainElementName: () => object;          // 新增暴露方法 getMainElementName
+    export const getCompatibleDeviceType: () => string;     // 新增暴露方法 getCompatibleDeviceType
+    export const isDebugMode: () => string;                 // 新增暴露方法 isDebugMode
+    export const getModuleMetadata: () => object;           // 新增暴露方法 getModuleMetadata
+    export const getAbilityResourceInfo: (fileType: string) => object;      // 新增暴露方法 getAbilityResourceInfo
+    ```
 
 **5. js侧调用**
 
-1. 打开src\main\ets\pages\index.ets, 导入"libentry.so"。
+1. 打开src/main/ets/pages/index.ets, 导入"libentry.so"。
 
 
 2. 调用Native接口打印出获取的信息内容。示例如下：

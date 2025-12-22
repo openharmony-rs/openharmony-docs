@@ -67,8 +67,6 @@ EGLint minorVersion;
 EGLNativeWindowType win;
 display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
 eglInitialize(display, &majorVersion, &minorVersion);
-display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-eglInitialize(display, &majorVersion, &minorVersion);
 EGLint attribs[] = {
     EGL_RENDERABLE_TYPE,
     EGL_OPENGL_ES2_BIT,
@@ -319,25 +317,25 @@ EGL初始化成功之后，需要确定可用渲染表面的类型和配置，�
 - 可以指定一组需要的配置，使用eglChooseConfig使EGL推荐最佳配置。
 当没有特殊配置需求时建议使用此种方法，因为这样更容易获得最佳配置。
 
-    ```cpp
-    EGLBoolean eglChooseConfig(EGLDisplay dpy,     // EGL显示连接句柄，标识了要进行配置选择的显示连接。
-                        const EGLint *attrib_list, // 一个以EGL_NONE结尾的整数数组，用于指定所需配置的属性。属性列表中的每个元素都由属性名称（如EGL_RED_SIZE）和相应的属性值组成。如{EGL_RED_SIZE, 8, EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8, EGL_NONE}。
-                           EGLConfig *configs,     // 一个用于存储选择配置的指针数组。eglChooseConfig函数将从可用配置中选择适合条件的配置，并将其存储在此数组中。
-                           EGLint config_size,     // configs数组的大小
-                           EGLint *num_config);    // 存储满足attrib_list需求，得到的满足需求的实际配置数量。
-    ```
+  ```cpp
+  EGLBoolean eglChooseConfig(EGLDisplay dpy,     // EGL显示连接句柄，标识了要进行配置选择的显示连接。
+                      const EGLint *attrib_list, // 一个以EGL_NONE结尾的整数数组，用于指定所需配置的属性。属性列表中的每个元素都由属性名称（如EGL_RED_SIZE）和相应的属性值组成。如{EGL_RED_SIZE, 8, EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8, EGL_NONE}。
+                          EGLConfig *configs,     // 一个用于存储选择配置的指针数组。eglChooseConfig函数将从可用配置中选择适合条件的配置，并将其存储在此数组中。
+                          EGLint config_size,     // configs数组的大小
+                          EGLint *num_config);    // 存储满足attrib_list需求，得到的满足需求的实际配置数量。
+  ```
 
-    ```cpp
-    // 如以上代码所示这里指定所需配置的属性为
-	EGLint attribList[] = {
-            EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,  // 指定了渲染类型为 OpenGL ES 3
-            EGL_RED_SIZE, 8,    // 指定红色缓冲区的位数是8位
-            EGL_GREEN_SIZE, 8,  // 指定绿色缓冲区的位数是8位
-            EGL_BLUE_SIZE, 8,   // 指定蓝色缓冲区的位数是8位
-            EGL_NONE
-    };
-    eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
-    ```
+  ```cpp
+  // 如以上代码所示这里指定所需配置的属性为
+  EGLint attribList[] = {
+          EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,  // 指定了渲染类型为 OpenGL ES 3
+          EGL_RED_SIZE, 8,    // 指定红色缓冲区的位数是8位
+          EGL_GREEN_SIZE, 8,  // 指定绿色缓冲区的位数是8位
+          EGL_BLUE_SIZE, 8,   // 指定蓝色缓冲区的位数是8位
+          EGL_NONE
+  };
+  eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
+  ```
     在调用eglChooseConfig函数后，系统将根据指定的配置属性attribList返回满足需求的EGL配置，这些配置将存储在mEGLConfig参数中。示例代码中的configsNum参数传入值为1，表明mEGLConfig数组的大小为1，即仅能保存一组可用配置。尽管此设置限制了返回配置的数量，但在大多数应用场景下已能满足基本需求。同时，configsNum参数将实际保存满足指定属性的配置总数，为开发者提供完整的可选配置数量信息。
 
 - 也可以使用eglGetConfigs查询支持的所有配置，并使用eglGetConfigAttrib筛选需要的配置。

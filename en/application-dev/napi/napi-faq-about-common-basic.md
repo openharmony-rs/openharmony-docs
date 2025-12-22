@@ -199,22 +199,22 @@ What should I do when "undefined/not callable" or specific error message is repo
    Check that all the dependency .so files are packaged into the application and the application has the permission to open them.  
 
 
-| **Error Log**| **Fault Analysis & Solution**|
-| -------- | -------- |
-| module $SO is not allowed to load in restricted runtime. | The module, identified by **$SO**, is not allowed for the worker thread running in a restricted environment and cannot be loaded. You are advised to delete the module.|
-| module $SO is in blocklist, loading prohibited. | The module, identified by **$SO**, is in the blocklist due to the control of the widget or Extension, and cannot be loaded. You are advised to delete the module.|
-| load module failed. $ERRMSG. | The dynamic library fails to be loaded. **$ERRMSG** indicates the cause of the loading failure. Possible causes include the following:<br>- The .so file to be loaded does not exist.<br>- The dependency .so file does not exist. <br>- Undefined symbol is found. <br>Locate the cause based on the error message.|
-| try to load abc file from $FILEPATH failed. | You can load either a dynamic library or an .abc file. If this log information is displayed when you attempt to load a dynamic library, ignore this message. If it is displayed when you attempt to load an .abc file, the .abc file does not exist. **$FILEPATH** indicates the module path.|
+   | **Error Log**| **Fault Analysis & Solution**|
+   | -------- | -------- |
+   | module $SO is not allowed to load in restricted runtime. | The module, identified by **$SO**, is not allowed for the worker thread running in a restricted environment and cannot be loaded. You are advised to delete the module.|
+   | module $SO is in blocklist, loading prohibited. | The module, identified by **$SO**, is in the blocklist due to the control of the widget or Extension, and cannot be loaded. You are advised to delete the module.|
+   | load module failed. $ERRMSG. | The dynamic library fails to be loaded. **$ERRMSG** indicates the cause of the loading failure. Possible causes include the following:<br>- The .so file to be loaded does not exist.<br>- The dependency .so file does not exist. <br>- Undefined symbol is found. <br>Locate the cause based on the error message.|
+   | try to load abc file from $FILEPATH failed. | You can load either a dynamic library or an .abc file. If this log information is displayed when you attempt to load a dynamic library, ignore this message. If it is displayed when you attempt to load an .abc file, the .abc file does not exist. **$FILEPATH** indicates the module path.|
 
-5. If specific error message is reported, identify the fault based on the error message.
+4. If specific error message is reported, identify the fault based on the error message.
 
-| **Error message** | **Fault Analysis & Solution**|
-| -------- | -------- |
-| First attempt: $ERRMSG. | Loading the .so file with the module name of "xxx" fails. *$ERRMSG* indicates the error information.|
-| Second attempt: $ERRMSG. | Loading the .so file with the module name of "xxx_napi" fails. *$ERRMSG* indicates the error information.|
-| try to load abc file from xxx failed. | Loading the .abc file fails. *xxx* indicates the name of the .abc file.|
-| module xxx is not allowed to load in restricted runtime. | This module cannot be used in restricted runtime. *xxx* indicates the module name. You are advised to delete the module.|
-| module xxx is in blocklist, loading prohibited. | The module cannot be used in the current extension. *xxx* indicates the module name. You are advised to delete the module.|
+   | **Error message** | **Fault Analysis & Solution**|
+   | -------- | -------- |
+   | First attempt: $ERRMSG. | Loading the .so file with the module name of "xxx" fails. *$ERRMSG* indicates the error information.|
+   | Second attempt: $ERRMSG. | Loading the .so file with the module name of "xxx_napi" fails. *$ERRMSG* indicates the error information.|
+   | try to load abc file from xxx failed. | Loading the .abc file fails. *xxx* indicates the name of the .abc file.|
+   | module xxx is not allowed to load in restricted runtime. | This module cannot be used in restricted runtime. *xxx* indicates the module name. You are advised to delete the module.|
+   | module xxx is in blocklist, loading prohibited. | The module cannot be used in the current extension. *xxx* indicates the module name. You are advised to delete the module.|
 
 ## What should I do if the API execution result is unexpected
 

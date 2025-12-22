@@ -678,10 +678,10 @@ Obtains hidden albums based on the specified display mode. This API uses an asyn
 
 **Parameters**
 
-| Name  | Type                    | Mandatory| Description                     |
-| -------- | ------------------------ | ---- | ------------------------- |
-| mode  | [HiddenPhotosDisplayMode](#hiddenphotosdisplaymode11)         | Yes  | Display mode of hidden albums. |
-| callback |  AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Yes  | Callback used to return the result.|
+| Name| Type| Mandatory| Description|
+| -------- | ------------------------ | ---- | - |
+| mode  | [HiddenPhotosDisplayMode](#hiddenphotosdisplaymode11) | Yes| Display mode of hidden albums.|
+| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Yes| Callback used to return the result.|
 
 **Error codes**
 
@@ -777,9 +777,9 @@ Obtains hidden albums based on the specified display mode and retrieval options.
 
 **Return value**
 
-| Type                       | Description          |
+| Type| Description|
 | --------------------------- | -------------- |
-| Promise&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Promise used to return the result.
+| Promise&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[Album](#album)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1887,7 +1887,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201 | Permission denied.  |
+| 201 | Permission denied.  | 
 | 202      | Called by non-system application. |
 | 23800151 | Scene parameters validate failed. Possible causes: 1. The original file does not exist locally in PhotoAsset. 2. The original file format is not within the supported range. 3. The original file is a temporary file or is being edited. 4. The title is the same with an image in the same album. 5. PhotoAsset is a photo in the trash or a hidden photo. 6. The title does not meet the parameter specifications. |
 | 23800301    | Internal system error. It is recommended to retry and check the kogs. Possible causes: 1. Database corrupted. 2. The file system is abnormal. 3. The IPC request timed out. |
@@ -2032,7 +2032,7 @@ async function example(context: Context) {
 
 ### createAssetsForAppWithMode<sup>12+</sup>
 
-createAssetsForAppWithMode(boundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
+createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
 
 Creates assets with a temporary permission. This API uses a promise to return the result.
 
@@ -2046,7 +2046,7 @@ Creates assets with a temporary permission. This API uses a promise to return th
 
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| boundleName| string | Yes| Bundle name of the target application.|
+| bundleName| string | Yes| Bundle name of the target application.|
 | appName| string | Yes| Name of the target application.|
 | appId| string | Yes| ID of the target application.|
 | tokenId| number| Yes| Unique identifier for the temporary authorization.|
@@ -2135,7 +2135,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201   | Permission denied.       |
 | 202   | Called by non-system application.       |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011   | Internal system error.       
+| 14000011   | Internal system error. |
 
 **Example**
 
@@ -2510,7 +2510,7 @@ Registers a listener for the **'hiddenPhotoChange'** event to monitor hidden med
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'hiddenPhotoChange'**. After the registration is complete, any change to the hidden media assets is returned through the callback.|
-| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the hidden media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('hiddenPhotoChange')](#offhiddenphotochange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the hidden media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('hiddenPhotoChange')](#offhiddenphotochange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -2570,7 +2570,7 @@ Unregisters a listener for the **'hiddenPhotoChange'** event to stop monitoring 
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'hiddenPhotoChange'**. After the unregistration is complete, any change to the hidden media assets is no longer returned through the callback.|
-| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('hiddenPhotoChange')](#onhiddenphotochange20). If this parameter is left unspecified, all listeners for the **'hiddenPhotoChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when a hidden media asset changes.|
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('hiddenPhotoChange')](#onhiddenphotochange20). If this parameter is left unspecified, all listeners for the **'hiddenPhotoChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when a hidden media asset changes.|
 
 **Error codes**
 
@@ -2633,7 +2633,7 @@ Registers a listener for the **'trashedPhotoChange'** event to monitor media ass
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'trashedPhotoChange'**. After the registration is complete, any change to the trashed media assets is returned through the callback.|
-| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the trashed media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('trashedPhotoChange')](#offtrashedphotochange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | Yes  | Callback used to return the trashed media asset information after change, which is [PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('trashedPhotoChange')](#offtrashedphotochange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -2693,7 +2693,7 @@ Unregisters a listener for the **'trashedPhotoChange'** event to stop monitoring
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'trashedPhotoChange'**. After the unregistration is complete, any change to the trashed media assets is no longer returned through the callback.|
-| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('trashedPhotoChange')](#ontrashedphotochange20). If this parameter is left unspecified, all listeners for the **'trashedPhotoChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when a trashed media asset changes.|
+| callback | Callback&lt;[PhotoAssetChangeInfos](arkts-apis-photoAccessHelper-i.md#photoassetchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('trashedPhotoChange')](#ontrashedphotochange20). If this parameter is left unspecified, all listeners for the **'trashedPhotoChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when a trashed media asset changes.|
 
 **Error codes**
 
@@ -2756,7 +2756,7 @@ Registers a listener for the **'hiddenAlbumChange'** event to monitor hidden alb
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'hiddenAlbumChange'**. After the registration is complete, any change to the hidden albums is returned through the callback.|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the hidden album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('hiddenAlbumChange')](#offhiddenalbumchange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the hidden album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('hiddenAlbumChange')](#offhiddenalbumchange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -2816,7 +2816,7 @@ Unregisters a listener for the **'hiddenAlbumChange'** event to stop monitoring 
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'hiddenAlbumChange'**. After the unregistration is complete, any change to the hidden albums is no longer returned through the callback.|
-| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('hiddenAlbumChange')](#onhiddenalbumchange20). If this parameter is left unspecified, all listeners for the **'hiddenAlbumChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when a hidden album changes.|
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('hiddenAlbumChange')](#onhiddenalbumchange20). If this parameter is left unspecified, all listeners for the **'hiddenAlbumChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when a hidden album changes.|
 
 **Error codes**
 
@@ -2879,7 +2879,7 @@ Registers a listener for the **'trashedAlbumChange'** event to monitor album cha
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'trashedAlbumChange'**. After the registration is complete, any change to the trashed albums is returned through the callback.|
-| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the trashed album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**: You can register multiple listeners using this API, and you can call [off('trashedAlbumChange')](#offtrashedalbumchange20) to unregister all listeners or a specific one.|
+| callback  | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | Yes  | Callback used to return the trashed album information after change, which is [AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20).<br>**NOTE**<br>You can register multiple listeners using this API, and you can call [off('trashedAlbumChange')](#offtrashedalbumchange20) to unregister all listeners or a specific one.|
 
 **Error codes**
 
@@ -2939,7 +2939,7 @@ Unregisters a listener for the **'trashedAlbumChange'** event to stop monitoring
 | Name  | Type                  | Mandatory| Description     |
 |-----------|-------------------------|-----------|-----------------|
 | type | string | Yes  | Event type. The value is fixed at **'trashedAlbumChange'**. After the unregistration is complete, any change to the trashed albums is no longer returned through the callback.|
-| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('trashedAlbumChange')](#ontrashedalbumchange20). If this parameter is left unspecified, all listeners for the **'trashedAlbumChange'** event are unregistered.<br>**NOTE**: Once a specific callback is unregistered, it will not be invoked when an album in the trash changes.|
+| callback | Callback&lt;[AlbumChangeInfos](arkts-apis-photoAccessHelper-i.md#albumchangeinfos20)&gt; | No  | Exact callback you previously registered with [on('trashedAlbumChange')](#ontrashedalbumchange20). If this parameter is left unspecified, all listeners for the **'trashedAlbumChange'** event are unregistered.<br>**NOTE**<br>Once a specific callback is unregistered, it will not be invoked when an album in the trash changes.|
 
 **Error codes**
 
@@ -3405,11 +3405,11 @@ open(mode: string, callback: AsyncCallback&lt;number&gt;): void
 
 Opens this file asset. This API uses an asynchronous callback to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
-
-**NOTE**: A file can be opened in only one mode at a time. Use **close()** to close the FD returned when it is not required.
 
 **System API**: This is a system API.
 
@@ -3464,11 +3464,11 @@ open(mode: string): Promise&lt;number&gt;
 
 Opens this file asset. This API uses a promise to return the result.
 
+The returned FD must be closed when it is not required.
+
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. For security purposes, the API for obtaining the media file handle is no longer provided.
-
-**NOTE**: A file can be opened in only one mode at a time. Use **close()** to close the FD returned when it is not required.
 
 **System API**: This is a system API.
 
@@ -3800,11 +3800,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getExif(): Promise&lt;string&gt;
 
-Obtains the EXIF data from a JPG image and returns a JSON string. This API uses a promise to return the result.
+Obtains the Exif data from a JPG image and returns a JSON string. This API uses a promise to return the result.
 
-The EXIF information obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the EXIF information, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
+The Exif data obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the Exif data, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
 
-**NOTE**: This API returns a JSON string consisting of EXIF tags. The complete EXIF information consists of **all_exif** and [PhotoKeys.USER_COMMENT](#photokeys). These two fields must be passed in via **fetchColumns**.
+> **NOTE**
+>
+> This API returns a JSON string consisting of Exif tags. The complete Exif data consists of **all_exif** and [PhotoKeys.USER_COMMENT](#photokeys). These two fields must be passed in via [FetchOptions](./arkts-apis-photoAccessHelper-i.md#fetchoptions).fetchColumns.
 
 **System API**: This is a system API.
 
@@ -3816,7 +3818,7 @@ The EXIF information obtained are provided by the [image](../apis-image-kit/arkt
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;string&gt; | Promise used to return the EXIF data, in JSON strings.|
+| Promise&lt;string&gt; | Promise used to return the Exif data, in JSON strings.|
 
 **Error codes**
 
@@ -3864,11 +3866,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getExif(callback: AsyncCallback&lt;string&gt;): void
 
-Obtains the EXIF data from a JPG image and returns a JSON string. This API uses an asynchronous callback to return the result.
+Obtains the Exif data from a JPG image and returns a JSON string. This API uses an asynchronous callback to return the result.
 
-The EXIF information obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the EXIF information, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
+The Exif data obtained are provided by the [image](../apis-image-kit/arkts-apis-image.md) module. For details about the Exif data, see [image.PropertyKey](../apis-image-kit/arkts-apis-image-e.md#propertykey7).
 
-**NOTE**: This API returns a JSON string consisting of EXIF tags. The complete EXIF information consists of **all_exif** and [PhotoKeys.USER_COMMENT](#photokeys). These two fields must be passed in via **fetchColumns**.
+> **NOTE**
+>
+> This API returns a JSON string consisting of Exif tags. The complete Exif data consists of **all_exif** and [PhotoKeys.USER_COMMENT](#photokeys). These two fields must be passed in via [FetchOptions](./arkts-apis-photoAccessHelper-i.md#fetchoptions).fetchColumns.
 
 **System API**: This is a system API.
 
@@ -3880,7 +3884,7 @@ The EXIF information obtained are provided by the [image](../apis-image-kit/arkt
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the EXIF data, in JSON strings.|
+| callback | AsyncCallback&lt;string&gt; | Yes  | Callback used to return the Exif data, in JSON strings.|
 
 **Error codes**
 
@@ -3940,8 +3944,6 @@ Sets user comment information of an image or video. This API uses a promise to r
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAssetChangeRequest.setUserComment](#setusercomment11) instead.
-
-**NOTE**: This API can be used to modify the comment information of only images or videos.
 
 **System API**: This is a system API.
 
@@ -4010,8 +4012,6 @@ Sets user comment information of an image or video. This API uses an asynchronou
 >
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAssetChangeRequest.setUserComment](#setusercomment11) instead.
 
-**NOTE**: This API can be used to modify the comment information of only images or videos.
-
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
@@ -4078,7 +4078,9 @@ Sets the pending state for this image or video asset. This API uses an asynchron
 
 The pending state can be removed only through **setPending(false)**. You can use **photoAsset.get(photoAccessHelper.PhotoKeys.PENDING)** to check whether the asset state is pending. If the asset is in pending state, **true** is returned. Otherwise, **false** is returned.
 
-**NOTE**: **setPending** can be used only during the file creation process. Once the FD is closed, **setPending(true)** cannot be used to set the pending state for the file.
+> **NOTE**
+>
+> **setPending** can be used only during the file creation process. Once the FD is closed, **setPending(true)** cannot be used to set the pending state for the file.
 
 **System API**: This is a system API.
 
@@ -4141,7 +4143,9 @@ Sets the pending state for this image or video asset. This API uses a promise to
 
 The pending state can be removed only through **setPending(false)**. You can use **photoAsset.get(photoAccessHelper.PhotoKeys.PENDING)** to check whether the asset state is pending. If the asset is in pending state, **true** is returned. Otherwise, **false** is returned.
 
-**NOTE**: **setPending** can be used only during the file creation process. Once the FD is closed, **setPending(true)** cannot be used to set the pending state for the file.
+> **NOTE**
+>
+> **setPending** can be used only during the file creation process. Once the FD is closed, **setPending(true)** cannot be used to set the pending state for the file.
 
 **System API**: This is a system API.
 
@@ -4661,7 +4665,9 @@ Commits the edited image or video asset. This API uses an asynchronous callback 
 
 The edited file is transferred to the media library based on the URI, which is **FileUri** of the edited file in the application sandbox directory. For details, see [File URI](../apis-core-file-kit/js-apis-file-fileuri.md).
 
-**NOTE**: The commit operation overwrites the previous edited data.
+> **NOTE**
+>
+> The commit operation overwrites the previous edited data.
 
 **System API**: This is a system API.
 
@@ -4732,7 +4738,9 @@ Commits the edited image or video asset. This API uses a promise to return the r
 
 The edited file is transferred to the media library based on the URI, which is **FileUri** of the edited file in the application sandbox directory. For details, see [File URI](../apis-core-file-kit/js-apis-file-fileuri.md).
 
-**NOTE**: The commit operation overwrites the previous edited data.
+> **NOTE**
+>
+> The commit operation overwrites the previous edited data.
 
 **System API**: This is a system API.
 
@@ -4797,7 +4805,9 @@ revertToOriginal(callback: AsyncCallback&lt;void&gt;)
 
 Reverts to the state of the file before being edited. This API uses an asynchronous callback to return the result.
 
-**NOTE**: This API deletes the edited data and edited image or video asset, and the deleted data cannot be restored. Exercise caution when using this API.
+> **NOTE**
+>
+> This API deletes the edited data and edited image or video asset, and the deleted data cannot be restored. Exercise caution when using this API.
 
 **System API**: This is a system API.
 
@@ -4858,7 +4868,9 @@ revertToOriginal(): Promise&lt;void&gt;
 
 Reverts to the state of the file before being edited. This API uses a promise to return the result.
 
-**NOTE**: This API deletes the edited data and edited image or video asset, and the deleted data cannot be restored. Exercise caution when using this API.
+> **NOTE**
+>
+> This API deletes the edited data and edited image or video asset, and the deleted data cannot be restored. Exercise caution when using this API.
 
 **System API**: This is a system API.
 
@@ -5450,9 +5462,9 @@ Deletes image or video assets from the trash. Before the operation, ensure that 
 
 > **NOTE**
 >
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
+>
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAlbumChangeRequest.deleteAssets](#deleteassets11) instead.
-
-**NOTE**: This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **System API**: This is a system API.
 
@@ -5521,9 +5533,9 @@ Deletes image or video assets from the trash. Before the operation, ensure that 
 
 > **NOTE**
 >
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
+>
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAlbumChangeRequest.deleteAssets](#deleteassets11) instead.
-
-**NOTE**: This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **System API**: This is a system API.
 
@@ -5592,13 +5604,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setCoverUri(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the album cover. This API uses an asynchronous callback to return the result.
+Sets the cover of the user album. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAlbumChangeRequest.setCoverUri](#setcoveruri11) instead.
-
-**NOTE**: This API can be used to set the user album cover, but not the system album cover.
 
 **System API**: This is a system API.
 
@@ -5663,13 +5673,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setCoverUri(uri: string): Promise&lt;void&gt;
 
-Sets the album cover. This API uses a promise to return the result.
+Sets the cover of the user album. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 10 and deprecated since API version 11. Use [MediaAlbumChangeRequest.setCoverUri](#setcoveruri11) instead.
-
-**NOTE**: This API can be used to set the user album cover, but not the system album cover.
 
 **System API**: This is a system API.
 
@@ -6144,7 +6152,9 @@ addResource(type: ResourceType, proxy: PhotoProxy): void
 
 Adds resources using **PhotoProxy** data.
 
-**NOTE**: For the same asset change request, this API cannot be repeatedly called after resources are successfully added.
+> **NOTE**
+>
+> For the same asset change request, this API cannot be repeatedly called after resources are successfully added.
 
 **System API**: This is a system API available only for camera applications.
 
@@ -6356,7 +6366,7 @@ Sets the watermark type supported by photos.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| watermarkType | [WatermarkType](#watermarktype14) | Yes  | Watermark type to set.<br>Note: **WatermarkType.DEFAULT** cannot be passed.|
+| watermarkType | [WatermarkType](#watermarktype14) | Yes  | Watermark type to set.<br>**NOTE**<br>**WatermarkType.DEFAULT** cannot be passed.|
 
 **Error codes**
 
@@ -6399,7 +6409,9 @@ static deleteLocalAssetsPermanently(context: Context, assets: Array\<PhotoAsset>
 
 Permanently deletes images or videos in batches. This API uses a promise to return the result.
 
-**NOTE**: This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
+> **NOTE**
+>
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **System API**: This is a system API.
 
@@ -6429,7 +6441,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201   | Permission denied.       |
 | 202   | Called by non-system application.       |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011   | Internal system error.       
+| 14000011   | Internal system error. |
 
 **Example**
 
@@ -6561,7 +6573,7 @@ static deleteLocalAssetsPermanentlyWithUri(context: Context, assetUris: Array&lt
 
 Permanently deletes images or video assets in batches by URI. This API uses a promise to return the result.
 
->**NOTE**
+> **NOTE**
 >
 > This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
 
@@ -6683,7 +6695,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 setFavorite(favoriteState: boolean): void
 
-Favorites or unfavorites this file.
+Favorites or unfavorites this file asset.
 
 **System API**: This is a system API.
 
@@ -6693,7 +6705,7 @@ Favorites or unfavorites this file.
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| favoriteState | boolean | Yes   | Whether to favorite the file. **true** to favorite, **false** otherwise.|
+| favoriteState | boolean | Yes   | Whether to favorite the file asset. **true** to favorite, **false** otherwise.|
 
 **Error codes**
 
@@ -6906,7 +6918,7 @@ Creates a MediaAlbumChangeRequest instance.
 The album name must meet the following requirements:
 - The total length of the album name must be between 1 and 255 characters.
 - It must not contain any invalid characters, which are:<br> . .. \ / : * ? " ' ` < > | { } [ ]
-- The album name is case-insensitive.
+- The characters are case insensitive.
 - Duplicate album names are not allowed.
 
 **System API**: This is a system API.
@@ -7424,7 +7436,9 @@ deleteAssets(assets: Array&lt;PhotoAsset&gt;): void
 
 Permanently deletes assets from the trash.
 
-**NOTE**: This operation is irreversible. The file assets deleted cannot be restored. Exercise caution when performing this operation.
+> **NOTE**
+>
+> This operation is irreversible. The assets deleted cannot be restored. Exercise caution when performing this operation.
 
 **System API**: This is a system API.
 
@@ -7876,7 +7890,7 @@ Provides APIs for managing the **Highlights** album, which is an automatically g
 
 constructor(album: Album)
 
-A constructor used to create a **Highlights** album instance.
+Constructor.
 
 **System API**: This is a system API.
 
@@ -8117,7 +8131,7 @@ The subtitle must meet the following requirements:
 
 - The total length of the subtitle must be between 0 and 255 characters.
 - It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
-- The subtitle is case-insensitive.
+- The characters are case insensitive.
 
 **System API**: This is a system API.
 
@@ -8247,7 +8261,7 @@ Provides APIs for managing the analysis album change request.
 
 constructor(album: Album)
 
-A constructor used to create an **Analysis** album instance.
+Constructor.
 
 **System API**: This is a system API.
 
@@ -8475,7 +8489,7 @@ Provides APIs for managing the media album change request. It inherits from [Med
 
 constructor(album: Album)
 
-A constructor used to create a **Highlights** album instance.
+Constructor.
 
 **System API**: This is a system API.
 
@@ -8483,9 +8497,9 @@ A constructor used to create a **Highlights** album instance.
 
 **Parameters**
 
-| Name  | Type            | Mandatory | Description           |
-| ----- | --------------- | --------- | --------------------- |
-| album | [Album](#album) | Yes       | **Highlights** album. |
+| Name       | Type     | Mandatory  | Description                                |
+| ---------- | ------- | ---- | ---------------------------------- |
+| album | [Album](#album) | Yes  | **Highlights** album.|
 
 **Error codes**
 
@@ -8596,7 +8610,7 @@ Implements an **Analysis** album.
 
 constructor(album: Album)
 
-A constructor used to create an **Analysis** album instance.
+Constructor.
 
 **System API**: This is a system API.
 
@@ -9698,26 +9712,26 @@ Starts a batch download for the specified cloud media assets. This API uses a pr
 
 **Parameters**
 
-| Name      | Type     | Mandatory | Description                                                  |
-| --------- | -------- | --------- | ------------------------------------------------------------ |
-| assetUris | string[] | Yes       | Array of URIs pointing to the original-quality images and videos to be downloaded. |
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[] | Yes  | Array of URIs pointing to the original-quality images and videos to be downloaded.|
 
 **Return value**
 
-| Type                                                         | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise\<Map\<string, [CloudAssetDownloadCode](#cloudassetdownloadcode21)\>\> | Promise used to return a map, where each key is a URI and its value indicates the status of that individual download item. |
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<Map\<string, [CloudAssetDownloadCode](#cloudassetdownloadcode21)\>\> | Promise used to return a map, where each key is a URI and its value indicates the status of that individual download item.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
-| ID       | Error Message                                                |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris is empty; 2. The assetUris array size is bigger than 500. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The assetUris is empty; 2. The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9751,26 +9765,26 @@ Pauses a batch download for the specified cloud media assets. This API uses a pr
 
 **Parameters**
 
-| Name      | Type              | Mandatory | Description                                                  |
-| --------- | ----------------- | --------- | ------------------------------------------------------------ |
-| assetUris | string[]  \| null | Yes       | Array of URIs pointing to the original-quality images and videos to be paused.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items. |
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be paused.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
 
 **Return value**
 
-| Type            | Description                    |
-| --------------- | ------------------------------ |
-| Promise\<void\> | Promise that returns no value. |
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
-| ID       | Error Message                                                |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800151 | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes: The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9803,26 +9817,26 @@ Resumes a batch download for the specified cloud media assets. This API uses a p
 
 **Parameters**
 
-| Name      | Type              | Mandatory | Description                                                  |
-| --------- | ----------------- | --------- | ------------------------------------------------------------ |
-| assetUris | string[]  \| null | Yes       | Array of URIs pointing to the original-quality images and videos to be resumed.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items. |
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be resumed.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
 
 **Return value**
 
-| Type            | Description                    |
-| --------------- | ------------------------------ |
-| Promise\<void\> | Promise that returns no value. |
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
-| ID       | Error Message                                                |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9855,26 +9869,26 @@ Cancels a batch download for the specified cloud media assets. This API uses a p
 
 **Parameters**
 
-| Name      | Type              | Mandatory | Description                                                  |
-| --------- | ----------------- | --------- | ------------------------------------------------------------ |
-| assetUris | string[]  \| null | Yes       | Array of URIs pointing to the original-quality images and videos to be canceled.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items. |
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| assetUris | string[]  \| null | Yes  | Array of URIs pointing to the original-quality images and videos to be canceled.<br>If null, undefined, or an empty list is passed, it represents all existing individual download items.|
 
 **Return value**
 
-| Type            | Description                    |
-| --------------- | ------------------------------ |
-| Promise\<void\> | Promise that returns no value. |
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
-| ID       | Error Message                                                |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500. |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:  The assetUris array size is bigger than 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9907,25 +9921,25 @@ Obtains the details of a batch download for cloud media assets. This API uses a 
 
 **Parameters**
 
-| Name       | Type                                                         | Mandatory | Description                                 |
-| ---------- | ------------------------------------------------------------ | --------- | ------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes       | Predicates that specify the fetch criteria. |
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Predicates that specify the fetch criteria.|
 
 **Return value**
 
-| Type                                                         | Description                                  |
-| ------------------------------------------------------------ | -------------------------------------------- |
-| Promise\<[CloudAssetDownloadStatus](#cloudassetdownloadstatus21)\> | Promise used to return the details obtained. |
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<[CloudAssetDownloadStatus](#cloudassetdownloadstatus21)\> | Promise used to return the details obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
-| ID       | Error Message                                                |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -9959,25 +9973,25 @@ Obtains the number of batch download tasks for cloud media assets. This API uses
 
 **Parameters**
 
-| Name       | Type                                                         | Mandatory | Description                                 |
-| ---------- | ------------------------------------------------------------ | --------- | ------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes       | Predicates that specify the fetch criteria. |
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| predicates | [dataSharePredicates.DataSharePredicates](../apis-arkdata/js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Predicates that specify the fetch criteria.|
 
 **Return value**
 
-| Type              | Description                                                |
-| ----------------- | ---------------------------------------------------------- |
-| Promise\<number\> | Promise used to return the number of batch download tasks. |
+| Type                                   | Description             |
+| --------------------------------------- | ----------------- |
+| Promise\<number\> | Promise used to return the number of batch download tasks.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
-| ID       | Error Message                                                |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10011,26 +10025,26 @@ Registers a callback to monitor changes in the progress of a batch download for 
 
 **Parameters**
 
-| Name     | Type                                                         | Mandatory | Description                                                  |
-| -------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
-| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | Yes       | Callback to register. The callback returns progress information of the batch download. |
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | Yes  | Callback to register. The callback returns progress information of the batch download.|
 
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
-| ID       | Error Message                                                |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
 ```ts
 let onCallback = (changeData: photoAccessHelper.CloudAssetDownloadProgressInfo) => {
-  console.info('jsbatchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
+  console.info('batchdownload downloadProgressChange onCallback success, changData: ' + JSON.stringify(changeData));
 }
 async function example(context: Context) {
   console.info('OnDownloadProgressChangeDemo');
@@ -10059,20 +10073,20 @@ Unregisters a callback to monitor changes in the progress of a batch download fo
 
 **Parameters**
 
-| Name     | Type                                                         | Mandatory | Description                                                  |
-| -------- | ------------------------------------------------------------ | --------- | ------------------------------------------------------------ |
-| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No        | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callback are unregistered. |
+| Name  | Type                     | Mandatory| Description      |
+| -------- | ------------------------- | ---- | ---------- |
+| callback | Callback\<[CloudAssetDownloadProgressInfo](#cloudassetdownloadprogressinfo21)\> | No  | Callback to unregister, which is registered by [onDownloadProgressChange](#ondownloadprogresschange21). If this parameter is left empty, all progress-related callback are unregistered.|
 
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Library Error Codes](errorcode-medialibrary.md).
 
-| ID       | Error Message                                                |
-| -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201      | Permission denied.                |
+| 202      | Called by non-system application. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out.            |
 
 **Example**
 
@@ -10299,7 +10313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | --- | --- |
 | 202 | Called by non-system application. |
-| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The fileter criteria or fetchColumns that are not supported by options are transferred. |
+| 23800151 | Scenario parameters fail to pass the verification. Possible causes: 1. The filter criteria or fetchColumns that are not supported by options are transferred. |
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
@@ -10566,7 +10580,7 @@ Enumerates the album types.
 
 | Name                 | Value   | Description                       |
 | ------------------- | ---- | ------------------------- |
-| SOURCE<sup>18+</sup> | 2048 | Source album.<br>**System API**: This is a system API.|
+| SOURCE<sup>18+</sup> | 2048 | Source album.<br>**System API**: This is a system API. |
 | SMART<sup>11+</sup> | 4096 | Smart analysis album.<br>**System API**: This is a system API.|
 
 ## AlbumSubtype
@@ -10581,7 +10595,7 @@ Enumerate the album subtypes.
 | TRASH                             | 1028       | Trash. **System API**: This is a system API.         |
 | SCREENSHOT                        | 1029       | Album for screenshots and screen recording files. **System API**: This is a system API.     |
 | CAMERA                            | 1030       | Album for images and videos taken by the camera. **System API**: This is a system API.|
-| SOURCE\_GENERIC<sup>11+</sup>     | 2049       | Source album. **System API**: This is a system API.        |
+| SOURCE\_GENERIC<sup>11+</sup>     | 2049       | Source album. **System API**: This is a system API.         |
 | CLASSIFY<sup>11+</sup>            | 4097       | Classified album. **System API**: This is a system API.        |
 | GEOGRAPHY\_LOCATION<sup>11+</sup> | 4099       | Geographic location album. **System API**: This is a system API.        |
 | GEOGRAPHY\_CITY<sup>11+</sup>     | 4100       | City album. **System API**: This is a system API.        |
@@ -10612,29 +10626,29 @@ Defines the key information about an image or video file.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                                     | Value                        | Description                                                  |
-| ---------------------------------------- | ---------------------------- | ------------------------------------------------------------ |
-| DATE_TRASHED                             | 'date_trashed'               | Date when the file was deleted. The value is the number of seconds elapsed since the Epoch time. **System API**: This is a system API. |
-| HIDDEN                                   | 'hidden'                     | Whether the file is hidden. **System API**: This is a system API. |
-| CAMERA_SHOT_KEY                          | 'camera_shot_key'            | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) **System API**: This is a system API. |
-| USER_COMMENT<sup>10+</sup>               | 'user_comment'               | User comment information. **System API**: This is a system API. |
-| DATE_YEAR<sup>11+</sup>                  | 'date_year'                  | Year when the file was created. **System API**: This is a system API. |
-| DATE_MONTH<sup>11+</sup>                 | 'date_month'                 | Month when the file was created. **System API**: This is a system API. |
-| DATE_DAY<sup>11+</sup>                   | 'date_day'                   | Date when the file was created. **System API**: This is a system API. |
-| PENDING<sup>11+</sup>                    | 'pending'                    | Pending state. **System API**: This is a system API.         |
-| DATE_TRASHED_MS<sup>12+</sup>            | 'date_trashed_ms'            | Date when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field. |
-| MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>   | 'moving_photo_effect_mode'   | Effect of the moving photo. **System API**: This is a system API. |
-| CE_AVAILABLE<sup>13+</sup>               | 'ce_available'               | Cloud enhancement identifier. **System API**: This is a system API. |
-| THUMBNAIL_READY<sup>13+</sup>            | 'thumbnail_ready'            | Whether a thumbnail is generated. **System API**: This is a system API. |
-| THUMBNAIL_VISIBLE<sup>14+</sup>          | 'thumbnail_visible'          | Whether a thumbnail is visible. **System API**: This is a system API. |
-| SUPPORTED_WATERMARK_TYPE<sup>14+</sup>   | 'supported_watermark_type'   | Watermark type to set. **System API**: This is a system API. |
-| IS_CE_AUTO<sup>18+</sup>                 | 'is_auto'                    | Whether automatic cloud enhancement is supported. **System API**: This is a system API. |
-| OWNER_ALBUM_ID<sup>18+</sup>             | 'owner_album_id'             | ID of the album to which the photo belongs. **System API**: This is a system API. |
-| IS_RECENT_SHOW<sup>18+</sup>             | 'is_recent_show'             | Whether the asset is displayed in the **Recent** list. **System API**: This is a system API. |
-| SUM_SIZE<sup>19+</sup>                   | 'sum(size)'                  | Total size of files. When **SUM_SIZE** is filled in **fetchColumns**, only the first asset is obtained, and the property includes the total size of all assets. **System API**: This is a system API. |
-| EXIF_ROTATE<sup>21+</sup>                | 'exif_rotate'                | Rotational angle of the file. **System API**: This is a system API. |
-| HAS_APPLINK<sup>21+</sup>                | 'has_applink'                | Whether to enable or disable the app link association. **System API**: This is a system API. |
-| APPLINK<sup>21+</sup>                    | 'applink'                    | Information about the app link association. **System API**: This is a system API. |
+| Name         | Value             | Description                                                      |
+| ------------- | ------------------- | ---------------------------------------------------------- |
+| DATE_TRASHED  | 'date_trashed'  | Date when the file was deleted. The value is the number of seconds elapsed since the Epoch time. **System API**: This is a system API.                |
+| HIDDEN  | 'hidden'            | Whether the file is hidden. **System API**: This is a system API.                              |
+| CAMERA_SHOT_KEY  | 'camera_shot_key'  | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) **System API**: This is a system API.           |
+| USER_COMMENT<sup>10+</sup>  | 'user_comment'            | User comment information. **System API**: This is a system API.          |
+| DATE_YEAR<sup>11+</sup>  | 'date_year'            | Year when the file was created. **System API**: This is a system API.          |
+| DATE_MONTH<sup>11+</sup>  | 'date_month'            | Month when the file was created. **System API**: This is a system API.          |
+| DATE_DAY<sup>11+</sup>  | 'date_day'            | Date when the file was created. **System API**: This is a system API.          |
+| PENDING<sup>11+</sup>  | 'pending'            | Pending state. **System API**: This is a system API.          |
+| DATE_TRASHED_MS<sup>12+</sup>  | 'date_trashed_ms'  | Date when the file was deleted. The value is the number of milliseconds elapsed since the Epoch time. **System API**: This is a system API.<br>**NOTE**: The photos queried cannot be sorted based on this field.|
+| MOVING_PHOTO_EFFECT_MODE<sup>12+</sup>  | 'moving_photo_effect_mode' | Effect of the moving photo. **System API**: This is a system API.|
+| CE_AVAILABLE<sup>13+</sup>  | 'ce_available' | Cloud enhancement identifier. **System API**: This is a system API.|
+| THUMBNAIL_READY<sup>13+</sup>  | 'thumbnail_ready' | Whether a thumbnail is generated. **System API**: This is a system API.|
+| THUMBNAIL_VISIBLE<sup>14+</sup>  | 'thumbnail_visible' | Whether a thumbnail is visible. **System API**: This is a system API.|
+| SUPPORTED_WATERMARK_TYPE<sup>14+</sup>  | 'supported_watermark_type' | Watermark type to set. **System API**: This is a system API.|
+| IS_CE_AUTO<sup>18+</sup>  | 'is_auto' | Whether automatic cloud enhancement is supported. **System API**: This is a system API.|
+| OWNER_ALBUM_ID<sup>18+</sup>  | 'owner_album_id' | ID of the album to which the photo belongs. **System API**: This is a system API. |
+| IS_RECENT_SHOW<sup>18+</sup>  | 'is_recent_show' | Whether the asset is displayed in the **Recent** list. **System API**: This is a system API.|
+| SUM_SIZE<sup>19+</sup>  | 'sum(size)' | Total size of files. When **SUM_SIZE** is filled in **fetchColumns**, only the first asset is obtained, and the property includes the total size of all assets. **System API**: This is a system API.|
+| EXIF_ROTATE<sup>21+</sup>  | 'exif_rotate' | Rotational angle of the file. **System API**: This is a system API.|
+| HAS_APPLINK<sup>21+</sup>  | 'has_applink' | Whether to enable or disable the app link association. **System API**: This is a system API.|
+| APPLINK<sup>21+</sup>  | 'applink' | Information about the app link association. **System API**: This is a system API.|
 
 ## AlbumKeys
 
@@ -10644,7 +10658,7 @@ Enumerates the album keys.
 
 | Name                             | Value                   | Description                                                      |
 | --------------------------------- | -------------------- | ----------------------------------------------------- |
-| ALBUM_LPATH<sup>18+</sup>          | 'lpath'                 | Virtual path of the album.<br>**System API**: This is a system API.           |
+| ALBUM_LPATH<sup>18+</sup>          | 'lpath'                 | Virtual path of the album.<br>**System API**: This is a system API.            |
 | BUNDLE_NAME<sup>18+</sup>          | 'bundle_name'                 | Bundle name of the album.<br>**System API**: This is a system API.           |
 | DATE_MODIFIED<sup>18+</sup>        | 'date_modified'         | Timestamp when the album was modified, in milliseconds.<br>**System API**: This is a system API.           |
 | COVER_URI_SOURCE<sup>20+</sup>     | 'cover_uri_source'      | Source URI of the album cover.<br>**System API**: This is a system API.           |
@@ -10670,11 +10684,11 @@ Options for creating an image or video asset.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                 | Type                          | Read-Only | Optional | Description                                                  |
-| -------------------- | ----------------------------- | --------- | -------- | ------------------------------------------------------------ |
-| subtype              | [PhotoSubtype](#photosubtype) | No        | Yes      | Subtype of the image or video.                               |
-| cameraShotKey        | string                        | No        | Yes      | Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.) |
-| userId<sup>19+</sup> | number                        | No        | Yes      | User ID.                                                     |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+| subtype           | [PhotoSubtype](#photosubtype) | No| Yes| Subtype of the image or video. |
+| cameraShotKey           | string | No| Yes| Key for the Ultra Snapshot feature, which allows the camera to take photos or record videos with the screen off. (This parameter is available only for the system camera, and the key value is defined by the system camera.)  |
+| userId<sup>19+</sup>           | number | No| Yes| User ID. |
 
 ## RequestPhotoOptions<sup>11+</sup>
 
@@ -10684,10 +10698,10 @@ Defines the options for obtaining the thumbnail of an image or video.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name             | Type                                                       | Read-Only | Optional | Description                      |
-| ---------------- | ---------------------------------------------------------- | --------- | -------- | -------------------------------- |
-| size             | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No        | Yes      | Size of the thumbnail to obtain. |
-| requestPhotoType | [RequestPhotoType](#requestphototype11)                    | No        | Yes      | Operation to perform.            |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+| size           | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No| Yes| Size of the thumbnail to obtain. |
+| requestPhotoType    | [RequestPhotoType](#requestphototype11) | No| Yes| Operation to perform. |
 
 ## PhotoCreationSource<sup>18+</sup>
 
@@ -10697,12 +10711,12 @@ Defines the application information provided to create assets on behalf of the a
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name       | Type   | Read-Only | Optional | Description                            |
-| ---------- | ------ | --------- | -------- | -------------------------------------- |
-| bundleName | string | No        | Yes      | Bundle name of the target application. |
-| appName    | string | No        | Yes      | Name of the target application.        |
-| appId      | string | No        | Yes      | ID of the target application.          |
-| tokenId    | number | No        | Yes      | Token ID of the target application.    |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
+| ---------------------- | ------------------- | ---- | ---- | ------------------------------------------------ |
+| bundleName           | string | No | Yes |Bundle name of the target application. |
+| appName    | string | No | Yes |Name of the target application. |
+| appId    | string | No | Yes |ID of the target application. |
+| tokenId    | number | No | Yes |Token ID of the target application. |
 
 ## RequestOptions<sup>11+</sup>
 
@@ -10710,9 +10724,9 @@ Represents request options.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name       | Type                        | Read-Only | Optional | Description                                                  |
-| ---------- | --------------------------- | --------- | -------- | ------------------------------------------------------------ |
-| sourceMode | [SourceMode](#sourcemode11) | No        | Yes      | Type of the asset file requested, which can be the original file or edited file.<br>**System API**: This is a system API. |
+| Name                  | Type                             | Read-Only| Optional| Description                                             |
+| ---------------------- |---------------------------------| ---- |---- | ------------------------------------------------ |
+| sourceMode           | [SourceMode](#sourcemode11)     | No | Yes  | Type of the asset file requested, which can be the original file or edited file.<br>**System API**: This is a system API.|
 
 ## PhotoProxy<sup>11+</sup>
 
@@ -10726,7 +10740,9 @@ Photo proxy object, which is used by the camera application to write image data.
 
 Media change request, which is the parent class of the asset change request and album change request.
 
-**NOTE**: The media change request takes effect only after [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called.
+> **NOTE**
+>
+> The media change request takes effect only after [applyChanges](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) is called.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -10738,10 +10754,10 @@ Defines the Gallery widget information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name   | Type   | Read-Only | Optional | Description                                                  |
-| ------ | ------ | --------- | -------- | ------------------------------------------------------------ |
-| formId | string | No        | No       | Widget ID, which is provided when a widget is created in Gallery. |
-| uri    | string | No        | No       | URI of the image bound to the widget. When a widget is created, **uri** can be empty or the URI of an image. When a widget is removed, **uri** is not verified and can be empty. |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+|formId       |string  | No|No| Widget ID, which is provided when a widget is created in Gallery.|
+|uri          |string  | No|No| URI of the image bound to the widget. When a widget is created, **uri** can be empty or the URI of an image. When a widget is removed, **uri** is not verified and can be empty. |
 
 ## GalleryFormInfo<sup>18+</sup>
 
@@ -10751,10 +10767,10 @@ Defines the Gallery widget information.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name      | Type                | Read-Only | Optional | Description                                                  |
-| --------- | ------------------- | --------- | -------- | ------------------------------------------------------------ |
-| formId    | string              | No        | No       | Widget ID, which is provided when a widget is created in Gallery. |
-| assetUris | Array&lt;string&gt; | No        | Yes      | URIs of the images or albums bound to the widget.<br>This parameter cannot be empty when creating or updating a widget.<br>If you attempt to create or update a widget with more than 500 URIs in **assetUris**, only the first 500 URIs are registered for listening. Any URIs beyond the first 500 are not registered. <br>When deleting a widget, this parameter can be omitted. |
+| Name                  | Type               | Read-Only| Optional| Description                                             |
+| ---------------------- | ------------------- | ---------------------- | ---- | ------------------------------------------------ |
+|formId             |string               | No|No| Widget ID, which is provided when a widget is created in Gallery.|
+|assetUris          |Array&lt;string&gt;  | No|Yes| URIs of the images or albums bound to the widget.<br>This parameter cannot be empty when creating or updating a widget.<br>If you attempt to create or update a widget with more than 500 URIs in **assetUris**, only the first 500 URIs are registered for listening. Any URIs beyond the first 500 are not registered. <br>When deleting a widget, this parameter can be omitted. |
 
 ## ResourceType<sup>11+</sup>
 
@@ -11024,9 +11040,9 @@ Enumerates the supported image formats.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name              | Value | Description |
-| :---------------- | :---- | :---------- |
-| AVFILE_FORMAT_JPG | 'jpg' | JPG.        |
+| Name                          | Value | Description      |
+| :---------------------------- | :- | :------- |
+| AVFILE_FORMAT_JPG         | 'jpg'  | JPG.   |
 
 ## WatermarkType<sup>14+</sup>
 
@@ -11267,15 +11283,15 @@ Enumerates the types of events reported during a cloud asset download.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                   | Value | Description                                             |
-| ---------------------- | ----- | ------------------------------------------------------- |
-| DOWNLOAD_PROGRESS      | 0     | Fired when download progress is updated.                |
-| DOWNLOAD_FINISHED      | 1     | Fired when a download completes successfully.           |
-| DOWNLOAD_FAILED        | 2     | Fired when a download fails.                            |
-| DOWNLOAD_ASSET_DELETED | 3     | Fired when a downloaded asset is deleted.               |
-| DOWNLOAD_AUTO_PAUSED   | 4     | Fired when the system automatically pauses a download.  |
-| DOWNLOAD_AUTO_RESUMED  | 5     | Fired when the system automatically resumes a download. |
-| DOWNLOAD_REFRESHED     | 6     | Fired when the download status is refreshed.            |
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| DOWNLOAD_PROGRESS |  0 |  Fired when download progress is updated.|
+| DOWNLOAD_FINISHED |  1 |  Fired when a download completes successfully. |
+| DOWNLOAD_FAILED |  2 |  Fired when a download fails. |
+| DOWNLOAD_ASSET_DELETED |  3 |  Fired when a downloaded asset is deleted. |
+| DOWNLOAD_AUTO_PAUSED |  4 |  Fired when the system automatically pauses a download. |
+| DOWNLOAD_AUTO_RESUMED |  5 |  Fired when the system automatically resumes a download. |
+| DOWNLOAD_REFRESHED |  6 |  Fired when the download status is refreshed. |
 
 ## CloudAssetDownloadCode<sup>21+</sup>
 
@@ -11285,10 +11301,10 @@ Enumerates the status codes returned when adding an item to a batch download.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name                      | Value | Description                                         |
-| ------------------------- | ----- | --------------------------------------------------- |
-| ADD_DOWNLOAD_TASK_SUCCESS | 0     | The individual download item is successfully added. |
-| DOWNLOAD_ASSET_NOT_EXIST  | 1     | The requested asset does not exist.                 |
+| Name |  Value|  Description|
+| ----- |  ---- |  ---- |
+| ADD_DOWNLOAD_TASK_SUCCESS |  0 |  The individual download item is successfully added.|
+| DOWNLOAD_ASSET_NOT_EXIST |  1 |  The requested asset does not exist. |
 
 ## CloudAssetDownloadProgressInfo<sup>21+</sup>
 
@@ -11298,12 +11314,12 @@ Describes the progress information about a batch download.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name              | Type                                                         | Read-Only | Optional | Description                              |
-| ----------------- | ------------------------------------------------------------ | --------- | -------- | ---------------------------------------- |
-| downloadEventType | [CloudAssetDownloadNotifyType](#cloudassetdownloadnotifytype21) | Yes       | No       | Type of event that triggers this update. |
-| fileId            | number                                                       | Yes       | No       | ID of the file being downloaded.         |
-| percent           | number                                                       | Yes       | No       | Download completion percentage.          |
-| autoPauseReason   | number                                                       | Yes       | No       | Reason for automatic pause.              |
+| Name | Type               | Read-Only| Optional| Description                                             |
+| ---- | ------- | ---- |  ---- | ----- |
+| downloadEventType | [CloudAssetDownloadNotifyType](#cloudassetdownloadnotifytype21)  | Yes| No| Type of event that triggers this update.|
+| fileId  | number  |Yes|No| ID of the file being downloaded. |
+| percent  | number  |Yes|No| Download completion percentage. |
+| autoPauseReason       | number  |Yes|No| Reason for automatic pause. |
 
 ## CloudAssetDownloadStatus<sup>21+</sup>
 
@@ -11313,7 +11329,7 @@ Describes the status information about a batch download.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-| Name      | Type     | Read-Only | Optional | Description                                                  |
-| --------- | -------- | --------- | -------- | ------------------------------------------------------------ |
-| taskInfos | string[] | Yes       | No       | Array of strings containing the information of each individual download item within this batch download. |
+| Name | Type               | Read-Only| Optional| Description                                             |
+| ---- | ------- | ---- |  ---- | ----- |
+| taskInfos | string[]  | Yes| No| Array of strings containing the information of each individual download item within this batch download.|
 

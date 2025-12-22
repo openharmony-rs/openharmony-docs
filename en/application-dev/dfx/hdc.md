@@ -639,13 +639,13 @@ hdc install [-cwd path|-r|-s|-w waitingTime|-u userId|-p|-h] src
 
 | Name| Description|
 | -------- | -------- |
-| src | Used to specify the path of the application installation package. You can install [HAP](../quick-start/hap-package.md) and inter-application [HSP](../quick-start/in-app-hsp.md). |
+| src | Used to specify the path of the application installation package. You can install [HAP](../quick-start/hap-package.md) and inter-application [HSP](../quick-start/in-app-hsp.md).|
 | -cwd | Modifies the working directory.<br>This parameter is used to switch the **src** directory to the specified path during application installation. For example, when the new application is **test.hap** and the directory is **C:\\**, the actual installation file path is **C:\\test.hap**. If **-cwd "D:\\"** is executed, the actual installation file path is **D:\\test.hap**.|
 | -r | Used to overwrite an existing HAP or HSP file. This parameter is optional. This parameter is not specified by default, indicating that the existing file will be overwritten.|
 | -s | Used to specify the path where the inter-application HSP is to be installed. This parameter is mandatory for installing the application HSP and optional in other scenarios. Each directory can contain only one HSP file.|
 | -w | Used to wait for a specified time before installing a HAP. The minimum waiting time is 180s, and the maximum waiting time is 600s. The default waiting time is 180s. This parameter is optional.|
 | -u | Used to specify the [user](../tools/bm-tool.md#userid). By default, the application is installed for the current active user. This parameter is optional.|
-| -p | Used to specify the path of the HAP file. This parameter is optional. If multiple HAPs are required, you can specify the folder path of the HAPs. |
+| -p | Used to specify the path of the HAP file. This parameter is optional. If multiple HAPs are required, you can specify the folder paths of the HAPs.|
 | -h | Used to display the help information about the [install command](../tools/bm-tool.md#install) of the bm module. This parameter is optional.|
 
 **Return value**
@@ -698,7 +698,7 @@ AppMod finish
 The [uninstall command](../tools/bm-tool.md#uninstall) is integrated into the bm module on the device, which simplifies the uninstallation process. You can run the command on the PC to uninstall applications. Run the following commands:
 
 ```shell
-hdc uninstall [-n|-m|-k|-s|-v|-u|-h] bundlename
+hdc uninstall [-n|-k|-s|-h] bundlename
 ```
 
 **Parameters**
@@ -707,11 +707,8 @@ hdc uninstall [-n|-m|-k|-s|-v|-u|-h] bundlename
 | -------- | -------- |
 | bundlename | Application installation package.|
 | -n | Used to uninstall an application with a specified bundle name. This parameter is optional.|
-| -m | Used to specify the name of an application module to be uninstalled. This parameter is optional. By default, all modules are uninstalled.|
 | -k | Used to uninstall an application with or without retaining the application data. This parameter is optional. By default, the application data is deleted along the uninstall.|
 | -s |  Used to uninstall an HSP. This parameter is mandatory only for the HSP uninstallation.|
-| -v | Used to uninstall an HSP of a given version number. This parameter is optional. By default, all HSPs with the specified bundle name are uninstalled.|
-| -u | Used to specify the [user](../tools/bm-tool.md#userid). By default, the application is uninstalled for the current active user. This parameter is optional.|
 | -h | Used to display the help information about the [uninstall command](../tools/bm-tool.md#uninstall) of the bm module. This parameter is optional.|
 
 **Return value**
@@ -719,13 +716,9 @@ hdc uninstall [-n|-m|-k|-s|-v|-u|-h] bundlename
 | Value| Description|
 | -------- | -------- |
 | [Info]App uninstall path: msg:uninstall bundle successfully.<br>AppMod finish. | The uninstallation is successful.|
-| Reason why the uninstallation fails.| The uninstallation failed.|
+| Error information.| The uninstallation fails.|
 
 **Usage**
-
-> **NOTE**
->
-> When the **uninstall** command and bm module parameters are executed, the **-m**, **-v**, and **-u** parameters (which require values) must be enclosed in quotes along with their values, such as **"-m entry"**, **"-v 100001"**, and **"-u 100"**, to prevent parameter parsing errors that could cause command execution to fail.
 
 ```shell
 # Uninstall the com.ohos.example file.
@@ -738,28 +731,13 @@ $ hdc uninstall -n com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 
-# Uninstall the com.ohos.example file (-m is supported by the uninstall command of the bm module, which specifies the module of the application to be uninstalled).
-$ hdc uninstall -n "-m entry" com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
 # Uninstall the com.ohos.example file (-k is supported by the uninstall command of the bm module, which is used to save application data during uninstallation).
-$ hdc uninstall -n -k com.ohos.example
+$ hdc uninstall -k com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 
 # Uninstall the com.ohos.example file (-s is supported by the uninstall command of the bm module, which is mandatory during HSP uninstallation).
-$ hdc uninstall -n -s com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
-# Uninstall the com.ohos.example file (-v is supported by the uninstall command of the bm module, which specifies the version number of the shared package).
-$ hdc uninstall -n "-v 100001" com.ohos.example
-[Info]App uninstall path: msg:uninstall bundle successfully.
-AppMod finish
-
-# Uninstall the com.ohos.example file (-u is supported by the uninstall command of the bm module, which specifies the user ID).
-$ hdc uninstall -n "-u 100" com.ohos.example
+$ hdc uninstall -s com.ohos.example
 [Info]App uninstall path: msg:uninstall bundle successfully.
 AppMod finish
 ```
@@ -865,20 +843,20 @@ FileTransfer finish, Size:xxx, File...
 
 | Command| Description|
 | -------- | -------- |
-| fport ls | Lists all port forwarding tasks.|
-| fport [IP:port] [IP:port] | Sets up a local port forwarding, which forwards data from a local port to a remote port. The port number ranges from 1 to 65535.|
-| rport [IP:port] [IP:port] | Sets up a remote port forwarding, which forwards data from a remote port to a local port. The port number ranges from 1024 to 65535.|
-| fport rm [IP:port] [IP:port] | Deletes a port forwarding task.|
+| fport ls | Displays all port forwarding tasks.|
+| fport localnode remotenode | Sets a local port forwarding, which listens for requests from the local node and forwards the requests to the remote node. The task format is **<Forwarding type>:<Forwarding port>**, for example, **tcp:1234**.|
+| rport remotenode localnode | Sets a remote port forwarding, which listens for requests from the remote node and forwards the requests to the local node. The task format is **<Forwarding type>:<Forwarding port>**, for example, **tcp:1234**.|
+| fport rm taskstr | Deletes a port forwarding task.|
 
 > **NOTE**
 >
 > Port forwarding type supported by the computer: TCP.
 >
-> Port forwarding type supported by the device: TCP, dev, localabstract, localfilesystem, jdwp, ark.
+> Port forwarding type supported by the device: TCP, dev, localabstract, localreserved, localfilesystem, jdwp, ark.
 
 ### Querying the Port Forwarding Task List
 
-Run the following commands:
+Query all local and remote port forwarding tasks.
 
 ```shell
 hdc fport ls
@@ -896,15 +874,16 @@ hdc fport ls
 
 ```shell
 $ hdc fport ls
-[Empty]
+connect-key tcp:2080 tcp:2345 [Reverse]
+connect-key tcp:1234 tcp:1080 [Forward]
 ```
 
 ### Creating a Local Port Forwarding
 
-Set up a local port forwarding, which forwards data from a local port to a remote port.
+Set a local port forwarding, which forwards data from the local node to the remote node.
 
 ```shell
-hdc fport [IP:port] [IP:port]
+hdc fport localnode remotenode
 ```
 
 **Return value**
@@ -922,10 +901,11 @@ hdc fport [IP:port] [IP:port]
 ```shell
 $ hdc fport tcp:1234 tcp:1080
 Forwardport result:OK
+
 ```
 > **NOTE**
 >
-> In the local port forwarding, if the local port uses TCP, the specified port is **port**, and the **-e** parameter is used when the service process is started, the local host listens for the port of the IP address specified by the **-e** parameter. If the **-e** parameter is not used when the server is started, the local host listens for **127.0.0.1:port**.
+> When creating a local port forwarding task, the PC uses the TCP protocol and the specified **port**. By default, **127.0.0.1:port** is listened for. If the **-e** parameter is used to specify the IP address of the host that to be listened when the service process starts, the PC listens for the **IP:port** specified by **-e**.
 
 
 ### Creating a Remote Port Forwarding
@@ -933,7 +913,7 @@ Forwardport result:OK
 Set up a remote port forwarding, which forwards data from a remote port to a local port.
 
 ```shell
-hdc rport [IP:port] [IP:port]
+hdc rport remotenode localnode
 ```
 
 **Return value**
@@ -954,17 +934,21 @@ Forwardport result:OK
 
 ### Deleting a Port Forwarding Task
 
-Delete a specified port forwarding task.
+Delete a specified local port forwarding task or remote port forwarding task.
 
 ```shell
-hdc fport rm [IP:port][IP:port]
+hdc fport rm taskstr
 ```
+
+> **NOTE**
+>
+> **taskstr** specifies the local or remote port forwarding task to be deleted. You are advised to run the **hdc fport ls** command to query the task and then delete it.
 
 **Parameters**
 
 | Parameter| Description|
 | -------- | -------- |
-| IP:port | Port forwarding task, in the format of **tcp:XXXX tcp:XXXX**.|
+| taskstr | Port forwarding task, in the format of **tcp:XXXX tcp:XXXX**.|
 
 **Return value**
 
@@ -1455,7 +1439,7 @@ The collected logs are stored in the following path.
 | OS| Path| Remarks|
 | -------- | -------- | -------- |
 | Windows | %temp%\ | Example: **C:\\Users\Username\AppData\Local\Temp**.<br>Replace *Username* with the actual one.|
-| Linux | /tmp/ |  |
+| Linux | /tmp/ | - |
 | macOS| $TMPDIR/ | You can run the **echo $TMPDIR** command to view the actual path, and **cd $TMPDIR** to go to the corresponding directory.|
 
 The log file types are as follows.
@@ -1465,7 +1449,7 @@ The log file types are as follows.
 | Real-time log| hdc.log | Records server logs in real time.| Each time the hdc server is restarted, the original log is renamed and a new **hdc.log** is recorded.|
 | Temporary historical log| hdc-%Y%m%d-%H%M%S.log | Dumps intermediate files generated during historical log archiving.| For example, if the time is 16:18:57.921 on September 19, 2024, the time format is **20240919-161857921**, and the name of the generated temporary log file is **hdc-20240919-161857921.log**.|
 | Archived historical logs| hdc-%Y%m%d-%H%M%S.log.tgz | Compresses and stores historical logs.| The archive file is a compressed file of the **.tgz** type. You can use a decompression tool to obtain the file. For example, if the temporary name of a historical log file is **hdc-20240919-161857921.log**, the name of the corresponding archived historical log file is **hdc-20240919-161857921.log.tgz**. After the archived historical log file is generated, the corresponding temporary historical log file is automatically deleted.|
-| Temporary real-time log| .hdc.cache.log | Records temporary caches generated by real-time logs.|  |
+| Temporary real-time log| .hdc.cache.log | Records temporary caches generated by real-time logs.| - |
 
 ### Device Logs
 
@@ -1504,9 +1488,9 @@ Used to set whether to enable the heartbeat functionality for the server and dae
 
 After the server and daemon are started, they send heartbeat packets to each other and record the heartbeat packets in hdc logs for checking the device connection status.
 
-When the environment variable OHOS_HDC_HEARTBEAT is set to **1** for the server, its heartbeat functionality is disabled. When the device is connected to the PC, the server notifies the daemon that the heartbeat functionality is disabled and does not send heartbeat packets to each other.
+When the environment variable *OHOS_HDC_HEARTBEAT* is set to **1** for the server, its heartbeat functionality is disabled. When the device is connected to the PC, the server notifies the daemon that the heartbeat functionality is disabled and does not send heartbeat packets to each other.
 
-When **OHOS_HDC_HEARTBEAT** is set to other values, the heartbeat functionality is enabled.
+When *OHOS_HDC_HEARTBEAT* is set to other values, the heartbeat functionality is enabled.
 
 ### OHOS_HDC_CMD_RECORD
 
@@ -1523,8 +1507,8 @@ The recording log files are stored in the following paths:
 | OS| Path| Remarks|
 | -------- | -------- | -------- |
 | Windows | %temp%\hdc_cmd\ | Example: **C:\\Users\Username\AppData\Local\Temp\hdc_cmd\<br/>** (Replace the user name with the actual one.)|
-| Linux | /tmp/hdc_cmd/ |  |
-| macOS| $TMPDIR/hdc_cmd/ |  |
+| Linux | /tmp/hdc_cmd/ | - |
+| macOS| $TMPDIR/hdc_cmd/ | - |
 
 ### OHOS_HDC_ENCRYPT_CHANNEL
 

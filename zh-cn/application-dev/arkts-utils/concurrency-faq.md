@@ -13,6 +13,7 @@
 1. **taskpool.execute接口是否调用**。
 
    taskpool.execute被调用时，Hilog会打印TaskPool调用态日志（Task Allocation: taskId:）。
+
    如果发现没有该维测日志表明taskpool.execute实际未调用，应用需排查taskpool.execute之前的其他业务逻辑是否执行完成。
 
    ```ts
@@ -56,6 +57,7 @@
 2. **TaskPool任务是否被执行**。
 
    调用taskpool.execute接口会打印TaskPool**调用态日志**（Task Allocation: taskId:）。 
+   
    定位到目标任务对应的Task Allocation: taskId:日志后，在日志中搜索taskId后跟随的Id号，正常情况会打印**执行态日志**（Task Perform: name:）和**结束态日志**（Task PerformTask End: taskId:）。
 
    1.  如果只有调用态日志，没有执行态日志。可能是由于先执行的TaskPool任务阻塞了TaskPool工作线程，导致TaskPool工作线程不可用，后执行的TaskPool任务无法执行。应用可以排查自身业务逻辑，或者通过trace进一步定位。

@@ -186,8 +186,8 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 
 - 如果存在备选主控进程，系统会将备选主控进程链表首节点的进程设置为主控进程，触发[onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调。
 - 如果不存在备选主控进程，系统会根据组件类型执行相应的操作。
-	- 对于UIAbility组件，系统将创建新的空进程作为主控进程。
-	- 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
+  - 对于UIAbility组件，系统将创建新的空进程作为主控进程。
+  - 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
 
 > **说明：**
 > 

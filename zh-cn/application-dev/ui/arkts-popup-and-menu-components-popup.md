@@ -399,7 +399,7 @@ struct PopupItemChild {
         .backgroundColor(Color.White)
       },
       pressed: {
-        .backgroundColor('#1fbb7d')
+        .backgroundColor('#d4f1ff')
       }
     })
   }

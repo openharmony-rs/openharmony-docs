@@ -22,7 +22,7 @@
 | recommendationType | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 如果需要根据枚举值推荐相应的图片，则配置此参数。 <br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | textContextInfo<sup>12+</sup> | [TextContextInfo](arkts-apis-photoAccessHelper-i.md#textcontextinfo12)   | 否   | 是 | 如果需要根据文本信息推荐相应的图片，则配置此参数（如果同时配置了recommendationType，则仅textContextInfo生效）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
-## BaseSelectOptions<sup>10+</sup>
+## BaseSelectOptions
 
 图库选择选项基类。
 
@@ -48,14 +48,14 @@
 
 PhotoSelectOptions extends BaseSelectOptions
 
-图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions10)。
+图库选择选项子类，继承自[BaseSelectOptions](#baseselectoptions)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
-| isEditSupported<sup>11+</sup>       | boolean | 否   | 是 | 是否支持编辑照片，true表示支持，false表示不支持，默认为false。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
-| isOriginalSupported<sup>12+</sup>       | boolean | 否   | 是 | 是否显示选择原图按钮，true表示显示，false表示不显示，默认为true。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
+| isEditSupported<sup>11+</sup>       | boolean | 否   | 是 | 是否支持编辑照片，true表示支持，false表示不支持，默认为true。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
+| isOriginalSupported<sup>12+</sup>       | boolean | 否   | 是 | 是否显示选择原图按钮，true表示显示，false表示不显示，默认为false。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | subWindowName<sup>12+</sup>       | string | 否   | 是 | 子窗口名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。     |
 | completeButtonText<sup>14+</sup>       | [CompleteButtonText](arkts-apis-photoAccessHelper-e.md#completebuttontext14) | 否   | 是 | 完成按钮显示的内容。<br>完成按钮指在界面右下方，用户点击表示图片选择已完成的按钮。 <br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。     |
 | contextRecoveryInfo<sup>21+</sup>       | [ContextRecoveryInfo](#contextrecoveryinfo21) | 否   | 是 | 用于恢复上次退出时PhotoPicker现场的信息。<br>上次完成选择时photoPicker将返回contextRecoveryInfo给应用，应用可使用返回的contextRecoveryInfo，在下次启动时恢复上次使用picker，最后浏览的宫格界面。 <br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。     |

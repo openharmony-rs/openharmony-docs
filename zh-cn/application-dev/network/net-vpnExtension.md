@@ -170,6 +170,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 ### 生成VPN Id
 
 创建新的VPN时，应生成一个VPN Id作为VPN的唯一标识。
+
 可参考如下示例：
 
 ```ts
@@ -267,9 +268,9 @@ let vpnConfig: vpnExtension.VpnConfig = {
   mtu: 1400,
   // 配置VPN使用的DNS服务器。
   dnsAddresses: ['223.x.x.5', '223.x.x.6'],
-  // VPN生效白名单的应用。
+  // 受信任的应用信息列表。
   trustedApplications: ['com.test.browser'],
-  // 不生效VPN黑名单的应用。
+  // 被阻止的应用信息列表。
   blockedApplications: ['com.test.games'],
 }
 let context: vpnExtension.VpnExtensionContext;

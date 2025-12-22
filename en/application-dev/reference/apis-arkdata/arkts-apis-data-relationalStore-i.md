@@ -25,10 +25,10 @@ Defines the RDB store configuration.
 | autoCleanDirtyData<sup>11+</sup> | boolean | No| Yes| Whether to automatically clear the dirty data (data that has been deleted from the cloud) from the local device. The value **true** means to clear the dirty data automatically; **false** means to clear the data manually. <br>Default value: **true**.<br>For a database with device-cloud synergy, this parameter can be used to set whether to automatically clear the data deleted from the cloud on the device. You can manually clear the data by calling [cleanDirtyData<sup>11+</sup>](arkts-apis-data-relationalStore-RdbStore.md#cleandirtydata11).<br>This parameter is supported since API version 11.<br>**System capability**: SystemCapability.DistributedDataManager.CloudSync.Client|
 | allowRebuild<sup>12+</sup> | boolean | No| Yes| Whether to automatically delete the RDB store and create an empty table in the case of an exception.<br>**true**: delete the RDB store and create an empty table in the case of an exception.<br>**false** (default): not delete the RDB store in the case of an exception.<br>This parameter is supported since API version 12.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | isReadOnly<sup>12+</sup> | boolean | No| Yes| Whether the RDB store is read-only.<br>**true**: The RDB store is read-only. Writing data to the RDB store will result in error code 801.<br>**false** (default): The RDB store is readable and writeable.<br>This parameter is supported since API version 12.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| pluginLibs<sup>12+</sup> | Array\<string> | No| Yes| Dynamic libraries with capabilities such as Full-Text Search (FTS).<br>**Constraints**<br>1. The maximum number of dynamic library names is 16. If the number of dynamic library names exceeds 16, the library fails to be opened and an error is returned.<br>2. The dynamic libraries must be those in the sandbox directory or system directory of the application. If a dynamic library fails to be loaded, the RDB store cannot be opened and an error will be returned.<br>3. The dynamic library name must be a complete path that can be loaded by SQLite.<br>Example: **[context.bundleCodeDir + "/libs/arm64/" + libtokenizer.so]**, where **context.bundleCodeDir** indicates the application sandbox path, **/libs/arm64/** indicates the subdirectory, **libtokenizer.so** indicates the file name of the dynamic library. If this parameter is left blank, dynamic libraries are not loaded by default.<br>4. The dynamic library must contain all its dependencies to prevent the failure caused by the lack of dependencies.<br>Example: In an NDK project, **libtokenizer.so** is built using the default compilation parameters and depends on the C++ standard library. When the dynamic library is loaded, **libc++_shared.so** is linked by mistake because the namespace is different from that during compilation. As a result, the **__emutls_get_address** symbol cannot be found. To solve this problem, you need to statically link the C++ standard library during compilation. For details, see [NDK Project Building Overview](../../napi/build-with-ndk-overview.md).<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| pluginLibs<sup>12+</sup> | Array\<string> | No| Yes| Loads custom dynamic libraries. Multiple dynamic library names can be passed in the array. For details, see [Constraints and Examples of pluginLibs](#constraints-and-examples-of-pluginlibs).<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | cryptoParam<sup>14+</sup> | [CryptoParam](#cryptoparam14) | No| Yes| Custom encryption parameters.<br>If this parameter is left empty, the default encryption parameters are used. For details, see default values of [CryptoParam](#cryptoparam14).<br>This parameter is valid only when **encrypt** is set to **true** or the key is not empty.<br>This parameter is supported since API version 14.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | vector<sup>18+</sup> | boolean | No| Yes| Whether the RDB store is a vector store. The value **true** means the RDB store is a vector store, and the value **false** means the opposite.<br>Default value: **false**.<br>The vector store is ideal for storing and managing high-dimensional vector data, while the RDB store is optimal for storing and processing structured data.<br>Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet** of the vector store have been closed.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
-| tokenizer<sup>17+</sup> | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17) | No| Yes| Type of the tokenizer to be used for FTS.<br>If this parameter is left blank, English tokenization is supported if FTS does not support Chinese or multi-language tokenization.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| tokenizer<sup>17+</sup> | [Tokenizer](arkts-apis-data-relationalStore-e.md#tokenizer17) | No| Yes| Type of the tokenizer to be used for FTS.<br>If this parameter is left blank, English tokenization is supported if FTS does not support Chinese or multi-language tokenization.<br>If you want to use a custom tokenizer, you can configure it through the **pluginLibs** parameter. For details, see [Restrictions and Examples of pluginLibs](#constraints-and-examples-of-pluginlibs).<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | persist<sup>18+</sup> | boolean | No| Yes| Whether to persist an RDB store. The value **true** means to persist the RDB store; **false** means the opposite (using an in-memory database). The default value is **true**.<br>An in-memory database does not support encryption, backup, restore, cross-process access, and distributed capabilities, with the **securityLevel** property ignored.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | enableSemanticIndex<sup>20+</sup> | boolean | No| Yes| Whether to enable the semantic index processing feature for the database. The value **true** means to enable the semantic index processing feature; **false** means the opposite. The default value is **false**.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 
@@ -60,7 +60,7 @@ Represents the asset (such as a document, image, or video).
 | path | string | No| No| Path of an asset in the application sandbox.|
 | createTime | string | No| No| Time when an asset is created.|
 | modifyTime | string | No| No| Time when an asset is last modified.|
-| size | string | No| No| Asset size.|
+| size | string | No| No| Asset size. In the device-cloud synchronization mechanism, this field is one of the key bases for determining whether an asset is changed. Ensure that the storage format and value logic are consistent across the end-to-end link. It is recommended that all system nodes use the standard processing format (unit: byte; value: a non-negative integer) to avoid synchronization exceptions or misjudgment caused by format differences.|
 | status | [AssetStatus](arkts-apis-data-relationalStore-e.md#assetstatus10) | No  | Yes  | Asset status. <br>Default value: **ASSET_NORMAL**.|
 
 ## ChangeInfo<sup>10+</sup>
@@ -171,3 +171,55 @@ Represents the configuration of a transaction object.
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | transactionType | [TransactionType](arkts-apis-data-relationalStore-e.md#transactiontype14) | No| Yes| Transaction object type. <br>Default value: **DEFERRED**.|
+
+## Constraints and Examples of pluginLibs
+
+**Constraints**<br>1. The maximum number of dynamic library names is 16. If the number exceeds 16, the library fails to be opened and the error code 14800000 is returned.<br>2. The dynamic libraries must be those in the sandbox directory or system directory of the application. If a dynamic library fails to be loaded, the RDB store cannot be opened and the error code 14800010 is returned.<br>3. The dynamic library name must be a complete path that can be loaded by SQLite. The path is in the format of [context.bundleCodeDir+ "/libs/arm64/" + *name of the .so file*"], in which **context.bundleCodeDir** is the application sandbox path, **libs** is a fixed directory, and **arm64** is the subdirectory determined by the system architecture. For example, if the system architecture is arm64-v8a, the subdirectory is arm64.<br>Example: [context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]. If this parameter is left blank, dynamic libraries are not loaded by default.<br>4. The dynamic library must contain all its dependencies to prevent the failure caused by the lack of dependencies.<br>Example: In an NDK project, **libtokenizer.so** is built using the default compilation parameters and depends on the C++ standard library. When the dynamic library is loaded, **libc++_shared.so** is linked by mistake because the namespace is different from that during compilation. As a result, the **__emutls_get_address** symbol cannot be found. To solve this problem, you need to statically link the C++ standard library during compilation. For details, see [NDK Project Building Overview](../../napi/build-with-ndk-overview.md).<br>
+The following is an example of using **pluginLibs** to load a custom tokenizer:<br>1. Implement an FTS5 loadable tokenizer extension and compile it into a .so file. For details about the compilation, see [Building an NDK Project with CMake](../../napi/build-with-ndk-cmake.md).<br>2. Copy the generated .so file to the corresponding subdirectory in the **entry/libs/** directory of the project. If the subdirectory does not exist, create one. The subdirectory is determined by the system architecture. For example, put the file in the **entry/libs/arm64-v8a** or **entry/libs/armeabi-v7a** directory, respectively, if the system architecture is arm64-v8a or armeabi-v7a.<br>3. Load the custom tokenizer.
+
+```ts
+import relationalStore from '@ohos.data.relationalStore'
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import fs from '@ohos.file.fs';
+
+export default class EntryAbility extends UIAbility {
+  async onWindowStageCreate(windowStage: window.WindowStage) {
+    let rdbStore: relationalStore.RdbStore | undefined = undefined;
+    const STORE_CONFIG: relationalStore.StoreConfig = {
+      name: "testTokenize.db",
+      securityLevel: relationalStore.SecurityLevel.S1,
+    };
+    let bundleCodeDir = this.context.bundleCodeDir;
+    // libdistributeddb_extension.so is the name of the .so file compiled by the FTS5 loadable tokenizer extension.
+    let soPath = bundleCodeDir + "/libs/arm64/libdistributeddb_extension.so";
+    let res = await fs.access(soPath);
+    if (!res) {
+      console.error("Dynamic library not accessible");
+      return;
+    }
+    console.info("Dynamic library found and accessible");
+
+    // Set pluginLibs to the path of the dynamic library extension to be loaded.
+    STORE_CONFIG.pluginLibs = [soPath];
+    try {
+      rdbStore = await relationalStore.getRdbStore(this.context, STORE_CONFIG);
+      // Use the custom tokenizer to create an FTS5 virtual table. Set the tokenize parameter to the actual tokenizer name.
+      await rdbStore.executeSql("CREATE VIRTUAL TABLE IF NOT EXISTS pages USING fts5(title, keywords, body, tokenize=koowork_tokenizer);");
+      console.info("CREATE VIRTUAL TABLE OK");
+      await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('Song', 'xxx', 'Today is Sunday');");
+      console.info("INSERT VIRTUAL TABLE OK, body is 'Today is Sunday'");
+      await rdbStore.executeSql("INSERT INTO pages(keywords, title, body) VALUES('Song', 'xxx', 'Tomorrow is Monday');");
+      console.info("INSERT VIRTUAL TABLE OK, body is 'Tomorrow is Monday'");
+      let resultSet = await rdbStore.querySql("select * from pages where body match 'Monday';");
+      while (resultSet.goToNextRow()) {
+        console.info(`query result success, match body:${resultSet.getString(resultSet.getColumnIndex("body"))}`);
+      }
+      resultSet.close();
+      await rdbStore.close();
+    } catch (err) {
+      console.error("RdbStore failed, err: code=" + err.code + " message=" + err.message);
+    }
+  }
+}
+```

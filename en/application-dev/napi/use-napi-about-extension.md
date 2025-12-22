@@ -25,7 +25,7 @@ The following modules are required for the ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
-import taskpool from '@kit.ArkTS';
+import { taskpool } from '@kit.ArkTS';
 ```
 
 ## Module Loading
@@ -668,7 +668,7 @@ test01();
 
 **NOTE**
 
-Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the **detach()** callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
+Call **napi_coerce_to_native_binding_object** to add the **detach()** and **attach()** callbacks and native object information to ArkTs object A, and then pass object A across threads. To pass object A across threads, you need to serialize and deserialize it by calling the **napi_serialize** and **napi_deserialize** APIs. As shown in the following figure, in thread 1, "data" is obtained after object A is serialized, and the <b class="+ topic/ph hi-d/b " id="b2766527164114">detach()</b> callback is invoked in the serialization process. Then, "data" is passed to thread 2 and deserialized in thread 2. The **attach()** callback is invoked to obtain the ArkTS object A. The **detach()** and **attach()** callback are used to notify that serialization and deserialization are complete.
 
 ![napi_coerce_to_native_binding_object](figures/napi_coerce_to_native_binding_object.png)
 

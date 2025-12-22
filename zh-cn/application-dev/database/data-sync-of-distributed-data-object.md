@@ -300,8 +300,8 @@ export default class EntryAbility extends UIAbility {
         console.error('OnContinue failed to save. message: ', err.message);
       });
     } catch (error) {
-      console.error('OnContinue faild code: ', error.code);
-      console.error('OnContinue faild message: ', error.message);
+      console.error('OnContinue failed code: ', error.code);
+      console.error('OnContinue failed message: ', error.message);
     }
     console.info("OnContinue success!");
     return AbilityConstant.OnContinueResult.AGREE;

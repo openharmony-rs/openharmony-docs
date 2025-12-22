@@ -832,7 +832,7 @@ The fields in the I/O information are described as follows:
 
 - **write_bytes**: number of bytes written by the process to the file system and network since it starts, in bytes.
 
-- **cancelled_write_bytes**: number of bytes that are not written due to write cancellation since the process starts, in bytes. Generally, the value of this field is 0 unless an error occurs when data is written to the disk or the write operation is interrupted.  
+- **cancelled_write_bytes**: number of bytes that are not written due to write cancellation since the process starts, in bytes. Generally, the value of this field is 0 unless an error occurs when data is written to the disk or the write operation is interrupted.
 
 
 ## Querying System Information

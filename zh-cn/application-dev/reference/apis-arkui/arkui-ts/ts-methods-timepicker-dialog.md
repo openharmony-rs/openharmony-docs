@@ -28,7 +28,7 @@ static show(options?: TimePickerDialogOptions)
 
 > **说明：**
 > 
-> 从API version 18开始废弃，建议使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTimePickerDialog](../arkts-apis-uicontext-uicontext.md#showtimepickerdialog)替代。
+> 从API version 11开始支持，从API version 18开始废弃。建议使用[showDatePickerDialog](../arkts-apis-uicontext-uicontext.md#showdatepickerdialog)替代，showDatePickerDialog需先获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例后再进行调用。
 >
 > 从API version 10开始，可以通过使用[UIContext](../arkts-apis-uicontext-uicontext.md)中的[showTimePickerDialog](../arkts-apis-uicontext-uicontext.md#showtimepickerdialog)来明确UI的执行上下文。
 
@@ -76,7 +76,7 @@ static show(options?: TimePickerDialogOptions)
 | onDidDisappear<sup>12+</sup> | () => void | 否 | 是 | 弹窗消失后的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onAccept/onCancel/onChange)>>onWillDisappear>>onDidDisappear。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | onWillAppear<sup>12+</sup> | () => void | 否 | 是 | 弹窗显示动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onAccept/onCancel/onChange)>>onWillDisappear>>onDidDisappear。<br />2.在onWillAppear内设置改变弹窗显示效果的回调事件，二次弹出生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | onWillDisappear<sup>12+</sup> | () => void | 否 | 是 | 弹窗退出动效前的事件回调。<br />**说明：**<br />1.正常时序依次为：onWillAppear>>onDidAppear>>(onAccept/onCancel/onChange)>>onWillDisappear>>onDidDisappear。<br />2.快速点击弹出，消失弹窗时，存在onWillDisappear在onDidAppear前生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| shadow<sup>12+</sup>              | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否  | 是  | 设置弹窗背板的阴影。<br />当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| shadow<sup>12+</sup>              | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否  | 是  | 设置弹窗背板的阴影。<br />**说明：**<br >当设备为2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | dateTimeOptions<sup>12+</sup> | [DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | 否 | 是 | 设置时分是否显示前导0，目前只支持设置hour和minute参数。<br/>默认值：<br/>hour: 24小时制默认为"2-digit"，设置hour是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"；12小时制默认为"numeric"，即没有前导0。<br/>minute: 默认为"2-digit"，设置minute是否按照2位数字显示，如果实际数值小于10，则会补充前导0并显示，即为"0X"。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | enableHoverMode<sup>14+</sup>     | boolean | 否  | 是  | 是否响应悬停态。<br />- true：响应悬停态。<br/>- false：不响应悬停态。<br/>默认值：false<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否  | 是  | 悬停态下弹窗默认展示区域。<br />默认值：HoverModeAreaType.BOTTOM_SCREEN <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
@@ -102,7 +102,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog 12小时制")
+      Button('TimePickerDialog 12小时制')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -114,26 +114,26 @@ struct TimePickerDialogExample {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             },
             onCancel: () => {
-              console.info("TimePickerDialog:onCancel()");
+              console.info('TimePickerDialog:onCancel()');
             },
             onChange: (value: TimePickerResult) => {
-              console.info("TimePickerDialog:onChange()" + JSON.stringify(value));
+              console.info('TimePickerDialog:onChange()' + JSON.stringify(value));
             },
             onDidAppear: () => {
-              console.info("TimePickerDialog:onDidAppear()");
+              console.info('TimePickerDialog:onDidAppear()');
             },
             onDidDisappear: () => {
-              console.info("TimePickerDialog:onDidDisappear()");
+              console.info('TimePickerDialog:onDidDisappear()');
             },
             onWillAppear: () => {
-              console.info("TimePickerDialog:onWillAppear()");
+              console.info('TimePickerDialog:onWillAppear()');
             },
             onWillDisappear: () => {
-              console.info("TimePickerDialog:onWillDisappear()");
+              console.info('TimePickerDialog:onWillDisappear()');
             }
           });
         })
@@ -147,7 +147,7 @@ struct TimePickerDialogExample {
             onAccept: (value: TimePickerResult) => {
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             },
           })
@@ -173,7 +173,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog 12小时制")
+      Button('TimePickerDialog 12小时制')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -207,7 +207,7 @@ struct TimePickerDialogExample {
             onAccept: (value: TimePickerResult) => {
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             }
           });
@@ -231,7 +231,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog 12小时制")
+      Button('TimePickerDialog 12小时制')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -243,26 +243,26 @@ struct TimePickerDialogExample {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             },
             onCancel: () => {
-              console.info("TimePickerDialog:onCancel()");
+              console.info('TimePickerDialog:onCancel()');
             },
             onChange: (value: TimePickerResult) => {
-              console.info("TimePickerDialog:onChange()" + JSON.stringify(value));
+              console.info('TimePickerDialog:onChange()' + JSON.stringify(value));
             },
             onDidAppear: () => {
-              console.info("TimePickerDialog:onDidAppear()");
+              console.info('TimePickerDialog:onDidAppear()');
             },
             onDidDisappear: () => {
-              console.info("TimePickerDialog:onDidDisappear()");
+              console.info('TimePickerDialog:onDidDisappear()');
             },
             onWillAppear: () => {
-              console.info("TimePickerDialog:onWillAppear()");
+              console.info('TimePickerDialog:onWillAppear()');
             },
             onWillDisappear: () => {
-              console.info("TimePickerDialog:onWillDisappear()");
+              console.info('TimePickerDialog:onWillDisappear()');
             },
             enableHoverMode: true,
             hoverModeArea: HoverModeAreaType.TOP_SCREEN
@@ -288,7 +288,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog")
+      Button('TimePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -298,7 +298,7 @@ struct TimePickerDialogExample {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             }
           });
@@ -323,7 +323,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog")
+      Button('TimePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -332,7 +332,7 @@ struct TimePickerDialogExample {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             }
           });
@@ -357,7 +357,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog")
+      Button('TimePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -368,7 +368,7 @@ struct TimePickerDialogExample {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             }
           });
@@ -392,7 +392,7 @@ struct TimePickerDialogExample {
 
   build() {
     Column() {
-      Button("TimePickerDialog")
+      Button('TimePickerDialog')
         .margin(20)
         .onClick(() => {
           this.getUIContext().showTimePickerDialog({
@@ -404,7 +404,7 @@ struct TimePickerDialogExample {
               // 设置selectTime为按下确定按钮时的时间，这样当弹窗再次弹出时显示选中的为上一次确定的时间
               if (value.hour != undefined && value.minute != undefined) {
                 this.selectTime.setHours(value.hour, value.minute);
-                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value));
+                console.info('TimePickerDialog:onAccept()' + JSON.stringify(value));
               }
             }
           });

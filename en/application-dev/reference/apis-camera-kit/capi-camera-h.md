@@ -116,7 +116,7 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | A fatal error occurs in the camera service, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal,<br> for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
 
 ### Camera_Status
 
@@ -339,10 +339,10 @@ Enumerates the image rotation angles.
 
 | Enum Item| Description|
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees. |
-| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees. |
-| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees. |
-| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees. |
+| IAMGE_ROTATION_0 = 0 | The image rotates 0 degrees.|
+| IAMGE_ROTATION_90 = 90 | The image rotates 90 degrees.|
+| IAMGE_ROTATION_180 = 180 | The image rotates 180 degrees.|
+| IAMGE_ROTATION_270 = 270 | The image rotates 270 degrees.|
 
 ### Camera_QualityLevel
 
@@ -410,7 +410,7 @@ Enumerates the smooth zoom modes.
 
 | Enum Item| Description|
 | -- | -- |
-| NORMAL = 0 | Bessel curve mode. |
+| NORMAL = 0 | Bessel curve mode.|
 
 ### Camera_SystemPressureLevel
 
@@ -501,9 +501,9 @@ Enumerates the fold statuses.
 
 | Enum Item| Description|
 | -- | -- |
-| NON_FOLDABLE = 0 | Unfoldable. |
-| EXPANDED = 1 | Unfolded. |
-| FOLDED = 2 | Folded. |
+| NON_FOLDABLE = 0 | Unfoldable.|
+| EXPANDED = 1 | Unfolded.|
+| FOLDED = 2 | Folded.|
 
 ### Camera_QualityPrioritization
 
@@ -620,7 +620,7 @@ Obtains a Camera_Manager instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
 ### OH_Camera_DeleteCameraManager()
 
@@ -644,4 +644,4 @@ Deletes a Camera_Manager instance.
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: A fatal error occurs in the camera service.|
+| [Camera_ErrorCode](#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|

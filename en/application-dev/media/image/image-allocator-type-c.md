@@ -211,8 +211,7 @@ OH_PixelmapNative* TestStrideWithAllocatorType() {
 
 ## Memory Restrictions for Decoding a Single Image
 
-To prevent system crashes from memory overflow, the system enforces memory restrictions on processes. For details, see [Application-Killed Issues Detection](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-stability-runtime-appkilled-detection).
-
+To prevent system crashes from memory overflow, the system enforces memory restrictions on processes. 
 The image framework imposes a 2 GB memory limit for decoding a single image. Processes should actively manage their memory usage. To avoid process termination, you are advised to release [OH_PixelmapNative](../../reference/apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) when it is no longer needed.
 
 Applications can use [onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) to listen for system memory changes.
