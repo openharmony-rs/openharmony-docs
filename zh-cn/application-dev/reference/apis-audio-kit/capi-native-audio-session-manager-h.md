@@ -80,7 +80,7 @@
 
 ### OH_AudioSession_ConcurrencyMode
 
-```
+```c
 enum OH_AudioSession_ConcurrencyMode
 ```
 
@@ -99,7 +99,7 @@ enum OH_AudioSession_ConcurrencyMode
 
 ### OH_AudioSession_Scene
 
-```
+```c
 enum OH_AudioSession_Scene
 ```
 
@@ -117,7 +117,7 @@ enum OH_AudioSession_Scene
 
 ### OH_AudioSession_StateChangeHint
 
-```
+```c
 enum OH_AudioSession_StateChangeHint
 ```
 
@@ -138,7 +138,7 @@ enum OH_AudioSession_StateChangeHint
 
 ### OH_AudioSession_OutputDeviceChangeRecommendedAction
 
-```
+```c
 enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 ```
 
@@ -155,7 +155,7 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 ### OH_AudioSession_DeactivatedReason
 
-```
+```c
 enum OH_AudioSession_DeactivatedReason
 ```
 
@@ -172,7 +172,7 @@ enum OH_AudioSession_DeactivatedReason
 
 ### OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
-```
+```c
 enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 ```
 
@@ -194,7 +194,7 @@ enum OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory
 
 ### OH_AudioSession_StateChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChangedEvent event)
 ```
 
@@ -212,7 +212,7 @@ typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChange
 
 ### OH_AudioSession_AvailableDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
 ```
 
@@ -231,7 +231,7 @@ typedef void (*OH_AudioSession_AvailableDeviceChangedCallback)(OH_AudioDevice_Ch
 
 ### OH_AudioSession_CurrentInputDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason)
 ```
 
@@ -250,7 +250,7 @@ typedef void (*OH_AudioSession_CurrentInputDeviceChangedCallback)(OH_AudioDevice
 
 ### OH_AudioSession_CurrentOutputDeviceChangedCallback()
 
-```
+```c
 typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *devices, OH_AudioStream_DeviceChangeReason changeReason, OH_AudioSession_OutputDeviceChangeRecommendedAction recommendedAction)
 ```
 
@@ -270,7 +270,7 @@ typedef void (*OH_AudioSession_CurrentOutputDeviceChangedCallback)(OH_AudioDevic
 
 ### OH_AudioSession_DeactivatedCallback()
 
-```
+```c
 typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_DeactivatedEvent event)
 ```
 
@@ -288,7 +288,7 @@ typedef int32_t (*OH_AudioSession_DeactivatedCallback)(OH_AudioSession_Deactivat
 
 ### OH_AudioManager_GetAudioSessionManager()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionManager **audioSessionManager)
 ```
 
@@ -312,7 +312,7 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioSessionManager(OH_AudioSessionMana
 
 ### OH_AudioSessionManager_ActivateAudioSession()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessionManager *audioSessionManager, const OH_AudioSession_Strategy *strategy)
 ```
 
@@ -337,7 +337,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_ActivateAudioSession(OH_AudioSessio
 
 ### OH_AudioSessionManager_DeactivateAudioSession()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSessionManager *audioSessionManager)
 ```
 
@@ -361,7 +361,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_DeactivateAudioSession(OH_AudioSess
 
 ### OH_AudioSessionManager_IsAudioSessionActivated()
 
-```
+```c
 bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audioSessionManager)
 ```
 
@@ -385,7 +385,7 @@ bool OH_AudioSessionManager_IsAudioSessionActivated(OH_AudioSessionManager *audi
 
 ### OH_AudioSessionManager_RegisterSessionDeactivatedCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)
 ```
 
@@ -410,7 +410,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterSessionDeactivatedCallback(
 
 ### OH_AudioSessionManager_UnregisterSessionDeactivatedCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_DeactivatedCallback callback)
 ```
 
@@ -435,7 +435,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterSessionDeactivatedCallbac
 
 ### OH_AudioSessionManager_SetScene()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_Scene scene)
 ```
 
@@ -460,7 +460,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetScene(OH_AudioSessionManager *au
 
 ### OH_AudioSessionManager_RegisterStateChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)
 ```
 
@@ -485,7 +485,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterStateChangeCallback(OH_Audi
 
 ### OH_AudioSessionManager_UnregisterStateChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_StateChangedCallback callback)
 ```
 
@@ -510,7 +510,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterStateChangeCallback(OH_Au
 
 ### OH_AudioSessionManager_SetDefaultOutputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type deviceType)
 ```
 
@@ -544,7 +544,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 
 ### OH_AudioSessionManager_GetDefaultOutputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Type *deviceType)
 ```
 
@@ -569,7 +569,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetDefaultOutputDevice(OH_AudioSess
 
 ### OH_AudioSessionManager_ReleaseDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)
 ```
 
@@ -594,7 +594,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevices(OH_AudioSessionManag
 
 ### OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)
 ```
 
@@ -619,7 +619,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentOutputDeviceChangeCa
 
 ### OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentOutputDeviceChangedCallback callback)
 ```
 
@@ -644,7 +644,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentOutputDeviceChange
 
 ### OH_AudioSessionManager_GetAvailableDevices()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)
 ```
 
@@ -670,7 +670,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetAvailableDevices(OH_AudioSession
 
 ### OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioDevice_Usage deviceUsage, OH_AudioSession_AvailableDeviceChangedCallback callback)
 ```
 
@@ -696,7 +696,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterAvailableDevicesChangeCallb
 
 ### OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_AvailableDeviceChangedCallback callback)
 ```
 
@@ -721,7 +721,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterAvailableDevicesChangeCal
 
 ### OH_AudioSessionManager_SelectMediaInputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *deviceDescriptor)
 ```
 
@@ -746,7 +746,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SelectMediaInputDevice(OH_AudioSess
 
 ### OH_AudioSessionManager_GetSelectedMediaInputDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor **audioDeviceDescriptor)
 ```
 
@@ -771,7 +771,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetSelectedMediaInputDevice(OH_Audi
 
 ### OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory category)
 ```
 
@@ -796,7 +796,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRec
 
 ### OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRecordCategory(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory *category)
 ```
 
@@ -821,7 +821,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_GetBluetoothAndNearlinkPreferredRec
 
 ### OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)
 ```
 
@@ -846,7 +846,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCal
 
 ### OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)
 ```
 
@@ -871,7 +871,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeC
 
 ### OH_AudioSessionManager_ReleaseDevice()
 
-```
+```c
 OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)
 ```
 

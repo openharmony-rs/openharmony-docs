@@ -74,7 +74,7 @@
 
 ### Sensor_Type
 
-```
+```c
 enum Sensor_Type
 ```
 
@@ -104,7 +104,7 @@ enum Sensor_Type
 
 ### Sensor_Result
 
-```
+```c
 enum Sensor_Result
 ```
 
@@ -123,7 +123,7 @@ enum Sensor_Result
 
 ### Sensor_Accuracy
 
-```
+```c
 enum Sensor_Accuracy
 ```
 
@@ -145,7 +145,7 @@ enum Sensor_Accuracy
 
 ### OH_Sensor_CreateInfos()
 
-```
+```c
 Sensor_Info **OH_Sensor_CreateInfos(uint32_t count)
 ```
 
@@ -169,7 +169,7 @@ Sensor_Info **OH_Sensor_CreateInfos(uint32_t count)
 
 ### OH_Sensor_DestroyInfos()
 
-```
+```c
 int32_t OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count)
 ```
 
@@ -194,7 +194,7 @@ int32_t OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count)
 
 ### OH_SensorInfo_GetName()
 
-```
+```c
 int32_t OH_SensorInfo_GetName(Sensor_Info* sensor, char *sensorName, uint32_t *length)
 ```
 
@@ -220,7 +220,7 @@ int32_t OH_SensorInfo_GetName(Sensor_Info* sensor, char *sensorName, uint32_t *l
 
 ### OH_SensorInfo_GetVendorName()
 
-```
+```c
 int32_t OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint32_t *length)
 ```
 
@@ -246,7 +246,7 @@ int32_t OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint3
 
 ### OH_SensorInfo_GetType()
 
-```
+```c
 int32_t OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType)
 ```
 
@@ -271,7 +271,7 @@ int32_t OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType)
 
 ### OH_SensorInfo_GetResolution()
 
-```
+```c
 int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 ```
 
@@ -296,7 +296,7 @@ int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 
 ### OH_SensorInfo_GetMinSamplingInterval()
 
-```
+```c
 int32_t OH_SensorInfo_GetMinSamplingInterval(Sensor_Info* sensor, int64_t *minSamplingInterval)
 ```
 
@@ -321,7 +321,7 @@ int32_t OH_SensorInfo_GetMinSamplingInterval(Sensor_Info* sensor, int64_t *minSa
 
 ### OH_SensorInfo_GetMaxSamplingInterval()
 
-```
+```c
 int32_t OH_SensorInfo_GetMaxSamplingInterval(Sensor_Info* sensor, int64_t *maxSamplingInterval)
 ```
 
@@ -346,7 +346,7 @@ int32_t OH_SensorInfo_GetMaxSamplingInterval(Sensor_Info* sensor, int64_t *maxSa
 
 ### OH_SensorEvent_GetType()
 
-```
+```c
 int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorType)
 ```
 
@@ -371,7 +371,7 @@ int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorTyp
 
 ### OH_SensorEvent_GetTimestamp()
 
-```
+```c
 int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestamp)
 ```
 
@@ -396,7 +396,7 @@ int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestam
 
 ### OH_SensorEvent_GetAccuracy()
 
-```
+```c
 int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *accuracy)
 ```
 
@@ -421,7 +421,7 @@ int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *a
 
 ### OH_SensorEvent_GetData()
 
-```
+```c
 int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t *length)
 ```
 
@@ -447,7 +447,7 @@ int32_t OH_SensorEvent_GetData(Sensor_Event* sensorEvent, float **data, uint32_t
 
 ### OH_Sensor_CreateSubscriptionId()
 
-```
+```c
 Sensor_SubscriptionId *OH_Sensor_CreateSubscriptionId(void)
 ```
 
@@ -465,7 +465,7 @@ Sensor_SubscriptionId *OH_Sensor_CreateSubscriptionId(void)
 
 ### OH_Sensor_DestroySubscriptionId()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)
 ```
 
@@ -489,7 +489,7 @@ int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)
 
 ### OH_SensorSubscriptionId_GetType()
 
-```
+```c
 int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *sensorType)
 ```
 
@@ -514,7 +514,7 @@ int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *
 
 ### OH_SensorSubscriptionId_SetType()
 
-```
+```c
 int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_Type sensorType)
 ```
 
@@ -539,7 +539,7 @@ int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_
 
 ### OH_Sensor_CreateSubscriptionAttribute()
 
-```
+```c
 Sensor_SubscriptionAttribute *OH_Sensor_CreateSubscriptionAttribute(void)
 ```
 
@@ -557,7 +557,7 @@ Sensor_SubscriptionAttribute *OH_Sensor_CreateSubscriptionAttribute(void)
 
 ### OH_Sensor_DestroySubscriptionAttribute()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriptionAttribute(Sensor_SubscriptionAttribute *attribute)
 ```
 
@@ -581,7 +581,7 @@ int32_t OH_Sensor_DestroySubscriptionAttribute(Sensor_SubscriptionAttribute *att
 
 ### OH_SensorSubscriptionAttribute_SetSamplingInterval()
 
-```
+```c
 int32_t OH_SensorSubscriptionAttribute_SetSamplingInterval(Sensor_SubscriptionAttribute* attribute, const int64_t samplingInterval)
 ```
 
@@ -606,7 +606,7 @@ int32_t OH_SensorSubscriptionAttribute_SetSamplingInterval(Sensor_SubscriptionAt
 
 ### OH_SensorSubscriptionAttribute_GetSamplingInterval()
 
-```
+```c
 int32_t OH_SensorSubscriptionAttribute_GetSamplingInterval(Sensor_SubscriptionAttribute* attribute, int64_t *samplingInterval)
 ```
 
@@ -631,7 +631,7 @@ int32_t OH_SensorSubscriptionAttribute_GetSamplingInterval(Sensor_SubscriptionAt
 
 ### Sensor_EventCallback()
 
-```
+```c
 typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 ```
 
@@ -643,7 +643,7 @@ typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 
 ### OH_Sensor_CreateSubscriber()
 
-```
+```c
 Sensor_Subscriber *OH_Sensor_CreateSubscriber(void)
 ```
 
@@ -661,7 +661,7 @@ Sensor_Subscriber *OH_Sensor_CreateSubscriber(void)
 
 ### OH_Sensor_DestroySubscriber()
 
-```
+```c
 int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)
 ```
 
@@ -685,7 +685,7 @@ int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)
 
 ### OH_SensorSubscriber_SetCallback()
 
-```
+```c
 int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sensor_EventCallback callback)
 ```
 
@@ -710,7 +710,7 @@ int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sen
 
 ### OH_SensorSubscriber_GetCallback()
 
-```
+```c
 int32_t OH_SensorSubscriber_GetCallback(Sensor_Subscriber* subscriber, Sensor_EventCallback *callback)
 ```
 

@@ -554,7 +554,7 @@ Provides the information about the custom page transition animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | ------ | ---- | ---- | ---- | ---- |
 | timeout | number | No| Yes| Timeout for the custom page transition animation. The timeout timer starts when the default animation (page scrolling) reaches the point where the first frame is moved out of the viewport. If you do not call the **finishTransition** API of [SwiperContentTransitionProxy](#swipercontenttransitionproxy) before the timer expires, the component considers that the custom animation of the page ends and immediately removes the page node from the render tree. The unit is ms. The default value is **0**.|
 | transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | No| No| Content of the custom page transition animation.|
@@ -569,7 +569,7 @@ Implements the proxy object returned during the execution of the custom page tra
 
 ### **Properties**
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | ------ | ---- | ---- | ---- | ---- |
 | selectedIndex | number | No| No| Index of the currently selected page.|
 | index | number | No| No| Index of a page in the viewport.|

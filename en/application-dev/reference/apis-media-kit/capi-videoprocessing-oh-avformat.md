@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct OH_AVFormat OH_AVFormat
+```
+
 ## Overview
 
 The struct describes the OH_AVFormat object.

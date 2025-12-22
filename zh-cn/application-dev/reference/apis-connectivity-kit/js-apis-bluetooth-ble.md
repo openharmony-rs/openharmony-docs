@@ -22,7 +22,7 @@ import { ble } from '@kit.ConnectivityKit';
 ```
 
 
-## ProfileConnectionState<sup>10+</sup>
+## ProfileConnectionState
 
 type ProfileConnectionState = constant.ProfileConnectionState
 
@@ -2478,7 +2478,7 @@ getConnectedState(deviceId: string): ProfileConnectionState
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| [ProfileConnectionState](#profileconnectionstate10) | 蓝牙设备的profile连接状态。 |
+| [ProfileConnectionState](#profileconnectionstate) | 蓝牙设备的profile连接状态。 |
 
 **错误码**：
 
@@ -4253,7 +4253,7 @@ getConnectedState(): ProfileConnectionState
 
 | 类型                  | 说明                  |
 | ------------------- | ------------------- |
-| [ProfileConnectionState](#profileconnectionstate10) | 蓝牙设备的profile连接状态。 |
+| [ProfileConnectionState](#profileconnectionstate) | 蓝牙设备的profile连接状态。 |
 
 **错误码**：
 

@@ -7,6 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct NativePixelMap_ NativePixelMap_
+```
+
 ## Overview
 
 Defines a pixel map defined by the image framework.

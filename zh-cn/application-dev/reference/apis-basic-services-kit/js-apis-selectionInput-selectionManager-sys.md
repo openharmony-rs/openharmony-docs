@@ -297,18 +297,18 @@ export default ServiceExtAbility;
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
-| selectionType	    | [SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
-| startDisplayX   	| number   | 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
-| startDisplayY   	| number   | 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |
-| endDisplayX   	| number   | 否   | 否   | 划词结束位置的屏幕x轴坐标，单位为px。 |
-| endDisplayY   	| number   | 否   | 否   | 划词结束位置的屏幕y轴坐标，单位为px。 |
-| startWindowX   	| number   | 否   | 否   | 划词起始位置的窗口x轴坐标，单位为px。 |
-| startWindowY   	| number   | 否   | 否   | 划词起始位置的窗口y轴坐标，单位为px。 |
-| endWindowX   	| number   | 否   | 否   | 划词结束位置的窗口x轴坐标，单位为px。 |
-| endWindowY   	| number   | 否   | 否   | 划词结束位置的窗口y轴坐标，单位为px。 |
-| displayID   	| number   | 否   | 否   | 被划词应用窗口的屏幕ID。 |
-| windowID   	| number   | 否   | 否   | 被划词应用的窗口ID。 |
-| bundleName   	| string   | 否   | 否   | 划词应用的bundleName。 |
+| selectionType |[SelectionType](#selectiontype)   | 否   | 否   | 触发划词类型。 |
+| startDisplayX |number| 否   | 否   | 划词起始位置的屏幕x轴坐标，单位为px。 |
+| startDisplayY |number| 否   | 否   | 划词起始位置的屏幕y轴坐标，单位为px。 |
+| endDisplayX   |number| 否   | 否   | 划词结束位置的屏幕x轴坐标，单位为px。 |
+| endDisplayY   |number| 否   | 否   | 划词结束位置的屏幕y轴坐标，单位为px。 |
+| startWindowX  |number| 否   | 否   | 划词起始位置的窗口x轴坐标，单位为px。 |
+| startWindowY  |number| 否   | 否   | 划词起始位置的窗口y轴坐标，单位为px。 |
+| endWindowX    |number| 否   | 否   | 划词结束位置的窗口x轴坐标，单位为px。 |
+| endWindowY    |number| 否   | 否   | 划词结束位置的窗口y轴坐标，单位为px。 |
+| displayID     |number| 否   | 否   | 被划词应用窗口的屏幕ID。 |
+| windowID      |number| 否   | 否   | 被划词应用的窗口ID。 |
+| bundleName    |string| 否   | 否   | 被划词应用的bundleName。 |
 
 ## Panel
 
@@ -453,16 +453,19 @@ startMoving(): Promise\<void>
 | 33600002   | This selection window has been destroyed. |
 
 **示例：**
-
+<!--code_no_check-->
 ```ts
 import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 RelativeContainer() {
+  /* 
+   * 页面布局内容，需要开发者根据实际补充
+   */
 }
 .onTouch((event: TouchEvent) => {
   if (event.type === TouchType.Down) {
     if (selectionPanel !== undefined) {
-      selectionPanel.startMoving().then(() => {
+      selectionPanel.startMoving().then(() => {   // selectionPanel为createPanel创建出的panel实例
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
         console.error(`Failed to startMoving panel: ${JSON.stringify(err)}`);

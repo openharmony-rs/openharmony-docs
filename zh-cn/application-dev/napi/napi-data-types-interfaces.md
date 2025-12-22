@@ -93,6 +93,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 - mode值为napi_tsfn_release时：表示将tsfn中持有的线程数减一，当线程数减到0时，线程安全函数tsfn将被销毁。
 
 - mode值为napi_tsfn_abort时：该tsfn关闭，不能再调用此tsfn。
+
   如果设置为napi_tsfn_abort，利用napi_call_threadsafe_function接口调用此tsfn时，该行为可能导致UAF问题————当napi_tsfn_abort被设置时，tsfn立刻关闭，不能再被调用。如果此时调用napi_call_threadsafe_function，系统可能会返回napi_closing状态，表示tsfn正在关闭，但是传递给tsfn的data并未被放入队列中，这意味着data可能未被正确处理。如果data指向的内存已经被释放（例如，tsfn的资源被释放），但调用者仍然尝试访问或使用data，就会出现UAF(Use-After-Free)问题。
 
 ### napi_threadsafe_function_call_mode
@@ -312,6 +313,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_create_string_utf8 | 通过UTF8编码的C字符串数据创建ArkTS String。 |
 | napi_get_value_string_latin1 | 获取给定ArkTS value对应的ISO-8859-1编码的字符串。 |
 | napi_get_value_string_utf8 | 获取给定ArkTS value对应的UTF8编码的字符串。 |
+| napi_create_external_string_utf16 | 通过给定的UTF-16编码的字符串缓冲区来创建ArkTS字符串，该方法能避免字符串的内存拷贝。 |
+| napi_create_external_string_ascii | 通过给定的ASCII编码的字符串缓冲区来创建ArkTS字符串，该方法能避免字符串的内存拷贝。 |
 
 ### date相关
 
@@ -568,7 +571,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_close_critical_scope | 关闭临界区作用域。 |
 | napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据。 |
 | napi_create_strong_reference | 创建指向ArkTS对象的强引用。 |
-| napi_delete_strong_reference | 删除强引用。|
+| napi_delete_strong_reference | 删除强引用。 |
 | napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值。 |
 | napi_create_strong_sendable_reference | 创建指向Sendable ArkTS对象的Sendable强引用。 |
 | napi_delete_strong_sendable_reference | 删除Sendable强引用。 |
@@ -846,6 +849,28 @@ napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
 
 ```c
 napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
+```
+
+**napi_create_external_string_utf16**
+
+```cpp
+napi_status napi_create_external_string_utf16(napi_env env,
+                                              const char16_t* str,
+                                              size_t length,
+                                              napi_finalize_callback finalize_callback,
+                                              void* finalize_hint,
+                                              napi_value* result);
+```
+
+**napi_create_external_string_ascii**
+
+```cpp
+napi_status napi_create_external_string_ascii(napi_env env,
+                                              const char* str,
+                                              size_t length,
+                                              napi_finalize_callback finalize_callback,
+                                              void* finalize_hint,
+                                              napi_value* result);
 ```
 
 **napi_create_strong_sendable_reference**

@@ -304,9 +304,9 @@ type Matrix4Transit = Matrix4Transit
 
 | 名称 | 类型                       | 只读 | 可选 | 说明            |
 | ---- | -------------------------- | ---- | ---- | --------------- |
-| x    | number&nbsp;\|&nbsp;string | 否   | 是   | x轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
-| y    | number&nbsp;\|&nbsp;string | 否   | 是   | y轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
-| z    | number&nbsp;\|&nbsp;string | 否   | 是   | z轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。<br/>默认值：0.0 |
+| x    | number&nbsp;\|&nbsp;string | 否   | 是   | x轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>默认值：0<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
+| y    | number&nbsp;\|&nbsp;string | 否   | 是   | y轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>默认值：0<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
+| z    | number&nbsp;\|&nbsp;string | 否   | 是   | z轴的平移距离。<br/>类型为number时，单位为vp，取值范围为(-∞, +∞)。<br/>默认值：0<br/>类型为string时，形式参考[Length](ts-types.md#length)的string类型。 |
 
 ## ScaleOptions对象说明
 
@@ -332,7 +332,7 @@ type Matrix4Transit = Matrix4Transit
 
 ### 示例1（为组件添加图形变换效果）
 
-该示例通过rotate、translate、scale、transform为组件添加旋转、平移、缩放、变换矩阵效果。
+该示例通过[rotate](#rotate)、[translate](#translate)、[scale](#scale)、[transform](#transform)为组件添加旋转、平移、缩放、变换矩阵效果。
 
 ```ts
 // xxx.ets
@@ -386,7 +386,7 @@ struct TransformExample {
 
 ### 示例2（设置旋转视距）
 
-该示例通过perspective为组件添加视距效果。
+该示例通过[perspective](#rotateoptions对象说明)为组件添加视距效果。
 
 ```ts
 // xxx.ets
@@ -430,7 +430,7 @@ struct Index {
 
 ### 示例3（按中心点旋转）
 
-该示例通过设置rotate和transform为不同的参数实现相同的旋转效果。
+该示例通过设置[rotate](#rotate)和[transform](#transform)为不同的参数实现相同的旋转效果。
 
 ```ts
 import { matrix4 } from '@kit.ArkUI';

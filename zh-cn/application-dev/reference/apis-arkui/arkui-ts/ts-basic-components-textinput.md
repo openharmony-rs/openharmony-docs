@@ -249,7 +249,7 @@ fontFamily(value: ResourceStr)
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和自定义字体。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
+| value  | [ResourceStr](ts-types.md#resourcestr) | 是   | 字体列表。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。<br>应用当前支持'HarmonyOS Sans'字体和自定义字体。<br>卡片当前仅支持'HarmonyOS Sans'字体。 |
 
 > **说明：**
 >
@@ -578,7 +578,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 | 参数名                | 类型                                        | 必填 | 说明                                                         |
 | --------------------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | 是   | 自定义键盘。 |
+| value                 | [CustomBuilder](ts-types.md#custombuilder8) \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | 是   | 自定义键盘。设定值为undefined时，关闭自定义键盘。 |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。                             |
 
 ### enableAutoFill<sup>11+</sup>
@@ -1039,6 +1039,16 @@ enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
 
+开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
+
+```json
+"requestPermissions": [
+ {
+    "name": "ohos.permission.VIBRATE",
+ }
+]
+```
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1048,17 +1058,6 @@ enableHapticFeedback(isEnabled: boolean)
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
 | isEnabled | boolean | 是   | 是否开启触控反馈。<br/>true表示开启触控反馈，false表示不开启触控反馈。<br/>默认值：true |
-
->  **说明：**
->
->  开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
-> ```json
-> "requestPermissions": [
->  {
->     "name": "ohos.permission.VIBRATE",
->  }
-> ]
-> ```
 
 ### autoCapitalizationMode<sup>20+</sup>
 
@@ -1256,15 +1255,17 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 ## InputType枚举说明
 
+单行文本输入框类型。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称                          |  值   | 说明                       |
 | ----------------------------- | ----- | --------------------------- |
-| Normal                        | - | 基本输入模式，无特殊限制。<br/>内联输入风格只支持InputType.Normal类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Password                      | - | 密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式中，[decoration](#decoration12)、[showUnderline](#showunderline10)不生效。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Email                         | - | 邮箱地址输入模式。<br/>支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Number                        | - | 纯数字输入模式。<br/>不支持负数、小数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| PhoneNumber<sup>9+</sup>      | - | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Normal                        | 0 | 基本输入模式，无特殊限制。<br/>内联输入风格只支持InputType.Normal类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Number                        | 2 | 纯数字输入模式。<br/>不支持负数、小数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PhoneNumber<sup>9+</sup>      | 3 | 电话号码输入模式。<br/>支持输入数字、空格、+ 、-、*、#、(、)，长度不限。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Email                         | 5 | 邮箱地址输入模式。<br/>支持数字、字母、下划线、小数点、!、#、$、%、&、'、"、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Password                      | 7 | 密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式中，[decoration](#decoration12)、[showUnderline](#showunderline10)不生效。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NUMBER_PASSWORD<sup>11+</sup> | 8 | 纯数字密码输入模式。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>密码输入模式不支持下划线样式。在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | USER_NAME<sup>11+</sup>       | 10 | 用户名输入模式，无特殊限制。<br/>在已启用密码保险箱的情况下，支持用户名、密码的自动保存和自动填充。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | NEW_PASSWORD<sup>11+</sup>    | 11 | 新密码输入模式，无特殊限制。<br/>默认输入文字短暂显示后变成圆点。从API version 12开始，PC/2in1设备上输入文字直接显示为圆点。<br/>TV设备上输入框末尾默认不显示小眼睛图标，其他设备输入框末尾默认显示小眼睛图标。<br/>在已启用密码保险箱的情况下，支持自动生成新密码。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -1398,7 +1399,9 @@ onEditChanged(callback:&nbsp;(isEditing:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 输入状态变化时，触发该回调。
 
-从API 8开始废弃，建议使用onEditChange。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 8开始废弃，建议使用[onEditChange](#oneditchange8)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1998,47 +2001,74 @@ struct TextInputExample {
 
 ### 示例3（设置自定义键盘）
 
-从API version 10开始，该示例通过[customKeyboard](#customkeyboard10)属性实现了自定义键盘的功能。
+该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性分别将value中的入参类型设置为[CustomBuilder](ts-types.md#custombuilder8)和[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)，实现了自定义键盘的功能。
+
+从API version 22开始[customKeyboard](#customkeyboard10)属性新增了入参类型[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)。
 
 ```ts
 // xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+class BuilderParams {
+  inputValue: string;
+  controller: TextInputController;
+
+  constructor(inputValue: string, controller: TextInputController) {
+    this.inputValue = inputValue;
+    this.controller = controller;
+  }
+}
+@Builder
+function CustomKeyboardBuilder(builderParams: BuilderParams) {
+  Column() {
+    Row() {
+      Button('x').onClick(() => {
+        // 关闭自定义键盘
+        builderParams.controller.stopEditing();
+      }).margin(10)
+    }
+
+    Grid() {
+      ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+        GridItem() {
+          Button(item + "")
+            .width(110).onClick(() => {
+            builderParams.inputValue += item;
+          })
+        }
+      })
+    }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+  }.backgroundColor(Color.Gray)
+}
 @Entry
 @Component
 struct TextInputExample {
   controller: TextInputController = new TextInputController();
   @State inputValue: string = "";
+  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
+  @State supportAvoidance: boolean = true;
 
-  // 自定义键盘组件
-  @Builder
-  CustomKeyboardBuilder() {
-    Column() {
-      Button('x').onClick(() => {
-        // 关闭自定义键盘
-        this.controller.stopEditing();
-      })
-      Grid() {
-        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
-          GridItem() {
-            Button(item + "")
-              .width(110).onClick(() => {
-              this.inputValue += item;
-            })
-          }
-        })
-      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
-    }.backgroundColor(Color.Gray)
+  aboutToAppear(): void {
+    // 创建ComponentContent
+    this.componentContent = new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
   }
-
-  build() {
+  build(){
     Column() {
-      TextInput({ controller: this.controller, text: this.inputValue })// 绑定自定义键盘
-        .customKeyboard(this.CustomKeyboardBuilder()).margin(10).border({ width: 1 }).height('48vp')
+      Text('Builder').margin(10).border({ width: 1 })
+      TextInput({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
+
+      Text('ComponentContent').margin(10).border({ width: 1 })
+      TextInput({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
     }
   }
 }
 ```
 
-![customKeyboard](figures/textInputCustomKeyboard.png)
+![customKeyboard](figures/textInputCustomKeyboard1.gif)
 
 ### 示例4（设置右侧清除按钮样式）
 
@@ -2994,10 +3024,12 @@ struct TextInputExample {
   }
 }
 ```
+<!--RP3End-->
+
 | 系统字体缩放倍数为2倍 | 系统字体缩放倍数为3.2倍 |
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/TextInput_font_scale1.png)  | ![](figures/TextInput_font_scale2.png)  |
-<!--RP3End-->
+
 ### 示例19（设置选中指定区域的文本内容）
 
 从API version 10开始，该示例通过[setTextSelection](#settextselection10)方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。

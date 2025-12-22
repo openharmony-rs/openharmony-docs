@@ -213,7 +213,7 @@ struct PreImeEventExample {
 
 使用onKeyEventDispatch分发按键事件到子组件，子组件使用onKeyEvent。
 
-<!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->
+<!-- @[key_distribute_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/device/OnKeyDistributeEvent.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';

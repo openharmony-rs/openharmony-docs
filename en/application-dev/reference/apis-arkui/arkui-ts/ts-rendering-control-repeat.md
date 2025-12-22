@@ -1,4 +1,10 @@
 # Repeat
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @liubihao-->
+<!--Designer: @keerecles-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 > **NOTE**
 > 
@@ -6,7 +12,7 @@
 
 **Repeat** is used to perform repeated rendering based on array data. Generally, it is used together with container components.
 
-This document provides API parameter descriptions. For details about the component descriptions and usage guidelines, see [Repeat: Reusable Repeated Rendering](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
+This document provides API parameter descriptions. For details about the component descriptions and usage guidelines, see [Repeat: Reusing Components for Repeated Content Rendering](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md).
 
 ## APIs
 
@@ -50,22 +56,20 @@ Repeat<string>(this.arr)
 
 ## Properties
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
+In addition to the [drag-and-drop sorting](./ts-universal-attributes-drag-sorting.md) attribute, the following attributes are supported.
 
 ### each
 
 each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
-Component generator. When none of the **.template()** types match the return value of **.templateId()**, **.each()** will be used to process data items.
+Component generator. When the return value of **.templateId()** does not match any **.template()** type (that is, the current item does not match any defined template style), the data item is processed using **.each()**.
 
 > **NOTE**
 >
-> The **each** property is mandatory. If it is omitted, runtime errors will occur.
-> The **itemGenerator** parameter is of the **RepeatItem** type, which combines **item** and **index**. Do not destructure **RepeatItem**.
+> - The **each** property is mandatory. If it is omitted, runtime errors will occur.
+> - The **itemGenerator** parameter is of the **RepeatItem** type, which combines **item** and **index**. Do not destructure **RepeatItem**.
+>
+> - This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -77,7 +81,7 @@ Component generator. When none of the **.template()** types match the return val
 
 | Name| Type  | Mandatory| Description|
 | ------ | ---------- | -------- | -------- |
-| repeatItem  | [RepeatItem](#repeatitemt)\<T\> | Yes| Repeat data item.|
+| repeatItem  | [RepeatItem](#repeatitemt)\<T\> | No| Repeat data item.|
 
 **Example**
 ```ts
@@ -92,6 +96,10 @@ key(keyGenerator: (item: T, index: number) => string)
 
 Key generator.
 
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -102,8 +110,8 @@ Key generator.
 
 | Name| Type  | Mandatory| Description |
 | ------ | ---------- | -------- | -------- |
-| item  | T | Yes| Data item in the **arr** array.|
-| index  | number | Yes| Index of the data item in the **arr** array.|
+| item  | T | No| Data item in the **arr** array.|
+| index  | number | No| Index of the data item in the **arr** array.|
 
 **Example**
 ```ts
@@ -119,6 +127,10 @@ Repeat<string>(this.arr)
 virtualScroll(virtualScrollOptions?: VirtualScrollOptions)
 
 Enables virtual scrolling for **Repeat**.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -146,6 +158,10 @@ List() {
 template(type: string, itemBuilder: RepeatItemBuilder\<T\>, templateOptions?: TemplateOptions)
 
 Renders the corresponding template child component based on the template type.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -177,6 +193,10 @@ List() {
 templateId(typedFunc: TemplateTypedFunc\<T\>)
 
 Assigns a template type for this data item.
+
+> **NOTE**
+>
+> This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -229,23 +249,21 @@ Defines a union type for **Repeat** data source parameters.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Mandatory| Description                                        |
-| ------ | ------ | ---- | -------------------------------------------- |
-| item   | T      | Yes  | Each data item in the **arr** array. **T** indicates the data type passed in.|
-| index  | number | Yes  | Index corresponding to the current data item.                      |
+| Name| Type  | Read-Only| Optional| Description                                        |
+| ------ | ------ | ---- | ---- | -------------------------------------------- |
+| item   | T      | No| No | Each data item in the **arr** array. **T** indicates the data type passed in.|
+| index  | number | No| No | Index corresponding to the current data item.                      |
 
 ## VirtualScrollOptions
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Type  | Mandatory| Description                                                        |
-| ---------- | ------ | ---- | ------------------------------------------------------------ |
-| totalCount | number | No  | Total number of data items to load, which may not equal the data source length.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| reusable<sup>18+</sup> | boolean | No  | Whether to enable the reuse feature. The value **true** means to enable the reuse feature, and **false** means the opposite.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| onLazyLoading<sup>19+</sup> | (index: number) => void | No  | Function to load data on demand for a given index.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| onTotalCount<sup>19+</sup> | () => number | No  | Function to dynamically obtain the total number of items, which may not equal the data source length. Prioritize this function over **totalCount**. If both **totalCount** and **onTotalCount** are set, **totalCount** is ignored.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| Name    | Type  | Read-Only| Optional| Description                                                        |
+| ---------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| totalCount | number | No| Yes | Total number of data items to load, which may not equal the data source length.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| reusable<sup>18+</sup> | boolean | No| Yes | Whether to enable the reuse feature. The value **true** means to enable the reuse feature, and **false** means the opposite.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| onLazyLoading<sup>19+</sup> | (index: number) => void | No| Yes | Function to load data on demand for a given index.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| onTotalCount<sup>19+</sup> | () => number | No| Yes | Function to dynamically obtain the total number of items, which may not equal the data source length. Prioritize this function over **totalCount**. If both **totalCount** and **onTotalCount** are set, **totalCount** is ignored.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
 ### totalCount: Length of the Data to Be Loaded
 
@@ -257,7 +275,7 @@ Defines a union type for **Repeat** data source parameters.
 
 > **NOTE**
 >
-> When the value of **totalCount** is greater than the value of **arr.length**, during the scrolling of the parent component container, the application needs to ensure that subsequent data is requested when the list is about to scroll to the end of the data source. You need to handle error scenarios (such as network delays) for data requests until all data sources are loaded; otherwise, scrolling exceptions may occur during list scrolling. For solutions, see [The totalCount Value Is Greater Than the Length of Data Source](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md#handling-cases-where-the-totalcount-value-exceeds-the-data-source-length).
+> When the value of **totalCount** is greater than the value of **arr.length**, during the scrolling of the parent component container, the application needs to ensure that subsequent data is requested when the list is about to scroll to the end of the data source. You need to handle error scenarios (such as network delays) for data requests until all data sources are loaded; otherwise, scrolling exceptions may occur during list scrolling. For solutions, see [Handling Cases Where the totalCount Value Exceeds the Data Source Length](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md#handling-cases-where-the-totalcount-value-exceeds-the-data-source-length).
 
 ### onLazyLoading<sup>19+</sup>: Precise Lazy Loading
 
@@ -292,7 +310,7 @@ Defines a union type for **Repeat** data source parameters.
 ### Example
 
 ```ts
-// Create a Text component for each item in the arr array. Use Repeat in a List container component with virtual scrolling enabled.
+// arr is an array of the Array<string> type. Use Repeat in a List container component with virtual scrolling enabled.
 // Set the total number of data items to the length of the data source and enable component reuse.
 List() {
   Repeat<string>(this.arr)
@@ -324,7 +342,7 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 
 | Name    | Type         | Mandatory     | Description                                   |
 | ---------- | ------------- | --------------------------------------- | --------------------------------------- |
-| repeatItem | [RepeatItem](#repeatitemt)\<T\> | Yes| State variable that combines **item** and **index**.|
+| repeatItem | [RepeatItem](#repeatitemt)\<T\> | No| State variable that combines **item** and **index**.|
 
 ## TemplateOptions
 
@@ -332,14 +350,11 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type  | Mandatory| Description                                                        |
-| ----------- | ------ | ---- | ------------------------------------------------------------ |
-| cachedCount | number | No  | Maximum number of child component nodes that can be cached in the cache pool of the current template. <br>Value range: [0, +∞). <br>Default value: sum of the number of onscreen and preloaded nodes. <br>When the number of onscreen and preloaded nodes increases, the value of **cachedCount** will increase accordingly. Note that the value of **cachedCount** does not decrease.|
+| Name     | Type  | Read-Only| Optional| Description                                                        |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| cachedCount | number | No| Yes | Maximum number of child component nodes that can be cached in the cache pool of the current template. <br>Value range: [0, +∞). <br>Default value: sum of the number of onscreen and preloaded nodes. <br>When the number of onscreen and preloaded nodes increases, the value of **cachedCount** will increase accordingly. Note that the value of **cachedCount** does not decrease.|
 
-When **cachedCount** is set to the maximum number of nodes displayed on the screen for the current template, **Repeat** achieves maximum reuse efficiency. However, when no nodes of the current template are on the screen, the cache pool will not be released, and application memory usage will increase. You need to manage this based on specific scenarios.
-
-- If **cachedCount** is not specified, the framework calculates the value of **cachedCount** for each template based on the sum of the number of onscreen and preloaded nodes. When the number of onscreen and preloaded nodes increases, the value of **cachedCount** will increase accordingly. Note that the value of **cachedCount** does not decrease.
-- When explicitly specifying **cachedCount**, you are advised to set it equal to the number of onscreen nodes. Yet, setting **cachedCount** to less than 2 is not advised. Doing so may lead to the creation of new nodes during rapid scrolling, which could result in performance degradation.
+When **cachedCount** is set to the maximum number of nodes displayed on the screen for the current template, **Repeat** achieves maximum reuse efficiency. However, when no nodes of the current template are on the screen, the cache pool will not be released, and application memory usage will increase. Set the value based on your specific scenario. It is recommended that you set **cachedCount** to match the number of on-screen nodes. Yet, setting **cachedCount** to less than 2 is not recommended, as this may lead to the creation of new nodes during rapid scrolling and result in performance degradation.
 
 > **NOTE**
 > 
@@ -349,7 +364,7 @@ When **cachedCount** is set to the maximum number of nodes displayed on the scre
 
 **Example**
 ```ts
-// Create a Text component for each item in the arr array. Use Repeat in a List container component with virtual scrolling enabled.
+// arr is an array of the Array<string> type. Use Repeat in a List container component with virtual scrolling enabled.
 // Define a reusable template temp for generating Text components. Use the temp template for all data items.
 // Set the maximum cache count for the temp template to 2.
 List() {
@@ -373,5 +388,5 @@ type TemplateTypedFunc\<T\> = (item: T, index: number) => string
 
 | Name| Type  | Mandatory| Description                                        |
 | ------ | ------ | ---- | -------------------------------------------- |
-| item   | T      | Yes  | Each data item in the **arr** array. **T** indicates the data type passed in.|
-| index  | number | Yes  | Index corresponding to the current data item.                      |
+| item   | T      | No  | Each data item in the **arr** array. **T** indicates the data type passed in.|
+| index  | number | No  | Index corresponding to the current data item.                      |

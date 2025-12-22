@@ -130,7 +130,7 @@ libnative_window.so
         OH_NativeXComponent_RegisterCallback(nativeXComponent, &callback_);
         ```
 
-2. Set the attributes of an **OHNativeWindowBuffer** by using **OH_NativeWindow_NativeWindowHandleOpt**.
+2. Set the attributes of an **OHNativeWindowBuffer** Use `OH_NativeWindow_NativeWindowHandleOpt` to set the attributes of `OHNativeWindowBuffer`. (By default, the NATIVEBUFFER_USAGE_CPU_READ usage parameter is carried. If the CPU is not used to read and write data, you are advised to remove the NATIVEBUFFER_USAGE_CPU_READ usage parameter. For details, see [Disabling CPU Access to Window Buffer Data](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-arkgraphics-2d-14).)
     <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
     ``` C++

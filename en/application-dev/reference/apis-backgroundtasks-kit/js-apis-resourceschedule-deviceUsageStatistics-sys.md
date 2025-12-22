@@ -10,9 +10,9 @@ The **usageStatistics** module provides APIs for collecting statistics on device
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs provided by this module are system APIs.
+> - The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
@@ -1289,9 +1289,9 @@ usageStatistics.queryNotificationEventStats(0, 20000000000000, (err: BusinessErr
 
 queryModuleUsageRecords(): Promise&lt;Array&lt;HapModuleInfo&gt;&gt;
 
-Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses a promise to return the result.
+Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information.  
 
-Queries FA usage records. This API uses a promise to return a maximum of 1000 FA usage records sorted by time (most recent first).
+This API uses a promise to return a maximum of 1000 FA usage records sorted by time (most recent first).
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 
@@ -1341,7 +1341,7 @@ usageStatistics.queryModuleUsageRecords().then((res: Array<usageStatistics.HapMo
 
 queryModuleUsageRecords(callback: AsyncCallback&lt;Array&lt;HapModuleInfo&gt;&gt;): void
 
-Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses an asynchronous callback to return the result.
+Queries the usage records of unused HAP files for each application in the FA model. If the HAP file contains FA widgets, the usage records also contain the widget information. This API uses an asynchronous callback to return a maximum of 1000 usage records.
 
 **Required permissions**: ohos.permission.BUNDLE_ACTIVE_INFO
 

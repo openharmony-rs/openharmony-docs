@@ -7,6 +7,10 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
+```c
+struct WebSocket_OpenResult {...}
+```
+
 ## Overview
 
 Defines the parameters for the connection success received by the WebSocket client.

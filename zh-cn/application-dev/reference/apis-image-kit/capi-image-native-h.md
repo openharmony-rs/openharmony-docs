@@ -45,7 +45,7 @@
 
 ### OH_ImageNative_GetImageSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetImageSize(OH_ImageNative *image, Image_Size *size)
 ```
 
@@ -75,7 +75,7 @@ OH_ImageNative对象所存储的数据是预览流还是拍照流，取决于应
 
 ### OH_ImageNative_GetComponentTypes()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t **types, size_t *typeSize)
 ```
 
@@ -91,7 +91,7 @@ Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
-| uint32_t **types | 表示作为获取结果的组件列表对象的指针。 |
+| uint32_t **types | 表示作为获取结果的组件类型列表对象的指针。由于不确定组件个数，需要调用该接口两次：第一次传入types参数为NULL，获取组件个数typeSize；第二次根据typeSize给types申请对应内存，获取组件类型列表。 |
 | size_t *typeSize | 表示作为获取结果的组件列表中，元素个数的指针。 |
 
 **返回：**
@@ -102,7 +102,7 @@ Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image,uint32_t 
 
 ### OH_ImageNative_GetByteBuffer()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t componentType, OH_NativeBuffer **nativeBuffer)
 ```
 
@@ -118,7 +118,7 @@ Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t comp
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
-| uint32_t componentType | 表示组件的类型。 |
+| uint32_t componentType | 表示组件的类型。通过[OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes)接口获取。 |
 | [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer-oh-nativebuffer.md) **nativeBuffer | 表示作为获取结果的OH_NativeBuffer缓冲区对象的指针。 |
 
 **返回：**
@@ -129,7 +129,7 @@ Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image,uint32_t comp
 
 ### OH_ImageNative_GetBufferSize()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t componentType, size_t *size)
 ```
 
@@ -145,7 +145,7 @@ Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t comp
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
-| uint32_t componentType | 表示组件的类型。 |
+| uint32_t componentType | 表示组件的类型。通过[OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes)接口获取。 |
 | size_t *size | 表示作为获取结果的缓冲区大小的指针。 |
 
 **返回：**
@@ -156,7 +156,7 @@ Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image,uint32_t comp
 
 ### OH_ImageNative_GetRowStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t componentType, int32_t *rowStride)
 ```
 
@@ -174,7 +174,7 @@ Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t compo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
-| uint32_t componentType | 表示组件的类型。 |
+| uint32_t componentType | 表示组件的类型。通过[OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes)接口获取。 |
 | int32_t *rowStride | 表示作为获取结果的像素行宽的指针。 |
 
 **返回：**
@@ -185,7 +185,7 @@ Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image,uint32_t compo
 
 ### OH_ImageNative_GetPixelStride()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t componentType, int32_t *pixelStride)
 ```
 
@@ -201,7 +201,7 @@ Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t com
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md) *image | 表示OH_ImageNative native对象的指针。 |
-| uint32_t componentType | 表示组件的类型。 |
+| uint32_t componentType | 表示组件的类型。通过[OH_ImageNative_GetComponentTypes](#oh_imagenative_getcomponenttypes)接口获取。 |
 | int32_t *pixelStride | 表示作为获取结果的像素大小的指针。 |
 
 **返回：**
@@ -212,7 +212,7 @@ Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image,uint32_t com
 
 ### OH_ImageNative_GetTimestamp()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *timestamp)
 ```
 
@@ -242,7 +242,7 @@ Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *time
 
 ### OH_ImageNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)
 ```
 

@@ -1868,7 +1868,7 @@ type SslType = 'TLS' | 'TLCP'
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
 | 'TLS' | 表示使用TLS安全通信协议，值固定为'TLS'字符串。   |
-| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。 |
+| 'TLCP' | 表示使用TLCP安全通信协议，值固定为'TLCP'字符串。<br>**说明**：<br>（1）证书支持字符串的规格：<br> - UTF8String（英文字符集）<br> - PrintableString<br>  - IA5String<br>从API Version 22开始支持：<br> - TeletexString<br>（2）证书支持扩展的规格：<br> - BasicConstraints（OID 2.5.29.19）<br> - KeyUsage（OID2.5.29.15）<br> - SubjectKeyIdentifier（OID2.5.29.14）<br> - AuthorityKeyIdentifier（OID2.5.29.35）<br>从API Version 22开始支持：<br> - SubjectAltName（OID 2.5.29.17）<br> - ExtendedKeyUsage（OID 2.5.29.37）<br/> |
 
 ## InterceptorType<sup>22+</sup>
 
@@ -1914,8 +1914,7 @@ type ChainContinue = boolean
 
 | 类型   | 说明                                    |
 | ------ | -------------------------------------- |
-| true   | 表示继续处理拦截器链。                   |
-| false  | 表示终止并返回HTTP响应。                 |
+| boolean | true表示继续处理拦截器链，false表示终止并返回HTTP响应。 |
 
 ## HttpInterceptor<sup>22+</sup>
 

@@ -16,7 +16,7 @@
 >
 > - NavDestination组件必须配合Navigation使用，作为Navigation目的页面的根节点，单独使用只能作为普通容器组件，不具备路由相关属性能力。
 >
-> - 如果路由栈中间页面的生命周期发生变化，跳转之前的栈顶Destination的生命周期(onWillShow, onShown, onHidden, onWillDisappear)与跳转之后的栈顶Destination的生命周期(onWillShow, onShown, onHidden, onWillDisappear)均在最后触发。
+> - 如果路由栈中间页面的生命周期发生变化，跳转之前的栈顶NavDestination的生命周期(onWillShow, onShown, onHidden, onWillDisappear)与跳转之后的栈顶NavDestination的生命周期(onWillShow, onShown, onHidden, onWillDisappear)均在最后触发。
 >
 > - NavDestination未设置主副标题并且没有返回键时，不显示标题栏。
 >
@@ -50,9 +50,9 @@ NavDestination()
 
 title(value: string | CustomBuilder | NavDestinationCommonTitle | NavDestinationCustomTitle | Resource, options?: NavigationTitleOptions)
 
-设置页面标题。字符串超长时，如果不设置副标题，先缩小再换行2行后以...截断。如果设置副标题，先缩小后以...截断。
+设置页面标题。字符串超长时，如果不设置副标题，先缩小再换行2行后以"..."截断。如果设置副标题，先缩小后以"..."截断。
 
->**说明：**
+> **说明：**
 >
 > 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -106,9 +106,11 @@ toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomBuilder, opt
 
 设置工具栏内容。未调用本接口时不显示工具栏。
 
->**说明：**
+> **说明：**
 >
-> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+>
+> - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -118,12 +120,8 @@ toolbarConfiguration(toolbarParam: Array&lt;ToolbarItem&gt; | CustomBuilder, opt
 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| toolbarParam | &nbsp;Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 工具栏内容。<br/>使用Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;写法设置的工具栏有如下特性：<br/>-工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>-竖屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标中，点击更多图标，可以展示剩余内容。横屏时，如果为[Split](ts-basic-components-navigation.md#navigationmode9枚举说明)模式，仍按照竖屏规则显示，如果为[Stack](ts-basic-components-navigation.md#navigationmode9枚举说明)模式需配合menus属性的Array&lt;[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，除均分底部工具栏外不具备以上功能。 |
+| toolbarParam | &nbsp;Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 工具栏内容。<br/>使用Array&lt;[ToolbarItem](ts-basic-components-navigation.md#toolbaritem10)&gt;写法设置的工具栏有如下特性：<br/>-工具栏所有选项均分底部工具栏，在每个均分内容区布局文本和图标。<br/>-竖屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标中，点击更多图标，可以展示剩余内容。横屏时，如果为[Split](ts-basic-components-navigation.md#navigationmode9枚举说明)模式，仍按照竖屏规则显示，如果为[Stack](ts-basic-components-navigation.md#navigationmode9枚举说明)模式需配合[menus](#menus12)属性的Array&lt;[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt;使用，底部工具栏会自动隐藏，同时底部工具栏所有选项移动至页面右上角菜单。<br/>使用[CustomBuilder](ts-types.md#custombuilder8)写法为用户自定义工具栏选项，除均分底部工具栏外不具备以上功能。 |
 | options      | [NavigationToolbarOptions](ts-basic-components-navigation.md#navigationtoolbaroptions11) | 否   | 工具栏选项。包含工具栏背景颜色、工具栏背景模糊样式及模糊选项、工具栏背景属性、工具栏布局方式、是否隐藏工具栏的文本、工具栏更多图标的菜单选项。                                                 |
-
-> **说明：**
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 ### hideToolBar<sup>13+</sup>
 
@@ -168,9 +166,11 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 
 设置标题栏返回键图标。
 
->**说明：**
+> **说明：**
 >
-> 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 从API version 12开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+>
+> - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -182,10 +182,6 @@ backButtonIcon(value: ResourceStr | PixelMap | SymbolGlyphModifier)
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
 | value  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier<sup>12+</sup>](ts-universal-attributes-attribute-modifier.md)  | 是   | 标题栏返回键图标。 |
 
-> **说明：**
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
-
 ### backButtonIcon<sup>19+</sup>
 
 backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibilityText?: ResourceStr)
@@ -194,7 +190,9 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+>
+> - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -207,19 +205,17 @@ backButtonIcon(icon: ResourceStr | PixelMap | SymbolGlyphModifier, accessibility
 | icon  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)  | 是   | 标题栏返回键图标。 |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 返回键无障碍播报内容。</br>默认值：系统语言是中文时为“返回”，系统语言是英文时为“back”。 |
 
-> **说明：**
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
-
 ### menus<sup>12+</sup>
 
 menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 
 设置页面右上角菜单。不设置时不显示菜单项。使用Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt; 写法时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
 
->**说明：**
+> **说明：**
 >
-> 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 从API version 14开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+>
+> - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -231,10 +227,6 @@ menus(value: Array&lt;NavigationMenuItem&gt; | CustomBuilder)
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
 | value  | Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 页面右上角菜单。 |
 
-> **说明：**
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
-
 ### menus<sup>19+</sup>
 
 menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: NavigationMenuOptions)
@@ -243,7 +235,9 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+>
+> - 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -256,15 +250,18 @@ menus(items: Array&lt;NavigationMenuItem&gt; | CustomBuilder, options?: Navigati
 | items  | Array<[NavigationMenuItem](ts-basic-components-navigation.md#navigationmenuitem)&gt;&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 是   | 页面右上角菜单。 |
 | options | [NavigationMenuOptions](ts-basic-components-navigation.md#navigationmenuoptions19) | 否   | 页面右上角菜单选项。 |
 
-> **说明：**
->
-> 不支持通过SymbolGlyphModifier对象的fontSize属性修改图标大小、effectStrategy属性修改动效、symbolEffect属性修改动效类型。
-
 ### ignoreLayoutSafeArea<sup>12+</sup>
 
 ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;)
 
-控制组件的布局，使其扩展到非安全区域
+控制组件的布局，使其扩展到非安全区域。
+
+> **说明：**
+>   
+> - 组件设置ignoreLayoutSafeArea之后生效的条件为：   
+> 设置LayoutSafeAreaType.SYSTEM时，组件的边界与非安全区域重合时组件能够延伸到非安全区域下。例如：设备顶部状态栏高度100，组件在屏幕中纵向方位的绝对偏移需要在0到100之间。  
+>   
+> - 若组件延伸到非安全区域内，此时在非安全区域里触发的事件（例如：点击事件）等可能会被系统拦截，优先响应状态栏等系统组件。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -277,22 +274,19 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 | types  | Array <[LayoutSafeAreaType](ts-universal-attributes-expand-safe-area.md#layoutsafeareatype12)> | 否   | 配置扩展安全区域的类型。<br />默认值：<br />[LayoutSafeAreaType.SYSTEM] |
 | edges  | Array <[LayoutSafeAreaEdge](ts-universal-attributes-expand-safe-area.md#layoutsafeareaedge12)> | 否   | 配置扩展安全区域的方向。<br /> 默认值：<br />[LayoutSafeAreaEdge.TOP, LayoutSafeAreaEdge.BOTTOM]。|
 
->  **说明：**
->   
->  组件设置ignoreLayoutSafeArea之后生效的条件为：   
->  设置LayoutSafeAreaType.SYSTEM时，组件的边界与非安全区域重合时组件能够延伸到非安全区域下。例如：设备顶部状态栏高度100，组件在屏幕中纵向方位的绝对偏移需要在0到100之间。  
->   
->  若组件延伸到非安全区域内，此时在非安全区域里触发的事件（例如：点击事件）等可能会被系统拦截，优先响应状态栏等系统组件。
-
 ### systemBarStyle<sup>12+</sup>
 
 systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 当Navigation中显示当前NavDestination时，设置对应系统状态栏的样式。
 
->**说明：**
+> **说明：**
 >
-> 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 必须配合Navigation使用，作为其Navigation目的页面的根节点时才能生效。
+>
+> - 其他使用限制请参考Navigation对应的[systemBarStyle](ts-basic-components-navigation.md#systembarstyle12)属性说明。
+>
+> - 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -303,11 +297,6 @@ systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
-
-> **说明：**
->
-> 1. 必须配合Navigation使用，作为其Navigation目的页面的根节点时才能生效。
-> 2. 其他使用限制请参考Navigation对应的[systemBarStyle](ts-basic-components-navigation.md#systembarstyle12)属性说明。
 
 ### systemTransition<sup>14+</sup>
 systemTransition(type: NavigationSystemTransitionType)
@@ -330,6 +319,10 @@ recoverable(recoverable: Optional&lt;boolean&gt;)
 
 配置NavDestination是否可恢复。如配置为可恢复，当应用进程异常退出并重新冷启动时，可自动创建该NavDestination。该功能需NavDestination对应的Navigation也配置了[可恢复属性](ts-basic-components-navigation.md#recoverable14)。
 
+> **说明：**
+>
+> 该接口需要配合Navigation的[recoverable](./ts-basic-components-navigation.md#recoverable14)接口使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -338,10 +331,6 @@ recoverable(recoverable: Optional&lt;boolean&gt;)
 | ------ | -------------- | ---- | ------------------ |
 | recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | NavDestination是否可恢复，默认为不可恢复。<br/>默认值：false<br/>true：路由栈可恢复。<br/>false：路由栈不可恢复。 |
 
->  **使用说明：**
->
-> 该接口需要配合Navigation的[recoverable](./ts-basic-components-navigation.md#recoverable14)接口使用。
-
 ### bindToScrollable<sup>14+</sup>
 bindToScrollable(scrollers: Array&lt;Scroller&gt;)
 
@@ -349,7 +338,11 @@ bindToScrollable(scrollers: Array&lt;Scroller&gt;)
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 只有NavDestination的标题栏或工具栏设置为可见时，联动效果才会生效。
+>
+> - 当多个可滚动容器组件绑定了同一个NavDestination组件时，滚动任何一个容器都会触发标题栏和工具栏的显示或隐藏效果。且当任何一个可滚动容器组件滑动到底部或顶部位置时，会立即触发标题栏和工具栏的显示动效。因此，为了获得最佳用户体验，不建议同时触发多个可滚动容器组件的滚动事件。
+>
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -361,11 +354,6 @@ bindToScrollable(scrollers: Array&lt;Scroller&gt;)
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | scrollers | Array<[Scroller](./ts-container-scroll.md#scroller)> | 是   | 可滚动容器组件的控制器。 |
 
-> **说明：**
->
-> - 只有NavDestination的标题栏或工具栏设置为可见时，联动效果才会生效。
-> - 当多个可滚动容器组件绑定了同一个NavDestination组件时，滚动任何一个容器都会触发标题栏和工具栏的显示或隐藏效果。且当任何一个可滚动容器组件滑动到底部或顶部位置时，会立即触发标题栏和工具栏的显示动效。因此，为了获得最佳用户体验，不建议同时触发多个可滚动容器组件的滚动事件。
-
 ### bindToNestedScrollable<sup>14+</sup>
 bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt;)
 
@@ -373,7 +361,11 @@ bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt;)
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 只有NavDestination的标题栏或工具栏设置为可见时，联动效果才会生效。
+>
+> - 当多个可滚动容器组件绑定了同一个NavDestination组件时，滚动任何一个容器都会触发标题栏和工具栏的显示或隐藏效果。且当任何一个可滚动容器组件滑动到底部或顶部位置时，会立即触发标题栏和工具栏的显示动效。因此，为了获得最佳用户体验，不建议同时触发多个可滚动容器组件的滚动事件。
+>
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -384,11 +376,6 @@ bindToNestedScrollable(scrollInfos: Array&lt;NestedScrollInfo&gt;)
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | scrollInfos | Array<[NestedScrollInfo](#nestedscrollinfo14)> | 是   | 嵌套的可滚动容器组件的控制器。 |
-
-> **说明：**
->
-> - 只有NavDestination的标题栏或工具栏设置为可见时，联动效果才会生效。
-> - 当多个可滚动容器组件绑定了同一个NavDestination组件时，滚动任何一个容器都会触发标题栏和工具栏的显示或隐藏效果。且当任何一个可滚动容器组件滑动到底部或顶部位置时，会立即触发标题栏和工具栏的显示动效。因此，为了获得最佳用户体验，不建议同时触发多个可滚动容器组件的滚动事件。
 
 ### hideBackButton<sup>15+</sup>
 
@@ -414,7 +401,9 @@ customTransition(delegate: NavDestinationTransitionDelegate)
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+>
+> - 该属性与[systemTransition](#systemtransition14)同时设置时，后设置的属性生效。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -426,15 +415,20 @@ customTransition(delegate: NavDestinationTransitionDelegate)
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | delegate  | [NavDestinationTransitionDelegate](#navdestinationtransitiondelegate15) | 是   | NavDestination自定义动画的代理函数。 |
 
-> **说明：**
->
-> 该属性与[systemTransition](#systemtransition14)同时设置时，后设置的属性生效。
-
 ### preferredOrientation<sup>19+</sup>
 
 preferredOrientation(orientation: Optional&lt;Orientation&gt;)
 
 设置NavDestination对应的显示方向。转场到该NavDestination后，系统也会将应用主窗口切到该显示方向。
+
+> **说明：**
+>
+> - 该属性满足如下全部条件时才有效：
+>   1. NavDestination属于应用主窗口页面，并且主窗口为全屏窗口；
+>   2. NavDestination所属的Navigation的大小占满整个应用页面；
+>   3. NavDestination类型为[NavDestinationMode](#navdestinationmode枚举说明11).STANDARD。
+>
+> - 设置显示方向的实际效果依赖于具体的设备支持情况，具体参考窗口的[setPreferredOrientation](../arkts-apis-window-Window.md#setpreferredorientation9-1)接口。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -446,20 +440,21 @@ preferredOrientation(orientation: Optional&lt;Orientation&gt;)
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | orientation  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[Orientation](#orientation19)&gt; | 是   | NavDestination页面对应的Orientation。 |
 
-> **说明：**
->
-> 该属性满足如下全部条件时才有效：
-> 1. NavDestination属于应用主窗口页面，并且主窗口为全屏窗口；
-> 2. NavDestination所属的Navigation的大小占满整个应用页面；
-> 3. NavDestination类型为[NavDestinationMode](#navdestinationmode枚举说明11).STANDARD。
->
-> 设置显示方向的实际效果依赖于具体的设备支持情况，具体参考窗口的[setPreferredOrientation](../arkts-apis-window-Window.md#setpreferredorientation9-1)接口。
-
 ### enableStatusBar<sup>19+</sup>
 
 enableStatusBar(enabled: Optional&lt;boolean&gt;, animated?: boolean)
 
 设置进入该NavDestination后，显示或者隐藏系统的状态栏。
+
+> **说明：**
+>
+> - 该属性满足如下全部条件时才生效：
+>   1. NavDestination属于应用主窗口页面，并且主窗口为全屏窗口；
+>   2. NavDestination所属的Navigation的大小占满整个页面；
+>   3. NavDestination的大小占满整个Navigation组件；
+>   4. NavDestination类型为[NavDestinationMode](#navdestinationmode枚举说明11).STANDARD。
+>
+> - 设置系统状态栏的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11)接口。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -472,31 +467,11 @@ enableStatusBar(enabled: Optional&lt;boolean&gt;, animated?: boolean)
 | enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统状态栏的显示/隐藏状态。<br/>true：&nbsp;显示状态栏。<br/>false：&nbsp;隐藏状态栏。 |
 | animated  | boolean | 否   | 是否使用动画的方式显示/隐藏系统状态栏，默认值为：false。<br/>true：使用动画的方式显示/隐藏系统状态栏。<br/>false：不使用动画的方式显示/隐藏系统状态栏。 |
 
-> **说明：**
->
-> 该属性满足如下全部条件时才生效：
-> 1. NavDestination属于应用主窗口页面，并且主窗口为全屏窗口；
-> 2. NavDestination所属的Navigation的大小占满整个页面；
-> 3. NavDestination的大小占满整个Navigation组件；
-> 4. NavDestination类型为[NavDestinationMode](#navdestinationmode枚举说明11).STANDARD。
->
-> 设置系统状态栏的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11)接口。
-
 ### enableNavigationIndicator<sup>19+</sup>
 
 enableNavigationIndicator(enabled: Optional&lt;boolean&gt;)
 
 设置进入该NavDestination后，显示或者隐藏系统的导航条。
-
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型    | 必填 | 说明                                                         |
-| ------ | ------- | ---- | ------------------------------------------------------------ |
-| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统导航条的显示/隐藏状态。 <br/>true：&nbsp;显示导航条。<br/>false：&nbsp;隐藏导航条。 |
 
 > **说明：**
 >
@@ -507,6 +482,16 @@ enableNavigationIndicator(enabled: Optional&lt;boolean&gt;)
 > 4. NavDestination类型为[NavDestinationMode](#navdestinationmode枚举说明11).STANDARD。
 >
 > 设置系统导航条的实际效果依赖于具体的设备支持情况，具体参考窗口的[setSpecificSystemBarEnabled](../arkts-apis-window-Window.md#setspecificsystembarenabled11)接口。
+
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                         |
+| ------ | ------- | ---- | ------------------------------------------------------------ |
+| enabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 进入该NavDestination后，系统导航条的显示/隐藏状态。 <br/>true：&nbsp;显示导航条。<br/>false：&nbsp;隐藏导航条。 |
 
 ## NavDestinationMode枚举说明<sup>11+</sup>
 
@@ -588,7 +573,7 @@ onHidden(callback: Callback\<VisibilityChangeReason>)
 
 onWillAppear(callback: Callback\<void>)
 
-当该Destination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。
+当该NavDestination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。
 
 >**说明：**
 >
@@ -602,13 +587,13 @@ onWillAppear(callback: Callback\<void>)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | 是   | 当该Destination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。|
+| callback   |  Callback\<void>   | 是   | 当该NavDestination挂载之前触发此回调。在该回调中允许修改路由栈，当前帧生效。|
 
 ### onWillShow<sup>12+</sup>
 
 onWillShow(callback: Callback\<void>)
 
-当该Destination显示之前触发此回调。
+当该NavDestination显示之前触发此回调。
 
 >**说明：**
 >
@@ -622,13 +607,13 @@ onWillShow(callback: Callback\<void>)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | 是   | 当该Destination显示之前触发此回调。|
+| callback   |  Callback\<void>   | 是   | 当该NavDestination显示之前触发此回调。|
 
 ### onWillHide<sup>12+</sup>
 
 onWillHide(callback: Callback\<void>)
 
-当该Destination隐藏之前触发此回调。
+当该NavDestination隐藏之前触发此回调。
 
 >**说明：**
 >
@@ -642,13 +627,13 @@ onWillHide(callback: Callback\<void>)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | 是   | 当该Destination隐藏之前触发此回调。|
+| callback   |  Callback\<void>   | 是   | 当该NavDestination隐藏之前触发此回调。|
 
 ### onWillDisappear<sup>12+</sup>
 
 onWillDisappear(callback: Callback\<void>)
 
-当该Destination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。
+当该NavDestination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。
 
 >**说明：**
 >
@@ -662,7 +647,7 @@ onWillDisappear(callback: Callback\<void>)
 
 | 参数名   | 类型                 | 必填 | 说明                                       |
 | -------- | -------------------  | ---- | ------------------------------------------ |
-| callback   |  Callback\<void>   | 是   | 当该Destination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。|
+| callback   |  Callback\<void>   | 是   | 当该NavDestination卸载之前触发的生命周期(有转场动画时，在转场动画开始之前触发)。|
 
 ### onBackPressed<sup>10+</sup>
 
@@ -767,7 +752,9 @@ onNewParam(callback: &nbsp;Optional\<Callback\<ESObject\>\>)
 
 > **说明：**
 >
-> 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
+> - [replacePath](./ts-basic-components-navigation.md#replacepath11)、[replaceDestination](./ts-basic-components-navigation.md#replacedestination18)不会触发该回调。
+>
+> - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -777,10 +764,6 @@ onNewParam(callback: &nbsp;Optional\<Callback\<ESObject\>\>)
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | ---------------- |
 |callback | [Optional](./ts-universal-attributes-custom-property.md#optionalt12)\<[Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<ESObject\>\>| 是 | onNewParam触发时的回调函数，入参为路由跳转时传递到目标页面的数据。|
-
-> **说明：**
->
-> [replacePath](./ts-basic-components-navigation.md#replacepath11)、[replaceDestination](./ts-basic-components-navigation.md#replacedestination18)不会触发该回调。
 
 ## NavDestinationCommonTitle
 

@@ -4,7 +4,7 @@
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
 <!--Tester: @chenmingze-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloShuo-->
 
 JS widgets, developed using a web-like paradigm (HML + CSS + JSON), now support two [application models](../application-models/application-models.md): the FA model and the stage model. For details, see [Developing a JS Widget (Stage Model)](js-ui-widget-development.md) and [Developing a JS Widget (FA Model)](widget-development-fa.md). When developing a new widget, you are advised to use the ArkTS declarative syntax to build UIs. For details about the differences between the declarative paradigm and web-like paradigm, see [Introduction to ArkUI](../ui/arkui-overview.md).
 
@@ -20,7 +20,7 @@ The widget host consists of the following modules:
 
 - Widget usage: provides operations such as creating, deleting, or updating a widget.
 
-- Communication adapter: provided by the SDK for communication with the Widget Manager. It sends widget-related operations to the Widget Manager.
+- Communication adapter: provided by the SDK for communication with the Widget Manager. It sends widget-related operation instructions to the Widget Manager.
 
 The Widget Manager consists of the following modules:
 

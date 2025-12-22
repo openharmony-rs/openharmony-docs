@@ -1,5 +1,12 @@
 # list
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @yylong-->
+<!--Designer: @yylong-->
+<!--Tester: @liuzhenshuo-->
+<!--Adviser: @Brilliantry_Rui-->
+
 >  **NOTE**
 >
 >  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
@@ -26,7 +33,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | cachedcount                 | number                                   | 0       | No   | Minimum number of cached list items when a long list is loaded with delay.<br>When the number of list items cached outside the visible area is less than the value of this attribute, a **requestitem** event is triggered.|
 | scrollbar                   | string                                   | off     | No   | Display mode of the side scrollbar. (Currently, only the vertical scrollbar is supported.)<br>- **off**: no display.<br>- **auto**: displayed on demand (The side scrollbar is displayed when touched and disappears 2s later.).<br>- **on**: always displayed.|
 | scrolleffect                | string                                   | spring  | No   | Scroll effect. Available values are as follows:<br>- **spring**: Similar to the physical dynamic effect of a spring. After scrolling to the edge, you can continue to scroll for a distance based on the initial speed or by touching the knob of the scrollbar. After you release your hand, the knob is rebounded.<br>- **fade**: Similar to the physical dynamic effect of fade. When you scroll to the edge, a wave shape fades. The fade changes according to the speed and scrolling distance.<br>- **no**: No effect after the scrollbar is moved to the edge.|
-| indexer                     | boolean \| Array&lt;string&gt; | false   | No   | Whether to display the alphabetical index bar on the sidebar. If this attribute is set to **true** or a customized indexer, the index bar is displayed at the right boundary of the list. Example:<br>**"indexer" : "true"** indicates the default alphabetical indexer.<br>**"indexer" : "false"** indicates no indexer.<br>"indexer": ['#', '1', '2', '3', '4', '5', '6', '7', '8'] indicates a customized index. You must include **"#"** when using a customized indexer.<br>This **indexer** attribute is valid only when **flex-direction** is set to **column** and **columns** is set to **1**.<br>This attribute must be used together with the **[section](js-components-container-list-item.md#attributes)** attribute of **\<list-item>**.|
+| indexer                     | boolean \| Array&lt;string&gt;           | false   | No   | Whether to display the alphabetical index bar on the sidebar. If this attribute is set to **true** or a customized indexer, the index bar is displayed at the right boundary of the list. Example:<br>**"indexer" : "true"** indicates the default alphabetical indexer.<br>**"indexer" : "false"** indicates no indexer.<br>"indexer": ['#', '1', '2', '3', '4', '5', '6', '7', '8'] indicates a customized index. You must include **"#"** when using a customized indexer.<br>This **indexer** attribute is valid only when **flex-direction** is set to **column** and **columns** is set to **1**.<br>This attribute must be used together with the **[section](js-components-container-list-item.md#attributes)** attribute of **\<list-item>**.|
 | indexercircle<sup>5+</sup>  | boolean                                  | -       | No   | Whether to use a circle indexer.<br>The default value is **true** for wearables and **false** for other device types. This attribute is invalid if **indexer** is set to **false**.|
 | indexermulti<sup>5+</sup>   | boolean                                  | false   | No   | Whether to use a multi-language indexer.<br>This attribute is invalid if **indexer** is set to **false**.    |
 | indexerbubble<sup>5+</sup>  | boolean                                  | true    | No   | Whether to display the bubble effect when switching among indexes.<br>This attribute is invalid if **indexer** is set to **false**.   |
@@ -64,7 +71,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
 
 | Name                        | Parameter                                      | Description                                      |
-| -------------------------- | ---------------------------------------- | ---------------------------------------- |
+| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | indexerchange<sup>5+</sup> | { local: booleanValue }   | Triggered when the indexer switches between local and alphabetic indexers. This parameter takes effect only when both **indexer** and **indexermulti** are set to **true**. The values of **booleanValue** can be:<br>- **true**: The local index is displayed.<br>- **false**: The alphabetic index is displayed.|
 | scroll                     | { scrollX: scrollXValue, scrollY: scrollYValue, scrollState: stateValue } | Triggered to indicate the offset and status of list scrolling.<br>**stateValue: 0**: The list is not scrolling.<br>**stateValue: 1**: The list is scrolling along with user's touches.<br>**stateValue: 2**: The list is scrolling after the touches stop.|
 | scrollbottom               | -                                        | Triggered when the list is scrolled to the bottom.                           |
@@ -72,7 +79,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | scrollend                  | -                                        | Triggered when the list stops scrolling.                               |
 | scrolltouchup              | -                                        | Triggered when the list continues scrolling after the user lifts their fingers.                        |
 | requestitem                | -                                        | Triggered for a request to create a list-item.<br>This event is triggered when the number of cached list-items outside the visible area is less than the value of **cachedcount** during long list loading with delay.|
-| rotation<sup>7+</sup> | { rotateValue: number }   | Triggered to indicate the incremental value of the rotation angle of the watch crown. This parameter is only supported by wearables.                    |
+| rotation<sup>7+</sup>      | { rotateValue: number }                  | Triggered to indicate the incremental value of the rotation angle of the watch crown. This parameter is only supported by wearables.                    |
 
 
 ## Methods

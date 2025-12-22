@@ -70,6 +70,14 @@ Creates an [HdrBrightnessBlender](#hdrbrightnessblender20) instance to add the H
 | ---------------------------------------- | ----------------------- |
 | [HdrBrightnessBlender](#hdrbrightnessblender20) | Returns a blender with the brightness effect (HDR supported).|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| ------- | -------------------------------- |
+| 202  | Permission verification failed. A non-system application calls a system API. |
+
 **Example**
 
 ```ts

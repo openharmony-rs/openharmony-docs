@@ -597,14 +597,16 @@ searchTarget(target: TargetInfo, params: SearchParams): Promise\<SearchResult>
 **示例：**
 
 ```ts
-let targetInfo : mechanicManager.TargetInfo = {
-	targetType: mechanicManager.TargetType.HUMAN_FACE};
-let searchParams : mechanicManager.SearchParams= {
-	direction:mechanicManager.SearchDirection.DEFAULT}
-mechanicManager.searchTarget(targetInfo, 
-	searchParams, (searchResult).then(searchResult)=>{
-    	console.info(`'result:' ${searchResult}`);
-    });
+let targetInfo: mechanicManager.TargetInfo = {
+    targetType: mechanicManager.TargetType.HUMAN_FACE
+};
+let searchParams: mechanicManager.SearchParams = {
+    direction: mechanicManager.SearchDirection.DEFAULT
+}
+mechanicManager.searchTarget(targetInfo,
+    searchParams).then((searchResult) => {
+    console.info(`'result:' ${searchResult}`);
+});
 ```
 ## RotationAngles
 

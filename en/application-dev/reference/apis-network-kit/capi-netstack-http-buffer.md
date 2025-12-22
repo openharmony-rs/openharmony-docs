@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_Buffer {...} Http_Buffer
+```
+
 ## Overview
 
 Defines the HTTP buffer structure.

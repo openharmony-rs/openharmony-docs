@@ -25,7 +25,7 @@ FormEditExtensionContext提供允许访问特定于FormEditExtensionAbility资�
 
 startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>
 
-拉起需要被编辑的卡片提供方页面。
+拉起需要被编辑的卡片提供方页面。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

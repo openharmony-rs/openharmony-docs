@@ -74,8 +74,11 @@ Web媒体策略的配置。
 |  enable  | boolean | 否 | 否 | 是否开启应用接管网页媒体播放功能。<br/> true表示开启应用接管网页媒体播放功能，false表示关闭应用接管网页媒体播放功能。<br/> 默认值：false。 |
 |  shouldOverlay | boolean | 否 | 否 | 开启应用接管网页媒体播放功能后，应用接管网页视频的播放器画面是否覆盖网页内容。<br/> true表示改变视频图层的高度，使其覆盖网页内容。false表示不覆盖网页内容，跟原视频图层高度一样，嵌入在网页中。<br>默认值：false。 |
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+> **说明：**
+>
+> 从API version 12开始支持，从API version 20开始废弃，建议使用[editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12)替代。
 自定义菜单扩展项。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -676,7 +679,7 @@ Web组件进入全屏回调事件的详情。
 | 名称             | 类型   | 只读   | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | controller | [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)  | 否 | 否 | 提供控制自定义键盘的输入、删除、关闭等操作。 |
-| attributes | Record<string, string> | 否 | 否 | 触发本次软键盘弹出的网页元素属性。
+| attributes | Record<string, string> | 否 | 否 | 触发本次软键盘弹出的网页元素属性。|
 
 ## WebKeyboardOptions<sup>12+</sup>
 
@@ -688,7 +691,7 @@ Web组件进入全屏回调事件的详情。
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | 否 | 否 | 是否使用系统默认软键盘。<br>true表示使用系统默认软键盘，false表示不使用系统默认软键盘。<br>默认值：true。 |
 | enterKeyType | number | 否 | 是 | 指定系统软键盘enter键的类型，取值范围见输入框架的定义[EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10)，该参数为可选参数，默认值为UNSPECIFIED。当useSystemKeyboard为true，并且设置了有效的enterKeyType时候，才有效。|
-| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。
+| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | 否 | 是 | 指定自定义键盘组件builder，可选参数，当useSystemKeyboard为false时，需要设置该参数，然后Web组件会拉起该自定义键盘。|
 
 
 ## FirstMeaningfulPaint<sup>12+</sup>
@@ -848,7 +851,7 @@ Web屏幕捕获的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| detectedContentfulNodesCount | int | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。    |
+| detectedContentfulNodesCount | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，且开发者自己设置了检测到节点数量阈值时，可能包含该属性。否则没有该属性。<br>表示当前命中了多少有内容的节点。    |
 
 ## BlankScreenDetectionConfig<sup>22+</sup>
 
@@ -859,6 +862,6 @@ Web屏幕捕获的配置。
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | enable | boolean | 否 | 否 | 是否使能白屏策略功能。   |
-| detectionTiming | double[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0,3.0,5.0]。 |
+| detectionTiming | number[] | 否 | 是 | 用以设置需要在加载后多少秒的时机来检测是否白屏。<br>单位：秒。<br>注：<br>1.重复值会忽略。<br>2.需大于0，小于0的值会被忽略。<br/>默认值：[1.0,3.0,5.0]。 |
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | 否 | 是 | 使用检测策略的方法，是一个数组。<br>注：<br>1.重复值会忽略。  <br/>默认值：[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]。  |
-| contentfulNodesCountThreshold | int | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|
+| contentfulNodesCountThreshold | number | 否 | 是 | 在使用到检测有内容的节点检测策略时，才会生效。<br/>可以设置0-${检测策略最大节点}，如果小于等于阈值则会触发近似白屏。<br/>默认值：0。|

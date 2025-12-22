@@ -17,6 +17,18 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.RECEIVER_STARTUP_COMPLETED
+
+允许应用订阅开机广播。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：9
+
 ## ohos.permission.PRE_START_ATOMIC_SERVICE
 
 允许应用市场跳过loading弹框并为原子化服务提前打开窗口，并在窗口内部显示加载动效。
@@ -3886,6 +3898,18 @@
 
 **起始版本**：12
 
+## ohos.permission.CALLED_UIEXTENSION_ON_LOCK_SCREEN
+
+允许UIExtensionAbility显示在锁屏之上。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：14
+
 ## ohos.permission.ACCESS_DISTRIBUTED_MODEM
 
 允许系统服务访问虚拟Modem。
@@ -3908,7 +3932,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.SET_TELEPHONY_ESIM_STATE
 
@@ -3920,7 +3944,7 @@
 
 **ACL使能**：true
 
-**起始版本**：14
+**起始版本**：13
 
 ## ohos.permission.CAMERA_BACKGROUND
 
@@ -4674,7 +4698,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
@@ -4688,7 +4712,7 @@
 
 **ACL使能**：true
 
-**支持设备**：Phone | Tablet | 2in1
+**支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：19
 
@@ -5084,22 +5108,6 @@
 
 **起始版本**：19
 
-## ohos.permission.kernel.LOAD_INDEPENDENT_LIBRARY
-
-允许HAP加载具有不同ownerid的独立二进制SO。
-
-该SO指具有开发者证书或AdHoc签名的独立二进制SO。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**支持设备**：PC/2in1
-
-**起始版本**：20
-
 ## ohos.permission.GET_DEVICE_INDEPENDENT_BINARY_CERT
 
 允许系统应用查询独立二进制程序的证书信息。
@@ -5155,6 +5163,20 @@
 **支持设备**：General
 
 **起始版本**：20
+
+## ohos.permission.ACCESS_ANCO_APP_DATA
+
+允许应用访问兼容应用目录。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**： Phone | PC/2in1 | Tablet
+
+**起始版本**：22
 
 ## ohos.permission.MANAGE_SELF_SKILLS
 
@@ -5223,3 +5245,15 @@
 **ACL使能**：true
 
 **起始版本**：12
+
+## ohos.permission.USE_USER_ACCESS_MANAGER
+
+允许应用查询和配置用户身份认证策略、校验用户身份认证结果。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：18

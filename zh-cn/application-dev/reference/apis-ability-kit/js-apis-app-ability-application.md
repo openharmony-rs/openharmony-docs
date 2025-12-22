@@ -140,51 +140,6 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## application.getApplicationContextInstance<sup>22+</sup>
-
-getApplicationContextInstance(): ApplicationContext
-
-获取应用上下文。开发者使用该接口时，无需依赖Context基类。
-
-重复调用该接口，将获取同一个ApplicationContext实例。
-
-**原子化服务API**：从API version 22开始，该接口支持在元服务中使用。
-
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-
-**返回值：**
-
-| 类型                                                         | 说明                |
-| ------------------------------------------------------------ | ------------------- |
-| [ApplicationContext](js-apis-inner-application-applicationContext.md) | 应用上下文。 |
-
-**错误码：**
-
-以下错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)。
-
-| 错误码ID | 错误信息        |
-| -------- | --------------- |
-| 16000050 | Internal error. Possible causes: Memory operation error. |
-
-**示例：**
-
-```ts
-import { AbilityConstant, UIAbility, application, Want, common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    try {
-      let applicationContext: common.ApplicationContext = application.getApplicationContextInstance();
-    } catch (error) {
-      let code: number = (error as BusinessError).code;
-      let message: string = (error as BusinessError).message;
-      console.error(`getApplicationContextInstance failed, error.code: ${code}, error.message: ${message}`);
-    }
-  }
-}
-```
-
 ## application.createPluginModuleContext<sup>19+</sup>
 
 createPluginModuleContext(context: Context, pluginBundleName: string, pluginModuleName: string): Promise\<Context>
@@ -246,8 +201,8 @@ promoteCurrentToCandidateMasterProcess(insertToHead: boolean): Promise\<void>
 
 - 如果存在备选主控进程，系统会将备选主控进程链表首节点的进程设置为主控进程，触发[onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11)回调。
 - 如果不存在备选主控进程，系统会根据组件类型执行相应的操作。
-	- 对于UIAbility组件，系统将创建新的空进程作为主控进程。
-	- 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
+  - 对于UIAbility组件，系统将创建新的空进程作为主控进程。
+  - 对于UIExtensionAbility组件，系统会优先复用已有的UIExtensionAbility进程作为新的主控进程，无可用进程时则创建新的空进程作为主控进程。
 
 > **说明：**
 > 
@@ -425,7 +380,7 @@ getAppPreloadType(): AppPreloadType
 > - AbilityStage创建完成后，应用的预加载数据将被清除，调用该接口将返回UNSPECIFIED，无法获取到真实的预加载类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
-	
+
 **返回值：**
 
 | 类型            | 说明            |

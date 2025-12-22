@@ -6,6 +6,10 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct MetadataOutput_Callbacks {...} MetadataOutput_Callbacks
+```
+
 ## Overview
 
 The struct describes the callbacks related to metadata output.

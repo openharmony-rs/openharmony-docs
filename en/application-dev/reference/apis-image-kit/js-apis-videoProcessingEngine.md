@@ -154,7 +154,7 @@ Carries out detail enhancement processing. This API uses a promise to return the
 
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
-|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image. |
+|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image, which must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
 |  width |  number | Yes |  Target width, in px.<br>Its value range is [512, 2000] when **level** is **HIGH** and [32, 3000] when **level** is other values. |
 |  height |  number | Yes |  Target height, in px.<br>Its value range is [512, 2000] when **level** is **HIGH** and [32, 3000] when **level** is other values. |
 |  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
@@ -203,7 +203,7 @@ Carries out detail enhancement processing. This API uses a promise to return the
 
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
-|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image. |
+|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image, which must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types). |
 |  scale |  number |  Yes|  Target scale factor. Its value range is (0.0, 32.0]. The maximum supported scale is 32x, provided the [resulting resolution](#enhancedetail) stays within the required bounds.|
 |  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
 
@@ -251,7 +251,7 @@ Carries out detail enhancement processing. This API returns the result synchrono
 
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
-|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image. |
+|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image, which must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types). |
 |  width |  number | Yes |  Target width, in px.<br>Its value range is [512, 2000] when **level** is **HIGH** and [32, 3000] when **level** is other values. |
 |  height |  number | Yes|  Target height, in px.<br>Its value range is [512, 2000] when **level** is **HIGH** and [32, 3000] when **level** is other values. |
 |  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
@@ -301,7 +301,7 @@ Carries out detail enhancement processing. This API returns the result synchrono
 
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
-|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image. |
+|  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image, which must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types). |
 |  scale |  number |  Yes|  Target scale factor. Its value range is (0.0, 32.0]. The maximum supported scale is 32x, provided the [resulting resolution](#enhancedetail) stays within the required bounds.|
 |  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
 

@@ -1,4 +1,10 @@
 # divider
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lanshouren-->
+<!--Designer: @lanshouren-->
+<!--Tester: @liuli0427-->
+<!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
 >

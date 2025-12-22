@@ -12,8 +12,7 @@ In ArkTS, **Buffer** is a data type used to represent binary data.
 
 ## Basic Concepts
 
-Node-API provides APIs for handling binary data with ArkTS via the **Buffer** object. You can use these APIs to create, manipulate, and pass **Buffer** objects to ArkTS when processing and transferring binary data in file I/O and network transmission.
-
+Node-API provides APIs for handling binary data with ArkTS via the **Buffer** object. You can use these APIs to create and operate **Buffer** objects, processing binary data in I/O and network transmission.
 - **Buffer** object: an object used to represent binary data.
 - External buffer: a buffer created in the Node-API module to associate with existing data without copying the data.
 

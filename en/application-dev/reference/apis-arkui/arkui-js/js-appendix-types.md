@@ -1,4 +1,10 @@
 # Data Type Attributes
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @seaside_wu1-->
+<!--Designer: @shiyu_huang-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Length Type
 

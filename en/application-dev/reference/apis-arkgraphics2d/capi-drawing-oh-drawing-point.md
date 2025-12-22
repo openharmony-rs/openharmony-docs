@@ -6,6 +6,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
+```
+typedef struct OH_Drawing_Point OH_Drawing_Point
+```
+
 ## Overview
 
 Defines a struct for a coordinate point.

@@ -1,6 +1,9 @@
 # network-cfg
 
 network-cfg (cfg is short for config) is a tool provided for setting network parameters, for example, setting a proxy for Wi-Fi.
+>**NOTE**
+>
+>network-cfg is supported since API version 20.
 
 ## Environment Requirements
 

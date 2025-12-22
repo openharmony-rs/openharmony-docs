@@ -918,5 +918,3 @@ Note that this function works only in synchronous mode.
 | Type| Description|
 | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) * | Pointer to the OH_AVBuffer instance created. If the operation fails, NULL is returned.|
-
-<!--no_check-->

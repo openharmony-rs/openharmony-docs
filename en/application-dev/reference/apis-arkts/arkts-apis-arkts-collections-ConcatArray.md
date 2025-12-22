@@ -5,13 +5,13 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
+An array-like object that can be concatenated. This API extends **ISendable**.
+
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This module can be imported only to ArkTS files (with the file name extension .ets).
-
-An array-like object that can be concatenated. This API extends **ISendable**.
+> - This module can be imported only to ArkTS files (with the file name extension .ets).
 
 This section uses the following to identify the use of generics:
 

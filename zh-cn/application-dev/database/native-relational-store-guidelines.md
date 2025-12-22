@@ -34,14 +34,14 @@ RelationalStore提供了一套完整的对本地数据库进行管理的机制�
 
 | 接口名称 | 描述 |
 | -------- | -------- |
- OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | 创建一个OH_Rdb_ConfigV2实例，并返回指向该实例的指针。 |
- int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库文件路径。 |
- int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库名称。 |
- int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用包名。 |
- int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用模块名。 |
- int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全级别OH_Rdb_SecurityLevel。 |
- int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库是否加密。 |
- int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全区域等级Rdb_SecurityArea。 |
+| OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig() | 创建一个OH_Rdb_ConfigV2实例，并返回指向该实例的指针。 |
+| int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库文件路径。 |
+| int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库名称。 |
+| int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用包名。 |
+| int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置应用模块名。 |
+| int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全级别OH_Rdb_SecurityLevel。 |
+| int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库是否加密。 |
+| int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area) | 给指定的数据库文件配置OH_Rdb_ConfigV2，设置数据库安全区域等级Rdb_SecurityArea。 |
 | OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode) | 使用数据库配置OH_Rdb_ConfigV2，获得一个对应的OH_Rdb_Store实例，用来操作关系型数据库。 |
 | OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql) | 执行包含指定参数但不返回值的SQL语句。 |
 | OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBucket) | 向目标表中插入一行数据。 |
@@ -107,9 +107,10 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 ```
 
 **头文件**
-<!--@[rdb_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[rdb_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)--> 
 
 ``` C++
+#include <cstdlib>
 #include <database/data/data_asset.h>
 #include <database/rdb/oh_cursor.h>
 #include <database/rdb/oh_predicates.h>

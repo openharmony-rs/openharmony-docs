@@ -86,7 +86,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
         }
       }
     
-      let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+      let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
     
       try {
         console.info('openDLPFile:' + JSON.stringify(want));
@@ -145,7 +145,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
       try {
         let fileUri: string = this.uri;
         let fileName: string = this.fileName;
-        let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+        let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
         let want: Want = {
           'uri': fileUri,
           'parameters': {
@@ -388,7 +388,7 @@ DLP是系统提供的系统级的数据防泄漏解决方案，提供一种称�
     ``` TypeScript
     startDLPManagerForResult() {
       try {
-        let context = getContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
+        let context = new UIContext().getHostContext() as common.UIAbilityContext; // 获取当前UIAbilityContext
         let want:Want = {
           'uri': this.uri,
           'parameters' : {

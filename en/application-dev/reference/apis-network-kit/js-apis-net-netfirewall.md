@@ -25,7 +25,7 @@ import { netFirewall } from '@kit.NetworkKit';
 
 getNetFirewallPolicy(userId: number): Promise\<NetFirewallPolicy>
 
-Obtains a firewall policy.
+Obtains a firewall policy. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -75,7 +75,7 @@ netFirewall.getNetFirewallPolicy(100).then((result: netFirewall.NetFirewallPolic
 
 updateNetFirewallRule(rule: NetFirewallRule): Promise\<void>
 
-Updates a firewall rule.
+Updates a firewall rule. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -152,7 +152,7 @@ netFirewall.updateNetFirewallRule(ipRuleUpd).then(() => {
 
 removeNetFirewallRule(userId: number, ruleId: number): Promise\<void>
 
-Removes a firewall rule.
+Removes a firewall rule. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -202,7 +202,7 @@ netFirewall.removeNetFirewallRule(100, 1).then(() => {
 
 getNetFirewallRules(userId: number, requestParam: RequestParam): Promise\<FirewallRulePage>
 
-Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API.
+Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -257,7 +257,7 @@ netFirewall.getNetFirewallRules(100, ruleParam).then((result: netFirewall.Firewa
 
 getNetFirewallRule(userId: number, ruleId: number): Promise\<NetFirewallRule>
 
-Obtains a firewall rule based on the specified user ID and rule ID.
+Obtains a firewall rule based on the specified user ID and rule ID. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NET_FIREWALL
 
@@ -307,7 +307,7 @@ netFirewall.getNetFirewallRule(100, 1).then((rule: netFirewall.NetFirewallRule) 
 
 setNetFirewallPolicy(userId: number, policy: NetFirewallPolicy): Promise\<void>
 
-Sets a firewall policy.
+Sets a firewall policy. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 
@@ -361,7 +361,7 @@ netFirewall.setNetFirewallPolicy(100, policy).then(() => {
 
 addNetFirewallRule(rule: NetFirewallRule): Promise\<number>
 
-Adds a firewall rule.
+Adds a firewall rule. This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.MANAGE_NET_FIREWALL
 

@@ -6,14 +6,16 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The ImageCreator class provides APIs for applications to request an image data area and compile image data.
+
+Before calling any APIs in ImageCreator, you must use [image.createImageCreator](arkts-apis-image-f.md#imagecreateimagecreator11) to create an ImageCreator instance. ImageCreator does not support multiple threads.
+
+Images occupy a large amount of memory. When you finish using an ImageCreator instance, call [release](#release9) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 9.
-
-The ImageCreator class provides APIs for applications to request an image data area and compile image data.
-
-Before calling any APIs in ImageCreator, you must use [createImageCreator](arkts-apis-image-f.md#imagecreateimagecreator11) to create an ImageCreator instance. ImageCreator does not support multiple threads.
 
 ## Modules to Import
 
@@ -241,7 +243,9 @@ release(callback: AsyncCallback\<void>): void
 
 Releases this ImageCreator instance. This API uses an asynchronous callback to return the result.
 
-ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the ImageCreator object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+Images occupy a large amount of memory. When you finish using an ImageCreator instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageCreator
 
@@ -273,7 +277,9 @@ release(): Promise\<void>
 
 Releases this ImageCreator instance. This API uses a promise to return the result.
 
-ArkTS supports memory reclamation. Even if the application does not call **release()**, the memory of the ImageCreator object will be released by the system. However, images usually occupy a large amount of memory. Therefore, it is recommended that the application proactively call the API to release the memory when the object is no longer required.
+Images occupy a large amount of memory. When you finish using an ImageCreator instance, call this API to free the memory promptly.
+
+Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageCreator
 

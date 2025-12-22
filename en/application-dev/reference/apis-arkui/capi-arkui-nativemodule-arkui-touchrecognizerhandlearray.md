@@ -6,6 +6,10 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```
+typedef ArkUI_TouchRecognizerHandle* ArkUI_TouchRecognizerHandleArray
+```
+
 ## Overview
 
 Defines an array of touch recognizer handles.

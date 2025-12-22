@@ -330,10 +330,10 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 
 | 名称      | 类型                  | 只读 | 可选 | 说明                        |
 | --------- | --------------------- | ---- | ---- | --------------------------- |
-| CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。              |
-| CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。 |
-| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。 |
-| nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。 |
+| CACert    | [X509Cert](#x509cert) | 否   | 是   | 信任的CA证书。如果配置了CACert，则校验证书链时只使用CACert，不再使用CAPubKey和CASubject。             |
+| CAPubKey  | Uint8Array            | 否   | 是   | 信任的CA证书公钥，DER格式。仅在未配置CACert时生效。 |
+| CASubject | Uint8Array            | 否   | 是   | 信任的CA证书主题，DER格式。仅在配置了CAPubKey时生效。校验对象根据CAPubKey类型（自签或上级）决定是校验根证书的主题还是颁发者。|
+| nameConstraints<sup>12+</sup> | Uint8Array      | 否   | 是   | 名称约束，DER格式。只校验当前证书链的叶子证书。 |
 
 ## RevocationCheckOptions<sup>12+</sup>
 
@@ -344,7 +344,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 | 名称                                  | 值   | 说明                          |
 | --------------------------------------| -------- | -----------------------------|
 | REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | 优先采用OCSP进行校验，默认采用CRL校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持从证书CDP扩展中获取第一个CRL分发点地址检查证书吊销状态，或从证书AIA扩展中获取第一个OCSP服务器地址检查证书吊销状态。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
@@ -3899,7 +3899,7 @@ createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : voi
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -3967,7 +3967,7 @@ createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[cert.createX509CRL](#certcreatex509crl11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4173,7 +4173,7 @@ X509证书吊销列表对象。
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL](#x509crl11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL](#x509crl11)替代。
 
 ### isRevoked<sup>(deprecated)</sup>
 
@@ -4183,7 +4183,7 @@ isRevoked(cert : X509Cert) : boolean
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.isRevoked](#isrevoked11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.isRevoked](#isrevoked11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4284,7 +4284,7 @@ getType() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getType](#gettype11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getType](#gettype11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4342,7 +4342,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4417,7 +4417,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getEncoded](#getencoded11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4489,7 +4489,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.verify](#verify11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.verify](#verify11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4643,7 +4643,7 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.verify](#verify11-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.verify](#verify11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4797,7 +4797,7 @@ getVersion() : number
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getVersion](#getversion11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getVersion](#getversion11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4855,7 +4855,7 @@ getIssuerName() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getIssuerName](#getissuername11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getIssuerName](#getissuername11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -4929,7 +4929,7 @@ getLastUpdate() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getLastUpdate](#getlastupdate11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getLastUpdate](#getlastupdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5003,7 +5003,7 @@ getNextUpdate() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getNextUpdate](#getnextupdate11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getNextUpdate](#getnextupdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5077,7 +5077,7 @@ getRevokedCert(serialNumber : number) : X509CrlEntry
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getRevokedCert](#getrevokedcert11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCert](#getrevokedcert11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5158,7 +5158,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5275,7 +5275,7 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5349,7 +5349,7 @@ getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11-1)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getRevokedCerts](#getrevokedcerts11-1)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5420,7 +5420,7 @@ getTbsInfo() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getTBSInfo](#gettbsinfo11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getTBSInfo](#gettbsinfo11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5494,7 +5494,7 @@ getSignature() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getSignature](#getsignature11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignature](#getsignature11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5568,7 +5568,7 @@ getSignatureAlgName() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgName](#getsignaturealgname11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgName](#getsignaturealgname11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5642,7 +5642,7 @@ getSignatureAlgOid() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgOid](#getsignaturealgoid11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgOid](#getsignaturealgoid11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -5716,7 +5716,7 @@ getSignatureAlgParams() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgParams](#getsignaturealgparams11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRL.getSignatureAlgParams](#getsignaturealgparams11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8323,7 +8323,7 @@ try {
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CrlEntry](#x509crlentry11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CrlEntry](#x509crlentry11)替代。
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -8333,7 +8333,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-2)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-2)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8416,7 +8416,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-3)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getEncoded](#getencoded11-3)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8497,7 +8497,7 @@ getSerialNumber() : number
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getSerialNumber](#getserialnumber11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getSerialNumber](#getserialnumber11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8563,7 +8563,7 @@ getCertIssuer() : DataBlob
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getCertIssuer](#getcertissuer11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getCertIssuer](#getcertissuer11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -8639,7 +8639,7 @@ getRevocationDate() : string
 
 > **说明：**
 >
-> 从API version 11开始废弃，建议使用[X509CRLEntry.getRevocationDate](#getrevocationdate11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[X509CRLEntry.getRevocationDate](#getrevocationdate11)替代。
 
 **系统能力：** SystemCapability.Security.Cert
 
@@ -14256,7 +14256,7 @@ getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | <br>1. The type of the cmsFormat is invalid or not supported. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The type of the cmsFormat is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
 **示例：**
