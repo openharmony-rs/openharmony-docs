@@ -5355,3 +5355,17 @@ Allows an application to dynamically register or remove custom UTD data types.
 **Supported devices**: general devices
 
 **Since**: 22
+
+## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
+
+Allows an application that has accessed Cloud to manage cloud data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 23
