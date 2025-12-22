@@ -193,7 +193,7 @@ metadata对象示例：
 | 平板 | tablet | - |
 | 智慧屏 | tv | - |
 | 智能手表 | wearable | 系统能力较丰富的手表，具备电话功能。 |
-| 运动表 | litewearable | - |
+| 运动表 | liteWearable | - |
 | 车机 | car | - |
 | 默认设备 | default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 |
 | 2in1 | 2in1 | 即PC设备，主要交互方式以多窗口、多任务及键盘鼠标操作为主，充分发挥设备的生产力属性。|
