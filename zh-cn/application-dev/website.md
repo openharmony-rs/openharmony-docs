@@ -2790,6 +2790,7 @@
             - [Class (SwiperDynamicSyncScene)](reference/apis-arkui/arkts-apis-uicontext-swiperdynamicsyncscene.md)
             - [Class (TextMenuController)](reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md)
             - [Class (UIContext)](reference/apis-arkui/arkts-apis-uicontext-uicontext.md)
+            - [Class (ResolvedUIContext)](reference/apis-arkui/arkts-apis-uicontext-resolveduicontext.md)
             - [Class (UIInspector)](reference/apis-arkui/arkts-apis-uicontext-uiinspector.md)
             - [Class (UIObserver)](reference/apis-arkui/arkts-apis-uicontext-uiobserver.md)
             - [Interface (AtomicServiceBar)](reference/apis-arkui/arkts-apis-uicontext-atomicservicebar.md)
