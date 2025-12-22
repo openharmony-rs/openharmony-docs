@@ -1,4 +1,4 @@
-# 智能拍摄跟踪开发指南
+# 目标拍摄跟踪开发指南
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
 <!--Owner: @hobbycao-->
@@ -6,9 +6,9 @@
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @foryourself-->
 
-从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如人脸智能跟踪和自动构图等专业功能，支持第三方应用。
+从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如目标跟踪和自动构图等专业功能，支持第三方应用。
 
-智能拍摄跟踪功能通过机械体设备实现人脸和物体的自动化跟踪，提升拍摄质量和用户体验，助力开发者构建更智能、高效的拍摄解决方案。
+目标拍摄跟踪功能通过机械体设备实现人脸和物体的自动化跟踪，提升拍摄质量和用户体验，助力开发者构建更自动化、高效的拍摄解决方案。
 
 ## 接口介绍
 
@@ -33,7 +33,7 @@
 ### 开发准备
 
 1. 支持Mechanic Kit协议的机械体设备。
-2. 若要验证智能跟踪功能，主设备的相机驱动必须支持人脸检测。
+2. 若要验证目标跟踪功能，主设备的相机驱动必须支持人脸检测。
 3. 请将SDK更新到API 20或以上版本，具体操作参见[更新指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)。
 4. 请确保机械体设备已通过蓝牙与主设备连接。
 
@@ -121,11 +121,11 @@
     mechanicManager.off('attachStateChange', attachStateChangeCallback);
     ```
 
-### 控制设备智能跟踪拍摄
+### 控制设备目标跟踪拍摄
 
-启用智能拍摄功能后，设备将自动识别人脸并进行跟踪拍摄。
+启用目标拍摄功能后，设备将自动识别人脸并进行跟踪拍摄。
 
-1. 启用摄像头的智能拍摄功能。
+1. 启用摄像头的目标拍摄功能。
    <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     try {
@@ -213,7 +213,7 @@
     ```ts
     // 取消跟踪状态监听
     mechanicManager.off('trackingStateChange', trackingStateCallback);
-
+    
     // 或者取消所有跟踪状态监听
     mechanicManager.off('trackingStateChange');
     ```
@@ -229,9 +229,9 @@
 **功能验证步骤**
 
 1. **设备列表查询**：调用 `getAttachedMechDevices` 接口查询当前已连接的机械体设备列表，验证设备是否正确识别。
-2. **智能拍摄跟踪**：调用 `setCameraTrackingEnabled` 启用摄像头智能跟踪功能，使用 `getCameraTrackingEnabled` 验证状态，测试设备是否能跟随目标自动旋转。
+2. **目标拍摄跟踪**：调用 `setCameraTrackingEnabled` 启用摄像头目标跟踪功能，使用 `getCameraTrackingEnabled` 验证状态，测试设备是否能跟随目标自动旋转。
 
 **验证结果说明**
 
 - 如果 `getAttachedMechDevices` 返回设备列表，表示设备识别成功。
-- 如果 `getCameraTrackingEnabled` 返回真，智能拍摄跟踪启用成功。应用打开相机后，画面中出现人脸时，设备会跟随人脸转动。
+- 如果 `getCameraTrackingEnabled` 返回真，目标拍摄跟踪启用成功。应用打开相机后，画面中出现人脸时，设备会跟随人脸转动。
