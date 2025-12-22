@@ -377,7 +377,7 @@ struct CrossLanguage {
     } // namespace NativeModule
     ```
 
-4. 修改CMakeList.txt，添加链接库。
+4. 修改CMakeLists.txt，添加链接库。
    ```
    // CMakeLists.txt
    # the minimum version of CMake.
