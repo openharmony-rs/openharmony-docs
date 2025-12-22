@@ -41,13 +41,11 @@
 ``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { backup } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-// ···
+// ...
 
-// 请在组件内获取context，确保getContext(this)返回结果为UIAbilityContext
-let context = getContext(this) as common.UIAbilityContext;
-let filesDir = context.filesDir;
+// 此处仅为示例，在组件中可以通过getHostContext获取路径
+let filesDir = '/data/storage/el2/base/haps/entry/files';
 
 // 获取能力文件
 export async function getLocalCapabilities(): Promise<void> {
@@ -56,7 +54,7 @@ export async function getLocalCapabilities(): Promise<void> {
     console.info('getLocalCapabilities success');
     let fpath = filesDir + '/localCapabilities.json';
     fs.copyFileSync(fileData.fd, fpath);
-    // ···
+    // ...
     fs.closeSync(fileData.fd);
   } catch (error) {
     console.error(`getLocalCapabilities failed with err, code is ${error.code}, message is ${error.message}`);
@@ -110,15 +108,13 @@ export async function getLocalCapabilities(): Promise<void> {
   ``` TypeScript
   import { fileIo as fs } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
-  import { common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  // ···
+  // ...
   
-  // 请在组件内获取context，确保getContext(this)返回结果为UIAbilityContext
-  let context = getContext(this) as common.UIAbilityContext;
-  let filesDir = context.filesDir;
+  // 此处仅为示例，在组件中可以通过getHostContext获取路径
+  let filesDir = '/data/storage/el2/base/haps/entry/files';
   
-  // ···
+  // ...
   
   // 应用备份数据
   // 创建SessionBackup类的实例用于备份数据
@@ -182,7 +178,7 @@ export async function getLocalCapabilities(): Promise<void> {
     return sessionBackup;
   }
   
-  // ···
+  // ...
   export async function sessionBackup(): Promise<void> {
     gSession = createSessionBackup();
     // 此处可根据backup.getLocalCapabilities()提供的能力文件，选择需要备份的应用
@@ -211,15 +207,13 @@ export async function getLocalCapabilities(): Promise<void> {
   ``` TypeScript
   import { fileIo as fs } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
-  import { common } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-  // ···
+  // ...
   
-  // 请在组件内获取context，确保getContext(this)返回结果为UIAbilityContext
-  let context = getContext(this) as common.UIAbilityContext;
-  let filesDir = context.filesDir;
+  // 此处仅为示例，在组件中可以通过getHostContext获取路径
+  let filesDir = '/data/storage/el2/base/haps/entry/files';
   
-  // ···
+  // ...
   // 应用数据恢复
   // 创建SessionRestore类的实例用于恢复数据
   let gSessionRestore: backup.SessionRestore;
