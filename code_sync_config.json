@@ -3011,6 +3011,21 @@
 						"end_line":180,
 						"name":"PreferencesClose",
 						"start_line":176
+					},
+					{
+						"end_line":85,
+						"name":"RegisterDataObserver",
+						"start_line":66
+					},
+					{
+						"end_line":264,
+						"name":"PreferencesCrudGet",
+						"start_line":209
+					},
+					{
+						"end_line":151,
+						"name":"PreferencesValueSets",
+						"start_line":90
 					}
 				]
 			}
