@@ -5,7 +5,7 @@
 > **说明：** 
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
@@ -224,6 +224,10 @@ enableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                                                                                                                                                                                                                                               |
@@ -279,6 +283,10 @@ disableSilentProxy(context: Context, uri?: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                    | 必填 | 说明                                                                                                                                                                                                                                                                             |
@@ -331,7 +339,7 @@ export default class EntryAbility extends UIAbility {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | isProxy | boolean | 否 | 是 | 默认为false，如果为true，则要创建的[DataShareHelper](#datasharehelper)处于代理模式，所有操作都不会打开数据提供者APP，除非数据库不存在，当数据库不存在时，[createDataShareHelper](#datasharecreatedatasharehelper10)会拉起数据提供者创建数据库。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| waitTime<sup>18+</sup> | number | 否 | 是 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| waitTime<sup>18+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 拉起数据提供者进程的等待时间（单位：秒），默认值为2秒。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## TemplateId<sup>10+</sup>
 
@@ -390,6 +398,10 @@ export default class EntryAbility extends UIAbility {
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | bundleName | string | 否 | 否 | 指定回调的bundleName。 |
@@ -432,6 +444,10 @@ export default class EntryAbility extends UIAbility {
 
 **ArkTS-Sta起始版本：** 23
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                                         | 只读 | 可选 | 说明           |
 | ---------- | ------------------------------------------------------------ | ---- |  ---- | -------------- |
 | values     | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)    | 否   | 否   | 要更新的数据。 |
@@ -443,6 +459,10 @@ export default class EntryAbility extends UIAbility {
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                        | 值   | 说明                         |
 | ----------------------------|------| ---------------------------- |
 | SUBSCRIPTION_TYPE_EXACT_URI | 0    | 表示订阅指定uri路径的数据变更。|
@@ -452,6 +472,10 @@ export default class EntryAbility extends UIAbility {
 数据变更时通知用户具体变更的内容，包括数据变更类型、变化的uri、变更的数据内容。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                                         | 只读 | 可选 | 说明           |
 | ---------- | ------------------------------------------------------------ | ---- | ---- | -------------- |
@@ -1559,6 +1583,10 @@ getPublishedData(bundleName: string, callback: AsyncCallback&lt;Array&lt;Publish
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型             | 必填 | 说明                           |
@@ -1599,6 +1627,10 @@ getPublishedData(bundleName: string): Promise&lt;Array&lt;PublishedItem&gt;&gt;
 静默场景下，调用此接口时，传入的bundleName参数的大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2346,13 +2378,19 @@ try {
 
 ### batchUpdate<sup>12+</sup>
 
-batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;
+ArkTS-Dyn: batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;
+
+ArkTS-Sta: batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Promise&lt;Record&lt;string, Array&lt;int&gt;&gt;&gt;
 
 批量更新数据库中的数据记录，所有操作的总数(即operations对象的键值对)不得超过4000个，超出限制将导致更新失败；该接口的事务性取决于provider（数据提供方）。使用Promise异步回调。暂不支持静默访问。
 
 非静默场景下，调用此接口时，传入的operations参数的大小不能超过900KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2364,7 +2402,7 @@ batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Pro
 
 | 类型                                                  | 说明                                                         |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt; | Promise对象。返回更新的数据记录数集合，更新失败的UpdateOperation的数据记录数为-1。<br />因部分数据库（如KVDB）的相应接口并不提供相应支持，故若服务端使用此数据库，则此Promise也无法返回更新的数据记录数。 |
+| ArkTS-Dyn: Promise&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;<br>ArkTS-Sta: Promise&lt;Record&lt;string, Array&lt;int&gt;&gt;&gt;| Promise对象。返回更新的数据记录数集合，更新失败的UpdateOperation的数据记录数为-1。<br />因部分数据库（如KVDB）的相应接口并不提供相应支持，故若服务端使用此数据库，则此Promise也无法返回更新的数据记录数。 |
 
 **错误码：**
 
@@ -2654,6 +2692,10 @@ normalizeUri(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明                                                     |
@@ -2695,6 +2737,10 @@ normalizeUri(uri: string): Promise&lt;string&gt;
 将给定的DataShare URI转换为规范化URI，规范化URI可供跨设备使用，DataShare  URI仅供本地环境中使用。使用Promise异步回调。暂不支持静默访问。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2741,6 +2787,10 @@ denormalizeUri(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明                                                |
@@ -2782,6 +2832,10 @@ denormalizeUri(uri: string): Promise&lt;string&gt;
 将指定的URI转换为非规范化URI。使用Promise异步回调。暂不支持静默访问。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2830,6 +2884,10 @@ notifyChange(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                 | 必填 | 说明                     |
@@ -2867,6 +2925,10 @@ notifyChange(uri: string): Promise&lt;void&gt;
 非静默场景下，调用此接口时，传入的uri参数大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2908,6 +2970,10 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 非静默场景下，调用此接口时，传入的data参数大小不能超过200KB，超出限制将导致操作失败或抛出异常。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

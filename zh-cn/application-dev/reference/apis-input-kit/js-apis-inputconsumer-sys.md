@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
@@ -25,6 +27,12 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[onKey](#inputconsumeronkey22)。
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
@@ -33,7 +41,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
 | callback   | Callback&lt;KeyOptions&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
 
-**示例：** 
+**示例：**
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -67,6 +75,62 @@ struct Index {
 }
 ```
 
+## inputConsumer.onKey<sup>22+</sup>
+
+onKey(callback: Callback&lt;KeyOptions&gt;): void
+
+订阅系统快捷键，当满足条件的组合按键输入事件发生时，使用Callback异步方式上报组合按键数据。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[on](#inputconsumeron)。
+
+**ArkTS-Sta起始版本**：22
+
+**参数：** 
+
+| 参数名         | 类型                         | 必填   | 说明 |
+| ---------- | -------------------------- | ---- | ---------------------------------------- |
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。                 |
+| callback   | Callback&lt;KeyOptions&gt; | 是    | 回调函数，当满足条件的组合按键输入事件发生时，异步上报组合按键数据。 |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftAltKey = 2045;
+          let tabKey = 2049;
+          let keyOptions: inputConsumer.KeyOptions = {
+            preKeys: [ leftAltKey ],
+            finalKey: tabKey,
+            isFinalKeyDown: true,
+            finalKeyDownDuration: 0
+          };
+          let callback = (keyOptions: inputConsumer.KeyOptions) => {
+            console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
+          }
+          try {
+            inputConsumer.onKey(keyOptions, callback);
+          } catch (error) {
+            console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
 
 ## inputConsumer.off
 
@@ -76,6 +140,12 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[offKey](#inputconsumeroffkey22)。
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                              |
@@ -84,7 +154,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 | keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。             |
 | callback   | Callback&lt;KeyOptions&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
 
-**示例：** 
+**示例：**
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -145,6 +215,68 @@ struct Index {
 }
 ```
 
+## inputConsumer.offKey<sup>22+</sup>
+
+offKey(keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;): void
+
+取消订阅系统快捷键。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Sta。
+
+**相关接口**: 该接口对应的ArkTS-Dyn接口是[off](#inputconsumeroff)。
+
+**ArkTS-Sta起始版本**：22
+
+**参数：** 
+
+| 参数名         | 类型                         | 必填   | 说明                              |
+| ---------- | -------------------------- | ---- | ------------------------------- |
+| type       | string                     | 是    | 事件类型，当前仅支持 'key'。              |
+| keyOptions | [KeyOptions](#keyoptions)  | 是    | 组合键选项。             |
+| callback   | Callback&lt;KeyOptions&gt; | 否    | 需要取消订阅的回调函数。若不填，则取消当前应用组合键选项已订阅的所有回调函数。 |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let leftAltKey = 2045;
+          let tabKey = 2049;
+          let keyOptions: inputConsumer.KeyOptions = {
+            preKeys: [ leftAltKey ],
+            finalKey: tabKey,
+            isFinalKeyDown: true,
+            finalKeyDownDuration: 0
+          };
+          let callback = (keyOptions: inputConsumer.KeyOptions) => {
+            console.log(`keyOptions: ${JSON.stringify(keyOptions)}`);
+          }
+          try {
+            // 取消订阅单个回调函数
+            inputConsumer.onKey(keyOptions, callback);
+            inputConsumer.offKey(keyOptions, callback);
+            // 取消监听所有回调函数
+            inputConsumer.offKey(keyOptions);
+          } catch (error) {
+            console.error(`Subscribe failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputConsumer.setShieldStatus<sup>11+</sup>
 
 setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
@@ -155,6 +287,10 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
+
 **参数：** 
 
 | 参数名         | 类型                         | 必填   | 说明                                       |
@@ -162,7 +298,9 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 | shieldMode       | [ShieldMode](js-apis-inputconsumer-sys.md#shieldmode11)                     | 是    | 系统快捷键屏蔽类型，目前仅支持取值为'FACTORY_MODE'，表示屏蔽所有系统快捷键。                       |
 | isShield | boolean  | 是    | 屏蔽类型生效状态，true代表屏蔽类型生效，flase代表不生效。              |
 
-**示例：** 
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -187,6 +325,33 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let mode = inputConsumer.ShieldMode.FACTORY_MODE;
+          try {
+            inputConsumer.setShieldStatus(mode, true);
+            console.log(`set shield status success`);
+          } catch (error) {
+            console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputConsumer.getShieldStatus<sup>11+</sup>
 
 getShieldStatus(shieldMode: ShieldMode): boolean
@@ -196,6 +361,10 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 **需要权限**: ohos.permission.INPUT_CONTROL_DISPATCHING
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 **参数：** 
 
@@ -209,7 +378,9 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 | ---------- |  ---------------------------------------- |
 | boolean                    | 屏蔽类型生效状态，true代表屏蔽类型生效，flase代表不生效。                       |
 
-**示例：** 
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -234,19 +405,47 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputConsumer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let mode = inputConsumer.ShieldMode.FACTORY_MODE;
+          try {
+            let result: Boolean =  inputConsumer.getShieldStatus(mode);
+            console.log(` get shield status result:${JSON.stringify(result)}`);
+          } catch (error) {
+            console.error(`set shield status failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## KeyOptions
 
 快捷键选项。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+
 | 名称        | 类型   | 只读   | 可选   | 说明      |
-| --------- | ------ | ---- | ---- | ------- |
-| preKeys    | Array\<number>   | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 |
-| finalKey             | number  | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键按键。 |
-| isFinalKeyDown       | boolean | 否    |  否 | 最终按键状态。<br>ture表示按键按下，false表示按键抬起。 |
-| finalKeyDownDuration | number  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。   |
-| isRepeat<sup>18+</sup> | boolean  | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 |
+| --------- | -------- | ---- | ---- | ------- |
+| preKeys    | ArkTS-Dyn: Array\<number> <br/>ArkTS-Sta: Array\<int>  | 否    | 否 | 前置按键集合，数量范围[0, 4]，前置按键无顺序要求。<br>如组合按键Ctrl+Alt+A中，Ctrl+Alt称为前置按键。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：22|
+| finalKey             | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否    |  否 | 最终按键，此项必填，最终按键触发上报回调函数。<br>如组合按键Ctrl+Alt+A中，A称为最终按键按键。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：22 |
+| isFinalKeyDown       | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean| 否    |  否 | 最终按键状态。<br>ture表示按键按下，false表示按键抬起。<br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：22 |
+| finalKeyDownDuration | ArkTS-Dyn: number  <br/>ArkTS-Sta: int  | 否    |  否 | 最终按键保持按下持续时间，单位：μs。<br>当finalKeyDownDuration为0时，立即触发回调函数。<br>当finalKeyDownDuration大于0时，isFinalKeyDown为true，则最终按键按下超过设置时长后触发回调函数；isFinalKeyDown为false，则最终按键按下到抬起时间小于设置时长时触发回调函数。 <br>**ArkTS-Dyn起始版本**: 8 <br>**ArkTS-Sta起始版本**：22  |
+| isRepeat<sup>18+</sup> | ArkTS-Dyn: boolean  <br/>ArkTS-Sta: boolean | 否      | 否      | 是否上报重复的按键事件。true表示上报，false表示不上报，若不填默认为true。 <br>**ArkTS-Dyn起始版本**: 18 <br>**ArkTS-Sta起始版本**：22|
 
 ## shieldMode<sup>11+</sup>
 
@@ -254,8 +453,12 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputConsumer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                        | 值 | 说明           |
 | ------------------------------ | ----------- | ---------------- |
-| UNSET_MODE | -1 | 值为-1，表示不屏蔽系统快捷键。 |
-| FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。 |
-| OOBE_MODE | 1 | 值为1，表示OOBE阶段屏蔽所有系统快捷键，暂不支持该能力。 |
+| UNSET_MODE | -1 | 值为-1，表示不屏蔽系统快捷键。|
+| FACTORY_MODE | 0 | 值为0，表示屏蔽所有系统快捷键。|
+| OOBE_MODE | 1 | 值为1，表示OOBE阶段屏蔽所有系统快捷键，暂不支持该能力。|

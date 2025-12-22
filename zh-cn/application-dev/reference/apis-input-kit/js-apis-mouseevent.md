@@ -4,7 +4,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>- 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -17,6 +19,10 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 鼠标事件类型。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
 
 | 名称        | 值 | 说明                 |
 | ----------- | -------- | -------------------- |
@@ -36,6 +42,10 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 | 名称      | 值  | 说明    |
 | ------- | ------| ----- |
 | LEFT    | 0 | 鼠标左键。  |
@@ -53,6 +63,10 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 | 名称                | 值     | 说明    |
 | ----------------- | ------- | ----- |
 | SCROLL_VERTICAL   | 0 | 垂直滚动轴。 |
@@ -66,16 +80,24 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 | 名称    | 类型   | 只读   | 可选   | 说明   |
 | ----- | ------ | ---- | ---- | ---- |
 | axis  | [Axis](#axis)   | 否    | 否    | 轴类型。  |
-| value | number | 否    | 否    | 轴的值。  |
+| value |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 否    | 轴的值。  |
 
 ## ToolType<sup>11+</sup>
 
 工具类型。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 | 名称      | 值  | 说明    |
 | ------- | ------| ----- |
@@ -90,16 +112,20 @@ import { Action, Button, Axis, AxisValue, MouseEvent } from '@kit.InputKit';
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | action         | [Action](#action)      | 否    | 否    | 鼠标事件动作。                                   |
-| screenX        | number      | 否    | 否    | 鼠标光标在屏幕中的横坐标。                             |
-| screenY        | number      | 否    | 否    | 鼠标光标在屏幕中的纵坐标。                             |
-| windowX        | number      | 否    | 否    | 鼠标所在窗口的横坐标。                               |
-| windowY        | number      | 否    | 否    | 鼠标所在窗口的纵坐标。                               |
-| rawDeltaX      | number      | 否    | 否    | 鼠标本次操作横坐标偏移值。 |
-| rawDeltaY      | number      | 否    | 否    | 鼠标本次操作纵坐标偏移值。                          |
-| button         | [Button](#button)      | 否    | 否    | 鼠标按钮。                       |        
+| screenX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标光标在屏幕中的横坐标。                             |
+| screenY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标光标在屏幕中的纵坐标。                             |
+| windowX        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口的横坐标。                               |
+| windowY        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标所在窗口的纵坐标。                               |
+| rawDeltaX      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标本次操作横坐标偏移值。 |
+| rawDeltaY      | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 鼠标本次操作纵坐标偏移值。                          |
+| button         | [Button](#button)      | 否    | 否    | 鼠标按钮。                       |
 | pressedButtons | [Button](#button)[]    | 否    | 否    | 当前处于按下状态的鼠标按钮。                              |
 | axes           | [AxisValue](#axisvalue)[] | 否    | 否    | 事件包含的所有轴数据。                               |
 | pressedKeys    | [KeyCode](js-apis-keycode.md#keycode)[]   | 否    | 否    | 当前处于按下状态的按键列表。                            |

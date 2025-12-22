@@ -46,3 +46,4 @@
 - [应用数据向量化 (ArkTS)](aip-data-intelligence-embedding.md)
 - [SQLite调试工具](sqlite-database-debug-tool.md)
 - [ArkData术语](data-terminology.md)
+- [ArkData常见问题](data-faq.md)

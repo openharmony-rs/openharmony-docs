@@ -8,6 +8,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 > 
 > - 该组件不支持在Wearable设备上使用。
@@ -32,6 +34,10 @@ isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRad
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称                                | 类型                                                            | 必填 | 装饰器类型                  | 说明                                                                                |
 |-----------------------------------|---------------------------------------------------------------|----|------------------------|-----------------------------------------------------------------------------------|
 | progress                          | number                                                        | 是  | \@Require <br/>\@Param | 下载按钮的当前进度值。<br/>取值范围：[0,100]。设置小于0的数值时置为0，设置大于100的数值置为100。<br/>默认值：0                                                                       |
@@ -55,6 +61,10 @@ type ClickCallback = () => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 ## ProgressButtonV2Color
 下载按钮颜色选项。
 
@@ -65,6 +75,10 @@ type ClickCallback = () => void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称              | 类型           | 必填 | 装饰器类型   | 说明                        |
 |-----------------|--------------|----|---------|---------------------------|
@@ -82,6 +96,10 @@ constructor(options: ProgressButtonV2ColorOptions);
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称      | 类型                           | 必填 | 说明    |
 |---------|------------------------------|----|-------|
 | options | ProgressButtonV2ColorOptions | 是  | 色彩信息。 |
@@ -93,6 +111,10 @@ constructor(options: ProgressButtonV2ColorOptions);
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称              | 类型           | 必填 | 说明                        |
 |-----------------|--------------|----|---------------------------|
@@ -107,6 +129,8 @@ constructor(options: ProgressButtonV2ColorOptions);
 ## 示例
 
 该示例实现了一个简单的带加载进度的文本下载按钮。
+
+ArkTS-Dyn示例：
 ```ts
 import { LengthMetrics, ProgressButtonV2 } from '@kit.ArkUI';
 
@@ -156,6 +180,59 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import {
+  Entry, ComponentV2, Column, Scroll, ColumnOptions, HorizontalAlign, Margin, LengthMetrics, Local
+} from '@kit.ArkUI';
+import { ProgressButtonV2 } from '@ohos.arkui.advanced.ProgressButtonV2';
 
+@Entry
+@ComponentV2
+struct Index {
+  @Local progressIndex: number = 0;
+  @Local textState: string = '下载';
+  @Local buttonWidth: LengthMetrics = LengthMetrics.vp(200);
+  @Local isRunning: boolean = false;
+  @Local enableState: boolean = true;
+
+  build() {
+    Column() {
+      Scroll() {
+        Column({ space: 20 } as ColumnOptions) {
+          ProgressButtonV2({
+            progress: this.progressIndex,
+            progressButtonWidth: this.buttonWidth,
+            content: this.textState,
+            isEnabled: this.enableState,
+            onClicked: () => {
+              if (this.textState && !this.isRunning && this.progressIndex < 100) {
+                this.textState = '继续';
+              }
+              this.isRunning = !this.isRunning;
+              let timer = -1;
+              timer = setInterval(() => {
+                if (this.isRunning) {
+                  if (this.progressIndex === 100) {
+
+                  } else {
+                    this.progressIndex++
+                    if (this.progressIndex === 100) {
+                      this.textState = '已完成';
+                      this.enableState = false;
+                    }
+                  }
+                } else {
+                  clearInterval(timer);
+                }
+              }, 20);
+            }
+          })
+        }.alignItems(HorizontalAlign.Center).width('100%').margin({ top: 20 } as Margin);
+      }
+    }
+  }
+}
+```
 
 ![img.png](./figures/img.png)

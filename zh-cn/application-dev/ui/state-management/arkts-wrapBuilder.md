@@ -96,7 +96,7 @@ struct Index {
 
 自定义组件Index使用`ForEach`进行不同`@Builder`函数的渲染，可以使用`builderArr`声明的`wrapBuilder`数组来实现不同的`@Builder`函数效果。整体代码会更加整洁。
 
-```
+```ts
 @Builder
 function MyBuilder(value: string, size: number) {
   Text(value)

@@ -125,7 +125,8 @@ function destroy(): void {
 | ---- | ---- | ---- |
 | SHADER | 1 | 材质由着色器定义。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | 采用基于物理渲染（PBR）的金属-粗糙度模型，通过金属度与粗糙度参数，模拟更真实的材质光照效果。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
-| UNLIT<sup>22+</sup> | 3 | 不受光照影响的材质。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22|
+| UNLIT<sup>23+</sup> | 3 | 不受光照影响的材质。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
+| OCCLUSION<sup>23+</sup> | 4 | 遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## CullMode<sup>20+</sup>
 用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。
@@ -169,14 +170,14 @@ function destroy(): void {
 | renderSortLayer | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 渲染图层id，数值越小，渲染顺序越靠前。取值范围[0, 63]，默认图层id为32。 |
 | renderSortLayerOrder | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 同一渲染图层内，不同物体的渲染顺序，数值越小，越先渲染。取值范围[0, 255]，默认值为0。 |
 
-## PolygonMode<sup>22+</sup>
+## PolygonMode<sup>23+</sup>
 控制多边形绘制模式的枚举。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
@@ -197,7 +198,7 @@ function destroy(): void {
 | blend<sup>20+</sup> | [Blend](#blend20) | 否 | 是 | 材质是否透明，默认值为false。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 | alphaCutoff<sup>20+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 透明通道阈值，如果像素的alpha值等于或高于此阈值，则渲染该像素；如果低于此阈值，则不会渲染该像素。设置值小于1时，则开启该模式，取值范围为[0, 1]，默认值为1。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | 否 | 是 | 渲染排序设置，用于控制材质在渲染管线中的渲染顺序，渲染图层id默认值为32，同一图层内的渲染顺序默认值为0。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
-| polygonMode<sup>22+</sup> | [PolygonMode](#polygonmode22) | 否 | 是 | 模型的多边形绘制模式，默认值为FILL。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22|
+| polygonMode<sup>23+</sup> | [PolygonMode](#polygonmode23) | 否 | 是 | 模型的多边形绘制模式，默认值为FILL。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
 ## MaterialProperty<sup>20+</sup>
 材质属性接口，用于定义材质所使用的纹理、属性因子及纹理采样器信息。
@@ -249,19 +250,29 @@ function destroy(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | colorShader | [Shader](#shader) | 否 | 是 | 着色器，默认值为undefined。 |
 
-## UnlitMaterial<sup>22+</sup>
+## UnlitMaterial<sup>23+</sup>
 
 不受光照影响的材质，其着色值只与设置的基础颜色有关，与光照条件无关，继承自[Material](#material)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-**ArkTS-Dyn起始版本：** 22
+**ArkTS-Dyn起始版本：** 23
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | baseColor | [MaterialProperty](#materialproperty20) | 否 | 否 | 基础颜色属性，用于表达材质的基础颜色信息。|
+
+## OcclusionMaterial<sup>23+</sup>
+
+遮挡材质，能够遮挡场景中的其他物体但不会遮挡环境，继承自[Material](#material)。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 ## SamplerFilter<sup>20+</sup>
 采样器过滤模式枚举，定义纹理采样时的插值方法，用于控制纹理在缩放或变形时如何计算最终像素的颜色值。
@@ -653,7 +664,7 @@ function finish(): void {
 | environmentImage | [Image](#image) \| null | 否 | 是 | 环境图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 | radianceImage | [Image](#image) \| null | 否 | 是 | 辐射图片，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | 否 | 是 | 辐射系数，默认为undefined。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
-| environmentRotation<sup>22+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22|
+| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 是 | 环境光的旋转，默认为undefined，接收参数需为归一化后的四元数。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
 ## Image
 图片类型，继承自[SceneResource](#sceneresource-1)。

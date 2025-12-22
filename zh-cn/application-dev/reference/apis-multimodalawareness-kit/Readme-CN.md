@@ -9,6 +9,7 @@
   <!--Del-->
   - [@js-apis-awareness-metadataBinding (回旋镖)(系统接口)](js-apis-awareness-metadataBinding-sys.md)
   - [@ohos.multimodalawareness.roomLocation (房间级定位)(系统接口)](js-apis-awareness-roomLocation.md)
+  - [@ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)](js-apis-awareness-spatialAwareness-sys.md)
   <!--DelEnd-->
 - 错误码<!--ultimodal-awareness-arkts-errcode-->
   - [行为动作感知错误码](errorcode-motion.md)
@@ -16,3 +17,4 @@
   - [设备状态感知错误码](errorcode-deviceStatus.md)
   - [用户状态感知错误码](errorcode-userStatus.md)
   - [房间级定位错误码](errorcode-roomLocation.md)
+  - [空间感知错误码](errorcode-spatialAwareness.md)

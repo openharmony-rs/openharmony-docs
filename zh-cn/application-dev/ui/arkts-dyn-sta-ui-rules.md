@@ -2128,3 +2128,287 @@ struct Index {
   }
 }
 ```
+
+## 动态添加删除监听接口去除this与路径的复杂规格
+
+**变更原因：** 
+
+ArkTS-Sta简化了ArkTS-Dyn的设计，去除了必须传递的this和路径的复杂规格。
+
+**适配建议：**
+
+按照[addMonitor/clearMonitor接口：动态添加/取消监听](./state-management-static/arkts-static-new-addmonitor-clearmonitor.md)文档手动进行修改。将传递的`this`与路径替换为返回被监听状态变量的lambda函数，保存`addMonitor`返回的`IMonitorDecoratedVariable`用于之后传递给`clearMonitor`使用。向`MonitorOptions.path`传递字符串或字符串数组可以显式指定作为被监听状态变量的路径。`MonitorOptions.owner`用于绑定到`@ComponentV2`组件继承组件冻结。
+
+**示例：**
+
+ArkTS-Dyn
+
+```typescript
+import { UIUtils } from '@kit.ArkUI';
+
+@ObservedV2
+class User {
+  @Trace age: number = 10;
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`onChange: User property ${path} has changed from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+    });
+  }
+
+  constructor(needMonitor: boolean) {
+    if (needMonitor) {
+      UIUtils.addMonitor(this, 'age', this.onChange);
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local user1: User = new User(true);
+  @Local user2: User = new User(false);
+
+  build() {
+    Column() {
+      Text(`user1 age ${this.user1.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 有Monitor回调
+          this.user1.age++;
+        })
+      Text(`user2 age ${this.user2.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 无Monitor回调
+          this.user2.age++;
+        })
+      Button('remove user1 monitor')
+        .onClick(() => {
+          UIUtils.clearMonitor(this.user1, 'age', this.user1.onChange);
+        })
+
+      Child({ needMonitor: true })
+      Child({ needMonitor: false })
+    }
+  }
+}
+
+@ComponentV2({ freezeWhenInactive: true })
+struct Child {
+  @Param needMonitor: boolean = false;
+  @Param user: User = new User(true);
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`Child needMonitor ${this.needMonitor} onChange: property ${path} has changed from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+    });
+  }
+
+  aboutToAppear(): void {
+    if (this.needMonitor) {
+      UIUtils.addMonitor(this.user, 'age', this.onChange);
+    }
+  }
+
+  build() {
+    Column() {
+      Text(`User: ${this.user.age}`)
+        .fontSize(20)
+      Button('Increase User age')
+        .onClick(() => {
+          this.user.age++;
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta
+
+```typescript
+'use static'
+
+import { UIUtils, IMonitor, IMonitorDecoratedVariable, ObservedV2, ComponentV2, Trace, Local, Entry, Param, Column, Text, Button } from '@kit.ArkUI';
+
+@ObservedV2
+class User {
+  @Trace age: number = 10;
+  monitor?: IMonitorDecoratedVariable;  // 添加接收句柄的变量
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`onChange: User property ${path} has changed from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+    });
+  }
+
+  // 传递返回被监听状态变量的箭头函数
+  constructor(needMonitor: boolean) {
+    if (needMonitor) {
+      // age修改为() => this.age
+      // 使用this.monitor接收句柄IMonitorDecoratedVariable
+      // 可选传递路径 'age'
+      this.monitor = UIUtils.addMonitor(() => this.age, this.onChange, { path: 'age' });
+    }
+  }
+}
+
+@Entry
+@ComponentV2
+struct Page {
+  @Local user1: User = new User(true);
+  @Local user2: User = new User(false);
+
+  build() {
+    Column() {
+      Text(`user1 age ${this.user1.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 有Monitor回调
+          this.user1.age++;
+        })
+      Text(`user2 age ${this.user2.age}`)
+        .fontSize(20)
+        .onClick(() => {
+          // 无Monitor回调
+          this.user2.age++;
+        })
+      Button('remove user1 monitor')
+        .onClick(() => {
+          if (this.user1.monitor) {
+            // ArkTS-Sta使用句柄IMonitorDecoratedVariable清除监听
+            UIUtils.clearMonitor(this.user1.monitor!);
+          }
+        })
+
+      Child({ needMonitor: true })
+      Child({ needMonitor: false })
+    }
+  }
+}
+
+@ComponentV2
+struct Child {
+  @Param needMonitor: boolean = false;
+  @Param user: User = new User(true);
+  monitor?: IMonitorDecoratedVariable;
+
+  onChange(mon: IMonitor) {
+    mon.dirty.forEach((path: string) => {
+      console.info(`Child needMonitor ${this.needMonitor} onChange: property ${path} has changed from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+    });
+  }
+
+  // 传递返回被监听状态变量的箭头函数
+  aboutToAppear(): void {
+    if (this.needMonitor) {
+      // owner用于继承组件冻结
+      this.monitor = UIUtils.addMonitor(() => this.user.age, this.onChange, {
+        path: 'user.age',
+        owner: this
+      });
+    }
+  }
+
+  build() {
+    Column() {
+      Text(`User: ${this.user.age}`)
+        .fontSize(20)
+      Button('Increase User age')
+        .onClick(() => {
+          this.user.age++;
+        })
+    }
+  }
+}
+```
+
+## PersistenceV2的connect接口不再接受2个回调类型的入参
+
+**规则解释：**
+
+在ArkTS-Sta中，[PersistenceV2](./state-management-static/arkts-static-new-persistencev2.md)的connect接口只接受一个类型是`() => T`的参数，不支持同时传入2个`() => T`参数的用法。
+
+**变更原因：**
+
+在ArkTS-Dyn中，PersistenceV2的connect接口可以同时在第二个参数和第三个参数中传入相同的类型为`() => T`的参数，但是这种情况下第三个参数是无效的。
+
+**适配建议：**
+
+去除多余的参数。
+
+**示例：**
+
+ArkTS-Dyn
+
+```ts
+import { PersistenceV2 } from '@kit.ArkUI';
+
+@ObservedV2
+class Message {
+  @Trace userID: number;
+  constructor(userID?: number) {
+    this.userID = userID ?? 1;
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  // 回调`() => new Message()`传递了2次，只有第一个生效。
+  @Local message: Message = PersistenceV2.connect<Message>(Message, () => new Message(), () => new Message())!;
+  build() {
+    Column() {
+      Text(`${this.message.userID}`)
+      Button('Change userID')
+        .onClick(() => {
+          this.message.userID += 1;
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta
+
+```ts
+'use static'
+import { ObservedV2, Trace, Entry, ComponentV2, Local, PersistenceV2, Column, Text, Button } from '@kit.ArkUI';
+
+@ObservedV2
+class Message {
+  @Trace userID: number;
+  constructor(userID?: number) {
+    this.userID = userID ?? 1;
+  }
+}
+
+// ArkTS-Sta的PersistenceV2需要额外提供序列化和反序列化实现
+function messageToJson(message: Message): jsonx.JsonElement {
+  const root = new jsonx.JsonElement();
+  const userIDElement = new jsonx.JsonElement();
+  userIDElement.setDouble(message.userID);
+  root.setElement('userID', userIDElement);
+  return root;
+}
+function messageFromJson(json: jsonx.JsonElement): Message {
+  return new Message(json.getElement('userID').asDouble());
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local message: Message = PersistenceV2.connect<Message>(Type.from<Message>(), 
+    messageToJson, messageFromJson, // 传入序列化和反序列化实现
+    () => new Message())!; // 回调`() => new Message()`只传1次。
+  build() {
+    Column() {
+      Text(`${this.message.userID}`)
+      Button('Change userID')
+        .onClick(() => {
+          this.message.userID += 1;
+        })
+    }
+  }
+}
+```

@@ -14,13 +14,14 @@
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称        | 类型                                     | 必填   | 说明                                     |
-| ---------- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 是    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件(文件支持html和txt类型)，请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。 |
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | 是    | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、声明周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
-| renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件自渲染，`RenderMode.SYNC_RENDER`表示支持Web组件统一渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 |
-| incognitoMode<sup>11+</sup> | boolean | 否 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。 |
-| sharedRenderProcessToken<sup>12+</sup> | string | 否 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。  |
+| 名称        | 类型                                     | 只读 | 可选   | 说明                                     |
+| ---------- | ---------------------------------------- | ----| ---- | ---------------------------------------- |
+| src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | 否 | 否    | 网页资源地址。如果访问本地资源文件，请使用$rawfile或者resource协议。如果加载应用包外沙箱路径的本地资源文件(文件支持html和txt类型)，请使用file://沙箱文件路径。<br>src不能通过状态变量（例如：@State）动态更改地址，如需更改，请通过[loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl)重新加载。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 22 |
+| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | 否 | 否    | 控制器，通过controller可以控制Web组件各种行为（包括页面导航、声明周期状态、JavaScript交互等行为）。从API version 9开始，WebController不再维护，建议使用WebviewController替代。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 22 |
+| incognitoMode<sup>11+</sup> | boolean | 否 | 是 | 表示当前创建的webview是否是隐私模式。true表示创建隐私模式的webview，false表示创建正常模式的webview。<br> 默认值：false。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
+| renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| 否 | 是   | 表示当前Web组件的渲染方式，`RenderMode.ASYNC_RENDER`表示Web组件自渲染，`RenderMode.SYNC_RENDER`表示支持Web组件统一渲染能力，默认值`RenderMode.ASYNC_RENDER`，该模式不支持动态调整。 <br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22 |
+| sharedRenderProcessToken<sup>12+</sup> | string | 否 | 是 | 表示当前Web组件指定共享渲染进程的token，多渲染进程模式下，相同token的Web组件会优先尝试复用与token相绑定的渲染进程。token与渲染进程的绑定发生在渲染进程的初始化阶段。当渲染进程没有关联的Web组件时，其与token绑定关系将被移除。<br> 默认值： ""。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 22  |
+| emulateTouchFromMouseEvent<sup>22+</sup> | boolean | 否 | 是    |  设定鼠标事件是否被转换成touch事件。<br> true表示转换，false表示不转换。默认值：false。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 22<br> |
 
 ## WebMediaOptions<sup>10+</sup>
 
@@ -61,10 +62,10 @@ Web媒体策略的配置。
 
 | 名称             | 类型   | 只读 | 可选    | 说明                   |
 | -------------- | ---------------- | ---- |  ---- | -------------------- |
-| scrollUp  | [NestedScrollMode](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) | 否    | 是    | 可滚动组件往上滚动时的嵌套滚动选项。 |
-| scrollDown | [NestedScrollMode](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) | 否    | 是    | 可滚动组件往下滚动时的嵌套滚动选项。 |
-| scrollLeft  | [NestedScrollMode](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) | 否    | 是    | 可滚动组件往左滚动时的嵌套滚动选项。 |
-| scrollRight | [NestedScrollMode](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) | 否    | 是    | 可滚动组件往右滚动时的嵌套滚动选项。 |
+| scrollUp  | [NestedScrollMode](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) | 否   | 是   | 可滚动组件往上滚动时的嵌套滚动选项。<br/>默认值：NestedScrollMode.SELF_FIRST。|
+| scrollDown | [NestedScrollMode](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) | 否   | 是   | 可滚动组件往下滚动时的嵌套滚动选项。<br/>默认值：NestedScrollMode.SELF_FIRST。|
+| scrollLeft  | [NestedScrollMode](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) | 否   | 是   | 可滚动组件往左滚动时的嵌套滚动选项。<br/>默认值：NestedScrollMode.SELF_FIRST。|
+| scrollRight | [NestedScrollMode](../apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) | 否   | 是   | 可滚动组件往右滚动时的嵌套滚动选项。<br/>默认值：NestedScrollMode.SELF_FIRST。|
 
 ## NativeMediaPlayerConfig<sup>12+</sup>
 
@@ -145,7 +146,7 @@ Web同层渲染的配置。
 
 ## OnAlertEvent<sup>12+</sup>
 
-定义网页触发alert()告警弹窗时触发回调。
+定义网页触发 `alert()` 告警时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -155,9 +156,9 @@ Web同层渲染的配置。
 
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| url | string | 否 |否 | 当前显示弹窗所在网页的URL。                       |
-| message | string | 否 |否 | 弹窗中显示的信息。                       |
-| result | [JsResult](./arkts-basic-components-web-JsResult.md) | 否 |否 | 通知Web组件用户操作行为。                       |
+| url | string | 否 |否 | 当前显示弹窗的网页的URL。                      |
+| message | string | 否 |否 | 显示在弹窗中的信息。                       |
+| result | [JsResult](./arkts-basic-components-web-JsResult.md) | 否 |否 | 通知Web组件用户的操作结果。                      |
 
 ## OnBeforeUnloadEvent<sup>12+</sup>
 
@@ -174,7 +175,7 @@ Web同层渲染的配置。
 
 ## OnConfirmEvent<sup>12+</sup>
 
-定义网页调用confirm()告警时触发此回调。
+定义网页触发 `confirm()` 弹窗时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -182,15 +183,15 @@ Web同层渲染的配置。
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称             | 类型      | 只读 | 可选   | 说明                                       |
-| -------------- | ---- | ---- | ---- |---------------------------------------- |
-| url | string | 否 |否 | 当前显示弹窗所在网页的URL。                       |
-| message | string | 否 |否 | 弹窗中显示的信息。                       |
-| result | [JsResult](./arkts-basic-components-web-JsResult.md) | 否 |否 | 通知Web组件用户操作行为。                       |
+| 名称    | 类型                                                 | 只读 | 可选 | 说明                        |
+| ------- | ---------------------------------------------------- | ---- | ---- | --------------------------- |
+| url     | string                                               | 否   | 否   | 当前显示弹窗的网页的URL。   |
+| message | string                                               | 否   | 否   | 显示在弹窗中的信息。        |
+| result  | [JsResult](./arkts-basic-components-web-JsResult.md) | 否   | 否   | 通知Web组件用户的操作结果。 |
 
 ## OnPromptEvent<sup>12+</sup>
 
-定义网页调用prompt()告警时触发此回调。
+定义网页触发 `prompt()` 弹窗时的回调函数。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -198,12 +199,12 @@ Web同层渲染的配置。
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称             | 类型      | 只读 | 可选   | 说明                                       |
-| -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| url | string | 否 |否 | 当前显示弹窗所在网页的URL。                       |
-| message | string | 否 |否 | 弹窗中显示的信息。                       |
-| value | string | 否 |否 | 提示对话框的信息。                       |
-| result | [JsResult](./arkts-basic-components-web-JsResult.md) | 否 |否 | 通知Web组件用户操作行为。                       |
+| 名称    | 类型                                                 | 只读 | 可选 | 说明                        |
+| ------- | ---------------------------------------------------- | ---- | ---- | --------------------------- |
+| url     | string                                               | 否   | 否   | 当前显示弹窗的网页的URL。   |
+| message | string                                               | 否   | 否   | 显示在弹窗中的信息。        |
+| value   | string                                               | 否   | 否   | 对话框默认返回的信息。      |
+| result  | [JsResult](./arkts-basic-components-web-JsResult.md) | 否   | 否   | 通知Web组件用户的操作结果。 |
 
 ## OnConsoleEvent<sup>12+</sup>
 
@@ -269,7 +270,7 @@ Web同层渲染的配置。
 
 ## OnRefreshAccessedHistoryEvent<sup>12+</sup>
 
-定义网页刷新访问历史记录时触发。
+定义导航完成时触发。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -489,7 +490,7 @@ Web同层渲染的配置。
 
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
-| handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 是 | 通知Web组件用户操作行为。  |
+| handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | 否 |  否 |通知Web组件用户操作行为。  |
 | host     | string                                   | 否 | 否 | 请求证书服务器的主机名。    |
 | port     | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   | 否 | 否 | 请求证书服务器的端口号。    |
 | keyTypes | Array<string\>                           | 否 | 否 | 可接受的非对称秘钥类型。    |
@@ -511,6 +512,42 @@ Web同层渲染的配置。
 | isUserTrigger | boolean                                  | 否 | 否 | true代表用户触发，false代表非用户触发。      |
 | targetUrl     | string                                   | 否 | 否 | 目标url。                        |
 | handler       | [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md) | 否 | 否 | 用于设置新建窗口的WebviewController实例。 |
+
+## WindowFeatures<sup>23+</sup>
+
+网页请求创建的新窗口特征信息，包括大小和位置。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                | 类型                                  | 只读 | 可选 | 说明                        |
+|-------------------| --------------------------------------- | ---- | ---- |---------------------------|
+| x                 | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否   | 否 | 新窗口左上角横坐标（单位：像素）。   |
+| y                 | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否   | 否 | 新窗口左上角纵坐标（单位：像素）。   |
+| width             | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否   | 否 | 新窗口宽度（单位：像素）。          |
+| height            | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 否   | 否 | 新窗口高度（单位：像素）。          |
+
+## OnWindowNewExtEvent<sup>23+</sup>
+
+定义网页请求用户创建窗口时触发的回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读   | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| isAlert       | boolean                                  | 否 | 否 | true代表请求创建对话框，false代表请求创建新标签页。    |
+| isUserTrigger | boolean                                  | 否 | 否 | true代表用户触发，false代表非用户触发。      |
+| targetUrl     | string                                   | 否 | 否 | 请求的新窗口中需要打开的url。                        |
+| handler       | [ControllerHandler](./arkts-basic-components-web-ControllerHandler.md) | 否 | 否 | 用于设置新建窗口的WebviewController实例。 |
+| windowFeatures | [WindowFeatures](./arkts-basic-components-web-i.md#windowfeatures23)                                | 否 | 否 | 网页请求创建的新窗口特征信息。 |
+| navigationPolicy | [NavigationPolicy](./arkts-basic-components-web-e.md#navigationpolicy23)                            | 否 | 否 | 网页请求用户创建新窗口时的窗口打开方式。 |
 
 ## OnTouchIconUrlReceivedEvent<sup>12+</sup>
 
@@ -642,9 +679,9 @@ Web同层渲染的配置。
 | ArkTS-Dyn: object<br>ArkTS-Sta: jsObject     | object                                   | 否 | 否    | 参与注册的对象。只能声明方法，不能声明属性。|
 | name       | string                                   | 否 | 否    | 注册对象的名称，与window中调用的对象名一致。|
 | methodList | Array\<string\>                          | 否 | 否    | 参与注册的应用侧JavaScript对象的同步方法。|
-| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) <br/>ArkTS-Sta: [WebviewController<sup>22+</sup>](./arkts-apis-webview-WebviewController.md)| 否 | 否    | 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 | 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
-| asyncMethodList | Array\<string\>      | 否 | 是 |     | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。|
-| permission  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
+| controller | ArkTS-Dyn: [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md) <br/>ArkTS-Sta: [WebviewController<sup>22+</sup>](./arkts-apis-webview-WebviewController.md)| 否 | 否    | 控制器。从API version 9开始，WebController不再维护，建议使用WebviewController替代。 |
+| asyncMethodList | Array\<string\>      | 否 | 是     | 参与注册的应用侧JavaScript对象的异步方法。异步方法无法获取返回值。|
+| permission  | string  | 否 | 是    | json字符串，默认为空，通过该字符串配置JSBridge的权限管控，可以定义object、method一级的url白名单。<br>JavaScriptProxy的permission参数支持resource/http/https协议，不支持file协议。<br>示例请参考[前端页面调用应用侧函数](../../web/web-in-page-app-function-invoking.md)。 |
 
 ## OnPageEndEvent<sup>12+</sup>
 
@@ -698,7 +735,7 @@ Web同层渲染的配置。
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
 | title | string | 否 | 否 | document标题内容。 <br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
-| isRealTitle<sup>20+</sup> | boolean | 否 | 是 | document标题来源，true表示来自网页的title标签，false表示该title是根据url自动生成。 <br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 22|
+| isRealTitle<sup>20+</sup> | boolean | 否 | 是 | document标题来源，true表示来自网页的title标签，false表示该title是根据url自动生成。 <br>默认值：false。<br>**ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 22|
 
 ## OnGeolocationShowEvent<sup>12+</sup>
 
@@ -785,10 +822,7 @@ Web组件进入全屏回调事件的详情。
 | 名称        | 类型   | 只读 | 可选 |说明                 |
 | ----------- | ------ | -----|------|------------------- |
 | id                | string             | 否 | 是    | 同层标签的id信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
-| id                | string             | 否 | 是    | 同层标签的id信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
-| id                | string             | 否 | 是    | 同层标签的id信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
-| type              | string                              | 否 | 是    | 同层标签的type信息，统一为小写字符。   |
-| id                | string             | 否 | 是    | 同层标签的id信息。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
+| type              | string                              | 否 | 是    | 同层标签的type信息，统一为小写字符。<br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
 | src               | string                              | 否 | 是    | 同层标签的src信息。  <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22  |
 | width             | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 是    | 同层标签的宽，单位为px。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22|
 | height            | ArkTS-Dyn: number<br>ArkTS-Sta: int                              | 否 | 是    | 同层标签的高，单位为px。 <br>**ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 22 |
@@ -1004,3 +1038,33 @@ Web屏幕捕获的配置。
 | id                | string                              | 否    | 否 | param元素的id信息。             |
 | name              | string                              | 否    | 是 | param元素的参数名称。           |
 | value             | string                              | 否    | 是 | param元素的参数值。          |
+
+## CameraCaptureStateChangeInfo<sup>23+</sup>
+
+定义摄像头触发回调时的改变前后的状态信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 原来的状态   |
+| newState | [CameraCaptureState](./arkts-basic-components-web-e.md#cameracapturestate23) | 否 | 否 | 改变后的状态   |
+
+## MicrophoneCaptureStateChangeInfo<sup>23+</sup>
+
+定义麦克风触发回调时的改变前后的状态信息。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选   | 说明                                       |
+| -------------- | ---- | ---- | ---- | ---------------------------------------- |
+| originalState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 原来的状态。   |
+| newState | [MicrophoneCameraCaptureState](./arkts-basic-components-web-e.md#microphonecapturestate23) | 否 | 否 | 改变后的状态。   |

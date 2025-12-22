@@ -46,7 +46,7 @@ project/
 
 @Component
 export struct CustomContainer { // 导出ArkTS-Dyn自定义组件
-  text: string = '';
+  text: number = 0;
 
   @Builder
   closerBuilder() {
@@ -94,15 +94,15 @@ import { CustomContainer } from 'dynamic_module';
 @Entry
 @Component
 struct CustomContainerUser { // 主模块中使用ArkTS-Dyn自定义组件
-  @State text: string = 'header';
+  @State text: int = 0;
 
   @Builder
   localBuilder() {
-    Text(this.text)
+    Text(`${this.text}`)
       .fontSize(30)
       .onClick((value: ClickEvent) => {
         // 修改成员属性text的值
-        this.text = 'changeHeader';
+        this.text++;
       })
   }
 
@@ -112,11 +112,11 @@ struct CustomContainerUser { // 主模块中使用ArkTS-Dyn自定义组件
       // 作为传递给子组件CustomContainer的@BuilderParam参数closer
       CustomContainer({ text: this.text }) {
         Column() {
-          Text(this.text)
+          Text(`${this.text}`)
             .fontSize(30)
         }
         .onClick((value: ClickEvent) => {
-          this.text = 'changeHeader';
+          this.text++;
         })
       }
       // 通过参数初始化@BuilderParam成员

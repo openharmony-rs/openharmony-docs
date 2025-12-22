@@ -23,6 +23,8 @@ ArkTS-Dyn使用ArkTS-Sta管理应用拥有的状态，适用于使用[AppStorage
 
 - 遵循ArkTS-Sta Environment的[使用限制](./state-management-static/arkts-static-environment.md#限制条件)。
 
+- 不支持[Environment.keys](../reference/apis-arkui/arkui-ts/ts-state-management-1.2.md#keys-3)接口的互操作，ArkTS-Sta与ArkTS-Dyn的`Environment.keys()`返回值不互通。
+
 
 ## 使用场景
 

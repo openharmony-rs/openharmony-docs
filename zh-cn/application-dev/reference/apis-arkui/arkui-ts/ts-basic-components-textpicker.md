@@ -40,9 +40,9 @@ TextPicker(options?: TextPickerOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
@@ -143,7 +143,7 @@ ArkTS-Sta: defaultPickerItemHeight(height: Optional\<double | string>)
 
 ArkTS-Dyn: disappearTextStyle(value: PickerTextStyle)
 
-ArkTS-Sta: disappearTextStyle(value: PickerTextStyle | undefined)
+ArkTS-Sta: disappearTextStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
 设置过渡项（以选中项为基准向上或向下的第二项）的文本样式。
 
@@ -159,7 +159,7 @@ ArkTS-Sta: disappearTextStyle(value: PickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明)<br/>ArkTS-Sta: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| undefined | undefined | 是   | 过渡项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>}|
+| value  | ArkTS-Dyn: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明)<br>ArkTS-Sta: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 过渡项的文本颜色、字号、字体粗细。<br/>当value的值为undefined时，过渡项的文本颜色、字号、字体粗细为默认值。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>}|
 
 ### disappearTextStyle<sup>18+</sup>
 
@@ -189,7 +189,7 @@ disappearTextStyle(style: Optional\<PickerTextStyle>)
 
 ArkTS-Dyn: textStyle(value: PickerTextStyle)
 
-ArkTS-Sta: textStyle(value: PickerTextStyle | undefined)
+ArkTS-Sta: textStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
 设置一般项（以选中项为基准向上或向下的第一项）的文本样式。
 
@@ -205,7 +205,7 @@ ArkTS-Sta: textStyle(value: PickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明)<br/>ArkTS-Sta: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| undefined | 是   | 一般项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
+| value  | ArkTS-Dyn: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明)<br/>ArkTS-Sta: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 一般项的文本颜色、字号、字体粗细。<br/>当value的值为undefined时，一般项的文本颜色、字号、字体粗细为默认值。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>} |
 
 ### textStyle<sup>18+</sup>
 
@@ -235,7 +235,7 @@ textStyle(style: Optional\<PickerTextStyle>)
 
 ArkTS-Dyn: selectedTextStyle(value: PickerTextStyle)
 
-ArkTS-Sta: selectedTextStyle(value: PickerTextStyle | undefined)
+ArkTS-Sta: selectedTextStyle(value: PickerTextStyle | TextPickerTextStyle | undefined)
 
 设置选中项的文本颜色、字号、字体粗细。Wearable设备不支持设置该属性。
 
@@ -251,7 +251,7 @@ ArkTS-Sta: selectedTextStyle(value: PickerTextStyle | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明)<br/>ArkTS-Sta: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| undefined | 是   | 选中项的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
+| value  | ArkTS-Dyn: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明)<br/>ArkTS-Sta: [PickerTextStyle](ts-basic-components-datepicker.md#pickertextstyle10类型说明) \| [TextPickerTextStyle](#textpickertextstyle15类型说明) \| undefined | 是   | 选中项的文本颜色、字号、字体粗细。<br/>当value的值为undefined时，选中项的文本颜色、字号、字体粗细为默认值。<br/>默认值：<br/>{<br/>color: '#ff007dff',<br/>font: {<br/>size: '20fp', <br/>weight: FontWeight.Medium<br/>}<br/>} |
 
 ### selectedTextStyle<sup>18+</sup>
 
@@ -539,7 +539,9 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
 >  用于圆形屏幕的穿戴设备。组件响应[表冠事件](ts-universal-events-crown.md)，需要先获取焦点。
 
 ### selectedBackgroundStyle<sup>20+</sup>
-selectedBackgroundStyle(style: Optional\<PickerBackgroundStyle>)
+ArkTS-Dyn: selectedBackgroundStyle(style: Optional\<PickerBackgroundStyle>)
+
+ArkTS-Sta: selectedBackgroundStyle(style: PickerBackgroundStyle | undefined)
 
 设置选中项的背景样式。
 
@@ -547,9 +549,13 @@ selectedBackgroundStyle(style: Optional\<PickerBackgroundStyle>)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 | 参数名   | 类型                                     | 必填   | 说明                      |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
-| style | [Optional](ts-universal-attributes-custom-property.md#optional12)\<[PickerBackgroundStyle](#pickerbackgroundstyle20)> | 是    | 选中项背景的颜色和边框圆角半径，多列模式时会同时设置所有列的选中项背景的颜色和圆角半径。<br/>默认值：<br/>{ <br/>color: $r('sys.color.comp_background_tertiary'),<br/>borderRadius: $r('sys.float.corner_radius_level12')<br/>}|
+| style | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[PickerBackgroundStyle](#pickerbackgroundstyle20)></br>ArkTS-Sta: [PickerBackgroundStyle](#pickerbackgroundstyle20) \| undefined | 是    | 选中项背景的颜色和边框圆角半径，多列模式时会同时设置所有列的选中项背景的颜色和圆角半径。<br/>当style的值为undefined时，选中项背景的颜色和边框圆角半径为默认值。<br/>默认值：<br/>{ <br/>color: $r('sys.color.comp_background_tertiary'),<br/>borderRadius: $r('sys.float.corner_radius_level12')<br/>}|
 
 ## 事件
 
@@ -709,9 +715,9 @@ onCancel(callback: () => void)
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**ArkTs-Dyn起始版本：** 15
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 | 参数名   | 类型                                     | 必填   | 说明                      |
 | ----- | ---------------------------------------- | ---- | ------------------------- |
@@ -733,9 +739,9 @@ ArkTS-Sta: type OnTextPickerChangeCallback = (value: string | string[], index: i
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -758,9 +764,9 @@ ArkTS-Sta: type TextPickerScrollStopCallback = (value: string | string[], index:
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 14
+**ArkTS-Dyn起始版本：** 14
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
@@ -783,9 +789,9 @@ ArkTS-Sta: type TextPickerEnterSelectedAreaCallback = (value: string | string[],
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 

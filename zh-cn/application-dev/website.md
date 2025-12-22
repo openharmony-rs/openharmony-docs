@@ -273,6 +273,7 @@
       - [应用数据向量化 (ArkTS)](database/aip-data-intelligence-embedding.md)
       - [SQLite调试工具](database/sqlite-database-debug-tool.md)
       - [ArkData术语](database/data-terminology.md)
+      - [ArkData常见问题](database/data-faq.md)
     - ArkTS（方舟编程语言）<!--arkts-->
       - [ArkTS简介](arkts-utils/arkts-overview.md)
       - ArkTS基础类库<!--arkts-utils-->
@@ -694,8 +695,8 @@
         - [在NDK中保证多实例场景功能正常](ui/ndk-scope-task.md)
         - [NDK支持多线程创建组件](ui/ndk-build-on-multi-thread.md)
       - [UI高性能开发](ui/ui-performance-overview.md)
-        - [BuilderNode并行化构建和更新节点树(ArkTS-Sta)](ui/ui-parallel-buildernode.md)
-        - [UI并行化创建组件树](ui/ui-parallel-components.md)
+        - [BuilderNode并行化构建和更新节点树（ArkTS-Sta）](ui/ui-parallel-buildernode.md)
+        - [UI并行化创建组件树（ArkTS-Sta）](ui/ui-parallel-components.md)
       - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
         - [UI开发 (兼容JS的类Web开发范式)概述](ui/ui-js-overview.md)
         - 框架说明<!--js-framework-overview-->
@@ -777,7 +778,6 @@
         - [窗口元数据配置](windowmanager/window-config-m.md)
         <!--Del-->
         - [管理系统窗口（仅Stage模型支持）](windowmanager/system-window-stage.md)
-        - [WindowExtensionAbility（仅对系统应用开放）](windowmanager/windowextensionability.md)
         <!--DelEnd-->
         - [使用WindowManager管理多模输入事件（C/C++）](windowmanager/native-window-event-filter.md)
         - 应用启动页的配置与使用<!--launch-page-->
@@ -2496,6 +2496,7 @@
           - [Functions](reference/apis-arkdata/arkts-apis-data-relationalStore-f.md)
           - [Interface (RdbStore)](reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md)
           - [Interface (ResultSet)](reference/apis-arkdata/arkts-apis-data-relationalStore-ResultSet.md)
+          - [Class (LiteResultSet)](reference/apis-arkdata/arkts-apis-data-relationalStore-LiteResultSet.md)
           - [Interface (Transaction)](reference/apis-arkdata/arkts-apis-data-relationalStore-Transaction.md)
           - [Interfaces (其他)](reference/apis-arkdata/arkts-apis-data-relationalStore-i.md)
           - [Class (RdbPredicates)](reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md)
@@ -2928,6 +2929,7 @@
           - [Toggle](reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md)
           - [Checkbox](reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)
           - [CheckboxGroup](reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md)
+          - [Picker](reference/apis-arkui/arkui-ts/ts-container-picker.md)
           - [CalendarPicker](reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md)
           - [DatePicker](reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md)
           - [TextPicker](reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md)
@@ -2964,6 +2966,8 @@
           - [ImageAnimator](reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md)
           - [Video](reference/apis-arkui/arkui-ts/ts-media-components-video.md)
           - [图像类型定义](reference/apis-arkui/arkui-ts/ts-image-common.md)
+          - [SVG标签说明](reference/apis-arkui/arkui-ts/ts-basic-svg.md)
+          - [SVG标签解析能力增强](reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)
           <!--Del-->
           - [Image (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-image-sys.md)
           - [MediaCachedImage (系统接口)](reference/apis-arkui/arkui-ts/ts-basic-components-mediacachedimage-sys.md)
@@ -3124,7 +3128,6 @@
           - [像素单位](reference/apis-arkui/arkui-ts/ts-pixel-units.md)
           - [枚举说明](reference/apis-arkui/arkui-ts/ts-appendix-enums.md)
           - [设置事件回调](reference/apis-arkui/arkui-ts/ts-uicommonevent.md)
-          - [SVG标签说明](reference/apis-arkui/arkui-ts/ts-basic-svg.md)
           <!--Del-->
           - [枚举说明 (系统接口)](reference/apis-arkui/arkui-ts/ts-appendix-enums-sys.md)
           <!--DelEnd-->
@@ -3428,6 +3431,7 @@
           - [NodeAdapter错误码](reference/apis-arkui/errorcode-nodeadapter.md)
           - [XComponent组件错误码](reference/apis-arkui/errorcode-xcomponent.md)
           - [Video组件错误码](reference/apis-arkui/errorcode-video.md)
+          - [DrawableDescriptor错误码](reference/apis-arkui/errorcode-drawable-descriptor.md)
         - UI编译<!--arkui-compile-arkts-errcode-->
           - [编译错误码](reference/apis-arkui/_ark_ui_compile.md)
         - 图形图像<!--arkui-graphics-images-arkts-errcode-->
@@ -4455,12 +4459,14 @@
           <!--Del-->
           - [@js-apis-awareness-metadataBinding (回旋镖)(系统接口)](reference/apis-multimodalawareness-kit/js-apis-awareness-metadataBinding-sys.md)
           - [@ohos.multimodalawareness.roomLocation (房间级定位)(系统接口)](js-apis-awareness-roomLocation.md)
+          - [@ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)](reference/apis-multimodalawareness-kit/js-apis-awareness-spatialAwareness-sys.md)
           <!--DelEnd-->
         - 错误码<!--ultimodal-awareness-arkts-errcode-->
           - [行为动作感知错误码](reference/apis-multimodalawareness-kit/errorcode-motion.md)
           - [回旋镖错误码](reference/apis-multimodalawareness-kit/errorcode-metadataBinding.md)
           - [设备状态感知错误码](reference/apis-multimodalawareness-kit/errorcode-deviceStatus.md)
           - [房间级定位错误码](reference/apis-multimodalawareness-kit/errorcode-roomLocation.md)
+          - [空间感知错误码](reference/apis-multimodalawareness-kit/errorcode-spatialAwareness.md)
       - Sensor Service Kit（传感器服务）<!--sensor-service-api-->
         - ArkTS API<!--sensor-service-arkts-->
           - [@ohos.sensor(传感器)](reference/apis-sensor-service-kit/js-apis-sensor.md)
@@ -5316,6 +5322,9 @@
           - [SceneNode](reference/apis-arkgraphics3d/js-apis-inner-scene-nodes.md)
           - [SceneType](reference/apis-arkgraphics3d/js-apis-inner-scene-types.md)
           - [SceneResources](reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md)
+          <!--Del-->
+          - [SceneResources (系统接口)](reference/apis-arkgraphics3d/js-apis-inner-scene-resources-sys.md)
+          <!--DelEnd-->
           - [ScenePostProcessSettings](reference/apis-arkgraphics3d/js-apis-inner-scene-post-process-settings.md)
   - 应用服务<!--application-service-reference-->
     <!--Del-->

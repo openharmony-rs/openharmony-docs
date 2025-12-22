@@ -30,6 +30,10 @@ static deleteOrigin(origin: string): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
@@ -38,7 +42,7 @@ static deleteOrigin(origin: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -47,6 +51,7 @@ static deleteOrigin(origin: string): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -67,10 +72,37 @@ struct WebComponent {
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
-
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb'
+import { BusinessError } from '@ohos.base'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "resource://rawfile/";
+
+  build() {
+    Column(undefined) {
+      Button('getOriginUsage')
+        .onClick((e: ClickEvent) => {
+          try {
+            webview.WebStorage.deleteOrigin(this.origin);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }
@@ -128,6 +160,10 @@ static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名   | 类型                                   | 必填 | 说明                                                   |
@@ -136,7 +172,7 @@ static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -145,6 +181,7 @@ static getOrigins(callback: AsyncCallback\<Array\<WebStorageOrigin>>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -177,7 +214,41 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb'
+import { BusinessError } from '@ohos.base'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column(undefined) {
+      Button('getOrigins')
+        .onClick((e: ClickEvent) => {
+            webview.WebStorage.getOrigins((error: BusinessError<void> | null,
+              origins: webview.WebStorageOrigin[] | undefined) => {
+              if (origins == null || origins.length == 0) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                return;
+              }
+              for (let i = 0; i < origins.length; i++) {
+                console.info('origin: ' + origins[i].origin);
+                console.info('usage: ' + origins[i].usage);
+                console.info('quota: ' + origins[i].quota);
+              }
+            })
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }
@@ -193,15 +264,19 @@ static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型                             | 说明                                                         |
 | -------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[WebStorageOrigin](./arkts-apis-webview-i.md#webstorageorigin)>> | Promise实例，用于获取当前所有源的信息。 |
+| Promise\<Array\<[WebStorageOrigin](./arkts-apis-webview-i.md#webstorageorigin)>> | Promise对象，用于获取当前所有源的信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -210,6 +285,7 @@ static getOrigins(): Promise\<Array\<WebStorageOrigin>>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -242,7 +318,43 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb'
+import { BusinessError } from '@ohos.base'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column(undefined) {
+      Button('getOrigins')
+        .onClick((e: ClickEvent) => {
+            webview.WebStorage.getOrigins()
+              .then((origins: webview.WebStorageOrigin[] | undefined) => {
+                if (origins == null || origins.length == 0) {
+                  return origins;
+                }
+                for (let i = 0; i < origins.length; i++) {
+                  console.info('origin: ' + origins[i].origin);
+                  console.info('usage: ' + origins[i].usage);
+                  console.info('quota: ' + origins[i].quota);
+                }
+            })
+              .catch((error: Error) => {
+                console.info('error: ' + JSON.stringify(error));
+              });
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }
@@ -252,22 +364,28 @@ struct WebComponent {
 
 ## getOriginQuota
 
-static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: static getOriginQuota(origin: string, callback: AsyncCallback\<double>): void
 
 使用callback回调异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明               |
 | -------- | --------------------- | ---- | ------------------ |
 | origin   | string                | 是   | 指定源的字符串索引。 |
-| callback | AsyncCallback\<number> | 是   | 指定源的存储配额。<br>number是long型整数，范围为(-2,147,483,648)~(2,147,483,647)。   |
+| callback | ArkTS-Dyn: AsyncCallback\<number> <br/>ArkTS-Sta: AsyncCallback\<double>| 是   | 指定源的存储配额。<br/>ArkTS-Dyn: <br>number是long型整数，范围为(-2,147,483,648)~(2,147,483,647)。  <br/>ArkTS-Sta: <br>Double在底层由long型整数强转而来，范围为(-2,147,483,648)~(2,147,483,647)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -276,6 +394,7 @@ static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -305,7 +424,40 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb'
+import { BusinessError } from '@ohos.base'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "resource://rawfile/";
+
+  build() {
+    Column(undefined) {
+      Button('getOriginQuota')
+        .onClick((e: ClickEvent) => {
+          webview.WebStorage.getOriginQuota(this.origin, (error: BusinessError<void> | null, quota: Double | undefined) => {
+            if (error && error.code != 0) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              return;
+            }
+            if (quota == null) {
+              return;
+            }
+            console.info('quota: ' + quota);
+          })
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }
@@ -315,11 +467,17 @@ struct WebComponent {
 
 ## getOriginQuota
 
-static getOriginQuota(origin: string): Promise\<number>
+ArkTS-Dyn: static getOriginQuota(origin: string): Promise\<number>
+
+ArkTS-Sta: static getOriginQuota(origin: string): Promise\<double>
 
 以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储配额，配额以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -331,11 +489,11 @@ static getOriginQuota(origin: string): Promise\<number>
 
 | 类型            | 说明                                    |
 | --------------- | --------------------------------------- |
-| Promise\<number> | Promise实例，用于获取指定源的存储配额。 |
+| ArkTS-Dyn: Promise\<number> <br/>ArkTS-Sta: Promise\<double>| Promise对象，用于获取指定源的存储配额。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -344,6 +502,7 @@ static getOriginQuota(origin: string): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -373,7 +532,37 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb'
+import { BusinessError } from '@ohos.base'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "resource://rawfile/";
+
+  build() {
+    Column(undefined) {
+      Button('getOriginQuota')
+        .onClick((e: ClickEvent) => {
+            webview.WebStorage.getOriginQuota(this.origin)
+              .then((quota: Double) => {
+                console.info('quota: ' + quota);
+            })
+              .catch((error: Error) => {
+                console.info('error: ' + JSON.stringify(error));
+              });
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }
@@ -383,22 +572,28 @@ struct WebComponent {
 
 ## getOriginUsage
 
-static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: static getOriginUsage(origin: string, callback: AsyncCallback\<double>): void
 
 以回调方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
 | 参数名   | 类型                  | 必填 | 说明               |
 | -------- | --------------------- | ---- | ------------------ |
 | origin   | string                | 是   | 指定源的字符串索引 |
-| callback | AsyncCallback\<number> | 是   | 指定源的存储量。   |
+| callback | ArkTS-Dyn: AsyncCallback\<number> <br/>ArkTS-Sta: AsyncCallback\<double> | 是   | 指定源的存储量。   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | ------------------------------------------------------ |
@@ -407,6 +602,7 @@ static getOriginUsage(origin: string, callback: AsyncCallback\<number>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -436,7 +632,40 @@ struct WebComponent {
 
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb'
+import { BusinessError } from '@ohos.base'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "resource://rawfile/";
+
+  build() {
+    Column(undefined) {
+      Button('getOriginUsage')
+        .onClick((e: ClickEvent) => {
+          webview.WebStorage.getOriginUsage(this.origin, (error: BusinessError<void> | null, usage: Double | undefined) => {
+            if (error && error.code != 0) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              return;
+            }
+            if (usage == null) {
+              return;
+            }
+            console.info('usage: ' + usage);
+          })
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }
@@ -446,11 +675,17 @@ struct WebComponent {
 
 ## getOriginUsage
 
-static getOriginUsage(origin: string): Promise\<number>
+ArkTS-Dyn: static getOriginUsage(origin: string): Promise\<number>
+
+ArkTS-Sta: static getOriginUsage(origin: string): Promise\<double>
 
 以Promise方式异步获取指定源的Web SQL数据库和HTML5支持的Web存储API的存储量，存储量以字节为单位。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -462,11 +697,11 @@ static getOriginUsage(origin: string): Promise\<number>
 
 | 类型            | 说明                                  |
 | --------------- | ------------------------------------- |
-| Promise\<number> | Promise实例，用于获取指定源的存储量。 |
+| ArkTS-Dyn: Promise\<number> <br/>ArkTS-Sta: Promise\<double> | Promise对象，用于获取指定源的存储量。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
@@ -475,6 +710,7 @@ static getOriginUsage(origin: string): Promise\<number>
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -502,7 +738,37 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb'
+import { BusinessError } from '@ohos.base'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "resource://rawfile/";
+
+  build() {
+    Column(undefined) {
+      Button('getOriginUsage')
+        .onClick((e: ClickEvent) => {
+            webview.WebStorage.getOriginUsage(this.origin)
+              .then((usage: Double) => {
+                console.info('usage: ' + usage);
+            })
+              .catch((error: Error) => {
+                console.info('error: ' + JSON.stringify(error));
+              });
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }
@@ -518,14 +784,19 @@ static deleteAllData(incognito?: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。 |
+| incognito<sup>11+</sup>    | boolean | 否   | true表示删除所有隐私模式下内存中的web数据，false表示删除正常非隐私模式下Web的SQL数据库当前使用的所有存储。<br>默认值：false。<br>传入undefined或null时为false。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -547,7 +818,35 @@ struct WebComponent {
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
-        .databaseAccess(true)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Button, ClickEvent, Web, $rawfile } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb'
+import { BusinessError } from '@ohos.base'
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  origin: string = "resource://rawfile/";
+
+  build() {
+    Column(undefined) {
+      Button('getOriginUsage')
+        .onClick((e: ClickEvent) => {
+          try {
+            webview.WebStorage.deleteAllData();
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: $rawfile('index.html'), controller: this.controller })
     }
   }
 }

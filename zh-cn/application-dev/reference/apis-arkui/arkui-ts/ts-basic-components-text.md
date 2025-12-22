@@ -1325,6 +1325,92 @@ shaderStyle(shader: ShaderStyle)
 | -------------- | -------------------------------------------- | ----------------------------------- | ----------------------------------- |
 | shader | [ShaderStyle](../arkui-ts/ts-text-common.md#shaderstyle20) | 是 | 径向渐变或线性渐变或纯色。<br/>根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkui-ts/ts-text-common.md#radialgradientstyle20)或线性渐变[LinearGradientStyle](../arkui-ts/ts-text-common.md#lineargradientstyle20)或纯色[ColorShaderStyle](../arkui-ts/ts-text-common.md#colorshaderstyle20)，最终设置到Text文本上显示为渐变色效果。 |
 
+### compressLeadingPunctuation<sup>23+</sup>
+
+ArkTS-Dyn: compressLeadingPunctuation(enabled: Optional\<boolean>)
+
+ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
+
+设置是否启用行首标点符号压缩功能。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名           | 类型             | 必填 | 说明                                            |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用，undefined表示禁用。|
+
+### includeFontPadding<sup>23+</sup>
+
+ArkTS-Dyn: includeFontPadding(include: Optional\<boolean>)
+
+ArkTS-Sta: includeFontPadding(include: boolean | undefined)
+
+设置是否在首行和尾行增加间距以避免文字截断。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| include | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。<br/>undefined表示在首行和尾行不增加间距。 |
+
+### fallbackLineSpacing<sup>23+</sup>
+
+ArkTS-Dyn: fallbackLineSpacing(enabled: Optional\<boolean>)
+
+ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
+
+针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名  | 类型                                                         | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 行高是否基于文字实际高度自适应，此接口只在行高小于文字实际高度时生效。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。<br/>undefined表示行高不基于文字实际高度自适应。 |
+
+### selectedDragPreviewStyle<sup>23+</sup>
+
+selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
+
+设置文本拖拽时的背板样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                             | 必填 | 说明                                                       |
+| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
+
 ## TextSpanType<sup>11+</sup>枚举说明
 
 [Span](ts-basic-components-span.md)类型信息。
@@ -2709,6 +2795,7 @@ struct Index {
         Text(this.textStr, { controller: this.controller })
           .fontSize(25)
           .borderWidth(1)
+          .copyOption(CopyOptions.LocalDevice)
         Button("setTextSelection")
           .onClick(() => {
             this.controller.setTextSelection(1, 6, { menuPolicy: MenuPolicy.HIDE })
@@ -2722,3 +2809,126 @@ struct Index {
 ```
 
 ![textSetTextSelection](figures/textSetTextSelection.gif)
+
+### 示例19（设置行首标点压缩）
+
+该示例通过[compressLeadingPunctuation](#compressleadingpunctuation23)接口设置行首标点压缩，左侧有间距的标点符号位于行首时，标点会直接压缩间距至左侧边界。
+
+从API version 23开始，支持compressLeadingPunctuation接口。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Text("\u300C行首标点压缩打开")
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .border({ width: 1 })
+        .fontSize(30)
+        .width("90%")
+      Text("\u300C行首标点压缩关闭")
+        .compressLeadingPunctuation(false)
+        .border({ width: 1 })
+        .fontSize(30)
+        .width("90%")
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text } from '@ohos.arkui.component';
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(){
+      Text("\u300C行首标点压缩打开")
+        .compressLeadingPunctuation(true)
+        .margin(5)
+        .border({ width: 1 })
+        .fontSize(30)
+        .width("90%")
+      Text("\u300C行首标点压缩关闭")
+        .compressLeadingPunctuation(false)
+        .border({ width: 1 })
+        .fontSize(30)
+        .width("90%")
+    }
+  }
+}
+```
+![textCompressLeadingPunctuation](figures/textCompressLeadingPunctuation.gif)
+
+### 示例20（设置自适应间距）
+
+该示例通过[includeFontPadding](#includefontpadding23)接口增加首行尾行间距和[fallbackLineSpacing](#fallbacklinespacing23)接口设置自适应行间距。
+
+从API version 23开始，新增[includeFontPadding](#includefontpadding23)和[fallbackLineSpacing](#fallbacklinespacing23)接口。
+
+```ts
+// xxx.ets
+import { Entry, Text, Column, Component, Button, ClickEvent, TextInputOptions, TextAreaOptions, TextInput, TextArea, SearchOptions, Search } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import hilog from '@ohos.hilog';
+
+@Entry
+@Component
+struct Index {
+  @State stateVar: string = 'state var';
+  message: string = 'var';
+
+  changeValue() {
+    this.stateVar += '~'
+  }
+
+  build() {
+    Column(undefined) {
+      Text('正常文字显示').padding(20)
+      Text('ཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུག').lineHeight(5)
+      Text('打开自适应显示').padding(20)
+      Text('ཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུགཡུལ་རིང་དུ་ཤེས་བྱ་ཆེ་མི་རིག་གནས་ཀྱི་འདུག').includeFontPadding(true).lineHeight(5).fallbackLineSpacing(true)
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+  }
+}
+
+```
+
+![TextIncludeFontPadding](figures/TextIncludeFontPadding.jpg)
+
+### 示例21（设置文本拖拽时的背板样式）
+
+该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置文本拖拽时的背板样式。
+
+从API version 23开始，新增selectedDragPreviewStyle接口。
+
+```ts
+import { Entry, Text, Column, Component, CopyOptions } from '@ohos.arkui.component'
+@Entry
+@Component
+struct TextTest {
+  build() {
+    Column() {
+      Text('This is drag text')
+        .copyOption(CopyOptions.InApp)
+        .width(200)
+        .height(100)
+        .margin(150)
+        .draggable(true)
+        .selectedDragPreviewStyle({color: 'rgba(227, 248, 249, 1)'})
+    }
+    .height('100%')
+  }
+}
+```
+
+![selectedDragPreviewStyle](figures/textSelectedDragPreviewStyle.png)

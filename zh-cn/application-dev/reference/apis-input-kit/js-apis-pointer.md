@@ -4,7 +4,9 @@
 
 > **说明**：
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>- 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -19,6 +21,10 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 设置鼠标指针显示或者隐藏，使用Callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
 
 **参数**：
 
@@ -36,7 +42,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -65,6 +71,37 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setPointerVisible(true, (error: BusinessError<void>|null, data: undefined) => {
+              if (error) {
+                console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.log(`Set pointer visible success`);
+            });
+          } catch (error) {
+            console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerVisible
 
 setPointerVisible(visible: boolean): Promise&lt;void&gt;
@@ -72,6 +109,10 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 设置鼠标指针显示或者隐藏，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
 
 **参数**：
 
@@ -94,10 +135,39 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801  | Capability not supported. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setPointerVisible(false).then(() => {
+              console.log(`Set pointer visible success`);
+            });
+          } catch (error) {
+            console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -127,6 +197,10 @@ setPointerVisibleSync(visible: boolean): void
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名      | 类型      | 必填   | 说明                                       |
@@ -141,7 +215,9 @@ setPointerVisibleSync(visible: boolean): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -165,6 +241,31 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.setPointerVisibleSync(false);
+          } catch (error) {
+            console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.isPointerVisible
 
 isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
@@ -172,6 +273,10 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 获取鼠标指针显示状态，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
 
 **参数**：
 
@@ -187,7 +292,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -216,6 +321,37 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.isPointerVisible((error: BusinessError<void> | null, visible: boolean | undefined) => {
+              if (error) {
+                console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+                return;
+              }
+              console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+            });
+          } catch (error) {
+            console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.isPointerVisible
 
 isPointerVisible(): Promise&lt;boolean&gt;
@@ -224,16 +360,47 @@ isPointerVisible(): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 **返回值**：
 
 | 类型                     | 说明                  |
 | ---------------------- | ------------------- |
 | Promise&lt;boolean&gt; | Promise对象，返回鼠标指针状态查询结果。true代表显示状态，false代表隐藏状态。 |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            pointer.isPointerVisible().then((visible: boolean) => {
+              console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+            });
+          } catch (error) {
+            console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError, AsyncCallback } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -263,13 +430,19 @@ isPointerVisibleSync(): boolean
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
+
 **返回值**：
 
 | 类型                     | 说明                  |
 | ---------------------- | ------------------- |
 | boolean | 返回鼠标指针显示或隐藏状态。true代表显示状态，false代表隐藏状态。 |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -293,19 +466,51 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError,AsyncCallback } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let visible: boolean = pointer.isPointerVisibleSync();
+            console.log(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
+          } catch (error) {
+            console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerStyle
 
-getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): void
+ArkTS-Dyn: getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): void
+
+ArkTS-Sta: getPointerStyle(windowId: int, callback: AsyncCallback&lt;PointerStyle&gt;): void
 
 获取鼠标样式类型，使用Callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名       | 类型                                       | 必填   | 说明             |
 | -------- | ---------------------------------------- | ---- | -------------- |
-| windowId | number                                   | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。    |
+| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 是    | 窗口id。取值范围为大于等于-1的整数，取值为-1时表示全局窗口。    |
 | callback | AsyncCallback&lt;[PointerStyle](#pointerstyle)&gt; | 是    | 回调函数，返回鼠标样式类型。 |
 
 **错误码**：
@@ -316,7 +521,7 @@ getPointerStyle(windowId: number, callback: AsyncCallback&lt;PointerStyle&gt;): 
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -354,19 +559,54 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            pointer.getPointerStyle(windowId, (error:  BusinessError<void> | null, style: pointer.PointerStyle  | undefined) => {
+              console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+            });
+          } catch (error) {
+            console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerStyle
 
-getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
+ArkTS-Dyn: getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
+
+ArkTS-Sta: getPointerStyle(windowId: int): Promise&lt;PointerStyle&gt;
 
 获取鼠标样式类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。 |
+| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 窗口id。 |
 
 **返回值**：
 
@@ -382,7 +622,7 @@ getPointerStyle(windowId: number): Promise&lt;PointerStyle&gt;
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -420,19 +660,54 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            pointer.getPointerStyle(windowId).then((style: pointer.PointerStyle) => {
+              console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+            });
+          } catch (error) {
+            console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.getPointerStyleSync<sup>10+</sup>
 
-getPointerStyleSync(windowId: number): PointerStyle
+ArkTS-Dyn: getPointerStyleSync(windowId: number): PointerStyle
+
+ArkTS-Sta: getPointerStyleSync(windowId: int): PointerStyle
 
 查询鼠标样式类型，如向东箭头、向西箭头、向南箭头、向北箭头等。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名     | 类型   | 必填 | 说明     |
 | -------- | ------ | ---- | -------- |
-| windowId | number | 是   | 窗口id。<br>默认值为-1，表示获取全局的鼠标样式。 |
+| windowId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 窗口id。<br>默认值为-1，表示获取全局的鼠标样式。 |
 
 **返回值**：
 
@@ -448,7 +723,9 @@ getPointerStyleSync(windowId: number): PointerStyle
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -473,19 +750,53 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            let style: pointer.PointerStyle = pointer.getPointerStyleSync(windowId);
+            console.log(`Get pointer style success, style: ${JSON.stringify(style)}`);
+          } catch (error) {
+            console.error(`Get pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerStyle
 
-setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Dyn: setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void
+
+ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle, callback: AsyncCallback&lt;void&gt;): void
 
 设置鼠标样式类型，使用Callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名           | 类型                             | 必填   | 说明                                  |
 | ------------ | ------------------------------ | ---- | ----------------------------------- |
-| windowId     | number                         | 是    | 窗口id。                          |
+| windowId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。                          |
 | pointerStyle | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。                             |
 | callback     | AsyncCallback&lt;void&gt;      | 是    | 回调函数。 |
 
@@ -497,7 +808,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCal
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -534,19 +845,56 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS,
+              (error: BusinessError<void> | null, data: undefined) => {
+                console.log(`Set pointer style success`);
+              });
+          } catch (error) {
+            console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerStyle
 
-setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&gt;
+ArkTS-Dyn: setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&gt;
+
+ArkTS-Sta: setPointerStyle(windowId: int, pointerStyle: PointerStyle): Promise&lt;void&gt;
 
 设置鼠标样式类型，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | 是    | 窗口id。       |
+| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **返回值**：
@@ -563,7 +911,7 @@ setPointerStyle(windowId: number, pointerStyle: PointerStyle): Promise&lt;void&g
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -601,19 +949,54 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            pointer.setPointerStyle(windowId, pointer.PointerStyle.CROSS).then(() => {
+              console.log(`Set pointer style success`);
+            });
+          } catch (error) {
+            console.error(`Set pointer style failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setPointerStyleSync<sup>10+</sup>
 
-setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
+ArkTS-Dyn: setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
+
+ArkTS-Sta: setPointerStyleSync(windowId: int, pointerStyle: PointerStyle): void
 
 设置鼠标样式类型，使用同步方式返回结果。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名                  | 类型                             | 必填   | 说明               |
 | ------------------- | ------------------------------ | ---- | ---------------- |
-| windowId            | number                         | 是    | 窗口id。       |
+| windowId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。       |
 | pointerStyle        | [PointerStyle](#pointerstyle) | 是    | 鼠标样式。          |
 
 **错误码**：
@@ -624,7 +1007,8 @@ setPointerStyleSync(windowId: number, pointerStyle: PointerStyle): void
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+ArkTS-Dyn示例:
+
 ```js
 import { pointer } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -660,11 +1044,43 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            pointer.setPointerStyleSync(windowId, pointer.PointerStyle.CROSS);
+            console.log(`Set pointer style success`);
+          } catch (error) {
+            console.error(`getPointerSize failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## PrimaryButton<sup>10+</sup>
 
 鼠标主键类型。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
 
 | 名称                               | 值    | 说明     |
 | -------------------------------- | ---- | ------ |
@@ -676,6 +1092,10 @@ struct Index {
 右键菜单的触发方式。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：10
+
+**ArkTS-Sta起始版本**：22
 
 | 名称                               | 值    | 说明     |
 | -------------------------------- | ---- | ------ |
@@ -690,6 +1110,10 @@ struct Index {
 鼠标样式类型。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
+
+**ArkTS-Dyn起始版本**：9
+
+**ArkTS-Sta起始版本**：22
 
 | 名称                               | 值    | 说明     |图示 |
 | -------------------------------- | ---- | ------ |------ |
@@ -741,20 +1165,26 @@ struct Index {
 
 ## pointer.setCustomCursor<sup>11+</sup>
 
-setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): Promise&lt;void&gt;
+ArkTS-Dyn: setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setCustomCursor(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): Promise&lt;void&gt;
 
 设置自定义光标样式，使用Promise异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | 是    | 窗口id。                          |
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
-| focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
-| focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
+| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
+| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
 
 **返回值**：
 
@@ -770,7 +1200,7 @@ setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: number, foc
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -808,6 +1238,54 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let width: int = 64;
+          let height: int = 64;
+          const buffer = new ArrayBuffer(width * height * 4); // RGBA_8888
+          const pixelView = new Uint8Array(buffer);
+          for (let i = 0; i < pixelView.length; i += 4) {
+            pixelView[i] = 0xFF;  // Set the RGBA channel values
+            pixelView[i+1] = 0x00;
+            pixelView[i+2] = 0x00;
+            pixelView[i+3] = 0xFF; // opaque
+          }
+          const opts: image.InitializationOptions = {
+            editable: true,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            size: { width: width, height: height }
+          };
+          let img = image.createPixelMapSync(buffer, opts);
+          let fnCallBack = () => {
+            console.log("setCustomCursor success");
+          };
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            pointer.setCustomCursor(windowId, img, 25, 25).then(fnCallBack);
+          } catch (error) {
+            console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## CustomCursor<sup>15+</sup>
 
 自定义光标资源。
@@ -816,8 +1294,8 @@ struct Index {
 | 名称     | 类型     | 只读     | 可选     | 说明     |
 | -------- | ------- | -------- | -------- | ------- |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 否   | 自定义光标。最小限制为资源图本身的最小限制。最大限制为256 x 256px。 |
-| focusX  | number | 否   | 是   | 自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值，该参数缺省时默认为0。 |
-| focusY  | number | 否   | 是   | 自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值，该参数缺省时默认为0。 |
+| focusX  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 自定义光标焦点的水平坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的宽度最大值，该参数缺省时默认为0。 |
+| focusY  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 自定义光标焦点的垂直坐标。该坐标受自定义光标大小的限制。最小值为0，最大值为资源图的高度最大值，该参数缺省时默认为0。 |
 
 ## CursorConfig<sup>15+</sup>
 
@@ -825,13 +1303,19 @@ struct Index {
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：15
+
+**ArkTS-Sta起始版本**：22
+
 | 名称     | 类型     | 只读     | 可选     | 说明     |
 | -------- | ------- | -------- | -------- | ------- |
 | followSystem  | boolean  | 否   | 否   | 是否根据系统设置调整光标大小。false表示使用自定义光标样式大小，true表示根据系统设置调整光标大小，可调整范围为：[光标资源图大小，256×256]。 |
 
 ## pointer.setCustomCursor<sup>15+</sup>
 
-setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
+ArkTS-Dyn: setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
+
+ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorConfig): Promise&lt;void&gt;
 
 设置自定义光标样式，使用Promise异步回调。
 应用窗口布局改变、热区切换、页面跳转、光标移出再回到窗口、光标在窗口不同区域移动，以上场景可能导致光标切换回系统样式，需要开发者重新设置光标样式。
@@ -842,7 +1326,7 @@ setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): P
 
 | 参数名    | 类型    | 必填    | 说明    |
 | -------- | -------- | -------- | -------- |
-| windowId  | number  | 是    | 窗口id。                          |
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口id。                          |
 | cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | 是    | 自定义光标资源。 |
 | config  | [CursorConfig](js-apis-pointer.md#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
 
@@ -861,7 +1345,7 @@ setCustomCursor(windowId: number, cursor: CustomCursor, config: CursorConfig): P
 | 401  | Parameter error. Possible causes: 1. Abnormal windowId parameter passed in. 2. Abnormal pixelMap parameter passed in; 3. Abnormal focusX parameter passed in.4. Abnormal focusY parameter passed in. |
 | 26500001 | Invalid windowId. Possible causes: The window id does not belong to the current process. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -900,22 +1384,76 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let width: int = 64;
+          let height: int = 64;
+          const buffer = new ArrayBuffer(width * height * 4); // RGBA_8888
+          const pixelView = new Uint8Array(buffer);
+          for (let i = 0; i < pixelView.length; i += 4) {
+            pixelView[i] = 0xFF;  // Set the RGBA channel values
+            pixelView[i+1] = 0x00;
+            pixelView[i+2] = 0x00;
+            pixelView[i+3] = 0xFF; // opaque
+          }
+          const opts: image.InitializationOptions = {
+            editable: true,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            size: { width: width, height: height }
+          };
+          let pixelMap = image.createPixelMapSync(buffer, opts);
+          let customCursor: pointer.CustomCursor = {pixelMap: pixelMap, focusX: 25, focusY: 25};
+          let customConfig: pointer.CursorConfig = {followSystem: false};
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            pointer.setCustomCursor(windowId, customCursor, customConfig).then(() => {
+              console.log(`setCustomCursor success`);
+            });
+          } catch (error) {
+            console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## pointer.setCustomCursorSync<sup>11+</sup>
 
-setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number, focusY?: number): void
+ArkTS-Dyn: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): void
+
+ArkTS-Sta: setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): void
 
 设置自定义光标样式，使用同步方式进行设置。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.Pointer
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
+
 **参数**：
 
 | 参数名    | 类型     | 必填   | 说明                                  |
 | ----- | ------ | ---- | ----------------------------------- |
-| windowId  | number  | 是    | 窗口id。取值为大于0的整数。                          |
+| windowId  | int  | 是    | 窗口id。取值为大于0的整数。                          |
 | pixelMap  | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是    | 自定义光标资源。 |
-| focusX  | number | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
-| focusY  | number | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
+| focusX  | int | 否    | 自定义光标焦点x，取值范围：大于等于0，默认为0。 |
+| focusY  | int | 否    | 自定义光标焦点y，取值范围：大于等于0，默认为0。 |
 
 **错误码**：
 
@@ -925,7 +1463,7 @@ setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?: number,
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
-**示例**：
+ArkTS-Dyn示例:
 
 ```js
 import { pointer } from '@kit.InputKit';
@@ -957,6 +1495,53 @@ struct Index {
               });
             });
           });
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { pointer } from '@kit.InputKit';
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          let width: int = 64;
+          let height: int = 64;
+          const buffer = new ArrayBuffer(width * height * 4); // RGBA_8888
+          const pixelView = new Uint8Array(buffer);
+          for (let i = 0; i < pixelView.length; i += 4) {
+            pixelView[i] = 0xFF;  // Set the RGBA channel values
+            pixelView[i+1] = 0x00;
+            pixelView[i+2] = 0x00;
+            pixelView[i+3] = 0xFF; // opaque
+          }
+          const opts: image.InitializationOptions = {
+            editable: true,
+            pixelFormat: image.PixelMapFormat.RGBA_8888,
+            size: { width: width, height: height }
+          };
+          let img = image.createPixelMapSync(buffer, opts);
+          let fnCallBack = () => {
+            console.log("setCustomCursor success");
+          };
+          // 此次根据实际获取窗口id
+          let windowId: int = 100;
+          try {
+            pointer.setCustomCursorSync(windowId, img, 25, 25);
+          } catch (error) {
+            console.error(`setCustomCursor failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
         })
     }
   }
