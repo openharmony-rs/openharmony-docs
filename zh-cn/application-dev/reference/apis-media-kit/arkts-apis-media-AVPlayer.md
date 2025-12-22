@@ -1130,7 +1130,7 @@ async function  test(){
 
 ## getCurrentPresentationTimeStamp<sup>23+</sup>
 
-getCurrentPresentationTimeStamp(): long
+getCurrentPresentationTimeStamp(): number
 
 获取当前播放位置，可以在playing/paused/completed状态调用。
 
@@ -1142,7 +1142,7 @@ getCurrentPresentationTimeStamp(): long
 
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
-| number | 返回当前播放位置的时间。<br>单位：微秒（us）。|
+| number | 返回当前播放位置的时间，单位：微秒（us）。|
 
 **错误码：**
 
@@ -1162,7 +1162,7 @@ async function  test(){
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
   avPlayer.prepare().then(() => {
     console.info('Succeeded in preparing');
-    let currentPresentation: long = avPlayer.getCurrentPresentationTimeStamp();
+    let currentPresentation: number = avPlayer.getCurrentPresentationTimeStamp();
     console.info(`AVPlayer getCurrentPresentationTimeStamp== ${currentPresentation}`);
   }, (err: BusinessError) => {
     console.error('Failed to prepare,error message is :' + err.message);
