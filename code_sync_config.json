@@ -11128,7 +11128,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template6/ModalTransitionWithIf.ets",
 				"functions":[
 					{
-						"end_line":212,
+						"end_line":213,
 						"name":"modal_transition_with_if",
 						"start_line":16
 					}
@@ -11178,7 +11178,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/springCurve/template1/SpringCurve.ets",
 				"functions":[
 					{
-						"end_line":110,
+						"end_line":114,
 						"name":"spring_curve",
 						"start_line":16
 					}
@@ -13602,7 +13602,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/OutsideIncorrectUsage.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":71,
 						"name":"calling_builder_outside_incorrect_usage",
 						"start_line":15
 					}
@@ -13612,7 +13612,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/OutsideCorrectUsage.ets",
 				"functions":[
 					{
-						"end_line":66,
+						"end_line":68,
 						"name":"calling_builder_outside_correct_usage",
 						"start_line":15
 					}
@@ -15177,7 +15177,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template10/SheetDemo.ets",
 				"functions":[
 					{
-						"end_line":70,
+						"end_line":72,
 						"name":"Nested_scrolling_Sheet",
 						"start_line":16
 					}
@@ -15187,7 +15187,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":86,
 						"name":"onWillDismiss_Dismiss",
 						"start_line":16
 					}
@@ -15197,7 +15197,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template12/SheetTransitionExample.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":79,
 						"name":"SheetTransitionExample",
 						"start_line":16
 					}
@@ -18132,7 +18132,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample1.ets",
 				"functions":[
 					{
-						"end_line":38,
+						"end_line":40,
 						"name":"ClipShapeExampleA",
 						"start_line":15
 					}
@@ -18142,7 +18142,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample2.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":38,
 						"name":"ClipShapeExampleB",
 						"start_line":15
 					}
@@ -18152,7 +18152,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample3.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":38,
 						"name":"ClipShapeExampleC",
 						"start_line":15
 					}
@@ -18162,7 +18162,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample4.ets",
 				"functions":[
 					{
-						"end_line":36,
+						"end_line":37,
 						"name":"ClipShapeExampleD",
 						"start_line":15
 					}
@@ -18527,7 +18527,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template2/Index.ets",
 				"functions":[
 					{
-						"end_line":161,
+						"end_line":170,
 						"name":"post_data",
 						"start_line":16
 					}
@@ -18667,7 +18667,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template7/Index.ets",
 				"functions":[
 					{
-						"end_line":184,
+						"end_line":193,
 						"name":"geometry_transition",
 						"start_line":16
 					}
@@ -18962,7 +18962,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template2/Index.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":71,
 						"name":"animationBlur_template2_start",
 						"start_line":15
 					}
@@ -24552,14 +24552,14 @@
 						"start_line":110
 					},
 					{
-						"end_line":77,
+						"end_line":76,
 						"name":"animator_template4_show_start",
-						"start_line":51
+						"start_line":50
 					},
 					{
-						"end_line":106,
+						"end_line":105,
 						"name":"animator_template4_buttons_start",
-						"start_line":88
+						"start_line":87
 					},
 					{
 						"end_line":83,
