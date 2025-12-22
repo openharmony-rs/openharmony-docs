@@ -3024,10 +3024,12 @@ struct TextInputExample {
   }
 }
 ```
+<!--RP3End-->
+
 | 系统字体缩放倍数为2倍 | 系统字体缩放倍数为3.2倍 |
 | ---------------------------------- | ------------------------------------ |
 | ![](figures/TextInput_font_scale1.png)  | ![](figures/TextInput_font_scale2.png)  |
-<!--RP3End-->
+
 ### 示例19（设置选中指定区域的文本内容）
 
 从API version 10开始，该示例通过[setTextSelection](#settextselection10)方法展示如何设置选中指定区域的文本内容以及菜单的显隐策略。
