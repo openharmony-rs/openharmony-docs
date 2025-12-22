@@ -36,6 +36,14 @@
 3. 初始化文本样式，此处设置字体颜色为纯黑色，字体大小为60，字重为400。
 
    <!-- @[drawing_simple_text_c_create_textStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 设置文字颜色、大小、字重，不设置 TextStyle 会使用 TypographyStyle 中的默认 TextStyle
+   OH_Drawing_TextStyle *txtStyle = OH_Drawing_CreateTextStyle();
+   OH_Drawing_SetTextStyleColor(txtStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   OH_Drawing_SetTextStyleFontSize(txtStyle, 60);
+   OH_Drawing_SetTextStyleFontWeight(txtStyle, FONT_WEIGHT_400);
+   ```
 
 4. 初始化段落对象，并添加文本。
 
