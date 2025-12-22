@@ -577,7 +577,7 @@ getInputMethodController(): InputMethodController
 
 > **说明：** 
 >
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[getController()](#inputmethodgetcontroller9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getController](#inputmethodgetcontroller9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -601,7 +601,7 @@ getInputMethodSetting(): InputMethodSetting
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSetting()](#inputmethodgetsetting9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSetting](#inputmethodgetsetting9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2220,7 +2220,7 @@ stopInput(callback: AsyncCallback&lt;boolean&gt;): void
 > 
 > 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用该接口结束输入会话。
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession](#stopinputsession9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -2258,7 +2258,7 @@ stopInput(): Promise&lt;boolean&gt;
 > 
 > 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用该接口结束输入会话。
 > 
-> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession()](#stopinputsession9)替代。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[stopInputSession](#stopinputsession9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3836,7 +3836,7 @@ displayOptionalInputMethod(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3868,7 +3868,7 @@ displayOptionalInputMethod(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
