@@ -162,7 +162,7 @@ setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
 
 设置长时任务授权信息。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
 
@@ -214,7 +214,7 @@ getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
 
 获取长时任务授权信息。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**: ohos.permission.SET_BACKGROUND_TASK_STATE
 
@@ -271,7 +271,7 @@ obtainAllContinuousTasks(): Promise&lt;ContinuousTaskInfo[]&gt;
 
 获取所有长时任务信息，如长时任务ID、长时任务类型等。使用Promise异步回调。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
 
@@ -319,7 +319,7 @@ subscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 注册长时任务变化回调。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
 
@@ -376,7 +376,7 @@ unsubscribeContinuousTaskState(subscriber: BackgroundTaskSubscriber): void
 
 解注册长时任务变化回调。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **需要权限**: ohos.permission.GET_BACKGROUND_TASK_INFO
 
@@ -524,6 +524,8 @@ try {
 
 长时任务授权信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 **系统API**: 此接口为系统接口。
@@ -539,7 +541,7 @@ try {
 
 后台任务监听。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -551,7 +553,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 
 长时任务开始回调接口。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -587,7 +589,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 
 长时任务更新回调接口。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -623,7 +625,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 
 长时任务结束回调接口。
 
-**模型约束**: 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
