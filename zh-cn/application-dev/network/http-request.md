@@ -379,7 +379,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
  **调试参考**
  
    - 通过API校验指定证书是否可信：可参考[networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification)。
-   - 通过openssl命令校验域名服务器证书链是否被系统信任：hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief。若出现`Verification: OK`说明证书链可信。将`-trace -showcerts`替换为`-brief`可以打印详细的TLS握手信息。
+   - 通过openssl命令校验域名服务器证书链是否被系统信任：`hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief`。若出现`Verification: OK`说明证书链可信。将`-trace -showcerts`替换为`-brief`可以打印详细的TLS握手信息。
 
 
 ### 证书锁定
