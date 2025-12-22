@@ -270,6 +270,10 @@ function destroy(): void {
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 ## SamplerFilter<sup>20+</sup>
 采样器过滤模式枚举，定义纹理采样时的插值方法，用于控制纹理在缩放或变形时如何计算最终像素的颜色值。
 
