@@ -472,7 +472,7 @@ struct NavigationDemo {
   build() {
     Column() {
       Navigation(this.navPathStack) {
-        // $r('app.string.enterKeyWordsToSearch')需要替换为开发者所需的字符串资源文件
+        // 请将$r('app.string.enterKeyWordsToSearch')替换为实际资源文件，在本示例中该资源文件的value值为"输入关键字搜索"
         TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
           .width('90%')
           .height(40)

@@ -120,7 +120,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
           .width('90%')
           .margin({ top: 12 })
         }
-        // $r('app.string.mainTitle')需要替换为开发者所需的字符串资源文件
+        // 请将$r('app.string.mainTitle')替换为实际资源文件，在本示例中该资源文件的value值为"主标题"
         .title($r('app.string.mainTitle'))
         .mode(NavigationMode.Split)
         .navDestination(this.pageMap)
@@ -166,7 +166,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
       }.title('NavDestinationTitle1')
       .onBackPressed(() => {
         const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')资源文件中的value值为“返回值”
+        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -186,7 +186,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
       }.title('NavDestinationTitle2')
       .onBackPressed(() => {
         const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')资源文件中的value值为“返回值”
+        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -206,7 +206,7 @@ Navigation组件主要包含​导航页和子页。导航页由标题栏（包�
       }.title('NavDestinationTitle3')
       .onBackPressed(() => {
         const popDestinationInfo = this.navPathStack.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.returnValue')资源文件中的value值为“返回值”
+        // $r('app.string.returnValue')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“返回值”
         hilog.info(DOMAIN, 'testTag', 'pop', this.context!.resourceManager.getStringSync($r('app.string.returnValue').id),
           JSON.stringify(popDestinationInfo));
         return true;
@@ -895,8 +895,8 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
    // 起始页配置共享元素id
    NavDestination() {
      Column() {
-       // ···
-       // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+       // ...
+       // 请将$r('app.media.startIcon')替换为实际资源文件
        Image($r('app.media.startIcon'))
          .geometryTransition('sharedId')
          .width(100)
@@ -911,7 +911,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
    // 目的页配置共享元素id
    NavDestination() {
      Column() {
-       // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+       // 请将$r('app.media.startIcon')替换为实际资源文件
        Image($r('app.media.startIcon'))
          .geometryTransition('sharedId')
          .width(200)
@@ -928,7 +928,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
    ``` TypeScript
    NavDestination() {
      Column() {
-       // $r('app.string.ToPage')需要替换为开发者所需的字符串资源文件
+       // $r('app.string.ToPage')资源文件中的value值为“跳转到目的页”
        Button($r('app.string.ToPage'))
          .width('80%')
          .height(40)
@@ -938,7 +938,7 @@ NavDestination之间切换时可以通过[geometryTransition](../reference/apis-
              this.navPathStack.pushPath({ name: 'ToPage' }, false)
            });
          })
-       // ···
+       // ...
      }
    }.title('FromPage')
    ```
@@ -1205,7 +1205,7 @@ struct NavigationDemo {
   build() {
     Column() {
       Navigation(this.navPathStack) {
-        // $r('app.string.enterKeyWordsToSearch')需要替换为开发者所需的字符串资源文件
+        // 请将$r('app.string.enterKeyWordsToSearch')替换为实际资源文件，在本示例中该资源文件的value值为"输入关键字搜索"
         TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
           .width('90%')
           .height(40)
