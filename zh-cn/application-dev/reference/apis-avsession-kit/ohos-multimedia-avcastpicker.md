@@ -27,7 +27,7 @@ import { AVCastPicker } from '@kit.AVSessionKit';
 
 ## AVCastPicker
 
-```
+```ts
 AVCastPicker({
   normalColor?: Color | number | string;
   activeColor?: Color | number | string;
