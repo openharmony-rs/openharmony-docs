@@ -595,16 +595,16 @@ WAPI身份验证协议配置。
 >
 > WifiDeviceConfig是WLAN配置信息,可以设置连接WLAN所需的配置信息。
 >
-> 当用户通过WAPI身份验证协议连接无线网时，可通过以下方案配置参数或者证书进行连接。
+> 当用户通过WAPI身份验证协议连接无线网时，可通过以下方式配置参数或者证书进行连接。
 >
-> - 方案一:通过配置证书进行连接。WifiDeviceConfig中关键字段的配置如下:
+> - 方式一:通过配置证书进行连接。WifiDeviceConfig中关键字段的配置如下:
 >   - preSharedKey无需传参;
 >   - securityType设置为WIFI_SEC_TYPE_WAPI_CERT;
 >   - 在wapiConfig中：
 >     - wapiAsCert传递As证书的文本内容。
 >     - wapiUserCert传递用户证书的文本内容。
 >
-> - 方案二:通过配置preSharedKey进行链接。WifiDeviceConfig中关键字段的配置如下:
+> - 方式二:通过配置preSharedKey进行链接。WifiDeviceConfig中关键字段的配置如下:
 >   - preSharedKey传参为路由器上设置的密码;
 >   - securityType设置为WIFI_SEC_TYPE_WAPI_PSK;
 
