@@ -35,6 +35,7 @@ import { image } from '@kit.ImageKit';
 | size<sup>9+</sup>     | [Size](arkts-apis-image-i.md#size)      | 是   | 否   | 图像大小。<br>如果Image对象所存储的是相机预览流数据（YUV图像数据），那么获取到的size中的宽和高分别对应YUV图像的宽和高。<br>如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。<br>Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的是previewOutput还是captureOutput。<br>相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../media/camera/camera-shooting-case.md)。|
 | format<sup>9+</sup>    | number             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。 |
 | timestamp<sup>12+</sup> | number         | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取相关的EXIF信息。|
+| colorSpace<sup>23+</sup> | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 是 | 否 | 图像色彩空间，色域枚举类型。|
 
 ## getComponent<sup>9+</sup>
 
@@ -168,5 +169,79 @@ async function Release(img : image.Image) {
   }).catch((error: BusinessError) => {
     console.error(`Failed to release the image instance.code ${error.code},message is ${error.message}`);
   })
+}
+```
+
+## getBufferData<sup>23+</sup>
+
+getBufferData(): ImageBufferData | null
+
+从图像中获取ImageBufferData缓存。通过该接口获取的ImageBufferData中的byteBuffer是对Image内部缓存中Buffer的浅拷贝，当Image的生命周期结束时，便不应该再对byteBuffer做任何操作，否则会导致未定义行为。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型                              | 说明                              |
+| --------------------------------- | --------------------------------- |
+| [ImageBufferData](arkts-apis-image-i.md#imagebufferdata23)> | Promise对象，返回组件缓冲区。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function GetBufferData(img : image.Image) {
+  img.getBufferData().then((bufferData: image.ImageBufferData) => {
+    console.info('Succeeded in getting bufferData.');
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to get the bufferData.code ${error.code},message is ${error.message}`);
+  })
+}
+```
+
+## getMetadata<sup>23+</sup>
+
+getMetadata(key: HdrMetadataKey): HdrMetadataValue
+
+根据HDR元数据的类型从图像中获取HDR元数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名        | 类型                             | 必填 | 说明             |
+| ------------- | -------------------------------- | ---- | ---------------- |
+| key | [HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12) | 是   | HDR元数据的关键字，可用于查询对应值。 |
+
+**返回值：**
+
+| 类型                              | 说明                              |
+| --------------------------------- | --------------------------------- |
+| [HdrMetadataValue](arkts-apis-image-t.md#hdrmetadatavalue12)> | 返回元数据的值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 7600206 | Invalid parameter.          |
+| 7600302 | Memory copy failed. Possibly caused by invalid metadata value.          |
+
+**示例：**
+
+```ts
+async function GetMetadata(img : image.Image) {
+  try {
+    let staticMetadata = img.getMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA);
+    console.info(`getMetadata:${staticMetadata}`);
+  } catch (err) {
+    console.error('getMetadata failed' + err);
+  }
 }
 ```

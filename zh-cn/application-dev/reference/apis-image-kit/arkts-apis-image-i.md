@@ -247,6 +247,33 @@ Gainmap使用的元数据值，[HdrMetadataKey](arkts-apis-image-e.md#hdrmetadat
 | alternateHeadroom  | number     | 否 | 否 |  提取的可选择图像提亮比，参考ISO 21496-1。  |
 | channels  | Array<[GainmapChannel](#gainmapchannel12)> | 否 | 否 | 各通道的数据，长度为3，参考ISO 21496-1。 |
 
+## ImageReceiverOptions<sup>23+</sup>
+
+ImageReceiver的初始化选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 类型                               | 只读 | 可选 | 说明               |
+| ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
+| size     | [Size](#size)                      | 否   | 是   | 图像的默认大小，单位为像素。该参数不会影响接收到的图片大小，实际返回大小由生产者决定，如相机。|
+| capacity | number | 否   | 是   | ImageReceiver同时访问的最大图像数。该参数仅作为期望值，实际capacity由设备硬件决定。     |
+
+## ImageBufferData<sup>23+</sup>
+
+保存图像的Buffer指针和不同颜色分量的行间距与像素间距信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 类型              | 只读 | 可选 | 说明               |
+| ----------------- | ----------------- | ---- | ---- | ------------------ |
+| rowStride   | int[]  | 是   | 否   | 颜色分量的行间距，单位为字节。对于编码后的图片如JPEG，该属性无意义。读取相机预览流数据时，需要按stride进行读取，使用详情请参考[相机预览花屏解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-deal-stride-solution)。|
+| pixelStride | int[]  | 是   | 否   | 颜色分量的像素间距，单位为字节。对于编码后的图片如JPEG，该属性无意义。     |
+| byteBuffer  | ArrayBuffer | 是   | 否   | 图像缓冲区。     |
+
 ## GetImagePropertyOptions<sup>(deprecated)</sup>
 
 表示查询图片属性的索引。

@@ -9,6 +9,7 @@
 ImageReceiver类，用于获取组件surface id、接收最新的图片和读取下一张图片以及释放ImageReceiver实例。ImageReceiver作为图片的接收方和消费者，其参数属性实际上不会对接收到的图片产生影响。图片属性的配置应在发送方和生产者上进行，如相机预览流[createPreviewOutput](../apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)。
 
 在调用以下方法前需要先通过[image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver11)创建ImageReceiver实例。
+在现有功能中format不再有用，更推荐使用[image.createImageReceiver](arkts-apis-image-f.md#imagecreateimagereceiver23)创建ImageReceiver实例。
 
 由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](#release9)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
