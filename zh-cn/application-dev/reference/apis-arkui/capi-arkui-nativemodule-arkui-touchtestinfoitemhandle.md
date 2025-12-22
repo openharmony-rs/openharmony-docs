@@ -14,7 +14,7 @@ typedef struct ArkUI_TouchTestInfoItem* ArkUI_TouchTestInfoItemHandle
 
 定义触摸测试信息项句柄。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **相关模块：** [ArkUI_EventModule](capi-arkui-eventmodule.md)
 
