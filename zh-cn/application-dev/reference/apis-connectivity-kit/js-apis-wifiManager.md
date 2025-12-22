@@ -606,7 +606,7 @@ WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议�
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 |
-| wapiAsCert | string | 否 | 否 | As证书。 |
+| wapiAsCert | string | 否 | 否 | AS证书(Authentication Server Certificate，认证服务器证书)。 |
 | wapiUserCert | string | 否 | 否 | 用户证书。 |
 
 ## WapiPskType<sup>12+</sup>
