@@ -398,6 +398,10 @@ notBetween(field: string, low: ValueType, high: ValueType): DataSharePredicates
 
 **系统能力：**  SystemCapability.DistributedDataManager.DataShare.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                | 必填 | 说明                     |
