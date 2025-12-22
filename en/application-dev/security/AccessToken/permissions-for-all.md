@@ -569,7 +569,7 @@ With this permission, the application can set the background color the shadow vi
 
 **Valid since**: 20
 
-**Changelog**: This permission is available only on PCs/2-in-1 devices from API versions 20 to 22. Since API version 23, this permission is also available on tablet.
+**Changelog**: This permission is available only on PCs/2-in-1 devices from API versions 20 to 22. Since API version 23, this permission is also available on tablets.
 
 ## ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN
 
@@ -637,7 +637,7 @@ With this permission, the application can customize its icon in the shortcut men
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PC/2in1 | Tablet
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 22
 
@@ -679,6 +679,6 @@ With this permission, the application can query whether the system is in the Do 
 
 **Authorization mode**: system_grant
 
-**Supported devices**: Phone | Tablet
+**Supported devices**: phones | tablets
 
 **Since**: 23

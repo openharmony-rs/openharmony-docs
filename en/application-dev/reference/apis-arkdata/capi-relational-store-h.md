@@ -1829,7 +1829,7 @@ Defines a callback used to return the device-cloud sync progress.
 
 | Parameter              | Description          |
 |-------------------|--------------|
-| void *context     |              |
+| void *context     | Pointer to the context of the callback data.|
 | [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progressDetails | Details about the device-cloud sync progress.|
 
 ### Rdb_SyncCallback()

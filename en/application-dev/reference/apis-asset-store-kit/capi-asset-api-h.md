@@ -42,7 +42,7 @@ Defines the functions for accessing assets.
 
 ### OH_Asset_Add()
 
-```
+```c
 int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)
 ```
 
@@ -70,7 +70,7 @@ To set the [Asset_Tag](capi-asset-type-h.md#asset_tag).**ASSET_TAG_IS_PERSISTENT
 
 ### OH_Asset_Remove()
 
-```
+```c
 int32_t OH_Asset_Remove(const Asset_Attr *query, uint32_t queryCnt)
 ```
 
@@ -96,7 +96,7 @@ Removes one or more assets.
 
 ### OH_Asset_Update()
 
-```
+```c
 int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt,const Asset_Attr *attributesToUpdate, uint32_t updateCnt)
 ```
 
@@ -124,7 +124,7 @@ Updates an asset.
 
 ### OH_Asset_PreQuery()
 
-```
+```c
 int32_t OH_Asset_PreQuery(const Asset_Attr *query, uint32_t queryCnt, Asset_Blob *challenge)
 ```
 
@@ -151,7 +151,7 @@ Performs preprocessing for the asset query. This API is used when user authentic
 
 ### OH_Asset_Query()
 
-```
+```c
 int32_t OH_Asset_Query(const Asset_Attr *query, uint32_t queryCnt, Asset_ResultSet *resultSet)
 ```
 
@@ -178,7 +178,7 @@ Queries one or more assets.
 
 ### OH_Asset_PostQuery()
 
-```
+```c
 int32_t OH_Asset_PostQuery(const Asset_Attr *handle, uint32_t handleCnt)
 ```
 
@@ -204,7 +204,7 @@ Performs postprocessing for the asset query. This API is used when user authenti
 
 ### OH_Asset_QuerySyncResult()
 
-```
+```c
 int32_t OH_Asset_QuerySyncResult(const Asset_Attr *query, uint32_t queryCnt, Asset_SyncResult *syncResult)
 ```
 
@@ -231,7 +231,7 @@ Queries the sync result of an asset.
 
 ### OH_Asset_ParseAttr()
 
-```
+```c
 Asset_Attr *OH_Asset_ParseAttr(const Asset_Result *result, Asset_Tag tag)
 ```
 
@@ -257,7 +257,7 @@ Parses the query result and obtains the specified attribute.
 
 ### OH_Asset_FreeBlob()
 
-```
+```c
 void OH_Asset_FreeBlob(Asset_Blob *blob)
 ```
 
@@ -276,7 +276,7 @@ Releases the memory occupied by the challenge value.
 
 ### OH_Asset_FreeResultSet()
 
-```
+```c
 void OH_Asset_FreeResultSet(Asset_ResultSet *resultSet)
 ```
 

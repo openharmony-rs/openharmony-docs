@@ -769,7 +769,7 @@ Defines the child class of [KdfSpec](#kdfspec11). It is a parameter for X963KDF 
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | No  | No  | Key material.|
 | info | Uint8Array | No  | No  | Additional description.|
-| keySize | int | No  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
+| keySize | number | No  | No  | Length of the derived key, in bytes. The value must be a positive integer.|
 
 > **NOTE**
 >
@@ -1449,6 +1449,198 @@ function TestPriKeyPkcs1Encoded() {
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS1', options);
   console.info("[sync]TestPriKeyPkcs1Encoded priString output is " + priString);
+}
+```
+
+### getPubKey<sup>23+</sup>
+
+getPubKey(): Promise\<PubKey>
+
+Obtains a public key from a private key. This API uses a promise to return the result.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**Return value**
+
+| Type                       | Description                             |
+| --------------------------- | --------------------------------- |
+| Promise\<[PubKey](#pubkey)> | Promise used to return the public key.|
+
+**Error codes**
+
+For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
+
+| ID| Error Message              |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
+  let buf1 = buffer.from(a);
+  let buf2 = buffer.from(b);
+  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function generateAsyKey() {
+  let skData =
+    new Uint8Array([48, 130, 2, 119, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 97, 48,
+      130, 2, 93, 2, 1, 0, 2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22,
+      80, 100, 197, 243, 217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21,
+      91, 118, 246, 97, 93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1,
+      114, 10, 91, 195, 34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30,
+      248, 9, 181, 150, 243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131,
+      171, 22, 15, 7, 12, 172, 135, 196, 30, 93, 2, 3, 1, 0, 1, 2, 129, 128, 109, 100, 83, 194, 225, 170, 127, 134, 6,
+      184, 56, 113, 181, 67, 179, 231, 232, 152, 168, 147, 163, 215, 193, 56, 165, 252, 235, 86, 232, 174, 67, 52, 103,
+      215, 149, 212, 125, 32, 212, 188, 162, 255, 180, 94, 233, 236, 146, 50, 153, 6, 159, 158, 253, 217, 97, 10, 238,
+      133, 124, 174, 211, 232, 165, 19, 100, 186, 218, 62, 46, 124, 30, 19, 251, 3, 206, 105, 255, 236, 224, 178, 148,
+      103, 44, 132, 71, 83, 28, 221, 27, 189, 72, 44, 59, 253, 139, 232, 234, 14, 112, 121, 43, 142, 193, 179, 140, 200,
+      97, 234, 110, 63, 205, 24, 88, 116, 86, 184, 8, 19, 254, 204, 77, 84, 66, 238, 240, 69, 72, 21, 2, 65, 0, 233,
+      103, 239, 11, 215, 10, 103, 66, 46, 155, 193, 79, 37, 64, 90, 12, 167, 189, 129, 8, 131, 94, 195, 8, 210, 236, 87,
+      158, 140, 2, 82, 105, 80, 253, 13, 26, 140, 202, 194, 117, 59, 57, 197, 108, 50, 20, 46, 89, 248, 132, 120, 30,
+      149, 180, 135, 134, 196, 156, 160, 123, 38, 253, 15, 7, 2, 65, 0, 218, 103, 122, 117, 154, 149, 213, 110, 24, 149,
+      175, 208, 136, 249, 88, 91, 89, 180, 30, 243, 69, 130, 97, 252, 177, 216, 55, 46, 67, 15, 124, 56, 113, 57, 242,
+      233, 185, 193, 254, 218, 76, 165, 184, 16, 109, 190, 93, 195, 227, 37, 58, 110, 243, 142, 152, 252, 226, 91, 59,
+      145, 218, 35, 106, 123, 2, 65, 0, 210, 131, 88, 58, 32, 144, 148, 131, 63, 144, 97, 112, 165, 211, 125, 164, 110,
+      97, 224, 16, 50, 148, 116, 105, 239, 251, 20, 39, 190, 117, 149, 168, 193, 80, 10, 210, 136, 107, 147, 169, 178,
+      106, 47, 162, 159, 36, 78, 141, 253, 52, 85, 54, 152, 165, 131, 154, 204, 151, 203, 178, 103, 126, 212, 95, 2, 65,
+      0, 193, 254, 80, 3, 205, 255, 112, 200, 142, 5, 199, 88, 207, 145, 203, 45, 185, 12, 8, 193, 196, 231, 254, 233,
+      89, 126, 215, 228, 187, 164, 49, 142, 96, 228, 60, 35, 230, 223, 173, 227, 113, 89, 113, 153, 6, 33, 165, 95, 173,
+      143, 15, 204, 37, 130, 111, 217, 143, 165, 193, 207, 215, 150, 197, 169, 2, 64, 7, 37, 152, 14, 232, 168, 102,
+      169, 167, 97, 161, 33, 86, 178, 77, 140, 12, 114, 78, 129, 47, 103, 87, 217, 177, 80, 156, 91, 240, 149, 254, 90,
+      69, 232, 10, 56, 232, 63, 59, 148, 254, 101, 63, 146, 66, 96, 25, 31, 37, 154, 77, 145, 201, 213, 122, 245, 90,
+      251, 219, 42, 131, 248, 148, 151
+  ])
+  let expectPkdata =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22, 80, 100, 197, 243,
+      217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21, 91, 118, 246, 97,
+      93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1, 114, 10, 91, 195,
+      34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30, 248, 9, 181, 150,
+      243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131, 171, 22, 15, 7, 12,
+      172, 135, 196, 30, 93, 2, 3, 1, 0, 1
+  ])
+  let skDataBlob: cryptoFramework.DataBlob = { data: skData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
+    let priKey = keyPair.priKey;
+    let pubkey = await priKey.getPubKey();
+    let pkBlob = pubkey.getEncoded();
+    console.info('pk1 bin data' + pkBlob.data);
+    let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
+    console.info('result is ' + ret);
+  } catch (e) {
+    console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
+### getPubKeySync<sup>23+</sup>
+
+getPubKeySync(): PubKey
+
+Obtains a public key from a private key in synchronous mode.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**Return value**
+
+| Type                       | Description                             |
+| --------------------------- | --------------------------------- |
+| [PubKey](#pubkey) | Public key object.|
+
+**Error codes**
+
+For details about the error codes, see [Crypto Framework Error Codes](errorcode-crypto-framework.md).
+
+| ID| Error Message              |
+| -------- | ---------------------- |
+| 17620001 | memory operation failed. |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17630001 | crypto operation error. |
+
+**Example**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
+  let buf1 = buffer.from(a);
+  let buf2 = buffer.from(b);
+  if (buf1.compare(buf2, 0, b.length, 0, a.length) == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function generateAsyKey() {
+  let skData =
+    new Uint8Array([48, 130, 2, 119, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 97, 48,
+      130, 2, 93, 2, 1, 0, 2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22,
+      80, 100, 197, 243, 217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21,
+      91, 118, 246, 97, 93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1,
+      114, 10, 91, 195, 34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30,
+      248, 9, 181, 150, 243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131,
+      171, 22, 15, 7, 12, 172, 135, 196, 30, 93, 2, 3, 1, 0, 1, 2, 129, 128, 109, 100, 83, 194, 225, 170, 127, 134, 6,
+      184, 56, 113, 181, 67, 179, 231, 232, 152, 168, 147, 163, 215, 193, 56, 165, 252, 235, 86, 232, 174, 67, 52, 103,
+      215, 149, 212, 125, 32, 212, 188, 162, 255, 180, 94, 233, 236, 146, 50, 153, 6, 159, 158, 253, 217, 97, 10, 238,
+      133, 124, 174, 211, 232, 165, 19, 100, 186, 218, 62, 46, 124, 30, 19, 251, 3, 206, 105, 255, 236, 224, 178, 148,
+      103, 44, 132, 71, 83, 28, 221, 27, 189, 72, 44, 59, 253, 139, 232, 234, 14, 112, 121, 43, 142, 193, 179, 140, 200,
+      97, 234, 110, 63, 205, 24, 88, 116, 86, 184, 8, 19, 254, 204, 77, 84, 66, 238, 240, 69, 72, 21, 2, 65, 0, 233,
+      103, 239, 11, 215, 10, 103, 66, 46, 155, 193, 79, 37, 64, 90, 12, 167, 189, 129, 8, 131, 94, 195, 8, 210, 236, 87,
+      158, 140, 2, 82, 105, 80, 253, 13, 26, 140, 202, 194, 117, 59, 57, 197, 108, 50, 20, 46, 89, 248, 132, 120, 30,
+      149, 180, 135, 134, 196, 156, 160, 123, 38, 253, 15, 7, 2, 65, 0, 218, 103, 122, 117, 154, 149, 213, 110, 24, 149,
+      175, 208, 136, 249, 88, 91, 89, 180, 30, 243, 69, 130, 97, 252, 177, 216, 55, 46, 67, 15, 124, 56, 113, 57, 242,
+      233, 185, 193, 254, 218, 76, 165, 184, 16, 109, 190, 93, 195, 227, 37, 58, 110, 243, 142, 152, 252, 226, 91, 59,
+      145, 218, 35, 106, 123, 2, 65, 0, 210, 131, 88, 58, 32, 144, 148, 131, 63, 144, 97, 112, 165, 211, 125, 164, 110,
+      97, 224, 16, 50, 148, 116, 105, 239, 251, 20, 39, 190, 117, 149, 168, 193, 80, 10, 210, 136, 107, 147, 169, 178,
+      106, 47, 162, 159, 36, 78, 141, 253, 52, 85, 54, 152, 165, 131, 154, 204, 151, 203, 178, 103, 126, 212, 95, 2, 65,
+      0, 193, 254, 80, 3, 205, 255, 112, 200, 142, 5, 199, 88, 207, 145, 203, 45, 185, 12, 8, 193, 196, 231, 254, 233,
+      89, 126, 215, 228, 187, 164, 49, 142, 96, 228, 60, 35, 230, 223, 173, 227, 113, 89, 113, 153, 6, 33, 165, 95, 173,
+      143, 15, 204, 37, 130, 111, 217, 143, 165, 193, 207, 215, 150, 197, 169, 2, 64, 7, 37, 152, 14, 232, 168, 102,
+      169, 167, 97, 161, 33, 86, 178, 77, 140, 12, 114, 78, 129, 47, 103, 87, 217, 177, 80, 156, 91, 240, 149, 254, 90,
+      69, 232, 10, 56, 232, 63, 59, 148, 254, 101, 63, 146, 66, 96, 25, 31, 37, 154, 77, 145, 201, 213, 122, 245, 90,
+      251, 219, 42, 131, 248, 148, 151
+  ])
+  let expectPkdata =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22, 80, 100, 197, 243,
+      217, 60, 127, 110, 127, 242, 8, 251, 87, 127, 235, 38, 226, 149, 149, 108, 54, 202, 53, 1, 21, 91, 118, 246, 97,
+      93, 147, 117, 162, 71, 215, 70, 9, 175, 205, 241, 230, 187, 64, 170, 154, 67, 67, 254, 71, 1, 114, 10, 91, 195,
+      34, 199, 85, 172, 255, 87, 95, 159, 43, 117, 73, 73, 199, 97, 198, 117, 217, 7, 188, 196, 30, 248, 9, 181, 150,
+      243, 41, 145, 91, 8, 226, 161, 251, 12, 120, 28, 36, 146, 3, 196, 48, 243, 136, 201, 207, 131, 171, 22, 15, 7, 12,
+      172, 135, 196, 30, 93, 2, 3, 1, 0, 1
+  ])
+  let skDataBlob: cryptoFramework.DataBlob = { data: skData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
+    let priKey = keyPair.priKey;
+    let pubkey = priKey.getPubKeySync();
+    let pkBlob = pubkey.getEncoded();
+    console.info('pk1 bin data' + pkBlob.data);
+    let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
+    console.info('result is ' + ret);
+  } catch (e) {
+    console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -3549,7 +3741,7 @@ Obtains SM2 ciphertext parameters from the SM2 ciphertext in ASN.1 format.
 
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| cipherText     | [DataBlob](#datablob)                 | Yes  | SM2 ciphertext in ASN.1 format.
+| cipherText     | [DataBlob](#datablob)                 | Yes  | SM2 ciphertext in ASN.1 format.|
 | mode  | string | No  | Order of the SM2 parameters in the ciphertext. Currently, only C1C3C2 is supported. |
 
 **Return value**
@@ -5183,7 +5375,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | ------------- | -------------------- | ---- | ---------- |
 | data          | [DataBlob](#datablob) \| null<sup>10+</sup>             | Yes  | Data to pass in. In versions earlier than API version 10, only **DataBlob** is supported. Since API version 10, **null** is also supported.|
 | signatureData | [DataBlob](#datablob)              | Yes  | Signature data. |
-| callback      | AsyncCallback\<boolean> | Yes  | Callback used to return the signature verification result.|
+| callback      | AsyncCallback\<boolean> | Yes  | Callback used to return the signature verification result. **true** means that the signature verification is successful; **false** otherwise.|
 
 **Error codes**
 
@@ -7036,6 +7228,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -7114,6 +7307,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | -------- | ---------------------- |
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -7191,6 +7385,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
 | 17630001 | crypto operation error. |
 
 **Example**

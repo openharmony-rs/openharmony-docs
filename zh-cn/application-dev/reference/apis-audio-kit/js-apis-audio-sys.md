@@ -383,6 +383,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
 | volumeGroupId | number                           | 否 | 否 | 音量组id，可用于getGroupManager入参。 |
 | networkId  | string                              | 否 | 否 | 网络id。 |
+| percentage<sup>23+</sup> | number | 否 | 是 | 音量百分比，取值范围为[0, 100]。|
 
 ## ConnectType<sup>9+</sup>
 
@@ -1048,6 +1049,144 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
 });
 ```
 
+## setSystemVolumePercentage<sup>23+</sup>
+
+setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Promise&lt;void&gt;
+
+设置指定流的音量百分比。使用Promise异步回调。
+
+> **说明：**
+>
+> - 设置指定流的音量百分比时需要使用整数，范围从最小系统音量百分比到100。
+> - 音量百分比与音量等级相对应，每个等级对应特定的百分比。
+> - 当音量等级发生变化时，音量百分比会相应调整，并映射在音量等级的范围内。
+> - 0等级音量映射为0%，最大音量映射为100%。中间音量等级均匀分布在1至99之间。
+> - 当音量百分比变化时，音量等级会相应调整。
+
+**需要权限：** ohos.permission.MANAGE_AUDIO_CONFIG
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明                                                     |
+| ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。                                             |
+| percentage | number | 是   | 音量百分比，可设置范围的最小值是通过[getMinSystemVolumePercentage](#getminsystemvolumepercentage23)接口获取到的音量百分比， 最大值是100。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; |Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission denied. |
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed, including volumeType or percentage param begin out of range. |
+| 6800301 | Crash or blocking occurs in system process. |
+
+**示例：**
+
+```ts
+audioVolumeManager.setSystemVolumePercentage(audio.AudioVolumeType.MEDIA, 10).then(() => {
+  console.info('Promise returned to indicate a successful volume setting.');
+});
+```
+
+## getSystemVolumePercentage<sup>23+</sup>
+
+getSystemVolumePercentage(volumeType: AudioVolumeType): number
+
+获取指定流的音量百分比。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明               |
+| ---------- | ----------------------------------- | ---- | ------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。       |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| number | 音量百分比，取值范围为[0, 100]。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+try {
+  let volume = audioVolumeManager.getSystemVolumePercentage(audio.AudioVolumeType.MEDIA);
+  console.info(`MEDIA volume percentage obtained success.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume percentage, error: ${error}`);
+}
+```
+
+## getMinSystemVolumePercentage<sup>23+</sup>
+
+getMinSystemVolumePercentage(volumeType: AudioVolumeType): number
+
+获取指定流的最小音量百分比。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明               |
+| ---------- | ----------------------------------- | ---- | ------------------ |
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 是   | 音量流类型。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| number | 音量百分比，取值范围为[0, 100]。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+try {
+  let volume = audioVolumeManager.getMinSystemVolumePercentage(audio.AudioVolumeType.MEDIA);
+  console.info(`MEDIA volume percentage obtained success.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to obtain the volume percentage, error: ${error}`);
+}
+```
+
 ### isAppVolumeMutedForUid<sup>19+</sup>
 
 isAppVolumeMutedForUid(uid: number, owned: boolean\): Promise<boolean\>
@@ -1298,6 +1437,86 @@ let activeVolumeTypeChangeCallback = (volumeType: audio.AudioVolumeType) => {
 audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
+```
+
+## onVolumePercentageChange<sup>23+</sup>
+
+onVolumePercentageChange(callback: Callback\<VolumeEvent>): void
+
+监听系统音量百分比变化事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+onVolumePercentageChange((volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Volume percentage: ${volumeEvent.percentage} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+});
+```
+
+## offVolumePercentageChange<sup>23+</sup>
+
+offVolumePercentageChange(callback?: Callback\<VolumeEvent>): void
+
+取消监听系统音量变化事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.offVolumePercentageChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let volumePercentageChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
+  console.info(`Volume level: ${volumeEvent.volume} `);
+  console.info(`Volume percentage: ${volumeEvent.percentage} `);
+  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+};
+
+audioVolumeManager.onVolumePercentageChange(volumePercentageChangeCallback);
+
+audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 ```
 
 ## AudioVolumeGroupManager<sup>9+</sup>

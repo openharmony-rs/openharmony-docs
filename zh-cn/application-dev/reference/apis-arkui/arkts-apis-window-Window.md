@@ -26,11 +26,11 @@ import { window } from '@kit.ArkUI';
 
 showWindow(callback: AsyncCallback&lt;void&gt;): void
 
-显示当前窗口，使用callback异步回调，仅支持系统窗口与应用子窗口，或将已显示的应用主窗口层级提升至顶部。
+显示当前窗口，使用callback异步回调，支持系统窗口、应用子窗口、模态窗和全局悬浮窗，或将已显示的应用主窗口层级提升至顶部。
 
 > **说明：**
 >
-> 调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口与应用子窗口没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
+> 调用该接口前，建议先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -104,11 +104,11 @@ export default class EntryAbility extends UIAbility {
 
 showWindow(): Promise&lt;void&gt;
 
-显示当前窗口，使用Promise异步回调，仅支持系统窗口与应用子窗口，或将已显示的应用主窗口层级提升至顶部。
+显示当前窗口，使用Promise异步回调，支持系统窗口、应用子窗口、模态窗和全局悬浮窗，或将已显示的应用主窗口层级提升至顶部。
 
 > **说明：**
 >
-> 调用该接口前，建议优先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口与应用子窗口没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
+> 调用该接口前，建议优先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口、模态窗和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -185,7 +185,7 @@ showWindow(options: ShowWindowOptions): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 调用该接口前，建议优先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口与应用子窗口没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
+> 调用该接口前，建议优先通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法或者[setUIContent](arkts-apis-window-Window.md#setuicontent9-1)方法完成页面加载。如果应用主窗口没有完成页面加载，直接调用该接口，界面会一直显示启动界面；如果系统窗口、应用子窗口和全局悬浮窗没有完成页面加载，直接调用该接口，窗口会处于前台，但不可见。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6562,9 +6562,9 @@ setAspectRatio(ratio: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401     | Parameter error. Possible cause: Invalid parameter range. |
 | 1300002 | This window state is abnormal.               |
-| 1300004 | Unauthorized operation.                      |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 <!--code_no_check-->
@@ -6628,9 +6628,9 @@ setAspectRatio(ratio: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
-| 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401     | Parameter error. Possible cause: Invalid parameter range. |
 | 1300002 | This window state is abnormal.               |
-| 1300004 | Unauthorized operation.                      |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 
 **示例：**
 <!--code_no_check-->
@@ -6707,7 +6707,7 @@ setContentAspectRatio(ratio: number, isPersistent?: boolean, needUpdateRect?: bo
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300002 | This window state is abnormal. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
 | 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. 2. Invalid parameter length. |
 
 **示例：**
@@ -7226,7 +7226,7 @@ export default class EntryAbility extends UIAbility {
 
 restore(): Promise&lt;void&gt;
 
-主窗口为最小化状态且UIAbility生命周期为onForeground时，将主窗口从最小化状态，恢复到前台显示，并恢复到进入最小化状态之前的大小和位置。使用Promise异步回调。
+主窗口为最小化状态且UIAbility生命周期为onForeground时，将主窗口从最小化状态，恢复到前台显示，并恢复到进入最小化状态之前的大小和位置。主窗在前台状态时，焦点将切换到该主窗。使用Promise异步回调。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -8276,7 +8276,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and can not be created again. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows, subwindows, and float windows are supported. |
 
