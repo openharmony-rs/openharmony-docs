@@ -123,13 +123,13 @@ import { backup } from '@kit.CoreFileKit';
 
 ## FileSystemRequestConfig
 
-系统执行碎片清理功能所需要配置的参数。
+配置系统执行碎片清理所需的参数。
 
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
-| triggerType | number |  是  |  否  | 代表不同的碎片清理方式，默认为0，执行器件碎片清理功能。 |
-| writeSize   | number |  是  |  否  | 碎片清理功能的清理目标，单位MB，范围：0-2TB。          |
-| waitTime    | number |  是  |  否  | 执行器件碎片清理功能最大时间，超过认为任务超时。        |
+| triggerType | number |  是  |  否  | 代表不同的碎片清理方式，默认为0，表示执行器件碎片清理功能。 |
+| writeSize   | number |  是  |  否  | 碎片清理功能的清理目标，单位MB，仅做参考，文件服务系统本身会对目标大小进行计算。        |
+| waitTime    | number |  是  |  否  | 执行碎片清理功能最大时间，超过此时间认为任务超时。        |
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
@@ -137,11 +137,11 @@ import { backup } from '@kit.CoreFileKit';
 
 fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 
-执行碎片清理功能。
+碎片清理功能。
 
-**系统接口**：此接口为系统接口。
+**系统接口**：此接口为HarmonyOS系统提供的接口。
 
-**需要权限**：ohos.permission.BACKUP;（当前仅支持克隆应用）
+**需要权限**：ohos.permission.BACKUP;（当前仅支持克隆应用，其他应用调用会返回错误码13900001）
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
