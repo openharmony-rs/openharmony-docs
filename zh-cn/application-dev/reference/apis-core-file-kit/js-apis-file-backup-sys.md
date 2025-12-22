@@ -137,7 +137,7 @@ import { backup } from '@kit.CoreFileKit';
 
 fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 
-碎片清理功能。
+清理系统存储中文件碎片的功能。
 
 **系统接口**：此接口为HarmonyOS系统提供的接口。
 
@@ -149,7 +149,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;int&gt;  | Promise对象。返回碎片清理功能的错误码 |
+| Promise&lt;int&gt;  | Promise对象。返回执行文件系统碎片清理操作时产生的错误码。 |
 
 **错误码：**
 
