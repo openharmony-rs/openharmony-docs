@@ -424,6 +424,7 @@
   - 主题<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
   - AtomicService<!--atomic-services-->
+    - [AtomicServiceMenuBar](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar.md)
     - [AtomicServiceNavigation](arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md)
     - [AtomicServiceSearch](arkui-ts/ohos-atomicservice-AtomicServiceSearch.md)
     - [AtomicServiceTabs](arkui-ts/ohos-atomicservice-AtomicServiceTabs.md)
