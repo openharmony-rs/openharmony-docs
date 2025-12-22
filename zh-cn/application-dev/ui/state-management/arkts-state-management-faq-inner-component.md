@@ -360,8 +360,6 @@ struct ConsumerChild {
 import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const DOMAIN = 0x0000;
-
 class DataObj {
   public name: string = 'default name';
 
@@ -394,7 +392,7 @@ struct ConsumerChild {
   @Link @Watch('onDataObjChange') dataObj: DataObj;
 
   onDataObjChange() {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', 'dataObj changed');
+    hilog.info(0xFF00, 'testTag', '%{public}s', 'dataObj changed');
   }
 
   build() {
