@@ -48,6 +48,21 @@
 4. 初始化段落对象，并添加文本。
 
    <!-- @[drawing_simple_text_c_create_typography](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
+   OH_Drawing_FontCollection *fc = OH_Drawing_CreateFontCollection();
+   // 使用 FontCollection 和 之前创建的 TypographyStyle 创建 TypographyCreate。TypographyCreate 用于创建 Typography
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typoStyle, fc);
+   
+   // 将之前创建的 TextStyle 加入 handler 中
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, txtStyle);
+   // 设置文本内容，并将文本添加到 handler 中
+   const char *text = "Hello World Drawing\n";
+   OH_Drawing_TypographyHandlerAddText(handler, text);
+   
+   OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+   ```
 
 5. 排版段落并进行文本绘制。
 
