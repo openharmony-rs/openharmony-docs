@@ -40,7 +40,7 @@ Encodes metadata into an image.
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;image.PixelMap&gt; | Promise object, which is used to return the image with encoded metadata.|
+  | Promise&lt;image.PixelMap&gt; | Promise used to return the image with encoded metadata.|
 
 **Error codes** 
 
@@ -88,7 +88,7 @@ Decodes the information carried in the image.
 
   | Type                          | Description        |
   | ---------------------------- | ---------- |
-  | Promise&lt;string&gt; | Promise object, which is used to return the encoded metadata of the image.|
+  | Promise&lt;string&gt; | Promise used to return the encoded metadata of the image.|
 
 **Error codes** 
 
@@ -116,7 +116,7 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
-notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
+notifyMetadataBindingEvent(metadata: string): void
 
 Transfers metadata to the application or service that calls the encoding API.
 
@@ -128,13 +128,13 @@ Transfers metadata to the application or service that calls the encoding API.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-|bundleName|string|Yes|Application bundle name.|
+|bundleName|string|Yes|Bundle name used to obtain the app link.|
 
 **Return value**
 
-| Type                          | Description        |
+| Type                         | Description       |
 | ---------------------------- | ---------- |
-| Promise&lt;string&gt; | Promise object, the ppLink content for registered applications.|
+| Promise&lt;string&gt; | Promise used to return the app link information of the current page.|
 
 **Error codes** 
 
