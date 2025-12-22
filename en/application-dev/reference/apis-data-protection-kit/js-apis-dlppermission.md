@@ -1590,6 +1590,7 @@ Represents the authorization information.
 | actionUponExpiry | [ActionType](#actiontype21) | No| Yes| Whether the file can be opened after the permission expires (with the editing permission). This parameter is valid only when **expireTime** is not empty.|
 | fileId | string | No| Yes| File identifier. The value contains up to 255 bytes.|
 | allowedOpenCount | number | No| Yes| Number of allowed opening times.|
+| countdown | number | No | Yes | The countdown (in seconds) that the DLP file can remain open. The file will automatically close when the countdown expires. |
  
 ## AuthUser<sup>21+</sup>
 
