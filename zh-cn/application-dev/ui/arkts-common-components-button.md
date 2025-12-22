@@ -49,7 +49,7 @@ Button通过调用接口来创建，接口调用有以下两种形式：
   ``` TypeScript
   Button({ type: ButtonType.Normal, stateEffect: true }) {
     Row() {
-      // $r('app.media.loading')需要替换为开发者需要的图片资源
+      // 请将$r('app.media.loading')替换为实际资源文件
       Image($r('app.media.loading')).width(20).height(40).margin({ left: 12 })
       Text('loading').fontSize(12).fontColor(0xffffff).margin({ left: 5, right: 12 })
     }.alignItems(VerticalAlign.Center)
@@ -178,7 +178,7 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   
   ``` TypeScript
   Button({ type: ButtonType.Circle, stateEffect: true }) {
-    // $r('app.media.ic_public_delete_filled')需要替换为开发者需要的图片资源
+    // 请将$r('app.media.ic_public_delete_filled3')替换为实际资源文件
     Image($r('app.media.ic_public_delete_filled')).width(30).height(30)
   }.width(55).height(55).margin({ 'left': 20 }).backgroundColor(0xF55A42)
   ```
@@ -274,9 +274,9 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageOne')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.return_value')资源文件中的value为'返回值'
+        // 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
-        return true
+        return true;
       })
       .onReady((context: NavDestinationContext) => {
         this.pathStack = context.pathStack;
@@ -297,7 +297,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageTwo')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.return_value')资源文件中的value为'返回值'
+        // 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
         return true;
       })
@@ -320,7 +320,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageThree')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
-        // $r('app.string.return_value')资源文件中的value为'返回值'
+        /// 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
         return true;
       })
@@ -393,7 +393,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
           }.width('90%')
   
           Button() {
-            // $r('app.media.ic_public_add')需要替换为开发者需要的图片资源
+            // 请将$r('app.media.ic_public_add')替换为实际资源文件
             Image($r('app.media.ic_public_add'))
              .width(50)
              .height(50)

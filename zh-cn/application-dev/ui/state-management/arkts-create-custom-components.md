@@ -366,7 +366,7 @@ struct Son {
   struct ChildComponent {
     build() {
       // 根节点唯一且必要，可为非容器组件
-      // $r('app.media.startIcon')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon'))
     }
   }
@@ -620,7 +620,7 @@ struct MyComponent {
     static {
       this.a = 'hello world';
     }
-  // ···
+    // ...
   }
   ```
 

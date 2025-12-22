@@ -97,7 +97,7 @@ struct StateIndex {
   build() {
     Column() {
       Row() {
-        // app.string.all_tasks资源文件中的value值为'全部待办'
+        // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
         Text($r('app.string.all_tasks'))
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
@@ -108,17 +108,17 @@ struct StateIndex {
       // 待办事项
       Row({ space: 15 }) {
         if (this.isFinished) {
-          // $r('app.media.finished')需要替换为开发者所需的资源文件
+          // 请将$r('app.media.finished')替换为实际资源文件
           Image($r('app.media.finished'))
             .width(28)
             .height(28)
         } else {
-          // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+          // 请将$r('app.media.unfinished')替换为实际资源文件
           Image($r('app.media.unfinished'))
             .width(28)
             .height(28)
         }
-        // app.string.all_learn_advanced_math资源文件中的value值为'学习高数'
+        // 请将$r('app.string.all_learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
         Text($r('app.string.learn_advanced_math'))
           .fontSize(24)
           .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -157,7 +157,7 @@ struct StateIndex {
 struct PropLinkTodoComponent {
   build() {
     Row() {
-      // app.string.all_tasks资源文件中的value值为'全部待办'
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
       Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -173,7 +173,7 @@ struct PropLinkAllChooseComponent {
 
   build() {
     Row() {
-      // app.string.check_all资源文件中的value值为'全选'
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.check_all'), { type: ButtonType.Normal })
         .onClick(() => {
           this.isFinished = !this.isFinished;
@@ -196,17 +196,17 @@ struct ThingComponent1 {
     // 待办事项1
     Row({ space: 15 }) {
       if (this.isFinished) {
-        // $r('app.media.finished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
       } else {
-        // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
       }
-      // app.string.learn_chinese资源文件中的value值为'学习语文'
+      // 请将$r('app.string.learn_chinese')替换为实际资源文件，在本示例中该资源文件的value值为"学习语文"
       Text($r('app.string.learn_chinese'))
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -229,17 +229,17 @@ struct ThingComponent2 {
     // 待办事项1
     Row({ space: 15 }) {
       if (this.isFinished) {
-        // $r('app.media.finished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
       } else {
-        // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
       }
-      // app.string.learn_advanced_math资源文件中的value值为'学习高数'
+      // 请将$r('app.string.learn_advanced_math')替换为实际资源文件，在本示例中该资源文件的value值为"学习高数"
       Text($r('app.string.learn_advanced_math'))
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
@@ -298,7 +298,7 @@ struct PropLinkIndex {
 struct ForEachTodoComponent {
   build() {
     Row() {
-      // app.string.all_tasks资源文件中的value值为'全部待办'
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
       Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -314,7 +314,7 @@ struct ForEachAllChooseComponent {
 
   build() {
     Row() {
-      // app.string.check_all资源文件中的value值为'全选'
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.check_all'), { type: ButtonType.Normal })
         .onClick(() => {
           this.isFinished = !this.isFinished;
@@ -338,16 +338,16 @@ struct ForEachThingComponent {
     // 待办事项1
     Row({ space: 15 }) {
       if (this.isFinished) {
-        // $r('app.media.finished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.finished')替换为实际资源文件
         Image($r('app.media.finished'))
           .width(28)
           .height(28)
       } else {
-        // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         Image($r('app.media.unfinished'))
           .width(28)
           .height(28)
-        // ···
+          // ...
       }
       Text(`${this.thing}`)
         .fontSize(24)
@@ -372,19 +372,19 @@ struct ForEachThingComponent {
 struct ForEachIndex {
   @State isFinished: boolean = false;
   @State planList: ResourceStr[] = [
-    // app.string.get_up资源文件中的value值为'7.30 起床'
+    // 请将$r('app.string.get_up')替换为实际资源文件，在本示例中该资源文件的value值为"7.30 起床"
     $r('app.string.get_up'),
-    // app.string.breakfast资源文件中的value值为'8.30 早餐'
+    // 请将$r('app.string.breakfast')替换为实际资源文件，在本示例中该资源文件的value值为"8.30 早餐"
     $r('app.string.breakfast'),
-    // app.string.lunch资源文件中的value值为'11.30 中餐'
+    // 请将$r('app.string.lunch')替换为实际资源文件，在本示例中该资源文件的value值为"11.30 中餐"
     $r('app.string.lunch'),
-    // app.string.dinner资源文件中的value值为'17.30 晚餐'
+    // 请将$r('app.string.dinner')替换为实际资源文件，在本示例中该资源文件的value值为"17.30 晚餐"
     $r('app.string.dinner'),
-    // app.string.midnight_snack资源文件中的value值为'21.30 夜宵'
+    // 请将$r('app.string.midnight_snack')替换为实际资源文件，在本示例中该资源文件的value值为"21.30 夜宵"
     $r('app.string.midnight_snack'),
-    // app.string.bathe资源文件中的value值为'22.30 洗澡'
+    // 请将$r('app.string.bathe')替换为实际资源文件，在本示例中该资源文件的value值为"22.30 洗澡"
     $r('app.string.bathe'),
-    // app.string.sleep资源文件中的value值为'1.30 睡觉'
+    // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
     $r('app.string.sleep')
   ];
   context1 = this.getUIContext().getHostContext();
@@ -435,19 +435,19 @@ struct ForEachIndex {
 @Observed
 class TodoListData {
   public planList: ResourceStr[] = [
-    // app.string.get_up资源文件中的value值为'7.30 起床'
+    // 请将$r('app.string.get_up')替换为实际资源文件，在本示例中该资源文件的value值为"7.30 起床"
     $r('app.string.get_up'),
-    // app.string.breakfast资源文件中的value值为'8.30 早餐'
+    // 请将$r('app.string.breakfast')替换为实际资源文件，在本示例中该资源文件的value值为"8.30 早餐"
     $r('app.string.breakfast'),
-    // app.string.lunch资源文件中的value值为'11.30 中餐'
+    // 请将$r('app.string.lunch')替换为实际资源文件，在本示例中该资源文件的value值为"11.30 中餐"
     $r('app.string.lunch'),
-    // app.string.dinner资源文件中的value值为'17.30 晚餐'
+    // 请将$r('app.string.dinner')替换为实际资源文件，在本示例中该资源文件的value值为"17.30 晚餐"
     $r('app.string.dinner'),
-    // app.string.midnight_snack资源文件中的value值为'21.30 夜宵'
+    // 请将$r('app.string.midnight_snack')替换为实际资源文件，在本示例中该资源文件的value值为"21.30 夜宵"
     $r('app.string.midnight_snack'),
-    // app.string.bathe资源文件中的value值为'22.30 洗澡'
+    // 请将$r('app.string.bathe')替换为实际资源文件，在本示例中该资源文件的value值为"22.30 洗澡"
     $r('app.string.bathe'),
-    // app.string.sleep资源文件中的value值为'1.30 睡觉'
+    // 请将$r('app.string.sleep')替换为实际资源文件，在本示例中该资源文件的value值为"1.30 睡觉"
     $r('app.string.sleep')
   ];
 }
@@ -456,7 +456,7 @@ class TodoListData {
 struct StateTodoComponent {
   build() {
     Row() {
-      // app.string.all_tasks资源文件中的value值为'全部待办'
+      // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
       Text($r('app.string.all_tasks'))
         .fontSize(30)
         .fontWeight(FontWeight.Bold)
@@ -472,7 +472,7 @@ struct BuilderAllChooseComponent {
 
   build() {
     Row() {
-      // app.string.check_all资源文件中的value值为'全选'
+      // 请将$r('app.string.check_all')替换为实际资源文件，在本示例中该资源文件的value值为"全选"
       Button($r('app.string.check_all'), { type: ButtonType.Capsule })
         .onClick(() => {
           this.isFinished = !this.isFinished;
@@ -500,24 +500,24 @@ struct BuilderThingComponent {
       .onClick(() => {
         this.isFinished = !this.isFinished;
       })
-    // ···
+      // ...
   }
 
   build() {
     // 待办事项1
     Row({ space: 15 }) {
       if (this.isFinished) {
-        // $r('app.media.finished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.finished')替换为实际资源文件
         this.displayIcon($r('app.media.finished'));
       } else {
-        // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.unfinished')替换为实际资源文件
         this.displayIcon($r('app.media.unfinished'));
       }
       Text(`${this.thing}`)
         .fontSize(24)
         .decoration({ type: this.isFinished ? TextDecorationType.LineThrough : TextDecorationType.None })
         .onClick(() => {
-          // app.string.la_la资源文件中的value值为'啦'
+          // 请将$r('app.string.la_la')替换为实际资源文件，在本示例中该资源文件的value值为"啦"
           this.thing += this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.la_la').id);
         })
     }
@@ -749,7 +749,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   @Component
   export struct AllChooseComponent {
     context1 = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    // app.string.check_all资源文件中的value值为'全选'
+    // 请在resources\base\element\string.json文件中配置name为'check_all'，value为非空字符串的资源
     @State titleName: ResourceStr = this.context1.resourceManager.getStringSync($r('app.string.check_all').id);
     @Link todoListViewModel: TodoListViewModel;
   
@@ -759,9 +759,9 @@ View层根据需要来组织，但View层需要区分一下三种组件：
           .onClick(() => {
             this.todoListViewModel.chooseAll(); // View层点击事件发生时，调用ViewModel层方法chooseAll处理逻辑
             this.titleName = this.todoListViewModel.isChoosen ?
-              // app.string.check_all资源文件中的value值为'全选'
+              // 请在resources\base\element\string.json文件中配置name为'check_all'，value为非空字符串的资源
               this.context1.resourceManager.getStringSync($r('app.string.check_all').id)
-              // app.string.deselect_all资源文件中的value值为'取消全选'
+              // 请在resources\base\element\string.json文件中配置name为'deselect_all'，value为非空字符串的资源
               : this.context1.resourceManager.getStringSync($r('app.string.deselect_all').id);
           })
           .fontSize(30)
@@ -802,10 +802,10 @@ View层根据需要来组织，但View层需要区分一下三种组件：
       // 待办事项
       Row({ space: 15 }) {
         if (this.thing.isFinish) {
-          // $r('app.media.finished')需要替换为开发者所需的资源文件
+          // 请将$r('app.media.finished')替换为实际资源文件
           this.displayIcon($r('app.media.finished'));
         } else {
-          // $r('app.media.unfinished')需要替换为开发者所需的资源文件
+          // 请将$r('app.media.unfinished')替换为实际资源文件
           this.displayIcon($r('app.media.unfinished'));
         }
   
@@ -837,7 +837,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
   export struct TodoComponent {
     build() {
       Row() {
-        // app.string.all_tasks资源文件中的value值为'全部待办'
+        // 请将$r('app.string.all_tasks')替换为实际资源文件，在本示例中该资源文件的value值为"全部待办"
         Text($r('app.string.all_tasks'))
           .fontSize(30)
           .fontWeight(FontWeight.Bold)
@@ -904,7 +904,7 @@ View层根据需要来组织，但View层需要区分一下三种组件：
     }
   
     addSuffixes(): void {
-      // app.string.la_la资源文件中的value值为'啦'
+      // 请在resources\base\element\string.json文件中配置name为'la_la'，value为非空字符串的资源
       this.thingName += this.context.resourceManager.getStringSync($r('app.string.la_la').id);
     }
   }

@@ -22,7 +22,7 @@
 struct rotation {
   build() {
     Stack() {
-      // $r('app.media.tree')需要替换为开发者所需的资源文件
+      // 请将$r('app.media.tree')替换为实际资源文件
       Image($r('app.media.tree'))
         .position({ x: 0, y: 0 })
         .size({ width: 100, height: 100 })
@@ -65,7 +65,7 @@ struct rotation {
 
       // 当屏幕显示方向变化时，切换组件的视图效果
       if (this.myOrientation == display.Orientation.PORTRAIT || this.myOrientation == display.Orientation.PORTRAIT_INVERTED) {
-        // $r('app.media.sky')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.sky')替换为实际资源文件
         Image($r('app.media.sky'))
           .size({ width: 100, height: 100 })
           .id('image1')
@@ -73,7 +73,7 @@ struct rotation {
         // 开发者也可以通过自行设置transition的TransitionEffect.OPACITY转场效果来实现旋转屏动画的透明度变化
         // .transition(TransitionEffect.OPACITY)
       } else {
-        // $r('app.media.tree')需要替换为开发者所需的资源文件
+        // 请将$r('app.media.tree')替换为实际资源文件
         Image($r('app.media.tree'))
           .position({ x: 0, y: 0 })
           .size({ width: 200, height: 200 })

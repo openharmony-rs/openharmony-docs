@@ -106,7 +106,7 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
-          // 可以替换成本地存在的图片
+          // 请将$r('app.media.startIcon')替换为实际资源文件
           Image($r('app.media.startIcon'))
             .width(110)
             .height(110)
