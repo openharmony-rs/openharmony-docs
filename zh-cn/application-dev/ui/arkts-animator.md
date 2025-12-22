@@ -115,12 +115,12 @@
      }
      //动画取消时执行方法
      this.animatorOptions.onCancel = () => {
-       // $r('app.string.cancel')资源文件中的value值为'取消'
+       // 请将$r('app.string.cancel')替换为实际资源文件，在本示例中该资源文件的value值为"取消"
        this.animatorStatus = $r('app.string.cancel');
      }
      //动画完成时执行方法
      this.animatorOptions.onFinish = () => {
-       // $r('app.string.complete')资源文件中的value值为'完成'
+       // 请将$r('app.string.complete')替换为实际资源文件，在本示例中该资源文件的value值为"完成"
        this.animatorStatus = $r('app.string.complete');
      }
      //动画重复播放时执行方法
@@ -136,21 +136,21 @@
    <!-- @[animator_template4_buttons_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animator/template4/Index.ets) -->
    
    ``` TypeScript
-   // $r('app.string.play')资源文件中的value值为'播放'
+   // 请将$r('app.string.play')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
    Button($r('app.string.play')).onClick(() => {
      this.animatorOptions?.play();
-     // $r('app.string.playing')资源文件中的value值为'播放中'
+     // 请将$r('app.string.playing')替换为实际资源文件，在本示例中该资源文件的value值为"播放中"
      this.animatorStatus = $r('app.string.playing');
    }).width(80).height(35)
-   // $r('app.string.reset')资源文件中的value值为'重置'
+   // 请将$r('app.string.reset')替换为实际资源文件，在本示例中该资源文件的value值为"重置"
    Button($r('app.string.reset')).onClick(() => {
      this.translateX = 0;
      this.translateY = 0;
    }).width(80).height(35)
-   // $r('app.string.pause')资源文件中的value值为'暂停'
+   // 请将$r('app.string.pause')替换为实际资源文件，在本示例中该资源文件的value值为"暂停"
    Button($r('app.string.pause')).onClick(() => {
      this.animatorOptions?.pause();
-     // $r('app.string.pause')资源文件中的value值为'暂停'
+     // 请将$r('app.string.pause')替换为实际资源文件，在本示例中该资源文件的value值为"暂停"
      this.animatorStatus = $r('app.string.pause');
    }).width(80).height(35)
    ```
@@ -233,18 +233,18 @@ struct Index {
   build() {
     Column() {
       Column({ space: 30 }) {
-        // $r('app.string.play')资源文件中的value值为'播放'
+        // 请将$r('app.string.play')替换为实际资源文件，在本示例中该资源文件的value值为"播放"
         Button($r('app.string.play')).onClick(() => {
           this.animatorResult?.play();
           // 'playing'资源文件中的value值为'播放中'
           this.animatorStatus = 'playing';
         }).width(80).height(35)
-        // $r('app.string.reset')资源文件中的value值为'重置'
+        // 请将$r('app.string.reset')替换为实际资源文件，在本示例中该资源文件的value值为"重置"
         Button($r('app.string.reset')).onClick(() => {
           this.translateX = 0;
           this.translateY = 0;
         }).width(80).height(35)
-        // $r('app.string.pause')资源文件中的value值为'暂停'
+        // 请将$r('app.string.pause')替换为实际资源文件，在本示例中该资源文件的value值为"暂停"
         Button($r('app.string.pause')).onClick(() => {
           this.animatorResult?.pause();
           // 'pause'资源文件中的value值为'暂停'

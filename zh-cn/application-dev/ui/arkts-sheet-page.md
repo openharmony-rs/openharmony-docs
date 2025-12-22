@@ -93,6 +93,7 @@ struct SheetDemo {
         scrollBackward: NestedScrollMode.SELF_FIRST,
       })
 
+      // 请将$r('app.string.tSheetBuilder_text1')替换为实际资源文件，在本示例中该资源文件的value值为"非滚动区域"
       Text($r('app.string.tSheetBuilder_text1'))
         .width('100%')
         .backgroundColor(Color.Gray)
@@ -111,6 +112,7 @@ struct SheetDemo {
         .bindSheet($$this.isShowSheet, this.SheetBuilder(), {
           detents: [SheetSize.MEDIUM, SheetSize.LARGE, 600],
           preferType: SheetType.BOTTOM,
+          // 请将$r('app.string.tSheetBuilder_text2')替换为实际资源文件，在本示例中该资源文件的value值为"嵌套滚动场景"
           title: { title: $r('app.string.tSheetBuilder_text2') },
         })
     }.width('100%').height('100%')
@@ -167,6 +169,7 @@ struct OnWillDismiss_Dismiss {
           // 第二步：确认二次回调交互能力，此处用AlertDialog提示 "是否需要关闭半模态"
           this.getUIContext().showAlertDialog(
             {
+              // 请将$r('app.string.bindContentCover_label2')替换为实际资源文件，在本示例中该资源文件的value值为"示例2（自定义转场动画）"
               message: $r('app.string.bindContentCover_label2'),
               autoCancel: true,
               alignment: DialogAlignment.Bottom,
@@ -256,6 +259,7 @@ struct SheetTransitionExample {
   @Builder
   myBuilder() {
     Column() {
+      // 请将$r('app.string.bindSheetCmd_label10')替换为实际资源文件，在本示例中该资源文件的value值为"enableHoverMode切换"
       Button($r('app.string.bindSheetCmd_label10'))
         .margin(10)
         .fontSize(20)
@@ -263,6 +267,7 @@ struct SheetTransitionExample {
           this.enableHoverMode = !this.enableHoverMode;
         })
 
+      // 请将$r('app.string.bindSheetCmd_label11')替换为实际资源文件，在本示例中该资源文件的value值为"hoverModeArea切换"
       Button($r('app.string.bindSheetCmd_label11'))
         .margin(10)
         .fontSize(20)
@@ -284,6 +289,7 @@ struct SheetTransitionExample {
 
   build() {
     Column() {
+      // 请将$r('app.string.bindSheetCmd_label9')替换为实际资源文件，在本示例中该资源文件的value值为"拉起半模态"
       Button($r('app.string.bindSheetCmd_label9'))
         .onClick(() => {
           this.isShow = true;

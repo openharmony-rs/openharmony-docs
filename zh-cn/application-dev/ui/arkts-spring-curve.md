@@ -118,14 +118,18 @@ export struct SpringCurve {
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   @State dRotate: number = 0;
   private springs: Spring[] = [
+    // 请在resources\base\element\string.json文件中配置name为'springCurve_text1'，value为非空字符串的资源
     new Spring('springMotion', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
       curves.springMotion(1, 0.25)),
     new Spring('responsive' + '\n' + 'SpringMotion',
+      // 请在resources\base\element\string.json文件中配置name为'springCurve_text2'，value为非空字符串的资源
       this.context.resourceManager.getStringByNameSync('springCurve_text2'),
       curves.responsiveSpringMotion(1, 0.25)),
     new Spring('interpolating' + '\n' + 'Spring',
+      // 请在resources\base\element\string.json文件中配置name为'springCurve_text3'，value为非空字符串的资源
       this.context.resourceManager.getStringByNameSync('springCurve_text3'),
       curves.interpolatingSpring(10, 1, 228, 30)),
+    // 请在resources\base\element\string.json文件中配置name为'springCurve_text1'，value为非空字符串的资源
     new Spring('springCurve', this.context.resourceManager.getStringByNameSync('springCurve_text1'),
       curves.springCurve(10, 1, 228, 30))
   ];

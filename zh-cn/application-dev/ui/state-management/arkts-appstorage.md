@@ -514,7 +514,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];
@@ -610,7 +610,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];
@@ -716,7 +716,7 @@ class ViewData {
 @Entry
 @Component
 struct Gallery {
-  // $r('app.media.startIcon')需要替换为开发者所需的资源文件;
+  // 请将$r('app.media.startIcon')替换为实际资源文件
   dataList: Array<ViewData> =
     [new ViewData('flower', $r('app.media.startIcon')), new ViewData('OMG', $r('app.media.startIcon')),
       new ViewData('OMG', $r('app.media.startIcon'))];

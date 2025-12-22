@@ -65,8 +65,8 @@ struct BindContentCoverDemo {
   @Builder
   MyContentCoverBuilder() {
     Column() {
-      // 'app.string.Text_choose_person'资源文件中的value值为'选择乘车人'
       Row() {
+        // 请将$r('app.string.Text_choose_person')替换为实际资源文件，在本示例中该资源文件的value值为"选择乘车人"
         Text($r('app.string.Text_choose_person'))
           .fontSize(20)
           .fontColor(Color.White)
@@ -77,7 +77,7 @@ struct BindContentCoverDemo {
       .backgroundColor(0x007dfe)
 
       Row() {
-        // 'app.string.Text_add_person'资源文件中的value值为'+ 添加乘车人'
+        // 请将$r('app.string.Text_add_person')替换为实际资源文件，在本示例中该资源文件的value值为"+ 添加乘车人"
         Text($r('app.string.Text_add_person'))
           .fontSize(16)
           .fontColor(0x333333)
@@ -120,7 +120,7 @@ struct BindContentCoverDemo {
             .alignItems(HorizontalAlign.Start)
 
             Column() {
-              // 'app.string.Text_edit'资源文件中的value值为'编辑'
+              // 请将$r('app.string.Text_edit')替换为实际资源文件，在本示例中该资源文件的value值为"编辑"
               Text($r('app.string.Text_edit'))
                 .fontColor(0x007dfe)
                 .fontSize(16)
@@ -135,7 +135,7 @@ struct BindContentCoverDemo {
       }
       .padding({ top: 20, bottom: 20 })
 
-      // 'app.string.Text_confirm'资源文件中的value值为'确认'
+      // 请将$r('app.string.Text_confirm')替换为实际资源文件，在本示例中该资源文件的value值为"确认"
       Text($r('app.string.Text_confirm'))
         .width('90%')
         .height(40)
@@ -156,21 +156,21 @@ struct BindContentCoverDemo {
     Row() {
       Column() {
         Text('00:25')
-        // 'app.string.Label_origin_station'资源文件中的value值为'始发站'
+        // 请将$r('app.string.Label_origin_station')替换为实际资源文件，在本示例中该资源文件的value值为"始发站"
         Text($r('app.string.Label_origin_station'))
       }
       .width('25%')
 
       Column() {
         Text('G1234')
-        // 'app.string.Label_start_time'资源文件中的value值为'8时1分'
+        // 请将$r('app.string.Label_start_time')替换为实际资源文件，在本示例中该资源文件的value值为"8时1分"
         Text($r('app.string.Label_start_time'))
       }
       .width('25%')
 
       Column() {
         Text('08:26')
-        // 'app.string.Label_destination_station'资源文件中的value值为'终点站'
+        // 请将$r('app.string.Label_destination_station')替换为实际资源文件，在本示例中该资源文件的value值为"终点站"
         Text($r('app.string.Label_destination_station'))
       }
       .width('25%')
@@ -192,7 +192,7 @@ struct BindContentCoverDemo {
       .borderRadius(10)
 
       Column() {
-        // 'app.string.Sheet_choose_person'资源文件中的value值为'+ 选择乘车人'
+        // 请将$r('app.string.Sheet_choose_person')替换为实际资源文件，在本示例中该资源文件的value值为"+ 选择乘车人"
         Text($r('app.string.Sheet_choose_person'))
           .fontSize(18)
           .fontColor(Color.Orange)
@@ -218,7 +218,7 @@ struct BindContentCoverDemo {
     Column() {
       Row() {
         this.TripInfo()
-        // 'app.string.Sheet_tickets_available'资源文件中的value值为'有票'
+        // 请将$r('app.string.Sheet_tickets_available')替换为实际资源文件，在本示例中该资源文件的value值为"有票"
         Text($r('app.string.Sheet_tickets_available'))
           .fontColor(Color.Blue)
           .width('25%')
@@ -233,7 +233,7 @@ struct BindContentCoverDemo {
       // 第一步：定义半模态转场效果
       .bindSheet($$this.isSheetShow, this.MySheetBuilder(), {
         height: SheetSize.MEDIUM,
-        // 'app.string.Text_confirm_order'资源文件中的value值为'确认订单'
+        // 请将$r('app.string.Text_confirm_order')替换为实际资源文件，在本示例中该资源文件的value值为"确认订单"
         title: {title: $r('app.string.Text_confirm_order')},
       })
     }
