@@ -483,3 +483,18 @@ Web软键盘自动控制模式。
 | ------------------------------- | - | ---------- |
 | DEFAULT | 0 | 当Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起（默认值）。 |
 | DISABLE_AUTO_KEYBOARD_ON_ACTIVE | 1 | Web组件在inactive或active状态切换时，系统不再尝试触发软键盘自动隐藏或拉起。 |
+
+## SiteIsolationMode<sup>21+</sup>
+
+站点隔离机制将不同源的网站隔离在不同的Render进程中，减少跨域攻击面。例如，PC上原有进程模型是每一个Tab对应一个Render进程，站点隔离打开后，让不同源的Iframe运行在独立的Render进程中。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 21
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| PARTIAL | 0 | 部分站点隔离，即在同一个Render进程内加载新站点。 |
+| STRICT  | 1 | 严格站点隔离，跨站点的Iframe将切换到新的渲染进程。 |
