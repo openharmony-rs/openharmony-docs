@@ -345,12 +345,12 @@ libhid.z.so
 
    <!-- @[driver_hid_report_step5_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 	
    
-   ``` C++	
-   uint8_t dataBuff[NUM_SIXTY_FOUR];	
-   int32_t ret = OH_Hid_GetRawUniqueId(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff));	
-   if (ret != HID_DDK_SUCCESS) {	
-       OH_LOG_ERROR(LOG_APP, "OH_Hid_GetRawUniqueId failed, ret:%{public}d", ret);	
-       return nullptr;	
+   ``` C++
+   uint8_t dataBuff[NUM_SIXTY_FOUR];
+   int32_t ret = OH_Hid_GetRawUniqueId(DataParser::GetInstance().getHidObject(), dataBuff, sizeof(dataBuff));
+   if (ret != HID_DDK_SUCCESS) {
+       OH_LOG_ERROR(LOG_APP, "OH_Hid_GetRawUniqueId failed, ret:%{public}d", ret);
+       return nullptr;
    }
    ```
 
