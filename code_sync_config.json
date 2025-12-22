@@ -28377,9 +28377,9 @@
 						"start_line":15
 					},
 					{
-						"end_line":30,
+						"end_line":39,
 						"name":"CreateCustomSubscriberInformation",
-						"start_line":23
+						"start_line":32
 					},
 					{
 						"end_line":39,
