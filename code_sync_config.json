@@ -2772,11 +2772,35 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/graphic/NDKGraphics2D/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp",
 				"functions":[
 					{
-						"end_line":201,
-						"name":"ndk_drawing_simple_text",
+						"end_line":170,
+						"name":"drawing_simple_text_c_create_typographyStyle",
 						"start_line":165
+					},
+					{
+						"end_line":178,
+						"name":"drawing_simple_text_c_create_textStyle",
+						"start_line":172
+					},
+					{
+						"end_line":193,
+						"name":"drawing_simple_text_c_create_typography",
+						"start_line":180
+					},
+					{
+						"end_line":201,
+						"name":"drawing_simple_text_c_layout_and_paint",
+						"start_line":195
+					},
+					{
+						"end_line":210,
+						"name":"drawing_simple_text_c_destroy",
+						"start_line":203
 					}
 				]
 			}
