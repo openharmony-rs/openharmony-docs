@@ -124,7 +124,7 @@ ArkTS-Sta: selectAll(isAllSelected: boolean | undefined | Bindable\<boolean>)
 
 | 参数名        | 类型                                                         | 必填 | 说明                                                         |
 | ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| isAllSelected | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined \| Bindable\<boolean> | 是   | 是否全选。<br/>当isAllSelected的值为undefined时取默认值false。<br/>值为true时，多选框群组将全部被选中；值为false时，多选框群组将全部取消选中。 |
+| isAllSelected | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined \| Bindable\<boolean> | 是   | 是否全选。<br/>当isAllSelected的值为undefined时取默认值false。<br/>值为true时，多选框群组将全部被选中；值为false时，多选框群组将全部取消选中。<br/>ArkTS-Sta：设置默认为true时，在多线程并发加载的情况下无法对不同线程下同组的[Checkbox](ts-basic-components-checkbox.md)全部生效，建议把相同group值的[Checkbox](ts-basic-components-checkbox.md)和[CheckboxGroup](ts-basic-components-checkboxgroup.md)放在同一个线程中进行创建。 |
 
 ### selectedColor
 
