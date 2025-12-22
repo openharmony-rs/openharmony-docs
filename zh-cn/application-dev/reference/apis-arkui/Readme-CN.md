@@ -429,7 +429,7 @@
         - [@CustomLayout：自定义布局](arkui-ts/ts-custom-component-decorator-customlayout.md)
         - [@Require装饰器：校验构造传参](arkui-ts/ts-universal-require-static.md)
         - [@Reusable：组件复用](arkui-ts/ts-custom-component-decorator-reusable-static.md)
-        - @ReusableV2：组件复用V2
+        - [@ReusableV2：组件复用V2](arkui-ts/ts-custom-component-decorator-reusablev2-static.md)
         - [applyStyles：定义组件重用样式](arkui-ts/ts-universal-applyStyles.md)
         - [wrapBuilder：封装全局@Builder](arkui-ts/ts-universal-wrapBuilder-static.md)
         - [rememberVariable：@Builder内部状态](arkui-ts/ts-universal-remembervariable-static.md)
