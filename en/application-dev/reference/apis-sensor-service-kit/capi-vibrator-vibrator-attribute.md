@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Vibrator_Attribute { ... } Vibrator_Attribute
+```
+
 ## Overview
 
 Defines the vibrator attribute.
