@@ -135,7 +135,7 @@ import { backup } from '@kit.CoreFileKit';
 
 ## backup.fileSystemServiceRequest
 
-fileSystemServiceRequest(config: FileSystemRequestConfig): Promise<int>
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 
 执行碎片清理功能。
 
@@ -149,7 +149,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise<int>
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise<int>        | Promise对象。返回碎片清理功能的错误码 |
+| Promise&lt;int&gt;  | Promise对象。返回碎片清理功能的错误码 |
 
 **错误码：**
 
