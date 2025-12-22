@@ -1130,9 +1130,9 @@ async function  test(){
 
 ## getCurrentPresentationTimestamp<sup>23+</sup>
 
-getCurrentPresentationTimestamp(): number
+getCurrentPresentationTimestamp() : number
 
-获取当前播放位置，可以在播放(playing)/暂停(paused)/完成(completed)状态调用。
+获取当前播放位置，可以在播放（playing）/暂停（paused）/完成（completed）状态调用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1142,11 +1142,11 @@ getCurrentPresentationTimestamp(): number
 
 | 类型                                                   | 说明                                              |
 | ------------------------------------------------------ | ------------------------------------------------- |
-| number | 返回当前播放位置的时间，单位：微秒（us）。|
+| number | 返回当前播放位置的时间，单位：微秒（μs）。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
