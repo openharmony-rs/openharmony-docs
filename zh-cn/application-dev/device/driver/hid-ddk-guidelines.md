@@ -372,6 +372,10 @@ libhid.z.so
            return nullptr;
        }
        ```
+           OH_LOG_ERROR(LOG_APP, "OH_Hid_GetReport failed. ret: %{public}u", ret);
+           return nullptr;
+       }
+       ```
 
 6. 获取报告描述符（可选）。
 
