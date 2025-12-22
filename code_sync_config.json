@@ -11247,11 +11247,6 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":22,
-						"name":"AppEvent_Crash_Click_ArkTS_Header",
-						"start_line":19
-					},
-					{
 						"end_line":128,
 						"name":"Crash_ArkTS_Add_Event",
 						"start_line":101
@@ -11260,6 +11255,11 @@
 						"end_line":195,
 						"name":"CrashEvent_ArkTS_Add_Watcher",
 						"start_line":136
+					},
+					{
+						"end_line":26,
+						"name":"Crash_Click_ArkTS_Header",
+						"start_line":20
 					}
 				]
 			},
