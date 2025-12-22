@@ -245,7 +245,7 @@ let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboa
 | ---------------------------------- | --- | ------------------------------------------------------------------------------------- |
 | INAPP                              | 0   | 表示仅允许同应用内粘贴。 </br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
 | LOCALDEVICE                        | 1   | 表示允许在任何应用内粘贴。<!--RP1--><!--RP1End--> </br> ArkTS-Dyn起始版本: 9 </br> ArkTS-Sta起始版本: 23 |
-| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+| CROSSDEVICE<sup>(deprecated)</sup> | 2   | 表示允许跨设备在任何应用内粘贴。<br/>从API version 12开始废弃，无替代接口和替代方法<!--RP2--><!--RP2End-->。</br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 |
 
 ## pasteboard.createHtmlData<sup>(deprecated)</sup>
 
@@ -1404,7 +1404,14 @@ ArkTS-Sta:getRecord(index: int): PasteDataRecord
 | 12900001 | The index is out of the record. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
-**示例：**
+**ArkTS-Dyn示例：**
+
+```ts
+let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+let record: pasteboard.PasteDataRecord = pasteData.getRecord(0);
+```
+
+**ArkTS-Sta示例：**
 
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
@@ -1433,7 +1440,14 @@ ArkTS-Sta:getRecordCount(): int
 | -------- | -------- |
 | ArkTS-Dyn:number</br>ArkTS-Sta:int | 条目的个数。 |
 
-**示例：**
+**ArkTS-Dyn示例：**
+
+```ts
+let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+let count: number = pasteData.getRecordCount();
+```
+
+**ArkTS-Sta示例：**
 
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
@@ -1539,7 +1553,14 @@ ArkTS-Sta:removeRecord(index: int): void
 | 12900001 | The index is out of the record. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
-**示例：**
+**ArkTS-Dyn示例：**
+
+```ts
+let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+pasteData.removeRecord(0);
+```
+
+**ArkTS-Sta示例：**
 
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
@@ -1578,7 +1599,15 @@ ArkTS-Sta:replaceRecord(index: int, record: PasteDataRecord): void
 | 12900001 | The index is out of the record. |
 | 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 
-**示例：**
+**ArkTS-Dyn示例：**
+
+```ts
+let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
+let record: pasteboard.PasteDataRecord = pasteboard.createRecord(pasteboard.MIMETYPE_TEXT_URI, 'file://com.example.myapplication1/data/storage/el2/base/files/file.txt');
+pasteData.replaceRecord(0, record);
+```
+
+**ArkTS-Sta示例：**
 
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createData(pasteboard.MIMETYPE_TEXT_PLAIN, 'hello');
@@ -3501,7 +3530,21 @@ ArkTS-Sta:getChangeCount(): long
 | -------- | -------- |
 | ArkTS-Dyn:number</br>ArkTS-Sta:long | 返回读取到的剪贴板内容变化次数。 |
 
-**示例：**
+**ArkTS-Dyn示例：**
+
+```ts
+import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
+
+let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+try {
+    let result : number = systemPasteboard.getChangeCount();
+    console.info(`Succeeded in getting the ChangeCount. Result: ${result}`);
+} catch (err) {
+    console.error(`Failed to get the ChangeCount. Cause: ${err.message}`);
+};
+```
+
+**ArkTS-Sta示例：**
 
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
