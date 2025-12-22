@@ -282,7 +282,7 @@ ReferenceError: module environment is undefined
     > 3. 如果抓取过程中进程退出，那么不会生成对应的文件。
 
 4. 关闭工具  
-工具常开会损耗性能，使用后应及时关闭。  
+   该工具工具常开会损耗性能，使用后应及时关闭。  
 
     ```shell
     hdc shell param set persist.ark.properties 0x000105c
