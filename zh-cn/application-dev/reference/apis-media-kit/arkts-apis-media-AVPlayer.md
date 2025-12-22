@@ -1132,7 +1132,7 @@ async function  test(){
 
 getCurrentPresentationTimeStamp(): number
 
-获取当前播放位置，可以在playing/paused/completed状态调用。
+获取当前播放位置，可以在播放(playing)/暂停(paused)/完成(completed)状态调用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
