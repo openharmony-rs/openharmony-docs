@@ -1751,17 +1751,17 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets",
 				"functions":[
 					{
-						"end_line":66,
+						"end_line":64,
 						"name":"get_local_cap_ability",
 						"start_line":16
 					},
 					{
-						"end_line":152,
+						"end_line":150,
 						"name":"session_backup",
 						"start_line":17
 					},
 					{
-						"end_line":251,
+						"end_line":249,
 						"name":"session_restore",
 						"start_line":18
 					}
