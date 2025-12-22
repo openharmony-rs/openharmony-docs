@@ -121,6 +121,70 @@ import { backup } from '@kit.CoreFileKit';
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
+## FileSystemRequestConfig
+
+系统执行碎片清理功能所需要配置的参数。
+
+| 名称        | 类型   | 只读 | 可选 | 说明                                                   |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
+| triggerType | number |  是  |  否  | 代表不同的碎片清理方式，默认为0，执行器件碎片清理功能。 |
+| writeSize   | number |  是  |  否  | 碎片清理功能的清理目标，单位MB，范围：0-2TB。          |
+| waitTime    | number |  是  |  否  | 执行器件碎片清理功能最大时间，超过认为任务超时。        |
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+## backup.fileSystemServiceRequest
+
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise<int>
+
+执行碎片清理功能。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.BACKUP;（当前仅支持克隆应用）
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise<int>        | Promise对象。返回碎片清理功能的错误码 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13900020 | Invalid argument.|
+| 13500014 | The device does not support this ferture.|
+| 13500016 | Task timed out. |
+| 13500017 | Garbage collection failed. |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { backup } from '@kit.CoreFileKit';
+
+  function getBackupVersion() {
+    try {
+      let result = backup.fileSystemServiceRequest({
+        triggerType: 0,
+        writeSize: 100,
+        waitTime: 180
+      });
+      console.info('fileSystemServiceRequest success， result: ' + result);
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`fileSystemServiceRequest failed. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+  ```
+
 ## GeneralCallbacks
 
 备份/恢复过程中的通用回调，备份服务将通过这些回调通知客户端其应用的备份/恢复阶段。
