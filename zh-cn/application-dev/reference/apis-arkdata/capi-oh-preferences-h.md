@@ -50,7 +50,7 @@
 | [int OH_Preferences_SetValue(OH_Preferences *preference, const char *key, OH_PreferencesValue *value)](#oh_preferences_setvalue) | - | 在Preferences对象中设置值[OH_PreferencesValue](capi-preferences-oh-preferencesvalue.md)。 |
 | [int OH_Preferences_GetValue(OH_Preferences *preference, const char *key, OH_PreferencesValue **value)](#oh_preferences_getvalue) | - | 根据给定的Key获取Preferences对象中的值。 |
 | [int OH_Preferences_GetAll(OH_Preferences *preference, OH_PreferencesPair **pairs, uint32_t *count)](#oh_preferences_getall) | - | 获取Preferences对象中的所有值。 |
-| [bool OH_Preferences_HasKey(OH_Preferences *preference, const char *key)](#oh_preferences_haskey) | - | 检查Preferences对象是否包含与指定Key匹配的KV数据, 若包含则返回true, 否则返回false。 |
+| [bool OH_Preferences_HasKey(OH_Preferences *preference, const char *key)](#oh_preferences_haskey) | - | 检查Preferences对象是否包含与指定Key匹配的KV数据，若包含则返回true，否则返回false。 |
 | [int OH_Preferences_Flush(OH_Preferences *preference)](#oh_preferences_flush) | - | 将[OH_Preferences](capi-preferences-oh-preferences.md)对象的缓存保存到xml文件中。 |
 | [int OH_Preferences_ClearCache(OH_Preferences *preference)](#oh_preferences_clearcache) | - | 清除[OH_Preferences](capi-preferences-oh-preferences.md)对象缓存中的所有值。 |
 | [int OH_Preferences_RegisterMultiProcessDataObserver(OH_Preferences *preference, void *context, OH_PreferencesDataObserver observer)](#oh_preferences_registermultiprocessdataobserver) | - | 为Preferences对象注册一个多进程数据观察者。 |
@@ -530,7 +530,7 @@ bool OH_Preferences_HasKey(OH_Preferences *preference, const char *key)
 
 **描述**
 
-检查Preferences对象是否包含与指定Key匹配的KV数据, 若包含则返回true, 否则返回false。
+检查Preferences对象是否包含与指定Key匹配的KV数据，若包含则返回true，否则返回false。
 
 **起始版本：** 23
 
@@ -545,7 +545,7 @@ bool OH_Preferences_HasKey(OH_Preferences *preference, const char *key)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 返回true则表示Preferences对象包含与指定Key匹配的KV数据, 否则返回false。 |
+| bool | 返回true则表示Preferences对象包含与指定Key匹配的KV数据，否则返回false。 |
 
 ### OH_Preferences_Flush()
 
