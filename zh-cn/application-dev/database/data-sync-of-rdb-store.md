@@ -97,7 +97,7 @@
    1. 需要申请ohos.permission.DISTRIBUTED_DATASYNC权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
    2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
-3. 创建关系型数据库，创建数据表，并将需要跨设备同步的数据表设置为分布式表，默认分布式表类型（设备协同表）。
+3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表。
    <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
 
 4. 订阅组网内其他设备的数据变化消息。
