@@ -135,7 +135,7 @@ Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自�
 
 静态import实现方式简单，但通过静态import页面进行路由跳转会导致不同模块之间的依赖耦合，并存在首页加载时间长等问题。建议使用[动态import](#动态import)或[系统路由表](#系统路由表)。
 
-实现步骤如下：
+静态import实现步骤如下：
 
 1. 使用[@Builder装饰器](./state-management/arkts-builder.md)创建自定义构造函数`pageMap`。
 2. 在自定义构造函数`pageMap`里实现路由表，根据传入的页面名称构造不同的页面。
@@ -244,9 +244,9 @@ export struct pageOneTmp {
 
 1. 配置路由表。
 
-    参考[系统路由表](#系统路由表)在每个[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)、[HSP](../quick-start/in-app-hsp.md)模块中配置各自的系统路由表，每个模块的`src/main/resources/base/profile/`目录都需要创建一个router_map.json文件。
+   参考[系统路由表](#系统路由表)在每个[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)、[HSP](../quick-start/in-app-hsp.md)模块中配置各自的系统路由表，每个模块的`src/main/resources/base/profile/`目录都需要创建一个router_map.json文件。
 
-    在router_map.json文件中填写具体的路由表信息（下面仅以HAP模块中的配置为例），示例如下：
+   在router_map.json文件中填写具体的路由表信息（下面仅以HAP模块中的配置为例），示例如下：
 
     ``` json
     {
@@ -271,7 +271,7 @@ export struct pageOneTmp {
     }
     ```
 
-    在每个模块的[module.json5](../quick-start/module-configuration-file.md)中配置各自的路由表。
+   在每个模块的[module.json5](../quick-start/module-configuration-file.md)中配置各自的路由表。
 
     <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
     
@@ -287,7 +287,7 @@ export struct pageOneTmp {
 
 2. 跳转功能开发。
 
-    以HAP包中的HapPageA为例：
+   以HAP包中的HapPageA为例：
 
     <!-- @[CrossPackagePageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/HapPageA.ets) -->
     
@@ -305,7 +305,6 @@ export struct pageOneTmp {
         }.title('HapPageA')
         .onReady((ctx: NavDestinationContext) => {
           let config = ctx.getConfigInRouteMap();
-          console.log(`testTag HapPageA config.data: ${JSON.stringify(config?.data)}`);
         })
       }
     }
@@ -317,7 +316,7 @@ export struct pageOneTmp {
     }
     ```
 
-    其中Common是为了方便演示页面间跳转抽出来的一个控制面板组件，示例如下：
+   其中Common是为了方便演示页面间跳转抽出来的一个控制面板组件，示例如下：
 
     <!-- @[CrossPackageCommon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/Common.ets) -->
     
@@ -358,13 +357,13 @@ export struct pageOneTmp {
 
 3. 编译构建。
 
-    因为HAR和HSP被HAP模块依赖，所以需要先编译HAR和HSP，为了方便演示，这里将编译产物放到一个公共目录里面。
+   因为HAR和HSP被HAP模块依赖，所以需要先编译HAR和HSP，为了方便演示，这里将编译产物放到一个公共目录里面。
 
-      **图1** HSP、HAR编译产物示意图
+   **图1** HSP、HAR编译产物示意图
 
-    ![img](figures/NavigationBuildHARandHSP.png)
+   ![img](figures/NavigationBuildHARandHSP.png)
 
-    在HAP的oh-package.json5配置文件中配置对HAR与HSP的依赖。
+   在HAP的oh-package.json5配置文件中配置对HAR与HSP的依赖。
 
     ``` json
     {
@@ -381,8 +380,8 @@ export struct pageOneTmp {
     }
     ```
 
-    然后在DevEco Studio中直接运行HAP模块，此时会将HAP与HSP一起安装到设备中，效果如下：
+   然后在DevEco Studio中直接运行HAP模块，此时会将HAP与HSP一起安装到设备中，效果如下：
 
-      **图2** Navigation跨包跳转示例
+   **图2** Navigation跨包跳转示例
 
-    ![img](figures/NavigationCrossPackageExample.gif)
+   ![img](figures/NavigationCrossPackageExample.gif)

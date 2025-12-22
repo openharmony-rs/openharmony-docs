@@ -14,13 +14,15 @@ Navigation组件结构较为复杂，包含几个关键概念：
 
 - [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)：导航根视图容器，所有的导航页面都被此容器包裹，提供分栏显示的能力，一般用作全局的根容器。
 - [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)：子页面容器，导航的所有页面路由操作均是针对NavDestination的操作，主要包含：
-  - 标题栏：包括返回按钮、标题和菜单，系统提供默认风格，同时支持自定义。
+  - [标题栏](#标题栏)：位于NavDestination顶部，包括返回按钮、标题，系统提供默认风格，同时支持自定义。
+  - [菜单栏](#菜单栏)：位于NavDestination顶部，系统提供默认风格，同时支持自定义。
   - 内容区：NavDestination的子组件，内容由开发者自定义。
-  - 工具栏：位于NavDestination底部，系统提供默认风格，同时支持自定义。
+  - [工具栏](#工具栏)：位于NavDestination底部，系统提供默认风格，同时支持自定义。
 - [NavBar](#navbar导航栏)：导航栏，也称为主页面，主要包含：
-  - 标题栏：位于NavBar顶部，包括标题与菜单栏，系统提供默认风格，同时支持自定义。
+  - [标题栏](#标题栏)：位于NavBar顶部，包括返回按钮、标题，系统提供默认风格，同时支持自定义。
+  - [菜单栏](#菜单栏)：位于NavBar顶部，系统提供默认风格，同时支持自定义。
   - 内容区：位于NavBar中心区域，内容由开发者自定义。
-  - 工具栏：位于NavBar底部，系统提供默认风格，同时支持自定义。
+  - [工具栏](#工具栏)：位于NavBar底部，系统提供默认风格，同时支持自定义。
 - [NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)：导航控制器，用于管理NavDestination页面栈，其封装了各种控制页面跳转的接口，支持继承后重写，需与Navigation绑定使用。
 
 **图1** Navigation总体架构图
@@ -100,7 +102,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 ## 标题栏
 
-标题栏在界面顶部，用于呈现界面名称和操作入口，Navigation组件通过[title](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)属性设置标题内容，通过[titleMode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#titlemode)属性设置标题栏模式。
+标题栏在界面顶部，用于呈现界面名称和操作入口，Navigation组件通过[title](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#title)属性设置标题内容，通过[titleMode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#titlemode)属性设置标题栏模式。NavDestination同样支持[title](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#title)属性用于设置标题内容。
 
 > **说明：**
 >
@@ -142,7 +144,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 ## 菜单栏
 
-菜单栏位于Navigation组件的右上角，开发者可以通过[menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus)属性进行设置。menus支持Array&lt;[NavigationMenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationmenuitem)&gt;和[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)两种参数类型。使用Array&lt;NavigationMenuItem&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。
+菜单栏位于组件的顶部，开发者可以通过[menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#menus)属性设置Navigation的菜单栏。menus支持Array&lt;[NavigationMenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationmenuitem)&gt;和[CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)两种参数类型。使用Array&lt;[NavigationMenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationmenuitem)&gt;类型时，竖屏最多支持显示3个图标，横屏最多支持显示5个图标，多余的图标会被放入自动生成的更多图标。NavDestination同样支持[menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#menus12)属性用于设置菜单栏。
 
 **图6** 设置了3个图标的菜单栏
 
@@ -204,7 +206,7 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
 ## 工具栏
 
-工具栏位于Navigation组件的底部，开发者可以通过[toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)属性进行设置。
+工具栏位于组件的底部，开发者可以通过[toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10)属性设置Navigation的工具栏。NavDestination同样支持[toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#toolbarconfiguration13)属性用于设置工具栏。
 
   **图8** 工具栏
 

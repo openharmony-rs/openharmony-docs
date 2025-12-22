@@ -177,7 +177,7 @@ export struct PageOne {
 
 ### 基础操作
 
-从API version 12开始，导航控制器允许被继承。开发者可以在派生类中自定义属性和方法，也可以重写父类的方法。派生类对象可以替代基类[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)对象使用。重写NavPathStack的示例代码详见：[定义导航控制器派生类](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。下文介绍了NavPathStack里提供的基础路由操作接口。
+从API version 12开始，导航控制器允许被继承。开发者可以在派生类中自定义属性和方法，也可以重写父类的方法。派生类对象可以替代基类[NavPathStack](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navpathstack10)对象使用。重写NavPathStack的示例代码请参考[定义导航控制器派生类](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。下文介绍了NavPathStack里提供的基础路由操作接口。
 
 **页面跳转**
 
@@ -762,4 +762,4 @@ export struct PageTwo {
 ```
 
 ![zh-cn_image_0000001588458252](figures/arkts-navigation-transition_1.gif)
-<!--RP2--><!--RP2End-->
+<!--RP1--><!--RP1End-->

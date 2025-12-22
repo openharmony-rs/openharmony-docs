@@ -10,12 +10,12 @@
 
 ## 系统默认转场
 
-系统提供了多种默认转场类型，可以通过[NavDestination.systemTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#systemtransition14)接口实现，示例：[设置指定的NavDestination系统转场](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例3设置指定的navdestination系统转场)。
+系统提供了多种默认转场类型，可以通过[NavDestination.systemTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#systemtransition14)接口实现，具体示例请参考[设置指定的NavDestination系统转场](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#示例3设置指定的navdestination系统转场)。
 
 > **说明：**
 >
-> 1. NavDestination的默认转场动画使用[弹簧曲线](./arkts-spring-curve.md)，其时长与物理曲线参数有关，而且不同设备上的默认动画不同，因此默认转场动画时长不可控，不建议与业务耦合，若需要监听动画结束，建议使用[自定义转场](#自定义转场)。
-> 2. [Dialog](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)类型的NavDestination默认无转场动画；从API version 13开始，Dialog类型的NavDestination默认存在系统转场动画。
+> - NavDestination的默认转场动画使用[弹簧曲线](./arkts-spring-curve.md)，其时长与物理曲线参数有关，而且不同设备上的默认动画不同，因此默认转场动画时长不可控，不建议与业务耦合，若需要监听动画结束，建议使用[自定义转场](#自定义转场)。
+> - [Dialog](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#navdestinationmode枚举说明11)类型的NavDestination默认无转场动画；从API version 13开始，Dialog类型的NavDestination默认存在系统转场动画。
 
 默认转场动画支持关闭，有两种方式：
 
@@ -54,7 +54,7 @@ Navigation提供了两种自定义转场接口：Navigation自定义转场、Nav
 
 > **说明：**
 >
->   同时使用[customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11)和[customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)时，customNavContentTransition优先级更高。
+> 同时使用[customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11)和[customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)时，customNavContentTransition优先级更高。
 
 ## 共享元素转场
 
