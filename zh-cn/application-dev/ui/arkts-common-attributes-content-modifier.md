@@ -37,6 +37,8 @@
    Column({ space: 10 }) {
      Text() {
        Span(config.name)
+       // 请将$r('app.string.checked_context')替换为实际资源文件，在本示例中该资源文件的value值为"（选中）"
+       // 请将$r('app.string.unchecked_context')替换为实际资源文件，在本示例中该资源文件的value值为"（非选中）"
        Span(config.selected ? $r('app.string.checked_context') : $r('app.string.unchecked_context'))
      }
      Shape() {
@@ -87,6 +89,7 @@
      Row() {
        Column() {
          //选中和不选中按钮
+         // 请将$r('app.string.checkbox_status')替换为实际资源文件，在本示例中该资源文件的value值为"复选框状态"
          Checkbox({ name: this.resmg?.getStringSync($r('app.string.checkbox_status').id), group: 'checkboxGroup' })
            .select(true)
            .contentModifier(new MyCheckboxStyle(Color.Red))

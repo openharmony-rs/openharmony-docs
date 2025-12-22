@@ -50,7 +50,7 @@ import { PromptAction } from '@kit.ArkUI';
 @Component
 export struct ShowActionMenuExample {
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
 
         Column() {
@@ -86,7 +86,7 @@ export struct ShowActionMenuExample {
       }
       .width('100%')
       .height('100%')
-    // ···
+      // ...
   }
 }
 ```
@@ -112,7 +112,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 export struct ShowDialogExample {
   build() {
-    // ···
+    // ...
       Column({ space: 12 }) {
         Column() {
           Button('ShowDialog')
@@ -152,7 +152,7 @@ export struct ShowDialogExample {
       .width('100%')
       .height('100%')
       .padding({ left: 12, right: 12 })
-    // ···
+      // ...
   }
 }
 ```
@@ -217,8 +217,8 @@ export struct CalendarDialog {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
-    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    // ...
+    // 请将$r('app.string.CustomDialog_calender')替换为实际资源文件，在本示例中该资源文件的value值为"日历选择器弹窗"
     .title($r('app.string.CustomDialog_calender'))
   }
 }
@@ -271,7 +271,7 @@ export struct DatePickerDialogExample {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -319,7 +319,7 @@ export struct DatePickerCustomDialogExample {
           })
       }.width('100%').margin({ top: 5 })
     }
-    // ···
+    // ...
     }
 }
 ```
@@ -372,9 +372,9 @@ export struct TimePickerDialogExample {
             })
         }.width('100%').margin({ top: 5 })
       }
-    // ···
+      // ...
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -516,7 +516,7 @@ export struct showActionSheetExample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    // 请将$r('app.string.CustomDialog_ActionSheet')替换为实际资源文件，在本示例中该资源文件的value值为"列表选择弹窗"
     .title($r('app.string.CustomDialog_ActionSheet'))
   }
 }
@@ -546,7 +546,6 @@ import { PromptAction } from '@kit.ArkUI';
 @Entry
 @Component
 export struct showAlertDialogExample {
-
   build() {
     NavDestination() {
       Column({ space: 12 }) {
@@ -569,7 +568,7 @@ export struct showAlertDialogExample {
                     .animation({ duration: 3000, curve: Curve.Sharp })),
                     TransitionEffect.OPACITY.animation({ duration: 100, curve: Curve.Smooth })
                       .combine(TransitionEffect.scale({ x: 0.5, y: 0.5 })
-                        .animation({ duration: 100, curve: Curve.Smooth }))),
+                      .animation({ duration: 100, curve: Curve.Smooth }))),
                   buttons: [{
                     value: 'cancel',
                     action: () => {
@@ -596,7 +595,7 @@ export struct showAlertDialogExample {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
-    // $r('app.string.xxx')需要替换为开发者所需的字符串资源文件
+    // 请将$r('app.string.CustomDialog_AlertDialog')替换为实际资源文件，在本示例中该资源文件的value值为"警告弹窗"
     .title($r('app.string.CustomDialog_AlertDialog'))
   }
 }

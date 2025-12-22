@@ -41,7 +41,7 @@ export struct TextPopupExample {
           })
       }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -79,7 +79,7 @@ export struct StatePopupExample {
             })
         }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -131,7 +131,7 @@ export struct ButtonPopupExample {
             })
         }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -207,7 +207,7 @@ export struct AnimationPopupExample {
           .position({ x: 80, y: 300 })
       }.width('100%').padding({ top: 5 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -308,7 +308,7 @@ export struct StylePopupExample {
       }
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -358,7 +358,7 @@ export struct AvoidSoftKeyboardPopupExample {
       }
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -377,6 +377,7 @@ export struct AvoidSoftKeyboardPopupExample {
 @Entry
 @Component
 export struct PolymorphicEffectPopupExample {
+  // 请在resources\base\element\string.json文件中配置name为'xxx' ，value为非空字符串的资源
   @State scan: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Scan_title') as string;
   @State createGroupChat: string =
@@ -486,6 +487,7 @@ struct PopupItemChild {
 @Entry
 @Component
 export struct SupportedAvoidAxisPopupExample {
+  // 请在resources\base\element\string.json文件中配置name为'xxx' ，value为非空字符串的资源
   @State upScreen: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
   @State middleAxle: string =
@@ -566,7 +568,7 @@ export struct SupportedAvoidAxisPopupExample {
       .height('100%')
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```

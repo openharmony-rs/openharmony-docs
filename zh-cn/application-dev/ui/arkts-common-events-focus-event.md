@@ -58,7 +58,7 @@ export struct FocusActiveExample {
         })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -127,7 +127,7 @@ export struct FocusTransferExample {
             Button('Button 1')
               .margin(20)
               .onClick(() => {
-                // app.string.Focus_Event资源文件中的value值为'获焦信息'
+                // 请将$r('app.string.Focus_Event')替换为实际资源文件，在本示例中该资源文件的value值为"获焦信息"
                 this.logText = this.context!.resourceManager.getStringSync($r('app.string.Focus_Event').id) + '：\n';
                 this.getUIContext().getFocusController().requestFocus('Row 2');
               })
@@ -139,21 +139,24 @@ export struct FocusTransferExample {
             Button('Button 2')
               .margin(20)
               .onFocus(() => {
-                // app.string.Get_Focus资源文件中的value值为'获得焦点'
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
                 this.addText('Button 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
             Button('button 3')
               .margin(20)
               .onFocus(() => {
+                // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
                 this.addText('Button 3' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
               })
           }
           .id('Row 2')
           .onFocus(() => {
+            // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
             this.addText('Row 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
           })
         }
         .onFocus(() => {
+          // 请将$r('app.string.Get_Focus')替换为实际资源文件，在本示例中该资源文件的value值为"获得焦点"
           this.addText('Column 2' + this.context!.resourceManager.getStringSync($r('app.string.Get_Focus').id));
         })
 
@@ -171,7 +174,7 @@ export struct FocusTransferExample {
       .height('100%')
       .padding(20)
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -276,7 +279,7 @@ export struct FocusLinerExample {
         }
       }
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -327,7 +330,7 @@ Tab键走焦：按照子节点的挂载顺序循环走焦。
          }.width('100%').margin({ top: 5 })
        }.width('100%')
      }
-     // ···
+     // ...
    }
  }
  ```
@@ -365,7 +368,7 @@ export struct ProjectAreaFocusFlexExample {
       }.width('100%').margin({ top: 5 })
     }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -453,7 +456,7 @@ export struct OnFocusBlur {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -528,7 +531,7 @@ export struct FocusAndBlurExample {
         }.width('100%').margin({ top: 5 })
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -604,7 +607,7 @@ focusOnTouch(value: boolean)
    build() {
      NavDestination() {
        Column({ space: 12 }) {
-         // app.string.Focus_Focusable_text资源文件中的value值为'当某组件处于获焦状态'
+         // 请将$r('app.string.Focus_Focusable_text')替换为实际资源文件，在本示例中该资源文件的value值为"当某组件处于获焦状态"
          Text($r('app.string.Focus_Focusable_text'))
            .fontSize(14)
            .fontColor('#666')
@@ -681,7 +684,7 @@ focusOnTouch(value: boolean)
        .height('100%')
        .padding({ left: 12, right: 12 })
      }
-     // ···
+     // ...
    }
  }
  ```
@@ -728,7 +731,7 @@ export struct ScopeFocusExample {
     NavDestination() {
       Column() {
         Column({ space: 5 }) {
-          // app.string.Container_Coking资源文件中的value值为'容器获焦'
+          // 请将$r('app.string.Container_Coking')替换为实际资源文件，在本示例中该资源文件的value值为"容器获焦"
           Text($r('app.string.Container_Coking')).textAlign(TextAlign.Center)
         }
         .justifyContent(FlexAlign.Center)
@@ -798,7 +801,7 @@ export struct TabStopExample {
         }.tabStop(true)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -879,7 +882,7 @@ export struct DefaultFocus {
           })
       }.width('100%').margin({ top: 20 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -985,7 +988,7 @@ export struct RequestFocusExample {
       .alignItems(HorizontalAlign.Center)
       .width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1098,7 +1101,7 @@ export struct RequestFocusExample {
           .width('100%')
           .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1166,7 +1169,7 @@ nextFocus(nextStep: Optional<FocusMovement>): T
           }
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1224,7 +1227,7 @@ tabIndex自定义组件Tab键走焦顺序。
             .margin(5).tabIndex(2)
         }.width('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -1260,7 +1263,7 @@ export struct TabIndexFocusExample {
         }.tabIndex(2)
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1419,7 +1422,7 @@ export struct FocusScopePriority {
       .height('100%')
       .padding({ left: 12, right: 12 })
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1495,7 +1498,7 @@ export struct FocusScopeIdExample {
         TextInput()
       }.width('100%')
     }
-    // ···
+    // ...
   }
 }
 ```
@@ -1538,7 +1541,7 @@ export struct FocusScopeIdExample {
            Button(this.name)
              .fontSize(30)
              .onClick(() => {
-               this.count++
+               this.count++;
                if (this.count % 2 === 0) {
                  this.name = 'count is even number';
                } else {
@@ -1547,7 +1550,7 @@ export struct FocusScopeIdExample {
              }).height(60)
          }.height('100%').width('100%').justifyContent(FlexAlign.Center)
        }
-       // ···
+       // ...
      }
    }
    ```

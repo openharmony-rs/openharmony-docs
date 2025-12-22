@@ -39,7 +39,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    
      build() {
        Column() {
-         // $r('app.string.i_am_content')资源文件中的value为'我是内容'
+         // 请将$r('app.string.i_am_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是内容"
          Text($r('app.string.i_am_content'))
            .fontSize(20)
        }.height(60).justifyContent(FlexAlign.Center)
@@ -109,7 +109,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    
      build() {
        Column() {
-         // $r('app.string.i_am_content')资源文件中的value为'我是内容'
+         // 请将$r('app.string.i_am_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是内容"
          Text($r('app.string.i_am_content')).fontSize(20).margin({ top: 10, bottom: 10 })
          Flex({ justifyContent: FlexAlign.SpaceAround }) {
            Button('cancel')
@@ -188,11 +188,11 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
       build() {
         Column({ space: 20 }) {
           if (this.textValue !== '') {
-            // $r('app.string.the_second_page_is')资源文件中的value为'第二个页面的内容为'
+            // 请将$r('app.string.the_second_page_is')替换为实际资源文件，在本示例中该资源文件的value值为"第二个页面的内容为"
             Text($r('app.string.the_second_page_is')+`：${this.textValue}`)
               .fontSize(20)
           } else {
-            // $r('app.string.whether_to_get_the_second_page')资源文件中的value为'是否获取第二个页面的内容'
+            // 请将$r('app.string.whether_to_get_the_second_page')替换为实际资源文件，在本示例中该资源文件的value值为"是否获取第二个页面的内容"
             Text($r('app.string.whether_to_get_the_second_page'))
               .fontSize(20)
           }
@@ -283,7 +283,7 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
     @Entry
     @Component
     struct IndexNew {
-      // $r('app.string.click_and_return')资源文件中的value为'点击返回'
+      // 请将$r('app.string.click_and_return')替换为实际资源文件，在本示例中该资源文件的value值为"点击返回"
       @State message: string = $r('app.string.click_and_return');
     
       build() {
@@ -388,7 +388,7 @@ struct CustomDialogExample {
 
   build() {
     Column() {
-      // $r('app.string.i_am_content')资源文件中的value为'我是内容'
+      // 请将$r('app.string.i_am_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是内容"
       Text($r('app.string.i_am_content')).fontSize(16).margin({ bottom: 10 })
     }
   }
@@ -676,6 +676,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @CustomDialog
 struct CustomDialogExample {
   controller?: CustomDialogController;
+
   build() {
     Column() {
       Column() {
@@ -692,15 +693,14 @@ struct CustomDialogExample {
 @Component
 export struct DialogAvoidSoftKeyboard {
   dialogController: CustomDialogController | null = new CustomDialogController({
-    builder: CustomDialogExample({
-    }),
+    builder: CustomDialogExample({}),
     autoCancel: true,
     gridCount: 4,
     showInSubWindow: true,
     isModal: true,
     customStyle: false,
     cornerRadius: 30,
-    alignment:DialogAlignment.Bottom,
+    alignment: DialogAlignment.Bottom,
     keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
     keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
   })
@@ -709,7 +709,7 @@ export struct DialogAvoidSoftKeyboard {
     NavDestination() {
       Row() {
         Row({ space: 20 }) {
-          // $r('app.string.open_windows')资源文件中的value为'打开弹窗'
+          // 请将$r('app.string.open_windows')替换为实际资源文件，在本示例中该资源文件的value值为"打开弹窗"
           Text($r('app.string.open_windows'))
             .fontSize(30)
             .onClick(() => {
@@ -746,21 +746,21 @@ struct CustomDialogExample {
 
   build() {
     Column() {
-      // $r('app.string.search_by_dialog')资源文件中的value为'点我查询弹窗状态:通过自定义组件自带controller'
+      // 请将$r('app.string.search_by_dialog')替换为实际资源文件，在本示例中该资源文件的value值为"点我查询弹窗状态:通过自定义组件自带controller"
       Button($r('app.string.search_by_dialog'))
         .onClick(() => {
           if (this.getDialogController() !== undefined) {
-            hilog.info(DOMAIN, 'testTag', 'state:' + this.getDialogController().getState())
+            hilog.info(DOMAIN, 'testTag', 'state:' + this.getDialogController().getState());
           } else {
-            hilog.info(DOMAIN, 'testTag', 'state: no exist')
+            hilog.info(DOMAIN, 'testTag', 'state: no exist');
           }
         }).margin(20)
-      // $r('app.string.search_by_dialog_controller')资源文件中的value为'点我查询弹窗状态:通过CustomDialogController'
+      // 请将$r('app.string.search_by_dialog_controller')替换为实际资源文件，在本示例中该资源文件的value值为"点我查询弹窗状态:通过CustomDialogController"
       Button($r('app.string.search_by_dialog_controller'))
         .onClick(() => {
-          hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState())
+          hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState());
         }).margin(20)
-      // $r('app.string.close_widows')资源文件中的value为'点我关闭弹窗'
+      // 请将$r('app.string.close_widows')替换为实际资源文件，在本示例中该资源文件的value值为"点我关闭弹窗"
       Button($r('app.string.close_widows'))
         .onClick(() => {
           if (this.getDialogController() !== undefined) {

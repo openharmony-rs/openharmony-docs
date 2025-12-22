@@ -54,8 +54,8 @@ Button('click for Menu')
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
 class Tmp {
+  // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
   public iconStr2: ResourceStr = $r('app.media.view_list_filled');
 
   set(val: Resource) {
@@ -67,11 +67,12 @@ class Tmp {
 @Component
 export struct BuilderCustomMenuExample {
   @State select: boolean = true;
+   // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
   private iconStr: ResourceStr = $r('app.media.view_list_filled');
   private iconStr2: ResourceStr = $r('app.media.view_list_filled');
-  // 'app.string.copy'资源文件中的value值为"复制"。
+  // 请将$r('app.string.copy')替换为实际资源文件，在本示例中该资源文件的value值为"复制"
   private copy: ResourceStr = $r('app.string.copy');
-  // 'app.string.paste'资源文件中的value值为"粘贴"。
+  // 请将$r('app.string.paste')替换为实际资源文件，在本示例中该资源文件的value值为"粘贴"
   private paste: ResourceStr = $r('app.string.paste');
 
   @Builder
@@ -85,7 +86,9 @@ export struct BuilderCustomMenuExample {
   @Builder
   MyMenu() {
     Menu() {
-      // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+      // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
+      // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
+      // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
       MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: $r('app.media.icon'), content: $r('app.string.menu_selection') }).enabled(false)
       MenuItem({
@@ -95,9 +98,9 @@ export struct BuilderCustomMenuExample {
         // 当builder参数进行配置时，表示与menuItem项绑定了子菜单。鼠标hover在该菜单项时，会显示子菜单。
         builder: this.SubMenu
       })
-      // 'app.string.menu_subtitle'资源文件中的value值为"小标题"。
+      // 请将$r('app.string.menu_subtitle')替换为实际资源文件，在本示例中该资源文件的value值为"小标题"
       MenuItemGroup({ header: $r('app.string.menu_subtitle') }) {
-        // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+        // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
         MenuItem({ content: $r('app.string.menu_selection') })
           .selectIcon(true)
           .selected(this.select)
@@ -106,7 +109,9 @@ export struct BuilderCustomMenuExample {
             let str: Tmp = new Tmp();
             str.set($r('app.media.icon'));
           })
-        // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+        // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
+        // $r('app.media.view_list_filled')需要替换为开发者所需的图像资源文件。
+        // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
         MenuItem({
           startIcon: $r('app.media.view_list_filled'),
           content: $r('app.string.menu_selection'),
@@ -115,7 +120,8 @@ export struct BuilderCustomMenuExample {
         })
       }
 
-      // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+      // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
+      // $r('app.media.arrow_right_filled')需要替换为开发者所需的图像资源文件。
       MenuItem({
         startIcon: this.iconStr2,
         content: $r('app.string.menu_selection'),
@@ -125,7 +131,7 @@ export struct BuilderCustomMenuExample {
   }
 
   build() {
-    // ···
+    // ...
   }
 }
 ```
@@ -191,11 +197,11 @@ Button('click for Menu')
 <!-- @[avoid_central_axis_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
 @Entry
 @Component
 export struct SupportAvoidCentralAxisMenuExample {
   @State message: string = 'Hello World';
+  // 请在resources\base\element\string.json文件中配置name为'xxx' ，value为非空字符串的资源
   @State upScreen: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('Upper_half_screen') as string;
   @State middleAxle: string =
@@ -206,6 +212,7 @@ export struct SupportAvoidCentralAxisMenuExample {
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('zone') as string;
   @State hoverModeStart: string =
     this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('hoverMode_start') as string;
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
   private iconStr: Resource = $r('app.media.startIcon');
   @State index: number = 0;
   @State arrayStr: Array<string> = [this.upScreen, this.middleAxle, this.lowerScreen];
@@ -216,7 +223,7 @@ export struct SupportAvoidCentralAxisMenuExample {
   @Builder
   MyMenu1() {
     Menu() {
-      // 'app.string.menu_selection'资源文件中的value值为"菜单选项"。
+      // 请将$r('app.string.menu_selection')替换为实际资源文件，在本示例中该资源文件的value值为"菜单选项"
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
       MenuItem({ startIcon: this.iconStr, content: $r('app.string.menu_selection') })
@@ -322,7 +329,7 @@ export struct EventTransSubWindowMenuExample {
       .width('100%')
       .height('100%')
     }
-    // ···
+    // ...
   }
 
   @Builder
@@ -359,7 +366,6 @@ export struct EventTransSubWindowMenuExample {
 <!-- @[bindComponent_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BindComponentMenu.ets) -->
 
 ``` TypeScript
-// $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
 @Entry
 @Component
 export struct BindComponentMenuExample {
@@ -368,6 +374,7 @@ export struct BindComponentMenuExample {
     Column() {
       Menu() {
         MenuItemGroup() {
+          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 1', labelInfo: '' })
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 2', labelInfo: '' })
           MenuItem({ startIcon: $r('app.media.app_icon'), content: 'Select Mixed Menu 3', labelInfo: '' })
@@ -396,7 +403,7 @@ export struct BindComponentMenuExample {
       .height('100%')
       .backgroundColor('#F5F5F5')
     }
-    // ···
+    // ...
   }
 }
 ```
