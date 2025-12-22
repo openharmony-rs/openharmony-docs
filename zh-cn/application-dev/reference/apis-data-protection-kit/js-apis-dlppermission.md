@@ -1125,7 +1125,7 @@ isDLPFeatureProvided(): Promise&lt;boolean&gt;
 查询当前系统是否提供加密保护特性，使用Promise方式异步返回结果。
 >**说明：**
 >
-> 该接口由MDM配置使能，且使能场景属于2B设备，2C设备暂不支持。
+> 该接口由[MDM](../../mdm/mdm-kit-intro.md)配置使能，且使能场景为2B设备，2C、2D设备无需关注该接口且调用该接口返回值为false。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
