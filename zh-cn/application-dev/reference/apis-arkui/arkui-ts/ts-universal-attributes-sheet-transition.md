@@ -100,6 +100,7 @@ bindSheet(isShow: boolean, builder: CustomBuilder, options?: SheetOptions): T
 | showInSubWindow<sup>19+</sup> | boolean                                  | 否 | 是    | 半模态是否在独立子窗中显示。<br>默认值：false<br>**说明：** <br>1. 若属性值为true，半模态可以在独立子窗口中展示，并且可以超过应用窗口范围。<br>2. 若属性值为false，半模态只能在应用窗口范围内展示。<br>3. 不建议在showInSubWindow为true的弹窗嵌套显示另一个showInSubWindow为true的弹窗，半模态可能会影响其他组件行为。<br>4. 不建议在showInSubWindow为true的弹窗中使用CalendarPicker、CalendarPickerDialog、DatePickerDialog、TextPickerDialog、TimePickerDialog等picker组件，半模态会影响上述组件行为。<br>5. 半模态显示期间该属性不支持动态切换。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | enableFloatingDragBar<sup>20+</sup>              | boolean | 否 | 是   | 控制条是否悬浮显示，true为悬浮显示，false为不悬浮显示。<br />默认值：false <br /> **说明：** <br>悬浮效果只在控制条显示的场景生效，且控制条不占位。<br /> title传入[CustomBuilder](ts-types.md#custombuilder8)时enableFloatingDragBar始终为false。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | 否 | 是 | bindSheet全屏模态样式的系统转场方式。<br/>默认值：ModalTransition.DEFAULT<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| radiusRenderStrategy<sup>22+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否 | 是  |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST <br/>**说明**: 当半模态设置模糊时，可通过设置为OFFSCREEN离屏模式解决半模态顶部或顶部圆角区域内显示效果异常问题。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## SheetSize枚举说明
 
