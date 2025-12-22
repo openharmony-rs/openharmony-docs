@@ -50,7 +50,6 @@
 
 需要注意的是，该模式下不支持对其他设备同步过来的数据进行修改。这一限制旨在保障数据一致性与同步逻辑的稳定性。
 
-
 ![deviceRDBStore](figures/deviceRDBStore.jpg)
 
 ## 约束限制
