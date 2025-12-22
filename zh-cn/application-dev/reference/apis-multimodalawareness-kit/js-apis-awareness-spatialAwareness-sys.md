@@ -116,7 +116,7 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callb
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
+| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
 | callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 是   | 回调函数，返回测距结果。                                   |
 
 **错误码**：
@@ -164,7 +164,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
+| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
 | callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 是   | 回调函数，返回测距结果。                                 |
 
 **错误码**：
@@ -211,7 +211,7 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callbac
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
+| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
 | callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 是   | 回调函数，返回门内外信息。                                   |
 
 **错误码**：
@@ -259,7 +259,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数
+| configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
 | callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 是   | 回调函数，返回门内外信息。                                   |
 
 **错误码**：
@@ -268,7 +268,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 202      | Not system application.
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
