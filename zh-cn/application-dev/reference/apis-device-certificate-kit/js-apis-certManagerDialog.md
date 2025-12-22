@@ -482,7 +482,7 @@ openAuthorizeDialog(context: common.Context, authorizeRequest: AuthorizeRequest)
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
 | 801      | Capability not supported.  |
-ration error; 4. Call other service failed. Please try again.                 |
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error;ration error; 4. Call other service failed. Please try again.                 |
 | 29700002 | The user cancels the authorizatio| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File open.                                                                                                             |
 | 29700006 | Indicates that the input parameters validation failed. for example, the parameter format is incorrect or the value range is invalid.            |
 | 29700007 | No available certificate for authorization            |
