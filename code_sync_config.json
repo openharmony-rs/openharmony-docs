@@ -8970,12 +8970,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":61,
 						"name":"richEditor_create",
 						"start_line":26
 					},
 					{
-						"end_line":92,
+						"end_line":95,
 						"name":"richEditor_create_span",
 						"start_line":19
 					}
@@ -8985,7 +8985,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":72,
 						"name":"richEditor_addText",
 						"start_line":19
 					}
@@ -8995,7 +8995,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":59,
 						"name":"richEditor_addImage",
 						"start_line":22
 					}
@@ -9005,7 +9005,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddBuilderDecoratorContent.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":72,
 						"name":"richEditor_addBuilder",
 						"start_line":22
 					}
@@ -9015,7 +9015,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":59,
 						"name":"richEditor_addSymbol",
 						"start_line":22
 					}
@@ -9025,7 +9025,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":68,
 						"name":"richEditor_getSpans",
 						"start_line":22
 					}
@@ -9035,54 +9035,54 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets",
 				"functions":[
 					{
-						"end_line":200,
+						"end_line":205,
 						"name":"richEditor_placeholder",
-						"start_line":175
+						"start_line":180
 					},
 					{
-						"end_line":256,
+						"end_line":266,
 						"name":"richEditor_maxLength",
-						"start_line":240
+						"start_line":248
 					},
 					{
-						"end_line":167,
+						"end_line":172,
 						"name":"richEditor_color",
-						"start_line":142
+						"start_line":145
 					},
 					{
-						"end_line":555,
+						"end_line":581,
 						"name":"richEditor_prepareMenu",
-						"start_line":469
+						"start_line":493
 					},
 					{
-						"end_line":137,
+						"end_line":140,
 						"name":"richEditor_bindSelectionMenu",
-						"start_line":71
+						"start_line":70
 					},
 					{
-						"end_line":232,
+						"end_line":240,
 						"name":"richEditor_maxLines",
-						"start_line":208
+						"start_line":213
 					},
 					{
-						"end_line":317,
+						"end_line":332,
 						"name":"richEditor_decoration",
-						"start_line":290
+						"start_line":303
 					},
 					{
-						"end_line":378,
+						"end_line":395,
 						"name":"richEditor_decorationOptions",
-						"start_line":334
+						"start_line":351
 					},
 					{
-						"end_line":420,
+						"end_line":440,
 						"name":"richEditor_textVerticalAlign",
-						"start_line":387
+						"start_line":404
 					},
 					{
-						"end_line":457,
+						"end_line":480,
 						"name":"richEditor_enableAutoSpacing",
-						"start_line":429
+						"start_line":449
 					}
 				]
 			},
@@ -9100,19 +9100,19 @@
 						"start_line":164
 					},
 					{
-						"end_line":296,
+						"end_line":300,
 						"name":"richEditor_eventPaste",
 						"start_line":17
 					},
 					{
-						"end_line":339,
+						"end_line":344,
 						"name":"richEditor_eventCut",
-						"start_line":300
+						"start_line":304
 					},
 					{
-						"end_line":387,
+						"end_line":394,
 						"name":"richEditor_eventCopy",
-						"start_line":348
+						"start_line":353
 					},
 					{
 						"end_line":92,
@@ -9135,7 +9135,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableSystemServiceMenu.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":74,
 						"name":"richEditor_disableSystemMenu",
 						"start_line":17
 					}
@@ -9145,7 +9145,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableMenuItem.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":74,
 						"name":"richEditor_disableMenu",
 						"start_line":17
 					}
@@ -13992,9 +13992,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/waterFlow/WaterFlowInfiniteScrollingEarly.ets",
 				"functions":[
 					{
-						"end_line":149,
+						"end_line":150,
 						"name":"waterFlowInfiniteScrollingEarly_start",
-						"start_line":110
+						"start_line":111
 					}
 				]
 			},
@@ -16357,7 +16357,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtmlOne.ets",
 				"functions":[
 					{
-						"end_line":80,
+						"end_line":81,
 						"name":"styledStringHtmlOne_start",
 						"start_line":15
 					}
@@ -17652,7 +17652,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/ResponsiveScrollPositionList.ets",
 				"functions":[
 					{
-						"end_line":197,
+						"end_line":198,
 						"name":"respond_to_scroll_position",
 						"start_line":19
 					}
@@ -17727,7 +17727,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/list/AddListItem.ets",
 				"functions":[
 					{
-						"end_line":132,
+						"end_line":133,
 						"name":"build_list_layouts_and_list_items",
 						"start_line":19
 					}
@@ -17772,7 +17772,7 @@
 						"start_line":18
 					},
 					{
-						"end_line":207,
+						"end_line":208,
 						"name":"list_item_data_structure",
 						"start_line":36
 					},
@@ -17792,7 +17792,7 @@
 						"start_line":18
 					},
 					{
-						"end_line":136,
+						"end_line":137,
 						"name":"construct_list_structure",
 						"start_line":61
 					}
@@ -18187,14 +18187,14 @@
 						"start_line":35
 					},
 					{
-						"end_line":42,
+						"end_line":46,
 						"name":"create_text_area_example",
-						"start_line":38
+						"start_line":41
 					},
 					{
-						"end_line":51,
+						"end_line":56,
 						"name":"create_text_search",
-						"start_line":47
+						"start_line":52
 					}
 				]
 			},
@@ -18257,19 +18257,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CustomTextInputStyle.ets",
 				"functions":[
 					{
-						"end_line":28,
+						"end_line":29,
 						"name":"custom_text_input_with_place_holder",
-						"start_line":25
+						"start_line":26
 					},
 					{
-						"end_line":39,
+						"end_line":42,
 						"name":"custom_text_input_with_place_holder_and_text",
-						"start_line":32
+						"start_line":35
 					},
 					{
-						"end_line":51,
+						"end_line":55,
 						"name":"custom_text_input_background_color",
-						"start_line":43
+						"start_line":47
 					}
 				]
 			},
@@ -20617,14 +20617,14 @@
 						"start_line":108
 					},
 					{
-						"end_line":176,
+						"end_line":185,
 						"name":"symbol_span_rendering_strategy",
-						"start_line":141
+						"start_line":150
 					},
 					{
-						"end_line":213,
+						"end_line":224,
 						"name":"symbol_span_effect_strategy",
-						"start_line":181
+						"start_line":192
 					}
 				]
 			},
@@ -20637,9 +20637,9 @@
 						"start_line":22
 					},
 					{
-						"end_line":53,
+						"end_line":55,
 						"name":"symbol_variable_color",
-						"start_line":40
+						"start_line":42
 					},
 					{
 						"end_line":29,
@@ -20647,9 +20647,9 @@
 						"start_line":25
 					},
 					{
-						"end_line":69,
+						"end_line":73,
 						"name":"symbol_bouncing_effect",
-						"start_line":56
+						"start_line":60
 					},
 					{
 						"end_line":33,
@@ -20657,9 +20657,9 @@
 						"start_line":26
 					},
 					{
-						"end_line":86,
+						"end_line":93,
 						"name":"symbol_disable_effect",
-						"start_line":72
+						"start_line":79
 					},
 					{
 						"end_line":31,
@@ -20667,9 +20667,9 @@
 						"start_line":27
 					},
 					{
-						"end_line":102,
+						"end_line":112,
 						"name":"symbol_quick_replacement",
-						"start_line":89
+						"start_line":99
 					}
 				]
 			},
@@ -20941,14 +20941,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":36,
 						"name":"create_span",
-						"start_line":27
+						"start_line":28
 					},
 					{
-						"end_line":60,
+						"end_line":62,
 						"name":"create_span_with_lines",
-						"start_line":39
+						"start_line":41
 					},
 					{
 						"end_line":71,
@@ -20971,9 +20971,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":49,
 						"name":"custom_text_align",
-						"start_line":29
+						"start_line":30
 					},
 					{
 						"end_line":105,
@@ -21001,9 +21001,9 @@
 						"start_line":208
 					},
 					{
-						"end_line":273,
+						"end_line":290,
 						"name":"custom_the_size_of_text",
-						"start_line":236
+						"start_line":249
 					},
 					{
 						"end_line":300,
@@ -21011,9 +21011,9 @@
 						"start_line":279
 					},
 					{
-						"end_line":315,
+						"end_line":334,
 						"name":"custom_the_text_by_copy_option",
-						"start_line":310
+						"start_line":329
 					},
 					{
 						"end_line":305,
@@ -21066,7 +21066,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/EnableAutoSpacing.ets",
 				"functions":[
 					{
-						"end_line":68,
+						"end_line":70,
 						"name":"Enable_AutoSpacing",
 						"start_line":16
 					}
@@ -21076,7 +21076,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ShaderStyle.ets",
 				"functions":[
 					{
-						"end_line":50,
+						"end_line":51,
 						"name":"Shader_Style",
 						"start_line":16
 					}
@@ -21136,7 +21136,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":62,
 						"name":"Service_MenuItems",
 						"start_line":15
 					}
@@ -21146,7 +21146,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets",
 				"functions":[
 					{
-						"end_line":63,
+						"end_line":64,
 						"name":"Disable_MenuItems",
 						"start_line":15
 					}
@@ -21176,7 +21176,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets",
 				"functions":[
 					{
-						"end_line":124,
+						"end_line":127,
 						"name":"the_text_fact_example",
 						"start_line":16
 					}
@@ -29028,7 +29028,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisplayedTogether.ets",
 				"functions":[
 					{
-						"end_line":118,
+						"end_line":120,
 						"name":"Displayed_Together",
 						"start_line":15
 					}
