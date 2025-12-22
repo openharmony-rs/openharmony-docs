@@ -979,7 +979,7 @@ The **Text** component enables AI menu display through the [enableDataDetector](
   ```ts
   Text(
     'Phone number: ' + '(86) (755) ********' + '\n' +
-      'URL: ' 'www .********. com' + '\n' +
+      'URL: ' + 'www.********.com' + '\n' +
       'Email address: ' + '***@example.com' + '\n' +
       'Address: ' + 'XX District, XX City, XX Province' + '\n' +
       'Time: ' + 'YYYY-MM-DD HH:MM'
