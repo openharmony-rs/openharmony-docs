@@ -4415,7 +4415,7 @@ addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Contacts错误码](../apis-contacts-kit/errorcode-contacts.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
@@ -4429,25 +4429,25 @@ addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-  <!--code_no_check-->
+<!--code_no_check-->
 ```js
-  import { common } from '@kit.AbilityKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  const contactInfo1: contact.Contact = {
-    name: { fullName: 'xxx1'},
-    phoneNumbers: [{ phoneNumber: '138xxxxxx' }]
-  };
-  const contactInfo2: contact.Contact = {
-    name: { fullName: 'xxx2'},
-    phoneNumbers: [{ phoneNumber: '139xxxxxx' }]
-  };
-  const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
-    console.info(`Succeeded in addContacts.data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to addContacts. Code: ${err.code}, message: ${err.message}`);
-  });
+const contactInfo1: contact.Contact = {
+  name: { fullName: 'xxx1'},
+  phoneNumbers: [{ phoneNumber: '138xxxxxx' }]
+};
+const contactInfo2: contact.Contact = {
+  name: { fullName: 'xxx2'},
+  phoneNumbers: [{ phoneNumber: '139xxxxxx' }]
+};
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
+  console.info(`Succeeded in addContacts.data->${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to addContacts. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## ContactSelectionOptions<sup>10+</sup>
