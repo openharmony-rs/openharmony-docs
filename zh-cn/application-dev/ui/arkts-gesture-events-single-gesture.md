@@ -19,10 +19,10 @@ onClick与其他手势类型相同，也会参与命中测试、响应链收集�
 @Entry
 @Component
 export struct OnClickGesture {
-  private judgeCount: number = 0
+  private judgeCount: number = 0;
 
   increaseJudgeGuard(): void {
-    this.judgeCount++
+    this.judgeCount++;
   }
 
   build() {
@@ -34,15 +34,15 @@ export struct OnClickGesture {
             .height('50%')
             .backgroundColor(Color.Grey)
             .onClick(() => { // 1. 子组件上注册了点击事件，正常情况下点击在子组件上时，优先得到响应
-              console.info('Clicked on child')
-              this.increaseJudgeGuard()
+              console.info('Clicked on child');
+              this.increaseJudgeGuard();
             })
             .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
               // 3. 当数字增长为5的倍数时禁用子组件上的点击手势，这样父组件上的点击可以得到响应
               if (this.judgeCount % 5 == 0 && gestureInfo.type == GestureControl.GestureType.CLICK) {
-                return GestureJudgeResult.REJECT
+                return GestureJudgeResult.REJECT;
               } else {
-                return GestureJudgeResult.CONTINUE
+                return GestureJudgeResult.CONTINUE;
               }
             })
         }
@@ -53,8 +53,8 @@ export struct OnClickGesture {
         .gesture(
           TapGesture() // 2. 父组件上注册了点击手势，正常情况下点击在子组件区域时，父组件上的手势优先级低于子组件
             .onAction(() => {
-              console.info('Clicked on parent')
-              this.increaseJudgeGuard()
+              console.info('Clicked on parent');
+              this.increaseJudgeGuard();
             }))
       }
       .height('100%')
@@ -62,7 +62,7 @@ export struct OnClickGesture {
       .justifyContent(FlexAlign.Center)
     }
     .backgroundColor('#f1f2f3')
-    //$r('app.string.singlegesture_Index_Click_title')需要替换为开发者所需的字符串资源文件
+    // 请将$r('app.string.singlegesture_Index_Click_title')替换为实际资源文件，在本示例中该资源文件的value值为"点击事件"
     .title($r('app.string.singlegesture_Index_Click_title'))
   }
 }
@@ -114,6 +114,7 @@ export struct Tap {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.singlegesture_TapGesture_title')替换为实际资源文件，在本示例中该资源文件的value值为"点击手势"
     .title($r('app.string.singlegesture_TapGesture_title'))
   }
 }
@@ -172,6 +173,7 @@ export struct LongPress {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.singlegesture_LongPressGesture_title')替换为实际资源文件，在本示例中该资源文件的value值为"长按手势"
     .title($r('app.string.singlegesture_LongPressGesture_title'))
   }
 }
@@ -227,14 +229,14 @@ export struct VolumeControlDemo {
     this.currentVolume = Math.min(
       this.MAX_VOLUME,
       Math.max(this.MIN_VOLUME, this.currentVolume + delta)
-    )
+    );
   }
 
   build() {
     NavDestination() {
       Column() {
         Row() {
-          //$r('app.string.video')需要替换为开发者所需的字符串资源文件
+          // 请将$r('app.string.video')替换为实际资源文件，在本示例中该资源文件的value值为"音量"
           Text($r('app.string.video'))
           Text(`： ${this.currentVolume}`).fontSize(20)
         }.margin(10)
@@ -275,7 +277,7 @@ export struct VolumeControlDemo {
       .padding(20)
     }
     .backgroundColor('#f1f2f3')
-    //$r('app.string.singlegesture_Index_Pancom_title')需要替换为开发者所需的字符串资源文件
+    // 请将$r('app.string.singlegesture_Index_Pancom_title')替换为实际资源文件，在本示例中该资源文件的value值为"滑动手势"
     .title($r('app.string.singlegesture_Index_Pancom_title'))
   }
 }
@@ -355,6 +357,7 @@ export struct Pinch {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.singlegesture_PinchGesture_title')替换为实际资源文件，在本示例中该资源文件的value值为"捏合手势"
     .title($r('app.string.singlegesture_PinchGesture_title'))
   }
 }
@@ -424,6 +427,7 @@ export struct Rotation {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.singlegesture_RotationGesture_title')替换为实际资源文件，在本示例中该资源文件的value值为"旋转手势"
     .title($r('app.string.singlegesture_RotationGesture_title'))
   }
 }
@@ -485,6 +489,7 @@ export struct Swipe {
       .padding({ left: 12, right: 12 })
     }
     .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.singlegesture_SwipeGesture_title')替换为实际资源文件，在本示例中该资源文件的value值为"快滑手势"
     .title($r('app.string.singlegesture_SwipeGesture_title'))
   }
 }
