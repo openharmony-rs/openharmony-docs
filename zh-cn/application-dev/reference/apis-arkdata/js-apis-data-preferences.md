@@ -44,7 +44,7 @@ getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Prefer
 
 | 参数名   | 类型                                             | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context  | Context            | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。                                                 |
+| context  | Context            | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                                 |
 | name     | string                                           | 是   | Preferences实例的名称。                                      |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | 是   | 回调函数。当获取Preferences实例成功，err为undefined，返回Preferences实例；否则err为错误对象。 |
 
@@ -116,7 +116,7 @@ getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。            |
+| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
 | name    | string                                | 是   | Preferences实例的名称。 |
 
 **返回值：**
@@ -192,7 +192,7 @@ getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Pr
 
 | 参数名   | 类型                                          | 必填 | 说明                                                                                                                                                                           |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                                       | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context  | Context                                       | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options  | [Options](#options10)                              | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | 是   | 回调函数。当获取Preferences实例成功，err为undefined，返回Preferences实例；否则err为错误对象。                                                                                    |
 
@@ -271,7 +271,7 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
 | 参数名  | 类型             | 必填 | 说明                                                                                                                                                                           |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 
 **返回值：**
@@ -352,7 +352,7 @@ getPreferencesSync(context: Context, options: Options): Preferences
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | Context               | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context               | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                            |
 
 **返回值：**
@@ -423,7 +423,7 @@ deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;voi
 
 | 参数名   | 类型                                  | 必填 | 说明                                                 |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
-| context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。                                         |
+| context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
 | name     | string                                | 是   | Preferences实例的名称。                              |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。 |
 
@@ -496,7 +496,7 @@ deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。            |
+| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
 | name    | string                                | 是   | Preferences实例的名称。 |
 
 **返回值：**
@@ -572,7 +572,7 @@ deletePreferences(context: Context, options: Options, callback: AsyncCallback&lt
 
 | 参数名   | 类型                      | 必填 | 说明                                                                                                                                                                           |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                   | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context  | Context                   | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options  | [Options](#options10)          | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。                                                                                                                           |
 
@@ -651,7 +651,7 @@ deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 
 | 参数名  | 类型             | 必填 | 说明                                                                                                                                                                           |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 
 **返回值：**
@@ -725,6 +725,8 @@ removePreferencesFromCache(context: Context, name: string, callback: AsyncCallba
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
+若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -733,7 +735,7 @@ removePreferencesFromCache(context: Context, name: string, callback: AsyncCallba
 
 | 参数名   | 类型                                  | 必填 | 说明                                                 |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
-| context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。                                         |
+| context  | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
 | name     | string                                | 是   | Preferences实例的名称。                              |
 | callback | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。 |
 
@@ -796,6 +798,8 @@ removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
+若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -804,7 +808,7 @@ removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。            |
+| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
 | name    | string                                | 是   | Preferences实例的名称。 |
 
 **返回值：**
@@ -870,6 +874,8 @@ removePreferencesFromCacheSync(context: Context, name: string): void
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
+若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -878,7 +884,7 @@ removePreferencesFromCacheSync(context: Context, name: string): void
 
 | 参数名  | 类型                                  | 必填 | 说明                    |
 | ------- | ------------------------------------- | ---- | ----------------------- |
-| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。            |
+| context | Context | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。            |
 | name    | string                                | 是   | Preferences实例的名称。 |
 
 **错误码：**
@@ -925,6 +931,8 @@ removePreferencesFromCache(context: Context, options: Options, callback: AsyncCa
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
+若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -933,7 +941,7 @@ removePreferencesFromCache(context: Context, options: Options, callback: AsyncCa
 
 | 参数名   | 类型                      | 必填 | 说明                                                                                                                                                                           |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context  | Context                   | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context  | Context                   | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options  | [Options](#options10)          | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当移除成功，err为undefined，否则为错误对象。                                                                                                                           |
 
@@ -1001,6 +1009,8 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
+若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -1009,7 +1019,7 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 
 | 参数名  | 类型             | 必填 | 说明                                                                                                                                                                           |
 | ------- | ---------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context          | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                                                                                                                                              |
 
 **返回值：**
@@ -1080,6 +1090,8 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 
 调用该接口后，不建议再使用旧的Preferences实例进行数据操作，否则会导致数据一致性问题，应将Preferences实例置为null，系统会统一回收。
 
+若使用[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)，推荐在进程退出时手动调用一次该接口。此操作会将数据缓存页写入磁盘，可一定程度上减少下一次调用getPreferences接口时的耗时。否则，下一次调用getPreferences接口时底层需要进行数据恢复，数据恢复的耗时取决于未写入磁盘的数据缓存页数量。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
@@ -1088,7 +1100,7 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 
 | 参数名  | 类型                  | 必填 | 说明                                                         |
 | ------- | --------------------- | ---- | ------------------------------------------------------------ |
-| context | Context               | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。 |
+| context | Context               | 是   | 应用上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | options | [Options](#options10) | 是   | 与Preferences实例相关的配置选项。                            |
 
 **错误码：**
@@ -1139,8 +1151,8 @@ Preferences的存储模式枚举。
 
 | 名称 | 值   | 说明 |
 | ---- | ---- | ---- |
-| XML |  0    | 表示XML存储模式，这是Preferences的默认存储模式。<br>**特点：** 数据XML格式进行存储。对数据的操作发生在内存中，需要调用flush接口进行落盘。     |
-| GSKV |  1    |表示GSKV存储模式。<br>**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用flush接口对数据进行落盘。      |
+| XML |  0    | 表示[XML存储模式](../../database/data-persistence-by-preferences.md#xml存储)，这是Preferences的默认存储模式。<br>**特点：** 数据XML格式进行存储。对数据的操作发生在内存中，需要调用flush接口进行落盘。     |
+| GSKV |  1    |表示[GSKV存储模式](../../database/data-persistence-by-preferences.md#gskv存储)。<br>**特点：** 数据以GSKV数据库模式进行存储。对数据的操作实时落盘，无需调用flush接口对数据进行落盘。      |
 
 
 > **说明：**
@@ -1196,11 +1208,11 @@ Preferences实例配置选项。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
 
-| 名称        | 类型   | 必填 | 说明                                                         |
-| ----------- | ------ | ---- | ------------------------------------------------------------ |
-| name        | string | 是   | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/>                                    |
-| dataGroupId | string\|null\|undefined | 否   | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> |
-| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否  | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> |
+| 名称        | 类型   | 只读 | 可选| 说明                                                         |
+| ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
+| name        | string | 否  | 否 | Preferences实例的名称。名称长度需大于零且小于等于255字节，名称中不能包含'/'且不能以'/'结尾。 <br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/>                                    |
+| dataGroupId | string\|null\|undefined | 否  | 是 | 应用组ID，<!--RP1-->暂不支持指定dataGroupId在对应共享沙箱路径下创建Preferences实例。<!--RP1End--><br/>为可选参数。指定在此dataGroupId对应的沙箱路径下创建Preferences实例。当此参数不填时，默认在本应用沙箱目录下创建Preferences实例。<br/> **模型约束：** 此属性仅在Stage模型下可用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。 <br/> |
+| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | 否 | 是 | 存储模式，为可选参数。表示当前Preferences实例需要使用的存储模式。当此参数不填时，默认使用XML存储模式。当选择某种存储模式创建Preferences后，不支持中途切换存储模式。 <br/>**原子化服务API：** 从API version 18开始，该参数支持在原子化服务中使用。 <br/> |
 
 
 ## Preferences
@@ -1224,7 +1236,7 @@ get(key: string, defValue: ValueType, callback: AsyncCallback&lt;ValueType&gt;):
 
 | 参数名   | 类型                                         | 必填 | 说明               |
 | -------- | -------------------------------------------- | ---- |---------------------------|
-| key      | string                                       | 是   | 要获取的存储Key名称，不能为空。   |
+| key      | string                                       | 是   | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。   |
 | defValue | [ValueType](#valuetype)                      | 是   | 默认返回值。 |
 | callback | AsyncCallback&lt;[ValueType](#valuetype)&gt; | 是   | 回调函数。当获取成功时，err为undefined，data为键对应的值；否则err为错误对象。   |
 
@@ -1265,7 +1277,7 @@ get(key: string, defValue: ValueType): Promise&lt;ValueType&gt;
 
 | 参数名   | 类型                    | 必填 | 说明  |
 | -------- | ----------------------- | ---- |--------|
-| key      | string                  | 是   | 要获取的存储Key名称，不能为空。  |
+| key      | string                  | 是   | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | defValue | [ValueType](#valuetype) | 是   | 默认返回值。 |
 
 **返回值：**
@@ -1310,7 +1322,7 @@ getSync(key: string, defValue: ValueType): ValueType
 
 | 参数名   | 类型                    | 必填 | 说明            |
 | -------- | ----------------------- | ---- |---------------------|
-| key      | string                  | 是   | 要获取的存储Key名称，不能为空。  |
+| key      | string                  | 是   | 要获取的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | defValue | [ValueType](#valuetype) | 是   | 默认返回值。 |
 
 **返回值：**
@@ -1489,7 +1501,7 @@ put(key: string, value: ValueType, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                       |
 | -------- | ------------------------- | ---- |-------------------------|
-| key      | string                    | 是   | 要修改的存储的Key，不能为空。 |
+| key      | string                    | 是   | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 | value    | [ValueType](#valuetype)   | 是   | 存储的新值。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当数据写入成功，err为undefined；否则为错误对象。 |
 
@@ -1537,7 +1549,7 @@ put(key: string, value: ValueType): Promise&lt;void&gt;
 
 | 参数名 | 类型                    | 必填 | 说明                         |
 | ------ | ----------------------- | ---- |--------------------------|
-| key    | string                  | 是   | 要修改的存储的Key，不能为空。  |
+| key    | string                  | 是   | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。  |
 | value  | [ValueType](#valuetype) | 是   | 存储的新值。 |
 
 **返回值：**
@@ -1589,7 +1601,7 @@ putSync(key: string, value: ValueType): void
 
 | 参数名 | 类型                    | 必填 | 说明                                                         |
 | ------ | ----------------------- | ---- | ------------------------ |
-| key    | string                  | 是   | 要修改的存储的Key，不能为空。 |
+| key    | string                  | 是   | 要修改的存储的Key，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 | value  | [ValueType](#valuetype) | 是   | 存储的新值。 |
 
 **错误码：**
@@ -1622,7 +1634,7 @@ has(key: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                       | 是   | 要检查的存储key名称，不能为空。                              |
+| key      | string                       | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。                              |
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回Preferences实例是否包含给定key的存储键值对，true表示存在，false表示不存在。 |
 
 **错误码：**
@@ -1647,7 +1659,7 @@ dataPreferences.has('startup', (err: BusinessError, val: boolean) => {
   if (val) {
     console.info("The key 'startup' is contained.");
   } else {
-    console.info("The key 'startup' dose not contain.");
+    console.info("The key 'startup' is not contained.");
   }
 })
 ```
@@ -1667,7 +1679,7 @@ has(key: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空。 |
+| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -1694,7 +1706,7 @@ promise.then((val: boolean) => {
   if (val) {
     console.info("The key 'startup' is contained.");
   } else {
-    console.info("The key 'startup' dose not contain.");
+    console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
   console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
@@ -1716,7 +1728,7 @@ hasSync(key: string): boolean
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要检查的存储key名称，不能为空。 |
+| key    | string | 是   | 要检查的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -1740,7 +1752,7 @@ let isExist: boolean = dataPreferences.hasSync('startup');
 if (isExist) {
   console.info("The key 'startup' is contained.");
 } else {
-  console.info("The key 'startup' dose not contain.");
+  console.info("The key 'startup' does not contain.");
 }
 ```
 
@@ -1759,7 +1771,7 @@ delete(key: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                                                 |
 | -------- | ------------------------- | ---- | ---------------------------------------------------- |
-| key      | string                    | 是   | 要删除的存储Key名称，不能为空。                      |
+| key      | string                    | 是   | 要删除的存储Key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。                      |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当删除成功，err为undefined；否则为错误对象。 |
 
 **错误码：**
@@ -1800,7 +1812,7 @@ delete(key: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空。 |
+| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **返回值：**
 
@@ -1845,7 +1857,7 @@ deleteSync(key: string): void
 
 | 参数名 | 类型   | 必填 | 说明                            |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | 是   | 要删除的存储key名称，不能为空。 |
+| key    | string | 是   | 要删除的存储key名称，不能为空，最大长度限制为[MAX_KEY_LENGTH](#常量)。 |
 
 **错误码：**
 
@@ -2085,9 +2097,15 @@ on(type: 'change', callback: Callback&lt;string&gt;): void
   >
   > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onChange](#onchange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2124,6 +2142,57 @@ dataPreferences.flush((err: BusinessError) => {
 })
 ```
 
+### onChange<sup>23+</sup>
+
+onChange(callback: Callback&lt;string&gt;): void
+
+订阅数据变更，订阅的Key的值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+
+  > **说明：**
+  >
+  > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('change')](#onchange)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                     |
+| -------- | -------- | ---- | ---------------------------------------- |
+| callback | Callback&lt;string&gt; | 是   | 回调函数。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+}
+dataPreferences.onChange(observer);
+dataPreferences.putSync('startup', 'manual');
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+```
+
 ### on('multiProcessChange')<sup>10+</sup>
 
 on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
@@ -2138,9 +2207,15 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
   >
   > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMultiProcessChange](#onmultiprocesschange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2178,6 +2253,62 @@ dataPreferences.flush((err: BusinessError) => {
 })
 ```
 
+### onMultiProcessChange<sup>23+</sup>
+
+onMultiProcessChange(callback: Callback&lt;string&gt;): void
+
+订阅进程间数据变更，多个进程持有同一个首选项文件时，在任意一个进程（包括本进程）执行[flush](#flush)方法，持久化文件发生变更后，触发callback回调。
+
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+
+  > **说明：**
+  >
+  > 同一持久化文件在当前进程订阅进程间数据变更的最大数量为50次，超过最大限制后会订阅失败。建议在触发callback回调后及时取消订阅。
+  >
+  > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('onMultiProcessChange')](#onmultiprocesschange10)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;string&gt; | 是   | 回调函数。                         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                                |
+| -------- | -------------------------------------- |
+| 15500000 | Inner error.                           |
+| 15500019 | Failed to obtain the subscription service. |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+}
+dataPreferences.onMultiProcessChange(observer);
+dataPreferences.putSync('startup', 'manual');
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+```
+
 ### on('dataChange')<sup>12+</sup>
 
 on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
@@ -2188,9 +2319,15 @@ on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&
   >
   > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDataChange](#ondataChange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2233,15 +2370,78 @@ dataPreferences.flush((err: BusinessError) => {
 })
 ```
 
+### onDataChange<sup>23+</sup>
+
+onDataChange(keys: Array&lt;string&gt;, callback: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
+
+精确订阅数据变更，只有被订阅的key值发生变更后，在执行[flush](#flush)方法后，触发callback回调。
+
+  > **说明：**
+  >
+  > 当调用[removePreferencesFromCache](#preferencesremovepreferencesfromcache)或[deletePreferences](#preferencesdeletepreferences)后，订阅的数据变更会主动取消订阅，在重新[getPreferences](#preferencesgetpreferences)后需要重新订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('dataChange')](#ondatachange12)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要订阅的key集合。                                          |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 是   | 回调函数。回调支持返回多个键值对，其中键为发生变更的订阅key，值为变更后的数据：支持number、string、boolean、Array\<number>、Array\<string>、Array\<boolean>、Uint8Array、object类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+**参数：**
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (data: Record<string, preferences.ValueType>) => {
+  for (const keyValue of Object.entries(data)) {
+    console.info(`observer : ${keyValue}`);
+  }
+  console.info("The observer called.");
+}
+let keys = ['name', 'age'];
+dataPreferences.onDataChange(keys, observer);
+dataPreferences.putSync('name', 'xiaohong');
+dataPreferences.putSync('weight', 125);
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+```
+
 ### off('change')
 
 off(type: 'change', callback?: Callback&lt;string&gt;): void
 
 取消订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offChange](#offchange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -2279,6 +2479,54 @@ dataPreferences.flush((err: BusinessError) => {
 dataPreferences.off('change', observer);
 ```
 
+### offChange<sup>23+</sup>
+
+offChange(callback?: Callback&lt;string&gt;): void
+
+取消订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('change')](#offchange)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+}
+dataPreferences.onChange(observer);
+dataPreferences.putSync('startup', 'auto');
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+dataPreferences.offChange(observer);
+```
+
 ### off('multiProcessChange')<sup>10+</sup>
 
 off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
@@ -2287,9 +2535,15 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 
 本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMultiProcessChange](#offmultiprocesschange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2326,15 +2580,72 @@ dataPreferences.flush((err: BusinessError) => {
 })
 dataPreferences.off('multiProcessChange', observer);
 ```
+
+### offMultiProcessChange<sup>23+</sup>
+
+offMultiProcessChange(callback?: Callback&lt;string&gt;): void
+
+取消订阅进程间数据变更。
+
+本接口提供给申请了[dataGroupId](#options10)的应用进行使用，未申请的应用不推荐使用，多进程操作可能会损坏持久化文件，导致数据丢失。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('multiProcessChange')](#offmultiprocesschange10)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;string&gt; | 否   | 需要取消的回调函数，不填写则全部取消。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (key: string) => {
+  console.info("The key " + key + " changed.");
+}
+dataPreferences.onMultiProcessChange(observer);
+dataPreferences.putSync('startup', 'auto');
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+dataPreferences.offMultiProcessChange(observer);
+```
+
 ### off('dataChange')<sup>12+</sup>
 
 off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
 
 取消精确订阅数据变更。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDataChange](#offdatachange23)。
+
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -2378,15 +2689,98 @@ dataPreferences.flush((err: BusinessError) => {
 dataPreferences.off('dataChange', keys, observer);
 ```
 
+### offDataChange<sup>23+</sup>
+
+offDataChange(keys: Array&lt;string&gt;, callback?: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
+
+取消精确订阅数据变更。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('dataChange')](#offdatachange12)。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| keys     | Array&lt;string&gt;                                          | 是   | 需要取消订阅的key集合，当keys为空数组时，表示取消订阅全部key；当keys为非空数组时，表示只取消订阅key集合中的key。 |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | 否   | 需要取消的回调函数，若callback不填写，表示所有的callback都需要处理；若callback填写，表示只处理该callback。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[用户首选项错误码](errorcode-preferences.md)。
+
+| 错误码ID | 错误信息                        |
+| -------- | ------------------------------ |
+| 15500000 | Inner error.                   |
+
+**示例：**
+
+``` ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observer = (data: Record<string, preferences.ValueType>) => {
+  for (const keyValue of Object.entries(data)) {
+    console.info(`observer : ${keyValue}`);
+  }
+  console.info("The observer called.");
+}
+let keys = ['name', 'age'];
+dataPreferences.onDataChange(keys, observer);
+dataPreferences.putSync('name', 'xiaohong');
+dataPreferences.putSync('weight', 125);
+dataPreferences.flush((err: BusinessError | null) => {
+  if (err) {
+    console.error("Failed to flush. Cause: " + err);
+    return;
+  }
+  console.info("Succeeded in flushing.");
+})
+dataPreferences.offDataChange(keys, observer);
+```
+
+## RecordData<sup>22+</sup>
+
+type RecordData = undefined \| null \| Object \| Record\<string, RecordData> \| Array\<RecordData>
+
+RecordData是一个联合类型，用于层级和每层数量都不确定的对象结构。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Sta起始版本：** 22
+
+| 类型                       | 说明                |
+|--------------------------|-------------------|
+| undefined                | 表示类型为未定义。  |
+| null                     | 表示类型为空。|
+| Object                   | 表示类型为对象。    |
+| boolean                  | 表示类型为布尔值。        |
+| Record\<string, RecordData>   | 表示类型为键值对类型。键的类型为string，值的类型为RecordData。|
+| Array\<RecordData>           | 表示类型为RecordData类型的数组。    |
+
 ## ValueType
 
-type ValueType = number | string | boolean | Array\<number> | Array\<string> | Array\<boolean> | Uint8Array | object | bigint
+ArkTS-Dyn: type ValueType = number | string | boolean | Array\<number> | Array\<string> | Array\<boolean> | Uint8Array | object | bigint
+
+ArkTS-Sta: type ValueType = long | double | string | boolean | Array\<long> | Array\<double> | Array\<string> | Array\<boolean> | Uint8Array | RecordData | bigint
 
 表示支持的值类型。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.Preferences.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
+
+ArkTS-Dyn类型说明：
 
 | 类型                       | 说明                |
 |--------------------------|-------------------|
@@ -2398,4 +2792,20 @@ type ValueType = number | string | boolean | Array\<number> | Array\<string> | A
 | Array\<string>           | 表示值类型为字符串类型的数组。   |
 | Uint8Array<sup>11+</sup> | 表示值类型为8位无符号整型的数组。 |
 | object<sup>12+</sup>     | 表示值类型为对象。 |
+| bigint<sup>12+</sup>     | 表示值类型为任意精度格式的整数。  |
+
+ArkTS-Sta类型说明：
+
+| 类型                       | 说明                |
+|--------------------------|-------------------|
+| long                     | 表示值类型为long类型数字。  |
+| double                   | 表示值类型为double类型数字。|
+| string                   | 表示值类型为字符串。        |
+| boolean                  | 表示值类型为布尔值。        |
+| Array\<long>             | 表示值类型为数字类型的数组。    |
+| Array\<double>           | 表示值类型为数字类型的数组。    |
+| Array\<boolean>          | 表示值类型为布尔类型的数组。    |
+| Array\<string>           | 表示值类型为字符串类型的数组。   |
+| Uint8Array<sup>11+</sup> | 表示值类型为8位无符号整型的数组。 |
+| RecordData<sup>22+</sup> | 表示值类型为[RecordData](#recordData22)。        |
 | bigint<sup>12+</sup>     | 表示值类型为任意精度格式的整数。  |

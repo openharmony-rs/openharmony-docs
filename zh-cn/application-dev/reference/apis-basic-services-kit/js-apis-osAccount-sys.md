@@ -2629,13 +2629,13 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSwitching](#onswitching22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSwitching](#onswitching23)。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2656,7 +2656,6 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -2686,13 +2685,13 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSwitching](#offswitching22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSwitching](#offswitching23)。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2713,7 +2712,6 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -2738,13 +2736,13 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onSwitched](#onswitched22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSwitched](#onswitched23)。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2765,7 +2763,6 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -2795,13 +2792,13 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offSwitched](#offswitched22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSwitched](#offswitched23)。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-从API version 21 开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
+从API version 23开始，权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS开始生效。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -2822,7 +2819,6 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 | -------- | ------------- |
 | 201 | Permission denied.|
 | 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3278,7 +3274,7 @@ offActivating(name: string, callback?: Callback&lt;int&gt;): void
   }
   ```
 
-### onSwitching<sup>22+</sup>
+### onSwitching<sup>23+</sup>
 
 onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
@@ -3294,13 +3290,13 @@ onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 21开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台正在切换事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
 
 **错误码：**
 
@@ -3329,7 +3325,7 @@ onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
   }
   ```
 
-### offSwitching<sup>22+</sup>
+### offSwitching<sup>23+</sup>
 
 offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
@@ -3345,7 +3341,7 @@ offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3377,7 +3373,7 @@ offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
   }
 ```
 
-### onSwitched<sup>22+</sup>
+### onSwitched<sup>23+</sup>
 
 onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
@@ -3393,13 +3389,13 @@ onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 21开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
+| callback | Callback&lt;[OsAccountSwitchEventData](#osaccountswitcheventdata12)&gt;     | 是   | 订阅系统账号的前后台切换结束事件回调，包含切换来源和切换目标的系统账号ID。<br/>**说明：** 从API version 23开始，事件数据中新增可选字段displayId，表示发生切换事件的逻辑屏ID。    |
 
 **错误码：**
 
@@ -3428,7 +3424,7 @@ onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
   }
   ```
 
-### offSwitched<sup>22+</sup>
+### offSwitched<sup>23+</sup>
 
 offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
@@ -3444,7 +3440,7 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7701,6 +7697,7 @@ ArkTS-Dyn示例：
     credType: osAccount.AuthType.PIN,
     credSubType: osAccount.AuthSubType.PIN_SIX,
     token: new Uint8Array([]),
+    additionalInfo: 'xxx'
   };
   let userIDM = new osAccount.UserIdentityManager();
   userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
@@ -8582,7 +8579,7 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;Credentia
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
 | credentialTypes  | [AuthType](#authtype8)\[\] | 是   | 表示订阅的凭据类型集合。 |
-| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 是   | 回调函数。当凭据发生变更时，会返回变更信息。 |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 是   | 表示用于接收凭据变更事件的回调函数。 |
 
 
 **错误码：**
@@ -8642,7 +8639,7 @@ offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
 
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
-| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 否   | 表示订阅回调。不指定时，表示取消所有订阅记录。 |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | 否   | 表示用于接收凭据变更事件的回调函数。默认为undefined，表示清除所有订阅记录；非undefined时，表示清除与该回调函数关联的订阅记录。 |
 
 **错误码：**
 
@@ -9117,6 +9114,7 @@ ArkTS-Sta示例：
 | credSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示凭据子类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22   |
 | token        | Uint8Array                           | 否    | 否   | 指示认证令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22     |
 | accountId<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 是   | 系统账号标识，默认为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| additionalInfo<sup>23+</sup>    | string | 否    | 是   | 凭据的附加信息，默认为空字符串。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## RequestResult<sup>8+</sup>
 
@@ -9636,8 +9634,8 @@ ArkTS-Sta示例：
 | isSilent | boolean | 否 | 否  | 表示是否为静默变更，静默变更表示变更由系统在后台自动地发起。 |
 | credentialType      | [AuthType](#authtype8) | 否 | 否  | 表示凭据类型。     |
 | accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 表示系统账号标识。 |
-| addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID。     |
-| deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID。     |
+| addedCredentialId   | Uint8Array | 否 | 是  | 表示添加的凭据ID，添加凭据和更新凭据操作都会返回该ID，默认为undefined。  |
+| deletedCredentialId | Uint8Array | 否 | 是  | 表示删除的凭据ID，删除凭据和更新凭据操作都会返回该ID，默认为undefined。  |
 
 ## CredentialChangeType<sup>23+</sup>
 
@@ -9655,4 +9653,4 @@ ArkTS-Sta示例：
 | -------- | --- | ---------- |
 | ADD_CREDENTIAL      | 1   | 表示添加凭据的变更类型。 |
 | UPDATE_CREDENTIAL   | 2   | 表示更新凭据的变更类型。 |
-| DEL_CREDENTIAL      | 3   | 表示删除凭据的变更类型。 |
+| DELETE_CREDENTIAL   | 3   | 表示删除凭据的变更类型。 |

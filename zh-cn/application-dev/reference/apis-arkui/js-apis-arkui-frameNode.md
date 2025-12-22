@@ -7456,18 +7456,18 @@ class MyNodeAdapter extends NodeAdapter {
   uiContext: UIContext
   cachePool: Array<FrameNode> = new Array<FrameNode>();
   changed: boolean = false
-  reloadTimes: number = 0;
+  reloadTimes: int = 0;
   data: Array<string> = new Array<string>();
   hostNode?: FrameNode
 
-  constructor(uiContext: UIContext, count: number) {
+  constructor(uiContext: UIContext, count: int) {
     super();
     this.uiContext = uiContext;
     this.totalNodeCount = count;
     this.loadData();
   }
 
-  reloadData(count: number): void {
+  reloadData(count: int): void {
     this.reloadTimes++;
     if (this.hostNode) {
       NodeAdapter.attachNodeAdapter(this, this.hostNode!);
@@ -7497,7 +7497,7 @@ class MyNodeAdapter extends NodeAdapter {
     }
   }
 
-  changeData(from: number, count: number): void {
+  changeData(from: int, count: int): void {
     this.changed = !this.changed;
     for (let i = 0; i < count; i++) {
       let index = i + from;
@@ -7507,7 +7507,7 @@ class MyNodeAdapter extends NodeAdapter {
     this.reloadItem(from, count);
   }
 
-  insertData(from: number, count: number): void {
+  insertData(from: int, count: int): void {
     for (let i = 0; i < count; i++) {
       let index = i + from;
       this.data.splice(index, 0, "Adapter ListItem " + from + "-" + i);
@@ -7517,14 +7517,14 @@ class MyNodeAdapter extends NodeAdapter {
     console.info("UINodeAdapter after insert count:" + this.totalNodeCount);
   }
 
-  removeData(from: number, count: number): void {
+  removeData(from: int, count: int): void {
     let arr = this.data.splice(from, count);
     this.removeItem(from, count);
     this.totalNodeCount -= arr.length;
     console.info("UINodeAdapter after remove count:" + this.totalNodeCount);
   }
 
-  moveData(from: number, to: number): void {
+  moveData(from: int, to: int): void {
     let tmp = this.data.splice(from, 1);
     this.data.splice(to, 0, tmp[0]);
     this.moveItem(from, to);
@@ -7539,12 +7539,12 @@ class MyNodeAdapter extends NodeAdapter {
     console.info("UINodeAdapter onDetachFromNode");
   }
 
-  onGetChildId(index: number): number {
+  onGetChildId(index: int): int {
     console.info("UINodeAdapter onGetChildId:" + index);
     return index;
   }
 
-  onCreateChild(index: number): FrameNode {
+  onCreateChild(index: int): FrameNode {
     console.info("UINodeAdapter onCreateChild:" + index);
     if (this.cachePool.length > 0) {
       let cacheNode = this.cachePool.pop();
@@ -7557,14 +7557,14 @@ class MyNodeAdapter extends NodeAdapter {
       }
     }
     console.info("UINodeAdapter onCreateChild createNew");
-    let itemNode = typeNode.createNode(this.uiContext, "ListItem");
-    let textNode = typeNode.createNode(this.uiContext, "Text");
+    let itemNode = typeNode.createListItemNode(this.uiContext);
+    let textNode = typeNode.createTextNode(this.uiContext);
     textNode.initialize(this.data[index as Int]).fontSize(20);
     itemNode.appendChild(textNode);
     return itemNode;
   }
 
-  onDisposeChild(id: number, node: FrameNode): void {
+  onDisposeChild(id: int, node: FrameNode): void {
     console.info("UINodeAdapter onDisposeChild:" + id);
     if (this.cachePool.length < 10) {
       if (!this.cachePool.includes(node)) {
@@ -7576,7 +7576,7 @@ class MyNodeAdapter extends NodeAdapter {
     }
   }
 
-  onUpdateChild(id: number, node: FrameNode): void {
+  onUpdateChild(id: int, node: FrameNode): void {
     let index = id;
     let text = node.getFirstChild();
     let textNode = text as typeNode.Text;
@@ -7590,7 +7590,7 @@ class MyNodeAdapterController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    let listNode = typeNode.createNode(uiContext, "List");
+    let listNode = typeNode.createListNode(uiContext);
     listNode.initialize({ space: 3 }).borderWidth(2).borderColor(Color.Black);
     this.rootNode!.appendChild(listNode!);
     this.nodeAdapter = new MyNodeAdapter(uiContext, 100);
@@ -7647,7 +7647,6 @@ struct ListNodeTest {
     .width("100%")
   }
 }
-
 ```
 ## 节点复用回收使用示例
 

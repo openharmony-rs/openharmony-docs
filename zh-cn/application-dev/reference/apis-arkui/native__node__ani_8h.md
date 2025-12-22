@@ -19,7 +19,7 @@
 
 **相关模块：** [ArkUI_NativeModule](_ark_u_i___native_module.md)
 
-**相关示例：** [NDKSample](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS1.2/NDKSample)
+**相关示例：** [NDKSample](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS-Sta/NDKSample)
 
 
 ## 汇总

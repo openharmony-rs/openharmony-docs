@@ -6,9 +6,11 @@
 
 >  **说明：**
 >
->  该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该组件不支持在Wearable设备上使用。
+> - 该组件从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件不支持在Wearable设备上使用。
 
 
 ## 导入模块
@@ -40,10 +42,10 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 | 名称     | 类型                             | 必填 | 装饰器类型 | 说明         |
 | -------- | -------------------------------- | ---------- | ---- | ---- |
-| options  | [GridObjectSortComponentOptions](#gridobjectsortcomponentoptions) | 是     | @Prop      | 组件配置信息。 |
-| dataList | Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)> | 是    | -     | 传入的数据，最大长度为50，数据长度超过50，只会取前50的数据。 |
-| onSave | (select: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>, unselect: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>)  => void | 是 | - | 保存编辑排序的回调函数，返回编辑后的数据。 |
-| onCancel | () => void | 是 | - | 取消保存数据的回调。 |
+| options  | [GridObjectSortComponentOptions](#gridobjectsortcomponentoptions) | 是     | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef      | 组件配置信息。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| dataList | Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)> | 是    | -     | 传入的数据，最大长度为50，数据长度超过50，只会取前50的数据。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| onSave | (select: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>, unselect: Array<[GridObjectSortComponentItem](#gridobjectsortcomponentitem)>)  => void | 是 | - | 保存编辑排序的回调函数，返回编辑后的数据。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| onCancel | () => void | 是 | - | 取消保存数据的回调。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
 
 ##  GridObjectSortComponentOptions
 
@@ -52,6 +54,10 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 | 名称           | 类型                      | 必填 | 说明                                                          |
 | -------------- | ------------------------- | ---- |-------------------------------------------------------------|
@@ -70,6 +76,10 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 | 名称     | 值    | 说明           |
 | -------- | ----- | -------------- |
 | IMAGE_TEXT | 'image_text' | 图片文字类型。 |
@@ -83,12 +93,12 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 
 | 名称     | 类型                                   | 必填 | 说明                                                                                                                       |
 | -------- | -------------------------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------|
-| id       | number&nbsp;\|&nbsp;string             | 是   | 数据id序号，不可重复。<br />默认值：空字符串。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                          |
-| text     | [ResourceStr](ts-types.md#resourcestr) | 是   | 显示文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                              |
-| selected | boolean                                | 是   | 是否已经被添加，添加：true，未添加：false。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                           |
-| url      | [ResourceStr](ts-types.md#resourcestr) | 否   | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入图片地址。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入Symbol图标资源。配置优先级高于url。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| order    | number                                 | 是   | 顺序序号。<br />取值范围：大于等于0。<br />默认值：0 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                   |
+| id       | number&nbsp;\|&nbsp;string             | 是   | 数据id序号，不可重复。<br />默认值：空字符串。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| text     | [ResourceStr](ts-types.md#resourcestr) | 是   | 显示文本信息。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| selected | boolean                                | 是   | 是否已经被添加，添加：true，未添加：false。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| url      | [ResourceStr](ts-types.md#resourcestr) | 否   | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入图片地址。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | GridObjectSortComponentType类型为IMAGE_TEXT时，需要传入Symbol图标资源。配置优先级高于url。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 22 |
+| order    | number                                 | 是   | 顺序序号。<br />取值范围：大于等于0。<br />默认值：0 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 11 <br/>**ArkTS-Sta起始版本：** 22 |
 
 ## 事件
 
@@ -97,6 +107,7 @@ GridObjectSortComponent({options: GridObjectSortComponentOptions, dataList: Arra
 ## 示例
 网格对象的编辑排序组件基础用法，涉及对组件配置信息初始化，数据初始化，保存、取消方法的使用。
 
+ArkTS-Dyn示例：
 ```ts
 import { GridObjectSortComponent, GridObjectSortComponentItem, GridObjectSortComponentOptions, GridObjectSortComponentType, SymbolGlyphModifier } from '@kit.ArkUI';
 
@@ -144,6 +155,83 @@ struct Index {
     showAreaTitle: '长按拖动排序',
     addAreaTitle: '点击添加'
   }
+
+  build() {
+    Column() {
+      GridObjectSortComponent({
+        options: this.option,
+        dataList: this.dataList,
+        // 保存编辑排序的回调函数，返回编辑后的数据。
+        onSave: (
+          select: Array<GridObjectSortComponentItem>,
+          unselect: Array<GridObjectSortComponentItem>
+        ) => {
+          // save ToDo
+        },
+        // 取消保存数据的回调。
+        onCancel: () =>{
+          // cancel ToDo
+        }
+      })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, SymbolGlyphModifier, $r, State } from '@kit.ArkUI';
+import {
+  GridObjectSortComponent, GridObjectSortComponentItem, GridObjectSortComponentOptions, GridObjectSortComponentType
+} from '@ohos.arkui.advanced.GridObjectSortComponent';
+
+@Entry
+@Component
+struct Index {
+  // 组件数据初始化。
+  @State dataList: GridObjectSortComponentItem[] = [
+    {
+      id: 0,
+      // 系统保存图片资源
+      url: $r('sys.media.ohos_save_button_filled'),
+      text: '下载',
+      selected: true,
+      order: 3
+    } as GridObjectSortComponentItem,
+    {
+      id: 1,
+      // 系统网络图片资源
+      url: $r('sys.media.ohos_ic_public_web'),
+      text: '网络',
+      selected: true,
+      order: 9
+    } as GridObjectSortComponentItem,
+    {
+      id: 2,
+      // 系统录像图片资源
+      url: $r('sys.media.ohos_ic_public_video'),
+      text: '视频',
+      selected: false,
+      order: 1
+    } as GridObjectSortComponentItem,
+    {
+      id: 3,
+      // 系统录制符号资源
+      symbolStyle: new SymbolGlyphModifier($r('sys.symbol.record_circle')),
+      text: '录制',
+      selected: false,
+      order: 4
+    } as GridObjectSortComponentItem
+  ]
+
+  // 组件配置信息初始化。
+  @State option: GridObjectSortComponentOptions = {
+    type: GridObjectSortComponentType.IMAGE_TEXT,
+    imageSize: 45,
+    normalTitle: '菜单',
+    editTitle: '编辑',
+    showAreaTitle: '长按拖动排序',
+    addAreaTitle: '点击添加'
+  } as GridObjectSortComponentOptions;
 
   build() {
     Column() {

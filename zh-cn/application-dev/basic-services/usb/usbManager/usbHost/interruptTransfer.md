@@ -82,9 +82,8 @@
     if(!usbManager.hasRight(usbDevice.name)) {
       await usbManager.requestRight(usbDevice.name).then(result => {
         if(!result) {
-          // 没有访问设备的权限且用户不授权则退出
+          // 没有访问设备的权限且用户不授权
           console.error('The user does not have permission to perform this operation');
-          return;
         }
       });
     }
@@ -112,8 +111,8 @@
        }
      }
    }
-   if (usbEndpoint === undefined) {
-     console.error(`get usbEndpoint error`)
+   if (usbEndpoint === undefined || usbInterface === undefined) {
+     console.error(`get usbEndpoint or usbInterface error`)
      return;
    }
    ```
@@ -142,6 +141,7 @@
 
 6. 传输数据。
 
+   ArkTs-Dyn示例：
    ```ts
    try {
      // 通信接口注册成功，传输数据
@@ -159,6 +159,34 @@
      };
    
      transferParams.callback = (err: Error, callBackData: usbManager.SubmitTransferCallback) => {
+       console.info(`callBackData = ${callBackData}`);
+       console.info(`transfer success，result = ${transferParams.buffer}`);
+     }
+     usbManager.usbSubmitTransfer(transferParams);
+     console.info('USB transfer request submitted.');
+   } catch (error) {
+     console.error(`USB transfer failed: ${error}`);
+   }
+   ```
+
+   ArkTs-Sta示例：
+   ```ts
+   try {
+     // 通信接口注册成功，传输数据
+     let transferParams: usbManager.UsbDataTransferParams = {
+       devPipe: devicePipe,
+       flags: usbManager.UsbTransferFlags.USB_TRANSFER_SHORT_NOT_OK,
+       endpoint: usbEndpoint.address,
+       type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_INTERRUPT,
+       timeout: 2000,
+       length: 10,
+       callback: () => {},
+       userData: new Uint8Array(10),
+       buffer: new Uint8Array(10),
+       isoPacketCount: 2,
+     };
+   
+     transferParams.callback = (err, callBackData) => {
        console.info(`callBackData = ${callBackData}`);
        console.info(`transfer success，result = ${transferParams.buffer}`);
      }

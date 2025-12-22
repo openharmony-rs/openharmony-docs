@@ -44,6 +44,52 @@ import { State } from '@ohos.arkui.stateManagement';
 
 - 当装饰class类型时，需要借助@Observed与@Track观测类属性，单独的@State仅能观测类整体的赋值。
 
+   ```ts
+   'use static'
+   import { Observed, Entry, Component, State, Column, ColumnOptions, Text, Button } from '@kit.ArkUI';
+
+   @Observed
+   class ObservedClass {
+     value: string = '';
+   }
+
+   class NotObservedClass {
+     value: string;
+     constructor(value: string) {
+       this.value = value;
+     }
+   }
+
+   @Entry
+   @Component
+   struct Index {
+     @State observedClass: ObservedClass = new ObservedClass();
+     @State notObservedClass: NotObservedClass = new NotObservedClass('');
+     build() {
+       Column({ space: 10 } as ColumnOptions) {
+         Text(`Observed class's value is ${this.observedClass.value}`)
+         Button('Change observed value')
+           .onClick(() => {
+             // 修改@Observed类中的属性可以触发UI更新
+             this.observedClass.value += '!';
+           })
+         Text(`Not Observed class's value is ${this.notObservedClass.value}`)
+         Button('Change not Observed value')
+           .onClick(() => {
+             // 修改非@Observed类中的属性不会触发UI更新
+             this.notObservedClass.value += 1;
+           })
+         Button('Change not Observed class')
+           .onClick(() => {
+             // 整体赋值非@Observed类可以触发UI更新
+             this.notObservedClass = new NotObservedClass('NotObservedClass');
+           })
+       }
+       .width('100%')
+     }
+   }
+   ```
+
 - 当装饰数组时，可以观察到数组本身的赋值、添加、删除和更新。例子如下。
   声明Model类。
 

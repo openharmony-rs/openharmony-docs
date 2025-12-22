@@ -1,4 +1,4 @@
-# BuilderNode并行化构建和更新节点树(ArkTS-Sta)
+# BuilderNode并行化构建和更新节点树（ArkTS-Sta）
 从API version 20开始，通过并行化能力，BuilderNode能够在子线程完成复杂UI的创建与更新，从而显著提升页面渲染性能与交互流畅度。适用场景如下所示：
 
 - 构建/更新节点数量较多的复杂UI。
@@ -266,6 +266,6 @@
 
 [如何使用BuilderNode并行化更新节点树？(API 20)](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_20250702/zh-cn/application-dev/faqs/faqs-arkui-component.md#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8buildernode%E5%B9%B6%E8%A1%8C%E5%8C%96%E6%9B%B4%E6%96%B0%E8%8A%82%E7%82%B9%E6%A0%91api-20)
 
-[BuilderNode并行化构建节点树](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS1.2/BuilderNodeParallelSample/README.md)
+[BuilderNode并行化构建节点树](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_20250702/code/ArkTS-Sta/BuilderNodeParallelSample/README.md)
 
 <!--DelEnd-->

@@ -4,6 +4,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
@@ -23,6 +25,12 @@ injectEvent({KeyEvent: KeyEvent}): void
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**ArkTS模式**: 该接口仅适用于ArkTS-Dyn。
+
+**相关接口**: 该接口对应的ArkTS-Sta接口是[injectEvent](#inputeventclientinjectevent22)。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -87,6 +95,70 @@ struct Index {
 }
 ```
 
+## inputEventClient.injectEvent<sup>22+</sup>
+
+injectEvent(keyEvent: KeyEventInfo): void
+
+按键(包括单个按键和组合键)注入。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**相关接口**: 对应最初版本[injectEvent](#inputeventclientinjectevent)
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：22
+
+**参数：**
+
+| 参数名       | 类型                    | 必填   | 说明        |
+| -------- | --------------------- | ---- | --------- |
+| keyEvent | [KeyEventInfo](#keyeventinfo20) | 是    | 按键注入描述信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  | 错误信息             |
+| ---- | --------------------- |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+              let backKeyUp: inputEventClient.KeyEvent = {
+                isPressed: false,
+                keyCode: KeyCode.KEYCODE_BACK,
+                keyDownDuration: 0,
+                isIntercepted: false
+              };
+              let keyEventInfo: inputEventClient.KeyEventInfo = {
+                KeyEvent: backKeyUp
+              }
+              inputEventClient.injectEvent(keyEventInfo);
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputEventClient.injectKeyEvent<sup>11+</sup>
 
 injectKeyEvent(keyEvent: KeyEventData): void
@@ -96,6 +168,10 @@ injectKeyEvent(keyEvent: KeyEventData): void
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -113,6 +189,8 @@ injectKeyEvent(keyEvent: KeyEventData): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -160,6 +238,41 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient, KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let backKeyUp: inputEventClient.KeyEvent = {
+              isPressed: false,
+              keyCode: KeyCode.KEYCODE_BACK,
+              keyDownDuration: 0,
+              isIntercepted: false
+            };
+            let keyEventInfo: inputEventClient.KeyEventData = {
+              keyEvent: backKeyUp
+            }
+            inputEventClient.injectKeyEvent(keyEventInfo);
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputEventClient.injectMouseEvent<sup>11+</sup>
 
 injectMouseEvent(mouseEvent: MouseEventData): void
@@ -169,6 +282,10 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -186,6 +303,8 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -273,6 +392,61 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient, MouseAction, Button, MouseToolType, MouseEvent} from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let mouseButtonUpData: MouseEvent = {
+              id: 0,
+              deviceId: 1,
+              actionTime: 2,
+              screenId: 1,
+              windowId: 0,
+              action: MouseAction.BUTTON_UP,
+              screenX: 100,
+              screenY: 200,
+              windowX: 100,
+              windowY: 200,
+              rawDeltaX: 200,
+              rawDeltaY: 200,
+              button: Button.RIGHT,
+              pressedButtons: [],
+              axes: [],
+              pressedKeys: [],
+              ctrlKey: false,
+              altKey: false,
+              shiftKey: false,
+              logoKey: false,
+              fnKey: false,
+              capsLock: false,
+              numLock: false,
+              scrollLock: false,
+              toolType: MouseToolType.MOUSE
+            };
+            let mouseButtonUp: inputEventClient.MouseEventData = {
+              mouseEvent:  mouseButtonUpData
+            };
+            inputEventClient.injectMouseEvent(mouseButtonUp);
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputEventClient.injectTouchEvent<sup>11+</sup>
 
 injectTouchEvent(touchEvent: TouchEventData): void
@@ -282,6 +456,10 @@ injectTouchEvent(touchEvent: TouchEventData): void
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -299,6 +477,8 @@ injectTouchEvent(touchEvent: TouchEventData): void
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
@@ -375,6 +555,68 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```js
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI'
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient } from '@kit.InputKit';
+import { Touch, TouchEvent, KeyAction, SourceType, ToolType } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let touchEvent: Touch = {
+              id: 1,
+              pressedTime: 1,
+              screenX: 0,
+              screenY: 0,
+              windowX: 0,
+              windowY: 0,
+              pressure: 0,
+              width: 0,
+              height: 0,
+              tiltX: 0,
+              tiltY: 0,
+              toolX: 0,
+              toolY: 0,
+              toolWidth: 0,
+              toolHeight: 0,
+              rawX: 0,
+              rawY: 0,
+              toolType: ToolType.FINGER,
+            }
+
+            let touchEventUpData: TouchEvent = {
+              action: KeyAction.UP,
+              sourceType: SourceType.TOUCH_SCREEN,
+              touch: touchEvent,
+              touches: [],
+              id: 0,
+              deviceId: 0,
+              actionTime: 0,
+              screenId: 0,
+              windowId: 0
+            }
+            ;
+            let touchEventUp: inputEventClient.TouchEventData = {
+              touchEvent: touchEventUpData
+            }
+            inputEventClient.injectTouchEvent(touchEventUp);
+          } catch (error) {
+            console.error(`Query failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
 ## inputEventClient.permitInjection<sup>12+</sup>
 
 permitInjection(result: boolean): void
@@ -384,6 +626,10 @@ permitInjection(result: boolean): void
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
 **需要权限：** ohos.permission.INJECT_INPUT_EVENT
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -400,6 +646,9 @@ permitInjection(result: boolean): void
 | 202  | SystemAPI permission error.  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { inputEventClient } from '@kit.InputKit';
@@ -423,17 +672,48 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, RelativeContainer, Component } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { inputEventClient } from '@kit.InputKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            let result = true;
+            inputEventClient.permitInjection(result);
+          }catch(error){
+            console.error("failed:" + JSON.stringify(error));
+          }
+        })
+    }
+  }
+}
+
+```
+
 ## KeyEvent
 
 按键注入描述信息。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
+**ArkTS-Dyn起始版本**: 8
+
+**ArkTS-Sta起始版本**：22
+
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | 否    |  否 | 按键是否按下。<br>true表示按键按下，false表示按键抬起。   |
-| keyCode         | number  | 否    |  否 | 按键键码值。当前仅支持返回键/KEYCODE_BACK键。 |
-| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
+| keyCode         | ArkTS-Dyn: number<br>ArkTS-Dyn: int| 否    |  否 | 按键键码值。当前仅支持返回键/KEYCODE_BACK键。 |
+| keyDownDuration | ArkTS-Dyn: number<br>ArkTS-Dyn: int| 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
 
 ## KeyEventData<sup>11+</sup>
@@ -441,6 +721,10 @@ struct Index {
 按键注入描述信息。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**：22
 
 | 名称        | 类型   | 必填   | 说明      |
 | --------- | ------ | ---- |  ------- |
@@ -452,6 +736,10 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**：22
+
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | mouseEvent | [MouseEvent](js-apis-mouseevent.md#mouseevent) | 否    |  否 | 鼠标注入描述信息。   |
@@ -462,6 +750,24 @@ struct Index {
 
 **系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
 
+**ArkTS-Dyn起始版本**: 11
+
+**ArkTS-Sta起始版本**：22
+
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | 否    |  否 | 触摸屏注入描述信息。   |
+
+## KeyEventInfo<sup>20+<sup>
+
+按键注入描述信息。
+
+**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：22
+
+| 名称        | 类型   | 必填   | 说明      |
+| --------- | ------ | ---- |  ------- |
+| KeyEvent | [KeyEvent](#keyevent) | 是    | 按键注入描述信息。   |

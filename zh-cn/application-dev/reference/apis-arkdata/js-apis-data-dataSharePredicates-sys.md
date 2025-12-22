@@ -10,6 +10,8 @@
 
 > **说明：** 
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口仅可在Stage模型下使用。
@@ -75,6 +77,10 @@ beginsWith(field: string, value: string): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
@@ -106,6 +112,10 @@ endsWith(field: string, value: string): DataSharePredicates
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -209,6 +219,10 @@ unlike(field: string, value: string): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
@@ -241,6 +255,10 @@ glob(field: string, value: string): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
@@ -272,6 +290,10 @@ distinct(): DataSharePredicates
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -333,6 +355,10 @@ indexedBy(field: string): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
@@ -364,6 +390,10 @@ prefixKey(prefix: string): DataSharePredicates
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明           |
@@ -394,6 +424,10 @@ inKeys(keys: Array&lt;string&gt;): DataSharePredicates
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

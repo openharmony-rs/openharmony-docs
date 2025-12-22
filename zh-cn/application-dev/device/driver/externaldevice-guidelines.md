@@ -71,9 +71,9 @@
     import hilog from '@ohos.hilog'
     import deviceManager from '@ohos.driver.deviceManager';
     import { BusinessError } from '@ohos.base';
-    import type rpc from './@ohos.rpc';
+    import type rpc from '@ohos.rpc';
 
-    const REQUEST_CODE: number = 99; // 自定义通信Code，此处仅供参考
+    const REQUEST_CODE: int = 99; // 自定义通信Code，此处仅供参考
     const productId: int = 4258;  // 请声明连接的USB设备的productId
     const vendorId: int = 4817;   // 请声明连接的USB设备的vendorId
     ```
@@ -127,13 +127,13 @@
       });
       if (index < 0) {
         hilog.error(0, 'testTag', 'can not find device');
-        return -1;
+        return -1 as long;
       }
       return devices[index].deviceId;
     } catch (error) {
       hilog.error(0, 'testTag', `queryDevice failed, err: ${JSON.stringify(error)}`);
     }
-    return -1;
+    return -1 as long;
     }
     ```
 5. 定义获取对应驱动远程对象的接口，通过bindDriverWithDeviceId获取远程对象。
@@ -159,7 +159,7 @@
     private async getDriverRemote(deviceId: long): Promise<rpc.IRemoteObject | null> {
     try {
       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
-        (err: BusinessError, id: long) => {
+        (err: BusinessError | null, id: long | undefined) => {
         hilog.info(0, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}}`);
       });
       return remoteDeviceDriver.remote;
@@ -226,7 +226,7 @@
       data.writeString(this.message); 
 
       try {
-        await this.remote.sendMessageRequest(REQUEST_CODE, data, reply, option);
+        this.remote?.sendMessageRequest(REQUEST_CODE, data, reply, option);
         // 获取驱动返回信息"Hello world"
         this.message = reply.readString();
         hilog.info(0, 'testTag', `sendMessageRequest, message: ${this.message}}`);
@@ -254,49 +254,6 @@
     }
     ```
 
-8. 接下来请参考[开发无UI界面基础驱动](driverextensionability.md)，进行对应驱动的示例代码开发。
-
-<!--Del-->
-系统应用可通过查询外设详细信息和驱动详细信息，从而管理外设和驱动。开发示例如下：
-
-1. 导入相关Kit。
-
-    ```ts
-     import { deviceManager } from '@kit.DriverDevelopmentKit';
-     import { BusinessError } from '@kit.BasicServicesKit';
-    ```
-
-2. 查询扩展外设详细信息列表。
-
-    ```ts 
-    try {
-       // 12345678为示例deviceId，应用开发时可通过queryDevices查询到相应设备的deviceId作为入参
-       let deviceInfos : Array<deviceManager.DeviceInfo> = deviceManager.queryDeviceInfo(12345678);
-       for (let item of deviceInfos) {
-          console.info(`Device id is ${item.deviceId}`)
-       }
-     } catch (error) {
-       let err: BusinessError = error as BusinessError;
-       console.error(`Failed to query device info. Code is ${err.code}, message is ${err.message}`);
-     }
-    ```
-
-3. 查询扩展外设驱动详细信息列表。
-
-    ```ts
-    try {
-       // driver-12345为示例driverUid，应用开发时可通过queryDeviceInfo查询到相应设备匹配到的驱动的driverUid作为入参
-       let driverInfos : Array<deviceManager.DriverInfo> = deviceManager.queryDriverInfo("driver-12345");
-       for (let item of driverInfos) {
-          console.info(`driver name is ${item.driverName}`)
-       }
-    } catch (error) {
-       let err: BusinessError = error as BusinessError;
-       console.error(`Failed to query driver info. Code is ${err.code}, message is ${err.message}`);
-    }
-    ```
-<!--DelEnd-->
-<!--RP1-->
 ## 应用签名
 
 **注意： 先配置权限，再自动签名。**

@@ -19,6 +19,8 @@
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.window (窗口)](arkts-apis-window.md)。
+>
+> - 针对系统能力SystemCapability.Window.SessionManager，请先使用[canIUse()](../common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持此syscap及对应接口。
 
 ## 导入模块
 
@@ -55,8 +57,8 @@ import { window } from '@kit.ArkUI';
 | TYPE_WALLET_SWIPE_CARD<sup>15+</sup>        | 22   | 表示钱包刷卡窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
 | TYPE_SCREEN_CONTROL<sup>15+</sup>           | 23   | 表示锁定触控的顶层窗口，用于拦截屏幕触摸和点击事件。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
 | TYPE_FLOAT_NAVIGATION<sup>17+</sup>         | 24   | 表示悬浮的三键导航窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 22 |
-| TYPE_DYNAMIC<sup>20+</sup>                  | 25   | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20 |
-| TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26   | 表示多屏协同窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20 |
+| TYPE_DYNAMIC<sup>20+</sup>                  | 25   | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
+| TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26   | 表示多屏协同窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 22 |
 
 ## Configuration<sup>9+</sup>
 
@@ -5267,7 +5269,11 @@ setWindowType(type: WindowType, callback: AsyncCallback&lt;void&gt;): void
 
 设置窗口类型，使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 7
 
 > **说明：**
 >
@@ -5304,7 +5310,11 @@ setWindowType(type: WindowType): Promise&lt;void&gt;
 
 设置窗口类型，使用Promise异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 7
 
 > **说明：**
 >
@@ -5635,7 +5645,8 @@ export default class EntryAbility extends UIAbility {
         console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (exception) {
-      console.error(`Failed to set image for recent.`);
+      let err = exception as BusinessError;
+      console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 };
@@ -5778,7 +5789,8 @@ export default class EntryAbility extends UIAbility {
             console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
           });
         } catch (exception) {
-          console.error(`Failed to set image for recent.`);
+          let err = exception as BusinessError;
+          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
         }
       })
     });

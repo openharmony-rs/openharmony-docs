@@ -10,8 +10,9 @@ formHost模块提供了卡片使用方相关接口的能力，包括对使用方
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口均为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口均为系统接口。
 
 ## 导入模块
 
@@ -654,6 +655,10 @@ notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 **需要权限：** ohos.permission.REQUIRE_FORM
 
 **系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -2974,7 +2979,7 @@ try {
 ```
 
 ## updateFormLocation<sup>12+</sup>
-updateFormLocation(formId: string, location: formInfo.FormLocation): void;
+updateFormLocation(formId: string, location: formInfo.FormLocation): void
 
 更新卡片位置。
 
@@ -3150,9 +3155,9 @@ on(type: 'formOverflow', callback: Callback&lt;formInfo.OverflowRequest&gt;): vo
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3184,6 +3189,57 @@ try {
 }
 ```
 
+## formHost.onFormOverflow<sup>22+</sup>
+
+onFormOverflow(callback: Callback\<formInfo.OverflowRequest\>): void
+
+订阅互动卡片动效请求事件，使用callback异步回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                         |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------------------- |
+| callback | Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | 是   | 回调函数，用于卡片使用方对动效请求进行处理。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+import formInfo from '@ohos.app.form.formInfo';
+import { BusinessError } from '@ohos.base';
+
+let callback = (data: formInfo.OverflowRequest) => {
+  console.info( 'testTag', `onFormOverflow OverflowRequest, data: ${JSON.stringify(data)}`);
+  console.info( 'testTag', `onFormOverflow OverflowRequest, data.formId: ${data.formId}`);
+  console.info( 'testTag', `onFormOverflow OverflowRequest, data.isOverflow: ${data.isOverflow}`);
+  console.info( 'testTag', `onFormOverflow OverflowRequest, data.overflowInfo: ${data.overflowInfo}`);
+}
+try {
+  formHost.onFormOverflow(callback);
+  console.info( 'testTag EntryFormAbility', 'onFormOverflow success');
+} catch (error: BusinessError) {
+  console.info( 'testTag EntryFormAbility', `onFormOverflow catch error ${error.code}, ${error.message}`);
+}
+```
+
 ## formHost.off('formOverflow')<sup>20+</sup>
 
 off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): void
@@ -3194,9 +3250,9 @@ off(type: 'formOverflow', callback?: Callback&lt;formInfo.OverflowRequest&gt;): 
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3228,6 +3284,57 @@ try {
 }   
 ```
 
+## formHost.offFormOverflow<sup>22+</sup>
+
+offFormOverflow(callback?: Callback\<formInfo.OverflowRequest\>): void
+
+取消订阅互动卡片动效请求事件，使用callback异步回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[formInfo.OverflowRequest](js-apis-app-form-formInfo-sys.md#overflowrequest20)&gt; | 否   | 回调函数，对应已订阅互动卡片动效请求。缺省时，表示注销所有已注册互动卡片动效请求事件回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+import formInfo from '@ohos.app.form.formInfo';
+import { BusinessError } from '@ohos.base';
+
+let callback = (data: formInfo.OverflowRequest) => {
+  console.info( 'testTag', `offFormOverflow OverflowRequest, data: ${JSON.stringify(data)}`);
+  console.info( 'testTag', `offFormOverflow OverflowRequest, data.formId: ${data.formId}`);
+  console.info( 'testTag', `offFormOverflow OverflowRequest, data.isOverflow: ${data.isOverflow}`);
+  console.info( 'testTag', `offFormOverflow OverflowRequest, data.overflowInfo: ${data.overflowInfo}`);
+}
+try {
+  formHost.offFormOverflow(callback);
+  console.info( 'testTag EntryFormAbility', 'offFormOverflow success');
+} catch (error: BusinessError) {
+  console.info( 'testTag EntryFormAbility', `offFormOverflow catch error ${error.code}, ${error.message}`);
+}
+```
+
 ## formHost.on('changeSceneAnimationState')<sup>20+</sup>
 
 on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeSceneAnimationStateRequest&gt;): void
@@ -3238,9 +3345,9 @@ on(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.ChangeScene
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3272,6 +3379,58 @@ try {
 }
 ```
 
+## formHost.onChangeSceneAnimationState<sup>22+</sup>
+
+onChangeSceneAnimationState(callback: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
+
+订阅互动卡片状态切换请求事件，使用callback异步回调。
+
+互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                       |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| callback | Callback&lt;[formInfo.ChangeSceneAnimationStateRequest](js-apis-app-form-formInfo-sys.md#changesceneanimationstaterequest20)&gt; | 是   | 回调函数，用于卡片使用方处理状态切换请求。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+import formInfo from '@ohos.app.form.formInfo';
+import { BusinessError } from '@ohos.base';
+
+let callback = (data: formInfo.ChangeSceneAnimationStateRequest) => {
+  console.info( 'testTag', `onChangeSceneAnimationState ChangeSceneAnimationStateRequest, data: ${JSON.stringify(data)}`);
+  console.info( 'testTag', `onChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.formId: ${data.formId}`);
+  console.info( 'testTag', `onChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.state: ${data.state}`);
+}
+try {
+  formHost.onChangeSceneAnimationState(callback);
+  console.info( 'testTag EntryFormAbility', 'onChangeSceneAnimationState on success');
+} catch (error: BusinessError) {
+  console.info( 'testTag EntryFormAbility', `onChangeSceneAnimationState on catch error ${error.code}, ${error.message}`);
+}
+```
+
 ## formHost.off('changeSceneAnimationState')<sup>20+</sup>
 
 off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeSceneAnimationState&gt;): void
@@ -3282,9 +3441,9 @@ off(type: 'changeSceneAnimationState', callback: Callback&lt;formInfo.changeScen
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3316,6 +3475,56 @@ try {
 }
 ```
 
+## formHost.offChangeSceneAnimationState<sup>22+</sup>
+
+offChangeSceneAnimationState(callback?: Callback\<formInfo.ChangeSceneAnimationStateRequest\>): void
+
+取消订阅互动卡片状态切换请求事件。互动卡片状态分为激活态和非激活态，非激活态下，互动卡片同普通卡片一致；激活态下，互动卡片支持拉起卡片提供方所开发的LiveFormExtensionAbility进程，实现互动卡片动效。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[formInfo.ChangeSceneAnimationStateRequest](js-apis-app-form-formInfo-sys.md#changesceneanimationstaterequest20)&gt; | 否   | 回调函数，对应已订阅互动卡片状态切换请求。缺省时，表示注销所有已注册互动卡片状态切换事件回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+import formInfo from '@ohos.app.form.formInfo';
+import { BusinessError } from '@ohos.base';
+
+let callback = (data: formInfo.ChangeSceneAnimationStateRequest) => {
+  console.info( 'testTag', `offChangeSceneAnimationState ChangeSceneAnimationStateRequest, data: ${JSON.stringify(data)}`);
+  console.info( 'testTag', `offChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.formId: ${data.formId}`);
+  console.info( 'testTag', `offChangeSceneAnimationState ChangeSceneAnimationStateRequest, data.state: ${data.state}`);
+}
+try {
+  formHost.offChangeSceneAnimationState(callback);
+  console.info( 'testTag EntryFormAbility', 'changeSceneAnimationState off success');
+} catch (error: BusinessError) {
+  console.info( 'testTag EntryFormAbility', `changeSceneAnimationState off catch error ${error.code}, ${error.message}`);
+}
+```
+
 ## formHost.on('getFormRect')<sup>20+</sup>
 
 on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
@@ -3326,9 +3535,9 @@ on(type: 'getFormRect', callback: formInfo.GetFormRectInfoCallback): void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3365,6 +3574,67 @@ try {
 }
 ```
 
+## formHost.onGetFormRect<sup>22+</sup>
+
+onGetFormRect(callback: formInfo.GetFormRectInfoCallback): void
+
+订阅卡片位置尺寸查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是   | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+import formInfo from '@ohos.app.form.formInfo';
+import { BusinessError } from '@ohos.base';
+
+let callGetFormRect: formInfo.GetFormRectInfoCallback = (formId: string): Promise<formInfo.Rect> => {
+  console.info('testTag', 'testTag', `cbGetFormRect a new form`);
+  return new Promise<formInfo.Rect>((resolve: (rect: formInfo.Rect) => void, reject: (rect: formInfo.Rect) => void): void => {
+    console.info('testTag', 'testTag', `cbGetFormRect Promise called`);
+    let rect1:formInfo.Rect= {
+      left:1.0,
+      top:1.2,
+      width:1.3,
+      height:1.4
+    };
+    resolve(rect1);
+  });
+}
+
+try {
+  formHost.onGetFormRect(callGetFormRect);
+  console.info('testTag', 'testTag', 'onGetFormRect&formInfo success');
+} catch (error: Error) {
+  let code = (error as BusinessError).code;
+  let message = (error as BusinessError).message;
+  console.info('testTag', 'testTag', 'onGetFormRect&formInfo catch error', `code: ${code}, message: ${message})`);
+}
+```
+
 ## formHost.off('getFormRect')<sup>20+</sup>
 
 off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
@@ -3375,9 +3645,9 @@ off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): void
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3407,6 +3677,63 @@ try {
 }
 ```
 
+## formHost.offGetFormRect<sup>22+</sup>
+
+offGetFormRect(callback?: formInfo.GetFormRectInfoCallback): void
+
+取消订阅卡片位置尺寸查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| callback | [formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 否   | 回调函数，对应已订阅卡片位置尺寸查询请求。缺省时，表示注销所有已注册卡片位置、尺寸查询事件回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+import formInfo from '@ohos.app.form.formInfo';
+import { BusinessError } from '@ohos.base';
+
+let callGetFormRect: formInfo.GetFormRectInfoCallback = (formId: string): Promise<formInfo.Rect> => {
+  console.info(`cbGetFormRect a new form`);
+  return new Promise<formInfo.Rect>((resolve: (rect: formInfo.Rect) => void, reject: (rect: formInfo.Rect) => void): void => {
+    console.info(`cbGetFormRect Promise called`);
+    let rect1: formInfo.Rect = {
+      left: 1.0,
+      top: 1.2,
+      width: 1.3,
+      height: 1.4
+    }
+  });
+}
+
+try {
+  formHost.offGetFormRect(callGetFormRect);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
 ## formHost.updateFormSize<sup>20+</sup>
 
 updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: formInfo.Rect): void
@@ -3418,6 +3745,10 @@ updateFormSize(formId: string, newDimension: formInfo.FormDimension, newRect: fo
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3450,6 +3781,188 @@ try {
   let newDimension = formInfo.FormDimension.Dimension_1_2;
   let newRect: formInfo.Rect = {left: 1, top: 2, width: 100, height: 100};
   formHost.updateFormSize(formId, newDimension, newRect);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.on('getLiveFormStatus')<sup>20+</sup>
+
+on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): void
+
+订阅卡片生存状态查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示卡片生存状态查询。 |
+| callback | [formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getLiveformstatuscallback20) | 是   | 回调函数，卡片使用方对查询请求进行处理，返回卡片生存状态。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+import formHost from '@ohos.app.form.formHost';
+import { BusinessError } from '@ohos.base';
+
+try {
+  formHost.on('getLiveFormStatus', (): Record<string,string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return {"status":"active"};
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.onGetLiveFormStatus<sup>22+</sup>
+
+onGetLiveFormStatus(callback: formInfo.GetLiveFormStatusCallback): void
+
+订阅卡片生存状态查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getLiveformstatuscallback20) | 是   | 回调函数，卡片使用方对查询请求进行处理，返回卡片生存状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+import { BusinessError } from '@ohos.base';
+
+try {
+  formHost.onGetLiveFormStatus((): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "active" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.off('getLiveFormStatus')<sup>20+</sup>
+
+off(type: 'getLiveFormStatus', callback?: formInfo.GetFormRectInfoCallback): void
+
+取消订阅卡片生存状态查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示卡片生存状态查询。 |
+| callback | [formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getLiveformstatuscallback20) | 否   | 回调函数，卡片使用方对查询请求进行处理，返回卡片生存状态。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.off('getLiveFormStatus', (): Record<string,string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return {"status":"inactive"};
+    });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.offGetLiveFormStatus<sup>22+</sup>
+
+offGetLiveFormStatus(callback?: formInfo.GetLiveFormStatusCallback): void
+
+取消订阅卡片生存状态查询请求事件。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                       |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| callback | [formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getLiveformstatuscallback20) | 否   | 回调函数，卡片使用方对查询请求进行处理，返回卡片生存状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 202      | The application is not a system application. |
+
+**示例：**
+
+```ts
+'use static'
+
+import formHost from '@ohos.app.form.formHost';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offGetLiveFormStatus((): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "inactive" };
+  });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }

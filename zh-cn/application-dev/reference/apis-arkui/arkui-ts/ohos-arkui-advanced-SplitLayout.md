@@ -6,9 +6,11 @@
 
 > **说明：**
 >
-> 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 该组件不支持在Wearable设备上使用。
+> - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件不支持在Wearable设备上使用。
 
 
 ## 导入模块
@@ -38,24 +40,26 @@ SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, t
 
 | 名称 | 类型 | 必填 | 装饰器类型        | 说明     |
 | -------- | -------- | -------- |---------------|--------|
-| mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。  |
-| primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | ArkTS1.1: @Prop<br>ArkTS1.2: @PropRef         | 标题内容。<br/>原子化服务仅ArkTS1.1支持。  |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS1.1: @Prop<br>ArkTS1.2: @PropRef         | 副标题内容。<br/>原子化服务仅ArkTS1.1支持。 |
-| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS1.1: @Prop<br>ArkTS1.2: @PropRef         | 辅助文本。<br/>原子化服务仅ArkTS1.1支持。  |
-| container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。 |
+| mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22  |
+| primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 标题内容。 <br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 副标题内容。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
+| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | ArkTS-Dyn: @Prop<br>ArkTS-Sta: @PropRef         | 辅助文本。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22  |
+| container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。<br/> **ArkTS-Dyn起始版本：** 10 <br/>**ArkTS-Sta起始版本：** 22 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
 该示例通过SplitLayout实现了页面布局，并具备自适应能力。
+
+ArkTS-Dyn示例：
 ```ts
 import { SplitLayout } from '@kit.ArkUI';
 
 @Entry
 @Component
 struct Index {
-  @State demoImage: Resource = $r("app.media.background");
+  @State demoImage: Resource = $r('app.media.background');
 
   build() {
     Column() {
@@ -75,7 +79,34 @@ struct Index {
   }
 }
 ```
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, $r, Column, Text, FlexAlign, Resource, Margin, State } from '@kit.ArkUI';
+import { SplitLayout } from '@ohos.arkui.advanced.SplitLayout';
 
+@Entry
+@Component
+struct Index {
+  @State demoImage: Resource = $r('app.media.background');
+
+  build() {
+    Column() {
+      SplitLayout({
+        mainImage: this.demoImage,
+        primaryText: '新歌推荐',
+        secondaryText: '私人订制新歌精选站，为你推荐专属优质新歌;',
+        tertiaryText: '每日更新',
+      }) {
+        Text('示例：空白区域容器内可添加组件')
+          .margin({ top: 36 } as Margin)
+      }
+    }
+    .justifyContent(FlexAlign.SpaceBetween)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
 
 小于等于600vp布局：
 

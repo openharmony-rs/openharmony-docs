@@ -4,6 +4,8 @@
 
 >**说明：** 
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 本模块接口为系统接口。
@@ -30,6 +32,9 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 | delete<sup>23+</sup> | [DeleteFn](#deletefn23) | 否 | 是 | 删除操作配置，默认为空（未定义），在删除数据库记录时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | query<sup>23+</sup> | [QueryFn](#queryfn23) | 否 | 是 | 查询操作配置，默认为空（未定义），在查询数据库时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | batchInsert<sup>23+</sup> | [BatchInsertFn](#batchinsertfn23) | 否 | 是 | 批量插入操作配置，默认为空（未定义），在数据库批量插入时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| batchUpdate<sup>23+</sup> | [BatchUpdateFn](#batchupdatefn23) | 否 | 是 | 批量更新操作配置，在数据库批量更新时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| normalizeUri<sup>23+</sup> | [NormalizeUriFn](#normalizeurifn23) | 否 | 是 | 用户给定的URI转换为服务端使用的URI时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| denormalizeUri<sup>23+</sup> | [DenormalizeUriFn](#denormalizeurifn23) | 否 | 是 | 服务端使用的URI转换为用户传入的初始URI时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## OnCreateFn<sup>23+</sup>
 
@@ -239,13 +244,34 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
+## BatchUpdateFn<sup>23+</sup>
+
+type BatchUpdateFn = (operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;, callback: AsyncCallback&lt;Record&lt;string, Array&lt;int&gt;&gt;&gt;) => void
+
+批量更新操作的属性类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Sta起始版本：** 23
+
+| 参数名     | 类型      | 必填 | 说明                                                   |
+| --------- | --------- | ---- | ------------------------------------------------------ |
+| operations  | Record&lt;string, Array&lt;[UpdateOperation](#updateoperation12)&gt;&gt; | 是   | 表示入参为Record&lt;string, Array&lt;UpdateOperation&gt;&gt;和AsyncCallback&lt;Record&lt;string, Array&lt;int&gt;&gt;&gt;的函数类型。 |
+| callback  | AsyncCallback&lt;Record&lt;string, Array&lt;int&gt;&gt;&gt;| 是   | 回调函数。返回更新的数据记录数集合，更新失败的UpdateOperation的数据记录数为-1。|
+
 ## batchUpdate<sup>12+</sup>
 
 batchUpdate?( operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt; , callback:  AsyncCallback&lt;Record&lt;string, Array&lt;number&gt;&gt;&gt;): void
 
 在数据库批量更新时服务端回调此接口，该方法可以选择性重写。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -479,6 +505,22 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
   };
 };
 ```
+## NormalizeUriFn<sup>23+</sup>
+
+type NormalizeUriFn = (uri: string, callback: AsyncCallback&lt;string&gt;) => void
+
+用户给定的URI转换为服务端使用的URI操作的属性类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Sta起始版本：** 23
+
+| 参数名     | 类型      | 必填 | 说明                                                   |
+| --------- | --------- | ---- | ------------------------------------------------------ |
+| uri       | string    | 是   | 指示用户传入的[URI](../apis-arkts/js-apis-uri.md#uri)。 |
+| callback  | AsyncCallback&lt;string&gt;| 是   | 回调函数。如果支持URI规范化，则返回规范化URI，否则返回空。|
 
 ## normalizeUri
 
@@ -486,7 +528,15 @@ normalizeUri?(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
 用户给定的URI转换为服务端使用的URI时回调此接口，该方法可以选择性重写。
 
+<<<<<<< 0702_new
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+=======
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Provider
+>>>>>>> OpenHarmony_feature_20250702
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -516,13 +566,34 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
 };
 ```
 
+## DenormalizeUriFn<sup>23+</sup>
+
+type DenormalizeUriFn = (uri: string, callback: AsyncCallback&lt;string&gt;) => void
+
+服务端使用的URI转换为用户传入的初始URI操作的属性类型。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：**  SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Sta起始版本：** 23
+
+| 参数名     | 类型      | 必填 | 说明                                                   |
+| --------- | --------- | ---- | ------------------------------------------------------ |
+| uri       | string    | 是   | 指示服务端使用的[URI](../apis-arkts/js-apis-uri.md#uri)。 |
+| callback  | AsyncCallback&lt;string&gt;| 是   | 回调函数。如果反规范化成功，则返回反规范化的URI；如果无需进行反规范化，则返回原始URI；若不支持则返回空。|
+
 ## denormalizeUri
 
 denormalizeUri?(uri: string, callback: AsyncCallback&lt;string&gt;): void
 
 服务端使用的URI转换为用户传入的初始URI时服务端回调此接口，该方法可以选择性重写。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Provider
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 

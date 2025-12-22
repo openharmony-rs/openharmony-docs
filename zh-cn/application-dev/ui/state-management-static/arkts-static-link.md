@@ -141,7 +141,11 @@ import { Link } from '@ohos.arkui.stateManagement';
     @Link count: number;
     ```
 
-3. \@Link装饰的状态变量的类型要和数据源的类型保持一致，否则编译期会报错。
+3. \@Link装饰的状态变量的类型要和数据源的类型保持一致，否则编译期会报错。同时，数据源必须是状态变量，否则在运行时会崩溃。
+
+    > **说明：**
+    >
+    > 从API version 23开始，添加对\@Link数据源错误的校验，运行时崩溃变为编译期报错。
 
     【反例】
 
@@ -161,8 +165,10 @@ import { Link } from '@ohos.arkui.stateManagement';
     
     @Component
     struct Child {
-      // 错误写法，@Link与@State数据源类型不一致
+      // 错误写法1：@Link与@State数据源类型不一致
       @Link test: Cousin;
+      // 错误写法2：数据源非状态变量
+      @Link testStr: string;
     
       build() {
         Text(this.test.name)
@@ -176,8 +182,12 @@ import { Link } from '@ohos.arkui.stateManagement';
     
       build() {
         Column() {
-          // 错误写法，@Link与@State数据源类型不一致
-          Child({test: this.info})
+          Child({
+            // 错误写法1：@Link与@State数据源类型不一致
+            test: this.info,
+            // 错误写法2：数据源非状态变量
+            testStr: this.info.info
+          })
         }
       }
     }

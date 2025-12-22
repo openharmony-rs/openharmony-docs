@@ -25,12 +25,14 @@
 @Consume({ alias: 'a' }) count: number;
 ```
 
-\@Provide和\@Consume通过相同的变量名或别名绑定时，\@Provide装饰的变量和\@Consume装饰的变量是一对多的关系。当未设置[allowOverride](#provide支持allowoverride参数)参数为true时，不允许在同一个自定义组件内及其子组件中声明多个同名或者同别名的\@Provide装饰的变量。\@Provide的属性名或别名必须唯一且确定，否则会发生运行时报错。
+- \@Provide和\@Consume通过相同的变量名或别名绑定时，\@Provide装饰的变量和\@Consume装饰的变量是一对多的关系。当未设置[allowOverride](#provide支持allowoverride参数)参数为true时，不允许在同一个自定义组件内及其子组件中声明多个同名或者同别名的\@Provide装饰的变量。\@Provide的属性名或别名必须唯一且确定，否则会发生运行时报错。
+
+- 当\@Consume装饰的变量没有对应的\@Provide变量时，须给\@Consume装饰的变量设置初始值，否则会运行时报错。
 
 在静态上下文中使用时，需导入装饰器：
 
 ```ts
-import { Provide, Consume } from '@ohos.arkui.stateManagement';
+import { Provide, Consume } from '@kit.ArkUI';
 ```
 
 ## 装饰器说明
@@ -46,7 +48,7 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数          | alias：别名，常量字符串，可选。<br/>如果提供了别名，则必须存在\@Provide变量与其有相同的别名；否则，则需要变量名相同。<br/>指定别名方法为：\@Consume({ alias: 'aliasName' })或\@Consume('aliasName')。 |
 | 允许装饰的变量类型  | Object、class、string、number、boolean、enum、interface等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
-| 初始化规则          | 不支持本地设置默认值。<br/>禁止外部传入初始化 。<br>通过别名/变量名寻找匹配的\@Provide变量，并与之双向同步。 |
+| 初始化规则          | 禁止外部传入初始化。<br>通过别名/变量名寻找匹配的\@Provide变量，并与之双向同步。<br>从API version 23起，支持本地设置默认值。当找不到匹配的\@Provide变量时，使用本地默认值初始化。|
 | 同步规则            | **在子组件使用时：**<br/>与祖先组件匹配的\@Provide变量双向同步。<br/>**在父组件使用时：**<br/>可以初始化子组件的常规变量、\@State、\@Link、\@PropRef、\@Provide。<br/>\@Consume变量的变化会同步给子组件的\@Link、\@PropRef变量。 |
 
 ## 观察变化和行为表现
@@ -55,7 +57,7 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
 
 - 当装饰的数据类型为boolean、string、number类型时，可以观察到数值的变化。
 
-- 当装饰class类型时，需要借助@Observed与@Track观测类属性，单独的\@Provide/\@Consume仅能观测类整体的赋值。
+- 当装饰class类型时，需要借助[@Observed](./arkts-static-observed-and-objectlink.md)与[@Track](./arkts-static-track.md)观测类属性，单独的\@Provide/\@Consume仅能观测类整体的赋值。
 
 - 当装饰数组时，可以观察到数组本身的赋值、添加、删除和更新。
 
@@ -166,7 +168,7 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
    @Provide({ alias: 'aliasName' }) provide: string = 'Hello';
    ```
 
-2. \@Consume装饰的变量禁止外部传入初始化，仅能通过别名来匹配对应的\@Provide变量。
+2. \@Consume装饰的变量禁止外部传入初始化，否则会编译期报错，仅能通过别名来匹配对应的\@Provide变量。
 
    【反例】
 
@@ -240,6 +242,72 @@ import { Provide, Consume } from '@ohos.arkui.stateManagement';
    // 正确用法
    @Provide({ alias: 'a' }) count: number = 10;
    @Provide({ alias: 'b' }) num: number = 10;
+   ```
+
+4. 当\@Consume装饰的变量没有对应的\@Provide变量，且没有给\@Consume装饰的变量设置初始值，则会运行时报错。
+
+   【反例】
+
+   ```ts
+   'use static'
+
+   import { Entry, Component, Column, Text } from '@kit.ArkUI';
+   import { Provide, Consume, State } from '@kit.ArkUI';
+
+   @Component
+   struct Child {
+      // 错误用法，info不存在对应的@Provide装饰的变量，且没有指定初始值。
+     @Consume info: number;
+
+     build() {
+       Text(`info value is ${this.info}`)
+     }
+   }
+
+   @Entry
+   @Component
+   struct Parent {
+     @State message: string = 'Hello';
+
+     build() {
+       Column() {
+        Text(`Parent message is ${this.message}`)
+        Child()
+       }
+     }
+   }
+   ```
+
+   【正例】
+
+   ```ts
+   'use static'
+
+   import { Entry, Component, Column, Text } from '@kit.ArkUI';
+   import { Provide, Consume, State } from '@kit.ArkUI';
+
+   @Component
+   struct Child {
+      // 正确用法，指定默认值。
+     @Consume info: number = 1;
+
+     build() {
+       Text(`info value is ${this.info}`)
+     }
+   }
+
+   @Entry
+   @Component
+   struct Parent {
+     @State message: string = 'Hello';
+
+     build() {
+       Column() {
+        Text(`Parent message is ${this.message}`)
+        Child()
+       }
+     }
+   }
    ```
 
 ## 使用场景
@@ -549,3 +617,85 @@ struct GrandParent {
 - GrandSon在初始化@Consume时，通过相同的属性名绑定最近祖先的@Provide变量。
 - GrandSon查找到相同属性名的@Provide在祖先Child中，所以`@Consume('reviewVotes') reviewVotes: number`初始化数值为10。如果Child中没有定义与@Consume同名的@Provide，则继续向上寻找Parent中的同名@Provide，其值为20，以此类推。
 - 如果查找到根节点仍没有找到别名对应的@Provide，则会报错，提示初始化@Consume时找不到@Provide。
+
+
+### 无@Provide，仅使用本地默认值初始化@Consume
+
+以下示例中仅使用\@Consume，点击Child组件中的Button，对应Button下方的UI会刷新，且会触发\@Watch的回调。
+
+```ts
+'use static'
+
+import { Entry, Text, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
+import { Provide, Consume, Observed, Track, Watch } from '@kit.ArkUI';
+
+interface View {
+  num: number;
+}
+
+@Observed
+class Person {
+  @Track info: int = 100;
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Child()
+    }
+  }
+}
+
+@Component
+struct Child {
+  // @Consume装饰的变量在本地初始化。
+  @Consume @Watch('onCountUpdated') count: number = 15;
+  @Consume @Watch('onCountUpdated') v: View = { num: 10 } as View;
+  @Consume @Watch('onCountUpdated') p: Person = new Person();
+  @Consume('a') @Watch('onCountUpdated') message: string = 'Hello, World!';
+
+  onCountUpdated(propName: string): void {
+    console.info(`${propName} has changed!`);
+  }
+
+  build() {
+    Column() {
+      Button('Child change count')
+        .onClick((e: ClickEvent) => {
+          this.count += 1;
+        })
+      Text(`Child count ${this.count}`);
+
+      Button('Child change v.num')
+        .onClick((e: ClickEvent) => {
+          this.v.num += 2;
+        })
+      Text(`Child v ${this.v.num}`);
+
+      Button('Child change p.info')
+        .onClick((e: ClickEvent) => {
+          this.p.info += 100;
+        })
+      Text(`Child p.info.userInfo ${this.p.info}`);
+
+      Button('Child change message')
+        .onClick((e: ClickEvent) => {
+          this.message += 'a';
+        })
+      Text(`Child count ${this.message}`);
+    }
+  }
+}
+```
+在上面的示例中：
+- 依次点击内容为“Child change count”按钮、“Child change v.num”按钮、“Child change p.info”按钮和“Child change message”按钮，均会触发“onCountUpdated”回调函数。
+- 观察日志依次显示：
+
+   ```text
+   count has changed!
+   v has changed!
+   p has changed!
+   message has changed!
+   ```
