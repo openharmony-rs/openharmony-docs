@@ -4,7 +4,7 @@
 
 在状态管理框架的演进过程中，分别于API version 7和API version 12推出了状态管理V1和V2两个版本。对于已经使用状态管理V1的应用，如果有诉求向状态管理V2迁移，可参考[状态管理V1和V2迁移文档](../state-management/arkts-v1-v2-migration.md)。
 
-在ArkTS-Sta中，保持与ArkTS-Dyn API version 19之后的校验规则一致，具体校验规则可参考下表。由于ArkTS-Sta的状态管理V1V2都是基于MutableStateMeta实现状态变量的依赖收集与更新，V1和V2天然支持V1/V2状态变量的传递，因此弃用了ArkTS-Dyn的方法[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)，可以直接混用状态管理V1与V2。
+在ArkTS-Sta中，保持与ArkTS-Dyn API version 19之后的校验规则一致，具体校验规则可参考下表。由于ArkTS-Sta的状态管理V1V2采用相同的逻辑实现状态变量的收集依赖与触发更新，V1和V2天然支持状态变量的传递，因此弃用了ArkTS-Dyn的方法[enableV2Compatibility](../../reference/apis-arkui/js-apis-StateManagement.md#enablev2compatibility19)和[makeV1Observed](../../reference/apis-arkui/js-apis-StateManagement.md#makev1observed19)，可以直接混用状态管理V1与V2。
 
 > **说明：**
 >
@@ -12,20 +12,20 @@
 
 
 ## 校验规则
-从ArkTS-Sta开始，编译期校验见下表。
+在ArkTS-Sta中，编译期校验见下表。
 
 | ArkTS-Sta场景                             | ArkTS-Sta编译是否报错 |
 | ----------------------------------------- | --------------------- |
-| V1->V2[@Observed](./arkts-static-observed-and-objectlink.md) class类型                 | 不报错                |
-| V1->V2非@Observed class类型               | 不报错                |
-| V1->V2 builtin类型                        | 不报错                |
-| V2->V1@Observed类型                       | 不报错                |
-| V2->V1builtin类型                         | 不报错                |
-| V2->V1[@ObservedV2](./arkts-static-new-observedV2-and-trace.md)类型                     | 编译期报错            |
-| V2->V1普通class类型                       | 不报错                |
+| V1->V2传递[@Observed](./arkts-static-observed-and-objectlink.md)装饰的class                 | 不报错                |
+| V1->V2传递非@Observed装饰的class               | 不报错                |
+| V1->V2传递builtin类型                        | 不报错                |
+| V2->V1传递@Observed类型                       | 不报错                |
+| V2->V1传递builtin类型                         | 不报错                |
+| V2->V1传递[@ObservedV2](./arkts-static-new-observedV2-and-trace.md)类型                     | 编译期报错            |
+| V2->V1传递普通class类型                       | 不报错                |
 | V2装饰器装饰@Observed数据                 | 不报错                |
 | V1装饰器装饰@ObservedV2数据               | 编译期报错            |
-| V2->V1非@Observed数据 传给V1的[@ObjectLink](./arkts-static-observed-and-objectlink.md) | 不报错                |
+| V2->V1传递非@Observed数据，传给V1的[@ObjectLink](./arkts-static-observed-and-objectlink.md) | 不报错                |
 
 
 
@@ -37,7 +37,7 @@
 ## 混用范式
 
 ### V1->V2
-- V1的状态变量传递给V2的[\@Param](./arkts-static-new-param.md)，V1的状态变量在\@ComponentV2中有观察能力。完整例子见[常见场景](#v1-v2-1)。
+- V1的状态变量传递给V2的[\@Param](./arkts-static-new-param.md)，V1的状态变量在\@ComponentV2中有观察能力。完整示例见[常见场景](#v1-v2-1)。
 ```ts
 @Observed
 class ObservedClass {
@@ -67,7 +67,7 @@ struct CompV2 {
 
 具体场景能力可见下表。
 
-| \@Component(父) -> \@ComponentV2（子）  | 观察行为 |
+| \@Component(父) -> \@ComponentV2(子)  | 观察行为 |
 |------|----|
 | 常规变量| 可观察。 |
 | \@Observed装饰class   | 可观察第一层属性。 |
@@ -80,7 +80,7 @@ struct CompV2 {
 
 ### V2->V1
 
-在V2->V1时，V2的状态变量传递给V1的\@ObjectLink，V2的状态变量在\@Component中有观察能力。完整例子见[常见场景](#v2-v1-1)。
+在V2->V1时，V2的状态变量传递给V1的\@ObjectLink，V2的状态变量在\@Component中有观察能力。完整示例见[常见场景](#v2-v1-1)。
 
 ```ts
 'use static'
@@ -109,7 +109,7 @@ struct CompV1 {
 
 具体场景如下表。
 
-| \@ComponentV2(父) -> \@Component（子）  | 观察行为 |
+| \@ComponentV2(父) -> \@Component(子)  | 观察行为 |
 |------|----|
 | \@Observed装饰class的嵌套类 | 在\@ComponentV2可深度观察嵌套属性的变化。 |
 | 普通class  | 在ArkTS-Sta不可观察。 |
@@ -142,43 +142,43 @@ SubComponentV2({objectLink: this.local})
 
 在ArkTS-Sta中，普通class（无@Observed/@ObservedV2）不可观察。
 
-#### V1->V2
+**V1->V2**
 ```ts
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, State, Param } from '@kit.ArkUI';
 
-class ObservedClass {
+class CommonClass {
   name: string = 'Tom';
 }
 
 @Entry
 @Component
 struct CompV1 {
-  @State observedClass: ObservedClass = new ObservedClass();
+  @State commonObject: CommonClass = new CommonClass();
 
   build() {
     Column() {
-      Text(`@State observedClass: ${this.observedClass.name}`)
+      Text(`@State commonObject: ${this.commonObject.name}`)
       Button('Change object in V1')
         .onClick(() => {
-          this.observedClass.name += '!'; // 非Observed/ObservedV2类，组件不刷新
+          this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
-      CompV2({ observedClass: this.observedClass })
+      CompV2({ commonObject: this.commonObject })
     }
   }
 }
 
 @ComponentV2
 struct CompV2 {
-  @Param observedClass: ObservedClass = new ObservedClass();
+  @Param commonObject: CommonClass = new CommonClass();
 
   build() {
     Column() {
       // 非Observed/ObservedV2类，观察不到变化
-      Text(`@Param observedClass: ${this.observedClass.name}`)
+      Text(`@Param commonObject: ${this.commonObject.name}`)
       Button('Change object in V2')
         .onClick(() => {
-          this.observedClass.name += '!'; // 非Observed/ObservedV2类，组件不刷新
+          this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
     }
   }
@@ -186,7 +186,7 @@ struct CompV2 {
 ```
 
 
-#### V2->V1
+**V2->V1**
 
 ```ts
 'use static'
@@ -199,32 +199,32 @@ class CommonClass {
 @Entry
 @ComponentV2
 struct CompV2 {
-  @Local observedClass: CommonClass = new CommonClass();
+  @Local commonObject: CommonClass = new CommonClass();
 
   build() {
     Column() {
-      Text(`@Local observedClass: ${this.observedClass.name}`)
+      Text(`@Local commonObject: ${this.commonObject.name}`)
       Button('Change object in V2')
         .onClick(() => {
-          this.observedClass.name += '!'; // 非Observed/ObservedV2类，组件不刷新
+          this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
       // @ObjectLink可接收@Observed装饰class的实例
-      CompV1({ observedClass: this.observedClass })
+      CompV1({ commonObject: this.commonObject })
     }
   }
 }
 
 @Component
 struct CompV1 {
-  @ObjectLink observedClass: CommonClass;
+  @ObjectLink commonObject: CommonClass;
 
   build() {
     Column() {
       // 非Observed/ObservedV2类，观察不到变化
-      Text(`@ObjectLink observedClass: ${this.observedClass.name}`)
+      Text(`@ObjectLink commonObject: ${this.commonObject.name}`)
       Button('Change object in V1')
         .onClick(() => {
-          this.observedClass.name += '!'; // 非Observed/ObservedV2类，组件不刷新
+          this.commonObject.name += '!'; // 非Observed/ObservedV2类，组件不刷新
         })
     }
   }
@@ -233,8 +233,8 @@ struct CompV1 {
 
 
 ### \@Observed装饰的class
-#### V1->V2
-下面的例子中：
+**V1->V2**
+下面的示例中：
 - `ObservedClass`是\@Observed装饰的class，并在传递给V2时使能了在V2中观察的能力。
 - `name`是`@Track`装饰的属性，其在V1和V2均是可观察的。
 - `count`是非`@Track`装饰的属性，其在V1和V2的UI中使用均是非法的。
@@ -281,7 +281,7 @@ struct CompV2 {
   }
 }
 ```
-#### V2->V1
+**V2->V1**
 - `ObservedClass`是\@Observed装饰的class，该类的状态变量传递给V1可观察。
 - 只有[\@Track](./arkts-static-track.md)装饰的变量在V1和V2中可观察。非\@Track的变量在V1中使用在UI上会有运行时报错，在V2中不会报错，但不会响应刷新。
 ```ts
@@ -334,7 +334,7 @@ struct CompV1 {
 
 ### 内置类型
 以Array为例。
-#### V1->V2
+**V1->V2**
 ```ts
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, State, Param } from '@kit.ArkUI';
@@ -377,7 +377,7 @@ struct ArrayCompV2 {
 ```
 
 
-#### V2->V1
+**V2->V1**
 ```ts
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, Local, ObjectLink } from '@kit.ArkUI';
@@ -422,9 +422,9 @@ struct ArrayCompV1 {
 
 
 ### 二维数组
-#### V1->V2
+**V1->V2**
 
-下面的例子中：
+下面的示例中：
 - ArkTS-Sta状态变量已默认具有V2的观察能力，因此可直接传递至V2子组件。
 
 ```ts
@@ -485,11 +485,10 @@ struct CompV1 {
 }
 ```
 
-#### V2->V1
+**V2->V1**
 
-下面的例子中：
-- 使用makeV1Observed将二维数组的内层数组变成V1的状态变量。调用enableV2Compatibility，使其具有V2的观察能力，也避免V1V2的双重代理。
-- 在V1中，使用\@ObjectLink接收二维数组的内层数组，因为其为makeV1Observed的返回值，所以点击`Button('@ObjectLink push')`，会正常响应刷新。
+下面的示例中：
+- V2中的二维数组已具有V2观察能力，在V1中使用\@ObjectLink接收二维数组的内层数组，点击`Button('@ObjectLink push')`，会正常响应刷新。
 
 ```ts
 'use static'
@@ -549,15 +548,15 @@ struct IndexPage {
 ```
 
 ### 嵌套类型
-#### V1->V2
-结合上面的基本场景后，来看下面嵌套场景的例子。
-下面的例子的行为可以总结为：
+**V1->V2**
+结合上述基本场景，下面是嵌套场景的示例。
+下面示例的行为可以总结为：
 
 - [\@State](arkts-static-state.md)仅能观察第一层的变化，如果要深度观察，需要传递给\@ObjectLink。
 - 数据源\@State的第二层的改变，虽然不能带来本层的刷新，但会被\@ObjectLink和\@Param观察到，并触发它们关联组件的刷新。
 - \@ObjectLink和\@Param是同一个对象的引用，其属性改变也会带来其他引用的刷新。
 
-完整例子如下。
+完整示例如下。
 ```ts
 'use static'
 import { Entry, Text, Column, Component, ComponentV2, Button, ClickEvent, ForEach, Observed, State, Track, ObjectLink, Require, Param } from '@kit.ArkUI';
@@ -683,7 +682,7 @@ struct NestedClassV2 {
 }
 ```
 
-#### V2->V1
+**V2->V1**
 - V1中仅能观察第一层的变化，所以需要多层自定义组件，且每层都配合使用\@ObjectLink来接收，从而实现深度观察能力。
 
 ```ts

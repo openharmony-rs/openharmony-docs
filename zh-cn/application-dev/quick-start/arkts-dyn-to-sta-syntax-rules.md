@@ -4158,28 +4158,28 @@ ArkTS-Dyn
 // main.ets
 import { UIUtils } from '@kit.ArkUI';
 
-class ObservedV2Class {
+class CommonClass {
   name: string = 'a';
 }
 
 @Entry
 @Component
-export struct V2DecoratorDecorateObserveV2 {
-  @State ObservedV2ClassLocal: ObservedV2Class = UIUtils.makeV1Observed(new ObservedV2Class());
+struct CompV2 {
+  @State commonObject: CommonClass = UIUtils.makeV1Observed(new CommonClass());
   build() {
     Column() {
-      CompV1({ ObservedV2Class: UIUtils.enableV2Compatibility(this.ObservedV2ClassLocal) })
+      CompV1({ commonChildObject: UIUtils.enableV2Compatibility(this.commonObject) })
     }
   }
 }
 
 @ComponentV2
 struct CompV1 {
-  @Param @Require ObservedV2Class: ObservedV2Class;
+  @Param @Require commonChildObject: CommonClass;
 
   build() {
     Column() {
-      Text(`name =  ${this.ObservedV2Class.name}`)
+      Text(`name =  ${this.commonChildObject.name}`)
     }
   }
 }
@@ -4191,28 +4191,28 @@ ArkTS-Sta
 // main.ets
 import { Entry, Component, State, Column, ComponentV2, Param, Require, Text } from '@kit.ArkUI';
 
-class ObservedV2Class {
+class CommonClass {
   name: string = 'a';
 }
 
 @Entry
 @Component
 export struct V2DecoratorDecorateObserveV2 {
-  @State ObservedV2ClassLocal: ObservedV2Class = new ObservedV2Class();
+  @State commonObject: CommonClass = new CommonClass();
   build() {
     Column() {
-      CompV1({ ObservedV2Class: this.ObservedV2ClassLocal })
+      CompV1({ commonChildObject: this.commonObject })
     }
   }
 }
 
 @ComponentV2
 struct CompV1 {
-  @Param @Require ObservedV2Class: ObservedV2Class;
+  @Param @Require commonChildObject: CommonClass;
 
   build() {
     Column() {
-      Text(`name =  ${this.ObservedV2Class.name}`)
+      Text(`name =  ${this.commonChildObject.name}`)
     }
   }
 }
