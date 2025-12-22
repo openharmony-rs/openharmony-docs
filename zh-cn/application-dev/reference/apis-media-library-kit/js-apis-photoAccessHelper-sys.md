@@ -48,7 +48,7 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 接口抛出错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |111
+| -------- | ---------------------------------------- |
 | 201 |  Permission denied.         |
 | 202 |  Called by non-system application.         |
 | 13900020 | Invalid argument.         |
