@@ -10468,7 +10468,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTree.ets",
 				"functions":[
 					{
-						"end_line":300,
+						"end_line":312,
 						"name":"frameNodeTree_start",
 						"start_line":16
 					}
@@ -10683,7 +10683,7 @@
 						"start_line":34
 					},
 					{
-						"end_line":66,
+						"end_line":68,
 						"name":"set_gestures",
 						"start_line":50
 					},
@@ -10698,7 +10698,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":81,
 						"name":"custom_gestures",
 						"start_line":15
 					}
@@ -11438,7 +11438,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/fixedstyledialog/ShowActionMenu.ets",
 				"functions":[
 					{
-						"end_line":71,
+						"end_line":72,
 						"name":"fixed_style_pop_up_box",
 						"start_line":16
 					}
@@ -14352,7 +14352,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":44,
+						"end_line":45,
 						"name":"page_showAlert2",
 						"start_line":27
 					}
@@ -14367,7 +14367,7 @@
 						"start_line":16
 					},
 					{
-						"end_line":60,
+						"end_line":61,
 						"name":"page_showDialog2",
 						"start_line":28
 					}
@@ -15862,7 +15862,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/Modifier/entry/src/main/ets/pages/MyCheckboxStyle.ets",
 				"functions":[
 					{
-						"end_line":101,
+						"end_line":104,
 						"name":"checkbox_demo",
 						"start_line":16
 					}
@@ -17427,7 +17427,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerComponent.ets",
 				"functions":[
 					{
-						"end_line":135,
+						"end_line":136,
 						"name":"OverlayManager_Demo",
 						"start_line":16
 					}
@@ -17437,7 +17437,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerAlertDialog.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":91,
 						"name":"OverlayManager_Demo2",
 						"start_line":16
 					}
@@ -17447,7 +17447,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/OverlayManager/OverlayManagerWithOrder.ets",
 				"functions":[
 					{
-						"end_line":116,
+						"end_line":117,
 						"name":"OverlayManager_Demo3",
 						"start_line":16
 					}
@@ -17462,7 +17462,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":86,
 						"name":"toast_showDefaultAndTop",
 						"start_line":16
 					}
@@ -17472,7 +17472,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/CreateToast.ets",
 				"functions":[
 					{
-						"end_line":55,
+						"end_line":56,
 						"name":"toast_create",
 						"start_line":16
 					}
@@ -17482,7 +17482,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/OpenCloseToast.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":74,
 						"name":"toast_openClose",
 						"start_line":15
 					}
@@ -19882,7 +19882,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":88,
 						"name":"dynamic_focus_transfer",
 						"start_line":16
 					}
@@ -19892,7 +19892,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTraversalGuidelines.ets",
 				"functions":[
 					{
-						"end_line":56,
+						"end_line":57,
 						"name":"dynamic_focus_liner",
 						"start_line":16
 					}
@@ -19902,7 +19902,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectionBasedFocus.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":45,
 						"name":"dynamic_focus_project_area",
 						"start_line":16
 					}
@@ -19912,7 +19912,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FrojectAreaFocusFlex.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":45,
 						"name":"dynamic_focus_project_area_flex",
 						"start_line":16
 					}
@@ -19922,7 +19922,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/onFocusBlur.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":78,
 						"name":"focus_dynamic_reflect",
 						"start_line":16
 					}
@@ -19932,7 +19932,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":77,
 						"name":"dynamic_focus_blur",
 						"start_line":16
 					}
@@ -19952,7 +19952,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ScopeFocus.ets",
 				"functions":[
 					{
-						"end_line":65,
+						"end_line":66,
 						"name":"dynamic_focus_scope",
 						"start_line":16
 					}
@@ -19962,7 +19962,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabStop.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"dynamic_focus_tab_stop",
 						"start_line":16
 					}
@@ -19992,7 +19992,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/RequestFocus.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":47,
 						"name":"dynamic_focus_request",
 						"start_line":16
 					}
@@ -20012,7 +20012,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/NextFocus.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":62,
 						"name":"dynamic_focus_next",
 						"start_line":16
 					}
@@ -20022,7 +20022,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":48,
 						"name":"dynamic_focus_tab_index",
 						"start_line":16
 					}
@@ -20032,7 +20032,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndexFocus.ets",
 				"functions":[
 					{
-						"end_line":45,
+						"end_line":46,
 						"name":"dynamic_focus_tab_index_focus",
 						"start_line":16
 					}
@@ -20432,7 +20432,7 @@
 						"start_line":87
 					},
 					{
-						"end_line":128,
+						"end_line":129,
 						"name":"dropAnimationExample_start",
 						"start_line":16
 					}
@@ -20562,7 +20562,7 @@
 						"start_line":159
 					},
 					{
-						"end_line":233,
+						"end_line":234,
 						"name":"default_drag",
 						"start_line":16
 					}
@@ -21245,7 +21245,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/SupportAvoidCentralAxisMenu.ets",
 				"functions":[
 					{
-						"end_line":122,
+						"end_line":124,
 						"name":"avoid_central_axis_menu",
 						"start_line":16
 					}
@@ -21255,7 +21255,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/EventTransSubWindowMenu.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":59,
 						"name":"eventTrans_menu",
 						"start_line":15
 					}
@@ -21265,7 +21265,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BindComponentMenu.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":59,
 						"name":"bindComponent_menu",
 						"start_line":15
 					}
@@ -21285,7 +21285,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/BuilderCustomMenu.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":114,
 						"name":"builder_custom_menu",
 						"start_line":16
 					},
@@ -21305,7 +21305,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/TextPrompts.ets",
 				"functions":[
 					{
-						"end_line":41,
+						"end_line":42,
 						"name":"text_popup",
 						"start_line":16
 					}
@@ -21315,7 +21315,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStateChange.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":47,
 						"name":"state_popup",
 						"start_line":16
 					}
@@ -21325,7 +21325,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/ButtonPopup.ets",
 				"functions":[
 					{
-						"end_line":60,
+						"end_line":61,
 						"name":"button_popup",
 						"start_line":16
 					}
@@ -21335,7 +21335,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAnimation.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":85,
 						"name":"animation_popup",
 						"start_line":16
 					}
@@ -21345,7 +21345,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/CustomPopup.ets",
 				"functions":[
 					{
-						"end_line":62,
+						"end_line":63,
 						"name":"custom_popup",
 						"start_line":16
 					}
@@ -21355,7 +21355,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupStyle.ets",
 				"functions":[
 					{
-						"end_line":49,
+						"end_line":50,
 						"name":"style_popup",
 						"start_line":16
 					}
@@ -21365,7 +21365,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupAvoidSoftKeyboard.ets",
 				"functions":[
 					{
-						"end_line":58,
+						"end_line":59,
 						"name":"avoidSoftKeyboard_popup",
 						"start_line":16
 					}
@@ -21375,7 +21375,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupPolymorphicEffect.ets",
 				"functions":[
 					{
-						"end_line":115,
+						"end_line":117,
 						"name":"polymorphicEffect_popup",
 						"start_line":17
 					}
@@ -21385,7 +21385,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/PopupSupportedAvoidAxis.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":107,
 						"name":"supportedAvoidAxis_popup",
 						"start_line":16
 					}
