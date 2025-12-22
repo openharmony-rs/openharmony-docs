@@ -16243,7 +16243,7 @@ show(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[showWindow()](#showwindow9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[showWindow()](#showwindow9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -16276,7 +16276,7 @@ show(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[showWindow()](#showwindow9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[showWindow()](#showwindow9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -16307,7 +16307,7 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[destroyWindow()](#destroywindow9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[destroyWindow()](#destroywindow9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -16340,7 +16340,7 @@ destroy(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[destroyWindow()](#destroywindow9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[destroyWindow()](#destroywindow9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -17186,7 +17186,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[setUIContent()](#setuicontent9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -17220,7 +17220,7 @@ loadContent(path: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[setUIContent()](#setuicontent9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -17257,7 +17257,7 @@ isShowing(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[isWindowShowing()](#iswindowshowing9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[isWindowShowing()](#iswindowshowing9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -17290,7 +17290,7 @@ isShowing(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[isWindowShowing()](#iswindowshowing9)。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[isWindowShowing()](#iswindowshowing9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
