@@ -625,8 +625,8 @@ struct Page {
           this.getUIContext().animateTo({
             duration: 50
           }, () => {
-            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150
-          })
+            this.translateObj.translateX = (this.translateObj.translateX + 50) % 150;
+          });
         })
     }
   }
