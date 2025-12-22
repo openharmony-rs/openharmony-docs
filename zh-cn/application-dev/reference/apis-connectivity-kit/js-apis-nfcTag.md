@@ -1185,7 +1185,7 @@ NFC服务在读取到标签时给出的对象，通过该对象属性，应用�
 | ----------------------------- | ------------------------------------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
 | uid<sup>9+</sup>              | number[]                                                      | 否       | 否       | 标签的uid，每个number值是十六进制表示，范围是0x00~0xFF。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
 | technology<sup>9+</sup>       | number[]                                                      | 否       | 否       | 支持的技术类型，每个number值表示所支持技术类型的常量值。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                     |
-| supportedProfiles             | number[]                                                      | 否       | 否       | 从 API version 7 开始支持，从 API version 9 开始废弃。            |
+| supportedProfiles             | number[]                                                      | 否       | 否       | 从 API 支持的技术类型，从 API version 7 开始支持，从 API version 9 开始废弃，使用[tag.TagInfo#technology](#taginfo)替代。            |
 
 ## NdefRecord<sup>9+</sup>
 NDEF标签Record属性的定义，参考NDEF标签技术规范《NFCForum-TS-NDEF_1.0》的定义细节。
