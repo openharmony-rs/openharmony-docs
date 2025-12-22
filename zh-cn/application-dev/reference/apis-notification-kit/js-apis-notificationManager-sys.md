@@ -50,6 +50,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -63,6 +64,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int, callback: AsyncCal
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -165,6 +167,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. | 
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -178,6 +181,7 @@ ArkTS-Sta: publish(request: NotificationRequest, userId: int): Promise\<void\>
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -3923,6 +3927,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -3935,6 +3940,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -4043,6 +4049,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -4055,6 +4062,7 @@ ArkTS-Sta: publishAsBundle(request: NotificationRequest, representativeBundle: s
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
@@ -4152,6 +4160,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 201      | Permission denied. |  
 | 202      | Not system application to call the interface. |  
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| 801  | The device does not support geofencing. |
 | 1600001  | Internal error. |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service. |
@@ -4164,6 +4173,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 | 1600015  | The current notification status does not support duplicate configurations. |
 | 1600016  | The notification version for this update is too low. |
 | 1600020  | The application is not allowed to send notifications due to permission settings. |
+| 1600025  | Geofencing disabled. |
 | 2300007  | Network unreachable. |
 
 **示例：**
