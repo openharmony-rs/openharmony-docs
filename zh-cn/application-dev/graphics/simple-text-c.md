@@ -67,6 +67,14 @@
 5. 排版段落并进行文本绘制。
 
    <!-- @[drawing_simple_text_c_layout_and_paint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKDrawingSimpleText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   // 设置页面最大宽度
+   double maxWidth = width_;
+   OH_Drawing_TypographyLayout(typography, maxWidth);
+   // 将文本绘制到画布上
+   OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 100);
+   ```
 
 6. 释放内存
 
