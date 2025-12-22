@@ -482,7 +482,7 @@ closeFormEditAbility(isMainPage?: boolean): void
 
 | 错误码ID    | 错误信息 |
 |----------| -------- |
-| 801      | Capability not supported.function closeFormEditAbility can not work correctly due to limited device capabilities. |
+| 801      | CCapability not supported due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 
 **示例：**
