@@ -128,62 +128,10 @@ import { backup } from '@kit.CoreFileKit';
 | 名称        | 类型   | 只读 | 可选 | 说明                                                   |
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
 | triggerType | number |  是  |  否  | 代表不同的碎片清理方式，默认为0，表示执行器件碎片清理功能。 |
-| writeSize   | number |  是  |  否  | 碎片清理功能的清理目标，单位MB，仅做参考，文件服务系统本身会对目标大小进行计算。        |
+| writeSize   | number |  是  |  否  | 碎片清理功能的清理目标，单位MB（实际清理大小由文件服务系统根据实际情况自动调整）。        |
 | waitTime    | number |  是  |  否  | 执行碎片清理功能最大时间，超过此时间认为任务超时。        |
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
-
-## backup.fileSystemServiceRequest
-
-fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
-
-清理系统存储中文件碎片的功能。
-
-**系统接口**：此接口为HarmonyOS系统提供的接口。
-
-**需要权限**：ohos.permission.BACKUP;（当前仅支持克隆应用，其他应用调用会返回错误码13900001）
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Backup
-
-**返回值：**
-
-| 类型                | 说明                    |
-| ------------------- | ----------------------- |
-| Promise&lt;int&gt;  | Promise对象。返回执行文件系统碎片清理操作时产生的错误码。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息                |
-| -------- | ----------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
-| 13900020 | Invalid argument.|
-| 13500014 | The device does not support this feature.|
-| 13500016 | Task timed out. |
-| 13500017 | Garbage collection failed. |
-
-**示例：**
-
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { backup } from '@kit.CoreFileKit';
-
-  function getBackupVersion() {
-    try {
-      let result = backup.fileSystemServiceRequest({
-        triggerType: 0,
-        writeSize: 100,
-        waitTime: 180
-      });
-      console.info('fileSystemServiceRequest success， result: ' + result);
-    } catch (error) {
-      let err: BusinessError = error as BusinessError;
-      console.error(`fileSystemServiceRequest failed. Code: ${err.code}, message: ${err.message}`);
-    }
-  }
-  ```
 
 ## GeneralCallbacks
 
@@ -480,6 +428,58 @@ onProcess (bundleName: string, process: string)
   onProcess: (bundleName: string, process: string) => {
     console.info('onProcess bundleName : ' + bundleName);
     console.info('onProcess processInfo : ' + process);
+  }
+  ```
+
+## backup.fileSystemServiceRequest
+
+fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
+
+清理系统存储中文件碎片的功能。
+
+**系统接口**：此接口为HarmonyOS系统提供的接口。
+
+**需要权限**：ohos.permission.BACKUP;（当前仅支持克隆应用，其他应用调用会返回错误码13900001）
+
+**系统能力**：SystemCapability.FileManagement.StorageService.Backup
+
+**返回值：**
+
+| 类型                | 说明                    |
+| ------------------- | ----------------------- |
+| Promise&lt;int&gt;  | Promise对象。返回执行文件系统碎片清理操作时产生的错误码。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.              |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 13900020 | Invalid argument.|
+| 13500014 | The device does not support this feature.|
+| 13500016 | Task timed out. |
+| 13500017 | Garbage collection failed. |
+
+**示例：**
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { backup } from '@kit.CoreFileKit';
+
+  function getBackupVersion() {
+    try {
+      let result = backup.fileSystemServiceRequest({
+        triggerType: 0,
+        writeSize: 100,
+        waitTime: 180
+      });
+      console.info('fileSystemServiceRequest success， result: ' + result);
+    } catch (error) {
+      let err: BusinessError = error as BusinessError;
+      console.error(`fileSystemServiceRequest failed. Code: ${err.code}, message: ${err.message}`);
+    }
   }
   ```
 
