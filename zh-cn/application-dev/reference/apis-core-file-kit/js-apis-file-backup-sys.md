@@ -468,7 +468,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   import { backup } from '@kit.CoreFileKit';
 
-  function getBackupVersion() {
+  function fileSystemServiceRequest() {
     try {
       let result = backup.fileSystemServiceRequest({
         triggerType: 0,
