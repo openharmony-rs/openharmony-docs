@@ -212,8 +212,9 @@ Step 1. Create the **build** folder in the module directory of the project direc
 ```shell
  F:\windows\native\build-tools\cmake\bin\cmake.exe -G "Ninja" -D OHOS_STL=c++_shared -D OHOS_ARCH=arm64-v8a -D OHOS_PLATFORM=OHOS -D CMAKE_TOOLCHAIN_FILE=F:\windows\native\build\cmake\ohos.toolchain.cmake ..
 ```
-**NOTE**<br>If debugging is required, add the **-D CMAKE_BUILD_TYPE=normal** option. Both the CMake path and the toolchain file path (**ohos.toolchain.cmake**) should point to your downloaded NDK directory.
-The following figure shows the command output.
+> **NOTE**
+>
+> If debugging is required, add the **-D CMAKE_BUILD_TYPE=normal** option. The CMake path and the ohos.toolchain.cmake path are where the NDK is downloaded.<br>The following figure shows the command output.
 
 ![en-us_image_20-24-01-16-14-58](figures/en-us_image_20-24-01-16-14-58.png)
 
