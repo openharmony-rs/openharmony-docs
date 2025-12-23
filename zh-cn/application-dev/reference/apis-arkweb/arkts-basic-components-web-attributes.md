@@ -4003,7 +4003,7 @@ password(password: boolean)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 10开始废弃，从API version 23开始，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)代替。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4096,7 +4096,7 @@ tableData(tableData: boolean)
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 10开始废弃，从API version 23开始，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)代替。
+> 从API version 8开始支持，从API version 10开始废弃，建议使用[enableAutoFill<sup>23+</sup>](#enableautofill23)代替。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
