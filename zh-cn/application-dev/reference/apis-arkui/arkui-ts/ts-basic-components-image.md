@@ -752,8 +752,6 @@ contentTransition(transition: ContentTransitionEffect)
 
 期望的图像内容显示方向。
 
-**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值    | 说明                    |
