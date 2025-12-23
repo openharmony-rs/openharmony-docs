@@ -551,7 +551,7 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 | 参数名                 | 类型           | 必填 | 说明                                     |
 | ---------------------- | ------------- | ---- | ---------------------------------------- |
 | surfaceId              | string        | 是   | 对应Surface的ID，可通过预览组件获取，如[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
-| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果。true表示进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。false表示不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
+| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果。若Surface未携带变换信息，本参数不生效。<br>true：进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false：不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
 
 **返回值：**
 
@@ -561,11 +561,12 @@ createPixelMapFromSurfaceWithTransformation(surfaceId: string, transformEnabled:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 7600104 | Failed to get the data from Surface. |
+| 7600201 | Unsupported operation, e.g. on cross-platform. |
 | 7600206 | Invalid parameter. |
 | 7600305 | Failed to create the PixelMap. |
 
@@ -594,22 +595,23 @@ createPixelMapFromSurfaceWithTransformationSync(surfaceId: string, transformEnab
 | 参数名                 | 类型           | 必填 | 说明                                     |
 | ---------------------- | ------------- | ---- | ---------------------------------------- |
 | surfaceId              | string        | 是   | 对应Surface的ID，可通过预览组件获取，如[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件。 |
-| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果。true表示进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。false表示不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
+| transformEnabled       | boolean       | 是   | 是否对携带变换信息的Surface预先进行逆变换来消除PixelMap的旋转或翻转效果。若Surface未携带变换信息，本参数不生效。<br>true：进行逆变换，变换的角度与Surface携带的角度一致且方向相反，输出的PixelMap无旋转或翻转效果。<br>false：不进行逆变换，输出的PixelMap会根据Surface中的变换信息而带有旋转或翻转效果。 |
 
 **返回值：**
 
 | 类型                             | 说明                  |
 | -------------------------------- | --------------------- |
-| [PixelMap](arkts-apis-image-PixelMap.md) | 成功同步返回PixelMap对象，失败抛出异常。 |
+| [PixelMap](arkts-apis-image-PixelMap.md) | 成功会同步返回PixelMap对象，失败则抛出异常。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 7600104 | Failed to get the data from Surface. |
-| 7600206 | Invalid parameter. |
+| 7600201 | Unsupported operation, e.g. on cross-platform. |
+| 7600206 | Invalid parameter |
 | 7600305 | Failed to create the PixelMap. |
 
 **示例：**
