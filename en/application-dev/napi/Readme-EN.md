@@ -30,7 +30,7 @@
       - [Working with BigInt Using Node-API](use-napi-about-bigint.md)
       - [Working with Buffer Using Node-API](use-napi-about-buffer.md)
       - [Working with Basic Data Types Using Node-API](use-napi-basic-data-types.md)
-      - [Working with Class Using Node-API](use-napi-about-class.md)
+      - [Working with Classes Using Node-API](use-napi-about-class.md)
       - [Working with Cleanup Hooks Using Node-API](use-napi-about-cleanuphook.md)
       - [Working with Date Using Node-API](use-napi-about-date.md)
       - [Error Handling Using Node-API](use-napi-about-error.md)

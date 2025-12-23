@@ -93,6 +93,7 @@ napi_release_threadsafe_function(napi_threadsafe_function func,
 - If the **mode** value is **napi_tsfn_release**, the number of threads held by the thread-safe function is reduced by one. When the number of threads is reduced to 0, the thread-safe function is destroyed.
 
 - If the value is **napi_tsfn_abort**, this thread-safe function is disabled and cannot be called.
+
   If **napi_tsfn_abort** is set, calling this thread-safe function using **napi_call_threadsafe_function** may cause a UAF issue. When **napi_tsfn_abort** is set, the thread-safe function is disabled and cannot be called. If **napi_call_threadsafe_function** is called, the system may return **napi_closing**, indicating that the thread-safe function is being disabled, and the data passed to the thread-safe function is not put into the queue. This means that the data may not be correctly processed. If the memory to which data points has been freed (for example, the thread-safe function resources have been freed), but the caller still tries to access or use data, a Use-After-Free (UAF) issue may occur.
 
 ### napi_threadsafe_function_call_mode
@@ -164,6 +165,12 @@ Critical API: An API that needs to be executed within the critical scope. Specif
 Reference to **napi_value**, which allows you to manage the lifecycle of ArkTS objects.
 
 Note: Compared with **napi_ref**, **napi_strong_ref** is more efficient in creation but supports limited functionalities (for example, strong and weak reference conversion is not supported).
+
+**napi_sendable_ref (Extended Capability)**
+
+Reference to **napi_value**, which allows the caller to manage the lifecycle of the Sendable ArkTS object. **napi_sendable_ref** can be operated across ArkTS threads.
+
+Note: Unlike **napi_ref**, **napi_sendable_ref** supports operations across ArkTS threads. (For example, you can create **napi_sendable_ref** in thread A, obtain **napi_value** using **napi_sendable_ref** in thread B, and delete **napi_sendable_ref** in thread C. You must ensure the correct call sequence.) However, the referenced **napi_value** must be Sendable, and strong and weak reference conversion is not supported.
 
 ### Callback Types
 
@@ -306,6 +313,8 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_create_string_utf8 | Creates an ArkTS string from a UTF8-encoded C string.|
 | napi_get_value_string_latin1 | Obtains the ISO-8859-1-encoded string corresponding to the given ArkTS value.|
 | napi_get_value_string_utf8 | Obtains the UTF8-encoded string corresponding to the given ArkTS value.|
+| napi_create_external_string_utf16 | Creates an ArkTS string from a UTF-16-encoded string buffer, without performing memory copy operations.|
+| napi_create_external_string_ascii | Creates an ArkTS string from an ASCII-encoded string buffer, without performing memory copy operations.|
 
 ### Date
 
@@ -564,7 +573,11 @@ Node-API is extended based on the native modules provided by Node.js. The follow
 | napi_create_strong_reference | Creates a strong reference to an ArkTS object.|
 | napi_delete_strong_reference | Deletes a strong reference.|
 | napi_get_strong_reference_value | Obtains the ArkTS object value associated with a strong reference object.|
-
+| napi_create_strong_sendable_reference | Creates a Sendable strong reference to a Sendable ArkTS object.|
+| napi_delete_strong_sendable_reference | Deletes a Sendable strong reference.|
+| napi_get_strong_sendable_reference_value | Obtains the ArkTS object value associated with a Sendable strong reference.|
+| napi_throw_business_error | Throws an ArkTS error with the text information, where the code property of the error object is of the number type.|
+ 
 **napi_queue_async_work_with_qos**
 
 ```c
@@ -837,6 +850,36 @@ napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref)
 
 ```c
 napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
+```
+
+**napi_create_strong_sendable_reference**
+
+```c
+napi_status napi_create_strong_sendable_reference(napi_env env,
+                                                  napi_value value,
+                                                  napi_sendable_ref* result);
+```
+
+**napi_delete_strong_sendable_reference**
+
+```c
+napi_status napi_delete_strong_sendable_reference(napi_env env, napi_sendable_ref ref);
+```
+
+**napi_get_strong_sendable_reference_value**
+
+```c
+napi_status napi_get_strong_sendable_reference_value(napi_env env,
+                                                     napi_sendable_ref ref,
+                                                     napi_value* result);
+```
+
+**napi_throw_business_error**
+
+```c
+napi_status napi_throw_business_error(napi_env env,
+                                      int32_t errorCode,
+                                      const char* msg);
 ```
 
 ### Other Utilities
