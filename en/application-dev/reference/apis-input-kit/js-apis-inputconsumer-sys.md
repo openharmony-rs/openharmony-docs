@@ -7,7 +7,7 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **inputConsumer** module provides APIs for subscribing to and unsubscribing from global hotkeys. 
+The **inputConsumer** module provides APIs for subscribing to and unsubscribing from global hotkeys.
 
 > **NOTE**
 >
