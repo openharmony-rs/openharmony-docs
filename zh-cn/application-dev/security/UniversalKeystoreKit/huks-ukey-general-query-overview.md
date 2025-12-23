@@ -20,8 +20,8 @@ HUKS提供属性查询接口，支持从外部密钥管理执行通用查询操�
 | 函数名 | 说明 |
 | -------- | -------- |
 | SKF_GetDevInfo | 获取设备信息。 |
-| SKF_GetDevState | 获取设备状态。 |
-| SKF_GetPINInfo | 获得PIN码信息。 |
+| SKF_EnumDev | 枚举设备。 |
+| SKF_EnumContainer | 枚举容器。 |
 | SKF_ExportPublicKey | 导出公钥。 |
 | SKF_EnumApplication | 枚举应用。 |
 

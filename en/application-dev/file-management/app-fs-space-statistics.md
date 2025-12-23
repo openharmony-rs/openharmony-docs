@@ -36,7 +36,7 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
 | BundleStats Attribute| Description| Directory for Statistics|
 | -------- | -------- | -------- |
 | appSize | Size of the application installation files, in bytes.| Application installation file directory:<br>**/data/storage/el1/bundle**|
-| cacheSize | Size of the application cache files, in bytes.| Application cache file directories:<br>/data/storage/\${el1-el5}/base/cache<br>/data/storage/\${el1-el5}/base/haps/\${moduleName}/cache<br>/data/storage/el2/sharefiles/cache<br>/data/storage/el2/sharefiles/haps/${moduleName}/cache<br> **Note**: **\${el1-el5}** denotes the directories [el1, el2, el3, el4, el5](./app-sandbox-directory.md#application-file-directory-and-application-file-path). **\${moduleName}** indicates the module name.|
+| cacheSize | Size of the application cache files, in bytes.| Application cache file directories:<br>/data/storage/\${el1-el5}/base/cache<br>/data/storage/\${el1-el5}/base/haps/\${moduleName}/cache<br>**Note**: **\${el1-el5}** denotes the directories [el1, el2, el3, el4, el5](./app-sandbox-directory.md#application-file-directory-and-application-file-path). **\${moduleName}** indicates the module name.|
 | dataSize | Size of application files (excluding application installation files), in bytes.| The files include local files, distributed files, and database files of the application.<br>- Local file directories (parent directories of the **cache** directories):<br>/data/storage/\${el1-el5}/base<br>- Distributed application directory:<br>/data/storage/el2/distributedfiles<br>- Database directories:<br>/data/storage/\${el1-el5}/database<br> **Note**: **\${el1-el5}** denotes the directories [el1, el2, el3, el4, el5](./app-sandbox-directory.md#application-file-directory-and-application-file-path).|
 
 ## How to Develop
@@ -49,19 +49,19 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { common } from '@kit.AbilityKit';
   
   ```
-  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
 
-``` TypeScript
-      let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      let path = context.filesDir;
-      statfs.getFreeSize(path, (err: BusinessError, number: number) => {
-        if (err) {
-          console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
-        } else {
-          console.info(`Invoke getFreeSize succeeded, size is ${number}`);
-        }
-      });
-```
+   ``` TypeScript
+   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   let path = context.filesDir;
+   statfs.getFreeSize(path, (err: BusinessError, number: number) => {
+     if (err) {
+       console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
+     } else {
+       console.info(`Invoke getFreeSize succeeded, size is ${number}`);
+     }
+   });
+   ```
 
 
 - Obtain the space occupied by the current application.
@@ -70,17 +70,17 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-      storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
-        if (err) {
-          console.error(`Invoke getCurrentBundleStats failed, code is ${err.code}, message is ${err.message}`);
-        } else {
-          console.info(`Invoke getCurrentBundleStats succeeded, appsize is ${bundleStats.appSize}`);
-        }
-      });
-```
+  <!--@[storageStatistics_getCurrentBundleStats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
+  
+  ``` TypeScript
+  storageStatistics.getCurrentBundleStats((err: BusinessError, bundleStats: storageStatistics.BundleStats) => {
+    if (err) {
+      console.error(`Invoke getCurrentBundleStats failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getCurrentBundleStats succeeded, appsize is ${bundleStats.appSize}`);
+    }
+  });
+  ```
 
 
 - Obtain the total space of the built-in storage asynchronously.
@@ -89,15 +89,15 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-      storageStatistics.getTotalSize().then((number: number) => {
-        console.info(`getTotalSize successfully, number is ${number}`);
-      }).catch((err: BusinessError) => {
-        console.error(`getTotalSize failed with error, code is ${err.code}, message is ${err.message}`);
-      });
-```
+  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
+  
+  ``` TypeScript
+  storageStatistics.getTotalSize().then((number: number) => {
+    console.info(`getTotalSize successfully, number is ${number}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getTotalSize failed with error, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 
 - Obtain the total space of the built-in storage synchronously.
@@ -106,17 +106,17 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-    try {
-      let number = storageStatistics.getTotalSizeSync();
-      console.info(`getTotalSizeSync successfully, number is ${number}`);
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
-      console.error(`getTotalSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
-    }
-```
+  <!--@[storageStatistics_getTotalSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
+  
+  ``` TypeScript
+  try {
+    let number = storageStatistics.getTotalSizeSync();
+    console.info(`getTotalSizeSync successfully, number is ${number}`);
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getTotalSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
+  }
+  ```
 
 
 - Obtain the available space of the built-in storage asynchronously.
@@ -125,15 +125,15 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-      storageStatistics.getFreeSize().then((number: number) => {
-        console.info(`getFreeSize successfully, number is ${number}`);
-      }).catch((err: BusinessError) => {
-        console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
-      });
-```
+  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
+  
+  ``` TypeScript
+  storageStatistics.getFreeSize().then((number: number) => {
+    console.info(`getFreeSize successfully, number is ${number}`);
+  }).catch((err: BusinessError) => {
+    console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
+  });
+  ```
 
 
 - Obtain the available space of the built-in storage synchronously.
@@ -142,14 +142,14 @@ For details about APIs, see [ohos.file.statvfs](../reference/apis-core-file-kit/
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getFreeSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-      try {
-        let number = storageStatistics.getFreeSizeSync();
-        console.info(`getFreeSizeSync successfully, number is ${number}`);
-      } catch (err) {
-        let error: BusinessError = err as BusinessError;
-        console.error(`getFreeSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
-      }
-```
+  <!--@[storageStatistics_getFreeSizeSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
+  
+  ``` TypeScript
+  try {
+    let number = storageStatistics.getFreeSizeSync();
+    console.info(`getFreeSizeSync successfully, number is ${number}`);
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
+    console.error(`getFreeSizeSync failed with error, code is ${error.code}, message is ${error.message}`);
+  }
+  ```

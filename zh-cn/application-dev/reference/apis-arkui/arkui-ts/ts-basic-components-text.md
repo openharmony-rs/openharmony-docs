@@ -551,7 +551,7 @@ fontFamily(value: string | Resource)
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体族。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial, HarmonyOS Sans'。|
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 字体族。默认字体'HarmonyOS Sans'。<br>使用多个字体时，请用逗号','分隔，字体的优先级按顺序生效。例如：'Arial,HarmonyOS Sans'。|
 
 ### fontFeature<sup>12+</sup>
 
@@ -1260,6 +1260,22 @@ textContentAlign(textContentAlign: Optional\<TextContentAlign>)
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | textContentAlign  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[TextContentAlign](../arkui-ts/ts-text-common.md#textcontentalign21)> | 是   | 文本段落在垂直方向的对齐方式。<br/>默认(undefined和异常值情况下)和align属性设置为Center效果一致。|
+
+### textDirection<sup>23+</sup>
+
+textDirection(direction: TextDirection | undefined)
+
+指定文本排版方向，未通过该接口设置时，默认文本排版方向遵循组件布局方向。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
 
 ### textIndent<sup>10+</sup>
 
@@ -3075,3 +3091,45 @@ struct TextTest {
 ```
 
 ![selectedDragPreviewStyle](figures/textSelectedDragPreviewStyle.png)
+
+### 示例26（设置文本排版方向）
+
+该示例通过[textDirection](#textdirection23)接口设置文本排版方向。
+
+从API version 23开始，新增textDirection接口。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct TextExample {
+  @State text: string = 'Text文本排版方向示例';
+
+  build() {
+    Column({ space: 3 }) {
+      Text('Text文本排版方向DEFAULT')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .width('95%')
+        .borderWidth(1)
+      Text('Text文本排版方向RTL')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .width('95%')
+        .borderWidth(1)
+        .textDirection(TextDirection.RTL)
+      Text('Text文本排版方向RTL，文本水平方向对齐方式LEFT')
+        .fontSize(12).width('90%').margin(5)
+      Text(this.text)
+        .width('95%')
+        .borderWidth(1)
+        .textDirection(TextDirection.RTL)
+        .textAlign(TextAlign.LEFT)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![textTextDirection](figures/textTextDirection.PNG)

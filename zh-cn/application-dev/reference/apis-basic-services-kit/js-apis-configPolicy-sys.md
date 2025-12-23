@@ -28,7 +28,7 @@ getOneCfgFile(relPath: string, callback: AsyncCallback&lt;string&gt;)
 获取指定文件名优先级最高的配置文件路径。使用callback异步回调。
 例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml，最终返回优先级最高的是：/sys_pod/etc/config.xml。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -66,7 +66,7 @@ getOneCfgFile(relPath: string): Promise&lt;string&gt;
 
 获取指定文件名优先级最高的配置文件路径。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -115,7 +115,7 @@ getCfgFiles(relPath: string, callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 获取指定文件名的所有文件列表，按优先级从低到高。使用callback异步回调。
 例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -152,7 +152,7 @@ getCfgFiles(relPath: string): Promise&lt;Array&lt;string&gt;&gt;
 
 获取指定文件名的所有文件列表，按优先级从低到高。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -200,7 +200,7 @@ getCfgDirList(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;)
 
 获取配置层级目录列表，按优先级从低到高。使用callback异步回调。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -236,7 +236,7 @@ getCfgDirList(): Promise&lt;Array&lt;string&gt;&gt;
 
 获取配置层级目录列表，按优先级从低到高。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **返回值：**
 
@@ -270,7 +270,7 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, callback: AsyncCallback&
 根据提供的跟随模式获取指定文件名优先级最高的配置文件路径。使用callback异步回调。
 例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT。最终返回的是：/sys_pod/etc/carrier/46060/etc/config.xml。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -312,7 +312,7 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra: string, callback:
 根据跟随模式获取指定文件优先级最高的配置文件路径。使用callback异步回调。
 例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回的是：/sys_pod/etc/carrier/46060/etc/config.xml。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -354,7 +354,7 @@ getOneCfgFile(relPath: string, followMode: FollowXMode, extra?: string): Promise
 
 根据提供的跟随模式，获取指定文件名优先级最高的配置文件路径。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -405,7 +405,7 @@ getOneCfgFileSync(relPath: string, followMode?: FollowXMode, extra?: string): st
 
 根据提供的跟随模式，获取指定文件名优先级最高的配置文件路径。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -453,7 +453,7 @@ getCfgFiles(relPath: string, followMode: FollowXMode, callback: AsyncCallback&lt
 根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用callback异步回调。
 例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备默认卡opkey为46060，设置的followMode为configPolicy.FollowXMode.SIM_DEFAULT。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -494,7 +494,7 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra: string, callback: A
 根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用callback异步回调。
 例如，config.xml在设备中的路径按优先级升序排列为：/system/etc/config.xml、/sys_pod/etc/config.xml、/sys_pod/etc/carrier/46060/etc/config.xml。设备卡1的opkey为46060，设置的followMode为configPolicy.FollowXMode.USER_DEFINED，自定义跟随规则为"etc/carrier/${telephony.sim.opkey0}"。最终返回的是：/system/etc/config.xml, /sys_pod/etc/config.xml, /sys_pod/etc/carrier/46060/etc/config.xml。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -536,7 +536,7 @@ getCfgFiles(relPath: string, followMode: FollowXMode, extra?: string): Promise&l
 
 根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。使用Promise异步回调。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -587,7 +587,7 @@ getCfgFilesSync(relPath: string, followMode?: FollowXMode, extra?: string): Arra
 
 根据提供的跟随模式获取指定文件名所有的文件列表，按优先级从低到高。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **参数：**
 
@@ -634,7 +634,7 @@ getCfgDirListSync(): Array&lt;string&gt;
 
 获取配置层级目录列表，按优先级从低到高。
 
-**系统能力：**SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 **返回值：**
 
@@ -660,7 +660,7 @@ getCfgDirListSync(): Array&lt;string&gt;
 
 ## FollowXMode<sup>11+</sup>
 
-**系统能力:** SystemCapability.Customization.ConfigPolicy
+**系统能力：** SystemCapability.Customization.ConfigPolicy
 
 | 名称                           | 值  | 说明                                                                                            |
 | ----------------------------- | --- | ----------------------------------------------------------------------------------------------- |

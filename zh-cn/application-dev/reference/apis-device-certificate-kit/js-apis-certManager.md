@@ -762,7 +762,7 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005<sup>12+</sup> | The application is not authorized by the user. |
+| 17500005 | The application is not authorized by the user. |
 
 **示例**：
 ```ts
@@ -820,7 +820,7 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
-| 17500005<sup>12+</sup> | The application is not authorized by the user. |
+| 17500005 | The application is not authorized by the user. |
 
 **示例**：
 ```ts

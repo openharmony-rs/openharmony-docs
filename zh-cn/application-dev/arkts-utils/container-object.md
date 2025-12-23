@@ -7,6 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 容器类对象在跨线程传递时，可通过序列化的形式，确保两个线程的内容一致，从而实现跨线程数据传递。
+
 目前支持序列化的容器类对象包括[TreeSet](../reference/apis-arkts/js-apis-treeset.md)。
 
 > **说明：**

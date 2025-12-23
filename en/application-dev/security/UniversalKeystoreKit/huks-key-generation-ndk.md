@@ -27,18 +27,20 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 3. Call [OH_Huks_GenerateKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_generatekeyitem) and pass in the key alias and key property set to generate a key.
 
 > **NOTE**<br>
+>
 > If the service uses the same key alias to call the HUKS API to generate a key again, HUKS will generate a new key and overwrite the historical key file.
 
-```c++
+<!-- @[generate_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/GenerateKey/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 /* Generate an ECC key. */
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
-#include <string.h>
-OH_Huks_Result InitParamSet(
-    struct OH_Huks_ParamSet **paramSet,
-    const struct OH_Huks_Param *params,
-    uint32_t paramCount)
+#include <cstring>
+
+OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
+                            uint32_t paramCount)
 {
     OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
     if (ret.errorCode != OH_HUKS_SUCCESS) {
@@ -56,32 +58,23 @@ OH_Huks_Result InitParamSet(
     }
     return ret;
 }
-struct OH_Huks_Param g_testGenerateKeyParam[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ECC
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_NONE
-    }
-};
+
+struct OH_Huks_Param g_testGenerateKeyParam[] = {{.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ECC},
+                                                 {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_AGREE},
+                                                 {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_ECC_KEY_SIZE_256},
+                                                 {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE}};
+
 static napi_value GenerateKey(napi_env env, napi_callback_info info)
 {
     /* 1. Set the key alias. */
     const char *alias = "test_generate";
-    struct OH_Huks_Blob aliasBlob = { .size = (uint32_t)strlen(alias), .data = (uint8_t *)alias };
+    struct OH_Huks_Blob aliasBlob = {.size = (uint32_t)strlen(alias), .data = (uint8_t *)alias};
     struct OH_Huks_ParamSet *testGenerateKeyParamSet = nullptr;
     struct OH_Huks_Result ohResult;
     do {
         /* 2. Initialize the key property set. */
         ohResult = InitParamSet(&testGenerateKeyParamSet, g_testGenerateKeyParam,
-            sizeof(g_testGenerateKeyParam) / sizeof(OH_Huks_Param));
+                                sizeof(g_testGenerateKeyParam) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }

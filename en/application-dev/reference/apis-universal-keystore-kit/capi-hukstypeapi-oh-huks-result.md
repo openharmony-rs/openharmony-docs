@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_Result {...}
+```
+
 ## Overview
 
 Defines the returned data, including a status code and related description.

@@ -88,7 +88,7 @@ Build info:ALN-AL00 6.0.0.328(C00E1R4P3DEVDUlog)
 DeviceDebuggable:No
 Fingerprint:e18a33c12e1361173ec9ac1c93f2bd0c2daa88f03c7f76b228cca14bdc6a21b1
 Module name:com.samples.freezedebug
-ReleaseType:Release
+ReleaseType:release
 CpuAbi:arm64-v8a
 Version:1.0.0
 VersionCode:1000000
@@ -131,8 +131,8 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 
 | 字段 | 说明 |
 | -------- | -------- |
-| DeviceDebuggable | 设备是否可调试。<br>**说明**：从API 23开始支持。 |
-| ReleaseType | 标识应用打包时使用的SDK的发布类型。仅在应用进程提供，具体说明详见[ApplicationInfo](../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)中的releaseType。<br>**说明**：从API 23开始支持。 |
+| DeviceDebuggable | 设备的系统版本是否可调试，和开发者选项无关。<br>**说明**：从API 23开始支持。 |
+| ReleaseType | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API 23开始支持。 |
 | CpuAbi | 二进制接口类型。<br>**说明**：从API 23开始支持。 |
 | IsSystemApp | 应用是否为系统应用。<br>**说明**：从API 23开始支持。 |
 | Reason | 应用无响应原因，与应用无响应检测能力点对应。 |

@@ -65,26 +65,26 @@ export default class EntryAbility extends UIAbility {
 - 在页面中获取UIAbility实例的上下文信息，包括导入依赖资源context模块和在组件中定义一个context变量两个部分。
 
   <!-- @[Page_EventHub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/EventHubPage.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
-
+  
   @Entry
   @Component
   struct EventHubPage {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+  
     startAbilityTest(): void {
       let want: Want = {
         // Want参数信息
-      // ···
+        // ...
       };
       this.context.startAbility(want);
     }
-
+  
     // 页面展示
     build() {
-      // ···
+      // ...
     }
   }
   ```
@@ -93,10 +93,10 @@ export default class EntryAbility extends UIAbility {
 
   
   <!-- @[basicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
-
+  
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
-  // ···
+  // ...
   
   @Entry
   @Component
@@ -105,14 +105,14 @@ export default class EntryAbility extends UIAbility {
       let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
       let want: Want = {
         // Want参数信息
-      // ···
+        // ...
       };
       context.startAbility(want);
     }
-
+  
     // 页面展示
     build() {
-      // ···
+      // ...
     }
   }
   ```
@@ -125,18 +125,19 @@ export default class EntryAbility extends UIAbility {
   import { common, Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   const DOMAIN = 0x0000;
-
+  
   @Entry
   @Component
   struct BasicUsage {
-    // ···
+    // ...
+  
     // 页面展示
     build() {
-      // ···
       Column() {
-        // ···
+        // ...
+  
         Button('FuncAbilityB')
           .onClick(() => {
             let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -157,9 +158,9 @@ export default class EntryAbility extends UIAbility {
               hilog.error(DOMAIN, 'terminateSelf', `terminateSelf failed, code is ${code}, message is ${message}.`);
             }
           })
-        // ···
+          // ...
       }
-      // ···
+      // ...
     }
   }
   ```
@@ -177,12 +178,12 @@ export default class EntryAbility extends UIAbility {
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
-
+    
     @Entry
     @Component
     struct Index {
       @State context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
+    
       build() {
         List({ space: 4 }) {
           ListItem() {
@@ -190,23 +191,23 @@ export default class EntryAbility extends UIAbility {
               this.context.terminateSelf()
             })
               .width('100%')
-
+    
           }
-
+    
           ListItem() {
-            // app.string.Start_UIAbilityB资源文件中的value值为'拉起UIAbilityB'
+            // 请将$r('app.string.Start_UIAbilityB')替换为实际资源文件，在本示例中该资源文件的value值为"拉起UIAbilityB"
             Button($r('app.string.Start_UIAbilityB'))
               .onClick((event: ClickEvent) => {
-              let want: Want = {
-                bundleName: this.context.abilityInfo.bundleName,
-                abilityName: 'UIAbilityB',
-              };
-
-              this.context.startAbility(want, (err: BusinessError) => {
-                if (err.code) {
-                  console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}.`);
-                }
-              });
+                let want: Want = {
+                  bundleName: this.context.abilityInfo.bundleName,
+                  abilityName: 'UIAbilityB',
+                };
+    
+                this.context.startAbility(want, (err: BusinessError) => {
+                  if (err.code) {
+                    console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}.`);
+                  }
+                });
             })
               .width('100%')
           }

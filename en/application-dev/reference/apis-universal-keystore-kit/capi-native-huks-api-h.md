@@ -51,7 +51,7 @@ The preceding system capability is available since API version 20. From API vers
 
 ### OH_Huks_GetSdkVersion()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_GetSdkVersion(struct OH_Huks_Blob *sdkVersion)
 ```
 
@@ -75,7 +75,7 @@ Obtains the current HUKS SDK version.
 
 ### OH_Huks_GenerateKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_GenerateKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)
 ```
 
@@ -101,7 +101,7 @@ Generates a key.
 
 ### OH_Huks_ImportKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_ImportKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *key)
 ```
 
@@ -127,7 +127,7 @@ Imports a key in plaintext.
 
 ### OH_Huks_ImportWrappedKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_ImportWrappedKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_Blob *wrappingKeyAlias, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *wrappedKeyData)
 ```
 
@@ -154,7 +154,7 @@ Imports a key in ciphertext.
 
 ### OH_Huks_ExportPublicKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_ExportPublicKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *key)
 ```
 
@@ -180,7 +180,7 @@ Exports the public key.
 
 ### OH_Huks_DeleteKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_DeleteKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)
 ```
 
@@ -205,7 +205,7 @@ Deletes a key.
 
 ### OH_Huks_GetKeyItemParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_GetKeyItemParamSet(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSetIn, struct OH_Huks_ParamSet *paramSetOut)
 ```
 
@@ -231,7 +231,7 @@ Obtains the properties of a key.
 
 ### OH_Huks_IsKeyItemExist()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_IsKeyItemExist(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet)
 ```
 
@@ -256,7 +256,7 @@ Checks whether a key exists.
 
 ### OH_Huks_AttestKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_AttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)
 ```
 
@@ -284,7 +284,7 @@ Obtains the certificate chain of a key. This API is open only to system applicat
 
 ### OH_Huks_AnonAttestKeyItem()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_AnonAttestKeyItem(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_CertChain *certChain)
 ```
 
@@ -310,7 +310,7 @@ Obtains the certificate chain of a key.<br> This function involves time-consumin
 
 ### OH_Huks_InitSession()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_InitSession(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *handle, struct OH_Huks_Blob *token)
 ```
 
@@ -346,7 +346,7 @@ Initializes a key session. This function returns a session handle (mandatory) an
 
 ### OH_Huks_UpdateSession()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_UpdateSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)
 ```
 
@@ -382,7 +382,7 @@ Adds data by segment for the key operation, performs the related key operation, 
 
 ### OH_Huks_FinishSession()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_FinishSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *outData)
 ```
 
@@ -418,7 +418,7 @@ Finishes a key session.
 
 ### OH_Huks_AbortSession()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_AbortSession(const struct OH_Huks_Blob *handle, const struct OH_Huks_ParamSet *paramSet)
 ```
 
@@ -450,7 +450,7 @@ Aborts a key session.
 
 ### OH_Huks_ListAliases()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_ListAliases(const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_KeyAliasSet **outData)
 ```
 
@@ -475,7 +475,7 @@ Obtains the key alias set.
 
 ### OH_Huks_WrapKey()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_WrapKey(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *wrappedKey)
 ```
 
@@ -501,7 +501,7 @@ Exports a wrapped key.
 
 ### OH_Huks_UnwrapKey()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_UnwrapKey(const struct OH_Huks_Blob *keyAlias, const struct OH_Huks_ParamSet *paramSet, struct OH_Huks_Blob *wrappedKey)
 ```
 

@@ -64,6 +64,7 @@
    <!-- @[implement_child_thread_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/TaskSendDataUsage.ets) -->
 
 3. 最后，在宿主线程通过onReceiveData()接口接收消息。
+
    这样宿主线程就可以通过notice()接口接收到Task发送的数据。
 
    ```ts

@@ -19,7 +19,7 @@ Powered by the ArkTS-based declarative development paradigm, ArkUI is a simplifi
 
 - **Component**
 
-  Components are essential elements of the UI, working together to shape the UI. They can be classified as built-in components provided by ArkUI and custom components defined by developers. The built-in components include buttons, radio buttons, progress indicators, and text. You can set the rendering effect of these components in method chaining mode. You can combine built-in components to create custom components. In this way, page components are divided into independent UI units to implement individual creation, development, and reuse of different units on pages, making pages more engineering-oriented.
+  Components are essential elements of the UI, working together to shape the UI. They can be classified as system components provided by ArkUI and custom components defined by developers. The system components include buttons, radio buttons, progress indicators, and text. You can set the rendering effect of these components in method chaining mode. You can combine system components to create custom components. In this way, page components are divided into independent UI units to implement individual creation, development, and reuse of different units on pages, making pages more engineering-oriented.
 
 - **Page routing and component navigation**
 

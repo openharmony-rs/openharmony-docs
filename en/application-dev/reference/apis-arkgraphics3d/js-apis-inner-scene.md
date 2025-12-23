@@ -1218,3 +1218,45 @@ function getDefaultRenderContextTest() {
   }
 }
 ```
+
+### cloneNode<sup>23+</sup>
+cloneNode(node: Node, parent: Node, name: string): Node | null
+
+Imports a node by cloning it from another scene.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | Yes| Source node to clone.|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) | Yes| Parent node under which the clone will be placed in the target scene.|
+| name | string | Yes| Name of the cloned node, which can be customized without specific constraints.|
+
+**Return value**
+| Type| Description|
+| ---- | ---- |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | Cloned node. If the operation fails, null is returned.|
+
+**Example**
+```ts
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+function CloneNode() {
+  Scene.load().then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+    Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+      .then(async (extScene: Scene) => {
+        let extNode: Node | null = extScene.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
+        console.info("test cloneNode");
+        let clone: Node | null = result.cloneNode(extNode, result.root, "scene");
+        if (clone) {
+          clone.position.x = 5;
+        }
+      });
+  });
+}
+```
