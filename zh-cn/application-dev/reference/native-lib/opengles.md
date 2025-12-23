@@ -317,7 +317,7 @@ EGLBoolean eglInitialize(EGLDisplay display,    // 指定EGL显示连接
 EGL初始化成功之后，需要确定可用渲染表面的类型和配置，目前支持两种方法：
 - 可以指定一组需要的配置，使用eglChooseConfig使EGL推荐最佳配置。
 
-当没有特殊配置需求时建议使用此种方法，因为这样更容易获得最佳配置。
+  当没有特殊配置需求时建议使用此种方法，因为这样更容易获得最佳配置。
 
   ```cpp
   EGLBoolean eglChooseConfig(EGLDisplay dpy,     // EGL显示连接句柄，标识了要进行配置选择的显示连接。
@@ -338,7 +338,7 @@ EGL初始化成功之后，需要确定可用渲染表面的类型和配置，�
   };
   eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
   ```
-在调用eglChooseConfig函数后，系统将根据指定的配置属性attribList返回满足需求的EGL配置，这些配置将存储在mEGLConfig参数中。示例代码中的configsNum参数传入值为1，表明mEGLConfig数组的大小为1，即仅能保存一组可用配置。尽管此设置限制了返回配置的数量，但在大多数应用场景下已能满足基本需求。同时，configsNum参数将实际保存满足指定属性的配置总数，为开发者提供完整的可选配置数量信息。
+  在调用eglChooseConfig函数后，系统将根据指定的配置属性attribList返回满足需求的EGL配置，这些配置将存储在mEGLConfig参数中。示例代码中的configsNum参数传入值为1，表明mEGLConfig数组的大小为1，即仅能保存一组可用配置。尽管此设置限制了返回配置的数量，但在大多数应用场景下已能满足基本需求。同时，configsNum参数将实际保存满足指定属性的配置总数，为开发者提供完整的可选配置数量信息。
 
 - 也可以使用eglGetConfigs查询支持的所有配置，并使用eglGetConfigAttrib筛选需要的配置。
 
