@@ -17040,14 +17040,14 @@ ArkTS-Sta示例：
 
 ```ts
 // xxx.ets
-import { Entry, Component, Column, Web, Button, SiteIsolationMode } from '@ohos.arkui.component'
+import { Entry, Component, Column, Web, Button } from '@ohos.arkui.component'
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
