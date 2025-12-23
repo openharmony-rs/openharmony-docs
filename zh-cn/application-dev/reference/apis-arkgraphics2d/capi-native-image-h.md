@@ -16,6 +16,8 @@
 
 **库：** libnative_image.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeImage
+
 **起始版本：** 9
 
 **相关模块：** [OH_NativeImage](capi-oh-nativeimage.md)
