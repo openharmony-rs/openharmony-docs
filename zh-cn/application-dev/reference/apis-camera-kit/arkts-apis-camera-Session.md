@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
 
@@ -22,6 +23,10 @@ beginConfig(): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **错误码：**
 
@@ -58,6 +63,10 @@ commitConfig(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明                  |
@@ -75,12 +84,30 @@ commitConfig(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function commitConfig(session: camera.Session): void {
   session.commitConfig((err: BusinessError) => {
     if (err) {
+      console.error(`The commitConfig call failed. error code: ${err.code}`);
+      return;
+    }
+    console.info('Callback invoked to indicate the commit config success.');
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function commitConfig(session: camera.Session): void {
+  session.commitConfig((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
       console.error(`The commitConfig call failed. error code: ${err.code}`);
       return;
     }
@@ -99,6 +126,10 @@ commitConfig(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -116,6 +147,8 @@ commitConfig(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -123,6 +156,21 @@ function commitConfig(session: camera.Session): void {
   session.commitConfig().then(() => {
     console.info('Promise returned to indicate the commit config success.');
   }).catch((error: BusinessError) => {
+    // 失败返回错误码error.code并处理。
+    console.error(`The commitConfig call failed. error code: ${error.code}`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function commitConfig(session: camera.Session): void {
+  session.commitConfig().then(() => {
+    console.info('Promise returned to indicate the commit config success.');
+  }).catch((error: Error) => {
     // 失败返回错误码error.code并处理。
     console.error(`The commitConfig call failed. error code: ${error.code}`);
   });
@@ -138,6 +186,10 @@ canAddInput(cameraInput: CameraInput): boolean
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -171,6 +223,10 @@ addInput(cameraInput: CameraInput): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -214,6 +270,10 @@ removeInput(cameraInput: CameraInput): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                          | 必填 | 说明                      |
@@ -256,6 +316,10 @@ canAddOutput(cameraOutput: CameraOutput): boolean
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名        | 类型                          | 必填 | 说明                     |
@@ -288,6 +352,10 @@ addOutput(cameraOutput: CameraOutput): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -331,6 +399,10 @@ removeOutput(cameraOutput: CameraOutput): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名           | 类型                             | 必填 | 说明                      |
@@ -373,6 +445,10 @@ start(callback: AsyncCallback\<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                  | 必填 | 说明                 |
@@ -391,12 +467,30 @@ start(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function startCaptureSession(session: camera.Session): void {
   session.start((err: BusinessError) => {
     if (err) {
+      console.error(`Failed to start the session, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the session start success.');
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startCaptureSession(session: camera.Session): void {
+  session.start((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
       console.error(`Failed to start the session, error code: ${err.code}.`);
       return;
     }
@@ -415,6 +509,10 @@ start(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -433,6 +531,8 @@ start(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -441,6 +541,21 @@ function startCaptureSession(session: camera.Session): void {
     console.info('Promise returned to indicate the session start success.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to start the session, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function startCaptureSession(session: camera.Session): void {
+  session.start().then(() => {
+    console.info('Promise returned to indicate the session start success.');
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to start the session, error code: ${err.code}.`);
   });
 }
 ```
@@ -454,6 +569,10 @@ stop(callback: AsyncCallback\<void\>): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -471,12 +590,30 @@ stop(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function stopCaptureSession(session: camera.Session): void {
   session.stop((err: BusinessError) => {
     if (err) {
+      console.error(`Failed to stop the session, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate the session stop success.');
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopCaptureSession(session: camera.Session): void {
+  session.stop((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
       console.error(`Failed to stop the session, error code: ${err.code}.`);
       return;
     }
@@ -495,6 +632,10 @@ stop(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                |
@@ -511,6 +652,8 @@ stop(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -519,6 +662,21 @@ function stopCaptureSession(session: camera.Session): void {
     console.info('Promise returned to indicate the session stop success.');
   }).catch((error: BusinessError) => {
     console.error(`Failed to stop the session, error code: ${error.code}.`);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stopCaptureSession(session: camera.Session): void {
+  session.stop().then(() => {
+    console.info('Promise returned to indicate the session stop success.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to stop the session, error code: ${err.code}.`);
   });
 }
 ```
@@ -532,6 +690,10 @@ release(callback: AsyncCallback\<void\>): void
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
 
 **参数：**
 
@@ -549,12 +711,30 @@ release(callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function releaseCaptureSession(session: camera.Session): void {
   session.release((err: BusinessError) => {
     if (err) {
+      console.error(`Failed to release the session instance, error code: ${err.code}.`);
+      return;
+    }
+    console.info('Callback invoked to indicate that the session instance is released successfully.');
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releaseCaptureSession(session: camera.Session): void {
+  session.release((err: BusinessError | null) => {
+    if (err && err!.code !== 0) {
       console.error(`Failed to release the session instance, error code: ${err.code}.`);
       return;
     }
@@ -573,6 +753,10 @@ release(): Promise\<void\>
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型            | 说明                     |
@@ -589,6 +773,8 @@ release(): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -600,3 +786,19 @@ function releaseCaptureSession(session: camera.Session): void {
   });
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function releaseCaptureSession(session: camera.Session): void {
+  session.release().then(() => {
+    console.info('Promise returned to indicate that the session instance is released successfully.');
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to release the session instance, error code: ${err.code}.`);
+  });
+}
+```
+

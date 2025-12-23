@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 20开始支持。
 
@@ -27,6 +28,10 @@ setWhiteBalanceMode(mode: WhiteBalanceMode): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                                      | 必填 | 说明                    |
@@ -42,12 +47,27 @@ setWhiteBalanceMode(mode: WhiteBalanceMode): void
 | 7400101                |  Parameter missing or parameter type incorrect.        |
 | 7400103                |  Session not config.                                   |
 
-**示例：**
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function setWhiteBalanceMode(session: camera.PhotoSession | camera.VideoSession): void {
+  try {
+    session.setWhiteBalanceMode(camera.WhiteBalanceMode.DAYLIGHT);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The setWhiteBalanceMode call failed. error code: ${err.code}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setWhiteBalanceMode(session: camera.PhotoSession): void {
   try {
     session.setWhiteBalanceMode(camera.WhiteBalanceMode.DAYLIGHT);
   } catch (error) {
@@ -66,6 +86,10 @@ getWhiteBalanceMode(): WhiteBalanceMode
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
 
 **返回值：**
 
@@ -100,7 +124,9 @@ function getWhiteBalanceMode(session: camera.PhotoSession | camera.VideoSession)
 
 ## setWhiteBalance<sup>20+</sup>
 
-setWhiteBalance(whiteBalance: number): void
+ArkTS-Dyn: setWhiteBalance(whiteBalance: number): void
+
+ArkTS-Sta: setWhiteBalance(whiteBalance: int): void
 
 设置手动白平衡值。
 
@@ -108,11 +134,15 @@ setWhiteBalance(whiteBalance: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| whiteBalance | number | 是   | 设置手动白平衡值。 |
+| whiteBalance | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 设置手动白平衡值。 |
 
 **错误码：**
 
@@ -124,6 +154,8 @@ setWhiteBalance(whiteBalance: number): void
 | 7400103                |  Session not config.                                   |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,9 +171,27 @@ function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession): vo
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setWhiteBalance(session: camera.PhotoSession | camera.VideoSession): void {
+  try {
+    let whiteBalance: int = 1000;
+    session.setWhiteBalance(whiteBalance);
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The setWhiteBalance call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## getWhiteBalance<sup>20+</sup>
 
-getWhiteBalance(): number
+ArkTS-Dyn:  getWhiteBalance(): number
+
+ArkTS-Sta:  getWhiteBalance(): int
 
 获取当前手动白平衡的值。
 
@@ -149,11 +199,15 @@ getWhiteBalance(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| number    | 返回当前白平衡值。 |
+| ArkTS-Dyn: number<br />ArkTS-Sta: int | 返回当前白平衡值。 |
 
 **错误码：**
 
@@ -165,11 +219,30 @@ getWhiteBalance(): number
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 function getWhiteBalance(session: camera.PhotoSession | camera.VideoSession): number {
   let whiteBalance: number = 0;
+  try {
+    whiteBalance = session.getWhiteBalance();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error(`The getWhiteBalance call failed. error code: ${err.code}`);
+  }
+  return whiteBalance;
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getWhiteBalance(session: camera.PhotoSession | camera.VideoSession): int {
+  let whiteBalance: int = 0;
   try {
     whiteBalance = session.getWhiteBalance();
   } catch (error) {
