@@ -756,7 +756,7 @@ Parse json object exception.
 
 **错误描述**
 
-解析module.json/config.json文件异常。
+解析module.json或config.json文件异常。
 
 **可能原因**
 
