@@ -16990,7 +16990,7 @@ setSiteIsolationMode(mode: SiteIsolationMode): void
 
 **ArkTS-Dyn起始版本：** 21
 
-**ArkTS-Sta起始版本：** 21
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
