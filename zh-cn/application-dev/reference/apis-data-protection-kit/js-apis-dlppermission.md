@@ -1126,7 +1126,7 @@ isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
 >**说明：**
 >
-> 该接口由[MDM](../../mdm/mdm-kit-intro.md)配置使能，且使能场景为2B设备，2C、2D设备无需关注该接口且调用该接口返回值为false。
+> 该接口由[MDM](../../mdm/mdm-kit-intro.md)配置使能，且使能场景为2B设备。2C、2D设备无需关注该接口，如若调用该接口，则返回值为false。
 
 **系统能力：** SystemCapability.Security.DataLossPrevention
 
