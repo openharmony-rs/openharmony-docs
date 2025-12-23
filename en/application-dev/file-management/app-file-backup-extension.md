@@ -105,53 +105,46 @@ The following table lists the key APIs of the backup and restore extension capab
     }
     ```
 
-    <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
-
-``` TypeScript
-// [Start on_release]
-import { BackupExtensionAbility } from '@kit.CoreFileKit';
-// [StartExclude on_release]
-import { BundleVersion } from '@kit.CoreFileKit';
-// [EndExclude on_release]
-// ···
-
-// [StartExclude on_release]
-interface ErrorInfo {
-  type: string,
-  errorCode: number,
-  errorInfo: string
-}
-// [EndExclude on_release]
-
-// ···
-
-class BackupExt extends BackupExtensionAbility {
-  // [StartExclude on_release]
-  //onBackupEx
-  async onBackupEx(backupInfo: string): Promise<string> {
-    console.info('onBackupEx ok');
-    let errorInfo: ErrorInfo = {
-      type: 'ErrorInfo',
-      errorCode: 0,
-      errorInfo: 'app diy error info'       
-    }
-    return JSON.stringify(errorInfo);
-  }
-
-  // onRestoreEx
-  async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
-    console.info(`onRestoreEx begin`);
-    let errorInfo: ErrorInfo = {
-      type: 'ErrorInfo',
-      errorCode: 0,
-      errorInfo: 'app diy error info'
-    }
-    return JSON.stringify(errorInfo);
-  }
-  // [EndExclude on_release]
-// ···
-}
-```
+   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   
+   ``` TypeScript
+   import { BackupExtensionAbility } from '@kit.CoreFileKit';
+   import { BundleVersion } from '@kit.CoreFileKit';
+   // ...
+   
+   interface ErrorInfo {
+     type: string,
+     errorCode: number,
+     errorInfo: string
+   }
+   
+   // ...
+   
+   class BackupExt extends BackupExtensionAbility {
+     //onBackupEx
+     async onBackupEx(backupInfo: string): Promise<string> {
+       console.info('onBackupEx ok');
+       let errorInfo: ErrorInfo = {
+         type: 'ErrorInfo',
+         errorCode: 0,
+         errorInfo: 'app diy error info'       
+       }
+       return JSON.stringify(errorInfo);
+     }
+   
+     // onRestoreEx
+     async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
+       console.info(`onRestoreEx begin`);
+       let errorInfo: ErrorInfo = {
+         type: 'ErrorInfo',
+         errorCode: 0,
+         errorInfo: 'app diy error info'
+       }
+       return JSON.stringify(errorInfo);
+     }
+     // ...
+   }
+   ```
 
 
 4. Starting from API version 20, to perform special operations after application data backup and restore, such as cleaning up temporary files created during these processes, you can customize `BackupExtensionAbility` inherited by the class in the `BackupExtension.ets` file and override the `onRelease` method for execution when the backup or restore is complete.
@@ -160,50 +153,43 @@ class BackupExt extends BackupExtensionAbility {
 
    The following example shows how to implement `onRelease` when the temporary file directory needs to be removed.
 
-    <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->
-
-``` TypeScript
-import { BackupExtensionAbility } from '@kit.CoreFileKit';
-// ···
-// [StartExclude on_backup_restore]
-import { fileIo } from '@kit.CoreFileKit';
-// [EndExclude on_backup_restore]
-
-// ···
-
-// [StartExclude on_backup_restore]
-const SCENARIO_BACKUP: number = 1;
-const SCENARIO_RESTORE: number = 2;
-// Temporary directory to be removed.
-let filePath: string = '/data/storage/el2/base/.temp/';
-// [EndExclude on_backup_restore]
-
-class BackupExt extends BackupExtensionAbility {
-// ···
-  // [StartExclude on_backup_restore]
-  // onRelease
-  async onRelease(scenario: number): Promise<void> {
-    try {
-      if (scenario == SCENARIO_BACKUP) {
-        // In the backup scenario, the application implements the processing. The following describes how to delete temporary files generated during backup.
-        console.info(`onRelease begin`);
-        await fileIo.rmdir(filePath);
-        console.info(`onRelease end, rmdir succeed`);
-      }
-      if (scenario == SCENARIO_RESTORE) {
-        // In the restore scenario, the application implements the processing. The following describes how to remove temporary files generated during restoration.
-        console.info(`onRelease begin`);
-        await fileIo.rmdir(filePath);
-        console.info(`onRelease end, rmdir succeed`);
-      }
-    } catch (error) {
-      console.error(`onRelease failed with error. Code: ${error.code}, message: ${error.message}`);
-    }
-  }
-  // [EndExclude on_backup_restore]
-}
-// [End on_backup_restore]
-```
+   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   
+   ``` TypeScript
+   import { BackupExtensionAbility } from '@kit.CoreFileKit';
+   // ...
+   import { fileIo } from '@kit.CoreFileKit';
+   
+   // ...
+   
+   const SCENARIO_BACKUP: number = 1;
+   const SCENARIO_RESTORE: number = 2;
+   // Temporary directory to be removed.
+   let filePath: string = '/data/storage/el2/base/.temp/';
+   
+   class BackupExt extends BackupExtensionAbility {
+     // ...
+     // onRelease
+     async onRelease(scenario: number): Promise<void> {
+       try {
+         if (scenario == SCENARIO_BACKUP) {
+           // In the backup scenario, the application implements the processing. The following describes how to delete temporary files generated during backup.
+           console.info(`onRelease begin`);
+           await fileIo.rmdir(filePath);
+           console.info(`onRelease end, rmdir succeed`);
+         }
+         if (scenario == SCENARIO_RESTORE) {
+           // In the restore scenario, the application implements the processing. The following describes how to remove temporary files generated during restoration.
+           console.info(`onRelease begin`);
+           await fileIo.rmdir(filePath);
+           console.info(`onRelease end, rmdir succeed`);
+         }
+       } catch (error) {
+         console.error(`onRelease failed with error. Code: ${error.code}, message: ${error.message}`);
+       }
+     }
+   }
+   ```
 
 
 ### Description of the Metadata Profile
@@ -211,46 +197,66 @@ class BackupExt extends BackupExtensionAbility {
 | Field            | Type  | Mandatory| Description                                                        |
 | -------------------- | ---------- | ---- | ------------------------------------------------------------ |
 | allowToBackupRestore | Boolean    | Yes  | Whether to enable backup and restore. The value **true** means backup and restore are enabled; the value **false** (default) means the opposite.                             |
-| includes             | String array| No  | Files and directories to be backed up in the application sandbox directory.<br>The pattern string that does not start with a slash (/) indicates a relative path.<br>When configuring `includes`, ensure that the configured path range is included in the supported paths listed in the following code snippet.<br>If `includes` is not configured, the backup and restore framework uses the **includes** default (as listed in the code snippet below).|
+| includes             | String array| No  | Files and directories to be backed up in the application sandbox directory.<br>The pattern string that does not start with a slash (/) indicates a relative path.<br>When configuring `includes`, ensure that the configured path range is included in the supported paths listed in the following code snippet. **The el3 and el4 paths cannot be backed up**.<br>If `includes` is not configured, the backup and restore framework uses the **includes** default (as listed in the code snippet below).|
 | excludes             | String array| No  | Items in `includes` that do not need to be backed up. The value is in the same format as `includes`.<br>When configuring `excludes`, ensure that it is within the subset of `includes`.<br>If `excludes` is not configured, the backup and restore framework uses an empty array by default.|
 | fullBackupOnly       | Boolean    | No  | Whether to use the default restore directory of the application. The default value is **false**. If the value is **true**, data will be cached in a temporary directory obtained by [backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#properties) in the data restore process. If it is **false** or not specified, the restored data is decompressed in **/**.|
 | restoreDeps          | String    | No  | **(Not recommended)** Dependencies for the application to restore. The default value is "". You need to configure the names of the dependent applications. Currently, only one dependency is supported. The configured dependency takes effect only in the context of one restore task. If no dependent application is detected, the dependency description will be ignored and the restore task continues. The application restore will fail if the dependent application is not restored or fails to be restored.|
-| extraInfo            | JSON string    | No  | Additional information to be passed.                                  |
+| extraInfo            | JSON string    | No  | Additional information to be passed.            |
+| compatibleDirMapping            | Object array    | No  | This field enables data backup from path A and restoration to path B. Each element in the array is an object containing two keys: **backupDir** (path to be backed up) and **restoreDir** (path to be restored to).<br> **Note**: This field is supported since API version 23.            |  
 
-> **NOTE**
->
-> When setting **fullBackupOnly**, observe the following:
->
-> - If **fullBackupOnly** is set to **false**, the restored data will be decompressed in the root directory **/**, and the file with the same name in the directory will be overwritten.
-> - If **fullBackupOnly** is set to **true**, the restored data will be decompressed in a temporary directory. You need to implement the data restoration logic in **OnRestore** or **OnRestoreEx**.
->
-> You can determine the data restore mode to use based on service requirements.
->
-> Example:
-> Assume that the application backup path is **data/storage/el2/base/files/A/**. If **fullBackupOnly** is **false**, the restored data will be decompressed to the **/data/storage/el2/base/files/A/** directory. If **fullBackupOnly** is **true**, data will be decompressed to the temporary directory **[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)/restore/data/storage/el2/base/files/A/**.
+**Field Description**
+1. When setting **fullBackupOnly**, observe the following:
 
-The following lists the paths supported by **includes**:
+    - If **fullBackupOnly** is set to **false**, the restored data will be decompressed in the root directory **/**, and the file with the same name in the directory will be overwritten.
+    - If **fullBackupOnly** is set to **true**, the restored data will be decompressed in a temporary directory. You need to implement the data restoration logic in **OnRestore** or **OnRestoreEx**.
 
-```json
-{
-    "includes": [
-    "data/storage/el1/database/",
-    "data/storage/el1/base/files/",
-    "data/storage/el1/base/preferences/",
-    "data/storage/el1/base/haps/*/files/",
-    "data/storage/el1/base/haps/*/preferences/",
-    "data/storage/el2/database/",
-    "data/storage/el2/base/files/",
-    "data/storage/el2/base/preferences/",
-    "data/storage/el2/base/haps/*/files/",
-    "data/storage/el2/base/haps/*/preferences/",
-    "data/storage/el2/distributedfiles/",
-    "data/storage/el5/database/",
-    "data/storage/el5/base/files/",
-    "data/storage/el5/base/preferences/",
-    "data/storage/el5/base/haps/*/files/",
-    "data/storage/el5/base/haps/*/preferences/"
-    ]
-}
-```
+    You can determine the data restore mode to use based on service requirements.
+
+   **Example:**
+Assume that the application backup path is **data/storage/el2/base/files/A/**. During restoration:
+    - If **fullBackupOnly** is set to **false**, data will be directly decompressed to the **/data/storage/el2/base/files/A/** directory.
+    - If **fullBackupOnly** is set to **true**, data will be decompressed to the **/restore/data/storage/el2/base/files/A/** directory under the temporary path (**backupDir**).
+
+2. When setting **compatibleDirMapping**, observe the following: 
+    The length of the array cannot exceed 1,000. 
+    The **restoreDir** configuration in each element must be included in the **includes** configuration. Otherwise, the **compatibleDirMapping** configuration will not take effect. This field does not support wildcards. 
+    Neither **backupDir** nor **restoreDir** in each element can contain the string \|\|\|\|.
+
+    **Example of the field configuration:** 
+    "compatibleDirMapping": [
+    {"backupDir": "/data/storage/el2/base/files/nulldir", "restoreDir": "/data/storage/el2/base/files/restore/nulldir"},
+    {"backupDir": "/data/storage/el2/base/files/zerofile", "restoreDir": "/data/storage/el2/base/files/restore/zerofile"}
+]    
+
+    Simply adding this configuration item will not take effect. You need to return the list of paths to be enabled in JSON string format in the **onBackupEx** implementation. 
+    The path list must match the **restoreDir** values configured in the **compatibleDirMapping** field of **backup_config**. It can include all or a subset of these paths, or be left empty to indicate that path mapping is disabled.
+
+    **Example of the return value of onBackupEx:** 
+    {"compatibleDirMapping" : ["/data/storage/el2/base/files/restore/nulldir", "/data/storage/el2/base/files/restore/zerofile"] } 
+
+
+3. The following lists the paths supported by **includes**:
+
+    ```json
+    {
+        "includes": [
+            "data/storage/el1/database/",
+            "data/storage/el1/base/files/",
+            "data/storage/el1/base/preferences/",
+            "data/storage/el1/base/haps/*/files/",
+            "data/storage/el1/base/haps/*/preferences/",
+            "data/storage/el2/database/",
+            "data/storage/el2/base/files/",
+            "data/storage/el2/base/preferences/",
+            "data/storage/el2/base/haps/*/files/",
+            "data/storage/el2/base/haps/*/preferences/",
+            "data/storage/el2/distributedfiles/",
+            "data/storage/el5/database/",
+            "data/storage/el5/base/files/",
+            "data/storage/el5/base/preferences/",
+            "data/storage/el5/base/haps/*/files/",
+            "data/storage/el5/base/haps/*/preferences/"
+        ]
+    }
+    ```
 

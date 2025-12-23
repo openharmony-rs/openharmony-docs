@@ -20,22 +20,22 @@ The distributed file system provides applications the capability for accessing f
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-  let atManager = abilityAccessCtrl.createAtManager();
-  try {
-    // Request the permission from users in the form of a dialog box.
-    atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((result) => {
-      console.info(`request permission result: ${JSON.stringify(result)}`);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
-    })
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`Catch err. Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
-  }
-```
+   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
+   
+   ``` TypeScript
+   let atManager = abilityAccessCtrl.createAtManager();
+   try {
+     // Request the permission from users in the form of a dialog box.
+     atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC']).then((result) => {
+       console.info(`request permission result: ${JSON.stringify(result)}`);
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
+     })
+   } catch (error) {
+     let err: BusinessError = error as BusinessError;
+     console.error(`Catch err. Failed to request permissions from user. Code: ${err.code}, message: ${err.message}`);
+   }
+   ```
 
 
 3. Implement cross-device access to the files of your application.<br>
@@ -48,26 +48,26 @@ The distributed file system provides applications the capability for accessing f
    import { common } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!--@[access_A_write_distributed_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-  let pathDir: string = context.distributedFilesDir;
-  // Obtain the file path of the distributed directory.
-  let filePath: string = pathDir + '/test.txt';
-
-  try {
-    // Create a file in the distributed directory.
-    let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    console.info('Succeeded in creating.');
-    // Write data to the file.
-    fs.writeSync(file.fd, 'content');
-    // Close the file.
-    fs.closeSync(file.fd);
-  } catch (error) {
-    let err: BusinessError = error as BusinessError;
-    console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
-  }
-```
+   <!--@[access_A_write_distributed_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
+   
+   ``` TypeScript
+   let pathDir: string = context.distributedFilesDir;
+   // Obtain the file path of the distributed directory.
+   let filePath: string = pathDir + '/test.txt';
+   
+   try {
+     // Create a file in the distributed directory.
+     let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     console.info('Succeeded in creating.');
+     // Write data to the file.
+     fs.writeSync(file.fd, 'content');
+     // Close the file.
+     fs.closeSync(file.fd);
+   } catch (error) {
+     let err: BusinessError = error as BusinessError;
+     console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
+   }
+   ```
 
 
    Device B initiates a link setup request to device A. After the link is set up, device B can read the test file in the distributed file directory.
@@ -82,55 +82,55 @@ The distributed file system provides applications the capability for accessing f
    import { buffer } from '@kit.ArkTS';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[access_ConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
 
-``` TypeScript
-  // Obtain the network ID of device A by calling distributed device management APIs.
-// ···
-  let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
-  let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
-  if (deviceInfoList && deviceInfoList.length > 0) {
-    console.info(`Success to get available device list`);
-    let networkId = deviceInfoList[0].networkId;
-    // Define the callback for accessing the user directory.
-    let listeners : fs.DfsListeners = {
-      onStatus: (networkId: string, status: number): void => {
-        console.info('Failed to access public directory');
-      }
-    };
-    // Start to access files cross devices.
-    fs.connectDfs(networkId, listeners).then(() => {
-      console.info('Success to connect dfs');
-      let pathDir: string = context.distributedFilesDir;
-      // Obtain the file path of the distributed directory.
-      let filePath: string = pathDir + '/test.txt';
-      try {
-        // Open the file in the distributed directory.
-        let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
-        // Set the buffer for receiving the read data.
-        let arrayBuffer = new ArrayBuffer(4096);
-        // Read the file. The return value is the number of read bytes.
-        class Option {
-          public offset: number = 0;
-          public length: number = 0;
-        };
-        let option = new Option();
-        option.length = arrayBuffer.byteLength;
-        let num = fs.readSync(file.fd, arrayBuffer, option);
-        // Print the read data.
-        let buf = buffer.from(arrayBuffer, 0, num);
-        console.info('read result: ' + buf.toString());
-        fs.closeSync(file);
-      } catch (error) {
-        let err: BusinessError = error as BusinessError;
-        console.error(`Failed to openSync / readSync. Code: ${err.code}, message: ${err.message}`);
-      }
-    }).catch((error: BusinessError) => {
-      let err: BusinessError = error as BusinessError;
-      console.error(`Failed to connect dfs. Code: ${err.code}, message: ${err.message}`);
-    });
-  }
-```
+   ``` TypeScript
+   // Obtain the network ID of device A by calling distributed device management APIs.
+   // ···
+   let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
+   let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
+   if (deviceInfoList && deviceInfoList.length > 0) {
+     console.info(`Success to get available device list`);
+     let networkId = deviceInfoList[0].networkId;
+     // Define the callback for accessing the user directory.
+     let listeners : fs.DfsListeners = {
+       onStatus: (networkId: string, status: number): void => {
+         console.info('Failed to access public directory');
+       }
+     };
+     // Start to access files cross devices.
+     fs.connectDfs(networkId, listeners).then(() => {
+       console.info('Success to connect dfs');
+       let pathDir: string = context.distributedFilesDir;
+       // Obtain the file path of the distributed directory.
+       let filePath: string = pathDir + '/test.txt';
+       try {
+         // Open the file in the distributed directory.
+         let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+         // Set the buffer for receiving the read data.
+         let arrayBuffer = new ArrayBuffer(4096);
+         // Read the file. The return value is the number of read bytes.
+         class Option {
+           public offset: number = 0;
+           public length: number = 0;
+         };
+         let option = new Option();
+         option.length = arrayBuffer.byteLength;
+         let num = fs.readSync(file.fd, arrayBuffer, option);
+         // Print the read data.
+         let buf = buffer.from(arrayBuffer, 0, num);
+         console.info('read result: ' + buf.toString());
+         fs.closeSync(file);
+       } catch (error) {
+         let err: BusinessError = error as BusinessError;
+         console.error(`Failed to openSync / readSync. Code: ${err.code}, message: ${err.message}`);
+       }
+     }).catch((error: BusinessError) => {
+       let err: BusinessError = error as BusinessError;
+       console.error(`Failed to connect dfs. Code: ${err.code}, message: ${err.message}`);
+     });
+   }
+   ```
 
 
 4. Disconnect the link for device B.
@@ -140,21 +140,21 @@ The distributed file system provides applications the capability for accessing f
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import { fileIo as fs } from '@kit.CoreFileKit';
    ```
-   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
-``` TypeScript
-  // Obtain the network ID of device A.
-// ···
-  let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
-  let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
-  if (deviceInfoList && deviceInfoList.length > 0) {
-    console.info(`Success to get available device list`);
-    let networkId = deviceInfoList[0].networkId;
-    // Disable cross-device file access.
-    fs.disconnectDfs(networkId).then(() => {
-      console.info(`Success to disconnect dfs`);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
-    })
-  }
-```
+   ``` TypeScript
+   // Obtain the network ID of device A.
+   // ···
+   let dmInstance = distributedDeviceManager.createDeviceManager('com.example.hap');
+   let deviceInfoList: distributedDeviceManager.DeviceBasicInfo[] = dmInstance.getAvailableDeviceListSync();
+   if (deviceInfoList && deviceInfoList.length > 0) {
+     console.info(`Success to get available device list`);
+     let networkId = deviceInfoList[0].networkId;
+     // Disable cross-device file access.
+     fs.disconnectDfs(networkId).then(() => {
+       console.info(`Success to disconnect dfs`);
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
+     })
+   }
+   ```
