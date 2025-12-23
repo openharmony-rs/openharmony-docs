@@ -189,6 +189,8 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | ---------------------------- | ------ | ---------- |
 | SYSTEM<sup>20+</sup>         | 6      | 系统音。|
 | ULTRASONIC<sup>10+</sup>     | 10     | 超声波。|
+| NOTIFICATION<sup>20+</sup>   | 11     | 通知音。|
+| NAVIGATION<sup>20+</sup>     | 12     | 导航。|
 | ALL<sup>9+</sup>             | 100    | 所有公共音频流。|
 
 ## InterruptRequestResultType<sup>9+</sup>
@@ -415,11 +417,11 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称                        | 类型                       | 只读 | 可选 | 说明       |
 | -------------------------- | -------------------------- | ---- | ---- | ---------- |
-| networkId<sup>9+</sup>     | string                     | 是   | 否   | 组网络id。  |
-| groupId<sup>9+</sup>       | number                     | 是   | 否   | 组设备组id。 |
-| mappingId<sup>9+</sup>     | number                     | 是   | 否   | 组映射id。 |
-| groupName<sup>9+</sup>     | string                     | 是   | 否   | 组名。 |
-| type<sup>9+</sup>          | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
+| networkId | string                     | 是   | 否   | 组网络id。  |
+| groupId | number                     | 是   | 否   | 组设备组id。 |
+| mappingId | number                     | 是   | 否   | 组映射id。 |
+| groupName | string                     | 是   | 否   | 组名。 |
+| type | [ConnectType](#connecttype9)| 是   | 否   | 连接设备类型。 |
 
 ## SourceType<sup>8+</sup>
 
@@ -1282,6 +1284,82 @@ let activeVolumeTypeChangeCallback = (volumeType: audio.AudioVolumeType) => {
 audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
+```
+
+### on('systemVolumeChange')<sup>20+</sup>
+
+on(type: 'systemVolumeChange', callback: Callback\<VolumeEvent>): void
+
+监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | 是   | 事件回调类型，支持的事件为'systemVolumeChange'，当系统音量发生变化时，触发该事件。 |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 是   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
+});
+```
+
+### off('systemVolumeChange')<sup>20+</sup>
+
+off(type: 'systemVolumeChange', callback?: Callback\<VolumeEvent>): void
+
+取消监听系统音量变化事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**参数：**
+
+| 参数名   | 类型                                   | 必填 | 说明                                                         |
+| -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                                 | 是   | 事件回调类型，支持的事件为'systemVolumeChange'，当取消监听系统音量变化事件时，触发该事件。 |
+| callback | Callback\<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 202 | Not system App. |
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioVolumeManager.off('systemVolumeChange');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let systemVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
+  console.info(`Succeeded in using on or off function, VolumeEvent: ${volumeEvent}.`);
+};
+
+audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
+
+audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
 ```
 
 ## AudioVolumeGroupManager<sup>9+</sup>
@@ -3779,7 +3857,7 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
 
 ### setHeadTrackingEnabled<sup>12+</sup>
 
-setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
+setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise&lt;void&gt;
 
 根据输入指令，开启/关闭指定设备的头动跟踪效果。使用Promise异步回调。
 
@@ -3793,6 +3871,7 @@ setHeadTrackingEnabled(enable: boolean): Promise&lt;void&gt;
 
 | 参数名                 | 类型                                                         | 必填 | 说明                      |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
+| deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | 是   | 设备描述符。 |
 | enable                | boolean                                                      | 是   | 表示开启/关闭头动跟踪。true为开启，false为关闭。  |
 
 **返回值：**
