@@ -1678,7 +1678,7 @@ off(type: 'tabChange', config: observer.ObserverOptions, callback?: Callback\<ob
 
 ## uiObserver.on('textChange')<sup>22+</sup>
 
-on(type: 'textChange', callback: Callback\<TextChangeEventInfo\>): void
+on(type: 'textChange', callback: Callback\<observer.TextChangeEventInfo\>): void
 
 全局监听输入框文本变化。
 
@@ -1691,7 +1691,7 @@ on(type: 'textChange', callback: Callback\<TextChangeEventInfo\>): void
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
-| callback | Callback\<[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 是   | 回调函数，返回文本变化的信息。|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 是   | 回调函数，返回文本变化的信息。|
 
 **示例：**
 ```ts
@@ -1781,7 +1781,7 @@ struct TextUiObserver {
 ```
 ## uiObserver.off('textChange')<sup>22+</sup>
 
-off(type: 'textChange', callback?: Callback\<TextChangeEventInfo\>): void
+off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): void
 
 取消输入框文本变化的全局监听。
 
@@ -1794,7 +1794,7 @@ off(type: 'textChange', callback?: Callback\<TextChangeEventInfo\>): void
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
-| callback | Callback\<[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消输入框文本变化的所有全局监听。|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消输入框文本变化的所有全局监听。|
 
 **示例：**
 
@@ -1802,7 +1802,7 @@ off(type: 'textChange', callback?: Callback\<TextChangeEventInfo\>): void
 
 ## uiObserver.on('textChange')<sup>22+</sup>
 
-on(type: 'textChange', identity: ObserverOptions, callback:Callback\<TextChangeEventInfo\>): void
+on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<observer.TextChangeEventInfo\>): void
 
 指定ID输入框文本变化的局部监听。
 
@@ -1815,8 +1815,8 @@ on(type: 'textChange', identity: ObserverOptions, callback:Callback\<TextChangeE
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。 |
-| identity | [ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的文本输入组件的ID。                             |
-| callback | Callback\<[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 是   | 回调函数。返回文本变化的信息。|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的文本输入组件的ID。                             |
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 是   | 回调函数。返回文本变化的信息。|
 
 **示例：**
 
@@ -1824,7 +1824,7 @@ on(type: 'textChange', identity: ObserverOptions, callback:Callback\<TextChangeE
 
 ## uiObserver.off('textChange')<sup>22+</sup>
 
-off(type: 'textChange', identity: ObserverOptions, callback?: Callback\<TextChangeEventInfo\>): void
+off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\<observer.TextChangeEventInfo\>): void
 
 取消指定ID输入框文本变化的局部监听。
 
@@ -1837,8 +1837,8 @@ off(type: 'textChange', identity: ObserverOptions, callback?: Callback\<TextChan
 | 参数名   | 类型                                                  | 必填 | 说明                                                                     |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'textChange'，表示文本输入的变化。|
-| identity | [ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的文本输入组件的ID。|
-| callback | Callback\<[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消指定ID输入框文本变化的所有局部监听。|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | 是   | 指定监听的文本输入组件的ID。|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | 否   | 需要被注销的回调函数。不传参数时，取消指定ID输入框文本变化的所有局部监听。|
 
 **示例：**
 
