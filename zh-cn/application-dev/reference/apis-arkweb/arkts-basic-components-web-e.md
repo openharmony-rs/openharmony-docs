@@ -250,6 +250,8 @@ Web布局模式的配置。
 
 ## ContextMenuSourceType<sup>9+</sup>
 
+触发上下文菜单的事件来源。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -262,7 +264,26 @@ Web布局模式的配置。
 | Mouse     | 1 | 鼠标事件。   |
 | LongPress | 2 | 长按事件。   |
 
+## ContextMenuDataMediaType<sup>22+</sup>
+触发上下文菜单的网页元素类型（增强获取类型能力）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    | 值 | 说明            |
+| ----- | -- | ------------- |
+| NONE  | 0 | 默认值，表示当前上下文菜单不关联任何媒体类型（例如右键文本或空白区域）。|
+| IMAGE | 1 | 图片类型。           |
+| VIDEO | 2 | 视频类型。           |
+| AUDIO | 3 | 音频类型。           |
+| CANVAS| 4 | Canvas类型。           |
+
 ## ContextMenuMediaType<sup>9+</sup>
+
+触发上下文菜单的网页元素类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -410,6 +431,7 @@ Web布局模式的配置。
 | --------- | -- | ----------------- |
 | IMAGE     | 1 | 网页元素为图像类型。 |
 | LINK<sup>20+</sup>     | 2 | 网页元素为超链接类型。 |
+| TEXT<sup>21+</sup>     | 3 | 网页元素为文本或可编辑区域类型。 |
 
 ## WebResponseType<sup>13+</sup>
 
@@ -426,6 +448,7 @@ Web布局模式的配置。
 | 名称            | 值 | 说明                |
 | -------------- | -- | ------------------  |
 | LONG_PRESS     | 1 | 通过长按触发菜单弹出。 |
+| RIGHT_CLICK<sup>21+</sup>    | 2 | 通过鼠标右键触发菜单弹出。 |
 
 ## AudioSessionType<sup>20+</sup>
 
