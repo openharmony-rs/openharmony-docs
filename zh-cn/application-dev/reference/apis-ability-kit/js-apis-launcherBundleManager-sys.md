@@ -21,7 +21,7 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
 
-## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getLauncherAbilityInfo
 
 getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
@@ -76,7 +76,7 @@ try {
 }
 ```
 
-## launcherBundleManager.getLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getLauncherAbilityInfo
 
 getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
@@ -134,7 +134,7 @@ try {
 }
 ```
 
-## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getAllLauncherAbilityInfo
 
 getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<LauncherAbilityInfo\>\>) : void
 
@@ -186,7 +186,7 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
-## launcherBundleManager.getAllLauncherAbilityInfo<sup>9+</sup>
+## launcherBundleManager.getAllLauncherAbilityInfo
 
 getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\>\>
 
@@ -242,7 +242,7 @@ try {
 }
 ```
 
-## launcherBundleManager.getShortcutInfo<sup>9+</sup>
+## launcherBundleManager.getShortcutInfo
 
 getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
 
@@ -297,7 +297,7 @@ try {
 }
 ```
 
-## launcherBundleManager.getShortcutInfo<sup>9+</sup>
+## launcherBundleManager.getShortcutInfo
 
 getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
