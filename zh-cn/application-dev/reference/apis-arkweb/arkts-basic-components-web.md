@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-提供具有网页显示能力的Web组件，[@ohos.web.webview](arkts-apis-webview.md)提供Web控制能力。
+提供具有网页显示能力的Web组件，Web控制能力请参考[模块描述](arkts-apis-webview.md)。
 
 <!--RP1--><!--RP1End-->
 
