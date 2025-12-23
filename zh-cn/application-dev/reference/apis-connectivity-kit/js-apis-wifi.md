@@ -819,7 +819,7 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo8)&gt; | Promise对象。表示当前组信息。 |
+  | Promise&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | Promise对象。表示当前组信息。 |
 
 
 ## wifi.getCurrentGroup<sup>(deprecated)</sup>
@@ -839,7 +839,7 @@ getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo8)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示当前组信息。如果error为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfodeprecated)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示当前组信息。如果error为非0，表示处理出现错误。 |
 
 **示例：**
 ```ts
