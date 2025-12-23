@@ -1590,7 +1590,8 @@ async function ExampleFunction(dlpFilePath: string) {
 | actionUponExpiry | [ActionType](#actiontype21) | 否 | 是 | 表示到期后文件是否允许打开（打开后拥有编辑权限），仅在expireTime不为空时生效。 |
 | fileId | string | 否 | 是 | 表示文件的标识。不超过255字节。 |
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数。 |
-| countdown | number | 否 | 是 | 表示文件可被查看的有效时间(秒)，超过有效时间后文件会被自动关闭。 |
+| waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印。 |
+| countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
 

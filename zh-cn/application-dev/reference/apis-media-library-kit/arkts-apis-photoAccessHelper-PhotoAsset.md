@@ -139,7 +139,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 commitModify(callback: AsyncCallback&lt;void&gt;): void
 
-修改文件的元数据，使用callback方式返回异步结果。
+修改文件的元数据。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -151,7 +151,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
-| callback | AsyncCallback&lt;void&gt; | 是    | callback返回void。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当修改文件元数据成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -204,7 +204,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 commitModify(): Promise&lt;void&gt;
 
-修改文件的元数据，使用promise方式返回异步结果。
+修改文件的元数据。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -216,7 +216,7 @@ commitModify(): Promise&lt;void&gt;
 
 | 类型                  | 说明         |
 | ------------------- | ---------- |
-| Promise&lt;void&gt; | Promise对象，返回void。 |
+| Promise&lt;void&gt; |Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -272,7 +272,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
-关闭当前文件，使用callback方式返回异步结果。
+关闭当前文件。使用callback异步回调。
 
 > **说明：**
 >
@@ -285,7 +285,7 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
 | fd       | number                    | 是    | 文件描述符。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | callback返回void。 |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当关闭当前文件成功，err为undefined，否则为错误对象。|
 
 **错误码：**
 
@@ -333,7 +333,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 close(fd: number): Promise&lt;void&gt;
 
-关闭当前文件，使用promise方式返回异步结果。
+关闭当前文件。使用Promise异步回调。
 
 > **说明：**
 >
@@ -351,7 +351,7 @@ close(fd: number): Promise&lt;void&gt;
 
 | 类型                  | 说明         |
 | ------------------- | ---------- |
-| Promise&lt;void&gt; | Promise对象，返回void。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -394,7 +394,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取文件的缩略图，使用callback方式返回异步结果。
+获取文件的缩略图。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -406,7 +406,7 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 | 参数名      | 类型                                  | 必填   | 说明               |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是    | callback返回缩略图的PixelMap。 |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是    | 回调函数。当获取文件的缩略图成功，err为undefined，data为缩略图的PixelMap；否则为错误对象。|
 
 **错误码：**
 
@@ -452,7 +452,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取文件的缩略图，传入缩略图尺寸，使用callback方式返回异步结果。
+获取文件的缩略图，传入缩略图尺寸。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -465,7 +465,7 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 | 参数名      | 类型                                  | 必填   | 说明               |
 | -------- | ----------------------------------- | ---- | ---------------- |
 | size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 是    | 缩略图尺寸。            |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是    | callback返回缩略图的PixelMap。 |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是    | 回调函数。当获取文件的缩略图成功，err为undefined，data为缩略图的PixelMap；否则为错误对象。  |
 
 **错误码：**
 
@@ -517,7 +517,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
-获取文件的缩略图，传入缩略图尺寸，使用promise方式返回异步结果。
+获取文件的缩略图，传入缩略图尺寸。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -656,7 +656,7 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 | 参数名      | 类型                          | 必填   | 说明                                  |
 | -------- | --------------------------- | ---- | ----------------------------------- |
-| callback | AsyncCallback&lt;number&gt; | 是    | callback返回文件描述符。                            |
+| callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当打开当前文件成功，err为undefined，data为文件描述符；否则为错误对象。|
 
 **错误码：**
 

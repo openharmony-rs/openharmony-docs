@@ -16,7 +16,7 @@
 ## 导入模块
 
 ```ts
-import { huks } from '@kit.UniversalKeystoreKit';
+import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 ```
 
 ## huksExternalCrypto.authUkeyPin
