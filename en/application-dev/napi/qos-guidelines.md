@@ -1,4 +1,10 @@
 # QoS Development
+<!--Kit: Kernel Enhance Kit-->
+<!--Subsystem: Kernel-->
+<!--Owner: @yzl-kongzhenhua; @Leibobo-->
+<!--Designer: @wangxiayang; @lizongfeng; @zzzuo-->
+<!--Tester: @lianxuanself; @laonie666-->
+<!--Adviser: @fang-jinxu-->
 
 ## **Scenario**
 
@@ -22,7 +28,7 @@ The system provides six QoS levels in ascending order based on the degree of sys
 | QOS_DEFAULT | Default level.| It takes a few seconds to complete the task.|
 | QOS_USER_INITIATED | Tasks triggered by users with observable progress, for example, opening a file.| The task is completed in seconds.|
 | QOS_DEADLINE_REQUEST | Tasks that require an immediate response, such as page loading.| The task is done immediately.|
-| QOS_USER_INTERACTIVE	 | User interaction tasks (UI thread, interface refreshing, and animation).| The task is instant.|
+| QOS_USER_INTERACTIVE | User interaction tasks (UI thread, interface refreshing, and animation).| The task is instant.|
 
 The QoS level is specified by **QoS_Level**, which is an enum defined as follows:
 ### QoS_Level Declaration
@@ -128,7 +134,7 @@ QoS_Level level
  Sets the QoS level for this task. You can mark the task with different QoS levels according to its importance, thereby achieving different scheduling priorities. For details, see [QoS Practice](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-thread-priority-setting).
 
 **Example**
-```
+```c++
 #include <stdio.h>
 #include "qos/qos.h"
 
@@ -165,7 +171,7 @@ int OH_QoS_ResetThreadQoS();
  Removes the QoS level of this task. For details, see [QoS Practice](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-thread-priority-setting).
 
 **Example**
-```
+```c++
 #include <stdio.h>
 #include "qos/qos.h"
 
@@ -204,7 +210,7 @@ QoS_Level *level
 Obtains the latest QoS level of this task. If no QoS level is set, **-1** is returned.  For details, see [QoS Practice](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-thread-priority-setting).
 
 **Example**
-```
+```c++
 #include <stdio.h>
 #include "qos/qos.h"
 
