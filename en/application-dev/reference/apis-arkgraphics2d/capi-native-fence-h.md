@@ -34,7 +34,7 @@ This file declares the functions for obtaining and using **NativeFence**.
 
 ### OH_NativeFence_IsValid()
 
-```
+```c
 bool OH_NativeFence_IsValid(int fenceFd)
 ```
 
@@ -59,7 +59,7 @@ Checks whether **fenceFd** is valid.
 
 ### OH_NativeFence_Wait()
 
-```
+```c
 bool OH_NativeFence_Wait(int fenceFd, uint32_t timeout)
 ```
 
@@ -86,7 +86,7 @@ Blocks the input **fenceFd**. The maximum blocking time is determined by the tim
 
 ### OH_NativeFence_WaitForever()
 
-```
+```c
 bool OH_NativeFence_WaitForever(int fenceFd)
 ```
 
@@ -111,7 +111,7 @@ Permanently blocks the input **fenceFd**. The input **fenceFd** needs to be clos
 
 ### OH_NativeFence_Close()
 
-```
+```c
 void OH_NativeFence_Close(int fenceFd)
 ```
 

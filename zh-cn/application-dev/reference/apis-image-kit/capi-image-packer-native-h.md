@@ -27,8 +27,8 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [OH_ImagePackerNative](capi-image-nativemodule-oh-imagepackernative.md) | OH_ImagePackerNative | ImagePacker结构体类型，用于执行ImagePacker相关操作。 |
-| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | OH_PackingOptions | OH_PackingOptions是native层封装的图像编码选项结构体，OH_PackingOptions结构体不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。 |
-| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | OH_PackingOptionsForSequence | 图像序列编码选项。 |
+| [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) | OH_PackingOptions | OH_PackingOptions是native层封装的图像编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。 |
+| [OH_PackingOptionsForSequence](capi-image-nativemodule-oh-packingoptionsforsequence.md) | OH_PackingOptionsForSequence | OH_PackingOptionsForSequence是native层封装的图像序列编码选项结构体，不可直接操作，而是采用函数调用方式创建、释放结构体以及操作具体字段。 |
 
 ### 枚举
 
@@ -41,8 +41,8 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)](#oh_packingoptions_create) | 创建PackingOptions结构体的指针。 |
-| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | 获取MIME类型。 |
-| [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | 获取编解码参数中的MIME类型。输出的format.data以字符串结束符结尾。 |
+| [Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetype) | 获取MIME类型。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。|
+| [Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_getmimetypewithnull) | 获取编解码参数中的MIME类型。输出的format.data以字符串结束符'\0'结尾。 |
 | [Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options, Image_MimeType *format)](#oh_packingoptions_setmimetype) | 设置MIME类型。 |
 | [Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options, uint32_t *quality)](#oh_packingoptions_getquality) | 获取编码质量。 |
 | [Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options, uint32_t quality)](#oh_packingoptions_setquality) | 设置编码质量。 |
@@ -77,7 +77,7 @@
 
 ### IMAGE_PACKER_DYNAMIC_RANGE
 
-```
+```c
 enum IMAGE_PACKER_DYNAMIC_RANGE
 ```
 
@@ -97,7 +97,7 @@ enum IMAGE_PACKER_DYNAMIC_RANGE
 
 ### OH_PackingOptions_Create()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)
 ```
 
@@ -122,13 +122,13 @@ Image_ErrorCode OH_PackingOptions_Create(OH_PackingOptions **options)
 
 ### OH_PackingOptions_GetMimeType()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_MimeType *format)
 ```
 
 **描述**
 
-获取MIME类型。
+获取MIME类型。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。
 
 **起始版本：** 12
 
@@ -148,13 +148,13 @@ Image_ErrorCode OH_PackingOptions_GetMimeType(OH_PackingOptions *options,Image_M
 
 ### OH_PackingOptions_GetMimeTypeWithNull()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options,Image_MimeType *format)
 ```
 
 **描述**
 
-获取编解码参数中的MIME类型。输出的format.data以字符串结束符结尾。
+获取编解码参数中的MIME类型。输出的format.data以字符串结束符'\0'结尾。
 
 **起始版本：** 19
 
@@ -174,7 +174,7 @@ Image_ErrorCode OH_PackingOptions_GetMimeTypeWithNull(OH_PackingOptions *options
 
 ### OH_PackingOptions_SetMimeType()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options,Image_MimeType *format)
 ```
 
@@ -200,7 +200,7 @@ Image_ErrorCode OH_PackingOptions_SetMimeType(OH_PackingOptions *options,Image_M
 
 ### OH_PackingOptions_GetQuality()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options,uint32_t *quality)
 ```
 
@@ -226,7 +226,7 @@ Image_ErrorCode OH_PackingOptions_GetQuality(OH_PackingOptions *options,uint32_t
 
 ### OH_PackingOptions_SetQuality()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options,uint32_t quality)
 ```
 
@@ -252,7 +252,7 @@ Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options,uint32_t
 
 ### OH_PackingOptions_GetNeedsPackProperties()
 
-```
+```c
  Image_ErrorCode OH_PackingOptions_GetNeedsPackProperties(OH_PackingOptions *options,bool *needsPackProperties)
 ```
 
@@ -268,7 +268,7 @@ Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options,uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| bool *needsPackProperties | 是否需要编码图片属性信息，例如EXIF。 |
+| bool *needsPackProperties | 是否需要编码图片属性信息（例如Exif）。true表示需要，false表示不需要。 |
 
 **返回：**
 
@@ -278,7 +278,7 @@ Image_ErrorCode OH_PackingOptions_SetQuality(OH_PackingOptions *options,uint32_t
 
 ### OH_PackingOptions_SetNeedsPackProperties()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *options,bool needsPackProperties)
 ```
 
@@ -294,7 +294,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PackingOptions](capi-image-nativemodule-oh-packingoptions.md) *options | 被操作的OH_PackingOptions指针。 |
-| bool needsPackProperties | 是否需要编码图片属性信息，例如EXIF。 |
+| bool needsPackProperties | 是否需要编码图片属性信息（例如Exif）。true表示需要，false表示不需要。 |
 
 **返回：**
 
@@ -304,7 +304,7 @@ Image_ErrorCode OH_PackingOptions_SetNeedsPackProperties(OH_PackingOptions *opti
 
 ### OH_PackingOptions_GetDesiredDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *options, int32_t* desiredDynamicRange)
 ```
 
@@ -330,7 +330,7 @@ Image_ErrorCode OH_PackingOptions_GetDesiredDynamicRange(OH_PackingOptions *opti
 
 ### OH_PackingOptions_SetDesiredDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *options, int32_t desiredDynamicRange)
 ```
 
@@ -356,7 +356,7 @@ Image_ErrorCode OH_PackingOptions_SetDesiredDynamicRange(OH_PackingOptions *opti
 
 ### OH_PackingOptions_Release()
 
-```
+```c
 Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 ```
 
@@ -381,7 +381,7 @@ Image_ErrorCode OH_PackingOptions_Release(OH_PackingOptions *options)
 
 ### OH_PackingOptionsForSequence_Create()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_Create(OH_PackingOptionsForSequence **options)
 ```
 
@@ -406,7 +406,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_Create(OH_PackingOptionsForSequence
 
 ### OH_PackingOptionsForSequence_SetFrameCount()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_SetFrameCount(OH_PackingOptionsForSequence *options,uint32_t frameCount)
 ```
 
@@ -432,7 +432,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetFrameCount(OH_PackingOptionsForS
 
 ### OH_PackingOptionsForSequence_GetFrameCount()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_GetFrameCount(OH_PackingOptionsForSequence *options,uint32_t *frameCount)
 ```
 
@@ -458,7 +458,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetFrameCount(OH_PackingOptionsForS
 
 ### OH_PackingOptionsForSequence_SetDelayTimeList()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_SetDelayTimeList(OH_PackingOptionsForSequence *options,int32_t *delayTimeList, size_t delayTimeListLength)
 ```
 
@@ -485,7 +485,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetDelayTimeList(OH_PackingOptionsF
 
 ### OH_PackingOptionsForSequence_GetDelayTimeList()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_GetDelayTimeList(OH_PackingOptionsForSequence *options,int32_t *delayTimeList, size_t delayTimeListLength)
 ```
 
@@ -512,7 +512,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetDelayTimeList(OH_PackingOptionsF
 
 ### OH_PackingOptionsForSequence_SetDisposalTypes()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_SetDisposalTypes(OH_PackingOptionsForSequence *options,uint32_t *disposalTypes, size_t disposalTypesLength)
 ```
 
@@ -539,7 +539,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetDisposalTypes(OH_PackingOptionsF
 
 ### OH_PackingOptionsForSequence_GetDisposalTypes()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_GetDisposalTypes(OH_PackingOptionsForSequence *options,uint32_t *disposalTypes, size_t disposalTypesLength)
 ```
 
@@ -566,7 +566,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetDisposalTypes(OH_PackingOptionsF
 
 ### OH_PackingOptionsForSequence_SetLoopCount()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSequence *options, uint32_t loopCount)
 ```
 
@@ -592,7 +592,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_SetLoopCount(OH_PackingOptionsForSe
 
 ### OH_PackingOptionsForSequence_GetLoopCount()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_GetLoopCount(OH_PackingOptionsForSequence *options, uint32_t *loopCount)
 ```
 
@@ -618,7 +618,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_GetLoopCount(OH_PackingOptionsForSe
 
 ### OH_PackingOptionsForSequence_Release()
 
-```
+```c
 Image_ErrorCode OH_PackingOptionsForSequence_Release(OH_PackingOptionsForSequence *options)
 ```
 
@@ -643,7 +643,7 @@ Image_ErrorCode OH_PackingOptionsForSequence_Release(OH_PackingOptionsForSequenc
 
 ### OH_ImagePackerNative_Create()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)
 ```
 
@@ -668,7 +668,7 @@ Image_ErrorCode OH_ImagePackerNative_Create(OH_ImagePackerNative **imagePacker)
 
 ### OH_ImagePackerNative_PackToDataFromImageSource()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_ImageSourceNative *imageSource, uint8_t *outData, size_t *size)
 ```
 
@@ -697,7 +697,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromImageSource(OH_ImagePackerNat
 
 ### OH_ImagePackerNative_PackToDataFromPixelmap()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_PixelmapNative *pixelmap, uint8_t *outData, size_t *size)
 ```
 
@@ -726,7 +726,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmap(OH_ImagePackerNative
 
 ### OH_ImagePackerNative_PackToDataFromPicture()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_PictureNative *picture, uint8_t *outData, size_t *size)
 ```
 
@@ -755,7 +755,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPicture(OH_ImagePackerNative 
 
 ### OH_ImagePackerNative_PackToDataFromPixelmapSequence()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePackerNative *imagePacker,OH_PackingOptionsForSequence *options, OH_PixelmapNative **pixelmapSequence,size_t sequenceLength, uint8_t *outData, size_t *outDataSize)
 ```
 
@@ -785,7 +785,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToDataFromPixelmapSequence(OH_ImagePack
 
 ### OH_ImagePackerNative_PackToFileFromImageSource()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_ImageSourceNative *imageSource, int32_t fd)
 ```
 
@@ -813,7 +813,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromImageSource(OH_ImagePackerNat
 
 ### OH_ImagePackerNative_PackToFileFromPixelmap()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_PixelmapNative *pixelmap, int32_t fd)
 ```
 
@@ -841,7 +841,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmap(OH_ImagePackerNative
 
 ### OH_ImagePackerNative_PackToFileFromPicture()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative *imagePacker,OH_PackingOptions *options, OH_PictureNative *picture, int32_t fd)
 ```
 
@@ -869,7 +869,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPicture(OH_ImagePackerNative 
 
 ### OH_ImagePackerNative_PackToFileFromPixelmapSequence()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePackerNative *imagePacker,OH_PackingOptionsForSequence *options, OH_PixelmapNative **pixelmapSequence, size_t sequenceLength, int32_t fd)
 ```
 
@@ -898,7 +898,7 @@ Image_ErrorCode OH_ImagePackerNative_PackToFileFromPixelmapSequence(OH_ImagePack
 
 ### OH_ImagePackerNative_GetSupportedFormats()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType **supportedFormats, size_t *length)
 ```
 
@@ -924,7 +924,7 @@ Image_ErrorCode OH_ImagePackerNative_GetSupportedFormats(Image_MimeType **suppor
 
 ### OH_ImagePackerNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImagePackerNative_Release(OH_ImagePackerNative *imagePacker)
 ```
 

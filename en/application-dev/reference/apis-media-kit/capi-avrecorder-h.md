@@ -47,7 +47,7 @@ The file declares the AVRecorder APIs. Applications can use the APIs to record m
 
 ### OH_AVRecorder_Create()
 
-```
+```c
 OH_AVRecorder *OH_AVRecorder_Create(void)
 ```
 
@@ -67,7 +67,7 @@ Creates an AVRecorder instance. After this function is successfully called, the 
 
 ### OH_AVRecorder_Prepare()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Prepare(OH_AVRecorder *recorder, OH_AVRecorder_Config *config)
 ```
 
@@ -97,7 +97,7 @@ To record only audio, you do not need to set video parameters. Similarly, to rec
 
 ### OH_AVRecorder_GetAVRecorderConfig()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_GetAVRecorderConfig(OH_AVRecorder *recorder, OH_AVRecorder_Config **config)
 ```
 
@@ -127,7 +127,7 @@ Obtains the AVRecorder configuration. This function must be called after the rec
 
 ### OH_AVRecorder_GetInputSurface()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_GetInputSurface(OH_AVRecorder *recorder, OHNativeWindow **window)
 ```
 
@@ -157,7 +157,7 @@ The caller obtains the **surfaceBuffer** from this surface and fills in the corr
 
 ### OH_AVRecorder_UpdateRotation()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_UpdateRotation(OH_AVRecorder *recorder, int32_t rotation)
 ```
 
@@ -185,7 +185,7 @@ Updates the video rotation angle. This function must be called after [OH_AVRecor
 
 ### OH_AVRecorder_Start()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Start(OH_AVRecorder *recorder)
 ```
 
@@ -212,7 +212,7 @@ Starts recording. This function must be called after [OH_AVRecorder_Prepare](#oh
 
 ### OH_AVRecorder_Pause()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Pause(OH_AVRecorder *recorder)
 ```
 
@@ -241,7 +241,7 @@ Then, you can call [OH_AVRecorder_Resume](#oh_avrecorder_resume) to resume recor
 
 ### OH_AVRecorder_Resume()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Resume(OH_AVRecorder *recorder)
 ```
 
@@ -268,7 +268,7 @@ Resumes recording. This function must be called after [OH_AVRecorder_Pause](#oh_
 
 ### OH_AVRecorder_Stop()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Stop(OH_AVRecorder *recorder)
 ```
 
@@ -299,7 +299,7 @@ For video-only recording or audio and video recording, you can call [OH_AVRecord
 
 ### OH_AVRecorder_Reset()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Reset(OH_AVRecorder *recorder)
 ```
 
@@ -330,7 +330,7 @@ For video-only recording or audio and video recording, you can call [OH_AVRecord
 
 ### OH_AVRecorder_Release()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_Release(OH_AVRecorder *recorder)
 ```
 
@@ -359,7 +359,7 @@ The recorder memory will be released. The application layer must explicitly set 
 
 ### OH_AVRecorder_GetAvailableEncoder()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_GetAvailableEncoder(OH_AVRecorder *recorder, OH_AVRecorder_EncoderInfo **info,int32_t *length)
 ```
 
@@ -390,7 +390,7 @@ Obtains the available encoders and encoder information of the AVRecorder.
 
 ### OH_AVRecorder_SetStateCallback()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_SetStateCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnStateChange callback, void *userData)
 ```
 
@@ -419,7 +419,7 @@ Sets a state callback so that the application can respond to state change events
 
 ### OH_AVRecorder_SetErrorCallback()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_SetErrorCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnError callback, void *userData)
 ```
 
@@ -448,7 +448,7 @@ Sets an error callback so that the application can respond to error events gener
 
 ### OH_AVRecorder_SetUriCallback()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_SetUriCallback(OH_AVRecorder *recorder, OH_AVRecorder_OnUri callback, void *userData)
 ```
 
@@ -477,7 +477,7 @@ Sets a URI callback so that the application can respond to URI events generated 
 
 ### OH_AVRecorder_SetWillMuteWhenInterrupted()
 
-```
+```c
 OH_AVErrCode OH_AVRecorder_SetWillMuteWhenInterrupted(OH_AVRecorder *recorder, bool muteWhenInterrupted)
 ```
 

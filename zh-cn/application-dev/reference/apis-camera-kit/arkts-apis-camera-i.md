@@ -310,3 +310,15 @@
 | -------- | ---------- | -------- | -------- | ---------- |
 | effectType | [ControlCenterEffectType](arkts-apis-camera-e.md#controlcentereffecttype20) |   是    |    否    | 相机控制器效果类型。 |
 | isActive | boolean | 是| 否| 相机控制器效果激活状态。true表示已激活，false表示未激活。 |
+
+## IsoInfo<sup>22+</sup>
+
+感光度（ISO）参数信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称 | 类型    | 只读 | 可选 | 说明           |
+| ---- | ------- | ---- |--| -------------- |
+| iso  | number  | 是   | 是 | ISO值。        |

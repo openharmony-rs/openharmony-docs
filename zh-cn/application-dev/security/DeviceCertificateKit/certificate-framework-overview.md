@@ -9,10 +9,10 @@
 
 证书算法库框架是一个屏蔽了第三方算法库实现差异的证书算法框架，向应用提供证书、证书扩展域段、证书吊销列表的创建、解析及校验能力，此外还提供了证书链的校验能力。
 
-开发者可以通过调用证书算法库框架接口，忽略底层不同三方算法库的差异，实现迅捷开发。
+开发者通过调用证书算法库框架接口，忽略底层不同三方算法库的差异，实现迅捷开发。
 
 > **说明：**
-> 本框架具备处理已有证书及证书吊销列表数据后处理的能力，并不具备生成或签发证书及证书吊销列表的能力，签发证书及证书吊销列表的能力一般由证书颁发机构（CA）来完成，不由单个应用签发。
+> 本框架具备处理已有证书及证书吊销列表数据后处理的能力，并不具备生成或签发证书及证书吊销列表的能力，签发证书及证书吊销列表的能力由证书颁发机构（CA）来完成，不由单个应用签发。
 
 ## 基本概念
 
@@ -65,6 +65,14 @@
 - [证书集合及证书吊销列表集合对象的创建和获取](create-get-cert-crl-object.md)
 - [证书链对象的创建和校验](create-verify-certchain-object.md)
 - [证书链校验时从p12文件构造TrustAnchor对象数组](create-trustanchor-from-p12.md)
+- [使用系统预置CA证书校验证书链](verify-certchain-by-systemca.md)
+- [证书CMS签名](create-cms-sign-object.md)
+- [证书CMS封装](create-cms-enveloped-object.md)
+- [证书CMS验签](create-cms-verify-object.md)
+- [证书CMS解封装](create-cms-decapsulation-object.md)
+- [证书PKCS12的创建和解析](create-parse-pkcs12.md)
+- [证书链在线校验证书吊销状态](create-verify-cerchainvalidator-revocation-object.md)
+- [证书链校验时下载缺失的中间CA证书](allow-download-Intermediate-Cert.md)
 
 证书算法库框架主要提供了以下类，开发者可以查阅对应API参考，了解以下接口：
 

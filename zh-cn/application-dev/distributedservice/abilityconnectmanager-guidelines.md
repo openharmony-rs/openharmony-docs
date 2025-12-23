@@ -421,11 +421,9 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 
 1. 点击设备A应用的“连接”按钮，此时设备B上的应用被拉起。
 2. 点击设备A应用的“sendMessage”按钮，此时设备B上的应用会触发on()方法的回调，接收该字符串。
-<!--Del-->
 3. 点击设备A应用的“sendData”按钮，此时设备B上的应用会触发on()方法的回调，接收该字节流。
 4. 点击设备A应用的“sendImage”按钮，此时设备B上的应用会触发on()方法的回调，接收该图片。
 5. 点击设备A应用的“启动传输流”按钮，此时设备B上的应用会触发on()方法的回调，接收传输流内容。
-<!--DelEnd-->
 6. 点击设备A或设备B应用的“disconnect”按钮，此时双端会断开连接，触发connect()接口的回调，将断连信息上报给双端应用。
 
 ## 常见问题

@@ -81,7 +81,7 @@
 
 ### OH_CaptureMode
 
-```
+```c
 enum OH_CaptureMode
 ```
 
@@ -102,7 +102,7 @@ enum OH_CaptureMode
 
 ### OH_AudioCaptureSourceType
 
-```
+```c
 enum OH_AudioCaptureSourceType
 ```
 
@@ -124,7 +124,7 @@ enum OH_AudioCaptureSourceType
 
 ### OH_AudioCodecFormat
 
-```
+```c
 enum OH_AudioCodecFormat
 ```
 
@@ -144,7 +144,7 @@ enum OH_AudioCodecFormat
 
 ### OH_VideoCodecFormat
 
-```
+```c
 enum OH_VideoCodecFormat
 ```
 
@@ -168,7 +168,7 @@ enum OH_VideoCodecFormat
 
 ### OH_DataType
 
-```
+```c
 enum OH_DataType
 ```
 
@@ -189,7 +189,7 @@ enum OH_DataType
 
 ### OH_VideoSourceType
 
-```
+```c
 enum OH_VideoSourceType
 ```
 
@@ -210,7 +210,7 @@ enum OH_VideoSourceType
 
 ### OH_ContainerFormatType
 
-```
+```c
 enum OH_ContainerFormatType
 ```
 
@@ -229,7 +229,7 @@ enum OH_ContainerFormatType
 
 ### OH_AVScreenCaptureStateCode
 
-```
+```c
 enum OH_AVScreenCaptureStateCode
 ```
 
@@ -257,7 +257,7 @@ enum OH_AVScreenCaptureStateCode
 
 ### OH_AVScreenCaptureBufferType
 
-```
+```c
 enum OH_AVScreenCaptureBufferType
 ```
 
@@ -277,7 +277,7 @@ enum OH_AVScreenCaptureBufferType
 
 ### OH_AVScreenCaptureFilterableAudioContent
 
-```
+```c
 enum OH_AVScreenCaptureFilterableAudioContent
 ```
 
@@ -296,7 +296,7 @@ enum OH_AVScreenCaptureFilterableAudioContent
 
 ### OH_AVScreenCaptureContentChangedEvent
 
-```
+```c
 enum OH_AVScreenCaptureContentChangedEvent
 ```
 
@@ -316,7 +316,7 @@ enum OH_AVScreenCaptureContentChangedEvent
 
 ### OH_AVScreenCapture_FillMode
 
-```
+```c
 enum OH_AVScreenCapture_FillMode
 ```
 
@@ -333,7 +333,7 @@ enum OH_AVScreenCapture_FillMode
 
 ### OH_ScreenCaptureHighlightMode
 
-```
+```c
 enum OH_ScreenCaptureHighlightMode
 ```
 
@@ -350,7 +350,7 @@ enum OH_ScreenCaptureHighlightMode
 
 ### OH_CapturePickerMode
 
-```
+```c
 enum OH_CapturePickerMode
 ```
 
@@ -371,7 +371,7 @@ enum OH_CapturePickerMode
 
 ### OH_AVScreenCaptureOnError()
 
-```
+```c
 typedef void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t errorCode)
 ```
 
@@ -392,7 +392,7 @@ typedef void (*OH_AVScreenCaptureOnError)(OH_AVScreenCapture *capture, int32_t e
 
 ### OH_AVScreenCaptureOnAudioBufferAvailable()
 
-```
+```c
 typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *capture, bool isReady, OH_AudioCaptureSourceType type)
 ```
 
@@ -414,7 +414,7 @@ typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *cap
 
 ### OH_AVScreenCaptureOnVideoBufferAvailable()
 
-```
+```c
 typedef void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *capture, bool isReady)
 ```
 
@@ -435,7 +435,7 @@ typedef void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *cap
 
 ### OH_AVScreenCapture_OnStateChange()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnStateChange)(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData)
 ```
 
@@ -457,7 +457,7 @@ typedef void (*OH_AVScreenCapture_OnStateChange)(struct OH_AVScreenCapture *capt
 
 ### OH_AVScreenCapture_OnError()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnError)(OH_AVScreenCapture *capture, int32_t errorCode, void *userData)
 ```
 
@@ -479,7 +479,7 @@ typedef void (*OH_AVScreenCapture_OnError)(OH_AVScreenCapture *capture, int32_t 
 
 ### OH_AVScreenCapture_OnBufferAvailable()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType, int64_t timestamp, void *userData)
 ```
 
@@ -503,7 +503,7 @@ typedef void (*OH_AVScreenCapture_OnBufferAvailable)(OH_AVScreenCapture *capture
 
 ### OH_AVScreenCapture_OnDisplaySelected()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnDisplaySelected)(OH_AVScreenCapture *capture, uint64_t displayId, void *userData)
 ```
 
@@ -525,7 +525,7 @@ typedef void (*OH_AVScreenCapture_OnDisplaySelected)(OH_AVScreenCapture *capture
 
 ### OH_AVScreenCapture_OnCaptureContentChanged()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* capture, OH_AVScreenCaptureContentChangedEvent event, OH_Rect* area, void *userData)
 ```
 
@@ -548,7 +548,7 @@ typedef void (*OH_AVScreenCapture_OnCaptureContentChanged)(OH_AVScreenCapture* c
 
 ### OH_AVScreenCapture_OnUserSelected()
 
-```
+```c
 typedef void (*OH_AVScreenCapture_OnUserSelected)(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectionInfo* selections, void *userData)
 ```
 

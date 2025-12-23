@@ -67,8 +67,6 @@ EGLint minorVersion;
 EGLNativeWindowType win;
 display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
 eglInitialize(display, &majorVersion, &minorVersion);
-display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-eglInitialize(display, &majorVersion, &minorVersion);
 EGLint attribs[] = {
     EGL_RENDERABLE_TYPE,
     EGL_OPENGL_ES2_BIT,
@@ -92,159 +90,220 @@ bool isHave = strTest.find("GL_OES_matrix_palette") != -1 ?
 ## Example
 
 ```cpp
-#include <EGL/egl.h>
-#include <GLES3/gl3.h>
-#include <iostream>
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
+void enableVertexAttrib(GLuint index, float *data, int32_t len)
+{
+    GLuint buffer;
+    glGenBuffers(1, &buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, len, data, GL_STATIC_DRAW);
+    glVertexAttribPointer(index, TRIANGLES_POINT, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(index);
+    return;
+}
 
-int main() {
-    // Initialize EGL.
-    EGLDisplay display;
-    EGLConfig config;
-    EGLContext context;
-    EGLSurface surface;
-    EGLint numConfigs;
-    EGLint majorVersion;
-    EGLint minorVersion;
-
+int32_t Init(void *window, int32_t width,  int32_t height)
+{
+    EGLNativeWindowType mEglWindow;
+    EGLDisplay mEGLDisplay = EGL_NO_DISPLAY;
+    EGLConfig mEGLConfig = nullptr;
+    EGLContext mEGLContext = EGL_NO_CONTEXT;
+    EGLContext mSharedEGLContext = EGL_NO_CONTEXT;
+    EGLSurface mEGLSurface = nullptr;
+    EGLint configsNum;
+    mEglWindow = reinterpret_cast<EGLNativeWindowType>(window);
+    
     // Initialize the EGL display.
-    display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
-    eglInitialize(display, &majorVersion, &minorVersion);
+    mEGLDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+    EGLint eglMajVers;
+    EGLint eglMinVers;
+    eglInitialize(mEGLDisplay, &eglMajVers, &eglMinVers);
 
     // Configure EGL.
-    EGLint attribs[] = {
-        EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,
-        EGL_BLUE_SIZE, 6,
-        EGL_GREEN_SIZE, 8,
-        EGL_RED_SIZE, 8,
-        EGL_NONE
+    EGLint attribList[] = {
+            EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,
+            EGL_RED_SIZE, 8,
+            EGL_GREEN_SIZE, 8,
+            EGL_BLUE_SIZE, 8,
+            EGL_NONE
     };
-    eglChooseConfig(display, attribs, &config, 1, &numConfigs);
+    eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
 
-    // Create an EGL context.
-    EGLint contextAttribs[] = {
-        EGL_CONTEXT_CLIENT_VERSION, 3,
-        EGL_NONE
-    };
-
+    EGLint winAttribs[] = {EGL_GL_COLORSPACE_KHR, EGL_GL_COLORSPACE_SRGB_KHR, EGL_NONE};
+    
     // Create an EGL surface.
-    surface = eglCreateWindowSurface(display, config, nativeWindow, NULL);
-
-    context = eglCreateContext(display, config, EGL_NO_CONTEXT, contextAttribs);
-
-    // Bind the EGL context to the surface.
-    eglMakeCurrent(display, surface, surface, context);
-
-    // Set the viewport.
-    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-
-    // Clear the color buffer.
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    // Define vertex data.
-    GLfloat vertices[] = {
-        -0.5f, -0.5f, 0.0f, // Lower-left corner.
-         0.5f, -0.5f, 0.0f, // Lower-right corner.
-         0.0f, 0.5f, 0.0f // Top.
+    mEGLSurface = eglCreateWindowSurface(mEGLDisplay, mEGLConfig, mEglWindow, winAttribs);
+    
+    // Create an EGL context.
+    EGLint attrib3_list[] = {
+        EGL_CONTEXT_CLIENT_VERSION, 3,
     };
-
-    // Create and bind a Vertex Buffer Object (VBO).
-    GLuint VAO[0];
-    GLuint VBO;
-    glGenVertexArrays(1, VAO);
-	glBindVertexArray(VAO[0]);
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
+    mEGLContext = eglCreateContext(mEGLDisplay, mEGLConfig, mSharedEGLContext, attrib3_list);
+    
+    // Bind the EGL context to the surface.
+    eglMakeCurrent(mEGLDisplay, mEGLSurface, mEGLSurface, mEGLContext);
+    
     // Create a shader program.
-    const char* vertexShaderSource = R"(
-        #version 300 es
-        precision mediump float;
-        layout (location = 0) in vec3 aPos;
-        void main() {
-            gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
-        }
-    )";
-
-    const char* fragmentShaderSource = R"(
-        #version 300 es
-        precision mediump float;
-        out vec4 FragColor;
-        void main() {
-            FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
-        }
-    )";
-
-    GLuint vertexShader, fragmentShader, shaderProgram;
+    const char* g_vertexShader =
+        "#version 300 es\n"
+        "in vec4 a_pos;\n"
+        "in vec4 a_color;\n"
+        "uniform mat4 a_mx;\n"
+        "uniform mat4 a_my;\n"
+        "out vec4 v_color;\n"
+        "void main() {\n"
+        "    gl_Position = a_mx * a_my * a_pos;\n"
+        "    v_color = a_color;\n"
+        "}";
+    
+    const char* g_fragmentShader =
+        "#version 300 es\n"
+        "precision mediump float;\n"
+        "in vec4 v_color;\n"
+        "out vec4 fragColor;\n"
+        "void main() {\n"
+        "    fragColor = v_color;\n"
+        "}";
+    
     // Create a vertex shader.
-    vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
+    GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShader, 1, &g_vertexShader, nullptr);
     glCompileShader(vertexShader);
 
     // Create a fragment shader.
-    fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
+    GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShader, 1, &g_fragmentShader, nullptr);
     glCompileShader(fragmentShader);
 
+    
     // Create a shader program.
-    shaderProgram = glCreateProgram();
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
-
+    mProgramHandle = glCreateProgram();
+    glAttachShader(mProgramHandle, vertexShader);
+    glAttachShader(mProgramHandle, fragmentShader);
+    glLinkProgram(mProgramHandle);
+    
     // Use the shader program.
-    glUseProgram(shaderProgram);
-
-    // Bind the vertex data.
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-    glEnableVertexAttribArray(0);
-
-    // Draw a triangle.
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-
-    // Swap the buffers.
-    eglSwapBuffers(display, surface);
-
+    glUseProgram(mProgramHandle);
+    
     // Clear the resources.
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
-    glDeleteBuffers(1, &VBO);
-
-    // Wait for exit.
-    std::cout << "Press Enter to exit..." << std::endl;
-    std::cin.get();
-
-    // Clear EGL.
-    eglDestroyContext(display, context);
-    eglDestroySurface(display, surface);
-    eglTerminate(display);
-
+    
     return 0;
 }
 
+void Update(float angleXOffset, float angleYOffset)
+{
+    const float pi = 3.141592;
+    
+    // Create the vertex position data array vertexData.
+    float g_vertexData[] = {
+        -0.75, -0.50, -0.43, 0.75, -0.50, -0.43, 0.00,  -0.50, 0.87,  0.75, -0.50, -0.43,
+        0.00,  -0.50, 0.87,  0.00, 1.00,  0.00,  0.00,  -0.50, 0.87,  0.00, 1.00,  0.00,
+        -0.75, -0.50, -0.43, 0.00, 1.00,  0.00,  -0.75, -0.50, -0.43, 0.75, -0.50, -0.43,
+    };
+    
+    // Create the vertex color array colorData.
+    float g_colorData[] = {
+        1, 0, 0, 1, 0, 0, 1, 0, 0, /*Red - face 1*/
+        1, 0, 0, 1, 0, 0, 1, 0, 0, /*Red - face 2*/
+        1, 0, 0, 1, 0, 0, 1, 0, 0, /*Red - face 3*/
+        1, 0, 0, 1, 0, 0, 1, 0, 0 /*Red - face 4*/
+    };
+    
+    // Vertex normal array normalData.
+    float g_normalData[] = {
+        0.00,  -1.00, 0.00,  0.00,  -1.00, 0.00,  0.00,  -1.00, 0.00, -0.83, -0.28, -0.48,
+        -0.83, -0.28, -0.48, -0.83, -0.28, -0.48, -0.83, 0.28,  0.48, -0.83, 0.28,  0.48,
+        -0.83, 0.28,  0.48,  0.00,  -0.28, 0.96,  0.00,  -0.28, 0.96, 0.00,  -0.28, 0.96,
+    };
+    
+    // Set the viewport size.
+    glViewport(0, 0, m_width, m_height);
+    
+    // Clear the color buffer.
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    // Obtain the location handles of the variables in the shader program.
+    GLint aPos = glGetAttribLocation(mProgramHandle, "a_pos");
+    GLint aColor = glGetAttribLocation(mProgramHandle, "a_color");
+    GLint aNormal = glGetAttribLocation(mProgramHandle, "a_normal");
+    GLint uLightColor = glGetUniformLocation(mProgramHandle, "u_lightColor");
+    GLint uLightDirection = glGetUniformLocation(mProgramHandle, "u_lightDirection");
+    GLint aMx = glGetUniformLocation(mProgramHandle, "a_mx");
+    GLint aMy = glGetUniformLocation(mProgramHandle, "a_my");
+
+    angleX = angleXOffset;
+    angleY = angleYOffset;
+
+    // Y-axis rotation angle.
+    float radianY = (angleY * pi) / 180.0;
+    float cosY = cosf(radianY);
+    float sinY = sinf(radianY);
+    float myArr[] = {
+        cosY, 0, -sinY, 0,
+        0, 1, 0, 0,
+        sinY, 0, cosY, 0,
+        0, 0, 0, 1
+    };
+
+    // Pass 4x4 matrix data to the shader.
+    glUniformMatrix4fv(aMy, 1, false, myArr);
+
+    // X-axis rotation angle.
+    float radianX = (angleX * pi) / 180.0;
+    float cosX = cosf(radianX);
+    float sinX = sinf(radianX);
+    float mxArr[] = {
+        1, 0, 0, 0, 0, cosX, -sinX, 0, 0, sinX, cosX, 0, 0, 0, 0, 1
+    };
+
+    glUniformMatrix4fv(aMx, 1, false, mxArr);
+
+    // Pass the color and direction data (RGB(1,1,1), unit vector (x,y,z)) to the parallel light.
+    glUniform3f(uLightColor, 1.0, 1.0, 1.0);
+
+    // Ensure that the vector (x,y,z) has a length of 1, that is, a unit vector.
+    float x = 2.0 / sqrt(15);
+    float y = 2.0 / sqrt(15);
+    float z = 3.0 / sqrt(15);
+
+    glUniform3f(uLightDirection, x, -y, z);
+
+    // Create a buffer and pass the vertex position data g_vertexData.
+    enableVertexAttrib(aPos, g_vertexData, sizeof(g_vertexData));
+    enableVertexAttrib(aNormal, g_normalData, sizeof(g_normalData));
+    // Create a color buffer and pass the vertex color data g_colorData.
+    enableVertexAttrib(aColor, g_colorData, sizeof(g_colorData));
+
+    glEnable(GL_DEPTH_TEST);
+
+    // Draw the tetrahedron.
+    glDrawArrays(GL_TRIANGLES, 0, TETRAHEDRON_POINT);
+    
+    // Swap the buffers.
+    eglSwapBuffers(mEGLDisplay, mEGLSurface);
+}
 ```
 
-This example uses EGL to create a render surface, which can be a window surface, pbuffer, or pixmap. The following explains every step in detail.
+This example walks through the process of creating and setting up an OpenGL ES rendering environment using EGL to render a 3D tetrahedron. Below is a detailed breakdown of each step.
 
 ### Using eglGetDisplay to Obtain an EGL Display Connection
 ```cpp
 EGLDisplay eglGetDisplay(EGLNativeDisplayType display_id);
 ```
 
-The **eglGetDisplay** function returns an EGLDisplay object, which represents the connection to an EGL display. If no connection is available, **EGL_NO_DISPLAY** is returned.
+**eglGetDisplay** is a function in the EGL library. It returns an EGLDisplay object to represent the connection to the rendering target device. If the display connection is unavailable, **EGL_NO_DISPLAY** is returned.
 
 The **display_id** parameter indicates the local display type of the display. The **EGLNativeDisplayType** parameter is the window display type, which has different definitions on different platforms. If you just want to use the default display, use **EGL_DEFAULT_DISPLAY** without explicitly specifying **display_id**.
 
 ### Using eglInitialize to Initialize the EGL Display Connection
 Call **eglInitialize** to initialize the EGL display connection obtained.
 ```cpp
-EGLBoolean eglInitialize(EGLDisplay display, // EGL display connection.
-                         EGLint *majorVersion, // Major version number of the EGL implementation. The value may be NULL.
-                         EGLint *minorVersion);// Minor version number of the EGL implementation. The value may be NULL.
+EGLBoolean eglInitialize(EGLDisplay display,    // EGL display connection.
+                         EGLint *majorVersion,  // Major version number of the EGL implementation. The value may be NULL.
+                         EGLint *minorVersion); // Minor version number of the EGL implementation. The value may be NULL.
 ```
 The function is used to initialize the internal data structure of the EGL, return the EGL version numbers, and save them in **majorVersion** and **minorVersion**.
 If the initialization is successful, **EGL_TRUE** is returned. Otherwise, **EGL_FALSE** is returned. You can also call **EGLint eglGetError()** to query the EGL error status.
@@ -256,29 +315,33 @@ If the initialization is successful, **EGL_TRUE** is returned. Otherwise, **EGL_
 ### Using eglChooseConfig to Determine the Rendering Configuration
 After the EGL display connection is initialized, determine the type and configuration of the available surface in either of the following ways:
 - Specify a set of required configurations and use **eglChooseConfig** to enable EGL to recommend the optimal configuration.
-Generally, you can use this method because it is easier to obtain the optimal configuration.
+
+   You are advised to use this method if no special configuration is required, because it is easier to obtain the optimal configuration.
 
     ```cpp
-    EGLBoolean eglChooseConfig(EGLDisplay dpy, // Handle to the EGL display connection for which configurations are selected.
+    EGLBoolean eglChooseConfig(EGLDisplay dpy,     // Handle to the EGL display connection for which configurations are selected.
                         const EGLint *attrib_list, // An integer array of pointers to attributes. Each element in the array consists of an attribute name (for example, EGL_RED_SIZE) and attribute value, and the array is terminated with EGL_NONE. An example attribute array is {EGL_RED_SIZE, 8, EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8, EGL_NONE}.
-                           EGLConfig *configs, // An array of pointers to the selected configurations. The eglChooseConfig function selects the configurations that match the attributes from the available configurations and stores them in this array.
-                           EGLint config_size,// Size of the configs array.
-                           EGLint *num_config); // Number of configurations that match the attributes.
+                           EGLConfig *configs,     // An array of pointers to the selected configurations. The eglChooseConfig function selects the configurations that match the attributes from the available configurations and stores them in this array.
+                           EGLint config_size,     // Size of the configs array.
+                           EGLint *num_config);    // Number of configurations that match the attributes.
     ```
 
     ```cpp
     // Here, the following attributes are used:
-    EGLint attribs[] = {EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,  // The renderable type is OpenGL ES 3.
-                        EGL_BLUE_SIZE, 6, // The number of bits in the blue buffer is 6.
-                        EGL_GREEN_SIZE, 8, // The number of bits in the green buffer is 8.
-                        EGL_RED_SIZE, 8, // The number of bits in the red buffer is 8.
-                        EGL_NONE};
-    eglChooseConfig(display, attribs, &config, 1, &numConfigs);
+	EGLint attribList[] = {
+            EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,  // The renderable type is OpenGL ES 3.
+            EGL_RED_SIZE, 8, // The number of bits in the red buffer is 8.
+            EGL_GREEN_SIZE, 8, // The number of bits in the green buffer is 8.
+            EGL_BLUE_SIZE, 8,   // The number of bits in the blue buffer is 8.
+            EGL_NONE
+    };
+    eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
     ```
-    In this example, the number of bits in the blue buffer is 6. To use six bits to represent the blue value 200 in the case of 8-bit RGB (ranging from 0 to 255), use the following formula for calculation: 64 x 200/256, where 64 is the maximum value that can be represented by six bits (2^6 = 64). After **eglChooseConfig** is called, the configurations that match the attributes are returned and stored in the **config** array. In the sample code, **config_size** is set to **1**, indicating that the size of the **config** array is 1. Only one set of configurations can be stored, but that's enough. **numconfigs** specifies the number of configurations that match the attributes. In this way, the desired **config** array is obtained.
+   When you call the **eglChooseConfig** function, the system returns EGL configurations that match the specified attributes in **attribList**. The configurations are stored in the **mEGLConfig** parameter. In the sample code, **configsNum** is set to **1**, indicating that the **mEGLConfig** array can hold only one configuration. Although this setting limits the number of configurations returned, it is usually enough for most applications. Moreover, **configsNum** reflects the total number of configurations that meet the specified attributes, providing a full count of available options.
 
 - Use **eglGetConfigs** to query all supported configurations and use **eglGetConfigAttrib** to filter the desired ones.
-  The following describes how to use this method to obtain the desired configurations.
+
+   The following describes how to use this method to obtain the desired configurations.
 
   ```cpp
   #include <EGL/egl.h>
@@ -347,7 +410,7 @@ Generally, you can use this method because it is easier to obtain the optimal co
   The preceding code snippet traverses each configuration in **configs** and uses **eglGetConfigAttrib** to query the value of a specific attribute in the configuration, save the value in the fourth parameter, check whether the configuration is the desired one, and if yes, save the configuration. If the call is successful, **EGL_TRUE** is returned. Otherwise, **EGL_FALSE** is returned. In the latter case, you can use **eglGetError** to obtain the failure cause. If **EGL_BAD ATTRIBUTE** is returned, the attribute is invalid.
   
   ```cpp
-  EGLBoolean eglGetConfigAttrib(EGLDisplay display, // Handle to the EGL display connection for which configurations are selected.
+  EGLBoolean eglGetConfigAttrib(EGLDisplay display,     // Handle to the EGL display connection for which configurations are selected.
                                      EGLConfig config, // EGL configuration to query.
                                      EGLint attribute, // Attribute identifier of the EGLint type, indicating the attribute to query.
                                      EGLint *value); // Pointer to the variable of the EGLint type, which is used to store the attribute value obtained.
@@ -358,9 +421,9 @@ Generally, you can use this method because it is easier to obtain the optimal co
 
 After obtaining the EGL configurations that meet the rendering requirements, use **eglCreateWindowSurface** to create a window surface.
 ```cpp
-EGLSurface eglCreateWindowSurface(EGLDisplay dpy, // EGL display connection to be associated with the window surface.
-                                  EGLConfig config, // EGL configuration of the window surface to create.
-                                  EGLNativeWindowType win, // Parameter of the EGLNativeWindowType type. It is the handle or identifier of the window and is used to associate with the EGL surface.
+EGLSurface eglCreateWindowSurface(EGLDisplay dpy,             // EGL display connection to be associated with the window surface.
+                                  EGLConfig config,           // EGL configuration of the window surface to create.
+                                  EGLNativeWindowType win,    // Parameter of the EGLNativeWindowType type. It is the handle or identifier of the window and is used to associate with the EGL surface.
                                   const EGLint *attrib_list); // Pointer to the EGL attribute list. It specifies the attributes of the window surface. It is an integer array terminating with EGL_NONE.
 ```
 The following values can be passed in to **attrib_list** of **eglCreateWindowSurface**:
@@ -380,8 +443,6 @@ The possible causes of a failure to call **eglCreateWindowSurface** are as follo
 - **EGL_BAD_NATIVE_WINDOW**: The window handle is invalid.
 
 - **EGL_BAD_ALLOC**: Resources cannot be created for a new EGL window or there is already an EGL configuration associated with the window.
-
-
 
 ```cpp
 EGLint attribList[] = { EGL_RENDER_BUFFER, EGL_BACK_BUFFER, EGL_NONE };
@@ -407,74 +468,74 @@ if (surface == EGL_NO_SURFACE) {
 }
 ```
 The process of using the **XComponent** to obtain a native window is as follows:
-1. Define the **XComponent** and set the **XComponentController** in ArkTS. The **XComponent** is used to embed rendering elements, such as OpenGL or Vulkan, into the UI.
-```typescript
-Column() {
-    XComponent({
-        id: 'myXComponent',
-        type: XComponentType.SURFACE,
-        controller: this.xComponentController
-    })
-}
-```
-2. Create an **XComponentController** subclass and implement its callbacks.
-```typescript
-class MyXComponentController extends XComponentController {
-    onSurfaceCreated(surfaceId: string): void {
-        console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
-        nativeRender.SetSurfaceId(BigInt(surfaceId));
-        // The surface ID will be used to associate with the native window.
-    }
+1. Define the **XComponent** and set the **XComponentController** in ArkTS. The **XComponent** is used to embed rendering content implemented based on graphics APIs such as OpenGL or Vulkan in the UI.
+   ```typescript
+   Column() {
+       XComponent({
+           id: 'myXComponent',
+           type: XComponentType.SURFACE,
+           controller: this.xComponentController
+       })
+   }
+   ```
+2. Create an **XComponentController** child class and implement its callbacks.
+   ```typescript
+   class MyXComponentController extends XComponentController {
+       onSurfaceCreated(surfaceId: string): void {
+           console.info(`onSurfaceCreated surfaceId: ${surfaceId}`);
+           nativeRender.SetSurfaceId(BigInt(surfaceId));
+           // The surface ID will be used to associate with the native window.
+       }
 
-    onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-        console.info(`onSurfaceChanged surfaceId: ${surfaceId}`);
-    }
-    
-    onSurfaceDestroyed(surfaceId: string): void {
-        console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
-    }
-}
-```
-3. Use the surface ID to obtain a native window.
-The surface ID is generated during the creation of the **XComponent**. In the **onSurfaceCreated** callback, you can use **OH_NativeWindow_CreateNativeWindowFromSurfaceId** to obtain a native window based on the surface ID.
-```cpp
-napi_value PluginManager::SetSurfaceId(napi_env env, napi_callback_info info)
-{
-    int64_t surfaceId = ParseId(env, info);
-    OHNativeWindow *nativeWindow;
-    PluginRender *pluginRender;
-    if (windowMap_.find(surfaceId) == windowMap_.end()) {
-        OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &nativeWindow);
-        windowMap_[surfaceId] = nativeWindow;
-    } else {
-        return nullptr;
-    }
-    if (pluginRenderMap_.find(surfaceId) == pluginRenderMap_.end()) {
-        pluginRender = new PluginRender(surfaceId);
-        pluginRenderMap_[surfaceId] = pluginRender;
-    }
-    pluginRender->InitNativeWindow(nativeWindow);
-    return nullptr;
-}
-```
+       onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
+           console.info(`onSurfaceChanged surfaceId: ${surfaceId}`);
+       }
+
+       onSurfaceDestroyed(surfaceId: string): void {
+           console.info(`onSurfaceDestroyed surfaceId: ${surfaceId}`);
+       }
+   }
+   ```
+3. Use the surface ID to obtain the native window. The surface ID is generated during the XComponent creation. In the **onSurfaceCreated** callback, you can use **OH_NativeWindow_CreateNativeWindowFromSurfaceId** to obtain a native window based on the surface ID.
+   ```cpp
+   napi_value PluginManager::SetSurfaceId(napi_env env, napi_callback_info info)
+   {
+       int64_t surfaceId = ParseId(env, info);
+       OHNativeWindow *nativeWindow;
+       PluginRender *pluginRender;
+       if (windowMap_.find(surfaceId) == windowMap_.end()) {
+           OH_NativeWindow_CreateNativeWindowFromSurfaceId(surfaceId, &nativeWindow);
+           windowMap_[surfaceId] = nativeWindow;
+       } else {
+           return nullptr;
+       }
+       if (pluginRenderMap_.find(surfaceId) == pluginRenderMap_.end()) {
+           pluginRender = new PluginRender(surfaceId);
+           pluginRenderMap_[surfaceId] = pluginRender;
+       }
+       pluginRender->InitNativeWindow(nativeWindow);
+       return nullptr;
+   }
+   ```
 <!--Del-->
 For details about how to use the **XComponent**, see [ArkTS XComponent Usage Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent).
 <!--DelEnd-->
 
 ### Using eglCreateContext to Create a Rendering Context
 
-The **eglCreateContext** function is used to create an EGL rendering context and associate it with a specific display and configuration. You can specify a shared context to share status information with an existing OpenGL context. The parameters in the function are described as follows:
+Use **eglCreateContext** to create an EGL rendering context and associate it with a specific display and configuration. You can specify a shared context to share status information with an existing OpenGL context. The parameters in the function are described as follows:
 
 ```cpp
-EGLContext eglCreateContext(EGLDisplay display, // Type of the EGL display connection for which the context is to be created.
-                            EGLConfig config, // Type of the EGL configuration associated with the context.
-                            EGLContext shareContext, // Type of the EGL context whose status information is to be shared with the newly created context. If you do not want to share the status information, pass in EGL_NO_CONTEXT.
+EGLContext eglCreateContext(EGLDisplay display,        // Type of the EGL display connection for which the context is to be created.
+                            EGLConfig config,          // Type of the EGL configuration associated with the context.
+                            EGLContext shareContext,   // Type of the EGL context whose status information is to be shared with the newly created context. If you do not want to share the status information, pass in EGL_NO_CONTEXT.
                             const EGLint *attribList); // Pointer to the attribute list. It specifies the attributes of the context. An attribute list is a series of attribute-value pairs terminating with EGL_NONE.
 ```
 The value of **attribList** in **eglCreateContext** is as follows:
 ```cpp
-EGLint contextAttribs[] = {
+EGLint attrib3_list[] = {
     EGL_CONTEXT_CLIENT_VERSION, 3, // Context type related to OpenGL ES version 3.
+    EGL_NONE
 };
 ```
 
@@ -489,190 +550,39 @@ EGLBoolean eglMakeCurrent(EGLDisplay display, // Handle to the EGL display conne
                           EGLContext context); // Handle to the EGL rendering context to be attached to the surface.
 ```
 
-### Using glViewport to Set the Viewport
-
-```cpp
-void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
-```
-
-The **glViewport** function is used to set the viewport and specify the position and size of the OpenGL ES rendering area in the window. The **x** and **y** parameters specify the coordinates of the lower-left corner of the viewport in the window. The **width** and **height** parameters specify the width and height of the viewport.
-
-### Using glClearColor to Set the Color Used to Clear the Color Buffer
-
-```cpp
-void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
-```
-In the **glClearColor(0.2f, 0.3f, 0.3f, 1.0f)** function, the color used for clearing the color buffer is set to (0.2, 0.3, 0.3). That is, the red component is 0.2, the green component is 0.3, the blue component is 0.3, and the alpha value is 1.0 (opaque).
-
-### Using glClear to Clear Buffers
-
-```cpp
-void glClear(GLbitfield mask);
-```
-The **glClear** function is used to clear a buffer. The **mask** parameter specifies the buffer to clear. It can be a combination of the following values:
-- **GL_COLOR_BUFFER_BIT**: clears the color buffer.
-- **GL_DEPTH_BUFFER_BIT**: clears the depth buffer.
-- **GL_STENCIL_BUFFER_BIT**: clears the stencil buffer.
-
-You can call **glClear(GL_COLOR_BUFFER_BIT)** to clear the color buffer and fill the buffer with the color set by **glClearColor**. Clearing the color buffer is a common operation before you start frame rendering. This operation ensures that each pixel on the screen is initialized to the specified color value. It is also a mandatory preparation for drawing a new frame, similar to painting a background color on the canvas to start a new painting.
-
-### Defining Vertex Data
-```cpp
-  // Define vertex data.
-    GLfloat vertices[] = {
-        -0.5f, -0.5f, 0.0f, // Lower-left corner.
-         0.5f, -0.5f, 0.0f, // Lower-right corner.
-         0.0f, 0.5f, 0.0f // Top.
-    };
-```
-
-In OpenGL, Normalized Device Coordinates (NDCs) are usually used to represent the position of a vertex. NDC is a coordinate space in the screen. In this space, the lower-left corner is (-1, -1), and the upper-right corner is (1, 1). This coordinate space makes the position of the vertex independent of the size and aspect ratio of the screen.
-### Managing Vertex Data
-
-You can save the vertex data on the GPU to minimize data transfer between the CPU and GPU.
-
-```cpp
-GLuint VAO[1];
-GLuint VBO;
-glGenVertexArrays(1, VAO); // Generate Vertex Array Object (VAO) names. In this example, one VBO is generated.
-glBindVertexArray(VAO[0]); // Bind the VAO to the current OpenGL context.
-glGenBuffers(1, &VBO); // Generate VBO names. The first parameter indicates the number of VBO names to generate, and it is set to 1 in this example. The passed-in value &VBO is the pointer to the array that stores the generated VBO names.
-glBindBuffer(GL_ARRAY_BUFFER, VBO); // void glBindBuffer(GLenum target, GLuint buffer), where target indicates the buffer to be bound and can be one of the following values:
-                                   // GL_ARRAY_BUFFER: stores vertex attribute data.
-                                  // GL_ELEMENT_ARRAY_BUFFER: stores index data and other data.
-                                 // buffer is the name of the VBO to be bound.
-glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-```
-```cpp
-void glBufferData(GLenum target, // target specifies the type of the buffer object. The value can be one of the following:
-                                // GL_ARRAY_BUFFER: stores vertex attribute data.
-                               // GL_ELEMENT_ARRAY_BUFFER: stores index data.
-                  GLsizeiptr size, // Size (in bytes) of the buffer to be allocated.
-                  const GLvoid* data, // Pointer to the initial data to be copied to the buffer.
-                  GLenum usage); // Expected buffer usage mode. The value can be one of the following:
-                                // GL_STATIC_DRAW: The data is not or almost not modified and is used many times as the source for the drawing commands.
-                               // GL_DYNAMIC_DRAW: The data is frequently modified and used many times as the source for the drawing commands.
-                              // GL_STREAM_DRAW: The data is modified and is seldom used as the source for the drawing commands.
-```
-
-Once the **glBufferData** function is called, the data is copied to the OpenGL buffer object and stored in the GPU memory. This means that data can be efficiently accessed and processed on the GPU without frequent data transfer with the CPU memory.
-
-```cpp
-    const char* vertexShaderSource = R"(
-        #version 320 es // Shader of OpenGL ES 3.2 is used.
-        precision mediump float; // The floating-point number uses the medium precision.
-        layout (location = 0) in vec3 aPos; // Vertex attribute variable. The variable name is aPos, the type is vec3, and the index in the vertex shader is 0. This variable receives the vertex data from the VBO. Each time the vertex shader is called, aPos is set to the position of the currently processed vertex. (The data is obtained from the VBO and stored in the GPU.)
-        void main() {
-            // gl_Position, a built-in variable of OpenGL ES, specifies the final position of each vertex. The position is the coordinates in the clip space after perspective projection transformation.
-            // After a value is assigned to gl_Position in the vertex shader, the rendering pipeline further processes the vertex and projects the vertex to the two-dimensional coordinates on the screen.
-            // When w is a non-zero value, perspective division is performed on the vertex coordinates. That is, (x/w, y/w, z/w) in (x, y, z, w) is used as the final coordinates in the clip space.
-            // Therefore, when the value of w is 1.0, perspective division does not change the coordinates.
-            gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0); 
-        }
-    )";
-```
-- Fragment is an element generated by rasterization. It represents a potential screen pixel, including all information related to the pixel, such as the color, depth, and stencil value. Each fragment is processed by a fragment shader, which also determines whether to write the fragment to the frame buffer.
-- A fragment shader runs on each fragment. In this example, it is used to calculate the final color value of the fragment. It can access the interpolated vertex data and perform complex operations such as lighting calculation and texture sampling.
-
-```cpp
-
-const char* fragmentShaderSource = R"(
-    #version 320 es // Shader of OpenGL ES 3.2 is used.
-    precision mediump float; // The floating-point number uses the medium precision.
-    out vec4 FragColor; // Color of the output fragment.
-
-    void main() {
-        // Set the color of each fragment to vec4(1.0f, 0.5f, 0.2f, 1.0f),
-        // indicating the red, green, blue, and alpha values, respectively.
-        // This means that the output color is light orange, completely opaque.
-        // The color here is not obtained from the vertex shader through rasterization by linear interpolation. It is directly assigned.
-        FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
-    }
-)";
-
-```
-In the OpenGL ES rendering pipeline, the following steps describe the entire process from vertex data to pixel output:
-
-1. Vertex shader processing
-
-   The vertex data in the buffer is passed into the vertex shader program and undergone the following processing:
-   
-   - Matrix transformation: uses the model view (MV) matrix and projection matrix to transform the vertex position.
-
-   - Lighting calculation: calculates the color or other attributes of vertices based on the lighting formula.
-   
-2. Primitive assembly
-
-   In the primitive assembly phase, the vertex data is assembled into geometric primitive, such as points, line segments, or triangles.
-
-3. Rasterization
-
-   Rasterization is performed to convert a geometric primitive (for example, a triangle) into a set of pixels on the screen. This process includes interpolation. Specifically, if a color or other attributes are set for a vertex, linear interpolation is performed on these attributes in the rasterization phase to generate fragment (pixel) data.
-
-4. Fragment shader processing
-
-   The fragment data output by rasterization is used as the input variable of the fragment shader. The following operations are carried out in the fragment shader:
-
-   - Lighting calculation: calculates the lighting effect of a fragment.
-
-   - Texture sampling: obtains color data from textures.
-
-   - Color mixing: generates new colors, depths, and screen coordinates based on lighting and texture data.
-
-5. Fragment-by-fragment processing
-
-   The output of the fragment shader is then undergone fragment-by-fragment processing as follows:
-
-   - Pixel ownership test: determines whether the fragment belongs to the current pixel area to draw.
-
-   - Scissor test: determines whether the fragment is in the visible area.
-
-   - Stencil test: uses the stencil buffer for test.
-
-   - Depth-buffer test: compares the depth values of the fragment to determine whether it is visible.
-
-   - Blending: combines the newly calculated color with the existing color in the frame buffer.
-
-   - Dithering: reduces color quantization errors by applying small, random, or ordered noise to the original image to distribute these quantization errors.
-
-6. Writing the frame to the buffer
-
-  After all the preceding tests and processing, the final fragment data is written into the frame buffer and displayed as an image on the screen.
-
 ### Creating and Using a Shader Program
 
 ```cpp
-GLuint vertexShader, fragmentShader, shaderProgram;
 // Create a vertex shader.
-vertexShader = glCreateShader(GL_VERTEX_SHADER);
-glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
+GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+glShaderSource(vertexShader, 1, &g_vertexShader, nullptr);
 glCompileShader(vertexShader);
 
 // Create a fragment shader.
-fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
+GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+glShaderSource(fragmentShader, 1, &g_fragmentShader, nullptr);
 glCompileShader(fragmentShader);
 
 // Create a shader program.
-shaderProgram = glCreateProgram();
-glAttachShader(shaderProgram, vertexShader);
-glAttachShader(shaderProgram, fragmentShader);
-glLinkProgram(shaderProgram);
+mProgramHandle = glCreateProgram();
+glAttachShader(mProgramHandle, vertexShader);
+glAttachShader(mProgramHandle, fragmentShader);
+glLinkProgram(mProgramHandle);
 
 // Use the shader program.
-glUseProgram(shaderProgram);
+glUseProgram(mProgramHandle);
 ```
 
 ```cpp
 GLuint glCreateShader(GLenum shaderType);
 ```
-The **glCreateShader** function is used to create a shader object of a specified type and return a handle to the object. The **shaderType** parameter specifies the type of shader to create, which can be **GL_VERTEX_SHADER** (vertex shader) or **GL_FRAGMENT_SHADER** (fragment shader).
+Use **glCreateShader** to create a shader object of a specified type and return a handle to the object. The **shaderType** parameter specifies the type of shader to create, which can be **GL_VERTEX_SHADER** (vertex shader) or **GL_FRAGMENT_SHADER** (fragment shader).
 
 ```cpp
 void glShaderSource(GLuint shader, GLsizei count, const GLchar \**string, const GLint *length);
 ```
 
-The **glShaderSource** function is used to set the source code of the shader object. The following parameters are available in the function:
+Use **glShaderSource** set the source code of the shader object. The following parameters are available in the function:
 
 - **shader**: identifier of the shader object for which the source code is set.
 - **count**: number of source code strings.
@@ -683,32 +593,32 @@ The **glShaderSource** function is used to set the source code of the shader obj
 void glCompileShader(GLuint shader);
 ```
 
-The **glCompileShader** function is used to compile a shader object, where the **shader** parameter is the identifier of the target shader object.
+Use **glCompileShader** to compile a shader object, where the **shader** parameter is the identifier of the target shader object.
 
 ```cpp
 GLuint glCreateProgram(void);
 ```
 
-The **glCreateProgram** function is used to create a shader program object and return the object identifier.
+Use **glCreateProgram** to create a shader program object and return the object identifier.
 
 ```cpp
 void glAttachShader(GLuint program, GLuint shader);
 ```
 
-The **glAttachShader** function is used to attach a shader object to a shader program object. The **program** parameter is the identifier of the target shader program object, and the **shader** parameter is the identifier of the target shader object.
+Use **glAttachShader** to attach a shader object to a shader program object. The **program** parameter is the identifier of the target shader program object, and the **shader** parameter is the identifier of the target shader object.
 
 ```cpp
 void glLinkProgram(GLuint program);
 ```
 
-The **glLinkProgram** function is used to link a shader program object, that is, to link the shader attached to the program object to an executable rendering pipeline.
+Use **glLinkProgram** to link a shader program object, that is, to link the shader attached to the program object to an executable rendering pipeline.
 
 The **program** parameter is the identifier of the target shader program object. After the shader program is linked, OpenGL merges the code in each individual shader object into an executable rendering pipeline, performs connector optimization to optimize the performance of the rendering pipeline, and binds the **Uniform** variable to the information about the Uniform block.
 
 ```cpp
 void glUseProgram(GLuint program);
 ```
-The **glUseProgram** function is used to activate a shader program object. After **glUseProgram** is called, all rendering calls are processed using the activated shader program.
+Use **glUseProgram** to activate a shader program object. After **glUseProgram** is called, all rendering calls are processed using the activated shader program.
 
 You can use the following code to check whether the call of **glCompileShader** is normal:
 
@@ -722,23 +632,18 @@ glGetShaderiv(shader, GL_COMPILE_STATUS, &compiled);
 if (!compiled)
 {
     GLint infoLen = 0;
-
     // Obtain the length of the shader information log.
     glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &infoLen);
-
     if ( infoLen > 1 )
     {
         // Allocate the memory for storing the information log.
         char *infoLog = malloc(sizeof(char) * infoLen);
-
         // Obtain and print the shader information log.
         glGetShaderInfoLog(shader, infoLen, NULL, infoLog);
         esLogMessage("Error compiling shader:\n%s\n", infoLog);
-
         // Release the allocated memory.
         free(infoLog);
     }
-
     // Delete the shader that fails to be compiled.
     glDeleteShader(shader);
     return 0;
@@ -757,69 +662,162 @@ glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
 if (!linked)
 {
     GLint infoLen = 0;
-
     // Obtain the length of the program object information log.
     glGetProgramiv(programObject, GL_INFO_LOG_LENGTH, &infoLen);
-
     if (infoLen > 1)
     {
         // Allocate the memory for storing the information log.
         char *infoLog = malloc(sizeof(char) * infoLen);
-
         // Obtain and print the information log of the program object.
         glGetProgramInfoLog(programObject, infoLen, NULL, infoLog);
         esLogMessage("Error linking program:\n%s\n", infoLog);
-
         // Release the allocated memory.
         free(infoLog);
     }
-
     // Delete the program object that fails to be linked.
     glDeleteProgram(programObject);
     return FALSE;
 }
 ```
 
-### Determining the Configuration of the Vertex Attribute Array
-
-Determine the layout and format of the vertex attributes in the buffer.
+### Using glViewport to Set the Viewport
 
 ```cpp
-void glVertexAttribPointer(GLuint index, // Start index of the vertex array. The index is bound to the attribute variable in the vertex shader. (layout (location = 0) in vec3 aPos;)
-                           GLint size, // Number of components of each vertex attribute.
-                           GLenum type, // Type of each component.
+void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
+```
+
+Use **glViewport** to set the viewport and specify the position and size of the OpenGL ES rendering area in the window. The **x** and **y** parameters specify the coordinates of the lower-left corner of the viewport in the window. The **width** and **height** parameters specify the width and height of the viewport.
+
+### Using glClearColor to Set the Color Used to Clear the Color Buffer
+
+```cpp
+void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+```
+In the **glClearColor(1.0f, 1.0f, 1.0f, 1.0f)** function, the color used for clearing the color buffer is set to (1.0, 1.0, 1.0). That is, the red component is 1.0, the green component is 1.0, the blue component is 1.0, and the alpha value is 1.0 (opaque).
+
+### Using glClear to Clear Buffers
+
+```cpp
+void glClear(GLbitfield mask);
+```
+Use **glClear** to clear a buffer. The **mask** parameter specifies the buffer to clear. It can be a combination of the following values:
+- **GL_COLOR_BUFFER_BIT**: clears the color buffer.
+- **GL_DEPTH_BUFFER_BIT**: clears the depth buffer.
+- **GL_STENCIL_BUFFER_BIT**: clears the stencil buffer.
+
+You can call **glClear(GL_COLOR_BUFFER_BIT)** to clear the color buffer and fill the buffer with the color set by **glClearColor**. Clearing the color buffer is a common operation before you start frame rendering. This operation ensures that each pixel on the screen is initialized to the specified color value. It is also a mandatory preparation for drawing a new frame, similar to painting a background color on the canvas to start a new painting.
+
+### Using glGetAttribLocation to Obtain the Location of an Attribute Variable
+
+```cpp
+GLint glGetAttribLocation(GLuint program, const GLchar *name);
+```
+
+Use **glGetAttribLocation** to obtain the location of an attribute variable in a vertex shader. This location is determined based on the attribute name when the vertex shader program is compiled and linked. **program** is the program object to be queried, and **name** is the name of the attribute variable whose location is to be queried.
+
+### Using glGetUniformLocation to Obtain the Location of a Uniform Variable
+
+```cpp
+GLint glGetUniformLocation(GLuint program, const GLchar *name);
+```
+
+Use **glGetUniformLocation** to obtain the location of a uniform variable in a program object. **program** is the program object to be queried, and **name** is the name of the uniform variable whose location is to be queried.
+
+### Using glUniformMatrix4fv to Pass a 4 x 4 Matrix
+
+```cpp
+void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+```
+
+Use **glGetUniformLocation** to obtain the location of a uniform variable in a shader. The following parameters are available in the function:
+- **location**: location of the uniform variable to modify.
+- **count**: Number of matrices to modify. If the target uniform variable is not an array, the value must be **1**. If the target uniform variable is an array, the value must be greater than or equal to **1**.
+- **transpose**: whether to transpose the matrix. If the value is **GL_FALSE**, the matrix is passed in column-major order. If the value is **GL_TRUE**, the matrix is passed in row-major order.
+- **value**: pointer to an array of **count** elements that will be used to update the specified uniform variable.
+
+### Using glUniform3f to Pass Colors and Directions to a Shader
+
+```cpp
+void glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+```
+
+Use **glUniform3f** to set the value of a uniform variable for the current program object. **location** is the position of the variable, and **v0**, **v1**, and **v2** are the new values.
+
+### Creating a Buffer and Uploading Data to the GPU
+
+```cpp
+GLuint buffer;
+glGenBuffers(1, &buffer);                                                  // Generate a buffer object.
+glBindBuffer(GL_ARRAY_BUFFER, buffer);                                     // Bind the buffer, and set it as the current one.
+glBufferData(GL_ARRAY_BUFFER, len, data, GL_STATIC_DRAW);                  // Upload data to the GPU.
+glVertexAttribPointer(index, TRIANGLES_POINT, GL_FLOAT, GL_FALSE, 0, 0);   // Set the vertex attribute pointer.
+glEnableVertexAttribArray(index);                                          // Enable the vertex attribute array.
+```
+```cpp
+void glBindBuffer(GLenum target,   // target specifies the buffer target to bind. The value can be one of the following:
+                                   // GL_ARRAY_BUFFER: stores vertex attribute data.
+                                   // GL_ELEMENT_ARRAY_BUFFER: stores index data and other data.
+                  GLuint buffer);  // buffer specifies the name of the buffer object to bind.
+```
+```cpp
+void glBufferData(GLenum target,       // target specifies the type of the buffer object. The value can be one of the following:
+                                       // GL_ARRAY_BUFFER: stores vertex attribute data.
+                                       // GL_ELEMENT_ARRAY_BUFFER: stores index data.
+                  GLsizeiptr size,     // Size (in bytes) of the buffer to be allocated.
+                  const GLvoid* data,  // Pointer to the initial data to be copied to the buffer.
+                  GLenum usage);       // Expected buffer usage mode. The value can be one of the following:
+                                       // GL_STATIC_DRAW: Data is rarely modified and used multiple times.
+                                       // GL_DYNAMIC_DRAW: Data is frequently modified and used multiple times.
+                                       // GL_STREAM_DRAW: Data is modified and used a few times.
+```
+
+Once **glBufferData** is called, the data is copied into an OpenGL buffer and stored in the GPU's memory. This allows the data to be efficiently accessed and processed on the GPU without frequent transfers from CPU memory, improving rendering performance.
+
+```cpp
+void glVertexAttribPointer(GLuint index,         // Start index of the vertex array. The index is bound to the attribute variable in the vertex shader. (layout (location = 0) in vec3 aPos;)
+                           GLint size,           // Number of components of each vertex attribute.
+                           GLenum type,          // Type of each component.
                            GLboolean normalized, // Whether to map the vertex data to [0, 1] or [-1, 1] when accessing the data.
-                           GLsizei stride, // Stride between the vertex attributes. For precision arrangement, set this parameter to 0.
-                           const void *offset); // Offset of the attribute in the buffer. It is the position from which data reading starts in the buffer.
+                           GLsizei stride,       // Stride between the vertex attributes. For precision arrangement, set this parameter to 0.
+                           const void *offset);  // Offset of the attribute in the buffer. It is the position from which data reading starts in the buffer.
 ```
 
 ```cpp
 void glEnableVertexAttribArray(GLuint index);
 ```
 
-The **glEnableVertexAttribArray** function is used to enable an array of vertex attributes with a specified index. For example, call **glEnableVertexAttribArray(0)** to enable an array of vertex attributes with index 0. This array is associated with layout (location = 0) in vec3 aPos in the vertex shader program.
+Use **glEnableVertexAttribArray** to enable an array of vertex attributes with a specified index. For example, you can call **glEnableVertexAttribArray(0)** to enable the vertex attribute array with the location index of **0**.
 
-In the sample code, the first parameter **index** of **glVertexAttribPointer** corresponds to **aPos** in the vertex shader, that is, position 0. The other parameters set the format of the vertex attribute, telling OpenGL that the attribute contains three components (x, y, and z), the data type is GL_FLOAT, and the first attribute of each vertex starts from offset 0.
-
-The **glBindBuffer** function binds the current VBO, **glBufferData** transfers vertex data to the GPU, and **glVertexAttribPointer** describes how to interpret the data. When using the VBO, vertex data is usually stored in a buffer. It is not automatically passed to the vertex shader. Therefore, the vertex attribute pointer is required to tell OpenGL ES how to interpret the data. The **glEnableVertexAttribArray** function is used to enable an array of vertex attributes at a specified position. For example, to enable an array of vertex properties at position 0, you can call **glEnableVertexAttribArray(0)**.
-
-
-### Drawing and Displaying Graphics
+### Enabling Features
 
 ```cpp
-void glDrawArrays(GLenum mode, // Type of the graphic to draw. For example, GL_TRIANGLES indicates that a triangle will be drawn.
-                  GLint first, // Start index of the vertex array to draw.
+void glEnable(GLenum cap);
+```
+
+Use **glEnable** to activate various features, with the specific feature determined by the **cap** parameter:
+- **GL_BLEND**: enables color blending for effects like translucency.
+- **GL_DEPTH_TEST**: enables depth testing to hide obscured graphics based on depth.
+- **GL_CULL_FACE**: culls polygons based on their winding order in window coordinates.
+
+### Drawing and Displaying Primitives
+
+```cpp
+void glDrawArrays(GLenum mode,   // Type of the primitive to draw. For example, GL_TRIANGLES indicates that a triangle will be drawn.
+                  GLint first,   // Start index of the vertex array to draw.
                   GLsizei count // Number of vertices to draw.
                   );
 ```
 
-The **glDrawArrays** function is used to draw graphics based on the currently bound vertex array, vertex attributes, and other settings.
+Use **glDrawArrays** to draw primitives based on the currently bound vertex array, vertex attributes, and other settings.
 
 ```cpp
-EGLBoolean eglSwapBuffers(EGLDisplay dpy, // EGL display connection.
+EGLBoolean eglSwapBuffers(EGLDisplay dpy,      // EGL display connection.
                           EGLSurface surface); // EGL surface whose buffers are to be swapped.
 ```
 
-The **eglSwapBuffers** function is used to swap the front and back buffers and display the rendering result on the screen.
+Use **eglSwapBuffers** to swap the front and back buffers and display the rendering result on the screen.
 
 <!--RP1--><!--RP1End-->
+
+
+

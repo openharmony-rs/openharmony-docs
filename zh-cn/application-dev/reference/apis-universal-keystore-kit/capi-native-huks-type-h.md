@@ -269,7 +269,7 @@ enum OH_Huks_AlgSuite
 
 OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING对应的密钥材料格式：
 
-```
+```txt
 | x25519_plain_pubkey_length  (4 Byte) | x25519_plain_pubkey |  agreekey_aad_length (4 Byte) | agreekey_aad
 |   agreekey_nonce_length     (4 Byte) |   agreekey_nonce    | agreekey_aead_tag_len(4 Byte) | agreekey_aead_tag 
 |    kek_enc_data_length      (4 Byte) |    kek_enc_data     |    kek_aad_length    (4 Byte) | kek_aad     
@@ -278,7 +278,7 @@ OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING对应的密钥材料格式：
 ```
 
 OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING对应的密钥材料格式：
-```
+```txt
 |  ECC_plain_pubkey_length    (4 Byte) |  ECC_plain_pubkey   |  agreekey_aad_length (4 Byte) | agreekey_aad
 |   agreekey_nonce_length     (4 Byte) |   agreekey_nonce    | agreekey_aead_tag_len(4 Byte) | agreekey_aead_tag
 |    kek_enc_data_length      (4 Byte) |    kek_enc_data     |    kek_aad_length    (4 Byte) | kek_aad 
@@ -420,6 +420,13 @@ enum OH_Huks_ErrCode
 | OH_HUKS_ERR_CODE_DEVICE_PASSWORD_UNSET = 12000016 | 需要锁屏密码，但没有设置。<br>**起始版本：** 11 |
 | OH_HUKS_ERR_CODE_KEY_ALREADY_EXIST = 12000017 | 同名密钥已存在。<br>**起始版本：** 20 |
 | OH_HUKS_ERR_CODE_INVALID_ARGUMENT = 12000018 | 输入的参数无效。<br>**起始版本：** 20 |
+| OH_HUKS_ERR_CODE_EXTERNAL_MODULE = 12000020 | 提供者或Ukey内部执行失败。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_LOCKED = 12000021 | Pin码被锁定。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_INCORRECT = 12000022 | Pin码错误。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_PIN_NO_AUTH = 12000023 | Pin码未认证通过。<br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_BUSY = 12000024 | 提供者或Ukey中的资源正在被使用。 <br>**起始版本：** 22 |
+| OH_HUKS_ERR_CODE_EXCEED_LIMIT = 12000025 | 资源超过限制。<br>**起始版本：** 22 |
+
 
 ### OH_Huks_TagType
 

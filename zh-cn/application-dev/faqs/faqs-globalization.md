@@ -14,8 +14,8 @@
 通过resourceManager的getRawFileContent接口获取xml数据，再通过String.fromCharCode将获取的数据转化为String类型。
 
 **代码示例**
-
-```
+<!--code_no_check-->
+```js
 resourceManager.getRawFileContent('test.xml', (error, value) => {
   if (error != null) {
     console.log("error is " + error);
@@ -38,8 +38,8 @@ resourceManager.getRawFileContent('test.xml', (error, value) => {
 Stage模型支持了通过context获取resourceManager对象的方式，再调用其内部获取资源的接口，无需再导入包。此方式不适用于FA模型。
 
 **代码示例**
-
-```
+<!--code_no_check-->
+```js
 const context = getContext(this) as any
 context 
   .resourceManager
@@ -122,7 +122,7 @@ form_config.json文件中不支持使用`$`引用常量。
 
 1. 在rawfile目录下创建如下xml文件。
 
-   ```
+   ```xml
    <?xml version="1.0" encoding="utf-8"?>
    <user>
        <name>Jacky</name>
@@ -131,29 +131,29 @@ form_config.json文件中不支持使用`$`引用常量。
    ```
 
 2. 使用resourceManager.getRawFileContent获取xml文件字节数组。
-
-```
-import resourceManager from '@ohos.resourceManager';
-import xml from '@ohos.xml';
-export default {
-    onCreate() {
-        resourceManager.getResourceManager((error, res) => {
-            if (error != null) {
-                console.log("error is " + error);
-                return
-            }
-            res.getRawFileContent("test.xml", (error, value) => {
-                if (error != null) {
-                    console.log("error is " + error);
-                    return
-                }
-                let arrayBuffer = value.buffer; // unit8Array
-                var xmpParser = new xml.XmlPullParser(arrayBuffer);
-                var tagName = ""
-                //do something
-                console.log("parse xml finished");
-            })
-        })
-    }
-};
-```
+   <!--code_no_check-->
+   ```js
+   import resourceManager from '@ohos.resourceManager';
+   import xml from '@ohos.xml';
+   export default {
+       onCreate() {
+           resourceManager.getResourceManager((error, res) => {
+               if (error != null) {
+                   console.log("error is " + error);
+                   return
+               }
+               res.getRawFileContent("test.xml", (error, value) => {
+                   if (error != null) {
+                       console.log("error is " + error);
+                       return
+                   }
+                   let arrayBuffer = value.buffer; // unit8Array
+                   var xmpParser = new xml.XmlPullParser(arrayBuffer);
+                   var tagName = ""
+                   //do something
+                   console.log("parse xml finished");
+               })
+           })
+       }
+   };
+   ```

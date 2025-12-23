@@ -178,12 +178,13 @@ This section describes method 1, in order to check whether the App Linking confi
 <!-- @[applink_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppLinking/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import common from '@ohos.app.ability.common';
-import { BusinessError } from '@ohos.base';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN_NUMBER = 0xF811;
 const TAG = '[Sample_AppLinking]';
+
 @Entry
 @Component
 struct Index {
@@ -207,7 +208,6 @@ struct Index {
   }
 }
 ```
-
 
 If the target application is started, the App Linking configuration of the target application is correct.
 
@@ -234,6 +234,6 @@ If the target application is started, the App Linking configuration of the targe
 5. If a domain name is associated with multiple applications, which application will be started by domain name?
 
    You can configure the **applinking.json** file to associate a domain name with multiple applications. If the **uris** field in the **module.json5** file of each application is set to the same value, the system displays a dialog box for users to select the application to start.
-   
+
    You can also use the **path** field to distinguish the applications to start. For example, use **https://www.example.com/path1** to start target application 1 and use **https://www.example.com/path2** to start target application 2.
   

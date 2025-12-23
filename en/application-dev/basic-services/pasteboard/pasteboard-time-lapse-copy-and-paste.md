@@ -61,10 +61,13 @@ For better code readability, the operation result verification of each step is o
    <!-- @[pasteboard_timelapse_Record1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
+   #include <cstring>
+   #include <hilog/log.h>
    #include <database/pasteboard/oh_pasteboard.h>
    #include <database/udmf/udmf.h>
    #include <database/udmf/uds.h>
    #include <database/udmf/udmf_meta.h>
+   #include <accesstoken/ability_access_control.h>
    ```
 
 
@@ -118,31 +121,32 @@ For better code readability, the operation result verification of each step is o
    <!-- @[pasteboard_timelapse_Record4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
-   // 4. Create an OH_UdmfRecord object.
-   OH_UdmfRecord* record = OH_UdmfRecord_Create();
-   // 5. Create an OH_UdmfRecordProvider object and set two callback functions used to provide and destruct data.
-   OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
-   OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
-   
-   // 6. Bind the provider to the record and set the supported data type.
-   #define TYPE_COUNT 2
-   const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
-   OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
-   
-   // 7. Create an OH_UdmfData object and add OH_UdmfRecord to it.
-   OH_UdmfData* setData = OH_UdmfData_Create();
-   if (setData != nullptr) {
-       OH_UdmfData_AddRecord(setData, record);
+   OH_Pasteboard* CreateAndSetPasteboardData()
+   {
+       // 4. Create an OH_UdmfRecord object.
+       OH_UdmfRecord* record = OH_UdmfRecord_Create();
+       // 5. Create an OH_UdmfRecordProvider object and set two callback functions used to provide and destruct data.
+       OH_UdmfRecordProvider* provider = OH_UdmfRecordProvider_Create();
+       OH_UdmfRecordProvider_SetData(provider, (void *)record, GetDataCallback, ProviderFinalizeCallback);
+       // 6. Bind the provider to the record and set the supported data type.
+       #define TYPE_COUNT 2
+       const char* types[TYPE_COUNT] = {UDMF_META_PLAIN_TEXT, UDMF_META_HTML};
+       OH_UdmfRecord_SetProvider(record, types, TYPE_COUNT, provider);
+       // 7. Create an OH_UdmfData object and add OH_UdmfRecord to it.
+       OH_UdmfData* setData = OH_UdmfData_Create();
+       if (setData != nullptr) {
+           OH_UdmfData_AddRecord(setData, record);
+       }
+       // 8. Create an OH_Pasteboard object and write data to the pasteboard.
+       OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
+       if (setData != nullptr) {
+           OH_Pasteboard_SetData(pasteboard, setData);
+       }
+       OH_UdmfRecordProvider_Destroy(provider);
+       OH_UdmfRecord_Destroy(record);
+       OH_UdmfData_Destroy(setData);
+       return pasteboard;
    }
-   
-   // 8. Create an OH_Pasteboard object and write data to the pasteboard.
-   OH_Pasteboard* pasteboard = OH_Pasteboard_Create();
-   if (setData != nullptr) {
-       OH_Pasteboard_SetData(pasteboard, setData);
-   }
-   OH_UdmfRecordProvider_Destroy(provider);
-   OH_UdmfRecord_Destroy(record);
-   OH_UdmfData_Destroy(setData);
    ```
 
 
@@ -180,17 +184,18 @@ For better code readability, the operation result verification of each step is o
        // 13. Query the data types in OH_UdmfRecord.
        unsigned typeCount = 0;
        char** recordTypes = OH_UdmfRecord_GetTypes(record, &typeCount);
-   
        // 14. Traverse data types.
        for (unsigned int typeIndex = 0; typeIndex < typeCount; ++typeIndex) {
            const char* recordType = recordTypes[typeIndex];
            ProcessRecordType(record, recordType);
        }
    }
-   // ...
+   
+   static napi_value NAPI_Pasteboard_time(napi_env env, napi_callback_info info)
+   {
+       OH_Pasteboard* pasteboard = CreateAndSetPasteboardData();
        // 9. Record the number of changes to pasteboard data.
        uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
-   
        // 10. Obtain OH_UdmfData from the pasteboard.
        int status = -1;
        bool hasPermission = OH_AT_CheckSelfPermission("ohos.permission.READ_PASTEBOARD");
@@ -202,13 +207,11 @@ For better code readability, the operation result verification of each step is o
            // Handle the error case and clear resources.
            OH_LOG_ERROR(LOG_APP, "Failed to get data from pasteboard, status: %d\n", status);
        }
-   
        // 11. Obtain all OH_UdmfRecord objects from OH_UdmfData.
        unsigned int recordCount = 0;
        OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
        OH_UdsPlainText* udsText = nullptr;
        OH_UdsHtml* udsHtml = nullptr;
-   
        // 12. Traverse OH_UdmfRecord.
        for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
            OH_UdmfRecord* record = getRecords[recordIndex];
@@ -239,10 +242,11 @@ For better code readability, the operation result verification of each step is o
    <!-- @[pasteboard_timelapse_Record7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_NDK_sample/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
-   OH_UdsPlainText_Destroy(udsText);
-   OH_UdsHtml_Destroy(udsHtml);
-   OH_UdmfData_Destroy(getData);
-   OH_Pasteboard_Destroy(pasteboard);
+       OH_UdsPlainText_Destroy(udsText);
+       OH_UdsHtml_Destroy(udsHtml);
+       OH_UdmfData_Destroy(getData);
+       OH_Pasteboard_Destroy(pasteboard);
+   }
    ```
 
 
@@ -270,8 +274,9 @@ You are not allowed to query data type before pasting.
    
    ``` TypeScript
    import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-   import hilog from '@ohos.hilog';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
    import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
    ```
 
 
@@ -348,7 +353,7 @@ You are not allowed to query data type before pasting.
      systemPasteboard.setAppShareOptions(pasteboard.ShareOption.LOCALDEVICE);
      hilog.info(0xFF00, '[Sample_pasteboard]', 'Set app share options success.');
    } catch (err) {
-     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to gSet app share options. Cause: ' + err.message);
+     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Set app share options. Cause: ' + err.message);
      // Error case
    }
    ```

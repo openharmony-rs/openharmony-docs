@@ -20,7 +20,8 @@ ArkUI框架对以下组件实现了默认的拖拽能力，支持对数据的拖
 
 - 不支持拖出能力的组件（不可从组件上拖出数据）：[ArcScrollBar](./ts-basic-components-arcscrollbar.md)、[MultiNavigation](./ohos-arkui-advanced-MultiNavigation.md)、[ToolBarItem](./ts-basic-components-toolbaritem.md)、[ArcSlider](./ohos-arkui-advanced-ArcSlider.md)、[Span](./ts-basic-components-span.md)、[ImageSpan](./ts-basic-components-imagespan.md)、[ContainerSpan](./ts-basic-components-containerspan.md)、[SymbolSpan](./ts-basic-components-symbolSpan.md)、[ArcAlphabetIndexer](./ts-container-arc-alphabet-indexer.md)、[OffscreenCanvas](./ts-components-offscreencanvas.md)、[Menu](./ts-basic-components-menu.md)、[MenuItem](./ts-basic-components-menuitem.md)、[MenuItemGroup](./ts-basic-components-menuitemgroup.md)、[PasteButton](./ts-security-components-pastebutton.md)、[SaveButton](./ts-security-components-savebutton.md)、[WithTheme](./ts-container-with-theme.md)、[NavPushPathHelper](./ohos-atomicservice-NavPushPathHelper.md)、[ContentSlot](./ts-components-contentSlot.md)、[Chip](./ohos-arkui-advanced-Chip.md)、[ExceptionPrompt](./ohos-arkui-advanced-ExceptionPrompt.md)、[Filter](./ohos-arkui-advanced-Filter.md)、[FormMenu](./ohos-arkui-advanced-formmenu.md)、[Popup](./ohos-arkui-advanced-Popup.md)、[SelectionMenu](./ohos-arkui-advanced-SelectionMenu.md)、[SplitLayout](./ohos-arkui-advanced-SplitLayout.md)以及所有弹窗类组件。
 
-<!--RP1--><!--RP1End-->其他支持拖出能力的组件需要开发者将draggable属性设置为true，并在onDragStart等接口中实现数据传输相关内容，才能正确处理拖拽。
+<!--RP1--><!--RP1End-->
+其他支持拖出能力的组件需要开发者将draggable属性设置为true，并在[onDragStart](./ts-universal-events-drag-drop.md#ondragstart)等接口中实现数据传输相关内容，才能正确处理拖拽。
 
 > **说明：**
 >
@@ -137,7 +138,7 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 
 | 参数名 | 类型                                                            | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [DragPreviewOptions](#dragpreviewoptions11)<sup>11+</sup>      | 是   | 设置拖拽过程中预览图处理模式及数量角标的显示。|
+| value  | [DragPreviewOptions](#dragpreviewoptions11-1)<sup>11+</sup>      | 是   | 设置拖拽过程中预览图处理模式及数量角标的显示。|
 | options<sup>12+</sup>| [DragInteractionOptions](#draginteractionoptions12)<sup>12+</sup>| 否   | 设置拖拽过程中预览图浮起的交互模式。<br/>默认值：空|
 
 **返回值：**
@@ -158,6 +159,8 @@ dragPreviewOptions(value: DragPreviewOptions, options?: DragInteractionOptions):
 | sizeChangeEffect<sup>19+</sup> | [DraggingSizeChangeEffect](#draggingsizechangeeffect19枚举说明)<sup>19+</sup> | 否 | 是 | 用于选择长按浮起图与拖拽预览图过渡效果。<br/>默认值：DraggingSizeChangeEffect.DEFAULT。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 ## DragPreviewMode<sup>11+</sup>枚举说明
+
+设置拖拽预览图的显示模式。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -249,6 +252,7 @@ struct ImageExample {
       Text('Image拖拽')
         .fontSize('30dp')
       Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $r('app.media.icon')需要替换为开发者所需的图像资源文件
         Image($r('app.media.icon'))
           .width(100)
           .height(100)
@@ -394,6 +398,7 @@ struct DragPreviewDemo{
   build() {
     Row() {
       Column() {
+        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
         Image('/resource/image.jpeg')
           .width("30%")
           .draggable(true)
@@ -424,11 +429,13 @@ struct dragPreviewOptionsDemo{
   build() {
     Row() {
       Column() {
+        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
         Image('/resource/image.jpeg')
           .margin({ top: 10 })
           .width("30%")
           .draggable(true)
           .dragPreviewOptions({ mode: DragPreviewMode.AUTO })
+        // ('/resource/image.jpeg')需要替换为开发者所需的图像资源文件
         Image('/resource/image.jpeg')
           .margin({ top: 10 })
           .width("30%")
@@ -561,6 +568,7 @@ struct dragPreviewOptionsDemo{
               this.OpacityIndex = 0
             }
           })
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
         Image($r('app.media.image'))
           .margin({ top: 10 })
           .width("100%")
@@ -959,6 +967,7 @@ struct Index {
 
   @Builder
   MyPreview() {
+    // $r('app.media.image')需要替换为开发者所需的图像资源文件
     Image($r('app.media.image'))
       .width(100)
       .height(100)
@@ -967,6 +976,7 @@ struct Index {
   @Builder
   MyMenuPreview() {
     Column() {
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(100)
         .height(100)
@@ -997,6 +1007,7 @@ struct Index {
       Scroll() {
         Column() {
           Text("no ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW")
+          // $r('app.media.image')需要替换为开发者所需的图像资源文件
           Image($r('app.media.image'))
             .width(200)
             .height(200)
@@ -1007,6 +1018,7 @@ struct Index {
             .draggable(true)
 
           Text("ENABLE_TOUCH_POINT_CALCULATION_BASED_ON_FINAL_PREVIEW")
+          // $r('app.media.image')需要替换为开发者所需的图像资源文件
           Image($r('app.media.image'))
             .width(200)
             .height(200)
@@ -1039,6 +1051,7 @@ struct Index {
 
   @Builder
   MyPreview() {
+    // $r('app.media.image')需要替换为开发者所需的图像资源文件
     Image($r('app.media.image'))
       .width(200)
       .height(200)
@@ -1047,6 +1060,7 @@ struct Index {
   @Builder
   MyMenuPreviewSame() {
     Column() {
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(300)
         .height(300)
@@ -1056,6 +1070,7 @@ struct Index {
   @Builder
   MyMenuPreview() {
     Column() {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
       Image($r('app.media.startIcon'))
         .width(300)
         .height(300)
@@ -1082,6 +1097,7 @@ struct Index {
     Column() {
       Text("sizeChangeEffect: SIZE_TRANSITION，长按弹出菜单，拖拽移动后菜单预览图过渡到预览图，有缩放无叠加效果")
         .margin({ top: 10 })
+        // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(200)
         .height(200)
@@ -1096,6 +1112,7 @@ struct Index {
 
       Text("sizeChangeEffect: SIZE_CONTENT_TRANSITION，长按弹出菜单，拖拽移动后菜单预览图和拖拽预览图两层叠加过渡")
         .margin({ top: 10 })
+      // $r('app.media.image')需要替换为开发者所需的图像资源文件
       Image($r('app.media.image'))
         .width(200)
         .height(200)

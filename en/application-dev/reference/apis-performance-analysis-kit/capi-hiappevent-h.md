@@ -99,7 +99,7 @@ Defines the application event logging functions of the HiAppEvent module. Before
 
 ### HiAppEvent_ErrorCode
 
-```
+```c
 enum HiAppEvent_ErrorCode
 ```
 
@@ -122,7 +122,7 @@ Enumerates the error codes used in the HiAppEvent module.
 
 ### EventType
 
-```
+```c
 enum EventType
 ```
 
@@ -144,7 +144,7 @@ Enumerates the event types. You are advised to select different event types base
 
 ### OH_HiAppEvent_OnReceive()
 
-```
+```c
 typedef void (*OH_HiAppEvent_OnReceive)(const char* domain, const struct HiAppEvent_AppEventGroup* appEventGroups, uint32_t groupLen)
 ```
 
@@ -165,7 +165,7 @@ Passes event content to the caller. Note: The lifecycle of the object pointed by
 
 ### OH_HiAppEvent_OnTrigger()
 
-```
+```c
 typedef void (*OH_HiAppEvent_OnTrigger)(int row, int size)
 ```
 
@@ -185,7 +185,7 @@ Invoked if the event received by the watcher meets the conditions specified by *
 
 ### OH_HiAppEvent_OnTake()
 
-```
+```c
 typedef void (*OH_HiAppEvent_OnTake)(const char* const *events, uint32_t eventLen)
 ```
 
@@ -205,7 +205,7 @@ Passes the events received by the watcher to the caller when **OH_HiAppEvent_Tak
 
 ### OH_HiAppEvent_CreateParamList()
 
-```
+```c
 ParamList OH_HiAppEvent_CreateParamList(void)
 ```
 
@@ -223,7 +223,7 @@ Creates a pointer to a parameter list object.
 
 ### OH_HiAppEvent_DestroyParamList()
 
-```
+```c
 void OH_HiAppEvent_DestroyParamList(ParamList list)
 ```
 
@@ -242,7 +242,7 @@ Destroys a pointer to a parameter list object and releases its allocated memory.
 
 ### OH_HiAppEvent_AddBoolParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddBoolParam(ParamList list, const char* name, bool boolean)
 ```
 
@@ -269,7 +269,7 @@ Adds an event parameter of the Boolean type to the parameter list.
 
 ### OH_HiAppEvent_AddBoolArrayParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddBoolArrayParam(ParamList list, const char* name, const bool* booleans, int arrSize)
 ```
 
@@ -297,7 +297,7 @@ Adds an event parameter of the Boolean array type to the parameter list.
 
 ### OH_HiAppEvent_AddInt8Param()
 
-```
+```c
 ParamList OH_HiAppEvent_AddInt8Param(ParamList list, const char* name, int8_t num)
 ```
 
@@ -324,7 +324,7 @@ Adds an event parameter of the int8_t type to the parameter list.
 
 ### OH_HiAppEvent_AddInt8ArrayParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddInt8ArrayParam(ParamList list, const char* name, const int8_t* nums, int arrSize)
 ```
 
@@ -352,7 +352,7 @@ Adds an event parameter of the int8_t array type to the parameter list.
 
 ### OH_HiAppEvent_AddInt16Param()
 
-```
+```c
 ParamList OH_HiAppEvent_AddInt16Param(ParamList list, const char* name, int16_t num)
 ```
 
@@ -379,7 +379,7 @@ Adds an event parameter of the int16_t type to the parameter list.
 
 ### OH_HiAppEvent_AddInt16ArrayParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddInt16ArrayParam(ParamList list, const char* name, const int16_t* nums, int arrSize)
 ```
 
@@ -407,7 +407,7 @@ Adds an event parameter of the int16_t array type to the parameter list.
 
 ### OH_HiAppEvent_AddInt32Param()
 
-```
+```c
 ParamList OH_HiAppEvent_AddInt32Param(ParamList list, const char* name, int32_t num)
 ```
 
@@ -434,7 +434,7 @@ Adds an event parameter of the int32_t type to the parameter list.
 
 ### OH_HiAppEvent_AddInt32ArrayParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddInt32ArrayParam(ParamList list, const char* name, const int32_t* nums, int arrSize)
 ```
 
@@ -462,7 +462,7 @@ Adds an event parameter of the int32_t array type to the parameter list.
 
 ### OH_HiAppEvent_AddInt64Param()
 
-```
+```c
 ParamList OH_HiAppEvent_AddInt64Param(ParamList list, const char* name, int64_t num)
 ```
 
@@ -489,7 +489,7 @@ Adds an event parameter of the int64_t type to the parameter list.
 
 ### OH_HiAppEvent_AddInt64ArrayParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddInt64ArrayParam(ParamList list, const char* name, const int64_t* nums, int arrSize)
 ```
 
@@ -517,7 +517,7 @@ Adds an event parameter of the int64_t array type to the parameter list.
 
 ### OH_HiAppEvent_AddFloatParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddFloatParam(ParamList list, const char* name, float num)
 ```
 
@@ -544,7 +544,7 @@ Adds an event parameter of the float type to the parameter list.
 
 ### OH_HiAppEvent_AddFloatArrayParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddFloatArrayParam(ParamList list, const char* name, const float* nums, int arrSize)
 ```
 
@@ -572,7 +572,7 @@ Adds an event parameter of the float array type to the parameter list.
 
 ### OH_HiAppEvent_AddDoubleParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddDoubleParam(ParamList list, const char* name, double num)
 ```
 
@@ -599,7 +599,7 @@ Adds an event parameter of the Double type to the parameter list.
 
 ### OH_HiAppEvent_AddDoubleArrayParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddDoubleArrayParam(ParamList list, const char* name, const double* nums, int arrSize)
 ```
 
@@ -627,7 +627,7 @@ Adds an event parameter of the double array type to the parameter list.
 
 ### OH_HiAppEvent_AddStringParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddStringParam(ParamList list, const char* name, const char* str)
 ```
 
@@ -654,7 +654,7 @@ Adds a parameter of the string type to the parameter list.
 
 ### OH_HiAppEvent_AddStringArrayParam()
 
-```
+```c
 ParamList OH_HiAppEvent_AddStringArrayParam(ParamList list, const char* name, const char * const *strs, int arrSize)
 ```
 
@@ -682,7 +682,7 @@ Adds a parameter of the string array type to the parameter list.
 
 ### OH_HiAppEvent_Write()
 
-```
+```c
 int OH_HiAppEvent_Write(const char* domain, const char* name, enum EventType type, const ParamList list)
 ```
 
@@ -710,7 +710,7 @@ Logs application events whose parameters are of the list type. Before applicatio
 
 ### OH_HiAppEvent_Configure()
 
-```
+```c
 bool OH_HiAppEvent_Configure(const char* name, const char* value)
 ```
 
@@ -736,7 +736,7 @@ Configures the application event logging function. This function is used to conf
 
 ### OH_HiAppEvent_CreateWatcher()
 
-```
+```c
 HiAppEvent_Watcher* OH_HiAppEvent_CreateWatcher(const char* name)
 ```
 
@@ -761,7 +761,7 @@ Creates a watcher for application events. Note: If a created watcher is no longe
 
 ### OH_HiAppEvent_DestroyWatcher()
 
-```
+```c
 void OH_HiAppEvent_DestroyWatcher(HiAppEvent_Watcher* watcher)
 ```
 
@@ -780,7 +780,7 @@ Destroys a created watcher. Note: If a created watcher is no longer used, destro
 
 ### OH_HiAppEvent_SetTriggerCondition()
 
-```
+```c
 int OH_HiAppEvent_SetTriggerCondition(HiAppEvent_Watcher* watcher, int row, int size, int timeOut)
 ```
 
@@ -808,7 +808,7 @@ Sets the trigger condition of the **OH_HiAppEvent_OnTrigger** callback.<br> You 
 
 ### OH_HiAppEvent_SetAppEventFilter()
 
-```
+```c
 int OH_HiAppEvent_SetAppEventFilter(HiAppEvent_Watcher* watcher, const char* domain, uint8_t eventTypes, const char* const *names, int namesLen)
 ```
 
@@ -837,7 +837,7 @@ Sets the type of events to listen for. This function can be called repeatedly. Y
 
 ### OH_HiAppEvent_SetWatcherOnTrigger()
 
-```
+```c
 int OH_HiAppEvent_SetWatcherOnTrigger(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnTrigger onTrigger)
 ```
 
@@ -863,7 +863,7 @@ Sets the **onTrigger** callback.<br> If **OnReceive** is not set or is set to **
 
 ### OH_HiAppEvent_SetWatcherOnReceive()
 
-```
+```c
 int OH_HiAppEvent_SetWatcherOnReceive(HiAppEvent_Watcher* watcher, OH_HiAppEvent_OnReceive onReceive)
 ```
 
@@ -889,7 +889,7 @@ Sets the **onReceive** callback. When the listener detects the corresponding eve
 
 ### OH_HiAppEvent_TakeWatcherData()
 
-```
+```c
 int OH_HiAppEvent_TakeWatcherData(HiAppEvent_Watcher* watcher, uint32_t eventNum, OH_HiAppEvent_OnTake onTake)
 ```
 
@@ -916,7 +916,7 @@ Obtains the event saved by the watcher.
 
 ### OH_HiAppEvent_AddWatcher()
 
-```
+```c
 int OH_HiAppEvent_AddWatcher(HiAppEvent_Watcher* watcher)
 ```
 
@@ -941,7 +941,7 @@ Adds a watcher. Once a watcher is added, it starts to listen for system messages
 
 ### OH_HiAppEvent_RemoveWatcher()
 
-```
+```c
 int OH_HiAppEvent_RemoveWatcher(HiAppEvent_Watcher* watcher)
 ```
 
@@ -966,7 +966,7 @@ Removes a watcher. Once a watcher is removed, it stops listening for system mess
 
 ### OH_HiAppEvent_ClearData()
 
-```
+```c
 void OH_HiAppEvent_ClearData()
 ```
 
@@ -978,7 +978,7 @@ Clears the events saved by all watchers.
 
 ### OH_HiAppEvent_CreateProcessor()
 
-```
+```c
 HiAppEvent_Processor* OH_HiAppEvent_CreateProcessor(const char* name)
 ```
 
@@ -1003,7 +1003,7 @@ Creates a processor for application events. Note: If a processor is no longer us
 
 ### OH_HiAppEvent_SetReportRoute()
 
-```
+```c
 int OH_HiAppEvent_SetReportRoute(HiAppEvent_Processor* processor, const char* appId, const char* routeInfo)
 ```
 
@@ -1030,7 +1030,7 @@ Sets the report route for the processor.
 
 ### OH_HiAppEvent_SetReportPolicy()
 
-```
+```c
 int OH_HiAppEvent_SetReportPolicy(HiAppEvent_Processor* processor, int periodReport, int batchReport, bool onStartReport, bool onBackgroundReport)
 ```
 
@@ -1059,7 +1059,7 @@ Sets the report policy for the processor.
 
 ### OH_HiAppEvent_SetReportEvent()
 
-```
+```c
 int OH_HiAppEvent_SetReportEvent(HiAppEvent_Processor* processor, const char* domain, const char* name, bool isRealTime)
 ```
 
@@ -1087,7 +1087,7 @@ Sets the report event for the processor.
 
 ### OH_HiAppEvent_SetCustomConfig()
 
-```
+```c
 int OH_HiAppEvent_SetCustomConfig(HiAppEvent_Processor* processor, const char* key, const char* value)
 ```
 
@@ -1114,7 +1114,7 @@ Sets the custom extension parameters of the processor.
 
 ### OH_HiAppEvent_SetConfigId()
 
-```
+```c
 int OH_HiAppEvent_SetConfigId(HiAppEvent_Processor* processor, int configId)
 ```
 
@@ -1140,7 +1140,7 @@ Sets the configuration ID of the processor.
 
 ### OH_HiAppEvent_SetConfigName()
 
-```
+```c
 int OH_HiAppEvent_SetConfigName(HiAppEvent_Processor* processor, const char* configName)
 ```
 
@@ -1166,7 +1166,7 @@ Sets the configuration name of the processor.
 
 ### OH_HiAppEvent_SetReportUserId()
 
-```
+```c
 int OH_HiAppEvent_SetReportUserId(HiAppEvent_Processor* processor, const char* const * userIdNames, int size)
 ```
 
@@ -1193,7 +1193,7 @@ Sets the report user ID of the processor.
 
 ### OH_HiAppEvent_SetReportUserProperty()
 
-```
+```c
 int OH_HiAppEvent_SetReportUserProperty(HiAppEvent_Processor* processor, const char* const * userPropertyNames, int size)
 ```
 
@@ -1220,7 +1220,7 @@ Sets the report user property of the processor.
 
 ### OH_HiAppEvent_AddProcessor()
 
-```
+```c
 int64_t OH_HiAppEvent_AddProcessor(HiAppEvent_Processor* processor)
 ```
 
@@ -1245,7 +1245,7 @@ Adds a processor. You can add a processor to migrate event data to the cloud. Yo
 
 ### OH_HiAppEvent_DestroyProcessor()
 
-```
+```c
 void OH_HiAppEvent_DestroyProcessor(HiAppEvent_Processor* processor)
 ```
 
@@ -1264,7 +1264,7 @@ Destroys a processor. Note: If a processor is no longer used, destroy it to rele
 
 ### OH_HiAppEvent_RemoveProcessor()
 
-```
+```c
 int OH_HiAppEvent_RemoveProcessor(int64_t processorId)
 ```
 
@@ -1289,7 +1289,7 @@ Removes a processor. Once a processor is removed, it stops reporting events. Not
 
 ### OH_HiAppEvent_CreateConfig()
 
-```
+```c
 HiAppEvent_Config* OH_HiAppEvent_CreateConfig(void)
 ```
 
@@ -1307,7 +1307,7 @@ Creates a pointer to the configuration object that sets the conditions for trigg
 
 ### OH_HiAppEvent_DestroyConfig()
 
-```
+```c
 void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)
 ```
 
@@ -1326,7 +1326,7 @@ Destroys a configuration object. Note: If a configuration object is no longer us
 
 ### OH_HiAppEvent_SetConfigItem()
 
-```
+```c
 int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)
 ```
 
@@ -1353,7 +1353,7 @@ Sets the items in the configuration object.
 
 ### OH_HiAppEvent_SetEventConfig()
 
-```
+```c
 int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)
 ```
 

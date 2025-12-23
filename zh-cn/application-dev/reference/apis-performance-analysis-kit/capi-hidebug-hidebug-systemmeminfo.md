@@ -8,7 +8,7 @@
 <!--Adviser: @foryourself-->
 
 ```c
-typedef struct {...} HiDebug_SystemMemInfo
+typedef struct HiDebug_SystemMemInfo {...} HiDebug_SystemMemInfo
 ```
 
 ## 概述

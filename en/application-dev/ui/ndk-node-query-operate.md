@@ -59,197 +59,197 @@ Use the [OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/c
 
 1. Access native components in ArkTS:
 
-<!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->
-
-``` TypeScript
-import nativeNode from 'libentry.so';
-import { NodeContent } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct GetNodeById {
-  private rootSlot = new NodeContent();
-
-  aboutToAppear(): void {
-    nativeNode.createUserIdNode(this.rootSlot);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 15 }) {
-        Column() {
-          ContentSlot(this.rootSlot)
-        }
-      }
-      .width('100%')
-    }.scrollBarColor(Color.Transparent)
-  }
-}
-```
+   <!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->
+   
+   ``` TypeScript
+   import nativeNode from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct GetNodeById {
+     private rootSlot = new NodeContent();
+   
+     aboutToAppear(): void {
+       nativeNode.createUserIdNode(this.rootSlot);
+     }
+   
+     build() {
+       Scroll() {
+         Column({ space: 15 }) {
+           Column() {
+             ContentSlot(this.rootSlot)
+           }
+         }
+         .width('100%')
+       }.scrollBarColor(Color.Transparent)
+     }
+   }
+   ```
 
 2. Create **GetNodeByIdExample.h** to create a **Text** node with an **id** attribute and obtain it using **OH_ArkUI_NodeUtils_GetAttachedNodeHandleById**:
 
-<!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/GetNodeByIdExample.h) -->
-
-``` C
-// GetNodeByIdExample.h
-#ifndef MYAPPLICATION_GETNODEBYID_H
-#define MYAPPLICATION_GETNODEBYID_H
-
-#include "ArkUINode.h"
-#include <hilog/log.h>
-
-namespace NativeModule {
-
-std::shared_ptr<ArkUIBaseNode> CreateGetNodeByIdExample()
-{
-    auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-    
-    // Create a structure for passing event nodes.
-    struct A {
-        ArkUI_NodeHandle node;
-    };
-    A* a = new A;
-    
-    // Create the root Scroll node.
-    ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
-    ArkUI_NumberValue length_value[] = {{.f32 = 480}};
-    ArkUI_AttributeItem length_item = {length_value, sizeof(length_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(scroll, NODE_WIDTH, &length_item);
-    ArkUI_NumberValue length_value1[] = {{.f32 = 650}};
-    ArkUI_AttributeItem length_item1 = {length_value1, sizeof(length_value1) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(scroll, NODE_HEIGHT, &length_item1);
-    ArkUI_AttributeItem scroll_id = {.string = "Scroll_CAPI"};
-    nodeAPI->setAttribute(scroll, NODE_ID, &scroll_id);
-    
-    // Create a Column node.
-    ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    ArkUI_NumberValue value[] = {480};
-    ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(column, NODE_WIDTH, &item);
-    ArkUI_NumberValue column_bc[] = {{.u32 = 0xFFF00BB}};
-    ArkUI_AttributeItem column_item = {column_bc, 1};
-    nodeAPI->setAttribute(column, NODE_BACKGROUND_COLOR, &column_item);
-    ArkUI_AttributeItem column_id = {.string = "Column_CAPI"};
-    nodeAPI->setAttribute(column, NODE_ID, &column_id);
-    
-    // Create a Text node.
-    ArkUI_NodeHandle text0 = nodeAPI->createNode(ARKUI_NODE_TEXT);
-    ArkUI_NumberValue text_width[] = {300};
-    ArkUI_AttributeItem text_item0 = {text_width, sizeof(text_width) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(text0, NODE_WIDTH, &text_item0);
-    ArkUI_NumberValue text_height[] = {50};
-    ArkUI_AttributeItem text_item1 = {text_height, sizeof(text_height) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(text0, NODE_HEIGHT, &text_item1);
-    ArkUI_AttributeItem text_item = {.string = "Example Text node"};
-    nodeAPI->setAttribute(text0, NODE_TEXT_CONTENT, &text_item);
-    ArkUI_NumberValue margin[] = {10};
-    ArkUI_AttributeItem item_margin = {margin, sizeof(margin) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(text0, NODE_MARGIN, &item_margin);
-    ArkUI_AttributeItem text0_id = {.string = "Text0_CAPI"};
-    nodeAPI->setAttribute(text0, NODE_ID, &text0_id);
-    a->node = text0;
-    
-    // Create a Row node.
-    ArkUI_NodeHandle row0 = nodeAPI->createNode(ARKUI_NODE_ROW);
-    ArkUI_NumberValue width_value[] = {{.f32=330}};
-    ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(row0, NODE_WIDTH, &width_item);
-    nodeAPI->setAttribute(row0, NODE_HEIGHT, &text_item1);
-    nodeAPI->setAttribute(row0, NODE_MARGIN, &item_margin);
-    
-    // Create a Button node.
-    ArkUI_NodeHandle bt0 = nodeAPI->createNode(ARKUI_NODE_BUTTON);
-    ArkUI_NumberValue btn_width[] = {150};
-    ArkUI_AttributeItem btn_item0 = {btn_width, sizeof(btn_width) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(bt0, NODE_WIDTH, &btn_item0);
-    nodeAPI->setAttribute(bt0, NODE_HEIGHT, &text_item1);
-    nodeAPI->setAttribute(bt0, NODE_MARGIN, &item_margin);
-    ArkUI_AttributeItem bt0_item = {.string = "GetAttachedNodeHandleById"};
-    nodeAPI->setAttribute(bt0, NODE_BUTTON_LABEL, &bt0_item);
-    nodeAPI->registerNodeEvent(bt0, NODE_ON_CLICK, 0, a);
-    
-    // Register events.
-    auto onClick = [](ArkUI_NodeEvent *event) {
-        ArkUI_NodeHandle node = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-        auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-        
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 0) {  // GetAttachedNodeHandleById
-            A* a = (A*)OH_ArkUI_NodeEvent_GetUserData(event);
-            ArkUI_NodeHandle node = nullptr;
-            auto res = OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("Text0_CAPI", &node);
-            if (node == a->node) {
-                OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "GetNodeByIdExample", "get Text0_CAPI success");
-            } else {
-                OH_LOG_Print(LOG_APP, LOG_ERROR, 0xFF00, "GetNodeByIdExample", "get Text0_CAPI failed");
-            }
-        }
-    };
-    nodeAPI->registerNodeEventReceiver(onClick);
-    
-    // Add nodes.
-    nodeAPI->addChild(scroll, column);
-    nodeAPI->addChild(column, text0);
-    nodeAPI->addChild(column, row0);
-    nodeAPI->addChild(row0, bt0);
-    
-    return std::make_shared<ArkUINode>(scroll);
-}
-} // namespace NativeModule
-
-#endif //MYAPPLICATION_GETNODEBYID_H
-```
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/GetNodeByIdExample.h) -->
+   
+   ``` C
+   // GetNodeByIdExample.h
+   #ifndef MYAPPLICATION_GETNODEBYID_H
+   #define MYAPPLICATION_GETNODEBYID_H
+   
+   #include "ArkUINode.h"
+   #include <hilog/log.h>
+   
+   namespace NativeModule {
+   
+   std::shared_ptr<ArkUIBaseNode> CreateGetNodeByIdExample()
+   {
+       auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+       
+       // Create a structure for passing event nodes.
+       struct A {
+           ArkUI_NodeHandle node;
+       };
+       A* a = new A;
+       
+       // Create the root Scroll node.
+       ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
+       ArkUI_NumberValue length_value[] = {{.f32 = 480}};
+       ArkUI_AttributeItem length_item = {length_value, sizeof(length_value) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(scroll, NODE_WIDTH, &length_item);
+       ArkUI_NumberValue length_value1[] = {{.f32 = 650}};
+       ArkUI_AttributeItem length_item1 = {length_value1, sizeof(length_value1) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(scroll, NODE_HEIGHT, &length_item1);
+       ArkUI_AttributeItem scroll_id = {.string = "Scroll_CAPI"};
+       nodeAPI->setAttribute(scroll, NODE_ID, &scroll_id);
+       
+       // Create a Column node.
+       ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+       ArkUI_NumberValue value[] = {480};
+       ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(column, NODE_WIDTH, &item);
+       ArkUI_NumberValue column_bc[] = {{.u32 = 0xFFF00BB}};
+       ArkUI_AttributeItem column_item = {column_bc, 1};
+       nodeAPI->setAttribute(column, NODE_BACKGROUND_COLOR, &column_item);
+       ArkUI_AttributeItem column_id = {.string = "Column_CAPI"};
+       nodeAPI->setAttribute(column, NODE_ID, &column_id);
+       
+       // Create a Text node.
+       ArkUI_NodeHandle text0 = nodeAPI->createNode(ARKUI_NODE_TEXT);
+       ArkUI_NumberValue text_width[] = {300};
+       ArkUI_AttributeItem text_item0 = {text_width, sizeof(text_width) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(text0, NODE_WIDTH, &text_item0);
+       ArkUI_NumberValue text_height[] = {50};
+       ArkUI_AttributeItem text_item1 = {text_height, sizeof(text_height) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(text0, NODE_HEIGHT, &text_item1);
+       ArkUI_AttributeItem text_item = {.string = "Example Text node"};
+       nodeAPI->setAttribute(text0, NODE_TEXT_CONTENT, &text_item);
+       ArkUI_NumberValue margin[] = {10};
+       ArkUI_AttributeItem item_margin = {margin, sizeof(margin) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(text0, NODE_MARGIN, &item_margin);
+       ArkUI_AttributeItem text0_id = {.string = "Text0_CAPI"};
+       nodeAPI->setAttribute(text0, NODE_ID, &text0_id);
+       a->node = text0;
+       
+       // Create a Row node.
+       ArkUI_NodeHandle row0 = nodeAPI->createNode(ARKUI_NODE_ROW);
+       ArkUI_NumberValue width_value[] = {{.f32=330}};
+       ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(row0, NODE_WIDTH, &width_item);
+       nodeAPI->setAttribute(row0, NODE_HEIGHT, &text_item1);
+       nodeAPI->setAttribute(row0, NODE_MARGIN, &item_margin);
+       
+       // Create a Button node.
+       ArkUI_NodeHandle bt0 = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+       ArkUI_NumberValue btn_width[] = {150};
+       ArkUI_AttributeItem btn_item0 = {btn_width, sizeof(btn_width) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(bt0, NODE_WIDTH, &btn_item0);
+       nodeAPI->setAttribute(bt0, NODE_HEIGHT, &text_item1);
+       nodeAPI->setAttribute(bt0, NODE_MARGIN, &item_margin);
+       ArkUI_AttributeItem bt0_item = {.string = "GetAttachedNodeHandleById"};
+       nodeAPI->setAttribute(bt0, NODE_BUTTON_LABEL, &bt0_item);
+       nodeAPI->registerNodeEvent(bt0, NODE_ON_CLICK, 0, a);
+       
+       // Register events.
+       auto onClick = [](ArkUI_NodeEvent *event) {
+           ArkUI_NodeHandle node = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+           auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+           
+           if (OH_ArkUI_NodeEvent_GetTargetId(event) == 0) {  // GetAttachedNodeHandleById
+               A* a = (A*)OH_ArkUI_NodeEvent_GetUserData(event);
+               ArkUI_NodeHandle node = nullptr;
+               auto res = OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("Text0_CAPI", &node);
+               if (node == a->node) {
+                   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "GetNodeByIdExample", "get Text0_CAPI success");
+               } else {
+                   OH_LOG_Print(LOG_APP, LOG_ERROR, 0xFF00, "GetNodeByIdExample", "get Text0_CAPI failed");
+               }
+           }
+       };
+       nodeAPI->registerNodeEventReceiver(onClick);
+       
+       // Add nodes.
+       nodeAPI->addChild(scroll, column);
+       nodeAPI->addChild(column, text0);
+       nodeAPI->addChild(column, row0);
+       nodeAPI->addChild(row0, bt0);
+       
+       return std::make_shared<ArkUINode>(scroll);
+   }
+   } // namespace NativeModule
+   
+   #endif //MYAPPLICATION_GETNODEBYID_H
+   ```
 
 3. Mount the native node in **NativeEntry.cpp**.
 
-<!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
-
-``` C++
-// NativeEntry.cpp
-#include <arkui/native_node_napi.h>
-#include <hilog/log.h>
-#include <js_native_api.h>
-#include "NativeEntry.h"
-#include "MoveToExample.h"
-#include "GetNodeByIdExample.h"
-
-
-namespace NativeModule {
-// ···
-static napi_value CreateNativeRoot(napi_env env, napi_callback_info info, const char *who, MakeNodeFn makeNodeFn)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    // Obtain NodeContent.
-    ArkUI_NodeContentHandle contentHandle;
-    OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
-    if (contentHandle == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, K_LOG_DOMAIN,
-                     "%{public}s nodeContentHandle is null", who);
-        return nullptr;
-    }
-    NativeEntry::GetInstance()->SetContentHandle(contentHandle);
-
-    // Create a node.
-    auto node = makeNodeFn();
-
-    // Keep the native-side object in the management class to maintain its lifecycle.
-    NativeEntry::GetInstance()->SetRootNode(node);
-    return nullptr;
-}
-
-napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
-{
-    // Release the native-side object from the management class.
-    NativeEntry::GetInstance()->DisposeRootNode();
-    return nullptr;
-}
-// ···
-} // namespace NativeModule
-```
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
+   
+   ``` C++
+   // NativeEntry.cpp
+   #include <arkui/native_node_napi.h>
+   #include <hilog/log.h>
+   #include <js_native_api.h>
+   #include "NativeEntry.h"
+   #include "MoveToExample.h"
+   #include "GetNodeByIdExample.h"
+   
+   
+   namespace NativeModule {
+   // ...
+   static napi_value CreateNativeRoot(napi_env env, napi_callback_info info, const char *who, MakeNodeFn makeNodeFn)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       // Obtain NodeContent.
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (contentHandle == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, K_LOG_DOMAIN,
+                        "%{public}s nodeContentHandle is null", who);
+           return nullptr;
+       }
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+   
+       // Create a node.
+       auto node = makeNodeFn();
+   
+       // Keep the native-side object in the management class to maintain its lifecycle.
+       NativeEntry::GetInstance()->SetRootNode(node);
+       return nullptr;
+   }
+   
+   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+   {
+       // Release the native-side object from the management class.
+       NativeEntry::GetInstance()->DisposeRootNode();
+       return nullptr;
+   }
+   // ...
+   } // namespace NativeModule
+   ```
 
 4. Run the program and click the button to verify successful node retrieval.
 
@@ -263,239 +263,239 @@ Use the [OH_ArkUI_NodeUtils_MoveTo](../reference/apis-arkui/capi-native-node-h.m
 
 1. Access native components in ArkTS:
 
-<!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->
-
-``` TypeScript
-// MoveTo.ets
-import nativeNode from 'libentry.so';
-import { NodeContent } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct MoveTo {
-  private rootSlot = new NodeContent();
-
-  aboutToAppear(): void {
-    nativeNode.createMoveToNode(this.rootSlot);
-  }
-
-  build() {
-    Scroll() {
-      Column({ space: 15 }) {
-        Column() {
-          ContentSlot(this.rootSlot)
-        }
-      }
-      .width('100%')
-    }.scrollBarColor(Color.Transparent)
-  }
-}
-```
+   <!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->
+   
+   ``` TypeScript
+   // MoveTo.ets
+   import nativeNode from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct MoveTo {
+     private rootSlot = new NodeContent();
+   
+     aboutToAppear(): void {
+       nativeNode.createMoveToNode(this.rootSlot);
+     }
+   
+     build() {
+       Scroll() {
+         Column({ space: 15 }) {
+           Column() {
+             ContentSlot(this.rootSlot)
+           }
+         }
+         .width('100%')
+       }.scrollBarColor(Color.Transparent)
+     }
+   }
+   ```
 
 2. Create **MoveToExample.h** to create **Stack** nodes and move them using **OH_ArkUI_NodeUtils_MoveTo**:
 
-<!-- @[ndknodequeryoperate5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h) -->
-
-``` C
-// MoveToExample.h
-#ifndef MYAPPLICATION_MOVETO_H
-#define MYAPPLICATION_MOVETO_H
-
-#include "ArkUINode.h"
-#include <hilog/log.h>
-
-namespace NativeModule {
-
-std::shared_ptr<ArkUIBaseNode> CreateMoveToExample()
-{
-    auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-
-    // Create a structure for passing event nodes.
-    struct A {
-        ArkUI_NodeHandle node;
-        ArkUI_NodeHandle targetParent;
-    };
-    A* a = new A;
-
-    // Create the root Scroll node.
-    ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
-    ArkUI_NumberValue length_value[] = {{.f32 = 480}};
-    ArkUI_AttributeItem length_item = {length_value, sizeof(length_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(scroll, NODE_WIDTH, &length_item);
-    ArkUI_NumberValue length_value1[] = {{.f32 = 650}};
-    ArkUI_AttributeItem length_item1 = {length_value1, sizeof(length_value1) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(scroll, NODE_HEIGHT, &length_item1);
-    ArkUI_AttributeItem scroll_id = {.string = "Scroll_CAPI"};
-    nodeAPI->setAttribute(scroll, NODE_ID, &scroll_id);
-
-    // Create a Column node.
-    ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    ArkUI_NumberValue value[] = {480};
-    ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(column, NODE_WIDTH, &item);
-    ArkUI_AttributeItem column_id = {.string = "Column_CAPI"};
-    nodeAPI->setAttribute(column, NODE_ID, &column_id);
-
-    // Create a Row node.
-    ArkUI_NumberValue text_height[] = {50};
-    ArkUI_AttributeItem text_item1 = {text_height, sizeof(text_height) / sizeof(ArkUI_NumberValue)};
-    ArkUI_NumberValue margin[] = {10};
-    ArkUI_AttributeItem item_margin = {margin, sizeof(margin) / sizeof(ArkUI_NumberValue)};
-    ArkUI_NodeHandle row0 = nodeAPI->createNode(ARKUI_NODE_ROW);
-    ArkUI_NumberValue width_value[] = {{.f32=330}};
-    ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(row0, NODE_WIDTH, &width_item);
-    nodeAPI->setAttribute(row0, NODE_HEIGHT, &text_item1);
-    nodeAPI->setAttribute(row0, NODE_MARGIN, &item_margin);
-
-    ArkUI_NodeHandle row1 = nodeAPI->createNode(ARKUI_NODE_ROW);
-    nodeAPI->setAttribute(row1, NODE_WIDTH, &width_item);
-    nodeAPI->setAttribute(row1, NODE_HEIGHT, &text_item1);
-    nodeAPI->setAttribute(row1, NODE_MARGIN, &item_margin);
-    a->targetParent = row1;
-
-    ArkUI_NodeHandle row2 = nodeAPI->createNode(ARKUI_NODE_ROW);
-    nodeAPI->setAttribute(row2, NODE_WIDTH, &width_item);
-    nodeAPI->setAttribute(row2, NODE_HEIGHT, &text_item1);
-    nodeAPI->setAttribute(row2, NODE_MARGIN, &item_margin);
-
-    // Create a Stack node.
-    ArkUI_NodeHandle stack0 = nodeAPI->createNode(ARKUI_NODE_STACK);
-    ArkUI_NumberValue stack_value[] = {{.f32=50}};
-    ArkUI_AttributeItem stack_item1 = {stack_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(stack0, NODE_WIDTH, &stack_item1);
-    nodeAPI->setAttribute(stack0, NODE_HEIGHT, &stack_item1);
-    ArkUI_NumberValue stack_bc[] = {{.u32 = 0xFFFFB6C1}};
-    ArkUI_AttributeItem stack_item2 = {stack_bc, 1};
-    nodeAPI->setAttribute(stack0, NODE_BACKGROUND_COLOR, &stack_item2);
-    a->node = stack0;
-
-    ArkUI_NodeHandle stack1 = nodeAPI->createNode(ARKUI_NODE_STACK);
-    nodeAPI->setAttribute(stack1, NODE_WIDTH, &stack_item1);
-    nodeAPI->setAttribute(stack1, NODE_HEIGHT, &stack_item1);
-    ArkUI_NumberValue stack_bc1[] = {{.u32 = 0xFF6495ED}};
-    ArkUI_AttributeItem stack_item3 = {stack_bc1, 1};
-    nodeAPI->setAttribute(stack1, NODE_BACKGROUND_COLOR, &stack_item3);
-
-    ArkUI_NodeHandle stack2 = nodeAPI->createNode(ARKUI_NODE_STACK);
-    nodeAPI->setAttribute(stack2, NODE_WIDTH, &stack_item1);
-    nodeAPI->setAttribute(stack2, NODE_HEIGHT, &stack_item1);
-    ArkUI_NumberValue stack_bc2[] = {{.u32 = 0xFF90EE90}};
-    ArkUI_AttributeItem stack_item4 = {stack_bc2, 1};
-    nodeAPI->setAttribute(stack2, NODE_BACKGROUND_COLOR, &stack_item4);
-
-    ArkUI_NodeHandle stack3 = nodeAPI->createNode(ARKUI_NODE_STACK);
-    nodeAPI->setAttribute(stack3, NODE_WIDTH, &stack_item1);
-    nodeAPI->setAttribute(stack3, NODE_HEIGHT, &stack_item1);
-    nodeAPI->setAttribute(stack3, NODE_BACKGROUND_COLOR, &stack_item2);
-
-    ArkUI_NodeHandle stack4 = nodeAPI->createNode(ARKUI_NODE_STACK);
-    nodeAPI->setAttribute(stack4, NODE_WIDTH, &stack_item1);
-    nodeAPI->setAttribute(stack4, NODE_HEIGHT, &stack_item1);
-    nodeAPI->setAttribute(stack4, NODE_BACKGROUND_COLOR, &stack_item3);
-    
-    ArkUI_NodeHandle stack5 = nodeAPI->createNode(ARKUI_NODE_STACK);
-    nodeAPI->setAttribute(stack5, NODE_WIDTH, &stack_item1);
-    nodeAPI->setAttribute(stack5, NODE_HEIGHT, &stack_item1);
-    nodeAPI->setAttribute(stack5, NODE_BACKGROUND_COLOR, &stack_item4);
-
-    // Create a Button node.
-    ArkUI_NodeHandle bt0 = nodeAPI->createNode(ARKUI_NODE_BUTTON);
-    ArkUI_NumberValue btn_width[] = {150};
-    ArkUI_AttributeItem btn_item0 = {btn_width, sizeof(btn_width) / sizeof(ArkUI_NumberValue)};
-    nodeAPI->setAttribute(bt0, NODE_WIDTH, &btn_item0);
-    nodeAPI->setAttribute(bt0, NODE_HEIGHT, &text_item1);
-    nodeAPI->setAttribute(bt0, NODE_MARGIN, &item_margin);
-    ArkUI_AttributeItem bt0_item = {.string = "MoveTo"};
-    nodeAPI->setAttribute(bt0, NODE_BUTTON_LABEL, &bt0_item);
-    nodeAPI->registerNodeEvent(bt0, NODE_ON_CLICK, 0, a);
-
-    // Register events.
-    auto onClick = [](ArkUI_NodeEvent *event) {
-        ArkUI_NodeHandle node = OH_ArkUI_NodeEvent_GetNodeHandle(event);
-        auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
-        
-        if (OH_ArkUI_NodeEvent_GetTargetId(event) == 0) {  // MoveTo
-            A* a = (A*)OH_ArkUI_NodeEvent_GetUserData(event);
-            auto res = OH_ArkUI_NodeUtils_MoveTo(a->node, a->targetParent, 2);
-        }
-    };
-    nodeAPI->registerNodeEventReceiver(onClick);
-
-    // Add nodes.
-    nodeAPI->addChild(scroll, column);
-    nodeAPI->addChild(column, row0);
-    nodeAPI->addChild(column, row1);
-    nodeAPI->addChild(column, row2);
-    nodeAPI->addChild(row0, stack0);
-    nodeAPI->addChild(row0, stack1);
-    nodeAPI->addChild(row0, stack2);
-    nodeAPI->addChild(row1, stack3);
-    nodeAPI->addChild(row1, stack4);
-    nodeAPI->addChild(row1, stack5);
-    nodeAPI->addChild(row2, bt0);
-
-    return std::make_shared<ArkUINode>(scroll);
-}
-} // namespace NativeModule
-
-#endif //MYAPPLICATION_MOVETO_H
-```
+   <!-- @[ndknodequeryoperate5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h) -->
+   
+   ``` C
+   // MoveToExample.h
+   #ifndef MYAPPLICATION_MOVETO_H
+   #define MYAPPLICATION_MOVETO_H
+   
+   #include "ArkUINode.h"
+   #include <hilog/log.h>
+   
+   namespace NativeModule {
+   
+   std::shared_ptr<ArkUIBaseNode> CreateMoveToExample()
+   {
+       auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+   
+       // Create a structure for passing event nodes.
+       struct A {
+           ArkUI_NodeHandle node;
+           ArkUI_NodeHandle targetParent;
+       };
+       A* a = new A;
+   
+       // Create the root Scroll node.
+       ArkUI_NodeHandle scroll = nodeAPI->createNode(ARKUI_NODE_SCROLL);
+       ArkUI_NumberValue length_value[] = {{.f32 = 480}};
+       ArkUI_AttributeItem length_item = {length_value, sizeof(length_value) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(scroll, NODE_WIDTH, &length_item);
+       ArkUI_NumberValue length_value1[] = {{.f32 = 650}};
+       ArkUI_AttributeItem length_item1 = {length_value1, sizeof(length_value1) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(scroll, NODE_HEIGHT, &length_item1);
+       ArkUI_AttributeItem scroll_id = {.string = "Scroll_CAPI"};
+       nodeAPI->setAttribute(scroll, NODE_ID, &scroll_id);
+   
+       // Create a Column node.
+       ArkUI_NodeHandle column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+       ArkUI_NumberValue value[] = {480};
+       ArkUI_AttributeItem item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(column, NODE_WIDTH, &item);
+       ArkUI_AttributeItem column_id = {.string = "Column_CAPI"};
+       nodeAPI->setAttribute(column, NODE_ID, &column_id);
+   
+       // Create a Row node.
+       ArkUI_NumberValue text_height[] = {50};
+       ArkUI_AttributeItem text_item1 = {text_height, sizeof(text_height) / sizeof(ArkUI_NumberValue)};
+       ArkUI_NumberValue margin[] = {10};
+       ArkUI_AttributeItem item_margin = {margin, sizeof(margin) / sizeof(ArkUI_NumberValue)};
+       ArkUI_NodeHandle row0 = nodeAPI->createNode(ARKUI_NODE_ROW);
+       ArkUI_NumberValue width_value[] = {{.f32=330}};
+       ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(row0, NODE_WIDTH, &width_item);
+       nodeAPI->setAttribute(row0, NODE_HEIGHT, &text_item1);
+       nodeAPI->setAttribute(row0, NODE_MARGIN, &item_margin);
+   
+       ArkUI_NodeHandle row1 = nodeAPI->createNode(ARKUI_NODE_ROW);
+       nodeAPI->setAttribute(row1, NODE_WIDTH, &width_item);
+       nodeAPI->setAttribute(row1, NODE_HEIGHT, &text_item1);
+       nodeAPI->setAttribute(row1, NODE_MARGIN, &item_margin);
+       a->targetParent = row1;
+   
+       ArkUI_NodeHandle row2 = nodeAPI->createNode(ARKUI_NODE_ROW);
+       nodeAPI->setAttribute(row2, NODE_WIDTH, &width_item);
+       nodeAPI->setAttribute(row2, NODE_HEIGHT, &text_item1);
+       nodeAPI->setAttribute(row2, NODE_MARGIN, &item_margin);
+   
+       //Create a Stack node.
+       ArkUI_NodeHandle stack0 = nodeAPI->createNode(ARKUI_NODE_STACK);
+       ArkUI_NumberValue stack_value[] = {{.f32=50}};
+       ArkUI_AttributeItem stack_item1 = {stack_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(stack0, NODE_WIDTH, &stack_item1);
+       nodeAPI->setAttribute(stack0, NODE_HEIGHT, &stack_item1);
+       ArkUI_NumberValue stack_bc[] = {{.u32 = 0xFFFFB6C1}};
+       ArkUI_AttributeItem stack_item2 = {stack_bc, 1};
+       nodeAPI->setAttribute(stack0, NODE_BACKGROUND_COLOR, &stack_item2);
+       a->node = stack0;
+   
+       ArkUI_NodeHandle stack1 = nodeAPI->createNode(ARKUI_NODE_STACK);
+       nodeAPI->setAttribute(stack1, NODE_WIDTH, &stack_item1);
+       nodeAPI->setAttribute(stack1, NODE_HEIGHT, &stack_item1);
+       ArkUI_NumberValue stack_bc1[] = {{.u32 = 0xFF6495ED}};
+       ArkUI_AttributeItem stack_item3 = {stack_bc1, 1};
+       nodeAPI->setAttribute(stack1, NODE_BACKGROUND_COLOR, &stack_item3);
+   
+       ArkUI_NodeHandle stack2 = nodeAPI->createNode(ARKUI_NODE_STACK);
+       nodeAPI->setAttribute(stack2, NODE_WIDTH, &stack_item1);
+       nodeAPI->setAttribute(stack2, NODE_HEIGHT, &stack_item1);
+       ArkUI_NumberValue stack_bc2[] = {{.u32 = 0xFF90EE90}};
+       ArkUI_AttributeItem stack_item4 = {stack_bc2, 1};
+       nodeAPI->setAttribute(stack2, NODE_BACKGROUND_COLOR, &stack_item4);
+   
+       ArkUI_NodeHandle stack3 = nodeAPI->createNode(ARKUI_NODE_STACK);
+       nodeAPI->setAttribute(stack3, NODE_WIDTH, &stack_item1);
+       nodeAPI->setAttribute(stack3, NODE_HEIGHT, &stack_item1);
+       nodeAPI->setAttribute(stack3, NODE_BACKGROUND_COLOR, &stack_item2);
+   
+       ArkUI_NodeHandle stack4 = nodeAPI->createNode(ARKUI_NODE_STACK);
+       nodeAPI->setAttribute(stack4, NODE_WIDTH, &stack_item1);
+       nodeAPI->setAttribute(stack4, NODE_HEIGHT, &stack_item1);
+       nodeAPI->setAttribute(stack4, NODE_BACKGROUND_COLOR, &stack_item3);
+       
+       ArkUI_NodeHandle stack5 = nodeAPI->createNode(ARKUI_NODE_STACK);
+       nodeAPI->setAttribute(stack5, NODE_WIDTH, &stack_item1);
+       nodeAPI->setAttribute(stack5, NODE_HEIGHT, &stack_item1);
+       nodeAPI->setAttribute(stack5, NODE_BACKGROUND_COLOR, &stack_item4);
+   
+       // Create a Button node.
+       ArkUI_NodeHandle bt0 = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+       ArkUI_NumberValue btn_width[] = {150};
+       ArkUI_AttributeItem btn_item0 = {btn_width, sizeof(btn_width) / sizeof(ArkUI_NumberValue)};
+       nodeAPI->setAttribute(bt0, NODE_WIDTH, &btn_item0);
+       nodeAPI->setAttribute(bt0, NODE_HEIGHT, &text_item1);
+       nodeAPI->setAttribute(bt0, NODE_MARGIN, &item_margin);
+       ArkUI_AttributeItem bt0_item = {.string = "MoveTo"};
+       nodeAPI->setAttribute(bt0, NODE_BUTTON_LABEL, &bt0_item);
+       nodeAPI->registerNodeEvent(bt0, NODE_ON_CLICK, 0, a);
+   
+       // Register events.
+       auto onClick = [](ArkUI_NodeEvent *event) {
+           ArkUI_NodeHandle node = OH_ArkUI_NodeEvent_GetNodeHandle(event);
+           auto nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+           
+           if (OH_ArkUI_NodeEvent_GetTargetId(event) == 0) {  // MoveTo
+               A* a = (A*)OH_ArkUI_NodeEvent_GetUserData(event);
+               auto res = OH_ArkUI_NodeUtils_MoveTo(a->node, a->targetParent, 2);
+           }
+       };
+       nodeAPI->registerNodeEventReceiver(onClick);
+   
+       // Add nodes.
+       nodeAPI->addChild(scroll, column);
+       nodeAPI->addChild(column, row0);
+       nodeAPI->addChild(column, row1);
+       nodeAPI->addChild(column, row2);
+       nodeAPI->addChild(row0, stack0);
+       nodeAPI->addChild(row0, stack1);
+       nodeAPI->addChild(row0, stack2);
+       nodeAPI->addChild(row1, stack3);
+       nodeAPI->addChild(row1, stack4);
+       nodeAPI->addChild(row1, stack5);
+       nodeAPI->addChild(row2, bt0);
+   
+       return std::make_shared<ArkUINode>(scroll);
+   }
+   } // namespace NativeModule
+   
+   #endif //MYAPPLICATION_MOVETO_H
+   ```
 
 3. Mount the native node in **NativeEntry.cpp**.
 
-<!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
-
-``` C++
-// NativeEntry.cpp
-#include <arkui/native_node_napi.h>
-#include <hilog/log.h>
-#include <js_native_api.h>
-#include "NativeEntry.h"
-#include "MoveToExample.h"
-#include "GetNodeByIdExample.h"
-
-
-namespace NativeModule {
-// ···
-static napi_value CreateNativeRoot(napi_env env, napi_callback_info info, const char *who, MakeNodeFn makeNodeFn)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    // Obtain NodeContent.
-    ArkUI_NodeContentHandle contentHandle;
-    OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
-    if (contentHandle == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, K_LOG_DOMAIN,
-                     "%{public}s nodeContentHandle is null", who);
-        return nullptr;
-    }
-    NativeEntry::GetInstance()->SetContentHandle(contentHandle);
-
-    // Create a node.
-    auto node = makeNodeFn();
-
-    // Keep the native-side object in the management class to maintain its lifecycle.
-    NativeEntry::GetInstance()->SetRootNode(node);
-    return nullptr;
-}
-
-napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
-{
-    // Release the native-side object from the management class.
-    NativeEntry::GetInstance()->DisposeRootNode();
-    return nullptr;
-}
-// ···
-} // namespace NativeModule
-```
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
+   
+   ``` C++
+   // NativeEntry.cpp
+   #include <arkui/native_node_napi.h>
+   #include <hilog/log.h>
+   #include <js_native_api.h>
+   #include "NativeEntry.h"
+   #include "MoveToExample.h"
+   #include "GetNodeByIdExample.h"
+   
+   
+   namespace NativeModule {
+   // ...
+   static napi_value CreateNativeRoot(napi_env env, napi_callback_info info, const char *who, MakeNodeFn makeNodeFn)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       // Obtain NodeContent.
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (contentHandle == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, K_LOG_DOMAIN,
+                        "%{public}s nodeContentHandle is null", who);
+           return nullptr;
+       }
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+   
+       // Create a node.
+       auto node = makeNodeFn();
+   
+       // Keep the native-side object in the management class to maintain its lifecycle.
+       NativeEntry::GetInstance()->SetRootNode(node);
+       return nullptr;
+   }
+   
+   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+   {
+       // Release the native-side object from the management class.
+       NativeEntry::GetInstance()->DisposeRootNode();
+       return nullptr;
+   }
+   // ...
+   } // namespace NativeModule
+   ```
 
 4. Run the program and click the button to observe the **Stack** node moving to the target position.
 
-![moveToNativeDemo](figures/moveToNativeDemo.gif)
+   ![moveToNativeDemo](figures/moveToNativeDemo.gif)
 
 ## Updating Node Attributes in the Current Frame
 
@@ -503,201 +503,201 @@ Since API version 21, use the [OH_ArkUI_NativeModule_InvalidateAttributes](../re
 
 1. Access native components in ArkTS:
 
-<!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->
-
-``` TypeScript
-
-import testNapi from 'libentry.so';
-import { NodeContent } from '@kit.ArkUI';
-
-@Component
-struct ImageContent {
-  private nodeContent: NodeContent = new NodeContent();
-
-  aboutToAppear() {
-    // Create a node through the C API and add it to the nodeContent manager.
-    testNapi.createNativeNode(this.nodeContent);
-  }
-  build() {
-    Column() {
-      // Display the native components stored in the nodeContent manager.
-      ContentSlot(this.nodeContent)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  @State showParent: boolean = true;
-  build() {
-    Row() {
-      Column() {
-        // Replace $r('app.string.Switch') with the image resource file you use.
-        Button($r('app.string.Switch')).onClick(()=>{
-          this.showParent = !this.showParent;
-        }).margin(20)
-        if(this.showParent) {
-          ImageContent()
-        } else {
-          ImageContent()
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   <!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->
+   
+   ``` TypeScript
+   
+   import testNapi from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   
+   @Component
+   struct ImageContent {
+     private nodeContent: NodeContent = new NodeContent();
+   
+     aboutToAppear() {
+       // Create a node through the C API and add it to the nodeContent manager.
+       testNapi.createNativeNode(this.nodeContent);
+     }
+     build() {
+       Column() {
+         // Display the native components stored in the nodeContent manager.
+         ContentSlot(this.nodeContent)
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+     @State showParent: boolean = true;
+     build() {
+       Row() {
+         Column() {
+           // Replace $r('app.string.Switch') with the image resource file you use.
+           Button($r('app.string.Switch')).onClick(()=>{
+             this.showParent = !this.showParent;
+           }).margin(20)
+           if(this.showParent) {
+             ImageContent()
+           } else {
+             ImageContent()
+           }
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```
 
 2. Create **attribute_util.h** for setting component attributes:
 
-<!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
-
-``` C
-#ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
-#define MYAPPLICATION_ATTRIBUTE_UTIL_H
-
-#include <arkui/native_node.h>
-#include <cstdint>
-#include <string>
-class AttributeUtil {
-public:
-    ArkUI_NativeNodeAPI_1 *api_;
-    ArkUI_NodeHandle node_;
-    AttributeUtil(ArkUI_NodeHandle node, ArkUI_NativeNodeAPI_1 *api) 
-    {
-        this->node_ = node;
-        api_ = api;
-    }
-    int32_t Width(float width)
-    {
-        ArkUI_NumberValue NODE_WIDTH_value[] = {width};
-        ArkUI_AttributeItem NODE_WIDTH_Item = {NODE_WIDTH_value, 1};
-        return api_->setAttribute(node_, NODE_WIDTH, &NODE_WIDTH_Item);
-    }
-    int32_t Height(float height)
-    {
-        ArkUI_NumberValue NODE_HEIGHT_value[] = {height};
-        ArkUI_AttributeItem NODE_HEIGHT_Item = {NODE_HEIGHT_value, 1};
-        return api_->setAttribute(node_, NODE_HEIGHT, &NODE_HEIGHT_Item);
-    }
-    int32_t ImageSrc(std::string src)
-    {
-        ArkUI_AttributeItem NODE_IAMGE_SRC_VALUE = {.string = src.c_str()};
-        return api_->setAttribute(node_, NODE_IMAGE_SRC, &NODE_IAMGE_SRC_VALUE);
-    }
-    int32_t ImageSyncLoad()
-    {
-        ArkUI_NumberValue NODE_TRANSLATE_ITEM_VALUE[] = {{.i32 = 1}};
-        ArkUI_AttributeItem NODE_BORDER_WIDTH_ITEM = {NODE_TRANSLATE_ITEM_VALUE, 1};
-        return api_->setAttribute(node_, NODE_IMAGE_SYNC_LOAD, &NODE_BORDER_WIDTH_ITEM);
-    }
-};
-#endif // MYAPPLICATION_ATTRIBUTE_UTIL_H
-```
+   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
+   
+   ``` C
+   #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
+   #define MYAPPLICATION_ATTRIBUTE_UTIL_H
+   
+   #include <arkui/native_node.h>
+   #include <cstdint>
+   #include <string>
+   class AttributeUtil {
+   public:
+       ArkUI_NativeNodeAPI_1 *api_;
+       ArkUI_NodeHandle node_;
+       AttributeUtil(ArkUI_NodeHandle node, ArkUI_NativeNodeAPI_1 *api) 
+       {
+           this->node_ = node;
+           api_ = api;
+       }
+       int32_t Width(float width)
+       {
+           ArkUI_NumberValue NODE_WIDTH_value[] = {width};
+           ArkUI_AttributeItem NODE_WIDTH_Item = {NODE_WIDTH_value, 1};
+           return api_->setAttribute(node_, NODE_WIDTH, &NODE_WIDTH_Item);
+       }
+       int32_t Height(float height)
+       {
+           ArkUI_NumberValue NODE_HEIGHT_value[] = {height};
+           ArkUI_AttributeItem NODE_HEIGHT_Item = {NODE_HEIGHT_value, 1};
+           return api_->setAttribute(node_, NODE_HEIGHT, &NODE_HEIGHT_Item);
+       }
+       int32_t ImageSrc(std::string src)
+       {
+           ArkUI_AttributeItem NODE_IAMGE_SRC_VALUE = {.string = src.c_str()};
+           return api_->setAttribute(node_, NODE_IMAGE_SRC, &NODE_IAMGE_SRC_VALUE);
+       }
+       int32_t ImageSyncLoad()
+       {
+           ArkUI_NumberValue NODE_TRANSLATE_ITEM_VALUE[] = {{.i32 = 1}};
+           ArkUI_AttributeItem NODE_BORDER_WIDTH_ITEM = {NODE_TRANSLATE_ITEM_VALUE, 1};
+           return api_->setAttribute(node_, NODE_IMAGE_SYNC_LOAD, &NODE_BORDER_WIDTH_ITEM);
+       }
+   };
+   #endif // MYAPPLICATION_ATTRIBUTE_UTIL_H
+   ```
 
 3. Mount the native node in **nai_init.cpp**.
 
-<!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-#include "Attribute_util.h"
-#include "napi/native_api.h"
-#include <arkui/native_interface.h>
-#include <arkui/native_node.h>
-#include <arkui/native_node_napi.h>
-#include <hilog/log.h>
-#include <js_native_api.h>
-#include <js_native_api_types.h>
-// ···
-const unsigned int NUMBER_2 = 2;
-const unsigned int NUMBER_WIDTH = 100;
-const unsigned int NUMBER_HEIGHT = 100;
-
-static napi_value Add(napi_env env, napi_callback_info info)
-{
-    size_t argc = NUMBER_2;
-    napi_value args[NUMBER_2] = {nullptr};
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    napi_valuetype valuetype0;
-    napi_typeof(env, args[0], &valuetype0);
-
-    napi_valuetype valuetype1;
-    napi_typeof(env, args[1], &valuetype1);
-
-    double value0;
-    napi_get_value_double(env, args[0], &value0);
-
-    double value1;
-    napi_get_value_double(env, args[1], &value1);
-
-    napi_value sum;
-    napi_create_double(env, value0 + value1, &sum);
-
-    return sum;
-}
-
-static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
-
-static napi_value NAPI_Global_createNativeNode(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    ArkUI_NodeContentHandle contentHandle;
-    OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
-    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-    // Create an Image component.
-    auto imageNode = nodeAPI->createNode(ARKUI_NODE_IMAGE);
-    AttributeUtil imageNodeAttr(imageNode, nodeAPI);
-    // Set the attributes of the Image component.
-    imageNodeAttr.ImageSrc("resources/base/media/startIcon.png");
-    imageNodeAttr.ImageSyncLoad();
-    imageNodeAttr.Width(NUMBER_WIDTH);
-    imageNodeAttr.Height(NUMBER_HEIGHT);
-    // Update the  attributes in the current frame.
-    OH_ArkUI_NativeModule_InvalidateAttributes(imageNode);
-    // Mount the Image component to the component tree.
-    OH_ArkUI_NodeContent_AddNode(contentHandle, imageNode);
-    return nullptr;
-}
-
-EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports)
-{
-    napi_property_descriptor desc[] = {
-        {"add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"createNativeNode", nullptr, NAPI_Global_createNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr},
-        // ···
-    };
-    napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
-    return exports;
-}
-EXTERN_C_END
-
-static napi_module demoModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "entry",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&demoModule);
-}
-```
+   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "Attribute_util.h"
+   #include "napi/native_api.h"
+   #include <arkui/native_interface.h>
+   #include <arkui/native_node.h>
+   #include <arkui/native_node_napi.h>
+   #include <hilog/log.h>
+   #include <js_native_api.h>
+   #include <js_native_api_types.h>
+   // ...
+   const unsigned int NUMBER_2 = 2;
+   const unsigned int NUMBER_WIDTH = 100;
+   const unsigned int NUMBER_HEIGHT = 100;
+   
+   static napi_value Add(napi_env env, napi_callback_info info)
+   {
+       size_t argc = NUMBER_2;
+       napi_value args[NUMBER_2] = {nullptr};
+   
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       napi_valuetype valuetype0;
+       napi_typeof(env, args[0], &valuetype0);
+   
+       napi_valuetype valuetype1;
+       napi_typeof(env, args[1], &valuetype1);
+   
+       double value0;
+       napi_get_value_double(env, args[0], &value0);
+   
+       double value1;
+       napi_get_value_double(env, args[1], &value1);
+   
+       napi_value sum;
+       napi_create_double(env, value0 + value1, &sum);
+   
+       return sum;
+   }
+   
+   static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
+   
+   static napi_value NAPI_Global_createNativeNode(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+       // Create an Image component.
+       auto imageNode = nodeAPI->createNode(ARKUI_NODE_IMAGE);
+       AttributeUtil imageNodeAttr(imageNode, nodeAPI);
+       // Set the attributes of the Image component.
+       imageNodeAttr.ImageSrc("resources/base/media/startIcon.png");
+       imageNodeAttr.ImageSyncLoad();
+       imageNodeAttr.Width(NUMBER_WIDTH);
+       imageNodeAttr.Height(NUMBER_HEIGHT);
+       // Update the  attributes in the current frame.
+       OH_ArkUI_NativeModule_InvalidateAttributes(imageNode);
+       // Mount the Image component to the component tree.
+       OH_ArkUI_NodeContent_AddNode(contentHandle, imageNode);
+       return nullptr;
+   }
+   
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports)
+   {
+       napi_property_descriptor desc[] = {
+           {"add", nullptr, Add, nullptr, nullptr, nullptr, napi_default, nullptr},
+           {"createNativeNode", nullptr, NAPI_Global_createNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr},
+           // ...
+       };
+       napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+       return exports;
+   }
+   EXTERN_C_END
+   
+   static napi_module demoModule = {
+       .nm_version = 1,
+       .nm_flags = 0,
+       .nm_filename = nullptr,
+       .nm_register_func = Init,
+       .nm_modname = "entry",
+       .nm_priv = ((void*)0),
+       .reserved = { 0 },
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+   {
+       napi_module_register(&demoModule);
+   }
+   ```
 
 4. Run the program and click the button to verify proper image display.
 
-![moveToNativeDemo](figures/OH_ArkUI_NativeModule_InvalidateAttributes_test.png)
+   ![moveToNativeDemo](figures/OH_ArkUI_NativeModule_InvalidateAttributes_test.png)
 
 ## Obtaining Child Nodes with Different Expansion Modes
 
@@ -975,21 +975,205 @@ Since API version 20: Use [OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand](.
   
 2. On the NDK side, obtain the ArkTS component through the [OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid) API, and obtain the corresponding child component information in lazy expansion mode.
 
-<!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->
+   <!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->
+   
+   ``` C
+   ArkUI_NodeHandle childNode = nullptr;
+   OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("N3", &childNode);
+       
+   uint32_t index = 0;
+   OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(childNode, &index);
+   uint32_t index1 = 0;
+   OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(childNode, &index1);
+   ArkUI_NodeHandle child = nullptr;
+   auto result = OH_ArkUI_NodeUtils_GetChildWithExpandMode(childNode, 3, &child, 0);
+   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager", 
+       "firstChildIndex - lastChildIndex == %{d -- %{public}d, -- getResult = %{public}d",
+       index, index1, result);
+   ```
 
-``` C
-ArkUI_NodeHandle childNode = nullptr;
-OH_ArkUI_NodeUtils_GetAttachedNodeHandleById("N3", &childNode);
-    
-uint32_t index = 0;
-OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(childNode, &index);
-uint32_t index1 = 0;
-OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(childNode, &index1);
-ArkUI_NodeHandle child = nullptr;
-auto result = OH_ArkUI_NodeUtils_GetChildWithExpandMode(childNode, 3, &child, 0);
-OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "Manager", 
-    "firstChildIndex - lastChildIndex == %{d -- %{public}d, -- getResult = %{public}d",
-    index, index1, result);
-```
+3. Check whether the result code returned in the log matches the expected value to determine whether the corresponding child node is obtained successfully.
 
-3. Check whether the corresponding error code returned in the log print is correct to determine whether the corresponding child node is obtained successfully.
+## Checking Whether a Node Is in Render State
+
+Starting from API version 23, you can use [OH_ArkUI_NativeModule_IsInRenderState](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_isinrenderstate) to determine whether a node is in the render tree.
+
+
+1. Access native components in ArkTS:
+
+   ```ts
+   //Index.ets
+   
+   import testNapi from 'libentry.so';
+   import { NodeContent } from '@kit.ArkUI';
+   
+   @Component
+   struct TestContent {
+     private nodeContent: NodeContent = new NodeContent();
+   
+     aboutToAppear() {
+       // Create a node through the C API and add it to the nodeContent manager.
+       testNapi.createNativeNode(this.nodeContent);
+     }
+     build() {
+       Column() {
+         // Display the native components stored in the nodeContent manager.
+         ContentSlot(this.nodeContent)
+       }
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+     @State showParent: boolean = true;
+     build() {
+       Row() {
+         Column() {
+           TestContent()
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }   
+   ```
+
+2. Create **attribute_util.h** for setting component attributes:
+
+   ```C++
+   #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
+   #define MYAPPLICATION_ATTRIBUTE_UTIL_H
+   #include <arkui/native_node.h>
+   #include <cstdint>
+   #include <string>
+     class AttributeUtil {
+       public:
+       ArkUI_NativeNodeAPI_1 *api_;
+       ArkUI_NodeHandle node_;
+       AttributeUtil(ArkUI_NodeHandle node, ArkUI_NativeNodeAPI_1 *api) {
+       this->node_ = node;
+       api_ = api;
+     }
+   int32_t width(float width) {
+     ArkUI_NumberValue NODE_WIDTH_value[] = {width};
+     ArkUI_AttributeItem NODE_WIDTH_Item = {NODE_WIDTH_value, 1};
+     return api_->setAttribute(node_, NODE_WIDTH, &NODE_WIDTH_Item);
+   }
+   int32_t height(float height) {
+     ArkUI_NumberValue NODE_HEIGHT_value[] = {height};
+     ArkUI_AttributeItem NODE_HEIGHT_Item = {NODE_HEIGHT_value, 1};
+     return api_->setAttribute(node_, NODE_HEIGHT, &NODE_HEIGHT_Item);
+   }
+   
+   int32_t buttonLabel(std::string text) {
+     ArkUI_AttributeItem NODE_TRANSLATE_ITEM_LABEL = {.string = text.c_str()};
+     return api_->setAttribute(node_, NODE_BUTTON_LABEL, &NODE_TRANSLATE_ITEM_LABEL);
+   }
+   
+   int32_t text(std::string str) {
+     ArkUI_AttributeItem TEXT_ITEM = {.string = str.c_str()};
+     return api_->setAttribute(node_, NODE_TEXT_CONTENT, &TEXT_ITEM);
+   }
+   
+   int32_t visibility(int isSHow) {
+     ArkUI_NumberValue NODE_VISIBILITY_ITEM_VALUE = {.i32 = isSHow};
+     ArkUI_AttributeItem NODE_VISIBILITY__ITEM = {&NODE_VISIBILITY_ITEM_VALUE, 1};
+     return api_->setAttribute(node_, NODE_VISIBILITY, &NODE_VISIBILITY__ITEM);
+   }
+   
+   int32_t margin(float value) {
+     ArkUI_NumberValue NODE_margin_ITEM_VALUE = {.f32 = value};
+     ArkUI_AttributeItem NODE_MARGIN_ITEM = {&NODE_margin_ITEM_VALUE, 1};
+     return api_->setAttribute(node_, NODE_MARGIN, &NODE_MARGIN_ITEM);
+   }
+   };
+   
+   #endif // MYAPPLICATION_ATTRIBUTE_UTIL_H  
+   ```
+
+3. Mount the native node in **nai_init.cpp**.
+
+   ```C++
+   #include "napi/native_api.h"
+   #include "AttributeUtil.h"
+   #include <arkui/native_interface.h>
+   #include <arkui/native_node.h>
+   #include <arkui/native_node_napi.h>
+   #include <hilog/log.h>
+   
+   static ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
+   static ArkUI_NodeHandle textNode = nullptr;
+   static bool showText = false;
+   
+   namespace Event {
+     void onClickFunc(ArkUI_NodeEvent *event) {
+       AttributeUtil textAttr(textNode, nodeAPI);
+       if (showText) {
+         textAttr.visibility(0);
+       } else {
+         textAttr.visibility(1);
+       }
+       showText = !showText;
+       bool isOnRenderTree = false;
+       OH_ArkUI_NativeModule_IsInRenderState(textNode, &isOnRenderTree);
+       OH_LOG_Print(LOG_APP, LOG_INFO, 1, "event","on render tree statie is %{public}d", isOnRenderTree);
+     }
+   } // namespace Event
+   
+   
+   static napi_value NAPI_Global_createNativeNode(napi_env env, napi_callback_info info) {
+     size_t argc = 1;
+     napi_value args[1] = {nullptr};
+     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+     ArkUI_NodeContentHandle contentHandle;
+     OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
+     auto columnTest = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+     AttributeUtil columnAttr(columnTest, nodeAPI);
+     columnAttr.width(300);
+     columnAttr.height(300);
+     auto buttonNode = nodeAPI->createNode(ARKUI_NODE_BUTTON);
+     nodeAPI->addChild(columnTest, buttonNode);
+     AttributeUtil buttonAttr(buttonNode, nodeAPI);
+     buttonAttr.width(200);
+     buttonAttr.height(30);
+     buttonAttr.margin(20);
+     buttonAttr.buttonLabel("change text visibility");
+     nodeAPI->registerNodeEvent(buttonNode, NODE_ON_CLICK, 1, nullptr);
+     nodeAPI->registerNodeEventReceiver(Event::onClickFunc);
+     textNode = nodeAPI->createNode(ARKUI_NODE_TEXT);
+     nodeAPI->addChild(columnTest, textNode);
+     AttributeUtil textAttr(textNode, nodeAPI);
+     textAttr.text("hello word");
+     OH_ArkUI_NodeContent_AddNode(contentHandle, columnTest);
+     return nullptr;
+   }
+   EXTERN_C_START
+   static napi_value Init(napi_env env, napi_value exports) {
+     napi_property_descriptor desc[] = {
+       {"createNativeNode", nullptr, NAPI_Global_createNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr}};
+   napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
+   return exports;
+   }
+   EXTERN_C_END
+   
+   static napi_module demoModule = {
+     .nm_version = 1,
+     .nm_flags = 0,
+     .nm_filename = nullptr,
+     .nm_register_func = Init,
+     .nm_modname = "entry",
+     .nm_priv = ((void *)0),
+     .reserved = {0},
+   };
+   
+   extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_module_register(&demoModule); }
+
+    ```
+
+4. Run the program, click **change text visibility**, and verify whether the text node is present in the render tree.
+
+   ![isInRenderState](figures/isInRenderState_c.png)
+<!--no_check-->

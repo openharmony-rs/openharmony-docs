@@ -133,7 +133,7 @@
 
 ### OH_UdsPlainText_Create()
 
-```
+```c
 OH_UdsPlainText* OH_UdsPlainText_Create()
 ```
 
@@ -151,7 +151,7 @@ OH_UdsPlainText* OH_UdsPlainText_Create()
 
 ### OH_UdsPlainText_Destroy()
 
-```
+```c
 void OH_UdsPlainText_Destroy(OH_UdsPlainText* pThis)
 ```
 
@@ -170,7 +170,7 @@ void OH_UdsPlainText_Destroy(OH_UdsPlainText* pThis)
 
 ### OH_UdsPlainText_GetType()
 
-```
+```c
 const char* OH_UdsPlainText_GetType(OH_UdsPlainText* pThis)
 ```
 
@@ -195,7 +195,7 @@ const char* OH_UdsPlainText_GetType(OH_UdsPlainText* pThis)
 
 ### OH_UdsPlainText_GetContent()
 
-```
+```c
 const char* OH_UdsPlainText_GetContent(OH_UdsPlainText* pThis)
 ```
 
@@ -220,7 +220,7 @@ const char* OH_UdsPlainText_GetContent(OH_UdsPlainText* pThis)
 
 ### OH_UdsPlainText_GetAbstract()
 
-```
+```c
 const char* OH_UdsPlainText_GetAbstract(OH_UdsPlainText* pThis)
 ```
 
@@ -247,7 +247,7 @@ OH_UdsPlainText
 
 ### OH_UdsPlainText_SetContent()
 
-```
+```c
 int OH_UdsPlainText_SetContent(OH_UdsPlainText* pThis, const char* content)
 ```
 
@@ -273,7 +273,7 @@ int OH_UdsPlainText_SetContent(OH_UdsPlainText* pThis, const char* content)
 
 ### OH_UdsPlainText_SetAbstract()
 
-```
+```c
 int OH_UdsPlainText_SetAbstract(OH_UdsPlainText* pThis, const char* abstract)
 ```
 
@@ -299,7 +299,7 @@ int OH_UdsPlainText_SetAbstract(OH_UdsPlainText* pThis, const char* abstract)
 
 ### OH_UdsHyperlink_Create()
 
-```
+```c
 OH_UdsHyperlink* OH_UdsHyperlink_Create()
 ```
 
@@ -317,7 +317,7 @@ OH_UdsHyperlink* OH_UdsHyperlink_Create()
 
 ### OH_UdsHyperlink_Destroy()
 
-```
+```c
 void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)
 ```
 
@@ -336,7 +336,7 @@ void OH_UdsHyperlink_Destroy(OH_UdsHyperlink* pThis)
 
 ### OH_UdsHyperlink_GetType()
 
-```
+```c
 const char* OH_UdsHyperlink_GetType(OH_UdsHyperlink* pThis)
 ```
 
@@ -361,7 +361,7 @@ const char* OH_UdsHyperlink_GetType(OH_UdsHyperlink* pThis)
 
 ### OH_UdsHyperlink_GetUrl()
 
-```
+```c
 const char* OH_UdsHyperlink_GetUrl(OH_UdsHyperlink* pThis)
 ```
 
@@ -386,7 +386,7 @@ const char* OH_UdsHyperlink_GetUrl(OH_UdsHyperlink* pThis)
 
 ### OH_UdsHyperlink_GetDescription()
 
-```
+```c
 const char* OH_UdsHyperlink_GetDescription(OH_UdsHyperlink* pThis)
 ```
 
@@ -411,7 +411,7 @@ const char* OH_UdsHyperlink_GetDescription(OH_UdsHyperlink* pThis)
 
 ### OH_UdsHyperlink_SetUrl()
 
-```
+```c
 int OH_UdsHyperlink_SetUrl(OH_UdsHyperlink* pThis, const char* url)
 ```
 
@@ -437,7 +437,7 @@ int OH_UdsHyperlink_SetUrl(OH_UdsHyperlink* pThis, const char* url)
 
 ### OH_UdsHyperlink_SetDescription()
 
-```
+```c
 int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* description)
 ```
 
@@ -463,7 +463,7 @@ int OH_UdsHyperlink_SetDescription(OH_UdsHyperlink* pThis, const char* descripti
 
 ### OH_UdsHtml_Create()
 
-```
+```c
 OH_UdsHtml* OH_UdsHtml_Create()
 ```
 
@@ -481,7 +481,7 @@ OH_UdsHtml* OH_UdsHtml_Create()
 
 ### OH_UdsHtml_Destroy()
 
-```
+```c
 void OH_UdsHtml_Destroy(OH_UdsHtml* pThis)
 ```
 
@@ -500,7 +500,7 @@ void OH_UdsHtml_Destroy(OH_UdsHtml* pThis)
 
 ### OH_UdsHtml_GetType()
 
-```
+```c
 const char* OH_UdsHtml_GetType(OH_UdsHtml* pThis)
 ```
 
@@ -525,7 +525,7 @@ const char* OH_UdsHtml_GetType(OH_UdsHtml* pThis)
 
 ### OH_UdsHtml_GetContent()
 
-```
+```c
 const char* OH_UdsHtml_GetContent(OH_UdsHtml* pThis)
 ```
 
@@ -550,7 +550,7 @@ const char* OH_UdsHtml_GetContent(OH_UdsHtml* pThis)
 
 ### OH_UdsHtml_GetPlainContent()
 
-```
+```c
 const char* OH_UdsHtml_GetPlainContent(OH_UdsHtml* pThis)
 ```
 
@@ -575,7 +575,7 @@ const char* OH_UdsHtml_GetPlainContent(OH_UdsHtml* pThis)
 
 ### OH_UdsHtml_SetContent()
 
-```
+```c
 int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)
 ```
 
@@ -601,7 +601,7 @@ int OH_UdsHtml_SetContent(OH_UdsHtml* pThis, const char* content)
 
 ### OH_UdsHtml_SetPlainContent()
 
-```
+```c
 int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)
 ```
 
@@ -627,7 +627,7 @@ int OH_UdsHtml_SetPlainContent(OH_UdsHtml* pThis, const char* plainContent)
 
 ### OH_UdsAppItem_Create()
 
-```
+```c
 OH_UdsAppItem* OH_UdsAppItem_Create()
 ```
 
@@ -645,7 +645,7 @@ OH_UdsAppItem* OH_UdsAppItem_Create()
 
 ### OH_UdsAppItem_Destroy()
 
-```
+```c
 void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)
 ```
 
@@ -664,7 +664,7 @@ void OH_UdsAppItem_Destroy(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetType()
 
-```
+```c
 const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)
 ```
 
@@ -689,7 +689,7 @@ const char* OH_UdsAppItem_GetType(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetId()
 
-```
+```c
 const char* OH_UdsAppItem_GetId(OH_UdsAppItem* pThis)
 ```
 
@@ -714,7 +714,7 @@ const char* OH_UdsAppItem_GetId(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetName()
 
-```
+```c
 const char* OH_UdsAppItem_GetName(OH_UdsAppItem* pThis)
 ```
 
@@ -739,7 +739,7 @@ const char* OH_UdsAppItem_GetName(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetIconId()
 
-```
+```c
 const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)
 ```
 
@@ -764,7 +764,7 @@ const char* OH_UdsAppItem_GetIconId(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetLabelId()
 
-```
+```c
 const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)
 ```
 
@@ -789,7 +789,7 @@ const char* OH_UdsAppItem_GetLabelId(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetBundleName()
 
-```
+```c
 const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)
 ```
 
@@ -814,7 +814,7 @@ const char* OH_UdsAppItem_GetBundleName(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_GetAbilityName()
 
-```
+```c
 const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)
 ```
 
@@ -839,7 +839,7 @@ const char* OH_UdsAppItem_GetAbilityName(OH_UdsAppItem* pThis)
 
 ### OH_UdsAppItem_SetId()
 
-```
+```c
 int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)
 ```
 
@@ -865,7 +865,7 @@ int OH_UdsAppItem_SetId(OH_UdsAppItem* pThis, const char* appId)
 
 ### OH_UdsAppItem_SetName()
 
-```
+```c
 int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)
 ```
 
@@ -891,7 +891,7 @@ int OH_UdsAppItem_SetName(OH_UdsAppItem* pThis, const char* appName)
 
 ### OH_UdsAppItem_SetIconId()
 
-```
+```c
 int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)
 ```
 
@@ -917,7 +917,7 @@ int OH_UdsAppItem_SetIconId(OH_UdsAppItem* pThis, const char* appIconId)
 
 ### OH_UdsAppItem_SetLabelId()
 
-```
+```c
 int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)
 ```
 
@@ -943,7 +943,7 @@ int OH_UdsAppItem_SetLabelId(OH_UdsAppItem* pThis, const char* appLabelId)
 
 ### OH_UdsAppItem_SetBundleName()
 
-```
+```c
 int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)
 ```
 
@@ -969,7 +969,7 @@ int OH_UdsAppItem_SetBundleName(OH_UdsAppItem* pThis, const char* bundleName)
 
 ### OH_UdsAppItem_SetAbilityName()
 
-```
+```c
 int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)
 ```
 
@@ -995,7 +995,7 @@ int OH_UdsAppItem_SetAbilityName(OH_UdsAppItem* pThis, const char* abilityName)
 
 ### OH_UdsFileUri_Create()
 
-```
+```c
 OH_UdsFileUri* OH_UdsFileUri_Create()
 ```
 
@@ -1013,7 +1013,7 @@ OH_UdsFileUri* OH_UdsFileUri_Create()
 
 ### OH_UdsFileUri_Destroy()
 
-```
+```c
 void OH_UdsFileUri_Destroy(OH_UdsFileUri* pThis)
 ```
 
@@ -1032,7 +1032,7 @@ void OH_UdsFileUri_Destroy(OH_UdsFileUri* pThis)
 
 ### OH_UdsFileUri_GetType()
 
-```
+```c
 const char* OH_UdsFileUri_GetType(OH_UdsFileUri* pThis)
 ```
 
@@ -1057,7 +1057,7 @@ const char* OH_UdsFileUri_GetType(OH_UdsFileUri* pThis)
 
 ### OH_UdsFileUri_GetFileUri()
 
-```
+```c
 const char* OH_UdsFileUri_GetFileUri(OH_UdsFileUri* pThis)
 ```
 
@@ -1082,7 +1082,7 @@ const char* OH_UdsFileUri_GetFileUri(OH_UdsFileUri* pThis)
 
 ### OH_UdsFileUri_GetFileType()
 
-```
+```c
 const char* OH_UdsFileUri_GetFileType(OH_UdsFileUri* pThis)
 ```
 
@@ -1107,7 +1107,7 @@ const char* OH_UdsFileUri_GetFileType(OH_UdsFileUri* pThis)
 
 ### OH_UdsFileUri_SetFileUri()
 
-```
+```c
 int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)
 ```
 
@@ -1133,7 +1133,7 @@ int OH_UdsFileUri_SetFileUri(OH_UdsFileUri* pThis, const char* fileUri)
 
 ### OH_UdsFileUri_SetFileType()
 
-```
+```c
 int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)
 ```
 
@@ -1159,7 +1159,7 @@ int OH_UdsFileUri_SetFileType(OH_UdsFileUri* pThis, const char* fileType)
 
 ### OH_UdsPixelMap_Create()
 
-```
+```c
 OH_UdsPixelMap* OH_UdsPixelMap_Create()
 ```
 
@@ -1177,7 +1177,7 @@ OH_UdsPixelMap* OH_UdsPixelMap_Create()
 
 ### OH_UdsPixelMap_Destroy()
 
-```
+```c
 void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)
 ```
 
@@ -1196,7 +1196,7 @@ void OH_UdsPixelMap_Destroy(OH_UdsPixelMap* pThis)
 
 ### OH_UdsPixelMap_GetType()
 
-```
+```c
 const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)
 ```
 
@@ -1221,7 +1221,7 @@ const char* OH_UdsPixelMap_GetType(OH_UdsPixelMap* pThis)
 
 ### OH_UdsPixelMap_GetPixelMap()
 
-```
+```c
 void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)
 ```
 
@@ -1241,7 +1241,7 @@ void OH_UdsPixelMap_GetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelm
 
 ### OH_UdsPixelMap_SetPixelMap()
 
-```
+```c
 int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelmapNative)
 ```
 
@@ -1267,7 +1267,7 @@ int OH_UdsPixelMap_SetPixelMap(OH_UdsPixelMap* pThis, OH_PixelmapNative* pixelma
 
 ### OH_UdsArrayBuffer_Create()
 
-```
+```c
 OH_UdsArrayBuffer* OH_UdsArrayBuffer_Create()
 ```
 
@@ -1285,7 +1285,7 @@ OH_UdsArrayBuffer* OH_UdsArrayBuffer_Create()
 
 ### OH_UdsArrayBuffer_Destroy()
 
-```
+```c
 int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)
 ```
 
@@ -1310,7 +1310,7 @@ int OH_UdsArrayBuffer_Destroy(OH_UdsArrayBuffer* buffer)
 
 ### OH_UdsArrayBuffer_SetData()
 
-```
+```c
 int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, unsigned int len)
 ```
 
@@ -1337,7 +1337,7 @@ int OH_UdsArrayBuffer_SetData(OH_UdsArrayBuffer* buffer, unsigned char* data, un
 
 ### OH_UdsArrayBuffer_GetData()
 
-```
+```c
 int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, unsigned int* len)
 ```
 
@@ -1364,7 +1364,7 @@ int OH_UdsArrayBuffer_GetData(OH_UdsArrayBuffer* buffer, unsigned char** data, u
 
 ### OH_UdsContentForm_Create()
 
-```
+```c
 OH_UdsContentForm* OH_UdsContentForm_Create()
 ```
 
@@ -1382,7 +1382,7 @@ OH_UdsContentForm* OH_UdsContentForm_Create()
 
 ### OH_UdsContentForm_Destroy()
 
-```
+```c
 void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)
 ```
 
@@ -1401,7 +1401,7 @@ void OH_UdsContentForm_Destroy(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetType()
 
-```
+```c
 const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)
 ```
 
@@ -1426,7 +1426,7 @@ const char* OH_UdsContentForm_GetType(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetThumbData()
 
-```
+```c
 int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thumbData, unsigned int* len)
 ```
 
@@ -1453,7 +1453,7 @@ int OH_UdsContentForm_GetThumbData(OH_UdsContentForm* pThis, unsigned char** thu
 
 ### OH_UdsContentForm_GetDescription()
 
-```
+```c
 const char* OH_UdsContentForm_GetDescription(OH_UdsContentForm* pThis)
 ```
 
@@ -1478,7 +1478,7 @@ const char* OH_UdsContentForm_GetDescription(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetTitle()
 
-```
+```c
 const char* OH_UdsContentForm_GetTitle(OH_UdsContentForm* pThis)
 ```
 
@@ -1503,7 +1503,7 @@ const char* OH_UdsContentForm_GetTitle(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetAppIcon()
 
-```
+```c
 int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIcon, unsigned int* len)
 ```
 
@@ -1530,7 +1530,7 @@ int OH_UdsContentForm_GetAppIcon(OH_UdsContentForm* pThis, unsigned char** appIc
 
 ### OH_UdsContentForm_GetAppName()
 
-```
+```c
 const char* OH_UdsContentForm_GetAppName(OH_UdsContentForm* pThis)
 ```
 
@@ -1555,7 +1555,7 @@ const char* OH_UdsContentForm_GetAppName(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_GetLinkUri()
 
-```
+```c
 const char* OH_UdsContentForm_GetLinkUri(OH_UdsContentForm* pThis)
 ```
 
@@ -1580,7 +1580,7 @@ const char* OH_UdsContentForm_GetLinkUri(OH_UdsContentForm* pThis)
 
 ### OH_UdsContentForm_SetThumbData()
 
-```
+```c
 int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char* thumbData, unsigned int len)
 ```
 
@@ -1607,7 +1607,7 @@ int OH_UdsContentForm_SetThumbData(OH_UdsContentForm* pThis, const unsigned char
 
 ### OH_UdsContentForm_SetDescription()
 
-```
+```c
 int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* description)
 ```
 
@@ -1633,7 +1633,7 @@ int OH_UdsContentForm_SetDescription(OH_UdsContentForm* pThis, const char* descr
 
 ### OH_UdsContentForm_SetTitle()
 
-```
+```c
 int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)
 ```
 
@@ -1659,7 +1659,7 @@ int OH_UdsContentForm_SetTitle(OH_UdsContentForm* pThis, const char* title)
 
 ### OH_UdsContentForm_SetAppIcon()
 
-```
+```c
 int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* appIcon, unsigned int len)
 ```
 
@@ -1686,7 +1686,7 @@ int OH_UdsContentForm_SetAppIcon(OH_UdsContentForm* pThis, const unsigned char* 
 
 ### OH_UdsContentForm_SetAppName()
 
-```
+```c
 int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)
 ```
 
@@ -1712,7 +1712,7 @@ int OH_UdsContentForm_SetAppName(OH_UdsContentForm* pThis, const char* appName)
 
 ### OH_UdsContentForm_SetLinkUri()
 
-```
+```c
 int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)
 ```
 
@@ -1739,7 +1739,7 @@ int OH_UdsContentForm_SetLinkUri(OH_UdsContentForm* pThis, const char* linkUri)
 
 ### OH_UdsPlainText_GetDetails()
 
-```
+```c
 int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)
 ```
 
@@ -1764,7 +1764,7 @@ int OH_UdsPlainText_GetDetails(OH_UdsPlainText* pThis, OH_UdsDetails* details)
 
 ### OH_UdsPlainText_SetDetails()
 
-```
+```c
 int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* details)
 ```
 
@@ -1789,7 +1789,7 @@ int OH_UdsPlainText_SetDetails(OH_UdsPlainText* pThis, const OH_UdsDetails* deta
 
 ### OH_UdsHyperlink_GetDetails()
 
-```
+```c
 int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)
 ```
 
@@ -1814,7 +1814,7 @@ int OH_UdsHyperlink_GetDetails(OH_UdsHyperlink* pThis, OH_UdsDetails* details)
 
 ### OH_UdsHyperlink_SetDetails()
 
-```
+```c
 int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* details)
 ```
 
@@ -1839,7 +1839,7 @@ int OH_UdsHyperlink_SetDetails(OH_UdsHyperlink* pThis, const OH_UdsDetails* deta
 
 ### OH_UdsHtml_GetDetails()
 
-```
+```c
 int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)
 ```
 
@@ -1864,7 +1864,7 @@ int OH_UdsHtml_GetDetails(OH_UdsHtml* pThis, OH_UdsDetails* details)
 
 ### OH_UdsHtml_SetDetails()
 
-```
+```c
 int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)
 ```
 
@@ -1889,7 +1889,7 @@ int OH_UdsHtml_SetDetails(OH_UdsHtml* pThis, const OH_UdsDetails* details)
 
 ### OH_UdsAppItem_GetDetails()
 
-```
+```c
 int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)
 ```
 
@@ -1914,7 +1914,7 @@ int OH_UdsAppItem_GetDetails(OH_UdsAppItem* pThis, OH_UdsDetails* details)
 
 ### OH_UdsAppItem_SetDetails()
 
-```
+```c
 int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)
 ```
 
@@ -1939,7 +1939,7 @@ int OH_UdsAppItem_SetDetails(OH_UdsAppItem* pThis, const OH_UdsDetails* details)
 
 ### OH_UdsFileUri_GetDetails()
 
-```
+```c
 int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)
 ```
 
@@ -1964,7 +1964,7 @@ int OH_UdsFileUri_GetDetails(OH_UdsFileUri* pThis, OH_UdsDetails* details)
 
 ### OH_UdsFileUri_SetDetails()
 
-```
+```c
 int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)
 ```
 
@@ -1989,7 +1989,7 @@ int OH_UdsFileUri_SetDetails(OH_UdsFileUri* pThis, const OH_UdsDetails* details)
 
 ### OH_UdsPixelMap_GetDetails()
 
-```
+```c
 int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)
 ```
 
@@ -2014,7 +2014,7 @@ int OH_UdsPixelMap_GetDetails(OH_UdsPixelMap* pThis, OH_UdsDetails* details)
 
 ### OH_UdsPixelMap_SetDetails()
 
-```
+```c
 int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* details)
 ```
 
@@ -2039,7 +2039,7 @@ int OH_UdsPixelMap_SetDetails(OH_UdsPixelMap* pThis, const OH_UdsDetails* detail
 
 ### OH_UdsDetails_Create()
 
-```
+```c
 OH_UdsDetails* OH_UdsDetails_Create()
 ```
 
@@ -2059,7 +2059,7 @@ OH_UdsDetails* OH_UdsDetails_Create()
 
 ### OH_UdsDetails_Destroy()
 
-```
+```c
 void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)
 ```
 
@@ -2077,7 +2077,7 @@ void OH_UdsDetails_Destroy(OH_UdsDetails* pThis)
 
 ### OH_UdsDetails_HasKey()
 
-```
+```c
 bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)
 ```
 
@@ -2102,7 +2102,7 @@ bool OH_UdsDetails_HasKey(const OH_UdsDetails* pThis, const char* key)
 
 ### OH_UdsDetails_Remove()
 
-```
+```c
 int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)
 ```
 
@@ -2127,7 +2127,7 @@ int OH_UdsDetails_Remove(OH_UdsDetails* pThis, const char* key)
 
 ### OH_UdsDetails_Clear()
 
-```
+```c
 int OH_UdsDetails_Clear(OH_UdsDetails* pThis)
 ```
 
@@ -2151,7 +2151,7 @@ int OH_UdsDetails_Clear(OH_UdsDetails* pThis)
 
 ### OH_UdsDetails_SetValue()
 
-```
+```c
 int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* value)
 ```
 
@@ -2177,7 +2177,7 @@ int OH_UdsDetails_SetValue(OH_UdsDetails* pThis, const char* key, const char* va
 
 ### OH_UdsDetails_GetValue()
 
-```
+```c
 const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)
 ```
 
@@ -2202,7 +2202,7 @@ const char* OH_UdsDetails_GetValue(const OH_UdsDetails* pThis, const char* key)
 
 ### OH_UdsDetails_GetAllKeys()
 
-```
+```c
 char** OH_UdsDetails_GetAllKeys(OH_UdsDetails* pThis, unsigned int* count)
 ```
 

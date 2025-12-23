@@ -56,7 +56,7 @@ HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死
 
 ### HiCollie_ErrorCode
 
-```
+```c
 enum HiCollie_ErrorCode
 ```
 
@@ -79,7 +79,7 @@ enum HiCollie_ErrorCode
 
 ### HiCollie_Flag
 
-```
+```c
 enum HiCollie_Flag
 ```
 
@@ -101,7 +101,7 @@ enum HiCollie_Flag
 
 ### OH_HiCollie_Task()
 
-```
+```c
 typedef void (*OH_HiCollie_Task)(void)
 ```
 
@@ -113,7 +113,7 @@ typedef void (*OH_HiCollie_Task)(void)
 
 ### OH_HiCollie_BeginFunc()
 
-```
+```c
 typedef void (*OH_HiCollie_BeginFunc)(const char* eventName)
 ```
 
@@ -132,7 +132,7 @@ typedef void (*OH_HiCollie_BeginFunc)(const char* eventName)
 
 ### OH_HiCollie_EndFunc()
 
-```
+```c
 typedef void (*OH_HiCollie_EndFunc)(const char* eventName)
 ```
 
@@ -151,7 +151,7 @@ typedef void (*OH_HiCollie_EndFunc)(const char* eventName)
 
 ### OH_HiCollie_Init_StuckDetection()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)
 ```
 
@@ -172,11 +172,11 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetection(OH_HiCollie_Task task)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - 调用线程错误。在非主线程中调用该函数。<br>         具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br>[HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - 调用线程错误。在非主线程中调用该函数。<br>具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
 
 ### OH_HiCollie_Init_StuckDetectionWithTimeout()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task task, uint32_t stuckTimeout)
 ```
 
@@ -192,17 +192,17 @@ HiCollie_ErrorCode OH_HiCollie_Init_StuckDetectionWithTimeout(OH_HiCollie_Task t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiCollie_Task](capi-hicollie-h.md#oh_hicollie_task) task | 每stuckTimeout时间执行一次的周期性检测任务，用于检测业务线程是否卡住。 |
-| uint32_t stuckTimeout | 检测业务线程卡死时间。任务执行超过stuckTimeout时间上报卡死告警事件；任务超过stuckTimeout * 2时间上报卡死事件。<br>         单位：s。规定：最大值15s，最小值3s。 |
+| uint32_t stuckTimeout | 检测业务线程卡死时间。任务执行超过stuckTimeout时间上报卡死告警事件；任务超过stuckTimeout * 2时间上报卡死事件。<br>单位：s。规定：最大值15s，最小值3s。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - 卡死检测时间设置错误。<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - 调用线程错误。在非主线程中调用该函数。<br>         具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - 卡死检测时间设置错误。<br>[HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - 调用线程错误。在非主线程中调用该函数。<br>具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
 
 ### OH_HiCollie_Init_JankDetection()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFunc, OH_HiCollie_EndFunc* endFunc, HiCollie_DetectionParam param)
 ```
 
@@ -225,11 +225,11 @@ HiCollie_ErrorCode OH_HiCollie_Init_JankDetection(OH_HiCollie_BeginFunc* beginFu
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - 开始函数和结束函数两者都必须有值或为空，否则将返回该错误值。<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - 调用线程错误。在非主线程中调用该函数。<br>         具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - 开始函数和结束函数两者都必须有值或为空，否则将返回该错误值。<br>[HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - 调用线程错误。在非主线程中调用该函数。<br>具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
 
 ### OH_HiCollie_Report()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)
 ```
 
@@ -250,11 +250,11 @@ HiCollie_ErrorCode OH_HiCollie_Report(bool* isSixSecond)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - 开始函数和结束函数两者都必须有值或为空，否则将返回该错误值。<br>         [HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - 调用线程错误。在非主线程中调用该函数。<br>         [HICOLLIE_REMOTE_FAILED](capi-hicollie-h.md#hicollie_errorcode) 29800002 - 远程调用错误。请求IPC远程服务失败。<br>         具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> 		   [HICOLLIE_INVALID_ARGUMENT](capi-hicollie-h.md#hicollie_errorcode) 401 - 开始函数和结束函数两者都必须有值或为空，否则将返回该错误值。<br>[HICOLLIE_WRONG_THREAD_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800001 - 调用线程错误。在非主线程中调用该函数。<br>[HICOLLIE_REMOTE_FAILED](capi-hicollie-h.md#hicollie_errorcode) 29800002 - 远程调用错误。请求IPC远程服务失败。<br>具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
 
 ### OH_HiCollie_Callback()
 
-```
+```c
 typedef void (*OH_HiCollie_Callback)(void*)
 ```
 
@@ -266,7 +266,7 @@ typedef void (*OH_HiCollie_Callback)(void*)
 
 ### OH_HiCollie_SetTimer()
 
-```
+```c
 HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)
 ```
 
@@ -288,11 +288,11 @@ HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> 		   [HICOLLIE_INVALID_TIMER_NAME](capi-hicollie-h.md#hicollie_errorcode) 29800003 - 无效的计时器名称，不应为NULL或空字符串。<br>         [HICOLLIE_INVALID_TIMEOUT_VALUE](capi-hicollie-h.md#hicollie_errorcode) 29800004 - 无效的超时值。<br>         [HICOLLIE_WRONG_PROCESS_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800005 - 无效的接入检测进程上下文，appspawn与nativespawn进程中不可调用。<br>         [HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM](capi-hicollie-h.md#hicollie_errorcode) 29800006 - 用于保存返回的计时器id的指针，不应该为NULL。<br>         具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> 		   [HICOLLIE_INVALID_TIMER_NAME](capi-hicollie-h.md#hicollie_errorcode) 29800003 - 无效的计时器名称，不应为NULL或空字符串。<br>[HICOLLIE_INVALID_TIMEOUT_VALUE](capi-hicollie-h.md#hicollie_errorcode) 29800004 - 无效的超时值。<br>[HICOLLIE_WRONG_PROCESS_CONTEXT](capi-hicollie-h.md#hicollie_errorcode) 29800005 - 无效的接入检测进程上下文，appspawn与nativespawn进程中不可调用。<br>[HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM](capi-hicollie-h.md#hicollie_errorcode) 29800006 - 用于保存返回的计时器id的指针，不应该为NULL。<br>具体可参考[HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode)。 |
 
 ### OH_HiCollie_CancelTimer()
 
-```
+```c
 void OH_HiCollie_CancelTimer(int id)
 ```
 

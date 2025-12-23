@@ -159,5 +159,31 @@ The following describes how to subscribe to the application freeze event trigger
 
 2. If the application fails to start or remains unstarted for a long time, you can delay the event notification by referring to [Using FaultLogExtensionAbility to Subscribe to Events](./fault-log-extension-app-events-arkts.md).
 
+## Migrating Application Freeze Events from the Faultlogger API
+
+The [@ohos.faultLogger (FaultLogger)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md) API is deprecated and no longer maintained since API version 18. You are advised to use the [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md) API to subscribe to application freeze events. The following describes how to migrate the application freeze event subscription from the FaultLogger API to the HiAppEvent API.
+
+**APP_FREEZE** defined in the [FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) of FaultLogger is the application freeze fault type.
+
+Set the event name to **hiAppEvent.event.APP_FREEZE** and event domain to **hiAppEvent.domain.OS** in the **hiAppEvent.addWatcher** API of HiAppEvent to subscribe to the application freeze event.
+
+You can distinguish different application freeze events based on the **name** field of the **exception** field in [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params).
+
+The following table shows the mapping between [FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo) and [hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params).
+| Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | Description|
+| --- | --- | --- |
+| pid | pid | None.|
+| uid | uid | None.|
+| type | **name** field in the **exception** field| The event types are different. In FaultLogger, **type** is a fault type enumeration. In HiAppEvent, **crash_type** is a string.|
+| timestamp | time | None.|
+| module | bundle_name | None.|
+| fullLog | external_log | **fullLog** indicates the fault log content. **external_log** indicates the path (**/data/storage/el2/log/**) of the fault log file in the application sandbox. You can access the file in this path to obtain the fault log content.|
+| reason | **Reason** field in the **external_log** file| None.|
+| summary | Specific paragraph in the **external_log** file| The **summary** of **APP_FREEZE** corresponds to the content from the line where **appfreeze: process name** is located to the line where **DisplayPowerInfo:** is located in the **external_log** file.|
+
+Both [FaultLogger.query (using callback)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9) and [FaultLogger.query (using promise)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1) can use [hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher) to implement the same functionality.
+
+For details about how to use HiAppEvent to subscribe to application freeze events (ArkTS), see [How to Develop](#how-to-develop) and [Verifying the Subscription](#verifying-the-subscription).
+
 <!--RP1-->
 <!--RP1End-->

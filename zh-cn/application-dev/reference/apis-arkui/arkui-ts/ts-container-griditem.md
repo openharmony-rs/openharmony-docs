@@ -13,8 +13,8 @@
 >
 >  * 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >  * 仅支持作为[Grid](ts-container-grid.md)组件的子组件使用。
->  * 当GridItem配合LazyForEach使用时，GridItem子组件在GridItem创建时创建。配合if/else、ForEach使用时，或父组件为Grid时，GridItem子组件在GridItem布局时创建。
->  * 当Grid中存在大量GridItem时，使用columnStart/columnEnd、rowStart/rowEnd设置GridItem大小会导致在使用scrollToIndex滑动到指定Index时，依次遍历GridItem节点，耗时较长。建议使用GridLayoutOptions布局，以提高查找GridItem位置的效率。最佳实践请参考[优化Grid组件加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-improve_grid_performance)。
+>  * 当GridItem配合[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)使用时，GridItem子组件在GridItem创建时创建。配合[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)使用时，或父组件为Grid时，GridItem子组件在GridItem布局时创建。
+>  * 当Grid中存在大量GridItem时，使用[columnStart](#columnstart)/[columnEnd](#columnend)、[rowStart](#rowstart)/[rowEnd](#rowend)设置GridItem大小会导致在使用scrollToIndex滑动到指定Index时，依次遍历GridItem节点，耗时较长。建议使用[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)布局，以提高查找GridItem位置的效率。最佳实践请参考[优化Grid组件加载慢丢帧问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-improve_grid_performance)。
 
 ## 子组件
 
@@ -102,36 +102,35 @@ columnEnd(value: number)
 | ------ | ------ | ---- | ------------------ |
 | value  | number | 是   | 当前元素终点列号。<br/>需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。<br/>取值范围：[0, 总列数-1] |
 
->  **说明：**
->
->  需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
->
->  起始行号、终点行号、起始列号、终点列号生效规则如下：
->
-> * rowStart/rowEnd合理取值范围为0\~总行数-1，columnStart/columnEnd合理取值范围为0\~总列数-1。
->
-> * 如果设置了rowStart/rowEnd/columnStart/columnEnd，GridItem会占据指定的行数(rowEnd-rowStart+1)或列数(columnEnd-columnStart+1)。
->
-> * 只有在设置columnsTemplate和rowsTemplate的Grid中，设置合理的rowStart/rowEnd/columnStart/columnEnd四个属性的GridItem才能按照指定的行列号布局。
->
-> * 在设置columnsTemplate和rowsTemplate的Grid中，单独设置行号rowStart/rowEnd或列号columnStart/columnEnd的GridItem会按照一行一列进行布局。
->
-> * 在只设置columnsTemplate的Grid中设置列号columnStart/columnEnd的GridItem按照列数布局。在该区域位置存在GridItem布局，则直接换行进行放置。
->
-> * 在只设置rowsTemplate的Grid中设置行号rowStart/rowEnd的GridItem按照行数布局。在该区域位置存在GridItem布局，则直接换列进行放置。
->
-> * columnsTemplate和rowsTemplate都不设置的Grid中GridItem的行列号属性无效。
->  
-> 以下是GridItem行列号异常值的处理规则：
->
-> | 属性设置情况  | 异常类型 | ‌修正后布局规则  |
-> | ----- |----| ------------------------ |
-> | 仅设置columnsTemplate  |  任意行列异常 | 按一行一列布局。 |
-> | 仅设置rowsTemplate |  任意行列异常 | 按一行一列布局。 |
-> | 同时设置rows/columnsTemplate |  rowStart < rowEnd | 行跨度 = min(rowEnd-rowStart+1, 总行数)。 |
-> | 同时设置rows/columnsTemplate |  rowStart > rowEnd | 按一行一列布局。 |
-> | 同时设置rows/columnsTemplate |  columnStart < columnEnd | 列跨度 = min(columnEnd-columnStart+1, 总列数)。 |
-> | 同时设置rows/columnsTemplate |  columnStart > columnEnd | 按一行一列布局。 |
+
+需要指定GridItem起始行列号和所占行列数的场景推荐使用[Grid的layoutOptions参数](ts-container-grid.md#gridlayoutoptions10对象说明)，详细可参考[Grid的示例1](ts-container-grid.md#示例1固定行列grid)和[Grid的示例3](ts-container-grid.md#示例3可滚动grid设置跨行跨列节点)。
+
+起始行号、终点行号、起始列号、终点列号生效规则如下：
+
+* rowStart/rowEnd合理取值范围为0\~总行数-1，columnStart/columnEnd合理取值范围为0\~总列数-1。
+
+* 如果设置了rowStart/rowEnd/columnStart/columnEnd，GridItem会占据指定的行数(rowEnd-rowStart+1)或列数(columnEnd-columnStart+1)。
+
+* 只有在设置columnsTemplate和rowsTemplate的Grid中，设置合理的rowStart/rowEnd/columnStart/columnEnd四个属性的GridItem才能按照指定的行列号布局。
+
+* 在设置columnsTemplate和rowsTemplate的Grid中，单独设置行号rowStart/rowEnd或列号columnStart/columnEnd的GridItem会按照一行一列进行布局。
+
+* 在只设置columnsTemplate的Grid中设置列号columnStart/columnEnd的GridItem按照列数布局。在该区域位置存在GridItem布局，则直接换行进行放置。
+
+* 在只设置rowsTemplate的Grid中设置行号rowStart/rowEnd的GridItem按照行数布局。在该区域位置存在GridItem布局，则直接换列进行放置。
+
+* columnsTemplate和rowsTemplate都不设置的Grid中GridItem的行列号属性无效。
+
+以下是GridItem行列号异常值的处理规则：
+
+| 属性设置情况  | 异常类型 | 修正后布局规则  |
+| ----- |----| ------------------------ |
+| 仅设置columnsTemplate  |  任意行列异常 | 按一行一列布局。 |
+| 仅设置rowsTemplate |  任意行列异常 | 按一行一列布局。 |
+| 同时设置rows/columnsTemplate |  rowStart < rowEnd | 行跨度 = min(rowEnd-rowStart+1, 总行数)。 |
+| 同时设置rows/columnsTemplate |  rowStart > rowEnd | 按一行一列布局。 |
+| 同时设置rows/columnsTemplate |  columnStart < columnEnd | 列跨度 = min(columnEnd-columnStart+1, 总列数)。 |
+| 同时设置rows/columnsTemplate |  columnStart > columnEnd | 按一行一列布局。 |
 
 ### forceRebuild<sup>(deprecated)</sup>
 
@@ -353,4 +352,4 @@ struct GridItemExample {
 }
 ```
 
-![zh-ch_image_griditem_griditemoptions](figures/zh-ch_image_griditem_griditemoptions.png)
+![zh-cn_image_griditem_griditemoptions](figures/zh-cn_image_griditem_griditemoptions.png)

@@ -7,7 +7,7 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_Filter OH_Filter
 ```
 

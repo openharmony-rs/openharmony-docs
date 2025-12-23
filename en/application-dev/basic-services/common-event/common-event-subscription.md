@@ -20,6 +20,8 @@ Certain system common events [require specific permissions](../../security/Acces
 > The lifecycle of the subscriber object needs to be managed by the application. If the subscriber object is no longer used, it needs to be destroyed and released to avoid memory leakage.
 > 
 > The callback of common events in dynamic subscription mode is affected by the application status. When the application is in the background, the callback cannot receive common events subscribed dynamically. When the application is switched from the background to the foreground, the callback can receive common events listened for within 30 seconds before the switch.
+>
+> Common events between the main application and the cloned application are isolated from each other, that is, they cannot receive the common events mutually.
 
 ## Available APIs
 

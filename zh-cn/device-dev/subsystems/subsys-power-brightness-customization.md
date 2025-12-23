@@ -32,7 +32,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ### 开发步骤 
 
-1. 参考[默认亮度范围配置文件夹](https://gitee.com/openharmony/powermgr_display_manager/tree/master/service/etc)创建目标文件夹，并安装到相应目录，文件格式如下：
+1. 参考[默认亮度范围配置文件夹](https://gitcode.com/openharmony/powermgr_display_manager/tree/master/state_manager/service/etc)创建目标文件夹，并安装到相应目录，文件格式如下：
      
     ```text
     etc
@@ -41,7 +41,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     ├── display.para.dac
     ```
 
-2. 参考[默认亮度范围配置文件夹中的display.para](https://gitee.com/openharmony/powermgr_display_manager/blob/master/service/etc/display.para)编写定制的display.para。包含定制后的亮度阈值，以max=150，default=75，min=50为例：
+2. 参考[默认亮度范围配置文件夹中的display.para](https://gitcode.com/openharmony/powermgr_display_manager/blob/master/state_manager/service/etc/display.para)编写定制的display.para。包含定制后的亮度阈值，以max=150，default=75，min=50为例：
 
     ```shell
     # Brightness limits is 0-255.
@@ -50,13 +50,13 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     const.display.brightness.max=150
     ``` 
 
-3. 参考[默认亮度范围配置文件夹中的display.para.dac](https://gitee.com/openharmony/powermgr_display_manager/blob/master/service/etc/display.para.dac)编写display.para.dac数据访问控制文件，保证有权限解析定制后的配置： 
+3. 参考[默认亮度范围配置文件夹中的display.para.dac](https://gitcode.com/openharmony/powermgr_display_manager/blob/master/state_manager/service/etc/display.para.dac)编写display.para.dac数据访问控制文件，保证有权限解析定制后的配置： 
 
     ```shell
     const.display.brightness.="foundation:foundation:444"
     ``` 
 
-4. 参考[默认亮度范围配置文件夹中的BUILD.gn](https://gitee.com/openharmony/powermgr_display_manager/blob/master/service/etc/BUILD.gn)编写BUILD.gn文件，将display.para和display.para.dac打包到/vendor/etc/param目录下，例如： 
+4. 参考[默认亮度范围配置文件夹中的BUILD.gn](https://gitcode.com/openharmony/powermgr_display_manager/blob/master/state_manager/service/etc/BUILD.gn)编写BUILD.gn文件，将display.para和display.para.dac打包到/vendor/etc/param目录下，例如： 
 
     ```shell
     import("//base/powermgr/display_manager/displaymgr.gni")
@@ -87,7 +87,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
     }
     ```
 
-5. 参考[默认亮度范围配置bundle.json](https://gitee.com/openharmony/powermgr_display_manager/blob/master/bundle.json)编写bundle.json文件，使BUILD.gn文件进行编译，例如：
+5. 参考[默认亮度范围配置bundle.json](https://gitcode.com/openharmony/powermgr_display_manager/blob/master/bundle.json)编写bundle.json文件，使BUILD.gn文件进行编译，例如：
  
     ```shell
     "service_group": [ "//base/powermgr/display_manager/service/etc:param_files" ]
@@ -177,7 +177,7 @@ Linux调测环境，相关要求和配置可参考《[快速入门](../quick-sta
 
 ## 参考 
 
-开发过程中可参考的配置文件路径：[系统默认亮度范围配置源码路径](https://gitee.com/openharmony/powermgr_display_manager/tree/master/service/etc) 
+开发过程中可参考的配置文件路径：[系统默认亮度范围配置源码路径](https://gitcode.com/openharmony/powermgr_display_manager/tree/master/state_manager/service/etc) 
 
 默认配置：
 

@@ -203,7 +203,7 @@ onBundleBegin: AsyncCallback&lt;string, void | string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ----------------------------------------------------- |
@@ -249,7 +249,7 @@ onBundleEnd: AsyncCallback&lt;string, void | string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------- |
@@ -349,6 +349,20 @@ onResultReport (bundleName: string, result: string)
 | bundleName | string | 是   | 应用包名。                        |
 | result     | string | 是   | json格式返回的应用备份/恢复信息。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13600001 | IPC error.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900025 | No space left on device. |
+| 13900042 | Unknown error.           |
+
 **示例：**
 
   ```ts
@@ -376,6 +390,23 @@ onProcess (bundleName: string, process: string)
 | ---------- | ------ | ---- | ------------------------------- |
 | bundleName | string | 是   | 应用包名。                        |
 | process     | string | 是   | json格式返回应用备份/恢复的进度信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 202      | Permission verification failed, application which is not a system application uses system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
+| 13500006 | Tar error.               |
+| 13500008 | Untar error.               |
+| 13600001 | IPC error.               |
+| 13900001 | Operation not permitted.               |
+| 13900005 | I/O error.               |
+| 13900011 | Out of memory.           |
+| 13900020 | Invalid argument.           |
+| 13900025 | No space left on device. |
 
 **示例：**
 
@@ -408,7 +439,7 @@ getBackupVersion(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -603,7 +634,7 @@ getLocalCapabilities(dataList:Array&lt;IncrementalBackupTime&gt;): Promise&lt;Fi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -666,7 +697,7 @@ getBackupInfo(bundleToBackup: string): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -719,6 +750,8 @@ updateTimer(bundleName: string, timeout: number): boolean
 
 **错误码：**
 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
@@ -764,7 +797,7 @@ updateSendRate(bundleName: string, sendRate: number): boolean
 
 | 参数名          | 类型     | 必填 | 说明                       |
 | --------------- | -------- | ---- | -------------------------- |
-| bundleName|string | 是   | 需要控制速率对应的应用名称。
+| bundleName|string | 是   | 需要控制速率对应的应用名称。 |
 | sendRate | number | 是   | 需要应用设置的fd发送速率大小，以秒为单位，范围0~800，默认60/秒。当为0时，表示停止发送，等到设置非0值时激活发送。如果设置值超过最大值800，按照800进行发送。 |
 
 **返回值：**
@@ -774,6 +807,8 @@ updateSendRate(bundleName: string, sendRate: number): boolean
 | boolean | 发送速率是否设置成功。true为设置成功；false为设置失败。 |
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
@@ -1103,12 +1138,12 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
   import { BusinessError } from '@kit.BasicServicesKit';
   import { fileIo as fs, backup } from '@kit.CoreFileKit';
 
-  interface scanedInfos { //用于解析扫描结果
-    scaned: [];
+  interface scannedInfos { //用于解析扫描结果
+    scanned: [];
     scanning: string;
   }
 
-  interface ScanedInfo { //用于解析单个应用的扫描结果
+  interface ScannedInfo { //用于解析单个应用的扫描结果
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -1155,9 +1190,9 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
     },
     onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
       console.info('dataSizeCallback success');
-      const jsonObj: scanedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
+      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
       if (jsonObj) {
-        const infos: ScanedInfo [] = jsonObj.scaned;
+        const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
           console.info('name: ' + infos[i].bundleName);
           console.info('dataSize: ' + infos[i].dataSize);
@@ -1186,7 +1221,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 ```json
 {
- "scaned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
+ "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
      {
          "name": "com.example.hiworld", // 应用名称
          "dataSize": 1006060, // 数据量大小
@@ -1465,7 +1500,7 @@ release(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -1554,7 +1589,7 @@ cancel(bundleName: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -2744,7 +2779,7 @@ release(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -2860,7 +2895,7 @@ cancel(bundleName: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3150,7 +3185,7 @@ constructor(callbacks: GeneralCallbacks)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3410,12 +3445,12 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
   import { fileIo as fs, backup} from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  interface scanedInfos { // 用于解析扫描结果
-    scaned: [];
+  interface scannedInfos { // 用于解析扫描结果
+    scanned: [];
     scanning: string;
   }
 
-  interface ScanedInfo { // 用于解析单个应用的扫描结果
+  interface ScannedInfo { // 用于解析单个应用的扫描结果
     bundleName: string;
     dataSize: number;
     incDataSize: number;
@@ -3462,9 +3497,9 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
     },
     onBackupSizeReport: (OnBackupSizeReport) => { // 回调函数 与getBackupDataSize配套使用，返回已获取到应用的数据量大小和正在获取数据量的应用的包名
       console.info('dataSizeCallback success');
-      const jsonObj: scanedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
+      const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // 解析返回的信息并打印
       if (jsonObj) {
-        const infos: ScanedInfo [] = jsonObj.scaned;
+        const infos: ScannedInfo [] = jsonObj.scanned;
         for (let i = 0; i < infos.length; i++) {
           console.info('name: ' + infos[i].bundleName);
           console.info('dataSize: ' + infos[i].dataSize);
@@ -3494,7 +3529,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime
 
 ```json
 {
- "scaned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
+ "scanned": [ // 本次扫描完成的应用，已返回结果的应用在下一次回调中不会再继续返回
      {
          "name": "com.example.hiworld", // 应用名称
          "dataSize": 1006060, // 数据量大小
@@ -3536,7 +3571,7 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;): Promise&lt;v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3638,7 +3673,7 @@ appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3774,7 +3809,7 @@ release(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |
@@ -3784,7 +3819,6 @@ release(): Promise&lt;void&gt;
 | 13600001 | IPC error.                                                                                      |
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
-| 13900020 | Invalid argument.                                                                               |
 | 13900042 | Unknown error.                                                                                  |
 
 **示例：**
@@ -3864,7 +3898,7 @@ cancel(bundleName: string): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                       |
 | -------- | ---------------------------------------------------------------------------------------------- |

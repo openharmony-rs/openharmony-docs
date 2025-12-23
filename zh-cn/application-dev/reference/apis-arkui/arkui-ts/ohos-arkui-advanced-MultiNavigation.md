@@ -18,7 +18,7 @@ MultiNavigation用于在大尺寸设备上分栏显示、进行路由跳转。
 
 ## 导入模块
 
-```
+```ts
 import { MultiNavigation, MultiNavPathStack, SplitPolicy } from '@kit.ArkUI';
 ```
 
@@ -40,12 +40,12 @@ MultiNavigation组件遵循默认的左起右清栈规则，这意味着从左�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-|   名称   |          类型          | 必填 | 说明 |
-|:---------:|:----------------------:|------ |-----------|
-| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | 设置路由栈。 |
-| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | 设置加载目标页面的路由规则。 |
-| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | 设置MultiNavigation模式变更时的回调。 |
-| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | 设置主页处于栈顶时的回调。 |
+|   名称   |          类型          | 必填 | 装饰器类型 | 说明 |
+|:---------:|:----------------------:|------ |:------:|-----------|
+| multiStack | [MultiNavPathStack](#multinavpathstack) |  是 | @State | 设置路由栈。 |
+| navDestination | [NavDestinationBuildFunction](#navdestinationbuildfunction) | 是 | @BuilderParam | 设置加载目标页面的路由规则。 |
+| onNavigationModeChange | [OnNavigationModeChangeCallback](#onnavigationmodechangecallback) | 否 | - | 设置MultiNavigation模式变更时的回调。 |
+| onHomeShowOnTop | [OnHomeShowOnTopCallback](#onhomeshowontopcallback) | 否 | - | 设置主页处于栈顶时的回调。 |
 
 ## MultiNavPathStack
 
@@ -377,7 +377,7 @@ moveToTop(name: string, animated?: boolean): number
 > 
 > 1)当找到的是最上层主页或者全屏页，此时不做任何处理；
 > 
-> 2)当找到的是最上层主页对应的详情页，则会将对应的的详情页移到栈顶；
+> 2)当找到的是最上层主页对应的详情页，则会将对应的详情页移到栈顶；
 > 
 > 3)当找到的是非最上层的主页，则会将主页和对应所有详情页移到栈顶，详情页相对栈关系不变；
 > 
@@ -414,7 +414,7 @@ moveIndexToTop(index: number, animated?: boolean): void
 > 
 > 1)当找到的是最上层主页或者全屏页，此时不做任何处理；
 > 
-> 2)当找到的是最上层主页对应的详情页，则会将对应的的详情页移到栈顶；
+> 2)当找到的是最上层主页对应的详情页，则会将对应的详情页移到栈顶；
 > 
 > 3)当找到的是非最上层的主页，则会将主页和对应所有详情页移到栈顶，详情页相对栈关系不变；
 > 
@@ -781,7 +781,6 @@ export struct PageHome1 {
   @Consume('pageStack') pageStack: MultiNavPathStack;
   controller: TextInputController = new TextInputController();
   text: string = '';
-  index: number = 0;
   param: Object = new Object();
   lastBackTime: number = 0;
 
@@ -806,7 +805,6 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // 跳转至PageHome1页面
                     this.pageStack.pushPathByName('PageHome1', 'testParam', true, SplitPolicy.HOME_PAGE);
-                    this.index++;
                   }
                 })
               Button('OpenDetail', { stateEffect: true, type: ButtonType.Capsule})
@@ -817,7 +815,6 @@ export struct PageHome1 {
                   if (this.pageStack !== undefined && this.pageStack !== null) {
                     // 跳转至PageDetail1页面
                     this.pageStack.pushPathByName('PageDetail1', 'testParam');
-                    this.index++;
                   }
                 })
               Button('OpenFull', { stateEffect: true, type: ButtonType.Capsule})

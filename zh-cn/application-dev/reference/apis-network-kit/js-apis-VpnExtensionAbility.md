@@ -45,7 +45,7 @@ onCreate(want: Want): void
 
 **示例：** 
 
-  ```ts
+```ts
 import { VpnExtensionAbility } from '@kit.NetworkKit';
 import { Want } from '@kit.AbilityKit';
 
@@ -54,7 +54,7 @@ class MyVpnExtAbility extends VpnExtensionAbility {
        console.info('MyVpnExtAbility onCreate');
     }
 }
-  ```
+```
 
 ## VpnExtensionAbility.onDestroy
 
@@ -66,7 +66,7 @@ VpnExtensionAbility生命周期回调，在销毁时回调，执行资源清理�
 
 **示例：** 
 
-  ```ts
+```ts
 import { VpnExtensionAbility } from '@kit.NetworkKit';
 
 class MyVpnExtAbility extends VpnExtensionAbility {
@@ -74,5 +74,5 @@ class MyVpnExtAbility extends VpnExtensionAbility {
        console.info('MyVpnExtAbility onDestroy');
     }
 }
-  ```
+```
 

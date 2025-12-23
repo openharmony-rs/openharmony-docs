@@ -157,7 +157,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
          return sessionId;
        }
     
-       const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+       const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
        try {
          sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
          AppStorage.setOrCreate('sessionId', sessionId);
@@ -352,7 +352,7 @@ After **createAbilityConnectionSession** is called on device A to create a colla
         return sessionId;
       }
 
-      const options = collabParam["ConnectOptions"] as abilityConnectionManager.ConnectOptions;
+      const options = collabParam["ConnectOption"] as abilityConnectionManager.ConnectOptions;
       try {
         sessionId = abilityConnectionManager.createAbilityConnectionSession("collabTest", this.context, peerInfo, options);
         AppStorage.setOrCreate('sessionId', sessionId);

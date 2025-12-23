@@ -707,10 +707,28 @@ The format of a record is as follows:
 
 > **NOTE**
 >
-> The child page's name is available only when it is navigated to through **Navigation**. The page name is defined in the [system routing table](../ui/arkts-navigation-navigation.md#system-routing-table).
+> The child page's name is available only when it is navigated to through **Navigation**.
 >
 > When the application switches between the foreground and background, the corresponding page URL is empty, but **enters foreground** and **leaves foreground** are displayed as special page names.
 >
 > **enters foreground**: The application runs in the foreground.
 >
 > **leaves foreground**: The application runs in the background.
+
+## FAQs
+
+### What should I do if the call stack is interrupted in the fault log?
+
+In OpenHarmony, the call stack is obtained based on the backtrace table (which records call stack information) and frame pointer. The following compilation options must be enabled:
+
+- **-funwind-tables**
+
+  Instructs the compiler to generate a backtrace table in the binary for exception handling and call stack backtracing.
+
+- **-fno-omit-frame-pointer**
+
+  Instructs the compiler to store the stack frame pointer in a register for exception handling and call stack backtracing.
+
+**Enabling Compilation Options**
+
+For example, in CMake, add **set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")** to **CMakeList.txt**.

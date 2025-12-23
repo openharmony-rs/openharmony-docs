@@ -44,7 +44,7 @@
 
 ### DLP_ErrCode
 
-```
+```c
 enum DLP_ErrCode
 ```
 
@@ -66,7 +66,7 @@ DLP错误码的枚举。
 
 ### DLP_FileAccess
 
-```
+```c
 enum DLP_FileAccess
 ```
 
@@ -88,7 +88,7 @@ DLP文件授权类型的枚举。
 
 ### OH_DLP_GetDlpPermissionInfo()
 
-```
+```c
 DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t *flags)
 ```
 
@@ -114,7 +114,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 ### OH_DLP_GetOriginalFileName()
 
-```
+```c
 DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFileName)
 ```
 
@@ -136,11 +136,11 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_IsInSandbox()
 
-```
+```c
 DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 ```
 
@@ -165,7 +165,7 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 
 ### OH_DLP_SetSandboxAppConfig()
 
-```
+```c
 DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 ```
 
@@ -190,7 +190,7 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 
 ### OH_DLP_GetSandboxAppConfig()
 
-```
+```c
 DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 ```
 
@@ -215,7 +215,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 ### OH_DLP_CleanSandboxAppConfig()
 
-```
+```c
 DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 ```
 

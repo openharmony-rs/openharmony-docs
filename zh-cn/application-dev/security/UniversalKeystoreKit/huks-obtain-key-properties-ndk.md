@@ -29,12 +29,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 3. 返回值为成功码/错误码，获取成功后，从参数集中读取需要的参数。
 
-```c++
+<!-- @[obtain_the_key_attributes_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/GetKeyAttributes/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
 #include <cstring>
-
 OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
                             uint32_t paramCount)
 {
@@ -84,7 +85,6 @@ static napi_value GetKeyParamSet(napi_env env, napi_callback_info info)
     /* 1. 参数构造：确定密钥别名 */
     const char *alias = "test_key";
     struct OH_Huks_Blob aliasBlob = { .size = (uint32_t)strlen(alias), .data = (uint8_t *)alias };
-
     /* 生成密钥 */
     OH_Huks_Result genResult = GenerateKeyHelper(alias);
     if (genResult.errorCode != OH_HUKS_SUCCESS) {
@@ -92,7 +92,6 @@ static napi_value GetKeyParamSet(napi_env env, napi_callback_info info)
         napi_create_int32(env, genResult.errorCode, &ret);
         return ret;
     }
-
     const size_t paramSetSize = 512;
     /* 构造参数：为参数集申请内存
      * 请业务按实际情况评估大小进行申请

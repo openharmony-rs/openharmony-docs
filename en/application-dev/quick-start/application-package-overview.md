@@ -39,14 +39,14 @@ There are two types of modules by usage scenario:
   > Actually, a build of the shared library generates a HAR as well as an HSP. The HAR contains the interfaces exported from the HSP and is used by other modules in the application to reference the features of the HSP. For convenience purposes, it is usually considered that a shared library is built into an HSP.
   
   The table below lists the differences between the HAR and HSP.
-  | Shared Package Type| Build and Running | Release and Reference| 
+  | Shared Package Type| Build and Running | Release and Reference|
   | --------  | ---- | --- |
-  | HAR | The code and resources in the HAR are built with the invoking module, and if there are multiple invoking modules, the build product contains multiple copies of the same code and resources.<br>Note: When [building a HAR](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/har-package.md#building-a-har), you are advised to enable the obfuscation capability to protect code assets.| In addition to being referenced within an application, a HAR can be independently packaged and released to the [OHPM central repository](https://ohpm.openharmony.cn/#/en/home) or [OHPM private repository](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-ohpm-repo) for reference by other applications.| 
+  | HAR | The code and resources in the HAR are built with the invoking module, and if there are multiple invoking modules, the build product contains multiple copies of the same code and resources.<br>Note: When [building a HAR](https://gitee.com/openharmony/docs/blob/master/en/application-dev/quick-start/har-package.md#building-a-har), you are advised to enable the obfuscation capability to protect code assets.| In addition to being referenced within an application, a HAR can be independently packaged and released to the [OHPM central repository](https://ohpm.openharmony.cn/#/en/home) or [OHPM private repository](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-ohpm-repo) for reference by other applications.|
   | HSP  | The code and resources in the HSP are built independently, and the build product contains only one copy of the code and resources.| Generally, the HSP is packaged with the application. Intra-application HSP and [integrated HSP](integrated-hsp.md) are supported. The intra-app HSP can only be referenced in an application; the integrated HSP can be published to the OHPM private repository and referenced in cross-applications.<br>**NOTE**<br>The integrated HSP is an intermediate form of the in-app HSP. It can only be compiled and built and cannot be installed independently. When an integrated HSP is built and released to the OHPM private repository, it is not coupled with a specific bundle name. When an integrated HSP is used, the toolchain automatically replaces the bundle name of the integrated HSP with that of the host application and generates a new HSP as the installation package of the host application. This new HSP functions as an in-app HSP of the host HAP.|
 
- 
+
   **Figure 1** HAR and HSP in the App Pack
-  
+
   ![in-app-hsp-har](figures/in-app-hsp-har.png)
 
 ## Selecting a Package Type
@@ -75,6 +75,6 @@ You can select a package type for development based on application requirements.
 
 > **NOTE**
 >
-> - If the HAR supports the declaration of the **pages** tag, when the HAR is packaged into the HAP or HSP, the relative paths of **pages** existing in the HAR and HAP/HSP may be duplicated, disabling the specific routing page from being identified. Therefore, the configuration file of a HAR does not support declaration of the **pages** tag. Still, it can include pages, which can be redirected through [Navigation](../ui/arkts-navigation-navigation.md#routing-operations).
+> - If the HAR supports the declaration of the **pages** tag, when the HAR is packaged into the HAP or HSP, the relative paths of **pages** existing in the HAR and HAP/HSP may be duplicated, disabling the specific routing page from being identified. Therefore, the configuration file of a HAR does not support declaration of the **pages** tag. Still, it can include pages, which can be redirected through **Navigation**.
 > - As the HSP supports only intra-application sharing, a HAR that depends on any HSP can be shared only within the same application. Do not release such a HAR to a second-party or third-party repository for other applications to use: Using it in other applications will result in build failures.
 > - HAR and HSP do not support cyclic dependency or dependency transfer. For details, see the constraints in [HAR](har-package.md#constraints) and [HSP](in-app-hsp.md#constraints).

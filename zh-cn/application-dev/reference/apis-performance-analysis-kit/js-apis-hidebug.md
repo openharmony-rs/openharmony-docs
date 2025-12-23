@@ -366,7 +366,7 @@ startProfiling(filename: string): void
 
 > **说明**：
 > 
-> 从 API Version 9 开始废弃，建议使用[hidebug.startJsCpuProfiling](#hidebugstartjscpuprofiling9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.startJsCpuProfiling](#hidebugstartjscpuprofiling9)替代。
 
 启动虚拟机Profiling方法跟踪，`startProfiling(filename: string)`方法的调用需要与`stopProfiling()`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。
 
@@ -396,7 +396,7 @@ stopProfiling(): void
 
 > **说明**：
 > 
-> 从 API Version 9 开始废弃，建议使用[hidebug.stopJsCpuProfiling](#hidebugstopjscpuprofiling9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.stopJsCpuProfiling](#hidebugstopjscpuprofiling9)替代。
 
 停止虚拟机Profiling方法跟踪，`stopProfiling()`方法的调用需要与`startProfiling(filename: string)`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。
 
@@ -420,7 +420,7 @@ dumpHeapData(filename: string): void
 
 > **说明**：
 > 
-> 从 API Version 9 开始废弃，建议使用[hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9)替代。
 
 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
 
@@ -1395,5 +1395,5 @@ hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
 
 | 名称      | 类型     | 只读  | 可选 | 说明                                                                              |
 | --------- |--------| ---- |---- |---------------------------------------------------------------------------------|
-| gl  | number |  否  |   否  | gl显存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。 |
-| graph  | number |  否  |   否  | graph显存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。                         |
+| gl  | number |  否  |   否  | gl显存大小，RenderService渲染进程加载所需资源占用的内存，例如图片、纹理等，以KB为单位。 |
+| graph  | number |  否  |   否  | graph显存大小，进程统计的DMA内存占用，包括直接通过接口申请的DMA buffer和通过allocator_host申请的DMA buffer，以KB为单位。|

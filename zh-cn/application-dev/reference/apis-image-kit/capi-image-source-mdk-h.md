@@ -83,7 +83,7 @@
 
 ### OH_ImageSource_Create()
 
-```
+```c
 int32_t OH_ImageSource_Create(napi_env env, struct OhosImageSource* src, struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -114,7 +114,7 @@ int32_t OH_ImageSource_Create(napi_env env, struct OhosImageSource* src, struct 
 
 ### OH_ImageSource_CreateFromUri()
 
-```
+```c
 int32_t OH_ImageSource_CreateFromUri(napi_env env, char* uri, size_t size,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -143,7 +143,7 @@ int32_t OH_ImageSource_CreateFromUri(napi_env env, char* uri, size_t size,struct
 
 ### OH_ImageSource_CreateFromFd()
 
-```
+```c
 int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -171,7 +171,7 @@ int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd,struct OhosImageSou
 
 ### OH_ImageSource_CreateFromData()
 
-```
+```c
 int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSize,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -200,7 +200,7 @@ int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSi
 
 ### OH_ImageSource_CreateFromRawFile()
 
-```
+```c
 int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -229,7 +229,7 @@ int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile
 
 ### OH_ImageSource_CreateIncremental()
 
-```
+```c
 int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* source, struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -261,7 +261,7 @@ int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* s
 
 ### OH_ImageSource_CreateIncrementalFromData()
 
-```
+```c
 int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, size_t dataSize,struct OhosImageSourceOps* ops, napi_value *res)
 ```
 
@@ -290,7 +290,7 @@ int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, si
 
 ### OH_ImageSource_GetSupportedFormats()
 
-```
+```c
 int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormatList* res)
 ```
 
@@ -315,7 +315,7 @@ int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormat
 
 ### OH_ImageSource_InitNative()
 
-```
+```c
 ImageSourceNative* OH_ImageSource_InitNative(napi_env env, napi_value source)
 ```
 
@@ -345,7 +345,7 @@ ImageSourceNative* OH_ImageSource_InitNative(napi_env env, napi_value source)
 
 ### OH_ImageSource_CreatePixelMap()
 
-```
+```c
 int32_t OH_ImageSource_CreatePixelMap(const ImageSourceNative* native,struct OhosImageDecodingOps* ops, napi_value *res)
 ```
 
@@ -372,7 +372,7 @@ int32_t OH_ImageSource_CreatePixelMap(const ImageSourceNative* native,struct Oho
 
 ### OH_ImageSource_CreatePixelMapList()
 
-```
+```c
 int32_t OH_ImageSource_CreatePixelMapList(const ImageSourceNative* native,struct OhosImageDecodingOps* ops, napi_value *res)
 ```
 
@@ -399,7 +399,7 @@ int32_t OH_ImageSource_CreatePixelMapList(const ImageSourceNative* native,struct
 
 ### OH_ImageSource_GetDelayTime()
 
-```
+```c
 int32_t OH_ImageSource_GetDelayTime(const ImageSourceNative* native,struct OhosImageSourceDelayTimeList* res)
 ```
 
@@ -425,7 +425,7 @@ int32_t OH_ImageSource_GetDelayTime(const ImageSourceNative* native,struct OhosI
 
 ### OH_ImageSource_GetFrameCount()
 
-```
+```c
 int32_t OH_ImageSource_GetFrameCount(const ImageSourceNative* native, uint32_t *res)
 ```
 
@@ -451,7 +451,7 @@ int32_t OH_ImageSource_GetFrameCount(const ImageSourceNative* native, uint32_t *
 
 ### OH_ImageSource_GetImageInfo()
 
-```
+```c
 int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t index,struct OhosImageSourceInfo* info)
 ```
 
@@ -478,7 +478,7 @@ int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t ind
 
 ### OH_ImageSource_GetImageProperty()
 
-```
+```c
 int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)
 ```
 
@@ -505,7 +505,7 @@ int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct 
 
 ### OH_ImageSource_ModifyImageProperty()
 
-```
+```c
 int32_t OH_ImageSource_ModifyImageProperty(const ImageSourceNative* native, struct OhosImageSourceProperty* key, struct OhosImageSourceProperty* value)
 ```
 
@@ -532,7 +532,7 @@ int32_t OH_ImageSource_ModifyImageProperty(const ImageSourceNative* native, stru
 
 ### OH_ImageSource_UpdateData()
 
-```
+```c
 int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosImageSourceUpdateData* data)
 ```
 
@@ -558,7 +558,7 @@ int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosIm
 
 ### OH_ImageSource_Release()
 
-```
+```c
 int32_t OH_ImageSource_Release(ImageSourceNative* native)
 ```
 

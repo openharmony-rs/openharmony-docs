@@ -32,7 +32,7 @@
 
 ### ArkWeb_NetError
 
-```
+```c
 enum ArkWeb_NetError
 ```
 

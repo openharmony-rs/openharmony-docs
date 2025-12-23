@@ -16,27 +16,27 @@
 
 1. 导入camera接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-    ```ts
-    import { camera } from '@kit.CameraKit';
-    import { BusinessError } from '@kit.BasicServicesKit';
-    ```
+   ```ts
+   import { camera } from '@kit.CameraKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   ```
 
 2. 通过[isMacroSupported](../../reference/apis-camera-kit/arkts-apis-camera-MacroQuery.md#ismacrosupported19)接口，查询当前设备是否支持微距能力。
 
-    ```ts
+   ```ts
    let isSupported: boolean = photoSession.isMacroSupported();
-    ```
+   ```
     
 3. 通过[enableMacro](../../reference/apis-camera-kit/arkts-apis-camera-Macro.md#enablemacro19)接口，开启或关闭微距能力。
 
-    ```ts
+   ```ts
    function EnableMacro(photoSession: camera.PhotoSession): void {
-   let isSupported: boolean = photoSession.isMacroSupported();
-   if (isSupported) {
-      photoSession.enableMacro(true);
+      let isSupported: boolean = photoSession.isMacroSupported();
+      if (isSupported) {
+         photoSession.enableMacro(true);
+      }
    }
-   }
-    ```
+   ```
 
 
 ## 状态监听

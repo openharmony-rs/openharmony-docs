@@ -167,6 +167,7 @@
 ```
 
 然后点击DevEco Studio下方HiLog选项卡，输入过滤条件“Throw error:”，即可查看到Async函数内产生的异常信息。
+
 ![alt text](figures/arkts-runtime-faq.png)
 
 ## 方舟Array.flatMap()接口常见问题

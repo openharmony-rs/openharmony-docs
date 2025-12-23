@@ -18,11 +18,11 @@
 ### 确定进程因为Seccomp机制终止的方法
 
 - 查看进程faultlog日志，如果报错原因是`signal:SIGSYS`，且栈顶在`ld-musl-{架构}.so.1`库里，则进程终止可能是由Seccomp机制引起的。
-    ```
+    ```shell
     cat /data/log/faultlog/faultlogger/cppcrash-xxxx
     ```
     错误示例：
-    ```
+    ```txt
     Process name:com.example.myapplication
     Reason:Signal:SIGSYS(UNKNOWN)
     Fault thread Info:

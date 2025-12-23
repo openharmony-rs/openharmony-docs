@@ -1,0 +1,8 @@
+| Change Type | Old Version | New Version | d.ts File |
+| ---- | ------ | ------ | -------- |
+|syscap change|Class name: DecodingOptionsForPicture;<br>API declaration: desiredAuxiliaryPictures: Array\<AuxiliaryPictureType>;<br>DIfferences: SystemCapability.Multimedia.Image.Core|Class name: DecodingOptionsForPicture;<br>API declaration: desiredAuxiliaryPictures: Array\<AuxiliaryPictureType>;<br>DIfferences: SystemCapability.Multimedia.Image.ImageSource|api/@ohos.multimedia.image.d.ts|
+|New support for atomic services|Class name: image;<br>API declaration: enum AntiAliasingLevel<br>DIfferences: NA|Class name: image;<br>API declaration: enum AntiAliasingLevel<br>DIfferences: atomicservice|api/@ohos.multimedia.image.d.ts|
+|New support for atomic services|Class name: AntiAliasingLevel;<br>API declaration: NONE = 0<br>DIfferences: NA|Class name: AntiAliasingLevel;<br>API declaration: NONE = 0<br>DIfferences: atomicservice|api/@ohos.multimedia.image.d.ts|
+|New support for atomic services|Class name: AntiAliasingLevel;<br>API declaration: LOW = 1<br>DIfferences: NA|Class name: AntiAliasingLevel;<br>API declaration: LOW = 1<br>DIfferences: atomicservice|api/@ohos.multimedia.image.d.ts|
+|New support for atomic services|Class name: AntiAliasingLevel;<br>API declaration: MEDIUM = 2<br>DIfferences: NA|Class name: AntiAliasingLevel;<br>API declaration: MEDIUM = 2<br>DIfferences: atomicservice|api/@ohos.multimedia.image.d.ts|
+|New support for atomic services|Class name: AntiAliasingLevel;<br>API declaration: HIGH = 3<br>DIfferences: NA|Class name: AntiAliasingLevel;<br>API declaration: HIGH = 3<br>DIfferences: atomicservice|api/@ohos.multimedia.image.d.ts|

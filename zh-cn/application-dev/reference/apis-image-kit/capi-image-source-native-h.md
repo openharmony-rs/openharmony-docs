@@ -47,7 +47,7 @@
 | [Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)](#oh_imagesourceinfo_getwidth) | 获取图片的宽。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | 获取图片的高。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)](#oh_imagesourceinfo_getdynamicrange) | 获取图片是否为高动态范围的信息。 |
-| [Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimetype)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
+| [Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimeType)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
 | [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | 释放OH_ImageSource_Info指针。 |
 | [Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)](#oh_decodingoptions_create) | 创建OH_DecodingOptions指针。 |
 | [Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)](#oh_decodingoptions_getpixelformat) | 获取pixel格式。 |
@@ -81,8 +81,8 @@
 | [Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)](#oh_imagesourcenative_createpictureatindex) | 通过指定序号的图片解码创建OH_PictureNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *source, int32_t *delayTimeList, size_t size)](#oh_imagesourcenative_getdelaytimelist) | 获取图像延迟时间数组。 |
 | [Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index, OH_ImageSource_Info *info)](#oh_imagesourcenative_getimageinfo) | 获取指定序号的图片信息。 |
-| [Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimageproperty) | 获取图片指定属性键的值。 |
-| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimagepropertywithnull) | 获取图像属性值。输出的value.data以字符串结束符结尾。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimageproperty) | 获取图片指定属性键的值。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。 |
+| [Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_getimagepropertywithnull) | 获取图像属性值。输出的value.data以字符串结束符'\0'结尾。 |
 | [Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key, Image_String *value)](#oh_imagesourcenative_modifyimageproperty) | 通过指定的键修改图片属性的值。 |
 | [Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source, uint32_t *frameCount)](#oh_imagesourcenative_getframecount) | 获取图像帧数。 |
 | [Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **supportedFormats, size_t *length)](#oh_imagesourcenative_getsupportedformats) | 获取支持解码的图片格式。 |
@@ -96,7 +96,7 @@
 
 ### IMAGE_DYNAMIC_RANGE
 
-```
+```c
 enum IMAGE_DYNAMIC_RANGE
 ```
 
@@ -114,7 +114,7 @@ enum IMAGE_DYNAMIC_RANGE
 
 ### IMAGE_ALLOCATOR_TYPE
 
-```
+```c
 enum IMAGE_ALLOCATOR_TYPE
 ```
 
@@ -132,7 +132,7 @@ enum IMAGE_ALLOCATOR_TYPE
 
 ### Image_CropAndScaleStrategy
 
-```
+```c
 enum Image_CropAndScaleStrategy
 ```
 
@@ -152,7 +152,7 @@ enum Image_CropAndScaleStrategy
 
 ### OH_ImageSourceInfo_Create()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_Create(OH_ImageSource_Info **info)
 ```
 
@@ -177,7 +177,7 @@ Image_ErrorCode OH_ImageSourceInfo_Create(OH_ImageSource_Info **info)
 
 ### OH_ImageSourceInfo_GetWidth()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)
 ```
 
@@ -203,7 +203,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t 
 
 ### OH_ImageSourceInfo_GetHeight()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)
 ```
 
@@ -229,7 +229,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 
 ### OH_ImageSourceInfo_GetDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)
 ```
 
@@ -245,7 +245,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| bool *isHdr | 是否为hdr的布尔值。 |
+| bool *isHdr | 表示是否为HDR。true表示是HDR，false表示不是HDR。 |
 
 **返回：**
 
@@ -255,8 +255,8 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 
 ### OH_ImageSourceInfo_GetMimetype()
 
-```
-Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimetype)
+```c
+Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimeType)
 ```
 
 **描述**
@@ -271,7 +271,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | OH_ImageSource_Info指针。 |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimetype | 图片源的MIME类型。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimeType | 图片源的MIME类型。 |
 
 **返回：**
 
@@ -281,7 +281,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_
 
 ### OH_ImageSourceInfo_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 ```
 
@@ -306,7 +306,7 @@ Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 
 ### OH_DecodingOptions_Create()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)
 ```
 
@@ -331,7 +331,7 @@ Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)
 
 ### OH_DecodingOptions_GetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options,int32_t *pixelFormat)
 ```
 
@@ -357,7 +357,7 @@ Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options,in
 
 ### OH_DecodingOptions_SetPixelFormat()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options,int32_t pixelFormat)
 ```
 
@@ -383,7 +383,7 @@ Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options,in
 
 ### OH_DecodingOptions_GetIndex()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetIndex(OH_DecodingOptions *options, uint32_t *index)
 ```
 
@@ -409,7 +409,7 @@ Image_ErrorCode OH_DecodingOptions_GetIndex(OH_DecodingOptions *options, uint32_
 
 ### OH_DecodingOptions_SetIndex()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetIndex(OH_DecodingOptions *options, uint32_t index)
 ```
 
@@ -435,7 +435,7 @@ Image_ErrorCode OH_DecodingOptions_SetIndex(OH_DecodingOptions *options, uint32_
 
 ### OH_DecodingOptions_GetRotate()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float *rotate)
 ```
 
@@ -461,7 +461,7 @@ Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float 
 
 ### OH_DecodingOptions_SetRotate()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float rotate)
 ```
 
@@ -487,7 +487,7 @@ Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float 
 
 ### OH_DecodingOptions_GetDesiredSize()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options,Image_Size *desiredSize)
 ```
 
@@ -513,7 +513,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options,Im
 
 ### OH_DecodingOptions_SetDesiredSize()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options,Image_Size *desiredSize)
 ```
 
@@ -539,7 +539,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options,Im
 
 ### OH_DecodingOptions_GetDesiredRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options,Image_Region *desiredRegion)
 ```
 
@@ -565,7 +565,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options,
 
 ### OH_DecodingOptions_SetDesiredRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options,Image_Region *desiredRegion)
 ```
 
@@ -591,7 +591,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options,
 
 ### OH_DecodingOptions_GetDesiredDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options,int32_t *desiredDynamicRange)
 ```
 
@@ -617,7 +617,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *op
 
 ### OH_DecodingOptions_SetDesiredDynamicRange()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *options,int32_t desiredDynamicRange)
 ```
 
@@ -643,7 +643,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *op
 
 ### OH_DecodingOptions_GetDesiredColorSpace()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetDesiredColorSpace(OH_DecodingOptions *options, int32_t *colorSpace)
 ```
 
@@ -669,7 +669,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredColorSpace(OH_DecodingOptions *opti
 
 ### OH_DecodingOptions_SetDesiredColorSpace()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetDesiredColorSpace(OH_DecodingOptions *options, int32_t colorSpace)
 ```
 
@@ -695,7 +695,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredColorSpace(OH_DecodingOptions *opti
 
 ### OH_DecodingOptions_SetCropAndScaleStrategy()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetCropAndScaleStrategy(OH_DecodingOptions *options,int32_t cropAndScaleStrategy)
 ```
 
@@ -721,7 +721,7 @@ Image_ErrorCode OH_DecodingOptions_SetCropAndScaleStrategy(OH_DecodingOptions *o
 
 ### OH_DecodingOptions_GetCropAndScaleStrategy()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetCropAndScaleStrategy(OH_DecodingOptions *options,int32_t *cropAndScaleStrategy)
 ```
 
@@ -747,7 +747,7 @@ Image_ErrorCode OH_DecodingOptions_GetCropAndScaleStrategy(OH_DecodingOptions *o
 
 ### OH_DecodingOptions_GetCropRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_GetCropRegion(OH_DecodingOptions *options, Image_Region *cropRegion)
 ```
 
@@ -773,7 +773,7 @@ Image_ErrorCode OH_DecodingOptions_GetCropRegion(OH_DecodingOptions *options, Im
 
 ### OH_DecodingOptions_SetCropRegion()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_SetCropRegion(OH_DecodingOptions *options, Image_Region *cropRegion)
 ```
 
@@ -799,7 +799,7 @@ Image_ErrorCode OH_DecodingOptions_SetCropRegion(OH_DecodingOptions *options, Im
 
 ### OH_DecodingOptions_Release()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)
 ```
 
@@ -824,7 +824,7 @@ Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)
 
 ### OH_ImageSourceNative_CreateFromUri()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH_ImageSourceNative **res)
 ```
 
@@ -851,7 +851,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH
 
 ### OH_ImageSourceNative_CreateFromFd()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNative **res)
 ```
 
@@ -877,7 +877,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNati
 
 ### OH_ImageSourceNative_CreateFromData()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)
 ```
 
@@ -904,7 +904,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSi
 
 ### OH_ImageSourceNative_CreateFromDataWithUserBuffer()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength,OH_ImageSourceNative **imageSource)
 ```
 
@@ -931,7 +931,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data,
 
 ### OH_ImageSourceNative_CreateFromRawFile()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)
 ```
 
@@ -957,7 +957,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFil
 
 ### OH_ImageSourceNative_CreatePixelmap()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options,OH_PixelmapNative **pixelmap)
 ```
 
@@ -984,7 +984,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source
 
 ### OH_ImageSourceNative_CreatePixelmapUsingAllocator()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source,OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)
 ```
 
@@ -1012,7 +1012,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 
 ### OH_ImageSourceNative_CreatePixelmapList()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options,OH_PixelmapNative *resVecPixMap[], size_t size)
 ```
 
@@ -1040,7 +1040,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *so
 
 ### OH_ImageSourceNative_CreatePicture()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options,OH_PictureNative **picture)
 ```
 
@@ -1067,7 +1067,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source,
 
 ### OH_ImageSourceNative_CreatePictureAtIndex()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index,OH_PictureNative **picture)
 ```
 
@@ -1094,7 +1094,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *
 
 ### OH_ImageSourceNative_GetDelayTimeList()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *source, int32_t *delayTimeList, size_t size)
 ```
 
@@ -1121,7 +1121,7 @@ Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *sour
 
 ### OH_ImageSourceNative_GetImageInfo()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, int32_t index,OH_ImageSource_Info *info)
 ```
 
@@ -1148,13 +1148,13 @@ Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, 
 
 ### OH_ImageSourceNative_GetImageProperty()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
 ```
 
 **描述**
 
-获取图片指定属性键的值。
+获取图片指定属性键的值。该接口获取到的value.data缺少字符串结束符'\0'，请谨慎使用。
 
 **起始版本：** 12
 
@@ -1163,9 +1163,9 @@ Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *sour
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *key | 指示指向属性的指针，详情请参见[Image_String](capi-image-nativemodule-image-string.md)，key的取值范围参考[OHOS_IMAGE_PROPERTY_XXX](capi-image-common-h.md#变量)定义。使用ImageSource后释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *value | 指向获取的值的指针。用户可以传入一个空指针和零大小，我们将分配内存，但用户必须在使用后释放内存。 |
+| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *value | 指向获取的值的指针（输出参数）。调用本接口前，用户应将value->data置为空指针，并将value->size设为0。接口会为value->data自动分配所需内存，并对value->size赋值。完成对该内存的使用后，用户必须使用C标准库提供的free()函数释放value->data指向的内存，否则会出现内存泄漏。 |
 
 **返回：**
 
@@ -1175,13 +1175,13 @@ Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *sour
 
 ### OH_ImageSourceNative_GetImagePropertyWithNull()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
 ```
 
 **描述**
 
-获取图像属性值。输出的value.data以字符串结束符结尾。
+获取图像属性值。输出的value.data以字符串结束符'\0'结尾。
 
 **起始版本：** 19
 
@@ -1190,9 +1190,9 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNati
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 指向ImageSource的指针。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *value | 指向属性值的指针（输出参数）。 |
+| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source |  被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *value | 指向属性值的指针（输出参数）。调用本接口前，用户应将value->data置为空指针，并将value->size设为0。接口会为value->data自动分配所需内存，并对value->size赋值。完成对该内存的使用后，用户必须使用C标准库提供的free()函数释放value->data指向的内存，否则可能导致内存泄漏。 |
 
 **返回：**
 
@@ -1202,7 +1202,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNati
 
 ### OH_ImageSourceNative_ModifyImageProperty()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *source, Image_String *key,Image_String *value)
 ```
 
@@ -1217,8 +1217,8 @@ Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *s
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
-| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针，详情请参见[Image_String](capi-image-nativemodule-image-string.md)，key是一个exif常数。使用ImageSource后释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | 需要修改的属性值。 |
 
 **返回：**
@@ -1229,7 +1229,7 @@ Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *s
 
 ### OH_ImageSourceNative_GetFrameCount()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source, uint32_t *frameCount)
 ```
 
@@ -1255,7 +1255,7 @@ Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source,
 
 ### OH_ImageSourceNative_GetSupportedFormats()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **supportedFormats, size_t *length)
 ```
 
@@ -1281,7 +1281,7 @@ Image_ErrorCode OH_ImageSourceNative_GetSupportedFormats(Image_MimeType **suppor
 
 ### OH_ImageSourceNative_Release()
 
-```
+```c
 Image_ErrorCode OH_ImageSourceNative_Release(OH_ImageSourceNative *source)
 ```
 
@@ -1306,7 +1306,7 @@ Image_ErrorCode OH_ImageSourceNative_Release(OH_ImageSourceNative *source)
 
 ### OH_DecodingOptionsForPicture_Create()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_Create(OH_DecodingOptionsForPicture **options)
 ```
 
@@ -1331,7 +1331,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_Create(OH_DecodingOptionsForPicture
 
 ### OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options,Image_AuxiliaryPictureType **desiredAuxiliaryPictures, size_t *length)
 ```
 
@@ -1358,7 +1358,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredAuxiliaryPictures(OH_Deco
 
 ### OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_DecodingOptionsForPicture *options,Image_AuxiliaryPictureType *desiredAuxiliaryPictures, size_t length)
 ```
 
@@ -1385,7 +1385,7 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(OH_Deco
 
 ### OH_DecodingOptionsForPicture_Release()
 
-```
+```c
 Image_ErrorCode OH_DecodingOptionsForPicture_Release(OH_DecodingOptionsForPicture *options)
 ```
 

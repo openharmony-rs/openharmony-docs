@@ -49,7 +49,7 @@
 
 ### Preferences_StorageType
 
-```
+```c
 enum Preferences_StorageType
 ```
 
@@ -69,7 +69,7 @@ enum Preferences_StorageType
 
 ### OH_PreferencesOption_Create()
 
-```
+```c
 OH_PreferencesOption *OH_PreferencesOption_Create(void)
 ```
 
@@ -87,7 +87,7 @@ OH_PreferencesOption *OH_PreferencesOption_Create(void)
 
 ### OH_PreferencesOption_SetFileName()
 
-```
+```c
 int OH_PreferencesOption_SetFileName(OH_PreferencesOption *option, const char *fileName)
 ```
 
@@ -117,7 +117,7 @@ OH_Preferences_ErrCode
 
 ### OH_PreferencesOption_SetBundleName()
 
-```
+```c
 int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char *bundleName)
 ```
 
@@ -143,7 +143,7 @@ int OH_PreferencesOption_SetBundleName(OH_PreferencesOption *option, const char 
 
 ### OH_PreferencesOption_SetDataGroupId()
 
-```
+```c
 int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char *dataGroupId)
 ```
 
@@ -168,7 +168,7 @@ int OH_PreferencesOption_SetDataGroupId(OH_PreferencesOption *option, const char
 
 ### OH_PreferencesOption_SetStorageType()
 
-```
+```c
 int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preferences_StorageType type)
 ```
 
@@ -194,7 +194,7 @@ int OH_PreferencesOption_SetStorageType(OH_PreferencesOption *option, Preference
 
 ### OH_PreferencesOption_Destroy()
 
-```
+```c
 int OH_PreferencesOption_Destroy(OH_PreferencesOption *option)
 ```
 

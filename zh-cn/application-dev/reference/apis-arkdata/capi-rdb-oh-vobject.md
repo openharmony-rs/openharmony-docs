@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_VObject
 ```
 
@@ -42,7 +42,7 @@ typedef struct {...} OH_VObject
 
 ### putInt64()
 
-```
+```c
 int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)
 ```
 
@@ -68,7 +68,7 @@ int (*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)
 
 ### putDouble()
 
-```
+```c
 int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)
 ```
 
@@ -94,7 +94,7 @@ int (*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)
 
 ### putText()
 
-```
+```c
 int (*putText)(OH_VObject *valueObject, const char *value)
 ```
 
@@ -119,7 +119,7 @@ int (*putText)(OH_VObject *valueObject, const char *value)
 
 ### putTexts()
 
-```
+```c
 int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)
 ```
 
@@ -145,7 +145,7 @@ int (*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_VObject *valueObject)
 ```
 

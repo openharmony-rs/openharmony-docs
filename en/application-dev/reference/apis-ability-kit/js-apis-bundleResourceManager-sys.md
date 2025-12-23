@@ -88,14 +88,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
-    let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, resourceFlag);
-    hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, resourceFlag);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s',
+    JSON.stringify(resourceInfo.label));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -142,14 +144,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
-    let resourceInfo = bundleResourceManager.getLauncherAbilityResourceInfo(bundleName, resourceFlag);
-    hilog.info(0x0000, 'testTag', 'getLauncherAbilityResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo[0].label));
+  let resourceInfo = bundleResourceManager.getLauncherAbilityResourceInfo(bundleName, resourceFlag);
+  hilog.info(0x0000, 'testTag', 'getLauncherAbilityResourceInfo successfully. Data label: %{public}s',
+    JSON.stringify(resourceInfo[0].label));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -188,18 +192,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
-    bundleResourceManager.getAllBundleResourceInfo(resourceFlag, (err, data) => {
-        if (err) {
-            hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed. err: %{public}s', err.message);
-            return;
-        }
-        hilog.info(0x0000, 'testTag', 'getAllBundleResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
-    });
+  bundleResourceManager.getAllBundleResourceInfo(resourceFlag, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed. err: %{public}s', err.message);
+      return;
+    }
+    hilog.info(0x0000, 'testTag', 'getAllBundleResourceInfo successfully. Data length: %{public}s',
+      JSON.stringify(data.length));
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
 }
 ```
 
@@ -243,16 +248,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
-    bundleResourceManager.getAllBundleResourceInfo(resourceFlag).then(data=> {
-        hilog.info(0x0000, 'testTag', 'getAllBundleResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
-    }).catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed. err: %{public}s', err.message);
-    })
+  bundleResourceManager.getAllBundleResourceInfo(resourceFlag).then(data => {
+    hilog.info(0x0000, 'testTag', 'getAllBundleResourceInfo successfully. Data length: %{public}s',
+      JSON.stringify(data.length));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed. err: %{public}s', err.message);
+  })
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllBundleResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -291,18 +298,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
-    bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag, (err, data) => {
-        if (err) {
-            hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed. err: %{public}s', err.message);
-            return;
-        }
-        hilog.info(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
-    });
+  bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag, (err, data) => {
+    if (err) {
+      hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed. err: %{public}s', err.message);
+      return;
+    }
+    hilog.info(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo successfully. Data length: %{public}s',
+      JSON.stringify(data.length));
+  });
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -345,16 +354,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
-    bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag).then(data=> {
-        hilog.info(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
-    }).catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed. err: %{public}s', err.message);
-    })
+  bundleResourceManager.getAllLauncherAbilityResourceInfo(resourceFlag).then(data => {
+    hilog.info(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo successfully. Data length: %{public}s',
+      JSON.stringify(data.length));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed. err: %{public}s', err.message);
+  })
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllLauncherAbilityResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -404,15 +415,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 let appIndex = 1;
 try {
-    let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, resourceFlag, appIndex);
-    hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, resourceFlag, appIndex);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s',
+    JSON.stringify(resourceInfo.label));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -460,15 +473,17 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { bundleResourceManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+
 let bundleName = "com.example.myapplication";
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 let appIndex = 1;
 try {
-    let resourceInfo = bundleResourceManager.getLauncherAbilityResourceInfo(bundleName, resourceFlag, appIndex);
-    hilog.info(0x0000, 'testTag', 'getLauncherAbilityResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo[0].label));
+  let resourceInfo = bundleResourceManager.getLauncherAbilityResourceInfo(bundleName, resourceFlag, appIndex);
+  hilog.info(0x0000, 'testTag', 'getLauncherAbilityResourceInfo successfully. Data label: %{public}s',
+    JSON.stringify(resourceInfo[0].label));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -520,12 +535,13 @@ let bundleName = "com.example.myapplication";
 let extensionAbilityType = bundleManager.ExtensionAbilityType.INPUT_METHOD;
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
-    let resourceInfo = bundleResourceManager.getExtensionAbilityResourceInfo(bundleName, extensionAbilityType, resourceFlag);
-    console.info('getExtensionAbilityResourceInfo successfully. Data label: ' + JSON.stringify(resourceInfo[0].label));
+  let resourceInfo =
+    bundleResourceManager.getExtensionAbilityResourceInfo(bundleName, extensionAbilityType, resourceFlag);
+  console.info('getExtensionAbilityResourceInfo successfully. Data label: ' + JSON.stringify(resourceInfo[0].label));
 } catch (err) {
-    let message = (err as BusinessError).message;
-    let code = (err as BusinessError).code;
-    console.error(`getExtensionAbilityResourceInfo failed, err code:${code}, err msg: ${message}`);
+  let message = (err as BusinessError).message;
+  let code = (err as BusinessError).code;
+  console.error(`getExtensionAbilityResourceInfo failed, err code:${code}, err msg: ${message}`);
 }
 ```
 
@@ -571,14 +587,84 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
 try {
-    bundleResourceManager.getAllUninstalledBundleResourceInfo(resourceFlag).then(data=> {
-        hilog.info(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo successfully. Data length: %{public}s', JSON.stringify(data.length));
-    }).catch((err: BusinessError) => {
-        hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed. err: %{public}s', err.message);
-    })
+  bundleResourceManager.getAllUninstalledBundleResourceInfo(resourceFlag).then(data => {
+    hilog.info(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo successfully. Data length: %{public}s',
+      JSON.stringify(data.length));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed. err: %{public}s', err.message);
+  })
 } catch (err) {
-    let message = (err as BusinessError).message;
-    hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed: %{public}s', message);
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllUninstalledBundleResourceInfo failed: %{public}s', message);
+}
+```
+
+### bundleResourceManager.getLauncherAbilityResourceInfoList<sup>23+</sup>
+
+getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>, resourceFlags: number): Promise\<Array\<LauncherAbilityResourceInfo>>
+
+Obtains the launcher ability resource information of each application corresponding to the **BundleOptions** element in **optionsList**. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_INSTALLED_BUNDLE_LIST and ohos.permission.GET_BUNDLE_RESOURCES
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Resource
+
+**Parameters**
+
+| Name       | Type                                                        | Mandatory| Description                                                        |
+| ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| optionsList   | Array\<[BundleOptions](js-apis-bundleManager-BundleInfo-sys.md#bundleoptions)> | Yes  | Parameters of the applications to query. **bundleName**, **moduleName**, and **abilityName** are mandatory. If **appIndex** is not specified, the default value **0** is used.|
+| resourceFlags | number                                                       | Yes  | Resource information flags, which indicate the type of resource information to obtain. The value is an enumerated value of [ResourceFlag](#resourceflag), excluding [ResourceFlag](#resourceflag).GET_RESOURCE_INFO_WITH_SORTED_BY_LABEL and [ResourceFlag](#resourceflag).GET_RESOURCE_INFO_ONLY_WITH_MAIN_ABILITY.|
+
+**Return value**
+
+| Type                                                        | Description                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise\<Array<[LauncherAbilityResourceInfo](js-apis-bundleManager-LauncherAbilityResourceInfo-sys.md#launcherabilityresourceinfo)>> | Promise used to return the launcher ability resource information of the specified application list.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bundle Error Codes](errorcode-bundle.md).
+
+| ID| Error Message                                            |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission denied.                                   |
+| 202      | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found.               |
+| 17700002 | The specified moduleName is not existed.             |
+| 17700003 | The specified abilityName is not existed.            |
+| 17700061 | AppIndex not in valid range or not found.            |
+
+**Example**
+
+```ts
+import { bundleManager, bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// Replace the application information with the actual one.
+let option: bundleManager.BundleOptions = {
+  bundleName: 'com.example.demo',
+  moduleName: 'entry',
+  abilityName: 'EntryAbility',
+  appIndex: 0
+};
+
+let optionsList: Array<bundleManager.BundleOptions> = [];
+optionsList.push(option);
+let resourceFlag = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  bundleResourceManager.getLauncherAbilityResourceInfoList(optionsList, resourceFlag).then(data => {
+    hilog.info(0x0000, 'testTag', 'getLauncherAbilityResourceInfoList successfully. Data length: %{public}s',
+      JSON.stringify(data.length));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfoList failed. err: %{public}s', err.message);
+  })
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfoList failed: %{public}s', message);
 }
 ```
 

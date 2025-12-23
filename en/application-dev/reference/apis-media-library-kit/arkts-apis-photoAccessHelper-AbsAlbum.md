@@ -28,6 +28,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | albumUri | string | Yes   | No   | URI of the album.  |
 | count | number | Yes   | No   |  Number of files in the album.|
 | coverUri | string | Yes   | No   | URI of the cover file of the album.|
+| lpath<sup>22+</sup> | string | Yes   | Yes   | Virtual path of the album.|
 
 ## getAssets
 

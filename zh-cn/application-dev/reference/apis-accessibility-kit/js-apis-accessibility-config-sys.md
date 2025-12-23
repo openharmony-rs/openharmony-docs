@@ -22,7 +22,7 @@ import { config } from '@kit.AccessibilityKit';
 
 ## 属性
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称                                 | 类型                                                                                     | 只读 | 可选 | 说明                         |
 |------------------------------------|--------------------------------------------------------------------------------------------| -------- | -------- |-----------------------------------------------------------|
@@ -50,7 +50,7 @@ import { config } from '@kit.AccessibilityKit';
 
 enableAbility(name: string, capability: Array&lt;accessibility.Capability&gt;): Promise&lt;void&gt;
 
-启用辅助扩展，使用Promise异步回调。
+启用辅助扩展。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -149,11 +149,71 @@ config.enableAbility(name, capability, (err: BusinessError) => {
 });
 ```
 
+## enableAbilityWithCallback<sup>23+</sup>
+
+enableAbilityWithCallback(name: string, capability: Array&lt;accessibility.Capability&gt;, connectCallback: ConnectCallback): Promise&lt;void&gt;
+
+启用辅助扩展，并指定[ConnectCallback](#connectcallback23)作为辅助扩展应用状态变化的回调函数。使用Promise异步回调。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.WRITE_ACCESSIBILITY_CONFIG
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                                           | 必填 | 说明 |
+| -------- |------------------------------------------------------------------------------| -------- | -------- |
+| name | string                                                                       | 是 | 辅助扩展应用的名称，格式为：'bundleName/abilityName'。 |
+| capability | Array&lt;[accessibility.Capability](js-apis-accessibility.md#capability)&gt; | 是 | 辅助扩展应用的能力属性。 |
+| connectCallback | [ConnectCallback](#connectcallback23)                             | 是 | 辅助扩展应用的状态发生变化时调用的回调函数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 9300001 | Invalid bundle name or ability name.  |
+| 9300002 | Target ability already enabled. |
+
+**示例：**
+
+```ts
+import { accessibility, config } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let name: string = 'com.ohos.example/axExtension';
+let capability: accessibility.Capability[] = ['retrieve'];
+let connectCallback: config.ConnectCallback = {
+  onDisconnect: () => {
+    console.info(`Ability is disconnected.`)
+  }
+}
+
+config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
+  console.info(`Succeeded in enable ability, name is ${name}, capability is ${capability}`);
+}).catch((err: BusinessError) => {
+  console.error(`failed to enable ability, Code is ${err.code}, message is ${err.message}`);
+});
+```
+
 ## disableAbility
 
 disableAbility(name: string): Promise&lt;void&gt;
 
-关闭辅助扩展，使用Promise异步回调。
+关闭辅助扩展。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -450,7 +510,7 @@ try {
 
 set(value: T): Promise&lt;void&gt;
 
-设置属性，使用Promise异步回调。
+设置属性。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -545,7 +605,7 @@ config.highContrastText.set(value, (err: BusinessError) => {
 
 get(): Promise&lt;T&gt;
 
-获取属性，使用Promise异步回调。
+获取属性。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -693,12 +753,44 @@ config.highContrastText.off((data: boolean) => {
 });
 ```
 
+## ConnectCallback<sup>23+</sup>
+
+通过[enableAbilityWithCallback](#enableabilitywithcallback23)接口启用辅助扩展应用时提供的回调函数。辅助扩展应用连接断开时，回调函数将被调用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名         | 类型                                         | 只读 | 可选 | 描述                                     |
+| ------------ | -------------------------------------------- | ---- | ---- | ---------------------------------------- |
+| onDisconnect | [OnDisconnectCallback](#ondisconnectcallback23) | 否   | 否   | 辅助扩展应用的连接断开时调用的回调函数。 |
+
+
+## OnDisconnectCallback<sup>23+</sup>
+
+type OnDisconnectCallback = () => void
+
+描述AccessibilityExtensionAbility断开连接的回调接口。
+
+**系统接口**：此类型为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**模型约束**：此类型仅可在Stage模型下使用。
+
+
 ## DaltonizationColorFilter
 
 用于不同弱视类型的校正颜色滤镜。  
 颜色滤镜功能开启时（[daltonizationState](#属性)设置为true)，颜色滤镜的配置(即设置的DaltonizationColorFilter的值)生效；颜色滤镜功能关闭时（[daltonizationState](#属性)设置为false)，显示为正常类型<sup>11+</sup>。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称 | 说明 |
 | -------- | -------- |
@@ -711,7 +803,9 @@ config.highContrastText.off((data: boolean) => {
 
 用于不同时间长短的点击重复时间。  
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称          | 说明         |
 |-------------|------------|
@@ -724,7 +818,9 @@ config.highContrastText.off((data: boolean) => {
 用于不同时间间隔的忽略重复点击。  
 忽略重复点击功能开启时（[ignoreRepeatClick](#属性)设置为true)，忽略重复点击的配置(即设置的RepeatClickInterval的值)生效；忽略重复点击功能关闭时（[ignoreRepeatClick](#属性)设置为false)，显示为正常类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称       | 说明    |
 |----------|-------|

@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-本模块提供转换xml文本为JavaScript对象的功能。
+本模块提供将XML文本转换为JavaScript对象的解析能力。
 
 > **说明：**
 >
@@ -25,7 +25,7 @@ import { convertxml } from '@kit.ArkTS';
 
 fastConvertToJSObject(xml: string, options?: ConvertOptions) : Object
 
-转换xml文本为Object类型对象。
+转换XML文本为Object类型对象。
 
 > **说明：**
 >
@@ -41,7 +41,7 @@ fastConvertToJSObject(xml: string, options?: ConvertOptions) : Object
 
 | 参数名  | 类型                              | 必填 | 说明            |
 | ------- | --------------------------------- | ---- | --------------- |
-| xml     | string                            | 是   | xml文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
+| xml     | string                            | 是   | XML文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
 | options | [ConvertOptions](#convertoptions) | 否   | 转换选项，默认值是ConvertOptions对象，由其中各个属性的默认值组成。|
 
 **返回值：**
@@ -86,11 +86,83 @@ try {
 // {"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"element","_name":"note","_attributes":{"importance":"high","logged":"true"},"_elements":[{"_type":"element","_name":"title","_elements":[{"_type":"text","_text":"Hello\nWorld"}]},{"_type":"element","_name":"todo","_elements":[{"_type":"cdata","_cdata":"Work\n"}]}]}]}
 ```
 
+### largeConvertToJSObject<sup>23+</sup>
+
+largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
+
+将XML文本转换为Object类型对象，此方法支持解析单个节点大小超过10M的大型XML文本。
+
+> **说明：**
+>
+> 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。本接口转换后的对象以换行符（LF）表示换行。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**参数：**
+
+| 参数名  | 类型                              | 必填 | 说明            |
+| ------- | --------------------------------- | ---- | --------------- |
+| xml     | string                            | 是   | XML文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
+| options | [ConvertOptions](#convertoptions) | 否   | 转换选项，默认值是ConvertOptions对象，由其中各个属性的默认值组成。|
+
+**返回值：**
+
+| 类型   | 说明                         |
+| ------ | ---------------------------- |
+| Object | 转换后的JavaScript对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 10200002 | Invalid xml string. |
+
+**示例：**
+
+```ts
+try {
+  let xmlstr =
+    '<?xml version="1.0" encoding="utf-8"?>' +
+    '<?custom-pi processing="example"?>' +
+    '<catalog id="books">' +
+      '<!-- Bestseller Example -->' +
+      '<book category="fiction" ref="B101">' +
+        '<title>Echoes &amp; Whispers</title>' +
+        '<price unit="USD">19.99</price>' +
+        '<descr>' +
+          '<![CDATA[<b>suspense</b>novel & Legendary Stories]]>' +
+        '</descr>' +
+        '<popular/>' +
+      '</book>' +
+    '</catalog>';
+  let conv = new convertxml.ConvertXML();
+  let options: convertxml.ConvertOptions = {
+    trim: false, declarationKey: "_declaration",
+    instructionKey: "_instruction", attributesKey: "_attributes",
+    textKey: "_text", cdataKey: "_cdata", doctypeKey: "_doctype",
+    commentKey: "_comment", parentKey: "_parent", typeKey: "_type",
+    nameKey: "_name", elementsKey: "_elements"
+  }
+  let result = JSON.stringify(conv.largeConvertToJSObject(xmlstr, options));
+  console.info(result);
+} catch (e) {
+  console.error((e as Object).toString());
+}
+// 输出(宽泛型)
+// {"_declaration":{"_attributes":{"version":"1.0","encoding":"utf-8"}},"_elements":[{"_type":"instruction","_name":"custom-pi","_instruction":"processing=\"example\""},{"_type":"element","_name":"catalog","_attributes":{"id":"books"},"_elements":[{"_type":"comment","_comment":" Bestseller Example "},{"_type":"element","_name":"book","_parent":"catalog","_attributes":{"category":"fiction","ref":"B101"},"_elements":[{"_type":"element","_name":"title","_parent":"book","_elements":[{"_type":"text","_text":"Echoes & Whispers"}]},{"_type":"element","_name":"price","_parent":"book","_attributes":{"unit":"USD"},"_elements":[{"_type":"text","_text":"19.99"}]},{"_type":"element","_name":"descr","_parent":"book","_elements":[{"_type":"cdata","_cdata":"<b>suspense</b>novel & Legendary Stories"}]},{"_type":"element","_name":"popular","_parent":"book"}]}]}]}
+```
+
 ### convertToJSObject<sup>(deprecated)</sup>
 
 convertToJSObject(xml: string, options?: ConvertOptions) : Object
 
-转换xml文本为Object类型对象。
+转换XML文本为Object类型对象。
 
 > **说明：**
 >
@@ -104,7 +176,7 @@ convertToJSObject(xml: string, options?: ConvertOptions) : Object
 
 | 参数名  | 类型                              | 必填 | 说明            |
 | ------- | --------------------------------- | ---- | --------------- |
-| xml     | string                            | 是   | 传入的xml文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
+| xml     | string                            | 是   | 传入的XML文本，若包含“&”字符，请使用实体引用“\&amp;”替换。|
 | options | [ConvertOptions](#convertoptions) | 否   | 转换选项，默认值是ConvertOptions对象，由其中各个属性的默认值组成。 |
 
 **返回值：**
@@ -154,7 +226,7 @@ try {
 
 convert(xml: string, options?: ConvertOptions) : Object
 
-转换xml文本为JavaScript对象。
+转换XML文本为JavaScript对象。
 
 > **说明：**
 >
@@ -166,7 +238,7 @@ convert(xml: string, options?: ConvertOptions) : Object
 
 | 参数名  | 类型                              | 必填 | 说明            |
 | ------- | --------------------------------- | ---- | --------------- |
-| xml     | string                            | 是   | 传入的xml文本。 |
+| xml     | string                            | 是   | 传入的XML文本。 |
 | options | [ConvertOptions](#convertoptions) | 否   | 转换选项，默认值是ConvertOptions对象，由其中各个属性的默认值组成。  |
 
 **返回值：**

@@ -25,7 +25,7 @@ zipFile(inFile: string, outFile: string, options: Options): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.compressFile](#zlibcompressfile9)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.compressFile](#zlibcompressfile9)替代。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -72,7 +72,7 @@ unzipFile(inFile:string, outFile:string, options: Options): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.decompressFile](#zlibdecompressfile9)。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[zlib.decompressFile](#zlibdecompressfile9)替代。
 >
 > 传入的压缩包内部文件或者文件夹名称不能包含“../”，否则会返回-1错误码。
 
@@ -3825,10 +3825,8 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 ## ErrorCode<sup>(deprecated)<sup>
 
 > **说明：**
-> 
-> 本模块首批接口从API version 7 开始支持。
-> 
-> 从API Version 9开始，该模块不再维护。
+>  
+> 从API version 7开始支持，从API version 9开始废弃，暂无替代接口。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
 
@@ -3865,15 +3863,18 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 ## ReturnStatus<sup>12+</sup>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.BundleManager.Zlib
 
 | 名称       | 值   | 说明                                           |
 | ---------- | ---- | ---------------------------------------------- |
-| OK         | 0    | 函数调用成功。                                 |
-| STREAM_END | 1    | 函数调用成功，表示已处理了整个数据。           |
-| NEED_DICT  | 2    | 函数调用成功，表示需要预设字典才能继续解压缩。 |
+| OK         | 0    | 函数调用成功。该接口支持在原子化服务中使用。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| STREAM_END | 1    | 函数调用成功，表示已处理了整个数据。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| NEED_DICT  | 2    | 函数调用成功，表示需要预设字典才能继续解压缩。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| ERRNO<sup>23+</sup>| -1 | 函数调用失败，表示文件操作错误。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| STREAM_ERROR<sup>23+</sup>| -2 | 函数调用失败，表示压缩或解压缩流错误。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| DATA_ERROR<sup>23+</sup>| -3 | 函数调用失败，表示输入数据不正确。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| MEM_ERROR<sup>23+</sup>| -4 | 函数调用失败，表示内存分配失败。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| BUF_ERROR<sup>23+</sup>| -5 | 函数调用失败，表示输入缓冲区不正确。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ZStream<sup>12+</sup>
 

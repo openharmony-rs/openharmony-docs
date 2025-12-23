@@ -45,7 +45,7 @@
 
 ### OH_MetadataOutput_OnMetadataObjectAvailable()
 
-```
+```c
 typedef void (*OH_MetadataOutput_OnMetadataObjectAvailable)(Camera_MetadataOutput* metadataOutput,Camera_MetadataObject* metadataObject, uint32_t size)
 ```
 
@@ -66,7 +66,7 @@ typedef void (*OH_MetadataOutput_OnMetadataObjectAvailable)(Camera_MetadataOutpu
 
 ### OH_MetadataOutput_OnError()
 
-```
+```c
 typedef void (*OH_MetadataOutput_OnError)(Camera_MetadataOutput* metadataOutput, Camera_ErrorCode errorCode)
 ```
 
@@ -90,7 +90,7 @@ typedef void (*OH_MetadataOutput_OnError)(Camera_MetadataOutput* metadataOutput,
 
 ### OH_MetadataOutput_RegisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_MetadataOutput_RegisterCallback(Camera_MetadataOutput* metadataOutput,MetadataOutput_Callbacks* callback)
 ```
 
@@ -116,7 +116,7 @@ Camera_ErrorCode OH_MetadataOutput_RegisterCallback(Camera_MetadataOutput* metad
 
 ### OH_MetadataOutput_UnregisterCallback()
 
-```
+```c
 Camera_ErrorCode OH_MetadataOutput_UnregisterCallback(Camera_MetadataOutput* metadataOutput,MetadataOutput_Callbacks* callback)
 ```
 
@@ -142,7 +142,7 @@ Camera_ErrorCode OH_MetadataOutput_UnregisterCallback(Camera_MetadataOutput* met
 
 ### OH_MetadataOutput_Start()
 
-```
+```c
 Camera_ErrorCode OH_MetadataOutput_Start(Camera_MetadataOutput* metadataOutput)
 ```
 
@@ -167,7 +167,7 @@ Camera_ErrorCode OH_MetadataOutput_Start(Camera_MetadataOutput* metadataOutput)
 
 ### OH_MetadataOutput_Stop()
 
-```
+```c
 Camera_ErrorCode OH_MetadataOutput_Stop(Camera_MetadataOutput* metadataOutput)
 ```
 
@@ -192,7 +192,7 @@ Camera_ErrorCode OH_MetadataOutput_Stop(Camera_MetadataOutput* metadataOutput)
 
 ### OH_MetadataOutput_Release()
 
-```
+```c
 Camera_ErrorCode OH_MetadataOutput_Release(Camera_MetadataOutput* metadataOutput)
 ```
 

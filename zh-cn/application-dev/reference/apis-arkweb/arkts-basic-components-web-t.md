@@ -154,8 +154,7 @@ type OnFirstMeaningfulPaintCallback = (firstMeaningfulPaint: [FirstMeaningfulPai
 
 ## OnLargestContentfulPaintCallback<sup>12+</sup>
 
-type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12
-)) => void
+type OnLargestContentfulPaintCallback = (largestContentfulPaint: [LargestContentfulPaint](./arkts-basic-components-web-i.md#largestcontentfulpaint12)) => void
 
 网页绘制页面最大内容度量信息的回调。
 
@@ -368,3 +367,21 @@ onTextSelectionChange的回调函数，选区内容改变时触发。
 **示例：**
 
 完整示例代码参考[onTextSelectionChange](./arkts-basic-components-web-events.md#ontextselectionchange23)。
+
+## OnFirstScreenPaintCallback<sup>23+<sup>
+
+type OnFirstScreenPaintCallback = (event: FirstScreenPaint) => void
+
+检测到首屏渲染结束时会触发此回调。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| event | [FirstScreenPaint](./arkts-basic-components-web-i.md#firstscreenpaint23) | 是 | 检测到首屏渲染时的详细信息。 |
+
+**示例：**
+
+完整示例代码参考[onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23)。

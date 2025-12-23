@@ -172,6 +172,7 @@
       - [AutoFillExtensionContext(系统接口)](js-apis-inner-application-autoFillExtensionContext-sys.md)
       - [AutoFillRequest(系统接口)](js-apis-inner-application-autoFillRequest-sys.md)
       - [AutoFillType(系统接口)](js-apis-inner-application-autoFillType-sys.md)
+      - [AutoFillTriggerType(系统接口)](js-apis-inner-application-autoFillTriggerType-sys.md)
       - [AutoStartupCallback(系统接口)](js-apis-inner-application-autoStartupCallback-sys.md)
       - [AutoStartupInfo(系统接口)](js-apis-inner-application-autoStartupInfo-sys.md)
       - [Context(系统接口)](js-apis-inner-application-context-sys.md)

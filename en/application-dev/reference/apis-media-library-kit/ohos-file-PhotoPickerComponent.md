@@ -77,10 +77,12 @@ Allows the application to access images or videos in the user directory without 
 | onVideoPlayStateChanged<sup>14+</sup>   | [videoPlayStateChangedCallback](#videoplaystatechangedcallback14)                    | No  | - | Callback to be invoked when the video playback state on a photo browser page changes.<br>**Atomic service API**: This API can be used in atomic services since API version 14.                                 |
 | pickerController        | [PickerController](#pickercontroller)                                            | Yes  | @ObjectLink | Instance used to send data to the **PhotoPickerComponent**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onMovingPhotoBadgeStateChanged<sup>22+</sup> | [MovingPhotoBadgeStateChangedCallback](#movingphotobadgestatechangedcallback22) | No| - | Callback to be invoked when the moving photo effect of the **PhotoPickerComponent** is enabled or disabled. This callback reports the image's URI and its new moving photo badge state to the application.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| onScrollStopAtStart<sup>23+</sup> | [ScrollStopAtStartCallback](#scrollstopatstartcallback23) | No| - | Callback to be invoked when the user stops scrolling and is positioned at the beginning of the grid content in the **PhotoPickerComponent**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| onScrollStopAtEnd<sup>23+</sup> | [ScrollStopAtEndCallback](#scrollstopatendcallback23) | No| - | Callback to be invoked when the user stops scrolling and is positioned at the end of the grid content in the **PhotoPickerComponent**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## PickerOptions
 
-Describes the configuration of a Picker. It inherits from [photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10).
+Describes the configuration of a Picker. It inherits from [photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -108,6 +110,7 @@ Describes the configuration of a Picker. It inherits from [photoAccessHelper.Bas
 | preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | No  | Yes| Array of information previously selected by the user, so that the PhotoPickerComponent identified by **pickerIndex** can display the information.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | No  | Yes| Badge configuration. Currently, the **PhotoPickerComponent** supports only one type of badge. For details, see [BadgeType](#badgetype21).<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | isSlidingSupported<sup>23+</sup>         | boolean                         | No  | Yes| Whether scrolling in the **PhotoPickerComponent** is enabled. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.<br>The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
@@ -183,6 +186,30 @@ Callback to be invoked when the moving photo effect of the **PhotoPickerComponen
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | uri    | string                         | Yes   | URI of the moving photo.|
 | state  | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | Yes| State of the moving photo badge.|
+
+## ScrollStopAtStartCallback<sup>23+</sup>
+
+type ScrollStopAtStartCallback = () => void
+
+Callback to be invoked when the user stops scrolling and is positioned at the beginning of the grid content in the **PhotoPickerComponent**.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## ScrollStopAtEndCallback<sup>23+</sup>
+
+type ScrollStopAtEndCallback = () => void
+
+Callback to be invoked when the user stops scrolling and is positioned at the end of the grid content in the **PhotoPickerComponent**.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## PickerController
 
@@ -339,7 +366,7 @@ Saves files in a URI list. Generally, this API is used together with [replacePho
 |-------------|----------------------------------------------------------------| ----- |-------------------|
 | trustedUris     | Array&lt;string&gt; | Yes| URIs of the images or videos in the application sandbox path. Generally, **trustedUris** comes from **newUri** of new images generated by [replacePhotoPickerPreview](#replacephotopickerpreview15).|
 | callback  | AsyncCallback&lt;Array&lt;string&gt;&gt;          | Yes| URIs of the new files in Gallery.            |
-| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>Note: If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.            |
+| configs | Array&lt;[photoAccessHelper.PhotoCreationConfig](arkts-apis-photoAccessHelper-i.md#photocreationconfig12)&gt;          | No| Configuration parameters corresponding to the original files.<br>**NOTE**<br>If a **subtype** option is passed, the configuration does not take effect. Only DEFAULT images can be saved.            |
 | saveMode | [SaveMode](#savemode15)           | No| Mode for saving the files.            |
 
 ### updatePickerOptions<sup>22+</sup>
@@ -379,10 +406,10 @@ Represents basic image and video information.
 | size     | number                | No| Yes  | Size of the image or video, in bytes.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
 | duration   | number                | No| Yes  | Video duration, in milliseconds. For an image or a moving photo, the value **-1** is returned.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | photoSubType<sup>21+</sup>   | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)        | No| Yes  | Subtype of the photo. The options are **DEFAULT**, **MOVING_PHOTO**, and **BRUST**.<br>The default value is **DEFAULT (0)**.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | No| Yes  | Dynamic range type of the media file. The options are **HDR** and **SDR**.<br>For moving photos, this parameter specifies the dynamic range type of the cover image.<br>**Atomic service API**: This API can be used in atomic services since API version 21.
-| orientation<sup>21+</sup>   | number             | No| Yes  | Image or video direction information.<br>1: **TOP-left**: The image is not rotated.<br>2: **TOP-right**: The image is flipped horizontally.<br>3: **Bottom-right**: The image is rotated by 180°.<br>4: **Bottom-left**: The image is flipped vertically.<br>5: **Left-top**: The image is flipped horizontally and then rotated clockwise by 270°.<br>6: **Right-top**: The image is rotated clockwise by 90°.<br>7: **Right-bottom**: The image is vertically flipped and then rotated clockwise by 90°.<br>8: **Left-bottom**: The image is rotated clockwise by 270°.<br>Images with mirroring information retain their original width and height attributes regardless of rotation, whereas images without such information have these attributes updated to reflect the post-rotation dimensions.<br>**Atomic service API**: This API can be used in atomic services since API version 21.
+| dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | No| Yes  | Dynamic range type of the media file. The options are **HDR** and **SDR**.<br>For moving photos, this parameter specifies the dynamic range type of the cover image.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| orientation<sup>21+</sup>   | number             | No| Yes  | Image or video direction information.<br>1: **TOP-left**: The image is not rotated.<br>2: **TOP-right**: The image is flipped horizontally.<br>3: **Bottom-right**: The image is rotated by 180°.<br>4: **Bottom-left**: The image is flipped vertically.<br>5: **Left-top**: The image is flipped horizontally and then rotated clockwise by 270°.<br>6: **Right-top**: The image is rotated clockwise by 90°.<br>7: **Right-bottom**: The image is vertically flipped and then rotated clockwise by 90°.<br>8: **Left-bottom**: The image is rotated clockwise by 270°.<br>Images with mirroring information retain their original width and height attributes regardless of rotation, whereas images without such information have these attributes updated to reflect the post-rotation dimensions.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
 | movingPhotoBadgeState<sup>22+</sup> | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | No| Yes  | State of the moving photo badge.<br>This parameter is supported only when [ItemType](#itemtype) is set to **THUMBNAIL**. Otherwise, it is left empty.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
-
+| VideoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#videomode22) | No| Yes  | Log mode of a video file.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 ## ItemInfo
 
 Represents the image and video information. It inherits from [BaseItemInfo](#baseiteminfo), adding the parameter **itemType**.
@@ -496,6 +523,7 @@ Describes the updatable attributes of the **PhotoPickerComponent**. These attrib
 | photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode) | No | Yes| Background color of the photo browser page.<br>The options are **AUTO**, **LIGHT**, and **DARK**. The default value is **AUTO**.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                                     |
 | uiComponentColorMode            | [PickerColorMode](#pickercolormode) | No | Yes| Color mode of the Picker UI component.<br>Dark/Light color mode (excluding the background color) of other components on the Picker grid page, including the search box, camera entry, safety tips for using Gallery, and recommendation bubble. This attribute is usually used together with **backgroundColor**. The default value is **PickerColorMode.AUTO**, which follows the system's dark/light color mode.<br>When setting this attribute, avoid using **PickerColorMode.LIGHT** with a dark background color, as it may make components or text hard to see. Avoid using **PickerColorMode.DARK** with a light background color for the same reason.<br>**Atomic service API**: This API can be used in atomic services since API version 22. |
 | isSlidingSupported<sup>23+</sup>         | boolean                         | No  | Yes| Whether scrolling in the **PhotoPickerComponent** is enabled. The value **true** means that scrolling is not blocked and the component responds to user scroll gestures. The value **false** means that scrolling is blocked and the component does not respond to user scroll gestures.<br>The default value is **true**.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | No  | Yes| Scrolling effect when the Picker grid page reaches the edge.<br>The default value is [EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect).<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## DataType
 

@@ -16,6 +16,8 @@
 > 本模块接口从API version 18开始废弃使用, 该接口不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md)订阅APP_CRASH，APP_FREEZE事件。
 >
 > 查阅[从Faultlogger接口迁移崩溃事件](../../dfx/hiappevent-watcher-crash-events-arkts.md#从faultlogger接口迁移崩溃事件)，了解使用hiAppEvent订阅APP_CRASH的具体信息。
+>
+> 查阅[从Faultlogger接口迁移应用冻屏事件](../../dfx/hiappevent-watcher-freeze-events-arkts.md#从faultlogger接口迁移应用冻屏事件)，了解使用hiAppEvent订阅APP_FREEZE的具体信息。
 
 ## 导入模块
 

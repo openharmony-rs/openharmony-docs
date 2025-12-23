@@ -31,7 +31,7 @@
 
 ### OH_Drawing_RegisterFont()
 
-```
+```c
 uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection*, const char* fontFamily, const char* familySrc)
 ```
 
@@ -60,7 +60,7 @@ uint32_t OH_Drawing_RegisterFont(OH_Drawing_FontCollection*, const char* fontFam
 
 ### OH_Drawing_RegisterFontBuffer()
 
-```
+```c
 uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection*, const char* fontFamily, uint8_t* fontBuffer,size_t length)
 ```
 
@@ -90,7 +90,7 @@ uint32_t OH_Drawing_RegisterFontBuffer(OH_Drawing_FontCollection*, const char* f
 
 ### OH_Drawing_UnregisterFont()
 
-```
+```c
 uint32_t OH_Drawing_UnregisterFont(OH_Drawing_FontCollection* fontCollection, const char* fontFamily)
 ```
 

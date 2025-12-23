@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -32,7 +32,7 @@ registerFont(options: FontOptions): void
 
 > **说明：**
 >
-> - 从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)获取[Font](arkts-apis-uicontext-font.md)实例，再通过此实例调用替代方法[registerFont](arkts-apis-uicontext-font.md#registerfont)。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)获取[Font](arkts-apis-uicontext-font.md)实例，再通过此实例调用替代方法[registerFont](arkts-apis-uicontext-font.md#registerfont)。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getFont](arkts-apis-uicontext-uicontext.md#getfont)方法获取当前UI上下文关联的[Font](arkts-apis-uicontext-font.md)对象。
 

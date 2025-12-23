@@ -1,4 +1,4 @@
-# Hitrace
+# HiTrace
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->

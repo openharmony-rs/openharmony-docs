@@ -106,7 +106,7 @@ Defines the APIs for subscribing to and unsubscribing from common events and enu
 
 ### CommonEvent_ErrCode
 
-```
+```c
 enum CommonEvent_ErrCode
 ```
 
@@ -134,7 +134,7 @@ Enumerates the error codes.
 
 ### CommonEvent_ReceiveCallback()
 
-```
+```c
 typedef void (*CommonEvent_ReceiveCallback)(const CommonEvent_RcvData *data)
 ```
 
@@ -153,7 +153,7 @@ Defines the callback function of a common event.
 
 ### OH_CommonEvent_CreateSubscribeInfo()
 
-```
+```c
 CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)
 ```
 
@@ -179,7 +179,7 @@ Creates the subscriber information.
 
 ### OH_CommonEvent_SetPublisherPermission()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublisherPermission(CommonEvent_SubscribeInfo* info, const char* permission)
 ```
 
@@ -205,7 +205,7 @@ Sets the subscriber permission.
 
 ### OH_CommonEvent_SetPublisherBundleName()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublisherBundleName(CommonEvent_SubscribeInfo* info, const char* bundleName)
 ```
 
@@ -231,7 +231,7 @@ Sets a bundle name of the publisher.
 
 ### OH_CommonEvent_DestroySubscribeInfo()
 
-```
+```c
 void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)
 ```
 
@@ -250,7 +250,7 @@ Destroys the subscriber information.
 
 ### OH_CommonEvent_CreateSubscriber()
 
-```
+```c
 CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info,CommonEvent_ReceiveCallback callback)
 ```
 
@@ -276,7 +276,7 @@ Creates a subscriber.
 
 ### OH_CommonEvent_DestroySubscriber()
 
-```
+```c
 void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)
 ```
 
@@ -295,7 +295,7 @@ Destroys a subscriber.
 
 ### OH_CommonEvent_Subscribe()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -320,7 +320,7 @@ Subscribes to a common event.
 
 ### OH_CommonEvent_UnSubscribe()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_UnSubscribe(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -345,7 +345,7 @@ Unsubscribes from a common event.
 
 ### OH_CommonEvent_GetEventFromRcvData()
 
-```
+```c
 const char* OH_CommonEvent_GetEventFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
@@ -370,7 +370,7 @@ Obtains the name of a common event.
 
 ### OH_CommonEvent_GetCodeFromRcvData()
 
-```
+```c
 int32_t OH_CommonEvent_GetCodeFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
@@ -395,7 +395,7 @@ Obtains the result code (integer type) of a common event.
 
 ### OH_CommonEvent_GetDataStrFromRcvData()
 
-```
+```c
 const char* OH_CommonEvent_GetDataStrFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
@@ -420,7 +420,7 @@ Obtains the result data (string type) of a common event.
 
 ### OH_CommonEvent_GetBundleNameFromRcvData()
 
-```
+```c
 const char* OH_CommonEvent_GetBundleNameFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
@@ -445,7 +445,7 @@ Obtains the bundle name of a common event.
 
 ### OH_CommonEvent_GetParametersFromRcvData()
 
-```
+```c
 const CommonEvent_Parameters* OH_CommonEvent_GetParametersFromRcvData(const CommonEvent_RcvData* rcvData)
 ```
 
@@ -470,7 +470,7 @@ Obtains the additional information of a common event.
 
 ### OH_CommonEvent_CreatePublishInfo()
 
-```
+```c
 CommonEvent_PublishInfo* OH_CommonEvent_CreatePublishInfo(bool ordered)
 ```
 
@@ -495,7 +495,7 @@ Creates a property object of a common event.
 
 ### OH_CommonEvent_DestroyPublishInfo()
 
-```
+```c
 void OH_CommonEvent_DestroyPublishInfo(CommonEvent_PublishInfo* info)
 ```
 
@@ -514,7 +514,7 @@ Destroys a property object of a common event.
 
 ### OH_CommonEvent_SetPublishInfoBundleName()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoBundleName(CommonEvent_PublishInfo* info, const char* bundleName)
 ```
 
@@ -540,7 +540,7 @@ Sets the bundle name of a common event.
 
 ### OH_CommonEvent_SetPublishInfoPermissions()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoPermissions(CommonEvent_PublishInfo* info,const char* permissions[], int32_t num)
 ```
 
@@ -567,7 +567,7 @@ Sets permissions for a common event.
 
 ### OH_CommonEvent_SetPublishInfoCode()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoCode(CommonEvent_PublishInfo* info, int32_t code)
 ```
 
@@ -593,7 +593,7 @@ Sets the result code (integer type) of a common event.
 
 ### OH_CommonEvent_SetPublishInfoData()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoData(CommonEvent_PublishInfo* info,const char* data, size_t length)
 ```
 
@@ -620,7 +620,7 @@ Sets the result data (string type) of a common event.
 
 ### OH_CommonEvent_SetPublishInfoParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetPublishInfoParameters(CommonEvent_PublishInfo* info,CommonEvent_Parameters* param)
 ```
 
@@ -646,7 +646,7 @@ Sets the additional information of a common event.
 
 ### OH_CommonEvent_CreateParameters()
 
-```
+```c
 CommonEvent_Parameters* OH_CommonEvent_CreateParameters()
 ```
 
@@ -664,7 +664,7 @@ Creates an additional information object of a common event.
 
 ### OH_CommonEvent_DestroyParameters()
 
-```
+```c
 void OH_CommonEvent_DestroyParameters(CommonEvent_Parameters* param)
 ```
 
@@ -683,7 +683,7 @@ Destroys the additional information object of a common event.
 
 ### OH_CommonEvent_HasKeyInParameters()
 
-```
+```c
 bool OH_CommonEvent_HasKeyInParameters(const CommonEvent_Parameters* para, const char* key)
 ```
 
@@ -709,7 +709,7 @@ Checks whether the additional information of a common event contains a KV pair.
 
 ### OH_CommonEvent_GetIntFromParameters()
 
-```
+```c
 int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, const char* key, const int defaultValue)
 ```
 
@@ -736,7 +736,7 @@ Obtains the int data with a specific key from the additional information of a co
 
 ### OH_CommonEvent_SetIntToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetIntToParameters(CommonEvent_Parameters* param, const char* key, int value)
 ```
 
@@ -763,7 +763,7 @@ Sets the int data with a specific key for the additional information of a common
 
 ### OH_CommonEvent_GetIntArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetIntArrayFromParameters(const CommonEvent_Parameters* para, const char* key, int** array)
 ```
 
@@ -790,7 +790,7 @@ Obtains the int array with a specific key from the additional information of a c
 
 ### OH_CommonEvent_SetIntArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetIntArrayToParameters(CommonEvent_Parameters* param, const char* key,const int* value, size_t num)
 ```
 
@@ -818,7 +818,7 @@ Sets the int array with a specific key for the additional information of a commo
 
 ### OH_CommonEvent_GetLongFromParameters()
 
-```
+```c
 long OH_CommonEvent_GetLongFromParameters(const CommonEvent_Parameters* para, const char* key, const long defaultValue)
 ```
 
@@ -845,7 +845,7 @@ Obtains the long data with a specific key from the additional information of a c
 
 ### OH_CommonEvent_SetLongToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetLongToParameters(CommonEvent_Parameters* param, const char* key, long value)
 ```
 
@@ -872,7 +872,7 @@ Sets the long data with a specific key for the additional information of a commo
 
 ### OH_CommonEvent_GetLongArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetLongArrayFromParameters(const CommonEvent_Parameters* para, const char* key, long** array)
 ```
 
@@ -899,7 +899,7 @@ Obtains the long array with a specific key from the additional information of a 
 
 ### OH_CommonEvent_SetLongArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetLongArrayToParameters(CommonEvent_Parameters* param, const char* key,const long* value, size_t num)
 ```
 
@@ -927,7 +927,7 @@ Sets the long array for the additional information of a common event.
 
 ### OH_CommonEvent_GetBoolFromParameters()
 
-```
+```c
 bool OH_CommonEvent_GetBoolFromParameters(const CommonEvent_Parameters* para, const char* key, const bool defaultValue)
 ```
 
@@ -954,7 +954,7 @@ Obtains the Boolean data with a specific key from the additional information of 
 
 ### OH_CommonEvent_SetBoolToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetBoolToParameters(CommonEvent_Parameters* param, const char* key, bool value)
 ```
 
@@ -981,7 +981,7 @@ Sets the Boolean data with a specific key for the additional information of a co
 
 ### OH_CommonEvent_GetBoolArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetBoolArrayFromParameters(const CommonEvent_Parameters* para, const char* key, bool** array)
 ```
 
@@ -1008,7 +1008,7 @@ Obtains the Boolean array with a specific key from the additional information of
 
 ### OH_CommonEvent_SetBoolArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetBoolArrayToParameters(CommonEvent_Parameters* param, const char* key,const bool* value, size_t num)
 ```
 
@@ -1036,7 +1036,7 @@ Sets the Boolean array with a specific key for the additional information of a c
 
 ### OH_CommonEvent_GetCharFromParameters()
 
-```
+```c
 char OH_CommonEvent_GetCharFromParameters(const CommonEvent_Parameters* para, const char* key, const char defaultValue)
 ```
 
@@ -1063,7 +1063,7 @@ Obtains the character data with a specific key from the additional information o
 
 ### OH_CommonEvent_SetCharToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetCharToParameters(CommonEvent_Parameters* param, const char* key, char value)
 ```
 
@@ -1090,7 +1090,7 @@ Sets the character data with a specific key for the additional information of a 
 
 ### OH_CommonEvent_GetCharArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetCharArrayFromParameters(const CommonEvent_Parameters* para, const char* key, char** array)
 ```
 
@@ -1117,7 +1117,7 @@ Obtains the character array with a specific key from the additional information 
 
 ### OH_CommonEvent_SetCharArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetCharArrayToParameters(CommonEvent_Parameters* param, const char* key,const char* value, size_t num)
 ```
 
@@ -1145,7 +1145,7 @@ Sets the character array with a specific key for the additional information of a
 
 ### OH_CommonEvent_GetDoubleFromParameters()
 
-```
+```c
 double OH_CommonEvent_GetDoubleFromParameters(const CommonEvent_Parameters* para, const char* key,const double defaultValue)
 ```
 
@@ -1172,7 +1172,7 @@ Obtains the double data with a specific key from the additional information of a
 
 ### OH_CommonEvent_SetDoubleToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetDoubleToParameters(CommonEvent_Parameters* param, const char* key,double value)
 ```
 
@@ -1199,7 +1199,7 @@ Sets the double data with a specific key for the additional information of a com
 
 ### OH_CommonEvent_GetDoubleArrayFromParameters()
 
-```
+```c
 int32_t OH_CommonEvent_GetDoubleArrayFromParameters(const CommonEvent_Parameters* para, const char* key,double** array)
 ```
 
@@ -1216,7 +1216,7 @@ Obtains the double array with a specific key from the additional information of 
 | -- | -- |
 | const [CommonEvent_Parameters](#variables)* para| Pointer to the additional information of a common event.|
 | const char* key | Pointer to the key.|
-| double** array | Double pointer to the array to obtain.|
+| double** array | Double pointer to the double array to obtain.|
 
 **Returns**
 
@@ -1226,7 +1226,7 @@ Obtains the double array with a specific key from the additional information of 
 
 ### OH_CommonEvent_SetDoubleArrayToParameters()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parameters* param, const char* key,const double* value, size_t num)
 ```
 
@@ -1254,7 +1254,7 @@ Sets the double array with a specific key for the additional information of a co
 
 ### OH_CommonEvent_Publish()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)
 ```
 
@@ -1279,7 +1279,7 @@ Publishes a common event.
 
 ### OH_CommonEvent_PublishWithInfo()
 
-```
+```c
 CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)
 ```
 
@@ -1305,7 +1305,7 @@ Publishes a common event with specified properties.
 
 ### OH_CommonEvent_IsOrderedCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1330,7 +1330,7 @@ Checks whether a common event is an ordered one.
 
 ### OH_CommonEvent_FinishCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1355,7 +1355,7 @@ Finishes an ordered common event.
 
 ### OH_CommonEvent_GetAbortCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1380,7 +1380,7 @@ Checks whether an ordered common event is aborted.
 
 ### OH_CommonEvent_AbortCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1405,7 +1405,7 @@ Aborts an ordered common event when used with [OH_CommonEvent_FinishCommonEvent]
 
 ### OH_CommonEvent_ClearAbortCommonEvent()
 
-```
+```c
 bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1430,7 +1430,7 @@ Clears the aborted state of an ordered common event when used with [OH_CommonEve
 
 ### OH_CommonEvent_GetCodeFromSubscriber()
 
-```
+```c
 int32_t OH_CommonEvent_GetCodeFromSubscriber(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1455,7 +1455,7 @@ Obtains the result code (integer type) of an ordered common event.
 
 ### OH_CommonEvent_SetCodeToSubscriber()
 
-```
+```c
 bool OH_CommonEvent_SetCodeToSubscriber(CommonEvent_Subscriber* subscriber, int32_t code)
 ```
 
@@ -1481,7 +1481,7 @@ Sets the result code (integer type) of an ordered common event.
 
 ### OH_CommonEvent_GetDataFromSubscriber()
 
-```
+```c
 const char* OH_CommonEvent_GetDataFromSubscriber(const CommonEvent_Subscriber* subscriber)
 ```
 
@@ -1506,7 +1506,7 @@ Obtains the result data (string type) of an ordered common event.
 
 ### OH_CommonEvent_SetDataToSubscriber()
 
-```
+```c
 bool OH_CommonEvent_SetDataToSubscriber(CommonEvent_Subscriber* subscriber, const char* data, size_t length)
 ```
 

@@ -33,7 +33,7 @@
 
 ### OH_Drawing_ColorSpaceCreateSrgb()
 
-```
+```c
 OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgb(void)
 ```
 
@@ -53,7 +53,7 @@ OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgb(void)
 
 ### OH_Drawing_ColorSpaceCreateSrgbLinear()
 
-```
+```c
 OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgbLinear(void)
 ```
 
@@ -73,7 +73,7 @@ OH_Drawing_ColorSpace* OH_Drawing_ColorSpaceCreateSrgbLinear(void)
 
 ### OH_Drawing_ColorSpaceDestroy()
 
-```
+```c
 void OH_Drawing_ColorSpaceDestroy(OH_Drawing_ColorSpace* colorSpace)
 ```
 

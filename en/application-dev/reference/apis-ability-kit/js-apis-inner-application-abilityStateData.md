@@ -34,6 +34,7 @@ import { appManager } from '@kit.AbilityKit';
 | abilityType | number | No  | No  | [Ability type](#ability-types), which can be [UIAbility](js-apis-app-ability-uiAbility.md) or [ExtensionAbility](js-apis-app-ability-extensionAbility.md).|
 | isAtomicService | boolean | No| No| Whether the ability belongs to an atomic service.<br>**true**: The ability belongs to an atomic service.<br>**false**: The ability does not belong to an atomic service.|
 | appCloneIndex          | number   | No  | Yes  | Index of an [application clone](../../quick-start/app-clone.md).                 |
+| callerBundleName<sup>23+</sup> | string | No| Yes| Bundle name of the application that triggers the creation of the ability.|
 
 ### UIAbility States
 

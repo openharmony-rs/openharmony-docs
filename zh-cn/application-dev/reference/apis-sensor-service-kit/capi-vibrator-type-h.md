@@ -40,7 +40,7 @@
 
 ### Vibrator_ErrorCode
 
-```
+```c
 enum Vibrator_ErrorCode
 ```
 
@@ -59,7 +59,7 @@ enum Vibrator_ErrorCode
 
 ### Vibrator_Usage
 
-```
+```c
 enum Vibrator_Usage
 ```
 

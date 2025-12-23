@@ -160,7 +160,7 @@ Sets the concerned target bundle. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -205,7 +205,7 @@ Sets the concerned target bundle. This API uses an asynchronous callback to retu
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -251,7 +251,7 @@ Obtains the focus element. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -299,7 +299,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -344,7 +344,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -391,7 +391,7 @@ Obtains the root element of a window. This API uses a promise to return the resu
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -440,7 +440,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -485,7 +485,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -532,7 +532,7 @@ Obtains the list of windows on a display. This API uses a promise to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -578,7 +578,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -620,7 +620,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -662,7 +662,7 @@ injectGesture(gesturePath: GesturePath): Promise\<void>;
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated) instead.
 
 Injects a gesture. This API uses a promise to return the result.
 
@@ -713,7 +713,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated) instead.
 
 Injects a gesture. This API uses an asynchronous callback to return the result.
 
@@ -762,7 +762,7 @@ Injects a gesture.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 10 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -808,7 +808,7 @@ Obtains all attribute names of this element. This API uses a promise to return t
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -840,7 +840,7 @@ Obtains all attribute names of this element. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -874,7 +874,7 @@ Obtains the attribute value based on an attribute name. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -926,7 +926,7 @@ Obtains the attribute value based on an attribute name. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -972,7 +972,7 @@ Obtains the names of all actions supported by this element. This API uses a prom
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1003,7 +1003,7 @@ Obtains the names of all actions supported by this element. This API uses an asy
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1034,7 +1034,7 @@ Performs an action based on the specified action name. This API uses a promise t
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1042,7 +1042,7 @@ Performs an action based on the specified action name. This API uses a promise t
 
 | Name        | Type                                    | Mandatory  | Description                                                      |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action). |
+| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action).| 
 | parameters | object | No   | Parameters required for performing the target action. Empty by default.                            |
 
 **Return value**
@@ -1129,7 +1129,7 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1137,7 +1137,7 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 | Name        | Type                                    | Mandatory  | Description            |
 | ----------- | ---------------------------------------- | ---- | -------------- |
-| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action). |
+| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action).| 
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
 
 **Error codes**
@@ -1174,7 +1174,7 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1221,7 +1221,7 @@ Finds an element based on the content type. This API uses a promise to return th
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1269,7 +1269,7 @@ Finds an element based on the content type. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1314,7 +1314,7 @@ Finds an element based on the focus type. This API uses a promise to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1363,7 +1363,7 @@ Finds an element based on the focus type. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1409,7 +1409,7 @@ Finds an element based on the focus direction. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1458,7 +1458,7 @@ Finds an element based on the focus direction. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 

@@ -187,7 +187,7 @@ Since API version 20, the **Page switch history** field is used to record the pa
 
 > **NOTE**
 >
-> The child page's name is available only when it is navigated to through **Navigation**. The page name is defined in the [system routing table](../ui/arkts-navigation-navigation.md#system-routing-table).
+> The child page's name is available only when it is navigated to through **Navigation**.
 >
 > When the application switches between the foreground and background, the corresponding page URL is empty, but **enters foreground** and **leaves foreground** are displayed as special page names.
 >

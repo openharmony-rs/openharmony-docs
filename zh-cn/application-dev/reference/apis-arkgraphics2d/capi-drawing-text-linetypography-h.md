@@ -34,7 +34,7 @@
 
 ### OH_Drawing_CreateLineTypography()
 
-```
+```c
 OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_TypographyCreate* handler)
 ```
 
@@ -61,7 +61,7 @@ OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_Typography
 
 ### OH_Drawing_DestroyLineTypography()
 
-```
+```c
 void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)
 ```
 
@@ -82,7 +82,7 @@ void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)
 
 ### OH_Drawing_LineTypographyGetLineBreak()
 
-```
+```c
 size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypography,size_t startIndex, double width)
 ```
 
@@ -111,7 +111,7 @@ size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypo
 
 ### OH_Drawing_LineTypographyCreateLine()
 
-```
+```c
 OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypography* lineTypography,size_t startIndex, size_t count)
 ```
 

@@ -157,7 +157,7 @@ Connect the device to a PC and enable Developer mode for subsequent port forward
 After the application code calls the **setWebDebuggingAccess** API to enable web debugging, the ArkWeb kernel starts a domain socket listener to enable DevTools to debug web pages. 
 However, Chrome cannot directly access the domain socket on the device. Therefore, the domain socket on the device needs to be forwarded to the PC.
 
-You are advised to [automatically map WebView debugging links](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516).
+You are advised to [automatically map WebView debugging links](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-run-debug-configurations#section48387420516).
 
 If the DevEco Studio version is earlier than the required version, perform the following steps:
 1. Run the following command in hdc shell to obtain the domain socket created by ArkWeb on the device. 
@@ -251,7 +251,7 @@ Copy the following information to create a .bat file, enable application debuggi
 
    :: If no process ID was found, prompt the user to open debugging in their application code and provide the documentation link
    if "!SOCKET_NAME!"=="" (
-       echo No process ID was found. Please open debugging in your application code using the corresponding interface. You can find the relevant documentation at this link: [https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/web/web-debugging-with-devtools.md]
+       echo No process ID was found. Please open debugging in your application code using the corresponding interface. You can find the relevant documentation at this link: [https://gitcode.com/openharmony/docs/blob/master/en/application-dev/web/web-debugging-with-devtools.md]
        pause
        exit /b
    )

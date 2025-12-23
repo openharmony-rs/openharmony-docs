@@ -33,6 +33,7 @@ Defines data structures for the C APIs of the SSL/TLS certificate chain verifica
 | [void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)](#oh_netstack_destroycertificatescontent) | Releases the certificate content.|
 | [int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)](#oh_netstack_iscleartextpermitted) | Boolean value indicating whether plaintext HTTP is allowed.|
 | [int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *isCleartextPermitted)](#oh_netstack_iscleartextpermittedbyhostname) | Boolean value indicating whether host name–based plaintext HTTP is allowed.|
+| [int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg)](#oh_netstack_iscleartextcfgbycomponent) | Checks whether plaintext HTTP interception is enabled.|
 
 
 ## Function Description
@@ -196,3 +197,29 @@ Boolean value indicating whether host name–based plaintext HTTP is allowed.
 | Type| Description|
 | -- | -- |
 | int32_t | **0**: Success.<br>         **201**: Permission denied.<br>         **401**: Parameter error.|
+
+### OH_Netstack_IsCleartextCfgByComponent
+
+```
+int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *componentCfg);
+```
+
+**Description**
+
+Checks whether plaintext HTTP interception is enabled.
+
+**Since**: 20
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const char *component | Component name. The following components are supported: Network Kit and ArkWeb.|
+| bool *componentCfg | Output parameter, which indicates whether plaintext HTTP interception is enabled. The value **true** indicates that plaintext HTTP interception is enabled, and the value **false** indicates the opposite.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | **0**: Success.<br>         **2100001**: Invalid parameter value.|

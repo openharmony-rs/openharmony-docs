@@ -54,7 +54,7 @@
 
 ### OH_HiDebug_GetSystemCpuUsage()
 
-```
+```c
 double OH_HiDebug_GetSystemCpuUsage()
 ```
 
@@ -72,7 +72,7 @@ double OH_HiDebug_GetSystemCpuUsage()
 
 ### OH_HiDebug_GetAppCpuUsage()
 
-```
+```c
 double OH_HiDebug_GetAppCpuUsage()
 ```
 
@@ -90,7 +90,7 @@ double OH_HiDebug_GetAppCpuUsage()
 
 ### OH_HiDebug_GetAppThreadCpuUsage()
 
-```
+```c
 HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 ```
 
@@ -108,7 +108,7 @@ HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 
 ### OH_HiDebug_FreeThreadCpuUsage()
 
-```
+```c
 void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)
 ```
 
@@ -127,7 +127,7 @@ void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)
 
 ### OH_HiDebug_GetSystemMemInfo()
 
-```
+```c
 void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 ```
 
@@ -146,7 +146,7 @@ void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 
 ### OH_HiDebug_GetAppNativeMemInfo()
 
-```
+```c
 void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)
 ```
 
@@ -165,7 +165,7 @@ void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)
 
 ### OH_HiDebug_GetAppNativeMemInfoWithCache()
 
-```
+```c
 void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInfo, bool forceRefresh)
 ```
 
@@ -185,7 +185,7 @@ void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInf
 
 ### OH_HiDebug_GetAppMemoryLimit()
 
-```
+```c
 void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)
 ```
 
@@ -204,7 +204,7 @@ void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)
 
 ### OH_HiDebug_StartAppTraceCapture()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64_t tags, uint32_t limitSize, char* fileName, uint32_t length)
 ```
 
@@ -233,7 +233,7 @@ HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64
 
 ### OH_HiDebug_StopAppTraceCapture()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 ```
 
@@ -251,7 +251,7 @@ HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 
 ### OH_HiDebug_GetGraphicsMemory()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 ```
 
@@ -276,7 +276,7 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 
 ### OH_HiDebug_BacktraceFromFp()
 
-```
+```c
 int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, void** pcArray, int size)
 ```
 
@@ -304,7 +304,7 @@ int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, v
 
 ### OH_HiDebug_SymbolicAddressCallback()
 
-```
+```c
 typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const HiDebug_StackFrame* frame)
 ```
 
@@ -325,7 +325,7 @@ typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const Hi
 
 ### OH_HiDebug_SymbolicAddress()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, void* pc, void* arg, OH_HiDebug_SymbolicAddressCallback callback)
 ```
 
@@ -353,7 +353,7 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 
 ### OH_HiDebug_CreateBacktraceObject()
 
-```
+```c
 HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 ```
 
@@ -371,7 +371,7 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 ### OH_HiDebug_DestroyBacktraceObject()
 
-```
+```c
 void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 ```
 
@@ -390,7 +390,7 @@ void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 
 ### OH_HiDebug_SetMallocDispatchTable()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatch *dispatchTable)
 ```
 
@@ -415,7 +415,7 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 
 ### OH_HiDebug_GetDefaultMallocDispatchTable()
 
-```
+```c
 HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)
 ```
 
@@ -433,7 +433,7 @@ HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)
 
 ### OH_HiDebug_RestoreMallocDispatchTable()
 
-```
+```c
 void OH_HiDebug_RestoreMallocDispatchTable(void)
 ```
 
@@ -445,7 +445,7 @@ void OH_HiDebug_RestoreMallocDispatchTable(void)
 
 ### OH_HiDebug_GetGraphicsMemorySummary()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug_GraphicsMemorySummary *summary)
 ```
 
@@ -471,7 +471,7 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug
 
 ### OH_HiDebug_ThreadLiteSamplingCallback()
 
-```
+```c
 typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)
 ```
 
@@ -489,7 +489,7 @@ typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)
 
 ### OH_HiDebug_RequestThreadLiteSampling()
 
-```
+```c
 HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerConfig* config, OH_HiDebug_ThreadLiteSamplingCallback stacksCallback)
 ```
 
@@ -510,6 +510,6 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br> HIDEBUG_SUCCESSS：采样成功完成。<br>HIDEBUG_INVALID_ARGUMENT：无效参数。<br>         HIDEBUG_NOT_SUPPORTED：当前设备不支持Perf采样。<br>         HIDEBUG_UNDER_SAMPLING：已有采样任务正在执行中。<br>         HIDEBUG_RESOURCE_UNAVAILABLE：采样资源不足或已达调用上限。 |
+| [HiDebug_ErrorCode](capi-hidebug-type-h.md#hidebug_errorcode) | 返回结果码：<br> HIDEBUG_SUCCESS：采样成功完成。<br>HIDEBUG_INVALID_ARGUMENT：无效参数。<br>         HIDEBUG_NOT_SUPPORTED：当前设备不支持Perf采样。<br>         HIDEBUG_UNDER_SAMPLING：已有采样任务正在执行中。<br>         HIDEBUG_RESOURCE_UNAVAILABLE：采样资源不足或已达调用上限。 |
 
 

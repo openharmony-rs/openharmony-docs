@@ -56,7 +56,8 @@
    - 如果是想发送短信，则调用sendShortMessage接口，需要配置ohos.permission.SEND_MESSAGES权限，权限级别为system_basic。
    - 如果是想设置短信服务中心地址，则调用setSmscAddr接口，需要配置ohos.permission.SET_TELEPHONY_STATE权限，权限级别为system_basic。
    - 如果是想获取短信服务中心地址，则调用getSmscAddr接口，需要配置ohos.permission.GET_TELEPHONY_STATE权限，权限级别为system_basic。
-   在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)声明对应权限。
+  
+     在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)声明对应权限。
 2. import需要的模块。
 
 3. 发送SMS消息。
@@ -161,7 +162,7 @@ struct JumpMessage {
 
 sms协议标准格式如下：
 
-```
+```txt
 sms:106XXXXXXXXXX?body=发送短信内容
 ```
 
@@ -176,7 +177,7 @@ sms:106XXXXXXXXXX?body=发送短信内容
 
 网页中的超链接需要满足sms协议。示例如下：
 
-```
+```txt
 <a href="sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9">发送短信</a>
 ```
 

@@ -1,20 +1,16 @@
 # Class (PhotoViewPicker)
+<!--Kit: Media Library Kit-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @xuchangda-->
+<!--Designer: @guxinggang-->
+<!--Tester: @wangbeibei-->
+<!--Adviser: @w_Machine_cc-->
+
+图库选择器对象用于支持选择图片、视频等用户场景。使用前，需先创建PhotoViewPicker实例。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-图库选择器对象用于支持选择图片、视频等用户场景。使用前，需先创建PhotoViewPicker实例。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**示例：**
-
-```ts
-let photoPicker = new photoAccessHelper.PhotoViewPicker();
-```
 
 ## 导入模块
 
@@ -28,7 +24,9 @@ select(option?: PhotoSelectOptions) : Promise&lt;PhotoSelectResult&gt;
 
 通过选择模式拉起photoPicker界面，用户可以选择一个或多个图片/视频。接口采用Promise异步返回形式，传入可选参数PhotoSelectOptions对象，返回PhotoSelectResult对象。
 
-**注意**：此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用[photoAccessHelper.getAssets接口](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
+> **注意：**
+>
+> 此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用接口[photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用。具体操作请参考[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -84,7 +82,9 @@ select(option: PhotoSelectOptions, callback: AsyncCallback&lt;PhotoSelectResult&
 
 通过选择模式拉起photoPicker界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，传入参数PhotoSelectOptions对象，返回PhotoSelectResult对象。
 
-**注意**：此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用[photoAccessHelper.getAssets接口](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
+> **注意：**
+>
+> 此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用接口[photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用。具体操作请参考[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -137,7 +137,9 @@ select(callback: AsyncCallback&lt;PhotoSelectResult&gt;) : void
 
 通过选择模式拉起photoPicker界面，用户可以选择一个或多个图片/视频。接口采用callback异步返回形式，返回PhotoSelectResult对象。
 
-**注意**：此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用[photoAccessHelper.getAssets接口](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用，具体使用方式参见用户文件uri介绍中的[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
+> **注意：**
+>
+> 此接口返回的PhotoSelectResult对象中的photoUris具有永久授权，可通过调用接口[photoAccessHelper.getAssets](arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)去使用。具体操作请参考[媒体文件uri的使用方式](../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 

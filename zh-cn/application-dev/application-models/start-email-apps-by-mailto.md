@@ -1,5 +1,12 @@
 # 拉起邮件类应用（mailto方式）
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Ability-->
+<!--Owner: @sxsxjc-->
+<!--Designer: @stardrift1-->
+<!--Tester: @Lww11964-->
+<!--Adviser: @huipeizi-->
+
 ## 使用场景
 
 通过mailto电子邮件协议，可以创建指向电子邮件地址的超链接，方便用户通过网页或应用中的超链接直接跳转电子邮件应用。同时，支持在`mailto:`的相关字段中定义邮件的收件人、主题、正文内容等，节省用户编辑邮件的时间。
@@ -127,12 +134,12 @@ struct Index {
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void { 
         // 应用冷启动生命周期回调，其他业务处理...
-        parseMailto(want);
+        this.parseMailto(want);
       }
     
       onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 应用热启动生命周期回调，其他业务处理...
-        parseMailto(want);
+        this.parseMailto(want);
       }
     
       public parseMailto(want: Want) {

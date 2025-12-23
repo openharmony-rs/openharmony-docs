@@ -16,7 +16,7 @@
 ## 导入模块
 ```ts
 import { SceneResourceParameters, SceneNodeParameters, RaycastResult, RaycastParameters,RenderResourceFactory,
-  SceneResourceFactory, SceneComponent, RenderContext, RenderParameters, Scene } from '@kit.ArkGraphics3D';
+  SceneResourceFactory, SceneComponent, RenderContext, RenderConfiguration, RenderParameters, Scene } from '@kit.ArkGraphics3D';
 ```
 
 ## SceneResourceParameters
@@ -820,6 +820,14 @@ function registerResourcePath(): void {
 }
 ```
 
+## RenderConfiguration<sup>23+</sup>
+渲染配置接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| shadowResolution| [Vec2](js-apis-inner-scene-types.md#vec2) | 否 | 是 | 表示全局阴影贴图分辨率。默认值为undefined，表示阴影贴图分辨率设置为1024 * 1024。输入的值需要大于0才能正确生效。如果输入值为浮点数则自动截取整数部分；如果输入值小于或等于0则无视该输入，维持原有配置。 |
+
 ## RenderParameters<sup>15+</sup>
 渲染参数接口。
 
@@ -841,6 +849,7 @@ function registerResourcePath(): void {
 | environment | [Environment](js-apis-inner-scene-resources.md#environment) | 否 | 否 | 环境对象。 |
 | animations | [Animation](js-apis-inner-scene-resources.md#animation)[] | 是 | 否 | 动画数组，用于保存3D场景中的动画对象。|
 | root | [Node](js-apis-inner-scene-nodes.md#node) \| null | 是 | 否 | 3D场景树根结点。 |
+| renderConfiguration<sup>23+</sup> | [RenderConfiguration](#renderconfiguration23)  | 是 | 否 | 渲染配置接口。 |
 
 ### load
 static load(uri?: ResourceStr): Promise\<Scene>
@@ -1207,5 +1216,47 @@ function getDefaultRenderContextTest() {
   } else {
     console.error("RenderContext is null");
   }
+}
+```
+
+### cloneNode<sup>23+</sup>
+cloneNode(node: Node, parent: Node, name: string): Node | null
+
+一般用于从其他场景导入结点。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | ---- |
+| node | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点。|
+| parent | [Node](js-apis-inner-scene-nodes.md#node) | 是 | 被克隆的结点在新场景中的父结点。|
+| name | string | 是 | 导入结点后的名称，由开发者自定义，无特殊要求。|
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| [Node](js-apis-inner-scene-nodes.md#node) \| null | 被克隆的结点。克隆失败则返回null。 |
+
+**示例：**
+```ts
+import { Scene, Node } from '@kit.ArkGraphics3D';
+
+function CloneNode() {
+  Scene.load().then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+    Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+      .then(async (extScene: Scene) => {
+        let extNode: Node | null = extScene.getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube");
+        console.info("test cloneNode");
+        let clone: Node | null = result.cloneNode(extNode, result.root, "scene");
+        if (clone) {
+          clone.position.x = 5;
+        }
+      });
+  });
 }
 ```

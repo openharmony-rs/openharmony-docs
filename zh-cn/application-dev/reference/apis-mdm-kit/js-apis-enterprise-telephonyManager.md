@@ -39,7 +39,7 @@ setSimDisabled(admin: Want, slotId: number): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | slotId | number                     | 是   | 卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。 |
 
 **错误码**：
@@ -76,7 +76,7 @@ try {
 
 setSimEnabled(admin: Want, slotId: number): void
 
-解除指定卡槽的SIM卡禁用。
+解除指定卡槽的SIM卡禁用。使用setSimDisabled禁用SIM卡后，再用setSimEnabled启用SIM卡，需要到设置-移动网络-SIM卡管理界面手动打开SIM卡开关。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_TELEPHONY
 
@@ -88,7 +88,7 @@ setSimEnabled(admin: Want, slotId: number): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | slotId | number                     | 是   |卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。  |
 
 **错误码**：
@@ -137,7 +137,7 @@ isSimDisabled(admin: Want, slotId: number): boolean
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | slotId | number                     | 是   |卡槽ID，目前仅支持单卡槽设备和双卡槽设备，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。  |
 
 **返回值：**
@@ -202,7 +202,7 @@ addOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 | 参数名    | 类型                                                    | 必填 | 说明                                   |
 | --------- | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 | numbers | Array\<string>    | 是   | 通话号码列表，当前仅支持全号码匹配。数组总长度不能超过1000。例如，若当前允许名单数组中已有100个号码，则最多支持通过该接口再添加900个。  |
 
@@ -268,7 +268,7 @@ removeOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 | numbers | Array\<string>    | 是   | 待移除的通话号码数组。数组总长度不能超过1000。  |
 
@@ -330,7 +330,7 @@ getOutgoingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。 BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。  |
 
 
@@ -396,7 +396,7 @@ addIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, numbers: 
 
 | 参数名    | 类型                                                    | 必填 | 说明                                   |
 | --------- | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 | numbers | Array\<string>    | 是   | 通话号码列表，当前仅支持全号码匹配。数组总长度不能超过1000。例如，若当前允许名单数组中已有100个号码，则最多支持通过该接口再添加900个。  |
 
@@ -462,7 +462,7 @@ removeIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy, number
 
 | 参数名 | 类型                                                    | 必填 | 说明                                   |
 | ------ | ------------------------------------------------------- | ---- | -------------------------------------- |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 | numbers | Array\<string>    | 是   | 待移除的通话号码数组。数组总长度不能超过1000。   |
 
@@ -524,7 +524,7 @@ getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy): Array\<s
 
 | 参数名     | 类型                                                    | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 | policy | [adminManager.Policy](js-apis-enterprise-adminManager.md#policy20)    | 是   | 允许或禁用名单策略。BLOCK_LIST为禁用名单，TRUST_LIST为允许名单。   |
 
 
@@ -583,7 +583,7 @@ hangupCalling(admin: Want): void
 
 | 参数名       | 类型                                                    | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。 |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
 
 **错误码**：
 

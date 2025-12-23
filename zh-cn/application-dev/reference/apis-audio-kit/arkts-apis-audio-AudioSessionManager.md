@@ -148,7 +148,8 @@ on(type: 'audioSessionDeactivated', callback: Callback\<AudioSessionDeactivatedE
 **示例：**
 
 ```ts
-audioSessionManager.on('audioSessionDeactivated', (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
+audioSessionManager.on('audioSessionDeactivated',
+  (audioSessionDeactivatedEvent: audio.AudioSessionDeactivatedEvent) => {
   console.info(`reason of audioSessionDeactivated: ${audioSessionDeactivatedEvent.reason} `);
 });
 ```

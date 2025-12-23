@@ -86,27 +86,27 @@ Uploads a file. This API uses a promise to return the result. HTTP is supported.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
+  | config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
 
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;[UploadTask](#uploadtask)&gt; | Promise used to return the **UploadTask** object.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;[UploadTask](#uploadtask)&gt; | Promise used to return the **UploadTask** object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400002 | File path not supported or invalid. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400002 | File path not supported or invalid. |
 
 **Example**
   <!--code_no_check-->
@@ -152,21 +152,21 @@ Uploads a file. This API uses an asynchronous callback to return the result. HTT
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
-| callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | Yes| Callback used to return the **UploadTask** object. If the operation is successful, **err** is **undefined**, and **data** is the **UploadTask** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
+  | config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+  | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | Yes| Callback used to return the **UploadTask** object. If the operation is successful, **err** is **undefined**, and **data** is the **UploadTask** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400002 | File path not supported or invalid. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400002 | File path not supported or invalid. |
 
 **Example**
   <!--code_no_check-->
@@ -215,23 +215,23 @@ Uploads files. This API uses a promise to return the result.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;[UploadTask](#uploadtask)&gt; | Promise used to return the **UploadTask** object.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;[UploadTask](#uploadtask)&gt; | Promise used to return the **UploadTask** object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -270,18 +270,18 @@ Uploads files. This API uses an asynchronous callback to return the result.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
-| callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | Yes| Callback used to return the **UploadTask** object. If the operation is successful, **err** is **undefined**, and **data** is the **UploadTask** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | config | [UploadConfig](#uploadconfig6) | Yes| Upload configurations.|
+  | callback | AsyncCallback&lt;[UploadTask](#uploadtask)&gt; | Yes| Callback used to return the **UploadTask** object. If the operation is successful, **err** is **undefined**, and **data** is the **UploadTask** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -339,9 +339,9 @@ Subscribes to upload progress events. This API uses an asynchronous callback to 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
 
@@ -364,10 +364,10 @@ Subscribes to HTTP response events for the upload task.This API uses an asynchro
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'headerReceive'**: The HTTP request receives a response.|
-| callback | function | Yes| Callback used to return the response content.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'headerReceive'**: The HTTP request receives a response.|
+  | callback | function | Yes| Callback used to return the response content.|
 
   Parameters of the callback function
 
@@ -379,9 +379,9 @@ Subscribes to HTTP response events for the upload task.This API uses an asynchro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
 
@@ -404,19 +404,19 @@ Subscribes to upload completion or failure events. This API uses an asynchronous
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Type of the event to subscribe to. The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure.|
-| callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | Yes| Callback used to return the result.  |
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Type of the event to subscribe to. The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure.|
+  | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | Yes| Callback used to return the result.  |
 
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
 
@@ -448,10 +448,10 @@ Unsubscribes from upload progress events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'progress'**: upload progress.|
-| callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'progress'**: upload progress.|
+  | callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
 Parameters of the callback function
 
@@ -464,9 +464,9 @@ Parameters of the callback function
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
 
@@ -497,10 +497,10 @@ Unsubscribes from HTTP response events for the upload task.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'headerReceive'**: The HTTP request receives a response.|
-| callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'headerReceive'**: The HTTP request receives a response.|
+  | callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
   Parameters of the callback function
 
@@ -512,9 +512,9 @@ Unsubscribes from HTTP response events for the upload task.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
 
@@ -544,18 +544,18 @@ Unsubscribes from upload completion or failure events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'complete'**: upload task completion.<br>- **'fail'**: upload task failure.|
-| callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'complete'**: upload task completion.<br>- **'fail'**: upload task failure.|
+  | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
 
@@ -615,17 +615,17 @@ Deletes this upload task. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -655,17 +655,17 @@ Deletes an upload task. This API uses an asynchronous callback to return the res
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -697,17 +697,17 @@ Removes this upload task. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -736,17 +736,17 @@ Removes an upload task. This API uses an asynchronous callback to return the res
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -846,28 +846,28 @@ Downloads a file. This API uses a promise to return the result. HTTP is supporte
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [DownloadConfig](#downloadconfig) | Yes| Download configuration.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
+  | config | [DownloadConfig](#downloadconfig) | Yes| Download configuration.|
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;[DownloadTask](#downloadtask)&gt; | Promise used to return the **DownloadTask** object.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;[DownloadTask](#downloadtask)&gt; | Promise used to return the **DownloadTask** object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400001 | Invalid file or file system error. |
-| 13400002 | File path not supported or invalid. |
-| 13400003 | Task service ability error. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400001 | Invalid file or file system error. |
+  | 13400002 | File path not supported or invalid. |
+  | 13400003 | Task service ability error. |
 
 **Example**
   <!--code_no_check-->
@@ -906,23 +906,23 @@ Downloads a file. This API uses an asynchronous callback to return the result. H
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [DownloadConfig](#downloadconfig) | Yes| Download configuration.|
-| callback | AsyncCallback&lt;[DownloadTask](#downloadtask)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadTask** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
+  | config | [DownloadConfig](#downloadconfig) | Yes| Download configuration.|
+  | callback | AsyncCallback&lt;[DownloadTask](#downloadtask)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadTask** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400001 | Invalid file or file system error. |
-| 13400002 | File path not supported or invalid. |
-| 13400003 | Task service ability error. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400001 | Invalid file or file system error. |
+  | 13400002 | File path not supported or invalid. |
+  | 13400003 | Task service ability error. |
 
 **Example**
   <!--code_no_check-->
@@ -966,23 +966,23 @@ Download files. This API uses a promise to return the result.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| config | [DownloadConfig](#downloadconfig) | Yes| Download configuration.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | config | [DownloadConfig](#downloadconfig) | Yes| Download configuration.|
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;[DownloadTask](#downloadtask)&gt; | Promise used to return the **DownloadTask** object.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;[DownloadTask](#downloadtask)&gt; | Promise used to return the **DownloadTask** object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -1015,17 +1015,17 @@ Downloads files. This API uses an asynchronous callback to return the result.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| config | [DownloadConfig](#downloadconfig) | Yes| Download configuration.|
-| callback | AsyncCallback&lt;[DownloadTask](#downloadtask)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadTask** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | config | [DownloadConfig](#downloadconfig) | Yes| Download configuration.|
+  | callback | AsyncCallback&lt;[DownloadTask](#downloadtask)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadTask** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
-| -------- | -------- |
+  | -------- | -------- |
 | 201 | The permissions check fails. |
 
 **Example**
@@ -1062,10 +1062,10 @@ Subscribes to download progress events. This API uses an asynchronous callback t
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'progress'**: download progress.|
-| callback | function | Yes| Callback used to return the size of the uploaded file and the total size of the file to upload.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'progress'**: download progress.|
+  | callback | function | Yes| Callback used to return the size of the uploaded file and the total size of the file to upload.|
 
   Parameters of the callback function
 
@@ -1078,9 +1078,9 @@ Subscribes to download progress events. This API uses an asynchronous callback t
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -1117,11 +1117,11 @@ Unsubscribes from download progress events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'progress'**: download progress.|
-| callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
-
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'progress'**: download progress.|
+  | callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+  
   Parameters of the callback function
 
 | Name| Type| Mandatory| Description                                                                     |
@@ -1134,9 +1134,9 @@ Unsubscribes from download progress events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -1181,18 +1181,18 @@ Subscribes to download events. This API uses an asynchronous callback to return 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'complete'**: download task completion.<br>- **'pause'**: download task pause.<br>- **'remove'**: download task removal.|
-| callback | function | Yes| Callback used to return the result.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'complete'**: download task completion.<br>- **'pause'**: download task pause.<br>- **'remove'**: download task removal.|
+  | callback | function | Yes| Callback used to return the result.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -1239,18 +1239,18 @@ Unsubscribes from download events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'complete'**: download task completion.<br>- **'pause'**: download task pause.<br>- **'remove'**: download task removal.|
-| callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'complete'**: download task completion.<br>- **'pause'**: download task pause.<br>- **'remove'**: download task removal.|
+  | callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -1321,10 +1321,10 @@ Subscribes to download failure events. This API uses an asynchronous callback to
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'fail'**: download task failure.|
-| callback | function | Yes| Callback for the download task failure event.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'fail'**: download task failure.|
+  | callback | function | Yes| Callback for the download task failure event.|
 
   Parameters of the callback function
 
@@ -1336,9 +1336,9 @@ Subscribes to download failure events. This API uses an asynchronous callback to
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -1375,10 +1375,10 @@ Unsubscribes from download failure events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| type | string | Yes| Event type.<br>- **'fail'**: download task failure.|
-| callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | type | string | Yes| Event type.<br>- **'fail'**: download task failure.|
+  | callback | function | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
   Parameters of the callback function
 
@@ -1390,9 +1390,9 @@ Unsubscribes from download failure events.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -1435,24 +1435,24 @@ Deletes this download task. This API uses a promise to return the result.
 **Required permissions**: ohos.permission.INTERNET
 
 **System capability**: SystemCapability.MiscServices.Download
-
+  
 > **NOTE**
 >
 > The scenarios for triggering error code **401 the parameters check fails** do not exist. Therefore, this error code is removed from API version 12.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
   <!--code_no_check-->
@@ -1494,17 +1494,17 @@ Deletes a download task. This API uses an asynchronous callback to return the re
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 
 **Example**
@@ -1550,17 +1550,17 @@ Obtains the information about this download task. This API uses a promise to ret
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;[DownloadInfo](#downloadinfo7)&gt; |  Promise used to return a **DownloadInfo** object.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;[DownloadInfo](#downloadinfo7)&gt; |  Promise used to return a **DownloadInfo** object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 
 **Example**
@@ -1604,17 +1604,17 @@ Obtains the information about this download task. This API uses an asynchronous 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;[DownloadInfo](#downloadinfo7)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadInfo** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;[DownloadInfo](#downloadinfo7)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadInfo** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
   <!--code_no_check-->
@@ -1659,17 +1659,17 @@ Obtains the MIME type (that is, media type of resources in HTTP) of a download t
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;string&gt; | Promise used to return the result.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;string&gt; | Promise used to return the result.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
   <!--code_no_check-->
@@ -1712,17 +1712,17 @@ Obtains the MIME type (that is, media type of resources in HTTP) of a download t
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and data is the **MimeType** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and data is the **MimeType** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
   <!--code_no_check-->
@@ -1767,17 +1767,17 @@ Suspends this download task. You can use [restore](#restore9) to restore the dow
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
   <!--code_no_check-->
@@ -1820,17 +1820,17 @@ Suspends this download task. You can use [restore](#restore9) to restore the dow
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
   <!--code_no_check-->
@@ -1875,17 +1875,17 @@ Restores this download task. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
   <!--code_no_check-->
@@ -1928,17 +1928,17 @@ Restores a download task. This API uses an asynchronous callback to return the r
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
   <!--code_no_check-->
@@ -1983,17 +1983,17 @@ Removes this download task. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2022,17 +2022,17 @@ Removes a download task. This API uses an asynchronous callback to return the re
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;boolean&gt; | Yes| Callback used to return the result. The value **true** indicates that the operation is successful; **false** indicates the opposite.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2063,17 +2063,17 @@ Queries this download task. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;[DownloadInfo](#downloadinfo7)&gt; | Promise used to return the **DownloadInfo** object.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;[DownloadInfo](#downloadinfo7)&gt; | Promise used to return the **DownloadInfo** object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2102,17 +2102,17 @@ Queries this download task. This API uses an asynchronous callback to return the
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;[DownloadInfo](#downloadinfo7)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadInfo** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;[DownloadInfo](#downloadinfo7)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **DownloadInfo** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2143,17 +2143,17 @@ Queries the MIME type of this download task. This API uses a promise to return t
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;string&gt; | Promise used to return the result.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;string&gt; | Promise used to return the result.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2182,17 +2182,17 @@ Queries the MIME type of this download task. This API uses an asynchronous callb
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and data is the **MimeType** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;string&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and data is the **MimeType** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2223,17 +2223,17 @@ Pauses this download task. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2262,17 +2262,17 @@ Pauses this download task. This API uses an asynchronous callback to return the 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2303,17 +2303,17 @@ Resumes this download task. This API uses a promise to return the result.
 
 **Return value**
 
-| Type| Description|
-| -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+  | Type| Description|
+  | -------- | -------- |
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2342,17 +2342,17 @@ Resumes a download task. This API uses an asynchronous callback to return the re
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | The permissions check fails. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | The permissions check fails. |
 
 **Example**
 
@@ -2376,7 +2376,7 @@ Defines the download task configuration.
 |------|--------|----|----|-------------------------------|
 | url | string | No| No| Resource URL. From API version 6 to 14, the value contains a maximum of 2048 characters; since API version 15, the value contains a maximum of 8192 characters. [Intercepting HTTP](../../basic-services/request/app-file-upload-download.md#intercepting-http) is supported.|
 | header | Object | No| Yes| HTTPS flag header to be included in the download request.|
-| enableMetered | boolean | No| Yes| Whether download is allowed on a metered connection. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.<br>**Note:** In general cases, a mobile data connection is metered, while a Wi-Fi connection is not.|
+| enableMetered | boolean | No| Yes| Whether download is allowed on a metered connection. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.<br>**NOTE**<br> In general cases, a mobile data connection is metered, while a Wi-Fi connection is not.|
 | enableRoaming | boolean | No| Yes| Whether download is allowed on a roaming network. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.|
 | description | string | No| Yes| Description of the download session. The default value is an empty string.|
 | filePath<sup>7+</sup> | string | No| Yes| Path where the downloaded file is stored. The default value is the cache directory of the caller (that is, the input **context**). The default file name is the part truncated from the last slash (/) in the URL.<br>- In the FA model, use [context](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir) to obtain the application storage path.<br>- In the stage model, use [AbilityContext](../apis-ability-kit/js-apis-inner-application-context.md) to obtain the application storage path.|
@@ -2519,10 +2519,10 @@ Provides the configuration information of an upload or download task.
 | data | string \| Array&lt;[FormItem](#requestagentformitem10)&gt; | No| Yes| - For the download task, the value is a string, typically in JSON format (an object will be converted to a JSON string); the default value is null.<br>- For the upload task, the value is Array&lt;[FormItem](#requestagentformitem10)&gt;. Since API version 15, a maximum of 100 files can be uploaded in a single task. This parameter is left empty by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | saveas | string | No| Yes| Path for storing downloaded files. The options are as follows:<br>- Relative path, which is in the cache directory of the caller, for example, **./xxx/yyy/zzz.html** or **xxx/yyy/zzz.html**.<br>- Internal protocol path, which can be **internal://** or its subdirectory. **internal** indicates the cache directory of the caller (that is, the input **context**), and **internal://cache** corresponds to **context.cacheDir**, for example, **internal://cache/path/to/file.txt**.<br>- Application sandbox path. Only the **base** directory and its subdirectories are supported, for example, **/data/storage/el1/base/path/to/file.txt**.<br>- File protocol path, which can be the path of an application file or a user file. For the application file, the application bundle name must be matched and only the **base** directory and its subdirectories are supported, for example, **file://com.example.test/data/storage/el2/base/file.txt**. For the user file, its path must be the user file URI created by the caller.<br>Since API version 20, the default file path can be the cache path of the caller (that is, the passed context), except for [downloading network resource files to the user file](../../basic-services/request/app-file-upload-download.md#downloading-network-resource-files-to-the-user-file). The default file name is the part truncated from the last slash (/) in the URL.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | network | [Network](#requestagentnetwork10) | No| Yes| Network used for the task. The default value is **ANY** (Wi-Fi or cellular).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| metered | boolean | No| Yes| Whether the task is allowed on a metered network.<br>- **true**: The task is allowed on a metered network.<br>- **false** (default): The task is not allowed on a metered network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| roaming | boolean | No| Yes| Whether the task is allowed on a roaming network.<br>- **true** (default): The task is allowed on a roaming network.<br>- **false**: The task is not allowed on a roaming network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks.<br>- **true** (default): The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| redirect | boolean | No| Yes| Whether redirection is allowed.<br>- **true** (default): The redirection is allowed.<br>- **false**: The redirection is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| metered | boolean | No| Yes| Whether the task is allowed on a metered network. The default value is **false**.<br>- **true**: The task is allowed on a metered network.<br>- **false**: The task is not allowed on a metered network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| roaming | boolean | No| Yes| Whether the task is allowed on a roaming network. The default value is **true**.<br>- **true**: The task is allowed on a roaming network.<br>- **false**: The task is not allowed on a roaming network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks. The default value is **true**.<br>- **true**: The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| redirect | boolean | No| Yes| Whether redirection is allowed. The default value is **true**.<br>- **true**: The redirection is allowed.<br>- **false**: The redirection is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | proxy<sup>12+</sup> | string | No| Yes| Proxy address. The value contains a maximum of 512 characters.<br>It is in the format of http://\<domain or address\>:\<port\>. By default, this parameter is left blank.|
 | index | number | No| Yes| Path index of the task. It is usually used for resumable transfers. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | begins | number | No| Yes| File start point of the task. It is usually used for resumable transfers. The default value is **0**. The value is a closed interval.<br>- For the download task, the value is obtained by sending an HTTP range request to read the start position when the server starts to download files.<br>- For the upload task, the value is obtained at the beginning of the upload.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -2801,24 +2801,24 @@ Subscribes to task progress changes. This API uses an asynchronous callback to r
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'progress'**: task progress.|
-| callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'progress'**: task progress.|
+  | callback | function | Yes| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -2885,24 +2885,24 @@ Subscribes to task completion events. This API uses an asynchronous callback to 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'completed'**: task completion.|
-| callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'completed'**: task completion.|
+  | callback | function | Yes| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -2969,24 +2969,24 @@ Subscribes to task failure events. This API uses an asynchronous callback to ret
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'fail'**: task failure.|
-| callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'fail'**: task failure.|
+  | callback | function | Yes| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3051,24 +3051,24 @@ Subscribes to task pause events. This API uses an asynchronous callback to retur
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'pause'**: task pause.|
-| callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'pause'**: task pause.|
+  | callback | function | Yes| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3138,24 +3138,24 @@ Subscribes to task resume events. This API uses an asynchronous callback to retu
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'resume'**: task resume.|
-| callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'resume'**: task resume.|
+  | callback | function | Yes| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3230,24 +3230,24 @@ Subscribes to task removal events. This API uses an asynchronous callback to ret
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'remove'**: task removal.|
-| callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'remove'**: task removal.|
+  | callback | function | Yes| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3319,18 +3319,18 @@ Subscribes to task response headers. This API uses an asynchronous callback to r
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'response'**: task response.|
-| callback | Callback&lt;[HttpResponse](#requestagenthttpresponse12)&gt; | Yes| Callback used to return the data structure of the task response header.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'response'**: task response.|
+  | callback | Callback&lt;[HttpResponse](#requestagenthttpresponse12)&gt; | Yes| Callback used to return the data structure of the task response header.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3404,9 +3404,9 @@ Subscribes to task failure events. This API uses a callback to return the result
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3480,9 +3480,9 @@ Subscribes to task wait events. This API uses a callback to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3549,25 +3549,25 @@ Unsubscribes from task progress events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'progress'**: task progress.|
-| callback | function | No| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'progress'**: task progress.|
+  | callback | function | No| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3642,25 +3642,25 @@ Unsubscribes from task completion events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'completed'**: task completion.|
-| callback | function | No| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'completed'**: task completion.|
+  | callback | function | No| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3735,24 +3735,24 @@ Unsubscribes from task failure events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'failed'**: task failure.|
-| callback | function | No| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'failed'**: task failure.|
+  | callback | function | No| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3825,24 +3825,24 @@ Unsubscribes from the foreground task pause event.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'pause'**: task pause.|
-| callback | function | No| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'pause'**: task pause.|
+  | callback | function | No| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -3915,24 +3915,24 @@ Unsubscribes from foreground task resume events.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'resume'**: task resume.|
-| callback | function | No| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'resume'**: task resume.|
+  | callback | function | No| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -4005,24 +4005,24 @@ Unsubscribes from the task removal event.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **'remove'**: task removal.|
-| callback | function | No| Callback used to return the data structure of the task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **'remove'**: task removal.|
+  | callback | function | No| Callback used to return the data structure of the task progress.|
 
 Parameters of the callback function
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | progress | [Progress](#requestagentprogress10) | Yes| Task progress.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -4097,18 +4097,18 @@ Unsubscribes from task response headers.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| event | string | Yes| Event type.<br>- **response**: task response.|
-| callback | Callback&lt;[HttpResponse](#requestagenthttpresponse12)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | event | string | Yes| Event type.<br>- **response**: task response.|
+  | callback | Callback&lt;[HttpResponse](#requestagenthttpresponse12)&gt; | No| Callback to unregister. If this parameter is not specified, all callbacks of the current type will be unregistered.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -4191,9 +4191,9 @@ Unsubscribes from task failure events.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -4276,9 +4276,9 @@ Unsubscribes from task waiting events.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
 
 **Example**
   <!--code_no_check-->
@@ -4358,19 +4358,19 @@ Tasks in the following states can be started:
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | Permission denied. |
-| 13400003 | Task service ability error. |
-| 21900007 | Operation with wrong task state. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | Permission denied. |
+  | 13400003 | Task service ability error. |
+  | 21900007 | Operation with wrong task state. |
 
 **Example**
   <!--code_no_check-->
@@ -4445,11 +4445,11 @@ Tasks in the following states can be started:
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | Permission denied. |
-| 13400003 | Task service ability error. |
-| 21900007 | Operation with wrong task state. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | Permission denied. |
+  | 13400003 | Task service ability error. |
+  | 21900007 | Operation with wrong task state. |
 
 **Example**
   <!--code_no_check-->
@@ -4503,18 +4503,18 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 13400003 | Task service ability error. |
-| 21900007 | Operation with wrong task state. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 13400003 | Task service ability error. |
+  | 21900007 | Operation with wrong task state. |
 
 **Example**
   <!--code_no_check-->
@@ -4583,10 +4583,10 @@ Pauses a task that is waiting, running, or retrying. A paused task can be resume
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 13400003 | Task service ability error. |
-| 21900007 | Operation with wrong task state. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 13400003 | Task service ability error. |
+  | 21900007 | Operation with wrong task state. |
 
 **Example**
   <!--code_no_check-->
@@ -4647,19 +4647,19 @@ Resumes a paused task. This API uses an asynchronous callback to return the resu
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | Permission denied. |
-| 13400003 | Task service ability error. |
-| 21900007 | Operation with wrong task state. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | Permission denied. |
+  | 13400003 | Task service ability error. |
+  | 21900007 | Operation with wrong task state. |
 
 **Example**
   <!--code_no_check-->
@@ -4735,11 +4735,11 @@ Resumes a paused task. This API uses a promise to return the result.
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | Permission denied. |
-| 13400003 | Task service ability error. |
-| 21900007 | Operation with wrong task state. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | Permission denied. |
+  | 13400003 | Task service ability error. |
+  | 21900007 | Operation with wrong task state. |
 
 **Example**
   <!--code_no_check-->
@@ -4805,18 +4805,18 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 13400003 | Task service ability error. |
-| 21900007 | Operation with wrong task state. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 13400003 | Task service ability error. |
+  | 21900007 | Operation with wrong task state. |
 
 **Example**
   <!--code_no_check-->
@@ -4888,10 +4888,10 @@ Stops a task that is running, waiting, or retrying. A paused task can be resumed
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 13400003 | Task service ability error. |
-| 21900007 | Operation with wrong task state. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 13400003 | Task service ability error. |
+  | 21900007 | Operation with wrong task state. |
 
 **Example**
   <!--code_no_check-->
@@ -5013,24 +5013,24 @@ Creates an upload or download task and adds it to the queue. This API uses an as
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [Config](#requestagentconfig10) | Yes| Task configuration.|
-| callback | AsyncCallback&lt;[Task](#requestagenttask10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **Task** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
+  | config | [Config](#requestagentconfig10) | Yes| Task configuration.|
+  | callback | AsyncCallback&lt;[Task](#requestagenttask10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **Task** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400001 | Invalid file or file system error. |
-| 13400003 | Task service ability error.    |
-| 21900004 | The application task queue is full. |
-| 21900005 | Operation with wrong task mode. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | Permission denied. |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400001 | Invalid file or file system error. |
+  | 13400003 | Task service ability error.    |
+  | 21900004 | The application task queue is full. |
+  | 21900005 | Operation with wrong task mode. |
 
 **Example**
   <!--code_no_check-->
@@ -5100,10 +5100,10 @@ Creates an upload or download task and adds it to the queue. This API uses a pro
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| config | [Config](#requestagentconfig10) | Yes| Task configuration.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
+  | config | [Config](#requestagentconfig10) | Yes| Task configuration.|
 
 **Return value**
 
@@ -5115,14 +5115,14 @@ Creates an upload or download task and adds it to the queue. This API uses a pro
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400001 | Invalid file or file system error. |
-| 13400003 | Task service ability error. |
-| 21900004 | The application task queue is full. |
-| 21900005 | Operation with wrong task mode. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 201 | Permission denied. |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400001 | Invalid file or file system error. |
+  | 13400003 | Task service ability error. |
+  | 21900004 | The application task queue is full. |
+  | 21900005 | Operation with wrong task mode. |
 
 **Example**
   <!--code_no_check-->
@@ -5181,11 +5181,11 @@ Obtains task information based on the task ID. This API uses a promise to return
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
-| id | string | Yes| Task ID.|
-| token | string | No| Token for task query.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
+  | id | string | Yes| Task ID.|
+  | token | string | No| Token for task query.|
 
 **Return value**
 
@@ -5197,11 +5197,11 @@ Obtains task information based on the task ID. This API uses a promise to return
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400003 | Task service ability error. |
-| 21900006 | Task removed or not found. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400003 | Task service ability error. |
+  | 21900006 | Task removed or not found. |
 
 **Example**
   <!--code_no_check-->
@@ -5230,20 +5230,20 @@ Removes a specified task of the invoker. If the task is being executed, the task
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| id | string | Yes| Task ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | id | string | Yes| Task ID.|
+  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | Task service ability error. |
-| 21900006 | Task removed or not found. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+  | 13400003 | Task service ability error. |
+  | 21900006 | Task removed or not found. |
 
 **Example**
 
@@ -5272,9 +5272,9 @@ Removes a specified task of the invoker. If the task is being executed, the task
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| id | string | Yes| Task ID.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | id | string | Yes| Task ID.|
 
 **Return value**
 
@@ -5286,11 +5286,11 @@ Removes a specified task of the invoker. If the task is being executed, the task
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | Task service ability error. |
-| 21900006 | Task removed or not found. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+  | 13400003 | Task service ability error. |
+  | 21900006 | Task removed or not found. |
 
 **Example**
 
@@ -5315,20 +5315,20 @@ Queries a task details based on the task ID. This API uses an asynchronous callb
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| id | string | Yes| Task ID.|
-| callback | AsyncCallback&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **TaskInfo** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | id | string | Yes| Task ID.|
+  | callback | AsyncCallback&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **TaskInfo** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | Task service ability error. |
-| 21900006 | Task removed or not found. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+  | 13400003 | Task service ability error. |
+  | 21900006 | Task removed or not found. |
 
 **Example**
 
@@ -5355,9 +5355,9 @@ Queries a task details based on the task ID. This API uses a promise to return t
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| id | string | Yes| Task ID.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | id | string | Yes| Task ID.|
 
 **Return value**
 
@@ -5369,11 +5369,11 @@ Queries a task details based on the task ID. This API uses a promise to return t
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
-| 13400003 | Task service ability error. |
-| 21900006 | Task removed or not found. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. |
+  | 13400003 | Task service ability error. |
+  | 21900006 | Task removed or not found. |
 
 **Example**
 
@@ -5398,21 +5398,21 @@ Queries the task details based on the task ID and token. This API uses an asynch
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| id | string | Yes| Task ID.|
-| token | string | Yes| Token for task query.|
-| callback | AsyncCallback&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **TaskInfo** object obtained. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | id | string | Yes| Task ID.|
+  | token | string | Yes| Token for task query.|
+  | callback | AsyncCallback&lt;[TaskInfo](#requestagenttaskinfo10)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the **TaskInfo** object obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400003 | Task service ability error. |
-| 21900006 | Task removed or not found.  |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400003 | Task service ability error. |
+  | 21900006 | Task removed or not found.  |
 
 **Example**
 
@@ -5439,10 +5439,10 @@ Queries the task details based on the task ID and token. This API uses a promise
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| id | string | Yes| Task ID.|
-| token | string | Yes| Token for task query.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | id | string | Yes| Task ID.|
+  | token | string | Yes| Token for task query.|
 
 **Return value**
 
@@ -5454,11 +5454,11 @@ Queries the task details based on the task ID and token. This API uses a promise
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
-| 13400003 | Task service ability error. |
-| 21900006 | Task removed or not found. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 13400003 | Task service ability error. |
+  | 21900006 | Task removed or not found. |
 
 **Example**
 
@@ -5482,18 +5482,18 @@ Searches for task IDs based on [Filter](#requestagentfilter10). The IDs of all t
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the task ID. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the task ID. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
-| 13400003 | Task service ability error. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
+  | 13400003 | Task service ability error. |
 
 **Example**
 
@@ -5519,19 +5519,19 @@ Searches for task IDs based on [Filter](#requestagentfilter10). This API uses an
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| filter | [Filter](#requestagentfilter10) | Yes| Filter criteria.|
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the task ID. Otherwise, **err** is an error object.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | filter | [Filter](#requestagentfilter10) | Yes| Filter criteria.|
+  | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the task ID. Otherwise, **err** is an error object.|
 
 **Error codes**
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
-| 13400003 | Task service ability error. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
+  | 13400003 | Task service ability error. |
 
 **Example**
 
@@ -5562,9 +5562,9 @@ Searches for task IDs based on [Filter](#requestagentfilter10). This API uses a 
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
-| -------- | -------- | -------- | -------- |
-| filter | [Filter](#requestagentfilter10) | No| Filter criteria.|
+  | Name| Type| Mandatory| Description|
+  | -------- | -------- | -------- | -------- |
+  | filter | [Filter](#requestagentfilter10) | No| Filter criteria.|
 
 **Return value**
 
@@ -5576,10 +5576,10 @@ Searches for task IDs based on [Filter](#requestagentfilter10). This API uses a 
 
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
-| 13400003 | Task service ability error. |
+  | ID| Error Message|
+  | -------- | -------- |
+  | 401 | Parameter error. Possible causes: 1. Incorrect parameter type. 2. Parameter verification failed. |
+  | 13400003 | Task service ability error. |
 
 **Example**
 

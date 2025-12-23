@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct {...} ArkWeb_WebMessagePortAPI
 ```
 
@@ -41,7 +41,7 @@ Post Message相关的Native API结构体。在调用接口前建议通过[ARKWEB
 
 ### postMessage()
 
-```
+```c
 ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag, const ArkWeb_WebMessagePtr webMessage)
 ```
 
@@ -65,7 +65,7 @@ ArkWeb_ErrorCode (*postMessage)(const ArkWeb_WebMessagePortPtr webMessagePort, c
 
 ### close()
 
-```
+```c
 void (*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)
 ```
 
@@ -82,7 +82,7 @@ void (*close)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag)
 
 ### setMessageEventHandler()
 
-```
+```c
 void (*setMessageEventHandler)(const ArkWeb_WebMessagePortPtr webMessagePort, const char* webTag,
         ArkWeb_OnMessageEventHandler messageEventHandler, void* userData)
 ```

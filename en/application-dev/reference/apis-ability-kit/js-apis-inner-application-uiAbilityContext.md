@@ -3478,6 +3478,11 @@ If the target UIAbility is the current one, this action resets the window to its
 > **NOTE**
 >
 > When this API is called to restart the process, the **onDestroy** lifecycle callback of the UIAbility in the process is not triggered.
+>
+> If an atomic service calls this API, [restartSelfAtomicService()](js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20), or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+>
+> If an application calls this API or [ApplicationContext.restartApp()](js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12) within 3 seconds after a successful call to this API, the system returns error code 16000064.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -3550,7 +3555,7 @@ struct Index {
 }
 ```
 
-### setMissionWindowIcon<sup>22+<sup>
+### setMissionWindowIcon<sup>22+</sup>
 
 setMissionWindowIcon(windowIcon: image.PixelMap): Promise\<void>
 
@@ -3581,7 +3586,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 801 | Capability not supported. |
-| 16000050 | Internal error. Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
+| 16000050 | Internal error. 1. Connect to system service failed; 2.System service failed to communicate with dependency module.|
 | 16000135 | The main window of this ability not exist. |
 
 **Example**

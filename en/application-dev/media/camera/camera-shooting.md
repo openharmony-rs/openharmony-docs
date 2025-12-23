@@ -12,7 +12,7 @@ Photo capture is an important function of the camera application. Based on the c
 
 Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
 
-1. Import the image module. The APIs provided by this module are used to obtain the surface ID and create a photo output stream.
+1. Import the image module. To access the data output by the camera, you must use the image interface capabilities provided by the system. Here is how to import the image module.
 
    ```ts
    import { image } from '@kit.ImageKit';
@@ -23,7 +23,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 2. Create a photo output stream.
 
-   Obtain the photo output streams supported by the current device from **photoProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability), and then call [createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11) to pass in a supported output stream and the surface ID obtained in step 1 to create a photo output stream.
+   Obtain the photo output streams supported by the current device from **photoProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability). Call [createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11), passing in a supported output stream [profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile), to create a photo output stream.
 
    ```ts
    function getPhotoOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {

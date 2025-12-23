@@ -32,7 +32,7 @@
 
 ### Rdb_ConflictResolution
 
-```
+```c
 enum Rdb_ConflictResolution
 ```
 

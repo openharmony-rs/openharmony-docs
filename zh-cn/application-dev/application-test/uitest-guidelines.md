@@ -135,10 +135,10 @@ UITest支持<!--RP3-->[依据多种属性构造匹配器](../reference/apis-test
 
 如下给出控件查找与操作的示例，下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->
+<!-- @[findAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/findCommentExampleTest/Component/FindComAndOp.test.ets) -->    
 
 ``` TypeScript
-import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+import { describe, it, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Component, Driver, ON, On } from '@kit.TestKit';
 
@@ -384,10 +384,10 @@ export default function abilityTest() {
 
 如下给出UI界面事件的监听的示例，设置监听回调函数，监听toast、dialog等控件的出现，等待事件发生后进行下一步操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->
+<!-- @[eventObserver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/EventObserver.test.ets) -->    
 
 ``` TypeScript
-import { describe, it, Level, Size, TestType } from '@ohos/hypium';
+import { describe, it, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Driver, UIElementInfo } from '@kit.TestKit';
 
@@ -457,14 +457,14 @@ export default function abilityTest() {
 ### 窗口查找与操作
 如下给出窗口查找和操作的示例，根据窗口属性查找窗口，并进行窗口最小化等操作。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->
+<!-- @[findWindowAndOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/window/FindWindowAndOp.test.ets) -->    
 
 ``` TypeScript
 import { describe, expect, it, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Driver } from '@kit.TestKit';
 
-// Error code when the device is not supported.
+// 设备不支持时的错误代码
 const DeviceErrorCode = 17000005;
 
 export default function abilityTest() {
@@ -487,14 +487,14 @@ export default function abilityTest() {
 ### 模拟触摸板操作
 如下给出触摸板模拟操作的示例，触摸板三指上滑返回桌面，三指下滑恢复应用窗口。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->
+<!-- @[touchPadOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/TouchPadOp.test.ets) -->    
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Driver, UiDirection } from '@kit.TestKit';
 
-// Error code when the device is not supported.
+// 设备不支持时的错误代码
 const DeviceErrorCode = 17000005;
 
 export default function abilityTest() {
@@ -503,7 +503,7 @@ export default function abilityTest() {
     it('touchPadOperation', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async () => {
       let driver = Driver.create();
       try {
-        // 触摸板三指上滑返回桌面。
+        // 触摸板三指上滑返回桌面
         await driver.touchPadMultiFingerSwipe(3, UiDirection.UP);
         // 触摸板三指下滑恢复窗口
         await driver.touchPadMultiFingerSwipe(3, UiDirection.DOWN);
@@ -547,14 +547,14 @@ export default function abilityTest() {
 ### 模拟表冠操作
 如下给出表冠模拟操作的示例，包括表冠的顺/逆时针旋转。下面代码执行前请参考UI测试示例，实现对应的Index.ets页面代码。
 
-<!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->
+<!-- @[watchOp_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/uitest/entry/src/ohosTest/ets/test/operationExampleTest/ui/WatchOp.test.ets) -->    
 
 ``` TypeScript
 import { describe, expect, it, Level, Size, TestType } from '@ohos/hypium';
 // 导入测试依赖kit
 import { Driver } from '@kit.TestKit';
 
-// Error code when the device is not supported.
+// 设备不支持时的错误代码
 const CapabilityCode = 801;
 
 export default function abilityTest() {

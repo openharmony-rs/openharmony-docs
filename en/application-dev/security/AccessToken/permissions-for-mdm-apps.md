@@ -252,32 +252,6 @@ Allows a device administrator application to obtain the **Settings** application
 
 **Valid since**: 10
 
-## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
-
-Allows installation of enterprise MDM applications on enterprise devices.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 10
-
-## ohos.permission.INSTALL_SELF_BUNDLE
-
-Allows automatic updates of enterprise MDM applications on enterprise devices.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 10
-
 ## ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 Allows the device to set or cancel browser policies.
@@ -679,6 +653,21 @@ Allows MDM applications to generate and decrypt DLP files, and query DLP file po
 Allows an application to manage other device administrator applications.
 
 With this permission, the super device administrator application can manage other device administrator applications.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 23
+
+## ohos.permission.ENTERPRISE_START_ABILITIES
+
+Allows a device administrator application to access other components.
 
 **Permission level**: system_basic
 

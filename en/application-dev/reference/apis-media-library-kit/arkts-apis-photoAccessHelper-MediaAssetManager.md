@@ -6,14 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The MediaAssetManager class is used for manipulating the read and write operations of media assets.
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this class are supported since API version 11.
-
-The MediaAssetManager class is used for manipulating the read and write operations of media assets.
-
-**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## Modules to Import
 
@@ -25,7 +23,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 static requestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;image.ImageSource&gt;): Promise&lt;string&gt;
 
-Requests an image.
+Requests an image. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -106,7 +104,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestImageData(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;ArrayBuffer&gt;): Promise&lt;string&gt;
 
-Requests image data.
+Requests image data. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -186,7 +184,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: MediaAssetDataHandler&lt;MovingPhoto&gt;): Promise&lt;string&gt;
 
-Requests a moving photo object, which can be used to request the asset data of the moving photo.
+Requests a moving photo object, which can be used to request the asset data of the moving photo. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -266,7 +264,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, fileUri: string, dataHandler: MediaAssetDataHandler&lt;boolean&gt;): Promise&lt;string&gt;
 
-Requests a video and saves it to the specified sandbox directory.
+Requests a video and saves it to the specified sandbox directory. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -299,7 +297,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied         |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 801<sup>15+</sup>   | Capability not supported.       |
+| 801  | Capability not supported.       |
 | 14000011       | System inner fail.        |
 
 **Example**
@@ -340,7 +338,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static cancelRequest(context: Context, requestId: string): Promise\<void>
 
-Cancels a request for the asset, the callback of which has not been triggered yet.
+Cancels a request for the asset, the callback of which has not been triggered yet. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -390,7 +388,7 @@ async function example(context: Context) {
 
 static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: string): Promise\<MovingPhoto>
 
-Loads a moving photo in the application sandbox.
+Loads a moving photo in the application sandbox. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -438,7 +436,7 @@ async function example(context: Context) {
 
 static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: RequestOptions, dataHandler: QuickImageDataHandler&lt;image.Picture&gt;): Promise&lt;string&gt;
 
-Requests an image quickly.
+Requests an image quickly. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

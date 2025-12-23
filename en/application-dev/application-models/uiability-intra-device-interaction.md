@@ -615,7 +615,7 @@ The development procedure is as follows:
         }
         ```
 
-    4. Configure subpages in the system configuration file **route_map.json**. For details, see [System Routing Table](../ui/arkts-navigation-navigation.md#system-routing-table).
+    4. Configure subpages in the system configuration file **route_map.json**. For details, see [System Routing Table](../ui/arkts-navigation-cross-package.md#system-routing-table).
 
         ```ts
         // route_map.json
@@ -1034,3 +1034,4 @@ For the CalleeAbility, implement the callback to receive data and the methods to
     ```
 <!--DelEnd-->
 
+<!--no_check-->

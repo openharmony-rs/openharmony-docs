@@ -23,8 +23,9 @@
 2. V2装饰器不能和[@Observed](./arkts-observed-and-objectlink.md)一起使用。
 3. V1->V2只能传简单类型，不允许传复杂类型，包括built-in类型Array、Map、Set、Date。
 4. V2->V1可以传简单类型和普通class，不允许传built-in类型Array、Map、Set、Date。
+5. V1中[\@Link](./arkts-link.md)遵循其原本初始化规则，只能被V1状态变量初始化，详情见[\@Link初始化规则](./arkts-link.md#变量的传递访问规则说明)。
 
-从API version 19开始，仅第1条规则依旧禁止，第2-4条规则均放开校验。具体编译期校验见下表。
+从API version 19开始，第1、5条规则依旧禁止，第2-4条规则放开校验。具体编译期校验见下表。
 
 | 场景  | API version 19以前 | API version 19及以后  |
 |------|----|------|
@@ -38,6 +39,7 @@
 | \@ObjectLink被非\@Observed装饰的class初始化  | 报错 | 不报错 |
 
 依旧禁止第1条，是因为\@ObservedV2/\@Trace有自己独立的观察能力，不仅可以在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中使用，也可以独立在[\@Component](./arkts-create-custom-components.md#component)中使用，状态管理框架不希望其观察能力和V1的观察能力混合使用，所以依旧维持禁止现状。
+依旧禁止第5条，是因为V1中\@Link仅能和V1状态变量建立双向同步关系，而V2中如果想实现双向同步，可以使用[@Param](./arkts-new-param.md)[@Event](./arkts-new-event.md)，具体例子见[\@Link和\@Param\@Event迁移示例](./arkts-v1-v2-migration-inner-component.md#link---paramevent)。
 
 ## 新增接口
 ### makeV1Observed

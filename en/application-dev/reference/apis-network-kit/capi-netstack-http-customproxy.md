@@ -5,6 +5,10 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+```c
+typedef struct Http_CustomProxy {...} Http_CustomProxy
+```
+
 ## Overview
 
 Defines the custom proxy configuration.

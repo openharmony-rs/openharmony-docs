@@ -33,6 +33,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 | viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据。              |
 | customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | 否   | 否   | 自定义数据。             |
 | isPopup<sup>12+</sup>    | boolean               | 否   | 否   | 自动填充服务是否拉起popup窗口。<br>true：当前拉起popup窗口。<br>false：当前拉起模态窗。              |
+| triggerType<sup>23+</sup> | [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType-sys.md) | 否 | 是 | 自动填充服务的拉起类型。 |
 
 ## SaveRequest
 

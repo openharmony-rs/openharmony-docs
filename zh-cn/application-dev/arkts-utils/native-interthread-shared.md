@@ -19,8 +19,9 @@
 
 ArkTS文件定义。
 
-```ts
-// SendableObjTest.ets
+<!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
+
+``` TypeScript
 @Sendable
 export class SendableObjTest {
   static newSendable() {
@@ -28,16 +29,18 @@ export class SendableObjTest {
   }
 }
 ```
-<!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
-
 
 实现Native加载ArkTS模块的能力。
 
-```cpp
-// napi_init.cpp
-#include "napi/native_api.h"
+<!-- @[native_load_arkts_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include <thread>
-static void *CreateArkRuntimeFunc(void *arg)
+
+#include "napi/native_api.h"
+
+static void* g_serializationData = nullptr;
+static void* CreateEnvAndSendSendable(void*)
 {
     // 1. 创建基础运行环境
     napi_env env = nullptr;
@@ -47,80 +50,8 @@ static void *CreateArkRuntimeFunc(void *arg)
     }
     // 2. 加载自定义模块，假定SendableObjTest中提供创建sendable对象的方法newSendable
     napi_value test = nullptr;
-    ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/SendableObjTest", "com.example.myapplication/entry", &test);
-    if (ret != napi_ok) {
-        std::abort();
-    }
-    napi_value sendableObjTest = nullptr;
-    ret = napi_get_named_property(env, test, "SendableObjTest", &sendableObjTest);
-    if (ret != napi_ok) {
-        std::abort();
-    }
-    // 3. 使用ArkTS中的newSendable，假设sendableObjTest中有一个函数newSendable能返回sendable对象
-    napi_value newSendable = nullptr;
-    ret = napi_get_named_property(env, sendableObjTest, "newSendable", &newSendable);
-    if (ret != napi_ok) {
-        std::abort();
-    }
-    // 4. 调用newSendable函数返回新创建的sendable对象，并保存在result中
-    napi_value result = nullptr;
-    ret = napi_call_function(env, sendableObjTest, newSendable, 0, nullptr, &result);
-    if (ret != napi_ok) {
-        std::abort();
-    }
-    // 5. 获取ArkTS返回的结果
-    int value0;
-    napi_get_value_int32(env, result, &value0);
-    if (value0 != 1024) {
-        std::abort();
-    }
-    // 6. 销毁ArkTS环境
-    ret = napi_destroy_ark_runtime(&env);
-    return nullptr;
-}
-```
-<!-- @[native_load_arkts_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
-
-主要步骤包括：创建执行环境、加载模块、查找并调用模块函数（或直接通过Node-API接口创建Sendable对象），最后销毁执行环境。加载模块的详细信息，请参见[使用Node-API接口进行模块加载](../napi/use-napi-load-module-with-info.md)。查找并调用函数及更多Node-API接口能力，请参见[Node-API](../reference/native-lib/napi.md)。
-
-## 在C++线程之间操作Sendable共享对象
-
-在C++中调用ArkTS能力后，需要通过序列化和反序列化跨线程传递。napi_value不是多线程安全的，不能直接在多线程之间操作和共享。
-
-下面代码例子说明了如何序列化和反序列化传递对象，注意因为Sendable共享对象是引用传递，所以序列化不会产生另外一份拷贝数据，而是直接传递对象引用到反序列化线程，所以在性能上相比非Sendable对象的序列化和反序列化更为高效。
-
-ArkTS文件定义。
-
-```ts
-// SendableObjTest.ets
-@Sendable
-export class SendableObjTest {
-  static newSendable() {
-    return 1024;
-  }
-}
-```
-<!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
-
-在Native中实现两个线程的序列化和反序列化Sendable的逻辑。
-
-```cpp
-// napi_init.cpp
-#include "napi/native_api.h"
-#include <thread>
-
-static void *serializationData = nullptr;
-static void *CreateEnvAndSendSendable(void *) {
-    // 1. 创建基础运行环境
-    napi_env env = nullptr;
-    napi_status ret = napi_create_ark_runtime(&env);
-    if (ret != napi_ok) {
-        std::abort();
-    }
-    // 2. 加载自定义模块，假定SendableObjTest中提供创建sendable对象的方法newSendable
-    napi_value test = nullptr;
-    ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/SendableObjTest", "com.example.myapplication/entry",
-                                     &test);
+    ret = napi_load_module_with_info(
+        env, "entry/src/main/ets/pages/SendableObjTest", "com.example.myapplication/entry", &test);
     if (ret != napi_ok) {
         std::abort();
     }
@@ -144,14 +75,89 @@ static void *CreateEnvAndSendSendable(void *) {
     // 5. 序列化sendable对象
     napi_value undefined;
     napi_get_undefined(env, &undefined);
-    ret = napi_serialize(env, result, undefined, undefined, &serializationData);
+    ret = napi_serialize(env, result, undefined, undefined, &g_serializationData);
+    if (ret != napi_ok) {
+        std::abort();
+    }
+    return nullptr;
+}
+```
+
+主要步骤包括：创建执行环境、加载模块、查找并调用模块函数（或直接通过Node-API接口创建Sendable对象），最后销毁执行环境。加载模块的详细信息，请参见[使用Node-API接口进行模块加载](../napi/use-napi-load-module-with-info.md)。查找并调用函数及更多Node-API接口能力，请参见[Node-API](../reference/native-lib/napi.md)。
+
+## 在C++线程之间操作Sendable共享对象
+
+在C++中调用ArkTS能力后，需要通过序列化和反序列化跨线程传递。napi_value不是多线程安全的，不能直接在多线程之间操作和共享。
+
+下面代码例子说明了如何序列化和反序列化传递对象，注意因为Sendable共享对象是引用传递，所以序列化不会产生另外一份拷贝数据，而是直接传递对象引用到反序列化线程，所以在性能上相比非Sendable对象的序列化和反序列化更为高效。
+
+ArkTS文件定义。
+
+<!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
+
+``` TypeScript
+@Sendable
+export class SendableObjTest {
+  static newSendable() {
+    return 1024;
+  }
+}
+```
+
+在Native中实现两个线程的序列化和反序列化Sendable的逻辑。
+
+<!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+#include <thread>
+
+#include "napi/native_api.h"
+
+static void* g_serializationData = nullptr;
+static void* CreateEnvAndSendSendable(void*)
+{
+    // 1. 创建基础运行环境
+    napi_env env = nullptr;
+    napi_status ret = napi_create_ark_runtime(&env);
+    if (ret != napi_ok) {
+        std::abort();
+    }
+    // 2. 加载自定义模块，假定SendableObjTest中提供创建sendable对象的方法newSendable
+    napi_value test = nullptr;
+    ret = napi_load_module_with_info(
+        env, "entry/src/main/ets/pages/SendableObjTest", "com.example.myapplication/entry", &test);
+    if (ret != napi_ok) {
+        std::abort();
+    }
+    napi_value sendableObjTest = nullptr;
+    ret = napi_get_named_property(env, test, "SendableObjTest", &sendableObjTest);
+    if (ret != napi_ok) {
+        std::abort();
+    }
+    // 3. 使用ArkTS中的newSendable，假设sendableObjTest中有一个函数newSendable能返回sendable对象
+    napi_value newSendable = nullptr;
+    ret = napi_get_named_property(env, sendableObjTest, "newSendable", &newSendable);
+    if (ret != napi_ok) {
+        std::abort();
+    }
+    // 4. 调用newSendable函数返回新创建的sendable对象，并保存在result中
+    napi_value result = nullptr;
+    ret = napi_call_function(env, sendableObjTest, newSendable, 0, nullptr, &result);
+    if (ret != napi_ok) {
+        std::abort();
+    }
+    // 5. 序列化sendable对象
+    napi_value undefined;
+    napi_get_undefined(env, &undefined);
+    ret = napi_serialize(env, result, undefined, undefined, &g_serializationData);
     if (ret != napi_ok) {
         std::abort();
     }
     return nullptr;
 }
 
-static void *CreateEnvAndReceiveSendable(void *) {
+static void* CreateEnvAndReceiveSendable(void*)
+{
     // 1. 创建基础运行环境
     napi_env env = nullptr;
     napi_status ret = napi_create_ark_runtime(&env);
@@ -160,12 +166,12 @@ static void *CreateEnvAndReceiveSendable(void *) {
     }
     // 2. 反序列化获取sendable共享对象，结果保存在result中，这个result就可以通过napi接口进行各种操作了
     napi_value result = nullptr;
-    ret = napi_deserialize(env, serializationData, &result);
+    ret = napi_deserialize(env, g_serializationData, &result);
     if (ret != napi_ok) {
         std::abort();
     }
     // 3. 删除序列化数据
-    ret = napi_delete_serialization_data(env, serializationData);
+    ret = napi_delete_serialization_data(env, g_serializationData);
     if (ret != napi_ok) {
         std::abort();
     }
@@ -176,13 +182,15 @@ static void *CreateEnvAndReceiveSendable(void *) {
     }
     int value0;
     napi_get_value_int32(env, result, &value0);
+    // 1024是判断ArkTS返回的结果是否正确
     if (value0 != 1024) {
         std::abort();
     }
     return nullptr;
 }
 
-static napi_value TestSendSendable([[maybe_unused]] napi_env env, [[maybe_unused]] napi_callback_info info) {
+static napi_value TestSendSendable([[maybe_unused]] napi_env env, [[maybe_unused]] napi_callback_info info)
+{
     std::thread t1(CreateEnvAndSendSendable, nullptr);
     t1.join();
     std::thread t2(CreateEnvAndReceiveSendable, nullptr);
@@ -191,9 +199,10 @@ static napi_value TestSendSendable([[maybe_unused]] napi_env env, [[maybe_unused
 }
 
 EXTERN_C_START
-static napi_value Init(napi_env env, napi_value exports) {
-    napi_property_descriptor desc[] = {
-        {"testSendSendable", nullptr, TestSendSendable, nullptr, nullptr, nullptr, napi_default, nullptr}};
+static napi_value Init(napi_env env, napi_value exports)
+{
+    napi_property_descriptor desc[] = { { "testSendSendable", nullptr, TestSendSendable, nullptr, nullptr, nullptr,
+        napi_default, nullptr } };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
@@ -205,22 +214,21 @@ static napi_module demoModule = {
     .nm_filename = nullptr,
     .nm_register_func = Init,
     .nm_modname = "entry",
-    .nm_priv = ((void *)0),
-    .reserved = {0},
+    .nm_priv = ((void*)0),
+    .reserved = { 0 },
 };
 
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void) {
+extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
+{
     napi_module_register(&demoModule);
 }
 ```
-<!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
 
+<!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
-```
-// Index.d.ts
+``` TypeScript
 export const testSendSendable: () => void;
 ```
-<!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 UI主线程发起调用。
 

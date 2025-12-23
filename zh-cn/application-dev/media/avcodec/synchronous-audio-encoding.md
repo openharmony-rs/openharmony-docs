@@ -308,7 +308,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 7. （可选）调用OH_AudioCodec_Reset()重置编码器。
 
-    调用OH_AudioCodec_Reset()后，编码器回到初始化状态。需要调用OH_AudioCodec_Configure()重新配置，然后调用OH_AudioCodec_Start()重新开始编码。
+   调用OH_AudioCodec_Reset()后，编码器回到初始化状态，重置前获取到的输入/输出buffer都无法继续使用，需先调用OH_AudioCodec_Configure()重新配置，再调用OH_AudioCodec_Start()重新开始编码。启动后重新获取输入/输出buffer。
 
     ```c++
     // 重置编码器。
@@ -325,7 +325,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 8. （可选）调用OH_AudioCodec_Stop()停止编码器。
 
-    停止后，可以通过Start重新进入已启动状态（started），但若编码器之前已输入数据，则需要重新输入编码器数据。
+   停止后，可以通过调用OH_AudioCodec_Start()重新进入已启动状态（started）。停止前获取到的输入/输出buffer都无法继续使用，需要在启动后重新获取输入/输出buffer。
 
     ```c++
     // 停止编码器。
@@ -337,12 +337,12 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 9. 调用OH_AudioCodec_Destroy()销毁编码器实例，释放资源。
 
-    > **说明：**
-    >
-    > 禁止重复销毁编码器。
+   > **说明：**
+   >
+   > 禁止重复销毁编码器。
 
     ```c++
-    // 调用OH_AudioCodec_Destroy销毁编码器。
+    // 调用OH_AudioCodec_Destroy，销毁编码器。
     OH_AVErrCode ret = OH_AudioCodec_Destroy(audioEnc_);
     if (ret != AV_ERR_OK) {
         // 异常处理。

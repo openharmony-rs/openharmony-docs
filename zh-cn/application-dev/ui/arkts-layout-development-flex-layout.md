@@ -601,19 +601,19 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 
   ![zh-cn_image_0000001562940505](figures/zh-cn_image_0000001562940505.png)
 
-- [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)：设置父容器的剩余空间分配给此属性所在组件的比例。用于分配父组件的剩余空间。
+- [flexGrow](../reference/apis-arkui//arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)：设置父容器的剩余空间分配给此属性所在组件的比例，用于分配父组件的剩余空间。
 
   <!-- @[FlexGrow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexGrow.ets) -->
   
   ``` TypeScript
   Flex() {
-    Text('flexGrow(2)')
-      .flexGrow(2)
+    Text('flexGrow(1)')
+      .flexGrow(1)
       .width(100)
       .height(100)
       .backgroundColor('#F5DEB3')
-    Text('flexGrow(3)')
-      .flexGrow(3)
+    Text('flexGrow(4)')
+      .flexGrow(4)
       .width(100)
       .height(100)
       .backgroundColor('#D2B48C')
@@ -622,14 +622,14 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
       .width(100)
       .height(100)
       .backgroundColor('#F5DEB3')
-  }.width(420).height(120).padding(10).backgroundColor('#AFEEEE')
+  }.width(360).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
   
   ![zh-cn_image_0000001562700449](figures/zh-cn_image_0000001562700449.png)
   
-  父容器宽度420vp，三个子元素原始宽度为100vp，左右padding为20vp，总和320vp，剩余空间100vp根据flexGrow值的占比分配给子元素，未设置flexGrow的子元素不参与“瓜分”。
+  父容器宽度360vp，三个子元素原始宽度均为100vp，左右padding为20vp，总和320vp，剩余空间40vp根据flexGrow值的占比分配给子元素，未设置flexGrow的子元素不参与分配。
   
-  第一个元素以及第二个元素以2:3分配剩下的100vp。第一个元素为100vp+100vp * 2/5=140vp，第二个元素为100vp+100vp * 3/5=160vp。
+  第一个元素以及第二个元素以1:4分配剩下的40vp。第一个元素为100vp+40vp * 1/5=108vp，第二个元素为100vp+40vp * 4/5=132vp。
   
 - [flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink): 当父容器空间不足时，子元素的压缩比例。
 

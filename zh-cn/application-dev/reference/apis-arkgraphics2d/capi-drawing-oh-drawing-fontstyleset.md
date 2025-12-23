@@ -6,7 +6,7 @@
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct OH_Drawing_FontStyleSet OH_Drawing_FontStyleSet
 ```
 ## 概述

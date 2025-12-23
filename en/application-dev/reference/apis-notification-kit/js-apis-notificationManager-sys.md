@@ -545,6 +545,66 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 })
 ```
 
+## notificationManager.getAllNotificationEnabledBundles<sup>23+</sup>
+
+getAllNotificationEnabledBundles(userId: int): Promise<Array<BundleOption\>>
+
+Obtains the list of applications that are allowed to publish notifications by a specified user. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type            | Mandatory| Description          |
+| ------ | ---------------- | ---- | -------------- |
+| userId   | int | Yes| Target user.|
+
+**Return value**
+
+| Type     | Description       | 
+|---------|-----------|
+| Promise<Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>> | Returns a list of applications that allow notifications.| 
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+getAllNotificationEnabledBundlesByUserId = (userId: number): void => {
+let funcName: string = 'getAllNotificationEnabledBundlesByUserId';
+
+try {
+  notificationManager.getAllNotificationEnabledBundles(userId)
+    .then((data: Array<notificationManager.BundleOption>) => {
+    hilog.info(DOMAIN, TAG, `${funcName} success. data: ${JSON.stringify(data)}`);
+  })
+  .catch((err: BusinessError) => {
+    hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+  });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
 ## notificationManager.isNotificationEnabled
 
 isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
@@ -4427,7 +4487,7 @@ notificationManager.getSlotByBundle(bundle, slotType).then((data: notificationMa
 
 addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
-Adds the Do Not Disturb profile configuration information. This API uses a promise to return the result.
+Adds the Do Not Disturb profile. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4441,7 +4501,7 @@ Adds the Do Not Disturb profile configuration information. This API uses a promi
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes| Configuration information about the Do Not Disturb profile.|
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes| Do Not Disturb profile.|
 
 **Return value**
 
@@ -4494,11 +4554,11 @@ notificationManager.addDoNotDisturbProfile(templates).then(() => {
 });
 ```
 
-## notificationManager.removeDoNotDisturbProfile<sup>12+</sup>
+## notificationManager.addDoNotDisturbProfile<sup>23+</sup>
 
-removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
+addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
 
-Deletes the Do Not Disturb profile configuration. This API uses a promise to return the result.
+Adds the Do Not Disturb profile for a specified user. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4512,7 +4572,111 @@ Deletes the Do Not Disturb profile configuration. This API uses a promise to ret
 
 | Name  | Type            | Mandatory| Description          |
 | ------ | ---------------- | ---- | -------------- |
-| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes | Configuration information about the Do Not Disturb profile.|
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes| Do Not Disturb profile.|
+| userId   | int | Yes| ID of the target user.|
+
+**Return value**
+
+| Type     | Description       |
+|---------|-----------|
+| Promise\<void\> | Promise that returns no result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600012  | No memory space.                    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+addDoNotDisturbProfileByUserId = (
+  userId: number, 
+  bundleList: string, 
+  uidList: string, 
+  id: number
+): void => {
+  let fName: string = 'addDoNotDisturbProfileByUserId';
+
+  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
+    hilog.info(DOMAIN, TAG, `${fName} parameters are incorrect. Insert the bundleList and uidList that are separated by commas.`);
+    return;
+  }
+
+  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+  let arrUid: string[] = uidList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+
+  if (arrBundle.length === 0 || arrUid.length === 0) {
+    hilog.info(DOMAIN, TAG, `${fName} does not specify an application.`);
+    return;
+  }
+
+  let cnt: number = Math.min(arrBundle.length, arrUid.length);
+  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
+  for (let i = 0; i < cnt; i++) {
+    trustList[i] = {
+      bundle: arrBundle[i].trim(),
+      uid: Number(arrUid[i].trim())
+    };
+  }
+
+  let templates: Array<notificationManager.DoNotDisturbProfile> = [
+    {
+      id: id,
+      name: 'working mode',
+      trustlist: trustList
+    }
+  ];
+
+  try {
+    notificationManager.addDoNotDisturbProfile(templates, userId)
+      .then(() => {
+        hilog.info(DOMAIN, TAG, `${fName} success. ${userId}, ${JSON.stringify(templates)}`);
+      })
+      .catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
+      });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
+```
+
+## notificationManager.removeDoNotDisturbProfile<sup>12+</sup>
+
+removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
+
+Deletes the Do Not Disturb profile. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type            | Mandatory| Description          |
+| ------ | ---------------- | ---- | -------------- |
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes | Do Not Disturb profile.|
 
 **Return value**
 
@@ -4551,6 +4715,108 @@ notificationManager.removeDoNotDisturbProfile(templates).then(() => {
 }).catch((err: BusinessError) => {
   console.error(`removeDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+## notificationManager.removeDoNotDisturbProfile<sup>23+</sup>
+
+removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>, userId: int): Promise\<void\>
+
+Deletes the Do Not Disturb profile of a specified user. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type            | Mandatory| Description          |
+| ------ | ---------------- | ---- | -------------- |
+| templates   | Array\<[DoNotDisturbProfile](#donotdisturbprofile12)> | Yes | Do Not Disturb profile.|
+| userId   | int | Yes| ID of the target user.|
+
+**Return value**
+
+| Type     | Description       |
+|---------|-----------|
+| Promise\<void\> | Promise that returns no result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |  
+| 202      | Not system application to call the interface.                                      |  
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600012  | No memory space.                    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+removeDoNotDisturbProfileByUserId = (
+  userId: number,
+  bundleList: string,
+  uidList: string,
+  id: number
+): void => {
+  let funcName: string = 'removeDoNotDisturbProfileByUserId';
+
+  if (bundleList === undefined || bundleList.length === 0 || uidList === undefined || uidList.length === 0) {
+    hilog.info(DOMAIN, TAG, `${funcName} parameters are incorrect. Insert the bundleList and uidList that are separated by commas.`);
+    return;
+  }
+
+  let arrBundle: string[] = bundleList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+  let arrUid: string[] = uidList.split(',').filter((value: string) => {
+    return value !== undefined && value.trim().length > 0;
+  });
+
+  if (arrBundle.length === 0 || arrUid.length === 0) {
+    hilog.info(DOMAIN, TAG, `${funcName} does not specify an application.`);
+    return;
+  }
+
+  let cnt: number = Math.min(arrBundle.length, arrUid.length);
+  let trustList: Array<notificationManager.BundleOption> = new Array<notificationManager.BundleOption>(cnt);
+  for (let i = 0; i < cnt; i++) {
+    trustList[i] = {
+      bundle: arrBundle[i].trim(),
+      uid: Number(arrUid[i].trim())
+    };
+  }
+
+  let templates: Array<notificationManager.DoNotDisturbProfile> = [
+    {
+      id: id,
+      name: 'working mode',
+      trustlist: trustList
+    }
+  ];
+
+  try {
+    notificationManager.removeDoNotDisturbProfile(templates, userId).then(() => {
+      hilog.info(DOMAIN, TAG, `${funcName} success. userId: ${userId}, templates: ${JSON.stringify(templates)}`);
+    })
+      .catch((err: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `${funcName} error, code: ${err.code}, message: ${err.message}`);
+      });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${funcName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
 ```
 
 ## notificationManager.setAdditionalConfig<sup>12+</sup>
@@ -4610,7 +4876,7 @@ notificationManager.setAdditionalConfig('RING_TRUSTLIST_PKG','[bundleName1,bundl
 
 getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
 
-Queries the configuration information about the Do Not Disturb profile. This API uses a promise to return the result.
+Queries the Do Not Disturb profile. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -4657,6 +4923,70 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 }).catch((err: BusinessError) => {
   console.error(`getDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
+```
+
+## notificationManager.getDoNotDisturbProfile<sup>23+</sup>
+
+getDoNotDisturbProfile(id: long, userId: int): Promise\<DoNotDisturbProfile\>
+
+Queries the Do Not Disturb profile of a specified user. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: This API can be properly called on devices other than wearables and TVs. If it is called on wearables and TVs, error code 801 is returned.
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type            | Mandatory| Description          |
+| ------ | ---------------- | ---- | -------------- |
+| id   | number | Yes | ID of the Do Not Disturb profile.|
+| userId   | int | Yes | Target user.|
+
+
+**Return value**
+
+| Type     | Description       |
+|---------|-----------|
+| Promise\<[DoNotDisturbProfile](#donotdisturbprofile12)\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied.     |
+| 202      | Not system application to call the interface.                                      |
+| 801 | Capability not supported. |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+| 1600008  | The user does not exist.          |
+| 1600019  | The do-not-disturb profile does not exist.                    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+getDoNotDisturbProfileByUserId = (id: number, userId: number): void => {
+  let fName: string = 'getDoNotDisturbProfileByUserId';
+  hilog.info(DOMAIN, TAG, `${fName} id: ${id}, userId: ${userId}`);
+  try {
+    notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationManager.DoNotDisturbProfile) => {
+      hilog.info(DOMAIN, TAG, `${fName} success. data: ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `${fName} error, code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (e) {
+    let err: BusinessError = e as BusinessError;
+    hilog.error(DOMAIN, TAG, `${fName} fail, code: ${err.code}, message: ${err.message}`);
+  }
+};
 ```
 
 ## notificationManager.disableNotificationFeature<sup>18+</sup>
@@ -5607,14 +5937,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  let result = await notificationManager.isPriorityEnabled();
-  console.info(`isPriorityEnabled: ${result}`);
-} catch (e) {
-  console.info(`isPriorityEnabled error: ${e}`);
-}
+notificationManager.isPriorityEnabled().then((result : boolean) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled result is ${result}`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setPriorityEnabled<sup>23+</sup>
@@ -5656,13 +5986,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  await notificationManager.setPriorityEnabled(false);
-} catch (e) {
-  console.error(`setPriorityEnabled error: ${e}`);
-}
+notificationManager.setPriorityEnabled(false).then(() => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled success`);
+}).catch((err: BusinessError) => {
+    hilog.info(0x0000, 'testTag', `setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.isPriorityEnabledByBundle<sup>23+</sup>
@@ -5705,15 +6036,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-  let result : notificationManager.PriorityEnableStatus = await notificationManager.isPriorityEnabledByBundle(bundleOption);
-  console.info(`isPriorityEnabledByBundle: ${result}`);
-} catch (e) {
-  console.error(`isPriorityEnabledByBundle error: ${e}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.isPriorityEnabledByBundle(bundleOption).then((result : notificationManager.PriorityEnableStatus) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle result is ${result}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `isPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setPriorityEnabledByBundle<sup>23+</sup>
@@ -5757,14 +6088,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-  await notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus);
-} catch (e) {
-  console.error(`setPriorityEnabledByBundle error: ${e}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setPriorityEnabledByBundle(bundleOption, 2 as notificationManager.PriorityEnableStatus).then(() => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.getBundlePriorityConfig<sup>23+</sup>
@@ -5807,22 +6139,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-  let value: string = await notificationManager.getBundlePriorityConfig(bundleOption);
-  console.info(`getBundlePriorityConfig value: ${value}`);
-} catch (e) {
-  console.error(`getBundlePriorityConfig error: ${e}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig value is ${value}`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `getBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.setBundlePriorityConfig<sup>23+</sup>
 
 setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 
-Obtains the priority configuration of an application.
+Sets the priority configuration of an application.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -5859,14 +6191,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { notificationManager } from '@kit.NotificationKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
-  notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1');
-} catch (e) {
-  console.error(`setBundlePriorityConfig error: ${e}`);
-}
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
+notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
+}).catch((err: BusinessError) => {
+  hilog.info(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## notificationManager.onBadgeNumberQuery<sup>22+</sup>
@@ -6222,6 +6555,95 @@ Describes the enabling status of the priority notification for an application.
 
 | Name                | Value | Description                              |
 | --------------------| --- | --------------------------------- |
-| DISABLE    | 0   | The priority notification is disabled.                |
-| ENABLE_BY_INTELLIGENT  | 1  | The priority notification is enabled by intelligent recognition.           |
-| ENABLE   | 2   | The priority notification is enabled for all applications.                |
+| DISABLE    | 0   | The priority notification is disabled.|
+| ENABLE_BY_INTELLIGENT  | 1  | The priority notification is enabled by intelligent recognition.|
+| ENABLE   | 2   | The priority notification is enabled for all applications.|
+
+### setGeofenceEnabled<sup>23+</sup>
+
+setGeofenceEnabled(enabled: boolean):  Promise\<void\>
+
+Sets the enabling state of geofencing. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name     | Type                 | Mandatory| Description                        |
+| --------- | --------------------- | ---- | ---------------------------- |
+| enabled   | boolean | Yes | Whether geofencing is enabled. The value **true** indicates that geofencing is enabled, and the value **false** indicates the opposite.|
+
+**Return value**
+
+| Type           | Description                                  |
+| --------------- | -------------------------------------- |
+| Promise\<void\> | Promise that returns no result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.setGeofenceEnabled(true).then(() => {
+  hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### isGeofenceEnabled<sup>23+</sup>
+
+isGeofenceEnabled(): Promise\<boolean\>
+
+Checks whether geofencing is enabled. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Return value**
+
+| Type              | Description                                                        |
+| ------------------ | ------------------------------------------------------------ |
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that geofencing is enabled, and the value **false** indicates the opposite.|
+
+**Error codes**
+
+For details about the error codes, see [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 1600001 | Internal error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space. |
+
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.isGeofenceEnabled().then((data: boolean) => {
+  hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```

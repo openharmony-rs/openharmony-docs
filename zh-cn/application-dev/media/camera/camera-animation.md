@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在使用相机过程中，如相机模式切换，前后置镜头切换等场景，不可避免出现预览流替换，为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[显示动画能力](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md)实现下方三种核心场景动效：
+在使用相机过程中，当遇到相机模式切换、前后置镜头切换等场景时，会不可避免地出现预览流替换。为优化用户体验，可合理使用动效过渡。本文主要介绍如何使用预览流截图，并通过ArkUI提供的[animateToImmediately](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animatetoimmediately22)接口触发显式动画功能，实现下方三种核心场景动效。
 
 - 模式切换动效，使用预览流截图做模糊动效过渡。
   
@@ -72,7 +72,7 @@
      console.info('flashBlackAnim E');
      this.flashBlackOpacity = 1; // 闪黑组件不透明。
      this.isShowBlack = true; // 显示闪黑组件。
-     animateToImmediately({
+     this.getUIContext().animateToImmediately({
        curve: curves.interpolatingSpring(1, 1, 410, 38),
        delay: 50, // 延时50ms，实现黑屏。
        onFinish: () => {
@@ -240,7 +240,7 @@
      this.shotImgBlur = 0; // 无模糊。
      this.shotImgOpacity = 1; // 不透明。
      this.isShowBlur = true;  // 显示截图组件。
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Friction,
@@ -263,7 +263,7 @@
    hideBlurAnim(): void {
      this.isShowBlack = false;
      console.info('hideBlurAnim E');
-     animateToImmediately({
+     this.getUIContext().animateToImmediately({
        duration: 200,
        curve: Curve.FastOutSlowIn,
        onFinish: () => {
@@ -316,7 +316,7 @@
      this.screenshotPixelMap = shotPixel;
      this.isShowBlack = true; // 显示闪黑组件，覆盖预览流保证视觉效果。
      this.isShowBlur = true; // 显示截图组件。
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          delay: 50, // 时延保证组件缩放模糊动效先行，再翻转,视觉效果更好。
@@ -362,7 +362,7 @@
        this.shotImgRotation = { y: 0.5, angle: 180 };
      }
      this.screenshotPixelMap = shotPixel;
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: curves.cubicBezierCurve(0.17, 0.00, 0.20, 1.00),
@@ -390,7 +390,7 @@
      this.shotImgBlur = 0; //无模糊。
      this.shotImgOpacity = 1; //不透明。
      this.shotImgScale = { x: 1, y: 1 };
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Sharp,
@@ -413,7 +413,7 @@
     */
    blurSecondAnim() {
      console.info('blurSecondAnim E');
-     animateToImmediately(
+     this.getUIContext().animateToImmediately(
        {
          duration: 200,
          curve: Curve.Sharp,

@@ -44,7 +44,7 @@
 
 ### OH_CryptoDigest_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest **ctx)
 ```
 
@@ -70,7 +70,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Create(const char *algoName, OH_CryptoDigest *
 
 ### OH_CryptoDigest_Update()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *in)
 ```
 
@@ -101,7 +101,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Update(OH_CryptoDigest *ctx, Crypto_DataBlob *
 
 ### OH_CryptoDigest_Final()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *out)
 ```
 
@@ -132,7 +132,7 @@ OH_Crypto_ErrCode OH_CryptoDigest_Final(OH_CryptoDigest *ctx, Crypto_DataBlob *o
 
 ### OH_CryptoDigest_GetLength()
 
-```
+```c
 uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)
 ```
 
@@ -157,7 +157,7 @@ uint32_t OH_CryptoDigest_GetLength(OH_CryptoDigest *ctx)
 
 ### OH_CryptoDigest_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)
 ```
 
@@ -182,7 +182,7 @@ const char *OH_CryptoDigest_GetAlgoName(OH_CryptoDigest *ctx)
 
 ### OH_DigestCrypto_Destroy()
 
-```
+```c
 void OH_DigestCrypto_Destroy(OH_CryptoDigest *ctx)
 ```
 

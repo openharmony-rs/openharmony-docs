@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-为了实现更好的转场效果，推荐使用[组件导航(Navigation)](arkts-navigation-navigation.md)和[模态转场](arkts-modal-transition.md)。
+为了实现更好的转场效果，推荐使用[Navigation转场动画](./arkts-navigation-animation.md)和[模态转场](arkts-modal-transition.md)。
 
 两个页面间发生跳转，一个页面消失，另一个页面出现，这时可以配置各自页面的页面转场参数实现自定义的页面转场效果。[页面转场](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)效果写在pageTransition函数中，通过[PageTransitionEnter](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionenter)和[PageTransitionExit](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionexit)指定页面进入和退出的动画效果。
 pageTransition的函数为：
@@ -190,12 +190,12 @@ struct PageTransitionSrc1 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // 路由到下一个页面，push操作
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionDst1' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // 返回到上一页面，相当于pop操作
             this.getUIContext().getRouter().back();
@@ -243,12 +243,12 @@ struct PageTransitionDst1 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // 路由到下一页面，push操作
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionSrc1' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // 返回到上一页面，相当于pop操作
             this.getUIContext().getRouter().back();
@@ -301,12 +301,12 @@ struct PageTransitionSrc2 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // 路由到下一页面，push操作
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionDst2' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // 返回到上一页面，相当于pop操作
             this.getUIContext().getRouter().back();
@@ -340,7 +340,7 @@ struct PageTransitionSrc2 {
 struct PageTransitionDst2 {
   build() {
     Column() {
-       // $r('app.media.forest')需要替换为开发者所需的资源文件
+      // $r('app.media.forest')需要替换为开发者所需的资源文件
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -349,12 +349,12 @@ struct PageTransitionDst2 {
         .margin(30)
 
       Row({ space: 10 }) {
-        Button("pushUrl")
+        Button('pushUrl')
           .onClick(() => {
             // 路由到下一页面，push操作
             this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionSrc2' });
           })
-        Button("back")
+        Button('back')
           .onClick(() => {
             // 返回到上一页面，相当于pop操作
             this.getUIContext().getRouter().back();

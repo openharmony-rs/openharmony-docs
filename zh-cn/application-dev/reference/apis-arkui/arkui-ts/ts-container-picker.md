@@ -104,9 +104,9 @@ enableHapticFeedback(enable: Optional\<boolean>)
 >  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 >  ```json
 >  "requestPermissions": [
->  {
->   "name": "ohos.permission.VIBRATE",
->  }
+>     {
+>        "name": "ohos.permission.VIBRATE",
+>     }
 >  ]
 >  ```
 
