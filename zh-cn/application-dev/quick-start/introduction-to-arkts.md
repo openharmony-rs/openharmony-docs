@@ -379,6 +379,7 @@ if (bird instanceof Animal) {
 **`if`语句**
 
 `if`语句用于需要根据逻辑条件执行不同语句的场景。当逻辑条件为真时，执行对应的一组语句，否则执行另一组语句（如果有的话）。
+
 `else`部分也可以包含`if`语句。
 
 `if`语句如下所示：
@@ -1770,11 +1771,13 @@ class Person {
 }
 ```
 
-**说明**：`getSpouseNick`的返回类型必须为`string | null | undefined`，因为该方法在某些情况下会返回`null`或`undefined`。
-
-可选链可以任意长，可以包含任意数量的`?.`运算符。
-
-在以下示例中，如果`Person`实例的`spouse`属性不为空，并且`spouse`的`nick`属性也不为空时，输出`spouse.nick`。否则，输出`undefined`。
+> **说明**：
+>
+>`getSpouseNick`的返回类型必须为`string | null | undefined`，因为该方法在某些情况下会返回`null`或`undefined`。
+>
+> 可选链可以任意长，可以包含任意数量的`?.`运算符。
+>
+> 在以下示例中，如果`Person`实例的`spouse`属性不为空，并且`spouse`的`nick`属性也不为空时，输出`spouse.nick`。否则，输出`undefined`。
 
 ```typescript
 class Person {
@@ -1868,6 +1871,7 @@ X // 编译时错误：'X'不可见
 ```
 
 **动态导入**
+
 在应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态导入代替静态导入。
 
 import()语法被称为动态导入（dynamic import），是一种类似函数的表达式，用于动态导入模块。调用这种方式，会返回一个promise。
@@ -2023,7 +2027,6 @@ class MyClass {
 **从API version 20及之后版本，支持用户自定义注解。**
 
 **用户自定义注解的声明**
-
 `用户自定义注解`的定义与`interface`的定义类似，其中的`interface`关键字以符号`@`为前缀。<br>
 注解字段仅限于下面列举的类型：
 * number
@@ -2235,7 +2238,6 @@ class X {
 ```
 
 **.d.ets文件中的注解**
-
 注解可以出现在.d.ets文件中。
 
 可以在.d.ets文件中用环境声明（ambient declaration）来声明注解。

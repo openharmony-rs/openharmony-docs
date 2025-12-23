@@ -73,7 +73,7 @@ rawheap_translator [rawheap_file] [heapsnapshot_file]
 | 选项 | 必选 | 描述 |
 | -------- | --- | ----------------- |
 | [rawheap_file] | 是 | 需要解析的应用OOM时生成的.rawheap文件路径。 |
-| [heapsnapshot_file] | 否 | 解析生成的heapsnapshot文件路径，路径必须具有读写权限。<br>参数缺省时，默认为当前执行命令的路径。<br>参数给定时，文件的后缀名必须是heapsnapshot。
+| [heapsnapshot_file] | 否 | 解析生成的heapsnapshot文件路径，路径必须具有读写权限。<br>参数缺省时，默认为当前执行命令的路径。<br>参数给定时，文件的后缀名必须是heapsnapshot。|
 
 ## 解析命令示例
 
