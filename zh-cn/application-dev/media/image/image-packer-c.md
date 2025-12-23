@@ -29,7 +29,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 在创建ImagePacker实例，指定编码参数后将ImageSource或Pixelmap编码至文件或者缓冲区。
 
 > **说明：**
-> 根据MIME标准，标准编码格式为image/jpeg。当使用image编码时，编码参数中的编码格式image_MimeType设置为image/jpeg，image编码后的文件扩展名可设为.jpg或.jpeg，可在支持image/jpeg解码的平台上使用。
+>
+> - 根据MIME标准，标准编码格式为image/jpeg。当使用image编码时，编码参数中的编码格式image_MimeType设置为image/jpeg，image编码后的文件扩展名可设为.jpg或.jpeg，可在支持image/jpeg解码的平台上使用。
+>
+> - 部分接口（如：[OH_ImagePackerNative_GetSupportedFormats](../../reference/apis-image-kit/capi-image-packer-native-h.md#oh_imagepackernative_getsupportedformats)）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 ```c++
 #include <string>
