@@ -99,7 +99,7 @@
 
 窗口矩形区域，单位为vp。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
