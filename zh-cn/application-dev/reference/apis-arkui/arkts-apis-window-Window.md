@@ -9258,7 +9258,9 @@ export default class EntryAbility extends UIAbility {
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
 设置当前窗口是否启用返回手势功能，仅主窗可以调用成功，其他类型的窗口调用返回1300004错误码。设置后仅当窗口处于全屏模式且位于前台获焦状态下功能才会生效。
+
 禁用返回手势功能后，当前应用会禁用手势热区，侧滑返回功能失效；切换到其他应用或者回到桌面后，手势热区恢复，侧滑返回功能正常。
+
 开启返回手势功能后，当前应用会恢复手势热区，侧滑返回功能正常。
 
 **系统能力：** SystemCapability.Window.SessionManager
