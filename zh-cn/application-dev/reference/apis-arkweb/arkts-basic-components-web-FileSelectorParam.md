@@ -156,7 +156,7 @@ getDefaultPath(): string
 
 getDescriptions(): Array\<string\>
 
-获取各组文件类型的描述。为允许的文件类型类别的可选描述。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`description`。
+获取允许的各组文件类型的可选描述。对应HTML里[option](../../web/web-file-upload.md#自定义处理js接口拉起的文件请求)中的`description`。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -204,7 +204,7 @@ getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
 
 | 类型              | 说明        |
 | --------------- | --------- |
-| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件types信息。 |
+| Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | 返回文件类型信息。 |
 
 ## 使用@ohos.transfer进行FileSelectorParam类型转换
 
