@@ -7,6 +7,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -21,6 +23,10 @@ import { cloudData } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
+**ArkTS-Dyn起始版本**:12
+
+**ArkTS-Sta起始版本**:23
+
 | 名称      | 值 | 说明        |
 | --------- |---|-----------|
 | NETWORK | 0 | 通过网络同步策略。 |
@@ -30,6 +36,10 @@ import { cloudData } from '@kit.ArkData';
 网络策略参数枚举。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本**:12
+
+**ArkTS-Sta起始版本**:23
 
 | 名称      | 值 | 说明        |
 | --------- |---|-----------|
@@ -43,6 +53,12 @@ setCloudStrategy(strategy: StrategyType, param?: Array&lt;commonType.ValueType&g
 设置应用自身的云同步策略，若未设置，则执行全局策略[setGlobalCloudStrategy](js-apis-data-cloudData-sys.md#setglobalcloudstrategy12)，全局策略若未设置，默认使用WIFI和蜂窝策略。使用Promise异步回调。<!--RP1End-->
  
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**ArkTS-Dyn起始版本**:12
+
+**ArkTS-Sta起始版本**:23
+
+**参数：**
 
 | 参数名     | 类型                                                                          | 必填 | 说明                             |
 | ---------- |-----------------------------------------------------------------------------| ---- | -------------------------------- |
