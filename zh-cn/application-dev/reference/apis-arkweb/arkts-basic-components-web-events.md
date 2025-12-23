@@ -139,7 +139,12 @@ ArkTS-Dyn: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\>)
 
 ArkTS-Sta: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\> | undefined): this
 
-即将离开刷新或关闭当前页面时触发此回调。刷新或关闭当前页面应先通过点击等方式获取焦点，才会触发此回调。
+即将完成页面刷新或关闭当前页面时触发此回调。
+
+> **说明：**
+>
+> - 如果当前Web组件没有得到焦点，刷新或关闭当前页面时onBeforeUnload不会触发。
+
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -151,7 +156,7 @@ ArkTS-Sta: onBeforeUnload(callback: Callback\<OnBeforeUnloadEvent, boolean\> | u
 
 | 参数名     | 类型                  | 必填   | 说明            |
 | ------- | --------------------- | ---- | --------------- |
-| callback     | ArkTS-Dyn: Callback\<[OnBeforeUnloadEvent](./arkts-basic-components-web-i.md#onbeforeunloadevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnBeforeUnloadEvent](./arkts-basic-components-web-i.md#onbeforeunloadevent12), boolean\> \|  undefined| 是    | 即将离开刷新或关闭当前页面时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终是否离开当前页面。当回调返回false时，函数中绘制的自定义弹窗无效。 |
+| callback     | ArkTS-Dyn: Callback\<[OnBeforeUnloadEvent](./arkts-basic-components-web-i.md#onbeforeunloadevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnBeforeUnloadEvent](./arkts-basic-components-web-i.md#onbeforeunloadevent12), boolean\> \|  undefined| 是    | 即将完成页面刷新或关闭当前页面时触发。<br>返回值boolean。当回调返回true时，应用可以调用自定义弹窗能力（包括确认和取消），并且需要根据用户的确认或取消操作调用JsResult通知Web组件最终是否离开当前页面。当回调返回false时，函数中绘制的自定义弹窗无效。 |
 
 **示例：**
 
@@ -895,7 +900,7 @@ ArkTS-Dyn: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\>)
 
 ArkTS-Sta: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\> | undefined): this
 
-网页加载资源遇到的HTTP错误（响应码>=400)时触发该回调。
+网页加载资源遇到的HTTP错误（响应码>=400）时触发该回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -907,7 +912,7 @@ ArkTS-Sta: onHttpErrorReceive(callback: Callback\<OnHttpErrorReceiveEvent\> | un
 
 | 参数名      | 类型                                     | 必填   | 说明       |
 | -------- | ---------------------------------------- | ---- | ---------- |
-| callback  | ArkTS-Dyn: Callback\<[OnHttpErrorReceiveEvent](./arkts-basic-components-web-i.md#onhttperrorreceiveevent12)\><br/>ArkTS-Sta: Callback\<[OnHttpErrorReceiveEvent](./arkts-basic-components-web-i.md#onhttperrorreceiveevent12)\> \|  undefined | 是    | 网页收到加载资源加载HTTP错误时触发。 |
+| callback  | ArkTS-Dyn: Callback\<[OnHttpErrorReceiveEvent](./arkts-basic-components-web-i.md#onhttperrorreceiveevent12)\><br/>ArkTS-Sta: Callback\<[OnHttpErrorReceiveEvent](./arkts-basic-components-web-i.md#onhttperrorreceiveevent12)\> \|  undefined | 是    | 网页收到加载资源返回HTTP错误码时触发。 |
 
 **示例：**
 
@@ -1336,7 +1341,7 @@ ArkTS-Dyn: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\>)
 
 ArkTS-Sta: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\> | undefined): this
 
-通知应用程序页面document标题已更改，如果加载的页面未设置<title\>元素 指定的标题，ArkWeb将基于URL生成标题并返回给应用程序。
+当页面文档标题`<title>`元素发生变更时，触发回调。若当前页面未显示设置标题，ArkWeb将在加载完成前基于页面的URL生成标题并返回给应用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1348,7 +1353,7 @@ ArkTS-Sta: onTitleReceive(callback: Callback\<OnTitleReceiveEvent\> | undefined)
 
 | 参数名   | 类型   | 必填   | 说明          |
 | ----- | ------ | ---- | ------------- |
-| callback | ArkTS-Dyn: Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> <br/>ArkTS-Sta: Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> \|  undefined| 是    | 定义主应用程序文档标题更改时触发。 |
+| callback | ArkTS-Dyn: Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> <br/>ArkTS-Sta: Callback\<[OnTitleReceiveEvent](./arkts-basic-components-web-i.md#ontitlereceiveevent12)\> \|  undefined| 是    | 页面文档标题发生变更时触发。 |
 
 **示例：**
 
@@ -1407,7 +1412,7 @@ ArkTS-Dyn: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistory
 
 ArkTS-Sta: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistoryEvent\> | undefined): this
 
-加载网页页面完成时触发该回调，用于应用更新其访问的历史链接。
+导航完成时触发该回调，用于应用更新其访问的历史链接。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1419,7 +1424,7 @@ ArkTS-Sta: onRefreshAccessedHistory(callback: Callback\<OnRefreshAccessedHistory
 
 | 参数名         | 类型    | 必填   | 说明                                     |
 | ----------- | ------- | ---- | ---------------------------------------- |
-| callback         | ArkTS-Dyn: Callback\<[OnRefreshAccessedHistoryEvent](./arkts-basic-components-web-i.md#onrefreshaccessedhistoryevent12)\> <br/>ArkTS-Sta: Callback\<[OnRefreshAccessedHistoryEvent](./arkts-basic-components-web-i.md#onrefreshaccessedhistoryevent12)\> \|  undefined| 是    | 在网页刷新访问历史记录时触发。                |
+| callback         | ArkTS-Dyn: Callback\<[OnRefreshAccessedHistoryEvent](./arkts-basic-components-web-i.md#onrefreshaccessedhistoryevent12)\> <br/>ArkTS-Sta: Callback\<[OnRefreshAccessedHistoryEvent](./arkts-basic-components-web-i.md#onrefreshaccessedhistoryevent12)\> \|  undefined| 是    | 在导航完成时触发。                |
 
 **示例：**
 
@@ -2030,7 +2035,7 @@ ArkTS-Dyn: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebRes
 
 ArkTS-Sta: onInterceptRequest(callback: Callback<OnInterceptRequestEvent, WebResourceResponse | null> | undefined): this
 
-当Web组件加载url之前触发该回调，用于拦截url并返回响应数据。onInterceptRequest可以拦截所有跳转，需要根据具体业务去做判断。
+当Web组件加载URL之前触发该回调，用于拦截URL并返回响应数据。`onInterceptRequest`可拦截所有跳转请求并返回响应数据，但无法访问POST请求体（Body）内容，且不支持分片缓冲（buffer）类型数据获取。此类场景需改用[WebSchemeHandler](./arkts-apis-webview-WebSchemeHandler.md)实现，依据具体业务需求进行判断。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2191,7 +2196,7 @@ ArkTS-Sta: onHttpAuthRequest(callback: Callback\<OnHttpAuthRequestEvent, boolean
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback | ArkTS-Dyn: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> \|  undefined| 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回ture表示http auth认证成功，返回false表示http auth认证失败。   |
+| callback | ArkTS-Dyn: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> <br/>ArkTS-Sta: Callback\<[OnHttpAuthRequestEvent](./arkts-basic-components-web-i.md#onhttpauthrequestevent12), boolean\> \|  undefined| 是 | 当浏览器需要用户的凭据时触发。<br>返回值boolean。返回true表示http auth认证成功，返回false表示http auth认证失败。   |
 
 **示例：**
 
@@ -2310,6 +2315,13 @@ ArkTS-Sta: onSslErrorEventReceive(callback: Callback\<OnSslErrorEventReceiveEven
 通知用户加载资源时发生SSL错误，只支持主资源。
 如果需要支持子资源，请使用[OnSslErrorEvent](./arkts-basic-components-web-events.md#onsslerrorevent12)接口。
 
+> **说明：**
+>
+> - 主资源：浏览器加载网页的入口文件，通常是HTML文档。  
+> - 子资源：主资源中引用的依赖文件，由主资源解析过程中遇到特定标签时触发加载。
+> - 应用程序需要调用[handler.handleCancel()](./arkts-basic-components-web-SslErrorHandler.md#handlecancel9)或[handler.handleConfirm()](./arkts-basic-components-web-SslErrorHandler.md#handleconfirm9)处理该回调，如果没有处理该回调则默认取消资源加载。handleConfirm()或者handleCancel()的行为可能会被记录下来，以便为将来的SSL错误做出响应。
+> - 应用程序可以用于显示自定义错误页面或静默记录问题。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -2415,7 +2427,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
   if (!(certChainData instanceof Array)) {
-    console.info('failed, cert chain data type is not array');
+    console.error('failed, cert chain data type is not array');
     return;
   }
 
@@ -2497,6 +2509,11 @@ ArkTS-Dyn: onSslErrorEvent(callback: OnSslErrorEventCallback)
 ArkTS-Sta: onSslErrorEvent(callback: OnSslErrorEventCallback | undefined): this
 
 通知用户加载资源（主资源+子资源）时发生SSL错误，如果只想处理主资源的SSL错误，请用[isMainFrame](./arkts-basic-components-web-WebResourceRequest.md#ismainframe)字段进行区分。
+
+> **说明：**
+>
+> - 主资源：浏览器加载网页的入口文件，通常是HTML文档。  
+> - 子资源：主资源中引用的依赖文件，由主资源解析过程中遇到特定标签时触发加载。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2611,7 +2628,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 function LogCertInfo(certChainData : Array<Uint8Array> | undefined) {
   if (!(certChainData instanceof Array)) {
-    console.info('failed, cert chain data type is not array');
+    console.error('failed, cert chain data type is not array');
     return;
   }
 
@@ -2700,6 +2717,11 @@ ArkTS-Dyn: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticat
 ArkTS-Sta: onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\> | undefined)
 
 通知用户收到SSL客户端证书请求事件。
+
+> **说明：**
+>
+> - Web组件有三种响应方式：[ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10)（继续）、[ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9)（取消）或[ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9)（忽略）。
+> - 如果调用ClientAuthenticationHandler.confirm或ClientAuthenticationHandler.cancel，ArkWeb会将认证结果存储在内存中（在应用程序的生命周期内），并且不会对相同的主机和端口再次调用onClientAuthenticationRequest()。如果调用onClientAuthenticationRequest.ignore，ArkWeb则不会存储该认证结果。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -3716,7 +3738,7 @@ ArkTS-Sta示例：
   @Entry
   @Component
   struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
 
     build() {
       Column() {
@@ -6828,13 +6850,13 @@ ArkTS-Dyn: onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback)
 
 ArkTS-Sta: onOverrideUrlLoading(callback: OnOverrideUrlLoadingCallback | undefined): this
 
-当URL将要加载到当前Web中时，让宿主应用程序有机会获得控制权，回调函数返回true将导致当前Web中止加载URL，而返回false则会导致Web继续照常加载URL。
+当URL将要加载到当前Web中时触发该回调，让宿主应用程序有机会获得控制权，判断是否阻止Web加载URL。
 
-POST请求不会触发该回调。
-
-iframe加载HTTP(s)协议或about:blank时不会触发该回调，加载非HTTP(s)协议的跳转可以触发。调用loadUrl(String)主动触发的跳转不会触发该回调。
-
-不要使用相同的URL调用loadUrl(String)方法，然后返回true。这样做会不必要地取消当前的加载并重新使用相同的URL开始新的加载。继续加载给定URL的正确方式是直接返回false，而不是调用loadUrl(String)。
+> **说明：**
+>
+> - POST请求不会触发该回调。  
+> - iframe加载HTTP(s)协议或about:blank时不会触发该回调，而加载非HTTP(s)协议的跳转会触发；调用loadUrl(url: string)主动触发的跳转不会触发该回调。   
+> - 不要在回调中使用相同的URL调用loadUrl(url: string)方法，然后返回true。 这样会不必要地中止当前加载，并用相同的URL发起一次新的加载。 要继续加载当前请求URL的正确做法是直接返回false，而不是调用loadUrl(url: string)。 
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -6846,7 +6868,7 @@ iframe加载HTTP(s)协议或about:blank时不会触发该回调，加载非HTTP(
 
 | 参数名    | 类型   | 必填   | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| callback       | ArkTS-Dyn: [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) <br/>ArkTS-Sta: [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) \|  undefined| 是 | onOverrideUrlLoading的回调。 |
+| callback       | ArkTS-Dyn: [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) <br/>ArkTS-Sta: [OnOverrideUrlLoadingCallback](./arkts-basic-components-web-t.md#onoverrideurlloadingcallback12) \|  undefined| 是 | onOverrideUrlLoading的回调。<br>返回值boolean。返回true表示中止加载URL，返回false表示继续在Web中加载URL。  |
 
 **示例：**
 
