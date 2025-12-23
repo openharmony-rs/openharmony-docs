@@ -1559,6 +1559,8 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
 不支持分号分隔的多条语句。
 
+不支持在SQL语句开头增加注释或者其他字符。
+
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **参数：**
@@ -1632,6 +1634,8 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 此接口不支持执行查询、附加数据库和事务操作，查询可以使用[querySql](#querysql14)、[query](#query14)接口代替、附加数据库可以使用[attach](arkts-apis-data-relationalStore-RdbStore.md#attach12)接口代替。
 
 不支持分号分隔的多条语句。
+
+不支持在SQL语句开头增加注释或者其他字符。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
