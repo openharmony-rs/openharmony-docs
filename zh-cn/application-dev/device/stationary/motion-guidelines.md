@@ -47,9 +47,19 @@ ArkTS-Sta接口说明：
 
 2. 定义回调函数接收操作手结果
 
+   ArkTS-Dyn示例:
+
    ```ts
    callback(data:motion.OperatingHandStatus) {
      console.info('callback success' + data);
+   };
+   ```
+
+   ArkTS-Sta示例:
+
+   ```ts
+   let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
+   console.info('callback succeeded' + data);
    };
    ```
 
