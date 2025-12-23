@@ -114,10 +114,10 @@ struct Index {
   }
 }
 ```
-点击“隐藏menubar”按钮后，menubar消失。
+点击“隐藏menubar”按钮后，菜单功能胶囊消失。
 
 <img src="figures/AtomicServiceMenuBarDemo01.png" alt="AtomicServiceMenuBarDemo02" width="300">
 
-点击“显示menubar”按钮后，menubar出现。
+点击“显示menubar”按钮后，菜单功能胶囊出现。
 
 <img src="figures/AtomicServiceMenuBarDemo02.png" alt="AtomicServiceMenuBarDemo02" width="300">
