@@ -3011,3 +3011,42 @@ async function test(){
   avPlayer.off('superResolutionChanged');
 }
 ```
+
+## getPlaybackStatisticMetrics<sup>23+</sup>
+
+getPlaybackStatisticMetrics(): Promise\<PlaybackMetrics>
+
+获取播放质量统计数据，可以在准备（prepared）/播放（playing）/暂停（paused）/完成（completed）/停止（stopped）状态调用。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型                                                         | 说明                                               |
+| ------------------------------------------------------------ | -------------------------------------------------- |
+| Promise\<[PlaybackMetrics](arkts-apis-media-t.md#playbackmetrics23)> | Promise对象，返回播放质量统计数据PlaybackMetrics。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let avPlayer: media.AVPlayer | undefined = undefined;
+let playbackMetrics: media.PlaybackMetrics | undefined = undefined;
+media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
+  if (player != null) {
+    avPlayer = player;
+    console.info(`Succeeded in creating AVPlayer`);
+    if (avPlayer) {
+      try {
+        playbackMetrics = await avPlayer.getPlaybackStatisticMetrics();
+        console.info(`AVPlayer getPlaybackStatisticMetrics = ${JSON.stringify(playbackMetrics)}`); // 打印整个playbackMetrics的值。
+      } catch (error) {
+        console.error(`error = ${error}`);
+      }
+    }
+  } else {
+    console.error(`Failed to create AVPlayer, error message:${err.message}`);
+  }
+});
+```

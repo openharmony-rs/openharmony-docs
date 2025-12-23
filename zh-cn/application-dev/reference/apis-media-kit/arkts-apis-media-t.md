@@ -323,6 +323,18 @@ let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
 };
 ```
 
+## PlaybackMetrics<sup>23+</sup>
+
+type PlaybackMetrics = Record\<PlaybackMetricsKey, Object>
+
+提供播放指标描述键值对的容器定义。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23), Object> |  表示值类型为键值对，其中key和value的类型与范围请参考[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23)。 |
+
 ## AudioState<sup>(deprecated)</sup>
 
 type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'
