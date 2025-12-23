@@ -449,7 +449,7 @@ registerShutdownCallback(callback: Callback&lt;boolean&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                           |
 | -------- | ---------------------------- | ---- | ------------------------------ |
-| callback | Callback&lt;boolean&gt; | 是   | 回调函数，返回true表示重启；返回flase表示关机。 |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数，返回true表示重启；返回false表示关机。 |
 
 **错误码：**
 

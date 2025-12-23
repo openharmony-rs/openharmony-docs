@@ -987,7 +987,7 @@ getCameraDevices(position: CameraPosition, types: Array\<CameraType>, connectTyp
 | 参数名      | 类型                                                    | 必填 | 说明                                                 |
 | ----------- | ------------------------------------------------------- | ---- | ---------------------------------------------------- |
 | position    | [CameraPosition](arkts-apis-camera-e.md#cameraposition) | 是   | 相机的位置。 |
-| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | 是   | 相机的类型。 |
+| types       | Array\<[CameraType](arkts-apis-camera-e.md#cameratype)>  | 是   | 相机类型数组。 |
 | connectType | [ConnectionType](arkts-apis-camera-e.md#connectiontype) | 是   | 相机的连接类型。 |
 
 **返回值：**

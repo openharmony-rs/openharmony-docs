@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 The **ArcSwiper** component is designed for circular screens to display child components in a carousel-like manner.
 
@@ -14,10 +14,29 @@ The **ArcSwiper** component is designed for circular screens to display child co
 
 ## Modules to Import
 
+> **NOTE**
+>
+> - **ArcSwiperAttribute** is essential for configuring the **ArcSwiper** component. In API version 21 and earlier, you must manually import **ArcSwiperAttribute** after importing the **ArcSwiper** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcSwiperAttribute** when it detects the **ArcSwiper** component, so manual import is no longer necessary.
+>
+> - If you manually import **ArcSwiperAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+
+API version 21 and earlier:
+
 ```ts
 import {
   ArcSwiper,
   ArcSwiperAttribute,
+  ArcDotIndicator,
+  ArcDirection,
+  ArcSwiperController
+} from '@kit.ArkUI';
+```
+
+API version 22 and later:
+
+```ts
+import { 
+  ArcSwiper, 
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
@@ -74,7 +93,7 @@ Sets the index of the child component currently displayed in the container. If t
 
 indicator(style: Optional\<ArcDotIndicator | boolean>)
 
-Sets the style of the arc-shaped dot-style navigation indicator.
+Sets the style of the arc dot navigation indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -84,7 +103,7 @@ Sets the style of the arc-shaped dot-style navigation indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | Optional\<[ArcDotIndicator](#arcdotindicator)  \| boolean> | Yes  | Style of the arc-shaped dot-style navigation indicator.<br> \- **ArcDotIndicator**: properties and functionality of the arc-shaped dot-style navigation indicator.<br> \- **boolean**: whether to enable the arc-shaped dot-style navigation indicator. The value **true** means to enable the arc-shaped dot-style navigation indicator, and **false** means the opposite.<br> Default value: **true**<br> Default type: **ArcDotIndicator**|
+| style  | Optional\<[ArcDotIndicator](#arcdotindicator)  \| boolean> | Yes  | Style of the arc dot navigation indicator.<br> \- **ArcDotIndicator**: properties and behavior of the arc dot navigation indicator.<br> \- **boolean**: whether to enable the arc dot navigation indicator. **true** to enable, **false** otherwise.<br> Default value: **true**<br> Default type: **ArcDotIndicator**|
 
 ### duration
 
@@ -116,7 +135,7 @@ Sets whether vertical swiping is used.
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| isVertical  | Optional\<boolean> | Yes  | Whether vertical swiping is used. The value **true** means vertical swiping, and **false** means horizontal swiping.<br>Default value: **false**|
+| isVertical  | Optional\<boolean> | Yes  | Whether vertical swiping is used.<br>The value **true** means vertical swiping, and **false** means horizontal swiping.<br>Default value: **false**|
 
 ### disableSwipe
 
@@ -154,7 +173,7 @@ Sets the sensitivity to the digital crown rotation.
 
 effectMode(edgeEffect: Optional\<EdgeEffect>)
 
-Sets the effect used when the scroll boundary is reached. For details about the supported effects, see [EdgeEffect](ts-appendix-enums.md#edgeeffect). The edge effect does not take effect when set using the controller API.
+Sets the effect used when the scroll boundary is reached. For details about the supported effects, see [EdgeEffect](ts-appendix-enums.md#edgeeffect). The setting does not take effect when configured using the controller API.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -180,7 +199,7 @@ Sets whether to disable the transition animation.
 
 | Name  | Type              | Mandatory| Description                                   |
 | -------- | ------------------ | ---- | --------------------------------------- |
-| disabled | Optional\<boolean> | Yes  | Whether to disable the transition animation.<br>Default value: **false**, which means not to disable the transition animation.|
+| disabled | Optional\<boolean> | Yes  | Whether to disable the transition animation.<br>**true**: Disable the animation effect. **false**: Do not disable the animation effect.<br>If the input parameter is invalid, the value **false** is used.|
 
 ## ArcSwiperController
 
@@ -238,7 +257,7 @@ Stops an animation.
 
 ## ArcDotIndicator
 
-Provides the properties and functionality of the arc-shaped dot-style navigation indicator.
+Describes the properties and behavior of the arc dot navigation indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -268,7 +287,7 @@ Sets the direction of the arc navigation indicator.
 
 | Name   | Type                                    | Mandatory| Description                                                        |
 | --------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
-| direction | [Optional\<ArcDirection>](#arcdirection) | Yes  | Direction of the arc navigation indicator.<br>Default value: **ArcDirection.SIX_CLOCK_DIRECTION** (6 o'clock direction)|
+| direction | Optional\<[ArcDirection](#arcdirection-1)> | Yes  | Direction of the arc navigation indicator.<br>Default value: **ArcDirection.SIX_CLOCK_DIRECTION** (6 o'clock direction)|
 
 **Return value**
 
@@ -290,7 +309,7 @@ Sets the color of the unselected navigation points in the arc navigation indicat
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<ResourceColor>](ts-types.md#resourcecolor) | Yes  | Color of the unselected navigation points in the arc navigation indicator.<br>Default value: **'#A9FFFFFF'**|
+| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Color of the unselected navigation points in the arc navigation indicator.<br>Default value: **'#A9FFFFFF'**|
 
 **Return value**
 
@@ -312,7 +331,7 @@ Sets the color of the selected navigation point in the arc navigation indicator.
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<ResourceColor>](ts-types.md#resourcecolor) | Yes  | Color of the selected navigation point in the arc navigation indicator.<br>Default value: **#FF5EA1FF**|
+| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Color of the selected navigation point in the arc navigation indicator.<br>Default value: **#FF5EA1FF**|
 
 **Return value**
 
@@ -334,7 +353,7 @@ Sets the color of the arc navigation indicator when it is long-pressed.
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<ResourceColor>](ts-types.md#resourcecolor) | Yes  | Color of the arc navigation indicator when it is long-pressed.<br>Default value: **'#FF404040'**|
+| color  | Optional\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Color of the arc navigation indicator when it is long-pressed.<br>Default value: **'#FF404040'**|
 
 **Return value**
 
@@ -356,7 +375,7 @@ Sets the mask gradient color of the arc navigation indicator.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | [Optional\<LinearGradient>](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Mask gradient color of the arc navigation indicator.<br>Default start color: **'#00000000'**<br>Default end color: **'#FF000000'**|
+| color  | Optional\<[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)> | Yes  | Mask gradient color of the arc navigation indicator.<br>Default start color: **'#00000000'**<br>Default end color: **'#FF000000'**|
 
 **Return value**
 
@@ -366,7 +385,7 @@ Sets the mask gradient color of the arc navigation indicator.
 
 ### ArcDirection
 
-Enumerates the direction of the arc navigation indicator.
+Enumerates the directions of the arc navigation indicator.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -443,7 +462,7 @@ Defines the callback triggered when the page transition animation ends.
 
 type GestureSwipeHandler = (index: number, event: SwiperAnimationEvent) => void
 
-Callback triggered on a frame-by-frame basis when the page is turned by a swipe.
+Defines the callback triggered on a frame-by-frame basis during a swipe-based page turn.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -466,7 +485,7 @@ onChange(handler: Optional\<IndexChangedHandler>)
 
 Triggered when the index of the currently displayed child component changes. The return value is the index of the currently displayed child component.
 
-When the **ArcSwiper** component is used together with **LazyForEach**, the subpage UI update cannot be triggered in the **onChange** event.
+When the **ArcSwiper** component is used together with [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), the subpage UI update cannot be triggered in the **onChange** event.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -476,7 +495,7 @@ When the **ArcSwiper** component is used together with **LazyForEach**, the subp
 
 | Name | Type                                                  | Mandatory| Description                    |
 | ------- | ------------------------------------------------------ | ---- | ------------------------ |
-| handler | [Optional\<IndexChangedHandler>](#indexchangedhandler) | Yes  | Callback for the index of the currently displayed element.|
+| handler | Optional\<[IndexChangedHandler](#indexchangedhandler)> | Yes  | Callback for the index of the currently displayed element.|
 
 ### onAnimationStart
 
@@ -492,7 +511,7 @@ Triggered when the page transition animation starts.
 
 | Name | Type                                                      | Mandatory| Description                  |
 | ------- | ---------------------------------------------------------- | ---- | ---------------------- |
-| handler | [Optional\<AnimationStartHandler>](#animationstarthandler) | Yes  | Triggered when the page transition animation starts.|
+| handler | Optional\<[AnimationStartHandler](#animationstarthandler)> | Yes  | Triggered when the page transition animation starts.|
 
 ### onAnimationEnd
 
@@ -500,7 +519,7 @@ onAnimationEnd(handler: Optional\<AnimationEndHandler>)
 
 Triggered when the page transition animation ends.
 
-This event is triggered when the page transition animation of the **ArcSwiper** component ends, whether it is caused by gesture interruption or by calling **finishAnimation** through **SwiperController**. The **index** parameter indicates the index after the animation ends. When the **ArcSwiper** component contains multiple columns, the index is of the leftmost element.
+This event is triggered when the page transition animation of the **ArcSwiper** component ends, whether it is caused by gesture interruption or by calling **finishAnimation** through [SwiperController](ts-container-swiper.md#swipercontroller). The **index** parameter indicates the index after the animation ends. When the **ArcSwiper** component contains multiple columns, the index is of the leftmost element.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -510,7 +529,7 @@ This event is triggered when the page transition animation of the **ArcSwiper** 
 
 | Name | Type                                                  | Mandatory| Description                      |
 | ------- | ------------------------------------------------------ | ---- | -------------------------- |
-| handler | [Optional\<AnimationEndHandler>](#animationendhandler) | Yes  | Triggered when the page transition animation ends.|
+| handler | Optional\<[AnimationEndHandler](#animationendhandler)> | Yes  | Triggered when the page transition animation ends.|
 
 ### onGestureSwipe
 
@@ -526,7 +545,7 @@ Triggered on a frame-by-frame basis when the page is turned by a swipe.
 
 | Name | Type                                                  | Mandatory| Description                                  |
 | ------- | ------------------------------------------------------ | ---- | -------------------------------------- |
-| handler | [Optional\<GestureSwipeHandler>](#gestureswipehandler) | Yes  | Triggered on a frame-by-frame basis when the page is turned by a swipe.|
+| handler | Optional\<[GestureSwipeHandler](#gestureswipehandler)> | Yes  | Triggered on a frame-by-frame basis when the page is turned by a swipe.|
 
 ### customContentTransition
 
@@ -554,14 +573,20 @@ Provides the information about the custom page transition animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Circle
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | ------ | ---- | ---- | ---- | ---- |
-| timeout | number | No| Yes| Timeout for the custom page transition animation. The timeout timer starts when the default animation (page scrolling) reaches the point where the first frame is moved out of the viewport. If you do not call the **finishTransition** API of [SwiperContentTransitionProxy](#swipercontenttransitionproxy) before the timer expires, the component considers that the custom animation of the page ends and immediately removes the page node from the render tree. The unit is ms. The default value is **0**.|
+| timeout | number | No| Yes| Timeout for the custom page transition animation. The timeout timer starts when the default animation (page scrolling) reaches the point where the first frame is moved out of the viewport. If you do not call the [finishTransition](#finishtransition) API of [SwiperContentTransitionProxy](#swipercontenttransitionproxy) before the timer expires, the component considers that the custom animation of the page ends and immediately removes the page node from the render tree. The unit is ms. The default value is **0**.|
 | transition | Callback\<[SwiperContentTransitionProxy](#swipercontenttransitionproxy)> | No| No| Content of the custom page transition animation.|
 
 ## SwiperContentTransitionProxy
 
 Implements the proxy object returned during the execution of the custom page transition animation of the **ArcSwiper** component. You can use this object to obtain the page information in the custom animation viewport. You can also call the **finishTransition** API of this object to notify the **ArcSwiper** component that the custom animation has finished playing.
+
+>**NOTE**
+>
+> - For example, when the index of the currently selected child component is 0, during a transition animation from page 0 to page 1, the callback is triggered for all pages within the viewport on every frame. When pages 0 and 1 are both in the viewport, the callback is triggered twice per frame. The first callback has **selectedIndex** as **0**, **index** as **0**, **position** as the ratio of how much page 0 has moved relative to its position before the animation started on the current frame, and **mainAxisLength** as the length of page 0 on the main axis. The second callback has **selectedIndex** as **0**, **index** as **1**, **position** as the ratio of how much page 1 has moved relative to page 0 before the animation started on the current frame, and **mainAxisLength** as the length of page 1 on the main axis.
+>
+> - If the animation curve is a spring interpolation curve, during the transition animation from page 0 to page 1, due to the position and velocity when the user lifts their finger off the screen, animation may overshoot and slide past to page 2, then bounce back to page 1. Throughout this process, a callback is triggered for pages 1 and 2 within the viewport on every frame.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -569,23 +594,12 @@ Implements the proxy object returned during the execution of the custom page tra
 
 ### **Properties**
 
-| Name| Type| Read-Only| Optional| Description|
+| Name| Type| Read Only| Optional| Description|
 | ------ | ---- | ---- | ---- | ---- |
 | selectedIndex | number | No| No| Index of the currently selected page.|
 | index | number | No| No| Index of a page in the viewport.|
 | position | number | No| No| Position of the page specified by **index** relative to the start position of the **ArcSwiper** main axis (start position of the page corresponding to **selectedIndex**).|
 | mainAxisLength | number | No| No| Length of the page specified by **index** along the main axis.|
-
->**NOTE**
->
->For example, when the currently selected child component's index is **0**, in the animation process of switching from page 0 to page 1, a callback will be triggered for all pages within the viewport on each frame.
->When there are two pages, page 0 and page 1, in the viewport, two callbacks will be triggered per frame. The first callback will have **selectedIndex** as **0**, **index** as **0**, **position** representing the movement ratio of page 0 relative to its position before the animation started at the current frame,
->and **mainAxisLength** representing the length of page 0 along the main axis. The second callback will still have **selectedIndex** as **0**, **index** as **1**, **position** representing the movement ratio of page 1 relative to page 0 before the animation started at the current frame,
->and **mainAxisLength** representing the length of page 1 along the main axis.
->
->If the animation curve is a spring interpolation curve, during the transition animation from page 0 to page 1, due to the position and velocity when the user lifts their finger off the screen, animation may overshoot and slide past to page 2, then bounce back to page 1.
->Throughout this process, a callback is triggered for pages 1 and 2 within the viewport on every frame.
-
 
 ### finishTransition
 
@@ -606,11 +620,12 @@ This example demonstrates the basic functionality of the **ArcSwiper** component
 import {
   CircleShape,
   ArcSwiper,
-  ArcSwiperAttribute, // Import the ArcSwiperAttribute object, which is required for the ArcSwiper attributes. You are advised not to delete the import of this object.
+  ArcSwiperAttribute, 
   ArcDotIndicator,
   ArcDirection,
   ArcSwiperController
 } from '@kit.ArkUI';
+// Starting from API version 22, you do not need to manually import ArcSwiperAttribute. For details, refer to the Modules to Import section of the ArcSwiper reference document.
 
 class MyDataSource implements IDataSource {
   private list: Color[] = [];

@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 输入法子类型允许输入法展现不同的输入模式或语言，用户可以根据需要在不同模式和语言中切换。如输入法的中文键盘、英文键盘等，都属于输入法的子类型。
@@ -61,10 +61,10 @@
    ``` TypeScript
    // 设置监听子类型事件，改变输入法应用界面
    inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
-     if(inputMethodSubtype.id == 'InputMethodExtAbility') {
+     if (inputMethodSubtype.id === 'InputMethodExtAbility') {
        AppStorage.setOrCreate('subtypeChange', 0);
      }
-     if(inputMethodSubtype.id == 'InputMethodExtAbility1') {
+     if (inputMethodSubtype.id === 'InputMethodExtAbility1') {
        AppStorage.setOrCreate('subtypeChange', 1);
      }
    });

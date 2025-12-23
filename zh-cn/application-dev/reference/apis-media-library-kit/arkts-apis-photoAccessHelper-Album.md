@@ -6,13 +6,13 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+Album extends [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md).
+
+实体相册。
+
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
-Album extends [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md)
-
-实体相册。
 
 ## 导入模块
 
@@ -33,7 +33,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 commitModify(callback: AsyncCallback&lt;void&gt;): void
 
-更新相册属性修改到数据库中。该方法使用callback形式来返回结果。
+更新相册属性修改到数据库中。使用callback异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -43,7 +43,7 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | callback返回void。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当相册属性修改成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -96,7 +96,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 commitModify(): Promise&lt;void&gt;
 
-更新相册属性修改到数据库中。该方法使用Promise来返回结果。
+更新相册属性修改到数据库中。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE_IMAGEVIDEO
 
@@ -106,7 +106,7 @@ commitModify(): Promise&lt;void&gt;
 
 | 类型                  | 说明           |
 | ------------------- | ------------ |
-| Promise&lt;void&gt; | Promise对象，返回void。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -158,7 +158,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-向用户相册中添加图片或视频前，需预置相册和文件资源。此方法通过callback方式返回结果。
+向用户相册中添加图片或视频，需预置相册和文件资源。使用callback异步回调。
 
 > **说明：** 
 >
@@ -173,7 +173,7 @@ addAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;):
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | 是   | 待添加到相册中的图片或视频数组。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | callback返回void。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当添加图片或视频成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -227,7 +227,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 addAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-向用户相册添加图片或视频前，需预置相册和文件资源。此方法通过Promise返回结果。
+向用户相册添加图片或视频，需预置相册和文件资源。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -247,7 +247,7 @@ addAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-|Promise&lt;void&gt; | Promise对象，返回void。 |
+|Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -300,7 +300,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-从用户相册移除图片或视频前，需预置相册和文件资源。该方法以callback形式返回结果。
+从用户相册移除图片或视频，需预置相册和文件资源。使用callback异步回调。
 
 > **说明：** 
 >
@@ -315,7 +315,7 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;, callback: AsyncCallback&lt;void&gt
 | 参数名   | 类型                      | 必填 | 说明       |
 | -------- | ------------------------- | ---- | ---------- |
 | assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | 是   | 相册中待移除的图片或视频数组。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | callback返回void。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当移除图片或视频成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -369,7 +369,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 removeAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-从用户相册中移除图片或视频前，需预置相册和文件资源。此方法通过Promise返回结果。
+从用户相册中移除图片或视频，需预置相册和文件资源。使用Promise异步回调。
 
 > **说明：** 
 >
@@ -389,7 +389,7 @@ removeAssets(assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-|Promise&lt;void&gt; | Promise对象，返回void。 |
+|Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 

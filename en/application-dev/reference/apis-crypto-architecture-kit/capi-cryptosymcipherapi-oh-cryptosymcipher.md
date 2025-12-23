@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct OH_CryptoSymCipher OH_CryptoSymCipher
+```
+
 ## Overview
 
 Defines a symmetric encryption and decryption instance.

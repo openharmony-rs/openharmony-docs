@@ -46,7 +46,7 @@ startAbility(want: Want): Promise&lt;void&gt;
 
 **参数：**
 
-| 参数名 |                类型               | 必填 |              说明               |
+| 参数名 | 类型 | 必填 | 说明 |
 | ------| --------------------------------- | ---- | -------------------------------------- |
 | want| [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是  | 启动Ability的want信息。 |
 

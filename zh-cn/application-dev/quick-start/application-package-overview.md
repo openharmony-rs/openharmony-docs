@@ -41,7 +41,7 @@ Module按照使用场景可以分为两种类型：
   HAR与HSP两种共享包的主要区别体现在：
   | 共享包类型 | 编译和运行方式  | 发布和引用方式 | 
   | --------  | ---- | --- |
-  | HAR | HAR中的代码和资源跟随使用方编译，如果有多个使用方，它们的编译产物中会存在多份相同拷贝。<br/>注意：[编译HAR](har-package.md#编译)时，建议开启混淆能力，保护代码资产。 | HAR除了支持应用内引用，还可以独立打包发布到[OHPM中心仓](https://ohpm.openharmony.cn/#/cn/home)或者[OHPM私仓](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo)，供其他应用引用。 | 
+  | HAR | HAR中的代码和资源跟随使用方编译，如果有多个使用方，它们的编译产物中会存在多份相同拷贝。<br/>注意：[构建HAR](har-package.md#构建)时，建议开启混淆能力，保护代码资产。 | HAR除了支持应用内引用，还可以独立打包发布到[OHPM中心仓](https://ohpm.openharmony.cn/#/cn/home)或者[OHPM私仓](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo)，供其他应用引用。 | 
   | HSP  | HSP中的代码和资源可以独立编译，运行时在一个进程中代码也只会存在一份。 | HSP一般随应用进行打包，当前支持应用内和[集成态HSP](integrated-hsp.md)。应用内HSP只支持应用内引用，集成态HSP支持发布到OHPM私仓和跨应用引用。<br/>**说明：**<br/> 集成态HSP只是应用内HSP的中间形态，只能参与编译构建过程，无法单独安装。在构建和发布OHPM私仓的过程中，集成态HSP不与特定的应用包名耦合。使用时，工具链支持自动将集成态HSP的包名替换成宿主应用包名，并且会重新签名生成一个新的HSP包，作为宿主应用的安装包，这个新的HSP也属于宿主应用HAP的应用内HSP。|
 
  
@@ -56,7 +56,7 @@ HAP、HAR、HSP三者的功能和使用场景总结对比如下：
 | Module类型 | 包类型 | 说明 |
 | -------- | -------- | -------- |
 | Ability | [HAP](hap-package.md)| 应用的功能模块，可以独立安装和运行。|
-| Static Library | [HAR](har-package.md) | 静态共享包，编译态复用。<br/> - 支持应用内共享，也可以作为二方库（SDK）、三方库（SDK）发布后供其他应用使用。<br/> &ensp; - 作为二方库（SDK），发布到[OHPM私仓](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo)，供公司内部其他应用使用。<br/> &ensp; - 作为三方库（SDK），发布到[OHPM中心仓](https://ohpm.openharmony.cn/#/cn/home)，供其他应用使用。<br/> - 多包（HAP/HSP）同时引用相同的HAR时，会造成多包间代码和资源的重复拷贝，从而导致应用包增大。<br/> - 注意：[编译HAR](har-package.md#编译)时，建议开启混淆能力，保护代码资产。 |
+| Static Library | [HAR](har-package.md) | 静态共享包，编译态复用。<br/> - 支持应用内共享，也可以作为二方库（SDK）、三方库（SDK）发布后供其他应用使用。<br/> &ensp; - 作为二方库（SDK），发布到[OHPM私仓](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-ohpm-repo)，供公司内部其他应用使用。<br/> &ensp; - 作为三方库（SDK），发布到[OHPM中心仓](https://ohpm.openharmony.cn/#/cn/home)，供其他应用使用。<br/> - 多包（HAP/HSP）同时引用相同的HAR时，会造成多包间代码和资源的重复拷贝，从而导致应用包增大。<br/> - 注意：[构建HAR](har-package.md#构建)时，建议开启混淆能力，保护代码资产。 |
 | Shared Library | [HSP](in-app-hsp.md)| 动态共享包，运行时复用。<br/> - 当多包（HAP/HSP）同时依赖同一个共享包时，使用HSP替代HAR，可以避免HAR造成的多包间代码和资源的重复拷贝，从而减小应用包大小。 |
 
 HAP、HSP、HAR支持的规格对比如下，其中“√”表示是，“×”表示否。

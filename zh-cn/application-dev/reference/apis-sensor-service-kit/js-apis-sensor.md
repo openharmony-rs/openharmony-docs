@@ -72,6 +72,51 @@ try {
 }
 ```
 
+### FUSION_PRESSURE<sup>22+</sup>
+
+on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&gt;, options?: Options): void
+
+订阅融合压力传感器数据。
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE  |
+| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
+| options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 使用try catch对可能出现的异常进行捕获
+try {
+  sensor.on(sensor.SensorId.FUSION_PRESSURE, (data: sensor.FusionPressureResponse) => {
+    console.info('Succeeded in invoking on. fusionPressure: ' + data.fusionPressure);
+  }, { interval: 100000000 });
+  setTimeout(() => {
+    sensor.off(sensor.SensorId.FUSION_PRESSURE);
+  }, 500);
+} catch (error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Failed to invoke on. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
 ### ACCELEROMETER_UNCALIBRATED<sup>9+</sup>
 
 on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;AccelerometerUncalibratedResponse&gt;, options?: Options): void
@@ -2196,6 +2241,91 @@ try {
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`Failed to invoke off. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+### FUSION_PRESSURE<sup>22+</sup>
+
+off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?: Callback&lt;FusionPressureResponse&gt;): void
+
+取消订阅融合压力传感器数据。
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+**参数**：
+
+| 参数名              | 类型                                                         | 必填 | 说明                                                         |
+|------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type             | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE。  |
+| sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
+| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[传感器错误码](errorcode-sensor.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+
+**示例**：
+
+```ts
+import { sensor } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+enum Ret { OK, Failed = -1 }
+
+// 传感器回调
+const sensorCallback = (response: sensor.FusionPressureResponse) => {
+  console.info(`callback response: ${JSON.stringify(response)}`);
+}
+// 传感器监听类型
+const sensorType = sensor.SensorId.FUSION_PRESSURE;
+const sensorInfoParam: sensor.SensorInfoParam = { deviceId: -1, sensorIndex: 0 };
+
+function sensorSubscribe(): Ret {
+  let ret: Ret = Ret.OK;
+  // 使用try catch对可能出现的异常进行捕获
+  try {
+    // 查询所有的传感器
+    const sensorList: sensor.Sensor[] = sensor.getSensorListSync();
+    if (!sensorList.length) {
+      return Ret.Failed;
+    }
+    // 根据实际业务逻辑获取目标传感器。
+    const targetSensor = sensorList
+      // 按需过滤deviceId为1、sensorId为2的所有传感器。此处示例仅做展示，开发者需要自行调整筛选逻辑。
+      .filter((sensor: sensor.Sensor) => sensor.deviceId === 1 && sensor.sensorId === 2)
+      // 可能存在的多个同类型传感器，选择sensorIndex为0的传感器。
+      .find((sensor: sensor.Sensor) => sensor.sensorIndex === 0);
+    if (!targetSensor) {
+      return Ret.Failed;
+    }
+    sensorInfoParam.deviceId = targetSensor.deviceId;
+    sensorInfoParam.sensorIndex = targetSensor.sensorIndex;
+    // 订阅传感器事件
+    sensor.on(sensorType, sensorCallback, { sensorInfoParam });
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to invoke sensor.on. Code: ${e.code}, message: ${e.message}`);
+    ret = Ret.Failed;
+  }
+  return ret;
+}
+
+function sensorUnsubscribe(): Ret {
+  let ret: Ret = Ret.OK;
+  // 使用try catch对可能出现的异常进行捕获
+  try {
+    sensor.off(sensorType, sensorInfoParam, sensorCallback);
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`Failed to invoke sensor.off. Code: ${e.code}, message: ${e.message}`);
+    ret = Ret.Failed;
+  }
+  return ret;
 }
 ```
 
@@ -6311,6 +6441,7 @@ try {
 | HEART_RATE                  | 278  | 心率传感器。                                                 |
 | WEAR_DETECTION              | 280  | 佩戴检测传感器。                                             |
 | ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。                                       |
+| FUSION_PRESSURE             | 283  | 融合压力传感器。<br/>仅智能表有该传感器                        |
 
 
 ## SensorInfoParam<sup>19+</sup>
@@ -6440,6 +6571,18 @@ try {
 | biasX | number | 否   | 否   | 施加在设备x轴未校准的加速度偏量，单位 : m/s²。 |
 | biasY | number | 否   | 否   | 施加在设备y轴未校准的加速度偏量，单位 : m/s²。 |
 | biasZ | number | 否   | 否   | 施加在设备z轴未校准的加速度偏量，单位 : m/s²。 |
+
+
+## FusionPressureResponse
+
+融合压力传感器数据，继承于[Response](#response)。
+
+**系统能力**：SystemCapability.Sensors.Sensor
+
+
+| 名称            | 类型   | 只读 | 可选 | 说明                                           |
+| -------------- | ------ | ---- | ---- | ---------------------------------------------- |
+| fusionPressure | number | 否   | 否   | 施加在融合压力传感器上的压力值百分比，单位 : %     |
 
 
 ## GravityResponse
@@ -9255,7 +9398,7 @@ createRotationMatrix(rotationVector: Array&lt;number&gt;): Promise&lt;Array&lt;n
 
 **示例**：
 
- ```ts
+```ts
 import { sensor } from '@kit.SensorServiceKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -9268,7 +9411,7 @@ promise.then((data: Array<number>) => {
 }).catch((reason: BusinessError) => {
   console.info("Succeeded in getting promise::catch", reason);
 })
- ```
+```
 
 ## sensor.createQuaternion<sup>(deprecated)</sup>
 

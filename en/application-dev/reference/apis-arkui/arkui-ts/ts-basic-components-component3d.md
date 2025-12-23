@@ -42,8 +42,8 @@ Provides the 3D scene configuration options.
 
 | Name       | Type                              | Read-Only| Optional  | Description                                      |
 | --------- | -------------------------------- | ---- | ---- | ---------------------------------------- |
-| scene     | [ResourceStr](ts-types.md#resourcestr) \| [Scene](#scene12) | No   | Yes   | 3D model resource file or scene object.<br>Default value: **undefined**<br>**NOTE**<br>Currently, only GLTF files are supported.|
-| modelType | [ModelType](#modeltype) | No   | Yes   | Composition mode of the 3D scene.<br>Default value: **ModelType.SURFACE**<br>**NOTE**<br>**ModelType.TEXTURE**: The GPU is used for composition.<br>**ModelType.SURFACE**: Dedicated hardware is used for composition.<br>In general cases, leave this parameter at its default settings.|
+| scene     | [ResourceStr](ts-types.md#resourcestr) \| [Scene](#scene12) | No   | Yes   | 3D model resource file or scene object. Default value: **undefined**.<br>**NOTE**<br>Currently, only GLTF files are supported.|
+| modelType | [ModelType](#modeltype) | No   | Yes   | Composition mode of the 3D scene.<br>Default value: **ModelType.SURFACE**.<br>**NOTE**<br>**ModelType.TEXTURE**: The GPU is used for composition.<br>**ModelType.SURFACE**: Dedicated hardware is used for composition.<br>In general cases, leave this parameter at its default settings.|
 
 ## ModelType
 
@@ -107,7 +107,7 @@ Sets the custom 3D scene rendering pipeline. **uri** and **selfRenderUpdate** ca
 | Name          | Type                                  | Mandatory| Description                                                        |
 | ---------------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | uri              | [ResourceStr](ts-types.md#resourcestr) | Yes  | Configuration file for creating a custom rendering pipeline.                                  |
-| selfRenderUpdate | boolean                                | Yes  | Whether rendering can be triggered when the external UI is not updated.<br>The value **true** means that rendering can be triggered when the external UI is not updated, and false means the opposite.|
+| selfRenderUpdate | boolean                                | Yes  | Whether rendering can be triggered when the external UI is not updated.<br>The value **true** means that rendering can be triggered when the external UI is not updated, and **false** means the opposite.|
 
 ### shader
 
@@ -123,7 +123,7 @@ Sets the shader file for custom rendering. The shader file cannot be dynamically
 
 | Name| Type                                  | Mandatory| Description                        |
 | ------ | -------------------------------------- | ---- | ---------------------------- |
-| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Shader file for custom rendering. For details about the .shader file format, see [Requirements on the .shader File Format](../../../graphics3d/arkgraphics3D-shader-resource.md).|
+| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Path to the shader file for custom rendering. For details about the .shader file format, see [Requirements on the .shader File Format](../../../graphics3d/arkgraphics3D-shader-resource.md).|
 
 ### shaderImageTexture
 
@@ -139,7 +139,7 @@ Sets the texture resource used for custom rendering. To use multiple texture res
 
 | Name| Type                                  | Mandatory| Description                      |
 | ------ | -------------------------------------- | ---- | -------------------------- |
-| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Texture resource used for custom rendering.|
+| uri    | [ResourceStr](ts-types.md#resourcestr) | Yes  | Path to the texture resource used for custom rendering.|
 
 ### shaderInputBuffer
 
@@ -175,7 +175,7 @@ The rendering resolution cannot be dynamically changed after the component is cr
 
 | Name| Type                                | Mandatory| Description                |
 | ------ | ------------------------------------ | ---- | -------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | Yes  | Width of the 3D rendering resolution. Currently, only Dimension.Percentage is supported. The value range is [0, 100%].|
+| value  | [Dimension](ts-types.md#dimension10) | Yes  | Width of the 3D rendering resolution. Currently, only **Dimension.Percentage** is supported. The value range is [0, 100%].|
 
 ### renderHeight
 
@@ -183,7 +183,7 @@ renderHeight(value: Dimension)
 
 Sets the height of the 3D rendering resolution. The width and height of the rendering resolution may be different from those of the component. If this is the case, they are upsampled or downsampled to the component width and height.
 
-If this attribute is not specified, the default width of the rendering resolution is used.
+If this attribute is not specified, the default height of the rendering resolution is used.
 
 The rendering resolution cannot be dynamically changed after the component is created.
 
@@ -195,7 +195,7 @@ The rendering resolution cannot be dynamically changed after the component is cr
 
 | Name| Type                                | Mandatory| Description                |
 | ------ | ------------------------------------ | ---- | -------------------- |
-| value  | [Dimension](ts-types.md#dimension10) | Yes  | Height of the 3D rendering resolution. Currently, only Dimension.Percentage is supported. The value range is [0, 100%].|
+| value  | [Dimension](ts-types.md#dimension10) | Yes  | Height of the 3D rendering resolution. Currently, only **Dimension.Percentage** is supported. The value range is [0, 100%].|
 
 ## Events
 
@@ -209,14 +209,14 @@ Example of loading a GLTF model:<br>
 @Entry
 @Component
 struct Index {
-  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  // Load scene resources, which supports .gltf and .glb formats. Adapt the path and file name to your project.
   scene: SceneOptions = { scene: $rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
   build() {
     Row() {
       Column() {
         Text('GLTF Example')
         Component3D( this.scene )
-        // Bind environment resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+        // Bind environment resources, which supports .gltf and .glb formats. Adapt the path and file name to your project.
           .environment($rawfile('gltf/Environment/glTF/Environment.gltf'))
           .renderWidth('90%').renderHeight('90%')
       }.width('100%')
@@ -225,7 +225,7 @@ struct Index {
   }
 }
 ```
-Example of custom rendering:<br>
+Custom rendering example:<br>
 
 ```ts
 import { AnimatorResult } from '@kit.ArkUI';
@@ -251,7 +251,7 @@ function TickFrame() {
 @Entry
 @Component
 struct Index {
-  // Load scene resources, which supports .gltf and .glb formats. The path and file name can be customized based on the specific project resources.
+  // Load scene resources, which supports .gltf and .glb formats. Adapt the path and file name to your project.
   scene: SceneOptions = { scene: $rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.gltf'), modelType: ModelType.SURFACE};
   backAnimator: AnimatorResult = this.getUIContext().createAnimator({
     duration: 2000,
@@ -279,12 +279,12 @@ struct Index {
       Column() {
         Text('custom rendering')
         Component3D()
-          // Bind the custom shader script. The path and file name can be customized based on the specific project resources.
+          // Bind the custom shader script. Adapt the path and file name to your project.
           .shader($rawfile('assets/app/shaders/shader/London.shader'))
-          // Bind the texture resource as the shader input texture. The path and file name can be customized based on the specific project resources.
+          // Bind the texture resource as the shader input. Adapt the path and file name to your project.
           .shaderImageTexture($rawfile('assets/London.jpg'))
           .shaderInputBuffer(this.timeDelta)
-          // Bind the custom rendering process file (.rng). The path and file name can be customized based on the specific project resources.
+          // Bind the render-node graph (.rng). The path and file name can be customized based on the specific project resources.
           .customRender($rawfile('assets/app/rendernodegraphs/London.rng'), true)
           .renderWidth('90%').renderHeight('90%')
           .onAppear(() => {

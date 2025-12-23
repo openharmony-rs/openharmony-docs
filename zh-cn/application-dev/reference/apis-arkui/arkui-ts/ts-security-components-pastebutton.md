@@ -56,7 +56,7 @@ PasteButton(options: PasteButtonOptions)
 > **说明：**
 >
 > - icon或text需至少传入一个。<br>
-> - 如果icon、text都不传入，PasteButton中的options参数不起效，创建的PasteButton为默认样式。
+> - 如果icon、text都不传入，PasteButton中的options参数不生效，创建的PasteButton为默认样式。
 >
 >     - PasteIconStyle默认样式为LINES。
 >

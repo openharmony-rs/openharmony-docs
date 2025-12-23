@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块主要面向普通前台应用（备忘录、信息、设置等系统应用与三方应用），提供对输入法（输入法应用）的控制、管理能力，包括显示/隐藏输入法软键盘、切换输入法、获取所有输入法列表等等。
@@ -660,9 +660,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
     console.info(`Attachment failed with reason: ${reason}.`);
-	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
-	}
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 ```
@@ -689,9 +689,9 @@ import { Callback } from '@kit.BasicServicesKit';
 let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
   (reason: inputMethod.AttachFailureReason): void => {
     console.info(`Attachment failed with reason: ${reason}.`);
-	if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
-	  console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
-	}
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
   };
 inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
 inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
@@ -3688,7 +3688,7 @@ showOptionalInputMethods(callback: AsyncCallback&lt;boolean&gt;): void
 显示输入法选择对话框。使用callback异步回调。
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3732,7 +3732,7 @@ showOptionalInputMethods(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 18开始废弃。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用[inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
