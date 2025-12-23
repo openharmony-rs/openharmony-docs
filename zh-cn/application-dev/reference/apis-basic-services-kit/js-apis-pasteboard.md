@@ -26,7 +26,7 @@ import { pasteboard } from '@kit.BasicServicesKit';
 
 | 名称 | 类型 | 值  | 说明  |
 | -------- | -------- |--------------|--------------------------------|
-| MAX_RECORD_NUM<sup>7+</sup> | number | -            | API version 10之前，此常量值为512，表示单个PasteData中所能包含的最大条目数为512。当剪贴板内容中添加的条目达到数量上限512后，后续的添加操作无效。<br>从API version 10开始，不再限制单个PasteData中所能包含的最大条目数。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
+| MAX_RECORD_NUM<sup>7+</sup> | ArkTS-Dyn:number</br> ArkTS-Sta:int | -            | API version 10之前，此常量值为512，表示单个PasteData中所能包含的最大条目数为512。当剪贴板内容中添加的条目达到数量上限512后，后续的添加操作无效。<br>从API version 10开始，不再限制单个PasteData中所能包含的最大条目数。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
 | MIMETYPE_TEXT_HTML<sup>7+</sup> | string | 'text/html'  | HTML内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
 | MIMETYPE_TEXT_WANT<sup>7+</sup> | string | 'text/want'  | Want内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
 | MIMETYPE_TEXT_PLAIN<sup>7+</sup> | string | 'text/plain' | 纯文本内容的MIME类型定义。 </br> ArkTS-Dyn起始版本: 7 </br> ArkTS-Sta起始版本: 23 |
@@ -705,6 +705,10 @@ struct PasteboardTest {
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
