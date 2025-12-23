@@ -227,7 +227,7 @@ Requests a continuous task from the system. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning) instead.
 
 **Parameters**
 
@@ -294,7 +294,7 @@ Requests a continuous task from the system. This API uses a promise to return th
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.startBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning-1) instead.
 
 **Parameters**
 
@@ -360,7 +360,7 @@ Requests to cancel a continuous task from the system. This API uses an asynchron
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning) instead.
 
 **Parameters**
 
@@ -396,7 +396,7 @@ Requests to cancel a continuous task from the system. This API uses a promise to
 
 > **NOTE**
 >
-> This API is deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1) instead.
+> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [backgroundTaskManager.stopBackgroundRunning](../apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstopbackgroundrunning-1) instead.
 
 **Return value**
 

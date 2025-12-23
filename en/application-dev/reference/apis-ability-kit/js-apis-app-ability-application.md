@@ -86,9 +86,7 @@ export default class EntryAbility extends UIAbility {
 
 getApplicationContext(): ApplicationContext
 
-Obtains the application context. This API provides context access independent of the base class **Context**.
-
-Repeated calls to this API generate a new ApplicationContext object.
+Obtains the application context. This API provides context access independent of the base class **Context**. Repeated call will generate a new **ApplicationContext** object. 
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -188,8 +186,8 @@ When the [master process](../../application-models/ability-terminology.md#master
 
 - If a candidate master process exists, the system sets the process at the head of the candidate master process list as the new master process and triggers the [onNewProcessRequest](js-apis-app-ability-abilityStage.md#onnewprocessrequest11) callback.
 - If no candidate master process exists, the system performs the following operations based on the component type:
-	- For a UIAbility, the system creates an empty process as the master process.
-	- For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new master process. If no available process exists, it creates an empty process as the master process.
+  - For a UIAbility, the system creates an empty process as the master process.
+  - For a UIExtensionAbility, the system first tries to reuse an existing UIExtensionAbility process as the new master process. If no available process exists, it creates an empty process as the master process.
 
 > **NOTE**
 > 
