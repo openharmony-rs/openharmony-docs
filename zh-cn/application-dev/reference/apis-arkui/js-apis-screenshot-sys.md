@@ -194,7 +194,7 @@ save(options?: ScreenshotOptions): Promise&lt;image.PixelMap&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------- |
