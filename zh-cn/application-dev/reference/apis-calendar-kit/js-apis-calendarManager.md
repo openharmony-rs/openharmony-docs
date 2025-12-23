@@ -1334,7 +1334,9 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 getEvents(eventFilter?: EventFilter, eventKey?: (keyof Event)[]): Promise\<Event[]>
 
 获取Calendar下符合查询条件的Event，使用Promise异步回调。
+
 只有一个入参时，参数必须为查询条件，对应参数类型为EventFilter。
+
 当没有入参时，可查询指定日历账户下的所有日程。
 
 **系统能力**： SystemCapability.Applications.CalendarData
