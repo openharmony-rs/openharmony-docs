@@ -5361,12 +5361,12 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 Allow the system application to use the media shared resources in the camera_service process.
 
-**权限级别**：system_basic
+**Permission level**：system_basic
 
-**授权方式**：系统授权（system_grant）
+**Authorization mode**：system_grant
 
-**ACL使能**：true
+**Enable via ACL**：true
 
-**支持设备**：General
+**Supported devices**：General
 
-**起始版本**：20
+**Since**：20
