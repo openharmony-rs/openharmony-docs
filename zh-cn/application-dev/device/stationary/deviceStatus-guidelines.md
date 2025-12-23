@@ -62,7 +62,7 @@ ArkTS-Sta接口说明：
 
   ArkTS-Sta示例:
 
-    ```ts
+  ```ts
   try {
     deviceStatus.onSteadyStandingDetect((data:deviceStatus.SteadyStandingStatus) => {
       console.info('now status = ' + data);
