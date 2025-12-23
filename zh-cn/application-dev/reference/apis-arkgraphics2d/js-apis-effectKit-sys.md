@@ -284,6 +284,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
     }
   })
 })
+```
 
 ## Filter
 
