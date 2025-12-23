@@ -42,6 +42,16 @@
 
 - **分布式数据变化通知**：同一应用订阅组网内其他设备数据变化的通知，其他设备增删改数据时，本设备会收到通知。
 
+### 数据同步存储机制
+
+跨设备数据同步默认采用多设备协同表模式进行管理。在该模式下，各设备的数据将被隔离存储在独立的分布式表中，而非写入本地表，分布式表名为在原来表名前拼接对端设备的DeviceID标识符，如下图所示。
+
+当某一设备接收到其他设备同步过来的数据时，这些数据将自动写入对应的分布式表中，可通过obtainDistributedTableName获取对应表名并进行查询。
+
+需要注意的是，该模式下不支持对其他设备同步过来的数据进行修改。这一限制旨在保障数据一致性与同步逻辑的稳定性。
+
+![deviceRDBStore](figures/deviceRDBStore.jpg)
+
 
 ## 约束限制
 
@@ -88,9 +98,10 @@
    2. 同时需要在应用首次启动时弹窗向用户申请授权，使用方式请参见[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
 3. 创建关系型数据库，创建数据表，并将需要进行跨设备同步的数据表设置为分布式表。
-   <!--@[setDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)--> 
+   <!--@[setDefaultDistributedTables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
    ``` TypeScript
+   let context = getContext();
    let store: relationalStore.RdbStore | undefined = undefined;
    // ...
      const STORE_CONFIG: relationalStore.StoreConfig = {

@@ -33,13 +33,18 @@
 
 2. 导入依赖的相关模块。
 
-   ```ts
+   <!-- @[arkts_theme_font_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { text } from '@kit.ArkGraphics2D';
    ```
 
 3. 使用getGlobalInstance()接口获取全局字体集对象，系统框架在注册主题字体过程中仅会将主题字体信息传入全局字体集对象中。
 
-   ```ts
+   <!-- @[arkts_theme_font_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 获取字体管理器全局FontCollection实例
    let fontCollection = text.FontCollection.getGlobalInstance();
    ```
 
@@ -50,269 +55,125 @@
    > 
    > 若未在系统**主题应用**中设置一项主题字体，则将使用系统默认字体进行绘制。
 
-   ```ts
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 设置文本样式
    let myTextStyle: text.TextStyle = {
-       color: { alpha: 255, red: 255, green: 0, blue: 0 },
-       fontSize: 100,
-       // fontFamilies:['Test Font'] // 不要指定fontFamilies，否则优先使用指定字体
+     color: { alpha: 255, red: 255, green: 0, blue: 0 },
+     fontSize: 33
    };
    // 创建一个段落样式对象，以设置排版风格
-   let myParagraphStyle: text.ParagraphStyle = {textStyle: myTextStyle}
+   let myParagraphStyle: text.ParagraphStyle = {
+     textStyle: myTextStyle,
+     align: 3,
+     wordBreak:text.WordBreak.NORMAL
+   };
    // 创建一个段落生成器
-   let paragraphBuilder: text.ParagraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    ```
 
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
-   ```ts
+   <!-- @[arkts_theme_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 在段落生成器中设置文本样式
-   paragraphBuilder.pushStyle(myTextStyle);
+   paragraphGraphBuilder.pushStyle(myTextStyle);
    // 在段落生成器中设置文本内容
-   paragraphBuilder.addText("Hello World. \nThis is the theme font.");
+   paragraphGraphBuilder.addText("Hello World. \nThis is the theme font.");
    // 通过段落生成器生成段落
-   let paragraph = paragraphBuilder.build();
+   let paragraph = paragraphGraphBuilder.build();
    ```
 
 6. 创建渲染节点，并保存到数组。（此处示例代码为简化逻辑，采用数组作为容器，实际开发中应结合应用情况选择更恰当的容器来保证节点的添加与删除对应。）
 
-   ```ts
+   <!-- @[arkts_theme_font_create_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 创建渲染节点数组
    const renderNodeMap: Array<RenderNode> = new Array();
    // 创建节点控制器
    class MyNodeController extends NodeController {
      private rootNode: FrameNode | null = null;
      makeNode(uiContext: UIContext): FrameNode {
-       this.rootNode = new FrameNode(uiContext)
+       this.rootNode = new FrameNode(uiContext);
        if (this.rootNode == null) {
-         return this.rootNode
+         return this.rootNode;
        }
-       const renderNode = this.rootNode.getRenderNode()
+       const renderNode = this.rootNode.getRenderNode();
        if (renderNode != null) {
-         renderNode.frame = { x: 0, y: 0, width: 300, height: 50 }
-         renderNode.pivot = { x: 0, y: 0 }
+         renderNode.frame = { x: 0, y: 0, width: 300, height: 50 };
+         renderNode.pivot = { x: 0, y: 0 };
        }
-       return this.rootNode
+       return this.rootNode;
      }
      addNode(node: RenderNode): void {
        if (this.rootNode == null) {
-         return
+         return;
        }
-       const renderNode = this.rootNode.getRenderNode()
+       const renderNode = this.rootNode.getRenderNode();
        if (renderNode != null) {
-         renderNode.appendChild(node)
+         renderNode.appendChild(node);
          // 将节点添加到渲染节点数组中
-         renderNodeMap.push(node)
+         renderNodeMap.push(node);
        }
      }
      clearNodes(): void {
        if (this.rootNode == null) {
-         return
+         return;
        }
-       const renderNode = this.rootNode.getRenderNode()
+       const renderNode = this.rootNode.getRenderNode();
        if (renderNode != null) {
-         renderNode.clearChildren()
+         renderNode.clearChildren();
          // 将节点从渲染节点数组中移除
-         renderNodeMap.pop()
+         renderNodeMap.pop();
        }
      }
    }
-   let paragraph = paragraphBuilder.build();
    ```
 
 7. 创建渲染节点更新函数，并导出函数，供其他文件（如：EntryAbility.ets）使用；重绘制节点目的为更新排版中字体信息，若不更新字体信息，使用之前残留结果，可能造成文字乱码。
 
-   ```ts
+   <!-- @[arkts_theme_font_export_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    // 导出渲染节点更新函数
    export function updateRenderNodeData() {
      renderNodeMap.forEach((node) => {
        // 主动触发节点重绘制
-       node.invalidate()
-     })
+       node.invalidate();
+     });
    }
    ```
 
 8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
 
-   ```ts
-   // entry/src/main/ets/entryability/EntryAbility.ets
+   <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   import { window } from '@kit.ArkUI';
+   import { updateRenderNodeData } from '../pages/Index';
+   
+   // ...
+   
    export default class EntryAbility extends UIAbility {
-       // ...  
-       preFontId ="";
-       onConfigurationUpdate(newConfig: Configuration):void{
-           let fontId = newConfig.fontId;
-           if(fontId && fontId !=this.preFontId){
-               this.preFontId = fontId;
-               updateRenderNodeData();
-           }
+     preFontId = "";
+     // ...
+   
+     onConfigurationUpdate(newConfig: Configuration): void {
+       let fontId = newConfig.fontId;
+       if (fontId && fontId !== this.preFontId) {
+         this.preFontId = fontId;
+         updateRenderNodeData();
+         // ...
        }
-       // ...
+     }
    }
    ```
 
-
-## 完整示例
-
-这里以使用主题字体绘制"Hello World. \nThis is the theme font."文本为例，提供完整的示例和效果示意图。
-
-<!-- @[arkts_theme_font_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// /pages/Index.ets
-import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI';
-import { UIContext } from '@kit.ArkUI';
-import { text } from '@kit.ArkGraphics2D';
-
-// 创建一个自定义的渲染节点类，用于绘制文本
-class MyRenderNode extends RenderNode {
-  async draw(context: DrawContext) {
-    // 获取画布canvas对象
-    const canvas = context.canvas;
-    // 设置文本样式
-    let myTextStyle: text.TextStyle = {
-      color: { alpha: 255, red: 255, green: 0, blue: 0 },
-      fontSize: 33
-    };
-    // 创建一个段落样式对象，以设置排版风格
-    let myParagraphStyle: text.ParagraphStyle = {
-      textStyle: myTextStyle,
-      align: 3,
-      wordBreak:text.WordBreak.NORMAL
-    };
-    // 获取字体管理器全局FontCollection实例
-    let fontCollection = text.FontCollection.getGlobalInstance(); // 获取Arkui全局FC
-    // 创建一个段落生成器
-    let paragraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
-    // 在段落生成器中设置文本样式
-    paragraphGraphBuilder.pushStyle(myTextStyle);
-    // 在段落生成器中设置文本内容
-    paragraphGraphBuilder.addText("Hello World. \nThis is the theme font.");
-    // 通过段落生成器生成段落
-    let paragraph = paragraphGraphBuilder.build();
-    // 布局
-    paragraph.layoutSync(2500);
-    paragraph.paint(canvas, 0, 400);
-  }
-}
-// 创建渲染节点数组
-const renderNodeMap: Array<RenderNode> = new Array();
-// 导出渲染节点更新函数
-export function updateRenderNodeData() {
-  renderNodeMap.forEach((node) => {
-    // 主动触发节点重绘制
-    node.invalidate();
-  });
-}
-
-class MyNodeController extends NodeController {
-  private rootNode: FrameNode | null = null;
-  makeNode(uiContext: UIContext): FrameNode {
-    this.rootNode = new FrameNode(uiContext);
-    if (this.rootNode == null) {
-      return this.rootNode;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.frame = { x: 0, y: 0, width: 300, height: 50 };
-      renderNode.pivot = { x: 0, y: 0 };
-    }
-    return this.rootNode;
-  }
-  addNode(node: RenderNode): void {
-    if (this.rootNode == null) {
-      return;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.appendChild(node);
-      // 将节点添加到渲染节点数组中
-      renderNodeMap.push(node);
-    }
-  }
-  clearNodes(): void {
-    if (this.rootNode == null) {
-      return;
-    }
-    const renderNode = this.rootNode.getRenderNode();
-    if (renderNode != null) {
-      renderNode.clearChildren();
-      // 将节点从渲染节点数组中移除
-      renderNodeMap.pop();
-    }
-  }
-}
-
-// 创建一个TextRenderNode对象
-const textNode = new MyRenderNode();
-// 定义textNode的像素格式
-textNode.frame = {
-  x: 0,
-  y: 100,
-  width: 600,
-  height: 800
-};
-textNode.pivot = { x: 0.2, y: 0.8 };
-textNode.scale = { x: 1, y: 1 };
-
-@Entry
-@Component
-struct RenderTest {
-  private myNodeController: MyNodeController = new MyNodeController();
-  build() {
-    Column() {
-      Row() {
-        NodeContainer(this.myNodeController)
-          .height('100%')
-      }
-      .height('90%')
-      .backgroundColor(Color.White)
-      Row(){
-        Button($r("app.string.Button_label"))
-          .fontSize('16fp')
-          .fontWeight(500)
-          .margin({ bottom: 24, right: 12 })
-          .onClick(() => {
-            this.myNodeController.clearNodes();
-            this.myNodeController.addNode(textNode);
-          })
-          .width('50%')
-          .height(40)
-          .shadow(ShadowStyle.OUTER_DEFAULT_LG)
-      }
-      .width('100%')
-      .justifyContent(FlexAlign.Center) // 设置当前Row容器内子元素在主轴上居中对齐
-      .shadow(ShadowStyle.OUTER_DEFAULT_SM) // 设置Row容器外阴影效果
-      .alignItems(VerticalAlign.Bottom) // 设置当前Row容器内子元素在交叉轴（垂直方向）上的对齐方式为底部对齐
-      .layoutWeight(1) // 设置当前Row在父容器Column中的布局权重为1
-    }
-  }
-}
-```
-
-<!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics2D/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
-``` TypeScript
-import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-import { updateRenderNodeData } from '../pages/Index';
-
-// ···
-
-export default class EntryAbility extends UIAbility {
-  preFontId = "";
-// ···
-
-  onConfigurationUpdate(newConfig: Configuration): void {
-    let fontId = newConfig.fontId;
-    if (fontId && fontId !== this.preFontId) {
-      this.preFontId = fontId;
-      updateRenderNodeData();
-    // ···
-    }
-  }
-}
-```
 
 ## 效果展示
 

@@ -237,7 +237,7 @@ enum anonymous3
 
 | 枚举项 | 描述 |
 | -- | -- |
-| UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 不支持的来源类型。 |
+| UI_INPUT_EVENT_SOURCE_TYPE_UNKNOWN = 0 | 未知输入源。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_MOUSE = 1 | 鼠标。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_TOUCH_SCREEN = 2 | 触摸屏。 |
 | UI_INPUT_EVENT_SOURCE_TYPE_KEY = 4 | 按键。<br>**起始版本：** 22 |
@@ -453,7 +453,7 @@ enum ArkUI_TouchTestStrategy
 
 定义触摸测试策略。
 
-**起始版本：** 23
+**起始版本：** 22
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -2920,7 +2920,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_GetTouchTestInfoList(ArkUI_TouchTestInfo*
 
 获取触摸测试信息项数组。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -2945,7 +2945,7 @@ float OH_ArkUI_TouchTestInfoItem_GetX(const ArkUI_TouchTestInfoItem* info);
 
 从触摸测试信息项中获取相对于子组件左上角的X坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -2968,7 +2968,7 @@ float OH_ArkUI_TouchTestInfoItem_GetY(const ArkUI_TouchTestInfoItem* info);
 
 从触摸测试信息项中获取相对于子组件左上角的Y坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -2991,7 +2991,7 @@ float OH_ArkUI_TouchTestInfoItem_GetWindowX(const ArkUI_TouchTestInfoItem* info)
 
 从触摸测试信息项中获取相对于当前应用窗口左上角的X坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3014,7 +3014,7 @@ float OH_ArkUI_TouchTestInfoItem_GetWindowY(const ArkUI_TouchTestInfoItem* info)
 
 从触摸测试信息项中获取相对于当前应用窗口左上角的Y坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3038,7 +3038,7 @@ float OH_ArkUI_TouchTestInfoItem_GetXRelativeToParent(const ArkUI_TouchTestInfoI
 
 从触摸测试信息项中获取相对于父组件左上角的X坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3061,7 +3061,7 @@ float OH_ArkUI_TouchTestInfoItem_GetYRelativeToParent(const ArkUI_TouchTestInfoI
 
 从触摸测试信息项中获取相对于父组件左上角的Y坐标，单位为px。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3084,7 +3084,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildRect(const ArkUI_TouchTestInf
 
 从触摸测试信息项中获取子组件的帧矩形信息。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3109,7 +3109,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfoItem_GetChildId(const ArkUI_TouchTestInfoI
 
 从触摸测试信息项中获取子组件的ID。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3135,7 +3135,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultStrategy(ArkUI_TouchTestInf
 
 设置触摸测试策略，即组件及其子组件在命中测试过程中的行为方式。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 
@@ -3159,7 +3159,7 @@ ArkUI_ErrorCode OH_ArkUI_TouchTestInfo_SetTouchResultId(ArkUI_TouchTestInfo* inf
 
 设置命中测试过程中需要作用的子组件ID。
 
-**起始版本：** 23
+**起始版本：** 22
 
 **参数:**
 

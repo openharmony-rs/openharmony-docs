@@ -9030,6 +9030,68 @@ async function SetRelationshipExample(context: Context, relationship: string) {
 }
 ```
 
+### createAnalysisAlbumRequest<sup>23+</sup>
+
+static createAnalysisAlbumRequest(context: Context, name: string, subtype: AlbumSubtype): MediaAnalysisAlbumChangeRequest
+
+创建智慧相册的变更请求。
+
+> **说明**
+>
+> 相册名的参数规格如下：
+> - 相册名字符串长度为[1, 255]。
+> - 不允许出现非法英文字符，包括：. .. \ / : * ? " ' ` < > | { } [ ]
+> - 英文字符不区分大小写。
+> - 不允许相册名重复命名。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| context | [Context](../apis-ability-kit/js-apis-inner-application-context.md#context) | 是   | 传入Ability实例的Context。 |
+| name | string | 是   | 待创建相册的名称。|
+| subtype |  [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 是   | 待创建智慧相册的子类型。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| [MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18) | 返回创建智慧相册的变更请求。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202   |  Called by non-system application.         |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. The input parameter is not within the valid range. | 
+| 23800301   | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2.The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+photoAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('createAlbumRequestDemo');
+  try {
+    let albumName: string = 'newAlbumName' + new Date().getTime();
+    let albumChangeRequest: photoAccessHelper.MediaAnalysisAlbumChangeRequest = photoAccessHelper.MediaAnalysisAlbumChangeRequest.createAnalysisAlbumRequest(context, albumName, photoAccessHelper.AlbumSubtype.PORTRAIT);
+    await phAccessHelper.applyChanges(albumChangeRequest);
+    console.info('apply createAlbumRequest successfully');
+  } catch (err) {
+    console.error(`createAlbumRequestDemo failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## MediaHighlightAlbumChangeRequest<sup>21+</sup> 
 
 时刻相册变更请求，MediaHighlightAlbumChangeRequest继承自[MediaAnalysisAlbumChangeRequest](#mediaanalysisalbumchangerequest18)。

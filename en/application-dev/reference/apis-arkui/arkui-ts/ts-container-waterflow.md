@@ -26,13 +26,13 @@ Subcomponents can be dynamically generated using rendering control types [if/els
 >  **NOTE**
 >
 >  When its **visibility** attribute is set to **None**, a **FlowItem** is not displayed in the container, but its **columnsGap**, **rowsGap**, and **margin** settings are still effective.
->  If there are a large number of child components, you are advised to use lazy loading, data caching, component reuse, fixed width and height, and layout optimization to improve performance and reduce memory usage. For details, see [Optimizing the Frame Loss Caused by Slow Waterfall Loading](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-waterflow-performance-optimization).
+>  If there are a large number of child components, you are advised to use lazy loading, data caching, component reuse, fixed width and height, and layout optimization to improve performance and reduce memory usage. For best practices, see [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
 >
 > In vertical layout mode, WaterFlow calculates the accumulated height of child components in each column and places new child components in the column with the smallest accumulated height to keep the overall layout compact.
 >
 > If the heights of multiple columns are the same, the subcomponents are placed in the leftmost column. In RTL mode, the subcomponents are placed in the rightmost column.
 >
-> From API version 21, the maximum width and height of a single child component of WaterFlow are 16777216 px. For API version 20 and earlier versions, the maximum width and height of a single child component of WaterFlow are 1000000px. If the child component exceeds the size, the scrolling or display may be abnormal.
+> Starting from API version 21, the maximum width or height for a single child component inside a **WaterFlow** container is 16,777,216 px. In API version 20 and earlier versions, the limit was 1,000,000 px. If a child component exceeds the applicable size limit, scrolling or display behavior may become abnormal.
 
 
 ## APIs

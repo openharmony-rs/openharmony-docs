@@ -7,6 +7,10 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
+```c
+typedef struct Crypto_DataBlob {...} Crypto_DataBlob
+```
+
 ## Overview
 
 Defines the data used for encryption and decryption.

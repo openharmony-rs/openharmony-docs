@@ -13,6 +13,8 @@ Declares the structs related to text in 2D drawing.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)

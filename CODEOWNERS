@@ -736,14 +736,14 @@ zh-cn/application-dev/IDL/ @huipeizi @liveery @alien0208
 zh-cn/application-dev/IDL/idl-guidelines.md @huipeizi @liveery @alien0208
 
 [开发-IME kit]
-zh-cn/application-dev/inputmethod/  @murphy1984   @zhang_yixin13   
-zh-cn/application-dev/kit-readme/Readme-IME-Kit.md  @murphy1984   @zhang_yixin13  
-zh-cn/application-dev/inputmethod/Readme-CN.md  @murphy1984   @zhang_yixin13  
-zh-cn/application-dev/inputmethod/custom_input_box_guide.md  @murphy1984   @zhang_yixin13  
-zh-cn/application-dev/inputmethod/ime-kit-intro.md  @murphy1984   @zhang_yixin13  
-zh-cn/application-dev/inputmethod/input_method_subtype_guide.md  @murphy1984  @zhang_yixin13   
-zh-cn/application-dev/inputmethod/inputmethod_application_guide.md  @murphy1984  @zhang_yixin13  
-zh-cn/application-dev/inputmethod/switch_inputmehod_guide.md  @murphy1984  @zhang_yixin13  
+zh-cn/application-dev/inputmethod/  @murphy84   @zhang_yixin13   
+zh-cn/application-dev/kit-readme/Readme-IME-Kit.md  @murphy84   @zhang_yixin13  
+zh-cn/application-dev/inputmethod/Readme-CN.md  @murphy84   @zhang_yixin13  
+zh-cn/application-dev/inputmethod/custom_input_box_guide.md  @murphy84   @zhang_yixin13  
+zh-cn/application-dev/inputmethod/ime-kit-intro.md  @murphy84   @zhang_yixin13  
+zh-cn/application-dev/inputmethod/input_method_subtype_guide.md  @murphy84  @zhang_yixin13   
+zh-cn/application-dev/inputmethod/inputmethod_application_guide.md  @murphy84  @zhang_yixin13  
+zh-cn/application-dev/inputmethod/switch_inputmehod_guide.md  @murphy84  @zhang_yixin13  
 
 [开发-Input kit]
 zh-cn/application-dev/device/input  @zhang_yixin13  @hanruofei @Lyuxin
@@ -1919,30 +1919,30 @@ zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-power-sys.md @al
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-usbManager-sys.md @Kevin-Lau @liuhonggang123 @fang-jinxu
 
 [API参考-Basic Services Kit-数据文件处理]
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request-sys.md   @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request.md   @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-request.md   @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request-sys.md   @murphy84 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-request.md   @murphy84 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-request.md   @murphy84 @hu-kai45 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-update-sys.md @hughes802  @zhangzhengxue @mamba-ting @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-request.md  @murphy1984 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-request.md  @murphy84 @hu-kai45 @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-update.md @hughes802  @zhangzhengxue @mamba-ting @fang-jinxu
 
 [API参考-Basic Services Kit-时间时区、公共回调、系统设置]
 zh-cn/application-dev/reference/common/js-apis-timer.md @yao_dashuai @yao_dashuai @kirl75; @zsw_zhushiwei @foryourself
 zh-cn/application-dev/reference/apis-basic-services-kit/commonEvent-screenlock.md  @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-timer-sys.md   @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-time.md   @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-date-time-sys.md @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-nonsys-time.md  @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-nonsys-date-time.md  @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-time.md   @murphy1984 @hu-kai45 @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock-sys.md    @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock.md  @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-wallpaper.md  @murphy1984 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-timer-sys.md   @murphy84 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-time.md   @murphy84 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-date-time-sys.md @murphy84 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-nonsys-time.md  @murphy84 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-nonsys-date-time.md  @murphy84 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-time.md   @murphy84 @hu-kai45 @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock-sys.md    @murphy84 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-screen-lock.md  @murphy84 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-wallpaper.md  @murphy84 @wangzhangjun @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-settings.md @xue-seu  @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-settings-sys.md @xue-seu  @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-wallpaper-sys.md   @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-WallpaperExtensionAbility-sys.md  @murphy1984 @wangzhangjun @fang-jinxu
-zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-screenlock.md   @murphy1984 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-wallpaper-sys.md   @murphy84 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-WallpaperExtensionAbility-sys.md  @murphy84 @wangzhangjun @fang-jinxu
+zh-cn/application-dev/reference/apis-basic-services-kit/errorcode-screenlock.md   @murphy84 @wangzhangjun @fang-jinxu
 zh-cn/application-dev/reference/apis-basic-services-kit/js-apis-system-capability*.md @gongjunsong @ge-yafang @flyingwolf @blackstone-oh @fang-jinxu
 
 [API参考-Basic Services Kit-启动恢复]
@@ -2258,7 +2258,7 @@ zh-cn/application-dev/reference/apis-form-kit/  @ylsnow  @cmz001  @HelloShuo  @t
 
 
 [API参考-IME kit]
-zh-cn/application-dev/reference/apis-ime-kit/ @murphy1984 @zhang_yixin13 
+zh-cn/application-dev/reference/apis-ime-kit/ @murphy84 @zhang_yixin13 
 
 
 [API参考-Input Kit]

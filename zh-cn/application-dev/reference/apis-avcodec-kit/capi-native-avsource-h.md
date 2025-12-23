@@ -126,7 +126,7 @@ OH_AVSource *OH_AVSource_CreateWithURI(char *uri)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。 |
+| [OH_AVSource](capi-avsource-oh-avsource.md) * | 执行成功返回一个指向OH_AVSource实例的指针, 否则返回NULL。<br> 可能的故障原因：<br> 1. 网络异常。<br> 2. 资源无效。<br> 3. 文件格式不支持。<br> 4. 应用配置明文拦截。 |
 
 ### OH_AVSource_CreateWithFD()
 

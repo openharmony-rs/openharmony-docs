@@ -9,7 +9,7 @@
 
 ## Overview
 
-After creating or obtaining a canvas, you can perform graphics operations and state processing based on the canvas. Canvas operations are optional. You can perform canvas operations as required. You need to perform canvas operations before drawing. Only in this way, the canvas operations take effect.
+After creating or obtaining a canvas, you can perform graphics operations and status processing based on the canvas. Canvas operations are optional. You need to perform canvas operations before subsequent drawing. Otherwise, the canvas operations do not take effect.
 
 Common canvas operations are as follows:
 
@@ -22,9 +22,9 @@ Common canvas operations are as follows:
 
 ## Clipping
 
-Clipping is a common operation in graphics processing. It is used to restrict the drawing area and draw only in the specified area. The effect is achieved only after the clipping operation is performed before drawing.
+Clipping is a common operation in graphics processing. It is performed on the canvas and can be used to restrict the drawing region. The corresponding effect is displayed only after the clipping operation is performed before drawing.
 
-Currently, the following clipping operations are supported:
+The following clipping operations are supported:
 
 - Clipping a rectangle
 
@@ -32,12 +32,12 @@ Currently, the following clipping operations are supported:
 
 - Clipping a custom path
 
-- Clipping an area
+- Clipping a region
 
 
 ### Available APIs
 
-The following table lists the common APIs for clipping operations. For details about the usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
+The following table lists the APIs for clipping. For details, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
 
 | API| Description|
 | -------- | -------- |
@@ -49,16 +49,16 @@ The following table lists the common APIs for clipping operations. For details a
 
 ### How to Develop
 
-The following uses a rectangle as an example to describe how to crop a rectangle on the canvas. The logic of other cropping operations is similar. You only need to call the corresponding API and ensure that the data type to be cropped is correct. For details about the usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
+The following uses the rectangle clipping on the canvas as an example. The logic of other clipping operations is similar. You only need to call the corresponding API and ensure that the data type to be clipped is correct. For details about the usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
 
-Use the OH_Drawing_CanvasClipRect API to crop a rectangle. There are four input parameters:
-- The first parameter is the canvas. The cropping operation is performed on the canvas. Ensure that the canvas has been created or obtained. For details, see [Obtaining a Canvas and Displaying the Drawing Result (C/C++)](canvas-get-result-draw-c.md).
+Use the **OH_Drawing_CanvasClipRect** API to clip a rectangle. There are four input parameters:
+- The first parameter is the canvas, on which the clipping operation is performed. Ensure that the canvas has been created or obtained. For details, see [Obtaining a Canvas and Displaying Drawing Results (C/C++)](canvas-get-result-draw-c.md).
 
-- The second parameter is the rectangle to be cropped.
+- The second parameter is the rectangle region to be clipped.
 
-- The third parameter is the cropping operation type, including INTERSECT and DIFFERENCE.
+- The third parameter is the clipping operation type, which can be **INTERSECT** or **DIFFERENCE**.
 
-- The fourth parameter indicates whether anti-aliasing is required.
+- The fourth parameter is whether anti-aliasing is required.
 
 
 <!-- @[ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
@@ -68,41 +68,41 @@ Use the OH_Drawing_CanvasClipRect API to crop a rectangle. There are four input 
 OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 // Set the brush fill color to blue.
 OH_Drawing_BrushSetColor(brush, 0xff0000ff);
-// Set the brush on the canvas.
+// Set the brush for the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
 OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value400_, value400_, value1200_, value1200_);
-// Crop the rectangle.
+// Clip the rectangle region.
 OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::INTERSECT, true);
 OH_Drawing_Point *point = OH_Drawing_PointCreate(value600_, value600_);
-//Draw a circle.
+// Draw a circle.
 OH_Drawing_CanvasDrawCircle(canvas, point, value600_);
-//Remove the brush from the canvas.
+// Remove the brush from the canvas.
 OH_Drawing_CanvasDetachBrush(canvas);
-//Destroy the brush object and reclaim the memory occupied by the brush object.
+// Destroy the brush object and reclaim the memory occupied by the object.
 OH_Drawing_BrushDestroy(brush);
 ```
 
-| Original image| Cropped image|
+| Original Image| Clipped Image|
 | -------- | -------- |
 | ![Screenshot_20250120154655737](figures/Screenshot_20250120154655737.jpg) | ![Screenshot_20250118152812670](figures/Screenshot_20250118152812670.jpg) |
 
 
 ## Matrix Transformation
 
-Matrix transformation is a common canvas operation. It is a coordinate system transformation and is used to change the graphics.
+Matrix transformation is a common canvas operation. It is a coordinate system conversion used to change graphics.
 
-Currently, the following matrix transformations are supported:
+The following matrix transformation operations are supported:
 
 - Translation
 
 - Scaling
 
-- Rotate
+- Rotation
 
 
 ### Available APIs
 
-The following table lists the APIs commonly used for matrix transformation. For details about the APIs and parameters, see [drawing_matrix.h](../reference/apis-arkgraphics2d/capi-drawing-matrix-h.md).
+The following table lists the APIs for matrix transformation. For details, see [drawing_matrix.h](../reference/apis-arkgraphics2d/capi-drawing-matrix-h.md).
 
 | API| Description|
 | -------- | -------- |
@@ -114,9 +114,9 @@ The following table lists the APIs commonly used for matrix transformation. For 
 
 ### Translation
 
-Use the OH_Drawing_MatrixCreateTranslation() API to translate the canvas. The API accepts two parameters, which are the translation amounts in the horizontal and vertical directions, respectively. The unit is px.
+Use the **OH_Drawing_MatrixCreateTranslation()** API to translate the canvas. The API takes two parameters, which are the translation amount in the horizontal and vertical directions, respectively. The unit is px.
 
-The following figure shows a simple example.
+The following shows the sample code and effect:
 
 <!-- @[ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -125,11 +125,11 @@ The following figure shows a simple example.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
-// Set the brush on the canvas.
+// Set the brush of the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-// Create a matrix object that translates 300 px in the horizontal and vertical directions.
+// Create a matrix object that is translated by 300 px in the horizontal and vertical directions.
 OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(value300_, value300_);
-// Apply the matrix transformation to the canvas.
+// Perform matrix transformation on the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // Draw a rectangle.
 OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
@@ -140,16 +140,16 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
 ```
 
-| Original image| Image after translation|
+| Original Image| Translated Image|
 | -------- | -------- |
 | ![image_0000002194110929](figures/image_0000002194110929.png)| ![image_0000002194025285](figures/image_0000002194025285.png)|
 
 
-### Rotate
+### Rotation
 
-Use the OH_Drawing_MatrixCreateRotation() API to rotate the canvas. The API accepts three parameters, which are the rotation angle, and the x and y coordinates of the rotation center.
+Use the **OH_Drawing_MatrixCreateRotation()** API to rotate the canvas. The API takes three parameters: rotation angle, and X and Y coordinates of the rotation center.
 
-The following figure shows a simple example.
+The following shows the sample code and effect:
 
 <!-- @[ndk_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -158,11 +158,11 @@ The following figure shows a simple example.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
-// Set the brush on the canvas.
+// Set the brush of the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-// Create a rotation matrix object. The three parameters are the rotation angle and the coordinates of the rotation center.
+// Create a rotation matrix object. The three parameters are the rotation angle and X and Y coordinates of the rotation center.
 OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateRotation(45, value200_, value300_);
-// Apply the matrix transformation to the canvas.
+// Perform matrix transformation on the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // Draw a rectangle.
 OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
@@ -173,16 +173,16 @@ OH_Drawing_RectDestroy(rect);
 OH_Drawing_MatrixDestroy(matrix);
 ```
 
-| Original image| Rotated image|
+| Original Image| Rotated Image|
 | -------- | -------- |
 | ![image_0000002158584410](figures/image_0000002158584410.png)| ![image_0000002158584398](figures/image_0000002158584398.png)|
 
 
 ### Scaling
 
-Use the OH_Drawing_MatrixCreateScale() API to scale the canvas. The API accepts four parameters, which are the scaling factors along the x and y axes, and the x and y coordinates of the rotation center.
+Use **OH_Drawing_MatrixCreateScale()** to scale the canvas. The API takes four parameters, which are the scaling factors along the X and Y axes and the X and Y coordinates of the rotation center.
 
-The following figure shows a simple example.
+The following shows the sample code and effect:
 
 <!-- @[ndk_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
@@ -191,11 +191,11 @@ The following figure shows a simple example.
 OH_Drawing_Brush* brush = OH_Drawing_BrushCreate();
 // Set the fill color.
 OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
-// Set the brush on the canvas.
+// Set the brush of the canvas.
 OH_Drawing_CanvasAttachBrush(canvas, brush);
-//Create a scaling matrix object. The four parameters are the coordinates of the rotation center and the scaling factors in the horizontal and vertical directions.
+// Create a scaling matrix object. The four parameters are the X and Y coordinates of the rotation center and the scaling factors in the horizontal and vertical directions.
 OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreateScale(2, 2, value200_, value300_);
-// Apply the matrix transformation to the canvas.
+// Perform matrix transformation on the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 // Draw a rectangle.
 OH_Drawing_Rect *rect = OH_Drawing_RectCreate(value200_, value300_, value700_, value600_);
@@ -205,19 +205,19 @@ OH_Drawing_CanvasDetachBrush(canvas);
 OH_Drawing_RectDestroy(rect);
 ```
 
-| Original image| Image after zooming in|
+| Original Image| Scaled up Image|
 | -------- | -------- |
 | ![image_0000002194110925](figures/image_0000002194110925.png)| ![image_0000002158584402](figures/image_0000002158584402.png)|
 
 
 ## Saving and Restoring the Canvas Status
 
-The save operation is used to save the current canvas status to the top of the stack. The restore operation is used to restore the canvas status saved at the top of the stack. Once the restore operation is performed, a series of operations such as translation, scaling, and clipping between the save and restore operations are cleared.
+The saving operation is used to save the current canvas status to the top of the stack. The restoration operation is used to restore the canvas status saved at the top of the stack. Once the restoration operation is performed, a series of operations such as translation, scaling, and clipping between the saving and restoration operations are cleared.
 
 
 ### Available APIs
 
-The following table lists the APIs used for saving and restoring the canvas status. For details about the APIs and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
+The following table lists the APIs used for saving and restoring the canvas status. For details about the usage and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
 
 | API| Description|
 | -------- | -------- |
@@ -231,29 +231,29 @@ The following table lists the APIs used for saving and restoring the canvas stat
 <!-- @[ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
-// Create a paint object.
+// Create a pen object.
 OH_Drawing_Pen* pen = OH_Drawing_PenCreate();
-// Set the stroke color of the paint.
+// Set the stroke color of the pen.
 OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
-// Set the stroke width to 20.
+// Set the pen width to 20.
 OH_Drawing_PenSetWidth(pen, 20);
-// Set the paint on the canvas.
+// Set the pen for the canvas.
 OH_Drawing_CanvasAttachPen(canvas, pen);
-// Save the current canvas status. No zoom-in or zoom-out operation is performed. The original status is saved.
+// Save the current canvas status. Currently, no scale-up operation is performed. The original status is saved.
 OH_Drawing_CanvasSave(canvas);
 OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(2, 2, 2, 2);
-// Zoom in on the canvas.
+// Scale up the canvas.
 OH_Drawing_CanvasConcatMatrix(canvas, matrix);
 OH_Drawing_Point* point = OH_Drawing_PointCreate(value300_, value300_);
-// Draw a circle. Because the zoom-in operation has been performed, a large circle is drawn.
+// Draw a circle. Because the scale-up operation has been performed, a large circle is drawn.
 OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
 // Restore the canvas to the original status.
 OH_Drawing_CanvasRestore(canvas);
-// Draw a circle. Because the canvas has been restored to the original status, a small circle is drawn.
+// Draw a circle. Because the original state is restored, a small circle is drawn.
 OH_Drawing_CanvasDrawCircle(canvas, point, value200_);
-// Remove the paint from the canvas.
+// Remove the pen from the canvas.
 OH_Drawing_CanvasDetachPen(canvas);
-// Destroy the paint object and reclaim the memory.
+// Destroy the pen object and reclaim the memory occupied by the object.
 OH_Drawing_PenDestroy(pen);
 OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
@@ -264,7 +264,7 @@ OH_Drawing_MatrixDestroy(matrix);
 <!--RP1-->
 ## Samples
 
-The following table lists the examples for developing Drawing (C/C++).
+The following samples are provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
 
 - [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->
