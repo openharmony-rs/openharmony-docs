@@ -25,7 +25,7 @@ Ukey：USB key，基于USB接口的硬件设备，可用于存储用户私钥、
 
   驱动HAP需继承HUKS提供的CryptoExtensionAbility，并完成能力接口实现。具体参考[CryptoExtensionAbility扩展能力](huks-extension-ability-support-overview.md)。
 
-  CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../application-models/extensionability-overview.md)的派生类。开发者可以通过修改配置文件，定制外部硬件密钥管理的行为，包括：调用外部硬件密钥管理的接口、外部硬件密钥管理的实现、外部硬件密钥管理的配置等，可以参考[CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)。
+  CryptoExtensionAbility是Stage模型中扩展组件[ExtensionAbility](../../application-models/extensionability-overview.md)的派生类。开发者可以通过继承CryptoExtensionAbility并实现自定义接口，达成定制外部硬件密钥管理的行为，包括：调用外部硬件密钥管理的资源打开与关闭接口、外部硬件密钥管理的PIN认证实现、调用外部硬件密钥管理的通用接口等，可以参考[CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)。
   
 - 将密钥管理扩展能力注册到系统HUKS服务中。
   
