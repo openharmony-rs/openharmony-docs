@@ -8,19 +8,27 @@
 
 - ArkTS APIs<!--universal-keystore-arkts-->
   - [@ohos.security.huks (HUKS)](js-apis-huks.md)
+  - [@ohos.security.huksExternalCrypto (External Key Management)](js-apis-huksExternalCrypto.md)
+  - [@ohos.security.CryptoExtensionAbility (Key Extension Ability)](js-apis-CryptoExtensionAbility.md)
   <!--Del-->
   - [@ohos.security.huks (HUKS) (System API)](js-apis-huks-sys.md)
   <!--DelEnd-->
 - C APIs<!--universal-keystore-c-->
   - Modules<!--universal-keystore-module-->
+    - [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
+    - [HuksExternalCryptoTypeApi](capi-huksexternalcryptotypeapi.md)
     - [HuksKeyApi](capi-hukskeyapi.md)
     - [HuksParamSetApi](capi-huksparamsetapi.md)
     - [HuksTypeApi](capi-hukstypeapi.md)
   - Header Files<!--universal-keystore-headerfile-->
+    - [native_huks_external_crypto_api.h](capi-native-huks-external-crypto-api-h.md)
+    - [native_huks_external_crypto_type.h](capi-native-huks-external-crypto-type-h.md)
     - [native_huks_api.h](capi-native-huks-api-h.md)
     - [native_huks_param.h](capi-native-huks-param-h.md)
     - [native_huks_type.h](capi-native-huks-type-h.md)
   - Structs<!--universal-keystore-struct-->
+    - [OH_Huks_ExternalCryptoParam](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparam.md)
+    - [OH_Huks_ExternalCryptoParamSet](capi-huksexternalcryptotypeapi-oh-huks-externalcryptoparamset.md)
     - [OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md)
     - [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md)
     - [OH_Huks_Param](capi-hukstypeapi-oh-huks-param.md)
@@ -36,3 +44,4 @@
     - [OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md)
 - Error Codes<!--universal-keystore-arkts-errcode-->
   - [HUKS Error Codes](errorcode-huks.md)
+<!--no_check-->

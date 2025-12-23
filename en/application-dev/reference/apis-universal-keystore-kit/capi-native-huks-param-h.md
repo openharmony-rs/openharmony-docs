@@ -45,7 +45,7 @@ The preceding system capability is available since API version 20. From API vers
 
 ### OH_Huks_InitParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 ```
 
@@ -54,7 +54,6 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 Initializes a parameter set. No parameter information is required, and the default available memory space is allocated to the parameter set. The initialized parameter set needs to be freed by calling** OH_Huks_FreeParamSet**. To add parameters to a parameter set, you need to call **OH_Huks_AddParams** to add parameters and call **OH_Huks_BuildParamSet** to build the parameter set.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -70,7 +69,7 @@ Initializes a parameter set. No parameter information is required, and the defau
 
 ### OH_Huks_AddParams()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Param *params, uint32_t paramCnt)
 ```
 
@@ -79,7 +78,6 @@ struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const
 Adds parameters to a parameter set.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -97,7 +95,7 @@ Adds parameters to a parameter set.
 
 ### OH_Huks_BuildParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)
 ```
 
@@ -106,7 +104,6 @@ struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)
 Builds a parameter set. After the parameter set is initialized and parameters are added, the parameter set is serialized and the data of the BLOB type is copied to the adjacent memory area at the end of the **paramSet** struct.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -122,7 +119,7 @@ Builds a parameter set. After the parameter set is initialized and parameters ar
 
 ### OH_Huks_FreeParamSet()
 
-```
+```c
 void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)
 ```
 
@@ -132,7 +129,6 @@ Frees a parameter set.
 
 **Since**: 9
 
-
 **Parameters**
 
 | Name| Description|
@@ -141,7 +137,7 @@ Frees a parameter set.
 
 ### OH_Huks_CopyParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromParamSet, uint32_t fromParamSetSize, struct OH_Huks_ParamSet **paramSet)
 ```
 
@@ -150,7 +146,6 @@ struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromPa
 Copies a parameter set (deep copy).
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -168,7 +163,7 @@ Copies a parameter set (deep copy).
 
 ### OH_Huks_GetParam()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, uint32_t tag, struct OH_Huks_Param **param)
 ```
 
@@ -177,7 +172,6 @@ struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, 
 Obtains a parameter from a parameter set.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -195,7 +189,7 @@ Obtains a parameter from a parameter set.
 
 ### OH_Huks_FreshParamSet()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, bool isCopy)
 ```
 
@@ -204,7 +198,6 @@ struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, b
 Refreshes the [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) data in the parameter set.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -221,7 +214,7 @@ Refreshes the [OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md) data in the param
 
 ### OH_Huks_IsParamSetTagValid()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *paramSet)
 ```
 
@@ -230,7 +223,6 @@ struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *
 Checks whether the parameters in a parameter set are valid.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -246,7 +238,7 @@ Checks whether the parameters in a parameter set are valid.
 
 ### OH_Huks_IsParamSetValid()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *paramSet, uint32_t size)
 ```
 
@@ -255,7 +247,6 @@ struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *par
 Checks whether a parameter set is of the valid size.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -272,7 +263,7 @@ Checks whether a parameter set is of the valid size.
 
 ### OH_Huks_CheckParamMatch()
 
-```
+```c
 struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *baseParam, const struct OH_Huks_Param *param)
 ```
 
@@ -281,7 +272,6 @@ struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *basePa
 Checks whether two parameters are the same.
 
 **Since**: 9
-
 
 **Parameters**
 
@@ -298,7 +288,7 @@ Checks whether two parameters are the same.
 
 ### OH_Huks_FreeKeyAliasSet()
 
-```
+```c
 void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)
 ```
 
@@ -307,7 +297,6 @@ void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)
 Destroys the parameter set of a key alias.
 
 **Since**: 20
-
 
 **Parameters**
 

@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_CertChain {...}
+```
+
 ## Overview
 
 Defines the struct of a certificate chain.
