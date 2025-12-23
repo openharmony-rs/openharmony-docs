@@ -550,7 +550,6 @@ struct WebComponent {
 需注意：
 
 1. HTML中的`showOpenFilePicker`、`showDirectoryPicker`方法的入参option与`showSaveFilePicker`的入参option的成员存在差异。
-
 2. ETS中如调用`documentViewPicker.select()`方法需配合`picker.DocumentSelectOptions`对象为picker传参，而非`picker.DocumentSaveOptions`对象。
 
 ## 常见问题

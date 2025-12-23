@@ -150,7 +150,7 @@ getDefaultPath(): string
 
 | 类型     | 说明         |
 | ------ | ---------- |
-| string | 返回默认路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为鸿蒙系统下的`download`和`images`。 |
+| string | 返回默认路径。<br>当前端startIn设置为公共目录`downloads`、`pictures`时，要注意应分别转化为鸿蒙系统下的`download`和`images`，参考[获取并使用公共目录](../../file-management/request-dir-permission.md)。 |
 
 ## getDescriptions<sup>23+</sup>
 
