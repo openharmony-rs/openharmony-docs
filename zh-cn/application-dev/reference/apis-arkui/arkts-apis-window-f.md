@@ -1128,7 +1128,7 @@ getTopWindow(callback: AsyncCallback&lt;Window&gt;): void
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，推荐使用[getLastWindow()](#windowgetlastwindow9)。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9)替代。
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -1165,7 +1165,7 @@ getTopWindow(): Promise&lt;Window&gt;
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃，推荐使用[getLastWindow()](#windowgetlastwindow9-1)。
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9-1)替代。
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -1200,7 +1200,7 @@ getTopWindow(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;): void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，推荐使用[getLastWindow()](#windowgetlastwindow9)。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1247,7 +1247,7 @@ getTopWindow(ctx: BaseContext): Promise&lt;Window&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，推荐使用[getLastWindow()](#windowgetlastwindow9-1)。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getLastWindow()](#windowgetlastwindow9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
