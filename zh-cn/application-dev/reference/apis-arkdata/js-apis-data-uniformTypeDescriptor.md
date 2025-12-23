@@ -532,7 +532,7 @@ try{
 
 ArkTS-Dyn: getTypeDescriptor(typeId: string): TypeDescriptor
 
-ArkTS-Sta: getTypeDescriptor(typeId: string): TypeDescriptor|null
+ArkTS-Sta: getTypeDescriptor(typeId: string): TypeDescriptor | null
 
 按给定的标准化数据类型ID查询并返回对应的标准化数据类型描述类对象。
 
