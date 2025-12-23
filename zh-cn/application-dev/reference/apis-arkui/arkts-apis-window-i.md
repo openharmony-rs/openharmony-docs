@@ -136,7 +136,7 @@
 
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
-窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时的避让区域，单位为vp。
+以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时适配时需关注。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -150,29 +150,29 @@
 
 ## UIEnvWindowAvoidAreaInfoPX<sup>23+</sup>
 
-窗口内容的避让区域的环境变量信息，单位为px。
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)结构，每种类型避让区域单位为px。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| statusBar            | [AvoidArea](#avoidarea7) | 否   | 否   | 表示TYPE_SYSTEM类型的避让区域，单位为px。 |
-| cutout               | [AvoidArea](#avoidarea7) | 否   | 否   | 表示TYPE_CUTOUT类型的避让区域，单位为px。 |
-| keyboard             | [AvoidArea](#avoidarea7) | 否   | 否   | 表示TYPE_KEYBOARD类型的避让区域，单位为px。 |
-| navigationIndicator  | [AvoidArea](#avoidarea7) | 否   | 否   | 表示TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为px。 |
+| statusBar            | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM类型的避让区域，单位为px。 |
+| cutout               | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_CUTOUT类型的避让区域，单位为px。 |
+| keyboard             | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD类型的避让区域，单位为px。 |
+| navigationIndicator  | [AvoidArea](#avoidarea7) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为px。 |
 
 ## UIEnvWindowAvoidAreaInfoVP<sup>23+</sup>
 
-窗口内容的避让区域的环境变量信息，单位为vp。
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)结构，每种类型避让区域单位为vp。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
 | 名称       | 类型      | 只读 | 可选 | 说明               |
 | ---------- | ------------- | ---- | ---- | ------------------ |
-| statusBar            | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示TYPE_SYSTEM类型的避让区域，单位为vp。 |
-| cutout               | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示TYPE_CUTOUT类型的避让区域，单位为vp。 |
-| keyboard             | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示TYPE_KEYBOARD类型的避让区域，单位为vp。 |
-| navigationIndicator  | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为vp。 |
+| statusBar            | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM类型的避让区域，单位为vp。 |
+| cutout               | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_CUTOUT类型的避让区域，单位为vp。 |
+| keyboard             | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD类型的避让区域，单位为vp。 |
+| navigationIndicator  | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | 否   | 否   | 表示[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_NAVIGATION_INDICATOR类型的避让区域，单位为vp。 |
 
 ## Size<sup>7+</sup>
 
