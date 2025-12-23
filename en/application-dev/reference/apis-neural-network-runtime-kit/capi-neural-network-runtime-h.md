@@ -16,7 +16,7 @@ Currently, the APIs of Neural Network Runtime do not support multi-thread callin
 
 **Library**: libneural_network_runtime.so
 
-**System capability**: SystemCapability.Ai.NeuralNetworkRuntime
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -58,7 +58,7 @@ Currently, the APIs of Neural Network Runtime do not support multi-thread callin
 
 ### OH_NNQuantParam_Create()
 
-```
+```c
 NN_QuantParam *OH_NNQuantParam_Create()
 ```
 
@@ -78,7 +78,7 @@ After creating an [NN_QuantParam](capi-neuralnetworkruntime-nn-quantparam.md) in
 
 ### OH_NNQuantParam_SetScales()
 
-```
+```c
 OH_NN_ReturnCode OH_NNQuantParam_SetScales(NN_QuantParam *quantParams, const double *scales, size_t quantCount)
 ```
 
@@ -107,7 +107,7 @@ Sets the scaling coefficient of the [NN_QuantParam](capi-neuralnetworkruntime-nn
 
 ### OH_NNQuantParam_SetZeroPoints()
 
-```
+```c
 OH_NN_ReturnCode OH_NNQuantParam_SetZeroPoints(NN_QuantParam *quantParams, const int32_t *zeroPoints, size_t quantCount)
 ```
 
@@ -136,7 +136,7 @@ Sets the zero point of the [NN_QuantParam](capi-neuralnetworkruntime-nn-quantpar
 
 ### OH_NNQuantParam_SetNumBits()
 
-```
+```c
 OH_NN_ReturnCode OH_NNQuantParam_SetNumBits(NN_QuantParam *quantParams, const uint32_t *numBits, size_t quantCount)
 ```
 
@@ -165,7 +165,7 @@ Sets the quantization bit width of the [NN_QuantParam](capi-neuralnetworkruntime
 
 ### OH_NNQuantParam_Destroy()
 
-```
+```c
 OH_NN_ReturnCode OH_NNQuantParam_Destroy(NN_QuantParam **quantParams)
 ```
 
@@ -192,7 +192,7 @@ After an [NN_QuantParam](capi-neuralnetworkruntime-nn-quantparam.md) instance is
 
 ### OH_NNModel_Construct()
 
-```
+```c
 OH_NNModel *OH_NNModel_Construct(void)
 ```
 
@@ -214,7 +214,7 @@ If a model instance is no longer needed, destroy it by calling [OH_NNModel_Destr
 
 ### OH_NNModel_AddTensorToModel()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_AddTensorToModel(OH_NNModel *model, const NN_TensorDesc *tensorDesc)
 ```
 
@@ -246,7 +246,7 @@ NNRt supports input and output of dynamic shapes. When adding a data node with a
 
 ### OH_NNModel_SetTensorData()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_SetTensorData(OH_NNModel *model, uint32_t index, const void *dataBuffer, size_t length)
 ```
 
@@ -276,7 +276,7 @@ The index value of a tensor is determined by the sequence in which the tensor is
 
 ### OH_NNModel_SetTensorQuantParams()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_SetTensorQuantParams(OH_NNModel *model, uint32_t index, NN_QuantParam *quantParam)
 ```
 
@@ -303,7 +303,7 @@ Sets the quantization parameters of a tensor. For details, see [NN_QuantParam](c
 
 ### OH_NNModel_SetTensorType()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_SetTensorType(OH_NNModel *model, uint32_t index, OH_NN_TensorType tensorType)
 ```
 
@@ -330,7 +330,7 @@ Sets the tensor type. For details, see [OH_NN_TensorType](capi-neural-network-ru
 
 ### OH_NNModel_AddOperation()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_AddOperation(OH_NNModel *model,OH_NN_OperationType op,const OH_NN_UInt32Array *paramIndices,const OH_NN_UInt32Array *inputIndices,const OH_NN_UInt32Array *outputIndices)
 ```
 
@@ -371,7 +371,7 @@ If unnecessary parameters are added for adding an operator, this API returns the
 
 ### OH_NNModel_SpecifyInputsAndOutputs()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_SpecifyInputsAndOutputs(OH_NNModel *model,const OH_NN_UInt32Array *inputIndices,const OH_NN_UInt32Array *outputIndices)
 ```
 
@@ -402,7 +402,7 @@ The index value of a tensor is determined by the sequence in which the tensor is
 
 ### OH_NNModel_Finish()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_Finish(OH_NNModel *model)
 ```
 
@@ -433,7 +433,7 @@ Before calling Before calling [OH_NNModel_GetAvailableOperations](capi-neural-ne
 
 ### OH_NNModel_Destroy()
 
-```
+```c
 void OH_NNModel_Destroy(OH_NNModel **model)
 ```
 
@@ -456,7 +456,7 @@ If **model** or ***model** is a null pointer, this API only prints warning logs 
 
 ### OH_NNModel_GetAvailableOperations()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_GetAvailableOperations(OH_NNModel *model,size_t deviceID,const bool **isSupported,uint32_t *opCount)
 ```
 
@@ -490,7 +490,7 @@ The memory corresponding to this array is managed by NNRt and is automatically d
 
 ### OH_NNModel_AddTensor()
 
-```
+```c
 OH_NN_ReturnCode OH_NNModel_AddTensor(OH_NNModel *model, const OH_NN_Tensor *tensor)
 ```
 
@@ -528,7 +528,7 @@ When adding a data node with a dynamic shape, you need to set the dimensions tha
 
 ### OH_NNExecutor_SetInput()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetInput(OH_NNExecutor *executor,uint32_t inputIndex,const OH_NN_Tensor *tensor,const void *dataBuffer,size_t length)
 ```
 
@@ -570,7 +570,7 @@ NNRt supports models with dynamical shape input. For fixed shape input and dynam
 
 ### OH_NNExecutor_SetOutput()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetOutput(OH_NNExecutor *executor,uint32_t outputIndex,void *dataBuffer,size_t length)
 ```
 
@@ -609,7 +609,7 @@ After [OH_NNExecutor_Run](capi-neural-network-runtime-h.md#oh_nnexecutor_run) is
 
 ### OH_NNExecutor_Run()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_Run(OH_NNExecutor *executor)
 ```
 
@@ -637,7 +637,7 @@ Perform model inference through This API performs end-to-end model inference and
 
 ### OH_NNExecutor_AllocateInputMemory()
 
-```
+```c
 OH_NN_Memory *OH_NNExecutor_AllocateInputMemory(OH_NNExecutor *executor, uint32_t inputIndex, size_t length)
 ```
 
@@ -672,7 +672,7 @@ Based on the specified executor and input index value, this API applies for the 
 
 ### OH_NNExecutor_AllocateOutputMemory()
 
-```
+```c
 OH_NN_Memory *OH_NNExecutor_AllocateOutputMemory(OH_NNExecutor *executor, uint32_t outputIndex, size_t length)
 ```
 
@@ -707,7 +707,7 @@ Based on the specified executor and output index value, this API applies for the
 
 ### OH_NNExecutor_DestroyInputMemory()
 
-```
+```c
 void OH_NNExecutor_DestroyInputMemory(OH_NNExecutor *executor, uint32_t inputIndex, OH_NN_Memory **memory)
 ```
 
@@ -736,7 +736,7 @@ The mapping between **inputIndex** and **memory** must be the same as that in me
 
 ### OH_NNExecutor_DestroyOutputMemory()
 
-```
+```c
 void OH_NNExecutor_DestroyOutputMemory(OH_NNExecutor *executor, uint32_t outputIndex, OH_NN_Memory **memory)
 ```
 
@@ -767,7 +767,7 @@ If **memory** or ***memory** is a null pointer, this API only prints the warning
 
 ### OH_NNExecutor_SetInputWithMemory()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetInputWithMemory(OH_NNExecutor *executor,uint32_t inputIndex,const OH_NN_Tensor *tensor,const OH_NN_Memory *memory)
 ```
 
@@ -805,7 +805,7 @@ By using this API, you can implement concurrent execution of input setting, comp
 
 ### OH_NNExecutor_SetOutputWithMemory()
 
-```
+```c
 OH_NN_ReturnCode OH_NNExecutor_SetOutputWithMemory(OH_NNExecutor *executor,uint32_t outputIndex,const OH_NN_Memory *memory)
 ```
 

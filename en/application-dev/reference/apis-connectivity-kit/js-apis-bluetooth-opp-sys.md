@@ -81,6 +81,12 @@ Send files over Bluetooth. This API uses a promise to return the result.
 | deviceId | string | Yes   | Bluetooth MAC address of the receiver.|
 | fileHolds | Array&lt;[FileHolder](#fileholder)&gt;| Yes   | File data to transfer. Data is sent according to the sequence it is inserted into the array.|
 
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
@@ -150,6 +156,12 @@ Receives files over Bluetooth. This API uses a promise to return the result.
 | accept | boolean | Yes   | Whether to accept the file transfer request. The value **true** means to accept the file transfer request, and the value **false** means the opposite.|
 | fileFd | number| Yes   | File descriptor, which must be enabled during file receiving.|
 
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
@@ -175,15 +187,19 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs} from '@kit.CoreFileKit';
 import { opp } from '@kit.ConnectivityKit';
 // Create fileHolders.
+let file: fs.File | undefined = undefined;
 try {
     let oppProfile = opp.createOppServerProfile();
     let pathDir = "/test.jpg"; // Replace the example path with the actual one.
-    let file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    file = fs.openSync(pathDir, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
     oppProfile.setIncomingFileConfirmation(true, file.fd);
-    // Close the file descriptor after file receiving is complete. 
-    fs.close(file.fd);
 } catch (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+} finally {
+  // Close the file descriptor after file receiving is complete. 
+  if (file) {
+    fs.close(file.fd);
+  }
 }
 ```
 
@@ -408,6 +424,12 @@ Cancels Bluetooth file transfer. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
@@ -450,6 +472,12 @@ Obtains the information about the file that is being transferred. This API uses 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH and ohos.permission.MANAGE_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;[OppTransferInformation](#opptransferinformation)&gt; | Promise that returns the file information object being transferred.|
 
 **Error codes**
 
@@ -499,6 +527,12 @@ Sets the URI of the last received file. This API uses a promise to return the re
 | Name    | Type                         | Mandatory  | Description                      |
 | ------- | --------------------------- | ---- | ------------------------ |
 | uri | string | Yes   | URI of the last received file.|
+
+**Return value**
+
+| Type                                      | Description                        |
+| ---------------------------------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 

@@ -39,7 +39,7 @@ Defines APIs for obtaining Wi-Fi switch state.
 
 ### Wifi_ResultCode
 
-```
+```c
 enum Wifi_ResultCode
 ```
 
@@ -63,7 +63,7 @@ Enumerates the error codes returned by Wi-Fi APIs.
 
 ### OH_Wifi_IsWifiEnabled()
 
-```
+```c
 Wifi_ResultCode OH_Wifi_IsWifiEnabled(bool *enabled)
 ```
 
@@ -87,7 +87,7 @@ Checks whether Wi-Fi is enabled.
 
 ### OH_Wifi_GetDeviceMacAddress()
 
-```
+```c
 Wifi_ResultCode OH_Wifi_GetDeviceMacAddress(char *macAddr, unsigned int *macAddrLen)
 ```
 

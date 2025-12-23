@@ -76,7 +76,7 @@ Provides context-related APIs for configuring runtime information. These APIs ar
 
 ### OH_AI_ContextCreate()
 
-```
+```c
 OH_AI_API OH_AI_ContextHandle OH_AI_ContextCreate()
 ```
 
@@ -94,7 +94,7 @@ Creates a context object. This API must be used together with **OH_AI_ContextDes
 
 ### OH_AI_ContextDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_ContextDestroy(OH_AI_ContextHandle *context)
 ```
 
@@ -113,7 +113,7 @@ Destroys a context object.
 
 ### OH_AI_ContextSetThreadNum()
 
-```
+```c
 OH_AI_API void OH_AI_ContextSetThreadNum(OH_AI_ContextHandle context, int32_t thread_num)
 ```
 
@@ -133,7 +133,7 @@ Sets the number of runtime threads.
 
 ### OH_AI_ContextGetThreadNum()
 
-```
+```c
 OH_AI_API int32_t OH_AI_ContextGetThreadNum(const OH_AI_ContextHandle context)
 ```
 
@@ -158,7 +158,7 @@ Obtains the number of threads.
 
 ### OH_AI_ContextSetThreadAffinityMode()
 
-```
+```c
 OH_AI_API void OH_AI_ContextSetThreadAffinityMode(OH_AI_ContextHandle context, int mode)
 ```
 
@@ -178,7 +178,7 @@ Sets the affinity mode for binding runtime threads to CPU cores, which are class
 
 ### OH_AI_ContextGetThreadAffinityMode()
 
-```
+```c
 OH_AI_API int OH_AI_ContextGetThreadAffinityMode(const OH_AI_ContextHandle context)
 ```
 
@@ -203,7 +203,7 @@ Obtains the affinity mode for binding runtime threads to CPU cores.
 
 ### OH_AI_ContextSetThreadAffinityCoreList()
 
-```
+```c
 OH_AI_API void OH_AI_ContextSetThreadAffinityCoreList(OH_AI_ContextHandle context, const int32_t *core_list,size_t core_num)
 ```
 
@@ -224,7 +224,7 @@ Sets the list of CPU cores bound to a runtime thread.<br> For example, if **core
 
 ### OH_AI_ContextGetThreadAffinityCoreList()
 
-```
+```c
 OH_AI_API const int32_t *OH_AI_ContextGetThreadAffinityCoreList(const OH_AI_ContextHandle context, size_t *core_num)
 ```
 
@@ -250,7 +250,7 @@ Obtains the list of bound CPU cores.
 
 ### OH_AI_ContextSetEnableParallel()
 
-```
+```c
 OH_AI_API void OH_AI_ContextSetEnableParallel(OH_AI_ContextHandle context, bool is_parallel)
 ```
 
@@ -270,7 +270,7 @@ Sets whether to enable parallelism between operators. The setting is ineffective
 
 ### OH_AI_ContextGetEnableParallel()
 
-```
+```c
 OH_AI_API bool OH_AI_ContextGetEnableParallel(const OH_AI_ContextHandle context)
 ```
 
@@ -295,7 +295,7 @@ Checks whether parallelism between operators is supported.
 
 ### OH_AI_ContextAddDeviceInfo()
 
-```
+```c
 OH_AI_API void OH_AI_ContextAddDeviceInfo(OH_AI_ContextHandle context, OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -315,7 +315,7 @@ Attaches the custom device information to the inference context.
 
 ### OH_AI_DeviceInfoCreate()
 
-```
+```c
 OH_AI_API OH_AI_DeviceInfoHandle OH_AI_DeviceInfoCreate(OH_AI_DeviceType device_type)
 ```
 
@@ -340,7 +340,7 @@ Creates a device information object.
 
 ### OH_AI_DeviceInfoDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_DeviceInfoDestroy(OH_AI_DeviceInfoHandle *device_info)
 ```
 
@@ -359,7 +359,7 @@ Destroys a device information object. Note: After the device information instanc
 
 ### OH_AI_DeviceInfoSetProvider()
 
-```
+```c
 OH_AI_API void OH_AI_DeviceInfoSetProvider(OH_AI_DeviceInfoHandle device_info, const char *provider)
 ```
 
@@ -379,7 +379,7 @@ Sets the name of the provider.
 
 ### OH_AI_DeviceInfoGetProvider()
 
-```
+```c
 OH_AI_API const char *OH_AI_DeviceInfoGetProvider(const OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -404,7 +404,7 @@ Obtains the provider name.
 
 ### OH_AI_DeviceInfoSetProviderDevice()
 
-```
+```c
 OH_AI_API void OH_AI_DeviceInfoSetProviderDevice(OH_AI_DeviceInfoHandle device_info, const char *device)
 ```
 
@@ -424,7 +424,7 @@ Sets the name of a provider device.
 
 ### OH_AI_DeviceInfoGetProviderDevice()
 
-```
+```c
 OH_AI_API const char *OH_AI_DeviceInfoGetProviderDevice(const OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -449,7 +449,7 @@ Obtains the name of a provider device.
 
 ### OH_AI_DeviceInfoGetDeviceType()
 
-```
+```c
 OH_AI_API OH_AI_DeviceType OH_AI_DeviceInfoGetDeviceType(const OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -474,7 +474,7 @@ Obtains the device type.
 
 ### OH_AI_DeviceInfoSetEnableFP16()
 
-```
+```c
 OH_AI_API void OH_AI_DeviceInfoSetEnableFP16(OH_AI_DeviceInfoHandle device_info, bool is_fp16)
 ```
 
@@ -494,7 +494,7 @@ Sets whether to enable float16 inference. This function is available only for CP
 
 ### OH_AI_DeviceInfoGetEnableFP16()
 
-```
+```c
 OH_AI_API bool OH_AI_DeviceInfoGetEnableFP16(const OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -519,7 +519,7 @@ Checks whether float16 inference is enabled. This function is available only for
 
 ### OH_AI_DeviceInfoSetFrequency()
 
-```
+```c
 OH_AI_API void OH_AI_DeviceInfoSetFrequency(OH_AI_DeviceInfoHandle device_info, int frequency)
 ```
 
@@ -539,7 +539,7 @@ Sets the NPU frequency type. This function is available only for NPU devices.
 
 ### OH_AI_DeviceInfoGetFrequency()
 
-```
+```c
 OH_AI_API int OH_AI_DeviceInfoGetFrequency(const OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -564,7 +564,7 @@ Obtains the NPU frequency type. This function is available only for NPU devices.
 
 ### OH_AI_GetAllNNRTDeviceDescs()
 
-```
+```c
 OH_AI_API NNRTDeviceDesc *OH_AI_GetAllNNRTDeviceDescs(size_t *num)
 ```
 
@@ -589,7 +589,7 @@ Obtains the descriptions of all NNRt devices in the system.
 
 ### OH_AI_GetElementOfNNRTDeviceDescs()
 
-```
+```c
 OH_AI_API NNRTDeviceDesc *OH_AI_GetElementOfNNRTDeviceDescs(NNRTDeviceDesc *descs, size_t index)
 ```
 
@@ -615,7 +615,7 @@ Obtains the pointer to an element in the NNRt device description array.
 
 ### OH_AI_DestroyAllNNRTDeviceDescs()
 
-```
+```c
 OH_AI_API void OH_AI_DestroyAllNNRTDeviceDescs(NNRTDeviceDesc **desc)
 ```
 
@@ -634,7 +634,7 @@ Destroys the NNRt device description array obtained by [OH_AI_GetAllNNRTDeviceDe
 
 ### OH_AI_GetDeviceIdFromNNRTDeviceDesc()
 
-```
+```c
 OH_AI_API size_t OH_AI_GetDeviceIdFromNNRTDeviceDesc(const NNRTDeviceDesc *desc)
 ```
 
@@ -659,7 +659,7 @@ Obtains the NNRt device ID from the specified NNRt device description. Note that
 
 ### OH_AI_GetNameFromNNRTDeviceDesc()
 
-```
+```c
 OH_AI_API const char *OH_AI_GetNameFromNNRTDeviceDesc(const NNRTDeviceDesc *desc)
 ```
 
@@ -684,7 +684,7 @@ Obtains the NNRt device name from the specified NNRt device description.
 
 ### OH_AI_GetTypeFromNNRTDeviceDesc()
 
-```
+```c
 OH_AI_API OH_AI_NNRTDeviceType OH_AI_GetTypeFromNNRTDeviceDesc(const NNRTDeviceDesc *desc)
 ```
 
@@ -709,7 +709,7 @@ Obtains the NNRt device type from the specified NNRt device description.
 
 ### OH_AI_CreateNNRTDeviceInfoByName()
 
-```
+```c
 OH_AI_API OH_AI_DeviceInfoHandle OH_AI_CreateNNRTDeviceInfoByName(const char *name)
 ```
 
@@ -734,7 +734,7 @@ Searches for the NNRt device with the specified name and creates the NNRt device
 
 ### OH_AI_CreateNNRTDeviceInfoByType()
 
-```
+```c
 OH_AI_API OH_AI_DeviceInfoHandle OH_AI_CreateNNRTDeviceInfoByType(OH_AI_NNRTDeviceType type)
 ```
 
@@ -759,7 +759,7 @@ Searches for the NNRt device with the specified type and creates the NNRt device
 
 ### OH_AI_DeviceInfoSetDeviceId()
 
-```
+```c
 OH_AI_API void OH_AI_DeviceInfoSetDeviceId(OH_AI_DeviceInfoHandle device_info, size_t device_id)
 ```
 
@@ -779,7 +779,7 @@ Sets the NNRt device ID. This function is available only for NNRt devices.
 
 ### OH_AI_DeviceInfoGetDeviceId()
 
-```
+```c
 OH_AI_API size_t OH_AI_DeviceInfoGetDeviceId(const OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -804,7 +804,7 @@ Obtains the NNRt device ID. This function is available only for NNRt devices.
 
 ### OH_AI_DeviceInfoSetPerformanceMode()
 
-```
+```c
 OH_AI_API void OH_AI_DeviceInfoSetPerformanceMode(OH_AI_DeviceInfoHandle device_info, OH_AI_PerformanceMode mode)
 ```
 
@@ -824,7 +824,7 @@ Sets the NNRt performance mode. This function is available only for NNRt devices
 
 ### OH_AI_DeviceInfoGetPerformanceMode()
 
-```
+```c
 OH_AI_API OH_AI_PerformanceMode OH_AI_DeviceInfoGetPerformanceMode(const OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -849,7 +849,7 @@ Obtains the NNRt performance mode. This function is available only for NNRt devi
 
 ### OH_AI_DeviceInfoSetPriority()
 
-```
+```c
 OH_AI_API void OH_AI_DeviceInfoSetPriority(OH_AI_DeviceInfoHandle device_info, OH_AI_Priority priority)
 ```
 
@@ -869,7 +869,7 @@ Sets the priority of an NNRt task. This function is available only for NNRt devi
 
 ### OH_AI_DeviceInfoGetPriority()
 
-```
+```c
 OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandle device_info)
 ```
 
@@ -894,7 +894,7 @@ Obtains the priority of an NNRt task. This function is available only for NNRt d
 
 ### OH_AI_DeviceInfoAddExtension()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle device_info, const char *name,const char *value, size_t value_size)
 ```
 

@@ -687,7 +687,7 @@ Represents the P2P link information obtained.
 | -------- | -------- | -------- | -------- | -------- |
 | connectState | [P2pConnectState](#p2pconnectstate8) | No| No| P2P connection state.|
 | isGroupOwner | boolean | No| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
-| groupOwnerAddr | string | No| No| MAC address of the group.
+| groupOwnerAddr | string | No| No| MAC address of the group.|
 
 
 ## P2pConnectState<sup>8+</sup>
