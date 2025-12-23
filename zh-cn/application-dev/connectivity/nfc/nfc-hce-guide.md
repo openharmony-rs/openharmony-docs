@@ -324,8 +324,8 @@ export default class EntryAbility extends UIAbility {
             "actions": [
               "ohos.want.action.home",
 
-              // actions必须包含"ohos.nfc.cardemulation.action.OFFHOST_APDU_SERVICE"
-              "ohos.nfc.cardemulation.action.OFFHOST_APDU_SERVICE"
+              // actions必须包含"ohos.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"
+              "ohos.nfc.cardemulation.action.OFF_HOST_APDU_SERVICE"
             ]
           }
         ]
