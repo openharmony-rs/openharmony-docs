@@ -30,7 +30,7 @@
 
 从API version 23开始，支持单版本表模式进行数据存储。
 
-[单版本表模式](data-sync-of-rdb-store.md#数据同步存储机制##单版本表模式)。
+[单版本表模式](data-sync-of-rdb-store.md#单版本表模式)。
 
 ## 约束限制
 
@@ -59,8 +59,8 @@
 ## 开发步骤
 
 > **说明：**
->
-> 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
+> 
+> 数据只允许向安全等级不低于本设备的数据安全标签的设备同步数据，具体规则可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
 
 1. 导入模块。
    <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
