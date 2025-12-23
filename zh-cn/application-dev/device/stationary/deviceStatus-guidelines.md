@@ -42,35 +42,35 @@ ArkTS-Sta接口说明：
 
 1. 导入模块。
 
-  ```ts
-  import { deviceStatus } from '@kit.MultimodalAwarenessKit';
-  ```
+   ```ts
+   import { deviceStatus } from '@kit.MultimodalAwarenessKit';
+   ```
 
 2. 订阅设备静止姿态（支架态）感知事件。
 
-  ArkTS-Dyn示例:
+   ArkTS-Dyn示例:
 
-  ```ts
-  try {
-    deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
-      console.info('now status = ' + data);
-    });
-  } catch (err) {
-    console.info('on failed, err = ' + err);
-  }
-  ```
+   ```ts
+   try {
+     deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
+       console.info('now status = ' + data);
+     });
+   } catch (err) {
+     console.info('on failed, err = ' + err);
+   }
+   ```
 
-  ArkTS-Sta示例:
+   ArkTS-Sta示例:
 
-  ```ts
-  try {
-    deviceStatus.onSteadyStandingDetect((data:deviceStatus.SteadyStandingStatus) => {
-      console.info('now status = ' + data);
-    });
-  } catch (err) {
-    console.info('on failed, err = ' + err);
-  }
-  ```
+   ```ts
+   try {
+     deviceStatus.onSteadyStandingDetect((data:deviceStatus.SteadyStandingStatus) => {
+       console.info('now status = ' + data);
+     });
+   } catch (err) {
+     console.info('on failed, err = ' + err);
+   }
+   ```
 
 3. 取消订阅本客户端订阅的所有设备静止姿态（支架态）感知事件。
 
