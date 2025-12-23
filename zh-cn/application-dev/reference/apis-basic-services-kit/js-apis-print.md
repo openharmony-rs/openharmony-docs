@@ -476,10 +476,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print<sup>(deprecated)</sup>
-
-> 从API version 10开始支持，从API version 23开始废弃。
-> 建议使用[print](#printprint11-1)替代。
+## print.print<sup>10+</sup>
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -525,10 +522,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print<sup>(deprecated)</sup>
-
-> 从API version 10开始支持，从API version 23开始废弃。
-> 建议使用[print](#printprint11-1)替代。
+## print.print<sup>10+</sup>
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 

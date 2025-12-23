@@ -16,7 +16,7 @@
 
 static close()
 
-可以通过该方法在页面范围内关闭通过[bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu12)给组件绑定的菜单。
+可以通过该方法在页面范围内关闭通过[bindContextMenu](./ts-universal-attributes-menu.md#bindcontextmenu12)为组件绑定的菜单。
 
 >  **说明：**
 >

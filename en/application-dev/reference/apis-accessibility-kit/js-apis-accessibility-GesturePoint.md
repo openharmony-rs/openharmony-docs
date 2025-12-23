@@ -36,7 +36,7 @@ Defines a gesture touch point.
 
 constructor(positionX: number, positionY: number);
 
-A constructor used to create a **GesturePoint** instance.
+Defines a constructor used to create a **GesturePoint** instance.
 
 > **NOTE**
 >

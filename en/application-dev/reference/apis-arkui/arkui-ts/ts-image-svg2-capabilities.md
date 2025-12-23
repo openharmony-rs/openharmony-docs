@@ -78,7 +78,7 @@ When SVG image sources use hexadecimal color formats, the default parsing has ch
 
 | Before Enhancement                                               | After Enhancement                                               |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| Parsed as #ARGB.<br>Display effect of the rectangle with **fill="#8888"**<br> ! [Before](figures/4hex_color_before.png)| Parsed as #RGBA.<br>Display effect of the rectangle with **fill="#8888"** (fully transparent)<br> ! [After](figures/4hex_color_after.png)|
+| Parsed as #ARGB.<br>Display effect of the rectangle with **fill="#8888"**<br> ![Before](figures/4hex_color_before.png)| Parsed as #RGBA.<br>Display effect of the rectangle with **fill="#8888"** (fully transparent)<br> ![After](figures/4hex_color_after.png)|
 
 ### Strict IRI Type Validation
 

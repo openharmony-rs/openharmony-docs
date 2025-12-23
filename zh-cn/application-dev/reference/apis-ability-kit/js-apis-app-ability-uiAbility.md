@@ -1249,7 +1249,7 @@ onRemoteStateChange(callback: OnRemoteStateChangeCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback) | 是 | 回调函数，返回onRemoteStateChange回调结果。 |
+| callback | [OnRemoteStateChangeCallback](#onremotestatechangecallback10) | 是 | 回调函数，返回onRemoteStateChange回调结果。 |
 
 **错误码：**
 
@@ -1578,9 +1578,7 @@ export default class MainUIAbility extends UIAbility {
 
 ## OnReleaseCallback
 
-### (msg: string)
-
-(msg: string): void
+type OnReleaseCallback = (msg: string) => void
 
 注册通用组件服务端Stub（桩）断开监听通知的回调函数类型。
 
@@ -1592,11 +1590,9 @@ export default class MainUIAbility extends UIAbility {
 | --- | ----- | --- | -------- |
 | msg | string | 是 | 用于传递释放消息。 |
 
-## OnRemoteStateChangeCallback
+## OnRemoteStateChangeCallback<sup>10+</sup>
 
-### (msg: string)<sup>10+</sup>
-
-(msg: string): void
+type OnRemoteStateChangeCallback = (msg: string) => void
 
 注册协同场景下跨设备组件状态变化监听通知的回调函数类型。
 
@@ -1610,9 +1606,7 @@ export default class MainUIAbility extends UIAbility {
 
 ## CalleeCallback
 
-### (indata: rpc.MessageSequence)
-
-(indata: rpc.MessageSequence): rpc.Parcelable
+type CalleeCallback = (indata: rpc.MessageSequence) => rpc.Parcelable
 
 通用组件服务端注册消息通知的回调函数类型。
 

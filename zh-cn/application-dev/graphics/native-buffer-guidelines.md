@@ -59,6 +59,7 @@ libnative_buffer.so
     ```
 
 2. **将OH_NativeBuffer对应的ION内存映射到进程空间**。
+
     应用如需访问buffer内存空间，可通过OH_NativeBuffer_Map接口将ION内存映射到进程空间。
     <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 

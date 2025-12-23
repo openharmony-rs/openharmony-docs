@@ -40,8 +40,11 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 * 组件间不存在变量传递时，V2自定义组件可以使用V1的自定义组件，包括import第三方\@Component装饰的自定义组件。
 
 * 组件间存在变量传递时，V2的变量传递给V1的自定义组件，有以下限制：
-  - V2中未被装饰器装饰的变量（后称普通变量）：若V1使用装饰器装饰接收的数据，只能通过\@State、\@Prop、\@Provide。
-  - V2中被装饰器装饰的变量（后称状态变量）：若V1使用装饰器装饰接收的数据，不支持内置类型数据：Array、Set、Map、Date。
+  - V2普通变量（未使用状态变量装饰器）传递给V1自定义组件：
+    如果V1使用状态变量接收该数据，只能使用[\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Provide](./arkts-provide-and-consume.md)这三种V1的状态变量装饰器。
+  - V2状态变量（使用状态变量装饰器）传递给V1自定义组件：
+    如果V1使用状态变量装饰器（同样仅限\@State、\@Prop、\@Provide支持）装饰接收的数据，不支持内置类型数据：Array、Set、Map、Date。需要注意V2状态变量支持Function类型，但是V1的状态变量装饰器均不支持Function类型，传递Function类型会导致运行时校验。以\@State为例，详情见[\@State限制条件](./arkts-state.md#限制条件)。
+  - V1中[\@Link](./arkts-link.md)遵循其原本初始化规则，只能被V1状态变量初始化，详情见[\@Link初始化规则](./arkts-link.md#变量的传递访问规则说明)。
 
 ## 状态管理装饰器总览
 
@@ -49,15 +52,15 @@ V2的提出不仅解决了V1对嵌套类观测的不足，还增强了部分装�
 
 |  装饰器类别  |                            装饰器                            |
 | :----------: | :----------------------------------------------------------: |
-| 组件内装饰器 | \@State、\@Prop、\@Link、\@ObjectLink、\@Provide、\@Consume、\@StorageProp、\@StorageLink、\@LocalStorageProp、\@LocalStorageLink、\@Watch |
+| 组件内装饰器 | [\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)、[\@ObjectLink](./arkts-observed-and-objectlink.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Consume](./arkts-provide-and-consume.md)、[\@StorageProp](./arkts-appstorage.md)、[\@StorageLink](./arkts-appstorage.md)、[\@LocalStorageProp](./arkts-localstorage.md)、[\@LocalStorageLink](./arkts-localstorage.md)、[\@Watch](./arkts-watch.md) |
 | 类相关装饰器 |                     \@Observed、\@Track                      |
 
 ### 状态管理V2的装饰器
 
 |  装饰器类别  |                            装饰器                            |
 | :----------: | :----------------------------------------------------------: |
-| 组件内装饰器 | \@Local、\@Param、\@Provider、\@Consumer、\@Once、\@Event、\@Monitor、\@Computed |
-| 类相关装饰器 |                \@ObservedV2、\@Trace、\@Type                 |
+| 组件内装饰器 | [\@Local](./arkts-new-local.md)、[\@Param](./arkts-new-param.md)、[\@Provider](./arkts-new-provider-and-consumer.md)、[\@Consumer](./arkts-new-provider-and-consumer.md)、[\@Once](./arkts-new-once.md)、[\@Event](./arkts-new-event.md)、[\@Monitor](./arkts-new-monitor.md)、[\@Computed](./arkts-new-computed.md) |
+| 类相关装饰器 |                [\@ObservedV2](./arkts-new-observedV2-and-trace.md)、[\@Trace](./arkts-new-observedV2-and-trace.md)、[\@Type](./arkts-new-type.md)                 |
 
 ### 状态管理装饰器支持的数据类型总览
 

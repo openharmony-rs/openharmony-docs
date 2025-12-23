@@ -466,6 +466,167 @@ struct Index {
 ```
 <!--  -->
 
+## Reusing and Releasing Offline Web Components
+
+Reusing and releasing offline **Web** components can optimize memory usage and reduce the probability that the system kills an application due to high memory usage.
+
+> **NOTE**
+> - You are advised to use only one **Web** component in each window.
+> - You are advised to reuse offline **Web** components.
+> - You are advised to release u offline **Web** components that are not required.
+
+### Reusing Offline Web Components
+
+If multiple UI pages of an application all need to display web content, you are advised to reuse offline **Web** components. This reduces the performance consumption of component creation and destruction and the memory usage of creating multiple **Web** components.
+
+**Reusing methods**:
+1. When an offline **Web** component is no longer used, call the **loadUrl** method of **WebController** to load the **about:blank blank** page, so that other UI pages can reuse the offline **Web** component.
+2. When a new UI page reuses the offline **Web** component, call the **loadUrl** method of WebController to load the required web page.
+
+### Releasing Offline Web Components
+
+When an application is switched to the background or no longer needs the offline **Web** component in a specified period, you are advised to release the component to reduce the memory usage of the application.
+
+> **NOTE**
+> - The offline **Web** component can be released only when it is not bound to the UI page. Otherwise, the **NodeContainer** component may be blank.
+> - You can use the **onBind** and **onUnbind** callbacks of the **NodeController** to trace the binding status of the offline **Web** component.
+
+**Code implementation**:
+
+<!-- @[manage_dynamic_webview_components_core_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/pages/Common.ets) -->
+
+``` TypeScript
+// Create a Map to save the required NodeController.
+let nodeMap: Map<ResourceStr, MyNodeController | undefined> = new Map();
+
+// Create a global variable for saving uiContext.
+let globalUiContext: UIContext | undefined = undefined;
+
+// Create a Set to save the URL information of the released offline component.
+let recycledNWebs: Set<ResourceStr> = new Set()
+
+// UIContext is required for initialization and needs to be obtained from the ability.
+export const createNWeb = (url: ResourceStr, uiContext: UIContext) => {
+  // Create a NodeController instance.
+  console.info('createNWeb, url = ' + url);
+  if (!globalUiContext) {
+    globalUiContext = uiContext;
+  }
+  if (getNWeb(url)) {
+    console.info('createNWeb, already exit this node, url:' + url);
+    return;
+  }
+
+  let baseNode = new MyNodeController();
+  // Initialize the custom Web component.
+  baseNode.initWeb(url, uiContext);
+  nodeMap.set(url, baseNode);
+  recycledNWebs.delete(url);
+}
+
+// Customize the API for releasing/reclaiming offline Web components. The API can be used as the function for releasing offline Web components. If the release is successful, true is returned.
+// If the offline component is not bound to the NodeContainer, the offline component can be safely released. Otherwise, the node displays a blank screen when not being redrawn.
+export const recycleNWeb = (url: ResourceStr, force: boolean = false): boolean => {
+  console.info('recycleNWeb, url = ' + url);
+  let baseNode = nodeMap.get(url);
+  if (!baseNode) {
+    console.info('no such node, url = ' + url);
+    return false;
+  }
+  if (!force && baseNode.isBound()) {
+    console.info('the node is in bound and not force, can not delete');
+    return false;
+  }
+  baseNode.rootNode?.dispose();
+  baseNode.rebuild();
+  nodeMap.delete(url);
+  recycledNWebs.add(url);
+  return true;
+}
+
+// Customize the API for releasing all offline Web components.
+export const recycleNWebs = (force: boolean = false) => {
+  nodeMap.forEach((_node: MyNodeController | undefined, url: ResourceStr) => {
+    recycleNWeb(url, force);
+  });
+}
+
+// Customize the API for resuming the released offline Web components.
+export const restoreNWebs = (uiContext: UIContext | undefined = undefined) => {
+  if (!uiContext) {
+    uiContext = globalUiContext;
+  }
+  for (let url of recycledNWebs) {
+    if (uiContext) {
+      createNWeb(url, uiContext);
+    }
+  }
+  recycledNWebs.clear()
+}
+```
+<!--  -->
+
+### Example of Reusing and Releasing Offline Web Components
+
+**Functionality Description**
+
+This example demonstrates how to reuse and release offline **Web** components and how to perform pre-rendering. Note that multiple offline **Web** components are used in this example for demonstrating related functionalities and the usage of offline **Web** components. In principle, you are advised to use only one **Web** component for each window. The functionalities are as follows:
+
+1. Effect comparison between pre-rendering and non-pre-rendering offline **Web** components.
+2. Steps for releasing offline **Web** components when the application is in the background.
+3. Steps for reusing offline **Web** components.
+
+This example demonstrates how to use the **onBackground** and **onForeground** callback functions of UIAbility to release offline **Web** components when the application is in the background and resume them when the application is in the foreground.
+
+<!-- @[entry_ability_on_background_and_foreground_to_recycle_and_restore_NWebs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3/src/main/ets/entry3ability/Entry3Ability.ets) -->
+
+``` TypeScript
+onForeground(): void {
+  // Ability has brought to foreground
+  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onForeground');
+  restoreNWebs()
+}
+
+onBackground(): void {
+  // Ability has back to background
+  hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  recycleNWebs()
+}
+```
+
+<!--  -->
+
+**UI Page Functionalities**
+
+The following four UI pages are used as examples: Index, Home, Page1, and Page2. The core functionalities of each UI page are as follows:
+
+* The index page serves as the entry point for demonstrating page redirection, as well as the reclaiming, resuming, and statistics display of offline **Web** components.
+  * Button for redirecting to the home page.
+  * Button for reclaiming offline **Web** components (only offline **Web** components that are not bound can be reclaimed).
+  * Button for forcibly reclaiming offline **Web** components (all offline **Web** components, including bound and unbound components, will be forcibly reclaimed, which will cause the NodeContainer to display a blank screen).
+  * Button for resuming offline **Web** components.
+  * Displaying the number, status, and URLs of offline **Web** components.
+* The home page acts as the UI homepage, demonstrating the creation of offline **Web** components as well as the implementation methods and timing of pre-rendering.
+  * Three offline components are created when the home page is created. One of them loads the specified web page and performs pre-rendering, and the other two are blank offline **Web** components.
+  * The home page provides navigation buttons for redirecting to Page1 or Page2.
+* Page1 displays two web pages at the same time. Each page uses one offline **Web** component to load and display the content of the same URL. This page is used to demonstrate the effect comparison between pre-rendering and non-pre-rendering, and how to reuse offline components.
+  * The first offline **Web** component performs pre-rendering and can directly display the page content, which is faster than the second offline **Web** component.
+  * The second offline **Web** component reuses the idle offline **Web** component and dynamically loads the URL in the **aboutToAppear** lifecycle of the UI page.
+
+  ![web-offline-preload-compare](figures/offline-nweb-preload-compare.gif)
+
+* Page2 displays a single web page and loads the specified URL by reusing the idle offline **Web** component.
+  * Page2 can load a specified URL by passing parameters and allows users to redirect to another URL after the loading.
+  * In the **onWillHide** callback of **NavDestination**, Page2 will make the current **Web** component load a blank page and disassociate itself from the current UI, so as to prepare for subsequent reuse.
+  * Page2 supports nesting. Even if there are multiple layers of UI pages, the number of **Web** components does not increase because offline **Web** components are reused.
+
+![web-offline-reuse-recycle-restore](figures/offline-nweb-reuse-recycle-restore.gif)
+
+**Sample Code**
+
+[Sample Code for Reusing and Releasing Offline Web Components](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry3)
+
+
 ## Common Troubleshooting Procedure
 
 1. Check the network permission of the application.

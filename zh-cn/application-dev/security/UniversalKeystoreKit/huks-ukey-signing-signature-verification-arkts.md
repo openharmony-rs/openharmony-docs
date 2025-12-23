@@ -18,11 +18,11 @@
 
 **签名**
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并完成PIN码认证后打开资源。
+1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并完成PIN码认证后[打开资源](huks-open-close-resource-ndk.md#打开资源)。
 
 2. 指定待签名的明文数据。
 
-3. 获取属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，包括两个字段properties和inData。inData传入明文数据，properties传入[算法参数配置](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)。
+3. 获取属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，包括两个字段properties和inData。inData传入明文数据，properties传入算法参数配置。
 
 4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
@@ -30,11 +30,11 @@
 
 **验签**
 
-1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并[打开资源](huks-open-close-resource-ndk.md)。
+1. 通过[证书管理应用](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取resourceId作为密钥别名，并[打开资源](huks-open-close-resource-ndk.md#打开资源)。
 
 2. 获取待验证的签名。
 
-3. 获取属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，包括两个字段properties和inData。inData传入签名signature，properties传入[算法参数配置](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam)。
+3. 获取属性参数[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)，包括两个字段properties和inData。inData传入签名signature，properties传入算法参数配置。
 
 4. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
@@ -53,7 +53,7 @@ import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";
 
 // 假设keyAlias是已获取的resourceId
-let keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"index\":{\"key\":\"testKey\"}}";
+let keyAlias = "{\"providerName\":\"testProviderName\",\"abilityName\":\"CryptoExtension\",\"bundleName\":\"com.example.cryptoapplication\",\"userid\":100,\"index\":{\"key\":\"testKey\"}}";
 let handle: number;
 let plaintext = '123456';
 let signature: Uint8Array;
@@ -170,11 +170,11 @@ async function Sign(keyAlias: string, plaintext: string) {
   let signProperties = GetRsaSignProperties();
   let options: huks.HuksOptions = {
     properties: signProperties,
-    inData: StringToUint8Array(plaintext)
   }
   await initSession(keyAlias, options);
 
   if (handle !== undefined) {
+    options.inData = StringToUint8Array(plaintext);
     await finishSession(handle, options);
   }
 }
@@ -184,12 +184,12 @@ async function Verify(keyAlias: string, plaintext: string, signature: Uint8Array
   let verifyProperties = GetRsaVerifyProperties();
   let options: huks.HuksOptions = {
     properties: verifyProperties,
-    inData: StringToUint8Array(plaintext)
   }
 
   await initSession(keyAlias, options);
 
   if (handle !== undefined) {
+    options.inData = StringToUint8Array(plaintext);
     await updateSession(handle, options);
     options.inData = signature;
     await finishSession(handle, options);

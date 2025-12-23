@@ -18,7 +18,7 @@ You can use the APIs of this module to configure the concerned information, obta
 
 ## How to Use
 
-Before using the **AccessibilityExtensionContext** module, you must define a child class that inherits from **AccessibilityExtensionAbility**.
+Before using **AccessibilityExtensionContext**, you need to obtain an **AccessibilityExtensionContext** instance through an **AccessibilityExtensionAbility** child class instance.
 
 ```ts
 import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
@@ -59,6 +59,8 @@ let p : Parameter = { selectTextBegin: '0', selectTextEnd: '8', selectTextInForW
 Defines accessibility grid information.
 For details, see [AccessibilityElement.currentItem](#accessibilityelement12).
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Name                 | Type    | Read-Only |Optional| Description                               |
@@ -71,6 +73,8 @@ For details, see [AccessibilityElement.currentItem](#accessibilityelement12).
 
 Defines the information about the hyperlink wrapped by the span tag.
 For details, see [AccessibilityElement.spans](#accessibilityelement12).
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -134,9 +138,11 @@ Queries the return value type of the target accessibility nodes.
 
 ## startAbility<sup>12+</sup>
 
-startAbility(want: Want): Promise\<void>;
+startAbility(want: Want): Promise\<void>
 
 Starts the foreground page. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -212,9 +218,11 @@ export default class AccessibilityManager {
 
 ## AccessibilityExtensionContext.getElements<sup>18+</sup>
 
-getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>;
+getElements(windowId: number, elementId?: number): Promise<Array&lt;AccessibilityElement&gt;>
 
 Obtains node elements in batches. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -289,9 +297,11 @@ export default class AccessibilityManager {
 
 ## AccessibilityExtensionContext.getDefaultFocusedElementIds<sup>18+</sup>
 
-getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>;
+getDefaultFocusedElementIds(windowId: number): Promise<Array&lt;number&gt;>
 
 Obtains the custom default focuses of an application. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -369,6 +379,8 @@ Holds the running lock. After the lock is held, the screen will not turn off aut
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Error codes**
@@ -429,6 +441,8 @@ unholdRunningLockSync(): void
 Releases the running lock. After the lock is released, the screen will automatically turn off.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -492,6 +506,8 @@ Subscribes to the pre-disconnection event of the accessibility extension service
 Used together with [notifyDisconnect](#accessibilityextensioncontextnotifydisconnect20); otherwise, the accessibility extension service is automatically disconnected 30 seconds later by default.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -562,6 +578,8 @@ off(type: 'preDisconnect', callback?: Callback&lt;void&gt;): void
 Unsubscribes from the pre-disconnection event of the accessibility extension service. This API is not called until the accessibility extension service is disconnected. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -635,6 +653,8 @@ This API must be used together with the [on('preDisconnect')](#accessibilityexte
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Error codes**
@@ -695,6 +715,8 @@ getAccessibilityFocusedElement(): Promise\<AccessibilityElement>;
 Obtains the element that is currently focused. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -764,6 +786,8 @@ getRootInActiveWindow(windowId ?: number): Promise\<[AccessibilityElement](#acce
 Obtains the root element of an active window. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -840,6 +864,8 @@ Obtains the accessibility windows.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
@@ -913,6 +939,8 @@ export default class AccessibilityManager {
 
 Defines the accessibility node element. Before calling the APIs of **AccessibilityElement**, you should call [AccessibilityExtensionContext.getAccessibilityFocusedElement()](#getaccessibilityfocusedelement20) or [AccessibilityExtensionContext.getRootInActiveWindow()](#getrootinactivewindow20) to obtain an **AccessibilityElement** instance.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### Properties
@@ -966,6 +994,7 @@ Defines the accessibility node element. Before calling the APIs of **Accessibili
 | offset<sup>20+</sup>             | number              | No | Yes | Pixel offset of the content area from the top of a scrollable component (such as **List** and **Grid**).<br>Default value: **0**.|
 | textType<sup>20+</sup>             | string                                                             | No | Yes | Accessibility text type of an element, which is configured by the **accessibilityTextHint** attribute of the component.|
 | accessibilityText<sup>20+</sup> | string                                                  | No | Yes | Accessibility text information of an element.|
+| accessibilityStateDescription<sup>23+</sup> | string                                      | No | Yes | Custom accessibility state broadcast text of an element.<br>**Model restriction**: This API can be used only in the stage model.|
 | hotArea<sup>20+</sup>             | [Rect](js-apis-inner-application-accessibilityExtensionContext.md#rect)                                                              | No | Yes | Hot area of an element.|
 | customComponentType<sup>20+</sup>             | string                                                             | No | Yes | Custom component type.|
 | accessibilityNextFocusId<sup>20+</sup>             | number                | No | Yes | ID of the next component to obtain the focus.<br>Default value: **-1**.|
@@ -1038,9 +1067,11 @@ export default class AccessibilityManager {
 
 ### enableScreenCurtain<sup>12+</sup>
 
-enableScreenCurtain(isEnable: boolean): void;
+enableScreenCurtain(isEnable: boolean): void
 
 Enables or disables the screen curtain.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1107,9 +1138,11 @@ export default class AccessibilityManager {
 
 ### findElement('elementId')<sup>12+</sup>
 
-findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>;
+findElement(type: 'elementId', condition: number): Promise\<AccessibilityElement>
 
-Queries the node elements in the current active window based on the **elementId**. This API uses a promise to return the result.
+Finds the node element of the current active window based on the element ID. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1153,9 +1186,11 @@ rootElement.findElement('elementId', condition).then((data: AccessibilityElement
 
 ### findElement('textType')<sup>12+</sup>
 
-findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>;
+findElement(type: 'textType', condition: string): Promise\<Array\<AccessibilityElement>>
 
-Queries all node elements based on the **accessibilityTextHint** text type configured for a node. This API uses a promise to return the result.
+Finds all node elements based on the **accessibilityTextHint** text type configured for a node. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1199,9 +1234,11 @@ rootElement.findElement('textType', condition).then((data: AccessibilityElement[
 
 ### getCursorPosition<sup>12+</sup>
 
-getCursorPosition(): Promise\<number>;
+getCursorPosition(): Promise\<number>
 
 Obtains the cursor position in the **Text** component. This API uses a promise to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1226,9 +1263,11 @@ rootElement.getCursorPosition().then((data: number) => {
 
 ### getCursorPosition<sup>12+</sup>
 
-getCursorPosition(callback: AsyncCallback\<number>): void;
+getCursorPosition(callback: AsyncCallback\<number>): void
 
 Obtains the cursor position in the **Text** component. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1256,11 +1295,13 @@ rootElement.getCursorPosition((err: BusinessError, data: number) => {
 
 ### executeAction<sup>20+</sup>
 
-executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<void>;
+executeAction(action: AccessibilityAction, parameters?: Parameter): Promise\<void>
 
 Executes a specific action based on the specified action type and input parameters. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1268,7 +1309,7 @@ Executes a specific action based on the specified action type and input paramete
 
 | Name        | Type                                    | Mandatory  | Description                                                      |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node.
+| action    | [AccessibilityAction](./js-apis-accessibility-sys.md#accessibilityaction)| Yes   | Executable action for the accessibility node.|
 | parameters | [Parameter](#parameter20) | No   | Parameters set for the action. This parameter is left empty by default.                           |
 
 **Return value**
@@ -1340,11 +1381,13 @@ try {
 
 ### getParent<sup>20+</sup>
 
-getParent(): Promise\<AccessibilityElement>;
+getParent(): Promise\<AccessibilityElement>
 
 Obtains the parent element of an accessibility node. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1382,11 +1425,13 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 ### getChildren<sup>20+</sup>
 
-getChildren(): Promise\<Array\<AccessibilityElement>>;
+getChildren(): Promise\<Array\<AccessibilityElement>>
 
 Obtains the child elements of an element. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1424,11 +1469,13 @@ axContext.getAccessibilityFocusedElement().then((element: AccessibilityElement) 
 
 ### getRoot<sup>20+</sup>
 
-getRoot(): Promise\<AccessibilityElement>;
+getRoot(): Promise\<AccessibilityElement>
 
 Obtains the root element of an active window. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1465,11 +1512,13 @@ for (let window of windows) {
 
 ### findElementByContent<sup>20+</sup>
 
-findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementByContent(condition: string): Promise\<Array\<AccessibilityElement>>
 
 Finds elements based on the content. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1524,11 +1573,13 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 ### findElementByFocusDirection<sup>20+</sup>
 
-findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>;
+findElementByFocusDirection(condition: FocusDirection): Promise\<AccessibilityElement>
 
 Finds elements based on the focus direction. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1586,11 +1637,13 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
 
 ### findElementsByAccessibilityHintText<sup>20+</sup>
 
-findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>;
+findElementsByAccessibilityHintText(condition: string): Promise\<Array\<AccessibilityElement>>
 
 Finds elements based on the hint text. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1650,11 +1703,13 @@ axContext.getRootInActiveWindow(windowId).then((root: AccessibilityElement) => {
 
 ### findElementById<sup>20+</sup>
 
-findElementById(condition: number): Promise\<AccessibilityElement>;
+findElementById(condition: number): Promise\<AccessibilityElement>
 
 Finds elements based on element ID. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESSIBILITY_EXTENSION_ABILITY
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1760,3 +1815,17 @@ axContext.getAccessibilityFocusedElement().then((focus: AccessibilityElement) =>
   console.error(`getAccessibilityFocusedElement failed, code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+## ElementAttributeValues<sup>9+</sup>
+
+Provides attribute names and value types of a node element.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+
+### Properties
+
+| Name                  | Type                                                             | Read-Only| Optional| Description             |
+|----------------------|--------------------------------------------------------------------|------|------|-------------------|
+| accessibilityStateDescription<sup>23+</sup> | string                                      | No  | Yes  | Custom accessibility state broadcast text of an element.<br>**Model restriction**: This API can be used only in the stage model.|

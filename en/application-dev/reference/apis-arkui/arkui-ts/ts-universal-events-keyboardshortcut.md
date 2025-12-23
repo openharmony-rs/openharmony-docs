@@ -52,7 +52,7 @@ Keyboard shortcuts, as system keys, take precedence over the common key event **
 | Component focus state                              | Keyboard shortcuts respond when the window has focus, regardless of component focus.                     | –                                       |
 | Single function key shortcuts| Function keys can be used without modifier keys.| Button('button1').keyboardShortcut(FunctionKey.F2,[])                                        |
 | Empty **value** parameter in **keyboardShortcut**| The keyboard shortcut is disabled.<br>Multi-bound shortcuts cannot be unbound.| Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('',[]) |
-| Modifier key (**Ctrl**, **Shift**, **Alt**) positions| Both left and right modifier keys are recognized.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
+| Modifier key (**Ctrl**, **Shift**, or **Alt** defined in **keys** of **keyboardShortcut**) positions| Both left and right modifier keys are recognized.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
 | Character key case sensitivity in the **value** parameter of the **keyboardShortcut** API           | The response is case-insensitive.                         | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br>Button('button2').keyboardShortcut('A',[ModifierKey.CTRL]) |
 | Response to keyboard shortcuts                                  | The component responds to a keyboard shortcut when the keys specified by **keys** are pressed and the key specified by **value** triggers a down event. (Long-pressing leads to continuous response.)             | –                                       |
 | Hidden components<br>                              | The component still responds to keyboard shortcuts.                             | –                                       |
@@ -131,7 +131,7 @@ struct Index {
 
 ### Example 2: Binding and Unbinding Keyboard Shortcuts
 
-This example demonstrates how to bind and unbind shortcut keys.
+This example demonstrates how to bind and unbind keyboard shortcuts.
 
 ```ts
 @Entry

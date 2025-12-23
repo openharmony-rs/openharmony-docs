@@ -3865,15 +3865,18 @@ Defines **PathSeparatorStrategy**, a property of [Options](#options), used to sp
 
 ## ReturnStatus<sup>12+</sup>
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **System capability**: SystemCapability.BundleManager.Zlib
 
 | Name      | Value  | Description                                          |
 | ---------- | ---- | ---------------------------------------------- |
-| OK         | 0    | The API is successfully called.                                |
-| STREAM_END | 1    | The API is successfully called, indicating that the entire data has been processed.          |
-| NEED_DICT  | 2    | The API is successfully called, indicating that a preset dictionary is required to continue decompression.|
+| OK         | 0    | The API is successfully called. This API is supported for use in atomic services.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| STREAM_END | 1    | The API is successfully called, indicating that the entire data has been processed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| NEED_DICT  | 2    | The API is successfully called, indicating that a preset dictionary is required to continue decompression.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| ERRNO<sup>22+</sup>| -1 | The API fails to be called, indicating that the file operation is incorrect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| STREAM_ERROR<sup>22+</sup>| -2 | The API fails to be called, indicating that the compression or decompression stream is incorrect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| DATA_ERROR<sup>22+</sup>| -3 | The API fails to be called, indicating that the input data is incorrect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| MEM_ERROR<sup>22+</sup>| -4 | The API fails to be called, indicating that the memory allocation fails.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
+| BUF_ERROR<sup>22+</sup>| -5 | The API fails to be called, indicating that the input buffer is incorrect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 
 ## ZStream<sup>12+</sup>
 

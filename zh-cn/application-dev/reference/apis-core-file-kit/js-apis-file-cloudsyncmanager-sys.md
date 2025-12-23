@@ -45,7 +45,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -55,17 +55,17 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
-    console.info("changeAppCloudSwitch successfully");
-  }).catch((err: BusinessError) => {
-    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
+  console.info("changeAppCloudSwitch successfully");
+}).catch((err: BusinessError) => {
+  console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.changeAppCloudSwitch
 
@@ -88,7 +88,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -98,19 +98,19 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
-    if (err) {
-      console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("changeAppCloudSwitch successfully");
-    }
-  });
-  ```
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
+  if (err) {
+    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("changeAppCloudSwitch successfully");
+  }
+});
+```
 
 ## cloudSyncManager.notifyDataChange
 
@@ -137,7 +137,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -147,17 +147,17 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
-    console.info("notifyDataChange successfully");
-  }).catch((err: BusinessError) => {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError) => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.notifyDataChange
 
@@ -179,7 +179,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -189,19 +189,19 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
-    if (err) {
-      console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("notifyDataChange successfully");
-    }
-  });
-  ```
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
+  if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
 
 ## ExtraData<sup>11+</sup>
 
@@ -243,7 +243,7 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -254,17 +254,17 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
-  let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
-  cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
-    console.info("notifyDataChange successfully");
-  }).catch((err: BusinessError) => {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let userId: number = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError) => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
@@ -288,7 +288,7 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -299,19 +299,19 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
-  let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
-  cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
-    if (err) {
-      console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("notifyDataChange successfully");
-    }
-  });
-  ```
+let userId: number = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
+  if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
 
 ## cloudSyncManager.enableCloud
 
@@ -340,7 +340,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -350,20 +350,20 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let switches: Record<string, boolean> = {
-    'com.example.bundleName1': true,
-    'com.example.bundleName2': false
-  }
-  cloudSyncManager.enableCloud(accountId, switches).then(() => {
-    console.error("enableCloud successfully");
-  }).catch((err: BusinessError) => {
-    console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches).then(() => {
+  console.error("enableCloud successfully");
+}).catch((err: BusinessError) => {
+  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.enableCloud
 
@@ -387,7 +387,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -397,22 +397,22 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let switches: Record<string, boolean> = {
-    'com.example.bundleName1': true,
-    'com.example.bundleName2': false
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
+  if (err) {
+    console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("enableCloud successfully");
   }
-  cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
-    if (err) {
-      console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("enableCloud successfully");
-    }
-  });
-  ```
+});
+```
 
 ## cloudSyncManager.disableCloud
 
@@ -440,7 +440,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -450,16 +450,16 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  cloudSyncManager.disableCloud(accountId).then(() => {
-    console.info("disableCloud successfully");
-  }).catch((err: BusinessError) => {
-    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId).then(() => {
+  console.info("disableCloud successfully");
+}).catch((err: BusinessError) => {
+  console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.disableCloud
 
@@ -482,7 +482,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -492,18 +492,18 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
-    if (err) {
-      console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("disableCloud successfully");
-    }
-  });
-  ```
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
+  if (err) {
+    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("disableCloud successfully");
+  }
+});
+```
 
 ## Action
 
@@ -545,7 +545,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -555,20 +555,20 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let appActions: Record<string, cloudSyncManager.Action> = {
-    'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
-    'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
-  };
-  cloudSyncManager.clean(accountId, appActions).then(() => {
-    console.info("clean successfully");
-  }).catch((err: BusinessError) => {
-    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+let appActions: Record<string, cloudSyncManager.Action> = {
+  'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
+  'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
+};
+cloudSyncManager.clean(accountId, appActions).then(() => {
+  console.info("clean successfully");
+}).catch((err: BusinessError) => {
+  console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.clean
 
@@ -592,7 +592,7 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -602,22 +602,22 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-    let appActions: Record<string, cloudSyncManager.Action> = {
-    'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
-    'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
-  };
-  cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
-    if (err) {
-      console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("clean successfully");
-    }
-  });
-  ```
+let accountId: string = "testAccount";
+  let appActions: Record<string, cloudSyncManager.Action> = {
+  'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
+  'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
+};
+cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
+  if (err) {
+    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("clean successfully");
+  }
+});
+```
 
 ## DowngradeDownload<sup>20+</sup>
 
@@ -660,17 +660,17 @@ constructor(bundleName: string)
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName = 'com.demo.a';
-  try {
-    let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+let bundleName = 'com.demo.a';
+try {
+  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### getCloudFileInfo<sup>20+</sup>
 
@@ -704,17 +704,17 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) => {
-    console.info("cloud file info: " + JSON.stringify(fileInfo));
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) => {
+  console.info("cloud file info: " + JSON.stringify(fileInfo));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### startDownload<sup>20+</sup>
 
@@ -758,25 +758,25 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  let callback = (data: cloudSyncManager.DownloadProgress) => {
-    console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSyncManager.DownloadState.COMPLETED) {
-      console.info('Downgrade finished.');
-    } else if (data.state == cloudSyncManager.DownloadState.STOPPED) {
-      console.info(`Downgrade stopped, reason: ${data.stopReason}.`);
-    }
-  };
-  downgradeMgr.startDownload(callback).then(() => {
-    console.info("Downgrade started successfully.");
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+let callback = (data: cloudSyncManager.DownloadProgress) => {
+  console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSyncManager.DownloadState.COMPLETED) {
+    console.info('Downgrade finished.');
+  } else if (data.state == cloudSyncManager.DownloadState.STOPPED) {
+    console.info(`Downgrade stopped, reason: ${data.stopReason}.`);
+  }
+};
+downgradeMgr.startDownload(callback).then(() => {
+  console.info("Downgrade started successfully.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### stopDownload<sup>20+</sup>
 
@@ -809,28 +809,28 @@ stopDownload(): Promise&lt;void&gt;
 
 **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
-    console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-  }).then(() => {
-    console.info("Downgrade started successfully.");
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
+  console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+}).then(() => {
+  console.info("Downgrade started successfully.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+});
+
+let needStop = true;
+if (needStop) {
+  downgradeMgr.stopDownload().then(() => {
+    console.info("Downgrade stopped successfully.");
   }).catch((err: BusinessError) => {
-    console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+    console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
   });
-
-  let needStop = true;
-  if (needStop) {
-    downgradeMgr.stopDownload().then(() => {
-      console.info("Downgrade stopped successfully.");
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
-    });
-  }
-  ```
+}
+```
 
   ## LocalFilePresentStatus<sup>22+</sup>
 
@@ -885,15 +885,15 @@ stopDownload(): Promise&lt;void&gt;
 
   **示例：**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
-  cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<cloudSyncManager.LocalFilePresentStatus>) => {
-    results.forEach((item) => {
-      console.info(`bundle: ${item.bundleName}, hasLocalUncloudedFiles: ${item.isLocalFilePresent}`);
-    });
-  }).catch((err: BusinessError) => {
-    console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
+let bundles: Array<string> = ['com.example.app1', 'com.example.app2'];
+cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<cloudSyncManager.LocalFilePresentStatus>) => {
+  results.forEach((item) => {
+    console.info(`bundle: ${item.bundleName}, hasLocalUncloudedFiles: ${item.isLocalFilePresent}`);
   });
-  ```
+}).catch((err: BusinessError) => {
+  console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
+});
+```

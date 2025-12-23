@@ -103,3 +103,11 @@ pasteAndMatchStyle(): void
 > 需要配置权限：ohos.permission.READ_PASTEBOARD。
 
 **系统能力：** SystemCapability.Web.Webview.Core
+
+## requestPasswordAutoFill<sup>23+</sup>
+
+requestPasswordAutoFill(): void
+
+请求密码保险箱中的用户名或密码数据自动填充到当前获得焦点的输入框中。
+
+**系统能力：** SystemCapability.Web.Webview.Core

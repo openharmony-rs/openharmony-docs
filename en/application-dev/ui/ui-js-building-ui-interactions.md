@@ -4,27 +4,27 @@
 <!--Owner: @jiangtao92-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
-You can make the UI interactive by binding events to components. This section describes how to bind **\<div>**, **\<text>**, and **\<image>** components to click events to build a thumb up button, as shown in the following figure.
+You can make the UI interactive by binding events to components. This topic describes how to associate a click event with **\<div>**, **\<text>**, and **\<image>** components to build a like button, as shown below.
 
-![en-us_image_0000001267647901](figures/en-us_image_0000001267647901.gif)
-
-
-The thumb up button is implemented by binding a click event to a **\<div> component. The **\<div>** component contains an **\<image>** component and a **\<text>** component.
+![en-us_image_0000001064068638](figures/en-us_image_0000001064068638.gif)
 
 
-- The **\<image>** component is used to display unselected and selected (highlighted) thumbs up images. The click event function alternately updates the paths of the images that are liked and not liked.
-
-- The **\<text>** component is used to display the number of thumbs up. The number is updated in the function of the click event.
+The like button is implemented by binding a click event to a **\<div>** component, which contains an **\<image>** component and a **\<text>** component.
 
 
-The click event calls the **likeClick()** function defined in the .js file. You can change the value of **isPressed** to update the **\<image>** component. If the value of **isPressed** is **true**, the number of thumbs up is incremented by 1. The **likeClick()** function takes effect on the **\<div>** component in the .hml file. The style of each child component for the thumbs up button is set in the .css file. The following is an example:
+- The **\<image>** component displays the liked or unliked state. The click event handler toggles the image source between the liked and unliked versions.
+
+- The **\<text>** component displays the number of likes, which is updated synchronously in the click event handler.
+
+
+The click event calls the **likeClick()** function defined in the .js file. This function toggles the value of **isPressed**, which controls the image display. If the value of **isPressed** is **true**, the like count is incremented by 1. The function updates the corresponding **\<div>** component in the .hml file. The styles for the like button and its child components are defined in the .css file. Below is a complete example:
 
 
 ```html
 <!-- xxx.hml -->
-<!-- Thumb up button -->
+<!-- Like button -->
 <div>
   <div class="like" onclick="likeClick">
     <image class="like-img" src="{{likeImage}}" focusable="true"></image>
@@ -82,4 +82,4 @@ export default {
 ```
 
 
-ArkUI also provides many form components, such as switches, tags, and pickers, for you to flexibly lay out pages and improve their interactions with users. For details, see **Container Components**.
+In addition, a variety of form components, such as switches, tags, and pickers, are available to help you create flexible and engaging interactions in your layouts.

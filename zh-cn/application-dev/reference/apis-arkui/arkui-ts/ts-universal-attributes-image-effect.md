@@ -861,7 +861,7 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 ## PixelStretchEffectOptions<sup>10+</sup>
 
-像素扩展属性集合,用于描述像素扩展的信息。
+像素扩展属性集合，用于描述像素扩展的信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -869,10 +869,10 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 | 名称     | 类型                | 只读   | 可选   | 说明             |
 | ------ | ----------------- | ---- | ---- | -------------- |
-| left   | [Length](ts-types.md#length) | 否    | 是    | 组件图像左边沿像素扩展距离。 |
-| right  | [Length](ts-types.md#length) | 否    | 是    | 组件图像右边沿像素扩展距离。 |
-| top    | [Length](ts-types.md#length) | 否    | 是    | 组件图像上边沿像素扩展距离。 |
-| bottom | [Length](ts-types.md#length) | 否    | 是    | 组件图像下边沿像素扩展距离。 |
+| left   | [Length](ts-types.md#length) | 否    | 是    | 组件图像左边沿像素扩展距离。<br/>默认值：0vp |
+| right  | [Length](ts-types.md#length) | 否    | 是    | 组件图像右边沿像素扩展距离。<br/>默认值：0vp |
+| top    | [Length](ts-types.md#length) | 否    | 是    | 组件图像上边沿像素扩展距离。<br/>默认值：0vp |
+| bottom | [Length](ts-types.md#length) | 否    | 是    | 组件图像下边沿像素扩展距离。<br/>默认值：0vp |
 
 ## systemBarEffect<sup>12+</sup>
 
@@ -921,6 +921,8 @@ systemBarEffect(): T
 
 ## ShadowStyle<sup>10+</sup>枚举说明
 
+组件阴影效果。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -935,6 +937,8 @@ systemBarEffect(): T
 | OUTER_FLOATING_MD | 5 | 浮动中阴影。 |
 
 ## BlendMode<sup>11+</sup>枚举说明
+
+混合模式。
 
 >  **说明：**
 >
@@ -1187,13 +1191,14 @@ struct ImageEffectsExample {
 
 ### 示例2（设置组件线性渐变模糊效果）
 
-该示例主要演示通过linearGradientBlur设置组件的内容线性渐变模糊效果。
+该示例主要演示通过[linearGradientBlur](#lineargradientblur12)设置组件的内容线性渐变模糊效果。
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct ImageExample1 {
+  // $r('app.media.testlinearGradientBlurOrigin')需要替换为开发者所需的资源文件。
   private_resource1: Resource = $r('app.media.testlinearGradientBlurOrigin')
   @State image_src: Resource = this.private_resource1
 
@@ -1202,6 +1207,7 @@ struct ImageExample1 {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
           Image(this.image_src)
+            .blur(0) // 设置图片模糊效果为不模糊
             .linearGradientBlur(60,
               { fractionStops: [[0, 0], [0, 0.33], [1, 0.66], [1, 1]], direction: GradientDirection.Bottom })
         }
@@ -1215,7 +1221,7 @@ struct ImageExample1 {
 
 ### 示例3（设置离屏渲染效果）
 
-该示例主要演示通过renderGroup来设置组件是否先整体离屏渲染绘制后，再与父控件融合绘制。
+该示例主要演示通过[renderGroup](#rendergroup10)来设置组件是否先整体离屏渲染绘制后，再与父控件融合绘制。
 
 ```ts
 // xxx.ets
@@ -1268,7 +1274,7 @@ struct RenderGroupExample {
 
 ### 示例4（当前组件内容与下方画布内容混合）
 
-该示例主要演示通过blendMode将当前组件内容与下方画布内容混合。
+该示例主要演示通过[blendMode](#blendmode11)将当前组件内容与下方画布内容混合。
 
 ```ts
 // xxx.ets
@@ -1307,13 +1313,11 @@ struct Index {
 }
 ```
 
-<br/>BlendMode.OVERLAY,BlendApplyType.OFFSCREEN<br/>
 ![zh-cn_image_effect_blendMode2](figures/zh-cn_image_effect_blendMode.png)
-<br/>不同的混合模式搭配是否需要离屏从而产生不同的效果。
 
 ### 示例5（前景智能取反色）
 
-该示例主要通过InvertOptions来实现前景智能取反色。
+该示例主要通过[InvertOptions](#invertoptions11对象说明)来实现前景智能取反色。
 
 ```ts
 // xxx.ets
@@ -1353,7 +1357,7 @@ struct Index {
 
 ### 示例6（设置同层阴影不重叠效果）
 
-该示例主要通过useShadowBatching搭配shadow实现同层阴影不重叠效果。
+该示例主要通过[useShadowBatching](#useshadowbatching11)搭配[shadow](#shadow)实现同层阴影不重叠效果。
 
 ```ts
 // xxx.ets
@@ -1449,7 +1453,7 @@ struct UseShadowBatchingExample {
 
 ### 示例7（设置组件图像球面效果）
 
-该示例主要演示通过sphericalEffect设置组件的图像球面效果。
+该示例主要演示通过[sphericalEffect](#sphericaleffect12)设置组件的图像球面效果。
 
 ```ts
 // xxx.ets
@@ -1486,7 +1490,7 @@ struct SphericalEffectExample {
 
 ### 示例8（设置组件图像渐亮效果）
 
-该示例主要演示通过lightUpEffect设置组件的图像渐亮效果。
+该示例主要演示通过[lightUpEffect](#lightupeffect12)设置组件的图像渐亮效果。
 
 ```ts
 // xxx.ets
@@ -1522,7 +1526,7 @@ struct LightUpExample {
 
 ### 示例9（设置组件图像边缘像素扩展效果）
 
-该示例主要演示通过pixelStretchEffect设置组件的图像边缘像素扩展效果。
+该示例主要演示通过[pixelStretchEffect](#pixelstretcheffect12)设置组件的图像边缘像素扩展效果。
 
 ```ts
 // xxx.ets
@@ -1560,7 +1564,7 @@ struct PixelStretchExample {
 
 ### 示例10（系统导航条智能反色）
 
-该示例主要演示通过systemBarEffect来实现系统导航条智能反色。
+该示例主要演示通过[systemBarEffect](#systembareffect12)来实现系统导航条智能反色。
 
 ```ts
 // xxx.ets

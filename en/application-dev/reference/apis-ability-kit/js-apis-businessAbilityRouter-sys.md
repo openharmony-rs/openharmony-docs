@@ -17,7 +17,7 @@ The module provides APIs for you to query the information about routable ability
 ## Modules to Import
 
 ``` ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
+import { businessAbilityRouter } from '@kit.AbilityKit';
 ```
 
 ## Required Permissions
@@ -87,22 +87,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
-import { BusinessError } from '@ohos.base';
+import { businessAbilityRouter } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let filter: businessAbilityRouter.BusinessAbilityFilter = {businessType: businessAbilityRouter.BusinessType.SHARE};
+let filter: businessAbilityRouter.BusinessAbilityFilter = { businessType: businessAbilityRouter.BusinessType.SHARE };
 
 try {
-    businessAbilityRouter.queryBusinessAbilityInfo(filter, (error, data) => {
-        if (error) {
-            console.error('queryBusinessAbilityInfo failed ' + error.message);
-            return;
-        }
-        console.info('queryBusinessAbilityInfo success');
-    });
+  businessAbilityRouter.queryBusinessAbilityInfo(filter, (error, data) => {
+    if (error) {
+      console.error('queryBusinessAbilityInfo failed ' + error.message);
+      return;
+    }
+    console.info('queryBusinessAbilityInfo success');
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('queryBusinessAbilityInfo failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```
 
@@ -143,20 +143,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import businessAbilityRouter from '@ohos.app.businessAbilityRouter';
-import { BusinessError } from '@ohos.base';
+import { businessAbilityRouter } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let filter: businessAbilityRouter.BusinessAbilityFilter = {businessType: businessAbilityRouter.BusinessType.SHARE};
+let filter: businessAbilityRouter.BusinessAbilityFilter = { businessType: businessAbilityRouter.BusinessType.SHARE };
 
 try {
-    businessAbilityRouter.queryBusinessAbilityInfo(filter)
-        .then(() => {
-            console.info('queryBusinessAbilityInfo success');
-        }).catch((error: BusinessError) => {
-            console.error('queryBusinessAbilityInfo failed ' + error.message);
-        });
+  businessAbilityRouter.queryBusinessAbilityInfo(filter)
+    .then(() => {
+      console.info('queryBusinessAbilityInfo success');
+    }).catch((error: BusinessError) => {
+    console.error('queryBusinessAbilityInfo failed ' + error.message);
+  });
 } catch (error) {
-    let message = (error as BusinessError).message;
-    console.error('queryBusinessAbilityInfo failed ' + message);
+  let message = (error as BusinessError).message;
+  console.error('queryBusinessAbilityInfo failed ' + message);
 }
 ```

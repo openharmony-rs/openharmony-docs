@@ -26,7 +26,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 **Encryption**
 
-1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) and specify the string parameter **AES-128-WRAP** to create a **Cipher** instance whose symmetric key type is AES-128-WRAP for encryption.
+1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance whose symmetric key type is AES128-WRAP for encryption.
 
 2. Call [OH_CryptoSymCipherParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_create) to create a parameter object and call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set encryption parameters.
 
@@ -36,7 +36,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 **Decryption**
 
-1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) and specify the string parameter **AES-128-WRAP** to create a **Cipher** instance whose symmetric key type is AES-128-WRAP for decryption.
+1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) and specify the string parameter **AES128-WRAP** to create a **Cipher** instance whose symmetric key type is AES128-WRAP for decryption.
 
 2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_DECRYPT_MODE**, and specify the decryption key (**OH_CryptoSymKey**) and the decryption parameter instance (**OH_CryptoSymCipherParams**).
 
@@ -62,7 +62,7 @@ static OH_Crypto_ErrCode doTestAesWrap()
     Crypto_DataBlob decData = {.data = nullptr, .len = 0};
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
-    uint8_t iv[16] = {1, 2, 4, 12, 3, 4, 2, 3, 3, 2, 0, 4, 3, 1, 0, 10}; // The iv value here is for reference only. You can use secure random numbers to generate it.
+    uint8_t iv[8] = {1, 2, 4, 12, 3, 4, 2, 3}; // iv is generated from an array of secure random numbers.
     Crypto_DataBlob ivBlob = {.data = iv, .len = sizeof(iv)};
     // Generate a symmetric key.
     OH_Crypto_ErrCode ret;
@@ -87,7 +87,7 @@ static OH_Crypto_ErrCode doTestAesWrap()
     }
     
     // Encrypt data.
-    ret = OH_CryptoSymCipher_Create("AES-128-WRAP", &encCtx);
+    ret = OH_CryptoSymCipher_Create("AES128-WRAP", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -101,7 +101,7 @@ static OH_Crypto_ErrCode doTestAesWrap()
     }
     
     // Decrypt data.
-    ret = OH_CryptoSymCipher_Create("AES-128-WRAP", &decCtx);
+    ret = OH_CryptoSymCipher_Create("AES128-WRAP", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }

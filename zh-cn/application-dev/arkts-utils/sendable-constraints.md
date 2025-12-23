@@ -402,6 +402,7 @@ class C {
 从API version 22开始，支持在Sendable class上叠加使用除@Sendable装饰器之外的其他自定义装饰器。 
 
 通过在[工程级build-profile.json5文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app)的"buildOption"字段下的"strictMode"中增加"disableSendableCheckRules"字段，配置该能力。
+
 "disableSendableCheckRules"字段及其具体取值示例如下： 
 
 ```json5
@@ -418,7 +419,9 @@ class C {
 >
 > - "disableSendableCheckRules"字段值为包含Sendable规则的数组。
 > 
->   - 默认为空数组，即默认不支持在Sendable class上叠加使用除@Sendable之外的其他自定义装饰器。
+>   - 默认不展示，即默认不支持在Sendable class上叠加使用除@Sendable之外的其他自定义装饰器。
+>
+>   - 禁止配置为空数组。
 >   
 >   - 当数组中配置了"arkts-sendable-class-decorator"规则时，支持在Sendable class上叠加除@Sendable之外的其他自定义装饰器。
 >   
@@ -562,4 +565,25 @@ Sendable数据需要与[makeObserved](../ui/state-management/arkts-new-makeObser
 
 ## 在HAR包中的使用规则
 
-HAR中使用Sendable时，需启用编译生成TS文件的配置。具体使用请参考[编译生成TS文件](../quick-start/har-package.md#编译生成ts文件)。
+Sendable可在[HAR](../quick-start/har-package.md)包中使用。当在字节码HAR中使用Sendable时，无需进行额外配置，可直接使用。当在TS HAR中使用Sendable时，需在HAR模块下的module.json5文件中将"metadata"字段下的"name"设置为“UseTsHar”，配置如下所示。
+
+<!-- @[har_package_014](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HarPackage/library/src/main/module.json5) -->
+
+``` JSON5
+{
+  "module": {
+    "name": "library",
+    "type": "har",
+    "deviceTypes": [
+      "tablet",
+      "2in1"
+    ],
+    "metadata": [
+      {
+        "name": "UseTsHar",
+        "value": "true"
+      }
+    ]
+  }
+}
+```

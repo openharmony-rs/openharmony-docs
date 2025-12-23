@@ -565,9 +565,11 @@
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：PC/2in1
+**支持设备**：PC/2in1 | Tablet
 
 **起始版本**：20
+
+**变更信息：** API 20-22，该权限仅支持在PC/2in1设备上申请；从API 23 开始，增加支持在平板上申请。
 
 ## ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN
 
@@ -664,5 +666,19 @@
 **授权方式**：系统授权（system_grant）
 
 **支持设备**：PC/2in1
+
+**起始版本**：23
+
+## ohos.permission.GET_DONOTDISTURB_STATE
+
+允许应用获取系统的免打扰状态。
+
+获取该权限后，应用可通过接口查询系统是否处于免打扰状态。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | Tablet
 
 **起始版本**：23

@@ -1401,8 +1401,8 @@ Sets whether to allow a new window to automatically open through JavaScript.
 
 **Example**
 
-  ```ts
-  // xxx.ets
+```ts
+// xxx.ets
 import { webview } from '@kit.ArkWeb';
 
 // There are two Web components on the same page. When the WebComponent object opens a new window, the NewWebViewComp object is displayed.
@@ -1462,7 +1462,7 @@ struct WebComponent {
         }
     }
 }
-  ```
+```
 **Example of the HTML file**
 
 ```html
@@ -3119,7 +3119,7 @@ struct SelectionMenuLongPress {
     </div>
 
     <div class="context">
-        <a href="https://www.example.com">Touch and hold the link to display the menu</a>
+        <a  href="https://www.example.com">Touch and hold the link to display the menu</a>
     </div>
 
     <div class="context">
@@ -3925,6 +3925,72 @@ Sets whether to enable AI analyzer for web images. Currently, the image text rec
       <img src="example.jpg" alt="Image to be analyzed by AI">
     </div>
   </body>
+  </html>
+  ```
+
+## enableAutoFill<sup>23+</sup>
+
+enableAutoFill(value: boolean)
+
+Sets whether to enable web page autofill. By default, this feature is enabled.
+
+<!--RP1-->
+> **NOTE**
+>
+> The autofill feature of this API depends on SmartFill service and Password Autofill Service.
+<!--RP1End-->
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                             |
+| ------ | ------- | ---- | --------------------------------- |
+| value  | boolean | Yes  | Whether to enable autofill for web pages. The value **true** means to enable autofill, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the value is **true**.|
+
+**Example**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .enableAutoFill(true)
+      }
+    }
+  }
+  ```
+
+  HTML file to be loaded:
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
+      <title>Autofill test</title>
+    </head>
+    <body>
+      <h4 align="center">Autofill test</h4>
+      <form method="post" action="">
+        <div align="center">
+          <label for="name" style="width: 120px; display: inline-block; text-align: end;">Name:</label>
+          <input type="text" id="name" autocomplete="name"/><br/><br/>
+          <label for="tel-national" style="width: 120px; display: inline-block; text-align: end;">Mobile number:</label>
+          <input type="text" id="tel-national" autocomplete="tel-national"/><br/><br/>
+        </div>
+        <div align="center">
+          <button type="submit" style="width: 80px">Submit</button>
+        </div>
+      </form>
+    </body>
   </html>
   ```
 

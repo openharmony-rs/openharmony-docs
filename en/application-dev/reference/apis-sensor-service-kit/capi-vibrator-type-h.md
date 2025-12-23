@@ -40,7 +40,7 @@ Defines the structs for the vibrator attribute and vibrator file description and
 
 ### Vibrator_ErrorCode
 
-```
+```c
 enum Vibrator_ErrorCode
 ```
 
@@ -59,7 +59,7 @@ Enumerates the vibrator error codes.
 
 ### Vibrator_Usage
 
-```
+```c
 enum Vibrator_Usage
 ```
 

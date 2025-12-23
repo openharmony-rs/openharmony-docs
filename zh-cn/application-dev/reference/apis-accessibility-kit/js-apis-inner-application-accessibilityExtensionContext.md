@@ -33,7 +33,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 节点元素具备的属性名称及属性值类型信息。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### 属性
 
@@ -102,7 +102,7 @@ type FocusDirection = 'up' | 'down' | 'left' | 'right' | 'forward' | 'backward'
 
 表示查询下一焦点元素的方向。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型       | 说明      |
 | -------- | ------- |
@@ -119,7 +119,7 @@ type FocusType = 'accessibility' | 'normal'
 
 表示查询焦点元素的类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型            | 说明          |
 | ------------- | ----------- |
@@ -130,7 +130,7 @@ type FocusType = 'accessibility' | 'normal'
 
 表示矩形区域。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 名称     | 类型     | 只读   | 可选   | 说明        |
 | ------ | ------ | ---- | ---- | --------- |
@@ -145,7 +145,7 @@ type WindowType = 'application' | 'system'
 
 表示窗口的类型。
 
-**系统能力**：以下各项对应的系统能力均为 SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 | 类型          | 说明        |
 | ----------- | --------- |
@@ -160,7 +160,7 @@ setTargetBundleName(targetNames: Array\<string>): Promise\<void>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -205,7 +205,7 @@ setTargetBundleName(targetNames: Array\<string>, callback: AsyncCallback\<void>)
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -251,7 +251,7 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise\<AccessibilityElement>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -299,7 +299,7 @@ getFocusElement(callback: AsyncCallback\<AccessibilityElement>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -344,7 +344,7 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback\<Accessib
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -391,7 +391,7 @@ getWindowRootElement(windowId?: number): Promise\<AccessibilityElement>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -440,7 +440,7 @@ getWindowRootElement(callback: AsyncCallback\<AccessibilityElement>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -485,7 +485,7 @@ getWindowRootElement(windowId: number, callback: AsyncCallback\<AccessibilityEle
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -532,7 +532,7 @@ getWindows(displayId?: number): Promise\<Array\<AccessibilityElement>>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -578,7 +578,7 @@ getWindows(callback: AsyncCallback\<Array\<AccessibilityElement>>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -620,7 +620,7 @@ getWindows(displayId: number, callback: AsyncCallback\<Array\<AccessibilityEleme
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -662,7 +662,7 @@ injectGesture(gesturePath: GesturePath): Promise\<void>;
 
 > **说明：**
 >
-> 从API version 10开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
 
 注入手势，使用Promise异步回调。
 
@@ -713,7 +713,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> 从API version 10开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated)替代。
 
 注入手势，使用callback异步回调。
 
@@ -762,7 +762,7 @@ injectGestureSync(gesturePath: GesturePath): void
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 10开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -798,7 +798,7 @@ axContext.injectGestureSync(gesturePath);
 
 无障碍节点元素, 在调用AccessibilityElement的方法前，需要先通过[AccessibilityExtensionContext.getFocusElement() ](#accessibilityextensioncontextgetfocuselementdeprecated)或者[AccessibilityExtensionContext.getWindowRootElement() ](#accessibilityextensioncontextgetwindowrootelementdeprecated)获取AccessibilityElement实例。
 
-**系统能力**：以下各项对应的系统能力均为SystemCapability.BarrierFree.Accessibility.Core
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
 ### attributeNames<sup>(deprecated)</sup>
 
@@ -808,7 +808,7 @@ attributeNames\<T extends keyof ElementAttributeValues>() : Promise\<Array\<T>>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -840,7 +840,7 @@ attributeNames\<T extends keyof ElementAttributeValues>(callback: AsyncCallback\
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -874,7 +874,7 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T): Promi
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -926,7 +926,7 @@ attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T,
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -972,7 +972,7 @@ actionNames(): Promise\<Array\<string>>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1003,7 +1003,7 @@ actionNames(callback: AsyncCallback\<Array\<string>>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1034,7 +1034,7 @@ performAction(actionName: string, parameters?: object): Promise\<void>;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1129,7 +1129,7 @@ performAction(actionName: string, callback: AsyncCallback\<void>): void;
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1174,7 +1174,7 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback\<v
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1221,7 +1221,7 @@ findElement(type: 'content', condition: string): Promise\<Array\<AccessibilityEl
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1269,7 +1269,7 @@ findElement(type: 'content', condition: string, callback: AsyncCallback\<Array\<
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1314,7 +1314,7 @@ findElement(type: 'focusType', condition: FocusType): Promise\<AccessibilityElem
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1363,7 +1363,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback\<Ac
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1409,7 +1409,7 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise\<Accessi
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1458,7 +1458,7 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 
 > **说明：**
 >
-> 从API version 12开始废弃。系统不再开放相关能力。
+> 从API version 9开始支持，从API version 12开始废弃，系统不再开放相关能力。
 
 **系统能力**：SystemCapability.BarrierFree.Accessibility.Core
 

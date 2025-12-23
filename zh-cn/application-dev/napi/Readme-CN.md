@@ -115,6 +115,7 @@
         - [JSVM通用调优实践](jsvm-optimizations.md)
     - JSVM性能调试指导<!--jsvm-performance-->
       - [使用HiSmartPerf采集V8 trace](use-jsvm-about-v8-trace.md)
+      - [使用DevTools进行网页内存分析](use-jsvm-about-analyze-memory-usage.md)
   - Longque-JS-API<!--longque-->
     - [Longque-JS-API使用指导](use-longque-js-api.md)
   - OpenMP支持<!--openmp-->
@@ -123,7 +124,7 @@
   - 资源管理<!--resource-management-->
     - [Rawfile开发指导](rawfile-guidelines.md)
   - 线程调度<!--thread-scheduling-->
-    - [QOS开发指导](qos-guidelines.md)
+    - [QoS开发指导](qos-guidelines.md)
     - [格物开发指导](gewu-ndk-api-guidelines.md)
   - 内存管理<!--memory-management-->
     - [Purgeable memory开发指导](purgeable-memory-guidelines.md)

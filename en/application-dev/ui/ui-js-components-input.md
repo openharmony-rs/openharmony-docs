@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -109,15 +109,13 @@ export default {
 
 
 > **NOTE**
-> - For wearables, the input type can only be **button**, **radio**, or **checkbox**.
 >
 > - The settings of **checked** take effect only when the input type is set to **checkbox** or **radio**. The default value of **checked** is **false**.
 
 
-## Event Binding
+## Binding Events
 
   Add the **search** and **translate** events to the **&lt;input&gt;** component.
-
 ```html
 <!-- xxx.hml -->
 <div class="content">

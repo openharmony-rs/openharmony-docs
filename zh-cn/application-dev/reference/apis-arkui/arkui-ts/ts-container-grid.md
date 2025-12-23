@@ -864,9 +864,9 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 
 网格滑动时触发。
 
-从API version 10开始使用。
-
-从API version 12开始废弃不再使用，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
+> **说明：**
+>
+> 从API version 10开始支持，从API version 12开始废弃，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2055,9 +2055,11 @@ struct GridExample {
 
 ![edgeEffect_grid](figures/gridFocus.gif)
 
-### 示例13（滚动事件）
+### 示例13（设置滚动事件）
 
-从API version 19开始，新增[UIGridEvent](#uigridevent19)中的滚动事件的使用。
+该示例通过FrameNode中的[getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19)获取[UIGridEvent](#uigridevent19)，并为Grid设置滚动事件回调，用于事件监听方因无法直接修改页面代码而无法使用声明式接口设置回调的场景。
+
+从API version 19开始，新增UIGridEvent接口。
 
 ```ts
 import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
@@ -2916,6 +2918,7 @@ GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件
 
 ```ts
 import { GridDataSource } from './GridDataSource';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -2942,10 +2945,16 @@ struct GridExample {
         // 点击按钮来调用contentSize函数获取内容尺寸
         Button('GetContentSize')
           .onClick(() => {
-            // 通过调用contentSize函数获取内容尺寸的宽度值
-            this.contentWidth = this.scroller.contentSize().width;
-            // 通过调用contentSize函数获取内容尺寸的高度值
-            this.contentHeight = this.scroller.contentSize().height;
+            // Scroller未绑定组件时会抛异常，需要加上try catch保护
+            try {
+              // 通过调用contentSize函数获取内容尺寸的宽度值
+              this.contentWidth = this.scroller.contentSize().width;
+              // 通过调用contentSize函数获取内容尺寸的高度值
+              this.contentHeight = this.scroller.contentSize().height;
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            }
           })
         // 将获取到的内容尺寸信息通过文本进行呈现
         Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)

@@ -23,6 +23,8 @@
         - [明文导入密钥(C/C++)](huks-import-key-in-plaintext-ndk.md)
         - [加密导入密钥(ArkTS)](huks-import-wrapped-key-arkts.md)
         - [加密导入密钥(C/C++)](huks-import-wrapped-key-ndk.md)
+        - [数字信封导入密钥(ArkTS)](huks-import-envelop-key-arkts.md)
+        - [数字信封导入密钥(C/C++)](huks-import-envelop-key-ndk.md)
   - 密钥使用<!--huks-key-use-->
     - [密钥使用介绍及通用流程](huks-key-use-overview.md)
     - 加密/解密<!--huks-encryption-decryption-->
@@ -55,6 +57,7 @@
       - 开发指导<!--huks-hmac-dev-->
         - [HMAC(ArkTS)](huks-hmac-arkts.md)
         - [HMAC(C/C++)](huks-hmac-ndk.md)
+    <!--RP1--><!--RP1End-->
   - 密钥删除<!--huks-delete-key-->
     - [密钥删除(ArkTS)](huks-delete-key-arkts.md)
     - [密钥删除(C/C++)](huks-delete-key-ndk.md)
@@ -85,6 +88,7 @@
       - 开发指导<!--huks-group-key-dev-->
         - [群组密钥(ArkTS)](huks-group-key-arkts.md)
         - [群组密钥(C/C++)](huks-group-key-ndk.md)
+    <!--RP2--><!--RP2End-->
     <!--Del-->
     - [指定用户身份操作(仅对系统应用开放)](huks-as-user-sys.md)
     <!--DelEnd-->
@@ -115,8 +119,8 @@
   - 通用操作<!--huks-ukey-general-operation-->
     - [通用查询介绍及规格](huks-ukey-general-query-overview.md)
     - 开发指导<!--huks-ukey-general-query-dev-->
+      - [通用查询(ArkTS)](huks-ukey-general-query-arkts.md)
       - [通用查询(C/C++)](huks-ukey-general-query-ndk.md)
   - 驱动HAP ExtensionAbility适配指导<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility扩展能力介绍](huks-extension-ability-support-overview.md)
-    - 开发指导<!--huks-extension-ability-support-dev-->
-      - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)
+    - [CryptoExtensionAbility适配开发指导](huks-extension-ability-support-dev.md)

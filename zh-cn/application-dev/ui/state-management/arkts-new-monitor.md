@@ -1,4 +1,4 @@
-# \@Monitor装饰器：状态变量修改监听
+# \@Monitor装饰器：状态变量修改异步监听
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -16,6 +16,8 @@
 > \@Monitor装饰器从API version 12开始支持。
 >
 > 从API version 12开始，该装饰器支持在原子化服务中使用。
+>
+> 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
@@ -1281,7 +1283,7 @@ struct Index {
 
 上面的代码中，当点击按钮同时更改状态变量age和非状态变量name时，会输出以下日志：
 
-```
+```text
 property path:age change from 24 to 25
 property path:name change from John to Johny
 ```

@@ -49,7 +49,7 @@ The file declares the APIs used to obtain image data from the native layer.
 
 ### OH_Image_Receiver_On_Callback()
 
-```
+```c
 typedef void (*OH_Image_Receiver_On_Callback)(void)
 ```
 
@@ -61,7 +61,7 @@ Defines the callbacks for the image receiver at the native layer.
 
 ### OH_Image_Receiver_CreateImageReceiver()
 
-```
+```c
 int32_t OH_Image_Receiver_CreateImageReceiver(napi_env env, struct OhosImageReceiverInfo info, napi_value* res)
 ```
 
@@ -88,7 +88,7 @@ Creates an ImageReceiver object at the application layer.
 
 ### OH_Image_Receiver_InitImageReceiverNative()
 
-```
+```c
 ImageReceiverNative* OH_Image_Receiver_InitImageReceiverNative(napi_env env, napi_value source)
 ```
 
@@ -118,7 +118,7 @@ Initializes an [ImageReceiverNative](capi-image-imagereceivernative-.md) object 
 
 ### OH_Image_Receiver_GetReceivingSurfaceId()
 
-```
+```c
 int32_t OH_Image_Receiver_GetReceivingSurfaceId(const ImageReceiverNative* native, char* id, size_t len)
 ```
 
@@ -145,7 +145,7 @@ Obtains the receiver ID through an [ImageReceiverNative](capi-image-imagereceive
 
 ### OH_Image_Receiver_ReadLatestImage()
 
-```
+```c
 int32_t OH_Image_Receiver_ReadLatestImage(const ImageReceiverNative* native, napi_value* image)
 ```
 
@@ -173,7 +173,7 @@ This function can be called to receive data only after the [OH_Image_Receiver_On
 
 ### OH_Image_Receiver_ReadNextImage()
 
-```
+```c
 int32_t OH_Image_Receiver_ReadNextImage(const ImageReceiverNative* native, napi_value* image)
 ```
 
@@ -201,7 +201,7 @@ This function can be called to receive data only after the [OH_Image_Receiver_On
 
 ### OH_Image_Receiver_On()
 
-```
+```c
 int32_t OH_Image_Receiver_On(const ImageReceiverNative* native, OH_Image_Receiver_On_Callback callback)
 ```
 
@@ -228,7 +228,7 @@ Registers an [OH_Image_Receiver_On_Callback](#oh_image_receiver_on_callback) cal
 ### OH_Image_Receiver_GetSize()
 
 
-```
+```c
 int32_t OH_Image_Receiver_GetSize(const ImageReceiverNative* native, struct OhosImageSize* size)
 ```
 
@@ -254,7 +254,7 @@ Obtains the size of the image receiver through an [ImageReceiverNative](capi-ima
 
 ### OH_Image_Receiver_GetCapacity()
 
-```
+```c
 int32_t OH_Image_Receiver_GetCapacity(const ImageReceiverNative* native, int32_t* capacity)
 ```
 
@@ -280,7 +280,7 @@ Obtains the capacity of the image receiver through an [ImageReceiverNative](capi
 
 ### OH_Image_Receiver_GetFormat()
 
-```
+```c
 int32_t OH_Image_Receiver_GetFormat(const ImageReceiverNative* native, int32_t* format)
 ```
 
@@ -306,7 +306,7 @@ Obtains the format of the image receiver through an [ImageReceiverNative](capi-i
 
 ### OH_Image_Receiver_Release()
 
-```
+```c
 int32_t OH_Image_Receiver_Release(ImageReceiverNative* native)
 ```
 
