@@ -5355,3 +5355,18 @@ Allows an application to dynamically register or remove custom UTD data types.
 **Supported devices**: general devices
 
 **Since**: 22
+
+
+## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
+
+Allow the system application to use the media shared resources in the camera_service process
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：20
