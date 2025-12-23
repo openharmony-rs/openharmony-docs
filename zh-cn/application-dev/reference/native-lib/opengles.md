@@ -316,6 +316,7 @@ EGLBoolean eglInitialize(EGLDisplay display,    // 指定EGL显示连接
 ### 使用eglChooseConfig确定渲染配置
 EGL初始化成功之后，需要确定可用渲染表面的类型和配置，目前支持两种方法：
 - 可以指定一组需要的配置，使用eglChooseConfig使EGL推荐最佳配置。
+
   当没有特殊配置需求时建议使用此种方法，因为这样更容易获得最佳配置。
 
   ```cpp
