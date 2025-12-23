@@ -1,4 +1,4 @@
-# AtomicServiceMenuBar
+# AtomicServiceMenuBar (系统接口)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -7,7 +7,7 @@
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
-依赖当前元服务的上下文，创建AtomicServiceMenuBar对象，用于操控元服务右上角菜单功能胶囊的显示与隐藏。
+依赖当前元服务的上下文，创建AtomicServiceMenuBar对象，用于操控右上角菜单功能胶囊的显示与隐藏。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ import { AtomicServiceMenuBar } from '@kit.ArkUI';
 
 ## AtomicServiceMenuBar
 
-使用当前元服务的上下文信息创建的对象，利用其定义的接口可以实现对当前元服务菜单功能胶囊的状态进行操控。使用示例参见[示例](#示例)。
+使用当前元服务的UI上下文信息创建的对象，通过定义的接口操控当前元服务菜单功能胶囊的状态。示例参见[示例](#示例)。
 
 ### constructor
 
@@ -39,11 +39,11 @@ AtomicServiceMenuBar的构造函数。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
@@ -59,11 +59,11 @@ setVisible(visible: boolean): void
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数名   | 类型                            | 必填   |  说明         |
 | ---- | ----------------------------- | ---- | -------------------- |
@@ -101,10 +101,10 @@ struct Index {
 
   build() {
     Column() {
-      this.EmbedCompLauncherShow('显示menubar', '点击后menubar显示', () => {
+      this.EmbedCompLauncherShow('显示菜单功能胶囊', '点击后菜单功能胶囊显示', () => {
         new AtomicServiceMenuBar(this.getUIContext()).setVisible(true);
       });
-      this.EmbedCompLauncherShow('隐藏menubar', '点击后menubar消失', () => {
+      this.EmbedCompLauncherShow('隐藏菜单功能胶囊', '点击后菜单功能胶囊消失', () => {
         new AtomicServiceMenuBar(this.getUIContext()).setVisible(false);
       });
     }
@@ -114,10 +114,10 @@ struct Index {
   }
 }
 ```
-点击“隐藏menubar”按钮后，菜单功能胶囊隐藏。
+点击“隐藏菜单功能胶囊”按钮后，菜单功能胶囊隐藏。
 
 <img src="figures/AtomicServiceMenuBarDemo01.png" alt="AtomicServiceMenuBarDemo02" width="300">
 
-点击“显示menubar”按钮后，菜单功能胶囊显示。
+点击“显示菜单功能胶囊”按钮后，菜单功能胶囊显示。
 
 <img src="figures/AtomicServiceMenuBarDemo02.png" alt="AtomicServiceMenuBarDemo02" width="300">

@@ -422,9 +422,6 @@
   - Themes<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
   - AtomicService<!--atomic-services-->
-    <!--Del-->
-    - [AtomicServiceMenuBar](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar-sys.md)
-    <!--DelEnd-->
     - [AtomicServiceNavigation](arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md)
     - [AtomicServiceSearch](arkui-ts/ohos-atomicservice-AtomicServiceSearch.md)
     - [AtomicServiceTabs](arkui-ts/ohos-atomicservice-AtomicServiceTabs.md)
@@ -432,6 +429,7 @@
     - [InterstitialDialogAction](arkui-ts/ohos-atomicservice-InterstitialDialogAction.md)
     - [HalfScreenLaunchComponent](arkui-ts/ohos-atomicservice-HalfScreenLaunchComponent.md)
     <!--Del-->
+    - [AtomicServiceMenuBar (System API)](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar-sys.md)
     - [InnerFullScreenLaunchComponent (System API)](arkui-ts/ohos-arkui-advanced-InnerFullScreenLaunchComponent-sys.md)
     <!--DelEnd-->
     - [NavPushPathHelper](arkui-ts/ohos-atomicservice-NavPushPathHelper.md)
