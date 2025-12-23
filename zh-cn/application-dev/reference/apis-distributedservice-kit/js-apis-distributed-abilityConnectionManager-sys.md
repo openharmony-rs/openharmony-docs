@@ -84,7 +84,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -122,7 +122,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -158,7 +158,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -270,8 +270,8 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300001      | Only one stream can be created for the current session.|
 | 32300003      | Bitrate not supported.|
 | 32300004      | Color space not supported.|
@@ -299,7 +299,7 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 ## abilityConnectionManager.setSurfaceId
 
-setSurfaceId(sessionId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
+setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
 设置传输流与Surface的绑定关系。
 
@@ -311,7 +311,7 @@ setSurfaceId(sessionId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nb
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 | surfaceId | string | 是    | 表示Surface的唯一标识符。 |
 | param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
 
@@ -321,8 +321,8 @@ setSurfaceId(sessionId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nb
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -372,8 +372,8 @@ getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -416,8 +416,8 @@ updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -460,8 +460,8 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API.|
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -496,8 +496,8 @@ startStream(sessionId:&nbsp;number):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300002      | The stream at the receive end is not started. |
 
 **示例：**
@@ -533,8 +533,8 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 202      | Not system App.|
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
