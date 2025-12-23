@@ -219,9 +219,9 @@ import { display } from '@kit.ArkUI';
 | sdrNits                     | number    | 是  | 否   | 屏幕的亮度，该参数为大于0的浮点数。默认值为500.0。|
 
 ## BrightnessCallback<sup>22+</sup>
-监听屏幕亮度信息时使用的回调函数类型。
-
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
+
+监听屏幕亮度信息时使用的回调函数类型。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
