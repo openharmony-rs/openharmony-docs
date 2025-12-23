@@ -422,7 +422,9 @@
   - Themes<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
   - AtomicService<!--atomic-services-->
-    - [AtomicServiceMenuBar](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar.md)
+    <!--Del-->
+    - [AtomicServiceMenuBar](arkui-ts/ohos-atomicservice-AtomicServiceMenuBar-sys.md)
+    <!--DelEnd-->
     - [AtomicServiceNavigation](arkui-ts/ohos-atomicservice-AtomicServiceNavigation.md)
     - [AtomicServiceSearch](arkui-ts/ohos-atomicservice-AtomicServiceSearch.md)
     - [AtomicServiceTabs](arkui-ts/ohos-atomicservice-AtomicServiceTabs.md)

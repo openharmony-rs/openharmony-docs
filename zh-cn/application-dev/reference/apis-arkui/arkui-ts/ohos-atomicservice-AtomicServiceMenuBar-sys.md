@@ -7,7 +7,7 @@
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
-依赖当前元服务的上下文，创建AtomicServiceMenuBar对象，用于操控元服务menubar的行为，包括menubar的显示、隐藏。
+依赖当前元服务的上下文，创建AtomicServiceMenuBar对象，用于操控元服务右上角菜单功能胶囊的行为，包括菜单功能胶囊的显示、隐藏。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ import { AtomicServiceMenuBar } from '@kit.ArkUI';
 
 ## AtomicServiceMenuBar
 
-使用当前元服务的上下文信息创建的对象，利用其定义的接口可以实现对当前元服务menubar的状态进行操控。使用示例参见[示例](#示例)。
+使用当前元服务的上下文信息创建的对象，利用其定义的接口可以实现对当前元服务菜单功能胶囊的状态进行操控。使用示例参见[示例](#示例)。
 
 ### constructor
 
@@ -41,6 +41,10 @@ AtomicServiceMenuBar的构造函数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
 **参数：**
 
 | 参数名   | 类型                            | 必填   |  说明         |
@@ -49,13 +53,21 @@ AtomicServiceMenuBar的构造函数。
 
 ### setVisible
 
-setVisible(visible: boolean): void;
+setVisible(visible: boolean): void
 
-设置当前元服务menubar的显隐状态，false表示隐藏menubar，true表示显示menubar。
+设置当前元服务菜单功能胶囊的显隐状态。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
 
 | 参数名   | 类型                            | 必填   |  说明         |
 | ---- | ----------------------------- | ---- | -------------------- |
-| visible | boolean | 是 | menubar预期的状态。true表示希望menubar正常显示，false表示希望menubar隐藏。 |
+| visible | boolean | 是 | 菜单功能胶囊预期的状态。true表示显示菜单功能胶囊，false表示隐藏菜单功能胶囊。 |
 
 
 ## 示例
@@ -104,8 +116,8 @@ struct Index {
 ```
 点击“隐藏menubar”按钮后，menubar消失。
 
-<img src="figures/AtomicServiceMenuBarDemo01.png" alt="AtomicServiceMenuBarDemo02" width="60%">
+<img src="figures/AtomicServiceMenuBarDemo01.png" alt="AtomicServiceMenuBarDemo02" width="300">
 
 点击“显示menubar”按钮后，menubar出现。
 
-<img src="figures/AtomicServiceMenuBarDemo02.png" alt="AtomicServiceMenuBarDemo02" width="60%">
+<img src="figures/AtomicServiceMenuBarDemo02.png" alt="AtomicServiceMenuBarDemo02" width="300">
