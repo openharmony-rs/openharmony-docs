@@ -749,7 +749,7 @@ HSP/HAP模块module.json文件中minAPIVersion小于21，且deduplicateHar的值
 
 打包HSP/HAP时，如果deduplicateHar的属性值为true时，则要求minAPIVersion大于等于21。
 
-### 10013001 解析module.json/config.json文件异常
+### 10013001 解析module.json或config.json文件异常
 **错误信息**
 
 Parse json object exception.
