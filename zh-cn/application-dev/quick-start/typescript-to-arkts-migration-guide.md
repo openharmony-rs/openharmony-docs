@@ -663,6 +663,7 @@ class C {
 **错误码：10605022**
 
 ArkTS不支持条件类型别名，建议引入带显式约束的新类型，或使用`Object`进行逻辑重构。
+
 不支持`infer`关键字。
 
 **TypeScript**
@@ -788,7 +789,9 @@ ArkTS不支持索引访问类型。
 **错误码：10605029**
 
 ArkTS不支持动态声明字段，不支持动态访问字段。只能访问已在类中声明或者继承可见的字段，访问其他字段将会造成编译时错误。
+
 使用点操作符访问字段，例如（`obj.field`），不支持索引访问（`obj['field']`）。
+
 ArkTS支持通过索引访问`TypedArray`（例如`Int32Array`）中的元素。
 
 **TypeScript**
@@ -971,6 +974,7 @@ foo(new Y());
 **错误码：10605034**
 
 如果可以从传递给泛型函数的参数中推断出具体类型，ArkTS允许省略泛型类型实参。否则，省略泛型类型实参会发生编译时错误。
+
 禁止仅基于泛型函数返回类型推断泛型类型参数。
 
 **TypeScript**
@@ -1362,6 +1366,7 @@ class C1 implements C {
 **错误码：10605052**
 
 ArkTS不支持修改对象的方法。在静态语言中，对象布局固定，类的所有实例共享同一个方法。
+
 若需为特定对象添加方法，可封装函数或采用继承机制。
 
 **TypeScript**
@@ -3087,9 +3092,13 @@ ArkTS不允许使用TypeScript或JavaScript标准库中的某些接口。大部�
 **错误码：10605999**
 
 在编译阶段，会进行TypeScript严格模式的类型检查，包括：
+
 `noImplicitReturns`, 
+
 `strictFunctionTypes`, 
+
 `strictNullChecks`, 
+
 `strictPropertyInitialization`。
 
 **TypeScript**
@@ -3273,7 +3282,9 @@ import('module2').then(() => {}).catch(() => {})  // 动态import
 **错误码：10605151**
 
 为了防止动态对象（来自.ts/.js文件）在静态代码（.ets文件）中的滥用，`ESObject`类型在ArkTS中的使用是受限的。
+
 在API版本18以前，唯一允许使用`ESObject`类型的场景是局部变量的声明。`ESObject`类型变量只能被跨语言调用的对象赋值，例如：`ESObject`、`any`、`unknown`、匿名类型等。禁止使用在.ets文件中定义的静态类型值初始化`ESObject`类型变量。`ESObject`类型变量只能用于跨语言调用的函数或赋值给另一个`ESObject`类型变量。
+
 从API版本18开始，`ESObject`类型不再支持赋值对象字面量类型。`ESObject`类型支持在动态导入场景中作为类型标注，以及用于属性访问（点操作符和[]访问）、调用表达式和new表达式。
 
 **ArkTS**
