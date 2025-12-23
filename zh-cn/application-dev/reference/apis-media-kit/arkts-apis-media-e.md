@@ -55,7 +55,7 @@
 
 | 名称           | 值                    | 说明                 |
 | -------------- | --------------------- | ------------------- |
-| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。 
+| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API：** 从API version 20 开始，该接口支持在原子化服务中使用。           |
 | MEDIA_TYPE_AUD | 0                     | 表示音频。 <br> **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。           |
 | MEDIA_TYPE_VID | 1                     | 表示视频。  <br> **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。          |
 | MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | 表示字幕。 <br> **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。 |
