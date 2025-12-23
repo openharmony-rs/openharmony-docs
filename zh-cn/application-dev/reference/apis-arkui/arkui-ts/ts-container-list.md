@@ -2200,6 +2200,9 @@ struct ForEachSort {
 
 从API version 22开始，该示例展示了List组件支持基于断点配置lanes效果。
 
+ListDataSource说明及完整代码参考[示例1添加滚动事件](#示例1添加滚动事件)。
+
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';

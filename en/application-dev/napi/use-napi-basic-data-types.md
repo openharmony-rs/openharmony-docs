@@ -39,6 +39,8 @@ The following table lists the APIs provided by the Node-API module for convertin
 | [napi_create_string_utf8](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf8) | Creates an ArkTS string from a C UTF-8-encoded string.|
 | [napi_create_string_utf16](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf16) | Creates an ArkTS string from a C UTF-16-encoded string.|
 | [napi_create_string_latin1](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_latin1) | Creates an ArkTS string from a C ISO-8859-1-encoded string.|
+| [napi_create_external_string_ascii](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_ascii) | Creates an ArkTS string from a C ASCII-encoded string without copying.|
+| [napi_create_external_string_utf16](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_utf16) | Creates an ArkTS string from a C UTF16-encoded string without copying.|
 
 ## Example
 
@@ -256,6 +258,7 @@ ArkTS code:
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
+
 // If a number is passed in, the number will be returned.
 hilog.info(0x0000, 'Node-API', 'get_value_double_number %{public}d', testNapi.getDouble(80.885));
 // If a non-number is passed in, undefined will be returned.
