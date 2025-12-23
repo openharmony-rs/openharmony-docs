@@ -10507,7 +10507,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/FrameNode/entry/src/main/ets/pages/framenode/FrameNodeTree.ets",
 				"functions":[
 					{
-						"end_line":312,
+						"end_line":306,
 						"name":"frameNodeTree_start",
 						"start_line":16
 					}
@@ -10722,7 +10722,7 @@
 						"start_line":34
 					},
 					{
-						"end_line":68,
+						"end_line":67,
 						"name":"set_gestures",
 						"start_line":50
 					},
@@ -10737,7 +10737,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets",
 				"functions":[
 					{
-						"end_line":81,
+						"end_line":78,
 						"name":"custom_gestures",
 						"start_line":15
 					}
@@ -15176,22 +15176,22 @@
 						"start_line":49
 					},
 					{
-						"end_line":70,
+						"end_line":71,
 						"name":"accessibility_description_start",
 						"start_line":59
 					},
 					{
-						"end_line":83,
+						"end_line":85,
 						"name":"accessibility_checked_start",
-						"start_line":71
+						"start_line":72
 					},
 					{
-						"end_line":96,
+						"end_line":99,
 						"name":"accessibility_selected_start",
-						"start_line":84
+						"start_line":86
 					},
 					{
-						"end_line":128,
+						"end_line":132,
 						"name":"accessibility_text_start",
 						"start_line":16
 					}
