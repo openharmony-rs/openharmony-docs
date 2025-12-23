@@ -114,6 +114,10 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                              | 只读 | 可选 | 说明                                                         |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | uri          | string         | 否  | 否  | 表示证书的唯一标识符，最大长度为256字节。 |
@@ -343,7 +347,9 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004 | The number of certificates or credentials reaches the maximum allowed. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -366,7 +372,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -430,7 +436,9 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 17500003 | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004 | The number of certificates or credentials reaches the maximum allowed. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -453,7 +461,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -517,7 +525,9 @@ installPrivateCertificate(keystore: Uint8Array, keystorePwd: string, certAlias: 
 | 17500003               | The keystore is in an invalid format or the keystore password is incorrect. |
 | 17500004               | The number of certificates or credentials reaches the maximum allowed. |
 
-**ArkTS-Dyn示例：**
+****示例**:
+
+ArkTS-Dyn示例：**
 
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -599,7 +609,9 @@ getPrivateCertificate(keyUri: string, callback: AsyncCallback\<CMResult>): void
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -622,7 +634,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -683,7 +695,9 @@ getPrivateCertificate(keyUri: string): Promise\<CMResult>
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -705,7 +719,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -759,7 +773,9 @@ uninstallPrivateCertificate(keyUri: string, callback: AsyncCallback\<void>): voi
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -777,7 +793,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -833,7 +849,9 @@ uninstallPrivateCertificate(keyUri: string): Promise\<void>
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -850,7 +868,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -907,7 +925,9 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope) : CMRe
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed.                                                                          |
 | 17500007               | Indicates that the device enters advanced security mode. In this mode, the user CA certificate cannot be installed.                             |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 
 ```ts
 import {certificateManager} from '@kit.DeviceCertificateKit';
@@ -930,7 +950,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```ts
 import {certificateManager} from '@kit.DeviceCertificateKit';
@@ -985,7 +1005,9 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
 | 17500002               | Indicates that the certificate does not exist.                                                                                                  |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 
 ```ts
 import {certificateManager} from '@kit.DeviceCertificateKit';
@@ -998,7 +1020,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```ts
 import {certificateManager} from '@kit.DeviceCertificateKit';
@@ -1046,7 +1068,9 @@ init(authUri: string, spec: CMSignatureSpec, callback: AsyncCallback\<CMHandle>)
 | 17500002 | The certificate does not exist. |
 | 17500005<sup>12+</sup> | The application is not authorized by the user. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1069,7 +1093,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1132,7 +1156,9 @@ init(authUri: string, spec: CMSignatureSpec): Promise\<CMHandle>
 | 17500002 | The certificate does not exist. |
 | 17500005<sup>12+</sup> | The application is not authorized by the user. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1154,7 +1180,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1208,7 +1234,9 @@ update(handle: Uint8Array, data: Uint8Array, callback: AsyncCallback\<void>): vo
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1232,7 +1260,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1294,7 +1322,9 @@ update(handle: Uint8Array, data: Uint8Array): Promise\<void>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1317,7 +1347,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1371,7 +1401,9 @@ finish(handle: Uint8Array, callback: AsyncCallback\<CMResult>): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1397,7 +1429,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1456,7 +1488,9 @@ finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMRes
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1480,7 +1514,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1542,7 +1576,9 @@ finish(handle: Uint8Array, signature?: Uint8Array): Promise\<CMResult>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1579,7 +1615,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1647,7 +1683,9 @@ abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -1668,7 +1706,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1726,7 +1764,9 @@ abort(handle: Uint8Array): Promise\<void>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1746,7 +1786,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1804,7 +1844,9 @@ getPublicCertificate(keyUri: string): Promise\<CMResult>
 | 17500002 | The certificate does not exist. |
 | 17500005 | The application is not authorized by the user. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1826,7 +1868,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1884,7 +1926,9 @@ isAuthorizedApp(keyUri: string): Promise\<boolean>
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1905,7 +1949,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1955,7 +1999,9 @@ getAllUserTrustedCertificates(): Promise\<CMResult>
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1978,7 +2024,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2037,7 +2083,9 @@ getAllUserTrustedCertificates(scope: CertScope): Promise\<CMResult>
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.      |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -2063,7 +2111,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -2126,7 +2174,9 @@ getUserTrustedCertificate(certUri: string): Promise\<CMResult>
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2148,7 +2198,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2199,7 +2249,9 @@ getPrivateCertificates(): Promise\<CMResult>
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2222,7 +2274,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2279,7 +2331,9 @@ getCertificateStorePath(property: CertStoreProperty): string;
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500009 | The device does not support the specified certificate storage path, For example, the device outside China does not support the certificate that uses SM algorithm. |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
@@ -2319,7 +2373,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2402,7 +2456,9 @@ getUkeyCertificate(keyUri: string, ukeyInfo: UkeyInfo): Promise\<CMResult>
 | 17500010 | Indicates that access USB key service failed. |
 | 17500011 | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid.  |
 
-**ArkTS-Dyn示例**：
+**示例**:
+
+ArkTS-Dyn示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2423,7 +2479,7 @@ try {
 }
 ```
 
-**ArkTS-Sta示例**：
+ArkTS-Sta示例：
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';

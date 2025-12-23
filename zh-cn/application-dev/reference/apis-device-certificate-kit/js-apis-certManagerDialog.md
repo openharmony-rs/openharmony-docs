@@ -12,7 +12,7 @@
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
-> 本模块首批接口从API version 13开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 13开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -80,7 +80,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
-| ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。 |
+| ERROR_GENERIC  | 29700001      | 表示调用接口时发生内部错误。<br/>ArkTS-Dyn起始版本: 13<br/>ArkTS-Sta起始版本: 23 |
 | ERROR_OPERATION_CANCELED<sup>14+</sup>  | 29700002      | 表示调用接口时用户取消操作。<br/>ArkTS-Dyn起始版本: 14<br/>ArkTS-Sta起始版本: 23 |
 | ERROR_OPERATION_FAILED<sup>14+</sup>  | 29700003      | 表示调用接口时安装证书失败。<br/>ArkTS-Dyn起始版本: 14<br/>ArkTS-Sta起始版本: 23 |
 | ERROR_DEVICE_NOT_SUPPORTED<sup>14+</sup>  | 29700004      | 表示调用接口时设备类型不支持。<br/>ArkTS-Dyn起始版本: 14<br/>ArkTS-Sta起始版本: 23 |
@@ -96,7 +96,7 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**ArkTS-Dyn起始版本：** 13
+**ArkTS-Dyn起始版本：** 18
 
 **ArkTS-Sta起始版本：** 23
 
