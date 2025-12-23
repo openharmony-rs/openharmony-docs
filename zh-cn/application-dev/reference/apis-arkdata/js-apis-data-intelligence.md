@@ -84,17 +84,20 @@ let textConfig:intelligence.ModelConfig = {
   isNpuAvailable:false,
   cachePath:"/data"
 }
-let textEmbedding:intelligence.TextEmbedding;
-
-intelligence.getTextEmbeddingModel(textConfig)
-  .then((data:intelligence.TextEmbedding) => {
+let textEmbedding: intelligence.TextEmbedding;
+try {
+    const data = await intelligence.getTextEmbeddingModel(textConfig);
     console.info("Succeeded in getting TextModel");
     textEmbedding = data;
-  })
-  .catch((err) => {
-    const error = err as BusinessError;
-    console.error("Failed to get TextModel and code is " + err.code);
-  })
+}catch (err) {
+    if ((err as BusinessError).code === 481) {
+        console.error("Failed to get TextModel Parameter error: " + (err as BusinessError).message);
+    } else if ((err as BusinessError).code === 801) {
+        console.error("Failed to get TextModel Capability not supported: " + (err as BusinessError).message);
+    }else if ((err as BusinessError).code === 31300000) {
+        console.error("Failed to get TextModel Inner error: "+ (err as BusinessError).message);
+    }
+}
 ```
 
 ## intelligence.getImageEmbeddingModel
@@ -167,15 +170,19 @@ let imageConfig:intelligence.ModelConfig = {
 }
 let imageEmbedding:intelligence.ImageEmbedding;
 
-intelligence.getImageEmbeddingModel(imageConfig)
-  .then((data:intelligence.ImageEmbedding) => {
-    console.info("Succeeded in getting ImageModel");
+try {
+    const data = await intelligence.getImageEmbeddingModel(imageConfig);
+    console.info("Succeeded in getting TextModel");
     imageEmbedding = data;
-  })
-  .catch((err) => {
-    const error = err as BusinessError;
-    console.error("Failed to get ImageModel and code is " + err.code);
-  })
+}catch (err) {
+    if ((err as BusinessError).code === 481) {
+        console.error("Failed to get ImageModel Parameter error: " + (err as BusinessError).message);
+    } else if ((err as BusinessError).code === 801) {
+        console.error("Failed to get ImageModel Capability not supported: " + (err as BusinessError).message);
+    }else if ((err as BusinessError).code === 31300000) {
+        console.error("Failed to get ImageModel Inner error: "+ (err as BusinessError).message);
+    }
+}
 ```
 
 ## intelligence.splitText
@@ -246,14 +253,18 @@ let splitConfig:intelligence.SplitConfig = {
 }
 let splitText = 'text';
 
-intelligence.splitText(splitText, splitConfig)
-  .then((data:Array<string>) => {
-    console.info("Succeeded in splitting Text");
-  })
-  .catch((err) => {
-    const error = err as BusinessError;
-    console.error("Failed to split Text and code is " + err.code);
-  })
+try {
+    const data: Array<string> = await intelligence.splitText(splitText, splitConfig);
+    console.info("Succeeded in splitting Text"); 
+} catch (err) {
+    if ((err as BusinessError).code === 481) {
+        console.error("Failed to split Text Parameter error: " + (err as BusinessError).message);
+    } else if ((err as BusinessError).code === 801) {
+        console.error("Failed to split Text Capability not supported: " + (err as BusinessError).message);
+    }else if ((err as BusinessError).code === 31300000) {
+        console.error("Failed to split Text Inner error: "+ (err as BusinessError).message);
+    }
+}
 ```
 
 ## ModelConfig
@@ -378,14 +389,13 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-textEmbedding.loadModel()
-  .then(() => {
+try {
+    await textEmbedding.loadModel();
     console.info("Succeeded in loading Model");
-  })
-  .catch((err) => {
+} catch (err) {
     const error = err as BusinessError;
-    console.error("Failed to load Model and code is " + err.code);
-  })
+    console.error("Failed to load Model and code is " + error.code);
+}
 ```
 
 ### releaseModel
@@ -436,14 +446,15 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-textEmbedding.releaseModel()
-  .then(() => {
-    console.info("Succeeded in releasing Model");
-  })
-  .catch((err) => {
+try {
+    await textEmbedding.releaseModel();
+    console.info("Succeeded in loading Model");
+} catch (err) {
+
     const error = err as BusinessError;
-    console.error("Failed to release Model and code is " + err.code);
-  })
+
+    console.error("Failed to load Model and code is " + error.code);
+}
 ```
 
 ### getEmbedding
@@ -491,7 +502,6 @@ ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-
 textEmbedding.loadModel();
 let text = 'text';
 textEmbedding.getEmbedding(text)
@@ -508,17 +518,15 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-
-textEmbedding.loadModel();
-let text = 'text';
-textEmbedding.getEmbedding(text)
-  .then((data:Array<double>) => {
+try {
+    await textEmbedding.loadModel();
+    let text = 'text';
+    const data: Array<double> = await textEmbedding.getEmbedding(text);
     console.info("Succeeded in getting Embedding");
-  })
-  .catch((err) => {
+} catch (err) {
     const error = err as BusinessError;
-    console.error("Failed to get Embedding and code is " + err.code);
-  })
+    console.error("Failed to get Embedding and code is " + error.code);
+}
 ```
 
 ### getEmbedding
@@ -582,16 +590,16 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-textEmbedding.loadModel();
-let batchTexts = ['text1','text2'];
-textEmbedding.getEmbedding(batchTexts)
-  .then((data:Array<Array<double>>) => {
+try {
+    await textEmbedding.loadModel();
+    let batchTexts = ['text1','text2'];
+    const data: Array<Array<number>> = await textEmbedding.getEmbedding(batchTexts);
+
     console.info("Succeeded in getting Embedding");
-  })
-  .catch((err) => {
+} catch (err) {
     const error = err as BusinessError;
-    console.error("Failed to get Embedding and code is " + err.code);
-  })
+    console.error("Failed to get Embedding and code is " + error.code);
+}
 ```
 
 ## ImageEmbedding
@@ -654,14 +662,13 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageEmbedding.loadModel()
-  .then(() => {
-    console.info("Succeeded in loading Model");
-  })
-  .catch((err) => {
+try {
+    await imageEmbedding.loadModel();
+    console.info("Succeeded in loading Model"); 
+  } catch (err) {
     const error = err as BusinessError;
-    console.error("Failed to load Model and code is " + err.code);
-  })
+    console.error("Failed to load Model and code is " + error.code);
+  }
 ```
 
 ### releaseModel
@@ -712,14 +719,14 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageEmbedding.releaseModel()
-  .then(() => {
-    console.info("Succeeded in releasing Model");
-  })
-  .catch((err) => {
+try {
+    await imageEmbedding.releaseModel();
+    console.info("Succeeded in releasing Model"); 
+  } catch (err) {
     const error = err as BusinessError;
-    console.error("Failed to release Model and code is " + err.code);
-  })
+    console.error("Failed to load Model and code is " + error.code);
+  }
+
 ```
 
 ### getEmbedding
@@ -783,14 +790,14 @@ ArkTS-Sta示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-imageEmbedding.loadModel();
-let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
-imageEmbedding.getEmbedding(image)
-  .then((data:Array<double>) => {
+let imageEmbedding:intelligence.ImageEmbedding;
+try {
+    await imageEmbedding.loadModel();
+    let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+    const data: Array<double> = await imageEmbedding.getEmbedding(image);
     console.info("Succeeded in getting Embedding");
-  })
-  .catch((err) => {
+} catch (err) {
     const error = err as BusinessError;
-    console.error("Failed to get Embedding and code is " + err.code);
-  })
+    console.error("Failed to get Embedding and code is " + error.code);
+}
 ```
