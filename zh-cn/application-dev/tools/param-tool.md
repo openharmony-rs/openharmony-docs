@@ -1,10 +1,10 @@
 # param工具
-<!--Kit: Ability Kit-->
-<!--Subsystem: BundleManager-->
-<!--Owner: @jsjzju-->
-<!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 param是为开发人员提供用于操作系统参数的工具，该工具只支持标准系统。
 
