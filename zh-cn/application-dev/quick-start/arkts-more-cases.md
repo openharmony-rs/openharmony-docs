@@ -755,7 +755,6 @@ test.foo('', option);
 **原因**
 
 对象字面量缺少类型，根据`test.foo`分析可以得知，`option`的类型来源于声明文件，那么只需要将类型导入即可。
-
 在`test.d.ets`中，`I`定义在namespace中。在ets文件中，先导入namespace，再通过名称获取相应的类型。
 
 ### object literal传参给Object类型
