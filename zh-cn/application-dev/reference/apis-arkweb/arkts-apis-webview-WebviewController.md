@@ -16981,9 +16981,9 @@ setSiteIsolationMode(mode: SiteIsolationMode): void
 
 > **说明：**
 >
-> 不能在单子进程模式下设置严格站点隔离。
+>  - 不能在单子进程模式下设置严格站点隔离。
 >
-> 接口只能在初始化时调用一次，不支持反复修改。
+>  - 接口只能在初始化时调用一次，不支持反复修改。
 
 
 **系统能力：** SystemCapability.Web.Webview.Core
