@@ -228,7 +228,7 @@
                    .visibility(Visibility.Hidden)
                }
                .scene(HdsSceneType.HARMONIUM_MATERIAL_FONT_SCENE,
-                 this.sceneController, () => {console.log('callback...');})
+                 this.sceneController, () => {console.info('callback...');})
              }
            }
          }
