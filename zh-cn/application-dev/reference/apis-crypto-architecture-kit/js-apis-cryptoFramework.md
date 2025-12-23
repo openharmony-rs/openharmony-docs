@@ -814,7 +814,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 >
 > - password是必选参数，表示编码用到的密码。
 >
-> - cipherName是必选参数，可以指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
+> - cipherName是必选参数，指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
 
 ## MacSpec<sup>18+</sup>
 消息认证码参数，计算HMAC、CMAC消息认证码时，需要构建子类对象并作为输入参数。
@@ -882,7 +882,7 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 密钥（父类），在运行密码算法（如加解密）时需要提前生成其子类对象，并传入[Cipher](#cipher)实例的[init()](#init-1)方法。
 
-密钥可以通过密钥生成器来生成。
+密钥通过密钥生成器来生成。
 
 ### 属性
 
@@ -946,7 +946,7 @@ async function testGenerateAesKey() {
 
 对称密钥，是[Key](#key)的子类，在对称加解密时需要将其对象传入[Cipher](#cipher)实例的[init()](#init-1)方法使用。
 
-对称密钥可以通过对称密钥生成器[SymKeyGenerator](#symkeygenerator)来生成。
+对称密钥通过对称密钥生成器[SymKeyGenerator](#symkeygenerator)来生成。
 
 ### clearMem
 
@@ -4387,7 +4387,7 @@ async function cipherBySync() {
 
 setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
-设置加解密参数。常用的加解密参数可以直接通过[createCipher](#cryptoframeworkcreatecipher) 来指定，剩余参数可以通过本接口指定。当前只支持RSA算法。
+设置加解密参数。常用的加解密参数直接通过[createCipher](#cryptoframeworkcreatecipher) 来指定，剩余参数通过本接口指定。当前只支持RSA算法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5676,7 +5676,7 @@ setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
 setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
 
-设置验签参数。常用的签名参数可以直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数可以通过本接口指定。
+设置验签参数。常用的签名参数直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数通过本接口指定。
 
 支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
 
@@ -6031,7 +6031,7 @@ try {
 
 ## Md
 
-Md类，调用Md方法可以进行MD（Message Digest）摘要计算。调用前，需要通过[createMd](#cryptoframeworkcreatemd)构造Md实例。
+Md类，调用Md方法进行消息摘要（Message Digest）计算。调用前，需要通过[createMd](#cryptoframeworkcreatemd)构造Md实例。
 
 ### 属性
 
@@ -6426,7 +6426,7 @@ try {
 
 ## Mac
 
-Mac类，调用Mac方法可以进行MAC（Message Authentication Code）加密计算。调用前，需要通过[createMac](#cryptoframeworkcreatemac)构造Mac实例。
+Mac类，调用Mac方法进行消息认证码（Message Authentication Code）计算。调用前，需要通过[createMac](#cryptoframeworkcreatemac)构造Mac实例。
 
 ### 属性
 
@@ -6886,7 +6886,7 @@ try {
 
 ## Random
 
-Random类，调用Random方法可以进行随机数计算。调用前，需要通过[createRandom](#cryptoframeworkcreaterandom)构造Random实例。
+Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](#cryptoframeworkcreaterandom)构造Random实例。
 
 ### 属性
 
