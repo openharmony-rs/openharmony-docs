@@ -73,7 +73,7 @@ Provides model-related APIs for model creation and inference. These APIs are non
 
 ### OH_AI_KernelCallBack()
 
-```
+```c
 typedef bool (*OH_AI_KernelCallBack)(const OH_AI_TensorHandleArray inputs, const OH_AI_TensorHandleArray outputs,const OH_AI_CallBackParam kernel_Info)
 ```
 
@@ -100,7 +100,7 @@ Defines the pointer to a callback.<br>This pointer is used to set the two callba
 
 ### OH_AI_ModelCreate()
 
-```
+```c
 OH_AI_API OH_AI_ModelHandle OH_AI_ModelCreate(void)
 ```
 
@@ -118,7 +118,7 @@ Creates a model object.
 
 ### OH_AI_ModelDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_ModelDestroy(OH_AI_ModelHandle *model)
 ```
 
@@ -137,7 +137,7 @@ Destroys a model object.
 
 ### OH_AI_ModelBuild()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)
 ```
 
@@ -166,7 +166,7 @@ Loads and builds a MindSpore Lite model from the memory buffer.<br>Note that the
 
 ### OH_AI_ModelBuildFromFile()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context)
 ```
 
@@ -194,7 +194,7 @@ Loads and builds a MindSpore Lite model from a model file.<br>Note that the same
 
 ### OH_AI_ModelResize()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelResize(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs,OH_AI_ShapeInfo *shape_infos, size_t shape_info_num)
 ```
 
@@ -222,7 +222,7 @@ Adjusts the input tensor shapes of a built model.
 
 ### OH_AI_ModelPredict()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelPredict(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray inputs,OH_AI_TensorHandleArray *outputs, const OH_AI_KernelCallBack before,const OH_AI_KernelCallBack after)
 ```
 
@@ -251,7 +251,7 @@ Performs model inference.
 
 ### OH_AI_ModelGetInputs()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetInputs(const OH_AI_ModelHandle model)
 ```
 
@@ -276,7 +276,7 @@ Obtains the input tensor array structure of a model.
 
 ### OH_AI_ModelGetOutputs()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetOutputs(const OH_AI_ModelHandle model)
 ```
 
@@ -301,7 +301,7 @@ Obtains the output tensor array structure of a model.
 
 ### OH_AI_ModelGetInputByTensorName()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetInputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)
 ```
 
@@ -327,7 +327,7 @@ Obtains the input tensor of a model by tensor name.
 
 ### OH_AI_ModelGetOutputByTensorName()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelHandle model, const char *tensor_name)
 ```
 
@@ -353,7 +353,7 @@ Obtains the output tensor of a model by tensor name.
 
 ### OH_AI_TrainCfgCreate()
 
-```
+```c
 OH_AI_API OH_AI_TrainCfgHandle OH_AI_TrainCfgCreate()
 ```
 
@@ -371,7 +371,7 @@ Creates the pointer to the training configuration object. This API is used only 
 
 ### OH_AI_TrainCfgDestroy()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgDestroy(OH_AI_TrainCfgHandle *train_cfg)
 ```
 
@@ -390,7 +390,7 @@ Destroys the pointer to the training configuration object. This API is used only
 
 ### OH_AI_TrainCfgGetLossName()
 
-```
+```c
 OH_AI_API char **OH_AI_TrainCfgGetLossName(OH_AI_TrainCfgHandle train_cfg, size_t *num)
 ```
 
@@ -416,7 +416,7 @@ Obtains the list of loss functions, which are used only for on-device training.
 
 ### OH_AI_TrainCfgSetLossName()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgSetLossName(OH_AI_TrainCfgHandle train_cfg, const char **loss_name, size_t num)
 ```
 
@@ -437,7 +437,7 @@ Sets the list of loss functions, which are used only for on-device training.
 
 ### OH_AI_TrainCfgGetOptimizationLevel()
 
-```
+```c
 OH_AI_API OH_AI_OptimizationLevel OH_AI_TrainCfgGetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -462,7 +462,7 @@ Obtains the optimization level of the training configuration object. This API is
 
 ### OH_AI_TrainCfgSetOptimizationLevel()
 
-```
+```c
 OH_AI_API void OH_AI_TrainCfgSetOptimizationLevel(OH_AI_TrainCfgHandle train_cfg, OH_AI_OptimizationLevel level)
 ```
 
@@ -482,7 +482,7 @@ Sets the optimization level of the training configuration object. This API is us
 
 ### OH_AI_TrainModelBuild()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TrainModelBuild(OH_AI_ModelHandle model, const void *model_data, size_t data_size,OH_AI_ModelType model_type, const OH_AI_ContextHandle model_context,const OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -512,7 +512,7 @@ Loads a training model from the memory buffer and compiles the model to a state 
 
 ### OH_AI_TrainModelBuildFromFile()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_TrainModelBuildFromFile(OH_AI_ModelHandle model, const char *model_path,OH_AI_ModelType model_type,const OH_AI_ContextHandle model_context,const OH_AI_TrainCfgHandle train_cfg)
 ```
 
@@ -541,7 +541,7 @@ Loads the training model from the specified path and compiles the model to a sta
 
 ### OH_AI_RunStep()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_RunStep(OH_AI_ModelHandle model, const OH_AI_KernelCallBack before,const OH_AI_KernelCallBack after)
 ```
 
@@ -568,7 +568,7 @@ Defines a single-step training model. This API is used only for on-device traini
 
 ### OH_AI_ModelSetLearningRate()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetLearningRate(OH_AI_ModelHandle model, float learning_rate)
 ```
 
@@ -594,7 +594,7 @@ Sets the learning rate for model training. This API is used only for on-device t
 
 ### OH_AI_ModelGetLearningRate()
 
-```
+```c
 OH_AI_API float OH_AI_ModelGetLearningRate(OH_AI_ModelHandle model)
 ```
 
@@ -619,7 +619,7 @@ Obtains the learning rate for model training. This API is used only for on-devic
 
 ### OH_AI_ModelGetWeights()
 
-```
+```c
 OH_AI_API OH_AI_TensorHandleArray OH_AI_ModelGetWeights(OH_AI_ModelHandle model)
 ```
 
@@ -644,7 +644,7 @@ Obtains all weight tensors of a model. This API is used only for on-device train
 
 ### OH_AI_ModelUpdateWeights()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelUpdateWeights(OH_AI_ModelHandle model, const OH_AI_TensorHandleArray new_weights)
 ```
 
@@ -670,7 +670,7 @@ Updates the weight tensors of a model. This API is used only for on-device train
 
 ### OH_AI_ModelGetTrainMode()
 
-```
+```c
 OH_AI_API bool OH_AI_ModelGetTrainMode(OH_AI_ModelHandle model)
 ```
 
@@ -695,7 +695,7 @@ Obtains the training mode.
 
 ### OH_AI_ModelSetTrainMode()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetTrainMode(OH_AI_ModelHandle model, bool train)
 ```
 
@@ -721,7 +721,7 @@ Sets the training mode. This API is used only for on-device training.
 
 ### OH_AI_ModelSetupVirtualBatch()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelSetupVirtualBatch(OH_AI_ModelHandle model, int virtual_batch_multiplier, float lr,float momentum)
 ```
 
@@ -749,7 +749,7 @@ Sets the virtual batch for training. This API is used only for on-device trainin
 
 ### OH_AI_ExportModel()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportModel(OH_AI_ModelHandle model, OH_AI_ModelType model_type, const char *model_file,OH_AI_QuantizationType quantization_type, bool export_inference_only,char **output_tensor_name, size_t num)
 ```
 
@@ -780,7 +780,7 @@ Exports a training model. This API is used only for on-device training.
 
 ### OH_AI_ExportModelBuffer()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportModelBuffer(OH_AI_ModelHandle model, OH_AI_ModelType model_type, void *model_data,size_t *data_size, OH_AI_QuantizationType quantization_type,bool export_inference_only, char **output_tensor_name, size_t num)
 ```
 
@@ -812,7 +812,7 @@ Exports the memory cache of the training model. This API is used only for on-dev
 
 ### OH_AI_ExportWeightsCollaborateWithMicro()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ExportWeightsCollaborateWithMicro(OH_AI_ModelHandle model, OH_AI_ModelType model_type,const char *weight_file, bool is_inference,bool enable_fp16, char **changeable_weights_name,size_t num)
 ```
 
@@ -843,7 +843,7 @@ Exports the weight file of the training model for micro inference. This API is u
 
 ### OH_AI_ModelLoadConfig()
 
-```
+```c
 OH_AI_API OH_AI_Status OH_AI_ModelLoadConfig(OH_AI_ModelHandle model, const char *config_path);
 ```
 

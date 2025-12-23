@@ -110,6 +110,8 @@ getConnectionState(deviceId: string): ProfileConnectionState
 
 Obtains the profile connection status between the local and peer devices.
 
+- Starting from API version 21, this API can be used to obtain the profile connection status by using the actual MAC address of the peer device.
+
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core

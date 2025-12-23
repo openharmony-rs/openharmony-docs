@@ -19,7 +19,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
-## wifiManager.isWifiActive<sup>9+</sup>
+## wifiManager.isWifiActive
 
 isWifiActive(): boolean
 
@@ -31,7 +31,7 @@ Checks whether WLAN is enabled.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if WLAN is enabled; returns **false** otherwise.|
 
@@ -39,7 +39,7 @@ Checks whether WLAN is enabled.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
@@ -71,7 +71,7 @@ Enables the WLAN.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.          |
 | 801  | Capability not supported.|
@@ -104,7 +104,7 @@ Disables WLAN.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -114,16 +114,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.disableWifi();
-	}catch(error){
-		console.error(`disableWifi failed. ${error.message}`);
-	}
+  try {
+    wifiManager.disableWifi();
+  }catch(error){
+    console.error(`disableWifi failed. ${error.message}`);
+  }
 ```
 
-## wifiManager.scan<sup>9+</sup><sup>(deprecated)</sup>
+## wifiManager.scan<sup>(deprecated)</sup>
 
 scan(): void
 
@@ -140,7 +140,7 @@ Starts WLAN scanning. Note that WLAN must have been enabled.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -149,20 +149,24 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.scan();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.scan();
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.startScan<sup>21+</sup>
 
 startScan(): void
 
-Starts a WLAN scan. Initiating no more than four scans within 2 minutes while the application is running in the foreground. Initiating a scan at most once within 30 minutes while the application is running in the background.
+Starts a WLAN scan.
+
+- Initiating no more than four scans within 2 minutes while the application is running in the foreground.
+- Initiating a scan at most once within 30 minutes while the application is running in the background.
+- Subscribes to the scan status change event by calling [on('wifiScanStateChange')](#wifimanageronwifiscanstatechange) to listen for scan completion notifications.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -172,7 +176,7 @@ Starts a WLAN scan. Initiating no more than four scans within 2 minutes while th
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -181,20 +185,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.startScan();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.startScan();
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
-## wifiManager.getScanResults<sup>9+</sup><sup>(deprecated)</sup>
+## wifiManager.getScanResults<sup>(deprecated)</sup>
 
 getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 Obtains the scan result. This API uses a promise to return the result.
+
+- Returns a promise. The resolved value is an array containing multiple WifiScanInfo objects, each of which indicates the scanning information about a WLAN.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. Use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
@@ -205,25 +211,27 @@ Obtains the scan result. This API uses a promise to return the result.
 
 **Return value**
 
-| **Type**| **Description**|
+| Type| Description|
 | -------- | -------- |
-| Promise&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt;&nbsp;&gt; | Promise used to return the hotspots detected.|
+| Promise&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;&nbsp;&gt; | Promise used to return the hotspots detected.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.getScanResults<sup>9+</sup><sup>(deprecated)</sup>
+## wifiManager.getScanResults<sup>(deprecated)</sup>
 
 getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 
 Obtains the scan result. This API uses an asynchronous callback to return the result.
+
+- Returns an array containing multiple WifiScanInfo objects through the callback function. Each object indicates the scanning information about a WLAN network.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. Use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
@@ -233,15 +241,15 @@ Obtains the scan result. This API uses an asynchronous callback to return the re
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 **Parameters**
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the detected hotspots. Otherwise, **err** is a non-zero value and **data** is empty.|
+| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the detected hotspots. Otherwise, **err** is a non-zero value and **data** is empty.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -258,7 +266,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
       }
   
       let len = result.length;
-      console.log("wifi received scan info: " + len);
+      console.info("wifi received scan info: " + len);
       for (let i = 0; i < len; ++i) {
           console.info("ssid: " + result[i].ssid);
           console.info("bssid: " + result[i].bssid);
@@ -274,7 +282,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   
   wifiManager.getScanResults().then(result => {
       let len = result.length;
-      console.log("wifi received scan info: " + len);
+      console.info("wifi received scan info: " + len);
       for (let i = 0; i < len; ++i) {
           console.info("ssid: " + result[i].ssid);
           console.info("bssid: " + result[i].bssid);
@@ -291,11 +299,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   });
 ```
 
-## wifiManager.getScanResultsSync<sup>9+</sup><sup>(deprecated)</sup>
+## wifiManager.getScanResultsSync<sup>(deprecated)</sup>
 
-getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt;
+getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;
 
-Obtains the scan result. This API returns the result synchronously.
+Obtains the scanning result. This API returns an array containing multiple WifiScanInfo objects in synchronous mode. Each object indicates the scanning information about a WLAN network.
 
 > **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10. Use [wifiManager.getScanInfoList](#wifimanagergetscaninfolist10) instead.
@@ -306,15 +314,15 @@ Obtains the scan result. This API returns the result synchronously.
 
 **Return value**
 
-| **Type**| **Description**|
+| Type| Description|
 | -------- | -------- |
-| &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt; | Scan result obtained.|
+| &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt; | Scan result obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -323,30 +331,30 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let scanInfoList = wifiManager.getScanResultsSync();
-		console.info("scanInfoList:" + JSON.stringify(scanInfoList));
-		let len = scanInfoList.length;
-        console.log("wifi received scan info: " + len);
-		if(len > 0){
-			for (let i = 0; i < len; ++i) {
-				console.info("ssid: " + scanInfoList[i].ssid);
-				console.info("bssid: " + scanInfoList[i].bssid);
-				console.info("capabilities: " + scanInfoList[i].capabilities);
-				console.info("securityType: " + scanInfoList[i].securityType);
-				console.info("rssi: " + scanInfoList[i].rssi);
-				console.info("band: " + scanInfoList[i].band);
-				console.info("frequency: " + scanInfoList[i].frequency);
-				console.info("channelWidth: " + scanInfoList[i].channelWidth);
-				console.info("timestamp: " + scanInfoList[i].timestamp);
-			}
-		}	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-	
+  try {
+    let scanInfoList = wifiManager.getScanResultsSync();
+    console.info("scanInfoList:" + JSON.stringify(scanInfoList));
+    let len = scanInfoList.length;
+        console.info("wifi received scan info: " + len);
+    if(len > 0){
+      for (let i = 0; i < len; ++i) {
+        console.info("ssid: " + scanInfoList[i].ssid);
+        console.info("bssid: " + scanInfoList[i].bssid);
+        console.info("capabilities: " + scanInfoList[i].capabilities);
+        console.info("securityType: " + scanInfoList[i].securityType);
+        console.info("rssi: " + scanInfoList[i].rssi);
+        console.info("band: " + scanInfoList[i].band);
+        console.info("frequency: " + scanInfoList[i].frequency);
+        console.info("channelWidth: " + scanInfoList[i].channelWidth);
+        console.info("timestamp: " + scanInfoList[i].timestamp);
+      }
+    }  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+  
 ```
 
 ## wifiManager.getScanInfoList<sup>10+</sup>
@@ -363,15 +371,15 @@ Obtains the cached scan results within 30s before the current time point.
 
 **Return value**
 
-| **Type**| **Description**|
+| Type| Description|
 | -------- | -------- |
-| Array&lt;[WifiScanInfo](#wifiscaninfo9)&gt; | Hotspots detected. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **bssid** in the return value is a real device address; otherwise, **bssid** is a random device address.|
+| Array&lt;[WifiScanInfo](#wifiscaninfo)&gt; | Hotspots detected. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **bssid** in the return value is a real device address; otherwise, **bssid** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -380,80 +388,82 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let scanInfoList = wifiManager.getScanInfoList();
-		console.info("scanInfoList:" + JSON.stringify(scanInfoList));
-		let len = scanInfoList.length;
-        console.log("wifi received scan info: " + len);
-		if(len > 0){
-			for (let i = 0; i < len; ++i) {
-				console.info("ssid: " + scanInfoList[i].ssid);
-				console.info("bssid: " + scanInfoList[i].bssid);
-				console.info("capabilities: " + scanInfoList[i].capabilities);
-				console.info("securityType: " + scanInfoList[i].securityType);
-				console.info("rssi: " + scanInfoList[i].rssi);
-				console.info("band: " + scanInfoList[i].band);
-				console.info("frequency: " + scanInfoList[i].frequency);
-				console.info("channelWidth: " + scanInfoList[i].channelWidth);
-				console.info("timestamp: " + scanInfoList[i].timestamp);
-				console.info("supportedWifiCategory: " + scanInfoList[i].supportedWifiCategory);
-				console.info("isHiLinkNetwork: " + scanInfoList[i].isHiLinkNetwork);
-			}
-		}	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-	
+  try {
+    let scanInfoList = wifiManager.getScanInfoList();
+    console.info("scanInfoList:" + JSON.stringify(scanInfoList));
+    let len = scanInfoList.length;
+        console.info("wifi received scan info: " + len);
+    if(len > 0){
+      for (let i = 0; i < len; ++i) {
+        console.info("ssid: " + scanInfoList[i].ssid);
+        console.info("bssid: " + scanInfoList[i].bssid);
+        console.info("capabilities: " + scanInfoList[i].capabilities);
+        console.info("securityType: " + scanInfoList[i].securityType);
+        console.info("rssi: " + scanInfoList[i].rssi);
+        console.info("band: " + scanInfoList[i].band);
+        console.info("frequency: " + scanInfoList[i].frequency);
+        console.info("channelWidth: " + scanInfoList[i].channelWidth);
+        console.info("timestamp: " + scanInfoList[i].timestamp);
+        console.info("supportedWifiCategory: " + scanInfoList[i].supportedWifiCategory);
+        console.info("isHiLinkNetwork: " + scanInfoList[i].isHiLinkNetwork);
+      }
+    }  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+  
 ```
 
-## WifiScanInfo<sup>9+</sup>
+## WifiScanInfo
 
 Represents WLAN hotspot information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | bssid | string | No| No| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | bssidType<sup>10+</sup>| [DeviceAddressType](#deviceaddresstype10) | No| No| BSSID type of the hotspot.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | capabilities | string | No| No| Hotspot capabilities.|
-| securityType | [WifiSecurityType](#wifisecuritytype9) | No| No| WLAN security type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| securityType | [WifiSecurityType](#wifisecuritytype) | No| No| WLAN security type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
 | frequency | number | No| No| Frequency of the WLAN AP.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| channelWidth | number | No| No| Channel width of the WLAN AP. For details, see [WifiChannelWidth](#wifichannelwidth9).|
+| channelWidth | number | No| No| Channel width of the WLAN AP. For details, see [WifiChannelWidth](#wifichannelwidth).|
 | centerFrequency0 | number | No| No| Center frequency of the hotspot.|
 | centerFrequency1 | number | No| No| Center frequency of the hotspot. If the hotspot uses two non-overlapping WLAN channels, two center frequencies, namely **centerFrequency0** and **centerFrequency1**, are returned.|
-| infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem9)&gt; | No| No| Information elements.|
+| infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem)&gt; | No| No| Information elements.|
 | timestamp | number | No| No| Timestamp.|
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | No| No| Highest Wi-Fi category supported by the hotspot.|
-| isHiLinkNetwork<sup>12+</sup> | boolean | No| No| Whether HiLink is supported by the hotspot. The value **true** indicates that HiLink is supported, and the value **false** indicates the opposite.|
+| isHiLinkNetwork<sup>20+</sup> | boolean | No| No| Whether HiLink is supported by the hotspot. The value **true** indicates that HiLink is supported, and the value **false** indicates the opposite.|
 
 ## DeviceAddressType<sup>10+</sup>
 
-Enumerates the Wi-Fi device address (MAC/BSSID) types.
+Enumerates the WLAN device address (MAC/BSSID) types. It is the unique address of a WLAN device or access point.
+
+Parameters of the DeviceAddressType type are required for WLAN-related operations, such as connecting to a specified WLAN network and obtaining device information.
 
 **System capability**: SystemCapability.Communication.WiFi.Core
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | RANDOM_DEVICE_ADDRESS | 0 | Random device address.|
 | REAL_DEVICE_ADDRESS | 1 | Read device address.|
 
-## WifiSecurityType<sup>9+</sup>
+## WifiSecurityType
 
 Enumerates the WLAN security types.
 
 **System capability**: SystemCapability.Communication.WiFi.Core
 
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | WIFI_SEC_TYPE_INVALID | 0 | Invalid security type.|
 | WIFI_SEC_TYPE_OPEN | 1 | Open security type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -473,7 +483,7 @@ Enumerates the Wi-Fi band types.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | WIFI_BAND_NONE | 0 | Invalid band type|
 | WIFI_BAND_2G | 1 | 2.4 GHz|
@@ -487,7 +497,7 @@ Enumerates the Wi-Fi standards.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | WIFI_STANDARD_UNDEFINED | 0 | Invalid Wi-Fi standard|
 | WIFI_STANDARD_11A | 1 | 802.11a|
@@ -498,27 +508,27 @@ Enumerates the Wi-Fi standards.
 | WIFI_STANDARD_11AX | 6 | 802.11ax|
 | WIFI_STANDARD_11AD | 7 | 802.11ad|
 
-## WifiInfoElem<sup>9+</sup>
+## WifiInfoElem
 
-Represents a WLAN information element.
+Represents WLAN hotspot information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | eid | number | No| No| ID of the information element.|
 | content | Uint8Array | No| No| Content of the information element.|
 
 
-## WifiChannelWidth<sup>9+</sup>
+## WifiChannelWidth
 
 Enumerates the WLAN channel widths.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Value**| **Description**|
+| Name| Value| Description|
 | -------- | -------- | -------- |
 | WIDTH_20MHZ | 0 | 20 MHz|
 | WIDTH_40MHZ | 1 | 40 MHz|
@@ -528,21 +538,22 @@ Enumerates the WLAN channel widths.
 | WIDTH_INVALID | 5 | Invalid value|
 
 
-## WifiDeviceConfig<sup>9+</sup>
+## WifiDeviceConfig
 
 Represents the WLAN configuration.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | bssid | string | No| Yes| Basic service set identifier (BSSID) of the hotspot, for example, **00:11:22:33:44:55**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | bssidType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | No| Yes| BSSID type of the hotspot.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | preSharedKey | string | No| No| PSK of the hotspot, which cannot exceed 64 bytes.<br>When **securityType** is **WIFI_SEC_TYPE_OPEN**, this parameter must be an empty string. When **securityType** is any other value, this parameter cannot be empty.<br>When **securityType** is **WIFI_SEC_TYPE_WEP**, the PSK must be of 5, 10, 13, 26, 16, or 32 bytes. If the PSK length is 10, 26, 16, or 32 bytes, the PSK must be a hexadecimal number.<br>When **securityType** is **WIFI_SEC_TYPE_SAE**, the minimum PSK length is 1 byte.<br>When **securityType** is **WIFI_SEC_TYPE_PSK**, the minimum PSK length is 8 bytes.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | isHiddenSsid | boolean | No| Yes| Whether the network is hidden. The value **true** indicates that the network is hidden; the value **false** indicates the opposite.|
-| securityType | [WifiSecurityType](#wifisecuritytype9)| No| No| Security type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| securityType | [WifiSecurityType](#wifisecuritytype)| No| No| Security type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| netId<sup>22+</sup> | number | No| Yes| Network ID allocated.|
 | eapConfig<sup>10+</sup> | [WifiEapConfig](#wifieapconfig10) | No| Yes| EAP configuration. This parameter is mandatory only when **securityType** is **WIFI_SEC_TYPE_EAP**.|
 | wapiConfig<sup>12+</sup> | [WifiWapiConfig](#wifiwapiconfig12) | No| Yes| WAPI configuration. This parameter is mandatory only when **securityType** is **WIFI_SEC_TYPE_WAPI_CERT** or** WIFI_SEC_TYPE_WAPI_PSK**.|
 
@@ -550,9 +561,12 @@ Represents the WLAN configuration.
 
 Represents EAP configuration information.
 
+- WifiEapConfig is a class used to configure the EAP authentication type of the WLAN network.
+- Includes the EAP authentication mode, second-phase authentication mode, identity information, password, and certificate.
+
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | eapMethod | [EapMethod](#eapmethod10) | No| No| EAP authentication method.|
 | phase2Method | [Phase2Method](#phase2method10) | No| No| Phase 2 authentication method. This parameter is mandatory only when **eapMethod** is **EAP_PEAP** or **EAP_TTLS**.|
@@ -575,12 +589,24 @@ Represents EAP configuration information.
 
 Represents WAPI configuration.
 
+Configuration of the WAPI(Wireless LAN Authentication and Privacy Infrastructure) authentication protocol.
+When a user connects to the WLAN through the WAPI authentication protocol, the user can configure parameters or certificates in the following ways:
+- Method 1: Configure a certificate for connection. The key fields in WifiDeviceConfig are configured as follows:
+  - **preSharedKey** does not need to be transferred.
+  - Set **securityType** to **WIFI_SEC_TYPE_WAPI_CERT**.
+  - In wapiConfig:
+    - wapiAsCert transfers the text content of the AS certificate.
+    - wapiUserCert transfers the text content of the user certificate.
+ - Method 2: Configure preSharedKey for connection. The key fields in WifiDeviceConfig are configured as follows:
+   - **preSharedKey** transfers the password set on the router.
+   - Set **securityType** to **WIFI_SEC_TYPE_WAPI_PSK**.
+
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | wapiPskType | [WapiPskType](#wapipsktype12)| No| No| Security type.|
-| wapiAsCert | string | No| No| AS certificate.|
+| wapiAsCert | string | No| No| Authentication server certificate (AS certificate).|
 | wapiUserCert | string | No| No| User Certificate.|
 
 ## WapiPskType<sup>12+</sup>
@@ -631,7 +657,7 @@ Enumerates the Phase 2 authentication methods.
 
 ## WifiCategory<sup>12+</sup>
 
-Represents the highest Wi-Fi type supported by a hotspot.
+Represents the highest WLAN category supported by a hotspot. Identifies and distinguishes hotspots of different WLAN technology standards.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
@@ -643,11 +669,14 @@ Represents the highest Wi-Fi type supported by a hotspot.
 | WIFI7<sup>15+</sup> | 4 | Wi-Fi 7|
 | WIFI7_PLUS<sup>15+</sup> | 5 | Wi-Fi 7+|
 
-## wifiManager.addCandidateConfig<sup>9+</sup>
+## wifiManager.addCandidateConfig
 
 addCandidateConfig(config: WifiDeviceConfig): Promise&lt;number&gt;
 
 Adds the candidate network configuration. This API uses a promise to return the result. Before using this API, ensure that WLAN is enabled.
+
+- Configures the WLAN network details, such as the SSID, password, and security type, by passing a [WifiDeviceConfig](#wifideviceconfig) object.
+- Returns a promise object. After the promise is resolved, a number is returned, indicating the configuration ID (used to distinguish and manage different WLAN configurations, and perform other related API operations, error handling, and debugging).
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -657,13 +686,13 @@ Adds the candidate network configuration. This API uses a promise to return the 
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. If **bssidType** is left unspecified, its value is a random device address by default.|
+| config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration. If **bssidType** is left unspecified, its value is a random device address by default.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;number&gt; | Promise used to return the network configuration ID.|
 
@@ -671,7 +700,7 @@ Adds the candidate network configuration. This API uses a promise to return the 
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -680,29 +709,32 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 `````ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-	
-	try {
-		let config:wifiManager.WifiDeviceConfig = {
-			ssid : "****",
-			preSharedKey : "****",
-			securityType : 0
-		}
-		wifiManager.addCandidateConfig(config).then(result => {
-			console.info("result:" + JSON.stringify(result));
-		}).catch((err:number) => {
-			console.error("failed:" + JSON.stringify(err));
-		});
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  import { wifiManager } from '@kit.ConnectivityKit';
+  
+  try {
+    let config:wifiManager.WifiDeviceConfig = {
+      ssid : "****",
+      preSharedKey : "****",
+      securityType : 0
+    }
+    wifiManager.addCandidateConfig(config).then(result => {
+      console.info("result:" + JSON.stringify(result));
+    }).catch((err:number) => {
+      console.error("failed:" + JSON.stringify(err));
+    });
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 `````
 
-## wifiManager.addCandidateConfig<sup>9+</sup>
+## wifiManager.addCandidateConfig
 
 addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;number&gt;): void
 
 Adds the configuration of a candidate network. This API uses an asynchronous callback to return the result.
+
+- Adds the configuration of a specified WLAN device as a candidate network. The candidate network cannot trigger automatic reconnection if no connection record is recorded. You can call **connectToCandidateConfig** or **connectToCandidateConfigWithUserAction** to connect to the candidate network. After the connection is confirmed on the page, automatic reconnection can be implemented.
+- Candidate networks are added in the application dimension and are isolated from system network configurations. They are invisible on the System WLAN page.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -712,16 +744,16 @@ Adds the configuration of a candidate network. This API uses an asynchronous cal
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. If **bssidType** is left unspecified, its value is a random device address by default.|
+| config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration. If **bssidType** is left unspecified, its value is a random device address by default.|
 | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If **err** is **0**, the operation is successful. **data** indicates the ID of the network configuration to add. If **data** is **-1**, the network configuration fails to be added.<br> If the value of **err** is not **0**, an error has occurred during the operation.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -730,27 +762,30 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 `````ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.WifiDeviceConfig = {
-			ssid : "****",
-			preSharedKey : "****",
-			securityType : 0
-		}
-		wifiManager.addCandidateConfig(config,(error,result) => {
-			console.info("result:" + JSON.stringify(result));
-		});	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let config:wifiManager.WifiDeviceConfig = {
+      ssid : "****",
+      preSharedKey : "****",
+      securityType : 0
+    }
+    wifiManager.addCandidateConfig(config,(error,result) => {
+      console.info("result:" + JSON.stringify(result));
+    });  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 `````
 
-## wifiManager.removeCandidateConfig<sup>9+</sup>
+## wifiManager.removeCandidateConfig
 
 removeCandidateConfig(networkId: number): Promise&lt;void&gt;
 
 Removes the configuration of a candidate network. This API uses a promise to return the result.
+
+- Deletes the candidate WLAN configuration of a specified network ID from the system, clears the candidate WLAN configuration that is no longer needed, and releases system resources.
+- Only the candidate configuration added by calling [addCandidateConfig](#wifimanageraddcandidateconfig) can be removed. After the candidate configuration is removed, the candidate network will not be automatically connected.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -760,13 +795,13 @@ Removes the configuration of a candidate network. This API uses a promise to ret
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | networkId | number | Yes| ID of the network configuration to remove.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;void&gt; | Promise used to return the result.|
 
@@ -774,7 +809,7 @@ Removes the configuration of a candidate network. This API uses a promise to ret
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -785,25 +820,28 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let networkId = 0;
-		wifiManager.removeCandidateConfig(networkId).then(result => {
-			console.info("result:" + JSON.stringify(result));
-		}).catch((err:number) => {
-			console.error("failed:" + JSON.stringify(err));
-		});
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let networkId = 0;
+    wifiManager.removeCandidateConfig(networkId).then(result => {
+      console.info("result:" + JSON.stringify(result));
+    }).catch((err:number) => {
+      console.error("failed:" + JSON.stringify(err));
+    });
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
-## wifiManager.removeCandidateConfig<sup>9+</sup>
+## wifiManager.removeCandidateConfig
 
 removeCandidateConfig(networkId: number, callback: AsyncCallback&lt;void&gt;): void
 
-Removes the configuration of a candidate network. This API uses an asynchronous callback to return the result.
+Removes the candidate network configuration of a specified network. This API uses an asynchronous callback to return the result.
+
+- Deletes the candidate WLAN configuration of a specified network ID from the system, clears the candidate WLAN configuration that is no longer needed, and releases system resources.
+- Only the candidate configuration added by calling [addCandidateConfig](#wifimanageraddcandidateconfig) can be removed. After the candidate configuration is removed, the candidate network will not be automatically connected.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -813,7 +851,7 @@ Removes the configuration of a candidate network. This API uses an asynchronous 
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | networkId | number | Yes| ID of the network configuration to remove.|
   | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0**. If the operation fails, **error** is not **0**.|
@@ -822,7 +860,7 @@ Removes the configuration of a candidate network. This API uses an asynchronous 
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -832,16 +870,16 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let networkId = 0;
-		wifiManager.removeCandidateConfig(networkId,(error,result) => {
-		console.info("result:" + JSON.stringify(result));
-		});	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let networkId = 0;
+    wifiManager.removeCandidateConfig(networkId,(error,result) => {
+    console.info("result:" + JSON.stringify(result));
+    });  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.removeDevice<sup>15+</sup>
@@ -850,13 +888,16 @@ removeDevice(id: number): void
 
 Removes the network configuration.
 
+- Deletes the saved WLAN network configuration information according to the network configuration ID.
+- After the removal, the corresponding network configuration is no longer available, and the device does not automatically connect to the network.
+
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION (available only to system applications) or ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION (available only to enterprise applications)
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | id | number | Yes| ID of the network configuration to remove.|
 
@@ -864,7 +905,7 @@ Removes the network configuration.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -874,21 +915,25 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
   
     try {
       let id = 0;
-      wifiManager.removeDevice(id);	
+      wifiManager.removeDevice(id);  
     }catch(error){
       console.error("failed:" + JSON.stringify(error));
     }
 ```
 
-## wifiManager.getCandidateConfigs<sup>9+</sup>
+## wifiManager.getCandidateConfigs
 
 getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 Obtains candidate network configuration.
+
+- Candidate networks are the networks that have been connected to or manually added.
+- Obtains the configurations of all WLAN networks that have been saved but are not connected to in the system.
+- Displays the list of networks that can be connected to or performs network management operations.
 
 **Required permissions**:
 
@@ -900,15 +945,15 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
-  | &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig9)&gt; | Candidate network configuration obtained.|
+  | &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt; | Candidate network configuration obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -917,26 +962,26 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let configs = wifiManager.getCandidateConfigs();
-		console.info("configs:" + JSON.stringify(configs));
-		let len = configs.length;
-        console.log("result len: " + len);
-		if(len > 0){
-			for (let i = 0; i < len; ++i) {
-				console.info("ssid: " + configs[i].ssid);
-				console.info("bssid: " + configs[i].bssid);
-			}
-		}	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-	
+  try {
+    let configs = wifiManager.getCandidateConfigs();
+    console.info("configs:" + JSON.stringify(configs));
+    let len = configs.length;
+        console.info("result len: " + len);
+    if(len > 0){
+      for (let i = 0; i < len; ++i) {
+        console.info("ssid: " + configs[i].ssid);
+        console.info("bssid: " + configs[i].bssid);
+      }
+    }  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+  
 ```
 
-## wifiManager.connectToCandidateConfig<sup>9+</sup>
+## wifiManager.connectToCandidateConfig
 
 connectToCandidateConfig(networkId: number): void
 
@@ -950,7 +995,7 @@ Connects to a candidate network.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | networkId | number | Yes| ID of the candidate network configuration.|
 
@@ -958,7 +1003,7 @@ Connects to a candidate network.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -968,25 +1013,29 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let networkId = 0; // Candidate network ID, which is generated when a candidate network is added.
-		wifiManager.connectToCandidateConfig(networkId);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
-	
+  try {
+    let networkId = 0; // Candidate network ID, which is generated when a candidate network is added.
+    wifiManager.connectToCandidateConfig(networkId);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
+  
 ```
 
 ## wifiManager.connectToCandidateConfigWithUserAction<sup>20+</sup>
 
 connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
-When an application uses this API to connect to a candidate network, it will prompt the user whether to trust and establish the connection. This API uses a promise to return the result.
+This API is used to connect an application to a candidate network added by a user and prompt the user to confirm the trust during the connection. This API uses a promise to return the result.
+
+- When this API is called, the system displays a message, asking the user to confirm whether to trust and connect to the specified candidate network. This API uses a promise to return the result.
+- User confirmation is a necessary step in the connection process. The connection operation is not performed before the user confirms the trust.
+- You are advised to trigger a WLAN scan by calling the **startScan** API before initiating a connection, and then connect to the candidate network after the updating of the scan result is detected by using the [wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange) method. This improves the connection success rate.
 
 > **NOTE**
-> If [wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig9) is used to connect to a candidate network, no user response is returned.
+> If [wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig) is used to connect to a candidate network, no user response is returned.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO
 
@@ -996,13 +1045,13 @@ When an application uses this API to connect to a candidate network, it will pro
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | networkId | number | Yes| Candidate network ID. The value cannot be less than 0.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;void&gt; | Promise that returns no value.|
 
@@ -1010,7 +1059,7 @@ When an application uses this API to connect to a candidate network, it will pro
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1022,18 +1071,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-	
-	try {
-		let networkId = 0; // Candidate network ID, which is generated when a candidate network is added.
-		wifiManager.connectToCandidateConfigWithUserAction(networkId).then(result => {
-			console.info("result:" + JSON.stringify(result));
-		}).catch((err:number) => {
-			console.error("failed:" + JSON.stringify(err));
-		});
-	}catch(error){  
-		console.error("failed:" + JSON.stringify(error));
-	}
+  import { wifiManager } from '@kit.ConnectivityKit';
+  
+  try {
+    let networkId = 0; // Candidate network ID, which is generated when a candidate network is added.
+    wifiManager.connectToCandidateConfigWithUserAction(networkId).then(result => {
+      console.info("result:" + JSON.stringify(result));
+    }).catch((err:number) => {
+      console.error("failed:" + JSON.stringify(err));
+    });
+  }catch(error){  
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.addDeviceConfig<sup>15+</sup>
@@ -1048,13 +1097,13 @@ Adds network configuration. This API uses a promise to return the result.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. The value of **bssidType** is a random device address by default.|
+| config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration. The value of **bssidType** is a random device address by default.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | Promise&lt;number&gt; | Promise used to return the network configuration ID.|
 
@@ -1062,7 +1111,7 @@ Adds network configuration. This API uses a promise to return the result.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -1072,22 +1121,22 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-	
-	try {
-		let config:wifiManager.WifiDeviceConfig = {
-			ssid : "****",
-			preSharedKey : "****",
-			securityType : 0
-		}
-		wifiManager.addDeviceConfig(config).then(result => {
-			console.info("result:" + JSON.stringify(result));
-		}).catch((err:number) => {
-			console.error("failed:" + JSON.stringify(err));
-		});
-	}catch(error){  
-		console.error("failed:" + JSON.stringify(error));
-	}
+  import { wifiManager } from '@kit.ConnectivityKit';
+  
+  try {
+    let config:wifiManager.WifiDeviceConfig = {
+      ssid : "****",
+      preSharedKey : "****",
+      securityType : 0
+    }
+    wifiManager.addDeviceConfig(config).then(result => {
+      console.info("result:" + JSON.stringify(result));
+    }).catch((err:number) => {
+      console.error("failed:" + JSON.stringify(err));
+    });
+  }catch(error){  
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.addDeviceConfig<sup>15+</sup>
@@ -1102,16 +1151,16 @@ Adds network configuration. This API uses an asynchronous callback to return the
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. The value of **bssidType** is a random device address by default.|
+| config | [WifiDeviceConfig](#wifideviceconfig) | Yes| WLAN configuration. The value of **bssidType** is a random device address by default.|
 | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the network configuration ID. If **data** is **-1**, the operation has failed. If **err** is not **0**, an error has occurred.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed.|
@@ -1121,7 +1170,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
   
     try {
       let config:wifiManager.WifiDeviceConfig = {
@@ -1150,15 +1199,15 @@ Obtains network configuration.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
-  | &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig9)&gt; | Network configuration array.|
+  | &nbsp;Array&lt;[WifiDeviceConfig](#wifideviceconfig)&gt; | Network configuration array.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1167,7 +1216,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
   
     try {
       let configs = wifiManager.getDeviceConfigs();
@@ -1175,7 +1224,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
     }catch(error){
       console.error("failed:", error.code, error.message);
     }
-	
+  
 ```
 
 ## wifiManager.connectToNetwork<sup>15+</sup>
@@ -1190,7 +1239,7 @@ Connects to a hotspot.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | networkId | number | Yes| ID of the candidate network configuration.|
 
@@ -1198,7 +1247,7 @@ Connects to a hotspot.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
@@ -1208,7 +1257,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
   
     try {
       let networkId = 0;
@@ -1216,10 +1265,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
     }catch(error){
       console.error("failed:" + JSON.stringify(error));
     }
-	
+  
 ```
 
-## wifiManager.getSignalLevel<sup>9+</sup>
+## wifiManager.getSignalLevel
 
 getSignalLevel(rssi: number, band: number): number
 
@@ -1231,14 +1280,14 @@ Obtains the WLAN signal level.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | rssi | number | Yes| RSSI of the hotspot, in dBm.|
   | band | number | Yes| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | number | Signal level obtained. The value range is [0, 4].|
 
@@ -1246,29 +1295,29 @@ Obtains the WLAN signal level.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let rssi = 0;
-		let band = 0;
-		let level = wifiManager.getSignalLevel(rssi,band);
-		console.info("level:" + JSON.stringify(level));
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let rssi = 0;
+    let band = 0;
+    let level = wifiManager.getSignalLevel(rssi,band);
+    console.info("level:" + JSON.stringify(level));
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 
 ```
 
-## wifiManager.getLinkedInfo<sup>9+</sup>
+## wifiManager.getLinkedInfo
 
 getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
@@ -1286,20 +1335,20 @@ If **macType** to be obtained is **1** (device MAC address), the caller must hav
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfo9)&gt; | Promise used to return the WLAN connection information.|
+  | Promise&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | Promise used to return the WLAN connection information.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 | 2501001  | Wi-Fi STA disabled.|
 
-## wifiManager.getLinkedInfo<sup>9+</sup>
+## wifiManager.getLinkedInfo
 
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
@@ -1317,13 +1366,13 @@ Obtains information about the WLAN connection. This API uses an asynchronous cal
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfo9)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the WLAN connection information obtained. If the operation fails, **err** is not **0**.|
+  | callback | AsyncCallback&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the WLAN connection information obtained. If the operation fails, **err** is not **0**.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -1361,13 +1410,13 @@ Obtains the WLAN connection information. This API returns the result synchronous
 
   | Type| Description|
   | -------- | -------- |
-  | [WifiLinkedInfo](#wifilinkedinfo9) | return the WLAN connection information.|
+  | [WifiLinkedInfo](#wifilinkedinfo) | return the WLAN connection information.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1385,7 +1434,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   }
 ```
 
-## WifiLinkedInfo<sup>9+</sup>
+## WifiLinkedInfo
 
 Represents the WLAN connection information.
 
@@ -1407,8 +1456,8 @@ Represents the WLAN connection information.
 | macType | number | No| No| MAC address type. <br>The value **0** indicates a random MAC address, and the value **1** indicates device MAC address.|
 | macAddress | string | No| No| MAC address of the device.|
 | ipAddress | number | No| No| IP address of the device that sets up the WLAN connection.<br>1. You can view the IP address in Wi-Fi connection information and in **Settings** > **About phone** > **Status**.<br>2. The **ipAddress** value is of the number type and needs to be converted to the common IP address format. For details, see [IP Address Format Conversion](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-connectivity-4).|
-| connState | [ConnState](#connstate9) | No| No| WLAN connection state.|
-| channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth9) | No| No| Channel bandwidth of the connected hotspot.|
+| connState | [ConnState](#connstate) | No| No| WLAN connection state.|
+| channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | No| No| Channel bandwidth of the connected hotspot.|
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | No| No| Wi-Fi standard used by the connected hotspot.|
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | No| No| Highest Wi-Fi category supported by the hotspot.|
 | isHiLinkNetwork<sup>12+</sup> | boolean | No| No| Whether HiLink is supported by the hotspot. The value **true** indicates that HiLink is supported, and the value **false** indicates the opposite.|
@@ -1429,7 +1478,7 @@ Enumerates Wi-Fi 7 connection types.
 | WIFI7_EMLSR | 3 | Wi-Fi 7 enhanced multi-link single-radio (EMLSR) connection.|
 | WIFI7_STR | 4 | Wi-Fi 7 simultaneous transmit and receive (STR) connection.|
 
-## ConnState<sup>9+</sup>
+## ConnState
 
 Enumerates the WLAN connection states.
 
@@ -1447,7 +1496,7 @@ Enumerates the WLAN connection states.
 | UNKNOWN | 7 | Failed to set up the WLAN connection.|
 
 
-## wifiManager.isConnected<sup>9+</sup>
+## wifiManager.isConnected
 
 isConnected(): boolean
 
@@ -1461,7 +1510,7 @@ Checks whether WLAN is connected.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if WLAN is connected; returns **false** otherwise.|
 
@@ -1469,7 +1518,7 @@ Checks whether WLAN is connected.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1477,14 +1526,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.isConnected();
-		console.info("isConnected:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let ret = wifiManager.isConnected();
+    console.info("isConnected:" + ret);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 
 ```
 
@@ -1504,7 +1553,7 @@ Disconnects from a WLAN.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1513,18 +1562,18 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.disconnect();
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.disconnect();
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 
 ```
 
 
-## wifiManager.isFeatureSupported<sup>9+</sup>
+## wifiManager.isFeatureSupported
 
 isFeatureSupported(featureId: number): boolean
 
@@ -1536,7 +1585,7 @@ Checks whether the device supports the specified WLAN feature.
 
 **Parameters**
 
-  | **Name**| **Type**| Mandatory| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | featureId | number | Yes| Feature ID.|
 
@@ -1557,7 +1606,7 @@ Checks whether the device supports the specified WLAN feature.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the feature is supported; returns **false** otherwise.|
 
@@ -1565,7 +1614,7 @@ Checks whether the device supports the specified WLAN feature.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
   | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
@@ -1574,15 +1623,15 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let featureId = 0;
-		let ret = wifiManager.isFeatureSupported(featureId);
-		console.info("isFeatureSupported:" + ret);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let featureId = 0;
+    let ret = wifiManager.isFeatureSupported(featureId);
+    console.info("isFeatureSupported:" + ret);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 
 ```
 
@@ -1601,7 +1650,7 @@ This permission is available only to system applications in API versions 8 to 15
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | string[] | MAC address.|
 
@@ -1609,7 +1658,7 @@ This permission is available only to system applications in API versions 8 to 15
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1618,19 +1667,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.getDeviceMacAddress();
-		console.info("deviceMacAddress:" + JSON.stringify(ret));
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let ret = wifiManager.getDeviceMacAddress();
+    console.info("deviceMacAddress:" + JSON.stringify(ret));
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 
 ```
 
 
-## wifiManager.getIpInfo<sup>9+</sup>
+## wifiManager.getIpInfo
 
 getIpInfo(): IpInfo
 
@@ -1642,15 +1691,15 @@ Obtains IPv4 information.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
-  | [IpInfo](#ipinfo9) | IP information obtained.|
+  | [IpInfo](#ipinfo) | IP information obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1658,23 +1707,23 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let info = wifiManager.getIpInfo();
-		console.info("info:" + JSON.stringify(info));
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let info = wifiManager.getIpInfo();
+    console.info("info:" + JSON.stringify(info));
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
-## IpInfo<sup>9+</sup>
+## IpInfo
 
 Represents IPv4 information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | number | No| No| IP address. The **ipAddress** value is of the number type and needs to be converted to the common IP address format. For details, see [IP Address Format Conversion](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs/faqs-connectivity-4).|
 | gateway | number | No| No| Gateway.|
@@ -1697,7 +1746,7 @@ Obtains IPv6 information.
 
 **Return value**
 
-| **Type**| **Description**|
+| Type| Description|
 | -------- | -------- |
 | [Ipv6Info](#ipv6info10) | IPv6 information obtained.|
 
@@ -1705,7 +1754,7 @@ Obtains IPv6 information.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1713,14 +1762,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let info = wifiManager.getIpv6Info();
-		console.info("info:" + JSON.stringify(info));
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let info = wifiManager.getIpv6Info();
+    console.info("info:" + JSON.stringify(info));
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 ## Ipv6Info<sup>10+</sup>
 
@@ -1728,7 +1777,7 @@ Represents the IPv6 information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | linkIpv6Address | string | No| No| IPv6 address of the link.|
 | globalIpv6Address | string | No| No| Global IPv6 address.|
@@ -1740,7 +1789,7 @@ Represents the IPv6 information.
 | primaryDNS | string | No| No| IPv6 address of the preferred DNS server.|
 | secondDNS | string | No| No| IPv6 address of the alternate DNS server.|
 
-## wifiManager.getCountryCode<sup>9+</sup>
+## wifiManager.getCountryCode
 
 getCountryCode(): string
 
@@ -1752,7 +1801,7 @@ Obtains the country code.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | string | Country code obtained.|
 
@@ -1760,7 +1809,7 @@ Obtains the country code.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1768,14 +1817,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let code = wifiManager.getCountryCode();
-		console.info("code:" + code);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let code = wifiManager.getCountryCode();
+    console.info("code:" + code);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 
@@ -1793,13 +1842,13 @@ Checks whether the current frequency band is supported.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | bandType | [WifiBandType](#wifibandtype10) | Yes| Wi-Fi band type.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the feature is supported; returns **false** otherwise.|
 
@@ -1807,7 +1856,7 @@ Checks whether the current frequency band is supported.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1815,15 +1864,15 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let type = 0;
-		let isBandTypeSupported = wifiManager.isBandTypeSupported(type);
-		console.info("isBandTypeSupported:" + isBandTypeSupported);		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let type = 0;
+    let isBandTypeSupported = wifiManager.isBandTypeSupported(type);
+    console.info("isBandTypeSupported:" + isBandTypeSupported);    
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 
@@ -1839,7 +1888,7 @@ Checks whether the Wi-Fi network connected to the device is a smartphone hotspot
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if the Wi-Fi network connected is a smartphone hotspot; returns **false** otherwise.|
 
@@ -1847,7 +1896,7 @@ Checks whether the Wi-Fi network connected to the device is a smartphone hotspot
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1857,14 +1906,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let isMeteredHotspot = wifiManager.isMeteredHotspot();
-		console.info("isMeteredHotspot:" + isMeteredHotspot);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let isMeteredHotspot = wifiManager.isMeteredHotspot();
+    console.info("isMeteredHotspot:" + isMeteredHotspot);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 
@@ -1880,7 +1929,7 @@ Checks whether this hotspot is active.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Returns **true** if WLAN is enabled; returns **false** otherwise.|
 
@@ -1888,7 +1937,7 @@ Checks whether this hotspot is active.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1896,18 +1945,18 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let ret = wifiManager.isHotspotActive();
-		console.info("result:" + ret);		
-	} catch(error) {
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let ret = wifiManager.isHotspotActive();
+    console.info("result:" + ret);    
+  } catch(error) {
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 
-## wifiManager.getP2pLinkedInfo<sup>9+</sup>
+## wifiManager.getP2pLinkedInfo
 
 getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
@@ -1923,20 +1972,20 @@ To obtain **groupOwnerAddr**, the caller must also have the ohos.permission.GET_
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | Promise used to return the P2P connection information obtained.|
+  | Promise&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Promise used to return the P2P connection information obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
 
-## wifiManager.getP2pLinkedInfo<sup>9+</sup>
+## wifiManager.getP2pLinkedInfo
 
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
@@ -1952,13 +2001,13 @@ To obtain **groupOwnerAddr**, the caller must also have the ohos.permission.GET_
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the P2P link information. If the operation fails, **err** is not **0**.|
+  | callback | AsyncCallback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the P2P link information. If the operation fails, **err** is not **0**.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -1967,23 +2016,23 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	wifiManager.getP2pLinkedInfo((err, data:wifiManager.WifiP2pLinkedInfo) => {
+  wifiManager.getP2pLinkedInfo((err, data:wifiManager.WifiP2pLinkedInfo) => {
     if (err) {
         console.error("get p2p linked info error");
         return;
     }
-		console.info("get wifi p2p linked info: " + JSON.stringify(data));
-	});
+    console.info("get wifi p2p linked info: " + JSON.stringify(data));
+  });
 
-	wifiManager.getP2pLinkedInfo().then(data => {
-		console.info("get wifi p2p linked info: " + JSON.stringify(data));
-	});
+  wifiManager.getP2pLinkedInfo().then(data => {
+    console.info("get wifi p2p linked info: " + JSON.stringify(data));
+  });
 ```
 
 
-## WifiP2pLinkedInfo<sup>9+</sup>
+## WifiP2pLinkedInfo
 
 Represents the P2P link information.
 
@@ -1991,12 +2040,12 @@ Represents the P2P link information.
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| connectState | [P2pConnectState](#p2pconnectstate9) | No| No| P2P connection state.|
+| connectState | [P2pConnectState](#p2pconnectstate) | No| No| P2P connection state.|
 | isGroupOwner | boolean | No| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
 | groupOwnerAddr | string | No| No| IP address of the group.| 
 
 
-## P2pConnectState<sup>9+</sup>
+## P2pConnectState
 
 Enumerates the P2P connection states.
 
@@ -2007,7 +2056,7 @@ Enumerates the P2P connection states.
 | DISCONNECTED | 0 | Disconnected.|
 | CONNECTED | 1 | Connected.|
 
-## wifiManager.getCurrentGroup<sup>9+</sup>
+## wifiManager.getCurrentGroup
 
 getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
@@ -2023,19 +2072,19 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo9)&gt; | Promise used to return the P2P group information obtained. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| Promise&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo)&gt; | Promise used to return the P2P group information obtained. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.getCurrentGroup<sup>9+</sup>
+## wifiManager.getCurrentGroup
 
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
@@ -2051,13 +2100,13 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo9)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the group information obtained. If the operation fails, **error** is not **0**. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | AsyncCallback&lt;[WifiP2pGroupInfo](#wifip2pgroupinfo)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the group information obtained. If the operation fails, **error** is not **0**. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2065,22 +2114,22 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-	// The current group information can be obtained only after the P2P group is created or the connection is successful.
-	wifiManager.getCurrentGroup((err, data:wifiManager.WifiP2pGroupInfo) => {
+  import { wifiManager } from '@kit.ConnectivityKit';
+  // The current group information can be obtained only after the P2P group is created or the connection is successful.
+  wifiManager.getCurrentGroup((err, data:wifiManager.WifiP2pGroupInfo) => {
     if (err) {
         console.error("get current P2P group error");
         return;
     }
-		console.info("get current P2P group: " + JSON.stringify(data));
-	});
+    console.info("get current P2P group: " + JSON.stringify(data));
+  });
 
-	wifiManager.getCurrentGroup().then(data => {
-		console.info("get current P2P group: " + JSON.stringify(data));
-	});
+  wifiManager.getCurrentGroup().then(data => {
+    console.info("get current P2P group: " + JSON.stringify(data));
+  });
 ```
 
-## wifiManager.getP2pPeerDevices<sup>9+</sup>
+## wifiManager.getP2pPeerDevices
 
 getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
@@ -2096,19 +2145,19 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | Promise used to return the peer device list. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| Promise&lt;[WifiP2pDevice[]](#wifip2pdevice)&gt; | Promise used to return the peer device list. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.getP2pPeerDevices<sup>9+</sup>
+## wifiManager.getP2pPeerDevices
 
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
@@ -2124,13 +2173,13 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the peer device list obtained. If the operation fails, **err** is not **0**. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | AsyncCallback&lt;[WifiP2pDevice[]](#wifip2pdevice)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the peer device list obtained. If the operation fails, **err** is not **0**. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2139,22 +2188,22 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-	// The peer device list can be obtained only after the P2P discovery is complete.
-	wifiManager.getP2pPeerDevices((err, data:wifiManager.WifiP2pDevice[]) => {
+  import { wifiManager } from '@kit.ConnectivityKit';
+  // The peer device list can be obtained only after the P2P discovery is complete.
+  wifiManager.getP2pPeerDevices((err, data:wifiManager.WifiP2pDevice[]) => {
     if (err) {
         console.error("get P2P peer devices error");
         return;
     }
-		console.info("get P2P peer devices: " + JSON.stringify(data));
-	});
+    console.info("get P2P peer devices: " + JSON.stringify(data));
+  });
 
-	wifiManager.getP2pPeerDevices().then(data => {
-		console.info("get P2P peer devices: " + JSON.stringify(data));
-	});
+  wifiManager.getP2pPeerDevices().then(data => {
+    console.info("get P2P peer devices: " + JSON.stringify(data));
+  });
 ```
 
-## WifiP2pDevice<sup>9+</sup>
+## WifiP2pDevice
 
 Represents the P2P device information.
 
@@ -2166,11 +2215,11 @@ Represents the P2P device information.
 | deviceAddress | string | No| No| MAC address of the device.|
 | deviceAddressType<sup>10+</sup> | [DeviceAddressType](#deviceaddresstype10) | No| Yes| MAC address type of the device.|
 | primaryDeviceType | string | No| No| Type of the primary device.|
-| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus9) | No| No| Device state.|
+| deviceStatus | [P2pDeviceStatus](#p2pdevicestatus) | No| No| Device state.|
 | groupCapabilities | number | No| No| Group capabilities.|
 
 
-## P2pDeviceStatus<sup>9+</sup>
+## P2pDeviceStatus
 
 Enumerates the P2P device states.
 
@@ -2185,7 +2234,7 @@ Enumerates the P2P device states.
 | UNAVAILABLE | 4 | Unavailable.|
 
 
-## wifiManager.getP2pLocalDevice<sup>9+</sup>
+## wifiManager.getP2pLocalDevice
 
 getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
@@ -2201,19 +2250,19 @@ API version 11 and later: ohos.permission.GET_WIFI_INFO
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | Promise used to return the local device information obtained.|
+  | Promise&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Promise used to return the local device information obtained.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.getP2pLocalDevice<sup>9+</sup>
+## wifiManager.getP2pLocalDevice
 
 getP2pLocalDevice(callback: AsyncCallback&lt;WifiP2pDevice&gt;): void
 
@@ -2229,11 +2278,11 @@ API version 11 and later: ohos.permission.GET_WIFI_INFO
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the local device information obtained. If the operation fails, **error** is not **0**.|
+  | callback | AsyncCallback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Yes| Callback used to return the result. If the operation is successful, **err** is **0** and **data** is the local device information obtained. If the operation fails, **error** is not **0**.|
 
 **Error codes**
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2242,22 +2291,22 @@ API version 11 and later: ohos.permission.GET_WIFI_INFO
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
-	// The local device information can be obtained only after a P2P group is created or the connection is successful.
-	wifiManager.getP2pLocalDevice((err, data:wifiManager.WifiP2pDevice) => {
+  import { wifiManager } from '@kit.ConnectivityKit';
+  // The local device information can be obtained only after a P2P group is created or the connection is successful.
+  wifiManager.getP2pLocalDevice((err, data:wifiManager.WifiP2pDevice) => {
     if (err) {
         console.error("get P2P local device error");
         return;
     }
-		console.info("get P2P local device: " + JSON.stringify(data));
-	});
+    console.info("get P2P local device: " + JSON.stringify(data));
+  });
 
-	wifiManager.getP2pLocalDevice().then(data => {
-		console.info("get P2P local device: " + JSON.stringify(data));
-	});
+  wifiManager.getP2pLocalDevice().then(data => {
+    console.info("get P2P local device: " + JSON.stringify(data));
+  });
 ```
 
-## wifiManager.createGroup<sup>9+</sup>
+## wifiManager.createGroup
 
 createGroup(config: WifiP2PConfig): void
 
@@ -2269,15 +2318,15 @@ Creates a P2P group.
 
 **Parameters**
 
-| **Name**| **Type**| Mandatory| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [WifiP2PConfig](#wifip2pconfig9) | Yes| Group configuration. The value of **DeviceAddressType** is a random device address by default.|
+| config | [WifiP2PConfig](#wifip2pconfig) | Yes| Group configuration. The value of **DeviceAddressType** is a random device address by default.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
@@ -2287,24 +2336,24 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.WifiP2PConfig = {
-			deviceAddress: "****",
-			netId: 0,
-			passphrase: "*****",
-			groupName: "****",
-			goBand: 0
-		}
-		wifiManager.createGroup(config);	
-		
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let config:wifiManager.WifiP2PConfig = {
+      deviceAddress: "****",
+      netId: 0,
+      passphrase: "*****",
+      groupName: "****",
+      goBand: 0
+    }
+    wifiManager.createGroup(config);  
+    
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
-## WifiP2PConfig<sup>9+</sup>
+## WifiP2PConfig
 
 Represents P2P group configuration.
 
@@ -2317,10 +2366,10 @@ Represents P2P group configuration.
 | netId | number | No| No| Network ID. The value **-1** indicates a temporary group, and the value **-2** indicates a persistent group.|
 | passphrase | string | No| No| Passphrase of the group.|
 | groupName | string | No| No| Group name.|
-| goBand | [GroupOwnerBand](#groupownerband9) | No| No| Frequency band of the group.|
+| goBand | [GroupOwnerBand](#groupownerband) | No| No| Frequency band of the group.|
 
 
-## GroupOwnerBand<sup>9+</sup>
+## GroupOwnerBand
 
 Enumerates the P2P group frequency bands.
 
@@ -2333,7 +2382,7 @@ Enumerates the P2P group frequency bands.
 | GO_BAND_5GHZ | 2 | 5 GHz.|
 
 
-## wifiManager.removeGroup<sup>9+</sup>
+## wifiManager.removeGroup
 
 removeGroup(): void
 
@@ -2347,7 +2396,7 @@ Removes this P2P group.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2356,16 +2405,16 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.removeGroup();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.removeGroup();  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
-## wifiManager.p2pConnect<sup>9+</sup>
+## wifiManager.p2pConnect
 
 p2pConnect(config: WifiP2PConfig): void
 
@@ -2379,15 +2428,15 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Parameters**
 
-| **Name**| **Type**| Mandatory| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| config | [WifiP2PConfig](#wifip2pconfig9) | Yes| P2P group configuration. The value of **DeviceAddressType** is a random device address by default.|
+| config | [WifiP2PConfig](#wifip2pconfig) | Yes| P2P group configuration. The value of **DeviceAddressType** is a random device address by default.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Incorrect parameter types.<br>2. Parameter verification failed. |
@@ -2462,7 +2511,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   console.info("start discover devices -> " + wifiManager.startDiscoverDevices());
 ```
 
-## wifiManager.p2pCancelConnect<sup>9+</sup>
+## wifiManager.p2pCancelConnect
 
 p2pCancelConnect(): void
 
@@ -2476,7 +2525,7 @@ Cancels the P2P connection being set up.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2485,16 +2534,16 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.p2pCancelConnect();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.p2pCancelConnect();  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
-## wifiManager.startDiscoverDevices<sup>9+</sup>
+## wifiManager.startDiscoverDevices
 
 startDiscoverDevices(): void
 
@@ -2510,7 +2559,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2519,16 +2568,16 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.startDiscoverDevices();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.startDiscoverDevices();  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
-## wifiManager.stopDiscoverDevices<sup>9+</sup>
+## wifiManager.stopDiscoverDevices
 
 stopDiscoverDevices(): void
 
@@ -2542,7 +2591,7 @@ Stops discovering devices.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -2551,20 +2600,20 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.stopDiscoverDevices();	
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.stopDiscoverDevices();  
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.getMultiLinkedInfo<sup>18+</sup>
 
 getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
-Obtains Wi-Fi connection information for multi-link operation (MLO).
+Obtains WLAN connection information for multi-link operation (MLO).
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2576,15 +2625,15 @@ Obtains Wi-Fi connection information for multi-link operation (MLO).
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
-  | &nbsp;Array&lt;[WifiLinkedInfo](#wifilinkedinfo9)&gt; | Wi-Fi connection information.|
+  | &nbsp;Array&lt;[WifiLinkedInfo](#wifilinkedinfo)&gt; | Wi-Fi connection information.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | -------- |
 | 201 | Permission denied. |
 | 801 | Capability not supported. |
@@ -2603,7 +2652,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
   }
 ```
 
-## WifiP2pGroupInfo<sup>9+</sup>
+## WifiP2pGroupInfo
 
 Represents the P2P group information.
 
@@ -2612,21 +2661,21 @@ Represents the P2P group information.
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | isP2pGo | boolean | No| No| Whether the device is the group owner. The value **true** indicates that the device is the group owner, and the value **false** indicates the opposite.|
-| ownerInfo | [WifiP2pDevice](#wifip2pdevice9) | No| No| Device information of the group.|
+| ownerInfo | [WifiP2pDevice](#wifip2pdevice) | No| No| Device information of the group.|
 | passphrase | string | No| No| Passphrase of the group.|
 | interface | string | No| No| Interface name.|
 | groupName | string | No| No| Group name.|
 | networkId | number | No| No| Network ID.|
 | frequency | number | No| No| Frequency of the group.|
-| clientDevices | [WifiP2pDevice[]](#wifip2pdevice9) | No| No| List of connected devices.|
+| clientDevices | [WifiP2pDevice[]](#wifip2pdevice) | No| No| List of connected devices.|
 | goIpAddress | string | No| No| IP address of the group.|
 
 
-## wifiManager.on('wifiStateChange')<sup>9+</sup>
+## wifiManager.on('wifiStateChange')
 
 on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to WLAN state changes. When the service exits, call off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered.
+Subscribes to WLAN state changes. When the service exits, call off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2636,7 +2685,7 @@ Subscribes to WLAN state changes. When the service exits, call off(type: 'wifiSt
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN state.|
@@ -2645,16 +2694,16 @@ Subscribes to WLAN state changes. When the service exits, call off(type: 'wifiSt
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
 **WLAN states** 
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Deactivated|
 | 1 | Activated|
@@ -2662,11 +2711,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | 3 | Deactivating|
 
 
-## wifiManager.off('wifiStateChange')<sup>9+</sup>
+## wifiManager.off('wifiStateChange')
 
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from WLAN state changes.
+Unsubscribes from WLAN state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2676,7 +2725,7 @@ Unsubscribes from WLAN state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiStateChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
@@ -2685,10 +2734,10 @@ Unsubscribes from WLAN state changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2708,11 +2757,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 ```
 
 
-## wifiManager.on('wifiConnectionChange')<sup>9+</sup>
+## wifiManager.on('wifiConnectionChange')
 
 on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to WLAN connection state changes. When the service exits, call off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;) to unregister the callback registered.
+Subscribes to WLAN connection state changes. When the service exits, call off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2722,14 +2771,14 @@ Subscribes to WLAN connection state changes. When the service exits, call off(ty
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN connection state.|
 
 **WLAN connection states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Disconnected.|
 | 1 | Connected.|
@@ -2738,18 +2787,18 @@ Subscribes to WLAN connection state changes. When the service exits, call off(ty
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiConnectionChange')<sup>9+</sup>
+## wifiManager.off('wifiConnectionChange')
 
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from WLAN connection state changes.
+Unsubscribes from WLAN connection state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2759,7 +2808,7 @@ Unsubscribes from WLAN connection state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiConnectionChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
@@ -2768,10 +2817,10 @@ Unsubscribes from WLAN connection state changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2790,11 +2839,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   wifiManager.off("wifiConnectionChange", recvWifiConnectionChangeFunc);
 ```
 
-## wifiManager.on('wifiScanStateChange')<sup>9+</sup>
+## wifiManager.on('wifiScanStateChange')
 
 on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to WLAN scan state changes. When the service exits, call off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered.
+Subscribes to WLAN scan state changes. When the service exits, call off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2804,14 +2853,14 @@ Subscribes to WLAN scan state changes. When the service exits, call off(type: 'w
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the WLAN scan state.|
 
 **WLAN scan states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Scan failed.|
 | 1 | Scan successful.|
@@ -2820,18 +2869,18 @@ Subscribes to WLAN scan state changes. When the service exits, call off(type: 'w
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiScanStateChange')<sup>9+</sup>
+## wifiManager.off('wifiScanStateChange')
 
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from WLAN scan state changes.
+Unsubscribes from WLAN scan state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2841,7 +2890,7 @@ Unsubscribes from WLAN scan state changes.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **wifiScanStateChange**.|
 | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
@@ -2850,10 +2899,10 @@ Unsubscribes from WLAN scan state changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2872,11 +2921,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
 ```
 
-## wifiManager.on('wifiRssiChange')<sup>9+</sup>
+## wifiManager.on('wifiRssiChange')
 
 on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to Wi-Fi received signal strength indicator (RSSI) changes. When the service exits, you need to call off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;) to remove the registered callback.
+Subscribes to WLAN received signal strength indicator (RSSI) changes. When the service exits, you need to call off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;) to remove the registered callback. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2884,7 +2933,7 @@ Subscribes to Wi-Fi received signal strength indicator (RSSI) changes. When the 
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **wifiRssiChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the RSSI, in dBm.|
@@ -2893,18 +2942,18 @@ Subscribes to Wi-Fi received signal strength indicator (RSSI) changes. When the 
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
-## wifiManager.off('wifiRssiChange')<sup>9+</sup>
+## wifiManager.off('wifiRssiChange')
 
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from Wi-Fi RSSI changes.
+Unsubscribes from WLAN RSSI changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2912,7 +2961,7 @@ Unsubscribes from Wi-Fi RSSI changes.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **wifiRssiChange**.|
 | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
@@ -2921,10 +2970,10 @@ Unsubscribes from Wi-Fi RSSI changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -2943,11 +2992,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   wifiManager.off("wifiRssiChange", recvWifiRssiChangeFunc);
 ```
  
-## wifiManager.on('hotspotStateChange')<sup>9+</sup>
+## wifiManager.on('hotspotStateChange')
 
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to hotspot state changes. When the service exits, call off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered.
+Subscribes to hotspot state changes. When the service exits, call off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2955,14 +3004,14 @@ Subscribes to hotspot state changes. When the service exits, call off(type: 'hot
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
 | callback | Callback&lt;number&gt; | Yes| Callback used to return the hotspot state change.|
 
 **Hotspot states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Deactivated|
 | 1 | Activated|
@@ -2973,18 +3022,18 @@ Subscribes to hotspot state changes. When the service exits, call off(type: 'hot
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
-## wifiManager.off('hotspotStateChange')<sup>9+</sup>
+## wifiManager.off('hotspotStateChange')
 
 off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from hotspot state changes.
+Unsubscribes from hotspot state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -2992,7 +3041,7 @@ Unsubscribes from hotspot state changes.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStateChange**.|
 | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
@@ -3001,10 +3050,10 @@ Unsubscribes from hotspot state changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2601000  | Operation failed. |
 
@@ -3024,11 +3073,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 ```
 
 
-## wifiManager.on('p2pStateChange')<sup>9+</sup>
+## wifiManager.on('p2pStateChange')
 
 on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered.
+Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3036,14 +3085,14 @@ Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStat
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
-| callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P state change.|
+| callback | Callback&lt;number&gt; | Yes| Callback used to return P2P state changes.|
 
 **P2P states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 1 | Available|
 | 2 | Opening|
@@ -3055,18 +3104,18 @@ Subscribes to P2P state changes. When the service exits, call off(type: 'p2pStat
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pStateChange')<sup>9+</sup>
+## wifiManager.off('p2pStateChange')
 
 off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from P2P state changes.
+Unsubscribes from P2P state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3074,7 +3123,7 @@ Unsubscribes from P2P state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pStateChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
@@ -3083,10 +3132,10 @@ Unsubscribes from P2P state changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
@@ -3105,11 +3154,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   wifiManager.off("p2pStateChange", recvP2pStateChangeFunc);
 ```
 
-## wifiManager.on('p2pConnectionChange')<sup>9+</sup>
+## wifiManager.on('p2pConnectionChange')
 
 on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-Subscribes to P2P connection state changes. When the service exits, call off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;) to unregister the callback registered.
+Subscribes to P2P connection state changes. When the service exits, call off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3117,27 +3166,27 @@ Subscribes to P2P connection state changes. When the service exits, call off(typ
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | Yes| Callback used to return the P2P connection state change.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | Yes| Callback used to return P2P connection state changes.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pConnectionChange')<sup>9+</sup>
+## wifiManager.off('p2pConnectionChange')
 
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
-Unsubscribes from P2P connection state changes.
+Unsubscribes from P2P connection state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3145,16 +3194,16 @@ Unsubscribes from P2P connection state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pConnectionChange**.|
-  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo9)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+  | callback | Callback&lt;[WifiP2pLinkedInfo](#wifip2plinkedinfo)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3176,11 +3225,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   wifiManager.off("p2pConnectionChange", recvP2pConnectionChangeFunc);
 ```
 
-## wifiManager.on('p2pDeviceChange')<sup>9+</sup>
+## wifiManager.on('p2pDeviceChange')
 
 on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
-Subscribes to P2P device state changes. When the service exits, call off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;) to unregister the callback registered.
+Subscribes to P2P device state changes. When the service exits, call off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**:
 
@@ -3190,44 +3239,44 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | Yes| Callback used to return the P2P connection state change.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | Yes| Callback used to return status changes.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pDeviceChange')<sup>9+</sup>
+## wifiManager.off('p2pDeviceChange')
 
 off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
-Unsubscribes from P2P device state changes.
+Unsubscribes from P2P device state changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDeviceChange**.|
-  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice9)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
+  | callback | Callback&lt;[WifiP2pDevice](#wifip2pdevice)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
-| 201<sup>10+</sup> | Permission denied.                 |
+| 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
@@ -3247,11 +3296,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   wifiManager.off("p2pDeviceChange", recvP2pDeviceChangeFunc);
 ```
 
-## wifiManager.on('p2pPeerDeviceChange')<sup>9+</sup>
+## wifiManager.on('p2pPeerDeviceChange')
 
 on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
-Subscribes to P2P peer device state changes. When the service exits, call off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;) to unregister the callback registered.
+Subscribes to P2P peer device state changes. When the service exits, call off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**:
 
@@ -3261,42 +3310,42 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | Yes| Callback used to return the P2P peer device state changes. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice)&gt; | Yes| Callback used to return the P2P peer device state changes. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pPeerDeviceChange')<sup>9+</sup>
+## wifiManager.off('p2pPeerDeviceChange')
 
 off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
-Unsubscribes from P2P peer device state changes.
+Unsubscribes from P2P peer device state changes. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pPeerDeviceChange**.|
-| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice9)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | Callback&lt;[WifiP2pDevice[]](#wifip2pdevice)&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201<sup>10+</sup> | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3318,11 +3367,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   wifiManager.off("p2pPeerDeviceChange", recvP2pPeerDeviceChangeFunc);
 ```
 
-## wifiManager.on('p2pPersistentGroupChange')<sup>9+</sup>
+## wifiManager.on('p2pPersistentGroupChange')
 
 on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
-Subscribes to P2P persistent group changes. When the service exits, call off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;) to unregister the callback registered.
+Subscribes to P2P persistent group changes. When the service exits, call off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3330,27 +3379,27 @@ Subscribes to P2P persistent group changes. When the service exits, call off(typ
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
-  | callback | Callback&lt;void&gt; | Yes| Callback used to return the P2P persistent group changes.|
+  | callback | Callback&lt;void&gt; | Yes| Callback used to return P2P persistent group state changes.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pPersistentGroupChange')<sup>9+</sup>
+## wifiManager.off('p2pPersistentGroupChange')
 
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
-Unsubscribes from P2P persistent group state changes.
+Unsubscribes from P2P persistent group state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3358,7 +3407,7 @@ Unsubscribes from P2P persistent group state changes.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **p2pPersistentGroupChange**.|
 | callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
@@ -3367,7 +3416,7 @@ Unsubscribes from P2P persistent group state changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
@@ -3389,11 +3438,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
   wifiManager.off("p2pPersistentGroupChange", recvP2pPersistentGroupChangeFunc);
 ```
 
-## wifiManager.on('p2pDiscoveryChange')<sup>9+</sup>
+## wifiManager.on('p2pDiscoveryChange')
 
 on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to P2P device discovery changes. When the service exits, call off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;) to unregister the callback registered.
+Subscribes to P2P device discovery changes. When the service exits, call off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3401,14 +3450,14 @@ Subscribes to P2P device discovery changes. When the service exits, call off(typ
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
   | callback | Callback&lt;number&gt; | Yes| Callback used to return the P2P device discovery changes.|
 
 **P2P discovered device states**
 
-| **Value**| **Description**|
+| Value| Description|
 | -------- | -------- |
 | 0 | Initial state.|
 | 1 | Discovered.|
@@ -3417,18 +3466,18 @@ Subscribes to P2P device discovery changes. When the service exits, call off(typ
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 
-## wifiManager.off('p2pDiscoveryChange')<sup>9+</sup>
+## wifiManager.off('p2pDiscoveryChange')
 
 off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from P2P device discovery state changes.
+Unsubscribes from P2P device discovery state changes. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
@@ -3436,7 +3485,7 @@ Unsubscribes from P2P device discovery state changes.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **p2pDiscoveryChange**.|
   | callback | Callback&lt;number&gt; | No| Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified event.|
@@ -3445,10 +3494,10 @@ Unsubscribes from P2P device discovery state changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| ID| Error Message|
 | -------- | ---------------------------- |
 | 201 | Permission denied.                 |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |
 

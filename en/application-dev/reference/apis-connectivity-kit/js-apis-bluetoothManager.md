@@ -19,7 +19,7 @@ The **Bluetooth** module provides classic Bluetooth capabilities and Bluetooth L
 ## Modules to Import
 
 ```js
-import bluetoothManager from '@ohos.bluetoothManager';
+import { bluetoothManager } from '@kit.ConnectivityKit';
 ```
 
 
@@ -4533,7 +4533,7 @@ try {
 
 getRssiValue(): Promise&lt;number&gt;
 
-Obtains the RSSI of the remote BLE device. This API uses a promise to return the result. It can be used only after a connection is set up by calling [connect](#connect).
+Obtains the RSSI of the remote BLE device. It can be used only after a connection is set up by calling [connect](#connect).
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. Use [ble.GattClientDevice#getRssiValue](js-apis-bluetooth-ble.md#getrssivalue-1) instead.

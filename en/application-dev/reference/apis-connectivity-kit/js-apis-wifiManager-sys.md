@@ -34,7 +34,7 @@ Enables WLAN partially, that is, enables P2P and Huawei Magneto Link (HML) while
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -45,13 +45,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		wifiManager.enableSemiWifi();
-	} catch(error) {
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    wifiManager.enableSemiWifi();
+  } catch(error) {
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.setScanAlwaysAllowed<sup>10+</sup>
@@ -59,6 +59,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 setScanAlwaysAllowed(isScanAlwaysAllowed: boolean): void
 
 Sets whether scan is always allowed.
+
+- Sets whether the device can scan for Wi-Fi hotspots when Wi-Fi is disabled.
+- After this function is enabled, the system can scan for nearby Wi-Fi hotspots even if Wi-Fi is disabled.
+- This function is mainly used in network discovery and location locating scenarios.
 
 **System API**: This is a system API.
 
@@ -68,7 +72,7 @@ Sets whether scan is always allowed.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | isScanAlwaysAllowed | boolean | Yes| Whether scan is always allowed. The value **true** indicates that scan is always allowed, and the value **false** indicates the opposite.|
 
@@ -76,7 +80,7 @@ Sets whether scan is always allowed.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
   | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -85,14 +89,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 | 2501000  | Operation failed.|
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let isScanAlwaysAllowed = true;
-		wifiManager.setScanAlwaysAllowed(isScanAlwaysAllowed);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let isScanAlwaysAllowed = true;
+    wifiManager.setScanAlwaysAllowed(isScanAlwaysAllowed);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## wifiManager.getScanAlwaysAllowed<sup>10+</sup>
@@ -109,7 +113,7 @@ Obtains whether scan is always allowed.
 
 **Return value**
 
-| **Type**| **Description**|
+| Type| Description|
 | -------- | -------- |
 | boolean| Whether scan is always allowed. The value **true** means scan is allowed, and the value **false** means the opposite.|
 
@@ -117,7 +121,7 @@ Obtains whether scan is always allowed.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -127,14 +131,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let isScanAlwaysAllowed = wifiManager.getScanAlwaysAllowed();
-		console.info("isScanAlwaysAllowed:" + isScanAlwaysAllowed);
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let isScanAlwaysAllowed = wifiManager.getScanAlwaysAllowed();
+    console.info("isScanAlwaysAllowed:" + isScanAlwaysAllowed);
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## WifiDeviceConfig<sup>9+</sup>
@@ -144,11 +148,10 @@ Represents the WLAN configuration.
 **System capability**: SystemCapability.Communication.WiFi.STA
 
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | creatorUid | number | No| Yes| ID of the creator.<br> **System API**: This is a system API.|
 | disableReason | number | No| Yes| Reason for disabling Wi-Fi.<br> **-1**: unknown reason<br>**0**: not disabled<br>**1**: association refused<br>**2**: authentication failed<br> **3**: DHCP failure<br>**4**: no Internet connection<br> **5**: no authentication credentials<br>**6**: no Internet connection permanently<br> **7**: disabled by Wi-Fi manager<br>**8**: disabled due to incorrect password<br> **9**: authentication without subscription<br>**10**: private EAP authentication error<br> **11**: network not found<br>**12**: consecutive failures<br> **13**: disabled by the system<br>**14**: EAP-AKA authentication failed<br> **15**: association removed<br>**16**: maximum number of forbidden network selections<br> **System API**: This is a system API.|
-| netId | number | No| Yes| Network ID.<br> **System API**: This is a system API.|
 | randomMacType | number | No| Yes| MAC address type. <br>The value **0** indicates a random MAC address, and the value **1** indicates a device MAC address.<br> **System API**: This is a system API.|
 | randomMacAddr | string | No| Yes| MAC address.<br> **System API**: This is a system API.|
 | ipType | [IpType](#iptype9) | No| Yes| IP address type.<br> **System API**: This is a system API.|
@@ -183,7 +186,7 @@ Represents IP configuration information.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ipAddress | number | No| No| IP address.|
 | gateway | number | No| No| Gateway.|
@@ -200,12 +203,12 @@ Represents the Wi-Fi proxy configuration.
 
 **System capability**: SystemCapability.Communication.WiFi.STA
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | proxyMethod | ProxyMethod | No| Yes| Proxy method.|
 | pacWebAddress | string | No| Yes| PAC web address of the proxy automatically configured.|
 | serverHostName | string | No| Yes| Server host name of the proxy manually configured.|
-| serverPort | number | Yes| No| Server port of the proxy manually configured.|
+| serverPort | number | No| Yes| Server port of the proxy manually configured.|
 | exclusionObjects | string | No| Yes| Excluded objects of the manually configured proxy. Multiple objects are separated by commas (,).|
 
 ## ProxyMethod<sup>10+</sup>
@@ -237,7 +240,7 @@ Connects to the specified network. If the device is already connected to a hotsp
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| WLAN configuration. The default **bssidType** is random device address.|
 
@@ -245,30 +248,30 @@ Connects to the specified network. If the device is already connected to a hotsp
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
-| 2501001  | Wi-Fi STA disabled.|
+| 2501001  | WLAN STA disabled.|
 
 **Example**
 ```ts
-	import { wifiManager } from '@kit.ConnectivityKit';
+  import { wifiManager } from '@kit.ConnectivityKit';
 
-	try {
-		let config:wifiManager.WifiDeviceConfig = {
-			ssid : "****",
-			preSharedKey : "****",
-			securityType : 3
-		}
-		wifiManager.connectToDevice(config);
-				
-	}catch(error){
-		console.error("failed:" + JSON.stringify(error));
-	}
+  try {
+    let config:wifiManager.WifiDeviceConfig = {
+      ssid : "****",
+      preSharedKey : "****",
+      securityType : 3
+    }
+    wifiManager.connectToDevice(config);
+        
+  }catch(error){
+    console.error("failed:" + JSON.stringify(error));
+  }
 ```
 
 ## WifiLinkedInfo<sup>9+</sup>
@@ -325,7 +328,7 @@ Obtains the features supported by this device.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | number | Feature value. |
 
@@ -348,7 +351,7 @@ Obtains the features supported by this device.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -383,7 +386,7 @@ Obtains the Wi-Fi state.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | [WifiDetailState](#wifidetailstate12) | Wi-Fi state obtained.|
 
@@ -391,7 +394,7 @@ Obtains the Wi-Fi state.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -446,7 +449,7 @@ Re-associates with the network.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -481,7 +484,7 @@ Reconnects to the network.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -514,13 +517,13 @@ Updates network configuration.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | config | [WifiDeviceConfig](#wifideviceconfig9) | Yes| New WLAN configuration.|
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | number | ID of the updated network configuration. The value **-1** indicates that the operation has failed.|
 
@@ -528,7 +531,7 @@ Updates network configuration.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -542,15 +545,15 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config:wifiManager.WifiDeviceConfig = {
-		ssid : "****",
-		preSharedKey : "****",
-		securityType : 3
-	}
-	let ret = wifiManager.updateNetwork(config);
-	console.info("ret:" + ret);
+  let config:wifiManager.WifiDeviceConfig = {
+    ssid : "****",
+    preSharedKey : "****",
+    securityType : 3
+  }
+  let ret = wifiManager.updateNetwork(config);
+  console.info("ret:" + ret);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -568,7 +571,7 @@ Disables network configuration.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | netId | number | Yes| Network configuration ID.|
 
@@ -576,7 +579,7 @@ Disables network configuration.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -590,10 +593,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let netId = 0;
-	wifiManager.disableNetwork(netId);	
+  let netId = 0;
+  wifiManager.disableNetwork(netId);  
 } catch (error) {
-	console.error(`failed: ${JSON.stringify(error)}`);
+  console.error(`failed: ${JSON.stringify(error)}`);
 }
 ```
 
@@ -611,7 +614,7 @@ Disables the network connection, disconnects the connected network, and does not
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | netId | int | Yes| Network configuration ID.|
   | blockDuration | int | Yes| Network disabling duration, in seconds.|
@@ -620,7 +623,7 @@ Disables the network connection, disconnects the connected network, and does not
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) and [Universal Error Codes](../errorcode-universal.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -633,11 +636,11 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let netId = 0;
-	let blockDuration = 300;
-	wifiManager.disableNetwork(netId, blockDuration);	
+  let netId = 0;
+  let blockDuration = 300;
+  wifiManager.disableNetwork(netId, blockDuration);  
 } catch (error) {
-	console.error(`failed: ${JSON.stringify(error)}`);
+  console.error(`failed: ${JSON.stringify(error)}`);
 }
 ```
 
@@ -657,7 +660,7 @@ Removes the configuration of all networks.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -670,9 +673,9 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.removeAllNetwork();		
+  wifiManager.removeAllNetwork();    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -690,7 +693,7 @@ Obtains the list of 5 GHz channels supported by this device.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | &nbsp;Array&lt;number&gt; | List of 5 GHz channels supported by the device.|
 
@@ -698,7 +701,7 @@ Obtains the list of 5 GHz channels supported by this device.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -710,10 +713,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let channelList = wifiManager.get5GChannelList();
-	console.info("channelList:" + JSON.stringify(channelList));		
+  let channelList = wifiManager.get5GChannelList();
+  console.info("channelList:" + JSON.stringify(channelList));    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 ## wifiManager.getDisconnectedReason<sup>10+</sup>
@@ -732,7 +735,7 @@ Obtains the reason of the latest disconnection.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 801 | Capability not supported.          |
@@ -740,7 +743,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 **Return value**
 
-| **Type**| **Description**|
+| Type| Description|
 | -------- | -------- |
 | [DisconnectedReason](#disconnectedreason-10) | Returns the reason of the latest disconnection obtained.|
 
@@ -749,16 +752,16 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let disconnectedReason = wifiManager.getDisconnectedReason();	
+  let disconnectedReason = wifiManager.getDisconnectedReason();  
     console.info("disconnectedReason:" + disconnectedReason);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
 ## DisconnectedReason <sup>10+</sup>
 
-Enumerates the Wi-Fi disconnection reasons.
+Enumerates the reasons why the WLAN connection is disconnected. This API is used to diagnose network connection problems and optimize connection policies.
 
 **System API**: This is a system API.
 
@@ -774,9 +777,9 @@ Enumerates the Wi-Fi disconnection reasons.
 
 startPortalCertification(): void
 
-**System API**: This is a system API.
+Starts the Portal authentication process, which is used to process public WLAN networks (such as networks in hotels, airports, and cafes) that require web page authentication.
 
-Starts portal certification.
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -786,7 +789,7 @@ Starts portal certification.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -800,9 +803,9 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.startPortalCertification();
+  wifiManager.startPortalCertification();
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -835,9 +838,9 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md) an
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.startWifiDetection();
+  wifiManager.startWifiDetection();
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -845,9 +848,9 @@ try {
 
 enableHiLinkHandshake(isHiLinkEnable: boolean, bssid: string, config: WifiDeviceConfig): void
 
-**System API**: This is a system API.
-
 Enables or disables HiLink.
+
+**System API**: This is a system API.
 
 **Required permissions**: ohos.permission.SET_WIFI_INFO and ohos.permission.MANAGE_WIFI_CONNECTION
 
@@ -855,7 +858,7 @@ Enables or disables HiLink.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | isHiLinkEnable | boolean | Yes| Whether to enable hiLink. The value **true** means to enable HiLink, and the value **false** means the opposite.|
 | bssid | string | Yes| MAC address of the hotspot, for example, **00:11:22:33:44:55**.|
@@ -865,7 +868,7 @@ Enables or disables HiLink.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -880,17 +883,17 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 // You can obtain config data by using getScanInfoList, which can be used only when WifiScanInfo.isHiLinkNetwork is true.
 let config:wifiManager.WifiDeviceConfig = {
-	ssid : "****",
-	preSharedKey : "****",
-	securityType : 0,
-	bssid : "38:37:8b:80:bf:cc",
-	bssidType : 1,
-	isHiddenSsid : false
-}	
+  ssid : "****",
+  preSharedKey : "****",
+  securityType : 0,
+  bssid : "38:37:8b:80:bf:cc",
+  bssidType : 1,
+  isHiddenSsid : false
+}  
 try {
-	wifiManager.enableHiLinkHandshake(true, config.bssid, config);
+  wifiManager.enableHiLinkHandshake(true, config.bssid, config);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -910,7 +913,7 @@ Resets Wi-Fi configurations.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -923,9 +926,9 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.factoryReset();
+  wifiManager.factoryReset();
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 ## wifiManager.enableHotspot<sup>9+</sup>
@@ -944,7 +947,7 @@ Enables this hotspot. This API is an asynchronous interface. The **hotspotStateC
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -978,7 +981,7 @@ Disables this hotspot. This API is an asynchronous interface. The **hotspotState
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -990,9 +993,9 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	wifiManager.disableHotspot();	
+  wifiManager.disableHotspot();  
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1000,7 +1003,7 @@ try {
 
 isHotspotDualBandSupported(): boolean
 
-Checks whether the hotspot supports dual band.
+Checks whether the WLAN hotspot function of the current device supports dual bands (both 2.4 GHz and 5 GHz).
 
 **System API**: This is a system API.
 
@@ -1010,7 +1013,7 @@ Checks whether the hotspot supports dual band.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Whether the hotspot supports dual band. The value **true** indicates dual band is supported, and the value **false** indicates the opposite.|
 
@@ -1018,7 +1021,7 @@ Checks whether the hotspot supports dual band.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1030,10 +1033,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let ret = wifiManager.isHotspotDualBandSupported();
-	console.info("result:" + ret);		
+  let ret = wifiManager.isHotspotDualBandSupported();
+  console.info("result:" + ret);    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1041,7 +1044,7 @@ try {
 
 isOpenSoftApAllowed(): boolean
 
-Checks whether Wi-Fi hotspot operations are allowed under certain circumstances. When Airplane mode is enabled, if the system does not support the coexistence of SoftAP and STA or signal bridging, the hotspot switch cannot be operated.
+Checks whether WLAN hotspot operations are allowed under certain circumstances. When Airplane mode is enabled, if the system does not support the coexistence of SoftAP and STA or signal bridging, the hotspot switch cannot be operated.
 
 **System API**: This is a system API.
 
@@ -1051,7 +1054,7 @@ Checks whether Wi-Fi hotspot operations are allowed under certain circumstances.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | boolean | Whether the hotspot supports dual band. The value **true** indicates dual band is supported, and the value **false** indicates the opposite.|
 
@@ -1059,7 +1062,7 @@ Checks whether Wi-Fi hotspot operations are allowed under certain circumstances.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1071,10 +1074,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let ret = wifiManager.isOpenSoftApAllowed();
-	console.info("result:" + ret);
+  let ret = wifiManager.isOpenSoftApAllowed();
+  console.info("result:" + ret);
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1082,7 +1085,7 @@ try {
 
 setHotspotConfig(config: HotspotConfig): void
 
-Sets hotspot configuration.
+Sets the WLAN hotspot configuration information, including the SSID, encryption mode, password, bandwidth, channel, and maximum number of connected STAs.
 
 **System API**: This is a system API.
 
@@ -1092,7 +1095,7 @@ Sets hotspot configuration.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | config | [HotspotConfig](#hotspotconfig9) | Yes| Hotspot configuration to set.|
 
@@ -1100,7 +1103,7 @@ Sets hotspot configuration.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1113,18 +1116,18 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config:wifiManager.HotspotConfig = {
-		ssid: "****",
-		securityType: 3,
-		band: 0,
-		channel: 0,
-		preSharedKey: "****",
-		maxConn: 0
-	}
-	let ret = wifiManager.setHotspotConfig(config);
-	console.info("result:" + ret);		
+  let config:wifiManager.HotspotConfig = {
+    ssid: "****",
+    securityType: 3,
+    band: 0,
+    channel: 0,
+    preSharedKey: "****",
+    maxConn: 0
+  }
+  let ret = wifiManager.setHotspotConfig(config);
+  console.info("result:" + ret);    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1136,10 +1139,10 @@ Represents the hotspot configuration.
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Core
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| SSID of the hotspot, in UTF-8 format.|
-| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype9)| No| No| Security type.|
+| securityType | [WifiSecurityType](js-apis-wifiManager.md#wifisecuritytype)| No| No| Security type.|
 | band | number | No| No| Hotspot band. The value **1** stands for 2.4 GHz, the value **2** for 5 GHz, and the value **3** for dual band.|
 | channel<sup>10+</sup> | number | No| Yes| Hotspot channel (channels 1 to 14 for 2.4 GHz, and channels 7 to 196 for 5 GHz)|
 | preSharedKey | string | No| No| PSK of the hotspot.|
@@ -1150,7 +1153,7 @@ Represents the hotspot configuration.
 
 getHotspotConfig(): HotspotConfig
 
-Obtains hotspot configuration.
+Obtains the WLAN hotspot configuration information, including the SSID, encryption mode, password, bandwidth, channel, and maximum number of connected STAs.
 
 **System API**: This is a system API.
 
@@ -1160,7 +1163,7 @@ Obtains hotspot configuration.
 
 **Return value**
 
-  | **Type**| **Description**|
+  | Type| Description|
   | -------- | -------- |
   | [HotspotConfig](#hotspotconfig9) | Hotspot configuration obtained.|
 
@@ -1168,7 +1171,7 @@ Obtains hotspot configuration.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1180,10 +1183,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config = wifiManager.getHotspotConfig();
-	console.info("result:" + JSON.stringify(config));		
+  let config = wifiManager.getHotspotConfig();
+  console.info("result:" + JSON.stringify(config));    
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1191,7 +1194,7 @@ try {
 
 getStations(): &nbsp;Array&lt;StationInfo&gt;
 
-Obtains information about the connected stations.
+Obtains the list of all devices that are currently connected to the hotspot of the device.
 
 **System API**: This is a system API.
 
@@ -1205,7 +1208,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO and ohos.permission.MANA
 
 **Return value**
 
-| **Type**| **Description**|
+| Type| Description|
 | -------- | -------- |
 | &nbsp;Array&lt;[StationInfo](#stationinfo9)&gt; | Connected stations obtained. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **macAddress** in the return value is a real MAC address; otherwise, **macAddress** is a random MAC address.|
 
@@ -1213,7 +1216,7 @@ API version 10 and later: ohos.permission.GET_WIFI_INFO and ohos.permission.MANA
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1225,22 +1228,22 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let stations = wifiManager.getStations();
-	console.info("result:" + JSON.stringify(stations));		
+  let stations = wifiManager.getStations();
+  console.info("result:" + JSON.stringify(stations));    
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
 ## StationInfo<sup>9+</sup>
 
-Represents the station information.
+Represents the station information. Contains the details about the device that is connected to the WLAN.
 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Core
 
-| **Name**| **Type**| **Read-only**| **Optional**| **Description**|
+| Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | name | string | No| No| Device name.|
 | macAddress | string | No| No| MAC address.|
@@ -1261,7 +1264,7 @@ Adds a device to the list of blocked devices of the hotspot. Devices in the list
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | stationInfo | [StationInfo](#stationinfo9) | Yes| Device to add.|
 
@@ -1269,7 +1272,7 @@ Adds a device to the list of blocked devices of the hotspot. Devices in the list
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1283,15 +1286,15 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config:wifiManager.StationInfo = {
-		name : "testSsid",
-		macAddress : "11:22:33:44:55:66",
-		ipAddress : "192.168.1.111"
-	}
-	// The device can be added to the block list only after the hotspot is enabled.
-	wifiManager.addHotspotBlockList(config);
+  let config:wifiManager.StationInfo = {
+    name : "testSsid",
+    macAddress : "11:22:33:44:55:66",
+    ipAddress : "192.168.1.111"
+  }
+  // The device can be added to the block list only after the hotspot is enabled.
+  wifiManager.addHotspotBlockList(config);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1309,7 +1312,7 @@ Deletes a device from the list of blocked devices of the hotspot.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | stationInfo | [StationInfo](#stationinfo9) | Yes| Device to delete.|
 
@@ -1317,7 +1320,7 @@ Deletes a device from the list of blocked devices of the hotspot.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1331,14 +1334,14 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let config:wifiManager.StationInfo = {
-		name : "testSsid",
-		macAddress : "11:22:33:44:55:66",
-		ipAddress : "192.168.1.111"
-	}
-	wifiManager.delHotspotBlockList(config);
+  let config:wifiManager.StationInfo = {
+    name : "testSsid",
+    macAddress : "11:22:33:44:55:66",
+    ipAddress : "192.168.1.111"
+  }
+  wifiManager.delHotspotBlockList(config);
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
  ```
 
@@ -1346,7 +1349,7 @@ try {
 
 getHotspotBlockList(): Array&lt;StationInfo&gt;
 
-Obtains the list of blocked devices of the hotspot.
+Obtains the list of devices that are in the blocklist of the current WLAN hotspot. This API is valid when the device is in hotspot (AP) mode.
 
 **System API**: This is a system API.
 
@@ -1356,7 +1359,7 @@ Obtains the list of blocked devices of the hotspot.
 
 **Return value**
 
-| **Type**| **Description**|
+| Type| Description|
 | -------- | -------- |
 | &nbsp;Array&lt;[StationInfo](#stationinfo9)&gt; | List of blocked devices obtained.|
 
@@ -1364,7 +1367,7 @@ Obtains the list of blocked devices of the hotspot.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
   | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1378,10 +1381,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let data = wifiManager.getHotspotBlockList();
-	console.info("result:" + JSON.stringify(data));
+  let data = wifiManager.getHotspotBlockList();
+  console.info("result:" + JSON.stringify(data));
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1389,7 +1392,9 @@ try {
 
 deletePersistentGroup(netId: number): void
 
-Deletes a persistent group.
+Deletes the permanent WLAN group configuration of a specified network. This API is used to clear the saved WLAN network configuration information so that the WLAN network cannot be automatically connected.
+
+- Deletes the permanent group information previously established with the P2P device according to the network ID, and performs P2P negotiation again when establishing a P2P connection with the P2P device subsequently.
 
 **System API**: This is a system API.
 
@@ -1400,7 +1405,7 @@ Deletes a persistent group.
 **Parameters**
 
 
-  | **Name**| **Type**| Mandatory| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | netId | number | Yes| ID of the group to delete.|
 
@@ -1408,7 +1413,7 @@ Deletes a persistent group.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1422,10 +1427,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let netId = 0;
-	wifiManager.deletePersistentGroup(netId);	
+  let netId = 0;
+  wifiManager.deletePersistentGroup(netId);  
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1449,13 +1454,13 @@ API version 10 and later : ohos.permission.GET_WIFI_INFO
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo9)&gt;&nbsp;&gt; | Promise used to return the group information obtained. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| Promise&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo)&gt;&nbsp;&gt; | Promise used to return the group information obtained. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1465,19 +1470,20 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 ```ts
 import { wifiManager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-wifiManager.getP2pGroups((err, data:wifiManager.WifiP2pGroupInfo) => {
+wifiManager.getP2pGroups((err: BusinessError, data:wifiManager.WifiP2pGroupInfo[]) => {
 if (err) {
     console.error("get P2P groups error");
     return;
 }
-	console.info("get P2P groups: " + JSON.stringify(data));
+  console.info("get P2P groups: " + JSON.stringify(data));
 });
 
 wifiManager.getP2pGroups().then(data => {
-	console.info("get P2P groups: " + JSON.stringify(data));
+  console.info("get P2P groups: " + JSON.stringify(data));
 });
-	
+  
 ```
 
 
@@ -1501,13 +1507,13 @@ API version 10 and later : ohos.permission.GET_WIFI_INFO
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo9)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **error** is **0** and **data** is the group information obtained. If the operation fails, **error** is not **0**. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
+| callback | AsyncCallback&lt;&nbsp;Array&lt;[WifiP2pGroupInfo](js-apis-wifiManager.md#wifip2pgroupinfo)&gt;&gt; | Yes| Callback used to return the result. If the operation is successful, **error** is **0** and **data** is the group information obtained. If the operation fails, **error** is not **0**. If the application has the **ohos.permission.GET_WIFI_PEERS_MAC** permission, **deviceAddress** in the return value is a real device address; otherwise, **deviceAddress** is a random device address.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1529,7 +1535,7 @@ Sets the device name.
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | devName | string | Yes| Device name.|
 
@@ -1537,7 +1543,7 @@ Sets the device name.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1551,10 +1557,10 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let name = "****";
-	wifiManager.setDeviceName(name);	
+  let name = "****";
+  wifiManager.setDeviceName(name);  
 } catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
 
@@ -1563,7 +1569,7 @@ try {
 
 on(type: 'streamChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to Wi-Fi stream changes. When the service exits, call off(type: 'streamChange', callback?: Callback&lt;number&gt;) to unregister the callback registered.
+Subscribes to Wi-Fi stream changes. When the service exits, call **off(type: 'streamChange', callback?: Callback&lt;number&gt;)** to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1573,7 +1579,7 @@ Subscribes to Wi-Fi stream changes. When the service exits, call off(type: 'stre
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
 | callback | Callback&lt;number&gt; | Yes| Callback used to return the Wi-Fi stream change, which can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
@@ -1582,7 +1588,7 @@ Subscribes to Wi-Fi stream changes. When the service exits, call off(type: 'stre
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1594,7 +1600,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 off(type: 'streamChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from Wi-Fi stream changes.
+Unsubscribes from Wi-Fi stream changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1604,7 +1610,7 @@ Unsubscribes from Wi-Fi stream changes.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **streamChange**.|
 | callback | Callback&lt;number&gt; | No| Callback to unregister. The stream change can be any of the following values:<br>- **0**: No stream.<br>- **1**: Downward.<br>- **2**: Upward.<br>- **3**: Bidirectional.|
@@ -1613,7 +1619,7 @@ Unsubscribes from Wi-Fi stream changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1641,7 +1647,7 @@ wifiManager.off("streamChange", recvStreamChangeFunc);
 
 on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 
-Subscribes to Wi-Fi device configuration changes. When the service exits, call off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;) to unregister the callback registered.
+Subscribes to WLAN device configuration changes. When the service exits, call off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1651,7 +1657,7 @@ Subscribes to Wi-Fi device configuration changes. When the service exits, call o
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **deviceConfigChange**.|
 | callback | Callback&lt;number&gt; | Yes| Callback for device configuration changes.<br>**0**: Configuration is added. **1**: Configuration is modified. **2**: Configuration is deleted.|
@@ -1660,7 +1666,7 @@ Subscribes to Wi-Fi device configuration changes. When the service exits, call o
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1672,7 +1678,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 
-Unsubscribes from Wi-Fi device configuration changes.
+Unsubscribes from WLAN device configuration changes. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1682,7 +1688,7 @@ Unsubscribes from Wi-Fi device configuration changes.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **deviceConfigChange**.|
 | callback | Callback&lt;number&gt; | No| Callback for device configuration changes.<br>**0**: Configuration is added. **1**: Configuration is modified. **2**: Configuration is deleted.|
@@ -1691,7 +1697,7 @@ Unsubscribes from Wi-Fi device configuration changes.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1708,10 +1714,10 @@ let recvDeviceConfigChangeFunc = (result:number) => {
 }
 
 // Register an event.
-wifi.on("deviceConfigChange", recvDeviceConfigChangeFunc);
+wifiManager.on("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 // Unregister an event.
-wifi.off("deviceConfigChange", recvDeviceConfigChangeFunc);
+wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 ```
 
@@ -1719,7 +1725,7 @@ wifi.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 
 on(type: 'hotspotStaJoin', callback: Callback&lt;StationInfo&gt;): void
 
-Subscribes to the event of an STA joining a Wi-Fi hotspot. When the service exits, call off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;) to unregister the callback registered.
+Subscribes to the event of an STA joining a WLAN hotspot. When the service exits, call off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1729,7 +1735,7 @@ Subscribes to the event of an STA joining a Wi-Fi hotspot. When the service exit
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
 | callback | Callback&lt;StationInfo&gt; | Yes| Callback used to return the event.|
@@ -1738,7 +1744,7 @@ Subscribes to the event of an STA joining a Wi-Fi hotspot. When the service exit
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1750,7 +1756,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 off(type: 'hotspotStaJoin', callback?: Callback&lt;StationInfo&gt;): void
 
-Unsubscribes from the event of an STA joining a Wi-Fi hotspot.
+Unsubscribes from the event of an STA joining a WLAN hotspot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1760,7 +1766,7 @@ Unsubscribes from the event of an STA joining a Wi-Fi hotspot.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaJoin**.|
 | callback | Callback&lt;StationInfo&gt; | No| Callback to unregister.|
@@ -1769,7 +1775,7 @@ Unsubscribes from the event of an STA joining a Wi-Fi hotspot.
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1797,7 +1803,7 @@ wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 
 on(type: 'hotspotStaLeave', callback: Callback&lt;StationInfo&gt;): void
 
-Subscribes to the event of an STA leaving a Wi-Fi hotspot. When the service exits, call off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;) to unregister the callback registered.
+Subscribes to the event of an STA leaving a WLAN hotspot. When the service exits, call off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;) to unregister the callback registered. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1807,16 +1813,16 @@ Subscribes to the event of an STA leaving a Wi-Fi hotspot. When the service exit
 
 **Parameters**
 
-  | **Name**| **Type**| **Mandatory**| **Description**|
+  | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-  | callback | Callback&lt;StationInf]&gt; | Yes| Callback used to return the event.|
+  | callback | Callback&lt;StationInf&gt; | Yes| Callback used to return the event.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1828,7 +1834,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 off(type: 'hotspotStaLeave', callback?: Callback&lt;StationInfo&gt;): void
 
-Unsubscribes from the event of an STA leaving a Wi-Fi hotspot.
+Unsubscribes from the event of an STA leaving a WLAN hotspot. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1838,16 +1844,16 @@ Unsubscribes from the event of an STA leaving a Wi-Fi hotspot.
 
 **Parameters**
 
-| **Name**| **Type**| **Mandatory**| **Description**|
+| Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Event type, which has a fixed value of **hotspotStaLeave**.|
-| callback | Callback&lt;StationInf]&gt; | No| Callback to unregister.|
+| callback | Callback&lt;StationInf&gt; | No| Callback to unregister.|
 
 **Error codes**
 
 For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
-| **ID**| **Error Message**|
+| Error Codes| Error Message|
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
@@ -1915,9 +1921,9 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 import { wifiManager } from '@kit.ConnectivityKit';
 
 try {
-	let ret = wifiManager.isRandomMacDisabled();
-	console.info("result:" + ret);
+  let ret = wifiManager.isRandomMacDisabled();
+  console.info("result:" + ret);
 }catch (error) {
-	console.error("failed:" + JSON.stringify(error));
+  console.error("failed:" + JSON.stringify(error));
 }
 ```
