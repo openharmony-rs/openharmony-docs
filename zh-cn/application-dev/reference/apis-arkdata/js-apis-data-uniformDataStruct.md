@@ -72,21 +72,16 @@ let plainTextDetails : Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
 }
-try {
-   let plainText: uniformDataStruct.PlainText = {
-    uniformDataType: 'general.plain-text',
-    textContent: 'This is plainText textContent example',
-    textAbstract: 'this is textAbstract',
-    details: plainTextDetails
-    };
-    console.info('plainText.uniformDataType: ' + plainText.uniformDataType);
-    console.info('plainText.details: ' + JSON.stringify(plainText.details));
-    let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
-} catch (err) {
-  const error = err as BusinessError;
-  console.info(` error.code: ${error.code} , error.message: ${error.message}`);
-  console.info(' error: ' + JSON.stringify(error));
-}
+
+let plainText: uniformDataStruct.PlainText = {
+  uniformDataType: 'general.plain-text',
+  textContent: 'This is plainText textContent example',
+  textAbstract: 'this is textAbstract',
+  details: plainTextDetails
+};
+console.info('plainText.uniformDataType: ' + plainText.uniformDataType);
+console.info('plainText.details: ' + JSON.stringify(plainText.details));
+let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 ```
 
 ## Hyperlink
