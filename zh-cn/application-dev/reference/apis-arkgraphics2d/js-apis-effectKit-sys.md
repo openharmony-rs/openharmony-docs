@@ -288,7 +288,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ## Filter
 
-图像效果类用于将指定效果添加到输入图像。调用Filter方法前，需先通过[createEffect](#effectkitcreateeffect)创建Filter实例。
+图像效果类用于将指定效果添加到输入图像。调用Filter方法前，需先通过[createEffect](js-apis-effectKit.md#effectkitcreateeffect)创建Filter实例。
 
 ### EllipticalMaskRadius<sup>23+</sup>
 type EllipticalMaskRadius = [ double, double ]
