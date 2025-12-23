@@ -7,7 +7,7 @@
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
 
-依赖当前元服务的上下文，创建AtomicServiceMenuBar对象，用于操控元服务右上角菜单功能胶囊的行为，包括菜单功能胶囊的显示、隐藏。
+依赖当前元服务的上下文，创建AtomicServiceMenuBar对象，用于操控元服务右上角菜单功能胶囊的显示与隐藏。
 
 > **说明：**
 >
@@ -114,10 +114,10 @@ struct Index {
   }
 }
 ```
-点击“隐藏menubar”按钮后，菜单功能胶囊消失。
+点击“隐藏menubar”按钮后，菜单功能胶囊隐藏。
 
 <img src="figures/AtomicServiceMenuBarDemo01.png" alt="AtomicServiceMenuBarDemo02" width="300">
 
-点击“显示menubar”按钮后，菜单功能胶囊出现。
+点击“显示menubar”按钮后，菜单功能胶囊显示。
 
 <img src="figures/AtomicServiceMenuBarDemo02.png" alt="AtomicServiceMenuBarDemo02" width="300">
