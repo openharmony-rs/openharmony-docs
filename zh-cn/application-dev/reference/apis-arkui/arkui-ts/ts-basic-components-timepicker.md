@@ -63,7 +63,7 @@ Date对象用于处理日期和时间，使用方式如下。
 
 | 参数名   | 类型   | 必填 | 说明   |
 | ------- | ------ | ---- | ------ |
-| value   | number&nbsp;\|&nbsp;string  | 是 | 设置日期格式。<br/>number：毫秒，自1970年1月1日 00:00:00以来的毫秒数。<br/>string：时间格式的字符串，如‘2025-02-20 08:00:00’或‘2025-02-20T08:00:00’。|
+| value   | number&nbsp;\|&nbsp;string  | 是 | 设置日期格式。<br/>number：毫秒，自1970年1月1日00:00:00开始的毫秒数。<br/>string：时间格式的字符串，如‘2025-02-20 08:00:00’或‘2025-02-20T08:00:00’。|
 
 **方式3：** new Date(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number)
 
@@ -109,7 +109,7 @@ Date对象用于处理日期和时间，使用方式如下。
 
 useMilitaryTime(value: boolean)
 
-设置时间是否以24小时制展示，默认以12小时制展示。
+设置时间是否以24小时制展示，未通过该接口设置时，默认跟随系统设置展示。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -119,13 +119,13 @@ useMilitaryTime(value: boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | 是   | 时间是否以24小时制展示。<br/>- true：时间以24小时制展示。<br/>- false：时间以12小时制展示。<br/>默认值：跟随系统设置 |
+| value  | boolean | 是   | 时间是否以24小时制展示。<br/>- true：时间以24小时制展示。<br/>- false：时间以12小时制展示。|
 
 ### useMilitaryTime<sup>18+</sup>
 
 useMilitaryTime(isMilitaryTime: Optional\<boolean>)
 
-设置展示时间是否为24小时制，默认展示时间为12小时制。与[useMilitaryTime](#usemilitarytime)相比，isMilitaryTime参数新增了对undefined类型的支持。
+设置展示时间是否为24小时制，未通过该接口设置时，默认跟随系统设置展示。与[useMilitaryTime](#usemilitarytime)相比，isMilitaryTime参数新增了对undefined类型的支持。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -135,7 +135,7 @@ useMilitaryTime(isMilitaryTime: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                                       |
 | ------ | ------- | ---- | ------------------------------------------ |
-| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 展示时间是否为24小时制。<br/>- true：展示时间为24小时制。<br/>- false：展示时间为12小时制。<br/>默认值：跟随系统设置<br/>当isMilitaryTime的值为undefined时，使用默认值。|
+| isMilitaryTime | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 展示时间是否为24小时制。<br/>- true：展示时间为24小时制。<br/>- false：展示时间为12小时制。<br/>当isMilitaryTime的值为undefined时，跟随系统设置。|
 
 ### disappearTextStyle<sup>10+</sup>
 
@@ -339,7 +339,7 @@ enableHapticFeedback(enable: boolean)
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
-```json
+``` json
 "requestPermissions": [
    {
       "name": "ohos.permission.VIBRATE",
@@ -365,7 +365,7 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
 
-```json
+``` json
 "requestPermissions": [
    {
       "name": "ohos.permission.VIBRATE",
