@@ -105,8 +105,8 @@
 
 | 名称   | 类型 | 只读 | 可选 | 说明               |
 | ------ | -------- | ---- | ---- | ------------------ |
-| left   | number   | 否   | 否   | 矩形区域的左边界，单位为vp。 |
-| top    | number   | 否   | 否   | 矩形区域的上边界，单位为vp。 |
+| left   | number   | 否   | 否   | 矩形区域的左边界值，单位为vp。 |
+| top    | number   | 否   | 否   | 矩形区域的上边界值，单位为vp。 |
 | width  | number   | 否   | 否   | 矩形区域的宽度，单位为vp。 |
 | height | number   | 否   | 否   | 矩形区域的高度，单位为vp。 |
 
@@ -138,9 +138,7 @@
 
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
-窗口内容的避让区域，单位为vp。
-
-窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时，需要按照[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)对应的AvoidArea做窗口内容避让的区域，单位为vp。
+窗口内容做[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时的避让区域，单位为vp。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
