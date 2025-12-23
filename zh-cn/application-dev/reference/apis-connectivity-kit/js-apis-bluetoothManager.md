@@ -1530,6 +1530,9 @@ getProfileInstance(profileId: ProfileId): A2dpSourceProfile | HandsFreeAudioGate
 
 通过ProfileId，获取profile的对象实例，API9新增了HidHostProfile，PanProfile。
 
+> **说明：**<br/>
+> 从API version 9开始支持，从API version 10开始废弃。
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
 **参数：**
@@ -1746,7 +1749,7 @@ stopBLEScan(): void
 停止BLE扫描流程。
 
 > **说明：**<br/>
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[ble.startBLEScan](js-apis-bluetooth-ble.md#blestopblescan)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[ble.stopBLEScan](js-apis-bluetooth-ble.md#blestopblescan)替代。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -2220,7 +2223,7 @@ try {
 > 从API version 9开始支持，从API version 10开始废弃。建议使用[hfp.HandsFreeAudioGatewayProfile](js-apis-bluetooth-hfp.md#handsfreeaudiogatewayprofile)替代。
 
 
-### connect
+### connect<sup>(deprecated)</sup>
 
 connect(device: string): void
 
@@ -4054,7 +4057,7 @@ writeDescriptorValue(descriptor: BLEDescriptor): void
 client端向低功耗蓝牙设备特定的描述符写入二进制数据。
 
 > **说明：**<br/>
-> 从API version 9开始支持，从API version 10开始废弃。建议使用[ble.GattClientDevice#writeCharacteristicValue](js-apis-bluetooth-ble.md#writecharacteristicvalue-1)替代。
+> 从API version 9开始支持，从API version 10开始废弃。建议使用[ble.GattClientDevice#writeDescriptorValue](js-apis-bluetooth-ble.md#writedescriptorvalue)替代。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -4105,7 +4108,7 @@ try {
 
 setBLEMtuSize(mtu: number): void
 
-client协商远端蓝牙低功耗设备的最大传输单元（Maximum Transmission Unit, MTU），调用[connect](#connect)接口连接成功后才能使用。
+client协商远端蓝牙低功耗设备的最大传输单元（Maximum Transmission Unit, MTU），调用[connect](#connectdeprecated-1)接口连接成功后才能使用。
 
 > **说明：**<br/>
 > 从API version 9开始支持，从API version 10开始废弃。建议使用[ble.GattClientDevice#setBLEMtuSize](js-apis-bluetooth-ble.md#setblemtusize)替代。
@@ -4485,7 +4488,7 @@ try {
 
 getRssiValue(callback: AsyncCallback&lt;number&gt;): void
 
-client获取远端蓝牙低功耗设备的信号强度 (Received Signal Strength Indication, RSSI)，调用[connect](#connect)接口连接成功后才能使用。
+client获取远端蓝牙低功耗设备的信号强度 (Received Signal Strength Indication, RSSI)，调用[connect](#connectdeprecated-1)接口连接成功后才能使用。
 
 > **说明：**<br/>
 > 从API version 9开始支持，从API version 10开始废弃。建议使用[ble.GattClientDevice#getRssiValue](js-apis-bluetooth-ble.md#getrssivalue)替代。
@@ -4533,7 +4536,7 @@ try {
 
 getRssiValue(): Promise&lt;number&gt;
 
-client获取远端蓝牙低功耗设备的信号强度 (Received Signal Strength Indication, RSSI)，调用[connect](#connect)接口连接成功后才能使用。
+client获取远端蓝牙低功耗设备的信号强度 (Received Signal Strength Indication, RSSI)，调用[connect](#connectdeprecated-1)接口连接成功后才能使用。
 
 > **说明：**<br/>
 > 从API version 9开始支持，从API version 10开始废弃。建议使用[ble.GattClientDevice#getRssiValue](js-apis-bluetooth-ble.md#getrssivalue-1)替代。
