@@ -124,7 +124,7 @@ RSA私钥生成CSR时的配置参数，包含主体、扩展、摘要算法、�
 >
 > - mdName是摘要算法名，当前支持SHA1、SHA256、SHA384、SHA512。
 >
-> - attributes是可选参数，可以指定openssl中规定的扩展类型跟扩展值生成CSR。例如challengePassword、keyUsage等。
+> - attributes是可选参数，指定openssl中规定的扩展类型跟扩展值生成CSR。例如challengePassword、keyUsage等。
 >
 > - outFormat指定输出CSR的格式，若不指定默认为PEM格式。
 
