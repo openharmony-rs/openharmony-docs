@@ -222,6 +222,7 @@ distort(distortionK: number): Filter
 | distortionK  | number         | 是   | 畸变系数，表示透镜畸变的程度，取值范围为[-1, 1]。畸变系数设置小于-1的值时，按值为-1处理；设置大于1的值时，按值为1处理。|
 
 ![zh-ch_image_Add_Distort.png](./figures/zh-ch_image_Add_Distort.png)
+
 如上图是对图片组件分别设置畸变参数为-1，0，0.5，1的绘制结果。畸变参数小于0时，效果为桶形畸变；大于0时，效果为枕形畸变；越接近0时，畸变程度越小，等于0时，没有畸变效果。
 
 **返回值：**
