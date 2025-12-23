@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-To achieve a better transition effect, use [component navigation](arkts-navigation-navigation.md) component and [modal transition](arkts-modal-transition.md).
+To achieve a better transition effect, you are advised to use the [navigation transition](./arkts-navigation-animation.md) and [modal transition](arkts-modal-transition.md).
 
 During page redirection, one page enters and the other page exits. You can customize the [page transition effects](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md) for these pages through the **pageTransition** function. Specifically, [PageTransitionEnter](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionenter) defines the page entrance animation, while [PageTransitionExit](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionexit) defines the page exit animation.
 The **pageTransition** function is as follows:
@@ -43,8 +43,9 @@ In the preceding APIs, the **type** parameter indicates the route type used in p
 
 When **type** is set to **RouteType.None** (default value), the page transition animations work for both the push and pop operations in the page stack.
 
+<!-- @[pageTransition_template5_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionSrc3.ets) -->
 
-```ts
+``` TypeScript
 // page A
 pageTransition() {
   // Configure the page entrance animation to sliding in from the left, with the duration of 1200 ms. The settings take effect no matter whether the push or pop operation is performed on the page stack.
@@ -56,7 +57,11 @@ pageTransition() {
 }
 ```
 
-```ts
+<!-- -->
+
+<!-- @[pageTransition_template5_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionDst3.ets) -->
+
+``` TypeScript
 // page B
 pageTransition() {
   // Configure the page entrance animation to sliding in from the right, with the duration of 1000 ms. The settings take effect no matter whether the push or pop operation is performed on the page stack.
@@ -67,6 +72,7 @@ pageTransition() {
     .slide(SlideEffect.Right)
 }
 ```
+
 
 
 Assume that the page navigation is in the multi-instance mode, which means that duplicate pages are allowed in the page stack. There may be four scenarios. The following table lists the page transition effects.
@@ -87,8 +93,9 @@ If you want the page accessed by **router.pushUrl** to always slide in from the 
 
 When **type** is set to **RouteType.Push**, the page transition animations work for only both the push operations in the page stack. When **type** is set to **RouteType.Pop**, the page transition animations work for only both the pop operations in the page stack.
 
+<!-- @[pageTransition_template6_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionSrc4.ets) -->
 
-```ts
+``` TypeScript
 // page A
 pageTransition() {
   // Configure the page entrance animation to sliding in from the right, with the duration of 1200 ms. The settings take effect only when the push operation is performed on the page stack.
@@ -106,7 +113,11 @@ pageTransition() {
 }
 ```
 
-```ts
+<!-- -->
+
+<!-- @[pageTransition_template6_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionDst4.ets) -->
+
+``` TypeScript
 // page B
 pageTransition() {
   // Configure the page entrance animation to sliding in from the right, with the duration of 1000 ms. The settings take effect only when the push operation is performed on the page stack.
@@ -161,13 +172,16 @@ You can disable the transition animation of a page by setting the page transitio
 
 In the following example, page transition animations are defined using [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) for all the page transition scenarios.
 
-```ts
+<!-- @[pageTransition_template3_pageTransitionSrc1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionSrc1.ets) -->
+
+``` TypeScript
 // PageTransitionSrc1
 @Entry
 @Component
 struct PageTransitionSrc1 {
   build() {
     Column() {
+      // Replace $r('app.media.mountain') with the resource file you use.
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -179,7 +193,7 @@ struct PageTransitionSrc1 {
         Button("pushUrl")
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionDst1' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionDst1' });
           })
         Button("back")
           .onClick(() => {
@@ -188,7 +202,7 @@ struct PageTransitionSrc1 {
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -209,16 +223,18 @@ struct PageTransitionSrc1 {
 }
 ```
 
+<!-- -->
 
+<!-- @[pageTransition_template3_pageTransitionDst1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionDst1.ets) -->
 
-
-```ts
+``` TypeScript
 // PageTransitionDst1
 @Entry
 @Component
 struct PageTransitionDst1 {
   build() {
     Column() {
+      // Replace $r('app.media.forest') with the resource file you use.
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -230,7 +246,7 @@ struct PageTransitionDst1 {
         Button("pushUrl")
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionSrc1' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template3/pageTransitionSrc1' });
           })
         Button("back")
           .onClick(() => {
@@ -239,7 +255,7 @@ struct PageTransitionDst1 {
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -267,15 +283,16 @@ struct PageTransitionDst1 {
 
 In the following example, **type** is set to **RouteType.None**.
 
+<!-- @[pageTransition_template4_pageTransitionSrc2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionSrc2.ets) -->
 
-
-```ts
+``` TypeScript
 // PageTransitionSrc2
 @Entry
 @Component
 struct PageTransitionSrc2 {
   build() {
     Column() {
+      // Replace $r('app.media.mountain') with the resource file you use.
       Image($r('app.media.mountain'))
         .width('90%')
         .height('80%')
@@ -287,7 +304,7 @@ struct PageTransitionSrc2 {
         Button("pushUrl")
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionDst2' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionDst2' });
           })
         Button("back")
           .onClick(() => {
@@ -296,7 +313,7 @@ struct PageTransitionSrc2 {
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -312,15 +329,18 @@ struct PageTransitionSrc2 {
 }
 ```
 
+<!-- -->
 
+<!-- @[pageTransition_template4_pageTransitionDst2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionDst2.ets) -->
 
-```ts
+``` TypeScript
 // PageTransitionDst2
 @Entry
 @Component
 struct PageTransitionDst2 {
   build() {
     Column() {
+       // Replace $r('app.media.forest') with the resource file you use.
       Image($r('app.media.forest'))
         .width('90%')
         .height('80%')
@@ -332,7 +352,7 @@ struct PageTransitionDst2 {
         Button("pushUrl")
           .onClick(() => {
             // Navigate to the next page, which is a push operation.
-            this.getUIContext().getRouter().pushUrl({ url: 'pages/myTest/pageTransitionSrc2' });
+            this.getUIContext().getRouter().pushUrl({ url: 'pages/pageTransition/template4/pageTransitionSrc2' });
           })
         Button("back")
           .onClick(() => {
@@ -341,7 +361,7 @@ struct PageTransitionDst2 {
           })
       }.justifyContent(FlexAlign.Center)
     }
-    .width("100%").height("100%")
+    .width('100%').height('100%')
     .alignItems(HorizontalAlign.Center)
   }
 
@@ -356,7 +376,6 @@ struct PageTransitionDst2 {
   }
 }
 ```
-
 
 
 ![pageTransition_None](figures/pageTransition_None.gif)

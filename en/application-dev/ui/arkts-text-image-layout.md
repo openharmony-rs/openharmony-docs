@@ -12,21 +12,25 @@ Text and image layout combines images with text, allowing text to flow around im
 
 Configure the [textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20) attribute of the **Text** component and set the **verticalAlign** attribute of the **ImageSpan** component to **ImageSpanAlignment.FOLLOW_PARAGRAPH** to display product pricing and discount information.
 
-```ts
+<!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
+
+``` TypeScript
 Text() {
+  // Replace $r('app.media.hot_sale') with the resource file you use.
   ImageSpan($r('app.media.hot_sale'))
     .width(50)
     .height(30)
     .borderRadius(5)
     .verticalAlign(ImageSpanAlignment.FOLLOW_PARAGRAPH)
-  Span('Surprise Price ¥1299')
+  // The value in the 'app.string.surprise_price' resource file is "Surprise Price ¥1299."
+  Span($r('app.string.surprise_price'))
     .fontSize(25)
     .fontColor(Color.Red)
   Span('1599')
     .decoration({
-    type: TextDecorationType.LineThrough,
-    color: Color.Grey,
-    style: TextDecorationStyle.SOLID
+      type: TextDecorationType.LineThrough,
+      color: Color.Grey,
+      style: TextDecorationStyle.SOLID
     })
     .fontSize(16)
 }.textVerticalAlign(TextVerticalAlign.CENTER)
@@ -38,10 +42,18 @@ Text() {
 
 Embed images using [ImageAttachment](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#imageattachment) and apply text styles with [TextStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle) to display detailed product information.
 
-```ts
-// xxx.ets
+<!-- @[textImage_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageAttribute.ets) -->
+
+``` TypeScript
+// resourceGetString is a utility function for retrieving string resources from the application's resource directory.
+import resourceGetString from '../../common/resource';
 import { image } from '@kit.ImageKit';
 import { LengthMetrics } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const TAG = '[Sample_Textcomponent]';
+const DOMAIN = 0xF811;
+const BUNDLE = 'Textcomponent_';
 
 @Entry
 @Component
@@ -63,7 +75,8 @@ struct styled_string_demo {
   }]);
 
   async aboutToAppear() {
-    console.info("aboutToAppear initial imagePixelMap");
+    hilog.info(DOMAIN, TAG, BUNDLE + 'aboutToAppear initial imagePixelMap');
+    // Replace $r('app.media.sky') with the resource file you use.
     this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.sky'));
   }
 
@@ -89,7 +102,8 @@ struct styled_string_demo {
   boldTextStyle: TextStyle = new TextStyle({ fontWeight: FontWeight.Bold });
   // Create a paragraph style object paragraphStyledString1.
   paragraphStyledString1: MutableStyledString =
-    new MutableStyledString("\nHigh-quality photo printing, HD printing in 3/4/5/6-inch sizes with free shipping and lamination, quality guaranteed,", [
+    // The value in the 'app.string.print_photo' resource file is "\nHigh-quality photo printing, HD printing in 3/4/5/6-inch sizes with free shipping and lamination, quality guaranteed,".
+    new MutableStyledString(resourceGetString.resourceToString($r('app.string.print_photo')), [
       {
         start: 0,
         length: 28,
@@ -103,7 +117,8 @@ struct styled_string_demo {
         styledValue: this.lineHeightStyle1
       }
     ]);
-  paragraphStyledString2: MutableStyledString = new MutableStyledString("\nLimited-time direct discount of ¥5.15, limited quantity with free gift", [
+  // The value in the 'app.string.limited_time_discount' resource file is "\nLimited-time direct discount of ¥5.15, limited quantity with free gift."
+  paragraphStyledString2: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.limited_time_discount')), [
     {
       start: 0,
       length: 5,
@@ -135,7 +150,8 @@ struct styled_string_demo {
       styledValue: new TextStyle({ fontColor: Color.Grey, fontSize: LengthMetrics.vp(14) })
     }
   ]);
-  paragraphStyledString3: MutableStyledString = new MutableStyledString("\n¥22.50, Sales Volume 4 Million+", [
+  // The value in the 'app.string.sales_volume' resource file is "\n¥22.50, Sales Volume 4 Million+."
+  paragraphStyledString3: MutableStyledString = new MutableStyledString(resourceGetString.resourceToString($r('app.string.sales_volume')), [
     {
       start: 0,
       length: 15,
@@ -189,8 +205,8 @@ struct styled_string_demo {
           .backgroundColor('#FFFFFF')
           .borderRadius(5)
           .width(210)
-
-        Button('Click to view product details')
+        // The value in the 'app.string.textImageMixedLayout_content' resource file is "Click to view product details."
+        Button($r('app.string.textImageMixedLayout_content'))
           .onClick(() => {
             if (this.imagePixelMap !== undefined) {
               this.mutableStr = new MutableStyledString(new ImageAttachment({
