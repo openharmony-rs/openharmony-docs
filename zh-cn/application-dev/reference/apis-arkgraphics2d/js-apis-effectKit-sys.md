@@ -288,7 +288,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 
 ## Filter
 
-图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](#effectkitcreateeffect)创建一个Filter实例。
+图像效果类用于将指定效果添加到输入图像。调用Filter方法前，需先通过[createEffect](#effectkitcreateeffect)创建Filter实例。
 
 ### EllipticalMaskRadius<sup>23+</sup>
 type EllipticalMaskRadius = [ double, double ]
@@ -301,7 +301,7 @@ type EllipticalMaskRadius = [ double, double ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ double, double ] | 方法[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的长短轴的半径。|
+| [ double, double ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的半径。|
 
 ### EllipticalMaskCenter<sup>23+</sup>
 type EllipticalMaskCenter = [ double, double ]
@@ -314,7 +314,7 @@ type EllipticalMaskCenter = [ double, double ]
 
 | 类型           | 说明                                            |
 | :------------- | :---------------------------------------------- |
-| [ double, double ] | 方法[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的中心点。|
+| [ double, double ] | 函数[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask中心点。|
 
 ### ellipticalGradientBlur<sup>23+</sup>
 
@@ -322,9 +322,9 @@ ellipticalGradientBlur(blurRadius: double, center: Array<double, double>, maskRa
 
 将带有椭圆形mask的渐变模糊效果添加到效果链表中，返回链表的头节点。
 
->  **说明：**
+> **说明：**
 >
->  该接口为静态模糊接口，为静态图像提供含有椭圆mask的渐变模糊化效果。
+> 该接口为静态图像处理接口，为静态图像提供含有椭圆mask的渐变模糊化效果。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -332,10 +332,10 @@ ellipticalGradientBlur(blurRadius: double, center: Array<double, double>, maskRa
 
 | 参数名 | 类型        | 必填 | 说明                                                         |
 | ------ | ----------- | ---- | ------------------------------------------------------------ |
-|  blurRadius   | double | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
-|  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
-|  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 设置椭圆的长轴与短轴，半径为1均对应组件的高度。取值范围(0, 10]，可取浮点数，超出边界会在实现时自动截断 |
- |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#FractionStop12)[] | 是 | 渐变模糊位置与程度数组。位置与程度取值都在0-1之间，椭圆中心对应位置0，椭圆边界对应位置1. 模糊程度0对应无模糊，模糊程度1对应输入的模糊半径的模糊程度，大于1的转为1。位置参数值须严格递增，二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
+|  blurRadius   | double | 是   | 模糊半径，单位是像素。模糊效果与所设置的模糊半径值成正比，值越大效果越明显。 |
+|  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 设置椭圆的中心点，[0, 0]表示组件的左上角，[1, 1]表示组件的右下角。取值范围为[-10, 10]，可取浮点数，超出边界时会在实现时自动截断。 |
+|  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 设置椭圆的长轴与短轴，半径1对应组件的高度。取值范围(0, 10]，超出范围时自动截断。 |
+ |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#FractionStop12)[] | 是 | 渐变模糊位置与程度数组。位置与程度取值都在0-1之间，椭圆中心对应位置0，椭圆边界对应位置1。 模糊程度0表示无模糊，模糊程度1表示输入的模糊半径的模糊程度，大于1的转为1。位置参数值须严格递增，二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
 
 **返回值：**
 
