@@ -16,6 +16,8 @@
 
 **库：** libnative_window.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **相关模块：** [NativeWindow](capi-nativewindow.md)
@@ -96,6 +98,8 @@ enum NativeWindowOperation
 
 OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
@@ -136,6 +140,8 @@ enum OHScalingMode
 
 缩放模式Scaling Mode。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -159,6 +165,8 @@ enum OHScalingModeV2
 
 渲染缩放模式枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -178,6 +186,8 @@ enum OHHDRMetadataKey
 **描述**
 
 枚举HDR元数据关键字。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 9
 
@@ -207,6 +217,8 @@ enum OHSurfaceSource
 ```
 
 **描述**
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 本地窗口内容来源类型枚举。
 
