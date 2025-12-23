@@ -46,7 +46,7 @@ create(options: AnimatorOptions): AnimatorResult
 
 > **说明：**
 > 
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)替代。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)替代。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)来明确UI的执行上下文。
 
@@ -150,7 +150,9 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 创建动画
 
-从API version 9开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)
+> **说明：**
+> 
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[create](#createdeprecated)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 

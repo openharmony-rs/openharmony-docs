@@ -778,7 +778,8 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-效果如下（黑框仅为展示文本绘制区域，实际不绘制）:
+效果如下（黑框仅为展示文本绘制区域，实际不绘制）：
+
 ![zh-cn_image_complexArkTsDemo2_2](figures/en_image_verticalAlignment_center.jpg)
 
 ### 上下标

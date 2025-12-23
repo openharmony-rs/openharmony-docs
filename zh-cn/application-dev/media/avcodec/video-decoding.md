@@ -271,7 +271,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
         bool ret = OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
         if (!ret) {
-         	// 异常处理。
+            // 异常处理。
         }
     }
 
@@ -857,7 +857,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
                    OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
         if (!ret) {
-         	// 异常处理。
+            // 异常处理。
         }
     }
     
@@ -890,7 +890,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
                        OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
             if (!ret) {
-             	// 异常处理。
+                // 异常处理。
             }
             isFirstFrame = false;
         }
