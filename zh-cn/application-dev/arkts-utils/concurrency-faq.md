@@ -415,7 +415,7 @@ JS异常：TypeError: Cannot add property in prevent extensions
 **解决方案**：规格限制，暂不支持合并同名Sendable class和namespace。
 
 2. 应用在HAR中使用Sendable特性时，抛出新增属性异常。查看JS异常栈，发现异常代码行定位在js文件，而Sendable特性不支持在js文件中使用，导致抛出非预期的异常。  
-**解决方案**：在HAR中使用Sendable特性时，[配置tsHAR](../quick-start/har-package.md#编译生成ts文件)。
+**解决方案**：在HAR中使用Sendable特性时，[配置UseTsHar](sendable-constraints.md#在har包中的使用规则)。
 
 3. 应用在Local Test单元测试或预览器中使用Sendable特性时，抛出新增属性异常。由于Sendable特性暂不支持在Local Test和预览器中使用，导致抛出非预期的异常。  
 **解决方案**：规格限制，暂不支持。
