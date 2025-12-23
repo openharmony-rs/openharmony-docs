@@ -71,7 +71,9 @@
    
 3. 安装应用证书凭据，获取应用证书凭据，并使用应用证书凭据进行签名、验签，最后删除应用证书凭据。
 
-   **ArkTS-Dyn示例**:
+   **示例**:
+
+   ArkTS-Dyn示例::
    ``` TypeScript
    import { certificateManager } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -156,7 +158,7 @@
    }
    ```
 
-   **ArkTS-Sta示例**:
+   ArkTS-Sta示例:
    ``` TypeScript
    import { certificateManager } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
