@@ -78,6 +78,8 @@ import { AtomicServiceMenuBar } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
+  private menuBar: AtomicServiceMenuBar = new AtomicServiceMenuBar(this.getUIContext());
+
   @Builder
   private EmbedCompLauncherShow(title: string, text: string, event?: () => void) {
     Column() {
@@ -101,12 +103,11 @@ struct Index {
 
   build() {
     Column() {
-      const menuBar = new AtomicServiceMenuBar(this.getUIContext());
       this.EmbedCompLauncherShow('显示菜单功能胶囊', '点击后菜单功能胶囊显示', () => {
-        menuBar.setVisible(true);
+        this.menuBar.setVisible(true);
       });
       this.EmbedCompLauncherShow('隐藏菜单功能胶囊', '点击后菜单功能胶囊消失', () => {
-        menuBar.setVisible(false);
+        this.menuBar.setVisible(false);
       });
     }
     .width('100%')
