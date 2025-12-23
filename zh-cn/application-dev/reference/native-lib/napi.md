@@ -719,6 +719,12 @@ libace_napi.z.so
 |FUNC|napi_create_ark_context|创建一个新的运行时上下文环境。|20|
 |FUNC|napi_switch_ark_context|切换到指定的运行时上下文环境。|20|
 |FUNC|napi_destroy_ark_context|销毁通过接口napi_create_ark_context创建的一个上下文环境。|20|
+|FUNC|napi_open_critical_scope|打开临界区作用域。|21|
+|FUNC|napi_close_critical_scope|关闭临界区作用域。|21|
+|FUNC|napi_get_buffer_string_utf16_in_critical_scope|获取ArkTS String的UTF-16编码内存缓冲区数据。|21|
+|FUNC|napi_create_strong_reference|创建指向ArkTS对象的强引用。|21|
+|FUNC|napi_delete_strong_reference|删除强引用。|21|
+|FUNC|napi_get_strong_reference_value|根据强引用获取其关联的ArkTS对象值。|21|
 
 > 说明：
 >
@@ -1521,6 +1527,147 @@ napi_status napi_destroy_ark_context(napi_env env)
 **参数：**
 
 - [in] env：要销毁的运行时上下文环境。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_open_critical_scope
+
+```cpp
+napi_status napi_open_critical_scope(napi_env env, napi_critical_scope* scope);
+```
+
+**描述：**
+
+打开临界区作用域。使用该接口需要注意以下几点：
+1. 不能重复打开临界区作用域，必须在关闭当前作用域后才能再次打开。
+2. 在临界区作用域内，不能调用非临界区接口。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [out] scope：一个napi_critical_scope的指针，用于表示打开的临界区作用域。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_close_critical_scope
+
+```cpp
+napi_status napi_close_critical_scope(napi_env env, napi_critical_scope scope);
+```
+
+**描述：**
+
+关闭临界区作用域。使用该接口需要注意以下几点：
+1. 不能重复关闭临界区作用域，必须确保作用域已经打开且未被关闭。
+2. 关闭临界区作用域后，请勿使用临界接口及其返回结果，否则可能导致程序崩溃或数据损坏。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] scope：表示需要被关闭的临界区作用域。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_buffer_string_utf16_in_critical_scope
+
+```cpp
+napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
+                                                           napi_value value,
+                                                           const char16_t** buffer,
+                                                           size_t* length);
+```
+
+**描述：**
+
+获取ArkTS String的UTF-16编码内存缓冲区数据。使用该接口需要注意以下几点：
+1. 当ArkTS String以UTF-16编码存储时，`napi_get_buffer_string_utf16_in_critical_scope`才能正确获取其内存缓冲区，否则该函数返回错误。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] value：ArkTS String对象。
+
+- [out] buffer：接收UTF-16编码内存缓冲区数据的指针。
+
+- [out] length：接收字符串长度的指针。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_create_strong_reference
+
+```cpp
+napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_strong_ref* result);
+```
+
+**描述：**
+
+创建指向ArkTS对象的强引用。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] value：ArkTS对象。
+
+- [out] result：接收强引用的指针。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_delete_strong_reference
+
+```cpp
+napi_status napi_delete_strong_reference(napi_env env, napi_value value, napi_strong_ref ref);
+```
+
+**描述：**
+
+删除强引用。使用该接口需要注意以下几点：
+1. 不能重复删除同一个强引用。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] value：ArkTS对象。
+
+- [in] ref：要删除的强引用。
+
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_strong_reference_value
+
+```c
+napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, napi_value* result)
+```
+
+**描述：**
+
+根据强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
+1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能预期外的错误。
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [in] ref：强引用。
+
+- [out] result：接收ArkTS对象值的指针。
 
 **返回：**
 

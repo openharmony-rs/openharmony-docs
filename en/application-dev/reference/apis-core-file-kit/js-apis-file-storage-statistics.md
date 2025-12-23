@@ -44,14 +44,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
-    console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
-  }).catch((err: BusinessError) => {
-    console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
+  console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
+}).catch((err: BusinessError) => {
+  console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
+});
+```
 
 ## storageStatistics.getCurrentBundleStats<sup>9+</sup>
 
@@ -79,17 +79,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats) => {
-    if (error) {
-      console.error("getCurrentBundleStats failed with error:" + JSON.stringify(error));
-    } else {
-      // Do something.
-      console.info("getCurrentBundleStats successfully:" + JSON.stringify(bundleStats));
-    }
-  });
-  ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats) => {
+  if (error) {
+    console.error("getCurrentBundleStats failed with error:" + JSON.stringify(error));
+  } else {
+    // Do something.
+    console.info("getCurrentBundleStats successfully:" + JSON.stringify(bundleStats));
+  }
+});
+```
 
 ## storageStatistics.getTotalSize<sup>15+</sup>
 
@@ -116,14 +116,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getTotalSize().then((number: number) => {
   console.info("getTotalSize successfully:" + JSON.stringify(number));
 }).catch((err: BusinessError) => {
   console.error("getTotalSize failed with error:"+ JSON.stringify(err));
 });
-  ```
+```
 
 ## storageStatistics.getTotalSize<sup>15+</sup>
 
@@ -151,7 +151,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getTotalSize((error: BusinessError, number: number) => {
   if (error) {
@@ -161,7 +161,7 @@ storageStatistics.getTotalSize((error: BusinessError, number: number) => {
     console.info("getTotalSize successfully:" + number);
   }
 });
-  ```
+```
 
 ## storageStatistics.getTotalSizeSync<sup>15+</sup>
 
@@ -188,7 +188,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let number = storageStatistics.getTotalSizeSync();
@@ -197,7 +197,7 @@ try {
   let error: BusinessError = err as BusinessError;
   console.error("getTotalSizeSync failed with error:" + JSON.stringify(error));
 }
-  ```
+```
 
 ## storageStatistics.getFreeSize<sup>15+</sup>
 
@@ -224,14 +224,14 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getFreeSize().then((number: number) => {
   console.info("getFreeSize successfully:" + JSON.stringify(number));
 }).catch((err: BusinessError) => {
   console.error("getFreeSize failed with error:" + JSON.stringify(err));
 });
-  ```
+```
 
 ## storageStatistics.getFreeSize<sup>15+</sup>
 
@@ -259,7 +259,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 storageStatistics.getFreeSize((error: BusinessError, number: number) => {
   if (error) {
@@ -269,7 +269,7 @@ storageStatistics.getFreeSize((error: BusinessError, number: number) => {
     console.info("getFreeSize successfully:" + number);
   }
 });
-  ```
+```
 
 ## storageStatistics.getFreeSizeSync<sup>15+</sup>
 
@@ -296,7 +296,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
+```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let number = storageStatistics.getFreeSizeSync();
@@ -305,7 +305,7 @@ try {
   let error: BusinessError = err as BusinessError;
   console.error("getFreeSizeSync failed with error:" + JSON.stringify(error));
 }
-  ```
+```
 
 ## BundleStats<sup>9+</sup>
 

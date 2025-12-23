@@ -563,7 +563,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_close_critical_scope | 关闭临界区作用域。 |
 | napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据。 |
 | napi_create_strong_reference | 创建指向ArkTS对象的强引用。 |
-| napi_delete_strong_reference | 删除强引用。|
+| napi_delete_strong_reference | 删除强引用。 |
 | napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值。 |
 
 **napi_queue_async_work_with_qos**

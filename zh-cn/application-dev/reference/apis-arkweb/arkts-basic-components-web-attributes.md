@@ -3778,7 +3778,7 @@ Web组件自定义菜单扩展项接口，允许用户设置扩展项的文本�
 
 | 参数名              | 类型                                                         | 必填   | 说明          |
 | ------------------- | ----------------------------------------------------------    | ---- | ------------- |
-| expandedMenuOptions | Array<[ExpandedMenuItemOptions](./arkts-basic-components-web-i.md#expandedmenuitemoptions12)> | 是    | 扩展菜单选项。<br/>菜单项数量，及菜单的content大小、startIcon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。|
+| expandedMenuOptions | Array<[ExpandedMenuItemOptions](./arkts-basic-components-web-i.md#expandedmenuitemoptionsdeprecated)> | 是    | 扩展菜单选项。<br/>菜单项数量，及菜单的content大小、startIcon图标尺寸，与ArkUI [Menu](../apis-arkui/arkui-ts/ts-basic-components-menu.md)组件保持一致。|
 
 **示例：**
 

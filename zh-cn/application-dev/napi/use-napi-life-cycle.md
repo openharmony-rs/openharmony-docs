@@ -72,7 +72,7 @@ import testNapi from 'libentry.so';
 
 cpp部分代码
 
-<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 // napi_open_handle_scope、napi_close_handle_scope
@@ -95,7 +95,7 @@ static napi_value HandleScopeTest(napi_env env, napi_callback_info info)
     napi_close_handle_scope(env, scope);
     // 此处的result能够得到值“handleScope”
     return result;
-    // result已经离开scope的作用域，继续使用可能会存在稳定性问题
+    // result已经离开scope的作用域，继续使用可能会存在稳定性问题，如果需要在作用域外使用对象，建议使用napi_open_escapable_handle_scope系列接口
 }
 
 static napi_value HandleScope(napi_env env, napi_callback_info info)

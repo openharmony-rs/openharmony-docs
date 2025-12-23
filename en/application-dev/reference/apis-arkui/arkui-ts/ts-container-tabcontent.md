@@ -898,7 +898,7 @@ This example demonstrates the implementation of subtabs, bottom tabs, and side t
 struct TabBarStyleExample {
   build() {
     Column({ space: 5 }) {
-      Text ('Subtab style')
+      Text('Subtab style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
@@ -1002,7 +1002,7 @@ struct TabBarStyleExample {
         .width('100%')
         .backgroundColor(0xF1F3F5)
       }.width('100%').height(200)
-      Text ('Sidebar style')
+      Text('Sidebar style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {
@@ -1551,7 +1551,7 @@ how to change the icon color of bottom tabs using **unselectedColor** and **sele
 struct TabBarStyleExample {
   build() {
     Column({ space: 5 }) {
-      Text ('Subtab style')
+      Text('Subtab style')
       Column() {
         Tabs({ barPosition: BarPosition.Start }) {
           TabContent() {

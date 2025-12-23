@@ -28,20 +28,20 @@
 
     1.1 打开[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)，点击"File > New > Create Project"创建一个Empty Ability，设备类型勾选"2in1"
 
-    1.2 在工程对应的ets目录下，右键选择"New > Directory"，新建两个目录，分别命名为extensionability、models。
+    1.2 在工程对应的ets目录下，右键选择"New > Directory"，新建两个目录，分别命名为selectionextability、models。
 
-    1.3 在extensionability目录下，新建`SelectionExtensionAbility.ets`文件；在models目录下，新建`SelectionModel.ets`文件；在目录pages下，新建两个page文件`MainPanel.ets`和`MenuPanel.ets`。目录如下：
+    1.3 在selectionextability目录下，新建`SelectionExtAbility.ets`文件；在models目录下，新建`SelectionModel.ets`文件；在目录pages下，新建两个page文件`MainPanel.ets`和`MenuPanel.ets`。目录如下：
 
     ```text
     /src/main/
     ├── ets/
-    │   ├── extensionability
-    │   |   └── SelectionExtensionAbility.ets     # 划词扩展类
     │   ├── models
     │   |   └── SelectionModel.ets     # 划词模块管理类
-    │   └── pages
-    │       ├── MainPanel.ets                    # 主面板
-    │       └── MenuPanel.ets                    # 菜单面板
+    │   ├── pages
+    │   |   ├── MainPanel.ets                    # 主面板
+    │   |   └── MenuPanel.ets                    # 菜单面板
+    │   └── selectionextability
+    │       └── SelectionExtAbility.ets     # 划词扩展类
     ├── resources/base/profile/main_pages.json
     ├── module.json5                             # 配置文件
     ```
@@ -107,19 +107,15 @@
     }
     ```
 
-3. 在`SelectionExtensionAbility.ets`文件中实现扩展能力类，该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)，用于实现划词扩展生命周期管理。
+3. 在`SelectionExtAbility.ets`文件中实现扩展能力类，该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility-sys.md)，用于实现划词扩展生命周期管理。
     ```ts
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
     import { Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
 
     class SelectionAbilityStub extends rpc.RemoteObject {
-      constructor(des) {
-        if (typeof des === 'string') {
-          super(des);
-        } else {
-          return null;
-        }
+      constructor(des: string) {
+        super(des);
       }
 
       onRemoteMessageRequest(
@@ -132,8 +128,8 @@
       }
     }
 
-    class ExtensionAbility extends SelectionExtensionAbility {
-      panel_: selectionManager.Panel = undefined;
+    class SelectionExtAbility extends SelectionExtensionAbility {
+      private panel_: selectionManager.Panel | undefined = undefined;
 
       onConnect(want: Want): rpc.RemoteObject {
         // 当SelectionExtensionAbility实例完成创建时，系统会触发该回调。开发者可在该回调中执行初始化逻辑（如定义变量、加载资源、监听划词事件等）。
@@ -162,8 +158,8 @@
       // ... 
     }
 
-    class ExtensionAbility extends SelectionExtensionAbility {
-      panel_: selectionManager.Panel = undefined;
+    class SelectionExtAbility extends SelectionExtensionAbility {
+      private panel_: selectionManager.Panel | undefined = undefined;
 
       onConnect(want: Want): rpc.RemoteObject {
         SelectionModel.getInstance().setContext(this.context);
@@ -206,6 +202,10 @@
 
       async onSelected(info: selectionManager.SelectionInfo) {
         SelectionModel.getInstance().setSelectionInfo(info);
+        if (!this.panel_) {
+          hilog.info(0x0000, 'SelectionExtensionAbility', 'Panel is not created yet.');
+          return;
+        }
         this.panel_.moveTo(info.startDisplayX, info.startDisplayY)    // 将弹窗移动到用户鼠标划词的起始点
           .then(() => {
             hilog.info(0x0000, 'SelectionExtensionAbility', 'Move succeed.');
@@ -231,9 +231,9 @@
     }
     ```
 
-5. 在`SelectionExtensionAbility.ets`文件末尾将扩展能力类导出，供项目中其他类引用。
+5. 在`SelectionExtAbility.ets`文件末尾将扩展能力类导出，供项目中其他类引用。
     ```ts
-    export default ExtensionAbility;
+    export default SelectionExtAbility;
     ```
 
 6. 在`MenuPanel.ets`文件中，可根据业务内容绘制相应的面板，例如提供翻译、查询、扩写等按钮。通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
@@ -396,8 +396,8 @@
       // ...
         "extensionAbilities": [
           {
-            "name": "ExtensionAbility",
-            "srcEntry": "./ets/extensionability/SelectionExtensionAbility.ets",
+            "name": "SelectionExtAbility",
+            "srcEntry": "./ets/selectionextability/SelectionExtAbility.ets",
             "type": "selection",
             "exported": false,
           }

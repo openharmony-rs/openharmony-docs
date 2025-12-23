@@ -44,8 +44,7 @@ Data persistence is a time-consuming operation. As such, avoid the following sit
 
 - Persistence of variables that change frequently
 
-It is recommended that the persistent variables of PersistentStorage be less than 2 KB. As PersistentStorage flushes data synchronously, a large amount of persistent data may result in simultaneous time-consuming read and write operations in the UI thread, affecting UI rendering performance. If you need to store a large amount of data, consider using the database API.
-
+It is recommended that the data stored in PersistentStorage be less than 2 KB. Avoid persisting large amounts of data, as PersistentStorage synchronously writes data to disk on the UI thread. Large-scale local read/write operations may impact UI rendering performance. For storing substantial data, it is recommended that you use [database APIs](../../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 PersistentStorage is associated with UI instances. Data persistence can succeed only when a UI instance has been initialized (that is, when the callback passed in by [loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9) is called).
 
 ```ts
@@ -115,7 +114,7 @@ struct Index {
 - First running after fresh application installation:
   1. **persistProp** is called to initialize PersistentStorage. A search for the **aProp** property in PersistentStorage returns no result, because the application has just been installed.
   2. A search for the **aProp** property in AppStorage still returns no result.
-  3. Create the **aProp** property of the number type in AppStorge and initialize it with the value **47**.
+  3. Create the **aProp** property of the number type in AppStorage and initialize it with the value **47**.
   4. PersistentStorage writes the **aProp** property and its value **47** to the local device. The value of **aProp** in AppStorage and its subsequent changes are persisted.
   5. In the **Index** component, create the state variable **\@StorageLink('aProp') aProp**, which creates a two-way synchronization with the **aProp** property in AppStorage. During the creation, the search in AppStorage for the **aProp** property is successful, and therefore, the state variable is initialized with the value **47** found in AppStorage.
 
@@ -124,7 +123,7 @@ struct Index {
 ![en-us_image_0000001553348833](figures/en-us_image_0000001553348833.png)
 
 - After a click event is triggered:
-  1. The state variable **\@StorageLink('aProp') aProp** is updated, triggering the **\<Text>** component to be re-rendered.
+  1. The state variable **\@StorageLink('aProp') aProp** is updated, triggering the **Text** component to be re-rendered.
   2. The two-way synchronization between the \@StorageLink decorated variable and AppStorage results in the change of the **\@StorageLink('aProp') aProp** being synchronized back to AppStorage.
   3. The change of the **aProp** property in AppStorage triggers any other one-way or two-way bound variables to be updated. (In this example, there are no such other variables.)
   4. Because the property corresponding to **aProp** has been persisted, the change of the **aProp** property in AppStorage triggers PersistentStorage to write the property and its new value to the device.
@@ -198,6 +197,7 @@ struct TestCase6 {
 }
 ```
 
+
 ### Persisting Variables of the Date Type
 
 In this example, the **persistedDate** variable decorated with @StorageLink is of the Date type. Clicking the buttons changes the value of **persistedDate**, triggering UI re-rendering. In addition, the value of **persistedDate** is persisted.
@@ -256,7 +256,6 @@ struct PersistedDate {
   }
 }
 ```
-
 
 ### Persisting Variables of the Map Type
 

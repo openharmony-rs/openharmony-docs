@@ -856,7 +856,7 @@ querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;Resul
 
 | **错误码ID** | **错误信息**      |
 |-----------|------|
-| 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
+| 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. |
 | 801       | Capability not supported.                 |
 | 14800000  | Inner error.          |
 | 14800011  | Failed to open the database because it is corrupted.       |

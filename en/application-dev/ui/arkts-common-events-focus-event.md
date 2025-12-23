@@ -1069,7 +1069,7 @@ Focus navigation order for the **Tab** key: Without **nextFocus** configured: Th
 
 ![NextFocus_Focus_1.gif](figures/NextFocus_Focus_1.gif)
 
-Focus navigation order for the down arrow key (example): Without **nextFocus** configured: After the focus activation state is triggered with the **Tab** key, the focus navigation order is A ->D -> E -> F. With **nextFocus** configured: After the focus activation state is triggered with the **Tab** key, the focus navigation order is is A -> B -> C->D -> E->F -> A.
+Focus navigation order for the down arrow key (example): Without **nextFocus** configured: After the focus activation state is triggered with the **Tab** key, the focus navigation order is A ->D -> E -> F. With **nextFocus** configured: After the focus activation state is triggered with the **Tab** key, the focus navigation order is A -> B -> C->D -> E->F -> A.
 
 ![NextFocus_Focus_2.gif](figures/NextFocus_Focus_2.gif)
 
