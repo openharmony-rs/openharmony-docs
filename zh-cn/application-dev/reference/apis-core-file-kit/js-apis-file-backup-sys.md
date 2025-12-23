@@ -129,7 +129,7 @@ import { backup } from '@kit.CoreFileKit';
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------ |
 | triggerType | number |  是  |  否  | 代表不同的碎片清理方式，默认为0，表示执行器件碎片清理功能。 |
 | writeSize   | number |  是  |  否  | 碎片清理功能的清理目标，单位MB（实际清理大小由文件服务系统根据实际情况自动调整）。        |
-| waitTime    | number |  是  |  否  | 执行碎片清理功能最大时间，超过此时间认为任务超时。        |
+| waitTime    | number |  是  |  否  | 执行碎片清理功能最大允许时间，超过此时间认为任务超时。        |
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
@@ -439,7 +439,7 @@ fileSystemServiceRequest(config: FileSystemRequestConfig): Promise&lt;int&gt;
 
 **系统接口**：此接口为HarmonyOS系统提供的接口。
 
-**需要权限**：ohos.permission.BACKUP;（当前仅支持克隆应用，其他应用调用会返回错误码13900001）
+**需要权限**：ohos.permission.BACKUP;（当前仅支持系统预装的克隆应用，其他应用调用会返回错误码13900001）
 
 **系统能力**：SystemCapability.FileManagement.StorageService.Backup
 
