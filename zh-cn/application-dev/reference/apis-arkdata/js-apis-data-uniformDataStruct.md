@@ -32,8 +32,8 @@ import { uniformDataStruct } from '@kit.ArkData';
 | ----------- | ------ | ---- | ---- |-----------------------|
 | uniformDataType | 'general.plain-text'| 是   | 否   | 统一数据类型标识，标识为纯文本类型数据，固定为“general.plain-text”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                |
 | textContent | string | 否   | 否   | 纯文本内容。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                |
-| abstract    | string | 否   | 是   | 纯文本摘要，非必填字段，默认值为空字符串。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 12 |
-| textAbstract    | string | 否   | 是   | 纯文本摘要，非必填字段，默认值为空字符串。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| abstract<sup>12+</sup>    | string | 否   | 是   | 纯文本摘要，非必填字段，默认值为空字符串。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 12 |
+| textAbstract<sup>23+</sup>    | string | 否   | 是   | 纯文本摘要，非必填字段，默认值为空字符串。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | details | Record<string, string> | 否   | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文本内容详细属性。例如，可生成一个details内容为<br />{<br />"title":"标题",<br />"content":"内容"<br />}<br />的数据对象，用于描述一篇文章的详细属性。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
@@ -173,7 +173,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | appLabelId  | string | 否   | 否   | 图标名称对应的标签id。    |	
 | bundleName  | string | 否   | 否   | 图标对应的应用bundle名。 |	
 | abilityName | string | 否   | 否   | 图标对应的应用ability名。 |
-| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   |是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
+| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   |是一个字典类型对象，key是string类型，value可以写入int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
 
@@ -277,12 +277,12 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | 名称         | 类型   | 只读 | 可选 | 说明                                                                                                                             |	
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|	
 | uniformDataType | 'openharmony.form'| 是   | 否  | 统一数据类型标识为卡片类型数据，固定为“openharmony.form”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
-| formId     | number | 否   | 否  | 卡片id。|	
+| formId     | int | 否   | 否  | 卡片id。|	
 | formName   | string | 否   | 否  | 卡片名。|	
 | bundleName | string | 否   | 否  | 卡片所属的bundle名。|	
 | abilityName| string | 否   | 否  | 卡片对应的ability名。|	
 | module     | string | 否   | 否  | 卡片所属的module名。|
-| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
+| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
 
@@ -347,7 +347,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | uniformDataType | 'general.file-uri'| 是   | 否  | 统一数据类型标识为文件地址类型数据，固定为“general.file-uri”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。	
 | oriUri     | string | 否   | 否  | 文件路径。|	
 | fileType   | string | 否   | 否  | 文件类型（必须是UTD类型，详情参考[UTD预置列表](../../database/uniform-data-type-list.md)）。fileType最大长度限制为1024个字节。|	
-| details | Record<string, number \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
+| details | Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
 
@@ -407,7 +407,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 |------------| ------ | ---- |----|--------------------------------------------------------------------------------------------------------------------------------|	
 | uniformDataType | 'openharmony.pixel-map'| 是   | 否  | 统一数据类型标识为像素图类型数据，固定为“openharmony.pixel-map”，数据类型描述信息见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 	
 | pixelMap     | image.PixelMap | 否   | 否  | 像素图二进制数据。|
-| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入number（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
+| details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 是一个字典类型对象，key是string类型，value可以写入int、long、double（数值类型）、string（字符串类型）、Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。|
 
 **示例：**
 
