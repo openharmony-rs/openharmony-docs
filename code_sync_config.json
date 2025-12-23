@@ -1201,32 +1201,32 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/myHapName/src/main/module.json5",
 				"functions":[
 					{
-						"end_line":169,
+						"end_line":170,
 						"name":"module_deviceTypes",
 						"start_line":15
 					},
 					{
-						"end_line":168,
+						"end_line":169,
 						"name":"module_abilities",
 						"start_line":16
 					},
 					{
-						"end_line":167,
+						"end_line":168,
 						"name":"module_extensionAbilities",
 						"start_line":17
 					},
 					{
-						"end_line":164,
+						"end_line":165,
 						"name":"module_testRunner",
 						"start_line":20
 					},
 					{
-						"end_line":165,
+						"end_line":166,
 						"name":"module_dependencies",
 						"start_line":19
 					},
 					{
-						"end_line":166,
+						"end_line":167,
 						"name":"module_proxyData",
 						"start_line":18
 					}
