@@ -203,7 +203,7 @@ libnative_display_soloist.so
                // 120Hz绘制时，每帧移动的距离为4像素
                render->ConstructPath(4, 4, render->defaultOffsetY);
            }
-     	 // ...
+       // ...
        }
    }
    ```
