@@ -16940,6 +16940,30 @@ struct WebComponent {
       Button('getSiteIsolationMode')
         .onClick(() => {
           let mode = webview.WebviewController.getSiteIsolationMode();
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Web, Button } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getSiteIsolationMode')
+        .onClick(() => {
+          let mode = webview.WebviewController.getSiteIsolationMode();
           console.info("getSiteIsolationMode: " + mode);
         })
       Web({ src: 'www.example.com', controller: this.controller })
@@ -16988,6 +17012,35 @@ ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setSiteIsolationMode')
+        .onClick(() => {
+          try {
+            webview.WebviewController.setSiteIsolationMode(webview.SiteIsolationMode.PARTIAL);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Web, Button, SiteIsolationMode } from '@ohos.arkui.component'
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
