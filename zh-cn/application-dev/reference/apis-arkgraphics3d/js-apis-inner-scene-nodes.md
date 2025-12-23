@@ -557,3 +557,75 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
   node.rotation = Mul(q, 0.5 / Math.sqrt(t));
 }
 ```
+
+### getViewMatrix<sup>23+</sup>
+getViewMatrix(): Mat4x4
+
+获取相机的视图矩阵。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | 返回相机的视图矩阵。 |
+
+**示例：**
+```ts
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
+
+function GetViewMatrix(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+    .then(async (result: Scene) => {
+      if (!result.root) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
+      // 创建相机
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      camera.enabled = true;
+      // 设置相机视角
+      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
+      // 获取相机的视图矩阵
+      let viewMatrix: Mat4x4 = camera.getViewMatrix();
+    });
+}
+```
+
+### getProjectionMatrix<sup>23+</sup>
+getProjectionMatrix(): Mat4x4
+
+获取相机的投影矩阵。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+**返回值：**
+| 类型 | 说明 |
+| ---- | ---- |
+| [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | 返回相机的投影矩阵。 |
+
+**示例：**
+```ts
+import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
+
+function GetProjectionMatrix(): void {
+  // 加载场景资源，支持.gltf和.glb格式，路径和文件名可根据项目实际资源自定义
+  Scene.load($rawfile("gltf/CubeWithFloor/glTF/AnimatedCube.glb"))
+    .then(async (result: Scene) => {
+      if (!result.root) {
+        return;
+      }
+      let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+      let sceneCameraParameter: SceneNodeParameters = { name: "camera1" };
+      // 创建相机
+      let camera: Camera = await sceneFactory.createCamera(sceneCameraParameter);
+      camera.enabled = true;
+      // 设置相机视角
+      lookAt(camera, { x: 0, y: 0, z: -3 }, { x: 0, y: 0, z: 0 }, { x: 0, y: 1, z: 0 });
+      // 获取相机的投影矩阵
+      let projectionMatrix: Mat4x4 = camera.getProjectionMatrix();
+    });
+}
+```

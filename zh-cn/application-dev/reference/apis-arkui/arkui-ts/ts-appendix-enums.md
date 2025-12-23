@@ -95,6 +95,8 @@
 
 ## ArrowPointPosition<sup>11+</sup>
 
+气泡箭头的位置。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -191,8 +193,8 @@
 | 名称   | 值 | 说明                 |
 | ---- | --- | ------------------ |
 | Off  | 0 | 不显示。               |
-| On   | 2 | 常驻显示。              |
 | Auto | 1 | 按需显示(触摸时显示，2s后消失)。 |
+| On   | 2 | 常驻显示。              |
 
 ## BorderStyle
 
@@ -225,6 +227,8 @@
 | HEAVY  | 大面积（厚重） | 弹簧动效， 刚性：240，阻尼：28，初始速度：0 | 95% |
 
 ## Color
+
+颜色类型。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -287,6 +291,8 @@
 
 ## CheckBoxShape<sup>11+</sup>
 
+复选框Checkbox的形状。
+
 **卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -336,25 +342,25 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称                  | 说明                                       |
-| ------------------- | ---------------------------------------- |
-| Linear              | 表示动画在整个过程中速度保持一致。                        |
-| Ease                | 表示动画以低速开始，然后加快，在结束前减速，CubicBezier(0.25, 0.1, 0.25, 1.0)。 |
-| EaseIn              | 表示动画以低速开始，CubicBezier(0.42, 0.0, 1.0, 1.0)。 |
-| EaseOut             | 表示动画以低速结束，CubicBezier(0.0, 0.0, 0.58, 1.0)。 |
-| EaseInOut           | 表示动画以低速开始和结束，CubicBezier(0.42, 0.0, 0.58, 1.0)。 |
-| FastOutSlowIn       | 标准曲线，CubicBezier(0.4, 0.0, 0.2, 1.0)。   |
-| LinearOutSlowIn     | 减速曲线，CubicBezier(0.0, 0.0, 0.2, 1.0)。   |
-| FastOutLinearIn     | 加速曲线，CubicBezier(0.4, 0.0, 1.0, 1.0)。   |
-| ExtremeDeceleration | 急缓曲线，CubicBezier(0.0, 0.0, 0.0, 1.0)。   |
-| Sharp               | 锐利曲线，CubicBezier(0.33, 0.0, 0.67, 1.0)。 |
-| Rhythm              | 节奏曲线，CubicBezier(0.7, 0.0, 0.2, 1.0)。   |
-| Smooth              | 平滑曲线，CubicBezier(0.4, 0.0, 0.4, 1.0)。   |
-| Friction            | 阻尼曲线，CubicBezier(0.2, 0.0, 0.2, 1.0)。    |
+| 名称                  | 值 | 说明                                       |
+| ------------------- | ------- | --------------------------------- |
+| Linear              | 0 | 表示动画在整个过程中速度保持一致。                        |
+| Ease                | 1 | 表示动画以低速开始，然后加快，在结束前减速，CubicBezier(0.25, 0.1, 0.25, 1.0)。 |
+| EaseIn              | 2 | 表示动画以低速开始，CubicBezier(0.42, 0.0, 1.0, 1.0)。 |
+| EaseOut             | 3 | 表示动画以低速结束，CubicBezier(0.0, 0.0, 0.58, 1.0)。 |
+| EaseInOut           | 4 | 表示动画以低速开始和结束，CubicBezier(0.42, 0.0, 0.58, 1.0)。 |
+| FastOutSlowIn       | 5 | 标准曲线，CubicBezier(0.4, 0.0, 0.2, 1.0)。   |
+| LinearOutSlowIn     | 6 | 减速曲线，CubicBezier(0.0, 0.0, 0.2, 1.0)。   |
+| FastOutLinearIn     | 7 | 加速曲线，CubicBezier(0.4, 0.0, 1.0, 1.0)。   |
+| ExtremeDeceleration | 8 | 急缓曲线，CubicBezier(0.0, 0.0, 0.0, 1.0)。   |
+| Sharp               | 9 | 锐利曲线，CubicBezier(0.33, 0.0, 0.67, 1.0)。 |
+| Rhythm              | 10 | 节奏曲线，CubicBezier(0.7, 0.0, 0.2, 1.0)。   |
+| Smooth              | 11 | 平滑曲线，CubicBezier(0.4, 0.0, 0.4, 1.0)。   |
+| Friction            | 12 | 阻尼曲线，CubicBezier(0.2, 0.0, 0.2, 1.0)。    |
 
 ## DialogButtonStyle<sup>10+</sup>
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+弹窗按钮的样式。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -422,7 +428,7 @@
 
 | 名称     | 值 | 说明                                       |
 | ------ | --- | ---------------------------------------- |
-| Spring | 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。 |
+| Spring | 0 | 弹性物理动效，滑动到边缘后可以根据初始速度或通过触摸事件继续滑动一段距离，松手后回弹。<br />API version 22及之前版本，拖动滚动条，滚动组件的弹性物理动效不生效。<br />从API version 23开始，通过手指拖动滚动条，滚动组件的弹性物理动效可以生效。通过鼠标拖动滚动条，滚动组件的弹性物理动效不能生效。 |
 | Fade   | 1 | 阴影效果，滑动到边缘后会有圆弧状的阴影。                     |
 | None   | 2 | 滑动到边缘后无效果。                               |
 
@@ -648,6 +654,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 | WRAP_WITH_ARROW | 1    | 交叉轴方向键允许换行。<br/>不规则单元格场景下，交叉轴方向键走焦时优先走到同一行的可获焦item。 |
 
 ## GradientDirection
+
+线性渐变的方向。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -1014,6 +1022,8 @@ type Nullable\<T> = T | undefined
 
 ## ObscuredReasons<sup>10+</sup>
 
+设置组件内容的遮罩类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1023,6 +1033,8 @@ type Nullable\<T> = T | undefined
 | PLACEHOLDER | 0 |显示的数据为通用占位符。 |
 
 ## OptionWidthMode<sup>11+</sup>
+
+下拉菜单的宽度模式。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1035,20 +1047,24 @@ type Nullable\<T> = T | undefined
 
 ## PlayMode
 
+动画播放模式。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称               | 说明                                       |
-| ---------------- | ---------------------------------------- |
-| Normal           | 动画正向播放。                                 |
-| Reverse          | 动画反向播放。                                  |
-| Alternate        | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
-| AlternateReverse | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
+| 名称               | 值 | 说明                                       |
+| ---------------- | ----- | ----------------------------------- |
+| Normal           | 0 | 动画正向播放。                                 |
+| Reverse          | 1 | 动画反向播放。                                  |
+| Alternate        | 2 | 动画在奇数次（1、3、5...）正向播放，在偶数次（2、4、6...）反向播放。 |
+| AlternateReverse | 3 | 动画在奇数次（1、3、5...）反向播放，在偶数次（2、4、6...）正向播放。 |
 
 ## Placement<sup>8+</sup>
+
+气泡显示的位置。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1159,6 +1175,8 @@ type Nullable\<T> = T | undefined
 
 ## ResponseType<sup>8+</sup>
 
+菜单显示的触发方式。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1239,6 +1257,8 @@ type Nullable\<T> = T | undefined
 
 ## SharedTransitionEffectType
 
+动画类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -1280,17 +1300,19 @@ type Nullable\<T> = T | undefined
 
 ## TransitionType
 
+指定该转场样式生效的场景。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明                             |
-| ------ | ------------------------------ |
-| All    | 指定当前的Transition动效在组件的所有变化场景中生效。 |
-| Insert | 指定当前的Transition动效在组件的插入显示场景中生效。 |
-| Delete | 指定当前的Transition动效在组件的删除隐藏场景中生效。 |
+| 名称     | 值 | 说明                             |
+| ------ | ----- | ------------------------- |
+| All    | 0 | 指定当前的Transition动效在组件的所有变化场景中生效。 |
+| Insert | 1 | 指定当前的Transition动效在组件的插入显示场景中生效。 |
+| Delete | 2 | 指定当前的Transition动效在组件的删除隐藏场景中生效。 |
 
 ## TextAlign
 

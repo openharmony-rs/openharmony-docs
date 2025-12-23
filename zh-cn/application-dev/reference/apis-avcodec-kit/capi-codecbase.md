@@ -156,6 +156,7 @@ CodecBase模块提供用于音视频封装、解封装、编解码基础功能�
 | OH_MD_KEY_AUDIO_OBJECT_NUMBER | 音频对象数目的键，值类型为int32_t，只有Audio Vivid解码使用。该键是可选的。            |
 | OH_MD_KEY_AUDIO_VIVID_METADATA | Audio Vivid元数据的键，值类型为uint8_t\*，只有Audio Vivid解码使用。该键是可选的。     |
 | OH_MD_KEY_BLOCK_ALIGN | 划分音频数据块大小的键，单位为字节，值类型为int32_t。该键从API version 22开始支持，仅WMAV1、WMAV2、WMA PRO解码时必须配置。 |
+| OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO | OH_AVBuffer中携带的键，用于跳过音频解码输出的数据。 以采样点为单位，值类型为uint8_t*，当使用mp3、vorbis、opus解码器解码时，可设置该键。仅音频的起始、末尾帧携带该键，该键是可选的。<br>使用方法一：解封装时获取该信息并设置到解码输入的OH_AVBuffer。<br>1. 从[OH_AVCodecCallback](capi-codecbase-oh-avcodeccallback.md)的回调函数[OH_AVCodecOnNeedInputBuffer](capi-native-avcodec-base-h.md#oh_avcodeconneedinputbuffer)里获取解码用的OH_AVBuffer。<br>2. 调用[OH_AVDemuxer_ReadSampleBuffer](capi-native-avdemuxer-h.md#oh_avdemuxer_readsamplebuffer)接口读取音频数据，该接口会自行设置OH_MD_KEY_BUFFER_SKIP_SAMPLES_INFO。<br>3. 调用[OH_AudioCodec_PushInputBuffer](capi-native-avcodec-audiocodec-h.md#oh_audiocodec_pushinputbuffer)输入OH_AVBuffer进行解码。<br>使用方法二：构造该键需要的数据并设置到解码输入的OH_AVBuffer。<br>开发者需要先创建一个10字节uint8_t[]类型的数组，具体结构如下：<br>1. 数组0~3，这4个字节表示从当前帧第一个采样点开始往后跳过的采样点数，以小端序存储uint32_t值。<br>2. 数组4~7，这4个字节表示从当前帧最后一个采样点开始往前跳过的采样点数（不大于1帧采样点数），以小端序存储uint32_t值。<br>3. 数组8~9，这2个字节填0即可。<br>该键从API version 23开始支持。 |
 
 ### 封装/解封装专有的键值对
 

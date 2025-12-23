@@ -13,7 +13,9 @@ The sensors are classified into the following categories based on their function
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 8. You are advised to use [`@ohos.sensor`](js-apis-sensor.md) instead.
+> - Module maintenance policy:
+>     - For lite wearables, this module is constantly maintained and available.
+>     - For other device types, this module is no longer maintained since API version 8, and you are advised to use the new [@ohos.sensor](js-apis-sensor.md) module.
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - This module requires hardware support and can only be debugged on real devices.
 
@@ -30,6 +32,8 @@ import { Sensor } from '@kit.SensorServiceKit';
  subscribeAccelerometer(options: subscribeAccelerometerOptions): void
 
 Subscribes to data changes of the acceleration sensor. If this API is called multiple times for the same application, the last call takes effect.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#accelerometer9) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -69,6 +73,8 @@ unsubscribeAccelerometer(): void
 
 Unsubscribes from data changes of the acceleration sensor.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#accelerometerdeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Required permissions**: ohos.permission.ACCELEROMETER (a system permission)
@@ -84,6 +90,8 @@ Sensor.unsubscribeAccelerometer();
  subscribeCompass(options: SubscribeCompassOptions): void
 
 Subscribes to data changes of the compass sensor. If this API is called multiple times for the same application, the last call takes effect.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#orientationdeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -118,6 +126,8 @@ unsubscribeCompass(): void
 
 Unsubscribes from data changes of the compass sensor.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#orientationdeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Example**
@@ -131,6 +141,8 @@ Sensor.unsubscribeCompass();
  subscribeProximity(options: SubscribeProximityOptions): void
 
 Subscribes to data changes of the proximity sensor. If this API is called multiple times for the same application, the last call takes effect.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#proximitydeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -165,6 +177,8 @@ unsubscribeProximity(): void
 
 Unsubscribes from data changes of the proximity sensor.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#proximitydeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Example**
@@ -178,6 +192,8 @@ Sensor.unsubscribeProximity();
  subscribeLight(options: SubscribeLightOptions): void
 
 Subscribes to data changes of the ambient light sensor. If this API is called multiple times, the last call takes effect.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#ambient_lightdeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -212,6 +228,8 @@ unsubscribeLight(): void
 
 Unsubscribes from data changes of the ambient light sensor.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#ambient_lightdeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Example**
@@ -225,6 +243,8 @@ Sensor.unsubscribeLight();
  subscribeStepCounter(options: SubscribeStepCounterOptions): void
 
 Subscribes to data changes of the step counter sensor. If this API is called multiple times for the same application, the last call takes effect.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#pedometerdeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -261,6 +281,8 @@ unsubscribeStepCounter(): void
 
 Unsubscribes from data changes of the step counter sensor.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#pedometerdeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
@@ -277,6 +299,8 @@ Sensor.unsubscribeStepCounter();
 subscribeBarometer(options: SubscribeBarometerOptions): void
 
 Subscribes to data changes of the barometer sensor. If this API is called multiple times for the same application, the last call takes effect.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#barometerdeprecated-1) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -312,6 +336,8 @@ unsubscribeBarometer(): void
 
 Unsubscribes from data changes of the barometer sensor.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#barometerdeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Example**
@@ -326,6 +352,8 @@ Sensor.unsubscribeBarometer();
  subscribeHeartRate(options: SubscribeHeartRateOptions): void
 
 Subscribes to data changes of the heart rate sensor. If this API is called multiple times for the same application, the last call takes effect.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#heart_ratedeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -363,6 +391,8 @@ unsubscribeHeartRate(): void
 
 Unsubscribes from data changes of the heart rate sensor.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#heart_ratedeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Required permissions**: ohos.permission.READ_HEALTH_DATA
@@ -378,6 +408,8 @@ Sensor.unsubscribeHeartRate();
  subscribeOnBodyState(options: SubscribeOnBodyStateOptions): void
 
 Subscribes to wearing status changes of a wearable device. If this API is called multiple times for the same application, the last call takes effect.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#wear_detectiondeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -412,6 +444,8 @@ unsubscribeOnBodyState(): void
 
 Unsubscribes from wearing status changes of a wearable device.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#wear_detectiondeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Example**
@@ -432,7 +466,7 @@ Obtains the wearing state of a wearable device.
 
 | Name | Type                                           | Mandatory| Description                      |
 | ------- | ----------------------------------------------- | ---- | -------------------------- |
-| options | [GetOnBodyStateOptions](#getonbodystateoptions) | Yes  | Callback invoked when obtaining the wearing state of the device that accommodates the sensor.|
+| options | [GetOnBodyStateOptions](#getonbodystateoptions) | Yes  | Callback invoked when obtaining the wearing state of the device that houses the sensor.|
 
 **Example**
 
@@ -457,6 +491,8 @@ Sensor.getOnBodyState(getOnBodyStateOptions);
 Subscribes to data changes of the device orientation sensor.
 
 If this API is called multiple times for the same application, the last call takes effect. However, this API cannot be called multiple times in one click event.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#orientationdeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -494,6 +530,8 @@ unsubscribeDeviceOrientation(): void
 
 Unsubscribes from data changes of the device orientation sensor.
 
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#orientationdeprecated-2) since API Version 8.
+
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 **Example**
@@ -509,6 +547,8 @@ Sensor.unsubscribeDeviceOrientation();
 Subscribes to data changes of the gyroscope sensor.
 
 If this API is called multiple times for the same application, the last call takes effect. However, this API cannot be called multiple times in one click event.
+
+Except for lite wearables, you are advised to use [sensor.on()](js-apis-sensor.md#gyroscopedeprecated) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -547,6 +587,8 @@ Sensor.subscribeGyroscope(subscribeGyroscopeOptions);
 unsubscribeGyroscope(): void
 
 Unsubscribes from data changes of the gyroscope sensor.
+
+Except for lite wearables, you are advised to use [sensor.off()](js-apis-sensor.md#gyroscopedeprecated-2) since API Version 8.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
@@ -722,28 +764,28 @@ Defines a **HeartRateResponse** object.
 
 ## SubscribeOnBodyStateOptions
 
-Defines the callback invoked upon change in the wearing state of the device that accommodates the sensor.
+Defines the callback invoked upon change in the wearing state of the device that houses the sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 | Name   | Type                                       | Mandatory| Description                      |
 | ------- | ------------------------------------------- | ---- | -------------------------- |
-| success | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when obtaining the wearing state change of the device that accommodates the sensor.|
+| success | [OnBodyStateResponse](#onbodystateresponse) | Yes  | Callback invoked when the wearing state of the device that houses the sensor is successfully obtained.|
 | fail    | Function                                    | No  | Callback invoked when an API call fails.  |
 
 ## OnBodyStateResponse 
 
-Whether the device where the sensor is located is worn.
+Specifies whether the device that houses the sensor is worn.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 
 | Name | Type   | Mandatory| Description                                              |
 | ----- | ------- | ---- | -------------------------------------------------- |
-| value | boolean | Yes  | Boolean value indicating whether the device is worn. The value true indicates that the device is worn, and the value **false** indicates the opposite.|
+| value | boolean | Yes  | Boolean value indicating whether the device is worn. The value **true** indicates that the device is worn, and the value **false** indicates the opposite.|
 
 ## GetOnBodyStateOptions
 
- Defines the callback for obtaining the wearing state of the device that accommodates the sensor.
+ Defines the callback for obtaining the wearing state of the device that houses the sensor.
 
 **System capability**: SystemCapability.Sensors.Sensor.Lite
 

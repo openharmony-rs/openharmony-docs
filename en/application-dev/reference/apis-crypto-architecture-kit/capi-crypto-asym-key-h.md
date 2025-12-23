@@ -85,7 +85,7 @@ Defines APIs for asymmetric keys.
 
 ### CryptoAsymKey_ParamType
 
-```
+```c
 enum CryptoAsymKey_ParamType
 ```
 
@@ -130,7 +130,7 @@ Enumerates the types of the asymmetric key parameters.
 
 ### Crypto_EncodingType
 
-```
+```c
 enum Crypto_EncodingType
 ```
 
@@ -147,7 +147,7 @@ Enumerates the encoding types.
 
 ### CryptoPrivKeyEncoding_ParamType
 
-```
+```c
 enum CryptoPrivKeyEncoding_ParamType
 ```
 
@@ -164,7 +164,7 @@ Defines the parameter type for private key encoding.
 
 ### CryptoAsymKeySpec_Type
 
-```
+```c
 enum CryptoAsymKeySpec_Type
 ```
 
@@ -186,7 +186,7 @@ Defines the specification type of an asymmetric key.
 
 ### OH_CryptoAsymKeyGenerator_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Create(const char *algoName, OH_CryptoAsymKeyGenerator **ctx)
 ```
 
@@ -212,7 +212,7 @@ Creates an asymmetric key generator instance based on the specified algorithm.
 
 ### OH_CryptoAsymKeyGenerator_Generate()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Generate(OH_CryptoAsymKeyGenerator *ctx, OH_CryptoKeyPair **keyCtx)
 ```
 
@@ -238,7 +238,7 @@ Randomly generates an asymmetric key pair.
 
 ### OH_CryptoAsymKeyGenerator_Convert()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_Convert(OH_CryptoAsymKeyGenerator *ctx, Crypto_EncodingType type,Crypto_DataBlob *pubKeyData, Crypto_DataBlob *priKeyData, OH_CryptoKeyPair **keyCtx)
 ```
 
@@ -267,7 +267,7 @@ Converts asymmetric key data into a key pair.
 
 ### OH_CryptoAsymKeyGenerator_GetAlgoName()
 
-```
+```c
 const char *OH_CryptoAsymKeyGenerator_GetAlgoName(OH_CryptoAsymKeyGenerator *ctx)
 ```
 
@@ -292,7 +292,7 @@ Obtains the asymmetric key algorithm.
 
 ### OH_CryptoAsymKeyGenerator_Destroy()
 
-```
+```c
 void OH_CryptoAsymKeyGenerator_Destroy(OH_CryptoAsymKeyGenerator *ctx)
 ```
 
@@ -311,7 +311,7 @@ Destroys an asymmetric key generator instance.
 
 ### OH_CryptoKeyPair_Destroy()
 
-```
+```c
 void OH_CryptoKeyPair_Destroy(OH_CryptoKeyPair *keyCtx)
 ```
 
@@ -330,7 +330,7 @@ Destroys an asymmetric key pair instance.
 
 ### OH_CryptoKeyPair_GetPubKey()
 
-```
+```c
 OH_CryptoPubKey *OH_CryptoKeyPair_GetPubKey(OH_CryptoKeyPair *keyCtx)
 ```
 
@@ -355,7 +355,7 @@ Obtains the public key from a key pair.
 
 ### OH_CryptoKeyPair_GetPrivKey()
 
-```
+```c
 OH_CryptoPrivKey *OH_CryptoKeyPair_GetPrivKey(OH_CryptoKeyPair *keyCtx)
 ```
 
@@ -380,7 +380,7 @@ Obtains the private key of a key pair.
 
 ### OH_CryptoPubKey_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPubKey_Encode(OH_CryptoPubKey *key, Crypto_EncodingType type,const char *encodingStandard, Crypto_DataBlob *out)
 ```
 
@@ -408,7 +408,7 @@ Encodes the public key data in the specified format.
 
 ### OH_CryptoPubKey_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPubKey_GetParam(OH_CryptoPubKey *key, CryptoAsymKey_ParamType item, Crypto_DataBlob *value)
 ```
 
@@ -435,7 +435,7 @@ Obtains the specified parameter from a public key instance.
 
 ### OH_CryptoAsymKeyGenerator_SetPassword()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGenerator_SetPassword(OH_CryptoAsymKeyGenerator *ctx, const unsigned char *password,uint32_t passwordLen)
 ```
 
@@ -462,7 +462,7 @@ Sets the password of the asymmetric key generator context.
 
 ### OH_CryptoPrivKeyEncodingParams_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_Create(OH_CryptoPrivKeyEncodingParams **ctx)
 ```
 
@@ -487,7 +487,7 @@ Creates private key encoding parameters.
 
 ### OH_CryptoPrivKeyEncodingParams_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPrivKeyEncodingParams_SetParam(OH_CryptoPrivKeyEncodingParams *ctx,CryptoPrivKeyEncoding_ParamType type, Crypto_DataBlob *value)
 ```
 
@@ -514,7 +514,7 @@ Sets a private key encoding parameter.
 
 ### OH_CryptoPrivKeyEncodingParams_Destroy()
 
-```
+```c
 void OH_CryptoPrivKeyEncodingParams_Destroy(OH_CryptoPrivKeyEncodingParams *ctx)
 ```
 
@@ -533,7 +533,7 @@ Destroys a private key encoding parameter.
 
 ### OH_CryptoPrivKey_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPrivKey_Encode(OH_CryptoPrivKey *key, Crypto_EncodingType type,const char *encodingStandard, OH_CryptoPrivKeyEncodingParams *params, Crypto_DataBlob *out)
 ```
 
@@ -562,7 +562,7 @@ Obtains the specified parameter from a private key instance.
 
 ### OH_CryptoPrivKey_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoPrivKey_GetParam(OH_CryptoPrivKey *key, CryptoAsymKey_ParamType item,Crypto_DataBlob *value)
 ```
 
@@ -589,7 +589,7 @@ Obtains the specified parameter of a private key.
 
 ### OH_CryptoAsymKeySpec_GenEcCommonParamsSpec()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenEcCommonParamsSpec(const char *curveName, OH_CryptoAsymKeySpec **spec)
 ```
 
@@ -615,7 +615,7 @@ Generates EC common parameter specifications.
 
 ### OH_CryptoAsymKeySpec_GenDhCommonParamsSpec()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GenDhCommonParamsSpec(int pLen, int skLen, OH_CryptoAsymKeySpec **spec)
 ```
 
@@ -642,7 +642,7 @@ Generates DH common parameter specifications.
 
 ### OH_CryptoAsymKeySpec_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_Create(const char *algoName, CryptoAsymKeySpec_Type type,OH_CryptoAsymKeySpec **spec)
 ```
 
@@ -669,7 +669,7 @@ Creates asymmetric key specifications based on the given algorithm name and spec
 
 ### OH_CryptoAsymKeySpec_SetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type,Crypto_DataBlob *value)
 ```
 
@@ -696,7 +696,7 @@ Sets the specified parameters for asymmetric key specifications.
 
 ### OH_CryptoAsymKeySpec_SetCommonParamsSpec()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_SetCommonParamsSpec(OH_CryptoAsymKeySpec *spec,OH_CryptoAsymKeySpec *commonParamsSpec)
 ```
 
@@ -722,7 +722,7 @@ Sets the common parameter specifications for asymmetric key specifications.
 
 ### OH_CryptoAsymKeySpec_GetParam()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeySpec_GetParam(OH_CryptoAsymKeySpec *spec, CryptoAsymKey_ParamType type,Crypto_DataBlob *value)
 ```
 
@@ -749,7 +749,7 @@ Obtains the specified parameters for asymmetric key specifications.
 
 ### OH_CryptoAsymKeySpec_Destroy()
 
-```
+```c
 void OH_CryptoAsymKeySpec_Destroy(OH_CryptoAsymKeySpec *spec)
 ```
 
@@ -768,7 +768,7 @@ Destroys asymmetric key specifications.
 
 ### OH_CryptoAsymKeyGeneratorWithSpec_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_Create(OH_CryptoAsymKeySpec *keySpec,OH_CryptoAsymKeyGeneratorWithSpec **generator)
 ```
 
@@ -794,7 +794,7 @@ Creates a struct for an asymmetric key generator with specifications.
 
 ### OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoAsymKeyGeneratorWithSpec_GenKeyPair(OH_CryptoAsymKeyGeneratorWithSpec *generator,OH_CryptoKeyPair **keyPair)
 ```
 
@@ -820,7 +820,7 @@ Generates a key pair based on asymmetric key specifications.
 
 ### OH_CryptoAsymKeyGeneratorWithSpec_Destroy()
 
-```
+```c
 void OH_CryptoAsymKeyGeneratorWithSpec_Destroy(OH_CryptoAsymKeyGeneratorWithSpec *generator)
 ```
 
@@ -839,7 +839,7 @@ Destroys a struct for an asymmetric key generator with specifications.
 
 ### OH_CryptoEcPoint_Create()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEcPoint_Create(const char *curveName, Crypto_DataBlob *ecKeyData, OH_CryptoEcPoint **point)
 ```
 
@@ -866,7 +866,7 @@ Creates an EC point.
 
 ### OH_CryptoEcPoint_GetCoordinate()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEcPoint_GetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)
 ```
 
@@ -893,7 +893,7 @@ Obtains the X and Y coordinates of an EC point.
 
 ### OH_CryptoEcPoint_SetCoordinate()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEcPoint_SetCoordinate(OH_CryptoEcPoint *point, Crypto_DataBlob *x, Crypto_DataBlob *y)
 ```
 
@@ -920,7 +920,7 @@ Sets the X and Y coordinates of an EC point.
 
 ### OH_CryptoEcPoint_Encode()
 
-```
+```c
 OH_Crypto_ErrCode OH_CryptoEcPoint_Encode(OH_CryptoEcPoint *point, const char *format, Crypto_DataBlob *out)
 ```
 
@@ -947,7 +947,7 @@ Encodes an EC point in a specified format.
 
 ### OH_CryptoEcPoint_Destroy()
 
-```
+```c
 void OH_CryptoEcPoint_Destroy(OH_CryptoEcPoint *point)
 ```
 

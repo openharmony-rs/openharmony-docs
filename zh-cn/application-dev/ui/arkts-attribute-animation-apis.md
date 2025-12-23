@@ -20,7 +20,7 @@
 
 ## 使用animateTo产生属性动画
 
-
+<!--deprecated_code_no_check-->
 ```ts
 animateTo(value: AnimateParam, event: () => void): void
 ```

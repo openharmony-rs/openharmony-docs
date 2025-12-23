@@ -4,7 +4,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 卡片数据绑定模块提供卡片数据绑定的能力。包括FormBindingData对象的创建、相关信息的描述。
 
@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import formBindingData from '@ohos.application.formBindingData';
+import { formBindingData } from '@kit.FormKit';
 ```
 
 ## FormBindingData

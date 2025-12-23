@@ -96,7 +96,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
      createSession(): void {
        // 定义peer信息
        const peerInfo: abilityConnectionManager.PeerInfo = {
-         deviceId: "sinkDeviceId",
+         deviceId: getRemoteDeviceId()!,
          bundleName: 'com.example.remotephotodemo',
          moduleName: 'entry',
          abilityName: 'EntryAbility',

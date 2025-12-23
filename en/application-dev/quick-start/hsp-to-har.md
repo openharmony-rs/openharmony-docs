@@ -21,35 +21,35 @@ The HSP has requirements on the consistency of bundle names and signatures. Inst
 1. In the **module.json5** file of the HSP module, change the value of the **type** field to **har** and delete the **deliveryWithInstall** and **pages** fields.
 
     <!-- @[hsp_to_har_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HspToHar/library/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    "name": "har",
-    "type": "har",
-    "deviceTypes": [
-      "tablet",
-      "2in1"
-    ]
-  }
-}
-```
+    
+    ``` JSON5
+    {
+      "module": {
+        "name": "har",
+        "type": "har",
+        "deviceTypes": [
+          "tablet",
+          "2in1"
+        ]
+      }
+    }
+    ```
 
 2. Delete the **main_pages.json** file from the **resource\base\profile** folder.
 
 3. Replace the content in the **hvigorfile.ts** file of the HSP module with the following:
 
     <!-- @[hsp_to_har_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/HspToHar/library/hvigorfile.ts) -->
-
-``` TypeScript
-// MyApplication\library\hvigorfile.ts
-import { harTasks } from '@ohos/hvigor-ohos-plugin';
-
-export default {
-  system: harTasks,  // Change this field to harTasks.
-  plugins:[]
-}
-```
+    
+    ``` TypeScript
+    // MyApplication\library\hvigorfile.ts
+    import { harTasks } from '@ohos/hvigor-ohos-plugin';
+    
+    export default {
+      system: harTasks,  // Change this field to harTasks.
+      plugins:[]
+    }
+    ```
 
 4. Delete the **packageType** configuration from the **oh-package.json5** file.
 

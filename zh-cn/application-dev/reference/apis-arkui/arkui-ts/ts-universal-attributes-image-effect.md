@@ -861,7 +861,7 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 ## PixelStretchEffectOptions<sup>10+</sup>
 
-像素扩展属性集合,用于描述像素扩展的信息。
+像素扩展属性集合，用于描述像素扩展的信息。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -869,10 +869,10 @@ pixelStretchEffect(options: Optional\<PixelStretchEffectOptions>): T
 
 | 名称     | 类型                | 只读   | 可选   | 说明             |
 | ------ | ----------------- | ---- | ---- | -------------- |
-| left   | [Length](ts-types.md#length) | 否    | 是    | 组件图像左边沿像素扩展距离。 |
-| right  | [Length](ts-types.md#length) | 否    | 是    | 组件图像右边沿像素扩展距离。 |
-| top    | [Length](ts-types.md#length) | 否    | 是    | 组件图像上边沿像素扩展距离。 |
-| bottom | [Length](ts-types.md#length) | 否    | 是    | 组件图像下边沿像素扩展距离。 |
+| left   | [Length](ts-types.md#length) | 否    | 是    | 组件图像左边沿像素扩展距离。<br/>默认值：0vp |
+| right  | [Length](ts-types.md#length) | 否    | 是    | 组件图像右边沿像素扩展距离。<br/>默认值：0vp |
+| top    | [Length](ts-types.md#length) | 否    | 是    | 组件图像上边沿像素扩展距离。<br/>默认值：0vp |
+| bottom | [Length](ts-types.md#length) | 否    | 是    | 组件图像下边沿像素扩展距离。<br/>默认值：0vp |
 
 ## systemBarEffect<sup>12+</sup>
 
@@ -921,6 +921,8 @@ systemBarEffect(): T
 
 ## ShadowStyle<sup>10+</sup>枚举说明
 
+组件阴影效果。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -935,6 +937,8 @@ systemBarEffect(): T
 | OUTER_FLOATING_MD | 5 | 浮动中阴影。 |
 
 ## BlendMode<sup>11+</sup>枚举说明
+
+混合模式。
 
 >  **说明：**
 >
@@ -1194,6 +1198,7 @@ struct ImageEffectsExample {
 @Entry
 @Component
 struct ImageExample1 {
+  // $r('app.media.testlinearGradientBlurOrigin')需要替换为开发者所需的资源文件。
   private_resource1: Resource = $r('app.media.testlinearGradientBlurOrigin')
   @State image_src: Resource = this.private_resource1
 
@@ -1202,6 +1207,7 @@ struct ImageExample1 {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
           Image(this.image_src)
+            .blur(0) // 设置图片模糊效果为不模糊
             .linearGradientBlur(60,
               { fractionStops: [[0, 0], [0, 0.33], [1, 0.66], [1, 1]], direction: GradientDirection.Bottom })
         }

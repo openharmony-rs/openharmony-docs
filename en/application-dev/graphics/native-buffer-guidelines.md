@@ -1,4 +1,4 @@
-# Native Buffer Development (C/C++)
+# NativeBuffer Development (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
@@ -7,9 +7,9 @@
 <!--Adviser: @ge-yafang-->
 ## Overview
 
-The NativeBuffer module provides the **shared memory** function, supporting memory allocation, usage, query, and release.
+The NativeBuffer module provides the **shared memory** feature, supporting memory application, use, query, and release.
 
-In common development scenarios, you can use Native APIs to apply for OH_NativeBuffer instances, obtain memory attributes, and map the ION memory to the process space.
+Common development scenarios of NativeBuffer: Apply for **OH_NativeBuffer** instances through Native APIs, obtain memory properties, and map the ION memory to the process space.
 
 ## Available APIs
 
@@ -27,7 +27,7 @@ For details about the APIs, see [native_buffer](../reference/apis-arkgraphics2d/
 
 ## How to Develop
 
-The following describes how to use the native APIs provided by `NativeBuffer` to create a `OH_NativeBuffer` instance, obtain the memory attribute information, and map the ION memory to the process space.
+The following describes how to use the aforementioned APIs to create an **OH_NativeBuffer** instance, obtain memory properties, and map the ION memory to the process address space.
 
 **Adding Dynamic Link Libraries**
 
@@ -58,8 +58,8 @@ libnative_buffer.so
     }
     ```
 
-2. If the application needs to access the memory space of the **OH_NativeBuffer** instance, map the ION memory allocated to the instance to the process address space
-    If the application needs to access the buffer memory space, map the ION memory to the process address space by calling OH_NativeBuffer_Map.
+2. Map the ION memory allocated to an **OH_NativeBuffer** instance to the process address space.
+    Call **OH_NativeBuffer_Map** if the application needs to access the memory space of the buffer.
     <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
     ``` C++

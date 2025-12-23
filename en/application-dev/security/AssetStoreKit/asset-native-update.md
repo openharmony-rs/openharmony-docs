@@ -58,6 +58,10 @@ The following table describes the attributes for updating an asset.
 
 ## Example
 
+> **NOTE**
+>
+> Before updating an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](./asset-native-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
+
 Update asset **demo_alias** as follows: change the asset plaintext to **demo_pwd_new** and additional attribute to **demo_label_new**.
 
 For details about how to update an asset in a group, see [Updating an asset in a Group](asset-native-group-access-control.md#updating-an-asset-in-a-group).
@@ -67,27 +71,34 @@ For details about how to update an asset in a group, see [Updating an asset in a
    target_link_libraries(entry PUBLIC libasset_ndk.z.so)
    ```
 
-2. Update an asset.
-   ```c
+2. Include header files.
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
    #include <string.h>
-
    #include "asset/asset_api.h"
+   ```
 
+3. Update an asset.
+   <!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
    static napi_value UpdateAsset(napi_env env, napi_callback_info info)
    {
-       static const char *ALIAS = "demo_alias";
-       static const char *SECRET = "demo_pwd_new";
-       static const char *LABEL = "demo_label_new";
-
-       Asset_Blob alias = {(uint32_t)(strlen(ALIAS)), (uint8_t *)ALIAS};
-       Asset_Blob new_secret = {(uint32_t)(strlen(SECRET)), (uint8_t *)SECRET};
-       Asset_Blob new_label = {(uint32_t)(strlen(LABEL)), (uint8_t *)LABEL};
+       const char *aliasStr = "demo_alias";
+       const char *secretStr = "demo_pwd_new";
+       const char *labelStr = "demo_label_new";
+   
+       Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
+       Asset_Blob new_secret = {(uint32_t)(strlen(secretStr)), (uint8_t *)secretStr};
+       Asset_Blob new_label = {(uint32_t)(strlen(labelStr)), (uint8_t *)labelStr};
        Asset_Attr query[] = {{.tag = ASSET_TAG_ALIAS, .value.blob = alias }};
        Asset_Attr attributesToUpdate[] = {
            {.tag = ASSET_TAG_SECRET, .value.blob = new_secret},
            {.tag = ASSET_TAG_DATA_LABEL_NORMAL_1, .value.blob = new_label},
        };
-
+   
        int32_t updateResult = OH_Asset_Update(query, sizeof(query) / sizeof(query[0]), attributesToUpdate,
                                               sizeof(attributesToUpdate) / sizeof(attributesToUpdate[0]));
        napi_value ret;

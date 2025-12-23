@@ -12,7 +12,7 @@
 This file declares the functions related to the canvas in the drawing module.<br>By default, the canvas has a black brush with anti-aliasing enabled and without any other style. This brush takes effect only when no brush or pen is proactively set in the canvas.
 
 <!--RP1-->
-**Sample**: [NDKAPIDrawing (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
+**Sample**: [NDKAPIDrawing (API Version 20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKAPIDrawing)<!--RP1End-->
 
 **File to include**: <native_drawing/drawing_canvas.h>
 
@@ -78,7 +78,7 @@ This file declares the functions related to the canvas in the drawing module.<br
 | [void OH_Drawing_CanvasRotate(OH_Drawing_Canvas* canvas, float degrees, float px, float py)](#oh_drawing_canvasrotate) | Rotates a canvas by a given angle. A positive value indicates a clockwise rotation, and a negative value indicates a counterclockwise rotation.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas* canvas, float dx, float dy)](#oh_drawing_canvastranslate) | Translates a canvas by a given distance.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_CanvasScale(OH_Drawing_Canvas* canvas, float sx, float sy)](#oh_drawing_canvasscale) | Scales a canvas.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
-| [void OH_Drawing_CanvasSkew(OH_Drawing_Canvas* canvas, float sx, float sy)](#oh_drawing_canvasskew) | Skews a canvas. This function premultiplies the current canvas matrix by a skew transformation matrix and applies the resulting matrix to the canvas. The skew transformation matrix is as follows:<br>|1 sx 0|  <br>|sy 1 0|  <br>|0  0 1|.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
+| [void OH_Drawing_CanvasSkew(OH_Drawing_Canvas* canvas, float sx, float sy)](#oh_drawing_canvasskew) | Skews a canvas. This function premultiplies the current canvas matrix by a skew transformation matrix and applies the resulting matrix to the canvas. The skew transformation matrix is as follows:<br>\|1 sx 0\|  <br>\|sy 1 0\|  <br>\|0  0 1\|.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [int32_t OH_Drawing_CanvasGetWidth(OH_Drawing_Canvas* canvas)](#oh_drawing_canvasgetwidth) | Obtains the canvas width.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [int32_t OH_Drawing_CanvasGetHeight(OH_Drawing_Canvas* canvas)](#oh_drawing_canvasgetheight) | Obtains the canvas height.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **canvas** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_CanvasGetLocalClipBounds(OH_Drawing_Canvas* canvas, OH_Drawing_Rect* rect)](#oh_drawing_canvasgetlocalclipbounds) | Obtains the bounds of the cropping region of the canvas. This function cannot be used for a canvas of the recording type.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If either **canvas** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
@@ -101,12 +101,13 @@ This file declares the functions related to the canvas in the drawing module.<br
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,bool* quickReject)](#oh_drawing_canvasquickrejectrect) | Checks whether the rectangle is not intersecting with the canvas area. The canvas area includes its boundaries.<br>|
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canvas* canvas,OH_Drawing_PixelMap* pixelMap, const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst,const OH_Drawing_SamplingOptions* samplingOptions, OH_Drawing_SrcRectConstraint constraint)](#oh_drawing_canvasdrawpixelmaprectconstraint) | Draws a portion of a pixel map onto a specified area of the canvas.|
 | [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing_Canvas* canvas, const char* str,const OH_Drawing_Font* font, float x, float y, OH_Drawing_FontFeatures* fontFeatures)](#oh_drawing_canvasdrawsinglecharacterwithfeatures) | Draws a single character with font features. If the typeface of the current font does not support the character to draw, the system typeface is used to draw the character.|
+| [OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanvas, OH_Drawing_PixelMap* pixelMap, uint32_t meshWidth, uint32_t meshHeight, const float* vertices, uint32_t verticesSize, uint32_t vertOffset, const uint32_t* colors, uint32_t colorsSize, uint32_t colorOffset)](#oh_drawing_canvasdrawpixelmapmesh) | Draws a PixelMap based on a mesh, where mesh vertices are evenly distributed across the PixelMap. (This API works with brushes but not pens.)|
 
 ## Enum Description
 
 ### OH_Drawing_SrcRectConstraint
 
-```
+```c
 enum OH_Drawing_SrcRectConstraint
 ```
 
@@ -123,7 +124,7 @@ Enumerates the constraint types of the source rectangle.
 
 ### OH_Drawing_PointMode
 
-```
+```c
 enum OH_Drawing_PointMode
 ```
 
@@ -141,7 +142,7 @@ Enumerates the modes of drawing multiple points. The modes include discrete poin
 
 ### OH_Drawing_CanvasClipOp
 
-```
+```c
 enum OH_Drawing_CanvasClipOp
 ```
 
@@ -158,7 +159,7 @@ Enumerates the canvas clipping modes.
 
 ### OH_Drawing_CanvasShadowFlags
 
-```
+```c
 enum OH_Drawing_CanvasShadowFlags
 ```
 
@@ -177,7 +178,7 @@ Enumerates the shadow flags.
 
 ### OH_Drawing_VertexMode
 
-```
+```c
 enum OH_Drawing_VertexMode
 ```
 
@@ -198,7 +199,7 @@ Enumerates the modes of interpreting the geometry of a given vertex.
 
 ### OH_Drawing_CanvasDrawSingleCharacterWithFeatures()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing_Canvas* canvas, const char* str, const OH_Drawing_Font* font, float x, float y, OH_Drawing_FontFeatures* fontFeatures)
 ```
 
@@ -230,7 +231,7 @@ Draws a single character with font features. If the typeface of the current font
 
 ### OH_Drawing_CanvasDrawPixelMapRectConstraint()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canvas* canvas,OH_Drawing_PixelMap* pixelMap, const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, const OH_Drawing_SamplingOptions* samplingOptions, OH_Drawing_SrcRectConstraint constraint)
 ```
 
@@ -262,7 +263,7 @@ Draws a portion of a pixel map onto a specified area of the canvas.
 
 ### OH_Drawing_CanvasDrawRecordCmdNesting()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmdNesting(OH_Drawing_Canvas* canvas, OH_Drawing_RecordCmd* recordCmd)
 ```
 
@@ -292,7 +293,7 @@ Specifically, it can use the canvas object generated by [OH_Drawing_RecordCmdUti
 
 ### OH_Drawing_CanvasCreate()
 
-```
+```c
 OH_Drawing_Canvas* OH_Drawing_CanvasCreate(void)
 ```
 
@@ -312,7 +313,7 @@ Creates an **OH_Drawing_Canvas** object.
 
 ### OH_Drawing_CanvasCreateWithPixelMap()
 
-```
+```c
 OH_Drawing_Canvas* OH_Drawing_CanvasCreateWithPixelMap(OH_Drawing_PixelMap* pixelMap)
 ```
 
@@ -339,7 +340,7 @@ Binds a pixel map to a canvas so that the content drawn on the canvas is output 
 
 ### OH_Drawing_CanvasDestroy()
 
-```
+```c
 void OH_Drawing_CanvasDestroy(OH_Drawing_Canvas* canvas)
 ```
 
@@ -360,7 +361,7 @@ Destroys an **OH_Drawing_Canvas** object and reclaims the memory occupied by the
 
 ### OH_Drawing_CanvasBind()
 
-```
+```c
 void OH_Drawing_CanvasBind(OH_Drawing_Canvas* canvas, OH_Drawing_Bitmap* bitmap)
 ```
 
@@ -382,7 +383,7 @@ Binds a bitmap to a canvas so that the content drawn on the canvas is output to 
 
 ### OH_Drawing_CanvasAttachPen()
 
-```
+```c
 void OH_Drawing_CanvasAttachPen(OH_Drawing_Canvas* canvas, const OH_Drawing_Pen* pen)
 ```
 
@@ -404,7 +405,7 @@ Attaches a pen to a canvas so that the canvas can use the style and color of the
 
 ### OH_Drawing_CanvasDetachPen()
 
-```
+```c
 void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas* canvas)
 ```
 
@@ -425,7 +426,7 @@ Detaches the pen from a canvas so that the canvas can no longer use the style an
 
 ### OH_Drawing_CanvasAttachBrush()
 
-```
+```c
 void OH_Drawing_CanvasAttachBrush(OH_Drawing_Canvas* canvas, const OH_Drawing_Brush* brush)
 ```
 
@@ -447,7 +448,7 @@ Attaches a brush to a canvas so that the canvas can use the style and color of t
 
 ### OH_Drawing_CanvasDetachBrush()
 
-```
+```c
 void OH_Drawing_CanvasDetachBrush(OH_Drawing_Canvas* canvas)
 ```
 
@@ -468,7 +469,7 @@ Detaches the brush from a canvas so that the canvas can no longer use the previo
 
 ### OH_Drawing_CanvasSave()
 
-```
+```c
 void OH_Drawing_CanvasSave(OH_Drawing_Canvas* canvas)
 ```
 
@@ -489,7 +490,7 @@ Saves the current canvas status (canvas matrix) to the top of the stack. This fu
 
 ### OH_Drawing_CanvasSaveLayer()
 
-```
+```c
 void OH_Drawing_CanvasSaveLayer(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect, const OH_Drawing_Brush* brush)
 ```
 
@@ -512,7 +513,7 @@ Saves the matrix and cropping region, and allocates a bitmap for subsequent draw
 
 ### OH_Drawing_CanvasRestore()
 
-```
+```c
 void OH_Drawing_CanvasRestore(OH_Drawing_Canvas* canvas)
 ```
 
@@ -533,7 +534,7 @@ Restores the canvas status (canvas matrix) saved on the top of the stack.<br>Thi
 
 ### OH_Drawing_CanvasGetSaveCount()
 
-```
+```c
 uint32_t OH_Drawing_CanvasGetSaveCount(OH_Drawing_Canvas* canvas)
 ```
 
@@ -560,7 +561,7 @@ Obtains the number of canvas statuses (canvas matrices) saved in the stack.<br>T
 
 ### OH_Drawing_CanvasRestoreToCount()
 
-```
+```c
 void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas* canvas, uint32_t saveCount)
 ```
 
@@ -582,7 +583,7 @@ Restores to a given number of canvas statuses (canvas matrices).<br>This API may
 
 ### OH_Drawing_CanvasDrawLine()
 
-```
+```c
 void OH_Drawing_CanvasDrawLine(OH_Drawing_Canvas* canvas, float x1, float y1, float x2, float y2)
 ```
 
@@ -607,7 +608,7 @@ Draws a line segment.<br>This API may return an error code. For details, call [O
 
 ### OH_Drawing_CanvasDrawPath()
 
-```
+```c
 void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path* path)
 ```
 
@@ -629,7 +630,7 @@ Draws a path.<br>This API may return an error code. For details, call [OH_Drawin
 
 ### OH_Drawing_CanvasDrawPixelMapNine()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapNine(OH_Drawing_Canvas* canvas, OH_Drawing_PixelMap* pixelMap,const OH_Drawing_Rect* center, const OH_Drawing_Rect* dst, OH_Drawing_FilterMode mode)
 ```
 
@@ -660,7 +661,7 @@ Splits a pixel map into nine sections using two horizontal and two vertical line
 
 ### OH_Drawing_CanvasDrawPixelMapRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawPixelMapRect(OH_Drawing_Canvas* canvas, OH_Drawing_PixelMap* pixelMap,const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, const OH_Drawing_SamplingOptions* samplingOptions)
 ```
 
@@ -685,7 +686,7 @@ Draws a portion of a pixel map onto a specified area of the canvas.<br>This API 
 
 ### OH_Drawing_CanvasDrawBackground()
 
-```
+```c
 void OH_Drawing_CanvasDrawBackground(OH_Drawing_Canvas* canvas, const OH_Drawing_Brush* brush)
 ```
 
@@ -707,7 +708,7 @@ Draws a background filled with a brush.<br>This API may return an error code. Fo
 
 ### OH_Drawing_CanvasDrawRegion()
 
-```
+```c
 void OH_Drawing_CanvasDrawRegion(OH_Drawing_Canvas* canvas, const OH_Drawing_Region* region)
 ```
 
@@ -729,7 +730,7 @@ Draws a region.<br>This API may return an error code. For details, call [OH_Draw
 
 ### OH_Drawing_CanvasDrawPoint()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas* canvas, const OH_Drawing_Point2D* point)
 ```
 
@@ -757,7 +758,7 @@ Draws a point.
 
 ### OH_Drawing_CanvasDrawPoints()
 
-```
+```c
 void OH_Drawing_CanvasDrawPoints(OH_Drawing_Canvas* canvas, OH_Drawing_PointMode mode,uint32_t count, const OH_Drawing_Point2D* point2D)
 ```
 
@@ -781,7 +782,7 @@ Draws multiple points. You can draw a single point, a line segment, or an open p
 
 ### OH_Drawing_CanvasDrawBitmap()
 
-```
+```c
 void OH_Drawing_CanvasDrawBitmap(OH_Drawing_Canvas* canvas, const OH_Drawing_Bitmap* bitmap, float left, float top)
 ```
 
@@ -805,7 +806,7 @@ Draws a bitmap. A bitmap, also referred to as a dot matrix image, a pixel map im
 
 ### OH_Drawing_CanvasDrawBitmapRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawBitmapRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Bitmap* bitmap,const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, const OH_Drawing_SamplingOptions* samplingOptions)
 ```
 
@@ -830,7 +831,7 @@ Draws a portion of a bitmap onto a specified area of the canvas.<br>This API may
 
 ### OH_Drawing_CanvasDrawRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect)
 ```
 
@@ -852,7 +853,7 @@ Draws a rectangle.<br>This API may return an error code. For details, call [OH_D
 
 ### OH_Drawing_CanvasDrawCircle()
 
-```
+```c
 void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas* canvas, const OH_Drawing_Point* point, float radius)
 ```
 
@@ -875,7 +876,7 @@ Draws a circle. This API may return an error code. For details, call [OH_Drawing
 
 ### OH_Drawing_CanvasDrawColor()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawColor(OH_Drawing_Canvas* canvas, uint32_t color,OH_Drawing_BlendMode blendMode)
 ```
 
@@ -904,7 +905,7 @@ Fills the entire canvas with the specified color and blend mode.
 
 ### OH_Drawing_CanvasDrawOval()
 
-```
+```c
 void OH_Drawing_CanvasDrawOval(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect)
 ```
 
@@ -926,7 +927,7 @@ Draws an oval. This API may return an error code. For details, call [OH_Drawing_
 
 ### OH_Drawing_CanvasDrawArc()
 
-```
+```c
 void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas* canvas,const OH_Drawing_Rect* rect, float startAngle, float sweepAngle)
 ```
 
@@ -950,7 +951,7 @@ Draws an arc. If the absolute value of the sweep angle exceeds 360 degrees, an e
 
 ### OH_Drawing_CanvasDrawArcWithCenter()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawArcWithCenter(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,float startAngle, float sweepAngle, bool useCenter)
 ```
 
@@ -981,7 +982,7 @@ Draws an arc. It enables you to define the start angle, sweep angle, and whether
 
 ### OH_Drawing_CanvasDrawRoundRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* roundRect)
 ```
 
@@ -1003,7 +1004,7 @@ Draws a rounded rectangle. This API may return an error code. For details, call 
 
 ### OH_Drawing_CanvasDrawNestedRoundRect()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawNestedRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* outer,const OH_Drawing_RoundRect* inner)
 ```
 
@@ -1032,7 +1033,7 @@ Draws two nested rounded rectangles. The outer rectangle boundary must contain t
 
 ### OH_Drawing_CanvasDrawSingleCharacter()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacter(OH_Drawing_Canvas* canvas, const char* str,const OH_Drawing_Font* font, float x, float y)
 ```
 
@@ -1063,7 +1064,7 @@ Draws a single character. If the typeface of the current font does not support t
 
 ### OH_Drawing_CanvasDrawTextBlob()
 
-```
+```c
 void OH_Drawing_CanvasDrawTextBlob(OH_Drawing_Canvas* canvas, const OH_Drawing_TextBlob* textBlob, float x, float y)
 ```
 
@@ -1087,7 +1088,7 @@ Draws a text blob. If the typeface used to construct **OH_Drawing_TextBlob** doe
 
 ### OH_Drawing_CanvasClipRect()
 
-```
+```c
 void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)
 ```
 
@@ -1111,7 +1112,7 @@ Clips a rectangle.<br>This API may return an error code. For details, call [OH_D
 
 ### OH_Drawing_CanvasClipRoundRect()
 
-```
+```c
 void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_RoundRect* roundRect,OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)
 ```
 
@@ -1135,7 +1136,7 @@ Clips a rounded rectangle.<br>This API may return an error code. For details, ca
 
 ### OH_Drawing_CanvasClipPath()
 
-```
+```c
 void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path* path,OH_Drawing_CanvasClipOp clipOp, bool doAntiAlias)
 ```
 
@@ -1159,7 +1160,7 @@ Clips a path.<br>This API may return an error code. For details, call [OH_Drawin
 
 ### OH_Drawing_CanvasClipRegion()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas* canvas, const OH_Drawing_Region* region,OH_Drawing_CanvasClipOp clipOp)
 ```
 
@@ -1188,7 +1189,7 @@ Clips a rectangle.
 
 ### OH_Drawing_CanvasRotate()
 
-```
+```c
 void OH_Drawing_CanvasRotate(OH_Drawing_Canvas* canvas, float degrees, float px, float py)
 ```
 
@@ -1212,7 +1213,7 @@ Rotates a canvas by a given angle. A positive value indicates a clockwise rotati
 
 ### OH_Drawing_CanvasTranslate()
 
-```
+```c
 void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas* canvas, float dx, float dy)
 ```
 
@@ -1235,7 +1236,7 @@ Translates a canvas by a given distance.<br>This API may return an error code. F
 
 ### OH_Drawing_CanvasScale()
 
-```
+```c
 void OH_Drawing_CanvasScale(OH_Drawing_Canvas* canvas, float sx, float sy)
 ```
 
@@ -1258,7 +1259,7 @@ Scales a canvas.<br>This API may return an error code. For details, call [OH_Dra
 
 ### OH_Drawing_CanvasSkew()
 
-```
+```c
 void OH_Drawing_CanvasSkew(OH_Drawing_Canvas* canvas, float sx, float sy)
 ```
 
@@ -1281,7 +1282,7 @@ Skews a canvas. This function premultiplies the current canvas matrix by a skew 
 
 ### OH_Drawing_CanvasGetWidth()
 
-```
+```c
 int32_t OH_Drawing_CanvasGetWidth(OH_Drawing_Canvas* canvas)
 ```
 
@@ -1308,7 +1309,7 @@ Obtains the canvas width.<br>This API may return an error code. For details, cal
 
 ### OH_Drawing_CanvasGetHeight()
 
-```
+```c
 int32_t OH_Drawing_CanvasGetHeight(OH_Drawing_Canvas* canvas)
 ```
 
@@ -1335,7 +1336,7 @@ Obtains the canvas height.<br>This API may return an error code. For details, ca
 
 ### OH_Drawing_CanvasGetLocalClipBounds()
 
-```
+```c
 void OH_Drawing_CanvasGetLocalClipBounds(OH_Drawing_Canvas* canvas, OH_Drawing_Rect* rect)
 ```
 
@@ -1357,7 +1358,7 @@ Obtains the bounds of the cropping region of the canvas. This function cannot be
 
 ### OH_Drawing_CanvasGetTotalMatrix()
 
-```
+```c
 void OH_Drawing_CanvasGetTotalMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* matrix)
 ```
 
@@ -1379,7 +1380,7 @@ Obtains the 3x3 matrix of a canvas.<br>This API may return an error code. For de
 
 ### OH_Drawing_CanvasConcatMatrix()
 
-```
+```c
 void OH_Drawing_CanvasConcatMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* matrix)
 ```
 
@@ -1401,7 +1402,7 @@ Preconcats the existing matrix of the canvas with the passed-in matrix. The draw
 
 ### OH_Drawing_CanvasDrawShadow()
 
-```
+```c
 void OH_Drawing_CanvasDrawShadow(OH_Drawing_Canvas* canvas, OH_Drawing_Path* path, OH_Drawing_Point3D planeParams,OH_Drawing_Point3D devLightPos, float lightRadius, uint32_t ambientColor, uint32_t spotColor,OH_Drawing_CanvasShadowFlags flag)
 ```
 
@@ -1429,7 +1430,7 @@ Draws a spot shadow and uses a given path to outline the ambient shadow.<br>This
 
 ### OH_Drawing_CanvasClear()
 
-```
+```c
 void OH_Drawing_CanvasClear(OH_Drawing_Canvas* canvas, uint32_t color)
 ```
 
@@ -1451,7 +1452,7 @@ Clears a canvas by using a given color.<br>This API may return an error code. Fo
 
 ### OH_Drawing_CanvasSetMatrix()
 
-```
+```c
 void OH_Drawing_CanvasSetMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* matrix)
 ```
 
@@ -1473,7 +1474,7 @@ Sets the matrix status for a canvas.<br>This API may return an error code. For d
 
 ### OH_Drawing_CanvasResetMatrix()
 
-```
+```c
 void OH_Drawing_CanvasResetMatrix(OH_Drawing_Canvas* canvas)
 ```
 
@@ -1494,7 +1495,7 @@ Resets the matrix of this canvas to an identity matrix.<br>This API may return a
 
 ### OH_Drawing_CanvasDrawImageRectWithSrc()
 
-```
+```c
 void OH_Drawing_CanvasDrawImageRectWithSrc(OH_Drawing_Canvas* canvas, const OH_Drawing_Image* image,const OH_Drawing_Rect* src, const OH_Drawing_Rect* dst, const OH_Drawing_SamplingOptions* samplingOptions,OH_Drawing_SrcRectConstraint srcRectConstraint)
 ```
 
@@ -1520,7 +1521,7 @@ Draws a portion of an image onto a specified area of the canvas. The area select
 
 ### OH_Drawing_CanvasDrawImageRect()
 
-```
+```c
 void OH_Drawing_CanvasDrawImageRect(OH_Drawing_Canvas* canvas, OH_Drawing_Image* image,OH_Drawing_Rect* rect, OH_Drawing_SamplingOptions* samplingOptions)
 ```
 
@@ -1544,7 +1545,7 @@ Draws an image onto a specified area of the canvas.<br>This API may return an er
 
 ### OH_Drawing_CanvasDrawVertices()
 
-```
+```c
 void OH_Drawing_CanvasDrawVertices(OH_Drawing_Canvas* canvas, OH_Drawing_VertexMode vertexMmode,int32_t vertexCount, const OH_Drawing_Point2D* positions, const OH_Drawing_Point2D* texs,const uint32_t* colors, int32_t indexCount, const uint16_t* indices, OH_Drawing_BlendMode mode)
 ```
 
@@ -1573,7 +1574,7 @@ Draws a triangular grid described by a vertex array.<br>This API may return an e
 
 ### OH_Drawing_CanvasReadPixels()
 
-```
+```c
 bool OH_Drawing_CanvasReadPixels(OH_Drawing_Canvas* canvas, OH_Drawing_Image_Info* imageInfo,void* dstPixels, uint32_t dstRowBytes, int32_t srcX, int32_t srcY)
 ```
 
@@ -1605,7 +1606,7 @@ Copies pixel data from a canvas to a specified address. This function cannot be 
 
 ### OH_Drawing_CanvasReadPixelsToBitmap()
 
-```
+```c
 bool OH_Drawing_CanvasReadPixelsToBitmap(OH_Drawing_Canvas* canvas,OH_Drawing_Bitmap* bitmap, int32_t srcX, int32_t srcY)
 ```
 
@@ -1635,7 +1636,7 @@ Copies pixel data from a canvas to an image. This function cannot be used for a 
 
 ### OH_Drawing_CanvasIsClipEmpty()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasIsClipEmpty(OH_Drawing_Canvas* canvas, bool* isClipEmpty)
 ```
 
@@ -1663,7 +1664,7 @@ Checks whether the region that can be drawn is empty after clipping.<br>
 
 ### OH_Drawing_CanvasGetImageInfo()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasGetImageInfo(OH_Drawing_Canvas* canvas, OH_Drawing_Image_Info* imageInfo)
 ```
 
@@ -1691,7 +1692,7 @@ Obtains the image information of a canvas.<br>
 
 ### OH_Drawing_CanvasDrawRecordCmd()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmd(OH_Drawing_Canvas* canvas, OH_Drawing_RecordCmd* recordCmd)
 ```
 
@@ -1719,7 +1720,7 @@ Draws an **OH_Drawing_RecordCmd** object.<br>
 
 ### OH_Drawing_CanvasQuickRejectPath()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path* path,bool* quickReject)
 ```
 
@@ -1748,7 +1749,7 @@ Checks whether the path is not intersecting with the canvas area. The canvas are
 
 ### OH_Drawing_CanvasQuickRejectRect()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* rect,bool* quickReject)
 ```
 
@@ -1774,3 +1775,39 @@ Checks whether the rectangle is not intersecting with the canvas area. The canva
 | Type| Description|
 | -- | -- |
 | [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br> **OH_DRAWING_SUCCESS** if the operation is successful.<br> **OH_DRAWING_ERROR_INVALID_PARAMETER** if **canvas**, **rect**, or **quickReject** is NULL.|
+
+
+### OH_Drawing_CanvasDrawPixelMapMesh()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanvas, OH_Drawing_PixelMap* pixelMap, uint32_t meshWidth, uint32_t meshHeight, const float* vertices, uint32_t verticesSize, uint32_t vertOffset, const uint32_t* colors, uint32_t colorsSize, uint32_t colorOffset)
+```
+
+**Description**
+
+Draws a PixelMap based on a mesh, where mesh vertices are evenly distributed across the PixelMap. (This API works with brushes but not pens.)
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md)* cCanvas | Pointer to the [OH_Drawing_Canvas](capi-drawing-oh-drawing-canvas.md) object.|
+| [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md)* pixelMap | Pointer to the [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) object.|
+| uint32_t meshWidth | Number of columns in the mesh. The value is an integer greater than 0.|
+| uint32_t meshHeight | Number of rows in the mesh. The value is an integer greater than 0.|
+| const float* vertices | Pointer to the mesh vertex array.|
+| uint32_t verticesSize | Size of the mesh vertex array. The value must be ((meshWidth + 1) * (meshHeight + 1) + vertoffset) * 2.|
+| uint32_t vertOffset | Number of vertices to skip before drawing. The value is an integer greater than or equal to 0.|
+| const uint32_t* colors | Pointer to the mesh color array, which can be null.|
+| uint32_t colorsSize | Size of the mesh color array. If the array exists, the size must be (meshWidth + 1) * (meshHeight + 1) + colorOffset.|
+| uint32_t colorOffset | Number of colors to skip before drawing. The value is an integer greater than or equal to 0.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | Returns one of the following result codes:<br>**OH_DRAWING_SUCCESS** if the operation is successful.<br>**OH_DRAWING_ERROR_INCORRECT_PARAMETER** if any of the parameters, such as **cCanvas**, **pixelMap**, and **vertices**, is empty or the input parameter does not meet the value rule.|

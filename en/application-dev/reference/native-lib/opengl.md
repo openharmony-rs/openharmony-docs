@@ -49,7 +49,7 @@ libEGL.so
 #include <GL/glcorearb.h>
 ```
 **Modifying the app.json5 Configuration File**
-```c++
+```json
 "appEnvironments": [
  {
    "name":"NEED_OPENGL",

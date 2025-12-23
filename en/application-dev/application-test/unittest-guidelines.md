@@ -228,7 +228,7 @@ Example 11: Execute test cases for a specified number of times.
 * Checking the test result
 
 1. During the test execution in the CLI, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_STATUS: class=ActsAbilityTest
     OHOS_REPORT_STATUS: current=1
     OHOS_REPORT_STATUS: id=JS
@@ -257,7 +257,7 @@ Example 11: Execute test cases for a specified number of times.
     | OHOS_REPORT_STATUS_CODE | Execution status of the current test case. **1**: The test case starts to be executed. **0**: The test case is successfully executed. **-1**: An error is reported during the test case execution. **-2**: The test case fails to be executed.|
     | OHOS_REPORT_STATUS: consuming | Time spent in executing the current test case, in milliseconds.|
 2. After the command execution is complete, the framework prints the following log information:
-    ```
+    ```txt
     OHOS_REPORT_RESULT: stream=Tests run: 447, Failure: 0, Error: 1, Pass: 201, Ignore: 245
     OHOS_REPORT_CODE: 0
     
@@ -286,7 +286,9 @@ JSUnit provides the basic process APIs required for executing test scripts. You 
 |  it          | Defines a test case.         |
 |  beforeAll         | Presets an action, which is performed only once before all test cases of the test suite start.                       |
 |  beforeEach        | Presets an action, which is performed before each test case of the test suite starts. The number of execution times is the same as the number of test cases defined by **it**.         |
+| beforeEachIt | Presets an action, which is performed before each unit test case starts.<br>The **beforeEachIt** defined in the outer test suite is executed before the test cases in the internal test suite are executed.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 |  afterEach         | Presets a clear action, which is performed after each unit test case ends. The number of execution times is the same as the number of test cases defined by **it**.         |
+| afterEachIt | Presets an action, which is performed after each unit test case ends.<br>The **afterEachIt** defined in the outer test suite is executed after the test cases in the internal test suite are executed.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 |  afterAll          | Presets a clear action, which is performed only once after all test cases of the test suite ends.                       |
 |  beforeItSpecified | Presets an action, which is performed only before the specified unit test case starts.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
 |  afterItSpecified  | Presets a clear action, which is performed only after the specified unit test case ends.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
@@ -609,14 +611,17 @@ Since@ohos/hypium 1.0.1, JSUnit supports the mock capability. For details about 
 
 **Mockit**
 
-Mockit is used to specify the instances and functions to be mocked.
+MockKit is used to specify the instances and functions to be mocked.
+
 | Name| Description                |
 | --- |-------------------------------------------------------------------------------------------------------------------------------------------------|
 | mockFunc| Mocks a function in a class instance. Asynchronous functions are supported.                                                |
+| mockPrivateFunc | Mocks a private method on an instance of a class.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
+| mockProperty | Mocks a property on an instance of a class.<br>**Note**: This API is supported since @ohos/hypium 1.0.25.|
 | verify | Verifies whether a function and its parameters are executed as expected. This API returns a **VerificationMode** class.|
 | ignoreMock | Restores the mocked function in the instance. This API is valid for mocked functions.                                                                                                  |
 | clear | Restores the mocked object instance after the test case is complete (restores the original features of the object).                                                                      |
-| clearAll | Clears all data and memory after the test cases are complete. The mocked function in the instance is not restored.                                 |  
+| clearAll | Clears all data and memory after the test cases are complete. The mocked function in the instance is not restored.                                 |
 
 **VerificationMode**
 
@@ -1095,7 +1100,7 @@ export default function staticTest() {
       let mocker: MockKit = new MockKit();
       // Mock method_1 of the ClassName object.
       let func_1: Function = mocker.mockFunc(ClassName, ClassName.method_1);
-      // It is expected that 'ock_data' is returned after the function is mocked.
+      // It is expected that 'mock_data' is returned after the function is mocked.
       when(func_1)(ArgumentMatchers.any).afterReturn('mock_data');
       let mock_result = ClassName.method_1();
       expect(mock_result).assertEqual('mock_data'); // The assertion is successful.
@@ -1189,7 +1194,7 @@ export default class TestAbility extends UIAbility {
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) -->
- 
+
  ``` TypeScript
  import { describe, it } from '@ohos/hypium';
  

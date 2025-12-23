@@ -111,6 +111,31 @@ import { display } from '@kit.ArkUI';
 >&bullet; 对于内外屏均可作为主屏幕使用的折叠产品，例如大折叠、阔折叠，内屏显示状态为FOLD_DISPLAY_MODE_FULL，外屏显示状态为FOLD_DISPLAY_MODE_MAIN。<br>
 >&bullet; 对于外屏只有简单的辅助显示作用的折叠产品，例如小折叠，内屏显示状态为FOLD_DISPLAY_MODE_MAIN，外屏显示状态为FOLD_DISPLAY_MODE_SUB。
 
+## CornerType<sup>23+</sup>
+
+屏幕圆角类型枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| TOP_LEFT | 0 | 屏幕左上方的圆角。|
+| TOP_RIGHT | 1 | 屏幕右上方的圆角。 |
+| BOTTOM_RIGHT | 2 | 屏幕右下方的圆角。|
+| BOTTOM_LEFT | 3 | 屏幕左下方的圆角。|
+
+## RoundedCorner<sup>23+</sup>
+
+屏幕圆角定义。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+| 名称   | 类型 | 只读 | 可选 | 说明               |
+| ------ | -------- | ---- | ---- | ------------------ |
+| type  | [CornerType](#cornertype23)   | 是   | 否   |圆角类型。 |
+| position  | [Position](#position20)   | 是   | 否   | 圆角圆心的坐标点。 |
+| radius    | number   | 是   | 否   | 圆角半径，单位为px。 |
+
 ## FoldCreaseRegion<sup>10+</sup>
 
 折叠折痕区域。
@@ -199,6 +224,8 @@ import { display } from '@kit.ArkUI';
 type BrightnessCallback<T1, T2> = (data1: T1, data2: T2) => void
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
 
 | 参数名             | 类型 | 必填 | 说明               |
 | ----------------- | ---- | ---- | ------------------|
@@ -1531,7 +1558,7 @@ getDefaultDisplay(callback: AsyncCallback&lt;Display&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)。
+> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1566,7 +1593,7 @@ getDefaultDisplay(): Promise&lt;Display&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)。
+> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getDefaultDisplaySync()](#displaygetdefaultdisplaysync9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1599,7 +1626,7 @@ getAllDisplay(callback: AsyncCallback&lt;Array&lt;Display&gt;&gt;): void
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9)。
+> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1632,7 +1659,7 @@ getAllDisplay(): Promise&lt;Array&lt;Display&gt;&gt;
 
 > **说明：**
 > 
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9-1)。
+> 从API version 7开始支持，从API version 9开始废弃，推荐使用[getAllDisplays()](#displaygetalldisplays9-1)替代。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1688,6 +1715,43 @@ promise.then((data: Array<display.Display>) => {
 | y<sup>19+</sup> | number | 是 | 是 | 屏幕左上角相对于原点的y轴坐标，原点为主屏左上角，单位为px，该参数为整数，默认值为0。仅DisplaySourceMode为MAIN和EXTEND时返回。<br/>**系统能力：** SystemCapability.Window.SessionManager<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。                                                                                    |
 | supportedRefreshRates<sup>20+</sup> | Array&lt;number&gt; | 是 | 是 | 显示设备支持的所有刷新率，从小到大排序。刷新率值为正整数，单位为Hz。默认为空。<br/>**系统能力：** SystemCapability.Window.SessionManager<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                                  |
 
+### getRoundedCorner<sup>23+</sup>
+getRoundedCorner(): Array\<RoundedCorner\>
+
+获取屏幕的圆角信息。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Array<[RoundedCorner](#roundedcorner23)> | 返回当前屏幕的圆角信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[屏幕错误码](errorcode-display.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------- |
+| 801  | Capability not supported. |
+| 1400001 | Invalid display or screen. |
+| 1400003 | This display manager service works abnormally. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayClass: display.Display | null = null;
+try {
+  displayClass = display.getDefaultDisplaySync();
+  let data = displayClass.getRoundedCorner();
+  console.info(`Succeeded in getting rounded corner. Data: ${JSON.stringify(data)}`);
+} catch (error) {
+  console.error(`Failed to getRoundedCorner. Code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### getCutoutInfo<sup>9+</sup>
 getCutoutInfo(callback: AsyncCallback&lt;CutoutInfo&gt;): void
@@ -1771,6 +1835,8 @@ promise.then((data: display.CutoutInfo) => {
 getAvailableArea(): Promise&lt;Rect&gt;
 
 获取当前设备屏幕的可用区域，使用Promise异步回调。
+
+可用区域是扣除系统UI（如状态栏、Dock栏）后，可供应用程序自由使用的区域。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

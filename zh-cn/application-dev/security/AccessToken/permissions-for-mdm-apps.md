@@ -664,3 +664,18 @@
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：23
+
+## ohos.permission.ENTERPRISE_START_ABILITIES
+
+允许设备管理应用访问其他组件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：23

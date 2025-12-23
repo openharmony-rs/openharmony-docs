@@ -82,7 +82,7 @@ Defines the policy for sensitive content identification.
 | -------- | -------- | -------- | -------- | -------- |
 | sensitiveLabel | string | No| No| Label of an identification policy. The value can contain a maximum of 30 bytes.|
 | keywords | Array&lt;string&gt; | No| No| Keyword set. The array can contain a maximum of 50 elements, and each element can contain a maximum of 30 bytes.|
-| regex | string | No| No| Regular expression. The value can contain a maximum of 512 bytes.|
+| regex | string | No| No| Regular expression. The value can contain a maximum of 512 bytes.<br>When entering a string, check whether some special characters (such as backslash (\), double quotation marks ("), and newline characters) are automatically escaped to ensure the input effect of the string.|
 
 ## MatchResult
 

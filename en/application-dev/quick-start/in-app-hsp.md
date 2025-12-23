@@ -39,13 +39,13 @@ A Harmony Shared Package (HSP) is a dynamic shared package that can contain code
 
 ## Creating an HSP
 Create an HSP module for calling C++ code on DevEco Studio and turn on **Enable native** on the **Configure New Module** page. For details, see [Creating an HSP Module](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hsp#section7717162312546). The following uses the **library** module as an example. The basic project directory structure is as follows:
-```
+```txt
 MyApplication
 ├── library
 │   ├── src
 │   │   └── main
 |   |       ├── cpp
-|   |       |   ├── CMakeLists.txt    // Configuration file for compiling native C++ code
+|   |       |   ├── CMakeLists.txt    // Configuration file for compiling C++ code
 |   |       |   └── napi_init.cpp     // C++ file for initializing the NAPI module
 │   │       ├── ets
 │   │       │   └── pages
@@ -90,11 +90,8 @@ Declare the APIs exposed to external systems in the entry file **index.ets**.
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
-// [StartExclude in_app_hsp_010]
 ```
-
 
 
 ### Exporting Classes and Methods
@@ -121,13 +118,11 @@ export function minus(a: number, b: number): number {
 
 Declare the APIs exposed to external systems in the entry file **index.ets**.
 
-<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @[in_app_hsp_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { Log, add, minus } from './src/main/ets/utils/test';
-// [StartExclude in_app_hsp_010]
 ```
 
 ### Exporting Native Methods
@@ -148,15 +143,12 @@ export function nativeMulti(a: number, b: number): number {
 
 Declare the APIs exposed to external systems in the entry file **index.ets**.
 
-<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets) -->
+<!-- @[in_app_hsp_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/Index.ets)  -->
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
 ```
-
-
 ### Accessing Resources in an HSP Through $r
 More often than not, you may need to use resources, such as strings and images, in components. For components in an HSP, such resources are typically placed in the HSP package, rather than in the package where the HSP is invoked, for the purpose of complying with the principle of high cohesion and low coupling.
 
@@ -169,15 +161,15 @@ if you use **Image("../../resources/base/media/example.png")**, the image actual
 <!-- @[in_app_hsp_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/library/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-        // library/src/main/ets/pages/Index.ets
-        // Correct case
-        Image($r('app.media.example'))
-          .id('example')
-          .borderRadius('48px')
-        // // Incorrect case
-        Image("../../resources/base/media/example.png")
-          .id('example')
-          .borderRadius('48px')
+// library/src/main/ets/pages/Index.ets
+// Correct case
+Image($r('app.media.example'))
+  .id('example')
+  .borderRadius('48px')
+// // Incorrect case
+Image("../../resources/base/media/example.png")
+  .id('example')
+  .borderRadius('48px')
 ```
 
 
@@ -211,12 +203,8 @@ Declare the APIs exposed to external systems in the entry file **index.ets**.
 
 ``` TypeScript
 // library/index.ets
-// [EndExclude in_app_hsp_010]
 export { ResManager } from './src/main/ets/ResManager';
-// [StartExclude in_app_hsp_010]
 ```
-
-
 
 ## Using an HSP
 
@@ -230,22 +218,22 @@ You can then call the external APIs of the HSP in the same way as calling the AP
 
 ``` TypeScript
 // library/index.ets
-// ···
+// ...
 export { Log, add, minus } from './src/main/ets/utils/test';
-// ···
+// ...
 export { MyTitleBar } from './src/main/ets/components/MyTitleBar';
-// ···
+// ...
 export { ResManager } from './src/main/ets/ResManager';
-// ···
+// ...
 export { nativeMulti } from './src/main/ets/utils/nativeTest';
-// [End in_app_hsp_006]
 ```
 
 The APIs can be used as follows in the code of the invoking module:
 
+<!--deprecated_code_no_check-->
+
 <!-- @[in_app_hsp_011](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/InAppHsp1/entry/src/main/ets/pages/Index.ets) -->
 
-<!--deprecated_code_no_check-->
 ``` TypeScript
 // entry/src/main/ets/pages/index.ets
 import { Log, add, MyTitleBar, ResManager, nativeMulti } from 'library';
@@ -465,7 +453,7 @@ export struct Library_Menu {
 
 
 Add the **route_map.json** file (**library/src/main/resources/base/profile/route_map.json**) to the **library** module.
-```
+```json
 {
   "routerMap": [
     {
@@ -502,4 +490,4 @@ Configure the **route_map.json** file in the **library/src/main/module.json5** f
 ```
 
 
-The navigation feature is used for page redirection and return. For details, see [Page Navigation](../ui/arkts-navigation-navigation.md#routing-operations).
+The navigation feature is used for page redirection and return.
