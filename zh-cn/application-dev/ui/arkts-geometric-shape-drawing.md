@@ -82,8 +82,8 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   @Entry
   @Component
   struct ViewPort1 {
-    viewPort: Tmp = new Tmp();
-    viewPort1: TmpOne = new TmpOne();
+    viep: Tmp = new Tmp();
+    viep1: TmpOne = new TmpOne();
   
     build() {
       Column() {
@@ -103,7 +103,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
               Rect().width('100%').height('100%').fill('rgb(39, 135, 217)')
               Circle({ width: 75, height: 75 }).fill('rgb(213, 213, 213)')
             }
-            .viewPort(this.viewPort)
+            .viewPort(this.viep)
             .width(150)
             .height(150)
             .backgroundColor('rgb(23, 169, 141)')
@@ -119,7 +119,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
               Rect().width('100%').height('100%').fill('rgb(213, 213, 213)')
               Circle({ width: 75, height: 75 }).fill('rgb(39, 135, 217)')
             }
-            .viewPort(this.viewPort1)
+            .viewPort(this.viep1)
             .width(150)
             .height(150)
             .backgroundColor('rgb(23, 169, 141)')

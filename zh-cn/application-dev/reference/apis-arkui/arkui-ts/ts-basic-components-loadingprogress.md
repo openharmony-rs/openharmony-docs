@@ -286,7 +286,7 @@ struct LoadingProgressDemoExample {
         }.width('100%').margin({ top: 5 })
       }.height('85%')
 
-      Button('点击切换config.enableLoading').onClick(() => {
+      Button('点击切换config.enableloading').onClick(() => {
         this.clickFlag++;
         this.loadingProgressIndex = (this.loadingProgressIndex + 1) % this.loadingProgressList.length;
         console.info('enableLoading:' + this.loadingProgressList[this.loadingProgressIndex]);
