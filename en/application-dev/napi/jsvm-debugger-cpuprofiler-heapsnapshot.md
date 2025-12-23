@@ -329,7 +329,7 @@ const char *srcCallNative = R"JS(runScriptWithStatistics();)JS";
 ```
 Expected result:
 ```ts
-Two files are generated in the Harmony device for subsequent optimization.
+Two files are generated in the HarmonyOS device for subsequent optimization.
 heap-snapshot-end.heapsnapshot,
 cpu-profile.cpuprofile
 For file features, see API usage.
