@@ -31,7 +31,7 @@ ArkUI的弹出框节点都是直接挂载在根节点上，会根据层级从小
     @Builder
     normalCustomDialog(index: number) {
       Column() {
-        // 请在resources\base\element\string.json文件中配置name为'open_normal_dialog' ，value为非空字符串的资源
+        // 请在resources\base\element\string.json文件中配置name为'open_normal_dialog'，value为非空字符串的资源
         Text(this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('open_normal_dialog') as string +
           index).fontSize(30)
       }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)
@@ -107,7 +107,7 @@ ArkUI的弹出框节点都是直接挂载在根节点上，会根据层级从小
    @Builder
    normalCustomDialog(index: number) {
      Column() {
-       // 请在resources\base\element\string.json文件中配置name为'open_normal_dialog' ，value为非空字符串的资源
+       // 请在resources\base\element\string.json文件中配置name为'open_normal_dialog'，value为非空字符串的资源
        Text(this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('open_normal_dialog') as string +
          index).fontSize(30)
      }.height(400).padding(5).justifyContent(FlexAlign.SpaceBetween)

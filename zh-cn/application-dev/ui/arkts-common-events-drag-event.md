@@ -112,7 +112,7 @@
    <!-- @[module_draggable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    
    ``` TypeScript
-   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+   // 请将$r('app.media.app_icon')替换为实际资源文件
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
@@ -176,7 +176,7 @@
    @Builder
    pixelMapBuilder() {
      Column() {
-       // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+       // 请将$r('app.media.startIcon')替换为实际资源文件
        Image($r('app.media.startIcon'))
          .width(120)
          .height(120)
@@ -347,7 +347,7 @@ export struct DefaultDrag {
   @Builder
   pixelMapBuilder() {
     Column() {
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      // 请将$r('app.media.startIcon')替换为实际资源文件
       Image($r('app.media.startIcon'))
         .width(120)
         .height(120)
@@ -410,7 +410,7 @@ export struct DefaultDrag {
               .margin(10)
               .backgroundColor('#008888')
             Row() {
-              // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+              // 请将$r('app.media.app_icon')替换为实际资源文件
               Image($r('app.media.app_icon'))
                 .width(100)
                 .height(100)
@@ -746,7 +746,7 @@ build() {
    <!-- @[drop_image_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drop/DropAnimationExample.ets) -->
    
    ``` TypeScript
-   // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+   // 请将$r('app.media.app_icon')替换为实际资源文件
    Image($r('app.media.app_icon'))
      .width(100)
      .height(100)
@@ -839,7 +839,7 @@ export struct DropAnimationExample {
     // ...
       Row() {
         Column() {
-          // $r('app.media.app_icon')需要替换为开发者所需的图像资源文件。
+          // 请将$r('app.media.app_icon')替换为实际资源文件
           Image($r('app.media.app_icon'))
             .width(100)
             .height(100)
