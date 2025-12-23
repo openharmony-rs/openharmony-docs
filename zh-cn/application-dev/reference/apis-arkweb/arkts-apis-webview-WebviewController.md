@@ -17047,7 +17047,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController(undefined);
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
 
   build() {
     Column() {
