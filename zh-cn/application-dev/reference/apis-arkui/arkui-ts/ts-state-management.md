@@ -467,7 +467,7 @@ static Link(propName: string): any
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[link](#link10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[link](#link10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -499,7 +499,7 @@ static SetAndLink&lt;T&gt;(propName: string, defaultValue: T): SubscribedAbstrac
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setAndLink](#setandlink10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[setAndLink](#setandlink10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -532,7 +532,7 @@ static Prop(propName: string): any
 > **说明：**
 >
 > Prop仅支持简单类型。
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[prop](#prop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[prop](#prop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -564,7 +564,7 @@ static SetAndProp&lt;S&gt;(propName: string, defaultValue: S): SubscribedAbstrac
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setAndProp](#setandprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[setAndProp](#setandprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -595,7 +595,7 @@ static Has(propName: string): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[has](#has10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[has](#has10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -624,7 +624,7 @@ static Get&lt;T&gt;(propName: string): T | undefined
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[get](#get10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[get](#get10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -654,7 +654,7 @@ static Set&lt;T&gt;(propName: string, newValue: T): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[set](#set10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[set](#set10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -688,7 +688,7 @@ newValue不能为null或undefined。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[setOrCreate](#setorcreate10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[setOrCreate](#setorcreate10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -716,7 +716,7 @@ static Delete(propName: string): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[delete](#delete10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[delete](#delete10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -750,7 +750,7 @@ static Keys(): IterableIterator&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[keys](#keys10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[keys](#keys10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -775,7 +775,7 @@ static staticClear(): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，推荐使用[clear](#clear10)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[clear](#clear10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -801,7 +801,7 @@ static Clear(): boolean
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 10开始废弃，推荐使用[clear](#clear10)替代。
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[clear](#clear10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -857,7 +857,7 @@ static Size(): number
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[size](#size10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[size](#size10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1792,7 +1792,7 @@ static PersistProp&lt;T&gt;(key: string, defaultValue: T): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[persistProp](#persistprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[persistProp](#persistprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1821,7 +1821,7 @@ static DeleteProp(key: string): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[deleteProp](#deleteprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[deleteProp](#deleteprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1845,7 +1845,7 @@ static PersistProps(properties: {key: string; defaultValue: any;}[]): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[persistProps](#persistprops10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[persistProps](#persistprops10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1869,7 +1869,7 @@ static Keys(): Array&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[keys](#keys10-1)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[keys](#keys10-1)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1996,7 +1996,7 @@ static EnvProp&lt;S&gt;(key: string, value: S): boolean
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[envProp](#envprop10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[envProp](#envprop10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2029,7 +2029,7 @@ static EnvProps(props: {key: string; defaultValue: any;}[]): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[envProps](#envprops10)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[envProps](#envprops10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2056,7 +2056,7 @@ static Keys(): Array&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 10开始废弃，推荐使用[keys](#keys10-2)替代。
+> 从API version 7开始支持，从API version 10开始废弃，建议使用[keys](#keys10-2)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
