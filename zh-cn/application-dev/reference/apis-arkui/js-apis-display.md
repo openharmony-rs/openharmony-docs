@@ -1718,7 +1718,7 @@ promise.then((data: Array<display.Display>) => {
 ### getRoundedCorner<sup>23+</sup>
 getRoundedCorner(): Array\<RoundedCorner\>
 
-获取屏幕的圆角信息。
+获取屏幕的圆角信息。屏幕圆角信息由产品配置决定，只有配置了屏幕圆角半径的物理屏幕才能返回圆角信息，否则返回空数组，虚拟屏同样返回空数组。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
