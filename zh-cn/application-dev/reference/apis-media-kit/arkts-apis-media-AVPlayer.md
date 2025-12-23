@@ -1160,8 +1160,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 async function  test(){
   let avPlayer = await media.createAVPlayer();
   // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
-  avPlayer.prepare().then(() => {
-    console.info('Succeeded in preparing');
+  avPlayer.play().then(() => {
+    console.info('Succeeded in playing');
     let currentPresentation: number = avPlayer.getCurrentPresentationTimestamp();
     console.info(`AVPlayer getCurrentPresentationTimestamp== ${currentPresentation}`);
   }, (err: BusinessError) => {
