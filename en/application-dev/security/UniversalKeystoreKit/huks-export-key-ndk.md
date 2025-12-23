@@ -10,7 +10,10 @@
 This topic walks you through on how to export the public key of a persistently stored asymmetric key. Currently, HUKS supports export of the ECC, RSA, Ed25519, X25519, and SM2 public keys.
 
 >**NOTE**
+>
 > <!--RP1-->Mini-system devices<!--RP1End--> support export of only the RSA public keys.
+
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 ## Add the dynamic library in the CMake script.
 ```txt
@@ -28,12 +31,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 3. Check the return value. If the operation is successful, the exported key is in the **key** field in the DER format defined in X.509. For details about the format, see [Public Key Material Format](huks-concepts.md#public-key-material-format). If the operation fails, an error code is returned.
 
-```c++
+<!-- @[get_persistent_storage_asymmetric_public_keys_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/KeyExport/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include "huks/native_huks_api.h"
 #include "huks/native_huks_param.h"
 #include "napi/native_api.h"
 #include <cstring>
-
 /* Generate an ECC key. */
 OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param *params,
                             uint32_t paramCount)
@@ -84,7 +88,6 @@ static napi_value ExportKey(napi_env env, napi_callback_info info)
     /* 1. Set the key alias. */
     const char *alias = "test_key";
     struct OH_Huks_Blob aliasBlob = { .size = (uint32_t)strlen(alias), .data = (uint8_t *)alias };
-
     /* Generate a key. */
     OH_Huks_Result genResult = GenerateKeyHelper(alias);
     if (genResult.errorCode != OH_HUKS_SUCCESS) {
@@ -92,7 +95,6 @@ static napi_value ExportKey(napi_env env, napi_callback_info info)
         napi_create_int32(env, genResult.errorCode, &ret);
         return ret;
     }
-
     /* Request the memory for holding the public key to be exported. */
     uint8_t *pubKey = (uint8_t *)malloc(512); // Request memory based on the key size.
     if (pubKey == nullptr) {
@@ -112,3 +114,4 @@ static napi_value ExportKey(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
+<!--no_check-->

@@ -7,6 +7,10 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
+```c
+struct OH_Huks_KeyInfo {...}
+```
+
 ## Overview
 
 Defines the struct of key information.

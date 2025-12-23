@@ -14,87 +14,35 @@ For example, a service needs to use a HUKS key to encrypt the account password i
 To implement this feature, you only need to set **HuksTag** to **HUKS_TAG_KEY_AUTH_PURPOSE**.
 
 > **NOTE**
+>
 > For symmetric encryption and decryption, only the AES/CBC, AES/GCM, and SM4/CBC modes support fine-grained access control.
 
 ## How to Develop
+### Key Generation and Data Encryption
+<!-- @[fingerprint_access_key_generation_and_encryption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
 
-### Generating a Key
-Set the access control type to fingerprint authentication and set other parameters including **HUKS_TAG_KEY_AUTH_PURPOSE**.
-   
-```ts
-import { huks } from "@kit.UniversalKeystoreKit";
-import { BusinessError } from "@kit.BasicServicesKit";
-
-/*
- * Set the key alias and encapsulate the key property set.
- */
-let keyAlias = 'test_sm4_key_alias';
-let properties: Array<huks.HuksParam> = [{
-    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
-    value: huks.HuksKeyAlg.HUKS_ALG_SM4,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-    value: huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
-    value: huks.HuksCipherMode.HUKS_MODE_CBC,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PADDING,
-    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_USER_AUTH_TYPE,
-    value: huks.HuksUserAuthType.HUKS_USER_AUTH_TYPE_FINGERPRINT
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_AUTH_ACCESS_TYPE,
-    value: huks.HuksAuthAccessType.HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_CHALLENGE_TYPE,
-    value: huks.HuksChallengeType.HUKS_CHALLENGE_TYPE_NORMAL
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_KEY_AUTH_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
-  }
-];
-let huksOptions: huks.HuksOptions = {
-  properties: properties,
-  inData: new Uint8Array(new Array())
-}
-
-/*
- * Generate a key.
- */
-async function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`promise: enter generateKeyItem`);
-  try {
-    await huks.generateKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: generateKeyItem success`);
-      }).catch((error: BusinessError) => {
-        console.error(`promise: generateKeyItem failed, errCode : ${error.code}, errMsg : ${error.message}`);
-      })
-  } catch (error) {
-    console.error(`promise: generateKeyItem input arg invalid`);
-  }
-}
-
-async function TestGenKeyForFingerprintAccessControl() {
-  await generateKeyItem(keyAlias, huksOptions);
-}
-```
-
-### Using a Key
-The key does not need user identity authentication for encryption but requires it for decryption.
-   
-```ts
-import { huks } from "@kit.UniversalKeystoreKit";
+``` TypeScript
+import { huks } from '@kit.UniversalKeystoreKit';
 import { userAuth } from '@kit.UserAuthenticationKit';
-import { BusinessError } from "@kit.BasicServicesKit";
-import { cryptoFramework } from '@kit.CryptoArchitectureKit'
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function StringToUint8Array(str: string) {
+const KEY_ALIAS = 'test_sm4_key_alias';
+const CIPHER_IN_DATA = 'Hks_SM4_Cipher_Test_101010101010101010110_string'; // Plaintext
+const IV = '1234567890123456'; // Initialization vector
+const AUTH_TYPE = userAuth.UserAuthType.PIN; // Authentication type: PIN
+const AUTH_TRUST_LEVEL = userAuth.AuthTrustLevel.ATL1; // Authentication trust level
+
+let sessionHandle = 0; // Session handle
+let challenge: Uint8Array; // Challenge value
+let authToken: Uint8Array; // Authentication token
+let encryptedData: Uint8Array; // Ciphertext after encryption
+let decryptedData: Uint8Array; // Plaintext after decryption
+
+class ThrowObject {
+  public isThrow: boolean = false;
+}
+
+function stringToUint8Array(str: string): Uint8Array {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -102,186 +50,419 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-function Uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
-}
-
-/*
- * Set the key alias and encapsulate the key property set.
- */
-let keyAlias = 'test_sm4_key_alias';
-let cipherInData = 'Hks_SM4_Cipher_Test_101010101010101010110_string'; // Plaintext.
-let IV = cryptoFramework.createRandom().generateRandomSync(16).data;
-let handle = 0;
-let cipherText: Uint8Array; // Ciphertext after encryption.
-let fingerAuthToken: Uint8Array;
-let challenge: Uint8Array;
-let authType = userAuth.UserAuthType.FINGERPRINT;
-let authTrustLevel = userAuth.AuthTrustLevel.ATL1;
-/* Encryption parameter set. */
-let propertiesEncrypt: Array<huks.HuksParam> = [{
+/* Step 1: Key generation module */
+const KEY_GENERATION_PROPERTIES: huks.HuksParam[] = [
+  {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_SM4,
-  }, {
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT,
-  }, {
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
     value: huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_PADDING,
-    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
-  }, {
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
     value: huks.HuksCipherMode.HUKS_MODE_CBC,
-  }, {
-    tag: huks.HuksTag.HUKS_TAG_IV,
-    value: IV,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_USER_AUTH_TYPE,
+    value: huks.HuksUserAuthType.HUKS_USER_AUTH_TYPE_PIN
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_AUTH_ACCESS_TYPE,
+    value: huks.HuksAuthAccessType.HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_CHALLENGE_TYPE,
+    value: huks.HuksChallengeType.HUKS_CHALLENGE_TYPE_NORMAL
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_AUTH_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT
   }
 ];
-let encryptOptions: huks.HuksOptions = {
-  properties: propertiesEncrypt,
-  inData: new Uint8Array(new Array())
+
+function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    try {
+      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
 }
-/* Decryption parameter set. */
-let propertiesDecrypt: Array<huks.HuksParam> = [{
+
+/* Generate an SM4 key. */
+async function step1GenerateKey(): Promise<void> {
+  const generateOptions: huks.HuksOptions = {
+    properties: KEY_GENERATION_PROPERTIES,
+    inData: new Uint8Array([])
+  };
+
+  let throwObject: ThrowObject = { isThrow: true };
+  try {
+    await generateKeyItem(KEY_ALIAS, generateOptions, throwObject)
+      .then((data) => {
+        console.info(`Key generated successfully: ${JSON.stringify(data)}`);
+      })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error(`Failed to generate the key: ${JSON.stringify(error)}`);
+        }
+      });
+  } catch (error) {
+    console.error(`Invalid key generation parameter: ${JSON.stringify(error)}`);
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+
+/* Step 2: Encryption module */
+const ENCRYPTION_PROPERTIES: huks.HuksParam[] = [
+  {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_SM4,
-  }, {
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
-  }, {
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT,
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
     value: huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128,
-  }, {
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_PADDING,
     value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
-  }, {
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
     value: huks.HuksCipherMode.HUKS_MODE_CBC,
-  }, {
+  },
+  {
     tag: huks.HuksTag.HUKS_TAG_IV,
-    value: IV,
+    value: stringToUint8Array(IV),
   }
-]
-let decryptOptions: huks.HuksOptions = {
-  properties: propertiesDecrypt,
-  inData: new Uint8Array(new Array())
-}
+];
 
-async function initSession(keyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`promise: enter initSession`);
-  try {
-    await huks.initSession(keyAlias, huksOptions)
-      .then((data) => {
-        handle = data.handle;
-        if (data.challenge != undefined) {
-          challenge = data.challenge as Uint8Array;
+function initEncryptSession(keyAlias: string, huksOptions: huks.HuksOptions,
+  throwObject: ThrowObject): Promise<huks.HuksSessionHandle> {
+  return new Promise<huks.HuksSessionHandle>((resolve, reject) => {
+    try {
+      huks.initSession(keyAlias, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
         }
-        console.info(`promise: initSession success`);
-      }).catch((error: BusinessError) => {
-        console.error(`promise: initSession failed, errCode : ${error.code}, errMsg : ${error.message}`);
-      })
-  } catch (error) {
-    console.error(`promise: initSession input arg invalid`);
-  }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
 }
 
-async function finishSession(handle: number, huksOptions: huks.HuksOptions, token?: Uint8Array) {
-  console.info(`promise: enter finishSession`);
+function finishEncryptSession(handle: number, huksOptions: huks.HuksOptions,
+  throwObject: ThrowObject): Promise<huks.HuksReturnResult> {
+  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
+    try {
+      huks.finishSession(handle, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+/* Encrypt data. */
+async function step2EncryptData(): Promise<void> {
+  const encryptOptions: huks.HuksOptions = {
+    properties: ENCRYPTION_PROPERTIES,
+    inData: new Uint8Array([])
+  };
+
+  /* Initialize the encryption session. */
+  let throwObject: ThrowObject = { isThrow: true };
   try {
-    await huks.finishSession(handle, huksOptions, token)
+    await initEncryptSession(KEY_ALIAS, encryptOptions, throwObject)
       .then((data) => {
-        cipherText = data.outData as Uint8Array;
-        console.info(`promise: finishSession success, data = ${Uint8ArrayToString(cipherText)}`);
-      }).catch((error: BusinessError) => {
-        console.error(`promise: finishSession failed, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.info(`Encryption session initialized successfully: ${JSON.stringify(data)}`);
+        sessionHandle = data.handle as number;
+        challenge = data.challenge as Uint8Array;
       })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error(`Failed to initialize the encryption session: ${JSON.stringify(error)}`);
+        }
+      });
   } catch (error) {
-    console.error(`promise: finishSession input arg invalid`);
+    console.error(`Invalid initialization parameters for the encryption session: ${JSON.stringify(error)}`);
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+
+  /* Execute the encryption operation. */
+  encryptOptions.inData = stringToUint8Array(CIPHER_IN_DATA);
+  throwObject = { isThrow: true };
+  try {
+    await finishEncryptSession(sessionHandle, encryptOptions, throwObject)
+      .then((data) => {
+        encryptedData = data.outData as Uint8Array;
+        console.info(`Data encrypted successfully: ${JSON.stringify(data)}`);
+      })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error(`Data encryption failed: ${JSON.stringify(error)}`);
+        }
+      });
+  } catch (error) {
+    console.error(`Invalid data encryption parameter: ${JSON.stringify(error)}`);
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
   }
 }
+```
 
-async function finishDecrypt(handle: number, huksOptions: huks.HuksOptions, token: Uint8Array) {
-  await finishSession(handle, huksOptions, token)
-}
+### User Authentication
+<!-- @[fingerprint_access_user_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
 
-async function userIAMAuthFinger(huksChallenge: Uint8Array) {
-  // Obtain an authentication object.
-  let authTypeList: userAuth.UserAuthType[] = [authType];
+``` TypeScript
+/* Step 3: User authentication module */
+function performUserAuthentication(huksChallenge: Uint8Array): void {
+  /* Set authentication parameters. */
+  const authTypeList: userAuth.UserAuthType[] = [AUTH_TYPE];
   const authParam: userAuth.AuthParam = {
     challenge: huksChallenge,
     authType: authTypeList,
-    authTrustLevel: userAuth.AuthTrustLevel.ATL1
+    authTrustLevel: AUTH_TRUST_LEVEL
   };
+
   const widgetParam: userAuth.WidgetParam = {
-    title: 'Enter password',
+    title: 'PIN',
   };
+
+  /* Obtain the authentication instance. */
   let auth: userAuth.UserAuthInstance;
-  let err: BusinessError;
   try {
-    auth = await userAuth.getUserAuthInstance(authParam, widgetParam)
-    console.info("get auth instance success");
+    auth = userAuth.getUserAuthInstance(authParam, widgetParam);
+    console.info('Authentication instance obtained successfully.');
   } catch (error) {
-    err = error as BusinessError;
-    console.error(`get auth instance failed, errCode : ${err.code}, errMsg : ${err.message}`);
-    return;
+    console.error('Failed to obtain the authentication instance: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
   }
-  // Subscribe to the authentication result.
+
+  /* Subscribe to the authentication result. */
   try {
-    auth.on("result", {
+    auth.on('result', {
       onResult(result) {
-        console.info(`[HUKS] -> [IAM]  userAuthInstance callback result =
-          ${result.result}, ${result.token}, ${result.authType}, ${result.enrolledState}`);
-        fingerAuthToken = result.token;
+        console.info('User authentication succeeded. Token obtained: ' + JSON.stringify(result));
+        authToken = result.token;
+        step32CompleteDecryption();
       }
     });
-    console.info("subscribe authentication event success");
+    console.info('Subscription to the authentication result succeeded.');
   } catch (error) {
-    err = error as BusinessError;
-    console.error(`subscribe authentication event failed, errCode : ${err.code}, errMsg : ${err.message}`);
+    console.error('Failed to subscribe to the authentication result: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
   }
-  // Start user authentication.
+
   try {
     auth.start();
-    console.info("authV9 start auth success");
+    console.info('The authentication process has been started. Waiting for the user to enter the PIN...');
   } catch (error) {
-    err = error as BusinessError;
-    console.info(`authV9 start auth failed, errCode : ${err.code}, errMsg : ${err.message}`);
+    console.error('Failed to start authentication: ' + JSON.stringify(error));
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
+}
+```
+
+### Data Decryption and Verification
+<!-- @[fingerprint_access_decryption_and_verification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
+
+``` TypeScript
+/* Step 4: Decryption module */
+const DECRYPTION_PROPERTIES: huks.HuksParam[] = [
+  {
+    tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+    value: huks.HuksKeyAlg.HUKS_ALG_SM4,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_DECRYPT,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_SM4_KEY_SIZE_128,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_BLOCK_MODE,
+    value: huks.HuksCipherMode.HUKS_MODE_CBC,
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_IV,
+    value: stringToUint8Array(IV),
+  }
+];
+
+function initDecryptSession(keyAlias: string, huksOptions: huks.HuksOptions,
+  throwObject: ThrowObject): Promise<huks.HuksSessionHandle> {
+  return new Promise<huks.HuksSessionHandle>((resolve, reject) => {
+    try {
+      huks.initSession(keyAlias, huksOptions, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+function finishDecryptSession(handle: number, huksOptions: huks.HuksOptions, token: Uint8Array,
+  throwObject: ThrowObject): Promise<huks.HuksReturnResult> {
+  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
+    try {
+      huks.finishSession(handle, huksOptions, token, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+    } catch (error) {
+      throwObject.isThrow = true;
+      const err = error instanceof Error ? error : new Error(String(error));
+      throw err;
+    }
+  });
+}
+
+/* Initialize the decryption session and trigger user authentication. */
+async function step31DecryptionAndAuth(): Promise<void> {
+
+  const decryptOptions: huks.HuksOptions = {
+    properties: DECRYPTION_PROPERTIES,
+    inData: new Uint8Array([])
+  };
+
+  /* Initialize the decryption session and obtain the challenge value. */
+  let throwObject: ThrowObject = { isThrow: true };
+  try {
+    await initDecryptSession(KEY_ALIAS, decryptOptions, throwObject)
+      .then((data) => {
+        console.info(`Decryption session initialized successfully: ${JSON.stringify(data)}`);
+        sessionHandle = data.handle as number;
+        challenge = data.challenge as Uint8Array;
+        console.info('Challenge value obtained: ' + challenge.toString());
+
+        /* Trigger the user authentication process. */
+        performUserAuthentication(challenge);
+      })
+      .catch((error: Error) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error(`Failed to initialize the decryption session: ${JSON.stringify(error)}`);
+        }
+      });
+  } catch (error) {
+    console.error(`Invalid initialization parameters for the decryption session: ${JSON.stringify(error)}`);
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
   }
 }
 
-/* 1. User identity authentication is not required when the key is used for encryption. */
-async function testSm4Encrypt() {
-  console.info(`enter testSm4Encrypt`);
-  /* Initialize the key session to obtain a challenge. */
-  await initSession(keyAlias, encryptOptions);
-  /* Encryption. */
-  encryptOptions.inData = StringToUint8Array(cipherInData);
-  await finishSession(handle, encryptOptions);
+/* Complete the decryption. */
+async function step32CompleteDecryption(): Promise<void> {
+  const decryptOptions: huks.HuksOptions = {
+    properties: DECRYPTION_PROPERTIES,
+    inData: encryptedData // Use the previously encrypted ciphertext.
+  };
+
+  let throwObject: ThrowObject = { isThrow: true };
+  try {
+    await finishDecryptSession(sessionHandle, decryptOptions, authToken, throwObject)
+      .then((data) => {
+        decryptedData = data.outData as Uint8Array;
+        console.info(`Data decrypted successfully: ${JSON.stringify(data)}`);
+
+        /* Verify the decryption result. */
+        const originalData = stringToUint8Array(CIPHER_IN_DATA);
+        if (decryptedData.toString() === originalData.toString()) {
+          console.info('Decryption verification succeeded. The decrypted data is the same as the source plaintext.');
+        } else {
+          console.error ('Decryption verification failed. The decrypted data is different from the source plaintext.');
+        }
+      })
+      .catch((error: BusinessError) => {
+        if (throwObject.isThrow) {
+          const err = error instanceof Error ? error : new Error(String(error));
+          throw err;
+        } else {
+          console.error(`Data decryption failed: ${JSON.stringify(error)}`);
+        }
+      });
+  } catch (error) {
+    console.error(`Invalid data decryption parameter: ${JSON.stringify(error)}`);
+    const err = error instanceof Error ? error : new Error(String(error));
+    throw err;
+  }
 }
 
-/* 2. User identity authentication is required when the key is used for decryption. */
-async function testSm4Decrypt() {
-  console.info(`enter testSm4Decrypt`);
-  /* Initialize the key session to obtain a challenge. */
-  await initSession(keyAlias, decryptOptions);
-  /* Invoke userIAM to perform user identity authentication. */
-  userIAMAuthFinger(challenge);
-  setTimeout(() => {
-    /* Perform decryption after the authentication is successful. The authToken value returned after the authentication needs to be passed in. */
-    /* Complete fingerprint authentication within 10 seconds before the timeout. */
-    decryptOptions.inData = cipherText;
-    finishDecrypt(handle, decryptOptions, fingerAuthToken);
-  }, 10 * 1000)
-}
-
-async function testSm4EncryptDecrypt() {
-  await testSm4Encrypt();
-  await testSm4Decrypt();
+/* Main function: Execute the complete SM4 encryption and decryption process. */
+async function main(): Promise<void> {
+    /* Step 1: Generate a key. */
+    await step1GenerateKey();
+    /* Step 2: Encrypt data. */
+    await step2EncryptData();
+    /* Step 3: Initialize decryption and perform user authentication. */
+    await step31DecryptionAndAuth();
 }
 ```
