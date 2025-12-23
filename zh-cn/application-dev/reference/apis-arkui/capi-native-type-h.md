@@ -702,6 +702,8 @@ enum ArkUI_TextAlignment
 | ARKUI_TEXT_ALIGNMENT_CENTER | 水平居中对齐。 |
 | ARKUI_TEXT_ALIGNMENT_END | 水平对齐尾部。 |
 | ARKUI_TEXT_ALIGNMENT_JUSTIFY | 双端对齐。 |
+| ARKUI_TEXT_ALIGNMENT_LEFT_TO_RIGHT = 4 | 从左到右对齐。<br>**起始版本：** 23 |
+| ARKUI_TEXT_ALIGNMENT_RIGHT_TO_LEFT = 5 | 从右到左对齐。<br>**起始版本：** 23 |
 
 ### ArkUI_TextVerticalAlignment
 
@@ -741,6 +743,26 @@ enum ArkUI_TextContentAlign
 | ARKUI_TEXT_CONTENT_ALIGN_TOP = 0 | 顶部对齐。 |
 | ARKUI_TEXT_CONTENT_ALIGN_CENTER = 1 | 居中对齐。 |
 | ARKUI_TEXT_CONTENT_ALIGN_BOTTOM = 2 | 底部对齐。 |
+
+### ArkUI_TextDirection
+
+``` c
+enum ArkUI_TextDirection
+```
+
+**描述：**
+
+
+定义文本排版方向枚举值。
+
+**起始版本：** 23
+
+| 枚举项 | 描述 |
+| -- | -- |
+| ARKUI_TEXT_DIRECTION_LTR = 0 | 文本排版方向从左到右。 |
+| ARKUI_TEXT_DIRECTION_RTL = 1 | 文本排版方向从右到左。 |
+| ARKUI_TEXT_DIRECTION_DEFAULT = 2 | 文本排版方向遵循组件布局。 |
+| ARKUI_TEXT_DIRECTION_AUTO = 3 | 遵循自身实际文本内容的排版方向，如果文本为 RTL（Right-to-Left）类语言（如藏文、维吾尔文），文本排版方向为从右到左。如果为 LTR（Left-to-Right）类语言（如中文、英文），文本排版方向为从左到右。 |
 
 ### ArkUI_EnterKeyType
 
