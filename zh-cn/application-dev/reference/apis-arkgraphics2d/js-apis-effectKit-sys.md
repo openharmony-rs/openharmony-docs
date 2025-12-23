@@ -12,6 +12,7 @@
 该模块提供以下图像效果相关的常用功能：
 
 - [ColorPicker](#colorpicker)：智能取色器。
+- [Filter](#filter)：效果类，用于添加指定效果到图像源。
 
 > **说明：**
 >
@@ -229,4 +230,127 @@ image.createPixelMap(color, opts).then((pixelMap) => {
     }
   })
 })
+```
+
+## Filter
+
+图像效果类，用于将指定的效果添加到输入图像中。在调用Filter的方法前，需要先通过[createEffect](#effectkitcreateeffect)创建一个Filter实例。
+
+### EllipticalMaskRadius<sup>23+</sup>
+type EllipticalMaskRadius = [ double, double ]
+
+定义椭圆mask的半径。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
+| 类型           | 说明                                            |
+| :------------- | :---------------------------------------------- |
+| [ double, double ] | 方法[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的长短轴的半径。|
+
+### EllipticalMaskCenter<sup>23+</sup>
+type EllipticalMaskCenter = [ double, double ]
+
+定义椭圆mask的中心点。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
+| 类型           | 说明                                            |
+| :------------- | :---------------------------------------------- |
+| [ double, double ] | 方法[EllipticalGradientBlur](#ellipticalgradientblur23)中椭圆mask的中心点。|
+
+### ellipticalGradientBlur<sup>23+</sup>
+
+ellipticalGradientBlur(blurRadius: double, center: Array<double, double>, maskRadius: Array<double, double>, fractionStops: Map<double, double>): Filter
+
+将带有椭圆形mask的渐变模糊效果添加到效果链表中，返回链表的头节点。
+
+>  **说明：**
+>
+>  该接口为静态模糊接口，为静态图像提供含有椭圆mask的渐变模糊化效果。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型        | 必填 | 说明                                                         |
+| ------ | ----------- | ---- | ------------------------------------------------------------ |
+|  blurRadius   | double | 是   | 模糊半径，单位是像素。模糊效果与所设置的值成正比，值越大效果越明显。 |
+|  center   | [EllipticalMaskCenter](#ellipticalmaskcenter23) | 是 | 设置椭圆的中心点，[0, 0]为组件左上角，[1, 1]为组件的右下角。取值范围[-10, 10]，可取浮点数，超出边界会在实现时自动截断。 |
+|  maskRadius   | [EllipticalMaskRadius](#ellipticalmaskradius23) | 是 | 设置椭圆的长轴与短轴，半径为1均对应组件的高度。取值范围(0, 10]，可取浮点数，超出边界会在实现时自动截断 |
+ |  fractionStops   | [FractionStop](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#FractionStop12)[] | 是 | 渐变模糊位置与程度数组。位置与程度取值都在0-1之间，椭圆中心对应位置0，椭圆边界对应位置1. 模糊程度0对应无模糊，模糊程度1对应输入的模糊半径的模糊程度，大于1的转为1。位置参数值须严格递增，二元数组个数必须大于等于2，二元数组中的元素不能为空，否则该椭圆分布效果不生效。 |
+
+**返回值：**
+
+| 类型           | 说明                                            |
+| :------------- | :---------------------------------------------- |
+| [Filter](#filter) | 返回已添加的图像效果。 |
+
+**示例：**
+
+```ts
+import { image } from '@kit.ImageKit';	
+import { effectKit } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+// 传入读取的图片数据
+function ImageEllipticalGradientBlur(Image: ArrayBuffer): Promise<image.PixelMap> {
+  return new Promise((resolve, reject) => {
+    let imageSource = image.createImageSource(Image);
+	  let blurRadius:number = 25;
+	  let fractionStops:FractionStop[] = [[0, 0.2], [0.5, 0.7]];
+	  let maskRadius:effectKit.EllipticalMaskRadius = [1, 1];
+	  let center:effectKit.EllipticalMaskCenter = [0.5, 0.5];
+    imageSource.createPixelMap().then(async (pixelMap: image.PixelMap) => {
+      let headFilter = effectKit.createEffect(pixelMap);
+      if (headFilter != null) {
+        // 对图片添加效果标识
+        headFilter.ellipticalGradientBlur(blurRadius, center, maskRadius, fractionStops);
+      }
+      // 按照添加的效果标识对图片进行处理并且返回处理好的图片数据
+      headFilter.getEffectPixelMap(false).then(imageData => {
+        resolve(imageData);
+      })
+    })
+  })
+}
+
+@Entry
+@Component
+struct Index {
+  @State imagePixelMap: image.PixelMap | null = null;
+  private imageBuffer: ArrayBuffer | undefined = undefined;
+  // 读取rawfile文件夹下的图片文件，也可根据需求更换读取方式，保证最终得到的是ArrayBuffer格式的图片数据即可
+  async getFileBuffer(): Promise<ArrayBuffer | undefined> {
+    try{
+      const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+      const fileData: Uint8Array = await context.resourceManager.getRawFileContent('image.png');
+      const buffer: ArrayBuffer = fileData.buffer.slice(0);
+      return buffer;
+    }catch (err){
+      return undefined
+    }
+  }
+
+  async aboutToAppear(): Promise<void>{
+    this.imageBuffer = await this.getFileBuffer();
+    if(this.imageBuffer == undefined){
+      return;
+    }
+    // 图片处理为异步操作，可以依据是否需要拿到处理好的图片数据再进行下一步逻辑，按需添加await进行同步
+    this.imagePixelMap = await ImageEllipticalGradientBlur(this.imageBuffer);
+  }
+
+  build() {
+    Column() {
+      Image(this.imagePixelMap)
+        .width(304)
+        .height(305)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
 ```
