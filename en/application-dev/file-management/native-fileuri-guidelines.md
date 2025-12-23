@@ -50,170 +50,170 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 1. Call **OH_FileUri_GetUriFromPath** to obtain the URI from a path. The memory allocated must be released using **free()**. <br>Example:
 
-<!-- @[get_uri_from_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value NAPI_Global_OH_FileUri_GetUriFromPathExample(napi_env env, napi_callback_info info)
-{   
-	// ···
-    // Allocate memory for char* uri.
-    char *path = new char[strLength + 1]; // +1 for null terminator
-    // Copy the JavaScript string to uri.
-	// ···
-    unsigned int length = strlen(path);
-    // Output the input path string.
-	// ···
-    char *uriResult = nullptr;
-    FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length, &uriResult);
-    // Output the result URI string.
-	// ···
-    if (ret == 0 && uriResult != nullptr) {
-        // Convert the C string to napi_value.
-        napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-        if (status != napi_ok) {
-            free(uriResult);
-            return nullptr;
-        }
-        free(uriResult); // Release the temporary string.
-    } else {
-        // Convert the C string to napi_value.
-        napi_status status = napi_create_string_utf8(env, "Hello World", NAPI_AUTO_LENGTH, &result);
-        if (status != napi_ok) {
-            return nullptr;
-        }
-    }
-    return result;
-}
-```
+   <!-- @[get_uri_from_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static napi_value NAPI_Global_OH_FileUri_GetUriFromPathExample(napi_env env, napi_callback_info info)
+   {   
+       // ...
+       // Allocate memory for char* uri.
+       char *path = new char[strLength + 1]; // +1 for null terminator
+       // Copy the JavaScript string to uri.
+       // ...
+       unsigned int length = strlen(path);
+       // Output the input path string.
+       // ...
+       char *uriResult = nullptr;
+       FileManagement_ErrCode ret = OH_FileUri_GetUriFromPath(path, length, &uriResult);
+       // Output the result URI string.
+       // ...
+       if (ret == 0 && uriResult != nullptr) {
+           // Convert the C string to napi_value.
+           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
+           if (status != napi_ok) {
+               free(uriResult);
+               return nullptr;
+           }
+           free(uriResult); // Release the temporary string.
+       } else {
+           // Convert the C string to napi_value.
+           napi_status status = napi_create_string_utf8(env, "Hello World", NAPI_AUTO_LENGTH, &result);
+           if (status != napi_ok) {
+               return nullptr;
+           }
+       }
+       return result;
+   }
+   ```
 
 
 2. Call **OH_FileUri_GetPathFromUri** to convert the URI into a path. The memory allocated must be released using **free()**. The sample code is as follows:
 
-<!-- @[get_path_from_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value NAPI_Global_OH_FileUri_GetPathFromUriExample(napi_env env, napi_callback_info info)
-{
-	// ···
-    char *uri = new char[strLength + 1]; // +1 for null terminator
-    // Copy the JavaScript string to uri.
-    napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
-
-    unsigned int length = strlen(uri);
-    // Output the input URI string.
-    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
-    char *pathResult = nullptr;
-    FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
-    // Output the result string of the obtained path.
-	// ···
-    if (ret == 0 && pathResult != nullptr) {
-        // Convert the C string to napi_value.
-        napi_status status = napi_create_string_utf8(env, pathResult, NAPI_AUTO_LENGTH, &result);
-        if (status != napi_ok) {
-            free(pathResult);
-            return nullptr;
-        }
-        free(pathResult); // Release the temporary string.
-    } else {
-        // Convert the empty string to napi_value.
-        napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-        if (status != napi_ok) {
-            return nullptr;
-        }
-    }
-    return result;
-}
-```
+   <!-- @[get_path_from_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static napi_value NAPI_Global_OH_FileUri_GetPathFromUriExample(napi_env env, napi_callback_info info)
+   {
+       // ...
+       char *uri = new char[strLength + 1]; // +1 for null terminator
+       // Copy the JavaScript string to uri.
+       napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
+   
+       unsigned int length = strlen(uri);
+       // Output the input URI string.
+       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       char *pathResult = nullptr;
+       FileManagement_ErrCode ret = OH_FileUri_GetPathFromUri(uri, length, &pathResult);
+       // Output the result string of the obtained path.
+       // ...
+       if (ret == 0 && pathResult != nullptr) {
+           // Convert the C string to napi_value.
+           napi_status status = napi_create_string_utf8(env, pathResult, NAPI_AUTO_LENGTH, &result);
+           if (status != napi_ok) {
+               free(pathResult);
+               return nullptr;
+           }
+           free(pathResult); // Release the temporary string.
+       } else {
+           // Convert the empty string to napi_value.
+           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
+           if (status != napi_ok) {
+               return nullptr;
+           }
+       }
+       return result;
+   }
+   ```
 
 
 3. Call **OH_FileUri_GetFullDirectoryUri** to obtain the URI of the directory where the specified URI is located. The memory allocated must be released using **free()**. The sample code is as follows:
 
-<!-- @[get_full_directory_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value NAPI_Global_OH_FileUri_GetFullDirectoryUriExample(napi_env env, napi_callback_info info)
-{
-	// ···
-    char *uri = new char[strLength + 1]; // +1 for null terminator
-    // Copy the JavaScript string to uri.
-    napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
-
-    unsigned int length = strlen(uri);
-    // Output the input URI string.
-    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
-    char *uriResult = nullptr;
-    FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
-    // Output the URI string of the path.
-	// ···
-    if (ret == 0 && uriResult != nullptr) {
-        // Use NAPIs to create a napi_value of the string type to return the correct result.
-        napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-    } else {
-        // Use NAPIs to create a napi_value of the null type to return the error or null value.
-        napi_get_null(env, &result);
-    }
-    if (uriResult != nullptr) {
-        free(uriResult);
-    }
-    return result;
-}
-```
+   <!-- @[get_full_directory_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static napi_value NAPI_Global_OH_FileUri_GetFullDirectoryUriExample(napi_env env, napi_callback_info info)
+   {
+       // ...
+       char *uri = new char[strLength + 1]; // +1 for null terminator
+       // Copy the JavaScript string to uri.
+       napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
+   
+       unsigned int length = strlen(uri);
+       // Output the input URI string.
+       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       char *uriResult = nullptr;
+       FileManagement_ErrCode ret = OH_FileUri_GetFullDirectoryUri(uri, length, &uriResult);
+       // Output the URI string of the path.
+       // ...
+       if (ret == 0 && uriResult != nullptr) {
+           // Use NAPIs to create a napi_value of the string type to return the correct result.
+           napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
+       } else {
+           // Use NAPIs to create a napi_value of the null type to return the error or null value.
+           napi_get_null(env, &result);
+       }
+       if (uriResult != nullptr) {
+           free(uriResult);
+       }
+       return result;
+   }
+   ```
 
 
 4. Call **OH_FileUri_IsValidUri** to check whether a URI is valid. The sample code is as follows:
 
-<!-- @[is_valid_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value NAPI_Global_OH_FileUri_IsValidUriExample(napi_env env, napi_callback_info info)
-{
-	// ···
-    char *uri = new char[strLength + 1]; // +1 for null terminator
-    // Copy the JavaScript string to uri.
-    napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
-    unsigned int length = strlen(uri);
-    // Output the input URI string.
-    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
-    bool flags = OH_FileUri_IsValidUri(uri, length);
-	// ···
-}
-```
+   <!-- @[is_valid_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static napi_value NAPI_Global_OH_FileUri_IsValidUriExample(napi_env env, napi_callback_info info)
+   {
+       // ...
+       char *uri = new char[strLength + 1]; // +1 for null terminator
+       // Copy the JavaScript string to uri.
+       napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
+       unsigned int length = strlen(uri);
+       // Output the input URI string.
+       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       bool flags = OH_FileUri_IsValidUri(uri, length);
+       // ...
+   }
+   ```
 
 
 5. Call **OH_FileUri_GetFileName** to obtain the file name from the URI. The memory allocated must be released using **free()**. The sample code is as follows:
 
-<!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value NAPI_Global_OH_FileUri_GetFileNameExample(napi_env env, napi_callback_info info)
-{
-	// ···
-    char *uri = new char[strLength + 1]; // +1 for null terminator
-    // Copy the JavaScript string to uri.
-    napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
-
-    unsigned int length = strlen(uri);
-    // Output the input URI string.
-    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
-    char *uriResult = nullptr;
-    FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
-    // Output the obtained file name.
-	// ···
-    if (ret == 0 && uriResult != nullptr) {
-        // Convert the C string to napi_value.
-        napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
-        if (status != napi_ok) {
-            free(uriResult);
-            return NULL;
-        }
-        free(uriResult); // Release the temporary string.
-    } else {
-        // Convert the empty string to napi_value.
-        napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
-        if (status != napi_ok) {
-            return nullptr;
-        }
-    }
-    return result;
-}
-```
+   <!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   static napi_value NAPI_Global_OH_FileUri_GetFileNameExample(napi_env env, napi_callback_info info)
+   {
+       // ...
+       char *uri = new char[strLength + 1]; // +1 for null terminator
+       // Copy the JavaScript string to uri.
+       napi_get_value_string_utf8(env, args[0], uri, strLength + 1, &strLength);
+   
+       unsigned int length = strlen(uri);
+       // Output the input URI string.
+       OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.WatcherType=OnTrigger: %{public}s", uri);
+       char *uriResult = nullptr;
+       FileManagement_ErrCode ret = OH_FileUri_GetFileName(uri, length, &uriResult);
+       // Output the obtained file name.
+       // ...
+       if (ret == 0 && uriResult != nullptr) {
+           // Convert the C string to napi_value.
+           napi_status status = napi_create_string_utf8(env, uriResult, NAPI_AUTO_LENGTH, &result);
+           if (status != napi_ok) {
+               free(uriResult);
+               return NULL;
+           }
+           free(uriResult); // Release the temporary string.
+       } else {
+           // Convert the empty string to napi_value.
+           napi_status status = napi_create_string_utf8(env, "", NAPI_AUTO_LENGTH, &result);
+           if (status != napi_ok) {
+               return nullptr;
+           }
+       }
+       return result;
+   }
+   ```
