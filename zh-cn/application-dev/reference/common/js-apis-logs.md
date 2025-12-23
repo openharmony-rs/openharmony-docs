@@ -351,6 +351,7 @@ console.dirxml('count:');
 static group(...arguments: Object[]): void
 
 默认将后续行的缩进增加两个空格。
+
 如果提供需要打印的信息，则首先打印信息，没有额外的缩进。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
