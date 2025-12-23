@@ -3220,7 +3220,7 @@ ArkTS-Sta: zoom(factor: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3274,7 +3274,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Component
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController(undefined);
-  @State factor: number = 1;
+  @State factor: number = 2;
 
   build() {
     Column() {
@@ -4093,7 +4093,7 @@ zoomIn(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4173,7 +4173,7 @@ zoomOut(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5131,11 +5131,11 @@ ArkTS-Sta: scrollTo(x: double, y: double, duration?: int): void
 | ------ | -------- | ---- | ---------------------- |
 | x   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的水平坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
 | y   | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 绝对位置的垂直坐标，当传入数值为负数时，按照传入0处理。<br>单位：vp。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 22 |
-| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为undefined、负数或传入0时，按照不传入处理。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
+| duration<sup>14+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 滚动动画时间。<br>单位：ms。<br>不传入为无动画，当传入数值为负数或传入0时，按照不传入处理。<br>**ArkTS-Dyn起始版本：** 14<br>**ArkTS-Sta起始版本：** 22 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5229,7 +5229,7 @@ struct WebComponent {
             height:2000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
         }
     </style>
 </head>
@@ -5259,7 +5259,7 @@ ArkTS-Sta: scrollBy(deltaX: double, deltaY: double, duration?: int): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5333,7 +5333,7 @@ struct WebComponent {
       Button('stopScroll')
         .onClick(() => {
           try {
-            this.controller.scrollBy(0, 0, 1); // 如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
+            this.controller.scrollBy(0, 0, 1); //如果想停止当前scroll产生的动画，可再次生成一个1ms的动画去打断该动画。
           } catch (error) {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
@@ -5357,7 +5357,7 @@ struct WebComponent {
             height:2000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
         }
     </style>
 </head>
@@ -5384,8 +5384,8 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。 |
-| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。 |
+| deltaX | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 水平偏移量，其中水平向右为正方向。 <br>单位：vp。 |
+| deltaY | ArkTS-Dyn: number<br>ArkTS-Sta: double   | 是   | 垂直偏移量，其中垂直向下为正方向。 <br>单位：vp。 |
 
 **返回值：**
 
@@ -5395,7 +5395,7 @@ ArkTS-Sta: scrollByWithResult(deltaX: double, deltaY: double): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5483,7 +5483,7 @@ struct WebComponent {
             height:2000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
         }
     </style>
 </head>
@@ -5515,7 +5515,7 @@ ArkTS-Sta: slideScroll(vx: double, vy: double): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5593,7 +5593,7 @@ struct WebComponent {
             height:3000px;
             padding-right:170px;
             padding-left:170px;
-            border:5px solid blueviolet
+            border:5px solid blueviolet;
         }
     </style>
 </head>
@@ -6271,7 +6271,7 @@ pageUp(top: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6310,7 +6310,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6329,10 +6329,43 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
     }
   }
 }
+```
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .blue {
+          background-color: lightblue;
+        }
+        .green {
+          background-color: lightgreen;
+        }
+        .blue, .green {
+         font-size:16px;
+         height:200px;
+         text-align: center;       /* 水平居中 */
+         line-height: 200px;       /* 垂直居中（值等于容器高度） */
+        }
+    </style>
+</head>
+<body>
+<div class="blue" >webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+</body>
+</html>
 ```
 
 ## pageDown
@@ -6355,7 +6388,7 @@ pageDown(bottom: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6394,7 +6427,7 @@ struct WebComponent {
 ArkTS-Sta示例：
 ```ts
 // xxx.ets
-import { Web, Column, Component, Entry, Button } from '@kit.ArkUI';
+import { Web, Column, Component, Entry, Button, $rawfile } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -6413,10 +6446,45 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      Web({ src: 'www.example.com', controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
     }
   }
 }
+```
+
+加载的html文件。
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .blue {
+          background-color: lightblue;
+        }
+        .green {
+          background-color: lightgreen;
+        }
+        .blue, .green {
+         font-size:16px;
+         height:200px;
+         text-align: center;       /* 水平居中 */
+         line-height: 200px;       /* 垂直居中（值等于容器高度） */
+        }
+    </style>
+</head>
+<body>
+<div class="blue" >webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+<div class="green">webArea</div>
+<div class="blue">webArea</div>
+</body>
+</html>
 ```
 
 ## getBackForwardEntries
@@ -10015,11 +10083,11 @@ createWebPrintDocumentAdapter(jobName: string): print.PrintDocumentAdapter
 
 | 类型                 | 说明                      |
 | -------------------- | ------------------------- |
-| print.printDocumentAdapter | 返回打印文档的适配器。 |
+| print.[PrintDocumentAdapter](../apis-basic-services-kit/js-apis-print.md#printdocumentadapter11) | 返回打印文档的适配器。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                    |
 | -------- | -------------------------------------------------------------------------- |
@@ -10281,12 +10349,12 @@ setScrollable(enable: boolean, type?: ScrollType): void
 
 | 参数名 | 类型 | 必填 | 说明               |
 | ------ | -------- | ---- | ---------------------- |
-| enable     | boolean   | 是   | 表示是否将网页设置为允许滚动。<br>true表示设置为允许滚动，false表示禁止滚动。 |
-| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。|
+| enable     | boolean   | 是   | 表示是否将网页设置为允许滚动。<br>true表示设置为允许滚动，false表示禁止滚动。<br>默认值：true。 |
+| type       | [ScrollType](./arkts-apis-webview-e.md#scrolltype12) |  否 | 网页可触发的滚动类型，支持缺省配置。<br/> - enable为false时，表示禁止ScrollType类型的滚动，当ScrollType缺省时表示禁止所有类型网页滚动。<br/> - enable为true时，ScrollType缺省与否，都表示允许所有类型的网页滚动。<br/>**说明：**<br/>传入undefined会抛出异常错误码401。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -10459,7 +10527,7 @@ setPrintBackground(enable: boolean): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -10541,7 +10609,7 @@ getPrintBackground(): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -14110,7 +14178,7 @@ ArkTS-Sta示例：
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。路径列表中的路径必须满足以下路径格式之一：
+设置一个路径列表，当file协议访问该路径列表中的资源时，允许跨域访问本地文件，也允许跨域访问其他在线资源。此外，当设置了路径列表时，file协议仅允许访问路径列表中的资源（[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为将会被此接口行为覆盖）。路径列表中的路径必须满足以下路径格式之一：
 
 1.应用文件目录的子目录（应用文件目录通过Ability Kit中的[Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
 
@@ -14121,6 +14189,17 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 * /data/storage/el1/bundle/entry/resource/resfile
 * /data/storage/el1/bundle/entry/resource/resfile/example
+
+3.从API version 21开始，还包括了应用缓存目录及其子目录（应用缓存目录通过Ability Kit中的[Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
+
+* /data/storage/el2/base/cache
+* /data/storage/el2/base/haps/entry/cache/example
+* 设置的目录路径中，不允许包含cache/web，否则会抛出异常码401。如果设置目录路径是cache，cache/web也不允许访问。
+
+4.从API version 21开始，还包括了应用临时目录及其子目录（应用临时目录通过Ability Kit中的[Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#context)获取），例如：
+
+* /data/storage/el2/base/temp
+* /data/storage/el2/base/haps/entry/temp/example
 
 当路径列表中有其中一个路径不满足以上条件之一，则会抛出异常码401，并且设置路径列表失败。当设置的路径列表为空，则file协议可访问范围以[fileAccess](./arkts-basic-components-web-attributes.md#fileaccess)的行为为准。
 
@@ -14138,7 +14217,7 @@ setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                 |
 | -------- | ------------------------ |
@@ -14499,7 +14578,7 @@ trimMemoryByPressureLevel(level: PressureLevel): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -14590,7 +14669,7 @@ createPdf(configuration: PdfConfiguration, callback: AsyncCallback\<PdfData\>): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -14733,7 +14812,7 @@ createPdf(configuration: PdfConfiguration): Promise\<PdfData\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -14851,7 +14930,7 @@ struct Index {
 
 getScrollOffset(): ScrollOffset
 
-获取网页当前的滚动偏移量。
+获取网页当前的滚动偏移量（包含过滚动偏移量）。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -14863,7 +14942,7 @@ getScrollOffset(): ScrollOffset
 
 | 类型                            | 说明                   |
 | :------------------------------ | ---------------------- |
-| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量。 |
+| [ScrollOffset](./arkts-apis-webview-i.md#scrolloffset13) | 网页当前的滚动偏移量（包含过滚动偏移量）。 |
 
 **示例：**
 
@@ -14949,7 +15028,7 @@ struct WebComponent {
       Column() {
         Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`)
       }
-      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
         .key("web_01")
         .overScrollMode(this.mode)
         .onTouch(() => {
@@ -14977,63 +15056,29 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
-
-```ts
-// xxx.ets
-import { $rawfile, State, OverScrollMode, Web, Row, Column, Component, Entry, Button, Text } from '@kit.ArkUI';
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { OverScrollMode, FontWeight } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct WebComponent {
-  @State testTitle: string = 'webScroll'
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  @State controllerX: number = -100;
-  @State controllerY: number = -100;
-  @State mode: OverScrollMode = OverScrollMode.ALWAYS;
-
-  build() {
-    Column() {
-      Row() {
-        Text(this.testTitle)
-          .fontSize(30)
-          .fontWeight(FontWeight.Bold)
-          .margin(5)
-      }
-      Column() {
-        Text(`controllerX: ${this.controllerX}, controllerY: ${this.controllerY}`).fontSize(20)
-      }
-      Web({ src: $rawfile("scrollByTo.html"), controller: this.controller })
-        .key("web_01")
-        .overScrollMode(this.mode)
-        .onTouch(() => {
-          this.controllerX = this.controller.getScrollOffset().x;
-          this.controllerY = this.controller.getScrollOffset().y;
-          let componentInfo = this.getUIContext().getComponentUtils().getRectangleById("web_01");
-          let webHeight = this.getUIContext().px2vp(componentInfo.size.height);
-          let pageHeight = this.controller.getPageHeight();
-          if (this.controllerY < 0) {
-            // case1：网页向下过滚动时，可直接使用ScrollOffset.y
-            console.info(`get downwards overscroll offsetY = ${this.controllerY}`);
-          } else if ((this.controllerY != 0) && (this.controllerY > (pageHeight - webHeight))) {
-            // case2：网页向上过滚动时，需计算出网页下边界与Web组件下边界的偏移量
-            console.info(`get upwards overscroll offsetY = ${this.controllerY -
-              (pageHeight >= webHeight ? (pageHeight - webHeight) : 0)}`);
-          } else {
-            // case3：网页未发生过滚动时，可直接使用ScrollOffset.y
-            console.info(`get scroll offsetY = ${this.controllerY}`);
+  加载的html文件。
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0">
+      <title>Demo</title>
+      <style>
+          body {
+            width:3000px;
+            height:6000px;
+            padding-right:170px;
+            padding-left:170px;
+            border:5px solid blueviolet;
           }
-        })
-        .height(600)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
+      </style>
+  </head>
+  <body>
+  Scroll Test
+  </body>
+  </html>
+  ```
 
 ## getLastHitTest<sup>18+</sup>
 
@@ -15055,7 +15100,7 @@ getLastHitTest(): HitTestValue
 
 **错误码：**
 
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
