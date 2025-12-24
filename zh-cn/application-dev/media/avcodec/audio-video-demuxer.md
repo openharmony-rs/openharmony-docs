@@ -241,7 +241,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    const char* mimetype = nullptr;
    uint8_t *codecConfig = nullptr;
    size_t bufferSize = 0;
-   int32_t trackType;
+   int32_t trackType = -1;
    for (uint32_t index = 0; index < (static_cast<uint32_t>(trackCount)); index++) {
       // 获取轨道信息，用户可通过该接口获取对应轨道级别属性，具体支持信息参考附表 2。
       OH_AVFormat *trackFormat = OH_AVSource_GetTrackFormat(source, index);
@@ -249,6 +249,8 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
          printf("get track format failed");
          return;
       }
+      // 获取轨道类型, 不支持的类型不会修改trackType的值。
+      // 注意trackType初始值建议设为非有效值（如-1），避免误用。
       if (!OH_AVFormat_GetIntValue(trackFormat, OH_MD_KEY_TRACK_TYPE, &trackType)) {
          printf("get track type from track format failed");
          return;
