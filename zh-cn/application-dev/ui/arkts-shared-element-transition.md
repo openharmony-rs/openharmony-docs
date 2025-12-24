@@ -41,10 +41,10 @@
 import { common } from '@kit.AbilityKit';
 
 class PostData {
-  // 图片使用Resource资源，需用户自定义
+  // 请将$r('app.media.flower')替换为实际资源文件
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -57,24 +57,33 @@ struct Index {
   // 数组中图片均使用Resource资源，需用户自定义
   private allPostData: PostData[] = [
     {
+      // 请将$r('app.media.flower')替换为实际资源文件
       avatar: $r('app.media.flower'),
       name: 'Alice',
-      // 'app.string.shareTransition_text1'资源文件中的value值为'天气晴朗'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text1'),
+      // 请将$r('app.string.shareTransition_text1')替换为实际资源文件，在本示例中该资源文件的value值为"天气晴朗"
+      message: $r('app.string.shareTransition_text1'),
+      // 请将$r('app.media.spring')替换为实际资源文件
+      // 请将$r('app.media.tall_tree')替换为实际资源文件
       images: [$r('app.media.spring'), $r('app.media.tall_tree')]
     },
     {
+      // 请将$r('app.media.sunset_sky')替换为实际资源文件
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // 'app.string.shareTransition_text2'资源文件中的value值为'你好世界'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text2'),
+      // 请将$r('app.string.shareTransition_text2')替换为实际资源文件，在本示例中该资源文件的value值为"你好世界"
+      message: $r('app.string.shareTransition_text2'),
+      // 请将$r('app.media.island')替换为实际资源文件
       images: [$r('app.media.island')]
     },
     {
+      // 请将$r('app.media.tall_tree')替换为实际资源文件
       avatar: $r('app.media.tall_tree'),
       name: 'Carl',
-      // 'app.string.shareTransition_text3'资源文件中的value值为'万物生长'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text3'),
+      // 请将$r('app.string.shareTransition_text3')替换为实际资源文件，在本示例中该资源文件的value值为"万物生长"
+      message: $r('app.string.shareTransition_text3'),
+      // 请将$r('app.media.flower')替换为实际资源文件
+      // 请将$r('app.media.sunset_sky')替换为实际资源文件
+      // 请将$r('app.media.spring')替换为实际资源文件
       images: [$r('app.media.flower'), $r('app.media.sunset_sky'), $r('app.media.spring')]
     }];
 
@@ -145,7 +154,7 @@ export default struct Post {
       // 展开态下组件增加的内容
       if (this.isExpand) {
         Column() {
-          // 'app.string.shareTransition_text1'资源文件中的value值为'评论区'
+          // 请将$r('app.string.shareTransition_text4')替换为实际资源文件，在本示例中该资源文件的value值为"评论区"
           Text($r('app.string.shareTransition_text4'))
           // 对评论区文本添加出现消失转场效果
             .transition(TransitionEffect.OPACITY
@@ -2006,10 +2015,10 @@ struct IfElseGeometryTransition {
 import { common } from '@kit.AbilityKit';
 
 class PostData {
-  // 图片使用Resource资源，需用户自定义
+  // 请将$r('app.media.flower')替换为实际资源文件
   avatar: Resource = $r('app.media.flower');
   name: string = '';
-  message: string = '';
+  message: ResourceStr = '';
   images: Resource[] = [];
 }
 
@@ -2024,24 +2033,33 @@ struct Index {
   // 数组中图片均使用Resource资源，需用户自定义
   private allPostData: PostData[] = [
     {
+      // 请将$r('app.media.flower')替换为实际资源文件
       avatar: $r('app.media.flower'),
       name: 'Alice',
-      // 'app.string.shareTransition_text1'资源文件中的value值为'天气晴朗'
-      message:this.context.resourceManager.getStringByNameSync('shareTransition_text1'),
+      // 请将$r('app.string.shareTransition_text1')替换为实际资源文件，在本示例中该资源文件的value值为"天气晴朗"
+      message: $r('app.string.shareTransition_text1'),
+      // 请将$r('app.media.spring')替换为实际资源文件
+      // 请将$r('app.media.tall_tree')替换为实际资源文件
       images: [$r('app.media.spring'), $r('app.media.tall_tree')]
     },
     {
+      // 请将$r('app.media.sunset_sky')替换为实际资源文件
       avatar: $r('app.media.sunset_sky'),
       name: 'Bob',
-      // 'app.string.shareTransition_text2'资源文件中的value值为'你好世界'
-      message: this.context.resourceManager.getStringByNameSync('shareTransition_text2'),
+      // 请将$r('app.string.shareTransition_text2')替换为实际资源文件，在本示例中该资源文件的value值为"你好世界"
+      message: $r('app.string.shareTransition_text2'),
+      // 请将$r('app.media.island')替换为实际资源文件
       images: [$r('app.media.island')]
     },
     {
+      // 请将$r('app.media.tall_tree')替换为实际资源文件
       avatar: $r('app.media.tall_tree'),
       name: 'Carl',
-      // 'app.string.shareTransition_text3'资源文件中的value值为'万物生长'
-      message:this.context.resourceManager.getStringByNameSync('shareTransition_text3'),
+      // 请将$r('app.string.shareTransition_text3')替换为实际资源文件，在本示例中该资源文件的value值为"万物生长"
+      message: $r('app.string.shareTransition_text3'),
+      // 请将$r('app.media.flower')替换为实际资源文件
+      // 请将$r('app.media.sunset_sky')替换为实际资源文件
+      // 请将$r('app.media.spring')替换为实际资源文件
       images: [$r('app.media.flower'), $r('app.media.sunset_sky'), $r('app.media.spring')]
     }];
 
@@ -2086,7 +2104,7 @@ struct Index {
           TransitionEffect.OPACITY.animation({ duration: 0 })
         ))
 
-      // 'app.string.shareTransition_text11'资源文件中的value值为'你好，我是'
+      // 请在resources\base\element\string.json文件中配置name为'shareTransition_text11'，value为非空字符串的资源
       Text(this.context.resourceManager.getStringByNameSync('shareTransition_text11') + this.allPostData[index].name)
       // 对文本添加出现转场效果
         .transition(TransitionEffect.asymmetric(
