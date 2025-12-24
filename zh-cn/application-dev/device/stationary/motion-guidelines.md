@@ -49,7 +49,7 @@ ArkTS-Sta接口说明：
 
    ```ts
    let callback:Callback<motion.OperatingHandStatus> = (data:motion.OperatingHandStatus) => {
-   console.info('callback succeeded' + data);
+      console.info('callback succeeded' + data);
    };
    ```
 
