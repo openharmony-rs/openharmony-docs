@@ -532,7 +532,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 ### 配置不信任用户安装的CA证书
 
-系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
+系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-network-ca-security#section5454123841911)。
 
 ```
 {
