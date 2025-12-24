@@ -5804,7 +5804,7 @@ setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): vo
 
 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
 
-当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用该接口，或窗口退至后台时调用此接口，否则可能产生时序问题。
+当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 > **说明：**
 > - 针对非2in1设备：
@@ -5888,7 +5888,7 @@ setWindowBrightness(brightness: number): Promise&lt;void&gt;
 
 当接口入参为-1时，窗口亮度恢复为系统屏幕亮度（可以通过控制中心或快捷键调整）。
 
-当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用该接口，或窗口退至后台时调用此接口，否则可能产生时序问题。
+当窗口退至后台时，窗口亮度失效，可以通过控制中心或快捷键调整。不建议连续调用或窗口退至后台时调用此接口，否则可能产生时序问题。
 
 > **说明：**
 > - 针对非2in1设备：
@@ -9259,11 +9259,11 @@ export default class EntryAbility extends UIAbility {
 
 setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
-设置当前窗口是否启用返回手势功能，仅主窗可以调用成功，其他类型的窗口调用返回1300004错误码。设置后仅当窗口处于全屏模式且位于前台获焦状态下功能才会生效。
+设置当前窗口是否启用返回手势功能，仅主窗可以调用成功，其他类型的窗口调用返回1300004错误码。
+
+开启返回手势功能后，仅当窗口处于全屏模式且位于前台获焦状态下才会生效。
 
 禁用返回手势功能后，当前应用会禁用手势热区，侧滑返回功能失效；切换到其他应用或者回到桌面后，手势热区恢复，侧滑返回功能正常。
-
-开启返回手势功能后，当前应用会恢复手势热区，侧滑返回功能正常。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -9291,9 +9291,9 @@ setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 | -------- | ------------------------------------------------------------------------------------------------------------ |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.|
-| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error.|
-| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported.|
+| 1300002  | This window state is abnormal.                                                                               |	
+| 1300003  | This window manager service works abnormally.                                                                |	
+| 1300004  | Unauthorized operation.                                                                                |
 
 **示例：**
 
