@@ -3184,7 +3184,7 @@ try {
 }
 ```
 
-## getAllTemplateFormsInfo
+## getAllTemplateFormsInfo<sup>23+</sup>
 
 getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -3228,7 +3228,7 @@ try {
 ```
 
 
-## getTemplateFormsInfo
+## getTemplateFormsInfo<sup>23+</sup>
 
 getTemplateFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
