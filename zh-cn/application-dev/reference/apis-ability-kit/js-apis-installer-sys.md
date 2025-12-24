@@ -203,7 +203,7 @@ install(hapFilePaths: Array\<string>, installParam: InstallParam, callback: Asyn
 - 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 - 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
 - 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
-- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅三方应用支持降级安装，可以参考[InstallParam](#installparam)中parameters描述。
+- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装，可以参考[InstallParam](#installparam)中parameters描述。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -330,7 +330,7 @@ install(hapFilePaths: Array\<string>, callback: AsyncCallback\<void>): void
 - 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 - 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
 - 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
-- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅三方应用支持降级安装，可以参考[InstallParam](#installparam)中parameters描述。
+- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装，可以参考[InstallParam](#installparam)中parameters描述。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -446,7 +446,7 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 - 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 - 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
 - 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
-- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅三方应用支持降级安装，可以参考[InstallParam](#installparam)中parameters描述。
+- 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装，可以参考[InstallParam](#installparam)中parameters描述。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -2635,7 +2635,7 @@ try {
 | additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
 | verifyCodeParams<sup>deprecated<sup> | Array<[VerifyCodeParam](#verifycodeparamdeprecated)> | 否 | 是| 代码签名文件参数，默认值为空。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 22 |
 | pgoParams<sup>11+</sup> | Array<[PGOParam](#pgoparam11)> | 否 | 是| PGO配置文件参数，默认值为空。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 22 |
-| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。</br> - "ohos.bms.param.installBundleName"：value值为应用的包名，该字段用于应用安装场景（从API version 23开始支持）。如果安装时传入了该字段，则在应用安装过程中调用接口[getBundleInstallStatus](./js-apis-bundleManager-sys.md#bundlemanagergetbundleinstallstatus23)能够查询到应用正在安装的状态。</br> - "ohos.bms.param.installAllowDowngrade"：若对应value值为“true”，该字段表示支持应用降级安装（从API version 23开始支持），即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持三方应用降级安装。使用降级安装能力需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 22 |
+| parameters<sup>15+</sup> | Array<[Parameters](#parameters15)> | 否 | 是| 扩展参数，Parameters类型的数组，默认值为空。Parameters.key取值支持：</br> - "ohos.bms.param.renameInstall"：若对应value值为“true”，表示安装时使用共享目录将安装包从应用沙箱移动到安装目录，否则使用常规目录将安装包从应用沙箱拷贝到安装目录。</br> - "ohos.bms.param.enterpriseForAllUser"：若对应value值为“true”，表示在安装企业应用时为所有用户安装。</br> - "ohos.bms.param.verifyUninstallRule"：若对应value值为“true”，表示设置卸载处置规则，用于拦截应用卸载。</br> - "ohos.bms.param.enterpriseManifest"：value值为json文件的沙箱路径，json文件用于存储应用的描述文件，包括应用包名等，该字段用于企业应用克隆场景。克隆时，若该json文件存在，则将旧机的应用安装包拷贝到新机进行安装。</br> - "ohos.bms.param.installBundleName"：value值为应用的包名，该字段用于应用安装场景（从API version 23开始支持）。如果安装时传入了该字段，则在应用安装过程中调用接口[getBundleInstallStatus](./js-apis-bundleManager-sys.md#bundlemanagergetbundleinstallstatus23)能够查询到应用正在安装的状态。</br> - "ohos.bms.param.installAllowDowngrade"：若对应value值为“true”，该字段表示支持应用降级安装（从API version 23开始支持），即设备已安装较高版本的应用，也可以覆盖安装较低版本的应用。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装。使用降级安装能力需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 22 |
 ## UninstallParam<sup>10+</sup>
 
 共享包卸载需指定的参数信息。
