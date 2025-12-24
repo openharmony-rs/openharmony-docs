@@ -20,11 +20,11 @@
 
 | 名称 | 类型 | 只读 | 可选 | 说明                                                                          |
 | ---------- | -------------------------- | -- | -- |-----------------------------------------------------------------------------|
-| name       | string                     | 否 | 否 | 窗口名字。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
+| name       | string                     | 否 | 否 | 窗口名称。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
 | windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | 否 | 否 | 窗口类型。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                        |
 | ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 否 | 是 | 当前应用上下文信息。不设置，则默认为空。<br>FA模型下不需要使用该参数，即可创建子窗口，使用该参数时会报错。<br>Stage模型必须使用该参数，用于创建悬浮窗、模态窗或系统窗口。 <br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core|
-| displayId  | number                     | 否 | 是 | 当前物理屏幕id。不设置，则默认为-1，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core     |
-| parentId   | number                     | 否 | 是 | 父窗口id。不设置，则默认为-1，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
+| displayId  | number                     | 否 | 是 | 当前物理屏幕ID。不设置，则默认为-1，表示参数无效，该参数应为整数。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core     |
+| parentId   | number                     | 否 | 是 | 父窗口ID。不设置，则默认为-1，表示参数无效。-1代表参数无效。<br>**系统能力：** SystemCapability.WindowManager.WindowManager.Core                                               |
 | decorEnabled<sup>12+</sup> | boolean | 否 | 是 | 是否显示窗口装饰，仅在windowType为TYPE_DIALOG时生效。true表示显示，false表示不显示。此参数默认值为false。<br>**系统能力：** SystemCapability.Window.SessionManager |
 | title<sup>12+</sup> | string| 否 | 是 | `decorEnabled`属性设置为true时，窗口的标题内容。标题显示区域最右端不超过系统三键区域最左端，超过部分以省略号表示。不设置，则默认为空字符串。 <br>**系统能力：** SystemCapability.Window.SessionManager |
 
