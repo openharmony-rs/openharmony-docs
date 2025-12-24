@@ -2613,60 +2613,6 @@ struct KeyframeDemo {
 }
 ```
 
-## lpx2px<sup>12+</sup>
-
-lpx2px(value : number) : number
-
-将lpx单位的数值转换为以px为单位的数值。
-
-转换公式为：px值 = lpx值 × 实际屏幕宽度与逻辑宽度（通过[designWidth](../../quick-start/module-configuration-file.md#pages标签)配置）的比值。
-
-> **说明：**
->
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                    |
-| ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
-
-**返回值：**
-
-| 类型   | 说明           |
-| ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct MatrixExample {
-  build() {
-    Column({ space: 100 }) {
-      Text('Hello1')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .rotate({
-          z: 1,
-          angle: 90,
-          centerX: this.getUIContext().lpx2px(50),
-          centerY: this.getUIContext().lpx2px(30)
-        })
-    }.width('100%')
-    .height('100%')
-  }
-}
-```
-
 ## openBindSheet<sup>12+</sup>
 
 openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOptions?: SheetOptions, targetId?: number): Promise&lt;void&gt;
@@ -2798,176 +2744,6 @@ struct UIContextBindSheet {
     }
     .height('100%')
     .width('100%')
-  }
-}
-```
-
-## px2fp<sup>12+</sup>
-
-px2fp(value : number) : number
-
-将px单位的数值转换为以fp为单位的数值。
-
-转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例
-
-像素密度：当前窗口生效的像素密度值，通常就是屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
-
-字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
-
-> **说明：**
->
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                   |
-| ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
-
-**返回值：**
-
-| 类型   | 说明           |
-| ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct MatrixExample {
-  build() {
-    Column({ space: 100 }) {
-      Text('Hello1')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .rotate({
-          z: 1,
-          angle: 90,
-          centerX: this.getUIContext().px2fp(50),
-          centerY: this.getUIContext().px2fp(30)
-        })
-    }.width('100%')
-    .height('100%')
-  }
-}
-```
-
-## px2lpx<sup>12+</sup>
-
-px2lpx(value : number) : number
-
-将px单位的数值转换为以lpx为单位的数值。
-
-转换公式为：lpx值 = px值 ÷ 实际屏幕宽度与逻辑宽度（通过[designWidth](../../quick-start/module-configuration-file.md#pages标签)配置）的比值。
-
-> **说明：**
->
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                    |
-| ------ | ------ | ---- | --------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
-
-**返回值：**
-
-| 类型   | 说明           |
-| ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct MatrixExample {
-  build() {
-    Column({ space: 100 }) {
-      Text('Hello1')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .rotate({
-          z: 1,
-          angle: 90,
-          centerX: this.getUIContext().px2lpx(50),
-          centerY: this.getUIContext().px2lpx(30)
-        })
-    }.width('100%')
-    .height('100%')
-  }
-}
-```
-
-## px2vp<sup>12+</sup>
-
-px2vp(value : number) : number
-
-将px单位的数值转换为以vp为单位的数值。
-
-转换公式为：vp值 = px值 ÷ 像素密度
-
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
-
-> **说明：**
->
-> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
->
-> 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                   |
-| ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br/>取值范围：(-∞, +∞) |
-
-**返回值：**
-
-| 类型   | 说明           |
-| ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct MatrixExample {
-  build() {
-    Column({ space: 100 }) {
-      Text('Hello1')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .rotate({
-          z: 1,
-          angle: 90,
-          centerX: this.getUIContext().px2vp(50),
-          centerY: this.getUIContext().px2vp(30)
-        })
-    }.width('100%')
-    .height('100%')
   }
 }
 ```
@@ -4021,6 +3797,230 @@ unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: S
 **示例：**
 
 参考[bindTabsToScrollable](#bindtabstoscrollable13)接口示例。
+
+## lpx2px<sup>12+</sup>
+
+lpx2px(value : number) : number
+
+将lpx单位的数值转换为以px为单位的数值。
+
+转换公式为：px值 = lpx值 × 实际屏幕宽度与逻辑宽度（通过[designWidth](../../quick-start/module-configuration-file.md#pages标签)配置）的比值。
+
+> **说明：**
+>
+> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                    |
+| ------ | ------ | ---- | --------------------------------------- |
+| value | number | 是   | 将lpx单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().lpx2px(50),
+          centerY: this.getUIContext().lpx2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+## px2fp<sup>12+</sup>
+
+px2fp(value : number) : number
+
+将px单位的数值转换为以fp为单位的数值。
+
+转换公式为：fp值 = px值 ÷ 像素密度 ÷ 字体缩放比例
+
+像素密度：当前窗口生效的像素密度值，通常就是屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+
+字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
+
+> **说明：**
+>
+> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将px单位的数值转换为以fp为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2fp(50),
+          centerY: this.getUIContext().px2fp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+## px2lpx<sup>12+</sup>
+
+px2lpx(value : number) : number
+
+将px单位的数值转换为以lpx为单位的数值。
+
+转换公式为：lpx值 = px值 ÷ 实际屏幕宽度与逻辑宽度（通过[designWidth](../../quick-start/module-configuration-file.md#pages标签)配置）的比值。
+
+> **说明：**
+>
+> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                    |
+| ------ | ------ | ---- | --------------------------------------- |
+| value | number | 是   | 将px单位的数值转换为以lpx为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2lpx(50),
+          centerY: this.getUIContext().px2lpx(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+## px2vp<sup>12+</sup>
+
+px2vp(value : number) : number
+
+将px单位的数值转换为以vp为单位的数值。
+
+转换公式为：vp值 = px值 ÷ 像素密度
+
+像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+
+> **说明：**
+>
+> 1. getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+>
+> 2. UI实例未创建时，[像素单位](./arkui-ts/ts-pixel-units.md)中的px2vp接口使用默认屏幕的虚拟像素比进行转换。在该场景下，开发者使用UIContext接口替换时，可参考[像素单位转换接口替换为UIContext接口](../../../application-dev/ui/arkts-global-interface.md#像素单位转换接口替换为uicontext接口)。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将px单位的数值转换为以vp为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().px2vp(50),
+          centerY: this.getUIContext().px2vp(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## vp2px<sup>12+</sup>
 
