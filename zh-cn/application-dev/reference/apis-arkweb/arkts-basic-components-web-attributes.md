@@ -785,7 +785,7 @@ ArkTS-Sta: geolocationAccess(geolocationAccess: boolean | undefined): this
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
