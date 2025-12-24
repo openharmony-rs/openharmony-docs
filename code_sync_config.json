@@ -26793,38 +26793,7 @@
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets",
-				"functions":[
-					{
-						"end_line":25,
-						"name":"pasteboard_timelaps_PasteData1",
-						"start_line":16
-					},
-					{
-						"end_line":106,
-						"name":"pasteboard_timelaps_PasteData2",
-						"start_line":93
-					},
-					{
-						"end_line":120,
-						"name":"pasteboard_timelaps_PasteData3",
-						"start_line":107
-					},
-					{
-						"end_line":135,
-						"name":"pasteboard_timelaps_PasteData4",
-						"start_line":118
-					},
-					{
-						"end_line":144,
-						"name":"pasteboard_timelaps_PasteData5",
-						"start_line":136
-					},
-					{
-						"end_line":153,
-						"name":"pasteboard_timelaps_PasteData6",
-						"start_line":145
-					}
-				]
+				"functions":[]
 			}
 		]
 	},
