@@ -77,18 +77,18 @@
 3. 在工程中的“entry > src > main > ets  > pages”目录下，新增ArkWebPage.ets文件，在build下加载web网页，并定期下发耗时任务阻塞应用主线程触发丢帧，示例代码如下：
 
     <!-- @[ArkWeb_Fling_Jank_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/ArkWebPage.ets) -->
-   
+    
     ``` TypeScript
     import web_webview from '@ohos.web.webview';
-   
+    
     // 用于存储web_id到url的映射
     export const webIdToUrlMap = new Map<number, string>();
-   
+    
     @Entry
     @Component
     struct ArkWebPage {
       controller = new web_webview.WebviewController();
-   
+    
       build() {
         Column() {
           Web({ src: 'https://baidu.com',
