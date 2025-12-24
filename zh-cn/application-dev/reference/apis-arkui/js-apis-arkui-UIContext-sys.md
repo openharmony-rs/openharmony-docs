@@ -266,7 +266,7 @@ struct Index {
 
 ArkTS-Dyn: freezeUINode(uniqueId: number, isFrozen: boolean): void
 
-ArkTS-Sta: freezeUINode(uniqueId: long, isFrozen: boolean): void
+ArkTS-Sta: freezeUINode(uniqueId: int, isFrozen: boolean): void
 
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
@@ -282,7 +282,7 @@ ArkTS-Sta: freezeUINode(uniqueId: long, isFrozen: boolean): void
 
 | 参数名     | 类型    | 必填   | 说明      |
 | --- | --- | --- | --- |
-| uniqueId | ArkTS-Dyn: number <br>ArkTS-Sta: long | 是 | 组件的uniqueId。|
+| uniqueId | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 组件的uniqueId。|
 | isFrozen | boolean | 是 | 是否设置冻结。<br/>true表示设置冻结，false表示设置不冻结。<br/>默认值为false。|
 
 **错误码：**
@@ -292,6 +292,10 @@ ArkTS-Sta: freezeUINode(uniqueId: long, isFrozen: boolean): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | The caller is not a system application. |
+
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 @Entry
@@ -398,6 +402,102 @@ struct Index {
       .width(360)
       .height(296)
       .margin({ top: 52 })
+      .backgroundColor('#F1F3F5')
+    }.width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Tabs, TabContent, Component, Column, ClickEvent, NodeContainer, TabsController, Color, TabsOptions, BarPosition, BarMode, Margin, Button, State, UIContext } from '@kit.ArkUI';
+import { FrameNode } from '@ohos.arkui.node';
+
+@Entry
+@Component
+struct Index {
+  @State columnWidth1: string = '100%';
+  @State currentIndex: int = 0;
+  private controller: TabsController = new TabsController();
+
+  build() {
+    Column() {
+      Button('tab1 set freezeUINode false')
+        .onClick((event: ClickEvent) => {
+          // 通过id查询以获取对应节点的uniqueId。
+          const node = this.getUIContext().getFrameNodeById('tab1');
+          const uniqueId = node?.getUniqueId();
+          // 当id为tab1的TabContent显示的时候，通过uniqueId设置该节点的冻结状态为false。
+          if (uniqueId) {
+            this.getUIContext().freezeUINode(uniqueId!, false)
+          }
+        })
+      Button('tab1 set freezeUINode true')
+        .onClick((event: ClickEvent) => {
+          // 通过id查询以获取对应节点的uniqueId。
+          const node = this.getUIContext().getFrameNodeById('tab1');
+          const uniqueId = node?.getUniqueId();
+          // 当id为tab1的TabContent隐藏的时候，通过uniqueId设置该节点的冻结状态为true。
+          if (uniqueId) {
+            this.getUIContext().freezeUINode(uniqueId!, true);
+          }
+        })
+      Button('tab1 set columnWidth1 100%')
+        .onClick((event: ClickEvent) => {
+          this.columnWidth1 = '100%';
+        })
+      Button('tab1 set columnWidth1 50%')
+        .onClick((event: ClickEvent) => {
+          this.columnWidth1 = '50%';
+        })
+      Button('tab1 set columnWidth1 20%')
+        .onClick((event: ClickEvent) => {
+          this.columnWidth1 = '20%';
+        })
+      Tabs({
+        barPosition: BarPosition.Start,
+        index: this.currentIndex,
+        controller: this.controller
+      }) {
+        TabContent() {
+          Column()
+            .width(this.columnWidth1)
+            .height('100%')
+            .backgroundColor('#00CB87')
+        }
+        .tabBar('green')
+        .id('tab1')
+
+        TabContent() {
+          Column()
+            .width('100%')
+            .height('100%')
+            .backgroundColor('#007DFF')
+        }
+        .tabBar('blue')
+        .id('tab2')
+
+        TabContent() {
+          Column()
+            .width('100%')
+            .height('100%')
+            .backgroundColor('#FFBF00')
+        }
+        .tabBar('yellow')
+        .id('tab3')
+
+      }
+      .vertical(false)
+      .barMode(BarMode.Fixed)
+      .barWidth(360)
+      .animationDuration(0)
+      .onChange((index: Int) => {
+        this.currentIndex = index;
+      })
+      .width(360)
+      .height(296)
+      .margin({ top: 52 } as Margin)
       .backgroundColor('#F1F3F5')
     }.width('100%')
   }

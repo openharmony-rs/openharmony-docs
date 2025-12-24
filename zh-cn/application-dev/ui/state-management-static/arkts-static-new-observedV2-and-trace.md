@@ -205,6 +205,28 @@ import { ObservedV2, Trace } from '@ohos.arkui.stateManagement';
 
 - 使用\@ObservedV2与\@Trace装饰器的类，需通过new操作符实例化后，才具备被观测变化的能力。
 
+- \@ObservedV2装饰的类中，应至少有一个\@Trace装饰的成员，否则编译报错。
+
+   【反例】
+
+   ```ts
+   @ObservedV2
+   class User { // 错误用法，编译时报错
+     name: string = 'Tom';
+     age: number = 0;
+   }
+   ```
+
+   【正例】
+   
+   ```ts
+   @ObservedV2
+   class Person { // 正确用法，编译时不报错
+     @Trace name: string = 'Jack';
+     age: number = 0;
+   }
+   ```
+
 ## 使用场景
 
 ### 嵌套类场景

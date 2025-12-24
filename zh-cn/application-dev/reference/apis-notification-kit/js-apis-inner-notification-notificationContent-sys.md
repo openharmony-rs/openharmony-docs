@@ -35,7 +35,7 @@
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| structuredText<sup>22+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：22   |
+| structuredText<sup>21+</sup> | Map<string, string> |  否  |  是  | 通知结构化字段。当前仅支持服务提醒类短信在通知中心结构化展示。（key/value大小不超过512字节，超出部分会被截断，最多支持3对结构化数据，超出部分会被忽略。）<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：22   |
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
@@ -52,6 +52,7 @@
 | extraInfo      | ArkTS-Dyn: Record<string, Object\><br/>ArkTS-Sta: Record<string, RecordData> | 否  | 是  | 实况通知附加内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22           |
 | pictureInfo    | Record<string, Array<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)\>\> | 否  | 是  | 实况通知附加内容中的图片信息。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：22|
 | isLocalUpdateOnly<sup>12+</sup> | boolean                                           | 否  | 是  | 实况窗是否只在本地更新。默认为false。<br> - true：是。<br> - false：否。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：22    |
+| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：22   |
 
 ## NotificationSystemLiveViewContent<sup>18+</sup>
 
@@ -69,7 +70,6 @@
 | ---------------------------- | ----------------------------------------------- | --- | --- | -----------------------------------|
 | liveViewType | [LiveViewTypes](#liveviewtypes18)  | 否 | 是  | 实况窗类型。  |
 | cardButtons | Array\<[NotificationIconButton](#notificationiconbutton18)\>    |  否  |  是  | 实况窗按钮（最多支持3个）。      |
-| extensionWantAgent<sup>20+</sup> | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md)    |  否  |  是  | 点击辅助区的跳转动作。 <br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：22   |
 
 ## NotificationCapsule<sup>11+</sup>
 

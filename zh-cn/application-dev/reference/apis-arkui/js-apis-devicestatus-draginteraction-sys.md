@@ -5,7 +5,7 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块接口均为系统接口。
 
 ## 导入模块
@@ -51,6 +51,10 @@ on(type: 'drag', callback: Callback\<DragState>): void
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名   | 类型                               | 必填 | 说明                             |
@@ -88,6 +92,10 @@ off(type: 'drag', callback?: Callback\<DragState>): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
+
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 
@@ -145,6 +153,10 @@ getDataSummary(): Array\<Summary>
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
+**ArkTS-Dyn起始版本**：12
+
+**ArkTS-Sta起始版本**：22
+
 **返回值：**
 
 | 类型                          | 说明                                                 |
@@ -176,6 +188,10 @@ setDragSwitchState(enabled: boolean): void
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
 
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：22
+
 **参数：**
 
 | 参数名   | 类型                               | 必填 | 说明                                                                   |
@@ -205,6 +221,10 @@ setAppDragSwitchState(enabled: boolean, bundleName: string): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Drag
+
+**ArkTS-Dyn起始版本**：18
+
+**ArkTS-Sta起始版本**：22
 
 **参数：**
 

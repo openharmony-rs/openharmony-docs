@@ -386,6 +386,14 @@ aboutToReuse?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+**示例**
+
+ArkTS-Dyn示例：
+
 ```ts
 @Entry
 @ComponentV2
@@ -393,7 +401,10 @@ struct Index {
   @Local condition: boolean = true;
   build() {
     Column() {
-      Button('回收/复用').onClick(()=>{this.condition=!this.condition;}) // 点击切换回收/复用状态
+      Button('回收/复用')
+        .onClick(() => {
+          this.condition = !this.condition;
+        }) // 点击切换回收/复用状态
       if (this.condition) {
         ReusableV2Component()
       }
@@ -415,6 +426,38 @@ struct ReusableV2Component {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, Column, Button, ComponentV2, ReusableV2, Text, Local } from '@kit.ArkUI';
+@Entry
+@ComponentV2
+struct Index {
+  @Local condition: boolean = true;
+  build() {
+    Column() {
+      Button('回收/复用').onClick(()=>{this.condition=!this.condition;}) // 点击切换回收/复用状态
+      if (this.condition) {
+        ReusableV2Component()
+      }
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableV2Component {
+  @Local message: string = 'Hello World';
+  aboutToReuse() {
+    console.info('ReusableV2Component aboutToReuse'); // 复用时被调用
+  }
+  build() {
+    Column() {
+      Text(this.message)
+    }
+  }
+}
+```
 
 ## aboutToRecycle<sup>10+</sup>
 

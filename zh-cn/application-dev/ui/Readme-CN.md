@@ -119,10 +119,10 @@
         - 辅助接口<!--arkts-new-other-state-mgmt-->
           - [getTarget接口：获取状态管理框架代理前的原始对象](state-management-static/arkts-static-new-getTarget.md)
           - [makeObserved接口：将非观察数据变为可观察数据](state-management-static/arkts-static-new-makeObserved.md)
-          - [memorizeUpdatedState接口：并行化UI创建场景下的状态变量拷贝接口](state-management-static/arkts-static-memorizeUpdatedState.md)
           - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management-static/arkts-static-new-addmonitor-clearmonitor.md)
       - 状态管理V1向V2迁移指导
       - 状态管理V1和V2混合使用
+        - [状态管理V1V2混用指导](state-management-static/arkts-v1-v2-mixusage.md)
       - [状态管理优秀实践](state-management-static/arkts-static-state-management-best-practices.md)
       - 开发指导
     - 状态管理动静态差异<!--arkts-state-management-dynamic-static-compare-->

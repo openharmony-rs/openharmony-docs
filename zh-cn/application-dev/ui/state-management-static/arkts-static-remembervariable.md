@@ -234,6 +234,51 @@ struct Index {
 
 ![arkts-sta-remembervariable-pass.gif](../figures/arkts-sta-remembervariable-pass.gif)
 
+### 修改函数地址触发UI刷新
+
+使用rememberVariable可以存储Function类型的状态变量，对Function状态变量赋值修改后能触发UI刷新。
+
+```ts
+'use static'
+import { rememberVariable, MutableVariable, Entry, Component, Column,
+         Text, Builder, Button, ColumnOptions } from '@kit.ArkUI';
+
+function GetValueA() {
+  return 'Hello World';
+}
+function GetValueB() {
+  return 'Hello ArkTS';
+}
+
+@Builder
+function MyBuilder() {
+  // 声明Function类型的状态变量
+  let getValueFunction: MutableVariable<Function> = rememberVariable<Function>(() => GetValueA);
+  Text(`My value is ${ getValueFunction.value.unsafeCall() }`) // 使用unsafeCall调用Function
+  Button('Change function in builder')
+    .onClick(() => {
+      if (getValueFunction.value === GetValueA) {
+        // 修改Function类型状态变量，会触发UI刷新。
+        getValueFunction.value = GetValueB;
+      } else {
+        getValueFunction.value = GetValueA;
+      }
+    })
+}
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      MyBuilder()
+    }
+    .width('100%')
+  }
+}
+```
+
+![arkts-sta-remembervariable-function.gif](../figures/arkts-sta-remembervariable-function.gif)
+
 ## 常见问题
 
 ### build()内使用rememberVariable声明的状态变量不能同步数据

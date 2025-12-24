@@ -57,7 +57,7 @@ import { Provide, Consume } from '@kit.ArkUI';
 
 - 当装饰的数据类型为boolean、string、number类型时，可以观察到数值的变化。
 
-- 当装饰class类型时，需要借助@Observed与@Track观测类属性，单独的\@Provide/\@Consume仅能观测类整体的赋值。
+- 当装饰class类型时，需要借助[@Observed](./arkts-static-observed-and-objectlink.md)与[@Track](./arkts-static-track.md)观测类属性，单独的\@Provide/\@Consume仅能观测类整体的赋值。
 
 - 当装饰数组时，可以观察到数组本身的赋值、添加、删除和更新。
 
@@ -168,7 +168,7 @@ import { Provide, Consume } from '@kit.ArkUI';
    @Provide({ alias: 'aliasName' }) provide: string = 'Hello';
    ```
 
-2. \@Consume装饰的变量禁止外部传入初始化，仅能通过别名来匹配对应的\@Provide变量。
+2. \@Consume装饰的变量禁止外部传入初始化，否则会编译期报错，仅能通过别名来匹配对应的\@Provide变量。
 
    【反例】
 
@@ -309,6 +309,9 @@ import { Provide, Consume } from '@kit.ArkUI';
      }
    }
    ```
+5. \@Provide/\@Consume不支持装饰Function与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@Provide与@Consume装饰Function与() => void类型变量的校验，编译期会报错。
+
 
 ## 使用场景
 

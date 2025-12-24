@@ -137,7 +137,7 @@ ArkTS-Sta: setFontScale(fontScale: double): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体大小。 |
+| fontScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体大小。<br/>取值范围：(0.0, 5.0]，超出范围会抛出401错误码的异常。 |
 
 **返回值：** 
 
@@ -199,7 +199,7 @@ ArkTS-Sta: setFontWeightScale(fontWeightScale: double): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | -- | -- | -- |
-| fontWeightScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体粗细。 |
+| fontWeightScale | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是 | 需要设置的字体粗细。<br/>取值范围：(0.0, 5.0]，超出范围会抛出401错误码的异常。 |
 
 **返回值：** 
 
