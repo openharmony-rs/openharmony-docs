@@ -602,7 +602,7 @@ declare a2 {
 在开启-enable-toplevel-obfuscation属性混淆后，字节码混淆时，混淆正常，运行时报错，错误日志：
 
 ```txt
-Error message:is not callable
+Error message: is not callable
 Stacktrace: Cannot get SourceMap info, dump raw stack: at anonymous (ads_service|@hw-ads/ohos-ads-model|1.0.1|src/main/ets/annotations/FieldType.ts:6:1。
 ```
 
