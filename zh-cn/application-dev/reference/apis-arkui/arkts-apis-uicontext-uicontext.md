@@ -903,64 +903,6 @@ struct Index {
 }
 ```
 
-## fp2px<sup>12+</sup>
-
-fp2px(value : number) : number
-
-将fp单位的数值转换为以px为单位的数值。
-
-转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例
-
-像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
-
-字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
-
-> **说明：**
->
-> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名 | 类型   | 必填 | 说明                                   |
-| ------ | ------ | ---- | -------------------------------------- |
-| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
-
-**返回值：**
-
-| 类型   | 说明           |
-| ------ | -------------- |
-| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct MatrixExample {
-  build() {
-    Column({ space: 100 }) {
-      Text('Hello1')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .rotate({
-          z: 1,
-          angle: 90,
-          centerX: this.getUIContext().fp2px(50),
-          centerY: this.getUIContext().fp2px(30)
-        })
-    }.width('100%')
-    .height('100%')
-  }
-}
-```
-
 ## getAllUIContexts<sup>22+</sup>
 
 static getAllUIContexts(): UIContext[]
@@ -3797,6 +3739,64 @@ unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: S
 **示例：**
 
 参考[bindTabsToScrollable](#bindtabstoscrollable13)接口示例。
+
+## fp2px<sup>12+</sup>
+
+fp2px(value : number) : number
+
+将fp单位的数值转换为以px为单位的数值。
+
+转换公式为：px值 = fp值 × 像素密度 × 字体缩放比例
+
+像素密度：当前窗口生效的像素密度值，即屏幕物理像素密度[VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16)。
+
+字体缩放比例：系统设置的字体缩放系数，对应 [Configuration.fontScale](arkui-ts/ts-types.md#configuration)。
+
+> **说明：**
+>
+> getUIContext需在[windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9)之后调用，确保UIContext初始化完成后调用此接口，否则无法返回准确结果。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| value | number | 是   | 将fp单位的数值转换为以px为单位的数值。<br/>取值范围：(-∞, +∞) |
+
+**返回值：**
+
+| 类型   | 说明           |
+| ------ | -------------- |
+| number | 转换后的数值。<br/>取值范围：(-∞, +∞) |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          z: 1,
+          angle: 90,
+          centerX: this.getUIContext().fp2px(50),
+          centerY: this.getUIContext().fp2px(30)
+        })
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## lpx2px<sup>12+</sup>
 
