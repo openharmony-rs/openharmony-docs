@@ -42,6 +42,7 @@ MindSpore Lite AI模型部署流程是：
      -  Git >= 2.28.0
 
 2. 取[MindSpore Lite源码](https://gitcode.com/openharmony/third_party_mindspore)。
+
    MindSpore Lite完整源码位于：`mindspore-src/source/`。
 
 3. 执行编译。
@@ -69,6 +70,7 @@ export LD_LIBRARY_PATH=${PACKAGE_PATH}/tools/converter/lib:${LD_LIBRARY_PATH}
 ## 参数说明
 
 MindSpore Lite模型转换工具提供了多种参数设置，用户可根据需要来选择使用。此外，用户可输入`./converter_lite --help`获取实时帮助。
+
 下面提供详细的参数说明。
 
 
@@ -99,6 +101,7 @@ MindSpore Lite模型转换工具提供了多种参数设置，用户可根据需
 ./converter_lite --fmk=CAFFE --modelFile=lenet.prototxt --weightFile=lenet.caffemodel --outputFile=lenet
 ```
 本例中，因为采用了CAFFE模型，所以需要模型结构、模型权值两个输入文件。再加上其他必需的fmk类型和输出路径两个参数，即可成功执行。
+
 结果显示为：
 
 ```bash

@@ -353,6 +353,7 @@ CONFIG
 ![memory_001](figures/memory_001.png)
 
 通过DevEco Studio 的工具获得内存的数据：
+
 ![zh-cn_image_0000002357083514](figures/zh-cn_image_0000002357083514.png)
 
 通过DevEco-&gt;profiler-&gt;Allocation工具，选择Memory泳道，可以使用profiler的memory plugin功能。上图展示了框选时间段的进程smaps内存信息。
@@ -782,6 +783,7 @@ hidumper抓取的是进程维度内存使用情况，hiprofiler抓取到的是�
 
 可以通过hiprofiler_cmd命令中config参数配置来进行调整。
 hiprofiler_cmd命令中config参数的调整方法如下：
+ 
  - 适当减小max_stack_depth和max_js_stack_depth参数的值，减少回栈深度，减少调用栈信息的采集。
  - 适当增大smb_pages参数的值，增大调优数据传输的共享内存大小。默认值为16384个页大小，即：16384*4096=67108864字节（64M）。可以调整到128M。
  - 适当增加sample_interval参数的值，增大采样线程栈的大小。默认值为256，可以调整到512。
