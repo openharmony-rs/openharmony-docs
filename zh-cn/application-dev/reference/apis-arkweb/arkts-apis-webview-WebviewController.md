@@ -16827,3 +16827,240 @@ stopMicrophone(): void
 **示例：**
 
 完整示例代码参考[resumeMicrophone](#resumemicrophone23)。
+
+## setSoftKeyboardBehaviorMode<sup>22+</sup>
+
+setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
+
+设置软键盘自动控制模式，当接口没有显式调用时，Web组件失去焦点或获得焦点、状态切换为inactive或active时，系统均会尝试触发软键盘自动隐藏或拉起。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| mode | [WebSoftKeyboardBehaviorMode](./arkts-apis-webview-e.md#websoftkeyboardbehaviormode22) | 是 | Web软键盘自动控制模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('Web InActive').onClick(() => {
+        this.controller.setSoftKeyboardBehaviorMode(webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
+      })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .keyboardAvoidMode(WebKeyboardAvoidMode.RETURN_TO_UICONTEXT)
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Web, Button, WebKeyboardAvoidMode, $rawfile} from '@ohos.arkui.component'
+import { BusinessError } from '@ohos.base'
+import web_webview from '@ohos.web.webview';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: web_webview.WebviewController = new web_webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('Web InActive').onClick(() => {
+        this.controller.setSoftKeyboardBehaviorMode(web_webview.WebSoftKeyboardBehaviorMode.DISABLE_AUTO_KEYBOARD_ON_ACTIVE);
+      })
+      Web({ src: 'www.example.com', controller: this.controller })
+        .keyboardAvoidMode(WebKeyboardAvoidMode.RETURN_TO_UICONTEXT)
+    }
+  }
+}
+```
+## getSiteIsolationMode<sup>21+</sup>
+
+static getSiteIsolationMode(): SiteIsolationMode
+
+查询当前生效的站点隔离模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                                      | 说明                                                         |
+| ----------------------------------------- | ------------------------------------------------------------ |
+| [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | 站点隔离模式类型。<br>getSiteIsolationMode()查询当前生效的站点隔离模式。|
+
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('getSiteIsolationMode')
+        .onClick(() => {
+          let mode = webview.WebviewController.getSiteIsolationMode();
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Web, Button } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('getSiteIsolationMode')
+        .onClick(() => {
+          let mode = webview.WebviewController.getSiteIsolationMode();
+          console.info("getSiteIsolationMode: " + mode);
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+## setSiteIsolationMode<sup>21+</sup>
+
+setSiteIsolationMode(mode: SiteIsolationMode): void
+
+设置站点隔离模式。站点隔离机制将不同源的网站隔离在不同的Render进程中，减少跨域攻击面。例如：PC等设备上，在未启用站点隔离模式时，原有进程模型是每一个Tab对应一个Render进程，开启站点隔离后，一个Tab下不同源的Iframe可在独立的Render进程中运行。
+
+对于仅加载可信网页的第三方应用，可以关闭此功能，以提升性能并减少内存占用，同时减少跨域访问的拦截。默认值根据不同的设备而定，PC/Table采用严格站点隔离[SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21)，Phone默认部分站点隔离[SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21)。[坚盾守护模式](../..//web/web-secure-shield-mode.md)下采用严格站点隔离。
+
+> **说明：**
+>
+>  - 不能在单子进程模式下设置严格站点隔离。
+>
+>  - 接口只能在初始化时调用一次，不支持反复修改。
+
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| mode | [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | 是 | 设置站点隔离模式。<br>默认值取决于设备类型和设备模式：PC/Tablet默认严格站点隔离，Phone默认部分站点隔离；坚盾守护模式默认严格站点隔离。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 |Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setSiteIsolationMode')
+        .onClick(() => {
+          try {
+            webview.WebviewController.setSiteIsolationMode(webview.SiteIsolationMode.PARTIAL);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Web, Button } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Button('setSiteIsolationMode')
+        .onClick(() => {
+          try {
+            webview.WebviewController.setSiteIsolationMode(webview.SiteIsolationMode.PARTIAL);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'www.example.com', controller: this.controller })
+    }
+  }
+}
+```

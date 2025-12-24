@@ -1132,15 +1132,15 @@ struct Index {
 }
 ```
 
-### makeBindingReadonly\<T\>
+### makeBinding\<T\>
 
-static makeBindingReadonly\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
+static makeBinding\<T\>(getter: GetterCallback\<T\>): Binding\<T\>
 
 创建只读的单向数据绑定实例，用于在@Builder函数中为参数类型为Binding的参数提供实参。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1196,15 +1196,15 @@ struct MyApp {
 }
 ```
 
-### makeBindingMutable\<T\>
+### makeBinding\<T\>
 
-static makeBindingMutable\<T\>(getter: GetterCallback\<T\>, setter: SetterCallback\<T\>): MutableBinding\<T\>
+static makeBinding\<T\>(getter: GetterCallback\<T\>, setter: SetterCallback\<T\>): MutableBinding\<T\>
 
 创建双向数据绑定实例，用于构建@Builder函数中类型为MutableBinding的参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1266,56 +1266,6 @@ struct MyApp {
           this.num2 = v;
         }),
         UIUtils.makeBindingMutable(() => this.num3, (v) => {
-          this.num3 = v;
-        })
-      );
-    }
-  }
-}
-```
-
-### makeBinding
-
-static overload makeBinding { makeBindingReadonly, makeBindingMutable }
-
-根据入参，自动匹配makeBindingReadonly和makeBindingMutable。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**示例：**
-
-```ts
-'use static'
-
-import { UIUtils, Binding, MutableBinding, State } from '@ohos.arkui.stateManagement';
-import { Entry, Column, Row, Component, Button, ButtonAttribute, ClickEvent, Builder } from '@ohos.arkui.component';
-
-@Builder
-function CustomButton(readOnlyParam: Binding<number>, mutableParam: MutableBinding<number>) {
-  Row() {
-    Button(`Custom btn: ${readOnlyParam.value} -- ${mutableParam.value}`)
-      .onClick((e) => {
-        mutableParam.value += 1;
-      });
-  }
-}
-
-@Entry
-@Component
-struct MyApp {
-  @State num2: number = 10;
-  @State num3: number = 100;
-
-  build() {
-    Column() {
-      Button(`Entry btn ${this.num2} -- ${this.num3}`)
-        .onClick((e) => {
-          this.num2 += 1;
-          this.num3 += 1;
-        });
-      CustomButton(
-        UIUtils.makeBinding(() => this.num2),
-        UIUtils.makeBinding(() => this.num3, (v) => {
           this.num3 = v;
         })
       );

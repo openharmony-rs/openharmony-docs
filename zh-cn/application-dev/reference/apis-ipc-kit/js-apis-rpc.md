@@ -218,7 +218,7 @@ writeInterfaceToken(token: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes:<br/> 1.The number of parameters is incorrect;<br/> 2.The parameter type does not match;<br/> 3.The string length exceeds 40960 bytes;<br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes:<br/> 1.The number of parameters is incorrect;<br/> 2.The parameter type does not match;<br/> 3.The string length is greater than or equal to 40960 bytes;<br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
@@ -1845,7 +1845,7 @@ writeString(val: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length exceeds 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
@@ -3640,7 +3640,7 @@ writeStringArray(stringArray: string[]): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The parameter is an empty array; <br/> 2.The number of parameters is incorrect; <br/> 3.The parameter type does not match; <br/> 4.The string length exceeds 40960 bytes; <br/> 5.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The parameter is an empty array; <br/> 2.The number of parameters is incorrect; <br/> 3.The parameter type does not match; <br/> 4.The string length is greater than or equal to 40960 bytes; <br/> 5.The number of bytes copied to the buffer is different from the length of the obtained string. |
   | 1900009  | Failed to write data to the message sequence. |
 
 **示例：**
@@ -7926,7 +7926,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length exceeds 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 ### queryLocalInterface<sup>(deprecated)</sup>
 
@@ -10114,7 +10114,7 @@ static restoreCallingIdentity(identity: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length exceeds 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 
@@ -11026,7 +11026,7 @@ getLocalInterface(descriptor: string): IRemoteBroker
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length exceeds 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 
@@ -11249,7 +11249,7 @@ modifyLocalInterface(localInterface: IRemoteBroker, descriptor: string): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length exceeds 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
+  | 401      | Parameter error. Possible causes: <br/> 1.The number of parameters is incorrect; <br/> 2.The parameter type does not match; <br/> 3.The string length is greater than or equal to 40960 bytes; <br/> 4.The number of bytes copied to the buffer is different from the length of the obtained string. |
 
 **示例：**
 

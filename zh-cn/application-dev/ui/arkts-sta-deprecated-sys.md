@@ -256,7 +256,7 @@ build() {
 
 ArkTS-Dyn接口声明：[static setImageCacheCount(value: number): void](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7)
 
-替代的ArkTS-Sta接口声明：[setImageCacheCount(value: int): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#setimagecachecount22)
+替代的ArkTS-Sta接口声明：[setImageCacheCount(value: int): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#setimagecachecount23)
 
 ArkTS-Dyn示例：
 
@@ -319,7 +319,7 @@ struct Index {
 
 ArkTS-Dyn接口声明：[static setImageRawDataCacheSize(value: number): void](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7)
 
-替代的ArkTS-Sta接口声明：[setImageRawDataCacheSize(value: int): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#setimagerawdatacachesize22)
+替代的ArkTS-Sta接口声明：[setImageRawDataCacheSize(value: int): void](../reference/apis-arkui/js-apis-arkui-UIContext.md#setimagerawdatacachesize23)
 
 ArkTS-Dyn示例：
 

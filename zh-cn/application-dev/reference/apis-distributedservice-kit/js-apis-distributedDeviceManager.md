@@ -1983,7 +1983,6 @@ offServiceDie(callback?: Callback&lt;ServiceDieData&gt;): void
 
   | 参数名       | 类型                    | 必填   | 说明                                       |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
-  | type     | string                  | 是    | 取消注册serviceDie回调，以便在devicemanager服务异常终止时通知应用程序，固定为serviceDie。 |
   | callback | Callback&lt;[ServiceDieData](#ServiceDieData22)&gt; | 否    | 取消注册serviceDie的回调方法。                     |
 
 **错误码：**

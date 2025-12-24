@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 11开始支持。
 
@@ -17,7 +18,9 @@ import { camera } from '@kit.CameraKit';
 
 ## setZoomRatio<sup>11+</sup>
 
-setZoomRatio(zoomRatio: number): void
+ArkTS-Dyn: setZoomRatio(zoomRatio: number): void
+
+ArkTS-Sta: setZoomRatio(zoomRatio: double): void
 
 设置变焦比，变焦精度最高为小数点后两位，如果设置超过支持的精度范围，则只保留精度范围内数值。
 
@@ -25,11 +28,15 @@ setZoomRatio(zoomRatio: number): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型                  | 必填 | 说明                                                                                                                              |
 | --------- | -------------------- | ---- |---------------------------------------------------------------------------------------------------------------------------------|
-| zoomRatio | number               | 是   | 可变焦距比，通过[getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11)获取支持的变焦范围，如果设置超过支持范围的值，则只保留精度范围内数值。<br>设置可变焦距比到底层生效需要一定时间，获取正确设置的可变焦距比需要等待1~2帧的时间。 |
+| zoomRatio | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 可变焦距比，通过[getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11)获取支持的变焦范围，如果设置超过支持范围的值，则只保留精度范围内数值。<br>设置可变焦距比到底层生效需要一定时间，获取正确设置的可变焦距比需要等待1~2帧的时间。 |
 
 **错误码：**
 
@@ -40,6 +47,8 @@ setZoomRatio(zoomRatio: number): void
 | 7400103                |  Session not config.                                   |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -59,9 +68,31 @@ function setZoomRatio(photoSession: camera.PhotoSession, zoomRatioRange: Array<n
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setZoomRatio(photoSession: camera.PhotoSession, zoomRatioRange: Array<double>): void {
+  if (zoomRatioRange === undefined || zoomRatioRange.length <= 0) {
+    return;
+  }
+  let zoomRatio = zoomRatioRange[0];
+  try {
+    photoSession.setZoomRatio(zoomRatio);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setZoomRatio call failed. error code: ${err.code}`);
+  }
+}
+```
+
 ## getZoomRatio<sup>11+</sup>
 
-getZoomRatio(): number
+ArkTS-Dyn: getZoomRatio(): number
+
+ArkTS-Sta: getZoomRatio(): double
 
 获取当前的变焦比。
 
@@ -69,11 +100,15 @@ getZoomRatio(): number
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **返回值：**
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| number    | 获取当前的变焦比结果。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 获取当前的变焦比结果。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 
@@ -85,6 +120,8 @@ getZoomRatio(): number
 | 7400201                |  Camera service fatal error.                           |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -103,9 +140,30 @@ function getZoomRatio(photoSession: camera.PhotoSession): number {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getZoomRatio(photoSession: camera.PhotoSession): double {
+  const invalidValue: double = -1;
+  let zoomRatio: double = invalidValue;
+  try {
+    zoomRatio = photoSession.getZoomRatio();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getZoomRatio call failed. error code: ${err.code}`);
+  }
+  return zoomRatio;
+}
+```
+
 ## setSmoothZoom<sup>11+</sup>
 
-setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
+ArkTS-Dyn:  setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
+
+ArkTS-Sta:  setSmoothZoom(targetRatio: double, mode?: SmoothZoomMode): void
 
 触发平滑变焦。
 
@@ -113,14 +171,20 @@ setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 22
+
 **参数：**
 
 | 参数名       | 类型            | 必填 | 说明               |
 | ------------ | -------------- | ---- | ----------------- |
-| targetRatio  | number         | 是   | 目标值。      |
+| targetRatio  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 目标值。      |
 | mode         | [SmoothZoomMode](arkts-apis-camera-e.md#smoothzoommode11) | 否   | 模式。      |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -129,3 +193,12 @@ function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number,
   sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: double, mode: camera.SmoothZoomMode): void {
+  sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
+}
+```
+

@@ -32,6 +32,8 @@ ConsoleMessage的信息级别。
 
 ## MixedMode
 
+混合内容模式。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 8
@@ -61,6 +63,8 @@ ConsoleMessage的信息级别。
 | Unknown       | 7 | 未知内容。                    |
 
 ## CacheMode
+
+缓存模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -237,12 +241,12 @@ Web布局模式的配置。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-| 名称                          | 值 | 说明            |
-| --------------------------- | --------------- | ------------- |
-| ArkTS-Dyn: MidiSysex  <br>ArkTS-Sta: MIDI_SYSEX| TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: VIDEO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: VIDEO_CAPTURE| TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: AUDIO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: AUDIO_CAPTURE| TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|
-| ArkTS-Dyn: SENSOR<sup>12+</sup> <br>ArkTS-Sta: SENSOR| TYPE_SENSOR | 传感器资源，例如加速度传感器。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|
+| 名称                          | 值 | 说明            |    可申请的权限          |
+| --------------------------- | --------------- | ------------- |  ---------------------|
+| ArkTS-Dyn: MidiSysex  <br>ArkTS-Sta: MIDI_SYSEX| TYPE_MIDI_SYSEX | MIDI SYSEX资源。<br>目前仅支持权限事件上报，MIDI设备的使用还未支持。<br>**ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 22|暂不支持申请使用MIDI(Musical Instrument Digital Interface)设备相关权限。|
+| ArkTS-Dyn: VIDEO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: VIDEO_CAPTURE| TYPE_VIDEO_CAPTURE | 视频捕获资源，例如相机。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|相机权限：ohos.permission.CAMERA。|
+| ArkTS-Dyn: AUDIO_CAPTURE<sup>10+</sup> <br>ArkTS-Sta: AUDIO_CAPTURE| TYPE_AUDIO_CAPTURE | 音频捕获资源，例如麦克风。<br>**ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 22|麦克风权限：ohos.permission.MICROPHONE。|
+| ArkTS-Dyn: SENSOR<sup>12+</sup> <br>ArkTS-Sta: SENSOR| TYPE_SENSOR | 传感器资源，例如加速度传感器。<br>**ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 22|加速度传感器权限：ohos.permission.ACCELEROMETER、 <br>陀螺仪传感器权限：ohos.permission.GYROSCOPE。 |
 
 ## ContextMenuSourceType<sup>9+</sup>
 
@@ -270,6 +274,23 @@ Web布局模式的配置。
 | ----- | -- | ------------- |
 | None  | 0 | 非特殊媒体或其他媒体类型。 |
 | Image | 1 | 图片。           |
+
+## ContextMenuDataMediaType<sup>22+</sup>
+触发上下文菜单的网页元素类型（增强获取类型能力）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称    | 值 | 说明            |
+| ----- | -- | ------------- |
+| NONE  | 0 | 默认值，表示当前上下文菜单不关联任何媒体类型（例如右键文本或空白区域）。|
+| IMAGE | 1 | 图片类型。           |
+| VIDEO | 2 | 视频类型。           |
+| AUDIO | 3 | 音频类型。           |
+| CANVAS| 4 | Canvas类型。           |
 
 ## ContextMenuInputFieldType<sup>9+</sup>
 
@@ -388,6 +409,7 @@ Web布局模式的配置。
 | RESIZE_VISUAL      | 0 | 软键盘避让时，仅调整可视视口大小，不调整布局视口大小。   |
 | RESIZE_CONTENT     | 1 | 默认值，软键盘避让时，同时调整可视视口和布局视口的大小。 |
 | OVERLAYS_CONTENT   | 2 | 不调整任何视口大小，不会触发软键盘避让。   |
+| RETURN_TO_UICONTEXT<sup>22+</sup> | 3 | Web组件的软键盘避让行为将跟随UIcontext设置的[KeyboardAvoidMode](../apis-arkui/js-apis-arkui-UIContext.md#keyboardavoidmode11)模式，Web组件不再处理组件的避让。 |
 
 ## WebElementType<sup>13+</sup>
 
@@ -437,6 +459,21 @@ Web布局模式的配置。
 | 名称            | 值 | 说明                |
 | -------------- | -- | ------------------  |
 | AMBIENT     | 3 | 适用于网页游戏场景，支持Web游戏声音与系统音乐同时播放。对应系统音频流类型STREAM_USAGE_GAME。|
+
+## WebRotateEffect<sup>22+</sup>
+
+组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+| 名称                       | 值 | 说明           |
+| -------------------------- | -- | ------------- |
+| TOPLEFT_EFFECT                    | 0 | 默认值，组件旋转时，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。 |
+| RESIZE_COVER_EFFECT | 1 | 组件旋转时，保持动画终态内容的宽高比进行缩小或放大，使内容两边都大于或等于组件两边，且与组件保持中心对齐，显示内容的中间部分。 |
 
 ## NativeEmbedParamStatus<sup>21+</sup>
 

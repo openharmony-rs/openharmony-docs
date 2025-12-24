@@ -189,6 +189,9 @@ import { LocalStorageLink } from '@ohos.arkui.stateManagement';
 
 3. LocalStorage是页面级存储，[getSharedLocalStorage](../../reference/apis-arkui/js-apis-arkui-UIContext.md#getsharedlocalstorage12)接口仅能获取当前Stage通过[windowStage.loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)传入的LocalStorage实例，否则返回undefined。例子可见[将LocalStorage实例从UIAbility共享到一个或多个页面](#将localstorage实例从uiability共享到一个或多个页面)。
 
+4. \@LocalStoragePropRef/\@LocalStorageLink不支持装饰Function 与() => void类型的变量，API version 23之前，框架会抛出运行时错误。
+从API version 23开始，添加对\@LocalStoragePropRef/\@LocalStorageLink装饰Function与() => void类型变量的校验，编译期会报错。
+
 ## 使用场景
 
 ### 应用逻辑使用LocalStorage

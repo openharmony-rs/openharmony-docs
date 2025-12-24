@@ -18,6 +18,10 @@ reuse(options: ReuseOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名  | 类型                          | 必填 | 说明                                           |
@@ -31,6 +35,10 @@ reuse(options: ReuseOptions)
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
@@ -48,6 +56,10 @@ type ReuseIdCallback = () => string
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型   | 说明                                                         |
@@ -56,7 +68,35 @@ type ReuseIdCallback = () => string
 
 ## 示例
 
+ArkTS-Dyn示例：
+
 ```ts
+@Entry
+@ComponentV2
+struct Index {
+  build() {
+    Column() {
+      ReusableV2Component()
+        .reuse({reuseId: () => 'reuseComponent'}) // 使用'reuseComponent'作为reuseId
+      ReusableV2Component()
+        .reuse({reuseId: () => ''}) // 使用空字符串将默认使用组件名'ReusableV2Component'作为reuseId
+      ReusableV2Component() // 未指定reuseId将默认使用组件名'ReusableV2Component'作为reuseId
+    }
+  }
+}
+@ReusableV2
+@ComponentV2
+struct ReusableV2Component {
+  build() {
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, ComponentV2, Column, ReusableV2 } from '@kit.ArkUI';
 @Entry
 @ComponentV2
 struct Index {

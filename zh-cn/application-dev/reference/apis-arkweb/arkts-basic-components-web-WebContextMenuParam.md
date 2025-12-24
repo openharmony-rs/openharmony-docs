@@ -142,7 +142,7 @@ existsImageContents(): boolean
 
 getMediaType(): ContextMenuMediaType
 
-获取网页元素媒体类型。
+获取触发上下文菜单的网页元素类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -287,6 +287,24 @@ ArkTS-Sta: getPreviewHeight(): int
 | 类型     | 说明       |
 | ------ | ----------  |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 预览图的高。<br>单位：vp。 |
+
+## getContextMenuMediaType<sup>22+</sup>
+
+getContextMenuMediaType(): ContextMenuDataMediaType
+
+获取触发上下文菜单的网页元素类型（增强获取类型能力）。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 22
+
+**返回值：**
+
+| 类型     | 说明       |
+| ------ | ----------  |
+| [ContextMenuDataMediaType](./arkts-basic-components-web-e.md#contextmenudatamediatype22) | 网页元素媒体类型。 |
 
 ## 使用@ohos.transfer进行WebContextMenuParam类型转换
 

@@ -1,7 +1,6 @@
 # Interface (NativeMediaPlayerHandler)
 
-[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) 回调函数的参数。
-应用通过该对象，将播放器的状态报告给ArkWeb内核。
+[CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12)回调函数的参数。应用通过该对象，将播放器的状态报告给ArkWeb内核。
 
 > **说明：**
 >
@@ -11,7 +10,7 @@
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 
-## handleStatusChanged<sup>12+<sup>
+## handleStatusChanged<sup>12+</sup>
 
 handleStatusChanged(status: PlaybackStatus): void
 
@@ -33,7 +32,7 @@ handleStatusChanged(status: PlaybackStatus): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleVolumeChanged<sup>12+<sup>
+## handleVolumeChanged<sup>12+</sup>
 
 ArkTS-Dyn: handleVolumeChanged(volume: number): void
 
@@ -51,13 +50,13 @@ ArkTS-Sta: handleVolumeChanged(volume: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| volume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放器的音量。 |
+| volume | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放器的音量，取值范围：[0, 1.0]。 |
 
 **示例：**
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleMutedChanged<sup>12+<sup>
+## handleMutedChanged<sup>12+</sup>
 
 handleMutedChanged(muted: boolean): void
 
@@ -79,7 +78,7 @@ handleMutedChanged(muted: boolean): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handlePlaybackRateChanged<sup>12+<sup>
+## handlePlaybackRateChanged<sup>12+</sup>
 
 ArkTS-Dyn: handlePlaybackRateChanged(playbackRate: number): void
 
@@ -97,13 +96,13 @@ ArkTS-Sta: handlePlaybackRateChanged(playbackRate: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| playbackRate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率。 |
+| playbackRate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率，取值范围：[0, +∞) |
 
 **示例：**
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleDurationChanged<sup>12+<sup>
+## handleDurationChanged<sup>12+</sup>
 
 ArkTS-Dyn: handleDurationChanged(duration: number): void
 
@@ -121,13 +120,13 @@ ArkTS-Sta: handleDurationChanged(duration: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体的总时长。<br>单位：秒。 |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体的总时长。<br>单位：秒，取值范围：[0, +∞)  |
 
 **示例：**
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleTimeUpdate<sup>12+<sup>
+## handleTimeUpdate<sup>12+</sup>
 
 ArkTS-Dyn: handleTimeUpdate(currentPlayTime: number): void
 
@@ -145,13 +144,13 @@ ArkTS-Sta: handleTimeUpdate(currentPlayTime: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| currentPlayTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 当前播放时间。单位： 秒。  |
+| currentPlayTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 当前播放时间。<br>单位：秒，取值范围：[0, duration]   |
 
 **示例：**
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleBufferedEndTimeChanged<sup>12+<sup>
+## handleBufferedEndTimeChanged<sup>12+</sup>
 
 ArkTS-Dyn: handleBufferedEndTimeChanged(bufferedEndTime: number): void
 
@@ -169,13 +168,13 @@ ArkTS-Sta: handleBufferedEndTimeChanged(bufferedEndTime: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| bufferedEndTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体缓冲的时长。 |
+| bufferedEndTime | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 媒体缓冲的时长。<br>单位：秒，取值范围：[0, duration] |
 
 **示例：**
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleEnded<sup>12+<sup>
+## handleEnded<sup>12+</sup>
 
 handleEnded(): void
 
@@ -191,7 +190,7 @@ handleEnded(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleNetworkStateChanged<sup>12+<sup>
+## handleNetworkStateChanged<sup>12+</sup>
 
 handleNetworkStateChanged(state: NetworkState): void
 
@@ -213,7 +212,7 @@ handleNetworkStateChanged(state: NetworkState): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleReadyStateChanged<sup>12+<sup>
+## handleReadyStateChanged<sup>12+</sup>
 
 handleReadyStateChanged(state: ReadyState): void
 
@@ -235,7 +234,7 @@ handleReadyStateChanged(state: ReadyState): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleFullscreenChanged<sup>12+<sup>
+## handleFullscreenChanged<sup>12+</sup>
 
 handleFullscreenChanged(fullscreen: boolean): void
 
@@ -257,7 +256,7 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleSeeking<sup>12+<sup>
+## handleSeeking<sup>12+</sup>
 
 handleSeeking(): void
 
@@ -273,7 +272,7 @@ handleSeeking(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleSeekFinished<sup>12+<sup>
+## handleSeekFinished<sup>12+</sup>
 
 handleSeekFinished(): void
 
@@ -289,7 +288,7 @@ handleSeekFinished(): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleError<sup>12+<sup>
+## handleError<sup>12+</sup>
 
 handleError(error: MediaError, errorMessage: string): void
 
@@ -312,7 +311,7 @@ handleError(error: MediaError, errorMessage: string): void
 
 完整示例代码参考[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)。
 
-## handleVideoSizeChanged<sup>12+<sup>
+## handleVideoSizeChanged<sup>12+</sup>
 
 ArkTS-Dyn: handleVideoSizeChanged(width: number, height: number): void
 
@@ -330,8 +329,8 @@ ArkTS-Sta: handleVideoSizeChanged(width: double, height: double): void;
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的宽。 |
-| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的高。 |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的宽，单位为像素，取值范围：[0, +∞) |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 视频的高，单位为像素，取值范围：[0, +∞) |
 
 **示例：**
 
