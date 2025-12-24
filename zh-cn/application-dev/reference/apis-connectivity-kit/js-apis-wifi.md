@@ -484,6 +484,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 获取WLAN连接信息。使用Promise异步回调。
 
 >**说明：**
+>
 > 从API version 6开始支持，从API version 9开始废弃。建议使用[wifiManager.getLinkedInfo](js-apis-wifiManager.md#wifimanagergetlinkedinfo)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
