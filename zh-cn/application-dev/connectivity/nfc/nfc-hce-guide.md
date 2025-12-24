@@ -8,7 +8,7 @@
 <!--Adviser: @zhang_yixin13-->
 
 ## 简介
-近场通信(Near Field Communication，NFC)是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，电子设备上的应用程序模拟NFC卡片和NFC读卡器通信，实现NFC刷卡业务。OFFHOST(Off Host Card Emulation)，称为基于安全芯片的卡模拟，卡由设备中的一个单独芯片(称为安全单元)进行模拟。无线运营商很多SIM卡都包含安全单元(当前只支持SIM作为安全单元)。
+近场通信(Near Field Communication，NFC)是一种短距高频的无线电技术，在13.56MHz频率运行，通信距离一般在10厘米距离内。HCE(Host Card Emulation)，称为基于主机的卡模拟，表示不依赖安全单元芯片，电子设备上的应用程序模拟NFC卡片和NFC读卡器通信，实现NFC刷卡业务。OFFHOST(Off Host Card Emulation)，称为基于安全单元的卡模拟，卡由设备中的一个单独芯片(称为安全单元)进行模拟。无线运营商部分SIM卡都包含安全单元。
 
 ## 场景介绍
 应用程序模拟NFC卡片，和NFC读卡器通信完成NFC刷卡业务。从使用场景上，可以分成HCE应用前台刷卡和HCE应用后台刷卡。
@@ -17,8 +17,7 @@
 - HCE应用后台刷卡<br>
 后台刷卡是指不打开特定的HCE应用程序，当电子设备触碰NFC读卡器时，根据NFC读卡器选择的应用ID（Applet ID，AID，参考ISO/IEC 7816-4规范）匹配到HCE应用程序，并自动和匹配的HCE应用程序通信完成刷卡交易。如果NFC读卡器选择的应用ID，匹配到多个HCE应用程序时，说明存在冲突，需要用户打开指定的HCE应用，重新靠近NFC读卡器触发刷卡。
 
-安全单元模拟NFC卡片，和NFC读卡器完成NFC刷卡业务。要模拟的卡片通过应用配置到安全单元中，当电子设备触碰到NFC读卡器时，数据不经过设备CPU处理，而是直接发送到安全单元，完成刷卡。交易完成后，应用可以查询安全单元交易状态，告知用户刷卡结果。
-
+安全单元模拟NFC卡片，和NFC读卡器完成NFC刷卡业务。要模拟的卡片通过应用配置到安全单元中，当电子设备触碰到NFC读卡器时，数据不经过设备CPU处理，而是直接发送到安全单元，完成刷卡。
 
 ## HCE应用刷卡的约束条件
 1. 基于刷卡安全性考虑，不论HCE应用是前台方式还是后台方式刷卡，均不支持电子设备在灭屏或熄屏状态下的HCE刷卡操作。<br>
@@ -305,6 +304,9 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### OFFHOST应用刷卡
+1. 在module.json5文件中声明OFFHOST能力。
+2. 指定secureElement(当前只支持SIM作为secureElement)。
+3. 设置默认付款应用为OFFHOST应用。
 ```ts
 "abilities": [
       {
