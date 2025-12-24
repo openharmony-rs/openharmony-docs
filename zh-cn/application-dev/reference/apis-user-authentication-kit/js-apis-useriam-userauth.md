@@ -1927,7 +1927,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 
 > **说明：**
 >
-> 从 API version 9 开始废弃，请使用[UserAuthResultCode](#userauthresultcode9)代替。
+> 从 API version 8 开始支持，从 API version 9 开始废弃，请使用[UserAuthResultCode](#userauthresultcode9)代替。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2084,7 +2084,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，请使用[UserAuth](#userauthdeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuth](#userauthdeprecated)替代。
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2172,7 +2172,7 @@ try {
 
 > **说明：**
 >
-> 从 API version 8 开始废弃，请使用[ResultCode](#resultcodedeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[ResultCode](#resultcodedeprecated)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
