@@ -5601,7 +5601,9 @@ ArkTS-Sta示例：
 
 ## enableImageAnalyzer<sup>23+</sup>
 
-enableImageAnalyzer(enable: boolean | undefined)
+ArkTS-Dyn: enableImageAnalyzer(enable: boolean)
+
+ArkTS-Sta: enableImageAnalyzer(enable: boolean | undefined)
 
 设置是否启用网页图片AI分析，当前支持图片文字识别功能。属性未显示调用时，该功能默认开启。
 
@@ -5623,7 +5625,7 @@ enableImageAnalyzer(enable: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | 是   | 是否启用网页图片AI分析，true表示启用，false表示不启用。<br>传入undefined或null时重置为true。|
+| enable  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用网页图片AI分析，true表示启用，false表示不启用。<br>传入undefined或null时重置为true。|
 
 **示例：**
 
