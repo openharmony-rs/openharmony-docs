@@ -44,7 +44,7 @@
     - [@ohos.fileio (File Management)](js-apis-fileio.md)
     - [@ohos.statfs (statfs)](js-apis-statfs.md)
     - [@system.file (File Storage)](js-apis-system-file.md)
-- C API<!--core-file-c-->
+- C APIs<!--core-file-c-->
   - Modules<!--core-file-module-->
     - [Environment](capi-environment.md)
     - [FileIO](capi-fileio.md)

@@ -1,4 +1,4 @@
-# Basic Concepts of HUKS
+# Basic Concepts of Local Key Management
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->

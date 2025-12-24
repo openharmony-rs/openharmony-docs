@@ -1,8 +1,16 @@
 # @system.file (File Storage)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @foryourself-->
 
 > **NOTE**
 >
-> - The APIs provided by this module are no longer maintained since API Version 10. You are advised to use [@ohos.file.fs](js-apis-file-fs.md).
+> - Module maintenance policy:
+>   - For lite wearables, this module is constantly maintained and available.
+>   - For other device types, this module is no longer maintained since API version 10, and you are advised to use [`@ohos.file.fs`](js-apis-file-fs.md) instead.
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
@@ -16,11 +24,11 @@ import file from '@system.file';
 
 move(Object): void
 
-Moves a file to the given location.
+Moves a specified file to a given location.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.moveFile](js-apis-file-fs.md#fsmovefile) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.moveFile](js-apis-file-fs.md#fsmovefile) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -28,10 +36,10 @@ Moves a file to the given location.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| srcUri | string | Yes| Uniform resource identifier (URI) of the file to move. <br/>The URI can contain a maximum of 128 characters, excluding the following characters: "\*+,:;&lt;=&gt;?[]\|\x7F |
-| dstUri | string | Yes| URI of the location to which the file is to move. <br/>The URI can contain a maximum of 128 characters, excluding the following characters: "\*+,:;&lt;=&gt;?[]\|\x7F|
+| srcUri | string | Yes| URI of the file to move. The value can contain a maximum of 128 characters, excluding the following characters: "\*+,:;&lt;=&gt;?[]\|\x7F|
+| dstUri | string | Yes| URI of the location to which the file is to move. The value can contain a maximum of 128 characters, excluding the following characters: "\*+,:;&lt;=&gt;?[]\|\x7F|
 | success | Function | No| Called when the file is moved to the specified location. This API returns the URI of the destination location.|
-| fail | Function | No| Called when the file fails to be moved.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Error codes**
@@ -69,7 +77,7 @@ Copies a file to the given URI.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.copyFile](js-apis-file-fs.md#fscopyfile) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.copyFile](js-apis-file-fs.md#fscopyfile) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -80,7 +88,7 @@ Copies a file to the given URI.
 | srcUri | string | Yes| URI of the file to copy.|
 | dstUri | string | Yes| URI of the location to which the copy is to be saved.<br>The directory of application resources and URI of the **tmp** type are not supported.|
 | success | Function | No| Called when the file is copied and saved to the specified location. This API returns the URI of the destination location.|
-| fail | Function | No| Called when the file fails to be copied.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Error codes**
@@ -119,7 +127,7 @@ Obtains all files in the specified directory.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.listFile](js-apis-file-fs.md#fslistfile) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.listFile](js-apis-file-fs.md#fslistfile) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -127,9 +135,9 @@ Obtains all files in the specified directory.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| uri | string | Yes| URI of the directory. <br/>The URI can contain a maximum of 128 characters, excluding the following characters: "\*+,:;&lt;=&gt;?[]\|\x7F |
-| success | Function | No| Called when the file list is obtained.|
-| fail | Function | No| Called when the file list fails to be obtained.|
+| uri | string | Yes| URI of the directory. The value can contain a maximum of 128 characters, excluding the following characters: "\*+,:;&lt;=&gt;?[]\|\x7F|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Return value of success()**
@@ -143,9 +151,9 @@ Obtains all files in the specified directory.
 | Name| Type| Description|
 | -------- | -------- | -------- |
 | uri | string | URI of the file.|
-| lastModifiedTime | number | Timestamp when the file is saved the last time, which is the number of milliseconds elapsed since 1970/01/01 00:00:00 GMT.|
+| lastModifiedTime | number | Timestamp when the file is stored the last time, which is the number of milliseconds elapsed since 1970/01/01 00:00:00 GMT.|
 | length | number | File size, in bytes.|
-| type | string | File type. Available values are as follows:<br>- **dir**: directory<br>-&nbsp;**file**: file|
+| type | string | File type. Available values are as follows:<br>- &nbsp;**dir**: directory<br>-&nbsp;**file**: file|
 
 **Error codes**
 
@@ -182,7 +190,7 @@ Obtains information about a local file.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.stat](js-apis-file-fs.md#fsstat) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.stat](js-apis-file-fs.md#fsstat) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -192,8 +200,8 @@ Obtains information about a local file.
 | -------- | -------- | -------- | -------- |
 | uri | string | Yes| URI of the file.|
 | recursive | boolean | No| Whether to obtain the subdirectory file list recursively. The value **true** means to obtain the subdirectory file list recursively; the value **false** means the opposite.|
-| success | Function | No| Called when the file information is obtained.|
-| fail | Function | No| Called when the file information fails to be obtained.|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Return value of success()**
@@ -202,7 +210,7 @@ Obtains information about a local file.
 | -------- | -------- | -------- |
 | uri | string | URI of the file.|
 | length | number | File size, in bytes.|
-| lastModifiedTime | number | Timestamp when the file is saved the last time, which is the number of milliseconds elapsed since 1970/01/01 00:00:00 GMT.|
+| lastModifiedTime | number | Timestamp when the file is stored the last time, which is the number of milliseconds elapsed since 1970/01/01 00:00:00 GMT.|
 | type | string | File type. Available values are as follows:<br>- &nbsp;**dir**: directory<br>-&nbsp;**file**: file|
 | subFiles | Array | List of files.|
 
@@ -241,7 +249,7 @@ Deletes a local file.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.unlink](js-apis-file-fs.md#fsunlink) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.unlink](js-apis-file-fs.md#fsunlink) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -250,8 +258,8 @@ Deletes a local file.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | uri | string | Yes| URI of the file to delete. It cannot be an application resource path.|
-| success | Function | No| Called when the file is deleted.|
-| fail | Function | No| Called when the file fails to be deleted.|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Error codes**
@@ -289,7 +297,7 @@ Writes text into a file. Only text files can be read and written.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.write](js-apis-file-fs.md#fswrite) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.write](js-apis-file-fs.md#fswrite) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -298,11 +306,11 @@ Writes text into a file. Only text files can be read and written.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | uri | string | Yes| URI of a local file. If it does not exist, a file will be created.|
-| text | string | Yes| Text to write into the file. |
+| text | string | Yes| String to write into the file.|
 | encoding | string | No| Encoding format. The default format is **UTF-8**.|
 | append | boolean | No| Whether to enable the append mode. The default value is **false**. The value **true** means to enable the append mode; the value **false** means the opposite.|
-| success | Function | No| Called when the text is written into the specified file.|
-| fail | Function | No| Called when the text fails to be written into the file.|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Error codes**
@@ -340,7 +348,7 @@ Writes buffer data into a file. Only text files can be read and written.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.write](js-apis-file-fs.md#fswrite) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.write](js-apis-file-fs.md#fswrite) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -352,8 +360,8 @@ Writes buffer data into a file. Only text files can be read and written.
 | buffer | Uint8Array | Yes| Buffer from which the data is derived.|
 | position | number | No| Offset to the position where the writing starts. The default value is **0**.|
 | append | boolean | No| Whether to enable the append mode. The default value is **false**. If the value is **true**, the **position** parameter will become invalid. The value **true** means to enable the append mode; the value **false** means the opposite.|
-| success | Function | No| Called when buffer data is written into the file. |
-| fail | Function | No| Called when buffer data fails to be written into the file.|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Error codes**
@@ -391,7 +399,7 @@ Reads text from a file. Only text files can be read and written.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.readText](js-apis-file-fs.md#fsreadtext) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.readText](js-apis-file-fs.md#fsreadtext) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -403,8 +411,8 @@ Reads text from a file. Only text files can be read and written.
 | encoding | string | No| Encoding format. The default format is **UTF-8**.|
 | position | number | No| Position where the reading starts. The default value is the start position of the file.|
 | length | number | No| Length of the text to read, in bytes. The default value is **4096**.|
-| success | Function | No| Called when the text is read successfully.|
-| fail | Function | No| Called when the text failed to be read.|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Return value of success()**
@@ -449,7 +457,7 @@ Reads buffer data from a file. Only text files can be read and written.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.read](js-apis-file-fs.md#fsread) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.read](js-apis-file-fs.md#fsread) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -460,8 +468,8 @@ Reads buffer data from a file. Only text files can be read and written.
 | uri | string | Yes| URI of a local file.|
 | position | number | No| Position where the reading starts. The default value is the start position of the file.|
 | length | number | No| Length of data to read. If this parameter is not set, the reading proceeds until the end of the file.|
-| success | Function | No| Called when the buffer data is read successfully.|
-| fail | Function | No| Called when the buffer data fails to be read.|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Return value of success()**
@@ -507,7 +515,7 @@ Checks whether a file or directory exists.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.access](js-apis-file-fs.md#fsaccess) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.access](js-apis-file-fs.md#fsaccess) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -516,8 +524,8 @@ Checks whether a file or directory exists.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | uri | string | Yes| URI of the directory or file to check.|
-| success | Function | No| Called when the operation is successful.|
-| fail | Function | No| Called when the operation fails.|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Error codes**
@@ -555,7 +563,7 @@ Creates a directory.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.mkdir](js-apis-file-fs.md#fsmkdir) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.mkdir](js-apis-file-fs.md#fsmkdir) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
@@ -563,10 +571,10 @@ Creates a directory.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| uri | string | Yes| URI of the directory to create.|
-| recursive | boolean | No| Whether to recursively create upper-level directories of the specified directory. The default value is **false**.|
-| success | Function | No| Called when the directory is created.|
-| fail | Function | No| Called when the directory fails to be created.|
+| uri | string | Yes| URI of the directory to delete.|
+| recursive | boolean | No| Whether to recursively create the upper-level directory of the specified directory. The default value is **false**. The value **true** means to create upper-level directory recursively; the value false means the opposite.|
+| success | Function | No| Called when the directory is deleted.|
+| fail | Function | No| Called when the directory fails to be deleted.|
 | complete | Function | No| Called when the execution is complete.|
 
 **Error codes**
@@ -603,7 +611,7 @@ Deletes a directory.
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Use [fs.rmdir](js-apis-file-fs.md#fsrmdir) instead.
+> This API is deprecated since API version 10 for all device types except lite wearables. Use [fs.rmdir](js-apis-file-fs.md#fsrmdir) instead.
 
 **System Capability**: SystemCapability.FileManagement.File.FileIO.Lite
 

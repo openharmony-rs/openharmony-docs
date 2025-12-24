@@ -1862,7 +1862,6 @@ struct Index {
 GridDataSource说明及完整代码参考[示例2可滚动grid和滚动事件](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 //该示例实现了Grid组件开启边缘渐隐效果并设置边缘渐隐长度
@@ -2916,6 +2915,7 @@ Grid宽度属于lg及更大的断点区间时显示5列。
 
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
+<!--code_no_check-->
 ```ts
 import { GridDataSource } from './GridDataSource';
 import { BusinessError } from '@kit.BasicServicesKit';

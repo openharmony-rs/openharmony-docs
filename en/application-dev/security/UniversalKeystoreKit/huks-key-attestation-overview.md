@@ -12,10 +12,13 @@ HUKS provides attestation for the public keys of asymmetric key pairs.
 HUKS issues a certificate for the public key of an asymmetric key pair stored in HUKS using the public key infrastructure (PKI) certificate chain technology. The certificate can prove the validity of the public key. The service can use the root CA certificate provided by the system to verify the key certificates issued by HUKS level by level to ensure that the public key and private key in the certificates are from a trusted hardware device and stored in HUKS.
 
 > **NOTE**
-> 1. Key attestation is not supported if the caller is a system service with APL of **normal**. In this case, **processName** and **APL** are left empty.
-> 2. Key attestation is not supported in Emulator scenarios.
-> 3. <!--RP1-->Mini-system devices<!--RP1End--> do not support key attestation.
-> 4. Key attestation is available to both the keys generated and imported. The service side needs to check whether the key source meets the expectation based on the key source field in the service certificate on the server.
+>
+> * Key attestation is not supported if the caller is a system service with APL of **normal**. In this case, **processName** and **APL** are left empty.
+> * Key attestation is not supported in Emulator scenarios.
+> * <!--RP1-->Mini-system devices<!--RP1End--> do not support key attestation.
+> * Key attestation is available to both the keys generated and imported. The service side needs to check whether the key source meets the expectation based on the key source field in the service certificate on the server.
+
+The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 The **Extensions** field is in the ASN.1 DER encoding format. The data structure is defined as follows:
 ```
@@ -52,6 +55,7 @@ ApplicationIDType ::= SEQUENCE {
 
 <!--Del-->
 > **NOTE**
+>
 > OEMs can decide whether to implement these fields based on their needs.
 <!--DelEnd-->
 
@@ -109,3 +113,4 @@ The key management service specifications include mandatory specifications and o
 | ED25519 | - | 16+ | Yes|
 | SM2 | - | 8+ | Yes|
 <!--DelEnd-->
+<!--no_check-->
