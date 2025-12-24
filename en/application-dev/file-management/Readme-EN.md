@@ -19,6 +19,7 @@
   - [Pushing Files to an Application Sandbox Directory (for System Applications Only)](send-file-to-app-sandbox-sys.md)
   <!--DelEnd-->
   - [Sharing an Application File](share-app-file.md)
+  - [Configuring the Application Shared Directory](share-app-file-configuration.md)
   - Application Data Backup and Restore<!--app-file-backup-restore-->
     - [Application Data Backup and Restore Overview](app-file-backup-overview.md)
     - [Accessing Backup and Restore](app-file-backup-extension.md)
@@ -45,3 +46,5 @@
   - [Setting the Security Level of a Distributed File](set-security-label.md)
   - [Accessing Files Across Devices](file-access-across-devices.md)
   - [Copying Files Across Devices](file-copy-across-devices.md)
+- Device-Cloud File Sync<!--cloud-sync-file-->
+      - [Device-Cloud File Sync Overview](cloud-sync-file-overview.md)

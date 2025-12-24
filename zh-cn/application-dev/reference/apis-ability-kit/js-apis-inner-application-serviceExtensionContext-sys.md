@@ -425,13 +425,11 @@ startAbilityWithAccount(want: Want, accountId: number, options: StartOptions, ca
 | 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
-| 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
 | 16000009 | An ability cannot be started or stopped in Wukong mode. |
-| 16000010 | The call with the continuation and prepare continuation flag is forbidden.        |
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
@@ -1717,7 +1715,7 @@ class EntryAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.disconnectServiceExtensionAbility
 
-disconnectServiceExtensionAbility(connection: number, callback:AsyncCallback&lt;void&gt;): void
+disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
 将一个Ability与绑定的服务类型的Ability解绑，断开连接之后需要将连接成功时返回的remote对象置空。仅支持在主线程调用。使用callback异步回调。
 
@@ -1887,7 +1885,6 @@ startAbilityByCall(want: Want): Promise&lt;Caller&gt;
 | 16000008 | The crowdtesting application expires. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
-| 16200001 | The caller has been released. |
 
 **示例：**
 
@@ -1991,6 +1988,7 @@ startRecentAbility(want: Want, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2077,6 +2075,7 @@ startRecentAbility(want: Want, options: StartOptions, callback: AsyncCallback\<v
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000004 | Cannot start an invisible component. |
@@ -2162,6 +2161,7 @@ startRecentAbility(want: Want, options?: StartOptions): Promise\<void>
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 201 | The application does not have permission to call the interface. |
+| 202 | The application is not system-app, can not use system-api. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -2466,7 +2466,8 @@ class ServiceExtension extends ServiceExtensionAbility {
 ```
 
 ## ServiceExtensionContext.openLink<sup>12+<sup>
-openLink(link:string, options?: OpenLinkOptions): Promise&lt;void&gt;
+
+openLink(link: string, options?: OpenLinkOptions): Promise&lt;void&gt;
 
 通过AppLinking启动UIAbility。仅支持在主线程调用。使用Promise异步回调。
 
@@ -2520,6 +2521,7 @@ openLink(link:string, options?: OpenLinkOptions): Promise&lt;void&gt;
 | 16000013 | The application is controlled by EDM.       |
 | 16000019 | No matching ability is found. |
 | 16200001 | The caller has been released. |
+| 16000136 | The UIAbility is prohibited from launching itself via App Linking. |
 
 **示例：**
 
@@ -2565,7 +2567,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 ## ServiceExtensionContext.preStartMission<sup>12+<sup>
 
-preStartMission(bundleName:string, moduleName: string, abilityName: string, startTime: string): Promise&lt;void&gt;
+preStartMission(bundleName: string, moduleName: string, abilityName: string, startTime: string): Promise&lt;void&gt;
 
 打开原子化服务跳过loading框并预打开窗口，使用Promise异步回调。
 
@@ -2603,6 +2605,7 @@ preStartMission(bundleName:string, moduleName: string, abilityName: string, star
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16300007 | The target free-installation task does not exist. |
 | 16000011 | The context does not exist.        |
+| 16000050 | Internal error.                    |
 
 **示例：**
 
@@ -2616,25 +2619,28 @@ function log(info: string) {
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
   onCreate(want: Want) {
-    log(`ServiceExtAbility OnCreate`);
+    log(`ServiceExtAbility OnCreate, want: ${JSON.stringify(want)}.`);
   }
 
   onRequest(want: Want, startId: number) {
     log(`ServiceExtAbility onRequest`);
     try {
-      this.context.preStartMission(
-        want.bundleName,
-        want.moduleName,
-        want.abilityName,
-        want.parameters["ohos.aafwk.param.startTime"]
-      ).then(() => {
-        log(`pre-start mission success.`);
-      }).catch((err: BusinessError) => {
-        log(`pre-start mission failed, errCode ${JSON.stringify(err.code)}`);
-      });
-    }
-    catch (e) {
-      log(`exception occured, errCode ${JSON.stringify(e.code)}`);
+      if (want.parameters && want.parameters["ohos.aafwk.param.startTime"]) {
+        this.context.preStartMission(
+          want.bundleName,
+          want.moduleName,
+          want.abilityName,
+          want.parameters["ohos.aafwk.param.startTime"] as string
+        ).then(() => {
+          log(`pre-start mission success.`);
+        }).catch((err: BusinessError) => {
+          log(`pre-start mission failed, errCode: ${err.code}, errMsg: ${err.message}.`);
+        });
+      }
+    } catch (e) {
+      let code = (e as BusinessError).code;
+      let msg = (e as BusinessError).message;
+      log(`exception occured, errCode: ${code}, errMsg: ${msg}.`);
     }
   }
 

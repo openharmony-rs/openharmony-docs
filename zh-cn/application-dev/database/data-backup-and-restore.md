@@ -273,7 +273,7 @@
 
 手动备份：通过调用[backup](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup)接口实现数据库手动备份。示例如下：
 
-<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -284,7 +284,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit'
 
 
 
-<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
@@ -366,7 +366,7 @@ export default class EntryAbility extends UIAbility {
 
 若数据库异常前未配置StoreConfig中的allowRebuild或allowRebuild配置为false，则需将其配置为true再次进行开库。具体示例如下：
 
-<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
@@ -403,7 +403,7 @@ try {
 
 1. 抛出数据库异常错误码。
 
-    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -439,7 +439,7 @@ try {
 
 2. 关闭所有打开着的结果集。
 
-    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let resultSets: relationalStore.ResultSet[] = []
@@ -460,7 +460,7 @@ try {
 
 3. 调用restore接口恢复数据。
 
-    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;

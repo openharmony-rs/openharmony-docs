@@ -41,7 +41,7 @@ typedef struct {...} DisplaySoloist_ExpectedRateRange
 
 ### OH_DisplaySoloist_FrameCallback()
 
-```
+```c
 typedef void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)
 ```
 

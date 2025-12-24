@@ -15,7 +15,7 @@ This module defines the annotation types of OpenHarmony ArkTS APIs, such as the 
 ## Modules to Import
 
 ```
-import { Available } from '@ohos.annotation';
+import { Available } from '@kit.BasicServicesKit';
 ```
 
 ## Available
@@ -24,7 +24,7 @@ import { Available } from '@ohos.annotation';
   minApiVersion: string = ''
 }
 
-Marks the minimum available version supported by an API. This annotation capability is provided by the system and can be used on APIs such as classes, interfaces, variables, types, modules, and enums. After the annotation is added to the source code, the compilation tool checks for potential compatibility issues. If the value of **minApiVersion** is greater than that of **compatibleSDKVersion** specified in **build-profile.json5**, a compatibility warning is reported.
+Annotates the minimum available version supported by an API. This annotation capability is provided by the system and can be used on APIs such as classes, interfaces, variables, types, modules, and enums. After the annotation is added to the source code, the compilation tool checks for potential compatibility issues. If the value of **minApiVersion** is greater than that of **compatibleSDKVersion** specified in **build-profile.json5**, a compatibility warning is reported.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -39,7 +39,7 @@ Marks the minimum available version supported by an API. This annotation capabil
 **Example**
 
   ```ts
-  import { Available } from '@ohos.annotation';
+  import { Available } from '@kit.BasicServicesKit';
 
   @Available({minApiVersion: 'OpenHarmony 22'})
   function myFunc() {}

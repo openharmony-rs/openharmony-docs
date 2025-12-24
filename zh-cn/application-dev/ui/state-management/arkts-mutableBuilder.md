@@ -289,7 +289,7 @@ struct MyApp {
   @Local switchingBuilder: MutableBuilder<[MutableBinding<string>]> = mutableBuilder(textBuilder);
 
   @Monitor('switchingBuilder') variableChange(m: IMonitor): void {
-    console.log(`Builder changed. is buttonBuilder: ${m.value<MutableBuilder<[MutableBinding<string>]>>()?.now.builder === buttonBuilder}`);
+    console.info(`Builder changed. is buttonBuilder: ${m.value<MutableBuilder<[MutableBinding<string>]>>()?.now.builder === buttonBuilder}`);
   }
 
   build() {

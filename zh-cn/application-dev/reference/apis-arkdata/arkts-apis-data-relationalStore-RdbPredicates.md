@@ -1176,7 +1176,7 @@ having(conditions:string, args?: Array\<ValueType>): RdbPredicates
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| conditions  | string | 是   | 用于过滤使用[groupBy](#groupby)获得的数据，不能为空且必须与[groupBy](#groupby)配合使用。
+| conditions  | string | 是   | 用于过滤使用[groupBy](#groupby)获得的数据，不能为空且必须与[groupBy](#groupby)配合使用。|
 | args  | Array<[ValueType](arkts-apis-data-relationalStore-t.md#valuetype)> | 否   | 条件中使用的参数，用来替换条件语句中的占位符，不传时默认为空数组。 |
 
 **返回值**：

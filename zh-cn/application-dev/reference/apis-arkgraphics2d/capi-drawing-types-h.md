@@ -34,6 +34,8 @@
 | [OH_Drawing_Region](capi-drawing-oh-drawing-region.md) | OH_Drawing_Region | 定义一个区域，用于表示画布上的封闭区域，实现更精确的图形控制。 |
 | [OH_Drawing_Brush](capi-drawing-oh-drawing-brush.md) | OH_Drawing_Brush | 定义为画刷，画刷用于描述填充图形的样式和颜色。 |
 | [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) | OH_Drawing_Path | 定义为路径，路径用于自定义各种形状。 |
+| [OH_Drawing_PathIterator](capi-drawing-oh-drawing-pathiterator.md) | OH_Drawing_PathIterator | 定义为路径操作迭代器，可通过遍历迭代器读取path的操作指令。 |
+| [OH_Drawing_Lattice](capi-drawing-oh-drawing-lattice.md) | OH_Drawing_Lattice | 定义为矩形网格，用于将图片按照矩形网格进行划分。 |
 | [OH_Drawing_Bitmap](capi-drawing-oh-drawing-bitmap.md) | OH_Drawing_Bitmap | 定义为位图，位图是一块内存，内存中包含了描述一张图片的像素数据。 |
 | [OH_Drawing_Point](capi-drawing-oh-drawing-point.md) | OH_Drawing_Point | 定义一个点，用于描述坐标点。 |
 | [OH_Drawing_PixelMap](capi-drawing-oh-drawing-pixelmap.md) | OH_Drawing_PixelMap | 定义像素图，用于包装图像框架支持的真实像素图。 |

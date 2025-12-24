@@ -488,7 +488,7 @@ The ServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit
 
 ## Communication Between the Client and Server
 
-After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) from the [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect) lifecycle callback, the client can communicate with the ServiceExtensionAbility in either of the following ways:
+After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) from the [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#connectoptions-1) lifecycle callback, the client can communicate with the ServiceExtensionAbility in either of the following ways:
 
 - Using the IDL APIs provided by the server for communication (recommended)
 
@@ -552,7 +552,7 @@ After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md
       data.writeInt(99);
       // You can send data to the target application for corresponding operations.
       // @param code Indicates the service request code sent by the client.
-      // @param data Indicates the {@link MessageSequence} object sent by the client.
+      // @param data Indicates the MessageSequence object sent by the client.
       // @param reply Indicates the response message object sent by the remote service.
       // @param options Specifies whether the operation is synchronous or asynchronous.
       // @return Returns {@code true} if the operation is successful; returns {@code false} otherwise.

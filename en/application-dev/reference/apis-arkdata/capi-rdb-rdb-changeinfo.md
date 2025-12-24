@@ -6,8 +6,8 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
-typedef struct {...} Rdb_ChangeInfo
+```c
+typedef struct Rdb_ChangeInfo {...} Rdb_ChangeInfo
 ```
 
 ## Overview

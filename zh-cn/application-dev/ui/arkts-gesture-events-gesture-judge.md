@@ -90,7 +90,7 @@
 
 4. 代码完整示例。
 
-   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->
+   <!-- @[custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureConflict/entry/src/main/ets/Component/CustomGestures/CustomGestureDetermination.ets) -->   
    
    ``` TypeScript
    import { PromptAction } from '@kit.ArkUI';
@@ -109,14 +109,15 @@
            Stack({ alignContent: Alignment.Center }) {
              Column() {
                // 模拟上半区和下半区
-               Stack().width('200vp').height('100vp').backgroundColor(Color.Red)
+               Stack().width('200vp').height('100vp').backgroundColor(Color.Gray)
                Stack().width('200vp').height('100vp').backgroundColor(Color.Blue)
              }.width('200vp').height('200vp')
+   
              // Stack的下半区是绑定了滑动手势的图像区域。
              //  $r('sys.media.ohos_app_icon') 需要替换为开发者所需的资源文件
              Image($r('sys.media.ohos_app_icon'))
                .draggable(true)
-               .onDragStart(()=>{
+               .onDragStart(() => {
                  //  $r('app.string.Allow_dragging_prompt') 需要替换为开发者所需的资源文件
                  this.promptAction.showToast({ message: $r('app.string.Allow_dragging_prompt') });
                })

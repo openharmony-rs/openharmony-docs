@@ -208,15 +208,15 @@ See 'hiperf help [command]' for more information on a specific command.
 > 
 > For example, run the following command to check the bundle name **com.example.myapplication**:
 > 
-> ```shell
-> hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
-> ```
+>```shell
+>hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
+>```
 > 
 > If the application is a debug-type application, the following information is displayed:
 > 
-> ```shell
-> "appProvisionType": "debug",
-> ```
+>```shell
+>"appProvisionType": "debug",
+>```
 > 
 > To build a debug-type application, you need to use a debug certificate for signature. For details about how to request and use the debug certificate, see [Requesting a Debug Certificate](https://developer.huawei.com/consumer/en/doc/app/agc-help-add-debugcert-0000001914263178).
 
@@ -313,8 +313,8 @@ Collects the performance data of a specified process or application, including t
 | -a | Collects the device performance data.| 
 | --exclude-hiperf | Excludes the performance data of the hiperf process. This parameter must be used together with **-a**.| 
 | --exclude-process | Specifies the process name not to collect. This parameter must be used together with **-a**.|
-| --pipe_input | Establishes a command input pipe when the client process calls hiperf. For details about how to use this capability, see [hiperf](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-toolchain-hiperf.md). This parameter serves no practical purpose in application development and can be safely ignored.|
-| --pipe_output | Establishes an output pipe when the client process calls hiperf. For details about how to use this capability, see [hiperf](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-toolchain-hiperf.md). This parameter serves no practical purpose in application development and can be safely ignored.|
+| --pipe_input | Establishes a command input pipe when the client process calls hiperf in device development. For details about how to use this capability, see [hiperf](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-toolchain-hiperf.md). This parameter is not required for application development.|
+| --pipe_output | Establishes an output pipe when the client process calls hiperf in device development. For details about how to use this capability, see [hiperf](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-toolchain-hiperf.md). This parameter is not required for application development.|
 <!--RP1End-->
 
 **Example**

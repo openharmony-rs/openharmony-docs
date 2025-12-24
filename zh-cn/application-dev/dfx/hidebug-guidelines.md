@@ -248,7 +248,7 @@ HiDebug提供了线程栈Perf采样功能。该接口通过周期性地采集线
 
 Perf采样结果部分示例如下：
 
-   ```text
+```text
 Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
 42 #00 pc 00000000001e01e4 /system/lib/ld-musl-aarch64.so.1(start+244)(de6b25d6d992bac030d72713568dfb59)
   42 #01 pc 000000000003682c /system/lib64/module/libtaskpool.z.so(Commonlibrary::Concurrent::TaskPoolModule::TaskRunner::TaskInnerRunner::Run()+76)(40aaf52f6b737f011eed52936860111f)
@@ -267,7 +267,7 @@ Tid: 52129, ThreadName: xample.perftest, Cputime: 3160ms, Count: 42
                             42 #14 pc 000000000000a498 /data/storage/el1/bundle/libs/arm64/libentry.so(94ed3a52d7ef751a94358709d11c99545960cdd4)
                               41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
                               1 #15 pc 000000000000a21c /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+108)(94ed3a52d7ef751a94358709d11c99545960cdd4)
-   ```
+```
 其中首行内容为线程号、线程名称、接口调用过程中目标线程占用的CPU时间（由于接口本身存在性能消耗，该值会略大于实际采样期间的CPU占用时间），以及该线程采样次数。其中线程采样次数小于等于采样次数（采样频率HZ * 采样时间ms * 单位转换1s/1000ms）。
 
 除首行内容外每一行表示一个栈信息，每一行栈帧信息所表示的意义可以按如下方式解读：

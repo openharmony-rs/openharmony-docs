@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AudioSession_DeactivatedEvent
+typedef struct OH_AudioSession_DeactivatedEvent {...} OH_AudioSession_DeactivatedEvent
 ```
 
 ## 概述

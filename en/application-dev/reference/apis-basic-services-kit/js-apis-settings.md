@@ -24,185 +24,185 @@ import { settings } from '@kit.BasicServicesKit';
 
 Provides the domain name.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                         | Type  | Read-Only| Optional| Description                  |
-|-----------------------------| ------ | ---- | ---- |----------------------|
-| DEVICE_SHARED<sup>11+</sup> | string | Yes  | No  | Shared device domain. All configurations in this domain are not distinguished between multiple users.|
-| USER_PROPERTY<sup>11+</sup> | string | Yes  | No  | User attribute domain. All configurations in this domain are distinguished between multiple users.|
+| Name                         | Type  | Read-Only| Description                  |
+|-----------------------------| ------ | ---- | ----------------------|
+| DEVICE_SHARED<sup>11+</sup> | string | Yes  | Shared device domain. All configurations in this domain are not distinguished between multiple users.|
+| USER_PROPERTY<sup>11+</sup> | string | Yes  | User attribute domain. All configurations in this domain are distinguished between multiple users.|
 
 ## date
 
-Provides data items for setting the time and date formats. (Not supported yet.)
+Provides data items for setting the time and date formats.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name               | Type  | Read-Only| Optional| Description                                                                        |
-| ------------------- | ------ |----|----|----------------------------------------------------------------------------|
-| DATE_FORMAT         | string | Yes | No | Date format.<br>The value can be **mm/dd/yyyy**, **dd/mm/yyyy**, or **yyyy/mm/dd**, where **mm** indicates the month, **dd** indicates the day, and **yyyy** indicates the year.|
-| TIME_FORMAT         | string | Yes | No | Time format. The options are as follows:<br>- **12**: 12-hour format.<br>- **24**: 24-hour format.           |
-| AUTO_GAIN_TIME      | string | Yes | No | Whether the date, time, and time zone are automatically obtained from the Network Identity and Time Zone (NITZ).<br>- **true**: Information is automatically obtained.<br>- **false**: Information is not automatically obtained.     |
-| AUTO_GAIN_TIME_ZONE | string | Yes | No | Whether the time zone is automatically obtained from NITZ.<br>- **true**: Time zone is automatically obtained.<br>- **false**: Time zone is not automatically obtained.                |
+| Name               | Type  | Read-Only| Description                                                                        |
+| ------------------- | ------ |----|----------------------------------------------------------------------------|
+| DATE_FORMAT<sup>(deprecated)</sup>          | string | Yes | Date format.<br>The value can be **mm/dd/yyyy**, **dd/mm/yyyy**, or **yyyy/mm/dd**, where **mm** indicates the month, **dd** indicates the day, and **yyyy** indicates the year.|
+| TIME_FORMAT         | string | Yes | Time format. The options are as follows:<br>- **12**: 12-hour format.<br>- **24**: 24-hour format.           |
+| AUTO_GAIN_TIME<sup>(deprecated)</sup>       | string | Yes | Whether the date, time, and time zone are automatically obtained from the Network Identity and Time Zone (NITZ).<br>- **true**: Information is automatically obtained.<br>- **false**: Information is not automatically obtained.     |
+| AUTO_GAIN_TIME_ZONE<sup>(deprecated)</sup>  | string | Yes | Whether the time zone is automatically obtained from NITZ.<br>- **true**: Time zone is automatically obtained.<br>- **false**: Time zone is not automatically obtained.                |
 
 ## display
 
-Provides data items for setting the display effects. (Not supported yet.)
+Provides data items for setting the display effects.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                         | Type  | Read-Only| Optional| Description                                                                                                                  |
-| ----------------------------- | ------ |----|----|----------------------------------------------------------------------------------------------------------------------|
-| FONT_SCALE                    | string | Yes | No | Scale factor of the font (**domainName**: **USER_PROPERTY**). The value is a floating point number. The standard scale factor is **1**, and allowed scale factors include **0.85**, **1.15**, **1.3**, and **1.45**. In care mode, **1.75**, **2**, and **3.2** are available.                                                                                    |
-| SCREEN_BRIGHTNESS_STATUS      | string | Yes | No | Screen brightness, with the value ranging from 0 to 255.                                                                                                    |
-| AUTO_SCREEN_BRIGHTNESS        | string | Yes | No | Whether automatic screen brightness adjustment is enabled.<br>- **AUTO_SCREEN_BRIGHTNESS_MODE**: Automatic screen brightness adjustment is enabled.<br>- **MANUAL_SCREEN_BRIGHTNESS_MODE**: Automatic screen brightness adjustment is disabled.        |
-| AUTO_SCREEN_BRIGHTNESS_MODE   | number | Yes | No | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is enabled.                                                                                |
-| MANUAL_SCREEN_BRIGHTNESS_MODE | number | Yes | No | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is disabled.                                                                                |
-| SCREEN_OFF_TIMEOUT            | string | Yes | No | Waiting time for the device to enter the sleep state when not in use (unit: ms).                                                                                     |
-| DEFAULT_SCREEN_ROTATION       | string | Yes | No | This attribute is invalid when screen auto-rotation is enabled; otherwise, the following options are available:<br>- **0**: The screen rotates by 0 degrees.<br>- **1**: The screen rotates by 90 degrees.<br>- **2**: The screen rotates by 180 degrees.<br>- **3**: The screen rotates by 270 degrees.|
-| ANIMATOR_DURATION_SCALE       | string | Yes | No | Scale factor for the animation duration, which affects the start delay and duration of all such animations.<br>- **0**: The animation ends immediately. The default value is **1**.                                                            |
-| TRANSITION_ANIMATION_SCALE    | string | Yes | No | Scale factor for transition animations.<br>The value **0** indicates that the transition animations are disabled.                                                                                        |
-| WINDOW_ANIMATION_SCALE        | string | Yes | No | Scale factor for normal window animations.<br>The value **0** indicates that window animations are disabled.                                                                                      |
-| DISPLAY_INVERSION_STATUS      | string | Yes | No | Whether display color inversion is enabled.<br>- **1**: Display color inversion is enabled.<br>- **0**: Display color inversion is disabled.                                                            |
+| Name                         | Type  | Read-Only|  Description                                                                                                                  |
+| ----------------------------- | ------ |----|----------------------------------------------------------------------------------------------------------------------|
+| FONT_SCALE                    | string | Yes | Scale factor of the font (**domainName**: **USER_PROPERTY**). The value is a floating point number. The standard scale factor is **1**, and allowed scale factors include **0.85**, **1.15**, **1.3**, and **1.45**. In care mode, **1.75**, **2**, and **3.2** are available.                                                                                    |
+| SCREEN_BRIGHTNESS_STATUS      | string | Yes | Screen brightness, with the value ranging from 0 to 255.                                                                                                    |
+| AUTO_SCREEN_BRIGHTNESS        | string | Yes | Whether automatic screen brightness adjustment is enabled.<br>- **AUTO_SCREEN_BRIGHTNESS_MODE**: Automatic screen brightness adjustment is enabled.<br>- **MANUAL_SCREEN_BRIGHTNESS_MODE**: Automatic screen brightness adjustment is disabled.        |
+| AUTO_SCREEN_BRIGHTNESS_MODE   | number | Yes | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is enabled.                                                                                |
+| MANUAL_SCREEN_BRIGHTNESS_MODE | number | Yes | Value of **AUTO_SCREEN_BRIGHTNESS** when automatic screen brightness adjustment is disabled.                                                                                |
+| SCREEN_OFF_TIMEOUT            | string | Yes | Waiting time for the device to enter the sleep state when not in use (unit: ms).                                                                                     |
+| DEFAULT_SCREEN_ROTATION<sup>(deprecated)</sup>        | string | Yes | This attribute is invalid when screen auto-rotation is enabled; otherwise, the following options are available:<br>- **0**: The screen rotates by 0 degrees.<br>- **1**: The screen rotates by 90 degrees.<br>- **2**: The screen rotates by 180 degrees.<br>- **3**: The screen rotates by 270 degrees.|
+| ANIMATOR_DURATION_SCALE<sup>(deprecated)</sup>        | string | Yes | Scale factor for the animation duration, which affects the start delay and duration of all such animations.<br>- **0**: The animation ends immediately. The default value is **1**.                                                            |
+| TRANSITION_ANIMATION_SCALE<sup>(deprecated)</sup>     | string | Yes | Scale factor for transition animations.<br>The value **0** indicates that the transition animations are disabled.                                                                                        |
+| WINDOW_ANIMATION_SCALE<sup>(deprecated)</sup>         | string | Yes | Scale factor for normal window animations.<br>The value **0** indicates that window animations are disabled.                                                                                      |
+| DISPLAY_INVERSION_STATUS<sup>(deprecated)</sup>       | string | Yes | Whether display color inversion is enabled.<br>- **1**: Display color inversion is enabled.<br>- **0**: Display color inversion is disabled.                                                            |
 
 ## general
 
-Provides data items for setting the general information about the device. (Not supported yet.)
+Provides data items for setting the general information about the device.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                            | Type  | Read-Only| Optional| Description                                                                                                                                 |
-| -------------------------------- | ------ |----|----|-------------------------------------------------------------------------------------------------------------------------------------|
-| SETUP_WIZARD_FINISHED            | string | Yes | No | Whether the startup wizard has been run.<br>- **0**: The startup wizard is not run.<br>- Other than **0**: The startup wizard has been run.                                                                              |
-| END_BUTTON_ACTION                | string | Yes | No | Action after the call end button is pressed if the user is not in a call.<br>- **0**: Nothing happens.<br>- **1**: The home screen is displayed.<br>- **2**: The device enters the sleep state and the screen is locked.<br>- **3**: The home screen is displayed. If the focus is already on the home screen, the device will enter the sleep state.|
-| ACCELEROMETER_ROTATION_STATUS    | string | Yes | No | Whether the accelerometer is used to change screen orientation, that is, whether to enable auto-rotation.<br>- **1**: The accelerometer is used.<br>- **0**: The accelerometer is not used.                                                                     |
-| DEVICE_PROVISION_STATUS          | string | Yes | No | Whether the device is preconfigured.<br>On a multi-user device with a single system user, the screen may be locked when the value is **true**. In addition, other features cannot be started on the system user unless they are marked to display on the lock screen.                                                     |
-| HDC_STATUS                       | string | Yes | No | Whether the hard disk controller (HDC) on the USB device is enabled.<br>- **true**: HDC is enabled.<br>- **false**: HDC is disabled.                                                                     |
-| BOOT_COUNTING                    | string | Yes | No | Number of boot operations after the device is powered on.                                                                                                                       |
-| CONTACT_METADATA_SYNC_STATUS     | string | Yes | No | Whether contacts metadata synchronization is enabled.<br>- **true**: Contacts metadata synchronization is enabled.<br>- **false**: Contacts metadata synchronization is disabled.                                                                           |
-| DEVICE_NAME                      | string | Yes | No | Device name.                                                                                                                              |
-| USB_STORAGE_STATUS               | string | Yes | No | Whether USB mass storage is enabled.<br>- **true**: USB mass storage is enabled.<br>- **false**: USB mass storage is disabled.                                                               |
-| DEBUGGER_WAITING                 | string | Yes | No | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**: The device does not wait for the debugger. In this case, the application runs normally.                                                    |
-| DEBUG_APP_PACKAGE                | string | Yes | No | Bundle name of the application to be debugged.                                                                                                              |
-| ACCESSIBILITY_STATUS             | string | Yes | No | Whether accessibility is enabled.<br>- **1**: Accessibility is enabled.<br>- **0**: Accessibility is disabled.                                                                                  |
-| ACTIVATED_ACCESSIBILITY_SERVICES | string | Yes | No | List of activated accessibility features.                                                                                                                       |
-| GEOLOCATION_ORIGINS_ALLOWED      | string | Yes | No | Default geographic location that can be used by the browser. Multiple geographic locations are separated by spaces.                                                                                                        |
-| SKIP_USE_HINTS                   | string | Yes | No | Whether the application should attempt to skip all introductory hints at the first startup. This feature is intended for temporary or experienced users.<br>- **1**: The application will skip all introductory hints at the first startup.<br>- **0**: The application does not skip all introductory hints at the first startup.                        |
-| TOUCH_EXPLORATION_STATUS         | string | Yes | No | Whether touch exploration is enabled.<br>- **1**: Touch exploration is enabled.<br>- **0**: Touch exploration is disabled.                                                                                  |
+| Name                            | Type  | Read-Only| Description                                                                                                                                 |
+| -------------------------------- | ------ |----|-------------------------------------------------------------------------------------------------------------------------------------|
+| SETUP_WIZARD_FINISHED<sup>(deprecated)</sup>             | string | Yes | Whether the startup wizard has been run.<br>- **0**: The startup wizard is not run.<br>- Other than **0**: The startup wizard has been run.                                                                              |
+| END_BUTTON_ACTION<sup>(deprecated)</sup>                 | string | Yes | Action after the call end button is pressed if the user is not in a call.<br>- **0**: Nothing happens.<br>- **1**: The home screen is displayed.<br>- **2**: The device enters the sleep state and the screen is locked.<br>- **3**: The home screen is displayed. If the focus is already on the home screen, the device will enter the sleep state.|
+| ACCELEROMETER_ROTATION_STATUS     | string | Yes | Whether the accelerometer is used to change screen orientation, that is, whether to enable auto-rotation.<br>- **1**: The accelerometer is used.<br>- **0**: The accelerometer is not used.                                                                     |
+| DEVICE_PROVISION_STATUS<sup>(deprecated)</sup>           | string | Yes | Whether the device is preconfigured.<br>On a multi-user device with a single system user, the screen may be locked when the value is **true**. In addition, other features cannot be started on the system user unless they are marked to display on the lock screen.                                                     |
+| HDC_STATUS<sup>(deprecated)</sup>                        | string | Yes | Whether the hard disk controller (HDC) on the USB device is enabled.<br>- **true**: HDC is enabled.<br>- **false**: HDC is disabled.                                                                     |
+| BOOT_COUNTING<sup>(deprecated)</sup>                     | string | Yes | Number of boot operations after the device is powered on.                                                                                                                       |
+| CONTACT_METADATA_SYNC_STATUS<sup>(deprecated)</sup>      | string | Yes | Whether contacts metadata synchronization is enabled.<br>- **true**: Contacts metadata synchronization is enabled.<br>- **false**: Contacts metadata synchronization is disabled.                                                                           |
+| DEVICE_NAME                      | string | Yes | Device name.                                                                                                                              |
+| USB_STORAGE_STATUS<sup>(deprecated)</sup>                | string | Yes | Whether USB mass storage is enabled.<br>- **true**: USB mass storage is enabled.<br>- **false**: USB mass storage is disabled.                                                               |
+| DEBUGGER_WAITING<sup>(deprecated)</sup>                  | string | Yes | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**: The device does not wait for the debugger. In this case, the application runs normally.                                                    |
+| DEBUG_APP_PACKAGE<sup>(deprecated)</sup>                 | string | Yes | Bundle name of the application to be debugged.                                                                                                              |
+| ACCESSIBILITY_STATUS<sup>(deprecated)</sup>              | string | Yes | Whether accessibility is enabled.<br>- **1**: Accessibility is enabled.<br>- **0**: Accessibility is disabled.                                                                                  |
+| ACTIVATED_ACCESSIBILITY_SERVICES<sup>(deprecated)</sup>  | string | Yes | List of activated accessibility features.                                                                                                                       |
+| GEOLOCATION_ORIGINS_ALLOWED<sup>(deprecated)</sup>       | string | Yes | Default geographic location that can be used by the browser. Multiple geographic locations are separated by spaces.                                                                                                        |
+| SKIP_USE_HINTS<sup>(deprecated)</sup>                    | string | Yes | Whether the application should attempt to skip all introductory hints at the first startup. This feature is intended for temporary or experienced users.<br>- **1**: The application will skip all introductory hints at the first startup.<br>- **0**: The application does not skip all introductory hints at the first startup.                        |
+| TOUCH_EXPLORATION_STATUS<sup>(deprecated)</sup>          | string | Yes | Whether touch exploration is enabled.<br>- **1**: Touch exploration is enabled.<br>- **0**: Touch exploration is disabled.                                                                                  |
 
 ## input
 
-Provides data items for setting input methods. (Not supported yet.)
+Provides data items for setting input methods.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                                | Type  | Read-Only| Optional| Description                                                                                                                                                                                     |
-| ------------------------------------ | ------ |----|----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| DEFAULT_INPUT_METHOD                 | string | Yes | No | Default input method and its ID.                                                                                                                                                                             |
-| ACTIVATED_INPUT_METHOD_SUB_MODE      | string | Yes | No | Type and ID of the default input method keyboard.                                                                                                                                                                         |
-| ACTIVATED_INPUT_METHODS              | string | Yes | No | List of activated input methods.<br>The list is a string that contains the IDs and keyboard types of activated input methods.<br>The IDs are separated by colons (:), and keyboard types are separated by semicolons (;).<br>An example format is **ima0:keyboardType0;keyboardType1;ima1:ima2:keyboardTypes0,** where **ima** indicates the ID of an input method, and **keyboardType** indicates the keyboard type.|
-| SELECTOR_VISIBILITY_FOR_INPUT_METHOD | string | Yes | No | Whether the input method selector is visible.<br>- **1**: The input method selector is visible.<br>- **0**: The input method selector is invisible.                                                                                                                                |
-| AUTO_CAPS_TEXT_INPUT                 | string | Yes | No | Whether automatic capitalization is enabled for the text editor.<br>- **0**: Automatic capitalization is disabled.<br>- **1**: Automatic capitalization is enabled.                                                                                                                                |
-| AUTO_PUNCTUATE_TEXT_INPUT            | string | Yes | No | Whether automatic punctuation is enabled for the text editor. Automatic punctuation enables the text editor to convert two spaces into a period (.) and a space.<br>- **0**: Automatic punctuation is disabled.<br>- **1**: Automatic punctuation is enabled.                                                                                           |
-| AUTO_REPLACE_TEXT_INPUT              | string | Yes | No | Whether autocorrect is enabled for the text editor. Autocorrect enables the text editor to correct typos.<br>- **0**: Autocorrect is disabled.<br>- **1**: Autocorrect is enabled                                                                                                              |
-| SHOW_PASSWORD_TEXT_INPUT             | string | Yes | No | Whether password presentation is enabled in the text editor. Password presentation enables the text editor to show password characters when the user types them.<br>- **0**: Password presentation is disabled.<br>- **1**: Password presentation is enabled.                                                                                                  |
+| Name                                | Type  | Read-Only| Description                                                                                                                                                                                     |
+| ------------------------------------ | ------ |----|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DEFAULT_INPUT_METHOD<sup>(deprecated)</sup>                  | string | Yes | Default input method and its ID.                                                                                                                                                                             |
+| ACTIVATED_INPUT_METHOD_SUB_MODE      | string | Yes | Type and ID of the default input method keyboard.                                                                                                                                                                         |
+| ACTIVATED_INPUT_METHODS<sup>(deprecated)</sup>               | string | Yes | List of activated input methods.<br>The list is a string that contains the IDs and keyboard types of activated input methods.<br>The IDs are separated by colons (:), and keyboard types are separated by semicolons (;).<br>An example format is **ima0:keyboardType0;keyboardType1;ima1:ima2:keyboardTypes0,** where **ima** indicates the ID of an input method, and **keyboardType** indicates the keyboard type.|
+| SELECTOR_VISIBILITY_FOR_INPUT_METHOD<sup>(deprecated)</sup>  | string | Yes | Whether the input method selector is visible.<br>- **1**: The input method selector is visible.<br>- **0**: The input method selector is invisible.                                                                                                                                |
+| AUTO_CAPS_TEXT_INPUT<sup>(deprecated)</sup>                  | string | Yes | Whether automatic capitalization is enabled for the text editor.<br>- **0**: Automatic capitalization is disabled.<br>- **1**: Automatic capitalization is enabled.                                                                                                                                |
+| AUTO_PUNCTUATE_TEXT_INPUT<sup>(deprecated)</sup>             | string | Yes | Whether automatic punctuation is enabled for the text editor. Automatic punctuation enables the text editor to convert two spaces into a period (.) and a space.<br>- **0**: Automatic punctuation is disabled.<br>- **1**: Automatic punctuation is enabled.                                                                                           |
+| AUTO_REPLACE_TEXT_INPUT<sup>(deprecated)</sup>               | string | Yes | Whether autocorrect is enabled for the text editor. Autocorrect enables the text editor to correct typos.<br>- **0**: Autocorrect is disabled.<br>- **1**: Autocorrect is enabled                                                                                                              |
+| SHOW_PASSWORD_TEXT_INPUT<sup>(deprecated)</sup>              | string | Yes | Whether password presentation is enabled in the text editor. Password presentation enables the text editor to show password characters when the user types them.<br>- **0**: Password presentation is disabled.<br>- **1**: Password presentation is enabled.                                                                                                  |
 
 ## network
 
-Provides data items for setting network information. (Not supported yet.)
+Provides data items for setting network information.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                    | Type  | Read-Only| Optional| Description                                                      |
-| ------------------------ | ------ |----|----|----------------------------------------------------------|
-| DATA_ROAMING_STATUS      | string | Yes | No | Whether data roaming is enabled.<br>- **true**: Data roaming is enabled.<br>- **false**: Data roaming is disabled.|
-| HTTP_PROXY_CFG           | string | Yes | No | Host name and port number of the global HTTP proxy. The host name and port number are separated by a colon (:).                       |
-| NETWORK_PREFERENCE_USAGE | string | Yes | No | User preferences for the network to use.                                            |
+| Name                    | Type  | Read-Only| Description                                                      |
+| ------------------------ | ------ |----|----------------------------------------------------------|
+| DATA_ROAMING_STATUS<sup>(deprecated)</sup>       | string | Yes | Whether data roaming is enabled.<br>- **true**: Data roaming is enabled.<br>- **false**: Data roaming is disabled.|
+| HTTP_PROXY_CFG<sup>(deprecated)</sup>            | string | Yes | Host name and port number of the global HTTP proxy. The host name and port number are separated by a colon (:).                       |
+| NETWORK_PREFERENCE_USAGE<sup>(deprecated)</sup>  | string | Yes | User preferences for the network to use.                                            |
 
 ## phone
 
-Provides data items for setting the modes of answering incoming and outgoing calls. (Not supported yet.)
+Provides data items for setting the modes of answering incoming and outgoing calls.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name              | Type  | Read-Only| Optional| Description                                                                                        |
-| ------------------ | ------ |----|----|--------------------------------------------------------------------------------------------|
-| RTT_CALLING_STATUS | string | Yes | No | Whether the real-time text (RTT) call feature is enabled. If this feature is enabled, incoming and outgoing calls are answered as RTT calls when supported by the device and carrier.<br>- **1**: RTT is enabled.<br>- **0**: RTT is disabled.|
+| Name              | Type  | Read-Only| Description                                                                                        |
+| ------------------ | ------ |----|--------------------------------------------------------------------------------------------|
+| RTT_CALLING_STATUS<sup>(deprecated)</sup>  | string | Yes | Whether the real-time text (RTT) call feature is enabled. If this feature is enabled, incoming and outgoing calls are answered as RTT calls when supported by the device and carrier.<br>- **1**: RTT is enabled.<br>- **0**: RTT is disabled.|
 
 ## sound
 
-Provides data items for setting the sound effects. (Not supported yet.)
+Provides data items for setting the sound effects.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                        | Type  | Read-Only| Optional| Description                                                                      |
-| ---------------------------- | ------ |----|----|--------------------------------------------------------------------------|
-| VIBRATE_WHILE_RINGING        | string | Yes | No | Whether the device vibrates when it is ringing for an incoming call. This attribute is applicable to the phone and settings applications<br>and affects only the scenario where the device rings for an incoming call. It does not affect any other application or scenario.|
-| DEFAULT_ALARM_ALERT          | string | Yes | No | Storage area of the system default alarms and alerts.                                                            |
-| DTMF_TONE_TYPE_WHILE_DIALING | string | Yes | No | Type of the dual tone multi-frequency (DTMF) tone played while dialing.<br>- **0**: normal short tone.<br>- **1**: long tone.              |
-| DTMF_TONE_WHILE_DIALING      | string | Yes | No | Whether the DTMF tone is played when dialing.<br>- **1**: DTMF tone is played when dialing.<br>- **0**: DTMF tone is not played when dialing.                      |
-| AFFECTED_MODE_RINGER_STREAMS | string | Yes | No | Effect on audio streams determined by changes in the ringing mode and Do Not Disturb (DND) mode. If you want a specific audio stream to be affected by changes of the ringing mode and DND mode, set the corresponding bit to **1**.         |
-| AFFECTED_MUTE_STREAMS        | string | Yes | No | Audio streams affected by the mute mode. If you want a specific audio stream to remain muted in mute mode, set the corresponding bit to **1**.                                  |
-| DEFAULT_NOTIFICATION_SOUND   | string | Yes | No | Storage area of the system default notification tone.                                                           |
-| DEFAULT_RINGTONE             | string | Yes | No | Storage area of the system default ringtone.                                                            |
-| SOUND_EFFECTS_STATUS         | string | Yes | No | Whether the sound feature is available.<br>- **0**: The feature is not available.<br>- **1**: The feature is available.                              |
-| VIBRATE_STATUS               | string | Yes | No | Whether the device vibrates for an event. This attribute is used inside the system.<br>- **1**: The device vibrates for an event.<br>- **0**: The device does not vibrate for an event.     |
-| HAPTIC_FEEDBACK_STATUS       | string | Yes | No | Whether haptic feedback is enabled.<br>- **true**: Haptic feedback is enabled.<br>- **false**: Haptic feedback is disabled.             |
+| Name                        | Type  | Read-Only| Description                                                                      |
+| ---------------------------- | ------ |----|--------------------------------------------------------------------------|
+| VIBRATE_WHILE_RINGING<sup>(deprecated)</sup>         | string | Yes | Whether the device vibrates when it is ringing for an incoming call. This attribute is applicable to the phone and settings applications<br>and affects only the scenario where the device rings for an incoming call. It does not affect any other application or scenario.|
+| DEFAULT_ALARM_ALERT<sup>(deprecated)</sup>           | string | Yes | Storage area of the system default alarms and alerts.                                                            |
+| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated)</sup>  | string | Yes | Type of the dual tone multi-frequency (DTMF) tone played while dialing.<br>- **0**: normal short tone.<br>- **1**: long tone.              |
+| DTMF_TONE_WHILE_DIALING<sup>(deprecated)</sup>       | string | Yes | Whether the DTMF tone is played when dialing.<br>- **1**: DTMF tone is played when dialing.<br>- **0**: DTMF tone is not played when dialing.                      |
+| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated)</sup>  | string | Yes | Effect on audio streams determined by changes in the ringing mode and Do Not Disturb (DND) mode. If you want a specific audio stream to be affected by changes of the ringing mode and DND mode, set the corresponding bit to **1**.         |
+| AFFECTED_MUTE_STREAMS<sup>(deprecated)</sup>         | string | Yes | Audio streams affected by the mute mode. If you want a specific audio stream to remain muted in mute mode, set the corresponding bit to **1**.                                  |
+| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated)</sup>    | string | Yes | Storage area of the system default notification tone.                                                           |
+| DEFAULT_RINGTONE<sup>(deprecated)</sup>              | string | Yes | Storage area of the system default ringtone.                                                            |
+| SOUND_EFFECTS_STATUS<sup>(deprecated)</sup>          | string | Yes | Whether the sound feature is available.<br>- **0**: The feature is not available.<br>- **1**: The feature is available.                              |
+| VIBRATE_STATUS<sup>(deprecated)</sup>                | string | Yes | Whether the device vibrates for an event. This attribute is used inside the system.<br>- **1**: The device vibrates for an event.<br>- **0**: The device does not vibrate for an event.     |
+| HAPTIC_FEEDBACK_STATUS<sup>(deprecated)</sup>       | string | Yes | Whether haptic feedback is enabled.<br>- **true**: Haptic feedback is enabled.<br>- **false**: Haptic feedback is disabled.             |
 
 ## TTS
 
-Provides data items for setting text-to-speech (TTS) information. (Not supported yet.)
+Provides data items for setting text-to-speech (TTS) information.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name               | Type  | Read-Only| Optional| Description                                                        |
-| ------------------- | ------ |----|----| ------------------------------------------------------------ |
-| DEFAULT_TTS_PITCH   | string | Yes | No | Default pitch of the TTS engine.<br>100 = 1x. If the value is set to **200**, the frequency is twice the normal sound frequency.|
-| DEFAULT_TTS_RATE    | string | Yes | No | Default voice rate of the TTS engine.<br>100 = 1x.                        |
-| DEFAULT_TTS_SYNTH   | string | Yes | No | Default TTS engine.                                               |
-| ENABLED_TTS_PLUGINS | string | Yes | No | List of activated plug-in packages used for TTS. Multiple plug-in packages are separated by spaces.          |
+| Name               | Type  | Read-Only| Description                                                       |
+| ------------------- | ------ |----| ----------------------------------------------------------- |
+| DEFAULT_TTS_PITCH<sup>(deprecated)</sup>    | string | Yes | Default pitch of the TTS engine.<br>100 = 1x. If the value is set to **200**, the frequency is twice the normal sound frequency.|
+| DEFAULT_TTS_RATE<sup>(deprecated)</sup>     | string | Yes | Default voice rate of the TTS engine.<br>100 = 1x.                       |
+| DEFAULT_TTS_SYNTH<sup>(deprecated)</sup>    | string | Yes | Default TTS engine.                                              |
+| ENABLED_TTS_PLUGINS<sup>(deprecated)</sup>  | string | Yes | List of activated plug-in packages used for TTS. Multiple plug-in packages are separated by spaces.          |
 
 
 ## wireless
 
-Provides data items for setting wireless network information. (Not supported yet.)
+Provides data items for setting wireless network information.
 
-### Properties
+### Constants
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                             | Type  | Read-Only| Optional| Description                                                                                                      |
-| --------------------------------- | ------ |----|----|----------------------------------------------------------------------------------------------------------|
-| BLUETOOTH_DISCOVER_ABILITY_STATUS | string | Yes | No | Whether the device can be discovered or connected by other devices through Bluetooth.<br>- **0**: The device cannot be discovered or connected.<br>- **1**: The device can be connected but cannot be discovered.<br>- **2**: The device can be discovered and connected.       |
-| BLUETOOTH_DISCOVER_TIMEOUT        | string | Yes | No | Duration for discovering a device through Bluetooth, in seconds.<br>After the duration expires, the device cannot be discovered through Bluetooth.                                                             |
-| AIRPLANE_MODE_RADIOS              | string | Yes | No | List of radio signals to be disabled when airplane mode is enabled.<br>Multiple radio signals are separated by commas (,).<br>The list can include the following: **BLUETOOTH_RADIO**, **CELL_RADIO**, **NFC_RADIO**, and **WIFI_RADIO**.|
-| BLUETOOTH_RADIO                   | string | Yes | No | A value of **AIRPLANE_MODE_RADIOS** to indicate that Bluetooth is disabled in airplane mode.                                                              |
-| CELL_RADIO                        | string | Yes | No | A value of **AIRPLANE_MODE_RADIOS** to indicate that cellular radio is disabled in airplane mode.                                                           |
-| NFC_RADIO                         | string | Yes | No | A value of **AIRPLANE_MODE_RADIOS** to indicate that NFC is disabled in airplane mode.                                                             |
-| WIFI_RADIO                        | string | Yes | No | A value of **AIRPLANE_MODE_RADIOS** to indicate that Wi-Fi is disabled in airplane mode.                                                           |
-| BLUETOOTH_STATUS                  | string | Yes | No | Whether Bluetooth is available.<br>- **true**: Bluetooth is available.<br>- **false**: Bluetooth is unavailable.                                                     |
-| OWNER_LOCKDOWN_WIFI_CFG           | string | Yes | No | Whether the Wi-Fi configuration created by the application of the device owner should be locked down.<br>- **true**: The Wi-Fi configuration should be locked down.<br>- **false**: The Wi-Fi configuration should not be locked down.                         |
-| WIFI_DHCP_MAX_RETRY_COUNT         | string | Yes | No | Maximum number of attempts to obtain an IP address from the DHCP server.                                                                                  |
-| WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT | string | Yes | No | Maximum duration to hold a wake lock when waiting for the mobile data connection after the Wi-Fi connection is disconnected.                                                                          |
-| WIFI_STATUS                       | string | Yes | No | Whether Wi-Fi is available.<br>- **true**: Wi-Fi is available.<br>- **false**: Wi-Fi is unavailable.                                             |
-| WIFI_WATCHDOG_STATUS              | string | Yes | No | Whether Wi-Fi watchdog is available.<br>- **true**: Wi-Fi watchdog is available.<br>- **false**: Wi-Fi watchdog is unavailable.                                             |
+| Name                             | Type  | Read-Only| Description                                                                                                      |
+| --------------------------------- | ------ |----|----------------------------------------------------------------------------------------------------------|
+| BLUETOOTH_DISCOVER_ABILITY_STATUS<sup>(deprecated)</sup>  | string | Yes | Whether the device can be discovered or connected by other devices through Bluetooth.<br>- **0**: The device cannot be discovered or connected.<br>- **1**: The device can be connected but cannot be discovered.<br>- **2**: The device can be discovered and connected.       |
+| BLUETOOTH_DISCOVER_TIMEOUT<sup>(deprecated)</sup>         | string | Yes | Duration for discovering a device through Bluetooth, in seconds.<br>After the duration expires, the device cannot be discovered through Bluetooth.                                                             |
+| AIRPLANE_MODE_RADIOS<sup>(deprecated)</sup>               | string | Yes | List of radio signals to be disabled when airplane mode is enabled.<br>Multiple radio signals are separated by commas (,).<br>The list can include the following: **BLUETOOTH_RADIO**, **CELL_RADIO**, **NFC_RADIO**, and **WIFI_RADIO**.|
+| BLUETOOTH_RADIO<sup>(deprecated)</sup>                    | string | Yes | A value of **AIRPLANE_MODE_RADIOS** to indicate that Bluetooth is disabled in airplane mode.                                                              |
+| CELL_RADIO<sup>(deprecated)</sup>                         | string | Yes | A value of **AIRPLANE_MODE_RADIOS** to indicate that cellular radio is disabled in airplane mode.                                                           |
+| NFC_RADIO<sup>(deprecated)</sup>                          | string | Yes | A value of **AIRPLANE_MODE_RADIOS** to indicate that NFC is disabled in airplane mode.                                                             |
+| WIFI_RADIO<sup>(deprecated)</sup>                         | string | Yes | A value of **AIRPLANE_MODE_RADIOS** to indicate that Wi-Fi is disabled in airplane mode.                                                           |
+| BLUETOOTH_STATUS<sup>(deprecated)</sup>                   | string | Yes | Whether Bluetooth is available.<br>- **true**: Bluetooth is available.<br>- **false**: Bluetooth is unavailable.                                                     |
+| OWNER_LOCKDOWN_WIFI_CFG<sup>(deprecated)</sup>            | string | Yes | Whether the Wi-Fi configuration created by the application of the device owner should be locked down.<br>- **true**: The Wi-Fi configuration should be locked down.<br>- **false**: The Wi-Fi configuration should not be locked down.                         |
+| WIFI_DHCP_MAX_RETRY_COUNT<sup>(deprecated)</sup>          | string | Yes | Maximum number of attempts to obtain an IP address from the DHCP server.                                                                                  |
+| WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT<sup>(deprecated)</sup>  | string | Yes | Maximum duration to hold a wake lock when waiting for the mobile data connection after the Wi-Fi connection is disconnected.                                                                          |
+| WIFI_STATUS<sup>(deprecated)</sup>                       | string | Yes | Whether Wi-Fi is available.<br>- **true**: Wi-Fi is available.<br>- **false**: Wi-Fi is unavailable.                                             |
+| WIFI_WATCHDOG_STATUS<sup>(deprecated)</sup>               | string | Yes | Whether Wi-Fi watchdog is available.<br>- **true**: Wi-Fi watchdog is available.<br>- **false**: Wi-Fi watchdog is unavailable.                                             |
 
 
 ## settings.setValue<sup>10+</sup>
@@ -1100,4 +1100,82 @@ import featureAbility from '@ohos.ability.featureAbility';
 let uri:string = settings.getUriSync(settings.display.SCREEN_BRIGHTNESS_STATUS);
 let helper = featureAbility.acquireDataAbilityHelper(uri);
 let ret:string = settings.setValueSync(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, '100');
+```
+
+## settings.openInputMethodSettings<sup>23+</sup>
+
+openInputMethodSettings(context: Context): void
+
+Open the input method settings page.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+
+**Example**
+
+<!--code_no_check-->
+```js
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Go to the input method settings page.
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+settings.openInputMethodSettings(context);
+```
+
+## settings.openInputMethodDetail<sup>23+</sup>
+
+openInputMethodDetail(context: Context, bundleName: string, inputMethodId: string): void
+
+Opens the input method details page.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | Context                | Yes  | Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+| bundleName      | string          | Yes  | Bundle name of the input method to be started.|
+| inputMethodId   | string          | Yes  | Unique [ID](../apis-ime-kit/js-apis-inputmethod.md#inputmethodproperty8) of the input method extension in the application.|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+
+**Example**
+
+<!--code_no_check-->
+```js
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Go to the input method details page.
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let bundleName: string = "target inputMethod bundle name";
+let inputMethodId: string = "target inputMethod id";
+settings.openInputMethodDetail(context, bundleName, inputMethodId);
 ```

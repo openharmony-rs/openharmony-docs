@@ -56,9 +56,9 @@ struct Index {
 **开发步骤**
 <!--RP1-->
 1. 上述权限均为受控权限，申请前需要额外申请ACL白名单，请参考[声明ACL权限](../../security/AccessToken/declare-permissions-in-acl.md)。 
-<!--RP1End-->
 2. [在配置文件module.json5中声明权限](../../security/AccessToken/declare-permissions.md)。
 3. [向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+<!--RP1End-->
 
 > **说明：**
 >

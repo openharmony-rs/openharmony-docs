@@ -6,7 +6,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct {...} OHExtDataHandle
+typedef struct OHExtDataHandle {...} OHExtDataHandle
 ```
 
 ## 概述

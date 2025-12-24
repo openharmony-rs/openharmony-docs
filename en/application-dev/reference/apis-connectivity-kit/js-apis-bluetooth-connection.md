@@ -237,7 +237,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------- |
-|201 | Permission denied.                 |              |
+|201 | Permission denied.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -270,6 +270,8 @@ try {
 getRemoteDeviceName(deviceId: string): string
 
 Obtains the name of the peer Bluetooth device.
+
+- Starting from API version 21, this API can be used to obtain the device name by using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -320,6 +322,8 @@ getRemoteDeviceName(deviceId: string, alias?: boolean): string
 
 Obtains the name of the peer device. The **alias** parameter is optional.
 
+- Starting from API version 21, this API can be used to obtain the device name by using the actual MAC address of the peer device.
+
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 16.
@@ -368,7 +372,10 @@ try {
 
 getRemoteDeviceClass(deviceId: string): DeviceClass
 
-Obtains the class of the peer Bluetooth device. Since API version 18, the **ohos.permission.ACCESS_BLUETOOTH** permission is no longer verified.
+Obtains the class of the peer Bluetooth device.
+
+- Starting from API version 18, this API does not verify the ohos.permission.ACCESS_BLUETOOTH permission.
+- Starting from API version 21, this API can be used to obtain the device class by using the actual MAC address of the peer device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -413,6 +420,8 @@ getRemoteDeviceTransport(deviceId: string): BluetoothTransport
 
 Obtains the transport type of the peer Bluetooth device.
 
+- Starting from API version 21, this API can be used to obtain the transport type of the peer device by using the actual MAC address of the peer device.
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Parameters**
@@ -455,6 +464,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 
 Obtains the profile of the peer Bluetooth device based on the specified UUID. This API uses an asynchronous callback to return the result.
 - You are advised to use this API only for paired devices.
+- Starting from API version 21, this API can be used to obtain the profile of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -501,6 +511,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 
 Obtains the profile of the peer Bluetooth device based on the specified UUID. This API uses a promise to return the result.
 - You are advised to use this API only for paired devices.
+- Starting from API version 21, this API can be used to obtain the profile of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -633,6 +644,8 @@ try {
 getPairState(deviceId: string): BondState
 
 Obtains the pairing status of the peer Bluetooth device.
+
+- Starting from API version 21, this API can be used to obtain the pairing status of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1131,6 +1144,7 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 
 Sets the name of the peer Bluetooth device. The value cannot be an empty string. If the value is an empty string, the operation will fail. This API uses a promise to return the result.
 - You are advised to use this API only for paired devices.
+- Starting from API version 21, this API can be used to set the name of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1185,6 +1199,7 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 
 Obtains the battery level of the peer Bluetooth device. This API uses a promise to return the result.
 - You can obtain the battery level of the peer Bluetooth device from the callback of [on('batteryChange')](#connectiononbatterychange12).
+- Starting from API version 21, this API can be used to obtain the battery level of the peer Bluetooth device based on the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1672,6 +1687,8 @@ getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
 
 Obtains the latest connection time of the peer Bluetooth device. This API uses a promise to return the result.
 
+- Starting from API version 21, this API can be used to obtain the latest connection time of the peer Bluetooth device based on the actual MAC address of the peer device.
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Parameters**
@@ -1719,6 +1736,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 Obtains the profiles supported by the peer device. Supported profiles include A2DP, HFP, and HID. This API uses an asynchronous callback to return the result.
 - Call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
 - Upon successful pairing, you are advised to call [getRemoteProfileUuids](#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. This API is called only if the target device supports the profile required by the application.
+- Starting from API version 21, this API can be used to perform profile connection using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -1769,6 +1787,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 Obtains the profiles supported by the peer device. Supported profiles include A2DP, HFP, and HID. This API uses a promise to return the result.
 - Call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
 - Upon successful pairing, you are advised to call [getRemoteProfileUuids](#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. This API is called only if the target device supports the profile required by the application.
+- Starting from API version 21, this API can be used to perform profile connection using the actual MAC address of the peer device.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 

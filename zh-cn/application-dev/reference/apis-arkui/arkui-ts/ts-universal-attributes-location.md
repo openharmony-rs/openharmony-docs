@@ -516,30 +516,68 @@ struct PositionExample2 {
 @Component
 struct Example3 {
   build() {
-    Column({ space: 20 }){
+    Column({ space: 20 }) {
       Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
       Row() {
-        Text('bottom:0, right:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({bottom: 0, right: 0})
-        Text('top:0, left:0').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({top: 0, left: 0})
-        Text('top:10%, left:50%').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({ top: '10%', left: '50%' })
-        Text('bottom:0, left:30').size({ width: '50%', height: '30' }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).position({ bottom: 0, left: 30 })
+        Text('bottom:0, right:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, right: 0 })
+        Text('top:0, left:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: 0, left: 0 })
+        Text('top:10%, left:50%')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: '10%', left: '50%' })
+        Text('bottom:0, left:30')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, left: 30 })
       }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
 
 
       Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
       Row() {
-        Text('1').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+        Text('1')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
           .textAlign(TextAlign.Center)
-        Text('2 top:30, left:0').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center).offset({top: 30, left: 0})
-        Text('3').size({ width: '25%', height: 50 }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+        Text('2 top:30, left:0')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
           .textAlign(TextAlign.Center)
-        Text('4 bottom:10, right:30').size({ width: '25%', height: 50 }).backgroundColor(0xbbb2cb).border({ width: 1 }).fontSize(12)
-          .textAlign(TextAlign.Center).offset({bottom: 10, right: 30})
+          .offset({ top: 30, left: 0 })
+        Text('3')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 bottom:10, right:30')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(12)
+          .textAlign(TextAlign.Center)
+          .offset({ bottom: 10, right: 30 })
       }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
     }.width('100%').margin({ top: 25 })
   }
@@ -550,11 +588,13 @@ struct Example3 {
 
 ### 示例4（镜像效果）
 
-通用布局属性支持镜像能力。从上到下依次通过position，offset，markAnchor实现镜像效果。浅蓝色赋值为原本效果，深蓝色赋值为镜像效果。
+通用布局属性支持[镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)。
+下述示例从上到下依次通过[position](#position)，[offset](#offset)，[markAnchor](#markanchor)实现镜像效果，为对比镜像前后的差异，浅蓝色赋值为原本效果，深蓝色赋值为镜像效果。
 
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Example4 {
@@ -568,47 +608,55 @@ struct Example4 {
             RelativeContainer() {
               Row() {
               }
-              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) })
+              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) }) // position接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .position({ left:'200px', top: '100px' })
+              .position({ left: '200px', top: '100px' }) // position接口中的参数使用Edges类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200)  })
+              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) }) // offset接口中的参数使用LocalizedEdges类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .offset({ left: 100, top: 200  })
+              .offset({ left: 100, top: 200 }) // offset接口中的参数使用Edges类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .markAnchor({ start: LengthMetrics.fp(100), top: LengthMetrics.fp(-350) })
+              .markAnchor({
+                start: LengthMetrics.fp(100),
+                top: LengthMetrics.fp(-350)
+              }) // markAnchor接口中的参数使用LocalizedPosition类型，支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(0, 74, 175)')
               .padding(50)
               .margin(50)
+
               Row() {
               }
-              .markAnchor({ x: '100fp', y: '-350fp' })
+              .markAnchor({ x: '100fp', y: '-350fp' }) // markAnchor接口中的参数使用Position类型，不支持镜像翻转效果
               .width("30%")
               .height("20%")
               .backgroundColor('rgb(39, 135, 217)')
@@ -637,11 +685,11 @@ struct Example4 {
 }
 ```
 
-镜像前：
+镜像前效果：
 
 ![position.png](figures/position3.png)
 
-镜像后：
+镜像后效果如下，镜像生效条件请参考[使用镜像能力](./../../../ui/arkts-internationalization.md#使用镜像能力)：
 
 ![position.png](figures/positionEdge.png)
 

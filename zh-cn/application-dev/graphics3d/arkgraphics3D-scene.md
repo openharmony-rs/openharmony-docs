@@ -45,10 +45,10 @@
          .then(async (result: Scene) => {
            this.scene = result;
            let rf: SceneResourceFactory = this.scene.getResourceFactory();
-         // ···
+           // ...
          })
-         .catch((reason: string) => {
-           console.log(reason);
+         .catch((error: string) => {
+         console.error('Scene load failed: ' + error);
        });
      }
      ```

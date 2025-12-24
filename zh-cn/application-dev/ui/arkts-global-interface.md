@@ -26,6 +26,8 @@
 
 - 上下文恢复：异步任务执行时恢复其关联的UI实例标识。
 
+下图展示了多线程下的异步任务执行场景。以Task 1为例，最初在Thread-1执行，执行途中向Thread-2抛出Task 1.2，抛出Task的同时携带了UI上下文标识，Task 1.2执行完成后又再次向Thread-3抛出Task 1.3，Task 1.3执行后重新向Thread-1抛出Task 1.4。同一Thread可能先后执行来自不同窗口的Task，执行Task时，根据Task的UI上下文标识确认当前Task属于哪一个窗口，确保异步操作能够关联到正确的UI实例。
+
 **图1** 调用作用域原理图
 
 ![calling_scope](figures/calling_scope.png)
@@ -38,6 +40,8 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 在Stage模型中，一个ArkTS引擎中可运行多个ArkUI实例。全局接口通过分析调用链中的上下文信息来确定当前UI上下文，异步接口和非UI接口可能导致UI上下文跟踪失败。
 
 为了保证全局接口的相关功能正常，开发者应当使用UIContext的接口替换全局接口。
+
+下图展示了Stage模型下ArkTS引擎和UI上下文的对应关系，一个ArkTS引擎中存在两个[Ability](../application-models/abilitykit-overview.md)，这些Ability对应了三个窗口，三个窗口各自对应一个ArkUI实例。
 
 **图2** 多实例关系图
 
@@ -94,6 +98,7 @@ UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确指�
 <!--deprecated_code_no_check-->
 
 ```ts
+// pages/NewGlobal.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -165,6 +170,7 @@ struct Index {
 <!--deprecated_code_no_check-->
 
 ```ts
+// entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -263,7 +269,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 ### 通过静态方法获取UIContext对象
-从API version 23开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext23)获取UIContext对象。
+从API version 22开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)获取UIContext对象。
 
 >**说明：**
 > - 优先通过自定义组件或者窗口对象获取UIContext，通过这两种方式获取不受调用作用域的影响，且获取到的是可预期的UIContext实例。
@@ -275,6 +281,7 @@ export default class EntryAbility extends UIAbility {
 <!--deprecated_code_no_check-->
 
 ``` TypeScript
+// entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
@@ -309,6 +316,7 @@ export default class EntryAbility extends UIAbility {
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
+// pages/Index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
@@ -337,10 +345,10 @@ struct Index {
 
 使用静态方法替换：
 
-<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
+// entryability/EntryAbility.ets
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window, UIContext } from '@kit.ArkUI';
@@ -348,11 +356,23 @@ import { window, UIContext } from '@kit.ArkUI';
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
-  // ...
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+    try {
+      this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+    } catch (err) {
+      hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
+    }
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+  }
+
+  onDestroy(): void {
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+  }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
     // 在loadContent前调用，此时无UI实例，vp2px会根据屏幕默认像素密度返回计算结果。
+    // 此时UIContext对象的解析策略ResolveStrategy为UNDEFINED。
     let resolvedUIContext = UIContext.resolveUIContext();
     let pxValue = resolvedUIContext.vp2px(20);
     hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
@@ -362,6 +382,7 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       // 在loadContent异步回调中调用，此时有UI实例，但上下文不明确，此时会根据主窗的像素密度返回计算结果。
+      // 此时UIContext对象的解析策略ResolveStrategy为UNIQUE。
       let resolvedUIContext = UIContext.resolveUIContext();
       let pxValue = resolvedUIContext.vp2px(20);
       hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
@@ -371,13 +392,27 @@ export default class EntryAbility extends UIAbility {
     hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
   }
 
-  // ...
+  onWindowStageDestroy(): void {
+    // Main window is destroyed, release UI related resources
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+  }
+
+  onForeground(): void {
+    // Ability has brought to foreground
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+  }
+
+  onBackground(): void {
+    // Ability has back to background
+    hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+  }
 }
 ```
 
-<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
+// pages/Index.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { UIContext } from '@kit.ArkUI';
 
@@ -396,6 +431,7 @@ struct Index {
         })
         .onClick(() => {
           // 在有UI实例且上下文明确时调用，此时会根据此时UI上下文对应的实例的像素密度返回计算结果。
+          // 此时UIContext对象的解析策略ResolveStrategy为CALLING_SCOPE。
           let resolvedUIContext = UIContext.resolveUIContext();
           let pxValue = resolvedUIContext.vp2px(20);
         })
@@ -406,7 +442,7 @@ struct Index {
 }
 ```
 
-[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext23)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
+[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
 
 <!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->
 
@@ -457,6 +493,7 @@ function GetUIContextByAtomicInterface(): UIContext {
 <!--deprecated_code_no_check-->
 
 ```ts
+// common/Utils.ets
 class PixelUtils {
   static vp2px(vpValue: number) : number {
     return vp2px(vpValue);
@@ -875,6 +912,7 @@ struct CalendarPickerDialogPage {
 <!--deprecated_code_no_check-->
 
 ```ts
+// Common/UIContext.ets
 export class PixelUtils {
   static vp2px(vpValue: number) : number {
     return vp2px(vpValue);
@@ -958,6 +996,7 @@ export class PixelUtils {
 <!--deprecated_code_no_check-->
 
 ```ts
+// Common/ContextUtils.ets
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;

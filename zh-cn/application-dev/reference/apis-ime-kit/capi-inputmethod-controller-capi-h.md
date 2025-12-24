@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 概述
@@ -33,7 +33,7 @@
 
 ### OH_InputMethodController_Attach()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodController_Attach(InputMethod_TextEditorProxy *textEditorProxy,InputMethod_AttachOptions *options, InputMethod_InputMethodProxy **inputMethodProxy)
 ```
 
@@ -60,7 +60,7 @@ InputMethod_ErrorCode OH_InputMethodController_Attach(InputMethod_TextEditorProx
 
 ### OH_InputMethodController_Detach()
 
-```
+```c
 InputMethod_ErrorCode OH_InputMethodController_Detach(InputMethod_InputMethodProxy *inputMethodProxy)
 ```
 

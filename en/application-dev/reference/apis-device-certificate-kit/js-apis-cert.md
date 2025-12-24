@@ -330,28 +330,26 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 
 | Name     | Type                 | Read-Only| Optional| Description                       |
 | --------- | --------------------- | ---- | ---- | --------------------------- |
-| CACert    | [X509Cert](#x509cert) | No  | Yes  | Trusted CA certificate.             |
-| CAPubKey  | Uint8Array            | No  | Yes  | Public key of the trusted CA certificate, in DER format.|
-| CASubject | Uint8Array            | No  | Yes  | Subject of the trusted CA certificate, in DER format.|
-| nameConstraints<sup>12+</sup> | Uint8Array      | No  | Yes  | Name constraints, in DER format.|
+| CACert    | [X509Cert](#x509cert) | No  | Yes  | Trusted CA certificate. If **CACert** is set, only **CACert** is used to validate the certificate chain. **CAPubKey** and **CASubject** are not used.            |
+| CAPubKey  | Uint8Array            | No  | Yes  | Public key of the trusted CA certificate, in DER format. This parameter takes effect only when **CACert** is not set.|
+| CASubject | Uint8Array            | No  | Yes  | Subject of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the **CAPubKey** type (self-signed or upper-level), and can be the subject or issuer of the root certificate.|
+| nameConstraints<sup>12+</sup> | Uint8Array      | No  | Yes  | Name constraints, in DER format. Only the leaf certificate of the current certificate chain is validated.|
 
 ## RevocationCheckOptions<sup>12+</sup>
 
  Enumerates the options for checking the certificate revocation status.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
-
  **System capability**: SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | Use OCSP over CRL (default).|
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. You must declare the ohos.permission.INTERNET permission.|
-| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.|
-| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.|
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. If this capability is enabled, the system continues to check the revocation status of the intermediate certificate if the OCSP or CRL check of the leaf certificate fails. It is disabled by default.|
-| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this capability is enabled, the system checks the revocation status of the leaf certificate based on the local CRL. It is disabled by default.|
-
+| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | Use OCSP over CRL (default).<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. Only the first CRL distribution point address can be obtained from the CDP extension of the certificate to check the certificate revocation status, or the first OCSP server address can be obtained from the AIA extension of the certificate to check the certificate revocation status. You must declare the ohos.permission.INTERNET permission.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. If this capability is enabled, the system continues to check the revocation status of the intermediate certificate if the OCSP or CRL check of the leaf certificate fails. It is disabled by default.<br> **Atomic service API**: This API can be used in atomic services since API version 22. |
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this capability is enabled, the system checks the revocation status of the leaf certificate based on the local CRL. It is disabled by default.<br> **Atomic service API**: This API can be used in atomic services since API version 22. |
+| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | If this capability is enabled, the system ignores the network unreachable error when obtaining the CRL or OCSP response over the network for revocation status check. It is disabled by default. By default, the network unreachable error may cause certificate chain validation failure.<br> **Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## ValidationPolicyType<sup>12+</sup>
 
@@ -414,7 +412,8 @@ Represents the parameters for certificate chain validation.
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | date         | string                                            | No  | Yes |Validity period of the certificate to validate.<br> **Atomic service API**: This API can be used in atomic services since API version 12.           |
 | trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | No  | No  |List of trusted anchors.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| trustSystemCa<sup>20+</sup>| boolean | No  | Yes |Whether to use the prebuilt CA certificate to verify the certificate chain.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| trustSystemCa<sup>20+</sup>| boolean | No  | Yes |Whether to use the prebuilt CA certificate to validate the certificate chain. **true** means yes; **false** otherwise.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| allowDownloadIntermediateCa<sup>23+</sup>| boolean | No  | Yes |Whether to allow the application to download the missing intermediate CA certificate from the network.<br>**true** means yes; **false** otherwise. The default value is **false**.<br>The download address is obtained from the certificate AIA extension. To use the network for download, you need to request the ohos.permission.INTERNET permission.<br> **Atomic service API**: This API can be used in atomic services since API version 23.|
 | certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | No  | Yes |Check whether the certificate is in a CRL.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | No  | Yes |Parameters for checking the certificate revocation status online.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | No  | Yes |Type of the policy for certificate validation.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -688,7 +687,9 @@ Represents KeyAgree recipient information encapsulated in CMS data.
 
 Represents recipient information encapsulated in CMS data.
 
-**Note**: At least one recipient needs to be set.
+> **NOTE**
+>
+> At least one recipient needs to be set.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -3899,7 +3900,7 @@ Creates an **X509Crl** instance. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -3967,7 +3968,7 @@ Creates an **X509Crl** instance. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11-1) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11-1) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4173,7 +4174,7 @@ Provides APIs for X.509 certificate CRL operations.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL](#x509crl11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL](#x509crl11) instead.
 
 ### isRevoked<sup>(deprecated)</sup>
 
@@ -4183,7 +4184,7 @@ Checks whether an X.509 certificate is revoked.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.isRevoked](#isrevoked11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.isRevoked](#isrevoked11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4284,7 +4285,7 @@ Obtains the CRL type.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getType](#gettype11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getType](#gettype11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4342,7 +4343,7 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4417,7 +4418,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11-1) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11-1) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4489,7 +4490,7 @@ Verifies the signature of the X.509 CRL. This API uses an asynchronous callback 
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.verify](#verify11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.verify](#verify11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4643,7 +4644,7 @@ Verifies the signature of the X.509 CRL. This API uses a promise to return the r
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.verify](#verify11-1) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.verify](#verify11-1) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4797,7 +4798,7 @@ Obtains the version of the X.509 CRL.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getVersion](#getversion11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getVersion](#getversion11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4855,7 +4856,7 @@ Obtains the issuer of the X.509 CRL.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getIssuerName](#getissuername11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getIssuerName](#getissuername11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -4929,7 +4930,7 @@ Obtains the last update date of this X.509 CRL.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getLastUpdate](#getlastupdate11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getLastUpdate](#getlastupdate11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5003,7 +5004,7 @@ Obtains the next update date of this CRL.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getNextUpdate](#getnextupdate11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getNextUpdate](#getnextupdate11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5077,7 +5078,7 @@ Obtains the revoked X.509 certificate based on the specified serial number of th
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getRevokedCert](#getrevokedcert11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCert](#getrevokedcert11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5158,7 +5159,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5275,7 +5276,7 @@ Obtains the revoked X.509 certificates. This API uses an asynchronous callback t
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5349,7 +5350,7 @@ Obtains the revoked X.509 certificates. This API uses a promise to return the re
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11-1) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11-1) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5420,7 +5421,7 @@ Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getTBSInfo](#gettbsinfo11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getTBSInfo](#gettbsinfo11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5494,7 +5495,7 @@ Obtains the signature data of the X.509 CRL.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getSignature](#getsignature11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignature](#getsignature11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5568,7 +5569,7 @@ Obtains the signing algorithm of the X.509 CRL.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getSignatureAlgName](#getsignaturealgname11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgName](#getsignaturealgname11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5642,7 +5643,7 @@ Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the In
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getSignatureAlgOid](#getsignaturealgoid11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgOid](#getsignaturealgoid11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -5716,7 +5717,7 @@ Obtains the parameters of the X.509 CRL signing algorithm.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRL.getSignatureAlgParams](#getsignaturealgparams11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgParams](#getsignaturealgparams11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -8323,7 +8324,7 @@ Provides APIs for operating the revoked certificates.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CrlEntry](#x509crlentry11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CrlEntry](#x509crlentry11) instead.
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -8333,7 +8334,7 @@ Obtains the serialized data of the revoked certificate. This API uses an asynchr
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-2) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-2) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -8416,7 +8417,7 @@ Obtains the serialized data of the revoked certificate. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-3) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-3) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -8497,7 +8498,7 @@ Obtains the serial number of this revoked certificate.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRLEntry.getSerialNumber](#getserialnumber11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getSerialNumber](#getserialnumber11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -8563,7 +8564,7 @@ Obtains the issuer of a revoked certificate.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRLEntry.getCertIssuer](#getcertissuer11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getCertIssuer](#getcertissuer11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -8639,7 +8640,7 @@ Obtains the date when the certificate is revoked.
 
 > **NOTE**
 >
-> This API is deprecated since API version 11. Use [X509CRLEntry.getRevocationDate](#getrevocationdate11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getRevocationDate](#getrevocationdate11) instead.
 
 **System capability**: SystemCapability.Security.Cert
 
@@ -13523,7 +13524,6 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 **Example**
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13683,7 +13683,6 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13824,7 +13823,6 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -13977,7 +13975,6 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14118,7 +14115,6 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +
@@ -14261,14 +14257,13 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 | -------- | ------------- |
 | 19020001 | memory malloc failed. |
 | 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | <br>1. The type of the cmsFormat is invalid or not supported. |
+| 19020003 | parameter check failed. Possible causes: <br>1. The type of the cmsFormat is invalid or not supported. |
 | 19030001 | crypto operation error. |
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   "-----BEGIN CERTIFICATE-----\n"                                      +

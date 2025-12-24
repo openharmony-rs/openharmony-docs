@@ -301,7 +301,7 @@ An application uses [startAppServiceExtensionAbility()](../reference/apis-abilit
 
 The client can connect to a background service (specified in the Want object) through [connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20). The [onConnect()](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md#onconnect) callback is invoked, through which the background service receives the [Want](../reference/apis-ability-kit/js-apis-app-ability-want.md) object passed by the client.
 
-The AppServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) object in [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect). This object is then passed to the client's [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect). Through this IRemoteObject, you can define communication interfaces for RPC interaction between the client and server. Multiple clients can simultaneously connect to the same background service. After a client finishes the interaction, it must call [disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20) to disconnect from the service. If all clients connected to a background service are disconnected, the system destroys the service.
+The AppServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) object in **onConnect()**. This object is then passed to the client's [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#connectoptions-1). Through this IRemoteObject, you can define communication interfaces for RPC interaction between the client and server. Multiple clients can simultaneously connect to the same background service. After a client finishes the interaction, it must call [disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20) to disconnect from the service. If all clients connected to a background service are disconnected, the system destroys the service.
 
 - Call [connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20) to establish a connection to a background service. For details about how to obtain the context, see [Obtaining the Context of UIAbility](uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -430,7 +430,7 @@ The AppServiceExtensionAbility returns an [IRemoteObject](../reference/apis-ipc-
 
 ### Communication Between the Client and Server
 
-After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) from the [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect) lifecycle callback, the client can communicate with the AppServiceExtensionAbility.
+After obtaining the [rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject) from the [onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#connectoptions-1) lifecycle callback, the client can communicate with the AppServiceExtensionAbility.
 
 **Client**: Call [sendMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#sendmessagerequest9) to send messages to the server.
 

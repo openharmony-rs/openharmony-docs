@@ -59,7 +59,7 @@ Defines APIs and enums related to transactions.
 
 ### OH_RDB_TransType
 
-```
+```c
 enum OH_RDB_TransType
 ```
 
@@ -81,7 +81,7 @@ Enumerates the transaction types of an RDB store.
 
 ### OH_RdbTrans_CreateOptions()
 
-```
+```c
 OH_RDB_TransOptions *OH_RdbTrans_CreateOptions(void)
 ```
 
@@ -99,7 +99,7 @@ Creates a transaction configuration object.
 
 ### OH_RdbTrans_DestroyOptions()
 
-```
+```c
 int OH_RdbTrans_DestroyOptions(OH_RDB_TransOptions *options)
 ```
 
@@ -124,7 +124,7 @@ Destroys a **TransOptions** instance.
 
 ### OH_RdbTransOption_SetType()
 
-```
+```c
 int OH_RdbTransOption_SetType(OH_RDB_TransOptions *options, OH_RDB_TransType type)
 ```
 
@@ -150,7 +150,7 @@ Sets the transaction type of an RDB store.
 
 ### OH_RdbTrans_Commit()
 
-```
+```c
 int OH_RdbTrans_Commit(OH_Rdb_Transaction *trans)
 ```
 
@@ -175,7 +175,7 @@ Commits a transaction.
 
 ### OH_RdbTrans_Rollback()
 
-```
+```c
 int OH_RdbTrans_Rollback(OH_Rdb_Transaction *trans)
 ```
 
@@ -200,7 +200,7 @@ Rolls back a transaction.
 
 ### OH_RdbTrans_Insert()
 
-```
+```c
 int OH_RdbTrans_Insert(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row, int64_t *rowId)
 ```
 
@@ -228,7 +228,7 @@ Inserts a row of data into a table.
 
 ### OH_RdbTrans_InsertWithConflictResolution()
 
-```
+```c
 int OH_RdbTrans_InsertWithConflictResolution(OH_Rdb_Transaction *trans, const char *table, const OH_VBucket *row,Rdb_ConflictResolution resolution, int64_t *rowId)
 ```
 
@@ -257,7 +257,7 @@ Inserts a row of data into a table with conflict resolutions.
 
 ### OH_RdbTrans_BatchInsert()
 
-```
+```c
 int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
@@ -292,7 +292,7 @@ Ensure that you comply with this constraint when calling this API to avoid error
 
 ### OH_RdbTrans_Update()
 
-```
+```c
 int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates, int64_t *changes)
 ```
 
@@ -320,7 +320,7 @@ Updates data in an RDB store based on specified conditions.
 
 ### OH_RdbTrans_UpdateWithConflictResolution()
 
-```
+```c
 int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row,const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
@@ -349,7 +349,7 @@ Updates data in the database based on specified conditions and supports conflict
 
 ### OH_RdbTrans_Delete()
 
-```
+```c
 int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, int64_t *changes)
 ```
 
@@ -376,7 +376,7 @@ Deletes data from the database based on the specified conditions.
 
 ### OH_RdbTrans_Query()
 
-```
+```c
 OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[], int len)
 ```
 
@@ -404,7 +404,7 @@ Queries data in the database based on specified conditions.
 
 ### OH_RdbTrans_QuerySql()
 
-```
+```c
 OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args)
 ```
 
@@ -431,7 +431,7 @@ Queries data in the database using the specified SQL statement.
 
 ### OH_RdbTrans_Execute()
 
-```
+```c
 int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args, OH_Data_Value **result)
 ```
 
@@ -459,7 +459,7 @@ Executes an SQL statement that contains specified parameters.
 
 ### OH_RdbTrans_Destroy()
 
-```
+```c
 int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)
 ```
 

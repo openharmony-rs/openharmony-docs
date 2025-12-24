@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-HUKS提供认证状态查询接口，应用可以通过该接口查询PIN码是否认证通过。具体的场景介绍及规格，请参考[Ukey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
+从API 22开始，huksExternalCrypto提供PIN码认证状态查询功能接口。应用可以通过该接口查询PIN码是否认证通过。具体的场景介绍及规格，请参考[Ukey PIN码认证介绍及规格](huks-ukey-pin-authentication-management-overview.md)。
 
 ## 开发步骤
 
@@ -19,11 +19,11 @@ HUKS提供认证状态查询接口，应用可以通过该接口查询PIN码是�
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";
 
-async function getUkeyPinAuthState(): Promise<HuksExternalPinAuthState> {
-  let ret: HuksExternalPinAuthState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
+async function getUkeyPinAuthState(): Promise<huksExternalCrypto.HuksExternalPinAuthState> {
+  let ret: huksExternalCrypto.HuksExternalPinAuthState = huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_NO_AUTH;
   try {
     /* 1.构造查询PIN码状态参数 */
-    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
+    const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\", \"userid\":100, \"index\":{\"key\":\"testKey\"}}";
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [];
 
     /* 2.调用getUkeyPinAuthState */
@@ -40,8 +40,8 @@ async function getUkeyPinAuthState(): Promise<HuksExternalPinAuthState> {
 }
 
 async function testGetUkeyPinAuthState() {
-  let ret: boolean = await getUkeyPinAuthState();
-  if (ret == false) {
+  let ret: huksExternalCrypto.HuksExternalPinAuthState = await getUkeyPinAuthState();
+  if (ret != huksExternalCrypto.HuksExternalPinAuthState.HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED) {
     console.error(`getUkeyPinAuthState failed`);
     return;
   }

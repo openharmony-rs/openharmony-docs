@@ -4,7 +4,7 @@
 <!--Owner: @Armstrong15-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 A menu is a pop-up window that allows users to perform specific actions. It typically appears when users right-click, long-press, or touch an item.
 
@@ -13,7 +13,7 @@ A menu is a pop-up window that allows users to perform specific actions. It typi
 | API|Use Case |
 | ----------| ----------------------------------- |
 | [Menu control (Menu)](arkts-popup-and-menu-components-menu.md)| Used to bind actions to specified components, such as displaying operation options when an icon is long-pressed.|
-| [Global menu independent of UI components (openMenu)](arkts-popup-and-menu-components-uicontext-menu.md)| Used to show options in scenarios where UI components cannot be directly accessed, for example, in event callbacks.|
+| [Global menu independent of UI components (openMenu)](arkts-popup-and-menu-components-uicontext-menu.md)| Used to provide operation options in scenarios where UI components cannot be directly accessed, for example, in event callbacks.|
 
 ## Constraints
 

@@ -37,11 +37,11 @@ import { inputDevice } from '@kit.InputKit';
 1. 调用[getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9)方法查询所有连接的输入设备，调用[getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9)方法遍历所有连接的设备，判断是否有物理键盘，若有则标记已有物理键盘连接，该步骤确保监听设备热插拔之前，检测所有插入的输入设备。
 2. 调用[on](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdeviceon9)接口监听输入设备热插拔事件，若监听到有物理键盘插入，则标记已有物理键盘连接；若监听到有物理键盘拔掉，则标记没有物理键盘连接。
 
-<!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/input/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { inputDevice } from '@kit.InputKit';
-import hilog from '@ohos.hilog';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const DOMAIN = 0x0000;
 
@@ -52,12 +52,12 @@ struct Index {
   @State message: string = "Click to obtain the device list and monitor device hot-plug events";
   keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
 
-// ···
+  // ...
 
   build() {
     RelativeContainer() {
       Column() {
-        // ···
+        // ...
 
         Text(this.message)
           .onClick(() => {
@@ -100,9 +100,9 @@ struct Index {
                 ["code", "message"])}`
             }
           })
-        // ···
+          // ...
       }
-    // ···
+      // ...
     }
   }
 }

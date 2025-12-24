@@ -53,7 +53,7 @@
 
 3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码的包含的具体情况和对应含义可见[OH_Drawing_FontConfigInfoErrorCode](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_fontconfiginfoerrorcode)。
 
-   <!-- @[custom_font_c_print_system_font_metrics_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_print_system_font_metrics_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_FontConfigInfoErrorCode fontConfigInfoErrorCode;  // 用于接收错误代码
@@ -79,7 +79,7 @@
 
    以下示例展示系统字体的一些具体配置信息的获取：
 
-   <!-- @[custom_font_c_print_system_font_metrics_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_print_system_font_metrics_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // 获取系统字体配置信息示例
@@ -141,18 +141,22 @@
    >
    > 使用OH_Drawing_CreateFontCollection和OH_Drawing_CreateSharedFontCollection均可创建字体管理器OH_Drawing_FontCollection对象，但前者创建的字体集指针对象只能被一个段落生成器OH_Drawing_TypographyCreate对象使用，无法被多个段落生成器OH_Drawing_TypographyCreate对象共享使用。如需在多个段落生成器OH_Drawing_TypographyCreate对象间共享使用，请使用后者创建可共享的字体集对象。
 
-   ```c++
-   OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();  
+   <!-- @[custom_font_c_create_shared_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
    ```
 
 4. 创建一个文本样式对象，即OH_Drawing_TextStyle对象，用于设置文本样式。
 
-   ```c++
-   OH_Drawing_TextStyle* textStyle = OH_Drawing_CreateTextStyle();
+   <!-- @[custom_font_c_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
    ```
 
 5. [获取系统字体信息](#获取系统字体信息)，获取系统字体的字体家族名，并在文本样式中设置为该系统字体。
-   <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // 情况一：设置系统字体为"HarmonyOS Sans Condensed"
@@ -166,18 +170,31 @@
 
 6. 生成最终段落文本，以便实现最终的文本绘制和显示。
 
-   <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_print_system_font_metrics_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
-   // 情况一：设置系统字体为"HarmonyOS Sans Condensed"
-   const char *myFontFamilies[] = {"HarmonyOS Sans Condensed"};
-   OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
-   
-   // 情况二：不手动设置，此时使用的是系统默认字体"HarmonyOS Sans"
-   // const char* myFontFamilies[] = {"HarmonyOS Sans Condensed"};
-   // OH_Drawing_SetTextStyleFontFamilies(textStyle, 1, myFontFamilies);
+   // 设置其他文本样式
+   OH_Drawing_SetTextStyleColor(textStyle, OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0x00));
+   // 设置字体大小为70.0
+   OH_Drawing_SetTextStyleFontSize(textStyle, 70.0);
+   // 创建一个段落样式对象，以设置排版风格
+   OH_Drawing_TypographyStyle *typographyStyle = OH_Drawing_CreateTypographyStyle();
+   OH_Drawing_SetTypographyTextAlign(typographyStyle, TEXT_ALIGN_LEFT); // 设置段落样式为左对齐
+   // 创建一个段落生成器
+   OH_Drawing_TypographyCreate *handler = OH_Drawing_CreateTypographyHandler(typographyStyle, fontCollection);
+   // 在段落生成器中设置文本样式
+   OH_Drawing_TypographyHandlerPushTextStyle(handler, textStyle);
+   // 在段落生成器中设置文本内容
+   const char *text = "Hello World. 你好世界。\n以上文字使用了系统字体";
+   OH_Drawing_TypographyHandlerAddText(handler, text);
+   // 通过段落生成器生成段落
+   OH_Drawing_Typography *typography = OH_Drawing_CreateTypography(handler);
+   // 设置页面最大宽度
+   double maxWidth = width_;
+   OH_Drawing_TypographyLayout(typography, maxWidth);
+   // 将文本绘制到画布(0,height_/2.0)上
+   OH_Drawing_TypographyPaint(typography, cCanvas_, 0, height_ / 2.0);
    ```
-
 
 ## 禁用系统字体
 
@@ -207,13 +224,17 @@
 
 4. 创建字体管理器，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
-   ```c++
-   OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();  
+   <!-- @[custom_font_c_disable_system_font_text_step_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
+   OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
    ```
 
 5. 禁用系统字体。
 
-   ```c++
+   <!-- @[custom_font_c_disable_system_font_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   
+   ``` C++
    OH_Drawing_DisableFontCollectionSystemFont(fontCollection);
    ```
 
@@ -223,7 +244,7 @@
    >
    > 若不设置字体，文本会默认使用系统字体，而系统字体禁用后若不设置使用自定义字体，文本将无法正常显示。
 
-   <!-- @[custom_font_c_disable_system_font_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_disable_system_font_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
@@ -250,7 +271,7 @@
 
 7. 生成最终的段落文本，以便实现最终的文本绘制和显示。
 
-   <!-- @[custom_font_c_disable_system_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NDKGraphics2D/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
+   <!-- @[custom_font_c_disable_system_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // 设置其他文本样式

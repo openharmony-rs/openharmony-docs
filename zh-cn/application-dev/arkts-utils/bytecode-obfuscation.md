@@ -38,6 +38,7 @@ ArkGuard支持基础的名称混淆功能，不支持控制混淆、数据混淆
 代码混淆工具在处理不同编程语言时，其类型分析机制、混淆策略和执行效率都会因目标语言的特性而呈现差异。以业界常用的ProGuard为例，其主要面向Java这类强类型语言进行混淆。由于强类型语言具有严格的类型系统，每个类型都有明确的定义来源。使得混淆过程中的类型关系追踪和处理更为精确，从而大幅减少了需要配置保留规则的场景。
 
 相比之下，ArkGuard混淆工具主要针对JS、TS和ArkTS语言。JS支持运行时动态修改对象、函数，而混淆是在编译阶段进行的静态处理，可能导致混淆后的名称在运行时无法被正确解析，进而引发运行时异常。TS和ArkTS虽然引入了静态类型系统，但采用了结构性类型机制，即具有相同结构的不同命名类型会被视为等价类型。因此，在TS和ArkTS中仍然无法追溯类型的确切来源。
+
 基于这些特性，使用ArkGuard时需要对更多的语法场景进行白名单配置，同时，ArkGuard采用全局生效的属性保留机制，根据白名单统一保留所有同名属性，而无法支持针对特定类型进行精确保留配置。
 
 具体而言，可以参考以下示例：
@@ -48,15 +49,15 @@ ArkGuard支持基础的名称混淆功能，不支持控制混淆、数据混淆
 // example.ts
 // 混淆前
 class A1 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 class A2 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 function test(input: A1) {
-	console.info(input.prop1);
+    console.info(input.prop1);
 }
 
 let a2 = new A2();
@@ -67,15 +68,15 @@ test(a2);
 ```typescript
 // 混淆后
 class A1 {
-	prop1: string = '';
+    prop1: string = '';
 }
 
 class A2 {
-	a: string = '';
+    a: string = '';
 }
 
 function test(input: A1) {
-	console.info(input.prop1);
+    console.info(input.prop1);
 }
 
 let a2 = new A2();
@@ -137,7 +138,7 @@ test(a2);
 // test.ts
 // 混淆前：
 class TestA {
-	static prop1: number = 0;
+    static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -145,7 +146,7 @@ TestA.prop1;
 ```ts
 // 混淆后：
 class TestA {
-	static i: number = 0;
+    static i: number = 0;
 }
 TestA.i;
 ```
@@ -261,7 +262,7 @@ let s = 0;
 ```ts
 // 混淆前：
 namespace ns {
-	export type customT = string;
+    export type customT = string;
 }
 ```
 
@@ -321,7 +322,7 @@ const module = import('../a/b');
 ```ts
 // 混淆前：
 class TestA {
-	static prop1: number = 0;
+    static prop1: number = 0;
 }
 TestA.prop1;
 ```
@@ -342,7 +343,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 ```ts
 // 混淆前：
 if (flag) {
-	console.info("hello");
+    console.info("hello");
 }
 ```
 
@@ -355,6 +356,7 @@ if (flag) {
 若配置该选项，以下场景中的console.*语句会被删除：
 
 1. 文件顶层的调用
+
     例如：
 
     ```js
@@ -362,6 +364,7 @@ if (flag) {
     ```
 
 2. 代码块中的调用
+
     例如：
 
     ```ts
@@ -371,6 +374,7 @@ if (flag) {
     ```
   
 3. module或namespace中的调用
+
     例如：
   
     ```ts
@@ -380,7 +384,8 @@ if (flag) {
     ```
   
 4. switch语句中的调用
-    例如
+
+    例如：
   
     ```js
     switch (value) {
@@ -395,6 +400,7 @@ if (flag) {
 ### -print-namecache
 
 将名称缓存保存到指定的文件路径filepath中，名称缓存包含名称混淆前后的映射。其中，filepath为必选参数，支持相对路径和绝对路径，相对路径的起始位置为混淆配置文件的当前目录。filepath参数中的文件名请以.json为后缀。
+
 例如：
 
 ```txt
@@ -409,6 +415,7 @@ if (flag) {
 ### -apply-namecache
 
 复用指定的名称缓存文件filepath。其中，filepath为必选参数，支持相对路径和绝对路径，相对路径的起始位置为混淆配置文件的当前目录。filepath参数中的文件名请以`.json`为后缀。
+
 该选项应该在增量编译场景中被使用。开启该选项后，名称将会被混淆成缓存映射对应的名称，若找不到对应的缓存，则会被混淆成新的随机名称。
 
 例如：
@@ -419,23 +426,29 @@ if (flag) {
 ```
 
 默认情况下，DevEco Studio会在临时的缓存目录中保存缓存文件，并且在增量编译场景中自动应用该缓存文件。
+
 缓存目录：build/default/cache/{...}/release/obfuscation。
 
 ### -enable-lib-obfuscation-options
 
 配置此开关后，依赖模块的混淆选项将被合并到当前编译模块的混淆配置中。
+
 混淆配置分为[混淆选项](#混淆选项)和[保留选项](#保留选项)：
+
 默认情况下，生效的混淆配置为当前编译模块的混淆配置与依赖模块的保留选项的合并结果。
+
 启用该开关后，生效的混淆配置为当前编译模块的混淆配置与依赖模块的混淆配置的合并结果。
+
 混淆规则合并逻辑参考[混淆规则合并策略](#混淆规则合并策略)。
 
 ### -enable-bytecode-obfuscation
 
-字节码混淆控制开关。 默认不开启。
+字节码混淆控制开关。默认不开启。
 
 ### -enable-bytecode-obfuscation-debugging
 
 控制字节码混淆是否输出调试信息，开启后会生成混淆日志，请参考[混淆效果](bytecode-obfuscation-guide.md#查看混淆效果)，默认不开启。
+
 需要在已配置`-enable-bytecode-obfuscation`的基础上使用。
 
 ## 保留选项
@@ -559,6 +572,7 @@ const valueBucket: ValuesBucket = {
 ```
 
 6.源码中自定义装饰器修饰了成员变量、成员方法、参数，同时其源码编译的中间产物为js文件时（如编译release源码HAR或者源码包含@ts-ignore、@ts-nocheck），这些装饰器所在的成员变量/成员方法名称需要被保留。这是由于ts高级语法特性转换为js标准语法时，将上述装饰器所在的成员变量/成员方法名称硬编码为字符串常量。
+
 示例：
 
 ```ts
@@ -689,6 +703,7 @@ const module2 = import(moduleName)
 ### -keep
 
 保留指定相对路径*filepath*中的所有名称（例如类名、属性名等）不被混淆。*filepath*可以是文件与文件夹，若是文件夹，则文件夹下的文件及子文件夹中文件都不混淆。
+
 *filepath*仅支持相对路径，`./`与`../`为相对于混淆配置文件所在目录，支持使用[路径类通配符](#路径类通配符)。
 
 ```txt
@@ -795,7 +810,7 @@ a*
 
 ```txt
 class A {
-	'*'= 1
+    '*'= 1
 }
 -keep-property-name
 *
@@ -810,15 +825,19 @@ class A {
 在编译一个模块时，默认情况下，生效的混淆规则为**当前编译模块的混淆规则**与**依赖模块混淆规则**的合并结果，具体规则如下：
 
 **当前编译模块混淆规则**
+
 指当前模块配置文件`build-profile.json5`中`arkOptions.obfuscation.ruleOptions.files`字段指定的混淆配置文件内容。
 
 **依赖模块混淆规则**
+
 根据依赖模块的类型，混淆规则分为以下两个来源：
 
 - **本地HAR/HSP模块**
+
   指该模块配置文件`build-profile.json5`中`arkOptions.obfuscation.consumerFiles`字段指定的混淆配置文件内容。
 
 - **远程HAR/HSP包**
+
   指该远程HAR/HSP包中obfuscation.txt文件内容。
 
 当构建HAP、HSP和HAR的时候，最终的混淆规则是下列文件的合并：
@@ -840,6 +859,7 @@ class A {
 ### 混淆规则合并逻辑
 
 混淆选项：使用或运算进行合并，即开关选项只要在参与合并的任意一个规则文件中存在，最终的合并结果中就会包含该开关选项。
+
 保留选项：合并时，对于白名单选项，其内容取并集。
 
 - **如果当前编译模块混淆配置未包含`-enable-lib-obfuscation-options`选项**：合并对象为当前模块的所有混淆规则与依赖模块混淆规则中的[保留选项](#保留选项)。

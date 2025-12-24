@@ -39,7 +39,7 @@
 
 ### OH_MediaAssetManager_Create()
 
-```
+```c
 OH_MediaAssetManager* OH_MediaAssetManager_Create(void)
 ```
 
@@ -57,7 +57,7 @@ OH_MediaAssetManager* OH_MediaAssetManager_Create(void)
 
 ### OH_MediaAssetManager_RequestImageForPath()
 
-```
+```c
 MediaLibrary_RequestId OH_MediaAssetManager_RequestImageForPath(OH_MediaAssetManager* manager, const char* uri,MediaLibrary_RequestOptions requestOptions, const char* destPath, OH_MediaLibrary_OnDataPrepared callback)
 ```
 
@@ -88,7 +88,7 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestImageForPath(OH_MediaAssetMan
 
 ### OH_MediaAssetManager_RequestVideoForPath()
 
-```
+```c
 MediaLibrary_RequestId OH_MediaAssetManager_RequestVideoForPath(OH_MediaAssetManager* manager, const char* uri,MediaLibrary_RequestOptions requestOptions, const char* destPath, OH_MediaLibrary_OnDataPrepared callback)
 ```
 
@@ -119,7 +119,7 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestVideoForPath(OH_MediaAssetMan
 
 ### OH_MediaAssetManager_CancelRequest()
 
-```
+```c
 bool OH_MediaAssetManager_CancelRequest(OH_MediaAssetManager* manager, const MediaLibrary_RequestId requestId)
 ```
 
@@ -147,7 +147,7 @@ bool OH_MediaAssetManager_CancelRequest(OH_MediaAssetManager* manager, const Med
 
 ### OH_MediaAssetManager_RequestMovingPhoto()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetManager* manager,OH_MediaAsset* mediaAsset, MediaLibrary_RequestOptions requestOptions, MediaLibrary_RequestId* requestId,OH_MediaLibrary_OnMovingPhotoDataPrepared callback)
 ```
 
@@ -178,7 +178,7 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetMana
 
 ### OH_MediaAssetManager_RequestImage()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* manager, OH_MediaAsset* mediaAsset,MediaLibrary_RequestOptions requestOptions, MediaLibrary_RequestId* requestId,OH_MediaLibrary_OnImageDataPrepared callback)
 ```
 
@@ -209,7 +209,7 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* m
 
 ### OH_MediaAssetManager_Release()
 
-```
+```c
 MediaLibrary_ErrorCode OH_MediaAssetManager_Release(OH_MediaAssetManager* manager)
 ```
 

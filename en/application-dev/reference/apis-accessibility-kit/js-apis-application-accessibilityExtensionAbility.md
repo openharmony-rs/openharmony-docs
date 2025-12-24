@@ -35,9 +35,9 @@ The **AccessibilityExtensionAbility** module provides accessibility extension ca
 
 Defines an accessibility event.
 
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
-
 ### Properties
+
+**System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 | Name     | Type             | Read-Only            | Optional                     | Description                      |
 | --------- |----------------------------------------------------------------|------------------------------------------------------------------------------|------------------------------------| ------------------------------------------------------------ |

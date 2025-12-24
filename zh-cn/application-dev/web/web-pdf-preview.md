@@ -52,7 +52,7 @@ struct WebComponent {
 
 PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航栏的展开状态，因此需要开启文档对象模型存储[domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)权限:
 
-  ```
+  ```ts
   Web().domStorageAccess(true)
   ```
 
@@ -93,18 +93,18 @@ PDF预览页面会根据用户操作使用`window.localStorage`记录侧导航�
 
 当前支持如下参数: 
 
-| 语法		| 描述 |
+| 语法 | 描述 |
 | --------- | ---------- |
-| nameddest=destination 	|  指定PDF文档中的命名目标。 |
-| page=pagenum 	| 使用整数指定文档中的页码，文档第一页的pagenum值为1。| 
-| zoom=scale    zoom=scale,left,top	| 使用浮点或整数值设置缩放和滚动系数。例如：缩放值100表示缩放值为100%。 向左和向上滚动值位于坐标系中，0,0 表示可见页面的左上角，无论文档如何旋转。 |
-| toolbar=1 \| 0 	| 打开或关闭顶部工具栏。 | 
-| navpanes=1 \| 0 	| 打开或关闭侧边导航窗格。 | 
-| pdfbackgroundcolor=color 	| 从OpenHarmony 6.0系统版本开始，支持指定PDF文档背景色，color为标准的六位十六进制RGB（取值范围为000000~ffffff，例如白色为：ffffff）。 |
+| nameddest=destination |  指定PDF文档中的命名目标。 |
+| page=pagenum | 使用整数指定文档中的页码，文档第一页的pagenum值为1。| 
+| zoom=scale    zoom=scale,left,top | 使用浮点或整数值设置缩放和滚动系数。例如：缩放值100表示缩放值为100%。 向左和向上滚动值位于坐标系中，0,0 表示可见页面的左上角，无论文档如何旋转。 |
+| toolbar=1 \| 0 | 打开或关闭顶部工具栏。 | 
+| navpanes=1 \| 0 | 打开或关闭侧边导航窗格。 | 
+| pdfbackgroundcolor=color | 从OpenHarmony 6.0系统版本开始，支持指定PDF文档背景色，color为标准的六位十六进制RGB（取值范围为000000~ffffff，例如白色为：ffffff）。 |
 
 
 URL示例:
-```
+```txt
 https://example.com/test.pdf#nameddest=Chapter6  
 https://example.com/test.pdf#page=3  
 https://example.com/test.pdf#zoom=50  

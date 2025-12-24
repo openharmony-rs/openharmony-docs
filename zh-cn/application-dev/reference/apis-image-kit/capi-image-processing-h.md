@@ -47,7 +47,7 @@
 
 ### OH_ImageProcessing_InitializeEnvironment()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_InitializeEnvironment(void)
 ```
 
@@ -67,7 +67,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_InitializeEnvironment(void)
 
 ### OH_ImageProcessing_DeinitializeEnvironment()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)
 ```
 
@@ -87,7 +87,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_DeinitializeEnvironment(void)
 
 ### OH_ImageProcessing_IsColorSpaceConversionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)
 ```
 
@@ -113,7 +113,7 @@ bool OH_ImageProcessing_IsColorSpaceConversionSupported(const ImageProcessing_Co
 
 ### OH_ImageProcessing_IsCompositionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsCompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* sourceGainmapInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo)
 ```
 
@@ -140,7 +140,7 @@ bool OH_ImageProcessing_IsCompositionSupported(const ImageProcessing_ColorSpaceI
 
 ### OH_ImageProcessing_IsDecompositionSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsDecompositionSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo,const ImageProcessing_ColorSpaceInfo* destinationImageInfo,const ImageProcessing_ColorSpaceInfo* destinationGainmapInfo)
 ```
 
@@ -167,7 +167,7 @@ bool OH_ImageProcessing_IsDecompositionSupported(const ImageProcessing_ColorSpac
 
 ### OH_ImageProcessing_IsMetadataGenerationSupported()
 
-```
+```c
 bool OH_ImageProcessing_IsMetadataGenerationSupported(const ImageProcessing_ColorSpaceInfo* sourceImageInfo)
 ```
 
@@ -192,7 +192,7 @@ bool OH_ImageProcessing_IsMetadataGenerationSupported(const ImageProcessing_Colo
 
 ### OH_ImageProcessing_Create()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Create(OH_ImageProcessing** imageProcessor, int32_t type)
 ```
 
@@ -218,7 +218,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Create(OH_ImageProcessing** imagePr
 
 ### OH_ImageProcessing_Destroy()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Destroy(OH_ImageProcessing* imageProcessor)
 ```
 
@@ -243,7 +243,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Destroy(OH_ImageProcessing* imagePr
 
 ### OH_ImageProcessing_SetParameter()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* imageProcessor,const OH_AVFormat* parameter)
 ```
 
@@ -269,7 +269,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_SetParameter(OH_ImageProcessing* im
 
 ### OH_ImageProcessing_GetParameter()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* imageProcessor,OH_AVFormat* parameter)
 ```
 
@@ -295,7 +295,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GetParameter(OH_ImageProcessing* im
 
 ### OH_ImageProcessing_ConvertColorSpace()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)
 ```
 
@@ -322,7 +322,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_ConvertColorSpace(OH_ImageProcessin
 
 ### OH_ImageProcessing_Compose()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* sourceGainmap, OH_PixelmapNative* destinationImage)
 ```
 
@@ -350,7 +350,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Compose(OH_ImageProcessing* imagePr
 
 ### OH_ImageProcessing_Decompose()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage, OH_PixelmapNative* destinationGainmap)
 ```
 
@@ -378,7 +378,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_Decompose(OH_ImageProcessing* image
 
 ### OH_ImageProcessing_GenerateMetadata()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage)
 ```
 
@@ -404,7 +404,7 @@ ImageProcessing_ErrorCode OH_ImageProcessing_GenerateMetadata(OH_ImageProcessing
 
 ### OH_ImageProcessing_EnhanceDetail()
 
-```
+```c
 ImageProcessing_ErrorCode OH_ImageProcessing_EnhanceDetail(OH_ImageProcessing* imageProcessor,OH_PixelmapNative* sourceImage, OH_PixelmapNative* destinationImage)
 ```
 

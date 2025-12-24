@@ -91,6 +91,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
@@ -151,6 +152,7 @@ setHapModuleUpgradeFlag(bundleName: string, moduleName: string, upgradeFlag: Upg
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 let upgradeFlag = freeInstall.UpgradeFlag.SINGLE_UPGRADE;
@@ -202,6 +204,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string, callback: AsyncCall
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
@@ -260,6 +263,7 @@ isHapModuleRemovable(bundleName: string, moduleName: string): Promise\<boolean>
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let moduleName = 'entry';
 try {
@@ -309,6 +313,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag, callback:
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
@@ -365,6 +370,7 @@ getBundlePackInfo(bundleName: string, bundlePackFlag : BundlePackFlag): Promise\
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let bundleName = 'com.example.myapplication';
 let bundlePackFlag = freeInstall.BundlePackFlag.GET_PACK_INFO_ALL;
 try {
@@ -410,6 +416,7 @@ getDispatchInfo(callback: AsyncCallback\<DispatchInfo>): void
 
 ```js
 import { freeInstall } from '@kit.AbilityKit';
+
 try {
   freeInstall.getDispatchInfo((err, data) => {
     if (err) {
@@ -456,6 +463,7 @@ getDispatchInfo(): Promise\<DispatchInfo>
 ```js
 import { freeInstall } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   freeInstall.getDispatchInfo().then(data => {
     console.info('Operation succeed:' + JSON.stringify(data));

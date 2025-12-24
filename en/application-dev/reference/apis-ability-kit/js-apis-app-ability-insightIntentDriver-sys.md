@@ -46,7 +46,25 @@ Defines the parameter used to execute an intent call.
 | displayId<sup>12+</sup> | number | No| Yes| Physical screen ID specified during intent call. The value must be an integer. This parameter is valid only when **executeMode** is set to **UI_ABILITY_FOREGROUND**.|
 | uris<sup>18+</sup> | Array&lt;string&gt; | No| Yes| List of URIs authorized by the intent caller to the intent executor during the call. If an intent defined by the [@InsightIntentLink](js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this field is mandatory. Only the first element in the array is read as the URI of [openLink](js-apis-inner-application-uiAbilityContext.md#openlink12).|
 | flags<sup>18+</sup> | number | No| Yes| [Flags](js-apis-app-ability-wantConstant.md#flags) of the URIs authorized by the intent caller to the intent executor during the call.<br>**NOTE**<br>This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRITE_URI_PERMISSION**, and FLAG_AUTH_READ_URI_PERMISSION\||FLAG_AUTH_WRITE_URI_PERMISSION.|
+| userId<sup>23+</sup> | number | No| Yes| ID of the user to which the intent belongs.<br>**NOTE**<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
 
+## InsightIntentInfoFilter<sup>23+<sup>
+
+Defines an intent filter, which specifies the criteria for selecting target intents. It is used to filter intents on the device that meet these criteria.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name       | Type  | Read-Only| Optional| Description                                                        |
+| ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
+| intentFlags | number | No  | No  | Flag of the intent information ([InsightIntentInfo](#insightintentinfo20)). It is used to query full or brief intent information. For details, see [GetInsightIntentFlag](#getinsightintentflag20).|
+| bundleName  | string | No  | Yes  | Bundle name of the application to which the intent belongs.                                                |
+| moduleName  | string | No  | Yes  | Module name of the application to which the intent belongs.                                                  |
+| intentName  | string | No  | Yes  | Intent name.                                                  |
+| userId      | number | No  | Yes  | ID of the user to which the intent belongs.<br>**NOTE**<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
 ## InsightIntentType<sup>20+<sup>
 
 Enumerates the intent types defined by the intent decorator. You can obtain the intent type from [LinkIntentInfo](#linkintentinfo20) returned by calling APIs such as [getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20).
@@ -61,9 +79,20 @@ Enumerates the intent types defined by the intent decorator. You can obtain the 
 | FUNCTION | @InsightIntentFunctionMethod | A decorator of the [@InsightIntentFunctionMethod](./js-apis-app-ability-InsightIntentDecorator.md#insightintentfunctionmethod) type.|
 | FORM | @InsightIntentForm | A decorator of the [@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform) type.|
 
+## ExecuteModeForConfiguration<sup>23+<sup>
+
+Enumerates the execution modes supported by an [intent developed using a configuration file](../../application-models/insight-intent-config-development.md). For example, if **executeMode** in the [insight_intent.json configuration file](../../application-models/insight-intent-config-development.md#description-of-the-insight_intentjson-file) is set to **foreground**, the intent bound to the UIAbility can run in the foreground.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| FOREGROUND | 0 | The intent bound to the UIAbility can run in the foreground.|
+| BACKGROUND | 1 | The intent bound to the UIAbility can run in the background.|
+
 ## LinkIntentInfo<sup>20+<sup>
 
-LinkIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo). It is used to describe parameters supported by the [@InsightIntentLink](./js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator, such as the URI required for application redirection.
+Describes the parameters supported by the [@InsightIntentLink](./js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator, such as the URI required for application redirection.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -77,7 +106,7 @@ LinkIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-Insight
 
 ## PageIntentInfo<sup>20+<sup>
 
-PageIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo). It is used to describe parameters supported by the [@InsightIntentPage](./js-apis-app-ability-InsightIntentDecorator.md#insightintentpage) decorator, such as the name of [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) of the target page.
+Describes the parameters supported by the [@InsightIntentPage](./js-apis-app-ability-InsightIntentDecorator.md#insightintentpage) decorator, such as the [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) name of the target page.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -88,9 +117,9 @@ PageIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-Insight
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- |-------- |
 | uiAbility | string | Yes| No| Ability name.|
-| pageRouterName | string | Yes| No| Page name.|
+| pagePath | string | Yes| No| Page name.|
 | navigationId | string | Yes| No|  ID of the [Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md) component bound to the intent.|
-| navDestination | string | Yes| No| Name of the [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) component bound to the intent.|
+| navDestinationName | string | Yes| No| Name of the [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) component bound to the intent.|
 
 ## FunctionIntentInfo<sup>20+<sup>
 
@@ -104,7 +133,7 @@ Defines the parameter type of the [@InsightIntentFunctionMethod](./js-apis-app-a
 
 ## FormIntentInfo<sup>20+<sup>
 
-FormIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo). It is used to describe parameters supported by the [@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform) decorator, such as the widget name.
+Describes the parameters supported by the [@InsightIntentForm](./js-apis-app-ability-InsightIntentDecorator.md#insightintentform) decorator, such as the widget name. It also describes the widget information bound to the [intent developed using a configuration file](../../application-models/insight-intent-config-development.md).
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -119,7 +148,7 @@ FormIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-Insight
 
 ## EntryIntentInfo<sup>20+<sup>
 
-EntryIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-InsightIntentDecorator.md#intentdecoratorinfo). It is used to describe parameters supported by the [@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry) decorator, such as the intent execution mode.
+Describes the parameters supported by the [@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry) decorator, such as the intent execution mode.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -131,6 +160,85 @@ EntryIntentInfo inherits from [IntentDecoratorInfo](./js-apis-app-ability-Insigh
 | -------- | -------- | -------- | -------- |-------- |
 | abilityName | string | Yes| No| Ability name.|
 | executeMode | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[] | Yes| No| Intent execution mode. that is, execution mode supported when the bound ability is started.|
+
+## SubIntentInfoForConfiguration<sup>23+<sup>
+
+Describes the unique information of the [intent developed using a configuration file](../../application-models/insight-intent-config-development.md).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- |-------- |
+| srcEntry | string | Yes| No| Relative path of the intent execution file. The value is a string of a maximum of 127 bytes.|
+| inputParams | Array&lt;Record\<string, Object\>&gt; | Yes| Yes| Data format of intent parameters, which is used to define the input data format during intent calls.|
+| outputParams | Array&lt;Record\<string, Object\>&gt; | Yes| Yes| Data format for the results returned by intent calls. It defines how the data should be structured.|
+| uiAbility | [UIAbilityIntentInfo](#uiabilityintentinfo23) | Yes| Yes| Information about the UIAbility bound to the intent, including the **ability** and **executeMode** fields.|
+| uiExtension | [UIExtensionIntentInfo](#uiextensionintentinfo23) | Yes| Yes| Information about the UIExtensionAbility bound to the intent.|
+| from | [FormIntentInfo](#formintentinfo20) | Yes| Yes| Information about the widget bound to the intent.|
+| serviceExtension | [ServiceExtensionIntentInfo](#serviceextensionintentinfo23) | Yes| Yes| Information about the ServiceExtensionAbility bound to the intent.|
+| entities | Record\<string, Object\> | Yes| Yes| Entity information contained in the intent.|
+
+## UIAbilityIntentInfo<sup>23+<sup>
+
+Describes the information of the UIAbility bound to the [intent developed using a configuration file](../../application-models/insight-intent-config-development.md).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | Yes| No| Name of the UIAbility bound to the intent.|
+| executeMode | [ExecuteModeForConfiguration](#executemodeforconfiguration23)[] | Yes| No| Intent execution mode.|
+
+## UIExtensionIntentInfo<sup>23+<sup>
+
+Describes the information of the UIExtensionAbility bound to the [intent developed using a configuration file](../../application-models/insight-intent-config-development.md).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | Yes| No| Name of the UIExtensionAbility bound to the intent.|
+
+## ServiceExtensionIntentInfo<sup>23+<sup>
+
+Describes the information of the ServiceExtensionAbility bound to the [intent developed using a configuration file](../../application-models/insight-intent-config-development.md).
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- |-------- |
+| abilityName | string | Yes| No| Name of the ServiceExtensionAbility bound to the intent.|
+
+## DevelopType<sup>23+<sup>
+
+Enumerates the modes that define how an intent is developed.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+| Name| Value| Description|
+| -------- | -------- | -------- |
+| CONFIGURATION  | 'configuration' | The intent is developed using a configuration file.|
+| DECORATOR | 'decorator' | The intent is developed using a decorator.|
 
 ## EntityInfo<sup>20+<sup>
 
@@ -173,10 +281,13 @@ Defines the intent information, which is the specific parameter configuration of
 | icon | string | Yes| No| Icon of the intent.|
 | llmDescription | string | Yes| No| Function of an intent, which helps large language models understand the intent.|
 | keywords | string[] | Yes| No| Search keywords for the intent.|
-| intentType | [InsightIntentType](#insightintenttype20) | Yes| No| Type of intent defined by the intent decorator.|
-| subIntentInfo | [LinkIntentInfo](#linkintentinfo20) \| [PageIntentInfo](#pageintentinfo20) \| [FunctionIntentInfo](#functionintentinfo20) \| [FormIntentInfo](#formintentinfo20) \| [EntryIntentInfo](#entryintentinfo20) | Yes| No| Intent information for specific intent decorators.|
+| intentType | [InsightIntentType](#insightintenttype20) | Yes| No| Type of intent defined by the intent decorator.<br>**NOTE**<br>For intents developed using a configuration file, the return value of this field is [@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry) by default.|
+| subIntentInfo | [LinkIntentInfo](#linkintentinfo20) \| [PageIntentInfo](#pageintentinfo20) \| [FunctionIntentInfo](#functionintentinfo20) \| [FormIntentInfo](#formintentinfo20) \| [EntryIntentInfo](#entryintentinfo20) | Yes| No| Intent information for specific intent decorators.<br>**NOTE**<br>For intents developed using a configuration file, the return value of this field is [EntryIntentInfo](#entryintentinfo20) by default.|
 | parameters | Record<string, Object> | Yes| No| Data format of intent parameters, which is used to define the input data format during intent calls.|
+| result | Record<string, Object> | Yes| No| Execution result returned.|
 | entities | Array&lt;[EntityInfo](#entityinfo20)&gt; | Yes| No| Entity information contained in the intent.|
+| subIntentInfoForConfiguration<sup>23+</sup> | [SubIntentInfoForConfiguration](#subintentinfoforconfiguration23) | Yes| Yes| Unique information about the intent developed using a configuration file.|
+| developType<sup>23+</sup> | [DevelopType](#developtype23) | Yes| Yes| Development mode of the intent.|
 
 ## GetInsightIntentFlag<sup>20+<sup>
 
@@ -189,6 +300,11 @@ Enumerates the flags of intent information ([InsightIntentInfo](#insightintentin
 | GET_FULL_INSIGHT_INTENT | 0x00000001 | Used to query all intent information (except entities) in [InsightIntentInfo](#insightintentinfo20). To query entities information, use **GET_ENTITY_INFO**.|
 | GET_SUMMARY_INSIGHT_INTENT | 0x00000002 | Used to query brief intent information in [InsightIntentInfo](#insightintentinfo20).|
 | GET_ENTITY_INFO | 0x00000004 | Used to query [EntityInfo](#entityinfo20). It must be used together with **GET_FULL_INSIGHT_INTENT** or **GET_SUMMARY_INSIGHT_INTENT**. Example usage: `GET_FULL_INSIGHT_INTENT \| GET_ENTITY_INFO`.|
+
+> **NOTE**
+>
+>  - For intents developed using a configuration file, the full and brief information queried through the preceding APIs are the same.
+>  - For intents developed using a decorator, the full and brief information queried through the preceding APIs are different, as described below.
 
 Table 1 Differences between full intent information and brief intent information
    
@@ -209,6 +325,8 @@ Table 1 Differences between full intent information and brief intent information
 | subIntentInfo | Yes| Yes|
 | parameters | Yes| Yes|
 | entities | No| No|
+| developType<sup>23+</sup> | Yes| Yes|
+| subIntentInfoForConfiguration<sup>23+</sup> | No| No|
 
 ## insightIntentDriver.execute
 
@@ -554,4 +672,69 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
       hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByIntentName error caught %{public}s', JSON.stringify(error));
     }
   }
+```
+
+## insightIntentDriver.getInsightIntentInfoByFilter<sup>23+<sup>
+
+getInsightIntentInfoByFilter(filter: InsightIntentInfoFilter): Promise<Array\<InsightIntentInfo>>
+
+Obtains the intent information on the current device based on the given intent filter. This API uses a promise to return the result.<br>If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Parameters**
+
+| Name                 | Type                                                 | Mandatory| Description                    |
+| ----------------------- | ----------------------------------------------------- | ---- | ------------------------ |
+| filter | [InsightIntentInfoFilter](#insightintentinfofilter23) | Yes  | Intent filter, which specifies the criteria for selecting a target intent. It is used to filter intents on the device that meet these criteria.|
+
+**Return value**
+
+| Type                                                      | Description                               |
+| ---------------------------------------------------------- | ----------------------------------- |
+| Promise<Array\<[InsightIntentInfo](#insightintentinfo20)>> | Promise used to return an array holding InsightIntentInfo objects.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied.                                           |
+| 202      | Not system application.                                      |
+| 16000050 | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module.|
+
+**Example**
+
+```ts
+import { insightIntentDriver } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+function getInfoByFilter() {
+  let filter: insightIntentDriver.InsightIntentInfoFilter = {
+    intentFlags: insightIntentDriver.GetInsightIntentFlag.GET_FULL_INSIGHT_INTENT | insightIntentDriver.GetInsightIntentFlag.GET_ENTITY_INFO,
+    bundleName: 'com.example.intent', // Use the actual bundle name.
+    moduleName: 'entry', // Use the actual module name.
+    intentName: 'play', // Use the actual intent name.
+    userId: 100, // Use the actual user ID.
+  };
+
+  try {
+    insightIntentDriver.getInsightIntentInfoByFilter(filter).then((data) => {
+      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter return %{public}s', JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter errCode: %{public}d', err.code);
+      hilog.info(0x0000, 'testTag', 'getInsightIntentInfoByFilter errMessage: %{public}s', err.message);
+    });
+  } catch (error) {
+    hilog.error(0x0000, 'testTag', 'getInsightIntentInfoByFilter error caught %{public}s', JSON.stringify(error));
+  }
+}
 ```

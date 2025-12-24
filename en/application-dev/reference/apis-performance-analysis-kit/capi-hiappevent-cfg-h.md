@@ -35,7 +35,7 @@ Defines the configuration items of the event logging configuration function. If 
 
 ### DISABLE
 
-```
+```c
 #define DISABLE "disable"
 ```
 
@@ -47,7 +47,7 @@ Whether to disable event logging. The default value is **false**. The value **tr
 
 ### MAX_STORAGE
 
-```
+```c
 #define MAX_STORAGE "max_storage"
 ```
 

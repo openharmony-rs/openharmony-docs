@@ -189,7 +189,7 @@ To ensure that event callbacks can be successfully received in the development p
    }
    ```
 
-8. In DevEco Studio, click the **Run** button to run the project. Then, click the **testHiCollieTimerNdk** button to trigger a task execution timeout event.
+8. In DevEco Studio, click the **Run** button to run the project. Then, click the **TestHiCollieTimerNdk** button to trigger a task execution timeout event.
 
 ### Verifying the Subscription
 

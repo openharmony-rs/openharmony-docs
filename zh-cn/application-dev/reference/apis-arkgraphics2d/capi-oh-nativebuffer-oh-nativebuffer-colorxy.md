@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-typedef struct {...} OH_NativeBuffer_ColorXY
+typedef struct OH_NativeBuffer_ColorXY {...} OH_NativeBuffer_ColorXY
 ```
 ## 概述
 

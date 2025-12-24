@@ -8,7 +8,7 @@
 
 - ArkTS API<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager（账户管理）](js-apis-enterprise-accountManager.md)
-  - [@ohos.enterprise.adminManager (企业设备管理)](js-apis-enterprise-adminManager.md)
+  - [@ohos.enterprise.adminManager（admin权限管理）](js-apis-enterprise-adminManager.md)
   - [@ohos.enterprise.applicationManager（应用管理）](js-apis-enterprise-applicationManager.md)
   - [@ohos.enterprise.bluetoothManager（蓝牙管理）](js-apis-enterprise-bluetoothManager.md)
   - [@ohos.enterprise.browser（浏览器管理）](js-apis-enterprise-browser.md)
@@ -28,7 +28,7 @@
   - [@ohos.enterprise.telephony（通话管理）](js-apis-enterprise-telephonyManager.md)
   <!--Del-->
   - [@ohos.enterprise.accountManager（账户管理）(系统接口)](js-apis-enterprise-accountManager-sys.md)
-  - [@ohos.enterprise.adminManager (企业设备管理)(系统接口)](js-apis-enterprise-adminManager-sys.md)
+  - [@ohos.enterprise.adminManager（admin权限管理）(系统接口)](js-apis-enterprise-adminManager-sys.md)
   - [@ohos.enterprise.applicationManager（应用管理）(系统接口)](js-apis-enterprise-applicationManager-sys.md)
   - [@ohos.enterprise.bluetoothManager（蓝牙管理）(系统接口)](js-apis-enterprise-bluetoothManager-sys.md)
   - [@ohos.enterprise.browser（浏览器管理）(系统接口)](js-apis-enterprise-browser-sys.md)

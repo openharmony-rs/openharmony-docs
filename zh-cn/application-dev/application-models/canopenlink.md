@@ -41,6 +41,7 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
     import { bundleManager } from '@kit.AbilityKit';
     import { BusinessError } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
+
     try {
       let link = 'app1Scheme://test.example.com/home';
       let canOpen = bundleManager.canOpenLink(link);
@@ -64,7 +65,9 @@ canOpenLink是[bundleManager](../reference/apis-ability-kit/js-apis-bundleManage
         "skills": [
           {
             // actions不能为空，actions为空会造成目标方匹配失败
-            "actions": ["ohos.want.action.home"],
+            "actions": [
+              "ohos.want.action.home"
+            ],
             "uris": [
               {
                 "scheme": "app1Scheme",

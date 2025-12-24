@@ -306,12 +306,12 @@ publish(data: ProxyData[], config: DataProxyConfig): Promise&lt;DataProxyResult[
 const newConfigData: dataShare.ProxyData[] = [{
   uri: 'datashareproxy://com.example.app1/config1',
   value: 'Value1',
-  allowList: ['com.example.app2', 'com.example.app3'],
+  allowList: ['appIdentifier2', 'appIdentifier3'], //此处字符串仅作示例，使用时需替换为应用实际的appIdentifier
 }, {
   uri: 'datashareproxy://com.example.app1/config2',
   value: 'Value2',
-  allowList: ['com.example.app3', 'com.example.app4'],
-},];
+  allowList: ['appIdentifier3', 'appIdentifier4'], //此处字符串仅作示例，使用时需替换为应用实际的appIdentifier
+}];
 const config: dataShare.DataProxyConfig = {
   type: dataShare.DataProxyType.SHARED_CONFIG,
 };

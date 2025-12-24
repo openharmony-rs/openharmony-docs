@@ -6,7 +6,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 ```c
-typedef struct {...} OH_OnFrameAvailableListener
+typedef struct OH_OnFrameAvailableListener {...} OH_OnFrameAvailableListener
 ```
 
 ## 概述

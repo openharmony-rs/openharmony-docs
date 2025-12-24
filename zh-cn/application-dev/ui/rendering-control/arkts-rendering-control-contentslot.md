@@ -36,7 +36,7 @@ abstract class Content {
 |[OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontentevent_getnodecontenthandle)|获取触发上下树事件的Content对象。|
 |[OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_setuserdata)|在Content上设置用户自定义属性。|
 |[OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_getuserdata)|在Content上获取用户自定义属性。|
-|[typedef enum {<br>   NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} ArkUI_NodeContentEventType](../../reference/apis-arkui/capi-native-node-h.md#arkui_nodecontenteventtype)|Content上会触发的上树和下树事件类型。|
+|typedef enum {<br>   NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} [ArkUI_NodeContentEventType](../../reference/apis-arkui/capi-native-node-h.md#arkui_nodecontenteventtype)|Content上会触发的上树和下树事件类型。|
 
 ## 开发实现
 

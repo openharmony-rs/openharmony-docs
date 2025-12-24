@@ -32,7 +32,7 @@ This file defines the error codes for the cloud disk management module.
 
 ### CloudDisk_ErrorCode
 
-```
+```c
 enum CloudDisk_ErrorCode
 ```
 

@@ -29,7 +29,7 @@
 
    **编译配置**
 
-   ```
+   ```txt
    # the minimum version of CMake.
    cmake_minimum_required(VERSION 3.5.0)
    project(napi_wrap_demo)

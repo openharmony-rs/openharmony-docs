@@ -164,7 +164,9 @@ reverse(isReversed: Optional\<boolean\>)
 
 ## 示例
 
-设置水平方向的布局属性，如间距、对齐方式等。
+### 示例1（设置Row组件的布局属性）
+
+本示例展示设置Row组件的布局属性，如间距、对齐方式等属性后的效果。
 
 ```json
 // resources/base/element/string.json
@@ -230,3 +232,33 @@ struct RowExample {
 ```
 
 ![row](figures/row.png)
+
+### 示例2（设置反转属性）
+
+本示例展示设置Row组件的reverse属性后的效果。
+
+```ts
+@Entry
+@Component
+struct RowReverseSample {
+  build() {
+    Row() {
+      Text("1")
+        .width(100)
+        .height(50)
+        .backgroundColor(0xAFEEEE)
+
+      Text("2")
+        .width(100)
+        .height(50)
+        .backgroundColor(0x00FFFF)
+    }
+    .height(100)
+    .width(300)
+    .border({ width: 1 })
+    .reverse(true)
+  }
+}
+```
+
+![row](figures/row_reverse.png)

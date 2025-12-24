@@ -94,7 +94,7 @@ The following describes how to add a button in the application and click the but
        HiCollie_SetTimerParam param = {"testTimer", 1, CallBack, nullptr, HiCollie_Flag::HICOLLIE_FLAG_LOG};
        HiCollie_ErrorCode errorCode = OH_HiCollie_SetTimer(param, &id);  // Register a HiCollieTimer function to execute a one-off timeout detection task.
        if (errorCode == HICOLLIE_SUCCESS) {  // The HiCollieTimer task is successfully registered.
-           OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Log the task ID.
+           OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Print the task ID.
            sleep (2); // Simulate a time-consuming function to block the thread for 2s.
            OH_HiCollie_CancelTimer (id); // Cancel the registered timer based on the ID.
        }
@@ -151,7 +151,7 @@ The following describes how to add a button in the application and click the but
 
 7. At the bottom of DevEco Studio, switch to the **Log** tab, choose **HiLog** and set the filter criteria to **testTag**.
 
-   (1) Click the **testHiCollieTimerNdk** button to execute the timer, and the task ID is logged.
+   (1) Click the **TestHiCollieTimerNdk** button to execute the timer, and the task ID is logged.
 
    ```
    .../testTag ... HiCollieTimer taskId: x

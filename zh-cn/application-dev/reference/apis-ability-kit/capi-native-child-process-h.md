@@ -90,8 +90,8 @@ enum Ability_NativeChildProcess_ErrCode
 | NCP_ERR_MAX_CHILD_PROCESSES_REACHED = 16010006 | 到达最大Native子进程数量限制，不能再创建子进程。 |
 | NCP_ERR_LIB_LOADING_FAILED = 16010007 | 子进程加载动态库失败，文件不存在或者未实现对应的方法并导出。 |
 | NCP_ERR_CONNECTION_FAILED = 16010008 | 子进程调用动态库的OnConnect方法失败，可能返回了无效的IPC对象指针。 |
-| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | 父进程调用解注册Native子进程退出回调，未找到注册的回调函数。 |
-| NCP_ERR_INVALID_PID = 16010010 | 该进程pid不存在，或并非当前进程的子进程pid，或属于[childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程。 |
+| NCP_ERR_CALLBACK_NOT_EXIST = 16010009 | 父进程调用解注册Native子进程退出回调，未找到注册的回调函数。<br>**起始版本：** 20 |
+| NCP_ERR_INVALID_PID = 16010010 | 该进程pid不存在，或并非当前进程的子进程pid，或属于[childProcessManager.startChildProcess](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartchildprocess)接口在SELF_FORK模式下启动的子进程。 <br>**起始版本：** 22|
 
 ### NativeChildProcess_IsolationMode
 

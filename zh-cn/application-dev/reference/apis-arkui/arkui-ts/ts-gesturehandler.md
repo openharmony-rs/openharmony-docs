@@ -118,14 +118,12 @@ onAction(event: Callback\<GestureEvent>): TapGestureHandler
 
 点击手势处理器配置参数。继承自[BaseHandlerOptions](#basehandleroptions15)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称         | 类型                                  | 只读 | 可选 | 说明                 |
 | ------------ | -------------------------------------|------ | ---- | -------------------- |
-| count | number | 否 | 是 | 识别的连续点击次数。当设置的值小于1或不设置时，会被转化为默认值。<br/>默认值：1<br/>取值范围：[0, +∞)<br/>**说明：**<br/>1. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。<br/>2. 当上次点击的位置与当前点击的位置距离超过60vp时，手势识别失败。|
-| fingers | number | 否 | 是 | 触发点击的手指数，最小为1指，&nbsp;最大为10指。当设置小于1的值或不设置时，会被转化为默认值。<br/>默认值：1<br/>**说明：**<br/>1. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败，第一根手指抬起后300毫秒内未有足够的手指抬起，手势识别失败。<br/>2. 实际点击手指数超过配置值，手势识别成功。 |
+| count | number | 否 | 是 | 识别的连续点击次数。当设置的值小于1或不设置时，会被转化为默认值。<br/>默认值：1<br/>取值范围：[0, +∞)<br/>**说明：**<br/>1. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。<br/>2. 当上次点击的位置与当前点击的位置距离超过60vp时，手势识别失败。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| fingers | number | 否 | 是 | 触发点击的手指数，最小为1指，&nbsp;最大为10指。当设置小于1的值或不设置时，会被转化为默认值。<br/>默认值：1<br/>**说明：**<br/>1. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败，第一根手指抬起后300毫秒内未有足够的手指抬起，手势识别失败。<br/>2. 实际点击手指数超过配置值，手势识别成功。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | isFingerCountLimited<sup>15+</sup> | boolean | 否 | 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。如果触摸手指的数量不等于设置的触发点击的手指数（即上述fingers参数），那么该手势识别失败。<br>在多击事件中（上述count参数大于1），需要每一次点击的手指数都等于设置的触发点击的手指数，否则该手势识别失败。<br>默认值：false<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | distanceThreshold<sup>23+</sup> | number | 否 | 是 | 点击手势移动阈值。当设置的值小于等于0或不设置时，会被转化为默认值。<br/>默认值：2^31-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
@@ -249,7 +247,7 @@ onActionCancel(event: Callback\<GestureEvent>): LongPressGestureHandler
 | fingers | number | 否| 是 | 触发长按的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1 <br/>取值范围：[1, 10]<br/> **说明：** <br/>手指按下后若发生超过15px的移动，则判定当前长按手势识别失败。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | repeat | boolean | 否| 是 | 是否连续触发事件回调。true表示为连续触发事件回调，false表示不连续触发事件回调。<br/>默认值：false <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | duration | number | 否| 是 | 触发长按的最短时间，单位为毫秒（ms）。<br/>默认值：500 <br/>**说明：** <br/>取值范围：[0, +∞)，设置小于等于0时，按照默认值500处理。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| isFingerCountLimited<sup>15+</sup> | boolean | 否| 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。若触摸屏幕的手指的数量不等于设置的触发长按的最少手指数（即上述fingers参数），手势识别将失败。<br>对于已成功识别的手势，后续触摸屏幕的手指数变化，将不触发repeat事件（若触摸屏幕的手指数恢复到设置的触发长按的最少手指数时，可以触发[onAction](ts-basic-gestures-longpressgesture.md#事件)事件），但可以触发[onActionEnd](ts-basic-gestures-longpressgesture.md#事件)事件。<br>默认值：false<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| isFingerCountLimited<sup>15+</sup> | boolean | 否| 是 | 是否检查触摸屏幕的手指数量。true表示检查触摸屏幕的手指数量，false表示不检查触摸屏幕的手指数量。若触摸屏幕的手指的数量不等于设置的触发长按的最少手指数（即上述fingers参数），手势识别将失败。<br>对于已成功识别的手势，后续触摸屏幕的手指数变化，将不触发repeat事件（若触摸屏幕的手指数恢复到设置的触发长按的最少手指数时，可以触发[onAction](ts-basic-gestures-longpressgesture.md#onaction)事件），但可以触发[onActionEnd](ts-basic-gestures-longpressgesture.md#onactionend)事件。<br>默认值：false<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | allowableMovement<sup>22+</sup> | number | 否| 是 | 长按手势识别器识别的手势的最大移动距离，单位为px。<br>默认值：15 <br/>取值范围：(0, +∞)，设置小于等于0时，按照默认值15处理。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 
 ## PanGestureHandler
@@ -795,8 +793,8 @@ onCancel(event: Callback\<void>): GestureGroupHandler
 
 | 名称         | 类型                               | 只读    | 可选 | 说明                 |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
-| mode    | [GestureMode](./ts-combined-gestures.md#gesturemode枚举说明)                        | 否 | 否   | 设置组合手势识别模式。<br/>默认值：GestureMode.Sequence      |
-| gestures | [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[] | 否 | 否   | 手势组下需要包含的手势。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在组合手势中添加两个TapGesture，需要双击手势在前，单击手势在后，否则不生效。 |
+| mode    | [GestureMode](./ts-combined-gestures.md#gesturemode枚举说明)                        | 否 | 否   | 设置[组合手势](ts-combined-gestures.md)识别模式。<br/>默认值：GestureMode.Sequence      |
+| gestures | [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[] | 否 | 否   | 手势组下需要包含的手势。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在[组合手势](ts-combined-gestures.md)中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
 
 ## GesturePriority枚举说明
 

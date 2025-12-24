@@ -17,7 +17,7 @@
     - [Using ImagePacker to Encode Pictures](image-picture-encoding.md)
   - Image Editing and Processing<!--image-editing-arkts-->
     - [Using PixelMap to Transform Images](image-transformation.md)
-    - [Using PixelMap for PixelMap Operations](image-pixelmap-operation.md)
+    - [Using PixelMap for PixelMap Operations](image-pixelmap-operation.md)<!--RP1--><!--RP1End-->
     - [Editing Exif Data](image-tool.md)
   - Image Receiving<!--image-receiving-arkts-->
     - [Using ImageReceiver to Receive Images](image-receiver.md)
@@ -31,11 +31,10 @@
     - [Using Image_NativeModule to Encode Pictures](image-packer-picture-c.md)
   - Image Editing and Processing<!--image-editing-c-->
     - [Using Image_NativeModule for PixelMap Operations](pixelmap-c.md)
-    - [Using ImageEffect to Edit Images](image-effect-guidelines.md)
+    - [Using ImageEffect to Edit Images](image-effect-guidelines.md)<!--RP2--><!--RP2End-->
     - [Using Image_NativeModule to Edit Exif Data](image-tool-c.md)
   - Image Receiving<!--image-receiving-c-->
     - [Using Image_NativeModule to Receive Images](image-receiver-c.md)
-    - [Using Image_NativeModule to Process Image Information](image-info-c.md)
 - FAQs About Image Kit<!--image-faqs-->
   - [Handling HEIF Images](image-faqs/heif-adapter-faq.md)
   - [Obtaining the Rotation Angle of an Image](image-faqs/image-rotate-faq.md)

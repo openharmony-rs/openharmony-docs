@@ -36,7 +36,7 @@ Defines the names of all predefined event parameters. In addition to custom even
 
 ### PARAM_USER_ID
 
-```
+```c
 #define PARAM_USER_ID "user_id"
 ```
 
@@ -48,7 +48,7 @@ User ID.
 
 ### PARAM_DISTRIBUTED_SERVICE_NAME
 
-```
+```c
 #define PARAM_DISTRIBUTED_SERVICE_NAME "ds_name"
 ```
 
@@ -60,7 +60,7 @@ Distributed service name.
 
 ### PARAM_DISTRIBUTED_SERVICE_INSTANCE_ID
 
-```
+```c
 #define PARAM_DISTRIBUTED_SERVICE_INSTANCE_ID "ds_instance_id"
 ```
 

@@ -51,6 +51,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 | ------- | -------------------------------- |
 | 201      | Permission denied.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.|
 
 **示例：**
 
@@ -58,7 +59,6 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
 
    ```ts
    import { abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
-   import { common } from '@kit.AbilityKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
  
    let dmClass: distributedDeviceManager.DeviceManager;
@@ -97,7 +97,7 @@ createAbilityConnectionSession(serviceName:&nbsp;string,&nbsp;context:&nbsp;Cont
      createSession(): void {
        // 定义peer信息
        const peerInfo: abilityConnectionManager.PeerInfo = {
-         deviceId: "sinkDeviceId",
+         deviceId: getRemoteDeviceId()!,
          bundleName: 'com.example.remotephotodemo',
          moduleName: 'entry',
          abilityName: 'EntryAbility',

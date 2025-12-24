@@ -244,6 +244,8 @@ Failed to install the HAP since the version of the HAP to install is too early.
 
     ![示例图](figures/hap_verisonCode.PNG)
 
+3. 对于已安装的签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用，当新安装的版本低于当前版本时，支持降级安装，具体参数配置可参考[InstallParam](js-apis-installer-sys.md#installparam)中parameters描述。
+
 ## 17700018 安装失败，依赖的模块不存在
 
 **错误信息**<br/>
@@ -333,17 +335,13 @@ Failed to get the profile because the specified profile is not found in the HAP.
 
 **可能原因**<br/>
 1. 输入的metadata name在配置文件中不存在。
-2. 配置文件的内容不是json格式。
-<!--Del-->
-3. 查询的配置文件类型不存在。
-<!--DelEnd-->
+2. 配置文件的内容不是json格式。<!--Del-->
+3. 查询的配置文件类型不存在。<!--DelEnd-->
 
 **处理步骤**<br/>
 1. 确认要查询的ability或者extensionAbility中的metadata name是否存在。
-2. 确认指定查询的profile文件的内容是否为json格式。
-<!--Del-->
-3. 确认应用中是否存在与查询的profileType类型相符的配置文件。
-<!--DelEnd-->
+2. 确认指定查询的profile文件的内容是否为json格式。<!--Del-->
+3. 确认应用中是否存在与查询的profileType类型相符的配置文件。<!--DelEnd-->
 <!--Del-->
 ## 17700025 输入的type无效
 

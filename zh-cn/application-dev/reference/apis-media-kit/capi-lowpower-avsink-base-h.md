@@ -40,7 +40,7 @@
 
 ### OH_AVSamplesBuffer_AppendOneBuffer()
 
-```
+```c
 OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffer, OH_AVBuffer *avBuffer)
 ```
 
@@ -65,7 +65,7 @@ OH_AVErrCode OH_AVSamplesBuffer_AppendOneBuffer(OH_AVSamplesBuffer *samplesBuffe
 
 ### OH_AVSamplesBuffer_GetRemainedCapacity()
 
-```
+```c
 int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer)
 ```
 
@@ -89,7 +89,7 @@ int32_t OH_AVSamplesBuffer_GetRemainedCapacity(OH_AVSamplesBuffer *samplesBuffer
 
 ### OH_LowPowerAVSink_GetCapability()
 
-```
+```c
 OH_LowPowerAVSink_Capability *OH_LowPowerAVSink_GetCapability()
 ```
 

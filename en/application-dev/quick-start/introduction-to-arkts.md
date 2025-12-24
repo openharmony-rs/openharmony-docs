@@ -156,11 +156,15 @@ let instance: Class<void>;
 
 **Object type**
 
-An Object type is a base type for all reference types. Any value, including values of primitive types (they will be automatically boxed), can be directly assigned to variables of the type Object. The Object type is used to represent types other than the primitive types.
+An Object type is a base type for all reference types. Any value, including values of primitive types (they will be automatically boxed), can be directly assigned to variables of the type Object.
+
+The Object type is used to represent types other than the primitive types.
+
 ```typescript
 let o1: Object = 'Alice';
 let o2: Object = ['a', 'b'];
 let o3: Object = 1;
+let o4: object = [1, 2, 3];
 ```
 
 **Array type**
@@ -270,7 +274,7 @@ let emptyData: NullableObject = null;
 
 ### Operators
 
-Assignment operators
+**Assignment operators**
 
 Simple assignment operator **=** is used as in **x = y**.
 
@@ -368,7 +372,7 @@ if (bird instanceof Animal) {
 
 ### Statements
 
-**If statement**
+**if statement**
 
 An **if** statement is used to execute a sequence of statements when a logical condition is true, or another set of statements (if provided) otherwise.
 The **else** part can also contain more **if** statements.
@@ -399,7 +403,7 @@ if (s2.length != 0) {
 }
 ```
 
-**Switch statement**
+**switch statement**
 
 A **switch** statement is used to execute a sequence of statements that match the value of a **switch** expression.
 
@@ -462,7 +466,7 @@ Example:
     console.info(undefined ? 'true' : 'false'); // false
 ```
 
-**For statement**
+**for statement**
 
 The **for** statement is executed repeatedly until the specified loop exit condition result is **false**.
 
@@ -491,7 +495,7 @@ for (let i = 0; i < 10; i += 2) {
 }
 ```
 
-**For-of statement**
+**for-of statement**
 
 You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. A **for-of** statement looks as follows:
 
@@ -509,7 +513,7 @@ for (let ch of 'a string object') {
 }
 ```
 
-**While statement**
+**while statement**
 
 The **while** statement executes **statements** as long as the value of **condition** is **true**. A **while** statement looks as follows:
 
@@ -530,7 +534,7 @@ while (n < 3) {
 }
 ```
 
-**Do-while statement**
+**do-while statement**
 
 If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. A **do-while** statement looks as follows:
 
@@ -549,7 +553,7 @@ do {
 } while (i < 10)
 ```
 
-**Break statement**
+**break statement**
 
 A **break** statement is used to terminate any loop statement or the **switch** statement.
 
@@ -580,7 +584,7 @@ label: while (true) {
 }
 ```
 
-**Continue statement**
+**continue statement**
 
 A **continue** statement stops the execution of the current loop iteration and passes control to the next iteration.
 
@@ -596,7 +600,7 @@ for (let x = 0; x < 100; x++) {
 }
 ```
 
-**Throw and Try statements**
+**throw and try statements**
 
 A **throw** statement is used to throw an exception or an error:
 
@@ -708,7 +712,7 @@ multiply(2, 3); // Return 2*3.
 
 ### Rest Parameter
 
-The last parameter of a function can be a rest parameter in the format of **...restArgs**. It allows functions to take unlimited number of arguments of any specified type.
+The last parameter of a function can be a rest parameter in the format of **...restName: Type[]**. It allows a function to receive a variable-length array for processing variable-quantity parameter inputs.
 
 ```typescript
 function sum(...numbers: number[]): number {
@@ -1136,7 +1140,7 @@ class MyDate implements DateInterface {
 
 **Access to super**
 
-The keyword **super** can be used to access instance fields, instance methods and constructors from the super class. It is often used to extend basic functionality of child class with the required behavior taken from the super class:
+The **super** keyword can be used to access the methods and constructors of the super class. It is often used to extend basic functionality of child class with the required behavior taken from the super class:
 
 ```typescript
 class RectangleSize {
@@ -1161,7 +1165,6 @@ class FilledRectangle extends RectangleSize {
 
   draw() {
     super.draw(); // Call of the super method.
-    // super.height can be used here.
     /* Fill the rectangle. */
   }
 }

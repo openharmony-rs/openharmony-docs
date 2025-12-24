@@ -16,6 +16,8 @@
 
 animate( keyframes: Keyframes, options: Options)：void
 
+设置动画样式和动画属性的对象列表。
+
 **参数：** 
 
 | 参数名       | 类型      | 必填   | 说明                                   |

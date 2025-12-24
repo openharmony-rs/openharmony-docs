@@ -24,12 +24,15 @@
   - 模块<!--localization-module-->
     - [rawfile](capi-rawfile.md)
     - [resourcemanager](capi-resourcemanager.md)
+    - [i18n](capi-i18n.md)
   - 头文件<!--localization-headerfile-->
     - [ohresmgr.h](capi-ohresmgr-h.md)
     - [raw_dir.h](capi-raw-dir-h.md)
     - [raw_file.h](capi-raw-file-h.md)
     - [raw_file_manager.h](capi-raw-file-manager-h.md)
     - [resmgr_common.h](capi-resmgr-common-h.md)
+    - [timezone.h](capi-timezone-h.md)
+    - [errorcode.h](capi-errorcode-h.md)
   - 结构体<!--localization-struct-->
     - [RawDir](capi-rawfile-rawdir.md)
     - [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md)
@@ -38,6 +41,12 @@
     - [RawFile64](capi-rawfile-rawfile64.md)
     - [NativeResourceManager](capi-rawfile-nativeresourcemanager.md)
     - [ResourceManager_Configuration](capi-resourcemanager-resourcemanager-configuration.md)
+    - [DateTimeRule](capi-i18n-datetimerule.md)
+    - [InitialTimeZoneRule](capi-i18n-initialtimezonerule.md)
+    - [TimeArrayTimeZoneRule](capi-i18n-timearraytimezonerule.md)
+    - [AnnualTimeZoneRule](capi-i18n-annualtimezonerule.md)
+    - [TimeZoneRules](capi-i18n-timezonerules.md)
+    - [TimeZoneRuleQuery](capi-i18n-timezonerulequery.md)
 - 错误码<!--localization-arkts-errcode-->
   - [I18n错误码](errorcode-i18n.md)
   - [资源管理错误码](errorcode-resource-manager.md)

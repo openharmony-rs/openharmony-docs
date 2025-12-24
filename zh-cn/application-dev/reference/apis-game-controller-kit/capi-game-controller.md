@@ -151,7 +151,7 @@ GameController模块提供游戏控制器功能的API接口。
 
 ### GameController_ErrorCode
 
-```
+```c
 typedef enum GameController_ErrorCodeGameController_ErrorCode
 ```
 
@@ -164,7 +164,7 @@ typedef enum GameController_ErrorCodeGameController_ErrorCode
 
 ### GameDevice_AllDeviceInfos
 
-```
+```c
 typedef struct GameDevice_AllDeviceInfosGameDevice_AllDeviceInfos
 ```
 
@@ -177,7 +177,7 @@ typedef struct GameDevice_AllDeviceInfosGameDevice_AllDeviceInfos
 
 ### GameDevice_DeviceEvent
 
-```
+```c
 typedef struct GameDevice_DeviceEventGameDevice_DeviceEvent
 ```
 
@@ -190,7 +190,7 @@ typedef struct GameDevice_DeviceEventGameDevice_DeviceEvent
 
 ### GameDevice_DeviceInfo
 
-```
+```c
 typedef struct GameDevice_DeviceInfoGameDevice_DeviceInfo
 ```
 
@@ -203,7 +203,7 @@ typedef struct GameDevice_DeviceInfoGameDevice_DeviceInfo
 
 ### GameDevice_DeviceMonitorCallback
 
-```
+```c
 typedef void(*GameDevice_DeviceMonitorCallback) (const struct GameDevice_DeviceEvent *deviceEvent)
 ```
 
@@ -222,7 +222,7 @@ typedef void(*GameDevice_DeviceMonitorCallback) (const struct GameDevice_DeviceE
 
 ### GameDevice_DeviceType
 
-```
+```c
 typedef enum GameDevice_DeviceTypeGameDevice_DeviceType
 ```
 
@@ -235,7 +235,7 @@ typedef enum GameDevice_DeviceTypeGameDevice_DeviceType
 
 ### GameDevice_StatusChangedType
 
-```
+```c
 typedef enum GameDevice_StatusChangedTypeGameDevice_StatusChangedType
 ```
 
@@ -248,7 +248,7 @@ typedef enum GameDevice_StatusChangedTypeGameDevice_StatusChangedType
 
 ### GamePad_AxisEvent
 
-```
+```c
 typedef struct GamePad_AxisEventGamePad_AxisEvent
 ```
 
@@ -261,7 +261,7 @@ typedef struct GamePad_AxisEventGamePad_AxisEvent
 
 ### GamePad_AxisInputMonitorCallback
 
-```
+```c
 typedef void(*GamePad_AxisInputMonitorCallback) (const struct GamePad_AxisEvent *axisEvent)
 ```
 
@@ -280,7 +280,7 @@ typedef void(*GamePad_AxisInputMonitorCallback) (const struct GamePad_AxisEvent 
 
 ### GamePad_AxisSourceType
 
-```
+```c
 typedef enum GamePad_AxisSourceType
 ```
 
@@ -293,7 +293,7 @@ typedef enum GamePad_AxisSourceType
 
 ### GamePad_Button_ActionType
 
-```
+```c
 typedef enum GamePad_Button_ActionTypeGamePad_Button_ActionType
 ```
 
@@ -306,7 +306,7 @@ typedef enum GamePad_Button_ActionTypeGamePad_Button_ActionType
 
 ### GamePad_ButtonEvent
 
-```
+```c
 typedef struct GamePad_ButtonEventGamePad_ButtonEvent
 ```
 
@@ -319,7 +319,7 @@ typedef struct GamePad_ButtonEventGamePad_ButtonEvent
 
 ### GamePad_ButtonInputMonitorCallback
 
-```
+```c
 typedef void(*GamePad_ButtonInputMonitorCallback) (const struct GamePad_ButtonEvent *buttonEvent)
 ```
 
@@ -338,7 +338,7 @@ typedef void(*GamePad_ButtonInputMonitorCallback) (const struct GamePad_ButtonEv
 
 ### GamePad_PressedButton
 
-```
+```c
 typedef struct GamePad_PressedButtonGamePad_PressedButton
 ```
 
@@ -354,7 +354,7 @@ typedef struct GamePad_PressedButtonGamePad_PressedButton
 
 ### GameController_ErrorCode
 
-```
+```c
 enum GameController_ErrorCode
 ```
 
@@ -374,7 +374,7 @@ enum GameController_ErrorCode
 
 ### GameDevice_DeviceType
 
-```
+```c
 enum GameDevice_DeviceType
 ```
 
@@ -392,7 +392,7 @@ enum GameDevice_DeviceType
 
 ### GameDevice_StatusChangedType
 
-```
+```c
 enum GameDevice_StatusChangedType
 ```
 
@@ -410,7 +410,7 @@ enum GameDevice_StatusChangedType
 
 ### GamePad_AxisSourceType
 
-```
+```c
 enum GamePad_AxisSourceType
 ```
 
@@ -431,7 +431,7 @@ enum GamePad_AxisSourceType
 
 ### GamePad_Button_ActionType
 
-```
+```c
 enum GamePad_Button_ActionType
 ```
 
@@ -452,7 +452,7 @@ enum GamePad_Button_ActionType
 
 ### OH_GameDevice_AllDeviceInfos_GetCount()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount (const struct GameDevice_AllDeviceInfos *allDeviceInfos, int32_t *count)
 ```
 
@@ -480,7 +480,7 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount (const struct Gam
 
 ### OH_GameDevice_AllDeviceInfos_GetDeviceInfo()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo (const struct GameDevice_AllDeviceInfos *allDeviceInfos, const int32_t index, GameDevice_DeviceInfo **deviceInfo)
 ```
 
@@ -509,7 +509,7 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo (const struc
 
 ### OH_GameDevice_DestroyAllDeviceInfos()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos (GameDevice_AllDeviceInfos **allDeviceInfos)
 ```
 
@@ -536,7 +536,7 @@ GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos (GameDevice_AllDevi
 
 ### OH_GameDevice_DestroyDeviceInfo()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo (GameDevice_DeviceInfo **deviceInfo)
 ```
 
@@ -563,7 +563,7 @@ GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo (GameDevice_DeviceInfo 
 
 ### OH_GameDevice_DeviceEvent_GetChangedType()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType (const struct GameDevice_DeviceEvent *deviceEvent, GameDevice_StatusChangedType *statusChangedType)
 ```
 
@@ -591,7 +591,7 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType (const struct 
 
 ### OH_GameDevice_DeviceEvent_GetDeviceInfo()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo (const struct GameDevice_DeviceEvent *deviceEvent, GameDevice_DeviceInfo **deviceInfo)
 ```
 
@@ -619,7 +619,7 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo (const struct G
 
 ### OH_GameDevice_DeviceInfo_GetDeviceId()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId (const struct GameDevice_DeviceInfo *deviceInfo, char **deviceId)
 ```
 
@@ -649,7 +649,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId (const struct Game
 
 ### OH_GameDevice_DeviceInfo_GetDeviceType()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType (const struct GameDevice_DeviceInfo *deviceInfo, GameDevice_DeviceType *deviceType)
 ```
 
@@ -677,7 +677,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType (const struct Ga
 
 ### OH_GameDevice_DeviceInfo_GetName()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName (const struct GameDevice_DeviceInfo *deviceInfo, char **name)
 ```
 
@@ -707,7 +707,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName (const struct GameDevi
 
 ### OH_GameDevice_DeviceInfo_GetPhysicalAddress()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress (const struct GameDevice_DeviceInfo *deviceInfo, char **physicalAddress)
 ```
 
@@ -737,7 +737,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress (const stru
 
 ### OH_GameDevice_DeviceInfo_GetProduct()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct (const struct GameDevice_DeviceInfo *deviceInfo, int32_t *product)
 ```
 
@@ -765,7 +765,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct (const struct GameD
 
 ### OH_GameDevice_DeviceInfo_GetVersion()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion (const struct GameDevice_DeviceInfo *deviceInfo, int32_t *version)
 ```
 
@@ -793,7 +793,7 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion (const struct GameD
 
 ### OH_GameDevice_GetAllDeviceInfos()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceInfos **allDeviceInfos)
 ```
 
@@ -820,7 +820,7 @@ GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceIn
 
 ### OH_GameDevice_RegisterDeviceMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceMonitorCallback deviceMonitorCallback)
 ```
 
@@ -847,7 +847,7 @@ GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceM
 
 ### OH_GameDevice_UnregisterDeviceMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void)
 ```
 
@@ -864,7 +864,7 @@ GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void)
 
 ### OH_GamePad_AxisEvent_GetActionTime()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetActionTime (const struct GamePad_AxisEvent *axisEvent, int64_t *actionTime)
 ```
 
@@ -892,7 +892,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetActionTime (const struct GamePa
 
 ### OH_GamePad_AxisEvent_GetAxisSourceType()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetAxisSourceType (const struct GamePad_AxisEvent *axisEvent, GamePad_AxisSourceType *axisSourceType)
 ```
 
@@ -920,7 +920,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetAxisSourceType (const struct Ga
 
 ### OH_GamePad_AxisEvent_GetBrakeAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetBrakeAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -948,7 +948,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetBrakeAxisValue (const struct Ga
 
 ### OH_GamePad_AxisEvent_GetDeviceId()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetDeviceId (const struct GamePad_AxisEvent *axisEvent, char **deviceId)
 ```
 
@@ -978,7 +978,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetDeviceId (const struct GamePad_
 
 ### OH_GamePad_AxisEvent_GetGasAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1006,7 +1006,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetGasAxisValue (const struct Game
 
 ### OH_GamePad_AxisEvent_GetHatXAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetHatXAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1034,7 +1034,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatXAxisValue (const struct Gam
 
 ### OH_GamePad_AxisEvent_GetHatYAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetHatYAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1062,7 +1062,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetHatYAxisValue (const struct Gam
 
 ### OH_GamePad_AxisEvent_GetRZAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetRZAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1090,7 +1090,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetRZAxisValue (const struct GameP
 
 ### OH_GamePad_AxisEvent_GetXAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetXAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1118,7 +1118,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetXAxisValue (const struct GamePa
 
 ### OH_GamePad_AxisEvent_GetYAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetYAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1146,7 +1146,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetYAxisValue (const struct GamePa
 
 ### OH_GamePad_AxisEvent_GetZAxisValue()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_AxisEvent_GetZAxisValue (const struct GamePad_AxisEvent *axisEvent, double *axisValue)
 ```
 
@@ -1174,7 +1174,7 @@ GameController_ErrorCode OH_GamePad_AxisEvent_GetZAxisValue (const struct GamePa
 
 ### OH_GamePad_ButtonA_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonA_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1201,7 +1201,7 @@ GameController_ErrorCode OH_GamePad_ButtonA_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonA_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonA_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1218,7 +1218,7 @@ GameController_ErrorCode OH_GamePad_ButtonA_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_ButtonB_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonB_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1245,7 +1245,7 @@ GameController_ErrorCode OH_GamePad_ButtonB_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonB_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonB_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1262,7 +1262,7 @@ GameController_ErrorCode OH_GamePad_ButtonB_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_ButtonC_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonC_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1289,7 +1289,7 @@ GameController_ErrorCode OH_GamePad_ButtonC_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonC_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonC_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1306,7 +1306,7 @@ GameController_ErrorCode OH_GamePad_ButtonC_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_ButtonEvent_GetActionTime()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetActionTime (const struct GamePad_ButtonEvent *buttonEvent, int64_t *actionTime)
 ```
 
@@ -1334,7 +1334,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetActionTime (const struct Game
 
 ### OH_GamePad_ButtonEvent_GetButtonAction()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonAction (const struct GamePad_ButtonEvent *buttonEvent, GamePad_Button_ActionType *actionType)
 ```
 
@@ -1362,7 +1362,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonAction (const struct Ga
 
 ### OH_GamePad_ButtonEvent_GetButtonCode()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCode (const struct GamePad_ButtonEvent *buttonEvent, int32_t *code)
 ```
 
@@ -1390,7 +1390,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCode (const struct Game
 
 ### OH_GamePad_ButtonEvent_GetButtonCodeName()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCodeName (const struct GamePad_ButtonEvent *buttonEvent, char **codeName)
 ```
 
@@ -1420,7 +1420,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetButtonCodeName (const struct 
 
 ### OH_GamePad_ButtonEvent_GetDeviceId()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId (const struct GamePad_ButtonEvent *buttonEvent, char **deviceId)
 ```
 
@@ -1450,7 +1450,7 @@ GameController_ErrorCode OH_GamePad_ButtonEvent_GetDeviceId (const struct GamePa
 
 ### OH_GamePad_ButtonHome_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonHome_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1477,7 +1477,7 @@ GameController_ErrorCode OH_GamePad_ButtonHome_RegisterButtonInputMonitor (GameP
 
 ### OH_GamePad_ButtonHome_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonHome_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1494,7 +1494,7 @@ GameController_ErrorCode OH_GamePad_ButtonHome_UnregisterButtonInputMonitor (voi
 
 ### OH_GamePad_ButtonMenu_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonMenu_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1521,7 +1521,7 @@ GameController_ErrorCode OH_GamePad_ButtonMenu_RegisterButtonInputMonitor (GameP
 
 ### OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1538,7 +1538,7 @@ GameController_ErrorCode OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor (voi
 
 ### OH_GamePad_ButtonX_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonX_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1565,7 +1565,7 @@ GameController_ErrorCode OH_GamePad_ButtonX_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonX_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonX_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1582,7 +1582,7 @@ GameController_ErrorCode OH_GamePad_ButtonX_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_ButtonY_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonY_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1609,7 +1609,7 @@ GameController_ErrorCode OH_GamePad_ButtonY_RegisterButtonInputMonitor (GamePad_
 
 ### OH_GamePad_ButtonY_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_ButtonY_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1626,7 +1626,7 @@ GameController_ErrorCode OH_GamePad_ButtonY_UnregisterButtonInputMonitor (void)
 
 ### OH_GamePad_DestroyPressedButton()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_DestroyPressedButton (GamePad_PressedButton **pressedButton)
 ```
 
@@ -1653,7 +1653,7 @@ GameController_ErrorCode OH_GamePad_DestroyPressedButton (GamePad_PressedButton 
 
 ### OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1680,7 +1680,7 @@ GameController_ErrorCode OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor (
 
 ### OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1697,7 +1697,7 @@ GameController_ErrorCode OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor
 
 ### OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1724,7 +1724,7 @@ GameController_ErrorCode OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor (
 
 ### OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1741,7 +1741,7 @@ GameController_ErrorCode OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor
 
 ### OH_GamePad_Dpad_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1768,7 +1768,7 @@ GameController_ErrorCode OH_GamePad_Dpad_RegisterAxisInputMonitor (GamePad_AxisI
 
 ### OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1795,7 +1795,7 @@ GameController_ErrorCode OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor 
 
 ### OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1812,7 +1812,7 @@ GameController_ErrorCode OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonito
 
 ### OH_GamePad_Dpad_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_UnregisterAxisInputMonitor (void)
 ```
 
@@ -1829,7 +1829,7 @@ GameController_ErrorCode OH_GamePad_Dpad_UnregisterAxisInputMonitor (void)
 
 ### OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1856,7 +1856,7 @@ GameController_ErrorCode OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor (Ga
 
 ### OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1873,7 +1873,7 @@ GameController_ErrorCode OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor (
 
 ### OH_GamePad_LeftShoulder_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftShoulder_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1900,7 +1900,7 @@ GameController_ErrorCode OH_GamePad_LeftShoulder_RegisterButtonInputMonitor (Gam
 
 ### OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor (void)
 ```
 
@@ -1917,7 +1917,7 @@ GameController_ErrorCode OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor (v
 
 ### OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1944,7 +1944,7 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor (Gam
 
 ### OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -1971,7 +1971,7 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor (G
 
 ### OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor (void)
 ```
 
@@ -1988,7 +1988,7 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor (v
 
 ### OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor (void)
 ```
 
@@ -2005,7 +2005,7 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor 
 
 ### OH_GamePad_LeftTrigger_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2032,7 +2032,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterAxisInputMonitor (GamePa
 
 ### OH_GamePad_LeftTrigger_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2059,7 +2059,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterButtonInputMonitor (Game
 
 ### OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor (void)
 ```
 
@@ -2076,7 +2076,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor (void
 
 ### OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor (void)
 ```
 
@@ -2093,7 +2093,7 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor (vo
 
 ### OH_GamePad_PressedButton_GetButtonCode()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCode (const struct GamePad_PressedButton *pressedButton, int32_t *code)
 ```
 
@@ -2121,7 +2121,7 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCode (const struct Ga
 
 ### OH_GamePad_PressedButton_GetButtonCodeName()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCodeName (const struct GamePad_PressedButton *pressedButton, char **codeName)
 ```
 
@@ -2151,7 +2151,7 @@ GameController_ErrorCode OH_GamePad_PressedButton_GetButtonCodeName (const struc
 
 ### OH_GamePad_PressedButtons_GetButtonInfo()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_PressedButtons_GetButtonInfo (const struct GamePad_ButtonEvent *buttonEvent, const int32_t index, GamePad_PressedButton **pressedButton)
 ```
 
@@ -2180,7 +2180,7 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetButtonInfo (const struct G
 
 ### OH_GamePad_PressedButtons_GetCount()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_PressedButtons_GetCount (const struct GamePad_ButtonEvent *buttonEvent, int32_t *count)
 ```
 
@@ -2208,7 +2208,7 @@ GameController_ErrorCode OH_GamePad_PressedButtons_GetCount (const struct GamePa
 
 ### OH_GamePad_RightShoulder_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightShoulder_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2235,7 +2235,7 @@ GameController_ErrorCode OH_GamePad_RightShoulder_RegisterButtonInputMonitor (Ga
 
 ### OH_GamePad_RightShoulder_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightShoulder_UnregisterButtonInputMonitor (void)
 ```
 
@@ -2252,7 +2252,7 @@ GameController_ErrorCode OH_GamePad_RightShoulder_UnregisterButtonInputMonitor (
 
 ### OH_GamePad_RightThumbstick_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2279,7 +2279,7 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterAxisInputMonitor (Ga
 
 ### OH_GamePad_RightThumbstick_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2306,7 +2306,7 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterButtonInputMonitor (
 
 ### OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor (void)
 ```
 
@@ -2323,7 +2323,7 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor (
 
 ### OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor (void)
 ```
 
@@ -2340,7 +2340,7 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor
 
 ### OH_GamePad_RightTrigger_RegisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightTrigger_RegisterAxisInputMonitor (GamePad_AxisInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2367,7 +2367,7 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterAxisInputMonitor (GameP
 
 ### OH_GamePad_RightTrigger_RegisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightTrigger_RegisterButtonInputMonitor (GamePad_ButtonInputMonitorCallback inputMonitorCallback)
 ```
 
@@ -2394,7 +2394,7 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterButtonInputMonitor (Gam
 
 ### OH_GamePad_RightTrigger_UnregisterAxisInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterAxisInputMonitor (void)
 ```
 
@@ -2411,7 +2411,7 @@ GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterAxisInputMonitor (voi
 
 ### OH_GamePad_RightTrigger_UnregisterButtonInputMonitor()
 
-```
+```c
 GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterButtonInputMonitor (void)
 ```
 

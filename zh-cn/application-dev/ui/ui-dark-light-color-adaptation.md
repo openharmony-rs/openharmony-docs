@@ -81,7 +81,7 @@
 
 4. "自定义节点"适配
 
-    自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[builderNode系统环境变化更新](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)
+    自定义节点BuilderNode和ComponentContent需手动传递系统环境变化事件，触发节点的全量更新，详细请参考[BuilderNode系统环境变化更新](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)。
 
     <!-- @[custom_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets) -->
     
@@ -111,7 +111,7 @@
 
 5. 应用监听深浅色模式切换事件
 
-    应用可以主动监听系统深浅色模式变化，进行其他类型的资源初始化等自定义逻辑。无论应用是否跟随系统深浅色模式变化，该监听方式均可生效。
+    应用可以主动监听系统深浅色模式变化，进行其他类型的资源初始化等自定义逻辑。应用使用[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)手动设置深浅色的情况下，将不会收到onConfigurationUpdate回调。除此之外，无论应用是否跟随系统深浅色模式变化，该监听方式均可生效。
 
     a. 在 AbilityStage 的 onCreate() 生命周期中获取APP当前的颜色模式并保存到 AppStorage。
 
@@ -124,7 +124,7 @@
     }
     ```
 
-    b. 在 AbilityStage 的 onConfigurationUpdate() 生命周期中获取最新变更的颜色模式并刷新到 AppStorage。
+    b. 在AbilityStage的onConfigurationUpdate()生命周期中获取最新更新的颜色模式并刷新到AppStorage。
 
     <!-- @[update_sys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
@@ -179,7 +179,7 @@
 
 6. 局部深浅色适配
 
-    通过[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)可以设置三种颜色模式，分别为：跟随系统模式、浅色模式和深色模式。
+    通过[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)可以设置三种[颜色模式](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)，分别为：跟随系统深浅色模式、固定使用浅色模式和固定使用深色模式。
 
     在WithTheme作用范围内，组件的样式资源值将依据指定模式，读取对应的深浅色模式系统和应用资源值。这表明，在WithTheme作用范围内，组件的配色将根据指定的深浅模式进行调整。详情请参阅[设置应用页面局部深浅色](./theme_skinning.md#设置应用页面局部深浅色)。
 
@@ -189,7 +189,7 @@
 
 > **说明：**
 > 
-> 应用未适配深色模式时，如遇到显示异常，可考虑使用该方法固定为浅色模式。
+> 应用未专门适配深色模式，直接跟随系统切换可能遇到深色模式下的显示异常，也可考虑使用该方法将本应用固定为浅色模式。
 
 <!-- @[create_app](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ColorAdaptionApp/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
@@ -236,7 +236,7 @@ onCreate(): void {
 
 - 不推荐方法
 
-  开发者在使用资源时，未采用监听系统深浅色模式变化的方式，而是在属性设置中通过函数适配深浅色变更。例如，参考以下代码写法：
+  开发者在使用资源时，未采用监听系统深浅色模式变化的方式，而是在属性设置中，通过函数返回值实现深浅色切换。例如以下写法：
 
   ```ts
   getResource() : string {
@@ -260,11 +260,11 @@ onCreate(): void {
   
 默认情况下，深浅色模式的切换需要执行全量重绘，包括重新设置所有组件的属性，性能开销会随着应用UI的复杂度线性增加。
 
-从API version 20开始，系统提供了一种高性能的深浅色切换流程，开发者可通过新增[metadata](../quick-start/module-configuration-file.md#metadata标签)配置项开启该能力，从而确保深浅色切换时的开销更小。
+从API version 20开始，系统提供了一种高性能的深浅色切换流程，开发者可通过新增[metadata](../quick-start/module-configuration-file.md#metadata标签)配置项开启该能力，从而实现深浅色切换时的开销更小。
 
 > **说明：**
 >
-> 配置此metadata时，必须确保属性设置中通过函数适配深浅色变更的行为已全部正确完成。
+> 配置此metadata时，必须确保在属性设置中，没有通过函数返回值实现深浅色切换。
 > <!--RP1--><!--RP1End-->
 
 1. 通过metadata开启深浅色切换优化选项。
@@ -282,7 +282,7 @@ onCreate(): void {
 
 2. 应用的自定义行为需要正确适配。
 
-   开启深浅色切换优化选项后，深浅色切换不会全量重新执行前端代码和属性设置，仅会更新、重绘必要的属性，如果开发者之前在属性设置中通过函数适配深浅色变更将不会生效，这种情况需要开启优化流程前进行正确适配，可参考[深浅色模式的使用建议与注意事项](#深浅色模式的使用建议与注意事项)进行适配。以下是三个典型的适配场景：
+   开启深浅色切换优化选项后，深浅色切换不会全量重新执行前端代码和属性设置，仅会更新、重绘必要的属性，如果开发者之前在属性设置中通过函数适配深浅色更新将不会生效，这种情况需要开启优化流程前进行正确适配，可参考[深浅色模式的使用建议与注意事项](#深浅色模式的使用建议与注意事项)进行适配。以下是三个典型的适配场景：
 
   - 根据实时读取的深浅色模式返回不同资源值。
 
@@ -328,7 +328,7 @@ onCreate(): void {
 
   - 根据判断自定义主题模式返回不同资源值。
 
-    开启深浅色切换优化选项后，需要将Text中文本内容和文本颜色与状态变量进行绑定，在接收到深浅色切换事件后通过状态变量变更实现组件属性的变更，示例代码如下：
+    开启深浅色切换优化选项后，需要将Text中文本内容和文本颜色与状态变量进行绑定，在接收到深浅色切换事件后通过状态变量更新实现组件属性的更新，示例代码如下：
 
       ```ts
       // ResourceTheme.ets
@@ -390,7 +390,7 @@ onCreate(): void {
 
   - 根据读取的成员变量值返回不同资源值。
 
-    开启深浅色切换优化选项后，需要将文本文字颜色属性与状态变量绑定。在深浅色切换时通过回调函数更新状态变量，从而实现仅在下一次深浅色切换时发生属性变更的效果，示例代码如下：
+    开启深浅色切换优化选项后，需要将文本文字颜色属性与状态变量绑定。在深浅色切换时通过回调函数更新状态变量，从而实现仅在下一次深浅色切换时发生属性更新的效果，示例代码如下：
 
       ```ts
       // Index.ets
@@ -426,7 +426,7 @@ onCreate(): void {
 
 ## 利用反色能力快速适配深色模式
 
-从API version 20开始，对于有大量存量代码，通过[资源配置](#应用跟随系统的深浅色模式)模式或[主题](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)方式实现深色模式适配，又想快速接入深色模式的应用。可使用系统提供的反色能力，快速适配深色模式。
+从API version 20开始，对于有大量存量代码，之前已经通过[资源配置](#应用跟随系统的深浅色模式)模式或[主题](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)方式，实现部分深色模式适配。可使用系统提供的反色能力，快速实现全量深色模式适配。
 
 这种方式虽然管理上不如资源配置和主题方式精细可控，但适配工作量更低，应用包也不会因为大量的资源配置而膨胀，同时也能够带来一定程度上可以接受的视觉效果。
 
@@ -442,13 +442,15 @@ onCreate(): void {
 
     > **说明：**
     >
-    > 1.调用OH_ArkUI_SetForceDarkConfig前，需确保已加载过[OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)。
+    > - 调用OH_ArkUI_SetForceDarkConfig前，需确保已加载过[OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_querymoduleinterfacebyname)。
     >
-    > 2.OH_ArkUI_SetForceDarkConfig接口一定要在节点创建前的UI线程中调用。**页面创建完成后，不支持通过该接口动态修改应用的反色能力生效状态。**
+    > - OH_ArkUI_SetForceDarkConfig接口一定要在节点创建前的UI线程中调用。**页面创建完成后，不支持通过该接口动态修改应用的反色能力生效状态。**
     >
-    > 3.OH_ArkUI_SetForceDarkConfig接口仅支持进程级生效，暂不支持不同实例使用不同的反色算法。
+    > - OH_ArkUI_SetForceDarkConfig接口仅支持进程级生效，暂不支持不同实例使用不同的反色算法。
     >
-    > 4.OH_ArkUI_SetForceDarkConfig接口仅支持CAPI接口，考虑到反色算法在深浅色切换时会被频繁调用，采用C-API接口可以避免存在大量的跨语言调用开销。
+    > - OH_ArkUI_SetForceDarkConfig接口仅支持CAPI接口，考虑到反色算法在深浅色切换时会被频繁调用，采用C-API接口可以避免存在大量的跨语言调用开销。
+    >
+    > - 如果组件设置了异常值颜色或者undefined，反色能力不生效。
 
     本示例展示OH_ArkUI_SetForceDarkConfig接口的基础使用方式，自定义反色算法根据开发者实际场景进行设置，便于深浅色切换时展示不同的颜色值。
 
@@ -499,10 +501,10 @@ onCreate(): void {
 
    a. 使用开发者深色模式颜色资源的配置。
    
-   b. 使用开发者为本进程中控件配置的反色算法。
+   b. 使用开发者为本进程中指定组件配置的反色算法。
    
    c. 使用开发者为本进程中所有组件配置的反色算法。
 
 3. 反色能力逃生通道。
 
-   基于开发者当前实现，开发者可以通过主动设置[allowForceDark](../reference/apis-arkui/arkui-ts/ts-allow-force-dark.md#allowforcedark)属性，禁用自动反色能力，维持深浅色切换时的原有逻辑，即使用主题或资源值切换。
+   从API version 21开始，基于开发者当前实现，开发者可以通过主动设置[allowForceDark](../reference/apis-arkui/arkui-ts/ts-allow-force-dark.md#allowforcedark)属性，禁用指定组件的自动反色能力，维持深浅色切换时的原有逻辑，即使用主题或资源值切换。

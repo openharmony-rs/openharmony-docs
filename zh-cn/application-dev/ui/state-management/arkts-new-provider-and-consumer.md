@@ -18,6 +18,8 @@
 > 从API version 12开始，\@Provider和\@Consumer装饰器支持在原子化服务中使用。
 >
 > 从API version 22开始，通过配置[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)的[BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)参数`enableProvideConsumeCrossing`为true，使得\@Provider和\@Consumer支持跨[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)双向同步。在BuilderNode挂载到自定义组件节点树之后，\@Consumer会重新获取最近的\@Provider数据，与之建立双向同步关系。具体可见[\@Consumer在跨BuilderNode场景下和\@Provider建立双向同步](#consumer在跨buildernode场景下和provider建立双向同步过程)。
+>
+> 从API version 23开始，\@Provider和\@Consumer装饰器支持在ArkTS卡片中使用。
 
 ## 概述
 
