@@ -1559,7 +1559,7 @@ execute(sql: string, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt;
 
 不支持分号分隔的多条语句。
 
-不支持在SQL语句开头增加注释或者其他字符。
+不支持开头包含注释的语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1635,7 +1635,7 @@ executeSync(sql: string, args?: Array&lt;ValueType&gt;): ValueType
 
 不支持分号分隔的多条语句。
 
-不支持在SQL语句开头增加注释或者其他字符。
+不支持开头包含注释的语句。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
