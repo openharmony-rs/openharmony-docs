@@ -16,7 +16,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { usageStatistics } from '@kit.BackgroundTasksKit'
 ```
 
