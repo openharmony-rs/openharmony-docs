@@ -136,7 +136,7 @@
 
 ## UIEnvAvoidAreaVP<sup>23+</sup>
 
-以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时适配时需关注。
+以vp为单位表示的窗口避让区域信息，在进行[沉浸式布局](../../windowmanager/window-terminology.md#沉浸式布局)适配时需关注。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -150,7 +150,7 @@
 
 ## UIEnvWindowAvoidAreaInfoPX<sup>23+</sup>
 
-窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)结构，每种类型避让区域单位为px。
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)数据类型，每种类型避让区域单位为px。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -163,7 +163,7 @@
 
 ## UIEnvWindowAvoidAreaInfoVP<sup>23+</sup>
 
-窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)结构，每种类型避让区域单位为vp。
+窗口不同类型避让区域信息组成的[环境变量](../../ui/arkts-env-system-property.md)数据类型，每种类型避让区域单位为vp。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
