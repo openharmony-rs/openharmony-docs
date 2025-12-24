@@ -126,10 +126,10 @@ Native侧
     ```
 
     <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Native/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     import nativeRender from 'libnativerender.so';
-
+    
     // 重写XComponentController，设置生命周期回调
     class MyXComponentController extends XComponentController{
       onSurfaceCreated(surfaceId: string): void {
@@ -137,7 +137,7 @@ Native侧
         nativeRender.SetSurfaceId(BigInt(surfaceId));
       }
       onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void {
-        console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}}`);
+        console.info(`onSurfaceChanged surfaceId: ${surfaceId}, rect: ${JSON.stringify(rect)}`);
         // 在onSurfaceChanged中调用ChangeSurface绘制内容
         nativeRender.ChangeSurface(BigInt(surfaceId), rect.surfaceWidth, rect.surfaceHeight);
       }
@@ -150,11 +150,11 @@ Native侧
     @Entry
     @Component
     struct Index {
-      @State currentStatus: string = "index";
+      @State currentStatus: string = 'index';
       xComponentController: XComponentController = new MyXComponentController();
       build() {
         Column() {
-          // ···
+          // ...
           //在xxx.ets 中定义 XComponent
           Column({ space: 10 }) {
             XComponent({
@@ -173,10 +173,10 @@ Native侧
               hasChangeColor = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasChangeColor;
             }
             if (hasChangeColor) {
-              this.currentStatus = "change color";
+              this.currentStatus = 'change color';
             }
           })
-          // ···
+          // ...
           Row() {
             Button('Draw Star')
               .fontSize('16fp')
@@ -190,7 +190,7 @@ Native侧
                   hasDraw = nativeRender.GetXComponentStatus(BigInt(surfaceId)).hasDraw;
                 }
                 if (hasDraw) {
-                  this.currentStatus = "draw star";
+                  this.currentStatus = 'draw star';
                 }
               })
               .width('53.6%')
