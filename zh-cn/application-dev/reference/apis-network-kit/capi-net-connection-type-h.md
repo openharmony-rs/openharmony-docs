@@ -47,14 +47,14 @@
 
 | 名称 | 描述 | 
 | -------- | -------- |
-| **NETCONN_MAX_RTT_NUM** | 4 | 
-| **NETCONN_MAX_NET_SIZE** | 32 | 
-| **NETCONN_MAX_BEARER_TYPE_SIZE** | 32 | 
-| **NETCONN_MAX_CAP_SIZE** | 32 | 
-| **NETCONN_MAX_ADDR_SIZE** | 32 | 
-| **NETCONN_MAX_ROUTE_SIZE** | 64 | 
-| **NETCONN_MAX_EXCLUSION_SIZE** | 256 | 
-| **NETCONN_MAX_STR_LEN** | 256 | 
+| NETCONN_MAX_RTT_NUM   4  | 往返最大时延 | 
+| NETCONN_MAX_NET_SIZE   32     |  | 
+| NETCONN_MAX_BEARER_TYPE_SIZE   32    |  | 
+| NETCONN_MAX_CAP_SIZE   32    |  | 
+| NETCONN_MAX_ADDR_SIZE   32    |  | 
+| NETCONN_MAX_ROUTE_SIZE   64   |  | 
+| NETCONN_MAX_EXCLUSION_SIZE   256   |  | 
+| NETCONN_MAX_STR_LEN   256   |  | 
 
 ### 函数
 
