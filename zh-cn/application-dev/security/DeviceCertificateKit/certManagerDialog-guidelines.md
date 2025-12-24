@@ -47,8 +47,6 @@
 
 3. 拉起证书管理界面。
 
-   **示例：**
-
    ArkTS-Dyn示例：
    ``` TypeScript
    import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
@@ -101,8 +99,6 @@
 
 
 4. 调用安装证书对话框接口进行证书安装、调用删除证书对话框接口进行证书删除、调用查看证书详情的对话框接口、展示证书的详情。以上场景仅2in1设备支持。
-
-   **示例：**
 
    ArkTS-Dyn示例：
    ``` TypeScript

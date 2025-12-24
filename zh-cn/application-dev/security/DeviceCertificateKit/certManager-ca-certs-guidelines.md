@@ -60,8 +60,6 @@
 
 3. 安装用户CA证书、获取用户CA证书列表、获取用户证书详情、删除用户CA证书。
 
-   **示例：**
-
    ArkTS-Dyn示例：
    ``` TypeScript
    import { certificateManager } from '@kit.DeviceCertificateKit';
@@ -217,8 +215,6 @@
 
 
 4. 获取系统CA证书路径、用户CA证书路径。应用可以直接通过该路径访问CA证书。
-
-   **示例：**
 
    ArkTS-Dyn示例：
    ``` TypeScript
