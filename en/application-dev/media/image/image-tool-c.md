@@ -10,7 +10,7 @@ Image Kit provides the capabilities of reading and editing Exchangeable Image Fi
 
 Exif is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos. Currently, JPEG, PNG, and HEIF images that contain Exif data are supported.
 
-Users may need to view or modify the Exif data of photos in the Gallery application, for example, when the manual lens parameters of the camera are not automatically written as part of the Exif data or the shooting time is incorrect due to camera power-off.
+Users may need to view or modify the Exif data of photos in the Gallery application. When the manual lens parameters of the camera are not automatically written as part of the Exif data or the shooting time is incorrect due to camera power-off, you can manually correct the Exif data.
 
 Currently, OpenHarmony allows you to view and modify part of Exif data. For details, see [OHOS_IMAGE_PROPERTY_XXX](../../reference/apis-image-kit/capi-image-common-h.md#variables).
 

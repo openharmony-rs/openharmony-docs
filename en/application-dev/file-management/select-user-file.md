@@ -64,7 +64,7 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    // Create a DocumentViewPicker instance.
    const documentViewPicker = new picker.DocumentViewPicker(context);
    documentViewPicker.select(documentSelectOptions).then((documentSelectResult: Array<string>) => {
-     // After the user selects documents, a result set containing the document URIs is returned.
+     // After the files are selected, a result set containing the file URIs is returned.
      uris = documentSelectResult;
      console.info('documentViewPicker.select to file succeed and uris are:' + uris);
    }).catch((err: BusinessError) => {
@@ -76,7 +76,7 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    >
    > - The permission for the URI returned by [select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3) of Picker is a temporary read-only permission. The temporary permission will be invalidated once the application exits.<br>
    > - You can persist the temporary permission for a URI. For details, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).<br>
-   > - Further operations can be performed on the documents based on the file URIs returned in the result set. You are advised to define a global variable to save the URI.<br>
+   > - Further operations can be performed on the documents based on the file URIs. You are advised to define a global variable to save the URI.<br>
    > - If metadata needs to be obtained, you can use the [@ohos.file.fs](../reference/apis-core-file-kit/js-apis-file-fs.md) and [@ohos.file.fileuri](../reference/apis-core-file-kit/js-apis-file-fileuri.md) APIs to obtain document attribute information, such as the document name, size, access time, modification time, and path, based on the URI.
 
 4. After the application UI is returned from FilePicker, call [fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync) to open a document based on the URI. The file descriptor (FD) is returned after the document is opened.
@@ -163,5 +163,6 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    // Close the FD after the data is read.
    fs.closeSync(file);
    ```
+
 
 <!--RP1--><!--RP1End-->

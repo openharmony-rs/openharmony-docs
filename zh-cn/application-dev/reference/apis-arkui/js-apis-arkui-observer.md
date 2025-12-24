@@ -309,7 +309,7 @@ off(type: 'navDestinationUpdate', callback?: Callback\<NavDestinationInfo\>): vo
 
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback\<NavDestinationInfo\>): void
 
-监听NavDestination组件的状态变化。
+监听NavDestination组件的状态变化。与[uiObserver.on](#uiobserveronnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -381,7 +381,7 @@ struct Index {
 
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback\<NavDestinationInfo\>): void
 
-取消监听NavDestination组件的状态变化。
+取消监听NavDestination组件的状态变化。与[uiObserver.off](#uiobserveroffnavdestinationupdate)相比，新增了options参数，即支持指定监听的Navigation的id。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1067,7 +1067,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callbac
 
 on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback: Callback\<NavDestinationSwitchInfo\>): void
 
-监听Navigation的页面切换事件。
+监听Navigation的页面切换事件。与[uiObserver.on](#uiobserveronnavdestinationswitch12)相比，新增了observerOptions参数，即支持设置监听选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1199,7 +1199,7 @@ struct Index {
 
 off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observerOptions: NavDestinationSwitchObserverOptions, callback?: Callback\<NavDestinationSwitchInfo\>): void
 
-取消监听Navigation的页面切换事件。
+取消监听Navigation的页面切换事件。与[uiObserver.off](#uiobserveroffnavdestinationswitch12)相比，新增了observerOptions参数，即支持设置监听选项。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

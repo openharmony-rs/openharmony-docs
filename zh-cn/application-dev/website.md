@@ -756,6 +756,7 @@
         <!--Del-->
         - [虚拟屏的创建和使用 (ArkTS) (仅对系统应用开放)](displaymanager/virtualScreen-guideline-sys.md)
         <!--DelEnd-->
+        - [屏幕管理开发术语](displaymanager/display-terminology.md)
     - ArkWeb（方舟Web）<!--arkweb-->
       - [ArkWeb简介](web/web-component-overview.md)
       - [ArkWeb进程](web/web_component_process.md)
@@ -2922,7 +2923,7 @@
           - 其他<!--other-property-->
             - [复用标识](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md)
             - [复用选项](reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md)
-            - [自定义窗口工具栏](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
+            - [工具栏设置](reference/apis-arkui/arkui-ts/ts-universal-attributes-toolbar.md)
         - 手势处理<!--gesture-handling-->
           - 绑定手势<!--gesture-binding-->
             - [绑定手势方法](reference/apis-arkui/arkui-ts/ts-gesture-settings.md)
@@ -3406,6 +3407,7 @@
           - [ArkUI_EventModule](reference/apis-arkui/capi-arkui-eventmodule.md)
           - [WindowManager](reference/apis-arkui/capi-windowmanager.md)
           - [OH_DisplayManager](reference/apis-arkui/capi-oh-displaymanager.md)
+          - [ArkUI_RenderNodeUtils](reference/apis-arkui/capi-arkui-rendernodeutils.md)
         - 头文件<!--arkui-headerfile-->
           - [drag_and_drop.h](reference/apis-arkui/capi-drag-and-drop-h.md)
           - [drawable_descriptor.h](reference/apis-arkui/capi-drawable-descriptor-h.md)

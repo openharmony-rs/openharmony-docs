@@ -88,7 +88,7 @@ The distributed file system provides the cross-device file copy capability for a
    import { fileUri } from '@kit.CoreFileKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
-   // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+   // The context is passed from EntryAbility. Ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
    let pathDir: string = context.filesDir;
    let distributedPathDir: string = context.distributedFilesDir;
@@ -114,11 +114,11 @@ The distributed file system provides the cross-device file copy capability for a
    let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
    if (deviceInfoList && deviceInfoList.length > 0) {
     console.info(`success to get available device list`);
-    let networkId = deviceInfoList[0].networkId; // Only two devices are connected. The first element in the list is the network ID of device A.
-    // Define the callback for accessing the distributed file directory.
+     let networkId = deviceInfoList[0].networkId; // Only two devices are connected. The first element in the list is the network ID of device A.
+     // Define the callback for accessing the distributed file directory.
     let listeners : fs.DfsListeners = {
       onStatus: (networkId: string, status: number): void => {
-        console.error(`Failed to access public directory，${status}`);
+        console.error(`Failed to access public directory, ${status}`);
       }
     };
     // Start to copy files cross devices.

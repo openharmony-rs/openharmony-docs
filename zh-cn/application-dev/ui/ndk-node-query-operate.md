@@ -520,7 +520,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
    }
    ```
 
-2. 新建`Attribute_util .h`用于设置组件属性。
+2. 新建`Attribute_util.h`用于设置组件属性。
    ```c++
    //
    // Created on 2025/8/14.

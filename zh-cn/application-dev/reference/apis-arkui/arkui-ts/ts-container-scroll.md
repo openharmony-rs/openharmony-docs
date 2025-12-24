@@ -309,7 +309,7 @@ enableBouncesZoom(enable: boolean)
 | ---------- | -- | ------------------------ |
 | Vertical   | 0  | 仅支持竖直方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | Horizontal | 1  | 仅支持水平方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> 从API version 9开始废弃，从API version 20开始推荐使用FREE。|
+| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。|
 | None       | 3 | 不可滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
@@ -402,7 +402,9 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 3、越界回弹。
 
-从API version 12开始废弃不再使用，推荐使用[onWillScroll](#onwillscroll12)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[onWillScroll](#onwillscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -501,7 +503,9 @@ onScrollEnd(event: () => void)
 
 1、滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。<br/>2、通过滚动控制器API接口调用后停止，带过渡动效。
 
-该事件从API version 9开始废弃，使用[onScrollStop](#onscrollstop9)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[onScrollStop](#onscrollstop9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -831,7 +835,11 @@ scrollPage(value:   ScrollPageOptions)
 
 scrollPage(value: { next: boolean, direction?: Axis })
 
-滚动到下一页或者上一页。从API version 9开始，该接口不再维护，推荐使用[scrollPage<sup>9+</sup>](#scrollpage9)。
+滚动到下一页或者上一页。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[scrollPage<sup>9+</sup>](#scrollpage9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

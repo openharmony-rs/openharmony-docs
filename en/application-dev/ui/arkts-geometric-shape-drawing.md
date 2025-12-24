@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The drawing components are used to draw graphs on the page. The **Shape** component is the parent component of the drawing components. The attributes of **Shape** are universal attributes supported by all the drawing components. For details, see [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md).
+The drawing components are used to draw graphs on the page. The **Shape** component serves as the parent container for all drawing components, and its attributes are common attributes supported by every drawing component. For details, see [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md).
 
 
 ## Creating a Drawing Component

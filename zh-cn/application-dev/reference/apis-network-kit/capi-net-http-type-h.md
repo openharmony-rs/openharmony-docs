@@ -209,7 +209,7 @@ HTTP协议版本号枚举定义。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HTTP_NONE = 0 | 跟随crul的协议版本选择。 |
+| OH_HTTP_NONE = 0 | 跟随curl的协议版本选择。 |
 | OH_HTTP1_1 | HTTP1.1版本。 |
 | OH_HTTP2 | HTTP2版本。 |
 | OH_HTTP3 | HTTP3版本。 |

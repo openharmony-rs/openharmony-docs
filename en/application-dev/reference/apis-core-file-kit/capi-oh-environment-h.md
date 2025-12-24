@@ -43,8 +43,6 @@ FileManagement_ErrCode OH_Environment_GetUserDownloadDir(char **result)
 
 Obtains the sandbox path of the **Download** root directory.
 
-**Required permissions**: ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY
-
 **Since**: 12
 
 
@@ -70,8 +68,6 @@ FileManagement_ErrCode OH_Environment_GetUserDesktopDir(char **result)
 
 Obtains the sandbox path of the **Desktop** root directory.
 
-**Required permissions**: ohos.permission.READ_WRITE_DESKTOP_DIRECTORY
-
 **Since**: 12
 
 
@@ -96,8 +92,6 @@ FileManagement_ErrCode OH_Environment_GetUserDocumentDir(char **result)
 **Description**
 
 Obtains the sandbox path of the **Document** root directory.
-
-**Required permissions**: ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY
 
 **Since**: 12
 

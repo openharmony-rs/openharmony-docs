@@ -10,7 +10,7 @@
 
 >  **说明：**
 >
->  从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## borderImage
 
@@ -81,7 +81,7 @@ borderImage(value: BorderImageOption): T
 | angle  | number \| string | 否   | 是   |  线性渐变的起始角度。0点方向顺时针旋转为正向角度。<br/>默认值：180<br/>角度为字符串时仅支持类型'deg'，'grad'，'rad'，'turn'。 |
 | direction  | [GradientDirection](ts-appendix-enums.md#gradientdirection) | 否   | 是   | 线性渐变的方向，设置angle后不生效。<br/>默认值：GradientDirection.Bottom |
 | colors  | Array<[[ResourceColor](ts-types.md#resourcecolor), number]> | 否   | 否   | 指定渐变色颜色和其对应的百分比位置的数组，设置非法颜色直接跳过。 |
-| repeating  | boolean | 否   | 是   | 为渐变的颜色重复着色。<br/>默认值：false<br>true：允许为渐变的颜色重复着色。<br>false：不允许为渐变的颜色重复着色。 |
+| repeating  | boolean | 否   | 是   | 是否允许渐变的颜色重复渲染。<br/>默认值：false<br>true：允许渐变的颜色重复渲染。<br>false：不允许渐变的颜色重复渲染。 |
 
 ## 示例
 
@@ -249,7 +249,7 @@ struct BorderImage {
           Text('This is borderImage.').textAlign(TextAlign.Center).fontSize(50)
         }
         .borderImage({
-          source: $r('app.media.icon'),
+          source: $r('app.media.startIcon'),
           slice: {
             top: LengthMetrics.px(10),
             bottom: LengthMetrics.px(10),
@@ -376,10 +376,6 @@ struct BorderImage {
 }
 ```
 
-从左至右显示语言示例图
+显示语言示例图
 
-![borderImage](figures/borderImage_ltr.png)
-
-从右至左显示语言示例图
-
-![borderImage](figures/borderImage_rtl.png)
+![borderImage](figures/borderImage_startIcon.png)

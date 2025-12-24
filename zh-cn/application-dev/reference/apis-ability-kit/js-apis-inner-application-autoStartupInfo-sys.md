@@ -25,7 +25,7 @@
 | moduleName                  | string  | 否   | 是   | 应用程序的Module名称。                         |
 | abilityName                 | string  | 否   | 否   | 应用程序的Ability名称。                        |
 | abilityTypeName             | string  | 否   | 是   | 应用程序的Ability类型。                        |
-| appCloneIndex               | number  | 否   | 是   | 分身应用索引。                                 |
+| appCloneIndex<sup>12+</sup> | number  | 否   | 是   | 分身应用索引。                                 |
 | userId<sup>20+</sup>        | number  | 是   | 是   | 应用程序所属的用户ID，用于区分同一设备上不同用户账号下的应用。      |
 | setterUserId<sup>20+</sup>  | number  | 是   | 是   | 设置者的用户ID，记录了将当前应用设置为开机自启动的用户ID。         |
 | canUserModify<sup>20+</sup> | boolean | 是   | 是   | 表示是否允许开发者修改此应用的开机自启动状态。 |

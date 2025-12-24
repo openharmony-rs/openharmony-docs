@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 本模块面向输入法应用（包括系统输入法应用、三方输入法应用），为输入法应用提供能力，包括：创建软键盘窗口、插入/删除字符、选中文本、监听物理键盘按键事件等。
@@ -113,7 +113,7 @@ getInputMethodEngine(): InputMethodEngine
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[getInputMethodAbility](#inputmethodenginegetinputmethodability9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -137,7 +137,7 @@ createKeyboardDelegate(): KeyboardDelegate
 
 > **说明：**
 >
->从API version 8开始支持，API version 9开始废弃，建议使用[getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
+>从API version 8开始支持，API version 9开始废弃，建议使用[getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

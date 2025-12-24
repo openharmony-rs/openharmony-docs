@@ -3802,9 +3802,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
 tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
   client.close().then(() => {
-  	console.info('close success');
+    console.info('close success');
   }).catch((err: BusinessError) => {
-  	console.error('close fail');
+    console.error('close fail');
   });
 });
 ```

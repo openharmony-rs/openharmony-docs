@@ -280,7 +280,7 @@ class Contact {
 @Entry
 @Component
 struct SimpleContacts {
-  private contacts: Array<object> = [
+  private contacts: Array<Contact> = [
     new Contact('小明', $r("app.media.iconA")),
     new Contact('小红', $r("app.media.iconB")),
   ];
@@ -940,19 +940,20 @@ ListItem() {
    在待办列表中，通过勾选框的勾选或取消勾选，响应用户勾选列表项变化，记录所有选择的列表项。
 
     ```ts
-   // 结构参考
-   import { util } from '@kit.ArkTS';
+    // 结构参考
+    import { util } from '@kit.ArkTS';
 
-   export class ToDo {
-     key: string = util.generateRandomUUID(true);
-     name: string;
-     toDoData: ToDo[] = [];
+    export class ToDo {
+      key: string = util.generateRandomUUID(true);
+      name: string;
+      toDoData: ToDo[] = [];
 
-     constructor(name: string) {
-       this.name = name;
-     }
-   }
+      constructor(name: string) {
+        this.name = name;
+      }
+    }
     ```
+
     ```ts
     // 实现参考
     if (this.isEditMode) {

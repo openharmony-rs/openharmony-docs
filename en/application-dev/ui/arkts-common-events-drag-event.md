@@ -1264,7 +1264,7 @@ The following example demonstrates device search functionality using **onDragSpr
   @ComponentV2
   struct Index {
     @Local isShowSheet: boolean = false;
-    private searchResult: string = 'Search results:\n  Device 1\n  Device 2\n  Device 3\n  ... ...';
+    private searchResult: string = 'Search results:\n  Device 1\n  Device 2\n  Device 3\n  ...';
     @Local isSearchDone: boolean = false;
     private  reminderColor: Color = Color.Green;
     private normalColor: Color = Color.Blue;

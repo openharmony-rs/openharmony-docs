@@ -17,7 +17,7 @@ WebNativeMessagingExtensionContext是Web原生消息扩展的上下文, 继承�
 ## 导入模块
 
 ```ts
-import WebNativeMessagingExtensionContext from '@ohos.web.WebNativeMessagingExtensionContext';
+import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb';
 ```
 
 ## WebNativeMessagingExtensionContext

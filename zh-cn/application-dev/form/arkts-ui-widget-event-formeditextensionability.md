@@ -13,23 +13,28 @@
     // src/main/ets/entryformeditability/EntryFormEditAbility.ets
 
     import { FormEditExtensionAbility } from '@kit.FormKit';
-    import { Want,UIExtensionContentSession } from '@kit.AbilityKit';
+    import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
     import { ExtensionEvent } from '../pages/model/ExtensionEvent';
 
     const TAG: string = 'FormEditDemo[EntryFormEditAbility] -->';
+
     export default class EntryFormEditAbility extends FormEditExtensionAbility {
       onCreate() {
         console.info(`${TAG} onCreate`);
       }
+
       onForeground(): void {
         console.info(`${TAG} EntryFormEditAbility onForeground.....`);
       }
+
       onBackground(): void {
         console.info(`${TAG} EntryFormEditAbility onBackground......`);
       }
+
       onDestroy(): void {
         console.info(`${TAG} EntryFormEditAbility onDestroy......`);
       }
+
       onSessionCreate(want: Want, session: UIExtensionContentSession) {
         console.info(`${TAG} onSessionCreate start..... want: ${JSON.stringify(want)}`);
         let storage: LocalStorage = new LocalStorage();
@@ -42,9 +47,11 @@
           console.error(`${TAG} EntryFormEditAbility loadContent err, want: ${JSON.stringify(e)}`);
         }
       }
+
       onSessionDestroy(session: UIExtensionContentSession) {
         console.info(`${TAG} onSessionDestroy`);
       }
+
       private startSecondPage(): void {
         const bundleName: string = this.context.extensionAbilityInfo.bundleName;
         const secPageAbilityName: string = 'FormEditSecPageAbility';
@@ -72,15 +79,18 @@
 
     let storage = new LocalStorage();
     const TAG: string = 'FormEditDemo[Extension] -->';
+
     @Entry(storage)
     @Component
     struct Extension {
       @State message: string = 'UIExtension Provider';
       private session: UIExtensionContentSession | undefined = storage.get<UIExtensionContentSession>('session');
       private extensionEvent: ExtensionEvent | undefined = storage.get<ExtensionEvent>('extensionEvent');
+
       onPageShow() {
         console.info(`${TAG} onPageShow. extensionEvent: ${JSON.stringify(this.extensionEvent)}, session: ${JSON.stringify(this.session)}.`);
       }
+
       build() {
         Row() {
           Column() {
@@ -111,20 +121,22 @@
     // src/main/ets/pages/model/ExtensionEvent.ets
 
     const TAG: string = 'FormEditDemo[ExtensionEvent] -->';
+
     export class ExtensionEvent {
-      private startSecondPage: () => void = () => {
-        console.info(`${TAG} startSecondPage is empty!`);
-      };
       public setStartSecondPage(startSecondPage: () => void) {
         console.info(`${TAG} setStartSecondPage`);
         this.startSecondPage = startSecondPage;
       }
+
       public startFormEditSecondPage(): void {
         console.info(`${TAG} startFormEditSecondPage`);
         this.startSecondPage();
       }
-    }
 
+      private startSecondPage: () => void = () => {
+        console.info(`${TAG} startSecondPage is empty!`);
+      };
+    }
     ```
 
 4. 在应用的[module.json5](../quick-start/module-configuration-file.md)配置文件中添加卡片编辑配置信息。

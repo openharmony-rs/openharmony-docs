@@ -276,7 +276,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDoNotDisturbDateChange<sup>8+</sup>(deprecated)
+## onDoNotDisturbDateChange<sup>(deprecated)</sup>
 
 onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 

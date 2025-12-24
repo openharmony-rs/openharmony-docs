@@ -141,8 +141,6 @@ select(option?: DocumentSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 Starts a **documentPicker** page for the user to select one or more documents. This API uses a promise to return the result. You can pass in **DocumentSelectOptions** to specify the URIs of the documents to select.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -157,7 +155,7 @@ Starts a **documentPicker** page for the user to select one or more documents. T
 
 | Type                           | Description   |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the documents selected.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the documents selected.<br> **Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri). |
 
 **Example**
 
@@ -187,8 +185,6 @@ select(option: DocumentSelectOptions, callback: AsyncCallback&lt;Array&lt;string
 
 Starts a **documentPicker** page for the user to select one or more documents. This API uses an asynchronous callback to return the result. You can pass in **DocumentSelectOptions** to specify the URIs of the documents to select.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -198,7 +194,7 @@ Starts a **documentPicker** page for the user to select one or more documents. T
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
 | option | [DocumentSelectOptions](#documentselectoptions) | Yes  | Options for selecting documents.|
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the documents selected.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the documents selected.<br>**Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -230,8 +226,6 @@ select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Starts a **documentPicker** page for the user to select one or more documents. This API uses an asynchronous callback to return the URIs of the documents selected.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -240,7 +234,7 @@ Starts a **documentPicker** page for the user to select one or more documents. T
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the documents selected.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the documents selected.<br>**Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -271,8 +265,6 @@ save(option?: DocumentSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 Starts a **documentPicker** page for the user to save one or more documents. This API uses a promise to return the result. You can pass in **DocumentSaveOptions** to specify the URIs of the documents to save.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -287,7 +279,7 @@ Starts a **documentPicker** page for the user to save one or more documents. Thi
 
 | Type                           | Description   |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the documents saved.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the documents saved.<br>**Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -318,8 +310,6 @@ save(option: DocumentSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;
 
 Starts a **documentPicker** page for the user to save one or more documents. This API uses an asynchronous callback to return the result. You can pass in **DocumentSaveOptions** to specify the URIs of the documents to save.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -329,7 +319,7 @@ Starts a **documentPicker** page for the user to save one or more documents. Thi
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
 | option | [DocumentSaveOptions](#documentsaveoptions) | Yes  | Options for saving the documents.|
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the documents saved.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the documents saved.<br>**Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -362,8 +352,6 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Starts a **documentPicker** page for the user to save one or more documents. This API uses an asynchronous callback to return the URIs of the documents to save.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -372,7 +360,7 @@ Starts a **documentPicker** page for the user to save one or more documents. Thi
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the documents saved.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the documents saved.<br>**Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -522,8 +510,6 @@ select(option?: AudioSelectOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 Starts an **audioPicker** page for the user to select one or more audio clips. This API uses a promise to return the result. You can pass in **AudioSelectOptions** to specify the URIs of the audio clips to select.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -532,13 +518,13 @@ Starts an **audioPicker** page for the user to select one or more audio clips. T
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| option | [AudioSelectOptions](#audioselectoptions) | No  | Options for selecting audio clips. If this parameter is not specified, the **audioPicker** page is displayed by default. |
+| option | [AudioSelectOptions](#audioselectoptions) | No  | Options for selecting audio clips. If this parameter is not specified, the **audioPicker** page is displayed by default.|
 
 **Return value**
 
 | Type                           | Description   |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the audio clips selected.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the audio clips selected.<br>**Note**: For details about how to use the returned URIs, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).|
 
 **Example**
 
@@ -568,8 +554,6 @@ select(option: AudioSelectOptions, callback: AsyncCallback&lt;Array&lt;string&gt
 
 Starts an **audioPicker** page for the user to select one or more audio clips. This API uses an asynchronous callback to return the result. You can pass in **AudioSelectOptions** to specify the URIs of the audio clips to select.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).
-
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
@@ -577,7 +561,7 @@ Starts an **audioPicker** page for the user to select one or more audio clips. T
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
 | option | [AudioSelectOptions](#audioselectoptions) | Yes  | Options for selecting audio clips.|
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the audio clips selected.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the audio clips selected.<br>**Note**: For details about how to use the returned URIs, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).|
 
 **Example**
 
@@ -608,16 +592,13 @@ async function example14(context: common.UIAbilityContext) { // Ensure that cont
 select(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Starts an **audioPicker** page for the user to select one or more audio clips. This API uses an asynchronous callback to return the URIs of the audio clips selected.
-
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).
-
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the audio clips selected.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the audio clips selected.<br>**Note**: For details about how to use the returned URIs, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).|
 
 **Example**
 
@@ -648,8 +629,6 @@ save(option?: AudioSaveOptions): Promise&lt;Array&lt;string&gt;&gt;
 
 Starts an **audioPicker** page (currently, a **documentPicker** page is displayed) for the user to save one or more audio clips. This API uses a promise to return the result. You can pass in **AudioSaveOptions** to specify the URIs of the audio clips to save.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -664,7 +643,7 @@ Starts an **audioPicker** page (currently, a **documentPicker** page is displaye
 
 | Type                           | Description   |
 | ----------------------------- | ---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the audio clips saved.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the audio clips saved.<br>**Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -695,8 +674,6 @@ save(option: AudioSaveOptions, callback: AsyncCallback&lt;Array&lt;string&gt;&gt
 
 Starts an **audioPicker** page (currently, a **documentPicker** page is displayed) for the user to save one or more audio clips. This API uses an asynchronous callback to return the result. You can pass in **AudioSaveOptions** to specify the URIs of the audio clips to save.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
@@ -704,7 +681,7 @@ Starts an **audioPicker** page (currently, a **documentPicker** page is displaye
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
 | option | [AudioSaveOptions](#audiosaveoptions) | Yes  | Options for saving audio clips.|
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the audio clips saved.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the audio clips saved.<br>**Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -737,15 +714,13 @@ save(callback: AsyncCallback&lt;Array&lt;string&gt;&gt;): void
 
 Starts an **audioPicker** page (currently, a **documentPicker** page is displayed) for the user to save one or more audio clips. This API uses an asynchronous callback to return the URIs of the audio clips saved.
 
-**NOTE**<br>For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the audio clips saved.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the audio clips saved.<br>**Note**: For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -815,11 +790,7 @@ Enumerates the modes for saving documents.
 | Name |  Value|  Description|
 | ----- |  ---- | ---- |
 | DEFAULT  | 0  | Standard mode.|
-| DOWNLOAD | 1  | Download mode.|
-
-> **NOTE**
->
-> Directories created in DOWNLOAD mode are used only to store files. Directories are not isolated from each other. You are not advised to store sensitive application data.
+| DOWNLOAD | 1  | Download mode.<br>**Note**: The directories created in DOWNLOAD mode are used only to save files. There is no access isolation between directories. You are advised not to save sensitive application data.|
 
 ## MergeTypeMode<sup>15+</sup>
 
@@ -849,7 +820,7 @@ Defines the options for saving documents.
 
 | Name                   | Type                                         | Read-Only| Optional| Description                                      |
 | :---------------------- |---------------------------------------------| ---- | ---- | ------------------------------------------|
-| newFileNames            | Array&lt;string&gt;   | No| Yes  | Name of the document to save. If this parameter is not specified, the user needs to enter the document name. |
+| newFileNames            | Array&lt;string&gt;   | No| Yes  | Name of the document to save. If this parameter is not specified, the user needs to enter the file name. |
 | defaultFilePathUri<sup>10+</sup>    | string  | No| Yes   | URI of the file or directory to save. This parameter is left empty by default. |
 | fileSuffixChoices<sup>10+</sup>     | Array&lt;string&gt; | No| Yes   | Document suffix of the document to save. <br>The value is a string array. Each element specifies an option, which includes at most two parts with a vertical bar (\|) in between. The first part is the description, and the second part is the document suffix. If there is no "\|", the option does not have the description. By default, all documents are saved.|
 | pickerMode<sup>12+</sup>     | [DocumentPickerMode](#documentpickermode12) | No| Yes   | Mode for starting Picker.<br>Default value: **DEFAULT**. If **pickerMode** is **DOWNLOAD**, the settings of **newFileNames**, **defaultFilePathUri**, and **fileSuffixChoices** do not take effect.|
@@ -904,7 +875,7 @@ A constructor used to create a **PhotoViewPicker** instance. This constructor is
 
 > **NOTE**
 >
-> This API is supported since API version 12 and deprecated since API version 18.
+> This API is supported since API version 12 and deprecated since API version 18. You are advised to use [photoAccessHelper.PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md) instead.
 
 **Example**
 
@@ -946,7 +917,7 @@ A constructor used to create a **PhotoViewPicker** instance. This constructor is
 
 > **NOTE**
 >
-> This API is supported since API version 12 and deprecated since API version 18.
+> This API is supported since API version 12 and deprecated since API version 18. You are advised to use [photoAccessHelper.PhotoViewPicker](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md) instead.
 
 **Example**
 
@@ -964,8 +935,6 @@ Starts a **photoPicker** page for the user to select one or more images or video
 >
 > This API is supported since API version 9 and deprecated since API version 12. You are advised to use [photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select) instead.
 
-**NOTE**<br>The **photoUris** in the **PhotoSelectResult** object returned by this API can be used only by [photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets). For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -980,7 +949,7 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 | Type                           | Description   |
 | ----------------------------- | :---- |
-| Promise&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt; | Promise used to return the URIs of the images or videos selected.|
+| Promise&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt; | Promise used to return the URIs of the images or videos selected.<br>**Note**: The **photoUris** in the **PhotoSelectResult** object returned by this API can be used only by [photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets). For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).|
 
 **Example**
 
@@ -1016,8 +985,6 @@ Starts a **photoPicker** page for the user to select one or more images or video
 >
 > This API is supported since API version 9 and deprecated since API version 12. You are advised to use [photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select-1) instead.
 
-**NOTE**<br>The **photoUris** in the **PhotoSelectResult** object returned by this API can be used only by [photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets). For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -1027,7 +994,7 @@ Starts a **photoPicker** page for the user to select one or more images or video
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
 | option | [PhotoSelectOptions](#photoselectoptionsdeprecated) | Yes  | Options for selecting images or videos.|
-| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | Yes  | Callback used to return the images or videos selected.|
+| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | Yes  | Callback used to return the images or videos selected.<br>**Note**: The **photoUris** in the **PhotoSelectResult** object returned by this API can be used only by [photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets). For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).|
 
 **Example**
 
@@ -1065,8 +1032,6 @@ Starts a **photoPicker** page for the user to select one or more images or video
 >
 > This API is supported since API version 9 and deprecated since API version 12. You are advised to use [photoAccessHelper.PhotoViewPicker#select](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select-2) instead.
 
-**NOTE**<br>The **photoUris** in the **PhotoSelectResult** object returned by this API can be used only by [photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets). For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
@@ -1075,7 +1040,7 @@ Starts a **photoPicker** page for the user to select one or more images or video
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | Yes  | Callback used to return the images or videos selected.|
+| callback | AsyncCallback&lt;[PhotoSelectResult](#photoselectresultdeprecated)&gt;      | Yes  | Callback used to return the images or videos selected.<br>**Note**: The **photoUris** in the **PhotoSelectResult** object returned by this API can be used only by [photoAccessHelper.getAssets](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets). For details, see [Using a Media File URI](../../file-management/user-file-uri-intro.md#using-a-media-file-uri).|
 
 **Example**
 
@@ -1110,8 +1075,6 @@ Starts a **photoPicker** page for the user to save one or more images or videos.
 >
 > This API is supported since API version 9 and deprecated since API version 12. Use [SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md) instead.
 
-**NOTE**<br>This API saves files in **Files**, not in **Gallery**. For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
@@ -1124,7 +1087,7 @@ Starts a **photoPicker** page for the user to save one or more images or videos.
 
 | Type                           | Description   |
 | ----------------------------- | :---- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the images or videos saved.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs of the images or videos saved.<br>**Note**: This API saves files in **Files**, not in **Gallery**. For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -1159,8 +1122,6 @@ Starts a **photoPicker** page for the user to save one or more images or videos.
 >
 > This API is supported since API version 9 and deprecated since API version 12. Use [SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md) instead.
 
-**NOTE**<br>This API saves files in **Files**, not in **Gallery**. For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
@@ -1168,7 +1129,7 @@ Starts a **photoPicker** page for the user to save one or more images or videos.
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
 | option | [PhotoSaveOptions](#photosaveoptionsdeprecated) | Yes  | Options for saving images or videos.|
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the images or videos saved.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the images or videos saved.<br>**Note**: This API saves files in **Files**, not in **Gallery**. For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -1205,15 +1166,13 @@ Starts a **photoPicker** page for the user to save one or more images or videos.
 >
 > This API is supported since API version 9 and deprecated since API version 12. Use [SaveButton](../apis-arkui/arkui-ts/ts-security-components-savebutton.md) instead.
 
-**NOTE**<br>This API saves files in **Files**, not in **Gallery**. For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).
-
 **System capability**: SystemCapability.FileManagement.UserFileService
 
 **Parameters**
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the images or videos saved.|
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt;      | Yes  | Callback invoked to return the URIs of the images or videos saved.<br>**Note**: This API saves files in **Files**, not in **Gallery**. For details about how to use the returned URIs, see [Using a Document URI](../../file-management/user-file-uri-intro.md#using-a-document-uri).|
 
 **Example**
 
@@ -1296,7 +1255,7 @@ Defines the options for saving images or videos.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 12. There is no substitute API.
+> This API is supported since API version 9 and deprecated since API version 12. Use [SaveButtonOptions](../apis-arkui/arkui-ts/ts-security-components-savebutton.md#savebuttonoptions) instead.
 
 **System capability**: SystemCapability.FileManagement.UserFileService
 

@@ -154,36 +154,47 @@ struct Index {
         NodeContainer(this.myNodeController)
       }
 
+      // 设置RenderNode的位置
       Button("position")
         .width(300)
         .onClick(() => {
           renderNode.position = { x: 10, y: 10 };
           console.info(TEST_TAG + " position:" + JSON.stringify(renderNode.position));
         })
+      
+      // 设置RenderNode的轴心
       Button("pivot")
         .width(300)
         .onClick(() => {
           renderNode.pivot = { x: 0.5, y: 0.6 };
           console.info(TEST_TAG + " pivot:" + JSON.stringify(renderNode.pivot));
         })
+
+      // 修改RenderNode的缩放比例
       Button("scale")
         .width(300)
         .onClick(() => {
           renderNode.scale = { x: 0.5, y: 1 };
           console.info(TEST_TAG + " scale:" + JSON.stringify(renderNode.scale));
         })
+      
+      // 设置RenderNode的平移量
       Button("translation")
         .width(300)
         .onClick(() => {
           renderNode.translation = { x: 100, y: 0 };
           console.info(TEST_TAG + " translation:" + JSON.stringify(renderNode.translation));
         })
+      
+      // 设置RenderNode的旋转角度
       Button("rotation")
         .width(300)
         .onClick(() => {
           renderNode.rotation = { x: 45, y: 0, z: 0 };
           console.info(TEST_TAG + " rotation:" + JSON.stringify(renderNode.rotation));
         })
+      
+      // 设置RenderNode的变换矩阵
       Button("transform")
         .width(300)
         .onClick(() => {
@@ -195,10 +206,12 @@ struct Index {
           ];
           console.info(TEST_TAG + " transform:" + JSON.stringify(renderNode.transform));
         })
+      
+      // 设置RenderNode的阴影属性
       Button("shadow")
         .width(300)
         .onClick(() => {
-          renderNode.shadowElevation = 10;
+          renderNode.shadowElevation = 10; // 设置阴影的光照高度
           renderNode.shadowColor = 0XFF00FF00;
           renderNode.shadowOffset = { x: 10, y: 10 };
           renderNode.shadowAlpha = 0.1;
@@ -207,6 +220,8 @@ struct Index {
           console.info(TEST_TAG + " shadowOffset:" + JSON.stringify(renderNode.shadowOffset));
           console.info(TEST_TAG + " shadowAlpha:" + JSON.stringify(renderNode.shadowAlpha));
         })
+      
+      // 设置RenderNode的阴影模糊半径
       Button("shadowRadius")
         .width(300)
         .onClick(() => {
@@ -217,6 +232,8 @@ struct Index {
           console.info(TEST_TAG + " shadowAlpha:" + JSON.stringify(renderNode.shadowAlpha));
           console.info(TEST_TAG + " shadowRadius:" + JSON.stringify(renderNode.shadowRadius));
         })
+      
+      // 设置RenderNode的边框样式
       Button("border")
         .width(300)
         .onClick(() => {
@@ -249,12 +266,16 @@ struct Index {
           console.info(TEST_TAG + " borderColor:" + JSON.stringify(renderNode.borderColor));
           console.info(TEST_TAG + " borderRadius:" + JSON.stringify(renderNode.borderRadius));
         })
+      
+      // 设置RenderNode的遮罩
       Button("shapeMask")
         .width(300)
         .onClick(() => {
           renderNode.shapeMask = mask;
           console.info(TEST_TAG + " shapeMask:" + JSON.stringify(renderNode.shapeMask));
         })
+      
+      // 设置RenderNode的剪裁形状
       Button("shapeClip")
         .width(300)
         .onClick(() => {

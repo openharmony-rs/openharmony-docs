@@ -45,7 +45,7 @@ Changes the device-cloud file sync switch for an application. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -55,17 +55,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
-    console.info("changeAppCloudSwitch successfully");
-  }).catch((err: BusinessError) => {
-    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
+  console.info("changeAppCloudSwitch successfully");
+}).catch((err: BusinessError) => {
+  console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.changeAppCloudSwitch
 
@@ -88,7 +88,7 @@ Changes the device-cloud file sync switch for an application. This API uses an a
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -98,19 +98,19 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
-    if (err) {
-      console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("changeAppCloudSwitch successfully");
-    }
-  });
-  ```
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: BusinessError) => {
+  if (err) {
+    console.error("changeAppCloudSwitch failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("changeAppCloudSwitch successfully");
+  }
+});
+```
 
 ## cloudSyncManager.notifyDataChange
 
@@ -137,7 +137,7 @@ Notifies the device-cloud service that the cloud data of a specific application 
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -147,17 +147,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
-    console.info("notifyDataChange successfully");
-  }).catch((err: BusinessError) => {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError) => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.notifyDataChange
 
@@ -179,7 +179,7 @@ Notifies the device-cloud service that the cloud data of a specific application 
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -189,19 +189,19 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let bundleName: string = "com.example.bundle";
-  cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
-    if (err) {
-      console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("notifyDataChange successfully");
-    }
-  });
-  ```
+let accountId: string = "testAccount";
+let bundleName: string = "com.example.bundle";
+cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) => {
+  if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
 
 ## ExtraData<sup>11+</sup>
 
@@ -243,7 +243,7 @@ Notifies the device-cloud service of the cloud data change information of a spec
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -254,17 +254,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
-  let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
-  cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
-    console.info("notifyDataChange successfully");
-  }).catch((err: BusinessError) => {
-    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let userId: number = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
+  console.info("notifyDataChange successfully");
+}).catch((err: BusinessError) => {
+  console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.notifyDataChange<sup>11+</sup>
 
@@ -288,7 +288,7 @@ Notifies the device-cloud service of the cloud data change information of a spec
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](errorcode-filemanagement.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -299,19 +299,19 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let userId: number = 100;
-  let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
-  cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
-    if (err) {
-      console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("notifyDataChange successfully");
-    }
-  });
-  ```
+let userId: number = 100;
+let extraData: cloudSyncManager.ExtraData = {eventId: "eventId", extraData: "data"};
+cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
+  if (err) {
+    console.error("notifyDataChange failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("notifyDataChange successfully");
+  }
+});
+```
 
 ## cloudSyncManager.enableCloud
 
@@ -340,7 +340,7 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -350,20 +350,20 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let switches: Record<string, boolean> = {
-    'com.example.bundleName1': true,
-    'com.example.bundleName2': false
-  }
-  cloudSyncManager.enableCloud(accountId, switches).then(() => {
-    console.error("enableCloud successfully");
-  }).catch((err: BusinessError) => {
-    console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches).then(() => {
+  console.error("enableCloud successfully");
+}).catch((err: BusinessError) => {
+  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.enableCloud
 
@@ -387,7 +387,7 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -397,22 +397,22 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let switches: Record<string, boolean> = {
-    'com.example.bundleName1': true,
-    'com.example.bundleName2': false
+let accountId: string = "testAccount";
+let switches: Record<string, boolean> = {
+  'com.example.bundleName1': true,
+  'com.example.bundleName2': false
+}
+cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
+  if (err) {
+    console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("enableCloud successfully");
   }
-  cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
-    if (err) {
-      console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("enableCloud successfully");
-    }
-  });
-  ```
+});
+```
 
 ## cloudSyncManager.disableCloud
 
@@ -440,7 +440,7 @@ Disables device-cloud synergy. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -450,16 +450,16 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  cloudSyncManager.disableCloud(accountId).then(() => {
-    console.info("disableCloud successfully");
-  }).catch((err: BusinessError) => {
-    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId).then(() => {
+  console.info("disableCloud successfully");
+}).catch((err: BusinessError) => {
+  console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.disableCloud
 
@@ -482,7 +482,7 @@ Disables device-cloud synergy. This API uses an asynchronous callback to return 
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -492,18 +492,18 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
-    if (err) {
-      console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("disableCloud successfully");
-    }
-  });
-  ```
+let accountId: string = "testAccount";
+cloudSyncManager.disableCloud(accountId, (err: BusinessError) => {
+  if (err) {
+    console.error("disableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("disableCloud successfully");
+  }
+});
+```
 
 ## Action
 
@@ -545,7 +545,7 @@ Callback used to clear the cloud data locally. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -555,20 +555,20 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-  let appActions: Record<string, cloudSyncManager.Action> = {
-    'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
-    'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
-  };
-  cloudSyncManager.clean(accountId, appActions).then(() => {
-    console.info("clean successfully");
-  }).catch((err: BusinessError) => {
-    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
-  });
-  ```
+let accountId: string = "testAccount";
+let appActions: Record<string, cloudSyncManager.Action> = {
+  'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
+  'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
+};
+cloudSyncManager.clean(accountId, appActions).then(() => {
+  console.info("clean successfully");
+}).catch((err: BusinessError) => {
+  console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
 
 ## cloudSyncManager.clean
 
@@ -592,7 +592,7 @@ Callback used to clear the cloud data locally. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID                    | Error Message       |
 | ---------------------------- | ---------- |
@@ -602,22 +602,22 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let accountId: string = "testAccount";
-    let appActions: Record<string, cloudSyncManager.Action> = {
-    'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
-    'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
-  };
-  cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
-    if (err) {
-      console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
-    } else {
-      console.info("clean successfully");
-    }
-  });
-  ```
+let accountId: string = "testAccount";
+  let appActions: Record<string, cloudSyncManager.Action> = {
+  'com.example.bundleName1': cloudSyncManager.Action.RETAIN_DATA,
+  'com.example.bundleName2': cloudSyncManager.Action.CLEAR_DATA
+};
+cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
+  if (err) {
+    console.error("clean failed with error message: " + err.message + ", error code: " + err.code);
+  } else {
+    console.info("clean successfully");
+  }
+});
+```
 
 ## DowngradeDownload<sup>20+</sup>
 
@@ -660,17 +660,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName = 'com.demo.a';
-  try {
-    let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  } catch (e) {
-    let error = e as BusinessError;
-    console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
-  }
-  ```
+let bundleName = 'com.demo.a';
+try {
+  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+} catch (e) {
+  let error = e as BusinessError;
+  console.error(`Failed to create downgrade manager object, error code: ${error.code}, message: ${error.message}`);
+}
+```
 
 ### getCloudFileInfo<sup>20+</sup>
 
@@ -704,17 +704,17 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) => {
-    console.info("cloud file info: " + JSON.stringify(fileInfo));
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) => {
+  console.info("cloud file info: " + JSON.stringify(fileInfo));
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get downgrade info, error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### startDownload<sup>20+</sup>
 
@@ -758,25 +758,25 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  let callback = (data: cloudSyncManager.DownloadProgress) => {
-    console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-    if (data.state == cloudSyncManager.DownloadState.COMPLETED) {
-      console.info('Downgrade finished.');
-    } else if (data.state == cloudSyncManager.DownloadState.STOPPED) {
-      console.info(`Downgrade stopped, reason: ${data.stopReason}.`);
-    }
-  };
-  downgradeMgr.startDownload(callback).then(() => {
-    console.info("Downgrade started successfully.");
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
-  });
-  ```
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+let callback = (data: cloudSyncManager.DownloadProgress) => {
+  console.info(`Downgrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+  if (data.state == cloudSyncManager.DownloadState.COMPLETED) {
+    console.info('Downgrade finished.');
+  } else if (data.state == cloudSyncManager.DownloadState.STOPPED) {
+    console.info(`Downgrade stopped, reason: ${data.stopReason}.`);
+  }
+};
+downgradeMgr.startDownload(callback).then(() => {
+  console.info("Downgrade started successfully.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+});
+```
 
 ### stopDownload<sup>20+</sup>
 
@@ -809,25 +809,25 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 
 **Example**
 
-  ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  let bundleName: string = "com.demo.a";
-  let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
-  downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
-    console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
-  }).then(() => {
-    console.info("Downgrade started successfully.");
+let bundleName: string = "com.demo.a";
+let downgradeMgr = new cloudSyncManager.DowngradeDownload(bundleName);
+downgradeMgr.startDownload((data: cloudSyncManager.DownloadProgress) => {
+  console.info(`Dwongrade progress: downloadedSize: ${data.downloadedSize}, totalSize: ${data.totalSize}`);
+}).then(() => {
+  console.info("Downgrade started successfully.");
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+});
+
+let needStop = true;
+if (needStop) {
+  downgradeMgr.stopDownload().then(() => {
+    console.info("Downgrade stopped successfully.");
   }).catch((err: BusinessError) => {
-    console.error(`Failed to start downgrade, error message: ${err.message}, error code: ${err.code}`);
+    console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
   });
-
-  let needStop = true;
-  if (needStop) {
-    downgradeMgr.stopDownload().then(() => {
-      console.info("Downgrade stopped successfully.");
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to stop downgrade, error message: ${err.message}, error code: ${err.code}`);
-    });
-  }
-  ```
+}
+```

@@ -654,3 +654,25 @@
 | napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_invalid_arg | 入参native_object为nullptr | 确保入参正确 |
 | napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_object_expected | 入参js_object不是js Object类型 | 确保入参正确 |
 | napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行（若异步则需线程安全）。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的js异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_create_ark_context | 创建一个新的运行时上下文环境。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_create_ark_context | 创建一个新的运行时上下文环境。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的js异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_switch_ark_context | 切换到指定的运行时上下文环境。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_switch_ark_context | 切换到指定的运行时上下文环境。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的js异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_destroy_ark_context | 销毁通过接口napi_create_ark_context创建的一个上下文环境。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_destroy_ark_context | 销毁通过接口napi_create_ark_context创建的一个上下文环境。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的js异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_open_critical_scope | 打开临界区作用域 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_open_critical_scope | 打开临界区作用域 | napi_invalid_arg | 入参scope为nullptr | 确保入参正确 |
+| napi_close_critical_scope | 关闭临界区作用域 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_close_critical_scope | 关闭临界区作用域 | napi_invalid_arg | 入参scope为nullptr | 确保入参正确 |
+| napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据 | napi_invalid_arg | 入参value为nullptr | 确保入参正确 |
+| napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据 | napi_invalid_arg | 入参buffer为nullptr | 确保入参正确 |
+| napi_get_buffer_string_utf16_in_critical_scope | 获取ArkTS String的UTF-16编码内存缓冲区数据 | napi_invalid_arg | 入参length为nullptr | 确保入参正确 |
+| napi_create_strong_reference | 创建指向ArkTS对象的强引用 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_create_strong_reference | 创建指向ArkTS对象的强引用 | napi_invalid_arg | 入参value为nullptr | 确保入参正确 |
+| napi_create_strong_reference | 创建指向ArkTS对象的强引用 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
+| napi_delete_strong_reference | 删除强引用 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_delete_strong_reference | 删除强引用 | napi_invalid_arg | 入参ref为nullptr | 确保入参正确 |
+| napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值 | napi_invalid_arg | 入参ref为nullptr | 确保入参正确 |
+| napi_get_strong_reference_value | 根据强引用对象获取其关联的ArkTS对象值 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |

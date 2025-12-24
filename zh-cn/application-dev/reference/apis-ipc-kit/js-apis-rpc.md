@@ -6921,7 +6921,7 @@ writeRawData(rawData: number[], size: number): boolean
 
 > **说明：**
 >
-> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeRawDataBffer](#writerawdatabuffer11)替代。
+> 从API version 8 开始支持，API version 9 开始废弃，建议使用[writeRawDataBuffer](#writerawdatabuffer11)替代。
 
 **系统能力**：SystemCapability.Communication.IPC.Core
 

@@ -18,7 +18,7 @@
 
 ## 概述
 
-\@Local表示组件内部的状态，使得自定义组件内部的变量具有观测变化的能力：
+\@Local表示组件内部的状态，使得自定义组件内部的变量具有观察变化的能力：
 
 - 被\@Local装饰的变量无法从外部初始化，因此必须在组件内部进行初始化。
 
@@ -85,7 +85,7 @@ struct Index {
 
 ## 观察变化
 
-使用\@Local装饰的变量具有观测变化的能力。当装饰的变量发生变化时，会触发该变量绑定的UI组件刷新。
+使用\@Local装饰的变量具有观察变化的能力。当装饰的变量发生变化时，会触发该变量绑定的UI组件刷新。
 
 - 当装饰的变量类型为boolean、string、number时，可以观察到对变量赋值的变化。
 
@@ -250,7 +250,7 @@ struct Index {
 
 - 当装饰内置类型时，可以观察到变量整体赋值及API调用带来的变化。
 
-  | 类型  | 可观测变化的API                                              |
+  | 类型  | 可观察变化的API                                              |
   | ----- | ------------------------------------------------------------ |
   | Array | push, pop, shift, unshift, splice, copyWithin, fill, reverse, sort |
   | Date  | setFullYear, setMonth, setDate, setHours, setMinutes, setSeconds, setMilliseconds, setTime, setUTCFullYear, setUTCMonth, setUTCDate, setUTCHours, setUTCMinutes, setUTCSeconds, setUTCMilliseconds |
@@ -299,7 +299,7 @@ struct Index {
 
 \@Local与\@State的用法、功能对比如下：
 
-|                    | \@State                      | \@Local                         |
+|  用法                  | \@State                      | \@Local                         |
 | ------------------ | ---------------------------- | --------------------------------- |
 | 参数               | 无。                          | 无。                       |
 | 从父组件初始化         | 可选。                  | 不允许外部初始化。           |

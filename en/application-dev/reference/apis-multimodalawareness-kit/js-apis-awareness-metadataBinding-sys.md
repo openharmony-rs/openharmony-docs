@@ -116,7 +116,7 @@ metadataBinding.decodeImage(encodeImage).then((metadata: string) => {
 ```
 
 ## metadataBinding.notifyMetadataBindingEvent
-notifyMetadataBindingEvent(metadata: string): void
+notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 Transfers metadata to the application or service that calls the encoding API.
 
@@ -128,7 +128,13 @@ Transfers metadata to the application or service that calls the encoding API.
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| metadata     | string                           | Yes  | Metadata to be encoded.|
+|bundleName|string|Yes|Application bundle name.|
+
+**Return value**
+
+| Type                          | Description        |
+| ---------------------------- | ---------- |
+| Promise&lt;string&gt; | Promise object, the ppLink content for registered applications.|
 
 **Error codes** 
 
@@ -145,8 +151,10 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let metadata: string = '';
-metadataBinding.notifyMetadataBindingEvent(metadata).catch((error: BusinessError) => {
+let bundleName: string = '';
+metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string)=>{
+  console.info("notify metadata:" + appLink);
+}).catch((error: BusinessError) => {
   console.error("notify metadata error" + error);
 });
 ```

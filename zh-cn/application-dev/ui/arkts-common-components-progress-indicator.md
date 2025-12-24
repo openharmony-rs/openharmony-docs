@@ -11,7 +11,7 @@ Progress是进度条显示组件，显示内容通常为目标操作的当前进
 
 ## 创建进度条
 
-Progress通过调用接口来创建，接口调用形式如下：
+Progress通过调用接口来创建，接口调用方式如下：
 
 ```ts
 Progress(options: {value: number, total?: number, type?: ProgressType})

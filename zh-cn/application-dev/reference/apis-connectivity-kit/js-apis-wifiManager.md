@@ -586,14 +586,24 @@ WLAN配置信息。
 
 ## WifiWapiConfig<sup>12+</sup>
 
-WAPI身份验证协议配置。
+WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议配置。
+当用户通过WAPI身份验证协议连接无线网时，可通过以下方式配置参数或者证书进行连接。
+- 方式一:通过配置证书进行连接。[WifiDeviceConfig](#wifideviceconfig)中关键字段的配置如下:
+  - preSharedKey无需传参;
+  - securityType设置为WIFI_SEC_TYPE_WAPI_CERT;
+  - 在wapiConfig中：
+    - wapiAsCert传递AS证书的文本内容。
+    - wapiUserCert传递用户证书的文本内容。
+ - 方式二:通过配置preSharedKey进行链接。[WifiDeviceConfig](#wifideviceconfig)中关键字段的配置如下:
+   - preSharedKey传参为路由器上设置的密码;
+   - securityType设置为WIFI_SEC_TYPE_WAPI_PSK。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | wapiPskType | [WapiPskType](#wapipsktype12)| 否 | 否 | 加密类型。 |
-| wapiAsCert | string | 否 | 否 | As证书。 |
+| wapiAsCert | string | 否 | 否 | AS证书(Authentication Server Certificate，认证服务器证书)。 |
 | wapiUserCert | string | 否 | 否 | 用户证书。 |
 
 ## WapiPskType<sup>12+</sup>
@@ -1312,7 +1322,7 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
-当macType是1 - 设备MAC地址时，获取 macAddress 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，macAddress 返回随机MAC地址。
+当macType是1 - 设备MAC地址时，获取 macAddress 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress 返回随机MAC地址。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1344,7 +1354,7 @@ getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
 > **说明：**
-> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，macAddress返回为空。
+> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1388,7 +1398,7 @@ getLinkedInfoSync(): WifiLinkedInfo;
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
 > **说明：**
-> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，macAddress返回为空。
+> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1948,7 +1958,7 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，groupOwnerAddr 返回全零地址。
+获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，groupOwnerAddr 返回全零地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -1977,7 +1987,7 @@ getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
-获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，groupOwnerAddr 返回全零地址。
+获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，groupOwnerAddr 返回全零地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -2602,7 +2612,7 @@ getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 > **说明：**
-> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（该权限仅系统应用可申请），无该权限时，macAddress返回为空。
+> - 当macType是1（设备MAC地址），获取macAddress还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，macAddress返回为空。
 > - 如果应用申请了ohos.permission.GET_WIFI_PEERS_MAC权限，则返回结果中的bssid为真实BSSID地址，否则为随机设备地址。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA

@@ -52,7 +52,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
 
 **示例**：
 
-1.按照预置振动效果触发马达振动：
+1. 按照预置振动效果触发马达振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -95,7 +95,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
    }
    ```
 
-2.按照自定义振动配置文件触发马达振动：
+2. 按照自定义振动配置文件触发马达振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -147,7 +147,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
    }
    ```
 
-3.按照指定时长触发马达振动：
+3. 按照指定时长触发马达振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -211,7 +211,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
 
 **示例**：
 
-1.按照预置振动效果触发马达振动：
+1. 按照预置振动效果触发马达振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -254,7 +254,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
    }
    ```
 
-2.按照自定义振动配置文件触发马达振动：
+2. 按照自定义振动配置文件触发马达振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -306,7 +306,7 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
    }
    ```
 
-3.按照指定时长触发马达振动：
+3. 按照指定时长触发马达振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -358,7 +358,7 @@ stopVibration(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;): 
 
 **示例**：
 
-1.停止指定时长振动：
+1. 停止指定时长振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -400,7 +400,7 @@ stopVibration(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;): 
    }
    ```
 
-2.停止预置振动：
+2. 停止预置振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -475,7 +475,7 @@ stopVibration(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 **示例**：
 
-1.停止指定时长振动：
+1. 停止指定时长振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -513,7 +513,7 @@ stopVibration(stopMode: VibratorStopMode): Promise&lt;void&gt;
    }
    ```
 
-2.停止预置振动：
+2. 停止预置振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';

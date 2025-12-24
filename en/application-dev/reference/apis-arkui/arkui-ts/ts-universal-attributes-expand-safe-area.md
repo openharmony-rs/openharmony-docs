@@ -46,7 +46,7 @@ Sets the safe area to be expanded to.
 
 >  **NOTE**
 >
->  When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **"auto"**), the edges for expanding the safe area can only be [SafeAreaEdge.TOP, SafeAreaEdge.START], and the size of the component remains unchanged after safe area expansion.
+>  When using **expandSafeArea** to expand the drawing of a component, avoid setting fixed width and height values (except percentages). If fixed width and height values are set (including **'auto'**), the edges for expanding the safe area can only be [SafeAreaEdge.TOP, SafeAreaEdge.START], and the size of the component remains unchanged after safe area expansion.
 >
 >  The safe area does not restrict the layout or size of components inside, nor does it clip the components.
 >
@@ -111,7 +111,7 @@ Sets the avoidance mode for the virtual keyboard.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | Yes  | Avoidance mode of the virtual keyboard.<br>Default value: **KeyboardAvoidMode.OFFSET**, which means that the page moves up when the keyboard is displayed.|
+| value  | [KeyboardAvoidMode](../arkts-apis-uicontext-e.md#keyboardavoidmode11) | Yes  | Avoidance mode of the virtual keyboard.<br>Default value: **KeyboardAvoidMode.OFFSET**, which means that the page moves up when the keyboard is displayed.<br>If an invalid value is set for **setKeyboardAvoidMode**, the setting will not take effect.|
 
 >  **NOTE**
 >
@@ -214,10 +214,13 @@ struct SafeAreaExample1 {
 
   build() {
     Row() {
-        Column()
-          .height('100%').width('100%')
-          .backgroundImage($r('app.media.bg')).backgroundImageSize(ImageSize.Cover)
-          .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+      Column()
+        .width('100%')
+        .height('100%')
+        // Replace $r('app.media.bg') with the image resource file you use.
+        .backgroundImage($r('app.media.bg'))
+        .backgroundImageSize(ImageSize.Cover)
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     }.height('100%')
   }
 }
@@ -274,8 +277,11 @@ struct SafeAreaExample3 {
     Row() {
       Stack() {
         Column()
-          .height('100%').width('100%')
-          .backgroundImage($r('app.media.bg')).backgroundImageSize(ImageSize.Cover)
+          .width('100%')
+          .height('100%')
+          // Replace $r('app.media.bg') with the image resource file you use.
+          .backgroundImage($r('app.media.bg'))
+          .backgroundImageSize(ImageSize.Cover)
           .expandSafeArea([SafeAreaType.KEYBOARD, SafeAreaType.SYSTEM])
         Column() {
           Button('Set caretPosition 1')
@@ -284,8 +290,11 @@ struct SafeAreaExample3 {
             })
           TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
             .placeholderFont({ size: 14, weight: 400 })
-            .width(320).height(40).offset({y: 120})
-            .fontSize(14).fontColor(Color.Black)
+            .width(320)
+            .height(40)
+            .offset({ y: 120 })
+            .fontSize(14)
+            .fontColor(Color.Black)
             .backgroundColor(Color.White)
         }.width('100%').alignItems(HorizontalAlign.Center)
       }
@@ -330,10 +339,21 @@ export default class EntryAbility extends UIAbility{
 struct KeyboardAvoidExample1 {
   build() {
     Column() {
-      Row().height("30%").width("100%").backgroundColor(Color.Gray)
-      TextArea().width("100%").borderWidth(1)
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor('rgb(179,217,235)').layoutWeight(1)
-    }.width('100%').height("100%")
+      Row()
+        .width('100%')
+        .height('30%')
+        .backgroundColor(Color.Gray)
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -374,10 +394,21 @@ export default class EntryAbility extends UIAbility{
 struct KeyboardAvoidExample2 {
   build() {
     Column() {
-      Row().height("30%").width("100%").backgroundColor(Color.Gray)
-      TextArea().width("100%").borderWidth(1)
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor('rgb(179,217,235)').layoutWeight(1)
-    }.width('100%').height("100%")
+      Row()
+        .width('100%')
+        .height('30%')
+        .backgroundColor(Color.Gray)
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -417,26 +448,26 @@ struct KeyboardAvoidExample3 {
           })
           .layoutWeight(1)
       }
-      .height("30%")
-      .width("100%")
+      .height('30%')
+      .width('100%')
       .backgroundColor(Color.Gray)
 
       TextArea()
-        .width("100%")
+        .width('100%')
         .borderWidth(1)
       
-      Text("I can see the bottom of the page")
-        .width("100%")
+      Text('I can see the bottom of the page')
+        .width('100%')
         .textAlign(TextAlign.Center)
         .backgroundColor('rgb(179,217,235)')
         .layoutWeight(1)
       
       TextArea()
-        .width("100%")
+        .width('100%')
         .borderWidth(1)
     }
     .width('100%')
-    .height("100%")
+    .height('100%')
   }
 }
 ```
@@ -494,14 +525,14 @@ struct ExpandSafeAreaTest {
         .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
         .clip(false)
         Column(){
-          Text("Tab content").fontSize(50)
-        }.width("100%").height(1000)
+          Text('Tab content').fontSize(50)
+        }.width('100%').height(1000)
         .backgroundColor(Color.Grey)
       }.expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
     }
     .clip(false)
     .edgeEffect(EdgeEffect.None)
-    .width("100%").height("100%")
+    .width('100%').height('100%')
   }
 }
 ```
@@ -541,7 +572,7 @@ struct IgnoreLayoutSafeAreaTest1 {
       })
       .safeAreaPadding(LengthMetrics.vp(10))  // Set a 10 vp safe area padding (that is, component-level safe area).
     }
-    .width("100%")
+    .width('100%')
   }
 }
 ```
@@ -579,7 +610,7 @@ struct IgnoreLayoutSafeAreaTest2 {
       .padding(10) // Set a 10 vp normal padding.
       .safeAreaPadding(LengthMetrics.vp(10))  // Set a 10 vp safe area padding (that is, component-level safe area).
     }
-    .width("100%")
+    .width('100%')
   }
 }
 ```
@@ -611,7 +642,7 @@ struct IgnoreLayoutSafeAreaTest3 {
         .backgroundColor('rgb(39, 135, 217)')
         .align(Alignment.TopStart)
 
-        Text("Baseline Effect").fontColor(Color.White)
+        Text('Baseline effect').fontColor(Color.White)
       }
 
       Column(){
@@ -629,7 +660,7 @@ struct IgnoreLayoutSafeAreaTest3 {
         .align(Alignment.TopStart)
         .expandSafeArea()  // Extend the rendering area: the container's rendering area shifts upward, but the child component's position relative to the screen remains unchanged.
 
-        Text("expandSafeArea").fontColor(Color.White)
+        Text('expandSafeArea').fontColor(Color.White)
       }
 
       Column(){
@@ -647,10 +678,10 @@ struct IgnoreLayoutSafeAreaTest3 {
         .align(Alignment.TopStart)
         .ignoreLayoutSafeArea()  // Extend the layout area: The container's layout area shifts upward, and the child component's position relative to the container remains unchanged.
 
-        Text("ignoreLayoutSafeArea").fontColor(Color.White)
+        Text('ignoreLayoutSafeArea').fontColor(Color.White)
       }
     }
-    .width("100%")
+    .width('100%')
     .backgroundColor(Color.Gray)
     .justifyContent(FlexAlign.SpaceEvenly)
   }

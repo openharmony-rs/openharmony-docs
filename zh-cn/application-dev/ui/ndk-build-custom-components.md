@@ -201,7 +201,7 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    
    } // namespace NativeModule
    ```
-4. 修改CMakeList.txt，添加链接库。
+4. 修改CMakeLists.txt，添加链接库。
    ```cpp
      # CMakeLists.txt
 
@@ -406,7 +406,7 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
    
    ```
 
-4. 修改CMakeList.txt，添加链接库。
+4. 修改CMakeLists.txt，添加链接库。
    ```cpp
      # CMakeLists.txt
 

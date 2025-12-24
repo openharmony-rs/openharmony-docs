@@ -67,7 +67,7 @@ The callback function is used only to read audio data. Do not call AudioCapturer
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
 | void* userData | Pointer to the data storage area customized by the application.    |
-| void* buffer | Pointer to the playback data storage area, which is used by the application to fill in playback data.     |
+| void* buffer | Pointer to the captured data storage area, which is used by the application to read captured data.     |
 | int32_t length | Length of the buffer.    |
 
 ### OH_AudioCapturer_OnStreamEvent()

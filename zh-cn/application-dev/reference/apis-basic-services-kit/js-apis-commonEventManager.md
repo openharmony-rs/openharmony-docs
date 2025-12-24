@@ -142,7 +142,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 | 参数名          | 类型                                                         | 必填 | 说明                       |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)        | 是   | 表示订阅信息。             |
-| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)> | 是   | 回调函数。当公共事件订阅者创建成功时，err为undefined，否则为错误对象。 |
+| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | 是   | 回调函数。当公共事件订阅者创建成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -200,7 +200,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 **返回值：**
 | 类型                                                      | 说明             |
 | --------------------------------------------------------- | ---------------- |
-| Promise\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)> | 以Promise形式返回订阅者对象。 |
+| Promise\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | 以Promise形式返回订阅者对象。 |
 
 **错误码：**
 
@@ -249,7 +249,7 @@ createSubscriber的同步接口。
 **返回值：**
 | 类型                                                      | 说明             |
 | --------------------------------------------------------- | ---------------- |
-| [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md) | 返回订阅者对象。 |
+| [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | 返回订阅者对象。 |
 
 **错误码：**
 
@@ -293,7 +293,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 
 | 参数名       | 类型                                                | 必填 | 说明                             |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)     | 是   | 表示订阅者对象。                 |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | 是   | 表示订阅者对象。                 |
 | callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 回调函数。当公共事件订阅成功后，事件触发时执行的回调函数；否则订阅失败时，err为错误对象。 |
 
 **错误码：**
@@ -363,7 +363,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 
 | 参数名       | 类型                                             | 必填 | 说明                     |
 | ---------- | ----------------------------------------------- | ---- | ------------------------ |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md) | 是   | 表示订阅者对象。         |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | 是   | 表示订阅者对象。         |
 | callback   | AsyncCallback\<void>                            | 否   | 回调函数。当取消公共事件订阅成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -452,7 +452,7 @@ subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEv
 
 | 参数名       | 类型                                                | 必填 | 说明                             |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md)     | 是   | 表示订阅者对象。                 |
+| subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | 是   | 表示订阅者对象。                 |
 | callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | 是   | 表示接收公共事件数据的回调函数。 |
 
 **返回值：**
@@ -539,7 +539,7 @@ type CommonEventSubscriber = _CommonEventSubscriber
 
 | 类型 | 说明 |
 | --- | --- |
-| [_CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md) | 描述公共事件的订阅者。 |
+| [_CommonEventSubscriber](js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | 描述公共事件的订阅者。 |
 
 ## CommonEventSubscribeInfo<sup>10+</sup>
 

@@ -108,7 +108,7 @@ Trace如下：
 
 对Tabs中当前不可见的TabContent进行冻结，修改状态变量不会触发冻结组件的更新。
 
-需要注意的是：在首次渲染的时候，Tabs只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
+需要注意的是：在首次渲染时，Tabs只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
 
 图示如下：
 ![freezeWithTab](./figures/freezewithTabs.png)
@@ -570,7 +570,7 @@ struct Page2 {
 
 ### 混用场景
 
-当支持组件冻结的场景彼此之间组合使用时，对于不同的API版本，冻结行为会有不同。给父组件设置组件冻结标志，在API version 17及以下，当父组件解冻时，会解冻自己子组件所有的节点；从API version 18开始，父组件解冻时，只会解冻子组件的屏上节点，详细说明见[\@Component的自定义组件冻结的混用场景](./arkts-custom-components-freeze.md#组件混用)。
+当支持组件冻结的场景彼此之间组合使用时，对于不同的API版本，冻结行为会有不同。给父组件设置组件冻结标志，在API version 17及以下，当父组件解冻时，会解冻其子组件所有的节点；从API version 18开始，父组件解冻时，只会解冻子组件的屏上节点，详细说明见[\@Component的自定义组件冻结的混用场景](./arkts-custom-components-freeze.md#组件混用)。
 
 **Navigation和TabContent的混用**
 

@@ -756,7 +756,7 @@ getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的的位置信息和卡片尺寸信息，单位vp。 |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息，单位vp。 |
 
 **错误码：**
 

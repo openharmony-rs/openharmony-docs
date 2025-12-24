@@ -26,7 +26,7 @@ Returns the width and height of the component. The default unit is vp, but APIs 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only| Optional| Description                  |
+| Name  | Type  | Read-Only| Optional| Description                  |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | width  | number | No  | No  | Width of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
 | height | number | No  | No  | Height of the component.<br>Unit: vp.<br>Value range: [0, +∞).|
@@ -67,7 +67,7 @@ Sets or returns the layout size and position of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type  | Read Only| Optional| Description                       |
+| Name  | Type  | Read-Only| Optional| Description                       |
 | ------ | ------ | ---- | ---- | --------------------------- |
 | x      | number | No  | No  | Horizontal position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
 | y      | number | No  | No  | Vertical position.<br>Unit: vp.<br>Value range: (-∞, +∞).|
@@ -176,7 +176,7 @@ Defines a vector that contains the x and y coordinate values.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Read Only| Optional| Description             |
+| Name| Type  | Read-Only| Optional| Description             |
 | ---- | ------ | ---- | ---- | ----------------- |
 | x    | number | No  | No  | X coordinate value of the vector.<br>Value range: (-∞, +∞).|
 | y    | number | No  | No  | Y coordinate value of the vector.<br>Value range: (-∞, +∞).|
@@ -189,7 +189,7 @@ Represents a vector including three values: x, y, and z.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Read Only| Optional| Description               |
+| Name| Type  | Read-Only| Optional| Description               |
 | ---- | ------ | ---- | ---- | ------------------- |
 | x    | number | No  | No  | Rotation angle along the x-axis.<br>Value range: (-∞, +∞).|
 | y    | number | No  | No  | Rotation angle along the y-axis.<br>Value range: (-∞, +∞).|
@@ -203,7 +203,7 @@ Represents a vector of the T type that contains two values: x and y.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type  | Read Only| Optional| Description             |
+| Name| Type  | Read-Only| Optional| Description             |
 | ---- | ------ | ---- | ---- | ----------------- |
 | x    | T | No | No | X coordinate value of the vector.|
 | y    | T | No | No | Y coordinate value of the vector.|
@@ -315,7 +315,7 @@ Describes the edges.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Read Only| Optional| Description            |
+| Name  | Type| Read-Only| Optional| Description            |
 | ------ | ---- | ---- | ---- | ---------------- |
 | left   | T    | No  | No  | Left edge.|
 | top    | T    | No  | No  | Top edge.|
@@ -346,7 +346,7 @@ Sets the width and height attributes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Read Only| Optional| Description            |
+| Name  | Type| Read-Only| Optional| Description            |
 | ------ | ---- | ---- | ---- | ---------------- |
 | width   | T    | No  | No  | Width.|
 | height    | T    | No  | No  | Height.|
@@ -374,7 +374,7 @@ Defines the length properties. When the length unit is PERCENT, the value **1** 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type| Read Only| Optional| Description            |
+| Name  | Type| Read-Only| Optional| Description            |
 | ------------ | ---------------------------------------- | ---- | ---- | ------ |
 | value       | number | No  | No  | Value of the length property.  |
 | unit | [LengthUnit](#lengthunit12)                                   | No  | No  | Unit of the length property. The default value is VP.|
@@ -868,7 +868,7 @@ Describes the four corners.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name       | Type| Read Only| Optional| Description                  |
+| Name       | Type| Read-Only| Optional| Description                  |
 | ----------- | ---- | ---- | ---- | ---------------------- |
 | topLeft     | T    | No  | No  | Radius of the upper left corner.  |
 | topRight    | T    | No  | No  | Radius of the upper right corner.|
@@ -925,7 +925,7 @@ Describes a rectangle with rounded corners.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type                         | Read Only| Optional| Description            |
+| Name   | Type                         | Read-Only| Optional| Description            |
 | ------- | ----------------------------- | ---- | ---- | ---------------- |
 | rect    | [Rect](#rect12)                 | No  | No  | Attributes of the rectangle.|
 | corners | [CornerRadius](#cornerradius12) | No  | No  | Attributes of rounded corners.|
@@ -938,7 +938,7 @@ Describes a circle.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name   | Type  | Read Only| Optional| Description                     |
+| Name   | Type  | Read-Only| Optional| Description                     |
 | ------- | ------ | ---- | ---- | ------------------------- |
 | centerX | number | No  | No  | X-coordinate of the center of the circle, in px.|
 | centerY | number | No  | No  | Y-coordinate of the center of the circle, in px.|
@@ -952,7 +952,7 @@ Describes the command for drawing a path.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                                                        | Type  | Read Only| Optional| Description                                                        |
+| Name                                                        | Type  | Read-Only| Optional| Description                                                        |
 | ------------------------------------------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
 | [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | No  | No  | Commands for drawing a path. For details about how to convert pixel units, see [Pixel Units](./arkui-ts/ts-pixel-units.md).<br>Unit: px|
 
@@ -966,7 +966,7 @@ Describes the shape mask.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name           | Type   | Read Only| Optional| Description                                               |
+| Name           | Type   | Read-Only| Optional| Description                                               |
 | --------------- | ------ | ---- | ---- | -------------------------------------------------- |
 | fillColor       | number | No  | No  | Describes the fill color of the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode). |
 | strokeColor     | number | No  | No  | Sets the stroke color for the mask, in ARGB format. The default value is **0XFF000000**.<br> Blended using [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode).|

@@ -163,38 +163,38 @@ Json文件共包含3个属性。
 
 2. 振动器查询。
 
-  **情形一** 查询所有马达信息：
+   **情形一** 查询所有马达信息：
 
-  ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   ```ts
+    import { vibrator } from '@kit.SensorServiceKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync();
-    console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-  }
-  ```
+   try {
+     const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync();
+     console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
 
-  **情形二** 查询指定设备的一个或多个马达信息：
+   **情形二** 查询指定设备的一个或多个马达信息：
 
-  ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   ```ts
+    import { vibrator } from '@kit.SensorServiceKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
-  try {
-    const vibratorParam: vibrator.VibratorInfoParam = {
-      deviceId: 1    // deviceid 需要是查询出来真实存在的设备
-    }
-    const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync(vibratorParam);
-    console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
-  } catch (error) {
-    let e: BusinessError = error as BusinessError;
-    console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-  }
-  ```
+   try {
+     const vibratorParam: vibrator.VibratorInfoParam = {
+       deviceId: 1    // deviceid 需要是查询出来真实存在的设备
+     }
+     const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync(vibratorParam);
+     console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
 
 3. 根据指定振动效果和振动属性触发马达振动。
 
@@ -274,14 +274,14 @@ Json文件共包含3个属性。
    import { vibrator } from '@kit.SensorServiceKit';
    import { resourceManager } from '@kit.LocalizationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   
+
    const fileName: string = 'xxx.json';
-   
+
    @Entry
    @Component
    struct Index {
      uiContext = this.getUIContext();
-   
+
      build() {
        Row() {
          Column() {
@@ -326,7 +326,7 @@ Json文件共包含3个属性。
 
    **方式一** 按照指定模式停止对应的马达振动，自定义振动不支持此类停止方式：
 
-   ​	停止固定时长振动：
+   停止固定时长振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -347,7 +347,7 @@ Json文件共包含3个属性。
    }
    ```
 
-   ​	停止预置振动：
+   停止预置振动：
 
    ```ts
    import { vibrator } from '@kit.SensorServiceKit';
@@ -409,7 +409,6 @@ Json文件共包含3个属性。
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
    }
    ```
-
 
 5. 动态马达状态变化监听。
 

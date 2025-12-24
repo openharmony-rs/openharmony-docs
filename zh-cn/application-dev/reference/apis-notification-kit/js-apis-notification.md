@@ -165,7 +165,7 @@ cancel(id: number, label?: string): Promise\<void\>
 import Base from '@ohos.base';
 
 Notification.cancel(0).then(() => {
-	console.info("cancel success");
+  console.info("cancel success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancel failed, code is ${err}`);
 });
@@ -256,7 +256,7 @@ cancelAll(): Promise\<void\>
 import Base from '@ohos.base';
 
 Notification.cancelAll().then(() => {
-	console.info("cancelAll success");
+  console.info("cancelAll success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancelAll failed, code is ${err}`);
 });
@@ -740,7 +740,7 @@ import Base from '@ohos.base';
 
 let groupName: string = "GroupName";
 Notification.cancelGroup(groupName).then(() => {
-	console.info("cancelGroup success");
+  console.info("cancelGroup success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancelGroup failed, code is ${err}`);
 });

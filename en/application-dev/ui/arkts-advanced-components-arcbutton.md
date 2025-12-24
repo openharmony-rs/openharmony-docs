@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The **ArcButton** component is supported since API version 18. The **ArcButton** component represents an arc button specifically designed for circular screens. It offers various button styles, such as emphasized, normal, and warning, tailored for watch UIs. For details, see [ArcButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md).
+Supported since API version 18, the **ArcButton** component represents an arc button specifically designed for circular screens. It offers various button styles, such as emphasized, normal, and warning, tailored for watch UIs. For details, see [ArcButton](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md).
 
 
 ## Creating a Button

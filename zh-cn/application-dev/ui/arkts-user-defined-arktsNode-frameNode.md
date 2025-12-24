@@ -613,11 +613,16 @@ import { DrawContext, FrameNode, NodeController, Position, Size, UIContext, Layo
 import { drawing } from '@kit.ArkGraphics2D';
 
 function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
+  // 获取子节点用户设置的宽高
   const size = child.getUserConfigSize();
+
+  // 计算子节点宽度
   const width = Math.max(
     Math.min(constraint.maxSize.width, size.width.value),
     constraint.minSize.width
   );
+
+  // 计算子节点高度
   const height = Math.max(
     Math.min(constraint.maxSize.height, size.height.value),
     constraint.minSize.height
@@ -643,13 +648,16 @@ class MyFrameNode extends FrameNode {
     this.uiContext = uiContext;
   }
 
+  // 重写布局测量方法
   onMeasure(constraint: LayoutConstraint): void {
     let sizeRes: Size = { width: this.uiContext.vp2px(100), height: this.uiContext.vp2px(100) };
+    
+    // 遍历所有子节点，计算总尺寸
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
       if (child) {
         let childConstraint = GetChildLayoutConstraint(constraint, child);
-        child.measure(childConstraint);
+        child.measure(childConstraint); // 触发子节点的测量
         let size = child.getMeasuredSize();
         sizeRes.height += size.height + this.space;
         sizeRes.width = Math.max(sizeRes.width, size.width);
@@ -658,6 +666,7 @@ class MyFrameNode extends FrameNode {
     this.setMeasuredSize(sizeRes);
   }
 
+  // 重写布局排列方法
   onLayout(position: Position): void {
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
@@ -673,6 +682,7 @@ class MyFrameNode extends FrameNode {
     this.setLayoutPosition(position);
   }
 
+  // 重写自定义绘制方法
   onDraw(context: DrawContext) {
     const canvas = context.canvas;
     const pen = new drawing.Pen();
@@ -723,12 +733,16 @@ struct Index {
           .width('100%')
           .height(200)
           .backgroundColor('#FFF0F0F0')
+
+        // 触发节点重绘
         Button('Invalidate')
           .margin(10)
           .onClick(() => {
             this.nodeController?.rootNode?.addWidth();
             this.nodeController?.rootNode?.invalidate();
           })
+        
+        // 触发布局更新
         Button('UpdateLayout')
           .onClick(() => {
             let node = this.nodeController.rootNode;
@@ -1264,6 +1278,7 @@ class MyNodeController extends NodeController {
   private rootNode: FrameNode | null = null;
   private builderNode: BuilderNode<[]> | null = null;
 
+  // 创建并初始化自定义节点树
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
     this.builderNode = new BuilderNode(uiContext, { selfIdealSize: { width: 200, height: 100 } });
@@ -1279,6 +1294,7 @@ class MyNodeController extends NodeController {
     return this.rootNode;
   }
 
+  // 打印节点的唯一ID
   printUniqueId(): void {
     if (this.rootNode !== null && this.builderNode !== null) {
       console.info(`${TEST_TAG} rootNode's uniqueId: ${this.rootNode.getUniqueId()}`);
@@ -1291,6 +1307,7 @@ class MyNodeController extends NodeController {
     }
   }
 
+  // 销毁所有自定义节点
   disposeFrameNode(): void {
     if (this.rootNode !== null && this.builderNode !== null) {
       console.info(`${TEST_TAG} disposeFrameNode`);
@@ -1304,6 +1321,7 @@ class MyNodeController extends NodeController {
   removeBuilderNode(): void {
     const rootRenderNode = this.rootNode!.getRenderNode();
     if (rootRenderNode !== null && this.builderNode !== null && this.builderNode.getFrameNode() !== null) {
+      // 从根渲染节点中移除BuilderNode的渲染节点
       rootRenderNode.removeChild(this.builderNode!.getFrameNode()!.getRenderNode());
     }
   }
@@ -1320,7 +1338,7 @@ struct Index {
       Button('FrameNode dispose')
         .onClick(() => {
           this.myNodeController.printUniqueId();
-          this.myNodeController.disposeFrameNode();
+          this.myNodeController.disposeFrameNode(); // 执行节点销毁
           this.myNodeController.printUniqueId();
         })
         .width('100%')
@@ -1426,6 +1444,7 @@ class MyNodeAdapter extends NodeAdapter {
     this.loadData();
   }
 
+  // 重新加载列表数据
   reloadData(count: number): void {
     this.reloadTimes++;
     NodeAdapter.attachNodeAdapter(this, this.hostNode);
@@ -1434,6 +1453,7 @@ class MyNodeAdapter extends NodeAdapter {
     this.reloadAllItems();
   }
 
+  // 刷新数据
   refreshData(): void {
     let items = this.getAllAvailableItems()
     console.info(TEST_TAG + " get All items:" + items.length);
@@ -1441,17 +1461,20 @@ class MyNodeAdapter extends NodeAdapter {
     this.reloadAllItems();
   }
 
+  // 解除适配器与宿主节点的绑定
   detachData(): void {
     NodeAdapter.detachNodeAdapter(this.hostNode);
     this.reloadTimes = 0;
   }
 
+  // 根据当前节点总数和重载次数生成列表项的文本数据
   loadData(): void {
     for (let i = 0; i < this.totalNodeCount; i++) {
       this.data[i] = "Adapter ListItem " + i + " r:" + this.reloadTimes;
     }
   }
 
+  // 修改指定范围的列表数据
   changeData(from: number, count: number): void {
     this.changed = !this.changed;
     for (let i = 0; i < count; i++) {
@@ -1461,16 +1484,18 @@ class MyNodeAdapter extends NodeAdapter {
     this.reloadItem(from, count);
   }
 
+  // 插入数据到指定位置
   insertData(from: number, count: number): void {
     for (let i = 0; i < count; i++) {
       let index = i + from;
       this.data.splice(index, 0, "Adapter ListItem " + from + "-" + i);
     }
-    this.insertItem(from, count);
+    this.insertItem(from, count); // 通知列表插入对应节点
     this.totalNodeCount += count;
     console.info(TEST_TAG + " after insert count:" + this.totalNodeCount);
   }
 
+  // 从指定位置删除数据
   removeData(from: number, count: number): void {
     let arr = this.data.splice(from, count);
     this.removeItem(from, count);
@@ -1481,7 +1506,7 @@ class MyNodeAdapter extends NodeAdapter {
   moveData(from: number, to: number): void {
     let tmp = this.data.splice(from, 1);
     this.data.splice(to, 0, tmp[0]);
-    this.moveItem(from, to);
+    this.moveItem(from, to); // 通知列表移动节点位置
   }
 
   onAttachToNode(target: FrameNode): void {
@@ -1489,10 +1514,12 @@ class MyNodeAdapter extends NodeAdapter {
     this.hostNode = target;
   }
 
+  // 适配器从宿主节点解绑时触发
   onDetachFromNode(): void {
     console.info(TEST_TAG + " onDetachFromNode");
   }
 
+  // 获取指定索引的子节点ID
   onGetChildId(index: number): number {
     console.info(TEST_TAG + " onGetChildId:" + index);
     return index;
@@ -1500,6 +1527,7 @@ class MyNodeAdapter extends NodeAdapter {
 
   onCreateChild(index: number): FrameNode {
     console.info(TEST_TAG + " onCreateChild:" + index);
+    // 缓存池有可用节点时，优先复用
     if (this.cachePool.length > 0) {
       let cacheNode = this.cachePool.pop();
       if (cacheNode !== undefined) {
@@ -1510,6 +1538,7 @@ class MyNodeAdapter extends NodeAdapter {
         return cacheNode;
       }
     }
+    // 无缓存时创建新节点
     console.info(TEST_TAG + " onCreateChild createNew");
     let itemNode = typeNode.createNode(this.uiContext, "ListItem");
     let textNode = typeNode.createNode(this.uiContext, "Text");
@@ -1544,9 +1573,11 @@ class MyNodeAdapterController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
+    // 创建List节点并配置样式
     let listNode = typeNode.createNode(uiContext, "List");
     listNode.initialize({ space: 3 }).borderWidth(2).borderColor(Color.Black);
     this.rootNode.appendChild(listNode);
+    // 初始化适配器并关联到List节点
     this.nodeAdapter = new MyNodeAdapter(uiContext, 100);
     NodeAdapter.attachNodeAdapter(this.nodeAdapter, listNode);
     return this.rootNode;
