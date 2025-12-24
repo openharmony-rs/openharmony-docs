@@ -1,9 +1,9 @@
 # DatePicker
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @luoying_ace_admin-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 滑动选择日期的组件。
@@ -256,16 +256,15 @@ enableHapticFeedback(enable: Optional\<boolean>)
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
 | enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>设置为true后，其生效情况取决于系统的硬件是否支持。<br/>当enable的值为undefined时，使用默认值。|
 
->  **说明：**
->
->  开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->     {
->        "name": "ohos.permission.VIBRATE",
->     }
->  ]
->  ```
+开启触控反馈时，需要在工程的src/main/module.json5文件的"module"内配置requestPermissions字段开启振动权限，配置如下：
+
+```json
+"requestPermissions": [
+   {
+      "name": "ohos.permission.VIBRATE",
+   }
+]
+```
 
 ### digitalCrownSensitivity<sup>18+</sup>
 digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>)
@@ -312,7 +311,7 @@ onChange(callback: (value: DatePickerResult) => void)
 
 滑动DatePicker文本内容后，选项完全归位至选中项位置时，触发该回调。不能通过双向绑定的状态变量触发。
 
-从API version 8 开始支持，从 API version 10 开始废弃，建议使用[onDateChange](#ondatechange10)。
+从API version 8开始支持，从API version 10开始废弃，建议使用[onDateChange](#ondatechange10)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -448,6 +447,8 @@ struct DatePickerExample {
 ### 示例3（设置显示年、月和月、日列）
 
 该示例通过配置mode参数实现显示年、月和月、日列。
+
+从API version 18开始，新增了[DatePickerOptions](#datepickeroptions对象说明)的mode属性。
 
 ```ts
 // xxx.ets

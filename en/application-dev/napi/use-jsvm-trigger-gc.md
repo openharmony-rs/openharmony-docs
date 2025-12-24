@@ -12,7 +12,7 @@ JSVM-API provides the capability of registering callbacks to monitor memory GC o
 
 ## Basic Concepts
 
-In JS, GC is automatically performed, and users are not aware of the GC behavior of the JSVM. The JS engine enters the prologue phase before each GC, and enters the epilogue phase after each GC. The prologue is the setup phase before the actual GC begins. In this phase, the system prepares for GC. The epilogue is the cleanup phase after the GC. It ensures that the memory is restored to the normal state and ready for the next allocation. In these two phases, the JS engine calls the callbacks registered. You can suspend some tasks, record the memory usage, and optimize performance in the callbacks registered in the prologue phase, and record the memory status after GC and start subsequent tasks in the callbacks registered in the epilogue phase.
+In JS, GC is automatically performed, and users are not aware of the GC behavior of the JSVM. The JS engine enters the prologue phase before each GC, and enters the epilogue phase after each GC. The prologue is the setup phase before the actual GC begins. In this phase, the system prepares for GC. The epilogue is the final cleanup phase after GC, ensuring that the memory is restored to a normal state and ready for the next allocation. In these two phases, the JS engine calls the callbacks registered. You can suspend some tasks, record the memory usage, and optimize performance in the callbacks registered in the prologue phase, and record the memory status after GC and start subsequent tasks in the callbacks registered in the epilogue phase.
 
 JSVM-API provides the **OH_JSVM_AddHandlerForGC** API for registering a callback with a JSVM. You can pass in **JSVM_CB_TRIGGER_BEFORE_GC** to specify the callback in the prologue phase, and pass in **JSVM_CB_TRIGGER_AFTER_GC** to specify the callback in the epilogue phase. You can use **OH_JSVM_RemoveHandlerForGC** to remove a registered callback from a JSVM.
 
@@ -30,6 +30,7 @@ If you are just starting out with JSVM-API, see [JSVM-API Development Process](u
 ### OH_JSVM_AddHandlerForGC & OH_JSVM_RemoveHandlerForGC
 
 You can call **OH_JSVM_AddHandlerForGC** multiple times to register callbacks with a JSVM, and all registered callbacks will take effect. During registration, the callback pointer and **native-data** are used as the key. If multiple registration behaviors have the same key, the registration will be considered invalid and the **JSVM_INVALID_ARG** error code will be returned. The order in which callbacks are invoked under the same triggering condition does not strictly follow the registration order.
+
 You can use **OH_JSVM_RemoveHandlerForGC** to remove a registered callback from a JSVM. Removing callbacks with the same key will be considered an invalid removal, and the **JSVM_INVALID_ARG** error will be returned.
 
 **CPP Code**

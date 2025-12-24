@@ -32,6 +32,8 @@
     - [Converting a PEM String into an Asymmetric Key Pair (C/C++)](crypto-convert-string-data-to-asym-key-pair-ndk.md)
     - [Encoding and Decoding with an RSA Private Key (ArkTS)](crypto-rsa-encoded-decoded.md)
     - [Encoding and Decoding with an RSA Private Key (C/C++)](crypto-rsa-encoded-decoded-ndk.md)
+    - [Obtaining a Public Key from a Private Key (ArkTS)](crypto-prikey-to-get-pubkey.md)
+    - [Obtaining a Public Key from a Private Key (C/C++)](crypto-prikey-to-get-pubkey-ndk.md)
 - Encryption and Decryption<!--crypto-encryption-decryption-->
   - [Encryption and Decryption Overview](crypto-encryption-decryption-overview.md)
   - Encryption and Decryption Algorithm Specifications<!--crypto-encrypt-decrypt-spec-->
@@ -131,4 +133,5 @@
   - [Key Derivation Using Scrypt (ArkTS)](crypto-key-derivation-using-scrypt.md)
   - [Key Derivation Using Scrypt (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
   - [Key Derivation Using X963KDF (ArkTS)](crypto-key-derivation-using-scrypt.md)
-  - [Key Derivation Using X963KDF (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)
+  - [Key Derivation Using X963KDF (C/C++)](crypto-key-derivation-using-scrypt-ndk.md)<!--RP1--><!--RP1End-->
+<!--no_check-->

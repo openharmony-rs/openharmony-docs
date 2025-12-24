@@ -110,6 +110,89 @@ options include:
 hitrace -l
 ```
 
+各tag具体含义参考下面的tag名称与描述对照表。
+
+| tag名称            | 描述                                                         |
+| :----------------- | :----------------------------------------------------------- |
+| ability            | 用户态trace标签，能力管理器服务。                            |
+| accesscontrol      | 用户态trace标签，访问控制模块。                              |
+| accessibility      | 用户态trace标签，无障碍软件服务管理器。                      |
+| ace                | 用户态trace标签，ArkUI跨平台引擎开发框架。                   |
+| animation          | 用户态trace标签，动画模块。                                  |
+| app                | 用户态trace标签，应用模块。通过[HiTraceMeter](hitracemeter-intro.md)接口做的trace打点属于app tag。 |
+| ark                | 用户态trace标签，Ark模块。                                   |
+| account            | 用户态trace标签，账户管理器。                                |
+| binder             | 内核态trace标签，binder通信内核信息。                        |
+| bluetooth          | 用户态trace标签，蓝牙通信。                                  |
+| cloud              | 用户态trace标签，云子系统。                                  |
+| commercial         | 用户态trace标签，nolog版本标签。                             |
+| commonlibrary      | 用户态trace标签，通用库。                                    |
+| dcamera            | 用户态trace标签，分布式相机。                                |
+| daudio             | 用户态trace标签，分布式音频。                                |
+| devicemanager      | 用户态trace标签，设备管理器。                                |
+| deviceauth         | 用户态trace标签，设备认证。                                  |
+| deviceprofile      | 用户态trace标签，设备配置文件。                              |
+| dhfwk              | 用户态trace标签，分布式硬件框架。                            |
+| dinput             | 用户态trace标签，分布式输入。                                |
+| dlpcre             | 用户态trace标签，数据防泄露凭证服务。                        |
+| disk               | 内核态trace标签，磁盘I/O。                                   |
+| distributeddatamgr | 用户态trace标签，分布式数据管理器。                          |
+| dscreen            | 用户态trace标签，分布式屏幕。                                |
+| dsched             | 用户态trace标签，分布式调度。                                |
+| dsoftbus           | 用户态trace标签，分布式软总线。                              |
+| drm                | 用户态trace标签，数字版权管理。                              |
+| erofs              | 内核态trace标签，增强型只读文件系统。                        |
+| ffrt               | 用户态trace标签，FFRT任务。                                  |
+| filemanagement     | 用户态trace标签，文件管理。                                  |
+| freq               | 内核态trace标签，CPU频率。                                   |
+| gresource          | 用户态trace标签，全局资源管理器。                            |
+| graphic            | 用户态trace标签，图形模块。                                  |
+| hdcd               | 用户态trace标签，hdcd工具。                                  |
+| hdf                | 用户态trace标签，硬件驱动框架。                              |
+| huks               | 用户态trace标签，通用密钥库。                                |
+| idle               | 内核态trace标签，CPU空闲信息。                               |
+| interconn          | 用户态trace标签，互联子系统。                                |
+| ipa                | 内核态trace标签，热功耗分配器。                              |
+| irq                | 内核态trace标签，IRQ事件。                                   |
+| irqoff             | 内核态trace标签，IRQ禁用代码段追踪。                         |
+| i2c                | 内核态trace标签，I2C总线事件。                               |
+| load               | 内核态trace标签，CPU负载。                                   |
+| membus             | 内核态trace标签，内存总线利用率。                            |
+| memory             | 内核态trace标签，内存信息。                                  |
+| memreclaim         | 内核态trace标签，内核内存回收。                              |
+| misc               | 用户态trace标签，misc模块。                                  |
+| mdfs               | 用户态trace标签，移动分布式文件系统。                        |
+| mmc                | 内核态trace标签，嵌入式多媒体卡命令。                        |
+| multimodalinput    | 用户态trace标签，多模态输入。                                |
+| musl               | 用户态trace标签，musl模块。                                  |
+| net                | 用户态trace标签，网络模块。                                  |
+| notification       | 用户态trace标签，通知模块。                                  |
+| nweb               | 用户态trace标签，NWeb模块。                                  |
+| ohos               | 用户态trace标签，系统通用标签。                              |
+| pagecache          | 内核态trace标签，页缓存。                                    |
+| power              | 用户态trace标签，电源管理器。                                |
+| preemptoff         | 内核态trace标签，抢占禁用代码段追踪。                        |
+| push               | 用户态trace标签，推送子系统。                                |
+| regulators         | 内核态trace标签，电压电流调节器。                            |
+| rpc                | 用户态trace标签，RPC与IPC通信。                              |
+| samgr              | 用户态trace标签，服务能力管理组。                            |
+| sched              | 内核态trace标签，CPU调度。                                   |
+| schedlt            | 内核态trace标签，轻量级CPU调度。<br>**说明**：从API version 23开始，支持该标签。 |
+| security           | 用户态trace标签，安全子系统。                                |
+| sensors            | 用户态trace标签，传感器模块。                                |
+| sync               | 内核态trace标签，DMA同步。                                   |
+| useriam            | 用户态trace标签，用户身份与访问管理。                        |
+| ufs                | 内核态trace标签，通用闪存存储命令。                          |
+| usb                | 用户态trace标签，USB子系统。                                 |
+| virse              | 用户态trace标签，虚拟化服务。                                |
+| workq              | 内核态trace标签，内核worker队列。                            |
+| window             | 用户态trace标签，窗口管理器。                                |
+| zbinder            | 内核态trace标签，zbinder事件。                               |
+| zcamera            | 用户态trace标签，相机模块。                                  |
+| zimage             | 用户态trace标签，图像模块。                                  |
+| zmedia             | 用户态trace标签，媒体模块。                                  |
+| zaudio             | 用户态trace标签，音频模块。                                  |
+
 **使用样例**：
 
 ```shell
@@ -120,81 +203,7 @@ $ hitrace -l
        accesscontrol - Access Control Module
        accessibility - Accessibility Manager
              account - Account Manager
-                 ace - ACE development framework
-           animation - Animation
-                 app - APP Module
-                 ark - ARK Module
-              binder - Binder kernel Info
-           bluetooth - communication bluetooth
-               cloud - Cloud subsystem tag
-          commercial - Commercial version tag
-       commonlibrary - commonlibrary subsystem
-              daudio - Distributed Audio
-             dcamera - Distributed Camera
-          deviceauth - Device Auth
-       devicemanager - Device Manager
-       deviceprofile - Device Profile
-               dhfwk - Distributed Hardware FWK
-              dinput - Distributed Input
-                disk - Disk I/O
-  distributeddatamgr - Distributed Data Manager
-              dlpcre - Dlp Credential Service
-                 drm - Digital Rights Management
-              dsched - Distributed Schedule
-             dscreen - Distributed Screen
-                dslm - device security level
-            dsoftbus - Distributed Softbus
-                ffrt - ffrt tasks
-      filemanagement - filemanagement
-                freq - CPU Frequency
-             graphic - Graphic Module
-           gresource - Global Resource Manager
-                hdcd - hdcd
-                 hdf - hdf subsystem
-                hmfs - HMFS commands
-                huks - Universal KeyStore
-                 i2c - I2C Events
-                idle - CPU Idle
-           interconn - Interconnection subsystem
-                 ipa - thermal power allocator
-                 irq - IRQ Events
-              irqoff - IRQ-disabled code section tracing
-                load - CPU Load
-                mdfs - Mobile Distributed File System
-              membus - Memory Bus Utilization
-              memory - Memory
-          memreclaim - Kernel Memory Reclaim
-                misc - Misc Module
-                 mmc - eMMC commands
-                msdp - Multimodal Sensor Data Platform
-     multimodalinput - HITRACE_TAG_MULTIMODALINPUT
-                musl - musl module
-                 net - net
-        notification - Notification Module
-                nweb - NWEB Module
-                ohos - OpenHarmony
-           pagecache - Page cache
-               power - Power Manager
-          preemptoff - Preempt-disabled code section tracing
-                push - Push subsystem
-          regulators - Voltage and Current Regulators
-                 rpc - RPC and IPC
-               samgr - samgr
-               sched - CPU Scheduling
-            security - Security subsystem
-             sensors - Sensors Module
-                sync - Synchronization
-                 ufs - UFS commands
-                 usb - usb subsystem
-             useriam - useriam
-               virse - Virtualization Service
-              window - Window Manager
-               workq - Kernel Workqueues
-              zaudio - OpenHarmony Audio Module
-             zbinder - OpenHarmony binder communication
-             zcamera - OpenHarmony Camera Module
-              zimage - OpenHarmony Image Module
-              zmedia - OpenHarmony Media Module
+......
 ```
 
 
@@ -205,7 +214,6 @@ $ hitrace -l
 ```shell
 hitrace -t 10 -b 204800 app
 ```
-
 
 **使用样例**：
 

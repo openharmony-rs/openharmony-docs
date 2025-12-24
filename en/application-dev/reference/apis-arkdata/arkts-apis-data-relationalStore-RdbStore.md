@@ -597,7 +597,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;, callback: AsyncCal
 
 Inserts data into a table in batches. This API uses an asynchronous callback to return the result.
 
-This API returns either an error or **-1** if the data fails to be inserted.
+The data insertion fails if the API returns an error, or if it returns ** -1** without throwing an error.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported since API version 20.
 
@@ -691,7 +691,7 @@ batchInsert(table: string, values: Array&lt;ValuesBucket&gt;):Promise&lt;number&
 
 Inserts data into a table in batches. This API uses a promise to return the result.
 
-This API returns either an error or **-1** if the data fails to be inserted.
+The data insertion fails if the API returns an error, or if it returns **-1** without throwing an error.
 
 [Vector store](arkts-apis-data-relationalStore-i.md#storeconfig) is supported since API version 20.
 
@@ -813,7 +813,7 @@ batchInsertSync(table: string, values: Array&lt;ValuesBucket&gt;):number
 
 Inserts data into a table with conflict resolutions in batches. This API returns the result synchronously.
 
-This API returns either an error or **-1** if the data fails to be inserted.
+The data insertion fails if the API returns an error, or if it returns **-1** without throwing an error.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -913,11 +913,11 @@ batchInsertWithConflictResolution(table: string, values: Array&lt;ValuesBucket&g
 
 Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10). This API uses a promise to return the result.
 
-A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters.
 
 For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
 
-Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
+Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1015,11 +1015,11 @@ batchInsertWithConflictResolutionSync(table: string, values: Array&lt;ValuesBuck
 
 Inserts data into a table in batches. You can use the **conflict** parameter to specify [ConflictResolution](arkts-apis-data-relationalStore-e.md#conflictresolution10).
 
-A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code 14800000 is returned. The product of the number of inserted data records and the size of the union of all fields in the inserted data equals the number of parameters.
 
 For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
 
-Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
+Ensure that your application complies with this constraint when calling this API to avoid errors caused by excessive parameters.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 

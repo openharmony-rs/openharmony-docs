@@ -22,6 +22,10 @@ You can subscribe to the application freeze event **hiAppEvent.event.APP_FREEZE*
 
 - [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md)
 
+> **NOTE**
+>
+> Application freeze events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, this feature is also supported for [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
 ## Event Fields
 
 ### params

@@ -379,12 +379,14 @@ For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 
 | SYSTEM_DEFAULT   | 0     | Default system kernel. For OpenHarmony 6.0, the default kernel is M132.|
 | M114             | 1     | Legacy kernel of OpenHarmony 6.0. You can select this legacy kernel. If it does not exist, the setting is invalid.|
 | M132             | 2     | Evergreen kernel of OpenHarmony 6.0, which is M132 by default. If it does not exist, the setting is invalid.|
+| ARKWEB_EVERGREEN<sup>23+</sup> | 99999 | Evergreen kernel, which is the latest kernel of the system. You can choose to use the latest kernel for each system version. This setting takes effect for OpenHarmony 6.1 and later versions.|
 
->**Table 1** Description of evergreen kernel and legacy kernel
->| **Kernel Type** | **Name** | **Description** |
->| ----------- | -------- | -------- |
->| Evergreen kernel     | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications.|
->| Legacy kernel     | LEGACY WebCore | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only. |
+> **Table 1** Description of evergreen kernel and legacy kernel
+>
+> | Kernel Type | Name | Description |
+> | ----------- | -------- | -------- |
+> | Evergreen kernel     | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications.|
+> | Legacy kernel     | LEGACY WebCore | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only. |
 
 
 ## SiteIsolationMode<sup>21+</sup>

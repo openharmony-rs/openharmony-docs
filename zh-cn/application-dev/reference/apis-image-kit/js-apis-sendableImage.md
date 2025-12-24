@@ -24,6 +24,8 @@ createPixelMap(colors: ArrayBuffer, options: image.InitializationOptions): Promi
 
 通过属性创建PixelMap，默认采用BGRA_8888格式处理数据。使用Promise异步回调。
 
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -62,6 +64,8 @@ async function Demo() {
 createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 
 从MessageSequence中获取PixelMap。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -147,8 +151,8 @@ async function Demo() {
     let ret: MySequence = new MySequence(pixelMap);
     data.readParcelable(ret);
 
-    // 获取到Pixelmap。
-    let unmarshPixelmap = ret.pixel_map;
+    // 获取到PixelMap。
+    let newPixelMap = ret.pixel_map;
   }
 }
 ```
@@ -158,6 +162,8 @@ async function Demo() {
 createPixelMapFromSurface(surfaceId: string, region: image.Region): Promise\<PixelMap>
 
 根据Surface ID和区域信息创建一个PixelMap对象。该区域的大小由[Region](arkts-apis-image-i.md#region8).size指定。使用Promise异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -206,6 +212,8 @@ createPixelMapSync(colors: ArrayBuffer, options: image.InitializationOptions): P
 
 通过属性创建PixelMap，同步返回PixelMap结果。
 
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -249,6 +257,8 @@ convertFromPixelMap(pixelmap: image.PixelMap): PixelMap
 
 通过image下的PixelMap创建出一个sendableImage下的PixelMap，同步返回PixelMap结果。原PixelMap的方法均不可再调用。
 
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 **参数：**
@@ -291,6 +301,8 @@ async function Demo() {
 convertToPixelMap(pixelmap: PixelMap): image.PixelMap
 
 通过sendableImage下的PixelMap创建出一个image下的PixelMap，同步返回PixelMap结果。原PixelMap的方法均不可再调用。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -347,6 +359,8 @@ ISendable是所有Sendable类型（除null和undefined）的父类型。自身�
 sendableImage下的PixelMap支持sendable属性，支持worker线程共享。sendableImage下的PixelMap，可以利用[Convert](#sendableimageconverttopixelmap)方法与image下的PixelMap进行互相转换。转换后，原对象的方法均不允许再调用，否则将报错501 无法调用接口。跨线程处理PixelMap时，需要考虑多线程问题。
 
 在调用PixelMap的方法前，需要先通过[sendableImage.createPixelMap](#sendableimagecreatepixelmap)构建一个PixelMap对象。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 ### 属性
 
@@ -948,6 +962,8 @@ createAlphaPixelmap(): Promise\<PixelMap>
 
 根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，可用于阴影效果。使用Promise异步回调。
 
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -980,6 +996,8 @@ async function Demo(pixelMap : sendableImage.PixelMap) {
 createAlphaPixelmapSync(): PixelMap
 
 根据Alpha通道的信息，生成一个仅包含Alpha通道信息的PixelMap，可用于阴影效果，同步返回PixelMap类型的结果。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1641,7 +1659,8 @@ async function Demo() {
 
 unmarshalling(sequence: rpc.MessageSequence): Promise\<PixelMap>
 
-从MessageSequence中获取PixelMap，
+从MessageSequence中获取PixelMap。使用Promise异步回调。
+
 如需使用同步方式创建PixelMap可使用：[createPixelMapFromParcel](#sendableimagecreatepixelmapfromparcel)。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1733,6 +1752,10 @@ release():Promise\<void>
 
 释放PixelMap对象。使用Promise异步回调。
 
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
@@ -1799,6 +1822,7 @@ createImageSource(uri: string): ImageSource
 
 通过传入的uri创建ImageSource实例。
 
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1833,6 +1857,8 @@ createImageSource(fd: number): ImageSource
 
 通过传入文件描述符来创建ImageSource实例。
 
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
@@ -1866,7 +1892,9 @@ async function Demo(context : Context) {
 
 createImageSource(buf: ArrayBuffer): ImageSource
 
-通过缓冲区创建ImageSource实例。
+通过缓冲区创建ImageSource实例。buf数据是未解码的数据，不可以传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[sendableImage.createPixelMap](#sendableimagecreatepixelmap)这一类方法。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1902,6 +1930,8 @@ async function Demo() {
 createImageReceiver(size: image.Size, format: image.ImageFormat, capacity: number): ImageReceiver
 
 通过图片大小、图片格式、容量创建ImageReceiver实例。
+
+由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用[release](#release-3)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -1944,14 +1974,17 @@ async function Demo() {
 
 ## ImageSource
 
-ImageSource类，用于获取图片相关信息。在调用ImageSource的方法前，需要先通过[createImageSource](#sendableimagecreateimagesource)构建一个ImageSource实例。
+ImageSource类，用于获取图片相关信息。在调用ImageSource的方法前，需要先通过[sendableImage.createImageSource](#sendableimagecreateimagesource)构建一个ImageSource实例。
 
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release-1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 ### createPixelMap
 
 createPixelMap(options?: image.DecodingOptions): Promise\<PixelMap>
 
-通过图片解码参数创建PixelMap对象。
+通过图片解码参数创建PixelMap对象。使用Promise异步回调。
+
+由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1992,7 +2025,11 @@ async function Demo(context : Context) {
 
 release(): Promise\<void>
 
-释放ImageSource实例。使用Promise异步回调。release是线程不安全的。
+释放ImageSource实例。使用Promise异步回调。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -2021,7 +2058,9 @@ async function Demo(context : Context) {
 
 ## Image
 
-提供基本的图像操作，包括获取图像信息、读写图像数据。调用[readNextImage](#readnextimage)和[readLatestImage](#readlatestimage)接口时会返回image。继承自[lang.ISendable](../../arkts-utils/arkts-sendable.md#isendable)。
+提供基本的图像操作，包括获取图像信息、读写图像数据。调用[readNextImage](#readnextimage)和[readLatestImage](#readlatestimage)接口时会返回Image。继承自[ISendable](../../arkts-utils/arkts-sendable.md#isendable)。
+
+由于图片占用内存较大，所以当Image实例使用完成后，应主动调用[release](#release-2)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 ### 属性
 
@@ -2030,7 +2069,7 @@ async function Demo(context : Context) {
 | 名称     | 类型               | 只读 | 可选 | 说明                                               |
 | -------- | ------------------ | ---- | ---- | -------------------------------------------------- |
 | clipRect | [Region](#region) | 否   | 否   | 要裁剪的图像区域。                                 |
-| size     | [Size](#size)      | 是   | 否   | 图像大小。如果image对象所存储的是相机预览流数据，即YUV图像数据，那么获取到的size中的宽高分别对应YUV图像的宽高； 如果image对象所存储的是相机拍照流数据，即JPEG图像，由于已经是编码后的文件，size中的宽等于JPEG文件大小，高等于1。image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的previewOutput还是captureOutput。相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实现方案(ArkTS)](../../media/camera/camera-shooting-case.md)。                                         |
+| size     | [Size](#size)      | 是   | 否   | 图像大小。<br>如果Image对象所存储的是相机预览流数据（YUV图像数据），那么获取到的size中的宽和高分别对应YUV图像的宽和高。<br>如果Image对象所存储的是相机拍照流数据（JPEG图像数据），由于已是编码后的文件，size中的宽等于JPEG文件大小，高等于1。<br>Image对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的是previewOutput还是captureOutput。<br>相机预览与拍照最佳实践请参考[双路预览(ArkTS)](../../media/camera/camera-dual-channel-preview.md)与[拍照实践(ArkTS)](../../media/camera/camera-shooting-case.md)。|
 | format   | number             | 是   | 否   | 图像格式，参考[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)。 |
 | timestamp<sup>12+</sup> | number         | 是      | 否   | 图像时间戳。时间戳以纳秒为单位，通常是单调递增的。时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。如果要获取某张照片的生成时间，可以通过[getImageProperty](arkts-apis-image-ImageSource.md#getimageproperty11)接口读取相关的EXIF信息。|
 
@@ -2082,8 +2121,11 @@ release(): Promise\<void>
 
 释放当前图像。使用Promise异步回调。
 
-在接收另一个图像前必须先释放对应资源。release是线程不安全的。
+在接收另一个图像前必须先释放对应资源。
 
+由于图片占用内存较大，所以当Image实例使用完成后，应主动调用该方法及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -2172,7 +2214,8 @@ readLatestImage(): Promise\<Image>
 
 从ImageReceiver读取最新的图片。使用promise异步回调。
 
-**注意**：此接口需要在[on](#on)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](#image)对象使用完毕后需要调用[release](#release-2)方法释放，释放后才可以继续接收新的数据。
+> **注意**：
+>此接口需要在[on](#on)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](#image)对象使用完毕后需要调用[release](#release-2)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -2209,7 +2252,8 @@ readNextImage(): Promise\<Image>
 
 从ImageReceiver读取下一张图片。使用promise异步回调。
 
-**注意**：此接口需要在[on](#on)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](#image)对象使用完毕后需要调用[release](#release-2)方法释放，释放后才可以继续接收新的数据。
+> **注意**：
+>此接口需要在[on](#on)回调触发后调用，才能正常的接收到数据。且此接口返回的[Image](#image)对象使用完毕后需要调用[release](#release-2)方法释放，释放后才可以继续接收新的数据。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 
@@ -2277,7 +2321,11 @@ async function Demo() {
 
 release(): Promise\<void>
 
-释放ImageReceiver实例。使用promise异步回调。release是线程不安全的。
+释放ImageReceiver实例。使用promise异步回调。
+
+由于图片占用内存较大，所以当ImageReceiver实例使用完成后，应主动调用该方法，及时释放内存。
+
+释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageReceiver
 

@@ -21,6 +21,8 @@
 > - 自定义组件中一般会持有一个[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)接口返回的[AnimatorResult](#animatorresult)对象，以保证动画对象不在动画过程中析构，而这个对象也通过回调捕获了自定义组件对象。则需要在自定义组件销毁时的[aboutToDisappear](../apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中释放动画对象，来避免因为循环依赖导致内存泄漏，详细示例可参考：[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 >
 > - Animator对象析构或主动调用[cancel](#cancel)、[finish](#finish)都会有一次额外的[onFrame](#属性)，返回值是动画终点的值。所以如果在动画过程中调用[cancel](#cancel)、[finish](#finish)会一帧跳变到终点，如果希望在中途停止，可以先将onFrame设置为空函数，再调用[finish](#finish)。
+>
+> - 无限循环的Animator动画，当开发者选项设置全局动画速率为0（关闭动画）时，仍执行循环动画。
 
 ## 导入模块
 
@@ -315,7 +317,9 @@ update(options: AnimatorOptions): void
 
 更新当前动画器。
 
-从API version 9开始废弃，建议使用[reset<sup>9+</sup>](#reset9)。
+> **说明：**  
+>
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[reset](#reset9)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -401,10 +405,22 @@ SimpleAnimatorOptions的构造函数。
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200); // 动画插值过程从100到200，其余动画参数使用默认值。
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200); // 动画插值过程从100到200，其余动画参数使用默认值。
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### duration<sup>18+</sup>
@@ -434,10 +450,22 @@ duration(duration: number): SimpleAnimatorOptions
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(500);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).duration(500);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### easing<sup>18+</sup>
@@ -467,10 +495,22 @@ easing(curve: string): SimpleAnimatorOptions
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).easing("ease-in");
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).easing("ease-in");
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### delay<sup>18+</sup>
@@ -500,10 +540,22 @@ delay(delay: number): SimpleAnimatorOptions
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).delay(500);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).delay(500);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### fill<sup>18+</sup>
@@ -533,10 +585,22 @@ fill(fillMode: [FillMode](./arkui-ts/ts-appendix-enums.md#fillmode)): SimpleAnim
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).fill(FillMode.Forwards);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).fill(FillMode.Forwards);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### direction<sup>18+</sup>
@@ -566,10 +630,22 @@ direction(direction: [PlayMode](./arkui-ts/ts-appendix-enums.md#playmode)): Simp
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).direction(PlayMode.Alternate);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).direction(PlayMode.Alternate);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ### iterations<sup>18+</sup>
@@ -599,10 +675,22 @@ iterations(iterations: number): SimpleAnimatorOptions
 完整示例请参考[基于ArkTS扩展的声明式开发范式](#基于arkts扩展的声明式开发范式)。
 
 ```ts
-import { Animator as animator, AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
+import { AnimatorResult, SimpleAnimatorOptions } from '@kit.ArkUI';
 
-let options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).iterations(3);
-let animatorResult:AnimatorResult = animator.create(options);
+@Entry
+@Component
+struct AnimatorTest {
+  private animatorResult: AnimatorResult | undefined = undefined;
+  options: SimpleAnimatorOptions = new SimpleAnimatorOptions(100, 200).iterations(3);
+
+  create() {
+    this.animatorResult = this.getUIContext().createAnimator(this.options);
+  }
+
+  build() {
+    // ......
+  }
+}
 ```
 
 ## Animator<sup>(deprecated)</sup>
@@ -625,7 +713,7 @@ create(options: AnimatorOptions): AnimatorResult
 
 > **说明：**
 > 
-> - 从API version 9开始支持，从API version 18开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)替代。
+> - 从API version 9开始支持，从API version 18开始废弃，建议使用[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)替代。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)来明确UI的执行上下文。
 
@@ -686,7 +774,7 @@ create(options: AnimatorOptions \| SimpleAnimatorOptions): AnimatorResult
 
 > **说明：**
 > 
-> 从API version 18开始支持，从API version 22开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)替代。
+> 从API version 18开始支持，从API version 22开始废弃，建议使用[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)替代。
 
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -736,7 +824,7 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 
 > **说明：**
 > 
-> 从API version 9开始废弃，建议使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[createAnimator](arkts-apis-uicontext-uicontext.md#createanimator)
+> 从API version 6开始支持，从API version 9开始废弃，建议使用[create](#createdeprecated)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 

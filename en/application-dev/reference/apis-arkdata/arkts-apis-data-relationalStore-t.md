@@ -40,7 +40,7 @@ Defines the types of the value in a KV pair. The type varies with the parameter 
 | Asset<sup>10+</sup>  | [Asset](arkts-apis-data-relationalStore-i.md#asset10).<br>If the value type is Asset, the type in the SQL statement for creating a table must be ASSET.|
 | Assets<sup>10+</sup> | [Assets](#assets10).<br>If the value type is Assets, the type in the SQL statement for creating a table must be ASSETS.|
 | Float32Array<sup>12+</sup> | Array of 32-bit floating-point numbers.<br>If the field type is Float32Array, the type in the SQL statement for creating a table must be floatvector(128).|
-| bigint<sup>12+</sup> | Integer of any length.<br>If the value type is bigint, the type in the SQL statement for creating a table must be **UNLIMITED INT**. For details, see [Persisting RDB Store Data](../../database/data-persistence-by-rdb-store.md).<br>Note: The bigint type does not support value comparison and cannot be used with the following predicates: **between**, **notBetween**, **greaterThan**, **lessThan**, **greaterThanOrEqualTo**, **lessThanOrEqualTo**, **orderByAsc**, and **orderByDesc**<br>To write a value of bigint type, use **BigInt()** or add **n** to the end of the value, for example,'let data = BigInt(1234)' or 'let data = 1234n'.<br>If data of the number type is written to a bigint field, the type of the return value obtained (queried) is number but not bigint. |
+| bigint<sup>12+</sup> | Integer of any length.<br>If the value type is bigint, the type in the SQL statement for creating a table must be **UNLIMITED INT**. For details, see [Persisting RDB Store Data](../../database/data-persistence-by-rdb-store.md).<br>**NOTE**<br>The bigint type does not support value comparison and cannot be used with the following predicates: **between**, **notBetween**, **greaterThan**, **lessThan**, **greaterThanOrEqualTo**, **lessThanOrEqualTo**, **orderByAsc**, and **orderByDesc**<br>To write a value of bigint type, use **BigInt()** or add **n** to the end of the value, for example,'let data = BigInt(1234)' or 'let data = 1234n'.<br>If data of the number type is written to a bigint field, the type of the return value obtained (queried) is number but not bigint.|
 
 ## ValuesBucket
 
@@ -90,3 +90,31 @@ Represents the data type of the primary key and modification time of a database 
 | Type                                                   | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | Map<[PRIKeyType](#prikeytype10), [UTCTime](#utctime10)> | The key is the primary key of a row in the database table, and the value is the last modification time of the row in UTC format.|
+
+## RowData<sup>23+</sup>
+
+type RowData = Array\<ValueType>
+
+Defines a row of data in a database table.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| Type             | Description                          |
+| ---------------- | ---------------------------- |
+| Array<[ValueType](#valuetype)> | Array of the types of [ValueType](#valuetype).|
+
+## RowsData<sup>23+</sup>
+
+type RowsData = Array\<RowData>
+
+Defines multiple rows of data in a database table.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| Type             | Description                          |
+| ---------------- | ---------------------------- |
+| Array<[RowData](#rowdata23)> | Array of the [RowData](#rowdata23) types.|

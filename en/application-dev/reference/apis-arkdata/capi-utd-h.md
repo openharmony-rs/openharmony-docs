@@ -53,7 +53,7 @@ Defines APIs and structs related to the Uniform Type Descriptors (UTDs).
 
 ### OH_Utd_Create()
 
-```
+```c
 OH_Utd* OH_Utd_Create(const char* typeId)
 ```
 
@@ -78,7 +78,7 @@ Creates an [OH_Utd](capi-udmf-oh-utd.md) instance and a pointer to it.
 
 ### OH_Utd_Destroy()
 
-```
+```c
 void OH_Utd_Destroy(OH_Utd* pThis)
 ```
 
@@ -97,7 +97,7 @@ Destroys an [OH_Utd](capi-udmf-oh-utd.md) instance.
 
 ### OH_Utd_GetTypeId()
 
-```
+```c
 const char* OH_Utd_GetTypeId(OH_Utd* pThis)
 ```
 
@@ -122,7 +122,7 @@ Obtains the type ID from an [OH_Utd](capi-udmf-oh-utd.md) instance.
 
 ### OH_Utd_GetDescription()
 
-```
+```c
 const char* OH_Utd_GetDescription(OH_Utd* pThis)
 ```
 
@@ -147,7 +147,7 @@ Obtains the description from an [OH_Utd](capi-udmf-oh-utd.md) instance.
 
 ### OH_Utd_GetReferenceUrl()
 
-```
+```c
 const char* OH_Utd_GetReferenceUrl(OH_Utd* pThis)
 ```
 
@@ -172,7 +172,7 @@ Obtains the URL from an [OH_Utd](capi-udmf-oh-utd.md) instance.
 
 ### OH_Utd_GetIconFile()
 
-```
+```c
 const char* OH_Utd_GetIconFile(OH_Utd* pThis)
 ```
 
@@ -197,7 +197,7 @@ Obtains the path of the default icon file from an [OH_Utd](capi-udmf-oh-utd.md) 
 
 ### OH_Utd_GetBelongingToTypes()
 
-```
+```c
 const char** OH_Utd_GetBelongingToTypes(OH_Utd* pThis, unsigned int* count)
 ```
 
@@ -223,7 +223,7 @@ Obtains the relationships between the data from an [OH_Utd](capi-udmf-oh-utd.md)
 
 ### OH_Utd_GetFilenameExtensions()
 
-```
+```c
 const char** OH_Utd_GetFilenameExtensions(OH_Utd* pThis, unsigned int* count)
 ```
 
@@ -249,7 +249,7 @@ Obtains the file name extensions associated with an [OH_Utd](capi-udmf-oh-utd.md
 
 ### OH_Utd_GetMimeTypes()
 
-```
+```c
 const char** OH_Utd_GetMimeTypes(OH_Utd* pThis, unsigned int* count)
 ```
 
@@ -275,13 +275,13 @@ Obtains the MIME types associated with an [OH_Utd](capi-udmf-oh-utd.md) instance
 
 ### OH_Utd_GetTypesByFilenameExtension()
 
-```
+```c
 const char** OH_Utd_GetTypesByFilenameExtension(const char* extension, unsigned int* count)
 ```
 
 **Description**
 
-Obtains the uniform data types based on the file name extensions.
+Obtains the UTDs based on the file name extensions.
 
 **Since**: 12
 
@@ -297,17 +297,17 @@ Obtains the uniform data types based on the file name extensions.
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a pointer to the uniform data types obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
+| const char** | Returns a pointer to the UTDs obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
 
 ### OH_Utd_GetTypesByMimeType()
 
-```
+```c
 const char** OH_Utd_GetTypesByMimeType(const char* mimeType, unsigned int* count)
 ```
 
 **Description**
 
-Obtains the uniform data types based on the MIME types.
+Obtains the UTDs based on the MIME types.
 
 **Since**: 12
 
@@ -323,11 +323,11 @@ Obtains the uniform data types based on the MIME types.
 
 | Type        | Description                                                        |
 | ------------ | ------------------------------------------------------------ |
-| const char** | Returns a double pointer to the uniform data types obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs. |
+| const char** | Returns a double pointer to the UTDs obtained.<br>If it is no longer required, use [OH_Utd_DestroyStringList](capi-utd-h.md#oh_utd_destroystringlist) to destroy it. Otherwise, memory leakage occurs.|
 
 ### OH_Utd_BelongsTo()
 
-```
+```c
 bool OH_Utd_BelongsTo(const char* srcTypeId, const char* destTypeId)
 ```
 
@@ -353,7 +353,7 @@ Checks whether a UTD belongs to the target UTD.
 
 ### OH_Utd_IsLower()
 
-```
+```c
 bool OH_Utd_IsLower(const char* srcTypeId, const char* destTypeId)
 ```
 
@@ -379,7 +379,7 @@ Checks whether a UTD is a lower-level type of the target UTD. For example, **TYP
 
 ### OH_Utd_IsHigher()
 
-```
+```c
 bool OH_Utd_IsHigher(const char* srcTypeId, const char* destTypeId)
 ```
 
@@ -405,7 +405,7 @@ Checks whether a UTD is a higher-level type of the target UTD. For example, **SO
 
 ### OH_Utd_Equals()
 
-```
+```c
 bool OH_Utd_Equals(OH_Utd* utd1, OH_Utd* utd2)
 ```
 
@@ -431,7 +431,7 @@ Checks whether two UTDs are the same.
 
 ### OH_Utd_DestroyStringList()
 
-```
+```c
 void OH_Utd_DestroyStringList(const char** list, unsigned int count)
 ```
 

@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **NodeContent** module implements a manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md) components in ArkUI.
+**NodeContent** is the ArkUI-provided manager for [ContentSlot](./arkui-ts/ts-components-contentSlot.md).
 
 > **NOTE**
 >
@@ -20,7 +20,7 @@ import { NodeContent } from '@kit.ArkUI';
 
 ## NodeContent
 
-**NodeContent** is the entity encapsulation of node content.
+**NodeContent** is the entity-level encapsulation of node content.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

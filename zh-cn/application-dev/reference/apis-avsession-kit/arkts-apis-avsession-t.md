@@ -124,6 +124,14 @@ type AVControlCommandType = 'play' | 'pause' | 'stop' | 'playNext' | 'playPrevio
 | 'hangUp' <sup>11+</sup>         | 挂断。无需传入参数。  <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
 |'toggleCallMute' <sup>11+</sup>  | 设置通话静音状态。无需传入参数。 <br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
+## NoParamCallback<sup>22+</sup>
+
+type NoParamCallback = () => void
+
+定义无参数的回调函数类型。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 ## TwoParamCallback<sup>22+</sup>
 
 type TwoParamCallback\<T, G> = (data1: T, data2: G) => void

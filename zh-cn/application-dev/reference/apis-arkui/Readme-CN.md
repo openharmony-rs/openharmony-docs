@@ -218,7 +218,7 @@
     - 其他<!--other-property-->
       - [复用标识](arkui-ts/ts-universal-attributes-reuse-id.md)
       - [复用选项](arkui-ts/ts-universal-attributes-reuse.md)
-      - [自定义窗口工具栏](arkui-ts/ts-universal-attributes-toolbar.md)
+      - [工具栏设置](arkui-ts/ts-universal-attributes-toolbar.md)
   - 手势处理<!--gesture-handling-->
     - 绑定手势<!--gesture-binding-->
       - [绑定手势方法](arkui-ts/ts-gesture-settings.md)
@@ -419,6 +419,7 @@
     - [SaveButton](arkui-ts/ts-security-components-savebutton.md)
     <!--Del-->
     - [SaveButton (系统接口)](arkui-ts/ts-security-components-savebutton-sys.md)
+    - [安全控件通用属性 (系统接口)](arkui-ts/ts-securitycomponent-attributes-sys.md)
     <!--DelEnd-->
   - 主题<!--themes-->
     - [WithTheme](arkui-ts/ts-container-with-theme.md)
@@ -730,6 +731,7 @@
     - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
     - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
     - [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)
+    - [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-textselecteddragpreviewstyle.md)
 - 错误码<!--arkui-arkts-errcode-->
   - UI界面<!--arkui-ui-arkts-errcode-->
     - [接口调用异常错误码](errorcode-internal.md)

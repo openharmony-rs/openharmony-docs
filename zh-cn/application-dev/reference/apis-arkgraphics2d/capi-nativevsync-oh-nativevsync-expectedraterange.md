@@ -41,7 +41,7 @@ typedef struct {...} OH_NativeVSync_ExpectedRateRange
 
 ### OH_NativeVSync_FrameCallback()
 
-```
+```c
 typedef void (*OH_NativeVSync_FrameCallback)(long long timestamp, void *data)
 ```
 

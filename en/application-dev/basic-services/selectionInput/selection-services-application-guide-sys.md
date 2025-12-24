@@ -22,9 +22,9 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
 
 1. Create a project for the word selection application on DevEco Studio.
 
-    1. In the **ets** directory of a module in the project, right-click and choose **New** > **Directory** to create a directory named **ServiceExtAbility**.
+    1.1 In the **ets** directory of a module in the project, right-click and choose **New** > **Directory** to create a directory named **ServiceExtAbility**.
 
-    2. In the **pages** directory, create two page files **MainPanel.ets** and **MenuPanel.ets** from the menu bar. In the **ServiceExtAbility** directory, right-click and choose **New** > **File** to create the **SelectionExtensionAbility.ts** file. The directory structure is as follows:
+    1.2 In the **pages** directory, create two page files **MainPanel.ets** and **MenuPanel.ets** from the menu bar. In the **ServiceExtAbility** directory, right-click and choose **New** > **File** to create the **SelectionExtensionAbility.ts** file. The directory structure is as follows:
 
     ```
     /src/main/
@@ -142,9 +142,11 @@ For details about the following APIs, see [selectionInput.SelectionManager](../.
 
 1. Set system parameters to configure the word selection service.
 
-    1. Enable word selection service.
-    2. Set the current application as the word selection application.
-    3. Set the operation mode for word selection.
+    1.1 Enable the word selection service.
+    
+    1.2 Set the current application as the word selection application.
+    
+    1.3 Set the operation mode for word selection.
 
 2. Monitor the process of starting SelectionExtensionAbility via logs.
 

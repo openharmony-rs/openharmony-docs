@@ -40,6 +40,8 @@ showAppNetPolicySettings(context: Context): Promise\<void>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **设备行为差异**：该接口在Phone、2in1、Tablet设备中可正常调用，在其他设备调用不生效。
 
 

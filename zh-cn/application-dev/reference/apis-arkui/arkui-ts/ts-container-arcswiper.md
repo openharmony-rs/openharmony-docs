@@ -199,7 +199,7 @@ disableTransitionAnimation(disabled: Optional\<boolean>)
 
 | 参数名   | 类型               | 必填 | 说明                                    |
 | -------- | ------------------ | ---- | --------------------------------------- |
-| disabled | Optional\<boolean> | 是   | 是否关闭特殊动效效果。<br>默认值：false，不关闭特殊动效效果。 |
+| disabled | Optional\<boolean> | 是   | 是否关闭特殊动效效果。<br>true：关闭特殊动效效果；false：不关闭特殊动效效果。<br>传入参数非法时，按false处理。 |
 
 ## ArcSwiperController
 

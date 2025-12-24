@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-This topic describes how to create an ImageSource object, decode it to obtain a Picture object, and release the ImageSource object.
+This topic describes how to create an ImageSource instance, decode it to obtain Picture object, and release the ImageSource instance.
 
 ## How to Develop
 
@@ -26,164 +26,230 @@ Create a native C++ application in DevEco Studio. The project created by default
 
 **Example of Using the Decoding APIs**
 
-After creating an ImageSource instance, obtain and modify property values, create a PixelMap object by using decoding parameters, and obtain the number of image frames.
+> **NOTE**
+>
+> Certain APIs are supported only in API version 20 or later. You should select an appropriate API version during development.
 
-```c++
-#include <hilog/log.h>
-#include <multimedia/image_framework/image/image_native.h>
-#include <multimedia/image_framework/image/image_packer_native.h>
-#include <multimedia/image_framework/image/image_source_native.h>
-#include <multimedia/image_framework/image/picture_native.h>
-#include <multimedia/image_framework/image/pixelmap_native.h>
+1. Import the required header files.
 
-#define AUTO 0
-#define SDR 1
+   <!-- @[decodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
+   
+   ``` C++
+   #include <hilog/log.h>
+   #include <multimedia/image_framework/image/image_native.h>
+   #include <multimedia/image_framework/image/image_packer_native.h>
+   #include <multimedia/image_framework/image/image_source_native.h>
+   #include <multimedia/image_framework/image/picture_native.h>
+   #include <multimedia/image_framework/image/pixelmap_native.h>
+   ```
 
-class ImagePictureNative {
-public:
-    Image_ErrorCode errorCode = IMAGE_SUCCESS;
-    OH_DecodingOptionsForPicture *options = nullptr;
-    OH_ImagePackerNative *imagePacker = nullptr;
-    OH_PackingOptions *packerOptions = nullptr;
-    OH_PictureNative *picture = nullptr;
-    OH_ImageSourceNative *source = nullptr;
-    ImagePictureNative() {}
-    ~ImagePictureNative() {}
-};
+2. Modify the log macro definition as required.
 
-class ImageAuxiliaryPictureNative {
-public:
-    Image_ErrorCode errorCode = IMAGE_SUCCESS;
-    Image_AuxiliaryPictureType type = AUXILIARY_PICTURE_TYPE_GAINMAP;
-    OH_AuxiliaryPictureNative *auxiliaryPicture = nullptr;
-    size_t BUFF_SIZE = 640 * 480 * 4;	// Size of the auxiliary picture (width * height * number of bytes per pixel).
-    ImageAuxiliaryPictureNative() {}
-    ~ImageAuxiliaryPictureNative() {}
-};
+   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
+   
+   ``` C++
+   #undef LOG_DOMAIN
+   #undef LOG_TAG
+   #define LOG_DOMAIN 0x3200
+   #define LOG_TAG "IMAGE_SAMPLE"
+   ```
 
-static ImagePictureNative *thisPicture = new ImagePictureNative();
-static ImageAuxiliaryPictureNative *thisAuxiliaryPicture = new ImageAuxiliaryPictureNative();
+3. Define the ImagePictureNative class.
 
-// Release the image source.
-Image_ErrorCode ReleaseImageSource(OH_ImageSourceNative *&source) {
-    if (source != nullptr) {
-        thisPicture->errorCode = OH_ImageSourceNative_Release(source);
-        source = nullptr;
-        return thisPicture->errorCode;
-    }
-    OH_LOG_DEBUG(LOG_APP, "ReleaseImageSource source is null !");
-    return IMAGE_SUCCESS;
-}
+   <!-- @[define_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
+   
+   ``` C
+   class ImagePictureNative {
+   public:
+       Image_ErrorCode errorCode = IMAGE_SUCCESS;
+       OH_DecodingOptionsForPicture *options = nullptr;
+       OH_ImagePackerNative *imagePacker = nullptr;
+       OH_PackingOptions *packerOptions = nullptr;
+       OH_PictureNative *picture = nullptr;
+       OH_ImageSourceNative *source = nullptr;
+       ImagePictureNative() {}
+       ~ImagePictureNative() {}
+   };
+   ```
 
-// Process the NAPI return value.
-napi_value getJsResult(napi_env env, int result) {
-    napi_value resultNapi = nullptr;
-    napi_create_int32(env, result, &resultNapi);
-    return resultNapi;
-}
+4. Create an ImagePictureNative instance.
 
-// Create decoding parameters.
-static napi_value CreateDecodingOptions(napi_env env, napi_callback_info info) {
-    thisPicture->errorCode = OH_DecodingOptionsForPicture_Create(&thisPicture->options);
+   <!-- @[create_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->    
+   
+   ``` C++
+   static ImagePictureNative *g_thisPicture = new ImagePictureNative();
+   ```
 
-    if (thisPicture->errorCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "OH_DecodingOptionsForPicture_Create failed, errCode: %{public}d.",
-            thisPicture->errorCode);
-        return getJsResult(env, thisPicture->errorCode);
-    } else {
-        OH_LOG_DEBUG(LOG_APP, "OH_DecodingOptionsForPicture_Create success !");
-    }
+5. Define the ImageAuxiliaryPictureNative class.
 
-    return getJsResult(env, thisPicture->errorCode);
-}
+   <!-- @[define_auxPictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
+   
+   ``` C
+   class ImageAuxiliaryPictureNative {
+   public:
+       Image_ErrorCode errorCode = IMAGE_SUCCESS;
+       Image_AuxiliaryPictureType type = AUXILIARY_PICTURE_TYPE_GAINMAP;
+       OH_AuxiliaryPictureNative *auxiliaryPicture = nullptr;
+       size_t buffSize = 640 * 480 * 4; // Size of the auxiliary picture (width * height * number of bytes per pixel).
+       ImageAuxiliaryPictureNative() {}
+       ~ImageAuxiliaryPictureNative() {}
+   };
+   ```
 
-// Configure decoding parameters, which are passed from the application layer.
-static napi_value SetDesiredAuxiliaryPictures(napi_env env, napi_callback_info info) {
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok || argc < 1 || args[0] == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed !");
-        return getJsResult(env, IMAGE_BAD_PARAMETER);
-    }
+6. Create an ImageAuxiliaryPictureNative instance.
 
-    uint32_t length = 0;
-    napi_get_array_length(env, args[0], &length);
-    if (length <= 0) {
-        OH_LOG_ERROR(LOG_APP, "napi_get_array_length failed !");
-        return getJsResult(env, IMAGE_UNKNOWN_ERROR);
-    }
-    Image_AuxiliaryPictureType typeList[length];
-    for (int index = 0; index < length; index++) {
-        napi_value element;
-        uint32_t ulType = 0;
-        napi_get_element(env, args[0], index, &element);
-        napi_get_value_uint32(env, element, &ulType);
-        typeList[index] = static_cast<Image_AuxiliaryPictureType>(ulType);
-        OH_LOG_DEBUG(LOG_APP, "ulType is :%{public}d", ulType);
-    }
+   <!-- @[create_auxPictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->    
+   
+   ``` C++
+   static ImageAuxiliaryPictureNative *g_thisAuxiliaryPicture  = new ImageAuxiliaryPictureNative();
+   ```
 
-    thisPicture->errorCode =
-        OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(thisPicture->options, typeList, length);
-    if (thisPicture->errorCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures failed,errCode: %{public}d.",
-            thisPicture->errorCode);
-        return getJsResult(env, thisPicture->errorCode);
-    } else {
-        OH_LOG_DEBUG(LOG_APP, "OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures success !");
-    }
+7. Create the **GetJsResult** function to process the NAPI return value.
 
-    return getJsResult(env, thisPicture->errorCode);
-}
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->    
+   
+   ``` C++
+   // Process the NAPI return value.
+   napi_value GetJsResult(napi_env env, int result)
+   {
+       napi_value resultNapi = nullptr;
+       napi_create_int32(env, result, &resultNapi);
+       return resultNapi;
+   }
+   ```
 
+8. Create and configure decoding options, and call the decoding API to decode the image and obtain an auxiliary image.
 
-// Decode data.
-static napi_value CreatePictureByImageSource(napi_env env, napi_callback_info info) {
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_value result = nullptr;
-
-    if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok || argc < 1 || args[0] == nullptr) {
-        OH_LOG_ERROR(LOG_APP, "CreatePicture_ napi_get_cb_info failed !");
-        return getJsResult(env, IMAGE_BAD_PARAMETER);
-    }
-    char filePath[1024];
-    size_t filePathSize;
-    napi_get_value_string_utf8(env, args[0], filePath, 1024, &filePathSize);
-    ReleaseImageSource(thisPicture->source);
-
-    thisPicture->errorCode = OH_ImageSourceNative_CreateFromUri(filePath, filePathSize, &thisPicture->source);
-    if (thisPicture->errorCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreateFromUri failed, errCode: %{public}d.",
-            thisPicture->errorCode);
-        return getJsResult(env, thisPicture->errorCode);
-    } else {
-        OH_LOG_DEBUG(LOG_APP, "OH_ImageSourceNative_CreateFromUri success !");
-    }
-
-    thisPicture->errorCode =
-        OH_ImageSourceNative_CreatePicture(thisPicture->source, thisPicture->options, &thisPicture->picture);
-    thisAuxiliaryPicture->errorCode = OH_PictureNative_GetAuxiliaryPicture(thisPicture->picture,
-        thisAuxiliaryPicture->type, &thisAuxiliaryPicture->auxiliaryPicture);
-    if (thisAuxiliaryPicture->errorCode == IMAGE_SUCCESS) {
-        uint8_t* buff = new uint8_t[thisAuxiliaryPicture->BUFF_SIZE];
-        OH_AuxiliaryPictureNative_ReadPixels(thisAuxiliaryPicture->auxiliaryPicture, buff,
-            &thisAuxiliaryPicture->BUFF_SIZE);
-        OH_AuxiliaryPictureNative_Release(thisAuxiliaryPicture->auxiliaryPicture);
-        delete []buff;
-    }
-    if (thisPicture->errorCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "ImageSourceNative_CreatePicture failed, errCode: %{public}d.", thisPicture->errorCode);
-        return getJsResult(env, thisPicture->errorCode);
-    } else {
-        napi_status status =
-            napi_create_external(env, reinterpret_cast<void *>(thisPicture->picture), nullptr, nullptr, &result);
-        if (status != napi_ok) {
-            napi_throw_error(env, nullptr, "Failed to create external object");
-            return nullptr;
-        }
-        OH_LOG_DEBUG(LOG_APP, "ImageSourceNative_CreatePicture success !");
-    }
-
-    return result;
-}
-```
+   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
+   
+   ``` C++
+   // Release the image source.
+   napi_value ReleasePictureSource(napi_env env, napi_callback_info info)
+   {
+       if (g_thisPicture->source != nullptr) {
+           g_thisPicture->errorCode = OH_ImageSourceNative_Release(g_thisPicture->source);
+           g_thisPicture->source = nullptr;
+           return GetJsResult(env, g_thisPicture->errorCode);
+       }
+       
+       if (g_thisPicture->picture != nullptr) {
+           g_thisPicture->errorCode = OH_PictureNative_Release(g_thisPicture->picture);
+           g_thisPicture->picture = nullptr;
+           return GetJsResult(env, g_thisPicture->errorCode);
+       }
+       
+       OH_LOG_DEBUG(LOG_APP, "ReleasePictureSource source is null !");
+       return GetJsResult(env, g_thisPicture->errorCode);
+   }
+   
+   // Create decoding parameters.
+   napi_value CreateDecodingOptions(napi_env env, napi_callback_info info)
+   {
+       g_thisPicture->errorCode = OH_DecodingOptionsForPicture_Create(&g_thisPicture->options);
+   
+       if (g_thisPicture->errorCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_DecodingOptionsForPicture_Create failed, errCode: %{public}d.",
+                        g_thisPicture->errorCode);
+           return GetJsResult(env, g_thisPicture->errorCode);
+       } else {
+           OH_LOG_DEBUG(LOG_APP, "OH_DecodingOptionsForPicture_Create success !");
+       }
+   
+       return GetJsResult(env, g_thisPicture->errorCode);
+   }
+   
+   // Configure decoding parameters, which are passed from the application layer.
+   napi_value SetDesiredAuxiliaryPictures(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok || argc < 1 || args[0] == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed !");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+   
+       uint32_t length = 0;
+       napi_get_array_length(env, args[0], &length);
+       if (length <= 0) {
+           OH_LOG_ERROR(LOG_APP, "napi_get_array_length failed !");
+           return GetJsResult(env, IMAGE_UNKNOWN_ERROR);
+       }
+       Image_AuxiliaryPictureType typeList[length];
+       for (int index = 0; index < length; index++) {
+           napi_value element;
+           uint32_t ulType = 0;
+           napi_get_element(env, args[0], index, &element);
+           napi_get_value_uint32(env, element, &ulType);
+           typeList[index] = static_cast<Image_AuxiliaryPictureType>(ulType);
+           OH_LOG_DEBUG(LOG_APP, "ulType is :%{public}d", ulType);
+       }
+       
+       // Call OH_DecodingOptionsForPicture_Create to create DecodingOptions.
+       CreateDecodingOptions(env, info);
+       g_thisPicture->errorCode =
+           OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures(g_thisPicture->options, typeList, length);
+       if (g_thisPicture->errorCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures failed,errCode: %{public}d.",
+                        g_thisPicture->errorCode);
+           return GetJsResult(env, g_thisPicture->errorCode);
+       } else {
+           OH_LOG_DEBUG(LOG_APP, "OH_DecodingOptionsForPicture_SetDesiredAuxiliaryPictures success !");
+       }
+   
+       return GetJsResult(env, g_thisPicture->errorCode);
+   }
+   
+   // Decode data.
+   napi_value CreatePictureByImageSource(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+   
+       if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok || argc < 1 || args[0] == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "CreatePicture_ napi_get_cb_info failed !");
+           return GetJsResult(env, IMAGE_BAD_PARAMETER);
+       }
+       
+       char filePath[MAX_SIZE];
+       size_t pathSize;
+       napi_get_value_string_utf8(env, args[0], filePath, MAX_SIZE, &pathSize);
+   
+       g_thisPicture->errorCode = OH_ImageSourceNative_CreateFromUri(filePath, pathSize, &g_thisPicture->source);
+       if (g_thisPicture->errorCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_ImageSourceNative_CreateFromUri failed, errCode: %{public}d.",
+                        g_thisPicture->errorCode);
+           return GetJsResult(env, g_thisPicture->errorCode);
+       } else {
+           OH_LOG_DEBUG(LOG_APP, "OH_ImageSourceNative_CreateFromUri success !");
+       }
+       
+       // Create decoding options and then decode the video. The API for creating the decoding options is implemented in SetDesiredAuxiliaryPictures.
+       g_thisPicture->errorCode =
+           OH_ImageSourceNative_CreatePicture(g_thisPicture->source, g_thisPicture->options, &g_thisPicture->picture);
+       
+       // Release the decoding options.
+       OH_DecodingOptionsForPicture_Release(g_thisPicture->options);
+       g_thisPicture->options = nullptr;
+       
+       g_thisAuxiliaryPicture ->errorCode = OH_PictureNative_GetAuxiliaryPicture(g_thisPicture->picture,
+           g_thisAuxiliaryPicture ->type, &g_thisAuxiliaryPicture ->auxiliaryPicture);
+       if (g_thisAuxiliaryPicture ->errorCode == IMAGE_SUCCESS) {
+           uint8_t* buff = new uint8_t[g_thisAuxiliaryPicture ->buffSize];
+           OH_AuxiliaryPictureNative_ReadPixels(g_thisAuxiliaryPicture ->auxiliaryPicture, buff,
+               &g_thisAuxiliaryPicture ->buffSize);
+           OH_AuxiliaryPictureNative_Release(g_thisAuxiliaryPicture ->auxiliaryPicture);
+           g_thisAuxiliaryPicture ->auxiliaryPicture = nullptr;
+           delete []buff;
+       }
+       
+       if (g_thisPicture->errorCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "ImageSourceNative_CreatePicture failed, errCode: %{public}d.",
+                        g_thisPicture->errorCode);
+           return GetJsResult(env, g_thisPicture->errorCode);
+       } else {
+           OH_LOG_DEBUG(LOG_APP, "ImageSourceNative_CreatePicture success !");
+       }
+       
+       return GetJsResult(env, g_thisPicture->errorCode);
+   }
+   ```

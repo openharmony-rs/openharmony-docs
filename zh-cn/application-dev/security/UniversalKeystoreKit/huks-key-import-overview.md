@@ -77,6 +77,31 @@
 | To_Import_Key密文长度L<sub>To_Import_Key_enc</sub> | 4字节 |
 | To_Import_Key密文To_Import_Key_enc | L<sub>To_Import_Key_enc</sub>字节 |
 
+## 数字信封导入
+从API 23开始支持[数字信封](huks-key-import-overview.md#数字信封导入)特性。
+
+该方式支持以数字信封形式导入密钥，确保密钥安全导入HUKS，防止传输过程中泄露，适用于高安全敏感业务。
+
+推荐使用该方法导入的密钥类型：对称密钥、非对称密钥对。
+
+下图为数字信封导入密钥开发时序图。
+
+![数字信封开发时许图](figures/数字信封流程图.png)
+
+根据业务流程，导入数字信封时需要调用HUKS的能力。
+
+- 生成SM4密钥，用于加密将导入的密钥。
+- 使用生成的SM4密钥并采用ECB，NoPadding模式对导入密钥明文进行加密，若业务导入非对称密钥仅需加密其私钥。
+- 导出对端SM2公钥，用于加密生成的SM4密钥。
+- 使用对端导出的SM2公钥，采用NoPadding模式并指定SM3为摘要算法加密本端生成的SM4密钥。
+- 导入加密密钥。
+导出密钥接口返回的公钥材料格式按照[X.509格式封装](huks-concepts.md#公钥材料格式)，导入加密密钥接口返回的密钥材料按照**Length<sub>Data</sub>-Data**的格式封装，分别是[(Length<sub>EncSm4</sub>Data<sub>EncSm4</sub>)(Length<sub>EncImpKey</sub>Data<sub>EncImpKey</sub>)]。
+
+> **说明：**
+> 1. 使用数字信封导入密钥需要使用tag，HUKS_TAG_UNWRAP_ALGORITHM_SUITE，该tag值为HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING。
+> 2. 数字信封导入密钥时，如果是导入非对称密钥的密钥对，需要添加[OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA标签](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_tag)，并将公钥以DER格式封装填入该标签，且针对非对称密钥仅支持以密钥对形式导入。
+> 3. 仅<!--RP1-->标准设备<!--RP1End-->支持数字信封导入。
+
 ## 支持的算法
 
 以下为密钥导入支持的规格说明。
@@ -89,6 +114,7 @@
 > **说明：**
 >
 > 导入RSA密钥时，公钥必须大于或者等于65537。
+> 数字信封不支持 DSA 算法，X25519密钥和Ed25519密钥，在使用数字信封导入密钥时公钥采用裸密钥的方式在该标签中填入。
 
 **<!--RP1-->标准设备<!--RP1End-->规格**
 

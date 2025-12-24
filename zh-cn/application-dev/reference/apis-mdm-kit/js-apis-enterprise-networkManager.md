@@ -546,7 +546,8 @@ try {
 addFirewallRule(admin: Want, firewallRule: FirewallRule): void
 
 为设备添加防火墙过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
-添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。
+添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的网络数据包将会被丢弃或拦截。<br/>
+设备重启，将会清空防火墙过滤规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -737,7 +738,8 @@ try {
 addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 
 为设备添加域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
-添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。
+添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。<br/>
+设备重启，将会清空域名过滤规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 

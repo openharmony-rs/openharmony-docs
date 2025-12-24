@@ -23,6 +23,10 @@ You can use the APIs provided by HiAppEvent to subscribe to the main thread jank
 
 - [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md)
 
+> **NOTE**
+>
+> Mainthread jank events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, this feature is also supported for [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
 ## Custom Parameters
 
 The **setEventConfig** API cannot automatically stop the sampling stack when the main thread timeout event ends. Since API Version 22, the **configEventPolicy** API is provided to automatically stop the sampling stack when the main thread timeout event ends.

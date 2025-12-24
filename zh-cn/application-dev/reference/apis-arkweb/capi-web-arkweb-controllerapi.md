@@ -49,7 +49,7 @@ Controller相关的Native API结构体。在调用接口前建议通过[ARKWEB_M
 
 ### runJavaScript()
 
-```
+```c
 void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascriptObject)
 ```
 
@@ -66,7 +66,7 @@ void (*runJavaScript)(const char* webTag, const ArkWeb_JavaScriptObject* javascr
 
 ### registerJavaScriptProxy()
 
-```
+```c
 void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)
 ```
 
@@ -83,7 +83,7 @@ void (*registerJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* pr
 
 ### deleteJavaScriptRegister()
 
-```
+```c
 void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 ```
 
@@ -100,7 +100,7 @@ void (*deleteJavaScriptRegister)(const char* webTag, const char* objName)
 
 ### refresh()
 
-```
+```c
 void (*refresh)(const char* webTag)
 ```
 
@@ -116,7 +116,7 @@ void (*refresh)(const char* webTag)
 
 ### registerAsyncJavaScriptProxy()
 
-```
+```c
 void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObject* proxyObject)
 ```
 
@@ -133,7 +133,7 @@ void (*registerAsyncJavaScriptProxy)(const char* webTag, const ArkWeb_ProxyObjec
 
 ### createWebMessagePorts()
 
-```
+```c
 ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* size)
 ```
 
@@ -156,7 +156,7 @@ ArkWeb_WebMessagePortPtr* (*createWebMessagePorts)(const char* webTag, size_t* s
 
 ### destroyWebMessagePorts()
 
-```
+```c
 void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)
 ```
 
@@ -173,7 +173,7 @@ void (*destroyWebMessagePorts)(ArkWeb_WebMessagePortPtr** ports, size_t size)
 
 ### postWebMessage()
 
-```
+```c
 ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_WebMessagePortPtr* webMessagePorts, size_t size, const char* url)
 ```
 
@@ -199,7 +199,7 @@ ArkWeb_ErrorCode (*postWebMessage)(const char* webTag, const char* name, ArkWeb_
 
 ### getLastJavascriptProxyCallingFrameUrl()
 
-```
+```c
 const char* (*getLastJavascriptProxyCallingFrameUrl)()
 ```
 
@@ -217,7 +217,7 @@ const char* (*getLastJavascriptProxyCallingFrameUrl)()
 
 ### registerJavaScriptProxyEx()
 
-```
+```c
 void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWithResult* proxyObject,const char* permission)
 ```
 
@@ -237,7 +237,7 @@ void (*registerJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObjectWi
 
 ### registerAsyncJavaScriptProxyEx()
 
-```
+```c
 void (*registerAsyncJavaScriptProxyEx)(const char* webTag, const ArkWeb_ProxyObject* proxyObject, const char* permission)
 ```
 

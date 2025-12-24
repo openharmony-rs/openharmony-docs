@@ -2974,7 +2974,7 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, callback: IUserAuthCallback): Uint8Array;
 
-Performs authentication of the current user. This API uses an asynchronous callback to return the result.
+Performs authentication of the current user. 
 
 **System API**: This is a system API.
 
@@ -3050,7 +3050,7 @@ Performs authentication of the current user. This API uses an asynchronous callb
 
 auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, options: AuthOptions, callback: IUserAuthCallback): Uint8Array
 
-Starts user authentication based on the specified challenge value, authentication type (PIN, facial, or fingerprint authentication), authentication trust level, and optional parameters (such as the account ID and authentication intent). This API uses an asynchronous callback to return the result.
+Starts user authentication based on the specified challenge value, authentication type (PIN, facial, or fingerprint authentication), authentication trust level, and optional parameters (such as the account ID and authentication intent).
 
 **System API**: This is a system API.
 
@@ -3639,7 +3639,7 @@ Authenticates a domain account by the authorization token.
 
 getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallback&lt;DomainAccountInfo&gt;): void
 
-Obtains information about a domain account.
+Obtains information about a domain account. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -3908,7 +3908,7 @@ Checks whether the specified domain account token is valid.
 
 getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-Obtains the domain access token based on the specified conditions.
+Obtains the domain access token based on the specified conditions. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -4945,6 +4945,7 @@ Adds credential information, including the credential type, subtype, and token (
     credType: osAccount.AuthType.PIN,
     credSubType: osAccount.AuthSubType.PIN_SIX,
     token: new Uint8Array([]),
+    additionalInfo: 'xxx'
   };
   let userIDM = new osAccount.UserIdentityManager();
   userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
@@ -5488,6 +5489,124 @@ Obtains the ID of the enrolled credential based on the credential type and accou
   }
   ```
 
+### onCredentialChanged<sup>23+</sup>
+onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;CredentialChangeInfo&gt;): void
+
+Subscribes to one or more credential change events. This API uses a callback to return the credential change information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Required permissions**: ohos.permission.USE_USER_IDM
+
+**Parameters**
+
+| Name    | Type                  | Mandatory| Description     |
+| --------  | ---------------------- | ---- | -------- |
+| credentialTypes  | [AuthType](#authtype8)\[\] | Yes  | Credential types subscribed.|
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | Yes  | Callback used to listen for the credential change events.|
+
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message              |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | One or more credential types are invalid. |
+| 12300106 | One or more credential types are not supported. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let identityMgr: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+
+const callback: Callback<osAccount.CredentialChangeInfo> = (changeInfo: osAccount.CredentialChangeInfo): void => {
+  console.info('credentialType: ' + changeInfo.credentialType
+    + ', changeType: ' + changeInfo.changeType
+    + ', accountId: ' + changeInfo.accountId
+    + ', addedCredentialId: ' + changeInfo.addedCredentialId
+    + ', deletedCredentialId: ' + changeInfo.deletedCredentialId
+    + ', isSilent: ' + changeInfo.isSilent
+  )
+}
+
+try {
+  identityMgr.onCredentialChanged([osAccount.AuthType.PIN, osAccount.AuthType.FACE], callback);
+  console.info('Subscribe to the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+```
+
+### offCredentialChanged<sup>23+</sup>
+offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
+
+Unsubscribes from credential change events. If no callback is not specified, this API unsubscribes from all subscription records.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+**Required permissions**: ohos.permission.USE_USER_IDM
+
+**Parameters**
+
+| Name    | Type                  | Mandatory| Description     |
+| --------  | ---------------------- | ---- | -------- |
+| callback | Callback&lt;[CredentialChangeInfo](#credentialchangeinfo23)&gt;  | No  | Callback used to listen for the credential change events. The default value is **undefined**, indicating that all subscription records are unregistered. If the value is not undefined, only the subscription records related to the specified callback are unregistered.|
+
+**Error codes**
+
+For details about the error codes, see [Account Management Error Codes](errorcode-account.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message              |
+| -------- | ------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 12300001 | The system service works abnormally. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let identityMgr: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+
+const callback: Callback<osAccount.CredentialChangeInfo> = (changeInfo: osAccount.CredentialChangeInfo): void => {
+  console.info('credentialType: ' + changeInfo.credentialType
+    + ', changeType: ' + changeInfo.changeType
+    + ', accountId: ' + changeInfo.accountId
+    + ', addedCredentialId: ' + changeInfo.addedCredentialId
+    + ', deletedCredentialId: ' + changeInfo.deletedCredentialId
+    + ', isSilent: ' + changeInfo.isSilent
+  )
+}
+
+try {
+  identityMgr.onCredentialChanged([osAccount.AuthType.PIN, osAccount.AuthType.FACE], callback);
+  console.info('Subscribe to the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to subscribe to the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+
+try {
+  identityMgr.offCredentialChanged(callback);
+  console.info('Unsubscribe from the credential changes successfully');
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`Failed to unsubscribe from the credetial changes, code is ${err.code}, message is ${err.message}`)
+}
+```
+
 ## IInputData<sup>8+</sup>
 
 Provides callbacks for PIN operations.
@@ -5794,6 +5913,7 @@ Defines the credential information.
 | credSubType  | [AuthSubType](#authsubtype8) | No   | No  | Authentication credential subtype.  |
 | token        | Uint8Array                           | No   | No  | Authentication token.    |
 | accountId<sup>12+</sup>    | number | No   | Yes  | System account ID, which is **undefined** by default.|
+| additionalInfo<sup>23+</sup>    | string | No   | Yes  | Additional information about the credential, which is an empty string by default.|
 
 ## RequestResult<sup>8+</sup>
 
@@ -6205,3 +6325,34 @@ Represents a set of optional parameters for [onGetData](#ongetdata8).
 | Name              | Type   | Read-Only | Optional| Description      |
 | ------------------ | ------ | ---- | ---- | ---------- |
 | challenge          | Uint8Array | No| Yes | Challenge value, which is **undefined** by default.|
+
+## CredentialChangeInfo<sup>23+</sup>
+
+Indicates credential change information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name     | Type  | Read-Only | Optional | Description      |
+| ----------- | ------ | ---- | ---- | ---------- |
+| changeType      | [CredentialChangeType](#credentialchangetype23) | No| No | Credential change type.    |
+| isSilent | boolean | No| No | Whether the change is silent. A silent change is automatically initiated by the system in the background.|
+| credentialType      | [AuthType](#authtype8) | No| No | Credential type.    |
+| accountId | int | No| No | System account ID.|
+| addedCredentialId   | Uint8Array | No| Yes | Credential ID. An ID is returned when a credential is added or updated. which is **undefined** by default.  |
+| deletedCredentialId | Uint8Array | No| Yes | Credential ID. An ID is returned when a credential is deleted or updated. which is **undefined** by default.  |
+
+## CredentialChangeType<sup>23+</sup>
+
+Enumerates the credential change types.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Account.OsAccount
+
+| Name    | Value  | Description      |
+| -------- | --- | ---------- |
+| ADD_CREDENTIAL      | 1   | A credential is added.|
+| UPDATE_CREDENTIAL   | 2   | A credential is updated.|
+| DELETE_CREDENTIAL   | 3   | A credential is deleted.|

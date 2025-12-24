@@ -325,7 +325,7 @@ enableBouncesZoom(enable: boolean)
 | ---------- | -- | ------------------------ |
 | Vertical   | 0  | 仅支持竖直方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | Horizontal | 1  | 仅支持水平方向滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> 从API version 9开始废弃，从API version 20开始推荐使用FREE。|
+| Free<sup>(deprecated) </sup> | 2 | 支持竖直或水平方向滚动。<br/> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用FREE替代。FREE枚举值从API version 20开始支持。|
 | None       | 3 | 不可滚动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | FREE<sup>20+</sup>   | 4 | 自由滚动。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 
@@ -418,7 +418,9 @@ onScroll(event: (xOffset: number, yOffset: number) => void)
 
 3、越界回弹。
 
-从API version 12开始废弃不再使用，推荐使用[onWillScroll](#onwillscroll12)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 12开始废弃，建议使用[onWillScroll](#onwillscroll12)替代。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -517,7 +519,9 @@ onScrollEnd(event: () => void)
 
 1、滚动组件触发滚动后停止，支持键鼠操作等其他触发滚动的输入设置。<br/>2、通过滚动控制器API接口调用后停止，带过渡动效。
 
-该事件从API version 9开始废弃，使用[onScrollStop](#onscrollstop9)事件替代。
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[onScrollStop](#onscrollstop9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -747,7 +751,7 @@ Scroll每帧缩放完成时触发的回调。
 
 ### 导入对象
 
-```
+```ts
 scroller: Scroller = new Scroller();
 ```
 
@@ -847,7 +851,11 @@ scrollPage(value:   ScrollPageOptions)
 
 scrollPage(value: { next: boolean, direction?: Axis })
 
-滚动到下一页或者上一页。从API version 9开始，该接口不再维护，推荐使用[scrollPage<sup>9+</sup>](#scrollpage9)。
+滚动到下一页或者上一页。
+
+> **说明：**
+>
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[scrollPage<sup>9+</sup>](#scrollpage9)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1040,17 +1048,19 @@ contentSize(): SizeResult
 
 获取滚动组件内容总大小。
 
->  **说明：**
+> **说明：**
 >
->  Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布局完成时，内容总大小通过估算得到，估算结果可能会有误差。其中List组件可以通过childrenMainSize属性解决估算不准问题。
+> - Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
 >
->  Grid、List、WaterFlow和Scroll组件主轴方向内容大小为所有子组件布局后的总大小，交叉轴方向内容大小为组件自身交叉轴方向大小减去padding和border后的大小。
+> - Grid、List、WaterFlow组件有懒加载机制，该接口依赖已布局的子节点进行估算。如果组件内容没有布局完成且子组件高度不一致，估算结果可能会有误差，需要开发者去适配，比如List组件可以通过childrenMainSize属性解决估算不准问题。
 >
->  当Scroll组件设置scrollable为ScrollDirection.FREE自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
+> - 如果应用动态增删子节点，则需要应用动态获取内容总大小，来保证接口获取结果的即时性。
 >
->  当Scroll组件设置scrollable为ScrollDirection.None不可滚动时，获取到的内容总大小为0。
+> - 当Scroll组件设置scrollable为ScrollDirection.FREE自由滚动模式时，获取到的内容总大小为子组件缩放后的总大小。
 >
->  当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时即为不可滚动场景，此时获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
+> - 当Scroll组件设置scrollable为ScrollDirection.None不可滚动时，获取到的内容总大小为0。
+>
+> - 当Grid组件同时设置columnsTemplate和rowsTemplate，或columnsTemplate和rowsTemplate都不设置时即为不可滚动场景，此时获取到的内容总大小高度为0，宽度为Grid组件内容区宽度。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1863,6 +1873,8 @@ struct ScrollZoomExample {
 
 从API version 22 开始，该示例实现了获取内容总大小的功能。
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct ScrollExample1 {
@@ -1885,10 +1897,16 @@ struct ScrollExample1 {
         // 点击按钮来调用contentSize函数获取内容尺寸
         Button('GetContentSize')
           .onClick(() => {
-            // 通过调用contentSize函数获取内容尺寸的宽度值
-            this.contentWidth = this.scroller.contentSize().width;
-            // 通过调用contentSize函数获取内容尺寸的高度值
-            this.contentHeight = this.scroller.contentSize().height;
+            // Scroller未绑定组件时会抛异常，需要加上try catch保护
+            try {
+              // 通过调用contentSize函数获取内容尺寸的宽度值
+              this.contentWidth = this.scroller.contentSize().width;
+              // 通过调用contentSize函数获取内容尺寸的高度值
+              this.contentHeight = this.scroller.contentSize().height;
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+            }
           })
         // 将获取到的内容尺寸信息通过文本进行呈现
         Text('Width：' + this.contentWidth + '，Height：' + this.contentHeight)

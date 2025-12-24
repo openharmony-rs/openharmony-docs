@@ -1,9 +1,9 @@
 # Progress
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 进度条组件，用于显示内容加载或操作处理等进度。

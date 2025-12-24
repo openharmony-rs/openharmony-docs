@@ -76,10 +76,12 @@ PhotoPickerComponent({
 | onVideoPlayStateChanged<sup>14+</sup>   | [videoPlayStateChangedCallback](#videoplaystatechangedcallback14)                    | 否   | - | 大图页视频播放状态改变时回调。<br>**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。                                  |
 | pickerController        | [PickerController](#pickercontroller)                                            | 是   | @ObjectLink | 应用可通过PickerController向Picker组件发送数据。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。|
 | onMovingPhotoBadgeStateChanged<sup>22+</sup> | [MovingPhotoBadgeStateChangedCallback](#movingphotobadgestatechangedcallback22) | 否 | - | 用户在Picker组件中打开/关闭动态效果时产生的回调。将图片uri和动态照片状态报给应用。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
+| onScrollStopAtStart<sup>23+</sup> | [ScrollStopAtStartCallback](#scrollstopatstartcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容起始位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| onScrollStopAtEnd<sup>23+</sup> | [ScrollStopAtEndCallback](#scrollstopatendcallback23) | 否 | - | 用户在Picker组件滑动停止、处于宫格内容结束位置时的回调。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 
 ## PickerOptions
 
-Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions10)。
+Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-photoAccessHelper-class.md#baseselectoptions)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -107,6 +109,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | preselectedInfos<sup>21+</sup>    | Array&lt;[PreselectedInfo](#preselectedinfo21)&gt;                              | 否   | 是 | 支持在指定pickerIndex的PhotoPickerComponent中回显用户已选择的数据。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | badgeConfig<sup>21+</sup>    | [BadgeConfig](#badgeconfig21)                              | 否   | 是 | 支持配置特殊角标显示。Picker目前仅支持一种类型的角标，详见[BadgeType](#badgetype21)。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。 |
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
+| edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ItemsDeletedCallback<sup>13+</sup>
 
@@ -182,6 +185,30 @@ type MovingPhotoBadgeStateChangedCallback = (uri: string, state: photoAccessHelp
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | uri    | string                         | 是    | 动态照片uri。 |
 | state  | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 是 | 动态照片状态。 |
+
+## ScrollStopAtStartCallback<sup>23+</sup>
+
+type ScrollStopAtStartCallback = () => void
+
+表示用户滑动picker宫格页，当滚动停止并处于宫格内容开始位置时的回调事件类型。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## ScrollStopAtEndCallback<sup>23+</sup>
+
+type ScrollStopAtEndCallback = () => void
+
+表示用户滑动picker宫格页，当滚动停止并处于宫格内容结束位置时的回调事件类型。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## PickerController
 
@@ -381,7 +408,7 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 | dynamicRangeType<sup>21+</sup>   | [photoAccessHelper.DynamicRangeType](arkts-apis-photoAccessHelper-e.md#dynamicrangetype12)                 | 否 | 是   | 媒体文件动态范围模型，包括HDR和SDR。<br>对于movingPhoto专指封面图片的动态范围类型。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
 | orientation<sup>21+</sup>   | number             | 否 | 是   | 图片/视频方向信息。<br>1.“TOP-left”，图像未旋转。<br>2.“TOP-right”，镜像水平翻转。<br>3.“Bottom-right”，图像旋转180°。<br>4.“Bottom-left”，镜像垂直翻转。<br>5.“Left-top”，先镜像水平翻转，再顺时针旋转270°。<br>6.“Right-top”，顺时针旋转90°。<br>7.“Right-bottom”，先镜像水平翻转，再顺时针旋转90°。<br>8.“Left-bottom”，顺时针旋转270°。<br>携带镜像信息的图片无论旋转与否其宽高属性都与原图保持一致，无镜像信息的图片其宽高属性会更新为旋转后的结果。<br>**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。|
 | movingPhotoBadgeState<sup>22+</sup> | [photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22) | 否 | 是   | 动态照片的状态。<br>当[ItemType](#itemtype)为THUMBNAIL时支持，否则为空。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。 |
-
+| VideoMode<sup>22+</sup> | [photoAccessHelper.VideoMode](arkts-apis-photoAccessHelper-e.md#videomode22) | 否 | 是   | 视频文件的log模式。 <br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
 ## ItemInfo
 
 继承自[BaseItemInfo](#baseiteminfo)，增加私有参数itemType。
@@ -496,6 +523,7 @@ updatePickerOptions(updateConfig: UpdatablePickerConfigs): Promise\<void>
 | photoBrowserBackgroundColorMode | [PickerColorMode](#pickercolormode) | 否  | 是 | 大图背景颜色。<br>包括跟随系统、浅色模式以及深色模式，默认为跟随系统。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                                      |
 | uiComponentColorMode            | [PickerColorMode](#pickercolormode) | 否  | 是 | Picker UI组件的颜色模式。<br>Picker宫格界面除背景色之外其他组件的深浅色风格，包括搜索框、相机入口、安全使用图库提示组件、推荐气泡等组件，一般与backgroundColor配合使用。默认为PickerColorMode.AUTO，跟随系统深浅色切换。<br>该属性设置为PickerColorMode.LIGHT时，一般不与深颜色的backgroundColor搭配；设置为PickerColorMode.DARK时，不与浅颜色的backgroundColor搭配，避免出现组件背景或文字无法看清楚的问题。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。  |
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## DataType
 

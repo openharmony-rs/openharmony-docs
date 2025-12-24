@@ -47,6 +47,7 @@ setPointerVisible(visible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -56,7 +57,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.setPointerVisible(true, (error: Error) => {
+            pointer.setPointerVisible(true, (error: BusinessError) => {
               if (error) {
                 console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -105,6 +106,7 @@ setPointerVisible(visible: boolean): Promise&lt;void&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -116,7 +118,9 @@ struct Index {
           try {
             pointer.setPointerVisible(false).then(() => {
               console.info(`Set pointer visible success`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Set pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Set pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }
@@ -198,6 +202,7 @@ isPointerVisible(callback: AsyncCallback&lt;boolean&gt;): void
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -207,7 +212,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            pointer.isPointerVisible((error: Error, visible: boolean) => {
+            pointer.isPointerVisible((error: BusinessError, visible: boolean) => {
               if (error) {
                 console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -241,6 +246,7 @@ isPointerVisible(): Promise&lt;boolean&gt;
 
 ```js
 import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -252,7 +258,9 @@ struct Index {
           try {
             pointer.isPointerVisible().then((visible: boolean) => {
               console.info(`Get pointer visible success, visible: ${JSON.stringify(visible)}`);
-            });
+            }).catch((error: BusinessError) => {
+              console.error(`Get pointer failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
           } catch (error) {
             console.error(`Get pointer visible failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
           }

@@ -53,8 +53,8 @@ onMouse(event: (event: MouseEvent) => void): T
 | windowY<sup>10+</sup> | number                           |  否         |  否     |鼠标位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | displayX<sup>10+</sup> | number                          |  否         |  否     |鼠标位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | displayY<sup>10+</sup> | number                         |  否          |  否     |鼠标位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| screenX<sup>(deprecated)</sup> | number                 |  否         |  否     |鼠标位置相对于应用窗口左上角的x轴坐标。<br>单位：vp<br/>从API version 10开始不再维护，建议使用windowX代替。 |
-| screenY<sup>(deprecated)</sup> | number                 |  否          |  否     |鼠标位置相对于应用窗口左上角的y轴坐标。<br>单位：vp<br/>从API version 10开始不再维护，建议使用windowY代替。 |
+| screenX<sup>(deprecated)</sup> | number                 |  否         |  否     |鼠标位置相对于应用窗口左上角的x轴坐标。<br>单位：vp<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，建议使用windowX替代。 |
+| screenY<sup>(deprecated)</sup> | number                 |  否          |  否     |鼠标位置相对于应用窗口左上角的y轴坐标。<br>单位：vp<br/>**说明：** 从API version 8开始支持，从API version 10开始废弃，建议使用windowY替代。 |
 | rawDeltaX<sup>15+</sup> | number      |  否   |  是     |鼠标设备在二维平面X轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | rawDeltaY<sup>15+</sup> | number      |  否     |  是    |鼠标设备在二维平面Y轴的移动增量。其数值为鼠标硬件的原始移动数据，使用物理世界中鼠标移动的距离单位进行表示。上报数值由硬件本身决定，并非屏幕的物理/逻辑像素。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | pressedButtons<sup>15+</sup> | MouseButton[]      |  否      | 是     |当前按下的鼠标按键集合。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |

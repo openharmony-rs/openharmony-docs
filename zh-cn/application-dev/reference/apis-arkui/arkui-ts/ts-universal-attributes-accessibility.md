@@ -50,7 +50,7 @@ accessibilityGroup(isGroup: boolean, accessibilityOptions: AccessibilityOptions)
 
 通过accessibilityPreferred启用优先拼接无障碍文本进行朗读后，将优先拼接其子组件的无障碍文本属性作为组件的合并文本。若某一子组件未设置无障碍文本，则继续拼接该子组件的通用文本属性，若该子组件没有通用文本属性，则忽略该子组件不进行拼接。
 
-从API version 22开始，通过stateController和actionController参数，可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。
+从API version 23开始，通过stateController和actionController参数，可以使用特定的子组件的状态信息和点击事件作为当前聚合组件的无障碍能力。
 
 > **说明：**
 >
@@ -638,7 +638,7 @@ accessibilityStateDescription(description: string | Resource | undefined): T
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>undefined：播报文本默认为空。 |
+| description  | string \| [Resource](ts-types.md#resource) \| undefined | 是   | 需要播报组件当前状态的语音播报文本。<br/>设置文本超过1000字符时，截取前1000字符进行播报。<br/>undefined：播报文本默认为空。 |
 
 **返回值：**
 

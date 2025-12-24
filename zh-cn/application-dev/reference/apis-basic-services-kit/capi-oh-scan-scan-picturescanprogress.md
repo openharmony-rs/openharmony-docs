@@ -1,9 +1,9 @@
 # Scan_PictureScanProgress
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @Q-haosu-->
+<!--Tester: @Q-haosu-->
 <!--Adviser: @fang-jinxu-->
 
 ```c
@@ -28,6 +28,6 @@ typedef struct {...} Scan_PictureScanProgress
 | -- | -- |
 | int32_t progress | 图片进度，从0到100 |
 | int32_t fd | 扫描仪文件句柄 |
-| bool isFinal | 指示该图像是否为最后扫描的图像 |
+| bool isFinal | 指示该图像是否为最后扫描的图像。true表示该图像是最后扫描的图像，false表示该图像不是最后扫描的图像。 |
 
 

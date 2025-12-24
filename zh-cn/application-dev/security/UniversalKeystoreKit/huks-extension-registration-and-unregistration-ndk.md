@@ -11,6 +11,11 @@
 
 ## 注册Provider
 
+### 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
+```
+
 ### 开发步骤
 
 1. 构造注册参数，需要传入[OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。
@@ -88,6 +93,11 @@ static napi_value registerProvider(napi_env env, napi_callback_info info)
 ```
 
 ## 注销Provider
+
+### 在CMake脚本中链接相关动态库
+```txt
+target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
+```
 
 ### 开发步骤
 

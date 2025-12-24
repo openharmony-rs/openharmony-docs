@@ -51,7 +51,7 @@ Provides APIs and structs for accessing the **Preferences** object.
 
 ### OH_PreferencesDataObserver()
 
-```
+```c
 typedef void (*OH_PreferencesDataObserver)(void *context, const OH_PreferencesPair *pairs, uint32_t count)
 ```
 
@@ -72,7 +72,7 @@ Defines a struct for the callback for data changes.
 
 ### OH_Preferences_Open()
 
-```
+```c
 OH_Preferences *OH_Preferences_Open(OH_PreferencesOption *option, int *errCode)
 ```
 
@@ -98,7 +98,7 @@ Opens a **Preferences** instance and creates a pointer to it.<br>If this pointer
 
 ### OH_Preferences_Close()
 
-```
+```c
 int OH_Preferences_Close(OH_Preferences *preference)
 ```
 
@@ -119,11 +119,11 @@ Closes a **Preferences** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code. For details, see [OH_Preferences_ErrCode](capi-oh-preferences-err-code-h.md#oh_preferences_errcode).<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int  | Returns an error code. For details, see [OH_Preferences_ErrCode](capi-oh-preferences-err-code-h.md#oh_preferences_errcode).<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
 
 ### OH_Preferences_GetInt()
 
-```
+```c
 int OH_Preferences_GetInt(OH_Preferences *preference, const char *key, int *value)
 ```
 
@@ -146,11 +146,11 @@ Obtains an integer corresponding to the specified key in a **Preferences** insta
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
 
 ### OH_Preferences_GetBool()
 
-```
+```c
 int OH_Preferences_GetBool(OH_Preferences *preference, const char *key, bool *value)
 ```
 
@@ -173,11 +173,11 @@ Obtains a Boolean value corresponding to the specified key in a **Preferences** 
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
 
 ### OH_Preferences_GetString()
 
-```
+```c
 int OH_Preferences_GetString(OH_Preferences *preference, const char *key, char **value, uint32_t *valueLen)
 ```
 
@@ -201,11 +201,11 @@ Obtains a string corresponding to the specified key in a **Preferences** instanc
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_KEY_NOT_FOUND** indicates the specified key does not exist.|
 
 ### OH_Preferences_FreeString()
 
-```
+```c
 void OH_Preferences_FreeString(char *string)
 ```
 
@@ -224,7 +224,7 @@ Releases a string obtained from a **Preferences** instance.
 
 ### OH_Preferences_SetInt()
 
-```
+```c
 int OH_Preferences_SetInt(OH_Preferences *preference, const char *key, int value)
 ```
 
@@ -247,11 +247,11 @@ Sets an integer based on the specified key in a **Preferences** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
 
 ### OH_Preferences_SetBool()
 
-```
+```c
 int OH_Preferences_SetBool(OH_Preferences *preference, const char *key, bool value)
 ```
 
@@ -274,11 +274,11 @@ Sets a Boolean value based on the specified key in a **Preferences** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
 
 ### OH_Preferences_SetString()
 
-```
+```c
 int OH_Preferences_SetString(OH_Preferences *preference, const char *key, const char *value)
 ```
 
@@ -301,11 +301,11 @@ Sets a string based on the specified key in a **Preferences** instance.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
 
 ### OH_Preferences_Delete()
 
-```
+```c
 int OH_Preferences_Delete(OH_Preferences *preference, const char *key)
 ```
 
@@ -327,7 +327,7 @@ Deletes the KV data corresponding to the specified key from a **Preferences** in
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
 
 **See**
 
@@ -335,7 +335,7 @@ OH_Preferences_ErrCode
 
 ### OH_Preferences_RegisterDataObserver()
 
-```
+```c
 int OH_Preferences_RegisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)
 ```
 
@@ -354,17 +354,17 @@ Subscribes to data changes of the specified keys. If the value of the specified 
 | void *context                                                | Pointer to the application context.                                          |
 | [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to be invoked when data changes.|
 | const char *keys[]                                           | Pointer to the keys of the data to be observed.                                         |
-| uint32_t keyCount                                            | Number of keys observed.                                       |
+| uint32_t keyCount                                            | Number of keys.                                       |
 
 **Returns**
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT** indicates a failure in obtaining the data change subscription service.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.<br>**PREFERENCES_ERROR_GET_DATAOBSMGRCLIENT** indicates a failure in obtaining the data change subscription service.|
 
 ### OH_Preferences_UnregisterDataObserver()
 
-```
+```c
 int OH_Preferences_UnregisterDataObserver(OH_Preferences *preference, void *context,OH_PreferencesDataObserver observer, const char *keys[], uint32_t keyCount)
 ```
 
@@ -381,7 +381,7 @@ Unsubscribes from data changes of the specified keys.
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [OH_Preferences](capi-preferences-oh-preferences.md) *preference         | Pointer to the [OH_Preferences](capi-preferences-oh-preferences.md) instance.|
 | void *context                                                | Pointer to the application context.                                          |
-| [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to unregister.|
+| [OH_PreferencesDataObserver](#oh_preferencesdataobserver) observer | [OH_PreferencesDataObserver](capi-oh-preferences-h.md#oh_preferencesdataobserver) callback to be invoked when data changes.|
 | const char *keys[]                                           | Pointer to the keys whose changes are not observed.                                     |
 | uint32_t keyCount                                            | Number of keys.                                   |
 
@@ -389,7 +389,7 @@ Unsubscribes from data changes of the specified keys.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
+| int  | Returns an error code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.<br>**PREFERENCES_ERROR_STORAGE** indicates the storage is abnormal.<br>**PREFERENCES_ERROR_MALLOC** indicates a failure in memory allocation.|
 
 **See**
 
@@ -397,7 +397,7 @@ OH_Preferences_ErrCode
 
 ### OH_Preferences_IsStorageTypeSupported()
 
-```
+```c
 int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *isSupported)
 ```
 
@@ -416,4 +416,4 @@ int OH_Preferences_IsStorageTypeSupported(Preferences_StorageType type, bool *is
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Operation status code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.|
+| int  | Returns an operation status code.<br>**PREFERENCES_OK** indicates the operation is successful.<br>**PREFERENCES_ERROR_INVALID_PARAM** indicates invalid parameters are specified.|

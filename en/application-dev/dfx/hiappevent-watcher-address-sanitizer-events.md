@@ -16,6 +16,10 @@ You can subscribe to address sanitizer events using the ArkTs and C/C++ APIs pro
 
 - [Subscribing to Address Sanitizer Events (C/C++)](hiappevent-watcher-address-sanitizer-events-ndk.md)
 
+> **NOTE**
+>
+> Address sanitizer events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone). Since API version 22, this feature is also supported for [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide). This feature is not supported for atomic services.
+
 ## Detection Principles
 
 For details, see [Address Sanitizer Detection](address-sanitizer-guidelines.md).

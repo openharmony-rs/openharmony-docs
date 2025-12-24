@@ -147,11 +147,11 @@
       napi_value args[1] = {nullptr};
   
       // 获取传入的参数并依次放入参数数组中
-      napi_get_cb_info(env, info, &argc, args , nullptr, nullptr);
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
   
       // 创建一个int，作为ArkTS的入参
       napi_value argv = nullptr;    
-      napi_create_int32(env, 2, &argv );
+      napi_create_int32(env, 2, &argv);
   
       // 调用传入的callback，并将其结果返回
       napi_value result = nullptr;
@@ -229,7 +229,9 @@ struct Index {
 
 ### 代码调试设备选择
 
-强烈建议开发者使用真机而非预览器进行代码调试。预览器的主要功能是调试界面组块，若用于功能调试可能会出现如下报错：
+建议开发者优先使用真机进行代码调试，若无真机或者真机无权限则可使用模拟器进行调试，模拟器调试中遇到的问题详见[bm工具](../tools/bm-tool.md#bm工具错误码)
+
+开发者不要使用预览器进行功能调试，预览器的主要功能是调试界面组件，若用于功能调试可能会出现如下报错：
 
 - TypeError: undefined is not callable
 

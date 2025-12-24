@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_Cursor
 ```
 
@@ -52,7 +52,7 @@ Defines a struct for a result set. Provides APIs to access the result set obtain
 
 ### getColumnCount()
 
-```
+```c
 int (*getColumnCount)(OH_Cursor *cursor, int *count)
 ```
 
@@ -78,7 +78,7 @@ Pointer to the function used to obtain the number of columns in the result set.
 
 ### getColumnType()
 
-```
+```c
 int (*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)
 ```
 
@@ -105,7 +105,7 @@ Pointer to the function used to obtain the column type based on the specified co
 
 ### getColumnIndex()
 
-```
+```c
 int (*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)
 ```
 
@@ -132,7 +132,7 @@ Pointer to the function used to obtain the column index based on the specified c
 
 ### getColumnName()
 
-```
+```c
  int (*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)
 ```
 
@@ -160,7 +160,7 @@ Pointer to the function used to obtain the column name based on the specified co
 
 ### getRowCount()
 
-```
+```c
 int (*getRowCount)(OH_Cursor *cursor, int *count)
 ```
 
@@ -186,7 +186,7 @@ Pointer to the function used to obtain the number of rows in the result set.
 
 ### goToNextRow()
 
-```
+```c
  int (*goToNextRow)(OH_Cursor *cursor)
 ```
 
@@ -211,7 +211,7 @@ Pointer to the function used to go to the next row of the result set.
 
 ### getSize()
 
-```
+```c
 int (*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)
 ```
 
@@ -238,7 +238,7 @@ Pointer to the function used to obtain information about the memory required whe
 
 ### getText()
 
-```
+```c
 int (*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)
 ```
 
@@ -266,7 +266,7 @@ Pointer to the function used to obtain the value of the string type based on the
 
 ### getInt64()
 
-```
+```c
 int (*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)
 ```
 
@@ -293,7 +293,7 @@ Pointer to the function used to obtain the value of the int64_t type based on th
 
 ### getReal()
 
-```
+```c
 int (*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)
 ```
 
@@ -320,7 +320,7 @@ Pointer to the function used to obtain the value of the double type based on the
 
 ### getBlob()
 
-```
+```c
 int (*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)
 ```
 
@@ -348,7 +348,7 @@ Pointer to the function used to obtain the values in the form of a byte array ba
 
 ### isNull()
 
-```
+```c
 int (*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)
 ```
 
@@ -375,7 +375,7 @@ Pointer to the function used to check whether the value in the specified column 
 
 ### destroy()
 
-```
+```c
 int (*destroy)(OH_Cursor *cursor)
 ```
 
@@ -400,7 +400,7 @@ Pointer to the function used to destroy a result set.
 
 ### getAsset()
 
-```
+```c
 int (*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)
 ```
 
@@ -427,7 +427,7 @@ Pointer to the function used to obtain the value of the asset type based on the 
 
 ### getAssets()
 
-```
+```c
 int (*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)
 ```
 

@@ -1,9 +1,9 @@
 # ohscan.h
-<!--Kit: Basic Services Kit-->	
-<!--Subsystem: Print-->	
-<!--Owner: @guoshengbang-->	
-<!--Designer: @Q-haosu-->	
-<!--Tester: @Q-haosu-->	
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Print-->
+<!--Owner: @guoshengbang-->
+<!--Designer: @Q-haosu-->
+<!--Tester: @Q-haosu-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述
@@ -124,7 +124,7 @@ int32_t OH_Scan_Init()
 
 | 类型 | 说明                                                                                                                                                                                                                                                                                                    |
 | -- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示扫描服务成功启动<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示扫描服务成功启动<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误 |
 
 ### OH_Scan_StartScannerDiscovery()
 
@@ -152,7 +152,7 @@ int32_t OH_Scan_StartScannerDiscovery(Scan_ScannerDiscoveryCallback callback)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示成功开始扫描仪搜索<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示成功开始扫描仪搜索<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误 |
 
 ### OH_Scan_OpenScanner()
 
@@ -180,7 +180,7 @@ int32_t OH_Scan_OpenScanner(const char* scannerId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示扫描仪成功连接<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode) 表示扫描仪繁忙<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示输入参数无效<br>         [SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode) 表示与设备通信时发生错误<br>         [SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode) 表示可用内存不足 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示扫描仪成功连接<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode) 表示扫描仪繁忙<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示输入参数无效<br>         [SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode) 表示与设备通信时发生错误<br>         [SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode) 表示可用内存不足 |
 
 ### OH_Scan_CloseScanner()
 
@@ -208,7 +208,7 @@ int32_t OH_Scan_CloseScanner(const char* scannerId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示扫描仪连接成功关闭<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示输入参数无效 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示扫描仪连接成功关闭<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示输入参数无效 |
 
 ### OH_Scan_GetScannerParameter()
 
@@ -231,13 +231,13 @@ Scan_ScannerOptions* OH_Scan_GetScannerParameter(const char* scannerId, int32_t*
 | 参数项 | 描述                                                                                                    |
 | -- |-------------------------------------------------------------------------------------------------------|
 | const char* scannerId | 用于获取扫描仪参数的ID                                                                                          |
-| int32_t* errorCode | 如果执行成功，errorCode返回[Scan_ERROR_NONE](#scan_errorcode)，否则返回特定的错误码，参考[Print_ErrorCode](capi-ohprint-h.md#print_errorcode) |
+| int32_t* errorCode | 如果执行成功，errorCode返回[SCAN_ERROR_NONE](#scan_errorcode)，否则返回特定的错误码，参考[Print_ErrorCode](capi-ohprint-h.md#print_errorcode) |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [Scan_ScannerOptions*](capi-oh-scan-scan-scanneroptions.md) | [Scan_ERROR_NONE](#scan_errorcode) 表示成功获取扫描仪参数选项<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示参数无效 |
+| [Scan_ScannerOptions*](capi-oh-scan-scan-scanneroptions.md) | [SCAN_ERROR_NONE](#scan_errorcode) 表示成功获取扫描仪参数选项<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示参数无效 |
 
 ### OH_Scan_SetScannerParameter()
 
@@ -267,7 +267,7 @@ int32_t OH_Scan_SetScannerParameter(const char* scannerId, const int32_t option,
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示扫描仪参数设置成功<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示参数无效 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示扫描仪参数设置成功<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示参数无效 |
 
 ### OH_Scan_StartScan()
 
@@ -296,7 +296,7 @@ int32_t OH_Scan_StartScan(const char* scannerId, bool batchMode)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示扫描仪成功启动扫描任务<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_JAMMED](capi-ohscan-h.md#scan_errorcode) 表示文档进纸器卡纸<br>         [SCAN_ERROR_NO_DOCS](capi-ohscan-h.md#scan_errorcode) 表示文档进纸器缺纸<br>         [SCAN_ERROR_COVER_OPEN](capi-ohscan-h.md#scan_errorcode) 表示扫描仪盖板打开<br>         [SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode) 表示与设备通信时发生错误<br>         [SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode) 表示可用内存不足<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示输入参数无效<br>         [SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode) 表示设备繁忙，应稍后重试操作 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示扫描仪成功启动扫描任务<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_JAMMED](capi-ohscan-h.md#scan_errorcode) 表示文档进纸器卡纸<br>         [SCAN_ERROR_NO_DOCS](capi-ohscan-h.md#scan_errorcode) 表示文档进纸器缺纸<br>         [SCAN_ERROR_COVER_OPEN](capi-ohscan-h.md#scan_errorcode) 表示扫描仪盖板打开<br>         [SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode) 表示与设备通信时发生错误<br>         [SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode) 表示可用内存不足<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示输入参数无效<br>         [SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode) 表示设备繁忙，应稍后重试操作 |
 
 ### OH_Scan_CancelScan()
 
@@ -324,7 +324,7 @@ int32_t OH_Scan_CancelScan(const char* scannerId)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示扫描仪成功取消扫描任务<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示指针为空或字符串为空<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示扫描仪成功取消扫描任务<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示指针为空或字符串为空<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误 |
 
 ### OH_Scan_GetPictureScanProgress()
 
@@ -353,7 +353,7 @@ int32_t OH_Scan_GetPictureScanProgress(const char* scannerId, Scan_PictureScanPr
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示扫描仪成功查询到扫描图像的进度<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示指针为空或字符串为空<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_JAMMED](capi-ohscan-h.md#scan_errorcode) 表示文档进纸器卡纸<br>         [SCAN_ERROR_NO_DOCS](capi-ohscan-h.md#scan_errorcode) 表示文档进纸器缺纸<br>         [SCAN_ERROR_COVER_OPEN](capi-ohscan-h.md#scan_errorcode) 表示扫描仪盖板打开<br>         [SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode) 表示与扫描仪通信时发生错误<br>         [SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode) 表示可用内存不足<br>         [SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode) 表示设备繁忙，应稍后重试操作 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示扫描仪成功查询到扫描图像的进度<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_INVALID_PARAMETER](capi-ohscan-h.md#scan_errorcode) 表示指针为空或字符串为空<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误<br>         [SCAN_ERROR_JAMMED](capi-ohscan-h.md#scan_errorcode) 表示文档进纸器卡纸<br>         [SCAN_ERROR_NO_DOCS](capi-ohscan-h.md#scan_errorcode) 表示文档进纸器缺纸<br>         [SCAN_ERROR_COVER_OPEN](capi-ohscan-h.md#scan_errorcode) 表示扫描仪盖板打开<br>         [SCAN_ERROR_IO_ERROR](capi-ohscan-h.md#scan_errorcode) 表示与扫描仪通信时发生错误<br>         [SCAN_ERROR_NO_MEMORY](capi-ohscan-h.md#scan_errorcode) 表示可用内存不足<br>         [SCAN_ERROR_DEVICE_BUSY](capi-ohscan-h.md#scan_errorcode) 表示设备繁忙，应稍后重试操作 |
 
 ### OH_Scan_Exit()
 
@@ -375,6 +375,6 @@ int32_t OH_Scan_Exit()
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | [Scan_ERROR_NONE](#scan_errorcode) 表示扫描服务成功退出<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误 |
+| int32_t | [SCAN_ERROR_NONE](#scan_errorcode) 表示扫描服务成功退出<br>         [SCAN_ERROR_NO_PERMISSION](capi-ohscan-h.md#scan_errorcode) 表示无权限使用此接口<br>         [SCAN_ERROR_RPC_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示RPC通信错误<br>         [SCAN_ERROR_SERVER_FAILURE](capi-ohscan-h.md#scan_errorcode) 表示扫描过程中发生错误 |
 
 

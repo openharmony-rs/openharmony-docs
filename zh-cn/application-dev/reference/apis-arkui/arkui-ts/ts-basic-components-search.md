@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @kangshihui-->
-<!--Designer: @pssea-->
+<!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -134,7 +134,7 @@ Wearable设备上默认字体大小为18fp。
 
 textAlign(value: TextAlign)
 
-设置文本在搜索框中的对齐方式。目前支持的对齐方式有：TextAlign.Start、TextAlign.Center、TextAlign.End。TextAlign.JUSTIFY的对齐方式按照TextAlign.Start处理。
+设置文本在搜索框中的对齐方式。目前支持的对齐方式有：TextAlign.Start、TextAlign.Center、TextAlign.End、TextAlign.LEFT、TextAlign.RIGHT。TextAlign.JUSTIFY的对齐方式按照TextAlign.Start处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -149,6 +149,22 @@ textAlign(value: TextAlign)
 >  **说明：**  
 >
 >  textAlign只能调整文本整体的布局，不影响字符的显示顺序。若需要调整字符的显示顺序，请参考[镜像状态字符对齐](../../../ui/arkts-internationalization.md#镜像状态字符对齐)。
+
+### textDirection<sup>23+</sup>
+
+textDirection(direction: TextDirection | undefined)
+
+指定文本排版方向，未通过该接口设置时，默认文本排版方向遵循组件布局方向。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型                                        | 必填 | 说明                                                       |
+| ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
 
 ### copyOption<sup>9+</sup>
 
@@ -303,7 +319,7 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 | 参数名                | 类型                                        | 必填 | 说明                             |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8)  \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | 是   | 自定义键盘。                     |
+| value                 | [CustomBuilder](ts-types.md#custombuilder8)  \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | 是   | 自定义键盘。设定值为undefined时，关闭自定义键盘。                     |
 | options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | 否   | 设置自定义键盘是否支持避让功能。 |
 
 ### type<sup>11+</sup>
@@ -656,6 +672,16 @@ enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
 
+开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
+
+```json
+"requestPermissions": [
+ {
+    "name": "ohos.permission.VIBRATE",
+ }
+]
+```
+
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -665,17 +691,6 @@ enableHapticFeedback(isEnabled: boolean)
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
 | isEnabled | boolean | 是   | 是否开启触控反馈。<br/>true表示开启触控反馈，false表示不开启触控反馈。<br/>默认值：true |
-
->  **说明：**
->
->  开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
->  ```json
->  "requestPermissions": [
->   {
->      "name": "ohos.permission.VIBRATE",
->   }
->  ]
->  ```
 
 ### autoCapitalizationMode<sup>20+</sup>
 
@@ -773,6 +788,22 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
+### selectedDragPreviewStyle<sup>23+</sup>
+
+selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
+
+设置搜索框内文本拖拽时的背板样式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型                                             | 必填 | 说明                                                       |
+| ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
+
 ### dividerColor<sup>23+</sup>
 
 dividerColor(color: Optional\<ColorMetrics>)
@@ -793,7 +824,13 @@ dividerColor(color: Optional\<ColorMetrics>)
 
 compressLeadingPunctuation(enabled: Optional\<boolean>)
 
-设置是否启用行首标点符号压缩功能。
+设置是否开启行首标点符号压缩。
+
+> **说明：**
+>
+> - 行首标点符号默认不压缩。
+>
+> - 支持压缩的标点符号，请参考[ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle)的行首压缩的标点范围。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -801,15 +838,15 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 
 **参数：**
 
-| 参数名           | 类型             | 必填 | 说明                                            |
-| ---------------- | ------- | ---- | ----------------------------------------------- |
-| enabled         | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用。|
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
 
 ### includeFontPadding<sup>23+</sup>
 
 includeFontPadding(include: Optional\<boolean>)
 
-设置是否在首行和尾行增加间距以避免文字截断。
+设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -825,7 +862,7 @@ includeFontPadding(include: Optional\<boolean>)
 
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
-针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。
+针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。不通过该接口设置，默认行高不基于文字实际高度自适应。
 
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -873,6 +910,8 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 | INPUT     | 清除按钮输入样式。 |
 
 ## SearchType<sup>11+</sup>枚举说明
+
+搜索输入框类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1170,7 +1209,7 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 
 ## SearchController
 
-Search组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
+Search组件的控制器继承自[TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase)，涉及的接口有[getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect)、[getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount)、[getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11)、[addText](ts-universal-attributes-text-style.md#addtext15)、[deleteText](ts-universal-attributes-text-style.md#deletetext15)、[getSelection](ts-universal-attributes-text-style.md#getselection15)、[clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17)、[setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22)、[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)<!--Del-->以及系统接口[getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->。
 
 ### 导入对象
 ```ts
@@ -1357,47 +1396,74 @@ struct SearchExample {
 
 ### 示例3（设置自定义键盘）
 
-该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性实现了自定义键盘的功能。
+该示例通过[customKeyboard](#customkeyboard10)（从API version 10开始）属性分别将value中的入参类型设置为[CustomBuilder](ts-types.md#custombuilder8)和[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)，实现了自定义键盘的功能。
+
+从API version 22开始[customKeyboard](#customkeyboard10)属性新增了入参类型[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)。
 
 ```ts
 // xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+class BuilderParams {
+  inputValue: string;
+  controller: SearchController;
+
+  constructor(inputValue: string, controller: SearchController) {
+    this.inputValue = inputValue;
+    this.controller = controller;
+  }
+}
+@Builder
+function CustomKeyboardBuilder(builderParams: BuilderParams) {
+  Column() {
+    Row() {
+      Button('x').onClick(() => {
+        // 关闭自定义键盘
+        builderParams.controller.stopEditing();
+      }).margin(10)
+    }
+
+    Grid() {
+      ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
+        GridItem() {
+          Button(item + "")
+            .width(110).onClick(() => {
+            builderParams.inputValue += item;
+          })
+        }
+      })
+    }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
+  }.backgroundColor(Color.Gray)
+}
 @Entry
 @Component
 struct SearchExample {
   controller: SearchController = new SearchController();
   @State inputValue: string = "";
+  @State componentContent ?: ComponentContent<BuilderParams> = undefined;
+  @State builderParam: BuilderParams = new BuilderParams(this.inputValue, this.controller);
+  @State supportAvoidance: boolean = true;
 
-  // 自定义键盘组件
-  @Builder CustomKeyboardBuilder() {
-    Column() {
-      Button('x').onClick(() => {
-        // 关闭自定义键盘
-        this.controller.stopEditing();
-      })
-      Grid() {
-        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
-          GridItem() {
-            Button(item + "")
-              .width(110).onClick(() => {
-              this.inputValue += item;
-            })
-          }
-        })
-      }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
-    }.backgroundColor(Color.Gray)
+  aboutToAppear(): void {
+    // 创建ComponentContent
+    this.componentContent = new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
   }
-
-  build() {
+  build(){
     Column() {
-      Search({ controller: this.controller, value: this.inputValue})
-        // 绑定自定义键盘
-        .customKeyboard(this.CustomKeyboardBuilder()).margin(10).border({ width: 1 })
+      Text('Builder').margin(10).border({ width: 1 })
+      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
+
+      Text('ComponentContent').margin(10).border({ width: 1 })
+      Search({ controller: this.builderParam.controller, text: this.builderParam.inputValue })
+        .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
+        .margin(10).border({ width: 1 }).height('48vp')
     }
   }
 }
 ```
 
-![customKeyboard](figures/searchCustomKeyboard.png)
+![customKeyboard](figures/searchCustomKeyboard-1.gif)
 
 ### 示例4（设置输入法回车键类型）
 
@@ -2490,3 +2556,100 @@ struct Index {
 ```
 
 ![searchIncludeFontPadding](figures/Search_IncludeFontPadding.gif)
+
+### 示例27（设置文本拖拽时的背板样式）
+
+该示例通过[selectedDragPreviewStyle](#selecteddragpreviewstyle23)接口设置文本拖拽时的背板样式。
+
+从API version 23开始，新增selectedDragPreviewStyle接口。
+
+```ts
+@Entry
+@Component
+struct SearchTest {
+  build() {
+    Column() {
+      Search({ value: 'HelloWorld', placeholder: 'please input words' })
+        .copyOption(CopyOptions.InApp)
+        .width(200)
+        .height(50)
+        .margin(150)
+        .draggable(true)
+        .selectedDragPreviewStyle({color: 'rgba(227, 248, 249, 1)'})
+    }
+    .height('100%')
+  }
+}
+```
+
+![selectedDragPreviewStyle](figures/searchSelectedDragPreviewStyle.png)
+
+### 示例28（删除文本框内的最后一个字符）
+
+该示例通过调用[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口删除文本框内最后一个字符。
+
+从API version 23开始，新增[deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)接口。
+
+``` typescript
+@Entry
+@Component
+struct Page {
+  controller: SearchController = new SearchController();
+
+  build() {
+    Column() {
+      Search({ placeholder: '搜索框示例', controller: this.controller })
+      Button('Delete backward')
+        .onClick(() => {
+          this.controller.deleteBackward();
+        })
+    }
+  }
+}
+```
+
+![searchDeleteBackward](figures/Search_DeleteBackward.gif)
+
+### 示例29（设置文本排版方向）
+
+该示例通过[textDirection](#textdirection23)接口设置文本排版方向。
+
+从API version 23开始，新增textDirection接口。
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct SearchExample {
+  @State text: string = 'Search文本排版方向示例';
+
+  build() {
+    Column({ space: 3 }) {
+      Text('Search文本排版方向RTL，布局方向default')
+        .fontSize(12).width('90%').margin(5)
+      Search({ value: this.text })
+        .width('95%')
+        .height(40)
+        .textDirection(TextDirection.RTL)
+      Text('Search文本排版方向RTL，布局方向default，文本水平方向对齐方式LEFT')
+        .fontSize(12).width('90%').margin(5)
+      Search({ value: this.text })
+        .width('95%')
+        .height(40)
+        .textDirection(TextDirection.RTL)
+        .textAlign(TextAlign.LEFT)
+      Text('Search文本排版方向LTR，布局方向RTL')
+        .fontSize(12).width('90%').margin(5)
+      Search({ value: this.text })
+        .width('95%')
+        .height(40)
+        .textDirection(TextDirection.LTR)
+        .direction(Direction.Rtl)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![searchTextDirection](figures/searchTextDirection.PNG)

@@ -32,7 +32,7 @@ Declares the error code information of the pasteboard.
 
 ### PASTEBOARD_ErrCode
 
-```
+```c
 enum PASTEBOARD_ErrCode
 ```
 
@@ -50,7 +50,7 @@ Enumerates the error codes.
 | ERR_DEVICE_NOT_SUPPORTED = 801 | Device capability not supported.|
 | ERR_INNER_ERROR = 12900000 | Internal error.|
 | ERR_BUSY = 12900003 | System busy.|
-| ERR_PASTEBOARD_COPY_FILE_ERROR = 12900007 | Failed to copy files.|
-| ERR_PASTEBOARD_PROGRESS_START_ERROR = 12900008 | Failed to display the progress.|
-| ERR_PASTEBOARD_PROGRESS_ABNORMAL = 12900009 | Abnormal progress.|
-| ERR_PASTEBOARD_GET_DATA_FAILED = 12900010 | Failed to obtain the pasteboard data.|
+| ERR_PASTEBOARD_COPY_FILE_ERROR = 12900007 | Failed to copy files.<br> Since: 15|
+| ERR_PASTEBOARD_PROGRESS_START_ERROR = 12900008 | Failed to display the progress.<br> Since: 15|
+| ERR_PASTEBOARD_PROGRESS_ABNORMAL = 12900009 | Abnormal progress.<br> Since: 15|
+| ERR_PASTEBOARD_GET_DATA_FAILED = 12900010 | Failed to obtain the pasteboard data.<br> Since: 15|

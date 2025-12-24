@@ -31,7 +31,7 @@
 | [struct OH_Huks_Result OH_Huks_UnregisterProvider(const struct OH_Huks_Blob *providerName, const OH_Huks_ExternalCryptoParamSet *paramSet)](#oh_huks_unregisterprovider) | 注销外部密钥管理能力扩展提供者。 |
 | [struct OH_Huks_Result OH_Huks_OpenResource(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet)](#oh_huks_openresource) | 根据指定的资源ID打开资源。<br> 注意：打开的资源必须通过[OH_Huks_CloseResource](#oh_huks_closeresource)关闭。 |
 | [struct OH_Huks_Result OH_Huks_CloseResource(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet)](#oh_huks_closeresource) | 根据指定的资源ID关闭资源。 |
-| [struct OH_Huks_Result OH_Huks_GetUkeyPinAuthState(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet, OH_Huks_ExternalPinAuthState *authState)](#oh_huks_getukeypinauthstate) | 获取指定UKey资源ID的PIN授权状态。 |
+| [struct OH_Huks_Result OH_Huks_GetUkeyPinAuthState(const struct OH_Huks_Blob *resourceId, const OH_Huks_ExternalCryptoParamSet *paramSet, OH_Huks_ExternalPinAuthState *authState)](#oh_huks_getukeypinauthstate) | 获取指定Ukey资源ID的PIN授权状态。 |
 | [struct OH_Huks_Result OH_Huks_GetProperty(const struct OH_Huks_Blob *resourceId, const struct OH_Huks_Blob *propertyId, const OH_Huks_ExternalCryptoParamSet *paramSetIn, OH_Huks_ExternalCryptoParamSet **paramSetOut)](#oh_huks_getproperty) | 外部密钥管理能力扩展提供者获取属性信息。 |
 | [struct OH_Huks_Result OH_Huks_InitExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSet)](#oh_huks_initexternalcryptoparamset) | 初始化一个参数集合。 |
 | [struct OH_Huks_Result OH_Huks_AddExternalCryptoParams(OH_Huks_ExternalCryptoParamSet *paramSet, const OH_Huks_ExternalCryptoParam *params, uint32_t paramCnt)](#oh_huks_addexternalcryptoparams) | 向参数集合中添加参数。 |
@@ -118,7 +118,7 @@ struct OH_Huks_Result OH_Huks_OpenResource(const struct OH_Huks_Blob *resourceId
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0 - 操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801 - 不支持的API。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005 - IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006 - ukey驱动报错。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014 - 内存不足。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 12000018 - resourceId或paramSet无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_ERROR 12000020 - 提供者执行失败。<br>         OH_HUKS_ERR_CODE_MISMATCH 12000021 - 新的远端句柄与先前缓存的句柄不匹配。<br>         OH_HUKS_ERR_CODE_BUSY 12000024 - 提供者或UKey忙。<br>         OH_HUKS_ERR_CODE_EXCEED_LIMIT 12000025 - 打开资源的数量超过限制。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0 - 操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801 - 不支持的API。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005 - IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006 - Ukey驱动报错。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014 - 内存不足。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 12000018 - resourceId或paramSet无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_ERROR 12000020 - 提供者执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED 12000021 - PIN码被锁定。<br>         OH_HUKS_ERR_CODE_BUSY 12000024 - 提供者或Ukey忙。<br>         OH_HUKS_ERR_CODE_EXCEED_LIMIT 12000025 - 打开资源的数量超过限制。 |
 
 ### OH_Huks_CloseResource()
 
@@ -143,7 +143,7 @@ struct OH_Huks_Result OH_Huks_CloseResource(const struct OH_Huks_Blob *resourceI
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0 - 操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801 - 不支持的 API。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005 - IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006 - ukey驱动报错。<br>         HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011 - 未找到缓存的指定句柄。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014 - 内存不足。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 12000018 - resourceId或paramSet无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_ERROR 12000020 - 提供者执行失败。<br>         OH_HUKS_ERR_CODE_BUSY 12000024 - 提供者或UKey忙。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0 - 操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801 - 不支持的 API。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005 - IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006 - Ukey驱动报错。<br>         HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011 - 未找到缓存的指定句柄。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014 - 内存不足。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 12000018 - resourceId或paramSet无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_ERROR 12000020 - 提供者执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED 12000021 - PIN码被锁定。<br>         OH_HUKS_ERR_CODE_BUSY 12000024 - 提供者或Ukey忙。 |
 
 ### OH_Huks_GetUkeyPinAuthState()
 
@@ -153,7 +153,7 @@ struct OH_Huks_Result OH_Huks_GetUkeyPinAuthState(const struct OH_Huks_Blob *res
 
 **描述**
 
-获取指定UKey资源ID的PIN授权状态。
+获取指定Ukey资源ID的PIN授权状态。
 
 **起始版本：** 22
 
@@ -169,7 +169,7 @@ struct OH_Huks_Result OH_Huks_GetUkeyPinAuthState(const struct OH_Huks_Blob *res
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0 - 操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801 - 不支持的API。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005 - IPC通信失败。<br>         HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011 - 未找到缓存的指定句柄。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014 - 内存不足。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 12000018 - resourceId或paramSet无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_ERROR 12000020 - 提供者执行失败。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0 - 操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801 - 不支持的API。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005 - IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006 - Ukey驱动报错。<br>         HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011 - 未找到缓存的指定句柄。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014 - 内存不足。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 12000018 - resourceId或paramSet无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_ERROR 12000020 - 提供者执行失败。<br>       OH_HUKS_ERR_CODE_BUSY 12000024 - 提供者或Ukey忙。|
 
 ### OH_Huks_GetProperty()
 
@@ -196,7 +196,7 @@ struct OH_Huks_Result OH_Huks_GetProperty(const struct OH_Huks_Blob *resourceId,
 
 | 类型 | 说明 |
 | -- | -- |
-| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0 - 操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801 - 不支持的API。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005 - IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006 - 驱动错误。<br>         HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011 - 未找到缓存的指定句柄。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014 - 内存不足。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 12000018 - resourceId、propertyId、paramSet或回调无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_ERROR 12000020 - 提供者或Ukey内部执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED 12000021 - PIN码被锁定。<br>         OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023 - PIN码未通过认证。<br>         OH_HUKS_ERR_CODE_BUSY 12000024 - 提供者或UKey中的资源正在被使用。 |
+| [struct OH_Huks_Result](capi-hukstypeapi-oh-huks-result.md) | 可能的返回码（errorCode）：<br>         OH_HUKS_SUCCESS 0 - 操作成功。<br>         OH_HUKS_ERR_CODE_NOT_SUPPORTED_API 801 - 不支持的API。<br>         OH_HUKS_ERR_CODE_COMMUNICATION_FAIL 12000005 - IPC通信失败。<br>         OH_HUKS_ERR_CODE_CRYPTO_FAIL 12000006 - 驱动错误。<br>         HUKS_ERR_CODE_ITEM_NOT_EXIST 12000011 - 未找到缓存的指定句柄。<br>         OH_HUKS_ERR_CODE_INSUFFICIENT_MEMORY 12000014 - 内存不足。<br>         OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT 12000018 - resourceId、propertyId、paramSet或回调无效。<br>         OH_HUKS_ERR_CODE_EXTERNAL_ERROR 12000020 - 提供者或Ukey内部执行失败。<br>         OH_HUKS_ERR_CODE_PIN_LOCKED 12000021 - PIN码被锁定。<br>         OH_HUKS_ERR_CODE_PIN_NO_AUTH 12000023 - PIN码未通过认证。<br>         OH_HUKS_ERR_CODE_BUSY 12000024 - 提供者或Ukey中的资源正在被使用。 |
 
 ### OH_Huks_InitExternalCryptoParamSet()
 

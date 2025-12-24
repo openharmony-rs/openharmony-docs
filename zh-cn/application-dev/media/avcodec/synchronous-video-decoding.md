@@ -321,7 +321,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                 bool getIntRet = OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_WIDTH, &width) &&
                                  OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_PIC_HEIGHT, &height);
                 if (!getIntRet) {
-             	    // 异常处理。
+                    // 异常处理。
                 }
                 break;
             }
@@ -650,7 +650,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                            OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_LEFT, &cropLeft) &&
                            OH_AVFormat_GetIntValue(format.get(), OH_MD_KEY_VIDEO_CROP_RIGHT, &cropRight);
                 if (!getIntRet) {
-                 	// 异常处理。
+                    // 异常处理。
                 }
                 break;
             }

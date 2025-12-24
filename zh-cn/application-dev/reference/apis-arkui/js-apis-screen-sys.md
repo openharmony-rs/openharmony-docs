@@ -560,6 +560,7 @@ destroyVirtualScreen(screenId:number, callback: AsyncCallback&lt;void&gt;): void
 | ------- | ----------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
 **示例：**
@@ -608,6 +609,7 @@ destroyVirtualScreen(screenId:number): Promise&lt;void&gt;
 | ------- | ----------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API.|
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
+| 1400001 | Invalid display or screen. |
 | 1400002 | Unauthorized operation. |
 
 **示例：**
@@ -994,7 +996,7 @@ screen.setScreenRotationLocked(isLocked, (err: BusinessError) => {
 
 setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondaryScreenMode: MultiScreenMode): Promise&lt;void&gt;
 
-设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。
+设置扩展屏幕的显示模式（镜像/扩展），使用Promise异步回调。primaryScreenId和secondaryScreenId均为0时，仅在扩展屏显示。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1004,8 +1006,8 @@ setMultiScreenMode(primaryScreenId: number, secondaryScreenId: number, secondary
 
 | 参数名       | 类型                 | 必填 | 说明                |
 | ------------ | ------------------- | ---- |--------------------|
-| primaryScreenId   | number           | 是  | 主屏的id，该参数应为正整数。 |
-| secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为正整数。|
+| primaryScreenId   | number           | 是  | 主屏的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
+| secondaryScreenId | number           | 是  | 扩展屏幕的id，该参数应为非负整数。如果输入的数字包含小数部分，向下取整。|
 | secondaryScreenMode | [MultiScreenMode](#multiscreenmode13)  | 是  | 扩展屏幕的显示模式。|
 
 **返回值：**
@@ -1070,6 +1072,7 @@ setMultiScreenRelativePosition(mainScreenOptions: MultiScreenPositionOptions, se
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed, non-system application uses system API. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 1400001 | Invalid display or screen. |
 | 1400003 | This display manager service works abnormally. |
 
 **示例：**

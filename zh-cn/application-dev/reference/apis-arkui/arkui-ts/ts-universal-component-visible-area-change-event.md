@@ -16,7 +16,7 @@
 
 onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback): T
 
-组件可见区域变化时触发该回调。
+组件可见区域变化时触发该回调。开发指导及常见问题请参考[感知组件可见性](./../../../ui/arkts-manage-components-visibility.md)指南。
 
 > **说明：**
 >
@@ -51,7 +51,7 @@ onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallbac
 
 onVisibleAreaChange(ratios: Array&lt;number&gt;, event: VisibleAreaChangeCallback, measureFromViewport: boolean): T
 
-组件可见区域变化时触发该回调。可以通过measureFromViewport设置可见区域计算模式。
+组件可见区域变化时触发该回调。可以通过measureFromViewport设置可见区域计算模式。开发指导及常见问题请参考[感知组件可见性](./../../../ui/arkts-manage-components-visibility.md)指南。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -199,7 +199,7 @@ struct ScrollExample {
             })
 
           Row() {
-            Text('Test Row Visible  Change')
+            Text('Test Row Visible Change')
               .fontSize(20)
               .margin({ bottom: 20 })
 
@@ -302,7 +302,7 @@ struct ScrollExample {
               })
 
           Row() {
-            Text('Test Row Visible  Change')
+            Text('Test Row Visible Change')
               .fontSize(20)
               .margin({ bottom: 20 })
 

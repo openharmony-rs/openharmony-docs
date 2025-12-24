@@ -47,9 +47,9 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied or Current device is not supported.     |  
 | 1600001  | Internal error.                     |
-| 1600018  | the notification settings window is already displayed.           |
+| 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
 
 **示例：**
@@ -100,7 +100,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or Current device is not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                    |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -144,7 +144,7 @@ unsubscribe(): Promise\<void\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or Current device is not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
@@ -180,7 +180,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied. |
+| 201      | Permission denied or Current device is not supported. |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service. |
 
@@ -198,7 +198,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 isUserGranted(): Promise\<boolean\>
 
-获取用户是否授权"允许获取本机通知"开关。使用Promise异步回调。
+查询"允许获取本机通知"的开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -216,7 +216,7 @@ isUserGranted(): Promise\<boolean\>
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied. | 
+| 201      | Permission denied or Current device is not supported. | 
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
@@ -238,7 +238,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-获取用户授权"已获取的本机通知"通知开关的应用列表。使用Promise异步回调。
+获取指定应用中"已获取的本机通知"通知开关开启的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -248,7 +248,7 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回用户授权"已获取的本机通知"通知开关的应用列表。        |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中"已获取的本机通知"通知开关开启的应用列表。        |
 
 **错误码：**
 
@@ -256,7 +256,7 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied.     |  
+| 201      | Permission denied or Current device is not supported.     |  
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 

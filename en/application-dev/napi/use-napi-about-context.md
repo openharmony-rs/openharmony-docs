@@ -68,7 +68,7 @@ If an API does not involve context switching, it is irrelevant to the runtime co
 |napi_ref_threadsafe_function | No|
 |napi_add_async_cleanup_hook | No|
 |napi_remove_async_cleanup_hook | No|
-node_api_get_module_file_name | No|
+|node_api_get_module_file_name | No|
 |napi_get_last_error_info | No|
 |napi_get_undefined | No|
 |napi_get_null | No|
@@ -199,6 +199,7 @@ node_api_get_module_file_name | No|
 |napi_delete_serialization_data | No|
 |napi_call_threadsafe_function_with_priority | No|
 |napi_wrap_enhance | Yes|
+|napi_throw_business_error | Yes|
 
 ## Node-APIs That Do Not Support Multi-Runtime Context
 | API| Return Value of Multi-Runtime Context Call|
@@ -352,7 +353,7 @@ node_api_get_module_file_name | No|
 
 - Compilation configuration
 1. Configure the **CMakeLists.txt** file as follows:
-    ```
+    ```txt
     // CMakeLists.txt
     # the minimum version of CMake.
     cmake_minimum_required(VERSION 3.5.0)

@@ -41,8 +41,7 @@ type OnProxyConfigChangeCallback = () => void
 
 type CreateNativeMediaPlayerCallback = (handler: NativeMediaPlayerHandler, mediaInfo: MediaInfo) => NativeMediaPlayerBridge
 
-[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)方法的参数。
-一个回调函数，创建一个播放器，用于接管网页中的媒体播放。
+[onCreateNativeMediaPlayer](./arkts-apis-webview-WebviewController.md#oncreatenativemediaplayer12)方法的参数。一个回调函数，创建一个播放器，用于接管网页中的媒体播放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

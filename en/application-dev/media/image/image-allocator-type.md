@@ -10,7 +10,7 @@ When an application performs image decoding, it needs to allocate the correspond
 
 The application obtains a PixelMap through the decoding API and passes it to the **Image** component for display.
 
-When the PixelMap is large and uses shared memory, the RenderService main thread will experience a longer texture upload time, leading to lag. The zero-copy feature of DMA memory provided by the graphics side can avoid the time cost of texture upload when the system renders images.
+When the PixelMap is large and uses shared memory, the RS main thread will experience a longer texture upload time, leading to lag. The zero-copy feature of DMA memory provided by the graphics side can avoid the time cost of texture upload when the system renders images.
 
 ## Memory Types
 
@@ -38,7 +38,7 @@ You can call [createPixelMapUsingAllocator](../../reference/apis-image-kit/arkts
 
 - **Reduced texture upload time**
 
-  When SHARE_MEMORY is used, image data needs to be copied to GPU memory through the CPU, increasing the texture upload time. With DMA_ALLOC, data is directly stored in memory that is accessible by the GPU, avoiding the time-consuming copy process.
+   When SHARE_MEMORY is used, image data needs to be copied to GPU memory through the CPU, increasing the texture upload time. With DMA_ALLOC, data is directly stored in memory that is accessible by the GPU, avoiding the time-consuming copy process.
    - SHARE_MEMORY time consumption: Single-frame rendering of a 4K image takes about 20 ms.
    - DMA_ALLOC time consumption: The time of single-frame rendering for a 4K image can be reduced to about 4 ms. This optimization is particularly significant in scenarios involving the display of large images and frequent dynamic image loading.
 
@@ -92,36 +92,34 @@ When memory is allocated using DMA_ALLOC, the stride must meet the hardware alig
 The stride value can be obtained by calling [getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1).
 
 1. Call [getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1) to obtain an ImageInfo object.
+
 2. Access the stride value (**info.stride**) from the ImageInfo object.
 
-```ts
-import { image } from '@kit.ImageKit';
+   <!-- @[allocator_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/AllocateMemory.ets) -->   
+   
+   ``` TypeScript
+   // Import the required modules.
+   import { image } from '@kit.ImageKit';
+   import { common } from '@kit.AbilityKit';
+   ```
 
-async function CreatePixelMapUsingAllocator(context: Context) {
-  const resourceMgr = context.resourceManager;
-  const rawFile = await resourceMgr.getRawFileContent("test.jpg"); // Test image.
-  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
-  let options: image.DecodingOptions = {};
-  let pixelmap = await imageSource.createPixelMapUsingAllocator(options, image.AllocatorType.AUTO);
-  if (pixelmap != undefined) {
-    let info = await pixelmap.getImageInfo();
-    // The stride of the PixelMap allocated by using DMA_ALLOC is different from that of the PixelMap allocated by using SHARE_MEMORY.
-    console.info("stride = " + info.stride);
-    let region: image.Region = {
-      x: 0,
-      y: 0,
-      size: { height: 100, width: 35 }
-    }; // Define a region starting at (0, 0) with a size of 100 * 35 pixels. Note that the stride alignment might vary between DMA_ALLOC and SHARE_MEMORY.
-    if (pixelmap != undefined) {
-      await pixelmap.crop(region);
-      let imageInfo = await pixelmap.getImageInfo();
-      if (imageInfo != undefined) {
-        console.info("stride =", imageInfo.stride);
-      }
-    }
-  }
-}
-```
+   <!-- @[allocator_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   
+   ``` TypeScript
+   async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap> {
+     const resourceMgr = context.resourceManager;
+     const rawFile = await resourceMgr.getRawFileContent('99_132.jpg'); // The test image is a 99*132 JPG image.
+     let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
+     let options: image.DecodingOptions = {};
+     let pixelmap = await imageSource.createPixelMapUsingAllocator(options, type);
+     if (pixelmap != undefined) {
+       let info = await pixelmap.getImageInfo();
+       // The stride of the PixelMap allocated by using DMA_ALLOC is different from that of the PixelMap allocated by using SHARE_MEMORY.
+       console.info('stride = ' + info.stride);
+     }
+     return pixelmap;
+   }
+   ```
 
 ## Memory Restrictions for Decoding a Single Image
 
@@ -132,7 +130,8 @@ The image framework imposes a 2 GB memory limit for decoding a single image. Pro
 Applications can use [onMemoryLevel](../../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) to listen for system memory changes.
 
 The calculation rule for PixelMap memory allocation is as follows:
-```
+
+``` TypeScript
 pixels_size (pixel memory size) = stride (image pixel storage width) * height (image pixel height)
 ```
 

@@ -31,6 +31,11 @@ When an application has multiple processes, the system automatically designates 
 
 The FA model is an early application model that provides essential components and runtime mechanisms for applications. Each application component in this model has its own ArkTS engine instance, making it ideal for developing simple applications.
 
+## I
+
+### Intent Provider Management
+
+[Intent provider management](../reference/apis-ability-kit/js-apis-app-ability-insightIntentProvider.md) enables an application to integrate its service functions into the InsightIntent framework by declaring standard or custom intents.
 
 ## M
 

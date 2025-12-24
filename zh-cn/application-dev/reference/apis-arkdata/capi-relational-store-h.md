@@ -1829,7 +1829,7 @@ typedef void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progres
 
 | 参数项               | 描述           |
 |-------------------|--------------|
-| void *context     |              |
+| void *context     | 回调数据的上下文。 |
 | [Rdb_ProgressDetails](capi-rdb-rdb-progressdetails.md) *progressDetails | 端云同步进度的详细信息。 |
 
 ### Rdb_SyncCallback()

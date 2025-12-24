@@ -1,9 +1,9 @@
 # badge
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @liyujie43-->
-<!--Designer: @weixin_52725220-->
-<!--Tester: @xiong0104-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 应用中如果有需用户关注的新事件提醒，可以采用新事件标记来标识。

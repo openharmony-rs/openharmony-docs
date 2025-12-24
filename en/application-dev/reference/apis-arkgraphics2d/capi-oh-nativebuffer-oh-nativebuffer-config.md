@@ -6,7 +6,7 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-```
+```c
 typedef struct {...} OH_NativeBuffer_Config
 ```
 ## Overview
@@ -27,6 +27,6 @@ The **OH_NativeBuffer_Config** struct describes the **OH_NativeBuffer** attribut
 | -------------- | ------------------------------------------------------------ |
 | int32_t width  | Width, in pixels.                                              |
 | int32_t height | Height, in pixels.                                              |
-| int32_t format | Pixel format. For details about the available options, see [OH_NativeBuffer_Format](capi-native-buffer-h.md#oh_nativebuffer_format).|
+| int32_t format | Pixel format. For details about the available options, see [OH_NativeBuffer_Format](capi-buffer-common-h.md#oh_nativebuffer_format).|
 | int32_t usage  | Usage of the buffer. For details about the available options, see [OH_NativeBuffer_Usage](capi-native-buffer-h.md#oh_nativebuffer_usage).|
 | int32_t stride | Double pointer to the image processing instance created. Stride of the local window buffer, in bytes.<br>**Since**: 10|

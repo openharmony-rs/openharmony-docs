@@ -765,7 +765,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetPixelFormat(OH_Pixelmap_ImageInfo *info,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | 被操作的OH_Pixelmap_ImageInfo指针。 |
-| int32_t *pixelFormat | 像素格式。 |
+| int32_t *pixelFormat | 像素格式[PIXEL_FORMAT](#pixel_format)。 |
 
 **返回：**
 
@@ -815,7 +815,7 @@ Image_ErrorCode OH_PixelmapImageInfo_GetDynamicRange(OH_Pixelmap_ImageInfo *info
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | 被操作的OH_Pixelmap_ImageInfo指针。 |
-| bool *isHdr | 是否为hdr的布尔值。 |
+| bool *isHdr | 表示是否为HDR。true表示是HDR，false表示不是HDR。 |
 
 **返回：**
 

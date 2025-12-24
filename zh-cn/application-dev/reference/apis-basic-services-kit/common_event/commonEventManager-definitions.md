@@ -1587,7 +1587,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
-（预留事件，暂未支持）表示已连接USB附件的公共事件的动作。
+表示已连接USB配件的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1598,7 +1598,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 ### COMMON_EVENT_USB_ACCESSORY_DETACHED
 
-（预留事件，暂未支持）表示USB附件被卸载的公共事件的动作。
+表示USB配件被卸载的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
