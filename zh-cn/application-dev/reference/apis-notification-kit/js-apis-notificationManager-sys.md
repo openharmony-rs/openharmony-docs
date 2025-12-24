@@ -7589,13 +7589,11 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import UIAbility from '@ohos.app.ability.UIAbility';
 
 import { BusinessError } from '@kit.BasicServicesKit';
-import notificationManager from '@ohos.notificationManager';
 
 class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -7695,13 +7693,11 @@ export default class EntryAbility extends UIAbility {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 import UIAbility from '@ohos.app.ability.UIAbility';
 
 import { BusinessError } from '@kit.BasicServicesKit';
-import notificationManager from '@ohos.notificationManager';
 
 class EntryAbility extends UIAbility {
     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -8523,7 +8519,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import notificationManager from '@ohos.notificationManager';
 
 notificationManager.setGeofenceEnabled(true).then(() => {
   hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
@@ -8581,7 +8576,6 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import notificationManager from '@ohos.notificationManager';
 
 notificationManager.isGeofenceEnabled().then((data: boolean) => {
   hilog.info(0x0000, 'testTag', '%{public}s', `isGeofenceEnabled success, enabled:  ${JSON.stringify(data)}.`);
