@@ -41,15 +41,24 @@
 4. 创建图库选择器实例，调用[PhotoViewPicker.select](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md#select)接口拉起图库界面进行文件选择。文件选择成功后，返回[PhotoSelectResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectresult)结果集。
 
    <!-- @[PickerMediaLibrary_select](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Picker/PickerMediaLibrarySample/entry/src/main/ets/pages/Index.ets) -->
-   ```ts
-   let uris: Array<string> = [];
-   const photoViewPicker = new photoAccessHelper.PhotoViewPicker();
-   photoViewPicker.select(photoSelectOptions).then((photoSelectResult: photoAccessHelper.PhotoSelectResult) => {
-     uris = photoSelectResult.photoUris;
-     console.info('photoViewPicker.select to file succeed and uris are:' + uris);
-   }).catch((err: BusinessError) => {
-     console.error(`Invoke photoViewPicker.select failed, code is ${err.code}, message is ${err.message}`);
-   })
+   
+   ``` TypeScript
+   const result = await photoViewPicker.select(photoSelectOptions);
+               
+   // 文件选择成功后，返回PhotoSelectResult结果集
+   console.log('选择成功，返回结果: ' + JSON.stringify(result));
+   console.log('选择的文件数量: ' + result.photoUris.length);
+         
+   // 更新选中的URI列表
+   this.selectedUris = result.photoUris;
+   // 设置默认选中第一个URI用于读取操作
+   if (this.selectedUris.length > 0) {
+     this.selectedUriForRead = this.selectedUris[0];
+   }
+         
+   // 调用工具类处理结果
+   this.processedItems = MediaLibraryPickerUtils.handleSelectResult(this.selectedUris);
+   console.log('处理后的结果数量: ' + this.processedItems.length);
    ```
 
    select返回的uri权限是只读权限，可以根据结果集中uri进行读取文件数据操作。注意不能在picker的回调里直接使用此uri进行打开文件操作，需要定义一个全局变量保存uri，类似使用一个按钮去触发打开文件。可参考[指定URI读取文件数据](#指定uri读取文件数据)。
